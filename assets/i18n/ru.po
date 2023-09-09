@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2023-06-12 21:26+0300\n"
+"PO-Revision-Date: 2023-09-09 10:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -65,13 +65,13 @@ msgid "Other"
 msgstr "Другое"
 
 msgid "Return to Threads of Fate"
-msgstr ""
+msgstr "Нити судьбы. Возвращение"
 
 msgid "Return to Heart of the Elders"
-msgstr ""
+msgstr "Сердце древних. Возвращение"
 
 msgid "Return to Shattered Aeons"
-msgstr ""
+msgstr "Расколотая вечность. Возвращение"
 
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
@@ -1787,10 +1787,10 @@ msgid "The Path To Carcosa"
 msgstr "Путь в Каркозу"
 
 msgid "Return to The Path to Carcosa"
-msgstr ""
+msgstr "Путь в Каркозу. Возвращение"
 
 msgid "Return to The Forgotten Age"
-msgstr ""
+msgstr "Забытая эпоха. Возвращение"
 
 msgid "The Dream-Quest"
 msgstr ""
@@ -1961,19 +1961,19 @@ msgid "Shattered Aeons"
 msgstr "Расколотая вечность"
 
 msgid "Return to The Untamed Wilds"
-msgstr ""
+msgstr "Дремучие джунгли. Возвращение"
 
 msgid "Return to The Doom of Eztli"
-msgstr ""
+msgstr "Погибель Эцтли"
 
 msgid "Return to The Boundary Beyond"
-msgstr ""
+msgstr "Потусторонний предел. Возвращение"
 
 msgid "Return to The City of Archives"
-msgstr ""
+msgstr "Город архивов. Возвращение"
 
 msgid "Return to The Depths of Yoth"
-msgstr ""
+msgstr "Глубины Йота. Возвращение"
 
 msgid "Prologue: Disappearance at the Twilight Estate"
 msgstr "Исчезновение в поместье Сумерек"
@@ -2208,19 +2208,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -2708,10 +2708,10 @@ msgid "Chaos bag is empty"
 msgstr "Мешок хаоса пуст"
 
 msgid "Bless"
-msgstr ""
+msgstr "Благословение"
 
 msgid "Curse"
-msgstr ""
+msgstr "Проклятие"
 
 msgid "The Syzygy"
 msgstr ""
@@ -3601,7 +3601,7 @@ msgid "Secrets"
 msgstr "Тайны"
 
 msgid "Tickets"
-msgstr ""
+msgstr "Билеты"
 
 msgid "Tries"
 msgstr "Попытки"
@@ -3955,34 +3955,34 @@ msgid "Show archived campaigns"
 msgstr "Показать архивные кампании"
 
 msgid "Return to The Circle Undone"
-msgstr ""
+msgstr "Нарушенный круг. Возвращение"
 
 msgid "Prologue: Return to Disappearance at the Twilight Estate"
-msgstr ""
+msgstr "Пролог: Исчезновение в поместье сумерек. Возвращение"
 
 msgid "Return to The Witching Hour"
-msgstr ""
+msgstr "Час ведьмовства. Возвращение"
 
 msgid "Return to At Death's Doorstep"
-msgstr ""
+msgstr "На пороге смерти. Возвращение"
 
 msgid "Return to The Secret Name"
-msgstr ""
+msgstr "Тайное имя. Возвращение"
 
 msgid "Return to The Wages of Sin"
-msgstr ""
+msgstr "Расплата за грехи. Возвращение"
 
 msgid "Return to For the Greater Good"
-msgstr ""
+msgstr "Ради высшего блага. Возвращение"
 
 msgid "Return to Union and Disillusion"
-msgstr ""
+msgstr "Единство и разочарование. Возвращение"
 
 msgid "Return to In the Clutches of Chaos"
-msgstr ""
+msgstr "В когтях Хаоса. Возвращение"
 
 msgid "Return to Before the Black Throne"
-msgstr ""
+msgstr "Перед Чёрным престолом. Возвращение"
 
 msgid "Loading account"
 msgstr "Загрузка аккаунта"
@@ -4366,205 +4366,205 @@ msgid "Replace a skull with a 0 token."
 msgstr "Замените 1 жетон [skull] на «0»."
 
 msgid "Judgement · XX"
-msgstr ""
+msgstr "Суд · XX"
 
 msgid "Judgement · XX (Inverted)"
-msgstr ""
+msgstr "Суд · XX (перевёрнутый)"
 
 msgid "The Fool · 0"
-msgstr ""
+msgstr "Шут · 0"
 
 msgid "Each investigator not defeated during this game earns +2 experience during its resolution."
-msgstr ""
+msgstr "При розыгрыше исхода этой партии каждый непобеждённый сыщик дополнительно получает 2 опыта."
 
 msgid "Each investigator defeated during this game earns -2 experience during its resolution."
-msgstr ""
+msgstr "При розыгрыше исхода этой партии каждый побеждённый сыщик получает на 2 опыта меньше."
 
 msgid "The Magician · I"
-msgstr ""
+msgstr "Маг · I"
 
 msgid "Each investigator begins the game with 3 addititonal resources"
-msgstr ""
+msgstr "Каждый сыщик начинает партию с 3 дополнительными ресурсами."
 
 msgid "Each investigator begins the game with 3 fewer resources, and cannot gain resources during their first turn."
-msgstr ""
+msgstr "В начале партии у каждого сыщика на 3 ресурса меньше, каждый сыщик не может получать ресурсы в свой первый ход."
 
 msgid "The High Priestess · II"
-msgstr ""
+msgstr "Верховная жрица · II"
 
 msgid "During the first [intellect] test each investigator performs each round, they get +1 [intellect]."
-msgstr ""
+msgstr "В первой проверке [intellect], которую каждый сыщик проходит в каждом раунде, у этого сыщика +1 [intellect]."
 
 msgid "During the first [intellect] test each investigator performs each round, they get -1 [intellect]."
-msgstr ""
+msgstr "В первой проверке [intellect], которую каждый сыщик проходит в каждом раунде, у этого сыщика –1 [intellect]."
 
 msgid "The Empress · III"
-msgstr ""
+msgstr "Императрица · III"
 
 msgid "During the first [agility] test each investigator performs each round, they get +1 [agility]."
-msgstr ""
+msgstr "В первой проверке [agility], которую каждый сыщик проходит в каждом раунде, у этого сыщика +1 [agility]."
 
 msgid "During the first [agility] test each investigator performs each round, they get -1 [agility]."
-msgstr ""
+msgstr "В первой проверке [agility], которую каждый сыщик проходит в каждом раунде, у этого сыщика –1 [agility]."
 
 msgid "The Emperor · IV"
-msgstr ""
+msgstr "Император · IV"
 
 msgid "During the first [combat] test each investigator performs each round, they get +1 [combat]."
-msgstr ""
+msgstr "В первой проверке [combat], которую каждый сыщик проходит в каждом раунде, у этого сыщика +1 [combat]."
 
 msgid "During the first [combat] test each investigator performs each round, they get -1 [combat]."
-msgstr ""
+msgstr "В первой проверке [combat], которую каждый сыщик проходит в каждом раунде, у этого сыщика –1 [combat]."
 
 msgid "The Hierophant · V"
-msgstr ""
+msgstr "Первосвященник · V"
 
 msgid "During the first [willpower] test each investigator performs each round, they get +1 [willpower]."
-msgstr ""
+msgstr "В первой проверке [willpower], которую каждый сыщик проходит в каждом раунде, у этого сыщика +1 [willpower]."
 
 msgid "During the first [willpower] test each investigator performs each round, they get -1 [willpower]."
-msgstr ""
+msgstr "В первой проверке [intellect], которую каждый сыщик проходит в каждом раунде, у этого сыщика –1 [intellect]."
 
 msgid "The Lovers · VI"
-msgstr ""
+msgstr "Влюблённые · VI"
 
 msgid "When the game begins, each investigator searches their deck for an Ally asset, adds it to their hand, and shuffles their deck."
-msgstr ""
+msgstr "В начале партии каждый сыщик находит в своей колоде актив-[[союзника]], добавляет его на руку и перемешивает свою колоду."
 
 msgid "When the game begins, each investigator searches their deck for an Ally asset, removes it from the game, and shuffles their deck."
-msgstr ""
+msgstr "В начале партии каждый сыщик находит в своей колоде актив-[[союзника]], удаляет его из игры и перемешивает свою колоду."
 
 msgid "The Chariot · VII"
-msgstr ""
+msgstr "Колесница · VII"
 
 msgid "Each investigator begins the game with 2 additional cards in their opening hand."
-msgstr ""
+msgstr "Каждый сыщик начинает партию с 2 дополнительными картами на стартовой руке."
 
 msgid "Each investigator begins the game with 2 fewer cards in their opening hand, and cannot draw cards during their first turn."
-msgstr ""
+msgstr "В начале партии у каждого сыщика на стартовой руке на 2 карты меньше, каждый сыщик не может брать карты в свой первый ход."
 
 msgid "Strength · VIII"
-msgstr ""
+msgstr "Сила · VIII"
 
 msgid "When the game begins, each investigator may play an asset from their hand at -2 cost."
-msgstr ""
+msgstr "В начале партии каждый сыщик может сыграть актив с руки, снизив его цену на 2."
 
 msgid "During the first round of the game, each investigator cannot play assets."
-msgstr ""
+msgstr "В течение первого раунда сыщики не могут играть активы."
 
 msgid "The Hermit · IX"
-msgstr ""
+msgstr "Отшельник · IX"
 
 msgid "Increase each investigator's maximum hand size by 3."
-msgstr ""
+msgstr "У каждого сыщика +3 к размеру руки."
 
 msgid "Decrease each investigator's maximum hand size by 3."
-msgstr ""
+msgstr "У каждого сыщика –3 к размеру руки."
 
 msgid "Wheel of Fortune · X"
-msgstr ""
+msgstr "Колесо фортуны · X"
 
 msgid "Once each act, when an investigator reveals an [auto_fail] token, thte investigator may cancel it and treat it as a 0 token instead."
-msgstr ""
+msgstr "Один раз в сцену, когда любой сыщик вытягивает [auto_fail], сыщики могут отменить его и считать, что вместо него вытянут жетон «0»."
 
 msgid "Once each agenda, the first time any investigator reveals an [elder_sign] token, cancel it and treat it as a -5 token instead."
-msgstr ""
+msgstr "Один раз в замысел, когда любой сыщик впервые вытягивает [elder_sign], отмените его и считайте, что вместо него вытянут жетон «–5»."
 
 msgid "Justice · XI"
-msgstr ""
+msgstr "Правосудие · XI"
 
 msgid "Cancel the first doom that would be placed on the final agenda of the game."
-msgstr ""
+msgstr "Отмените первую безысходность, которая должна быть выложена на последний замысел в этой партии."
 
 msgid "The final agenda of the game enters play with 1 doom on it."
-msgstr ""
+msgstr "Последний замысел входит в игру с 1 безысходностью на нём."
 
 msgid "The Hanged Man · XII"
-msgstr ""
+msgstr "Повешенный · XII"
 
 msgid "During setup, each investigator may take up to 2 additional mulligans."
-msgstr ""
+msgstr "При подготовке к сценарию каждый сыщик может заменить карты стартовой руки до 2 раз дополнительно."
 
 msgid "Each investigator cannot mulligan or replace weaknesses in their opening hand (resolve their revelation abilities when the game begins)."
-msgstr ""
+msgstr "Каждый сыщик не может заменять карты или менять слабости на стартовой руке (разыграйте эффекты раскрытия слабостей в начале партии)."
 
 msgid "Death · XIII"
-msgstr ""
+msgstr "Смерть · XIII"
 
 msgid "Each investigator gets +1 health."
-msgstr ""
+msgstr "У каждого сыщика +1 к здоровью."
 
 msgid "Each investigator gets -1 health."
-msgstr ""
+msgstr "У каждого сыщика –1 к здоровью."
 
 msgid "Temperance · XIV"
-msgstr ""
+msgstr "Умеренность · XIV"
 
 msgid "Each investigator gets +1 sanity."
-msgstr ""
+msgstr "У каждого сыщика +1 к рассудку."
 
 msgid "Each investigator gets -1 sanity."
-msgstr ""
+msgstr "У каждого сыщика –1 к рассудку."
 
 msgid "The Devil · XV"
-msgstr ""
+msgstr "Дьявол · XV"
 
 msgid "Each investigator has 1 additional slot of a type chosen by that investigattor when the game begins."
-msgstr ""
+msgstr "У каждого сыщика есть 1 дополнительный слот по выбору. <i>(Выбрать слот следует в начале партии).</i>"
 
 msgid "Each investigator has 3 fewer slots, each of a different type, chosen by that investigator when the game begins."
-msgstr ""
+msgstr "У каждого сыщика меньше на 3 слота разных типов по выбору. <i>(Выбрать слоты следует в начале партии).</i>"
 
 msgid "The Tower · XVI"
-msgstr ""
+msgstr "Башня · XVI"
 
 msgid "Each investigator chooses 1 basic weakness in their deck and removes it from the game (return them after the game ends)."
-msgstr ""
+msgstr "Каждый сыщик выбирает в своей колоде 1 базовую слабость и удаляет её из игры (верните её после окончания партии)."
 
 msgid "Add 1 random basic weakness to each investigator's deck. Remove them after the game ends."
-msgstr ""
+msgstr "Добавьте 1 случайную базовую слабость в колоду каждого сыщика. После окончания партии удалите их из колод."
 
 msgid "The Star · XVII"
-msgstr ""
+msgstr "Звезда · XVII"
 
 msgid "After an investigator reveals an [elder_sign] token during a skill test, they may heal 1 damage or 1 horror."
-msgstr ""
+msgstr "После того как сыщик вытянул [elder_sign] при проверке навыка, он может вылечить 1 рану или 1 ужас."
 
 msgid "After an investigator reveals an [auto_fail] token during a skill test, they must either take 1 damage or 1 horror."
-msgstr ""
+msgstr "После того как сыщик вытянул [auto_fail] при проверке навыка, он должен получить 1 рану или 1 ужас."
 
 msgid "The Moon · XVIII"
-msgstr ""
+msgstr "Луна · XVIII"
 
 msgid "The first time each investigator's deck would run out of cards, they may shuffle the bottom 10 cards of their discard pile back into their deck."
-msgstr ""
+msgstr "Когда у сыщика впервые заканчиваются карты в колоде, он может замешать нижние 10 карт своего сброса в свою колоду."
 
 msgid "When the game begins, each investigator discards the top 5 cards of their deck. Shuffle each discarded weakness into its owner's deck."
-msgstr ""
+msgstr "В начале партии каждый сыщик сбрасывает 5 карт с верха своей колоды. Замешайте каждую сброшенную при этом слабость обратно в колоду владельца."
 
 msgid "The Sun · XIX"
-msgstr ""
+msgstr "Солнце · XIX"
 
 msgid "During each investigator's first turn, they may take 2 additional actions."
-msgstr ""
+msgstr "Во время своего первого хода каждый сыщик может совершить 2 дополнительных действия."
 
 msgid "During each investigator's first turn, they have 2 fewer actions to take."
-msgstr ""
+msgstr "Во время своего первого хода у каждого сыщика на 2 действия меньше."
 
 msgid "When the game begins, replace a [skull] token in the chaos bag with a 0 token. Swap them back after the game ends."
-msgstr ""
+msgstr "В начале партии замените 1 [skull] в мешке хаоса на жетон «0». После окончания партии произведите обратную замену."
 
 msgid "When the game begins, replace the highest non-negative token in the chaos bag with a [skull] token. Swap them back after the game ends."
-msgstr ""
+msgstr "В начале партии замените в мешке хаоса жетон с самым большим неотрицательным модификатором на [skull]. После окончания партии произведите обратную замену."
 
 msgid "The World · XXI"
-msgstr ""
+msgstr "Мир · XXI"
 
 msgid "Each investigator not defeated during this game may remove 1 trauma of their choice during its resolution."
-msgstr ""
+msgstr "Каждый сыщик, оставшийся в этой партии непобеждённым, после её завершения может исцелить 1 травму на свой выбор."
 
 msgid "Each investigator defeated during this game suffers 1 trauma of their choice during its resolution."
-msgstr ""
+msgstr "Каждый сыщик, побеждённый в ходе этой партии, после её завершения получает 1 травму на свой выбор."
 
 msgid "An app update is required to access this campaign."
 msgstr "Для доступа к этой кампании требуется обновить приложение."
@@ -4623,13 +4623,13 @@ msgid "Trait Choice"
 msgstr "Выбор черты"
 
 msgid "Blessed"
-msgstr ""
+msgstr "Благословенный"
 
 msgid "Cursed"
-msgstr ""
+msgstr "Проклятый"
 
 msgid "Blessed and Cursed"
-msgstr ""
+msgstr "Благословенный и Проклятый"
 
 msgid "Select Option"
 msgstr "Выбрать вариант"
@@ -4644,7 +4644,7 @@ msgid "Archive standalone"
 msgstr "Архивировать одиночный сценарий"
 
 msgid "Bless / Curse"
-msgstr ""
+msgstr "Благословение / Проклятие"
 
 msgid "You appear to be offline. Tap to check for network."
 msgstr "Не удаётся подключиться к сети. Нажмите, чтобы повторить попытку."
@@ -4984,85 +4984,85 @@ msgid "Take"
 msgstr "Взять"
 
 msgid "If you are using the digital chaos bag in the app, be sure to enable the tarot option on the chaos bag screen."
-msgstr ""
+msgstr "Если вы пользуетесь цифровым мешком хаоса в приложении, не забудьте включить опцию Таро на экране мешка."
 
 msgid "Show deck ids on campaigns"
 msgstr "Показывать номера колод в кампаниях"
 
 msgid "Tarot Reading"
-msgstr ""
+msgstr "Расклад Таро"
 
 msgid "Tarot Readings"
-msgstr ""
+msgstr "Расклады Таро"
 
 msgid "Perform readings with the tarot deck"
-msgstr ""
+msgstr "Сделать расклад карт Таро"
 
 msgid "What is this?"
-msgstr ""
+msgstr "Что это?"
 
 msgid "Choose two cards to reverse."
-msgstr ""
+msgstr "Выберите, какие 2 карты перевернуть."
 
 msgid "Reverse half of the cards (rounded up)."
-msgstr ""
+msgstr "Переверните половину карт (округляя вверх)."
 
 msgid "Choose one card."
-msgstr ""
+msgstr "Выберите одну карту."
 
 msgid "Draw and reverse cards however you like!"
-msgstr ""
+msgstr "Берите и переворачивайте карты как угодно!"
 
 msgid "Reveal"
-msgstr ""
+msgstr "Раскрыть"
 
 #, javascript-format
 msgid "${ card.title } - Inverted"
-msgstr ""
+msgstr "${ card.title } — Перевёрнутая"
 
 msgid "Inverted"
-msgstr ""
+msgstr "Перевёрнутая"
 
 msgid "Upright"
-msgstr ""
+msgstr "Прямая"
 
 msgid "A single card in a random position."
-msgstr ""
+msgstr "Одна карта в случайной ориентации."
 
 msgid "Two cards, one upright and one reversed."
-msgstr ""
+msgstr "Две карты: прямая и перевёрнутая."
 
 msgid "Reveal three upright cards, choose two to reverse."
-msgstr ""
+msgstr "Три карты, две на выбор перевёрнуты."
 
 msgid "A reading for the full campaign."
-msgstr ""
+msgstr "Расклад на кампанию."
 
 msgid "Choose from three upright cards."
-msgstr ""
+msgstr "Одна из трёх прямых карт на выбор."
 
 msgid "A single reversed card."
-msgstr ""
+msgstr "Одна перевёрнутая карта."
 
 msgid "Draw cards in random positions."
-msgstr ""
+msgstr "Расклад по вашим правилам."
 
 msgid "Choose reading type"
-msgstr ""
+msgstr "Выберите тип расклада"
 
 msgid "You must flip all cards to reveal your fate."
-msgstr ""
+msgstr "Вы должны перевернуть все карты, чтобы раскрыть свою судьбу."
 
 #, javascript-format
 msgid "Too many card reversed (${ currentReversedCount } / ${ requiredReversedCount })"
-msgstr ""
+msgstr "Слишком много карт перевёрнуто (${ currentReversedCount } / ${ requiredReversedCount })"
 
 #, javascript-format
 msgid "Not enough cards reversed (${ currentReversedCount } / ${ requiredReversedCount })"
-msgstr ""
+msgstr "Перевёрнуто недостаточно карт (${ currentReversedCount } / ${ requiredReversedCount })"
 
 msgid "Reject fate (redraw)"
-msgstr ""
+msgstr "Перетянуть"
 
 msgid "Deck Id"
 msgstr "ID колоды"
@@ -5072,10 +5072,10 @@ msgstr "Симфония Эриха Цанна"
 
 #, javascript-format
 msgid "${ card.title } (inverted)"
-msgstr ""
+msgstr "${ card.title } (Перевёрнутая)"
 
 msgid "Destiny Tarot Reading"
-msgstr ""
+msgstr "Расклад Таро «Судьба»"
 
 msgid "The Tatterdemalion"
 msgstr ""
@@ -5543,7 +5543,7 @@ msgid "Do you want to use the app to draw random tarot cards?"
 msgstr "Хотите использовать приложение, чтобы взять случайные карты таро?"
 
 msgid "Choose tarot card"
-msgstr ""
+msgstr "Выбрать карту Таро"
 
 msgid "Choose supplies:"
 msgstr "Выбрать припасы:"
@@ -5764,22 +5764,22 @@ msgid "Selected"
 msgstr "Выбрано"
 
 msgid "App language: ${ appLanguage }"
-msgstr ""
+msgstr "Язык приложения: ${ appLanguage }"
 
 msgid "Narration Language"
-msgstr ""
+msgstr "Язык голосового сопровождения"
 
 msgid "Take the scenic route to mark time"
-msgstr ""
+msgstr "Пойти не кратчайшим путём"
 
 msgid "Manual Backup"
-msgstr ""
+msgstr "Ручной бэкап"
 
 msgid "Automatic Backup"
-msgstr ""
+msgstr "Автоматический бэкап"
 
 msgid "You must have at least 7 cards from each class"
-msgstr ""
+msgstr "У вас должно быть хотя бы по 7 карт каждого класса"
 
 msgid "More off-class card than the number of weaknesses in your deck and bonded cards."
 msgstr ""
@@ -5801,10 +5801,10 @@ msgstr ""
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
-msgstr ""
+msgstr "Вернуть, не удаляя ${ bless } / ${ curse }"
 
 msgid "Recent token history"
-msgstr ""
+msgstr "История"
 
 msgid "The (Unofficial) Return to the Innsmouth Conspiracy"
 msgstr ""
@@ -5834,45 +5834,45 @@ msgid "Return to Into the Maelstrom"
 msgstr ""
 
 msgid "Chained - "
-msgstr ""
+msgstr "Доплата — "
 
 msgid "Unchained - "
-msgstr ""
+msgstr "Скидка — "
 
 msgid "Forbidden"
-msgstr ""
+msgstr "Запрещённая"
 
 msgid "Mutated"
-msgstr ""
+msgstr "Изменённая"
 
 msgid "Original card text"
-msgstr ""
+msgstr "Оригинальный текст"
 
 msgid "Original card text (back)"
-msgstr ""
+msgstr "Оригинальный текст (оборот)"
 
 #, javascript-format
 msgid "Latest Taboo List: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
-msgstr ""
+msgstr "Последний список табу: ${ currentTabooSet.name } — ${ currentTabooSet.date_start }"
 
 msgid "This card is no longer on the taboo list."
-msgstr ""
+msgstr "Эта карта исключена из списка табу."
 
 msgid "See taboo list history"
-msgstr ""
+msgstr "Просмотреть историю списка табу"
 
 msgid "Taboo list history:"
-msgstr ""
+msgstr "История списка табу:"
 
 msgid "CHAOS BAG"
-msgstr ""
+msgstr "МЕШОК ХАОСА"
 
 msgid "Just a bag. No strings attached."
-msgstr ""
+msgstr "Просто мешок с жетонами."
 
 #, javascript-format
 msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
-msgstr ""
+msgstr "Запечатано (${ chaosBagResults.sealedTokens.length })"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7544,7 +7544,7 @@ msgstr "Горы"
 
 msgctxt "trait"
 msgid "Past"
-msgstr ""
+msgstr "Прошлое"
 
 msgctxt "trait"
 msgid "Possessed"
@@ -7552,11 +7552,11 @@ msgstr "Одержимый"
 
 msgctxt "trait"
 msgid "Present"
-msgstr ""
+msgstr "Настоящее"
 
 msgctxt "trait"
 msgid "Scientist"
-msgstr ""
+msgstr "Натуралист"
 
 msgctxt "trait"
 msgid "Uncharted"
@@ -7564,7 +7564,7 @@ msgstr "Неизведанная"
 
 msgctxt "trait"
 msgid "Casino"
-msgstr ""
+msgstr "Казино"
 
 msgctxt "trait"
 msgid "Double"
@@ -7782,15 +7782,15 @@ msgstr "Нет"
 
 msgctxt "Tarot Card"
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 msgctxt "Tarot Card"
 msgid "Judgement · XX"
-msgstr ""
+msgstr "Суд · XX"
 
 msgctxt "Tarot Card"
 msgid "Judgement · XX (Inverted)"
-msgstr ""
+msgstr "Суд · XX (Перевёрнутая)"
 
 msgctxt "versus abbreviation"
 msgid "VS"
@@ -7891,31 +7891,31 @@ msgstr[2] "Поскольку ${ supplyName } отсутствует у ${ list 
 
 msgctxt "tarot-reading"
 msgid "Chaos"
-msgstr ""
+msgstr "Хаос"
 
 msgctxt "tarot-reading"
 msgid "Balance"
-msgstr ""
+msgstr "Баланс"
 
 msgctxt "tarot-reading"
 msgid "Choice"
-msgstr ""
+msgstr "Выбор"
 
 msgctxt "tarot-reading"
 msgid "Destiny"
-msgstr ""
+msgstr "Судьба"
 
 msgctxt "tarot-reading"
 msgid "Observed"
-msgstr ""
+msgstr "Под присмотром"
 
 msgctxt "tarot-reading"
 msgid "Damned"
-msgstr ""
+msgstr "Проклятье"
 
 msgctxt "tarot-reading"
 msgid "Custom"
-msgstr ""
+msgstr "Индивидуальный"
 
 msgctxt "trauma"
 msgid "None"
