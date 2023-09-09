@@ -12,6 +12,7 @@ import { TouchableShrink } from '@components/core/Touchables';
 interface Props {
   investigator: Card;
   value: string | undefined;
+  detail?: string;
   widget?: 'shuffle';
   disabled?: boolean;
   color?: 'dark' | 'light';
@@ -22,6 +23,7 @@ interface Props {
 export default function InvestigatorButton({
   investigator,
   value,
+  detail,
   widget,
   onPress,
   color,
@@ -39,7 +41,12 @@ export default function InvestigatorButton({
         color={color}
         width={width - s * (disabled ? 2 : 4)}
       >
-        { !!value && <Text style={[gameFont ? typography.gameFont : typography.text, typography.white]}>{value}</Text>}
+        { !!value && (
+          <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+            <Text style={[gameFont ? typography.gameFont : typography.text, typography.white]}>{value}</Text>
+            { !!detail && <Text style={[typography.smallButtonLabel, typography.white]}>{detail}</Text> }
+          </View>
+        )}
         { widget === 'shuffle' && !disabled && (
           <View style={[space.marginRightS, space.marginLeftS]}>
             <MaterialCommunityIcons

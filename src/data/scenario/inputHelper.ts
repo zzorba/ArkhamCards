@@ -21,6 +21,7 @@ import {
   investigatorChoiceConditionResult,
   locationConditionResult,
   scarletKeyConditionResult,
+  campaignDataStandaloneConditionResult,
 } from '@data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 
@@ -126,6 +127,8 @@ export function calculateBinaryConditionResult(
         case 'scenario_replayed':
         case 'next_scenario':
           return campaignDataScenarioConditionResult(condition, campaignLog);
+        case 'standalone':
+          return campaignDataStandaloneConditionResult(condition, campaignLog);
         case 'chaos_bag': {
           const numericResult = campaignDataChaosBagConditionResult(condition, campaignLog);
           return {

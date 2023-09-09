@@ -34,13 +34,22 @@ function CardErrataComponent({ errata, cards }: { errata: CardErrata; cards: Car
             <Text style={[typography.text, typography.bold]}>
               {name}
               (
-              { !!cards[0].cycle_code && (
+              { cards[0].custom() ? (
+                !!cards[0].pack_code && (
+                  <EncounterIcon
+                    encounter_code={cards[0].pack_code}
+                    size={16 * fontScale}
+                    color={colors.darkText}
+                  />
+                )
+              ) : (
+              !!cards[0].cycle_code && (
                 <EncounterIcon
                   encounter_code={cards[0].cycle_code}
                   size={16 * fontScale}
                   color={colors.darkText}
                 />
-              ) }
+              )) }
               &nbsp;
               { (cards.length > 1) ? (
                 `${min(map(cards, card => card.position || 0))} - ${max(map(cards, card => card.position || 0))}`

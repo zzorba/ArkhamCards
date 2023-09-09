@@ -377,7 +377,7 @@ export default function CardUpgradeDialog({
       </ScrollView>
       <DeckNavFooter componentId={componentId} deckId={id} onPress={backPressed} />
       { overLimit && (
-        <DeckProblemBanner problem={{ reason: 'too_many_copies' }} />
+        <DeckProblemBanner problem={{ reason: 'too_many_copies', invalidCards: [] }} />
       ) }
       { shrewdAnalysisDialog }
     </View>

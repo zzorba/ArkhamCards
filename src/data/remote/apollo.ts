@@ -93,6 +93,12 @@ import {
   UploadChaosBagResultsMutation,
   ChaosBagSetDifficultyDocument,
   ChaosBagSetDifficultyMutation,
+  ReturnChaosBagTokensWithBlurseDocument,
+  ReturnChaosBagTokensWithBlurseMutation,
+  ReturnChaosBagTokensMutation,
+  ReturnChaosBagTokensDocument,
+  UpdateChaosBagDrawTokenMutation,
+  UpdateChaosBagDrawTokenDocument,
 } from '@generated/graphql/apollo-schema';
 
 interface RemoveDeck {
@@ -1216,6 +1222,54 @@ const handleChaosBagDrawToken: MutationUpdaterFn<ChaosBagDrawTokenMutation> = (c
   if (!data?.update_chaos_bag_result_by_pk) {
     return;
   }
+  const { id, drawn, totalDrawn, history } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      drawn,
+      totalDrawn,
+      history,
+    };
+  });
+};
+
+const handleUpdateChaosBagDrawToken: MutationUpdaterFn<UpdateChaosBagDrawTokenMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, drawn, totalDrawn, history } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      drawn,
+      totalDrawn,
+      history,
+    };
+  });
+};
+
+
+const handleReturnChaosBagTokensWithBlurse: MutationUpdaterFn<ReturnChaosBagTokensWithBlurseMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
+  const { id, drawn, totalDrawn, bless, curse } = data.update_chaos_bag_result_by_pk;
+  updateChaosBag(cache, id, (chaosBag) => {
+    return {
+      ...chaosBag,
+      drawn,
+      totalDrawn,
+      bless,
+      curse,
+    };
+  });
+};
+
+
+const handleReturnChaosBagTokens: MutationUpdaterFn<ReturnChaosBagTokensMutation> = (cache, { data }) => {
+  if (!data?.update_chaos_bag_result_by_pk) {
+    return;
+  }
   const { id, drawn, totalDrawn } = data.update_chaos_bag_result_by_pk;
   updateChaosBag(cache, id, (chaosBag) => {
     return {
@@ -1430,6 +1484,18 @@ export const optimisticUpdates = {
   chaosBagDrawToken: {
     mutation: ChaosBagDrawTokenDocument,
     update: handleChaosBagDrawToken,
+  },
+  updateChaosBagDrawToken: {
+    mutation: UpdateChaosBagDrawTokenDocument,
+    update: handleUpdateChaosBagDrawToken,
+  },
+  returnChaosBagTokensWithBlurse: {
+    mutation: ReturnChaosBagTokensWithBlurseDocument,
+    update: handleReturnChaosBagTokensWithBlurse,
+  },
+  returnChaosBagTokens: {
+    mutation: ReturnChaosBagTokensDocument,
+    update: handleReturnChaosBagTokens,
   },
   chaosBagClearTokens: {
     mutation: ChaosBagClearTokensDocument,

@@ -1,4 +1,4 @@
-import { findIndex, flatMap, forEach, map, pull, sortBy, sortedUniq, head } from 'lodash';
+import { findIndex, flatMap, forEach, map, pull, sortBy, sortedUniq } from 'lodash';
 import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, OrderByCondition, QueryRunner } from 'typeorm/browser';
 
 import Card, { CardsMap, PartialCard } from '../types/Card';
@@ -14,12 +14,12 @@ import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigrat
 import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
 import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
 import { AlternateRequiredCodeMigration1660064759967 } from './migration/AlternateRequiredCodeMigration';
-import { Platform } from 'react-native';
 import { CardStatusMigration1662999387731 } from './migration/CardStatusMigration';
 import { GenderMigration1663271269593 } from './migration/GenderMigration';
 import { CardTagsMigraiton1663617607335 } from './migration/CardTagsMigration';
 import { ImageMigration1665529094145 } from './migration/ImageMigration'
 import { ReprintQuantityMigration1671202311300 } from './migration/ReprintQuantityMigration';
+import { TabooTextMigration1693598075386 } from './migration/TabooTextMigration';
 
 type DatabaseListener = () => void;
 
@@ -53,6 +53,7 @@ async function createDatabaseConnection(recreate: boolean) {
       CardTagsMigraiton1663617607335,
       ImageMigration1665529094145,
       ReprintQuantityMigration1671202311300,
+      TabooTextMigration1693598075386,
     ],
     entities: [
       Card,

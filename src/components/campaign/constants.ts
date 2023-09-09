@@ -31,6 +31,8 @@ import {
   CROWN_OF_EGIL,
   TSK,
   CYCLOPEAN_FOUNDATIONS,
+  HEART_OF_DARKNESS,
+  RTTIC,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
@@ -44,6 +46,8 @@ const authors = {
   [CROWN_OF_EGIL]: 'The Mad Juggler',
   [CALL_OF_THE_PLAGUEBEARER]: 'Walker Graves',
   [CYCLOPEAN_FOUNDATIONS]: 'The Beard',
+  [HEART_OF_DARKNESS]: 'Vinn Quest',
+  [RTTIC]: 'DerBK',
 }
 
 export function campaignDescription(packCode: CampaignCycleCode): string | undefined {
@@ -61,6 +65,8 @@ export function campaignDescription(packCode: CampaignCycleCode): string | undef
     case CROWN_OF_EGIL:
     case CALL_OF_THE_PLAGUEBEARER:
     case CYCLOPEAN_FOUNDATIONS:
+    case HEART_OF_DARKNESS:
+    case RTTIC:
       const author = authors[packCode];
       return t`Fan-made campaign by ${author}`;
     default:
@@ -117,6 +123,8 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case FOF: return t`Fortune and Folly`;
     case CALL_OF_THE_PLAGUEBEARER: return t`Call of the Plaguebearer`;
     case CYCLOPEAN_FOUNDATIONS: return t`Cyclopean Foundations`;
+    case HEART_OF_DARKNESS: return t`Heart of Darkness`;
+    case RTTIC: return t`The (Unofficial) Return to the Innsmouth Conspiracy`
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -351,6 +359,22 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Into the Maelstrom`, code: 'into_the_maelstrom', pack_code: 'itm' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
     ];
+
+    case RTTIC: return [
+      { name: t`Return to The Pit of Despair`, code: 'zreturn_to_the_pit_of_despair', pack_code: 'tic' },
+      { name: t`Puzzle Pieces`, code: 'puzzle_pieces', pack_code: 'tic', interlude: true },
+      { name: t`Return to The Vanishing of Elina Harper`, code: 'zreturn_to_the_vanishing_of_elina_harper', pack_code: 'tic' },
+      { name: t`The Syzygy`, code: 'syzygy', pack_code: 'tic', interlude: true },
+      { name: t`Return to In Too Deep`, code: 'zreturn_to_in_too_deep', pack_code: 'itc' },
+      { name: t`Return to Devil Reef`, code: 'zreturn_to_devil_reef', pack_code: 'def' },
+      { name: t`Beneath the Waves`, code: 'beneath_the_waves', pack_code: 'def', interlude: true },
+      { name: t`Return to Horror in High Gear`, code: 'zreturn_to_horror_in_high_gear', pack_code: 'hhg' },
+      { name: t`Return to A Light in the Fog`, code: 'zreturn_to_a_light_in_the_fog', pack_code: 'lif' },
+      { name: t`Return to The Lair of Dagon`, code: 'zreturn_to_lair_of_dagon', pack_code: 'lod' },
+      { name: t`Hidden Truths`, code: 'hidden_truths', pack_code: 'lod', interlude: true },
+      { name: t`Return to Into the Maelstrom`, code: 'zreturn_to_into_the_maelstrom', pack_code: 'itm' },
+      { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
+    ];
     case EOE: return [
       { name: t`Prologue`, code: 'prologue', pack_code: 'eoec', interlude: true },
       { name: t`Ice and Death: Part 1`, code: 'ice_and_death_part_1', pack_code: 'eoec' },
@@ -437,6 +461,8 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
     case STANDALONE:
     case GOB:
     case FOF:
+    case HEART_OF_DARKNESS:
+
       return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -472,6 +498,8 @@ export function campaignNames() {
     standalone: t`Standalone`,
     zcf: t`Cyclopean Foundations`,
     zcp: t`Call of the Plaguebearer`,
+    zhod: t`Heart of Darkness`,
+    rttic: 'The (Unofficial) Return to The Innsmouth Conspiracy',
   };
 }
 
@@ -504,10 +532,12 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case DARK_MATTER:
       return colors.campaign.tde;
     case TIC:
+    case RTTIC:
     case FOF:
     case CALL_OF_THE_PLAGUEBEARER:
       return colors.campaign.tic;
     case TSK:
+    case HEART_OF_DARKNESS:
       return colors.campaign.tsk;
     case EOE:
       return colors.campaign.eoe;
@@ -592,6 +622,7 @@ export function getCampaignLog(
         ],
       };
     case TIC:
+    case RTTIC:
       return {
         sections: [
           t`Campaign Notes`,
@@ -677,6 +708,13 @@ export function getCampaignLog(
           t`Cultists Killed`,
         ],
         counts: [t`Notice`],
+      };
+    case HEART_OF_DARKNESS:
+      return {
+        sections: [
+          t`Campaign Notes`
+        ],
+        counts: [t`Information on Kurtz`],
       };
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -805,6 +843,13 @@ const FOF_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 2, '-1': 2, '-2': 2, '-3': 2, '-6': 1, '-7': 1, skull: 2, cultist: 1, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
 };
 
+const ZHOD_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]:  { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-7': 1, '-8': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+};
+
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
     case 'blood_on_the_altar':
@@ -876,6 +921,7 @@ export function getChaosBag(
     case TDEB:
       return TDEB_BAG[difficulty];
     case TIC:
+    case RTTIC:
       return TIC_BAG[difficulty];
     case EOE:
       return EOE_BAG[difficulty];
@@ -895,6 +941,8 @@ export function getChaosBag(
       return FOF_BAG[difficulty];
     case CYCLOPEAN_FOUNDATIONS:
       return CYCLOPEAN_BAG[difficulty];
+    case HEART_OF_DARKNESS:
+      return ZHOD_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

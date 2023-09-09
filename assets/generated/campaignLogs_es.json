@@ -2805,6 +2805,407 @@
     ]
   },
   {
+    "campaignId": "rttic",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "possesses_a_diving_suit",
+            "masculine_text": "#name# tiene un traje de buzo.",
+            "feminine_text": "#name# tiene un traje de buzo.",
+            "nonbinary_text": "#name# tiene un traje de buzo."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "la misión de la agente Harper quedó completada."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "la misión de la agente Harper quedó completada… pero ¿a qué precio?"
+          },
+          {
+            "id": "allen_out_for_blood",
+            "text": "Zadok Allen está sediento de sangre."
+          },
+          {
+            "id": "burnham_out_for_blood",
+            "text": "Brian Burnham está sediento de sangre."
+          },
+          {
+            "id": "dagon_has_awakened",
+            "text": "Dagón ha despertado."
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "Dagón sigue durmiendo."
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "los profundos han inundado la Tierra."
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "los investigadores escaparon de Y'ha-nthlei."
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "la inundación ha comenzado."
+          },
+          {
+            "id": "friendly_out_for_blood",
+            "text": "Robert Friendly está sediento de sangre."
+          },
+          {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "el guardián de la puerta ha sido derrotado."
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "la puerta de Y'ha-nthlei te reconoce como su guardián por derecho."
+          },
+          {
+            "id": "gilman_out_for_blood",
+            "text": "Othera Gilman está sediento de sangre."
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "el guardián de Y'ha-nthlei ha sido derrotado."
+          },
+          {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "llevaron la diadema al faro."
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "llevaron el ídolo al faro."
+          },
+          {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "Innsmouth fue consumido por la marea creciente."
+          },
+          {
+            "id": "little_out_for_blood",
+            "text": "Joyce Little está sediento de sangre."
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "los investigadores llegaron a salvo a sus vehículos."
+          },
+          {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "llevaron el manto al faro."
+          },
+          {
+            "id": "marsh_out_for_blood",
+            "text": "Barnabas Marsh está sediento de sangre."
+          },
+          {
+            "id": "mission_failed",
+            "text": "la misión fracasó."
+          },
+          {
+            "id": "mission_succeeded",
+            "text": "la misión tuvo éxito."
+          },
+          {
+            "id": "orders_ritual_was_disrupted",
+            "text": "el ritual de la Orden quedó desbaratado."
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "el plan de los profundos fue frustrado."
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "los investigadores tienen un mapa de Y'ha-nthlei."
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "los investigadores tienen la llave de Y'ha-nthlei."
+          },
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "los investigadores llegaron al Cabo del Halcón tras la salida del sol."
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "los investigadores llegaron al Cabo del Halcón antes de la salida del sol."
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "las riquezas de las profundidades han sido destruidas… pero ¿a qué precio?"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "las riquezas de las profundidades se han perdido para siempre."
+          },
+          {
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "el Terror del Arrecife del Diablo está muerto."
+          },
+          {
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "el Terror del Arrecife del Diablo sigue vivo."
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "la marea se ha vuelto más fuerte."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "a_bargain_interlude",
+            "text": "dummy"
+          },
+          {
+            "id": "accuse_allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "accuse_burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "accuse_friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "accuse_gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "accuse_house_on_water_street",
+            "text": "La casa de Water Street"
+          },
+          {
+            "id": "accuse_little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "accuse_marsh",
+            "text": "Barnabas Marsh"
+          },
+          {
+            "id": "accuse_new_church_green",
+            "text": "New Church Green"
+          },
+          {
+            "id": "accuse_order_of_dagon",
+            "text": "Orden Esotérica de Dagón"
+          },
+          {
+            "id": "accuse_prison",
+            "text": "Cárcel de Innsmouth"
+          },
+          {
+            "id": "accuse_sawbone_alley",
+            "text": "Callejón del Matasanos"
+          },
+          {
+            "id": "accuse_slums",
+            "text": "Suburbios ribereños"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_1",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_14",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_2",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_3",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_4",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_9",
+            "text": "dummy"
+          },
+          {
+            "id": "the_accusation",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "memories_recovered",
+        "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "un trato con Joe Sargent"
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "una pista seguida"
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "una fuga"
+          },
+          {
+            "id": "an_intervention",
+            "text": "una intervención"
+          },
+          {
+            "id": "battle_with_a_horrifying_devil",
+            "text": "una batalla con un horripilante demonio"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "una conversación con el señor Moore"
+          },
+          {
+            "id": "decision_to_stick_together",
+            "text": "una decisión de no separarse"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "el descubrimiento de una reliquia mística"
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "el descubrimiento de un extraño ídolo"
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "el descubrimiento de un manto impío"
+          },
+          {
+            "id": "encounter_with_a_secret_cult",
+            "text": "un encuentro con una secta secreta"
+          },
+          {
+            "id": "horrific_truth",
+            "text": "la horrible verdad"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "el ciclo vital de un «profundo»"
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "una reunión con Thomas Dawson"
+          },
+          {
+            "id": "remember_where_you_have_to_go",
+            "text": "you remember where you have to go"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "una dolorosa traición"
+          }
+        ]
+      },
+      {
+        "section": "possible_hideouts",
+        "entries": [
+          {
+            "id": "house_on_water_street",
+            "text": "La casa de Water Street"
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "Cárcel de Innsmouth"
+          },
+          {
+            "id": "new_church_green",
+            "text": "New Church Green"
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Orden Esotérica de Dagón"
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "Callejón del Matasanos"
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "Suburbios ribereños"
+          }
+        ]
+      },
+      {
+        "section": "possible_suspects",
+        "entries": [
+          {
+            "id": "allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "side",
     "sections": [
       {
@@ -6085,11 +6486,11 @@
         "entries": [
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           }
         ]
       },
@@ -6098,31 +6499,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6131,31 +6532,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6164,19 +6565,19 @@
         "entries": [
           {
             "id": "heeded_the_call",
-            "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call.",
-            "nonbinary_text": "#name# has heeded the call."
+            "masculine_text": "#name# ha escuchado la llamada.",
+            "feminine_text": "#name# ha escuchado la llamada.",
+            "nonbinary_text": "#name# ha escuchado la llamada."
           },
           {
             "id": "injected_a_cardinal_reagant",
-            "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant.",
-            "nonbinary_text": "#name# has injected a cardinal reagant."
+            "masculine_text": "se ha inyectado un reactivo puro.",
+            "feminine_text": "se ha inyectado un reactivo puro.",
+            "nonbinary_text": "se ha inyectado un reactivo puro."
           },
           {
             "id": "arkham_stands_united",
-            "text": "Arkham stands united."
+            "text": "Arkham permanece unida."
           },
           {
             "id": "baalshandor_struck_the_first_blow",
@@ -6184,7 +6585,7 @@
           },
           {
             "id": "collection_was_saved",
-            "text": "the collection was saved."
+            "text": "la colección fue salvada."
           },
           {
             "id": "death_conquered_herbert_west",
@@ -6192,67 +6593,67 @@
           },
           {
             "id": "earned_greysons_respect",
-            "text": "you earned Greyson's respect."
+            "text": "los investigadores se ganaron el respeto de Greyson."
           },
           {
             "id": "found_the_hidden_paths",
-            "text": "you have found the hidden paths."
+            "text": "tú encontraste las sendas ocultas."
           },
           {
             "id": "greyson_cut_ties",
-            "text": "Greyson cut ties."
+            "text": "Greyson cortó lazos."
           },
           {
             "id": "herbert_west_is_leading_the_way",
-            "text": "Herbert West is leading the way."
+            "text": "Herbert West nos guía."
           },
           {
             "id": "herbert_west_was_taken_against_his_will",
-            "text": "Herbert West was taken against his will."
+            "text": "Herbert West fue llevado contra su voluntad."
           },
           {
             "id": "hibbs_has_your_back",
-            "text": "Hibbs has your back."
+            "text": "Hibb te cubre las espaldas."
           },
           {
             "id": "hibbs_is_here_to_help",
-            "text": "Hibbs is here to help."
+            "text": "Hibb está aquí para ayudarte."
           },
           {
             "id": "investigators_learned_the_secrets_of_the_roadhouse",
-            "text": "the investigators learned the secrets of the roadhouse."
+            "text": "los investigadores conocen el secreto del Motel."
           },
           {
             "id": "learned_the_killing_words",
-            "text": "you learned the killing words."
+            "text": "aprendisteis las palabras de muerte."
           },
           {
             "id": "made_sure_the_first_was_dead",
-            "text": "you made sure the First was dead."
+            "text": "te aseguraste de que el Primero murió."
           },
           {
             "id": "received_a_cryptic_riddle",
-            "text": "you received a cryptic riddle."
+            "text": "recibisteis un acertijo críptico."
           },
           {
             "id": "saw_a_vision_of_the_portals",
-            "text": "you saw a vision of the portals."
+            "text": "tuvisteis una visión de los portales."
           },
           {
             "id": "tailors_contained_the_problem",
-            "text": "the Tailors contained the problem."
+            "text": "los Sastres contuvieron la amenaza."
           },
           {
             "id": "the_blood_runs_in_your_veins",
-            "text": "the blood runs in your veins."
+            "text": "la sangre corre por tus venas."
           },
           {
             "id": "the_first_claimed_the_facility",
-            "text": "the First claimed The Facility."
+            "text": "el Primero reclamó la instalación."
           },
           {
             "id": "the_monster_was_buried_under_tons_of_concrete",
-            "text": "the monster was buried under tons of concrete."
+            "text": "el monstruo fue sepultado bajo toneladas de hormigón."
           },
           {
             "id": "the_plaguebearer_was_bound_anew",
@@ -6264,7 +6665,7 @@
           },
           {
             "id": "transported_to_the_lurkers_realm",
-            "text": "you were transported to the Lurker's realm."
+            "text": "tú fuiste transportado al reino del que acecha."
           },
           {
             "id": "tripped_the_facility_alarms",
@@ -6276,7 +6677,7 @@
           },
           {
             "id": "west_has_recovered_the_reagant",
-            "text": "West has recoverred the reagant."
+            "text": "West recuperó los reactivos."
           },
           {
             "id": "you_conquered_death",
@@ -6284,15 +6685,15 @@
           },
           {
             "id": "you_have_been_warned",
-            "text": "you have been warned."
+            "text": "habéis sido advertidos"
           },
           {
             "id": "you_have_received_a_twisted_gift",
-            "text": "you have received a twisted gift."
+            "text": "recibiste un regalo envenenado."
           },
           {
             "id": "you_hid_the_briefcase",
-            "text": "you hid the briefcase."
+            "text": "escondisteis el maletín."
           }
         ]
       },
@@ -6313,7 +6714,7 @@
           },
           {
             "id": "hibbs",
-            "text": "Hibbs"
+            "text": "Hibb"
           },
           {
             "id": "ma",
@@ -6321,19 +6722,19 @@
           },
           {
             "id": "priest_of_plagues",
-            "text": "Priest of Plagues"
+            "text": "Sacerdote de la Plaga"
           },
           {
             "id": "the_loving_couple",
-            "text": "The Loving Couple"
+            "text": "La Pareja de Enamorados"
           },
           {
             "id": "thing_in_water",
-            "text": "The Thing in the Water"
+            "text": "La Cosa del agua"
           },
           {
             "id": "vice_president",
-            "text": "The Vice President"
+            "text": "El Vicepresidente"
           }
         ]
       },
@@ -6342,31 +6743,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6375,31 +6776,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6441,31 +6842,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6474,31 +6875,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6507,31 +6908,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       },
@@ -6540,31 +6941,31 @@
         "entries": [
           {
             "id": "crater_of_unbinding",
-            "text": "Crater of Unbinding"
+            "text": "Cráter de la Liberación"
           },
           {
             "id": "defended",
-            "text": "Defended"
+            "text": "Defendido"
           },
           {
             "id": "flame_touched",
-            "text": "Flame-Touched"
+            "text": "Tocado por la Llama"
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infectado"
           },
           {
             "id": "madness_touched",
-            "text": "Madness-Touched"
+            "text": "Tocado por la Locura"
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Protegido"
           },
           {
             "id": "site_of_unbinding",
-            "text": "Site of Unbinding"
+            "text": "Lugar de la Liberación"
           }
         ]
       }
@@ -6752,6 +7153,338 @@
           },
           {
             "id": "zdm_side_story",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zhod",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "ancestors_approve_of_your_actions",
+            "text": "the ancestors approve of your actions."
+          },
+          {
+            "id": "captain_marlow_is_alive",
+            "text": "Captain Marlow is alive."
+          },
+          {
+            "id": "captain_marlow_is_in_the_hands_of_the_ancestors",
+            "text": "Captain Marlow is in the hands of the ancestors."
+          },
+          {
+            "id": "darkness_has_descended_on_the_congo",
+            "text": "the Avatar of Darkness freely walks the Earth."
+          },
+          {
+            "id": "darkness_has_descended_on_the_congo",
+            "text": "the Darkness has descended on the Congo."
+          },
+          {
+            "id": "darkness_stared_back_at_you",
+            "text": "the Darkness stared back at you."
+          },
+          {
+            "id": "deciphered_the_journal_of_the_mad_russian",
+            "text": "you deciphered the journal of a mad Russian."
+          },
+          {
+            "id": "director_does_not_trust_you",
+            "text": "the Director does not trust you."
+          },
+          {
+            "id": "director_is_conspiring_against_kurtz",
+            "text": "the Director is conspiring against Kurtz."
+          },
+          {
+            "id": "drove_off_a_tribe_of_darkness_worshippers",
+            "text": "you drove off a tribe of Darkness worshippers."
+          },
+          {
+            "id": "extracted_a_confession_from_kurtzs_warrior",
+            "text": "you extracted a confession from Kurtz's Warrior."
+          },
+          {
+            "id": "found_a_strange_encrypted_book",
+            "text": "you found a strange encrypted book."
+          },
+          {
+            "id": "found_a_strange_obsidian_status",
+            "text": "you found a strange obsidian statue."
+          },
+          {
+            "id": "found_kurtzs_personal_belongings",
+            "text": "you found Kurtz's personal belongings."
+          },
+          {
+            "id": "have_a_prisoner_on_board",
+            "text": "you have a prisoner on board."
+          },
+          {
+            "id": "have_injured_the_white_ape",
+            "text": "you have injured the White Ape."
+          },
+          {
+            "id": "know_about_miss_promise",
+            "text": "you know about Miss Promise."
+          },
+          {
+            "id": "know_how_to_imprison_the_darkness",
+            "text": "you know how to imprison the Darkness."
+          },
+          {
+            "id": "made_a_promise_to_kurtz",
+            "text": "you made a promise to Kurtz."
+          },
+          {
+            "id": "prisoner_died",
+            "text": "the prisoner died while trying to escape"
+          },
+          {
+            "id": "prisoner_escaped",
+            "text": "the prisoner escaped"
+          },
+          {
+            "id": "questioned_kurtzs_warrior",
+            "text": "you questioned Kurtz's Warrior."
+          },
+          {
+            "id": "returned_from_the_heart_of_darkness",
+            "text": "the investigators have returned from the heart of darkness."
+          },
+          {
+            "id": "saw_a_dark_shadow_in_the_flames",
+            "text": "you saw a dark shadow in the flames."
+          },
+          {
+            "id": "solved_the_mystery_of_freslevens_murder",
+            "text": "you solved the mystery of Fresleven's murder."
+          },
+          {
+            "id": "spent_a_long_time_going_up_the_congo_river",
+            "text": "you spent a long time going up the Congo river."
+          },
+          {
+            "id": "stared_into_the_darkness",
+            "text": "you have stared into the Darkness."
+          },
+          {
+            "id": "the_ancestors_are_proud_of_you",
+            "text": "the Ancestors are proud of you."
+          },
+          {
+            "id": "the_ancestors_are_watching_you",
+            "text": "the Ancestors are watching you."
+          },
+          {
+            "id": "told_about_the_area_around_the_inner_station",
+            "text": "you were told about the area around the Inner Station."
+          },
+          {
+            "id": "treated_at_the_central_stations_infirmary",
+            "text": "you were treated at the Central Station's infirmary."
+          },
+          {
+            "id": "tribe_of_the_black_hand_has_left_their_lands",
+            "text": "the Tribe of the Black Hand has left their lands."
+          },
+          {
+            "id": "unable_to_bring_kurtz_back_alive",
+            "text": "the investigators were unable to bring Kurtz back alive."
+          },
+          {
+            "id": "went_up_the_congo_river",
+            "text": "you went up the Congo river."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "zhd_darkness_1",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_2",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_3",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_4",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_5",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_6",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_7",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_1",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_10",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_11",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_12",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_13",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_14",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_15",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_16",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_2",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_3",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_4",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_5",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_6",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_7",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_8",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_9",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_1",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_10",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_11",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_12",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_13",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_14",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_15",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_16",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_17",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_18",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_19",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_2",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_20",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_21",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_3",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_4",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_5",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_6",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_7",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_8",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_9",
+            "text": "dummy"
+          },
+          {
+            "id": "zhod_avatar_agenda_6a",
             "text": "dummy"
           }
         ]

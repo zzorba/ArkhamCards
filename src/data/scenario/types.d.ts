@@ -191,6 +191,7 @@ export type BinaryChoiceCondition =
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
   | CampaignDataNextScenarioCondition
+  | CampaignDataStandaloneCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
   | CampaignLogSectionExistsCondition
@@ -367,6 +368,8 @@ export interface MultiCondition {
     | CampaignDataScenarioCondition
     | ScenarioDataResolutionCondition
     | ScenarioDataPlayerCountCondition
+    | CampaignDataStandaloneCondition
+    | CampaignDataDifficultyCondition
     | InvestigatorCardCondition
     | BinaryCardCondition
     | MathCondition
@@ -740,6 +743,16 @@ export interface ScenarioDataPlayerCountCondition {
   scenario_data: "player_count";
   options: NumOption[];
 }
+export interface CampaignDataStandaloneCondition {
+  type: "campaign_data";
+  campaign_data: "standalone";
+  options: BoolOption[];
+}
+export interface CampaignDataDifficultyCondition {
+  type: "campaign_data";
+  campaign_data: "difficulty";
+  options: StringOption[];
+}
 export interface InvestigatorCardCondition {
   type: "has_card";
   investigator: "each";
@@ -841,19 +854,9 @@ export interface CampaignLogInvestigatorCountCondition {
   options: NumOption[];
   default_option?: DefaultOption;
 }
-export interface CampaignDataDifficultyCondition {
-  type: "campaign_data";
-  campaign_data: "difficulty";
-  options: StringOption[];
-}
 export interface CampaignDataLinkedCondition {
   type: "campaign_data";
   campaign_data: "linked_campaign";
-  options: BoolOption[];
-}
-export interface CampaignDataStandaloneCondition {
-  type: "campaign_data";
-  campaign_data: "standalone";
   options: BoolOption[];
 }
 export interface ScenarioDataHasResolutionCondition {
@@ -1121,6 +1124,7 @@ export interface InvestigatorCounterInput {
   investigator_count_min?: string;
   max?: number;
   min?: number;
+  totalMax?: number;
   show_special_xp?: string;
 }
 export interface InvestigatorChoiceWithSuppliesInput {
@@ -1601,4 +1605,9 @@ export interface Taboo {
   deck_requirements?: {
     [k: string]: unknown;
   };
+  customization_options?: unknown[];
+  customization_change?: string;
+  customization_text?: string;
+  replacement_text?: string;
+  replacement_back_text?: string;
 }

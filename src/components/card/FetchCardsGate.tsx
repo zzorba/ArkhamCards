@@ -175,7 +175,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   if (loading || fetchNeeded) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
-        <ArkhamLoadingSpinner autoPlay loop />
+        <ArkhamLoadingSpinner autoPlay loop size="large" />
         <Text style={[typography.text, space.marginTopS]}>
           { t`Loading latest cards...` }
         </Text>

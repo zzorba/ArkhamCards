@@ -318,6 +318,7 @@ export default function ScenarioCarouselComponent({
       itemWidth={width - m * 3}
       sliderWidth={width}
       contentContainerCustomStyle={space.paddingSideS}
+      inactiveSlideOpacity={1}
       firstItem={selectedIndex}
       useExperimentalSnap={Platform.OS === 'android'}
       useScrollView

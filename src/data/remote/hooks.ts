@@ -40,6 +40,7 @@ import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { useApolloClient } from '@apollo/client';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import { useAppDispatch } from '@app/store';
+import { ChaosBag } from '@app_constants';
 
 function useCachedValue<T>(value: T | undefined): T | undefined {
   const ref = useRef<T | undefined>(value);
@@ -147,7 +148,6 @@ export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boo
   }, [data, campaignId]);
   return useCachedValue(result);
 }
-
 
 export function useCampaignDeckFromRemote(id: DeckId | undefined, campaignId: CampaignId | undefined): LatestDeckT | undefined {
   const { data: localData } = useGetLatestLocalDeckQuery({

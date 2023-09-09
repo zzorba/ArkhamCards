@@ -18,7 +18,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import Card from '@data/types/Card';
 import { useDraftableCards } from './useChaosDeckGenerator';
 import { AppState, getDraftPacks } from '@reducers';
-import { useCounter, useEffectUpdate, usePressCallback, useSettingValue } from '@components/core/hooks';
+import { useCounter, useEffectUpdate, useLatestDeckCards, usePressCallback, useSettingValue } from '@components/core/hooks';
 import { getDraftCards } from '@lib/randomDeck';
 import DeckButton from './controls/DeckButton';
 import space, { s, xs } from '@styles/space';
@@ -140,16 +140,11 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
       opacity.value = result ? withTiming(0, { duration: 250 }) : withTiming(1, { duration: 100 });
     }
   }, [item.draftCycle, item.code, draftHistory]);
-  const style = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-    }
-  });
   return (
     <Animated.View key={item.key} style={[
       borderStyle,
       { borderTopWidth: StyleSheet.hairlineWidth },
-      style,
+      { opacity },
     ]} entering={item.enterAnimation} exiting={item.exitAnimation}>
       <CardSearchResult
         id={item.key}
@@ -210,6 +205,7 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     ignore_collection,
     disabled: !visible && editingPack,
   });
+  const [deckCards, ] = useLatestDeckCards(deck);
   const possibleCodes = useRef<string[]>([]);
   useEffect(() => {
     if (allPossibleCodes) {
@@ -223,7 +219,10 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     if (!meta || !investigatorBack) {
       return;
     }
-    const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, cards, listSeperator);
+    const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, {
+      ...cards,
+      ...deckCards,
+    }, listSeperator);
     if (!currentParsedDeck || currentParsedDeck.problem?.reason && currentParsedDeck.problem.reason !== TOO_FEW_CARDS) {
       setDraftCards([]);
       showAlert(
@@ -245,11 +244,12 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
       cards,
       in_collection,
       ignore_collection,
-      listSeperator
+      listSeperator,
+      deckCards
     );
     setDraftCards(map(draftOptions, c => c.code));
     possibleCodes.current = newPossibleCodes;
-  }, [componentId, showAlert, setDraftCards, listSeperator, investigatorBack, meta, handSize, cards, in_collection, ignore_collection]);
+  }, [componentId, deckCards, showAlert, setDraftCards, listSeperator, investigatorBack, meta, handSize, cards, in_collection, ignore_collection]);
 
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);

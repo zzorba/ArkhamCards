@@ -305,7 +305,8 @@ function getDeckChangesHelper(
   forEach(exiledCards, (exileCount, code) => {
     if (exileCount > 0) {
       const card = cards[code];
-      if (card) {
+      if (card && !card.encounter_code) {
+        // Encounter cards don't get you a free slot to swap.
         forEach(range(0, exileCount), () => exiledSlots.push(card));
       }
     }
@@ -382,7 +383,7 @@ function getDeckChangesHelper(
   const extraAddedCards: Card[] = [];
 
   function computeAddedXp(addedCard: Card, { delayUnmodified } : { delayUnmodified: boolean }) {
-    if (addedCard.myriad) {
+    if ((addedCard.xp === 0 || !delayUnmodified) && addedCard.myriad) {
       const myriadKey = `${addedCard.real_name}_${addedCard.xp}`;
       if (myriadBuys[myriadKey]) {
         // Already paid for a myriad of this level
@@ -985,6 +986,10 @@ export function parseDeck(
     return undefined;
   }
   const validation = new DeckValidation(investigator, slots, meta);
+
+  const deckCards = getCards(cards, slots, ignoreDeckLimitSlots, listSeperator, customizations);
+  const problem = validation.getProblem(deckCards) || undefined;
+  const invalidCodes = new Set(problem?.invalidCards.map(c => c.code) ?? []);
   const cardIds = flatMap(
     sortBy(
       sortBy(
@@ -1009,7 +1014,7 @@ export function parseDeck(
       return {
         id,
         quantity: slots[id] || 0,
-        invalid: invalid || (customizedCard.deck_limit !== undefined && slots[id] > customizedCard.deck_limit),
+        invalid: invalid || invalidCodes.has(id) || (customizedCard.deck_limit !== undefined && slots[id] > customizedCard.deck_limit),
         limited: validation.isCardLimited(customizedCard),
         custom: card.custom(),
       };
@@ -1073,8 +1078,6 @@ export function parseDeck(
     }
   );
 
-  const deckCards = getCards(cards, slots, ignoreDeckLimitSlots, listSeperator, customizations);
-  const problem = validation.getProblem(deckCards) || undefined;
 
   const changes = originalDeck && getDeckChanges(
     cards,

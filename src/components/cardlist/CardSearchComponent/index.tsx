@@ -59,6 +59,9 @@ interface Props {
   setHideVersatile?: (value: boolean) => void;
   mode?: 'story' | 'side';
   includeDuplicates?: boolean;
+
+  hideSplash?: boolean;
+  setHideSplash?: (value: boolean) => void;
 }
 
 interface CardSearchNavigationOptions {
@@ -148,6 +151,8 @@ export default function CardSearchComponent(props: Props) {
     showNonCollection,
     sort,
     investigator,
+    hideSplash,
+    setHideSplash,
     hideVersatile,
     setHideVersatile,
     mode,
@@ -260,8 +265,23 @@ export default function CardSearchComponent(props: Props) {
       );
       headerHeight += s * 2 + 28 * fontScale;
     }
+    if (setHideSplash) {
+      result.push(
+        <View key="splash" style={[styles.row, space.paddingRightS, space.paddingTopS, space.paddingBottomS, { width }]}>
+          <View style={space.paddingRightS}>
+            <Text style={[typography.small, styles.searchOption]}>
+              { t`Hide splash cards` }
+            </Text>
+          </View>
+          <ArkhamSwitch
+            value={!!hideSplash}
+            onValueChange={setHideSplash}
+          />
+        </View>
+      );
+    }
     return [result, headerHeight];
-  }, [filters, fontScale, width, deckId, hideVersatile, setHideVersatile, componentId, typography, onFilterChange, onToggleChange]);
+  }, [filters, fontScale, width, deckId, hideVersatile, setHideVersatile, setHideSplash, componentId, typography, onFilterChange, onToggleChange]);
   return (
     <>
       <CardSearchResultsComponent

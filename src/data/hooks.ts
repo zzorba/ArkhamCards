@@ -2,7 +2,7 @@ import { useCallback, useContext, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filter, flatMap, concat, map, sortBy, reverse } from 'lodash';
 
-import { AppState, getCampaigns, MyDecksState } from '@reducers';
+import { AppState, getCampaigns, MyDecksState, makeChaosBagResultsSelector, makeCampaignChaosBagSelector} from '@reducers';
 import { Campaign, CampaignId, DeckId } from '@actions/types';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -19,6 +19,7 @@ import MiniDeckT from './interfaces/MiniDeckT';
 import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
 import { usePlayerCards } from '@components/core/hooks';
+import { ChaosBag } from '@app_constants';
 
 export function useCampaigns(): [MiniCampaignT[], boolean, undefined | (() => void)] {
   const { userId } = useContext(ArkhamCardsAuthContext);
@@ -107,6 +108,19 @@ export function useDeck(id: DeckId | undefined, fetch?: boolean): LatestDeckT | 
     }
     return remoteDeck;
   }, [remoteDeck, reduxDeck, userId, id]);
+}
+
+export function useNonGuideChaosBag(id: CampaignId): ChaosBag {
+  const chaosBagSelector = useMemo(makeCampaignChaosBagSelector, []);
+  const reduxData = useSelector((state: AppState) => chaosBagSelector(state, id.campaignId));
+  const remoteData = useCampaign(id);
+
+  return useMemo(() => {
+    if (!id.serverId) {
+      return reduxData;
+    }
+    return remoteData?.chaosBag ?? reduxData;
+  }, [id, remoteData, reduxData]);
 }
 
 export function useChaosBagResults(id: CampaignId): ChaosBagResultsT {

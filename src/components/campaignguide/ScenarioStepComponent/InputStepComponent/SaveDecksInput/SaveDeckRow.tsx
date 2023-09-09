@@ -196,7 +196,7 @@ function SaveDeckRow({
           <View style={space.paddingS}>
             <AppIcon name="xp" size={32} color={COLORS.D20} />
           </View>
-          <Text style={[typography.large, { color: COLORS.D30, flexShrink: 1 }]} adjustsFontSizeToFit>
+          <Text style={[typography.large, { color: COLORS.D30, flexShrink: 1 }]}>
             { t`Earned XP:` }
           </Text>
         </View>

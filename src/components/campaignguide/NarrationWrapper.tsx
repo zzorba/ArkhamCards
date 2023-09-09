@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress } from 'react-native-track-player';
+import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress, PlaybackState } from 'react-native-track-player';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import EncounterIcon from '@icons/EncounterIcon';
@@ -86,7 +86,7 @@ export async function setNarrationQueue(queue: NarrationTrack[]): Promise<void> 
 
   // if current track is in the new queue
   const currentTrackIndex = await trackPlayer.getCurrentTrack();
-  const currentTrackOld = currentTrackIndex !== null && currentTrackIndex > -1 ? oldTracks[currentTrackIndex] : undefined;
+  const currentTrackOld = currentTrackIndex !== undefined && currentTrackIndex > -1 ? oldTracks[currentTrackIndex] : undefined;
   const currentTrackNewIndex = currentTrackOld ? newTrackIds.indexOf(currentTrackOld.narrationId) : -1;
   if (
     currentTrackNewIndex !== -1 &&
@@ -224,7 +224,7 @@ function PlayerView({ style }: PlayerProps) {
   const track = useCurrentTrackDetails();
   const queue = useTrackPlayerQueue();
   const firstTrack = useMemo(() => !!track && findIndex(queue, t => t.url === track.url) === 0, [queue, track]);
-  const state: State = usePlaybackState();
+  const state = usePlaybackState();
   const onReplayPress = usePressCallback(replay, 250);
 
   const onPlay = useCallback(async() => {
@@ -314,13 +314,13 @@ function PlayerView({ style }: PlayerProps) {
               size={40}
               color={colors.D30}
               // tslint:disable-next-line: strict-comparisons
-              animating={state === State.Buffering}
+              animating={state.state === State.Buffering}
             />
           </View>
         </View>
         <PreviousButton onPress={onPreviousPress} />
         <ReplayButton onPress={onReplayPress} />
-        { state === State.Playing ? (
+        { state.state === State.Playing ? (
           <PauseButton onPress={onPlayPress} />
         ) : (
           <PlayButton onPress={onPlayPress} />

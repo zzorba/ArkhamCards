@@ -130,7 +130,7 @@ function LegacyDeckListRowDetails({
       ) }
       { !!deck.problem && (
         <DeckProblemRow
-          problem={{ reason: deck.problem }}
+          problem={{ reason: deck.problem, invalidCards: [] }}
           color={colors.darkText}
         />
       ) }

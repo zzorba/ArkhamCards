@@ -28,6 +28,10 @@
     "name": "Across Dreadful Waters"
   },
   {
+    "id": "africa_is_watching",
+    "name": "Africa is Watching"
+  },
+  {
     "id": "against_the_wendigo",
     "name": "Contra el Wendigo"
   },
@@ -49,7 +53,7 @@
   },
   {
     "id": "arkham_allied",
-    "name": "Arkham Allied"
+    "name": "Arkham unido"
   },
   {
     "id": "arkham_in_wonderland",
@@ -110,6 +114,10 @@
   {
     "id": "blob_that_ate_everything",
     "name": "La masa que lo devoraba todo"
+  },
+  {
+    "id": "blob_that_ate_everything_else",
+    "name": "The Blob That Ate Everything Else"
   },
   {
     "id": "blood_from_stones",
@@ -189,15 +197,15 @@
   },
   {
     "id": "dead_by_dawn",
-    "name": "Dead by Dawn"
+    "name": "Muerte al amanecer"
   },
   {
     "id": "dead_or_alive",
-    "name": "Dead or Alive"
+    "name": "Vivo o muerto"
   },
   {
     "id": "death_at_sundown",
-    "name": "Death at Sundown"
+    "name": "Muerte a la puesta de sol"
   },
   {
     "id": "devil_reef",
@@ -241,7 +249,7 @@
   },
   {
     "id": "electric_nightmare",
-    "name": "Electric Nightmare"
+    "name": "Pesadilla eléctrica"
   },
   {
     "id": "endless_night",
@@ -305,11 +313,11 @@
   },
   {
     "id": "fragment_of_carcosa",
-    "name": "Fragment of Carcosa"
+    "name": "Fragmento de Carcosa"
   },
   {
     "id": "friends_in_low_places",
-    "name": "Friends in Low Places"
+    "name": "Amigos en los bajos fondos"
   },
   {
     "id": "going_twice",
@@ -337,11 +345,11 @@
   },
   {
     "id": "high_noon_descent",
-    "name": "High Noon Descent"
+    "name": "Descenso al mediodía"
   },
   {
     "id": "history_lesson",
-    "name": "History Lesson"
+    "name": "Lección de historia"
   },
   {
     "id": "hong_kong",
@@ -381,7 +389,7 @@
   },
   {
     "id": "in_the_shadow_of_earth",
-    "name": "In the Shadow of Earth"
+    "name": "La cara oculta de la Tierra"
   },
   {
     "id": "in_too_deep",
@@ -393,7 +401,7 @@
   },
   {
     "id": "introspection",
-    "name": "Introspection"
+    "name": "Introspección"
   },
   {
     "id": "introspection_continued",
@@ -425,7 +433,7 @@
   },
   {
     "id": "late_risers",
-    "name": "Late Risers"
+    "name": "Trasnochadores"
   },
   {
     "id": "london",
@@ -441,7 +449,7 @@
   },
   {
     "id": "lost_quantum",
-    "name": "Lost Quantum"
+    "name": "Perdición cuántica"
   },
   {
     "id": "lucid_nightmare",
@@ -465,7 +473,7 @@
   },
   {
     "id": "mission_briefing",
-    "name": "Mission Briefing"
+    "name": "Informe de misión"
   },
   {
     "id": "moscow",
@@ -473,7 +481,7 @@
   },
   {
     "id": "mourning_chorus",
-    "name": "Mourning Chorus"
+    "name": "Cantos fúnebres"
   },
   {
     "id": "murder_at_the_excelsior_hotel",
@@ -485,7 +493,7 @@
   },
   {
     "id": "night_on_the_town",
-    "name": "Night on the Town"
+    "name": "Noche en la ciudad"
   },
   {
     "id": "perth",
@@ -544,6 +552,10 @@
     "name": "Noche reposada"
   },
   {
+    "id": "return_to_a_light_in_the_fog",
+    "name": "Regreso a Una luz en la niebla"
+  },
+  {
     "id": "return_to_a_phantom_of_truth",
     "name": "Regreso a El Fantasma de la Verdad"
   },
@@ -566,6 +578,10 @@
   {
     "id": "return_to_curtain_call",
     "name": "Regreso a Se cierra el telón"
+  },
+  {
+    "id": "return_to_devil_reef",
+    "name": "Regreso a Arrecife del diablo"
   },
   {
     "id": "return_to_dim_carcosa",
@@ -596,8 +612,20 @@
     "name": "Regreso a El corazón de los ancianos, segunda parte"
   },
   {
+    "id": "return_to_horror_in_high_gear",
+    "name": "Regreso a Horror a toda máquina"
+  },
+  {
     "id": "return_to_in_the_clutches_of_chaos",
     "name": "Regreso a En las garras del caos"
+  },
+  {
+    "id": "return_to_in_too_deep",
+    "name": "Regreso a Hasta el cuello"
+  },
+  {
+    "id": "return_to_into_the_maelstrom",
+    "name": "Regreso a Hacia el remolino"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -636,6 +664,10 @@
     "name": "Regreso a La casa siempre gana"
   },
   {
+    "id": "return_to_the_lair_of_dagon",
+    "name": "Regreso a La guarida de Dagón"
+  },
+  {
     "id": "return_to_the_last_king",
     "name": "Regreso a El Último Rey"
   },
@@ -652,6 +684,10 @@
     "name": "Regreso a La máscara pálida"
   },
   {
+    "id": "return_to_the_pit_of_despair",
+    "name": "Regreso a El pozo de la desesperación"
+  },
+  {
     "id": "return_to_the_secret_name",
     "name": "Regreso a El nombre secreto"
   },
@@ -662,6 +698,10 @@
   {
     "id": "return_to_the_untamed_wilds",
     "name": "Regreso a Naturaleza salvaje"
+  },
+  {
+    "id": "return_to_the_vanishing_of_elina_harper",
+    "name": "Regreso a La desaparición de Elina Harper"
   },
   {
     "id": "return_to_the_wages_of_sin",
@@ -729,7 +769,7 @@
   },
   {
     "id": "starfall",
-    "name": "Starfall"
+    "name": "Estrella caída"
   },
   {
     "id": "stockholm",
@@ -737,7 +777,7 @@
   },
   {
     "id": "strange_moons",
-    "name": "Strange Moons"
+    "name": "Lunas extrañas"
   },
   {
     "id": "sydney",
@@ -793,11 +833,15 @@
   },
   {
     "id": "the_afternoon_war",
-    "name": "The Afternoon War"
+    "name": "Guerra al atardecer"
   },
   {
     "id": "the_attack",
     "name": "El ataque"
+  },
+  {
+    "id": "the_avatar_of_darkness",
+    "name": "The Avatar of Darkness"
   },
   {
     "id": "the_black_cat",
@@ -901,11 +945,11 @@
   },
   {
     "id": "the_machine_in_yellow",
-    "name": "The Machine in Yellow"
+    "name": "La máquina amarilla"
   },
   {
     "id": "the_midnight_hour",
-    "name": "The Midnight Hour"
+    "name": "La hora bruja"
   },
   {
     "id": "the_miskatonic_museum",
@@ -953,7 +997,7 @@
   },
   {
     "id": "the_tatterdemalion",
-    "name": "The Tatterdemalion"
+    "name": "La Tatterdemalion"
   },
   {
     "id": "the_unspeakable_oath",
@@ -990,6 +1034,10 @@
   {
     "id": "to_the_forbidden_peaks",
     "name": "Hacia los picos prohibidos"
+  },
+  {
+    "id": "to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo"
   },
   {
     "id": "tokyo",
@@ -1066,5 +1114,21 @@
   {
     "id": "ybor_city",
     "name": "El refugio"
+  },
+  {
+    "id": "zhod_epilogue",
+    "name": "Epílogo"
+  },
+  {
+    "id": "zhod_interlude_1",
+    "name": "First Night Aboard the Roi des Belges"
+  },
+  {
+    "id": "zhod_interlude_2",
+    "name": "Kurtz's Warrior"
+  },
+  {
+    "id": "zhod_prologue",
+    "name": "Prólogo"
   }
 ]

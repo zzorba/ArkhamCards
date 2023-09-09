@@ -1,5 +1,5 @@
-import React, { useCallback, useContext } from 'react';
-import { forEach, map } from 'lodash';
+import React, { useCallback, useContext, useState } from 'react';
+import { find, forEach, flatMap, reverse } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -13,9 +13,12 @@ import Card from '@data/types/Card';
 import TabooSet from '@data/types/TabooSet';
 import CardTextComponent from './CardTextComponent';
 import { NavigationProps } from '@components/nav/types';
-import { l, m, xs, s } from '@styles/space';
+import space, { l, m, xs, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import useDbData from '@components/core/useDbData';
+import { useSelector } from 'react-redux';
+import { AppState } from '@reducers/index';
+import DeckButton from '@components/deck/controls/DeckButton';
 
 export interface CardTabooProps {
   id: string;
@@ -53,7 +56,43 @@ async function fetchTabooData(db: Database, id: string): Promise<TabooData> {
   };
 }
 
-function TabooBlock({ taboo, tabooSets }: { taboo: Card, tabooSets: TabooSetMap }) {
+function TabooBlock({ taboo, isCurrent }: { taboo: Card; isCurrent?: boolean }) {
+  const { typography } = useContext(StyleContext);
+  return (
+    <>
+      <View style={styles.gameTextBlock}>
+        { !!taboo.extra_xp && (
+          <Text style={typography.text}>
+            { taboo.extra_xp > 0 ?
+              t`Additional XP: ${taboo.extra_xp}.` :
+              t`XP Discount: ${taboo.extra_xp}.` }
+          </Text>
+        ) }
+        { !!taboo.taboo_text_change && (
+          <CardTextComponent text={taboo.taboo_text_change} />
+        ) }
+      </View>
+      { !!isCurrent && taboo.taboo_original_text && (
+        <>
+          <Text style={typography.text}>{t`Original card text`}</Text>
+          <View style={styles.gameTextBlock}>
+            <CardTextComponent text={taboo.taboo_original_text} />
+          </View>
+        </>
+      ) }
+      { !!isCurrent && taboo.taboo_original_back_text && (
+        <>
+          <Text style={typography.text}>{t`Original card text (back)`}</Text>
+          <View style={styles.gameTextBlock}>
+            <CardTextComponent text={taboo.taboo_original_back_text} />
+          </View>
+        </>
+      ) }
+    </>
+  );
+}
+
+function TabooVersionBlock({ taboo, tabooSets }: { taboo: Card, tabooSets: TabooSetMap }) {
   const { typography } = useContext(StyleContext);
   const tabooSet = taboo.taboo_set_id && tabooSets[taboo.taboo_set_id];
   if (taboo.taboo_placeholder) {
@@ -67,24 +106,17 @@ function TabooBlock({ taboo, tabooSets }: { taboo: Card, tabooSets: TabooSetMap 
           { `${tabooSet.name} - ${tabooSet.date_start}` }
         </Text>
       ) }
-      <View style={styles.gameTextBlock}>
-        { !!taboo.extra_xp && (
-          <Text style={typography.text}>
-            { taboo.extra_xp > 0 ?
-              t`Additional XP: ${taboo.extra_xp}.` :
-              t`XP Discount: ${taboo.extra_xp}.` }
-          </Text>
-        ) }
-        { !!taboo.taboo_text_change && (
-          <CardTextComponent text={taboo.taboo_text_change} />
-        ) }
-      </View>
+      <TabooBlock taboo={taboo} />
     </View>
   );
 }
 
 function TabooSection({ id }: { id: string }) {
+  const { typography } = useContext(StyleContext);
+  const [showPastVersions, setShowPastVersions] = useState(false);
   const fetch = useCallback((db: Database) => fetchTabooData(db, id), [id]);
+  const currentTabooSetId = useSelector((appState: AppState) => appState.settings.currentTabooSetId);
+
   const tabooData = useDbData(fetch);
   if (!tabooData) {
     return null;
@@ -97,9 +129,27 @@ function TabooSection({ id }: { id: string }) {
   if (!card) {
     return null;
   }
+  const currentTaboo = currentTabooSetId !== undefined && find(taboos, card => card.taboo_set_id === currentTabooSetId);
+  const currentTabooSet = !!currentTabooSetId ? tabooSets[currentTabooSetId] : undefined;
   return (
     <>
-      { map(taboos, taboo => <TabooBlock taboo={taboo} tabooSets={tabooSets} key={taboo.id} />) }
+      { !!currentTabooSet && (
+        <View>
+          <Text style={[typography.large, styles.tabooHeader]}>{t`Latest Taboo List: ${currentTabooSet.name} - ${currentTabooSet.date_start}`}</Text>
+          { currentTaboo && !currentTaboo.taboo_placeholder ? <TabooBlock taboo={currentTaboo} isCurrent /> : <Text style={typography.text}>{t`This card is no longer on the taboo list.`}</Text> }
+        </View>
+      ) }
+      { !!find(taboos, taboo => taboo.taboo_set_id !== currentTaboo && !taboo.taboo_placeholder) && (
+        <View style={space.paddingTopL}>
+          { !showPastVersions ?
+            <DeckButton icon="taboo" title={t`See taboo list history`} onPress={() => setShowPastVersions(true)} />
+            : <Text style={typography.large}>{t`Taboo list history:`}</Text>
+          }
+          { !!showPastVersions &&
+            flatMap(reverse(taboos), taboo => taboo.taboo_set_id !== currentTaboo ? <TabooVersionBlock taboo={taboo} tabooSets={tabooSets} key={taboo.id} /> : null)
+          }
+        </View>
+      ) }
     </>
   );
 }

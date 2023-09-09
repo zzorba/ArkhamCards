@@ -1,5 +1,6 @@
 import { filter } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
+import { slice, take } from 'lodash';
 
 import {
   UPDATE_CHAOS_BAG_RESULTS,
@@ -50,6 +51,7 @@ export function updateChaosBagClearTokens(
         totalDrawnTokens: chaosBagResults.totalDrawnTokens,
         tarot: chaosBagResults.tarot,
         difficulty: chaosBagResults.difficulty,
+        history: chaosBagResults.history,
       }));
     }
   };
@@ -58,17 +60,33 @@ export function updateChaosBagClearTokens(
 export function updateChaosBagDrawToken(
   actions: ChaosBagActions,
   id: CampaignId,
+  action: 'return' | 'draw',
   drawn: ChaosTokenType[],
-  chaosBagResults: ChaosBagResultsT
+  chaosBagResults: ChaosBagResultsT,
+  blurse?: {
+    bless: number,
+    curse: number,
+  },
 ): ThunkAction<void, AppState, unknown, UpdateChaosBagResultsAction> {
   return (dispatch) => {
     if (id.serverId) {
-      actions.drawToken(id, drawn);
+      actions.drawToken(id, action, drawn, !chaosBagResults.drawnTokens.length, blurse);
     } else {
+      let history = chaosBagResults.history ?? [];
+      if (action === 'draw') {
+        if (!chaosBagResults.drawnTokens.length) {
+          history = [{ type: 'draw', tokens: drawn }, ...history];
+        } else {
+          history = [{ type: 'draw', tokens: drawn }, ...slice(history, 1)];
+        }
+      }
       dispatch(updateChaosBagResults(id, {
         ...chaosBagResults,
         drawnTokens: drawn,
         totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
+        blessTokens: blurse?.bless ?? chaosBagResults.blessTokens,
+        curseTokens: blurse?.curse ?? chaosBagResults.curseTokens,
+        history: take(history, 20),
       }));
     }
   };

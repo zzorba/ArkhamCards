@@ -35,6 +35,7 @@ interface Props {
   standalonesById: { [campaignId: string]: { [scenarioId: string]: string } };
   onRefresh?: () => void;
   refreshing?: boolean;
+  header?: JSX.Element;
   buttons: React.ReactNode[];
 }
 
@@ -55,7 +56,7 @@ interface FooterType {
 
 type ItemType = CampaignItemType | ButtonItemType | FooterType;
 
-function CampaignList({ onScroll, componentId, campaigns, footer, footerHeight, standalonesById, onRefresh, refreshing, buttons, login }: Props & LoginStateProps) {
+function CampaignList({ onScroll, header, componentId, campaigns, footer, footerHeight, standalonesById, onRefresh, refreshing, buttons, login }: Props & LoginStateProps) {
   const { fontScale, width } = useContext(StyleContext);
   const reLogin = useCallback(() => {
     login();
@@ -177,9 +178,10 @@ function CampaignList({ onScroll, componentId, campaigns, footer, footerHeight, 
     return (
       <View>
         { !!userId && !refreshing && connectionProblemBanner ? connectionProblemBanner : null }
+        { !!header && header }
       </View>
     );
-  }, [userId, refreshing, connectionProblemBanner]);
+  }, [userId, refreshing, connectionProblemBanner, header]);
 
   const heightForItem = useCallback((item: ItemType) => {
     if (item.type === 'campaign') {

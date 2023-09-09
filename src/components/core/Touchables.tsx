@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { GestureResponderEvent, Pressable, ViewStyle, PressableProps } from 'react-native';
-import Animated, { cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
+import Animated, { AnimateStyle, cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
 
 interface Props extends Omit<PressableProps, 'onPressIn' | 'onPressOut' | 'style' | 'disabled' | 'onPress'> {
   style?: ViewStyle | ViewStyle[];
@@ -19,11 +19,6 @@ export function TouchableOpacity({ style, children, disabled, onPress, activeOpa
   const onPressOut = useCallback(() => {
     opacity.value = withTiming(1, { duration: 100 });
   }, [opacity]);
-  const opacityStyle = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-    };
-  });
   return (
     <Pressable
       style={style}
@@ -34,7 +29,7 @@ export function TouchableOpacity({ style, children, disabled, onPress, activeOpa
       unstable_pressDelay={50}
       {...otherProps}
     >
-      <Animated.View style={[style, opacityStyle]}>
+      <Animated.View style={[style, { opacity }]}>
         { children }
       </Animated.View>
     </Pressable>
@@ -51,9 +46,7 @@ export function TouchableQuickSize({ style, children, disabled, onPress, activeS
     );
   }, [activeScale, scale]);
   const animStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ scale: scale.value }],
-    };
+    return { transform: [{ scale: scale.value }] };
   });
   return (
     <Pressable

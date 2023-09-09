@@ -1,5 +1,5 @@
 import { forEach } from 'lodash';
-import { parse } from 'query-string';
+import qs from 'query-string';
 import { AppState, AppStateStatus, Linking, Platform } from 'react-native';
 import { authorize as appAuthAuthorize, AuthConfiguration } from 'react-native-app-auth';
 
@@ -57,7 +57,7 @@ export async function authorize(config: AppAuthConfig): Promise<AuthorizeRespons
         state,
         code,
         error,
-      } = parse(event.url.substring(event.url.indexOf('?') + 1));
+      } = qs.parse(event.url.substring(event.url.indexOf('?') + 1));
       if (error === 'access_denied') {
         reject(new Error('Access was denied by user.'));
         cleanup();

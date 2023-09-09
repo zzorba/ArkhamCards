@@ -28,6 +28,10 @@
     "name": "Across Dreadful Waters"
   },
   {
+    "id": "africa_is_watching",
+    "name": "Africa is Watching"
+  },
+  {
     "id": "against_the_wendigo",
     "name": "Against the Wendigo"
   },
@@ -112,6 +116,10 @@
     "name": "Der Blob, der alles fraß"
   },
   {
+    "id": "blob_that_ate_everything_else",
+    "name": "The Blob That Ate Everything Else"
+  },
+  {
     "id": "blood_from_stones",
     "name": "Blood From Stones"
   },
@@ -121,7 +129,7 @@
   },
   {
     "id": "bombay",
-    "name": "Strange Architecture"
+    "name": "Seltsame Architektur"
   },
   {
     "id": "buenos_aires",
@@ -129,7 +137,7 @@
   },
   {
     "id": "by_the_book",
-    "name": "By the Book"
+    "name": "Streng nach Vorschrift"
   },
   {
     "id": "carnevale_of_horrors",
@@ -157,11 +165,11 @@
   },
   {
     "id": "consternation_on_the_constellation",
-    "name": "Consternation on the Constellation"
+    "name": "Bestürzung über die Konstellation"
   },
   {
     "id": "core",
-    "name": "Die Scharlachroten Schlüssel"
+    "name": "Die scharlachroten Schlüssel"
   },
   {
     "id": "cp_epilogue",
@@ -345,7 +353,7 @@
   },
   {
     "id": "hong_kong",
-    "name": "Blood, Sweat, and Tea"
+    "name": "Blut, Schweiß und Tee"
   },
   {
     "id": "horror_in_high_gear",
@@ -413,7 +421,7 @@
   },
   {
     "id": "kathmandu",
-    "name": "Whistle On the Wind"
+    "name": "Pfeifen im Wind"
   },
   {
     "id": "kuala_lampur",
@@ -421,7 +429,7 @@
   },
   {
     "id": "lagos",
-    "name": "Special Delivery"
+    "name": "Sonderlieferung"
   },
   {
     "id": "late_risers",
@@ -453,7 +461,7 @@
   },
   {
     "id": "manokwari",
-    "name": "Metamorphosis"
+    "name": "Metamorphose"
   },
   {
     "id": "marrakesh",
@@ -481,7 +489,7 @@
   },
   {
     "id": "nairobi",
-    "name": "Infernal Machinery"
+    "name": "Die Höllenmaschine"
   },
   {
     "id": "night_on_the_town",
@@ -489,7 +497,7 @@
   },
   {
     "id": "perth",
-    "name": "Paranatural Selection"
+    "name": "Paranatürliche Selektion"
   },
   {
     "id": "point_of_no_return",
@@ -509,7 +517,7 @@
   },
   {
     "id": "ptc_interlude1_reprint",
-    "name": "Reality's Shadow"
+    "name": "Der Schatten der Realität"
   },
   {
     "id": "ptc_interlude2",
@@ -537,11 +545,15 @@
   },
   {
     "id": "red_tide_rising",
-    "name": "Red Tide Rising"
+    "name": "Die Rote Flut"
   },
   {
     "id": "restful_night",
     "name": "Erholsame Nacht"
+  },
+  {
+    "id": "return_to_a_light_in_the_fog",
+    "name": "Return to A Light in the Fog"
   },
   {
     "id": "return_to_a_phantom_of_truth",
@@ -566,6 +578,10 @@
   {
     "id": "return_to_curtain_call",
     "name": "Rückkehr zu: Ruf vor den Vorhang"
+  },
+  {
+    "id": "return_to_devil_reef",
+    "name": "Return to Devil Reef"
   },
   {
     "id": "return_to_dim_carcosa",
@@ -596,8 +612,20 @@
     "name": "Rückkehr zu: Das Herz der Älteren, Teil 2"
   },
   {
+    "id": "return_to_horror_in_high_gear",
+    "name": "Return to Horror in High Gear"
+  },
+  {
     "id": "return_to_in_the_clutches_of_chaos",
     "name": "Rückkehr zu: In den Fängen des Chaos"
+  },
+  {
+    "id": "return_to_in_too_deep",
+    "name": "Return to In Too Deep"
+  },
+  {
+    "id": "return_to_into_the_maelstrom",
+    "name": "Return to Into the Maelstrom"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -636,6 +664,10 @@
     "name": "Rückkehr zu: Das Haus gewinnt immer"
   },
   {
+    "id": "return_to_the_lair_of_dagon",
+    "name": "Return to The Lair of Dagon"
+  },
+  {
     "id": "return_to_the_last_king",
     "name": "Rückkehr zu: Der letzte König"
   },
@@ -652,6 +684,10 @@
     "name": "Rückkehr zu: Die Bleiche Maske"
   },
   {
+    "id": "return_to_the_pit_of_despair",
+    "name": "Return to The Pit of Despair"
+  },
+  {
     "id": "return_to_the_secret_name",
     "name": "Rückkehr zu: Der geheime Name"
   },
@@ -662,6 +698,10 @@
   {
     "id": "return_to_the_untamed_wilds",
     "name": "Rückkehr zu: Die ungezähmte Wildnis"
+  },
+  {
+    "id": "return_to_the_vanishing_of_elina_harper",
+    "name": "Return to The Vanishing of Elina Harper"
   },
   {
     "id": "return_to_the_wages_of_sin",
@@ -701,11 +741,11 @@
   },
   {
     "id": "rio_de_janiero",
-    "name": "Theory of Annihiliation"
+    "name": "Auslöschungstheorie"
   },
   {
     "id": "rome",
-    "name": "Romulus and Remus"
+    "name": "Romulus und Remus"
   },
   {
     "id": "san_francisco",
@@ -717,7 +757,7 @@
   },
   {
     "id": "shanghai",
-    "name": "The Coiled Serpent"
+    "name": "Die gewundene Schlange"
   },
   {
     "id": "shattered_aeons",
@@ -733,7 +773,7 @@
   },
   {
     "id": "stockholm",
-    "name": "Strange Architecture"
+    "name": "Seltsame Architektur"
   },
   {
     "id": "strange_moons",
@@ -741,7 +781,7 @@
   },
   {
     "id": "sydney",
-    "name": "Ringing Hollow"
+    "name": "Hohler Klang"
   },
   {
     "id": "tcu_epilogue",
@@ -800,6 +840,10 @@
     "name": "Der Angriff"
   },
   {
+    "id": "the_avatar_of_darkness",
+    "name": "The Avatar of Darkness"
+  },
+  {
     "id": "the_black_cat",
     "name": "Die schwarze Katze"
   },
@@ -821,7 +865,7 @@
   },
   {
     "id": "the_colour_out_of_space",
-    "name": "The Colour Out of Space"
+    "name": "Die Farbe aus dem All"
   },
   {
     "id": "the_crown",
@@ -992,8 +1036,12 @@
     "name": "Zu den Verbotenen Gipfeln"
   },
   {
+    "id": "to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo"
+  },
+  {
     "id": "tokyo",
-    "name": "Special Delivery"
+    "name": "Sonderlieferung"
   },
   {
     "id": "tomb_of_dead_dreams",
@@ -1009,7 +1057,7 @@
   },
   {
     "id": "travelling",
-    "name": "While travelling..."
+    "name": "Während der Reise..."
   },
   {
     "id": "tsk_epilogue",
@@ -1065,6 +1113,22 @@
   },
   {
     "id": "ybor_city",
-    "name": "The Safehouse"
+    "name": "Das Safehouse"
+  },
+  {
+    "id": "zhod_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "zhod_interlude_1",
+    "name": "First Night Aboard the Roi des Belges"
+  },
+  {
+    "id": "zhod_interlude_2",
+    "name": "Kurtz's Warrior"
+  },
+  {
+    "id": "zhod_prologue",
+    "name": "Prolog"
   }
 ]

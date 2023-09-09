@@ -47,6 +47,7 @@ function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandom
           t`Draw random weakness` :
           (choiceCard?.name || 'Missing Card')
         }
+        detail={!!choice ? choiceCard?.subname : undefined}
         onPress={onPress}
         disabled={disabled}
         widget="shuffle"

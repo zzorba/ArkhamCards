@@ -38,6 +38,7 @@ const icons: {
   log: [28, COLORS.M, AppIcon],
   cards: [28, COLORS.M, AppIcon],
   settings: [28, COLORS.M, AppIcon],
+  chaos_bag: [28, COLORS.M, AppIcon],
 };
 
 const iconsMap: {

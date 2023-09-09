@@ -19,14 +19,15 @@ export type SaveDeckUpgrade<T> = (
   storyCounts: Slots,
   ignoreStoryCounts: Slots,
   exileCounts: Slots,
-  d: T
+  id: T
 ) => Promise<void> | undefined;
 
 export type SaveDeck<T> = (
   deck: LatestDeckT | undefined,
   xp: number,
   storyAssetDeltas: Slots,
-  id: T
+  id: T,
+  delayedXp?: number,
 ) => Promise<void> | undefined;
 
 export default function useDeckUpgradeAction<T = undefined>(
@@ -138,6 +139,7 @@ export default function useDeckUpgradeAction<T = undefined>(
     xp: number,
     storyAssetDeltas: Slots,
     id: T,
+    delayedXp?: number,
     isRetry?: boolean,
   ) => {
     if (!deck) {
@@ -160,7 +162,7 @@ export default function useDeckUpgradeAction<T = undefined>(
           const changes: SaveDeckChanges = { slots };
           changes.xpAdjustment = (deck.deck.xp_adjustment || 0) + xp;
           doSaveDeckChanges(deck.deck, changes).then(async(d) => {
-            await deckCompleted(d, xp, id);
+            await deckCompleted(d, delayedXp || xp, id);
             setSaving(false);
             resolve();
           }, (e: Error) => {
@@ -187,8 +189,9 @@ export default function useDeckUpgradeAction<T = undefined>(
       deck: LatestDeckT | undefined,
       xp: number,
       storyAssetDeltas: Slots,
-      id: T
-    ): Promise<void> => saveDeck(deck, xp, storyAssetDeltas, id), 1000, { leading: true, trailing: false });
+      id: T,
+      delayedXp
+    ): Promise<void> => saveDeck(deck, xp, storyAssetDeltas, id, delayedXp), 1000, { leading: true, trailing: false });
   }, [saveDeck]);
 
   return [saving, error, throttledSaveUpgrade, throttledSaveDeck];

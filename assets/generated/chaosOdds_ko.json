@@ -2203,7 +2203,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "승점 더미에 있는 '원혼의 미련' 사본의 개수",
+          "prompt": "승점 더미에 있는 ‘원혼의 미련’ 사본의 개수",
           "min": 0,
           "adjustment": 1
         }
@@ -2232,7 +2232,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "승점 더미에 있는 '원혼의 미련' 사본의 개수",
+          "prompt": "승점 더미에 있는 ‘원혼의 미련’ 사본의 개수",
           "min": 0,
           "reveal_another": 1
         }
@@ -2482,7 +2482,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "'아자토스'에게 놓인 파멸 개수의 절반(소수점 올림)",
+          "prompt": "‘아자토스’에게 놓인 파멸 개수의 절반(소수점 올림)",
           "min": 2
         }
       },
@@ -2511,7 +2511,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "'아자토스'에게 놓인 파멸 개수",
+          "prompt": "‘아자토스’에게 놓인 파멸 개수",
           "min": 2
         }
       },

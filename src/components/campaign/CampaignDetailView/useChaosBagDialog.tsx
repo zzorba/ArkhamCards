@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { View } from 'react-native';
-import { map, sum, values } from 'lodash';
+import { Text, View } from 'react-native';
+import { forEach, map, sum, values } from 'lodash';
 import { t } from 'ttag';
 
 import { ChaosBag } from '@app_constants';
@@ -20,6 +20,8 @@ import { ProcessedCampaign } from '@data/scenario';
 import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 import { useAppDispatch } from '@app/store';
 import { MAX_WIDTH } from '@styles/sizes';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 
 interface Props {
   componentId: string;
@@ -36,9 +38,13 @@ interface Props {
   customEditPressed?: () => void;
 }
 
-export function useSimpleChaosBagDialog(chaosBag?: ChaosBag, tarot?: Chaos_Bag_Tarot_Mode_Enum): [React.ReactNode, () => void] {
-  const { width } = useContext(StyleContext);
+export function useSimpleChaosBagDialog(chaosBag?: ChaosBag, chaosBagResults?: ChaosBagResultsT): [React.ReactNode, () => void] {
+  const { width, typography, colors } = useContext(StyleContext);
   const content = useMemo(() => {
+    const sealedChaosBag: ChaosBag = {};
+    forEach(chaosBagResults?.sealedTokens, (token) => {
+      sealedChaosBag[token.icon] = ( sealedChaosBag[token.icon] ?? 0) + 1;
+    });
     if (!chaosBag) {
       return null;
     }
@@ -46,13 +52,25 @@ export function useSimpleChaosBagDialog(chaosBag?: ChaosBag, tarot?: Chaos_Bag_T
       <View style={space.marginS}>
         <ChaosBagLine
           chaosBag={chaosBag}
-          tarot={tarot}
+          chaosBagResults={chaosBagResults}
           width={width - m * 2}
         />
+        { !!chaosBagResults?.sealedTokens?.length && (
+          <View style={space.paddingTopM}>
+            <Text style={[typography.smallLabel, typography.center]}>{t`Sealed (${chaosBagResults.sealedTokens.length})`}</Text>
+            <View style={[{ height: 1, backgroundColor: colors.L15, width: width - m * 2 }, space.marginBottomS]} />
+            <ChaosBagLine chaosBag={sealedChaosBag} width={width - m * 2} sealed />
+          </View>
+        )}
       </View>
     );
-  }, [chaosBag, tarot, width]);
-  const tokenCount = useMemo(() => sum(values(chaosBag)), [chaosBag]);
+  }, [chaosBag, chaosBagResults, width]);
+  const tokenCount = useMemo(() =>
+    sum(values(chaosBag)) +
+      (chaosBagResults?.blessTokens ?? 0) +
+      (chaosBagResults?.curseTokens ?? 0) -
+      (chaosBagResults?.sealedTokens?.length ?? 0),
+    [chaosBag, chaosBagResults]);
   const { dialog, showDialog } = useDialog({
     title: t`Chaos Bag (${tokenCount})`,
     content,

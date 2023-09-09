@@ -67,6 +67,7 @@ export type DeckProblemType =
 export interface DeckProblem {
   reason: DeckProblemType;
   problems?: string[];
+  invalidCards: Card[];
 }
 
 export interface DeckMeta {
@@ -356,12 +357,21 @@ export const NEW_CHAOS_BAG_RESULTS = {
   curseTokens: 0,
   totalDrawnTokens: 0,
 };
+export const FIXED_CHAOS_BAG_ID = '11111111-1111-1111-1111-111111111111';
+export const FIXED_CHAOS_BAG_CAMPAIGN_ID: LocalCampaignId = {
+  campaignId: FIXED_CHAOS_BAG_ID,
+};
 
 export interface SealedToken {
   id: string;
   icon: ChaosTokenType;
 }
 
+export interface ChaosBagHistory {
+  type: 'draw' | 'add' | 'remove' | 'seal' | 'release';
+  tokens: ChaosTokenType[];
+  active?: boolean;
+}
 export interface ChaosBagResults {
   drawnTokens: ChaosTokenType[];
   sealedTokens: SealedToken[];
@@ -370,6 +380,7 @@ export interface ChaosBagResults {
   totalDrawnTokens: number;
   tarot?: Chaos_Bag_Tarot_Mode_Enum;
   difficulty?: Campaign_Difficulty_Enum;
+  history?: ChaosBagHistory[];
 }
 
 export interface ScenarioResult {
@@ -426,6 +437,7 @@ export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
+export const RTTIC = 'rttic';
 export const EOE = 'eoe';
 export const TSK = 'tskc';
 export const GOB = 'gob';
@@ -436,6 +448,7 @@ export const ALICE_IN_WONDERLAND = 'zaw';
 export const CROWN_OF_EGIL = 'zce';
 export const CALL_OF_THE_PLAGUEBEARER = 'zcp';
 export const CYCLOPEAN_FOUNDATIONS = 'zcf';
+export const HEART_OF_DARKNESS = 'zhod';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -462,7 +475,9 @@ export type CampaignCycleCode =
   typeof CYCLOPEAN_FOUNDATIONS |
   typeof ALICE_IN_WONDERLAND |
   typeof CROWN_OF_EGIL |
-  typeof CALL_OF_THE_PLAGUEBEARER;
+  typeof HEART_OF_DARKNESS |
+  typeof CALL_OF_THE_PLAGUEBEARER |
+  typeof RTTIC;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -492,6 +507,8 @@ export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
+  HEART_OF_DARKNESS,
+  RTTIC,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -510,6 +527,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDEB,
   TIC,
   EOE,
+  TSK,
   GOB,
   FOF,
   ALICE_IN_WONDERLAND,
@@ -517,11 +535,12 @@ export const GUIDED_CAMPAIGNS = new Set([
   CROWN_OF_EGIL,
   CALL_OF_THE_PLAGUEBEARER,
   CYCLOPEAN_FOUNDATIONS,
-  TSK,
+  HEART_OF_DARKNESS,
+  RTTIC,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
-export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
+export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([HEART_OF_DARKNESS]);
 
 export interface CustomCampaignLog {
   sections?: string[];
@@ -1456,6 +1475,7 @@ export interface SetInvestigatorSortAction {
 
 export type ReduxMigrationAction = ReduxMigrationV1Action;
 
+export type SettingsActions = SetCurrentTabooSetAction;
 export type FilterActions =
   ClearFilterAction |
   ToggleFilterAction |

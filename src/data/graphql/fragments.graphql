@@ -98,6 +98,8 @@ fragment SingleCard on all_card {
   real_customization_text
   real_customization_change
   real_taboo_text_change
+  real_taboo_original_text,
+  real_taboo_original_back_text,
   preview
   official
   taboo_placeholder
@@ -118,6 +120,8 @@ fragment CoreCardText on all_card_text {
   customization_change
   customization_text
   taboo_text_change
+  taboo_original_text
+  taboo_original_back_text
 }
 fragment UserInfo on users {
   id
@@ -158,6 +162,7 @@ fragment FullChaosBagResult on chaos_bag_result {
   totalDrawn
   tarot
   difficulty
+  history
 }
 
 fragment MiniDeck on campaign_deck {

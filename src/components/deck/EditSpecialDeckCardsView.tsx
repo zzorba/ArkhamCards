@@ -118,7 +118,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
           },
           topBar: {
             title: {
-              text: t`Edit Story Cards`,
+              text: t`Edit Weakness Cards`,
               color: 'white',
             },
             backButton: {

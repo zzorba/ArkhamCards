@@ -1,638 +1,1056 @@
 [
-    {
-        "id": 1,
-        "code": "001",
-        "name": "Taboo List",
-        "active": 1,
-        "date_start": "2019-04-20",
-        "cards": [
-            {
-                "code": "01020",
-                "xp": 2
-            },
-            {
-                "code": "01050",
-                "xp": 2
-            },
-            {
-                "code": "02152",
-                "xp": 1
-            },
-            {
-                "code": "02187",
-                "xp": 5
-            },
-            {
-                "code": "02189",
-                "xp": 5
-            },
-            {
-                "code": "02193",
-                "xp": 2
-            },
-            {
-                "code": "01033",
-                "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
-            },
-            {
-                "code": "02002",
-                "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
-            },
-            {
-                "code": "02111",
-                "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
-            },
-            {
-                "code": "02229",
-                "text": "This card gains: “Max 1 committed per skill test.”"
-            },
-            {
-                "code": "02266",
-                "text": "This card gains: “Max once per round.”"
-            },
-            {
-                "code": "03029",
-                "text": "This card’s ability now reads: “Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.”"
-            },
-            {
-                "code": "03315",
-                "exceptional": true,
-                "text": "This card gains the Exceptional keyword."
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "code": "002",
-        "name": "Taboo List",
-        "active": 1,
-        "date_start": "2019-09-27",
-        "cards": [
-            {
-                "code": "01020",
-                "xp": 2
-            },
-            {
-                "code": "01050",
-                "xp": 2
-            },
-            {
-                "code": "02026",
-                "xp": 3
-            },
-            {
-                "code": "02152",
-                "xp": 1
-            },
-            {
-                "code": "02187",
-                "xp": 5
-            },
-            {
-                "code": "02189",
-                "xp": 5
-            },
-            {
-                "code": "02193",
-                "xp": 2
-            },
-            {
-                "code": "02226",
-                "xp": -1
-            },
-            {
-                "code": "05159",
-                "xp": 3
-            },
-            {
-                "code": "01033",
-                "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
-            },
-            {
-                "code": "02002",
-                "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
-            },
-            {
-                "code": "02111",
-                "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
-            },
-            {
-                "code": "02229",
-                "text": "This card gains: “Max 1 committed per skill test.”"
-            },
-            {
-                "code": "02266",
-                "text": "This card gains: “Max once per round.”"
-            },
-            {
-                "code": "03029",
-                "text": "This card’s ability now reads: “Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.”"
-            },
-            {
-                "code": "03315",
-                "exceptional": true,
-                "text": "This card gains the Exceptional keyword."
-            }
-        ]
-    },
-    {
-        "id": 3,
-        "code": "003",
-        "name": "Taboo List",
-        "active": 1,
-        "date_start": "2020-10-15",
-        "cards": [
-            {
-                "code": "01020",
-                "xp": 1
-            },
-            {
-                "code": "01050",
-                "xp": 2
-            },
-            {
-                "code": "02108",
-                "xp": 2
-            },
-            {
-                "code": "02152",
-                "xp": 1
-            },
-            {
-                "code": "02187",
-                "xp": 3
-            },
-            {
-                "code": "02189",
-                "xp": 3
-            },
-            {
-                "code": "02193",
-                "xp": 1
-            },
-            {
-                "code": "02226",
-                "xp": -1
-            },
-            {
-                "code": "04305",
-                "xp": 1
-            },
-            {
-                "code": "05153",
-                "xp": 4
-            },
-            {
-                "code": "05159",
-                "xp": 3
-            },
-            {
-                "code": "05231",
-                "xp": 2
-            },
-            {
-                "code": "06021",
-                "xp": 3
-            },
-            {
-                "code": "60233",
-                "xp": 3
-            },
-            {
-                "code": "01033",
-                "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
-            },
-            {
-                "code": "02002",
-                "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
-            },
-            {
-                "code": "02111",
-                "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
-            },
-            {
-                "code": "02229",
-                "text": "At the end of its ability, this card gains: “(max once per round).”"
-            },
-            {
-                "code": "02266",
-                "text": "This card gains: “Max once per round.”"
-            },
-            {
-                "code": "03029",
-                "text": "This card’s ability now reads: “Put a level 0-3 [[Item]] asset into play from your hand.”"
-            },
-            {
-                "code": "03315",
-                "exceptional": true,
-                "text": "This card gains the Exceptional keyword."
-            },
-            {
-                "code": "04309",
-                "text": "At the end of its ability, this card gains: “Remove All In from the game.”"
-            },
-            {
-                "code": "05116",
-                "text": "This card’s [action] ability is now a [fast] ability."
-            },
-            {
-                "code": "05188",
-                "text": "This card’s [action] ability is now a [fast] ability."
-            },
-            {
-                "code": "05189",
-                "text": "This card’s [action] ability is now a [fast] ability."
-            },
-            {
-                "code": "06195",
-                "text": "This card’s [action] ability now reads: “[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.”"
-            },
-            {
-                "code": "02026",
-                "deck_limit": 0,
-                "text": "Forbidden."
-            }
-        ]
-    },
-    {
-        "id": 4,
-        "code": "004",
-        "name": "Taboo List",
-        "active": 1,
-        "date_start": "2021-06-26",
-        "cards": [
-            {
-                "code": "01020",
-                "xp": 1
-            },
-            {
-                "code": "01050",
-                "text": "This card now reads: “Disengage from each enemy engaged with you and move to a connecting location with no enemies.”"
-            },
-            {
-                "code": "02108",
-                "xp": 2
-            },
-            {
-                "code": "02152",
-                "xp": 1
-            },
-            {
-                "code": "02187",
-                "xp": 3
-            },
-            {
-                "code": "02189",
-                "xp": 3
-            },
-            {
-                "code": "02193",
-                "xp": 1
-            },
-            {
-                "code": "02226",
-                "text": "This card’s [action] ability gains: “This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.”"
-            },
-            {
-                "code": "04305",
-                "xp": 1
-            },
-            {
-                "code": "05153",
-                "xp": 4
-            },
-            {
-                "code": "05159",
-                "xp": 3
-            },
-            {
-                "code": "05230",
-                "text": "This card loses the text: “Attached asset cannot be used to attack enemies engaged with you.”"
-            },
-            {
-                "code": "05231",
-                "xp": 2
-            },
-            {
-                "code": "05324",
-                "text": "This card’s ability gains: “Remove Eucatastrophe from the game.”"
-            },
-            {
-                "code": "06022",
-                "text": "This card’s constant ability now reads: “If this card has no charges, remove it from the game.”"
-            },
-            {
-                "code": "06199",
-                "text": "This card’s ability gains: “Remove each committed copy of Three Aces from the game.”"
-            },
-            {
-                "code": "60233",
-                "xp": 3
-            },
-            {
-                "code": "07269",
-                "text": "This card’s ability gains: “Remove A Watchful Peace from the game.”"
-            },
-            {
-                "code": "07301",
-                "text": "This card’s ability gains: “Remove Hallow from the game.”"
-            },
-            {
-                "code": "01033",
-                "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
-            },
-            {
-                "code": "02002",
-                "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
-            },
-            {
-                "code": "02111",
-                "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
-            },
-            {
-                "code": "02229",
-                "text": "At the end of its ability, this card gains: “(max once per round).”"
-            },
-            {
-                "code": "02266",
-                "text": "This card gains: “Max once per round.”"
-            },
-            {
-                "code": "03029",
-                "text": "This card’s ability now reads: “Put a level 0-3 [[Item]] asset into play from your hand.”"
-            },
-            {
-                "code": "03315",
-                "exceptional": true,
-                "text": "This card gains the Exceptional keyword."
-            },
-            {
-                "code": "04309",
-                "text": "At the end of its ability, this card gains: “Remove All In from the game.”"
-            },
-            {
-                "code": "05116",
-                "text": "This card’s [action] ability is now a [fast] ability."
-            },
-            {
-                "code": "05188",
-                "text": "This card’s [action] ability is now a [fast] ability."
-            },
-            {
-                "code": "05189",
-                "text": "This card’s [action] ability is now a [fast] ability."
-            },
-            {
-                "code": "06195",
-                "text": "This card’s [action] ability now reads: “[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.”"
-            },
-            {
-                "code": "02026",
-                "deck_limit": 0,
-                "text": "Forbidden."
-            }
-        ]
-    },
-    {
-        "id": 5,
-        "code": "005",
-        "name": "Taboo List",
-        "active": 1,
-        "date_start": "2022-08-28",
-        "cards": [
-            {
-                "code": "01050",
-                "text": "This card now reads: “Disengage from each enemy engaged with you and move to a connecting location with no enemies.”"
-            },
-            {
-                "code": "02108",
-                "xp": 2
-            },
-            {
-                "code": "02152",
-                "xp": 1
-            },
-            {
-                "code": "02187",
-                "xp": 3
-            },
-            {
-                "code": "02189",
-                "xp": 3
-            },
-            {
-                "code": "02193",
-                "xp": 1
-            },
-            {
-                "code": "02226",
-                "text": "This card’s [action] ability gains: “This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.”"
-            },
-            {
-                "code": "04305",
-                "xp": 1
-            },
-            {
-                "code": "05153",
-                "text": "This card’s [fast] ability is now a [action] ability."
-            },
-            {
-                "code": "05159",
-                "xp": 3
-            },
-            {
-                "code": "05230",
-                "text": "This card loses the text: “Attached asset cannot be used to attack enemies engaged with you.”"
-            },
-            {
-                "code": "05231",
-                "xp": 2
-            },
-            {
-                "code": "05324",
-                "text": "This card’s ability gains: “Remove Eucatastrophe from the game.”"
-            },
-            {
-                "code": "06022",
-                "text": "This card’s constant ability now reads: “If this card has no charges, remove it from the game.”"
-            },
-            {
-                "code": "06199",
-                "text": "This card’s ability gains: “Remove each committed copy of Three Aces from the game.”"
-            },
-            {
-                "code": "60233",
-                "xp": 3
-            },
-            {
-                "code": "03112",
-                "xp": 3
-            },
-            {
-                "code": "07197",
-                "xp": -2
-            },
-            {
-                "code": "07308",
-                "xp": -2
-            },
-            {
-                "code": "08032",
-                "xp": 2
-            },
-            {
-                "code": "08099",
-                "xp": 2
-            },
-            {
-                "code": "07269",
-                "text": "This card’s ability gains: “Remove A Watchful Peace from the game.”"
-            },
-            {
-                "code": "07301",
-                "text": "This card’s ability gains: “Remove Hallow from the game.”"
-            },
-            {
-                "code": "01033",
-                "text": "This card’s [reaction] ability now reads: “After you successfully investigate, exhaust Dr. Milan Christopher…”"
-            },
-            {
-                "code": "02002",
-                "text": "This card’s [reaction] ability gains: “(Limit once per round.)”"
-            },
-            {
-                "code": "02111",
-                "text": "This card gains: “Group limit 2 copies of Delve Too Deep in the victory display.”"
-            },
-            {
-                "code": "02229",
-                "text": "At the end of its ability, this card gains: “(max once per round).”"
-            },
-            {
-                "code": "02266",
-                "text": "This card gains: “Max once per round.”"
-            },
-            {
-                "code": "03029",
-                "text": "This card’s ability now reads: “Put a level 0-3 [[Item]] asset into play from your hand.”"
-            },
-            {
-                "code": "03315",
-                "exceptional": true,
-                "text": "This card gains the Exceptional keyword."
-            },
-            {
-                "code": "04309",
-                "text": "At the end of its ability, this card gains: “Remove All In from the game.”"
-            },
-            {
-                "code": "05116",
-                "text": "This card’s [action] ability is now a [fast] ability."
-            },
-            {
-                "code": "05188",
-                "text": "This card’s [action] ability is now a [fast] ability."
-            },
-            {
-                "code": "05189",
-                "text": "This card’s [action] ability is now a [fast] ability."
-            },
-            {
-                "code": "06195",
-                "text": "This card’s [action] ability now reads: “[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.”"
-            },
-            {
-                "code": "02026",
-                "deck_limit": 0,
-                "text": "Forbidden."
-            },
-            {
-                "code": "02029",
-                "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
-            },
-            {
-                "code": "02269",
-                "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
-            },
-            {
-                "code": "60416",
-                "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
-            },
-            {
-                "code": "02263",
-                "text": "This card's fight ability now reads \"+1 damage\" instead of \"+2 damage.\""
-            },
-            {
-                "code": "03006",
-                "text": "This card's forced ability is moved to its reverse side, and it should now read: \"<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).\" This card's front side additionally gains: \"[action]: Switch roles. Does not provoke attacks of opportunity.\""
-            },
-            {
-                "code": "03019",
-                "text": "This card's revelation ability now reads: \"Discard 1 card in your hand or play area of your current role. Then...\""
-            },
-            {
-                "code": "04032",
-                "text": "This card now reads \"a non-[elder_sign] symbol\" instead of \"a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.\""
-            },
-            {
-                "code": "04110",
-                "text": "This card now reads \"a non-[auto_fail] symbol\" instead of \"a [skull], [cultist], [tablet], or [elder_thing] chaos token.\""
-            },
-            {
-                "code": "06002",
-                "text": "This investigator now reads: \"Deck Size: 50\" and \"Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...\"",
-                "deck_options": [
-                    {
-                        "faction": ["seeker","neutral"],
-                        "level": { "min":0,"max":5 }
-                    },
-                    {
-                        "name": "Secondary Class",
-                        "faction_select": ["mystic","rogue","survivor"],"level": { "min":0,"max":1 },
-                        "type":["event","skill"],
-                        "limit":10
-                    }
-                ],
-                "deck_requirements":{
-                    "size": 50,
-                    "card": {
-                        "06008": { "06008": "06008" },
-                        "06009": { "06009": "06009" }
-                    },
-                    "random":[
-                        {
-                            "target":"subtype",
-                            "value":"basicweakness"
-                        }
-                    ]
+  {
+      "id": 1,
+      "code": "001",
+      "name": "Taboo List",
+      "active": 1,
+      "date_start": "2019-04-20",
+      "cards": [
+          {
+              "code": "01020",
+              "xp": 2
+          },
+          {
+              "code": "01050",
+              "xp": 2
+          },
+          {
+              "code": "02152",
+              "xp": 1
+          },
+          {
+              "code": "02187",
+              "xp": 5
+          },
+          {
+              "code": "02189",
+              "xp": 5
+          },
+          {
+              "code": "02193",
+              "xp": 2
+          },
+          {
+              "code": "01033",
+              "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\""
+          },
+          {
+              "code": "02002",
+              "text": "This card's [reaction] ability gains: \"(Limit once per round.)\""
+          },
+          {
+              "code": "02111",
+              "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\""
+          },
+          {
+              "code": "02229",
+              "text": "This card gains: \"Max 1 committed per skill test.\""
+          },
+          {
+              "code": "02266",
+              "text": "This card gains: \"Max once per round.\""
+          },
+          {
+              "code": "03029",
+              "text": "This card's ability now reads: \"Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.\""
+          },
+          {
+              "code": "03315",
+              "exceptional": true,
+              "text": "This card gains the Exceptional keyword."
+          }
+      ]
+  },
+  {
+      "id": 2,
+      "code": "002",
+      "name": "Taboo List",
+      "active": 1,
+      "date_start": "2019-09-27",
+      "cards": [
+          {
+              "code": "01020",
+              "xp": 2
+          },
+          {
+              "code": "01050",
+              "xp": 2
+          },
+          {
+              "code": "02026",
+              "xp": 3
+          },
+          {
+              "code": "02152",
+              "xp": 1
+          },
+          {
+              "code": "02187",
+              "xp": 5
+          },
+          {
+              "code": "02189",
+              "xp": 5
+          },
+          {
+              "code": "02193",
+              "xp": 2
+          },
+          {
+              "code": "02226",
+              "xp": -1
+          },
+          {
+              "code": "05159",
+              "xp": 3
+          },
+          {
+              "code": "01033",
+              "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\""
+          },
+          {
+              "code": "02002",
+              "text": "This card's [reaction] ability gains: \"(Limit once per round.)\""
+          },
+          {
+              "code": "02111",
+              "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\""
+          },
+          {
+              "code": "02229",
+              "text": "This card gains: \"Max 1 committed per skill test.\""
+          },
+          {
+              "code": "02266",
+              "text": "This card gains: \"Max once per round.\""
+          },
+          {
+              "code": "03029",
+              "text": "This card's ability now reads: \"Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.\""
+          },
+          {
+              "code": "03315",
+              "exceptional": true,
+              "text": "This card gains the Exceptional keyword."
+          }
+      ]
+  },
+  {
+      "id": 3,
+      "code": "003",
+      "name": "Taboo List",
+      "active": 1,
+      "date_start": "2020-10-15",
+      "cards": [
+          {
+              "code": "01020",
+              "xp": 1
+          },
+          {
+              "code": "01050",
+              "xp": 2
+          },
+          {
+              "code": "02108",
+              "xp": 2
+          },
+          {
+              "code": "02152",
+              "xp": 1
+          },
+          {
+              "code": "02187",
+              "xp": 3
+          },
+          {
+              "code": "02189",
+              "xp": 3
+          },
+          {
+              "code": "02193",
+              "xp": 1
+          },
+          {
+              "code": "02226",
+              "xp": -1
+          },
+          {
+              "code": "04305",
+              "xp": 1
+          },
+          {
+              "code": "05153",
+              "xp": 4
+          },
+          {
+              "code": "05159",
+              "xp": 3
+          },
+          {
+              "code": "05231",
+              "xp": 2
+          },
+          {
+              "code": "06021",
+              "xp": 3
+          },
+          {
+              "code": "60233",
+              "xp": 3
+          },
+          {
+              "code": "01033",
+              "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\""
+          },
+          {
+              "code": "02002",
+              "text": "This card's [reaction] ability gains: \"(Limit once per round.)\""
+          },
+          {
+              "code": "02111",
+              "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\""
+          },
+          {
+              "code": "02229",
+              "text": "At the end of its ability, this card gains: \"(max once per round).\""
+          },
+          {
+              "code": "02266",
+              "text": "This card gains: \"Max once per round.\""
+          },
+          {
+              "code": "03029",
+              "text": "This card's ability now reads: \"Put a level 0-3 [[Item]] asset into play from your hand.\""
+          },
+          {
+              "code": "03315",
+              "exceptional": true,
+              "text": "This card gains the Exceptional keyword."
+          },
+          {
+              "code": "04309",
+              "text": "At the end of its ability, this card gains: \"Remove All In from the game.\""
+          },
+          {
+              "code": "05116",
+              "text": "This card's [action] ability is now a [fast] ability."
+          },
+          {
+              "code": "05188",
+              "text": "This card's [action] ability is now a [fast] ability."
+          },
+          {
+              "code": "05189",
+              "text": "This card's [action] ability is now a [fast] ability."
+          },
+          {
+              "code": "06195",
+              "text": "This card's [action] ability now reads: \"[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.\""
+          },
+          {
+              "code": "02026",
+              "deck_limit": 0,
+              "text": "Forbidden."
+          }
+      ]
+  },
+  {
+      "id": 4,
+      "code": "004",
+      "name": "Taboo List",
+      "active": 1,
+      "date_start": "2021-06-28",
+      "cards": [
+          {
+              "code": "01020",
+              "xp": 1
+          },
+          {
+              "code": "01050",
+              "text": "This card now reads: \"Disengage from each enemy engaged with you and move to a connecting location with no enemies.\""
+          },
+          {
+              "code": "02108",
+              "xp": 2
+          },
+          {
+              "code": "02152",
+              "xp": 1
+          },
+          {
+              "code": "02187",
+              "xp": 3
+          },
+          {
+              "code": "02189",
+              "xp": 3
+          },
+          {
+              "code": "02193",
+              "xp": 1
+          },
+          {
+              "code": "02226",
+              "text": "This card's [action] ability gains: \"This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.\""
+          },
+          {
+              "code": "04305",
+              "xp": 1
+          },
+          {
+              "code": "05153",
+              "xp": 4
+          },
+          {
+              "code": "05159",
+              "xp": 3
+          },
+          {
+              "code": "05230",
+              "text": "This card loses the text: \"Attached asset cannot be used to attack enemies engaged with you.\""
+          },
+          {
+              "code": "05231",
+              "xp": 2
+          },
+          {
+              "code": "05324",
+              "text": "This card's ability gains: \"Remove Eucatastrophe from the game.\""
+          },
+          {
+              "code": "06022",
+              "text": "This card's constant ability now reads: \"If this card has no charges, remove it from the game.\""
+          },
+          {
+              "code": "06199",
+              "text": "This card's ability gains: \"Remove each committed copy of Three Aces from the game.\""
+          },
+          {
+              "code": "60233",
+              "xp": 3
+          },
+          {
+              "code": "07269",
+              "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\""
+          },
+          {
+              "code": "07301",
+              "text": "This card's ability gains: \"Remove Hallow from the game.\""
+          },
+          {
+              "code": "01033",
+              "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\""
+          },
+          {
+              "code": "02002",
+              "text": "This card's [reaction] ability gains: \"(Limit once per round.)\""
+          },
+          {
+              "code": "02111",
+              "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\""
+          },
+          {
+              "code": "02229",
+              "text": "At the end of its ability, this card gains: \"(max once per round).\""
+          },
+          {
+              "code": "02266",
+              "text": "This card gains: \"Max once per round.\""
+          },
+          {
+              "code": "03029",
+              "text": "This card's ability now reads: \"Put a level 0-3 [[Item]] asset into play from your hand.\""
+          },
+          {
+              "code": "03315",
+              "exceptional": true,
+              "text": "This card gains the Exceptional keyword."
+          },
+          {
+              "code": "04309",
+              "text": "At the end of its ability, this card gains: \"Remove All In from the game.\""
+          },
+          {
+              "code": "05116",
+              "text": "This card's [action] ability is now a [fast] ability."
+          },
+          {
+              "code": "05188",
+              "text": "This card's [action] ability is now a [fast] ability."
+          },
+          {
+              "code": "05189",
+              "text": "This card's [action] ability is now a [fast] ability."
+          },
+          {
+              "code": "06195",
+              "text": "This card's [action] ability now reads: \"[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.\""
+          },
+          {
+              "code": "02026",
+              "deck_limit": 0,
+              "text": "Forbidden."
+          }
+      ]
+  },
+  {
+      "id": 5,
+      "code": "005",
+      "name": "Taboo List",
+      "active": 1,
+      "date_start": "2022-08-26",
+      "cards": [
+          {
+              "code": "01050",
+              "text": "This card now reads: \"Disengage from each enemy engaged with you and move to a connecting location with no enemies.\""
+          },
+          {
+              "code": "02108",
+              "xp": 2
+          },
+          {
+              "code": "02152",
+              "xp": 1
+          },
+          {
+              "code": "02187",
+              "xp": 3
+          },
+          {
+              "code": "02189",
+              "xp": 3
+          },
+          {
+              "code": "02193",
+              "xp": 1
+          },
+          {
+              "code": "02226",
+              "text": "This card's [action] ability gains: \"This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.\""
+          },
+          {
+              "code": "04305",
+              "xp": 1
+          },
+          {
+              "code": "05153",
+              "text": "This card's [fast] ability is now a [action] ability."
+          },
+          {
+              "code": "05159",
+              "xp": 3
+          },
+          {
+              "code": "05230",
+              "text": "This card loses the text: \"Attached asset cannot be used to attack enemies engaged with you.\""
+          },
+          {
+              "code": "05231",
+              "xp": 2
+          },
+          {
+              "code": "05324",
+              "text": "This card's ability gains: \"Remove Eucatastrophe from the game.\""
+          },
+          {
+              "code": "06022",
+              "text": "This card's constant ability now reads: \"If this card has no charges, remove it from the game.\""
+          },
+          {
+              "code": "06199",
+              "text": "This card's ability gains: \"Remove each committed copy of Three Aces from the game.\""
+          },
+          {
+              "code": "60233",
+              "xp": 3
+          },
+          {
+              "code": "03112",
+              "xp": 3
+          },
+          {
+              "code": "07197",
+              "xp": -2
+          },
+          {
+              "code": "07308",
+              "xp": -2
+          },
+          {
+              "code": "08032",
+              "xp": 2
+          },
+          {
+              "code": "08099",
+              "xp": 2
+          },
+          {
+              "code": "07269",
+              "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\""
+          },
+          {
+              "code": "07301",
+              "text": "This card's ability gains: \"Remove Hallow from the game.\""
+          },
+          {
+              "code": "01033",
+              "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\""
+          },
+          {
+              "code": "02002",
+              "text": "This card's [reaction] ability gains: \"(Limit once per round.)\""
+          },
+          {
+              "code": "02111",
+              "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\""
+          },
+          {
+              "code": "02229",
+              "text": "At the end of its ability, this card gains: \"(max once per round).\""
+          },
+          {
+              "code": "02266",
+              "text": "This card gains: \"Max once per round.\""
+          },
+          {
+              "code": "03029",
+              "text": "This card's ability now reads: \"Put a level 0-3 [[Item]] asset into play from your hand.\""
+          },
+          {
+              "code": "03315",
+              "exceptional": true,
+              "text": "This card gains the Exceptional keyword."
+          },
+          {
+              "code": "04309",
+              "text": "At the end of its ability, this card gains: \"Remove All In from the game.\""
+          },
+          {
+              "code": "05116",
+              "text": "This card's [action] ability is now a [fast] ability."
+          },
+          {
+              "code": "05188",
+              "text": "This card's [action] ability is now a [fast] ability."
+          },
+          {
+              "code": "05189",
+              "text": "This card's [action] ability is now a [fast] ability."
+          },
+          {
+              "code": "06195",
+              "text": "This card's [action] ability now reads: \"[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.\""
+          },
+          {
+              "code": "02026",
+              "deck_limit": 0,
+              "text": "Forbidden."
+          },
+          {
+              "code": "02029",
+              "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
+          },
+          {
+              "code": "02269",
+              "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
+          },
+          {
+              "code": "60416",
+              "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
+          },
+          {
+              "code": "02263",
+              "text": "This card's fight ability now reads \"+1 damage\" instead of \"+2 damage.\""
+          },
+          {
+              "code": "03006",
+              "text": "This card's forced ability is moved to its reverse side, and it should now read: \"<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).\"\nThis card's front side additionally gains: \"[action]: Switch roles. Does not provoke attacks of opportunity.\""
+          },
+          {
+              "code": "03019",
+              "text": "This card's revelation ability now reads: \"Discard 1 card in your hand or play area of your current role. Then...\""
+          },
+          {
+              "code": "04032",
+              "text": "This card now reads \"a non-[elder_sign] symbol\" instead of \"a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.\""
+          },
+          {
+              "code": "04110",
+              "text": "This card now reads \"a non-[auto_fail] symbol\" instead of \"a [skull], [cultist], [tablet], or [elder_thing] chaos token.\""
+          },
+          {
+              "code": "06002",
+              "text": "This investigator now reads: \"Deck Size: 50\" and \"Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...\"",
+              "deck_options": [
+                  {
+                      "faction": ["seeker","neutral"],
+                      "level": { "min":0,"max":5 }
+                  },
+                  {
+                      "name": "Secondary Class",
+                      "faction_select": ["mystic","rogue","survivor"],"level": { "min":0,"max":1 },
+                      "type":["event","skill"],
+                      "limit":10
+                  }
+              ],
+              "deck_requirements":{
+                  "size": 50,
+                  "card": {
+                      "06008": { "06008": "06008" },
+                      "06009": { "06009": "06009" }
+                  },
+                  "random":[
+                      {
+                          "target":"subtype",
+                          "value":"basicweakness"
+                      }
+                  ]
+              }
+          },
+          {
+              "code": "07268",
+              "exceptional": false,
+              "deck_limit": 1,
+              "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\""
+          },
+          {
+              "code": "08045",
+              "text": "This card's constant ability now reads: \"...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\""
+          },
+          {
+              "code": "08055",
+              "text": "This card gains: \"Max once per round.\""
+          },
+          {
+              "code": "08098",
+              "text": "This card should read \"following basic actions\" instead of \"following actions.\""
+          },
+          {
+              "code": "08100",
+              "text": "This card should read \"following basic actions\" instead of \"following actions.\""
+          },
+          {
+              "code": "08093",
+              "text": "This card's parenthetical now reads: \"...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)\""
+          }
+      ]
+  },
+  {
+    "id": 6,
+    "code": "006",
+    "name": "Taboo List",
+    "active": 1,
+    "date_start": "2023-08-30",
+    "cards": [
+        {
+            "code": "01050",
+            "text": "This card now reads: \"Disengage from each enemy engaged with you and move to a connecting location with no enemies.\"",
+            "replacement_text": "Mutated. Fast. Play only during your turn.\nDisengage from each enemy engaged with you and move to a connecting location with no enemies."
+        },
+        {
+            "code": "02108",
+            "xp": 1
+        },
+        {
+            "code": "02226",
+            "text": "This card's [action] ability gains: \"This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.\"",
+            "replacement_text": "Mutated. Uses (3 ammo).\n[action] Spend 1 ammo: Fight. You get +3 [combat] and deal +2 damage for this attack. This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords. Cannot be used to attack enemies engaged with you."
+        },
+        {
+            "code": "04305",
+            "xp": 1
+        },
+        {
+            "code": "05153",
+            "text": "This card's [fast] ability is now a [action] ability.",
+            "replacement_text": "Mutated. Uses (3 secrets).\n[action] Exhaust Mr. \"Rook\" and spend 1 secret: Search the top 3, 6, or 9 cards of your deck for any card and draw it. If at least 1 weakness is among the searched cards, draw 1 of them, as well. Shuffle your deck."
+        },
+        {
+            "code": "05159",
+            "xp": 3
+        },
+        {
+            "code": "05230",
+            "text": "This card loses the text: \"Attached asset cannot be used to attack enemies engaged with you.\"",
+            "replacement_text": "Mutated. Fast. Attach to a [[Firearm]] asset you control that takes up two hand slots.\nWhen you perform a <b>Fight</b> action using attached asset, if you are engaged with no enemies, exhaust Telecopic Sight: This attack can target a non-[[Elite]] enemy at a connecting location. Ignore the aloof and retaliate keywords for this attack."
+        },
+        {
+            "code": "05231",
+            "xp": 2
+        },
+        {
+            "code": "05324",
+            "text": "This card's ability gains: \"Remove Eucatastrophe from the game.\"",
+            "replacement_text": "Mutated. Fast. Play when you reveal a chaos token that would reduce your skill value to 0 during a skill test (including the [auto_fail] token).\nCancel that token and treat it as an [elder_sign] token, instead. Remove Eucatastrophe from the game."
+        },
+        {
+            "code": "06022",
+            "text": "This card's constant ability now reads: \"If this card has no charges, remove it from the game.\"",
+            "replacement_text": "Mutated. Bonded (Segment of Onyx). Uses (3 charges). If this card has no charges, remove it from the game.\n[fast] Exhaust Pendant of the Queen and spend 1 charge: Choose a revealed location and select one - move to that location, discover 1 clue at that location, or automatically evade an enemy at that location."
+        },
+        {
+            "code": "06199",
+            "text": "This card's ability gains: \"Remove each committed copy of Three Aces from the game.\"",
+            "replacement_text": "Mutated. Myriad.\nIf you commit 3 copies of Three Aces to a skill test, that test automatically succeeds <i>(do not reveal chaos tokens from the chaos bag)</i>. Then draw 3 cards and gain 3 resources (max once per test). Remove each committed copy of Three Aces from the game."
+        },
+        {
+            "code": "60318",
+            "text": "Instead of \"Shuffle each weakness that was discarded…\", this card's ability now reads: \"After this skill test resolves, draw each weakness discarded by this effect.\"",
+            "replacement_text": "Mutated. After you commit Daredevil to a skill test, discard cards from the top of your deck until you discard a [rogue] skill you can commit to this test. Commit it. After this skill test resolves, draw each weakness discarded by this effect."
+        },
+        {
+            "code": "07003",
+            "text": "This card's [reaction] ability now reads: \"After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)",
+            "replacement_text": "Mutated.\n[reaction] After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)\n[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead."
+
+        },
+        {
+            "code": "07122",
+            "text": "This card's [reaction] ability now reads: \"When you resolve a [bless] token during a skill test…",
+            "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\nWhen you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+        },
+        {
+            "code": "60233",
+            "xp": 3
+        },
+        {
+            "code": "07197",
+            "xp": -2
+        },
+        {
+          "code": "03112",
+          "text": "This card's [fast] ability now reads: \"…Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources).\"",
+          "replacement_text": "Mutated. While David Renfield has at least 1 doom on him, you get +1 [willpower].\n[fast] Exhaust David Renfield: You may place 1 doom on David Renfield. Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources)."
+        },
+        {
+            "code": "07308",
+            "xp": -2
+        },
+        {
+            "code": "60327",
+            "xp": -1
+        },
+        {
+            "code": "08099",
+            "xp": 2
+        },
+        {
+            "code": "09022",
+            "customization_options": [
+              {
+                  "xp": 1,
+                  "cost": -1,
+                  "real_traits": "Item. Weapon. Melee. Relic.",
+                  "text_change": "trait"
+              },
+              {
+                  "xp": 1,
+                  "real_text": "- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.",
+                  "tags": "hd.hh.",
+                  "text_change": "append"
+              },
+              {
+                  "xp": 1,
+                  "text_change": "append"
+              },
+              {
+                  "xp": 2,
+                  "text_change": "append"
+              },
+              {
+                  "xp": 1,
+                  "text_change": "append"
+              },
+              {
+                  "xp": 3,
+                  "text_change": "insert",
+                  "position": 1
+              },
+              {
+                  "xp": 3,
+                  "text_change": "replace",
+                  "position": 0
+              },
+              {
+                  "xp": 4,
+                  "text_change": "replace",
+                  "position": 1
+              }
+          ],
+          "customization_text": "□ <b>Heirloom.</b> This asset gets -1 cost and gains the [[Relic]] trait.\n□ <b>Inscription of Glory.</b> Add this inscription: \"- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.\"\n□ <b>Inscription of the Elders.</b> Add this inscription: \"- <i>Elders</i> - If this attack succeeds by an amount equal to or greater than your location's shroud, discover 1 clue at your location.\"\n□□ <b>Inscription of the Hunt.</b> Add this inscription: \"- <i>Hunt</i> - Immediately move to a connecting location or engage an enemy at your location.\"\n□ <b>Inscription of Fury.</b> Add this inscription: \"- <i>Fury</i> - If this attack is successful, in addition to its standard damage, deal 1 damage to each other enemy engaged with you.\"\n□□□ <b>Ancient Power.</b> You may imbue the same inscription up to three times.\n□□□ <b>Saga.</b> Replenish 2 of Runic Axe's charges at the start of each round, instead of only 1.\n□□□□ <b>Scriptweaver.</b> For every charge spent, you may imbue the axe with up to two different inscriptions.",
+          "text": "Upgrade – <b>Inscription of the Hunt:</b> +1 experience."
+        },
+        {
+          "code": "09108",
+          "xp": 2
+        },
+        {
+            "code": "07269",
+            "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\"",
+            "replacement_text": "As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nMutated. Fast. Play when the \"draw encounter cards\" step of the mythos phase would begin. Skip this step of the mythos phase. Remove A Watchful Peace from the game."
+        },
+        {
+            "code": "07301",
+            "text": "This card's ability gains: \"Remove Hallow from the game.\"",
+            "replacement_text": "As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nMutated.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        },
+        {
+            "code": "08019",
+            "text": "This card's <b>Forced</b> effect now reads: \"<b>Forced</b> – When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets…\"",
+            "replacement_text": "Mutated. Permanent. Limit 1 per deck. Purchase at deck creation.\n<b>Forced</b> - When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets from your hand, reducing the cost of each by 1. During this turn, you have 3 fewer actions to take."
+        },
+        {
+            "code": "08032",
+            "text": "This card's ability gains: \"(Max twice per game.)\"",
+            "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After Jeremiah Kirby enters play, choose \"even\" or \"odd:\" Reveal the top 5 cards of your deck. Draw each card with a cost that matches the chosen option. Shuffle the remaining cards into your deck. (Max twice per game.)"
+        },
+        {
+            "code": "01033",
+            "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\"",
+            "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After you successfully investigate, exhaust Dr. Milan Christopher: Gain 1 resource."
+        },
+        {
+            "code": "02002",
+            "text": "This card's [reaction] ability gains: \"(Limit once per round.)\"",
+            "replacement_text": "Mutated.\n[reaction] After you succeed at a skill test by 2 or more while investigating: Discover 1 clue at your location. (Limit once per round.)\n[elder_sign] effect: +2. You may instead choose to automatically fail this skill test to draw 3 cards."
+        },
+        {
+            "code": "02111",
+            "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\"",
+            "replacement_text": "Mutated.\nIn player order, each investigator draws 1 card from the top of the encounter deck. Then, add Delve Too Deep to the victory display.\nGroup limit 2 copies of Delve Too Deep in the victory display."
+        },
+        {
+            "code": "02229",
+            "text": "At the end of its ability, this card gains: \"(max once per round).\"",
+            "replacement_text": "Mutated.\nIf this skill test is successful by 2 or more, after it resolves, you may immediately take an action as if it were your turn (this action does not count toward the number of actions you can take each turn). (Max once per round.)"
+        },
+        {
+            "code": "02266",
+            "text": "This card gains: \"Max once per round.\"",
+            "replacement_text": "Mutated. Exceptional. Fast. Play only during your turn.\nYou may take an additional 3 actions this turn. (Max once per round.)"
+        },
+        {
+            "code": "03029",
+            "text": "This card's ability now reads: \"Put a level 0-3 [[Item]] asset into play from your hand.\"",
+            "replacement_text": "Mutated. Fast. Play only during your turn.\nPut a level 0-3 [[Item]] asset into play from your hand. At the end of your turn, if that asset is still in play, return it to your hand."
+        },
+        {
+            "code": "03315",
+            "exceptional": true,
+            "text": "This card gains the Exceptional keyword.",
+            "replacement_text": "Mutated. Exceptional. You get +1 to each of your skills for each horror on Key of Ys.\n<b>Forced</b> - When any amount of horror would be placed on you: Place 1 of that horror on Key of Ys.\n<b>Forced</b> - When Key of Ys leaves play: Discard the top 10 cards of your deck."
+        },
+        {
+            "code": "04309",
+            "text": "At the end of its ability, this card gains: \"Remove All In from the game.\"",
+            "replacement_text": "Mutated.\nMax 1 committed per skill test.\nIf this test is successful, draw 1 card for each point you succeeded by, to a maximum of 5. Shuffle each weakness drawn by this effect back into your deck without resolving it. Remove All In from the game."
+        },
+        {
+            "code": "05116",
+            "text": "This card's [action] ability is now a [fast] ability.",
+            "replacement_text": "Mutated. Uses (3 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the bottom card of any investigator's deck or the encounter deck. Then, either discard that card, add it to its owner's hand, place it on the bottom of its deck, or place it on the top of its deck."
+        },
+        {
+            "code": "05188",
+            "text": "This card's [action] ability is now a [fast] ability.",
+            "replacement_text": "Mutated. Uses (3 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the bottom 3 cards of any investigator's deck or the encounter deck. You may discard 1 of those cards. You may add 1 of those cards to its owner's hand. Place the rest of those cards on either the top or bottom of their deck, in any order."
+        },
+        {
+            "code": "05189",
+            "text": "This card's [action] ability is now a [fast] ability.",
+            "replacement_text": "Mutated. Uses (4 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the top or bottom card of any investigator's deck or the encounter deck. Then, either discard that card, add it to its owner's hand, place it on the bottom of its deck, or place it on top of its deck."
+        },
+        {
+          "code": "05020",
+          "text": "This card's ability now reads \"<b>Parley.</b> Choose a non-[[Elite]] enemy at your location…\"",
+          "replacement_text": "Mutated.\n<b>Parley.</b> Choose a non-[[Elite]] enemy at your location and test [combat] (3). This test gets +X difficulty, where X is the chosen enemy's damage value. If you succeed, discover 1 clue at your location and 1 clue at any other location."
+        },
+        {
+            "code": "06195",
+            "text": "This card's [action] ability now reads: \"[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.\"",
+            "replacement_text": "Mutated. Uses (5 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack.  If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage."
+        },
+        {
+            "code": "02026",
+            "deck_limit": 0,
+            "text": "Forbidden.",
+            "replacement_text": "Mutated. Forbidden.\nMax 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice."
+        },
+        {
+            "code": "02029",
+            "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
+            "replacement_text": "Mutated.\n[reaction] After a symbol is revealed during a test you are performing: You get +1 skill value for this test."
+        },
+        {
+            "code": "02153",
+            "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
+            "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal the attacking enemy's damage to itself."
+        },
+        {
+            "code": "02269",
+            "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
+            "replacement_text": "Mutated.\nAfter a symbol is revealed during a skill test at your location, exhaust Jewel of Aureolus: Draw 1 card or gain 2 resources."
+        },
+        {
+            "code": "60416",
+            "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
+            "replacement_text": "Mutated.\nGain 1 resource. Reveal 3 random tokens from the chaos bag. For each symbol revealed, gain an additional 2 resources."
+        },
+        {
+            "code": "05113",
+            "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
+            "replacement_text": "Mutated.\n<b>Evade.</b> Use only on a non-[[Elite]] enemy. This evasion attempt uses [willpower] instead of [agility]. If you succeed, move the enemy just evaded to any location in play. If you succeed and a symbol was revealed during this evasion attempt, that enemy does not ready during the next upkeep phase."
+        },
+        {
+            "code": "02263",
+            "text": "This card's fight ability now reads \"+1 damage\" instead of \"+2 damage.\"",
+            "replacement_text": "Mutated. Researched. Uses (3 supplies).\n[action] Spend 1 supply: Fight. Attack with a base [combat] skill of 6. This attack deals +1 damage."
+        },
+        {
+            "code": "03006",
+            "text": "This card's forced ability is moved to its reverse side, and it should now read: \"<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).\"\nThis card's front side additionally gains: \"[action]: Switch roles. Does not provoke attacks of opportunity.\"",
+            "replacement_text": "Mutated.\nYou can only play, commit, or trigger abilities on Neutral cards or cards of your role.\n[free]: Switch your role. (Limit once per round.)\n[action]: Switch roles. Does not provoke attacks of opportunity.\n[elder_sign] effect: +2. You may switch roles.",
+            "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 35.\n<b>Deckbuilding Options</b>: Survivor, Guardian, Seeker, Rogue, and Mystic cards ([survivor], [guardian], [seeker], [rogue], and [mystic]) level 0-3, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 2 copies of Improvisation, 2 copies of Crisis of Identity, 1 random basic weakness.\n<b>Additional Requirements</b>: Your deck must include at least 7 cards each from 3 different classes ([survivor], [guardian], [seeker], [rogue], or [mystic]).\n<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral)."
+        },
+        {
+            "code": "03019",
+            "text": "This card's revelation ability now reads: \"Discard 1 card in your hand or play area of your current role. Then...\"",
+            "replacement_text": "Mutated.\n<b>Revelation</b> - Discard 1 card in your hand or play area of your current role. Then, discard the top card of your deck. Switch your role to the class of the discarded card (if the discarded card is a weakness, switch your role to neutral)."
+        },
+        {
+            "code": "04032",
+            "text": "This card now reads \"a non-[elder_sign] symbol\" instead of \"a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.\"",
+            "replacement_text": "Mutated. Fast. Play when you would reveal a chaos token.\nReveal 5 chaos tokens instead of 1. Choose one of those tokens with a non-[elder_sign] symbol to resolve, and ignore the rest. (If no such token is revealed, choose any one of those tokens to resolve, and ignore the rest.)"
+        },
+        {
+          "code": "04105",
+          "text": "This card's ability now reads \"<b>Parley.</b> Choose a non-weakness enemy at your location…\"",
+          "replacement_text": "Mutated.\n<b>Parley.</b> Choose a non-weakness enemy at your location and test [intellect] (3). This test gets +X difficulty, where X is that enemy's horror value. If you succeed, shuffle the chosen enemy into the encounter deck. If the chosen enemy is [[Elite]], automatically evade it instead."
+        },
+        {
+            "code": "04110",
+            "text": "This card now reads \"a non-[auto_fail] symbol\" instead of \"a [skull], [cultist], [tablet], or [elder_thing] chaos token.\"",
+            "replacement_text": "Mutated. Fast. Play when a non-[auto_fail] symbol is revealed during a skill test at your location.\nCancel that chaos token. <i>(Do not reveal a new chaos token to replace it.)</i>"
+        },
+        {
+            "code": "06002",
+            "text": "This investigator now reads: \"Deck Size: 50\" and \"Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...\"",
+            "deck_options": [
+                {
+                    "faction": ["seeker","neutral"],
+                    "level": { "min":0,"max":5 }
+                },
+                {
+                    "name": "Secondary Class",
+                    "faction_select": ["mystic","rogue","survivor"],"level": { "min":0,"max":1 },
+                    "type":["event","skill"],
+                    "limit":10
                 }
+            ],
+            "deck_requirements":{
+                "size": 50,
+                "card": {
+                    "06008": { "06008": "06008" },
+                    "06009": { "06009": "06009" }
+                },
+                "random":[
+                    {
+                        "target":"subtype",
+                        "value":"basicweakness"
+                    }
+                ]
             },
-            {
-                "code": "07268",
-                "exceptional": false,
-                "deck_limit": 1,
-                "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\""
-            },
-            {
-                "code": "08045",
-                "text": "This card's constant ability now reads: \"...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\""
-            },
-            {
-                "code": "08055",
-                "text": "This card gains: “Max once per round.”"
-            },
-            {
-                "code": "08098",
-                "text": "This card should read \"following basic actions\" instead of \"following actions.\""
-            },
-            {
-                "code": "08100",
-                "text": "This card should read \"following basic actions\" instead of \"following actions.\""
-            },
-            {
-                "code": "08093",
-                "text": "This card's parenthetical now reads: \"...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)\""
-            }
-        ]
-    }
+            "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 50.\n<b>Secondary Class Choice</b>: At deck creation, choose Mystic ([mystic]), Rogue ([rogue]), or Survivor ([survivor]).\n<b>Deckbuilding Options</b>: Seeker cards ([seeker]) level 0-5, Neutral cards level 0-5, up to 10 level 0-1 events and/or skills of your chosen secondary class.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 3 copies of Occult Evidence, Shocking Discovery, 1 random basic weakness."
+        },
+        {
+            "code": "07268",
+            "exceptional": false,
+            "deck_limit": 1,
+            "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\"",
+            "replacement_text": "Mutated. Limited 1 per deck. Seal (up to X [curse]).\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        },
+        {
+            "code": "08045",
+            "text": "This card's constant ability now reads: \"...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\"",
+            "replacement_text": "Mutated.\nWhile you are not at the locus, you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\n[reaction]After Prophesiae Profana enters play: Choose a revealed location. That location is \"the locus\" until Prophesiae Profana leaves play.\n[action]: Move any investigator to the locus."
+        },
+        {
+            "code": "08055",
+            "text": "This card gains: \"Max once per round.\"",
+            "replacement_text": "Mutated. Fast. Play at the start of the investigation phase. Max once per round.\nOne at a time, reveal cards from the top of any investigator deck(s) until exactly 5 cards have been revealed. Set those cards aside, out of play. While set aside, any investigator may play any of those cards as if they were in their hand. At the start of the next investigation phase, shuffle each of those cards still set aside into its owner's deck."
+        },
+        {
+            "code": "08076",
+            "text": "This card's ability gains \"(Max twice per game.)\"",
+            "replacement_text": "Mutated.\nExile a level 0-5 card in your hand. Discover 2 clues at your location. If the exiled card was level 2 or higher, remove 1 doom from the current agenda. Exile Burn After Reading. (Max twice per game.)\n<b>Card designed by the Council-in-Exile at Gen Con 2020</b>"
+        },
+        {
+            "code": "08098",
+            "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
+            "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take one of the following basic actions (move, evade, or investigate)."
+        },
+        {
+            "code": "08100",
+            "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
+            "replacement_text": "Mutated. Uses (3 secrets).\n[fast]During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two of the following basic actions, in any order (move, evade, or investigate)."
+        },
+        {
+            "code": "08093",
+            "text": "This card's parenthetical now reads: \"...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)\"",
+            "replacement_text": "Mutated.\n[action]: <b>Fight.</b> Add your [willpower] to your skill value for this attack. You deal +1 damage for this attack. If you succeed and the enemy is non-[[Elite]], you may move it one location away from you. (If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and may move the enemy up to two locations away from you.)"
+        },
+        {
+            "code": "09045",
+            "text": "This card's second ability gains: \"(max 3 evidence spent per round).\"",
+            "replacement_text": "Mutated.\n[reaction] After a player card ability places 1 or more of your clues on your location: Place that many resources on Research Notes, as evidence.\n[action]: Test [intellect] (0). For each point you succeed by, you may spend 1 evidence to discover 1 clue at your location (max 3 evidence spent per round)."
+        },
+        {
+            "code": "09081",
+            "text": "This card’s text box now reads: \"[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command) – \"Go.\" This enemy moves once in a direction of your choice.\"\nThis card’s customizable sheet loses the \"Mercy\" ability and gains\"☐Cower. Add the command: \"- ‘Cower.’ This enemy exhausts.\"",
+            "customization_options": [
+              {
+                  "xp": 1,
+                  "text_change": "append"
+              },
+              {
+                  "xp": 1,
+                  "real_text": "- <i>'Cower.'</i> This enemy exhausts.",
+                  "text_change": "append"
+              },
+              {
+                  "xp": 1,
+                  "text_change": "append"
+              },
+              {
+                  "xp": 1,
+                  "text_change": "append"
+              },
+              {
+                  "xp": 2,
+                  "text_change": "insert",
+                  "position": 1
+              },
+              {
+                  "xp": 3,
+                  "text_change": "insert",
+                  "position": 1
+              },
+              {
+                  "xp": 3,
+                  "text_change": "replace",
+                  "position": 2
+              },
+              {
+                  "xp": 3,
+                  "deck_limit": 3,
+                  "text_change": "insert",
+                  "position": 1
+              }
+          ],
+          "customization_change": "- <i>\"Betray.\"</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>\"Confess.\"</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>\"Distract.\"</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Give it up to two different commands (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
+          "customization_text": "□ <b>Betray.</b> Add the command: \"- <i>'Betray.'</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\"\n□ <b>Cower.</b> Add the command: \"- <i>'Cower.'</i> This enemy exhausts.\"\n□ <b>Confess.</b> Add the command: \"- <i>'Confess.'</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\"\n□ <b>Distract.</b> Add the command: \"- <i>'Distract.'</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\"\n□□ <b>Greater Control.</b> Power Word gains \"[fast]: Return Power Word to your hand.\"\n□□□ <b>Bonded.</b> You may activate the parley ability on Power Word from up to one location away from the attached enemy.\n□□□ <b>Tonguetwister.</b> When you parley with Power Word, you may give up to two different commands.\n□□□ <b>Thrice Spoken.</b> You may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
+          "replacement_text": "Mutated.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        }
+    ]
+  }
 ]

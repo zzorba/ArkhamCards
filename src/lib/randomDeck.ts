@@ -25,7 +25,6 @@ function randomAllowedCardHelper(
   while (true) {
     if (card && card.xp !== undefined) {
       validation.slots[code] = (validation.slots[code] || 0) + 1;
-      const invalidCards: Card[] = validation.getInvalidCards([...deckCards, card]);
       const problem = validation.getProblem([...deckCards, card], true);
 
       // Put it back the way it was.
@@ -36,8 +35,7 @@ function randomAllowedCardHelper(
 
       if (
         (!problem || problem.reason === TOO_FEW_CARDS) &&
-        card.collectionDeckLimit(in_collection, ignore_collection) > (validation.slots[card.code] || 0) &&
-        !invalidCards.length
+        card.collectionDeckLimit(in_collection, ignore_collection) > (validation.slots[card.code] || 0)
       ) {
         // Found a good card
         break;
@@ -68,12 +66,16 @@ export function getDraftCards(
   cards: CardsMap,
   in_collection: { [pack_code: string]: boolean },
   ignore_collection: boolean,
-  listSeperator: string
+  listSeperator: string,
+  allDeckCards: CardsMap | undefined
 ): [Card[], string[]] {
   const validation = new DeckValidation(investigatorBack, slots, meta);
   const draftCards: Card[] = [];
   let possibleCodes: string[] = possibleCards;
-  const deckCards: Card[] = getCards(cards, slots, {}, listSeperator, {});
+  const deckCards: Card[] = getCards({
+    ...cards,
+    ...allDeckCards,
+  }, slots, {}, listSeperator, {});
   while (draftCards.length < count) {
     const [draftCard, newPossibleCodes] = randomAllowedCardHelper(
       validation,
@@ -108,7 +110,7 @@ export default function randomDeck(
   const deckCards: Card[] = [];
   let localPossibleCards: string[] = [...possibleCodes];
   const slots: Slots = {};
-  const validation = new DeckValidation(investigatorBack, slots, meta);
+  const validation = new DeckValidation(investigatorBack, slots, meta, { random_deck: true });
   let deckSize = 0;
   while (deckSize < validation.getDeckSize()) {
     const [card, newPossibleCards] = randomAllowedCardHelper(validation, localPossibleCards, cards, deckCards, in_collection, ignore_collection);

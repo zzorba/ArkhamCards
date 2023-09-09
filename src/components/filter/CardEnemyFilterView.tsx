@@ -46,6 +46,7 @@ const CardEnemyFilterView = (props: FilterFunctionProps & NavigationProps) => {
       'enemyPatrol',
       'enemyVictory',
       'enemyVengeance',
+      'enemyConcealed',
     ],
   });
   const {
@@ -80,6 +81,7 @@ const CardEnemyFilterView = (props: FilterFunctionProps & NavigationProps) => {
       { label: t`Parley`, setting: 'enemyParley' },
       { label: t`Victory`, setting: 'enemyVictory' },
       { label: t`Vengeance`, setting: 'enemyVengeance' },
+      { label: t`Concealed`, setting: 'enemyConcealed' },
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);

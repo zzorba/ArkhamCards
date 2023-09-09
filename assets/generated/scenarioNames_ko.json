@@ -28,6 +28,10 @@
     "name": "공포의 바다 건너"
   },
   {
+    "id": "africa_is_watching",
+    "name": "Africa is Watching"
+  },
+  {
     "id": "against_the_wendigo",
     "name": "웬디고에 맞서다"
   },
@@ -110,6 +114,10 @@
   {
     "id": "blob_that_ate_everything",
     "name": "모든 것을 집어삼키는 멍울"
+  },
+  {
+    "id": "blob_that_ate_everything_else",
+    "name": "The Blob That Ate Everything Else"
   },
   {
     "id": "blood_from_stones",
@@ -544,6 +552,10 @@
     "name": "평온한 밤"
   },
   {
+    "id": "return_to_a_light_in_the_fog",
+    "name": "돌아온 안개 속 한 줄기 빛"
+  },
+  {
     "id": "return_to_a_phantom_of_truth",
     "name": "돌아온 진실의 망령"
   },
@@ -566,6 +578,10 @@
   {
     "id": "return_to_curtain_call",
     "name": "돌아온 커튼콜"
+  },
+  {
+    "id": "return_to_devil_reef",
+    "name": "돌아온 악마의 암초"
   },
   {
     "id": "return_to_dim_carcosa",
@@ -596,8 +612,20 @@
     "name": "돌아온 고대 문명의 심장부(2부)"
   },
   {
+    "id": "return_to_horror_in_high_gear",
+    "name": "돌아온 공포의 추격전"
+  },
+  {
     "id": "return_to_in_the_clutches_of_chaos",
     "name": "돌아온 혼돈의 손아귀에서"
+  },
+  {
+    "id": "return_to_in_too_deep",
+    "name": "돌아온 너무나 깊은 수렁"
+  },
+  {
+    "id": "return_to_into_the_maelstrom",
+    "name": "돌아온 몰아치는 소용돌이 속으로"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -636,6 +664,10 @@
     "name": "돌아온 도박장은 언제나 이긴다"
   },
   {
+    "id": "return_to_the_lair_of_dagon",
+    "name": "돌아온 데이곤의 침소"
+  },
+  {
     "id": "return_to_the_last_king",
     "name": "돌아온 마지막 왕"
   },
@@ -652,6 +684,10 @@
     "name": "돌아온 창백한 가면"
   },
   {
+    "id": "return_to_the_pit_of_despair",
+    "name": "돌아온 절망의 구렁"
+  },
+  {
     "id": "return_to_the_secret_name",
     "name": "돌아온 비밀 이름"
   },
@@ -662,6 +698,10 @@
   {
     "id": "return_to_the_untamed_wilds",
     "name": "돌아온 길들지 않은 야생"
+  },
+  {
+    "id": "return_to_the_vanishing_of_elina_harper",
+    "name": "돌아온 엘레나 하퍼의 실종"
   },
   {
     "id": "return_to_the_wages_of_sin",
@@ -798,6 +838,10 @@
   {
     "id": "the_attack",
     "name": "습격"
+  },
+  {
+    "id": "the_avatar_of_darkness",
+    "name": "The Avatar of Darkness"
   },
   {
     "id": "the_black_cat",
@@ -992,6 +1036,10 @@
     "name": "금단의 봉우리를 향해"
   },
   {
+    "id": "to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo"
+  },
+  {
     "id": "tokyo",
     "name": "Special Delivery"
   },
@@ -1066,5 +1114,21 @@
   {
     "id": "ybor_city",
     "name": "The Safehouse"
+  },
+  {
+    "id": "zhod_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "zhod_interlude_1",
+    "name": "First Night Aboard the Roi des Belges"
+  },
+  {
+    "id": "zhod_interlude_2",
+    "name": "Kurtz's Warrior"
+  },
+  {
+    "id": "zhod_prologue",
+    "name": "서막"
   }
 ]

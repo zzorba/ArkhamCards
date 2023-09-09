@@ -2812,6 +2812,407 @@
     ]
   },
   {
+    "campaignId": "rttic",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "possesses_a_diving_suit",
+            "masculine_text": "#name# besitzt einen Taucheranzug.",
+            "feminine_text": "#name# besitzt einen Taucheranzug.",
+            "nonbinary_text": "#name# besitzt einen Taucheranzug."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete",
+            "text": "Agent Harpers Mission ist abgeschlossen."
+          },
+          {
+            "id": "agent_harpers_mission_is_complete_at_what_cost",
+            "text": "Agent Harpers Mission ist abgeschlossen … aber zu welchem Preis?"
+          },
+          {
+            "id": "allen_out_for_blood",
+            "text": "Zadok Allen will Blut sehen."
+          },
+          {
+            "id": "burnham_out_for_blood",
+            "text": "Brian Burnham will Blut sehen."
+          },
+          {
+            "id": "dagon_has_awakened",
+            "text": "Dagon ist erwacht."
+          },
+          {
+            "id": "dagon_still_slumbers",
+            "text": "Dagon schläft noch."
+          },
+          {
+            "id": "deep_ones_have_flooded_the_earth",
+            "text": "Die Tiefen Wesen haben die Erde überflutet."
+          },
+          {
+            "id": "escaped_yhanthlei",
+            "text": "Die Ermittler sind aus Y’ha-nthlei entkommen."
+          },
+          {
+            "id": "flood_has_begun",
+            "text": "Die Flut hat eingesetzt."
+          },
+          {
+            "id": "friendly_out_for_blood",
+            "text": "Robert Friendly will Blut sehen."
+          },
+          {
+            "id": "gatekeeper_has_been_defeated",
+            "text": "Der Hüter des Tores wurde besiegt."
+          },
+          {
+            "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
+            "text": "Das Tor nach Y’ha-nthlei erkennt dich als seinen rechtmäßigen Hüter an"
+          },
+          {
+            "id": "gilman_out_for_blood",
+            "text": "Othera Gilman will Blut sehen."
+          },
+          {
+            "id": "guardian_of_yhanthlei_is_dispatched",
+            "text": "Der Wächter von Y’ha-nthlei wurde beseitigt."
+          },
+          {
+            "id": "headdress_brought_to_the_lighthouse",
+            "text": "Der Kopfschmuck wurde zum Leuchtturm gebracht."
+          },
+          {
+            "id": "idol_brought_to_the_lighthouse",
+            "text": "Der Götze wurde zum Leuchtturm gebracht."
+          },
+          {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "Innsmouth ist durch die steigende Flut verzehrt worden."
+          },
+          {
+            "id": "little_out_for_blood",
+            "text": "Joyce Little will Blut sehen."
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "Die Ermittler haben es sicher bis zu ihren Fahrzeugen geschafft."
+          },
+          {
+            "id": "mantle_brought_to_the_lighthouse",
+            "text": "Der Mantel wurde zum Leuchtturm gebracht."
+          },
+          {
+            "id": "marsh_out_for_blood",
+            "text": "Barnabas Marsh will Blut sehen."
+          },
+          {
+            "id": "mission_failed",
+            "text": "Die Mission ist gescheitert."
+          },
+          {
+            "id": "mission_succeeded",
+            "text": "Die Mission war erfolgreich."
+          },
+          {
+            "id": "orders_ritual_was_disrupted",
+            "text": "Das Ritual des Ordens wurde unterbrochen."
+          },
+          {
+            "id": "plot_of_the_deep_ones_was_thwarted",
+            "text": "Die Verschwörung der Tiefen Wesen wurde vereitelt."
+          },
+          {
+            "id": "possess_a_map_of_yhanthlei",
+            "text": "Die Ermittler besitzen eine Karte von Y’ha-nthlei."
+          },
+          {
+            "id": "possess_the_key_to_yhanthlei",
+            "text": "Die Ermittler besitzen den Schlüssel nach Y’ha-nthlei."
+          },
+          {
+            "id": "reached_falcon_point_after_sunrise",
+            "text": "Die Ermittler haben Falcon Point nach Sonnenaufgang erreicht."
+          },
+          {
+            "id": "reached_falcon_point_before_sunrise",
+            "text": "Die Ermittler haben Falcon Point vor Sonnenaufgang erreicht."
+          },
+          {
+            "id": "riches_of_the_deep_are_destroyed_at_what_cost",
+            "text": "Die Reichtümer der Tiefe sind für immer verloren … aber zu welchem Preis?"
+          },
+          {
+            "id": "riches_of_the_deep_are_lost_forever",
+            "text": "Die Reichtümer der Tiefe sind für immer verloren."
+          },
+          {
+            "id": "terror_of_devil_reef_is_dead",
+            "text": "Der Schrecken des Teufelsriffs ist tot."
+          },
+          {
+            "id": "terror_of_devil_reef_is_still_alive",
+            "text": "Der Schrecken des Teufelsriffs ist noch am Leben."
+          },
+          {
+            "id": "tide_has_grown_stronger",
+            "text": "die Gezeiten sind stärker geworden."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "a_bargain_interlude",
+            "text": "dummy"
+          },
+          {
+            "id": "accuse_allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "accuse_burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "accuse_friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "accuse_gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "accuse_house_on_water_street",
+            "text": "Das Haus an der Water Street"
+          },
+          {
+            "id": "accuse_little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "accuse_marsh",
+            "text": "Barnabas Marsh"
+          },
+          {
+            "id": "accuse_new_church_green",
+            "text": "Neuer Kirchplatz"
+          },
+          {
+            "id": "accuse_order_of_dagon",
+            "text": "Esoterischer Orden von Dagon"
+          },
+          {
+            "id": "accuse_prison",
+            "text": "Gefängnis von Innsmouth"
+          },
+          {
+            "id": "accuse_sawbone_alley",
+            "text": "Knochensägergasse"
+          },
+          {
+            "id": "accuse_slums",
+            "text": "Elendsviertel an der Küste"
+          },
+          {
+            "id": "act_2_setup",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_1",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_10",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_11",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_12",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_13",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_14",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_2",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_3",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_4",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_9",
+            "text": "dummy"
+          },
+          {
+            "id": "the_accusation",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "memories_recovered",
+        "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "ein Geschäft mit Joe Sargent."
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "eine verfolgte Spur."
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "ein Gefängnisausbruch."
+          },
+          {
+            "id": "an_intervention",
+            "text": "eine Warnung."
+          },
+          {
+            "id": "battle_with_a_horrifying_devil",
+            "text": "ein Kampf mit einem schrecklichen Teufel"
+          },
+          {
+            "id": "conversation_with_mr_moore",
+            "text": "eine Unterhaltung mit Mr. Moore"
+          },
+          {
+            "id": "decision_to_stick_together",
+            "text": "der Beschluss zusammenzubleiben"
+          },
+          {
+            "id": "discovery_of_a_mystical_relic",
+            "text": "eine Entdeckung eines mystischen Relikts."
+          },
+          {
+            "id": "discovery_of_a_strange_idol",
+            "text": "eine Entdeckung eines seltsamen Götzen."
+          },
+          {
+            "id": "discovery_of_an_unholy_mantle",
+            "text": "eine Entdeckung eines unheiligen Mantels."
+          },
+          {
+            "id": "encounter_with_a_secret_cult",
+            "text": "eine Begegnung mit einem Geheimkult"
+          },
+          {
+            "id": "horrific_truth",
+            "text": "die schreckliche Wahrheit"
+          },
+          {
+            "id": "lifecycle_of_a_deep_one",
+            "text": "der Lebenszyklus eines „Tiefen Wesens“"
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "ein Treffen mit Thomas Dawson"
+          },
+          {
+            "id": "remember_where_you_have_to_go",
+            "text": "you remember where you have to go"
+          },
+          {
+            "id": "stinging_betrayal",
+            "text": "ein schmerzhafter Verrat"
+          }
+        ]
+      },
+      {
+        "section": "possible_hideouts",
+        "entries": [
+          {
+            "id": "house_on_water_street",
+            "text": "Das Haus an der Water Street"
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "Gefängnis von Innsmouth"
+          },
+          {
+            "id": "new_church_green",
+            "text": "Neuer Kirchplatz"
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Esoterischer Orden von Dagon"
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "Knochensägergasse"
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "Elendsviertel an der Küste"
+          }
+        ]
+      },
+      {
+        "section": "possible_suspects",
+        "entries": [
+          {
+            "id": "allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "side",
     "sections": [
       {
@@ -4807,11 +5208,11 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "Agent Flint is dead."
+            "text": "Agent Flint ist tot."
           },
           {
             "id": "agent_flint_is_missing",
-            "text": "Agent Flint is missing."
+            "text": "Agent Flint wird vermisst."
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
@@ -4819,15 +5220,15 @@
           },
           {
             "id": "agent_quinn_has_your_back",
-            "text": "Agent Quinn has your back."
+            "text": "Agent Quinn stärkt dir den Rücken."
           },
           {
             "id": "agent_quinn_vanished_from_existence",
-            "text": "Agent Quinn vanished from existence."
+            "text": "Agent Quinns Existenz wurde ausgelöscht."
           },
           {
             "id": "aliki_is_on_your_side",
-            "text": "Aliki is on your side."
+            "text": "Aliki ist auf deiner Seite."
           },
           {
             "id": "amaranth_has_left_the_coterie",
@@ -4835,35 +5236,35 @@
           },
           {
             "id": "cell_aided_in_flints_investigation",
-            "text": "the cell aided in Flint’s investigation."
+            "text": "die Zelle hat Flint bei seinen Ermittlungen geholfen."
           },
           {
             "id": "cell_aided_the_knight",
-            "text": "the cell aided the knight."
+            "text": "die Zelle hat dem Ritter geholfen."
           },
           {
             "id": "cell_appreciated_the_architecture",
-            "text": "the cell appreciated the architecture."
+            "text": "die Zelle hat die Architektur bewundert."
           },
           {
             "id": "cell_blew_the_whistle",
-            "text": "the cell blew the whistle."
+            "text": "die Zelle hat in die Pfeife geblasen."
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
-            "text": "the cell didn’t discover the truth in Havana."
+            "text": "die Zelle hat in Havanna nicht die Wahrheit aufdecken können."
           },
           {
             "id": "cell_escaped_the_red_coterie",
-            "text": "the cell escaped the Red Coterie."
+            "text": "die Zelle konnte der Roten Coterie entkommen."
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
-            "text": "the cell failed to fend off the Beast."
+            "text": "die Zelle konnte die Bestie nicht abwehren."
           },
           {
             "id": "cell_has_been_ambushed",
-            "text": "the cell has been ambushed!"
+            "text": "die Zelle gerät in einen Hinterhalt!"
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
@@ -4871,7 +5272,7 @@
           },
           {
             "id": "cell_is_assisting_agent_sirry",
-            "text": "the cell is assisting Agent Sirry."
+            "text": "die Zelle assistiert Agent Sirry."
           },
           {
             "id": "cell_is_deceiving_ece",
@@ -4879,7 +5280,7 @@
           },
           {
             "id": "cell_is_delivering_foundation_intel",
-            "text": "the cell is delivering Foundation intel."
+            "text": "die Zelle überbringt Geheiminformationen."
           },
           {
             "id": "cell_is_off_mission",
@@ -4891,7 +5292,7 @@
           },
           {
             "id": "cell_joined_the_red_coterie",
-            "text": "the cell joined the Red Coterie."
+            "text": "die Zelle ist der Roten Coterie beigetreten."
           },
           {
             "id": "cell_knows_amaranths_real_name",
@@ -4903,35 +5304,35 @@
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
-            "text": "the cell knows the true nature of the Coterie."
+            "text": "die Zelle kennt die wahre Natur der Coterie."
           },
           {
             "id": "cell_made_a_deal_with_desi",
-            "text": "the cell made a deal with Desi."
+            "text": "die Zelle hat mit Desi einen Deal vereinbart."
           },
           {
             "id": "cell_made_a_deal_with_the_claret_knight",
-            "text": "the cell made a deal with the Claret Knight."
+            "text": "die Zelle hat einen Deal mit dem Weinroten Ritter vereinbart."
           },
           {
             "id": "cell_made_a_deal_with_thorne",
-            "text": "the cell made a deal with Thorne."
+            "text": "die Zelle hat mit Thorne einen Deal vereinbart."
           },
           {
             "id": "cell_met_dr_irawan",
-            "text": "the cell met Dr. Irawan."
+            "text": "die Zelle hat Dr. Irawan getroffen."
           },
           {
             "id": "cell_overthrew_the_red_coterie",
-            "text": "the cell overthrew the Red Coterie."
+            "text": "die Zelle hat einen Umsturz in der Roten Coterie herbeigeführt."
           },
           {
             "id": "cell_possesses_a_mysterious_whistle",
-            "text": "the cell possesses a mysterious whistle."
+            "text": "die Zelle ist im Besitz einer mysteriösen Pfeife."
           },
           {
             "id": "cell_refused_alikis_offer",
-            "text": "the cell refused Aliki’s offer."
+            "text": "die Zelle hat Alikis Angebot abgelehnt."
           },
           {
             "id": "cell_refused_eces_offer",
@@ -4939,7 +5340,7 @@
           },
           {
             "id": "cell_threw_away_the_whistle",
-            "text": "the cell threw away the whistle."
+            "text": "die Zelle hat die Pfeife weggeworfen."
           },
           {
             "id": "cell_told_the_truth_to_taylor",
@@ -4947,15 +5348,15 @@
           },
           {
             "id": "cell_was_dismantled",
-            "text": "the cell was dismantled."
+            "text": "die Zelle wurde aufgelöst."
           },
           {
             "id": "cell_was_given_a_permanent_position",
-            "text": "the cell was given a permanent position."
+            "text": "die Zelle erhält eine permanente Position bei der Foundation."
           },
           {
             "id": "cell_was_hollowed",
-            "text": "the cell was hollowed."
+            "text": "die Zelle wurde ausgehöhlt."
           },
           {
             "id": "chica_roja_is_on_your_side",
@@ -4963,27 +5364,27 @@
           },
           {
             "id": "deception",
-            "text": "Cell Deception: #X#"
+            "text": "Täuschung durch die Zelle: #X#"
           },
           {
             "id": "desi_is_in_your_debt",
-            "text": "Desi is in your debt."
+            "text": "Desi steht in deiner Schuld."
           },
           {
             "id": "dogs_are_at_war",
-            "text": "the dogs are at war."
+            "text": "die Hunde sind im Krieg."
           },
           {
             "id": "dr_irawan_joined_the_cell",
-            "text": "Dr. Irawan joined the cell."
+            "text": "Dr. Irawan hat sich der Zelle angeschlossen."
           },
           {
             "id": "dr_irawan_traveled_to_new_guinea",
-            "text": "Dr. Irawan traveled to New Guinea."
+            "text": "Dr. Irawan ist nach Neuguinea gereist."
           },
           {
             "id": "dr_irawan_vanished_from_existence",
-            "text": "Dr. Irawan vanished from existence."
+            "text": "Dr. Irawans Existenz wurde ausgelöscht."
           },
           {
             "id": "ece_does_not_trust_the_cell",
@@ -4995,27 +5396,27 @@
           },
           {
             "id": "erased_from_existence_dm",
-            "text": "erased from existence: #name#"
+            "text": "Existenz ausgelöscht: #name#"
           },
           {
             "id": "erased_from_existence_oti",
-            "text": "erased from existence: #name#"
+            "text": "Existenz ausgelöscht: #name#"
           },
           {
             "id": "flint_abandoned_his_search",
-            "text": "Flint abandoned his search."
+            "text": "Flint hat seine Suche aufgegeben."
           },
           {
             "id": "flint_is_working_solo",
-            "text": "Flint is working solo."
+            "text": "Flint arbeitet allein."
           },
           {
             "id": "flint_rejoined_the_cell",
-            "text": "Flint rejoined the cell."
+            "text": "Flint hat sich wieder der Zelle angeschlossen."
           },
           {
             "id": "flint_traveled_to_kuala_lampur",
-            "text": "Flint traveled to Kuala Lumpur."
+            "text": "Flint ist nach Kuala Lumpur gereist."
           },
           {
             "id": "foundation_remains_in_the_dark",
@@ -5023,7 +5424,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
-            "text": "you haven’t seen the last of Aliki Zoni Uperetria."
+            "text": "du hast Aliki nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
@@ -5031,7 +5432,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_desi",
-            "text": "you haven’t seen the last of Desiderio Delgado Álvarez."
+            "text": "du hast Desi nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
@@ -5039,11 +5440,11 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
-            "text": "you haven’t seen the last of the Beast in a Cowl of Crimson."
+            "text": "du hast die Bestie in der purpurroten Kutte nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_the_claret_knight",
-            "text": "you haven’t seen the last of the Claret Knight."
+            "text": "du hast den Weinroten Ritter nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
@@ -5055,15 +5456,15 @@
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
-            "text": "you haven’t seen the last of Thorne."
+            "text": "du hast Thorne nicht zum letzten Mal gesehen."
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "you haven’t seen the last of Tzu San Niang."
+            "text": "du hast Tzu San Niang nicht zum letzten Mal gesehen."
           },
           {
             "id": "know_the_passphrase",
-            "text": "you know the passphrase."
+            "text": "du kennst das Passwort."
           },
           {
             "id": "lovers_are_reunited",
@@ -5071,19 +5472,19 @@
           },
           {
             "id": "nothing_of_note_in_anchorage",
-            "text": "there is nothing of note in Anchorage."
+            "text": "in Anchorage gibt es nichts Bemerkenswertes."
           },
           {
             "id": "outsiders_were_stopped",
-            "text": "the Outsiders were stopped."
+            "text": "die Außenseiter wurden aufgehalten."
           },
           {
             "id": "red_coterie_spared_the_cell",
-            "text": "the Red Coterie spared the cell."
+            "text": "die Rote Coterie hat die Zelle verschont."
           },
           {
             "id": "red_coterie_was_destroyed_from_within",
-            "text": "the Red Coterie was destroyed from within."
+            "text": "die Rote Coterie wurde aus ihrem Inneren heraus zerstört."
           },
           {
             "id": "sanguine_watchers_torment_continues",
@@ -5091,15 +5492,15 @@
           },
           {
             "id": "thorne_disappeared",
-            "text": "Thorne disappeared."
+            "text": "Thorne ist verschwunden."
           },
           {
             "id": "trust",
-            "text": "Foundation Trust: #X#"
+            "text": "Vertrauen in die Foundation: #X#"
           },
           {
             "id": "tuwile_masai_fled_to_bermuda",
-            "text": "Tuwile Masai fled to Bermuda."
+            "text": "Tuwile Masai ist nach Bermuda geflohen."
           },
           {
             "id": "tuwile_masai_is_on_your_side",
@@ -5107,19 +5508,19 @@
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
-            "text": "Tzu San Niang has you under her sway."
+            "text": "Du stehst unter Tzu San Niangs Einfluss."
           },
           {
             "id": "tzu_san_niang_is_under_your_sway",
-            "text": "Tzu San Niang is under your sway."
+            "text": "Tzu San Niang steht unter deinem Einfluss."
           },
           {
             "id": "void_chimera_escaped",
-            "text": "the Void Chimera escaped."
+            "text": "die Chimäre der Leere ist entkommen."
           },
           {
             "id": "work_together",
-            "text": "the Red Coterie and The Foundation agreed to work together."
+            "text": "die Rote Coterie und die Foundation haben sich darauf verständigt zusammenzuarbeiten."
           },
           {
             "id": "wrong_leads",
@@ -6766,6 +7167,338 @@
           },
           {
             "id": "zdm_side_story",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zhod",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "ancestors_approve_of_your_actions",
+            "text": "the ancestors approve of your actions."
+          },
+          {
+            "id": "captain_marlow_is_alive",
+            "text": "Captain Marlow is alive."
+          },
+          {
+            "id": "captain_marlow_is_in_the_hands_of_the_ancestors",
+            "text": "Captain Marlow is in the hands of the ancestors."
+          },
+          {
+            "id": "darkness_has_descended_on_the_congo",
+            "text": "the Avatar of Darkness freely walks the Earth."
+          },
+          {
+            "id": "darkness_has_descended_on_the_congo",
+            "text": "the Darkness has descended on the Congo."
+          },
+          {
+            "id": "darkness_stared_back_at_you",
+            "text": "the Darkness stared back at you."
+          },
+          {
+            "id": "deciphered_the_journal_of_the_mad_russian",
+            "text": "you deciphered the journal of a mad Russian."
+          },
+          {
+            "id": "director_does_not_trust_you",
+            "text": "the Director does not trust you."
+          },
+          {
+            "id": "director_is_conspiring_against_kurtz",
+            "text": "the Director is conspiring against Kurtz."
+          },
+          {
+            "id": "drove_off_a_tribe_of_darkness_worshippers",
+            "text": "you drove off a tribe of Darkness worshippers."
+          },
+          {
+            "id": "extracted_a_confession_from_kurtzs_warrior",
+            "text": "you extracted a confession from Kurtz's Warrior."
+          },
+          {
+            "id": "found_a_strange_encrypted_book",
+            "text": "you found a strange encrypted book."
+          },
+          {
+            "id": "found_a_strange_obsidian_status",
+            "text": "you found a strange obsidian statue."
+          },
+          {
+            "id": "found_kurtzs_personal_belongings",
+            "text": "you found Kurtz's personal belongings."
+          },
+          {
+            "id": "have_a_prisoner_on_board",
+            "text": "you have a prisoner on board."
+          },
+          {
+            "id": "have_injured_the_white_ape",
+            "text": "you have injured the White Ape."
+          },
+          {
+            "id": "know_about_miss_promise",
+            "text": "you know about Miss Promise."
+          },
+          {
+            "id": "know_how_to_imprison_the_darkness",
+            "text": "you know how to imprison the Darkness."
+          },
+          {
+            "id": "made_a_promise_to_kurtz",
+            "text": "you made a promise to Kurtz."
+          },
+          {
+            "id": "prisoner_died",
+            "text": "the prisoner died while trying to escape"
+          },
+          {
+            "id": "prisoner_escaped",
+            "text": "the prisoner escaped"
+          },
+          {
+            "id": "questioned_kurtzs_warrior",
+            "text": "you questioned Kurtz's Warrior."
+          },
+          {
+            "id": "returned_from_the_heart_of_darkness",
+            "text": "the investigators have returned from the heart of darkness."
+          },
+          {
+            "id": "saw_a_dark_shadow_in_the_flames",
+            "text": "you saw a dark shadow in the flames."
+          },
+          {
+            "id": "solved_the_mystery_of_freslevens_murder",
+            "text": "you solved the mystery of Fresleven's murder."
+          },
+          {
+            "id": "spent_a_long_time_going_up_the_congo_river",
+            "text": "you spent a long time going up the Congo river."
+          },
+          {
+            "id": "stared_into_the_darkness",
+            "text": "you have stared into the Darkness."
+          },
+          {
+            "id": "the_ancestors_are_proud_of_you",
+            "text": "the Ancestors are proud of you."
+          },
+          {
+            "id": "the_ancestors_are_watching_you",
+            "text": "the Ancestors are watching you."
+          },
+          {
+            "id": "told_about_the_area_around_the_inner_station",
+            "text": "you were told about the area around the Inner Station."
+          },
+          {
+            "id": "treated_at_the_central_stations_infirmary",
+            "text": "you were treated at the Central Station's infirmary."
+          },
+          {
+            "id": "tribe_of_the_black_hand_has_left_their_lands",
+            "text": "the Tribe of the Black Hand has left their lands."
+          },
+          {
+            "id": "unable_to_bring_kurtz_back_alive",
+            "text": "the investigators were unable to bring Kurtz back alive."
+          },
+          {
+            "id": "went_up_the_congo_river",
+            "text": "you went up the Congo river."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "zhd_darkness_1",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_2",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_3",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_4",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_5",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_6",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_darkness_7",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_1",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_10",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_11",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_12",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_13",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_14",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_15",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_16",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_2",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_3",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_4",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_5",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_6",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_7",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_8",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_parley_9",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_1",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_10",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_11",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_12",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_13",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_14",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_15",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_16",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_17",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_18",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_19",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_2",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_20",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_21",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_3",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_4",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_5",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_6",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_7",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_8",
+            "text": "dummy"
+          },
+          {
+            "id": "zhd_river_9",
+            "text": "dummy"
+          },
+          {
+            "id": "zhod_avatar_agenda_6a",
             "text": "dummy"
           }
         ]

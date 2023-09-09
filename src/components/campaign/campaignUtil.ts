@@ -1,10 +1,11 @@
-import { capitalize, head, findIndex, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
+import { capitalize, head, findIndex, flatMap, forEach, keys, map, range, sortBy, sumBy } from 'lodash';
 
 import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import { campaignNames } from './constants';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType, isSpecialToken } from '@app_constants';
 import { CardsMap } from '@data/types/Card';
 import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 export function campaignToText(
   campaign: Campaign,
@@ -91,13 +92,19 @@ export function campaignToText(
   return lines.join('\n');
 }
 
-export function flattenChaosBag(chaosBag: ChaosBag, tarot: Chaos_Bag_Tarot_Mode_Enum | undefined): ChaosTokenType[] {
+export function flattenChaosBag(chaosBag: ChaosBag, tarot: Chaos_Bag_Tarot_Mode_Enum | undefined, chaosBagResults?: ChaosBagResultsT): ChaosTokenType[] {
   const weightedList: ChaosTokenType[] = [];
   forEach(sortBy(
-    keys(chaosBag) as ChaosTokenType[],
+    keys(CHAOS_TOKEN_ORDER) as ChaosTokenType[],
     (token: ChaosTokenType) => CHAOS_TOKEN_ORDER[token],
   ), (token) => {
-    const count = chaosBag[token] || 0;
+    const baseCount = (chaosBagResults && (token === 'bless' || token === 'curse')) ?
+      (token === 'bless' ? chaosBagResults.blessTokens : chaosBagResults.curseTokens) :
+      (chaosBag[token] ?? 0);
+     const count = Math.max(
+      baseCount - sumBy(chaosBagResults?.sealedTokens ?? [], (sealedToken) => sealedToken.icon === token ? 1 : 0),
+      0
+    );
     if (count) {
       forEach(range(0, count), () => {
         weightedList.push(token as ChaosTokenType);

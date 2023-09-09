@@ -1,6 +1,15 @@
 {
   "cards": [
     {
+      "encounter_code": "zhod_to_the_heart_of_the_congo",
+      "cards": [
+        {
+          "code": ["zhod_00052", "zhod_00053", "zhod_00054"],
+          "text": "The 3 Savannah locationsshould not have dark red “+” connection symbol (on both sides)."
+        }
+      ]
+    },
+    {
       "encounter_code": "blood_on_the_altar",
       "cards": [
         {
@@ -68,6 +77,15 @@
         {
           "code": ["03178", "03179", "03180", "03181"],
           "text": "Each of these locations should not have the “[[Arkham Asylum]]” trait."
+        }
+      ]
+    },
+    {
+      "encounter_code": "return_to_at_deaths_doorstep",
+      "cards": [
+        {
+          "code": ["54027", "54028"],
+          "text": "This card’s ability should read: “Victorian Halls is connected to Wine Cellar, and vice versa.” "
         }
       ]
     },
@@ -209,11 +227,68 @@
       ]
     },
     {
+      "encounter_code": "to_the_forbideen_peaks",
+      "cards": [
+        {
+          "code": ["08596"],
+          "text": "This card’s Easy/Standard [cultist] effect should read “If you fail, after this test ends…”\nThis card’s Hard/Expert [cultist] effect should read “Ater this test ends…”\nThis card's"
+        }
+      ]
+    },
+    {
+      "encounter_code": "city_of_the_elder_things",
+      "cards": [
+        {
+          "code": ["08635"],
+          "text": "This card’s ability should read: “Choose 3 locations other than Hidden Tunnel and reveal them…”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_great_seal",
+      "cards": [
+        {
+          "code": ["08669"],
+          "text": "This card’s <b>Forced</b> ability should read: “…activated seal: Protoplasmic Mass readies and resolves the enemy phase again <i>(it resolves its hunter keyword and attacks a second time)</i>. (Limit once per phase.)”"
+        }
+      ]
+    },
+    {
       "encounter_code": "sanguine_shadows",
       "cards": [
         {
           "code": ["09546"],
-          "text": "Agenda 1b should read \"Find the location with a target on it nearest to La Chica Roja (or her mini-card)\" instead of \"Find the location with a target on it nearest to La Chica Roja's mini-card.\""
+          "text": "Agenda 1b second paragraph should read \"Find the location with a target on it nearest to La Chica Roja (or her mini-card)\""
+        },
+        {
+          "code": ["09562"],
+          "text": "This card loses all story text and gains: “<b>Forced</b> – When this agenda would advance by reaching its doom threshold: Each investigator is defeated and suffers 1 mental trauma.”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "dealings_in_the_dark",
+      "cards": [
+        {
+          "code": ["09567"],
+          "text": "This card’s first paragraph, starting on line 3, should read: “…or search the encounter deck and discard pile for a [[Cultist]] enemy and draw it; it gains concealed 1…”"
+        },
+        {
+          "code": ["09569"],
+          "text": "The last line of this act’s third paragraph should read: “Set each concealed mini-card aside, out of play,” instead of “Remove each concealed mini-card from the game.”"
+        },
+        {
+          "code": ["09570"],
+          "text": "This card’s second objective now reads: “If an enemy with The Twisted Antiprism is at Galata Docks, or if the investigator with The Twisted Antiprism is defeated, proceed…”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "dancing_mad",
+      "cards": [
+        {
+          "code": ["09596"],
+          "text": "The last line of this act’s first paragraph should read: “Set each concealed mini-card aside, out of play,” instead of “Remove each concealed mini-card from the game.”"
         }
       ]
     },
@@ -222,7 +297,7 @@
       "cards": [
         {
           "code": ["09688"],
-          "text": "Add the add the following to the “Resign” ability: “If each surviving investigator has resigned, immediately advance to Act 3b.”"
+          "text": "This card’s ability should read: “…end of your turn. If each surviving investigator has resigned, immediately advance to act 3b.”"
         }
       ]
     }
@@ -566,6 +641,19 @@
         {
           "question": "Can a <b>Starship</b> attach to another <b>Starship</b>?",
           "answer": "Yep. The ships are docked to each other!"
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_city_of_archives",
+      "questions": [
+        {
+          "question": "When setting up “The City of Archives”, do I follow Setup instructions or constant abilities on my investigator card, such as Sefina Rosseau or Lily Chen?",
+          "answer": "When setting up The City of Archives, you are instructed to swap your investigator card with a Body of a Yithian card. This swap occurs during Step 10 of Setting Up the Game, as outlined in the Rules Reference. Any investigators with Setup abilities that resolve before Step 10 of Setup should do so, meaning Sefina Rosseau should choose her 5 events and Lola Hayes should choose her role before swapping."
+        },
+        {
+          "question": "In “The City of Archives,” if I am instructed to use the Body of a Yithian for the remainder of the campaign, how should I set up my investigator in future scenarios?",
+          "answer": "In future scenarios, you must swap your investigator card with a Body of a Yithian card during Step 10 of Setting Up the Game, as outlined in the Rules Reference, just as you would when playing “The City of Archives” scenario (see above)."
         }
       ]
     }

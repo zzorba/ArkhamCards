@@ -5,21 +5,21 @@ import { ChaosBag, ChaosTokenType } from '@app_constants';
 import { StyleSheet, View } from 'react-native';
 import ChaosToken, { TINY_TOKEN_SIZE, EXTRA_TINY_TOKEN_SIZE } from '@components/chaos/ChaosToken';
 import space, { xs } from '@styles/space';
-import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 import { flattenChaosBag } from '@components/campaign/campaignUtil';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 
 interface Props {
   chaosBag: ChaosBag;
-  tarot?: Chaos_Bag_Tarot_Mode_Enum;
+  chaosBagResults?: ChaosBagResultsT;
   width: number;
   sealed?: boolean;
   extraTiny?: boolean;
 }
 
-export default function ChaosBagLine({ chaosBag, width, sealed, extraTiny, tarot }: Props) {
+export default function ChaosBagLine({ chaosBag, width, sealed, extraTiny, chaosBagResults }: Props) {
   const tokens: ChaosTokenType[] = useMemo(() => {
-    return flattenChaosBag(chaosBag, tarot);
-  }, [chaosBag, tarot]);
+    return flattenChaosBag(chaosBag, chaosBagResults?.tarot, chaosBagResults);
+  }, [chaosBag, chaosBagResults]);
   const tokenWidth = (extraTiny ? (EXTRA_TINY_TOKEN_SIZE + 2) : (TINY_TOKEN_SIZE + xs * 2));
   const wrapTokens = Math.floor(width / tokenWidth);
   const wrapWidth = wrapTokens * tokenWidth;

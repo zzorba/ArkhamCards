@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 
 import Card from '@data/types/Card';
 import DeckQuantityComponent from './DeckQuantityComponent';
@@ -48,6 +49,7 @@ export type ControlType = {
   toggleValue: (value: boolean) => void;
 } | {
   type: 'shuffle';
+  count?: number;
   onShufflePress: () => void;
 } | {
   type: 'draft';
@@ -68,7 +70,12 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
     case 'deck':
       return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} mode={control.mode} editable />;
     case 'shuffle':
-      return <ShuffleButton onPress={control.onShufflePress} />;
+      return (
+        <View style={{ flexDirection: 'row' }}>
+          { !!control.count && control.count > 1 && <CardCount count={control.count} /> }
+          <ShuffleButton onPress={control.onShufflePress} />
+        </View>
+      );
     case 'draft':
       return <DraftButton card={card} onPress={control.onDraft} />;
     case 'count':

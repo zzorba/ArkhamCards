@@ -1,5 +1,7 @@
 module.exports = {
-  dependencies: {
-  },
+  project:{
+    android:{
+      unstable_reactLegacyComponentNames: []
+    }
+  }
 };
-

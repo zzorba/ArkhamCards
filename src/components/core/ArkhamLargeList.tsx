@@ -103,6 +103,7 @@ export default function ArkhamLargeList<Item>({
       <ArkhamLoadingSpinner
         autoPlay
         loop
+        size="default"
       />
     </View>
   ), [searchBarHeight]);

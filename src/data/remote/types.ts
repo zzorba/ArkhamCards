@@ -1,5 +1,5 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken, TarotReading } from '@actions/types';
-import { uniq, concat, flatMap, sumBy, trim, find, findLast, maxBy, map, last, forEach, findLastIndex, filter } from 'lodash';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken, TarotReading, ChaosBagHistory } from '@actions/types';
+import { uniq, concat, flatMap, sumBy, trim, find, findLast, maxBy, map, last, forEach, findLastIndex, filter, isArray } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
 import { FullCampaignFragment, LatestDeckFragment, MiniCampaignFragment, Guide_Input, FullCampaignGuideStateFragment, FullChaosBagResultFragment, Chaos_Bag_Tarot_Mode_Enum, Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
@@ -335,7 +335,15 @@ export class MiniDeckRemote implements MiniDeckT {
       campaignId: deck.campaign.uuid,
       serverId: deck.campaign.id,
     } : undefined;
-    this.tags = deck.content?.tags === '{}' ? [] : filter(map((deck.content?.tags || '').split(/[, ]/), t => trim(t)), x => !!x);
+    if (!deck.content || deck.content.tags === '{}') {
+      this.tags = [];
+    } else if (typeof deck.content.tags === 'string') {
+      this.tags = filter(map((deck.content.tags || '').split(/[, ]/), t => trim(t)), x => !!x);
+    } else if (isArray(deck.content.tags)) {
+      this.tags = filter(map(filter(deck.content.tags, t => typeof t === 'string'), t => trim(t)), x => !!x);
+    } else {
+      this.tags = []
+    }
   }
 }
 
@@ -378,6 +386,7 @@ export class ChaosBagResultsRemote implements ChaosBagResultsT {
   totalDrawnTokens: number;
   tarot?: Chaos_Bag_Tarot_Mode_Enum;
   difficulty?: Campaign_Difficulty_Enum;
+  history: ChaosBagHistory[];
 
   constructor(chaosBagResults: FullChaosBagResultFragment) {
     this.drawnTokens = chaosBagResults.drawn || [];
@@ -387,5 +396,6 @@ export class ChaosBagResultsRemote implements ChaosBagResultsT {
     this.totalDrawnTokens = chaosBagResults.totalDrawn || 0;
     this.tarot = chaosBagResults.tarot || undefined;
     this.difficulty = chaosBagResults.difficulty || undefined;
+    this.history = chaosBagResults.history ?? [];
   }
 }

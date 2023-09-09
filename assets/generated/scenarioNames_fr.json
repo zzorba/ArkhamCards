@@ -28,6 +28,10 @@
     "name": "Across Dreadful Waters"
   },
   {
+    "id": "africa_is_watching",
+    "name": "Africa is Watching"
+  },
+  {
     "id": "against_the_wendigo",
     "name": "Face au Wendigo"
   },
@@ -89,7 +93,7 @@
   },
   {
     "id": "bermuda",
-    "name": "Le grand Œuvre"
+    "name": "Le Grand Œuvre"
   },
   {
     "id": "bermuda_triangle",
@@ -112,6 +116,10 @@
     "name": "Le Dévoreur de Toute Chose"
   },
   {
+    "id": "blob_that_ate_everything_else",
+    "name": "The Blob That Ate Everything Else"
+  },
+  {
     "id": "blood_from_stones",
     "name": "Blood From Stones"
   },
@@ -121,7 +129,7 @@
   },
   {
     "id": "bombay",
-    "name": "Etrange Architecture"
+    "name": "Étrange Architecture"
   },
   {
     "id": "buenos_aires",
@@ -477,7 +485,7 @@
   },
   {
     "id": "murder_at_the_excelsior_hotel",
-    "name": "Meutre à l'Hôtel Excelsior"
+    "name": "Meurtre à l'Hôtel Excelsior"
   },
   {
     "id": "nairobi",
@@ -544,6 +552,10 @@
     "name": "Une Nuit Reposante"
   },
   {
+    "id": "return_to_a_light_in_the_fog",
+    "name": "Renouveau – Une Lueur dans le Brouillard"
+  },
+  {
     "id": "return_to_a_phantom_of_truth",
     "name": "Renouveau – Le Spectre de la Vérité"
   },
@@ -566,6 +578,10 @@
   {
     "id": "return_to_curtain_call",
     "name": "Renouveau – Baisser de Rideau"
+  },
+  {
+    "id": "return_to_devil_reef",
+    "name": "Renouveau – Le Récif du Diable"
   },
   {
     "id": "return_to_dim_carcosa",
@@ -596,8 +612,20 @@
     "name": "Renouveau – Le Cœur des Anciens, Partie 2"
   },
   {
+    "id": "return_to_horror_in_high_gear",
+    "name": "Renouveau – Horreur à Toute Vitesse"
+  },
+  {
     "id": "return_to_in_the_clutches_of_chaos",
     "name": "Renouveau – Dans les Griffes du Chaos"
+  },
+  {
+    "id": "return_to_in_too_deep",
+    "name": "Renouveau – Mouillés Jusqu'au Cou"
+  },
+  {
+    "id": "return_to_into_the_maelstrom",
+    "name": "Renouveau – Dans le Maelstrôm"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -617,7 +645,7 @@
   },
   {
     "id": "return_to_the_depths_of_yoth",
-    "name": "Renouveau – La Civilisation Oubliée"
+    "name": "Renouveau – Les Profondeurs de Yoth"
   },
   {
     "id": "return_to_the_devourer_below",
@@ -636,6 +664,10 @@
     "name": "Renouveau – La Banque Gagne Toujours"
   },
   {
+    "id": "return_to_the_lair_of_dagon",
+    "name": "Renouveau – La Tanière de Dagon"
+  },
+  {
     "id": "return_to_the_last_king",
     "name": "Renouveau – Le Dernier Roi"
   },
@@ -652,6 +684,10 @@
     "name": "Renouveau – Le Masque Blême"
   },
   {
+    "id": "return_to_the_pit_of_despair",
+    "name": "Renouveau – Le Gouffre du Désespoir"
+  },
+  {
     "id": "return_to_the_secret_name",
     "name": "Renouveau – Le Nom Secret"
   },
@@ -662,6 +698,10 @@
   {
     "id": "return_to_the_untamed_wilds",
     "name": "Renouveau – Une Contrée Sauvage"
+  },
+  {
+    "id": "return_to_the_vanishing_of_elina_harper",
+    "name": "Renouveau – La Disparition d'Elina Harper"
   },
   {
     "id": "return_to_the_wages_of_sin",
@@ -733,7 +773,7 @@
   },
   {
     "id": "stockholm",
-    "name": "Etrange Architecture"
+    "name": "Étrange Architecture"
   },
   {
     "id": "strange_moons",
@@ -798,6 +838,10 @@
   {
     "id": "the_attack",
     "name": "L'Attaque"
+  },
+  {
+    "id": "the_avatar_of_darkness",
+    "name": "The Avatar of Darkness"
   },
   {
     "id": "the_black_cat",
@@ -992,6 +1036,10 @@
     "name": "Vers les Sommets Interdits"
   },
   {
+    "id": "to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo"
+  },
+  {
     "id": "tokyo",
     "name": "Livraison Spéciale"
   },
@@ -1066,5 +1114,21 @@
   {
     "id": "ybor_city",
     "name": "Le Refuge"
+  },
+  {
+    "id": "zhod_epilogue",
+    "name": "Épilogue"
+  },
+  {
+    "id": "zhod_interlude_1",
+    "name": "First Night Aboard the Roi des Belges"
+  },
+  {
+    "id": "zhod_interlude_2",
+    "name": "Kurtz's Warrior"
+  },
+  {
+    "id": "zhod_prologue",
+    "name": "Prologue"
   }
 ]
