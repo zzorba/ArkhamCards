@@ -319,7 +319,15 @@ export interface MapLabel {
 export interface CampaignLogSectionDefinition {
   id: string;
   title: string;
-  type?: "investigator_count" | "count" | "supplies" | "header" | "partner" | "scarlet_keys" | "hidden";
+  type?:
+    | "investigator_count"
+    | "count"
+    | "supplies"
+    | "header"
+    | "partner"
+    | "scarlet_keys"
+    | "hidden"
+    | "relationship";
   partners?: Partner[];
   calendar?: CalendarEntry[];
   scarlet_keys?: ScarletKey[];
@@ -1071,6 +1079,8 @@ export interface ChooseOneInput {
   default_choice?: string;
   confirm_text?: string;
   choices: BinaryConditionalChoice[];
+  style?: "compact";
+  icon?: string;
 }
 export interface BinaryConditionalChoice {
   id: string;

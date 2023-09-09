@@ -561,11 +561,11 @@
   },
   {
     "id": "return_to_at_deaths_doorstep",
-    "name": "Return to At Death's Doorstep"
+    "name": "На пороге смерти. Возвращение"
   },
   {
     "id": "return_to_before_the_black_throne",
-    "name": "Return to Before the Black Throne"
+    "name": "Перед Чёрным престолом. Возвращение"
   },
   {
     "id": "return_to_black_stars_rise",
@@ -601,7 +601,7 @@
   },
   {
     "id": "return_to_for_the_greater_good",
-    "name": "Return to For the Greater Good"
+    "name": "Ради высшего блага. Возвращение"
   },
   {
     "id": "return_to_heart_of_the_elders_part_1",
@@ -617,7 +617,7 @@
   },
   {
     "id": "return_to_in_the_clutches_of_chaos",
-    "name": "Return to In the Clutches of Chaos"
+    "name": "В когтях Хаоса. Возвращение"
   },
   {
     "id": "return_to_in_too_deep",
@@ -633,19 +633,19 @@
   },
   {
     "id": "return_to_shattered_aeons",
-    "name": "Return to Shattered Aeons"
+    "name": "Расколотая вечность. Возвращение"
   },
   {
     "id": "return_to_the_boundary_beyond",
-    "name": "Return to The Boundary Beyond"
+    "name": "Потусторонний предел. Возвращение"
   },
   {
     "id": "return_to_the_city_of_archives",
-    "name": "Return to The City of Archives"
+    "name": "Город архивов. Возвращение"
   },
   {
     "id": "return_to_the_depths_of_yoth",
-    "name": "Return to The Depths of Yoth"
+    "name": "Глубины Йота. Возвращение"
   },
   {
     "id": "return_to_the_devourer_below",
@@ -653,7 +653,7 @@
   },
   {
     "id": "return_to_the_doom_of_eztli",
-    "name": "Return to The Doom of Eztli"
+    "name": "Погибель Эцтли"
   },
   {
     "id": "return_to_the_gathering",
@@ -689,7 +689,7 @@
   },
   {
     "id": "return_to_the_secret_name",
-    "name": "Return to The Secret Name"
+    "name": "Тайное имя. Возвращение"
   },
   {
     "id": "return_to_the_unspeakable_oath",
@@ -697,7 +697,7 @@
   },
   {
     "id": "return_to_the_untamed_wilds",
-    "name": "Return to The Untamed Wilds"
+    "name": "Дремучие джунгли. Возвращение"
   },
   {
     "id": "return_to_the_vanishing_of_elina_harper",
@@ -705,15 +705,15 @@
   },
   {
     "id": "return_to_the_wages_of_sin",
-    "name": "Return to The Wages of Sin"
+    "name": "Расплата за грехи. Возвращение"
   },
   {
     "id": "return_to_the_witching_hour",
-    "name": "Return to The Witching Hour"
+    "name": "Час ведьмовства. Возвращение"
   },
   {
     "id": "return_to_threads_of_fate",
-    "name": "Return to Threads of Fate"
+    "name": "Нити судьбы. Возвращение"
   },
   {
     "id": "return_to_turn_back_time",
@@ -725,7 +725,7 @@
   },
   {
     "id": "return_to_union_and_disillusion",
-    "name": "Return to Union and Disillusion"
+    "name": "Единство и разочарование. Возвращение"
   },
   {
     "id": "return_to_where_doom_awaits",

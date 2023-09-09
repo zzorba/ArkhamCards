@@ -65,7 +65,7 @@ export type DeckButtonIcon =
 export type DeckButtonColor = 'red' | 'red_outline' | 'gold' | 'default' | 'dark_gray' | 'light_gray' | 'light_gray_outline';
 
 interface Props {
-  title: string;
+  title?: string;
   detail?: string;
   icon?: DeckButtonIcon;
   encounterIcon?: string;
@@ -82,6 +82,7 @@ interface Props {
   noShadow?: boolean;
   bigEncounterIcon?: boolean;
   rightNode?: React.ReactNode;
+  textComponent?: React.ReactNode;
 }
 
 const ICON_SIZE: { [icon: string]: number | undefined } = {
@@ -141,6 +142,7 @@ export default function DeckButton({
   bottomMargin,
   noShadow,
   rightNode,
+  textComponent,
 }: Props) {
   const { colors, fontScale, typography, shadow } = useContext(StyleContext);
   const backgroundColors = {
@@ -252,42 +254,44 @@ export default function DeckButton({
       <View style={[
         styles.row,
         icon ? { justifyContent: 'flex-start' } : { justifyContent: 'center' },
-        space.paddingSideXs,
+        textComponent ? undefined : space.paddingSideXs,
         space.paddingTopS,
         space.paddingBottomS,
       ]}>
         { !!iconContent && (
           <View style={[
             styles.icon,
-            space.marginLeftXs,
-            bigEncounterIcon ? {} : space.marginRightS,
+            textComponent ? undefined : space.marginLeftXs,
+            bigEncounterIcon ? undefined : space.marginRightS,
             thin ? { marginLeft: xs, width: 28, height: 32 * fontScale } : { width: 32, height: 32 * fontScale },
             loading || !icon ? undefined : ICON_STYLE[icon],
           ]}>
             { iconContent }
           </View>
         ) }
+        { textComponent ? <View style={space.paddingSideXs}>{textComponent}</View> :
         <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, shrink ? undefined : styles.grow, space.paddingTopXs]}>
-          <View style={styles.row}>
-            <Text
-              numberOfLines={1}
-              ellipsizeMode="tail"
-              adjustsFontSizeToFit
-              style={[
-                { textAlignVertical: 'center' },
-                detail ? typography.large : typography.cardName,
-                { minHeight: topTextHeight, color: disabled ? disabledTextColor[color] : textColor[color] },
-              ]}
-            >
-              { title }
-            </Text>
+            <View style={styles.row}>
+              <Text
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                adjustsFontSizeToFit
+                style={[
+                  { textAlignVertical: 'center' },
+                  detail ? typography.large : typography.cardName,
+                  { minHeight: topTextHeight, color: disabled ? disabledTextColor[color] : textColor[color] },
+                ]}
+              >
+                { title }
+              </Text>
+            </View>
+            { !!detail && (
+              <Text style={[typography.smallButtonLabel, { marginTop: 1, color: detailTextColor[color] }]} numberOfLines={2}>
+                { detail }
+              </Text>
+            ) }
           </View>
-          { !!detail && (
-            <Text style={[typography.smallButtonLabel, { marginTop: 1, color: detailTextColor[color] }]} numberOfLines={2}>
-              { detail }
-            </Text>
-          ) }
-        </View>
+        }
         { !!rightNode && rightNode }
       </View>
     </Ripple>

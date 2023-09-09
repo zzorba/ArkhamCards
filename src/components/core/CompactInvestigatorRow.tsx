@@ -19,6 +19,7 @@ interface Props {
   width: number;
   children?: React.ReactNode;
   description?: string;
+  detail?: React.ReactNode;
   color?: 'dark' | 'light';
   name?: string;
   hideImage?: boolean;
@@ -28,7 +29,7 @@ interface Props {
 export default function CompactInvestigatorRow({
   hideImage,
   color,
-  eliminated, name, description, investigator, transparent, yithian, open, badge, leftContent, imageOffset, children, width, arkhamCardsImg }: Props) {
+  eliminated, name, description, investigator, transparent, yithian, open, detail, badge, leftContent, imageOffset, children, width, arkhamCardsImg }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <RoundedFactionHeader
@@ -64,13 +65,15 @@ export default function CompactInvestigatorRow({
           >
             { name || investigator?.name }
           </Text>
-          <Text
-            style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}
-            numberOfLines={1}
-            ellipsizeMode="tail"
-          >
-            { description !== undefined ? description : investigator?.subname }
-          </Text>
+          { detail ?? (
+            <Text
+              style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
+              { description !== undefined ? description : investigator?.subname }
+            </Text>
+          ) }
         </View>
         { !!children && <View style={[styles.rightRow, space.paddingLeftS]}>{ children }</View> }
       </View>

@@ -24,6 +24,8 @@ interface Props {
   choices: DisplayChoiceWithId[];
   largePrompt?: boolean;
   defaultChoice?: string;
+  compact?: boolean;
+  icon?: string;
 }
 
 export default function ChooseOnePrompt({
@@ -34,6 +36,8 @@ export default function ChooseOnePrompt({
   choices,
   showUndo,
   defaultChoice,
+  compact,
+  icon,
 }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { colors, width } = useContext(StyleContext);
@@ -107,6 +111,8 @@ export default function ChooseOnePrompt({
             selectedIndex={selectedChoice}
             onSelect={setSelectedChoice}
             editable={decision === undefined}
+            compact={compact}
+            icon={icon}
           />
         </View>
         { !editable && chaosBagLine }

@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { View } from 'react-native';
-import { map } from 'lodash';
+import { flatMap } from 'lodash';
 import { t } from 'ttag';
 
 import CampaignGuide from '@data/scenario/CampaignGuide';
@@ -30,7 +30,8 @@ export default function CampaignLogSectionComponent({ sectionId, campaignGuide, 
   }, [showTextEditDialog, saveTextEntry]);
   return (
     <>
-      { map(section.entries, (entry, idx) => (
+      { flatMap(section.entries, (entry, idx) => (
+        entry.id === '$relationship' ? null :
         <View key={`${entry.id}_${idx}`}>
           <CampaignLogEntryComponent
             entry={entry}

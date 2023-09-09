@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { findIndex, find, map, flatMap } from 'lodash';
+import { findIndex, filter, find, map, flatMap } from 'lodash';
 import { t } from 'ttag';
 
 import BranchButton from './BranchButton';
@@ -143,7 +143,6 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
     });
   }, [componentId, campaignId, processedScenario]);
   const hasFaq = processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
-
   return (
     <>
       <InputWrapper editable>

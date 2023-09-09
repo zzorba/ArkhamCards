@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { flatMap, keys, sum, values } from 'lodash';
+import { StyleSheet, Text, View } from 'react-native';
+import { flatMap, keys, range, map, sum, values } from 'lodash';
 import { t } from 'ttag';
 
 import ChaosBagLine from '@components/core/ChaosBagLine';
@@ -24,6 +24,7 @@ import { ProcessedCampaign } from '@data/scenario';
 import CampaignLogScarletKeysComponent from './CampaignLogScarletKeysComponent';
 import CampaignLogCalendarComponent from './CampaignLogCalendarComponent';
 import { MAX_WIDTH } from '@styles/sizes';
+import AppIcon from '@icons/AppIcon';
 
 interface Props {
   componentId: string;
@@ -39,18 +40,48 @@ interface Props {
   processedCampaign: ProcessedCampaign | undefined;
 }
 
+function RelationshipBoxes({ section }: { section: EntrySection }) {
+  const { colors, typography } = useContext(StyleContext);
+  const relationshipEntry = section.entries.find(entry => entry.id === '$relationship');
+  const relationshipValue = relationshipEntry?.type === 'count' ? relationshipEntry.count : 0;
+  return (
+    <View style={{ flexDirection: 'row' }}>
+      <Text style={[typography.cursive, { fontSize: 14, lineHeight: 16, color: colors.D30 }, space.paddingRightXs]} allowFontScaling={false}>{'Relationship'}</Text>
+      { map(range(0, 4), (idx) => (
+        <View key={idx} style={[{ width: 14, height: 14, borderWidth: 1, borderColor: colors.D30, position: 'relative' }, space.marginRightXs]}>
+          { relationshipValue > idx ? (
+            <View style={{ position: 'absolute', top: -2, left: -2 }}>
+              <AppIcon size={16} name="close" color={colors.D20} allowFontScaling={false} />
+            </View>
+          ) : null }
+        </View>
+      )) }
+    </View>
+  )
+}
+
 interface CardSectionProps {
   code: string;
   section?: EntrySection;
   campaignGuide: CampaignGuide;
   width: number;
+  isRelationship: boolean
 }
 
-function CardSection({ code, section, campaignGuide, width }: CardSectionProps) {
+function CardSection({ code, section, campaignGuide, width, isRelationship }: CardSectionProps) {
   const [card] = useSingleCard(code, 'encounter');
   const eliminated = !!section?.sectionCrossedOut;
   const header = useMemo(() => {
-    return <CompactInvestigatorRow transparent investigator={card} eliminated={eliminated} width={width} open={!eliminated} />
+    return (
+      <CompactInvestigatorRow
+        transparent
+        investigator={card}
+        detail={isRelationship && section ? <RelationshipBoxes section={section} /> : undefined}
+        eliminated={eliminated}
+        width={width}
+        open={!eliminated}
+      />
+    );
   }, [card, eliminated, width]);
   if (eliminated) {
     return header;
@@ -91,7 +122,8 @@ export default function CampaignLogComponent({
   const { colon } = useContext(LanguageContext);
   const renderLogEntrySectionContent = useCallback((
     id: string,
-    title: string, type?: 'investigator_count' | 'count' | 'supplies' | 'header' | 'partner' | 'scarlet_keys',
+    title: string,
+    type?: 'investigator_count' | 'count' | 'supplies' | 'header' | 'partner' | 'scarlet_keys' | 'relationship',
     partners?: Partner[],
     calendar?: CalendarEntry[],
     keys?: ScarletKey[]
@@ -185,6 +217,7 @@ export default function CampaignLogComponent({
             )}
           </View>
         );
+      case 'relationship':
       default: {
         const section = campaignLog.sections[id];
         if (CARD_REGEX.test(id)) {
@@ -195,6 +228,7 @@ export default function CampaignLogComponent({
                 campaignGuide={campaignGuide}
                 section={section}
                 width={width - s * 2}
+                isRelationship={type === 'relationship'}
               />
             </View>
           );
