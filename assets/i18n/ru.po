@@ -7911,7 +7911,7 @@ msgstr "Под присмотром"
 
 msgctxt "tarot-reading"
 msgid "Damned"
-msgstr "Проклятье"
+msgstr "Обречённый"
 
 msgctxt "tarot-reading"
 msgid "Custom"
