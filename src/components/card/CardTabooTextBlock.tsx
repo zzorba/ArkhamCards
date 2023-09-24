@@ -41,7 +41,7 @@ export default function CardTabooTextBlock({ card }: Props) {
           </Text>
         </>
       ) }
-      { (card.deck_limit === 0) ? (
+      { (card.deck_limit === 0 && !card.bonded_from) ? (
         <Text style={typography.small}>
           { t`Forbidden` }
         </Text>

@@ -272,20 +272,20 @@ export default class GuidedCampaignLog {
         investigatorStatus: {},
       };
       forEach(campaignGuide.campaignLogSections(), log => {
-        switch (log.type) {
-          case 'count':
-            this.countSections[log.id] = { count: 0 };
-            break;
-          case 'supplies':
-            this.investigatorSections[log.id] = {};
-            break;
-          case 'hidden':
-            break;
-          default:
-            this.sections[log.id] = {
-              entries: [],
-            };
-            break;
+        if (!log.hidden) {
+          switch (log.type) {
+            case 'count':
+              this.countSections[log.id] = { count: 0 };
+              break;
+            case 'supplies':
+              this.investigatorSections[log.id] = {};
+              break;
+            default:
+              this.sections[log.id] = {
+                entries: [],
+              };
+              break;
+          }
         }
       });
     } else if (!hasRelevantEffects) {

@@ -1,6 +1,15 @@
 {
   "cards": [
     {
+      "encounter_code": "zhod_to_the_heart_of_the_congo",
+      "cards": [
+        {
+          "code": [ "zhod_00052", "zhod_00053", "zhod_00054" ],
+          "text": "3個Savannah地點應該移除暗紅色的“+”連接符號(正反面都是)。"
+        }
+      ]
+    },
+    {
       "encounter_code": "blood_on_the_altar",
       "cards": [
         {
@@ -14,7 +23,7 @@
       "cards": [
         {
           "code": [ "02079" ],
-          "text": "原屬性\"[[人類]]\"應改為\"[[類人]]\"。"
+          "text": "原屬性\"[[人類]]\"應修正為\"[[類人]]\"。"
         },
         {
           "code": [ "02078" ],
@@ -27,7 +36,7 @@
       "cards": [
         {
           "code": [ "02097", "02098" ],
-          "text": "原屬性\"[[人類]]\"應改為\"[[類人]]\"。"
+          "text": "原屬性\"[[人類]]\"應修正為\"[[類人]]\"。"
         }
       ]
     },
@@ -72,6 +81,15 @@
       ]
     },
     {
+      "encounter_code": "return_to_at_deaths_doorstep",
+      "cards": [
+        {
+          "code": [ "54027", "54028" ],
+          "text": "此卡牌的能力應修正為：“維多利亞式宴會廳和酒窖相互連接。(原文無標註相互連接)” "
+        }
+      ]
+    },
+    {
       "encounter_code": "return_to_the_wages_of_sin",
       "cards": [
         {
@@ -85,7 +103,7 @@
       "cards": [
         {
           "code": [ "54060" ],
-          "text": "此卡牌的“宇宙”能力最後一句話應改為：“你可以選擇不移動到曲折深壑，改為在阿薩托斯上放置1個毀滅標記。”"
+          "text": "此卡牌的“宇宙”能力最後一句話應修正為：“你可以選擇不移動到曲折深壑，改為在阿薩托斯上放置1個毀滅標記。”"
         }
       ]
     },
@@ -94,7 +112,7 @@
       "cards": [
         {
           "code": [ "54068" ],
-          "text": "此卡牌的第一項強制能力的觸發條件應改為：“在你離開疊加地點後”而不是“在你離開疊加地點時”。"
+          "text": "此卡牌的第一項強制能力的觸發條件應修正為：“在你離開疊加地點後”而不是“在你離開疊加地點時”。"
         }
       ]
     },
@@ -103,7 +121,7 @@
       "cards": [
         {
           "code": [ "06224" ],
-          "text": "該卡牌的<b>強制</b>能力的觸發條件應改為：“如果維吉爾·格雷離場”而不是“如果維吉爾·格雷被擊敗”。"
+          "text": "該卡牌的<b>強制</b>能力的觸發條件應修正為：“如果維吉爾·格雷離場”而不是“如果維吉爾·格雷被擊敗”。"
         }
       ]
     },
@@ -112,7 +130,7 @@
       "cards": [
         {
           "code": [ "06144" ],
-          "text": "該卡牌的<b>強制</b>能力的觸發條件應改為：“如果維吉爾·格雷離場”而不是“如果維吉爾·格雷被擊敗”。"
+          "text": "該卡牌的<b>強制</b>能力的觸發條件應修正為：“如果維吉爾·格雷離場”而不是“如果維吉爾·格雷被擊敗”。"
         }
       ]
     },
@@ -148,7 +166,12 @@
         {
           "code": [ "05163" ],
           "text": "此卡牌的能力應修正為：\"地點不能被翻到非[[幽靈]]面。\"(原文為\"地點不能被翻面。\")"
-        },
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_wages_of_sin",
+      "cards": [
         {
           "code": [ "05164" ],
           "text": "此卡牌的能力應修正為：\"地點不能被翻到[[幽靈]]面。\"(原文為\"地點不能被翻面。\")"
@@ -186,7 +209,7 @@
       "cards": [
         {
           "code": [ "06253" ],
-          "text": "此卡牌的<b>強制</b>能力應修正為：\"After an enemy with 1 or more clues on it is defeated: Take control of each of those clues.\""
+          "text": "此卡牌的<b>強制</b>能力應修正為：\"在擊敗帶有線索的敵人後：控制這些線索。(原文為\"將這些線索放到本場景卡上\")\""
         }
       ]
     },
@@ -199,7 +222,34 @@
         },
         {
           "code": [ "07330a", "07331a" ],
-          "text": "此卡牌強制能力的觸發條件應改為：“當調查階段結束時”而不是“當一輪結束時”。"
+          "text": "此卡牌強制能力的觸發條件應修正為：“當調查階段結束時”而不是“當一輪結束時”。"
+        }
+      ]
+    },
+    {
+      "encounter_code": "to_the_forbideen_peaks",
+      "cards": [
+        {
+          "code": [ "08596" ],
+          "text": "此卡牌的簡單/普通[cultist]效果應修正為：“如果你檢定失敗，在該檢定結束後……”\n此卡牌的困難/專家[cultist]效果應修正為“在該檢定結束後……”(原文無\"在該檢定結束後\")"
+        }
+      ]
+    },
+    {
+      "encounter_code": "city_of_the_elder_things",
+      "cards": [
+        {
+          "code": [ "08635" ],
+          "text": "此卡牌的能力應修正為：“選擇並揭示3個隱密隧道以外的地點…”(原文未排除隱密隧道)"
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_great_seal",
+      "cards": [
+        {
+          "code": [ "08669" ],
+          "text": "此卡牌的<b>強制</b>能力應修正為：“……啓動的封印：原生質團準備並再次結算敵軍階段<i>(其結算其獵手關鍵詞並再次攻擊)</i>。(每階段限制一次。)”(原文無\"準備\"以及\"每階段限制一次\")"
         }
       ]
     },
@@ -208,7 +258,37 @@
       "cards": [
         {
           "code": [ "09546" ],
-          "text": "Agenda 1b should read \"Find the location with a target on it nearest to La Chica Roja (or her mini-card)\" instead of \"Find the location with a target on it nearest to La Chica Roja's mini-card.\""
+          "text": "密謀1b應修正為：\"找出離紅姑娘(或她的小卡)最近且有目標的地點。\"，而不是\"找出離紅姑娘的小卡最近且有目標的地點。\""
+        },
+        {
+          "code": [ "09562" ],
+          "text": "此卡牌移除所有劇情文字並獲得：“<b>強制</b> – 在本密謀將要因為達到毀滅目標值而推進時：每位調查員被擊敗並受到1點精神創傷。”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "dealings_in_the_dark",
+      "cards": [
+        {
+          "code": [ "09567" ],
+          "text": "此卡牌的第一段落，第3行開始，應修正為：“……或查找遭遇牌堆和棄牌堆，找出並抽取一張[[異教徒]]敵人；該敵人獲得隱蔽1……”(原文無\"該敵人獲得隱蔽1\")"
+        },
+        {
+          "code": [ "09569" ],
+          "text": "此場景的第三段落的最後一行應修正為：“將每張隱蔽小卡放在一旁，位於場外。”，而不是“從遊戲中移除每張隱蔽小卡。”"
+        },
+        {
+          "code": [ "09570" ],
+          "text": "此卡牌的第二個<b>目標</b>應修正為：“如果一個帶有扭曲稜鏡的敵人在加拉塔碼頭，或帶有扭曲稜鏡的調查員被擊敗，閱讀……”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "dancing_mad",
+      "cards": [
+        {
+          "code": [ "09598" ],
+          "text": "此場景的第一段落的最後一行應修正為：“將每張隱蔽小卡放在一旁，位於場外。”，而不是“從遊戲中移除每張隱蔽小卡。”"
         }
       ]
     },
@@ -217,7 +297,7 @@
       "cards": [
         {
           "code": [ "09688" ],
-          "text": "Add the add the following to the “Resign” ability: “If each surviving investigator has resigned, immediately advance to Act 3b.”"
+          "text": "此卡牌的能力應修正為：“……你回合結束。如果所有倖存的調查員皆已撤退，立即推進到場景3b。”(原文無此敘述)"
         }
       ]
     }
@@ -242,6 +322,42 @@
         {
           "question": "Is the setup instruction regarding which version of Act 2—“The Really Bad Ones” the investigators should use correct? Am I supposed to be able to trigger the parley ability on Daniel Chesterfield (…Or At Least, What’s Left of Him)?",
           "answer": "Yes, it is correct, and no, there is no way to trigger it (in this reality)."
+        }
+      ]
+    },
+    {
+      "scenario_code": "a_phantom_of_truth",
+      "questions": [
+        {
+          "question": "What, if any, are the timing restrictions/implications of saying “Hastur” (for the purposes of taking horror)? Can I say “Hastur” after revealing a chaos token during a skill test to increase my skill value?",
+          "answer": "Yes. For all intents and purposes, it should be treated as a <b>強制</b> ability, which means it can create a nested sequence if used during another ability or a skill test, and it does not need to be during a player window in order for it to occur."
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_pallid_mask",
+      "questions": [
+        {
+          "question": "What, if any, are the timing restrictions/implications of saying “Hastur” (for the purposes of taking horror)? Can I say “Hastur” after revealing a chaos token during a skill test to increase my skill value?",
+          "answer": "Yes. For all intents and purposes, it should be treated as a <b>強制</b> ability, which means it can create a nested sequence if used during another ability or a skill test, and it does not need to be during a player window in order for it to occur."
+        }
+      ]
+    },
+    {
+      "scenario_code": "black_stars_rise",
+      "questions": [
+        {
+          "question": "What, if any, are the timing restrictions/implications of saying “Hastur” (for the purposes of taking horror)? Can I say “Hastur” after revealing a chaos token during a skill test to increase my skill value?",
+          "answer": "Yes. For all intents and purposes, it should be treated as a <b>強制</b> ability, which means it can create a nested sequence if used during another ability or a skill test, and it does not need to be during a player window in order for it to occur."
+        }
+      ]
+    },
+    {
+      "scenario_code": "dim_carcosa",
+      "questions": [
+        {
+          "question": "What, if any, are the timing restrictions/implications of saying “Hastur” (for the purposes of taking horror)? Can I say “Hastur” after revealing a chaos token during a skill test to increase my skill value?",
+          "answer": "Yes. For all intents and purposes, it should be treated as a <b>強制</b> ability, which means it can create a nested sequence if used during another ability or a skill test, and it does not need to be during a player window in order for it to occur."
         }
       ]
     },
@@ -388,6 +504,156 @@
         {
           "question": "Do we have to advance act 1a immediately if all investigators are at the Gateway to Y’ha-nthlei location and they control all four keys?",
           "answer": "No. This act advancement should be optional, though in the original printing it is a forced advance."
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_tatterdemalion",
+      "questions": [
+        {
+          "question": "What happens when you are entering the <b>Ventilation Shaft</b> from a forced effect (i.e. the Dream-Gate), but fail the [agility] test?",
+          "answer": "Choose another revealed locastion to move into instead. If there are no valid options, move into the Ventilation Shaft anyway."
+        },
+        {
+          "question": "How does <b>UPL-A21</b> work? Can an invesigator without <b>AI</b> cards engage it?",
+          "answer": "The condition on UPL-A21 only matters for the purposes of the enemy's own movement and automatic engagement. You are allowed to manually engage it even if you do not have [[AI]] cards, similar to aloof enemies."
+        },
+        {
+          "question": "For the <b>Heir to Carcosa</b>, does having 0 mental trauma count as having the least for the purpose of the effect?",
+          "answer": "The intention is that <i>each investigator</i> needs at least 1 mental trauma for an investigator to gain the additional experience."
+        },
+        {
+          "question": "How does <b>Act 3a - Reconnected</b> work?",
+          "answer": "An investigator at the Cryosleep Quarters must activate a scan ability with the corresponding icon to advance. You must fully resolve the scan before advancing. Note that the act itself does not have a scan ability, so you must find another way to scan for a matching icon."
+        }
+      ]
+    },
+    {
+      "scenario_code": "electric_nightmare",
+      "questions": [
+        {
+          "question": "How do you deal with the <b>Boogeyman</b>",
+          "answer": "Since it cannot be evaded, you may want to spend clues efficiently and figure out how to abuse the location-switching mechanic to your advantage. As a last resort, you may want to use Maja's ability."
+        }
+      ]
+    },
+    {
+      "scenario_code": "lost_quantum",
+      "questions": [
+        {
+          "question": "<b>The Hounds of Tindalos</b>, is this real?",
+          "answer": "Yes, the Hounds of Tindalos enemies are real and its abilities behave as written."
+        },
+        {
+          "question": "Okay, but what does it mean when it's considered to be engaged with me?",
+          "answer": "It is treated as if it were a Massive enemy at your location, so, if you have an odd number of cards in your hand, you will provoke attacks of opportunity and will be able to fight or evade it as if it were engaged with you. If you do not have an odd number of cards in your hand, you can't do much about it."
+        },
+        {
+          "question": "Does it attack all investigators that it is considered engaged with?",
+          "answer": "Yes, because it is Massive it will attack each investigator it is considered engaged with during the enemy phase, so all investigators with an odd number of cards in their hand."
+        },
+        {
+          "question": "Okay, but that's not even the complicated part. Odd number of cards? What happens if you attack it while you have an odd number of cards, but commit a card during the attack. Even worse, what happens if you play a <b>Fight</b> event?",
+          "answer": "In general cases, all that matters is that you were able to attack the Hound when you <b>initiate</b> your action / effect / ability. So in the example of attacking with a <b>Fight</b> event, that is possible, as long as you have an odd number of cards when you are about to play the <b>Fight</b> event. Note that it will still Retaliate even if you have an even number of cards now, since it is a response to your attack."
+        },
+        {
+          "question": "What happens if you fail an attack against a Hound that I am not engaged with? Will it hit every other investigator that is considered engaged with it?",
+          "answer": "No, since it is Massive, and part of the rules for Massive ignores this aspect of the attack."
+        },
+        {
+          "question": "Are <b>face-down encounter cards</b> in play?",
+          "answer": "No - but other cards may reference it."
+        },
+        {
+          "question": "Are we allowed to keep track of which <b>face-down encounter card</b> is which?",
+          "answer": "As long as you are not asked to shuffle them - yes. But in practice, it doesn't make that big of a difference."
+        },
+        {
+          "question": "How does <b>Quantum Collapse</b> work?",
+          "answer": "When you draw Quantum Collapse, check if you have any face-down encounter cards in your threat area. If you do, draw all of them, one at a time. If you don't, put Quantum Collapse face-down in your threat area. Additionally, if you drew it from the threat area, take 1 horror too. If you drew Quantum Collapse from your threat area and it was the only face-down card you have, immediately put it back because of its revelation effect."
+        },
+        {
+          "question": "How does the <b>Agenda deck</b> work?",
+          "answer": "The agenda deck is a randomized set of 3 agendas. Whenever you advance it, read and resolve the top ability. Then, set it aside. If that was the last agenda, add 1 Impending Doom and shuffle all the set aside agendas together again to create the new agenda deck that you will use from now on. So, in practice, after you \"finish\" the agenda deck, you \"reset\" it and start over with an agenda deck composed of the same 3 agendas, randomly shuffled."
+        },
+        {
+          "question": "Is there a map for the <b>locations</b>?",
+          "answer": "It's not possible to place the locations on a flat plane without intersecting connections. You'll just have to try not to get lost!"
+        }
+      ]
+    },
+    {
+      "scenario_code": "in_the_shadow_of_earth",
+      "questions": [
+        {
+          "question": "When <b>checking for imitations</b> in act 2b or in the resolution, do you reveal the chaos tokens all at once, or one at a time?",
+          "answer": "You will need to reveal chaos tokens one at a time, returning the revealed token to the chaos bag each time."
+        }
+      ]
+    },
+    {
+      "scenario_code": "strange_moons",
+      "questions": [
+        {
+          "question": "Can the <b>Mi-Go Scientist</b> stay at the same location when moving from his Patrol keyword?",
+          "answer": "No, the Mi-Go Scientist must move during the enemy phase to a connecting location if it is not engaged."
+        },
+        {
+          "question": "How does \"<b>Cannot be disengaged</b>\" interact with abilities that disengage from enemies?",
+          "answer": "Cannot is absolute, so you must fulfill as much of that ability as possible without disgengaging from the enemy. If you are Luke, you cannot use the <i>Gate-Box</i>. If you draw <i>Detached from Reality</i>, the enemy is defeated from the paradox."
+        },
+        {
+          "question": "When testing combinations of the same skill such as ([willpower] + [willpower]), do the skill icons committed get counted twice?",
+          "answer": "No, they do not. In the example, each [willpower] icon committed would only increase your skill value by 1."
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_machine_in_yellow",
+      "questions": [
+
+        {
+          "question": "How does \"<b>Cannot be disengaged</b>\" interact with abilities that disengage from enemies?",
+          "answer": "Cannot is absolute, so you must fulfill as much of that ability as possible without disgengaging from the enemy. If you are Luke, you cannot use the <i>Gate-Box</i>. If you draw <i>Detached from Reality</i>, the enemy is defeated from the paradox."
+        },
+        {
+          "question": "For the <b>Your Other Self</b> enemy, who spends the clue to prevent the damage for is <b>強制</b> ability?",
+          "answer": "It is the investigator who deals the damage that must spend the clue to cancel the damage. (They must have enough knowledge to figure out which one is the real you!)"
+        }
+      ]
+    },
+    {
+      "scenario_code": "fragment_of_carcosa",
+      "questions": [
+        {
+          "question": "My brain is dying. Why would you do this Axolotl?",
+          "answer": "I am so sorry."
+        },
+        {
+          "question": "How do you get the <b>Abjuration of the Throne</b>?",
+          "answer": "It is possible by the current rules of the game. (Hint: You'll need to rethink what you have done in a different perspective.)"
+        }
+      ]
+    },
+    {
+      "scenario_code": "starfall",
+      "questions": [
+        {
+          "question": "Can a <b>Starship</b> attach to another <b>Starship</b>?",
+          "answer": "Yep. The ships are docked to each other!"
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_city_of_archives",
+      "questions": [
+        {
+          "question": "When setting up “The City of Archives”, do I follow Setup instructions or constant abilities on my investigator card, such as Sefina Rosseau or Lily Chen?",
+          "answer": "When setting up The City of Archives, you are instructed to swap your investigator card with a Body of a Yithian card. This swap occurs during Step 10 of Setting Up the Game, as outlined in the Rules Reference. Any investigators with Setup abilities that resolve before Step 10 of Setup should do so, meaning Sefina Rosseau should choose her 5 events and Lola Hayes should choose her role before swapping."
+        },
+        {
+          "question": "In “The City of Archives,” if I am instructed to use the Body of a Yithian for the remainder of the campaign, how should I set up my investigator in future scenarios?",
+          "answer": "In future scenarios, you must swap your investigator card with a Body of a Yithian card during Step 10 of Setting Up the Game, as outlined in the Rules Reference, just as you would when playing “The City of Archives” scenario (see above)."
         }
       ]
     }

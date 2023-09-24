@@ -100,7 +100,7 @@ export function SimpleChaosBagItem({ componentId }: NavigationProps) {
         >
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <View style={[{ flexDirection: 'column', flex: 1, justifyContent: 'space-between' }, space.paddingS]}>
-              <View style={{ flexDirection: 'row' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                 <View style={[{ borderRadius: 32, backgroundColor: colors.L10 }, space.paddingXs]}>
                   <AppIcon name="chaos_bag" size={32} color={colors.D30} />
                 </View>

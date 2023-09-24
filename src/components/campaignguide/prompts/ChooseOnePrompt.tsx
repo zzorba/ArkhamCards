@@ -8,7 +8,7 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { DisplayChoiceWithId } from '@data/scenario';
 import space, { s } from '@styles/space';
-import { findIndex, forEach, throttle } from 'lodash';
+import { filter, findIndex, forEach, throttle } from 'lodash';
 import InputWrapper from './InputWrapper';
 import ActionButton from './ActionButton';
 import ChaosBagLine from '@components/core/ChaosBagLine';
@@ -26,6 +26,7 @@ interface Props {
   defaultChoice?: string;
   compact?: boolean;
   icon?: string;
+  showHiddenChoices?: boolean;
 }
 
 export default function ChooseOnePrompt({
@@ -33,14 +34,16 @@ export default function ChooseOnePrompt({
   bulletType,
   text,
   confirmText,
-  choices,
+  choices: allChoices,
   showUndo,
   defaultChoice,
   compact,
   icon,
+  showHiddenChoices,
 }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { colors, width } = useContext(StyleContext);
+  const choices = useMemo(() => filter(allChoices, choice => !choice.hidden), [allChoices])
   const [currentSelectedChoice, setSelectedChoice] = useState<number | undefined>(
     defaultChoice ? findIndex(choices, item => item.id === defaultChoice) : undefined
   );
@@ -107,7 +110,7 @@ export default function ChooseOnePrompt({
         { editable && chaosBagLine }
         <View style={[space.paddingTopS, space.paddingBottomS]}>
           <ChooseOneListComponent
-            choices={choices}
+            choices={showHiddenChoices ? allChoices : choices}
             selectedIndex={selectedChoice}
             onSelect={setSelectedChoice}
             editable={decision === undefined}

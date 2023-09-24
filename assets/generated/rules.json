@@ -146,7 +146,7 @@
       },
       {
         "id": "Moving_Attachments",
-        "title": "Shifting Slots",
+        "title": "Moving Attachments",
         "text": "If an attachment “moves” from one game element to another, or attaches to a game element while already attached to a game element, it detaches from its original game element and attaches to the new one."
       }
     ]

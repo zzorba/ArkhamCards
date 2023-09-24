@@ -1,10 +1,13 @@
 import React, { useCallback } from 'react';
+import { View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { LocationSetupProps } from '../LocationSetupView';
 import { LocationSetupStep } from '@data/scenario/types';
 import ArkhamButton from '@components/core/ArkhamButton';
+import DeckButton from '@components/deck/controls/DeckButton';
+import space from '@styles/space';
 
 interface Props {
   step: LocationSetupStep;
@@ -33,6 +36,14 @@ export default function LocationSetupButton({ componentId, step }: Props) {
     });
   }, [componentId, step]);
   return (
-    <ArkhamButton icon="show" title={step.text} onPress={onPress} />
+    <View style={space.marginSideM}>
+      <DeckButton
+        icon="show"
+        color="dark_gray"
+        title={step.text}
+        detail={step.description}
+        onPress={onPress}
+      />
+    </View>
   );
 }
