@@ -83,7 +83,7 @@
     "deprecated-react-native-prop-types": "2.3.0",
     "events": "3.3.0",
     "flatted": "3.2.9",
-    "graphql": "16.8.0",
+    "graphql": "16.8.1",
     "hoist-non-react-statics": "3.3.2",
     "jwt-decode": "3.1.2",
     "lodash": "4.17.21",
