@@ -75,7 +75,6 @@ function UnderlineHtmlTagRule(): MarkdownRule<WithText, State> {
   };
 }
 
-
 function StrikeHtmlTagRule(): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<strike>(.+?)<\\/strike>')),

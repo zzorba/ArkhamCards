@@ -40,11 +40,14 @@ export default function ChooseOneListComponent({
       if (!choice.conditionHidden) {
         idx++;
       }
-      if (!editable && !choice.conditionHidden && currentIndex != selectedIndex) {
-        return [];
-      }
-      if (editable && choice.hidden) {
-        return [];
+      if (!editable) {
+        if(choice.conditionHidden || currentIndex != selectedIndex) {
+          return [];
+        }
+      } else {
+        if (choice.hidden) {
+          return [];
+        }
       }
       if (compact && choice.conditionHidden) {
         return [];
@@ -103,10 +106,10 @@ export default function ChooseOneListComponent({
   }
   return (
     <>
-      { flatMap(visibleChoices, ({ choice, disabled, idx }) => {
+      { flatMap(visibleChoices, ({ choice, disabled, key, idx }) => {
         return (
           <ChoiceComponent
-            key={idx}
+            key={key}
             index={idx}
             onSelect={onSelect}
             choice={choice}
@@ -140,14 +143,14 @@ function ChoiceComponent({
   onSelect,
   last,
 }: ChoiceComponentProps) {
-  const { borderStyle } = useContext(StyleContext);
+  const { borderStyle, colors } = useContext(StyleContext);
   const onPress = useCallback(() => {
     onSelect(index);
   }, [onSelect, index]);
   const textContent = useMemo(() => {
     return (
       <>
-        { choice.text && <CampaignGuideTextComponent text={disabled ? `<strike>${choice.text}</strike` : choice.text} sizeScale={choice.large ? 1.2 : undefined} /> }
+        { choice.text && <CampaignGuideTextComponent text={disabled ? `<strike>${choice.text}</strike>` : choice.text} sizeScale={choice.large ? 1.2 : undefined} /> }
         { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
       </>
     );
@@ -160,7 +163,7 @@ function ChoiceComponent({
       showBorder ? borderStyle : undefined,
       showBorder ? { borderBottomWidth: StyleSheet.hairlineWidth } : undefined,
     ]}>
-      <View style={styles.padding}>
+      <View style={[styles.padding, { alignItems: 'flex-start' }]}>
         <View style={[styles.bullet, styles.radioButton]}>
           <ArkhamSwitch
             large
@@ -169,6 +172,7 @@ function ChoiceComponent({
             disabled={disabled}
             type="radio"
             color="dark"
+            disabledColor={colors.L10}
           />
         </View>
         <TouchableShrink style={{ flex: 1 }} onPress={onPress} disabled={!editable || disabled}>

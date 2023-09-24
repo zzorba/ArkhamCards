@@ -4,12 +4,12 @@ import {
 } from 'react-native';
 import { MarkdownText, Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
-import { WithText } from './types';
+import { WithChildren } from './types';
 import { StyleContextType } from '@styles/StyleContext';
 
 export default function StrikethroughTextNode({ colors }: StyleContextType) {
   return (
-    node: Node & WithText,
+    node: Node & WithChildren,
     output: OutputFunction,
     state: RenderState
   ) => {
@@ -18,7 +18,7 @@ export default function StrikethroughTextNode({ colors }: StyleContextType) {
         key={state.key}
         style={[styles.strikeText, { textDecorationColor: colors.darkText }]}
       >
-        { node.text }
+        { output(node.children, state) }
       </MarkdownText>
     );
   };

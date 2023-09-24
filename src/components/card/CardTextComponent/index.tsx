@@ -153,12 +153,27 @@ function MalformedBoldItalicHtmlTagRule(usePingFang: boolean, style: StyleContex
   };
 }
 
-function DelHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+function StrikeHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<strike>([\\s\\S]+?)<\\/strike>')),
+    order: BASE_ORDER + 1,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: StrikethroughTextNode(style),
+  };
+}
+
+function DelHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<del>([^<]+?)<\\/del>')),
     order: BASE_ORDER + 1,
-    parse: (capture) => {
-      return { text: capture[1] };
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
     },
     render: StrikethroughTextNode(style),
   };
@@ -397,6 +412,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       hrTag: HrTagRule,
       blockquoteTag: BlockquoteHtmlTagRule,
       delTag: DelHtmlTagRule(context),
+      strikeTag: StrikeHtmlTagRule(context),
       brTag: BreakTagRule(usePingFang, context),
       biTag: BoldItalicHtmlTagRule(usePingFang, context),
       badBiTag: MalformedBoldItalicHtmlTagRule(usePingFang, context),
