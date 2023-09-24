@@ -11,8 +11,8 @@
   },
   {
     "id": "The_Silver_Rule",
-    "title": "The Silver Rule",
-    "text": "If the text of two cards directly contradict one another in a way that is impossible to reconcile, the encounter card takes precedence over the player card. If both cards are encounter cards or both are player cards, the lead investigator may decide which takes precedence."
+    "title": "銀科鐵律",
+    "text": "如果兩張卡牌的文字描述直接相互矛盾且無法協調，以遭遇牌優先於玩家牌。如果兩張牌都是遭遇牌或者都是玩家牌，調查員隊長可以決定哪張牌優先。"
   },
   {
     "id": "A_An",
@@ -73,13 +73,13 @@
     "rules": [
       {
         "id": "Only_As_Your_First_Action",
-        "title": "“…only as your first action”",
-        "text": "If a card can only be played or its ability only triggered as your “first action,” it must spend one of your actions, and that action must be the first one you have taken during your turn. If it is fast, a free triggered ability, ignores its action cost, or takes place outside of your turn, it cannot be played or triggered."
+        "title": "“……只可作為你的第一個行動”",
+        "text": "如果一張卡牌只能作為你的“第一個行動”打出或者其能力只能作為“第一個行動”被觸發，它必須花費你的一個行動，並且該行動必須是你的回合期間進行的第一個行動。如果它是快速、免費觸發能力、忽略其行動費用、或者發生在你的回合以外，則它不能被打出或觸發。"
       },
       {
         "id": "Take_An_Action_Vs_Perform_An_Action",
-        "title": "“Take an action” vs “Perform/resolve an action”",
-        "text": "Some effects allow an investigator to “take” an action, usually of a certain type—for example, the ability on Ursula Downs or Haste. If an effect allows an investigator to take an action, they effectively gain an action and then immediately spend it in order to take the action in question, meaning it follows all of the rules taking an action might normally follow: it may provoke attacks of opportunity, it counts as an action for the purposes of cards that count how many actions you have taken, etc.\nSome other effects, such as Quickdraw Holster, allow an investigator to “perform” or “resolve” an action. Such effects typically specify that they ignore that action’s [action] cost. In this case, no action has been gained or spent, and the action is resolved as specified."
+        "title": "“進行一個行動” vs “執行/結算一個行動”",
+        "text": "某些效果允許調查員“進行”行動，通常是某種類型的行動，例如厄休拉·唐斯(/card/04002)或快手(/card/06239)的能力。如果某個效果允許調查員進行行動，調查員會獲得一個行動，然後立即花費它來進行該行動，這意味著它必須遵循正常進行行動時需要遵循的所有規則：可能會引起趁亂攻擊，計算已採取的行動數量的卡牌會將它計入……等等。\n其他一些效果，例如快拔槍套(/card/08089)，允許調查員“執行”或“結算”行動。這類效果通常會指示忽略該行動的[action]費用。在此情況下，不獲得或花費任何行動，僅依照指示結算該行動。"
       }
     ]
   },
@@ -110,14 +110,14 @@
   },
   {
     "id": "Alert",
-    "cycle": [ "tfa", "tcu", "tde" ],
+    "cycle": [ "tfa", "tcu", "tde", "eoe" ],
     "title": "警戒",
     "text": "每當調查員在試圖躲避一名帶有\"警戒\"關鍵詞的敵人時技能檢定失敗，在結算該技能檢定帶來的所有效果後，該敵人對進行躲避的這位調查員執行一次攻擊。敵人執行警戒攻擊後不被消耗(橫置)。不論該敵人是否與進行躲避的調查員交戰，此類攻擊均會發生。"
   },
   {
     "id": "Aloof",
     "title": "冷漠",
-    "text": "冷漠是一個關鍵詞能力。帶有冷漠關鍵詞的敵人，不會自動與所在地點的調查員交戰。\n- 當冷漠敵人生成時不進入交戰。\n- 調查員可以通過交戰行動或卡牌能力來與冷漠敵人交戰。\n- 調查員如果未與一名冷漠敵人交戰，則不能攻擊它。"
+    "text": "冷漠是一個關鍵詞能力。帶有冷漠關鍵詞的敵人，不會自動與所在地點的調查員交戰。\n- 當冷漠敵人生成時不進入交戰。\n- 調查員可以通過交戰行動或卡牌能力來與冷漠敵人交戰。\n- 調查員不能攻擊處於未交戰狀態的冷漠敵人。"
   },
   {
     "id": "As_if",
@@ -142,12 +142,12 @@
       {
         "id": "Control_of_Attachments",
         "title": "疊加(附屬)卡的控制權",
-        "text": "疊加(附屬)卡的控制權會根據被它疊加(附屬)的卡而改變。\n- 如果調查員將玩家卡疊加(附屬)到自己控制的玩家卡上，則其保留對疊加(附屬)卡的控制權。\n- 如果調查員將玩家卡疊加(附屬)到另一位調查員控制的玩家卡上，則另一位調查員控制該疊加(附屬)卡。\n- 如果帶有1個或多個疊加(附屬)卡的玩家卡的控制權改變，則取得該卡控制權的調查員控制這些疊加(附屬)卡。\n- 如果調查員將玩家卡疊加(附屬)到遭遇卡上，則其保留對疊加(附屬)卡的控制權(但不會獲得被疊加(附屬)的遭遇卡的控制權)。"
+        "text": "疊加(附屬)卡的控制權會根據被它疊加(附屬)的卡而改變。\n- 如果調查員將玩家卡疊加(附屬)到自己控制的玩家卡上，則其保留對疊加(附屬)卡的控制權。\n- 如果調查員將玩家卡疊加(附屬)到另一位調查員控制的玩家卡上，則另一位調查員控制該疊加(附屬)卡。\n- 如果帶有1個或多個疊加(附屬)卡的玩家卡的控制權改變，則取得該卡控制權的調查員控制這些疊加(附屬)卡。\n- 如果調查員將玩家卡疊加(附屬)到遭遇卡上，則其保留對疊加(附屬)卡的控制權(但不會獲得被疊加(附屬)的遭遇卡的控制權)。\n除非有特別說明，否則有永久關鍵詞的卡牌不能疊加(附屬)到其他玩家卡。(例如：玩家不能將食罪者(/card/09094)疊加(附屬)到艾莉·盧巴什(/card/09092)。)"
       },
       {
         "id": "Moving_Attachments",
-        "title": "Shifting Slots",
-        "text": "If an attachment “moves” from one game element to another, or attaches to a game element while already attached to a game element, it detaches from its original game element and attaches to the new one."
+        "title": "疊加(附屬)卡的移動",
+        "text": "如果疊加(附屬)卡從一個遊戲配件“移動”到另一個遊戲配件，或者在已疊加(附屬)的狀況下需要疊加(附屬)到另一個遊戲配件，則它會與原遊戲配件解除疊加(附屬)並疊加(附屬)到新遊戲配件。"
       }
     ]
   },
@@ -314,7 +314,14 @@
   {
     "id": "Costs",
     "title": "費用",
-    "text": "遊戲中有兩種費用：資源費用和能力費用。\n卡牌的資源費用是指左上角的數字，玩家在打出該卡牌時必須支付該數值的資源。支付時，從自己的資源池拿出同等數量的資源，並退回給供應堆。\n部分卡牌觸發能力是以\"花費：效果\"的格式來書寫的。這種情況下，調查員必須先完全支付卡牌的費用，才能觸發其卡牌能力。冒號之後的文字就是其效果。\n- 如果單張卡牌要求支付多種費用，必須在完全付清後才能執行效果。\n- 只有控制卡牌的玩家才能支付卡牌費用。其他玩家所控制的遊戲配件不能用於支付。\n- 當要求玩家消耗(橫置)、犧牲或使用某個卡牌來支付資源時，只能選擇那名玩家自己控制，並且在場的卡牌，除非費用指明可以用場外的卡牌來支付。\n- 如果費用需要的遊戲配件尚未打出，那麼支付費用的玩家只能使用在其玩家區域的遊戲配件來支付(例如手牌和牌堆)。\n- 如果調查員要求以團隊為單位支付，則每位調查員(或者能力指明的團隊中的調查員)都可以支付費用。\n- 能力如果無法對遊戲造成影響，那麼該能力就不能啟動，費用也就不能支付。\n- 如果能力的費用是令調查員受到傷害或恐懼，那麼可以將受到的任意傷害或恐懼分配給支援卡。"
+    "text": "遊戲中有兩種費用：資源費用和能力費用。\n卡牌的資源費用是指左上角的數字，玩家在打出該卡牌時必須支付該數值的資源。支付時，從自己的資源池拿出同等數量的資源，並退回給供應堆。\n部分卡牌觸發能力是以\"花費：效果\"的格式來書寫的。這種情況下，調查員必須先完全支付卡牌的費用，才能觸發其卡牌能力。冒號之後的文字就是其效果。\n- 如果單張卡牌要求支付多種費用，必須在完全付清後才能執行效果。\n- 只有控制卡牌的玩家才能支付卡牌費用。其他玩家所控制的遊戲配件不能用於支付。\n- 當要求玩家消耗(橫置)、犧牲或使用某個卡牌來支付資源時，只能選擇那名玩家自己控制，並且在場的卡牌，除非費用指明可以用場外的卡牌來支付。\n- 如果費用需要的遊戲配件尚未打出，那麼支付費用的玩家只能使用在其玩家區域的遊戲配件來支付(例如手牌和牌堆)。\n- 如果調查員要求以團隊為單位支付，則每位調查員(或者能力指明的團隊中的調查員)都可以支付費用。\n- 能力如果無法對遊戲造成影響，那麼該能力就不能啟動，費用也就不能支付。\n- 如果能力的費用是令調查員受到傷害或恐懼，那麼可以將受到的任意傷害或恐懼分配給支援卡。",
+    "rules": [
+      {
+        "id": "Ignoring_All_Costs",
+        "title": "忽略所有費用",
+        "text": "某些卡牌，例如知識就是力量(/card/05231)或禍言術(/card/09012)，允許調查員打出一張卡牌或啟動支援卡的一項能力，並“忽略所有費用”。這些效果僅忽略啟動能力的費用。結算該能力時必須支付的額外費用不會忽略，換句話說，忽略“冒號之前”的任何內容，但必須照常支付“冒號之後”的任何額外費用。\n<i>例如，如果調查員使用知識就是力量(/card/05231)來啟動智慧古書(/card/06279)上的[action]能力，知識就是力量可以讓你啟動其能力時忽略行動費用和消耗(橫置)智慧古書，在你的牌組中查找一張卡牌，但並不免除花費秘密來打出該卡牌的額外費用。同樣地，打出禍言術(/card/09012)可以讓你忽略啟動塵世寧靜(/card/08117)能力的行動費用，但不能忽略治癒你所在地點的調查員所需的費用。"
+      }
+    ]
   },
   {
     "id": "Customizable",
@@ -360,8 +367,8 @@
   },
   {
     "id": "Different",
-    "title": "Different",
-    "text": "Some card abilities refer to “different” cards. Different cards are cards with different titles (excluding subtitles). <i>(e.g. two copies of Ward of Protection are  not considered to be “different,” even if they have different levels.)</i>\nSome card abilities refer to “different” actions or “different” abilities. An ability or action is different from another ability/action if the two are non-identical abilities, separate abilities on the same card, or abilities on two different cards. <i>(e.g. the two separate fight abilities on Sledgehammer are different from one another, however identical fight abilities on two copies of Machete are not different from one another, nor are two basic fight actions).</i>\n- The exception to this rule is locations. Separate location cards are, by their very nature, not the same location. Therefore, multiple copies of locations with the same title are still considered to be different locations."
+    "title": "不同",
+    "text": "某些卡牌能力指涉“不同”的卡牌。不同的卡牌為具有不同名稱（不含副標題）的卡牌。<i>(例如：2張守護結界(/card/01065, /card/02307, /card/03270)不被視為“不同”，即使它們有不同的等級。)</i>\n某些卡牌能力指涉“不同”行動或“不同”能力。兩者敘述不完全一致的行動/能力、同一張牌上的多種行動/能力或兩張不同卡牌上的行動/能力，皆為不同行動/能力。<i>(例如，長柄大錘(/card/08094)上的兩個攻擊能力彼此不同，但是2張大砍刀(/card/01020)上的相同攻擊能力彼此沒有不同，兩個基礎攻擊行動之間也沒有不同）。</i>\n- 此規則的例外是地點。以本質來說，地點卡各別位於不同的位置。因此，多張具有相同名稱的地點仍被視為不同的地點。"
   },
   {
     "id": "Difficulty_level",
@@ -376,7 +383,14 @@
   {
     "id": "Dilemmas_and_Revelation_Abilities",
     "title": "困境與揭示能力",
-    "text": "某些玩家卡牌(即帶有[[困境]]屬性的卡牌)具有顯現能力。當顯現能力在其他卡牌類型上時，該能力會在當該卡牌被抽取、或因為其他原因進入你的手牌時結算，而不是當打出該卡牌時結算。\n- 這些卡牌沒有費用(\"-\")。這些卡牌也無法被打出。該效果只在當它們被抽取到或是加入你的手牌時結算。\n- 在結算過玩家卡牌上的顯現能力後，將其放到其所有者的棄牌堆中。\n- 顯現能力在遊戲準備時不會結算，如果一張或多張具有顯現能力的卡牌在遊戲準備時被抽取到，等到遊戲開始時，每位玩家(按照玩家順序)結算其所有的顯現能力，並由自己決定結算的順序。"
+    "text": "某些玩家卡牌(即帶有[[困境]]屬性的卡牌)具有顯現能力。當顯現能力在其他卡牌類型上時，該能力會在當該卡牌被抽取、或因為其他原因進入你的手牌時結算，而不是當打出該卡牌時結算。\n- 這些卡牌沒有費用(\"-\")。這些卡牌也無法被打出。該效果只在當它們被抽取到或是加入你的手牌時結算。\n- 在結算過玩家卡牌上的顯現能力後，將其放到其所有者的棄牌堆中。\n- 顯現能力在遊戲準備時不會結算，如果一張或多張具有顯現能力的卡牌在遊戲準備時被抽取到，等到遊戲開始時，每位玩家(按照玩家順序)結算其所有的顯現能力，並由自己決定結算的順序。",
+    "rules": [
+      {
+        "id": "Revelation_Ability_Priority",
+        "title": "顯現能力優先序",
+        "text": "如果調查員手牌中同時有[[困境]]卡牌和弱點和/或遭遇卡牌，必須先結算弱點和/或遭遇卡牌。"
+      }
+    ]
   },
   {
     "id": "Direct_Damage_Direct_Horror",
@@ -426,8 +440,8 @@
   },
   {
     "id": "Encounter_Cards_Vs_Scenario_Cards",
-    "title": "“Encounter cards” vs “Scenario cards”",
-    "text": "These two terms are used interchangeably to mean any non-player card used in a scenario, such as the contents of the encounter deck, locations, acts, agendas, the scenario reference card, etc."
+    "title": "“遭遇卡” vs “冒險卡”",
+    "text": "這兩個詞語可以互換使用，指冒險中使用的任何非玩家卡牌，例如遭遇組、地點、場景、密謀、冒險輔助卡等等。"
   },
   {
     "id": "Encounter_Deck",
@@ -502,8 +516,8 @@
   },
   {
     "id": "Farthest_From_All_Investigators",
-    "title": "“Farthest from all investigators”",
-    "text": "Some card effects instruct investigators to put a card into play at the location farthest from all investigators. This is determined by finding the location with the highest combined distance from each investigator. In the event of a tie, as usual, the lead investigator decides.\n<i>For example: Location A is 5 connections away from investigator A and 1 connection away from investigator B. Location B is 3 connections away from investigator A and 4 connections away from investigator B. Location B is therefore the farthest from both investigators, because the total distance for each investigator to get to location B is higher than location A. (This is true even though location A is farther from investigator A.)</i>"
+    "title": "“離所有調查員最遠”",
+    "text": "某些卡牌效果指示調查員將卡牌放置在距離所有調查員最遠的地點。這是透過找出與每位調查員的距離總和最大的地點來決定(如果可能，選擇沒有調查員的地點)。如果出現平手，按照慣例由調查員隊長決定。\n<i>例如：地點A與調查員A距離5次連接，與調查員B距離1次連接。地點B與調查員A距離3次連接，與調查員B距離4次連接。因此，地點B距離兩位調查員最遠，因為每個調查員到達地點B的總距離高於地點A(即使地點A距調查員A更遠。)</i>"
   },
   {
     "id": "Fast",
@@ -528,8 +542,8 @@
   },
   {
     "id": "For_Each_Or_For_Every",
-    "title": "“For each” or “for every”",
-    "text": "Some card effects instruct an investigator to perform an effect multiple times for each instance of a particular condition (e.g. “for each horror on you,” or “for each card in your hand”). If such an effect can be calculated and resolved simultaneously, it should be resolved as a single cumulative effect. If it cannot be resolved simultaneously (for example, if it has multiple steps or other dependencies), each instance should be resolved as separate effects.\n<i>For example: A treachery card instructs you to “take 1 horror for each point you fail by.” Since you can calculate how many points you fail by and resolve the dealt horror simultaneously, it should be resolved as a single instance of horror.</i>\n<i>A different treachery card instructs you: “For each point you fail by, discard 1 random card from your hand. For each card you cannot discard, take 1 horror or 1 damage.” In this case, the effect must be applied in full one at a time for each point you fail by.</i>"
+    "title": "“每有一個”",
+    "text": "某些卡牌效果指示調查員針對特定條件的每個單位多次執行效果(例如：“你每有一個恐懼”或“你手牌中每有一張卡牌”)。如果可以同時計算並結算此類效果，應該作為單一效果來結算(或取消、忽略、阻止)。如果不能同時結算(例如：如果有多個步驟、選擇或其他相依因素)，每個單位應該作為分別的效果來結算(必須分別取消、忽略或阻止)。\n<i>例如：一張詭計卡指示你“失敗且每低於難度一點，受到1點恐懼”。由於你可以計算失敗且低於難度的點數並一次結算所有受到的恐懼，因此結算時應該將其視為單次受到恐懼的效果。</i>\n<i>另一張的詭計卡指示你“你失敗且每低於難度一點，你必須失去1次行動或受到1點恐懼。”此詭計必須作為各自獨立的效果來結算；每失敗一點都需要你做出選擇，是失去行動還是受到恐懼。每個單位都必須單獨結算，即使你全都選擇受到恐懼。</i>"
   },
   {
     "id": "Forced_Abilities",
@@ -571,12 +585,12 @@
     "id": "Hidden",
     "cycle": [ "tcu", "tde" ],
     "title": "隱私",
-    "text": "帶有\"隱私\"關鍵詞的遭遇卡或弱點卡的<b>顯現</b>能力會將這張卡秘密地加入你的手牌中。結算此能力效果時不翻開這張卡，也不向其他調查員展示卡牌上的文字。\n- 當你的手牌中有隱私卡時，視作它在你的威脅區域內。卡牌上的持續能力生效，並且卡牌上的能力只能被你觸發。\n- 只要你手牌中有帶有隱私關鍵詞的敵人，除非有特別說明，該敵人不與你交戰、不在你的威脅區域中，也不進行攻擊。但是，該敵人的持續能力生效，並且該敵人的能力只能被你觸發。\n- 隱私卡計入你的手牌上限，但除非按照隱私卡上的文字描述執行，否則你無法以任何形式從你手牌中棄除它。隱私卡被棄掉時，放回遭遇棄牌堆。它們不會像弱點卡一樣留在你的牌堆中。\n為了獲得最佳的遊戲體驗，建議玩家\"扮演角色\"進行遊戲，不要將手牌中的隱私卡任何內容公開。\n在調查員退場時，手牌中每張帶有隱私關鍵詞的遭遇卡都應該放入遭遇棄牌堆，就像他們威脅區域的遭遇卡一樣。",
+    "text": "帶有\"隱私\"關鍵詞的遭遇卡或弱點卡的<b>顯現</b>能力會將這張卡秘密地加入你的手牌中。結算此能力效果時不翻開這張卡，也不向其他調查員展示卡牌上的文字。\n- 只要你的手牌中有隱私詭計卡，視作它在你的威脅區域內。卡牌上的持續能力生效，並且卡牌上的能力只能被你觸發。\n- 只要你手牌中有帶有隱私關鍵詞的敵人，除非有特別說明，該敵人不與你交戰、不在你的威脅區域中，也不進行攻擊。但是，該敵人的持續能力生效，並且該敵人的能力只能被你觸發。\n- 隱私卡計入你的手牌上限，但除非按照隱私卡上的文字描述執行，否則你無法以任何形式離開你的手牌。隱私卡被棄掉時，將它放回它相對應的棄牌堆。\n為了獲得最佳的遊戲體驗，建議玩家\"扮演角色\"進行遊戲，不要將手牌中的隱私卡任何內容公開。\n在調查員退場時，手牌中每張帶有隱私關鍵詞的遭遇卡都應該放入遭遇棄牌堆，就像他們威脅區域的遭遇卡一樣。",
     "rules": [
       {
         "id": "Hidden_Cards_in_Hand_When_Eliminated",
-        "title": "Hidden Cards in Hand When Eliminated",
-        "text": "When an investigator is eliminated, each encounter card in their hand with the hidden keyword should be placed in the encounter discard pile, in the same way as encounter cards in their threat area."
+        "title": "退場時手牌中的隱私卡",
+        "text": "在調查員退場時，其手牌中每張帶有隱私關鍵詞的遭遇卡牌都應該放入遭遇棄牌堆中，如同其威脅區域中的遭遇卡牌。"
       }
     ]
   },
@@ -670,8 +684,8 @@
   },
   {
     "id": "Limbo",
-    "title": "Limbo",
-    "text": "While the effects of an event or treachery card are being resolved, or while a skill is committed to a skill test, it is neither in play, in the discard pile, nor is it in an investigator’s hand. For the purposes of rules clarification, this liminal state is called “limbo.”\nAn event card enters limbo during step 3 of the Initiation Sequence, after costs are paid and attacks of opportunity are made <i>(see [Appendix I](#Appendix_I_Initiation_Sequence) in the Rules Reference)</i>. A treachery card enters limbo after it is drawn, while its revelation ability is being resolved. A skill card enters limbo as it is committed to a skill test. While in limbo, the card is typically placed on the table to show that its effects are being resolved. It is no longer considered to be in any investigator’s hand, but it has not yet been placed in any discard pile. It is technically not in play, and does not count as being in play for the purposes of other card effects, however its effects may still alter the game state. After resolving the card’s effects in <i>full</i>, it is placed in its relevant discard pile and is no longer in limbo. If its effects cause it to enter play (such as attaching to another game element or placing it in an investigator’s threat or play area), it leaves limbo and enters play at that point in time."
+    "title": "混沌",
+    "text": "事件卡或詭計卡的效果正在結算時，或技能卡被投入到技能檢定時，該卡牌既不在遊戲中、棄牌堆中，也不在調查員的手牌中。出於規則澄清的目的，這種過渡狀態被稱為“混沌”。\n在支付費用且趁亂攻擊完成後，事件卡在啟動順序的第3步驟期間進入混沌<i>(詳見\"[附錄I](#Appendix_I_Initiation_Sequence)\")</i>。詭計卡在被抽取後會進入混沌狀態，它的顯現能力正在被結算。技能卡被投入技能檢定時進入混沌狀態。處於混沌狀態時，該卡牌通常會放在桌子上以表明其效果正在結算。它不再被視為在任何調查員手牌中，也尚未被放入任何棄牌堆。技術上來說，它不在場上；對於其他卡牌效果的計算來說也不算在場上，但其效果仍然可能會改變遊戲狀態。在<i>完整</i>結算卡牌效果後，它會被放入相關的棄牌堆中，不再處於混沌狀態。如果其效果導致其進入遊戲(例如疊加(附屬)到另一個遊戲配件或將其放置在調查員的威脅或遊戲區域中)，則它會離開混沌狀態並在該時間點進入遊戲。"
   },
   {
     "id": "Limits_and_Maximums",
@@ -692,8 +706,8 @@
     "rules": [
       {
         "id": "Being_at_No_Location",
-        "title": "Being at No Location",
-        "text": "Unless explicitly specified by game text, enemies and investigators must always be at a location during gameplay. If an effect (such as a “cannot move” effect) would cause an investigator or enemy to not be at a location, ignore that effect."
+        "title": "不位於任何地點",
+        "text": "除非遊戲文本特別說明，否則敵人和調查員在遊戲過程中必須始終位於某個地點。如果某個效果(例如“不能移動”效果)會導致調查員或敵人不位於某個地點，忽略該效果。"
       }
     ]
   },
@@ -804,7 +818,7 @@
   {
     "id": "Permanent",
     "title": "永久",
-    "text": "永久是一個牌組構建關鍵詞能力。\n- 帶有永久關鍵詞的卡牌，不計入牌組的卡牌張數之中。\n- 帶有永久關鍵詞的卡牌依然視為牌組的一部分，所以需要遵守牌組構建限制。\n- 帶有永久關鍵詞的卡牌在遊戲開始時，直接入場，無需混洗入牌組。\n- 帶有永久關鍵詞的卡牌不能<b>離場</b>(除非退場)。\n- Maxine Newman關於永久牌的裁決：在一場冒險期間，帶有\"永久\"關鍵詞的卡牌不能被洗入調查員的牌堆，也不能用來支付任何需要丟棄或返回調查員牌堆或手牌的行動的費用。"
+    "text": "永久是一個牌組構建關鍵詞能力。\n- 帶有永久關鍵詞的卡牌，不計入牌組的卡牌張數之中。\n- 帶有永久關鍵詞的卡牌依然視為牌組的一部分，所以需要遵守牌組構建限制。\n- 帶有永久關鍵詞的卡牌在遊戲開始時，直接入場，無需混洗入牌組。\n- 帶有永久關鍵詞的卡牌不能離場(除非退場)。\n- 除非有特別說明，否則永久卡牌加入牌組後，不能從你的牌組中移除或替換為其他卡牌。\n- Maxine Newman關於永久牌的裁決：在一場冒險期間，帶有\"永久\"關鍵詞的卡牌不能被洗入調查員的牌堆，也不能用來支付任何需要丟棄或返回調查員牌堆或手牌的行動的費用。"
   },
   {
     "id": "Play",
@@ -933,13 +947,13 @@
     "rules": [
       {
         "id": "Looking_At_Searching_And_Finding",
-        "title": "“Looking at,” “Searching,” & “Finding”",
-        "text": "These three terms all involve sifting through out-of-play cards (typically an investigator’s deck or the encounter deck), but do not count as one another for the purposes of other card effects. <i>For example, if an investigator “looks at” the top 3 cards of their deck, this is not a search effect. Additionally, while “finding” a card does typically involve searching through out-of-play areas, this is also not considered to be a search effect.</i>"
+        "title": "“查看”、“查找”與“找出”",
+        "text": "這三個詞語都涉及篩選場外的卡牌(通常是調查員的牌組或遭遇牌組)，但對於其他卡牌效果而言，不能當作是一樣的。<i>例如：如果調查員“查看”其牌組頂部的3張卡牌，不能視為查找效果。此外，雖然“找出”一張牌通常涉及查找場外區域，但也不能被視為查找效果。</i>"
       },
       {
         "id": "Searching_During_Setup",
-        "title": "Searching During Setup",
-        "text": "If an investigator is instructed to search a deck for 1 or more cards during setup, abilities that trigger when a deck is searched (such as Mandy Thompson’s [reaction] ability or abilities on [[Research]] cards) cannot be resolved, as the game has not yet begun."
+        "title": "遊戲設置期間的查找",
+        "text": "如果在遊戲設置過程中指示調查員在牌組中查找一張或多張卡牌，則在查找牌組時觸發的能力(例如曼蒂·湯普森(/card/06002)的[reaction]能力或[[研究]]牌上的能力)不能結算，因為遊戲還沒有開始。"
       }
     ]
   },
@@ -955,8 +969,8 @@
   },
   {
     "id": "Signature_Cards",
-    "title": "調查員特殊卡",
-    "text": "每位調查員都有象徵著自己身份的特殊卡牌，這些卡牌只能被這名調查員加入牌組中，不能加入其它調查員的牌組。這些卡牌一般帶有\"……牌組專用\"的字樣，或者被列在調查員卡背面的\"牌組構建需求\"中。\n調查員特殊卡必須額外遵守以下規則：\n- 玩家必須將\"牌組構建需求\"中指定數量的特殊卡加入其牌組，如果沒有數量說明，則默認為1張。\n<i>例如：在[羅蘭·班克斯](/card/01001)的\"牌組構建需求\"中，要求玩家加入：[羅蘭的.38特製手槍](/card/01006)、[掩蓋罪證](/card/01007)、1張隨機基礎弱點。所以玩家必須加入正好1張羅蘭的.38特製手槍和1張掩蓋罪證，這些卡牌張數各不能超過1張。</i>\n- 調查員的特殊卡不能被交易，也不能被贈與另一名調查員。\n<i>例如：羅蘭的場上有羅蘭的.38特製手槍。他現在打出了\"[團隊合作](/card/02018)\"，該卡能讓他與同一地點的其他調查員交易支援卡。但是\"羅蘭的.38特製手槍\"屬於調查員特殊卡，因此無法被交易或贈與。</i>\n- 調查員特殊卡不算在牌組構建限制內，也不會因為有其他同名卡牌而計入任何牌組建構的限制。"
+    "title": "調查員專屬卡",
+    "text": "每位調查員都有象徵著自己身份的專屬卡牌，這些卡牌只能被這名調查員加入牌組中，不能加入其它調查員的牌組。這些卡牌一般帶有\"……牌組專用\"的字樣，或者被列在調查員卡背面的\"牌組構建需求\"中。\n調查員專屬卡必須額外遵守以下規則：\n- 玩家必須將\"牌組構建需求\"中指定數量的專屬卡加入其牌組，如果沒有數量說明，則默認為1張。\n<i>例如：在[羅蘭·班克斯](/card/01001)的\"牌組構建需求\"中，要求玩家加入：[羅蘭的.38特製手槍](/card/01006)、[掩蓋罪證](/card/01007)、1張隨機基礎弱點。所以玩家必須加入正好1張羅蘭的.38特製手槍和1張掩蓋罪證，這些卡牌張數各不能超過1張。</i>\n- 調查員的專屬卡不能被交易，也不能被贈與另一名調查員。\n<i>例如：羅蘭的場上有羅蘭的.38特製手槍。他現在打出了\"[團隊合作](/card/02018)\"，該卡能讓他與同一地點的其他調查員交易支援卡。但是\"羅蘭的.38特製手槍\"屬於調查員專屬卡，因此無法被交易或贈與。</i>\n- 調查員專屬卡不算在牌組構建限制內，也不會因為有其他同名卡牌而計入任何牌組建構的限制。"
   },
   {
     "id": "Skill_Cards",
@@ -980,8 +994,8 @@
     "rules": [
       {
         "id": "Shifting_Slots",
-        "title": "Shifting Slots",
-        "text": "Some card effects allow an investigator to put assets of one slot type into one of their other slots, allow one of an investigator’s slot types to carry assets of a different slot type, or cause assets to no longer take up slots. In such an event, the investigator must decide which slot is holding which asset at the moment it is played. This cannot be adjusted later unless the contents or quantity of the investigator’s slots changes, at which point the investigator may switch which slots are holding any of their assets."
+        "title": "切換槽位",
+        "text": "某些卡牌效果允許調查員將一種槽位類型的支援放入其他槽位、允許調查員的一種槽位類型攜帶不同槽位類型的支援，或使支援不再佔用槽位。在這種情況下，調查員必須在打出卡牌時決定哪個支援要放在哪個槽位。只有當調查員槽位的內容或數量發生變化時，才能進行調整，此時調查員可以切換支援放在哪個槽位。"
       }
     ]
   },
@@ -998,7 +1012,7 @@
   {
     "id": "Story_Cards",
     "title": "劇情卡",
-    "cycle": [ "ptc", "tfa", "tcu", "tde" ],
+    "cycle": [ "ptc", "tfa", "tcu", "tde", "eoe" ],
     "text": "劇情卡通常出現在另一冒險卡的背面，用於補充劇情敘述。在收到指示要結算一張劇情卡時，閱讀該卡上的故事文本然後結算其遊戲文本(如果有的話)。"
   },
   {
@@ -1014,7 +1028,7 @@
   },
   {
     "id": "Swarming X",
-    "cycle": [ "tde" ],
+    "cycle": [ "tde", "side" ],
     "title": "蜂擁X",
     "text": "帶有\"蜂擁X\"關鍵詞的敵人實際上是一群敵人集體行動。帶有\"蜂擁X\"關鍵詞的敵人入場後，將你的牌堆頂上的X張卡牌放到該敵人底下，作為蜂擁卡牌，但不要查看卡牌內容。蜂擁卡牌上面的敵人稱為\"頭領敵人\"。某些冒險卡的效果可能會指示玩家將蜂擁卡牌添加到一個敵人處，這一流程與蜂擁關鍵詞敵人入場的流程一樣。\n- 如果未指定由哪一位調查員來添加蜂擁卡牌，那麼由調查員隊長來進行添加。\n- 頭領下面的每張蜂擁卡牌視為一個該敵人。每張蜂擁卡牌視為擁有與頭領卡牌相同的數值和文字。<i>(例如，如果一個調查員與頭領敵人交戰，且該頭領敵人下面有2張蜂擁卡牌，那麼該調查員一共與3個敵人交戰。)</i>\n- 敵軍階段期間敵人攻擊時，每張蜂擁卡牌單獨進行攻擊。在本步驟期間，頭領敵人及其全部蜂擁卡牌攻擊完畢，再消耗(橫置)所有這些卡牌。\n- 每張蜂擁卡牌可被單獨攻擊或分配傷害，但下面仍有蜂擁卡牌的頭領敵人不能被擊敗。一張蜂擁卡牌被擊敗時，超出的所有傷害都可以對同一個頭領下面的另一張蜂擁卡牌造成；或者對該頭領造成。(外神之戰：如果該頭領下沒有任何的蜂擁卡牌，則對該頭領造成。)<i>(例如，[托尼·摩爾根](/card/06003)使用[.41短口手槍](/card/01047)來攻擊一個帶有2張蜂擁卡牌的[潛行的祖格鼠](/card/06017)。這次攻擊造成2點傷害。第一點傷害擊敗2張蜂擁卡牌中的1張，所以超出的傷害點數可以對另一張蜂擁卡牌造成，將其也擊敗。)</i>\n- 每當蜂擁卡牌離場，將該卡放到其所有者的牌堆底下。你如果不確定該蜂擁卡牌的所有者，可以查看該卡的內容以確定其所有者。\n- 頭領敵人及其全部蜂擁卡牌作為一個整體進行移動，交戰和被消耗(橫置)。<i>(例如，如果一個頭領敵人或其任意蜂擁卡牌被躲避，這些全部卡牌都被消耗(橫置)並且解除交戰。)</i>"
   },
@@ -1071,8 +1085,8 @@
     "rules": [
       {
         "id": "Treachery_Subtitles",
-        "title": "Treachery Subtitles",
-        "text": "Treachery cards do not have a header for their subtitle. If the title of a treachery card contains 1 or more words in parentheses, that is considered to be its subtitle. Other cards with the same title and a different subtitle are still considered to be copies of one another. <i>e.g. Restless Journey (Fallacy) and Restless Journey (Hardship) are both copies of Restless Journey.</i>"
+        "title": "詭計卡副標題",
+        "text": "詭計卡沒有副標題的欄位。如果詭計卡的名稱包含一個或多個括號內的文字，視為其副標題。具有相同名稱和不同副標題的卡牌被視為相同的卡牌。<i>例如無眠之旅(謬論)(/card/06319)和無眠之旅(艱苦)(/card/06320)都是無眠之旅卡牌。</i>"
       }
     ]
   },
@@ -1145,12 +1159,12 @@
   {
     "id": "You_Your",
     "title": "你/你的",
-    "text": "當效果中出現\"你/你的\"一詞時，請額外遵守以下規則：\n- 在<b>顯現</b>能力中，如果出現\"你/你的\"一詞是指抽取該卡牌，且正在結算當前能力的調查員。\n- 在結算觸發能力([free]、[reaction]和[action])中，\"你/你的\"是指觸發了當前能力的調查員。\n -如果一個能力中，有部分語句說明了該能力的效果對象是誰。那麼在後面的語句中如果使用了\"你/你的\"一詞，則代指效果對象。<i>例如：固執的偵探(/card/01103)效果為：\"只要固執的偵探與你在同一個地點……\"，該語句中的\"你\"，就代指與固執的偵探在同一地點的調查員。年幼的深潛者(/card/01181)效果為：\"在年幼的深潛者被你吸引後……\"，該語句中的\"你\"，就代指吸引了年幼的深潛者的調查員。</i>\n- 除了上述三種情況以外的其他情況，\"你/你們\"都指控制該卡牌的調查員，或者是處於其威脅區域內的調查員，或者是當前正在與該卡牌互動的調查員。\n一張卡牌中可能會使用多次\"你/你的\"，而且每個詞所指代的對象都可以不同。\"你/你的\"可以在一張卡牌的不同能力中，指代不同的調查員。\n<i>例如：[拉萊耶之夢](/card/01182)效果為：</i>\n<i>\"<b>顯現</b> - 將拉萊耶之夢放置入你的威脅區域。\n你獲得-1[willpower]和-1神智值。\n[action]：檢定[willpower](3)。如果成功，丟棄拉萊耶之夢。\"</i>\n在第一、第二個能力中都使用了\"你\"一詞。在<b>顯現</b>能力中，\"你\"是指抽出拉萊耶之夢的調查員。在第二個能力中，\"你\"是指威脅區域中有拉萊耶之夢的調查員。第三個能力中雖然沒使用\"你\"一詞，但默指了花費行動進行這項檢定的調查員。",
+    "text": "當效果中出現\"你/你的\"一詞時，請額外遵守以下規則：\n- 在<b>顯現</b>能力中，如果出現\"你/你的\"一詞是指抽取該卡牌，且正在結算當前能力的調查員。\n- 在結算觸發能力([free]、[reaction]和[action])中，\"你/你的\"是指觸發了當前能力的調查員。\n -如果一個能力中，有部分語句說明了該能力的效果對象是誰。那麼在後面的語句中如果使用了\"你/你的\"一詞，則代指效果對象。<i>例如：固執的偵探(/card/01103)效果為：\"只要固執的偵探與你在同一個地點……\"，該語句中的\"你\"，就代指與固執的偵探在同一地點的調查員。年幼的深潛者(/card/01181)效果為：\"在年幼的深潛者與你交戰後……\"，該語句中的\"你\"，就代指與年幼的深潛者交戰的調查員。</i>\n- 除了上述三種情況以外的其他情況，\"你/你們\"都指控制該卡牌的調查員，或者是處於其威脅區域內的調查員，或者是當前正在與該卡牌互動的調查員。\n一張卡牌中可能會使用多次\"你/你的\"，而且每個詞所指代的對象都可以不同。\"你/你的\"可以在一張卡牌的不同能力中，指代不同的調查員。\n<i>例如：[拉萊耶之夢](/card/01182)效果為：</i>\n<i>\"<b>顯現</b> - 將拉萊耶之夢放置入你的威脅區域。\n你獲得-1[willpower]和-1神智值。\n[action]：檢定[willpower](3)。如果成功，丟棄拉萊耶之夢。\"</i>\n在第一、第二個能力中都使用了\"你\"一詞。在<b>顯現</b>能力中，\"你\"是指抽出拉萊耶之夢的調查員。在第二個能力中，\"你\"是指威脅區域中有拉萊耶之夢的調查員。第三個能力中雖然沒使用\"你\"一詞，但默指了花費行動進行這項檢定的調查員。",
     "rules": [
       {
         "id": "Interpreting_You_When_Taking_or_Being_Dealt_Damage",
-        "title": "Interpreting \"You\" When Taking or Being Dealt Damage",
-        "text": "When an ability refers to “you” in response to taking damage or being dealt damage, it also includes any assets you control.\n<i>For example: The [reaction] ability on Survival Knife triggers “after an enemy attack deals damage to you during the enemy phase.” This ability triggers even if the damage from that attack is assigned to one or more of your assets, and not your investigator card. However, if all of the damage from that attack is assigned to another investigator or their assets (through the use of a card effect that allows them to do so), then no damage has been dealt to you.</i>"
+        "title": "受到傷害或被造成傷害時的\"你\"",
+        "text": "在某個受到傷害或被造成傷害的能力提及“你”時，也包括你控制的任何支援。\n<i>例如：求生匕首(/card/04017)上的[reaction]能力會“在敵軍階段期間敵人的攻擊對你造成傷害後”觸發。如果該攻擊造成的傷害分配給你的一項或多項支援，而不是你的調查員卡，該能力也會觸發。但是，如果該攻擊造成的所有傷害都分配給其他調查員或其支援(使用允許他們這樣做的卡牌效果)，則沒有對你造成任何傷害。</i>"
       }
     ]
   },
@@ -1169,252 +1183,42 @@
         "title": "階段流程表",
         "table": [
           { "row": [ { "text": "I. 神話階段(游戲第一輪跳過過該階段)" } ] },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "1.1 一輪開始。神話階段開始。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "1.2 在當前密謀卡上放置1個毀滅標記。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "1.3 檢查毀滅數量。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "1.4 每位調查員抽取1張遭遇卡。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "red",
-                "text": "[free]玩家時間段"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "1.5 神話階段結束。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "grey",
-                "text": "進入調查階段。"
-              }
-            ]
-          },
+          { "row": [ { "color": "green", "text": "1.1 一輪開始。神話階段開始。" } ] },
+          { "row": [ { "color": "green", "text": "1.2 在當前密謀卡上放置1個毀滅標記。" } ] },
+          { "row": [ { "color": "green", "text": "1.3 檢查毀滅數量。" } ] },
+          { "row": [ { "color": "green", "text": "1.4 每位調查員抽取1張遭遇卡。" } ] },
+          { "row": [ { "color": "red", "text": "[free]玩家時間段" } ] },
+          { "row": [ { "color": "green", "text": "1.5 神話階段結束。" } ] },
+          { "row": [ { "color": "grey", "text": "進入調查階段。" } ] },
           { "row": [] },
           { "row": [ { "text": "II. 調查階段" } ] },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "2.1 調查階段開始。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "red",
-                "text": "[free]玩家時間段"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "2.2 下一位調查員回合開始。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "red",
-                "text": "[free]玩家時間段"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "2.2.1 當前調查員如果還有行動利餘，可以執行1個行動。如果執行行動則返回先前的玩家時間段；如果行動用完，則進入2.2.2。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "2.2.2 調查員回合結束。如果該階段中，還有未執行回合的調查員則返回2.2。如果所有調查員都已完成回合，則進入2.3。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "2.3 調查階段結束。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "grey",
-                "text": "進入敵軍階段。"
-              }
-            ]
-          },
+          { "row": [ { "color": "green", "text": "2.1 調查階段開始。" } ] },
+          { "row": [ { "color": "red", "text": "[free]玩家時間段" } ] },
+          { "row": [ { "color": "green", "text": "2.2 下一位調查員回合開始。" } ] },
+          { "row": [ { "color": "red", "text": "[free]玩家時間段" } ] },
+          { "row": [ { "color": "green", "text": "2.2.1 當前調查員如果還有行動利餘，可以執行1個行動。如果執行行動則返回先前的玩家時間段；如果行動用完，則進入2.2.2。" } ] },
+          { "row": [ { "color": "green", "text": "2.2.2 調查員回合結束。如果該階段中，還有未執行回合的調查員則返回2.2。如果所有調查員都已完成回合，則進入2.3。" } ] },
+          { "row": [ { "color": "green", "text": "2.3 調查階段結束。" } ] },
+          { "row": [ { "color": "grey", "text": "進入敵軍階段。" } ] },
           { "row": [] },
           { "row": [ { "text": "III. 敵軍階段" } ] },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "3.1 敵軍階段開始。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "3.2 獵手敵人移動。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "red",
-                "text": "[free]玩家時間段"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "3.3 下一位調查員結算交戰敵人的攻擊。如果還有調查員未結算敵人攻擊，則返回先前的玩家時間段；如果所有調查員都完成攻擊結算，則進入下一位玩家時間段。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "red",
-                "text": "[free]玩家時間段"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "3.4 敵軍階段結束。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "grey",
-                "text": "進入補給階段。"
-              }
-            ]
-          },
+          { "row": [ { "color": "green", "text": "3.1 敵軍階段開始。" } ] },
+          { "row": [ { "color": "green", "text": "3.2 獵手敵人移動。" } ] },
+          { "row": [ { "color": "red", "text": "[free]玩家時間段" } ] },
+          { "row": [ { "color": "green", "text": "3.3 下一位調查員結算交戰敵人的攻擊。如果還有調查員未結算敵人攻擊，則返回先前的玩家時間段；如果所有調查員都完成攻擊結算，則進入下一位玩家時間段。" } ] },
+          { "row": [ { "color": "red", "text": "[free]玩家時間段" } ] },
+          { "row": [ { "color": "green", "text": "3.4 敵軍階段結束。" } ] },
+          { "row": [ { "color": "grey", "text": "進入補給階段。" } ] },
           { "row": [] },
           { "row": [ { "text": "IV. 補給階段" } ] },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "4.1 補給階段開始。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "red",
-                "text": "[free]玩家時間段"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "4.2 重置行動數。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "4.3 將所有消耗(橫置)卡牌轉為準備(重整)狀態。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "4.4 每位調查員抽取1張卡牌，並獲得1個資源。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "4.5 每位調查員檢查手牌上限。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "4.6 補給階段結束。一輪結束。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "grey",
-                "text": "進入下一輪的神話階段。"
-              }
-            ]
-          }
+          { "row": [ { "color": "green", "text": "4.1 補給階段開始。" } ] },
+          { "row": [ { "color": "red", "text": "[free]玩家時間段" } ] },
+          { "row": [ { "color": "green", "text": "4.2 重置行動數。" } ] },
+          { "row": [ { "color": "green", "text": "4.3 將所有消耗(橫置)卡牌轉為準備(重整)狀態。" } ] },
+          { "row": [ { "color": "green", "text": "4.4 每位調查員抽取1張卡牌，並獲得1個資源。" } ] },
+          { "row": [ { "color": "green", "text": "4.5 每位調查員檢查手牌上限。" } ] },
+          { "row": [ { "color": "green", "text": "4.6 補給階段結束。一輪結束。" } ] },
+          { "row": [ { "color": "grey",  "text": "進入下一輪的神話階段。" } ] }
         ]
       },
       {
@@ -1449,86 +1253,16 @@
         "title": "技能檢定流程",
         "table": [
           { "row": [ { "text": "技能檢定流程" } ] },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "步驟1 決定檢定所用的技能。檢定開始。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "red",
-                "text": "[free]玩家時間段"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "步驟2 從手牌中投入卡牌。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "red",
-                "text": "[free]玩家時間段"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "步驟3 抽取混亂標記。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "步驟4 結算混亂符號效果。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "步驟5 計算調查員修正後的技能值。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "步驟6 決定檢定成功/失敗。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "步驟7 執行技能檢定結果。"
-              }
-            ]
-          },
-          {
-            "row": [
-              {
-                "color": "green",
-                "text": "步驟8 技能檢定結束。"
-              }
-            ]
-          }
+          { "row": [ { "color": "green", "text": "步驟1 決定檢定所用的技能。檢定開始。" } ] },
+          { "row": [ { "color": "red", "text": "[free]玩家時間段" } ] },
+          { "row": [ { "color": "green", "text": "步驟2 從手牌中投入卡牌。" } ] },
+          { "row": [ { "color": "red", "text": "[free]玩家時間段" } ] },
+          { "row": [ { "color": "green", "text": "步驟3 抽取混亂標記。" } ] },
+          { "row": [ { "color": "green", "text": "步驟4 結算混亂符號效果。" } ] },
+          { "row": [ { "color": "green", "text": "步驟5 計算調查員修正後的技能值。" } ] },
+          { "row": [ { "color": "green", "text": "步驟6 決定檢定成功/失敗。" } ] },
+          { "row": [ { "color": "green", "text": "步驟7 執行技能檢定結果。" } ] },
+          { "row": [ { "color": "green", "text": "步驟8 技能檢定結束。" } ] }
         ],
         "rules": [
           {

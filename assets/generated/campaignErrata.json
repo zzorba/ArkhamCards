@@ -5,7 +5,7 @@
       "cards": [
         {
           "code": ["zhod_00052", "zhod_00053", "zhod_00054"],
-          "text": "The 3 Savannah locationsshould not have dark red “+” connection symbol (on both sides)."
+          "text": "The 3 Savannah locations should not have dark red “+” connection symbol (on both sides)."
         }
       ]
     },
@@ -287,7 +287,7 @@
       "encounter_code": "dancing_mad",
       "cards": [
         {
-          "code": ["09596"],
+          "code": ["09598"],
           "text": "The last line of this act’s first paragraph should read: “Set each concealed mini-card aside, out of play,” instead of “Remove each concealed mini-card from the game.”"
         }
       ]

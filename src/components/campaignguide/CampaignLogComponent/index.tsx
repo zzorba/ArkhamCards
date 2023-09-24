@@ -308,7 +308,7 @@ export default function CampaignLogComponent({
     <View style={[backgroundStyle, space.paddingBottomM]}>
       { chaosBagSection }
       { flatMap(campaignGuide.campaignLogSections(), log => {
-        if (log.type === 'hidden') {
+        if (log.hidden) {
           return null;
         }
         return (

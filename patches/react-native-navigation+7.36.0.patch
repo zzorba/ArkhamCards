@@ -89,3 +89,31 @@ index 17c81ad..b4d8944 100644
          layoutDirectionApplier.apply(appearingRoot, defaultOptions, reactInstanceManager);
          rootLayout.addView(appearingRoot.getView(), matchParentWithBehaviour(new BehaviourDelegate(appearingRoot)));
          Options options = appearingRoot.resolveCurrentOptions(defaultOptions);
+diff --git a/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m b/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
+index 1ec6a7b..8a5b8ac 100644
+--- a/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
++++ b/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
+@@ -10,7 +10,9 @@ - (UITabBarItem *)createTabBarItem:(UITabBarItem *)mergeItem {
+ }
+ 
+ - (void)setTitleAttributes:(UITabBarItem *)tabItem titleAttributes:(NSDictionary *)titleAttributes {
+-    tabItem.standardAppearance.stackedLayoutAppearance.normal.titleTextAttributes = titleAttributes;
++    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
++        tabItem.standardAppearance.stackedLayoutAppearance.normal.titleTextAttributes = titleAttributes;
++    }
+     tabItem.standardAppearance.compactInlineLayoutAppearance.normal.titleTextAttributes =
+         titleAttributes;
+     tabItem.standardAppearance.inlineLayoutAppearance.normal.titleTextAttributes = titleAttributes;
+@@ -18,8 +20,10 @@ - (void)setTitleAttributes:(UITabBarItem *)tabItem titleAttributes:(NSDictionary
+ 
+ - (void)setSelectedTitleAttributes:(UITabBarItem *)tabItem
+            selectedTitleAttributes:(NSDictionary *)selectedTitleAttributes {
+-    tabItem.standardAppearance.stackedLayoutAppearance.selected.titleTextAttributes =
+-        selectedTitleAttributes;
++    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
++        tabItem.standardAppearance.stackedLayoutAppearance.selected.titleTextAttributes =
++            selectedTitleAttributes;
++    }
+     tabItem.standardAppearance.compactInlineLayoutAppearance.selected.titleTextAttributes =
+         selectedTitleAttributes;
+     tabItem.standardAppearance.inlineLayoutAppearance.selected.titleTextAttributes =

@@ -64,10 +64,11 @@ export default function InputStepComponent({ step, color, componentId, campaignL
           bulletType={step.bullet_type}
           text={step.text}
           confirmText={step.input.confirm_text}
-          choices={chooseOneInputChoices(step.input.choices, campaignLog)}
+          choices={chooseOneInputChoices(step.input.choices, campaignLog, step.input.show_hidden_choices)}
           defaultChoice={step.input.default_choice}
           compact={step.input.style === 'compact'}
           icon={step.input.icon}
+          showHiddenChoices={step.input.show_hidden_choices}
         />
       );
     case 'checklist': {

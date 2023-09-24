@@ -93,7 +93,8 @@ export default function ArkhamLargeList<Item>({
         return null;
     }
   }, [renderItem]);
-  const getItemLayout = useCallback((data: null | undefined | Array<FlatDataItem<Item>>, idx: number) => {
+
+  const getItemLayout = useCallback((data: null | undefined | ArrayLike<FlatDataItem<Item>>, idx: number): { length: number; offset: number; index: number } => {
     return data?.[idx].layout || { offset: 0, length: 0, index: idx };
   }, []);
   const loader = useMemo(() => (

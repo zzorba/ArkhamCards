@@ -141,6 +141,7 @@ export type CampaignDataCondition =
   | CampaignDataChaosBagCondition
   | CampaignDataNextScenarioCondition
   | CampaignDataInvestigatorCondition
+  | CampaignDataInvestigatorStatusCondition
   | CampaignDataLinkedCondition
   | CampaignDataVersionCondition
   | CampaignDataCycleCondition
@@ -188,6 +189,7 @@ export type InvestigatorChoiceCondition =
 export type BinaryChoiceCondition =
   | BinaryCardCondition
   | CampaignDataInvestigatorCondition
+  | CampaignDataInvestigatorStatusCondition
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
   | CampaignDataNextScenarioCondition
@@ -319,15 +321,8 @@ export interface MapLabel {
 export interface CampaignLogSectionDefinition {
   id: string;
   title: string;
-  type?:
-    | "investigator_count"
-    | "count"
-    | "supplies"
-    | "header"
-    | "partner"
-    | "scarlet_keys"
-    | "hidden"
-    | "relationship";
+  type?: "investigator_count" | "count" | "supplies" | "header" | "partner" | "scarlet_keys" | "relationship";
+  hidden?: boolean;
   partners?: Partner[];
   calendar?: CalendarEntry[];
   scarlet_keys?: ScarletKey[];
@@ -384,9 +379,11 @@ export interface MultiCondition {
     | PartnerStatusCondition
     | BasicTraumaCondition
     | CampaignDataInvestigatorCondition
+    | CampaignDataInvestigatorStatusCondition
     | CampaignDataCycleCondition
     | ScarletKeyCondition
     | ScarletKeyCountCondition
+    | ScenarioDataInvestigatorStatusCondition
   )[];
   count: number;
   options: BoolOption[];
@@ -838,6 +835,12 @@ export interface CampaignDataInvestigatorCondition {
   options: StringOption[];
   default_option?: Option;
 }
+export interface CampaignDataInvestigatorStatusCondition {
+  type: "campaign_data";
+  campaign_data: "investigator_status";
+  status: "not_eliminated";
+  options: BoolOption[];
+}
 export interface CampaignDataCycleCondition {
   type: "campaign_data";
   campaign_data: "cycle";
@@ -855,6 +858,12 @@ export interface ScarletKeyCountCondition {
   options: NumOption[];
   default_option?: DefaultOption;
 }
+export interface ScenarioDataInvestigatorStatusCondition {
+  type: "scenario_data";
+  scenario_data: "investigator_status";
+  investigator: "defeated" | "not_defeated" | "resigned";
+  options: BoolOption[];
+}
 export interface CampaignLogInvestigatorCountCondition {
   type: "campaign_log_investigator_count";
   section: string;
@@ -870,12 +879,6 @@ export interface CampaignDataLinkedCondition {
 export interface ScenarioDataHasResolutionCondition {
   type: "scenario_data";
   scenario_data: "has_resolution";
-  options: BoolOption[];
-}
-export interface ScenarioDataInvestigatorStatusCondition {
-  type: "scenario_data";
-  scenario_data: "investigator_status";
-  investigator: "defeated" | "resigned";
   options: BoolOption[];
 }
 export interface ScenarioDataFixedInvestigatorStatusCondition {
@@ -1078,6 +1081,7 @@ export interface ChooseOneInput {
   random?: boolean;
   default_choice?: string;
   confirm_text?: string;
+  show_hidden_choices?: boolean;
   choices: BinaryConditionalChoice[];
   style?: "compact";
   icon?: string;
@@ -1299,6 +1303,7 @@ export interface LocationSetupStep {
   svg?: string;
   text: string;
   title?: string;
+  description?: string;
   note?: string;
   vertical: "half" | "normal";
   horizontal: "half" | "normal" | "tight";
@@ -1311,6 +1316,7 @@ export interface LocationSetupStep {
   location_names?: {
     code: string;
     name: string;
+    placeholder?: boolean;
   }[];
   bullet_type?: null;
   narration?: Narration;
@@ -1319,7 +1325,7 @@ export interface LocationAnnotation {
   text: string;
   x: number;
   y: number;
-  position: "top" | "bottom";
+  position: "top" | "bottom" | "left" | "right";
 }
 export interface LocationConnectorsStep {
   id: string;

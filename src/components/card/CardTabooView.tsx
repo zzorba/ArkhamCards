@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { find, forEach, flatMap, reverse } from 'lodash';
 import {
   ScrollView,
@@ -155,17 +155,16 @@ function TabooSection({ id }: { id: string }) {
 }
 
 export default function CardTabooView({ id }: Props) {
-  const { backgroundStyle, typography } = useContext(StyleContext);
+  const { backgroundStyle } = useContext(StyleContext);
+  const text = useMemo(() => [
+    t`The List of Taboos is a list of Arkham Horror: The Card Game cards with optional deckbuilding restrictions or text changes. This list is designed to craft a healthy balance between investigator power and scenario difficulty, and to enforce shifts in deckbuilding environments over time.`,
+    t`Adhering to The List of Taboos is completely optional. Investigators are not forced to adhere to the restrictions on this list, but if an investigator chooses to do so, they must do so in full (an investigator cannot pick and choose which restrictions to use).`,
+    t`You can opt-in to always seeing taboos and buiding decks with them in Settings.`,
+  ].join('\n\n'), []);
   return (
     <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
       <TabooSection id={id} />
-      <Text style={[typography.small, styles.header]}>
-        { t`The List of Taboos is a list of Arkham Horror: The Card Game cards with optional deckbuilding restrictions or text changes. This list is designed to craft a healthy balance between investigator power and scenario difficulty, and to enforce shifts in deckbuilding environments over time.` }
-        { '\n\n' }
-        { t`Adhering to The List of Taboos is completely optional. Investigators are not forced to adhere to the restrictions on this list, but if an investigator chooses to do so, they must do so in full (an investigator cannot pick and choose which restrictions to use).` }
-        { '\n\n' }
-        { t`You can opt-in to always seeing taboos and buiding decks with them in Settings.` }
-      </Text>
+      <CardTextComponent text={text} />
     </ScrollView>
   );
 }

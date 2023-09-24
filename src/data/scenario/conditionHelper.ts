@@ -24,6 +24,7 @@ import {
   CampaignDataVersionCondition,
   MultiCondition,
   CampaignDataInvestigatorCondition,
+  CampaignDataInvestigatorStatusCondition,
   CampaignLogSectionExistsCondition,
   CheckSuppliesCondition,
   CheckSuppliesAllCondition,
@@ -599,6 +600,24 @@ export function campaignDataInvestigatorConditionResult(
   };
 }
 
+
+export function campaignDataInvestigatorStatusConditionResult(
+  condition: CampaignDataInvestigatorStatusCondition,
+  campaignLog: GuidedCampaignLog
+): BinaryResult {
+  const investigators = campaignLog.investigators(true);
+  const decision = !!find(investigators, investigator => {
+    switch (condition.status) {
+      case 'not_eliminated':
+        return !campaignLog.isEliminated(investigator);
+    }
+  });
+  return binaryConditionResult(
+    decision,
+    condition.options
+  );
+}
+
 export function campaignDataVersionConditionResult(
   condition: CampaignDataVersionCondition,
   campaignLog: GuidedCampaignLog
@@ -647,6 +666,8 @@ export function campaignDataConditionResult(
     case 'chaos_bag': {
       return campaignDataChaosBagConditionResult(condition, campaignLog);
     }
+    case 'investigator_status':
+      return campaignDataInvestigatorStatusConditionResult(condition, campaignLog);
     case 'investigator':
       return campaignDataInvestigatorConditionResult(condition, campaignLog);
   }
@@ -684,6 +705,7 @@ export function multiConditionResult(
             case 'scenario_replayed':
             case 'next_scenario':
             case 'investigator':
+            case 'investigator_status':
             case 'cycle':
             case 'standalone':
             case 'difficulty':
@@ -706,6 +728,8 @@ export function multiConditionResult(
                 campaignLog.playerCount(),
                 subCondition.options
               ).option ? 1 : 0;
+            case 'investigator_status':
+              return investigatorStatusConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }
         case 'math':
@@ -832,6 +856,8 @@ export function investigatorStatusConditionResult(condition: ScenarioDataInvesti
     switch (condition.investigator) {
       case 'defeated':
         return campaignLog.isDefeated(code);
+      case 'not_defeated':
+        return !campaignLog.isDefeated(code);
       case 'resigned':
         return campaignLog.resigned(code);
     }

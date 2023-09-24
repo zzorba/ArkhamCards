@@ -1,4 +1,4 @@
-import { filter, find, findIndex, flatMap, forEach, head, keys, values } from 'lodash';
+import { filter, find, findIndex, flatMap, forEach, map, head, keys, values } from 'lodash';
 
 import { NumberChoices } from '@actions/types';
 import {
@@ -22,23 +22,32 @@ import {
   locationConditionResult,
   scarletKeyConditionResult,
   campaignDataStandaloneConditionResult,
+  campaignDataInvestigatorStatusConditionResult,
 } from '@data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 
 export function chooseOneInputChoices(
   choices: BinaryConditionalChoice[],
-  campaignLog: GuidedCampaignLog
+  campaignLog: GuidedCampaignLog,
+  includeHidden?: boolean
 ): DisplayChoiceWithId[] {
-  return filter(
+  const result: DisplayChoiceWithId[] = map(
     choices,
     choice => {
       if (!choice.condition) {
-        return true;
+        return choice;
       }
       const result = calculateBinaryConditionResult(choice.condition, campaignLog);
-      return !!result.option;
+      return {
+        ...choice,
+        conditionHidden: !result.option,
+      };
     }
   );
+  if (includeHidden) {
+    return result;
+  }
+  return filter(result, choice => !choice.conditionHidden);
 }
 
 export function investigatorChoiceInputChoices(
@@ -123,6 +132,8 @@ export function calculateBinaryConditionResult(
       switch (condition.campaign_data) {
         case 'investigator':
           return campaignDataInvestigatorConditionResult(condition, campaignLog);
+        case 'investigator_status':
+          return campaignDataInvestigatorStatusConditionResult(condition, campaignLog);
         case 'scenario_completed':
         case 'scenario_replayed':
         case 'next_scenario':

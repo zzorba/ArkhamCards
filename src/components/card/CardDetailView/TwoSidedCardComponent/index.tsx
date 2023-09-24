@@ -358,7 +358,7 @@ export default function TwoSidedCardComponent(props: Props) {
             <CardFooterButton
               onPressFaq={showFaq}
               onPressTaboo={
-                (card.taboo_set_id !== undefined || card.taboo_placeholder) ? showTaboo : undefined
+                (card.taboo_set_id !== null) ? showTaboo : undefined
               }
             />
           ) }
@@ -508,7 +508,7 @@ export default function TwoSidedCardComponent(props: Props) {
             <CardFooterButton
               onPressFaq={showFaq}
               onPressTaboo={
-                (card.taboo_set_id !== undefined || card.taboo_placeholder) ? showTaboo : undefined
+                (card.taboo_set_id !== null) ? showTaboo : undefined
               }
             />
           ) }
