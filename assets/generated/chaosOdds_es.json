@@ -7044,7 +7044,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your distance from Lab Omega",
+          "prompt": "Distancia entre tu Lugar y el Laboratorio Omega",
           "min": 0
         }
       },
@@ -7066,7 +7066,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Twice your distance from Lab Omega",
+          "prompt": "Dos veces la distancia entre tu Lugar y el Laboratorio Omega",
           "min": 0
         }
       },

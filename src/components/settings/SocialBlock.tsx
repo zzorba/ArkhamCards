@@ -24,7 +24,7 @@ function telegramPressed() {
 }
 
 function ruTipPressed() {
-  Linking.openURL('https://www.tinkoff.ru/cf/7jxHy5hZGXH');
+  Linking.openURL('https://www.tinkoff.ru/cf/2iB3erSz1KQ');
 }
 
 function esYoutubePressed() {
