@@ -6494,7 +6494,7 @@ msgstr "공공근로자"
 
 msgctxt "trait"
 msgid "Clairvoyant"
-msgstr "선지자"
+msgstr "선견자"
 
 msgctxt "trait"
 msgid "Clothing"
