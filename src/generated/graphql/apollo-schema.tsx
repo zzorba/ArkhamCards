@@ -9134,13 +9134,17 @@ export type Conquest_Card = {
   back_card_id?: Maybe<Scalars['String']['output']>;
   back_flavor?: Maybe<Scalars['String']['output']>;
   back_health?: Maybe<Scalars['Int']['output']>;
+  back_imagesrc?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
+  back_tts_sheet_url?: Maybe<Scalars['String']['output']>;
   command_hammers?: Maybe<Scalars['Int']['output']>;
   cost?: Maybe<Scalars['Int']['output']>;
+  deck_rules?: Maybe<Scalars['jsonb']['output']>;
   faction_id?: Maybe<Scalars['String']['output']>;
   flavor?: Maybe<Scalars['String']['output']>;
   health?: Maybe<Scalars['Int']['output']>;
+  horizontal?: Maybe<Scalars['Boolean']['output']>;
   id: Scalars['String']['output'];
   illustrator?: Maybe<Scalars['String']['output']>;
   imagesrc?: Maybe<Scalars['String']['output']>;
@@ -9155,9 +9159,17 @@ export type Conquest_Card = {
   signature_id?: Maybe<Scalars['Int']['output']>;
   text?: Maybe<Scalars['String']['output']>;
   traits?: Maybe<Scalars['String']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Int']['output']>;
+  tts_sheet_url?: Maybe<Scalars['String']['output']>;
   type_id: Scalars['String']['output'];
   unique: Scalars['Boolean']['output'];
   updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+
+/** columns and relationships of "conquest.card" */
+export type Conquest_CardDeck_RulesArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregated selection of "conquest.card" */
@@ -9190,6 +9202,11 @@ export type Conquest_Card_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Conquest_Card_Append_Input = {
+  deck_rules?: InputMaybe<Scalars['jsonb']['input']>;
+};
+
 /** aggregate avg on columns */
 export type Conquest_Card_Avg_Fields = {
   __typename?: 'conquest_card_avg_fields';
@@ -9203,6 +9220,7 @@ export type Conquest_Card_Avg_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** Boolean expression to filter rows from the table "conquest.card". All fields are combined with a logical 'AND'. */
@@ -9215,13 +9233,17 @@ export type Conquest_Card_Bool_Exp = {
   back_card_id?: InputMaybe<String_Comparison_Exp>;
   back_flavor?: InputMaybe<String_Comparison_Exp>;
   back_health?: InputMaybe<Int_Comparison_Exp>;
+  back_imagesrc?: InputMaybe<String_Comparison_Exp>;
   back_text?: InputMaybe<String_Comparison_Exp>;
   back_traits?: InputMaybe<String_Comparison_Exp>;
+  back_tts_sheet_url?: InputMaybe<String_Comparison_Exp>;
   command_hammers?: InputMaybe<Int_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
+  deck_rules?: InputMaybe<Jsonb_Comparison_Exp>;
   faction_id?: InputMaybe<String_Comparison_Exp>;
   flavor?: InputMaybe<String_Comparison_Exp>;
   health?: InputMaybe<Int_Comparison_Exp>;
+  horizontal?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   illustrator?: InputMaybe<String_Comparison_Exp>;
   imagesrc?: InputMaybe<String_Comparison_Exp>;
@@ -9236,6 +9258,8 @@ export type Conquest_Card_Bool_Exp = {
   signature_id?: InputMaybe<Int_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
   traits?: InputMaybe<String_Comparison_Exp>;
+  tts_sheet_position?: InputMaybe<Int_Comparison_Exp>;
+  tts_sheet_url?: InputMaybe<String_Comparison_Exp>;
   type_id?: InputMaybe<String_Comparison_Exp>;
   unique?: InputMaybe<Boolean_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -9246,6 +9270,21 @@ export enum Conquest_Card_Constraint {
   /** unique or primary key constraint on columns "id" */
   CardPkey = 'card_pkey'
 }
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Conquest_Card_Delete_At_Path_Input = {
+  deck_rules?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Conquest_Card_Delete_Elem_Input = {
+  deck_rules?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Conquest_Card_Delete_Key_Input = {
+  deck_rules?: InputMaybe<Scalars['String']['input']>;
+};
 
 /** input type for incrementing numeric columns in table "conquest.card" */
 export type Conquest_Card_Inc_Input = {
@@ -9259,6 +9298,7 @@ export type Conquest_Card_Inc_Input = {
   quantity?: InputMaybe<Scalars['Int']['input']>;
   shields?: InputMaybe<Scalars['Int']['input']>;
   signature_id?: InputMaybe<Scalars['Int']['input']>;
+  tts_sheet_position?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** input type for inserting data into table "conquest.card" */
@@ -9268,13 +9308,17 @@ export type Conquest_Card_Insert_Input = {
   back_card_id?: InputMaybe<Scalars['String']['input']>;
   back_flavor?: InputMaybe<Scalars['String']['input']>;
   back_health?: InputMaybe<Scalars['Int']['input']>;
+  back_imagesrc?: InputMaybe<Scalars['String']['input']>;
   back_text?: InputMaybe<Scalars['String']['input']>;
   back_traits?: InputMaybe<Scalars['String']['input']>;
+  back_tts_sheet_url?: InputMaybe<Scalars['String']['input']>;
   command_hammers?: InputMaybe<Scalars['Int']['input']>;
   cost?: InputMaybe<Scalars['Int']['input']>;
+  deck_rules?: InputMaybe<Scalars['jsonb']['input']>;
   faction_id?: InputMaybe<Scalars['String']['input']>;
   flavor?: InputMaybe<Scalars['String']['input']>;
   health?: InputMaybe<Scalars['Int']['input']>;
+  horizontal?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   illustrator?: InputMaybe<Scalars['String']['input']>;
   imagesrc?: InputMaybe<Scalars['String']['input']>;
@@ -9289,6 +9333,8 @@ export type Conquest_Card_Insert_Input = {
   signature_id?: InputMaybe<Scalars['Int']['input']>;
   text?: InputMaybe<Scalars['String']['input']>;
   traits?: InputMaybe<Scalars['String']['input']>;
+  tts_sheet_position?: InputMaybe<Scalars['Int']['input']>;
+  tts_sheet_url?: InputMaybe<Scalars['String']['input']>;
   type_id?: InputMaybe<Scalars['String']['input']>;
   unique?: InputMaybe<Scalars['Boolean']['input']>;
   updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
@@ -9302,14 +9348,17 @@ export type Conquest_Card_Localized = {
   back_card_id?: Maybe<Scalars['String']['output']>;
   back_flavor?: Maybe<Scalars['String']['output']>;
   back_health?: Maybe<Scalars['Int']['output']>;
+  back_imagesrc?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
   command_hammers?: Maybe<Scalars['Int']['output']>;
   cost?: Maybe<Scalars['Int']['output']>;
+  deck_rules?: Maybe<Scalars['jsonb']['output']>;
   faction_id?: Maybe<Scalars['String']['output']>;
   faction_name?: Maybe<Scalars['String']['output']>;
   flavor?: Maybe<Scalars['String']['output']>;
   health?: Maybe<Scalars['Int']['output']>;
+  horizontal?: Maybe<Scalars['Boolean']['output']>;
   id?: Maybe<Scalars['String']['output']>;
   illustrator?: Maybe<Scalars['String']['output']>;
   imagesrc?: Maybe<Scalars['String']['output']>;
@@ -9318,6 +9367,8 @@ export type Conquest_Card_Localized = {
   loyalty_id?: Maybe<Scalars['String']['output']>;
   loyalty_name?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  pack_cycle_id?: Maybe<Scalars['String']['output']>;
+  pack_cycle_name?: Maybe<Scalars['String']['output']>;
   pack_id?: Maybe<Scalars['String']['output']>;
   pack_name?: Maybe<Scalars['String']['output']>;
   pack_position?: Maybe<Scalars['Int']['output']>;
@@ -9325,6 +9376,7 @@ export type Conquest_Card_Localized = {
   preparation?: Maybe<Scalars['Boolean']['output']>;
   quantity?: Maybe<Scalars['Int']['output']>;
   real_back_flavor?: Maybe<Scalars['String']['output']>;
+  real_back_imagesrc?: Maybe<Scalars['String']['output']>;
   real_back_text?: Maybe<Scalars['String']['output']>;
   real_back_traits?: Maybe<Scalars['String']['output']>;
   real_flavor?: Maybe<Scalars['String']['output']>;
@@ -9337,10 +9389,18 @@ export type Conquest_Card_Localized = {
   signature_id?: Maybe<Scalars['Int']['output']>;
   text?: Maybe<Scalars['String']['output']>;
   traits?: Maybe<Scalars['String']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Int']['output']>;
+  tts_sheet_url?: Maybe<Scalars['String']['output']>;
   type_id?: Maybe<Scalars['String']['output']>;
   type_name?: Maybe<Scalars['String']['output']>;
   unique?: Maybe<Scalars['Boolean']['output']>;
   updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+
+/** columns and relationships of "conquest.card_localized" */
+export type Conquest_Card_LocalizedDeck_RulesArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregated selection of "conquest.card_localized" */
@@ -9387,6 +9447,7 @@ export type Conquest_Card_Localized_Avg_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** Boolean expression to filter rows from the table "conquest.card_localized". All fields are combined with a logical 'AND'. */
@@ -9399,14 +9460,17 @@ export type Conquest_Card_Localized_Bool_Exp = {
   back_card_id?: InputMaybe<String_Comparison_Exp>;
   back_flavor?: InputMaybe<String_Comparison_Exp>;
   back_health?: InputMaybe<Int_Comparison_Exp>;
+  back_imagesrc?: InputMaybe<String_Comparison_Exp>;
   back_text?: InputMaybe<String_Comparison_Exp>;
   back_traits?: InputMaybe<String_Comparison_Exp>;
   command_hammers?: InputMaybe<Int_Comparison_Exp>;
   cost?: InputMaybe<Int_Comparison_Exp>;
+  deck_rules?: InputMaybe<Jsonb_Comparison_Exp>;
   faction_id?: InputMaybe<String_Comparison_Exp>;
   faction_name?: InputMaybe<String_Comparison_Exp>;
   flavor?: InputMaybe<String_Comparison_Exp>;
   health?: InputMaybe<Int_Comparison_Exp>;
+  horizontal?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   illustrator?: InputMaybe<String_Comparison_Exp>;
   imagesrc?: InputMaybe<String_Comparison_Exp>;
@@ -9415,6 +9479,8 @@ export type Conquest_Card_Localized_Bool_Exp = {
   loyalty_id?: InputMaybe<String_Comparison_Exp>;
   loyalty_name?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  pack_cycle_id?: InputMaybe<String_Comparison_Exp>;
+  pack_cycle_name?: InputMaybe<String_Comparison_Exp>;
   pack_id?: InputMaybe<String_Comparison_Exp>;
   pack_name?: InputMaybe<String_Comparison_Exp>;
   pack_position?: InputMaybe<Int_Comparison_Exp>;
@@ -9422,6 +9488,7 @@ export type Conquest_Card_Localized_Bool_Exp = {
   preparation?: InputMaybe<Boolean_Comparison_Exp>;
   quantity?: InputMaybe<Int_Comparison_Exp>;
   real_back_flavor?: InputMaybe<String_Comparison_Exp>;
+  real_back_imagesrc?: InputMaybe<String_Comparison_Exp>;
   real_back_text?: InputMaybe<String_Comparison_Exp>;
   real_back_traits?: InputMaybe<String_Comparison_Exp>;
   real_flavor?: InputMaybe<String_Comparison_Exp>;
@@ -9434,6 +9501,8 @@ export type Conquest_Card_Localized_Bool_Exp = {
   signature_id?: InputMaybe<Int_Comparison_Exp>;
   text?: InputMaybe<String_Comparison_Exp>;
   traits?: InputMaybe<String_Comparison_Exp>;
+  tts_sheet_position?: InputMaybe<Int_Comparison_Exp>;
+  tts_sheet_url?: InputMaybe<String_Comparison_Exp>;
   type_id?: InputMaybe<String_Comparison_Exp>;
   type_name?: InputMaybe<String_Comparison_Exp>;
   unique?: InputMaybe<Boolean_Comparison_Exp>;
@@ -9448,6 +9517,7 @@ export type Conquest_Card_Localized_Max_Fields = {
   back_card_id?: Maybe<Scalars['String']['output']>;
   back_flavor?: Maybe<Scalars['String']['output']>;
   back_health?: Maybe<Scalars['Int']['output']>;
+  back_imagesrc?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
   command_hammers?: Maybe<Scalars['Int']['output']>;
@@ -9464,12 +9534,15 @@ export type Conquest_Card_Localized_Max_Fields = {
   loyalty_id?: Maybe<Scalars['String']['output']>;
   loyalty_name?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  pack_cycle_id?: Maybe<Scalars['String']['output']>;
+  pack_cycle_name?: Maybe<Scalars['String']['output']>;
   pack_id?: Maybe<Scalars['String']['output']>;
   pack_name?: Maybe<Scalars['String']['output']>;
   pack_position?: Maybe<Scalars['Int']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
   quantity?: Maybe<Scalars['Int']['output']>;
   real_back_flavor?: Maybe<Scalars['String']['output']>;
+  real_back_imagesrc?: Maybe<Scalars['String']['output']>;
   real_back_text?: Maybe<Scalars['String']['output']>;
   real_back_traits?: Maybe<Scalars['String']['output']>;
   real_flavor?: Maybe<Scalars['String']['output']>;
@@ -9482,6 +9555,8 @@ export type Conquest_Card_Localized_Max_Fields = {
   signature_id?: Maybe<Scalars['Int']['output']>;
   text?: Maybe<Scalars['String']['output']>;
   traits?: Maybe<Scalars['String']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Int']['output']>;
+  tts_sheet_url?: Maybe<Scalars['String']['output']>;
   type_id?: Maybe<Scalars['String']['output']>;
   type_name?: Maybe<Scalars['String']['output']>;
   updated_at?: Maybe<Scalars['timestamptz']['output']>;
@@ -9495,6 +9570,7 @@ export type Conquest_Card_Localized_Min_Fields = {
   back_card_id?: Maybe<Scalars['String']['output']>;
   back_flavor?: Maybe<Scalars['String']['output']>;
   back_health?: Maybe<Scalars['Int']['output']>;
+  back_imagesrc?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
   command_hammers?: Maybe<Scalars['Int']['output']>;
@@ -9511,12 +9587,15 @@ export type Conquest_Card_Localized_Min_Fields = {
   loyalty_id?: Maybe<Scalars['String']['output']>;
   loyalty_name?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  pack_cycle_id?: Maybe<Scalars['String']['output']>;
+  pack_cycle_name?: Maybe<Scalars['String']['output']>;
   pack_id?: Maybe<Scalars['String']['output']>;
   pack_name?: Maybe<Scalars['String']['output']>;
   pack_position?: Maybe<Scalars['Int']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
   quantity?: Maybe<Scalars['Int']['output']>;
   real_back_flavor?: Maybe<Scalars['String']['output']>;
+  real_back_imagesrc?: Maybe<Scalars['String']['output']>;
   real_back_text?: Maybe<Scalars['String']['output']>;
   real_back_traits?: Maybe<Scalars['String']['output']>;
   real_flavor?: Maybe<Scalars['String']['output']>;
@@ -9529,6 +9608,8 @@ export type Conquest_Card_Localized_Min_Fields = {
   signature_id?: Maybe<Scalars['Int']['output']>;
   text?: Maybe<Scalars['String']['output']>;
   traits?: Maybe<Scalars['String']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Int']['output']>;
+  tts_sheet_url?: Maybe<Scalars['String']['output']>;
   type_id?: Maybe<Scalars['String']['output']>;
   type_name?: Maybe<Scalars['String']['output']>;
   updated_at?: Maybe<Scalars['timestamptz']['output']>;
@@ -9541,14 +9622,17 @@ export type Conquest_Card_Localized_Order_By = {
   back_card_id?: InputMaybe<Order_By>;
   back_flavor?: InputMaybe<Order_By>;
   back_health?: InputMaybe<Order_By>;
+  back_imagesrc?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
   back_traits?: InputMaybe<Order_By>;
   command_hammers?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
+  deck_rules?: InputMaybe<Order_By>;
   faction_id?: InputMaybe<Order_By>;
   faction_name?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
   health?: InputMaybe<Order_By>;
+  horizontal?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   illustrator?: InputMaybe<Order_By>;
   imagesrc?: InputMaybe<Order_By>;
@@ -9557,6 +9641,8 @@ export type Conquest_Card_Localized_Order_By = {
   loyalty_id?: InputMaybe<Order_By>;
   loyalty_name?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  pack_cycle_id?: InputMaybe<Order_By>;
+  pack_cycle_name?: InputMaybe<Order_By>;
   pack_id?: InputMaybe<Order_By>;
   pack_name?: InputMaybe<Order_By>;
   pack_position?: InputMaybe<Order_By>;
@@ -9564,6 +9650,7 @@ export type Conquest_Card_Localized_Order_By = {
   preparation?: InputMaybe<Order_By>;
   quantity?: InputMaybe<Order_By>;
   real_back_flavor?: InputMaybe<Order_By>;
+  real_back_imagesrc?: InputMaybe<Order_By>;
   real_back_text?: InputMaybe<Order_By>;
   real_back_traits?: InputMaybe<Order_By>;
   real_flavor?: InputMaybe<Order_By>;
@@ -9576,6 +9663,8 @@ export type Conquest_Card_Localized_Order_By = {
   signature_id?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
+  tts_sheet_position?: InputMaybe<Order_By>;
+  tts_sheet_url?: InputMaybe<Order_By>;
   type_id?: InputMaybe<Order_By>;
   type_name?: InputMaybe<Order_By>;
   unique?: InputMaybe<Order_By>;
@@ -9595,6 +9684,8 @@ export enum Conquest_Card_Localized_Select_Column {
   /** column name */
   BackHealth = 'back_health',
   /** column name */
+  BackImagesrc = 'back_imagesrc',
+  /** column name */
   BackText = 'back_text',
   /** column name */
   BackTraits = 'back_traits',
@@ -9603,6 +9694,8 @@ export enum Conquest_Card_Localized_Select_Column {
   /** column name */
   Cost = 'cost',
   /** column name */
+  DeckRules = 'deck_rules',
+  /** column name */
   FactionId = 'faction_id',
   /** column name */
   FactionName = 'faction_name',
@@ -9610,6 +9703,8 @@ export enum Conquest_Card_Localized_Select_Column {
   Flavor = 'flavor',
   /** column name */
   Health = 'health',
+  /** column name */
+  Horizontal = 'horizontal',
   /** column name */
   Id = 'id',
   /** column name */
@@ -9627,6 +9722,10 @@ export enum Conquest_Card_Localized_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
+  PackCycleId = 'pack_cycle_id',
+  /** column name */
+  PackCycleName = 'pack_cycle_name',
+  /** column name */
   PackId = 'pack_id',
   /** column name */
   PackName = 'pack_name',
@@ -9640,6 +9739,8 @@ export enum Conquest_Card_Localized_Select_Column {
   Quantity = 'quantity',
   /** column name */
   RealBackFlavor = 'real_back_flavor',
+  /** column name */
+  RealBackImagesrc = 'real_back_imagesrc',
   /** column name */
   RealBackText = 'real_back_text',
   /** column name */
@@ -9665,6 +9766,10 @@ export enum Conquest_Card_Localized_Select_Column {
   /** column name */
   Traits = 'traits',
   /** column name */
+  TtsSheetPosition = 'tts_sheet_position',
+  /** column name */
+  TtsSheetUrl = 'tts_sheet_url',
+  /** column name */
   TypeId = 'type_id',
   /** column name */
   TypeName = 'type_name',
@@ -9688,6 +9793,7 @@ export type Conquest_Card_Localized_Stddev_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -9704,6 +9810,7 @@ export type Conquest_Card_Localized_Stddev_Pop_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -9720,6 +9827,7 @@ export type Conquest_Card_Localized_Stddev_Samp_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** Streaming cursor of the table "conquest_card_localized" */
@@ -9737,14 +9845,17 @@ export type Conquest_Card_Localized_Stream_Cursor_Value_Input = {
   back_card_id?: InputMaybe<Scalars['String']['input']>;
   back_flavor?: InputMaybe<Scalars['String']['input']>;
   back_health?: InputMaybe<Scalars['Int']['input']>;
+  back_imagesrc?: InputMaybe<Scalars['String']['input']>;
   back_text?: InputMaybe<Scalars['String']['input']>;
   back_traits?: InputMaybe<Scalars['String']['input']>;
   command_hammers?: InputMaybe<Scalars['Int']['input']>;
   cost?: InputMaybe<Scalars['Int']['input']>;
+  deck_rules?: InputMaybe<Scalars['jsonb']['input']>;
   faction_id?: InputMaybe<Scalars['String']['input']>;
   faction_name?: InputMaybe<Scalars['String']['input']>;
   flavor?: InputMaybe<Scalars['String']['input']>;
   health?: InputMaybe<Scalars['Int']['input']>;
+  horizontal?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   illustrator?: InputMaybe<Scalars['String']['input']>;
   imagesrc?: InputMaybe<Scalars['String']['input']>;
@@ -9753,6 +9864,8 @@ export type Conquest_Card_Localized_Stream_Cursor_Value_Input = {
   loyalty_id?: InputMaybe<Scalars['String']['input']>;
   loyalty_name?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  pack_cycle_id?: InputMaybe<Scalars['String']['input']>;
+  pack_cycle_name?: InputMaybe<Scalars['String']['input']>;
   pack_id?: InputMaybe<Scalars['String']['input']>;
   pack_name?: InputMaybe<Scalars['String']['input']>;
   pack_position?: InputMaybe<Scalars['Int']['input']>;
@@ -9760,6 +9873,7 @@ export type Conquest_Card_Localized_Stream_Cursor_Value_Input = {
   preparation?: InputMaybe<Scalars['Boolean']['input']>;
   quantity?: InputMaybe<Scalars['Int']['input']>;
   real_back_flavor?: InputMaybe<Scalars['String']['input']>;
+  real_back_imagesrc?: InputMaybe<Scalars['String']['input']>;
   real_back_text?: InputMaybe<Scalars['String']['input']>;
   real_back_traits?: InputMaybe<Scalars['String']['input']>;
   real_flavor?: InputMaybe<Scalars['String']['input']>;
@@ -9772,6 +9886,8 @@ export type Conquest_Card_Localized_Stream_Cursor_Value_Input = {
   signature_id?: InputMaybe<Scalars['Int']['input']>;
   text?: InputMaybe<Scalars['String']['input']>;
   traits?: InputMaybe<Scalars['String']['input']>;
+  tts_sheet_position?: InputMaybe<Scalars['Int']['input']>;
+  tts_sheet_url?: InputMaybe<Scalars['String']['input']>;
   type_id?: InputMaybe<Scalars['String']['input']>;
   type_name?: InputMaybe<Scalars['String']['input']>;
   unique?: InputMaybe<Scalars['Boolean']['input']>;
@@ -9792,6 +9908,7 @@ export type Conquest_Card_Localized_Sum_Fields = {
   quantity?: Maybe<Scalars['Int']['output']>;
   shields?: Maybe<Scalars['Int']['output']>;
   signature_id?: Maybe<Scalars['Int']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Int']['output']>;
 };
 
 /** aggregate var_pop on columns */
@@ -9808,6 +9925,7 @@ export type Conquest_Card_Localized_Var_Pop_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate var_samp on columns */
@@ -9824,6 +9942,7 @@ export type Conquest_Card_Localized_Var_Samp_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate variance on columns */
@@ -9840,6 +9959,7 @@ export type Conquest_Card_Localized_Variance_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate max on columns */
@@ -9850,8 +9970,10 @@ export type Conquest_Card_Max_Fields = {
   back_card_id?: Maybe<Scalars['String']['output']>;
   back_flavor?: Maybe<Scalars['String']['output']>;
   back_health?: Maybe<Scalars['Int']['output']>;
+  back_imagesrc?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
+  back_tts_sheet_url?: Maybe<Scalars['String']['output']>;
   command_hammers?: Maybe<Scalars['Int']['output']>;
   cost?: Maybe<Scalars['Int']['output']>;
   faction_id?: Maybe<Scalars['String']['output']>;
@@ -9870,6 +9992,8 @@ export type Conquest_Card_Max_Fields = {
   signature_id?: Maybe<Scalars['Int']['output']>;
   text?: Maybe<Scalars['String']['output']>;
   traits?: Maybe<Scalars['String']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Int']['output']>;
+  tts_sheet_url?: Maybe<Scalars['String']['output']>;
   type_id?: Maybe<Scalars['String']['output']>;
   updated_at?: Maybe<Scalars['timestamptz']['output']>;
 };
@@ -9882,8 +10006,10 @@ export type Conquest_Card_Min_Fields = {
   back_card_id?: Maybe<Scalars['String']['output']>;
   back_flavor?: Maybe<Scalars['String']['output']>;
   back_health?: Maybe<Scalars['Int']['output']>;
+  back_imagesrc?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
+  back_tts_sheet_url?: Maybe<Scalars['String']['output']>;
   command_hammers?: Maybe<Scalars['Int']['output']>;
   cost?: Maybe<Scalars['Int']['output']>;
   faction_id?: Maybe<Scalars['String']['output']>;
@@ -9902,6 +10028,8 @@ export type Conquest_Card_Min_Fields = {
   signature_id?: Maybe<Scalars['Int']['output']>;
   text?: Maybe<Scalars['String']['output']>;
   traits?: Maybe<Scalars['String']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Int']['output']>;
+  tts_sheet_url?: Maybe<Scalars['String']['output']>;
   type_id?: Maybe<Scalars['String']['output']>;
   updated_at?: Maybe<Scalars['timestamptz']['output']>;
 };
@@ -9929,13 +10057,17 @@ export type Conquest_Card_Order_By = {
   back_card_id?: InputMaybe<Order_By>;
   back_flavor?: InputMaybe<Order_By>;
   back_health?: InputMaybe<Order_By>;
+  back_imagesrc?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
   back_traits?: InputMaybe<Order_By>;
+  back_tts_sheet_url?: InputMaybe<Order_By>;
   command_hammers?: InputMaybe<Order_By>;
   cost?: InputMaybe<Order_By>;
+  deck_rules?: InputMaybe<Order_By>;
   faction_id?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
   health?: InputMaybe<Order_By>;
+  horizontal?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   illustrator?: InputMaybe<Order_By>;
   imagesrc?: InputMaybe<Order_By>;
@@ -9950,6 +10082,8 @@ export type Conquest_Card_Order_By = {
   signature_id?: InputMaybe<Order_By>;
   text?: InputMaybe<Order_By>;
   traits?: InputMaybe<Order_By>;
+  tts_sheet_position?: InputMaybe<Order_By>;
+  tts_sheet_url?: InputMaybe<Order_By>;
   type_id?: InputMaybe<Order_By>;
   unique?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -9958,6 +10092,11 @@ export type Conquest_Card_Order_By = {
 /** primary key columns input for table: conquest.card */
 export type Conquest_Card_Pk_Columns_Input = {
   id: Scalars['String']['input'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Conquest_Card_Prepend_Input = {
+  deck_rules?: InputMaybe<Scalars['jsonb']['input']>;
 };
 
 /** select columns of table "conquest.card" */
@@ -9973,19 +10112,27 @@ export enum Conquest_Card_Select_Column {
   /** column name */
   BackHealth = 'back_health',
   /** column name */
+  BackImagesrc = 'back_imagesrc',
+  /** column name */
   BackText = 'back_text',
   /** column name */
   BackTraits = 'back_traits',
   /** column name */
+  BackTtsSheetUrl = 'back_tts_sheet_url',
+  /** column name */
   CommandHammers = 'command_hammers',
   /** column name */
   Cost = 'cost',
+  /** column name */
+  DeckRules = 'deck_rules',
   /** column name */
   FactionId = 'faction_id',
   /** column name */
   Flavor = 'flavor',
   /** column name */
   Health = 'health',
+  /** column name */
+  Horizontal = 'horizontal',
   /** column name */
   Id = 'id',
   /** column name */
@@ -10015,6 +10162,10 @@ export enum Conquest_Card_Select_Column {
   /** column name */
   Traits = 'traits',
   /** column name */
+  TtsSheetPosition = 'tts_sheet_position',
+  /** column name */
+  TtsSheetUrl = 'tts_sheet_url',
+  /** column name */
   TypeId = 'type_id',
   /** column name */
   Unique = 'unique',
@@ -10029,13 +10180,17 @@ export type Conquest_Card_Set_Input = {
   back_card_id?: InputMaybe<Scalars['String']['input']>;
   back_flavor?: InputMaybe<Scalars['String']['input']>;
   back_health?: InputMaybe<Scalars['Int']['input']>;
+  back_imagesrc?: InputMaybe<Scalars['String']['input']>;
   back_text?: InputMaybe<Scalars['String']['input']>;
   back_traits?: InputMaybe<Scalars['String']['input']>;
+  back_tts_sheet_url?: InputMaybe<Scalars['String']['input']>;
   command_hammers?: InputMaybe<Scalars['Int']['input']>;
   cost?: InputMaybe<Scalars['Int']['input']>;
+  deck_rules?: InputMaybe<Scalars['jsonb']['input']>;
   faction_id?: InputMaybe<Scalars['String']['input']>;
   flavor?: InputMaybe<Scalars['String']['input']>;
   health?: InputMaybe<Scalars['Int']['input']>;
+  horizontal?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   illustrator?: InputMaybe<Scalars['String']['input']>;
   imagesrc?: InputMaybe<Scalars['String']['input']>;
@@ -10050,6 +10205,8 @@ export type Conquest_Card_Set_Input = {
   signature_id?: InputMaybe<Scalars['Int']['input']>;
   text?: InputMaybe<Scalars['String']['input']>;
   traits?: InputMaybe<Scalars['String']['input']>;
+  tts_sheet_position?: InputMaybe<Scalars['Int']['input']>;
+  tts_sheet_url?: InputMaybe<Scalars['String']['input']>;
   type_id?: InputMaybe<Scalars['String']['input']>;
   unique?: InputMaybe<Scalars['Boolean']['input']>;
   updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
@@ -10068,6 +10225,7 @@ export type Conquest_Card_Stddev_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -10083,6 +10241,7 @@ export type Conquest_Card_Stddev_Pop_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -10098,6 +10257,7 @@ export type Conquest_Card_Stddev_Samp_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** Streaming cursor of the table "conquest_card" */
@@ -10115,13 +10275,17 @@ export type Conquest_Card_Stream_Cursor_Value_Input = {
   back_card_id?: InputMaybe<Scalars['String']['input']>;
   back_flavor?: InputMaybe<Scalars['String']['input']>;
   back_health?: InputMaybe<Scalars['Int']['input']>;
+  back_imagesrc?: InputMaybe<Scalars['String']['input']>;
   back_text?: InputMaybe<Scalars['String']['input']>;
   back_traits?: InputMaybe<Scalars['String']['input']>;
+  back_tts_sheet_url?: InputMaybe<Scalars['String']['input']>;
   command_hammers?: InputMaybe<Scalars['Int']['input']>;
   cost?: InputMaybe<Scalars['Int']['input']>;
+  deck_rules?: InputMaybe<Scalars['jsonb']['input']>;
   faction_id?: InputMaybe<Scalars['String']['input']>;
   flavor?: InputMaybe<Scalars['String']['input']>;
   health?: InputMaybe<Scalars['Int']['input']>;
+  horizontal?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   illustrator?: InputMaybe<Scalars['String']['input']>;
   imagesrc?: InputMaybe<Scalars['String']['input']>;
@@ -10136,6 +10300,8 @@ export type Conquest_Card_Stream_Cursor_Value_Input = {
   signature_id?: InputMaybe<Scalars['Int']['input']>;
   text?: InputMaybe<Scalars['String']['input']>;
   traits?: InputMaybe<Scalars['String']['input']>;
+  tts_sheet_position?: InputMaybe<Scalars['Int']['input']>;
+  tts_sheet_url?: InputMaybe<Scalars['String']['input']>;
   type_id?: InputMaybe<Scalars['String']['input']>;
   unique?: InputMaybe<Scalars['Boolean']['input']>;
   updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
@@ -10154,12 +10320,14 @@ export type Conquest_Card_Sum_Fields = {
   quantity?: Maybe<Scalars['Int']['output']>;
   shields?: Maybe<Scalars['Int']['output']>;
   signature_id?: Maybe<Scalars['Int']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Int']['output']>;
 };
 
 /** columns and relationships of "conquest.card_text" */
 export type Conquest_Card_Text = {
   __typename?: 'conquest_card_text';
   back_flavor?: Maybe<Scalars['String']['output']>;
+  back_imagesrc?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
   flavor?: Maybe<Scalars['String']['output']>;
@@ -10201,6 +10369,7 @@ export type Conquest_Card_Text_Bool_Exp = {
   _not?: InputMaybe<Conquest_Card_Text_Bool_Exp>;
   _or?: InputMaybe<Array<Conquest_Card_Text_Bool_Exp>>;
   back_flavor?: InputMaybe<String_Comparison_Exp>;
+  back_imagesrc?: InputMaybe<String_Comparison_Exp>;
   back_text?: InputMaybe<String_Comparison_Exp>;
   back_traits?: InputMaybe<String_Comparison_Exp>;
   flavor?: InputMaybe<String_Comparison_Exp>;
@@ -10223,6 +10392,7 @@ export enum Conquest_Card_Text_Constraint {
 /** input type for inserting data into table "conquest.card_text" */
 export type Conquest_Card_Text_Insert_Input = {
   back_flavor?: InputMaybe<Scalars['String']['input']>;
+  back_imagesrc?: InputMaybe<Scalars['String']['input']>;
   back_text?: InputMaybe<Scalars['String']['input']>;
   back_traits?: InputMaybe<Scalars['String']['input']>;
   flavor?: InputMaybe<Scalars['String']['input']>;
@@ -10240,6 +10410,7 @@ export type Conquest_Card_Text_Insert_Input = {
 export type Conquest_Card_Text_Max_Fields = {
   __typename?: 'conquest_card_text_max_fields';
   back_flavor?: Maybe<Scalars['String']['output']>;
+  back_imagesrc?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
   flavor?: Maybe<Scalars['String']['output']>;
@@ -10257,6 +10428,7 @@ export type Conquest_Card_Text_Max_Fields = {
 export type Conquest_Card_Text_Min_Fields = {
   __typename?: 'conquest_card_text_min_fields';
   back_flavor?: Maybe<Scalars['String']['output']>;
+  back_imagesrc?: Maybe<Scalars['String']['output']>;
   back_text?: Maybe<Scalars['String']['output']>;
   back_traits?: Maybe<Scalars['String']['output']>;
   flavor?: Maybe<Scalars['String']['output']>;
@@ -10289,6 +10461,7 @@ export type Conquest_Card_Text_On_Conflict = {
 /** Ordering options when selecting data from "conquest.card_text". */
 export type Conquest_Card_Text_Order_By = {
   back_flavor?: InputMaybe<Order_By>;
+  back_imagesrc?: InputMaybe<Order_By>;
   back_text?: InputMaybe<Order_By>;
   back_traits?: InputMaybe<Order_By>;
   flavor?: InputMaybe<Order_By>;
@@ -10312,6 +10485,8 @@ export type Conquest_Card_Text_Pk_Columns_Input = {
 export enum Conquest_Card_Text_Select_Column {
   /** column name */
   BackFlavor = 'back_flavor',
+  /** column name */
+  BackImagesrc = 'back_imagesrc',
   /** column name */
   BackText = 'back_text',
   /** column name */
@@ -10339,6 +10514,7 @@ export enum Conquest_Card_Text_Select_Column {
 /** input type for updating data in table "conquest.card_text" */
 export type Conquest_Card_Text_Set_Input = {
   back_flavor?: InputMaybe<Scalars['String']['input']>;
+  back_imagesrc?: InputMaybe<Scalars['String']['input']>;
   back_text?: InputMaybe<Scalars['String']['input']>;
   back_traits?: InputMaybe<Scalars['String']['input']>;
   flavor?: InputMaybe<Scalars['String']['input']>;
@@ -10363,6 +10539,7 @@ export type Conquest_Card_Text_Stream_Cursor_Input = {
 /** Initial value of the column from where the streaming should start */
 export type Conquest_Card_Text_Stream_Cursor_Value_Input = {
   back_flavor?: InputMaybe<Scalars['String']['input']>;
+  back_imagesrc?: InputMaybe<Scalars['String']['input']>;
   back_text?: InputMaybe<Scalars['String']['input']>;
   back_traits?: InputMaybe<Scalars['String']['input']>;
   flavor?: InputMaybe<Scalars['String']['input']>;
@@ -10380,6 +10557,8 @@ export type Conquest_Card_Text_Stream_Cursor_Value_Input = {
 export enum Conquest_Card_Text_Update_Column {
   /** column name */
   BackFlavor = 'back_flavor',
+  /** column name */
+  BackImagesrc = 'back_imagesrc',
   /** column name */
   BackText = 'back_text',
   /** column name */
@@ -10424,19 +10603,27 @@ export enum Conquest_Card_Update_Column {
   /** column name */
   BackHealth = 'back_health',
   /** column name */
+  BackImagesrc = 'back_imagesrc',
+  /** column name */
   BackText = 'back_text',
   /** column name */
   BackTraits = 'back_traits',
   /** column name */
+  BackTtsSheetUrl = 'back_tts_sheet_url',
+  /** column name */
   CommandHammers = 'command_hammers',
   /** column name */
   Cost = 'cost',
+  /** column name */
+  DeckRules = 'deck_rules',
   /** column name */
   FactionId = 'faction_id',
   /** column name */
   Flavor = 'flavor',
   /** column name */
   Health = 'health',
+  /** column name */
+  Horizontal = 'horizontal',
   /** column name */
   Id = 'id',
   /** column name */
@@ -10465,6 +10652,10 @@ export enum Conquest_Card_Update_Column {
   Text = 'text',
   /** column name */
   Traits = 'traits',
+  /** column name */
+  TtsSheetPosition = 'tts_sheet_position',
+  /** column name */
+  TtsSheetUrl = 'tts_sheet_url',
   /** column name */
   TypeId = 'type_id',
   /** column name */
@@ -10554,8 +10745,18 @@ export type Conquest_Card_Updated_Stream_Cursor_Value_Input = {
 };
 
 export type Conquest_Card_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Conquest_Card_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Conquest_Card_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Conquest_Card_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Conquest_Card_Delete_Key_Input>;
   /** increments the numeric columns with given value of the filtered values */
   _inc?: InputMaybe<Conquest_Card_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Conquest_Card_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Conquest_Card_Set_Input>;
   /** filter the rows which have to be updated */
@@ -10575,6 +10776,7 @@ export type Conquest_Card_Var_Pop_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate var_samp on columns */
@@ -10590,6 +10792,7 @@ export type Conquest_Card_Var_Samp_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate variance on columns */
@@ -10605,6 +10808,7 @@ export type Conquest_Card_Variance_Fields = {
   quantity?: Maybe<Scalars['Float']['output']>;
   shields?: Maybe<Scalars['Float']['output']>;
   signature_id?: Maybe<Scalars['Float']['output']>;
+  tts_sheet_position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** columns and relationships of "conquest.comment" */
@@ -11026,6 +11230,386 @@ export type Conquest_Comment_Variance_Fields = {
 export type Conquest_Comment_Variance_Order_By = {
   deck_id?: InputMaybe<Order_By>;
   response_count?: InputMaybe<Order_By>;
+};
+
+/** columns and relationships of "conquest.cycle" */
+export type Conquest_Cycle = {
+  __typename?: 'conquest_cycle';
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  position: Scalars['Int']['output'];
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** aggregated selection of "conquest.cycle" */
+export type Conquest_Cycle_Aggregate = {
+  __typename?: 'conquest_cycle_aggregate';
+  aggregate?: Maybe<Conquest_Cycle_Aggregate_Fields>;
+  nodes: Array<Conquest_Cycle>;
+};
+
+/** aggregate fields of "conquest.cycle" */
+export type Conquest_Cycle_Aggregate_Fields = {
+  __typename?: 'conquest_cycle_aggregate_fields';
+  avg?: Maybe<Conquest_Cycle_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Conquest_Cycle_Max_Fields>;
+  min?: Maybe<Conquest_Cycle_Min_Fields>;
+  stddev?: Maybe<Conquest_Cycle_Stddev_Fields>;
+  stddev_pop?: Maybe<Conquest_Cycle_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Conquest_Cycle_Stddev_Samp_Fields>;
+  sum?: Maybe<Conquest_Cycle_Sum_Fields>;
+  var_pop?: Maybe<Conquest_Cycle_Var_Pop_Fields>;
+  var_samp?: Maybe<Conquest_Cycle_Var_Samp_Fields>;
+  variance?: Maybe<Conquest_Cycle_Variance_Fields>;
+};
+
+
+/** aggregate fields of "conquest.cycle" */
+export type Conquest_Cycle_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Cycle_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate avg on columns */
+export type Conquest_Cycle_Avg_Fields = {
+  __typename?: 'conquest_cycle_avg_fields';
+  position?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.cycle". All fields are combined with a logical 'AND'. */
+export type Conquest_Cycle_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Cycle_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Cycle_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Cycle_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  position?: InputMaybe<Int_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.cycle" */
+export enum Conquest_Cycle_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  CyclePkey = 'cycle_pkey'
+}
+
+/** input type for incrementing numeric columns in table "conquest.cycle" */
+export type Conquest_Cycle_Inc_Input = {
+  position?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** input type for inserting data into table "conquest.cycle" */
+export type Conquest_Cycle_Insert_Input = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['Int']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Cycle_Max_Fields = {
+  __typename?: 'conquest_cycle_max_fields';
+  id?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  position?: Maybe<Scalars['Int']['output']>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Cycle_Min_Fields = {
+  __typename?: 'conquest_cycle_min_fields';
+  id?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  position?: Maybe<Scalars['Int']['output']>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** response of any mutation on the table "conquest.cycle" */
+export type Conquest_Cycle_Mutation_Response = {
+  __typename?: 'conquest_cycle_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Cycle>;
+};
+
+/** on_conflict condition type for table "conquest.cycle" */
+export type Conquest_Cycle_On_Conflict = {
+  constraint: Conquest_Cycle_Constraint;
+  update_columns?: Array<Conquest_Cycle_Update_Column>;
+  where?: InputMaybe<Conquest_Cycle_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.cycle". */
+export type Conquest_Cycle_Order_By = {
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  position?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.cycle */
+export type Conquest_Cycle_Pk_Columns_Input = {
+  id: Scalars['String']['input'];
+};
+
+/** select columns of table "conquest.cycle" */
+export enum Conquest_Cycle_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.cycle" */
+export type Conquest_Cycle_Set_Input = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['Int']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type Conquest_Cycle_Stddev_Fields = {
+  __typename?: 'conquest_cycle_stddev_fields';
+  position?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Conquest_Cycle_Stddev_Pop_Fields = {
+  __typename?: 'conquest_cycle_stddev_pop_fields';
+  position?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Conquest_Cycle_Stddev_Samp_Fields = {
+  __typename?: 'conquest_cycle_stddev_samp_fields';
+  position?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Streaming cursor of the table "conquest_cycle" */
+export type Conquest_Cycle_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Cycle_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Cycle_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['Int']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate sum on columns */
+export type Conquest_Cycle_Sum_Fields = {
+  __typename?: 'conquest_cycle_sum_fields';
+  position?: Maybe<Scalars['Int']['output']>;
+};
+
+/** columns and relationships of "conquest.cycle_text" */
+export type Conquest_Cycle_Text = {
+  __typename?: 'conquest_cycle_text';
+  id: Scalars['String']['output'];
+  locale: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** aggregated selection of "conquest.cycle_text" */
+export type Conquest_Cycle_Text_Aggregate = {
+  __typename?: 'conquest_cycle_text_aggregate';
+  aggregate?: Maybe<Conquest_Cycle_Text_Aggregate_Fields>;
+  nodes: Array<Conquest_Cycle_Text>;
+};
+
+/** aggregate fields of "conquest.cycle_text" */
+export type Conquest_Cycle_Text_Aggregate_Fields = {
+  __typename?: 'conquest_cycle_text_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<Conquest_Cycle_Text_Max_Fields>;
+  min?: Maybe<Conquest_Cycle_Text_Min_Fields>;
+};
+
+
+/** aggregate fields of "conquest.cycle_text" */
+export type Conquest_Cycle_Text_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Conquest_Cycle_Text_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Boolean expression to filter rows from the table "conquest.cycle_text". All fields are combined with a logical 'AND'. */
+export type Conquest_Cycle_Text_Bool_Exp = {
+  _and?: InputMaybe<Array<Conquest_Cycle_Text_Bool_Exp>>;
+  _not?: InputMaybe<Conquest_Cycle_Text_Bool_Exp>;
+  _or?: InputMaybe<Array<Conquest_Cycle_Text_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "conquest.cycle_text" */
+export enum Conquest_Cycle_Text_Constraint {
+  /** unique or primary key constraint on columns "id", "locale" */
+  CycleTextPkey = 'cycle_text_pkey'
+}
+
+/** input type for inserting data into table "conquest.cycle_text" */
+export type Conquest_Cycle_Text_Insert_Input = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate max on columns */
+export type Conquest_Cycle_Text_Max_Fields = {
+  __typename?: 'conquest_cycle_text_max_fields';
+  id?: Maybe<Scalars['String']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** aggregate min on columns */
+export type Conquest_Cycle_Text_Min_Fields = {
+  __typename?: 'conquest_cycle_text_min_fields';
+  id?: Maybe<Scalars['String']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** response of any mutation on the table "conquest.cycle_text" */
+export type Conquest_Cycle_Text_Mutation_Response = {
+  __typename?: 'conquest_cycle_text_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Conquest_Cycle_Text>;
+};
+
+/** on_conflict condition type for table "conquest.cycle_text" */
+export type Conquest_Cycle_Text_On_Conflict = {
+  constraint: Conquest_Cycle_Text_Constraint;
+  update_columns?: Array<Conquest_Cycle_Text_Update_Column>;
+  where?: InputMaybe<Conquest_Cycle_Text_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "conquest.cycle_text". */
+export type Conquest_Cycle_Text_Order_By = {
+  id?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: conquest.cycle_text */
+export type Conquest_Cycle_Text_Pk_Columns_Input = {
+  id: Scalars['String']['input'];
+  locale: Scalars['String']['input'];
+};
+
+/** select columns of table "conquest.cycle_text" */
+export enum Conquest_Cycle_Text_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "conquest.cycle_text" */
+export type Conquest_Cycle_Text_Set_Input = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** Streaming cursor of the table "conquest_cycle_text" */
+export type Conquest_Cycle_Text_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Conquest_Cycle_Text_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Conquest_Cycle_Text_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** update columns of table "conquest.cycle_text" */
+export enum Conquest_Cycle_Text_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Cycle_Text_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Cycle_Text_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Cycle_Text_Bool_Exp;
+};
+
+/** update columns of table "conquest.cycle" */
+export enum Conquest_Cycle_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Position = 'position',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Conquest_Cycle_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Conquest_Cycle_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Conquest_Cycle_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Conquest_Cycle_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Conquest_Cycle_Var_Pop_Fields = {
+  __typename?: 'conquest_cycle_var_pop_fields';
+  position?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate var_samp on columns */
+export type Conquest_Cycle_Var_Samp_Fields = {
+  __typename?: 'conquest_cycle_var_samp_fields';
+  position?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate variance on columns */
+export type Conquest_Cycle_Variance_Fields = {
+  __typename?: 'conquest_cycle_variance_fields';
+  position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** columns and relationships of "conquest.deck" */
@@ -12606,6 +13190,7 @@ export type Conquest_Loyalty_Updates = {
 /** columns and relationships of "conquest.pack" */
 export type Conquest_Pack = {
   __typename?: 'conquest_pack';
+  cycle_id: Scalars['String']['output'];
   id: Scalars['String']['output'];
   name: Scalars['String']['output'];
   position: Scalars['Int']['output'];
@@ -12653,6 +13238,7 @@ export type Conquest_Pack_Bool_Exp = {
   _and?: InputMaybe<Array<Conquest_Pack_Bool_Exp>>;
   _not?: InputMaybe<Conquest_Pack_Bool_Exp>;
   _or?: InputMaybe<Array<Conquest_Pack_Bool_Exp>>;
+  cycle_id?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   position?: InputMaybe<Int_Comparison_Exp>;
@@ -12672,6 +13258,7 @@ export type Conquest_Pack_Inc_Input = {
 
 /** input type for inserting data into table "conquest.pack" */
 export type Conquest_Pack_Insert_Input = {
+  cycle_id?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
@@ -12681,6 +13268,7 @@ export type Conquest_Pack_Insert_Input = {
 /** aggregate max on columns */
 export type Conquest_Pack_Max_Fields = {
   __typename?: 'conquest_pack_max_fields';
+  cycle_id?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
@@ -12690,6 +13278,7 @@ export type Conquest_Pack_Max_Fields = {
 /** aggregate min on columns */
 export type Conquest_Pack_Min_Fields = {
   __typename?: 'conquest_pack_min_fields';
+  cycle_id?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
@@ -12714,6 +13303,7 @@ export type Conquest_Pack_On_Conflict = {
 
 /** Ordering options when selecting data from "conquest.pack". */
 export type Conquest_Pack_Order_By = {
+  cycle_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
@@ -12728,6 +13318,8 @@ export type Conquest_Pack_Pk_Columns_Input = {
 /** select columns of table "conquest.pack" */
 export enum Conquest_Pack_Select_Column {
   /** column name */
+  CycleId = 'cycle_id',
+  /** column name */
   Id = 'id',
   /** column name */
   Name = 'name',
@@ -12739,6 +13331,7 @@ export enum Conquest_Pack_Select_Column {
 
 /** input type for updating data in table "conquest.pack" */
 export type Conquest_Pack_Set_Input = {
+  cycle_id?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
@@ -12773,6 +13366,7 @@ export type Conquest_Pack_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Conquest_Pack_Stream_Cursor_Value_Input = {
+  cycle_id?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
@@ -12946,6 +13540,8 @@ export type Conquest_Pack_Text_Updates = {
 
 /** update columns of table "conquest.pack" */
 export enum Conquest_Pack_Update_Column {
+  /** column name */
+  CycleId = 'cycle_id',
   /** column name */
   Id = 'id',
   /** column name */
@@ -13442,6 +14038,33 @@ export type Conquest_User_Settings_Aggregate = {
   nodes: Array<Conquest_User_Settings>;
 };
 
+export type Conquest_User_Settings_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Conquest_User_Settings_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Conquest_User_Settings_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Conquest_User_Settings_Aggregate_Bool_Exp_Count>;
+};
+
+export type Conquest_User_Settings_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Conquest_User_Settings_Select_Column_Conquest_User_Settings_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Conquest_User_Settings_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Conquest_User_Settings_Select_Column_Conquest_User_Settings_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Conquest_User_Settings_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "conquest.user_settings" */
 export type Conquest_User_Settings_Aggregate_Fields = {
   __typename?: 'conquest_user_settings_aggregate_fields';
@@ -13455,6 +14078,20 @@ export type Conquest_User_Settings_Aggregate_Fields = {
 export type Conquest_User_Settings_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
   distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** order by aggregate values of table "conquest.user_settings" */
+export type Conquest_User_Settings_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Conquest_User_Settings_Max_Order_By>;
+  min?: InputMaybe<Conquest_User_Settings_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "conquest.user_settings" */
+export type Conquest_User_Settings_Arr_Rel_Insert_Input = {
+  data: Array<Conquest_User_Settings_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Conquest_User_Settings_On_Conflict>;
 };
 
 /** Boolean expression to filter rows from the table "conquest.user_settings". All fields are combined with a logical 'AND'. */
@@ -13484,10 +14121,20 @@ export type Conquest_User_Settings_Max_Fields = {
   user_id?: Maybe<Scalars['String']['output']>;
 };
 
+/** order by max() on columns of table "conquest.user_settings" */
+export type Conquest_User_Settings_Max_Order_By = {
+  user_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Conquest_User_Settings_Min_Fields = {
   __typename?: 'conquest_user_settings_min_fields';
   user_id?: Maybe<Scalars['String']['output']>;
+};
+
+/** order by min() on columns of table "conquest.user_settings" */
+export type Conquest_User_Settings_Min_Order_By = {
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "conquest.user_settings" */
@@ -13523,6 +14170,18 @@ export enum Conquest_User_Settings_Select_Column {
   PrivateDecks = 'private_decks',
   /** column name */
   UserId = 'user_id'
+}
+
+/** select "conquest_user_settings_aggregate_bool_exp_bool_and_arguments_columns" columns of table "conquest.user_settings" */
+export enum Conquest_User_Settings_Select_Column_Conquest_User_Settings_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  PrivateDecks = 'private_decks'
+}
+
+/** select "conquest_user_settings_aggregate_bool_exp_bool_or_arguments_columns" columns of table "conquest.user_settings" */
+export enum Conquest_User_Settings_Select_Column_Conquest_User_Settings_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  PrivateDecks = 'private_decks'
 }
 
 /** input type for updating data in table "conquest.user_settings" */
@@ -13568,7 +14227,31 @@ export type Conquest_Users = {
   id: Scalars['String']['output'];
   normalized_handle?: Maybe<Scalars['String']['output']>;
   role?: Maybe<Conquest_User_Role_Enum>;
+  /** An array relationship */
+  settings: Array<Conquest_User_Settings>;
+  /** An aggregate relationship */
+  settings_aggregate: Conquest_User_Settings_Aggregate;
   updated_at: Scalars['timestamptz']['output'];
+};
+
+
+/** columns and relationships of "conquest.users" */
+export type Conquest_UsersSettingsArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Conquest_User_Settings_Order_By>>;
+  where?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+};
+
+
+/** columns and relationships of "conquest.users" */
+export type Conquest_UsersSettings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Conquest_User_Settings_Order_By>>;
+  where?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
 };
 
 /** aggregated selection of "conquest.users" */
@@ -13603,6 +14286,8 @@ export type Conquest_Users_Bool_Exp = {
   id?: InputMaybe<String_Comparison_Exp>;
   normalized_handle?: InputMaybe<String_Comparison_Exp>;
   role?: InputMaybe<Conquest_User_Role_Enum_Comparison_Exp>;
+  settings?: InputMaybe<Conquest_User_Settings_Bool_Exp>;
+  settings_aggregate?: InputMaybe<Conquest_User_Settings_Aggregate_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -13621,6 +14306,7 @@ export type Conquest_Users_Insert_Input = {
   id?: InputMaybe<Scalars['String']['input']>;
   normalized_handle?: InputMaybe<Scalars['String']['input']>;
   role?: InputMaybe<Conquest_User_Role_Enum>;
+  settings?: InputMaybe<Conquest_User_Settings_Arr_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
 };
 
@@ -13674,6 +14360,7 @@ export type Conquest_Users_Order_By = {
   id?: InputMaybe<Order_By>;
   normalized_handle?: InputMaybe<Order_By>;
   role?: InputMaybe<Order_By>;
+  settings_aggregate?: InputMaybe<Conquest_User_Settings_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -18962,6 +19649,14 @@ export type Mutation_Root = {
   delete_conquest_comment?: Maybe<Conquest_Comment_Mutation_Response>;
   /** delete single row from the table: "conquest.comment" */
   delete_conquest_comment_by_pk?: Maybe<Conquest_Comment>;
+  /** delete data from the table: "conquest.cycle" */
+  delete_conquest_cycle?: Maybe<Conquest_Cycle_Mutation_Response>;
+  /** delete single row from the table: "conquest.cycle" */
+  delete_conquest_cycle_by_pk?: Maybe<Conquest_Cycle>;
+  /** delete data from the table: "conquest.cycle_text" */
+  delete_conquest_cycle_text?: Maybe<Conquest_Cycle_Text_Mutation_Response>;
+  /** delete single row from the table: "conquest.cycle_text" */
+  delete_conquest_cycle_text_by_pk?: Maybe<Conquest_Cycle_Text>;
   /** delete data from the table: "conquest.deck" */
   delete_conquest_deck?: Maybe<Conquest_Deck_Mutation_Response>;
   /** delete single row from the table: "conquest.deck" */
@@ -19332,6 +20027,14 @@ export type Mutation_Root = {
   insert_conquest_comment?: Maybe<Conquest_Comment_Mutation_Response>;
   /** insert a single row into the table: "conquest.comment" */
   insert_conquest_comment_one?: Maybe<Conquest_Comment>;
+  /** insert data into the table: "conquest.cycle" */
+  insert_conquest_cycle?: Maybe<Conquest_Cycle_Mutation_Response>;
+  /** insert a single row into the table: "conquest.cycle" */
+  insert_conquest_cycle_one?: Maybe<Conquest_Cycle>;
+  /** insert data into the table: "conquest.cycle_text" */
+  insert_conquest_cycle_text?: Maybe<Conquest_Cycle_Text_Mutation_Response>;
+  /** insert a single row into the table: "conquest.cycle_text" */
+  insert_conquest_cycle_text_one?: Maybe<Conquest_Cycle_Text>;
   /** insert data into the table: "conquest.deck" */
   insert_conquest_deck?: Maybe<Conquest_Deck_Mutation_Response>;
   /** insert data into the table: "conquest.deck_copy" */
@@ -19774,6 +20477,18 @@ export type Mutation_Root = {
   update_conquest_comment_by_pk?: Maybe<Conquest_Comment>;
   /** update multiples rows of table: "conquest.comment" */
   update_conquest_comment_many?: Maybe<Array<Maybe<Conquest_Comment_Mutation_Response>>>;
+  /** update data of the table: "conquest.cycle" */
+  update_conquest_cycle?: Maybe<Conquest_Cycle_Mutation_Response>;
+  /** update single row of the table: "conquest.cycle" */
+  update_conquest_cycle_by_pk?: Maybe<Conquest_Cycle>;
+  /** update multiples rows of table: "conquest.cycle" */
+  update_conquest_cycle_many?: Maybe<Array<Maybe<Conquest_Cycle_Mutation_Response>>>;
+  /** update data of the table: "conquest.cycle_text" */
+  update_conquest_cycle_text?: Maybe<Conquest_Cycle_Text_Mutation_Response>;
+  /** update single row of the table: "conquest.cycle_text" */
+  update_conquest_cycle_text_by_pk?: Maybe<Conquest_Cycle_Text>;
+  /** update multiples rows of table: "conquest.cycle_text" */
+  update_conquest_cycle_text_many?: Maybe<Array<Maybe<Conquest_Cycle_Text_Mutation_Response>>>;
   /** update data of the table: "conquest.deck" */
   update_conquest_deck?: Maybe<Conquest_Deck_Mutation_Response>;
   /** update single row of the table: "conquest.deck" */
@@ -20486,6 +21201,31 @@ export type Mutation_RootDelete_Conquest_CommentArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Conquest_Comment_By_PkArgs = {
   id: Scalars['uuid']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_CycleArgs = {
+  where: Conquest_Cycle_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Cycle_By_PkArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Cycle_TextArgs = {
+  where: Conquest_Cycle_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Conquest_Cycle_Text_By_PkArgs = {
+  id: Scalars['String']['input'];
+  locale: Scalars['String']['input'];
 };
 
 
@@ -21664,6 +22404,34 @@ export type Mutation_RootInsert_Conquest_CommentArgs = {
 export type Mutation_RootInsert_Conquest_Comment_OneArgs = {
   object: Conquest_Comment_Insert_Input;
   on_conflict?: InputMaybe<Conquest_Comment_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_CycleArgs = {
+  objects: Array<Conquest_Cycle_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Cycle_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Cycle_OneArgs = {
+  object: Conquest_Cycle_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Cycle_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Cycle_TextArgs = {
+  objects: Array<Conquest_Cycle_Text_Insert_Input>;
+  on_conflict?: InputMaybe<Conquest_Cycle_Text_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Conquest_Cycle_Text_OneArgs = {
+  object: Conquest_Cycle_Text_Insert_Input;
+  on_conflict?: InputMaybe<Conquest_Cycle_Text_On_Conflict>;
 };
 
 
@@ -23199,7 +23967,12 @@ export type Mutation_RootUpdate_Chaos_Bag_Tarot_Mode_ManyArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Conquest_CardArgs = {
+  _append?: InputMaybe<Conquest_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Conquest_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Conquest_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Conquest_Card_Delete_Key_Input>;
   _inc?: InputMaybe<Conquest_Card_Inc_Input>;
+  _prepend?: InputMaybe<Conquest_Card_Prepend_Input>;
   _set?: InputMaybe<Conquest_Card_Set_Input>;
   where: Conquest_Card_Bool_Exp;
 };
@@ -23207,7 +23980,12 @@ export type Mutation_RootUpdate_Conquest_CardArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Conquest_Card_By_PkArgs = {
+  _append?: InputMaybe<Conquest_Card_Append_Input>;
+  _delete_at_path?: InputMaybe<Conquest_Card_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Conquest_Card_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Conquest_Card_Delete_Key_Input>;
   _inc?: InputMaybe<Conquest_Card_Inc_Input>;
+  _prepend?: InputMaybe<Conquest_Card_Prepend_Input>;
   _set?: InputMaybe<Conquest_Card_Set_Input>;
   pk_columns: Conquest_Card_Pk_Columns_Input;
 };
@@ -23258,6 +24036,48 @@ export type Mutation_RootUpdate_Conquest_Comment_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Conquest_Comment_ManyArgs = {
   updates: Array<Conquest_Comment_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_CycleArgs = {
+  _inc?: InputMaybe<Conquest_Cycle_Inc_Input>;
+  _set?: InputMaybe<Conquest_Cycle_Set_Input>;
+  where: Conquest_Cycle_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Cycle_By_PkArgs = {
+  _inc?: InputMaybe<Conquest_Cycle_Inc_Input>;
+  _set?: InputMaybe<Conquest_Cycle_Set_Input>;
+  pk_columns: Conquest_Cycle_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Cycle_ManyArgs = {
+  updates: Array<Conquest_Cycle_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Cycle_TextArgs = {
+  _set?: InputMaybe<Conquest_Cycle_Text_Set_Input>;
+  where: Conquest_Cycle_Text_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Cycle_Text_By_PkArgs = {
+  _set?: InputMaybe<Conquest_Cycle_Text_Set_Input>;
+  pk_columns: Conquest_Cycle_Text_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Conquest_Cycle_Text_ManyArgs = {
+  updates: Array<Conquest_Cycle_Text_Updates>;
 };
 
 
@@ -25595,6 +26415,18 @@ export type Query_Root = {
   conquest_comment_aggregate: Conquest_Comment_Aggregate;
   /** fetch data from the table: "conquest.comment" using primary key columns */
   conquest_comment_by_pk?: Maybe<Conquest_Comment>;
+  /** fetch data from the table: "conquest.cycle" */
+  conquest_cycle: Array<Conquest_Cycle>;
+  /** fetch aggregated fields from the table: "conquest.cycle" */
+  conquest_cycle_aggregate: Conquest_Cycle_Aggregate;
+  /** fetch data from the table: "conquest.cycle" using primary key columns */
+  conquest_cycle_by_pk?: Maybe<Conquest_Cycle>;
+  /** fetch data from the table: "conquest.cycle_text" */
+  conquest_cycle_text: Array<Conquest_Cycle_Text>;
+  /** fetch aggregated fields from the table: "conquest.cycle_text" */
+  conquest_cycle_text_aggregate: Conquest_Cycle_Text_Aggregate;
+  /** fetch data from the table: "conquest.cycle_text" using primary key columns */
+  conquest_cycle_text_by_pk?: Maybe<Conquest_Cycle_Text>;
   /** fetch data from the table: "conquest.deck" */
   conquest_deck: Array<Conquest_Deck>;
   /** fetch aggregated fields from the table: "conquest.deck" */
@@ -26645,6 +27477,53 @@ export type Query_RootConquest_Comment_AggregateArgs = {
 
 export type Query_RootConquest_Comment_By_PkArgs = {
   id: Scalars['uuid']['input'];
+};
+
+
+export type Query_RootConquest_CycleArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Conquest_Cycle_Order_By>>;
+  where?: InputMaybe<Conquest_Cycle_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Cycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Conquest_Cycle_Order_By>>;
+  where?: InputMaybe<Conquest_Cycle_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Cycle_By_PkArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type Query_RootConquest_Cycle_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Cycle_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Conquest_Cycle_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Cycle_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Cycle_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Cycle_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Conquest_Cycle_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Cycle_Text_Bool_Exp>;
+};
+
+
+export type Query_RootConquest_Cycle_Text_By_PkArgs = {
+  id: Scalars['String']['input'];
+  locale: Scalars['String']['input'];
 };
 
 
@@ -39279,6 +40158,22 @@ export type Subscription_Root = {
   conquest_comment_by_pk?: Maybe<Conquest_Comment>;
   /** fetch data from the table in a streaming manner: "conquest.comment" */
   conquest_comment_stream: Array<Conquest_Comment>;
+  /** fetch data from the table: "conquest.cycle" */
+  conquest_cycle: Array<Conquest_Cycle>;
+  /** fetch aggregated fields from the table: "conquest.cycle" */
+  conquest_cycle_aggregate: Conquest_Cycle_Aggregate;
+  /** fetch data from the table: "conquest.cycle" using primary key columns */
+  conquest_cycle_by_pk?: Maybe<Conquest_Cycle>;
+  /** fetch data from the table in a streaming manner: "conquest.cycle" */
+  conquest_cycle_stream: Array<Conquest_Cycle>;
+  /** fetch data from the table: "conquest.cycle_text" */
+  conquest_cycle_text: Array<Conquest_Cycle_Text>;
+  /** fetch aggregated fields from the table: "conquest.cycle_text" */
+  conquest_cycle_text_aggregate: Conquest_Cycle_Text_Aggregate;
+  /** fetch data from the table: "conquest.cycle_text" using primary key columns */
+  conquest_cycle_text_by_pk?: Maybe<Conquest_Cycle_Text>;
+  /** fetch data from the table in a streaming manner: "conquest.cycle_text" */
+  conquest_cycle_text_stream: Array<Conquest_Cycle_Text>;
   /** fetch data from the table: "conquest.deck" */
   conquest_deck: Array<Conquest_Deck>;
   /** fetch aggregated fields from the table: "conquest.deck" */
@@ -40677,6 +41572,67 @@ export type Subscription_RootConquest_Comment_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Conquest_Comment_Stream_Cursor_Input>>;
   where?: InputMaybe<Conquest_Comment_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_CycleArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Conquest_Cycle_Order_By>>;
+  where?: InputMaybe<Conquest_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Cycle_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Cycle_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Conquest_Cycle_Order_By>>;
+  where?: InputMaybe<Conquest_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Cycle_By_PkArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type Subscription_RootConquest_Cycle_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Conquest_Cycle_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Cycle_TextArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Cycle_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Conquest_Cycle_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Cycle_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Cycle_Text_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Conquest_Cycle_Text_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Conquest_Cycle_Text_Order_By>>;
+  where?: InputMaybe<Conquest_Cycle_Text_Bool_Exp>;
+};
+
+
+export type Subscription_RootConquest_Cycle_Text_By_PkArgs = {
+  id: Scalars['String']['input'];
+  locale: Scalars['String']['input'];
+};
+
+
+export type Subscription_RootConquest_Cycle_Text_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Conquest_Cycle_Text_Stream_Cursor_Input>>;
+  where?: InputMaybe<Conquest_Cycle_Text_Bool_Exp>;
 };
 
 

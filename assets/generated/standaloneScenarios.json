@@ -85,6 +85,11 @@
   {
     "type": "scenario",
     "campaignId": "side",
+    "scenarioId": "laid_to_rest"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
     "scenarioId": "machinations_through_time"
   },
   {

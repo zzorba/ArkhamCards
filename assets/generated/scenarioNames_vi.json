@@ -432,6 +432,10 @@
     "name": "Special Delivery"
   },
   {
+    "id": "laid_to_rest",
+    "name": "Laid to Rest"
+  },
+  {
     "id": "late_risers",
     "name": "Late Risers"
   },
@@ -529,7 +533,7 @@
   },
   {
     "id": "puzzle_pieces",
-    "name": "Puzzle Pieces"
+    "name": "Những mảnh ghép"
   },
   {
     "id": "pyroclastic_flow",

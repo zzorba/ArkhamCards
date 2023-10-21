@@ -2812,7 +2812,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your alarm level (rounded up)",
+          "prompt": "Половина вашего уровня тревоги (округляя вверх)",
           "min": 0
         }
       },
@@ -2841,7 +2841,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your alarm level",
+          "prompt": "Ваш уровень тревоги",
           "min": 0
         }
       },
@@ -4120,7 +4120,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 for every 5 cards Subject 8L-08 has devoured",
+          "prompt": "1 за каждые 5 карт, поглощённых «Объектом 8L-08»",
           "min": 0
         }
       },
@@ -4148,7 +4148,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 for every 3 cards Subject 8L-08 has devoured",
+          "prompt": "1 за каждые 3 карты, поглощённые «Объектом 8L-08»",
           "min": 0
         }
       },
@@ -4272,7 +4272,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Scientist]] asset is at your location",
+              "prompt": "Актив-[[натуралист]] в вашей локации",
               "modified_value": {
                 "modifier": -4
               }
@@ -4323,7 +4323,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Scientist]] asset is at your location",
+              "prompt": "Актив-[[натуралист]] в вашей локации",
               "modified_value": {
                 "modifier": -6
               }
@@ -7569,7 +7569,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your alarm level, rounded down.",
+          "prompt": "Половина вашего уровня тревоги (округляя вверх)",
           "min": 1
         }
       },
@@ -7595,7 +7595,7 @@
           },
           "options": [
             {
-              "prompt": "Raise your alarm level by 1",
+              "prompt": "Повысить свой уровень тревоги на 1",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -7609,7 +7609,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your alarm level",
+          "prompt": "Ваш уровень тревоги",
           "min": 1
         }
       },
@@ -7635,7 +7635,7 @@
           },
           "options": [
             {
-              "prompt": "Raise your alarm level by 1",
+              "prompt": "Повысить свой уровень тревоги на 1",
               "modified_value": {
                 "modifier": "auto_succeed"
               }

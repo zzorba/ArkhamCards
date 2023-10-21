@@ -217,7 +217,7 @@
   },
   {
     "id": "disappearance_at_the_twilight_estate",
-    "name": "Return to Disappearance at the Twilight Estate"
+    "name": "Исчезновение в поместье Сумерек. Возвращение"
   },
   {
     "id": "dm_epilogue",
@@ -301,15 +301,15 @@
   },
   {
     "id": "fortune_and_folly_checkpoint",
-    "name": "The Plan"
+    "name": "План"
   },
   {
     "id": "fortune_and_folly_part_1",
-    "name": "The Stakeout"
+    "name": "Разведка"
   },
   {
     "id": "fortune_and_folly_part_2",
-    "name": "The Heist"
+    "name": "Ограбление"
   },
   {
     "id": "fragment_of_carcosa",
@@ -432,6 +432,10 @@
     "name": "Срочная доставка"
   },
   {
+    "id": "laid_to_rest",
+    "name": "Laid to Rest"
+  },
+  {
     "id": "late_risers",
     "name": "Late Risers"
   },
@@ -457,7 +461,7 @@
   },
   {
     "id": "machinations_through_time",
-    "name": "Machinations Through Time"
+    "name": "Махинации сквозь время"
   },
   {
     "id": "manokwari",

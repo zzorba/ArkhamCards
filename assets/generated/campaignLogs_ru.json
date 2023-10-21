@@ -1070,79 +1070,79 @@
         "entries": [
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "ячейка вмешалась в дела Абаррана."
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "Уровень тревоги: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "сыщик обчистил казино."
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "сыщик убедил Исамару участвовать в ограблении."
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "сыщик нашёл вентиляцию."
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "сыщик притворился крупным игроком."
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "сыщикам нужно время, чтобы отдохнуть."
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "сыщик раздобыл униформу сотрудника."
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "В схроне: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "сыщик украл ключи Абаррана."
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#: Душка"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (Practiced)"
+            "text": "#name#: Душка (Отточенная)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#: Катала"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#: Катала (Отточенная)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#: Громила"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (Practiced)"
+            "text": "#name#: Громила (Отточенная)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#: Медвежатник"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#: Медвежатник (Отточенная)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "Улики на Ключе Фортуны: #X#"
           }
         ]
       },
@@ -2122,7 +2122,7 @@
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
-            "text": "the coven of Keziah holds the world in its grasp."
+            "text": "мир во власти ковена Кассии."
           },
           {
             "id": "deceiving_the_lodge",
@@ -2142,11 +2142,11 @@
           },
           {
             "id": "erynn_joined_investigators",
-            "text": "Erynn joined the investigators."
+            "text": "Эринн присоединилась к сыщикам."
           },
           {
             "id": "erynn_wants_to_meet",
-            "text": "Erynn wants to meet you."
+            "text": "Эринн хочет встретиться с вами."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -2356,7 +2356,7 @@
         "entries": [
           {
             "id": "bloody_tree_carvings",
-            "text": "Bloody Tree Carvings"
+            "text": "Окровавленная резьба"
           },
           {
             "id": "corn_husk_doll",
@@ -2384,7 +2384,7 @@
           },
           {
             "id": "strange_incantation",
-            "text": "Strange Incantation"
+            "text": "Чуднóе заклинание"
           },
           {
             "id": "wisp_of_spectral_mist",
@@ -3289,7 +3289,7 @@
           },
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "ячейка вмешалась в дела Абаррана."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -3313,75 +3313,75 @@
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "Уровень тревоги: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "сыщик обчистил казино."
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "сыщик убедил Исамару участвовать в ограблении."
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "сыщик нашёл вентиляцию."
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "сыщик притворился крупным игроком."
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "сыщикам нужно время, чтобы отдохнуть."
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "сыщик раздобыл униформу сотрудника."
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "В схроне: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "сыщик украл ключи Абаррана."
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#: Душка"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (Practiced)"
+            "text": "#name#: Душка (Отточенная)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#: Катала"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#: Катала (Отточенная)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#: Громила"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (Practiced)"
+            "text": "#name#: Громила (Отточенная)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#: Медвежатник"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#: Медвежатник (Отточенная)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "Улики на Ключе Фортуны: #X#"
           },
           {
             "id": "meh_excelsior_claims_another_victim",
