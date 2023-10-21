@@ -14,7 +14,7 @@ import { FilterState } from '@lib/filters';
 
 const SIZE = 36;
 
-interface Props {
+interface Props extends Record<string, unknown> {
   parentComponentId: string;
   filterId: string;
   lightButton?: boolean;

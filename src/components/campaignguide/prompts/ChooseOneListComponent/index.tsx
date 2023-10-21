@@ -55,7 +55,7 @@ export default function ChooseOneListComponent({
       return {
         choice,
         key: originalIndex,
-        disabled: !!choice.conditionHidden,
+      disabled: !!choice.conditionHidden,
         idx: currentIndex,
       };
     });

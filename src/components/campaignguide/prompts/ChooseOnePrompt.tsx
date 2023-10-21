@@ -34,7 +34,7 @@ export default function ChooseOnePrompt({
   bulletType,
   text,
   confirmText,
-  choices: allChoices,
+  choices,
   showUndo,
   defaultChoice,
   compact,
@@ -43,7 +43,6 @@ export default function ChooseOnePrompt({
 }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { colors, width } = useContext(StyleContext);
-  const choices = useMemo(() => filter(allChoices, choice => !choice.hidden), [allChoices])
   const [currentSelectedChoice, setSelectedChoice] = useState<number | undefined>(
     defaultChoice ? findIndex(choices, item => item.id === defaultChoice) : undefined
   );
@@ -110,7 +109,7 @@ export default function ChooseOnePrompt({
         { editable && chaosBagLine }
         <View style={[space.paddingTopS, space.paddingBottomS]}>
           <ChooseOneListComponent
-            choices={showHiddenChoices ? allChoices : choices}
+            choices={choices}
             selectedIndex={selectedChoice}
             onSelect={setSelectedChoice}
             editable={decision === undefined}

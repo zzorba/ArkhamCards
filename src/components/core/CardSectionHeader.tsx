@@ -45,7 +45,7 @@ function CardSectionHeader({ investigator, section }: Props) {
     return (
       <>
         <View style={styles.superHeaderPadding}>
-          <Text style={[typography.large, styles.superHeaderText]}>
+          <Text style={[typography.large, styles.superHeaderText]} numberOfLines={1}>
             { superTitle }
           </Text>
         </View>
@@ -124,11 +124,11 @@ function CardSectionHeader({ investigator, section }: Props) {
           height,
         },
       ]}>
-        <Text style={[typography.subHeaderText, styles.subHeaderText]}>
+        <Text style={[typography.subHeaderText, styles.subHeaderText]} numberOfLines={1}>
           { section.subTitle }
         </Text>
         { !!section.subTitleDetail && (
-          <Text style={[typography.subHeaderText, styles.subHeaderText]}>
+          <Text style={[typography.subHeaderText, styles.subHeaderText]} numberOfLines={1}>
             { section.subTitleDetail }
           </Text>
         )}
@@ -146,7 +146,7 @@ function CardSectionHeader({ investigator, section }: Props) {
           height,
         },
       ]}>
-        <Text style={[typography.subHeaderText, styles.subHeaderText]}>
+        <Text style={[typography.subHeaderText, styles.subHeaderText]} numberOfLines={1}>
           { section.title }
         </Text>
       </View>

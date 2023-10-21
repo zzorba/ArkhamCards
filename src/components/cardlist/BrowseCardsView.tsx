@@ -4,7 +4,7 @@ import { SortType, SORT_BY_TYPE, BROWSE_CARDS } from '@actions/types';
 import CardSearchComponent from './CardSearchComponent';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 
-interface Props {
+interface Props extends Record<string, unknown>{
   componentId: string;
 }
 

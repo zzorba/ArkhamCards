@@ -108,7 +108,7 @@ function getRootComponent(name: string | number): any {
 // register all screens of the app (including internal ones)
 export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S>>, store: S) {
 
-  function providerWrapper<Props>(
+  function providerWrapper<Props extends Record<string, unknown>>(
     ScreenComponenet: React.ComponentType<Props>,
   ) {
     return () => gestureHandlerRootHOC((props: Props) => (
@@ -118,7 +118,7 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
     ));
   }
 
-  function providerNoGestureHandler<Props>(
+  function providerNoGestureHandler<Props extends Record<string, unknown>>(
     ScreenComponenet: React.ComponentType<Props>,
   ) {
     return () => (props: Props) => (

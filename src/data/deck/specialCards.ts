@@ -1,4 +1,4 @@
-import { PARALLEL_WENDY_CODE } from './specialMetaSlots';
+import { PARALLEL_JIM_CODE, PARALLEL_WENDY_CODE } from './specialMetaSlots';
 
 interface SpecialCards {
   codes: string[];
@@ -36,6 +36,15 @@ const specialCards: AllSpecialCards = {
       max: 0,
       codes: [
         '90038',
+      ],
+    },
+  },
+  [PARALLEL_JIM_CODE]: {
+    back: {
+      min: 0,
+      max: 0,
+      codes: [
+        '90052'
       ],
     },
   },

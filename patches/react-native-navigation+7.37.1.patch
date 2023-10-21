@@ -1,16 +1,17 @@
 diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
-index 8ddc3d5..be7e30b 100644
+index 8ddc3d5..bd6ac42 100644
 --- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
 +++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
-@@ -33,6 +33,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
+@@ -33,6 +33,8 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
  
      protected Navigator navigator;
  
 +    protected RootPresenter rootPresenter;
++
      private OnBackPressedCallback callback;
  
      @Override
-@@ -46,7 +47,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
+@@ -46,7 +48,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
                  new ChildControllersRegistry(),
                  new ModalStack(this),
                  new OverlayManager(),

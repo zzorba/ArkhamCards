@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { InteractionManager, Platform, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import { filter, findLast, find, keys, last, sortBy } from 'lodash';
+import { InteractionManager, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
 import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
 
@@ -250,7 +250,7 @@ export default function CampaignDetailTab({
     !!processedCampaign.campaignLog.campaignData.scarlet.embark,
   ], [campaignGuide, processedCampaign.campaignLog]);
   return (
-    <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
+    <View style={styles.wrapper}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>
         { !!userId && !!arkhamDb && !!campaignId.serverId && connectionProblemBanner }
         <View style={[space.paddingSideS, space.paddingBottomS]}>
@@ -358,7 +358,7 @@ export default function CampaignDetailTab({
       { chaosBagDialog }
       { traumaDialog }
       { tarotDialog }
-    </SafeAreaView>
+    </View>
   );
 }
 

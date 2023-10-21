@@ -273,6 +273,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'btb':
       case 'by_the_book':
         return this.standaloneIcon('by_the_book', size, color);
+      case 'ltr':
+      case 'laid_to_rest':
+        return this.standaloneIcon('laid_to_rest', size, color);
       case 'rtr':
       case 'red_tide_rising':
         return this.standaloneIcon('red_tide_rising', size, color);

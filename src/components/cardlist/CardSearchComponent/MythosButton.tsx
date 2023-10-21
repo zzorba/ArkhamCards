@@ -18,7 +18,7 @@ import { s } from '@styles/space';
 
 const SIZE = 32;
 
-interface Props {
+interface Props extends Record<string, unknown> {
   filterId: string;
 }
 

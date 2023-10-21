@@ -5,7 +5,7 @@ import StyleContext from '@styles/StyleContext';
 import { map } from 'lodash';
 import ArkhamIcon from '@icons/ArkhamIcon';
 
-interface Props {
+interface Props extends Record<string, unknown> {
   title: string;
 }
 

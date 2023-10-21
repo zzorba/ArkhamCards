@@ -6,6 +6,9 @@ export const OCCULT_EVIDENCE_CODE = '06008';
 export const WENDY_CODE = '01005';
 export const PARALLEL_WENDY_CODE = '90037';
 export const TIDAL_MEMENTO_CODE = '90038';
+export const JIM_CODE = '02004';
+export const PARALLEL_JIM_CODE = '90049';
+export const THE_BEYOND_CODE = '90052';
 
 export default function specialMetaSlots(
   investigator_code: string,
@@ -29,6 +32,12 @@ export default function specialMetaSlots(
         };
       }
       return undefined;
+    case JIM_CODE:
+      if (update.key === 'alternate_back') {
+        return {
+          [THE_BEYOND_CODE]: update.value === PARALLEL_JIM_CODE ? 1 : 0,
+        };
+      }
     default:
       return undefined;
   }

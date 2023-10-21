@@ -1,16 +1,16 @@
 diff --git a/node_modules/react-native-pan-pinch-view/src/index.tsx b/node_modules/react-native-pan-pinch-view/src/index.tsx
-index aae28e4..18ec2d0 100644
+index c2f04e4..978b3fc 100644
 --- a/node_modules/react-native-pan-pinch-view/src/index.tsx
 +++ b/node_modules/react-native-pan-pinch-view/src/index.tsx
-@@ -26,6 +26,7 @@ export default forwardRef(function PanPinchView(
-     maxScale = 4,
+@@ -31,6 +31,7 @@ export default forwardRef(function PanPinchView(
      initialScale = 1,
+     onTranslationFinished = undefined,
      children,
 +    backgroundStyle,
    }: PanPinchViewProps,
    ref: React.Ref<PanPinchViewRef>
  ) {
-@@ -287,6 +288,7 @@ export default forwardRef(function PanPinchView(
+@@ -321,6 +322,7 @@ export default forwardRef(function PanPinchView(
                width: containerDimensions.width,
                height: containerDimensions.height,
              },
@@ -19,7 +19,7 @@ index aae28e4..18ec2d0 100644
          >
            <Animated.View
 diff --git a/node_modules/react-native-pan-pinch-view/src/types.d.ts b/node_modules/react-native-pan-pinch-view/src/types.d.ts
-index d3d9e98..4d74f88 100644
+index 88d57e9..5e4976e 100644
 --- a/node_modules/react-native-pan-pinch-view/src/types.d.ts
 +++ b/node_modules/react-native-pan-pinch-view/src/types.d.ts
 @@ -1,4 +1,5 @@
@@ -28,12 +28,12 @@ index d3d9e98..4d74f88 100644
  
  type Dimensions = {
    width: number;
-@@ -37,6 +38,8 @@ export type PanPinchViewProps = {
-    * @default 1
+@@ -38,6 +39,8 @@ export type PanPinchViewProps = {
     */
    initialScale?: number;
-+
-+  backgroundStyle?: ViewStyle;
- };
  
- export type PanPinchViewRef = {
++  backgroundStyle?: ViewStyle;
++
+   /**
+    * Callback function called when translation is finished updating.
+    */

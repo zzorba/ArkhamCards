@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextStyle, View } from 'react-native';
 import { map, range } from 'lodash';
 import FastImage from 'react-native-fast-image';
 
@@ -67,6 +67,39 @@ function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height
       resizeMode="contain"
     />
   );
+}
+
+function annotationPosition(
+  position: 'top' | 'left' | 'right' | 'bottom',
+  { height, width, left, top, fontScale }: { height: number; width: number; left: number; top: number; fontScale: number },
+): {
+  top?: number;
+  left?: number;
+  right?: number;
+} {
+  const annotationLineHeight = fontScale * 24;
+  switch (position) {
+    case 'top':
+      return {
+        top: top - annotationLineHeight,
+        left,
+      };
+    case 'bottom':
+      return {
+        top: top + height,
+        left,
+      };
+    case 'left':
+      return {
+        top: top + (height - annotationLineHeight) / 2,
+        right: left,
+      };
+    case 'right':
+      return {
+        top: top + (height - annotationLineHeight) / 2,
+        left: left + width,
+      };
+  }
 }
 
 export default function LocationCard({ annotation, code, height, width, left, top, name, resource_dividers }: Props) {
@@ -151,6 +184,18 @@ export default function LocationCard({ annotation, code, height, width, left, to
     );
   }, [resource_dividers, width, height, left, top, colors]);
   const annotationLineHeight = fontScale * 24;
+  let textAlignment: TextStyle;
+  switch (annotation?.position) {
+    case 'left':
+      textAlignment = typography.right;
+      break;
+    case 'right':
+      textAlignment = typography.left;
+      break;
+    default:
+      textAlignment = typography.center;
+      break;
+  }
   return (
     <>
       <View style={[styles.card, { width: rotate ? height : width, height: rotate ? width : height, left, top }]}>
@@ -158,8 +203,16 @@ export default function LocationCard({ annotation, code, height, width, left, to
       </View>
       { resourceDividers }
       { !!annotation && (
-        <View style={[styles.annotation, { width, top: annotation.position === 'top' ? top - annotationLineHeight : top + height, left }]}>
-          <Text numberOfLines={1} style={[typography.text, typography.center, { lineHeight: annotationLineHeight, fontSize: fontScale * 22 }, typography.bold]}>
+        <View style={[styles.annotation, {
+          width,
+          ...annotationPosition(annotation.position, { height, width, left, top, fontScale }),
+        }]}>
+          <Text numberOfLines={1} style={[
+            typography.text,
+            textAlignment,
+            { lineHeight: annotationLineHeight, fontSize: fontScale * 22 },
+            typography.bold,
+          ]}>
             { annotation.text }
           </Text>
         </View>
