@@ -790,19 +790,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -5783,45 +5783,45 @@ msgid "Return to Into the Maelstrom"
 msgstr "Regreso a Hacia el remolino"
 
 msgid "Chained - "
-msgstr ""
+msgstr "Encadenada -"
 
 msgid "Unchained - "
-msgstr ""
+msgstr "Desencadenada -"
 
 msgid "Forbidden"
-msgstr ""
+msgstr "Prohibida"
 
 msgid "Mutated"
-msgstr ""
+msgstr "Mutada"
 
 msgid "Original card text"
-msgstr ""
+msgstr "Texto original"
 
 msgid "Original card text (back)"
-msgstr ""
+msgstr "Texto original (trasera)"
 
 #, javascript-format
 msgid "Latest Taboo List: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
-msgstr ""
+msgstr "Última lista de tabúes: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
 
 msgid "This card is no longer on the taboo list."
-msgstr ""
+msgstr "Esta carta ya no está en la lista de tabúes."
 
 msgid "See taboo list history"
-msgstr ""
+msgstr "Ver historial de la lista de tabúes"
 
 msgid "Taboo list history:"
-msgstr ""
+msgstr "Historial de la lista de tabúes:"
 
 msgid "CHAOS BAG"
-msgstr ""
+msgstr "BOLSA DE CAOS"
 
 msgid "Just a bag. No strings attached."
-msgstr ""
+msgstr "Una simple bolsa. Úsala con responsabilidad."
 
 #, javascript-format
 msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
-msgstr ""
+msgstr "Selladas (${ chaosBagResults.sealedTokens.length })"
 
 msgctxt "investigator"
 msgid "Custom"
