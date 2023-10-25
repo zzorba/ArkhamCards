@@ -14,7 +14,7 @@ import useSingleCard from '@components/card/useSingleCard';
 
 export interface EditDeckProps {
   id: DeckId;
-  side?: boolean;
+  deckType?: 'side' | 'extra';
   storyOnly?: boolean;
   weaknessOnly?: boolean;
 }
@@ -24,7 +24,7 @@ type Props = NavigationProps & EditDeckProps;
 export default function DeckEditView({
   componentId,
   id,
-  side,
+  deckType,
   storyOnly,
   weaknessOnly,
 }: Props) {
@@ -35,9 +35,9 @@ export default function DeckEditView({
   const [hideSplash, setHideSplash] = useState(false);
   const [investigator] = useSingleCard(deckEdits?.meta.alternate_back || deck?.deck.investigator_code, 'player', tabooSetId);
 
-  const hasVersatile = (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
+  const hasVersatile = deckType !== 'extra' && (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
   const versatile = !hideVersatile && hasVersatile;
-  const onYourOwn = deckEdits && deckEdits.slots[ON_YOUR_OWN_CODE] > 0;
+  const onYourOwn = deckType !== 'extra' && deckEdits && deckEdits.slots[ON_YOUR_OWN_CODE] > 0;
   const isUpgrade = !!deck?.previousDeck;
 
   const queryOpt = useMemo(() => {
@@ -59,10 +59,23 @@ export default function DeckEditView({
       return undefined;
     }
     return (filters: FilterState | undefined) => {
-      const investigatorPart = investigator && queryForInvestigator(investigator, deckEdits?.meta, filters, { isUpgrade, hideSplash });
+      const investigatorPart = investigator && queryForInvestigator(
+        investigator,
+        deckEdits?.meta,
+        filters,
+        {
+          isUpgrade,
+          hideSplash,
+          sideDeck: deckType === 'extra',
+        },
+      );
+      if (deckType === 'extra') {
+        return investigatorPart;
+      }
       const parts: Brackets[] = [
         ...(investigatorPart ? [investigatorPart] : []),
       ];
+
       if (!weaknessOnly && versatile && (!filters?.levelEnabled || filters?.level[0] === 0)) {
         const versatileQuery = new FilterBuilder('versatile').filterToQuery({
           ...defaultFilterState,
@@ -87,15 +100,16 @@ export default function DeckEditView({
       }
       return joinedQuery;
     }
-  }, [deckEdits?.meta, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, versatile, onYourOwn]);
+  }, [deckEdits?.meta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, versatile, onYourOwn]);
   const mode = useMemo(() => {
     if (storyOnly || weaknessOnly) {
       return 'story';
     }
-    if (side) {
-      return 'side';
+    if (deckType) {
+      return deckType;
     }
-  }, [storyOnly, weaknessOnly, side]);
+    return undefined;
+  }, [storyOnly, weaknessOnly, deckType]);
 
   if (!investigator || !queryOpt || !deck || !deckEdits) {
     return null;

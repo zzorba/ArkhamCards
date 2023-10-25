@@ -17,7 +17,7 @@ interface DeckCardQuantityProps {
   deckId: DeckId;
   code: string;
   limit: number;
-  mode?: 'side' | 'ignore';
+  mode?: 'side' | 'extra' | 'ignore';
   showZeroCount?: boolean;
   forceBig?: boolean;
   editable?: boolean;

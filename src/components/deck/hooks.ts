@@ -2,7 +2,7 @@ import React, { MutableRefObject, useCallback, useContext, useEffect, useMemo, u
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { Navigation } from 'react-native-navigation';
 import { Platform } from 'react-native';
-import { filter, find, forEach, keys, sortBy, range, uniq, flatMap } from 'lodash';
+import { filter, find, forEach, keys, sortBy, range, uniq, flatMap, groupBy } from 'lodash';
 import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ import { useDeck } from '@data/hooks';
 import { Toggles, useComponentVisible, useDeckWithFetch, usePlayerCardsFunc } from '@components/core/hooks';
 import { finishDeckEdit, startDeckEdit, updateDeckCustomizationChoice } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
-import { parseCustomizationDecision, parseCustomizations, parseDeck } from '@lib/parseDeck';
+import { getExtraDeckSlots, parseCustomizationDecision, parseCustomizations, parseDeck } from '@lib/parseDeck';
 import { AppState, makeDeckEditsSelector } from '@reducers';
 import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
@@ -29,6 +29,7 @@ import { CustomizationChoice } from '@data/types/CustomizationOption';
 import { useCardMap } from '@components/card/useCardList';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { createSelector } from 'reselect';
+import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 
 
 export function xpString(xp: number): string {
@@ -102,19 +103,23 @@ export function useLiveCustomizations(deck: LatestDeckT | undefined, deckEdits: 
 
 
 
-export function useDeckSlotCount({ uuid }: DeckId, code: string, mode?: 'side' | 'ignore'): [number, number] {
+export function useDeckSlotCount({ uuid }: DeckId, code: string, mode?: 'side' | 'extra' | 'ignore'): [number, number] {
   const selector = useMemo(() => createSelector(
     (state: AppState) => state.deckEdits.editting,
     (state: AppState) => state.deckEdits.edits,
     (state: AppState, uuid: string) => uuid,
-    (state: AppState, uuid: string, code: string, mode?: 'side' | 'ignore') => code,
-    (state: AppState, uuid: string, code: string, mode?: 'side' | 'ignore') => mode,
+    (state: AppState, uuid: string, code: string, mode?: 'side' | 'extra' | 'ignore') => code,
+    (state: AppState, uuid: string, code: string, mode?: 'side' | 'extra' | 'ignore') => mode,
     (editting, edits, uuid, code, mode): [number, number] => {
       if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
         return [0, 0];
       }
       if (mode === 'side') {
         return [edits[uuid]?.side[code] || 0, 0];
+      }
+      if (mode === 'extra') {
+        const extraDeck = groupBy((edits[uuid]?.meta.extra_deck ?? '').split(','), x => x);
+        return [extraDeck[code]?.length ?? 0, 0];
       }
       if (mode === 'ignore') {
         return [
@@ -231,6 +236,11 @@ function useParsedDeckHelper(
       ...keys(deckEdits?.ignoreDeckLimitSlots),
       ...(deckEdits?.meta.alternate_back ? [deckEdits.meta.alternate_back] : []),
       ...(deckEdits?.meta.alternate_front ? [deckEdits.meta.alternate_front] : []),
+      ...(deckEdits?.meta.alternate_back === PARALLEL_JIM_CODE ? [
+        ...keys(getExtraDeckSlots(deck?.deck.meta ?? {})),
+        ...keys(getExtraDeckSlots(deckEdits?.meta ?? {})),
+        ...keys(getExtraDeckSlots(deck?.previousDeck?.meta ?? {})),
+      ] : []),
       ...keys(deck?.previousDeck?.slots || {}),
       ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
       ...ravenQuillChoices,

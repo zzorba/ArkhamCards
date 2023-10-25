@@ -43,7 +43,7 @@ export function searchNormalize(text: string, lang: string) {
   }
 }
 
-export const CARD_NUM_COLUMNS = 136;
+export const CARD_NUM_COLUMNS = 138;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
@@ -544,6 +544,11 @@ export default class Card {
   public deck_requirements?: DeckRequirement;
   @Column('simple-json', { nullable: true })
   public deck_options?: DeckOption[];
+
+  @Column('simple-json', { nullable: true })
+  public side_deck_requirements?: DeckRequirement;
+  @Column('simple-json', { nullable: true })
+  public side_deck_options?: DeckOption[];
 
   @Column('simple-json', { nullable: true })
   public customization_options?: CustomizationOption[];
@@ -1317,6 +1322,10 @@ export default class Card {
       DeckRequirement.parse(card.deck_requirements) :
       null;
 
+    const side_deck_requirements = card.side_deck_requirements ?
+      DeckRequirement.parse(card.side_deck_requirements) :
+      null;
+
     if (card.code === '03004') {
       card.deck_options = [{"faction":["mystic","neutral"],"level":{"min":0,"max":5}},{"tag": ["uc"],"level":{"min":0,"max":4}},{"uses":["charges","charge"],"level":{"min":0,"max":4}},{"trait":["occult"],"level":{"min":0,"max":0}}]
     }
@@ -1452,6 +1461,7 @@ export default class Card {
         'customization_text',
         'deck_options',
         'deck_requirements',
+        'side_deck_requirements',
         'alt_art_investigator',
         'taboo_xp',
         'official',
@@ -1481,6 +1491,7 @@ export default class Card {
       firstName,
       renderName,
       renderSubname,
+      side_deck_requirements,
       deck_requirements,
       deck_options,
       linked_card,

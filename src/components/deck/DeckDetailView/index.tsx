@@ -62,6 +62,8 @@ import { JOE_DIAMOND_CODE, LOLA_CODE, SUZI_CODE } from '@data/deck/specialCards'
 import { localizeTag } from '@components/deck/TagChiclet';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import useTagPile from '@components/deck/useTagPile';
+import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
+import { getExtraDeckSlots } from '@lib/parseDeck';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -262,8 +264,11 @@ function DeckDetailView({
   const [tabooOpen, setTabooOpen] = useState(false);
   const problem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
-  const flatDeckCards = useMemo(() => flatMap(deckCards, c =>
-    c && ((deckEdits?.slots[c.code] || 0) > 0 || (deckEdits?.ignoreDeckLimitSlots[c.code] || 0) > 0) ? c : []), [deckCards, deckEdits]);
+  const flatDeckCards = useMemo(() => {
+    const extraDeckSlots = parsedDeck?.investigatorBack.code === PARALLEL_JIM_CODE ? getExtraDeckSlots(deckEdits?.meta ?? {}) : {};
+    return flatMap(deckCards, c =>
+      c && ((deckEdits?.slots[c.code] || 0) > 0 || (deckEdits?.ignoreDeckLimitSlots[c.code] || 0) > 0 || (extraDeckSlots[c.code] || 0) > 0) ? c : []);
+  }, [deckCards, deckEdits]);
   const [possibleUpgradeCards] = useUpgradeCardsByName(flatDeckCards, tabooSetId)
   const [bondedCards] = useBondedFromCards(flatDeckCards, DEFAULT_SORT, tabooSetId);
   const [requiredCards] = useRequiredCards(parsedDeck?.investigatorFront, parsedDeck?.investigatorBack, tabooSetId);
@@ -535,6 +540,47 @@ function DeckDetailView({
     });
   }, [componentId, setFabOpen, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses, deckEditsRef, setMode]);
 
+  const onEditExtraPressed = useCallback(() => {
+    if (!deck || !cards) {
+      return;
+    }
+    if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
+      setMode('edit');
+    }
+    setFabOpen(false);
+    setMenuOpen(false);
+    const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    Navigation.push<EditDeckProps>(componentId, {
+      component: {
+        name: 'Deck.EditAddCards',
+        passProps: {
+          id,
+          deckType: 'extra',
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+            backgroundColor,
+          },
+          topBar: {
+            title: {
+              text: t`Edit Spirit Deck`,
+              color: 'white',
+            },
+            backButton: {
+              title: t`Back`,
+              color: 'white',
+            },
+            background: {
+              color: backgroundColor,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, deck, id, colors, setFabOpen, setMenuOpen, cards, deckEditsRef, setMode]);
+
   const onEditSidePressed = useCallback(() => {
     if (!deck || !cards) {
       return;
@@ -551,7 +597,7 @@ function DeckDetailView({
         name: 'Deck.EditAddCards',
         passProps: {
           id,
-          side: true,
+          deckType: 'side',
         },
         options: {
           statusBar: {
@@ -811,7 +857,7 @@ function DeckDetailView({
     return null;
   }, [deck, hasPendingEdits, editable, parsedDeck, deckEdits, campaign, onEditPressed, onUpgradePressed]);
 
-  const showCardUpgradeDialog = useCallback((card: Card) => {
+  const showCardUpgradeDialog = useCallback((card: Card, mode: 'extra' | undefined) => {
     if (!parsedDeck) {
       return;
     }
@@ -823,6 +869,7 @@ function DeckDetailView({
           id,
           cardsByName: cardsByName[card.real_name.toLowerCase()] || [],
           investigator: parsedDeck.investigator,
+          mode,
         },
         options: getDeckOptions(colors, { title: card.name }, parsedDeck.investigator),
       },
@@ -1379,6 +1426,7 @@ function DeckDetailView({
               showEditCards={onAddCardsPressed}
               showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               showEditSide={deck.nextDeckId ? undefined : onEditSidePressed}
+              showEditExtra={onEditExtraPressed}
               showDeckHistory={showUpgradeHistoryPressed}
               showXpAdjustmentDialog={showXpAdjustmentDialog}
               showCardUpgradeDialog={showCardUpgradeDialog}

@@ -221,7 +221,7 @@ export function showDrawSimulator(
 export function showCardSwipe(
   componentId: string,
   codes: string[],
-  controls: undefined | 'side' | 'checklist' | ('side' | 'deck' | 'ignore' | 'bonded' | 'special' | 'checklist')[],
+  controls: undefined | 'side' | 'extra' | 'checklist' | ('side' | 'deck' | 'extra' | 'ignore' | 'bonded' | 'special' | 'checklist')[],
   index: number,
   colors: ThemeColors,
   initialCards?: Card[],
@@ -255,7 +255,7 @@ export function showCardSwipe(
         deckId,
         whiteNav: !!investigator,
         faction: investigator?.factionCode(),
-        controls: controls === 'side' || controls === 'checklist' ? map(range(0, codes.length), () => controls) : controls,
+        controls: controls === 'side' || controls === 'extra' || controls === 'checklist' ? map(range(0, codes.length), () => controls) : controls,
         editable,
         initialCustomizations,
         customizationsEditable: editable || customizationsEditable,

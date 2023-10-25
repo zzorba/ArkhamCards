@@ -20,6 +20,7 @@ import { CardTagsMigraiton1663617607335 } from './migration/CardTagsMigration';
 import { ImageMigration1665529094145 } from './migration/ImageMigration'
 import { ReprintQuantityMigration1671202311300 } from './migration/ReprintQuantityMigration';
 import { TabooTextMigration1693598075386 } from './migration/TabooTextMigration';
+import { SideDeckMigration1698073688677 } from './migration/SideDeckMigration';
 
 type DatabaseListener = () => void;
 
@@ -54,6 +55,7 @@ async function createDatabaseConnection(recreate: boolean) {
       ImageMigration1665529094145,
       ReprintQuantityMigration1671202311300,
       TabooTextMigration1693598075386,
+      SideDeckMigration1698073688677,
     ],
     entities: [
       Card,

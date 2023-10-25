@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { FlatList, Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { map } from 'lodash';
-import Animated, { SharedValue, SlideInLeft, SlideOutDown, useAnimatedReaction, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { SharedValue, SlideInLeft, SlideOutDown, useAnimatedReaction, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';

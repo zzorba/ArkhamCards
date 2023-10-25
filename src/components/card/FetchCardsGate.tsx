@@ -39,8 +39,9 @@ interface Props {
 
 function ProgressBar({ progress }: { progress: SharedValue<number> }) {
   const { colors, width } = useContext(StyleContext);
+  const progressValue = progress.value;
   const style = useAnimatedStyle<ViewStyle>(() => {
-    const size = width * 0.6 * (progress.value || 0);
+    const size = width * 0.6 * (progressValue || 0);
     return {
       width: size,
     };

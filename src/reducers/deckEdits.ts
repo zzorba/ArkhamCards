@@ -1,4 +1,4 @@
-import { filter } from 'lodash';
+import { filter, flatMap, groupBy, map, mapValues, range } from 'lodash';
 
 import {
   DELETE_DECK,
@@ -16,6 +16,7 @@ import {
   SYNC_DECK,
   Slots,
 } from '@actions/types';
+import { encodeExtraDeckSlots, getExtraDeckSlots } from '@lib/parseDeck';
 
 interface DeckEditsState {
   edits: {
@@ -39,9 +40,10 @@ const DEFAULT_DECK_EDITS_STATE: DeckEditsState = {
   deck_uploads: {},
 };
 
-function getCurrentSlots(edits: EditDeckState, type: 'slots' | 'ignoreDeckLimitSlots' | 'side'): Slots {
+function getCurrentSlots(edits: EditDeckState, type: 'slots' | 'extra' | 'ignoreDeckLimitSlots' | 'side'): Slots {
   switch (type) {
     case 'slots': return { ...edits.slots };
+    case 'extra': return getExtraDeckSlots(edits.meta);
     case 'ignoreDeckLimitSlots': return { ...edits.ignoreDeckLimitSlots };
     case 'side': return { ...edits.side };
   }
@@ -241,6 +243,12 @@ export default function(
         break;
       case 'side':
         updatedEdits.side = currentSlots;
+        break;
+      case 'extra':
+        updatedEdits.meta = {
+          ...currentEdits.meta,
+          extra_deck: encodeExtraDeckSlots(currentSlots),
+        };
         break;
     }
 

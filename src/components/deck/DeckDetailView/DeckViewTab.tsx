@@ -57,6 +57,7 @@ interface Props {
   showDrawWeakness: (replaceRandomBasicWeakness?: boolean) => void;
   showEditSpecial?: () => void;
   showEditSide?: () => void;
+  showEditExtra?: () => void;
   showXpAdjustmentDialog: () => void;
   showCardUpgradeDialog: (card: Card) => void;
   showDraftCards?: () => void;
@@ -95,6 +96,7 @@ export default function DeckViewTab(props: Props) {
     showEditSpecial,
     showDraftCards,
     showEditSide,
+    showEditExtra,
     cardsByName,
     bondedCardsByName,
     editable,
@@ -220,6 +222,7 @@ export default function DeckViewTab(props: Props) {
     showEditCards,
     showEditSpecial,
     showEditSide,
+    showEditExtra,
     showDraftCards,
     showDrawWeakness,
     showCardUpgradeDialog: showDeckUpgrades ? showCardUpgradeDialog : undefined,

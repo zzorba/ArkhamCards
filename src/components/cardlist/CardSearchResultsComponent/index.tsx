@@ -53,7 +53,7 @@ interface Props {
   investigator?: Card;
   headerItems?: React.ReactNode[];
   headerHeight?: number;
-  mode?: 'story' | 'side';
+  mode?: 'story' | 'side' | 'extra';
 
   initialSort?: SortType;
   includeDuplicates?: boolean;
@@ -414,7 +414,7 @@ export default function({
             headerHeight={headerHeight}
             showNonCollection={showNonCollection}
             storyOnly={mode === 'story'}
-            specialMode={mode === 'side' ? mode : undefined}
+            specialMode={mode === 'side' || mode === 'extra' ? mode : undefined}
             mythosToggle={mythosToggle}
             initialSort={initialSort}
             footerPadding={deckId !== undefined ? DeckNavFooter.height : undefined}

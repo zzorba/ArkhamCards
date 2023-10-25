@@ -54,6 +54,7 @@ import { useAppDispatch } from '@app/store';
 import { FilterState } from '@lib/filters';
 import DeckValidation from '@lib/DeckValidation';
 import { THE_INSANE_CODE } from '@data/deck/specialCards';
+import { getExtraDeckSlots } from '@lib/parseDeck';
 
 interface Props {
   componentId: string;
@@ -78,7 +79,7 @@ interface Props {
   handleScroll?: (...args: any[]) => void;
   showHeader?: () => void;
   storyOnly?: boolean;
-  specialMode?: 'side' | 'checklist';
+  specialMode?: 'side' | 'extra' | 'checklist';
   filterId: string;
 
   showNonCollection?: boolean;
@@ -285,7 +286,7 @@ interface SectionFeedProps {
   deckCardCounts?: Slots;
   originalDeckSlots?: Slots;
   storyOnly?: boolean;
-  sideDeck?: boolean;
+  mode?: 'extra' | 'side';
   hasHeader?: boolean;
   investigator?: Card;
   footerPadding?: number;
@@ -323,7 +324,7 @@ function useSectionFeed({
   textQuery,
   showAllNonCollection,
   storyOnly,
-  sideDeck,
+  mode,
   originalDeckSlots,
   deckCardCounts,
   includeBonded,
@@ -385,7 +386,7 @@ function useSectionFeed({
     return () => {
       ignore = true;
     };
-  }, [db, storyQuery, filters, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, theTabooSetId, sorts, sideDeck]);
+  }, [db, storyQuery, filters, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, theTabooSetId, sorts, mode]);
   const [partialCards, partialCardsLoading] = textQuery ? [textQueryCards, textQueryCardsLoading] : [mainQueryCards, mainQueryCardsLoading];
   const [showSpoilers, setShowSpoilers] = useState(false);
   const expandSectionRef = useRef<(sectionId: string) => void>();
@@ -414,7 +415,7 @@ function useSectionFeed({
           type: 'header',
           id: 'deck_superheader',
           header: {
-            superTitle: sideDeck ? t`Side Deck` : t`In Deck`,
+            superTitle: mode ? (mode === 'side' ? t`Side Deck` : t`Spirit Deck`) : t`In Deck`,
             superTitleIcon: 'refresh',
             onPress: hasDeckChanges ? refreshDeck : undefined,
           },
@@ -509,7 +510,7 @@ function useSectionFeed({
     }
     return [result, items, spoilerCards.length];
   }, [includeBonded, partialCards, deckCardsLoading, deckCards, showNonCollection, ignore_collection, packInCollection, packSpoiler, showSpoilers, hasDeckChanges,
-    sideDeck, investigator, showAllNonCollection,
+    mode, investigator, showAllNonCollection,
     editCollectionSettings, refreshDeck]);
 
   const { cards, fetchMore, expandCards } = useCardFetcher(
@@ -914,6 +915,20 @@ export default function({
   const singleCardView = useSettingValue('single_card');
   const packInCollection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
+  const [deckCardCounts, originalDeckSlots, mode] = useMemo((): [Slots | undefined, Slots | undefined, 'side' | 'extra' | undefined] => {
+    switch(specialMode) {
+      case 'side':
+        return [deckEdits?.side, deck?.deck.sideSlots, 'side'];
+      case 'extra':
+        return [
+          deckEdits ? getExtraDeckSlots(deckEdits.meta ?? {}) : undefined,
+          deck ? getExtraDeckSlots(deck.deck.meta ?? {}) : undefined,
+          'extra',
+        ];
+      default:
+        return [deckEdits?.slots, deck?.deck.slots, undefined];
+    }
+  }, [specialMode, deckEdits, deck]);
   const {
     feed,
     fullFeed,
@@ -934,11 +949,11 @@ export default function({
     textQuery,
     searchTerm,
     showAllNonCollection: showNonCollection,
-    deckCardCounts: specialMode === 'side' ? deckEdits?.side : deckEdits?.slots,
-    originalDeckSlots: (currentDeckOnly && (specialMode === 'side' ? deck?.deck.sideSlots : deck?.deck.slots)) || undefined,
+    deckCardCounts,
+    originalDeckSlots: currentDeckOnly ? originalDeckSlots : undefined,
     includeBonded: currentDeckOnly,
     storyOnly,
-    sideDeck: specialMode === 'side',
+    mode,
     expandSearchControlsHeight,
     footerPadding,
     customizations,
@@ -1005,7 +1020,7 @@ export default function({
     );
   }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, specialMode, cardPressed]);
   const deckLimits: ControlType[] = useMemo(() => {
-    const mode = specialMode === 'side' ? 'side' : undefined;
+    const mode = specialMode === 'side' || specialMode === 'extra' ? specialMode : undefined;
     return deckId ? [
       {
         type: 'deck',

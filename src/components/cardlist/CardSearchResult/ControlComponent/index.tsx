@@ -16,7 +16,7 @@ export type ControlType = {
   type: 'deck';
   deckId: DeckId;
   limit: number;
-  mode?: 'side' | 'ignore';
+  mode?: 'side' | 'extra' | 'ignore';
 } | {
   type: 'quantity';
   count: number;
@@ -33,9 +33,9 @@ export type ControlType = {
   type: 'upgrade';
   deckId: DeckId;
   limit: number;
-  mode?: 'side' | 'ignore'
+  mode?: 'side' | 'extra' | 'ignore'
   editable: boolean;
-  onUpgradePress?: (card: Card) => void;
+  onUpgradePress?: (card: Card, mode: 'extra' | undefined) => void;
   customizable: boolean;
 } | {
   type: 'toggle';

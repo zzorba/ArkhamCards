@@ -13,10 +13,12 @@ import {
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, INVALID_CARDS, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
-import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_MARKET_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE, PRECIOUS_MEMENTO_FORMER_CODE, PRECIOUS_MEMENTO_FUTURE_CODE, RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_MARKET_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE, PRECIOUS_MEMENTO_FORMER_CODE, PRECIOUS_MEMENTO_FUTURE_CODE, RANDOM_BASIC_WEAKNESS, PARALLEL_AGNES_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
 import { BONDED_WEAKNESS_COUNTS, THE_INSANE_CODE } from '@data/deck/specialCards';
+import DeckRequirement from '@data/types/DeckRequirement';
+import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 
 const THE_INSANE_TAG = 'the_insane';
 
@@ -56,6 +58,7 @@ export default class DeckValidation {
   all_options: boolean;
   all_customizations: boolean;
   random_deck: boolean;
+  side_deck: boolean;
   insane_data: InsaneData | undefined;
 
   /**
@@ -69,7 +72,17 @@ export default class DeckValidation {
     investigator: Card,
     slots: Slots,
     meta: DeckMeta | undefined,
-    { all_options, all_customizations, random_deck }: { all_options?: boolean; all_customizations?: boolean, random_deck?: boolean } = {}
+    {
+      all_options,
+      all_customizations,
+      random_deck,
+      side_deck,
+    }: {
+      all_options?: boolean;
+      all_customizations?: boolean;
+      random_deck?: boolean;
+      side_deck?: boolean;
+    } = {}
   ) {
     this.investigator = investigator;
     this.slots = slots;
@@ -77,6 +90,7 @@ export default class DeckValidation {
     this.all_options = all_options || false;
     this.all_customizations = all_customizations || false;
     this.random_deck = random_deck || false;
+    this.side_deck = side_deck || false;
   }
 
 
@@ -91,13 +105,18 @@ export default class DeckValidation {
     };
   }
 
+  deckRequirements(): DeckRequirement | undefined {
+    return this.side_deck ? this.investigator.side_deck_requirements : this.investigator.deck_requirements;
+  }
+
   getDeckSize(): number {
     const deckOptions = this.deckOptions();
     const specialCards = this.specialCardCounts();
     var size: number = 30;
-    if (this.investigator.deck_requirements) {
-      if (this.investigator.deck_requirements.size) {
-        size = this.investigator.deck_requirements.size;
+    const requirements = this.deckRequirements();
+    if (requirements) {
+      if (requirements.size) {
+        size = requirements.size;
       }
       if (this.meta && this.meta.deck_size_selected && deckOptions.find(option => option.deck_size_select?.length)) {
         size = parseInt(this.meta.deck_size_selected, 10);
@@ -167,7 +186,9 @@ export default class DeckValidation {
           card.restrictions_investigator ||
           card.xp === undefined ||
           card.xp === null
-        ) && specialCards.underworldSupport > 0) {
+        ) && (
+          (specialCards.underworldSupport > 0) || this.side_deck
+        )) {
           return {
             nb_copies: group.length,
             deck_limit: 1,
@@ -188,10 +209,10 @@ export default class DeckValidation {
       });
   }
 
-  getProblem(cards: Card[], ignoreInvestigatorRequirements?: boolean): DeckProblem | null {
+  getProblem(cards: Card[], ignoreInvestigatorRequirements?: boolean): DeckProblem | undefined {
     const problem = this.getProblemHelper(cards, ignoreInvestigatorRequirements);
     if (!problem) {
-      return null;
+      return undefined;
     }
     return {
       reason: problem.reason,
@@ -206,6 +227,7 @@ export default class DeckValidation {
   } {
     // get investigator data
     var card = this.investigator;
+    const requirements = this.deckRequirements();
     if (card.code === THE_INSANE_CODE) {
       this.insane_data = this.getInsaneData(cards);
     }
@@ -218,11 +240,11 @@ export default class DeckValidation {
 
     // store list of all problems
     this.problem_list = [];
-    if (card && card.deck_requirements && !ignoreInvestigatorRequirements){
-      //console.log(card.deck_requirements);
+    if (card && requirements && !ignoreInvestigatorRequirements){
+      // console.log(requirements);
       // must have the required cards
-      if (card.deck_requirements.card) {
-        const failedReq = find(card.deck_requirements.card, req =>
+      if (requirements.card) {
+        const failedReq = find(requirements.card, req =>
           !find(cards, theCard => theCard.code === req.code) &&
           !find(cards, theCard => theCard.alternate_required_code === req.code) &&
           !(req.alternates?.length && find(req.alternates, code => find(cards, theCard => theCard.code === code)))
@@ -357,8 +379,10 @@ export default class DeckValidation {
         atleast: {},
       });
     }
-    if (this.investigator && this.investigator.deck_options) {
-      for (var i = 0; i < this.investigator.deck_options.length; i++){
+    const deck_options = this.side_deck ? this.investigator.side_deck_options : this.investigator.deck_options;
+
+    if (deck_options) {
+      for (var i = 0; i < deck_options.length; i++){
         this.deck_options_counts.push({
           limit: 0,
           atleast: {},
@@ -417,12 +441,12 @@ export default class DeckValidation {
         })
       );
     }
+    const investigator_deck_options = this.side_deck ? this.investigator.side_deck_options : this.investigator.deck_options;
     if (
-      this.investigator &&
-      this.investigator.deck_options &&
-      this.investigator.deck_options.length
+      investigator_deck_options &&
+      investigator_deck_options.length
     ) {
-      forEach(this.investigator.deck_options, deck_option => {
+      forEach(investigator_deck_options, deck_option => {
         if (deck_option.option_select) {
           const option = this.meta && this.meta.option_selected ? find(deck_option.option_select, o => o.id === this.meta?.option_selected) : undefined;
           if (option) {
@@ -480,10 +504,10 @@ export default class DeckValidation {
     const investigator = this.investigator;
 
     // hide investigators
-    if (card.type_code === "investigator") {
+    if (card.type_code === 'investigator') {
       return undefined;
     }
-    if (card.faction_code === "mythos") {
+    if (card.faction_code === 'mythos') {
       return undefined;
     }
 

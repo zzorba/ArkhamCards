@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import Animated, { ComplexAnimationBuilder, SharedValue, useAnimatedReaction, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { ComplexAnimationBuilder, SharedValue, useAnimatedReaction, useSharedValue, withTiming } from 'react-native-reanimated';
 import { map } from 'lodash';
 
 import Card, { CardsMap } from '@data/types/Card';

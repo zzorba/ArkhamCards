@@ -16,7 +16,7 @@ interface Props {
   deckId: DeckId;
   code: string;
   limit: number;
-  mode?: 'side' | 'ignore' | 'checklist';
+  mode?: 'side' | 'extra' | 'ignore' | 'checklist';
   editable?: boolean
 }
 

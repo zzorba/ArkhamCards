@@ -57,6 +57,15 @@ import {
 } from '@app_constants';
 import DeckValidation from './DeckValidation';
 import CustomizationOption, { CoreCustomizationChoice, CustomizationChoice } from '@data/types/CustomizationOption';
+import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
+
+export function getExtraDeckSlots(meta: DeckMeta): Slots {
+  return mapValues(groupBy((meta.extra_deck ?? '').split(','), x => x), x => x.length);
+}
+
+export function encodeExtraDeckSlots(slots: Slots): string {
+  return flatMap(slots, (count, code) => map(range(0, count), _ => code)).join(',');
+}
 
 function filterBy(
   cardIds: CardId[],
@@ -298,7 +307,7 @@ function getDeckChangesHelper(
   totalFreeCards: number,
   { changedCards, ignoredCardsDelta, exiledCards, customizedSlots, customizedXp, unchangedSlots }: DeckSlotChanges,
   invalidCards: Card[],
-  dtrFirst: boolean
+  { dtrFirst }: { dtrFirst: boolean }
 ): DeckChanges {
   const totalExiledCards = sum(values(exiledCards));
   const exiledSlots: Card[] = [];
@@ -758,7 +767,7 @@ function getDeckChanges(
       unchangedSlots,
     },
     invalidCards,
-    false
+    { dtrFirst: false },
   );
   if (slots[DOWN_THE_RABBIT_HOLE_CODE] && slots[ARCANE_RESEARCH_CODE]) {
     const altChanges = getDeckChangesHelper(
@@ -775,7 +784,7 @@ function getDeckChanges(
         unchangedSlots,
       },
       invalidCards,
-      true
+      { dtrFirst: true },
     );
     if (altChanges.spentXp < normalChanges.spentXp) {
       return altChanges;
@@ -981,15 +990,71 @@ export function parseDeck(
   const [customizations, previousCustomizations] = parseCustomizations(meta, slots, cards, previousDeck?.meta, previousDeck?.slots);
   const investigator_front_code = meta.alternate_front || investigator_code;
   const investigator_back_code = meta.alternate_back || investigator_code;
+
   const investigator: Card | undefined = cards[investigator_back_code];
   if (!investigator) {
     return undefined;
   }
   const validation = new DeckValidation(investigator, slots, meta);
-
   const deckCards = getCards(cards, slots, ignoreDeckLimitSlots, listSeperator, customizations);
-  const problem = validation.getProblem(deckCards) || undefined;
+
+  let problem = validation.getProblem(deckCards);
   const invalidCodes = new Set(problem?.invalidCards.map(c => c.code) ?? []);
+  let extraCards: CardId[] | undefined;
+  if (investigator_back_code === PARALLEL_JIM_CODE) {
+    const extraDeckSlots = getExtraDeckSlots(meta);
+    const extraDeckCards = getCards(cards, extraDeckSlots, {}, listSeperator, customizations);
+    const extraValidation = new DeckValidation(investigator, extraDeckSlots, meta, { side_deck: true });
+    const extraProblem = extraValidation.getProblem(extraDeckCards);
+    const invalidExtraCodes = new Set(problem?.invalidCards.map(c => c.code) ?? []);
+    if (extraProblem) {
+      if (!problem) {
+        problem = extraProblem;
+      } else {
+        problem = {
+          problems: [
+            ...(problem.problems ?? []),
+            ...(extraProblem.problems ?? [])
+          ],
+          reason: problem.reason ?? extraProblem.reason,
+          invalidCards: [
+            ...problem.invalidCards,
+            ...extraProblem.invalidCards,
+          ],
+        };
+      }
+    }
+    extraCards = flatMap(
+      sortBy(
+        sortBy(
+          filter(uniq([...keys(extraDeckSlots), ...keys(getExtraDeckSlots(originalDeck?.meta ?? {}))]), id => !!cards[id]),
+          id => {
+            const card = cards[id];
+            return (card && card.xp) || 0;
+          }
+        ),
+        id => {
+          const card = cards[id];
+          return (card && card.name) || '???';
+        }
+      ),
+      id => {
+        const card = cards[id];
+        if (!card) {
+          return [];
+        }
+        const customizedCard = card.withCustomizations(listSeperator, customizations[card.code]);
+        const invalid = !extraValidation.canIncludeCard(customizedCard, false);
+        return {
+          id,
+          quantity: extraDeckSlots[id] || 0,
+          invalid: invalid || invalidExtraCodes.has(id) || (customizedCard.deck_limit !== undefined && extraDeckSlots[id] > customizedCard.deck_limit),
+          limited: extraValidation.isCardLimited(customizedCard),
+          custom: card.custom(),
+        };
+      });
+  }
+
   const cardIds = flatMap(
     sortBy(
       sortBy(
@@ -1078,7 +1143,6 @@ export function parseDeck(
     }
   );
 
-
   const changes = originalDeck && getDeckChanges(
     cards,
     validation,
@@ -1128,6 +1192,7 @@ export function parseDeck(
     normalCards: splitCards(normalCards, listSeperator, customizations, cards),
     specialCards: splitCards(specialCards, listSeperator, customizations,cards),
     sideCards: splitCards(sideCards, listSeperator, customizations, cards),
+    extraCards: extraCards ? splitCards(extraCards, listSeperator, customizations, cards) : undefined,
     ignoreDeckLimitSlots,
     changes,
     problem,

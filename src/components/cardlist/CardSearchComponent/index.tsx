@@ -57,7 +57,7 @@ interface Props {
   deckId?: DeckId;
   hideVersatile?: boolean;
   setHideVersatile?: (value: boolean) => void;
-  mode?: 'story' | 'side';
+  mode?: 'story' | 'side' | 'extra';
   includeDuplicates?: boolean;
 
   hideSplash?: boolean;

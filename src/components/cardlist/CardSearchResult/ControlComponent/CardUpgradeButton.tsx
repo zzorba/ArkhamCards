@@ -12,19 +12,19 @@ import space from '@styles/space';
 
 interface Props {
   card: Card;
-  onUpgradePress?: (card: Card) => void;
+  onUpgradePress?: (card: Card, mode: 'extra' | undefined) => void;
   deckId: DeckId;
   limit: number;
-  mode: 'side' | 'ignore' | undefined;
+  mode: 'side' | 'extra' | 'ignore' | undefined;
   editable: boolean;
 }
 
 export default function CardUpgradeButton({ onUpgradePress, editable, card, deckId, limit, mode }: Props) {
   const { colors } = useContext(StyleContext);
-  const onPress = useCallback(() => onUpgradePress && onUpgradePress(card), [onUpgradePress, card]);
+  const onPress = useCallback(() => onUpgradePress && onUpgradePress(card, mode === 'extra' ? 'extra' : undefined), [onUpgradePress, card, mode]);
   return (
     <View style={styles.countWrapper}>
-      { !mode && !!onUpgradePress && (
+      { (!mode || mode === 'extra') && !!onUpgradePress && (
         <View style={space.marginRightS}>
           <RoundButton onPress={onPress} accessibilityLabel={t`Show upgrades`}>
             <View style={styles.icon}>

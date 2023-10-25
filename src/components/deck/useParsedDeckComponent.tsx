@@ -27,6 +27,7 @@ import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButto
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { xpString } from './hooks';
 import { BONDED_WEAKNESS_COUNTS, THE_INSANE_CODE } from '@data/deck/specialCards';
+import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 
 function hasUpgrades(
   code: string,
@@ -63,11 +64,13 @@ function hasCustomizationUpgrades(
   );
 }
 
-function getCount(item: SectionCardId): [number, 'side' | 'ignore' | undefined] {
+function getCount(item: SectionCardId): [number, 'side' | 'extra' | 'ignore' | undefined] {
   if (item.ignoreCount) {
     return [item.quantity, 'ignore'];
   } else if (item.mode === 'side') {
     return [item.quantity, 'side'];
+  } else if (item.mode === 'extra') {
+    return [item.quantity, 'extra'];
   } else if (item.mode === 'bonded') {
     return [item.quantity, undefined];
   }
@@ -79,7 +82,7 @@ function getCount(item: SectionCardId): [number, 'side' | 'ignore' | undefined] 
 
 
 interface SectionCardId extends CardId {
-  mode: 'special' | 'side' | 'bonded' | 'ignore' | undefined;
+  mode: 'special' | 'extra' | 'side' | 'bonded' | 'ignore' | undefined;
   hasUpgrades: boolean;
   customizable: boolean;
   index: number;
@@ -135,7 +138,7 @@ function deckToSections(
   cardsByName: undefined | { [name: string]: Card[] },
   validation: DeckValidation,
   customizations: Customizations | undefined,
-  mode: 'special' | 'side' | undefined,
+  mode: 'special' | 'side' | 'extra' | undefined,
   inCollection: { [pack_code: string]: boolean },
   ignoreCollection: boolean,
   limitedSlots: boolean,
@@ -333,8 +336,9 @@ interface Props {
   showEditCards?: () => void;
   showEditSpecial?: () => void;
   showEditSide?: () => void;
+  showEditExtra?: () => void;
   showDrawWeakness?: (replaceRandomBasicWeakness?: boolean) => void;
-  showCardUpgradeDialog?: (card: Card) => void;
+  showCardUpgradeDialog?: (card: Card, mode: 'extra' | undefined) => void;
   deckEditsRef?: MutableRefObject<EditDeckState | undefined>;
 
   requiredCards?: CardId[];
@@ -351,7 +355,7 @@ interface Props {
 export default function useParsedDeckComponent({
   componentId, tabooSetId, parsedDeck, cardsByName,
   mode, editable, bondedCardsByName, cards, visible, meta, requiredCards,
-  showDrawWeakness, showEditSpecial, showEditCards, showEditSide, showCardUpgradeDialog, showDraftCards,
+  showDrawWeakness, showEditSpecial, showEditCards, showEditExtra, showEditSide, showCardUpgradeDialog, showDraftCards,
 }: Props): [React.ReactNode, number] {
   const inCollection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
@@ -397,6 +401,7 @@ export default function useParsedDeckComponent({
     const normalCards = parsedDeck.normalCards;
     const specialCards = parsedDeck.specialCards;
     const sideCards = parsedDeck.sideCards;
+    const extraCards = parsedDeck.extraCards;
     const slots = parsedDeck.slots;
     const validation = new DeckValidation(parsedDeck.investigatorBack, slots, meta);
     const shouldDraft = !parsedDeck.changes && !!showDraftCards;
@@ -520,6 +525,31 @@ export default function useParsedDeckComponent({
         }
       }
     }
+    const [extraSection, extraIndex] = parsedDeck.investigatorBack.code === PARALLEL_JIM_CODE && extraCards ?
+      deckToSections(
+        t`Spirit Deck`,
+        showEditExtra,
+        <RoundedFooterButton
+          title={t`Add cards`}
+          icon="addcard"
+          onPress={showEditExtra}
+        />,
+        currentIndex,
+        extraCards,
+        cards,
+        cardsByName,
+        new DeckValidation(parsedDeck.investigatorBack, slots, meta, { side_deck: true }),
+        customizations,
+        'extra',
+        inCollection,
+        ignore_collection,
+        false,
+      ) : [undefined, currentIndex];
+    if (extraSection) {
+      newData.push(extraSection);
+    }
+    currentIndex = extraIndex;
+
     const [sideSection, sideIndex] = deckToSections(
       t`Side Deck`,
       showEditSide,
@@ -618,7 +648,7 @@ export default function useParsedDeckComponent({
     }
     const index = parseInt(id, 10);
     const visibleCards: Card[] = [];
-    const controls: ('deck' | 'side' | 'special' | 'ignore' | 'bonded')[] = [];
+    const controls: ('deck' | 'side' | 'extra' | 'special' | 'ignore' | 'bonded')[] = [];
     forEach(data, deckSection => {
       forEach(deckSection.sections, section => {
         forEach(section.cards, item => {

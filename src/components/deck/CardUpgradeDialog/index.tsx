@@ -26,12 +26,14 @@ import DeckProblemBanner from '../DeckProblemBanner';
 import { useDialog } from '../dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { DeckId } from '@actions/types';
+import { getExtraDeckSlots } from '@lib/parseDeck';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
   id: DeckId;
   cardsByName: Card[];
   investigator: Card;
+  mode: 'extra' | undefined;
 }
 
 type Props = CardUpgradeDialogProps & NavigationProps;
@@ -58,6 +60,7 @@ export default function CardUpgradeDialog({
   cardsByName,
   investigator,
   id,
+  mode,
 }: Props) {
   const cards = useMemo(() => {
     const r: CardsMap = {};
@@ -67,14 +70,15 @@ export default function CardUpgradeDialog({
     return r;
   }, [cardsByName]);
   const deckEdits = useSimpleDeckEdits(id);
+  const slots = useMemo(() => mode === 'extra' ? deckEdits?.meta && getExtraDeckSlots(deckEdits?.meta) : deckEdits?.slots, [mode, deckEdits]);
   const originalCodes = useMemo(() => {
-    if (!deckEdits?.slots) {
+    if (!slots) {
       return new Set();
     }
-    return new Set(map(filter(cardsByName, c => !!deckEdits.slots[c.code]), c => c.code));
+    return new Set(map(filter(cardsByName, c => !!slots[c.code]), c => c.code));
     // Intentionally only updating when we gain/lose slot changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!!deckEdits?.slots, cardsByName]);
+  }, [slots, cardsByName]);
   const dispatch = useDispatch();
   const { backgroundStyle, borderStyle, typography, width } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
@@ -102,16 +106,16 @@ export default function CardUpgradeDialog({
   }, [cardsByName, originalCodes]);
 
   const namedCards = useMemo(() => {
-    if (!deckEdits) {
+    if (!slots || !deckEdits) {
       return [];
     }
-    const validation = new DeckValidation(investigator, deckEdits.slots, deckEdits.meta);
+    const validation = new DeckValidation(investigator, slots, deckEdits.meta, { side_deck: mode === 'extra' });
     return sortBy(
       filter(dedupedCardsByName,
         card => validation.canIncludeCard(card, false)),
       card => card.xp || 0
     );
-  }, [dedupedCardsByName, investigator, deckEdits]);
+  }, [dedupedCardsByName, investigator, deckEdits, slots, mode]);
   const onIncrementIgnore = useCallback((code: string) => {
     dispatch(incIgnoreDeckSlot(id, code));
   }, [dispatch, id]);
@@ -123,40 +127,42 @@ export default function CardUpgradeDialog({
   const ignoreData = useMemo(() => ignoreRule(investigator.code), [investigator.code]);
 
   const onIncrement = useCallback((code: string) => {
-    if (!deckEdits) {
+    if (!deckEdits || !slots) {
       return;
     }
     const possibleDecrement = find(reverse(namedCards), card => {
       return (
-        card.code !== code && deckEdits.slots[card.code] > 0 &&
-        (deckEdits.ignoreDeckLimitSlots[card.code] || 0) < deckEdits.slots[card.code] &&
+        card.code !== code && slots[card.code] > 0 &&
+        (mode === 'extra' || (deckEdits.ignoreDeckLimitSlots[card.code] || 0) < slots[card.code]) &&
         !!cards &&
         (card.xp || 0) < (cards[code]?.xp || 0)
       );
     });
     const card = cards[code];
-    dispatch(incDeckSlot(id, code, undefined));
+    dispatch(incDeckSlot(id, code, undefined, mode));
     if ((
       !ignoreData ||
       !card ||
       !find(ignoreData.traits, trait => !!(card.real_traits_normalized && card.real_traits_normalized.indexOf(trait) !== -1))
     ) && possibleDecrement) {
-      dispatch(decDeckSlot(id, possibleDecrement.code, undefined));
+      dispatch(decDeckSlot(id, possibleDecrement.code, mode));
     }
   }, [deckEdits, dispatch, cards, namedCards, ignoreData, id]);
 
   const onDecrement = useCallback((code: string) => {
-    dispatch(decDeckSlot(id, code));
-  }, [dispatch, id]);
+    dispatch(decDeckSlot(id, code, mode));
+  }, [dispatch, id, mode]);
 
   const overLimit = useMemo(() => {
-    if (!deckEdits) {
+    if (!deckEdits || !slots) {
       return false;
     }
-    const limit = (namedCards && namedCards.length) ?
+    const limit = mode === 'extra' ? 1 : (
+      (namedCards && namedCards.length) ?
       (namedCards[0].deck_limit || 2) :
-      2;
-    return sumBy(namedCards, card => (deckEdits.slots[card.code] || 0) - (deckEdits.ignoreDeckLimitSlots[card.code] || 0)) > limit;
+      2
+    );
+    return sumBy(namedCards, card => (slots[card.code] || 0) - (deckEdits.ignoreDeckLimitSlots[card.code] || 0)) > limit;
   }, [deckEdits, namedCards]);
 
   const showNonCollectionPressed = useCallback(() => {
@@ -187,15 +193,15 @@ export default function CardUpgradeDialog({
     return (deckEdits.slots[SHREWD_ANALYSIS_CODE] > 0) && UNIDENTIFIED_UNTRANSLATED.has(card.code);
   }, [deckEdits]);
   const renderCard = useCallback((card: Card, highestLevel: boolean) => {
-    const allowIgnore = specialIgnoreRule(card, highestLevel);
+    const allowIgnore = !mode && specialIgnoreRule(card, highestLevel);
     return (
       <View style={[styles.column, borderStyle]} key={card.code}>
         <CardUpgradeOption
           key={card.code}
           card={card}
           code={card.code}
-          count={deckEdits?.slots[card.code] || 0}
-          ignoreCount={deckEdits?.ignoreDeckLimitSlots[card.code] || 0}
+          count={slots?.[card.code] || 0}
+          ignoreCount={!mode ? deckEdits?.ignoreDeckLimitSlots[card.code] || 0 : 0}
           onIncrement={onIncrement}
           onDecrement={onDecrement}
           onIgnore={allowIgnore ? {
@@ -212,16 +218,16 @@ export default function CardUpgradeDialog({
         />
       </View>
     );
-  }, [componentId, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
+  }, [componentId, slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
     specialIgnoreRule, onIncrementIgnore, onDecrementIgnore, onIncrement, onDecrement]);
 
   const doShrewdAnalysis = useCallback(() => {
-    if (!deckEdits) {
+    if (!deckEdits || !slots) {
       return;
     }
     const [inCollection] = partition(
       namedCards,
-      card => cardInCollection(card) || deckEdits.slots[card.code] > 0);
+      card => cardInCollection(card) || slots[card.code] > 0);
     const [baseCards, eligibleCards] = partition(inCollection, card => shrewdAnalysisRule(card));
     if (eligibleCards.length && baseCards.length) {
       const baseCard = baseCards[0];
@@ -298,12 +304,12 @@ export default function CardUpgradeDialog({
   }, [shrewdAnalysisResult, cards]);
 
   const cardsSection = useMemo(() => {
-    if (!deckEdits) {
+    if (!deckEdits || !slots) {
       return null;
     }
     const [inCollection, nonCollection] = partition(
       namedCards,
-      card => cardInCollection(card) || deckEdits.slots[card.code] > 0);
+      card => cardInCollection(card) || slots[card.code] > 0);
     const cards = map(inCollection, card => {
       return {
         card,
@@ -319,7 +325,7 @@ export default function CardUpgradeDialog({
             <CardTextComponent text={ignoreData.text} />
           </View>
         ) }
-        { (hasShrewdAnalysisRule || !!shrewdAnalysisCards.length) && (
+        { (!mode && (hasShrewdAnalysisRule || !!shrewdAnalysisCards.length)) && (
           <>
             <View style={space.paddingM}>
               <CardTextComponent
@@ -363,7 +369,7 @@ export default function CardUpgradeDialog({
         ) : null }
       </>
     );
-  }, [deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, cardInCollection, specialIgnoreRule, ignoreData, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
+  }, [slots, deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, cardInCollection, specialIgnoreRule, ignoreData, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
   return (
     <View
       style={[styles.wrapper, backgroundStyle]}

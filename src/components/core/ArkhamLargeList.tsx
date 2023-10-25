@@ -120,67 +120,33 @@ export default function ArkhamLargeList<Item>({
       </View>
     );
   }, [noSearch, loader, renderHeader]);
-  if (Platform.OS === 'android') {
-    return (
-      <FlatList
-        data={flatData}
-        contentContainerStyle={{ minHeight: height }}
-        refreshControl={
-          <RefreshControl
-            progressViewOffset={noSearch ? 0 : searchBarHeight}
-            refreshing={debouncedRefreshing}
-            onRefresh={handleRefresh}
-            tintColor={colors.lightText}
-          />
-        }
-        scrollEventThrottle={16}
-        onScroll={onScroll}
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
-        renderItem={renderFlatItem}
-        scrollsToTop
-        onEndReached={onLoading}
-        onEndReachedThreshold={0.5}
-        removeClippedSubviews
-        getItemLayout={heightForItem ? getItemLayout : undefined}
-        ListHeaderComponent={renderRealHeader}
-        ListFooterComponent={renderFooter || <View />}
-        initialNumToRender={20}
-        maxToRenderPerBatch={40}
-        updateCellsBatchingPeriod={10}
-      />
-    )
-  }
   return (
-    <RefreshableWrapper
-      contentOffset={contentOffset}
-      defaultAnimationEnabled={false}
-      Loader={renderLoader}
-      isLoading={debouncedRefreshing}
-      onRefresh={handleRefresh}
-      refreshHeight={searchBoxHeight(fontScale)}
-      bounces
-      managedLoading
-    >
-      <Animated.FlatList
-        data={flatData}
-        scrollEventThrottle={16}
-        onScroll={onScroll}
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
-        renderItem={renderFlatItem}
-        scrollsToTop
-        onEndReached={onLoading}
-        onEndReachedThreshold={0.4}
-        removeClippedSubviews
-        getItemLayout={heightForItem ? getItemLayout : undefined}
-        ListHeaderComponent={renderRealHeader}
-        ListFooterComponent={renderFooter || <View />}
-        initialNumToRender={20}
-        maxToRenderPerBatch={40}
-        updateCellsBatchingPeriod={10}
-        bounces={Platform.OS === 'ios'}
-      />
-    </RefreshableWrapper>
+    <FlatList
+      data={flatData}
+      contentContainerStyle={{ minHeight: height }}
+      refreshControl={
+        <RefreshControl
+          progressViewOffset={noSearch ? 0 : searchBarHeight}
+          refreshing={debouncedRefreshing}
+          onRefresh={handleRefresh}
+          tintColor={colors.background}
+        />
+      }
+      scrollEventThrottle={16}
+      onScroll={onScroll}
+      keyboardShouldPersistTaps="always"
+      keyboardDismissMode="on-drag"
+      renderItem={renderFlatItem}
+      scrollsToTop
+      onEndReached={onLoading}
+      onEndReachedThreshold={0.5}
+      removeClippedSubviews
+      getItemLayout={heightForItem ? getItemLayout : undefined}
+      ListHeaderComponent={renderRealHeader}
+      ListFooterComponent={renderFooter || <View />}
+      initialNumToRender={20}
+      maxToRenderPerBatch={40}
+      updateCellsBatchingPeriod={10}
+    />
   );
 }

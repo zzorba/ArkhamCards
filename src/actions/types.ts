@@ -76,6 +76,7 @@ export interface DeckMeta {
   option_selected?: string;
   alternate_front?: string;
   alternate_back?: string;
+  extra_deck?: string;
   [key: string]: string | undefined;
 }
 
@@ -270,6 +271,8 @@ export interface ParsedDeck {
   normalCards: SplitCards;
   specialCards: SplitCards;
   sideCards: SplitCards;
+  extraCards?: SplitCards;
+
   ignoreDeckLimitSlots: Slots;
   changes?: DeckChanges;
   problem?: DeckProblem;
@@ -933,7 +936,7 @@ interface UpdateDeckEditCountsSetAction {
   code: string;
   operation: 'set';
   value: number;
-  countType: 'slots' | 'ignoreDeckLimitSlots' | 'side' | 'xpAdjustment';
+  countType: 'slots' | 'ignoreDeckLimitSlots' | 'side' | 'extra' | 'xpAdjustment';
 }
 interface UpdateDeckEditCountsAdjustAction {
   type: typeof UPDATE_DECK_EDIT_COUNTS;
@@ -941,7 +944,7 @@ interface UpdateDeckEditCountsAdjustAction {
   code: string;
   operation: 'inc' | 'dec';
   limit?: number;
-  countType: 'slots' | 'ignoreDeckLimitSlots' | 'side' | 'xpAdjustment';
+  countType: 'slots' | 'ignoreDeckLimitSlots' | 'side' | 'extra' | 'xpAdjustment';
 }
 export type UpdateDeckEditCountsAction = UpdateDeckEditCountsSetAction | UpdateDeckEditCountsAdjustAction;
 

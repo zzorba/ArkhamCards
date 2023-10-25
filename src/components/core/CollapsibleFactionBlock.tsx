@@ -30,9 +30,10 @@ export default function CollapsibleFactionBlock({ faction, textColor, noShadow, 
   useEffectUpdate(() => {
     openAnim.value = withTiming(open ? degToRad(-180) : degToRad(-90), { duration: 200, easing: Easing.ease });
   }, [open]);
+  const openAnimValue = openAnim.value;
   const iconRotateStyle = useAnimatedStyle(() => {
     return {
-      transform: [{ rotate: openAnim.value }],
+      transform: [{ rotate: openAnimValue }],
     };
   });
   const icon = useMemo(() => {

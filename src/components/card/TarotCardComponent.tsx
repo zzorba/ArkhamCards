@@ -43,15 +43,16 @@ export default function TarotCardComponent({ card, width, flipped, inverted, suf
   useEffectUpdate(() => {
     rotate.value = withTiming(flipped && inverted ? 1 : 0, { duration: 500, easing: Easing.ease });
   }, [inverted, flipped])
+  const rotateValue = rotate.value;
   const cardStyle = useAnimatedStyle(() => {
-    const rotation = interpolate(rotate.value, [0, 1], [0, 180]);
+    const rotation = interpolate(rotateValue, [0, 1], [0, 180]);
     return {
       transform: [
-        { translateX: interpolate(rotate.value, [0, 1], [0, -width / 2]) },
-        { translateY: interpolate(rotate.value, [0, 1], [0, height / 2]) },
+        { translateX: interpolate(rotateValue, [0, 1], [0, -width / 2]) },
+        { translateY: interpolate(rotateValue, [0, 1], [0, height / 2]) },
         { rotateZ: degToRad(rotation) },
-        { translateX: interpolate(rotate.value, [0, 1], [0, -width / 2]) },
-        { translateY: interpolate(rotate.value, [0, 1], [0, height / 2]) },
+        { translateX: interpolate(rotateValue, [0, 1], [0, -width / 2]) },
+        { translateY: interpolate(rotateValue, [0, 1], [0, height / 2]) },
       ],
     };
   }, [width, height]);

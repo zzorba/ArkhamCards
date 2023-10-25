@@ -77,6 +77,8 @@ fragment SingleCard on all_card {
   hidden
   deck_options
   deck_requirements
+  side_deck_options
+  side_deck_requirements
   restrictions
   imageurl
   backimageurl

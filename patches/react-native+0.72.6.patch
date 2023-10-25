@@ -1,0 +1,16 @@
+diff --git a/node_modules/react-native/Libraries/Components/View/ViewPropTypes.d.ts b/node_modules/react-native/Libraries/Components/View/ViewPropTypes.d.ts
+index 53f5e82..1921199 100644
+--- a/node_modules/react-native/Libraries/Components/View/ViewPropTypes.d.ts
++++ b/node_modules/react-native/Libraries/Components/View/ViewPropTypes.d.ts
+@@ -186,6 +186,11 @@ export interface ViewProps
+    */
+   hitSlop?: Insets | undefined;
+
++  /*
++   * Opacity
++   */
++  opacity?: number | undefined;
++
+   /**
+    * Used to reference react managed views from native code.
+    */
