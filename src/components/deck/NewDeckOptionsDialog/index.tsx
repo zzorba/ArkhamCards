@@ -115,6 +115,9 @@ function NewDeckOptionsDialog({
     actuallySetTabooSetId(tabooSetId);
     setSlots(undefined);
   }, [actuallySetTabooSetId, setSlots]);
+  const setMeta = useCallback((key: keyof DeckMeta, value?: string) => {
+    setMetaField({ key, value });
+  }, [setMetaField]);
   const updateMeta = useCallback((key: keyof DeckMeta, value?: string) => {
     setMetaField({ key, value });
     setSlots(undefined);
@@ -392,7 +395,7 @@ function NewDeckOptionsDialog({
       description: t`Suggested starter deck for this investigator from FFG.`,
       value: 'starter',
     }] : [];
-    const noUltimatum = investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
+    const noUltimatum = false; // investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
     return [
       {
         title: specialDeckModeLabel('none'),
@@ -475,7 +478,14 @@ function NewDeckOptionsDialog({
       false
     );
   }, [componentId, requiredCardOptions, colors, investigator, singleCardView, tabooSetId]);
-  const [generateChaosDeck, chaosDeckLoading, chaosCards] = useChaosDeckGenerator({ investigatorCode: investigatorId, meta, tabooSetId, enabled: specialDeckMode === 'chaos', setSlots, setError });
+  const [generateChaosDeck, chaosDeckLoading, chaosCards] = useChaosDeckGenerator({
+    investigatorCode: investigatorId,
+    meta, tabooSetId,
+    enabled: specialDeckMode === 'chaos',
+    setSlots,
+    setError,
+    setMeta,
+  });
   const { listSeperator } = useContext(LanguageContext);
   const parsedChaosDeck = useMemo(() => {
     if (specialDeckMode !== 'chaos' || !chaosSlots || !investigatorBack) {

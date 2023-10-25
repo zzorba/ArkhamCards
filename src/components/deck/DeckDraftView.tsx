@@ -8,7 +8,7 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import ActionButton from 'react-native-action-button';
 
 import { NavigationProps } from '@components/nav/types';
-import { CampaignId, DeckId, SET_CURRENT_DRAFT, SET_CURRENT_DRAFT_SIZE, Slots, TOO_FEW_CARDS } from '@actions/types';
+import { CampaignId, DeckId, INVESTIGATOR_PROBLEM, SET_CURRENT_DRAFT, SET_CURRENT_DRAFT_SIZE, Slots, TOO_FEW_CARDS } from '@actions/types';
 import { useCampaignDeck } from '@data/hooks';
 import { useParsedDeck } from './hooks';
 import StyleContext from '@styles/StyleContext';
@@ -39,6 +39,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 export interface DeckDraftProps {
   id: DeckId;
   campaignId: CampaignId | undefined;
+  mode?: 'extra';
 }
 
 function DraftButton({ card, onDraft, cardWidth, item }: { card: Card; cardWidth: number; item: GridItem; onDraft: (card: Card, item?: GridItem) => void }) {
@@ -159,7 +160,7 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
   );
 }
 
-export default function DeckDraftView({ componentId, id, campaignId }: DeckDraftProps & NavigationProps) {
+export default function DeckDraftView({ componentId, id, campaignId, mode }: DeckDraftProps & NavigationProps) {
   const deck = useCampaignDeck(id, campaignId);
   const {
     deckEdits,
@@ -169,7 +170,6 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
   } = useParsedDeck(id, componentId);
   const meta = deckEdits?.meta;
   const slots = deckEdits?.slots;
-  const problem = parsedDeck?.problem;
   useEffect(() => {
     Navigation.mergeOptions(componentId, navigationOptions({ lightButton: true }));
   }, [componentId]);
@@ -180,18 +180,26 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
       localSlots.current = { ...slots };
     }
   }, [slots]);
-  const initialDraftSize = useSelector((state: AppState) => state.decks.draft?.[id.uuid]?.size || 3);
-  const initialDraftCards = useSelector((state: AppState) => state.decks.draft?.[id.uuid]?.current);
+  const initialDraftSize = useSelector((state: AppState) =>
+    mode === 'extra' ?
+      state.decks.extraDraft?.[id.uuid]?.size || 3 :
+      state.decks.draft?.[id.uuid]?.size || 3
+  );
+  const initialDraftCards = useSelector((state: AppState) =>
+    mode === 'extra' ?
+      state.decks.extraDraft?.[id.uuid]?.current :
+      state.decks.draft?.[id.uuid]?.current
+  );
   const [draftCards, setLocalDraftCards] = useState<undefined | string[]>(initialDraftCards);
   const draftCycle = useRef<number>(1);
 
-  const updateDraftSize = useCallback((size: number) => dispatch({ type: SET_CURRENT_DRAFT_SIZE, id, size }), [id, dispatch]);
+  const updateDraftSize = useCallback((size: number) => dispatch({ type: SET_CURRENT_DRAFT_SIZE, id, size, mode }), [id, dispatch, mode]);
 
   const setDraftCards = useCallback((current: string[] | undefined) => {
     draftCycle.current = current ? draftCycle.current + 1 : 1;
     setLocalDraftCards(current);
-    dispatch({ type: SET_CURRENT_DRAFT, id, current });
-  }, [id, dispatch, setLocalDraftCards, draftCycle]);
+    dispatch({ type: SET_CURRENT_DRAFT, id, current, mode });
+  }, [id, dispatch, setLocalDraftCards, draftCycle, mode]);
 
   const [handSize, incHandSize, decHandSize] = useCounter(initialDraftSize, { min: 2, max: 10, hapticFeedback: true }, updateDraftSize);
   const [in_collection, ignore_collection] = useSelector(getDraftPacks);
@@ -204,6 +212,7 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     in_collection,
     ignore_collection,
     disabled: !visible && editingPack,
+    mode,
   });
   const [deckCards, ] = useLatestDeckCards(deck);
   const possibleCodes = useRef<string[]>([]);
@@ -223,7 +232,10 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
       ...cards,
       ...deckCards,
     }, listSeperator);
-    if (!currentParsedDeck || currentParsedDeck.problem?.reason && currentParsedDeck.problem.reason !== TOO_FEW_CARDS) {
+    if (
+      !currentParsedDeck ||
+      (currentParsedDeck.problem?.reason && currentParsedDeck.problem.reason !== TOO_FEW_CARDS && currentParsedDeck.problem.reason !== INVESTIGATOR_PROBLEM)
+    ) {
       setDraftCards([]);
       showAlert(
         t`Invalid deck`,
@@ -231,7 +243,7 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
       );
       return;
     }
-    if (currentParsedDeck.problem?.reason !== TOO_FEW_CARDS) {
+    if (currentParsedDeck.problem?.reason !== TOO_FEW_CARDS && currentParsedDeck.problem?.reason !== INVESTIGATOR_PROBLEM) {
       Navigation.pop(componentId);
       return;
     }
@@ -297,8 +309,8 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
     setTimeout(() => {
       onDraftNewCards();
     }, 250);
-    dispatch(incDeckSlot(id, card.code, card.deck_limit || 0));
-  }, [dispatch, draftHistory, id, onDraftNewCards]);
+    dispatch(incDeckSlot(id, card.code, card.deck_limit || 0, mode));
+  }, [dispatch, draftHistory, id, onDraftNewCards, mode]);
 
   const gridView = useSettingValue('draft_grid');
 
@@ -410,6 +422,7 @@ export default function DeckDraftView({ componentId, id, campaignId }: DeckDraft
         componentId={componentId}
         onPress={backPressed}
         control="fab"
+        mode={mode}
       />
       <FabDraftButton
         loading={!allPossibleCodes}

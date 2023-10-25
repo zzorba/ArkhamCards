@@ -23,7 +23,8 @@ interface DeckCardQuantityProps {
   editable?: boolean;
 }
 
-function DeckQuantityComponent({ deckId, editable, code, limit, showZeroCount, forceBig, mode }: DeckCardQuantityProps) {
+function DeckQuantityComponent({ deckId, editable, code, limit: propsLimit, showZeroCount, forceBig, mode }: DeckCardQuantityProps) {
+  const limit = Math.min(propsLimit, mode === 'extra' ? 1 : propsLimit);
   const { colors } = useContext(StyleContext);
   const [actualCount, ignoreCount] = useDeckSlotCount(deckId, code, mode);
   const [count, setCount] = useState(actualCount);

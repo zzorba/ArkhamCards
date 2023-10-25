@@ -2,7 +2,7 @@ import { Brackets, Column } from 'typeorm/browser';
 import { indexOf, map, omit, find } from 'lodash';
 import { t } from 'ttag';
 
-import { DeckMeta } from '@actions/types';
+import { DeckMeta, DeckMetaForDeckbuilding } from '@actions/types';
 import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import { FactionCodeType, TypeCodeType } from '@app_constants';
@@ -218,7 +218,7 @@ export class DeckOptionQueryBuilder {
     this.filterBuilder = new FilterBuilder(`${prefix}${index}`);
   }
 
-  private selectedFactionFilter(meta?: DeckMeta): Brackets[] {
+  private selectedFactionFilter(meta?: DeckMetaForDeckbuilding): Brackets[] {
     if (this.option.faction_select && this.option.faction_select.length) {
       if (meta) {
         const selection = this.option.id ? (meta[this.option.id] as FactionCodeType) : meta.faction_selected;

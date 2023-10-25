@@ -4921,12 +4921,15 @@ msgstr "Не удалось сгенерировать"
 msgid "Suggested starter deck for this investigator from FFG."
 msgstr "Состав колоды, предлагаемый FFG."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "An empty deck."
 msgstr "Пустая колода."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
 msgstr "Извините, приложение ещё не умеет случайным образом генерировать колоды для этого сыщика."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "A fully randomized deck."
 msgstr "Колода, состоящая из случайных карт."
 
@@ -4980,9 +4983,6 @@ msgstr "Выбор"
 
 msgid "Draft cards"
 msgstr "Драфтить"
-
-msgid "Unsupported investigator"
-msgstr "Неподдерживаемый сыщик"
 
 msgid "Please correct invalid deck issues"
 msgstr "Исправьте ошибки в колодах"
@@ -5834,9 +5834,6 @@ msgid "You must have at least 7 cards from each class"
 msgstr "У вас должно быть хотя бы по 7 карт каждого класса"
 
 msgid "More off-class card than the number of weaknesses in your deck and bonded cards."
-msgstr ""
-
-msgid "Sorry, given their unique deckbuilding rules, this app does not yet support drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
 msgstr ""
 
 msgid "Concealed"

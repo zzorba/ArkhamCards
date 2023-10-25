@@ -23,7 +23,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import useCopyDeckDialog from '@components/deck/useCopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, CardId, DeckId, DEFAULT_SORT, EditDeckState, getDeckId, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, CardId, DeckId, DEFAULT_SORT, EditDeckState, getDeckId, INVESTIGATOR_PROBLEM, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/types/Card';
 import { EditDeckProps } from '@components/deck/DeckEditView';
@@ -263,6 +263,7 @@ function DeckDetailView({
   const [fabOpen, toggleFabOpen, setFabOpen] = useFlag(false);
   const [tabooOpen, setTabooOpen] = useState(false);
   const problem = parsedDeck?.problem;
+  const extraProblem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
   const flatDeckCards = useMemo(() => {
     const extraDeckSlots = parsedDeck?.investigatorBack.code === PARALLEL_JIM_CODE ? getExtraDeckSlots(deckEdits?.meta ?? {}) : {};
@@ -627,21 +628,14 @@ function DeckDetailView({
     }
     setFabOpen(false);
     setMenuOpen(false);
-    if (deck.investigator_code === LOLA_CODE || deck.investigator_code === JOE_DIAMOND_CODE || deck.investigator_code == SUZI_CODE) {
-      showAlert(
-        t`Unsupported investigator`,
-        t`Sorry, given their unique deckbuilding rules, this app does not yet support drafting for Lola Hayes, Joe Diamond, or Subject 5U-21.`
-      );
-      return;
-    }
-    if (problem && problem.reason !== TOO_FEW_CARDS) {
+    if (problem && problem.reason !== TOO_FEW_CARDS && problem.reason !== INVESTIGATOR_PROBLEM) {
       showAlert(
         t`Please correct invalid deck issues`,
         t`This deck currently contains one or more forbidden cards.\n\nPlease address these outstanding deck issues before drafting cards.`
       );
       return;
     }
-    if (problem?.reason !== TOO_FEW_CARDS) {
+    if (problem?.reason !== TOO_FEW_CARDS && problem?.reason !== INVESTIGATOR_PROBLEM) {
       showAlert(
         t`Deck is full`,
         t`This deck is full.\n\nRemove some cards or create a new deck if you would like to draft.\n\nAt the moment it is only possible to draft level 0 cards using the app.`,
@@ -683,6 +677,63 @@ function DeckDetailView({
       },
     });
   }, [componentId, campaignId, problem, deck, id, colors, setFabOpen, setMenuOpen, showAlert, cards, deckEditsRef, setMode]);
+
+  const onDraftExtraCards = useCallback(() => {
+    if (!deck || !cards) {
+      return;
+    }
+    setFabOpen(false);
+    setMenuOpen(false);
+    if (extraProblem && extraProblem.reason !== TOO_FEW_CARDS) {
+      showAlert(
+        t`Please correct invalid deck issues`,
+        t`This deck currently contains one or more forbidden cards.\n\nPlease address these outstanding deck issues before drafting cards.`
+      );
+      return;
+    }
+    if (extraProblem?.reason !== TOO_FEW_CARDS) {
+      showAlert(
+        t`Deck is full`,
+        t`This deck is full.\n\nRemove some cards or create a new deck if you would like to draft.\n\nAt the moment it is only possible to draft level 0 cards using the app.`,
+      );
+      return;
+
+    }
+    if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
+      setMode('edit');
+    }
+    const investigator = cards[deck.investigator_code];
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    Navigation.push<DeckDraftProps>(componentId, {
+      component: {
+        name: 'Deck.DraftCards',
+        passProps: {
+          id,
+          campaignId,
+          mode: 'extra',
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+            backgroundColor,
+          },
+          topBar: {
+            title: {
+              text: t`Draft Cards`,
+              color: 'white',
+            },
+            backButton: {
+              title: t`Back`,
+              color: 'white',
+            },
+            background: {
+              color: backgroundColor,
+            },
+          },
+        },
+      },
+    });
+  }, [componentId, campaignId, extraProblem, deck, id, colors, setFabOpen, setMenuOpen, showAlert, cards, deckEditsRef, setMode]);
 
   const onAddCardsPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -1384,6 +1435,7 @@ function DeckDetailView({
   }
   const menuWidth = Math.min(width * 0.60, 240);
   const showTaboo: boolean = !!(tabooSetId !== deck.taboo_id && (tabooSetId || deck.taboo_id));
+  const theProblem = problem ?? extraProblem;
   return (
     <View style={[styles.flex, backgroundStyle]}>
       <SideMenu
@@ -1414,7 +1466,7 @@ function DeckDetailView({
               hideTabooPicker={hideTabooPicker}
               singleCardView={singleCardView}
               parsedDeck={parsedDeck}
-              problem={problem}
+              problem={problem ?? extraProblem}
               hasPendingEdits={hasPendingEdits}
               cards={cards}
               cardsByName={cardsByName}
@@ -1423,6 +1475,7 @@ function DeckDetailView({
               buttons={buttons}
               showDrawWeakness={showDrawWeakness}
               showDraftCards={SHOW_DRAFT_CARDS ? onDraftCards : undefined}
+              showDraftExtraCards={SHOW_DRAFT_CARDS ? onDraftExtraCards : undefined}
               showEditCards={onAddCardsPressed}
               showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
               showEditSide={deck.nextDeckId ? undefined : onEditSidePressed}
@@ -1437,9 +1490,9 @@ function DeckDetailView({
               deckEditsRef={deckEditsRef}
               mode={mode}
             />
-            { !!parsedDeck.problem && mode !== 'view' && (
+            { !!theProblem && mode !== 'view' && (
               <DeckProblemBanner
-                problem={parsedDeck.problem}
+                problem={theProblem}
               />
             ) }
             { mode !== 'view' && (

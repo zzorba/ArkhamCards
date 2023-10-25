@@ -333,6 +333,7 @@ interface Props {
 
   editable?: boolean;
   showDraftCards?: () => void;
+  showDraftExtraCards?: () => void;
   showEditCards?: () => void;
   showEditSpecial?: () => void;
   showEditSide?: () => void;
@@ -355,7 +356,7 @@ interface Props {
 export default function useParsedDeckComponent({
   componentId, tabooSetId, parsedDeck, cardsByName,
   mode, editable, bondedCardsByName, cards, visible, meta, requiredCards,
-  showDrawWeakness, showEditSpecial, showEditCards, showEditExtra, showEditSide, showCardUpgradeDialog, showDraftCards,
+  showDrawWeakness, showEditSpecial, showEditCards, showEditExtra, showEditSide, showCardUpgradeDialog, showDraftCards, showDraftExtraCards,
 }: Props): [React.ReactNode, number] {
   const inCollection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
@@ -529,11 +530,22 @@ export default function useParsedDeckComponent({
       deckToSections(
         t`Spirit Deck`,
         showEditExtra,
-        <RoundedFooterButton
-          title={t`Add cards`}
-          icon="addcard"
-          onPress={showEditExtra}
-        />,
+        shouldDraft ? (
+          <RoundedFooterDoubleButton
+            onPressA={showEditExtra}
+            titleA={t`Add cards`}
+            iconA="addcard"
+            onPressB={showDraftExtraCards}
+            titleB={t`Draft cards`}
+            iconB="draft"
+          />
+        ) : (
+          <RoundedFooterButton
+            title={t`Add cards`}
+            icon="addcard"
+            onPress={showEditExtra}
+          />
+        ),
         currentIndex,
         extraCards,
         cards,
@@ -579,7 +591,7 @@ export default function useParsedDeckComponent({
     currentIndex = sideIndex;
     setData(newData);
   }, [customizations, requiredCards, theLimitSlotCount, ignore_collection, limitedSlots, parsedDeck, meta, cards,
-    showDraftCards, showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
+    showDraftCards, showDraftExtraCards, showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
 
   const faction = parsedDeck?.investigator.factionCode() || 'neutral';
   const renderSectionHeader = useCallback((section: CardSection) => {
@@ -605,7 +617,7 @@ export default function useParsedDeckComponent({
     return null;
   }, [faction]);
   const deckId = parsedDeck?.id;
-  const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined, countMode: 'ignore' | 'side' | undefined): ControlType | undefined => {
+  const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined, countMode: 'ignore' | 'side' | 'extra' | undefined): ControlType | undefined => {
     if (card.code === RANDOM_BASIC_WEAKNESS && editable && showDrawWeakness) {
       return {
         type: 'shuffle',

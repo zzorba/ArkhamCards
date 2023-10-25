@@ -61,6 +61,7 @@ interface Props {
   showXpAdjustmentDialog: () => void;
   showCardUpgradeDialog: (card: Card, mode: 'extra' | undefined) => void;
   showDraftCards?: () => void;
+  showDraftExtraCards?: () => void;
   tabooSet?: TabooSet;
   tabooOpen: boolean;
   singleCardView: boolean;
@@ -95,6 +96,7 @@ export default function DeckViewTab(props: Props) {
     showEditCards,
     showEditSpecial,
     showDraftCards,
+    showDraftExtraCards,
     showEditSide,
     showEditExtra,
     cardsByName,
@@ -224,6 +226,7 @@ export default function DeckViewTab(props: Props) {
     showEditSide,
     showEditExtra,
     showDraftCards,
+    showDraftExtraCards,
     showDrawWeakness,
     showCardUpgradeDialog: showDeckUpgrades ? showCardUpgradeDialog : undefined,
     deckEditsRef,

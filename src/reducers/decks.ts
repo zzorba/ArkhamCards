@@ -52,6 +52,9 @@ interface DecksState {
   draft?: {
     [uuid: string]: DraftState | undefined;
   };
+  extraDraft?: {
+    [uuid: string]: DraftState | undefined;
+  }
 }
 
 const DEFAULT_DECK_STATE: DecksState = {
@@ -90,6 +93,13 @@ export default function(
     if (action.updates.meta !== undefined) {
       return {
         ...state,
+        extraDraft: {
+          ...(state.extraDraft || {}),
+          [action.id.uuid]: {
+            ...(state.extraDraft?.[action.id.uuid] || {}),
+            current: undefined,
+          },
+        },
         draft: {
           ...(state.draft || {}),
           [action.id.uuid]: {
@@ -117,6 +127,18 @@ export default function(
     };
   }
   if (action.type === SET_CURRENT_DRAFT) {
+    if (action.mode === 'extra') {
+      return {
+        ...state,
+        extraDraft: {
+          ...(state.extraDraft || {}),
+          [action.id.uuid]: {
+            ...(state.extraDraft?.[action.id.uuid] || {}),
+            current: action.current,
+          },
+        },
+      };
+    }
     return {
       ...state,
       draft: {
@@ -131,6 +153,13 @@ export default function(
   if (action.type === CLEAR_CURRENT_DRAFT) {
     return {
       ...state,
+      extraDraft: {
+        ...(state.extraDraft || {}),
+        [action.id.uuid]: {
+          ...(state.extraDraft?.[action.id.uuid] || {}),
+          current: undefined,
+        },
+      },
       draft: {
         ...(state.draft || {}),
         [action.id.uuid]: {
@@ -141,6 +170,18 @@ export default function(
     };
   }
   if (action.type === SET_CURRENT_DRAFT_SIZE) {
+    if (action.mode === 'extra') {
+      return {
+        ...state,
+        extraDraft: {
+          ...(state.extraDraft || {}),
+          [action.id.uuid]: {
+            ...(state.extraDraft?.[action.id.uuid] || {}),
+            size: action.size,
+          },
+        },
+      };
+    }
     return {
       ...state,
       draft: {

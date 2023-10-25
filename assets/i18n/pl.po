@@ -4923,12 +4923,15 @@ msgstr "Nie można wygenerować talii"
 msgid "Suggested starter deck for this investigator from FFG."
 msgstr "Sugerowana talia startowa dla tego badacza od FFG"
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "An empty deck."
 msgstr "Pusta talia."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
 msgstr "Wybacz, aplikacja nie może jeszcze wygenerować losowej talii dla tego badacza."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "A fully randomized deck."
 msgstr "W pełni losowa talia."
 
@@ -4982,9 +4985,6 @@ msgstr "Wybór"
 
 msgid "Draft cards"
 msgstr "Draft kart"
-
-msgid "Unsupported investigator"
-msgstr "Niewspierany badacz"
 
 msgid "Please correct invalid deck issues"
 msgstr "Popraw problemy z nieprawidłową talią"
@@ -5824,9 +5824,6 @@ msgid "You must have at least 7 cards from each class"
 msgstr ""
 
 msgid "More off-class card than the number of weaknesses in your deck and bonded cards."
-msgstr ""
-
-msgid "Sorry, given their unique deckbuilding rules, this app does not yet support drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
 msgstr ""
 
 msgid "Concealed"

@@ -8,7 +8,7 @@ import { combineQueries, combineQueriesOpt, where } from '@data/sqlite/query';
 import { FilterState } from './filters';
 
 interface DeckOptionsContext {
-  isUpgrade: boolean;
+  isUpgrade?: boolean;
   hideSplash?: boolean;
   sideDeck?: boolean;
 }

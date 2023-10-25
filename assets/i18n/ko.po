@@ -4854,12 +4854,15 @@ msgstr "덱 생성 불가능"
 msgid "Suggested starter deck for this investigator from FFG."
 msgstr "Fantasy Flight Games에서 제공하는 초심자용 견본 덱."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "An empty deck."
 msgstr "빈 덱."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
 msgstr "죄송합니다, 해당 조사자의 무작위 덱 생성을 아직 수행할 수 없습니다."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "A fully randomized deck."
 msgstr "보유 게임 내에서 덱 구성 조건에 맞도록 무작위로 골라서 선정된 덱."
 
@@ -4910,9 +4913,6 @@ msgstr "드래프트 시작"
 
 msgid "Draft cards"
 msgstr "드래프트 카드"
-
-msgid "Unsupported investigator"
-msgstr "지원되지 않는 조사자"
 
 msgid "Please correct invalid deck issues"
 msgstr "유효하지 않은 덱 문제를 올바르게 수정하세요."
@@ -5726,9 +5726,6 @@ msgstr "반드시 서로 다른 역할군에서 각각 7장 이상의 카드를 
 
 msgid "More off-class card than the number of weaknesses in your deck and bonded cards."
 msgstr "덱 구성 선택지를 벗어난 카드의 수가 당신의 덱 또는 결속 카드에 있는 약점 카드 수를 초과하였습니다."
-
-msgid "Sorry, given their unique deckbuilding rules, this app does not yet support drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
-msgstr "죄송합니다. 주어진 덱 구성 요구조건으로 인해, 앱은 ‘롤라 헤이즈’, ‘조 다이아몬드’, ‘피험체 5U-21’에 대해서는 아직 해당 기능을 지원하지 않습니다."
 
 msgid "Concealed"
 msgstr "은신"

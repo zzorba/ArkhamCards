@@ -69,7 +69,6 @@ export interface DeckProblem {
   problems?: string[];
   invalidCards: Card[];
 }
-
 export interface DeckMeta {
   faction_selected?: FactionCodeType;
   deck_size_selected?: string;
@@ -278,6 +277,7 @@ export interface ParsedDeck {
   ignoreDeckLimitSlots: Slots;
   changes?: DeckChanges;
   problem?: DeckProblem;
+  extraProblem?: DeckProblem;
   limitedSlots: boolean;
   customContent: boolean;
 }
@@ -886,6 +886,7 @@ export interface SetCurrentDraftAction {
   type: typeof SET_CURRENT_DRAFT;
   id: DeckId;
   current: string[];
+  mode: 'extra' | undefined;
 }
 
 export const CLEAR_CURRENT_DRAFT = 'CLEAR_CURRENT_DRAFT';
@@ -899,6 +900,7 @@ export interface SetCurrentDraftSizeAction {
   type: typeof SET_CURRENT_DRAFT_SIZE;
   id: DeckId;
   size: number;
+  mode: 'extra' | undefined;
 }
 
 export interface EditDeckState {

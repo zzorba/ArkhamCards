@@ -29,6 +29,7 @@ import {
   Deck,
   DeckChanges,
   DeckMeta,
+  DeckProblem,
   FactionCounts,
   getDeckId,
   ParsedDeck,
@@ -1037,34 +1038,18 @@ export function parseDeck(
   const validation = new DeckValidation(investigator, slots, meta);
   const deckCards = getCards(cards, slots, ignoreDeckLimitSlots, listSeperator, customizations);
 
-  let problem = validation.getProblem(deckCards);
+  const problem = validation.getProblem(deckCards);
   const invalidCodes = new Set(problem?.invalidCards.map(c => c.code) ?? []);
   let extraCards: CardId[] | undefined;
   let extraDeckSize: number | undefined;
+  let extraProblem: DeckProblem | undefined;
   if (investigator_back_code === PARALLEL_JIM_CODE) {
     const extraDeckSlots = getExtraDeckSlots(meta);
     const extraDeckCards = getCards(cards, extraDeckSlots, {}, listSeperator, customizations);
     const extraValidation = new DeckValidation(investigator, extraDeckSlots, meta, { side_deck: true });
     extraDeckSize = extraValidation.getDeckSize();
-    const extraProblem = extraValidation.getProblem(extraDeckCards);
+    extraProblem = extraValidation.getProblem(extraDeckCards);
     const invalidExtraCodes = new Set(problem?.invalidCards.map(c => c.code) ?? []);
-    if (extraProblem) {
-      if (!problem) {
-        problem = extraProblem;
-      } else {
-        problem = {
-          problems: [
-            ...(problem.problems ?? []),
-            ...(extraProblem.problems ?? [])
-          ],
-          reason: problem.reason ?? extraProblem.reason,
-          invalidCards: [
-            ...problem.invalidCards,
-            ...extraProblem.invalidCards,
-          ],
-        };
-      }
-    }
     extraCards = flatMap(
       sortBy(
         sortBy(
@@ -1239,6 +1224,7 @@ export function parseDeck(
     ignoreDeckLimitSlots,
     changes,
     problem,
+    extraProblem,
     limitedSlots: !!find(validation.deckOptions(), option =>
       !!option.limit && !find(option.trait || [], trait => trait === 'Covenant')
     ),

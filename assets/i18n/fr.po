@@ -4889,12 +4889,15 @@ msgstr "Impossible de générer le deck"
 msgid "Suggested starter deck for this investigator from FFG."
 msgstr "Decks de départ suggéré par FFG pour cet investigateur."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "An empty deck."
 msgstr "Un deck vide."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
 msgstr "Désolé, l'application ne pas générer de deck aléatoire pour cet investigateur pour le moment."
 
+#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "A fully randomized deck."
 msgstr "Un deck complètement aléatoire."
 
@@ -4948,9 +4951,6 @@ msgstr "Sélection"
 
 msgid "Draft cards"
 msgstr "Préparer"
-
-msgid "Unsupported investigator"
-msgstr "Investigateur non-supporté"
 
 msgid "Please correct invalid deck issues"
 msgstr "Veuillez corriger les problèmes du deck invalide"
@@ -5787,9 +5787,6 @@ msgstr "Vous devez avoir au moins 7 cartes de chaque classe."
 
 msgid "More off-class card than the number of weaknesses in your deck and bonded cards."
 msgstr "Plus de cartes « extra-classe » que de faiblesses dans votre deck et vos cartes liées."
-
-msgid "Sorry, given their unique deckbuilding rules, this app does not yet support drafting for Lola Hayes, Joe Diamond, or Subject 5U-21."
-msgstr "Désolé ! Les règles de construction des decks de Lola Hayes, Joe Diamond ou le Sujet 5U-21 sont assez particulières. L'application ne peut pas encore gérer la fonction de préparation pour leur decks."
 
 msgid "Concealed"
 msgstr "Dissimulé"
