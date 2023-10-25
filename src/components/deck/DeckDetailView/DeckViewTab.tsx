@@ -59,7 +59,7 @@ interface Props {
   showEditSide?: () => void;
   showEditExtra?: () => void;
   showXpAdjustmentDialog: () => void;
-  showCardUpgradeDialog: (card: Card) => void;
+  showCardUpgradeDialog: (card: Card, mode: 'extra' | undefined) => void;
   showDraftCards?: () => void;
   tabooSet?: TabooSet;
   tabooOpen: boolean;

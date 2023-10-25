@@ -18,6 +18,7 @@ msgstr ""
 msgid "${ action.name } (Campaign A)"
 msgstr "${ action.name } (캠페인 A)"
 
+#, javascript-format
 msgid "${ action.name } (Campaign B)"
 msgstr "${ action.name } (캠페인 B)"
 
@@ -91,6 +92,7 @@ msgstr "미친 조사자"
 msgid "${ traumaData.physical } Physical"
 msgstr "육체적 트라우마 ${ traumaData.physical }"
 
+#, javascript-format
 msgid "${ traumaData.mental } Mental"
 msgstr "정신적 트라우마 ${ traumaData.mental }"
 
@@ -147,6 +149,7 @@ msgstr "이야기"
 msgid "Act ${ json.stage }"
 msgstr "주요목적 ${ json.stage }"
 
+#, javascript-format
 msgid "Agenda ${ json.stage }"
 msgstr "주요사건 ${ json.stage }"
 
@@ -154,6 +157,7 @@ msgstr "주요사건 ${ json.stage }"
 msgid "Act ${ linked_card.stage }"
 msgstr "주요목적 ${ linked_card.stage }"
 
+#, javascript-format
 msgid "Agenda ${ linked_card.stage }"
 msgstr "주요사건 ${ linked_card.stage }"
 
@@ -486,6 +490,7 @@ msgstr "필터"
 msgid "Packs: All"
 msgstr "팩: 전부"
 
+#, javascript-format
 msgid "Packs: ${ allPacksString }"
 msgstr "팩: ${ allPacksString }"
 
@@ -585,6 +590,7 @@ msgstr ""
 msgid "No matching decks for \"${ searchTerm }\"."
 msgstr "\"${ searchTerm }\"와 일치하는 덱이 존재하지 않습니다."
 
+#, javascript-format
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
 msgstr[0] "완료된 시나리오 ${ scenarioCount }개"
@@ -593,6 +599,7 @@ msgstr[0] "완료된 시나리오 ${ scenarioCount }개"
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
 msgstr "전체 경험치: ${ xp }, 소비 경험치: ${ parsedDeck.changes.spentXp }"
 
+#, javascript-format
 msgid "${ xp } available experience"
 msgstr "전체 경험치: ${ xp }"
 
@@ -638,6 +645,7 @@ msgstr "초기 덱"
 msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
 msgstr "최신 덱: ${ deck.availableExperience }점 중 ${ deck.changes.spentXp }점 소비"
 
+#, javascript-format
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr "최신 덱: ${ deck.availableExperience }점"
 
@@ -729,6 +737,7 @@ msgstr "재인증"
 msgid "The Adventures of ${ investigator.name }"
 msgstr "${ investigator.name }의 모험"
 
+#, javascript-format
 msgid "${ investigator.name } Investigates"
 msgstr "조사하는 ${ investigator.name }"
 
@@ -736,6 +745,7 @@ msgstr "조사하는 ${ investigator.name }"
 msgid "The ${ investigator.name } Mysteries"
 msgstr "수수께끼의 ${ investigator.name }"
 
+#, javascript-format
 msgid "The ${ investigator.name } Job"
 msgstr "${ investigator.name }의 과업"
 
@@ -743,6 +753,7 @@ msgstr "${ investigator.name }의 과업"
 msgid "${ investigator.name } on the Road"
 msgstr "방랑하는 ${ investigator.name }"
 
+#, javascript-format
 msgid "${ investigator.name } Does It All"
 msgstr "${ investigator.name } 씨는 무엇이든 잘해요"
 
@@ -960,6 +971,7 @@ msgstr ""
 "현재 버전 ${ parsedCurrentDeck.deck.version }\n"
 "경험치 ${ parsedCurrentDeck.experience }점"
 
+#, javascript-format
 msgid ""
 "Latest Version ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } XP"
@@ -976,6 +988,7 @@ msgstr "필수사항"
 msgid "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades."
 msgstr "덱의 사본을 만들어 다른 캠페인에 사용하거나 다른 향상을 선택하는데 활용할 수 있습니다."
 
+#, javascript-format
 msgid "Level ${ level }"
 msgstr "${ level } 레벨"
 
@@ -983,6 +996,7 @@ msgstr "${ level } 레벨"
 msgid "Search ${ title }"
 msgstr "${ title } 검색"
 
+#, javascript-format
 msgid "Select ${ title }"
 msgstr "${ title } 검색"
 
@@ -1030,6 +1044,7 @@ msgid "Mark all packs in the ${ pack.name } cycle?"
 msgstr "${ pack.name } 사이클에 포함된 모든 팩을 체크하시겠습니까?"
 
 #. This is the lead pack in a cycle.
+#, javascript-format
 msgid "Clear all packs in the ${ pack.name } cycle?"
 msgstr "${ pack.name } 사이클에 포함된 모든 팩을 체크 해제하시겠습니까?"
 
@@ -1162,6 +1177,7 @@ msgstr "카드 뒤집기"
 msgid "Additional XP: ${ taboo.extra_xp }."
 msgstr "경험치 비용: +${ taboo.extra_xp }점."
 
+#, javascript-format
 msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr "경험치 비용: ${ taboo.extra_xp }점."
 
@@ -1218,6 +1234,7 @@ msgstr "대체 카드"
 msgid "Test Icons: "
 msgstr "테스트 아이콘: "
 
+#, javascript-format
 msgid "Doom: ${ doom }"
 msgstr "파멸: ${ doom }"
 
@@ -1247,6 +1264,7 @@ msgstr "복수: ${ card.vengeance }."
 msgid "Additional XP: ${ card.extra_xp }."
 msgstr "경험치 비용: +${ card.extra_xp }점."
 
+#, javascript-format
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "경험치 비용: ${ card.extra_xp }점."
 
@@ -1314,6 +1332,7 @@ msgid "Set the ${ encounterSetString } encounter set aside, out of play."
 msgid_plural "Set the ${ encounterSetString } encounter sets aside, out of play."
 msgstr[0] "${ encounterSetString } 조우 세트를 비플레이 상태로 치워둡니다."
 
+#, javascript-format
 msgid "Gather all cards from the ${ encounterSetString } encounter set."
 msgid_plural "Gather all cards from the following encounter sets: ${ encounterSetString }."
 msgstr[0] "다음 조우 세트의 모든 카드를 모읍니다. ${ encounterSetString }."
@@ -1408,9 +1427,11 @@ msgstr "당신의 캠페인 기록지 중 “${ logEntry.section }” 항목 아
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 라고 기록합니다."
 
+#, javascript-format
 msgid "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ logEntry.text }</i>."
 msgstr "당신의 캠페인 기록지 중 “${ logEntry.section }” 아래에 <i>${ logEntry.text }</i> 항목을 기록합니다."
 
+#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "혼돈 주머니에 ${ tokenString } 토큰을 추가합니다."
 
@@ -1438,6 +1459,7 @@ msgstr "앱을 이용해서 약점을 무작위로 선택하기를 원하십니�
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
 msgstr "당신이 <b>${ difficulty }</b> 난이도를 즐기고 있다면:"
 
+#, javascript-format
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
 msgstr "당신이 <b>${ scenarioName }</b> 시나리오를 이미 완료했다면:"
 
@@ -1450,6 +1472,7 @@ msgid "Check Campaign Log. Because there is ${ count } mark under '${ logEntry.s
 msgid_plural "Check Campaign Log. Because there are ${ count } marks under '${ logEntry.section }'"
 msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래에 표시된 빗금이 ${ count }개입니까?"
 
+#, javascript-format
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
 msgid_plural "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
 msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래에 표시된 항목이 ${ count }개입니까?"
@@ -1458,6 +1481,7 @@ msgstr[0] "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아�
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
 msgstr "캠페인 기록지를 확인합니다. <i>${ entry }</i> 항목이 있습니까?"
 
+#, javascript-format
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr "캠페인 기록지를 확인합니다. <i>${ logEntry.section }</i> 항목이 X로 표기되어 있지 않습니까?"
 
@@ -1466,6 +1490,7 @@ msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
 msgstr[0] "${ investigators } 조사자는 <b>${ prompt }</b> 항목을 읽어야만 합니다."
 
+#, javascript-format
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
 msgstr "\"${ cardName }\" 카드를 덱에 넣은 있는 조사자가 있습니까?"
 
@@ -1473,6 +1498,7 @@ msgstr "\"${ cardName }\" 카드를 덱에 넣은 있는 조사자가 있습니�
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
 msgstr "\"${ cardName }\" 카드를 덱에 넣은 조사자가 쓰러졌습니까?"
 
+#, javascript-format
 msgid "For each investigator with \"${ cardName }\" in their deck:"
 msgstr "\"${ cardName }\" 카드를 덱에 넣은 모든 조사자는: "
 
@@ -1487,6 +1513,7 @@ msgstr "대표 조사자가 <b>사망</b>했습니까?"
 msgid "If all investigators were <b>killed</b>."
 msgstr "모든 조사자가 <b>사망</b>했습니까?"
 
+#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr "${ logEntry.section } 항목을 확인합니다. <i>${ logEntry.text }</i> 항목이 있습니까?"
 
@@ -2188,6 +2215,7 @@ msgstr "쓰러짐: 트라우마 없음"
 msgid "The <i>${ scenario.scenario_name }</i> challenge scenario centers around the investigator ${ investigator.name }, and therefore has the following prerequisites:"
 msgstr "<i>${ scenario.scenario_name }</i> 도전 시나리오는 ${ investigator.name } 조사자가 중심이 되어 진행하는 시나리오이며, 다음 선행 조건을 만족해야 합니다:"
 
+#, javascript-format
 msgid "${ investigator.name } must be chosen as one of the investigators when playing this scenario."
 msgstr "${ investigator.name } 조사자는 이 시나리오를 플레이하는 조사자 중 하나로 선택되어야만 합니다."
 
@@ -2209,12 +2237,14 @@ msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 획득합�
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } 조사자는 ${ card.name } (강화된) 카드를 제거합니다."
 
+#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 제거합니다."
 
 msgid "Challenge Scenario"
 msgstr "도전 시나리오"
 
+#, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr "${ investigator.name }의 도전 시나리오"
 
@@ -2330,6 +2360,7 @@ msgid "${ count } resupply"
 msgid_plural "${ count } resupply"
 msgstr[0] "재보급 전용 ${ count }"
 
+#, javascript-format
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
 msgstr[0] "물자 점수 ${ count }"
@@ -2484,6 +2515,7 @@ msgstr "어제 갱신됨"
 msgid "Updated ${ dayOfWeek }"
 msgstr "${ dayOfWeek }전에 갱신됨"
 
+#, javascript-format
 msgid "Updated ${ dateString }"
 msgstr "${ dateString }에 갱신됨"
 
@@ -2589,6 +2621,7 @@ msgstr "역할군: ${ card.faction_name }, 레벨: ${ level }"
 msgid "Faction: ${ card.faction_name }, Cost: ${ cost }, Level: ${ level }"
 msgstr "역할군: ${ card.faction_name }, 비용: ${ cost }, 레벨: ${ level }"
 
+#, javascript-format
 msgid "Faction: ${ card.faction_name }"
 msgstr "역할군: ${ card.faction_name }"
 
@@ -2606,6 +2639,7 @@ msgstr "정신력: 없음"
 msgid "Health: ${ count }"
 msgstr "체력: ${ count }"
 
+#, javascript-format
 msgid "Sanity: ${ count }"
 msgstr "정신력: ${ count }"
 
@@ -2645,6 +2679,7 @@ msgstr "전투: ${ fight }"
 msgid "Health: ${ health } per investigator"
 msgstr "체력: 조사자당 ${ health }"
 
+#, javascript-format
 msgid "Health: ${ health }"
 msgstr "체력: ${ health }"
 
@@ -2656,6 +2691,7 @@ msgstr "회피: ${ evade }"
 msgid "Willpower: ${ count }"
 msgstr "의지: ${ count }"
 
+#, javascript-format
 msgid "Intellect: ${ count }"
 msgstr "지식: ${ count }"
 
@@ -2663,6 +2699,7 @@ msgstr "지식: ${ count }"
 msgid "Combat: ${ count }"
 msgstr "힘: ${ count }"
 
+#, javascript-format
 msgid "Agility: ${ count }"
 msgstr "민첩: ${ count }"
 
@@ -2815,6 +2852,7 @@ msgstr ""
 "참고: 이 캠페인은 현재 발매 중이며, 이로 인해 가이드는 완전하지 않습니다 (그리고 몇몇 실수가 있을 수 있습니다).\n"
 "새로운 시나리오가 발매되면, 우선적으로 앱을 업데이트 하려고 노력하지만 약간의 지연이 있을 수 있습니다."
 
+#, javascript-format
 msgid "Slot: ${ card.slot }"
 msgstr "슬롯: ${ card.slot }"
 
@@ -2926,10 +2964,12 @@ msgid "${ normalCardCount } · ${ totalCardCount } total"
 msgid_plural "${ normalCardCount } · ${ totalCardCount } total"
 msgstr[0] "${ normalCardCount }장 · 전체 ${ totalCardCount }장"
 
+#, javascript-format
 msgid "${ bondedCardCount } bound"
 msgid_plural "${ bondedCardCount } bound"
 msgstr[0] "결속 ${ bondedCardCount }장"
 
+#, javascript-format
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
 msgstr[0] "미사용 ${ unspentXpStr }점"
@@ -2960,6 +3000,7 @@ msgstr "${ overspent } 초과 사용"
 msgid "Missing system permission"
 msgstr "시스템 권한 부족"
 
+#, javascript-format
 msgid "Reads \"${ badThing.prompt }\""
 msgstr "\"${ badThing.prompt }\"을 확인하세요"
 
@@ -3025,6 +3066,7 @@ msgstr "덱 향상을 되돌리겠습니까?"
 msgid "<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead pay the full experience cost on the higher level version and leave the lower level version in your deck (it does not count towards your deck size or the number of copies of that card in your deck)."
 msgstr "<b>추가 선택지</b>: 당신이 [[마법]] 카드를 향상할 때, 일반적인 향상 대신에 더 높은 레벨의 카드의 경험치 비용을 전부 지불하고 더 낮은 레벨의 카드를 당신의 덱에 남겨두어도 됩니다(이렇게 남겨둔 카드는 당신의 덱 크기를 계산하거나 당신의 덱에서 카드 사본 개수를 계산할 때 포함하지 않습니다)."
 
+#, javascript-format
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
 msgstr "${ _adjustedXp }점 중 ${ spentXP }점 소비"
 
@@ -3162,6 +3204,7 @@ msgid "${ cycleCount } Cycle"
 msgid_plural "${ cycleCount } Cycles"
 msgstr[0] "사이클 ${ cycleCount }개"
 
+#, javascript-format
 msgid "${ standalonePackCount } Pack"
 msgid_plural "${ standalonePackCount } Packs"
 msgstr[0] "팩 ${ standalonePackCount }개"
@@ -3193,6 +3236,7 @@ msgid "${ pendingFriendCount } pending request"
 msgid_plural "${ pendingFriendCount } pending requests"
 msgstr[0] "보류된 요청 ${ pendingFriendCount }개"
 
+#, javascript-format
 msgid "${ friendCount } friend"
 msgid_plural "${ friendCount } friends"
 msgstr[0] "친구 ${ friendCount }명"
@@ -3477,6 +3521,7 @@ msgstr "혼돈 주머니 수정"
 msgid "Scenario name"
 msgstr "시나리오 이름"
 
+#, javascript-format
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] "잔여 ${ unspentXp }점"
@@ -3691,6 +3736,7 @@ msgstr "추방된 이야기 카드"
 msgid "Exile story cards"
 msgstr "이야기 카드 추방"
 
+#, javascript-format
 msgid "Fan-made scenario by ${ custom.creator }"
 msgstr "팬 제작 시나리오 (제작자: ${ custom.creator })"
 
@@ -3881,6 +3927,7 @@ msgstr "텔레그램"
 msgid "In your Campaign Log, under \"${ section }\", record #name#. "
 msgstr "캠페인 기록지 중 “${ section }” 아래에 #name# 이름을 기록합니다."
 
+#, javascript-format
 msgid "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ logEntry.text }</i>."
 msgstr "캠페인 기록지 중 “${ logEntry.section }” 아래의 <i>${logEntry.text }</i> 항목에 취소선을 긋습니다."
 
@@ -4123,6 +4170,7 @@ msgstr "내래이션 듣기"
 msgid "Negative modifier"
 msgstr "음수 값 보정치"
 
+#, javascript-format
 msgid "${ textModifier }, draws another"
 msgstr "${ textModifier }, 다른 것 뽑기"
 
@@ -4149,6 +4197,7 @@ msgstr "캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ pa
 msgid "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to ${ partnerName }."
 msgstr "캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름 옆에 “실종”을 기입합니다."
 
+#, javascript-format
 msgid "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next to ${ partnerName }."
 msgstr "캠페인 기록지 중 “${ sectionName }” 항목 아래의 ‘${ partnerName }’ 동행 이름 옆의 “실종”에 취소선을 긋습니다."
 
@@ -4626,6 +4675,7 @@ msgstr ""
 "\n"
 "구조화 데이터의 제공과 API 및 카드 이미지를 이용하게 해준 'ArkhamDB.com'에 감사드립니다. 지속적인 지원이 없었다면 이 프로젝트는 불가능했을 것입니다."
 
+#, javascript-format
 msgid ""
 "<b>Translation:</b>\n"
 "• Spanish: ${ spanishTranslators }\n"
@@ -5409,6 +5459,7 @@ msgstr "앱을 이용하여 선택 항목을 무작위로 지정하시겠습니�
 msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
 msgstr "${ departCityName } 위치에서 ${ arriveCityName } 위치로 이동합니다."
 
+#, javascript-format
 msgid "Mark ${ time } <b>time</b> in your Campaign Log."
 msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
 msgstr[0] "캠페인 기록지 아래에 ${ time }<b>시간</b>을 기록하십시오."
@@ -5654,6 +5705,7 @@ msgstr "역할군"
 msgid "Selected"
 msgstr "선택함"
 
+#, javascript-format
 msgid "App language: ${ appLanguage }"
 msgstr "앱 언어: ${ appLanguage }"
 
@@ -5765,6 +5817,12 @@ msgstr "주머니 하나만 있으면 됩니다. 아무런 조건이 없습니�
 msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
 msgstr "봉인됨 (${ chaosBagResults.sealedTokens.length })"
 
+msgid "Spirit Deck"
+msgstr ""
+
+msgid "Edit Spirit Deck"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"
@@ -5778,6 +5836,7 @@ msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } 조사자는 <b>사망합니다</b>."
@@ -5847,6 +5906,7 @@ msgctxt "masculine"
 msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없습니까?"
 
+#, javascript-format
 msgctxt "masculine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 있습니까?"
@@ -5863,6 +5923,7 @@ msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sec
 msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는 <b>${ sectionName }</b> 항목을 읽어야만 합니다."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
@@ -5872,6 +5933,7 @@ msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } 조사자는 <b>사망합니다</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
 msgstr "${ investigator.name } 조사자는 육체적 트라우마 1 또는 정신적 트라우마 1을 받습니다 <i>(본인이 선택합니다)</i>."
@@ -5959,6 +6021,7 @@ msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }
 msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] "${ list } 조사자는 ${ supplyName } 탐험 물자를 가지고 있으므로, 해당 조사자는 <b>${ sectionName }</b> 항목을 읽어야만 합니다."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
@@ -6001,6 +6064,7 @@ msgctxt "nonbinary"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } 조사자는 <b>사망합니다</b>."
@@ -6010,35 +6074,42 @@ msgctxt "nonbinary"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
 msgstr "${ investigator.name } 조사자는 육체적 트라우마 1 또는 정신적 트라우마 1을 받습니다 <i>(본인이 선택합니다)</i>."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } 육체적 트라우마를 ${ effect.physical } 받습니다."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ mental } 회복합니다."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } 받습니다."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] "${ investigator.name } 조사자는 육체적 트라우마를 ${ physical } 회복합니다."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr[0] "${ investigator.name } 조사자는 육체적 트라우마를 ${ effect.physical } 받습니다."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } 조사자는 <b>${ sectionName }</b> 항목을 읽습니다."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ card.name }</i> 항목이 없습니까?"

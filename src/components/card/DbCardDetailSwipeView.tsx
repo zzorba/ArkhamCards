@@ -363,6 +363,7 @@ function DbCardDetailSwipeView(props: Props) {
       { deckId !== undefined && (
         <>
           <DeckNavFooter
+            mode={currentControl === 'extra' ? 'extra' : undefined}
             componentId={componentId}
             deckId={deckId}
             control="counts"

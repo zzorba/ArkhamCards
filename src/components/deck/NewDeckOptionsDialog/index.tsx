@@ -43,7 +43,7 @@ import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { useDeckActions } from '@data/remote/decks';
 import useSingleCard from '@components/card/useSingleCard';
 import { useCardMap } from '@components/card/useCardList';
-import specialMetaSlots from '@data/deck/specialMetaSlots';
+import specialMetaSlots, { ensureConsistentMeta } from '@data/deck/specialMetaSlots';
 import useChaosDeckGenerator from '../useChaosDeckGenerator';
 import { parseDeck } from '@lib/parseDeck';
 import useParsedDeckComponent from '../useParsedDeckComponent';
@@ -348,7 +348,7 @@ function NewDeckOptionsDialog({
       setTimeout(() => {
         dispatch(saveNewDeck(userId, deckActions, {
           local,
-          meta,
+          meta: ensureConsistentMeta(investigator.code, meta),
           deckName: deckName || t`New Deck`,
           investigatorCode: investigator.code,
           slots,

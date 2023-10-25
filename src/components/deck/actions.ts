@@ -48,7 +48,7 @@ import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, dele
 import { AppState, getDeckUploadedCampaigns } from '@reducers/index';
 import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import specialMetaSlots from '@data/deck/specialMetaSlots';
+import specialMetaSlots, { ensureConsistentMeta } from '@data/deck/specialMetaSlots';
 import { parseCustomizationDecision } from '@lib/parseDeck';
 
 export function setInvestigatorSort(sort: SortType): SetInvestigatorSortAction {
@@ -666,7 +666,7 @@ export function updateDeckMeta(
       type: UPDATE_DECK_EDIT,
       id,
       updates: {
-        meta: updatedMeta,
+        meta: ensureConsistentMeta(investigator_code, updatedMeta),
       },
     });
   };

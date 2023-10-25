@@ -421,7 +421,13 @@ export default function({
           />
           { deckId !== undefined && (
             <>
-              <DeckNavFooter deckId={deckId} componentId={componentId} control="fab" onPress={backPressed} />
+              <DeckNavFooter
+                deckId={deckId}
+                componentId={componentId}
+                control="fab"
+                onPress={backPressed}
+                mode={mode === 'extra' ? 'extra' : undefined}
+              />
               <ActionButton
                 buttonColor={colors.D10}
                 renderIcon={renderFabIcon}

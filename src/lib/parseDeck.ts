@@ -57,7 +57,7 @@ import {
 } from '@app_constants';
 import DeckValidation from './DeckValidation';
 import CustomizationOption, { CoreCustomizationChoice, CustomizationChoice } from '@data/types/CustomizationOption';
-import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
+import { JIM_VENGEFUL_SHADE_CODE, PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 
 export function getExtraDeckSlots(meta: DeckMeta): Slots {
   return mapValues(groupBy((meta.extra_deck ?? '').split(','), x => x), x => x.length);
@@ -1040,10 +1040,12 @@ export function parseDeck(
   let problem = validation.getProblem(deckCards);
   const invalidCodes = new Set(problem?.invalidCards.map(c => c.code) ?? []);
   let extraCards: CardId[] | undefined;
+  let extraDeckSize: number | undefined;
   if (investigator_back_code === PARALLEL_JIM_CODE) {
     const extraDeckSlots = getExtraDeckSlots(meta);
     const extraDeckCards = getCards(cards, extraDeckSlots, {}, listSeperator, customizations);
     const extraValidation = new DeckValidation(investigator, extraDeckSlots, meta, { side_deck: true });
+    extraDeckSize = extraValidation.getDeckSize();
     const extraProblem = extraValidation.getProblem(extraDeckCards);
     const invalidExtraCodes = new Set(problem?.invalidCards.map(c => c.code) ?? []);
     if (extraProblem) {
@@ -1232,6 +1234,8 @@ export function parseDeck(
     specialCards: splitCards(specialCards, listSeperator, customizations,cards),
     sideCards: splitCards(sideCards, listSeperator, customizations, cards),
     extraCards: extraCards ? splitCards(extraCards, listSeperator, customizations, cards) : undefined,
+    extraDeckSize,
+    extraNormalCardCount: extraCards ? sumBy(extraCards, c => c.id === JIM_VENGEFUL_SHADE_CODE ? 0 : c.quantity) : undefined,
     ignoreDeckLimitSlots,
     changes,
     problem,

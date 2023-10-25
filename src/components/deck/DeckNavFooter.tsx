@@ -25,7 +25,8 @@ interface Props {
   componentId: string;
   deckId: DeckId;
   onPress: () => void;
-  control?: 'fab' | 'counts' ;
+  control?: 'fab' | 'counts';
+  mode?: 'extra';
   forceShow?: boolean;
   yOffset?: number;
 }
@@ -45,11 +46,12 @@ interface PreloadedProps {
   componentId: string;
   parsedDeckObj: ParsedDeckResults;
   onPress: () => void;
-  control?: 'fab' | 'counts' ;
+  control?: 'fab' | 'counts';
+  mode?: 'extra';
   forceShow?: boolean;
   yOffset?: number;
 }
-export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceShow, yOffset }: PreloadedProps) {
+export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceShow, yOffset, mode: deckMode }: PreloadedProps) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const [xpAdjustmentDialog, showXpAdjustmentDialog] = useAdjustXpDialog(parsedDeckObj);
   const { deck, parsedDeck, deckEdits } = parsedDeckObj;
@@ -71,7 +73,8 @@ export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceS
     if (!parsedDeck) {
       return undefined;
     }
-    const { normalCardCount, deckSize } = parsedDeck;
+    const normalCardCount = deckMode === 'extra' ? parsedDeck.extraNormalCardCount : parsedDeck.normalCardCount;
+    const deckSize = deckMode === 'extra' ? (parsedDeck.extraDeckSize ?? 9) : parsedDeck.deckSize;
     return t`${normalCardCount} / ${deckSize} cards`;
   }, [parsedDeck]);
 

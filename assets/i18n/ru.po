@@ -19,6 +19,7 @@ msgstr ""
 msgid "${ action.name } (Campaign A)"
 msgstr "${ action.name } (Кампания А)"
 
+#, javascript-format
 msgid "${ action.name } (Campaign B)"
 msgstr "${ action.name } (Кампания Б)"
 
@@ -101,6 +102,7 @@ msgstr "Сошёл с ума"
 msgid "${ traumaData.physical } Physical"
 msgstr "Физические: ${ traumaData.physical }"
 
+#, javascript-format
 msgid "${ traumaData.mental } Mental"
 msgstr "Ментальные: ${ traumaData.mental }"
 
@@ -157,6 +159,7 @@ msgstr "Сюжет"
 msgid "Act ${ json.stage }"
 msgstr "Сцена ${ json.stage }"
 
+#, javascript-format
 msgid "Agenda ${ json.stage }"
 msgstr "Замысел ${ json.stage }"
 
@@ -164,6 +167,7 @@ msgstr "Замысел ${ json.stage }"
 msgid "Act ${ linked_card.stage }"
 msgstr "Сцена ${ linked_card.stage }"
 
+#, javascript-format
 msgid "Agenda ${ linked_card.stage }"
 msgstr "Замысел ${ linked_card.stage }"
 
@@ -524,6 +528,7 @@ msgstr "Фильтр"
 msgid "Packs: All"
 msgstr "Допы: все"
 
+#, javascript-format
 msgid "Packs: ${ allPacksString }"
 msgstr "Допы: ${ allPacksString }"
 
@@ -607,6 +612,7 @@ msgstr "Иллюстраторы"
 msgid "Filters"
 msgstr "Фильтры"
 
+#, javascript-format
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
 msgstr[0] "Завершён ${ scenarioCount } сценарий"
@@ -617,6 +623,7 @@ msgstr[2] "Завершено ${ scenarioCount } сценариев"
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
 msgstr "Доступно опыта: ${ xp }, потрачено: ${ parsedDeck.changes.spentXp }"
 
+#, javascript-format
 msgid "${ xp } available experience"
 msgstr "Доступно опыта: ${ xp }"
 
@@ -678,6 +685,7 @@ msgstr "Исходная колода"
 msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
 msgstr "Последняя колода: ${ deck.changes.spentXp } из ${ deck.availableExperience } опыта"
 
+#, javascript-format
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr "Последняя колода: ${ deck.availableExperience } опыта"
 
@@ -763,6 +771,7 @@ msgstr "Авторизоваться заново"
 msgid "The Adventures of ${ investigator.name }"
 msgstr "${ investigator.name } расследует"
 
+#, javascript-format
 msgid "${ investigator.name } Investigates"
 msgstr "Следствие ведёт ${ investigator.name }"
 
@@ -770,6 +779,7 @@ msgstr "Следствие ведёт ${ investigator.name }"
 msgid "The ${ investigator.name } Mysteries"
 msgstr "${ investigator.name } и мистические тайны"
 
+#, javascript-format
 msgid "The ${ investigator.name } Job"
 msgstr "${ investigator.name } нападает на след"
 
@@ -777,6 +787,7 @@ msgstr "${ investigator.name } нападает на след"
 msgid "${ investigator.name } on the Road"
 msgstr "${ investigator.name } отправляется в путь"
 
+#, javascript-format
 msgid "${ investigator.name } Does It All"
 msgstr "${ investigator.name }: один за всех"
 
@@ -993,6 +1004,7 @@ msgstr ""
 "Текущая версия ${ parsedCurrentDeck.deck.version }\n"
 "${ parsedCurrentDeck.experience } опыта"
 
+#, javascript-format
 msgid ""
 "Latest Version ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } XP"
@@ -1009,6 +1021,7 @@ msgstr "Обязательно"
 msgid "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades."
 msgstr "Скопируйте колоду, чтобы использовать её в другой кампании или чтобы попробовать другие улучшения."
 
+#, javascript-format
 msgid "Level ${ level }"
 msgstr "Уровень ${ level }"
 
@@ -1016,6 +1029,7 @@ msgstr "Уровень ${ level }"
 msgid "Search ${ title }"
 msgstr "Найти ${ title }"
 
+#, javascript-format
 msgid "Select ${ title }"
 msgstr "Выбрать ${ title }"
 
@@ -1063,6 +1077,7 @@ msgid "Mark all packs in the ${ pack.name } cycle?"
 msgstr "Отметить все допы цикла ${ pack.name }?"
 
 #. This is the lead pack in a cycle.
+#, javascript-format
 msgid "Clear all packs in the ${ pack.name } cycle?"
 msgstr "Убрать все допы цикла ${ pack.name }?"
 
@@ -1198,6 +1213,7 @@ msgstr "Перевернуть карту"
 msgid "Additional XP: ${ card.extra_xp }."
 msgstr "Дороже на ${ card.extra_xp } опыта."
 
+#, javascript-format
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "Дешевле на ${ card.extra_xp } опыта."
 
@@ -1205,6 +1221,7 @@ msgstr "Дешевле на ${ card.extra_xp } опыта."
 msgid "Additional XP: ${ taboo.extra_xp }."
 msgstr "Дороже на ${ taboo.extra_xp } опыта."
 
+#, javascript-format
 msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr "Дешевле на ${ taboo.extra_xp } опыта."
 
@@ -1268,6 +1285,7 @@ msgstr "Продвинутые карты"
 msgid "Test Icons: "
 msgstr "Символы навыков: "
 
+#, javascript-format
 msgid "Doom: ${ doom }"
 msgstr "Безысходность: ${ doom }"
 
@@ -1352,6 +1370,7 @@ msgstr "Сюжетные активы"
 msgid "The <i>${ scenario.scenario_name }</i> challenge scenario centers around the investigator ${ investigator.name }, and therefore has the following prerequisites:"
 msgstr "Сценарий-испытание <i>${ scenario.scenario_name }</i> разворачивается вокруг ${ investigator.name }, поэтому у него следующие начальные требования:"
 
+#, javascript-format
 msgid "${ investigator.name } must be chosen as one of the investigators when playing this scenario."
 msgstr "Среди сыщиков, которые проходят этот сценарий, обязательно должен быть сыщик ${ investigator.name }."
 
@@ -1409,6 +1428,7 @@ msgstr[0] "Отложите в сторону набор контактов ${ e
 msgstr[1] "Отложите в сторону наборы контактов ${ encounterSetString }."
 msgstr[2] "Отложите в сторону наборы контактов ${ encounterSetString }."
 
+#, javascript-format
 msgid "Gather all cards from the ${ encounterSetString } encounter set."
 msgid_plural "Gather all cards from the following encounter sets: ${ encounterSetString }."
 msgstr[0] "Соберите все карты из следующих наборов контактов ${ encounterSetString }."
@@ -1429,6 +1449,7 @@ msgstr[0] "${ count } пополнение припасов"
 msgstr[1] "${ count } пополнения припасов"
 msgstr[2] "${ count } пополнений припасов"
 
+#, javascript-format
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
 msgstr[0] "${ count } очко припасов"
@@ -1538,9 +1559,11 @@ msgstr "В графе «${ logEntry.section }» журнала кампании,
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
 msgstr "Запишите в журнале кампании, что <i>${ logEntry.text }</i>"
 
+#, javascript-format
 msgid "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ logEntry.text }</i>."
 msgstr "В графе «${ logEntry.section }» журнала кампании запишите <i>${ logEntry.text }</i>."
 
+#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "Добавьте ${ tokenString } в мешок хаоса."
 
@@ -1552,6 +1575,7 @@ msgstr "Удалите ${ tokenString } из мешка хаоса."
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } удаляет ${ card.name } (Продвинутую)"
 
+#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name } удаляет ${ card.name }"
 
@@ -1593,6 +1617,7 @@ msgstr "Экстремальный"
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
 msgstr "Поскольку вы играете на сложности «<b>${ difficulty }</b>»:"
 
+#, javascript-format
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
 msgstr "Поскольку вы прошли <b>${ scenarioName }</b>:"
 
@@ -1607,6 +1632,7 @@ msgstr[0] "Сверьтесь с журналом кампании. Поскол
 msgstr[1] "Сверьтесь с журналом кампании. Поскольку там ${ count } метки в графе «${ logEntry.section }»"
 msgstr[2] "Сверьтесь с журналом кампании. Поскольку там ${ count } меток в графе «${ logEntry.section }»"
 
+#, javascript-format
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
 msgid_plural "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
 msgstr[0] "Сверьтесь с журналом кампании. Поскольку там ${ count } запись в графе «${ logEntry.section }»"
@@ -1617,6 +1643,7 @@ msgstr[2] "Сверьтесь с журналом кампании. Поскол
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
 msgstr "Сверьтесь с журналом кампании. Поскольку <i>${ entry }</i>"
 
+#, javascript-format
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr "Сверьтесь с журналом кампании, <i>${ logEntry.section }</i> не вычеркнута?"
 
@@ -1627,6 +1654,7 @@ msgstr[0] "${ investigators } читает <b>${ prompt }</b>."
 msgstr[1] "${ investigators } должны прочитать <b>${ prompt }</b>."
 msgstr[2] "${ investigators } должны прочитать <b>${ prompt }</b>."
 
+#, javascript-format
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
 msgstr "Есть ли у какого-либо сыщика «${ cardName }» в колоде?"
 
@@ -1634,6 +1662,7 @@ msgstr "Есть ли у какого-либо сыщика «${ cardName }» в
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
 msgstr "Побеждён ли сыщик с «${ cardName }» в колоде?"
 
+#, javascript-format
 msgid "For each investigator with \"${ cardName }\" in their deck:"
 msgstr "Для каждого сыщика с «${ cardName }» в его колоде:"
 
@@ -1650,6 +1679,7 @@ msgstr "Если ведущий сыщик был <b>убит</b>."
 msgid "If all investigators were <b>killed</b>."
 msgstr "Если все сыщики были <b>убиты</b>."
 
+#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr "Проверьте ${ logEntry.section }. <i>Есть ли там запись ${ logEntry.text }</i>"
 
@@ -1675,6 +1705,7 @@ msgstr "Калькулятор вероятностей"
 msgid "Challenge Scenario"
 msgstr "Сценарий-испытание"
 
+#, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr "Сценарий-испытание ${ investigator.name }"
 
@@ -2208,19 +2239,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -2506,6 +2537,7 @@ msgstr "Обновлено вчера"
 msgid "Updated ${ dayOfWeek }"
 msgstr "Обновлено ${ dayOfWeek }"
 
+#, javascript-format
 msgid "Updated ${ dateString }"
 msgstr "Обновлено ${ dateString }"
 
@@ -2570,6 +2602,7 @@ msgstr "Класс: ${ card.faction_name }, Уровень: ${ level }"
 msgid "Faction: ${ card.faction_name }, Cost: ${ cost }, Level: ${ level }"
 msgstr "Класс: ${ card.faction_name }, Цена: ${ cost }, Уровень: ${ level }"
 
+#, javascript-format
 msgid "Faction: ${ card.faction_name }"
 msgstr "Класс: ${ card.faction_name }"
 
@@ -2587,6 +2620,7 @@ msgstr "Рассудок: нет"
 msgid "Health: ${ count }"
 msgstr "Здоровье: ${ count }"
 
+#, javascript-format
 msgid "Sanity: ${ count }"
 msgstr "Рассудок: ${ count }"
 
@@ -2658,6 +2692,7 @@ msgstr "Бой: ${ fight }"
 msgid "Health: ${ health } per investigator"
 msgstr "Здоровье: ${ health } за сыщика"
 
+#, javascript-format
 msgid "Health: ${ health }"
 msgstr "Здоровье: ${ health }"
 
@@ -2669,6 +2704,7 @@ msgstr "Уклонение: ${ evade }"
 msgid "Willpower: ${ count }"
 msgstr "Воля: ${ count }"
 
+#, javascript-format
 msgid "Intellect: ${ count }"
 msgstr "Интеллект: ${ count }"
 
@@ -2676,6 +2712,7 @@ msgstr "Интеллект: ${ count }"
 msgid "Combat: ${ count }"
 msgstr "Бой: ${ count }"
 
+#, javascript-format
 msgid "Agility: ${ count }"
 msgstr "Ловкость: ${ count }"
 
@@ -2853,6 +2890,7 @@ msgstr ""
 "Примечание: эта кампания вышла не полностью, поэтому путеводитель неполон (и может содержать ошибки).\n"
 "По мере выхода новых сценариев мы постараемся дополнять руководство как можно скорее, но возможны задержки."
 
+#, javascript-format
 msgid "Slot: ${ card.slot }"
 msgstr "Слот: ${ card.slot }"
 
@@ -2968,12 +3006,14 @@ msgstr[0] "${ normalCardCount } · ${ totalCardCount } всего"
 msgstr[1] "${ normalCardCount } · ${ totalCardCount } всего"
 msgstr[2] "${ normalCardCount } · ${ totalCardCount } всего"
 
+#, javascript-format
 msgid "${ bondedCardCount } bound"
 msgid_plural "${ bondedCardCount } bound"
 msgstr[0] "${ bondedCardCount } зависимая"
 msgstr[1] "${ bondedCardCount } зависимых"
 msgstr[2] "${ bondedCardCount } зависимых"
 
+#, javascript-format
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
 msgstr[0] "${ unspentXpStr } не потрачено"
@@ -3006,6 +3046,7 @@ msgstr "не хватает ${ overspent }"
 msgid "Missing system permission"
 msgstr "Нет системных разрешений"
 
+#, javascript-format
 msgid "Reads \"${ badThing.prompt }\""
 msgstr "Читает «${ badThing.prompt }»"
 
@@ -3071,6 +3112,7 @@ msgstr "Удалить улучшение колоды?"
 msgid "<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead pay the full experience cost on the higher level version and leave the lower level version in your deck (it does not count towards your deck size or the number of copies of that card in your deck)."
 msgstr "<b>Дополнительные возможности</b>: Когда вы улучшаете [[Заклинание]], вы можете вместо этого выплатить его полную цену в опыте и оставить низкоуровневую версию в своей колоде (та карта не идёт в счёт экземпляров одноимённых карт в вашей колоде)."
 
+#, javascript-format
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
 msgstr "${ spentXP } из ${ _adjustedXp } опыта потрачено"
 
@@ -3205,6 +3247,7 @@ msgstr[0] "${ cycleCount } цикл"
 msgstr[1] "${ cycleCount } цикла"
 msgstr[2] "${ cycleCount } циклов"
 
+#, javascript-format
 msgid "${ standalonePackCount } Pack"
 msgid_plural "${ standalonePackCount } Packs"
 msgstr[0] "${ standalonePackCount } дополнение"
@@ -3240,6 +3283,7 @@ msgstr[0] "${ pendingFriendCount } новый запрос"
 msgstr[1] "${ pendingFriendCount } новых запроса"
 msgstr[2] "${ pendingFriendCount } новых запросов"
 
+#, javascript-format
 msgid "${ friendCount } friend"
 msgid_plural "${ friendCount } friends"
 msgstr[0] "${ friendCount } друг"
@@ -3469,6 +3513,7 @@ msgstr "Сохранить улучшение"
 msgid "Uploading deck"
 msgstr "Загрузка колоды"
 
+#, javascript-format
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] "${ unspentXp } опыта непотрачено"
@@ -3748,6 +3793,7 @@ msgstr "Изгнанные сюжетные карты"
 msgid "Exile story cards"
 msgstr "Изгнать сюжетные карты"
 
+#, javascript-format
 msgid "Fan-made scenario by ${ custom.creator }"
 msgstr "Фанатский сценарий (автор: ${ custom.creator })"
 
@@ -3929,6 +3975,7 @@ msgstr "Телеграм"
 msgid "In your Campaign Log, under \"${ section }\", record #name#. "
 msgstr "В графе «${ section }» журнала кампании запишите #name#. "
 
+#, javascript-format
 msgid "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ logEntry.text }</i>."
 msgstr "Вычеркните <i>${ logEntry.text }</i> из графы «${ logEntry.section }» журнала кампании."
 
@@ -4209,6 +4256,7 @@ msgstr "Вычеркните имя «${ partnerName }» в графе журн�
 msgid "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to ${ partnerName }."
 msgstr "Запишите «Пропал(а)» напротив ${ partnerName } в графе журнала «${ sectionName }»."
 
+#, javascript-format
 msgid "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next to ${ partnerName }."
 msgstr "Вычеркните слово «Пропал» напротив ${ partnerName } в графе журнала «${ sectionName }»."
 
@@ -4302,6 +4350,7 @@ msgstr "Сердце безумия: Найденные печати"
 msgid "Negative modifier"
 msgstr "Отрицательный модификатор"
 
+#, javascript-format
 msgid "${ textModifier }, draws another"
 msgstr "${ textModifier } + ещё жетон"
 
@@ -4696,6 +4745,7 @@ msgstr ""
 "\n"
 "Огромная благодарность сайту Arkhamdb.com за предоставление структурированных данных, изображений карт и доступ через API. Без постоянной поддержки администрации arkhamdb этот проект не был бы возможен."
 
+#, javascript-format
 msgid ""
 "<b>Translation:</b>\n"
 "• Spanish: ${ spanishTranslators }\n"
@@ -5500,6 +5550,7 @@ msgstr "Хотите использовать приложение, чтобы �
 msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
 msgstr "Ячейка отправляется из ${ departCityName } в ${ arriveCityName }."
 
+#, javascript-format
 msgid "Mark ${ time } <b>time</b> in your Campaign Log."
 msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
 msgstr[0] "Отметьте ${ time } <b>время</b> в журнале кампании."
@@ -5763,6 +5814,7 @@ msgstr "Класс"
 msgid "Selected"
 msgstr "Выбрано"
 
+#, javascript-format
 msgid "App language: ${ appLanguage }"
 msgstr "Язык приложения: ${ appLanguage }"
 
@@ -5874,6 +5926,12 @@ msgstr "Просто мешок с жетонами."
 msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
 msgstr "Запечатано (${ chaosBagResults.sealedTokens.length })"
 
+msgid "Spirit Deck"
+msgstr ""
+
+msgid "Edit Spirit Deck"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Пользовательский"
@@ -5887,6 +5945,7 @@ msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } <b>сошёл с ума</b>."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "Сыщик ${ investigator.name } <b>убит</b>."
@@ -5966,6 +6025,7 @@ msgctxt "masculine"
 msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "<i>${ card.name }</i> не записан в графе «${ entry.section }» журнала кампании."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "<i>${ card.name }</i> записан в графе «${ entry.section }» журнала кампании."
@@ -5986,6 +6046,7 @@ msgstr[0] "Поскольку ${ supplyName } отсутствует у ${ list 
 msgstr[1] "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
 msgstr[2] "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } <b>сошла с ума</b>."
@@ -5995,6 +6056,7 @@ msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "Сыщик ${ investigator.name } <b>убита</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
 msgstr "${ investigator.name } получает 1 физическую или ментальную травму <i>(на ваш выбор)</i>."
@@ -6094,6 +6156,7 @@ msgstr[0] "Поскольку ${ supplyName } есть у ${ list }, этот с
 msgstr[1] "Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
 msgstr[2] "Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
@@ -6106,6 +6169,7 @@ msgctxt "nonbinary"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } <b>сошёл с ума</b>."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "Сыщик ${ investigator.name } <b>убит</b>."
@@ -6115,6 +6179,7 @@ msgctxt "nonbinary"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
 msgstr "${ investigator.name } получает 1 физическую или ментальную травму <i>(на ваш выбор)</i>."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
@@ -6122,6 +6187,7 @@ msgstr[0] "${ investigator.name } получает ${ effect.mental } мента
 msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
 msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
@@ -6129,6 +6195,7 @@ msgstr[0] "${ investigator.name } вылечивает ${ mental } ментал�
 msgstr[1] "${ investigator.name } вылечивает ${ mental } ментальную травму."
 msgstr[2] "${ investigator.name } вылечивает ${ mental } ментальную травму."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
@@ -6136,6 +6203,7 @@ msgstr[0] "${ investigator.name } получает ${ effect.mental } мента
 msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную травму."
 msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную травму."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
@@ -6143,6 +6211,7 @@ msgstr[0] "${ investigator.name } вылечивает ${ physical } физич�
 msgstr[1] "${ investigator.name } вылечивает ${ physical } физическую травму."
 msgstr[2] "${ investigator.name } вылечивает ${ physical } физическую травму."
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
@@ -6170,10 +6239,12 @@ msgctxt "nonbinary"
 msgid "Defeated: no trauma"
 msgstr "Побеждён: без травмы"
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "<i>${ card.name }</i> не записан в графе «${ entry.section }» журнала кампании."

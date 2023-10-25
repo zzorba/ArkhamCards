@@ -381,7 +381,7 @@ export default function CardUpgradeDialog({
         { cardsSection }
         <View style={styles.footerPadding} />
       </ScrollView>
-      <DeckNavFooter componentId={componentId} deckId={id} onPress={backPressed} />
+      <DeckNavFooter componentId={componentId} deckId={id} onPress={backPressed} mode={mode} />
       { overLimit && (
         <DeckProblemBanner problem={{ reason: 'too_many_copies', invalidCards: [] }} />
       ) }

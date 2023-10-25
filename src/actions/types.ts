@@ -259,7 +259,9 @@ export interface ParsedDeck {
   investigatorBack: Card;
   slots: Slots;
   deckSize: number;
+  extraDeckSize: number | undefined;
   normalCardCount: number;
+  extraNormalCardCount: number | undefined;
   totalCardCount: number;
   experience: number;
   availableExperience: number;

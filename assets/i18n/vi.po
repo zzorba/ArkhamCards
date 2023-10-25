@@ -46,6 +46,7 @@ msgstr ""
 msgid "${ action.name } (Campaign A)"
 msgstr ""
 
+#, javascript-format
 msgid "${ action.name } (Campaign B)"
 msgstr ""
 
@@ -118,6 +119,7 @@ msgstr ""
 msgid "Updated ${ dayOfWeek }"
 msgstr ""
 
+#, javascript-format
 msgid "Updated ${ dateString }"
 msgstr ""
 
@@ -208,6 +210,7 @@ msgstr ""
 msgid "${ traumaData.physical } Physical"
 msgstr ""
 
+#, javascript-format
 msgid "${ traumaData.mental } Mental"
 msgstr ""
 
@@ -279,6 +282,7 @@ msgstr ""
 msgid "Act ${ json.stage }"
 msgstr ""
 
+#, javascript-format
 msgid "Agenda ${ json.stage }"
 msgstr ""
 
@@ -286,6 +290,7 @@ msgstr ""
 msgid "Act ${ linked_card.stage }"
 msgstr ""
 
+#, javascript-format
 msgid "Agenda ${ linked_card.stage }"
 msgstr ""
 
@@ -561,6 +566,7 @@ msgid ""
 "Many thanks to ArkhamDB.com for providing the structured data, API access and access to card images. Without their continued support, this project wouldn't be possible."
 msgstr ""
 
+#, javascript-format
 msgid ""
 "<b>Translation:</b>\n"
 "• Spanish: ${ spanishTranslators }\n"
@@ -776,6 +782,7 @@ msgid_plural "${ cycleCount } Cycles"
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgid "${ standalonePackCount } Pack"
 msgid_plural "${ standalonePackCount } Packs"
 msgstr[0] ""
@@ -938,6 +945,7 @@ msgid_plural "${ pendingFriendCount } pending requests"
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgid "${ friendCount } friend"
 msgid_plural "${ friendCount } friends"
 msgstr[0] ""
@@ -1273,6 +1281,7 @@ msgstr ""
 msgid "Search ${ title }"
 msgstr ""
 
+#, javascript-format
 msgid "Select ${ title }"
 msgstr ""
 
@@ -1318,6 +1327,7 @@ msgstr ""
 msgid "Packs: All"
 msgstr ""
 
+#, javascript-format
 msgid "Packs: ${ allPacksString }"
 msgstr ""
 
@@ -1478,6 +1488,7 @@ msgstr ""
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
 msgstr ""
 
+#, javascript-format
 msgid "${ xp } available experience"
 msgstr ""
 
@@ -1485,6 +1496,7 @@ msgstr ""
 msgid "${ parsedDeck.experience } experience required"
 msgstr ""
 
+#, javascript-format
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
 msgstr[0] ""
@@ -1528,6 +1540,7 @@ msgstr ""
 msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
 msgstr ""
 
+#, javascript-format
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr ""
 
@@ -1539,6 +1552,7 @@ msgstr ""
 msgid "Upgrade ${ humanVersionNumber }: ${ deck.availableExperience } XP"
 msgstr ""
 
+#, javascript-format
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
 msgstr ""
 
@@ -1634,6 +1648,7 @@ msgstr ""
 msgid "${ overspent } overspent"
 msgstr ""
 
+#, javascript-format
 msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
 msgstr[0] ""
@@ -1713,6 +1728,7 @@ msgstr ""
 msgid "The Adventures of ${ investigator.name }"
 msgstr ""
 
+#, javascript-format
 msgid "${ investigator.name } Investigates"
 msgstr ""
 
@@ -1720,6 +1736,7 @@ msgstr ""
 msgid "The ${ investigator.name } Mysteries"
 msgstr ""
 
+#, javascript-format
 msgid "The ${ investigator.name } Job"
 msgstr ""
 
@@ -1727,6 +1744,7 @@ msgstr ""
 msgid "${ investigator.name } on the Road"
 msgstr ""
 
+#, javascript-format
 msgid "${ investigator.name } Does It All"
 msgstr ""
 
@@ -1907,6 +1925,7 @@ msgid_plural "${ normalCards } cards"
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] ""
@@ -2049,6 +2068,7 @@ msgstr ""
 msgid "Card count"
 msgstr ""
 
+#, javascript-format
 msgid "${ bondedCardCount } bound"
 msgid_plural "${ bondedCardCount } bound"
 msgstr[0] ""
@@ -2099,6 +2119,7 @@ msgid ""
 "${ parsedCurrentDeck.experience } XP"
 msgstr ""
 
+#, javascript-format
 msgid ""
 "Latest Version ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } XP"
@@ -2119,6 +2140,7 @@ msgstr ""
 msgid "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades."
 msgstr ""
 
+#, javascript-format
 msgid "Level ${ level }"
 msgstr ""
 
@@ -2184,6 +2206,7 @@ msgstr ""
 msgid "Faction: ${ card.faction_name }, Cost: ${ cost }, Level: ${ level }"
 msgstr ""
 
+#, javascript-format
 msgid "Faction: ${ card.faction_name }"
 msgstr ""
 
@@ -2201,6 +2224,7 @@ msgstr ""
 msgid "Health: ${ count }"
 msgstr ""
 
+#, javascript-format
 msgid "Sanity: ${ count }"
 msgstr ""
 
@@ -2265,6 +2289,7 @@ msgid "Mark all packs in the ${ pack.name } cycle?"
 msgstr ""
 
 #. This is the lead pack in a cycle.
+#, javascript-format
 msgid "Clear all packs in the ${ pack.name } cycle?"
 msgstr ""
 
@@ -2455,6 +2480,7 @@ msgstr ""
 msgid "Additional XP: ${ card.extra_xp }."
 msgstr ""
 
+#, javascript-format
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr ""
 
@@ -2462,6 +2488,7 @@ msgstr ""
 msgid "Additional XP: ${ taboo.extra_xp }."
 msgstr ""
 
+#, javascript-format
 msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr ""
 
@@ -2571,6 +2598,7 @@ msgstr ""
 msgid "Health: ${ health } per investigator"
 msgstr ""
 
+#, javascript-format
 msgid "Health: ${ health }"
 msgstr ""
 
@@ -2585,6 +2613,7 @@ msgstr ""
 msgid "Willpower: ${ count }"
 msgstr ""
 
+#, javascript-format
 msgid "Intellect: ${ count }"
 msgstr ""
 
@@ -2592,6 +2621,7 @@ msgstr ""
 msgid "Combat: ${ count }"
 msgstr ""
 
+#, javascript-format
 msgid "Agility: ${ count }"
 msgstr ""
 
@@ -2599,9 +2629,11 @@ msgstr ""
 msgid "Wild: ${ count }"
 msgstr ""
 
+#, javascript-format
 msgid "Slot: ${ card.slot }"
 msgstr ""
 
+#, javascript-format
 msgid "Doom: ${ doom }"
 msgstr ""
 
@@ -2731,6 +2763,7 @@ msgstr ""
 msgid "The <i>${ scenario.scenario_name }</i> challenge scenario centers around the investigator ${ investigator.name }, and therefore has the following prerequisites:"
 msgstr ""
 
+#, javascript-format
 msgid "${ investigator.name } must be chosen as one of the investigators when playing this scenario."
 msgstr ""
 
@@ -2811,6 +2844,7 @@ msgstr ""
 msgid "${ supplyName } to use (${ desiredCount })"
 msgstr ""
 
+#, javascript-format
 msgid "Reads \"${ badThing.prompt }\""
 msgstr ""
 
@@ -2835,6 +2869,7 @@ msgid "Set the ${ encounterSetString } encounter set aside, out of play."
 msgid_plural "Set the ${ encounterSetString } encounter sets aside, out of play."
 msgstr[0] "Đặt các bộ bài encounter ${ encounterSetString } sang một bên, ngoài vùng chơi."
 
+#, javascript-format
 msgid "Gather all cards from the ${ encounterSetString } encounter set."
 msgid_plural "Gather all cards from the following encounter sets: ${ encounterSetString }."
 msgstr[0] "Tập hợp tất cả lá bài từ các bộ bài encounter ${ encounterSetString }."
@@ -2853,6 +2888,7 @@ msgid_plural "${ count } resupply"
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
 msgstr[0] ""
@@ -3070,6 +3106,7 @@ msgstr "Trong Nhật ký Chiến dịch của bạn, gạch bỏ <i>${ logEntry.
 msgid "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ logEntry.text }</i>"
 msgstr "Trong Nhật ký Chiến dịch của bạn, dưới phần \"${ logEntry.section }\", gạch bỏ <i>${ logEntry.text }</i>"
 
+#, javascript-format
 msgid "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ logEntry.text }</i>."
 msgstr "Trong Nhật ký Chiến dịch của bạn, dưới phần \"${ logEntry.section }\", gạch bỏ <i>${ logEntry.text }</i>."
 
@@ -3081,6 +3118,7 @@ msgstr "Trong Nhật ký Chiến dịch của bạn, ghi lại <i>${ logEntry.te
 msgid "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ logEntry.text }</i>"
 msgstr "Trong Nhật ký Chiến dịch của bạn, dưới phần \"${ logEntry.section }\", ghi lại <i>${ logEntry.text }</i>"
 
+#, javascript-format
 msgid "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ logEntry.text }</i>."
 msgstr "Trong Nhật ký Chiến dịch của bạn, dưới phần \"${ logEntry.section }\", ghi lại <i>${ logEntry.text }</i>."
 
@@ -3092,6 +3130,7 @@ msgstr "Trong Nhật ký Chiến dịch của bạn, ghi lại <i>${ text }</i>"
 msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] } và ${ tokens[1] }"
 
+#, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
 msgstr "Thêm ${ tokenString } vào túi hỗn mang."
 
@@ -3110,6 +3149,7 @@ msgstr "Trong phần ${ sectionName } của Nhật ký Chiến Dịch, gạch b�
 msgid "In the ${ sectionName } section of the Campaign Log, write \"MIA\" next to ${ partnerName }."
 msgstr "Trong phần ${ sectionName } của Nhật ký Chiến Dịch, viết \"MIA\" kế bên ${ partnerName }."
 
+#, javascript-format
 msgid "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" next to ${ partnerName }."
 msgstr "Trong phần ${ sectionName } của Nhật ký Chiến Dịch, gạch bỏ \"MIA\" kế bên ${ partnerName }."
 
@@ -3121,6 +3161,7 @@ msgstr ""
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } loại bỏ ${ card.name } (Advanced)"
 
+#, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name } loại bỏ ${ card.name }"
 
@@ -3183,6 +3224,7 @@ msgstr ""
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
 msgstr "Bởi vì bạn đang chơi ở độ khó <b>${ difficulty }</b>:"
 
+#, javascript-format
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
 msgstr "Bởi vì bạn đã hoàn thành <b>${ scenarioName }</b>:"
 
@@ -3196,6 +3238,7 @@ msgid_plural "Check Campaign Log. Because there are ${ count } marks under '${ l
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
 msgid_plural "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
 msgstr[0] ""
@@ -3205,9 +3248,11 @@ msgstr[1] ""
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
 msgstr ""
 
+#, javascript-format
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
 msgstr ""
 
+#, javascript-format
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
 msgstr "Có bất kỳ điều tra viên nào có \"${ cardName }\" trong chồng bài của họ?"
 
@@ -3215,6 +3260,7 @@ msgstr "Có bất kỳ điều tra viên nào có \"${ cardName }\" trong chồn
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
 msgstr "Có một điều tra viên nào có \"${ cardName }\" trong chồng bài của mình khi bị hạ gục?"
 
+#, javascript-format
 msgid "For each investigator with \"${ cardName }\" in their deck:"
 msgstr "Cho mỗi điều tra viên với \"${ cardName }\" trong chồng bài của họ:"
 
@@ -3250,6 +3296,7 @@ msgstr "Nếu tất cả điều tra viên vẫn còn sống."
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
 msgstr "Kiểm tra Nhật ký Chiến dịch. <i>Nếu ${ logEntry.text }</i>"
 
+#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr "Kiểm tra ${ logEntry.section }. <i>Nếu ${ logEntry.text }</i>"
 
@@ -3306,6 +3353,7 @@ msgstr ""
 msgid "Odds calculator"
 msgstr ""
 
+#, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr ""
 
@@ -3313,6 +3361,7 @@ msgstr ""
 msgid "Experience cost: ${ challengeCost } for ${ investigator.name }, ${ xpCost } for each other investigator"
 msgstr ""
 
+#, javascript-format
 msgid "Fan-made scenario by ${ custom.creator }"
 msgstr ""
 
@@ -4402,6 +4451,7 @@ msgid_plural "${ tokens }/${ total } tokens"
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgid "${ textModifier }, draws another"
 msgstr ""
 
@@ -5260,6 +5310,7 @@ msgstr ""
 msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
 msgstr ""
 
+#, javascript-format
 msgid "Mark ${ time } <b>time</b> in your Campaign Log."
 msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
 msgstr[0] ""
@@ -5509,6 +5560,7 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
+#, javascript-format
 msgid "App language: ${ appLanguage }"
 msgstr ""
 
@@ -5620,6 +5672,12 @@ msgstr ""
 msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
 msgstr ""
 
+msgid "Spirit Deck"
+msgstr ""
+
+msgid "Edit Spirit Deck"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -5658,6 +5716,7 @@ msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } trở nên <b>điên loạn</b>."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } <b>bị giết</b>."
@@ -5721,6 +5780,7 @@ msgctxt "masculine"
 msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "Nếu <i>${ card.name }</i> không được liệt kê dưới ‘${ entry.section }’ trong Nhật Ký Chiến Dịch."
 
+#, javascript-format
 msgctxt "masculine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "Nếu <i>${ card.name }</i> được liệt kê dưới ‘${ entry.section }’ trong Nhật Ký Chiến Dịch."
@@ -5762,6 +5822,7 @@ msgctxt "feminine"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr "${ investigator.name } đọc <b>${ sectionName }</b>"
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr "${ investigator.name } trở nên<b>điên loạn</b>."
@@ -5771,6 +5832,7 @@ msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr "${ investigator.name } <b>bị giết</b>."
 
+#, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
 msgstr ""
@@ -5817,6 +5879,7 @@ msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ s
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgctxt "feminine"
 msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
@@ -5865,6 +5928,7 @@ msgctxt "nonbinary"
 msgid "Defeated"
 msgstr ""
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } reads <b>${ sectionName }</b>"
 msgstr ""
@@ -5874,6 +5938,7 @@ msgctxt "nonbinary"
 msgid "${ investigator.name } is driven <b>insane</b>."
 msgstr ""
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is <b>killed</b>."
 msgstr ""
@@ -5883,36 +5948,42 @@ msgctxt "nonbinary"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
 msgstr ""
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
 
+#, javascript-format
 msgctxt "nonbinary"
 msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr ""
