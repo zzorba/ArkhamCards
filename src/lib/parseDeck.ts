@@ -293,6 +293,7 @@ export function getCards(
 
 interface DeckSlotChanges {
   changedCards: Slots;
+  extraChangedCards: Slots;
   ignoredCardsDelta: Slots;
   exiledCards: Slots;
   customizedSlots: Slots;
@@ -305,7 +306,7 @@ function getDeckChangesHelper(
   slots: Slots,
   extraDeckSize: number,
   totalFreeCards: number,
-  { changedCards, ignoredCardsDelta, exiledCards, customizedSlots, customizedXp, unchangedSlots }: DeckSlotChanges,
+  { changedCards, extraChangedCards, ignoredCardsDelta, exiledCards, customizedSlots, customizedXp, unchangedSlots }: DeckSlotChanges,
   invalidCards: Card[],
   { dtrFirst }: { dtrFirst: boolean }
 ): DeckChanges {
@@ -336,6 +337,26 @@ function getDeckChangesHelper(
   const removedCards: Card[] = [];
   const ignoredRemovedCards: Card[] = [];
   forEach(changedCards, (count, code) => {
+    const card = cards[code];
+    if (!card) {
+      return;
+    }
+    if (count < 0) {
+      for (let i = count; i < 0; i++) {
+        removedCards.push(card);
+      }
+    } else {
+      for (let i = 0; i < count; i++) {
+        addedCards.push(card);
+        if (card.code === ARCANE_RESEARCH_CODE) {
+          // Per FAQ, you do not get the arcane research bonus if you just
+          // added this card to your deck.
+          arcaneResearchUses--;
+        }
+      }
+    }
+  });
+  forEach(extraChangedCards, (count, code) => {
     const card = cards[code];
     if (!card) {
       return;
@@ -722,6 +743,7 @@ function getDeckChanges(
   const unchangedSlots: Slots = { ...previousDeck.slots || {} };
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
   const changedCards: Slots = {};
+  const extraChangedCards: Slots = {};
   const ignoredCardsDelta: Slots = {};
   forEach(
     uniq(union(keys(slots), keys(previousDeck.slots))),
@@ -742,6 +764,21 @@ function getDeckChanges(
         ignoredCardsDelta[code] = ignoreDelta;
       }
     });
+  if (previous_investigator_code === PARALLEL_JIM_CODE) {
+    const extraSlots = getExtraDeckSlots(deck.meta ?? {});
+    const previousExtraSlots = getExtraDeckSlots(previousDeck.meta ?? {});
+    forEach(
+      uniq(union(keys(extraSlots), keys(previousExtraSlots))),
+      code => {
+        const oldCount = previousExtraSlots[code] || 0;
+        const newCount = extraSlots[code] || 0;
+        const delta = newCount - oldCount;
+        if (delta !== 0) {
+          extraChangedCards[code] = delta;
+        }
+      }
+    );
+  }
   const customizedXp: Slots = {};
   const customizedSlots: Slots = {};
   forEach(keys(slots), code => {
@@ -760,6 +797,7 @@ function getDeckChanges(
     totalFreeCards,
     {
       changedCards,
+      extraChangedCards,
       ignoredCardsDelta,
       exiledCards,
       customizedSlots,
@@ -777,6 +815,7 @@ function getDeckChanges(
       totalFreeCards,
       {
         changedCards,
+        extraChangedCards,
         ignoredCardsDelta,
         exiledCards,
         customizedSlots,
