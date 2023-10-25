@@ -76,7 +76,7 @@ export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceS
     const normalCardCount = deckMode === 'extra' ? parsedDeck.extraNormalCardCount : parsedDeck.normalCardCount;
     const deckSize = deckMode === 'extra' ? (parsedDeck.extraDeckSize ?? 9) : parsedDeck.deckSize;
     return t`${normalCardCount} / ${deckSize} cards`;
-  }, [parsedDeck]);
+  }, [parsedDeck, deckMode]);
 
   const xpLine = useMemo(() => {
     if (!deckEdits?.editable || !deck || !deck.previousDeckId) {
