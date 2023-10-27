@@ -434,6 +434,12 @@
     "text": "A player is eliminated from a scenario any time his or her investigator is defeated, or if he or she resigns. The only manner in which eliminated investigators interact with the game is when establishing \"per investigator\" values (see \"[Per Investigator](#Per_Investigator)\"). Any time a player is eliminated:\n1. For the purpose of resolving weakness cards, the game has ended for the eliminated investigator. Trigger any “when the game ends” abilities on each weakness the eliminated investigator owns that is in play. Then, remove those weaknesses from the game.\n2. The cards he or she controls in play and all of the cards in his or her out-of-play areas (such as hand, deck, discard pile) are removed from the game.\n- Any card that player owns but does not control that is in play remains in play, but if that card leaves play it is removed from the game.\n3. All clue tokens that player possesses are placed at the location the investigator was at when he or she was eliminated, and all of that player's resource tokens are returned to the token pool.\n4. All enemies engaged with that player are placed at the location the investigator was at when he or she was eliminated, unengaged but otherwise maintaining their current game state.\n5. All other cards in the eliminated investigator's threat area are placed in the appropriate discard pile.\n6. If the lead investigator is eliminated, the remaining players (if any) choose a new lead investigator.\n7. If there are no remaining players, the scenario ends. Refer to \"no resolution was reached\" entry for that scenario in the campaign guide."
   },
   {
+    "id": "Elusive",
+    "cycle": ["fhv"],
+    "title": "Elusive",
+    "text": "If a ready enemy with the elusive keyword attacks or is attacked, after that attack resolves, that enemy immediately disengages from all investigators, moves to a connecting location (with no investigators, if able), and exhausts. This effect occurs whether the enemy was engaged with the attacking investigator or not."
+  },
+  {
     "id": "Empty_Location",
     "title": "Empty Location",
     "text": "An empty location is a location with no enemies or investigators at it."

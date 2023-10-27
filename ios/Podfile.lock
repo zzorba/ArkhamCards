@@ -578,18 +578,18 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBApp (18.5.0):
+  - RNFBApp (18.6.0):
     - Firebase/CoreOnly (= 10.15.0)
     - React-Core
-  - RNFBAuth (18.5.0):
+  - RNFBAuth (18.6.0):
     - Firebase/Auth (= 10.15.0)
     - React-Core
     - RNFBApp
-  - RNFBDatabase (18.5.0):
+  - RNFBDatabase (18.6.0):
     - Firebase/Database (= 10.15.0)
     - React-Core
     - RNFBApp
-  - RNFBFunctions (18.5.0):
+  - RNFBFunctions (18.6.0):
     - Firebase/Functions (= 10.15.0)
     - React-Core
     - RNFBApp
@@ -597,7 +597,7 @@ PODS:
     - React-Core
   - RNGestureHandler (2.12.1):
     - React-Core
-  - RNGoogleSignin (10.0.1):
+  - RNGoogleSignin (10.1.0):
     - GoogleSignIn (~> 7.0)
     - React-Core
   - RNKeychain (8.1.2):
@@ -641,7 +641,8 @@ PODS:
     - React-Core
   - RNSVG (13.14.0):
     - React-Core
-  - RNVectorIcons (10.0.0):
+  - RNVectorIcons (10.0.1):
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
@@ -1000,13 +1001,13 @@ SPEC CHECKSUMS:
   RNCClipboard: d77213bfa269013bf4b857b7a9ca37ee062d8ef1
   RNDeviceInfo: bf8a32acbcb875f568217285d1793b0e8588c974
   RNFastImage: 8168abae295957249d1a272daf219f0001c0add2
-  RNFBApp: 082df9f8ffba99f23f7aee3ecb64df703e7e1adb
-  RNFBAuth: b055663339aef8ce9d63cd5d03e2ea5360a3aca2
-  RNFBDatabase: d5b6d42a51070996e38f37de10950e9284f3469b
-  RNFBFunctions: e224b9c0165ae4fd275ab65f49b827372cbf91fd
+  RNFBApp: 29a81c55c97887851fe2d8180293e0c618523d02
+  RNFBAuth: d7982b940ba7cbb90d30b94f5512493314711c97
+  RNFBDatabase: a40810d20ce4347d7cd9c5230fe5b1d61beb3476
+  RNFBFunctions: c7181b4175b1575ccac07490ae5a300b2e186877
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
   RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
-  RNGoogleSignin: ccaa4a81582cf713eea562c5dd9dc1961a715fd0
+  RNGoogleSignin: a6a612cce56a45ab701c5c5c6e36f5390522d100
   RNKeychain: a65256b6ca6ba6976132cc4124b238a5b13b3d9c
   RNLocalize: dbea38dcb344bf80ff18a1757b1becf11f70cae4
   RNReactNativeHapticFeedback: ec56a5f81c3941206fd85625fa669ffc7b4545f9
@@ -1014,7 +1015,7 @@ SPEC CHECKSUMS:
   RNSha256: a6bc3640a34eb41907e363828b9ec742c274298d
   RNShare: 32e97adc8d8c97d4a26bcdd3c45516882184f8b6
   RNSVG: d00c8f91c3cbf6d476451313a18f04d220d4f396
-  RNVectorIcons: 8b5bb0fa61d54cd2020af4f24a51841ce365c7e9
+  RNVectorIcons: c5452003f0231f8604718da523a6bd0dd08f9809
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
