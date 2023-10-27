@@ -207,7 +207,7 @@ export default function LocationCard({ annotation, code, height, width, left, to
           width,
           ...annotationPosition(annotation.position, { height, width, left, top, fontScale }),
         }]}>
-          <Text numberOfLines={1} style={[
+          <Text numberOfLines={2} style={[
             typography.text,
             textAlignment,
             { lineHeight: annotationLineHeight, fontSize: fontScale * 22 },

@@ -65,7 +65,9 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
       return (
         <View style={[styles.resolutionBlock, space.marginS, { backgroundColor: colors.campaign.background.resolution }]}>
           <View style={[styles.resolutionContent, space.paddingS]}>
-            <Text style={[typography.bigGameFont, { color: colors.campaign.text.resolution }]}>{t`Scenario Ended`}</Text>
+            <Text style={[typography.bigGameFont, { color: colors.campaign.text.resolution }]}>
+              {t`Scenario Ended`}
+            </Text>
           </View>
         </View>
       )

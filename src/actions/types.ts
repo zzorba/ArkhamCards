@@ -445,6 +445,7 @@ export const TIC = 'tic';
 export const RTTIC = 'rttic';
 export const EOE = 'eoe';
 export const TSK = 'tskc';
+export const FHV = 'fhv';
 export const GOB = 'gob';
 export const FOF = 'fof';
 export const STANDALONE = 'standalone';
@@ -473,6 +474,7 @@ export type CampaignCycleCode =
   typeof TIC |
   typeof EOE |
   typeof TSK |
+  typeof FHV |
   typeof GOB |
   typeof FOF |
   typeof STANDALONE |
@@ -501,6 +503,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TIC,
   EOE,
   TSK,
+  // FHV,
 ];
 export const STANDALONE_CAMPAGINS: CampaignCycleCode[] = [
   GOB,
@@ -533,6 +536,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TIC,
   EOE,
   TSK,
+  FHV,
   GOB,
   FOF,
   ALICE_IN_WONDERLAND,
@@ -545,7 +549,7 @@ export const GUIDED_CAMPAIGNS = new Set([
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
-export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([HEART_OF_DARKNESS]);
+export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([HEART_OF_DARKNESS, FHV]);
 
 export interface CustomCampaignLog {
   sections?: string[];

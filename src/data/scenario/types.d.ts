@@ -321,9 +321,18 @@ export interface MapLabel {
 export interface CampaignLogSectionDefinition {
   id: string;
   title: string;
-  type?: "investigator_count" | "count" | "supplies" | "header" | "partner" | "scarlet_keys" | "relationship";
+  type?:
+    | "investigator_count"
+    | "count"
+    | "supplies"
+    | "header"
+    | "partner"
+    | "scarlet_keys"
+    | "relationship"
+    | "checklist";
   hidden?: boolean;
   partners?: Partner[];
+  checklist?: ChecklistItem[];
   calendar?: CalendarEntry[];
   scarlet_keys?: ScarletKey[];
 }
@@ -337,6 +346,11 @@ export interface Partner {
   img_offset?: "left" | "right";
   resolute_health?: number;
   resolute_sanity?: number;
+}
+export interface ChecklistItem {
+  id: string;
+  name: string;
+  description?: string;
 }
 export interface CalendarEntry {
   symbol: string;
@@ -1162,6 +1176,7 @@ export interface PlayScenarioInput {
   campaign_log?: BinaryConditionalChoice[];
   chaos_bag_branches?: string[];
   fixed_resolution?: string;
+  single_resolution?: string;
   no_resolutions?: boolean;
 }
 export interface TextBoxInput {

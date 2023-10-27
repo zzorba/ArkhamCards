@@ -18,13 +18,14 @@ import { showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '@compone
 import useSingleCard from '@components/card/useSingleCard';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import CampaignLogPartnersComponent from './CampaignLogPartnersComponent';
-import { CalendarEntry, Partner, ScarletKey } from '@data/scenario/types';
+import { CalendarEntry, ChecklistItem, Partner, ScarletKey } from '@data/scenario/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignLogScarletKeysComponent from './CampaignLogScarletKeysComponent';
 import CampaignLogCalendarComponent from './CampaignLogCalendarComponent';
 import { MAX_WIDTH } from '@styles/sizes';
 import AppIcon from '@icons/AppIcon';
+import CampaignLogChecklistComponent from './CampaignLogChecklistComponent';
 
 interface Props {
   componentId: string;
@@ -123,7 +124,8 @@ export default function CampaignLogComponent({
   const renderLogEntrySectionContent = useCallback((
     id: string,
     title: string,
-    type?: 'investigator_count' | 'count' | 'supplies' | 'header' | 'partner' | 'scarlet_keys' | 'relationship',
+    type?: 'investigator_count' | 'count' | 'checklist' | 'supplies' | 'header' | 'partner' | 'scarlet_keys' | 'relationship',
+    checklist?: ChecklistItem[],
     partners?: Partner[],
     calendar?: CalendarEntry[],
     keys?: ScarletKey[]
@@ -205,6 +207,19 @@ export default function CampaignLogComponent({
           </View>
         );
       }
+      case 'checklist':
+        return (
+          <View style={[space.paddingSideS, space.paddingBottomM]}>
+            <DeckBubbleHeader inverted title={title} />
+            { !!checklist && (
+              <CampaignLogChecklistComponent
+                sectionId={id}
+                checklist={checklist}
+                campaignLog={campaignLog}
+              />
+            )}
+          </View>
+        );
       case 'scarlet_keys':
         return (
           <View style={[space.paddingSideS, space.paddingBottomM]}>
@@ -220,7 +235,7 @@ export default function CampaignLogComponent({
       case 'relationship':
       default: {
         const section = campaignLog.sections[id];
-        if (CARD_REGEX.test(id)) {
+        if (CARD_REGEX.test(id) || type === 'relationship') {
           return (
             <View style={[space.paddingTopS, space.paddingSideS]}>
               <CardSection
@@ -313,7 +328,7 @@ export default function CampaignLogComponent({
         }
         return (
           <View key={log.id}>
-            { renderLogEntrySectionContent(log.id, log.title, log.type, log.partners, log.calendar, log.scarlet_keys) }
+            { renderLogEntrySectionContent(log.id, log.title, log.type, log.checklist, log.partners, log.calendar, log.scarlet_keys) }
           </View>
         );
       }) }

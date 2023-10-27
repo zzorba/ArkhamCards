@@ -57,6 +57,9 @@ const ALL_ICONS = new Set([
   'seal_c',
   'seal_d',
   'seal_e',
+  'day',
+  'night',
+  'codex',
 ]);
 
 function CenterIconWrapper({ width, children }: { width: number; children: React.ReactNode }) {

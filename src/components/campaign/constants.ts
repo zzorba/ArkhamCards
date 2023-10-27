@@ -33,6 +33,7 @@ import {
   CYCLOPEAN_FOUNDATIONS,
   HEART_OF_DARKNESS,
   RTTIC,
+  FHV,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
@@ -114,6 +115,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case TIC: return t`The Innsmouth Conspiracy`;
     case EOE: return t`Edge of the Earth`;
     case TSK: return t`The Scarlet Keys`;
+    case FHV: return t`The Feast of Hemlock Vale`;
     case CUSTOM: return null;
     case STANDALONE: return t`Standalone`;
     case DARK_MATTER: return t`Dark Matter`;
@@ -393,6 +395,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Fatal Mirage`, code: 'fatal_mirage_3', pack_code: 'eoec' },
     ];
     case TSK:
+    case FHV:
       return [
         { name: t`Prologue: Rain and Riddles`, code: 'riddles_and_rain', pack_code: 'tskc' },
         { name: t`Dead Heat`, code: 'marrakesh', pack_code: 'tskc' },
@@ -420,6 +423,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
         { name: t`Starfall`, code: 'starfall', pack_code: 'zdm' },
         { name: t`Epilogue`, code: 'dm_epilogue', pack_code: 'zdm', interlude: true },
       ];
+
     case CYCLOPEAN_FOUNDATIONS:
       return [
         { name: t`Prologue`, code: 'cf_prologue', pack_code: 'zcf', interlude: true },
@@ -542,6 +546,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case EOE:
       return colors.campaign.eoe;
     case GOB:
+    case FHV:
       return colors.campaign.gob;
   }
 }
@@ -685,6 +690,7 @@ export function getCampaignLog(
         ],
       };
     case TSK:
+    case FHV:
       return {
         sections: [
           t`Campaign Notes`,
@@ -926,6 +932,7 @@ export function getChaosBag(
     case EOE:
       return EOE_BAG[difficulty];
     case TSK:
+    case FHV:
       return TSK_BAG[difficulty];
     case DARK_MATTER:
       return DARK_MATTER_BAG[difficulty];
