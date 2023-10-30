@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2023-09-09 10:03+0300\n"
+"PO-Revision-Date: 2023-10-30 14:48+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -13,7 +13,7 @@ msgstr ""
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
 "x-poedit-basepath: .\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -2239,19 +2239,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -4472,16 +4472,16 @@ msgid "During the first [willpower] test each investigator performs each round, 
 msgstr "В первой проверке [willpower], которую каждый сыщик проходит в каждом раунде, у этого сыщика +1 [willpower]."
 
 msgid "During the first [willpower] test each investigator performs each round, they get -1 [willpower]."
-msgstr "В первой проверке [intellect], которую каждый сыщик проходит в каждом раунде, у этого сыщика –1 [intellect]."
+msgstr "В первой проверке [willpower], которую каждый сыщик проходит в каждом раунде, у этого сыщика –1 [willpower]."
 
 msgid "The Lovers · VI"
 msgstr "Влюблённые · VI"
 
 msgid "When the game begins, each investigator searches their deck for an Ally asset, adds it to their hand, and shuffles their deck."
-msgstr "В начале партии каждый сыщик находит в своей колоде актив-[[союзника]], добавляет его на руку и перемешивает свою колоду."
+msgstr "В начале партии каждый сыщик находит в своей колоде актив-союзника, добавляет его на руку и перемешивает свою колоду."
 
 msgid "When the game begins, each investigator searches their deck for an Ally asset, removes it from the game, and shuffles their deck."
-msgstr "В начале партии каждый сыщик находит в своей колоде актив-[[союзника]], удаляет его из игры и перемешивает свою колоду."
+msgstr "В начале партии каждый сыщик находит в своей колоде актив-союзника, удаляет его из игры и перемешивает свою колоду."
 
 msgid "The Chariot · VII"
 msgstr "Колесница · VII"
@@ -4559,10 +4559,10 @@ msgid "The Devil · XV"
 msgstr "Дьявол · XV"
 
 msgid "Each investigator has 1 additional slot of a type chosen by that investigattor when the game begins."
-msgstr "У каждого сыщика есть 1 дополнительный слот по выбору. <i>(Выбрать слот следует в начале партии).</i>"
+msgstr "У каждого сыщика есть 1 дополнительный слот по выбору. (Выбрать слот следует в начале партии)."
 
 msgid "Each investigator has 3 fewer slots, each of a different type, chosen by that investigator when the game begins."
-msgstr "У каждого сыщика меньше на 3 слота разных типов по выбору. <i>(Выбрать слоты следует в начале партии).</i>"
+msgstr "У каждого сыщика меньше на 3 слота разных типов по выбору. (Выбрать слоты следует в начале партии)."
 
 msgid "The Tower · XVI"
 msgstr "Башня · XVI"
