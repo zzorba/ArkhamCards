@@ -291,7 +291,7 @@ function useParsedDeckHelper(
     } else {
       dirtyRef.current = true;
     }
-  }, [cards, deck, listSeperator, deckEdits, visible], Platform.OS === 'ios' ? 200 : 500);
+  }, [cards, deck, listSeperator, deckEdits, visible], 200);
   return {
     deck: deck?.deck,
     deckT: deck,

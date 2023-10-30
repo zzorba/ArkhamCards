@@ -14,12 +14,13 @@ interface Props {
   card: Card;
   onUpgradePress?: (card: Card, mode: 'extra' | undefined) => void;
   deckId: DeckId;
+  min: number | undefined;
   limit: number;
   mode: 'side' | 'extra' | 'ignore' | undefined;
   editable: boolean;
 }
 
-export default function CardUpgradeButton({ onUpgradePress, editable, card, deckId, limit, mode }: Props) {
+export default function CardUpgradeButton({ min, onUpgradePress, editable, card, deckId, limit, mode }: Props) {
   const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => onUpgradePress && onUpgradePress(card, mode === 'extra' ? 'extra' : undefined), [onUpgradePress, card, mode]);
   return (
@@ -40,6 +41,7 @@ export default function CardUpgradeButton({ onUpgradePress, editable, card, deck
       <DeckQuantityComponent
         code={card.code}
         deckId={deckId}
+        min={min}
         limit={limit}
         mode={mode}
         editable={editable}

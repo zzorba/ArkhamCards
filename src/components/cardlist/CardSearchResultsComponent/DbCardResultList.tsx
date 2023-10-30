@@ -41,7 +41,7 @@ import space, { m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { useLiveCustomizations, useSimpleDeckEdits } from '@components/deck/hooks';
+import { ParsedDeckResults, useLiveCustomizations, useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
 import { useCards, useEffectUpdate, useSettingValue, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
@@ -58,7 +58,7 @@ import { getExtraDeckSlots } from '@lib/parseDeck';
 
 interface Props {
   componentId: string;
-  deckId?: DeckId;
+  parsedDeck?: ParsedDeckResults;
   currentDeckOnly?: boolean;
   query?: Brackets;
   filterQuery?: Brackets;
@@ -879,7 +879,7 @@ function itemHeight(item: Item, fontScale: number, headerHeight: number, lang: s
 
 export default function({
   componentId,
-  deckId,
+  parsedDeck,
   currentDeckOnly,
   query,
   filterQuery,
@@ -905,11 +905,12 @@ export default function({
   filterId,
 }: Props) {
   const { db } = useContext(DatabaseContext);
-  const deck = useDeck(deckId);
-  const deckEdits = useSimpleDeckEdits(deckId);
+  const deck = parsedDeck?.deckT;
+  const deckEdits = parsedDeck?.deckEdits;
+  const deckId = deck?.id;
   const customizations = useLiveCustomizations(deck, deckEdits);
   const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
-  const tabooSetOverride = deckId !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
+  const tabooSetOverride = parsedDeck !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
   const singleCardView = useSettingValue('single_card');
@@ -1019,43 +1020,8 @@ export default function({
       customizations
     );
   }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, specialMode, cardPressed]);
-  const deckLimits: ControlType[] = useMemo(() => {
-    const mode = specialMode === 'side' || specialMode === 'extra' ? specialMode : undefined;
-    return deckId ? [
-      {
-        type: 'deck',
-        deckId,
-        limit: 0,
-        mode,
-      },
-      {
-        type: 'deck',
-        deckId,
-        limit: 1,
-        mode,
-      },
-      {
-        type: 'deck',
-        deckId,
-        limit: 2,
-        mode,
-      },
-      {
-        type: 'deck',
-        deckId,
-        limit: 3,
-        mode,
-      },
-      {
-        type: 'deck',
-        deckId,
-        limit: 4,
-        mode,
-      },
-    ] : [];
-  }, [deckId, specialMode]);
   const { lang } = useContext(LanguageContext);
-
+  const lockedPermanents = parsedDeck?.parsedDeck?.lockedPermanents;
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {
       case 'button':
@@ -1073,7 +1039,6 @@ export default function({
           return renderCard(card, item.id, cardOnPressId);
         }
         const deck_limit: number = card.collectionDeckLimit(packInCollection, ignore_collection);
-        const control = deck_limit < deckLimits.length ? deckLimits[deck_limit] : undefined;
         return (
           <CardSearchResult
             key={item.id}
@@ -1081,9 +1046,10 @@ export default function({
             onPressId={cardOnPressId}
             id={item.id}
             backgroundColor="transparent"
-            control={deckId !== undefined ? (control || {
+            control={deckId !== undefined ? ({
               type: 'deck',
               deckId,
+              min: lockedPermanents?.[card.code],
               limit: deck_limit,
             }) : undefined}
           />
@@ -1133,7 +1099,7 @@ export default function({
       default:
         return <View />;
     }
-  }, [headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, deckLimits, borderStyle]);
+  }, [lockedPermanents, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, borderStyle]);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);
   }, [fontScale, headerHeight, lang]);

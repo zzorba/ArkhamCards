@@ -76,7 +76,8 @@ function DeckChecklistView({
 }: Props) {
   const { backgroundStyle, colors, typography, fontScale, width } = useContext(StyleContext);
   const deck = useCampaignDeck(id, campaignId);
-  const { deckEdits } = useParsedDeck(id, componentId);
+  const parsedDeck = useParsedDeck(id, componentId);
+  const deckEdits = parsedDeck.deckEdits;
   const dispatch = useDispatch();
   const sortSelector = useCallback((state: AppState) => getCardSort(state, 'checklist', false), []);
   const sorts = useSelector(sortSelector);
@@ -135,7 +136,7 @@ function DeckChecklistView({
       <KeepAwake />
       <DbCardResultList
         componentId={componentId}
-        deckId={id}
+        parsedDeck={parsedDeck}
         filterId={id.uuid}
         investigator={investigator}
         sorts={sorts}

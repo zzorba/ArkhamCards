@@ -274,6 +274,8 @@ export interface ParsedDeck {
   sideCards: SplitCards;
   extraCards?: SplitCards;
 
+  lockedPermanents: Slots;
+
   ignoreDeckLimitSlots: Slots;
   changes?: DeckChanges;
   problem?: DeckProblem;

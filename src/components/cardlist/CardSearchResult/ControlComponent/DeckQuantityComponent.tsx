@@ -16,6 +16,7 @@ import StyleContext from '@styles/StyleContext';
 interface DeckCardQuantityProps {
   deckId: DeckId;
   code: string;
+  min: number | undefined;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore';
   showZeroCount?: boolean;
@@ -23,7 +24,7 @@ interface DeckCardQuantityProps {
   editable?: boolean;
 }
 
-function DeckQuantityComponent({ deckId, editable, code, limit: propsLimit, showZeroCount, forceBig, mode }: DeckCardQuantityProps) {
+function DeckQuantityComponent({ min, deckId, editable, code, limit: propsLimit, showZeroCount, forceBig, mode }: DeckCardQuantityProps) {
   const limit = Math.min(propsLimit, mode === 'extra' ? 1 : propsLimit);
   const { colors } = useContext(StyleContext);
   const [actualCount, ignoreCount] = useDeckSlotCount(deckId, code, mode);
@@ -76,6 +77,7 @@ function DeckQuantityComponent({ deckId, editable, code, limit: propsLimit, show
       ) }
       <CardQuantityComponent
         code={code}
+        min={min}
         limit={limit}
         countChanged={countChanged}
         count={count || 0}

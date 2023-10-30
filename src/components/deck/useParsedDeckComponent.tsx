@@ -362,8 +362,8 @@ export default function useParsedDeckComponent({
   const ignore_collection = useSettingValue('ignore_collection');
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigatorFront = parsedDeck?.investigatorFront;
-
   const slots = parsedDeck?.slots;
+  const lockedPermanents = parsedDeck?.lockedPermanents;
   const investigatorBack = parsedDeck?.investigatorBack;
   const [uniqueBondedCards, bondedCounts, bondedCardsCount] = useMemo((): [Card[], Slots, number] => {
     if (!slots) {
@@ -590,8 +590,21 @@ export default function useParsedDeckComponent({
     }
     currentIndex = sideIndex;
     setData(newData);
-  }, [customizations, requiredCards, theLimitSlotCount, ignore_collection, limitedSlots, parsedDeck, meta, cards,
-    showDraftCards, showDraftExtraCards, showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots, cardsByName, uniqueBondedCards, bondedCardsCount, inCollection, editable, visible]);
+  }, [
+    customizations,
+    requiredCards,
+    theLimitSlotCount,
+    ignore_collection,
+    limitedSlots,
+    uniqueBondedCards,
+    bondedCardsCount,
+    inCollection,
+    parsedDeck, meta, cards,
+    showDraftCards, showDraftExtraCards, showEditCards, showEditSpecial, showEditSide, setData, toggleLimitedSlots,
+    cardsByName,
+    editable,
+    visible,
+  ]);
 
   const faction = parsedDeck?.investigator.factionCode() || 'neutral';
   const renderSectionHeader = useCallback((section: CardSection) => {
@@ -640,11 +653,12 @@ export default function useParsedDeckComponent({
       deckId: deckId,
       mode: countMode,
       editable: !!editable,
+      min: lockedPermanents?.[card.code],
       limit: card.collectionDeckLimit(inCollection, ignore_collection),
       onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : (undefined),
       customizable: !!editable && item.customizable,
     };
-  }, [mode, deckId, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
+  }, [mode, lockedPermanents, deckId, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
   const singleCardView = useSettingValue('single_card');
   const { colors } = useContext(StyleContext);
   const showSwipeCard = useCallback((id: string, card: Card) => {

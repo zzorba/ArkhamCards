@@ -31,7 +31,7 @@ import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import { DeckHistoryProps } from '@components/deck/DeckHistoryView';
 import { EditSpecialCardsProps } from '@components/deck/EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
-import DeckNavFooter from '@components/deck/DeckNavFooter';
+import DeckNavFooter, { PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
 import { AppState } from '@reducers';
 import space, { xs, s } from '@styles/space';
 import COLORS from '@styles/colors';
@@ -1496,8 +1496,8 @@ function DeckDetailView({
               />
             ) }
             { mode !== 'view' && (
-              <DeckNavFooter
-                deckId={id}
+              <PreLoadedDeckNavFooter
+                parsedDeckObj={parsedDeckObj}
                 componentId={componentId}
                 control="fab"
                 onPress={saveEdits}

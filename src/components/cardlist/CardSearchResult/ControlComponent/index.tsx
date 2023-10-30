@@ -15,12 +15,14 @@ import { DiscountComponent } from './DiscountComponent';
 export type ControlType = {
   type: 'deck';
   deckId: DeckId;
+  min: number | undefined;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore';
 } | {
   type: 'quantity';
   count: number;
   countChanged: EditSlotsActions;
+  min: number | undefined;
   limit: number;
   showZeroCount: boolean;
   reversed?: boolean;
@@ -32,6 +34,7 @@ export type ControlType = {
 } | {
   type: 'upgrade';
   deckId: DeckId;
+  min: number | undefined;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore'
   editable: boolean;
@@ -68,7 +71,16 @@ interface Props {
 export function ControlComponent({ card, control, handleCardPress }: Props) {
   switch (control.type) {
     case 'deck':
-      return <DeckQuantityComponent deckId={control.deckId} limit={control.limit} code={card.code} mode={control.mode} editable />;
+      return (
+        <DeckQuantityComponent
+          deckId={control.deckId}
+          min={control.min}
+          limit={control.limit}
+          code={card.code}
+          mode={control.mode}
+          editable
+        />
+      );
     case 'shuffle':
       return (
         <View style={{ flexDirection: 'row' }}>
@@ -86,6 +98,7 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
           onUpgradePress={control.customizable ? handleCardPress : control.onUpgradePress}
           card={card}
           deckId={control.deckId}
+          min={control.min}
           editable={control.editable}
           limit={control.limit}
           mode={control.mode}
@@ -106,6 +119,7 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
           code={card.code}
           count={control.count}
           countChanged={control.countChanged}
+          min={control.min}
           limit={control.limit}
           showZeroCount={control.showZeroCount}
           reversed={control.reversed}

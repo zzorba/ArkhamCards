@@ -26,13 +26,13 @@ import StyleContext from '@styles/StyleContext';
 import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards, useSettingValue } from '@components/core/hooks';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { where } from '@data/sqlite/query';
-import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
+import DeckNavFooter, { FOOTER_HEIGHT, PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
 import { Customizations, DeckId } from '@actions/types';
 import { CardInvestigatorProps } from './CardInvestigatorsView';
 import CardCustomizationOptions from './CardDetailView/CardCustomizationOptions';
-import { useCardCustomizations, useSimpleDeckEdits } from '@components/deck/hooks';
+import { useCardCustomizations, useParsedDeck, useSimpleDeckEdits } from '@components/deck/hooks';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
@@ -148,7 +148,8 @@ function DbCardDetailSwipeView(props: Props) {
   const { componentId, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
   const { listSeperator } = useContext(LanguageContext);
   const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
-  const deckEdits = useSimpleDeckEdits(deckId);
+  const parsedDeck = useParsedDeck(deckId, componentId);
+  const deckEdits = parsedDeck?.deckEdits;
   const { backgroundStyle, width, height } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
   const tabooSetSelector: (state: AppState, tabooSetOverride?: number) => number | undefined = useMemo(makeTabooSetSelector, []);
@@ -289,7 +290,7 @@ function DbCardDetailSwipeView(props: Props) {
   const showCardSpoiler = useCallback((card: Card) => {
     return !!(showAllSpoilers || showSpoilers[card.pack_code] || spoilers[card.code]);
   }, [showSpoilers, spoilers, showAllSpoilers]);
-
+  const lockedPermanents = parsedDeck?.parsedDeck?.lockedPermanents;
   const deckCountControls = useMemo(() => {
     if (deckId === undefined || !currentCard) {
       return null;
@@ -302,12 +303,13 @@ function DbCardDetailSwipeView(props: Props) {
       <FloatingDeckQuantityComponent
         code={currentCard.code}
         deckId={deckId}
+        min={lockedPermanents?.[currentCard.code]}
         limit={deck_limit}
         mode={(currentControl === 'side' || currentControl === 'extra' || currentControl === 'ignore' || currentControl === 'checklist') ? currentControl : undefined}
         editable={editable}
       />
     );
-  }, [deckId, editable, currentCard, currentControl, packInCollection, ignore_collection]);
+  }, [lockedPermanents, deckId, editable, currentCard, currentControl, packInCollection, ignore_collection]);
   const mode = deckEdits?.mode;
   const slots = deckEdits?.slots;
   const renderCard = useCallback((
@@ -360,12 +362,12 @@ function DbCardDetailSwipeView(props: Props) {
         shouldOptimizeUpdates
         apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
       />
-      { deckId !== undefined && (
+      { !!parsedDeck && (
         <>
-          <DeckNavFooter
+          <PreLoadedDeckNavFooter
             mode={currentControl === 'extra' ? 'extra' : undefined}
             componentId={componentId}
-            deckId={deckId}
+            parsedDeckObj={parsedDeck}
             control="counts"
             onPress={backPressed}
           />

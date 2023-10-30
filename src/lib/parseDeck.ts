@@ -10,6 +10,7 @@ import {
   range,
   groupBy,
   partition,
+  pickBy,
   pullAt,
   sortBy,
   sum,
@@ -705,6 +706,7 @@ function getDeckChanges(
   cards: CardsMap,
   validation: DeckValidation,
   deck: Deck,
+  meta: DeckMeta,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
   listSeperator: string,
@@ -766,7 +768,7 @@ function getDeckChanges(
       }
     });
   if (previous_investigator_code === PARALLEL_JIM_CODE) {
-    const extraSlots = getExtraDeckSlots(deck.meta ?? {});
+    const extraSlots = getExtraDeckSlots(meta);
     const previousExtraSlots = getExtraDeckSlots(previousDeck.meta ?? {});
     forEach(
       uniq(union(keys(extraSlots), keys(previousExtraSlots))),
@@ -1053,7 +1055,11 @@ export function parseDeck(
     extraCards = flatMap(
       sortBy(
         sortBy(
-          filter(uniq([...keys(extraDeckSlots), ...keys(getExtraDeckSlots(originalDeck?.meta ?? {}))]), id => !!cards[id]),
+          filter(uniq([
+            ...keys(extraDeckSlots),
+            ...keys(getExtraDeckSlots(originalDeck?.meta ?? {})),
+            ...keys(getExtraDeckSlots(previousDeck?.meta ?? {})),
+          ]), id => !!cards[id]),
           id => {
             const card = cards[id];
             return (card && card.xp) || 0;
@@ -1084,7 +1090,11 @@ export function parseDeck(
   const cardIds = flatMap(
     sortBy(
       sortBy(
-        filter(uniq([...keys(slots), ...keys(originalDeck?.slots)]), id => !!cards[id]),
+        filter(uniq([
+          ...keys(slots),
+          ...keys(originalDeck?.slots),
+          ...keys(previousDeck?.slots),
+        ]), id => !!cards[id]),
         id => {
           const card = cards[id];
           return (card && card.xp) || 0;
@@ -1173,6 +1183,7 @@ export function parseDeck(
     cards,
     validation,
     originalDeck,
+    meta,
     slots,
     ignoreDeckLimitSlots,
     listSeperator,
@@ -1194,6 +1205,20 @@ export function parseDeck(
   forEach(SLOTS, slot => {
     slotCounts[slot] = slotCount(cardIds, cards, slot);
   });
+  const lockedPermanents: Slots = {};
+  if (previousDeck) {
+    forEach(
+      pickBy(previousDeck?.slots ?? {}, (quantity, code) => {
+        return cards[code]?.permanent && !cards[code]?.exile;
+      }),
+      (quantity, code) => {
+        quantity -= (changes?.exiled[code] ?? 0);
+        if (quantity > 0) {
+          lockedPermanents[code] = quantity;
+        }
+      }
+    );
+  }
   return {
     id: originalDeck ? getDeckId(originalDeck) : undefined,
     investigator,
@@ -1229,5 +1254,6 @@ export function parseDeck(
       !!option.limit && !find(option.trait || [], trait => trait === 'Covenant')
     ),
     customContent: !!find(normalCards, c => c.custom) || !!find(specialCards, c => c.custom),
+    lockedPermanents,
   };
 }

@@ -44,6 +44,7 @@ function EditAssignedWeaknessComponent({ componentId, weaknessSet, updateAssigne
           type: 'quantity',
           count,
           limit,
+          min: 0,
           countChanged: editAssignedCards,
           showZeroCount: true,
           reversed: true,

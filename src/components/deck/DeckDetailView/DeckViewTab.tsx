@@ -191,7 +191,8 @@ export default function DeckViewTab(props: Props) {
         />
       </View>
     );
-  }, [investigator, deck, tabooSetId, tabooSet, showTaboo, tabooOpen, editable, deckEdits?.meta, parsedDeck?.changes,
+  }, [
+    investigator, deck, tabooSetId, tabooSet, showTaboo, tabooOpen, editable, deckEdits?.meta, parsedDeck?.changes,
     setMeta, setParallel, setTabooSet, renderXpButton, xpLabel,
   ]);
 

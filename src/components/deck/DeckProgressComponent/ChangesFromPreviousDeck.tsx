@@ -88,7 +88,6 @@ export default function ChangesFromPreviousDeck({
       }
     }), card => card.card.name)
   }, [changes?.specialDiscounts, cards])
-
   const allCards = useMemo(() => {
     if (!changes) {
       return [];

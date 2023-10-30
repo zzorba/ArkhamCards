@@ -15,6 +15,7 @@ import { setDeckChecklistCard } from '@components/deck/actions';
 interface Props {
   deckId: DeckId;
   code: string;
+  min: number | undefined;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore' | 'checklist';
   editable?: boolean
@@ -39,7 +40,7 @@ function ChecklistButton({ deckId, code }: { deckId: DeckId; code: string }) {
   );
 }
 
-export default function FloatingDeckQuantityComponent({ deckId, editable, code, limit, mode }: Props) {
+export default function FloatingDeckQuantityComponent({ deckId, editable, code, limit, min, mode }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[styles.fab, shadow.large, { backgroundColor: colors.D20 }]}>
@@ -47,6 +48,7 @@ export default function FloatingDeckQuantityComponent({ deckId, editable, code, 
       <DeckQuantityComponent
         deckId={deckId}
         code={code}
+        min={min}
         limit={limit}
         mode={mode !== 'checklist' ? mode : undefined}
         showZeroCount

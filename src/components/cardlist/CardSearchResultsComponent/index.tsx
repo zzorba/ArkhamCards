@@ -26,7 +26,7 @@ import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
-import DeckNavFooter from '@components/deck/DeckNavFooter';
+import DeckNavFooter, { PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
 import ActionButton from 'react-native-action-button';
 import AppIcon from '@icons/AppIcon';
 import { useFilterButton } from '../hooks';
@@ -34,6 +34,7 @@ import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { useSettingValue } from '@components/core/hooks';
+import { useParsedDeck } from '@components/deck/hooks';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -383,6 +384,7 @@ export default function({
     toggleSearchText,
     toggleSearchBack,
   });
+  const parsedDeck = useParsedDeck(deckId, componentId);
   return (
     <CollapsibleSearchBox
       prompt={t`Search for a card`}
@@ -397,7 +399,7 @@ export default function({
         <>
           <DbCardResultList
             componentId={componentId}
-            deckId={deckId}
+            parsedDeck={parsedDeck}
             filterId={filterId}
             query={query}
             filters={filters}
@@ -419,11 +421,11 @@ export default function({
             initialSort={initialSort}
             footerPadding={deckId !== undefined ? DeckNavFooter.height : undefined}
           />
-          { deckId !== undefined && (
+          { !!parsedDeck && (
             <>
-              <DeckNavFooter
-                deckId={deckId}
+              <PreLoadedDeckNavFooter
                 componentId={componentId}
+                parsedDeckObj={parsedDeck}
                 control="fab"
                 onPress={backPressed}
                 mode={mode === 'extra' ? 'extra' : undefined}

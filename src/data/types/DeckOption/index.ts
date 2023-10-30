@@ -32,7 +32,8 @@ export function localizeDeckOptionError(error?: string): undefined | string {
     'You cannot have more than 5 level 0 Rogue cards': t`You cannot have more than 5 level 0 Rogue cards`,
     'You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox traited.': t`You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox traited.`,
     'You must have at least 7 cards from each class': t`You must have at least 7 cards from each class`,
-    'More off-class card than the number of weaknesses in your deck and bonded cards.': t`More off-class card than the number of weaknesses in your deck and bonded cards.`
+    'More off-class card than the number of weaknesses in your deck and bonded cards.': t`More off-class card than the number of weaknesses in your deck and bonded cards.`,
+    'No permanents except story and signature permanents': t`No permanents except story and signature permanents`,
   };
   return LOCALIZED_OPTIONS[error] || error;
 }

@@ -106,6 +106,7 @@ function StoryCardRow({ card, countChanged, count, editable, description }: {
       type: 'quantity',
       countChanged,
       count,
+      min: 0,
       limit: card.deck_limit || 1,
       showZeroCount: true,
     }

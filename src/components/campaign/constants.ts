@@ -494,6 +494,7 @@ export function campaignNames() {
     tic: t`The Innsmouth Conspiracy`,
     eoe: t`Edge of the Earth`,
     tskc: t`The Scarlet Keys`,
+    fhv: t`The Feast of Hemlock Vale`,
     gob: t`Guardians of the Abyss`,
     fof: t`Fortune and Folly`,
     zdm: t`Dark Matter`,

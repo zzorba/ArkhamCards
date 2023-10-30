@@ -183,7 +183,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
       </>
     );
   }, [weaknesses, deckEdits, showDrawWeakness, editWeaknessPressed, cardPressed]);
-
+  const lockedPermanents = parsedDeck?.lockedPermanents;
   const investigatorSection = useMemo(() => {
     if (!deckEdits) {
       return null;
@@ -200,13 +200,14 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
             control={{
               type: 'deck',
               deckId: id,
+              min: lockedPermanents?.[card.code],
               limit: card.deck_limit || 1,
             }}
           />
         )) }
       </>
     );
-  }, [id, cardPressed, deckEdits, requiredCards, requiredCardsLoading]);
+  }, [id, lockedPermanents, cardPressed, deckEdits, requiredCards, requiredCardsLoading]);
 
   const storyCards = useMemo(() => {
     if (!deckEdits) {
