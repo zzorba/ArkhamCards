@@ -282,6 +282,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'parallel':
       case 'otr':
       case 'on_the_road_again':
+      case 'ptr':
+      case 'path_of_the_righteous':
         return this.cardIcon('parallel', size, color);
       case 'cotr':
       case 'curse_of_the_rougarou':

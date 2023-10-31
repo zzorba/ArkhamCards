@@ -5677,6 +5677,18 @@ msgstr ""
 msgid "Edit Spirit Deck"
 msgstr ""
 
+msgid "No permanents except story and signature permanents"
+msgstr ""
+
+msgid "You cannot have more than 5 Survivor cards."
+msgstr ""
+
+msgid "You cannot have more than 5 Mystic cards."
+msgstr ""
+
+msgid "The Feast of Hemlock Vale"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""

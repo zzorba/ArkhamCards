@@ -34,6 +34,8 @@ export function localizeDeckOptionError(error?: string): undefined | string {
     'You must have at least 7 cards from each class': t`You must have at least 7 cards from each class`,
     'More off-class card than the number of weaknesses in your deck and bonded cards.': t`More off-class card than the number of weaknesses in your deck and bonded cards.`,
     'No permanents except story and signature permanents': t`No permanents except story and signature permanents`,
+    'You cannot have more than 5 Survivor cards.': t`You cannot have more than 5 Survivor cards.`,
+    'You cannot have more than 5 Mystic cards.': t`You cannot have more than 5 Mystic cards.`,
   };
   return LOCALIZED_OPTIONS[error] || error;
 }
