@@ -17,6 +17,9 @@ PODS:
     - AppCenter/Core
   - AppCenterReactNativeShared (5.0.0):
     - AppCenter/Core (= 5.0.3)
+  - BlastedImage (0.0.12):
+    - React-Core
+    - SDWebImage
   - boost (1.76.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.72.6)
@@ -99,18 +102,6 @@ PODS:
   - HMSegmentedControl (1.5.6)
   - leveldb-library (1.22.2)
   - libevent (2.1.12)
-  - libwebp (1.3.2):
-    - libwebp/demux (= 1.3.2)
-    - libwebp/mux (= 1.3.2)
-    - libwebp/sharpyuv (= 1.3.2)
-    - libwebp/webp (= 1.3.2)
-  - libwebp/demux (1.3.2):
-    - libwebp/webp
-  - libwebp/mux (1.3.2):
-    - libwebp/demux
-  - libwebp/sharpyuv (1.3.2)
-  - libwebp/webp (1.3.2):
-    - libwebp/sharpyuv
   - lottie-ios (4.2.0)
   - lottie-react-native (6.0.1):
     - lottie-ios (~> 4.2.0)
@@ -574,10 +565,6 @@ PODS:
     - React-Core
   - RNDeviceInfo (10.11.0):
     - React-Core
-  - RNFastImage (8.6.3):
-    - React-Core
-    - SDWebImage (~> 5.11.1)
-    - SDWebImageWebPCoder (~> 0.8.4)
   - RNFBApp (18.6.0):
     - Firebase/CoreOnly (= 10.15.0)
     - React-Core
@@ -647,9 +634,6 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
-  - SDWebImageWebPCoder (0.8.5):
-    - libwebp (~> 1.0)
-    - SDWebImage/Core (~> 5.10)
   - SocketRocket (0.6.1)
   - SwiftAudioEx (1.0.0)
   - Yoga (1.14.0)
@@ -657,6 +641,7 @@ PODS:
 DEPENDENCIES:
   - appcenter-core (from `../node_modules/appcenter`)
   - appcenter-crashes (from `../node_modules/appcenter-crashes`)
+  - BlastedImage (from `../node_modules/react-native-blasted-image`)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -714,7 +699,6 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
-  - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBDatabase (from `../node_modules/@react-native-firebase/database`)"
@@ -756,12 +740,10 @@ SPEC REPOS:
     - HMSegmentedControl
     - leveldb-library
     - libevent
-    - libwebp
     - lottie-ios
     - PromisesObjC
     - RecaptchaInterop
     - SDWebImage
-    - SDWebImageWebPCoder
     - SocketRocket
     - SwiftAudioEx
 
@@ -770,6 +752,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/appcenter"
   appcenter-crashes:
     :path: "../node_modules/appcenter-crashes"
+  BlastedImage:
+    :path: "../node_modules/react-native-blasted-image"
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   DoubleConversion:
@@ -881,8 +865,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-clipboard/clipboard"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
-  RNFastImage:
-    :path: "../node_modules/react-native-fast-image"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
@@ -922,6 +904,7 @@ SPEC CHECKSUMS:
   appcenter-core: e192ea8b373bebd3e44998882b43311078bd7dda
   appcenter-crashes: 266063788bcebd553e621344a54286395a8e2010
   AppCenterReactNativeShared: 01df23849b1c3c6eb8c4049f54322635650e98f0
+  BlastedImage: f18fb74ad7fb835d4750d85862a15fcbf43aa5b8
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: 748c0ef74f2bf4b36cfcccf37916806940a64c32
@@ -947,7 +930,6 @@ SPEC CHECKSUMS:
   HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
   lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   lottie-react-native: 646955b3212c448d59cf1895a0cb485a0a7be3cf
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
@@ -1000,7 +982,6 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: c913ede1fa163a71cea118ed4670bbaaa4b511bb
   RNCClipboard: d77213bfa269013bf4b857b7a9ca37ee062d8ef1
   RNDeviceInfo: bf8a32acbcb875f568217285d1793b0e8588c974
-  RNFastImage: 8168abae295957249d1a272daf219f0001c0add2
   RNFBApp: 29a81c55c97887851fe2d8180293e0c618523d02
   RNFBAuth: d7982b940ba7cbb90d30b94f5512493314711c97
   RNFBDatabase: a40810d20ce4347d7cd9c5230fe5b1d61beb3476
@@ -1017,7 +998,6 @@ SPEC CHECKSUMS:
   RNSVG: d00c8f91c3cbf6d476451313a18f04d220d4f396
   RNVectorIcons: c5452003f0231f8604718da523a6bd0dd08f9809
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
-  SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   SwiftAudioEx: 6f511018b7a0fdfd14ed1bb4081f953588245cc0
   Yoga: b76f1acfda8212aa16b7e26bcce3983230c82603

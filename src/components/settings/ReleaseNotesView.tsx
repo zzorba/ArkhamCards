@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, ScrollView, StyleSheet, View, Linking } from 'react-native';
+import FastImage from 'react-native-blasted-image';
 import { c } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
@@ -13,7 +14,6 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { localizedDate } from '@lib/datetime';
 import { useFlag } from '@components/core/hooks';
 import ChaosToken from '@components/chaos/ChaosToken';
-import FastImage from 'react-native-fast-image';
 
 interface ReleaseNote {
   date: Date;

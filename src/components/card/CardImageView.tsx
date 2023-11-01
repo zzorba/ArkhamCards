@@ -3,7 +3,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-blasted-image';
 import ViewControl from 'react-native-zoom-view';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';

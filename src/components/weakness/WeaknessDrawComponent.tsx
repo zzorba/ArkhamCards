@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-blasted-image';
 import FlipCard from 'react-native-flip-card';
 import { t, c } from 'ttag';
 import stable from 'stable';

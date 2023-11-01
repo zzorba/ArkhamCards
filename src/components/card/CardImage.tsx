@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-blasted-image';
 import { find, map, range } from 'lodash';
 
 import { TouchableShrink } from '@components/core/Touchables';

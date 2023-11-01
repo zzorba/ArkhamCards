@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-blasted-image';
 import { map } from 'lodash';
 
 import SetupStepWrapper from '../SetupStepWrapper';

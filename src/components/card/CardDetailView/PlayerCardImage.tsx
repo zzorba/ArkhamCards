@@ -4,7 +4,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-blasted-image';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import ArkhamIcon from '@icons/ArkhamIcon';

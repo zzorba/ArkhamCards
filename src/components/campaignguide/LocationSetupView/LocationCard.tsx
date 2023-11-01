@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import { StyleSheet, Text, TextStyle, View } from 'react-native';
 import { map, range } from 'lodash';
-import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-blasted-image';
 
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';

@@ -5,7 +5,7 @@ import PanPinchView from 'react-native-pan-pinch-view';
 import PriorityQueue from 'priority-queue-typescript';
 import { filter, flatMap, values, find, sortBy, forEach, indexOf, map, sumBy, groupBy } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
-import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-blasted-image';
 import {
   Defs,
   Svg,

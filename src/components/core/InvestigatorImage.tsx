@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-blasted-image';
 import { Sepia } from 'react-native-color-matrix-image-filters';
 import {
   Placeholder,

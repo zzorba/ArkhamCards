@@ -9470,6 +9470,11 @@ react-native-base64@0.2.1:
   resolved "https://registry.yarnpkg.com/react-native-base64/-/react-native-base64-0.2.1.tgz#3d0e73a649c4c0129f7b7695d3912456aebae847"
   integrity sha512-eHgt/MA8y5ZF0aHfZ1aTPcIkDWxza9AaEk4GcpIX+ZYfZ04RcaNahO+527KR7J44/mD3efYfM23O2C1N44ByWA==
 
+react-native-blasted-image@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/react-native-blasted-image/-/react-native-blasted-image-0.0.12.tgz#811d09f81cc7839a957ebe931861bfd06150053c"
+  integrity sha512-571wPT2n6T0NH+X+cYEW/5csX2b03/snJJx/6Rn7PK+RY88peBdtZp2z/ipLIae8wLrpq3eU4calfA8ijULr4w==
+
 react-native-clean-project@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-native-clean-project/-/react-native-clean-project-4.0.1.tgz#c0e2b17eebf32a683aa67da45fe7932857166da7"
@@ -9527,10 +9532,6 @@ react-native-draggable-flatlist@4.0.1:
   integrity sha512-ZO1QUTNx64KZfXGXeXcBfql67l38X7kBcJ3rxUVZzPHt5r035GnGzIC0F8rqSXp6zgnwgUYMfB6zQc5PKmPL9Q==
   dependencies:
     "@babel/preset-typescript" "^7.17.12"
-
-"react-native-fast-image@https://github.com/numandev1/react-native-fast-image#feat/fabric-wolewicki":
-  version "8.6.3"
-  resolved "https://github.com/numandev1/react-native-fast-image#9e0a9db7f511f89a55dc370b016dfddd565ccdb8"
 
 react-native-flip-card@3.5.7:
   version "3.5.7"

@@ -4,7 +4,7 @@ import FlipCard from 'react-native-flip-card';
 import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { TAROT_CARD_RATIO } from '@styles/sizes';
-import FastImage from 'react-native-fast-image';
+import FastImage from 'react-native-blasted-image';
 import { TarotCard } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
 import { useEffectUpdate } from '@components/core/hooks';
