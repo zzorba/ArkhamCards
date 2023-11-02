@@ -416,7 +416,7 @@ export default function({
             headerHeight={headerHeight}
             showNonCollection={showNonCollection}
             storyOnly={mode === 'story'}
-            specialMode={mode === 'side' || mode === 'extra' ? mode : undefined}
+            specialMode={(mode === 'side' || mode === 'extra') ? mode : undefined}
             mythosToggle={mythosToggle}
             initialSort={initialSort}
             footerPadding={deckId !== undefined ? DeckNavFooter.height : undefined}

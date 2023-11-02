@@ -80,7 +80,7 @@ export function useDraftableCards({
       return undefined;
     }
     return combineQueries(
-      queryForInvestigator(investigatorBack, cleanMeta, undefined, { sideDeck: mode === 'extra'}),
+      queryForInvestigator(investigatorBack, cleanMeta, undefined, { extraDeck: mode === 'extra'}),
       [
         where('c.xp = 0 OR c.xp is null'),
         where('c.extra_xp is null OR c.extra_xp = 0'),

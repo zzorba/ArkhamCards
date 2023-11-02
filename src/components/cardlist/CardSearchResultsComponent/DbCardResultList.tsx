@@ -386,7 +386,7 @@ function useSectionFeed({
     return () => {
       ignore = true;
     };
-  }, [db, storyQuery, filters, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, theTabooSetId, sorts, mode]);
+  }, [db, storyQuery, filters, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, theTabooSetId, sorts]);
   const [partialCards, partialCardsLoading] = textQuery ? [textQueryCards, textQueryCardsLoading] : [mainQueryCards, mainQueryCardsLoading];
   const [showSpoilers, setShowSpoilers] = useState(false);
   const expandSectionRef = useRef<(sectionId: string) => void>();
@@ -1051,6 +1051,7 @@ export default function({
               deckId,
               min: lockedPermanents?.[card.code],
               limit: deck_limit,
+              mode,
             }) : undefined}
           />
         );

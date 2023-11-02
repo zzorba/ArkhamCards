@@ -10,12 +10,12 @@ import { FilterState } from './filters';
 interface DeckOptionsContext {
   isUpgrade?: boolean;
   hideSplash?: boolean;
-  sideDeck?: boolean;
+  extraDeck?: boolean;
 }
 
-export function negativeQueryForInvestigator(investigator: Card, meta?: DeckMeta, isUpgrade?: boolean, isSideDeck?: boolean): Brackets | undefined {
+export function negativeQueryForInvestigator(investigator: Card, meta?: DeckMeta, isUpgrade?: boolean, isExtraDeck?: boolean): Brackets | undefined {
   const inverted = flatMap(
-    isSideDeck ? investigator.side_deck_options : investigator.deck_options,
+    isExtraDeck ? investigator.side_deck_options : investigator.deck_options,
     (option, index) => {
       if (!option.not) {
         return [];
@@ -37,8 +37,8 @@ export function queryForInvestigator(
   filters?: FilterState,
   context?: DeckOptionsContext
 ): Brackets {
-  const invertedClause = negativeQueryForInvestigator(investigator, meta, context?.isUpgrade, context?.sideDeck);
-  const deck_options = context?.sideDeck ? investigator.side_deck_options : investigator.deck_options;
+  const invertedClause = negativeQueryForInvestigator(investigator, meta, context?.isUpgrade, context?.extraDeck);
+  const deck_options = context?.extraDeck ? investigator.side_deck_options : investigator.deck_options;
   // We assume that there is always at least one normalClause.
   const normalQuery = combineQueriesOpt(
     flatMap(deck_options, (option, index) => {
@@ -65,7 +65,7 @@ export function queryForInvestigator(
     ...(normalQuery ? [normalQuery] : []),
   ], 'and');
   return combineQueries(
-    context?.sideDeck ?
+    context?.extraDeck ?
       where(
         'c.code IN (:...values)',
         {

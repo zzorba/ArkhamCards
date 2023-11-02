@@ -66,7 +66,7 @@ export default function DeckEditView({
         {
           isUpgrade,
           hideSplash,
-          sideDeck: deckType === 'extra',
+          extraDeck: deckType === 'extra',
         },
       );
       if (deckType === 'extra') {
