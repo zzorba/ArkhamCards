@@ -5815,22 +5815,22 @@ msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
 msgstr "봉인됨 (${ chaosBagResults.sealedTokens.length })"
 
 msgid "Spirit Deck"
-msgstr ""
+msgstr "영혼 덱"
 
 msgid "Edit Spirit Deck"
-msgstr ""
+msgstr "영혼 덱 수정"
 
 msgid "No permanents except story and signature permanents"
-msgstr ""
+msgstr "영속 이야기 자산과 영속 전용 자산 외의 영속 자산은 포함할 수 없습니다."
 
 msgid "You cannot have more than 5 Survivor cards."
-msgstr ""
+msgstr "생존자인 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "You cannot have more than 5 Mystic cards."
-msgstr ""
+msgstr "신비주의자인 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "The Feast of Hemlock Vale"
-msgstr ""
+msgstr "헴록 계곡의 축일"
 
 msgctxt "investigator"
 msgid "Custom"
