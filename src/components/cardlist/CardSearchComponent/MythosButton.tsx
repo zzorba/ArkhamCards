@@ -48,20 +48,19 @@ function MythosButton({ filterId }: Props) {
   const dark = colors.D30;
   const light = colors.L10;
   const backgroundColor = colors.L10;
-  const toggleAnimValue = toggleAnim.value;
   const investigatorStyle = useAnimatedStyle(() => {
     return {
-      color: interpolateColor(toggleAnimValue, [0,0.25,0.75, 1], [dark, dark, light, light]),
+      color: interpolateColor(toggleAnim.value, [0,0.25,0.75, 1], [dark, dark, light, light]),
     };
   }, [dark, light]);
   const mythosStyle = useAnimatedStyle(() => {
     return {
-      color: interpolateColor(toggleAnimValue, [0,0.25,0.75, 1], [light, light, dark, dark]),
+      color: interpolateColor(toggleAnim.value, [0,0.25,0.75, 1], [light, light, dark, dark]),
     };
   }, [light, dark]);
   const movingCircleX = useAnimatedStyle(() => {
     return {
-      transform: [{ translateX: interpolate(toggleAnimValue, [0, 1], [0, SIZE + 2.5]) }],
+      transform: [{ translateX: interpolate(toggleAnim.value, [0, 1], [0, SIZE + 2.5]) }],
     };
   });
   return (

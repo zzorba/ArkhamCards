@@ -98,40 +98,42 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
     setAdvancedOpen(!advancedOpen);
   }, [setAdvancedOpen, advancedToggleAnim, advancedOpen]);
   const advancedOptionsHeight = advancedOptions?.height || 0;
-  const advancedToggleAnimValue = advancedToggleAnim.value;
   const advancedBlockAnimation = useAnimatedStyle(() => {
     const translateY = interpolate(
-      advancedToggleAnimValue,
+      advancedToggleAnim.value,
       [0, 1],
       [-(searchBarHeight + advancedOptionsHeight), searchBarHeight],
     );
     return {
       transform: [{ translateY }],
     };
-  }, [advancedOptionsHeight, searchBarHeight]);
+  }, [advancedToggleAnim, advancedOptionsHeight, searchBarHeight]);
 
   const advancedOptionsBlock = useMemo(() => {
     if (!advancedOptions) {
       return null;
     }
     return (
-      <Animated.View needsOffscreenAlphaCompositing style={[
-        styles.advancedOptions,
-        shadow.medium,
-        {
-          backgroundColor: colors.L20,
-          width,
-          height: advancedOptionsHeight,
-        },
-        advancedBlockAnimation,
-        Platform.select({
-          default: {},
-          android: {
-            borderBottomWidth: 0.2,
-            borderColor: colors.L20,
+      <Animated.View
+        needsOffscreenAlphaCompositing
+        style={[
+          styles.advancedOptions,
+          shadow.medium,
+          {
+            backgroundColor: colors.L20,
+            width,
+            height: advancedOptionsHeight,
           },
-        }),
-      ]}>
+          advancedBlockAnimation,
+          Platform.select({
+            default: {},
+            android: {
+              borderBottomWidth: 0.2,
+              borderColor: colors.L20,
+            },
+          }),
+        ]}
+      >
         <View style={[styles.textSearchOptions, {
           height: advancedOptionsHeight,
         }]}>
@@ -140,10 +142,9 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
       </Animated.View>
     );
   }, [advancedOptions, advancedOptionsHeight, advancedBlockAnimation, width, colors, shadow.medium]);
-  const scrollAnimPosValue = scrollAnimPos.value;
   const wrapperStyle = useAnimatedStyle(() => {
     const translateY = advancedOpen ? 0 : interpolate(
-      scrollAnimPosValue,
+      scrollAnimPos.value,
       [0, 1],
       [-searchBarHeight, 0],
     );
@@ -153,29 +154,26 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
   }, [searchBarHeight, advancedOpen]);
   const isAndroid = Platform.OS === 'android';
   const shadowColor = useDerivedValue(() => colors.L20, [colors.L20]);
-  const scrollAnimValue = scrollAnim.value;
-  const shadowColorValue = shadowColor.value;
   const shadowStyle = useAnimatedStyle(() => {
     if (isAndroid) {
       const shadowElevation = (
-        interpolate(advancedToggleAnimValue, [0, 1], [6, 0]) *
-        interpolate(scrollAnimValue, [0, 1], [0, 1])
+        interpolate(advancedToggleAnim.value, [0, 1], [6, 0]) *
+        interpolate(scrollAnim.value, [0, 1], [0, 1])
       );
       const shadowBorder = (
-        interpolate(advancedToggleAnimValue, [0, 1], [0.2, 0]) *
-        interpolate(scrollAnimValue, [0, 1], [0, 1])
+        interpolate(advancedToggleAnim.value, [0, 1], [0.2, 0]) *
+        interpolate(scrollAnim.value, [0, 1], [0, 1])
       );
-      const borderColor = shadowColorValue;
       return {
         elevation: shadowElevation,
         borderBottomWidth: shadowBorder,
-        borderColor,
+        borderColor: shadowColor.value,
       };
     }
-    const shadowOpacity = interpolate(advancedToggleAnimValue, [0, 1], [0.25, 0]) *
-      interpolate(scrollAnimValue, [0, 1], [0, 1]);
+    const shadowOpacity = interpolate(advancedToggleAnim.value, [0, 1], [0.25, 0]) *
+      interpolate(scrollAnim.value, [0, 1], [0, 1]);
     return { shadowOpacity: shadowOpacity };
-  }, [isAndroid, shadowColor]);
+  }, [isAndroid, shadowColor, advancedToggleAnim]);
   return (
 
     <View style={[styles.wrapper, backgroundStyle]}>

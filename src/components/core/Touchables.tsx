@@ -45,9 +45,8 @@ export function TouchableQuickSize({ style, children, disabled, onPress, activeS
       withTiming(1, { duration: 100, easing: Easing.elastic(1) })
     );
   }, [activeScale, scale]);
-  const scaleValue = scale.value;
   const animStyle = useAnimatedStyle(() => {
-    return { transform: [{ scale: scaleValue }] };
+    return { transform: [{ scale: scale.value }] };
   });
   return (
     <Pressable
@@ -76,10 +75,9 @@ export function TouchableShrink({ style, children, disabled, onPress, activeScal
     cancelAnimation(scale);
     scale.value = withTiming(1, { duration: 100, easing: Easing.elastic(1) });
   }, [scale]);
-  const scaleValue = scale.value;
   const animStyle = useAnimatedStyle(() => {
     return {
-      transform: [{ scale: scaleValue }],
+      transform: [{ scale: scale.value }],
     };
   });
   return (

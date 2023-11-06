@@ -35,10 +35,9 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
       withTiming(1, { duration: 100, easing: Easing.elastic(1) })
     );
   }, [scale]);
-  const scaleValue = scale.value;
   const animStyle = useAnimatedStyle(() => {
     return {
-      transform: [{ scale: scaleValue }],
+      transform: [{ scale: scale.value }],
     };
   });
   return (

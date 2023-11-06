@@ -1043,10 +1043,11 @@ export function parseDeck(
   const problem = validation.getProblem(deckCards);
   const invalidCodes = new Set(problem?.invalidCards.map(c => c.code) ?? []);
   let extraCards: CardId[] | undefined;
+  let extraDeckSlots: Slots | undefined;
   let extraDeckSize: number | undefined;
   let extraProblem: DeckProblem | undefined;
   if (investigator_back_code === PARALLEL_JIM_CODE) {
-    const extraDeckSlots = getExtraDeckSlots(meta);
+    extraDeckSlots = getExtraDeckSlots(meta);
     const extraDeckCards = getCards(cards, extraDeckSlots, {}, listSeperator, customizations);
     const extraValidation = new DeckValidation(investigator, extraDeckSlots, meta, { side_deck: true });
     extraDeckSize = extraValidation.getDeckSize();
@@ -1079,8 +1080,8 @@ export function parseDeck(
         const invalid = !extraValidation.canIncludeCard(customizedCard, false);
         return {
           id,
-          quantity: extraDeckSlots[id] || 0,
-          invalid: invalid || invalidExtraCodes.has(id) || (customizedCard.deck_limit !== undefined && extraDeckSlots[id] > customizedCard.deck_limit),
+          quantity: extraDeckSlots?.[id] || 0,
+          invalid: invalid || invalidExtraCodes.has(id) || (customizedCard.deck_limit !== undefined && (extraDeckSlots?.[id] ?? 0) > customizedCard.deck_limit),
           limited: extraValidation.isCardLimited(customizedCard),
           custom: card.custom(),
         };
@@ -1191,7 +1192,9 @@ export function parseDeck(
     previousDeck,
     previousCustomizations
   );
-  const totalXp = calculateTotalXp(cards, slots, ignoreDeckLimitSlots, customizations);
+  const totalXp =
+    calculateTotalXp(cards, slots, ignoreDeckLimitSlots, customizations) +
+    (extraDeckSlots ? calculateTotalXp(cards, extraDeckSlots, {}, customizations) : 0);
 
   const factionCounts: FactionCounts = {};
   forEach(PLAYER_FACTION_CODES, faction => {
