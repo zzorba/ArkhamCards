@@ -56,10 +56,9 @@ export default function AccordionItem({ label, height, children, enabled, toggle
   }, [label, enabled, typography, togglePressed]);
 
   const COLLAPSED_HEIGHT = 22 + 18 * fontScale;
-  const heightAnimValue = heightAnim.value;
   const containerStyle = useAnimatedStyle(() => {
     return {
-      height: interpolate(heightAnimValue, [0, 1], [COLLAPSED_HEIGHT, COLLAPSED_HEIGHT + height]),
+      height: interpolate(heightAnim.value, [0, 1], [COLLAPSED_HEIGHT, COLLAPSED_HEIGHT + height]),
     };
   }, [height, COLLAPSED_HEIGHT]);
   return (

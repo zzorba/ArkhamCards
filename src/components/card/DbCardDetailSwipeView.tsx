@@ -69,6 +69,7 @@ const NO_CUSTOMIZATIONS: CustomizationChoice[] = [];
 function ScrollableCard(props: {
   componentId: string;
   card: Card | undefined;
+  tabooSetId: number | undefined;
   customizationsEditable: boolean | undefined;
   setChoice: (code: string, choice: CustomizationChoice) => void;
   width: number;
@@ -81,7 +82,11 @@ function ScrollableCard(props: {
   showInvestigatorCards: (code: string) => void;
   mode?: 'view' | 'edit' | 'upgrade';
 }) {
-  const { componentId, mode, customizationsEditable, card, setChoice, width, height, deckId, customizations, deckCount, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler } = props;
+  const {
+    componentId, mode, customizationsEditable, card, tabooSetId,
+    width, height, deckId, customizations, deckCount,
+    setChoice, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler,
+  } = props;
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
   const customizationChoices: CustomizationChoice[] | undefined = useMemo(() => {
@@ -125,6 +130,7 @@ function ScrollableCard(props: {
         toggleShowSpoilers={toggleShowSpoilers}
         showInvestigatorCards={showInvestigatorCards}
         width={width}
+        tabooSetId={tabooSetId}
       />
       { !!customizedCard.customization_options && !!card && (
         <CardCustomizationOptions
@@ -326,6 +332,7 @@ function DbCardDetailSwipeView(props: Props) {
         width={width}
         height={height}
         deckId={deckId}
+        tabooSetId={tabooSetId}
         mode={mode}
         componentId={componentId}
         customizations={customizations}

@@ -910,7 +910,7 @@ export default function({
   const deckId = deck?.id;
   const customizations = useLiveCustomizations(deck, deckEdits);
   const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
-  const tabooSetOverride = parsedDeck !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
+  const tabooSetOverride = parsedDeck?.deck !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
   const singleCardView = useSettingValue('single_card');

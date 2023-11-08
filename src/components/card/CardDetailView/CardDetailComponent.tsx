@@ -22,6 +22,7 @@ interface Props {
   simple?: boolean;
   noImage?: boolean;
   showSpoilers: boolean;
+  tabooSetId?: number | undefined;
   toggleShowSpoilers?: (code: string) => void;
   showInvestigatorCards?: (code: string) => void;
 }
@@ -116,7 +117,10 @@ function SpoilersComponent({ componentId, card, width, toggleShowSpoilers }: Pro
   );
 }
 
-export default function CardDetailComponent({ componentId, card, backCard, width, showSpoilers, toggleShowSpoilers, showInvestigatorCards, simple, noImage }: Props) {
+export default function CardDetailComponent({
+  componentId, card, backCard, width, showSpoilers, tabooSetId, simple, noImage,
+  toggleShowSpoilers, showInvestigatorCards,
+}: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const shouldBlur = !showSpoilers && !!(card && card.mythos_card);
   const bondedCards = useMemo(() => [card], [card]);
@@ -150,6 +154,7 @@ export default function CardDetailComponent({ componentId, card, backCard, width
             componentId={componentId}
             cards={bondedCards}
             width={width}
+            tabooSetId={tabooSetId}
           />
         ) }
       </View>
