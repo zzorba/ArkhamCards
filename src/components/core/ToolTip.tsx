@@ -8,7 +8,7 @@ interface Props {
   children: ReactNode;
 }
 export default function ToolTip({ label, size, children }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const [toggle, setToggle] = useState(false);
 
   const handlePressIn = useCallback(() => {
@@ -27,8 +27,6 @@ export default function ToolTip({ label, size, children }: Props) {
             style={{
               position: "absolute",
               backgroundColor: colors.background,
-              paddingVertical: 4,
-              paddingHorizontal: 5,
               bottom: size,
               display: "flex",
               alignItems: "center",
@@ -37,11 +35,13 @@ export default function ToolTip({ label, size, children }: Props) {
               borderRadius: 10,
               borderColor: colors.lightText,
               borderWidth: 1,
+              paddingVertical: 4,
+              paddingHorizontal: 5,
               left: -40,
               right: -40,
             }}
           >
-            <Text style={{ color: colors.lightText, textAlign: "center" }}>
+            <Text style={[typography.small, typography.regular,  { textAlign: "center" }]}>
               {label}
             </Text>
           </View>

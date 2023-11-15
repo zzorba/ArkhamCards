@@ -10,6 +10,7 @@ import { msgid, ngettext, t } from 'ttag';
 import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { BorderColor, EncounterSetsStep } from '@data/scenario/types';
+import EncounterIcon from '@icons/EncounterIcon';
 import { EncounterCardErrataProps } from '@components/campaignguide/EncounterCardErrataView';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import space from '@styles/space';
@@ -20,7 +21,6 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useSettingValue } from '@components/core/hooks';
 import ToolTip from '@components/core/ToolTip';
-import EncounterIcon from '@icons/EncounterIcon';
 
 const CORE_SET_ICONS = new Set([
   'torch', 'arkham', 'cultists', 'tentacles', 'rats', 'ghouls', 'striking_fear',
