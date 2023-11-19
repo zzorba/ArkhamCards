@@ -1,8 +1,8 @@
-import { findIndex, forEach, map, partition } from 'lodash';
+import { find, findIndex, flatMap, forEach, map, partition } from 'lodash';
 
 import { QueryParams } from '@data/sqlite/types';
 import { BASIC_QUERY, combineQueries, combineQueriesOpt, where } from '@data/sqlite/query';
-import { SKILLS, FactionCodeType, CARD_FACTION_CODES } from '@app_constants';
+import { SKILLS, FactionCodeType, CARD_FACTION_CODES, specialPacksSet, specialPacks } from '@app_constants';
 import { Brackets } from 'typeorm/browser';
 
 export interface CardFilterData {
@@ -669,10 +669,13 @@ export default class FilterBuilder {
   }
 
   packCodes(packCodes: string[]): Brackets[] {
-    const packClause = this.equalsVectorClause(packCodes, 'pack_code');
-    if (packClause.length && packCodes.length) {
-      const [packCode, ...otherCodes] = packCodes;
-      return [
+    const [specialPackCodes, normalPacks] = partition(packCodes, code => specialPacksSet.has(code));
+    const result: Brackets[] = [];
+
+    const packClause = this.equalsVectorClause(normalPacks, 'pack_code');
+    if (packClause.length && normalPacks.length) {
+      const [packCode, ...otherCodes] = normalPacks;
+      result.push(
         combineQueries(
           where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode`, { packCode: `%${packCode}%` }),
           [
@@ -683,7 +686,33 @@ export default class FilterBuilder {
           ],
           'or'
         ),
-      ];
+      );
+    }
+    if (specialPackCodes.length) {
+      const packs = flatMap(specialPackCodes, code => find(specialPacks, pack => pack.code === code) ?? []);
+      const [playerPacks, campaignPacks] = partition(packs, pack => pack.player);
+      if (playerPacks.length) {
+        result.push(
+          combineQueries(
+            where(`c.encounter_code is null`),
+            this.equalsVectorClause(flatMap(playerPacks, pack => pack.packs), 'pack_code'),
+            'and'
+          ),
+        );
+      }
+      if (campaignPacks.length) {
+        result.push(
+          combineQueries(
+            where(`c.encounter_code is not null`),
+            this.equalsVectorClause(flatMap(campaignPacks, pack => pack.packs), 'pack_code'),
+            'and'
+          ),
+        );
+      }
+    }
+    if (result.length) {
+      const [first, ...others] = result;
+      return [combineQueries(first, others, 'or')];
     }
     return [];
   }

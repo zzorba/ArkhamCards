@@ -10,7 +10,7 @@ import { t } from 'ttag';
 import { setPackSpoiler, setCyclePackSpoiler } from '@actions';
 import PackListComponent from '@components/core/PackListComponent';
 import { NavigationProps } from '@components/nav/types';
-import { getAllPacks, getPackSpoilers } from '@reducers';
+import { getAllRealPacks, getPackSpoilers } from '@reducers';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useAppDispatch } from '@app/store';
@@ -18,7 +18,7 @@ import { useUpdateRemotePack } from '@data/remote/settings';
 
 export default function SpoilersView({ componentId }: NavigationProps) {
   const { backgroundStyle, typography } = useContext(StyleContext);
-  const packs = useSelector(getAllPacks);
+  const packs = useSelector(getAllRealPacks);
   const show_spoilers = useSelector(getPackSpoilers);
 
   const header = useMemo(() => (

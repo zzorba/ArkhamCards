@@ -136,7 +136,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.coreIcon('midnight_masks', size, color);
       case 'tentacles':
         return this.coreIcon('the_devourer_below', size, color);
-      case 'dwl': // THE DUNWICH LEGACY
+      case 'dwl':
+      case 'dwlp':
+      case 'dwlc': // THE DUNWICH LEGACY
         return this.dunwichIcon('set', size, color);
       case 'rtdwl':
         return this.dunwichIcon('return_to_the_dunwich_legacy', size, color);
@@ -190,7 +192,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_extracurricular_activity':
         return this.dunwichIcon('return_to_extracurricular_activities', size, color);
 
-      case 'ptc': // THE PATH TO CARCOSA
+      case 'ptc':
+      case 'ptcp':
+      case 'ptcc': // THE PATH TO CARCOSA
         return this.carcosaIcon('carcosa', size, color);
       case 'rtptc':
         return this.carcosaIcon('return_to_the_path_to_carcosa', size, color);
@@ -343,6 +347,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_city_of_archives':
         return this.forgottenIcon('return_to_city_of_archives', size, color);
       case 'tfa':
+      case 'tfap':
+      case 'tfac':
         return this.forgottenIcon('the_forgotten_age', size, color);
       case 'sha':
       case 'shattered_aeons':
@@ -427,6 +433,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'death_of_the_stars':
         return this.standaloneIcon('death_of_the_stars', size, color);
       case 'tcu':
+      case 'tcup':
+      case 'tcuc':
         return this.circleIcon('the_circle_undone', size, color);
       case 'rttcu':
         return this.circleIcon('rttcu', size, color);
@@ -497,6 +505,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'tdea':
         return this.dreamIcon('dreamers_curse', size, color);
       case 'tde':
+      case 'tdep':
+      case 'tdec':
       case 'the_dream_eaters':
         return this.dreamIcon('dream', size, color);
       case 'agents_of_atlach_nacha':
@@ -546,6 +556,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'into_the_maelstrom':
         return this.innsmouthIcon('into_the_maelstrom', size, color);
       case 'tic':
+      case 'ticp':
+      case 'ticc':
       case 'the_innsmouth_conspiracy':
         return this.innsmouthIcon('tic', size, color);
       case 'creatures_of_the_deep':

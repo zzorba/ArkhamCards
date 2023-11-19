@@ -10,7 +10,7 @@ import { t } from 'ttag';
 import PackListComponent from '@components/core/PackListComponent';
 import { NavigationProps } from '@components/nav/types';
 import { setInCollection, setCycleInCollection, setPackDraft, setCycleDraft } from '@actions';
-import { getAllPacks, getDraftPacks, getPacksInCollection } from '@reducers';
+import { getAllRealPacks, getDraftPacks, getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import space from '@styles/space';
@@ -29,7 +29,7 @@ function CollectionEditView({ componentId, draftMode }: CollectionEditProps & Na
   const dispatch = useAppDispatch();
   const [draft] = useSelector(getDraftPacks);
   const [draftFromCollection, toggleDraftFromCollection] = useSettingFlag('draft_from_collection');
-  const packs = useSelector(getAllPacks);
+  const packs = useSelector(getAllRealPacks);
   const in_collection = useSelector(getPacksInCollection);
   const updateRemoteSetting = useUpdateRemoteSetting();
   const updateRemotePack = useUpdateRemotePack();

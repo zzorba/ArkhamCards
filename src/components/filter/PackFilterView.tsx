@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import PackListComponent from '@components/core/PackListComponent';
-import { getAllPacks } from '@reducers';
+import { getAllPacks, getAllRealPacks } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
@@ -23,6 +23,7 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
     title: t`Pack Filters`,
   });
   const { packCodes, packNames } = filters;
+  const allRealPacks = useSelector(getAllRealPacks);
   const allPacks = useSelector(getAllPacks);
   const setChecked = useCallback((code: string, value: boolean) => {
     const deltaPacks = filter(allPacks, pack => pack.code === code);
@@ -39,9 +40,9 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
   }, [packCodes, packNames, onFilterChange, allPacks]);
 
   const setCycleChecked = useCallback((cycle_code: string, value: boolean) => {
-    const cyclePack = find(allPacks, pack => pack.code === cycle_code);
+    const cyclePack = find(allRealPacks, pack => pack.code === cycle_code);
     if (cyclePack) {
-      const deltaPacks = filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position);
+      const deltaPacks = filter(allRealPacks, pack => pack.cycle_position === cyclePack.cycle_position);
       const deltaPackCodes = map(deltaPacks, pack => pack.code);
       const deltaPackNames = map(deltaPacks, pack => pack.name);
 
@@ -54,7 +55,7 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
         value ? union(packNames, deltaPackNames) : difference(packNames, deltaPackNames)
       );
     }
-  }, [onFilterChange, packCodes, packNames, allPacks]);
+  }, [onFilterChange, packCodes, packNames, allRealPacks]);
   const { backgroundStyle, typography } = useContext(StyleContext);
   const selected = useMemo(() => {
     const selectedPackCodes = new Set(packCodes || []);
@@ -79,7 +80,7 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
       <PackListComponent
         coreSetName={t`Core Set`}
         componentId={props.componentId}
-        packs={allPacks}
+        packs={allRealPacks}
         checkState={selected}
         setChecked={setChecked}
         setCycleChecked={setCycleChecked}

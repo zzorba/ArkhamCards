@@ -32,7 +32,20 @@ interface Props {
   alwaysCycle?: boolean;
 }
 
-export default function PackRow({ packId, componentId, description, pack, cycle, alwaysCycle, setChecked, setCycleChecked, checked, baseQuery, compact, nameOverride }: Props) {
+export default function PackRow({
+  packId,
+  componentId,
+  description,
+  pack,
+  cycle,
+  alwaysCycle,
+  setChecked,
+  setCycleChecked,
+  checked,
+  baseQuery,
+  compact,
+  nameOverride,
+}: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const onPress = useCallback(() => {
     Navigation.push<PackCardsProps>(componentId, {

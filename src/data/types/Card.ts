@@ -5,7 +5,7 @@ import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { c, t } from 'ttag';
 
 import { Pack, SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData, SORT_BY_XP, SORT_BY_CARD_ID, SORT_BY_SLOT, ExtendedSortType, SORT_BY_TYPE_SLOT } from '@actions/types';
-import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN } from '@app_constants';
+import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN, specialReprintPlayerPacks, specialReprintCampaignPacks } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
@@ -132,6 +132,7 @@ export class PartialCard {
   public pack_code: string;
   public reprint_pack_codes?: string[];
   public spoiler?: boolean;
+  public encounter_code?: string;
 
   constructor(
     id: string,
@@ -143,6 +144,7 @@ export class PartialCard {
     reprint_pack_codes?: string[],
     renderSubName?: string,
     spoiler?: boolean,
+    encounter_code?: string,
   ) {
     this.id = id;
     this.code = code;
@@ -153,6 +155,7 @@ export class PartialCard {
     this.reprint_pack_codes = reprint_pack_codes;
     this.renderSubName = renderSubName;
     this.spoiler = spoiler;
+    this.encounter_code = encounter_code;
   }
 
   public static headerSort(sorts?: SortType[]): ExtendedSortType {
@@ -185,6 +188,7 @@ export class PartialCard {
       `c.pack_code as pack_code`,
       `c.reprint_pack_codes as reprint_pack_codes`,
       `c.spoiler as spoiler`,
+      `c.encounter_code as encounter_code`,
       HEADER_SELECT[PartialCard.headerSort(sorts)],
     ];
     return parts.join(', ');
@@ -233,7 +237,8 @@ export class PartialCard {
         raw.pack_code,
         raw.reprint_pack_codes ? raw.reprint_pack_codes.split(',') : undefined,
         raw.renderSubname,
-        !!raw.spoiler
+        !!raw.spoiler,
+        raw.encounter_code,
       );
     }
     return undefined;
@@ -1618,8 +1623,15 @@ export default class Card {
   }
 }
 
-export function cardInCollection(card: Card | PartialCard, packInCollection: { [pack_code: string]: boolean | undefined }): boolean {
+export function cardInCollection(
+  card: Card | PartialCard,
+  packInCollection: { [pack_code: string]: boolean | undefined },
+): boolean {
   if (packInCollection[card.pack_code]) {
+    return true;
+  }
+  const alternatePack = (card.encounter_code) ? specialReprintCampaignPacks[card.pack_code] : specialReprintPlayerPacks[card.pack_code];
+  if (alternatePack && packInCollection[alternatePack]) {
     return true;
   }
   const reprintPacks = card.reprint_pack_codes || REPRINT_CARDS[card.code];

@@ -421,7 +421,7 @@ export default function({
             initialSort={initialSort}
             footerPadding={deckId !== undefined ? DeckNavFooter.height : undefined}
           />
-          { !!parsedDeck && (
+          { !!deckId && (
             <>
               <PreLoadedDeckNavFooter
                 componentId={componentId}

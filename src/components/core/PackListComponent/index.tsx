@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import { filter, groupBy, map } from 'lodash';
+import { filter, find, groupBy, map } from 'lodash';
 import {
   SectionList,
   SectionListData,
@@ -15,11 +15,28 @@ import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
 import StyleContext from '@styles/StyleContext';
+import { ReprintPack, reprintPackToPack, specialPacks } from '@app_constants';
+import ArkhamSwitch from '../ArkhamSwitch';
+import ArkhamButton from '../ArkhamButton';
+import { useToggles } from '../hooks';
 
-interface PackCycle extends SectionListData<Pack> {
+type PackItem =  {
+  type: 'pack';
+  pack: Pack;
+} | {
+  type: 'reprint';
+  reprint: ReprintPack;
+  pack: Pack;
+} | {
+  type: 'reprint_toggle';
+  cycleCode: string;
+  packs: Pack[];
+}
+
+interface PackCycle extends SectionListData<PackItem> {
   title: string;
   id: string;
-  data: Pack[];
+  data: PackItem[];
 }
 
 interface Props {
@@ -39,8 +56,12 @@ interface Props {
   includeNoCore?: boolean;
 }
 
-function keyExtractor(item: Pack) {
-  return item.code;
+function keyExtractor(item: PackItem) {
+  switch (item.type) {
+    case 'pack': return item.pack.code;
+    case 'reprint_toggle': return item.cycleCode;
+    case 'reprint': return item.reprint.code;
+  }
 }
 
 function cycleName(position: string): string {
@@ -68,7 +89,7 @@ function cycleName(position: string): string {
   }
 }
 
-function renderSectionHeader({ section }: { section: SectionListData<Pack> }) {
+function renderSectionHeader({ section }: { section: SectionListData<PackItem> }) {
   return (
     <CardSectionHeader
       section={{ subTitle: section.title }}
@@ -93,6 +114,7 @@ export default function PackListComponent({
   includeNoCore,
 }: Props) {
   const { typography } = useContext(StyleContext);
+  const [showLegacy, setShowLegacy] = useToggles({});
   const renderPack = useCallback((pack: Pack) => {
     const cyclePacks: Pack[] = pack.position === 1 ? filter(packs, p => {
       return (pack.cycle_position === p.cycle_position &&
@@ -150,9 +172,53 @@ export default function PackListComponent({
     );
   }, [packs, checkState, componentId, cyclesOnly, alwaysShowCoreSet, includeNoCore, setChecked, setCycleChecked, baseQuery, compact, coreSetName]);
 
-  const renderItem = useCallback(({ item }: SectionListRenderItemInfo<Pack>) => {
-    return renderPack(item);
-  }, [renderPack]);
+  const renderItem = useCallback(({ item }: SectionListRenderItemInfo<PackItem>) => {
+    switch (item.type) {
+      case 'pack':
+        return renderPack(item.pack);
+      case 'reprint':
+        return (
+          <PackRow
+            key={item.pack.code}
+            componentId={componentId}
+            pack={item.pack}
+            cycle={[]}
+            setChecked={setChecked}
+            setCycleChecked={setCycleChecked}
+            checked={checkState && checkState[item.pack.code]}
+            baseQuery={baseQuery}
+            compact={compact}
+            alwaysCycle={cyclesOnly}
+          />
+        );
+      case 'reprint_toggle':
+        if (showLegacy[item.cycleCode] || !!find(item.packs, pack => checkState && checkState[pack.code])) {
+          return (
+            <>
+              { map(item.packs, pack => (
+                <PackRow
+                  key={pack.code}
+                  componentId={componentId}
+                  pack={pack}
+                  cycle={[]}
+                  setChecked={setChecked}
+                  setCycleChecked={setCycleChecked}
+                  checked={checkState && checkState[pack.code]}
+                  baseQuery={baseQuery}
+                  compact={compact}
+                  alwaysCycle={cyclesOnly}
+                />
+              ))}
+            </>
+          );
+        }
+        return (
+          <View>
+            <ArkhamButton icon="show" title={t`Show original release packs`} onPress={() => setShowLegacy(item.cycleCode)} />
+          </View>
+        );
+    }
+  }, [renderPack, checkState, setShowLegacy, showLegacy]);
 
 
   if (!packs.length) {
@@ -181,10 +247,39 @@ export default function PackListComponent({
       ) && (!cyclesOnly || pack.cycle_position < 70)),
       pack => (cyclesOnly && pack.cycle_position >= 2 && pack.cycle_position < 50) ? 2 : pack.cycle_position),
     (group, key) => {
+      const reprintPacks = filter(specialPacks, reprintPack => `${reprintPack.cyclePosition}` === key);
+      if (reprintPacks.length) {
+        const items: PackItem[] = [
+          ...map(reprintPacks, reprint => {
+            const item: PackItem = {
+              type: 'reprint',
+              reprint,
+              pack: reprintPackToPack(reprint),
+            };
+            return item;
+          }),
+          {
+            type: 'reprint_toggle',
+            packs: group,
+            cycleCode: key,
+          },
+        ];
+        return {
+          title: key === '2' && cyclesOnly ? t`Campaigns Cycles` : cycleName(`${key}`),
+          id: key,
+          data: items,
+        };
+      }
       return {
         title: key === '2' && cyclesOnly ? t`Campaigns Cycles` : cycleName(`${key}`),
         id: key,
-        data: group,
+        data: map(group, pack => {
+          return {
+            type: 'pack',
+            pack,
+          };
+        }),
+        reprintPacks,
       };
     });
 

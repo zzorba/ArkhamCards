@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { keys, forEach, map, filter, partition } from 'lodash';
+import { keys, flatMap, forEach, map, filter, partition, uniq } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -16,7 +16,7 @@ import FilterChooserButton from '../FilterChooserButton';
 import SliderChooser from '../SliderChooser';
 import ToggleFilter from '@components/core/ToggleFilter';
 import NavButton from '@components/core/NavButton';
-import { getAllPacks } from '@reducers';
+import { getAllRealPacks } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
@@ -26,6 +26,7 @@ import { slotsTranslations } from '../CardAssetFilterView';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import TwoColumnSort, { ToggleItem } from '../TwoColumnSort';
 import useTabooChooser from './useTabooChooser';
+import { getSpecialPackNames, reprintPackToPack, specialPacks } from '@app_constants';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {
@@ -58,7 +59,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
   } = useFilterFunctions(props, {
     title: t`Filters`,
   });
-  const allPacks = useSelector(getAllPacks);
+  const allPacks = useSelector(getAllRealPacks);
   const onPacksPress = useCallback(() => {
     pushFilterView('SearchFilters.Packs');
   }, [pushFilterView]);
@@ -143,30 +144,51 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       return t`Packs: All`;
     }
     const selectedPackNames = new Set(packNames);
-    const cyclePackCounts: { [code: string]: number } = {};
-    const selectedCyclePackCounts: { [code: string]: number } = {};
+    const oldCyclePackCounts: { [code: string]: number } = {};
+    const oldSelectedCyclePackCounts: { [code: string]: number } = {};
+
+    const newCyclePackCounts: { [code: string]: number } = {};
+    const newSelectedCyclePackCounts: { [code: string]: number } = {};
     const cycleNames: { [code: string]: string } = {};
-    const selectedPacks = filter(
-      allPacks,
-      pack => {
-        if (pack.cycle_position > 1 && pack.cycle_position < 50) {
-          if (pack.position === 1) {
-            cycleNames[pack.cycle_position] = pack.name;
+    const specialPackNames = getSpecialPackNames();
+    const selectedPacks = [
+      ...filter(
+        allPacks,
+        pack => {
+          if (pack.cycle_position > 1 && pack.cycle_position < 50) {
+            if (pack.position === 1) {
+              cycleNames[pack.cycle_position] = pack.name;
+            }
+            oldCyclePackCounts[pack.cycle_position] =
+              (oldCyclePackCounts[pack.cycle_position] || 0) + 1;
           }
-          cyclePackCounts[pack.cycle_position] =
-            (cyclePackCounts[pack.cycle_position] || 0) + 1;
+          if (selectedPackNames.has(pack.name)) {
+            oldSelectedCyclePackCounts[pack.cycle_position] =
+              (oldSelectedCyclePackCounts[pack.cycle_position] || 0) + 1;
+            return true;
+          }
+          return false;
         }
-        if (selectedPackNames.has(pack.name)) {
-          selectedCyclePackCounts[pack.cycle_position] =
-            (selectedCyclePackCounts[pack.cycle_position] || 0) + 1;
-          return true;
+      ),
+      ...flatMap(specialPacks, pack => {
+        if (pack.cyclePosition > 1 && pack.cyclePosition < 50) {
+          newCyclePackCounts[pack.cyclePosition] =
+          (newCyclePackCounts[pack.cyclePosition] || 0) + 1;
         }
-        return false;
-      }
-    );
+        const name = specialPackNames[pack.code];
+        if (selectedPackNames.has(name)) {
+          newSelectedCyclePackCounts[pack.cyclePosition] =
+            (newSelectedCyclePackCounts[pack.cyclePosition] || 0) + 1;
+          return [reprintPackToPack(pack)];
+        }
+        return [];
+      }),
+    ];
     const [completeCycles, partialCycles] = partition(
-      keys(selectedCyclePackCounts),
-      cycle_position => selectedCyclePackCounts[cycle_position] === cyclePackCounts[cycle_position]);
+      uniq([...keys(oldSelectedCyclePackCounts), ...keys(newSelectedCyclePackCounts)]),
+      cycle_position =>
+        oldSelectedCyclePackCounts[cycle_position] === oldCyclePackCounts[cycle_position] ||
+        newSelectedCyclePackCounts[cycle_position] === newCyclePackCounts[cycle_position]);
 
     const parts: string[] = [];
     forEach(completeCycles, cycle_position => {

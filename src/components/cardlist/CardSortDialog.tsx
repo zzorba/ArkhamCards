@@ -149,7 +149,7 @@ export function useSortDialog(
   }, [saveSorts, selectedSorts]);
   const onCancel = useCallback(() => {
     sortChanged(savedSorts);
-  }, [sortChanged, saveSorts]);
+  }, [sortChanged, savedSorts]);
   const { dialog, showDialog} = useDialog({
     title: t`Sort by`,
     allowDismiss: true,

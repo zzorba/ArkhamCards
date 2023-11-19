@@ -5,6 +5,7 @@ import CardSearchComponent from '../cardlist/CardSearchComponent';
 import { NavigationProps } from '@components/nav/types';
 import { combineQueries, where } from '@data/sqlite/query';
 import { SORT_BY_PACK } from '@actions/types';
+import { t } from 'ttag';
 
 export interface PackCardsProps {
   pack_code: string;

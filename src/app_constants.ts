@@ -1,8 +1,9 @@
 import { Platform } from 'react-native';
-import { find } from 'lodash';
+import { find, forEach } from 'lodash';
 import { t } from 'ttag';
 
 import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
+import { Pack } from '@actions/types';
 
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = true;
@@ -484,5 +485,140 @@ export function getTarotCards(): { [id: string] : TarotCard } {
       text: t`Each investigator not defeated during this game may remove 1 trauma of their choice during its resolution.`,
       inverted_text: t`Each investigator defeated during this game suffers 1 trauma of their choice during its resolution.`,
     },
+  };
+}
+
+
+export type ReprintPackCode =
+  'dwlp' | 'dwlc' |
+  'ptcp' | 'ptcc' |
+  'tfap' | 'tfac' |
+  'tcup' | 'tcuc' |
+  'tdep' | 'tdec' |
+  'ticp' | 'ticc';
+
+export interface ReprintPack {
+  code: ReprintPackCode;
+  packs: string[];
+  player: boolean;
+  cyclePosition: number;
+}
+export const specialPacks: ReprintPack[] = [
+  {
+    code: 'dwlp',
+    packs: ['dwl', 'tmm', 'tece', 'bota', 'uau', 'wda', 'litas'],
+    player: true,
+    cyclePosition: 2,
+  },
+  {
+    code: 'dwlc',
+    packs: ['dwl', 'tmm', 'tece', 'bota', 'uau', 'wda', 'litas'],
+    player: false,
+    cyclePosition: 2,
+  },
+  {
+    code: 'ptcp',
+    packs: ['ptc', 'eotp', 'tuo', 'apot', 'tpm', 'bsr', 'dca'],
+    player: true,
+    cyclePosition: 3,
+  },
+  {
+    code: 'ptcc',
+    packs: ['ptc', 'eotp', 'tuo', 'apot', 'tpm', 'bsr', 'dca'],
+    player: false,
+    cyclePosition: 3,
+  },
+  {
+    code: 'tfap',
+    packs: ['tfa', 'tof', 'tbb', 'hote', 'tcoa', 'tdoy', 'sha'],
+    player: true,
+    cyclePosition: 4,
+  },
+  {
+    code: 'tfac',
+    packs: ['tfa', 'tof', 'tbb', 'hote', 'tcoa', 'tdoy', 'sha'],
+    player: false,
+    cyclePosition: 4,
+  },
+  {
+    code: 'tcup',
+    packs: ['tcu', 'tsb', 'wos', 'fgg', 'uad', 'icc', 'bbt'],
+    player: true,
+    cyclePosition: 5,
+  },
+  {
+    code: 'tcuc',
+    packs: ['tcu', 'tsb', 'wos', 'fgg', 'uad', 'icc', 'bbt'],
+    player: false,
+    cyclePosition: 5,
+  },
+  /*
+  {
+    code: 'tdep',
+    packs: ['tde', 'sfk', 'tsh', 'dsm', 'pnr', 'wgd', 'woc'],
+    player: true,
+    cyclePosition: 6,
+  },
+  {
+    code: 'tdec',
+    packs: ['tde', 'sfk', 'tsh', 'dsm', 'pnr', 'wgd', 'woc'],
+    player: false,
+    cyclePosition: 6,
+  },
+  {
+    code: 'ticp',
+    packs: ['tic', 'itd', 'def', 'hhg', 'lif', 'lod', 'itm'],
+    player: true,
+    cyclePosition: 7,
+  },
+  {
+    code: 'ticc',
+    packs: ['tic', 'itd', 'def', 'hhg', 'lif', 'lod', 'itm'],
+    player: false,
+    cyclePosition: 7,
+  },
+  */
+];
+
+export const specialReprintPlayerPacks: { [code: string]: string | undefined } = {};
+export const specialReprintCampaignPacks: { [code: string]: string | undefined } = {};
+forEach(specialPacks, pack => {
+  forEach(pack.packs, p => {
+    if (pack.player) {
+      specialReprintPlayerPacks[p] = pack.code;
+    } else {
+      specialReprintCampaignPacks[p] = pack.code;
+    }
+  });
+});
+
+export const specialPacksSet: Set<string> = new Set(specialPacks.map(p => p.code));
+
+export function getSpecialPackNames(): { [code: string]: string } {
+  return {
+    dwlp: t`The Dunwich Legacy Investigator Expansion`,
+    dwlc: t`The Dunwich Legacy Campaign Expansion`,
+    ptcp: t`The Path to Carcosa Investigator Expansion`,
+    ptcc: t`The Path to Carcosa Campaign Expansion`,
+    tfap: t`The Forgotten Age Investigator Expansion`,
+    tfac: t`The Forgotten Age Campaign Expansion`,
+    tcup: t`The Circle Undone Investigator Expansion`,
+    tcuc: t`The Circle Undone Campaign Expansion`,
+    tdep: t`The Dream-Eaters Investigator Expansion`,
+    tdec: t`The Dream-Eaters Campaign Expansion`,
+    ticp: t`The Innsmouth Conspiracy Investigator Expansion`,
+    ticc: t`The Innsmouth Conspiracy Campaign Expansion`,
+  };
+}
+
+export function reprintPackToPack(pack: ReprintPack): Pack {
+  return {
+    id: pack.code,
+    code: pack.code,
+    name: getSpecialPackNames()[pack.code],
+    position: pack.player ? 1 : 2,
+    cycle_position: pack.cyclePosition,
+    known: 1,
+    total: 1,
   };
 }

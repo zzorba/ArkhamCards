@@ -52,7 +52,7 @@ import {
   FIXED_CHAOS_BAG_CAMPAIGN_ID,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
-import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA } from '@app_constants';
+import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA, reprintPackToPack, specialPacks } from '@app_constants';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { LatestDeckRedux, MiniCampaignRedux, MiniDeckRedux, MiniLinkedCampaignRedux } from '@data/local/types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -143,6 +143,13 @@ const dissonantVoicesPersistConfig = {
   blacklist: ['loading', 'error'],
 };
 
+const filtersPersistConfig = {
+  key: 'filters',
+  throttle: Platform.OS === 'android' ? 1000 : undefined,
+  storage: AsyncStorage,
+  blacklist: ['all', 'defaults', 'mythos', 'sorts', 'newSorts', 'cardData'],
+};
+
 // Combine all the reducers
 const rootReducer = combineReducers({
   packs: persistReducer(packsPersistConfig, packs),
@@ -152,7 +159,7 @@ const rootReducer = combineReducers({
   campaigns_2: persistReducer(campaignsPersistConfig, campaigns),
   signedIn: persistReducer(signedInPersistConfig, signedIn),
   settings: persistReducer(settingsPeristConfig, settings),
-  filters,
+  filters: persistReducer(filtersPersistConfig, filters),
   deckEdits,
   dissonantVoices: persistReducer(dissonantVoicesPersistConfig, dissonantVoices),
   trackedQueries: persistReducer(trackedQueriesPersistConfig, trackedQueries),
@@ -168,6 +175,20 @@ export default rootReducer;
 const DEFAULT_OBJECT = {};
 const DEFAULT_PACK_LIST: Pack[] = [];
 
+export const getLangChoice = createSelector(
+  (state: AppState) => state.settings.lang,
+  (state: AppState) => state.packs.lang,
+  (settingsLang: string | undefined, cardsLang: string | null) => {
+    if (settingsLang) {
+      return settingsLang;
+    }
+    if (cardsLang) {
+      return cardsLang;
+    }
+    return 'en';
+  }
+);
+
 const allCampaignsSelector = (state: AppState) => state.campaigns_2.all;
 const allGuidesSelector = (state: AppState) => state.guides.all;
 const allPacksSelector = (state: AppState) => state.packs.all;
@@ -178,6 +199,7 @@ const allDecksSelector = (state: AppState) => state.decks.all;
 function getCampaign(all: { [uuid: string]: Campaign }, campaignId: CampaignId): Campaign | undefined {
   return all[campaignId.campaignId];
 }
+
 
 export const getCampaigns = createSelector(
   allCampaignsSelector,
@@ -253,7 +275,7 @@ export function getPackFetchDate(state: AppState) {
 }
 
 
-export const getAllPacks = createSelector(
+export const getAllRealPacks = createSelector(
   allPacksSelector,
   customPacksSelector,
   showCustomContentSelector,
@@ -356,6 +378,19 @@ export const getAllPacks = createSelector(
     return sortBy(
       sortBy(
         concat(allPacks || DEFAULT_PACK_LIST, theCustomPacks), pack => pack.position),
+      pack => pack.cycle_position
+    );
+  }
+);
+
+
+export const getAllPacks = createSelector(
+  getLangChoice,
+  getAllRealPacks,
+  (_, allPacks) => {
+    const reprintPacks = map(specialPacks, pack => reprintPackToPack(pack));
+    return sortBy(
+      sortBy([...allPacks, ...reprintPacks], pack => pack.position),
       pack => pack.cycle_position
     );
   }
@@ -793,7 +828,8 @@ export const getCardSort = createSelector(
   (state: AppState, screen: CardScreenType) => screen,
   (state: AppState, screen: CardScreenType, mythosMode: boolean) => mythosMode ? DEFAULT_MYTHOS_SORT : DEFAULT_SORT,
   (sorts, screen, defaultSort): SortType[] => {
-    return sorts?.[screen] ?? defaultSort;
+    const result = sorts?.[screen] ?? defaultSort;
+    return result;
   }
 );
 
@@ -847,20 +883,6 @@ export const makeCampaignGuideStateSelector = () =>
       };
     }
   );
-
-export const getLangChoice = createSelector(
-  (state: AppState) => state.settings.lang,
-  (state: AppState) => state.packs.lang,
-  (settingsLang: string | undefined, cardsLang: string | null) => {
-    if (settingsLang) {
-      return settingsLang;
-    }
-    if (cardsLang) {
-      return cardsLang;
-    }
-    return 'en';
-  }
-);
 
 export const getAudioLangChoice = createSelector(
   (state: AppState) => state.settings.audioLang,
