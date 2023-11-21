@@ -5931,6 +5931,45 @@ msgstr ""
 msgid "The Feast of Hemlock Vale"
 msgstr ""
 
+msgid "The Dunwich Legacy Investigator Expansion"
+msgstr ""
+
+msgid "The Dunwich Legacy Campaign Expansion"
+msgstr ""
+
+msgid "The Path to Carcosa Investigator Expansion"
+msgstr ""
+
+msgid "The Path to Carcosa Campaign Expansion"
+msgstr ""
+
+msgid "The Forgotten Age Investigator Expansion"
+msgstr ""
+
+msgid "The Forgotten Age Campaign Expansion"
+msgstr ""
+
+msgid "The Circle Undone Investigator Expansion"
+msgstr ""
+
+msgid "The Circle Undone Campaign Expansion"
+msgstr ""
+
+msgid "The Dream-Eaters Investigator Expansion"
+msgstr ""
+
+msgid "The Dream-Eaters Campaign Expansion"
+msgstr ""
+
+msgid "The Innsmouth Conspiracy Investigator Expansion"
+msgstr ""
+
+msgid "The Innsmouth Conspiracy Campaign Expansion"
+msgstr ""
+
+msgid "Show original release packs"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Własny"

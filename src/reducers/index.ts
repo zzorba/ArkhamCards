@@ -251,12 +251,6 @@ export const getBackupData = createSelector(
   (state: AppState) => state.campaigns_2.all,
   (state: AppState) => state.guides.all,
   (decks, campaigns, guides): BackupState => {
-    const guidesState: { [id: string]: CampaignGuideState } = {};
-    forEach(guides, (guide, id) => {
-      if (guide) {
-        guidesState[id] = guide;
-      }
-    });
     return {
       version: 1,
       campaigns: filter(values(campaigns || {}), campaign => campaign.uuid !== FIXED_CHAOS_BAG_CAMPAIGN_ID.campaignId),
