@@ -5710,7 +5710,7 @@ msgid "App language: ${ appLanguage }"
 msgstr "앱 언어: ${ appLanguage }"
 
 msgid "Narration Language"
-msgstr "내레이션 언어"
+msgstr "내레이션 언어 (한국어 미지원)"
 
 msgid "Take the scenic route to mark time"
 msgstr "시나리오 경로로 시간 표시"
@@ -5833,43 +5833,43 @@ msgid "The Feast of Hemlock Vale"
 msgstr "헴록 계곡의 축일"
 
 msgid "The Dunwich Legacy Investigator Expansion"
-msgstr ""
+msgstr "던위치의 유산 조사자 확장"
 
 msgid "The Dunwich Legacy Campaign Expansion"
-msgstr ""
+msgstr "던위치의 유산 캠페인 확장"
 
 msgid "The Path to Carcosa Investigator Expansion"
-msgstr ""
+msgstr "카르코사로 가는 길 조사자 확장"
 
 msgid "The Path to Carcosa Campaign Expansion"
-msgstr ""
+msgstr "카르코사로 가는 길 캠페인 확장"
 
 msgid "The Forgotten Age Investigator Expansion"
-msgstr ""
+msgstr "잊힌 시대 조사자 확장"
 
 msgid "The Forgotten Age Campaign Expansion"
-msgstr ""
+msgstr "잊힌 시대 캠페인 확장"
 
 msgid "The Circle Undone Investigator Expansion"
-msgstr ""
+msgstr "끝맺지 못한 의식 조사자 확장"
 
 msgid "The Circle Undone Campaign Expansion"
-msgstr ""
+msgstr "끝맺지 못한 의식 캠페인 확장"
 
 msgid "The Dream-Eaters Investigator Expansion"
-msgstr ""
+msgstr "꿈을 먹는 자 조사자 확장"
 
 msgid "The Dream-Eaters Campaign Expansion"
-msgstr ""
+msgstr "꿈을 먹는 자 캠페인 확장"
 
 msgid "The Innsmouth Conspiracy Investigator Expansion"
-msgstr ""
+msgstr "인스머스에 드리운 음모 조사자 확장"
 
 msgid "The Innsmouth Conspiracy Campaign Expansion"
-msgstr ""
+msgstr "인스머스에 드리운 음모 캠페인 확장"
 
 msgid "Show original release packs"
-msgstr ""
+msgstr "기존 딜럭스/신화팩 형식도 보기"
 
 msgctxt "investigator"
 msgid "Custom"
