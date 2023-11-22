@@ -241,8 +241,8 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "погиб при крушении.",
-            "feminine_text": "погибла при крушении."
+            "masculine_text": "#name# погиб при крушении.",
+            "feminine_text": "#name# погибла при крушении."
           },
           {
             "id": "camp_barrier_camp",

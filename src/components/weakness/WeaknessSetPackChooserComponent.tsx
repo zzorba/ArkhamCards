@@ -6,6 +6,7 @@ import PackListComponent from '@components/core/PackListComponent';
 import { BASIC_WEAKNESS_QUERY } from '@data/sqlite/query';
 import { getPacksInCollection, AppState } from '@reducers';
 import { useSettingValue, useToggles, useWeaknessCards } from '@components/core/hooks';
+import { specialPacks } from '@app_constants';
 
 export function ControlledWeaknessSetPackChooserComponent({
   componentId,
@@ -77,6 +78,13 @@ export default function WeaknessSetPackChooserComponent({
     const checks: { [key: string]: boolean } = {
       ...(ignore_collection ? all_packs : in_collection),
     };
+    forEach(specialPacks, pack => {
+      if (in_collection[pack.code]) {
+        forEach(pack.packs, p => {
+          checks[p] = true;
+        });
+      }
+    });
     forEach(override, (value, key) => {
       checks[key] = !!value;
     });

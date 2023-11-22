@@ -87,8 +87,8 @@ export default function PackRow({
     setChecked && setChecked(pack.code, value);
     if (setCycleChecked &&
       pack.position === 1 &&
-      pack.cycle_position < 50 &&
       pack.cycle_position > 1 &&
+      pack.cycle_position < 8 &&
       cycle.length > 0
     ) {
       // This is the lead pack in a cycle.
