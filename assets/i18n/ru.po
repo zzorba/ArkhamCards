@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2023-10-30 14:48+0300\n"
+"PO-Revision-Date: 2023-11-22 19:33+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -2239,19 +2239,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -5942,28 +5942,28 @@ msgid "The Feast of Hemlock Vale"
 msgstr ""
 
 msgid "The Dunwich Legacy Investigator Expansion"
-msgstr ""
+msgstr "Наследие Данвича. Сыщики"
 
 msgid "The Dunwich Legacy Campaign Expansion"
-msgstr ""
+msgstr "Наследие Данвича. Кампания"
 
 msgid "The Path to Carcosa Investigator Expansion"
-msgstr ""
+msgstr "Путь в Каркозу. Сыщики"
 
 msgid "The Path to Carcosa Campaign Expansion"
-msgstr ""
+msgstr "Путь в Каркозу. Кампания"
 
 msgid "The Forgotten Age Investigator Expansion"
-msgstr ""
+msgstr "Забытая Эпоха. Сыщики"
 
 msgid "The Forgotten Age Campaign Expansion"
-msgstr ""
+msgstr "Забытая Эпоха. Кампания"
 
 msgid "The Circle Undone Investigator Expansion"
-msgstr ""
+msgstr "Нарушенный круг. Сыщики"
 
 msgid "The Circle Undone Campaign Expansion"
-msgstr ""
+msgstr "Нарушенный круг. Кампания"
 
 msgid "The Dream-Eaters Investigator Expansion"
 msgstr ""
@@ -5978,7 +5978,7 @@ msgid "The Innsmouth Conspiracy Campaign Expansion"
 msgstr ""
 
 msgid "Show original release packs"
-msgstr ""
+msgstr "Показать наборы в формате 1+6"
 
 msgctxt "investigator"
 msgid "Custom"
