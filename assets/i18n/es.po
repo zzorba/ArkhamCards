@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.1\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4.1\n"
 
 msgid "Guardian"
 msgstr "Guardián"
@@ -797,19 +797,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -2871,7 +2871,7 @@ msgid "Slot: ${ card.slot }"
 msgstr "Espacio: ${ card.slot }"
 
 msgid "Search rules"
-msgstr "Reglas de búsqueda"
+msgstr "Búsqueda de reglas"
 
 msgid "Signature Weakness"
 msgstr "Debilidad característica"
@@ -5888,46 +5888,46 @@ msgid "You cannot have more than 5 Mystic cards."
 msgstr ""
 
 msgid "The Feast of Hemlock Vale"
-msgstr ""
+msgstr "La fiesta del valle de la cicuta"
 
 msgid "The Dunwich Legacy Investigator Expansion"
-msgstr ""
+msgstr "El legado de Dunwich Expansión de Investigadores"
 
 msgid "The Dunwich Legacy Campaign Expansion"
-msgstr ""
+msgstr "El legado de Dunwich Expansión de Campaña"
 
 msgid "The Path to Carcosa Investigator Expansion"
-msgstr ""
+msgstr "El camino a Carcosa Expansión de Investigadores"
 
 msgid "The Path to Carcosa Campaign Expansion"
-msgstr ""
+msgstr "El camino a Carcosa Expansión de Campaña"
 
 msgid "The Forgotten Age Investigator Expansion"
-msgstr ""
+msgstr "La era olvidada Expansión de Investigadores"
 
 msgid "The Forgotten Age Campaign Expansion"
-msgstr ""
+msgstr "La era olvidada Expansión de Campaña"
 
 msgid "The Circle Undone Investigator Expansion"
-msgstr ""
+msgstr "El círculo roto Expansión de Investigadores"
 
 msgid "The Circle Undone Campaign Expansion"
-msgstr ""
+msgstr "El círculo roto Expansión de Campaña"
 
 msgid "The Dream-Eaters Investigator Expansion"
-msgstr ""
+msgstr "Los devoradores de sueños Expansión de Investigadores"
 
 msgid "The Dream-Eaters Campaign Expansion"
-msgstr ""
+msgstr "Los devoradores de sueños Expansión de Campaña"
 
 msgid "The Innsmouth Conspiracy Investigator Expansion"
-msgstr ""
+msgstr "La conspiración de Innsmouth Expansión de Investigadores"
 
 msgid "The Innsmouth Conspiracy Campaign Expansion"
-msgstr ""
+msgstr "La conspiración de Innsmouth Expansión de Campaña"
 
 msgid "Show original release packs"
-msgstr ""
+msgstr "Mostrar packs originales"
 
 msgctxt "investigator"
 msgid "Custom"
