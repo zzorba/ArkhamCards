@@ -1047,7 +1047,7 @@
       },
       {
         "code": "09081",
-        "text": "이 카드의 문구 상자는 이제 다음과 같이 바뀝니다: “[action] 부착된 적이 당신이 위치한 장소에 있다면: <b>협상.</b> [willpower](3)를 테스트합니다. 성공하면, 그 적에게 명령을 내립니다(각각의 명령마다 라운드당 1번 한정) - 가라.“ 이 적은 당신이 선택한 방향으로 1칸 이동합니다.”\n이 카드의 향상 시트는 “자비를 배풀어라” 기능을 잃고 “☐ 두려워하라. 이 명령을 추가합니다. - “두려워하라.” 이 적은 소진됩니다.” 문구를 얻습니다.",
+        "text": "이 카드의 문구 상자는 이제 다음과 같이 바뀝니다: “[action] 부착된 적이 당신이 위치한 장소에 있다면: <b>협상.</b> [willpower](3)를 테스트합니다. 성공하면, 그 적에게 명령을 내립니다(각각의 명령마다 라운드당 1번 한정) - <i>“가라.”</i> 이 적은 당신이 선택한 방향으로 1칸 이동합니다.”\n이 카드의 향상 시트는 “자비를 배풀어라” 기능을 잃고 “☐ 두려워하라. 이 명령을 추가합니다. - “두려워하라.” 이 적은 소진됩니다.” 문구를 얻습니다.",
         "customization_options": [
           {
             "xp": 1,
@@ -1090,7 +1090,7 @@
         ],
         "customization_change": "- <i>“Betray.”</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>“Cower.”</i> This enemy exhausts.\n- <i>“Confess.”</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>“Distract.”</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Give it up to two different commands (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
         "customization_text": "□ <b>Betray.</b> Add the command: “- <i>‘Betray.’</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.”\n□ <b>Cower.</b> Add the command: “- <i>‘Cower.’</i> This enemy exhausts.”\n□ <b>Confess.</b> Add the command: “- <i>‘Confess.’</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.”\n□ <b>Distract.</b> Add the command: “- <i>‘Distract.’</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.”\n□□ <b>Greater Control.</b> Power Word gains “[fast]: Return Power Word to your hand.”\n□□□ <b>Bonded.</b> You may activate the parley ability on Power Word from up to one location away from the attached enemy.\n□□□ <b>Tonguetwister.</b> When you parley with Power Word, you may give up to two different commands.\n□□□ <b>Thrice Spoken.</b> You may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "replacement_text": "변형. 맞춤형. 신속. 당신의 차례에만 플레이할 수 있습니다.\n당신이 위치한 장소의 [[정예]]가 아닌 적 하나에 부착합니다.\n[action] 부착된 적이 당신이 위치한 장소에 있다면: <b>협상.</b> [willpower](3)를 테스트합니다. 성공하면, 그 적에게 명령을 내립니다(각각의 명령마다 라운드당 1번 한정).\n - <i>“가라.”</i> 이 적은 당신이 선택한 방향으로 1칸 이동합니다."
       }
     ]
   }
