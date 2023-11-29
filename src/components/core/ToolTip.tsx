@@ -4,10 +4,11 @@ import StyleContext from "@styles/StyleContext";
 
 interface Props {
   label: string | undefined;
-  size: number;
   children: ReactNode;
+  height: number;
+  width: number
 }
-export default function ToolTip({ label, size, children }: Props) {
+export default function ToolTip({ label, height, width, children }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const [toggle, setToggle] = useState(false);
 
@@ -27,7 +28,7 @@ export default function ToolTip({ label, size, children }: Props) {
             style={{
               position: "absolute",
               backgroundColor: colors.background,
-              bottom: size,
+              bottom: height+5,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -49,8 +50,8 @@ export default function ToolTip({ label, size, children }: Props) {
             style={{
               width: 0,
               height: 0,
-              left: size / 2 - 7.5,
-              top: -4,
+              left: width / 2 - 7.5,
+              bottom: height,
               backgroundColor: "transparent",
               borderStyle: "solid",
               borderLeftWidth: 7.5,
