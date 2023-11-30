@@ -90,7 +90,8 @@ export default function EncounterSetStepComponent({ componentId, color, campaign
             { map(encounterSets, set => !!set && (
               <View style={[space.marginSideS, space.marginBottomM]} key={set.code}>
                 <ToolTip
-                  size={48}
+                  height={48}
+                  width={48}
                   label={set.name}
                 >
                   <EncounterIcon

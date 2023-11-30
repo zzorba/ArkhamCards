@@ -9,6 +9,7 @@ import AppIcon from '@icons/AppIcon';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { LocationAnnotation } from '@data/scenario/types';
+import ToolTip from '@components/core/ToolTip';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 const ATLACH = require('../../../../assets/atlach.jpg');
@@ -59,13 +60,16 @@ function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height
     );
   }
   return (
-    <FastImage
-      style={[styles.verticalCardImage, { width, height }, rotate ? { transform: [{ rotate: rotateLeft ? '-90deg' : '90deg' }] } : undefined]}
-      source={{
-        uri,
-      }}
-      resizeMode="contain"
-    />
+    <ToolTip label={(back && card.back_name) || card.name} height={height} width={width}>
+      <FastImage
+        style={[styles.verticalCardImage, { width, height }, rotate ? { transform: [{ rotate: rotateLeft ? '-90deg' : '90deg' }] } : undefined]}
+        source={{
+          uri,
+        }}
+        resizeMode="contain"
+      />
+    </ToolTip>
+   
   );
 }
 
