@@ -10,7 +10,7 @@ import useSingleCard from '@components/card/useSingleCard';
 import { combineQueries, NO_BARKHAM_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, NO_DUPLICATES_QUERY, where } from '@data/sqlite/query';
 import { queryForInvestigator } from '@lib/InvestigatorRequirements';
 import randomDeck from '@lib/randomDeck';
-import Card, { CardsMap } from '@data/types/Card';
+import Card, { CardsMap, cardInCollection } from '@data/types/Card';
 import specialCards from '@data/deck/specialCards';
 import { usePlayerCards, useSettingValue } from '@components/core/hooks';
 import { getPacksInCollection } from '@reducers';
@@ -97,8 +97,7 @@ export function useDraftableCards({
       return !c.has_restrictions && (
         ignore_collection ||
         (c.pack_code === 'core' && !in_collection.no_core) ||
-        in_collection[c.pack_code] ||
-        !!find(c.reprint_pack_codes, pc => in_collection[pc])
+        cardInCollection(c, in_collection)
       ) ? c.code : [];
     });
   }, [playerCards, ignore_collection, in_collection]);

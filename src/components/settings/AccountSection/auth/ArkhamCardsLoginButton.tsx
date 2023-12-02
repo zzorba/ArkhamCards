@@ -439,12 +439,6 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const [signupDialog, showSignupDialog] = useConfirmSignupDialog();
   const [showConfirmDelete, deleteDialog] = useDeleteAccountDialog(user, doLogout);
   const logoutPressed = useCallback(() => {
-    const deleteAccountButton: AlertButton = {
-      icon: 'trash',
-      style: 'destructive',
-      text: t`Delete your account`,
-      onPress: showConfirmDelete,
-    };
     showAlert(
       t`Sign out of Arkham Cards?`,
       t`Are you sure you want to sign out of Arkham Cards?\n\nAny campaigns you uploaded or have had shared with you will be removed from this device. They can be resynced if you sign in again.\n\nNote: if you have made recent changes while offline, they may be lost.`,
@@ -453,7 +447,12 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
           text: t`Cancel`,
           style: 'cancel',
         },
-        ...(Platform.OS === 'ios' ? [deleteAccountButton] : []),
+        {
+          icon: 'trash',
+          style: 'destructive',
+          text: t`Delete your account`,
+          onPress: showConfirmDelete,
+        },
         {
           icon: 'resign',
           text: t`Sign out`,

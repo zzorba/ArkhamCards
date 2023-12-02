@@ -17,6 +17,7 @@ import { campaignDescription, campaignName } from '../constants';
 import { getPacksInCollection } from '@reducers';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import { useSettingValue } from '@components/core/hooks';
+import { packInCollection } from '@data/types/Card';
 
 export interface SelectCampagaignProps {
   campaigns: CampaignCycleCode[];
@@ -52,9 +53,14 @@ export default function CampaignTab({ campaignChanged, campaigns, segment, inclu
     }
     return partition(
       campaigns,
-      pack_code => (ignore_collection || in_collection[pack_code] || (pack_code === 'core' && !in_collection.no_core) || (pack_code === 'core' && in_collection.rcore) || (
+      pack_code => (
+        ignore_collection ||
+        packInCollection({ pack: pack_code, encounter: false }, in_collection) ||
+        (pack_code === 'core' && !in_collection.no_core) ||
+        (pack_code === 'core' && in_collection.rcore) || (
         in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE) ||
-        (in_collection.eoec && pack_code === EOE)))
+        (in_collection.eoec && pack_code === EOE))
+      )
     );
   }, [segment, campaigns, in_collection, ignore_collection]);
   return (

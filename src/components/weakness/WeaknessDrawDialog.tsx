@@ -14,7 +14,7 @@ import { useFlag, useSettingValue, useSlots, useWeaknessCards } from '@component
 import ToggleFilter from '@components/core/ToggleFilter';
 import StyleContext from '@styles/StyleContext';
 import BasicButton from '@components/core/BasicButton';
-import Card from '@data/types/Card';
+import Card, { cardInCollection } from '@data/types/Card';
 
 export interface DrawWeaknessProps {
   investigator: Card | undefined;
@@ -88,7 +88,7 @@ export default function WeaknessDrawDialog({ componentId, investigator, saveWeak
       if (!weaknessCard) {
         return;
       }
-      if (ignore_collection || in_collection[weaknessCard.pack_code] || weaknessCard.pack_code === 'core') {
+      if (ignore_collection || cardInCollection(weaknessCard, in_collection) || weaknessCard.pack_code === 'core') {
         packCodes[weaknessCard.pack_code] = 1;
       }
     });

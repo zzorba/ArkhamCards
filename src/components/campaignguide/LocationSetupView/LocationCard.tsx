@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { StyleSheet, Text, TextStyle, View } from 'react-native';
+import { Image, StyleSheet, Text, TextStyle, View } from 'react-native';
 import { map, range } from 'lodash';
 import FastImage from 'react-native-blasted-image';
 
@@ -129,7 +129,7 @@ export default function LocationCard({ annotation, code, height, width, left, to
         );
       case 'player_back':
         return (
-          <FastImage
+          <Image
             style={styles.verticalCardImage}
             source={PLAYER_BACK}
             resizeMode="contain"
@@ -137,7 +137,7 @@ export default function LocationCard({ annotation, code, height, width, left, to
         );
       case 'atlach':
         return (
-          <FastImage
+          <Image
             style={styles.verticalCardImage}
             source={ATLACH}
             resizeMode="contain"

@@ -706,6 +706,28 @@
     ]
   },
   {
+    "id": "List_of_Taboos",
+    "title": "The List of Taboos",
+    "text": "The List of Taboos is a list of <i>Arkham Horror: The Card Game</i> cards with optional deckbuilding restrictions or text changes. This list is designed to craft a healthy balance between investigator power and scenario difficulty, and to enforce shifts in deckbuilding environments over time.\nAdhering to The List of Taboos is completely optional. Investigators are not forced to adhere to the restrictions on this list, but if an investigator chooses to do so, they must do so in full (an investigator cannot pick and choose which restrictions to use).",
+    "rules": [
+      {
+        "id": "Chained_Unchained",
+        "title": "Chained / Unchained",
+        "text": "Cards from this list have their experience cost increased or decreased. Each card’s level remains the same—only the experience spent to purchase the card is altered. This experience adjustment should also be taken into account when upgrading to or from a card that is on this list."
+      },
+      {
+        "id": "Mutated",
+        "title": "Mutated",
+        "text": "Cards from this list have additional or altered text."
+      },
+      {
+        "id": "Forbidden",
+        "title": "Forbidden",
+        "text": "Cards from this list cannot be included in your deck."
+      }
+    ]
+  },
+  {
     "id": "Location_Cards",
     "title": "Location Cards",
     "text": "Location cards represent the places the investigators may explore during a scenario.\n- Use each investigator's mini-card to indicate which location he or she is at.\n- While an investigator is at a location, that investigator, each of his or her assets, and each card in that investigator's threat area is at the same location.\n- Locations enter play in an \"unrevealed\" state, so that the side with no shroud value and/or clue value is faceup. Do not read the \"revealed\" side at this time.\n- The first time a location is entered by an investigator, that location is revealed by turning it to its other side and placing a number of clues on it equal to its clue value (this may occur during setup). Most clue values are conveyed as a \"per investigator\" ([per_investigator]) value.\n- A location with its shroud/clue value side faceup is in the \"revealed\" state.",

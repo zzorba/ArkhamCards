@@ -1036,6 +1036,11 @@ export default class Card {
         }
       });
     }
+
+    const alternatePack = (this.encounter_code) ? specialReprintCampaignPacks[this.pack_code] : specialReprintPlayerPacks[this.pack_code];
+    if (alternatePack && packInCollection[alternatePack]) {
+      quantity += this.quantity ?? 0;
+    }
     return quantity;
   }
 
@@ -1639,6 +1644,20 @@ export function cardInCollection(
     return false;
   }
   return !!find(reprintPacks, pack => !!packInCollection[pack]);
+}
+
+export function packInCollection(
+  { pack, encounter }: { pack: string; encounter: boolean },
+    inCollection: { [pack_code: string]: boolean | undefined }
+) {
+  if (inCollection[pack]) {
+    return true;
+  }
+  const alternatePack = (encounter) ? specialReprintCampaignPacks[pack] : specialReprintPlayerPacks[pack];
+  if (alternatePack && inCollection[alternatePack]) {
+    return true;
+  }
+  return false;
 }
 
 export type CardKey = keyof Card;

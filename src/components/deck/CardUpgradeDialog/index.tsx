@@ -11,7 +11,7 @@ import CardUpgradeOption from './CardUpgradeOption';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/actions';
 import DeckValidation from '@lib/DeckValidation';
-import Card, { CardsMap } from '@data/types/Card';
+import Card, { CardsMap, cardInCollection } from '@data/types/Card';
 import { NavigationProps } from '@components/nav/types';
 import space, { m } from '@styles/space';
 import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
@@ -169,13 +169,12 @@ export default function CardUpgradeDialog({
     setShowNonCollection(true);
   }, [setShowNonCollection]);
 
-  const cardInCollection = useCallback((card: Card): boolean => {
+  const isCardInCollection = useCallback((card: Card): boolean => {
     return (
       (card.pack_code === 'core' && !inCollection.no_core) ||
       ignore_collection ||
-      inCollection[card.pack_code] ||
-      !!find(card.reprint_pack_codes || [], pack_code => inCollection[pack_code]) ||
-      showNonCollection
+      showNonCollection ||
+      cardInCollection(card, inCollection)
     );
   }, [inCollection, showNonCollection, ignore_collection]);
 
@@ -227,7 +226,7 @@ export default function CardUpgradeDialog({
     }
     const [inCollection] = partition(
       namedCards,
-      card => cardInCollection(card) || slots[card.code] > 0);
+      card => isCardInCollection(card) || slots[card.code] > 0);
     const [baseCards, eligibleCards] = partition(inCollection, card => shrewdAnalysisRule(card));
     if (eligibleCards.length && baseCards.length) {
       const baseCard = baseCards[0];
@@ -241,13 +240,13 @@ export default function CardUpgradeDialog({
       setShrewdAnalysisResult([firstCard.code, secondCard.code]);
       dispatch(setDeckXpAdjustment(id, deckEdits.xpAdjustment + xpCost));
     }
-  }, [deckEdits, namedCards, dispatch, id, cardInCollection, shrewdAnalysisRule]);
+  }, [deckEdits, namedCards, dispatch, id, isCardInCollection, shrewdAnalysisRule]);
 
   const shrewdAnalysisContent = useMemo(() => {
     if (!deckEdits) {
       return;
     }
-    const [inCollection] = partition(namedCards, card => cardInCollection(card) || deckEdits.slots[card.code] > 0);
+    const [inCollection] = partition(namedCards, card => isCardInCollection(card) || deckEdits.slots[card.code] > 0);
     const [baseCards, eligibleCards] = partition(inCollection, card => shrewdAnalysisRule(card));
     if (eligibleCards.length && baseCards.length) {
       const baseCard = baseCards[0];
@@ -278,7 +277,7 @@ export default function CardUpgradeDialog({
       );
     }
     return null;
-  }, [typography, cardInCollection, deckEdits, namedCards, shrewdAnalysisRule]);
+  }, [typography, isCardInCollection, deckEdits, namedCards, shrewdAnalysisRule]);
 
   const { dialog: shrewdAnalysisDialog, setVisible: setShrewdAnalysisDialogVisible } = useDialog({
     title: t`Shrewd Analysis Rule`,
@@ -309,7 +308,7 @@ export default function CardUpgradeDialog({
     }
     const [inCollection, nonCollection] = partition(
       namedCards,
-      card => cardInCollection(card) || slots[card.code] > 0);
+      card => isCardInCollection(card) || slots[card.code] > 0);
     const cards = map(inCollection, card => {
       return {
         card,
@@ -369,7 +368,7 @@ export default function CardUpgradeDialog({
         ) : null }
       </>
     );
-  }, [slots, deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, cardInCollection, specialIgnoreRule, ignoreData, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
+  }, [slots, deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, isCardInCollection, specialIgnoreRule, ignoreData, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
   return (
     <View
       style={[styles.wrapper, backgroundStyle]}

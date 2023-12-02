@@ -18,7 +18,7 @@ import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { useFlag, useSettingValue } from '@components/core/hooks';
 import { DeckMeta, CardId, ParsedDeck, SplitCards, EditDeckState, Customizations, Slots } from '@actions/types';
 import { TypeCodeType, RANDOM_BASIC_WEAKNESS, DOWN_THE_RABBIT_HOLE_CODE } from '@app_constants';
-import Card, { CardsMap } from '@data/types/Card';
+import Card, { CardsMap, cardInCollection } from '@data/types/Card';
 import DeckValidation from '@lib/DeckValidation';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import { getPacksInCollection } from '@reducers';
@@ -46,7 +46,7 @@ function hasUpgrades(
       upgradeCard.code !== code &&
       (upgradeCard.xp || 0) > (card.xp || 0) &&
       validation.canIncludeCard(upgradeCard, false) &&
-      ((upgradeCard.pack_code === 'core' && !inCollection.no_core) || ignoreCollection || inCollection[upgradeCard.pack_code])
+      ((upgradeCard.pack_code === 'core' && !inCollection.no_core) || ignoreCollection || cardInCollection(upgradeCard, inCollection))
     )));
 }
 
