@@ -2,6 +2,7 @@ import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useRef, 
 import { filter, flatMap, forEach, keys, map } from 'lodash';
 import {
   ActivityIndicator,
+  Image,
   LayoutChangeEvent,
   SafeAreaView,
   StyleSheet,
@@ -258,7 +259,7 @@ export default function WeaknessDrawComponent({ componentId,investigator, weakne
               clickable={false}
               onFlipEnd={onFlipEnd}
             >
-              <FastImage
+              <Image
                 style={styles.verticalCardImage}
                 source={PLAYER_BACK}
                 resizeMode="contain"
