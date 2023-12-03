@@ -797,19 +797,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -5873,22 +5873,22 @@ msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
 msgstr "Selladas (${ chaosBagResults.sealedTokens.length })"
 
 msgid "Spirit Deck"
-msgstr ""
+msgstr "Mazo de espíritus"
 
 msgid "Edit Spirit Deck"
-msgstr ""
+msgstr "Editar mazo de espíritus"
 
 msgid "No permanents except story and signature permanents"
-msgstr ""
+msgstr "No puedes llevar cartas Permanente que no sean Características o de Historia"
 
 msgid "You cannot have more than 5 Survivor cards."
-msgstr ""
+msgstr "No puedes llevar más de 5 cartas Superviviente."
 
 msgid "You cannot have more than 5 Mystic cards."
-msgstr ""
+msgstr "No puedes llevar más de 5 cartas Místico."
 
 msgid "The Feast of Hemlock Vale"
-msgstr "La fiesta del valle de la cicuta"
+msgstr "La fiesta del Valle de la Cicuta"
 
 msgid "The Dunwich Legacy Investigator Expansion"
 msgstr "El legado de Dunwich Expansión de Investigadores"
