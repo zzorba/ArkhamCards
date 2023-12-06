@@ -52,7 +52,7 @@ function showDeKofi() {
 }
 
 function showRuDonate() {
-  Linking.openURL('https://www.tinkoff.ru/cf/2iB3erSz1KQ');
+  Linking.openURL('https://www.tinkoff.ru/cf/27GmNzxhhUk');
 }
 
 export default function SettingsView({ componentId }: NavigationProps) {

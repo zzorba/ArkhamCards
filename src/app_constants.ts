@@ -542,13 +542,13 @@ export const specialPacks: ReprintPack[] = [
   },
   {
     code: 'tcup',
-    packs: ['tcu', 'tsb', 'wos', 'fgg', 'uad', 'icc', 'bbt'],
+    packs: ['tcu', 'tsn', 'wos', 'fgg', 'uad', 'icc', 'bbt'],
     player: true,
     cyclePosition: 5,
   },
   {
     code: 'tcuc',
-    packs: ['tcu', 'tsb', 'wos', 'fgg', 'uad', 'icc', 'bbt'],
+    packs: ['tcu', 'tsn', 'wos', 'fgg', 'uad', 'icc', 'bbt'],
     player: false,
     cyclePosition: 5,
   },
