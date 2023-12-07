@@ -5883,22 +5883,22 @@ msgid "The Feast of Hemlock Vale"
 msgstr ""
 
 msgid "The Dunwich Legacy Investigator Expansion"
-msgstr ""
+msgstr "Das Vermächtnis von Dunwich (Ermittler-Erweiterung)"
 
 msgid "The Dunwich Legacy Campaign Expansion"
-msgstr ""
+msgstr "Das Vermächtnis von Dunwich (Kampagnen-Erweiterung)"
 
 msgid "The Path to Carcosa Investigator Expansion"
-msgstr ""
+msgstr "Der Pfad nach Carcosa (Ermittler-Erweiterung)"
 
 msgid "The Path to Carcosa Campaign Expansion"
-msgstr ""
+msgstr "Der Pfad nach Carcosa (Kampagnen-Erweiterung)"
 
 msgid "The Forgotten Age Investigator Expansion"
-msgstr ""
+msgstr "Das vergessene Zeitalter (Ermittler-Erweiterung)"
 
 msgid "The Forgotten Age Campaign Expansion"
-msgstr ""
+msgstr "Das vergessene Zeitalter (Kampagnen-Erweiterung)"
 
 msgid "The Circle Undone Investigator Expansion"
 msgstr ""
