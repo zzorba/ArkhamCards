@@ -717,17 +717,17 @@
       {
         "code": "60318",
         "text": "En lugar de “Devuelve todas las Debilidades descartadas…”, la capacidad de esta carta ahora dice: “Después de resolver los efectos de esta prueba, roba todas las Debilidades descartadas por este efecto.”",
-        "replacement_text": "Mutada.\nDespués de que asignes Temerario a una prueba de habilidad, descarta cartas de la parte superior de tu mazo hasta que descartes una habilidad [rogue] que puedas asignar a esta prueba. Asígnala. Después de que se resuelva esta prueba de habilidad, roba todas las Debilidades descartadas por este efecto."
+        "replacement_text": "Mutada.\nDespués de que asignes Temerario a una prueba de habilidad, descarta cartas de la parte superior de tu mazo hasta que descartes una Habilidad [rogue] que puedas asignar a esta prueba. Asígnala. Después de que se resuelva esta prueba de habilidad, roba todas las Debilidades descartadas por este efecto."
       },
       {
         "code": "07003",
         "text": "La capacidad [reaction] de esta carta ahora dice: “Después de que descubras 1 o más pistas en un Lugar con un Enemigo: Descubre 1 pista adicional en ese Lugar o bien evita automáticamente a ese Enemigo si no es [[Élite]]. Límite de una vez por ronda.\".",
-        "replacement_text": "Mutada.\n[reaction] Después de que descubras 1 o más pistas en un Lugar con un Enemigo: Descubre 1 pista adicional en ese Lugar o bien evita automáticamente a ese Enemigo si no es [[Élite]]. Límite de una vez por ronda.\nEfecto [elder_sign]: +2. Si es durante una investigación, puedes elegir cualquier Lugar revelado; ahora estás investigando como estuvieras en ese Lugar en lugar del original."
+        "replacement_text": "Mutada.\n[reaction] Después de que descubras 1 o más pistas en un Lugar con un Enemigo: Descubre 1 pista adicional en ese Lugar o bien evita automáticamente a ese Enemigo si no es [[Élite]]. Límite de una vez por ronda.\nEfecto [elder_sign]: +2. Si es durante una investigación, puedes elegir cualquier Lugar revelado; ahora estás investigando como si estuvieras en ese Lugar en lugar del original."
       },
       {
         "code": "07122",
         "text": "La capacidad [reaction] de esta carta ahora dice: “Cuando resuelvas una ficha [bless] durante una prueba de habilidad...\".",
-        "replacement_text": "Mutada. Permanente. Límite de 1 Acuerdo por mazo.\nCuando resuelvas una ficha [bless] durante una prueba de habilidad, agota el Acuerdo antiguo: No reveles otra ficha como parte del efecto de esta ficha [bless]."
+        "replacement_text": "Mutada. Permanente. Límite de 1 Acuerdo por mazo.\n[reaction] Cuando resuelvas una ficha [bless] durante una prueba de habilidad, agota el Acuerdo antiguo: No reveles otra ficha como parte del efecto de esta ficha [bless]."
       },
       {
         "code": "60233",
@@ -822,7 +822,7 @@
       {
         "code": "08032",
         "text": "Esta carta obtiene: “Máximo de dos veces por partida.”.",
-        "replacement_text": "Recibes +1 [intellect].\n[reaction] Después de que Jeremiah Kirby entre en juego, elige \"par\" o \"impar\": Revela las primeras 5 cartas de tu mazo. Roba cada carta cuyo coste coincida con la opción elegida. Devuelve las cartas restantes a tu mazo y barájalo. Máximo dos veces por partida."
+        "replacement_text": "Mutada. Recibes +1 [intellect].\n[reaction] Después de que Jeremiah Kirby entre en juego, elige \"par\" o \"impar\": Revela las primeras 5 cartas de tu mazo. Roba cada carta cuyo coste coincida con la opción elegida. Devuelve las cartas restantes a tu mazo y barájalo. Máximo dos veces por partida."
       },
       {
         "code": "01033",
@@ -883,7 +883,7 @@
       {
         "code": "05020",
         "text": "La capacidad de esta carta ahora dice: “<b>Negociar</b>. Elige un Enemigo que no sea [[Élite]] que esté en tu Lugar…”.",
-        "replacement_text": "Mutada\n<b>Negociar.</b> Elige un Enemigo que esté en tu Lugar y realiza una prueba de [combat] (3). Esta prueba recibe un +X a su dificultad, donde X es el valor de daño del Enemigo elegido. Si tienes éxito, descubre 1 pista en tu Lugar y 1 pista en cualquier otro Lugar."
+        "replacement_text": "Mutada.\n<b>Negociar.</b> Elige un Enemigo que no sea [[Élite]] que esté en tu Lugar y realiza una prueba de [combat] (3). Esta prueba recibe un +X a su dificultad, donde X es el valor de daño del Enemigo elegido. Si tienes éxito, descubre 1 pista en tu Lugar y 1 pista en cualquier otro Lugar."
       },
       {
         "code": "06195",
@@ -1033,7 +1033,7 @@
       {
         "code": "08100",
         "text": "Esta carta ahora dice \"siguientes acciones básicas\" en lugar de \"siguientes acciones.\".",
-        "replacement_text": "Mutada. Usos (3 secretos).\n[fast] Durante tu turno, agota la Carta de los evos y gasta 1 secreto: Elige y realiza dos de las siguientes acciones básicas, en cualquier orden (movimiento, evitar o investigar)."
+        "replacement_text": "Mutada. Usos (3 secretos).\n[fast] Durante tu turno, agota la Carta de los evos y gasta 1 secreto: Elige y realiza dos acciones básicas diferentes de las siguientes, en cualquier orden (movimiento, evitar o investigar)."
       },
       {
         "code": "08093",
@@ -1043,7 +1043,7 @@
       {
         "code": "09045",
         "text": "La segunda capacidad de esta carta obtiene: “Máximo de 3 pruebas gastadas por ronda.”",
-        "replacement_text": "Mutada.\n[reaction] Después de que una capacidad de una carta de Jugador coloque 1 o más de tus pistas sobre tu Lugar: Coloca esa misma cantidad de recursos sobre las Notas de investigación como pruebas.\n[action]: Realiza una prueba de [intellect] (0). Por cada punto que tengas por encima del valor mínimo de éxito, puedes gastar 1 prueba para descubrir 1 pista en tu Lugar. Máximo de 3 pruebas por ronda."
+        "replacement_text": "Mutada.\n[reaction] Después de que una capacidad de una carta de Jugador coloque 1 o más de tus pistas sobre tu Lugar: Coloca esa misma cantidad de recursos sobre las Notas de investigación como pruebas.\n[action]: Realiza una prueba de [intellect] (0). Por cada punto que tengas por encima del valor mínimo de éxito, puedes gastar 1 prueba para descubrir 1 pista en tu Lugar. Máximo de 3 pruebas gastadas por ronda."
       },
       {
         "code": "09081",
@@ -1090,7 +1090,7 @@
         ],
         "customization_change": "- <i>\"Traiciona\".</i> Inflige 1 punto de daño a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de combate igual o menor que este Enemigo.\n- <i>\"Acobárdate.\"</i> Este Enemigo se agota.\n- <i>\"Confiesa\".</i> Descubre 1 pista en el Lugar de este Enemigo si su salud es igual o mayor que el velo de su Lugar.\n- <i>\"Distrae\".</i> Evita automáticamente a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de evitar igual o menor que este Enemigo.\n[free]: Devuelve la Palabra de poder a tu mano.\nPuedes activar la capacidad de negociar de la Palabra de poder desde un máximo de un Lugar de distancia del Enemigo vinculado.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar.</b> Realiza una prueba de [willpower] (3). Si tienes éxito, dale hasta dos órdenes distintas (límite de una vez por ronda y por orden) -\nPuedes incluir tres copias de la Palabra de poder en tu mazo. Cuando des una orden usando una copia, dale también esa orden a cada uno de los demás Enemigos que tenga vinculada una de tus copias de la Palabra de poder.",
         "customization_text": "□ <b>Traiciona.</b> Añade la orden: \"- <i>'Traiciona'.</i> Inflige 1 punto de daño a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de combate igual o menor que este Enemigo.\".\n□ <b>Acobárdate.</b> Añade la orden: \"- <i>'Acobárdate.'</i> Este Enemigo se agota.\".\n□ <b>Confiesa.</b> Añade la orden: \"- <i>'Confiesa'.</i> Descubre 1 pista en el Lugar de este Enemigo si su salud es igual o mayor que el velo de su Lugar.\".\n□ <b>Distrae.</b> Añade la orden: \"- <i>'Distrae'.</i> Evita automáticamente a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de evitar igual o menor que este Enemigo.\".\n□□ <b>Mayor control.</b> La Palabra de poder obtiene \"[free]: Devuelve la Palabra de poder a tu mano.\".\n□□□ <b>Atado.</b> Puedes activar la capacidad de negociar de la Palabra de poder desde un máximo de un Lugar de distancia del Enemigo vinculado.\n□□□ <b>Trabalenguas.</b> Cuando negocies con la Palabra de poder, puedes dar hasta dos órdenes distintas.\n□□□ <b> Pronunciada tres veces.</b> Puedes incluir tres copias de la Palabra de poder en tu mazo. Cuando des una orden usando una copia, dale también esa orden a cada uno de los demás Enemigos que tenga vinculada una de tus copias de la Palabra de poder.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "replacement_text": "Mutada. Personalizable. Rápido. Juega esta carta sólo durante tu turno.\nVincula esta carta a un Enemigo que no sea [[Élite]] que esté en tu Lugar.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar</b>. Realiza una prueba de [willpower] (3). Si tienes éxito, dale una orden (límite de una vez por ronda y por orden) –\n– “Vete”. Este Enemigo se mueve una vez en una dirección de tu elección."
       }
     ]
   }

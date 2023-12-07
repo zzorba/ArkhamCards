@@ -278,6 +278,9 @@ export class DeckOptionQueryBuilder {
     if (this.option.text?.length && this.option.text[0] === '<b>Parley\\.<\\/b>') {
       return [where(`c.real_text LIKE '%Parley.%' or linked_card.real_text LIKE '%Parley.%'`)]
     }
+    if (this.option.text?.length && this.option.text[0] === '<b>Fight\\.<\\/b>') {
+      return [where(`c.real_text LIKE '%Fight.%' or linked_card.real_text LIKE '%Fight.%'`)]
+    }
     return [];
   }
   private levelFilter(isUpgrade?: boolean): Brackets[] {
@@ -285,7 +288,7 @@ export class DeckOptionQueryBuilder {
       return [];
     }
     const level = (!this.option.base_level || isUpgrade) ? this.option.level : this.option.base_level;
-    return  !this.option.not ? [
+    return !this.option.not ? [
         combineQueries(
           where('c.customization_options is not null'),
           this.filterBuilder.rangeFilter('xp', [level.min, level.max], true),
@@ -296,16 +299,16 @@ export class DeckOptionQueryBuilder {
   toQuery(meta?: DeckMeta, isUpgrade?: boolean): Brackets | undefined {
     const clauses: Brackets[] = [
       ...this.filterBuilder.factionFilter(this.option.faction || []),
+      ...this.textClause(),
+      ...this.levelFilter(isUpgrade),
       ...this.selectedFactionFilter(meta),
       ...this.selectedOptionFilter(meta),
       ...this.filterBuilder.slotFilter(this.option.slot || []),
       ...this.filterBuilder.equalsVectorClause(this.option.uses || [], 'uses'),
-      ...this.textClause(),
       ...this.permanentFilter(),
       ...this.filterBuilder.traitFilter(this.option.trait || [], false),
-      ...this.filterBuilder.tagFilter(this.option.tag || []),
-      ...this.levelFilter(isUpgrade),
       ...this.filterBuilder.equalsVectorClause(this.option.type_code || [], 'type_code'),
+      ...(this.option.text ? [] : this.filterBuilder.tagFilter(this.option.tag ?? [])),
     ];
     return combineQueriesOpt(clauses, 'and', !!this.option.not);
   }
