@@ -308,7 +308,7 @@ export class DeckOptionQueryBuilder {
       ...this.permanentFilter(),
       ...this.filterBuilder.traitFilter(this.option.trait || [], false),
       ...this.filterBuilder.equalsVectorClause(this.option.type_code || [], 'type_code'),
-      ...(this.option.text ? [] : this.filterBuilder.tagFilter(this.option.tag ?? [])),
+      ...(this.option.text?.length ? [] : this.filterBuilder.tagFilter(this.option.tag ?? [])),
     ];
     return combineQueriesOpt(clauses, 'and', !!this.option.not);
   }

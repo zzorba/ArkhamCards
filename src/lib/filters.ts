@@ -75,6 +75,7 @@ export interface FilterState {
   multiClass: boolean;
   skillEnabled: boolean;
   unique: boolean;
+  nonUnique: boolean;
   permanent: boolean;
   fast: boolean;
   exile: boolean;
@@ -175,6 +176,7 @@ export const defaultFilterState: FilterState = {
   victory: false,
   skillEnabled: false,
   unique: false,
+  nonUnique: false,
   permanent: false,
   fast: false,
   bonded: false,
@@ -334,6 +336,9 @@ export default class FilterBuilder {
   }
 
   tagFilter(tags: string[]): Brackets[] {
+    if (!tags.length) {
+      return [];
+    }
     if (tags.length === 1 && tags[0] === 'the_insane') {
       return [];
     }
@@ -721,6 +726,7 @@ export default class FilterBuilder {
     const {
       uses,
       unique,
+      nonUnique,
       fast,
       bonded,
       seal,
@@ -760,6 +766,8 @@ export default class FilterBuilder {
     }
     if (unique) {
       result.push(where('(c.is_unique = 1 OR linked_card.is_unique = 1) AND c.type_code != "enemy"'));
+    } else if (nonUnique) {
+      result.push(where('(c.is_unique is null OR c.is_unique = 0 OR linked_card.is_unique = 0) AND c.type_code != "enemy"'));
     }
     if (seal) {
       result.push(where(`c.seal = 1 or linked_card.seal = 1`));

@@ -385,9 +385,11 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     return undefined;
   }, [useCardTraits]);
   const toggleItems: ToggleItem[] = useMemo(() => {
+    const nonUniqueStr = t`Non-Unique`;
     const uniqueStr = t`Unique`;
     return [
       { label: t`Fast`, setting: 'fast' },
+      { label: `${nonUniqueStr}`, setting: 'nonUnique' },
       { label: `${uniqueStr} (✷)`, setting: 'unique' },
       { label: t`Seal`, setting: 'seal' },
       { label: t`Victory`, setting: 'victory' },
