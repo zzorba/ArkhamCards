@@ -4001,7 +4001,7 @@ msgid "Fan-made campaign by ${ author }"
 msgstr "팬 제작 캠페인 (제작자: ${ author })"
 
 msgid "Sort ignores punctuation"
-msgstr "정렬하기 (구두점 무시)"
+msgstr "문장부호 무시하고 정렬하기"
 
 msgid ""
 "Sorry, you don't seem to be a Mythos Buster patron.\n"
