@@ -5871,6 +5871,9 @@ msgstr "인스머스에 드리운 음모 캠페인 확장"
 msgid "Show original release packs"
 msgstr "기존 딜럭스/신화팩 형식도 보기"
 
+msgid "Non-Unique"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"
