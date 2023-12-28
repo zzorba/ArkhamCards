@@ -19,13 +19,14 @@ interface Props {
 
 export function useBondedToCards(cards: Card[], tabooSetOverride?: number): [Card[], boolean] {
   const bondedToQuery = useMemo(() => {
-    if (!find(cards, card => !!card.bonded_name)) {
+    const eligibleCards = flatMap(cards, card => card.bonded_name ? [card] : [])
+    if (!eligibleCards.length) {
       return undefined;
     }
     const filterBuilder = new FilterBuilder('bonded_to');
     const query = filterBuilder.bondedFilter(
       'real_name',
-      flatMap(cards, card => card.bonded_name ? [card.bonded_name] : [])
+      flatMap(eligibleCards, card => card.bonded_name ? [card.bonded_name] : [])
     );
     return query;
   }, [cards]);
@@ -34,11 +35,12 @@ export function useBondedToCards(cards: Card[], tabooSetOverride?: number): [Car
 
 export function useBondedFromCards(cards: Card[], sorts?: SortType[], tabooSetOverride?: number): [Card[], boolean] {
   const bondedFromQuery = useMemo(() => {
-    if (!find(cards, card => !!card.bonded_from)) {
+    const eligibleCards = flatMap(cards, card => card.bonded_name ? [] : [card])
+    if (!eligibleCards.length) {
       return undefined;
     }
     const filterBuilder = new FilterBuilder('bonded_from');
-    const query = filterBuilder.bondedFilter('bonded_name', map(cards, card => card.real_name));
+    const query = filterBuilder.bondedFilter('bonded_name', map(eligibleCards, card => card.real_name));
     return query;
   }, [cards]);
   const sortQuery = useMemo(() => sorts ? Card.querySort(true, sorts) : undefined, [sorts]);

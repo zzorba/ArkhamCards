@@ -795,7 +795,11 @@ export default class FilterBuilder {
       `c.${field} IN (:...bonded_names)`,
       { bonded_names }
     );
-    return combineQueries(BASIC_QUERY, [bondedClause], 'and');
+    return combineQueries(
+      BASIC_QUERY, [
+        bondedClause,
+        ...(field === 'bonded_name' ? [] : [where('c.bonded_name is NULL')]),
+      ], 'and');
   }
 
   upgradeCardsByNameFilter(real_names: string[]): Brackets | undefined {

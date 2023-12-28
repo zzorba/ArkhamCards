@@ -758,9 +758,11 @@ function getDeckChanges(
       const delta = (newCount + exiledCount) - oldCount - (code === ACE_OF_RODS_CODE ? ignoreDelta : 0);
       if (delta !== 0) {
         changedCards[code] = delta;
-        unchangedSlots[code] = (unchangedSlots[code] || 0) + delta;
+        if (delta < 0) {
+          unchangedSlots[code] = (unchangedSlots[code] || 0) + delta;
+        }
       }
-      if (ignoreDelta != 0 && code !== ACE_OF_RODS_CODE && (
+      if (ignoreDelta != 0 && copde !== ACE_OF_RODS_CODE && (
         validation.investigator.code == PARALLEL_AGNES_CODE ||
         validation.investigator.code === PARALLEL_SKIDS_CODE
       )) {

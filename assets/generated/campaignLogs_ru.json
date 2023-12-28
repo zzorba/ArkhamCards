@@ -2567,7 +2567,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "the investigators recruited the help of another expedition."
+            "text": "сыщики заручились помощью другой экспедиции."
           },
           {
             "id": "relic_is_missing",
@@ -2696,22 +2696,22 @@
     "supplies": [
       {
         "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
-        "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A sticky goop you found in a subterranean swamp.",
+        "name": "Загадочный скипетр",
+        "description": "Загадочный скипетр, который вы нашли в тронном зале.",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "key_of_eztli",
-        "name": "Key of Eztli",
-        "description": "The Key of Eztli.",
+        "name": "Ключ эцтли",
+        "description": "Ключ эцтли.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "sticky_goop",
+        "name": "Липкая жижа",
+        "description": "Липкая жижа, которую вы нашли в подземном болоте.",
         "cost": 0,
         "multiple": false
       },

@@ -267,9 +267,12 @@ function DeckDetailView({
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
   const flatDeckCards = useMemo(() => {
     const extraDeckSlots = parsedDeck?.investigatorBack.code === PARALLEL_JIM_CODE ? getExtraDeckSlots(deckEdits?.meta ?? {}) : {};
-    return flatMap(deckCards, c =>
-      c && ((deckEdits?.slots[c.code] || 0) > 0 || (deckEdits?.ignoreDeckLimitSlots[c.code] || 0) > 0 || (extraDeckSlots[c.code] || 0) > 0) ? c : []);
-  }, [deckCards, deckEdits]);
+    return [
+      ...(parsedDeck?.investigator ? [parsedDeck.investigator] : []),
+      ...flatMap(deckCards, c =>
+        c && ((deckEdits?.slots[c.code] || 0) > 0 || (deckEdits?.ignoreDeckLimitSlots[c.code] || 0) > 0 || (extraDeckSlots[c.code] || 0) > 0) ? c : []),
+      ];
+  }, [deckCards, deckEdits, parsedDeck?.investigator]);
   const [possibleUpgradeCards] = useUpgradeCardsByName(flatDeckCards, tabooSetId)
   const [bondedCards] = useBondedFromCards(flatDeckCards, DEFAULT_SORT, tabooSetId);
   const [requiredCards] = useRequiredCards(parsedDeck?.investigatorFront, parsedDeck?.investigatorBack, tabooSetId);

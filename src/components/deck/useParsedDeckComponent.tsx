@@ -371,6 +371,13 @@ export default function useParsedDeckComponent({
     }
     const bondedCards: Card[] = [];
     const bondedCounts: Slots = {};
+    if (investigatorBack?.real_name) {
+      const possibleBondedInvestigatorCards =  bondedCardsByName?.[investigatorBack.real_name];
+      forEach(possibleBondedInvestigatorCards, bonded => {
+        bondedCards.push(bonded);
+        bondedCounts[bonded.code] = 1;
+      });
+    }
     forEach(slots, (count, code) => {
       const card = cards[code];
       if (count > 0 && card) {
