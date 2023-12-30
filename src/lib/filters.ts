@@ -665,7 +665,7 @@ export default class FilterBuilder {
       const valueName = this.fieldName([...(valuePrefix || []), field]);
       return [
         where(
-          noLinked ? `c.${field} IN (:...${valueName})` : `c.${field} IN (:...${valueName}) OR linked_card.${field} IN (:...${valueName})`,
+          noLinked ? `(c.${field} IN (:...${valueName}))` : `(c.${field} IN (:...${valueName}) OR linked_card.${field} IN (:...${valueName}))`,
           { [valueName]: values }
         ),
       ];
@@ -682,10 +682,16 @@ export default class FilterBuilder {
       const [packCode, ...otherCodes] = normalPacks;
       result.push(
         combineQueries(
-          where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode`, { packCode: `%${packCode}%` }),
+          where(
+            `(c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode)`,
+            { packCode: `%${packCode}%` },
+          ),
           [
             ...map(otherCodes, (c, idx) =>
-              where(`c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode${idx}`, { [`packCode${idx}`]: `%${c}%` }),
+              where(
+                `(c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode${idx})`,
+                { [`packCode${idx}`]: `%${c}%` },
+              ),
             ),
             ...packClause,
           ],
@@ -700,7 +706,7 @@ export default class FilterBuilder {
         result.push(
           combineQueries(
             where(`c.encounter_code is null`),
-            this.equalsVectorClause(flatMap(playerPacks, pack => pack.packs), 'pack_code'),
+            this.equalsVectorClause(flatMap(playerPacks, pack => pack.packs), 'pack_code', ['player']),
             'and'
           ),
         );
@@ -709,7 +715,7 @@ export default class FilterBuilder {
         result.push(
           combineQueries(
             where(`c.encounter_code is not null`),
-            this.equalsVectorClause(flatMap(campaignPacks, pack => pack.packs), 'pack_code'),
+            this.equalsVectorClause(flatMap(campaignPacks, pack => pack.packs), 'pack_code', ['campaign']),
             'and'
           ),
         );

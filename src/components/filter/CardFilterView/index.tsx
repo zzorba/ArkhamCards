@@ -149,7 +149,18 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
 
     const newCyclePackCounts: { [code: string]: number } = {};
     const newSelectedCyclePackCounts: { [code: string]: number } = {};
-    const cycleNames: { [code: string]: string } = {};
+    const cycleNames: { [code: string]: string } = {
+      1: t`Core Set`,
+      2: t`The Dunwich Legacy`,
+      3: t`The Path to Carcosa`,
+      4: t`The Forgotten Age`,
+      5: t`The Circle Undone`,
+      6: t`The Dream-Eaters`,
+      7: t`The Innsmouth Conspiracy`,
+      8: t`Edge of the Earth`,
+      9: t`The Scarlet Keys`,
+      10: t`The Feast of Hemlock Vale`,
+    };
     const specialPackNames = getSpecialPackNames();
     const selectedPacks = [
       ...filter(
@@ -173,7 +184,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       ...flatMap(specialPacks, pack => {
         if (pack.cyclePosition > 1 && pack.cyclePosition < 50) {
           newCyclePackCounts[pack.cyclePosition] =
-          (newCyclePackCounts[pack.cyclePosition] || 0) + 1;
+            (newCyclePackCounts[pack.cyclePosition] || 0) + 1;
         }
         const name = specialPackNames[pack.code];
         if (selectedPackNames.has(name)) {
@@ -187,12 +198,18 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
     const [completeCycles, partialCycles] = partition(
       uniq([...keys(oldSelectedCyclePackCounts), ...keys(newSelectedCyclePackCounts)]),
       cycle_position =>
-        oldSelectedCyclePackCounts[cycle_position] === oldCyclePackCounts[cycle_position] ||
-        newSelectedCyclePackCounts[cycle_position] === newCyclePackCounts[cycle_position]);
+        (oldSelectedCyclePackCounts[cycle_position] > 0 && oldSelectedCyclePackCounts[cycle_position] === oldCyclePackCounts[cycle_position]) ||
+        (newSelectedCyclePackCounts[cycle_position] > 0 && newSelectedCyclePackCounts[cycle_position] === newCyclePackCounts[cycle_position])
+    );
 
     const parts: string[] = [];
     forEach(completeCycles, cycle_position => {
-      parts.push(c('filter').t`${cycleNames[cycle_position]} Cycle`);
+      console.log(cycle_position, cycleNames);
+      if (cycle_position === '1') {
+        parts.push(cycleNames[cycle_position]);
+      } else {
+        parts.push(c('filter').t`${cycleNames[cycle_position]} Cycle`);
+      }
     });
     const partialCyclesSet = new Set(partialCycles);
     forEach(selectedPacks, pack => {

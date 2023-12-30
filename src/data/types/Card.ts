@@ -1,11 +1,11 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
 import { Platform } from 'react-native';
-import { head, forEach, flatMap, filter, keys, map, min, omit, find, sortBy, indexOf, sumBy } from 'lodash';
+import { head, forEach, flatMap, filter, find, keys, map, min, omit, sortBy, indexOf, sumBy } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
 import { c, t } from 'ttag';
 
 import { Pack, SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData, SORT_BY_XP, SORT_BY_CARD_ID, SORT_BY_SLOT, ExtendedSortType, SORT_BY_TYPE_SLOT } from '@actions/types';
-import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN, specialReprintPlayerPacks, specialReprintCampaignPacks } from '@app_constants';
+import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN, specialReprintPlayerPacks, specialReprintCampaignPacks, specialPacks } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
@@ -1647,14 +1647,28 @@ export function cardInCollection(
 }
 
 export function packInCollection(
-  { pack, encounter }: { pack: string; encounter: boolean },
-    inCollection: { [pack_code: string]: boolean | undefined }
+  {
+    pack,
+    encounter,
+  }: { pack: string; encounter: boolean },
+  inCollection: {
+    [pack_code: string]: boolean | undefined,
+  }
 ) {
   if (inCollection[pack]) {
     return true;
   }
   const alternatePack = (encounter) ? specialReprintCampaignPacks[pack] : specialReprintPlayerPacks[pack];
   if (alternatePack && inCollection[alternatePack]) {
+    return true;
+  }
+  const specialPackMatch = find(specialPacks, specialPack => {
+    if (inCollection[specialPack.code] && find(specialPack.packs, p => p === pack)) {
+      return encounter === !specialPack.player;
+    }
+    return false;
+  });
+  if (specialPackMatch) {
     return true;
   }
   return false;
