@@ -943,6 +943,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.innsmouthIcon('occultation', size, color);
       case 'zreturn_to_flooded_caverns':
         return this.innsmouthIcon('return_to_flooded_caverns', size, color);
+      case 'zoc':
+        return this.standaloneIcon('zoc', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);
