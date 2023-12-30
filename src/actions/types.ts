@@ -505,7 +505,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TIC,
   EOE,
   TSK,
-  // FHV,
+  FHV,
 ];
 export const STANDALONE_CAMPAGINS: CampaignCycleCode[] = [
   GOB,

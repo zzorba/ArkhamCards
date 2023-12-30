@@ -7,7 +7,7 @@ import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { NavigationProps } from '@components/nav/types';
 import { LocationSetupStep } from '@data/scenario/types';
-import LocationCard from './LocationCard';
+import LocationCard, { cleanLocationCode } from './LocationCard';
 import { CARD_RATIO, NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { isTablet, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -40,6 +40,19 @@ export default function LocationSetupView({ step: { locations, annotations, vert
       result[entry.code] = entry.name;
     });
     return result;
+  }, [location_names]);
+  const [placeholders, randoms] = useMemo(() => {
+    const p: { [code: string]: boolean | undefined } = {};
+    const r: { [code: string]: boolean | undefined } = {};
+    forEach(location_names || [], entry => {
+      if (entry.placeholder) {
+        p[entry.code] = true;
+      }
+      if (entry.random) {
+        r[entry.code] = true;
+      }
+    });
+    return [p, r];
   }, [location_names]);
 
   const heightConstrained: CardSizes = useMemo(() => {
@@ -104,7 +117,9 @@ export default function LocationSetupView({ step: { locations, annotations, vert
         <LocationCard
           key={`${rowNumber}x${x}`}
           code={item}
-          name={names[item]}
+          name={names[cleanLocationCode(item)]}
+          placeholder={placeholders[cleanLocationCode(item)]}
+          random={randoms[cleanLocationCode(item)]}
           top={TOP_PADDING + top}
           left={SIDE_PADDING + left}
           height={cardHeight}

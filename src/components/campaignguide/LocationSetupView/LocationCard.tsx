@@ -10,10 +10,11 @@ import useSingleCard from '@components/card/useSingleCard';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { LocationAnnotation } from '@data/scenario/types';
 import ToolTip from '@components/core/ToolTip';
+import ArkhamIcon from '@icons/ArkhamIcon';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 const ATLACH = require('../../../../assets/atlach.jpg');
-
+const RAIL_SIZE = 25;
 interface Props {
   annotation?: LocationAnnotation;
   code: string;
@@ -22,41 +23,54 @@ interface Props {
   left: number;
   top: number;
   name?: string;
+  random?: boolean;
+  placeholder?: boolean;
   resource_dividers?: {
     right?: number;
     bottom?: number;
   };
 }
 
-function TextCard({ name }: { name: string }) {
+function TextCard({ name, placeholder }: { name: string; placeholder?: boolean }) {
   const { colors, borderStyle, typography } = useContext(StyleContext);
   return (
     <View style={[
       styles.singleCardWrapper,
-      borderStyle,
-      { borderWidth: 1, borderRadius: 8, backgroundColor: colors.darkText },
+      placeholder ? undefined : borderStyle,
+      placeholder ? undefined : { borderWidth: 1, borderRadius: 8, backgroundColor: colors.darkText },
     ]}>
-      <Text style={[typography.text, { color: colors.background }, typography.center]}>
+      <Text style={[typography.text, { color: placeholder ? colors.darkText : colors.background }, typography.center]}>
         { name }
       </Text>
     </View>
   );
 }
 
-function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height }: { width: number; height: number; code: string; back: boolean; rotate: boolean; rotateLeft: boolean; name?: string }) {
+const RAIL_REGEX = /_RAIL_([NSEW]+)$/;
+
+function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height, placeholder }: {
+  width: number;
+  height: number;
+  code: string;
+  back: boolean;
+  rotate: boolean;
+  rotateLeft: boolean;
+  name?: string;
+  placeholder?: boolean;
+}) {
   const [card, loading] = useSingleCard(code, 'encounter');
   if (loading) {
     return <LoadingSpinner />;
   }
   if (!card) {
     return (
-      <TextCard name={name || code} />
+      <TextCard name={name || code} placeholder={placeholder} />
     );
   }
   const uri = back ? card.backImageUri() : card.imageUri();
   if (!uri) {
     return (
-      <TextCard name={(back && card.back_name) || card.name} />
+      <TextCard name={(back && card.back_name) || card.name} placeholder={placeholder} />
     );
   }
   return (
@@ -69,19 +83,18 @@ function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height
         resizeMode="contain"
       />
     </ToolTip>
-   
   );
 }
 
 function annotationPosition(
   position: 'top' | 'left' | 'right' | 'bottom',
-  { height, width, left, top, fontScale }: { height: number; width: number; left: number; top: number; fontScale: number },
+  { height, width, left, top, fontScale, lines }: { height: number; width: number; left: number; top: number; fontScale: number; lines: number },
 ): {
   top?: number;
   left?: number;
   right?: number;
 } {
-  const annotationLineHeight = fontScale * 24;
+  const annotationLineHeight = fontScale * 24 * lines;
   switch (position) {
     case 'top':
       return {
@@ -106,7 +119,15 @@ function annotationPosition(
   }
 }
 
-export default function LocationCard({ annotation, code, height, width, left, top, name, resource_dividers }: Props) {
+export function cleanLocationCode(code: string): string {
+  return code.replace('_back', '')
+    .replace('_rotate_left', '')
+    .replace('_rotate', '')
+    .replace('_mini', '')
+    .replace(RAIL_REGEX, '');
+}
+
+export default function LocationCard({ annotation, code, random, height, width, left, top, name, resource_dividers, placeholder }: Props) {
   const { borderStyle, fontScale, colors, typography } = useContext(StyleContext);
   const rotate = code.indexOf('_rotate') !== -1;
   const mini = code.indexOf('_mini') !== -1;
@@ -145,10 +166,17 @@ export default function LocationCard({ annotation, code, height, width, left, to
         );
       default:
         return (
-          <View style={mini ? { paddingTop: height * 0.1, paddingBottom: height * 0.1, paddingLeft: width * 0.1, paddingRight: width * 0.1 } : undefined}>
+          <View style={mini ? {
+              paddingTop: height * 0.1,
+              paddingBottom: height * 0.1,
+              paddingLeft: width * 0.1,
+              paddingRight: width * 0.1,
+            } : undefined
+          }>
             <LocationCardImage
               name={name}
-              code={code.replace('_back', '').replace('_rotate_left', '').replace('_rotate', '').replace('_mini', '')}
+              code={cleanLocationCode(code)}
+              placeholder={placeholder}
               back={code.indexOf('_back') !== -1}
               width={theWidth}
               height={theHeight}
@@ -159,7 +187,40 @@ export default function LocationCard({ annotation, code, height, width, left, to
         );
     }
   }, [colors, borderStyle, mini, theHeight, theWidth, code, name, height, rotate, width]);
-
+  const rails = useMemo(() => {
+    const match = RAIL_REGEX.exec(code)?.[1];
+    if (!match) {
+      return null;
+    }
+    return (
+      <>
+        { match.indexOf('N') !== -1 && (
+          <View key="N" style={[styles.rail, { top: top, left: left + width - RAIL_SIZE * 2 }]}>
+            <AppIcon name='rail' size={RAIL_SIZE} color={colors.M} />
+          </View>
+        ) }
+        { match.indexOf('S') !== -1 && (
+          <View key="S" style={[styles.rail, { top: top + height - RAIL_SIZE, left: left + width - RAIL_SIZE * 2}]}>
+            <AppIcon name='rail' size={RAIL_SIZE} color={colors.M} />
+          </View>
+        ) }
+        { match.indexOf('E') !== -1 && (
+          <View key="E" style={[styles.rail, { top: top + height - RAIL_SIZE * 2, left: left + width - RAIL_SIZE }]}>
+            <View style={{transform: [{ rotate: "90deg"}] }}>
+              <AppIcon name='rail' size={RAIL_SIZE} color={colors.M} />
+            </View>
+          </View>
+        ) }
+        { match.indexOf('W') !== -1 && (
+          <View key="W" style={[styles.rail, { top: top + height - RAIL_SIZE * 2, left: left }]}>
+            <View style={{transform: [{ rotate: "90deg"}] }}>
+              <AppIcon name='rail' size={RAIL_SIZE} color={colors.M} />
+            </View>
+          </View>
+        ) }
+      </>
+    );
+  }, [code]);
   const resourceDividers = useMemo(() => {
     if (!resource_dividers) {
       return null;
@@ -202,21 +263,29 @@ export default function LocationCard({ annotation, code, height, width, left, to
   }
   return (
     <>
-      <View style={[styles.card, { width: rotate ? height : width, height: rotate ? width : height, left, top }]}>
+      <View style={[styles.card, { width: rotate ? height : width, height: rotate ? width : height, left, top }, random ? { opacity: 0.40 } : undefined]}>
         { image }
       </View>
       { resourceDividers }
+      { rails }
+      { random && (
+        <View style={{ position: 'absolute', top, left, height, width, flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRadius: 8, borderWidth: 1, borderStyle: 'dashed', borderColor: colors.M }}>
+          <ArkhamIcon name="wild" size={64} color="#6C0A1A" />
+        </View>
+      )}
       { !!annotation && (
         <View style={[styles.annotation, {
           width,
-          ...annotationPosition(annotation.position, { height, width, left, top, fontScale }),
+          ...annotationPosition(annotation.position, { height, width, left, top, fontScale, lines: annotation.text.split('\n').length }),
         }]}>
-          <Text numberOfLines={2} style={[
-            typography.text,
-            textAlignment,
-            { lineHeight: annotationLineHeight, fontSize: fontScale * 22 },
-            typography.bold,
-          ]}>
+          <Text
+            numberOfLines={2}
+            style={[
+              typography.text,
+              textAlignment,
+              { lineHeight: annotationLineHeight, fontSize: fontScale * 22, width },
+              typography.bold,
+            ]}>
             { annotation.text }
           </Text>
         </View>
@@ -237,11 +306,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
     padding: s,
     width: '100%',
     height: '100%',
     borderRadius: 8,
+  },
+  rail: {
+    position: 'absolute',
+    width: RAIL_SIZE,
+    height: RAIL_SIZE,
   },
   resourceColumn: {
     position: 'absolute',

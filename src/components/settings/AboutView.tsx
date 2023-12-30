@@ -41,7 +41,7 @@ export default function AboutView() {
       </View>
       <View style={space.marginTopM}>
         <CardTextComponent onLinkPress={linkPressed}
-          text={`${originalIconDesigns}\n• 'crate' by Imogen Oh from the Noun Project\n• 'dodo' and 'griffin' by Icons Producer from the Noun Project\n• 'caterpillar' by Georgiana Ionescu from the Noun Project\n• 'turtle' by Ecem Afacan from the Noun Project\n• 'cracked egg' by Peter van Driel from the Noun Project\n• 'unicorn' by Jennifer Ann Rött from the Noun Project\n• 'lion' by Felix Brönnimann from the Noun Project\n• 'chess queen' by Akshar Pathak from the Noun Project\n• 'pepper shaker' by Phạm Thanh Lộc, VN from the Noun Project`}
+          text={`${originalIconDesigns}\n• 'crate' by Imogen Oh from the Noun Project\n• 'dodo' and 'griffin' by Icons Producer from the Noun Project\n• 'caterpillar' by Georgiana Ionescu from the Noun Project\n• 'turtle' by Ecem Afacan from the Noun Project\n• 'cracked egg' by Peter van Driel from the Noun Project\n• 'unicorn' by Jennifer Ann Rött from the Noun Project\n• 'lion' by Felix Brönnimann from the Noun Project\n• 'chess queen' by Akshar Pathak from the Noun Project\n• 'pepper shaker' by Phạm Thanh Lộc, VN from the Noun Project\n• 'rail' by Angelo Troiano from Noun Project`}
         />
       </View>
       <View style={styles.footer} />

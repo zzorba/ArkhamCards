@@ -1332,6 +1332,7 @@ export interface LocationSetupStep {
     code: string;
     name: string;
     placeholder?: boolean;
+    random?: boolean;
   }[];
   bullet_type?: null;
   narration?: Narration;
