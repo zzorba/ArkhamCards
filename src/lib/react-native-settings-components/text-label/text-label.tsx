@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, Text, View, Platform, ViewProps, ViewStyle, TextStyle,
+  StyleSheet, Text, View, Platform, ViewProps, ViewStyle, TextStyle, TextProps,
 } from 'react-native';
-import { TextProps } from 'react-native-svg';
 
 const style = StyleSheet.create({
   defaultTitleStyle: {

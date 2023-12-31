@@ -13,6 +13,8 @@
 # see https://github.com/react-native-community/react-native-svg/issues/481
 -keep public class com.horcrux.svg.** {*;}
 
+-keep class com.shopify.reactnative.skia.** { *; }
+
 -keep class com.facebook.hermes.unicode.** { *; }
 -keep class com.facebook.jni.** { *; }
 

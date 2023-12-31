@@ -410,11 +410,12 @@ function TarotCardReadingView({
     }
     return (
       <View style={{ width: width - s * 2, height: height * 0.7 + m * 2 }}>
-        <SnapCarousel
+        <SnapCarousel<TarotCard>
           itemWidth={dialogCardWidth}
           sliderWidth={width + s * 4}
-          itemHeight={dialogCardWidth * TAROT_CARD_RATIO}
-          sliderHeight={height * 0.7 + m * 2}
+          vertical={false}
+          //itemHeight={dialogCardWidth * TAROT_CARD_RATIO}
+          //sliderHeight={height * 0.7 + m * 2}
           firstItem={jumpIndex}
           inactiveSlideOpacity={1}
           onScrollIndexChanged={setIndex}

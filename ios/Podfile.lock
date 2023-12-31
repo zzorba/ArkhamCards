@@ -428,6 +428,11 @@ PODS:
     - React-Core
   - react-native-pager-view (6.2.2):
     - React-Core
+  - react-native-skia (0.1.230):
+    - RCT-Folly (= 2021.07.22.00)
+    - React
+    - React-callinvoker
+    - React-Core
   - react-native-sqlite-storage (6.0.1):
     - React-Core
   - react-native-track-player (4.0.1):
@@ -676,6 +681,7 @@ DEPENDENCIES:
   - react-native-keyevent (from `../node_modules/react-native-keyevent`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
+  - "react-native-skia (from `../node_modules/@shopify/react-native-skia`)"
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
   - react-native-track-player (from `../node_modules/react-native-track-player`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -817,6 +823,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-pager-view:
     :path: "../node_modules/react-native-pager-view"
+  react-native-skia:
+    :path: "../node_modules/@shopify/react-native-skia"
   react-native-sqlite-storage:
     :path: "../node_modules/react-native-sqlite-storage"
   react-native-track-player:
@@ -958,6 +966,7 @@ SPEC CHECKSUMS:
   react-native-keyevent: fa167ff93e90b5d86b1678885669ff8ec099bf09
   react-native-netinfo: fefd4e98d75cbdd6e85fc530f7111a8afdf2b0c5
   react-native-pager-view: 02a5c4962530f7efc10dd51ee9cdabeff5e6c631
+  react-native-skia: 0f8a66f3da0153d04cfb17f88b8838106a15af90
   react-native-sqlite-storage: f6d515e1c446d1e6d026aa5352908a25d4de3261
   react-native-track-player: 97d76dbbd35f27cc709e5f04540615e54264b3f9
   React-NativeModulesApple: 1802a680a4cd891d2ab97780771bcb2ff11fdc0b

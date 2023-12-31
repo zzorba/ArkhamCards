@@ -762,7 +762,7 @@ function getDeckChanges(
           unchangedSlots[code] = (unchangedSlots[code] || 0) + delta;
         }
       }
-      if (ignoreDelta != 0 && copde !== ACE_OF_RODS_CODE && (
+      if (ignoreDelta != 0 && code !== ACE_OF_RODS_CODE && (
         validation.investigator.code == PARALLEL_AGNES_CODE ||
         validation.investigator.code === PARALLEL_SKIDS_CODE
       )) {

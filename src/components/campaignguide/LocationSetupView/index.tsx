@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { find, forEach, map } from 'lodash';
+import { find, forEach, map, partition } from 'lodash';
 import PanPinchView from 'react-native-pan-pinch-view';
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { NavigationProps } from '@components/nav/types';
-import { LocationSetupStep } from '@data/scenario/types';
+import { LocationDecoration, LocationSetupStep } from '@data/scenario/types';
 import LocationCard, { cleanLocationCode } from './LocationCard';
 import { CARD_RATIO, NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { isTablet, m } from '@styles/space';
@@ -29,7 +29,7 @@ interface CardSizes {
   verticalPadding: number;
 }
 
-export default function LocationSetupView({ step: { locations, annotations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
+export default function LocationSetupView({ step: { locations, annotations, decorations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
   const { width, height } = useContext(StyleContext);
   const rowCount = locations.length;
   const rowSize = locations[0].length;
@@ -138,9 +138,11 @@ export default function LocationSetupView({ step: { locations, annotations, vert
     verticalPadding,
   } = cardDimensions;
 
-  const rowWidth = (cardWidth + betweenPadding) * ((rowSize + 1) / (horizontal === 'half' ? 2.0 : 1));
-  const rowHeight = TOP_PADDING * 2 + (cardHeight + verticalPadding) * (rowCount + 4) / (vertical === 'half' ? 2.0 : 1) + GUTTER_SIZE;
-
+  const unitWidth = (cardWidth + betweenPadding) / (horizontal === 'half' ? 2.0 : 1);
+  const unitHeight = (cardHeight + verticalPadding) / (vertical === 'half' ? 2.0 : 1)
+  const rowWidth = unitWidth * (rowSize + 1);
+  const rowHeight = TOP_PADDING * 2 + unitHeight * (rowCount + 4) + GUTTER_SIZE;
+  const [bottomDecorations, topDecorations] = useMemo(() => partition(decorations ?? [], d => d.layer === 'bottom'), [decorations]);
   return (
     <PanPinchView
       minScale={0.5}
@@ -159,13 +161,32 @@ export default function LocationSetupView({ step: { locations, annotations, vert
           </SetupStepWrapper>
         </View>
       ) }
-      <View style={[styles.container, { height: rowHeight, margin: m * 2 }]}>
-        { map(locations, (locs, row) => renderRow(locs, row)) }
+      <View style={{ position: 'relative', height: rowHeight, width: rowWidth }}>
+        { !!bottomDecorations.length && (
+          <Decorations
+            decorations={bottomDecorations}
+            unitWidth={unitWidth}
+            unitHeight={unitHeight}
+          />
+        ) }
+        <View style={[styles.container, { height: rowHeight, margin: m * 2 }]}>
+          { map(locations, (locs, row) => renderRow(locs, row)) }
+        </View>
+        { !!topDecorations.length && (
+          <Decorations
+            decorations={bottomDecorations}
+            unitWidth={unitWidth}
+            unitHeight={unitHeight}
+          />
+        ) }
       </View>
     </PanPinchView>
   );
 }
 
+function Decorations({ decorations, unitWidth, unitHeight }: { decorations: LocationDecoration[]; unitWidth: number; unitHeight: number; }) {
+  return null;
+}
 const styles = StyleSheet.create({
   container: {
     position: 'relative',

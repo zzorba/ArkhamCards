@@ -1324,6 +1324,7 @@ export interface LocationSetupStep {
   horizontal: "half" | "normal" | "tight";
   locations: string[][];
   annotations?: LocationAnnotation[];
+  decorations?: LocationDecoration[];
   resource_dividers?: {
     right?: number;
     bottom?: number;
@@ -1342,6 +1343,15 @@ export interface LocationAnnotation {
   x: number;
   y: number;
   position: "top" | "bottom" | "left" | "right";
+}
+export interface LocationDecoration {
+  layer: "top" | "bottom";
+  type: "arrow" | "line" | "circle";
+  start_x: number;
+  start_y: number;
+  end_x: number;
+  end_y: number;
+  color?: "blue";
 }
 export interface LocationConnectorsStep {
   id: string;
