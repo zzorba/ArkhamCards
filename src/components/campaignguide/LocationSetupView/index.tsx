@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { find, forEach, map, partition } from 'lodash';
 import PanPinchView from 'react-native-pan-pinch-view';
+import { Canvas, Paint, Circle, Line, vec } from "@shopify/react-native-skia";
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
@@ -11,6 +12,7 @@ import LocationCard, { cleanLocationCode } from './LocationCard';
 import { CARD_RATIO, NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { isTablet, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { ThemeColors } from '@styles/theme';
 
 export interface LocationSetupProps {
   step: LocationSetupStep;
@@ -104,12 +106,14 @@ export default function LocationSetupView({ step: { locations, annotations, deco
     } = cardDimensions;
 
     const cardHeightWithPadding = (cardHeight + TOP_PADDING);
-    const top = (vertical === 'half' ? (cardHeightWithPadding / 2) * rowNumber : cardHeightWithPadding * rowNumber) + (
+    const verticalScale = vertical === 'half' ? 2.0 : 1.0;
+    const top = cardHeightWithPadding / verticalScale * (rowNumber + verticalScale) + (
       resource_dividers ? 50 * rowNumber : 0
     );
     return map(locationsRow, (item, x) => {
       const cardWidthWithPadding = (cardWidth + betweenPadding);
-      const left = (horizontal === 'half' ? (cardWidthWithPadding / 2) * x : cardWidthWithPadding * x) + (
+      const horizontalScale = horizontal === 'half' ? 2.0 : 1.0;
+      const left = cardWidthWithPadding / horizontalScale * (x + horizontalScale) + (
         resource_dividers ? 50 * x : 0
       );
       const annotation = find(annotations, a => a.x === x && a.y === rowNumber);
@@ -138,16 +142,19 @@ export default function LocationSetupView({ step: { locations, annotations, deco
     verticalPadding,
   } = cardDimensions;
 
-  const unitWidth = (cardWidth + betweenPadding) / (horizontal === 'half' ? 2.0 : 1);
-  const unitHeight = (cardHeight + verticalPadding) / (vertical === 'half' ? 2.0 : 1)
-  const rowWidth = unitWidth * (rowSize + 1);
-  const rowHeight = TOP_PADDING * 2 + unitHeight * (rowCount + 4) + GUTTER_SIZE;
+  const horizontalScale = horizontal === 'half' ? 2.0 : 1.0;
+  const verticalScale = vertical === 'half' ? 2.0 : 1.0;
+
+  const unitWidth = (cardWidth + betweenPadding) / horizontalScale;
+  const unitHeight = (cardHeight + verticalPadding) / verticalScale;
+  const rowWidth = unitWidth * (rowSize + 3 * horizontalScale);
+  const rowHeight = TOP_PADDING * 2 + unitHeight * (rowCount + 3 * verticalScale) + GUTTER_SIZE;
   const [bottomDecorations, topDecorations] = useMemo(() => partition(decorations ?? [], d => d.layer === 'bottom'), [decorations]);
   return (
     <PanPinchView
-      minScale={0.5}
+      minScale={0.25}
       maxScale={4}
-      initialScale={1.0}
+      initialScale={1}
       containerDimensions={{ width: width, height: height - NOTCH_BOTTOM_PADDING }}
       contentDimensions={{
         width: rowWidth + m * 4,
@@ -167,6 +174,10 @@ export default function LocationSetupView({ step: { locations, annotations, deco
             decorations={bottomDecorations}
             unitWidth={unitWidth}
             unitHeight={unitHeight}
+            width={rowWidth}
+            height={rowHeight * rowCount}
+            horizontalScale={horizontalScale}
+            verticalScale={verticalScale}
           />
         ) }
         <View style={[styles.container, { height: rowHeight, margin: m * 2 }]}>
@@ -177,6 +188,10 @@ export default function LocationSetupView({ step: { locations, annotations, deco
             decorations={bottomDecorations}
             unitWidth={unitWidth}
             unitHeight={unitHeight}
+            width={width}
+            height={rowHeight * rowCount}
+            horizontalScale={horizontalScale}
+            verticalScale={verticalScale}
           />
         ) }
       </View>
@@ -184,8 +199,51 @@ export default function LocationSetupView({ step: { locations, annotations, deco
   );
 }
 
-function Decorations({ decorations, unitWidth, unitHeight }: { decorations: LocationDecoration[]; unitWidth: number; unitHeight: number; }) {
-  return null;
+function getColor(colors: ThemeColors, color?: 'blue' | 'red') {
+  switch (color) {
+    case 'blue': return colors.campaign.text.interlude;
+    case 'red':
+    default:
+      return colors.campaign.text.resolution;
+  }
+}
+
+function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, verticalScale, width, height }: { decorations: LocationDecoration[]; unitWidth: number; unitHeight: number; width: number; height: number; horizontalScale: number; verticalScale: number }) {
+  const { colors } = useContext(StyleContext);
+  return (
+    <Canvas style={StyleSheet.absoluteFill}>
+      { map(decorations, (d, idx) => {
+        switch (d.type) {
+          case 'circle': {
+            const cx = unitWidth * d.start_x;
+            const cy = unitHeight * d.start_y;
+            const radius = Math.sqrt((unitWidth * d.end_x - cx) ** 2 + (unitHeight * d.end_y - cy) ** 2);
+            return (
+              <Circle
+                key={idx}
+                cx={cx + SIDE_PADDING + (horizontalScale + 3 / horizontalScale) * unitWidth}
+                cy={cy + TOP_PADDING + (verticalScale + 2 / verticalScale) * unitHeight}
+                r={radius}
+                color="transparent"
+              >
+                <Paint color={getColor(colors, d.color)} style="stroke" strokeWidth={4} />
+              </Circle>
+            );
+          }
+          default:
+            return (
+              <Line key={idx}
+                p1={vec(unitWidth * (d.start_x + (horizontalScale + 3 / horizontalScale)) + SIDE_PADDING, unitHeight * (d.start_y + verticalScale + 2 / verticalScale) + TOP_PADDING)}
+                p2={vec(unitWidth * (d.end_x + (horizontalScale + 3 / horizontalScale)) + SIDE_PADDING, unitHeight * (d.end_y + verticalScale + 2 / verticalScale) + TOP_PADDING)}
+                color={getColor(colors, d.color)}
+                style="stroke"
+                strokeWidth={4}
+              />
+            );
+        }
+      }) }
+    </Canvas>
+  );
 }
 const styles = StyleSheet.create({
   container: {
