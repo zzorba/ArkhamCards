@@ -5872,7 +5872,7 @@ msgid "Show original release packs"
 msgstr "기존 딜럭스/신화팩 형식도 보기"
 
 msgid "Non-Unique"
-msgstr ""
+msgstr "고유가 아닌"
 
 msgctxt "investigator"
 msgid "Custom"
