@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { find, forEach, map, partition } from 'lodash';
 import PanPinchView from 'react-native-pan-pinch-view';
-import { Canvas, Paint, Circle, Line, vec } from "@shopify/react-native-skia";
+import { Canvas, Paint, Circle, Line, vec, Path } from "@shopify/react-native-skia";
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
@@ -43,9 +43,10 @@ export default function LocationSetupView({ step: { locations, annotations, deco
     });
     return result;
   }, [location_names]);
-  const [placeholders, randoms] = useMemo(() => {
+  const [placeholders, randoms, faded] = useMemo(() => {
     const p: { [code: string]: boolean | undefined } = {};
     const r: { [code: string]: boolean | undefined } = {};
+    const f: { [code: string]: boolean | undefined } = {};
     forEach(location_names || [], entry => {
       if (entry.placeholder) {
         p[entry.code] = true;
@@ -53,8 +54,11 @@ export default function LocationSetupView({ step: { locations, annotations, deco
       if (entry.random) {
         r[entry.code] = true;
       }
+      if (entry.faded) {
+        f[entry.code] = true;
+      }
     });
-    return [p, r];
+    return [p, r, f];
   }, [location_names]);
 
   const heightConstrained: CardSizes = useMemo(() => {
@@ -123,6 +127,7 @@ export default function LocationSetupView({ step: { locations, annotations, deco
           code={item}
           name={names[cleanLocationCode(item)]}
           placeholder={placeholders[cleanLocationCode(item)]}
+          faded={faded[cleanLocationCode(item)]}
           random={randoms[cleanLocationCode(item)]}
           top={TOP_PADDING + top}
           left={SIDE_PADDING + left}
@@ -210,19 +215,25 @@ function getColor(colors: ThemeColors, color?: 'blue' | 'red') {
 
 function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, verticalScale, width, height }: { decorations: LocationDecoration[]; unitWidth: number; unitHeight: number; width: number; height: number; horizontalScale: number; verticalScale: number }) {
   const { colors } = useContext(StyleContext);
+  const toX = (x: number) => unitWidth * (x + horizontalScale + 3 / horizontalScale) + SIDE_PADDING;
+  const toY = (y: number) => unitHeight * (y + verticalScale + 2 / verticalScale) + TOP_PADDING;
+
   return (
     <Canvas style={StyleSheet.absoluteFill}>
       { map(decorations, (d, idx) => {
+        const startX = toX(d.start_x);
+        const startY = toY(d.start_y);
+        const endX = toX(d.end_x);
+        const endY = toY(d.end_y);
+
         switch (d.type) {
           case 'circle': {
-            const cx = unitWidth * d.start_x;
-            const cy = unitHeight * d.start_y;
-            const radius = Math.sqrt((unitWidth * d.end_x - cx) ** 2 + (unitHeight * d.end_y - cy) ** 2);
+            const radius = Math.sqrt((endX - startX) ** 2 + (endY - startY) ** 2);
             return (
               <Circle
                 key={idx}
-                cx={cx + SIDE_PADDING + (horizontalScale + 3 / horizontalScale) * unitWidth}
-                cy={cy + TOP_PADDING + (verticalScale + 2 / verticalScale) * unitHeight}
+                cx={startX}
+                cy={startY}
                 r={radius}
                 color="transparent"
               >
@@ -230,11 +241,30 @@ function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, vert
               </Circle>
             );
           }
+          case 'arrow': {
+            var posnALeft = {
+              x: startX,
+              y: startY,
+            };
+            var posnBLeft = {
+              x: endX,
+              y: endY,
+            };
+            var dStrLeft =
+                "M" +
+                (posnALeft.x      ) + "," + (posnALeft.y) + " " +
+                "C" +
+                (posnALeft.x - 100) + "," + (posnALeft.y) + " " +
+                (posnBLeft.x - 100) + "," + (posnBLeft.y) + " " +
+                (posnBLeft.x      ) + "," + (posnBLeft.y);
+            return <Path key={idx} path={dStrLeft} color={getColor(colors, d.color)} />;
+          }
+          case 'line':
           default:
             return (
               <Line key={idx}
-                p1={vec(unitWidth * (d.start_x + (horizontalScale + 3 / horizontalScale)) + SIDE_PADDING, unitHeight * (d.start_y + verticalScale + 2 / verticalScale) + TOP_PADDING)}
-                p2={vec(unitWidth * (d.end_x + (horizontalScale + 3 / horizontalScale)) + SIDE_PADDING, unitHeight * (d.end_y + verticalScale + 2 / verticalScale) + TOP_PADDING)}
+                p1={vec(startX, startY)}
+                p2={vec(endX, endY)}
                 color={getColor(colors, d.color)}
                 style="stroke"
                 strokeWidth={4}
@@ -245,6 +275,7 @@ function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, vert
     </Canvas>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     position: 'relative',

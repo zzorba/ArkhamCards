@@ -464,6 +464,7 @@ export interface RemoveCardEffect {
   fixed_investigator?: string;
   card: string;
   non_story?: boolean;
+  exile?: boolean;
   hidden?: boolean;
 }
 export interface ReplaceCardEffect {
@@ -1334,6 +1335,7 @@ export interface LocationSetupStep {
     name: string;
     placeholder?: boolean;
     random?: boolean;
+    faded?: boolean;
   }[];
   bullet_type?: null;
   narration?: Narration;
@@ -1495,7 +1497,8 @@ export interface Scenario {
   standalone_setup?: string[];
 }
 export interface ChallengeData {
-  investigator: string;
+  investigator?: string;
+  card_discount?: string[];
   xp_cost: number;
   requirements: {
     text: string;

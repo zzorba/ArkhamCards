@@ -3287,6 +3287,14 @@
             "text": "you know that the Wendigo still roams the North Hanninah valley."
           },
           {
+            "id": "banished_shax",
+            "text": "the investigators banished Shax."
+          },
+          {
+            "id": "banished_the_gilded_spirit",
+            "text": "the investigators banished the gilded spirit."
+          },
+          {
             "id": "blob_contained",
             "text": "Die Anomalie wurde eingedämmt."
           },
@@ -3317,6 +3325,22 @@
           {
             "id": "constellation_was_saved",
             "text": "the Constellation was saved."
+          },
+          {
+            "id": "dario_was_turned_into_solid_gold",
+            "text": "Dario was turned into solid gold."
+          },
+          {
+            "id": "darios_investment_didnt_pay_off",
+            "text": "Dario's investment didn't pay off."
+          },
+          {
+            "id": "dr_maleson_was_lost_between_dimensions",
+            "text": "Dr. Maleson was lost between dimensions."
+          },
+          {
+            "id": "dr_malesons_experiment_was_a_failure",
+            "text": "Dr. Maleson's experiment was a failure."
           },
           {
             "id": "fof_alarm_level",
@@ -3391,6 +3415,22 @@
             "text": "Hinweise auf dem Schlüssel Der Quell des Glücks: #X#"
           },
           {
+            "id": "gathered_samples_from_another_earth",
+            "text": "the investigators gathered samples from another Earth."
+          },
+          {
+            "id": "halted_the_blood_ceremony",
+            "text": "the investigators halted the blood ceremony."
+          },
+          {
+            "id": "madame_labranche_has_lost_her_fortune",
+            "text": "Madame Labranche has lost her fortune."
+          },
+          {
+            "id": "madame_labranche_has_settled_accounts",
+            "text": "Madame Labranche has settled accounts."
+          },
+          {
             "id": "meh_excelsior_claims_another_victim",
             "text": "Das Excelsior fordert ein weiteres Opfer."
           },
@@ -3405,6 +3445,30 @@
           {
             "id": "meh_murders_continue_unsolved",
             "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
+          },
+          {
+            "id": "observed_the_aftereffects_of_the_shift",
+            "text": "the investigators observed the aftereffects of the shift."
+          },
+          {
+            "id": "olive_has_sworn_off_blood_magic",
+            "text": "Olive has sworn off blood magic."
+          },
+          {
+            "id": "olive_paid_the_price_for_her_curiosity",
+            "text": "Olive paid the price for her curiosity."
+          },
+          {
+            "id": "purged_the_police_station",
+            "text": "the investigators purged the police station."
+          },
+          {
+            "id": "renewed_the_labranches_pact",
+            "text": "the investigators renewed the Labranches' pact."
+          },
+          {
+            "id": "repaired_the_golden_artifact",
+            "text": "the investigators repaired the golden artifact."
           },
           {
             "id": "ritual_at_sea_was_completed",
@@ -3427,6 +3491,10 @@
             "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
+            "id": "saved_the_mutated_officer",
+            "text": "the investigators saved the mutated officer."
+          },
+          {
             "id": "tes_aware_of_xzharahs_plan",
             "text": "Du kennst Xzharahs Pläne."
           },
@@ -3447,6 +3515,14 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
+            "id": "testsuo_made_a_noble_sacrifice",
+            "text": "Tetsuo made a noble sacrifice."
+          },
+          {
+            "id": "tetsuos_investigation_has_failed",
+            "text": "Tetsuo's investigation has failed."
+          },
+          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
@@ -3457,6 +3533,10 @@
           {
             "id": "tnu_the_abyss_was_saved",
             "text": "Der Abgrund wurde gerettet."
+          },
+          {
+            "id": "used_the_sorcrerers_magic_against_them",
+            "text": "the investigators used the sorcerers' magic against them."
           },
           {
             "id": "zbs_have_seen_and_understood",

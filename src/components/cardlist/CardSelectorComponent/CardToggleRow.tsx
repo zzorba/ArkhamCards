@@ -10,7 +10,7 @@ import { useFlag } from '@components/core/hooks';
 interface Props {
   card: Card;
   count: number;
-  onChange: (card: Card, count: number) => void;
+  onChange?: (card: Card, count: number) => void;
   onPress?: (card: Card) => void;
   limit: number;
   locked?: boolean;
@@ -25,7 +25,7 @@ export default function CardToggleRow({ card, count, onChange, onPress, limit, l
   const [four, toggleFour] = useFlag(count > 3);
 
   useEffect(() => {
-    onChange(card, (one ? 1 : 0) + (two ? 1 : 0) + (three ? 1 : 0) + (four ? 1 : 0));
+    onChange?.(card, (one ? 1 : 0) + (two ? 1 : 0) + (three ? 1 : 0) + (four ? 1 : 0));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [one, two, three, four]);
 

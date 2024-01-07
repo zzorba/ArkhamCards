@@ -12,7 +12,7 @@ import {
 } from 'lodash';
 import { t } from 'ttag';
 
-import { DeckMeta, DeckProblem, DeckProblemType, INVALID_CARDS, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
+import { DeckInvestigatorProblemType, DeckMeta, DeckProblem, DeckProblemType, INVALID_CARDS, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
 import { ANCESTRAL_KNOWLEDGE_CODE, UNDERWORLD_MARKET_CODE, UNDERWORLD_SUPPORT_CODE, BODY_OF_A_YITHIAN, ON_YOUR_OWN_CODE, VERSATILE_CODE, FORCED_LEARNING_CODE, PRECIOUS_MEMENTO_FORMER_CODE, PRECIOUS_MEMENTO_FUTURE_CODE, RANDOM_BASIC_WEAKNESS, PARALLEL_AGNES_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
@@ -216,6 +216,7 @@ export default class DeckValidation {
     }
     return {
       reason: problem.reason,
+      investigatorReason: problem.investigatorReason,
       invalidCards: problem.invalidCards,
       problems: [...this.problem_list],
     };
@@ -223,6 +224,7 @@ export default class DeckValidation {
 
   getProblemHelper(cards: Card[], ignoreInvestigatorRequirements?: boolean): null | {
     reason: DeckProblemType;
+    investigatorReason?: DeckInvestigatorProblemType;
     invalidCards: Card[],
   } {
     // get investigator data
@@ -252,6 +254,7 @@ export default class DeckValidation {
         if (failedReq) {
           return {
             reason: INVESTIGATOR_PROBLEM,
+            investigatorReason: 'required',
             invalidCards,
           };
         }
@@ -290,6 +293,7 @@ export default class DeckValidation {
 
           return {
             reason: INVESTIGATOR_PROBLEM,
+            investigatorReason: 'limit',
             invalidCards,
           };
         }
@@ -310,6 +314,7 @@ export default class DeckValidation {
             }
             return {
               reason: INVESTIGATOR_PROBLEM,
+              investigatorReason: 'atleast',
               invalidCards,
             };
           }
@@ -328,6 +333,7 @@ export default class DeckValidation {
 
             return {
               reason: INVESTIGATOR_PROBLEM,
+              investigatorReason: 'atleast',
               invalidCards,
             };
           }

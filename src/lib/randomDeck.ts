@@ -6,7 +6,6 @@ import specialCards, { JOE_DIAMOND_CODE, LOLA_CODE, SUZI_CODE } from '@data/deck
 import Card, { CardsMap } from '@data/types/Card';
 import DeckValidation from './DeckValidation';
 import { getCards } from './parseDeck';
-import { FactionCodeType } from '@app_constants';
 
 const VERBOSE = false;
 const MINI_VEROBSE = VERBOSE;
@@ -119,7 +118,9 @@ function randomAllowedCardHelper(
       }
 
       if (
-        (!problem || problem.reason === TOO_FEW_CARDS || problem.reason === INVESTIGATOR_PROBLEM) &&
+        (!problem || problem.reason === TOO_FEW_CARDS ||
+          (problem.reason === INVESTIGATOR_PROBLEM && problem.investigatorReason === 'atleast')
+        ) &&
         card.collectionDeckLimit(in_collection, ignore_collection) > (validation.slots[card.code] || 0)
       ) {
         // Found a good card

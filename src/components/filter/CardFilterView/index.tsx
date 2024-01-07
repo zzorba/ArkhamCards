@@ -204,7 +204,6 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
 
     const parts: string[] = [];
     forEach(completeCycles, cycle_position => {
-      console.log(cycle_position, cycleNames);
       if (cycle_position === '1') {
         parts.push(cycleNames[cycle_position]);
       } else {

@@ -24,6 +24,7 @@ interface Props {
   top: number;
   name?: string;
   random?: boolean;
+  faded?: boolean;
   placeholder?: boolean;
   resource_dividers?: {
     right?: number;
@@ -127,7 +128,7 @@ export function cleanLocationCode(code: string): string {
     .replace(RAIL_REGEX, '');
 }
 
-export default function LocationCard({ annotation, code, random, height, width, left, top, name, resource_dividers, placeholder }: Props) {
+export default function LocationCard({ annotation, code, faded, random, height, width, left, top, name, resource_dividers, placeholder }: Props) {
   const { borderStyle, fontScale, colors, typography } = useContext(StyleContext);
   const rotate = code.indexOf('_rotate') !== -1;
   const mini = code.indexOf('_mini') !== -1;
@@ -263,14 +264,14 @@ export default function LocationCard({ annotation, code, random, height, width, 
   }
   return (
     <>
-      <View style={[styles.card, { width: rotate ? height : width, height: rotate ? width : height, left, top }, random ? { opacity: 0.40 } : undefined]}>
+      <View style={[styles.card, { width: rotate ? height : width, height: rotate ? width : height, left, top }, faded || random ? { opacity: 0.40 } : undefined]}>
         { image }
       </View>
       { resourceDividers }
       { rails }
-      { random && (
+      { !!(faded || random) && (
         <View style={{ position: 'absolute', top, left, height, width, flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRadius: 8, borderWidth: 1, borderStyle: 'dashed', borderColor: colors.M }}>
-          <ArkhamIcon name="wild" size={64} color="#6C0A1A" />
+          { !!random && <ArkhamIcon name="wild" size={64} color="#6C0A1A" /> }
         </View>
       )}
       { !!annotation && (

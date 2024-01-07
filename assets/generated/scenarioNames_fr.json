@@ -48,6 +48,10 @@
     "name": "Terrain Glissant"
   },
   {
+    "id": "anything_once",
+    "name": "Anything Once"
+  },
+  {
     "id": "arkham",
     "name": "Les Masques de Minuit"
   },
@@ -492,6 +496,10 @@
     "name": "Meurtre à l'Hôtel Excelsior"
   },
   {
+    "id": "mysterious_benefits",
+    "name": "Mysterious Benefits"
+  },
+  {
     "id": "nairobi",
     "name": "Machinerie Infernale"
   },
@@ -550,6 +558,10 @@
   {
     "id": "red_tide_rising",
     "name": "Red Tide Rising"
+  },
+  {
+    "id": "relics_of_the_past",
+    "name": "Relics of the Past"
   },
   {
     "id": "restful_night",
@@ -770,6 +782,10 @@
   {
     "id": "sibling_rivalry",
     "name": "Sibling Rivalry"
+  },
+  {
+    "id": "something_big",
+    "name": "Something Big"
   },
   {
     "id": "starfall",
@@ -1052,6 +1068,10 @@
     "name": "Tomb of Dead Dreams"
   },
   {
+    "id": "too_noble",
+    "name": "Too Noble"
+  },
+  {
     "id": "torch",
     "name": "Le Rassemblement"
   },
@@ -1086,6 +1106,10 @@
   {
     "id": "union_and_disillusion",
     "name": "Union et Désillusion"
+  },
+  {
+    "id": "unscrupulous_investments",
+    "name": "Unscrupulous Investments"
   },
   {
     "id": "waking_nightmare",

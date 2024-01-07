@@ -40,6 +40,11 @@
   {
     "type": "scenario",
     "campaignId": "side",
+    "scenarioId": "anything_once"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
     "scenarioId": "bad_blood"
   },
   {
@@ -105,12 +110,27 @@
   {
     "type": "scenario",
     "campaignId": "side",
+    "scenarioId": "mysterious_benefits"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
     "scenarioId": "read_or_die"
   },
   {
     "type": "scenario",
     "campaignId": "side",
     "scenarioId": "red_tide_rising"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
+    "scenarioId": "relics_of_the_past"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
+    "scenarioId": "something_big"
   },
   {
     "type": "scenario",
@@ -141,6 +161,16 @@
     "type": "scenario",
     "campaignId": "side",
     "scenarioId": "the_symphony_of_erich_zann"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
+    "scenarioId": "too_noble"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
+    "scenarioId": "unscrupulous_investments"
   },
   {
     "type": "scenario",

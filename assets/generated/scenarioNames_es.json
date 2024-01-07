@@ -48,6 +48,10 @@
     "name": "Sobre hielo peligroso"
   },
   {
+    "id": "anything_once",
+    "name": "Anything Once"
+  },
+  {
     "id": "arkham",
     "name": "Las máscaras de medianoche"
   },
@@ -492,6 +496,10 @@
     "name": "Asesinato en el hotel Excelsior"
   },
   {
+    "id": "mysterious_benefits",
+    "name": "Mysterious Benefits"
+  },
+  {
     "id": "nairobi",
     "name": "Maquinaria infernal"
   },
@@ -550,6 +558,10 @@
   {
     "id": "red_tide_rising",
     "name": "Sube la Marea Roja"
+  },
+  {
+    "id": "relics_of_the_past",
+    "name": "Relics of the Past"
   },
   {
     "id": "restful_night",
@@ -770,6 +782,10 @@
   {
     "id": "sibling_rivalry",
     "name": "Rivalidad entre hermanos"
+  },
+  {
+    "id": "something_big",
+    "name": "Something Big"
   },
   {
     "id": "starfall",
@@ -1052,6 +1068,10 @@
     "name": "Tomb of Dead Dreams"
   },
   {
+    "id": "too_noble",
+    "name": "Too Noble"
+  },
+  {
     "id": "torch",
     "name": "El encuentro"
   },
@@ -1086,6 +1106,10 @@
   {
     "id": "union_and_disillusion",
     "name": "Unión y desilusión"
+  },
+  {
+    "id": "unscrupulous_investments",
+    "name": "Unscrupulous Investments"
   },
   {
     "id": "waking_nightmare",

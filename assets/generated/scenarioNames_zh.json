@@ -48,6 +48,10 @@
     "name": "如履薄冰"
   },
   {
+    "id": "anything_once",
+    "name": "Anything Once"
+  },
+  {
     "id": "arkham",
     "name": "午夜假面"
   },
@@ -492,6 +496,10 @@
     "name": "艾肖希爾酒店謀殺案"
   },
   {
+    "id": "mysterious_benefits",
+    "name": "Mysterious Benefits"
+  },
+  {
     "id": "nairobi",
     "name": "地獄機械"
   },
@@ -550,6 +558,10 @@
   {
     "id": "red_tide_rising",
     "name": "赤潮升湧"
+  },
+  {
+    "id": "relics_of_the_past",
+    "name": "Relics of the Past"
   },
   {
     "id": "restful_night",
@@ -770,6 +782,10 @@
   {
     "id": "sibling_rivalry",
     "name": "兄弟鬩牆"
+  },
+  {
+    "id": "something_big",
+    "name": "Something Big"
   },
   {
     "id": "starfall",
@@ -1052,6 +1068,10 @@
     "name": "Tomb of Dead Dreams"
   },
   {
+    "id": "too_noble",
+    "name": "Too Noble"
+  },
+  {
     "id": "torch",
     "name": "聚集於此"
   },
@@ -1086,6 +1106,10 @@
   {
     "id": "union_and_disillusion",
     "name": "聚合幻滅"
+  },
+  {
+    "id": "unscrupulous_investments",
+    "name": "Unscrupulous Investments"
   },
   {
     "id": "waking_nightmare",

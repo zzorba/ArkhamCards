@@ -945,6 +945,18 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.innsmouthIcon('return_to_flooded_caverns', size, color);
       case 'zoc':
         return this.standaloneIcon('zoc', size, color);
+      case 'rop':
+      case 'relics_of_the_past':
+        return this.standaloneIcon('rop', size, color);
+      case 'arkham_incidents':
+      case 'zai':
+        return this.standaloneIcon('arkham_incidents', size, color);
+      case 'too_noble':
+      case 'something_big':
+      case 'unscrupulous_investments':
+      case 'anything_once':
+      case 'mysterious_benefits':
+        return this.standaloneIcon(encounter_code, size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);

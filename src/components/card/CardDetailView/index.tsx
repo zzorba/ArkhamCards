@@ -143,7 +143,6 @@ function CardDetailView({
 
 
   const showInvestigators = useCallback(() => {
-    console.log('Show investigators');
     Navigation.push<CardInvestigatorProps>(componentId, {
       component: {
         name: 'Card.Investigators',

@@ -1,6 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import { head } from 'lodash';
 import { t } from 'ttag';
 
 import EncounterIcon from '@icons/EncounterIcon';
@@ -10,6 +11,7 @@ import space, { s, m } from '@styles/space';
 import { ChallengeScenarioProps } from '@components/campaignguide/ChallengeScenarioView';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
+import useCardList from '@components/card/useCardList';
 
 interface Props {
   componentId: string;
@@ -18,15 +20,21 @@ interface Props {
   useTime: boolean;
 }
 
+const EMPTY_LIST: string[] = [];
 function ChallengeBlock({ scenario, challenge, useTime }: { scenario: Scenario; challenge: ChallengeData; useTime: boolean }) {
   const { typography } = useContext(StyleContext);
-  const [investigator] = useSingleCard(challenge.investigator, 'player');
+  const [investigatorCard] = useSingleCard(challenge.investigator, 'player');
+  const [playerCard] = useSingleCard(head(challenge.card_discount), 'player');
+  const investigator = investigatorCard ?? playerCard;
+
   if (!investigator) {
     return null;
   }
   const xpCost = scenario.xp_cost || 0;
   const additionalXpCost = challenge.xp_cost;
   const challengeCost = xpCost + additionalXpCost;
+  const basicXpCost = xpCost;
+  const challengeDiscountCost = xpCost + additionalXpCost;
   return (
     <View style={styles.flex}>
       <Text style={[typography.small, space.paddingTopS]}>
@@ -35,20 +43,41 @@ function ChallengeBlock({ scenario, challenge, useTime }: { scenario: Scenario; 
           t`${investigator.name} Challenge Scenario`
         }
       </Text>
-      { useTime ? (
+      { !!investigatorCard ? (
         <>
-          <Text style={[typography.small, typography.light, space.paddingTopS]}>
-            { t`Time cost: ${xpCost}` }
-          </Text>
-          <Text style={[typography.small, typography.light, space.paddingTopS]}>
-            { t`Additional experience cost for ${investigator.name}: ${additionalXpCost}` }
-          </Text>
+          { useTime ? (
+            <>
+              <Text style={[typography.small, typography.light, space.paddingTopS]}>
+                { t`Time cost: ${xpCost}` }
+              </Text>
+              <Text style={[typography.small, typography.light, space.paddingTopS]}>
+                { t`Additional experience cost for ${investigator.name}: ${additionalXpCost}` }
+              </Text>
+            </>
+          ) : (
+            <Text style={[typography.small, typography.light, space.paddingTopS]}>
+              { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
+            </Text>
+          ) }
         </>
       ) : (
-        <Text style={[typography.small, typography.light, space.paddingTopS]}>
-          { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
-        </Text>
-      ) }
+        <>
+          { useTime ? (
+            <>
+              <Text style={[typography.small, typography.light, space.paddingTopS]}>
+                { t`Time cost: ${xpCost}` }
+              </Text>
+              <Text style={[typography.small, typography.light, space.paddingTopS]}>
+                { t`Additional experience cost for ${investigator.name}: ${additionalXpCost}` }
+              </Text>
+            </>
+          ) : (
+            <Text style={[typography.small, typography.light, space.paddingTopS]}>
+              { t`Experience cost: ${basicXpCost} for decks that include ${investigator.name}, ${challengeDiscountCost} for each other player` }
+            </Text>
+          ) }
+        </>
+      )}
     </View>
   );
 }

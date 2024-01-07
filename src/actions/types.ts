@@ -64,8 +64,14 @@ export type DeckProblemType =
   typeof TOO_MANY_CARDS |
   typeof DECK_OPTIONS_LIMIT;
 
+export type DeckInvestigatorProblemType =
+  'required' |
+  'limit' |
+  'atleast';
+
 export interface DeckProblem {
   reason: DeckProblemType;
+  investigatorReason?: DeckInvestigatorProblemType;
   problems?: string[];
   invalidCards: Card[];
 }
@@ -313,6 +319,7 @@ export interface TraumaAndCardData extends Trauma {
   ignoreStoryAssets?: string[];
   addedCards?: string[];
   removedCards?: string[];
+  exiledCards?: string[];
   cardCounts?: Slots;
 }
 

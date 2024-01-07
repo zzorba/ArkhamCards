@@ -11,6 +11,7 @@ import { usePlayerCards } from '@components/core/hooks';
 interface Props {
   componentId: string;
   slots: Slots;
+  fixedSlots?: Slots;
   counts: Slots;
   toggleCard?: (code: string, value: boolean) => void;
   updateCount?: (card: Card, value: number) => void;
@@ -21,7 +22,7 @@ interface Props {
 }
 
 
-export default function CardSelectorComponent({ componentId, slots, counts, toggleCard, updateCount, filterCard, forceHeader, header, locked }: Props) {
+export default function CardSelectorComponent({ componentId, slots, fixedSlots, counts, toggleCard, updateCount, filterCard, forceHeader, header, locked }: Props) {
   const { colors } = useContext(StyleContext);
 
   const onChange = useCallback((card: Card, count: number) => {
@@ -37,6 +38,27 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
   }, [colors, componentId]);
   const initialCards = useMemo(() => uniq(concat(keys(slots), flatMap(counts, (count, code) => count > 0 ? code : []))), [slots, counts])
   const [cards] = usePlayerCards(initialCards);
+  const fixedCards = useMemo(() => {
+    if (!cards) {
+      return [];
+    }
+    return sortBy(
+      filter(
+        initialCards,
+        code => {
+          const card = cards[code];
+          return (
+            !!card &&
+            (fixedSlots?.[code] ?? 0) > 0
+          );
+        }
+      ),
+      code => {
+        const card = cards[code];
+        return (card && card.name) || '';
+      }
+    );
+  }, [cards, fixedSlots]);
   const matchingCards = useMemo(() => {
     if (!cards) {
       return [];
@@ -60,7 +82,7 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
     );
   }, [slots, initialCards, counts, locked, cards, filterCard]);
 
-  if (!matchingCards.length || !cards) {
+  if ((!matchingCards.length  && !fixedCards.length) || !cards) {
     if (forceHeader) {
       return (
         <>
@@ -74,6 +96,25 @@ export default function CardSelectorComponent({ componentId, slots, counts, togg
   return (
     <>
       { header }
+      { flatMap(fixedCards, (code, idx) => {
+        const last = !matchingCards.length && (idx === fixedCards.length - 1);
+        const card = cards[code];
+        if (!card) {
+          return null;
+        }
+        return (
+          <CardToggleRow
+            key={code}
+            card={card}
+            onPress={onCardPress}
+            count={fixedSlots?.[code] ?? 0}
+            limit={fixedSlots?.[code] ?? 0}
+            locked
+            disabled
+            last={last}
+          />
+        );
+      })}
       { flatMap(matchingCards, (code, idx) => {
         const last = idx === (matchingCards.length - 1);
         const card = cards[code];

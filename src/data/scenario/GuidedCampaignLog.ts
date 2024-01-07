@@ -919,6 +919,10 @@ export default class GuidedCampaignLog {
     return this.storyAssetSlots(this.campaignData.investigatorData[code] || {});
   }
 
+  exileCodes(code: string): string[] {
+    return this.campaignData.investigatorData[code]?.exiledCards || [];
+  }
+
   private nonStoryCardSlots(data: TraumaAndCardData): Slots {
     const slots: Slots = {};
     const addedCards: string[] = data.addedCards || [];
@@ -1142,8 +1146,11 @@ export default class GuidedCampaignLog {
           if (effect.non_story) {
             let addedCards = data.addedCards || [];
             const removedCards = data.removedCards || [];
+            const exiledCards = data.exiledCards || [];
             forEach(allCards, card => {
-              if (find(addedCards, card)) {
+              if (effect.exile) {
+                exiledCards.push(card);
+              } else if (find(addedCards, card)) {
                 addedCards = filter(addedCards, existingCard => existingCard === card);
               } else {
                 removedCards.push(card);
@@ -1151,6 +1158,7 @@ export default class GuidedCampaignLog {
             });
             data.addedCards = addedCards;
             data.removedCards = removedCards;
+            data.exiledCards = exiledCards;
           } else {
             data.storyAssets = filter(data.storyAssets || [], card => !cards.has(card));
           }

@@ -9,6 +9,7 @@ interface Props {
   componentId: string;
   deck?: LatestDeckT;
   exileCounts: Slots;
+  fixedExileCounts?: Slots;
   updateExileCount: (card: Card, count: number) => void;
   label?: React.ReactNode;
   children: React.ReactNode;
@@ -21,7 +22,10 @@ function isExile(card: Card) {
   return !!card.exile;
 }
 
-export default function ExileCardSelectorComponent({ alwaysShow, componentId, disabled, deck, exileCounts, updateExileCount, label, children, storyCards }: Props) {
+export default function ExileCardSelectorComponent({
+  alwaysShow, componentId, disabled, deck, exileCounts, fixedExileCounts,
+  updateExileCount, label, children, storyCards,
+}: Props) {
   const isStandardExile = useCallback((card: Card) => {
     // We handle story cards somewhere else.
     return isExile(card) && (!storyCards || !storyCards[card.code]);
@@ -35,6 +39,7 @@ export default function ExileCardSelectorComponent({ alwaysShow, componentId, di
       <CardSelectorComponent
         componentId={componentId}
         slots={deck.deck.slots || {}}
+        fixedSlots={fixedExileCounts}
         counts={exileCounts}
         updateCount={updateExileCount}
         filterCard={isStandardExile}
