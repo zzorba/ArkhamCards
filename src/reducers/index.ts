@@ -426,6 +426,11 @@ export const getPackSpoilers = createSelector(
   (show_spoilers) => show_spoilers || DEFAULT_OBJECT
 );
 
+export const getShowCustomContent = createSelector(
+  (state: AppState) => state.settings.customContent,
+  (customContent) => !!customContent
+);
+
 export const getPacksInCollection = createSelector(
   (state: AppState) => state.packs.in_collection,
   (in_collection) => in_collection || DEFAULT_OBJECT

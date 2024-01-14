@@ -33,11 +33,13 @@ export function slotsTranslations() {
 
 export function usesTranslations() {
   return {
+    aether: t`Aether`,
     ammo: t`Ammo`,
     blame: c('fan-made-uses').t`Blame`,
     bounties: t`Bounties`,
     charges: t`Charges`,
     durability: t`Durability`,
+    evidence: c('uses').t`Evidence`,
     keys: t`Keys`,
     leylines: t`Leylines`,
     locks: t`Locks`,
@@ -48,6 +50,8 @@ export function usesTranslations() {
     secrets: t`Secrets`,
     supplies: c('uses').t`Supplies`,
     tickets: t`Tickets`,
+    time: c('uses').t`Time`,
+    treats: c('uses').t`Treats`,
     tries: t`Tries`,
     whistles: t`Whistles`,
   };

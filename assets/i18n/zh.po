@@ -5872,6 +5872,13 @@ msgstr ""
 msgid "Non-Unique"
 msgstr ""
 
+#, javascript-format
+msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
+msgstr ""
+
+msgid "Aether"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自訂"
@@ -7540,6 +7547,338 @@ msgctxt "trait"
 msgid "Double"
 msgstr ""
 
+msgctxt "trait"
+msgid "AI"
+msgstr ""
+
+msgctxt "trait"
+msgid "Abandoned"
+msgstr ""
+
+msgctxt "trait"
+msgid "Access"
+msgstr ""
+
+msgctxt "trait"
+msgid "Alexandria"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ally? Creature"
+msgstr ""
+
+msgctxt "trait"
+msgid "Ancient One?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bad dog"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bazaar"
+msgstr ""
+
+msgctxt "trait"
+msgid "Blessed?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bokor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Book"
+msgstr ""
+
+msgctxt "trait"
+msgid "Buenos Aires"
+msgstr ""
+
+msgctxt "trait"
+msgid "Card"
+msgstr ""
+
+msgctxt "trait"
+msgid "Case"
+msgstr ""
+
+msgctxt "trait"
+msgid "Castle"
+msgstr ""
+
+msgctxt "trait"
+msgid "Chair"
+msgstr ""
+
+msgctxt "trait"
+msgid "Chess"
+msgstr ""
+
+msgctxt "trait"
+msgid "Classy"
+msgstr ""
+
+msgctxt "trait"
+msgid "Collector"
+msgstr ""
+
+msgctxt "trait"
+msgid "Consort"
+msgstr ""
+
+msgctxt "trait"
+msgid "Corpse"
+msgstr ""
+
+msgctxt "trait"
+msgid "Corruption"
+msgstr ""
+
+msgctxt "trait"
+msgid "Darkness"
+msgstr ""
+
+msgctxt "trait"
+msgid "Device"
+msgstr ""
+
+msgctxt "trait"
+msgid "Downtown"
+msgstr ""
+
+msgctxt "trait"
+msgid "Enigma"
+msgstr ""
+
+msgctxt "trait"
+msgid "Entrance"
+msgstr ""
+
+msgctxt "trait"
+msgid "Fellow Dogs"
+msgstr ""
+
+msgctxt "trait"
+msgid "Footwear, but not really"
+msgstr ""
+
+msgctxt "trait"
+msgid "Hardship"
+msgstr ""
+
+msgctxt "trait"
+msgid "Haunted"
+msgstr ""
+
+msgctxt "trait"
+msgid "Havana"
+msgstr ""
+
+msgctxt "trait"
+msgid "Human"
+msgstr ""
+
+msgctxt "trait"
+msgid "Infection"
+msgstr ""
+
+msgctxt "trait"
+msgid "Istanbul"
+msgstr ""
+
+msgctxt "trait"
+msgid "Kuala Lumpur"
+msgstr ""
+
+msgctxt "trait"
+msgid "Local"
+msgstr ""
+
+msgctxt "trait"
+msgid "Locus Site"
+msgstr ""
+
+msgctxt "trait"
+msgid "London"
+msgstr ""
+
+msgctxt "trait"
+msgid "Loyal"
+msgstr ""
+
+msgctxt "trait"
+msgid "Lunatic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Machine"
+msgstr ""
+
+msgctxt "trait"
+msgid "Madness?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Marrakesh"
+msgstr ""
+
+msgctxt "trait"
+msgid "Medical"
+msgstr ""
+
+msgctxt "trait"
+msgid "Music"
+msgstr ""
+
+msgctxt "trait"
+msgid "Musician"
+msgstr ""
+
+msgctxt "trait"
+msgid "Northside"
+msgstr ""
+
+msgctxt "trait"
+msgid "Nostalgia II"
+msgstr ""
+
+msgctxt "trait"
+msgid "Outsider"
+msgstr ""
+
+msgctxt "trait"
+msgid "Parasitic"
+msgstr ""
+
+msgctxt "trait"
+msgid "Plains"
+msgstr ""
+
+msgctxt "trait"
+msgid "Priestess"
+msgstr ""
+
+msgctxt "trait"
+msgid "Pup"
+msgstr ""
+
+msgctxt "trait"
+msgid "Resonant"
+msgstr ""
+
+msgctxt "trait"
+msgid "Restricted"
+msgstr ""
+
+msgctxt "trait"
+msgid "Retired"
+msgstr ""
+
+msgctxt "trait"
+msgid "Risen"
+msgstr ""
+
+msgctxt "trait"
+msgid "Row"
+msgstr ""
+
+msgctxt "trait"
+msgid "Royalty"
+msgstr ""
+
+msgctxt "trait"
+msgid "Saga"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shadow"
+msgstr ""
+
+msgctxt "trait"
+msgid "Shapeshifter"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sheldon Gang"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sister"
+msgstr ""
+
+msgctxt "trait"
+msgid "Slope"
+msgstr ""
+
+msgctxt "trait"
+msgid "Soldier"
+msgstr ""
+
+msgctxt "trait"
+msgid "Stable"
+msgstr ""
+
+msgctxt "trait"
+msgid "Stop"
+msgstr ""
+
+msgctxt "trait"
+msgid "Table"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tatterdemalion"
+msgstr ""
+
+msgctxt "trait"
+msgid "That's bad"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tower"
+msgstr ""
+
+msgctxt "trait"
+msgid "Traitor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tulgey Wood"
+msgstr ""
+
+msgctxt "trait"
+msgid "Underground"
+msgstr ""
+
+msgctxt "trait"
+msgid "Unstable"
+msgstr ""
+
+msgctxt "trait"
+msgid "Upper Floor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Virtual"
+msgstr ""
+
+msgctxt "trait"
+msgid "Weather"
+msgstr ""
+
+msgctxt "trait"
+msgid "What? No"
+msgstr ""
+
+msgctxt "trait"
+msgid "Wonderland"
+msgstr ""
+
+msgctxt "trait"
+msgid "Yuggoth"
+msgstr ""
+
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
@@ -7641,6 +7980,18 @@ msgstr "茶點"
 msgctxt "uses"
 msgid "Supplies"
 msgstr "補給"
+
+msgctxt "uses"
+msgid "Evidence"
+msgstr ""
+
+msgctxt "uses"
+msgid "Time"
+msgstr ""
+
+msgctxt "uses"
+msgid "Treats"
+msgstr ""
 
 msgctxt "Slots"
 msgid "All"

@@ -21,7 +21,7 @@ import { TypeCodeType, RANDOM_BASIC_WEAKNESS, DOWN_THE_RABBIT_HOLE_CODE } from '
 import Card, { CardsMap, cardInCollection } from '@data/types/Card';
 import DeckValidation from '@lib/DeckValidation';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
-import { getPacksInCollection } from '@reducers';
+import { getPacksInCollection, getShowCustomContent } from '@reducers';
 import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -29,13 +29,18 @@ import { xpString } from './hooks';
 import { BONDED_WEAKNESS_COUNTS, THE_INSANE_CODE } from '@data/deck/specialCards';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 
+interface CollectionSettings {
+  inCollection: { [pack_code: string]: boolean };
+  ignoreCollection: boolean;
+  limitedSlots?: boolean;
+  showCustomContent: boolean;
+}
 function hasUpgrades(
   code: string,
   cards: CardsMap,
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
-  inCollection: { [pack_code: string]: boolean },
-  ignoreCollection: boolean,
+  { inCollection, ignoreCollection, showCustomContent }: CollectionSettings
 ): boolean {
   const card = cards[code];
   return !!(
@@ -45,6 +50,7 @@ function hasUpgrades(
       upgradeCard &&
       upgradeCard.code !== code &&
       (upgradeCard.xp || 0) > (card.xp || 0) &&
+      (showCustomContent || !card.custom()) &&
       validation.canIncludeCard(upgradeCard, false) &&
       ((upgradeCard.pack_code === 'core' && !inCollection.no_core) || ignoreCollection || cardInCollection(upgradeCard, inCollection))
     )));
@@ -139,9 +145,7 @@ function deckToSections(
   validation: DeckValidation,
   customizations: Customizations | undefined,
   mode: 'special' | 'side' | 'extra' | undefined,
-  inCollection: { [pack_code: string]: boolean },
-  ignoreCollection: boolean,
-  limitedSlots: boolean,
+  settings: CollectionSettings,
   options?: {
     limitedSlotsOnly?: boolean;
     extraSections?: ExtraSection[];
@@ -149,6 +153,12 @@ function deckToSections(
     existingSlots?: Slots;
   }
 ): [DeckSection, number] {
+  const {
+    inCollection,
+    ignoreCollection,
+    limitedSlots,
+    showCustomContent
+  } = settings;
   const { limitedSlotsOnly, extraSections, sumXp, existingSlots } = options || {};
   const result: CardSection[] = [];
 
@@ -211,8 +221,7 @@ function deckToSections(
               cards,
               cardsByName,
               validation,
-              inCollection,
-              ignoreCollection
+              settings,
             ),
             customizable: hasCustomizationUpgrades(c.id, cards, customizations, validation),
           };
@@ -269,8 +278,7 @@ function deckToSections(
               cards,
               cardsByName,
               validation,
-              inCollection,
-              ignoreCollection
+              settings,
             ),
             customizable: hasCustomizationUpgrades(c.id, cards, customizations, validation),
           };
@@ -359,6 +367,7 @@ export default function useParsedDeckComponent({
   showDrawWeakness, showEditSpecial, showEditCards, showEditExtra, showEditSide, showCardUpgradeDialog, showDraftCards, showDraftExtraCards,
 }: Props): [React.ReactNode, number] {
   const inCollection = useSelector(getPacksInCollection);
+  const showCustomContent = useSelector(getShowCustomContent);
   const ignore_collection = useSettingValue('ignore_collection');
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const investigatorFront = parsedDeck?.investigatorFront;
@@ -447,9 +456,11 @@ export default function useParsedDeckComponent({
       validation,
       customizations,
       undefined,
-      inCollection,
-      ignore_collection,
-      false
+      {
+        inCollection,
+        ignoreCollection: ignore_collection,
+        showCustomContent,
+      },
     );
     const [specialSection, specialIndex] = deckToSections(
       t`Special Cards`,
@@ -462,9 +473,11 @@ export default function useParsedDeckComponent({
       validation,
       customizations,
       'special',
-      inCollection,
-      ignore_collection,
-      false,
+      {
+        inCollection,
+        ignoreCollection: ignore_collection,
+        showCustomContent
+      },
       {
         extraSections: requiredCards && [{
           title: t`Other investigator cards`,
@@ -498,8 +511,11 @@ export default function useParsedDeckComponent({
             cards,
             cardsByName,
             validation,
-            inCollection,
-            ignore_collection
+            {
+              inCollection,
+              ignoreCollection: ignore_collection,
+              showCustomContent,
+            }
           ),
           customizable: hasCustomizationUpgrades(card.id, cards, customizations, validation),
         };
@@ -560,9 +576,11 @@ export default function useParsedDeckComponent({
         new DeckValidation(parsedDeck.investigatorBack, slots, meta, { side_deck: true }),
         customizations,
         'extra',
-        inCollection,
-        ignore_collection,
-        false,
+        {
+          inCollection,
+          ignoreCollection: ignore_collection,
+          showCustomContent,
+        },
       ) : [undefined, currentIndex];
     if (extraSection) {
       newData.push(extraSection);
@@ -584,9 +602,11 @@ export default function useParsedDeckComponent({
       validation,
       customizations,
       'side',
-      inCollection,
-      ignore_collection,
-      false,
+      {
+        inCollection,
+        ignoreCollection: ignore_collection,
+        showCustomContent,
+      },
       {
         sumXp: true,
         existingSlots: slots,
