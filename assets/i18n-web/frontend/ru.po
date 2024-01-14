@@ -2,22 +2,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-01-04 20:26-0500\n"
-"PO-Revision-Date: 2021-01-04 20:26-0500\n"
+"PO-Revision-Date: 2024-01-10 18:16+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"mime-version: 1.0\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"x-generator: Poedit 2.4.2\n"
-"x-poedit-basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"Language: ru\n"
+"mime-version: 1.0\n"
+"x-generator: Poedit 2.4.2\n"
+"x-poedit-basepath: .\n"
+"X-Generator: Poedit 3.4.2\n"
 
 msgid ""
 "This website is dedicated to providing a way for players of the Arkham "
 "Horror LCG to connect when far apart."
 msgstr ""
+"Этот сайт посвящен тому, чтобы игроки Ужас Аркхэма. Карточная игра могли "
+"общаться и играть, находясь далеко друг от друга."
 
 #, javascript-format
 msgid ""
@@ -26,76 +30,83 @@ msgid ""
 msgstr ""
 
 msgid "Host your own Epic Multiplayer event"
-msgstr ""
+msgstr "Проведите свою собственную игру в Эпическом режиме"
 
 msgid ""
 "This site allows you to host an Epic Multiplayer events for Arkham Horror: "
 "The Card Game."
 msgstr ""
+"На этом сайте вы можете провести игры в Эпическом режиме для Ужас Аркхэма. "
+"Карточная игра."
 
 msgid ""
 "As the organizer, you will be need to setup communication channels with "
 "your players (we suggest Discord)."
 msgstr ""
+"Как организатор, вы должны будете настроить связь с игроками (мы предлагаем "
+"Telegram)."
 
 msgid "This site will allow players to:"
-msgstr ""
+msgstr "Этот сайт позволит игрокам:"
 
 msgid "Pre-register for the event with tentative table size."
 msgstr ""
+"Предварительно зарегистрироваться на мероприятие с указанием примерного "
+"размера группы."
 
 msgid "Confirm registration up to an hour before the event."
-msgstr ""
+msgstr "Подтвердить регистрацию за час до начала мероприятия."
 
 msgid ""
 "Start the game and keep track of time, while also reporting shared game "
 "state."
 msgstr ""
+"Начать игру и следить за временем, а также сообщать об общем состоянии игры."
 
 msgid "Event scenario"
-msgstr ""
+msgstr "Сценарий мероприятия"
 
 msgid "The Blob That Ate Everything"
-msgstr ""
+msgstr "Капля, поглотившая всё"
 
 msgid "War of the Outer Gods"
-msgstr ""
+msgstr "Война Внешних богов"
 
 msgid "Event name"
-msgstr ""
+msgstr "Название мероприятия"
 
 msgid "Public event"
-msgstr ""
+msgstr "Публичное мероприятие"
 
 msgid "Registration password"
-msgstr ""
+msgstr "Пароль для регистрации"
 
 msgid "Description (supports markdown)"
-msgstr ""
+msgstr "Описание (поддерживается разметка)"
 
 msgid "Discord webhook (for announcements)"
-msgstr ""
+msgstr "Имя пользователя в Telegram (которое начинается с \"@\")"
 
 msgid "Scheduled start time"
-msgstr ""
+msgstr "Запланированное время начала"
 
 msgid "Create event"
-msgstr ""
+msgstr "Создать мероприятие"
 
 msgid "Events you are hosting"
-msgstr ""
+msgstr "Мероприятия, которые вы проводите"
 
 msgid "Schedule an event"
-msgstr ""
+msgstr "Запланировать мероприятие"
 
 msgid "Upcoming event you are registered for"
-msgstr ""
+msgstr "Предстоящее мероприятие, на которое вы зарегистрированы"
 
 msgid "Upcoming events"
-msgstr ""
+msgstr "Предстоящие мероприятия"
 
 msgid "Scheduled events"
-msgstr ""
+msgstr "Запланированные мероприятия"
 
 msgid ""
 "Site under construction while we prepare for War of the Outer Gods. Check "
@@ -103,10 +114,10 @@ msgid ""
 msgstr ""
 
 msgid "(video walkthrough of the interface)"
-msgstr ""
+msgstr "(видеообзор интерфейса)"
 
 msgid "Arkham Horror: Epic Multiplayer Events"
-msgstr ""
+msgstr "Ужас Аркхэма: мероприятия в Эпическом режиме"
 
 msgid ""
 "This website allows you to participate in Arkham Horror scenarios that "
@@ -115,16 +126,24 @@ msgid ""
 "while using the website to share progress and receive updates from the "
 "organizers. The website currently supports two scenarios:"
 msgstr ""
+"На этом сайте вы можете принять участие в сценариях Ужаса Аркхэма, "
+"использующих Эпический режим с игроками по всему миру. Это "
+"синхронизированные мероприятия, где вы можете играть в игру Ужас Аркхэма, "
+"как обычно, используя при этом сайт, чтобы делиться прогрессом и получать "
+"обновления от организаторов. В настоящее время сайт поддерживает два "
+"сценария:"
 
 #, javascript-format
 msgid "• The Blob That Ate Everything ${ blobVideoLink }"
-msgstr ""
+msgstr "• Капля, поглотившая всё ${ blobVideoLink }"
 
 msgid "• War of the Outer Gods ${ warVideoLink }."
-msgstr ""
+msgstr "• Война Внешних богов ${ warVideoLink }."
 
 msgid "You are more than welcome to use this site to host your own events."
 msgstr ""
+"Вы можете использовать этот сайт для проведения своих собственных "
+"мероприятий."
 
 msgid "Become a Patron!"
 msgstr ""
@@ -136,64 +155,64 @@ msgstr ""
 
 #, javascript-format
 msgid "Language (${ language })"
-msgstr ""
+msgstr "Язык (${ language })"
 
 msgid "Login"
-msgstr ""
+msgstr "Войти"
 
 msgid "Home"
-msgstr ""
+msgstr "Главная"
 
 msgid "Profile"
-msgstr ""
+msgstr "Профиль"
 
 msgid "Logout"
-msgstr ""
+msgstr "Выйти"
 
 msgid "About"
-msgstr ""
+msgstr "О сайте"
 
 msgid "Friend Requests"
-msgstr ""
+msgstr "Запросы в друзья"
 
 msgid "Accept"
-msgstr ""
+msgstr "Принять"
 
 msgid "Reject"
-msgstr ""
+msgstr "Отклонить"
 
 msgid "Pending Requests"
-msgstr ""
+msgstr "Отправленные запросы в друзья"
 
 msgid "Revoke"
-msgstr ""
+msgstr "Отменить"
 
 msgid "Friends"
-msgstr ""
+msgstr "Друзья"
 
 msgid "Send Friend Request"
-msgstr ""
+msgstr "Отправить запрос в друзья"
 
 msgid "Confirm Friend"
-msgstr ""
+msgstr "Принять в друзья"
 
 msgid "Cancel Friend Request"
-msgstr ""
+msgstr "Отклонить запрос в друзья"
 
 msgid "Cancel Friendship"
-msgstr ""
+msgstr "Удалить из друзей"
 
 msgid "Blank handles are not allowed"
 msgstr ""
 
 msgid "Account name"
-msgstr ""
+msgstr "Имя аккаунта"
 
 msgid "Choose a handle"
 msgstr ""
 
 msgid "Update"
-msgstr ""
+msgstr "Обновить"
 
 msgid "Handle"
 msgstr ""
@@ -202,168 +221,206 @@ msgid "No handle chosen yet."
 msgstr ""
 
 msgid "Update Description"
-msgstr ""
+msgstr "Обновить описание"
 
 #, javascript-format
 msgid "${ participant.groupSize } player"
 msgid_plural "${ participant.groupSize } players"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ participant.groupSize } игрок"
+msgstr[1] "${ participant.groupSize } игрока"
+msgstr[2] "${ participant.groupSize } игроков"
 
 msgid "Confirmed groups"
-msgstr ""
+msgstr "Подтверждённые группы"
 
 msgid "Unconfirmed groups"
-msgstr ""
+msgstr "Неподтверждённые группы"
 
 msgid "All groups are confirmed."
-msgstr ""
+msgstr "Все группы подтверждены."
 
 msgid "Done"
-msgstr ""
+msgstr "Ок"
 
 msgid "View participants"
-msgstr ""
+msgstr "Посмотреть участников"
 
 msgid "Time remaining"
-msgstr ""
+msgstr "Оставшееся время"
 
 #, javascript-format
 msgid "${ groupCount } group"
 msgid_plural "${ groupCount } groups"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ groupCount } группа"
+msgstr[1] "${ groupCount } группы"
+msgstr[2] "${ groupCount } групп"
 
 #, javascript-format
 msgid "${ playerCount } player"
 msgid_plural "${ playerCount } players"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ playerCount } игрок"
+msgstr[1] "${ playerCount } игрока"
+msgstr[2] "${ playerCount } игроков"
 
 msgid "Permanently Delete Event"
-msgstr ""
+msgstr "Окончательное удаление мероприятия"
 
 msgid "Are you sure you want to delete this event?"
-msgstr ""
+msgstr "Вы уверены, что хотите удалить это мероприятие?"
 
 msgid "This action cannot be undone and all data will be removed."
-msgstr ""
+msgstr "Это действие нельзя отменить, и все данные будут удалены."
 
 msgid "Delete Event"
-msgstr ""
+msgstr "Удалить мероприятие"
 
 msgid "Archive Event"
-msgstr ""
+msgstr "Архивировать мероприятие"
 
 msgid "Are you sure you want to archive this event?"
-msgstr ""
+msgstr "Вы уверены, что хотите архивировать это мероприятие?"
 
 msgid ""
 "The event will no longer be visible on the homepage, but it can still be "
 "visited by URL or have its stats accessed by the admins."
 msgstr ""
+"Событие больше не будет отображаться на главной странице, но его по-"
+"прежнему можно посетить по URL-адресу или получить доступ к его статистике "
+"у администраторов."
 
 msgid "Ding dong the Blob is dead!"
-msgstr ""
+msgstr "Поздравляю, Капля побеждена!"
 
 msgid ""
 "Red agenda 1a has advanced. Please advance to red agenda 1b during your "
 "next Mythos Phase"
 msgstr ""
+"Красный замысел 1a продвинулся. Пожалуйста, продвиньтесь к красному замыслу "
+"1b во время следующей фазы мифа"
 
 msgid ""
 "Red agenda 2a has advanced. Please advance to red agenda 2b during your "
 "next Mythos Phase"
 msgstr ""
+"Красный замысел 2a продвинулся. Пожалуйста, продвиньтесь к красному замыслу "
+"2b во время следующей фазы мифа"
 
 msgid ""
 "Red agenda 3a has advanced. Please advance to red agenda 3b during your "
 "next Mythos Phase and prepare for the arrival of Ezel-zen-rezl!"
 msgstr ""
+"Красный замысел 3a продвинулся. Пожалуйста, продвиньтесь к красному замыслу "
+"3b во время следующей фазы мифа и приготовьтесь к прибытию Эзель-зен-резля!"
 
 msgid ""
 "Green agenda 1a has advanced. Please advance to green agenda 1b during your "
 "next Mythos Phase"
 msgstr ""
+"Зелёный замысел 1a продвинулся. Пожалуйста, продвиньтесь к зелёному замыслу "
+"1b во время следующей фазы мифа"
 
 msgid ""
 "Green agenda 2a has advanced. Please advance to green agenda 2b during your "
 "next Mythos Phase"
 msgstr ""
+"Зелёный замысел 2a продвинулся. Пожалуйста, продвиньтесь к зелёному замыслу "
+"2b во время следующей фазы мифа"
 
 msgid ""
 "Green agenda 3a has advanced. Please advance to green agenda 3b during your "
 "next Mythos Phase and prepare for the arrival of Magh’an Ark’at!"
 msgstr ""
+"Зелёный замысел 3a продвинулся. Пожалуйста, продвиньтесь к зелёному замыслу "
+"3b во время следующей фазы мифа и приготовьтесь к прибытию Магх’ан Арк’ата!"
 
 msgid ""
 "Blue agenda 1a has advanced. Please advance to blue agenda 1b during your "
 "next Mythos Phase"
 msgstr ""
+"Синий замысел 1a продвинулся. Пожалуйста, продвиньтесь к синему замыслу 1b "
+"во время следующей фазы мифа"
 
 msgid ""
 "Blue agenda 2a has advanced. Please advance to blue agenda 2b during your "
 "next Mythos Phase"
 msgstr ""
+"Синий замысел 2a продвинулся. Пожалуйста, продвиньтесь к синему замыслу 2b "
+"во время следующей фазы мифа"
 
 msgid ""
 "Blue agenda 3a has advanced. Please advance to blue agenda 3b during your "
 "next Mythos Phase and prepare for the arrival of Silenus!"
 msgstr ""
+"Синий замысел 3a продвинулся. Пожалуйста, продвиньтесь к синему замыслу 3b "
+"во время следующей фазы мифа и приготовьтесь к прибытию Силенуса!"
 
 msgid "Ezel-zen-rezl has been defeated! The investigators win the game!"
-msgstr ""
+msgstr "Магх’ан Арк’ата побеждён! Сыщики победили!"
 
 msgid "Magh’an Ark’at has been defeated! The investigators win the game!"
-msgstr ""
+msgstr "Магх’ан Арк’ата побеждён! Сыщики победили!"
 
 msgid "Announcement sent to players."
-msgstr ""
+msgstr "Объявление отправлено игрокам."
 
 msgid "Send Announcement"
-msgstr ""
+msgstr "Отправить объявление"
 
 #, javascript-format
 msgid ""
 "Received a clue from ${ groupName }. Please add to your copy of Hub "
 "Dimension."
 msgstr ""
+"Получена улика от группы ${ groupName }. Пожалуйста, добавьте к вашей копии "
+"Узла миров."
 
 msgid "Received a clue to add to your copy of Hub Dimension."
-msgstr ""
+msgstr "Получена улика для добавления к вашей копии Узла миров."
 
 #, javascript-format
 msgid ""
-"Received help in New York from ${ groupName }. Deal 3 damage to a "
-"non-Ancient One enemy at a \"New York\" location."
+"Received help in New York from ${ groupName }. Deal 3 damage to a non-"
+"Ancient One enemy at a \"New York\" location."
 msgstr ""
+"Получена помощь в Нью-Йорке от ${ groupName }. Нанесите 3 урона не Древнему "
+"врагу в локации \"Улицы Нью-Йорка\"."
 
 msgid ""
 "Received help in New York. Deal 3 damage to a non-Ancient One enemy at a "
 "\"New York\" location."
 msgstr ""
+"Получена помощь в Нью-Йорке. Нанесите 3 урона не Древнему врагу в локации "
+"\"Улицы Нью-Йорка\"."
 
 #, javascript-format
 msgid ""
-"Received help in Montréal from ${ groupName }. Deal 3 damage to a "
-"non-Ancient One enemy at a \"Montréal\" location."
+"Received help in Montréal from ${ groupName }. Deal 3 damage to a non-"
+"Ancient One enemy at a \"Montréal\" location."
 msgstr ""
+"Получена помощь в Монреале от ${ groupName }. Нанесите 3 урона не Древнему "
+"врагу в локации \"Улицы Монреаля\"."
 
 msgid ""
 "Received help in Montréal. Deal 3 damage to a non-Ancient One enemy at a "
 "\"Montréal\" location."
 msgstr ""
+"Получена помощь в Монреале. Нанесите 3 урона не Древнему врагу в локации "
+"\"Улицы Монреаля\"."
 
 #, javascript-format
 msgid ""
-"Received help in Providence from ${ groupName }. Deal 3 damage to a "
-"non-Ancient One enemy at a \"Providence\" location."
+"Received help in Providence from ${ groupName }. Deal 3 damage to a non-"
+"Ancient One enemy at a \"Providence\" location."
 msgstr ""
+"Получена помощь в Провиденсе от ${ groupName }. Нанесите 3 урона не "
+"Древнему врагу в локации \"Улицы Провиденса\"."
 
 msgid ""
 "Received help in Providence. Deal 3 damage to a non-Ancient One enemy at a "
 "\"Providence\" location."
 msgstr ""
+"Получена помощь в Провиденсе. Нанесите 3 урона не Древнему врагу в локации "
+"\"Улицы Провиденса\"."
 
 msgid "A worried man and women look towards the sky."
 msgstr ""
@@ -372,19 +429,19 @@ msgid "A man and women runs from a looming blob."
 msgstr ""
 
 msgid "Announcements"
-msgstr ""
+msgstr "Объявления"
 
 msgid "Rescue the Chemist"
-msgstr ""
+msgstr "Спасти учёную-химика"
 
 msgid "Recover the Sample"
-msgstr ""
+msgstr "Добыть образец"
 
 msgid "Drive Off the Mi-Go"
-msgstr ""
+msgstr "Отпугнуть ми-го"
 
 msgid "Diffuse the Explosives"
-msgstr ""
+msgstr "Обезвредить взрывчатку"
 
 msgid "Inside the Blob"
 msgstr ""
@@ -399,13 +456,13 @@ msgid "Devourer of Ages"
 msgstr ""
 
 msgid "Reveal Act 3b story"
-msgstr ""
+msgstr "Раскрыть сюжет сцены 3"
 
 msgid "Act 3b Story Cards"
-msgstr ""
+msgstr "Сюжетные карты сцены 3"
 
 msgid "Choose Act 3b Story"
-msgstr ""
+msgstr "Выбрать сюжет сцены 3b"
 
 msgid "Send Selection"
 msgstr ""
@@ -414,187 +471,203 @@ msgid ""
 "Act 1 global clue threshold has been reached! Make sure to advance act 1 "
 "when you start your next round."
 msgstr ""
+"Глобальное число улик сцены 1 достигнуто! Не забудьте продвинуть сцену 1, "
+"когда начнете следующий раунд."
 
 msgid "Blob being examined with scientified instruments."
 msgstr ""
 
 msgid "Act 1 Clues"
-msgstr ""
+msgstr "Улики сцены 1"
 
 msgid "Send announcement to advance act 1"
-msgstr ""
+msgstr "Отправить объявление о продвижении сцены 1"
 
 msgid "Add act 1 clues"
-msgstr ""
+msgstr "Добавить улики сцене 1"
 
 msgid "No current shared clue goal"
-msgstr ""
+msgstr "Нет текущей глобальной цели улик"
 
 msgid "Reset shared act 1 clue goal"
-msgstr ""
+msgstr "Сброс глобальной цели улик сцены 1"
 
 msgid "A blob consuming a car and a house."
-msgstr ""
+msgstr "Капля поглощает машину и здание."
 
 msgid "8L-08 Damage"
-msgstr ""
+msgstr "Раны 8L-08"
 
 msgid "Deal damage"
-msgstr ""
+msgstr "Нанести раны"
 
 msgid "A man tries to escape the grasp of a blob."
 msgstr ""
 
 msgid "Available Countermeasures"
-msgstr ""
+msgstr "Доступные контрмеры"
 
 msgid "Add countermeasures"
-msgstr ""
+msgstr "Добавить контрмеру"
 
 msgid "No countermeasures available"
-msgstr ""
+msgstr "Нет доступных контрмер"
 
 msgid "Use a countermeasure"
-msgstr ""
+msgstr "Использовать контрмеру"
 
 msgid "Show all"
-msgstr ""
+msgstr "Показать все"
 
 msgid "Registration saved."
-msgstr ""
+msgstr "Регистрация сохранена."
 
 msgid "Login to register"
-msgstr ""
+msgstr "Войти для регистрации"
 
 msgid "Register group"
-msgstr ""
+msgstr "Зарегистрировать группу"
 
 msgid ""
 "Please confirm your registration an hour before the event starts, so the "
 "event organizer has an accurate player count."
 msgstr ""
+"Пожалуйста, подтвердите свою регистрацию за час до начала мероприятия, "
+"чтобы организаторы могли точно подсчитать количество игроков."
 
 msgid "Player Count"
-msgstr ""
+msgstr "Количество игроков"
 
 msgid "Group name"
-msgstr ""
+msgstr "Название группы"
 
 msgid "Discord handle (or other identifier for organizer)"
-msgstr ""
+msgstr "Имя пользователя в Telegram (или другой индификатор для организатора)"
 
 msgid "Sign-up has been disabled"
-msgstr ""
+msgstr "Регистрация была отменена"
 
 msgid "Register"
-msgstr ""
+msgstr "Зарегистрироваться"
 
 msgid "Confirm cancellation"
-msgstr ""
+msgstr "Подтвердите отмену"
 
 msgid "Are you sure you want to cancel your registration for this event?"
-msgstr ""
+msgstr "Вы уверены, что хотите отменить вашу регистрацию в этом мероприятии?"
 
 msgid "Cancel registration"
-msgstr ""
+msgstr "Отменить регистрацию"
 
 msgid "Confirm registration"
-msgstr ""
+msgstr "Подтвердить регистрацию"
 
 #, javascript-format
 msgid ""
 "Your current investigator count is ${ groupSizeString }. You may update "
 "this before confirming if that is incorrect."
 msgstr ""
+"Текущее количество сыщиков составляет ${ groupSizeString }. Вы можете "
+"обновить его перед подтверждением, если оно неверно."
 
 msgid "Try again later."
-msgstr ""
+msgstr "Попробуйте позже."
 
 msgid "Registration can only be confirmed an hour before the event starts."
 msgstr ""
+"Регистрация может быть подтверждена только за час до начала мероприятия."
 
 msgid "Please try again closer to the scheduled start time."
 msgstr ""
+"Пожалуйста, повторите попытку ближе к запланированному времени начала."
 
 msgid "Okay"
-msgstr ""
+msgstr "Хорошо"
 
 msgid "Your group's player count"
-msgstr ""
+msgstr "Количество игроков в вашей группе"
 
 msgid "Update registration"
-msgstr ""
+msgstr "Обновить регистрацию"
 
 msgid ""
 "Group confirmation is now open, you can confirm your group's player count "
 "now."
 msgstr ""
+"Подтверждение групп теперь открыто, вы можете подтвердить количество "
+"игроков в своей группе прямо сейчас."
 
 msgid ""
 "You will need to confirm your group one hour before the scheduled start "
 "time."
 msgstr ""
+"Вам нужно будет подтвердить свою группу за час до запланированного времени "
+"начала."
 
 msgid ""
 "If the event starts before you confirm, it will not be possible to join "
 "late."
 msgstr ""
+"Если мероприятие начнется до вашего подтверждения, присоединиться к нему с "
+"опозданием будет невозможно."
 
 msgid "Start event"
-msgstr ""
+msgstr "Начать мероприятие"
 
 msgid ""
 "Warning: unconfirmed players will not be able to join the game once it has "
 "begun."
 msgstr ""
+"Внимание: неподтвержденные игроки не смогут присоединиться к игре после ее "
+"начала."
 
 msgid "All registered groups are confirmed"
-msgstr ""
+msgstr "Все зарегистрированные группы подтверждены"
 
 msgid "Player count"
-msgstr ""
+msgstr "Количество игроков"
 
 msgid "Group count"
-msgstr ""
+msgstr "Количество групп"
 
 msgid "Duration (minutes)"
-msgstr ""
+msgstr "Продолжительность (в минутах)"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Отменить"
 
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 msgid "Send"
-msgstr ""
+msgstr "Отправить"
 
 msgid "Cult of Magh’an Ark’at"
-msgstr ""
+msgstr "Культ Магх’ан Арк’ата"
 
 msgid "Magh’an Ark’at"
-msgstr ""
+msgstr "Магх’ан Арк’ат"
 
 msgid "Cult of Silenus"
-msgstr ""
+msgstr "Культ Силенуса"
 
 msgid "Silenus"
-msgstr ""
+msgstr "Силенус"
 
 msgid "Cult of Ezel-zen-rezl"
-msgstr ""
+msgstr "Культ Эзель-зен-резля"
 
 msgid "Ezel-zen-rezl"
-msgstr ""
+msgstr "Эзель-зен-резль"
 
 msgid "Cult of Magh’an Ark’at (Green)"
-msgstr ""
+msgstr "Культ Магх’ан Арк’ата (Зелёный)"
 
 msgid "Cult of Silenus (Blue)"
-msgstr ""
+msgstr "Культ Силенуса (Синий)"
 
 msgid "Cult of Ezel-zen-rezl (Red)"
-msgstr ""
+msgstr "Культ Эзель-зен-резля (Красный)"
 
 #, javascript-format
 msgid ""
@@ -602,239 +675,260 @@ msgid ""
 "use whichever one has more enemies on your board as the \"Faction in the "
 "lead\"."
 msgstr ""
+"${ leadingFactions[0] } и ${ leadingFactions[1] } равны. Если нужно, "
+"используйте в качестве лидирующего культа тот, у которого больше врагов в "
+"игре."
 
 msgid ""
 "All factions are tied. If needed, use whichever one has more enemies on "
 "your board as the \"Faction in the lead\"."
 msgstr ""
+"Все культы равны. Если нужно, используйте в качестве лидирующего культа "
+"тот, у которого больше врагов в игре."
 
 msgid "Add Green Doom"
-msgstr ""
+msgstr "Добавить безысходность на зелёный замысел"
 
 msgid "Add Blue Doom"
-msgstr ""
+msgstr "Добавить безысходность на синий замысел"
 
 msgid "Add Red Doom"
-msgstr ""
+msgstr "Добавить безысходность на красный замысел"
 
 #, javascript-format
 msgid "Agenda ${ agendaNumber }"
 msgid_plural "Agenda ${ agendaNumber }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Сцена ${ agendaNumber }"
+msgstr[1] "Сцены ${ agendaNumber }"
+msgstr[2] "Сцен ${ agendaNumber }"
 
 msgid "Doom ${ doom } / ${ doomLimit }"
-msgstr ""
+msgstr "Безысходность ${ doom } / ${ doomLimit }"
 
 msgid "Factions"
-msgstr ""
+msgstr "Культы"
 
 msgid "Faction in the Lead:"
-msgstr ""
+msgstr "Лидирующий культ:"
 
 msgid "Place Mythos Doom (1 per faction)"
-msgstr ""
+msgstr "Положить безысходность во время фазы мифа (1 на каждую фракцию)"
 
 #, javascript-format
 msgid "Damage: ${ gameState.damage } / ${ gameState.healthLimit }"
-msgstr ""
+msgstr "Раны: ${ gameState.damage } / ${ gameState.healthLimit }"
 
 msgid "Share a clue with this group"
-msgstr ""
+msgstr "Поделиться уликой с этой группой"
 
 msgid ""
 "Are you sure you want to share a clue with this group using the abiliity on "
 "Act 3?"
 msgstr ""
+"Вы уверены, что хотите поделиться с этой группой уликой, используя свойство "
+"на сцене 3?"
 
 msgid "Advance group"
-msgstr ""
+msgstr "Продвинуть группу"
 
 #, javascript-format
 msgid "Advance this group to Act ${ nextAct }"
-msgstr ""
+msgstr "Продвинуть эту группу к сцене ${ nextAct }"
 
 #, javascript-format
 msgid "Is your group ready to advance to Act ${ nextAct }?"
-msgstr ""
+msgstr "Ваша группа готова продвинуться к сцене ${ nextAct }?"
 
 msgid "Mark this group as eliminated?"
-msgstr ""
+msgstr "Пометить эту группу как устранённую?"
 
 msgid "Has your entire group been eliminated?"
-msgstr ""
+msgstr "Вся ваша группа была устранена?"
 
 #, javascript-format
 msgid ""
-"Because you are still in Act 1 / Act 2, this will add ${ "
-"participant.groupSize } doom to the faction in the lead equal."
+"Because you are still in Act 1 / Act 2, this will add ${ participant."
+"groupSize } doom to the faction in the lead equal."
 msgstr ""
+"Поскольку вы все еще находитесь в сцене 1 / сцене 2, это добавит "
+"${ participant.groupSize } безысходности лидирующим фракциям поровну."
 
 msgid "Elminate group"
-msgstr ""
+msgstr "Устранить группу"
 
 msgid "share clue"
-msgstr ""
+msgstr "поделиться уликой"
 
 msgid "advance"
-msgstr ""
+msgstr "продвинуться"
 
 msgid "eliminate group"
-msgstr ""
+msgstr "устранить группу"
 
 msgid "Requested help in Montéal"
-msgstr ""
+msgstr "Запросить помощь в Монреале"
 
 msgid "Give help in Montéal"
-msgstr ""
+msgstr "Помочь в Монреале"
 
 msgid ""
 "Are you ready to help this group using the action ability on the \"Streets "
 "of Montéal\" location (group limit once per game)?"
 msgstr ""
+"Готовы ли вы помочь этой группе, используя способность на локации \"Улицы "
+"Монреаля\" (не чаще 1 раза за игру на всех)?"
 
 msgid "Requested help in New York"
-msgstr ""
+msgstr "Запросить помощь в Нью-Йорке"
 
 msgid "Give help in New York"
-msgstr ""
+msgstr "Помочь в Нью-Йорке"
 
 msgid ""
 "Are you ready to help this group using the action ability on the \"Streets "
 "of New York\" location (group limit once per game)?"
 msgstr ""
+"Готовы ли вы помочь этой группе, используя способность на локации \"Улицы "
+"Нью-Йорка\" (не чаще 1 раза за игру на всех)?"
 
 msgid "Requested help in Providence"
-msgstr ""
+msgstr "Запросить помощь в Провиденсе"
 
 msgid "Give help in Providence"
-msgstr ""
+msgstr "Помочь в Провиденсе"
 
 msgid ""
 "Are you ready to help this group using the action ability on the \"Streets "
 "of Providence\" location (group limit once per game)?"
 msgstr ""
+"Готовы ли вы помочь этой группе, используя способность на локации \"Улицы "
+"Провиденса\" (не чаще 1 раза за игру на всех)?"
 
 msgid "Requested help closing Hub Dimension"
-msgstr ""
+msgstr "Запрошена помощь с закрытием Узла миров"
 
 msgid "Give clue"
-msgstr ""
+msgstr "Отдать улику"
 
 msgid "Give help"
-msgstr ""
+msgstr "Помочь"
 
 msgid "Groups"
-msgstr ""
+msgstr "Группы"
 
 msgid "Still fighting"
-msgstr ""
+msgstr "Ещё сражаются"
 
 msgid "Act 1"
-msgstr ""
+msgstr "Сцена 1"
 
 msgid "Act 2"
-msgstr ""
+msgstr "Сцена 2"
 
 msgid "Act 3"
-msgstr ""
+msgstr "Сцена 3"
 
 msgid "Eliminated"
-msgstr ""
+msgstr "Устранены"
 
 #, javascript-format
 msgid "Advance to Act ${ nextAct }"
-msgstr ""
+msgstr "Продвинуться к сцене ${ nextAct }"
 
 msgid "Group eliminated?"
-msgstr ""
+msgstr "Группа устранена?"
 
 msgid ""
 "Has your entire party been eliminated? If you are in Act 1 or Act 2, this "
 "will automatically add doom to handle your elimination."
 msgstr ""
+"Вся ваша партия была устранена? Если вы находитесь в акте 1 или акте 2, это "
+"автоматически добавит безысходности."
 
 msgid "Your group"
-msgstr ""
+msgstr "Ваша группа"
 
 msgid "Place Mythos Phase Doom (1 per faction)"
-msgstr ""
+msgstr "Положить безысходность во время фазы мифа (1 на каждую фракцию)"
 
 msgid "Your group has been eliminated."
-msgstr ""
+msgstr "Ваша группа была устранена."
 
 #, javascript-format
 msgid "Group act progress: Act ${ act }a"
-msgstr ""
+msgstr "Прогресс сцены в группе: Сцена ${ act }a"
 
 #, javascript-format
 msgid "Hub Dimension clues received from other groups: ${ receivedClues }"
-msgstr ""
+msgstr "Улики для Узла миров полученные из других групп: ${ receivedClues }"
 
 msgid "Cancel request for help closing Hub Dimension"
-msgstr ""
+msgstr "Отменить запрос помощи с закрытием Узла миров"
 
 msgid "Request help closing Hub Dimension"
-msgstr ""
+msgstr "Запросить помощь с закрытием Узла миров"
 
 msgid "Group eliminated"
-msgstr ""
+msgstr "Группа устранена"
 
 msgid "Ask for help from other groups to damage enemies at these locations."
 msgstr ""
+"Попросить помощи у других групп для нанесения ран врагам в этих локациях."
 
 msgid "Cancel request for help in Montréal"
-msgstr ""
+msgstr "Отменить запрос помощи в Монреале"
 
 msgid "Request help in Montréal"
-msgstr ""
+msgstr "Запросить помощь в Монреале"
 
 msgid "Cancel request for help in New York"
-msgstr ""
+msgstr "Отменить запрос помощи в Нью-Йорке"
 
 msgid "Request help in New York"
-msgstr ""
+msgstr "Запросить помощь в Нью-Йорке"
 
 msgid "Cancel request for help in Providence"
-msgstr ""
+msgstr "Отменить запрос помощи в Провиденсе"
 
 msgid "Request help in Providence"
-msgstr ""
+msgstr "Запросить помощь в Провиденсе"
 
 msgid "Groups:"
-msgstr ""
+msgstr "Группы:"
 
 msgid "Players:"
-msgstr ""
+msgstr "Игроки:"
 
 msgid "Start time"
-msgstr ""
+msgstr "Время начала"
 
 msgid "Event start"
-msgstr ""
+msgstr "Начало мероприятия"
 
 msgid "Update scheduled start"
-msgstr ""
+msgstr "Обновить запланированное начало"
 
 msgid "Registered groups"
-msgstr ""
+msgstr "Зарегистрированные группы"
 
 msgid "Players"
-msgstr ""
+msgstr "Игроки"
 
 msgid "Update Webhook"
-msgstr ""
+msgstr "Обновить имя пользователя"
 
 msgid "Participants"
-msgstr ""
+msgstr "Участники"
 
 msgid "Use the Arkham Cards app to manage your decks and campaigns."
 msgstr ""
+"Используйте приложение Arkham Cards для управления своими колодами и "
+"кампаниями."
 
 #, javascript-format
 msgid ""
-"• Keep decks locally on your phone, or integrate directly with decks on ${ "
-"arkhamDbLink }."
+"• Keep decks locally on your phone, or integrate directly with decks on "
+"${ arkhamDbLink }."
 msgstr ""
 
 msgid ""
@@ -860,13 +954,16 @@ msgid ""
 "The app does not yet support Epic Multiplayer events, so you will still "
 "need to use the website. App support is coming soon though."
 msgstr ""
+"Приложение пока не поддерживает мероприятия в эпическом режиме, поэтому вам "
+"придется пользоваться сайтом. Поддержка приложения появится в ближайшее "
+"время."
 
 msgid "Download on the App Store"
-msgstr ""
+msgstr "Скачать в App Store"
 
 msgid "Get it on Google Play"
-msgstr ""
+msgstr "Скачать в Google Play"
 
 #, javascript-format
 msgid "${ date } at ${ time }"
-msgstr ""
+msgstr "${ date } в ${ time }"
