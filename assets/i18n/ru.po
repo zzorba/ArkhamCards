@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2024-01-09 11:23+0300\n"
+"PO-Revision-Date: 2024-01-15 19:45+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -2239,19 +2239,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -5988,7 +5988,7 @@ msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.
 msgstr ""
 
 msgid "Aether"
-msgstr ""
+msgstr "Эфир"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7697,7 +7697,7 @@ msgstr "Казино"
 
 msgctxt "trait"
 msgid "Double"
-msgstr ""
+msgstr "Дуплет"
 
 msgctxt "trait"
 msgid "AI"
@@ -7705,7 +7705,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Abandoned"
-msgstr ""
+msgstr "Покинутая"
 
 msgctxt "trait"
 msgid "Access"
@@ -7713,7 +7713,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Alexandria"
-msgstr ""
+msgstr "Александрия"
 
 msgctxt "trait"
 msgid "Ally? Creature"
@@ -7725,11 +7725,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Bad dog"
-msgstr ""
+msgstr "Плохой мальчик"
 
 msgctxt "trait"
 msgid "Bazaar"
-msgstr ""
+msgstr "Базар"
 
 msgctxt "trait"
 msgid "Blessed?"
@@ -7745,7 +7745,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Buenos Aires"
-msgstr ""
+msgstr "Буэнос-Айрес"
 
 msgctxt "trait"
 msgid "Card"
@@ -7769,7 +7769,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Classy"
-msgstr ""
+msgstr "Шикарный"
 
 msgctxt "trait"
 msgid "Collector"
@@ -7785,7 +7785,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Corruption"
-msgstr ""
+msgstr "Порча"
 
 msgctxt "trait"
 msgid "Darkness"
@@ -7809,11 +7809,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Fellow Dogs"
-msgstr ""
+msgstr "Псотоварищи"
 
 msgctxt "trait"
 msgid "Footwear, but not really"
-msgstr ""
+msgstr "Обувь, но не совсем"
 
 msgctxt "trait"
 msgid "Hardship"
@@ -7821,11 +7821,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Haunted"
-msgstr ""
+msgstr "Нечистая"
 
 msgctxt "trait"
 msgid "Havana"
-msgstr ""
+msgstr "Гавана"
 
 msgctxt "trait"
 msgid "Human"
@@ -7837,11 +7837,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Istanbul"
-msgstr ""
+msgstr "Стамбул"
 
 msgctxt "trait"
 msgid "Kuala Lumpur"
-msgstr ""
+msgstr "Куала-Лумпур"
 
 msgctxt "trait"
 msgid "Local"
@@ -7849,11 +7849,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Locus Site"
-msgstr ""
+msgstr "Место локуса"
 
 msgctxt "trait"
 msgid "London"
-msgstr ""
+msgstr "Лондон"
 
 msgctxt "trait"
 msgid "Loyal"
@@ -7873,7 +7873,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Marrakesh"
-msgstr ""
+msgstr "Марракеш"
 
 msgctxt "trait"
 msgid "Medical"
@@ -7881,11 +7881,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Music"
-msgstr ""
+msgstr "Музыка"
 
 msgctxt "trait"
 msgid "Musician"
-msgstr ""
+msgstr "Музыкант"
 
 msgctxt "trait"
 msgid "Northside"
@@ -7897,7 +7897,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Outsider"
-msgstr ""
+msgstr "Внешний"
 
 msgctxt "trait"
 msgid "Parasitic"
@@ -7913,7 +7913,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Pup"
-msgstr ""
+msgstr "Щенок"
 
 msgctxt "trait"
 msgid "Resonant"
@@ -7925,11 +7925,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Retired"
-msgstr ""
+msgstr "Пенсионер"
 
 msgctxt "trait"
 msgid "Risen"
-msgstr ""
+msgstr "Восставший"
 
 msgctxt "trait"
 msgid "Row"
@@ -7949,7 +7949,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Shapeshifter"
-msgstr ""
+msgstr "Хамелеон"
 
 msgctxt "trait"
 msgid "Sheldon Gang"
@@ -7969,11 +7969,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Stable"
-msgstr ""
+msgstr "Устойчивый"
 
 msgctxt "trait"
 msgid "Stop"
-msgstr ""
+msgstr "Перестань"
 
 msgctxt "trait"
 msgid "Table"
@@ -7985,11 +7985,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "That's bad"
-msgstr ""
+msgstr "Фу"
 
 msgctxt "trait"
 msgid "Tower"
-msgstr ""
+msgstr "Башня"
 
 msgctxt "trait"
 msgid "Traitor"
@@ -8005,7 +8005,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Unstable"
-msgstr ""
+msgstr "Неустойчивый"
 
 msgctxt "trait"
 msgid "Upper Floor"
@@ -8021,7 +8021,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "What? No"
-msgstr ""
+msgstr "Что? Нет"
 
 msgctxt "trait"
 msgid "Wonderland"
@@ -8029,7 +8029,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Yuggoth"
-msgstr ""
+msgstr "Юггот"
 
 #, javascript-format
 msgctxt "filter"
@@ -8135,11 +8135,11 @@ msgstr "Припасы"
 
 msgctxt "uses"
 msgid "Evidence"
-msgstr ""
+msgstr "Подтверждения"
 
 msgctxt "uses"
 msgid "Time"
-msgstr ""
+msgstr "Интервалы"
 
 msgctxt "uses"
 msgid "Treats"
