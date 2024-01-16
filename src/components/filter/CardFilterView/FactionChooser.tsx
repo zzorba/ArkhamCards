@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { flatMap, find, map } from 'lodash';
+import { flatMap, find, map, sortBy } from 'lodash';
 import { StyleSheet, View } from 'react-native';
 
 import ArkhamButtonGroup from '@components/core/ArkhamButtonGroup';
@@ -37,6 +37,17 @@ const SUPPORT_MULTI_CLASS = true;
 
 const PLAYER_FACTIONS = new Set<FactionCodeType>(['guardian', 'seeker', 'rogue', 'mystic', 'survivor']);
 
+const FACTION_POSITION: { [key in FactionCodeType | 'multiClass']: number }= {
+  'guardian': 0,
+  'seeker': 1,
+  'rogue': 2,
+  'mystic': 3,
+  'survivor': 4,
+  'neutral': 5,
+  'multiClass': 6,
+  'mythos': 7,
+};
+
 export default function FactionChooser({ onFilterChange, factions, multiClass, selection, componentId }: Props) {
   const { colors } = useContext(StyleContext);
   const fullFactions: (FactionCodeType | 'multiClass')[] = useMemo(() => {
@@ -66,48 +77,51 @@ export default function FactionChooser({ onFilterChange, factions, multiClass, s
 
   const [selectedIndexes, buttons] = useMemo(() => {
     const selectedIndexes: number[] = [];
-    const buttons = map(fullFactions, (faction, idx) => {
-      if (faction === 'multiClass') {
-        if (multiClass) {
+    const buttons = map(
+      sortBy(fullFactions, f => FACTION_POSITION[f]),
+      (faction, idx) => {
+        if (faction === 'multiClass') {
+          if (multiClass) {
+            selectedIndexes.push(idx);
+          }
+          return {
+            element: (selected: boolean) => {
+              return (
+                <View key={faction} style={styles.icon}>
+                  <AppIcon
+                    name="multiclass"
+                    size={36}
+                    color={selected ? colors.faction.dual.text : colors.M}
+                  />
+                </View>
+              );
+            },
+          };
+        }
+        const selected = selection.indexOf(faction) !== -1;
+        if (selected) {
           selectedIndexes.push(idx);
         }
         return {
           element: (selected: boolean) => {
+            const iconName = factionToIconName(faction);
             return (
-              <View key={faction} style={styles.icon}>
-                <AppIcon
-                  name="multiclass"
-                  size={36}
-                  color={selected ? colors.faction.dual.text : colors.M}
+              <View key={faction} style={[
+                styles.icon,
+                (faction === 'mythos') ? { height: 28 } : undefined,
+                faction === 'neutral' ? { paddingTop: 3 } : undefined,
+              ]}>
+                <ArkhamIcon
+                  name={iconName}
+                  size={factionSize(faction)}
+                  color={selected ? colors.faction[faction].text : colors.M}
                 />
               </View>
             );
           },
         };
       }
-      const selected = selection.indexOf(faction) !== -1;
-      if (selected) {
-        selectedIndexes.push(idx);
-      }
-      return {
-        element: (selected: boolean) => {
-          const iconName = factionToIconName(faction);
-          return (
-            <View key={faction} style={[
-              styles.icon,
-              (faction === 'mythos') ? { height: 28 } : undefined,
-              faction === 'neutral' ? { paddingTop: 3 } : undefined,
-            ]}>
-              <ArkhamIcon
-                name={iconName}
-                size={factionSize(faction)}
-                color={selected ? colors.faction[faction].text : colors.M}
-              />
-            </View>
-          );
-        },
-      };
-    });
+    );
     return [selectedIndexes, buttons];
   }, [colors, multiClass, selection, fullFactions]);
 
