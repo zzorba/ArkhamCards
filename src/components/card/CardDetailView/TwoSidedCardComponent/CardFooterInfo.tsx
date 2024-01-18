@@ -86,7 +86,7 @@ export default function CardFooterInfo({ card }: Props) {
                 ) }
               </View>
             );
-          })}
+          }) }
           <View style={styles.row}>
             <Text
               style={[typography.tiny, typography.right, { flex: 1 }]}
@@ -97,7 +97,11 @@ export default function CardFooterInfo({ card }: Props) {
             </Text>
             <View style={styles.icon}>
               <EncounterIcon
-                encounter_code={card.custom() ? card.pack_code : (card.cycle_code || card.pack_code)}
+                encounter_code={
+                  card.custom() ?
+                    card.pack_code :
+                    (card.cycle_code || card.pack_code)
+                }
                 size={14 * fontScale}
                 color={colors.darkText}
               />

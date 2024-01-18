@@ -159,7 +159,7 @@
   {
     "id": "Attack_of_Opportunity",
     "title": "趁亂攻擊",
-    "text": "如果一位調查員與至少一名處於準備(重整)狀態的敵人交戰，每當他執行攻擊除<b>攻擊</b>、<b>躲避</b>或啟動<b>談判</b>、<b>撤退</b>外的能力時，每名交戰的敵人會各對該調查員執行一次趁亂攻擊，順序由該調查員選擇。每次攻擊時敵人會對該調查員造成傷害和恐懼。\n- 調查員在支付行動費用之後立即引起趁亂攻擊，在結算行動效果之前執行。\n- 如果一個能力需要花費多個行動，也只會使所有交戰的敵人發動一次趁亂攻擊。\n- 一名敵人在執行完趁亂攻擊後不會消耗(橫置)。\n- 所有趁亂攻擊完成後，繼續執行造成這次攻擊的行動。\n- 趁亂攻擊也視為敵人的攻擊，可以被卡牌效果影響。\n趁亂攻擊的觸發條件是：當調查員花費至少一次行動，來觸發一個能力或行動時，才會觸發敵人的趁亂攻擊。使用[free]能力不會觸發趁亂攻擊。"
+    "text": "如果調查員與至少一個處於準備(重整)狀態的敵人交戰，該調查員每次進行行動(除<b>攻擊</b>、<b>躲避</b>，或啟動<b>談判</b>或<b>撤退</b>能力以外)，每個與其交戰的敵人會各對該調查員執行一次趁亂攻擊，順序由該調查員選擇。每次攻擊對該調查員造成該敵人的傷害和恐懼。\n- 在調查員支付觸發趁亂攻擊的行動的費用之後，立即進行趁亂攻擊，然後再結算該行動對遊戲產生的影響。\n- 需要花費多次行動的能力，只會使每個交戰的敵人觸發一次趁亂攻擊。\n- 進行趁亂攻擊的敵人不會消耗(橫置)。\n- 所有趁亂攻擊完成後，繼續結算造成這次攻擊的行動。\n- 趁亂攻擊也視為敵人的攻擊，可以被卡牌能力影響。\n趁亂攻擊的觸發條件是：當調查員花費至少一次行動，來觸發一個能力或行動時，才會觸發敵人的趁亂攻擊。使用[free]能力不會觸發趁亂攻擊。"
   },
   {
     "id": "Automatic_Failure_Success",
@@ -708,22 +708,22 @@
   {
     "id": "List_of_Taboos",
     "title": "禁卡表",
-    "text": "禁卡表 is a list of <i>Arkham Horror: The Card Game</i> cards with optional deckbuilding restrictions or text changes. This list is designed to craft a healthy balance between investigator power and scenario difficulty, and to enforce shifts in deckbuilding environments over time.\nAdhering to The List of Taboos is completely optional. Investigators are not forced to adhere to the restrictions on this list, but if an investigator chooses to do so, they must do so in full (an investigator cannot pick and choose which restrictions to use).",
+    "text": "禁卡表是《詭鎮奇談：卡牌版》的卡牌列表，有可供選擇的牌組構建限制或文本變化。禁卡表的設計是為了在調查員能力和冒險難度之間建立平衡，隨著遊戲的發展調整牌組構建環境。\n是否要遵守禁卡表是可以選擇的。調查員不強迫遵守此列表中的限制，但如果選擇要遵守，則必須完全遵守整個禁卡表(調查員不能選擇只使用某些限制)。",
     "rules": [
       {
         "id": "Chained_Unchained",
-        "title": "Chained / Unchained",
-        "text": "Cards from this list have their experience cost increased or decreased. Each card’s level remains the same—only the experience spent to purchase the card is altered. This experience adjustment should also be taken into account when upgrading to or from a card that is on this list."
+        "title": "拘束 / 解束",
+        "text": "此列表的卡牌增加或減少了經驗值費用。每張卡牌的等級仍然不變——只有改變購買卡牌所需要花費的經驗值。在升級到在此列表的卡牌或從此列表的卡牌升級時，此經驗值的調整應該也要被計入。"
       },
       {
         "id": "Mutated",
-        "title": "Mutated",
-        "text": "Cards from this list have additional or altered text."
+        "title": "變異",
+        "text": "此列表的卡牌有額外的文本或修改的文本。"
       },
       {
         "id": "Forbidden",
-        "title": "Forbidden",
-        "text": "Cards from this list cannot be included in your deck."
+        "title": "禁止",
+        "text": "此列表的卡牌不能被加入你的牌組。"
       }
     ]
   },

@@ -576,7 +576,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
         detail={userId ? undefined : t`Sync campaigns to share with friends`}
         icon="logo"
         loading={loading}
-        color={userId ? 'default' : 'dark_gray'}
+        color="default"
         onPress={userId ? logoutPressed : showLoginDialog}
         noShadow
       />

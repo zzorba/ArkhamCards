@@ -9,6 +9,7 @@ import {
   minBy,
   indexOf,
   sumBy,
+  sortBy,
 } from 'lodash';
 import { t } from 'ttag';
 
@@ -405,7 +406,9 @@ export default class DeckValidation {
 
   getInvalidCards(cards: Card[]): Card[] {
     this.initDeckOptionsCounts();
-    return filter(cards, card => !this.canIncludeCard(card, true));
+    return filter(
+      sortBy(cards, c => -(c.xp ?? 0)),
+      card => !this.canIncludeCard(card, true));
   }
 
   isCardLimited(card: Card): boolean {
@@ -686,6 +689,17 @@ export default class DeckValidation {
             }
           }
           if (!tag_valid) {
+            continue;
+          }
+        } else if (option.text && option.text.lengthios) {
+          var text_valid = false;
+          for(var j = 0; j < option.text.length; j++) {
+            var text = option.text[j];
+            if (card.real_text && card.real_text.match(text)) {
+              text_valid = true;
+            }
+          }
+          if (!text_valid) {
             continue;
           }
         }

@@ -27,6 +27,7 @@
 		652EB742226BAFA800F6D790 /* it.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB741226BAFA800F6D790 /* it.po.json */; };
 		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
+		6556120B2B561F7900532BDF /* hemlock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651E986E2B56181C00E7CE77 /* hemlock.ttf */; };
 		655E70E728A0144500DBB0DF /* TT2020StyleE-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655E70E628A0144500DBB0DF /* TT2020StyleE-Regular.ttf */; };
 		655E70E928A55C7500DBB0DF /* cyclopean.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655E70E828A55C7400DBB0DF /* cyclopean.ttf */; };
 		6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6560EBDC25A012700076B227 /* GoogleService-Info.plist */; };
@@ -80,6 +81,7 @@
 		651E8AC82911A8B600A48E56 /* AlegreyaSC-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AlegreyaSC-Medium.ttf"; path = "../assets/AlegreyaSC-Medium.ttf"; sourceTree = "<group>"; };
 		651E8ACA2912FE6600A48E56 /* DMSerifDisplay-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DMSerifDisplay-Italic.ttf"; path = "../assets/DMSerifDisplay-Italic.ttf"; sourceTree = "<group>"; };
 		651E8ACB2912FE6600A48E56 /* DMSerifDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DMSerifDisplay-Regular.ttf"; path = "../assets/DMSerifDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		651E986E2B56181C00E7CE77 /* hemlock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hemlock.ttf; path = ../assets/hemlock.ttf; sourceTree = "<group>"; };
 		652420F42054950D00FF6DB9 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
 		652421242054954F00FF6DB9 /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */,
 				6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */,
 				658AF45324FAAD4D00874CA7 /* Conkordia.ttf */,
+				651E986E2B56181C00E7CE77 /* hemlock.ttf */,
 				6505E52324DDD6F0001DF983 /* ArkhamCards.entitlements */,
 				65F8DB9B247EE0B500286F16 /* ko.po.json */,
 				65F8DB9C247EE0B500286F16 /* pl.po.json */,
@@ -330,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6556120B2B561F7900532BDF /* hemlock.ttf in Resources */,
 				65862DA125F17A3D00BDD228 /* Teutonic RU.ttf in Resources */,
 				65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */,
 				658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */,
@@ -428,6 +432,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -452,6 +457,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SDWebImage.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -552,7 +558,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCardsDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
@@ -574,7 +580,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 4.2.9;
+				MARKETING_VERSION = 4.3.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -600,7 +606,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -621,7 +627,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 4.2.9;
+				MARKETING_VERSION = 4.3.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

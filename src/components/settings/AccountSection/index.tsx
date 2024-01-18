@@ -48,7 +48,7 @@ export default function AccountSection({ componentId, showAlert }: Props) {
           <View style={space.paddingTopS}>
             <DeckButton
               icon="xp"
-              color={newNotes ? 'gold' : 'default'}
+              color={newNotes ? 'gold' : 'dark_gray'}
               title={t`Recent updates`}
               detail={t`Learn about recently added features`}
               onPress={showReleaseNotes}

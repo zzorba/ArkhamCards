@@ -1070,79 +1070,79 @@
         "entries": [
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "攪亂阿巴蘭的計畫。"
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "警戒等級：#name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "調查員滿載而歸。"
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "調查員說服伊薩瑪拉參與劫案。"
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "調查員找到通風口。"
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "調查員扮演高額賭客。"
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "調查員們需要點時間休息。"
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "調查員取得員工制服。"
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "藏匿卡牌：#name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "調查員盜取阿巴蘭的鑰匙。"
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#：萬人迷"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (Practiced)"
+            "text": "#name#：萬人迷(熟練)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#：老千"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#：老千(熟練)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#：打手"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (Practiced)"
+            "text": "#name#：打手(熟練)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#：神偷"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#：神偷(熟練)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "時運泉源上的線索數量：#X#"
           }
         ]
       },
@@ -2697,7 +2697,7 @@
       {
         "id": "sticky_goop",
         "name": "黏液團",
-        "description": "A sticky goop you found in a subterranean swamp.",
+        "description": "你在地下沼澤找到的黏液團。",
         "cost": 0,
         "multiple": false
       },
@@ -3297,7 +3297,7 @@
           },
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "攪亂阿巴蘭的計畫。"
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -3337,75 +3337,75 @@
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "警戒等級：#name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "調查員滿載而歸。"
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "調查員說服伊薩瑪拉參與劫案。"
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "調查員找到通風口。"
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "調查員扮演高額賭客。"
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "調查員們需要點時間休息。"
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "調查員取得員工制服。"
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "藏匿卡牌：#name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "調查員盜取阿巴蘭的鑰匙。"
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#：萬人迷"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (Practiced)"
+            "text": "#name#：萬人迷(熟練)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#：老千"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#：老千(熟練)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#：打手"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (Practiced)"
+            "text": "#name#：打手(熟練)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#：神偷"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#：神偷(熟練)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "時運泉源上的線索數量：#X#"
           },
           {
             "id": "gathered_samples_from_another_earth",

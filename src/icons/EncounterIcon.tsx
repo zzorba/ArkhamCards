@@ -11,6 +11,7 @@ import DreamEatersIcon from './DreamEatersIcon';
 import DunwichIcon from './DunwichIcon';
 import EdgeIcon from './EdgeIcon';
 import ForgottenIcon from './ForgottenIcon';
+import HemlockIcon from './HemlockIcon';
 import StandaloneIcon from './StandaloneIcon';
 import InnsmouthIcon from './InnsmouthIcon';
 import AliceIcon from './AliceIcon';
@@ -41,7 +42,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
   innsmouthIcon(name: string, size: number, color: string) {
     return (<InnsmouthIcon name={name} size={size} color={color} />);
   }
-
   darkMatterIcon(name: string, size: number, color: string) {
     return (<DarkMatterIcon name={name} size={size} color={color} />);
   }
@@ -80,6 +80,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
 
   scarletIcon(name: string, size: number, color: string) {
     return (<ScarletIcon name={name} size={size} color={color} />);
+  }
+
+  hemlockIcon(name: string, size: number, color: string) {
+    return (<HemlockIcon name={name} size={size} color={color} />);
   }
 
   render() {
@@ -957,6 +961,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'anything_once':
       case 'mysterious_benefits':
         return this.standaloneIcon(encounter_code, size, color);
+      case 'fhv':
+      case 'fhvp':
+        return this.hemlockIcon('fhvp', size, color);
+      case 'fhvc':
+        return this.hemlockIcon(encounter_code, size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);

@@ -305,15 +305,15 @@
   },
   {
     "id": "fortune_and_folly_checkpoint",
-    "name": "The Plan"
+    "name": "計畫"
   },
   {
     "id": "fortune_and_folly_part_1",
-    "name": "The Stakeout"
+    "name": "籌劃"
   },
   {
     "id": "fortune_and_folly_part_2",
-    "name": "The Heist"
+    "name": "劫案"
   },
   {
     "id": "fragment_of_carcosa",
@@ -437,7 +437,7 @@
   },
   {
     "id": "laid_to_rest",
-    "name": "Laid to Rest"
+    "name": "安魂鎮息"
   },
   {
     "id": "late_risers",
@@ -1081,7 +1081,7 @@
   },
   {
     "id": "travelling",
-    "name": "While travelling..."
+    "name": "旅行中......"
   },
   {
     "id": "tsk_epilogue",
