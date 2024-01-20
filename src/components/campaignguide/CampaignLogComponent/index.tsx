@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { flatMap, keys, range, map, sum, values } from 'lodash';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { t } from 'ttag';
 
 import ChaosBagLine from '@components/core/ChaosBagLine';
@@ -51,8 +52,8 @@ function RelationshipBoxes({ section }: { section: EntrySection }) {
       { map(range(0, 4), (idx) => (
         <View key={idx} style={[{ width: 14, height: 14, borderWidth: 1, borderColor: colors.D30, position: 'relative' }, space.marginRightXs]}>
           { relationshipValue > idx ? (
-            <View style={{ position: 'absolute', top: -2, left: -2 }}>
-              <AppIcon size={16} name="close" color={colors.D20} allowFontScaling={false} />
+            <View style={{ position: 'absolute', top: 0, left: 0 }}>
+              <MaterialIcons size={12} name="favorite" color={colors.D20} allowFontScaling={false} />
             </View>
           ) : null }
         </View>
@@ -76,6 +77,7 @@ function CardSection({ code, section, campaignGuide, width, isRelationship }: Ca
     return (
       <CompactInvestigatorRow
         transparent
+        name={campaignGuide.card(code)?.name}
         investigator={card}
         detail={isRelationship && section ? <RelationshipBoxes section={section} /> : undefined}
         eliminated={eliminated}
@@ -84,6 +86,9 @@ function CardSection({ code, section, campaignGuide, width, isRelationship }: Ca
       />
     );
   }, [card, eliminated, width]);
+  const entries = useMemo(() => {
+    return section?.entries.filter(entry => entry.id !== '$relationship') ?? []
+  }, [section?.entries]);
   if (eliminated) {
     return header;
   }
@@ -93,7 +98,7 @@ function CardSection({ code, section, campaignGuide, width, isRelationship }: Ca
       noSpace
       faction="neutral"
     >
-      { !!section && !!section.entries.length && (
+      { !!section && !!entries.length && (
         <View style={[space.paddingTopM, space.paddingSideM]}>
           <CampaignLogSectionComponent
             sectionId={code}

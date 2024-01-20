@@ -31,6 +31,7 @@
 		655E70E728A0144500DBB0DF /* TT2020StyleE-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655E70E628A0144500DBB0DF /* TT2020StyleE-Regular.ttf */; };
 		655E70E928A55C7500DBB0DF /* cyclopean.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655E70E828A55C7400DBB0DF /* cyclopean.ttf */; };
 		6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6560EBDC25A012700076B227 /* GoogleService-Info.plist */; };
+		656D0CC42B5C2D4E006906B4 /* arkhamslim.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 656D0CC32B5C2D4E006906B4 /* arkhamslim.ttf */; };
 		656D83DB25AA4AB90010E4CA /* cost.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 656D83DA25AA4AB80010E4CA /* cost.ttf */; };
 		656FD53128B2A79A006FBD85 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 656FD53028B2A79A006FBD85 /* AppDelegate.mm */; };
 		657276692644DE1B00157DE3 /* dark_matter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276682644DE1B00157DE3 /* dark_matter.ttf */; };
@@ -98,6 +99,7 @@
 		655E70E628A0144500DBB0DF /* TT2020StyleE-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "TT2020StyleE-Regular.ttf"; path = "../assets/TT2020StyleE-Regular.ttf"; sourceTree = "<group>"; };
 		655E70E828A55C7400DBB0DF /* cyclopean.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cyclopean.ttf; path = ../assets/cyclopean.ttf; sourceTree = "<group>"; };
 		6560EBDC25A012700076B227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		656D0CC32B5C2D4E006906B4 /* arkhamslim.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arkhamslim.ttf; path = ../assets/arkhamslim.ttf; sourceTree = "<group>"; };
 		656D83DA25AA4AB80010E4CA /* cost.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cost.ttf; path = ../assets/cost.ttf; sourceTree = "<group>"; };
 		656FD53028B2A79A006FBD85 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = ArkhamCards/AppDelegate.mm; sourceTree = "<group>"; };
 		657276682644DE1B00157DE3 /* dark_matter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dark_matter.ttf; path = ../assets/dark_matter.ttf; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				651E8AC82911A8B600A48E56 /* AlegreyaSC-Medium.ttf */,
 				656FD53028B2A79A006FBD85 /* AppDelegate.mm */,
 				655E70E828A55C7400DBB0DF /* cyclopean.ttf */,
+				656D0CC32B5C2D4E006906B4 /* arkhamslim.ttf */,
 				655E70E628A0144500DBB0DF /* TT2020StyleE-Regular.ttf */,
 				6592B6D028876A3F00F61AB6 /* scarlet.ttf */,
 				65B74400272B19A700602ACD /* cardicons.ttf */,
@@ -348,6 +351,7 @@
 				652421252054954F00FF6DB9 /* dunwich.ttf in Resources */,
 				6506962425D05D5300B134B0 /* tokens.ttf in Resources */,
 				659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */,
+				656D0CC42B5C2D4E006906B4 /* arkhamslim.ttf in Resources */,
 				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
 				6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */,
 				659EB1C525146636007E69E0 /* innsmouth.ttf in Resources */,

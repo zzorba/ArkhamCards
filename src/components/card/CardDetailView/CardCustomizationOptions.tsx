@@ -31,7 +31,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import NewDialog from '@components/core/NewDialog';
 import RoundButton from '@components/core/RoundButton';
 import DeckButton from '@components/deck/controls/DeckButton';
-import ArkhamIcon from '@icons/ArkhamIcon';
+import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
 import { MAX_WIDTH } from '@styles/sizes';
 
 interface Props {
@@ -220,7 +220,7 @@ function ChooseSkillAdvancedControl({ choice, editable, setChoice, allChoices }:
       return {
         title: translations[skill],
         value: skill,
-        iconNode: <ArkhamIcon name={skill} size={32} />,
+        iconNode: <ArkhamSlimIcon name={skill} size={32} />,
       };
     });
   }, [translations, otherChosenSkills]);

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Text } from 'react-native';
-import { every } from 'lodash';
+import { every, filter } from 'lodash';
 import { t } from 'ttag';
 
-import CampaignLogCardConditionComponent from './CampaignLogCardConditionComponent';
+import CampaignLogCardConditionComponent, { CampaignLogCardsInvestigatorConditionComponent } from './CampaignLogCardConditionComponent';
 import BinaryResult from '../../../BinaryResult';
 import CampaignGuideContext from '../../../CampaignGuideContext';
 import {
@@ -11,9 +11,33 @@ import {
   CampaignLogCondition,
   CampaignLogCardsCondition,
   BorderColor,
+  InvestigatorCampaignLogCardsCondition,
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { investigatorCampaignLogCardsResult } from '@data/scenario/conditionHelper';
 
+interface InvestigatorCardsProps {
+  step: BranchStep;
+  condition: InvestigatorCampaignLogCardsCondition;
+  campaignLog: GuidedCampaignLog;
+  color?: BorderColor;
+}
+
+export function InvestigatorCampaignLogCardsConditionComponent({ step, condition, campaignLog, color}: InvestigatorCardsProps) {
+  const eligibleInvestigators = useMemo(() => {
+    return investigatorCampaignLogCardsResult(condition, campaignLog).input ?? [];
+  }, [condition, campaignLog]);
+  if (!eligibleInvestigators.length) {
+    return null;
+  }
+  return (
+    <CampaignLogCardsInvestigatorConditionComponent
+      step={step}
+      cards={eligibleInvestigators}
+      prompt={condition.prompt}
+    />
+  );
+}
 interface Props {
   step: BranchStep;
   condition: CampaignLogCondition | CampaignLogCardsCondition;
@@ -27,6 +51,7 @@ export default function CampaignLogConditionComponent({ step, condition, campaig
     // It's a binary prompt.
     if (condition.id) {
       const logEntry = campaignGuide.logEntry(condition.section, condition.id);
+      console.log(`${JSON.stringify(condition)}, ${JSON.stringify(logEntry)}`);
       if (!logEntry) {
         return (
           <Text>
@@ -43,6 +68,7 @@ export default function CampaignLogConditionComponent({ step, condition, campaig
 
           const result = campaignLog.check(condition.section, condition.id);
           const negativeResult = condition.options.length === 1 && condition.options[0].boolCondition === false;
+
           return (
             <BinaryResult
               prompt={prompt}

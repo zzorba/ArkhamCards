@@ -9,7 +9,7 @@ import ScenarioDataConditionComponent from './ScenarioDataConditionComponent';
 import CampaignDataConditionComponent from './CampaignDataConditionComponent';
 import TraumaConditionComponent from './TraumaConditionComponent';
 import HasCardConditionComponent from './HasCardConditionComponent';
-import CampaignLogConditionComponent from './CampaignLogConditionComponent';
+import CampaignLogConditionComponent, { InvestigatorCampaignLogCardsConditionComponent } from './CampaignLogConditionComponent';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { BorderColor, BranchStep, LocationCondition, ScarletKeyCondition } from '@data/scenario/types';
 import CampaignLogInvestigatorCountConditionComponent from './CampaignLogInvestigatorCountConditionComponent';
@@ -99,6 +99,15 @@ export default function BranchStepComponent({ step, campaignLog, color }: Props)
           step={step}
           campaignLog={campaignLog}
           condition={condition}
+        />
+      );
+    case 'investigator_campaign_log_cards':
+      return (
+        <InvestigatorCampaignLogCardsConditionComponent
+          step={step}
+          campaignLog={campaignLog}
+          condition={condition}
+          color={color}
         />
       );
     case 'campaign_log':

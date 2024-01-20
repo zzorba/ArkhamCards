@@ -1,4 +1,4 @@
-import ArkhamIcon from '@icons/ArkhamIcon';
+import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
 import React from 'react';
 
 const DIVIDE_REGEX = new RegExp('^(.*?)\\[(.*?)\\](.*)$');
@@ -9,7 +9,7 @@ export default function TextWithIcons({ text, color, size = 28 }: { text: string
     return (
       <>
         { match[1] }
-        <ArkhamIcon name={match[2]} size={size} color={color} />
+        <ArkhamSlimIcon name={match[2]} size={size} color={color} />
         { !!match[3] && <TextWithIcons text={match[3]} color={color} size={size} /> }
       </>
     );

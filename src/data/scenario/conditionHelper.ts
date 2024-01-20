@@ -53,9 +53,11 @@ import {
   ScarletKeyCondition,
   ScarletKeyCountCondition,
   CampaignDataStandaloneCondition,
+  InvestigatorCampaignLogCardsCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
+import BinaryResult from '@components/campaignguide/BinaryResult';
 
 export interface BinaryResult {
   type: 'binary';
@@ -253,6 +255,21 @@ export function checkSuppliesAllConditionResult(
     };
   });
   return investigatorCardResult(choices, options);
+}
+
+export function investigatorCampaignLogCardsResult(
+  condition: InvestigatorCampaignLogCardsCondition,
+  campaignLog: GuidedCampaignLog
+): BinaryResult {
+  const investigators = campaignLog.investigatorCodes(true);
+  const cards = new Set(campaignLog.allCards(condition.section, condition.id) ?? []);
+  const eligibleInvestigators = filter(investigators, code => condition.option.boolCondition ? cards.has(code) : !cards.has(code));
+  return {
+    type: 'binary',
+    decision: !!eligibleInvestigators.length,
+    option: eligibleInvestigators.length ? condition.option : undefined,
+    input: eligibleInvestigators,
+  };
 }
 
 export function campaignLogConditionResult(
@@ -881,6 +898,8 @@ export function conditionResult(
       return campaignDataConditionResult(condition, campaignLog);
     case 'campaign_log_investigator_count':
       return campaignLogInvestigatorCountConditionResult(condition, campaignLog);
+    case 'investigator_campaign_log_cards':
+      return investigatorCampaignLogCardsResult(condition, campaignLog);
     case 'campaign_log_cards':
     case 'campaign_log_section_exists':
     case 'campaign_log':

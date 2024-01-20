@@ -41,7 +41,8 @@ export type Condition =
   | PartnerStatusCondition
   | LocationCondition
   | ScarletKeyCondition
-  | ScarletKeyCountCondition;
+  | ScarletKeyCountCondition
+  | InvestigatorCampaignLogCardsCondition;
 export type Effect =
   | StoryStepEffect
   | EarnXpEffect
@@ -579,6 +580,7 @@ export interface CampaignDataNextScenarioEffect {
   type: "campaign_data";
   setting: "next_scenario" | "skip_scenario" | "replay_scenario";
   scenario: string;
+  prelude_continuation?: boolean;
 }
 export interface CampaignDataSwapChaosBagEffect {
   type: "campaign_data";
@@ -945,6 +947,13 @@ export interface LocationCondition {
   status: "visited" | "current";
   location: string;
   options: BoolOption[];
+}
+export interface InvestigatorCampaignLogCardsCondition {
+  type: "investigator_campaign_log_cards";
+  section: string;
+  id: string;
+  prompt: string;
+  option: BoolOption;
 }
 export interface Narration {
   id: string;

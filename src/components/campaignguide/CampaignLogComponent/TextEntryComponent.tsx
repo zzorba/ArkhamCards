@@ -6,7 +6,8 @@ import { CampaignLogEntry } from '@data/scenario/GuidedCampaignLog';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
-import ArkhamIcon from '@icons/ArkhamIcon';
+import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
+import TextWithIcons from '@components/core/TextWithIcons';
 
 interface Props {
   text: string;
@@ -20,7 +21,7 @@ interface Props {
 }
 
 export default function TextEntryComponent({ text, icon, crossedOut, entry, decoration, button, first, last }: Props) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors, typography, fontScale } = useContext(StyleContext);
   const actualText = entry.type === 'count' ?
     text.replace('#X#', `${entry.count}`) :
     text;
@@ -34,7 +35,7 @@ export default function TextEntryComponent({ text, icon, crossedOut, entry, deco
       <View style={[styles.wrapper, space.paddingTopS, space.paddingBottomS, !last && icon ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
         { !!icon && <View style={space.paddingRightS}><AppIcon name={icon} size={36} color={colors.M} /></View> }
         { actualText.startsWith('[') && actualText.endsWith(']') ? (
-          <ArkhamIcon name={actualText.substring(1, actualText.length - 1)} color={colors.D30} size={36} />
+          <ArkhamSlimIcon name={actualText.substring(1, actualText.length - 1)} color={colors.D30} size={36} />
         ) : (
           <Text style={[
             icon ? typography.menuText : typography.large,
@@ -45,7 +46,7 @@ export default function TextEntryComponent({ text, icon, crossedOut, entry, deco
             decoration === 'circle' ? typography.bold : undefined,
             { flex: 1 },
           ]}>
-            { upperFirst(actualText) }
+            <TextWithIcons text={upperFirst(actualText)} size={16 * fontScale} color={colors.darkText} />
           </Text>
         ) }
         { !!button && button}

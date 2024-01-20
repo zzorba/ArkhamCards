@@ -12,6 +12,7 @@ import {
   uniq,
   zip,
   last,
+  pick,
   concat,
   dropRight,
 } from 'lodash';
@@ -55,7 +56,7 @@ import {
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
-import { LatestDecks } from '@data/scenario';
+import scenario, { LatestDecks } from '@data/scenario';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX, SELECTED_PARTNERS_CAMPAIGN_LOG_ID } from './fixedSteps';
 
@@ -146,6 +147,7 @@ interface CampaignData {
   result?: 'win' | 'lose' | 'survived';
   difficulty?: CampaignDifficulty;
   nextScenario: string[];
+  noSideScenario?: boolean;
   investigatorData: InvestigatorData;
   everyStoryAsset: string[];
   lastSavedInvestigatorData: {
@@ -557,8 +559,8 @@ export default class GuidedCampaignLog {
     if (this.campaignData.nextScenario.length) {
       const scenario = last(this.campaignData.nextScenario);
       if (this.scenarioId !== scenario) {
-      // The campaign told us where to go next!
-      return scenario;
+        // The campaign told us where to go next!
+        return scenario;
       }
     }
 
@@ -1374,6 +1376,15 @@ export default class GuidedCampaignLog {
       }
       case 'next_scenario':
         this.campaignData.nextScenario = [...this.campaignData.nextScenario, effect.scenario];
+        if (effect.prelude_continuation) {
+          this.campaignData.noSideScenario = true;
+          this.scenarioData[effect.scenario] = {
+            ...pick(this.latestScenarioData || {},
+              ['playingScenario', 'leadInvestigator']
+            ),
+            investigatorStatus: {},
+          };
+        }
         break;
       case 'swap_chaos_bag': {
         const swap = this.swapChaosBag;
@@ -1450,11 +1461,14 @@ export default class GuidedCampaignLog {
       throw new Error(`Cannot set scenario_data effects outside of scenarios.`);
     }
     if (effect.setting === 'scenario_status') {
-      if (this.campaignData.nextScenario.length &&
-        last(this.campaignData.nextScenario) === scenarioId &&
-        effect.status === 'started'
-      ) {
-        this.campaignData.nextScenario = dropRight(this.campaignData.nextScenario, 1);
+      if (effect.status === 'started') {
+        this.campaignData.noSideScenario = false;
+        if (this.campaignData.nextScenario.length &&
+          last(this.campaignData.nextScenario) === scenarioId
+        ) {
+          this.campaignData.nextScenario = dropRight(this.campaignData.nextScenario, 1);
+        }
+        this.latestScenarioData = this.scenarioData[scenarioId] || { investigatorStatus: {} };
       }
       this.campaignData.scenarioStatus[scenarioId] = effect.status;
 
@@ -1512,6 +1526,7 @@ export default class GuidedCampaignLog {
           break;
       }
     }
+
     this.scenarioData[scenarioId] = scenario;
     this.latestScenarioData = scenario;
   }

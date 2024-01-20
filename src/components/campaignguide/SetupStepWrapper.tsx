@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native';
 
-import ArkhamIcon from '@icons/ArkhamIcon';
+import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
 import { BorderColor, BulletType } from '@data/scenario/types';
 import space, { s, m, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -46,7 +46,7 @@ export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing
       case 'small':
         return (
           <View style={[noPadding ? undefined : styles.smallBullet, { width: 20 }]}>
-            <ArkhamIcon
+            <ArkhamSlimIcon
               name="bullet"
               size={20}
               color={(color && colors.campaign.text[color]) || (resolution ? colors.campaign.text.resolution : colors.campaign.text.setup)}
@@ -56,7 +56,7 @@ export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing
       default:
         return (
           <View style={styles.bullet}>
-            <ArkhamIcon
+            <ArkhamSlimIcon
               name="guide_bullet"
               size={22}
               color={(color && colors.campaign.text[color]) || (resolution ? colors.campaign.text.resolution : colors.campaign.text.setup)}

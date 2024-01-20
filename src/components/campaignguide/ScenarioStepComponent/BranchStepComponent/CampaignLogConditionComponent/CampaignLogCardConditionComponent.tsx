@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { ActivityIndicator, Text } from 'react-native';
-import { find } from 'lodash';
-import { c, t } from 'ttag';
+import { find, map } from 'lodash';
+import { c, msgid, ngettext, t } from 'ttag';
 
 import BinaryResult from '@components/campaignguide/BinaryResult';
 import { LogEntryCard } from '@data/scenario/CampaignGuide';
@@ -11,13 +11,12 @@ import useSingleCard from '@components/card/useSingleCard';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import Card from '@data/types/Card';
-
-interface Props {
-  step: BranchStep;
-  entry: LogEntryCard;
-  condition: CampaignLogCondition | CampaignLogCardsCondition;
-  campaignLog: GuidedCampaignLog;
-}
+import { useCards } from '@components/core/hooks';
+import useCardList from '@components/card/useCardList';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import { stringList } from '@lib/stringHelper';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 function getPrompts(card: Card, entry: LogEntryCard): [string, string] {
   switch (card.gender) {
@@ -37,6 +36,42 @@ function getPrompts(card: Card, entry: LogEntryCard): [string, string] {
         c('masculine').t`If <i>${card.name}</i> is listed under ‘${entry.section}’ in your Campaign Log.`,
       ];
   }
+}
+
+
+interface InvestigatorCardsProps {
+  step: BranchStep;
+  cards: string[];
+  prompt: string;
+}
+
+export function CampaignLogCardsInvestigatorConditionComponent({ step, cards, prompt }: InvestigatorCardsProps) {
+  const { colors, typography } = useContext(StyleContext);
+  const { listSeperator } = useContext(LanguageContext);
+  const [investigatorCards, loading] = useCardList(cards, 'player');
+  const investigators = useMemo(() => stringList(map(investigatorCards, card => card.name), listSeperator), [investigatorCards, listSeperator]);
+  if (loading) {
+    return <ActivityIndicator animating size="small" color={colors.lightText} />;
+  }
+  return (
+    <SetupStepWrapper bulletType={step.bullet_type}>
+      <CampaignGuideTextComponent
+        text={ngettext(
+          msgid`${investigators} must read <b>${prompt}</b>.`,
+          `${investigators} must read <b>${prompt}</b>.`,
+          investigators.length
+        )}
+      />
+    </SetupStepWrapper>
+  );
+}
+
+
+interface Props {
+  step: BranchStep;
+  entry: LogEntryCard;
+  condition: CampaignLogCondition | CampaignLogCardsCondition;
+  campaignLog: GuidedCampaignLog;
 }
 
 export default function CampaignLogCardConditionComponent({ step, entry, condition, campaignLog }: Props) {

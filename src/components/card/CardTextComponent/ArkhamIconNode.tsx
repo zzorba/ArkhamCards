@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform, View } from 'react-native';
 import { MarkdownText, Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
-import ArkhamIcon from '@icons/ArkhamIcon';
+import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
 
 import { WithIconName, State } from './types';
 import { StyleContextType } from '@styles/StyleContext';
@@ -127,7 +127,7 @@ export default function ArkhamIconNode(usePingFang: boolean, { colors, fontScale
       );
     }
     return (
-      <ArkhamIcon
+      <ArkhamSlimIcon
         key={state.key}
         name={icon_name}
         size={16 * fontScale * sizeScale}

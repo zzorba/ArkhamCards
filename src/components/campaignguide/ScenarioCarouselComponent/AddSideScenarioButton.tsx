@@ -30,6 +30,9 @@ export default function AddSideScenarioButton({ componentId, processedCampaign, 
     if (campaignGuide.campaignMap()) {
       return false;
     }
+    if (processedCampaign.campaignLog.campaignData.noSideScenario) {
+      return false;
+    }
     if (processedCampaign.campaignLog.campaignData.result === 'lose') {
       return false;
     }

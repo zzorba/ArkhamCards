@@ -7,7 +7,7 @@ import {
 import { t } from 'ttag';
 
 import space, { isBig, s } from '@styles/space';
-import ArkhamIcon from '@icons/ArkhamIcon';
+import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
 import CardTextComponent from '@components/card/CardTextComponent';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
@@ -27,7 +27,7 @@ export default function CardTabooTextBlock({ card }: Props) {
     <View style={[styles.tabooTextBlock, { borderColor: colors.taboo }]}>
       <View style={styles.tabooRow}>
         <View style={space.marginRightXs}>
-          <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color={colors.taboo} />
+          <ArkhamSlimIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color={colors.taboo} />
         </View>
         <Text style={typography.small}>
           { t`Taboo List` }
