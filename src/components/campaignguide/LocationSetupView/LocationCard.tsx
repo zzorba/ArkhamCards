@@ -110,7 +110,7 @@ function annotationPosition(
     case 'left':
       return {
         top: top + (height - annotationLineHeight) / 2,
-        right: left,
+        left,
       };
     case 'right':
       return {
@@ -277,6 +277,7 @@ export default function LocationCard({ annotation, code, faded, random, height, 
       { !!annotation && (
         <View style={[styles.annotation, {
           width,
+          height,
           ...annotationPosition(annotation.position, { height, width, left, top, fontScale, lines: annotation.text.split('\n').length }),
         }]}>
           <Text
