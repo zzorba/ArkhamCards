@@ -1,7 +1,7 @@
 import { find, flatMap, forEach, sortBy } from 'lodash';
 
 import { CampaignCycleCode, GuideInput, NumberChoices, StandaloneId, Trauma } from '@actions/types';
-import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens, BorderColor, TabooSets } from './types';
+import { FullCampaign, Effect, Errata, Scenario, ChoiceIcon, ChaosToken, ChaosTokens, ScenarioChaosTokens, BorderColor, TabooSets, BinaryConditionalChoice } from './types';
 import CampaignGuide, { CampaignLog, CampaignLogSection } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
@@ -11,6 +11,7 @@ import Card from '@data/types/Card';
 import { useContext, useMemo } from 'react';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { Gender_Enum } from '@generated/graphql/apollo-schema';
+import { Binary } from 'typeorm';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -101,6 +102,11 @@ export function selectedDisplayChoiceText(choice: DisplayChoice, gender?: Gender
 
 export interface DisplayChoiceWithId extends DisplayChoice {
   id: string;
+}
+
+export interface BinaryConditionalChoiceWithId extends BinaryConditionalChoice {
+  id: string;
+  conditionHidden?: boolean;
 }
 
 export interface UniversalChoices {

@@ -1004,6 +1004,20 @@ export function investigatorChoiceConditionResult(
       return basicTraumaConditionResult(condition, campaignLog);
     case 'investigator':
       return investigatorConditionResult(condition, campaignLog);
+    case 'multi': {
+      const result = multiConditionResult(condition, campaignLog);
+      const investigators = campaignLog.investigatorCodes(false);
+      const choices: StringChoices = {};
+      forEach(investigators, code => {
+        if (result.decision) {
+          choices[code] = ['true'];
+        }
+      });
+      return {
+        type: 'investigator',
+        investigatorChoices: choices,
+      };
+    }
     case 'campaign_log_cards':
     case 'campaign_log': {
       const result = campaignLogConditionResult(condition, campaignLog);

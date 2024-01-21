@@ -691,7 +691,7 @@ export default class DeckValidation {
           if (!tag_valid) {
             continue;
           }
-        } else if (option.text && option.text.lengthios) {
+        } else if (option.text && option.text.length) {
           var text_valid = false;
           for(var j = 0; j < option.text.length; j++) {
             var text = option.text[j];

@@ -1,6 +1,7 @@
 import React, { useContext, useMemo } from 'react';
-import { Image, StyleSheet, Text, TextStyle, View } from 'react-native';
-import { map, range } from 'lodash';
+import { Image, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { withAnchorPoint } from 'react-native-anchor-point';
+import { map, range, transform } from 'lodash';
 import FastImage from 'react-native-blasted-image';
 
 import { s } from '@styles/space';
@@ -16,7 +17,8 @@ const PLAYER_BACK = require('../../../../assets/player-back.png');
 const ATLACH = require('../../../../assets/atlach.jpg');
 const RAIL_SIZE = 25;
 interface Props {
-  annotation?: LocationAnnotation;
+  key: string;
+  annotations: LocationAnnotation[];
   code: string;
   height: number;
   width: number;
@@ -30,32 +32,33 @@ interface Props {
     right?: number;
     bottom?: number;
   };
+  rotate?: 'left' | 'right' | 'invert';
+  rowWidth: number;
+  rowHeight: number;
 }
 
-function TextCard({ name, placeholder }: { name: string; placeholder?: boolean }) {
+function TextCard({ name, placeholder }: { name: string; placeholder?: boolean; }) {
   const { colors, borderStyle, typography } = useContext(StyleContext);
   return (
-    <View style={[
-      styles.singleCardWrapper,
-      placeholder ? undefined : borderStyle,
-      placeholder ? undefined : { borderWidth: 1, borderRadius: 8, backgroundColor: colors.darkText },
-    ]}>
-      <Text style={[typography.text, { color: placeholder ? colors.darkText : colors.background }, typography.center]}>
-        { name }
-      </Text>
-    </View>
+      <View style={[
+        styles.singleCardWrapper,
+        placeholder ? undefined : borderStyle,
+        placeholder ? undefined : { borderWidth: 1, borderRadius: 8, backgroundColor: colors.darkText },
+      ]}>
+        <Text style={[typography.text, { color: placeholder ? colors.darkText : colors.background }, typography.center]}>
+          { name }
+        </Text>
+      </View>
   );
 }
 
 const RAIL_REGEX = /_RAIL_([NSEW]+)$/;
 
-function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height, placeholder }: {
+function LocationCardImage({ code, back, name, width, height, placeholder }: {
   width: number;
   height: number;
   code: string;
   back: boolean;
-  rotate: boolean;
-  rotateLeft: boolean;
   name?: string;
   placeholder?: boolean;
 }) {
@@ -71,13 +74,16 @@ function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height
   const uri = back ? card.backImageUri() : card.imageUri();
   if (!uri) {
     return (
-      <TextCard name={(back && card.back_name) || card.name} placeholder={placeholder} />
+      <TextCard
+        name={(back && card.back_name) || card.name}
+        placeholder={placeholder}
+      />
     );
   }
   return (
     <ToolTip label={(back && card.back_name) || card.name} height={height} width={width}>
       <FastImage
-        style={[styles.verticalCardImage, { width, height }, rotate ? { transform: [{ rotate: rotateLeft ? '-90deg' : '90deg' }] } : undefined]}
+        style={[styles.verticalCardImage, { width, height }]}
         source={{
           uri,
         }}
@@ -89,7 +95,10 @@ function LocationCardImage({ code, back, name, rotate, rotateLeft, width, height
 
 function annotationPosition(
   position: 'top' | 'left' | 'right' | 'bottom',
-  { height, width, left, top, fontScale, lines }: { height: number; width: number; left: number; top: number; fontScale: number; lines: number },
+  { height, width, left, top, fontScale, lines, rowWidth, rowHeight }: {
+    height: number; width: number; left: number; top: number; fontScale: number; lines: number;
+    rowWidth: number; rowHeight: number;
+ },
 ): {
   top?: number;
   left?: number;
@@ -110,7 +119,7 @@ function annotationPosition(
     case 'left':
       return {
         top: top + (height - annotationLineHeight) / 2,
-        left,
+        right: rowWidth - left,
       };
     case 'right':
       return {
@@ -125,13 +134,26 @@ export function cleanLocationCode(code: string): string {
     .replace('_rotate_left', '')
     .replace('_rotate', '')
     .replace('_mini', '')
+    .replace('_invert', '')
     .replace(RAIL_REGEX, '');
 }
 
-export default function LocationCard({ annotation, code, faded, random, height, width, left, top, name, resource_dividers, placeholder }: Props) {
+export default function LocationCard({ key, rowWidth, rowHeight, annotations, rotate, code, faded, random, height, width, left, top, name, resource_dividers, placeholder }: Props) {
   const { borderStyle, fontScale, colors, typography } = useContext(StyleContext);
-  const rotate = code.indexOf('_rotate') !== -1;
   const mini = code.indexOf('_mini') !== -1;
+
+  const transformStyle = useMemo(() => {
+    switch (rotate) {
+      case 'left':
+        return withAnchorPoint({ transform: [{ rotate: '-90deg' }] }, { x: 0, y: 1 }, { width, height });
+      case 'right':
+        return withAnchorPoint({ transform: [{ rotate: '90deg' }] }, { x: 1, y: 0 }, { width, height });
+      case 'invert':
+        return { transform: [{ rotate: '-180deg' }] };
+      default:
+        return undefined;
+    }
+  }, [rotate, width, height]);
 
   const [theWidth, theHeight] = mini ? [width * 0.75, height * 0.75] : [width, height];
   const image = useMemo(() => {
@@ -181,8 +203,6 @@ export default function LocationCard({ annotation, code, faded, random, height, 
               back={code.indexOf('_back') !== -1}
               width={theWidth}
               height={theHeight}
-              rotateLeft={code.indexOf('_rotate_left') !== -1}
-              rotate={rotate}
             />
           </View>
         );
@@ -249,23 +269,12 @@ export default function LocationCard({ annotation, code, faded, random, height, 
       </>
     );
   }, [resource_dividers, width, height, left, top, colors]);
-  const annotationLineHeight = fontScale * 24;
-  let textAlignment: TextStyle;
-  switch (annotation?.position) {
-    case 'left':
-      textAlignment = typography.right;
-      break;
-    case 'right':
-      textAlignment = typography.left;
-      break;
-    default:
-      textAlignment = typography.center;
-      break;
-  }
   return (
     <>
-      <View style={[styles.card, { width: rotate ? height : width, height: rotate ? width : height, left, top }, faded || random ? { opacity: 0.40 } : undefined]}>
-        { image }
+      <View style={[styles.card, { top, left }, faded || random ? { opacity: 0.40 } : undefined]}>
+        <View style={[{ width, height }, transformStyle]}>
+          { image }
+        </View>
       </View>
       { resourceDividers }
       { rails }
@@ -274,25 +283,72 @@ export default function LocationCard({ annotation, code, faded, random, height, 
           { !!random && <ArkhamIcon name="wild" size={64} color="#6C0A1A" /> }
         </View>
       )}
-      { !!annotation && (
-        <View style={[styles.annotation, {
-          width,
-          height,
-          ...annotationPosition(annotation.position, { height, width, left, top, fontScale, lines: annotation.text.split('\n').length }),
-        }]}>
-          <Text
-            numberOfLines={2}
-            style={[
-              typography.text,
-              textAlignment,
-              { lineHeight: annotationLineHeight, fontSize: fontScale * 22, width },
-              typography.bold,
-            ]}>
-            { annotation.text }
-          </Text>
-        </View>
-      )}
+      { map(annotations, (annotation, idx) => (
+        <AnnotationComponent
+          key={`${key}_annotation_${idx}`}
+          annotation={annotation}
+          width={width}
+          height={height}
+          rowWidth={rowWidth}
+          rowHeight={rowHeight}
+          top={top}
+          left={left}
+        />
+      ))}
     </>
+  );
+}
+
+function AnnotationComponent({ annotation, width, height, left, top, rowWidth, rowHeight }: {
+  annotation: LocationAnnotation;
+  width: number;
+  height: number;
+  rowWidth: number;
+  rowHeight: number;
+  left: number;
+  top: number;
+}) {
+  const { typography, fontScale } = useContext(StyleContext);
+  let textAlignment: TextStyle;
+  const alignment = annotation.alignment ?? (annotation.style === 'description' ? 'left' : annotation.position)
+  switch (alignment) {
+    case 'left':
+      textAlignment = typography.right;
+      break;
+    case 'right':
+      textAlignment = typography.left;
+      break;
+    case 'center':
+    case 'top':
+    default:
+      textAlignment = typography.center;
+      break;
+  }
+
+  return (
+    <View style={[styles.annotation, {
+      width: width * (annotation.width ?? 1),
+      height: height * (annotation.height ?? 1),
+      ...annotationPosition(annotation.position, {
+        height, width, left, top, fontScale,
+        rowWidth,
+        rowHeight,
+        lines: annotation.text.split('\n').length }),
+    }]}>
+      <Text
+        numberOfLines={annotation.style === 'description' ? 12 : 2}
+        style={[
+          textAlignment,
+          typography.text,
+          annotation.style === 'description' ? [] : [
+            { lineHeight: fontScale * 24, fontSize: fontScale * 22 },
+            typography.bold,
+          ],
+          { width: width * (annotation.width ?? 1) },
+        ]}>
+        { annotation.text }
+      </Text>
+    </View>
   );
 }
 

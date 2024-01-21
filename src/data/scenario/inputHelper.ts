@@ -24,14 +24,14 @@ import {
   campaignDataStandaloneConditionResult,
   campaignDataInvestigatorStatusConditionResult,
 } from '@data/scenario/conditionHelper';
-import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
+import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId, BinaryConditionalChoiceWithId } from '@data/scenario';
 
 export function chooseOneInputChoices(
   choices: BinaryConditionalChoice[],
   campaignLog: GuidedCampaignLog,
   includeHidden?: boolean
-): DisplayChoiceWithId[] {
-  const result: DisplayChoiceWithId[] = map(
+): BinaryConditionalChoiceWithId[] {
+  const result: BinaryConditionalChoiceWithId[] = map(
     choices,
     choice => {
       if (!choice.condition) {

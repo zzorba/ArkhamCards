@@ -961,10 +961,39 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'anything_once':
       case 'mysterious_benefits':
         return this.standaloneIcon(encounter_code, size, color);
-      case 'fhv':
       case 'fhvp':
         return this.hemlockIcon('fhvp', size, color);
+      case 'fhv':
       case 'fhvc':
+        return this.hemlockIcon('fhvc', size, color);
+      case 'codex':
+        return this.arkhamIcon('codex', size, color);
+      case 'the_first_day':
+      case 'the_second_day':
+      case 'the_final_day':
+      case 'agents_of_the_colour':
+      case 'blight':
+      case 'day_of_rain':
+      case 'day_of_rest':
+      case 'day_of_the_feast':
+      case 'fate_of_the_vale':
+      case 'fire':
+      case 'heirlooms':
+      case 'hemlock_house':
+      case 'horrors_in_the_rock':
+      case 'mutations':
+      case 'myconids':
+      case 'refractions':
+      case 'residents':
+      case 'the_forest':
+      case 'the_longest_night':
+      case 'the_silent_heath':
+      case 'the_thing_in_the_depths':
+      case 'the_twisted_hollow':
+      case 'the_vale':
+      case 'transfiguration':
+      case 'written_in_rock':
+      case 'the_lost_sister':
         return this.hemlockIcon(encounter_code, size, color);
       case 'rcore':
       default:

@@ -186,7 +186,8 @@ export type InvestigatorChoiceCondition =
   | BasicTraumaCondition
   | InvestigatorCondition
   | CampaignLogCondition
-  | CampaignLogCardsCondition;
+  | CampaignLogCardsCondition
+  | MultiCondition;
 export type BinaryChoiceCondition =
   | BinaryCardCondition
   | CampaignDataInvestigatorCondition
@@ -1334,6 +1335,7 @@ export interface LocationSetupStep {
   horizontal: "half" | "normal" | "tight";
   locations: string[][];
   annotations?: LocationAnnotation[];
+  cards?: LocationSetupCard[];
   decorations?: LocationDecoration[];
   resource_dividers?: {
     right?: number;
@@ -1353,7 +1355,17 @@ export interface LocationAnnotation {
   text: string;
   x: number;
   y: number;
+  width?: number;
+  height?: number;
+  style?: "title" | "description";
+  alignment?: "left" | "right" | "center";
   position: "top" | "bottom" | "left" | "right";
+}
+export interface LocationSetupCard {
+  rotate?: "left" | "right" | "invert";
+  code: string;
+  x: number;
+  y: number;
 }
 export interface LocationDecoration {
   layer: "top" | "bottom";

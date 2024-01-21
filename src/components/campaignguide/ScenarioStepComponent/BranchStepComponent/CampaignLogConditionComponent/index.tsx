@@ -51,7 +51,6 @@ export default function CampaignLogConditionComponent({ step, condition, campaig
     // It's a binary prompt.
     if (condition.id) {
       const logEntry = campaignGuide.logEntry(condition.section, condition.id);
-      console.log(`${JSON.stringify(condition)}, ${JSON.stringify(logEntry)}`);
       if (!logEntry) {
         return (
           <Text>

@@ -1,13 +1,13 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { find, forEach, map, partition } from 'lodash';
+import { filter, find, forEach, map, partition } from 'lodash';
 import PanPinchView from 'react-native-pan-pinch-view';
 import { Canvas, Paint, Circle, Line, vec, Path } from "@shopify/react-native-skia";
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { NavigationProps } from '@components/nav/types';
-import { LocationDecoration, LocationSetupStep } from '@data/scenario/types';
+import { LocationAnnotation, LocationDecoration, LocationSetupCard, LocationSetupStep } from '@data/scenario/types';
 import LocationCard, { cleanLocationCode } from './LocationCard';
 import { CARD_RATIO, NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { isTablet, m } from '@styles/space';
@@ -31,7 +31,7 @@ interface CardSizes {
   verticalPadding: number;
 }
 
-export default function LocationSetupView({ step: { locations, annotations, decorations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
+export default function LocationSetupView({ step: { locations, cards, annotations, decorations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
   const { width, height } = useContext(StyleContext);
   const rowCount = locations.length;
   const rowSize = locations[0].length;
@@ -102,7 +102,17 @@ export default function LocationSetupView({ step: { locations, annotations, deco
     return heightConstrained;
   }, [widthConstrained, heightConstrained]);
 
-  const renderRow = useCallback((locationsRow: string[], rowNumber: number) => {
+  const renderCard = useCallback(({ card, key, resourceDividers, annotations }: {
+    card: LocationSetupCard;
+    key: string;
+    resourceDividers?: {
+      right?: number;
+      bottom?: number;
+    };
+    annotations: LocationAnnotation[];
+    rowWidth: number;
+    rowHeight: number;
+   }) => {
     const {
       betweenPadding,
       cardWidth,
@@ -111,32 +121,62 @@ export default function LocationSetupView({ step: { locations, annotations, deco
 
     const cardHeightWithPadding = (cardHeight + TOP_PADDING);
     const verticalScale = vertical === 'half' ? 2.0 : 1.0;
-    const top = cardHeightWithPadding / verticalScale * (rowNumber + verticalScale) + (
-      resource_dividers ? 50 * rowNumber : 0
+    const top = cardHeightWithPadding / verticalScale * (card.y + verticalScale) + (
+      resource_dividers ? 50 * card.y : 0
     );
+    const cardWidthWithPadding = (cardWidth + betweenPadding);
+    const horizontalScale = horizontal === 'half' ? 2.0 : 1.0;
+    const left = cardWidthWithPadding / horizontalScale * (card.x + horizontalScale) + (
+      resource_dividers ? 50 * card.x : 0
+    );
+    const item = card.code;
+    return (
+      <LocationCard
+        key={key}
+        code={item}
+        name={names[cleanLocationCode(item)]}
+        placeholder={placeholders[cleanLocationCode(item)]}
+        faded={faded[cleanLocationCode(item)]}
+        random={randoms[cleanLocationCode(item)]}
+        rotate={card.rotate}
+        top={TOP_PADDING + top}
+        left={SIDE_PADDING + left}
+        height={cardHeight}
+        width={cardWidth}
+        annotations={annotations}
+        resource_dividers={resourceDividers}
+        rowWidth={rowWidth}
+        rowHeight={rowHeight}
+      />
+    );
+  }, [vertical, horizontal, resource_dividers, cardDimensions, names]);
+
+
+  const renderRow = useCallback((locationsRow: string[], rowNumber: number, rowWidth: number, rowHeight: number) => {
     return map(locationsRow, (item, x) => {
-      const cardWidthWithPadding = (cardWidth + betweenPadding);
-      const horizontalScale = horizontal === 'half' ? 2.0 : 1.0;
-      const left = cardWidthWithPadding / horizontalScale * (x + horizontalScale) + (
-        resource_dividers ? 50 * x : 0
-      );
-      const annotation = find(annotations, a => a.x === x && a.y === rowNumber);
-      return (
-        <LocationCard
-          key={`${rowNumber}x${x}`}
-          code={item}
-          name={names[cleanLocationCode(item)]}
-          placeholder={placeholders[cleanLocationCode(item)]}
-          faded={faded[cleanLocationCode(item)]}
-          random={randoms[cleanLocationCode(item)]}
-          top={TOP_PADDING + top}
-          left={SIDE_PADDING + left}
-          height={cardHeight}
-          width={cardWidth}
-          annotation={annotation}
-          resource_dividers={resource_dividers ? resource_dividers[rowNumber][x] : undefined}
-        />
-      );
+      const currentAnnotations = filter(annotations, a => a.x === x && a.y === rowNumber);
+      const resources = resource_dividers ? resource_dividers[rowNumber][x] : undefined;
+      let rotate: 'left' | 'right' | 'invert' | undefined = undefined;
+      if (item.indexOf('_rotate_left') !== -1) {
+        rotate = 'left';
+      } else if (item.indexOf('_rotate') !== -1) {
+        rotate = 'right';
+      } else if (item.indexOf('_invert') !== -1) {
+        rotate = 'invert';
+      }
+      return renderCard({
+        key: `${rowNumber}x${x}`,
+        card: {
+          code: item,
+          x: x,
+          y: rowNumber,
+          rotate,
+        },
+        annotations: currentAnnotations,
+        resourceDividers: resources,
+        rowWidth,
+        rowHeight,
+      });
     });
   }, [vertical, annotations, horizontal, cardDimensions, names, resource_dividers]);
 
@@ -186,7 +226,8 @@ export default function LocationSetupView({ step: { locations, annotations, deco
           />
         ) }
         <View style={[styles.container, { height: rowHeight, margin: m * 2 }]}>
-          { map(locations, (locs, row) => renderRow(locs, row)) }
+          { map(locations, (locs, row) => renderRow(locs, row, rowWidth, rowHeight)) }
+          { map(cards, (card, idx) => renderCard({ card, key: `${idx}`, rowWidth, rowHeight })) }
         </View>
         { !!topDecorations.length && (
           <Decorations

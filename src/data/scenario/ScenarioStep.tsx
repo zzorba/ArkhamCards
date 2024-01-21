@@ -1227,7 +1227,10 @@ export default class ScenarioStep {
         const choice = choices[index];
         return this.maybeCreateEffectsStep(
           step.id,
-          [...(choice?.steps || []), ...this.remainingStepIds],
+          [
+            ...(map(choice?.steps || [], id => choice.repeatable ? `${id}#${nextIteration}` : id)),
+            ...this.remainingStepIds,
+          ],
           [{
             effects: choice?.effects || [],
           }],

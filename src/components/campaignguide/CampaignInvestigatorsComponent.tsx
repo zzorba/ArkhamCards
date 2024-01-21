@@ -308,7 +308,11 @@ export default function CampaignInvestigatorsComponent(props: Props) {
   }, [processedCampaign.scenarios, showAlert]);
   const investigatorCount = campaignInvestigators?.length;
   const suppliesSections = useMemo(() => filter(campaignGuide.campaignLogSections(), section => section.id !== 'hidden' && section.type === 'supplies'), [campaignGuide]);
-  const investigatorCountSections = useMemo(() => filter(campaignGuide.campaignLogSections(), section => section.id !== 'hidden' && section.type === 'investigator_count'), [campaignGuide]);
+  const investigatorCountSections = useMemo(() => filter(
+    campaignGuide.campaignLogSections(),
+    section =>
+      section.id !== 'hidden' && !section.hidden && section.type === 'investigator_count'
+  ), [campaignGuide]);
   return (
     <>
       <View style={[space.paddingBottomS, space.paddingTopS]}>
