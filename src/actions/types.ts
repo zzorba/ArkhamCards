@@ -545,7 +545,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TIC,
   EOE,
   TSK,
-  FHV,
+  // FHV,
   GOB,
   FOF,
   ALICE_IN_WONDERLAND,

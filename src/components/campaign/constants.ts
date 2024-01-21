@@ -395,7 +395,6 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Fatal Mirage`, code: 'fatal_mirage_3', pack_code: 'eoec' },
     ];
     case TSK:
-    case FHV:
       return [
         { name: t`Prologue: Rain and Riddles`, code: 'riddles_and_rain', pack_code: 'tskc' },
         { name: t`Dead Heat`, code: 'marrakesh', pack_code: 'tskc' },
@@ -408,6 +407,8 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
         { name: t`Without a Trace`, code: 'bermuda_triangle', pack_code: 'tskc' },
         { name: t`Congress of the Keys`, code: 'tunguska', pack_code: 'tskc' },
       ];
+    case FHV:
+      return [];
     case DARK_MATTER:
       return [
         { name: t`Prologue`, code: 'dm_prologue', pack_code: 'zdm', interlude: true },
@@ -691,7 +692,6 @@ export function getCampaignLog(
         ],
       };
     case TSK:
-    case FHV:
       return {
         sections: [
           t`Campaign Notes`,
@@ -700,6 +700,22 @@ export function getCampaignLog(
         ],
         counts: [t`Time Passed`],
       };
+    case FHV:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Day / Time`,
+          t`Areas Surveyed`,
+          t`Mother Rachel`,
+          t`Leah Atwood`,
+          t`Simeon Atwood`,
+          t`William Hemlock`,
+          t`River Hawthorne`,
+          t`Gideon Mizrah`,
+          t`Judith Park`,
+          t`Theo Peters`,
+        ]
+      }
     case GOB:
     case FOF:
       return {
@@ -801,6 +817,13 @@ const TSK_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+};
+
+const FHV_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, '-3': 1, skull: 2, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 2, '-4': 1, skull: 2, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-5': 2, '-7': 1, skull: 2, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 2, '-6': 2, '-8': 1, skull: 2, elder_sign: 1 },
 };
 
 const DARK_MATTER_BAG: ChaosBagByDifficulty = {
@@ -933,8 +956,9 @@ export function getChaosBag(
     case EOE:
       return EOE_BAG[difficulty];
     case TSK:
-    case FHV:
       return TSK_BAG[difficulty];
+    case FHV:
+      return FHV_BAG[difficulty];
     case DARK_MATTER:
       return DARK_MATTER_BAG[difficulty];
     case ALICE_IN_WONDERLAND:
