@@ -304,6 +304,7 @@ interface Props {
   onLinkPress?: (url: string, context: StyleContextType) => void;
   sizeScale?: number;
   noBullet?: boolean;
+  style?: TextStyle;
 }
 
 function renderTableCell(cell: InlineNode, row: number, column: number, rowCount: number, columnCount: number, output: OutputFunction, state: RenderState, styles: any) {
@@ -384,7 +385,7 @@ const BULLET_REGEX = /(^\s?-|^—\s+)([^0-9].+)$/gm;
 const GUIDE_BULLET_REGEX = /(^\s?=|^=\s+)([^0-9].+)$/gm;
 const PARAGRAPH_BULLET_REGEX = /(<p>- )|(<p>–)/gm;
 
-export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, noBullet }: Props) {
+export default function CardTextComponent({ text, style, onLinkPress, sizeScale = 1, noBullet }: Props) {
   const { usePingFang } = useContext(LanguageContext);
   const context = useContext(StyleContext);
   const cleanTextA = text
@@ -442,7 +443,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       marginTop: 4,
       marginBottom: 4,
       color: context.colors.darkText,
-      textAlign: context.justifyContent ? 'justify' : undefined,
+      textAlign: context.justifyContent ? 'justify' : style?.textAlign,
       alignSelf: 'flex-start',
       flexShrink: 1,
     };

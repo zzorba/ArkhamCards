@@ -133,6 +133,7 @@ export default function LocationSetupView({ step: { locations, cards, annotation
     return (
       <LocationCard
         key={key}
+        keyProp={key}
         code={item}
         name={names[cleanLocationCode(item)]}
         placeholder={placeholders[cleanLocationCode(item)]}

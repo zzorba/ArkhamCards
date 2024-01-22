@@ -12,12 +12,13 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import { LocationAnnotation } from '@data/scenario/types';
 import ToolTip from '@components/core/ToolTip';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import CardTextComponent from '@components/card/CardTextComponent';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 const ATLACH = require('../../../../assets/atlach.jpg');
 const RAIL_SIZE = 25;
 interface Props {
-  key: string;
+  keyProp: string;
   annotations: LocationAnnotation[];
   code: string;
   height: number;
@@ -94,10 +95,11 @@ function LocationCardImage({ code, back, name, width, height, placeholder }: {
 }
 
 function annotationPosition(
-  position: 'top' | 'left' | 'right' | 'bottom',
-  { height, width, left, top, fontScale, lines, rowWidth, rowHeight }: {
+  annotation: LocationAnnotation,
+  { height, width, left, top, fontScale, lines, rowWidth, hasResourceDividers,  }: {
     height: number; width: number; left: number; top: number; fontScale: number; lines: number;
     rowWidth: number; rowHeight: number;
+    hasResourceDividers: boolean;
  },
 ): {
   top?: number;
@@ -105,12 +107,14 @@ function annotationPosition(
   right?: number;
 } {
   const annotationLineHeight = fontScale * 24 * lines;
-  switch (position) {
-    case 'top':
+  switch (annotation.position) {
+    case 'top': {
+      const shift = (1 - (annotation.height ?? 1)) * height;
       return {
-        top: top - annotationLineHeight,
+        top: top - annotationLineHeight + shift,
         left,
       };
+    }
     case 'bottom':
       return {
         top: top + height,
@@ -138,8 +142,8 @@ export function cleanLocationCode(code: string): string {
     .replace(RAIL_REGEX, '');
 }
 
-export default function LocationCard({ key, rowWidth, rowHeight, annotations, rotate, code, faded, random, height, width, left, top, name, resource_dividers, placeholder }: Props) {
-  const { borderStyle, fontScale, colors, typography } = useContext(StyleContext);
+export default function LocationCard({ keyProp, rowWidth, rowHeight, annotations, rotate, code, faded, random, height, width, left, top, name, resource_dividers, placeholder }: Props) {
+  const { borderStyle, colors } = useContext(StyleContext);
   const mini = code.indexOf('_mini') !== -1;
 
   const transformStyle = useMemo(() => {
@@ -285,7 +289,7 @@ export default function LocationCard({ key, rowWidth, rowHeight, annotations, ro
       )}
       { map(annotations, (annotation, idx) => (
         <AnnotationComponent
-          key={`${key}_annotation_${idx}`}
+          key={`${keyProp}_annotation_${idx}`}
           annotation={annotation}
           width={width}
           height={height}
@@ -293,13 +297,14 @@ export default function LocationCard({ key, rowWidth, rowHeight, annotations, ro
           rowHeight={rowHeight}
           top={top}
           left={left}
+          hasResourceDividers={!!resourceDividers}
         />
       ))}
     </>
   );
 }
 
-function AnnotationComponent({ annotation, width, height, left, top, rowWidth, rowHeight }: {
+function AnnotationComponent({ annotation, width, height, left, top, rowWidth, rowHeight, hasResourceDividers }: {
   annotation: LocationAnnotation;
   width: number;
   height: number;
@@ -307,47 +312,69 @@ function AnnotationComponent({ annotation, width, height, left, top, rowWidth, r
   rowHeight: number;
   left: number;
   top: number;
+  hasResourceDividers: boolean;
 }) {
   const { typography, fontScale } = useContext(StyleContext);
   let textAlignment: TextStyle;
-  const alignment = annotation.alignment ?? (annotation.style === 'description' ? 'left' : annotation.position)
-  switch (alignment) {
-    case 'left':
-      textAlignment = typography.right;
-      break;
-    case 'right':
-      textAlignment = typography.left;
-      break;
-    case 'center':
-    case 'top':
-    default:
-      textAlignment = typography.center;
-      break;
+  if (annotation.alignment || annotation.style === 'description') {
+    switch (annotation.alignment ?? 'left') {
+      case 'left':
+        textAlignment = typography.left;
+        break;
+      case 'right':
+        textAlignment = typography.right;
+        break;
+      case 'center':
+        textAlignment = typography.center;
+        break;
+    }
+  } else {
+    switch (annotation.position) {
+      case 'left':
+        textAlignment = typography.right;
+        break;
+      case 'right':
+        textAlignment = typography.left;
+        break;
+      case 'top':
+      default:
+        textAlignment = typography.center;
+        break;
+    }
   }
 
   return (
     <View style={[styles.annotation, {
       width: width * (annotation.width ?? 1),
       height: height * (annotation.height ?? 1),
-      ...annotationPosition(annotation.position, {
+      ...annotationPosition(annotation, {
         height, width, left, top, fontScale,
         rowWidth,
         rowHeight,
-        lines: annotation.text.split('\n').length }),
+        lines: annotation.text.split('\n').length,
+        hasResourceDividers,
+      }),
     }]}>
-      <Text
-        numberOfLines={annotation.style === 'description' ? 12 : 2}
-        style={[
-          textAlignment,
-          typography.text,
-          annotation.style === 'description' ? [] : [
-            { lineHeight: fontScale * 24, fontSize: fontScale * 22 },
-            typography.bold,
-          ],
-          { width: width * (annotation.width ?? 1) },
-        ]}>
-        { annotation.text }
-      </Text>
+      { annotation.style === 'description' ? (
+        <CardTextComponent
+          text={annotation.text}
+          style={textAlignment}
+        />
+      ) : (
+        <Text
+          numberOfLines={2}
+          style={[
+            textAlignment,
+            typography.text,
+            [
+              { lineHeight: fontScale * 24, fontSize: fontScale * 22 },
+              typography.bold,
+            ],
+            { width: width * (annotation.width ?? 1) },
+          ]}>
+          { annotation.text }
+        </Text>
+      ) }
     </View>
   );
 }

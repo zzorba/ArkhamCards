@@ -148,10 +148,12 @@ function ScenarioStepComponentContent({
       );
     case 'location_setup':
       return (
-        <LocationSetupButton
-          step={step}
-          componentId={componentId}
-        />
+        <View style={space.paddingBottomM}>
+          <LocationSetupButton
+            step={step}
+            componentId={componentId}
+          />
+        </View>
       );
     case 'border':
       return (
