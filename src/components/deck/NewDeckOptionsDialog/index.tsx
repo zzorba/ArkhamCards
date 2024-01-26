@@ -47,7 +47,6 @@ import specialMetaSlots, { ensureConsistentMeta } from '@data/deck/specialMetaSl
 import useChaosDeckGenerator from '../useChaosDeckGenerator';
 import { parseDeck } from '@lib/parseDeck';
 import useParsedDeckComponent from '../useParsedDeckComponent';
-import { JOE_DIAMOND_CODE, LOLA_CODE, SUZI_CODE } from '@data/deck/specialCards';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface NewDeckOptionsProps {
@@ -395,7 +394,7 @@ function NewDeckOptionsDialog({
       description: t`Suggested starter deck for this investigator from FFG.`,
       value: 'starter',
     }] : [];
-    const noUltimatum = false; // investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
+    const noUltimatum = false;
     return [
       {
         title: specialDeckModeLabel('none'),

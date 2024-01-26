@@ -228,7 +228,7 @@ export default function LocationSetupView({ step: { locations, cards, annotation
         ) }
         <View style={[styles.container, { height: rowHeight, margin: m * 2 }]}>
           { map(locations, (locs, row) => renderRow(locs, row, rowWidth, rowHeight)) }
-          { map(cards, (card, idx) => renderCard({ card, key: `${idx}`, rowWidth, rowHeight })) }
+          { map(cards, (card, idx) => renderCard({ card, key: `${idx}`, rowWidth, rowHeight, annotations: [] })) }
         </View>
         { !!topDecorations.length && (
           <Decorations

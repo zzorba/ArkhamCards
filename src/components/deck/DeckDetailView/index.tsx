@@ -58,7 +58,6 @@ import FilterBuilder from '@lib/filters';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { DeckDraftProps } from '@components/deck/DeckDraftView';
-import { JOE_DIAMOND_CODE, LOLA_CODE, SUZI_CODE } from '@data/deck/specialCards';
 import { localizeTag } from '@components/deck/TagChiclet';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import useTagPile from '@components/deck/useTagPile';

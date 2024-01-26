@@ -50,7 +50,7 @@ const FACTION_POSITION: { [key in FactionCodeType | 'multiClass']: number }= {
 
 export default function FactionChooser({ onFilterChange, factions, multiClass, selection, componentId }: Props) {
   const { colors } = useContext(StyleContext);
-  const fullFactions: (FactionCodeType | 'multiClass')[] = useMemo(() => {
+  const rawFactions: (FactionCodeType | 'multiClass')[] = useMemo(() => {
     if (SUPPORT_MULTI_CLASS && factions.find(f => PLAYER_FACTIONS.has(f)) && factions.find(f => f === 'neutral')) {
       return flatMap(factions, f => {
         if (f === 'neutral') {
@@ -60,7 +60,8 @@ export default function FactionChooser({ onFilterChange, factions, multiClass, s
       });
     }
     return factions;
-  }, [factions])
+  }, [factions]);
+  const fullFactions = useMemo(() => sortBy(rawFactions, f => FACTION_POSITION[f]), [rawFactions]);
   const updateIndex = useCallback((indexes: number[]) => {
     const selection = flatMap(indexes, idx => {
       if (fullFactions[idx] === 'multiClass') {
@@ -78,7 +79,7 @@ export default function FactionChooser({ onFilterChange, factions, multiClass, s
   const [selectedIndexes, buttons] = useMemo(() => {
     const selectedIndexes: number[] = [];
     const buttons = map(
-      sortBy(fullFactions, f => FACTION_POSITION[f]),
+      fullFactions,
       (faction, idx) => {
         if (faction === 'multiClass') {
           if (multiClass) {
