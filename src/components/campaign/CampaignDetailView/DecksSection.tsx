@@ -20,6 +20,7 @@ import { SetCampaignNotesAction } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useAppDispatch } from '@app/store';
+import CampaignHeader from '@components/campaignguide/CampaignHeader';
 
 interface Props {
   componentId: string;
@@ -188,11 +189,7 @@ export default function DecksSection({
       }) }
       { killedInvestigators.length > 0 && (
         <View style={[styles.underline, borderStyle]}>
-          <View style={space.paddingS}>
-            <Text style={[typography.large, typography.center, typography.light]}>
-              { `— ${t`Killed and Insane Investigators`} · ${killedInvestigators.length} —` }
-            </Text>
-          </View>
+          <CampaignHeader title={`${t`Killed and Insane Investigators`} · ${killedInvestigators.length}`} style={space.paddingS} />
           { flatMap(killedInvestigators, investigator => {
             const deck = find(latestDecks, deck => deck.investigator === investigator.code);
             return renderInvestigator(investigator, true, deck);

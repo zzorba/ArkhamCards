@@ -4854,15 +4854,12 @@ msgstr "덱 생성 불가능"
 msgid "Suggested starter deck for this investigator from FFG."
 msgstr "Fantasy Flight Games에서 제공하는 초심자용 견본 덱."
 
-#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "An empty deck."
 msgstr "빈 덱."
 
-#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
 msgstr "죄송합니다, 해당 조사자의 무작위 덱 생성을 아직 수행할 수 없습니다."
 
-#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "A fully randomized deck."
 msgstr "보유 게임 내에서 덱 구성 조건에 맞도록 무작위로 골라서 선정된 덱."
 
@@ -5880,6 +5877,74 @@ msgstr "경험치 비용: ${ investigator.name } 조사자의 경우 ${ basicXpC
 
 msgid "Aether"
 msgstr "에테르"
+
+msgid "Campaign Rules & FAQ"
+msgstr ""
+
+msgid "Review campaign specific info"
+msgstr ""
+
+msgid "Campaign Rules"
+msgstr ""
+
+msgid "Review campaign specific rules"
+msgstr ""
+
+msgid "Campaign FAQ"
+msgstr ""
+
+msgid "Review campaign specific clarifications"
+msgstr ""
+
+#, javascript-format
+msgid "Q: ${ errata.question }"
+msgstr ""
+
+#, javascript-format
+msgid "A: ${ errata.answer }"
+msgstr ""
+
+msgid "Show FAQ"
+msgstr ""
+
+msgid "May contain light spoilers"
+msgstr ""
+
+msgid "Note: To avoid spoilers, scenario specific questions and clarifications can be found within each scenario guide."
+msgstr ""
+
+msgid "Rules & FAQ"
+msgstr ""
+
+msgid "Day / Time"
+msgstr ""
+
+msgid "Areas Surveyed"
+msgstr ""
+
+msgid "Mother Rachel"
+msgstr ""
+
+msgid "Leah Atwood"
+msgstr ""
+
+msgid "Simeon Atwood"
+msgstr ""
+
+msgid "William Hemlock"
+msgstr ""
+
+msgid "River Hawthorne"
+msgstr ""
+
+msgid "Gideon Mizrah"
+msgstr ""
+
+msgid "Judith Park"
+msgstr ""
+
+msgid "Theo Peters"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

@@ -25,6 +25,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import useProcessedCampaign from './useProcessedCampaign';
 import { useAppDispatch } from '@app/store';
+import CampaignHeader from './CampaignHeader';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -78,11 +79,7 @@ function CampaignGuideView(props: Props) {
   const footerButtons = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
-        <View style={[space.paddingBottomS, space.paddingTopS]}>
-          <Text style={[typography.large, typography.center, typography.light]}>
-            { `— ${t`Settings`} —` }
-          </Text>
-        </View>
+        <CampaignHeader style={space.paddingTopS} title={t`Settings`} />
         {
           !!customData && (
             <DeckButton

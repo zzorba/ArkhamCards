@@ -11,7 +11,7 @@ export interface ScenarioGuideContextType {
 
 export const ScenarioGuideContext = React.createContext<ScenarioGuideContextType>(
   // @ts-ignore TS2345
-  { }
+  null
 );
 
 export default ScenarioGuideContext;

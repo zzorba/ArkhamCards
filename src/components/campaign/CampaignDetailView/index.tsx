@@ -40,6 +40,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 import { useAppDispatch } from '@app/store';
 import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
+import CampaignHeader from '@components/campaignguide/CampaignHeader';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
@@ -326,11 +327,7 @@ function CampaignDetailView(props: Props) {
               color="dark_gray"
               bottomMargin={s}
             />
-            <View style={[space.paddingBottomS, space.paddingTopS]}>
-              <Text style={[typography.large, typography.center, typography.light]}>
-                { `— ${t`Investigators`} · ${investigatorCount} —` }
-              </Text>
-            </View>
+            <CampaignHeader style={space.paddingTopS} title={`${t`Investigators`} · ${investigatorCount}`} />
             <DecksSection
               showAlert={showAlert}
               showTextEditDialog={showTextEditDialog}
@@ -374,11 +371,7 @@ function CampaignDetailView(props: Props) {
             </View>
           ) }
           <View style={space.paddingSideS}>
-            <View style={[space.paddingBottomS, space.paddingTopS]}>
-              <Text style={[typography.large, typography.center, typography.light]}>
-                { `— ${t`Settings`} —` }
-              </Text>
-            </View>
+            <CampaignHeader style={space.paddingTopS} title={t`Settings`} />
             <UploadCampaignButton
               componentId={componentId}
               campaignId={campaignId}

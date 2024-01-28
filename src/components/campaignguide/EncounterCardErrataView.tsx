@@ -13,8 +13,8 @@ import StyleContext from '@styles/StyleContext';
 import useCardList from '@components/card/useCardList';
 import CampaignGuideContext from './CampaignGuideContext';
 
-export interface EncounterCardErrataProps extends CampaignGuideInputProps {
-  encounterSets: string[];
+export interface EncounterCardErrataProps {
+  errata: CardErrata[];
 }
 
 function CardErrataComponent({ errata, cards }: { errata: CardErrata; cards: CardsMap }) {
@@ -63,10 +63,8 @@ function CardErrataComponent({ errata, cards }: { errata: CardErrata; cards: Car
     </View>
   );
 }
-function EncounterCardErrataView({ encounterSets }: EncounterCardErrataProps) {
+function EncounterCardErrataView({ errata }: EncounterCardErrataProps) {
   const { colors } = useContext(StyleContext);
-  const campaignData = useContext(CampaignGuideContext);
-  const errata = useMemo(() => campaignData.campaignGuide.cardErrata(encounterSets), [campaignData.campaignGuide, encounterSets]);
   const errataCodes = useMemo(() => flatMap(errata, e => e.code), [errata]);
   const [errataCards, loading] = useCardList(errataCodes, 'encounter');
   const cardsMap = useMemo(() => {
@@ -108,7 +106,7 @@ EncounterCardErrataView.options = () => {
   };
 };
 
-export default withCampaignGuideContext(EncounterCardErrataView, { rootView: false });
+export default EncounterCardErrataView;
 
 const styles = StyleSheet.create({
   container: {

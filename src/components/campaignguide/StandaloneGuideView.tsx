@@ -17,6 +17,7 @@ import space from '@styles/space';
 import ScenarioGuideContext from './ScenarioGuideContext';
 import StyleContext from '@styles/StyleContext';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import CampaignHeader from './CampaignHeader';
 
 export interface StandaloneGuideProps extends ScenarioGuideInputProps {
   campaignId: CampaignId;
@@ -34,11 +35,7 @@ function StandaloneGuideView({ campaignId, componentId, setCampaignServerId, upl
   const footer = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
-        <View style={[space.paddingBottomS, space.paddingTopS]}>
-          <Text style={[typography.large, typography.center, typography.light]}>
-            { `— ${t`Settings`} —` }
-          </Text>
-        </View>
+        <CampaignHeader style={space.paddingTopS} title={t`Settings`} />
         <UploadCampaignButton
           componentId={componentId}
           campaignId={campaign.id}

@@ -1,4 +1,4 @@
-import { find, findIndex, filter, flatMap, forEach, reverse, slice } from 'lodash';
+import { find, findIndex, filter, flatMap, forEach, reverse, slice, sortBy, orderBy } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
 import { GuideStartCustomSideScenarioInput } from '@actions/types';
@@ -8,8 +8,9 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
-import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement, Partner, CampaignMap } from './types';
+import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question, Achievement, Partner, CampaignMap, CampaignRule } from './types';
 import deepEqual from 'deep-equal';
+import stable from 'stable';
 
 type CampaignLogEntry = {
   id: string;
@@ -126,9 +127,31 @@ export default class CampaignGuide {
     return this.campaign.campaign.tarot;
   }
 
+  campaignFaq(): Question[] {
+    const campaignFaq = find(this.errata.campaign_faq ?? [], faq => faq.cycles.includes(this.campaign.campaign.id))
+    return campaignFaq?.questions ?? [];
+  }
+
   scenarioFaq(scenario: string): Question[] {
     const scenarioFaq = find(this.errata.faq, faq => faq.scenario_code === scenario);
-    return scenarioFaq ? scenarioFaq.questions : [];
+    return scenarioFaq?.questions ?? [];
+  }
+
+  campaignRules(lang: string): CampaignRule[] {
+    return stable(this.campaign.campaign.rules ?? [],  (a, b) => a.title.localeCompare(b.title, lang));
+  }
+
+  scenarioRules(lang: string, scenario: string | undefined): CampaignRule[] {
+    if (!scenario || scenario === CAMPAIGN_SETUP_ID) {
+      return this.campaignRules(lang);
+    }
+    return stable(
+      [
+        ...this.campaignRules(lang),
+        ...this.campaign.scenarios.find(s => s.id === scenario)?.rules ?? [],
+      ],
+      (a, b) => a.title.localeCompare(b.title, lang)
+    );
   }
 
   campaignMap(): CampaignMap | undefined {
@@ -210,11 +233,11 @@ export default class CampaignGuide {
     return (scenarios || this.campaign.campaign.scenarios)[0];
   }
 
-
   processAllScenarios(
     campaignState: CampaignStateHelper,
     standaloneId: string | undefined,
-    previousCampaign: ProcessedCampaign | undefined
+    previousCampaign: ProcessedCampaign | undefined,
+    lang: string
   ): [ProcessedCampaign | undefined, string | undefined] {
     try {
       const scenarios: ProcessedScenario[] = [];
@@ -231,7 +254,8 @@ export default class CampaignGuide {
           campaignState,
           campaignLog,
           true,
-          previousCampaign
+          previousCampaign,
+          lang
         );
         forEach(nextScenarios, scenario => {
           scenarios.push(scenario);
@@ -244,7 +268,8 @@ export default class CampaignGuide {
           campaignState,
           campaignLog,
           false,
-          previousCampaign
+          previousCampaign,
+          lang
         );
         forEach(nextScenarios, scenario => {
           scenarios.push(scenario);
@@ -261,7 +286,8 @@ export default class CampaignGuide {
             campaignState,
             campaignLog,
             !!standaloneId,
-            previousCampaign
+            previousCampaign,
+            lang
           );
           forEach(nextScenarios, scenario => {
             scenarios.push(scenario);
@@ -417,7 +443,8 @@ export default class CampaignGuide {
     campaignState: CampaignStateHelper,
     campaignLog: GuidedCampaignLog,
     standalone: boolean | undefined,
-    previousCampaign: ProcessedCampaign | undefined
+    previousCampaign: ProcessedCampaign | undefined,
+    lang: string
   ): ProcessedScenario[] {
     const scenarioGuide = new ScenarioGuide(
       id.encodedScenarioId,
@@ -481,6 +508,13 @@ export default class CampaignGuide {
         closeOnUndo: campaignState.closeOnUndo(id.encodedScenarioId),
         steps: executedScenario.steps,
         inputs,
+        rules: stable(
+          [
+            ...campaignLog.campaignGuide.campaign.campaign.rules ?? [],
+            ...scenario.rules ?? [],
+          ],
+          (a, b) => a.title.localeCompare(b.title, lang),
+        ),
       };
     }
     if (!firstResult) {
@@ -506,6 +540,7 @@ export default class CampaignGuide {
         latestCampaignLog,
         standalone,
         previousCampaign,
+        lang,
       ),
     ];
   }

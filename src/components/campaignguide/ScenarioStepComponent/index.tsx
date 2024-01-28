@@ -39,6 +39,7 @@ interface Props {
   width: number;
   border?: boolean;
   color?: BorderColor;
+  noTitle?: boolean;
   switchCampaignScenario: () => void;
 }
 
@@ -178,6 +179,7 @@ export default function ScenarioStepComponent({
   width,
   border,
   color,
+  noTitle,
   switchCampaignScenario,
 }: Props) {
   const { campaignInvestigators } = useContext(CampaignGuideContext);
@@ -200,7 +202,7 @@ export default function ScenarioStepComponent({
   }, [componentId]);
   return (
     <ScenarioStepContext.Provider value={context}>
-      { !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
+      { !noTitle && !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
         <TitleComponent
           title={step.step.title}
           simpleTitleFont={step.step.type === 'story' && step.step.title_font === 'status'}

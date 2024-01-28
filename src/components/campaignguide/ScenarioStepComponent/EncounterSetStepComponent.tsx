@@ -41,17 +41,17 @@ export default function EncounterSetStepComponent({ componentId, color, campaign
   const { colors } = useContext(StyleContext);
   const { lang, listSeperator } = useContext(LanguageContext);
 
+  const errata = useMemo(() => campaignGuide.cardErrata(step.encounter_sets), [campaignGuide, step.encounter_sets]);
   const _viewEncounterErrata = useCallback(() => {
     Navigation.push<EncounterCardErrataProps>(componentId, {
       component: {
         name: 'Guide.CardErrata',
         passProps: {
-          encounterSets: step.encounter_sets,
-          campaignId,
+          errata,
         },
       },
     });
-  }, [step, campaignId, componentId]);
+  }, [errata, componentId]);
 
   const rawEncounterSets = useMemo(() => map(
     step.encounter_sets,
@@ -80,7 +80,6 @@ export default function EncounterSetStepComponent({ componentId, color, campaign
   ngettext(msgid`${startText} This set is indicated by the following icon:`,
     `${startText} These sets are indicated by the following icons:`,
     encounterSets.length);
-  const errata = useMemo(() => campaignGuide.cardErrata(step.encounter_sets), [campaignGuide, step.encounter_sets]);
   return (
     <>
       <SetupStepWrapper bulletType={step.bullet_type} color={color}>
@@ -109,7 +108,7 @@ export default function EncounterSetStepComponent({ componentId, color, campaign
         ) }
       </SetupStepWrapper>
       { !!errata.length && !step.remove && (
-        <ArkhamButton icon="faq" title={t`Encounter Card Errata`} onPress={_viewEncounterErrata} />
+        <ArkhamButton icon="book" title={t`Encounter Card Errata`} onPress={_viewEncounterErrata} />
       ) }
     </>
   );

@@ -242,6 +242,7 @@ export interface Campaign {
   }[];
   campaign_log: CampaignLogSectionDefinition[];
   scenarios: string[];
+  rules?: CampaignRule[];
   hidden_scenarios?: string[];
   scenario_setup?: string[];
   side_scenario_steps?: Step[];
@@ -362,6 +363,10 @@ export interface CalendarEntry {
 export interface ScarletKey {
   id: string;
   name: string;
+}
+export interface CampaignRule {
+  title: string;
+  steps: string[];
 }
 export interface BranchStep {
   id: string;
@@ -1508,6 +1513,7 @@ export interface Scenario {
   header: string;
   icon?: string;
   xp_cost?: number;
+  rules?: CampaignRule[];
   side_scenario_type?: "challenge" | "standalone" | "side_story";
   challenge?: ChallengeData;
   custom?: CustomData;
@@ -1573,7 +1579,8 @@ export interface InvestigatorChoice {
 }
 export interface Errata {
   cards: ScenarioCardErrata[];
-  faq: FaqEntry[];
+  faq: ScenarioFaqEntry[];
+  campaign_faq?: CampaignFaqEntry[];
 }
 export interface ScenarioCardErrata {
   encounter_code: string;
@@ -1583,13 +1590,17 @@ export interface CardErrata {
   code: string[];
   text: string;
 }
-export interface FaqEntry {
+export interface ScenarioFaqEntry {
   scenario_code: string;
   questions: Question[];
 }
 export interface Question {
   question: string;
   answer: string;
+}
+export interface CampaignFaqEntry {
+  cycles: string[];
+  questions: Question[];
 }
 export interface Rules {
   rules: Rule[];

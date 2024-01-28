@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { InteractionManager, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { InteractionManager, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
 import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
@@ -32,6 +32,11 @@ import { useLatestDecksCards } from '@components/core/hooks';
 import { getTarotReadingLabel, TarotCardReadingProps, TarotReadingType, useTarotCardReadingPicker } from '@components/campaign/TarotCardReadingView';
 import { CampaignMapProps } from './CampaignMapView';
 import COLORS from '@styles/colors';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { CampaignRulesProps } from './CampaignRulesView';
+import { CAMPAIGN_SETUP_ID } from '@data/scenario/CampaignGuide';
+import CampaignHeader from './CampaignHeader';
+import { showRules } from './nav';
 
 const SHOW_WEAKNESS = true;
 
@@ -52,8 +57,9 @@ export default function CampaignDetailTab({
   componentId, processedCampaign, displayLinkScenarioCount, footerButtons, updateCampaignActions,
   showLinkedScenario, showAlert, showCountDialog, login,
 }: Props) {
-  const { backgroundStyle, width } = useContext(StyleContext);
+  const { backgroundStyle, typography, width } = useContext(StyleContext);
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
+  const { lang } = useContext(LanguageContext);
   const reLogin = useCallback(() => login(), [login]);
   const arkhamDbError = useArkhamDbError();
   const { campaignId, campaign, campaignGuide, campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
@@ -242,6 +248,23 @@ export default function CampaignDetailTab({
     value: undefined,
     onValueChange: onTarotPress,
   })
+  const rules = useMemo(() => processedCampaign.campaignLog.campaignGuide.campaignRules(lang), [lang]);
+  const errata = useMemo(() => campaignGuide.campaignFaq(), [campaignGuide]);
+  const [rulesHeader, rulesDescription] = useMemo(() => {
+    if (rules.length && errata.length) {
+      return [t`Campaign Rules & FAQ`, t`Review campaign specific info`];
+    }
+    if (rules.length) {
+      return [t`Campaign Rules`, t`Review campaign specific rules`];
+    }
+    if (errata.length) {
+      return [t`Campaign FAQ`, t`Review campaign specific clarifications`];
+    }
+    return [undefined, undefined];
+  }, [rules]);
+  const showRulesPressed = useCallback(() => {
+    showRules(componentId, campaignId, { rules, campaignErrata: errata });
+  }, [componentId, rules, errata, rulesHeader, campaignId]);
 
   const latestDecksList = campaign.latestDecks();
   const [cards] = useLatestDecksCards(latestDecksList, latestDecksList.length ? (latestDecksList[0].deck.taboo_id || 0) : 0);
@@ -311,7 +334,18 @@ export default function CampaignDetailTab({
             savingDeckUpgrade={saving}
           />
         </View>
-        <View style={[space.paddingSideS, space.paddingBottomS]}>
+        <CampaignHeader title={t`Information`} style={space.paddingTopM} />
+        <View style={space.paddingSideS}>
+          { !!rulesHeader && (
+            <DeckButton
+              icon="book"
+              title={rulesHeader}
+              detail={rulesDescription}
+              color="light_gray"
+              onPress={showRulesPressed}
+              bottomMargin={s}
+            />
+          ) }
           { SHOW_WEAKNESS && (
             <DeckButton
               icon="weakness"

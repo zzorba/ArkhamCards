@@ -9,6 +9,7 @@ interface Props {
   componentId: string;
   width: number;
   switchCampaignScenario: () => void;
+  noTitle?: boolean;
 }
 
 export default function StepsComponent({
@@ -16,6 +17,7 @@ export default function StepsComponent({
   componentId,
   width,
   switchCampaignScenario,
+  noTitle,
 }: Props) {
   return (
     <>
@@ -26,6 +28,7 @@ export default function StepsComponent({
           width={width}
           step={step}
           switchCampaignScenario={switchCampaignScenario}
+          noTitle={noTitle}
         />
       )) }
     </>

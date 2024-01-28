@@ -28,6 +28,7 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import { useLinkedCampaignId } from '@components/campaign/hooks';
 import useProcessedCampaign from '../useProcessedCampaign';
 import { useAppDispatch } from '@app/store';
+import CampaignHeader from '../CampaignHeader';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
@@ -100,11 +101,7 @@ function LinkedCampaignGuideView(props: Props) {
   const footerButtons = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
-        <View style={[space.paddingBottomS, space.paddingTopS]}>
-          <Text style={[typography.large, typography.center, typography.light]}>
-            { `— ${t`Settings`} —` }
-          </Text>
-        </View>
+        <CampaignHeader style={space.paddingTopS} title={t`Settings`} />
         <UploadCampaignButton
           componentId={componentId}
           campaignId={campaignId}

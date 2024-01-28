@@ -23,6 +23,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import { useArkhamDbError } from '@data/hooks';
 import { useAppDispatch } from '@app/store';
+import CampaignHeader from './CampaignHeader';
 
 interface Props {
   componentId: string;
@@ -315,11 +316,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
   ), [campaignGuide]);
   return (
     <>
-      <View style={[space.paddingBottomS, space.paddingTopS]}>
-        <Text style={[typography.large, typography.center, typography.light]}>
-          { investigatorCount ? `— ${t`Investigators`} · ${investigatorCount} —` : `— ${t`Investigators`} —` }
-        </Text>
-      </View>
+      <CampaignHeader title={investigatorCount ? `${t`Investigators`} · ${investigatorCount}` : t`Investigators`} style={space.paddingTopS} />
       { loading || campaignInvestigators === undefined ? (
         <LoadingCardSearchResult noBorder />
       ) : (
@@ -350,11 +347,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
             bottomMargin={s}
           />
           { killedInvestigators.length > 0 && (
-            <View style={styles.header}>
-              <Text style={[typography.large, typography.center, typography.light]}>
-                { `— ${t`Killed and Insane Investigators`} · ${killedInvestigators.length} —` }
-              </Text>
-            </View>
+            <CampaignHeader style={styles.header} title={`${t`Killed and Insane Investigators`} · ${killedInvestigators.length}`} />
           ) }
           { map(killedInvestigators, investigator => {
             const traumaAndCardData = processedCampaign.campaignLog.traumaAndCardData(investigator.code);

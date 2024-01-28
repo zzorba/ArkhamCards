@@ -4923,15 +4923,12 @@ msgstr "Nie można wygenerować talii"
 msgid "Suggested starter deck for this investigator from FFG."
 msgstr "Sugerowana talia startowa dla tego badacza od FFG"
 
-#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "An empty deck."
 msgstr "Pusta talia."
 
-#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
 msgstr "Wybacz, aplikacja nie może jeszcze wygenerować losowej talii dla tego badacza."
 
-#. investigatorId === LOLA_CODE || investigatorId === JOE_DIAMOND_CODE || investigatorId === SUZI_CODE;
 msgid "A fully randomized deck."
 msgstr "W pełni losowa talia."
 
@@ -5978,6 +5975,74 @@ msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.
 msgstr ""
 
 msgid "Aether"
+msgstr ""
+
+msgid "Campaign Rules & FAQ"
+msgstr ""
+
+msgid "Review campaign specific info"
+msgstr ""
+
+msgid "Campaign Rules"
+msgstr ""
+
+msgid "Review campaign specific rules"
+msgstr ""
+
+msgid "Campaign FAQ"
+msgstr ""
+
+msgid "Review campaign specific clarifications"
+msgstr ""
+
+#, javascript-format
+msgid "Q: ${ errata.question }"
+msgstr ""
+
+#, javascript-format
+msgid "A: ${ errata.answer }"
+msgstr ""
+
+msgid "Show FAQ"
+msgstr ""
+
+msgid "May contain light spoilers"
+msgstr ""
+
+msgid "Note: To avoid spoilers, scenario specific questions and clarifications can be found within each scenario guide."
+msgstr ""
+
+msgid "Rules & FAQ"
+msgstr ""
+
+msgid "Day / Time"
+msgstr ""
+
+msgid "Areas Surveyed"
+msgstr ""
+
+msgid "Mother Rachel"
+msgstr ""
+
+msgid "Leah Atwood"
+msgstr ""
+
+msgid "Simeon Atwood"
+msgstr ""
+
+msgid "William Hemlock"
+msgstr ""
+
+msgid "River Hawthorne"
+msgstr ""
+
+msgid "Gideon Mizrah"
+msgstr ""
+
+msgid "Judith Park"
+msgstr ""
+
+msgid "Theo Peters"
 msgstr ""
 
 msgctxt "investigator"
