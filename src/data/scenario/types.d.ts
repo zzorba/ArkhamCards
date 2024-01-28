@@ -556,6 +556,7 @@ export interface CampaignLogCountEffect {
   operation: "set_input" | "set" | "add_input" | "add" | "subtract_input";
   value?: number;
   text?: string;
+  hidden?: boolean;
 }
 export interface CampaignLogInvestigatorCountEffect {
   type: "campaign_log_investigator_count";

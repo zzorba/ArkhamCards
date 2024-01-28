@@ -437,20 +437,22 @@ export function binaryCardConditionResult(
 ): BinaryResult {
   // Card conditions still care about killed investigators.
   const investigators = campaignLog.investigatorCodes(true);
+  const investigatorsWithCard = filter(investigators, code => {
+    switch (condition.investigator) {
+      case 'defeated':
+        if (!campaignLog.isDefeated(code)) {
+          return false;
+        }
+        break;
+      case 'any':
+        break;
+    }
+    return campaignLog.hasCard(code, condition.card);
+  })
   return binaryConditionResult(
-    !!find(investigators, code => {
-      switch (condition.investigator) {
-        case 'defeated':
-          if (!campaignLog.isDefeated(code)) {
-            return false;
-          }
-          break;
-        case 'any':
-          break;
-      }
-      return campaignLog.hasCard(code, condition.card);
-    }),
-    condition.options
+    !!investigatorsWithCard.length,
+    condition.options,
+    investigatorsWithCard
   );
 }
 

@@ -1555,20 +1555,20 @@ export default class GuidedCampaignLog {
       entries: [],
     };
     if (!effect.id) {
-      if (effect.cross_out) {
-        section.sectionCrossedOut = true;
+      if (effect.cross_out !== undefined) {
+        section.sectionCrossedOut = effect.cross_out;
       }
     } else {
       const ids = (effect.id === '$input_value') ? input : [effect.id];
       forEach(ids, id => {
-        if (effect.cross_out) {
+        if (effect.cross_out !== undefined) {
           section.entries = map(
             section.entries,
             entry => {
               if (entry.id === id) {
                 return {
                   ...entry,
-                  crossedOut: true,
+                  crossedOut: effect.cross_out,
                 };
               }
               return entry;
@@ -1742,8 +1742,8 @@ export default class GuidedCampaignLog {
       };
       if (!ids) {
         // Section entry, probably just a cross out.
-        if (effect.cross_out) {
-          section.sectionCrossedOut = true;
+        if (effect.cross_out !== undefined) {
+          section.sectionCrossedOut = effect.cross_out;
         }
       } else {
         forEach(ids, id => {
@@ -1821,7 +1821,7 @@ export default class GuidedCampaignLog {
           }
 
           // Normal entry
-          if (effect.cross_out) {
+          if (effect.cross_out !== undefined) {
             if (cards.length) {
               // Try to cross out 'some' of these card entries that match our codes.
               const removals = new Set(map(cards, card => card.card));
@@ -1829,7 +1829,7 @@ export default class GuidedCampaignLog {
                 if (entry.id === id && entry.type === 'card' && find(entry.cards, card => removals.has(card.card))) {
                   return {
                     ...entry,
-                    crossedOut: true,
+                    crossedOut: effect.cross_out,
                   };
                 }
                 return entry;
