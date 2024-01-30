@@ -324,10 +324,6 @@
     "name": "밑바닥 친구들"
   },
   {
-    "id": "gob",
-    "name": "심연의 수호자"
-  },
-  {
     "id": "going_twice",
     "name": "입찰 선언"
   },
@@ -522,10 +518,6 @@
   {
     "id": "private_lives",
     "name": "사생활"
-  },
-  {
-    "id": "ptc",
-    "name": "카르코사로 가는 길"
   },
   {
     "id": "ptc_epilogue",
@@ -772,10 +764,6 @@
     "name": "Romulus and Remus"
   },
   {
-    "id": "rttic",
-    "name": "(비공식) 돌아온 인스머스에 드리운 음모"
-  },
-  {
     "id": "san_francisco",
     "name": "Quid Pro Quo"
   },
@@ -816,10 +804,6 @@
     "name": "Ringing Hollow"
   },
   {
-    "id": "tcu",
-    "name": "끝맺지 못한 의식"
-  },
-  {
     "id": "tcu_epilogue",
     "name": "후일담"
   },
@@ -832,24 +816,12 @@
     "name": "서막"
   },
   {
-    "id": "tdea",
-    "name": "몽환의 추적"
-  },
-  {
-    "id": "tdeb",
-    "name": "꿈의 거미줄"
-  },
-  {
     "id": "tempest_in_a_teapot",
     "name": "찻잔 속 폭풍"
   },
   {
     "id": "tentacles",
     "name": "지하 세계의 포식자"
-  },
-  {
-    "id": "tfa",
-    "name": "잊힌 시대"
   },
   {
     "id": "tfa_epilogue",
@@ -1076,10 +1048,6 @@
     "name": "운명의 실가닥"
   },
   {
-    "id": "tic",
-    "name": "인스머스에 드리운 음모"
-  },
-  {
     "id": "tic_epilogue",
     "name": "후일담"
   },
@@ -1174,18 +1142,6 @@
   {
     "id": "ybor_city",
     "name": "The Safehouse"
-  },
-  {
-    "id": "zce",
-    "name": "The Crown of Egil"
-  },
-  {
-    "id": "zcf",
-    "name": "거석의 근간"
-  },
-  {
-    "id": "zdm",
-    "name": "암흑 물질"
   },
   {
     "id": "zhod_epilogue",
