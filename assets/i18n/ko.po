@@ -5879,45 +5879,45 @@ msgid "Aether"
 msgstr "에테르"
 
 msgid "Campaign Rules & FAQ"
-msgstr ""
+msgstr "캠페인 규칙과 자주 묻는 질문"
 
 msgid "Review campaign specific info"
-msgstr ""
+msgstr "캠페인 세부 정보 보기"
 
 msgid "Campaign Rules"
-msgstr ""
+msgstr "캠페인 규칙"
 
 msgid "Review campaign specific rules"
-msgstr ""
+msgstr "캠페인 세부 규칙"
 
 msgid "Campaign FAQ"
-msgstr ""
+msgstr "캠페인에서 자주 묻는 질문"
 
 msgid "Review campaign specific clarifications"
-msgstr ""
+msgstr "캠페인 세부 설명 보기"
 
 #, javascript-format
 msgid "Q: ${ errata.question }"
-msgstr ""
+msgstr "질문: ${ errata.question }"
 
 #, javascript-format
 msgid "A: ${ errata.answer }"
-msgstr ""
+msgstr "답변: ${ errata.answer }"
 
 msgid "Show FAQ"
-msgstr ""
+msgstr "자주 묻는 질문 보기"
 
 msgid "May contain light spoilers"
-msgstr ""
+msgstr "약간의 스포일러를 포함할 수 있음"
 
 msgid "Note: To avoid spoilers, scenario specific questions and clarifications can be found within each scenario guide."
-msgstr ""
+msgstr "참고: 스포일러를 피하기 위해 시나리오별 질문과 설명은 각 시나리오 가이드에서도 확인할 수 있습니다."
 
 msgid "Rules & FAQ"
-msgstr ""
+msgstr "규칙과 자주 묻는 질문"
 
 msgid "Day / Time"
-msgstr ""
+msgstr "일자 / 시간"
 
 msgid "Areas Surveyed"
 msgstr ""
@@ -7612,7 +7612,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Double"
-msgstr ""
+msgstr "이중"
 
 msgctxt "trait"
 msgid "AI"
@@ -7672,7 +7672,7 @@ msgstr "사건"
 
 msgctxt "trait"
 msgid "Castle"
-msgstr ""
+msgstr "성"
 
 msgctxt "trait"
 msgid "Chair"
@@ -7736,7 +7736,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Haunted"
-msgstr ""
+msgstr "신들린"
 
 msgctxt "trait"
 msgid "Havana"
