@@ -18,13 +18,9 @@ import { useFlag } from '@components/core/hooks';
 import ScenarioGuideContext from './ScenarioGuideContext';
 import StepsComponent from './StepsComponent';
 import CampaignHeader from './CampaignHeader';
-import ArkhamButton from '@components/core/ArkhamButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
 import { CAMPAIGN_SETUP_ID } from '@data/scenario/CampaignGuide';
-import ArkhamIcon from '@icons/ArkhamIcon';
-
-
 export interface CampaignRulesProps {
   campaignId: CampaignId;
   rules: CampaignRule[];
@@ -36,8 +32,6 @@ export interface CampaignRulesProps {
 }
 
 type Props = CampaignRulesProps & NavigationProps;
-
-
 
 function RuleComponent({ rule, componentId }: { rule: CampaignRule; componentId: string }) {
   const [expanded, toggleExpanded] = useFlag(false);

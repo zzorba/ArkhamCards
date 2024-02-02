@@ -7755,7 +7755,7 @@
         "counter": {
           "prompt": "경매 덱에 있는 카드 숫자",
           "min": 0,
-          "adjustment": 4,
+          "adjustment": -4,
           "scale": -1
         }
       },
@@ -7790,7 +7790,7 @@
         "counter": {
           "prompt": "경매 덱에 있는 카드 숫자",
           "min": 0,
-          "adjustment": 5,
+          "adjustment": -5,
           "scale": -1
         }
       },
