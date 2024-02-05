@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2022-11-30 09:40-0500\n"
+"PO-Revision-Date: 2024-02-04 22:33-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -13,7 +13,7 @@ msgstr ""
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
 "x-poedit-basepath: .\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -331,10 +331,10 @@ msgid "Draw Another"
 msgstr "Comprar Outro"
 
 msgid "Traits"
-msgstr "Traits"
+msgstr "Propriedades"
 
 msgid "Multiplayer"
-msgstr "Multiplayer"
+msgstr "Multijogador"
 
 msgid "Standalone"
 msgstr "Independente"
@@ -344,9 +344,9 @@ msgid ""
 "\n"
 "Please adjust the trait filter."
 msgstr ""
-"Não existem fraquezas que correspondem a estes filtros de trait deixados no conjunto.\n"
+"Não existem fraquezas que correspondem a estes filtros de Propriedades deixados no conjunto.\n"
 "\n"
-"Por favor, ajuste o filtro de trait."
+"Por favor, ajuste o filtro de Propriedades."
 
 msgid "All weaknesses have been drawn."
 msgstr "Todas as fraquezas foram compradas."
@@ -361,7 +361,7 @@ msgid "Unexpected file type"
 msgstr "Tipo de arquivo não esperado"
 
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
-msgstr "Este app esperar um arquivo de backup do Arkham Cards (.acb/.json)"
+msgstr "Este app espera um arquivo de backup do Arkham Cards (.acb/.json)"
 
 msgid "Try again"
 msgstr "Tentar novamente"
@@ -374,21 +374,21 @@ msgid ""
 "\n"
 "After a backup is selected, you will be able to choose which data to import."
 msgstr ""
-"Este recurso deixará você restaurar dados de um dispositivo perdido. Se você já entrou no ArkahamDB, por favor, autorize novamente antes de importar os dados de campanha.\n"
+"Este recurso permitirá restaurar dados de um dispositivo perdido. Se você estava conectado ao ArkhamDB, autorize novamente antes de importar os dados da campanha.\n"
 "\n"
-"Depois do backup ser selecionado, você estará apto a escolher qual data importar."
+"Depois que um backup for selecionado, você poderá escolher quais dados importar."
 
 msgid "Import data"
-msgstr "Importar dado"
+msgstr "Importar dados"
 
 msgid "Backup campaign data?"
 msgstr "Fazer Backup dos dados da campanha?"
 
 msgid "This will let you backup your local decks and campaigns for safe-keeping. This can also be used to move them to another device."
-msgstr "Isso deixará você fazer backup de seus baralhos locais e campanhas protegidos. Isso também pode ser usado para mové-los para outro dispositivo."
+msgstr "Isso permitirá que você faça backup de seus baralhos e campanhas locais para mantê-los em segurança. Também pode ser usado para movê-los para outro dispositivo."
 
 msgid "Export Campaign Data"
-msgstr "Exportar Dados da Campanha"
+msgstr "Exportar Dados de Campanha"
 
 msgid "Save backup"
 msgstr "Salvar Cópia de Segurança"
@@ -397,7 +397,7 @@ msgid "Backup"
 msgstr "Backup"
 
 msgid "Backup Campaign Data"
-msgstr "Cópia de Segurança dos Dados de Campanha"
+msgstr "Backup dos Dados de Campanha"
 
 msgid "Restore Campaign Data"
 msgstr "Recuperar Dados de Campanha"
@@ -406,10 +406,10 @@ msgid "Missing system permission"
 msgstr "Faltando permissões do sistema"
 
 msgid "It looks like you previously denied allowing Arkham Cards to read/write external files. Please visit your System settings to adjust this permission, and try again."
-msgstr "Parece que você previamente negou Arkham Cards de ler/escrever arquivos externos. Por favor, vá nas configurações do seu Sistema e ajuste esta permissão e tente novamente."
+msgstr "Parece que você negou anteriormente negou o Arkham Cards para ler/escrever arquivos externos. Vá às configurações do sistema para ajustar essa permissão e tente novamente."
 
 msgid "Cannot request access"
-msgstr "Não pode requisitar acesso"
+msgstr "Não é possível solicitar acesso"
 
 msgid "Loading"
 msgstr "Carregando"
@@ -424,13 +424,13 @@ msgid "Export diagnostic data"
 msgstr "Exportar dados de diagnóstico"
 
 msgid "This feature is intended for advanced diagnostics. Just copy the data presented here and email it to arkhamcards@gmail.com"
-msgstr "Esta característica é para diagnósticos avançados. Apenas copie os dados presentes aqui e email para arkhamcards@gmail.com"
+msgstr "Este recurso destina-se a diagnósticos avançados. Basta copiar os dados aqui apresentados e enviar por e-mail para arkhamcards@gmail.com"
 
 msgid "Export Diagnostic Data"
 msgstr "Exportar Dados de Diagnóstico"
 
 msgid "Return to..."
-msgstr "Retorno a…"
+msgstr "Voltar para…"
 
 msgid "Investigator Starter Decks"
 msgstr "Baralhos Iniciais de Investigador"
@@ -466,7 +466,7 @@ msgid "Font Size"
 msgstr "Tamanho da Fonte"
 
 msgid "This can be used to make the app font size larger, though it may impact layout on some screens."
-msgstr "Isso pode ser usado para deixar a fonte do app maior, isso pode impactar o layout em algumas telas."
+msgstr "Isso pode ser usado para aumentar o tamanho da fonte no app, embora possa afetar o layout em algumas telas."
 
 #, javascript-format
 msgid "${ handle }'s Friends"
@@ -493,13 +493,13 @@ msgstr "Resultados da Pesquisa"
 
 #, javascript-format
 msgid "No results found for search '${ searchResults.term }'."
-msgstr "Nenhum resultado encontrado para a pesquisa ‘${ searchResults.term }’."
+msgstr "Nenhum resultado encontrado para ‘${ searchResults.term }’."
 
 msgid "Clear search"
 msgstr "Limpar pesquisa"
 
 msgid "Search friends"
-msgstr "Pesquisar amigos"
+msgstr "Procurar amigos"
 
 #, javascript-format
 msgid "Default (${ systemLanguage })"
@@ -509,7 +509,7 @@ msgid "Confirm"
 msgstr "Confirmar"
 
 msgid "Changing app language requires downloading the translated card information from ArkhamDB. This requires network and can take some time."
-msgstr "Alterar o idioma do app requer o download de informações de cartas traduzidas do ArkhamDB. Isso requer rede e pode demorar."
+msgstr "A alteração do idioma do aplicativo requer o download das informações das cartas traduzidas do ArkhamDB. É necessário acesso a rede e pode levar algum tempo."
 
 msgid "Download now"
 msgstr "Baixar agora"
@@ -527,10 +527,10 @@ msgid "Safe mode"
 msgstr "Modo seguro"
 
 msgid "The app drew an Auto-Fail"
-msgstr "O app comprou uma Falha Crítica"
+msgstr "O app encontrou uma Falha Crítica"
 
 msgid "Sorry about that. If the app is crashing on launch, you can enter 'Safe mode' to backup your data."
-msgstr "Desculpe por isso. Se o app travar na inicialização, você pode entrar no ‘Modo Seguro’ para fazer backup do seus dados."
+msgstr "Desculpe por isso. Se o aplicativo travar na inicialização, você pode entrar no 'Modo de segurança' para fazer backup de seus dados."
 
 msgid "Start normally"
 msgstr "Iniciar normalmente"
@@ -539,7 +539,7 @@ msgid "Done"
 msgstr "Feito"
 
 msgid "Backup Data"
-msgstr "Cópia de Segurança"
+msgstr "Backup dos Dados"
 
 msgid "Cache cleared"
 msgstr "Cache apagado"
@@ -590,7 +590,7 @@ msgid "Contact us"
 msgstr "Contate-nos"
 
 msgid "Mark the scenarios you've played through to make the results start showing up in search results."
-msgstr "Marque os cenários pelos quais você jogou para que os resultados comecem a aparecer nos resultados da pesquisa."
+msgstr "Marque os cenários pelos quais você passou para que os resultados comecem a aparecer nos resultados da pesquisa."
 
 msgid "Dark"
 msgstr "Escuro"
@@ -615,10 +615,10 @@ msgid "Import"
 msgstr "Importar"
 
 msgid "Missing decks"
-msgstr "Baralhos faltantes"
+msgstr "Baralhos ausentes"
 
 msgid "It seems like you have chosen to import a campaign without importing one or more non-ArkhamDB decks. The campaign can still be imported, however the deck information will be removed."
-msgstr "Parece que você escolheu importar uma campanha sem importar um ou mais baralhos que não são do ArkhamDB. A campanha ainda pode ser importada, entretanto, a informação do baralho será removida."
+msgstr "Parece que você optou por importar uma campanha sem importar um ou mais baralhos que não sejam do ArkhamDB. A campanha ainda poderá ser importada, porém as informações do baralho serão removidas.."
 
 msgid "Import anyway"
 msgstr "Importar mesmo assim"
@@ -636,13 +636,13 @@ msgid "No changes:"
 msgstr "Sem alterações:"
 
 msgid "Local version appears to be newer:"
-msgstr "A versão local parece ser mais nova:"
+msgstr "A versão local parece ser mais recente:"
 
 msgid "Decks"
 msgstr "Baralhos"
 
 msgid "Import selected data"
-msgstr "Importar dado selecionado"
+msgstr "Importar dados selecionados"
 
 msgid "Select items to import"
 msgstr "Escolher itens para importar"
@@ -651,7 +651,7 @@ msgid "Account Name"
 msgstr "Nome da Conta"
 
 msgid "Choose a handle for your account"
-msgstr "Escolha um handle para sua conta"
+msgstr "Escolha um identificador para sua conta"
 
 msgid "Your Friends"
 msgstr "Seus Amigos"
@@ -661,7 +661,7 @@ msgid ""
 "But signing in will allow you to sync campaigns between devices, with more features planned for the future."
 msgstr ""
 "Este app funciona perfeitamente sem uma conta.\n"
-"Mas entrando permitirá que você sincronize campanhas entre dispositivos e mais recurso planejados para o futuro."
+"Mas o login permitirá sincronizar campanhas entre dispositivos, com mais recursos planejados para o futuro."
 
 #, javascript-format
 msgid "${ pendingFriendCount } pending request"
@@ -679,7 +679,7 @@ msgid "Account name"
 msgstr "Nome da conta"
 
 msgid "Choose a handle"
-msgstr "Escolha um handle"
+msgstr "Escolha um identificador"
 
 msgid "Arkham Cards Account"
 msgstr "Conta Arkham Cards"
@@ -688,19 +688,19 @@ msgid "ArkhamDB Account"
 msgstr "Conta do ArkhamDB"
 
 msgid "Looks like there is already an account registered with this email address."
-msgstr "Parece que já existe uma conta registrada com este endereço de email."
+msgstr "Parece que já existe uma conta registrada com este endereço de e-mail."
 
 msgid "That doesn't look like a valid email address"
-msgstr "Não parece ser um endereço de email válido"
+msgstr "Este não parece ser um endereço de e-mail válido"
 
 msgid "That password seems to be too weak."
-msgstr "Esta senha parece ser muito fraca."
+msgstr "Essa senha parece ser muito fraca."
 
 msgid "Your account has been disabled."
-msgstr "Sua conta foi desabilitada."
+msgstr "Sua conta foi desativada."
 
 msgid "There doesn't appear to be an account with that email address."
-msgstr "Não parece haver uma conta com este endereço de email."
+msgstr "Não parece haver uma conta com esse endereço de e-mail."
 
 msgid "Invalid password."
 msgstr "Senha inválida."
@@ -709,16 +709,16 @@ msgid "Unknown error"
 msgstr "Erro desconhecido"
 
 msgid "Email address"
-msgstr "Endereço de email"
+msgstr "Endereço de e-mail"
 
 msgid "Password"
 msgstr "Senha"
 
 msgid "Would you like to create a new account instead?"
-msgstr "Você gostaria de criar uma nova conta ao invés disso?"
+msgstr "Você gostaria de criar uma nova conta?"
 
 msgid "Are you trying to sign in to an existing account?"
-msgstr "Você está tentando entrar em uma conta existente?"
+msgstr "Você está tentando fazer login em uma conta existente?"
 
 #, javascript-format
 msgid ""
@@ -726,12 +726,12 @@ msgid ""
 "\n"
 "Please follow the instructions and then return to the app to continue."
 msgstr ""
-"Um reset de senha foi enviado para ‘${ emailAddress }’.\n"
+"Um e-mail de redefinição de senha foi enviado para ‘${ emailAddress }’.\n"
 "\n"
-"Por favor, siga as instruções e retorne para o app para continuar."
+"Por favor, siga as instruções e retorne ao aplicativo para continuar."
 
 msgid "Would you like to reset your password via email?"
-msgstr "Você gostaria de reiniciar a sua senha via email?"
+msgstr "Gostaria de redefinir sua senha por e-mail?"
 
 msgid "Sign up"
 msgstr "Inscrever"
@@ -743,10 +743,10 @@ msgid "Uploading"
 msgstr "Enviando"
 
 msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr "Campanhas podem ser enviada para a sua conta do Arkham Cards."
+msgstr "As campanhas podem ser enviadas para sua conta Arkham Cards."
 
 msgid "Uploaded campaigns will be synced between devices."
-msgstr "Campanhas enviadas serão sincronizadas entre dispositivos."
+msgstr "As campanhas enviadas serão sincronizadas entre dispositivos."
 
 msgid "Upload campaigns"
 msgstr "Enviar campanhas"
@@ -755,7 +755,7 @@ msgid "Upload"
 msgstr "Enviar"
 
 msgid "Sign out of Arkham Cards?"
-msgstr "Deslogar de Arkham Cards?"
+msgstr "Sair do Arkham Cards?"
 
 msgid ""
 "Are you sure you want to sign out of Arkham Cards?\n"
@@ -764,84 +764,84 @@ msgid ""
 "\n"
 "Note: if you have made recent changes while offline, they may be lost."
 msgstr ""
-"Você tem certeza que quer sair do Arkham Cards?\n"
+"Tem certeza de que deseja sair do Arkham Cards?\n"
 "\n"
-"Quaisquer campanhas que você enviou ou compartilhou serão removidas deste dispositivo. Elas podem ser sincronizadas novamente se você logar novamente.\n"
+"Todas as campanhas que você enviou ou compartilhou com você serão removidas deste dispositivo. Eles poderão ser sincronizados novamente se você fizer login novamente.\n"
 "\n"
-"Nota: Se você fez alterações recentes enquanto estava offline, elas serão perdidas."
+"Observação: se você fez alterações recentes enquanto estava off-line, elas poderão ser perdidas."
 
 msgid "Sign out"
-msgstr "Desconectar"
+msgstr "Sair"
 
 msgid ""
 "Using an Arkham Cards account will allow you to backup and sync your campaign data between devices.\n"
 "More features are in the works."
 msgstr ""
-"Usando uma conta do Arkham Cards permitirá a você fazer backup e sincronizar seus dados de campanha entre dispositivos.\n"
-"Mais recursos em progresso."
+"Usar uma conta Arkham Cards permitirá que você faça backup e sincronize os dados de sua campanha entre dispositivos.\n"
+"Mais recursos estão em desenvolvimento."
 
 msgid "Sign in to your account"
-msgstr "Inscrever-se na sua conta"
+msgstr "Entrar em sua conta"
 
 msgid "Create a new account"
 msgstr "Criar uma nova conta"
 
 msgid "Sign up with email"
-msgstr "Inscrever-se com email"
+msgstr "Inscrever-se com e-mail"
 
 msgid "Sign in with email"
-msgstr "Entrar com email"
+msgstr "Entrar com e-mail"
 
 msgid "Sign in to app"
 msgstr "Entrar no app"
 
 msgid "Are you sure you want to sign out?"
-msgstr "Você tem certeza que quer desconectar?"
+msgstr "Você tem certeza que quer sair?"
 
 msgid ""
 "Data on ArkhamDB will be preserved, but all Campaign data and any edits made without internet might be lost.\n"
 "\n"
 "If you are having trouble with your account you can also reconnect."
 msgstr ""
-"Dados no ArkhamDB serão preservados mas todos os dados de Campanhas e qualquer edição feita sem internet poderá ser perdida.\n"
+"Os dados no ArkhamDB serão preservados, mas todos os dados da campanha e quaisquer edições feitas sem internet poderão ser perdidas.\n"
 "\n"
-"Se você tiver problemas com sua conta você também pode conectar novamente."
+"Se você estiver tendo problemas com sua conta, você também pode reconectar."
 
 msgid "Sign Out"
-msgstr "Desconectar"
+msgstr "Sair"
 
 msgid "Reconnect Account"
 msgstr "Reconectar Conta"
 
 msgid "Problem reading from ArkhamDB"
-msgstr "Problema lendo do ArkhamDB"
+msgstr "Problema ao ler ArkhamDB"
 
 msgid ""
 "If you are having trouble with your account you should try to reconnect.\n"
 "\n"
 "If the problem persists, you may sign out but campaigns will have ArkhamDB decks disconnected."
 msgstr ""
-"Se você estiver tendo problemas com sua conta, você deveria tentar conectar novamente.\n"
+"Se você estiver tendo problemas com sua conta, tente reconectar.\n"
 "\n"
-"Se o problema persistir, você pode sair mas as campanhas terão os baralhos do ArkhamDB desconectados."
+"Se o problema persistir, você pode sair, mas as campanhas terão os baralhos do ArkhamDB desconectados."
 
 msgid "Authorization issues"
-msgstr "Problemas com Autorização"
+msgstr "Problemas de autorização"
 
 msgid "Reconnect"
 msgstr "Reconectar"
 
 msgid "Logged in"
-msgstr "Logado"
+msgstr "Conectado"
 
 msgid "Synchronize decks"
 msgstr "Sincronizar baralhos"
 
 msgid "Log out"
-msgstr "Deslogar"
+msgstr "Sair"
 
 msgid "Log in"
-msgstr "Logar"
+msgstr "Entrar"
 
 msgid "ArkhamDB"
 msgstr "ArkhamDB"
@@ -850,7 +850,7 @@ msgid "Sign in to Dissonant Voices?"
 msgstr "Entrar em Dissonant Voices?"
 
 msgid "Dissonant Voices is an ongoing project by Mythos Busters to narrate the english scenario text for each Arkham Horror campaign."
-msgstr "Dissonant Voices é um projeto em andamento por Mythos Busters para narrar em inglês textos de cenário para cada campanha de Arkham Horror."
+msgstr "Dissonant Voices é um projeto em andamento da Mythos Busters para narrar o texto do cenário em inglês para cada campanha de Arkham Horror."
 
 msgid "Sign In"
 msgstr "Entrar"
@@ -859,7 +859,7 @@ msgid "Narration enabled"
 msgstr "Narração habilitada"
 
 msgid "Audio narration"
-msgstr "Narração em Áudio"
+msgstr "Narração de Áudio"
 
 msgid "Dissonant Voices"
 msgstr "Dissonant Voices"
@@ -2856,19 +2856,19 @@ msgstr "Enviar campanha"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Fraquezas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este baralho contém várias fraquezas básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este baralho contém uma fraqueza básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Você gostaria de removê-las do conjunto básico de fraquezas da campanha?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Você gostaria de removê-la do conjunto básico de fraquezas da campanha?"
 
@@ -4585,7 +4585,7 @@ msgid "Creating campaign..."
 msgstr "Criando campanha..."
 
 msgid "Creating standalone..."
-msgstr "Criando standalone"
+msgstr "Criando standalone..."
 
 msgid "Campaign will be synced between devices and can be shared with friends"
 msgstr "A campanha será sincronizada entre os dispositivos e poderá ser compartilhada com amigos"
@@ -6597,7 +6597,7 @@ msgstr "Asilo Arkham"
 
 msgctxt "trait"
 msgid "Armor"
-msgstr "armadura"
+msgstr "Armadura"
 
 msgctxt "trait"
 msgid "Artist"
@@ -6741,7 +6741,7 @@ msgstr "Conspirador"
 
 msgctxt "trait"
 msgid "Construct"
-msgstr "construir"
+msgstr "Construir"
 
 msgctxt "trait"
 msgid "Covenant"
