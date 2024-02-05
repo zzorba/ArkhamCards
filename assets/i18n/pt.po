@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2024-02-04 22:33-0300\n"
+"PO-Revision-Date: 2024-02-05 02:05-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -886,7 +886,7 @@ msgid "Fight"
 msgstr "Lutar"
 
 msgid "Health"
-msgstr "Health"
+msgstr "Saúde"
 
 msgid "Per Investigator"
 msgstr "Por Investigador"
@@ -910,10 +910,10 @@ msgid "Alert"
 msgstr "Alerta"
 
 msgid "Spawn"
-msgstr "Spawn"
+msgstr "Gerar"
 
 msgid "Aloof"
-msgstr "Aloof"
+msgstr "Arredio"
 
 msgid "Massive"
 msgstr "Massivo"
@@ -925,14 +925,15 @@ msgid "Non-Hunter"
 msgstr "Não-Caçador"
 
 msgid "Retaliate"
-msgstr "Retaliar"
+msgstr "retaliação"
 
 msgid "Parley"
-msgstr "Negociar"
+msgstr "Negociata"
 
 msgid "Prey"
 msgstr "Presa"
 
+#, fuzzy
 msgid "Swarm"
 msgstr "Enxame"
 
@@ -1029,25 +1030,26 @@ msgstr "Intelecto"
 msgid "Willpower"
 msgstr "Força de vontade"
 
+#, fuzzy
 msgid "Boost"
-msgstr "Boost"
+msgstr "Impulsionar"
 
 msgid "Assets: All"
-msgstr "Posses: Todas"
+msgstr "Ativo: Todas"
 
 #, javascript-format
 msgid "Assets: ${ searchParts }"
-msgstr "Posses: ${ searchParts }"
+msgstr "Ativo: ${ searchParts }"
 
 msgid "Fixed Clues"
 msgstr "Pistas Fixas"
 
 msgid "Locations: All"
-msgstr "Localidades: Todas"
+msgstr "Local: Todas"
 
 #, javascript-format
 msgid "Locations: ${ searchParts }"
-msgstr "Localidades: ${ searchParts }"
+msgstr "Local: ${ searchParts }"
 
 msgid "Level"
 msgstr "Nível"
@@ -1062,7 +1064,7 @@ msgid "Types"
 msgstr "Tipos"
 
 msgid "Asset"
-msgstr "Posse"
+msgstr "Ativo"
 
 msgid "Act"
 msgstr "Ato"
@@ -1074,10 +1076,10 @@ msgid "Enemy"
 msgstr "Inimigo"
 
 msgid "Treachery"
-msgstr "Treachery"
+msgstr "Traição"
 
 msgid "Location"
-msgstr "Localidade"
+msgstr "Local"
 
 msgid "SubTypes"
 msgstr "Subtipos"
@@ -1094,6 +1096,7 @@ msgstr "Rápido"
 msgid "Unique"
 msgstr "Único"
 
+#, fuzzy
 msgid "Seal"
 msgstr "Selo"
 
@@ -1103,15 +1106,18 @@ msgstr "Vitória"
 msgid "Vengeance"
 msgstr "Vingança"
 
+#, fuzzy
 msgid "Exile"
 msgstr "Exile"
 
 msgid "Permanent"
 msgstr "Permanente"
 
+#, fuzzy
 msgid "Myriad"
 msgstr "Miríade"
 
+#, fuzzy
 msgid "Bonded"
 msgstr "Ligado"
 
@@ -1125,17 +1131,17 @@ msgid "Filter"
 msgstr "Filtro"
 
 msgid "Skill Boosts"
-msgstr "Skill Boosts"
+msgstr "Bônus de Perícia"
 
 msgid "Skill Boosts: All"
-msgstr "Skill Boosts: Todas"
+msgstr "Bônus de Perícia: Todas"
 
 msgid "Asset Filters"
-msgstr "Filtros de Posses"
+msgstr "Filtro de Ativo"
 
 #, javascript-format
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
-msgstr "${ xp } de experiência disponível, ${ parsedDeck.changes.spentXp } gasta"
+msgstr "${ xp } experiência disponível, ${ parsedDeck.changes.spentXp } gasta"
 
 #, javascript-format
 msgid "${ xp } available experience"
@@ -1152,26 +1158,26 @@ msgstr[0] "${ scenarioCount } cenário finalizado"
 msgstr[1] "${ scenarioCount } cenários finalizados"
 
 msgid "Unable to update: you appear to be offline."
-msgstr "Incapaz de atualizar: parece que você está offline."
+msgstr "Não é possível atualizar: você parece estar off-line."
 
 msgid "We're having trouble updating your decks at this time. If the problem persists tap here to reauthorize."
-msgstr "Estamos tendo problemas atualizando seus baralhos agora. Se o problema persistir, clique aqui para reautorizar."
+msgstr "Estamos tendo problemas para atualizar seus baralhos no momento. Se o problema persistir, toque aqui para autorizar novamente."
 
 #, javascript-format
 msgid "An unexpected error occurred (${ error }). If restarting the app doesn't fix the problem, tap here to reauthorize."
-msgstr "Um erro inesperado ocorreu (${ error }). Se reiniciar o app não resolver o problema, clique aqui para reautorizar."
+msgstr "Ocorreu um erro inesperado (${ error }). Se reiniciar o aplicativo não resolver o problema, toque aqui para autorizar novamente."
 
 msgid "Connect to ArkhamDB"
-msgstr "Conectar com ArkhamDB"
+msgstr "Conectar ao ArkhamDB"
 
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share decks with others.\n"
 "\n"
 "Sign in to access your decks or share decks you have created with others."
 msgstr ""
-"ArkamDB é um site popular de construção de baralho onde você pode gerenciar e compartilhar baralhos com outras pessoas.\n"
+"ArkhamDB é um site popular de construção de baralhos onde você pode gerenciar e compartilhar baralhos com outras pessoas.\n"
 "\n"
-"Entre para acessar seus baralhos ou compartilhar baralhos que você criou com outras pessoas."
+"Faça login para acessar seus baralhos ou compartilhar baralhos que você criou com outras pessoas."
 
 msgid "Hide ArkhamDB decks"
 msgstr "Esconder Baralhos do ArkhamDB"
@@ -1184,13 +1190,13 @@ msgid ""
 "\n"
 "Use the + button to create a new one."
 msgstr ""
-"Nenhum baralho ainda.\n"
+"Ainda não há baralhos.\n"
 "\n"
 "Use o botão + para criar um novo."
 
 #, javascript-format
 msgid "No matching decks for \"${ searchTerm }\"."
-msgstr "Nenhum baralho encontrado para “${ searchTerm }”."
+msgstr "Não há baralhos correspondentes para \"${ searchTerm }\"."
 
 msgid "Search decks"
 msgstr "Procurar baralhos"
@@ -1200,11 +1206,11 @@ msgstr "Baralho Original"
 
 #, javascript-format
 msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
-msgstr "Último Baralho: ${ deck.changes.spentXp } de ${ deck.availableExperience } XP"
+msgstr "Deck mais recente: ${ deck.changes.spentXp } de ${ deck.availableExperience } XP"
 
 #, javascript-format
 msgid "Latest Deck: ${ deck.availableExperience } XP"
-msgstr "Último Baralho: ${ deck.availableExperience } XP"
+msgstr "Deck mais recente: ${ deck.availableExperience } XP"
 
 #, javascript-format
 msgid "Upgrade ${ humanVersionNumber }: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
@@ -1216,7 +1222,7 @@ msgstr "Atualização ${ humanVersionNumber }: ${ deck.availableExperience } XP"
 
 #, javascript-format
 msgid "${ spentXP } of ${ _adjustedXp } XP spent"
-msgstr "${ spentXP } of ${ _adjustedXp } XP gasto"
+msgstr "${ spentXP } de ${ _adjustedXp } XP gasto"
 
 msgid "Upgrading"
 msgstr "Atualizando"
@@ -1230,11 +1236,12 @@ msgstr "Salvando…"
 msgid "Experience points"
 msgstr "Pontos de experiência"
 
+#, fuzzy
 msgid "Exiled cards"
 msgstr "Cartas banidas"
 
 msgid "Upgrading your deck allows changes and experience to be tracked over the course of a campaign."
-msgstr "Atualizando seu baralho permite alterações experiência ser mapeada ao longo de uma campanha."
+msgstr "Atualizar seu baralho permite que as mudanças e a experiência sejam rastreadas ao longo de uma campanha."
 
 msgid "Save upgrade"
 msgstr "Salvar Atualização"
@@ -1270,11 +1277,11 @@ msgid ""
 "\n"
 "Otherwise, you can draw random weaknesses from your entire collection."
 msgstr ""
-"Este baralho não parece fazer parte de uma campanha ainda.\n"
+"Este baralho parece não fazer parte de uma campanha ainda.\n"
 "\n"
-"Se você adicionar este baralho a uma campanha, o app pode mapear todas as fraquezas disponíveis entre vários baralhos.\n"
+"Se você adicionar este baralho a uma campanha, o aplicativo poderá monitorar os pontos fracos disponíveis entre vários baralhos.\n"
 "\n"
-"Senão, você pode comprar uma fraqueza básica de toda a sua coleção."
+"Caso contrário, você poderá extrair pontos fracos aleatórios de toda a sua coleção."
 
 msgid "Draw From Collection"
 msgstr "Comprar da Coleção"
@@ -1283,7 +1290,7 @@ msgid "Basic weakness"
 msgstr "Fraqueza básica"
 
 msgid "Do not count towards deck size"
-msgstr "Não conta para o tamanho do baralho"
+msgstr "Não contar o tamanho do baralho"
 
 msgid "Sort"
 msgstr "Ordenar"
@@ -1298,7 +1305,7 @@ msgid ""
 msgstr ""
 "Estamos tendo problemas em conectar ao ArkhamDB.\n"
 "\n"
-"Se o problema continuar, por favor tente reautorizar."
+"Se o problema persistir, tente autorizar novamente."
 
 msgid "Reauthorize"
 msgstr "Autorizar Novamente"
@@ -1338,10 +1345,10 @@ msgstr[0] "${ unspentXpStr } não gasto"
 msgstr[1] "${ unspentXpStr } não gastos"
 
 msgid "Show splash cards"
-msgstr "Mostrar cartas de outras cores (cartas de splash)"
+msgstr "Mostrar Splash Cards (cartas de outra classe)"
 
 msgid "Hide splash cards"
-msgstr "Esconder cartas de outras cores (cartas de splash)"
+msgstr "Esconder Splash Cards (cartas de outra classe)"
 
 msgid "Select Taboo List"
 msgstr "Escolha lista de Tabu"
@@ -1357,7 +1364,7 @@ msgid "Select Deck Size"
 msgstr "Escolher Tamanho do Baralho"
 
 msgid "Note: Deck size should only be selected at deck creation time, not between scenarios."
-msgstr "Nota: Tamanho do baralho só pode ser escolhido na hora da criação do baralho, não entre cenários."
+msgstr "Observação: O tamanho do baralho só deve ser selecionado no momento da criação do baralho, e não entre cenários."
 
 #, javascript-format
 msgid "${ size } Card"
@@ -1369,7 +1376,7 @@ msgid "Select Faction"
 msgstr "Escolher Facção"
 
 msgid "Note: Secondary faction should only be selected at deck creation time, not between scenarios."
-msgstr "Nota: Facção secundária deveria ser somente escolhida na hora de criação de baralho, não entre cenários."
+msgstr "Observação: a classe secundária só deve ser selecionada no momento da criação do baralho, e não entre cenários."
 
 msgid "Original front · Original back"
 msgstr "Frente Original · Verso Original"
@@ -1387,7 +1394,7 @@ msgid "Select Parallel Investigator"
 msgstr "Escolher Investigador Paralelo"
 
 msgid "Parallel investigator options should only be selected at deck creation time, not between scenarios."
-msgstr "Opções de investigador paralelo somente pode ser escolhida na hora de criação do baralho, não entre cenários."
+msgstr "As opções de investigadores paralelos só devem ser selecionadas no momento da criação do baralho, não entre cenários."
 
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
@@ -1467,7 +1474,7 @@ msgstr "Histórico de Atualização"
 
 #, javascript-format
 msgid "Bonded Cards (${ count })"
-msgstr "Cartas Bonded (${ count })"
+msgstr "Cartas Vinculadas (${ count })"
 
 msgid "Deck Cards"
 msgstr "Cartas do Baralho"
@@ -1489,7 +1496,7 @@ msgid "Add cards"
 msgstr "Adicionar cartas"
 
 msgid "Deleting"
-msgstr "Apagando"
+msgstr "Excluindo"
 
 msgid "Save deck changes?"
 msgstr "Salvar alterações no baralho?"
@@ -1507,31 +1514,31 @@ msgid "Upgrading deck"
 msgstr "Atualizando baralho"
 
 msgid "Editing deck"
-msgstr "Alterando baralho"
+msgstr "Editando baralho"
 
 msgid "Menu"
 msgstr "Menu"
 
 msgid "Deck has been deleted"
-msgstr "Baralho foi apagado"
+msgstr "O Baralho foi excluido"
 
 msgid ""
 "It looks like you deleted this deck from ArkhamDB.\n"
 "\n"
 "If it was part of a campaign you can add the same investigator back to restore your campaign data."
 msgstr ""
-"Parece que você apagou este baralho do ArkhamDB.\n"
+"Parece que você excluiu este baralho do ArkhamDB.\n"
 "\n"
-"Se for parte da sua campanha, você pode adicionar o mesmo investigador de volta para recuperar seus dados de campanha."
+"Se fazia parte de uma campanha, você pode adicionar o mesmo investigador novamente para restaurar os dados da sua campanha."
 
 msgid "Delete broken deck"
-msgstr "Apagar baralho quebrado"
+msgstr "Excluir baralho quebrado"
 
 msgid "Looks like we are having trouble loading this deck for some reason"
-msgstr "Parece que estamos com problemas em carregar este baralho por alguma razão"
+msgstr "Parece que estamos tendo problemas para carregar este baralho por algum motivo"
 
 msgid "Delete"
-msgstr "Apagar"
+msgstr "Excluir"
 
 msgid "Checklist"
 msgstr "Lista de Controle"
@@ -1540,13 +1547,13 @@ msgid "Edit Special Cards"
 msgstr "Editar Cartas Especiais"
 
 msgid "Edit Deck"
-msgstr "Alterar Baralho"
+msgstr "Editar Baralho"
 
 msgid "Upgrade Deck"
 msgstr "Atualizar Baralho"
 
 msgid "Notes"
-msgstr "Notas"
+msgstr "Observações"
 
 msgid "Deck name"
 msgstr "Nome do baralho"
@@ -1594,7 +1601,7 @@ msgid ""
 msgstr ""
 "Este baralho contém próximas/prévias versões com atualizações, dessa maneira, nós não podemos enviá-lo para o ArkhamDB neste momento.\n"
 "\n"
-"Se você quiser enviá-lo, você pode usar Cópia para enviar uma cópia do baralho atual."
+"Se desejar fazer upload, você pode usar Clone para fazer upload de uma cópia do baralho atual."
 
 msgid "Upload to ArkhamDB"
 msgstr "Envie para ArkhamDB"
@@ -1606,20 +1613,20 @@ msgid ""
 msgstr ""
 "Você pode enviar seu baralho para ArkhamDB para compartilhar com outras pessoas.\n"
 "\n"
-"Depois de fazer isso, você precisará de acesso de rede para efetuar as mudanças no seu baralho."
+"Depois de fazer isso, você precisará de acesso à rede para fazer alterações no baralho."
 
 #, javascript-format
 msgid "Delete this upgrade (${ deck.version })"
-msgstr "Apagar esta atualização (${ deck.version })"
+msgstr "Excluir esta atualização (${ deck.version })"
 
 msgid "Delete all versions"
-msgstr "Apagar todas as versões"
+msgstr "Excluir todas as versões"
 
 msgid "Delete deck"
-msgstr "Apagar baralho"
+msgstr "Excluir baralho"
 
 msgid "Are you sure you want to delete this deck?"
-msgstr "Você tem certeza que quer apagar este baralho?"
+msgstr "Você tem certeza que quer excluir este baralho?"
 
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
@@ -1654,7 +1661,7 @@ msgstr[0] "${ normalCardCount } Carta (${ totalCardCount } Total)"
 msgstr[1] "${ normalCardCount } Cartas (${ totalCardCount } Total)"
 
 msgid "Story assets and weaknesses"
-msgstr "Posses de história e fraquezas"
+msgstr "Ativos de história e fraquezas"
 
 msgid "Available XP"
 msgstr "XP Disponível"
@@ -1681,7 +1688,7 @@ msgid "Upgrade with XP"
 msgstr "Atualizar com XP"
 
 msgid "Delete Deck"
-msgstr "Apagar Baralho"
+msgstr "Excluir Baralho"
 
 msgid "Card count"
 msgstr "Número de Cartas"
@@ -1705,22 +1712,22 @@ msgid "Too many copies of a card with the same name."
 msgstr "Muitas cópias de uma carta com o mesmo nome."
 
 msgid "Contains forbidden cards (cards not permitted by Faction)"
-msgstr "Contém cartas proibidas (cartas não permitidas para a Facção)"
+msgstr "Contém cartas proibidas (cartas não permitidas para a Classe)"
 
 msgid "Contains too many limited cards."
 msgstr "Contém muitas cartas limitadas."
 
 msgid "Doesn't comply with the Investigator requirements."
-msgstr "Não está em conformidade com os requisitos do Investigador."
+msgstr "Não atende aos requisitos do Investigador."
 
 msgid "Deck is invalid"
-msgstr "Baralho é inválido"
+msgstr "O baralho é inválido"
 
 msgid "Card Costs"
 msgstr "Custos das Cartas"
 
 msgid "Card Factions"
-msgstr "Facções das Cartas"
+msgstr "Classes da Carta"
 
 msgid "Version to copy"
 msgstr "Versão para copiar"
@@ -1759,7 +1766,7 @@ msgid "Deck Type"
 msgstr "Tipo de Baralho"
 
 msgid "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades."
-msgstr "Faça uma cópia do seu baralho para que assim você possa usá-lo em uma campanha diferente ou escolher atualizações diferentes."
+msgstr "Faça uma cópia de um baralho para poder usá-lo em uma campanha diferente ou escolher diferentes atualizações."
 
 #, javascript-format
 msgid "Level ${ level }"
@@ -1771,19 +1778,19 @@ msgid ""
 "Won't count towards deck size"
 msgstr ""
 "Manter nível ${ level } depois da atualização\n"
-"Não conta para o tamanho do baralho"
+"Não contará para o tamanho do baralho"
 
 msgid "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] card, you may instead pay the full experience cost on the higher level version and leave the lower level version in your deck (it does not count towards your deck size or the number of copies of that card in your deck)."
-msgstr "<b>Opções Adicionais</b>: Quando você atualiza uma carta de [[Fortune]] ou [[Gambit]], você pode ao invés disso pagar o custo total de experiência na versão mais alta e deixar a versão de nível mais baixo no seu baralho (isso não conta para o tamanho do seu baralho ou o número de cópias daquela carta no seu baralho)."
+msgstr "<b>Opções Adicionais</b>: Ao atualizar uma carta [[Fortune]] ou [[Gambit]], você pode pagar o custo total de experiência na versão de nível superior e deixar a versão de nível inferior em seu baralho (isso não conta para o tamanho do seu baralho ou para o número de cópias daquela carta no seu baralho)."
 
 msgid "<b>Additional Options</b>: When you upgrade a [[Spell]], you may instead pay the full experience cost on the higher level version and leave the lower level version in your deck (it does not count towards your deck size or the number of copies of that card in your deck)."
-msgstr "<b>Opções Adicionais</b>: Quando você atualiza uma [[Spell]], você pode ao invés disso pagar o custo total de experiência na versão mais alta e deixar a versão de nível mais baixo no seu baralho (isso não conta para o tamanho do seu baralho ou o número de cópias daquela carta no seu baralho)."
+msgstr "<b>Opções Adicionais</b>: Ao atualizar um [[Spell]], você pode pagar o custo total de experiência na versão de nível superior e deixar a versão de nível inferior em seu deck (isso não conta para o tamanho do seu baralho ou para o número de cópias daquela carta no seu baralho)."
 
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
 msgstr[0] "Esta atualização custará ${ xpCost } experiência."
-msgstr[1] "Esta atualização custará ${ xpCost } experiências."
+msgstr[1] "Estas atualizações custarão ${ xpCost } experiência."
 
 #, javascript-format
 msgid ""
