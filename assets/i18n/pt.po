@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2024-02-05 02:05-0300\n"
+"PO-Revision-Date: 2024-02-07 02:20-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -925,7 +925,7 @@ msgid "Non-Hunter"
 msgstr "Não-Caçador"
 
 msgid "Retaliate"
-msgstr "retaliação"
+msgstr "Retaliação"
 
 msgid "Parley"
 msgstr "Negociata"
@@ -1821,9 +1821,9 @@ msgid ""
 "\n"
 "<i>Note: the app handles this by adjusting experience to account for the 'free' upgrade.</i>"
 msgstr ""
-"<b>Shrewd Analysis</b>: Se você encontrar as condições da campanha, você pode usar Shrewd Analysis para escolher ambas as atualizações aleatoriamente e somente pagar por uma.\n"
+"<b>Shrewd Analysis</b>: Se você encontrar as condições de campanha, você pode usar Shrewd Analysis para escolher ambas as atualizações aleatoriamente e somente pagar por uma.\n"
 "\n"
-"<i>Nota: o app lida com isso ajustando a experiência de acordo com a atualização ‘gratuita’.</i>"
+"<i>Observação: o aplicativo lida com isso ajustando a experiência de acordo com a atualização ‘gratuita’.</i>"
 
 msgid "Upgrade results"
 msgstr "Resultados de Atualização"
@@ -1839,15 +1839,15 @@ msgstr[1] "Mostrar ${ nonCollection.length } cartas que não estão na coleção
 
 #, javascript-format
 msgid "Faction: ${ card.faction_name }, Level: ${ level }"
-msgstr "Facção: ${ card.faction_name }, Nível: ${ level }"
+msgstr "Classe: ${ card.faction_name }, Nível: ${ level }"
 
 #, javascript-format
 msgid "Faction: ${ card.faction_name }, Cost: ${ cost }, Level: ${ level }"
-msgstr "Facção: ${ card.faction_name }, Custo: ${ cost }, Nível: ${ level }"
+msgstr "Classe: ${ card.faction_name }, Custo: ${ cost }, Nível: ${ level }"
 
 #, javascript-format
 msgid "Faction: ${ card.faction_name }"
-msgstr "Facção: ${ card.faction_name }"
+msgstr "Classe: ${ card.faction_name }"
 
 #, javascript-format
 msgid "Encounter set: ${ card.encounter_name }"
@@ -1977,7 +1977,7 @@ msgid "Search"
 msgstr "Procura"
 
 msgid "Investigating for clues"
-msgstr "Investigar por pistas"
+msgstr "Investigando por pistas"
 
 msgid "Cursing at the tentacle token"
 msgstr "Amaldiçoando o marcador de tentáculo"
@@ -2038,7 +2038,7 @@ msgid "Game Text"
 msgstr "Texto de Jogo"
 
 msgid "Flavor Text"
-msgstr "Texto Supérfluo"
+msgstr "Texto Ilustrativo"
 
 msgid "Card Backs"
 msgstr "Versos das Cartas"
@@ -2066,7 +2066,7 @@ msgid "Search for a card"
 msgstr "Pesquisar por uma carta"
 
 msgid "Encounter Card Toggle"
-msgstr "Carta de Encontro Toggle"
+msgstr "Carta de Encontro alternada"
 
 msgid "Encounter Cards"
 msgstr "Cartas de Encontro"
@@ -2107,13 +2107,13 @@ msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr "Desconto de XP: ${ taboo.extra_xp }."
 
 msgid "The List of Taboos is a list of Arkham Horror: The Card Game cards with optional deckbuilding restrictions or text changes. This list is designed to craft a healthy balance between investigator power and scenario difficulty, and to enforce shifts in deckbuilding environments over time."
-msgstr "A Lista de Tabus é uma lista de cartas do Arkham Horror: The Card Game com opções restritivas de construção de baralho ou mudanças de textos. Esta lista é projetada para criar um equilíbrio poder de investigador e dificuldade do cenário e para impor mudanças de construção de baralho ao longo do tempo."
+msgstr "A Lista de Tabus é uma lista de cartas de Arkham Horror: The Card Game com restrições opcionais de construção de baralho ou alterações de texto. Esta lista foi projetada para criar um equilíbrio saudável entre o poder do investigador e a dificuldade do cenário, e para impor mudanças nos ambientes de construção de deck ao longo do tempo."
 
 msgid "Adhering to The List of Taboos is completely optional. Investigators are not forced to adhere to the restrictions on this list, but if an investigator chooses to do so, they must do so in full (an investigator cannot pick and choose which restrictions to use)."
-msgstr "Aderir a Lista de Tabus é completamente opcional. Investigadores não são obrigados a aderir às restrições nesta lista mas se um investigador escolhe, ele devem fazer isso por completo (um investigador não pode escolher quais restrições usar)."
+msgstr "Aderir à Lista de Tabus é totalmente opcional. Os investigadores não são obrigados a aderir às restrições desta lista, mas se um investigador decidir fazê-lo, deverá fazê-lo integralmente (um investigador não pode escolher quais restrições usar)."
 
 msgid "You can opt-in to always seeing taboos and buiding decks with them in Settings."
-msgstr "Você pode optar por sempre ver tabus e construir baralhos come eles nas Configurações."
+msgstr "Você pode optar por sempre ver tabus e construir baralhos com eles nas Configurações."
 
 msgid "Allowed Cards"
 msgstr "Cartas Permitidas"
@@ -2132,7 +2132,7 @@ msgid ""
 msgstr ""
 "Você gostaria de baixar cartas atualizadas do ArkhamDB que corresponde ao idioma preferido do seu telefone (${ lang })?\n"
 "\n"
-"Você pode sobrepor seu idioma preferido para este app em Configurações."
+"Você pode substituir sua preferência de idioma para este aplicativo em Configurações."
 
 msgid "Not now"
 msgstr "Agora não"
@@ -2154,7 +2154,7 @@ msgid "Check for updates"
 msgstr "Verificando atualizações"
 
 msgid "Error loading cards, make sure your network is working."
-msgstr "Erro carregando cartas, certifique-se que sua rede está funcionando."
+msgstr "Erro ao carregar cartas, certifique-se que sua rede está funcionando."
 
 msgid "Try Again"
 msgstr "Tente Novamente"
@@ -2169,13 +2169,13 @@ msgid "This should only take a few seconds and no network is required."
 msgstr "Isso deve levar apenas alguns segundos e nenhuma rede é necessária."
 
 msgid "If you run into any problems with this migration, please contact arkhamcards@gmail.com."
-msgstr "Se você tiver problemas com esta migração, entre em contato com arkhamcards@gmail.com."
+msgstr "Se você tiver algum problema com esta migração, entre em contato com arkhamcards@gmail.com."
 
 msgid "Migrate now"
 msgstr "Migrar agora"
 
 msgid "Bound Cards"
-msgstr "Bound Cards"
+msgstr "Vincular Cartas"
 
 msgid "Deckbuilding"
 msgstr "Construção de Baralho"
@@ -2185,7 +2185,7 @@ msgstr "Mostrar todas as cartas disponíveis"
 
 #, javascript-format
 msgid "Warning: this card contains possible spoilers for '${ card.pack_name }'."
-msgstr "Alerta: esta carta contém possíveis spoilers para  ‘${ card.pack_name }’."
+msgstr "Alerta: esta carta contém possíveis spoilers para ‘${ card.pack_name }’."
 
 msgid "Alternate Cards"
 msgstr "Cartas Alternativas"
@@ -2288,7 +2288,7 @@ msgid "Complete campaign setup"
 msgstr "Preparação completa de campanha"
 
 msgid "Review and draw tokens"
-msgstr "Ver e comprar marcadores"
+msgstr "Analisar e comprar marcadores"
 
 msgid "Remove deck from campaign"
 msgstr "Remover baralho da campanha"
@@ -2313,9 +2313,9 @@ msgid ""
 "\n"
 "However, you can choose to have them not participate in future scenarios of this campaign."
 msgstr ""
-"Desde que o investigador participou de um ou mais cenários durante esta campanha, ele não pode ser removido.\n"
+"Como este investigador participou de um ou mais cenários durante esta campanha, eles não podem ser removidos.\n"
 "\n"
-"Entretanto, você pode escolher em tê-los não participando em futuros cenários nesta campanha."
+"No entanto, você pode optar por não participar em cenários futuros desta campanha."
 
 msgid "Spent experience"
 msgstr "Experiência gasta"
@@ -2352,14 +2352,14 @@ msgstr "Ativos de História"
 
 #, javascript-format
 msgid "The <i>${ scenario.scenario_name }</i> challenge scenario centers around the investigator ${ investigator.name }, and therefore has the following prerequisites:"
-msgstr "O <i>${ scenario.scenario_name }</i> challenge scenario centers around the investigator ${ investigator.name }, and therefore has the following prerequisites:"
+msgstr "O Desafio do Cenário <i>${ scenario.scenario_name }</i> gira em torno do investigador ${ investigator.name } e, portanto, tem os seguintes pré-requisitos:"
 
 #, javascript-format
 msgid "${ investigator.name } must be chosen as one of the investigators when playing this scenario."
-msgstr "${ investigator.name } deve ser escolhido como um dos investigadores quando jogando este cenário."
+msgstr "${ investigator.name } deve ser escolhido como um dos investigadores ao jogar este cenário."
 
 msgid "The app does not enforce Challenge Scenario prerequisites, so please confirm that they apply manually."
-msgstr "O app não força pré-requisitos de Cenário Desafiador, por favor, confirme se eles se aplicam manualmente."
+msgstr "O aplicativo não força pré-requisitos de Cenário Desafiador, por favor, confirme se eles se aplicam manualmente."
 
 msgid "Play this scenario"
 msgstr "Jogar este cenário"
@@ -2383,7 +2383,7 @@ msgid "Scenario FAQ"
 msgstr "FAQ de Cenário"
 
 msgid "Undo"
-msgstr "Voltar"
+msgstr "Desfazer"
 
 msgid "Reset Scenario?"
 msgstr "Reiniciar Cenário?"
@@ -2407,7 +2407,7 @@ msgid "Are you sure you want to delete this standalone?"
 msgstr "Você tem certeza que quer apagar este cenário independente?"
 
 msgid "Delete standalone"
-msgstr "Apagar cenário independente"
+msgstr "Excluir cenário independente"
 
 msgid "Select Cards"
 msgstr "Escolher Cartas"
@@ -2440,7 +2440,7 @@ msgstr "Insuficiente"
 msgid "Set the ${ encounterSetString } encounter set aside, out of play."
 msgid_plural "Set the ${ encounterSetString } encounter sets aside, out of play."
 msgstr[0] "Coloque o ${ encounterSetString } conjunto de encontro separado, fora de jogo."
-msgstr[1] "Coloque os ${ encounterSetString } conjuntos de encontro separados, fora de jogo."
+msgstr[1] "Coloque os ${ encounterSetString } conjunto de encontro separados, fora de jogo."
 
 #, javascript-format
 msgid "Gather all cards from the ${ encounterSetString } encounter set."
@@ -2452,7 +2452,7 @@ msgstr[1] "Reúna todas as cartas dos seguintes conjuntos de encontro ${ encount
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
 msgstr[0] "${ startText } Este conjunto é indicado pelo seguinte ícone:"
-msgstr[1] "${ startText } Este conjunto é indicado pelos seguintes ícones:"
+msgstr[1] "${ startText } Estes conjuntos são indicados pelos seguintes ícones:"
 
 #, javascript-format
 msgid "${ count } resupply"
@@ -2476,7 +2476,7 @@ msgid "Random location"
 msgstr "Localização aleatória"
 
 msgid "Draw location"
-msgstr "Comprar localização"
+msgstr "Comprar local"
 
 msgid "Switch campaign"
 msgstr "Mudar de campanha"
@@ -2504,9 +2504,9 @@ msgid ""
 "\n"
 "Once an upgrade has been saved, you can edit the deck as normal and the app will properly track the experience cost for any changes you make (the original versions of the deck can still be viewed from the deck's menu)."
 msgstr ""
-"Parece que uma ou mais atualizações de baralho não foram salvas. Se você deseja que o app mapeie experiência gasta assim que mudanças são feitas no baralho, por favor, volte e pressione ‘Salvar atualização de baralho’ em cada investigador antes de proceder para o próximo cenário.\n"
+"Parece que uma ou mais atualizações de deck não foram salvas. Se você quiser que o aplicativo monitore a experiência gasta conforme você faz alterações no baralho, volte e pressione 'Salvar atualização de deck' em cada investigador antes de prosseguir para o próximo cenário.\n"
 "\n"
-"Uma vez que uma atualização esteja salva, você pode alterar o baralho normalmente e o app mapeará apropriadamente o custo de experiência para qualquer mudança que você fizer (as versões originais do baralho podem ainda ser visualizadas no menu do baralho)."
+"Depois que uma atualização for salva, você poderá editar o baralho normalmente e o aplicativo rastreará adequadamente o custo de experiência para quaisquer alterações feitas (as versões originais do baralho ainda podem ser visualizadas no menu do baralho)."
 
 msgid "It looks like you edited the experience or trauma for an investigator, but have not saved it yet. Please go back and select ‘Save adjustments’ to ensure your changes are saved."
 msgstr "Parece que você alterou a experiência ou trauma de um investigador mas ainda não salvou. Por favor volte e escolha ‘Salvar ajustes’ para garantir que suas alterações sejam salvas."
