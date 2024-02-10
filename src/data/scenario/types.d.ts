@@ -24,6 +24,7 @@ export type Step =
   | BorderStep
   | TravelCostStep
   | InvestigatorSetupStep;
+export type BorderColor = "setup" | "resolution" | "interlude";
 export type Condition =
   | MultiCondition
   | CampaignLogCondition
@@ -112,7 +113,6 @@ export type SpecialChaosToken =
   | "bless"
   | "curse"
   | "frost";
-export type BorderColor = "setup" | "resolution" | "interlude";
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
 export type DefaultOption = Option;
 export type MathCondition = MathCompareCondition | MathOpCondition | MathEqualsCondition;
@@ -372,6 +372,7 @@ export interface BranchStep {
   id: string;
   type: "branch";
   border_only?: boolean;
+  border_color?: BorderColor;
   hidden?: boolean;
   loop?: boolean;
   text?: string;
@@ -557,6 +558,7 @@ export interface CampaignLogCountEffect {
   value?: number;
   text?: string;
   hidden?: boolean;
+  min?: number;
 }
 export interface CampaignLogInvestigatorCountEffect {
   type: "campaign_log_investigator_count";

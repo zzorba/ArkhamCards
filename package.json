@@ -150,6 +150,7 @@
     "redux-thunk": "2.4.2",
     "reflect-metadata": "0.1.13",
     "regex-escape": "3.4.10",
+    "remove-accents": "^0.5.0",
     "remove-diacritical-marks": "1.0.1",
     "reselect": "4.1.8",
     "rn-fetch-blob": "0.12.0",

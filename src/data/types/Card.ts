@@ -2,10 +2,16 @@ import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'type
 import { Platform } from 'react-native';
 import { head, forEach, flatMap, filter, find, keys, map, min, omit, sortBy, indexOf, sumBy } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks'
+import { remove as removeAccents } from 'remove-accents';
 import { c, t } from 'ttag';
 
-import { Pack, SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK, SORT_BY_FACTION_XP, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData, SORT_BY_XP, SORT_BY_CARD_ID, SORT_BY_SLOT, ExtendedSortType, SORT_BY_TYPE_SLOT } from '@actions/types';
-import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCodeType, SkillCodeType, BODY_OF_A_YITHIAN, specialReprintPlayerPacks, specialReprintCampaignPacks, specialPacks } from '@app_constants';
+import { Pack, SortType, SORT_BY_COST, SORT_BY_CYCLE, SORT_BY_ENCOUNTER_SET, SORT_BY_FACTION, SORT_BY_FACTION_PACK,
+  SORT_BY_FACTION_XP, SORT_BY_PACK, SORT_BY_TITLE, SORT_BY_TYPE, TraumaAndCardData, SORT_BY_XP, SORT_BY_CARD_ID,
+  SORT_BY_SLOT, ExtendedSortType, SORT_BY_TYPE_SLOT,
+} from '@actions/types';
+import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, type FactionCodeType, type TypeCodeType, SkillCodeType,
+  BODY_OF_A_YITHIAN, specialReprintPlayerPacks, specialReprintCampaignPacks, specialPacks,
+} from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from '../sqlite/types';
@@ -35,8 +41,9 @@ export function searchNormalize(text: string, lang: string) {
   try {
     if (Platform.OS === 'ios') {
       return removeDiacriticalMarks(r);
+    } else {
+      return removeAccents(r);
     }
-    return r;
   } catch (e) {
     console.log(e);
     return r;
