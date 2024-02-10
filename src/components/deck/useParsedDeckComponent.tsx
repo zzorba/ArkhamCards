@@ -40,7 +40,8 @@ function hasUpgrades(
   cards: CardsMap,
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
-  { inCollection, ignoreCollection, showCustomContent }: CollectionSettings
+  { inCollection, ignoreCollection, showCustomContent }: CollectionSettings,
+  isArkhamDbDeck: boolean
 ): boolean {
   const card = cards[code];
   return !!(
@@ -50,7 +51,7 @@ function hasUpgrades(
       upgradeCard &&
       upgradeCard.code !== code &&
       (upgradeCard.xp || 0) > (card.xp || 0) &&
-      (showCustomContent || !card.custom()) &&
+      (isArkhamDbDeck ? !card.custom() : (showCustomContent || !card.custom())) &&
       validation.canIncludeCard(upgradeCard, false) &&
       ((upgradeCard.pack_code === 'core' && !inCollection.no_core) || ignoreCollection || cardInCollection(upgradeCard, inCollection))
     )));
@@ -146,6 +147,7 @@ function deckToSections(
   customizations: Customizations | undefined,
   mode: 'special' | 'side' | 'extra' | undefined,
   settings: CollectionSettings,
+  isArkhamDbDeck: boolean,
   options?: {
     limitedSlotsOnly?: boolean;
     extraSections?: ExtraSection[];
@@ -153,12 +155,7 @@ function deckToSections(
     existingSlots?: Slots;
   }
 ): [DeckSection, number] {
-  const {
-    inCollection,
-    ignoreCollection,
-    limitedSlots,
-    showCustomContent
-  } = settings;
+  const { limitedSlots } = settings;
   const { limitedSlotsOnly, extraSections, sumXp, existingSlots } = options || {};
   const result: CardSection[] = [];
 
@@ -222,6 +219,7 @@ function deckToSections(
               cardsByName,
               validation,
               settings,
+              isArkhamDbDeck,
             ),
             customizable: hasCustomizationUpgrades(c.id, cards, customizations, validation),
           };
@@ -428,6 +426,8 @@ export default function useParsedDeckComponent({
       !!normalCards.Skill?.length ||
       !!normalCards.Treachery?.length
     );
+    const isArkhamDbDeck = !!parsedDeck.id?.id;
+
     const [deckSection, deckIndex] = deckToSections(
       t`Deck Cards`,
       showEditCards,
@@ -461,6 +461,7 @@ export default function useParsedDeckComponent({
         ignoreCollection: ignore_collection,
         showCustomContent,
       },
+      isArkhamDbDeck,
     );
     const [specialSection, specialIndex] = deckToSections(
       t`Special Cards`,
@@ -478,6 +479,7 @@ export default function useParsedDeckComponent({
         ignoreCollection: ignore_collection,
         showCustomContent
       },
+      isArkhamDbDeck,
       {
         extraSections: requiredCards && [{
           title: t`Other investigator cards`,
@@ -581,6 +583,7 @@ export default function useParsedDeckComponent({
           ignoreCollection: ignore_collection,
           showCustomContent,
         },
+        isArkhamDbDeck,
       ) : [undefined, currentIndex];
     if (extraSection) {
       newData.push(extraSection);
@@ -607,6 +610,7 @@ export default function useParsedDeckComponent({
         ignoreCollection: ignore_collection,
         showCustomContent,
       },
+      isArkhamDbDeck,
       {
         sumXp: true,
         existingSlots: slots,

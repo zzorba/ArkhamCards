@@ -62,11 +62,16 @@ import CustomizationOption, { CoreCustomizationChoice, CustomizationChoice } fro
 import { JIM_VENGEFUL_SHADE_CODE, PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 
 export function getExtraDeckSlots(meta: DeckMeta): Slots {
-  return mapValues(groupBy((meta.extra_deck ?? '').split(','), x => x), x => x.length);
+  return mapValues(
+    groupBy(
+      filter((meta.extra_deck ?? '').split(','), x => x),
+      x => x),
+    x => x.length
+  );
 }
 
 export function encodeExtraDeckSlots(slots: Slots): string {
-  return flatMap(slots, (count, code) => map(range(0, count), _ => code)).join(',');
+  return flatMap(slots, (count, code) => count ? map(range(0, count), _ => code) : []).join(',');
 }
 
 function filterBy(

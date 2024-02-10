@@ -132,7 +132,7 @@ dependencies {
         implementation jscFlavor
     }
     implementation 'androidx.core:core-splashscreen:1.0.0'
-
+    implementation 'com.facebook.fresco:webpsupport:2.5.0'
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

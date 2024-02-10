@@ -7646,7 +7646,7 @@
         "counter": {
           "prompt": "Number of cards in the Traitor Deck",
           "min": 0,
-          "adjustment": 4,
+          "adjustment": -4,
           "scale": -1
         }
       },
@@ -7685,7 +7685,7 @@
         "counter": {
           "prompt": "Number of cards in the Traitor Deck",
           "min": 0,
-          "adjustment": 5,
+          "adjustment": -5,
           "scale": -1
         }
       },

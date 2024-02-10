@@ -7912,7 +7912,7 @@
         "counter": {
           "prompt": "배신자 덱에 남아 있는 카드 수",
           "min": 0,
-          "adjustment": 4,
+          "adjustment": -4,
           "scale": -1
         }
       },
@@ -7953,7 +7953,7 @@
         "counter": {
           "prompt": "배신자 덱에 남아 있는 카드 수",
           "min": 0,
-          "adjustment": 5,
+          "adjustment": -5,
           "scale": -1
         }
       },

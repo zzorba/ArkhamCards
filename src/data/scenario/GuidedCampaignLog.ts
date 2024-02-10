@@ -1682,31 +1682,38 @@ export default class GuidedCampaignLog {
       const section = this.countSections[effect.section] || {
         count: 0,
       };
-      const count = section.count;
+      let count = section.count;
       switch (effect.operation) {
         case 'add':
-          section.count = count + (effect.value || 0);
+          count = count + (effect.value || 0);
           break;
         case 'set':
-          section.count = effect.value || 0;
+          count = effect.value || 0;
           break;
         case 'add_input':
-          section.count = count + (numberInput || 0);
+          count = count + (numberInput || 0);
           break;
         case 'subtract_input':
-          section.count = count - (numberInput || 0);
+          count = count - (numberInput || 0);
           break;
         case 'set_input':
-          section.count = numberInput || 0;
+          count = numberInput || 0;
           break;
       }
+      if (effect.min !== undefined) {
+        count = Math.max(count, effect.min);
+      }
+      section.count = count;
       this.countSections[effect.section] = section;
     } else {
-      const value: number = (
+      let value: number = (
         (effect.operation === 'add_input' || effect.operation === 'set_input' || effect.operation === 'subtract_input') ?
           numberInput :
           effect.value
       ) || 0;
+      if (effect.min !== undefined) {
+        value = Math.max(value, effect.min);
+      }
       const section = this.sections[effect.section] || {
         entries: [],
       };
