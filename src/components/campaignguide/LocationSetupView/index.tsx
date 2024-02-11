@@ -7,12 +7,13 @@ import { Canvas, Paint, Circle, Line, vec, Path } from "@shopify/react-native-sk
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { NavigationProps } from '@components/nav/types';
-import { LocationAnnotation, LocationDecoration, LocationSetupCard, LocationSetupStep } from '@data/scenario/types';
+import { LocationAnnotation, LocationArrow, LocationDecoration, LocationSetupCard, LocationSetupStep } from '@data/scenario/types';
 import LocationCard, { cleanLocationCode } from './LocationCard';
 import { CARD_RATIO, NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { isTablet, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ThemeColors } from '@styles/theme';
+import AppIcon from '@icons/AppIcon';
 
 export interface LocationSetupProps {
   step: LocationSetupStep;
@@ -31,7 +32,7 @@ interface CardSizes {
   verticalPadding: number;
 }
 
-export default function LocationSetupView({ step: { locations, cards, annotations, decorations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
+export default function LocationSetupView({ step: { locations, cards, annotations, arrows, decorations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
   const { width, height } = useContext(StyleContext);
   const rowCount = locations.length;
   const rowSize = locations[0].length;
@@ -229,6 +230,14 @@ export default function LocationSetupView({ step: { locations, cards, annotation
         <View style={[styles.container, { height: rowHeight, margin: m * 2 }]}>
           { map(locations, (locs, row) => renderRow(locs, row, rowWidth, rowHeight)) }
           { map(cards, (card, idx) => renderCard({ card, key: `${idx}`, rowWidth, rowHeight, annotations: [] })) }
+          { !!arrows?.length && (
+            <Arrows
+              arrows={arrows}
+              unitWidth={cardWidth + betweenPadding}
+              unitHeight={cardHeight + verticalPadding}
+            />
+          ) }
+
         </View>
         { !!topDecorations.length && (
           <Decorations
@@ -267,7 +276,6 @@ function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, vert
         const startY = toY(d.start_y);
         const endX = toX(d.end_x);
         const endY = toY(d.end_y);
-
         switch (d.type) {
           case 'circle': {
             const radius = Math.sqrt((endX - startX) ** 2 + (endY - startY) ** 2);
@@ -282,24 +290,6 @@ function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, vert
                 <Paint color={getColor(colors, d.color)} style="stroke" strokeWidth={4} />
               </Circle>
             );
-          }
-          case 'arrow': {
-            var posnALeft = {
-              x: startX,
-              y: startY,
-            };
-            var posnBLeft = {
-              x: endX,
-              y: endY,
-            };
-            var dStrLeft =
-                "M" +
-                (posnALeft.x      ) + "," + (posnALeft.y) + " " +
-                "C" +
-                (posnALeft.x - 100) + "," + (posnALeft.y) + " " +
-                (posnBLeft.x - 100) + "," + (posnBLeft.y) + " " +
-                (posnBLeft.x      ) + "," + (posnBLeft.y);
-            return <Path key={idx} path={dStrLeft} color={getColor(colors, d.color)} />;
           }
           case 'line':
           default:
@@ -318,9 +308,64 @@ function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, vert
   );
 }
 
+function Arrows({ arrows, unitWidth, unitHeight }: {
+  arrows: LocationArrow[];
+  unitWidth: number;
+  unitHeight: number;
+}) {
+  const { colors } = useContext(StyleContext);
+  const toX = (x: number) => unitWidth * x + SIDE_PADDING / 2;
+  const toY = (y: number) => unitHeight * y + TOP_PADDING / 2;
+  const toIconName = (name: string):
+    ['long_arrow' | 'short_arrow' | 'long_single_arrow' | 'swoop_arrow' | 'swoop_arrow_right', number] => {
+    switch (name) {
+      case 'long': return ['long_arrow', 1.5];
+      case 'long_single': return ['long_single_arrow', 2];
+      case 'swoop': return ['swoop_arrow', 2];
+      case 'swoop_right': return ['swoop_arrow_right', 2];
+      case 'short':
+      default:
+        return ['short_arrow', 0.5];
+    }
+  };
+  return (
+    <>
+      { map(arrows, (a, idx) => {
+        const x = toX(a.x + 1);
+        const y = toY(a.y + 1);
+        const [icon, defaultScale] = toIconName(a.type);
+        const scale = a.size ?? defaultScale;
+        return (
+          <View
+            key={idx}
+            style={[styles.arrow, {
+              top: y, left: x,
+              width: unitWidth * (a.width ?? scale),
+              height: unitHeight * (a.height ?? scale),
+              opacity: (a.opacity ?? 1),
+            }]}>
+            <AppIcon
+              name={icon}
+              size={Math.min(unitHeight * scale, unitWidth * scale)}
+              color={getColor(colors, a.color)}
+              style={a.rotation ? { transform: [{ rotate: a.rotation }]} : undefined}
+            />
+          </View>
+        );
+      }) }
+    </>
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
     flex: 1,
+  },
+  arrow: {
+    position: 'absolute',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

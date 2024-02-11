@@ -53,6 +53,7 @@ import {
   SetCardCountEffect,
   ScarletKeyEffect,
   SaveDecksEffect,
+  BackupStateEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
@@ -172,7 +173,7 @@ export interface VisibleCalendarEntry {
   time: number;
 }
 
-export default class GuidedCampaignLog {
+interface GuidedCampaignLogState {
   scenarioId?: string;
   sections: {
     [section: string]: EntrySection | undefined;
@@ -188,12 +189,36 @@ export default class GuidedCampaignLog {
   };
   latestScenarioData: ScenarioData;
   campaignData: CampaignData;
-  campaignGuide: CampaignGuide;
   chaosBag: ChaosBag;
   swapChaosBag: ChaosBag;
+}
+
+export default class GuidedCampaignLog implements GuidedCampaignLogState {
+  campaignGuide: CampaignGuide;
   investigatorCards: CardsMap;
   linked: boolean;
   guideVersion: number;
+
+  backupState?: GuidedCampaignLogState;
+
+  // State
+  scenarioId?: string;
+  sections: {
+    [section: string]: EntrySection | undefined;
+  };
+  countSections: {
+    [section: string]: CountSection | undefined;
+  };
+  investigatorSections: {
+    [section: string]: InvestigatorSection | undefined;
+  };
+  scenarioData: {
+    [scenario: string]: ScenarioData | undefined;
+  };
+  latestScenarioData: ScenarioData;
+  campaignData: CampaignData;
+  chaosBag: ChaosBag;
+  swapChaosBag: ChaosBag;
 
   static isCampaignLogEffect(effect: Effect): boolean {
     switch (effect.type) {
@@ -218,6 +243,7 @@ export default class GuidedCampaignLog {
       case 'lose_supplies':
       case 'partner_status':
       case 'scarlet_key':
+      case 'backup_state':
         return true;
       default:
         return false;
@@ -239,6 +265,7 @@ export default class GuidedCampaignLog {
     this.guideVersion = campaignState.guideVersion === -1 ?
       campaignGuide.campaignVersion() :
       campaignState.guideVersion;
+    this.backupState = readThrough?.backupState;
 
     const hasRelevantEffects = !!find(
       effectsWithInput,
@@ -318,6 +345,9 @@ export default class GuidedCampaignLog {
       forEach(effectsWithInput, ({ effects, input, numberInput }) => {
         forEach(effects, effect => {
           switch (effect.type) {
+            case 'backup_state':
+              this.handleBackupState(effect);
+              break;
             case 'lose_supplies':
               this.handleLoseSuppliesEffect(effect);
               break;
@@ -404,6 +434,38 @@ export default class GuidedCampaignLog {
           }
         });
       });
+    }
+  }
+
+  handleBackupState(effect: BackupStateEffect) {
+    switch (effect.operation) {
+      case 'save':
+        this.backupState = {
+          scenarioId: this.scenarioId,
+          sections: this.sections,
+          countSections: this.countSections,
+          investigatorSections: this.investigatorSections,
+          scenarioData: this.scenarioData,
+          latestScenarioData: this.latestScenarioData,
+          campaignData: this.campaignData,
+          chaosBag: this.chaosBag,
+          swapChaosBag: this.swapChaosBag,
+        };
+        break;
+      case 'restore':
+        if (this.backupState) {
+          this.scenarioId = this.backupState.scenarioId;
+          this.sections = cloneDeep(this.backupState.sections);
+          this.countSections = cloneDeep(this.backupState.countSections);
+          this.investigatorSections = cloneDeep(this.backupState.investigatorSections);
+          this.scenarioData = cloneDeep(this.backupState.scenarioData);
+          this.latestScenarioData = cloneDeep(this.backupState.latestScenarioData);
+          this.campaignData = cloneDeep(this.backupState.campaignData);
+          this.chaosBag = cloneDeep(this.backupState.chaosBag);
+          this.swapChaosBag = cloneDeep(this.backupState.swapChaosBag);
+        }
+        this.backupState = undefined;
+        break;
     }
   }
 
@@ -594,7 +656,7 @@ export default class GuidedCampaignLog {
 
   allCards(sectionId: string, id?: string): string[] | undefined {
     const section = this.sections[sectionId];
-    if (!section) {
+    if (!section || section.sectionCrossedOut) {
       return undefined;
     }
     if (!id) {
@@ -615,7 +677,7 @@ export default class GuidedCampaignLog {
 
   allCardCounts(sectionId: string, id?: string): number[] | undefined {
     const section = this.sections[sectionId];
-    if (!section) {
+    if (!section || section.sectionCrossedOut) {
       return undefined;
     }
     if (!id) {
@@ -636,7 +698,7 @@ export default class GuidedCampaignLog {
 
   check(sectionId: string, id: string): boolean {
     const section = this.sections[sectionId];
-    if (!section) {
+    if (!section || section.sectionCrossedOut) {
       return false;
     }
     const entry = find(section.entries, entry => entry.id === id && !entry.crossedOut);
@@ -732,6 +794,9 @@ export default class GuidedCampaignLog {
   }
 
   count(sectionId: string, id: string): number {
+    if (!this.sectionExists(sectionId)) {
+      return 0;
+    }
     if (id === '$count') {
       const section = this.countSections[sectionId];
       if (section) {
@@ -1599,11 +1664,13 @@ export default class GuidedCampaignLog {
     section: EntrySection,
     id: string,
     operation: 'add' | 'add_input' | 'subtract_input' | 'set' | 'set_input' | 'cross_out',
-    value: number
+    value: number,
+    min?: number,
   ): EntrySection {
     // Normal entry
     const entry = find(section.entries, entry => entry.id === id);
     const count = (entry && entry.type === 'count') ? entry.count : 0;
+    const applyMin = (value: number) => min !== undefined ? Math.max(min, value) : value;
     switch (operation) {
       case 'cross_out':
         section.entries = map(section.entries, entry => {
@@ -1623,7 +1690,7 @@ export default class GuidedCampaignLog {
           section.entries.push({
             type: 'count',
             id,
-            count: count - value,
+            count: applyMin(count - value),
           });
         }
         break;
@@ -1635,19 +1702,19 @@ export default class GuidedCampaignLog {
           section.entries.push({
             type: 'count',
             id,
-            count: count + value,
+            count: applyMin(count + value),
           });
         }
         break;
       case 'set':
       case 'set_input':
         if (entry && entry.type === 'count') {
-          entry.count = value;
+          entry.count = applyMin(value);
         } else {
           section.entries.push({
             type: 'count',
             id,
-            count: value,
+            count: applyMin(value),
           });
         }
         break;
@@ -1685,16 +1752,16 @@ export default class GuidedCampaignLog {
       let count = section.count;
       switch (effect.operation) {
         case 'add':
-          count = count + (effect.value || 0);
+          count = count + (effect.value ?? 0);
           break;
         case 'set':
-          count = effect.value || 0;
+          count = effect.value ?? 0;
           break;
         case 'add_input':
-          count = count + (numberInput || 0);
+          count = count + (numberInput ?? 0);
           break;
         case 'subtract_input':
-          count = count - (numberInput || 0);
+          count = count - (numberInput ?? 0);
           break;
         case 'set_input':
           count = numberInput || 0;
@@ -1710,14 +1777,11 @@ export default class GuidedCampaignLog {
         (effect.operation === 'add_input' || effect.operation === 'set_input' || effect.operation === 'subtract_input') ?
           numberInput :
           effect.value
-      ) || 0;
-      if (effect.min !== undefined) {
-        value = Math.max(value, effect.min);
-      }
+      ) ?? 0;
       const section = this.sections[effect.section] || {
         entries: [],
       };
-      this.sections[effect.section] = this.updateSectionWithCount(section, effect.id, effect.operation, value);
+      this.sections[effect.section] = this.updateSectionWithCount(section, effect.id, effect.operation, value, effect.min);
     }
   }
 

@@ -48,9 +48,18 @@ function RelationshipBoxes({ section }: { section: EntrySection }) {
   const relationshipValue = relationshipEntry?.type === 'count' ? relationshipEntry.count : 0;
   return (
     <View style={{ flexDirection: 'row' }}>
-      <Text style={[typography.cursive, { fontSize: 14, lineHeight: 16, color: colors.D30 }, space.paddingRightXs]} allowFontScaling={false}>{'Relationship'}</Text>
-      { map(range(0, 4), (idx) => (
-        <View key={idx} style={[{ width: 14, height: 14, borderWidth: 1, borderColor: colors.D30, position: 'relative' }, space.marginRightXs]}>
+      <Text style={[typography.cursive, { fontSize: 14, lineHeight: 16, color: colors.D30 }, space.paddingRightXs]} allowFontScaling={false}>{t`Relationship Level`}</Text>
+      { map(range(0, 6), (idx) => (
+        <View key={idx} style={{
+          width: 14,
+          height: 14,
+          borderTopWidth: 1,
+          borderBottomWidth: 1,
+          borderLeftWidth: idx === 0 ? 1 : 0,
+          borderRightWidth: 1,
+          borderColor: colors.D10,
+          position: 'relative',
+        }}>
           { relationshipValue > idx ? (
             <View style={{ position: 'absolute', top: 0, left: 0 }}>
               <MaterialIcons size={12} name="favorite" color={colors.D20} allowFontScaling={false} />
