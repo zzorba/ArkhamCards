@@ -277,6 +277,7 @@ function deckToSections(
               cardsByName,
               validation,
               settings,
+              isArkhamDbDeck,
             ),
             customizable: hasCustomizationUpgrades(c.id, cards, customizations, validation),
           };
@@ -517,7 +518,8 @@ export default function useParsedDeckComponent({
               inCollection,
               ignoreCollection: ignore_collection,
               showCustomContent,
-            }
+            },
+            isArkhamDbDeck
           ),
           customizable: hasCustomizationUpgrades(card.id, cards, customizations, validation),
         };

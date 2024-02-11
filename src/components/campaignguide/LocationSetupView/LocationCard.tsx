@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { Image, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
 import { withAnchorPoint } from 'react-native-anchor-point';
 import { map, range, transform } from 'lodash';
@@ -55,13 +55,15 @@ function TextCard({ name, placeholder }: { name: string; placeholder?: boolean; 
 
 const RAIL_REGEX = /_RAIL_([NSEW]+)$/;
 
-function LocationCardImage({ code, back, name, width, height, placeholder }: {
+function LocationCardImage({ code, back, name, width, height, placeholder, toggle, setToggle }: {
   width: number;
   height: number;
   code: string;
   back: boolean;
   name?: string;
   placeholder?: boolean;
+  toggle: boolean;
+  setToggle: (value: boolean) => void;
 }) {
   const [card, loading] = useSingleCard(code, 'encounter');
   if (loading) {
@@ -82,7 +84,7 @@ function LocationCardImage({ code, back, name, width, height, placeholder }: {
     );
   }
   return (
-    <ToolTip label={(back && card.back_name) || card.name} height={height} width={width}>
+    <ToolTip label={(back && card.back_name) || card.name} height={height} width={width} toggle={toggle} setToggle={setToggle}>
       <FastImage
         style={[styles.verticalCardImage, { width, height }]}
         source={{
@@ -160,6 +162,7 @@ export default function LocationCard({ keyProp, rowWidth, rowHeight, annotations
   }, [rotate, width, height]);
 
   const [theWidth, theHeight] = mini ? [width * 0.75, height * 0.75] : [width, height];
+  const [toggle, setToggle] = useState(false);
   const image = useMemo(() => {
     switch (code) {
       case 'blank':
@@ -202,6 +205,8 @@ export default function LocationCard({ keyProp, rowWidth, rowHeight, annotations
           }>
             <LocationCardImage
               name={name}
+              toggle={toggle}
+              setToggle={setToggle}
               code={cleanLocationCode(code)}
               placeholder={placeholder}
               back={code.indexOf('_back') !== -1}
@@ -211,7 +216,7 @@ export default function LocationCard({ keyProp, rowWidth, rowHeight, annotations
           </View>
         );
     }
-  }, [colors, borderStyle, mini, theHeight, theWidth, code, name, height, rotate, width]);
+  }, [colors, toggle, setToggle, borderStyle, mini, theHeight, theWidth, code, name, height, rotate, width]);
   const rails = useMemo(() => {
     const match = RAIL_REGEX.exec(code)?.[1];
     if (!match) {
@@ -275,7 +280,12 @@ export default function LocationCard({ keyProp, rowWidth, rowHeight, annotations
   }, [resource_dividers, width, height, left, top, colors]);
   return (
     <>
-      <View style={[styles.card, { top, left }, faded || random ? { opacity: 0.40 } : undefined]}>
+      <View style={[
+        styles.card,
+        { top, left },
+        faded || random ? { opacity: 0.40 } : undefined,
+        toggle ? { zIndex: 10 } : undefined,
+      ]}>
         <View style={[{ width, height }, transformStyle]}>
           { image }
         </View>

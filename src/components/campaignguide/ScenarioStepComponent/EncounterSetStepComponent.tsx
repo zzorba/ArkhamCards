@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -34,6 +34,27 @@ interface Props {
   step: EncounterSetsStep;
   campaignGuide: CampaignGuide
   color?: BorderColor;
+}
+
+function EncounterSetIcon({ set }: { set: { code: string; name: string | undefined }}) {
+  const { colors } = useContext(StyleContext);
+  const [toggle, setToggle] = useState(false);
+
+  return (
+    <ToolTip
+      height={48}
+      width={48}
+      label={set.name}
+      toggle={toggle}
+      setToggle={setToggle}
+    >
+      <EncounterIcon
+          encounter_code={set.code}
+          size={48}
+          color={CORE_SET_ICONS.has(set.code) ? colors.skill.combat.icon : colors.darkText}
+      />
+    </ToolTip>
+  );
 }
 
 export default function EncounterSetStepComponent({ componentId, color, campaignId, step, campaignGuide }: Props) {
@@ -88,17 +109,7 @@ export default function EncounterSetStepComponent({ componentId, color, campaign
           <View style={[styles.iconPile, space.marginTopM, space.marginBottomS]}>
             { map(encounterSets, set => !!set && (
               <View style={[space.marginSideS, space.marginBottomM]} key={set.code}>
-                <ToolTip
-                  height={48}
-                  width={48}
-                  label={set.name}
-                >
-                  <EncounterIcon
-                      encounter_code={set.code}
-                      size={48}
-                      color={CORE_SET_ICONS.has(set.code) ? colors.skill.combat.icon : colors.darkText}
-                  />
-                </ToolTip>
+                <EncounterSetIcon set={set} />
               </View>
             )) }
           </View>

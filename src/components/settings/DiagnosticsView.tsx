@@ -12,6 +12,7 @@ import database from '@react-native-firebase/database';
 import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
+import BlastedImage from 'react-native-blasted-image';
 
 import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, SYNC_DISMISS_ONBOARDING } from '@actions/types';
 import { clearDecks } from '@actions';
@@ -158,6 +159,12 @@ export default function DiagnosticsView() {
     await apollo.resetStore();
   }, [apollo, dispatch]);
 
+  const [imagesCleared, setImagesCleared] = useState(false);
+  const clearImageCache = useCallback(() => {
+    BlastedImage.clearAllCaches();
+    setImagesCleared(true);
+  }, [setImagesCleared]);
+
   const clearCardCache = useCallback(() => {
     clearDatabase().then(() => {
       doSyncCards();
@@ -242,6 +249,10 @@ export default function DiagnosticsView() {
         <SettingsItem
           onPress={clearCache}
           text={t`Clear cache`}
+        />
+        <SettingsItem
+          onPress={clearImageCache}
+          text={imagesCleared ? t`Image cache cleared` :t`Clear image cache`}
         />
         { !schemaCleared && (
           <SettingsItem
