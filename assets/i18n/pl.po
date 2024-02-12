@@ -6045,6 +6045,9 @@ msgstr ""
 msgid "Theo Peters"
 msgstr ""
 
+msgid "Relationship Level"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Własny"

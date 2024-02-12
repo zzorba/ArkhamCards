@@ -68,7 +68,8 @@ export type Effect =
   | LoseSuppliesEffect
   | CheckCampaignLogCardsEffect
   | CheckCampaignLogCountEffect
-  | ScarletKeyEffect;
+  | ScarletKeyEffect
+  | BackupStateEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
   | "lead_investigator"
@@ -698,6 +699,10 @@ export interface ScarletKeyEffect {
   scarlet_key: string;
   bearer_type: "investigator" | "enemy" | "steal" | "return";
   enemy_code?: string;
+}
+export interface BackupStateEffect {
+  type: "backup_state";
+  operation: "save" | "restore";
 }
 export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";
@@ -1345,6 +1350,7 @@ export interface LocationSetupStep {
   annotations?: LocationAnnotation[];
   cards?: LocationSetupCard[];
   decorations?: LocationDecoration[];
+  arrows?: LocationArrow[];
   resource_dividers?: {
     right?: number;
     bottom?: number;
@@ -1377,12 +1383,23 @@ export interface LocationSetupCard {
 }
 export interface LocationDecoration {
   layer: "top" | "bottom";
-  type: "arrow" | "line" | "circle";
+  type: "line" | "circle";
   start_x: number;
   start_y: number;
   end_x: number;
   end_y: number;
   color?: "blue";
+}
+export interface LocationArrow {
+  type: "short" | "long" | "swoop" | "swoop_right" | "long_single";
+  x: number;
+  y: number;
+  color: "red";
+  size?: number;
+  width?: number;
+  height?: number;
+  opacity?: number;
+  rotation?: "90deg" | "180deg" | "270deg";
 }
 export interface LocationConnectorsStep {
   id: string;

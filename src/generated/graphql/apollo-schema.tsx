@@ -6375,10 +6375,34 @@ export type Card_Delete_Key_Input = {
 /** columns and relationships of "card_encounter_set" */
 export type Card_Encounter_Set = {
   __typename?: 'card_encounter_set';
+  /** An array relationship */
+  cards: Array<All_Card>;
+  /** An aggregate relationship */
+  cards_aggregate: All_Card_Aggregate;
   code: Scalars['String']['output'];
   locale: Scalars['String']['output'];
   name: Scalars['String']['output'];
   official: Scalars['Boolean']['output'];
+};
+
+
+/** columns and relationships of "card_encounter_set" */
+export type Card_Encounter_SetCardsArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<All_Card_Order_By>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+
+/** columns and relationships of "card_encounter_set" */
+export type Card_Encounter_SetCards_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<All_Card_Order_By>>;
+  where?: InputMaybe<All_Card_Bool_Exp>;
 };
 
 /** aggregated selection of "card_encounter_set" */
@@ -6449,6 +6473,8 @@ export type Card_Encounter_Set_Bool_Exp = {
   _and?: InputMaybe<Array<Card_Encounter_Set_Bool_Exp>>;
   _not?: InputMaybe<Card_Encounter_Set_Bool_Exp>;
   _or?: InputMaybe<Array<Card_Encounter_Set_Bool_Exp>>;
+  cards?: InputMaybe<All_Card_Bool_Exp>;
+  cards_aggregate?: InputMaybe<All_Card_Aggregate_Bool_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
@@ -6463,6 +6489,7 @@ export enum Card_Encounter_Set_Constraint {
 
 /** input type for inserting data into table "card_encounter_set" */
 export type Card_Encounter_Set_Insert_Input = {
+  cards?: InputMaybe<All_Card_Arr_Rel_Insert_Input>;
   code?: InputMaybe<Scalars['String']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
@@ -6517,6 +6544,7 @@ export type Card_Encounter_Set_On_Conflict = {
 
 /** Ordering options when selecting data from "card_encounter_set". */
 export type Card_Encounter_Set_Order_By = {
+  cards_aggregate?: InputMaybe<All_Card_Aggregate_Order_By>;
   code?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
@@ -14968,6 +14996,432 @@ export type Cycle_Variance_Fields = {
   position?: Maybe<Scalars['Float']['output']>;
 };
 
+/** columns and relationships of "deck" */
+export type Deck = {
+  __typename?: 'deck';
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  created_at: Scalars['timestamptz']['output'];
+  description: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
+  investigator: Scalars['String']['output'];
+  meta: Scalars['jsonb']['output'];
+  name: Scalars['String']['output'];
+  /** An object relationship */
+  next_deck?: Maybe<Deck>;
+  next_deck_id?: Maybe<Scalars['Int']['output']>;
+  /** An object relationship */
+  owner: Users;
+  owner_id: Scalars['String']['output'];
+  /** An object relationship */
+  previous_deck?: Maybe<Deck>;
+  side_slots: Scalars['jsonb']['output'];
+  slots: Scalars['jsonb']['output'];
+  tags: Scalars['jsonb']['output'];
+  updated_at: Scalars['timestamptz']['output'];
+};
+
+
+/** columns and relationships of "deck" */
+export type DeckMetaArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "deck" */
+export type DeckSide_SlotsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "deck" */
+export type DeckSlotsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "deck" */
+export type DeckTagsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregated selection of "deck" */
+export type Deck_Aggregate = {
+  __typename?: 'deck_aggregate';
+  aggregate?: Maybe<Deck_Aggregate_Fields>;
+  nodes: Array<Deck>;
+};
+
+/** aggregate fields of "deck" */
+export type Deck_Aggregate_Fields = {
+  __typename?: 'deck_aggregate_fields';
+  avg?: Maybe<Deck_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Deck_Max_Fields>;
+  min?: Maybe<Deck_Min_Fields>;
+  stddev?: Maybe<Deck_Stddev_Fields>;
+  stddev_pop?: Maybe<Deck_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Deck_Stddev_Samp_Fields>;
+  sum?: Maybe<Deck_Sum_Fields>;
+  var_pop?: Maybe<Deck_Var_Pop_Fields>;
+  var_samp?: Maybe<Deck_Var_Samp_Fields>;
+  variance?: Maybe<Deck_Variance_Fields>;
+};
+
+
+/** aggregate fields of "deck" */
+export type Deck_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Deck_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Deck_Append_Input = {
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  slots?: InputMaybe<Scalars['jsonb']['input']>;
+  tags?: InputMaybe<Scalars['jsonb']['input']>;
+};
+
+/** aggregate avg on columns */
+export type Deck_Avg_Fields = {
+  __typename?: 'deck_avg_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Boolean expression to filter rows from the table "deck". All fields are combined with a logical 'AND'. */
+export type Deck_Bool_Exp = {
+  _and?: InputMaybe<Array<Deck_Bool_Exp>>;
+  _not?: InputMaybe<Deck_Bool_Exp>;
+  _or?: InputMaybe<Array<Deck_Bool_Exp>>;
+  archived?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  investigator?: InputMaybe<String_Comparison_Exp>;
+  meta?: InputMaybe<Jsonb_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  next_deck?: InputMaybe<Deck_Bool_Exp>;
+  next_deck_id?: InputMaybe<Int_Comparison_Exp>;
+  owner?: InputMaybe<Users_Bool_Exp>;
+  owner_id?: InputMaybe<String_Comparison_Exp>;
+  previous_deck?: InputMaybe<Deck_Bool_Exp>;
+  side_slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  tags?: InputMaybe<Jsonb_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "deck" */
+export enum Deck_Constraint {
+  /** unique or primary key constraint on columns "next_deck_id" */
+  DeckNextDeckIdKey = 'deck_next_deck_id_key',
+  /** unique or primary key constraint on columns "id" */
+  DeckPkey1 = 'deck_pkey1'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Deck_Delete_At_Path_Input = {
+  meta?: InputMaybe<Array<Scalars['String']['input']>>;
+  side_slots?: InputMaybe<Array<Scalars['String']['input']>>;
+  slots?: InputMaybe<Array<Scalars['String']['input']>>;
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Deck_Delete_Elem_Input = {
+  meta?: InputMaybe<Scalars['Int']['input']>;
+  side_slots?: InputMaybe<Scalars['Int']['input']>;
+  slots?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Deck_Delete_Key_Input = {
+  meta?: InputMaybe<Scalars['String']['input']>;
+  side_slots?: InputMaybe<Scalars['String']['input']>;
+  slots?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** input type for incrementing numeric columns in table "deck" */
+export type Deck_Inc_Input = {
+  id?: InputMaybe<Scalars['Int']['input']>;
+  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** input type for inserting data into table "deck" */
+export type Deck_Insert_Input = {
+  archived?: InputMaybe<Scalars['Boolean']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  investigator?: InputMaybe<Scalars['String']['input']>;
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  next_deck?: InputMaybe<Deck_Obj_Rel_Insert_Input>;
+  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
+  owner?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  owner_id?: InputMaybe<Scalars['String']['input']>;
+  previous_deck?: InputMaybe<Deck_Obj_Rel_Insert_Input>;
+  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  slots?: InputMaybe<Scalars['jsonb']['input']>;
+  tags?: InputMaybe<Scalars['jsonb']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate max on columns */
+export type Deck_Max_Fields = {
+  __typename?: 'deck_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  investigator?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  next_deck_id?: Maybe<Scalars['Int']['output']>;
+  owner_id?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** aggregate min on columns */
+export type Deck_Min_Fields = {
+  __typename?: 'deck_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  investigator?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  next_deck_id?: Maybe<Scalars['Int']['output']>;
+  owner_id?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** response of any mutation on the table "deck" */
+export type Deck_Mutation_Response = {
+  __typename?: 'deck_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Deck>;
+};
+
+/** input type for inserting object relation for remote table "deck" */
+export type Deck_Obj_Rel_Insert_Input = {
+  data: Deck_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Deck_On_Conflict>;
+};
+
+/** on_conflict condition type for table "deck" */
+export type Deck_On_Conflict = {
+  constraint: Deck_Constraint;
+  update_columns?: Array<Deck_Update_Column>;
+  where?: InputMaybe<Deck_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "deck". */
+export type Deck_Order_By = {
+  archived?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  meta?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  next_deck?: InputMaybe<Deck_Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
+  owner?: InputMaybe<Users_Order_By>;
+  owner_id?: InputMaybe<Order_By>;
+  previous_deck?: InputMaybe<Deck_Order_By>;
+  side_slots?: InputMaybe<Order_By>;
+  slots?: InputMaybe<Order_By>;
+  tags?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: deck */
+export type Deck_Pk_Columns_Input = {
+  id: Scalars['Int']['input'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Deck_Prepend_Input = {
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  slots?: InputMaybe<Scalars['jsonb']['input']>;
+  tags?: InputMaybe<Scalars['jsonb']['input']>;
+};
+
+/** select columns of table "deck" */
+export enum Deck_Select_Column {
+  /** column name */
+  Archived = 'archived',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Investigator = 'investigator',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  NextDeckId = 'next_deck_id',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  SideSlots = 'side_slots',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Tags = 'tags',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "deck" */
+export type Deck_Set_Input = {
+  archived?: InputMaybe<Scalars['Boolean']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  investigator?: InputMaybe<Scalars['String']['input']>;
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
+  owner_id?: InputMaybe<Scalars['String']['input']>;
+  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  slots?: InputMaybe<Scalars['jsonb']['input']>;
+  tags?: InputMaybe<Scalars['jsonb']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type Deck_Stddev_Fields = {
+  __typename?: 'deck_stddev_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Deck_Stddev_Pop_Fields = {
+  __typename?: 'deck_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Deck_Stddev_Samp_Fields = {
+  __typename?: 'deck_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Streaming cursor of the table "deck" */
+export type Deck_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Deck_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Deck_Stream_Cursor_Value_Input = {
+  archived?: InputMaybe<Scalars['Boolean']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  investigator?: InputMaybe<Scalars['String']['input']>;
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
+  owner_id?: InputMaybe<Scalars['String']['input']>;
+  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  slots?: InputMaybe<Scalars['jsonb']['input']>;
+  tags?: InputMaybe<Scalars['jsonb']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate sum on columns */
+export type Deck_Sum_Fields = {
+  __typename?: 'deck_sum_fields';
+  id?: Maybe<Scalars['Int']['output']>;
+  next_deck_id?: Maybe<Scalars['Int']['output']>;
+};
+
+/** update columns of table "deck" */
+export enum Deck_Update_Column {
+  /** column name */
+  Archived = 'archived',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Investigator = 'investigator',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  NextDeckId = 'next_deck_id',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  SideSlots = 'side_slots',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Tags = 'tags',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Deck_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Deck_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Deck_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Deck_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Deck_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Deck_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Deck_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Deck_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Deck_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Deck_Var_Pop_Fields = {
+  __typename?: 'deck_var_pop_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate var_samp on columns */
+export type Deck_Var_Samp_Fields = {
+  __typename?: 'deck_var_samp_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate variance on columns */
+export type Deck_Variance_Fields = {
+  __typename?: 'deck_variance_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
 /** columns and relationships of "faction_name" */
 export type Faction_Name = {
   __typename?: 'faction_name';
@@ -19763,6 +20217,10 @@ export type Mutation_Root = {
   delete_cycle_name?: Maybe<Cycle_Name_Mutation_Response>;
   /** delete single row from the table: "cycle_name" */
   delete_cycle_name_by_pk?: Maybe<Cycle_Name>;
+  /** delete data from the table: "deck" */
+  delete_deck?: Maybe<Deck_Mutation_Response>;
+  /** delete single row from the table: "deck" */
+  delete_deck_by_pk?: Maybe<Deck>;
   /** delete data from the table: "faction_name" */
   delete_faction_name?: Maybe<Faction_Name_Mutation_Response>;
   /** delete single row from the table: "faction_name" */
@@ -20141,6 +20599,10 @@ export type Mutation_Root = {
   insert_cycle_name_one?: Maybe<Cycle_Name>;
   /** insert a single row into the table: "cycle" */
   insert_cycle_one?: Maybe<Cycle>;
+  /** insert data into the table: "deck" */
+  insert_deck?: Maybe<Deck_Mutation_Response>;
+  /** insert a single row into the table: "deck" */
+  insert_deck_one?: Maybe<Deck>;
   /** insert data into the table: "faction_name" */
   insert_faction_name?: Maybe<Faction_Name_Mutation_Response>;
   /** insert a single row into the table: "faction_name" */
@@ -20627,6 +21089,12 @@ export type Mutation_Root = {
   update_cycle_name_by_pk?: Maybe<Cycle_Name>;
   /** update multiples rows of table: "cycle_name" */
   update_cycle_name_many?: Maybe<Array<Maybe<Cycle_Name_Mutation_Response>>>;
+  /** update data of the table: "deck" */
+  update_deck?: Maybe<Deck_Mutation_Response>;
+  /** update single row of the table: "deck" */
+  update_deck_by_pk?: Maybe<Deck>;
+  /** update multiples rows of table: "deck" */
+  update_deck_many?: Maybe<Array<Maybe<Deck_Mutation_Response>>>;
   /** update data of the table: "faction_name" */
   update_faction_name?: Maybe<Faction_Name_Mutation_Response>;
   /** update single row of the table: "faction_name" */
@@ -21466,6 +21934,18 @@ export type Mutation_RootDelete_Cycle_NameArgs = {
 export type Mutation_RootDelete_Cycle_Name_By_PkArgs = {
   code: Scalars['String']['input'];
   locale: Scalars['String']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_DeckArgs = {
+  where: Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Deck_By_PkArgs = {
+  id: Scalars['Int']['input'];
 };
 
 
@@ -22698,6 +23178,20 @@ export type Mutation_RootInsert_Cycle_Name_OneArgs = {
 export type Mutation_RootInsert_Cycle_OneArgs = {
   object: Cycle_Insert_Input;
   on_conflict?: InputMaybe<Cycle_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_DeckArgs = {
+  objects: Array<Deck_Insert_Input>;
+  on_conflict?: InputMaybe<Deck_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Deck_OneArgs = {
+  object: Deck_Insert_Input;
+  on_conflict?: InputMaybe<Deck_On_Conflict>;
 };
 
 
@@ -24460,6 +24954,38 @@ export type Mutation_RootUpdate_Cycle_Name_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Cycle_Name_ManyArgs = {
   updates: Array<Cycle_Name_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_DeckArgs = {
+  _append?: InputMaybe<Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Deck_Inc_Input>;
+  _prepend?: InputMaybe<Deck_Prepend_Input>;
+  _set?: InputMaybe<Deck_Set_Input>;
+  where: Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Deck_By_PkArgs = {
+  _append?: InputMaybe<Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Deck_Inc_Input>;
+  _prepend?: InputMaybe<Deck_Prepend_Input>;
+  _set?: InputMaybe<Deck_Set_Input>;
+  pk_columns: Deck_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Deck_ManyArgs = {
+  updates: Array<Deck_Updates>;
 };
 
 
@@ -26565,6 +27091,12 @@ export type Query_Root = {
   cycle_name_aggregate: Cycle_Name_Aggregate;
   /** fetch data from the table: "cycle_name" using primary key columns */
   cycle_name_by_pk?: Maybe<Cycle_Name>;
+  /** fetch data from the table: "deck" */
+  deck: Array<Deck>;
+  /** fetch aggregated fields from the table: "deck" */
+  deck_aggregate: Deck_Aggregate;
+  /** fetch data from the table: "deck" using primary key columns */
+  deck_by_pk?: Maybe<Deck>;
   /** fetch data from the table: "faction_name" */
   faction_name: Array<Faction_Name>;
   /** fetch aggregated fields from the table: "faction_name" */
@@ -27940,6 +28472,29 @@ export type Query_RootCycle_Name_AggregateArgs = {
 export type Query_RootCycle_Name_By_PkArgs = {
   code: Scalars['String']['input'];
   locale: Scalars['String']['input'];
+};
+
+
+export type Query_RootDeckArgs = {
+  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Deck_Order_By>>;
+  where?: InputMaybe<Deck_Bool_Exp>;
+};
+
+
+export type Query_RootDeck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Deck_Order_By>>;
+  where?: InputMaybe<Deck_Bool_Exp>;
+};
+
+
+export type Query_RootDeck_By_PkArgs = {
+  id: Scalars['Int']['input'];
 };
 
 
@@ -30218,6 +30773,7 @@ export type Rangers_Campaign = {
   cycle_id: Scalars['String']['output'];
   day: Scalars['Int']['output'];
   events: Scalars['jsonb']['output'];
+  extended_calendar?: Maybe<Scalars['Boolean']['output']>;
   history: Scalars['jsonb']['output'];
   id: Scalars['Int']['output'];
   /** An array relationship */
@@ -30226,6 +30782,7 @@ export type Rangers_Campaign = {
   latest_decks_aggregate: Rangers_Latest_Deck_Aggregate;
   missions: Scalars['jsonb']['output'];
   name: Scalars['String']['output'];
+  notes: Scalars['jsonb']['output'];
   removed: Scalars['jsonb']['output'];
   rewards: Scalars['jsonb']['output'];
   updated_at: Scalars['timestamptz']['output'];
@@ -30293,6 +30850,12 @@ export type Rangers_CampaignLatest_Decks_AggregateArgs = {
 
 /** columns and relationships of "rangers.campaign" */
 export type Rangers_CampaignMissionsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "rangers.campaign" */
+export type Rangers_CampaignNotesArgs = {
   path?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -30552,6 +31115,7 @@ export type Rangers_Campaign_Append_Input = {
   events?: InputMaybe<Scalars['jsonb']['input']>;
   history?: InputMaybe<Scalars['jsonb']['input']>;
   missions?: InputMaybe<Scalars['jsonb']['input']>;
+  notes?: InputMaybe<Scalars['jsonb']['input']>;
   removed?: InputMaybe<Scalars['jsonb']['input']>;
   rewards?: InputMaybe<Scalars['jsonb']['input']>;
 };
@@ -30578,12 +31142,14 @@ export type Rangers_Campaign_Bool_Exp = {
   cycle_id?: InputMaybe<String_Comparison_Exp>;
   day?: InputMaybe<Int_Comparison_Exp>;
   events?: InputMaybe<Jsonb_Comparison_Exp>;
+  extended_calendar?: InputMaybe<Boolean_Comparison_Exp>;
   history?: InputMaybe<Jsonb_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   latest_decks?: InputMaybe<Rangers_Latest_Deck_Bool_Exp>;
   latest_decks_aggregate?: InputMaybe<Rangers_Latest_Deck_Aggregate_Bool_Exp>;
   missions?: InputMaybe<Jsonb_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  notes?: InputMaybe<Jsonb_Comparison_Exp>;
   removed?: InputMaybe<Jsonb_Comparison_Exp>;
   rewards?: InputMaybe<Jsonb_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -30602,6 +31168,7 @@ export type Rangers_Campaign_Delete_At_Path_Input = {
   events?: InputMaybe<Array<Scalars['String']['input']>>;
   history?: InputMaybe<Array<Scalars['String']['input']>>;
   missions?: InputMaybe<Array<Scalars['String']['input']>>;
+  notes?: InputMaybe<Array<Scalars['String']['input']>>;
   removed?: InputMaybe<Array<Scalars['String']['input']>>;
   rewards?: InputMaybe<Array<Scalars['String']['input']>>;
 };
@@ -30612,6 +31179,7 @@ export type Rangers_Campaign_Delete_Elem_Input = {
   events?: InputMaybe<Scalars['Int']['input']>;
   history?: InputMaybe<Scalars['Int']['input']>;
   missions?: InputMaybe<Scalars['Int']['input']>;
+  notes?: InputMaybe<Scalars['Int']['input']>;
   removed?: InputMaybe<Scalars['Int']['input']>;
   rewards?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -30622,6 +31190,7 @@ export type Rangers_Campaign_Delete_Key_Input = {
   events?: InputMaybe<Scalars['String']['input']>;
   history?: InputMaybe<Scalars['String']['input']>;
   missions?: InputMaybe<Scalars['String']['input']>;
+  notes?: InputMaybe<Scalars['String']['input']>;
   removed?: InputMaybe<Scalars['String']['input']>;
   rewards?: InputMaybe<Scalars['String']['input']>;
 };
@@ -30643,11 +31212,13 @@ export type Rangers_Campaign_Insert_Input = {
   cycle_id?: InputMaybe<Scalars['String']['input']>;
   day?: InputMaybe<Scalars['Int']['input']>;
   events?: InputMaybe<Scalars['jsonb']['input']>;
+  extended_calendar?: InputMaybe<Scalars['Boolean']['input']>;
   history?: InputMaybe<Scalars['jsonb']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
   latest_decks?: InputMaybe<Rangers_Latest_Deck_Arr_Rel_Insert_Input>;
   missions?: InputMaybe<Scalars['jsonb']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  notes?: InputMaybe<Scalars['jsonb']['input']>;
   removed?: InputMaybe<Scalars['jsonb']['input']>;
   rewards?: InputMaybe<Scalars['jsonb']['input']>;
   updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
@@ -30716,11 +31287,13 @@ export type Rangers_Campaign_Order_By = {
   cycle_id?: InputMaybe<Order_By>;
   day?: InputMaybe<Order_By>;
   events?: InputMaybe<Order_By>;
+  extended_calendar?: InputMaybe<Order_By>;
   history?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   latest_decks_aggregate?: InputMaybe<Rangers_Latest_Deck_Aggregate_Order_By>;
   missions?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  notes?: InputMaybe<Order_By>;
   removed?: InputMaybe<Order_By>;
   rewards?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -30738,6 +31311,7 @@ export type Rangers_Campaign_Prepend_Input = {
   events?: InputMaybe<Scalars['jsonb']['input']>;
   history?: InputMaybe<Scalars['jsonb']['input']>;
   missions?: InputMaybe<Scalars['jsonb']['input']>;
+  notes?: InputMaybe<Scalars['jsonb']['input']>;
   removed?: InputMaybe<Scalars['jsonb']['input']>;
   rewards?: InputMaybe<Scalars['jsonb']['input']>;
 };
@@ -30759,6 +31333,8 @@ export enum Rangers_Campaign_Select_Column {
   /** column name */
   Events = 'events',
   /** column name */
+  ExtendedCalendar = 'extended_calendar',
+  /** column name */
   History = 'history',
   /** column name */
   Id = 'id',
@@ -30766,6 +31342,8 @@ export enum Rangers_Campaign_Select_Column {
   Missions = 'missions',
   /** column name */
   Name = 'name',
+  /** column name */
+  Notes = 'notes',
   /** column name */
   Removed = 'removed',
   /** column name */
@@ -30785,10 +31363,12 @@ export type Rangers_Campaign_Set_Input = {
   cycle_id?: InputMaybe<Scalars['String']['input']>;
   day?: InputMaybe<Scalars['Int']['input']>;
   events?: InputMaybe<Scalars['jsonb']['input']>;
+  extended_calendar?: InputMaybe<Scalars['Boolean']['input']>;
   history?: InputMaybe<Scalars['jsonb']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
   missions?: InputMaybe<Scalars['jsonb']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  notes?: InputMaybe<Scalars['jsonb']['input']>;
   removed?: InputMaybe<Scalars['jsonb']['input']>;
   rewards?: InputMaybe<Scalars['jsonb']['input']>;
   updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
@@ -30833,10 +31413,12 @@ export type Rangers_Campaign_Stream_Cursor_Value_Input = {
   cycle_id?: InputMaybe<Scalars['String']['input']>;
   day?: InputMaybe<Scalars['Int']['input']>;
   events?: InputMaybe<Scalars['jsonb']['input']>;
+  extended_calendar?: InputMaybe<Scalars['Boolean']['input']>;
   history?: InputMaybe<Scalars['jsonb']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
   missions?: InputMaybe<Scalars['jsonb']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  notes?: InputMaybe<Scalars['jsonb']['input']>;
   removed?: InputMaybe<Scalars['jsonb']['input']>;
   rewards?: InputMaybe<Scalars['jsonb']['input']>;
   updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
@@ -30867,6 +31449,8 @@ export enum Rangers_Campaign_Update_Column {
   /** column name */
   Events = 'events',
   /** column name */
+  ExtendedCalendar = 'extended_calendar',
+  /** column name */
   History = 'history',
   /** column name */
   Id = 'id',
@@ -30874,6 +31458,8 @@ export enum Rangers_Campaign_Update_Column {
   Missions = 'missions',
   /** column name */
   Name = 'name',
+  /** column name */
+  Notes = 'notes',
   /** column name */
   Removed = 'removed',
   /** column name */
@@ -33206,6 +33792,7 @@ export type Rangers_Deck = {
   copy_count: Scalars['Int']['output'];
   created_at?: Maybe<Scalars['timestamptz']['output']>;
   description?: Maybe<Scalars['String']['output']>;
+  extra_slots: Scalars['jsonb']['output'];
   fit: Scalars['Int']['output'];
   foc: Scalars['Int']['output'];
   id: Scalars['Int']['output'];
@@ -33256,6 +33843,12 @@ export type Rangers_DeckComments_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Rangers_Comment_Order_By>>;
   where?: InputMaybe<Rangers_Comment_Bool_Exp>;
+};
+
+
+/** columns and relationships of "rangers.deck" */
+export type Rangers_DeckExtra_SlotsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -33320,6 +33913,7 @@ export type Rangers_Deck_Aggregate_FieldsCountArgs = {
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Rangers_Deck_Append_Input = {
+  extra_slots?: InputMaybe<Scalars['jsonb']['input']>;
   meta?: InputMaybe<Scalars['jsonb']['input']>;
   side_slots?: InputMaybe<Scalars['jsonb']['input']>;
   slots?: InputMaybe<Scalars['jsonb']['input']>;
@@ -33360,6 +33954,7 @@ export type Rangers_Deck_Bool_Exp = {
   copy_count?: InputMaybe<Int_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
+  extra_slots?: InputMaybe<Jsonb_Comparison_Exp>;
   fit?: InputMaybe<Int_Comparison_Exp>;
   foc?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
@@ -33661,6 +34256,7 @@ export type Rangers_Deck_Copy_Variance_Fields = {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Rangers_Deck_Delete_At_Path_Input = {
+  extra_slots?: InputMaybe<Array<Scalars['String']['input']>>;
   meta?: InputMaybe<Array<Scalars['String']['input']>>;
   side_slots?: InputMaybe<Array<Scalars['String']['input']>>;
   slots?: InputMaybe<Array<Scalars['String']['input']>>;
@@ -33670,6 +34266,7 @@ export type Rangers_Deck_Delete_At_Path_Input = {
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Rangers_Deck_Delete_Elem_Input = {
+  extra_slots?: InputMaybe<Scalars['Int']['input']>;
   meta?: InputMaybe<Scalars['Int']['input']>;
   side_slots?: InputMaybe<Scalars['Int']['input']>;
   slots?: InputMaybe<Scalars['Int']['input']>;
@@ -33679,6 +34276,7 @@ export type Rangers_Deck_Delete_Elem_Input = {
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Rangers_Deck_Delete_Key_Input = {
+  extra_slots?: InputMaybe<Scalars['String']['input']>;
   meta?: InputMaybe<Scalars['String']['input']>;
   side_slots?: InputMaybe<Scalars['String']['input']>;
   slots?: InputMaybe<Scalars['String']['input']>;
@@ -33714,6 +34312,7 @@ export type Rangers_Deck_Insert_Input = {
   copy_count?: InputMaybe<Scalars['Int']['input']>;
   created_at?: InputMaybe<Scalars['timestamptz']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  extra_slots?: InputMaybe<Scalars['jsonb']['input']>;
   fit?: InputMaybe<Scalars['Int']['input']>;
   foc?: InputMaybe<Scalars['Int']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
@@ -34279,6 +34878,7 @@ export type Rangers_Deck_Order_By = {
   copy_count?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
+  extra_slots?: InputMaybe<Order_By>;
   fit?: InputMaybe<Order_By>;
   foc?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
@@ -34311,6 +34911,7 @@ export type Rangers_Deck_Pk_Columns_Input = {
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Rangers_Deck_Prepend_Input = {
+  extra_slots?: InputMaybe<Scalars['jsonb']['input']>;
   meta?: InputMaybe<Scalars['jsonb']['input']>;
   side_slots?: InputMaybe<Scalars['jsonb']['input']>;
   slots?: InputMaybe<Scalars['jsonb']['input']>;
@@ -34520,6 +35121,8 @@ export enum Rangers_Deck_Select_Column {
   /** column name */
   Description = 'description',
   /** column name */
+  ExtraSlots = 'extra_slots',
+  /** column name */
   Fit = 'fit',
   /** column name */
   Foc = 'foc',
@@ -34562,6 +35165,7 @@ export type Rangers_Deck_Set_Input = {
   copy_count?: InputMaybe<Scalars['Int']['input']>;
   created_at?: InputMaybe<Scalars['timestamptz']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  extra_slots?: InputMaybe<Scalars['jsonb']['input']>;
   fit?: InputMaybe<Scalars['Int']['input']>;
   foc?: InputMaybe<Scalars['Int']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
@@ -34648,6 +35252,7 @@ export type Rangers_Deck_Stream_Cursor_Value_Input = {
   copy_count?: InputMaybe<Scalars['Int']['input']>;
   created_at?: InputMaybe<Scalars['timestamptz']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  extra_slots?: InputMaybe<Scalars['jsonb']['input']>;
   fit?: InputMaybe<Scalars['Int']['input']>;
   foc?: InputMaybe<Scalars['Int']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
@@ -34699,6 +35304,8 @@ export enum Rangers_Deck_Update_Column {
   CreatedAt = 'created_at',
   /** column name */
   Description = 'description',
+  /** column name */
+  ExtraSlots = 'extra_slots',
   /** column name */
   Fit = 'fit',
   /** column name */
@@ -40344,6 +40951,14 @@ export type Subscription_Root = {
   cycle_name_stream: Array<Cycle_Name>;
   /** fetch data from the table in a streaming manner: "cycle" */
   cycle_stream: Array<Cycle>;
+  /** fetch data from the table: "deck" */
+  deck: Array<Deck>;
+  /** fetch aggregated fields from the table: "deck" */
+  deck_aggregate: Deck_Aggregate;
+  /** fetch data from the table: "deck" using primary key columns */
+  deck_by_pk?: Maybe<Deck>;
+  /** fetch data from the table in a streaming manner: "deck" */
+  deck_stream: Array<Deck>;
   /** fetch data from the table: "faction_name" */
   faction_name: Array<Faction_Name>;
   /** fetch aggregated fields from the table: "faction_name" */
@@ -42161,6 +42776,36 @@ export type Subscription_RootCycle_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Cycle_Stream_Cursor_Input>>;
   where?: InputMaybe<Cycle_Bool_Exp>;
+};
+
+
+export type Subscription_RootDeckArgs = {
+  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Deck_Order_By>>;
+  where?: InputMaybe<Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootDeck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Deck_Order_By>>;
+  where?: InputMaybe<Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootDeck_By_PkArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
+export type Subscription_RootDeck_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Deck_Stream_Cursor_Input>>;
+  where?: InputMaybe<Deck_Bool_Exp>;
 };
 
 

@@ -6,19 +6,20 @@ interface Props {
   label: string | undefined;
   children: ReactNode;
   height: number;
-  width: number
+  width: number;
+  toggle: boolean;
+  setToggle: (toggle: boolean) => void;
 }
-export default function ToolTip({ label, height, width, children }: Props) {
+export default function ToolTip({ label, height, width, children, toggle, setToggle }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const [toggle, setToggle] = useState(false);
 
   const handlePressIn = useCallback(() => {
     setToggle(true);
-  }, []);
+  }, [setToggle]);
 
   const handlePressOut = useCallback(() => {
     setToggle(false);
-  }, []);
+  }, [setToggle]);
 
   return (
     <>
