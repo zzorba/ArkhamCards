@@ -1063,6 +1063,1150 @@
     "supplies": []
   },
   {
+    "campaignId": "fhv",
+    "sections": [
+      {
+        "section": "areas_surveyed",
+        "entries": [
+          {
+            "id": "akwan_shoreline",
+            "text": "Akwan Shoreline"
+          },
+          {
+            "id": "eastwick_bog",
+            "text": "Eastwick Bog"
+          },
+          {
+            "id": "hemlock_harbor",
+            "text": "Hemlock Harbor"
+          },
+          {
+            "id": "north_point_mine",
+            "text": "North Point Mine"
+          },
+          {
+            "id": "pearl_ridge",
+            "text": "Pearl Ridge"
+          },
+          {
+            "id": "southern_fields",
+            "text": "Souther Fields"
+          },
+          {
+            "id": "western_woods",
+            "text": "Western Woods"
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "eat",
+            "masculine_text": "#name# finished his meal.",
+            "feminine_text": "#name# finished her meal.",
+            "nonbinary_text": "#name# finished their meal."
+          },
+          {
+            "id": "all_the_captives_were_lost",
+            "text": "all the captives were lost."
+          },
+          {
+            "id": "barely_survived",
+            "text": "investigators barely survived the Feast of Hemlock Vale."
+          },
+          {
+            "id": "became_the_true_feast_of_hemlock_vale",
+            "text": "the investigators became the true Feast of Hemlock Vale."
+          },
+          {
+            "id": "believed",
+            "text": "the investigators believed."
+          },
+          {
+            "id": "bertie_had_an_epiphany",
+            "text": "Bertie had an epiphany."
+          },
+          {
+            "id": "bertie_perished",
+            "text": "Bertie perished."
+          },
+          {
+            "id": "bertie_was_lost_in_the_woods",
+            "text": "Bertie was lost in the woods."
+          },
+          {
+            "id": "bertie_was_rescued",
+            "text": "Bertie was rescued."
+          },
+          {
+            "id": "captives_were_saved",
+            "text": "the captives were saved."
+          },
+          {
+            "id": "chelydran_hybrid_devoured",
+            "text": "the Chelydran Hybrid was devoured."
+          },
+          {
+            "id": "chelydran_hybrid_lived",
+            "text": "the Chelydran Hybrid lived."
+          },
+          {
+            "id": "chelydran_hybrid_perished",
+            "text": "the Chelydran Hybrid perished."
+          },
+          {
+            "id": "dr_marquez_has_a_hunch",
+            "text": "Dr. Marquez has a hunch."
+          },
+          {
+            "id": "dr_marquez_has_a_plan",
+            "text": "Dr. Marquez has a plan."
+          },
+          {
+            "id": "dr_marquez_sacrificed_herself_for_the_vale",
+            "text": "Dr. Marquez sacrificed herself for the Vale."
+          },
+          {
+            "id": "elizabeth_peters_was_saved",
+            "text": "Elizabeth Peters was saved."
+          },
+          {
+            "id": "faced_the_night_alone",
+            "text": "the investigators faced the longest night alone."
+          },
+          {
+            "id": "helen_peters_joined_the_survey",
+            "text": "Helen Peters joined the survey."
+          },
+          {
+            "id": "helen_shared_a_dance",
+            "text": "Helen shared a dance."
+          },
+          {
+            "id": "interrupted_the_feast",
+            "text": "the investigators interrupted the Feast."
+          },
+          {
+            "id": "investigators_sacrificed_themselves_for_the_vale",
+            "text": "the investigators sacrificed themselves for the Vale."
+          },
+          {
+            "id": "laid_the_pearl_family_to_rest",
+            "text": "the investigators laid the Pearl Family to rest."
+          },
+          {
+            "id": "learned_their_place",
+            "text": "the investigators learned their place."
+          },
+          {
+            "id": "lied_to_mother_rachel",
+            "text": "the investigators lied to Mother Rachel."
+          },
+          {
+            "id": "lost_the_path",
+            "text": "the investigators lost the path."
+          },
+          {
+            "id": "madame_pearls_diary_was_recovered",
+            "text": "Madame Pearl’s diary was recovered."
+          },
+          {
+            "id": "many_captives_were_lost",
+            "text": "many captives were lost."
+          },
+          {
+            "id": "mother_rachel_showed_the_way",
+            "text": "Mother Rachel showed the way."
+          },
+          {
+            "id": "remains_were_partially_recovered",
+            "text": "the remains were partially recovered."
+          },
+          {
+            "id": "survived_the_horrors_in_the_rock",
+            "text": "the investigators survived the horrors in the rock."
+          },
+          {
+            "id": "the_bear_was_wounded",
+            "text": "the bear was wounded."
+          },
+          {
+            "id": "the_hemlocks_made_a_truce",
+            "text": "the Hemlocks made a truce."
+          },
+          {
+            "id": "the_peters_family_was_reunited",
+            "text": "The Peters family was reunited."
+          },
+          {
+            "id": "the_vale_burned",
+            "text": "the Vale burned."
+          },
+          {
+            "id": "the_vale_is_full_of_fireworks",
+            "text": "The Vale is full of fireworks."
+          },
+          {
+            "id": "the_vale_was_saved",
+            "text": "the Vale was saved."
+          },
+          {
+            "id": "thing_in_the_depths_was_defeated",
+            "text": "The Thing in the Depths was defeated."
+          }
+        ]
+      },
+      {
+        "section": "current_day",
+        "entries": [
+          {
+            "id": "day_1_day",
+            "text": "Day 1 ([day])"
+          },
+          {
+            "id": "day_1_night",
+            "text": "Night 1 ([night])"
+          },
+          {
+            "id": "day_2_day",
+            "text": "Day 2 ([day])"
+          },
+          {
+            "id": "day_2_night",
+            "text": "Night 2 ([night])"
+          },
+          {
+            "id": "day_3_day",
+            "text": "Day 3 ([day])"
+          },
+          {
+            "id": "day_3_night",
+            "text": "Night 3 ([night])"
+          }
+        ]
+      },
+      {
+        "section": "gideon",
+        "entries": [
+          {
+            "id": "gideon_finished_the_tale_of_the_annabelle_lee",
+            "text": "Gideon finished the tale of the Annabelle Lee."
+          },
+          {
+            "id": "gideon_found_his_treasure",
+            "text": "Gideon found his treasure."
+          },
+          {
+            "id": "gideon_shared_a_dance",
+            "text": "Gideon shared a dance."
+          },
+          {
+            "id": "gideon_stood_by_you",
+            "text": "Gideon stood by you."
+          },
+          {
+            "id": "gideon_told_the_story_of_captain_hemlock",
+            "text": "Gideon told the story of Captain Hemlock."
+          },
+          {
+            "id": "gideon_told_the_tale_of_the_annabelle_lee",
+            "text": "Gideon told the tale of the Annabelle Lee."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "",
+            "text": "leurre"
+          },
+          {
+            "id": "always_true",
+            "text": "leurre"
+          },
+          {
+            "id": "bertie_is_fleeing",
+            "text": "leurre"
+          },
+          {
+            "id": "codex_theta_act_asked",
+            "text": "leurre"
+          },
+          {
+            "id": "damage_on_captives",
+            "text": "leurre"
+          },
+          {
+            "id": "delivering_a_package",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_act_3a_v1",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_act_3a_v2",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_act_3a_v3",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_act_3a_v4",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_asked_codex_sigma_act",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_saved_gideon",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_saved_judith",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_saved_leah",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_saved_rachel",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_saved_river",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_saved_simeon",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_saved_theo",
+            "text": "leurre"
+          },
+          {
+            "id": "fate_of_the_vale_saved_william",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_fate_codex_2",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_fate_codex_3",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_fate_codex_4",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_fate_codex_5",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_fate_codex_6",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_fate_codex_7",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_fate_codex_8",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_fate_codex_omega",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_fate_codex_sigma",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_1",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_10",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_11",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_13",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_14",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_15",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_16",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_2",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_4",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_5",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_6",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_7",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_day_codex_8",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_backup_river_relationship",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_backup_william_relationship",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_1",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_10",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_11",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_12",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_13",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_14",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_15",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_16",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_2",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_3",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_4",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_5",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_6",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_7",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_8",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_9",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_omega",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_final_evening_codex_sigma",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_1",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_10",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_11",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_12",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_13",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_14",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_15",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_16",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_2",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_3",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_4",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_5",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_6",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_7",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_8",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_prologue_codex_9",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_1",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_10",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_11",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_12",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_13",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_14",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_14_once",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_15",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_16",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_17",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_3",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_4",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_5",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_6",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_7",
+            "text": "leurre"
+          },
+          {
+            "id": "fhv_second_day_codex_8",
+            "text": "leurre"
+          },
+          {
+            "id": "first_evening_codex_delta",
+            "text": "leurre"
+          },
+          {
+            "id": "first_evening_codex_gamma",
+            "text": "leurre"
+          },
+          {
+            "id": "first_evening_codex_omega",
+            "text": "leurre"
+          },
+          {
+            "id": "first_evening_codex_pi",
+            "text": "leurre"
+          },
+          {
+            "id": "first_evening_codex_sigma",
+            "text": "leurre"
+          },
+          {
+            "id": "first_evening_codex_theta",
+            "text": "leurre"
+          },
+          {
+            "id": "found_little_sylvie",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_codex_4",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_codex_4_day_2_asked",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_codex_4_william_and_judith_reunited",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_codex_6",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_codex_7",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_codex_7_day_2_asked",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_codex_7_william_and_judith_reuinted",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_codex_8",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_codex_sigma",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_codex_theta",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_control_judith",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_helping_gideon",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_judith_is_remodeling",
+            "text": "leurre"
+          },
+          {
+            "id": "hemlock_house_little_sylvie",
+            "text": "leurre"
+          },
+          {
+            "id": "longest_night_codex_2",
+            "text": "leurre"
+          },
+          {
+            "id": "longest_night_codex_3",
+            "text": "leurre"
+          },
+          {
+            "id": "longest_night_codex_4",
+            "text": "leurre"
+          },
+          {
+            "id": "longest_night_codex_5",
+            "text": "leurre"
+          },
+          {
+            "id": "longest_night_codex_6",
+            "text": "leurre"
+          },
+          {
+            "id": "longest_night_codex_7",
+            "text": "leurre"
+          },
+          {
+            "id": "longest_night_codex_8",
+            "text": "leurre"
+          },
+          {
+            "id": "longest_night_codex_omega",
+            "text": "leurre"
+          },
+          {
+            "id": "longest_night_codex_sigma",
+            "text": "leurre"
+          },
+          {
+            "id": "lost_sister_argument_done",
+            "text": "leurre"
+          },
+          {
+            "id": "lost_sister_codex_4",
+            "text": "leurre"
+          },
+          {
+            "id": "lost_sister_codex_6",
+            "text": "leurre"
+          },
+          {
+            "id": "lost_sister_codex_8",
+            "text": "leurre"
+          },
+          {
+            "id": "lost_sister_codex_sigma",
+            "text": "leurre"
+          },
+          {
+            "id": "lost_sister_codex_theta",
+            "text": "leurre"
+          },
+          {
+            "id": "lost_sister_gideon_is_searching_for_an_heirloom",
+            "text": "leurre"
+          },
+          {
+            "id": "read_codex_17_curse",
+            "text": "leurre"
+          },
+          {
+            "id": "replay_final_evening",
+            "text": "leurre"
+          },
+          {
+            "id": "running_an_errand",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_1",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_2",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_3",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_4",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_5",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_6",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_7",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_8",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_9",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_omega",
+            "text": "leurre"
+          },
+          {
+            "id": "second_evening_codex_theta",
+            "text": "leurre"
+          },
+          {
+            "id": "silent_heath_codex_1",
+            "text": "leurre"
+          },
+          {
+            "id": "silent_heath_codex_2",
+            "text": "leurre"
+          },
+          {
+            "id": "silent_heath_codex_omega",
+            "text": "leurre"
+          },
+          {
+            "id": "silent_heath_codex_phi",
+            "text": "leurre"
+          },
+          {
+            "id": "silent_heath_codex_psi",
+            "text": "leurre"
+          },
+          {
+            "id": "silent_heath_codex_sigma",
+            "text": "leurre"
+          },
+          {
+            "id": "silent_heath_codex_theta",
+            "text": "leurre"
+          },
+          {
+            "id": "simeon_plan_is_underway",
+            "text": "leurre"
+          },
+          {
+            "id": "the_cave_in",
+            "text": "leurre"
+          },
+          {
+            "id": "the_hemlocks_are_hashing_it_out",
+            "text": "leurre"
+          },
+          {
+            "id": "theo_is_arguing_with_helen",
+            "text": "leurre"
+          },
+          {
+            "id": "thing_depths_codex_5",
+            "text": "leurre"
+          },
+          {
+            "id": "thing_depths_codex_7",
+            "text": "leurre"
+          },
+          {
+            "id": "thing_depths_codex_theta",
+            "text": "leurre"
+          },
+          {
+            "id": "thing_depths_control_river",
+            "text": "leurre"
+          },
+          {
+            "id": "thing_depths_controlled_river",
+            "text": "leurre"
+          },
+          {
+            "id": "thing_depths_in_victory",
+            "text": "leurre"
+          },
+          {
+            "id": "thing_depths_river_asked_for_help",
+            "text": "leurre"
+          },
+          {
+            "id": "took_ajax",
+            "text": "leurre"
+          },
+          {
+            "id": "twisted_hollow_codex_omega",
+            "text": "leurre"
+          },
+          {
+            "id": "twisted_hollow_codex_sigma",
+            "text": "leurre"
+          },
+          {
+            "id": "twisted_hollow_codex_theta",
+            "text": "leurre"
+          },
+          {
+            "id": "twisted_hollow_judith_set_aside",
+            "text": "leurre"
+          },
+          {
+            "id": "twisted_hollow_theo_set_aside",
+            "text": "leurre"
+          },
+          {
+            "id": "wir_helped_river",
+            "text": "leurre"
+          },
+          {
+            "id": "written_in_rock_asked_act",
+            "text": "leurre"
+          },
+          {
+            "id": "written_in_rock_codex_2",
+            "text": "leurre"
+          },
+          {
+            "id": "written_in_rock_codex_3",
+            "text": "leurre"
+          },
+          {
+            "id": "written_in_rock_codex_5",
+            "text": "leurre"
+          },
+          {
+            "id": "written_in_rock_codex_theta",
+            "text": "leurre"
+          },
+          {
+            "id": "written_in_rock_have_leah",
+            "text": "leurre"
+          },
+          {
+            "id": "written_in_rock_have_simeon",
+            "text": "leurre"
+          }
+        ]
+      },
+      {
+        "section": "judith",
+        "entries": [
+          {
+            "id": "judith_saved_your_ass",
+            "text": "Judith saved your ass."
+          },
+          {
+            "id": "judith_shared_a_dance",
+            "text": "Judith shared a dance."
+          },
+          {
+            "id": "judith_shared_a_grudge",
+            "text": "Judith shared a grudge."
+          },
+          {
+            "id": "judith_stood_by_you",
+            "text": "Judith stood by you."
+          },
+          {
+            "id": "theo_distracted_the_bear",
+            "text": "Theo Distracted the Bear."
+          },
+          {
+            "id": "you_backed_judith_up",
+            "text": "you backed Judith up."
+          }
+        ]
+      },
+      {
+        "section": "leah",
+        "entries": [
+          {
+            "id": "leah_and_simeon_were_reunited",
+            "text": "Leah and Simeon were reunited."
+          },
+          {
+            "id": "leah_is_searching_for_simeon",
+            "text": "Leah is searching for Simeon."
+          },
+          {
+            "id": "leah_saw_something_in_the_mine",
+            "text": "Leah saw something in the mine."
+          },
+          {
+            "id": "leah_shared_a_dance",
+            "text": "Leah shared a dance."
+          },
+          {
+            "id": "leah_shared_her_frustrations",
+            "text": "Leah shared her frustrations."
+          },
+          {
+            "id": "leah_stood_by_you",
+            "text": "Leah stood by you."
+          },
+          {
+            "id": "searched_the_pearl_ruins",
+            "text": "Leah searched the Pearl Ruins."
+          }
+        ]
+      },
+      {
+        "section": "rachel",
+        "entries": [
+          {
+            "id": "mother_rachel_intervened",
+            "text": "Mother Rachel intervened."
+          },
+          {
+            "id": "mother_rachel_shared_her_doubts",
+            "text": "Mother Rachel shared her doubts."
+          }
+        ]
+      },
+      {
+        "section": "river",
+        "entries": [
+          {
+            "id": "river_is_reclaiming_their_legacy",
+            "text": "River is reclaiming their legacy."
+          },
+          {
+            "id": "river_shared_a_dance",
+            "text": "River shared a dance."
+          },
+          {
+            "id": "river_stood_by_you",
+            "text": "River stood by you."
+          },
+          {
+            "id": "scheme_is_in_motion",
+            "text": "the scheme is in motion."
+          }
+        ]
+      },
+      {
+        "section": "simeon",
+        "entries": [
+          {
+            "id": "plan_is_underway",
+            "text": "the plan is underway."
+          },
+          {
+            "id": "plan_is_underway_count",
+            "text": "the plan is underway: #X#"
+          },
+          {
+            "id": "simeon_disappeared",
+            "text": "Simeon disappeared."
+          },
+          {
+            "id": "simeon_hatched_a_plan",
+            "text": "Simeon hatched a plan."
+          },
+          {
+            "id": "simeon_shared_a_dance",
+            "text": "Simeon shared a dance."
+          },
+          {
+            "id": "simeon_stood_by_you",
+            "text": "Simeon stood by you."
+          },
+          {
+            "id": "simeon_survived",
+            "text": "Simeon survived."
+          }
+        ]
+      },
+      {
+        "section": "theo",
+        "entries": [
+          {
+            "id": "theo_is_having_second_thoughts",
+            "text": "Theo is having second thoughts."
+          },
+          {
+            "id": "theo_reconciled_with_helen",
+            "text": "Theo reconciled with Helen."
+          },
+          {
+            "id": "theo_rejected_his_family",
+            "text": "Theo rejected his family."
+          },
+          {
+            "id": "theo_shared_a_dance",
+            "text": "Theo shared a dance."
+          },
+          {
+            "id": "theo_stood_by_you",
+            "text": "Theo stood by you."
+          }
+        ]
+      },
+      {
+        "section": "william",
+        "entries": [
+          {
+            "id": "william_is_resolved",
+            "text": "William is resolved."
+          },
+          {
+            "id": "william_shared_a_dance",
+            "text": "William shared a dance."
+          },
+          {
+            "id": "william_stood_by_you",
+            "text": "William stood by you."
+          },
+          {
+            "id": "william_took_heart",
+            "text": "William took heart."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "fof",
     "sections": [
       {

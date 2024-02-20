@@ -83,11 +83,13 @@ function CardSection({ code, section, campaignGuide, width, isRelationship }: Ca
   const [card] = useSingleCard(code, 'encounter');
   const eliminated = !!section?.sectionCrossedOut;
   const header = useMemo(() => {
+    const campaignCard = campaignGuide.card(code);
     return (
       <CompactInvestigatorRow
         transparent
-        name={campaignGuide.card(code)?.name}
+        name={campaignCard?.name}
         investigator={card}
+        image={campaignCard?.img}
         detail={isRelationship && section ? <RelationshipBoxes section={section} /> : undefined}
         eliminated={eliminated}
         width={width}

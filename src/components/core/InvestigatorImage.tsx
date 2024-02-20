@@ -21,6 +21,7 @@ import space from '@styles/space';
 
 interface Props {
   card?: Card;
+  image?: string;
   backCard?: Card;
   componentId?: string;
   border?: boolean;
@@ -142,6 +143,7 @@ function InvestigatorImage({
   noShadow,
   imageOffset,
   round,
+  image,
 }: Props) {
   const { colors, fontScale, shadow } = useContext(StyleContext);
 
@@ -182,6 +184,9 @@ function InvestigatorImage({
     }
   }, [impliedSize, imageOffset, yithian, card]);
   const imgUri = useMemo(() => {
+    if (image) {
+      return image;
+    }
     if (card) {
       if (yithian) {
         return 'https://arkhamdb.com/bundles/cards/04244.jpg';
@@ -192,7 +197,7 @@ function InvestigatorImage({
       }
     }
     return arkhamCardsImg;
-  }, [card, yithian, arkhamCardsImg]);
+  }, [image, card, yithian, arkhamCardsImg]);
 
   const investigatorImage = useMemo(() => {
     if (imgUri) {
@@ -232,9 +237,11 @@ function InvestigatorImage({
 
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />, [colors]);
 
-  const image = useMemo(() => {
+  const imageNode = useMemo(() => {
     const size = IMAGE_SIZE[impliedSize];
-    if (!card) {
+    const faction = card?.factionCode() ?? 'neutral';
+    const encounterCode = card?.encounter_code;
+    if (!card && !imgUri) {
       return (
         <View style={[
           styles.container,
@@ -266,7 +273,7 @@ function InvestigatorImage({
           {
             width: size,
             height: size,
-            borderColor: round ? colors.faction[card.factionCode()].background : colors.faction[card.factionCode()].border,
+            borderColor: round ? colors.faction[faction].background : colors.faction[faction].border,
             overflow: 'hidden',
             backgroundColor: colors.background,
           },
@@ -279,16 +286,16 @@ function InvestigatorImage({
                 left: border ? -2 : 0,
                 width: size,
                 height: size,
-                backgroundColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
+                backgroundColor: colors.faction[killedOrInsane ? 'dead' : faction].background,
               },
             ]}>
               <View style={styles.icon}>
-                { card.encounter_code ? (
+                { encounterCode ? (
                   <View style={space.paddingTopXs}>
-                    <EncounterIcon encounter_code={card.encounter_code} color="#FFFFFF" size={ICON_SIZE[impliedSize]} />
+                    <EncounterIcon encounter_code={encounterCode} color="#FFFFFF" size={ICON_SIZE[impliedSize]} />
                   </View>
                 ) : (
-                  <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={ICON_SIZE[impliedSize]} />
+                  <FactionIcon faction={faction} defaultColor="#FFFFFF" size={ICON_SIZE[impliedSize]} />
                 ) }
               </View>
             </View>
@@ -322,11 +329,11 @@ function InvestigatorImage({
   if (componentId && card) {
     return (
       <TouchableOpacity onPress={onPress}>
-        { image }
+        { imageNode }
       </TouchableOpacity>
     );
   }
-  return image;
+  return imageNode;
 }
 
 InvestigatorImage.computeHeight = (size: 'large' | 'small' | 'tiny' = 'large', fontScale: number) => {
