@@ -562,7 +562,7 @@ function getDeckChangesHelper(
         addedCard.real_name === removedCard.real_name &&
         addedCard.xp !== undefined &&
         removedCard.xp !== undefined &&
-        addedCard.xp > removedCard.xp
+        (addedCard.xp > removedCard.xp || (addedCard.xp === removedCard.xp && addedCard.exceptional && !removedCard.exceptional)) 
       ) {
         decSlot(upgraded, removedCards[i]);
         incSlot(upgraded, addedCard);
