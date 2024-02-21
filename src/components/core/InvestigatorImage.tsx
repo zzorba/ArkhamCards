@@ -119,7 +119,7 @@ const INVESTIGATOR_HORIZONTAL_OFFSET: { [key: string]: number | undefined } = {
   '09018': 0.7,
   '03006': 0.7,
   'zsti_00004': 1.4,
-}
+};
 
 function getImpliedSize(size: 'large' | 'small' | 'tiny', fontScale: number) {
   if (size === 'small' || size === 'tiny') {
@@ -201,8 +201,8 @@ function InvestigatorImage({
 
   const investigatorImage = useMemo(() => {
     if (imgUri) {
-      const leftOffset = (card?.code && INVESTIGATOR_HORIZONTAL_OFFSET[card.code]) || 1;
-      const topOffset = (card?.code && INVESTIGATOR_VERTICAL_OFFSET[card.code]) || 1;
+      const leftOffset = card?.code ? (INVESTIGATOR_HORIZONTAL_OFFSET[card.code] || 1) : 3.9;
+      const topOffset = card?.code ? (INVESTIGATOR_VERTICAL_OFFSET[card.code] || 1) : 0.6;
       return (
         <FastImage
           style={[

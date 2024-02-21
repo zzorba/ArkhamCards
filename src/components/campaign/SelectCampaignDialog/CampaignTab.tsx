@@ -11,6 +11,7 @@ import {
   TDEB,
   CampaignCycleCode,
   EOE,
+  FHV,
 } from '@actions/types';
 import CycleItem from './CycleItem';
 import { campaignDescription, campaignName } from '../constants';
@@ -59,7 +60,8 @@ export default function CampaignTab({ campaignChanged, campaigns, segment, inclu
         (pack_code === 'core' && !in_collection.no_core) ||
         (pack_code === 'core' && in_collection.rcore) || (
         in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE) ||
-        (in_collection.eoec && pack_code === EOE))
+        (in_collection.eoec && pack_code === EOE) ||
+        (in_collection.fhvc && pack_code === FHV))
       )
     );
   }, [segment, campaigns, in_collection, ignore_collection]);

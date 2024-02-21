@@ -1093,5 +1093,474 @@
         "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
       }
     ]
+  },
+  {
+    "id": 7,
+    "code": "007",
+    "name": "Список табу",
+    "active": 1,
+    "date_start": "2024-02-20",
+    "cards": [
+      {
+        "code": "01073",
+        "xp": 2
+      },
+      {
+        "code": "01573",
+        "xp": 2
+      },
+      {
+        "code": "06332",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "text": "Последний абзац текста следует читать так: «Перестаньте сражаться с каждым врагом, с которым сражаетесь, и переместитесь в связанную локацию, где нет врагов».",
+        "replacement_text": "Изменённое. Быстрое. Играйте только в свой ход.\nПерестаньте сражаться с каждым врагом, с которым сражаетесь, и переместитесь в связанную локацию, где нет врагов."
+      },
+      {
+        "code": "02108",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "В конце текста добавляется «Можете провести эту атаку против не [[элитного]] врага в локации на одну дальше, чем обычно, игнорируя ключевые слова „Осторожный\" и „Мститель\"».",
+        "replacement_text": "Изменённый. Многоразовый (3 патрона).\n[action] Потратьте 1 патрон: <b>Бой.</b> У вас +3 [combat] и вы наносите +2 раны в этой атаке. Можете провести эту атаку против не [[элитного]] врага в локации на одну дальше, чем обычно, игнорируя ключевые слова „Осторожный“ и „Мститель“. Нельзя использовать, чтобы атаковать врагов, с которыми вы сражаетесь."
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "text": "[fast] меняется на [action].",
+        "replacement_text": "Изменённый. Многоразовый (3 тайны).\n[action] Поверните «Мистера Плута» и потратьте 1 тайну: Найдите среди 3, 6 или 9 верхних карт своей колоды любую карту и возьмите её. Если в числе карт, среди которых искали, есть хотя бы 1 слабость, также возьмите 1 из них. Перемешайте свою колоду."
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Удаляется текст «Этим активом нельзя атаковать врагов, с которыми вы сражаетесь».",
+        "replacement_text": "Изменённое. Быстрое. Прикрепите к [[огнестрельному]] активу под вашим контролем, занимающему 2 слота рук. \n[reaction] Когда вы совершаете действие <b>Бой</b> с прикреплённого актива, если вы ни с кем не сражаетесь, поверните «Оптический прицел»: Можете провести эту атаку против не [[элитного]] врага в связанной локации. В этой атаке игнорируйте ключевые слова «Осторожный» и «Мститель»."
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "В конце текста добавляется «Удалите „Чудесное спасение\" из игры».",
+        "replacement_text": "Изменённое. Быстрое. Играйте, когда вы вытянули жетон хаоса, который снижает значение вашего навыка в проверке до 0 (в том числе [auto_fail]).\nОтмените этот жетон и считайте, что вместо него вытянули жетон [elder_sign]. Удалите «Чудесное спасение» из игры."
+      },
+      {
+        "code": "06022",
+        "text": "This card's constant ability now reads: \"If this card has no charges, remove it from the game.\"",
+        "replacement_text": "Mutated. Bonded (Segment of Onyx). Uses (3 charges). If this card has no charges, remove it from the game.\n[fast] Exhaust Pendant of the Queen and spend 1 charge: Choose a revealed location and select one - move to that location, discover 1 clue at that location, or automatically evade an enemy at that location."
+      },
+      {
+        "code": "06199",
+        "text": "This card's ability gains: \"Remove each committed copy of Three Aces from the game.\"",
+        "replacement_text": "Mutated. Myriad.\nIf you commit 3 copies of Three Aces to a skill test, that test automatically succeeds <i>(do not reveal chaos tokens from the chaos bag)</i>. Then draw 3 cards and gain 3 resources (max once per test). Remove each committed copy of Three Aces from the game."
+      },
+      {
+        "code": "60318",
+        "text": "Instead of \"Shuffle each weakness that was discarded…\", this card's ability now reads: \"After this skill test resolves, draw each weakness discarded by this effect.\"",
+        "replacement_text": "Mutated. After you commit Daredevil to a skill test, discard cards from the top of your deck until you discard a [rogue] skill you can commit to this test. Commit it. After this skill test resolves, draw each weakness discarded by this effect."
+      },
+      {
+        "code": "07003",
+        "text": "This card's [reaction] ability now reads: \"After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)",
+        "replacement_text": "Mutated.\n[reaction] After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)\n[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead."
+      },
+      {
+        "code": "07122",
+        "text": "This card's [reaction] ability now reads: \"When you resolve a [bless] token during a skill test…",
+        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\nWhen you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07197",
+        "xp": -2
+      },
+      {
+        "code": "03112",
+        "text": "This card's [fast] ability now reads: \"…Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources).\"",
+        "replacement_text": "Изменённый. Пока на «Дэвиде Ренфилде» есть хотя бы 1 безысходность, у вас +1 [willpower].\n[fast] Поверните «Дэвида Ренфилда»: Можете положить на «Дэвида Ренфилда» 1 безысходность. Получите 1 ресурс за каждую безысходность на «Дэвиде Ренфилде» (максимум 3 ресурса)."
+      },
+      {
+        "code": "07308",
+        "xp": -2
+      },
+      {
+        "code": "60327",
+        "xp": -1
+      },
+      {
+        "code": "08099",
+        "xp": 2
+      },
+      {
+        "code": "09117",
+        "xp": 1
+      },
+      {
+        "code": "09022",
+        "customization_options": [
+          {
+            "xp": 1,
+            "cost": -1,
+            "real_traits": "Item. Weapon. Melee. Relic.",
+            "text_change": "trait"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.",
+            "tags": "hd.hh.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 0
+          },
+          {
+            "xp": 4,
+            "text_change": "replace",
+            "position": 1
+          }
+        ],
+        "customization_text": "□ <b>Семейная реликвия.</b> Цена этого актива снижена на 1 ресурс, и он считается [[редким]].\n□ <b>Руна славы.</b> Добавьте руну: «• <i>Слава</i> — Если враг побеждён этой атакой, выберите одно: взять 1 карту, вылечить 1 рану, вылечить 1 ужас».\n□ <b>Руна старейшин.</b> Добавьте руну: «• <i>Старейшины</i> — Если в этой атаке сложность превышена на число единиц, равное неясности вашей локации или превышающее её, найдите в ней 1 улику».\n□□ <b>Руна охоты.</b> Добавьте руну: «• <i>Охота</i> — Немедленно переместитесь в связанную локацию или начните сражаться с врагом в вашей локации».\n□ <b>Руна ярости.</b> Добавьте руну: «• <i>Ярость</i> — Если эта атака успешна, помимо обычных ран нанесите 1 рану каждому другому врагу, который сражается с вами».\n□□□ <b>Древняя мощь.</b> Вы можете заряжать одну и ту же руну до трёх раз за атаку.\n□□□ <b>Сага.</b> В начале каждого раунда восполняйте по 2 заряда на «Рунном топоре» вместо 1.\n□□□□ <b>Каллиграфия.</b> За каждый потраченный заряд можете зарядить до двух разных рун.",
+        "text": "Upgrade – <b>Inscription of the Hunt:</b> +1 experience."
+      },
+      {
+        "code": "09108",
+        "xp": 2
+      },
+      {
+        "code": "07269",
+        "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\"",
+        "replacement_text": "As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nMutated. Fast. Play when the \"draw encounter cards\" step of the mythos phase would begin. Skip this step of the mythos phase. Remove A Watchful Peace from the game."
+      },
+      {
+        "code": "07301",
+        "text": "This card's ability gains: \"Remove Hallow from the game.\"",
+        "replacement_text": "As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nMutated.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+      },
+      {
+        "code": "08019",
+        "text": "This card's <b>Forced</b> effect now reads: \"<b>Forced</b> – When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets…\"",
+        "replacement_text": "Изменённое. Постоянный. Не более 1 такой карты в колоде. Приобретайте только при создании колоды.\n<b>Обязательно</b> — Когда начинается ваш первый ход в партии: По очереди сыграйте с руки до 5 активов-[[вещей]], снизив на 1 цену каждого из них. В этот ход вы совершаете на 3 действия меньше."
+      },
+      {
+        "code": "08032",
+        "text": "This card's ability gains: \"(Max twice per game.)\"",
+        "replacement_text": "Изменённый.\nУ вас +1 [intellect].\n[reaction] После того как «Джеремайя Кирби» вошёл в игру, выберите чётное или нечётное: Откройте 5 верхних карт своей колоды. Возьмите каждую карту, цена которой соответствует выбранному признаку, а остальные замешайте в свою колоду. (Максимум 2 раза за игру.)"
+      },
+      {
+        "code": "01033",
+        "text": "Последний абзац текста следует читать так: «[reaction] После того как вы успешно исследовали, поверните „Доктора Милана Кристофера\": Получите 1 ресурс».",
+        "replacement_text": "Изменённый.\nУ вас +1 [intellect].\n[reaction] После того как вы успешно исследовали, поверните «Доктора Милана Кристофера»: Получите 1 ресурс."
+      },
+      {
+        "code": "02002",
+        "text": "[reaction] свойство этой карты можно активировать не чаще 1 раза в раунд.",
+        "replacement_text": "Изменённый.\n[reaction] После того как вы успешно исследовали, превысив сложность на 2 или больше: Найдите 1 улику в вашей локации. (Не чаще 1 раза в раунд.)\n[elder_sign]: +2. Вместо этого можете автоматически провалить эту проверку, чтобы взять 3 карты."
+      },
+      {
+        "code": "02111",
+        "text": "В конце текста добавляется: «Не больше 2 экземпляров „Забраться слишком далеко\" на победном счету на всех».",
+        "replacement_text": "Изменённое.\nКаждый сыщик в порядке игроков берёт 1 карту с верха колоды контактов. Затем добавьте «Забраться слишком далеко» к победному счету.\nНе больше 2 экземпляров «Забраться слишком далеко» на победном счету на всех."
+      },
+      {
+        "code": "02229",
+        "text": "В конце текста добавляется «(максимум 1 раз в раунд)».",
+        "replacement_text": "Изменённый.\nЕсли сложность этой проверки превышена на 2 или больше, сразу после её прохождения вы можете совершить 1 действие, как если бы сейчас был ваш ход (это действие не идёт в счёт числа действий, которые вы можете совершить за ход). (Максимум 1 раз в раунд.)"
+      },
+      {
+        "code": "02266",
+        "text": "К тексту этой карты добавляется «Максимум 1 раз в раунд».",
+        "replacement_text": "Изменённое. Исключительное. Быстрое. Играйте только в свой ход.\nВ этот ход вы можете совершить 3 дополнительных действия. (Максимум 1 раз в раунд.)"
+      },
+      {
+        "code": "03029",
+        "text": "Вместо «Введите в игру актив-[[вещь]] со своей руки» следует читать «Введите в игру актив-[[вещь]] уровня 0–3 со своей руки».",
+        "replacement_text": "Изменённое. Быстрое. Играйте только в свой ход.\nВведите в игру актив-[[вещь]] уровня 0–3 со своей руки. В конце вашего хода, если этот актив ещё в игре, верните его себе на руку."
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Эта карта считается Исключительной.",
+        "replacement_text": "Изменённый. Исключительный. У вас +1 к каждому навыку за каждый ужас на «Ключе Иса».\n<b>Обязательно</b> — Когда на вашего сыщика должен быть положен хотя бы 1 ужас: Положите 1 из этого ужаса на «Ключ Иса».\n<b>Обязательно</b> — Когда «Ключ Иса» выходит из игры: Сбросьте 10 верхних карт вашей колоды."
+      },
+      {
+        "code": "04309",
+        "text": "В конце текста добавляется «Удалите „Ва-банк\" из игры».",
+        "replacement_text": "Изменённый.\nМаксимум 1 такая карта на проверку.\nЕсли эта проверка успешна, возьмите 1 карту за каждую единицу, на которую вы превысили сложность (максимум 5). Замешайте каждую взятую при этом слабость обратно в свою колоду, не разыгрывая её. Удалите «Ва-банк» из игры."
+      },
+      {
+        "code": "05116",
+        "text": "[action] меняется на [fast].",
+        "replacement_text": "Изменённый. Многоразовый (3 тайны).\n[fast] Поверните «Свиток тайн» и потратьте 1 тайну: Посмотрите нижнюю карту колоды контактов или колоды любого сыщика. Затем либо сбросьте ту карту, либо добавьте её на руку владельца, либо верните под низ той же колоды, либо положите на верх той же колоды."
+      },
+      {
+        "code": "05188",
+        "text": "[action] меняется на [fast].",
+        "replacement_text": "Изменённый. Многоразовый (3 тайны).\n[fast] Поверните «Свиток тайн» и потратьте 1 тайну: Посмотрите 3 нижние карты колоды контактов или колоды любого сыщика. Можете сбросить 1 из этих карт. Можете добавить 1 из них на руку её владельца. Остальные положите либо на верх, либо под низ той же колоды в любом порядке."
+      },
+      {
+        "code": "05189",
+        "text": "[action] меняется на [fast].",
+        "replacement_text": "Изменённый. Многоразовый (4 тайны).\n[fast] Поверните «Свиток тайн» и потратьте 1 тайну: Посмотрите верхнюю или нижнюю карту колоды контактов или колоды любого сыщика. Затем либо сбросьте ту карту, либо добавьте её на руку владельца, либо положите на верх или под низ той же колоды."
+      },
+      {
+        "code": "05020",
+        "text": "This card's ability now reads \"<b>Parley.</b> Choose a non-[[Elite]] enemy at your location…\"",
+        "replacement_text": "Изменённое.\n<b>Переговоры.</b> Выберите не [[элитного]] врага в вашей локации и пройдите проверку [combat] (3). У этой проверки +X к сложности, где X равен значению ран выбранного врага. При успехе найдите 1 улику в своей локации и 1 улику в любой другой локации."
+      },
+      {
+        "code": "06195",
+        "text": "Свойство [action] следует читать: «[action] Потратьте 1 патрон: <b>Бой.</b> У вас +2 [combat] в этой атаке. Если в ходе этой атаки вытянут жетон с неотрицательным модификатором, эта атака наносит +2 раны».",
+        "replacement_text": "Mutated. Uses (5 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack.  If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage."
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Запрещена.",
+        "replacement_text": "Запрещено.\nМаксимум 1 такая карта на проверку.\nУдвойте сложность этой проверки. При успехе разыграйте эффект успешной проверки дважды."
+      },
+      {
+        "code": "02029",
+        "text": "Изображения конкретных символов меняются на текст «жетон с символом».",
+        "replacement_text": "Изменённые.\n[reaction] После того как вы вытянули жетон с символом проходя проверку: У вас +1 к навыку в этой проверке."
+      },
+      {
+        "code": "02153",
+        "text": "Изображения конкретных символов меняются на текст «жетон с символом».",
+        "replacement_text": "Изменённое. Быстрый. Играйте, когда враг атакует сыщика в вашей локации.\nОтмените эту атаку. Затем вытяните жетон хаоса из мешка. Если на нём жетон с символом, нанесите раны от атаки этого врага ему самому."
+      },
+      {
+        "code": "60414",
+        "text": "Изображения конкретных символов меняются на текст «жетон с символом».",
+        "replacement_text": "Изменённое. Быстрый. Играйте, когда враг атакует сыщика в вашей локации.\nОтмените эту атаку. Затем вытяните жетон хаоса из мешка. Если на нём жетон с символом, нанесите раны от атаки этого врага ему самому."
+      },
+      {
+        "code": "60423",
+        "text": "Изображения конкретных символов меняются на текст «жетон с символом».",
+        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal damage to the attacking enemy equal to its damage or horror."
+      },
+      {
+        "code": "02269",
+        "text": "Изображения конкретных символов меняются на текст «жетон с символом».",
+        "replacement_text": "Изменённый.\n[reaction] После того как при проверке в вашей локации вытянут жетон с символом, поверните «Камень Ауреола»: Возьмите 1 карту либо получите 2 ресурса."
+      },
+      {
+        "code": "60416",
+        "text": "Изображения конкретных символов меняются на текст «жетон с символом».",
+        "replacement_text": "Изменённое.\nПолучите 1 ресурс. Вытяните из мешка 3 случайных жетона хаоса. За каждый вытянутый при этом жетон с символом получите 2 дополнительных ресурса."
+      },
+      {
+        "code": "05113",
+        "text": "Изображения конкретных символов меняются на текст «жетон с символом».",
+        "replacement_text": "Изменённое.\n<b>Уход</b> (только от не [[элитного]] врага). Эта попытка ухода использует [willpower] вместо [agility]. При успехе переместите врага, от которого только что ушли, в любую локацию в игре. При успехе, если при этой попытке ухода вытянут жетон с символом этот враг не разворачивается в следующей фазе передышки."
+      },
+      {
+        "code": "02263",
+        "text": "Вместо «+2 раны» следует читать «+1 рану».",
+        "replacement_text": "Изменённый. Изученный. Многоразовый (3 запаса).\n[action] Потратьте 1 запас: <b>Бой.</b> В этой атаке базовое значение вашей [combat] равно 6. Эта атака наносит +1 рану."
+      },
+      {
+        "code": "03006",
+        "text": "Обязательное свойство с лицевой стороны карты переносится на обратную в следующей формулировке: «<b>Особая подготовка</b>: после набора стартовой руки выберите роль: [survivor], [guardian], [seeker], [rogue], [mystic] или нейтральную».\nНа лицевой стороне добавляется «[action]: Поменяйте свою роль. Не вызывает внеочередных атак».",
+        "replacement_text": "Изменённая.\nВы можете играть, добавлять к проверкам, активировать только нейтральные карты и карты вашей роли.\n[free]: Поменяйте свою роль. (Не чаще 1 раза в раунд.)\n[action] Поменяйте свою роль. Это действие не вызывает внеочередных атак.\n[elder_sign]: +2. Можете поменять роль.",
+        "replacement_back_text": "Изменённая.\n<b>Размер колоды</b>: 35.\n<b>Возможные карты</b>: Выжившего, Хранителя, Искателя, Ловкача и Мистика ([survivor], [guardian], [seeker], [rogue] и [mystic]) уровня 0–3, нейтральные карты уровня 0–5.\n<b>Обязательные карты</b> (не идут в счёт размера колоды): «Импровизация» (2 экземпляра), «Кризис идентичности» (2 экземпляра), 1 случайная базовая слабость.\n<b>Особые ограничения</b>: в вашей колоде должно быть хотя бы по 7 карт из трёх разных классов ([survivor], [guardian], [seeker], [rogue] или [mystic]).\n<b>Особая подготовка</b>: после набора стартовой руки выберите роль: [survivor], [guardian], [seeker], [rogue], [mystic] или нейтральную."
+      },
+      {
+        "code": "03019",
+        "text": "Вместо «Сбросьте все карты вашей роли под вашим контролем» следует читать «Сбросьте 1 карту вашей роли у себя из игры или с руки».",
+        "replacement_text": "Изменённая.\n<b>Раскрытие</b> — Сбросьте 1 карту вашей роли у себя из игры или с руки. Затем сбросьте верхнюю карту своей колоды. Поменяйте роль в соответствии с классом сброшенной карты (если это слабость, то на нейтральную)."
+      },
+      {
+        "code": "04032",
+        "text": "Изображения конкретных символов меняются на текст «(кроме [elder_sign])».",
+        "replacement_text": "Изменённое. Быстрое. Играйте, когда вы должны вытянуть жетон хаоса.\nВытяните 5 жетонов хаоса вместо одного. Выберите среди них один с символом (кроме [elder_sign]) и разыграйте, а прочие игнорируйте. (Если не вытянули ни одного такого жетона, разыграйте любой из вытянутых, а прочие игнорируйте.)"
+      },
+      {
+        "code": "04105",
+        "text": "This card's ability now reads \"<b>Parley.</b> Choose a non-weakness enemy at your location…\"",
+        "replacement_text": "Изменённое.\n<b>Переговоры.</b> Выберите в вашей локации врага (но не слабость) и пройдите проверку [intellect] (3). У этой проверки +X к сложности, где X равен значению ужаса этого врага. При успехе замешайте этого врага в колоду контактов. Если этот враг [[элитный]], вместо этого автоматически уйдите от него."
+      },
+      {
+        "code": "04110",
+        "text": "Изображения конкретных символов меняются на текст «жетон с символом (кроме [auto_fail])».",
+        "replacement_text": "Изменённое. Быстрое. Играйте, когда при проверке навыка в вашей локации вытянут жетон с символом (кроме [auto_fail]).\nОтмените этот жетон хаоса. <i>(Не надо вытягивать вместо него новый жетон.)</i>"
+      },
+      {
+        "code": "04233",
+        "text": "This card’s ability now reads: “Gain 1 resource for each action you spent this turn…”",
+        "replacement_text": "Mutated. Gain 1 resource for each action you spent this turn <i>(including this one)</i>. If it is your turn, end your turn."
+      },
+      {
+        "code": "06002",
+        "text": "This investigator now reads: \"Deck Size: 50\" and \"Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...\"",
+        "deck_options": [
+          {
+            "faction": [
+              "seeker",
+              "neutral"
+            ],
+            "level": {
+              "min": 0,
+              "max": 5
+            }
+          },
+          {
+            "name": "Побочный класс",
+            "faction_select": [
+              "mystic",
+              "rogue",
+              "survivor"
+            ],
+            "level": {
+              "min": 0,
+              "max": 1
+            },
+            "type": [
+              "event",
+              "skill"
+            ],
+            "limit": 10
+          }
+        ],
+        "deck_requirements": {
+          "size": 50,
+          "card": {
+            "06008": {
+              "06008": "06008"
+            },
+            "06009": {
+              "06009": "06009"
+            }
+          },
+          "random": [
+            {
+              "target": "subtype",
+              "value": "basicweakness"
+            }
+          ]
+        },
+        "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 50.\n<b>Secondary Class Choice</b>: At deck creation, choose Mystic ([mystic]), Rogue ([rogue]), or Survivor ([survivor]).\n<b>Deckbuilding Options</b>: Seeker cards ([seeker]) level 0-5, Neutral cards level 0-5, up to 10 level 0-1 events and/or skills of your chosen secondary class.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 3 copies of Occult Evidence, Shocking Discovery, 1 random basic weakness."
+      },
+      {
+        "code": "07268",
+        "exceptional": false,
+        "deck_limit": 1,
+        "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\"",
+        "replacement_text": "Mutated. Limited 1 per deck. Seal (up to X [curse]).\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+      },
+      {
+        "code": "08045",
+        "text": "Вместо «вы можете игнорировать внеочередные атаки» следует читать «вы игнорируете первую внеочередную атаку против вас на каждом ходу».",
+        "replacement_text": "Изменённая.\nПока вы не находитесь в локусе, у вас +1 [intellect], +1 [agility] и вы игнорируете первую внеочередную атаку против вас на каждом ходу.\n[reaction] После того как эта карта вошла в игру: Выберите открытую локацию. Она считается локусом, пока эта карта не покинет игру.\n[action]: Переместите любого сыщика в локус."
+      },
+      {
+        "code": "08055",
+        "text": "К тексту этой карты добавляется «Максимум 1 раз в раунд».",
+        "replacement_text": "Изменённое. Быстрое. Играйте в начале фазы сыщиков. Максимум 1 раз в раунд.\nОткрывайте по одной карты с верха любых колод сыщиков, пока не откроете ровно 5 карт. Отложите их в сторону, вне игры. Пока эти карты отложены, любой сыщик может играть их, как будто они у него на руке. В начале следующей фазы сыщиков замешайте каждую оставшуюся отложенной карту в колоду владельца."
+      },
+      {
+        "code": "08076",
+        "text": "This card's ability gains \"(Max twice per game.)\"",
+        "replacement_text": "Изменённое.\nИзгоните со своей руки карту уровня 0–5. Найдите 2 улики в вашей локации. Если изгнали карту уровня 2 или выше, удалите 1 безысходность с текущего замысла. Изгоните «После прочтения сжечь». (Максимум 2 раза за игру.)\n<b>Карта создана Council-in-Exile в ходе Gen Con 2020</b>"
+      },
+      {
+        "code": "08098",
+        "text": "Данная карта позволяет совершить только базовые движение, уход, исследование.",
+        "replacement_text": "Изменённая. Многоразовая (3 тайны).\n[fast] В свой ход поверните «Схему эонов» и потратьте 1 тайну: Выберите и совершите одно из следующих базовых действий — <b>«Движение»</b>, <b>«Уход»</b> или <b>«Исследование»</b>."
+      },
+      {
+        "code": "08100",
+        "text": "Данная карта позволяет совершить только базовые движение, уход, исследование.",
+        "replacement_text": "Изменённая. Многоразовая (3 тайны).\n[fast] В свой ход поверните «Схему эонов» и потратьте 1 тайну: Выберите и совершите два разных базовых действия из следующих — <b>«Движение»</b>, <b>«Уход»</b> или <b>«Исследование»</b>."
+      },
+      {
+        "code": "08093",
+        "text": "Последнее предложение текста следует читать так: «(Если вы превысили сложность на 3 или больше, можете повернуть „Исполинский молот\", чтобы вместо этого нанести +2 раны и переместить врага на 1 или 2 локации прочь от вас)».",
+        "replacement_text": "Изменённый.\n[action]: <b>Бой.</b> Добавьте свою [willpower] к навыку в этой атаке. Вы наносите +1 рану в этой атаке. При успехе, если атакованный враг не [[элитный]], можете переместить его на 1 локацию прочь от вас. (Если вы превысили сложность на 3 или больше, можете повернуть «Исполинский молот», чтобы вместо этого нанести +2 раны и переместить врага на 1 или 2 локации прочь от вас.)"
+      },
+      {
+        "code": "09045",
+        "text": "This card's second ability gains: \"(max 3 evidence spent per round).\"",
+        "replacement_text": "Изменённые.\n[reaction] После того как свойство карты игрока поместило в вашу локацию хотя бы 1 вашу улику: Положите на эту карту столько же ресурсов как подтверждения.\n[action]: Пройдите проверку [intellect] (0). За каждую единицу, на которую превысили сложность, можете потратить 1 подтверждение, чтобы найти 1 улику в вашей локации (максимум 3 потраченных подтверждения за раунд)."
+      },
+      {
+        "code": "09081",
+        "text": "This card’s text box now reads: \"[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command) – \"Go.\" This enemy moves once in a direction of your choice.\"\nThis card’s customizable sheet loses the \"Mercy\" ability and gains\"☐Cower. Add the command: \"- ‘Cower.’ This enemy exhausts.\"",
+        "customization_options": [
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>'Cower.'</i> This enemy exhausts.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 2
+          },
+          {
+            "xp": 3,
+            "deck_limit": 3,
+            "text_change": "insert",
+            "position": 1
+          }
+        ],
+        "customization_change": "• <i>«Предай».</i> Нанесите 1 рану любому врагу (в локации этого врага), чьё значение боя не выше, чем у этого врага.\n• <i>«Скройся».</i> Этот враг поворачивается.\n• <i>«Сознайся».</i> Найдите 1 улику в локации этого врага, если её неясность не выше здоровья этого врага.\n• <i>«Смути».</i> Автоматически уйдите от любого врага (в локации этого врага), чьё значение ухода не выше, чем у этого врага.\n[fast]: Верните „Слово силы\" себе на руку.\nМожете совершать <b>пере­говоры</b> со «Слова силы», будучи на расстоянии до 1 связи от локации прикреплённого врага.\n[action] Если прикреплённый враг в вашей локации: <b>Переговоры.</b> Дайте ему 2 приказа (каждый разный приказ — не чаще 1 раза в раунд):\nМожете включить в колоду до 3 экземпляров «Слова силы». Когда даёте приказ с любого экземпляра «Слова силы», его выполняет каждый враг, к которому прикреплён ваш экземпляр «Слова силы».",
+        "customization_text": "□ <b>Предай.</b> Добавьте приказ: «• <i>„Предай\".</i> Нанесите 1 рану любому врагу (в локации этого врага), чьё значение боя не выше, чем у этого врага».\n□ <b>«Скройся».</b> Добавьте приказ: «• <i>«Скройся».</i> Этот враг поворачивается.»\n□ <b>Сознайся.</b> Добавьте приказ: «• <i>„Сознайся\".</i> Найдите 1 улику в локации этого врага, если её неясность не выше здоровья этого врага».\n□ <b>Смути.</b> Добавьте приказ: «• <i>„Смути\".</i> Автоматически уйдите от любого врага (в локации этого врага), чьё значение ухода не выше, чем у этого врага».\n□□ <b>Контроль.</b> Считайте, что на «Слове силы» ука­зано: «[fast]: Верните „Слово силы\" себе на руку».\n□□□ <b>Ментальная связь.</b> Можете совершать <b>пере­говоры</b> со «Слова силы», будучи на расстоянии до 1 связи от локации прикреплённого врага.\n□□□ <b>Скороговорка.</b> Когда совершаете переговоры со «Слова силы», можете дать до 2 разных приказов.\n□□□ <b>Молвить трижды.</b> Можете включить в колоду до 3 экземпляров «Слова силы». Когда даёте приказ с любого экземпляра «Слова силы», его выполняет каждый враг, к которому прикреплён ваш экземпляр «Слова силы».",
+        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+      }
+    ]
   }
 ]

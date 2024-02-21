@@ -2,7 +2,7 @@ import { forEach, keys, map } from 'lodash';
 import { Platform } from 'react-native';
 
 import AppIcon from '@icons/AppIcon';
-import ArkhamIcon from '@icons/ArkhamIcon';
+import ArkhamIcon, { ArkhamSlimIcon } from '@icons/ArkhamIcon';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import COLORS from '@styles/colors';
@@ -13,7 +13,7 @@ const icons: {
 } = {
   elder_sign: [30, COLORS.M, ArkhamIcon],
   intellect: [26, COLORS.M, ArkhamIcon],
-  per_investigator: [24, COLORS.M, ArkhamIcon],
+  per_investigator: [24, COLORS.M, ArkhamSlimIcon],
   auto_fail: [24, COLORS.M, ArkhamIcon],
   cultist: [24, COLORS.M, ArkhamIcon],
   edit: [Platform.OS === 'android' ? 30 : 32, COLORS.M, AppIcon],
