@@ -17,7 +17,7 @@ interface Props extends NavigationProps {
   showAlert: ShowAlert;
 }
 
-const LATEST_RELEASE_NOTES = 'rn-2022-11-18';
+const LATEST_RELEASE_NOTES = 'rn-2024-02-20';
 
 export default function AccountSection({ componentId, showAlert }: Props) {
   const [newNotes, onSeenNewNotes] = useShowOnboarding(LATEST_RELEASE_NOTES);

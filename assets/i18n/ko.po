@@ -5949,6 +5949,12 @@ msgstr ""
 msgid "Relationship Level"
 msgstr ""
 
+msgid "Image cache cleared"
+msgstr ""
+
+msgid "Clear image cache"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"
@@ -6528,6 +6534,26 @@ msgstr "- 또한 플레이 진행을 통해 지도에서 장소가 잠금 해제
 msgctxt "releaseNotes"
 msgid "As always, many thanks to my many supporters on Patreon -- I appreciate your support which helps make all of this possible."
 msgstr "- 언제나 그렇듯이 Patreon의 많은 후원자 여러분께 진심으로 감사드립니다. “이 모든 것이 가능하도록 지원해 주셔서 감사합니다.”"
+
+msgctxt "releaseNotes"
+msgid "Feast of Hemlock Vale Campaign"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
+msgstr ""
 
 msgctxt "trait"
 msgid "???"
