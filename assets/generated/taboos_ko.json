@@ -1368,7 +1368,7 @@
       {
         "code": "60423",
         "text": "이 카드의 문구에 표시된 기호 목록 대신 “기호”로 바뀝니다.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal damage to the attacking enemy equal to its damage or horror."
+        "replacement_text": "변형. 신속. 적 하나가 당신이 위치한 장소에 있는 조사자 한 명을 공격할 때 플레이할 수 있습니다.\n그 공격을 취소합니다. 그런 다음, 혼돈 주머니에서 무작위로 토큰을 1개 공개합니다. 기호가 공개되면, 공격하는 적에게 그 적의 피해값 또는 공포값만큼 피해를 줍니다."
       },
       {
         "code": "02269",
@@ -1418,8 +1418,8 @@
       },
       {
         "code": "04233",
-        "text": "This card’s ability now reads: “Gain 1 resource for each action you spent this turn…”",
-        "replacement_text": "Mutated. Gain 1 resource for each action you spent this turn <i>(including this one)</i>. If it is your turn, end your turn."
+        "text": "이 카드의 기능은 이제 다음과 같이 바뀝니다: “이번 차례에 당신이 소비한 행동 횟수만큼 자원을 획득합니다.”",
+        "replacement_text": "변형. 이번 차례에 당신이 소비한 행동 횟수만큼 자원을 획득합니다<i>(지금 이 카드를 플레이하는 행동도 포함합니다)</i>. 당신의 차례 도중이었다면, 당신의 차례가 끝납니다."
       },
       {
         "code": "06002",
