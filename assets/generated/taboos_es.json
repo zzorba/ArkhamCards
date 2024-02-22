@@ -1093,5 +1093,474 @@
         "replacement_text": "Mutada. Personalizable. Rápido. Juega esta carta sólo durante tu turno.\nVincula esta carta a un Enemigo que no sea [[Élite]] que esté en tu Lugar.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar</b>. Realiza una prueba de [willpower] (3). Si tienes éxito, dale una orden (límite de una vez por ronda y por orden) –\n– “Vete”. Este Enemigo se mueve una vez en una dirección de tu elección."
       }
     ]
+  },
+  {
+    "id": 7,
+    "code": "007",
+    "name": "Lista de tabúes",
+    "active": 1,
+    "date_start": "2024-02-20",
+    "cards": [
+      {
+        "code": "01073",
+        "xp": 2
+      },
+      {
+        "code": "01573",
+        "xp": 2
+      },
+      {
+        "code": "06332",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "text": "Esta carta ahora dice: \"Deja de estar enfrentado a cada Enemigo enfrentado a ti y muévete a un Lugar conectado que no tenga Enemigos.\"",
+        "replacement_text": "Mutada. Rápido. Juega esta carta sólo durante tu turno.\nDeja de estar enfrentado a cada Enemigo enfrentado a ti y muévete a un Lugar conectado que no tenga Enemigos."
+      },
+      {
+        "code": "02108",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "La capacidad [action] de esta carta obtiene: \"Este ataque puede tomar como objetivo a un Enemigo que no sea [[Élite]] y que esté a hasta 1 Lugar de distancia de su alcance estándar, ignorando las palabras clave Indiferente y Represalia.\".",
+        "replacement_text": "Mutada. Usos (3 municiones).\n[action] Gasta 1 munición: <b>Combatir</b>. Recibes +3 [combat] e infliges +2 de daño para este ataque. No se puede usar para atacar a Enemigos enfrentados a ti. Este ataque puede tomar como objetivo a un Enemigo que no sea [[Élite]] y que esté a hasta 1 Lugar de distancia de su alcance estándar, ignorando las palabras clave Indiferente y Represalia."
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "text": "La capacidad [fast] de esta carta es ahora una capacidad [action].",
+        "replacement_text": "Mutada. Usos (3 secretos).\n[action] Agota al Sr. “Torre” y gasta 1 secreto: Busca entre las 3, 6 o 9 primeras cartas de tu mazo cualquier carta y róbala. Si hay al menos 1 Debilidad entre las cartas que has mirado, roba también 1 de ellas. Baraja tu mazo."
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Esta carta pierde el texto: \"El Apoyo vinculado no se puede usar para atacar a Enemigos enfrentados a ti.\"",
+        "replacement_text": "Mutada. Rápido. Vincula esta carta a un Apoyo [[Arma de fuego]] que controles y que ocupe dos espacios de mano.\n[reaction] Cuando realices una acción <b>Combatir</b> usando el Apoyo vinculado, si no estás enfrentado a ningún Enemigo, agota la Mira telescópica: Este ataque puede tomar como objetivo a un Enemigo que no sea [[Élite]] y esté en un Lugar conectado. Ignora las palabras clave Indiferente y Represalia para este ataque."
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "La capacidad de esta carta obtiene: \"Retira Eucatástrofe de la partida\".",
+        "replacement_text": "Mutada. Rápido. Juega esta carta cuando reveles una ficha de Caos que fuese a reducir tu valor de habilidad a 0 durante una prueba de habilidad (incluida la ficha [auto_fail]).\nEn lugar de eso, cancela esa ficha y trátala como una ficha [elder_sign]. Retira Eucatástrofe de la partida."
+      },
+      {
+        "code": "06022",
+        "text": "La capacidad continua de esta carta ahora dice: \"Si esta carta no tiene cargas, retírala de la partida\".",
+        "replacement_text": "Mutada. Enlazada (Segmento de ónice). Usos (3 cargas). Si esta carta no tiene cargas, retírala de la partida.\n[fast] Agota el Colgante de la reina y gasta 1 carga: Elige un Lugar revelado y un efecto: moverte a ese Lugar, descubrir 1 pista en ese Lugar o evitar automáticamente a un Enemigo que esté en ese Lugar."
+      },
+      {
+        "code": "06199",
+        "text": "La capacidad de esta carta obtiene: \"Retira de la partida todas las copias asignadas de Tres ases.\".",
+        "replacement_text": "Mutada. Miríada.\nSi asignas 3 copias de Tres ases a una prueba de habilidad, esa prueba tiene éxito automáticamente <i>(no reveles fichas de Caos de la bolsa de caos)</i>. A continuación, roba 3 cartas y obtén 3 recursos (máximo de una vez por prueba). Retira de la partida todas las copias asignadas de Tres ases."
+      },
+      {
+        "code": "60318",
+        "text": "En lugar de “Devuelve todas las Debilidades descartadas…”, la capacidad de esta carta ahora dice: “Después de resolver los efectos de esta prueba, roba todas las Debilidades descartadas por este efecto.”",
+        "replacement_text": "Mutada.\nDespués de que asignes Temerario a una prueba de habilidad, descarta cartas de la parte superior de tu mazo hasta que descartes una Habilidad [rogue] que puedas asignar a esta prueba. Asígnala. Después de que se resuelva esta prueba de habilidad, roba todas las Debilidades descartadas por este efecto."
+      },
+      {
+        "code": "07003",
+        "text": "La capacidad [reaction] de esta carta ahora dice: “Después de que descubras 1 o más pistas en un Lugar con un Enemigo: Descubre 1 pista adicional en ese Lugar o bien evita automáticamente a ese Enemigo si no es [[Élite]]. Límite de una vez por ronda.\".",
+        "replacement_text": "Mutada.\n[reaction] Después de que descubras 1 o más pistas en un Lugar con un Enemigo: Descubre 1 pista adicional en ese Lugar o bien evita automáticamente a ese Enemigo si no es [[Élite]]. Límite de una vez por ronda.\nEfecto [elder_sign]: +2. Si es durante una investigación, puedes elegir cualquier Lugar revelado; ahora estás investigando como si estuvieras en ese Lugar en lugar del original."
+      },
+      {
+        "code": "07122",
+        "text": "La capacidad [reaction] de esta carta ahora dice: “Cuando resuelvas una ficha [bless] durante una prueba de habilidad...\".",
+        "replacement_text": "Mutada. Permanente. Límite de 1 Acuerdo por mazo.\n[reaction] Cuando resuelvas una ficha [bless] durante una prueba de habilidad, agota el Acuerdo antiguo: No reveles otra ficha como parte del efecto de esta ficha [bless]."
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07197",
+        "xp": -2
+      },
+      {
+        "code": "03112",
+        "text": "La capacidad [fast] de esta carta ahora dice: “...Obtén 1 recurso por cada ficha de Perdición que haya sobre David Renfield (hasta un máximo de 3 recursos).”",
+        "replacement_text": "Mutada. Mientras David Renfield tenga al menos 1 ficha de Perdición sobre él, recibes +1 [willpower].\n[fast] Agota a David Renfield: Puedes colocar 1 ficha de Perdición sobre David Renfield. Obtén 1 recurso por cada ficha de Perdición que haya sobre David Renfield (hasta un máximo de 3)."
+      },
+      {
+        "code": "07308",
+        "xp": -2
+      },
+      {
+        "code": "60327",
+        "xp": -1
+      },
+      {
+        "code": "08099",
+        "xp": 2
+      },
+      {
+        "code": "09117",
+        "xp": 1
+      },
+      {
+        "code": "09022",
+        "customization_options": [
+          {
+            "xp": 1,
+            "cost": -1,
+            "real_traits": "Item. Weapon. Melee. Relic.",
+            "text_change": "trait"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.",
+            "tags": "hd.hh.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 0
+          },
+          {
+            "xp": 4,
+            "text_change": "replace",
+            "position": 1
+          }
+        ],
+        "customization_text": "□ <b>Herencia.</b> Este Apoyo recibe -1 a su coste y obtiene el rasgo [[Reliquia]].\n□ <b>Inscripción de gloria.</b> Añade esta inscripción: \"- <i>Gloria</i>. - Si este ataque derrota a un Enemigo, elige una opción: roba 1 carta, cúrate 1 punto de daño o cúrate 1 punto de horror.\".\n□ <b>Inscripción de los ancianos.</b> Añade esta inscripción: \"- <i>Ancianos</i>. - Si este ataque tiene éxito por una cantidad igual o mayor que el velo de tu Lugar, descubre 1 pista en tu Lugar.\".\n□□ <b>Inscripción de la caza.</b> Añade esta inscripción: \"- <i>Caza</i>. - Muévete inmediatamente a un Lugar conectado o enfréntate a un Enemigo que esté en tu Lugar.\".\n□ <b>Inscripción de furia.</b> Añade esta inscripción: \"- <i>Furia</i>. - Si este ataque tiene éxito, además de su daño estándar, inflige 1 punto de daño a cada uno de los demás Enemigos enfrentados a ti.\".\n□□□ <b>Poder antiguo.</b> Puedes imbuir la misma inscripción hasta tres veces.\n□□□ <b>Saga.</b> Repón 2 de las cargas del Hacha rúnica al comienzo de cada ronda en lugar de sólo 1.\n□□□□ <b>Tejedora de escritura.</b> Por cada carga gastada, puedes imbuir el hacha de hasta dos inscripciones distintas.",
+        "text": "Mejora - <b> Inscripción de la caza:</b> +1 de experiencia."
+      },
+      {
+        "code": "09108",
+        "xp": 2
+      },
+      {
+        "code": "07269",
+        "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
+        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
+      },
+      {
+        "code": "07301",
+        "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
+        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
+      },
+      {
+        "code": "08019",
+        "text": "La capacidad <b>Obligado</b> de esta carta ahora dice: “<b>Obligado</b> – Cuando comience tu primer turno de la partida: Juega hasta 5 Apoyos [[Objeto]] de tu mano, de uno en uno,…”.",
+        "replacement_text": "Mutada. Permanente. Límite de 1 por mazo. Compra esta carta al crear el mazo.\n<b>Obligado</b> - Cuando comience tu primer turno de la partida: Juega hasta 5 Apoyos [[Objeto]] de tu mano, de uno en uno, reduciendo en 1 el coste de cada uno. Durante este turno, tienes 3 acciones menos para realizar."
+      },
+      {
+        "code": "08032",
+        "text": "Esta carta obtiene: “Máximo de dos veces por partida.”.",
+        "replacement_text": "Mutada. Recibes +1 [intellect].\n[reaction] Después de que Jeremiah Kirby entre en juego, elige \"par\" o \"impar\": Revela las primeras 5 cartas de tu mazo. Roba cada carta cuyo coste coincida con la opción elegida. Devuelve las cartas restantes a tu mazo y barájalo. Máximo dos veces por partida."
+      },
+      {
+        "code": "01033",
+        "text": "La capacidad [reaction] de esta carta ahora dice: \"Después de que investigues con éxito, agota Dr. Milan Christopher…\".",
+        "replacement_text": "Mutada.\nRecibes +1 [intellect].\n[reaction] Después de que investigues con éxito, agota al Dr. Milan Christopher: Obtén 1 recurso."
+      },
+      {
+        "code": "02002",
+        "text": "La capacidad [reaction] de esta carta ahora obtiene: \"Límite de una vez por ronda.\".",
+        "replacement_text": "Mutada.\n[reaction] Después de que tengas éxito en una prueba de habilidad por 2 o más al investigar: Descubre 1 pista en tu Lugar. Límite de una vez por ronda.\nEfecto[elder_sign]: +2. En lugar de eso, puedes elegir fracasar automáticamente en esta prueba de habilidad para robar 3 cartas."
+      },
+      {
+        "code": "02111",
+        "text": "Esta carta obtiene: \"Límite de grupo de 2 copias de Ahondar demasiado en la zona de victoria.\".",
+        "replacement_text": "Mutada.\nEn el orden de juego, cada investigador roba 1 carta de la parte superior del mazo de Encuentros. A continuación, añade Ahondar demasiado a la zona de victoria. Límite de grupo de 2 copias de Ahondar Demasiado en la zona de victoria."
+      },
+      {
+        "code": "02229",
+        "text": "Al final de su capacidad, esta carta obtiene: \"Máximo de una vez por ronda.\"",
+        "replacement_text": "Mutada.\nSi esta prueba de habilidad tiene éxito por 2 o más, después de que se resuelva, puedes realizar una acción inmediatamente como si fuera tu turno. Esta acción no cuenta para el número de acciones que puedes realizar en cada turno. Máximo de una vez por ronda."
+      },
+      {
+        "code": "02266",
+        "text": "Esta carta obtiene: \"Máximo de una vez por ronda.\"",
+        "replacement_text": "Mutada. Excepcional. Rápido. Juega esta carta sólo durante tu turno.\nPuedes realizar 3 acciones adicionales en este turno. Máximo de una vez por ronda."
+      },
+      {
+        "code": "03029",
+        "text": "La capacidad de esta carta ahora dice: \"Pon en juego un Apoyo [[Objeto]] de nivel 0–3 desde tu mano.\".",
+        "replacement_text": "Mutada. Rápido. Juega esta carta sólo durante tu turno.\nPon en juego un Apoyo [[Objeto]] de nivel 0–3 desde tu mano. Al final de tu turno, si ese Apoyo sigue en juego, devuélvelo a tu mano."
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Esta carta obtiene la palabra clave Excepcional.",
+        "replacement_text": "Mutada. Excepcional.\nRecibes +1 a cada una de tus habilidades por cada punto de horror que haya sobre la Llave de Ys.\n<b>Obligado</b> – Cuando fuese a ser colocada cualquier cantidad de horror sobre ti: Coloca 1 punto de ese horror sobre la Llave de Ys.\n<b>Obligado</b> – Cuando la Llave de Ys abandone el juego: Descarta las 10 primeras cartas de tu mazo."
+      },
+      {
+        "code": "04309",
+        "text": "Al final de su capacidad, esta carta obtiene: \"Retira No va más de la partida.\"",
+        "replacement_text": "Mutada. Máximo de 1 asignada por prueba de habilidad.\nSi esta prueba tiene éxito, roba 1 carta por cada punto que tengas por encima del valor mínimo de éxito, hasta un máximo de 5. Devuelve a tu mazo cada Debilidad robada por este efecto sin resolverla y baraja tu mazo. Retira No va más de la partida."
+      },
+      {
+        "code": "05116",
+        "text": "La capacidad [action] de esta carta ahora es una capacidad [fast].",
+        "replacement_text": "Mutada. Usos (3 secretos).\n[fast] Agota el Pergamino de secretos y gasta 1 secreto: Mira la última carta del mazo de cualquier investigador o del mazo de Encuentros. A continuación, elige si descartas esa carta, la añades a la mano de su propietario, la colocas en la parte inferior de su mazo o bien la colocas en la parte superior de su mazo."
+      },
+      {
+        "code": "05188",
+        "text": "La capacidad [action] de esta carta ahora es una capacidad [fast].",
+        "replacement_text": "Mutada. Usos (3 secretos).\n[fast] Agota el Pergamino de secretos y gasta 1 secreto: Mira las 3 últimas cartas del mazo de cualquier investigador o del mazo de Encuentros. Puedes descartar 1 de esas cartas. Puedes añadir 1 de esas cartas a la mano de su propietario. Coloca el resto de esas cartas en la parte superior o inferior de su mazo, en cualquier orden."
+      },
+      {
+        "code": "05189",
+        "text": "La capacidad [action] de esta carta ahora es una capacidad [fast].",
+        "replacement_text": "Mutada. Usos (4 secretos).\n[fast] Agota el Pergamino de secretos y gasta 1 secreto: Mira la primera o última carta del mazo de cualquier investigador o del mazo de Encuentros. A continuación, elige si descartas esa carta, la añades a la mano de su propietario, la colocas en la parte inferior de su mazo o bien la colocas en la parte superior de su mazo."
+      },
+      {
+        "code": "05020",
+        "text": "La capacidad de esta carta ahora dice: “<b>Negociar</b>. Elige un Enemigo que no sea [[Élite]] que esté en tu Lugar…”.",
+        "replacement_text": "Mutada.\n<b>Negociar.</b> Elige un Enemigo que no sea [[Élite]] que esté en tu Lugar y realiza una prueba de [combat] (3). Esta prueba recibe un +X a su dificultad, donde X es el valor de daño del Enemigo elegido. Si tienes éxito, descubre 1 pista en tu Lugar y 1 pista en cualquier otro Lugar."
+      },
+      {
+        "code": "06195",
+        "text": "La capacidad [action] de esta carta ahora dice: \"[action] Gasta 1 munición: <b>Combatir</b>. Recibes +2 [combat] para este ataque. Si es revelada una ficha de Caos que tenga un modificador que no sea negativo durante este ataque, este ataque inflige +2 de daño.\".",
+        "replacement_text": "Mutada. Usos (5 municiones).\n[action] Gasta 1 munición: <b>Combatir</b>. Recibes +2 [combat] para este ataque. Si es revelada una ficha de Caos que no contenga un modificador negativo durante este ataque, este ataque inflige +2 de daño."
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Prohibida.",
+        "replacement_text": "Prohibida. Máximo de 1 asignada por prueba de habilidad.\nDobla la dificultad de esta prueba de habilidad. Si esta prueba de habilidad tiene éxito, resuelve dos veces los efectos de la prueba con éxito."
+      },
+      {
+        "code": "02029",
+        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba que estés realizando: Recibes +1 al valor de la habilidad para esta prueba."
+      },
+      {
+        "code": "02153",
+        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
+      },
+      {
+        "code": "60414",
+        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
+      },
+      {
+        "code": "60423",
+        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal damage to the attacking enemy equal to its damage or horror."
+      },
+      {
+        "code": "02269",
+        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba de habilidad en tu Lugar, agota la Joya de Aureolus: Roba 1 carta u obtén 2 recursos."
+      },
+      {
+        "code": "60416",
+        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "replacement_text": "Mutada.\nObtén 1 recurso. Revela 3 fichas aleatorias de la bolsa de caos. Por cada símbolo revelado, obtén 2 recursos adicionales."
+      },
+      {
+        "code": "05113",
+        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "replacement_text": "Mutada.\n<b>Evitar</b>. Usa esta capacidad sólo contra un Enemigo que no sea [[Élite]]. Este intento de evitar usa [willpower] en lugar de [agility]. Si tienes éxito, mueve el Enemigo que acabas de evitar a cualquier Lugar en juego. Si tienes éxito y fue revelado un símbolo durante este intento de evitar, ese Enemigo no se prepara durante la siguiente fase de Mantenimiento."
+      },
+      {
+        "code": "02263",
+        "text": "La capacidad de combatir ahora dice: \"+1 punto de daño\" en lugar de \"+2 puntos de daño.\".",
+        "replacement_text": "Mutada. Investigado. Usos (3 suministros).\n[action] Gasta 1 suministro. Combatir. Atacas con una habilidad [combat] básica de 6. Este ataque inflige +1 punto de daño."
+      },
+      {
+        "code": "03006",
+        "text": "El efecto Obligado de esta carta se traslada al reverso de la carta y ahora dice: \"<b>Preparación adicional</b>: Después de que robes tu mano inicial: Elige un papel ([survivor], [guardian], [seeker], [rogue], [mystic] o neutral).\" La parte delantera de esta carta adicionalmente obtiene: \"[action]: Cambia tu papel. Esta acción no provoca ataques de oportunidad.\"",
+        "replacement_text": "Mutada.\nSólo puedes jugar, asignar o activar capacidades de cartas neutrales o de cartas de tu papel.\n[free]: Cambia tu papel. Límite de una vez por ronda.\n[action]: Cambia tu papel. Esta acción no provoca ataques de oportunidad.\nEfecto [elder_sign]: +2. Puedes cambiar de papel.",
+        "replacement_back_text": "Mutada.\n<b>Tamaño de mazo</b>: 35.\n<b>Opciones de creación de mazos</b>: Cartas Superviviente, Guardián, Buscador, Rebelde y Místico ([survivor], [guardian], [seeker], [rogue] y [mystic]) de nivel 0-3, cartas neutrales de nivel 0-5.\n<b>Requisitos de creación de mazos</b> (no cuentan para el tamaño de mazo): 2 copias de Improvisación, 2 copias de Crisis de identidad, 1 Debilidad básica aleatoria.\n<b>Requisitos adicionales</b>: Tu mazo debe incluir al menos 3 clases distintas y 7 cartas de cada una de esas clases ([survivor], [guardian], [seeker], [rogue] o [mystic]).\n<b>Preparación adicional</b>: Después de que robes tu mano inicial: Elige un papel ([survivor], [guardian], [seeker], [rogue], [mystic], o neutral)."
+      },
+      {
+        "code": "03019",
+        "text": "El efecto Revelación de esta carta ahora dice: \"Descarta 1 carta de tu mano o de tu zona de juego de tu papel actual. A continuación...\".",
+        "replacement_text": "Mutada.\n<b>Revelación</b> – Descarta 1 carta de tu papel actual de tu mano o de tu zona de juego. A continuación, descarta la primera carta de tu mazo. Cambia tu papel a la clase de la carta descartada; si la carta descartada es una Debilidad, cambia tu papel a neutral."
+      },
+      {
+        "code": "04032",
+        "text": "Esta carta ahora dice: \"que tenga un símbolo que no sea [elder_sign]\" en lugar de \"que tenga un símbolo [skull], [cultist], [tablet], [elder_thing], o [auto_fail].\".",
+        "replacement_text": "Mutada. Rápido. Juega esta carta cuando fueses a revelar una ficha de Caos.\nRevela 5 fichas de Caos en lugar de 1. Elige una de esas fichas que tenga un símbolo que no sea [elder_sign] para resolverla e ignora el resto. Si no es revelada ninguna de esas fichas, elige cualquier otra ficha de entre las reveladas para resolverla e ignora el resto."
+      },
+      {
+        "code": "04105",
+        "text": "La capacidad de esta carta ahora dice: “<b>Negociar</b>. Elige un Enemigo que no sea Debilidad que esté en tu Lugar…”.",
+        "replacement_text": "Mutada.\n<b>Negociar.</b> Elige un Enemigo que no sea Debilidad que esté en tu Lugar y realiza una prueba de [intellect] (3). Esta prueba recibe +X a su dificultad, donde X es el valor de horror de ese Enemigo. Si tienes éxito, devuelve el Enemigo elegido al mazo de Encuentros y baraja éste. Si el Enemigo elegido es [[Élite]], en lugar de eso evítalo automáticamente."
+      },
+      {
+        "code": "04110",
+        "text": "Esta carta ahora dice: \"que tenga un símbolo que no sea [auto_fail]\" en lugar de \"una ficha de caos [skull], [cultist], [tablet] o [elder_thing].\".",
+        "replacement_text": "Mutada. Rápido. Juega esta carta cuando se revele una ficha de Caos que tenga un símbolo que no sea [auto_fail] durante una prueba de habilidad en tu Lugar.\nCancela esa ficha de Caos <i>(No reveles una nueva ficha de Caos para sustituirla)</i>."
+      },
+      {
+        "code": "04233",
+        "text": "This card’s ability now reads: “Gain 1 resource for each action you spent this turn…”",
+        "replacement_text": "Mutated. Gain 1 resource for each action you spent this turn <i>(including this one)</i>. If it is your turn, end your turn."
+      },
+      {
+        "code": "06002",
+        "text": "Este investigador ahora dice: \"Tamaño de mazo: 50\" y \"Requisitos de creación de mazos no cuentan para el tamaño del mazo): 3 copias de Prueba de ocultismo...\".",
+        "deck_options": [
+          {
+            "faction": [
+              "seeker",
+              "neutral"
+            ],
+            "level": {
+              "min": 0,
+              "max": 5
+            }
+          },
+          {
+            "name": "Clase Secundaria",
+            "faction_select": [
+              "mystic",
+              "rogue",
+              "survivor"
+            ],
+            "level": {
+              "min": 0,
+              "max": 1
+            },
+            "type": [
+              "event",
+              "skill"
+            ],
+            "limit": 10
+          }
+        ],
+        "deck_requirements": {
+          "size": 50,
+          "card": {
+            "06008": {
+              "06008": "06008"
+            },
+            "06009": {
+              "06009": "06009"
+            }
+          },
+          "random": [
+            {
+              "target": "subtype",
+              "value": "basicweakness"
+            }
+          ]
+        },
+        "replacement_back_text": "Mutada.\n<b>Tamaño de mazo</b>: 50.\n<b>Elección de clase secundaria</b>: Elige entre Místico ([mystic]), Rebelde ([rogue]) o Superviviente ([survivor]) al crear el mazo.\n<b>Opciones de creación de mazos</b>: Cartas Buscador ([seeker]) de nivel 0–5, cartas neutrales de nivel 0–5, hasta 10 Eventos y/o Habilidades de nivel 0–1 de la clase secundaria elegida.\n<b>Requisitos de creación de mazos</b> (no cuentan para el tamaño de mazo): 3 copias de Prueba de ocultismo, Descubrimiento impactante, 1 Debilidad básica aleatoria."
+      },
+      {
+        "code": "07268",
+        "exceptional": false,
+        "deck_limit": 1,
+        "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
+        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
+      },
+      {
+        "code": "08045",
+        "text": "La capacidad pasiva de esta carta ahora dice: \"...recibes +1 [intellect] y +1 [agility] e ignoras el primer ataque de oportunidad que recibas cada ronda.\".",
+        "replacement_text": "Mutada.\nMientras no estés en el centro neurálgico, recibes +1 [intellect] y +1 [agility] e ignoras el primer ataque de oportunidad que recibas cada turno.\n[reaction] Después de que la Prophesiae Profana entre en juego: Elige un Lugar revelado. Ese Lugar es “el centro neurálgico” hasta que la Prophesiae Profana abandone el juego.\n[action]: Mueve cualquier investigador al centro neurálgico."
+      },
+      {
+        "code": "08055",
+        "text": "Esta carta obtiene: \"Máximo de una vez por ronda.\"",
+        "replacement_text": "Mutada. Rápido. Juega esta carta al comienzo de la fase de Investigación. Máximo de una vez por ronda.\nDe una en una, revela cartas de la parte superior del mazo o los mazos de cualesquiera investigadores hasta que se hayan revelado exactamente 5 cartas. Pon aparte esas cartas, fuera del juego. Mientras estén puestas aparte, cualquier investigador puede jugar cualquiera de esas cartas como si estuvieran en su mano. Al comienzo de la siguiente fase de Investigación, devuelve al mazo de su propietario cada una de esas cartas que siga puesta aparte y después baraja esos mazos."
+      },
+      {
+        "code": "08076",
+        "text": "Esta carta obtiene: “Máximo dos veces por partida.”.",
+        "replacement_text": "Mutada.\nExilia una carta de nivel 0-5 de tu mano. Descubre 2 pistas en tu Lugar. Si la carta exiliada era de nivel 2 o mayor, retira 1 ficha de Perdición del plan en curso. Exilia Quemar después de leer. Máximo dos veces por partida.\n<b>Carta diseñada por El consejo en el exilio en la Gen Con 2020</b>"
+      },
+      {
+        "code": "08098",
+        "text": "Esta carta ahora dice \"siguientes acciones básicas\" en lugar de \"siguientes acciones.\".",
+        "replacement_text": "Mutada. Usos (3 secretos).\n[fast] Durante tu turno, agota la Carta de los evos y gasta 1 secreto: Elige y realiza una de las siguientes acciones básicas (movimiento, evitar o investigar)."
+      },
+      {
+        "code": "08100",
+        "text": "Esta carta ahora dice \"siguientes acciones básicas\" en lugar de \"siguientes acciones.\".",
+        "replacement_text": "Mutada. Usos (3 secretos).\n[fast] Durante tu turno, agota la Carta de los evos y gasta 1 secreto: Elige y realiza dos acciones básicas diferentes de las siguientes, en cualquier orden (movimiento, evitar o investigar)."
+      },
+      {
+        "code": "08093",
+        "text": "Esta carta ahora dice: \"...o bien puedes agotar el Martillo ciclópeo para infligir +2 de daño y mover el Enemigo hasta dos Lugares alejándose de ti si tienes éxito por 3 o más.\".",
+        "replacement_text": "Mutada.\n[action]: <b>Combatir.</b> Añade tu [willpower] a tu valor de habilidad para este ataque. Infliges +1 de daño para este ataque. Si tienes éxito y el Enemigo no es [[Élite]], puedes moverlo un Lugar alejándose de ti, o bien puedes agotar el Martillo ciclópeo para infligir +2 de daño y mover el Enemigo hasta dos Lugares alejándose de ti si tienes éxito por 3 o más."
+      },
+      {
+        "code": "09045",
+        "text": "La segunda capacidad de esta carta obtiene: “Máximo de 3 pruebas gastadas por ronda.”",
+        "replacement_text": "Mutada.\n[reaction] Después de que una capacidad de una carta de Jugador coloque 1 o más de tus pistas sobre tu Lugar: Coloca esa misma cantidad de recursos sobre las Notas de investigación como pruebas.\n[action]: Realiza una prueba de [intellect] (0). Por cada punto que tengas por encima del valor mínimo de éxito, puedes gastar 1 prueba para descubrir 1 pista en tu Lugar. Máximo de 3 pruebas gastadas por ronda."
+      },
+      {
+        "code": "09081",
+        "text": "La capacidad de esta carta ahora dice: “[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar</b>. Realiza una prueba de [willpower] (3). Si tienes éxito, dale una orden (límite de una vez por ronda y por orden) – “Vete”. Este Enemigo se mueve una vez en una dirección de tu elección.\".\nLa lista de mejoras pierde la capacidad “Apiádate” y obtiene “☐ Acobárdate. Añade la orden: - “Acobárdate”. Este Enemigo se agota.\"",
+        "customization_options": [
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>'Cower.'</i> This enemy exhausts.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 2
+          },
+          {
+            "xp": 3,
+            "deck_limit": 3,
+            "text_change": "insert",
+            "position": 1
+          }
+        ],
+        "customization_change": "- <i>\"Traiciona\".</i> Inflige 1 punto de daño a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de combate igual o menor que este Enemigo.\n- <i>\"Acobárdate.\"</i> Este Enemigo se agota.\n- <i>\"Confiesa\".</i> Descubre 1 pista en el Lugar de este Enemigo si su salud es igual o mayor que el velo de su Lugar.\n- <i>\"Distrae\".</i> Evita automáticamente a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de evitar igual o menor que este Enemigo.\n[free]: Devuelve la Palabra de poder a tu mano.\nPuedes activar la capacidad de negociar de la Palabra de poder desde un máximo de un Lugar de distancia del Enemigo vinculado.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar.</b> Realiza una prueba de [willpower] (3). Si tienes éxito, dale hasta dos órdenes distintas (límite de una vez por ronda y por orden) -\nPuedes incluir tres copias de la Palabra de poder en tu mazo. Cuando des una orden usando una copia, dale también esa orden a cada uno de los demás Enemigos que tenga vinculada una de tus copias de la Palabra de poder.",
+        "customization_text": "□ <b>Traiciona.</b> Añade la orden: \"- <i>'Traiciona'.</i> Inflige 1 punto de daño a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de combate igual o menor que este Enemigo.\".\n□ <b>Acobárdate.</b> Añade la orden: \"- <i>'Acobárdate.'</i> Este Enemigo se agota.\".\n□ <b>Confiesa.</b> Añade la orden: \"- <i>'Confiesa'.</i> Descubre 1 pista en el Lugar de este Enemigo si su salud es igual o mayor que el velo de su Lugar.\".\n□ <b>Distrae.</b> Añade la orden: \"- <i>'Distrae'.</i> Evita automáticamente a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de evitar igual o menor que este Enemigo.\".\n□□ <b>Mayor control.</b> La Palabra de poder obtiene \"[free]: Devuelve la Palabra de poder a tu mano.\".\n□□□ <b>Atado.</b> Puedes activar la capacidad de negociar de la Palabra de poder desde un máximo de un Lugar de distancia del Enemigo vinculado.\n□□□ <b>Trabalenguas.</b> Cuando negocies con la Palabra de poder, puedes dar hasta dos órdenes distintas.\n□□□ <b> Pronunciada tres veces.</b> Puedes incluir tres copias de la Palabra de poder en tu mazo. Cuando des una orden usando una copia, dale también esa orden a cada uno de los demás Enemigos que tenga vinculada una de tus copias de la Palabra de poder.",
+        "replacement_text": "Mutada. Personalizable. Rápido. Juega esta carta sólo durante tu turno.\nVincula esta carta a un Enemigo que no sea [[Élite]] que esté en tu Lugar.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar</b>. Realiza una prueba de [willpower] (3). Si tienes éxito, dale una orden (límite de una vez por ronda y por orden) –\n– “Vete”. Este Enemigo se mueve una vez en una dirección de tu elección."
+      }
+    ]
   }
 ]

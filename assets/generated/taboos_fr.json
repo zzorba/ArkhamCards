@@ -1093,5 +1093,474 @@
         "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
       }
     ]
+  },
+  {
+    "id": 7,
+    "code": "007",
+    "name": "Liste des Tabous",
+    "active": 1,
+    "date_start": "2024-02-20",
+    "cards": [
+      {
+        "code": "01073",
+        "xp": 2
+      },
+      {
+        "code": "01573",
+        "xp": 2
+      },
+      {
+        "code": "06332",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "text": "Mutée.\nLa capacité de cette carte indique désormais : « Désengagez-vous de chaque ennemi engagé avec vous et déplacez-vous vers un lieu connexe sans ennemi. »",
+        "replacement_text": "Mutée. Rapide. À jouer uniquement lors de votre tour.\nDésengagez-vous de chaque ennemi engagé avec vous et déplacez-vous vers un lieu connexe sans ennemi."
+      },
+      {
+        "code": "02108",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "Mutée.\nLa capacité [action] de cette carte gagne : « Cette attaque peut cibler un ennemi non-[[Élite]] éloigné jusqu'à un lieu de sa portée standard, en ignorant les mots-clés Distant et Riposte. »",
+        "replacement_text": "Mutée. Utilisations (3 munitions).\n[action] Dépensez 1 munition : <b>Combattre</b>. Vous gagnez +3 [combat] et infligez +2 dégâts pour cette attaque. Ne peut pas être utilisé pour attaquer des ennemis engagés avec vous. Cette attaque peut cibler un ennemi non-[[Élite]] éloigné jusqu'à un lieu de sa portée standard, en ignorant les mots-clés Distant et Riposte."
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "text": "Mutée.\nLa capacité [fast] de cette carte est désormais une capacité [action].",
+        "replacement_text": "Mutée. Utilisations (3 secrets).\n[action] Inclinez M. « Rook » et dépensez 1 secret : cherchez n'importe quelle carte parmi les 3, 6 ou 9 cartes du dessus de votre deck et piochez-la. Si au moins 1 faiblesse se trouve parmi les cartes consultées, piochez-en 1 également. Mélangez votre deck."
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Mutée.\nCette carte perd le texte : « Le soutien attaché ne peut pas être utilisé pour attaquer des ennemis engagés avec vous. »",
+        "replacement_text": "Mutée. Rapide. Attachez cette carte à un soutien [[Arme à feu]] que vous contrôlez et qui occupe deux emplacements de main.\n[reaction] Quand vous effectuez une action <b>Combattre</b> en utilisant le soutien attaché, si vous n'êtes pas engagé avec des ennemis, inclinez le Viseur Télescopique : cette attaque peut cibler un ennemi non-[[Élite]] dans un lieu connexe. Ignorez les mots-clés Distant et Riposte pour cette attaque."
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Eucatastrophe de la partie. »",
+        "replacement_text": "Mutée. Rapide. À jouer quand vous révélez un pion Chaos qui devrait réduire votre valeur de compétence à 0 lors d'un test de compétence (cela inclut le pion [auto_fail]).\nAnnulez ce pion Chaos et traitez-le comme s'il s'agissait d'un pion [elder_sign] à la place. Retirez Eucatastrophe de la partie."
+      },
+      {
+        "code": "06022",
+        "text": "Mutée.\nLa capacité permanente de cette carte indique désormais : « Si cette carte n'a pas de charges, retirez-la de la partie. »",
+        "replacement_text": "Mutée. Liée (Segment d'Onyx). Utilisations (3 charges). Si cette carte n'a pas de charges, retirez-la de la partie.\n[free] Inclinez le Pendentif de la Reine et dépensez 1 charge : choisissez un lieu révélé et choisissez une des options suivantes – déplacez-vous vers ce lieu, découvrez 1 indice dans ce lieu ou échappez automatiquement à un ennemi dans ce lieu."
+      },
+      {
+        "code": "06199",
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez de la partie chaque exemplaire de Brelan d'As attribué au test de compétence. »",
+        "replacement_text": "Mutée. Myriade.\nSi vous attribuez 3 exemplaires de Brelan d'As à un test de compétence, ce test réussit automatiquement <i>(ne révélez pas de pions Chaos de la réserve du Chaos)</i>. Ensuite, piochez 3 cartes et gagnez 3 ressources (maximum d'une fois par test). Retirez de la partie chaque exemplaire de Brelan d'As attribué au test de compétence."
+      },
+      {
+        "code": "60318",
+        "text": "Mutée.\nAu lieu de « Mélangez dans votre deck chaque faiblesse défaussée… », la capacité de cette carte indique désormais : « Après la résolution de ce test, piochez chaque faiblesse défaussée par cet effet. »",
+        "replacement_text": "Mutée.\nAprès avoir attribué Casse-Cou à un test de compétence, défaussez des cartes du dessus de votre deck jusqu'à ce que vous défaussiez une compétence [rogue] que vous pouvez attribuer à ce test. Attribuez-la. Après la résolution de ce test, piochez chaque faiblesse défaussée par cet effet."
+      },
+      {
+        "code": "07003",
+        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez découvert au moins 1 indice dans un lieu où se trouve un ennemi : soit vous découvrez 1 indice supplémentaire dans ce lieu, soit vous échappez automatiquement à cet ennemi s'il est non-[[Élite]]. (Limite d'une fois par round.) »",
+        "replacement_text": "Mutée.\n[reaction] Après que vous avez découvert au moins 1 indice dans un lieu où se trouve un ennemi : soit vous découvrez 1 indice supplémentaire dans ce lieu, soit vous échappez automatiquement à cet ennemi s'il est non-[[Élite]]. (Limite d'une fois par round.)\n[elder_sign] : +2. S'il s'agit d'une enquête, vous avez le droit de choisir n'importe quel lieu révélé ; vous enquêtez désormais comme si vous étiez dans ce lieu à la place."
+      },
+      {
+        "code": "07122",
+        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Quand vous résolvez un pion [bless] lors d'un test de compétence… »",
+        "replacement_text": "Mutée. Permanent. Limite de 1 [[Traité]] par deck.\n[reaction] Quand vous résolvez un pion [bless] lors d'un test de compétence, inclinez l'Antique Traité : ne révélez pas d'autre pion via l'effet de ce pion [bless]."
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07197",
+        "xp": -2
+      },
+      {
+        "code": "03112",
+        "text": "Mutée.\nLa capacité [fast] de cette carte indique désormais : « ...Gagnez 1 ressource pour chaque fatalité sur David Renfield (jusqu'à un maximum de 3 ressources). »",
+        "replacement_text": "Mutée. Tant que David Renfield a au moins 1 fatalité sur lui, vous gagnez +1 [willpower].\n[free] Inclinez David Renfield : vous avez le droit de placer 1 fatalité sur David Renfield. Gagnez 1 ressource pour chaque fatalité sur David Renfield (jusqu'à un maximum de 3 ressources)."
+      },
+      {
+        "code": "07308",
+        "xp": -2
+      },
+      {
+        "code": "60327",
+        "xp": -1
+      },
+      {
+        "code": "08099",
+        "xp": 2
+      },
+      {
+        "code": "09117",
+        "xp": 1
+      },
+      {
+        "code": "09022",
+        "customization_options": [
+          {
+            "xp": 1,
+            "cost": -1,
+            "real_traits": "Item. Weapon. Melee. Relic.",
+            "text_change": "trait"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.",
+            "tags": "hd.hh.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 0
+          },
+          {
+            "xp": 4,
+            "text_change": "replace",
+            "position": 1
+          }
+        ],
+        "customization_text": "□ <b>Héritage.</b> Réduisez de 1 le coût de la Hache Runique et elle gagne le trait [[Relique]].\n□ <b>Inscription de Gloire.</b> Ajoutez cette inscription : - <i>Gloire</i> – Si un ennemi est vaincu par cette attaque, choisissez une option : piochez 1 carte, soignez 1 dégât ou soignez 1 horreur.\n□ <b>Inscription des Anciens.</b> Ajoutez cette inscription : - <i>Anciens</i> – En cas de réussite de cette attaque avec une différence supérieure ou égale à la valeur occulte de votre lieu, découvrez 1 indice dans votre lieu.\n□□ <b>Inscription de Chasse.</b> Ajoutez cette inscription : - <i>Chasse</i> – Déplacez-vous immédiatement vers un lieu connexe ou engagez un ennemi dans votre lieu.\n□ <b>Inscription de Fureur.</b> Ajoutez cette inscription : - <i>Fureur</i> – En cas de réussite de cette attaque, en plus de ses dégâts standards, infligez 1 dégât à chaque autre ennemi engagé avec vous.\n□□□ <b>Pouvoir Ancestral.</b> Vous avez le droit d'activer la même inscription jusqu'à trois fois.\n□□□ <b>Saga.</b> Reconstituez 2 charges de la Hache Runique au début de chaque round (au lieu d'une seule charge).\n□□□□ <b>Tisseur de Runes.</b> Pour chaque charge dépensée, vous avez le droit d'activer jusqu'à deux inscriptions différentes.",
+        "text": "Enchaînée.\nAmélioration – <b>Inscription de Chasse :</b> +1 expérience."
+      },
+      {
+        "code": "09108",
+        "xp": 2
+      },
+      {
+        "code": "07269",
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Une Brève Accalmie de la partie. »",
+        "replacement_text": "Mutée.\nEn tant que coût supplémentaire pour jouer Une Brève Accalmie, cherchez un total de 5 pions [bless] dans la réserve du Chaos et/ou sur les cartes en jeu et renvoyez-les dans la réserve de pions.\nRapide. À jouer quand l'étape « piochez les cartes Rencontre » de la phase du Mythe est censée débuter.\nIgnorez cette étape de la phase du Mythe. Retirez Une Brève Accalmie de la partie."
+      },
+      {
+        "code": "07301",
+        "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Sanctifier de la partie. »",
+        "replacement_text": "Mutée. En tant que coût supplémentaire pour jouer Sanctifier, renvoyez vers la réserve de pions un total de 10 pions [bless] depuis la réserve du Chaos ou scellés sur des cartes en jeu.\nRetirez 1 fatalité de n'importe quelle carte en jeu. Retirez Sanctifier de la partie."
+      },
+      {
+        "code": "08019",
+        "text": "Mutée.\nLa capacité <b>Forcé</b> de cette carte indique désormais : « <b>Forcé</b> – Quand votre premier tour de la partie débute : jouez jusqu'à 5 soutiens [[Objet]]… »",
+        "replacement_text": "Mutée. Permanent. Limite de 1 par deck. À acheter lors de la création du deck.\n<b>Forcé</b> – Quand votre premier tour de la partie débute : jouez jusqu'à 5 soutiens [[Objet]] de votre main, un à la fois, en réduisant de 1 le coût de chacun. Lors de ce tour, effectuez 3 actions de moins."
+      },
+      {
+        "code": "08032",
+        "text": "Mutée.\nLa capacité de cette carte gagne : « (Max. deux fois par partie.) »",
+        "replacement_text": "Mutée. Vous gagnez +1 [intellect].\n[reaction] Après que Jeremiah Kirby est entré en jeu, choisissez « pair » ou « impair » : révélez les 5 cartes du dessus de votre deck. Piochez chaque carte dont le coût correspond à l'option choisie. Mélangez les cartes restantes dans votre deck. (Max. deux fois par partie.)"
+      },
+      {
+        "code": "01033",
+        "text": "Mutée.\nLa capacité [reaction] de cette carte indique désormais : « Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher… »",
+        "replacement_text": "Mutée.\nVous gagnez +1 [intellect].\n[reaction] Après que vous avez enquêté avec succès, inclinez le Dr. Milan Christopher : gagnez 1 ressource."
+      },
+      {
+        "code": "02002",
+        "text": "Mutée.\nLa capacité [reaction] de cette carte gagne : « Limite d'une fois par round. »",
+        "replacement_text": "Mutée.\n[reaction] Après que avez réussi un test de compétence avec une différence de 2 ou plus pendant que vous enquêtiez : découvrez 1 indice dans votre lieu. (Limite d'une fois par round.)\n[elder_sign] : +2. À la place, vous avez le droit d'échouer automatiquement à ce test de compétence pour piocher 3 cartes."
+      },
+      {
+        "code": "02111",
+        "text": "Mutée.\nCette carte gagne : « Limite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire. »",
+        "replacement_text": "Mutée.\nDans l'ordre des joueurs, chaque investigateur pioche 1 carte du dessus du deck Rencontre. Ensuite, ajoutez Creuser Trop Profondément à la pile de victoire.\nLimite collective de 2 exemplaires de Creuser Trop Profondément dans la pile de victoire."
+      },
+      {
+        "code": "02229",
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. » à la fin de sa capacité.",
+        "replacement_text": "Mutée.\nSi ce test de compétence est réussi avec une différence de 2 ou plus, après sa résolution, vous avez le droit d'effectuer immédiatement une action comme si c'était votre tour (cette action ne compte pas dans le nombre d'actions que vous pouvez effectuer à chaque tour). (Max. une fois par round.)"
+      },
+      {
+        "code": "02266",
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. »",
+        "replacement_text": "Mutée. Exceptionnel. Rapide.\nÀ jouer uniquement lors de votre tour.\nVous avez le droit d'effectuer 3 actions supplémentaires durant votre tour. (Max. une fois par round.)"
+      },
+      {
+        "code": "03029",
+        "text": "Mutée.\nLa capacité de cette carte indique désormais :\n« Mettez en jeu un soutien [[Objet]] de niveau 0 à 3 de votre main. »",
+        "replacement_text": "Mutée. Rapide. À jouer uniquement lors de votre tour.\nMettez en jeu un soutien [[Objet]] de niveau 0 à 3 de votre main. À la fin de votre tour, si ce soutien est toujours en jeu, renvoyez-le dans votre main."
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Mutée.\nCette carte gagne le mot-clé Exceptionnel.",
+        "replacement_text": "Mutée. Exceptionnel.\nVous gagnez +1 à chacune de vos compétences pour chaque horreur sur la Clé d'Ys.\n<b>Forcé</b> – Quand n'importe quel nombre d'horreurs devrait être placé sur vous : placez 1 de ces horreurs sur la Clé d'Ys.\n<b>Forcé</b> – Quand la Clé d'Ys quitte le jeu : défaussez les 10 cartes du dessus de votre deck."
+      },
+      {
+        "code": "04309",
+        "text": "Mutée.\nCette carte gagne : « Retirez Le Tout pour le Tout de la partie. » à la fin de sa capacité.",
+        "replacement_text": "Mutée. 1 max. attribuée par test de compétence.\nSi ce test de compétence est réussi, piochez 1 carte pour chaque point de réussite, jusqu'à un maximum de 5. Mélangez dans votre deck chaque faiblesse piochée par cet effet sans la résoudre. Retirez Le Tout pour le Tout de la partie."
+      },
+      {
+        "code": "05116",
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast].",
+        "replacement_text": "Mutée. Utilisations (3 secrets).\n[free] Inclinez le Parchemin des Secrets et dépensez 1 secret : regardez la carte du dessous de n'importe quel deck Investigateur ou du deck Rencontre. Ensuite, soit vous défaussez la carte regardée, soit vous l'ajoutez à la main de son propriétaire, soit vous la replacez sous le deck correspondant, soit vous la placez sur le deck correspondant."
+      },
+      {
+        "code": "05188",
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast].",
+        "replacement_text": "Mutée. Utilisations (3 secrets).\n[free] Inclinez le Parchemin des Secrets et dépensez 1 secret : regardez les 3 cartes du dessous de n'importe quel deck Investigateur ou du deck Rencontre. Vous avez le droit de défausser 1 de ces cartes. Vous avez le droit d'ajouter 1 de ces cartes à la main de son propriétaire. Placez les cartes restantes soit au-dessus soit sous le deck correspondant, dans n'importe quel ordre."
+      },
+      {
+        "code": "05189",
+        "text": "Mutée.\nLa capacité [action] de cette carte est désormais une capacité [fast].",
+        "replacement_text": "Mutée. Utilisations (4 secrets).\n[free] Inclinez le Parchemin des Secrets et dépensez 1 secret : regardez la carte du dessus ou du dessous de n'importe quel deck Investigateur ou du deck Rencontre. Ensuite, soit vous défaussez la carte regardée, soit vous l'ajoutez à la main de son propriétaire, soit vous la placez sous le deck correspondant, soit vous la placez sur le deck correspondant."
+      },
+      {
+        "code": "05020",
+        "text": "Mutée.\nLa capacité de cette carte indique désormais : « <b>Discussion</b>. Choisissez un ennemi non-[[Élite]] dans votre lieu… »",
+        "replacement_text": "Mutée.\n<b>Discussion</b>. Choisissez un ennemi non-[[Élite]] dans votre lieu et effectuez un test de [combat] (3). Augmentez la difficulté de ce test de +X, X étant la valeur de dégât de l'ennemi choisi. En cas de réussite, découvrez 1 indice dans votre lieu et 1 indice dans n'importe quel autre lieu."
+      },
+      {
+        "code": "06195",
+        "text": "Mutée.\nLa capacité [action] de cette carte dit désormais : « [action] Dépensez 1 munition : <b>Combattre</b>. Vous gagnez +2 [combat] pour cette attaque. Si un pion Chaos avec un modificateur non-négatif est révélé lors de cette attaque, cette attaque inflige +2 dégâts. »",
+        "replacement_text": "Mutée. Utilisations (5 munitions).\n[action] Dépensez 1 munition : <b>Combattre</b>. Vous gagnez +2 [combat] pour cette attaque. Si un pion Chaos avec un modificateur non-négatif est révélé lors de cette attaque, cette attaque inflige +2 dégâts."
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Interdite.",
+        "replacement_text": "Interdite.\n1 max. attribuée par test de compétence.\nDoublez la difficulté de ce test de compétence. En cas de réussite, résolvez deux fois les effets induits par la réussite de ce test."
+      },
+      {
+        "code": "02029",
+        "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués.",
+        "replacement_text": "Mutée.\n[reaction] Après qu'un symbole est révélé lors d'un test que vous effectuez : gagnez +1 à votre valeur de compétence pour ce test."
+      },
+      {
+        "code": "02153",
+        "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués.",
+        "replacement_text": "Mutée. Rapide. À jouer quand un ennemi attaque un investigateur dans votre lieu.\nAnnulez l'attaque. Ensuite, révélez un pion Chaos pris au hasard dans la réserve du Chaos. Si un symbole est révélé, infligez les dégâts de l'ennemi attaquant à lui-même."
+      },
+      {
+        "code": "60414",
+        "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués.",
+        "replacement_text": "Mutée. Rapide. À jouer quand un ennemi attaque un investigateur dans votre lieu.\nAnnulez l'attaque. Ensuite, révélez un pion Chaos pris au hasard dans la réserve du Chaos. Si un symbole est révélé, infligez les dégâts de l'ennemi attaquant à lui-même."
+      },
+      {
+        "code": "60423",
+        "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués.",
+        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal damage to the attacking enemy equal to its damage or horror."
+      },
+      {
+        "code": "02269",
+        "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués.",
+        "replacement_text": "Mutée.\n[reaction] Après qu'un symbole est révélé lors d'un test de compétence dans votre lieu, inclinez le Joyau d'Aureolus : piochez 1 carte ou gagnez 2 ressources."
+      },
+      {
+        "code": "60416",
+        "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués.",
+        "replacement_text": "Mutée.\nGagnez 1 ressource. Révélez 3 pions pris au hasard dans la réserve du Chaos. Pour chaque symbole révélé, gagnez 2 ressources supplémentaires."
+      },
+      {
+        "code": "05113",
+        "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués.",
+        "replacement_text": "Mutée.\n<b>Échapper à</b>. À utiliser uniquement sur un ennemi non-[[Élite]]. Cette tentative d'évasion utilise [willpower] au lieu de [agility]. En cas de réussite, déplacez l'ennemi auquel vous venez d'échapper vers n'importe quel lieu en jeu. En cas de réussite et si un symbole a été révélé lors de cette tentative d'évasion, cet ennemi ne se redresse pas lors de la prochaine phase d'Entretien"
+      },
+      {
+        "code": "02263",
+        "text": "Mutée.\nLa capacité Combattre de cette carte indique désormais « +1 dégât » au lieu de « +2 dégâts. »",
+        "replacement_text": "Mutée. Étudiée. Utilisations (3 provisions).\n[action] Dépensez 1 provision : <b>Combattre</b>. Vous attaquez avec une compétence [combat] de base de 6. Cette attaque inflige +1 dégât."
+      },
+      {
+        "code": "03006",
+        "text": "Mutée.\nLa capacité <b>Forcé</b> de cette carte est déplacée sur son verso et indique désormais : « <b>Mise en Place Complémentaire</b> : après avoir pioché votre main de départ : choisissez un rôle ([survivor], [guardian], [seeker], [rogue], [mystic] ou neutre). »\nDe plus, le recto de cette carte gagne : « [action] : changez de rôle. Cette action ne provoque pas d'attaques d'opportunité. »",
+        "replacement_text": "Mutée.\nVous pouvez uniquement jouer, attribuer ou déclencher les capacités des cartes neutres ou des cartes de votre rôle.\n[free] : changez de rôle. (Limite d'une fois par round.)\n[action] : changez de rôle. Cette action ne provoque pas d'attaques d'opportunité.\n[elder_sign] : +2. Vous avez le droit de changer de rôle.",
+        "replacement_back_text": "Mutée.\n<b>Taille du Deck</b> : 35.\n<b>Construction du Deck</b> : cartes Survivant, Gardien, Chercheur, Truand et Mystique ([survivor], [guardian], [seeker], [rogue] et [mystic]) de niveaux 0 à 3, cartes neutres de niveaux 0 à 5.\n<b>Exigences du Deck</b> (ne comptent pas dans la limite de taille du deck) : 2 exemplaires d'Improvisation, 2 exemplaires de Crise d'Identité, 1 faiblesse de base au hasard.\n<b>Exigences Supplémentaires</b> : Choisissez 3 classes différentes ([survivor], [guardian], [seeker], [rogue] ou [mystic]). Votre deck doit inclure au moins 7 cartes de chacune des 3 classes choisies.\n<b>Mise en Place Complémentaire</b> : après avoir pioché votre main de départ : choisissez un rôle ([survivor], [guardian], [seeker], [rogue], [mystic] ou neutre)."
+      },
+      {
+        "code": "03019",
+        "text": "Mutée.\nLa capacité <b>Révélation</b> de cette carte indique désormais : « Défaussez 1 carte de votre rôle actuel depuis votre main ou votre zone de jeu. Ensuite… »",
+        "replacement_text": "Mutée.\n<b>Révélation</b> – Défaussez 1 carte de votre rôle actuel depuis votre main ou votre zone de jeu. Ensuite, défaussez la carte du dessus de votre deck. Changez de rôle en prenant celui de la classe de la carte défaussée (si la carte défaussée est une faiblesse, changez votre rôle en neutre)."
+      },
+      {
+        "code": "04032",
+        "text": "Mutée.\nCette carte indique désormais « un symbole non-[elder_sign] » au lieu de « un symbole [skull], [cultist], [tablet], [elder_thing] ou [auto_fail]. »",
+        "replacement_text": "Mutée.\nRapide. À jouer quand vous devriez révéler un pion Chaos.\nRévélez 5 pions Chaos au lieu de 1. Choisissez l'un de ces pions avec un symbole non-[elder_sign] pour le résoudre et ignorez les autres. (Si aucun de ces pions n'est révélé, choisissez n'importe lequel des pions révélés pour le résoudre et ignorez les autres.)"
+      },
+      {
+        "code": "04105",
+        "text": "Mutée.\nLa capacité de cette carte indique désormais : « <b>Discussion</b>. Choisissez un ennemi non-faiblesse dans votre lieu… »",
+        "replacement_text": "Mutée.\n<b>Discussion</b>. Choisissez un ennemi non-faiblesse dans votre lieu et effectuez un test de [intellect] (3). La difficulté de ce test augmente de +X, X étant la valeur d'horreur de cet ennemi. En cas de réussite, mélangez l'ennemi choisi dans le deck Rencontre. Si c'est un ennemi [[Élite]], échappez-lui automatiquement à la place."
+      },
+      {
+        "code": "04110",
+        "text": "Mutée.\nCette carte indique désormais « un symbole non-[auto_fail] » au lieu de « un symbole [skull], [cultist], [tablet] ou [elder_thing]. »",
+        "replacement_text": "Mutée. Rapide. À jouer quand un symbole non-[auto_fail] est révélé lors d'un test de compétence dans votre lieu.\nAnnulez ce pion Chaos. <i>(Ne révélez pas de nouveau pion Chaos pour le remplacer.)</i>"
+      },
+      {
+        "code": "04233",
+        "text": "This card’s ability now reads: “Gain 1 resource for each action you spent this turn…”",
+        "replacement_text": "Mutated. Gain 1 resource for each action you spent this turn <i>(including this one)</i>. If it is your turn, end your turn."
+      },
+      {
+        "code": "06002",
+        "text": "Mutée.\nCette carte investigateur indique désormais : « Taille du Deck : 50 » et « Exigences du Deck (ne comptent pas dans la limite de taille du deck) : 3 exemplaires de Preuve Occulte... »",
+        "deck_options": [
+          {
+            "faction": [
+              "seeker",
+              "neutral"
+            ],
+            "level": {
+              "min": 0,
+              "max": 5
+            }
+          },
+          {
+            "name": "Classe secondaire",
+            "faction_select": [
+              "mystic",
+              "rogue",
+              "survivor"
+            ],
+            "level": {
+              "min": 0,
+              "max": 1
+            },
+            "type": [
+              "event",
+              "skill"
+            ],
+            "limit": 10
+          }
+        ],
+        "deck_requirements": {
+          "size": 50,
+          "card": {
+            "06008": {
+              "06008": "06008"
+            },
+            "06009": {
+              "06009": "06009"
+            }
+          },
+          "random": [
+            {
+              "target": "subtype",
+              "value": "basicweakness"
+            }
+          ]
+        },
+        "replacement_back_text": "Mutée.\n<b>Taille du Deck</b> : 50.\n<b>Choix d'une Classe Secondaire</b> : à la création du deck, choisissez Mystique ([mystic]), Truand ([rogue]) ou Survivant ([survivor]).\n<b>Construction du Deck</b> : cartes Chercheur ([seeker]) de niveaux 0 à 5, cartes neutres de niveaux 0 à 5, jusqu'à 10 cartes Événement et/ou Compétence de niveaux 0 à 1 de la classe secondaire choisie.\n<b>Exigences du Deck</b> (ne comptent pas dans la limite de taille du deck) : 3 exemplaires de Preuve Occulte, Découverte Choquante, 1 faiblesse de base au hasard."
+      },
+      {
+        "code": "07268",
+        "exceptional": false,
+        "deck_limit": 1,
+        "text": "Mutée.\nCette carte perd le mot-clé Exceptionnel et gagne « Limite de 1 par deck. »",
+        "replacement_text": "Mutée. Sceller (jusqu'à X [curse]). Limite de 1 par deck.\n[action] Inclinez la Flûte des Dieux Extérieurs et libérez 1 pion [curse] scellé dessus : choisissez un ennemi non-[[Élite]] dans votre lieu. Soit vous déplacez l'ennemi choisi vers un lieu connexe, soit vous infligez ses dégâts à n'importe quel ennemi dans son lieu. Cette action ne provoque pas d'attaques d'opportunité."
+      },
+      {
+        "code": "08045",
+        "text": "Mutée.\nLa capacité permanente de cette carte indique désormais : « …vous gagnez +1 [intellect], +1 [agility] et vous avez le droit d'ignorer la première attaque d'opportunité que vous subissez à chaque round. »",
+        "replacement_text": "Mutée.\nTant que vous n'êtes pas dans le locus, vous gagnez +1 [intellect], +1 [agility] et vous avez le droit d'ignorer la première attaque d'opportunité que vous subissez à chaque round.\n[reaction] Après que Prophesiae Profana est entré en jeu : choisissez un lieu révélé. Ce lieu est « le locus » jusqu'à ce que le Prophesiae Profana quitte le jeu.\n[action] : déplacez n'importe quel investigateur vers le locus."
+      },
+      {
+        "code": "08055",
+        "text": "Mutée.\nCette carte gagne : « max. une fois par round. »",
+        "replacement_text": "Mutée. Rapide. À jouer au début de la phase d'Investigation. Max. une fois par round.\nUne à la fois, révélez des cartes du dessus des decks de n'importe quel nombre d'investigateurs jusqu'à avoir révélé exactement 5 cartes. Mettez de côté ces cartes, hors jeu. Tant que ces cartes sont mises de côté, n'importe quel investigateur a le droit de les jouer comme si elles étaient dans sa main. Au début de la prochaine phase d'Investigation, mélangez dans le deck de son propriétaire chacune de ces cartes qui serait encore de côté."
+      },
+      {
+        "code": "08076",
+        "text": "Mutée.\nLa capacité de cette carte gagne : « (Max. deux fois par partie.) »",
+        "replacement_text": "Mutée. Bannissez une carte de niveau 0 à 5 de votre main. Découvrez 2 indices dans votre lieu. Si la carte bannie était de niveau 2 ou plus, retirez 1 fatalité de l'intrigue en cours. Bannissez À Brûler Après Lecture. (Max. deux fois par partie.)\n<b>Carte conçue par <i>The Council-in-Exile</i> lors de la Gen Con 2020</b>"
+      },
+      {
+        "code": "08098",
+        "text": "Mutée.\nCette carte indique désormais « actions basiques suivantes » au lieu de « actions suivantes. »",
+        "replacement_text": "Mutée. Utilisations (3 secrets).\n[fast] Lors de votre tour, inclinez la Carte Ancestrale et dépensez 1 secret : choisissez et effectuez une des actions basiques suivantes (Se Déplacer, Échapper à, Enquêter)."
+      },
+      {
+        "code": "08100",
+        "text": "Mutée.\nCette carte indique désormais « actions basiques suivantes » au lieu de « actions suivantes. »",
+        "replacement_text": "Mutée. Utilisations (3 secrets).\n[fast] Lors de votre tour, inclinez la Carte Ancestrale et dépensez 1 secret : choisissez et effectuez deux des actions basiques suivantes, dans l'ordre de votre choix (Se Déplacer, Échapper à, Enquêter)."
+      },
+      {
+        "code": "08093",
+        "text": "Mutée.\nLe texte entre parenthèses de cette carte indique désormais : « …(En cas de réussite avec une différence de 3 ou plus, vous avez le droit d'incliner le Marteau Cyclopéen pour infliger +2 dégâts et déplacer cet ennemi jusqu'à 2 lieux en l'éloignant de vous, à la place.) »",
+        "replacement_text": "Mutée.\n[action] : <b>Combattre</b>. Ajoutez votre [willpower] à votre valeur de compétence pour cette attaque. Vous infligez +1 dégât pour cette attaque. En cas de réussite, si l'ennemi est non-[[Élite]], vous avez le droit de le déplacer de 1 lieu en l'éloignant de vous. (En cas de réussite avec une différence de 3 ou plus, vous avez le droit d'incliner le Marteau Cyclopéen pour infliger +2 dégâts et déplacer cet ennemi jusqu'à 2 lieux en l'éloignant de vous, à la place.)"
+      },
+      {
+        "code": "09045",
+        "text": "Mutée.\nLa deuxième capacité de cette carte gagne : « (max. 3 preuves dépensées par round). »",
+        "replacement_text": "Mutée.\n[reaction] Après qu'une capacité de carte Joueur a placé sur votre lieu 1 ou plusieurs de vos indices : placez le même nombre de ressources sur Notes de Recherches, en tant que preuves.\n[action] : effectuez un test de [intellect] (0). Pour chaque point de réussite, vous avez le droit de dépenser 1 preuve pour découvrir 1 indice dans votre lieu (max. 3 preuves dépensées par round)."
+      },
+      {
+        "code": "09081",
+        "text": "Mutée.\nLa boîte de texte de cette carte indique désormais : « [action] Si l'ennemi attaché est dans votre lieu : <b>Discussion</b>. Effectuez un test de [willpower] (3). En cas de réussite, donnez-lui un ordre (limite d'une fois par round et par ordre) –\n- <i>« Va-t'en. »</i> Cet ennemi se déplace une fois dans la direction de votre choix. »\nLa fiche Amélioration de cette carte perd la capacité « <b>Charité</b> » et gagne « ☐ <b>Affaisser.</b> Ajoutez l'ordre : - \"Affaisse-toi.\" »",
+        "customization_options": [
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>'Cower.'</i> This enemy exhausts.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 2
+          },
+          {
+            "xp": 3,
+            "deck_limit": 3,
+            "text_change": "insert",
+            "position": 1
+          }
+        ],
+        "customization_change": "- <i>« Révolte-toi. »</i> Infligez 1 dégât à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur de combat est inférieure ou égale à celle de l'ennemi attaché.\n- <i>« Affaisse-toi. »</i> Inclinez cet ennemi.\n- <i>« Confesse-toi. »</i> Découvrez 1 indice dans le lieu de cet ennemi si sa vie est supérieure ou égale à la valeur occulte du lieu.\n- <i>« Fais diversion. »</i> Échappez automatiquement à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur d'évasion est inférieure ou égale à celle de l'ennemi attaché.\n[fast] : renvoyez dans votre main Mot de Pouvoir.\nVous avez le droit d'activer la capacité Discussion du Mot de Pouvoir depuis votre lieu ou depuis un lieu éloigné de 1 connexion de l'ennemi attaché.\n[action] Si l'ennemi attaché est dans votre lieu : <b>Discussion.</b> Vous avez le droit de donner jusqu'à deux ordres différents (limite d'une fois par round) –\nVous avez le droit d'inclure 3 exemplaires de Mot de Pouvoir dans votre deck. Quand vous donnez un ordre en utilisant un de ces exemplaires, donnez également cet ordre à chaque autre ennemi auquel vous avez attaché un exemplaire du Mot de Pouvoir.",
+        "customization_text": "□ <b>Trahison.</b> Ajoutez l'ordre : - <i>« Révolte-toi. »</i> Infligez 1 dégât à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur de combat est inférieure ou égale à celle de l'ennemi attaché.\n□ <b>Affaisser.</b> Ajoutez l'ordre : - <i>« Affaisse-toi. »</i> Inclinez cet ennemi.\n□ <b>Confession.</b> Ajoutez l'ordre : - <i>« Confesse-toi. »</i> Découvrez 1 indice dans le lieu de cet ennemi si sa vie est supérieure ou égale à la valeur occulte du lieu.\n□ <b>Diversion.</b> Ajoutez l'ordre : - <i>« Fais diversion. »</i> Échappez automatiquement à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur d'évasion est inférieure ou égale à celle de l'ennemi attaché.\n□□ <b>Contrôle Accru.</b> Mot de Pouvoir gagne : « [fast] : renvoyez dans votre main Mot de Pouvoir. »\n□□□ <b>Lié.</b> Vous avez le droit d'activer la capacité Discussion du Mot de Pouvoir depuis votre lieu ou depuis un lieu éloigné de 1 connexion de l'ennemi attaché.\n□□□ <b>Virelangue.</b> Quand vous discutez via le Mot de Pouvoir, vous avez le droit de donner jusqu'à deux ordres différents.\n□□□ <b>Trois Paroles.</b> Vous avez le droit d'inclure 3 exemplaires de Mot de Pouvoir dans votre deck. Quand vous donnez un ordre en utilisant un de ces exemplaires, donnez également cet ordre à chaque autre ennemi auquel vous avez attaché un exemplaire du Mot de Pouvoir.",
+        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+      }
+    ]
   }
 ]

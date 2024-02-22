@@ -165,7 +165,7 @@ export default class CampaignGuide {
     );
   }
 
-  card(code: string): { code: string; name: string; gender?: 'm' | 'f' | 'nb'; description?: string } | undefined {
+  card(code: string): { code: string; name: string; gender?: 'm' | 'f' | 'nb'; description?: string; img?: string } | undefined {
     return find(this.campaign.campaign.cards, c => c.code === code);
   }
 

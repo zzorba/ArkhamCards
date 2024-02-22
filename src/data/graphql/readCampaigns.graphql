@@ -18,7 +18,6 @@ query getMyCampaigns(
   }
 }
 
-
 query getCampaign($campaign_id: Int!) {
   campaign_by_pk(id: $campaign_id) {
     ...FullCampaign
