@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2024-02-07 02:20-0300\n"
+"PO-Revision-Date: 2024-02-20 17:22-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -2473,7 +2473,7 @@ msgstr[0] "${ xp } geral / ${ resupplyPointsString } XP"
 msgstr[1] "${ xp } geral / ${ resupplyPointsString } XP"
 
 msgid "Random location"
-msgstr "Localização aleatória"
+msgstr "Local aleatório"
 
 msgid "Draw location"
 msgstr "Comprar local"
@@ -2504,12 +2504,12 @@ msgid ""
 "\n"
 "Once an upgrade has been saved, you can edit the deck as normal and the app will properly track the experience cost for any changes you make (the original versions of the deck can still be viewed from the deck's menu)."
 msgstr ""
-"Parece que uma ou mais atualizações de deck não foram salvas. Se você quiser que o aplicativo monitore a experiência gasta conforme você faz alterações no baralho, volte e pressione 'Salvar atualização de deck' em cada investigador antes de prosseguir para o próximo cenário.\n"
+"Parece que uma ou mais atualizações de baralho não foram salvas. Se você quiser que o aplicativo monitore a experiência gasta conforme você faz alterações no baralho, volte e pressione 'Salvar atualização de deck' em cada investigador antes de prosseguir para o próximo cenário.\n"
 "\n"
 "Depois que uma atualização for salva, você poderá editar o baralho normalmente e o aplicativo rastreará adequadamente o custo de experiência para quaisquer alterações feitas (as versões originais do baralho ainda podem ser visualizadas no menu do baralho)."
 
 msgid "It looks like you edited the experience or trauma for an investigator, but have not saved it yet. Please go back and select ‘Save adjustments’ to ensure your changes are saved."
-msgstr "Parece que você alterou a experiência ou trauma de um investigador mas ainda não salvou. Por favor volte e escolha ‘Salvar ajustes’ para garantir que suas alterações sejam salvas."
+msgstr "Parece que você editou a experiência ou o trauma de um investigador, mas ainda não o salvou. Por favor volte e selecione ‘Salvar ajustes’ para garantir que suas alterações sejam salvas."
 
 msgid "Proceed without saving"
 msgstr "Prosseguir sem salvar"
@@ -2562,7 +2562,7 @@ msgstr "Em seu Registro de Campanha, risque <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ logEntry.text }</i>"
-msgstr "Em seu Registro de Campanha, embaixo de “${ logEntry.section }”, risque i>${ logEntry.text }</i>"
+msgstr "Em seu Registro de Campanha, embaixo de \"${ logEntry.section }\", risque <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
@@ -2570,7 +2570,7 @@ msgstr "Em seu Registro de Campanha, anote que <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ logEntry.text }</i>."
-msgstr "Em seu Registro de Campanha, embaixo de “${ logEntry.section }”, anote <i>${ logEntry.text }</i>."
+msgstr "Em seu Registro de Campanha, embaixo de \"${ logEntry.section }\", anote <i>${ logEntry.text }</i>."
 
 #, javascript-format
 msgid "Add ${ tokenString } to the chaos bag."
@@ -2578,19 +2578,19 @@ msgstr "Adicionar ${ tokenString } à bolsa do caos."
 
 #, javascript-format
 msgid "Remove ${ tokenString } from the chaos bag."
-msgstr "Remover ${ tokenString } da bolsa do caos."
+msgstr "Remova ${ tokenString } da bolsa do caos."
 
 #, javascript-format
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
-msgstr "${ investigator.name } remove ${ card.name } (Avançado)"
+msgstr "${ investigator.name } remova ${ card.name } (Avançado)"
 
 #, javascript-format
 msgid "${ investigator.name } removes ${ card.name }"
-msgstr "${ investigator.name } remove ${ card.name }"
+msgstr "${ investigator.name } remova ${ card.name }"
 
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
-msgstr "Remover ${ card.name } (${ input.length })"
+msgstr "Remova ${ card.name } (${ input.length })"
 
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr "Você sofreu um trauma físico ou mental <i>(de sua escolha)</i>."
@@ -2602,13 +2602,13 @@ msgid "Mental trauma"
 msgstr "Trauma mental"
 
 msgid "Draw random weakness"
-msgstr "Comprar fraqueza aleatória"
+msgstr "Compre uma fraqueza aleatória"
 
 msgid "All weaknesses have been assigned."
 msgstr "Todas as fraquezas foram atribuídas."
 
 msgid "Do you want to use the app to randomize weaknesses?"
-msgstr "Você gostaria de usar o app para gerar fraquezas aleatórias?"
+msgstr "Você gostaria de usar o aplicativo para gerar fraquezas aleatórias?"
 
 msgid "Easy"
 msgstr "Fácil"
@@ -2637,14 +2637,14 @@ msgstr "Porque você ainda não completou <b>${ scenarioName }</b>:"
 #, javascript-format
 msgid "Check Campaign Log. Because there is ${ count } mark under '${ logEntry.section }'"
 msgid_plural "Check Campaign Log. Because there are ${ count } marks under '${ logEntry.section }'"
-msgstr[0] "Verifique o Registro de Campanha. Porque existe ${ count } marca sob ‘${ logEntry.section }’"
-msgstr[1] "Verifique o Registro de Campanha. Porque existe ${ count } marcas sob ‘${ logEntry.section }’"
+msgstr[0] "Verifique o Registro de Campanha. Porque existe ${ count } marca em ‘${ logEntry.section }’"
+msgstr[1] "Verifique o Registro de Campanha. Porque existe ${ count } marcas em ‘${ logEntry.section }’"
 
 #, javascript-format
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
 msgid_plural "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
-msgstr[0] "Verifique o Registro de Campanha. Porque tem ${ count } entrada sob ‘${ logEntry.section }’"
-msgstr[1] "Verifique o Registro de Campanha. Porque tem ${ count } entradas sob ‘${ logEntry.section }’"
+msgstr[0] "Verifique o Registro de Campanha. Porque tem ${ count } entrada em ‘${ logEntry.section }’"
+msgstr[1] "Verifique o Registro de Campanha. Porque tem ${ count } entradas em ‘${ logEntry.section }’"
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
@@ -2660,11 +2660,11 @@ msgstr "Algum investigador tem “${ cardName }” no seu baralho?"
 
 #, javascript-format
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
-msgstr "Um investigador com “${ cardName }” no seu baralho foi derrotado?"
+msgstr "Um investigador com “${ cardName }” em seu baralho, foi derrotado?"
 
 #, javascript-format
 msgid "For each investigator with \"${ cardName }\" in their deck:"
-msgstr "Para cada investigador com “${ cardName }” no seu baralho:"
+msgstr "Para cada investigador com “${ cardName }” em seu baralho:"
 
 #, javascript-format
 msgid "${ investigators } must read <b>${ prompt }</b>."
@@ -2679,7 +2679,7 @@ msgstr[0] "Porque há ${ playerCount } jogador no jogo:"
 msgstr[1] "Porque há ${ playerCount } jogadores no jogo:"
 
 msgid "If the lead investigator was <b>killed</b>."
-msgstr "Se o investigador chefe foi <b>morto</b>."
+msgstr "Se o investigador líder foi <b>morto</b>."
 
 msgid "If all investigators were <b>killed</b>."
 msgstr "Se todos os investigadores foram <b>mortos</b>."
@@ -2689,13 +2689,13 @@ msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr "Verifique ${ logEntry.section }. <i>Se ${ logEntry.text }</i>"
 
 msgid "Can't add side scenario right now."
-msgstr "Não pode adicionar cenário independente agora."
+msgstr "Não é possível adicionar cenário independente agora."
 
 msgid "Side scenarios cannot be added to a campaign until the previous scenario and following interludes are completed."
-msgstr "Cenários independentes não podem ser adicionados na campanha até o cenário anterior e os interlúdios seguintes estiverem finalizados."
+msgstr "Os cenários independentes não podem ser adicionados a uma campanha até que o cenário anterior e os intervalos seguintes sejam concluídos."
 
 msgid "Choose Side-Scenario"
-msgstr "Escolher Cenário Independente"
+msgstr "Escolha o Cenário Independente"
 
 msgid "Add side scenario"
 msgstr "Adicionar cenário independente"
@@ -2714,7 +2714,7 @@ msgid "View results"
 msgstr "Ver resultados"
 
 msgid "Skipped"
-msgstr "Saltado"
+msgstr "Ignorado"
 
 msgid "Coming soon"
 msgstr "Em breve"
@@ -2723,28 +2723,28 @@ msgid "Locked"
 msgstr "Fechado"
 
 msgid "Odds Calculator"
-msgstr "Calculador de probabilidades"
+msgstr "Calculadora de probabilidades"
 
 #, javascript-format
 msgid "Chaos Bag (${ tokenCount })"
 msgstr "Bolsa do Caos (${ tokenCount })"
 
 msgid "Odds calculator"
-msgstr "Calculador de probabilidades"
+msgstr "Calculadora de probabilidades"
 
 msgid "Download printable cards"
-msgstr "Imprimir cartas para imprimir"
+msgstr "Baixar cartas para imprimir"
 
 #, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
-msgstr "${ investigator.name } Cenário Desafiador"
+msgstr "Cenário Desafio ${ investigator.name }"
 
 #, javascript-format
 msgid "Experience cost: ${ challengeCost } for ${ investigator.name }, ${ xpCost } for each other investigator"
 msgstr "Custo de experiência: ${ challengeCost } para ${ investigator.name }, ${ xpCost } para cada outro investigador"
 
 msgid "Challenge Scenario"
-msgstr "Cenário Desafiador"
+msgstr "Cenário Desafio"
 
 #, javascript-format
 msgid "Experience cost: ${ xpCost }"
@@ -2763,10 +2763,10 @@ msgid "Add"
 msgstr "Adicionar"
 
 msgid "Custom scenario"
-msgstr "Cenário Independente"
+msgstr "Cenário personalizado"
 
 msgid "Challenge scenarios are special print-and-play scenarios that utilize existing products in the <i>Arkham Horror: The Card Game</i> collection, along with additional print-and-play cards, to create new content. These scenarios are designed with certain prerequisites in mind, in order to craft a challenging puzzle-like experience. Printable cards can be downloaded from Fantasy Flight Games under the \"Parallel Investigators\" section."
-msgstr "Cenários Desafiadores são cenários print-and-play que utilizam produtos existentes na coleção do <i>Arkham Horror: The Card Game</i> junto com cartas adicionais print-and-play, para criar novo conteúdo. Estes cenários são projetados com certos pré-requisitos em mente, para gerar uma experiência quebra-cabeça desafiadora. Cartas para imprimir podem ser baixadas em Fantasy Flight Games sob a seção “Parallel investigators”."
+msgstr "Cenários desafio são cenários especiais imprimíveis que utilizam produtos existentes da coleção Arkham Horror: The Card Game, junto com cartas imprimíveis adicionais, para trazer novos conteúdos. Esses cenários são projetados com alguns requisitos em mente, visando criar uma experiência nos moldes de um enigma desafiador. Cartas para imprimir podem ser baixadas no site da Fantasy Flight Games na seção “Parallel investigators” ou no site da Galápagos Jogos."
 
 msgid "Side"
 msgstr "Lado"
@@ -2786,13 +2786,13 @@ msgstr "Investigador: ${ investigatorName }"
 
 #, javascript-format
 msgid "Save to ${ investigator.name }’s Deck"
-msgstr "Salvar para o baralho de ${ investigator.name }"
+msgstr "Salvar no baralho de ${ investigator.name }"
 
 msgid "Add scenario result"
 msgstr "Adicionar resultado do cenário"
 
 msgid "Record completed scenario"
-msgstr "Registrar cenário finalizado"
+msgstr "Registrar cenário concluido"
 
 msgid "Not yet started"
 msgstr "Ainda não começou"
@@ -2814,7 +2814,7 @@ msgid "Draw another"
 msgstr "Comprar outro"
 
 msgid "Return tokens"
-msgstr "Voltar marcadores"
+msgstr "Devolver marcadores"
 
 msgid "Sealed Tokens"
 msgstr "Marcadores Selados"
@@ -2826,7 +2826,7 @@ msgid "Release all"
 msgstr "Liberar todos"
 
 msgid "Remove all bless & curse tokens"
-msgstr "Remover todos os marcadores de bençãos & maldições"
+msgstr "Remover todos os marcadores de bênçãos & maldições"
 
 msgid "Resolution"
 msgstr "Resolução"
@@ -2835,7 +2835,7 @@ msgid "Earned experience:"
 msgstr "Experiência ganha:"
 
 msgid "Interlude"
-msgstr "Interlúdio"
+msgstr "Intervalo"
 
 #, javascript-format
 msgid "${ investigator.firstName }’s Trauma"
@@ -2873,11 +2873,11 @@ msgstr "Este baralho contém uma fraqueza básica"
 
 #. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
-msgstr "Você gostaria de removê-las do conjunto básico de fraquezas da campanha?"
+msgstr "Você gostaria de removê-las do conjunto de Fraquezas Básicas da campanha?"
 
 #. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
-msgstr "Você gostaria de removê-la do conjunto básico de fraquezas da campanha?"
+msgstr "Você gostaria de removê-la do conjunto de Fraquezas Básicas da campanha?"
 
 msgid "Not Now"
 msgstr "Agora Não"
@@ -2886,28 +2886,28 @@ msgid "Night of the Zealot"
 msgstr "Noite do Zelote"
 
 msgid "Return to the Night of the Zealot"
-msgstr "Retorno à Noite do Zelote"
+msgstr "Return to the Night of the Zealot"
 
 msgid "Return to The Dunwich Legacy"
-msgstr "Retorno ao Legado de Dunwich"
+msgstr "Return to The Dunwich Legacy"
 
 msgid "The Path To Carcosa"
-msgstr "O Caminho para Carcosa"
+msgstr "O Caminho Para Carcosa"
 
 msgid "Return to The Path to Carcosa"
-msgstr "Retorno ao Caminho para Carcosa"
+msgstr "Return to The Path to Carcosa"
 
 msgid "Return to The Forgotten Age"
-msgstr "Retorno à Era Esquecida"
+msgstr "Return to The Forgotten Age"
 
 msgid "The Dream-Quest"
-msgstr "A Busca Onírica"
+msgstr "The Dream-Quest"
 
 msgid "The Web of Dreams"
-msgstr "A Teia dos Sonhos"
+msgstr "The Web of Dreams"
 
 msgid "The Gathering"
-msgstr "O Encontro"
+msgstr "A Assembleia"
 
 msgid "The Midnight Masks"
 msgstr "As Máscaras da Meia-Noite"
@@ -2925,13 +2925,13 @@ msgid "The House Always Wins"
 msgstr "A Casa Sempre Vence"
 
 msgid "Armitage’s Fate"
-msgstr "Destino de Armitage"
+msgstr "O Destino de Armitage"
 
 msgid "The Miskatonic Museum"
 msgstr "O Museu Miskatonic"
 
 msgid "Essex County Express"
-msgstr "O Expresso para o Condado de Essex"
+msgstr "O Expresso do Condado de Essex"
 
 msgid "Blood on the Altar"
 msgstr "Sangue no Altar"
@@ -2946,34 +2946,34 @@ msgid "Where Doom Awaits"
 msgstr "Onde a Perdição Aguarda"
 
 msgid "Lost in Time and Space"
-msgstr "Perdido no Tempo e no Espaço"
+msgstr "Perdidos no Espaço e no Tempo"
 
 msgid "Epilogue"
 msgstr "Epílogo"
 
 msgid "Return to Extracurricular Activity"
-msgstr "Retorno à atividade extracurricular"
+msgstr "Return to Extracurricular Activity"
 
 msgid "Return to The House Always Wins"
-msgstr "Retorno à Casa Sempre Vence"
+msgstr "Return to The House Always Wins"
 
 msgid "Return to The Miskatonic Museum"
-msgstr "Retorno à Museu Miskatonic"
+msgstr "Return to The Miskatonic Museum"
 
 msgid "Return to Essex County Express"
-msgstr "Retorno à Expresso para o Condado de Essex"
+msgstr "Return to Essex County Express"
 
 msgid "Return to Blood on the Altar"
-msgstr "Retorno à Sangue no Altar"
+msgstr "Return to Blood on the Altar"
 
 msgid "Return to Undimensioned and Unseen"
-msgstr "Retorno à Incomensurável e invisível"
+msgstr "Return to Undimensioned and Unseen"
 
 msgid "Return to Where Doom Awaits"
-msgstr "Retorno à Onde a Desgraça Espera"
+msgstr "Return to Where Doom Awaits"
 
 msgid "Return to Lost in Time and Space"
-msgstr "Retorno à Perdido no Tempo e no Espaço"
+msgstr "Return to Lost in Time and Space"
 
 msgid "Curtain Call"
 msgstr "O Fechar das Cortinas"
