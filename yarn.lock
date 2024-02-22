@@ -6805,9 +6805,9 @@ invariant@*, invariant@2.2.4, invariant@^2.2.4:
     loose-envify "^1.0.0"
 
 ip@^1.1.5:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.8.tgz#ae05948f6b075435ed3307acce04629da8cdbf48"
-  integrity sha512-PuExPYUiu6qMBQb4l06ecm6T6ujzhmh+MeJcW9wa89PoAz5pvd4zPgN5WJV104mb6S2T1AwNIAaB70JNrLQWhg==
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.9.tgz#8dfbcc99a754d07f425310b86a99546b1151e396"
+  integrity sha512-cyRxvOEpNHNtchU3Ln9KC/auJgup87llfQpQ+t5ghoC/UhL16SWzbueiCsdTnWmqAWl7LadfuwhlqmtOaqMHdQ==
 
 is-absolute@^1.0.0:
   version "1.0.0"
@@ -9544,10 +9544,10 @@ react-native-dialogs@1.1.1:
   resolved "https://registry.yarnpkg.com/react-native-dialogs/-/react-native-dialogs-1.1.1.tgz#db68fee6f6f654a2ae6fd45d5a75fc23118e4b96"
   integrity sha512-JduVYRXvLTT4k4VfXuKt3HF2/fixsR1EDXkvNf8fJwxKZUs2kzs1E0EtgiAx4IgYMTOewLPVtzTVfiv0GWeHuA==
 
-react-native-document-picker@9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-document-picker/-/react-native-document-picker-9.0.1.tgz#a5ceec157f84dbadb85fe717c657569755f4c6ca"
-  integrity sha512-l2c2xChwsdjzZIV9QJc85buC3vXkM5ZuY4943yMDj3TiszJp1spmHNaRMZKYIh3yVwdD2jENm0DBU5AWa+jhLg==
+react-native-document-picker@9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-document-picker/-/react-native-document-picker-9.1.1.tgz#54390c500396b61ed697095ef8a6f9cbe0977bc9"
+  integrity sha512-BW+7DbsILuFThlBm7NUFVUmKKf6Awkcf9R0q8wiCU2DlGGtAKQTt2iHpO5+Dn/7WMPB+rqNv3X1HsmJQ0t5R3g==
   dependencies:
     invariant "^2.2.4"
 

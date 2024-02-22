@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2024-01-15 19:45+0300\n"
+"PO-Revision-Date: 2024-02-21 21:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -2239,19 +2239,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -5336,7 +5336,7 @@ msgstr "Выберите цель путешествия"
 
 #, javascript-format
 msgid "${ investigator.name } Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
-msgstr ""
+msgstr "Фанатский сценарий-испытание для ${ investigator.name } от ${ scenario.custom.creator }"
 
 msgid "Cyclopean Foundations"
 msgstr ""
@@ -5803,7 +5803,7 @@ msgid "EXPT"
 msgstr "ЭКС"
 
 msgid "Class Choice"
-msgstr ""
+msgstr "Выбор класса"
 
 msgid "Class"
 msgstr "Класс"
@@ -5936,7 +5936,7 @@ msgid "You cannot have more than 5 Mystic cards."
 msgstr ""
 
 msgid "The Feast of Hemlock Vale"
-msgstr ""
+msgstr "Пир в Хемлок-Вейл"
 
 msgid "The Dunwich Legacy Investigator Expansion"
 msgstr "Наследие Данвича. Сыщики"
@@ -5982,48 +5982,48 @@ msgstr "Не уникальный"
 
 #, javascript-format
 msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr ""
+msgstr "Цена в опыте: ${ basicXpCost } для игрока за ${ investigator.name }, ${ challengeDiscountCost } для всех остальных игроков"
 
 msgid "Aether"
 msgstr "Эфир"
 
 msgid "Campaign Rules & FAQ"
-msgstr ""
+msgstr "Правила кампании и ответы на частые вопросы"
 
 msgid "Review campaign specific info"
-msgstr ""
+msgstr "Просмотр информации о кампании"
 
 msgid "Campaign Rules"
-msgstr ""
+msgstr "Правила кампании"
 
 msgid "Review campaign specific rules"
-msgstr ""
+msgstr "Просмотр правил кампании"
 
 msgid "Campaign FAQ"
-msgstr ""
+msgstr "Ответы на частые вопросы по кампании"
 
 msgid "Review campaign specific clarifications"
-msgstr ""
+msgstr "Просмотр замечаний по кампании"
 
 #, javascript-format
 msgid "Q: ${ errata.question }"
-msgstr ""
+msgstr "В: ${ errata.question }"
 
 #, javascript-format
 msgid "A: ${ errata.answer }"
-msgstr ""
+msgstr "О: ${ errata.answer }"
 
 msgid "Show FAQ"
-msgstr ""
+msgstr "Показать ответы на частые вопросы"
 
 msgid "May contain light spoilers"
-msgstr ""
+msgstr "Может содержать небольшие спойлеры"
 
 msgid "Note: To avoid spoilers, scenario specific questions and clarifications can be found within each scenario guide."
-msgstr ""
+msgstr "Примечание: Чтобы избежать спойлеров, вопросы и пояснения к конкретным сценариям можно найти на страничке сценария."
 
 msgid "Rules & FAQ"
-msgstr ""
+msgstr "Правила и ответы на частые вопросы"
 
 msgid "Day / Time"
 msgstr ""
@@ -6059,10 +6059,10 @@ msgid "Relationship Level"
 msgstr ""
 
 msgid "Image cache cleared"
-msgstr ""
+msgstr "Кэш изображений очищен"
 
 msgid "Clear image cache"
-msgstr ""
+msgstr "Очистить кэш изображений"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6687,23 +6687,23 @@ msgstr "И как всегда, я благодарю всех моих подп
 
 msgctxt "releaseNotes"
 msgid "Feast of Hemlock Vale Campaign"
-msgstr ""
+msgstr "Пир в Хемлок-Вейл. Кампания"
 
 msgctxt "releaseNotes"
 msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
-msgstr ""
+msgstr "В этом обновлении добавлена поддержка недавно вышедшей кампании «Пир в Хемлок-Вейл»."
 
 msgctxt "releaseNotes"
 msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
-msgstr ""
+msgstr "- Кажется, я оттестировал все закоулки этой кампании, но вполне вероятно, что где-о ещё остались ошибки или недочёты. Если вы найдёте что-то такое, пишите на [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) и я постараюсь всё исправить как можно скорее (про перевод на русский только не пишите)."
 
 msgctxt "releaseNotes"
 msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
-msgstr ""
+msgstr "Кроме того, вы можете загружать кампании и делиться ими с друзьями, используя свой аккаунт Arkham Cards - так всем будет проще следить за прогрессом и управлять своими колодами."
 
 msgctxt "releaseNotes"
 msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
-msgstr ""
+msgstr "И как всегда, я благодарю всех моих подписчиков на Patreon — ваша поддержка помогает поддерживать работу серверов.— Дэн."
 
 msgctxt "trait"
 msgid "???"
