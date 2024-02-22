@@ -240,6 +240,7 @@ export interface Campaign {
     name: string;
     gender?: "m" | "f" | "nb";
     description?: string;
+    img?: string;
   }[];
   campaign_log: CampaignLogSectionDefinition[];
   scenarios: string[];

@@ -38,7 +38,17 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
     ],
   };
   return [
-
+    {
+      date: new Date('2024-02-23'),
+      title: c('releaseNotes').t`Feast of Hemlock Vale Campaign`,
+      faction: 'neutral',
+      lines: [
+        c('releaseNotes').t`This release adds support for the newly released Feast of Hemlock Vale campaign expansion.`,
+        c('releaseNotes').t`- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible.`,
+        c('releaseNotes').t`Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks.`,
+        c('releaseNotes').t`And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running.`,        
+      ],
+    },
     {
       date: new Date('2022-11-18'),
       title: c('releaseNotes').t`The Scarlet Keys Campaign`,

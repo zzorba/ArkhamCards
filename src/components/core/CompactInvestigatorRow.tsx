@@ -10,6 +10,7 @@ import CollapsibleFactionBlock from './CollapsibleFactionBlock';
 
 interface Props {
   investigator?: Card;
+  image?: string;
   eliminated?: boolean;
   yithian?: boolean;
   open?: boolean;
@@ -29,6 +30,7 @@ interface Props {
 export default function CompactInvestigatorRow({
   hideImage,
   color,
+  image,
   eliminated, name, description, investigator, transparent, yithian, open, detail, badge, leftContent, imageOffset, children, width, arkhamCardsImg }: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
@@ -47,6 +49,7 @@ export default function CompactInvestigatorRow({
           <InvestigatorImage
             arkhamCardsImg={arkhamCardsImg}
             card={investigator}
+            image={image}
             size="tiny"
             border
             yithian={yithian}

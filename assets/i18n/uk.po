@@ -5806,6 +5806,12 @@ msgstr ""
 msgid "Relationship Level"
 msgstr ""
 
+msgid "Image cache cleared"
+msgstr ""
+
+msgid "Clear image cache"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -6403,6 +6409,26 @@ msgstr ""
 
 msgctxt "releaseNotes"
 msgid "As always, many thanks to my many supporters on Patreon -- I appreciate your support which helps make all of this possible."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Feast of Hemlock Vale Campaign"
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
 msgstr ""
 
 msgctxt "trait"
