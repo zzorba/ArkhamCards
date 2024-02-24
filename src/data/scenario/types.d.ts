@@ -422,6 +422,7 @@ export interface BoolOption {
   boolCondition: boolean;
   prompt?: string;
   effects?: Effect[];
+  repeatable?: boolean;
   border?: boolean;
   border_color?: BorderColor;
   pre_border_effects?: Effect[];
@@ -722,12 +723,14 @@ export interface NumOption {
   effects?: Effect[];
   border?: boolean;
   border_color?: BorderColor;
+  repeatable?: boolean;
   steps?: string[];
 }
 export interface Option {
   icon?: ChoiceIcon;
   boolCondition?: boolean;
   numCondition?: number;
+  repeatable?: boolean;
   condition?: string;
   prompt?: string;
   border?: boolean;
@@ -772,6 +775,7 @@ export interface StringOption {
   border?: boolean;
   border_color?: BorderColor;
   pre_border_effects?: Effect[];
+  repeatable?: boolean;
   effects?: Effect[];
   steps?: string[];
 }

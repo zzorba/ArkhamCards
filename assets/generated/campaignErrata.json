@@ -300,6 +300,42 @@
           "text": "This card’s ability should read: “…end of your turn. If each surviving investigator has resigned, immediately advance to act 3b.”"
         }
       ]
+    },
+    {
+      "encounter_code": "late_risers",
+      "cards": [
+        {
+          "code": ["zcp_00012"],
+          "text": "This location's [reaction] ability should read “When you investigate this location: Increase its shroud level by 4 <i>for this investigation</i>...”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "high_noon_descent",
+      "cards": [
+        {
+          "code": ["zcp_00129"],
+          "text": "This location should have a yellow circle instead of a blue cross as its location icon."
+        }
+      ]
+    },
+    {
+      "encounter_code": "death_at_sundown",
+      "cards": [
+        {
+          "code": ["zcp_00179"],
+          "text": "On Hard/Expert, the [tablet] should read “-4. If you fail, move...”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_midnight_hour",
+      "cards":[
+        {
+          "code": ["zcp_00241"],
+          "text": "Both times this card refers to Feed the Flame, it should refer to Messenger of the Flame."
+        }
+      ]
     }
   ],
   "faq": [
@@ -512,7 +548,7 @@
       "questions": [
         {
           "question": "What happens when you are entering the <b>Ventilation Shaft</b> from a forced effect (i.e. the Dream-Gate), but fail the [agility] test?",
-          "answer": "Choose another revealed locastion to move into instead. If there are no valid options, move into the Ventilation Shaft anyway."
+          "answer": "Choose another revealed location to move into instead. If there are no valid options, move into the Ventilation Shaft anyway."
         },
         {
           "question": "How does <b>UPL-A21</b> work? Can an invesigator without <b>AI</b> cards engage it?",
@@ -656,6 +692,50 @@
           "answer": "In future scenarios, you must swap your investigator card with a Body of a Yithian card during Step 10 of Setting Up the Game, as outlined in the Rules Reference, just as you would when playing “The City of Archives” scenario (see above)."
         }
       ]
+    },
+    {
+      "scenario_code": "night_on_the_town",
+      "questions": [
+        {
+          "question": "When I discard a Spreading Miasma from the game, what happens to the clues on it?",
+          "answer": "They are returned to the token pool, like any other token on a discarded enocounter card."
+        },
+        {
+          "question": "Can I use Sophie/Lucky/Fieldwork on a Defend test?",
+          "answer": "You cannot. Defend tests cannot have their skill values increased."
+        }
+      ]
+    },
+    {
+      "scenario_code": "dead_by_dawn",
+      "questions": [
+        {
+          "question":"After advancing Act 1, should the enemy be exhausted?",
+          "answer":"It should not, but the damage should still be on it"
+        },
+        {
+          "question": "Some enemies have 0 health, shouldn't they be defeated?",
+          "answer": "Normally yes, but pay attention to the “Cannot be defeated” clause on their cards."
+        }
+      ]
+    },
+    {
+      "scenario_code": "mourning_chorus",
+      "questions": [
+        {
+          "question": "What happens when I evade an enemy during Act 2?",
+          "answer": "No doom is removed. The chorus is growing in intensity, and your chance is closing."
+        }
+      ]
+    },
+    {
+      "scenario_code":"death_at_sundown",
+      "questions": [
+        {
+          "question": "When I defeat Tendrils of the First, what happens to the damage on it?",
+          "answer": "The damage is removed and it is placed in the victory display, as normal."
+        }
+      ]
     }
   ],
   "campaign_faq": [
@@ -724,6 +804,15 @@
         {
           "question": "If performing the </i><b>Shift</b><i> ability on the [[Unstable]] side of a key would not affect each investigator or each enemy in play, can I still shift the key?",
           "answer": "To perform a <b>Shift</b> ability on a key, you must resolve as much of that ability as possible, and if that ability changed the game state at all, you are considered to have successfully shifted that key.\nFor example, to shift The Last Blossom from its [[Unstable]] side, you must heal at least 1 damage from an enemy in play (though you must heal 1 damage from as many enemies as possible). Similarly, in order to shift The Bale Engine from its [[Unstable]] side, at minimum 1 investigator needs to discard 1 resource (but each investigator must discard as many resources as possible, to a max of 3)."
+        }
+      ]
+    },
+    {
+      "cycles": ["zcp"],
+      "questions": [
+        {
+          "question": "What happens when I am moved, but cannot move closer to or further from the target?",
+          "answer": "You do not move."
         }
       ]
     }
