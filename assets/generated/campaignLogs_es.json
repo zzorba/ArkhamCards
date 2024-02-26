@@ -1070,23 +1070,23 @@
         "entries": [
           {
             "id": "akwan_shoreline",
-            "text": "Akwan Shoreline"
+            "text": "Costa de Akwan"
           },
           {
             "id": "eastwick_bog",
-            "text": "Eastwick Bog"
+            "text": "Ciénaga de Eastwick"
           },
           {
             "id": "hemlock_harbor",
-            "text": "Hemlock Harbor"
+            "text": "Puerto de la Cicuta"
           },
           {
             "id": "north_point_mine",
-            "text": "North Point Mine"
+            "text": "Minas de la Punta Norte"
           },
           {
             "id": "pearl_ridge",
-            "text": "Pearl Ridge"
+            "text": "Cresta Perla"
           },
           {
             "id": "southern_fields",
@@ -1103,9 +1103,9 @@
         "entries": [
           {
             "id": "eat",
-            "masculine_text": "#name# finished his meal.",
-            "feminine_text": "#name# finished her meal.",
-            "nonbinary_text": "#name# finished their meal."
+            "masculine_text": "#name# se terminó la comida.",
+            "feminine_text": "#name# se terminó la comida.",
+            "nonbinary_text": "#name# se terminó la comida."
           },
           {
             "id": "all_the_captives_were_lost",
@@ -1145,15 +1145,15 @@
           },
           {
             "id": "chelydran_hybrid_devoured",
-            "text": "the Chelydran Hybrid was devoured."
+            "text": "el híbrido chelydra fue devorado."
           },
           {
             "id": "chelydran_hybrid_lived",
-            "text": "the Chelydran Hybrid lived."
+            "text": "el híbrido chelydra vivió."
           },
           {
             "id": "chelydran_hybrid_perished",
-            "text": "the Chelydran Hybrid perished."
+            "text": "el híbrido chelydra murió."
           },
           {
             "id": "dr_marquez_has_a_hunch",
@@ -1169,7 +1169,7 @@
           },
           {
             "id": "elizabeth_peters_was_saved",
-            "text": "Elizabeth Peters was saved."
+            "text": "Elizabeth Peters fue salvada."
           },
           {
             "id": "faced_the_night_alone",
@@ -1177,7 +1177,7 @@
           },
           {
             "id": "helen_peters_joined_the_survey",
-            "text": "Helen Peters joined the survey."
+            "text": "Helen Peters se unió al estudio."
           },
           {
             "id": "helen_shared_a_dance",
@@ -1193,7 +1193,7 @@
           },
           {
             "id": "laid_the_pearl_family_to_rest",
-            "text": "the investigators laid the Pearl Family to rest."
+            "text": "los investigadores dieron sepultura a la familia Perla."
           },
           {
             "id": "learned_their_place",
@@ -1209,7 +1209,7 @@
           },
           {
             "id": "madame_pearls_diary_was_recovered",
-            "text": "Madame Pearl’s diary was recovered."
+            "text": "los investigadores recuperaron el diario de madame Perla."
           },
           {
             "id": "many_captives_were_lost",
@@ -1221,11 +1221,11 @@
           },
           {
             "id": "remains_were_partially_recovered",
-            "text": "the remains were partially recovered."
+            "text": "los investigadores recuperaron los restos parcialmente."
           },
           {
             "id": "survived_the_horrors_in_the_rock",
-            "text": "the investigators survived the horrors in the rock."
+            "text": "los investigadores sobrevivieron a los horrores de la roca."
           },
           {
             "id": "the_bear_was_wounded",
@@ -1237,7 +1237,7 @@
           },
           {
             "id": "the_peters_family_was_reunited",
-            "text": "The Peters family was reunited."
+            "text": "la familia Peters se reunió."
           },
           {
             "id": "the_vale_burned",
@@ -1253,7 +1253,7 @@
           },
           {
             "id": "thing_in_the_depths_was_defeated",
-            "text": "The Thing in the Depths was defeated."
+            "text": "la cosa de las profundidades fue derrotada."
           }
         ]
       },
@@ -1262,27 +1262,27 @@
         "entries": [
           {
             "id": "day_1_day",
-            "text": "Day 1 ([day])"
+            "text": "Día 1 [day]"
           },
           {
             "id": "day_1_night",
-            "text": "Night 1 ([night])"
+            "text": "Noche 1 ([night])"
           },
           {
             "id": "day_2_day",
-            "text": "Day 2 ([day])"
+            "text": "Día 2 ([day])"
           },
           {
             "id": "day_2_night",
-            "text": "Night 2 ([night])"
+            "text": "Noche 2 ([night])"
           },
           {
             "id": "day_3_day",
-            "text": "Day 3 ([day])"
+            "text": "Día 3 ([day])"
           },
           {
             "id": "day_3_night",
-            "text": "Night 3 ([night])"
+            "text": "Noche 3 ([night])"
           }
         ]
       },
@@ -1295,7 +1295,7 @@
           },
           {
             "id": "gideon_found_his_treasure",
-            "text": "Gideon found his treasure."
+            "text": "Gideon encontró su tesoro."
           },
           {
             "id": "gideon_shared_a_dance",
@@ -1307,7 +1307,7 @@
           },
           {
             "id": "gideon_told_the_story_of_captain_hemlock",
-            "text": "Gideon told the story of Captain Hemlock."
+            "text": "Gideon contó la historia del capitán Cicuta."
           },
           {
             "id": "gideon_told_the_tale_of_the_annabelle_lee",
@@ -2041,7 +2041,7 @@
           },
           {
             "id": "judith_shared_a_grudge",
-            "text": "Judith shared a grudge."
+            "text": "Judith compartió una cuenta pendiente."
           },
           {
             "id": "judith_stood_by_you",
@@ -2062,7 +2062,7 @@
         "entries": [
           {
             "id": "leah_and_simeon_were_reunited",
-            "text": "Leah and Simeon were reunited."
+            "text": "Leah y Simeon se reunieron."
           },
           {
             "id": "leah_is_searching_for_simeon",
@@ -2070,7 +2070,7 @@
           },
           {
             "id": "leah_saw_something_in_the_mine",
-            "text": "Leah saw something in the mine."
+            "text": "Leah vio algo en la mina."
           },
           {
             "id": "leah_shared_a_dance",
@@ -2078,7 +2078,7 @@
           },
           {
             "id": "leah_shared_her_frustrations",
-            "text": "Leah shared her frustrations."
+            "text": "Leah compartió sus frustraciones."
           },
           {
             "id": "leah_stood_by_you",
@@ -2086,7 +2086,7 @@
           },
           {
             "id": "searched_the_pearl_ruins",
-            "text": "Leah searched the Pearl Ruins."
+            "text": "Leah registró las ruinas de la Finca Perla."
           }
         ]
       },
@@ -2137,11 +2137,11 @@
           },
           {
             "id": "simeon_disappeared",
-            "text": "Simeon disappeared."
+            "text": "Simeon desapareció."
           },
           {
             "id": "simeon_hatched_a_plan",
-            "text": "Simeon hatched a plan."
+            "text": "Simeon ha elaborado un plan."
           },
           {
             "id": "simeon_shared_a_dance",
@@ -2153,7 +2153,7 @@
           },
           {
             "id": "simeon_survived",
-            "text": "Simeon survived."
+            "text": "Simeon sobrevivió."
           }
         ]
       },
@@ -2166,7 +2166,7 @@
           },
           {
             "id": "theo_reconciled_with_helen",
-            "text": "Theo reconciled with Helen."
+            "text": "Theo se ha reconciliado con Helen."
           },
           {
             "id": "theo_rejected_his_family",

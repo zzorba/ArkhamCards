@@ -6418,323 +6418,323 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "Agent Flint is dead."
+            "text": "agent Flint nie żyje."
           },
           {
             "id": "agent_flint_is_missing",
-            "text": "Agent Flint is missing."
+            "text": "agent Flint zaginął."
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
-            "text": "Agent Quinn does not trust the cell."
+            "text": "agentka Quinn nie ufa komórce."
           },
           {
             "id": "agent_quinn_has_your_back",
-            "text": "Agent Quinn has your back."
+            "text": "agentka Quinn was wspiera."
           },
           {
             "id": "agent_quinn_vanished_from_existence",
-            "text": "Agent Quinn vanished from existence."
+            "text": "agentka Quinn zniknęła."
           },
           {
             "id": "aliki_is_on_your_side",
-            "text": "Aliki is on your side."
+            "text": "Aliki jest po waszej stronie."
           },
           {
             "id": "amaranth_has_left_the_coterie",
-            "text": "Amaranth has left the Coterie."
+            "text": "Amarant odeszła z Koterii."
           },
           {
             "id": "cell_aided_in_flints_investigation",
-            "text": "the cell aided in Flint’s investigation."
+            "text": "komórka pomogła w śledztwie Flinta."
           },
           {
             "id": "cell_aided_the_knight",
-            "text": "the cell aided the knight."
+            "text": "komórka pomogła Rycerzowi."
           },
           {
             "id": "cell_appreciated_the_architecture",
-            "text": "the cell appreciated the architecture."
+            "text": "komórka doceniła architekturę."
           },
           {
             "id": "cell_blew_the_whistle",
-            "text": "the cell blew the whistle."
+            "text": "komórka dmuchnęła w gwizdek."
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
-            "text": "the cell didn’t discover the truth in Havana."
+            "text": "komórka nie odkryła prawdy w Hawanie."
           },
           {
             "id": "cell_escaped_the_red_coterie",
-            "text": "the cell escaped the Red Coterie."
+            "text": "komórka uciekła Czerwonej Koterii."
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
-            "text": "the cell failed to fend off the Beast."
+            "text": "komórka nie zdołała odeprzeć Bestii."
           },
           {
             "id": "cell_has_been_ambushed",
-            "text": "the cell has been ambushed!"
+            "text": "komórka wpadła w pułapkę!"
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
-            "text": "the cell hid the truth from Taylor."
+            "text": "komórka zataiła przed Taylor prawdę."
           },
           {
             "id": "cell_is_assisting_agent_sirry",
-            "text": "the cell is assisting Agent Sirry."
+            "text": "komórka pomaga agentowi Sirry."
           },
           {
             "id": "cell_is_deceiving_ece",
-            "text": "the cell is deceiving Ece."
+            "text": "komórka oszukuje Ece."
           },
           {
             "id": "cell_is_delivering_foundation_intel",
-            "text": "the cell is delivering Foundation intel."
+            "text": "komórka dostarcza informacji."
           },
           {
             "id": "cell_is_off_mission",
-            "text": "the cell is off-mission."
+            "text": "komórka prowadzi poboczne śledztwo."
           },
           {
             "id": "cell_is_working_with_ece",
-            "text": "the cell is working with Ece."
+            "text": "komórka oszukuje Ece."
           },
           {
             "id": "cell_joined_the_red_coterie",
-            "text": "the cell joined the Red Coterie."
+            "text": "komórka dołączyła do Czerwonej Koterii."
           },
           {
             "id": "cell_knows_amaranths_real_name",
-            "text": "the cell knows Amaranth’s real name."
+            "text": "komórka zna prawdziwą tożsamość Amarant."
           },
           {
             "id": "cell_knows_desis_past",
-            "text": "the cell knows Desi’s past"
+            "text": "komórka zna przeszłość Desiego."
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
-            "text": "the cell knows the true nature of the Coterie."
+            "text": "komórka zna prawdziwą naturę Koterii."
           },
           {
             "id": "cell_made_a_deal_with_desi",
-            "text": "the cell made a deal with Desi."
+            "text": "komórka zawarła umowę z Desim."
           },
           {
             "id": "cell_made_a_deal_with_the_claret_knight",
-            "text": "the cell made a deal with the Claret Knight."
+            "text": "komórka zawarła umowę z Rubinowym Rycerzem."
           },
           {
             "id": "cell_made_a_deal_with_thorne",
-            "text": "the cell made a deal with Thorne."
+            "text": "komórka zawarła umowę z Thorne."
           },
           {
             "id": "cell_met_dr_irawan",
-            "text": "the cell met Dr. Irawan."
+            "text": "komórka spotkała dr Irawan."
           },
           {
             "id": "cell_overthrew_the_red_coterie",
-            "text": "the cell overthrew the Red Coterie."
+            "text": "komórka obaliła Czerwoną Koterię."
           },
           {
             "id": "cell_possesses_a_mysterious_whistle",
-            "text": "the cell possesses a mysterious whistle."
+            "text": "komórka posiada tajemniczy gwizdek."
           },
           {
             "id": "cell_refused_alikis_offer",
-            "text": "the cell refused Aliki’s offer."
+            "text": "komórka odrzuciła dar Aliki."
           },
           {
             "id": "cell_refused_eces_offer",
-            "text": "the cell refused Ece's offer."
+            "text": "komórka odrzuciła propozycję Ece."
           },
           {
             "id": "cell_threw_away_the_whistle",
-            "text": "the cell threw away the whistle."
+            "text": "komórka wyrzuciła gwizdek."
           },
           {
             "id": "cell_told_the_truth_to_taylor",
-            "text": "the cell told the truth to Taylor."
+            "text": "komórka powiedziała Taylor prawdę."
           },
           {
             "id": "cell_was_dismantled",
-            "text": "the cell was dismantled."
+            "text": "komórka została rozwiązana."
           },
           {
             "id": "cell_was_given_a_permanent_position",
-            "text": "the cell was given a permanent position."
+            "text": "komórka została oficjalnie uznana."
           },
           {
             "id": "cell_was_hollowed",
-            "text": "the cell was hollowed."
+            "text": "komórka została zapomniana."
           },
           {
             "id": "chica_roja_is_on_your_side",
-            "text": "La Chica Roja is on your side."
+            "text": "La Chica Roja jest po waszej stronie."
           },
           {
             "id": "deception",
-            "text": "Cell Deception: #X#"
+            "text": "Oszustwa komórki: #X#"
           },
           {
             "id": "desi_is_in_your_debt",
-            "text": "Desi is in your debt."
+            "text": "Desi jest waszym dłużnikiem."
           },
           {
             "id": "dogs_are_at_war",
-            "text": "the dogs are at war."
+            "text": "psy prowadzą wojnę."
           },
           {
             "id": "dr_irawan_joined_the_cell",
-            "text": "Dr. Irawan joined the cell."
+            "text": "dr Irawan dołączyła do komórki."
           },
           {
             "id": "dr_irawan_traveled_to_new_guinea",
-            "text": "Dr. Irawan traveled to New Guinea."
+            "text": "dr Irawan wyruszyła do Nowej Gwinei."
           },
           {
             "id": "dr_irawan_vanished_from_existence",
-            "text": "Dr. Irawan vanished from existence."
+            "text": "dr Irawan przestała istnieć."
           },
           {
             "id": "ece_does_not_trust_the_cell",
-            "text": "Ece does not trust the cell."
+            "text": "Ece nie ufa komórce."
           },
           {
             "id": "ece_trusts_the_cell",
-            "text": "Ece trusts the cell."
+            "text": "Ece ufa komórce."
           },
           {
             "id": "erased_from_existence_dm",
-            "text": "erased from existence: #name#"
+            "text": "wymazane z istnienia: #name#"
           },
           {
             "id": "erased_from_existence_oti",
-            "text": "erased from existence: #name#"
+            "text": "wymazane z istnienia: #name#"
           },
           {
             "id": "flint_abandoned_his_search",
-            "text": "Flint abandoned his search."
+            "text": "Flint przerwał swoje poszukiwania."
           },
           {
             "id": "flint_is_working_solo",
-            "text": "Flint is working solo."
+            "text": "Flint pracuje w pojedynkę."
           },
           {
             "id": "flint_rejoined_the_cell",
-            "text": "Flint rejoined the cell."
+            "text": "Flint ponownie dołączył do komórki."
           },
           {
             "id": "flint_traveled_to_kuala_lampur",
-            "text": "Flint traveled to Kuala Lumpur."
+            "text": "Flint wyruszył do Kuala Lumpur."
           },
           {
             "id": "foundation_remains_in_the_dark",
-            "text": "the Foundation remains in the dark."
+            "text": "Fundacja pozostaje w niewiedzy."
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
-            "text": "you haven’t seen the last of Aliki Zoni Uperetria."
+            "text": "jeszcze zobaczycie Aliki Zoni Uperetria."
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
-            "text": "you haven't seen the last of Amaranth."
+            "text": "jeszcze zobaczycie Amarant."
           },
           {
             "id": "have_not_seen_the_last_of_desi",
-            "text": "you haven’t seen the last of Desiderio Delgado Álvarez."
+            "text": "jeszcze zobaczycie Desiego."
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
-            "text": "you haven't seen the last of La Chica Roja."
+            "text": "jeszcze zobaczycie La Chica Roja."
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
-            "text": "you haven’t seen the last of the Beast in a Cowl of Crimson."
+            "text": "jeszcze zobaczycie Bestię w karmazynowym kapturze."
           },
           {
             "id": "have_not_seen_the_last_of_the_claret_knight",
-            "text": "you haven’t seen the last of the Claret Knight."
+            "text": "jeszcze zobaczycie Rubinowego Rycerza."
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
-            "text": "you haven’t seen the last of the Red-Gloved Man."
+            "text": "jeszcze zobaczycie Mężczyznę w czerwonych rękawiczkach."
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
-            "text": "you haven't seen the last of The Sanguine Watcher."
+            "text": "jeszcze zobaczycie Szkarłatnego Obserwatora."
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
-            "text": "you haven’t seen the last of Thorne."
+            "text": "jeszcze zobaczycie Thorne."
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "you haven’t seen the last of Tzu San Niang."
+            "text": "jeszcze zobaczycie Tzu San Niang."
           },
           {
             "id": "know_the_passphrase",
-            "text": "you know the passphrase."
+            "text": "znacie hasło."
           },
           {
             "id": "lovers_are_reunited",
-            "text": "the lovers are reunited."
+            "text": "kochankowie znów są razem."
           },
           {
             "id": "nothing_of_note_in_anchorage",
-            "text": "there is nothing of note in Anchorage."
+            "text": "w Anchorage nie ma nic ważnego."
           },
           {
             "id": "outsiders_were_stopped",
-            "text": "the Outsiders were stopped."
+            "text": "Zewnętrzni zostali powstrzymani."
           },
           {
             "id": "red_coterie_spared_the_cell",
-            "text": "the Red Coterie spared the cell."
+            "text": "Czerwona Koteria oszczędziła komórkę."
           },
           {
             "id": "red_coterie_was_destroyed_from_within",
-            "text": "the Red Coterie was destroyed from within."
+            "text": "Czerwona Koteria została zniszczona od środka."
           },
           {
             "id": "sanguine_watchers_torment_continues",
-            "text": "The Sanguine Watcher's torment continues."
+            "text": "udręka Szkarłatnego Obserwatora trwa."
           },
           {
             "id": "thorne_disappeared",
-            "text": "Thorne disappeared."
+            "text": "słuch po Thorne zaginął."
           },
           {
             "id": "trust",
-            "text": "Foundation Trust: #X#"
+            "text": "Zaufanie Fundacji: #X#"
           },
           {
             "id": "tuwile_masai_fled_to_bermuda",
-            "text": "Tuwile Masai fled to Bermuda."
+            "text": "Tuwile Masai uciekł na Bermudy."
           },
           {
             "id": "tuwile_masai_is_on_your_side",
-            "text": "Tuwile Masai is on your side."
+            "text": "Tuwile Masai jest po waszej stronie."
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
-            "text": "Tzu San Niang has you under her sway."
+            "text": "jesteście pod wpływem Tzu San Niang."
           },
           {
             "id": "tzu_san_niang_is_under_your_sway",
-            "text": "Tzu San Niang is under your sway."
+            "text": "Tzu San Niang jest pod waszym wpływem."
           },
           {
             "id": "void_chimera_escaped",
-            "text": "the Void Chimera escaped."
+            "text": "Chimera z Pustki uciekła."
           },
           {
             "id": "work_together",
-            "text": "the Red Coterie and The Foundation agreed to work together."
+            "text": "Czerwona Koteria i Fundacja postanowiły działać razem."
           },
           {
             "id": "wrong_leads",
-            "text": "Wrong leads: #X#"
+            "text": "Złe tropy: #X#"
           }
         ]
       },
