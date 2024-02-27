@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2024-02-24 23:10-0300\n"
+"PO-Revision-Date: 2024-02-27 00:49-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -2205,7 +2205,7 @@ msgstr "Carta faltante #${ code }. Por favor, tente atualizar cartas do ArkhamDB
 
 #, javascript-format
 msgid "Fight: ${ fight }"
-msgstr "Lutar: ${ fight }"
+msgstr "Combate: ${ fight }"
 
 #, javascript-format
 msgid "Health: ${ health } per investigator"
@@ -3260,17 +3260,20 @@ msgstr "Pessoas Desaparecidas - Valentino Rivas"
 msgid "Evidence of Kadath"
 msgstr "Evidência de Kadath"
 
+#, fuzzy
 msgid "Steps of the Bridge"
-msgstr "Passos da Ponte"
+msgstr "Steps of the Bridge"
 
+#, fuzzy
 msgid "Memories Recovered"
-msgstr "Memórias Recuperadas"
+msgstr "Memories Recovered"
 
+#, fuzzy
 msgid "Possible Suspects"
-msgstr "Possíveis Suspeitos"
+msgstr "Possible Suspects"
 
 msgid "Possible Hideouts"
-msgstr "Possíveis Esconderijos"
+msgstr "Possible Hideouts"
 
 msgid "Section Name"
 msgstr "Nome da Seção"
@@ -3285,7 +3288,7 @@ msgid "Save XP"
 msgstr "Salvar XP"
 
 msgid "Upgrade deck"
-msgstr "Atualização de baralho"
+msgstr "Atualizar baralho"
 
 #, javascript-format
 msgid "${ xp } available experience, (${ parsedDeck.changes.spentXp } spent)"
@@ -3300,9 +3303,9 @@ msgid ""
 "\n"
 "Previous versions of your deck will still be accessible."
 msgstr ""
-"Atualizando um baralho, você pode mapear o XP e as atualizações de cartas de história enquanto sua campanha avança\n"
+"Ao atualizar um baralho, você pode mapear o XP e as atualizações de cartas de história enquanto sua campanha avança\n"
 "\n"
-"Versões antigas do seu baralho ainda estarão acessíveis."
+"Versões anteriores do seu baralho ainda estarão acessíveis."
 
 msgid "Update investigator decks"
 msgstr "Atualizar baralhos de investigadores"
@@ -3341,13 +3344,13 @@ msgid "Unknown campaign"
 msgstr "Campanha desconhecida"
 
 msgid "Don't see your favorite Standalone scenario here? Let me know at arkhamcards@gmail.com, and I'll see about including it in a future release."
-msgstr "Não viu o seu cenário independente aqui? Me informe em arkhamcards@gmail.com e eu verei como incluí-lo em uma atualização futura."
+msgstr "Não encontra seu cenário independente favorito aqui? Me informe através do e-mail arkhamcards@gmail.com e tratarei de incluí-lo em uma versão futura."
 
 msgid "Select Campaign"
-msgstr "Escolher Campanha"
+msgstr "Selecione a campanha"
 
 msgid "Number of clues on your location"
-msgstr "Número de pistas na sua localidade"
+msgstr "Número de pistas na seu local"
 
 msgid "Horror on Agnes Baker"
 msgstr "Horror em Agnes Baker"
@@ -3365,7 +3368,7 @@ msgid "Number of exhausted enemies in play"
 msgstr "Número de inimigos exauridos em jogo"
 
 msgid "Spend two resources to automatically succeed"
-msgstr "Gaste dois recursos para automaticamente ser bem sucedido"
+msgstr "Gaste dois recursos para ter sucesso automaticamente"
 
 msgid "Resource cost of the top card on your deck"
 msgstr "Custo de recurso da carta do top do seu baralho"
@@ -3399,16 +3402,16 @@ msgid "Weakness Set"
 msgstr "Conjunto de Fraquezas"
 
 msgid "Include all basic weaknesses from these expansions"
-msgstr "Incluir todas as fraquezas básicas destas expansões"
+msgstr "Incluir todas as fraquezas básicas dessas expansões"
 
 msgid "Add Log Section"
-msgstr "Adicionar Sessão de Registro"
+msgstr "Adicionar Registro de Sessão"
 
 msgid "Guided Campaign"
 msgstr "Campanha Guiada"
 
 msgid "Use app for scenario setup & resolutions"
-msgstr "Usar o app para preparações e resoluções de cenário"
+msgstr "Use o aplicativo para Setup e resolução de cenários"
 
 msgid "Track campaign log and resolutions manually"
 msgstr "Mapear Registro de Campanha e resoluções manualmente"
@@ -3417,8 +3420,8 @@ msgid ""
 "Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\n"
 "As new scenarios are released, I will try to update the app promptly but there may be some slight delays."
 msgstr ""
-"Nota: esta campanha ainda será lançada e por isso o guia está incompleto (e pode conter vários erros).\n"
-"Assim que novos cenários forem lançados, eu tentarei atualizar o app o mais breve possível mas alguns atrasos podem acontecer."
+"Nota: esta campanha ainda está em fase de lançamento e por isso o guia está incompleto (podendo conter alguns erros).\n"
+"À medida que novos cenários forem lançados, tentarei atualizar o aplicativo imediatamente, mas pode haver alguns pequenos atrasos."
 
 msgid "Add Investigator Deck"
 msgstr "Adicionar Baralho de Investigador"
@@ -3445,7 +3448,7 @@ msgid "Hide killed and insane investigators"
 msgstr "Esconder Investigadores Mortos e Insanos"
 
 msgid "Only show previous campaign members"
-msgstr "Somente Mostrar Membros de Campanhas Anteriores"
+msgstr "Mostrar apenas membros anteriores da campanha"
 
 msgid "Edit name"
 msgstr "Editar nome"
@@ -3465,7 +3468,7 @@ msgstr ""
 "\n"
 "Use o botão + para criar uma nova.\n"
 "\n"
-"Você pode usar este app para mapear campanhas, incluindo trauma de investigador, bolsa de caos, fraquezas básicas, notas de campanha e os valores de experiência para todos os baralhos."
+"Você pode usar este aplicativo para acompanhar as campanhas, incluindo o trauma do investigador, o bolsa do caos, fraquezas básicas, as notas da campanha e os pontos de experiência de todos os baralhos."
 
 msgid "Search campaigns"
 msgstr "Procurar campanhas"
@@ -3510,7 +3513,7 @@ msgid ""
 msgstr ""
 "Você tem certeza que quer remover ${ investigator.name } desta campanha?\n"
 "\n"
-"Registros da Campanha associados com eles podem ser apagados."
+"Os Registros da Campanha associados a eles podem ser perdidos."
 
 msgid "Record Scenario Results"
 msgstr "Registrar Resultados do Cenário"
@@ -3529,7 +3532,7 @@ msgid "Clean up broken campaigns"
 msgstr "Limpar campanhas quebradas"
 
 msgid "Review scenario results"
-msgstr "Rever resultados do cenário"
+msgstr "Revise os resultados do cenário"
 
 msgid "Edit chaos bag"
 msgstr "Alterar bolsa do caos"
@@ -3572,7 +3575,7 @@ msgstr "Marcadores Selados"
 
 #, javascript-format
 msgid "${ _spentXp } of ${ _totalXp } spent"
-msgstr "${ _spentXp } de ${ _totalXp } spent"
+msgstr "${ _spentXp } de ${ _totalXp } gasto"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
 msgstr "Baralhos com Conhecimento Ancestral devem incluir pelo menos 10 perícias."
@@ -3609,7 +3612,7 @@ msgstr "Assobios"
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
-msgstr ""
+msgstr "${ normalCardCount } / ${ deckSize } cartas"
 
 #, javascript-format
 msgid "${ cycleCount } Cycle"
@@ -3649,7 +3652,7 @@ msgid "Searching cards..."
 msgstr "Procurando cartas..."
 
 msgid "This appears to be one of your decks from ArkhamDB, however you are not currently logged in. If you wish to make edits, please login through the app settings."
-msgstr "Este parece ser um dos seus baralhos do ArkhamDB, mas você não está atualmente logado. Se você deseja fazer edições, por favor faça o login através do configurações do aplicativo."
+msgstr "Este parece ser um dos seus baralhos do ArkhamDB, mas você não está conectado no momento. Se desejar fazer edições, faça login nas configurações do aplicativo."
 
 msgid "Leave campaign"
 msgstr "Sair da campanha"
@@ -3661,7 +3664,7 @@ msgid ""
 msgstr ""
 "Tem certeza de que deseja sair desta campanha?\n"
 "\n"
-"Seus baralhos serão removidos da campanha, mas você poderá voltar mais tarde."
+"Seus baralhos serão removidos da campanha, mas você poderá voltar a participar mais tarde."
 
 msgid "Leave"
 msgstr "Sair"
@@ -3679,22 +3682,22 @@ msgid "Uploading..."
 msgstr "Enviando..."
 
 msgid "Leave standalone"
-msgstr "Deixar standalone"
+msgstr "Sair do cenário independente"
 
 msgid ""
 "Are you sure you want to leave this standalone?\n"
 "\n"
 "Your decks will be removed from the standalone, but you can rejoin it later."
 msgstr ""
-"Tem certeza de que deseja deixar este standalone?\n"
+"Tem certeza de que deseja sair deste cenário independente?\n"
 "\n"
-"Seus Baralhos serão removidos do standalone, mas você poderá se juntar a ele mais tarde."
+"Seus baralhos serão removidos do cenário independente, mas você poderá reingressá-lo mais tarde."
 
 msgid "Upload standalone"
-msgstr "Enviar Standalone"
+msgstr "Enviar cenário independente"
 
 msgid "You must be online to upload"
-msgstr "Você deve estar online para fazer o upload"
+msgstr "Você deve estar online para enviar"
 
 msgid "Adjust scenario XP and trauma"
 msgstr "Ajustar a XP e o trauma do cenário"
@@ -3714,20 +3717,20 @@ msgid "Scenario Card"
 msgstr "Carta de Cenário"
 
 msgid "This appears to be one of your decks from ArkhamDB, however you seem to be logged into a different ArkhamDB account? If you wish to make edits, please login through the app settings."
-msgstr "Este parece ser um dos seus baralhos do ArkhamDB, mas você parece estar logado em uma conta diferente do ArkhamDB? Se você deseja fazer edições, por favor logue através das configurações do aplicativo."
+msgstr "Este parece ser um dos seus baralhos do ArkhamDB, mas você parece estar conectado em uma conta diferente do ArkhamDB. Se desejar fazer edições, faça login nas configurações do aplicativo."
 
 #, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
-msgstr ""
+msgstr "${ tokens[0] } e ${ tokens[1] }"
 
 msgid "Dark Matter"
-msgstr "Matéria escura"
+msgstr "Dark Matter"
 
 msgid "Impending Doom"
-msgstr "Perdição iminente"
+msgstr "Impending Doom"
 
 msgid "Memories"
-msgstr "Memórias"
+msgstr "Memories"
 
 msgid "Fan-Made Campaigns"
 msgstr "Campanhas feitas por fãs"
@@ -3748,7 +3751,7 @@ msgid "People will be able to search for friends using their handle so you can j
 msgstr "As pessoas poderão procurar amigos usando o identificador para que você possajuntar-se às suas campanhas."
 
 msgid "Now that you are signed in, you should have access to your saved campaigns."
-msgstr "Agora que você está conectado, você deve ter acesso às suas campanhas salvas."
+msgstr "Agora que você fez login, terá acesso às suas campanhas salvas."
 
 msgid "Campaigns can now be 'uploaded' so they can be synced between devices or shared with friends."
 msgstr "As campanhas agora podem ser 'enviadas' para que possam ser sincronizadas entre dispositivos ou compartilhada com amigos."
