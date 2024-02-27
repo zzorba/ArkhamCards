@@ -35,7 +35,8 @@ export default function BranchButton({ index, text, description, icon, onPress, 
       color="dark_gray"
       title={text}
       detail={description}
-      encounterIcon={icon}
+      encounterIcon={icon !== 'xp' ? icon : undefined}
+      icon={icon === 'xp' ? icon : undefined}
       onPress={handleOnPress}
       bottomMargin={s}
       noShadow

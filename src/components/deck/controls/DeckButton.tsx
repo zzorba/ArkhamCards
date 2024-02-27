@@ -5,10 +5,10 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
-import AppIcon from '@icons/AppIcon';
 import space, { s, xs } from '@styles/space';
 import COLORS from '@styles/colors';
 import ArkhamIcon from '@icons/ArkhamIcon';
+import AppIcon from '@icons/AppIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 
 export type DeckButtonIcon =
@@ -123,6 +123,7 @@ const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
 };
 
 const MATERIAL_ICONS = new Set(['email', 'login', 'backup', 'headset']);
+const APP_ICONS = new Set(['xp']);
 const ARKHAM_ICONS = new Set(['per_investigator', 'faq', 'elder_sign', 'weakness']);
 const ENCOUNTER_ICONS = new Set(['tdea', 'tdeb']);
 export default function DeckButton({
@@ -214,6 +215,9 @@ export default function DeckButton({
     const size = (thin ? ICON_SIZE_THIN[icon] : undefined) || ICON_SIZE[icon] || 28;
     if (MATERIAL_ICONS.has(icon)) {
       return <MaterialIcons name={icon} size={size} color={theIconColor} />;
+    }
+    if (APP_ICONS.has(icon)) {
+      return <AppIcon name={icon} size={size} color={theIconColor} />;
     }
     if (ARKHAM_ICONS.has(icon)) {
       return <ArkhamIcon name={icon === 'faq' ? 'wild' : icon} size={size} color={theIconColor} />;
