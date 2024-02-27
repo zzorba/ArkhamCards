@@ -1738,7 +1738,7 @@ msgid "Alive"
 msgstr "Żywy"
 
 msgid "Resigned"
-msgstr "Zrezygnowany"
+msgstr "Zrezygnował"
 
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
@@ -5609,11 +5609,11 @@ msgstr ""
 
 #, javascript-format
 msgid "Time cost: ${ xpCost }"
-msgstr ""
+msgstr "Koszt czasu: ${ xpCost }"
 
 #, javascript-format
 msgid "Additional experience cost for ${ investigator.name }: ${ additionalXpCost }"
-msgstr ""
+msgstr "Dodatkowy koszt doświadczenia dla ${ investigator.name }: ${ additionalXpCost }"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign.\n"
@@ -5685,10 +5685,10 @@ msgid "Congress of the Keys"
 msgstr "Zgromadzenie Kluczy"
 
 msgid "Unlocked Locations"
-msgstr ""
+msgstr "Odblokowane lokalizacje"
 
 msgid "Each investigator who is the bearer of 1 or more key attaches those keys to their investigator card:"
-msgstr ""
+msgstr "Każdy badacz który jest posiadaczem 1 lub więcej kluczy dołącza te klucze do swojej karty badacza:"
 
 msgid "Customizable"
 msgstr ""
@@ -5736,8 +5736,8 @@ msgstr "Tagi"
 #, javascript-format
 msgid "${ scenarioName }: Visit ${ attempt }"
 msgid_plural "${ scenarioName }: Visit ${ attempt }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ scenarioName }: Odwiedź ${ attempt }"
+msgstr[1] "${ scenarioName }: Odwiedź ${ attempt }"
 
 msgid "Search english card names"
 msgstr "Szukaj wśród angielskich nazw kart"
@@ -5768,17 +5768,17 @@ msgstr[2] "Przeczytaj raporty sytuacyjne: ${ reportSymbols }"
 #, javascript-format
 msgid "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to ${ arriveCityName } on the way to somewhere else."
 msgid_plural "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to ${ arriveCityName } on the way to somewhere else."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Zaznacz ${ time } pole <b>czasu</b>, ponieważ komórka przemieszcza się z ${ departCityName } do ${ arriveCityName } w drodze do innego miejsca."
+msgstr[1] "Zaznacz ${ time } pola <b>czasu</b>, ponieważ komórka przemieszcza się z ${ departCityName } do ${ arriveCityName } w drodze do innego miejsca."
 
 msgid "You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox traited."
 msgstr ""
 
 msgid "Min"
-msgstr ""
+msgstr "Min"
 
 msgid "Max"
-msgstr ""
+msgstr "Max"
 
 msgid "EASY"
 msgstr ""
@@ -5793,29 +5793,29 @@ msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
-msgstr ""
+msgstr "Wybrana klasa"
 
 msgid "Class"
-msgstr ""
+msgstr "Klasa"
 
 msgid "Selected"
-msgstr ""
+msgstr "Wybrane"
 
 #, javascript-format
 msgid "App language: ${ appLanguage }"
-msgstr ""
+msgstr "Język aplikacji: ${ appLanguage }"
 
 msgid "Narration Language"
-msgstr ""
+msgstr "Język narracji"
 
 msgid "Take the scenic route to mark time"
-msgstr ""
+msgstr "Wybierz malowniczą trasę, aby zmarnować czas"
 
 msgid "Manual Backup"
-msgstr ""
+msgstr "Ręczna kopia zapasowa"
 
 msgid "Automatic Backup"
-msgstr ""
+msgstr "Automatyczna kopia zapasowa"
 
 msgid "You must have at least 7 cards from each class"
 msgstr ""
@@ -5824,7 +5824,7 @@ msgid "More off-class card than the number of weaknesses in your deck and bonded
 msgstr ""
 
 msgid "Concealed"
-msgstr ""
+msgstr "Utajony"
 
 msgid "Parallel Cards"
 msgstr ""
@@ -5837,10 +5837,10 @@ msgstr ""
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
-msgstr ""
+msgstr "Zwróć, ale ${ doNotRemove } żetonów ${ bless } / ${ curse }"
 
 msgid "Recent token history"
-msgstr ""
+msgstr "Ostatnio wylosowane żetony"
 
 msgid "The (Unofficial) Return to the Innsmouth Conspiracy"
 msgstr ""
@@ -5901,7 +5901,7 @@ msgid "Taboo list history:"
 msgstr ""
 
 msgid "CHAOS BAG"
-msgstr ""
+msgstr "WOREK CHAOSU"
 
 msgid "Just a bag. No strings attached."
 msgstr ""
@@ -6004,10 +6004,10 @@ msgid "A: ${ errata.answer }"
 msgstr ""
 
 msgid "Show FAQ"
-msgstr ""
+msgstr "Pokaż FAQ"
 
 msgid "May contain light spoilers"
-msgstr ""
+msgstr "Może zawierać lekkie spoilery"
 
 msgid "Note: To avoid spoilers, scenario specific questions and clarifications can be found within each scenario guide."
 msgstr ""
@@ -8318,20 +8318,20 @@ msgstr[2] "Scenariuszy"
 msgctxt "header"
 msgid "Key"
 msgid_plural "Keys"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Klucz"
+msgstr[1] "Klucze"
 
 msgctxt "tags"
 msgid "Add"
-msgstr ""
+msgstr "Dodaj"
 
 msgctxt "tags"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "tags"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "Tarot Card"
 msgid "None"
@@ -8351,43 +8351,43 @@ msgstr "VS"
 
 msgctxt "sort"
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgctxt "sort"
 msgid "Class"
-msgstr ""
+msgstr "Klasa"
 
 msgctxt "sort"
 msgid "Cost"
-msgstr ""
+msgstr "Koszt"
 
 msgctxt "sort"
 msgid "Pack"
-msgstr ""
+msgstr "Zestaw"
 
 msgctxt "sort"
 msgid "Cycle"
-msgstr ""
+msgstr "Cykl"
 
 msgctxt "sort"
 msgid "Title"
-msgstr ""
+msgstr "Tytuł"
 
 msgctxt "sort"
 msgid "Encounter Set"
-msgstr ""
+msgstr "Zestaw spotkań"
 
 msgctxt "sort"
 msgid "Level"
-msgstr ""
+msgstr "Poziom"
 
 msgctxt "sort"
 msgid "Card number"
-msgstr ""
+msgstr "Numer karty"
 
 msgctxt "sort"
 msgid "Slot"
-msgstr ""
+msgstr "Strefa"
 
 msgctxt "card-chooser"
 msgid "Choose additional"

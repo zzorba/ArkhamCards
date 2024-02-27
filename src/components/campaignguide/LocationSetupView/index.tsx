@@ -131,15 +131,16 @@ export default function LocationSetupView({ step: { locations, cards, annotation
       resource_dividers ? 50 * card.x : 0
     );
     const item = card.code;
+    const cleanCode = cleanLocationCode(item);
     return (
       <LocationCard
         key={key}
         keyProp={key}
         code={item}
-        name={names[cleanLocationCode(item)]}
-        placeholder={placeholders[cleanLocationCode(item)]}
-        faded={faded[cleanLocationCode(item)]}
-        random={randoms[cleanLocationCode(item)]}
+        name={names[cleanCode]}
+        placeholder={placeholders[cleanCode]}
+        faded={faded[cleanCode]}
+        random={randoms[cleanCode]}
         rotate={card.rotate}
         top={TOP_PADDING + top}
         left={SIDE_PADDING + left}

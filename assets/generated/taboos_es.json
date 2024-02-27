@@ -1368,7 +1368,7 @@
       {
         "code": "60423",
         "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal damage to the attacking enemy equal to its damage or horror."
+        "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige al Enemigo atacante una cantidad de daño igual a su daño u horror."
       },
       {
         "code": "02269",
@@ -1418,8 +1418,8 @@
       },
       {
         "code": "04233",
-        "text": "This card’s ability now reads: “Gain 1 resource for each action you spent this turn…”",
-        "replacement_text": "Mutated. Gain 1 resource for each action you spent this turn <i>(including this one)</i>. If it is your turn, end your turn."
+        "text": "La capacidad de esta carta ahora dice: \"Obtén 1 recurso por cada acción que hayas gastado en este turno…”",
+        "replacement_text": "Mutada. Obtén 1 recurso por cada acción que hayas gastado en este turno <i>(incluida ésta)</i>. Si es tu turno, termina tu turno."
       },
       {
         "code": "06002",
