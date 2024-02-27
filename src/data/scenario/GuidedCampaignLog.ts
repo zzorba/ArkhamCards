@@ -1,4 +1,4 @@
-import {
+  import {
   cloneDeep,
   flatMap,
   find,
@@ -794,7 +794,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   }
 
   count(sectionId: string, id: string): number {
-    if (!this.sectionExists(sectionId)) {
+    if (this.sections[sectionId]?.sectionCrossedOut) {
       return 0;
     }
     if (id === '$count') {
@@ -1670,7 +1670,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     // Normal entry
     const entry = find(section.entries, entry => entry.id === id);
     const count = (entry && entry.type === 'count') ? entry.count : 0;
-    const applyMin = (value: number) => min !== undefined ? Math.max(min, value) : value;
+    const applyMin = (value: number) => min !== undefined && min !== null ? Math.max(min, value) : value;
     switch (operation) {
       case 'cross_out':
         section.entries = map(section.entries, entry => {
@@ -1767,7 +1767,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           count = numberInput || 0;
           break;
       }
-      if (effect.min !== undefined) {
+      if (effect.min !== undefined && effect.min !== null) {
         count = Math.max(count, effect.min);
       }
       section.count = count;

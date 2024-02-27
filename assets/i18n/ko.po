@@ -5827,7 +5827,7 @@ msgid "You cannot have more than 5 Mystic cards."
 msgstr "신비주의자인 카드를 5장보다 많이 포함할 수 없습니다."
 
 msgid "The Feast of Hemlock Vale"
-msgstr "헴록 계곡의 축일"
+msgstr "헴록 베일의 축일"
 
 msgid "The Dunwich Legacy Investigator Expansion"
 msgstr "던위치의 유산 조사자 확장"
@@ -5950,10 +5950,10 @@ msgid "Relationship Level"
 msgstr ""
 
 msgid "Image cache cleared"
-msgstr ""
+msgstr "이미지 캐시 정리됨"
 
 msgid "Clear image cache"
-msgstr ""
+msgstr "이미지 캐시 비우기"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6537,23 +6537,23 @@ msgstr "- 언제나 그렇듯이 Patreon의 많은 후원자 여러분께 진심
 
 msgctxt "releaseNotes"
 msgid "Feast of Hemlock Vale Campaign"
-msgstr ""
+msgstr "헴록 베일의 축일 캠페인 (영문)"
 
 msgctxt "releaseNotes"
 msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
-msgstr ""
+msgstr "이번 배포에서는 새로 출시된 “헴록 베일의 축일” 캠페인 확장을 지원합니다."
 
 msgctxt "releaseNotes"
 msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
-msgstr ""
+msgstr "- 이번 캠페인의 구석구석을 테스트하기 위해 최선을 다했지만, 아직 구현 과정에서 실수나 버그가 있을 수 있습니다. 발견하신다면 [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) 주소의 메일을 통해 영문으로 알려주시면 최대한 빨리 수정하도록 노력하겠습니다."
 
 msgctxt "releaseNotes"
 msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
-msgstr ""
+msgstr "또한 아컴 카드 계정을 사용하여 캠페인을 업로드하고 친구들과 공유할 수 있는 친숙한 플러그만 있으면 누구나 자신의 덱을 관리하면서 진행 상황을 쉽게 따라잡을 수 있습니다."
 
 msgctxt "releaseNotes"
 msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
-msgstr ""
+msgstr "그리고 언제나 그렇듯이, 서버를 계속 운영할 수 있도록 도와주시는 많은 후원자 여러분께 감사드립니다."
 
 msgctxt "trait"
 msgid "???"

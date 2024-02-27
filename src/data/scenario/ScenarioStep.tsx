@@ -464,7 +464,7 @@ export default class ScenarioStep {
           [
             ...map(
               ((result.option && result.option.steps) || []),
-              id => step.loop ? `${id}#${currentIteration}` : id
+              id => (step.loop || result.option?.repeatable) ? `${id}#${currentIteration}` : id
             ),
             // Should we repeat ourselves until it fails the test at least once.
             ...(step.loop && result.option ? [`${baseStepId}#${nextIteration}`] : []),

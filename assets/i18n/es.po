@@ -797,19 +797,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -5927,91 +5927,91 @@ msgid "Show original release packs"
 msgstr "Mostrar packs originales"
 
 msgid "Non-Unique"
-msgstr ""
+msgstr "No Única"
 
 #, javascript-format
 msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr ""
+msgstr "Coste de experiencia: ${ basicXpCost } para mazos que incluyan ${ investigator.name }, ${ challengeDiscountCost } para el resto"
 
 msgid "Aether"
 msgstr ""
 
 msgid "Campaign Rules & FAQ"
-msgstr ""
+msgstr "Reglas de campaña y FAQ"
 
 msgid "Review campaign specific info"
-msgstr ""
+msgstr "Revisa información específica de la campaña"
 
 msgid "Campaign Rules"
-msgstr ""
+msgstr "Reglas de campaña"
 
 msgid "Review campaign specific rules"
-msgstr ""
+msgstr "Revisa reglas específicas de la campaña"
 
 msgid "Campaign FAQ"
-msgstr ""
+msgstr "FAQ campaña"
 
 msgid "Review campaign specific clarifications"
-msgstr ""
+msgstr "Revisa aclaraciones específicas de la campaña"
 
 #, javascript-format
 msgid "Q: ${ errata.question }"
-msgstr ""
+msgstr "P: ${ errata.question }"
 
 #, javascript-format
 msgid "A: ${ errata.answer }"
-msgstr ""
+msgstr "R: ${ errata.answer }"
 
 msgid "Show FAQ"
-msgstr ""
+msgstr "Mostrar FAQ"
 
 msgid "May contain light spoilers"
-msgstr ""
+msgstr "Puede contener spoilers ligeros"
 
 msgid "Note: To avoid spoilers, scenario specific questions and clarifications can be found within each scenario guide."
-msgstr ""
+msgstr "Nota: Para evitar spoilers, las preguntas y aclaraciones sobre escenarios específicos se encuentran en la guía de cada escenario."
 
 msgid "Rules & FAQ"
-msgstr ""
+msgstr "Reglas y FAQ"
 
 msgid "Day / Time"
-msgstr ""
+msgstr "Día / Hora"
 
 msgid "Areas Surveyed"
-msgstr ""
+msgstr "Zonas exploradas"
 
 msgid "Mother Rachel"
-msgstr ""
+msgstr "Madre Rachel"
 
 msgid "Leah Atwood"
-msgstr ""
+msgstr "Leah Atwood"
 
 msgid "Simeon Atwood"
-msgstr ""
+msgstr "Simeon Atwood"
 
 msgid "William Hemlock"
-msgstr ""
+msgstr "William Cicuta"
 
 msgid "River Hawthorne"
-msgstr ""
+msgstr "River Hawthorne"
 
 msgid "Gideon Mizrah"
-msgstr ""
+msgstr "Gideon Mizrah"
 
 msgid "Judith Park"
-msgstr ""
+msgstr "Judith Park"
 
 msgid "Theo Peters"
-msgstr ""
+msgstr "Theo Peters"
 
 msgid "Relationship Level"
-msgstr ""
+msgstr "Nivel de relación"
 
 msgid "Image cache cleared"
-msgstr ""
+msgstr "Caché de imágenes borrada"
 
 msgid "Clear image cache"
-msgstr ""
+msgstr "Borrar caché imágenes"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6614,23 +6614,23 @@ msgstr "Como siempre, muchas gracias a los muchos suscriptores de Patreon. Realm
 
 msgctxt "releaseNotes"
 msgid "Feast of Hemlock Vale Campaign"
-msgstr ""
+msgstr "La fiesta del Valle de la Cicuta"
 
 msgctxt "releaseNotes"
 msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
-msgstr ""
+msgstr "Esta versión añade soporte para la recién salida expansión de campaña La fiesta del Valle de la Cicuta"
 
 msgctxt "releaseNotes"
 msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
-msgstr ""
+msgstr "He hecho todo lo posible para testear hasta el último rincón de esta campaña, pero es bastante posible que aún haya algunos errores o bugs en la implementación. Si encuentras cualquier error, por favor házmelo saber en [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) y lo arreglaré tan pronto como sea posible."
 
 msgctxt "releaseNotes"
 msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
-msgstr ""
+msgstr "Te recuerdo que puedes subir tus campañas y compartirlas con tus amigos usando tu cuenta de Arkham Cards. Hace que sea más fácil para todos seguir el progreso a la vez que gestionan sus propios mazos."
 
 msgctxt "releaseNotes"
 msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
-msgstr ""
+msgstr "Como siempre, muchas gracias a los muchos suscriptores de Patreon. Os agradezco vuestro apoyo que ayuda a mantener los servidores en marcha."
 
 msgctxt "trait"
 msgid "???"
@@ -8156,15 +8156,15 @@ msgstr "Suministros"
 
 msgctxt "uses"
 msgid "Evidence"
-msgstr ""
+msgstr "Pruebas"
 
 msgctxt "uses"
 msgid "Time"
-msgstr ""
+msgstr "Tiempo"
 
 msgctxt "uses"
 msgid "Treats"
-msgstr ""
+msgstr "Golosinas"
 
 msgctxt "Slots"
 msgid "All"

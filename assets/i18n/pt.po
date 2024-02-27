@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2024-02-22 19:53-0300\n"
+"PO-Revision-Date: 2024-02-24 23:10-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -2976,34 +2976,34 @@ msgid "Return to Lost in Time and Space"
 msgstr "Return to Lost in Time and Space"
 
 msgid "Curtain Call"
-msgstr "O Fechar das Cortinas"
+msgstr "Fecham-se as Cortinas"
 
 msgid "The Last King"
 msgstr "O Último Rei"
 
 msgid "Lunacy’s Reward"
-msgstr "Recompensa da Loucura"
+msgstr "A Sombra da Realidade"
 
 msgid "Echoes of the Past"
-msgstr "Ecos do passado"
+msgstr "Ecos do Passado"
 
 msgid "The Unspeakable Oath"
-msgstr "O Juramento Impronunciável"
+msgstr "O Juramento Indizível"
 
 msgid "Lost Soul"
-msgstr "Alma perdida"
+msgstr "Alma Perdida"
 
 msgid "A Phantom of Truth"
-msgstr "Um fantasma da verdade"
+msgstr "Um Fantasma da Verdade"
 
 msgid "The Pallid Mask"
 msgstr "A Máscara Pálida"
 
 msgid "Black Stars Rise"
-msgstr "Estrelas Negras Ascendem"
+msgstr "Ascensão das Estrelas Sombrias"
 
 msgid "Dim Carcosa"
-msgstr "Carcosa Sombria"
+msgstr "Sombria Carcosa"
 
 msgid "Return to Curtain Call"
 msgstr "Return to Curtain Call"
@@ -3030,43 +3030,43 @@ msgid "Return to Dim Carcosa"
 msgstr "Return to Dim Carcosa"
 
 msgid "The Untamed Wilds"
-msgstr "A Selva indomável"
+msgstr "Os Ermos Indômitos"
 
 msgid "Restless Nights"
-msgstr "Noites sem Descanso"
+msgstr "Noites Intranquilas"
 
 msgid "The Doom of Eztli"
 msgstr "A Perdição de Eztli"
 
 msgid "Expedition’s End"
-msgstr "Fim da expedição"
+msgstr "Fim da Expedição"
 
 msgid "Threads of Fate"
 msgstr "Fios do Destino"
 
 msgid "The Boundary Beyond"
-msgstr "A Fronteira Além"
+msgstr "A Barreira Além"
 
 msgid "The Jungle Beckons"
-msgstr "A Selva Chama"
+msgstr "O Chamado da Selva"
 
 msgid "Heart of the Elders"
-msgstr "Coração dos Ancestrais"
+msgstr "Coração dos Antigos"
 
 msgid "The City of Archives"
 msgstr "A Cidade dos Arquivos"
 
 msgid "Those Held Captive"
-msgstr "Aqueles Mantidos em Cativeiro"
+msgstr "Os Prisioneiros"
 
 msgid "The Depths of Yoth"
-msgstr "As profundezas de Yoth"
+msgstr "As Profundezas de Yoth"
 
 msgid "The Darkness"
 msgstr "A Escuridão"
 
 msgid "Shattered Aeons"
-msgstr "Eras Despedaçadas"
+msgstr "Éons Estilhaçados"
 
 msgid "Return to The Untamed Wilds"
 msgstr "Return to The Untamed Wilds"
@@ -3093,13 +3093,13 @@ msgid "Return to Shattered Aeons"
 msgstr "Return to Shattered Aeons"
 
 msgid "Prologue: Disappearance at the Twilight Estate"
-msgstr "Prologue: Disappearance at the Twilight Estate"
+msgstr "Prólogo: Desaparecimento na Mansão Crepuscular"
 
 msgid "The Witching Hour"
-msgstr "A Hora da Bruxaria"
+msgstr "A Hora das Bruxas"
 
 msgid "At Death's Doorstep"
-msgstr "À Porta da Morte"
+msgstr "Na Soleira da Morte"
 
 msgid "The Price of Progress"
 msgstr "O Preço do Progresso"
@@ -3108,13 +3108,13 @@ msgid "The Secret Name"
 msgstr "O Nome Secreto"
 
 msgid "The Wages of Sin"
-msgstr "O Salário do Pecado"
+msgstr "Os Ordenados do Pecado"
 
 msgid "For the Greater Good"
-msgstr "Para um Bem Maior"
+msgstr "Pelo Bem Maior"
 
 msgid "The Inner Circle"
-msgstr "O Círculo Interior"
+msgstr "União e Desilusão"
 
 msgid "Union and Disillusion"
 msgstr "União e Desilusão"
@@ -3126,7 +3126,7 @@ msgid "Twist of Fate"
 msgstr "Reviravolta do Destino"
 
 msgid "Before the Black Throne"
-msgstr "Antes do Trono Negro"
+msgstr "Diante do Trono Negro"
 
 msgid "Return to The Gathering"
 msgstr "Return to The Gathering"
@@ -3141,70 +3141,70 @@ msgid "Beyond the Gates of Sleep"
 msgstr "Além dos Portões do Sono"
 
 msgid "The Black Cat"
-msgstr "O Gato Preto"
+msgstr "The Black Cat"
 
 msgid "The Search for Kadath"
-msgstr "A Busca por Kadath"
+msgstr "The Search for Kadath"
 
 msgid "The Oneironauts"
-msgstr "Os Onironautas"
+msgstr "The Oneironauts"
 
 msgid "Dark Side of the Moon"
-msgstr "Lado Escuro da Lua"
+msgstr "Dark Side of the Moon"
 
 msgid "The Great Ones"
 msgstr "The Great Ones"
 
 msgid "Where Gods Dwell"
-msgstr "Onde os Deuses Habitam"
+msgstr "Where Gods Dwell"
 
 msgid "Waking Nightmare"
-msgstr "Pesadelo Acordado"
+msgstr "Waking Nightmare"
 
 msgid "A Thousand Shapes of Horror"
-msgstr "Mil formas de horror"
+msgstr "A Thousand Shapes of Horror"
 
 msgid "Point of No Return"
-msgstr "Ponto sem Retorno"
+msgstr "Point of No Return"
 
 msgid "Weaver of the Cosmos"
-msgstr "Tecelão do Cosmos"
+msgstr "Weaver of the Cosmos"
 
 msgid "The Pit of Despair"
-msgstr "O Poço do Desespero"
+msgstr "The Pit of Despair"
 
 msgid "Puzzle Pieces"
-msgstr "Peças de Quebra-Cabeças"
+msgstr "Puzzle Pieces"
 
 msgid "The Vanishing of Elina Harper"
-msgstr "O Desaparecimento de Elina Harper"
+msgstr "The Vanishing of Elina Harper"
 
 msgid "The Syzygy"
-msgstr "A Sizígia"
+msgstr "The Syzygy"
 
 msgid "In Too Deep"
-msgstr "Muito profundo"
+msgstr "In Too Deep"
 
 msgid "Devil Reef"
-msgstr "Recife Diabólico"
+msgstr "Devil Reef"
 
 msgid "Beneath the Waves"
-msgstr "Debaixo das Ondas"
+msgstr "Beneath the Waves"
 
 msgid "Horror in High Gear"
-msgstr "Horror em Alta Velocidade"
+msgstr "Horror in High Gear"
 
 msgid "A Light in the Fog"
-msgstr "Uma Luz no Nevoeiro"
+msgstr "A Light in the Fog"
 
 msgid "The Lair of Dagon"
-msgstr "O Covil de Dagon"
+msgstr "The Lair of Dagon"
 
 msgid "Hidden Truths"
-msgstr "Verdades Ocultas"
+msgstr "Hidden Truths"
 
 msgid "Into the Maelstrom"
-msgstr "Dentro do Redemoinho"
+msgstr "Into the Maelstrom"
 
 msgid "The Night of the Zealot"
 msgstr "A Noite do Zelote"
@@ -3219,13 +3219,13 @@ msgid "Cultists Who Got Away"
 msgstr "Cultistas que Fugiram"
 
 msgid "Sacrificed to Yog-Sothoth"
-msgstr "Sacrificado para Yog-Sothoth"
+msgstr "Sacrificado a Yog‑Sothoth"
 
 msgid "VIPs Interviewed"
 msgstr "VIPs Entrevistados"
 
 msgid "VIPs Slain"
-msgstr "VIPs Assassinados"
+msgstr "VIPs Mortos"
 
 msgid "Doubt"
 msgstr "Dúvida"
