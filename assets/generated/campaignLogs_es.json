@@ -1094,7 +1094,7 @@
           },
           {
             "id": "western_woods",
-            "text": "Western Woods"
+            "text": "Bosque oriental"
           }
         ]
       },
@@ -1125,7 +1125,7 @@
           },
           {
             "id": "bertie_had_an_epiphany",
-            "text": "Bertie had an epiphany."
+            "text": "Bertie ha tenido una revelación."
           },
           {
             "id": "bertie_perished",
@@ -1133,11 +1133,11 @@
           },
           {
             "id": "bertie_was_lost_in_the_woods",
-            "text": "Bertie was lost in the woods."
+            "text": "Bertie se perdió en el bosque."
           },
           {
             "id": "bertie_was_rescued",
-            "text": "Bertie was rescued."
+            "text": "Bertie fue rescatado."
           },
           {
             "id": "captives_were_saved",
@@ -1181,7 +1181,7 @@
           },
           {
             "id": "helen_shared_a_dance",
-            "text": "Helen shared a dance."
+            "text": "Helen compartió un baile."
           },
           {
             "id": "interrupted_the_feast",
@@ -1205,7 +1205,7 @@
           },
           {
             "id": "lost_the_path",
-            "text": "the investigators lost the path."
+            "text": "los investigadores se extraviaron."
           },
           {
             "id": "madame_pearls_diary_was_recovered",
@@ -1217,7 +1217,7 @@
           },
           {
             "id": "mother_rachel_showed_the_way",
-            "text": "Mother Rachel showed the way."
+            "text": "la madre Rachel mostró el camino."
           },
           {
             "id": "remains_were_partially_recovered",
@@ -1229,7 +1229,7 @@
           },
           {
             "id": "the_bear_was_wounded",
-            "text": "the bear was wounded."
+            "text": "el oso fue herido."
           },
           {
             "id": "the_hemlocks_made_a_truce",
@@ -1299,7 +1299,7 @@
           },
           {
             "id": "gideon_shared_a_dance",
-            "text": "Gideon shared a dance."
+            "text": "Gideon compartió un baile."
           },
           {
             "id": "gideon_stood_by_you",
@@ -1311,7 +1311,7 @@
           },
           {
             "id": "gideon_told_the_tale_of_the_annabelle_lee",
-            "text": "Gideon told the tale of the Annabelle Lee."
+            "text": "Gideon contó el relato del Annabelle Lee."
           }
         ]
       },
@@ -2033,11 +2033,11 @@
         "entries": [
           {
             "id": "judith_saved_your_ass",
-            "text": "Judith saved your ass."
+            "text": "Judith ha salvado el pellejo a los investigadores."
           },
           {
             "id": "judith_shared_a_dance",
-            "text": "Judith shared a dance."
+            "text": "Judith compartió un baile."
           },
           {
             "id": "judith_shared_a_grudge",
@@ -2049,7 +2049,7 @@
           },
           {
             "id": "theo_distracted_the_bear",
-            "text": "Theo Distracted the Bear."
+            "text": "Theo distrajo al oso."
           },
           {
             "id": "you_backed_judith_up",
@@ -2066,7 +2066,7 @@
           },
           {
             "id": "leah_is_searching_for_simeon",
-            "text": "Leah is searching for Simeon."
+            "text": "Leah está buscando a Simeon."
           },
           {
             "id": "leah_saw_something_in_the_mine",
@@ -2074,7 +2074,7 @@
           },
           {
             "id": "leah_shared_a_dance",
-            "text": "Leah shared a dance."
+            "text": "Leah compartió un baile."
           },
           {
             "id": "leah_shared_her_frustrations",
@@ -2095,11 +2095,11 @@
         "entries": [
           {
             "id": "mother_rachel_intervened",
-            "text": "Mother Rachel intervened."
+            "text": "la madre Rachel intervino."
           },
           {
             "id": "mother_rachel_shared_her_doubts",
-            "text": "Mother Rachel shared her doubts."
+            "text": "la madre Rachel compartió sus dudas."
           }
         ]
       },
@@ -2112,7 +2112,7 @@
           },
           {
             "id": "river_shared_a_dance",
-            "text": "River shared a dance."
+            "text": "River compartió un baile."
           },
           {
             "id": "river_stood_by_you",
@@ -2120,7 +2120,7 @@
           },
           {
             "id": "scheme_is_in_motion",
-            "text": "the scheme is in motion."
+            "text": "el plan está en marcha."
           }
         ]
       },
@@ -2129,7 +2129,7 @@
         "entries": [
           {
             "id": "plan_is_underway",
-            "text": "the plan is underway."
+            "text": "el plan está en marcha."
           },
           {
             "id": "plan_is_underway_count",
@@ -2145,7 +2145,7 @@
           },
           {
             "id": "simeon_shared_a_dance",
-            "text": "Simeon shared a dance."
+            "text": "Simeon compartió un baile."
           },
           {
             "id": "simeon_stood_by_you",
@@ -2170,11 +2170,11 @@
           },
           {
             "id": "theo_rejected_his_family",
-            "text": "Theo rejected his family."
+            "text": "Theo rechazó a su familia."
           },
           {
             "id": "theo_shared_a_dance",
-            "text": "Theo shared a dance."
+            "text": "Theo compartió un baile."
           },
           {
             "id": "theo_stood_by_you",
@@ -2191,7 +2191,7 @@
           },
           {
             "id": "william_shared_a_dance",
-            "text": "William shared a dance."
+            "text": "William compartió un baile."
           },
           {
             "id": "william_stood_by_you",
@@ -2199,7 +2199,7 @@
           },
           {
             "id": "william_took_heart",
-            "text": "William took heart."
+            "text": "William se ha animado."
           }
         ]
       }
@@ -7901,7 +7901,7 @@
           },
           {
             "id": "west_has_recovered_the_reagant",
-            "text": "West has recovered the reagant."
+            "text": "West recuperó los reactivos."
           },
           {
             "id": "you_conquered_death",
