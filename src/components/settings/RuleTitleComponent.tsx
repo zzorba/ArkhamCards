@@ -19,25 +19,28 @@ type TitlePiece = {
   icon: string;
 }
 
+const parseTitle = (title: string): TitlePiece[] => {
+  const match = title.match(TITLE_MATCH);
+  if (!match) {
+    return [{ type: 'text', text: title }];
+  }
+  const matches: TitlePiece[] = [];
+  if (match.length > 1 && match[1]) {
+    matches.push({ type: 'text', text: match[1] });
+  }
+  if (match.length > 2 && match[2]) {
+    matches.push({ type: 'icon', icon: match[2].substring(1, match[2].length - 1) });
+  }
+  if (match.length > 3 && match[3]) {
+    const subMatches = parseTitle(match[3]);
+    matches.push(...subMatches);
+  }
+  return matches;
+}
+
 export default function RuleTitleComponent({ title }: Props) {
   const { colors } = useContext(StyleContext);
-  const parsed: TitlePiece[] = useMemo(() => {
-    const match = title.match(TITLE_MATCH);
-    if (!match) {
-      return [{ type: 'text', text: title }];
-    }
-    const matches: TitlePiece[] = [];
-    if (match.length > 1 && match[1]) {
-      matches.push({ type: 'text', text: match[1] });
-    }
-    if (match.length > 2 && match[2]) {
-      matches.push({ type: 'icon', icon: match[2].substring(1, match[2].length - 1) });
-    }
-    if (match.length > 3 && match[3]) {
-      matches.push({ type: 'text', text: match[3] });
-    }
-    return matches;
-  }, [title])
+  const parsed: TitlePiece[] = useMemo(() => parseTitle(title), [title]);
   return (
     <Text numberOfLines={1} adjustsFontSizeToFit ellipsizeMode="tail" style={{
       color: colors.darkText,

@@ -302,7 +302,7 @@
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "badacze przekonali Dyera, aby zgodził się na wyprawę."
+            "text": "badacze przekonali Dyera, aby zgodził się na wyprawę."
           },
           {
             "id": "cookie_has_confronted_his_demons",
@@ -334,11 +334,11 @@
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "dr Kensler dzieli się z wami wynikami swoich badań."
+            "text": "dr Kensler dzieli się z wami wynikami swoich badań."
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "dr Kensler rozumie prawdziwą naturę miazmatu."
+            "text": "dr Kensler rozumie prawdziwą naturę miazmatu."
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
@@ -382,11 +382,11 @@
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "badacze odnaleźli rozwidlone przejście."
+            "text": "badacze odnaleźli rozwidlone przejście."
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "badacze znaleźli górską przełęcz."
+            "text": "badacze znaleźli górską przełęcz."
           },
           {
             "id": "studied_the_mural_carvings",
@@ -442,7 +442,7 @@
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "pieczęć została użyta… ale w zły sposób."
+            "text": "pieczęć została użyta… ale w zły sposób."
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
@@ -1224,6 +1224,10 @@
             "text": "the remains were partially recovered."
           },
           {
+            "id": "river_shared_their_ambitions",
+            "text": "River shared their ambitions."
+          },
+          {
             "id": "survived_the_horrors_in_the_rock",
             "text": "the investigators survived the horrors in the rock."
           },
@@ -1318,10 +1322,6 @@
       {
         "section": "hidden",
         "entries": [
-          {
-            "id": "",
-            "text": "dummy"
-          },
           {
             "id": "always_true",
             "text": "dummy"
@@ -2048,10 +2048,6 @@
             "text": "Judith stood by you."
           },
           {
-            "id": "theo_distracted_the_bear",
-            "text": "Theo Distracted the Bear."
-          },
-          {
             "id": "you_backed_judith_up",
             "text": "you backed Judith up."
           }
@@ -2161,6 +2157,10 @@
         "section": "theo",
         "entries": [
           {
+            "id": "theo_distracted_the_bear",
+            "text": "Theo Distracted the Bear."
+          },
+          {
             "id": "theo_is_having_second_thoughts",
             "text": "Theo is having second thoughts."
           },
@@ -2192,6 +2192,10 @@
           {
             "id": "william_shared_a_dance",
             "text": "William shared a dance."
+          },
+          {
+            "id": "william_shared_his_legacy",
+            "text": "William shared his legacy."
           },
           {
             "id": "william_stood_by_you",
@@ -3607,7 +3611,7 @@
           },
           {
             "id": "fell_into_depths",
-            "text": "badacze spadli w czeluść."
+            "text": "badacze spadli w czeluść."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -3687,7 +3691,7 @@
           },
           {
             "id": "nexus_is_near",
-            "text": "Węzeł jest blisko."
+            "text": "Węzeł jest blisko."
           },
           {
             "id": "paths_known",
@@ -3715,7 +3719,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "relikt zaginął."
+            "text": "relikt zaginął."
           },
           {
             "id": "rescued_alejandro",
@@ -3784,7 +3788,7 @@
           },
           {
             "id": "final_depth",
-            "text": "poziom głębi: #X#"
+            "text": "poziom głębi: #X#"
           },
           {
             "id": "hote_consult_alejandro",
@@ -5377,15 +5381,15 @@
           },
           {
             "id": "dreamers_awoke",
-            "text": "śniący się obudzili."
+            "text": "śniący się obudzili."
           },
           {
             "id": "dreamers_banished_nyarlathotep",
-            "text": "śniący wygnali Nyarlathotepa."
+            "text": "śniący wygnali Nyarlathotepa."
           },
           {
             "id": "dreamers_escaped_nyarlathoteps_grasp",
-            "text": "badacze uciekli z uścisku Nyarlathotepa."
+            "text": "badacze uciekli z uścisku Nyarlathotepa."
           },
           {
             "id": "dreamers_grow_weaker",
@@ -5397,11 +5401,11 @@
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "badacze pozostali na zawsze w Krainach snów."
+            "text": "badacze pozostali na zawsze w Krainach snów."
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "śniący powędrowali pod monastyr."
+            "text": "śniący powędrowali pod monastyr."
           },
           {
             "id": "forced_way_into_temple",
@@ -5409,7 +5413,7 @@
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
-            "text": "rozpoczęła się inwazja Nyarlathotepa."
+            "text": "rozpoczęła się inwazja Nyarlathotepa."
           },
           {
             "id": "parleyed_with_zoogs",
@@ -5709,7 +5713,7 @@
           },
           {
             "id": "fell_into_depths",
-            "text": "badacze spadli w czeluść."
+            "text": "badacze spadli w czeluść."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -5789,7 +5793,7 @@
           },
           {
             "id": "nexus_is_near",
-            "text": "Węzeł jest blisko."
+            "text": "Węzeł jest blisko."
           },
           {
             "id": "paths_known",
@@ -5813,7 +5817,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "relikt zaginął."
+            "text": "relikt zaginął."
           },
           {
             "id": "rescued_alejandro",
@@ -5882,7 +5886,7 @@
           },
           {
             "id": "final_depth",
-            "text": "poziom głębi: #X#"
+            "text": "poziom głębi: #X#"
           },
           {
             "id": "hote_consult_alejandro",

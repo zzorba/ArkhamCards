@@ -1224,6 +1224,10 @@
             "text": "the remains were partially recovered."
           },
           {
+            "id": "river_shared_their_ambitions",
+            "text": "River shared their ambitions."
+          },
+          {
             "id": "survived_the_horrors_in_the_rock",
             "text": "the investigators survived the horrors in the rock."
           },
@@ -1318,10 +1322,6 @@
       {
         "section": "hidden",
         "entries": [
-          {
-            "id": "",
-            "text": "dummy"
-          },
           {
             "id": "always_true",
             "text": "dummy"
@@ -2048,10 +2048,6 @@
             "text": "Judith stood by you."
           },
           {
-            "id": "theo_distracted_the_bear",
-            "text": "Theo Distracted the Bear."
-          },
-          {
             "id": "you_backed_judith_up",
             "text": "you backed Judith up."
           }
@@ -2161,6 +2157,10 @@
         "section": "theo",
         "entries": [
           {
+            "id": "theo_distracted_the_bear",
+            "text": "Theo Distracted the Bear."
+          },
+          {
             "id": "theo_is_having_second_thoughts",
             "text": "Theo is having second thoughts."
           },
@@ -2192,6 +2192,10 @@
           {
             "id": "william_shared_a_dance",
             "text": "William shared a dance."
+          },
+          {
+            "id": "william_shared_his_legacy",
+            "text": "William shared his legacy."
           },
           {
             "id": "william_stood_by_you",
@@ -3711,7 +3715,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "<i>avete ottenuto l’aiuto di un altra spedizione</i>."
+            "text": "avete ottenuto l’aiuto di un altra spedizione."
           },
           {
             "id": "relic_is_missing",
@@ -6442,7 +6446,7 @@
           },
           {
             "id": "amaranth_has_left_the_coterie",
-            "text": "Amaranth has left the Coterie."
+            "text": "Amaranto ha lasciato la Società Rossa."
           },
           {
             "id": "cell_aided_in_flints_investigation",
@@ -6478,7 +6482,7 @@
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
-            "text": "the cell hid the truth from Taylor."
+            "text": "la cellula ha nascosto la verità a Taylor."
           },
           {
             "id": "cell_is_assisting_agent_sirry",
@@ -6554,15 +6558,15 @@
           },
           {
             "id": "cell_told_the_truth_to_taylor",
-            "text": "the cell told the truth to Taylor."
+            "text": "la cellula ha detto la verità a Taylor."
           },
           {
             "id": "cell_was_dismantled",
-            "text": "the cell was dismantled."
+            "text": "la cellula è stata smantellata."
           },
           {
             "id": "cell_was_given_a_permanent_position",
-            "text": "the cell was given a permanent position."
+            "text": "la cellula ha ottenuto un’occupazione a tempo indeterminato."
           },
           {
             "id": "cell_was_hollowed",
@@ -6574,7 +6578,7 @@
           },
           {
             "id": "deception",
-            "text": "Cell Deception: #X#"
+            "text": "Inganno della Cellula: #X#"
           },
           {
             "id": "desi_is_in_your_debt",
@@ -6638,7 +6642,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
-            "text": "you haven't seen the last of Amaranth."
+            "text": "sentirete ancora parlare di Amaranto."
           },
           {
             "id": "have_not_seen_the_last_of_desi",
@@ -6658,7 +6662,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
-            "text": "you haven’t seen the last of the Red-Gloved Man."
+            "text": "sentirete ancora parlare dell’Uomo dai Guanti Rossi."
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
@@ -6678,7 +6682,7 @@
           },
           {
             "id": "lovers_are_reunited",
-            "text": "the lovers are reunited."
+            "text": "gli amanti sono di nuovo insieme."
           },
           {
             "id": "nothing_of_note_in_anchorage",
@@ -6706,7 +6710,7 @@
           },
           {
             "id": "trust",
-            "text": "Foundation Trust: #X#"
+            "text": "Fiducia della Fondazione: #X#"
           },
           {
             "id": "tuwile_masai_fled_to_bermuda",
@@ -6730,7 +6734,7 @@
           },
           {
             "id": "work_together",
-            "text": "the Red Coterie and The Foundation agreed to work together."
+            "text": "la Società Rossa e la Fondazione hanno accettato di collaborare."
           },
           {
             "id": "wrong_leads",

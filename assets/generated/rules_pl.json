@@ -153,7 +153,7 @@
       {
         "id": "Revelation_Ability_Priority",
         "title": "Priorytet w rozstrzyganiu zdolności odkrycia",
-        "text": "Jeśli badacz ma na ręce zarówno kartę z cechą [[Dylemat]], jak i kartę osłabienia i/lub spotkania, należy najpierw rozpatrzeć tą kartę słabości i/lub spotkania."
+        "text": "Jeśli badacz ma na ręce zarówno kartę z cechą [[Dylemat]], jak i kartę osłabienia i/lub spotkania, należy najpierw rozpatrzeć tą kartę słabości i/lub spotkania. Jeśli podczas rozpatrywania testu umiejętności zostanie wylosowana karta z cechą [[Dylemat]], należy wykonać cały test umiejętności przed rozpatrzeniem efektu <b>odkrycia</b> karty z cechą [[Dylemat]]."
       }
     ]
   },
@@ -302,6 +302,11 @@
     "id": "Control",
     "title": "Kontrola",
     "text": "Patrz „[Własność i kontrola](#Ownership_and_Control)”."
+  },
+  {
+    "id": "Controlling and Attaching Permanent Cards",
+    "title": "Kontrola i dołączanie kart ze słowem kluczowym trwała",
+    "text": "Karta ze słowem kluczowym trwała nie może opuścić obszaru gry swojego posiadacza, chyba że wymagają tego efekty kart scenariusza. Kart ze słowem kluczowym trwała nie można dołączać do innych kart znajdujących się na obszarze gry badacza. Badacze nie mogą przejąć kontroli nad kartami innego badacza z cechą trwała.\n<i>Na przykład: badacz nie może dołączyć Pożeracza Grzechów do Elle Rubash, nawet jeśli Pożeracz Grzechów ma na sobie jeden lub więcej żetonów zagłady.</i>"
   },
   {
     "id": "Copy",
@@ -692,7 +697,7 @@
       {
         "id": "Shifting_Slots",
         "title": "Zamiana strefy",
-        "text": "Niektóre efekty kart pozwalają badaczowi na umieszczenie atutów zajmujących jeden typ strefy w inną strefę, pozwalają jednemu z rodzajów stref badacza na przechowywanie atutów zajmujących inną strefę lub powodują, że atuty nie zajmują już żadnej strefy. W takim przypadku badacz musi zdecydować, w której strefie znajduje się dany atut w momencie jego zagrania. Nie może to zostać zmienione później, chyba że zmieni się zawartość lub liczba stref badacza, w którym to momencie badacz może zmienić strefy, w których znajdują się jego atuty."
+        "text": "Niektóre efekty kart pozwalają badaczowi na umieszczenie atutów zajmujących jeden typ strefy w inną strefę, pozwalają jednemu z rodzajów stref badacza na przechowywanie atutów zajmujących inną strefę lub powodują, że atuty nie zajmują już żadnej strefy. W takim przypadku badacz musi zdecydować, w której strefie znajduje się dany atut w momencie jego zagrania. Nie może to zostać zmienione później, chyba że zmieni się zawartość lub liczba stref badacza, w którym to momencie badacz może zmienić strefy, w których znajdują się jego atuty.\n<i>Na przykład: Kōhaku ma w grze Okultystyczny Relikwiarz, kiedy zagrywa Błogosławione Ostrze. Decyduje, aby Okultystyczny Relikwiarz dodał mu strefę ręki do trzymania Błogosławionego Ostrza. Jeśli później zagra inną Błogosławioną kartę, np. Święte Lustro, może zdecydować, że nowa karta zajmie dodatkową strefę i określić typ tej strefy, podczas gdy przesunie Błogosławione Ostrze na swoją domyślną strefę ręki.</i>"
       }
     ]
   },
@@ -880,6 +885,11 @@
     "id": "Clues",
     "title": "Wskazówki",
     "text": "Wskazówki reprezentują postęp spowodowany przez badaczy podczas rozwiązywania zagadki, odkrywania spisku i/lub powodowania postępu scenariusza.\n- Kiedy badacz po raz pierwszy porusza się do danej lokalizacji, należy odwrócić tę lokalizację na stronę odkrytą i umieścić na niej żetony wskazówek w liczbie równej wartości wskazówek (żetony należy pobrać z puli żetonów). Większość wartości wskazówek określona jest jako wartość „na badacza ([per_investigator]])”. Może to nastąpić także podczas przygotowania.\n- Wskazówka znajdująca się w danej lokalizacji może zostać odkryta poprzez udane (zakończone sukcesem) badanie danej lokalizacji (parz „[Badanie (akcja)](#Investigate_Action)”) lub poprzez zdolność karty. Jeśli badacz odkryje wskazówkę, bierze żeton wskazówki z danej lokalizacji i umieszcza go na karcie swojego badacza, pod swoją kontrolą.\n- Jeśli na karcie obecnego aktu nie ma wymogów postępu w postaci „<b>Cel</b> –”, wówczas badacze mogą, jako grupa, podczas tury dowolnego badacza wydać wymaganą liczbę wskazówek (na ogół wyrażoną w postaci „na badacza”) pochodzących z ich kart badaczy, aby spowodować postęp talii aktów. Na ogół wykonywane jest to jako zdolność [free]. Każdy z badaczy może zapewnić dowolną liczbę wskazówek na potrzeby całkowitej wymaganej liczby wskazówek niezbędnych do spowodowania postępu aktu.\n- Zdolność karty odnoszącej się do wskazówek „w lokalizacji” odnosi się do nieodkrytych wskazówek znajdujących się obecnie na danej lokalizacji.\nPatrz także: „[Akty (talia) i Tajemnice (talia)](#Act_Deck_and_Agenda_Deck)”, „[Limit żetonów](#Tokens)”."
+  },
+  {
+    "id": "Clues_on_Player_Cards",
+    "title": "Wskazówki na kartach gracza",
+    "text": "Niektóre efekty kart, takie jak zdolność Kate Winthrop, mogą umieszczać wskazówki na karcie kontrolowanej przez badacza. Wskazówki umieszczone na karcie gracza są nadal kontrolowane przez tego gracza i mogą być wydawane w normalny sposób. Jeśli jakiś efekt gry miałby spowodować, że karta ze wskazówkami opuści grę lub opuści obszar kontrolowany przez badacza, umieść każdą wskazówkę z tej karty na jej lokalizacji."
   },
   {
     "id": "Choices_and_the_Grim_Rule",

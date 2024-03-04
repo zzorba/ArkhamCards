@@ -1090,7 +1090,7 @@
           },
           {
             "id": "southern_fields",
-            "text": "Souther Fields"
+            "text": "Campos del sur"
           },
           {
             "id": "western_woods",
@@ -1109,19 +1109,19 @@
           },
           {
             "id": "all_the_captives_were_lost",
-            "text": "all the captives were lost."
+            "text": "todos los cautivos murieron."
           },
           {
             "id": "barely_survived",
-            "text": "investigators barely survived the Feast of Hemlock Vale."
+            "text": "los investigadores apenas sobrevivieron a la fiesta del Valle de la Cicuta."
           },
           {
             "id": "became_the_true_feast_of_hemlock_vale",
-            "text": "the investigators became the true Feast of Hemlock Vale."
+            "text": "los investigadores se convirtieron en la verdadera fiesta del Valle de la Cicuta."
           },
           {
             "id": "believed",
-            "text": "the investigators believed."
+            "text": "los investigadores creyeron."
           },
           {
             "id": "bertie_had_an_epiphany",
@@ -1129,7 +1129,7 @@
           },
           {
             "id": "bertie_perished",
-            "text": "Bertie perished."
+            "text": "Bertie falleció."
           },
           {
             "id": "bertie_was_lost_in_the_woods",
@@ -1141,7 +1141,7 @@
           },
           {
             "id": "captives_were_saved",
-            "text": "the captives were saved."
+            "text": "los cautivos se salvaron."
           },
           {
             "id": "chelydran_hybrid_devoured",
@@ -1157,15 +1157,15 @@
           },
           {
             "id": "dr_marquez_has_a_hunch",
-            "text": "Dr. Marquez has a hunch."
+            "text": "la Dra. Marquez tiene una corazonada."
           },
           {
             "id": "dr_marquez_has_a_plan",
-            "text": "Dr. Marquez has a plan."
+            "text": "la Dra. Marquez tiene un plan."
           },
           {
             "id": "dr_marquez_sacrificed_herself_for_the_vale",
-            "text": "Dr. Marquez sacrificed herself for the Vale."
+            "text": "la Dra. Marquez se sacrificó por el Valle."
           },
           {
             "id": "elizabeth_peters_was_saved",
@@ -1173,7 +1173,7 @@
           },
           {
             "id": "faced_the_night_alone",
-            "text": "the investigators faced the longest night alone."
+            "text": "los investigadores afrontaron solos la noche más larga."
           },
           {
             "id": "helen_peters_joined_the_survey",
@@ -1185,11 +1185,11 @@
           },
           {
             "id": "interrupted_the_feast",
-            "text": "the investigators interrupted the Feast."
+            "text": "los investigadores interrumpieron la fiesta."
           },
           {
             "id": "investigators_sacrificed_themselves_for_the_vale",
-            "text": "the investigators sacrificed themselves for the Vale."
+            "text": "los investigadores se sacrificaron por el Valle."
           },
           {
             "id": "laid_the_pearl_family_to_rest",
@@ -1197,11 +1197,11 @@
           },
           {
             "id": "learned_their_place",
-            "text": "the investigators learned their place."
+            "text": "los investigadores descubrieron su sitio."
           },
           {
             "id": "lied_to_mother_rachel",
-            "text": "the investigators lied to Mother Rachel."
+            "text": "los investigadores mintieron a la madre Rachel."
           },
           {
             "id": "lost_the_path",
@@ -1213,7 +1213,7 @@
           },
           {
             "id": "many_captives_were_lost",
-            "text": "many captives were lost."
+            "text": "muchos cautivos murieron."
           },
           {
             "id": "mother_rachel_showed_the_way",
@@ -1222,6 +1222,10 @@
           {
             "id": "remains_were_partially_recovered",
             "text": "los investigadores recuperaron los restos parcialmente."
+          },
+          {
+            "id": "river_shared_their_ambitions",
+            "text": "River compartió sus ambiciones."
           },
           {
             "id": "survived_the_horrors_in_the_rock",
@@ -1233,7 +1237,7 @@
           },
           {
             "id": "the_hemlocks_made_a_truce",
-            "text": "the Hemlocks made a truce."
+            "text": "los Cicuta acordaron una tregua."
           },
           {
             "id": "the_peters_family_was_reunited",
@@ -1241,15 +1245,15 @@
           },
           {
             "id": "the_vale_burned",
-            "text": "the Vale burned."
+            "text": "el Valle ardió."
           },
           {
             "id": "the_vale_is_full_of_fireworks",
-            "text": "The Vale is full of fireworks."
+            "text": "El Valle está lleno de fuegos artificiales."
           },
           {
             "id": "the_vale_was_saved",
-            "text": "the Vale was saved."
+            "text": "el Valle se salvó."
           },
           {
             "id": "thing_in_the_depths_was_defeated",
@@ -1291,7 +1295,7 @@
         "entries": [
           {
             "id": "gideon_finished_the_tale_of_the_annabelle_lee",
-            "text": "Gideon finished the tale of the Annabelle Lee."
+            "text": "Gideon terminó el relato del Annabelle Lee."
           },
           {
             "id": "gideon_found_his_treasure",
@@ -1303,7 +1307,7 @@
           },
           {
             "id": "gideon_stood_by_you",
-            "text": "Gideon stood by you."
+            "text": "Gideon apoyó a los investigadores."
           },
           {
             "id": "gideon_told_the_story_of_captain_hemlock",
@@ -1318,10 +1322,6 @@
       {
         "section": "hidden",
         "entries": [
-          {
-            "id": "",
-            "text": "dummy"
-          },
           {
             "id": "always_true",
             "text": "dummy"
@@ -2045,15 +2045,11 @@
           },
           {
             "id": "judith_stood_by_you",
-            "text": "Judith stood by you."
-          },
-          {
-            "id": "theo_distracted_the_bear",
-            "text": "Theo distrajo al oso."
+            "text": "Judith apoyó a los investigadores."
           },
           {
             "id": "you_backed_judith_up",
-            "text": "you backed Judith up."
+            "text": "los investigadores respaldaron a Judith."
           }
         ]
       },
@@ -2082,7 +2078,7 @@
           },
           {
             "id": "leah_stood_by_you",
-            "text": "Leah stood by you."
+            "text": "Leah apoyó a los investigadores."
           },
           {
             "id": "searched_the_pearl_ruins",
@@ -2108,7 +2104,7 @@
         "entries": [
           {
             "id": "river_is_reclaiming_their_legacy",
-            "text": "River is reclaiming their legacy."
+            "text": "River va a reclamar su legado."
           },
           {
             "id": "river_shared_a_dance",
@@ -2116,7 +2112,7 @@
           },
           {
             "id": "river_stood_by_you",
-            "text": "River stood by you."
+            "text": "River apoyó a los investigadores."
           },
           {
             "id": "scheme_is_in_motion",
@@ -2133,7 +2129,7 @@
           },
           {
             "id": "plan_is_underway_count",
-            "text": "the plan is underway: #X#"
+            "text": "el plan está en marcha: #X#"
           },
           {
             "id": "simeon_disappeared",
@@ -2149,7 +2145,7 @@
           },
           {
             "id": "simeon_stood_by_you",
-            "text": "Simeon stood by you."
+            "text": "Simeon apoyó a los investigadores."
           },
           {
             "id": "simeon_survived",
@@ -2161,8 +2157,12 @@
         "section": "theo",
         "entries": [
           {
+            "id": "theo_distracted_the_bear",
+            "text": "Theo distrajo al oso."
+          },
+          {
             "id": "theo_is_having_second_thoughts",
-            "text": "Theo is having second thoughts."
+            "text": "Theo está teniendo dudas."
           },
           {
             "id": "theo_reconciled_with_helen",
@@ -2178,7 +2178,7 @@
           },
           {
             "id": "theo_stood_by_you",
-            "text": "Theo stood by you."
+            "text": "Theo apoyó a los investigadores."
           }
         ]
       },
@@ -2187,15 +2187,19 @@
         "entries": [
           {
             "id": "william_is_resolved",
-            "text": "William is resolved."
+            "text": "William se ha decidido."
           },
           {
             "id": "william_shared_a_dance",
             "text": "William compartió un baile."
           },
           {
+            "id": "william_shared_his_legacy",
+            "text": "William compartió su legado."
+          },
+          {
             "id": "william_stood_by_you",
-            "text": "William stood by you."
+            "text": "William apoyó a los investigadores."
           },
           {
             "id": "william_took_heart",

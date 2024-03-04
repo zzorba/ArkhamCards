@@ -1224,6 +1224,10 @@
             "text": "the remains were partially recovered."
           },
           {
+            "id": "river_shared_their_ambitions",
+            "text": "River shared their ambitions."
+          },
+          {
             "id": "survived_the_horrors_in_the_rock",
             "text": "the investigators survived the horrors in the rock."
           },
@@ -1318,10 +1322,6 @@
       {
         "section": "hidden",
         "entries": [
-          {
-            "id": "",
-            "text": "dummy"
-          },
           {
             "id": "always_true",
             "text": "dummy"
@@ -2048,10 +2048,6 @@
             "text": "Judith stood by you."
           },
           {
-            "id": "theo_distracted_the_bear",
-            "text": "Theo Distracted the Bear."
-          },
-          {
             "id": "you_backed_judith_up",
             "text": "you backed Judith up."
           }
@@ -2161,6 +2157,10 @@
         "section": "theo",
         "entries": [
           {
+            "id": "theo_distracted_the_bear",
+            "text": "Theo Distracted the Bear."
+          },
+          {
             "id": "theo_is_having_second_thoughts",
             "text": "Theo is having second thoughts."
           },
@@ -2192,6 +2192,10 @@
           {
             "id": "william_shared_a_dance",
             "text": "William shared a dance."
+          },
+          {
+            "id": "william_shared_his_legacy",
+            "text": "William shared his legacy."
           },
           {
             "id": "william_stood_by_you",
