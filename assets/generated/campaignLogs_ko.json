@@ -2048,10 +2048,6 @@
             "text": "Judith stood by you."
           },
           {
-            "id": "theo_distracted_the_bear",
-            "text": "Theo Distracted the Bear."
-          },
-          {
             "id": "you_backed_judith_up",
             "text": "you backed Judith up."
           }
@@ -2160,6 +2156,10 @@
       {
         "section": "theo",
         "entries": [
+          {
+            "id": "theo_distracted_the_bear",
+            "text": "Theo Distracted the Bear."
+          },
           {
             "id": "theo_is_having_second_thoughts",
             "text": "Theo is having second thoughts."
