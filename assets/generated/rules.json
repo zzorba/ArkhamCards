@@ -313,8 +313,8 @@
     "text": "See \"[Ownership and Control](#Ownership_and_Control)\"."
   },
   {
-    "id": "Controlling and Attaching Permanent Cards",
-    "title": "Control",
+    "id": "Controlling_and_Attaching_Permanent_Cards",
+    "title": "Controlling and Attaching Permanent Cards",
     "text": "A card with the permanent keyword cannot leave its controller’s play area unless directed by scenario card effects. Cards with the permanent keyword cannot be attached to other cards in an investigator’s play area. Investigators cannot take control of another investigator’s permanent cards.\n<i>For example: an investigator cannot attach Sin-Eater to Elle Rubash even if Sin-Eater has one or more doom on it."
   },
   {

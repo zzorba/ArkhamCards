@@ -7,7 +7,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Ghoul]] enemies at your location.",
+          "prompt": "Numero di [[Ghoul]] nemici nel tuo luogo.",
           "min": 0
         }
       },
@@ -54,7 +54,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy in play.",
+          "prompt": "Numero più alto di destini su un [[Cultist]] nemico in gioco.",
           "min": 0
         }
       },
@@ -170,7 +170,7 @@
           },
           "options": [
             {
-              "prompt": "10 o più carte nella tua pila degli scarti.",
+              "prompt": "10 o più carte nella tua pila degli scarti",
               "modified_value": {
                 "modifier": -3
               }
@@ -182,7 +182,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "prompt": "Costo totale stampato delle prime 2 carte scartate dal tuo mazzo.",
           "min": 0
         }
       }
@@ -203,7 +203,7 @@
           },
           "options": [
             {
-              "prompt": "10 o più carte nella tua pila degli scarti.",
+              "prompt": "10 o più carte nella tua pila degli scarti",
               "modified_value": {
                 "modifier": -5
               }
@@ -215,7 +215,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "prompt": "Costo totale stampato delle prime 3 carte scartate dal tuo mazzo.",
           "min": 0
         }
       }
@@ -300,7 +300,7 @@
           },
           "options": [
             {
-              "prompt": "Hunting Horror is at your location",
+              "prompt": "L’Orrido Persecutore è nel tuo luogo",
               "modified_value": {
                 "modifier": -3
               }
@@ -337,7 +337,7 @@
           },
           "options": [
             {
-              "prompt": "Hunting Horror is at your location",
+              "prompt": "L’Orrido Persecutore è nel tuo luogo",
               "modified_value": {
                 "modifier": -4
               }
@@ -373,7 +373,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current agenda number",
+          "prompt": "Trama attuale",
           "min": 1
         }
       },
@@ -401,7 +401,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current agenda number",
+          "prompt": "Trama attuale",
           "min": 1,
           "adjustment": 1
         }
@@ -435,7 +435,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "Numero di luoghi in gioco senza carte incontro sotto",
           "min": 0,
           "max": 4
         }
@@ -464,7 +464,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play with no encounter card underneath",
+          "prompt": "Numero di luoghi in gioco senza carte incontro sotto",
           "min": 0
         }
       },
@@ -496,7 +496,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Brood of Yog-Sothoth in play",
+          "prompt": "Numero di Progenie di Yog-Sothoth in gioco",
           "min": 0
         }
       },
@@ -516,7 +516,7 @@
           },
           "options": [
             {
-              "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+              "prompt": "Rimuovete tutti gli indizi dalle Progenie di Yog-Sothoth in gioco",
               "modified_value": {
                 "modifier": 0
               }
@@ -536,7 +536,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Brood of Yog-Sothoth in play",
+          "prompt": "Numero di Progenie di Yog-Sothoth in gioco",
           "min": 0,
           "scale": 2
         }
@@ -557,7 +557,7 @@
           },
           "options": [
             {
-              "prompt": "Remove all clue tokens from a Brood of Yog-Sothoth in play",
+              "prompt": "Rimuovete tutti gli indizi dalle Progenie di Yog-Sothoth in gioco",
               "modified_value": {
                 "modifier": 0
               }
@@ -586,7 +586,7 @@
           },
           "options": [
             {
-              "prompt": "At an [[Altered]] location",
+              "prompt": "A un luogo [[Altered]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -610,7 +610,7 @@
           },
           "options": [
             {
-              "prompt": "Agenda 2 is in play",
+              "prompt": "Trama 2 in gioco",
               "modified_value": {
                 "modifier": -4
               }
@@ -622,7 +622,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 2 cards discarded from your deck.",
+          "prompt": "Costo totale stampato delle prime 2 carte scartate dal tuo mazzo.",
           "min": 0
         }
       }
@@ -637,7 +637,7 @@
           },
           "options": [
             {
-              "prompt": "At an [[Altered]] location",
+              "prompt": "A un luogo [[Altered]]",
               "modified_value": {
                 "modifier": -5
               }
@@ -661,7 +661,7 @@
           },
           "options": [
             {
-              "prompt": "Agenda 2 is in play",
+              "prompt": "Trama 2 in gioco",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -673,7 +673,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Total printed cost of the top 3 cards discarded from your deck.",
+          "prompt": "Costo totale stampato delle prime 3 carte scartate dal tuo mazzo.",
           "min": 0
         }
       }
@@ -687,7 +687,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Extradimensional]] locations in play",
+          "prompt": "Numero di luoghi [[Extradimensional]] in gioco",
           "min": 0,
           "max": 5
         }
@@ -719,7 +719,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Extradimensional]] locations in play",
+          "prompt": "Numero di luoghi [[Extradimensional]] in gioco",
           "min": 0
         }
       },
@@ -792,7 +792,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you (min 1)",
+          "prompt": "Totale degli orrori su di te (min 1)",
           "min": 1
         }
       },
@@ -886,7 +886,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on an enemy in play",
+          "prompt": "Numero più alto di destini su un nemico in gioco",
           "min": 0
         }
       },
@@ -914,7 +914,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom on enemies in play",
+          "prompt": "Numero totale di destini sui nemici in gioco",
           "min": 0
         }
       },
@@ -952,7 +952,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of horror on you",
+          "prompt": "Orrori su di te (min 1)",
           "min": 0
         }
       },
@@ -960,7 +960,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Base shroud value of your location",
+          "prompt": "Valore base di Oscurità del tuo luogo",
           "min": 0
         }
       },
@@ -973,7 +973,7 @@
           },
           "options": [
             {
-              "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+              "prompt": "Scegli casualmente un nemico tra i [[Monster]] messi da parte e posizionalo sotto al Capitolo",
               "modified_value": {
                 "modifier": 0
               }
@@ -994,7 +994,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of horror on you",
+          "prompt": "Orrori su di te (min 1)",
           "min": 0
         }
       },
@@ -1002,7 +1002,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Base shroud value of your location",
+          "prompt": "Valore base di Oscurità del tuo luogo",
           "min": 0
         }
       },
@@ -1015,7 +1015,7 @@
           },
           "options": [
             {
-              "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+              "prompt": "Scegli casualmente un nemico tra i [[Monster]] messi da parte e posizionalo sotto al Capitolo",
               "modified_value": {
                 "modifier": 0
               }
@@ -1033,7 +1033,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "La quantità di destini in gioco",
           "min": 0,
           "max": 5
         }
@@ -1063,7 +1063,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "La quantità di destini in gioco",
           "min": 0
         }
       },
@@ -1198,7 +1198,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on agendas in play",
+          "prompt": "Numero totale di destini sulle Trame in gioco",
           "min": 0
         }
       },
@@ -1212,7 +1212,7 @@
           },
           "options": [
             {
-              "prompt": "An enemy with 1 or more doom on it at your location",
+              "prompt": "Un nemico con 1 o più destini nella tuo luogo",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -1248,7 +1248,7 @@
           },
           "options": [
             {
-              "prompt": "No remaining sanity left",
+              "prompt": "Non è rimasta più alcuna sanità mentale",
               "modified_value": {
                 "modifier": -4
               }
@@ -1281,7 +1281,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you",
+          "prompt": "Orrori su di te",
           "min": 0
         }
       },
@@ -1322,7 +1322,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "Numero di luoghi in gioco",
           "min": 1,
           "max": 5
         }
@@ -1331,7 +1331,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the exploration deck",
+          "prompt": "Numero di carte del mazzo esplorazione",
           "min": 0,
           "max": 5
         }
@@ -1345,7 +1345,7 @@
           },
           "options": [
             {
-              "prompt": "You are poisoned",
+              "prompt": "Sei avvelenato",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -1368,7 +1368,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "Numero di luoghi in gioco",
           "min": 1
         }
       },
@@ -1376,7 +1376,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the exploration deck",
+          "prompt": "Numero di carte del mazzo esplorazione",
           "min": 3
         }
       },
@@ -1389,7 +1389,7 @@
           },
           "options": [
             {
-              "prompt": "You are poisoned",
+              "prompt": "Sei avvelenato",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -1412,7 +1412,7 @@
           },
           "options": [
             {
-              "prompt": "Doom on your location",
+              "prompt": "Destini nel tuo luogo",
               "modified_value": {
                 "modifier": -3
               }
@@ -1424,7 +1424,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "Numero di luoghi con destini",
           "min": 0
         }
       },
@@ -1432,7 +1432,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "Numero di luoghi con destini",
           "min": 0
         }
       },
@@ -1454,7 +1454,7 @@
           },
           "options": [
             {
-              "prompt": "Doom on your location",
+              "prompt": "Destini nel tuo luogo",
               "modified_value": {
                 "modifier": -4
               }
@@ -1466,7 +1466,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations in play",
+          "prompt": "Quantità totale di destini sui luoghi in gioco",
           "min": 0
         }
       },
@@ -1474,7 +1474,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Total amount of doom on locations in play",
+          "prompt": "Quantità totale di destini sui luoghi in gioco",
           "min": 0
         }
       },
@@ -1495,7 +1495,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy",
+          "prompt": "Numero più alto di destini su un [[Cultist]] nemico",
           "min": 0
         }
       },
@@ -1523,7 +1523,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of doom in play",
+          "prompt": "Numero di destini totali in gioco",
           "min": 0
         }
       },
@@ -1560,7 +1560,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Antico]]",
+              "prompt": "A un luogo [[Ancient]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -1599,7 +1599,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Antico]]",
+              "prompt": "A un luogo [[Ancient]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -1642,7 +1642,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Caverna]]",
+              "prompt": "A un luogo [[Cave]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -1679,7 +1679,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Caverna]]",
+              "prompt": "A un luogo [[Cave]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -1884,7 +1884,7 @@
           },
           "options": [
             {
-              "prompt": "Relic of Ages is at your location",
+              "prompt": "Reliquia delle Ere nel tuo luogo",
               "modified_value": {
                 "modifier": -4
               }
@@ -1921,7 +1921,7 @@
           },
           "options": [
             {
-              "prompt": "Relic of Ages is at your location",
+              "prompt": "Reliquia delle Ere nel tuo luogo",
               "modified_value": {
                 "modifier": -5
               }
@@ -1957,7 +1957,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with doom on them",
+          "prompt": "Numero di luoghi con destini",
           "min": 0
         }
       },
@@ -2062,7 +2062,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is haunted",
+              "prompt": "Il tuo luogo è infestato",
               "modified_value": {
                 "modifier": -3
               }
@@ -2093,7 +2093,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is haunted",
+              "prompt": "Il tuo luogo è infestato",
               "modified_value": {
                 "modifier": -4
               }
@@ -2128,7 +2128,7 @@
           },
           "options": [
             {
-              "prompt": "You are at an [[Extradimensional]] location",
+              "prompt": "Ti trovi in un luogo [[Extradimensional]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -2166,7 +2166,7 @@
           },
           "options": [
             {
-              "prompt": "You are at an [[Extradimensional]] location",
+              "prompt": "Ti trovi in un luogo [[Extradimensional]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -6824,7 +6824,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you",
+          "prompt": "Orrori su di te",
           "min": 0,
           "max": 3
         }
@@ -6870,7 +6870,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of horror on you",
+          "prompt": "Orrori su di te",
           "min": 0,
           "max": 4
         }
@@ -8035,7 +8035,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom in play",
+          "prompt": "La quantità di destini in gioco",
           "min": 0
         }
       },
@@ -9011,7 +9011,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations in play",
+          "prompt": "Numero di luoghi in gioco",
           "min": 0
         }
       },
