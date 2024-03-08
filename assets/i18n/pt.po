@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2024-02-27 00:49-0300\n"
+"PO-Revision-Date: 2024-03-08 01:45-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -933,9 +933,8 @@ msgstr "Negociata"
 msgid "Prey"
 msgstr "Presa"
 
-#, fuzzy
 msgid "Swarm"
-msgstr "Enxame"
+msgstr "Swarm"
 
 msgid "Location Filters"
 msgstr "Filtros de Localização"
@@ -1035,7 +1034,7 @@ msgid "Boost"
 msgstr "Impulsionar"
 
 msgid "Assets: All"
-msgstr "Ativo: Todas"
+msgstr "Ativo: Todos"
 
 #, javascript-format
 msgid "Assets: ${ searchParts }"
@@ -1045,7 +1044,7 @@ msgid "Fixed Clues"
 msgstr "Pistas Fixas"
 
 msgid "Locations: All"
-msgstr "Local: Todas"
+msgstr "Local: Todos"
 
 #, javascript-format
 msgid "Locations: ${ searchParts }"
@@ -1096,7 +1095,6 @@ msgstr "Rápido"
 msgid "Unique"
 msgstr "Único"
 
-#, fuzzy
 msgid "Seal"
 msgstr "Selo"
 
@@ -1113,13 +1111,11 @@ msgstr "Exile"
 msgid "Permanent"
 msgstr "Permanente"
 
-#, fuzzy
 msgid "Myriad"
-msgstr "Miríade"
+msgstr "Myriad"
 
-#, fuzzy
 msgid "Bonded"
-msgstr "Ligado"
+msgstr "Bonded"
 
 msgid "Encounter Sets"
 msgstr "Conjuntos de Encontro"
@@ -1236,9 +1232,8 @@ msgstr "Salvando…"
 msgid "Experience points"
 msgstr "Pontos de experiência"
 
-#, fuzzy
 msgid "Exiled cards"
-msgstr "Cartas banidas"
+msgstr "Cartas exiladas"
 
 msgid "Upgrading your deck allows changes and experience to be tracked over the course of a campaign."
 msgstr "Atualizar seu baralho permite que as mudanças e a experiência sejam rastreadas ao longo de uma campanha."
@@ -3760,66 +3755,66 @@ msgid "Welcome"
 msgstr "Bem vindo(a)"
 
 msgid "Download print and play cards"
-msgstr "Download de cartas de imprimir e jogar"
+msgstr "Download de cartas para imprimir e jogar"
 
 #, javascript-format
 msgid "${ section.title } (from XP)"
 msgstr "${ section.title } (de XP)"
 
 msgid "Exiled story cards"
-msgstr "Cartas de história exiladas"
+msgstr "Exiled story cards"
 
 msgid "Exile story cards"
-msgstr "Exile Cartas de história"
+msgstr "Exile story cards"
 
 #, javascript-format
 msgid "Fan-made scenario by ${ custom.creator }"
 msgstr "Cenário feito por fãs por ${ custom.creator }"
 
 msgid "If you are a custom content creator who has a \"finished\" campaign you'd like to see in the app, contact me at arkhamcards@gmail.com. Custom campaigns are a fair amount of work, but I'd love to support the community in anyway I can."
-msgstr "Se você é um criador de conteúdo personalizado que tem uma campanha \"concluída\" que você gostaria de ver no aplicativo, entre em contato comigo em arkhamcards@gmail.com. Campanhaspersonalizadas geram uma quantidade razoável de trabalho, mas eu adoraria apoiar a comunidadede qualquer forma que eu posso."
+msgstr "Se você é um criador de conteúdo personalizado e tem uma campanha \"concluída\" que gostaria de ver no aplicativo, entre em contato comigo em arkhamcards@gmail.com. Campanhas personalizadas dão muito trabalho, mas adoraria apoiar a comunidade de todas as maneiras que puder."
 
 msgid "Alice in Wonderland"
-msgstr "Alice no Pais das Maravilhas"
+msgstr "Alice in Wonderland"
 
 msgid "Wonderland Boons"
-msgstr "Benefícios do País das Maravilhas"
+msgstr "Wonderland Boons"
 
 msgid "Wonderland Banes"
-msgstr ""
+msgstr "Wonderland Banes"
 
 msgid "Strength of Wonderland"
-msgstr ""
+msgstr "Strength of Wonderland"
 
 msgid "Edge of the Earth"
-msgstr "Nos Confins da Terra"
+msgstr "Limiar da Terra"
 
 msgid "You cannot have more than 5 cards that are not Guardian or Neutral"
-msgstr "Você não pode ter mais de 5 cards que não sejam Guardiões ou Neutros"
+msgstr "Você não pode ter mais de 5 cartas que não sejam Guardião ou Neutro"
 
 msgid "You cannot have more than 5 cards that are not Seeker or Neutral"
-msgstr "Você não pode ter mais de 5 cartas que não sejam Buscadoras ou Neutras"
+msgstr "Você não pode ter mais de 5 cartas que não sejam Buscador ou Neutro"
 
 msgid "You cannot have more than 5 cards that are not Rogue or Neutral"
 msgstr "Você não pode ter mais de 5 cartas que não sejam de Ladino ou Neutro"
 
 msgid "You cannot have more than 5 cards that are not Mystic or Neutral"
-msgstr "Você não pode ter mais de 5 cartas que não sejam Místicas ou Neutras"
+msgstr "Você não pode ter mais de 5 cartas que não sejam Místico ou Neutro"
 
 msgid "You cannot have more than 5 cards that are not Survivor or Neutral"
-msgstr "Você não pode ter mais de 5 cartas que não sejam Sobreviventes ou Neutras"
+msgstr "Você não pode ter mais de 5 cartas que não sejam Sobrevivente ou Neutro"
 
 msgid "You must have at least 7 cards from 3 different factions"
 msgstr "Você deve ter pelo menos 7 cartas de 3 facções diferentes"
 
 msgid "You cannot have more than 15 level 0-1 Seeker and/or Mystic cards"
-msgstr "Você não pode ter mais de 15 cartas de Buscador e/ou Mística de nível 0-1"
+msgstr "Você não pode ter mais de 15 cartas de Buscador e/ou Místico de nível 0-1"
 
 msgid "You cannot have more than 5 Guardian and/or Mystic cards"
 msgstr "Você não pode ter mais de 5 cartas de Guardião e/ou Místico"
 
 msgid "You cannot have more than 5 level 0 Mystic cards"
-msgstr "Você não pode ter mais de 5 cartas Místicas de nível 0"
+msgstr "Você não pode ter mais de 5 cartas Místico de nível 0"
 
 msgid "Choose resolution"
 msgstr "Escolha a resolução"
@@ -3831,7 +3826,7 @@ msgid "Defeated"
 msgstr "Derrotado"
 
 msgid "Status of investigators"
-msgstr "Situação dos investigadores"
+msgstr "Estado dos investigadores"
 
 msgid "Social"
 msgstr "Social"
@@ -3840,7 +3835,7 @@ msgid "Add new"
 msgstr "Adicionar novo"
 
 msgid "Changes have been recorded."
-msgstr "As alterações foram registradas."
+msgstr "As alterações foram gravadas."
 
 msgid "No adjustments need saving."
 msgstr "Nenhum ajuste precisa ser salvo."
@@ -3866,13 +3861,13 @@ msgid ""
 "If you choose a deck, the app can help track spent experience, story asset changes, and deckbuilding requirements."
 msgstr ""
 "Este investigador não tem um baralho associado a ele.\n"
-"Se você escolher um baralho, o aplicativo pode ajudar a rastrear a experiência gasta, o recurso da históriamudanças e requisitos de construção de baralhos."
+"Se você escolher um baralho, o aplicativo pode ajudar a monitorar a experiência gasta, as alterações nos recursos da história e os requisitos de construção do baralho."
 
 msgid "Now that your upgrade has been saved, when visiting the deck be sure to use the 'Edit' button when making card changes."
-msgstr "Agora que seu upgrade foi salvo, ao visitar o baralho não deixe de usar o botão 'Editar' ao fazer alterações nas cartas."
+msgstr "Agora que sua atualização foi salva, ao visitar o baralho, certifique-se de usar o botão 'Editar' ao fazer alterações nas cartas."
 
 msgid "What exactly does the app handle?"
-msgstr "O que exatamente o aplicativo lida?"
+msgstr "O que exatamente o aplicativo faz?"
 
 msgid ""
 "Generally speaking, the app handles anything that you see mentioned in the digital campaign log.\n"
@@ -3880,7 +3875,7 @@ msgid ""
 "If you find that you made a mistake after you upgraded your deck, you can 'adjust' the available experience when editing a deck."
 msgstr ""
 "De um modo geral, o aplicativo lida com tudo o que você vê mencionado no registro de campanha digital.\n"
-"Se você estiver construindo seu baralho com o aplicativo, ele também lidará com cartas como Pesquisa Arcana e Análise Astuta (se você permitir que o aplicativo aleatorize suas atualizações).\n"
+"Se você estiver construindo seu baralho com o aplicativo, ele também lidará com cartas como Pesquisa Arcana e Análise Astuta (se você permitir que o aplicativo randomize suas atualizações).\n"
 "Se você achar que cometeu um erro depois de atualizar seu baralho, você pode 'ajustar' a experiência disponível ao editar um baralho."
 
 msgid ""
@@ -3893,7 +3888,7 @@ msgstr ""
 "Se você tiver quaisquer outras cartas ou efeitos que o aplicativo não cuide, você pode fazer os ajustes abaixo antes de salvar cada investigador."
 
 msgid "Learn more"
-msgstr "Saber mais"
+msgstr "Saiba mais"
 
 msgid "Campaign log"
 msgstr "Registro de campanha"
@@ -3935,10 +3930,10 @@ msgid "Random results"
 msgstr "Resultados aleatórios"
 
 msgid "Select Traits"
-msgstr "Selecionar traços"
+msgstr "Selecionar Propriedades"
 
 msgid "Random weaknesses will be drawn that match these traits."
-msgstr "Serão retiradas fraquezas aleatórias que correspondam a essas características."
+msgstr "Serão sorteados fraquezas aleatórios que correspondam a essas propriedades."
 
 msgid "Edit selection"
 msgstr "Editar seleção"
@@ -3948,13 +3943,13 @@ msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
 msgstr "Verifique o registro da campanha. <i>Se ${ logEntry.text }</i>"
 
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 msgid "VK"
-msgstr ""
+msgstr "VK"
 
 msgid "Telegram"
-msgstr ""
+msgstr "Telegram"
 
 #, javascript-format
 msgid "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ logEntry.text }</i>."
@@ -3974,34 +3969,34 @@ msgid "Show archived campaigns"
 msgstr "Mostrar campanhas arquivadas"
 
 msgid "Return to The Circle Undone"
-msgstr "Retorno ao Círculo Desfeito"
+msgstr "Return to The Circle Undone"
 
 msgid "Prologue: Return to Disappearance at the Twilight Estate"
-msgstr ""
+msgstr "Prologue: Return to Disappearance at the Twilight Estate"
 
 msgid "Return to The Witching Hour"
-msgstr ""
+msgstr "Return to The Witching Hour"
 
 msgid "Return to At Death's Doorstep"
-msgstr ""
+msgstr "Return to At Death's Doorstep"
 
 msgid "Return to The Secret Name"
-msgstr ""
+msgstr "Return to The Secret Name"
 
 msgid "Return to The Wages of Sin"
-msgstr ""
+msgstr "Return to The Wages of Sin"
 
 msgid "Return to For the Greater Good"
-msgstr ""
+msgstr "Return to For the Greater Good"
 
 msgid "Return to Union and Disillusion"
-msgstr ""
+msgstr "Return to Union and Disillusion"
 
 msgid "Return to In the Clutches of Chaos"
-msgstr ""
+msgstr "Return to In the Clutches of Chaos"
 
 msgid "Return to Before the Black Throne"
-msgstr ""
+msgstr "Return to Before the Black Throne"
 
 msgid "Loading account"
 msgstr "Carregando conta"
@@ -4017,17 +4012,17 @@ msgid "Edit my spoiler settings"
 msgstr "Editar minhas configurações de spoiler"
 
 msgid "Crown of Egil"
-msgstr ""
+msgstr "Crown of Egil"
 
 msgid "The Crown of Egil"
-msgstr ""
+msgstr "The Crown of Egil"
 
 msgid "Traces of Egil"
-msgstr ""
+msgstr "Traces of Egil"
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
-msgstr "Campanha criada por fãs por ${ author }"
+msgstr "Campanha criada por fãs de ${ author }"
 
 msgid "Sort ignores punctuation"
 msgstr "Classificar ignora pontuação"
@@ -4037,7 +4032,7 @@ msgid ""
 "It can take up to 24hrs before Patreon updates your membership status. If you are still experiencing problems after 24hrs, please contact Mythos Busters via Patreon or on the Discord channel for help with this issue."
 msgstr ""
 "Desculpe, você não parece ser um patrono do Mythos Buster.\n"
-"Pode levar até 24 horas antes que o Patreon atualize seu status de membro. Se você ainda está tendo problemas após 24 horas, entre em contato com a Mythos Busters via Patreon ou no canal Discord para ajudar com este problema."
+"Pode levar até 24 horas para que o Patreon atualize seu status de associação. Se você ainda tiver problemas após 24 horas, entre em contato com Mythos Busters via Patreon ou no canal Discord para obter ajuda com esse problema."
 
 msgid "Skull"
 msgstr "Crânio"
@@ -4046,16 +4041,16 @@ msgid "Cultist"
 msgstr "Cultista"
 
 msgid "Tablet"
-msgstr "Tábua"
+msgstr "Tabuleta"
 
 msgid "Elder Thing"
-msgstr "Criatura Ancestral"
+msgstr "Coisa Antiga"
 
 msgid "Auto-Fail"
-msgstr "Falha automática"
+msgstr "Falha Automática"
 
 msgid "Elder Sign"
-msgstr "Sinal Ancestral"
+msgstr "Símbolo Antigo"
 
 msgid "Number of [[Item]] assets you control"
 msgstr "Número de [[Item]] ativos que você controla"
@@ -4068,18 +4063,20 @@ msgid ""
 "0: (original effect below)\n"
 "${ originalTokenText }"
 msgstr ""
+"0: (original effect below)\n"
+"${ originalTokenText }"
 
 msgid "Easy difficulty"
-msgstr "Dificuldade Fácil"
+msgstr "Fácil"
 
 msgid "Standard difficulty"
-msgstr "Dificuldade Padrão"
+msgstr "Médio"
 
 msgid "Hard difficulty"
-msgstr "Dificuldade Difícil"
+msgstr "Difícil"
 
 msgid "Expert difficulty"
-msgstr "Dificuldade do Especialista"
+msgstr "Especialista"
 
 msgid "Scenario settings"
 msgstr "Configurações do cenário"
@@ -8135,8 +8132,8 @@ msgstr "Todas"
 msgctxt "header"
 msgid "Asset"
 msgid_plural "Assets"
-msgstr[0] "Posse"
-msgstr[1] "Posses"
+msgstr[0] "Ativo"
+msgstr[1] "Ativos"
 
 msgctxt "header"
 msgid "Event"
