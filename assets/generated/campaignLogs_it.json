@@ -2218,79 +2218,79 @@
         "entries": [
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "la cellula ha messo lo zampino negli affari di Abarran."
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "Livello di allarme: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "un investigatore ha sbancato al casinò."
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "un investigatore ha convinto Isamara a partecipare al colpo."
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "un investigatore ha trovato un condotto."
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "un investigatore si è spacciato per un pesce grosso."
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "avete bisogno di riposo."
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "un investigatore ha ottenuto l’uniforme di un dipendente."
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "Scorte: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "un investigatore ha rubato le chiavi di Abarran."
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#: Bel Faccino"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (Practiced)"
+            "text": "#name#: Bel Faccino (Allenato)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#: L’Imbroglione"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#: L’Imbroglione (Allenato)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#: Il Bruto"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (Practiced)"
+            "text": "#name#: Il Bruto (Allenato)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#: Il Ladro"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#: Il Ladro (Allenato)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "Indizi sulla Sorgente della Fortuna: #X#"
           }
         ]
       },
@@ -2354,47 +2354,47 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# è stato reclamato dall’abisso.",
+            "feminine_text": "#name# è stata reclamata dall’abisso.",
+            "nonbinary_text": "#name# è stato reclamato dall’abisso."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# è stato reclamato dall’abisso.",
+            "feminine_text": "#name# è stata reclamata dall’abisso.",
+            "nonbinary_text": "#name# è stato reclamato dall’abisso."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "gli investigatori sono al corrente dei piani di Xzharah."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "le trame della Confraternita proseguono indisturbate."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "la maledizione del sonno è stata spezzata."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "sognatori nell’Abisso (#X#)"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
+            "text": "Agenti della Confraternita Fuggiti: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "il giorno della resa dei conti si avvicina."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
+            "text": "vi siete uniti alle forze di Xzharah."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "l’Abisso è stato salvato."
           }
         ]
       }
@@ -3960,145 +3960,145 @@
         "entries": [
           {
             "id": "possesses_a_diving_suit",
-            "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit.",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "masculine_text": "#name# possiede uno scafandro da palombaro.",
+            "feminine_text": "#name# possiede uno scafandro da palombaro.",
+            "nonbinary_text": "#name# possiede uno scafandro da palombaro."
           },
           {
             "id": "agent_harpers_mission_is_complete",
-            "text": "Agent Harper's mission is complete."
+            "text": "l’agente Harper ha portato a termine la sua missione."
           },
           {
             "id": "agent_harpers_mission_is_complete_at_what_cost",
-            "text": "Agent Harper's mission is complete… but at what cost?"
+            "text": "l’agente Harper ha portato a termine la sua missione… ma a quale prezzo?"
           },
           {
             "id": "allen_out_for_blood",
-            "text": "Zadok Allen is out for blood."
+            "text": "Zadok Allen è in cerca di vendetta."
           },
           {
             "id": "burnham_out_for_blood",
-            "text": "Brian Burnham is out for blood."
+            "text": "Brian Burnham è in cerca di vendetta."
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "Dagon si è risvegliato."
           },
           {
             "id": "dagon_still_slumbers",
-            "text": "Dagon still slumbers."
+            "text": "Dagon dorme ancora."
           },
           {
             "id": "deep_ones_have_flooded_the_earth",
-            "text": "the Deep Ones have flooded the Earth."
+            "text": "gli abitatori del profondo hanno sommerso la Terra."
           },
           {
             "id": "escaped_yhanthlei",
-            "text": "the investigators escaped Y'ha-nthlei."
+            "text": "siete fuggiti da Y’ha-nthlei."
           },
           {
             "id": "flood_has_begun",
-            "text": "the flood has begun."
+            "text": "l’inondazione ha inizio."
           },
           {
             "id": "friendly_out_for_blood",
-            "text": "Robert Friendly is out for blood."
+            "text": "Robert Friendly è in cerca di vendetta."
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "il custode è stato sconfitto."
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "il portale verso Y’ha-nthlei vi riconosce come legittimi custodi"
           },
           {
             "id": "gilman_out_for_blood",
-            "text": "Othera Gilman is out for blood."
+            "text": "Othera Gilman è in cerca di vendetta."
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "vi siete occupati del guardiano di Y’ha-nthlei."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "la corona è stata portata al faro."
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "l’idolo è stato portato al faro."
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
-            "text": "Innsmouth was consumed by the rising tide."
+            "text": "Innsmouth è stata inghiottita dalla marea crescente."
           },
           {
             "id": "little_out_for_blood",
-            "text": "Joyce Little is out for blood."
+            "text": "Joyce Little è in cerca di vendetta."
           },
           {
             "id": "made_it_safely_to_their_vehicles",
-            "text": "the investigators made it safely to their vehicles."
+            "text": "avete raggiunto le auto sani e salvi."
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "il manto è stato portato al faro."
           },
           {
             "id": "marsh_out_for_blood",
-            "text": "Barnabas Marsh is out for blood."
+            "text": "Barnabas Marsh è in cerca di vendetta."
           },
           {
             "id": "mission_failed",
-            "text": "the mission failed."
+            "text": "la missione è fallita."
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission was successful."
+            "text": "la missione ha avuto successo."
           },
           {
             "id": "orders_ritual_was_disrupted",
-            "text": "the Order's ritual was disrupted."
+            "text": "il rituale dell’Ordine è stato interrotto."
           },
           {
             "id": "plot_of_the_deep_ones_was_thwarted",
-            "text": "the plot of the Deep Ones was thwarted."
+            "text": "avete sventato il piano degli abitatori del profondo."
           },
           {
             "id": "possess_a_map_of_yhanthlei",
-            "text": "the investigators possess a map of Y'ha-nthlei."
+            "text": "gli investigatori possiedono una mappa di Y’ha-nthlei."
           },
           {
             "id": "possess_the_key_to_yhanthlei",
-            "text": "the investigators possess the key to Y'ha-nthlei."
+            "text": "gli investigatori possiedono la chiave per Y’ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
-            "text": "the investigators reached Falcon Point after sunrise."
+            "text": "avete raggiunto Punta del Falco dopo l’alba."
           },
           {
             "id": "reached_falcon_point_before_sunrise",
-            "text": "the investigators reached Falcon Point before sunrise."
+            "text": "avete raggiunto Punta del Falco prima dell’alba."
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
-            "text": "the riches of the deep are destroyed… but at what cost?"
+            "text": "i tesori degli abissi sono stati distrutti… ma a quale prezzo?"
           },
           {
             "id": "riches_of_the_deep_are_lost_forever",
-            "text": "the riches of the deep are lost forever."
+            "text": "i tesori degli abissi sono persi per sempre."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "il Terrore dello Scoglio del Diavolo è morto."
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "il Terrore dello Scoglio del Diavolo è ancora vivo."
           },
           {
             "id": "tide_has_grown_stronger",
-            "text": "the tide has grown stronger."
+            "text": "la marea si è alzata vertiginosamente."
           }
         ]
       },
@@ -4127,7 +4127,7 @@
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "La Casa di Water Street"
           },
           {
             "id": "accuse_little",
@@ -4139,15 +4139,15 @@
           },
           {
             "id": "accuse_new_church_green",
-            "text": "New Church Green"
+            "text": "New Green Church"
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ordine Esoterico di Dagon"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Prigione di Innsmouth"
           },
           {
             "id": "accuse_sawbone_alley",
@@ -4155,7 +4155,7 @@
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Bassifondi Costieri"
           },
           {
             "id": "act_2_setup",
@@ -4228,59 +4228,59 @@
         "entries": [
           {
             "id": "a_deal_with_joe_sargent",
-            "text": "a deal with Joe Sargent"
+            "text": "un accordo con Joe Sargent"
           },
           {
             "id": "a_followed_lead",
-            "text": "a followed lead"
+            "text": "una pista seguita"
           },
           {
             "id": "a_jailbreak",
-            "text": "a jailbreak"
+            "text": "un’evasione"
           },
           {
             "id": "an_intervention",
-            "text": "an intervention"
+            "text": "un intervento"
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "uno scontro con un demone terrificante"
           },
           {
             "id": "conversation_with_mr_moore",
-            "text": "a conversation with Mr. Moore"
+            "text": "una conversazione con Mr. Moore"
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "la decisione di restare uniti"
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic"
+            "text": "la scoperta di una reliquia mistica"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol"
+            "text": "la scoperta di uno strano idolo"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle"
+            "text": "la scoperta di un manto blasfemo"
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "un incontro con un culto segreto"
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "l’orribile verità"
           },
           {
             "id": "lifecycle_of_a_deep_one",
-            "text": "the lifecycle of a \"Deep One\""
+            "text": "il ciclo vitale di un “abitatore del profondo”"
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "un incontro con Thomas Dawson"
           },
           {
             "id": "remember_where_you_have_to_go",
@@ -4288,7 +4288,7 @@
           },
           {
             "id": "stinging_betrayal",
-            "text": "a stinging betrayal"
+            "text": "un bruciante tradimento"
           }
         ]
       },
@@ -4297,19 +4297,19 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "La Casa di Water Street"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Prigione di Innsmouth"
           },
           {
             "id": "new_church_green",
-            "text": "New Church Green"
+            "text": "New Green Church"
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ordine Esoterico di Dagon"
           },
           {
             "id": "sawbone_alley",
@@ -4317,7 +4317,7 @@
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Bassifondi Costieri"
           }
         ]
       },
@@ -4361,15 +4361,15 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# è stato reclamato dall’abisso.",
+            "feminine_text": "#name# è stata reclamata dall’abisso.",
+            "nonbinary_text": "#name# è stato reclamato dall’abisso."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# è stato reclamato dall’abisso.",
+            "feminine_text": "#name# è stata reclamata dall’abisso.",
+            "nonbinary_text": "#name# è stato reclamato dall’abisso."
           },
           {
             "id": "atw_bernards_fate",
@@ -4445,19 +4445,19 @@
           },
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "la cellula ha messo lo zampino negli affari di Abarran."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua è fuggito a leccarsi le ferite."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "molte vittime sono state sacrificate a Cnidathqua durante il Carnevale."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "il sole ha esiliato Cnidathqua negli abissi."
           },
           {
             "id": "constellation_was_lost_to_the_depths",
@@ -4485,75 +4485,75 @@
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "Livello di allarme: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "un investigatore ha sbancato al casinò."
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "un investigatore ha convinto Isamara a partecipare al colpo."
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "un investigatore ha trovato un condotto."
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "un investigatore si è spacciato per un pesce grosso."
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "avete bisogno di riposo."
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "un investigatore ha ottenuto l’uniforme di un dipendente."
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "Scorte: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "un investigatore ha rubato le chiavi di Abarran."
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#: Bel Faccino"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (Practiced)"
+            "text": "#name#: Bel Faccino (Allenato)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#: L’Imbroglione"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#: L’Imbroglione (Allenato)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#: Il Bruto"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (Practiced)"
+            "text": "#name#: Il Bruto (Allenato)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#: Il Ladro"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#: Il Ladro (Allenato)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "Indizi sulla Sorgente della Fortuna: #X#"
           },
           {
             "id": "gathered_samples_from_another_earth",
@@ -4573,19 +4573,19 @@
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "l’Excelsior ha reclamato altre vittime."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "all’Excelsior è tutto tranquillo, per il momento."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "siete fuggiti dalla scena del crimine."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "gli omicidi continuano e restano irrisolti."
           },
           {
             "id": "observed_the_aftereffects_of_the_shift",
@@ -4637,23 +4637,23 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "gli investigatori sono al corrente dei piani di Xzharah."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "le trame della Confraternita proseguono indisturbate."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "la maledizione del sonno è stata spezzata."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "sognatori nell’Abisso (#X#)"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
+            "text": "Agenti della Confraternita Fuggiti: #name#"
           },
           {
             "id": "testsuo_made_a_noble_sacrifice",
@@ -4665,15 +4665,15 @@
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "il giorno della resa dei conti si avvicina."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
+            "text": "vi siete uniti alle forze di Xzharah."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "l’Abisso è stato salvato."
           },
           {
             "id": "used_the_sorcrerers_magic_against_them",
@@ -6029,145 +6029,145 @@
         "entries": [
           {
             "id": "possesses_a_diving_suit",
-            "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit.",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "masculine_text": "#name# possiede uno scafandro da palombaro.",
+            "feminine_text": "#name# possiede uno scafandro da palombaro.",
+            "nonbinary_text": "#name# possiede uno scafandro da palombaro."
           },
           {
             "id": "agent_harpers_mission_is_complete",
-            "text": "Agent Harper's mission is complete."
+            "text": "l’agente Harper ha portato a termine la sua missione."
           },
           {
             "id": "agent_harpers_mission_is_complete_at_what_cost",
-            "text": "Agent Harper's mission is complete… but at what cost?"
+            "text": "l’agente Harper ha portato a termine la sua missione… ma a quale prezzo?"
           },
           {
             "id": "allen_out_for_blood",
-            "text": "Zadok Allen is out for blood."
+            "text": "Zadok Allen è in cerca di vendetta."
           },
           {
             "id": "burnham_out_for_blood",
-            "text": "Brian Burnham is out for blood."
+            "text": "Brian Burnham è in cerca di vendetta."
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "Dagon si è risvegliato."
           },
           {
             "id": "dagon_still_slumbers",
-            "text": "Dagon still slumbers."
+            "text": "Dagon dorme ancora."
           },
           {
             "id": "deep_ones_have_flooded_the_earth",
-            "text": "the Deep Ones have flooded the Earth."
+            "text": "gli abitatori del profondo hanno sommerso la Terra."
           },
           {
             "id": "escaped_yhanthlei",
-            "text": "the investigators escaped Y'ha-nthlei."
+            "text": "siete fuggiti da Y’ha-nthlei."
           },
           {
             "id": "flood_has_begun",
-            "text": "the flood has begun."
+            "text": "l’inondazione ha inizio."
           },
           {
             "id": "friendly_out_for_blood",
-            "text": "Robert Friendly is out for blood."
+            "text": "Robert Friendly è in cerca di vendetta."
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "il custode è stato sconfitto."
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "il portale verso Y’ha-nthlei vi riconosce come legittimi custodi"
           },
           {
             "id": "gilman_out_for_blood",
-            "text": "Othera Gilman is out for blood."
+            "text": "Othera Gilman è in cerca di vendetta."
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "vi siete occupati del guardiano di Y’ha-nthlei."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "la corona è stata portata al faro."
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "l’idolo è stato portato al faro."
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
-            "text": "Innsmouth was consumed by the rising tide."
+            "text": "Innsmouth è stata inghiottita dalla marea crescente."
           },
           {
             "id": "little_out_for_blood",
-            "text": "Joyce Little is out for blood."
+            "text": "Joyce Little è in cerca di vendetta."
           },
           {
             "id": "made_it_safely_to_their_vehicles",
-            "text": "the investigators made it safely to their vehicles."
+            "text": "avete raggiunto le auto sani e salvi."
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "il manto è stato portato al faro."
           },
           {
             "id": "marsh_out_for_blood",
-            "text": "Barnabas Marsh is out for blood."
+            "text": "Barnabas Marsh è in cerca di vendetta."
           },
           {
             "id": "mission_failed",
-            "text": "the mission failed."
+            "text": "la missione è fallita."
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission was successful."
+            "text": "la missione ha avuto successo."
           },
           {
             "id": "orders_ritual_was_disrupted",
-            "text": "the Order's ritual was disrupted."
+            "text": "il rituale dell’Ordine è stato interrotto."
           },
           {
             "id": "plot_of_the_deep_ones_was_thwarted",
-            "text": "the plot of the Deep Ones was thwarted."
+            "text": "avete sventato il piano degli abitatori del profondo."
           },
           {
             "id": "possess_a_map_of_yhanthlei",
-            "text": "the investigators possess a map of Y'ha-nthlei."
+            "text": "gli investigatori possiedono una mappa di Y’ha-nthlei."
           },
           {
             "id": "possess_the_key_to_yhanthlei",
-            "text": "the investigators possess the key to Y'ha-nthlei."
+            "text": "gli investigatori possiedono la chiave per Y’ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
-            "text": "the investigators reached Falcon Point after sunrise."
+            "text": "avete raggiunto Punta del Falco dopo l’alba."
           },
           {
             "id": "reached_falcon_point_before_sunrise",
-            "text": "the investigators reached Falcon Point before sunrise."
+            "text": "avete raggiunto Punta del Falco prima dell’alba."
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
-            "text": "the riches of the deep are destroyed… but at what cost?"
+            "text": "i tesori degli abissi sono stati distrutti… ma a quale prezzo?"
           },
           {
             "id": "riches_of_the_deep_are_lost_forever",
-            "text": "the riches of the deep are lost forever."
+            "text": "i tesori degli abissi sono persi per sempre."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "il Terrore dello Scoglio del Diavolo è morto."
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "il Terrore dello Scoglio del Diavolo è ancora vivo."
           },
           {
             "id": "tide_has_grown_stronger",
-            "text": "the tide has grown stronger."
+            "text": "la marea si è alzata vertiginosamente."
           }
         ]
       },
@@ -6192,7 +6192,7 @@
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "La Casa di Water Street"
           },
           {
             "id": "accuse_little",
@@ -6204,15 +6204,15 @@
           },
           {
             "id": "accuse_new_church_green",
-            "text": "New Church Green"
+            "text": "New Green Church"
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ordine Esoterico di Dagon"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Prigione di Innsmouth"
           },
           {
             "id": "accuse_sawbone_alley",
@@ -6220,7 +6220,7 @@
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Bassifondi Costieri"
           },
           {
             "id": "act_2_setup",
@@ -6293,63 +6293,63 @@
         "entries": [
           {
             "id": "a_deal_with_joe_sargent",
-            "text": "a deal with Joe Sargent"
+            "text": "un accordo con Joe Sargent"
           },
           {
             "id": "a_followed_lead",
-            "text": "a followed lead"
+            "text": "una pista seguita"
           },
           {
             "id": "a_jailbreak",
-            "text": "a jailbreak"
+            "text": "un’evasione"
           },
           {
             "id": "an_intervention",
-            "text": "an intervention"
+            "text": "un intervento"
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "uno scontro con un demone terrificante"
           },
           {
             "id": "conversation_with_mr_moore",
-            "text": "a conversation with Mr. Moore"
+            "text": "una conversazione con Mr. Moore"
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "la decisione di restare uniti"
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic"
+            "text": "la scoperta di una reliquia mistica"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol"
+            "text": "la scoperta di uno strano idolo"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle"
+            "text": "la scoperta di un manto blasfemo"
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "un incontro con un culto segreto"
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "l’orribile verità"
           },
           {
             "id": "lifecycle_of_a_deep_one",
-            "text": "the lifecycle of a \"Deep One\""
+            "text": "il ciclo vitale di un “abitatore del profondo”"
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "un incontro con Thomas Dawson"
           },
           {
             "id": "stinging_betrayal",
-            "text": "a stinging betrayal"
+            "text": "un bruciante tradimento"
           }
         ]
       },
@@ -6358,19 +6358,19 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "La Casa di Water Street"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Prigione di Innsmouth"
           },
           {
             "id": "new_church_green",
-            "text": "New Church Green"
+            "text": "New Green Church"
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Ordine Esoterico di Dagon"
           },
           {
             "id": "sawbone_alley",
@@ -6378,7 +6378,7 @@
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Bassifondi Costieri"
           }
         ]
       },
@@ -6422,27 +6422,27 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "Agent Flint is dead."
+            "text": "l’agente Flint è morto."
           },
           {
             "id": "agent_flint_is_missing",
-            "text": "Agent Flint is missing."
+            "text": "l’agente Flint è scomparso."
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
-            "text": "Agent Quinn does not trust the cell."
+            "text": "l’agente Quinn non si fida della cellula."
           },
           {
             "id": "agent_quinn_has_your_back",
-            "text": "Agent Quinn has your back."
+            "text": "l’agente Quinn vi copre le spalle."
           },
           {
             "id": "agent_quinn_vanished_from_existence",
-            "text": "Agent Quinn vanished from existence."
+            "text": "l’agente Quinn è svanita dall’esistenza."
           },
           {
             "id": "aliki_is_on_your_side",
-            "text": "Aliki is on your side."
+            "text": "Aliki è dalla vostra parte."
           },
           {
             "id": "amaranth_has_left_the_coterie",
@@ -6450,35 +6450,35 @@
           },
           {
             "id": "cell_aided_in_flints_investigation",
-            "text": "the cell aided in Flint’s investigation."
+            "text": "la cellula ha aiutato Flint nelle sue indagini."
           },
           {
             "id": "cell_aided_the_knight",
-            "text": "the cell aided the knight."
+            "text": "la cellula ha aiutato il Cavaliere."
           },
           {
             "id": "cell_appreciated_the_architecture",
-            "text": "the cell appreciated the architecture."
+            "text": "la cellula ha apprezzato l’architettura."
           },
           {
             "id": "cell_blew_the_whistle",
-            "text": "the cell blew the whistle."
+            "text": "la cellula ha soffiato nel fischietto."
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
-            "text": "the cell didn’t discover the truth in Havana."
+            "text": "la cellula non ha scoperto la verità all’Avana."
           },
           {
             "id": "cell_escaped_the_red_coterie",
-            "text": "the cell escaped the Red Coterie."
+            "text": "la cellula è fuggita dalla Società Rossa."
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
-            "text": "the cell failed to fend off the Beast."
+            "text": "la cellula non è riuscita a respingere la Bestia."
           },
           {
             "id": "cell_has_been_ambushed",
-            "text": "the cell has been ambushed!"
+            "text": "la cellula è caduta in un’imboscata!"
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
@@ -6486,75 +6486,75 @@
           },
           {
             "id": "cell_is_assisting_agent_sirry",
-            "text": "the cell is assisting Agent Sirry."
+            "text": "la cellula sta aiutando l’agente Sirry."
           },
           {
             "id": "cell_is_deceiving_ece",
-            "text": "the cell is deceiving Ece."
+            "text": "la cellula sta ingannando Ece."
           },
           {
             "id": "cell_is_delivering_foundation_intel",
-            "text": "the cell is delivering Foundation intel."
+            "text": "la cellula deve consegnare delle informazioni."
           },
           {
             "id": "cell_is_off_mission",
-            "text": "the cell is off-mission."
+            "text": "la cellula ha intrapreso una missione in autonomia."
           },
           {
             "id": "cell_is_working_with_ece",
-            "text": "the cell is working with Ece."
+            "text": "la cellula sta collaborando con Ece."
           },
           {
             "id": "cell_joined_the_red_coterie",
-            "text": "the cell joined the Red Coterie."
+            "text": "la cellula si è unita alla Società Rossa."
           },
           {
             "id": "cell_knows_amaranths_real_name",
-            "text": "the cell knows Amaranth’s real name."
+            "text": "la cellula conosce il vero nome di Amaranto."
           },
           {
             "id": "cell_knows_desis_past",
-            "text": "the cell knows Desi’s past"
+            "text": "la cellula conosce il passato di Desi"
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
-            "text": "the cell knows the true nature of the Coterie."
+            "text": "la cellula conosce la vera natura della Società Rossa."
           },
           {
             "id": "cell_made_a_deal_with_desi",
-            "text": "the cell made a deal with Desi."
+            "text": "la cellula ha stretto un accordo con Desi."
           },
           {
             "id": "cell_made_a_deal_with_the_claret_knight",
-            "text": "the cell made a deal with the Claret Knight."
+            "text": "la cellula ha stretto un accordo con il Cavaliere Purpureo."
           },
           {
             "id": "cell_made_a_deal_with_thorne",
-            "text": "the cell made a deal with Thorne."
+            "text": "la cellula ha stretto un accordo con Spina."
           },
           {
             "id": "cell_met_dr_irawan",
-            "text": "the cell met Dr. Irawan."
+            "text": "la cellula ha conosciuto la dottoressa Irawan."
           },
           {
             "id": "cell_overthrew_the_red_coterie",
-            "text": "the cell overthrew the Red Coterie."
+            "text": "la cellula ha preso il controllo della Società Rossa."
           },
           {
             "id": "cell_possesses_a_mysterious_whistle",
-            "text": "the cell possesses a mysterious whistle."
+            "text": "la cellula possiede un misterioso fischietto."
           },
           {
             "id": "cell_refused_alikis_offer",
-            "text": "the cell refused Aliki’s offer."
+            "text": "la cellula ha rifiutato l’offerta di Aliki."
           },
           {
             "id": "cell_refused_eces_offer",
-            "text": "the cell refused Ece's offer."
+            "text": "la cellula ha rifiutato l’offerta di Ece."
           },
           {
             "id": "cell_threw_away_the_whistle",
-            "text": "the cell threw away the whistle."
+            "text": "la cellula ha gettato il fischietto."
           },
           {
             "id": "cell_told_the_truth_to_taylor",
@@ -6570,11 +6570,11 @@
           },
           {
             "id": "cell_was_hollowed",
-            "text": "the cell was hollowed."
+            "text": "la cellula è stata svuotata."
           },
           {
             "id": "chica_roja_is_on_your_side",
-            "text": "La Chica Roja is on your side."
+            "text": "la Chica Roja è dalla vostra parte."
           },
           {
             "id": "deception",
@@ -6582,63 +6582,63 @@
           },
           {
             "id": "desi_is_in_your_debt",
-            "text": "Desi is in your debt."
+            "text": "Desi vi è debitore."
           },
           {
             "id": "dogs_are_at_war",
-            "text": "the dogs are at war."
+            "text": "i cani sono in guerra."
           },
           {
             "id": "dr_irawan_joined_the_cell",
-            "text": "Dr. Irawan joined the cell."
+            "text": "la dottoressa Irawan si è unita alla cellula."
           },
           {
             "id": "dr_irawan_traveled_to_new_guinea",
-            "text": "Dr. Irawan traveled to New Guinea."
+            "text": "la dottoressa Irawan è partita per la Nuova Guinea."
           },
           {
             "id": "dr_irawan_vanished_from_existence",
-            "text": "Dr. Irawan vanished from existence."
+            "text": "la dottoressa Irawan è svanita dall’esistenza."
           },
           {
             "id": "ece_does_not_trust_the_cell",
-            "text": "Ece does not trust the cell."
+            "text": "Ece non si fida della cellula."
           },
           {
             "id": "ece_trusts_the_cell",
-            "text": "Ece trusts the cell."
+            "text": "Ece si fida della cellula."
           },
           {
             "id": "erased_from_existence_dm",
-            "text": "erased from existence: #name#"
+            "text": "svanito dall’esistenza: #name#"
           },
           {
             "id": "erased_from_existence_oti",
-            "text": "erased from existence: #name#"
+            "text": "svanito dall’esistenza: #name#"
           },
           {
             "id": "flint_abandoned_his_search",
-            "text": "Flint abandoned his search."
+            "text": "Flint ha abbandonato le sue indagini."
           },
           {
             "id": "flint_is_working_solo",
-            "text": "Flint is working solo."
+            "text": "Flint sta lavorando da solo."
           },
           {
             "id": "flint_rejoined_the_cell",
-            "text": "Flint rejoined the cell."
+            "text": "Flint si è ricongiunto con la cellula."
           },
           {
             "id": "flint_traveled_to_kuala_lampur",
-            "text": "Flint traveled to Kuala Lumpur."
+            "text": "Flint è partito per Kuala Lumpur."
           },
           {
             "id": "foundation_remains_in_the_dark",
-            "text": "the Foundation remains in the dark."
+            "text": "la Fondazione continua a brancolare nel buio."
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
-            "text": "you haven’t seen the last of Aliki Zoni Uperetria."
+            "text": "sentirete ancora parlare di Aliki Zoni Uperetria."
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
@@ -6646,19 +6646,19 @@
           },
           {
             "id": "have_not_seen_the_last_of_desi",
-            "text": "you haven’t seen the last of Desiderio Delgado Álvarez."
+            "text": "sentirete ancora parlare di Desiderio Delgado Álvarez."
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
-            "text": "you haven't seen the last of La Chica Roja."
+            "text": "sentirete ancora parlare della Chica Roja."
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
-            "text": "you haven’t seen the last of the Beast in a Cowl of Crimson."
+            "text": "sentirete ancora parlare della Bestia con la Cappa Cremisi."
           },
           {
             "id": "have_not_seen_the_last_of_the_claret_knight",
-            "text": "you haven’t seen the last of the Claret Knight."
+            "text": "sentirete ancora parlare del Cavaliere Purpureo."
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
@@ -6666,19 +6666,19 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
-            "text": "you haven't seen the last of The Sanguine Watcher."
+            "text": "sentirete ancora parlare dell’Osservatore Sanguigno."
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
-            "text": "you haven’t seen the last of Thorne."
+            "text": "sentirete ancora parlare di Spina."
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "you haven’t seen the last of Tzu San Niang."
+            "text": "sentirete ancora parlare di Tzu San Niang."
           },
           {
             "id": "know_the_passphrase",
-            "text": "you know the passphrase."
+            "text": "conoscete la parola d’ordine."
           },
           {
             "id": "lovers_are_reunited",
@@ -6686,27 +6686,27 @@
           },
           {
             "id": "nothing_of_note_in_anchorage",
-            "text": "there is nothing of note in Anchorage."
+            "text": "non succede nulla di strano ad Anchorage."
           },
           {
             "id": "outsiders_were_stopped",
-            "text": "the Outsiders were stopped."
+            "text": "gli Estranei sono stati fermati."
           },
           {
             "id": "red_coterie_spared_the_cell",
-            "text": "the Red Coterie spared the cell."
+            "text": "la Società Rossa ha risparmiato la cellula."
           },
           {
             "id": "red_coterie_was_destroyed_from_within",
-            "text": "the Red Coterie was destroyed from within."
+            "text": "la Società Rossa è stata annientata dall’interno."
           },
           {
             "id": "sanguine_watchers_torment_continues",
-            "text": "The Sanguine Watcher's torment continues."
+            "text": "il tormento dell’Osservatore Sanguigno continua."
           },
           {
             "id": "thorne_disappeared",
-            "text": "Thorne disappeared."
+            "text": "non c’è più traccia di Spina."
           },
           {
             "id": "trust",
@@ -6714,23 +6714,23 @@
           },
           {
             "id": "tuwile_masai_fled_to_bermuda",
-            "text": "Tuwile Masai fled to Bermuda."
+            "text": "Tuwile Masai è scappato a Gran Bermuda."
           },
           {
             "id": "tuwile_masai_is_on_your_side",
-            "text": "Tuwile Masai is on your side."
+            "text": "Tuwile Masai è dalla vostra parte."
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
-            "text": "Tzu San Niang has you under her sway."
+            "text": "siete sotto il controllo di Tzu San Niang."
           },
           {
             "id": "tzu_san_niang_is_under_your_sway",
-            "text": "Tzu San Niang is under your sway."
+            "text": "Tzu San Niang è sotto il vostro controllo."
           },
           {
             "id": "void_chimera_escaped",
-            "text": "the Void Chimera escaped."
+            "text": "la Chimera del Vuoto è fuggita."
           },
           {
             "id": "work_together",
@@ -6738,7 +6738,7 @@
           },
           {
             "id": "wrong_leads",
-            "text": "Wrong leads: #X#"
+            "text": "False piste: #X#"
           }
         ]
       },
