@@ -4626,19 +4626,19 @@ msgid "After completion of ${ scenarionName }"
 msgstr "Dopo aver completato ${ scenarionName }"
 
 msgid "Show decks from other campaigns"
-msgstr ""
+msgstr "Mostra mazzi da altre campagne"
 
 msgid "Trait Choice"
-msgstr ""
+msgstr "Tratto Scelto"
 
 msgid "Blessed"
-msgstr ""
+msgstr "Benedetto"
 
 msgid "Cursed"
 msgstr "Maledetto"
 
 msgid "Blessed and Cursed"
-msgstr ""
+msgstr "Benedetto e Maledetto"
 
 msgid "Select Option"
 msgstr "Seleziona Opzione"
@@ -4653,7 +4653,7 @@ msgid "Archive standalone"
 msgstr "Archivia lo scenario autoconclusivo"
 
 msgid "Bless / Curse"
-msgstr ""
+msgstr "Benedizione / Maledizione"
 
 msgid "You appear to be offline. Tap to check for network."
 msgstr "Sembra che tu sia offline. Tap per controllare la rete."
@@ -4662,7 +4662,7 @@ msgid "Guardians of the Abyss"
 msgstr "I Guardiani dell'Abisso"
 
 msgid "Two-part campaign variant"
-msgstr ""
+msgstr "Variante campagna in due parti"
 
 msgid "Claim previous scenario XP"
 msgstr "Reclama i PE dallo scenario precedente"
@@ -4685,7 +4685,7 @@ msgid "Select ${ name }"
 msgstr "Seleziona ${ name }"
 
 msgid "Note: This should only be selected at deck creation time, not between scenarios."
-msgstr ""
+msgstr "Nota: Questo dovrebbe essere selezionato solo al momento della creazione del mazzo, non tra uno scenario e l'altro."
 
 #, javascript-format
 msgid ""
@@ -4776,7 +4776,7 @@ msgid "Player"
 msgstr "Giocatore"
 
 msgid "Barkham Horror"
-msgstr ""
+msgstr "Arkcan Horror"
 
 msgid "Show all available cards for parallel"
 msgstr "Mostra tutte le carte disponibili per il parallelo"
@@ -5201,7 +5201,7 @@ msgid "${ scenario.scenario } (${ resolution }, ${ scenarioXp } XP)"
 msgstr "${ scenario.scenario } (${ resolution }, ${ scenarioXp } PE)"
 
 msgid "The Scarlet Keys"
-msgstr ""
+msgstr "Le Chiavi Scarlatte"
 
 #, javascript-format
 msgid "Name ${ quantity } card"
@@ -5221,7 +5221,7 @@ msgid "Select additional cards"
 msgstr "Seleziona carte aggiuntive"
 
 msgid "Map"
-msgstr ""
+msgstr "Mappa"
 
 #, javascript-format
 msgid "${ textModifier }, draws another ${ revealCount }"
@@ -5248,14 +5248,14 @@ msgid "Add trait"
 msgstr "Aggiungi tratto"
 
 msgid "Embark"
-msgstr ""
+msgstr "Imbarcarsi"
 
 #, javascript-format
 msgid "Depart from ${ currentLocation.name }"
-msgstr ""
+msgstr "Partenza da ${ currentLocation.name }"
 
 msgid "Depart"
-msgstr ""
+msgstr "Partenza"
 
 msgid "Choose destination"
 msgstr "Scegli la destinazione"
@@ -5325,17 +5325,17 @@ msgid "Currently here"
 msgstr "Attualmente qui"
 
 msgid "Already visited"
-msgstr ""
+msgstr "Già visitato"
 
 msgid "Travel here"
-msgstr ""
+msgstr "Viaggia qui"
 
 msgid "Information"
 msgstr "Informazione"
 
 #, javascript-format
 msgid "Departing from ${ location }"
-msgstr ""
+msgstr "In partenza da ${ location }"
 
 msgid "Customization upgrades"
 msgstr ""
@@ -5406,7 +5406,7 @@ msgid "Grants access to previewed player cards"
 msgstr "Ottieni l'accesso alle carte giocatore in anteprima"
 
 msgid "Key"
-msgstr ""
+msgstr "Chiave"
 
 msgid "Taboo Set"
 msgstr ""
@@ -5452,35 +5452,35 @@ msgid "Apply changes from last completed scenario or interlude"
 msgstr "Applica le modifiche dell'ultimo scenario o interludio completato"
 
 msgid "This is a side-story location."
-msgstr ""
+msgstr "Questa è un luogo di una storia secondaria."
 
 #, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Costo viaggio: ${ travelDistance } tempo"
+msgstr[1] "Costo viaggio: ${ travelDistance } tempi"
 
 msgid "Do you want to use the app to randomize choices?"
 msgstr "Vuoi usare l'App per rendere le scelte casuali?"
 
 #, javascript-format
 msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
-msgstr ""
+msgstr "La cellula viaggia da ${ departCityName } a ${ arriveCityName }."
 
 #, javascript-format
 msgid "Mark ${ time } <b>time</b> in your Campaign Log."
 msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Spuntate ${ time } <b>tempo</b> nel Diario della Campagna."
+msgstr[1] "Spuntate ${ time } <b>tempi</b> nel Diario della Campagna."
 
 msgid "This includes the cost of experience cost of playing the side-story."
-msgstr ""
+msgstr "Questo include il costo in punti esperienza per giocare una storia secondaria."
 
 msgid "This deck is owned by another player. You can record the changes now and they will be given an opportunity to save them to their deck when they next open the app."
-msgstr ""
+msgstr "Questo mazzo è di proprietà di un altro giocatore. Puoi registrare le modifiche adesso e loro avranno l'opportunità di salvarle nel loro mazzo la prossima volta che apriranno l'app."
 
 msgid "Time Passed"
-msgstr ""
+msgstr "Tempo Trascorso"
 
 msgid "Bearer"
 msgstr "Il portatore"
@@ -5510,10 +5510,10 @@ msgid "Choose weakness"
 msgstr ""
 
 msgid "Fortune and Folly"
-msgstr ""
+msgstr "Fortuna e Follia"
 
 msgid "Challenge Scenarios"
-msgstr ""
+msgstr "Scenari Sfida"
 
 msgid "Asset Class Choice"
 msgstr ""
@@ -5525,7 +5525,7 @@ msgid "Event Class Choice"
 msgstr ""
 
 msgid "If you wish to add a side-story to this campaign, you may travel to this location and spend additional time equal to the normal experience for playing that side story."
-msgstr ""
+msgstr "Se desiderate aggiungere una storia secondaria a questa campagna, potete recarvi in questo luogo e trascorrere un tempo aggiuntivo pari alla normale esperienza per giocare quella storia secondaria."
 
 msgid "Use expedited ticket"
 msgstr ""
@@ -5552,7 +5552,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Mark 1 time"
-msgstr ""
+msgstr "Spunta 1 tempo"
 
 #, javascript-format
 msgid "Travel time: ${ travelDistance }"
@@ -5573,52 +5573,52 @@ msgid "Exile other cards"
 msgstr ""
 
 msgid "Name of Paradimensional Artifact"
-msgstr ""
+msgstr "Nome degli Artefatti Paradimensionali"
 
 msgid "Prologue: Rain and Riddles"
-msgstr ""
+msgstr "Prologo: Pioggia ed Enigmi"
 
 msgid "Dead Heat"
-msgstr ""
+msgstr "Calura Mortale"
 
 msgid "Sanguine Shadows"
-msgstr ""
+msgstr "Ombre Sanguigne"
 
 msgid "Dealings in the Dark"
-msgstr ""
+msgstr "Affari Oscuri"
 
 msgid "Dancing Mad"
-msgstr ""
+msgstr "Danza Selvaggia"
 
 msgid "On Thin Ice"
-msgstr ""
+msgstr "Sul Ghiaccio Sottile"
 
 msgid "Dogs of War"
-msgstr ""
+msgstr "Cani da Guerra"
 
 msgid "Shades of Suffering"
-msgstr ""
+msgstr "Ombre Dolorose"
 
 msgid "Without a Trace"
-msgstr ""
+msgstr "Senza Tracce"
 
 msgid "Congress of the Keys"
-msgstr ""
+msgstr "Il Congresso delle Chiavi"
 
 msgid "Unlocked Locations"
-msgstr ""
+msgstr "Luoghi Sbloccati"
 
 msgid "Each investigator who is the bearer of 1 or more key attaches those keys to their investigator card:"
-msgstr ""
+msgstr "Ogni investigatore che è portatore di 1 o più chiavi attacca quelle chiavi alla propria carta investigatore:"
 
 msgid "Customizable"
-msgstr ""
+msgstr "Personalizzabile"
 
 msgid "0 XP"
 msgstr "0 PE"
 
 msgid "No campaign"
-msgstr ""
+msgstr "Nessuna campagna"
 
 #, javascript-format
 msgid "×${ parsedDeck.totalCardCount }"
@@ -5658,10 +5658,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Search english card names"
-msgstr ""
+msgstr "Cerca nomi di carte in inglese"
 
 msgid "Include english results when searching"
-msgstr ""
+msgstr "Includi risultati in inglese durante la ricerca"
 
 #, javascript-format
 msgid "${ xp } XP"
@@ -5719,19 +5719,19 @@ msgstr ""
 
 #, javascript-format
 msgid "App language: ${ appLanguage }"
-msgstr ""
+msgstr "Lingua App: ${ appLanguage }"
 
-msgid "Narration Language"
+msgid "Lingua Narrazione"
 msgstr ""
 
 msgid "Take the scenic route to mark time"
 msgstr ""
 
 msgid "Manual Backup"
-msgstr ""
+msgstr "Backup Manuale"
 
 msgid "Automatic Backup"
-msgstr ""
+msgstr "Backup Automatico"
 
 msgid "You must have at least 7 cards from each class"
 msgstr ""
@@ -5740,7 +5740,7 @@ msgid "More off-class card than the number of weaknesses in your deck and bonded
 msgstr ""
 
 msgid "Concealed"
-msgstr ""
+msgstr "Celato"
 
 msgid "Parallel Cards"
 msgstr ""
@@ -5756,7 +5756,7 @@ msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
 msgstr ""
 
 msgid "Recent token history"
-msgstr ""
+msgstr "Token recenti"
 
 msgid "The (Unofficial) Return to the Innsmouth Conspiracy"
 msgstr ""
@@ -5817,10 +5817,10 @@ msgid "Taboo list history:"
 msgstr ""
 
 msgid "CHAOS BAG"
-msgstr ""
+msgstr "SACCHETTO DEL CAOS"
 
 msgid "Just a bag. No strings attached."
-msgstr ""
+msgstr "Solo una borsa. Senza obblighi."
 
 #, javascript-format
 msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
@@ -5842,7 +5842,7 @@ msgid "You cannot have more than 5 Mystic cards."
 msgstr ""
 
 msgid "The Feast of Hemlock Vale"
-msgstr ""
+msgstr "La Festa di Hemlock Vale"
 
 msgid "The Dunwich Legacy Investigator Expansion"
 msgstr ""
@@ -5894,42 +5894,42 @@ msgid "Aether"
 msgstr ""
 
 msgid "Campaign Rules & FAQ"
-msgstr ""
+msgstr "Regole della Campagna & FAQ"
 
 msgid "Review campaign specific info"
-msgstr ""
+msgstr "Esamina le informazioni specifiche della campagna"
 
 msgid "Campaign Rules"
-msgstr ""
+msgstr "Regole della Campagna"
 
 msgid "Review campaign specific rules"
-msgstr ""
+msgstr "Esamina le regole specifiche della campagna"
 
 msgid "Campaign FAQ"
-msgstr ""
+msgstr "FAQ Campagna"
 
 msgid "Review campaign specific clarifications"
-msgstr ""
+msgstr "Esamina i chiarimenti specifici della campagna"
 
 #, javascript-format
 msgid "Q: ${ errata.question }"
-msgstr ""
+msgstr "D: ${ errata.question }"
 
 #, javascript-format
 msgid "A: ${ errata.answer }"
-msgstr ""
+msgstr "R: ${ errata.answer }"
 
 msgid "Show FAQ"
-msgstr ""
+msgstr "Mostra FAQ"
 
 msgid "May contain light spoilers"
-msgstr ""
+msgstr "Può contenere spoiler"
 
 msgid "Note: To avoid spoilers, scenario specific questions and clarifications can be found within each scenario guide."
-msgstr ""
+msgstr "Nota: per evitare spoiler, domande e chiarimenti specifici sullo scenario possono essere trovati all'interno di ciascuna guida allo scenario."
 
 msgid "Rules & FAQ"
-msgstr ""
+msgstr "Regole & FAQ"
 
 msgid "Day / Time"
 msgstr ""
@@ -6887,15 +6887,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Expedition"
-msgstr ""
+msgstr "Spedizione"
 
 msgctxt "trait"
 msgid "Expert"
-msgstr ""
+msgstr "Esperto"
 
 msgctxt "trait"
 msgid "Extradimensional"
-msgstr ""
+msgstr "Extradimensionale"
 
 msgctxt "trait"
 msgid "Extraterrestrial"
@@ -6931,7 +6931,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Footwear"
-msgstr ""
+msgstr "Scarpe"
 
 msgctxt "trait"
 msgid "Forbidden"
@@ -6975,7 +6975,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Graveyard"
-msgstr ""
+msgstr "Cimitero"
 
 msgctxt "trait"
 msgid "Ground Floor"
@@ -6983,7 +6983,7 @@ msgstr "Piano Terra"
 
 msgctxt "trait"
 msgid "Guest"
-msgstr ""
+msgstr "Ospite"
 
 msgctxt "trait"
 msgid "Gug"
@@ -7003,7 +7003,7 @@ msgstr "Sortilegio"
 
 msgctxt "trait"
 msgid "Hideout"
-msgstr ""
+msgstr "Nascondiglio"
 
 msgctxt "trait"
 msgid "Historical Society"
@@ -7039,7 +7039,7 @@ msgstr "Innato"
 
 msgctxt "trait"
 msgid "Innocent"
-msgstr ""
+msgstr "Innocente"
 
 msgctxt "trait"
 msgid "Innsmouth"
@@ -7059,7 +7059,7 @@ msgstr "Strumento Musicale"
 
 msgctxt "trait"
 msgid "Island"
-msgstr ""
+msgstr "Isola"
 
 msgctxt "trait"
 msgid "Item"
@@ -7071,7 +7071,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Jungle"
-msgstr ""
+msgstr "Giungla"
 
 msgctxt "trait"
 msgid "Kadath"
@@ -7079,7 +7079,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Key"
-msgstr ""
+msgstr "Chiave"
 
 msgctxt "trait"
 msgid "Lead"
@@ -7099,11 +7099,11 @@ msgstr "Follia"
 
 msgctxt "trait"
 msgid "Manifold"
-msgstr ""
+msgstr "Molteplice"
 
 msgctxt "trait"
 msgid "Mask"
-msgstr ""
+msgstr "Maschera"
 
 msgctxt "trait"
 msgid "Medic"
@@ -7239,7 +7239,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Police"
-msgstr ""
+msgstr "Polizia"
 
 msgctxt "trait"
 msgid "Port"
@@ -7319,7 +7319,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ruins"
-msgstr ""
+msgstr "Rovine"
 
 msgctxt "trait"
 msgid "Salem"
@@ -7443,7 +7443,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Suspect"
-msgstr ""
+msgstr "Sospettato"
 
 msgctxt "trait"
 msgid "Syndicate"
@@ -7527,11 +7527,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Vehicle"
-msgstr ""
+msgstr "Veicolo"
 
 msgctxt "trait"
 msgid "Venice"
-msgstr ""
+msgstr "Venezia"
 
 msgctxt "trait"
 msgid "Veteran"
@@ -7619,7 +7619,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Coterie"
-msgstr ""
+msgstr "Società"
 
 msgctxt "trait"
 msgid "Dilemma"
@@ -7655,7 +7655,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Possessed"
-msgstr ""
+msgstr "Posseduto"
 
 msgctxt "trait"
 msgid "Present"
@@ -7667,11 +7667,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Uncharted"
-msgstr ""
+msgstr "Inesplorato"
 
 msgctxt "trait"
 msgid "Casino"
-msgstr ""
+msgstr "Casinò"
 
 msgctxt "trait"
 msgid "Double"
@@ -8028,11 +8028,11 @@ msgstr "Tutti"
 
 msgctxt "cost"
 msgid "Even"
-msgstr ""
+msgstr "Pari"
 
 msgctxt "cost"
 msgid "Odd"
-msgstr ""
+msgstr "Dispari"
 
 msgctxt "Actions"
 msgid "All"
