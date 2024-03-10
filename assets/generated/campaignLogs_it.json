@@ -241,156 +241,156 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "#name# è rimasto ucciso nello schianto dell'aereo.",
+            "feminine_text": "#name# è rimasta uccisa nello schianto dell'aereo."
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "Accampamento - Accampamento sulla Barriera (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "Accampamento - Cumuli Nevosi (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "Accampamento - Luogo dello Schianto (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "Accampamento - Caverna Cristallina (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "Accampamento - Grotta Glaciale (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "Accampamento - Rive Gelate (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "Accampamento - Approdo del Rompighiaccio (5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "Accampamento - Desolazioni di Ghiaccio (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "Accampamento - Lastra di Ghiaccio Precaria (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "Accampamento - Resti dell'Accampamento di Lake (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "Accampamento - Dirupi Rocciosi (3) "
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "Accampamento - Tombe di Neve (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "Accampamento - Sentiero Insidioso (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
-            "text": "Claypool has confronted his demons."
+            "text": "Claypool ha affrontato i suoi demoni."
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "avete convinto Dyer ad appoggiare la spedizione."
           },
           {
             "id": "cookie_has_confronted_his_demons",
-            "text": "Cookie has confronted his demons."
+            "text": "Cookie ha affrontato i suoi demoni."
           },
           {
             "id": "danforth_has_confronted_his_demons",
-            "text": "Danforth has confronted his demons."
+            "text": "Danforth ha affrontato i suoi demoni."
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "non avete creduto al rapporto di Dyer."
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "La squadra ha trovato un’antica fortezza."
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "la dottoressa Kensler ha un piano."
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
-            "text": "Dr. Kensler has confronted her demons."
+            "text": "La dottoressa Kensler ha affrontato i suoi demoni."
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
-            "text": "Dr. Kensler is on the verge of understanding."
+            "text": "la dottoressa Kensler è sul punto di comprendere."
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "La dottoressa Kensler sta condividendo le sue scoperte con voi."
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "la dottoressa Kensler ha compreso la vera natura del miasma."
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
-            "text": "Dr. Sinha has confronted her demons."
+            "text": "La dottoressa Sinha ha affrontato i suoi demoni."
           },
           {
             "id": "dyer_has_confronted_his_demons",
-            "text": "Dyer has confronted his demons."
+            "text": "Dyer ha affrontato i suoi demoni."
           },
           {
             "id": "eliyah_has_confronted_his_demons",
-            "text": "Eliyah has confronted his demons."
+            "text": "Eliyah ha affrontato i suoi demoni."
           },
           {
             "id": "ellsworth_has_confronted_his_demons",
-            "text": "Ellsworth has confronted his demons."
+            "text": "Ellsworth ha affrontato i suoi demoni."
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "la struttura è andata distrutta."
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "la follia senza nome è fuggita."
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "la follia senza nome è contenuta in sicurezza all’interno di un corpo ospite… per ora."
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "La squadra ha fotografato le carte astronomiche."
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "la squadra ha letto la mappa."
           },
           {
             "id": "scouted_the_city_outskirts",
-            "text": "the investigators scouted the city outskirts."
+            "text": "avete perlustrato la zona periferica della città."
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "avete avvistato la biforcazione nelle gallerie."
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "gli investigatori hanno avvistato il passo montano."
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "la squadra ha studiato le incisioni murali."
           },
           {
             "id": "surviving_investigators",
@@ -398,7 +398,7 @@
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "sono sopravvissuti alla spedizione:"
           },
           {
             "id": "surviving_partners",
@@ -406,47 +406,47 @@
           },
           {
             "id": "takada_has_confronted_her_demons",
-            "text": "Takada has confronted her demons."
+            "text": "Takada ha affrontato i suoi demoni."
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "la squadra è fuggita per un soffio della barriera di ghiaccio."
           },
           {
             "id": "team_climbed_to_the_summit",
-            "text": "the team climbed to the summit."
+            "text": "la squadra ha raggiunto la vetta."
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "la squadra ha sconfitto le creature cacciatrici."
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "la squadra è fuggita dalla struttura."
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "la squadra è fuggita verso le montagne."
           },
           {
             "id": "team_found_another_way_through_the_mountains",
-            "text": "the team found another way through the mountains."
+            "text": "la squadra ha trovato un'altra via attraverso le montagne."
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "la squadra ha trovato la galleria nascosta."
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "la squadra è stata guidata alla galleria nascosta."
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "il sigillo è stato utilizzato… impropriamente."
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "la verità sul miraggio vi sfugge."
           }
         ]
       },
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name# è Disperso.",
+            "masculine_text": "#name# è Disperso.",
+            "feminine_text": "#name# è Dispersa."
           },
           {
             "id": "camp_shelter",
@@ -770,55 +770,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "Accampamento sulla Barriera"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "Cumuli Nevosi"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "Luogo dello Schianto"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "Caverna Cristallina"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "Grotta Glaciale"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "Rive Gelate"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "Approdo del Rompighiaccio"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "Desolazioni di Ghiaccio"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "Lastra di Ghiaccio Precaria"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "Resti dell'Accampamento di Lake"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "Dirupi Rocciosi"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "Tombe di Neve"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "Sentiero Insidioso"
           }
         ]
       },
@@ -827,63 +827,63 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "Campo d'Aviazione"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "Foreste dell'Alaska"
           },
           {
             "id": "alien_translation",
-            "text": "Memory of an Alien Translation"
+            "text": "Ricordo di una Traslazione Aliena"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "Dormitorio in Disordine"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "Ufficio della Dott.ssa Kensler"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "Aula di Dyer"
           },
           {
             "id": "hunt_gone_awry",
-            "text": "Memory of a Hunt Gone Awry"
+            "text": "Ricordo di una Caccia Finita Male"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "Infermeria"
           },
           {
             "id": "lost_patient",
-            "text": "Memory of a Lost Patient"
+            "text": "Ricordo di un Paziente Perduto"
           },
           {
             "id": "missing_father",
-            "text": "Memory of a Missing Father"
+            "text": "Ricordo di un Padre Assente"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "Statue Mo'ai"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "Fronte Ottomano"
           },
           {
             "id": "ravaged_country",
-            "text": "Memory of a Ravaged Country"
+            "text": "Ricordo di un Paese Devastato"
           },
           {
             "id": "regretful_voyage",
-            "text": "Memory of a Regretful Voyage"
+            "text": "Ricordo di un Viaggio Dolente"
           },
           {
             "id": "terrible_discovery",
-            "text": "Memory of a Terrible Discovery"
+            "text": "Ricordo di una Terribile Scoperta"
           },
           {
             "id": "the_black_stone",
@@ -891,11 +891,11 @@
           },
           {
             "id": "unrequited_love",
-            "text": "Memory of an Unrequited Love"
+            "text": "Ricordo di un Amore Non Corrisposto"
           },
           {
             "id": "unspeakable_evil",
-            "text": "Memory of an Unspeakable Evil"
+            "text": "Ricordo di un Male Indicibile"
           }
         ]
       },
@@ -904,67 +904,67 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "Campo d'Aviazione"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "Foreste dell'Alaska"
           },
           {
             "id": "base_camp",
-            "text": "Base Camp"
+            "text": "Campo Base"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "Dormitorio in Disordine"
           },
           {
             "id": "coastal_waters",
-            "text": "Coastal Waters"
+            "text": "Acque Costiere"
           },
           {
             "id": "deck_of_the_theodosia",
-            "text": "Deck of the Theodosia"
+            "text": "Ponte della Theodosia"
           },
           {
             "id": "deserted_station",
-            "text": "Deserted Station"
+            "text": "Stazione Deserta"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "Ufficio della Dott.ssa Kensler"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "Aula di Dyer"
           },
           {
             "id": "elder_chamber",
-            "text": "Elder Chamber"
+            "text": "Sala degli Antichi"
           },
           {
             "id": "hedge_maze",
-            "text": "Hedge Maze"
+            "text": "Labirinto di Siepi"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "Infermeria"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "Statue Mo'ai"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "Fronte Ottomano"
           },
           {
             "id": "riverview_theatre",
-            "text": "Riverview Theatre"
+            "text": "Cinema di Riverview"
           },
           {
             "id": "standing_stones",
-            "text": "Standing Stones"
+            "text": "Pietre Verticali"
           },
           {
             "id": "the_black_stone",
@@ -972,7 +972,7 @@
           },
           {
             "id": "university_halls",
-            "text": "University Halls"
+            "text": "Corridoi dell'Università"
           }
         ]
       },
@@ -1031,31 +1031,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "Dinamite"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "Steatite Verde"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "Cristallo Miasmatico"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "Campioni di Minerali"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "Radiolina"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "Pezzi di Ricambio"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "Slitta di Legno"
           }
         ]
       }
@@ -4437,11 +4437,11 @@
           },
           {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "l’anomalia è stata arginata."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Il Soggetto M3L-M4 ha divorato l’intero universo."
           },
           {
             "id": "cell_meddled_in_abarrans_affairs",

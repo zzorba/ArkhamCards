@@ -54,7 +54,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero più alto di destini su un [[Cultist]] nemico in gioco.",
+          "prompt": "Numero più alto di destini su un [[Cultista]] nemico in gioco.",
           "min": 0
         }
       },
@@ -101,7 +101,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero totale di [[Mostri]] in gioco.",
+          "prompt": "Numero totale di [[Mostro]] in gioco.",
           "min": 0
         }
       },
@@ -586,7 +586,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Altered]]",
+              "prompt": "A un luogo [[Alterato]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -637,7 +637,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Altered]]",
+              "prompt": "A un luogo [[Alterato]]",
               "modified_value": {
                 "modifier": -5
               }
@@ -687,7 +687,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero di luoghi [[Extradimensional]] in gioco",
+          "prompt": "Numero di luoghi [[Extradimensionale]] in gioco",
           "min": 0,
           "max": 5
         }
@@ -719,7 +719,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero di luoghi [[Extradimensional]] in gioco",
+          "prompt": "Numero di luoghi [[Extradimensionale]] in gioco",
           "min": 0
         }
       },
@@ -973,7 +973,7 @@
           },
           "options": [
             {
-              "prompt": "Scegli casualmente un nemico tra i [[Monster]] messi da parte e posizionalo sotto al Capitolo",
+              "prompt": "Scegli casualmente un nemico tra i [[Mostro]] messi da parte e posizionalo sotto al Capitolo",
               "modified_value": {
                 "modifier": 0
               }
@@ -1015,7 +1015,7 @@
           },
           "options": [
             {
-              "prompt": "Scegli casualmente un nemico tra i [[Monster]] messi da parte e posizionalo sotto al Capitolo",
+              "prompt": "Scegli casualmente un nemico tra i [[Mostro]] messi da parte e posizionalo sotto al Capitolo",
               "modified_value": {
                 "modifier": 0
               }
@@ -1495,7 +1495,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero più alto di destini su un [[Cultist]] nemico",
+          "prompt": "Numero più alto di destini su un [[Cultista]] nemico",
           "min": 0
         }
       },
@@ -1560,7 +1560,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Ancient]]",
+              "prompt": "A un luogo [[Antico]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -1599,7 +1599,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Ancient]]",
+              "prompt": "A un luogo [[Antico]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -1642,7 +1642,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Cave]]",
+              "prompt": "A un luogo [[Caverna]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -1679,7 +1679,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Cave]]",
+              "prompt": "A un luogo [[Caverna]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -2128,7 +2128,7 @@
           },
           "options": [
             {
-              "prompt": "Ti trovi in un luogo [[Extradimensional]]",
+              "prompt": "Ti trovi in un luogo [[Extradimensionale]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -2166,7 +2166,7 @@
           },
           "options": [
             {
-              "prompt": "Ti trovi in un luogo [[Extradimensional]]",
+              "prompt": "Ti trovi in un luogo [[Extradimensionale]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -2737,7 +2737,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Graveyard]] location",
+              "prompt": "In un luogo [[Cimitero]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -2775,7 +2775,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Graveyard]] location",
+              "prompt": "In un luogo [[Cimitero]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -3639,7 +3639,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Bayou]] location",
+              "prompt": "In un luogo [[Bayou]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -3689,7 +3689,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Bayou]] location",
+              "prompt": "In un luogo [[Bayou]]",
               "modified_value": {
                 "modifier": -6
               }
@@ -4014,7 +4014,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Guest]] enemies in play",
+          "prompt": "Numero di nemici [[Ospite]] in gioco",
           "min": 0
         }
       },

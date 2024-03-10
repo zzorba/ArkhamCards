@@ -5211,7 +5211,7 @@
           },
           "options": [
             {
-              "prompt": "Tu Lugar está agotado.",
+              "prompt": "Tu Lugar está agotado",
               "modified_value": {
                 "modifier": -4
               }
@@ -5248,7 +5248,7 @@
           },
           "options": [
             {
-              "prompt": "Tu Lugar está agotado.",
+              "prompt": "Tu Lugar está agotado",
               "modified_value": {
                 "modifier": -5
               }
@@ -7569,7 +7569,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La mitad de tu nivel de alarma (redondeando hacia arriba).",
+          "prompt": "La mitad de tu nivel de alarma (redondeando hacia abajo).",
           "min": 1
         }
       },
@@ -7595,7 +7595,7 @@
           },
           "options": [
             {
-              "prompt": "Aumenta tu nivel de alarma en 1.",
+              "prompt": "Aumenta tu nivel de alarma en 1",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -7635,7 +7635,7 @@
           },
           "options": [
             {
-              "prompt": "Aumenta tu nivel de alarma en 1.",
+              "prompt": "Aumenta tu nivel de alarma en 1",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -8423,7 +8423,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [per_investigator] civilians slain.",
+          "prompt": "Número de civiles muertos [per_investigator]",
           "min": 0
         }
       },
@@ -8451,7 +8451,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [per_investigator] civilians slain.",
+          "prompt": "Número de civiles muertos [per_investigator]",
           "min": 0,
           "scale": 2
         }
@@ -8484,7 +8484,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of targets on the scenario reference card.",
+          "prompt": "Cantidad de objetivos sobre la carta de referencia de escenario",
           "min": 0
         }
       },
@@ -8513,7 +8513,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of targets on the scenario reference card.",
+          "prompt": "Cantidad de objetivos sobre la carta de referencia de escenario",
           "adjustment": 1,
           "min": 0
         }
@@ -8547,7 +8547,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of clues on a [[Cultist]] enemy in play (3 during act 3)",
+          "prompt": "Cantidad más alta de pistas que haya sobre un Enemigo [[Sectario]] en juego (3 durante el acto 3)",
           "min": 0
         }
       },
@@ -8560,7 +8560,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on the nearest [[Cultist]] enemy",
+              "prompt": "Coloca 1 ficha de Perdición sobre el Enemigo [[Sectario]] más cercano",
               "modified_value": {
                 "modifier": -1
               }
@@ -8586,7 +8586,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of clues on [[Cultist]] enemies in play (4 during act 3)",
+          "prompt": "Cantidad total de pistas que haya sobre Enemigos [[Sectario]] en juego (4 durante el acto 3)",
           "min": 0
         }
       },
@@ -8599,7 +8599,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on the nearest [[Cultist]] enemy",
+              "prompt": "Coloca 1 ficha de Perdición sobre el Enemigo [[Sectario]] más cercano",
               "modified_value": {
                 "modifier": -3
               }
@@ -8629,7 +8629,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de enemigos en las sombras",
+          "prompt": "Cantidad de Enemigos en las sombras",
           "min": 0,
           "max": 3
         }
@@ -8655,7 +8655,7 @@
           },
           "options": [
             {
-              "prompt": "There is a concealed mini-card at your location and you don't take 1 damage",
+              "prompt": "Hay una carta pequeña Encubierto en tu Lugar y no recibes daño",
               "modified_value": {
                 "modifier": -3
               }
@@ -8669,7 +8669,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Número de enemigos en las sombras",
+          "prompt": "Cantidad de Enemigos en las sombras",
           "min": 0,
           "max": 5
         }
@@ -8695,7 +8695,7 @@
           },
           "options": [
             {
-              "prompt": "There is a concealed mini-card at your location and you don't take 1 damage",
+              "prompt": "Hay una carta pequeña Encubierto en tu Lugar y no recibes daño",
               "modified_value": {
                 "modifier": -5
               }
@@ -8713,7 +8713,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Hazard]] treacheries in play",
+          "prompt": "Cantidad de Traiciones [[Riesgo]] en juego",
           "min": 0
         }
       },
@@ -8732,7 +8732,7 @@
           },
           "options": [
             {
-              "prompt": "Void Chimera is at your location",
+              "prompt": "La Quimera del vacío está en tu Lugar",
               "modified_value": {
                 "modifier": -5
               }
@@ -8752,7 +8752,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Hazard]] treacheries in play",
+          "prompt": "Cantidad de Traiciones [[Riesgo]] en juego",
           "adjustment": 1,
           "min": 0
         }
@@ -8772,7 +8772,7 @@
           },
           "options": [
             {
-              "prompt": "Void Chimera is at your location",
+              "prompt": "La Quimera del vacío está en tu Lugar",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8801,7 +8801,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a Key Locus",
+              "prompt": "Estás en un Lugar que tenga un Locus de Llave",
               "modified_value": {
                 "modifier": -3
               }
@@ -8838,7 +8838,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a Key Locus",
+              "prompt": "Estás en un Lugar que tenga un Locus de Llave",
               "modified_value": {
                 "modifier": -4
               }
@@ -8874,7 +8874,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of charges on Shade Reaper (rounded up)",
+          "prompt": "La mitad de la cantidad de cargas que haya sobre El cosechador de sombras, redondeando hacia arriba",
           "min": 0,
           "max": 6
         }
@@ -8894,7 +8894,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a [[Geist]] enemy",
+              "prompt": "Estás en un Lugar con un Enemigo [[Geist]]",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -8912,7 +8912,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 charge on The Shade Reaper",
+              "prompt": "Coloca 1 carga sobre El cosechador de sombras",
               "modified_value": {
                 "modifier": 0
               }
@@ -8926,7 +8926,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of charges on Shade Reaper",
+          "prompt": "Cantidad de cargas que haya sobre El cosechador de sombras",
           "min": 0
         }
       },
@@ -8945,7 +8945,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a [[Geist]] enemy",
+              "prompt": "Estás en un Lugar con un Enemigo [[Geist]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8962,7 +8962,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 charge on The Shade Reaper",
+              "prompt": "Coloca 1 carga sobre El cosechador de sombras",
               "modified_value": {
                 "modifier": -3
               }
@@ -8994,7 +8994,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of set-aside hollows you own",
+          "prompt": "Cantidad de vaciados puestos aparte que posees",
           "min": 0,
           "max": 5
         }
@@ -9025,7 +9025,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of set-aside hollows you own",
+          "prompt": "Cantidad de vaciados puestos aparte que posees",
           "adjustment": 1,
           "min": 0
         }
@@ -9059,7 +9059,7 @@
           },
           "options": [
             {
-              "prompt": "Flip a [[Stable]] key you control to its [[Unstable]] side",
+              "prompt": "Dale la vuelta a una Llave [[Estable]] que controles para mostrar su lado [[Inestable]]",
               "modified_value": {
                 "modifier": -2
               }
@@ -9076,7 +9076,7 @@
           },
           "options": [
             {
-              "prompt": "Attack against a ready [[Outsider]] enemy",
+              "prompt": "Es un ataque contra un Enemigo [[Ser del exterior]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9111,7 +9111,7 @@
           },
           "options": [
             {
-              "prompt": "Flip a [[Stable]] key you control to its [[Unstable]] side",
+              "prompt": "Dale la vuelta a una Llave [[Estable]] que controles para mostrar su lado [[Inestable]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -9128,7 +9128,7 @@
           },
           "options": [
             {
-              "prompt": "There is a ready [[Outsider]] enemy at your location",
+              "prompt": "Hay un Enemigo [[Ser del exterior]] en tu Lugar",
               "modified_value": {
                 "modifier": "auto_fail"
               }
