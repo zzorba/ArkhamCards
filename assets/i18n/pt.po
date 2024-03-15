@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-02-07 17:58-0500\n"
-"PO-Revision-Date: 2024-03-08 01:45-0300\n"
+"PO-Revision-Date: 2024-03-15 20:50-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -4094,7 +4094,7 @@ msgstr[0] "${ tokens }/${ total } ficha"
 msgstr[1] "${ tokens }/${ total } fichas"
 
 msgid "Show all cards"
-msgstr "Mostrar todos as cartas"
+msgstr "Mostrar todas as cartas"
 
 msgid "Disable to choose individual packs to show"
 msgstr "Desative para escolher pacotes individuais para mostrar"
@@ -4103,7 +4103,7 @@ msgid "All cards are shown throughout the app"
 msgstr "Todos as cartas são mostradas em todo o aplicativo"
 
 msgid "Use these controls to limit which cards are visible while searching, building decks, or upgrading cards to those in your own collection."
-msgstr "Use esses controles para limitar quais cartas são visíveis durante a pesquisa, construindo baralhos ou atualizando cartas para sua própria coleção."
+msgstr "Use esses controles para limitar quais cartas ficam visíveis durante a pesquisa, construção de baralhos ou atualização de cartas para aquelas cartas de sua própria coleção."
 
 msgid "All Cycles and Packs"
 msgstr "Todos os Ciclos e Pacotes"
@@ -4152,25 +4152,25 @@ msgstr "Faça login no Arkham Cards na guia Configurações para ativar"
 
 #, javascript-format
 msgid "${ spent } of ${ supplyIcon } ${ total }"
-msgstr ""
+msgstr "${ spent } de ${ supplyIcon } ${ total }"
 
 msgid "Choose deck"
 msgstr "Escolher baralho"
 
 msgid "Frost"
-msgstr "Geada"
+msgstr "Congelamento"
 
 msgid "Database reset"
 msgstr "Redefinição do banco de dados"
 
 msgid "Please close and restart the app"
-msgstr "Feche e reinicie o aplicativo"
+msgstr "Por favor, reinicie o aplicativo"
 
 msgid "Reset card database"
 msgstr "Redefinir banco de dados de carta"
 
 msgid "Mythos Busters"
-msgstr "Mythos Busters"
+msgstr "Destruidores de Mythos"
 
 #, javascript-format
 msgid "This app is made possible by the continued support of our fans on ${ patreonLink } and the ${ mythosBustersLink } podcast."
@@ -4183,11 +4183,11 @@ msgid ""
 msgstr ""
 "O banco de dados de cartas foi redefinido.\n"
 "\n"
-"Por favor, feche o aplicativo e reinicie-o para acionar uma sincronização completa dos dados de cartas."
+"Por favor, feche o aplicativo e reinicie-o para acionar uma sincronização completa das cartas."
 
 #, javascript-format
 msgid "Sqlite version: ${ sqliteVersion }"
-msgstr ""
+msgstr "SQLite versão: ${ sqliteVersion }"
 
 msgid "Beta testing"
 msgstr "Teste beta"
@@ -4248,10 +4248,10 @@ msgid "The Entity"
 msgstr "A Entidade"
 
 msgid "Resolute"
-msgstr "Resoluto"
+msgstr "Resoluta"
 
 msgid "MIA"
-msgstr ""
+msgstr "Desaparecido"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign.\n"
@@ -4266,7 +4266,7 @@ msgstr ""
 "- Fraquezas, traumas, experiência e recompensas concedidas ao jogar uma história paralela fica com os investigadores pelo restante da campanha.\n"
 "- Cada história paralela só pode ser jogada uma vez por campanha.\n"
 "\n"
-"<b>Observação:</b> ao usar este aplicativo, a experiência necessária para jogar esses cenários serão deduzidos automaticamente no <b>final do cenário</b>, mas você deve ter certeza de que tem experiência suficiente para pagarisso."
+"<b>Observação:</b> ao usar este aplicativo, a experiência necessária para jogar esses cenários serão deduzidos automaticamente no <b>final do cenário</b>, mas você deve ter certeza de que tem experiência suficiente para pagar por isso."
 
 msgid "Ice and Death: Part 1"
 msgstr "Gelo e Morte: Parte 1"
@@ -4284,10 +4284,10 @@ msgid "To the Forbidden Peaks"
 msgstr "Para os Picos Proibidos"
 
 msgid "Endless Night"
-msgstr "Noite sem fim"
+msgstr "Noite Sem Fim"
 
 msgid "City of the Elder Things"
-msgstr "Cidade das Criaturas Ancestrais"
+msgstr "Cidade dos Seres Ancestrais"
 
 msgid "Final Night"
 msgstr "Noite Final"
@@ -4314,7 +4314,7 @@ msgid "Ice and Death - Supplies Recovered"
 msgstr "Gelo e Morte - Suprimentos Recuperados"
 
 msgid "The Heart of Madness - Seals Placed"
-msgstr "O Coração da Loucura - Selos Colocados"
+msgstr "O Coração da Loucura - elos Posicionados"
 
 msgid "The Heart of Madness - Seals Recovered"
 msgstr "O Coração da Loucura - Selos Recuperados"
@@ -4324,7 +4324,7 @@ msgstr "Você pode curar 1 trauma físico ou mental <i>(sua escolha)</i>"
 
 #, javascript-format
 msgid "In the ${ sectionName } section of the Campaign Log, draw a check mark next to ${ partnerName }."
-msgstr "Na seção ${ sectionName } do Registro da campanha, desenhe uma marca de check ao lado de ${ partnerName }."
+msgstr "Na seção ${ sectionName } do Registro da campanha, faça uma marcação ao lado de ${ partnerName }."
 
 msgid "Choose heal type"
 msgstr "Escolha o tipo de cura"
@@ -4339,7 +4339,7 @@ msgid "Review and draw weaknesses"
 msgstr "Revise e compre fraquezas"
 
 msgid "Choose expansions for basic weakness"
-msgstr "Escolha expansões para fraqueza básica"
+msgstr "Escolha as expansões para fraqueza básica"
 
 msgid "Uploading campaign"
 msgstr "Fazendo upload da campanha"
@@ -4347,17 +4347,17 @@ msgstr "Fazendo upload da campanha"
 #, javascript-format
 msgid "${ input.prompt } (choose ${ quantity })"
 msgid_plural "${ input.prompt } (choose ${ quantity })"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ input.prompt } (escolha ${ quantity })"
+msgstr[1] "${ input.prompt } (escolha ${ quantity })"
 
 msgid "This deck is owned by another player. You can record the upgrade now and they will be given an opportunity to save the changes to their deck when they next open the app."
-msgstr "Este baralho pertence a outro jogador. Você pode gravar a atualização agora e eles terão a oportunidade de salvar as alterações em seu baralho quando eles abrem o aplicativo em seguida."
+msgstr "Este baralho pertence a outro jogador. Você pode gravar a atualização agora e eles terão a oportunidade de salvar as alterações em seu baralho na próxima vez que abrirem o aplicativo."
 
 msgid "Changes have been recorded. You can apply these changes to your deck on the main screen of the campaign under your investigator."
-msgstr "As alterações foram gravadas. Você pode aplicar essas alterações ao seu baralho na tela principal da campanha sob seu investigador."
+msgstr "As alterações foram salvas. Você pode aplicar essas alterações ao seu baralho na tela principal da campanha em seu investigador."
 
 msgid "Changes have been recorded. The owner of this deck can apply these changes to their deck on the main screen of the campaign under their investigator."
-msgstr "As alterações foram registradas. O proprietário desse baralho pode aplicar essas alterações ao seu baralho na tela principal da campanha sob seu investigador."
+msgstr "As alterações foram salvas. O proprietário desse baralho pode aplicar essas alterações em seu baralho na tela principal da campanha em seu investigador."
 
 msgid "Tarot card"
 msgstr "Carta de Tarô"
@@ -4373,16 +4373,16 @@ msgid "Which tarot card is impacting the chaos bag?"
 msgstr "Qual carta de tarô está afetando a bolsa do caos?"
 
 msgid "Replace highest non-negative token with a skull."
-msgstr "Substitua a ficha não negativa mais alta por uma caveira."
+msgstr "Substitua a ficha não negativa mais alta por um Crânio."
 
 msgid "Replace a skull with a 0 token."
-msgstr "Substitua uma caveira por uma ficha 0."
+msgstr "Substitua um Crânio por uma ficha 0."
 
 msgid "Judgement · XX"
-msgstr "Julgamento · XX"
+msgstr "O Julgamento · XX"
 
 msgid "Judgement · XX (Inverted)"
-msgstr "Julgamento · XX (Invertido)"
+msgstr "O Julgamento · XX (Invertido)"
 
 msgid "The Fool · 0"
 msgstr "O Louco · 0"
