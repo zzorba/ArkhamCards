@@ -5738,7 +5738,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
-msgstr "‘토큰 되돌리기’ 버튼만 누르시고, ${ bless } / ${ curse } 토큰은 ${ doNotRemove }"
+msgstr "${ bless } / ${ curse } 토큰 수는 ‘토큰 되돌리기’ 후 자동 반영됨"
 
 msgid "Recent token history"
 msgstr "최근 토큰 기록"
