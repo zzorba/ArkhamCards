@@ -161,7 +161,7 @@
     "throttle-debounce": "5.0.0",
     "tinycolor2": "1.6.0",
     "ttag": "1.7.25",
-    "typeorm": "0.2.45",
+    "typeorm": "0.3.0",
     "url": "0.11.3",
     "use-debounce": "6.0.1",
     "use-debounced-effect-hook": "1.1.62",
