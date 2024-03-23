@@ -95,6 +95,11 @@
   {
     "type": "scenario",
     "campaignId": "side",
+    "scenarioId": "legions_of_fire"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
     "scenarioId": "machinations_through_time"
   },
   {

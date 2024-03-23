@@ -59,6 +59,9 @@ target 'ArkhamCards' do
     )
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
+        if  config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] == '11.0'
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+        end
         if config.build_settings['WRAPPER_EXTENSION'] == 'bundle'
           config.build_settings['DEVELOPMENT_TEAM'] = '54773FU58P'
         end

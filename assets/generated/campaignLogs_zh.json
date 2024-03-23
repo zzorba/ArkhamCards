@@ -1074,27 +1074,27 @@
           },
           {
             "id": "eastwick_bog",
-            "text": "Eastwick Bog"
+            "text": "東方沼澤"
           },
           {
             "id": "hemlock_harbor",
-            "text": "Hemlock Harbor"
+            "text": "鐵杉港"
           },
           {
             "id": "north_point_mine",
-            "text": "North Point Mine"
+            "text": "北角礦坑"
           },
           {
             "id": "pearl_ridge",
-            "text": "Pearl Ridge"
+            "text": "珍珠山脈"
           },
           {
             "id": "southern_fields",
-            "text": "Souther Fields"
+            "text": "南方田野"
           },
           {
             "id": "western_woods",
-            "text": "Western Woods"
+            "text": "西方大森林"
           }
         ]
       },
@@ -1103,161 +1103,161 @@
         "entries": [
           {
             "id": "eat",
-            "masculine_text": "#name# finished his meal.",
-            "feminine_text": "#name# finished her meal.",
-            "nonbinary_text": "#name# finished their meal."
+            "masculine_text": "#name# 享用了餐點。",
+            "feminine_text": "#name# 享用了餐點。",
+            "nonbinary_text": "#name# 享用了餐點。"
           },
           {
             "id": "all_the_captives_were_lost",
-            "text": "all the captives were lost."
+            "text": "所有俘虜喪生。"
           },
           {
             "id": "barely_survived",
-            "text": "investigators barely survived the Feast of Hemlock Vale."
+            "text": "調查員們從鐵杉谷的盛宴中倖存。"
           },
           {
             "id": "became_the_true_feast_of_hemlock_vale",
-            "text": "the investigators became the true Feast of Hemlock Vale."
+            "text": "調查員們成為了鐵杉谷真正的盛宴。"
           },
           {
             "id": "believed",
-            "text": "the investigators believed."
+            "text": "調查員們成為信徒。"
           },
           {
             "id": "bertie_had_an_epiphany",
-            "text": "Bertie had an epiphany."
+            "text": "柏蒂受到啟示。"
           },
           {
             "id": "bertie_perished",
-            "text": "Bertie perished."
+            "text": "柏蒂殞落。"
           },
           {
             "id": "bertie_was_lost_in_the_woods",
-            "text": "Bertie was lost in the woods."
+            "text": "柏蒂迷失在森林之中。"
           },
           {
             "id": "bertie_was_rescued",
-            "text": "Bertie was rescued."
+            "text": "柏蒂獲救。"
           },
           {
             "id": "captives_were_saved",
-            "text": "the captives were saved."
+            "text": "俘虜被拯救。"
           },
           {
             "id": "chelydran_hybrid_devoured",
-            "text": "the Chelydran Hybrid was devoured."
+            "text": "擬鱷龜雜生物已被吞噬。"
           },
           {
             "id": "chelydran_hybrid_lived",
-            "text": "the Chelydran Hybrid lived."
+            "text": "擬鱷龜雜生物存活。"
           },
           {
             "id": "chelydran_hybrid_perished",
-            "text": "the Chelydran Hybrid perished."
+            "text": "擬鱷龜雜生物已被消滅。"
           },
           {
             "id": "dr_marquez_has_a_hunch",
-            "text": "Dr. Marquez has a hunch."
+            "text": "馬爾克斯博士有個預感。"
           },
           {
             "id": "dr_marquez_has_a_plan",
-            "text": "Dr. Marquez has a plan."
+            "text": "馬爾克斯博士有個計劃。"
           },
           {
             "id": "dr_marquez_sacrificed_herself_for_the_vale",
-            "text": "Dr. Marquez sacrificed herself for the Vale."
+            "text": "馬爾克斯博士為谷地犧牲自己。"
           },
           {
             "id": "elizabeth_peters_was_saved",
-            "text": "Elizabeth Peters was saved."
+            "text": "伊麗莎白．彼得斯獲救。"
           },
           {
             "id": "faced_the_night_alone",
-            "text": "the investigators faced the longest night alone."
+            "text": "調查員獨自面對漫漫長夜。"
           },
           {
             "id": "helen_peters_joined_the_survey",
-            "text": "Helen Peters joined the survey."
+            "text": "海倫．彼得斯加入調查團。"
           },
           {
             "id": "helen_shared_a_dance",
-            "text": "Helen shared a dance."
+            "text": "與海倫共舞。"
           },
           {
             "id": "interrupted_the_feast",
-            "text": "the investigators interrupted the Feast."
+            "text": "調查員們打斷盛宴。"
           },
           {
             "id": "investigators_sacrificed_themselves_for_the_vale",
-            "text": "the investigators sacrificed themselves for the Vale."
+            "text": "調查員們為谷地犧牲自己。"
           },
           {
             "id": "laid_the_pearl_family_to_rest",
-            "text": "the investigators laid the Pearl Family to rest."
+            "text": "調查員幫助帕洛一家安息。"
           },
           {
             "id": "learned_their_place",
-            "text": "the investigators learned their place."
+            "text": "調查員取得宴會的一席之地。"
           },
           {
             "id": "lied_to_mother_rachel",
-            "text": "the investigators lied to Mother Rachel."
+            "text": "調查員們對瑞秋主母說謊。"
           },
           {
             "id": "lost_the_path",
-            "text": "the investigators lost the path."
+            "text": "調查員們迷失路途。"
           },
           {
             "id": "madame_pearls_diary_was_recovered",
-            "text": "Madame Pearl’s diary was recovered."
+            "text": "找回帕洛女士的日記。"
           },
           {
             "id": "many_captives_were_lost",
-            "text": "many captives were lost."
+            "text": "許多俘虜喪生。"
           },
           {
             "id": "mother_rachel_showed_the_way",
-            "text": "Mother Rachel showed the way."
+            "text": "瑞秋主母指明道路。"
           },
           {
             "id": "remains_were_partially_recovered",
-            "text": "the remains were partially recovered."
+            "text": "找回部分遺體。"
           },
           {
             "id": "river_shared_their_ambitions",
-            "text": "River shared their ambitions."
+            "text": "芮福表達了野心。"
           },
           {
             "id": "survived_the_horrors_in_the_rock",
-            "text": "the investigators survived the horrors in the rock."
+            "text": "調查員從岩石中的恐怖存活下來。"
           },
           {
             "id": "the_bear_was_wounded",
-            "text": "the bear was wounded."
+            "text": "熊怪受傷。"
           },
           {
             "id": "the_hemlocks_made_a_truce",
-            "text": "the Hemlocks made a truce."
+            "text": "赫姆拉克家族停戰。"
           },
           {
             "id": "the_peters_family_was_reunited",
-            "text": "The Peters family was reunited."
+            "text": "彼得斯一家團聚。"
           },
           {
             "id": "the_vale_burned",
-            "text": "the Vale burned."
+            "text": "谷地付之一炬。"
           },
           {
             "id": "the_vale_is_full_of_fireworks",
-            "text": "The Vale is full of fireworks."
+            "text": "山谷內堆滿了煙火。"
           },
           {
             "id": "the_vale_was_saved",
-            "text": "the Vale was saved."
+            "text": "谷地被拯救。"
           },
           {
             "id": "thing_in_the_depths_was_defeated",
-            "text": "The Thing in the Depths was defeated."
+            "text": "池底之物已被擊敗。"
           }
         ]
       },
@@ -1266,27 +1266,27 @@
         "entries": [
           {
             "id": "day_1_day",
-            "text": "Day 1 ([day])"
+            "text": "第一日([day])"
           },
           {
             "id": "day_1_night",
-            "text": "Night 1 ([night])"
+            "text": "第一夜([night])"
           },
           {
             "id": "day_2_day",
-            "text": "Day 2 ([day])"
+            "text": "第二日([day])"
           },
           {
             "id": "day_2_night",
-            "text": "Night 2 ([night])"
+            "text": "第二夜([night])"
           },
           {
             "id": "day_3_day",
-            "text": "Day 3 ([day])"
+            "text": "第三日([day])"
           },
           {
             "id": "day_3_night",
-            "text": "Night 3 ([night])"
+            "text": "第三夜([night])"
           }
         ]
       },
@@ -1295,27 +1295,27 @@
         "entries": [
           {
             "id": "gideon_finished_the_tale_of_the_annabelle_lee",
-            "text": "Gideon finished the tale of the Annabelle Lee."
+            "text": "吉迪恩說完了安娜貝拉．李的故事。"
           },
           {
             "id": "gideon_found_his_treasure",
-            "text": "Gideon found his treasure."
+            "text": "吉迪恩找到他的寶藏。"
           },
           {
             "id": "gideon_shared_a_dance",
-            "text": "Gideon shared a dance."
+            "text": "與吉迪恩共舞。"
           },
           {
             "id": "gideon_stood_by_you",
-            "text": "Gideon stood by you."
+            "text": "吉迪恩與你並肩作戰。"
           },
           {
             "id": "gideon_told_the_story_of_captain_hemlock",
-            "text": "Gideon told the story of Captain Hemlock."
+            "text": "吉迪恩講述了關於赫姆拉克船長的故事。"
           },
           {
             "id": "gideon_told_the_tale_of_the_annabelle_lee",
-            "text": "Gideon told the tale of the Annabelle Lee."
+            "text": "吉迪恩講述了關於安娜貝拉．李的故事。"
           }
         ]
       },
@@ -1340,6 +1340,10 @@
           },
           {
             "id": "delivering_a_package",
+            "text": "dummy"
+          },
+          {
+            "id": "dr_marquez_ready_for_fate_of_vale",
             "text": "dummy"
           },
           {
@@ -2033,23 +2037,23 @@
         "entries": [
           {
             "id": "judith_saved_your_ass",
-            "text": "Judith saved your ass."
+            "text": "茱蒂絲救了你一命。"
           },
           {
             "id": "judith_shared_a_dance",
-            "text": "Judith shared a dance."
+            "text": "與茱蒂絲共舞。"
           },
           {
             "id": "judith_shared_a_grudge",
-            "text": "Judith shared a grudge."
+            "text": "茱蒂絲分享了一段恩怨。"
           },
           {
             "id": "judith_stood_by_you",
-            "text": "Judith stood by you."
+            "text": "茱蒂絲與你並肩作戰。"
           },
           {
             "id": "you_backed_judith_up",
-            "text": "you backed Judith up."
+            "text": "你支援茱蒂絲。"
           }
         ]
       },
@@ -2058,31 +2062,31 @@
         "entries": [
           {
             "id": "leah_and_simeon_were_reunited",
-            "text": "Leah and Simeon were reunited."
+            "text": "莉亞與西緬團聚了。"
           },
           {
             "id": "leah_is_searching_for_simeon",
-            "text": "Leah is searching for Simeon."
+            "text": "莉亞正在找尋西緬。"
           },
           {
             "id": "leah_saw_something_in_the_mine",
-            "text": "Leah saw something in the mine."
+            "text": "莉亞在礦坑中見到某種東西。"
           },
           {
             "id": "leah_shared_a_dance",
-            "text": "Leah shared a dance."
+            "text": "與莉亞共舞。"
           },
           {
             "id": "leah_shared_her_frustrations",
-            "text": "Leah shared her frustrations."
+            "text": "莉亞分享了她的挫折感。"
           },
           {
             "id": "leah_stood_by_you",
-            "text": "Leah stood by you."
+            "text": "莉亞與你並肩作戰。"
           },
           {
             "id": "searched_the_pearl_ruins",
-            "text": "Leah searched the Pearl Ruins."
+            "text": "莉亞搜尋珍珠遺址。"
           }
         ]
       },
@@ -2091,11 +2095,11 @@
         "entries": [
           {
             "id": "mother_rachel_intervened",
-            "text": "Mother Rachel intervened."
+            "text": "瑞秋主母介入。"
           },
           {
             "id": "mother_rachel_shared_her_doubts",
-            "text": "Mother Rachel shared her doubts."
+            "text": "瑞秋主母分享了她的疑慮。"
           }
         ]
       },
@@ -2104,19 +2108,19 @@
         "entries": [
           {
             "id": "river_is_reclaiming_their_legacy",
-            "text": "River is reclaiming their legacy."
+            "text": "芮福要奪回他的遺產。"
           },
           {
             "id": "river_shared_a_dance",
-            "text": "River shared a dance."
+            "text": "與芮福共舞。"
           },
           {
             "id": "river_stood_by_you",
-            "text": "River stood by you."
+            "text": "芮福與你並肩作戰。"
           },
           {
             "id": "scheme_is_in_motion",
-            "text": "the scheme is in motion."
+            "text": "密謀湧動。"
           }
         ]
       },
@@ -2125,31 +2129,31 @@
         "entries": [
           {
             "id": "plan_is_underway",
-            "text": "the plan is underway."
+            "text": "計劃正在進行中。"
           },
           {
             "id": "plan_is_underway_count",
-            "text": "the plan is underway: #X#"
+            "text": "計劃正在進行中：#X#"
           },
           {
             "id": "simeon_disappeared",
-            "text": "Simeon disappeared."
+            "text": "西緬失蹤。"
           },
           {
             "id": "simeon_hatched_a_plan",
-            "text": "Simeon hatched a plan."
+            "text": "西緬正在策劃某事。"
           },
           {
             "id": "simeon_shared_a_dance",
-            "text": "Simeon shared a dance."
+            "text": "與西緬共舞。"
           },
           {
             "id": "simeon_stood_by_you",
-            "text": "Simeon stood by you."
+            "text": "西緬與你並肩作戰。"
           },
           {
             "id": "simeon_survived",
-            "text": "Simeon survived."
+            "text": "西緬活下來了。"
           }
         ]
       },
@@ -2158,27 +2162,27 @@
         "entries": [
           {
             "id": "theo_distracted_the_bear",
-            "text": "Theo Distracted the Bear."
+            "text": "西奧使熊分心。"
           },
           {
             "id": "theo_is_having_second_thoughts",
-            "text": "Theo is having second thoughts."
+            "text": "西奧產生疑慮。"
           },
           {
             "id": "theo_reconciled_with_helen",
-            "text": "Theo reconciled with Helen."
+            "text": "西奧與海倫和解。"
           },
           {
             "id": "theo_rejected_his_family",
-            "text": "Theo rejected his family."
+            "text": "西奧拒絕了他的家人。"
           },
           {
             "id": "theo_shared_a_dance",
-            "text": "Theo shared a dance."
+            "text": "與西奧共舞。"
           },
           {
             "id": "theo_stood_by_you",
-            "text": "Theo stood by you."
+            "text": "西奧與你並肩作戰。"
           }
         ]
       },
@@ -2187,23 +2191,23 @@
         "entries": [
           {
             "id": "william_is_resolved",
-            "text": "William is resolved."
+            "text": "威廉下定決心。"
           },
           {
             "id": "william_shared_a_dance",
-            "text": "William shared a dance."
+            "text": "與威廉共舞。"
           },
           {
             "id": "william_shared_his_legacy",
-            "text": "William shared his legacy."
+            "text": "威廉分享了他的傳承。"
           },
           {
             "id": "william_stood_by_you",
-            "text": "William stood by you."
+            "text": "威廉與你並肩作戰。"
           },
           {
             "id": "william_took_heart",
-            "text": "William took heart."
+            "text": "威廉重新振作。"
           }
         ]
       }
@@ -4710,6 +4714,22 @@
           {
             "id": "zhu_house_of_usher_has_fallen",
             "text": "the House of Usher has fallen."
+          },
+          {
+            "id": "zlf_ignis_destroy_humanity",
+            "text": "Ignis will bring about the destruction of humanity."
+          },
+          {
+            "id": "zlf_ignis_spirit_has_been_crushed",
+            "text": "Ignis’ spirit has been crushed."
+          },
+          {
+            "id": "zlf_italy_has_ceased_to_exist",
+            "text": "Italy has ceased to exist."
+          },
+          {
+            "id": "zlf_slain_the_eldrich_god",
+            "text": "you have slain the eldrich god of fire."
           }
         ]
       },
@@ -4846,6 +4866,14 @@
           },
           {
             "id": "zjc_killed_jenny",
+            "text": "dummy"
+          },
+          {
+            "id": "zlf_at_vatican_location",
+            "text": "dummy"
+          },
+          {
+            "id": "zlf_explosion",
             "text": "dummy"
           }
         ]

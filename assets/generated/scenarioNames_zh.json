@@ -201,11 +201,11 @@
   },
   {
     "id": "dawn_of_the_final_day",
-    "name": "Dawn of the Final Day"
+    "name": "終日黎明"
   },
   {
     "id": "dawn_of_the_second_day",
-    "name": "Dawn of the Second Day"
+    "name": "次日黎明"
   },
   {
     "id": "dead_by_dawn",
@@ -301,7 +301,7 @@
   },
   {
     "id": "fate_of_the_vale",
-    "name": "Fate of the Vale"
+    "name": "谷中宿命"
   },
   {
     "id": "fhv_epilogue",
@@ -309,7 +309,7 @@
   },
   {
     "id": "fhv_prologue",
-    "name": "Welcome to Hemlock Vale!"
+    "name": "歡迎來到鐵杉谷！"
   },
   {
     "id": "final_night",
@@ -365,7 +365,7 @@
   },
   {
     "id": "hemlock_house",
-    "name": "Hemlock House"
+    "name": "鐵杉之家"
   },
   {
     "id": "hidden_truths",
@@ -466,6 +466,10 @@
   {
     "id": "late_risers",
     "name": "Late Risers"
+  },
+  {
+    "id": "legions_of_fire",
+    "name": "Legions of Fire"
   },
   {
     "id": "london",
@@ -909,7 +913,7 @@
   },
   {
     "id": "the_colour_out_of_space",
-    "name": "The Colour Out of Space"
+    "name": "星之彩"
   },
   {
     "id": "the_crown",
@@ -945,11 +949,11 @@
   },
   {
     "id": "the_final_evening",
-    "name": "The Final Evening"
+    "name": "終夜"
   },
   {
     "id": "the_first_evening",
-    "name": "The First Evening"
+    "name": "首夜"
   },
   {
     "id": "the_foundation",
@@ -997,11 +1001,11 @@
   },
   {
     "id": "the_longest_night",
-    "name": "The Longest Night"
+    "name": "長夜"
   },
   {
     "id": "the_lost_sister",
-    "name": "The Lost Sister"
+    "name": "迷途姊妹"
   },
   {
     "id": "the_machine_in_yellow",
@@ -1045,7 +1049,7 @@
   },
   {
     "id": "the_second_evening",
-    "name": "The Second Evening"
+    "name": "次夜"
   },
   {
     "id": "the_secret_name",
@@ -1053,7 +1057,7 @@
   },
   {
     "id": "the_silent_heath",
-    "name": "The Silent Heath"
+    "name": "靜寂荒原"
   },
   {
     "id": "the_symphony_of_erich_zann",
@@ -1069,11 +1073,11 @@
   },
   {
     "id": "the_thing_in_the_depths",
-    "name": "The Thing in the Depths"
+    "name": "池底之物"
   },
   {
     "id": "the_twisted_hollow",
-    "name": "The Twisted Hollow"
+    "name": "盤根空樹"
   },
   {
     "id": "the_unspeakable_oath",
@@ -1197,7 +1201,7 @@
   },
   {
     "id": "written_in_rock",
-    "name": "Written in Rock"
+    "name": "銘刻於石"
   },
   {
     "id": "ybor_city",

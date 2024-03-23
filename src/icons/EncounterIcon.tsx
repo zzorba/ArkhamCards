@@ -995,6 +995,16 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'written_in_rock':
       case 'the_lost_sister':
         return this.hemlockIcon(encounter_code, size, color);
+
+      case 'depraved_legions':
+      case 'spiraling_inferno':
+      case 'scorched_wasteland':
+      case 'malevolent_ritual':
+      case 'final_annihilation':
+        return this.standaloneIcon(encounter_code, size, color);
+      case 'zlf':
+      case 'legions_of_fire':
+        return this.standaloneIcon('legions_of_fire', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);

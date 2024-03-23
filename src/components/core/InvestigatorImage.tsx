@@ -50,7 +50,7 @@ const ICON_SIZE = {
 };
 
 const INVESTIGATOR_VERTICAL_OFFSET: { [key: string]: number | undefined } = {
-  '09008': 1.5,
+  '09008': 1.7,
   '06001': 0.9,
   '03001': 0.95,
   '04001': 0.9,
@@ -71,6 +71,8 @@ const INVESTIGATOR_VERTICAL_OFFSET: { [key: string]: number | undefined } = {
   '03006': 0.95,
   '09018': 0.95,
   'zsti_00004': 1.5,
+  '10001': 0.95,
+  '10012': 0.95,
 };
 const INVESTIGATOR_HORIZONTAL_OFFSET: { [key: string]: number | undefined } = {
   'zbh_00001': 1.2,
@@ -99,7 +101,7 @@ const INVESTIGATOR_HORIZONTAL_OFFSET: { [key: string]: number | undefined } = {
   '09004': 0.8,
   '06003': 0.5,
   '03004': 0.2,
-  '09011': 1.7,
+  '09011': 1.8,
   '04004': 0.5,
   'zbh_00010': 0.6,
   '60401': 1.4,
@@ -116,9 +118,14 @@ const INVESTIGATOR_HORIZONTAL_OFFSET: { [key: string]: number | undefined } = {
   'zsti_00022': 0.5,
   '07005': 0.5,
   '01005': 0.8,
-  '09018': 0.7,
+  '09018': 0.9,
   '03006': 0.7,
   'zsti_00004': 1.4,
+  '10001': 1.6,
+  '10004': 1.5,
+  '10009': 1.3,
+  '09008': 0.5,
+  '09015': 1.4,
 };
 
 function getImpliedSize(size: 'large' | 'small' | 'tiny', fontScale: number) {

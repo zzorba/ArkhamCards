@@ -113,10 +113,10 @@ export interface TranslationData {
 }
 
 const HEADER_SELECT = {
-  [SORT_BY_TYPE_SLOT]: '(c.sort_by_type * 1000 + c.sort_by_slot - CASE WHEN c.permanent THEN 1 ELSE 0 END) as headerId, c.sort_by_type_header as headerTitle, c.slot as headerSlot, c.permanent as headerPermanent',
+  [SORT_BY_TYPE_SLOT]: '(c.sort_by_type * 10000 + c.sort_by_slot - CASE WHEN c.permanent THEN 1 ELSE 0 END) as headerId, c.sort_by_type_header as headerTitle, c.slot as headerSlot, c.permanent as headerPermanent',
   [SORT_BY_FACTION]: 'c.sort_by_faction as headerId, c.sort_by_faction_header as headerTitle',
-  [SORT_BY_FACTION_PACK]: '(c.sort_by_faction * 1000 + c.sort_by_pack) as headerId, c.sort_by_faction_header as headerTitle, c.pack_name as headerPackName',
-  [SORT_BY_FACTION_XP]: 'c.sort_by_faction * 1000 + COALESCE(c.xp, -1) + 1 as headerId, c.sort_by_faction_header as headerTitle, c.xp as headerXp',
+  [SORT_BY_FACTION_PACK]: '(c.sort_by_faction * 10000 + c.sort_by_pack) as headerId, c.sort_by_faction_header as headerTitle, c.pack_name as headerPackName',
+  [SORT_BY_FACTION_XP]: 'c.sort_by_faction * 10000 + COALESCE(c.xp, -1) + 1 as headerId, c.sort_by_faction_header as headerTitle, c.xp as headerXp',
   [SORT_BY_COST]: 'c.cost as headerId, c.cost as headerTitle',
   [SORT_BY_PACK]: 'c.sort_by_pack as headerId, c.pack_name as headerTitle',
   [SORT_BY_ENCOUNTER_SET]: 'c.encounter_code as headerId, c.sort_by_encounter_set_header as headerTitle',
@@ -1442,7 +1442,7 @@ export default class Card {
     const sort_by_faction_header = Card.factionSortHeader(card, translation, restrictions);
     const sort_by_faction = Card.factionHeaderOrder().indexOf(sort_by_faction_header);
     const pack = data.packs[card.pack_code] || null;
-    const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
+    const sort_by_pack = pack ? (pack.cycle_position * 200 + pack.position) : -1;
     const sort_by_cycle = pack?.cycle_position || 0;
     const sort_by_encounter_set_header = translation.encounter_name ||
       (linked_card && linked_card.encounter_name) ||
@@ -1454,6 +1454,7 @@ export default class Card {
     const firstName = card.type_code === 'investigator' && translation.name.indexOf(' ') !== -1 ?
       translation.name.substring(0, translation.name.indexOf(' ')).replace(/"/g, '') :
       translation.name;
+    const permanent = !!card.permanent;
 
     const altArtInvestigator = card.alt_art_investigator;
     let status: CardStatusType | undefined = undefined;
@@ -1483,6 +1484,7 @@ export default class Card {
         'taboo_xp',
         'official',
         'preview',
+        'permanent',
         'real_pack_name',
         'real_flavor',
         'real_customization_text',
@@ -1495,6 +1497,7 @@ export default class Card {
       ...eskills,
       id: card.id,
       extra_xp: card.taboo_xp,
+      permanent,
       s_search_name,
       s_search_name_back,
       s_search_game,

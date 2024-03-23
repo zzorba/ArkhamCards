@@ -345,6 +345,24 @@ function statusToString(
   gender?: Gender_Enum
 ): string {
   switch (status) {
+    case 'killed':
+      if (gender) {
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Killed`;
+          case Gender_Enum.F: return c('feminine').t`Killed`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Killed`;
+        }
+      }
+      return t`Killed`;
+    case 'insane':
+      if (gender) {
+        switch (gender) {
+          case Gender_Enum.M: return c('masculine').t`Insane`;
+          case Gender_Enum.F: return c('feminine').t`Insane`;
+          case Gender_Enum.Nb: return c('nonbinary').t`Insane`;
+        }
+      }
+      return t`Insane`;
     case 'alive':
       if (gender) {
         switch (gender) {
@@ -395,6 +413,10 @@ function statusToString(
 
 function statusToSelectedString(status: InvestigatorStatus): string {
   switch (status) {
+    case 'killed':
+      return t`Killed`;
+    case 'insane':
+      return t`Insane`;
     case 'alive':
       return t`Alive`;
     case 'resigned':
@@ -411,6 +433,10 @@ function statusToSelectedString(status: InvestigatorStatus): string {
 
 function statusToSelectedFeminineString(status: InvestigatorStatus): string {
   switch (status) {
+    case 'killed':
+      return c('feminine').t`Killed`;
+    case 'insane':
+      return c('feminine').t`Insane`;
     case 'alive':
       return c('feminine').t`Alive`;
     case 'resigned':
@@ -427,6 +453,10 @@ function statusToSelectedFeminineString(status: InvestigatorStatus): string {
 
 function statusToSelectedNonBinaryString(status: InvestigatorStatus): string {
   switch (status) {
+    case 'killed':
+      return c('nonbinary').t`Killed`;
+    case 'insane':
+      return c('nonbinary').t`Insane`;
     case 'alive':
       return c('nonbinary').t`Alive`;
     case 'resigned':
@@ -466,6 +496,8 @@ const STATUS_ICON: {
   physical: 'physical',
   mental: 'mental',
   eliminated: 'dismiss',
+  killed: 'physical',
+  insane: 'mental',
 };
 
 export function createInvestigatorStatusStep(
@@ -496,6 +528,15 @@ export function createInvestigatorStatusStep(
           investigator: '$input_value',
           physical: status === 'physical' ? 1 : 0,
           mental: status === 'mental' ? 1 : 0,
+          hidden: true,
+        });
+      }
+      if (status === 'killed' || status === 'insane') {
+        effects.push({
+          type: 'trauma',
+          investigator: '$input_value',
+          killed: status === 'killed',
+          insane: status === 'insane',
           hidden: true,
         });
       }

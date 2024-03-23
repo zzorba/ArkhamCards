@@ -259,7 +259,7 @@
   "bleeding_hearts": "Bleeding Hearts",
   "card_guards": "Card Guards",
   "riddles_and_games": "Riddles & Games",
-  "wonderland_boons": "Benefícios do País das Maravilhas",
+  "wonderland_boons": "Wonderland Boons",
   "wonderland_banes": "Wonderland Banes",
   "fools_mate": "Fool's Mate",
   "chessmen": "Chessmen",
@@ -445,5 +445,10 @@
   "the_lost_sister": "The Lost Sister",
   "the_thing_in_the_depths": "The Thing in the Depths",
   "the_vale": "The Vale",
-  "written_in_rock": "Written in Rock"
+  "written_in_rock": "Written in Rock",
+  "depraved_legions": "Depraved Legions",
+  "spiraling_inferno": "Spiralling Inferno",
+  "scorched_wasteland": "Scorched Wasteland",
+  "malevolent_ritual": "Malevolent Ritual",
+  "final_annihilation": "Final Annihilation"
 }

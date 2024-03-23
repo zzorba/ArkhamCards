@@ -216,6 +216,12 @@
     "text": "Chasseur est une capacité mot-clé.\nLors de la phase des Ennemis (étape 3.2 de l’[organigramme de la séquence des phases](#Enemy_Phase)), chaque ennemi redressé non-engagé qui a le mot-clé Chasseur se déplace sur un lieu connexe, par le chemin le plus court, en direction de l’investigateur le plus proche. Les ennemis dans un lieu qui contient au moins un investigateur ne se déplacent pas.\n- Si plusieurs investigateurs équidistants peuvent être qualifiés « d’investigateur le plus proche », l’ennemi se déplace vers celui qui satisfait le mieux ses instructions Proie. Si aucun ne convient ou si l’ennemi n’a pas d’instruction Proie, l’investigateur principal peut choisir vers quel investigateur il se déplace.\n- Si un ennemi Chasseur est forcé de se déplacer vers un lieu bloqué par une capacité de carte, il ne se déplace pas.\nVoir aussi [Proie](#Prey)."
   },
   {
+    "id": "Elusive",
+    "cycle": ["fhv"],
+    "title": "Elusive",
+    "text": "If a ready enemy with the elusive keyword attacks or is attacked, after that attack resolves, that enemy immediately disengages from all investigators, moves to a connecting location (with no investigators, if able), and exhausts. This effect occurs whether the enemy was engaged with the attacking investigator or not."
+  },
+  {
     "id": "Search",
     "title": "Chercher",
     "text": "Quand il est demandé à un joueur de chercher une carte, il a le droit de regarder toutes les cartes de la zone concernée sans les révéler aux autres joueurs.\n- Si un effet demande de chercher dans un deck entier, ce deck doit être mélangé après la recherche.\n- Quand un joueur résout un effet de recherche et qu’une ou plusieurs cartes dans la zone recherchée correspondent aux critères de recherche, il est obligé d’en prendre une.\n- Tant que le processus de recherche est en cours, on considère que les cartes n’ont pas quitté leur zone de jeu d’origine."

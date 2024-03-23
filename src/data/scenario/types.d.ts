@@ -101,7 +101,7 @@ export type ScenarioDataEffect =
   | ScenarioDataInvestigatorStatusEffect
   | ScenarioDataAddInvestigatorEffect
   | ScenarioDataStatusEffect;
-export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated";
+export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated" | "killed" | "insane";
 export type ScenarioStatus = "not_started" | "skipped" | "started" | "resolution" | "completed" | "unlocked";
 export type ChaosToken = ("+1" | "0" | "-1" | "-2" | "-3" | "-4" | "-5" | "-6" | "-7" | "-8") | SpecialChaosToken;
 export type SpecialChaosToken =
@@ -114,7 +114,7 @@ export type SpecialChaosToken =
   | "bless"
   | "curse"
   | "frost";
-export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept";
+export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept" | "killed" | "insane";
 export type DefaultOption = Option;
 export type MathCondition = MathCompareCondition | MathOpCondition | MathEqualsCondition;
 export type Operand =
@@ -1533,6 +1533,9 @@ export interface Scenario {
   chaos_bag_card?: string;
   chaos_bag_card_text?: string;
   chaos_bag_card_back_text?: string;
+  extra_chaos_bag_card?: string;
+  extra_chaos_bag_card_text?: string;
+  extra_chaos_bag_card_back_text?: string;
   scenario_name: string;
   full_name: string;
   header: string;

@@ -2608,10 +2608,10 @@
   dependencies:
     "@react-hook/latest" "^1.0.2"
 
-"@react-native-async-storage/async-storage@1.19.3":
-  version "1.19.3"
-  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.19.3.tgz#ad5fe3ed0a82d4624aa4500321c1e09c02daeb46"
-  integrity sha512-CwGfoHCWdPOTPS+2fW6YRE1fFBpT9++ahLEroX5hkgwyoQ+TkmjOaUxixdEIoVua9Pz5EF2pGOIJzqOTMWfBlA==
+"@react-native-async-storage/async-storage@1.23.1":
+  version "1.23.1"
+  resolved "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.23.1.tgz#cad3cd4fab7dacfe9838dce6ecb352f79150c883"
+  integrity sha512-Qd2kQ3yi6Y3+AcUlrHxSLlnBvpdCEMVGFlVBneVOjaFaPU61g1huc38g339ysXspwY1QZA2aNhrk/KlHGO+ewA==
   dependencies:
     merge-options "^3.0.4"
 
@@ -2794,30 +2794,30 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-9.4.1.tgz#7b880758adca65fe47ee866cf7b00416b9dcc192"
   integrity sha512-dAbY5mfw+6Kas/GJ6QX9AZyY+K+eq9ad4Su6utoph/nxyH3whp5cMSgRNgE2VhGQVRZ/OG0qq3IaD3+wzoqJXw==
 
-"@react-native-firebase/app@18.6.1":
-  version "18.6.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-18.6.1.tgz#9dd741b9b4e0493a7fa037c7e5717ba0c53086e4"
-  integrity sha512-lqINQLLTCmBSeln/cSPfvuJNQuwsPY9n6QyxSRRCTjyZdEPI3EY2df7isOCp8BwuxqYmkR9YhTNw2yFI72th+w==
+"@react-native-firebase/app@19.0.1":
+  version "19.0.1"
+  resolved "https://registry.npmjs.org/@react-native-firebase/app/-/app-19.0.1.tgz#49ffbfc7853ebf93520a167a359b4deeac78d77c"
+  integrity sha512-opwy3mQfu0Vg7Fz07EzNCuRI6Wr8U3n6wp0IIwDbNg5zJWQN7ALa9OSN1SA16RhPepIXO1fFWbwmRsL2nOgrIw==
   dependencies:
     opencollective-postinstall "^2.0.3"
     superstruct "^0.6.2"
 
-"@react-native-firebase/auth@18.6.1":
-  version "18.6.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-18.6.1.tgz#99fb90c0ae73edee2d2536d3bca8a3b27c1f8490"
-  integrity sha512-UkULLVtUTUvTKfCVmSAxhPPTyXAgchE9J8KGaSjMpMZnDdW0R4Cr+w4lElOFPfpFq1+i8bKjTl/8nK16QHv3dA==
+"@react-native-firebase/auth@19.0.1":
+  version "19.0.1"
+  resolved "https://registry.npmjs.org/@react-native-firebase/auth/-/auth-19.0.1.tgz#70f0103b41fe407ca120bef224f170c78f1c3584"
+  integrity sha512-7p/AMHm96sCgeERKTGn/PgO/16CUGSeAK3EFVUwr5kVBLfwragDPprUh1x7LaX/irbwbrZwlr2LEHpXNG/4j1g==
   dependencies:
     plist "^3.1.0"
 
-"@react-native-firebase/database@18.6.1":
-  version "18.6.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-18.6.1.tgz#25845f398e54238cf81eefd884f0821bfdc2188e"
-  integrity sha512-jkEqf0s3RzDZju7jbtTEcoB9WvXMzEf/eaOL3sRhbdDb89nFZVfm1jPgNYiZf+QZk0kvk9BPAwIa7BeXrGab5Q==
+"@react-native-firebase/database@19.0.1":
+  version "19.0.1"
+  resolved "https://registry.npmjs.org/@react-native-firebase/database/-/database-19.0.1.tgz#44a34630aa18c42d28a79248d938d3e72d9cf592"
+  integrity sha512-/JycxN/aslFj5UR75lFSM4mLr6kzNqONS7jKpId03i5R/j+9FWgHc3bD8suX+eM291qsmP9gePT0CRIsN7WxAA==
 
-"@react-native-firebase/functions@18.6.1":
-  version "18.6.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-18.6.1.tgz#6bff9fa5d4aee6ec852fd1c586552f0de49f781c"
-  integrity sha512-Oe0xed86qg0LgaBA3UMgLuM4wwLs/VdmyyxnKy3/uH+8Hev9I/cInlO/P1c2RqyjNmGn7tvky0JljCGGD9g+aA==
+"@react-native-firebase/functions@19.0.1":
+  version "19.0.1"
+  resolved "https://registry.npmjs.org/@react-native-firebase/functions/-/functions-19.0.1.tgz#04c3fcd8501b3661affea1bcafdb19e60542e12c"
+  integrity sha512-qeCcr5wW4G6ioWK6FitYANkSQsxshq/sKeUE1Q5+MWmGxD1X6ZVSv4mnSlEZoTN2m4wPwOpq9Ats210G+LKNqA==
 
 "@react-native-google-signin/google-signin@10.1.0":
   version "10.1.0"
@@ -9698,10 +9698,10 @@ react-native-scrubber@1.0.0:
   resolved "https://registry.yarnpkg.com/react-native-scrubber/-/react-native-scrubber-1.0.0.tgz#69dd2a451ec2019b3a5d74885dbe71bdde5d3140"
   integrity sha512-sGKgL07qjx6WY6Si9h+nZrZ07wCDlSEiCs+SAOasuW/Rv01Cg275tDZ4EvronHZUC6Uem+UXqLSFoVJShsxOvw==
 
-react-native-sha256@1.4.9:
-  version "1.4.9"
-  resolved "https://registry.yarnpkg.com/react-native-sha256/-/react-native-sha256-1.4.9.tgz#39760f50513deb5cdd9fd872cf632f9889e68c92"
-  integrity sha512-J5NPOAQmqlmBAtEkN3FBrmCwdTGw+5t+Q82YQlujbhx17qMe/7EL47c8boHNE6K+BIsd48NOhbP0quGUiJvOLQ==
+react-native-sha256@1.4.10:
+  version "1.4.10"
+  resolved "https://registry.npmjs.org/react-native-sha256/-/react-native-sha256-1.4.10.tgz#b4c9990430849ee29a00dfd606fd92f08e003dc7"
+  integrity sha512-x12owcA1jQZ1GMUX2xg2+4IOVJciZChcyNvolt6IjLdAFtu1tttDF9aHsCTW1J1SbLGSoYCo/UTAoNZay/YAsg==
 
 react-native-share@9.4.1:
   version "9.4.1"

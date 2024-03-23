@@ -8338,7 +8338,7 @@
           },
           "options": [
             {
-              "prompt": "You have 2 or more clues",
+              "prompt": "你有2個或更多的線索",
               "modified_value": {
                 "modifier": -3
               }
@@ -8355,7 +8355,7 @@
           },
           "options": [
             {
-              "prompt": "A concealed mini-card is at your location",
+              "prompt": "你的地點有隱蔽小卡",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -8381,7 +8381,7 @@
           },
           "options": [
             {
-              "prompt": "You have 2 or more clues",
+              "prompt": "你有2個或更多的線索",
               "modified_value": {
                 "modifier": -4
               }
@@ -8398,7 +8398,7 @@
           },
           "options": [
             {
-              "prompt": "A concealed mini-card is at your location",
+              "prompt": "你的地點有隱蔽小卡",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -8423,7 +8423,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [per_investigator] civilians slain.",
+          "prompt": "X[per_investigator]個市民已被殺害",
           "min": 0
         }
       },
@@ -8451,7 +8451,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [per_investigator] civilians slain.",
+          "prompt": "X[per_investigator]個市民已被殺害",
           "min": 0,
           "scale": 2
         }
@@ -8484,7 +8484,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of targets on the scenario reference card.",
+          "prompt": "本卡牌上的目標數量",
           "min": 0
         }
       },
@@ -8513,7 +8513,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of targets on the scenario reference card.",
+          "prompt": "本卡牌上的目標數量",
           "adjustment": 1,
           "min": 0
         }
@@ -8547,7 +8547,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of clues on a [[Cultist]] enemy in play (3 during act 3)",
+          "prompt": "場上帶有最多線索的[[異教徒]]敵人的線索數量(場景3時為3)",
           "min": 0
         }
       },
@@ -8560,7 +8560,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on the nearest [[Cultist]] enemy",
+              "prompt": "放置1個毀滅標記到最近的[[異教徒]]敵人上",
               "modified_value": {
                 "modifier": -1
               }
@@ -8586,7 +8586,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of clues on [[Cultist]] enemies in play (4 during act 3)",
+          "prompt": "場上[[異教徒]]敵人的線索數量總和(場景3時為4)",
           "min": 0
         }
       },
@@ -8599,7 +8599,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on the nearest [[Cultist]] enemy",
+              "prompt": "放置1個毀滅標記到最近的[[異教徒]]敵人上",
               "modified_value": {
                 "modifier": -3
               }
@@ -8629,7 +8629,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of enemies in the shadows",
+          "prompt": "陰影中的敵人數量",
           "min": 0,
           "max": 3
         }
@@ -8655,7 +8655,7 @@
           },
           "options": [
             {
-              "prompt": "There is a concealed mini-card at your location and you don't take 1 damage",
+              "prompt": "你所在地點有隱蔽小卡而且你沒有受1點傷害",
               "modified_value": {
                 "modifier": -3
               }
@@ -8669,7 +8669,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of enemies in the shadows",
+          "prompt": "陰影中的敵人數量",
           "min": 0,
           "max": 5
         }
@@ -8695,7 +8695,7 @@
           },
           "options": [
             {
-              "prompt": "There is a concealed mini-card at your location and you don't take 1 damage",
+              "prompt": "你所在地點有隱蔽小卡而且你沒有受1點傷害",
               "modified_value": {
                 "modifier": -5
               }
@@ -8713,7 +8713,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Hazard]] treacheries in play",
+          "prompt": "場上[[危險]]詭計的數量",
           "min": 0
         }
       },
@@ -8732,7 +8732,7 @@
           },
           "options": [
             {
-              "prompt": "Void Chimera is at your location",
+              "prompt": "你和虛空混源體在同一個地點",
               "modified_value": {
                 "modifier": -5
               }
@@ -8752,7 +8752,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Hazard]] treacheries in play",
+          "prompt": "場上[[危險]]詭計的數量",
           "adjustment": 1,
           "min": 0
         }
@@ -8772,7 +8772,7 @@
           },
           "options": [
             {
-              "prompt": "Void Chimera is at your location",
+              "prompt": "你和虛空混源體在同一個地點",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8789,7 +8789,7 @@
     ]
   },
   {
-    "code": "09625",
+    "code": "09635",
     "scenario": "dogs_of_war",
     "standard": [
       {
@@ -8801,7 +8801,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a Key Locus",
+              "prompt": "你所在地點有密鑰護所",
               "modified_value": {
                 "modifier": -3
               }
@@ -8838,7 +8838,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a Key Locus",
+              "prompt": "你所在地點有密鑰護所",
               "modified_value": {
                 "modifier": -4
               }
@@ -8874,7 +8874,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of charges on Shade Reaper (rounded up)",
+          "prompt": "形影死神上充能數量的一半(向上取整)",
           "min": 0,
           "max": 6
         }
@@ -8894,7 +8894,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a [[Geist]] enemy",
+              "prompt": "你和[[靈怪]]敵人在同一個地點",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -8912,7 +8912,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 charge on The Shade Reaper",
+              "prompt": "在形影死神上放1充能",
               "modified_value": {
                 "modifier": 0
               }
@@ -8926,7 +8926,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of charges on Shade Reaper",
+          "prompt": "形影死神上的充能數量",
           "min": 0
         }
       },
@@ -8945,7 +8945,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a [[Geist]] enemy",
+              "prompt": "你和[[靈怪]]敵人在同一個地點",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8962,7 +8962,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 charge on The Shade Reaper",
+              "prompt": "在形影死神上放1充能",
               "modified_value": {
                 "modifier": -3
               }
@@ -8994,7 +8994,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of set-aside hollows you own",
+          "prompt": "你擁有的放在一旁的空洞卡牌數量",
           "min": 0,
           "max": 5
         }
@@ -9025,7 +9025,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of set-aside hollows you own",
+          "prompt": "你擁有的放在一旁的空洞卡牌數量",
           "adjustment": 1,
           "min": 0
         }
@@ -9059,7 +9059,7 @@
           },
           "options": [
             {
-              "prompt": "Flip a [[Stable]] key you control to its [[Unstable]] side",
+              "prompt": "將你控制的一張[[穩定]]密鑰翻至[[不穩定]]面",
               "modified_value": {
                 "modifier": -2
               }
@@ -9076,7 +9076,7 @@
           },
           "options": [
             {
-              "prompt": "Attack against a ready [[Outsider]] enemy",
+              "prompt": "對一個準備的[[異域存在]]敵人進行攻擊",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9111,7 +9111,7 @@
           },
           "options": [
             {
-              "prompt": "Flip a [[Stable]] key you control to its [[Unstable]] side",
+              "prompt": "將你控制的一張[[穩定]]密鑰翻至[[不穩定]]面",
               "modified_value": {
                 "modifier": -4
               }
@@ -9128,7 +9128,7 @@
           },
           "options": [
             {
-              "prompt": "There is a ready [[Outsider]] enemy at your location",
+              "prompt": "你所在地點有準備的[[異域存在]]敵人",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9141,6 +9141,462 @@
         "value": {
           "modifier": -4,
           "cancel_modifiers": true
+        }
+      }
+    ]
+  },
+  {
+    "code": "10501",
+    "scenario": "written_in_rock",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your location's column number",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your location's column number",
+          "min": 1,
+          "scale": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "10502",
+    "scenario": "written_in_rock",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your location's column number",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your location's column number",
+          "min": 1,
+          "scale": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "10501",
+    "scenario": "written_in_rock",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your location's column number",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your location's column number",
+          "min": 1,
+          "scale": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "10704",
+    "scenario": "the_vale",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The current day number",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": 1
+          },
+          "options": [
+            {
+              "prompt": "<b>Parley</b> attempt",
+              "modified_value": {
+                "modifier": "auto_succeed"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Fewer than 3 cards in hand",
+              "modified_value": {
+                "modifier": 0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [
+            {
+              "prompt": "<b>Parley</b> attempt",
+              "modified_value": {
+                "modifier": -1,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The current day number",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [
+            {
+              "prompt": "<b>Parley</b> attempt",
+              "modified_value": {
+                "modifier": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "Fewer than 2 cards in hand",
+              "modified_value": {
+                "modifier": -2
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "<b>Parley</b> attempt",
+              "modified_value": {
+                "modifier": -3,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "10523",
+    "scenario": "hemlock_house",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Current floor number",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Current floor number",
+          "min": 1,
+          "scale": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "10549",
+    "scenario": "the_silent_heath",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of [[Insect]] enemies in play and in the victory display (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "At a [[Lair]] location",
+              "modified_value": {
+                "modifier": -4,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of [[Insect]] enemies in play and in the victory display",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "At a [[Lair]] location",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       }
     ]

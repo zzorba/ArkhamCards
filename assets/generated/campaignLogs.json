@@ -1343,6 +1343,10 @@
             "text": "dummy"
           },
           {
+            "id": "dr_marquez_ready_for_fate_of_vale",
+            "text": "dummy"
+          },
+          {
             "id": "fate_of_the_vale",
             "text": "dummy"
           },
@@ -4710,6 +4714,22 @@
           {
             "id": "zhu_house_of_usher_has_fallen",
             "text": "the House of Usher has fallen."
+          },
+          {
+            "id": "zlf_ignis_destroy_humanity",
+            "text": "Ignis will bring about the destruction of humanity."
+          },
+          {
+            "id": "zlf_ignis_spirit_has_been_crushed",
+            "text": "Ignis’ spirit has been crushed."
+          },
+          {
+            "id": "zlf_italy_has_ceased_to_exist",
+            "text": "Italy has ceased to exist."
+          },
+          {
+            "id": "zlf_slain_the_eldrich_god",
+            "text": "you have slain the eldrich god of fire."
           }
         ]
       },
@@ -4846,6 +4866,14 @@
           },
           {
             "id": "zjc_killed_jenny",
+            "text": "dummy"
+          },
+          {
+            "id": "zlf_at_vatican_location",
+            "text": "dummy"
+          },
+          {
+            "id": "zlf_explosion",
             "text": "dummy"
           }
         ]

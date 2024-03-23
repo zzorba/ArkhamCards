@@ -1368,7 +1368,7 @@
       {
         "code": "60423",
         "text": "此卡牌的文本改為\"抽出符號標記\"，而不是原本列出的符號清單。",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal damage to the attacking enemy equal to its damage or horror."
+        "replacement_text": "變異。快速。在一名敵人攻擊你所在地點的調查員時打出。\n取消該次攻擊。然後從混亂袋中抽出1個標記。如果抽出符號標記，將敵人的傷害轉移給敵人自身。"
       },
       {
         "code": "02269",
@@ -1418,8 +1418,8 @@
       },
       {
         "code": "04233",
-        "text": "This card’s ability now reads: “Gain 1 resource for each action you spent this turn…”",
-        "replacement_text": "Mutated. Gain 1 resource for each action you spent this turn <i>(including this one)</i>. If it is your turn, end your turn."
+        "text": "此卡牌的能力改為：\"本回合你每花費1個行動，獲得1資源……\"",
+        "replacement_text": "變異。本回合你每花費1個行動，獲得1資源(包括本行動)。如果此時是你的回合，則結束你的回合。"
       },
       {
         "code": "06002",
