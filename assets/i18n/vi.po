@@ -5917,6 +5917,14 @@ msgctxt "masculine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "Nếu <i>${ card.name }</i> được liệt kê dưới ‘${ entry.section }’ trong Nhật Ký Chiến Dịch."
 
+msgctxt "masculine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Insane"
+msgstr ""
+
 msgctxt "feminine"
 msgid "Alive"
 msgstr ""
@@ -6028,6 +6036,14 @@ msgctxt "feminine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
 msgstr "Nếu <i>${ card.name }</i> được liệt kê dưới ‘${ entry.section }’ trong Nhật Ký Chiến Dịch."
 
+msgctxt "feminine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Insane"
+msgstr ""
+
 msgctxt "nonbinary"
 msgid "Alive"
 msgstr ""
@@ -6123,6 +6139,14 @@ msgstr ""
 #, javascript-format
 msgctxt "nonbinary"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Killed"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Insane"
 msgstr ""
 
 msgctxt "Traits"
@@ -8057,6 +8081,11 @@ msgstr ""
 
 msgctxt "tags"
 msgid "None"
+msgstr ""
+
+#, javascript-format
+msgctxt "ko"
+msgid "Return ${ bless } / ${ curse } tokens"
 msgstr ""
 
 msgctxt "Tarot Card"

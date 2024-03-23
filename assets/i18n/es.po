@@ -797,19 +797,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -6120,6 +6120,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] "Puesto que ${ list } no tiene ${ supplyName }, debe leer <b>${ sectionName }</b>."
 msgstr[1] "Puesto que ${ list } no tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
 
+msgctxt "masculine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Insane"
+msgstr ""
+
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6231,6 +6239,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] "Puesto que ${ list } no tiene ${ supplyName }, debe leer <b>${ sectionName }</b>."
 msgstr[1] "Puesto que ${ list } no tienen ${ supplyName }, deben leer <b>${ sectionName }</b>."
 
+msgctxt "feminine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Insane"
+msgstr ""
+
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6327,6 +6343,14 @@ msgstr "Traumas mentales"
 msgctxt "nonbinary"
 msgid "Defeated"
 msgstr "Derrotado"
+
+msgctxt "nonbinary"
+msgid "Killed"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Insane"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -8261,6 +8285,11 @@ msgstr "Cancelar"
 msgctxt "tags"
 msgid "None"
 msgstr "Ninguna"
+
+#, javascript-format
+msgctxt "ko"
+msgid "Return ${ bless } / ${ curse } tokens"
+msgstr ""
 
 msgctxt "Tarot Card"
 msgid "None"

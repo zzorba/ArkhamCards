@@ -6123,6 +6123,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] "Étant donné que ${ list } ne possède pas d'équipement ${ supplyName }, il doit lire <b>${ sectionName }</b>."
 msgstr[1] "Étant donné que ${ list } ne possèdent pas d'équipement ${ supplyName }, il doivent lire <b>${ sectionName }</b>."
 
+msgctxt "masculine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Insane"
+msgstr ""
+
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6234,6 +6242,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] "Étant donné que ${ list } ne possède pas d'équipement ${ supplyName }, elle doit lire <b>${ sectionName }</b>."
 msgstr[1] "Étant donné que ${ list } ne possèdent pas d'équipement ${ supplyName }, elles doivent lire <b>${ sectionName }</b>."
 
+msgctxt "feminine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Insane"
+msgstr ""
+
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6330,6 +6346,14 @@ msgstr "Traumatismes mentaux"
 msgctxt "nonbinary"
 msgid "Defeated"
 msgstr "Vaincu"
+
+msgctxt "nonbinary"
+msgid "Killed"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Insane"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -8264,6 +8288,11 @@ msgstr "Aucun"
 msgctxt "tags"
 msgid "Add"
 msgstr "Ajouter"
+
+#, javascript-format
+msgctxt "ko"
+msgid "Return ${ bless } / ${ curse } tokens"
+msgstr ""
 
 msgctxt "Tarot Card"
 msgid "None"

@@ -6112,6 +6112,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] "Da ${ list } den Ausrüstungsgegenstand '${ supplyName }' nicht besitzt, lies <b>${ sectionName }</b>."
 msgstr[1] "Da ${ list } alle den Ausrüstungsgegenstand '${ supplyName }' nicht besitzen, lest <b>${ sectionName }</b>."
 
+msgctxt "masculine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Insane"
+msgstr ""
+
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6223,6 +6231,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] "Da ${ list } den Ausrüstungsgegenstand '${ supplyName }' nicht besitzt, lies <b>${ sectionName }</b>."
 msgstr[1] "Da ${ list } alle den Ausrüstungsgegenstand '${ supplyName }' nicht besitzen, lest <b>${ sectionName }</b>."
 
+msgctxt "feminine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Insane"
+msgstr ""
+
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6319,6 +6335,14 @@ msgstr "Mentales Trauma"
 msgctxt "nonbinary"
 msgid "Defeated"
 msgstr "Besiegt"
+
+msgctxt "nonbinary"
+msgid "Killed"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Insane"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -8253,6 +8277,11 @@ msgstr "Abbrechen"
 msgctxt "tags"
 msgid "None"
 msgstr "Keine"
+
+#, javascript-format
+msgctxt "ko"
+msgid "Return ${ bless } / ${ curse } tokens"
+msgstr ""
 
 msgctxt "Tarot Card"
 msgid "None"

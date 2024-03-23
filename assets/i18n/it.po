@@ -5721,9 +5721,6 @@ msgstr ""
 msgid "App language: ${ appLanguage }"
 msgstr "Lingua App: ${ appLanguage }"
 
-msgid "Lingua Narrazione"
-msgstr ""
-
 msgid "Take the scenic route to mark time"
 msgstr ""
 
@@ -5970,6 +5967,9 @@ msgstr ""
 msgid "Clear image cache"
 msgstr ""
 
+msgid "Narration Language"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -6076,6 +6076,14 @@ msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sec
 msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] "Poiché ${ list } non ha ${ supplyName }, si deve leggere <b>${ sectionName }</b>."
 msgstr[1] "Poiché ${ list } non hanno ${ supplyName }, si deve leggere <b>${ sectionName }</b>."
+
+msgctxt "masculine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Insane"
+msgstr ""
 
 #, javascript-format
 msgctxt "feminine"
@@ -6188,6 +6196,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] "Poiché ${ list } non ha ${ supplyName }, si deve leggere <b>${ sectionName }</b>."
 msgstr[1] "Poiché ${ list } non hanno ${ supplyName }, si deve leggere <b>${ sectionName }</b>."
 
+msgctxt "feminine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Insane"
+msgstr ""
+
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6284,6 +6300,14 @@ msgstr "Traumi Mentali"
 msgctxt "nonbinary"
 msgid "Defeated"
 msgstr "Sconfitto"
+
+msgctxt "nonbinary"
+msgid "Killed"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Insane"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -8217,6 +8241,11 @@ msgstr ""
 
 msgctxt "tags"
 msgid "None"
+msgstr ""
+
+#, javascript-format
+msgctxt "ko"
+msgid "Return ${ bless } / ${ curse } tokens"
 msgstr ""
 
 msgctxt "Tarot Card"

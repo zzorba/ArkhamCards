@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, View, LayoutChangeEvent } from 'react-native';
 import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
-import { jt, t } from 'ttag';
+import { jt, t, c } from 'ttag';
 import KeyEvent from 'react-native-keyevent';
 import KeepAwake from 'react-native-keep-awake';
 
@@ -31,6 +31,7 @@ import { useCounter } from '@components/core/hooks';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import useDifficultyOverrideButton from './useDifficultyOverrideButton';
 import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 interface Props {
   campaignId: CampaignId;
@@ -92,6 +93,7 @@ function BlessCurseCounter({ type, value, min, inc, dec }: { type: 'bless' | 'cu
 
 function ReturnBlessCurseButton({ onPress }: { onPress: () => void }) {
   const { colors, fontScale, typography } = useContext(StyleContext);
+  const { lang } = useContext(LanguageContext);
   const doNotRemove = <Text key="do_not_remove" style={{ color: colors.warn }}>{t`do not remove`}</Text>;
   const bless = <ArkhamIcon key="bless" size={16 * fontScale} color={colors.token.bless} name="bless" />
   const curse = <ArkhamIcon key="curse" size={16 * fontScale} color={colors.token.curse} name="curse" />
@@ -109,7 +111,11 @@ function ReturnBlessCurseButton({ onPress }: { onPress: () => void }) {
             styles.removeBlessCurseButton,
             { borderRadius: height / 2, borderColor: colors.M },
           ]}>
-          <Text style={[typography.cardTraits]} numberOfLines={2} ellipsizeMode="tail">{jt`Return, but ${doNotRemove} ${bless} / ${curse} tokens`}</Text>
+          <Text style={[typography.cardTraits]} numberOfLines={2} ellipsizeMode="tail">
+            { lang === 'ko' ?
+              c('ko').jt`Return ${bless} / ${curse} tokens` :
+              jt`Return, but ${doNotRemove} ${bless} / ${curse} tokens` }
+          </Text>
         </View>
       </TouchableOpacity>
     </View>

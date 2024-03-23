@@ -1029,7 +1029,6 @@ msgstr "Intelecto"
 msgid "Willpower"
 msgstr "Força de vontade"
 
-#, fuzzy
 msgid "Boost"
 msgstr "Impulsionar"
 
@@ -1104,7 +1103,6 @@ msgstr "Vitória"
 msgid "Vengeance"
 msgstr "Vingança"
 
-#, fuzzy
 msgid "Exile"
 msgstr "Exile"
 
@@ -2858,19 +2856,19 @@ msgstr "Enviar campanha"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Fraquezas"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Este baralho contém várias fraquezas básicas"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Este baralho contém uma fraqueza básica"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Você gostaria de removê-las do conjunto de Fraquezas Básicas da campanha?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Você gostaria de removê-la do conjunto de Fraquezas Básicas da campanha?"
 
@@ -3255,15 +3253,12 @@ msgstr "Pessoas Desaparecidas - Valentino Rivas"
 msgid "Evidence of Kadath"
 msgstr "Evidência de Kadath"
 
-#, fuzzy
 msgid "Steps of the Bridge"
 msgstr "Steps of the Bridge"
 
-#, fuzzy
 msgid "Memories Recovered"
 msgstr "Memories Recovered"
 
-#, fuzzy
 msgid "Possible Suspects"
 msgstr "Possible Suspects"
 
@@ -6071,6 +6066,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] "Como ${ list } não tem um ${ supplyName }, eles devem ler <b>${ sectionName }</b>."
 msgstr[1] "Como ${ list } não têm ${ supplyName }, eles devem ler <b>${ sectionName }</b>."
 
+msgctxt "masculine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Insane"
+msgstr ""
+
 msgctxt "feminine"
 msgid "Alive"
 msgstr "Viva"
@@ -6182,6 +6185,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] "Como ${ list } não tem ${ supplyName }, eles devem ler <b>${ sectionName }</b>."
 msgstr[1] "Como ${ list } não têm ${ supplyName }, eles devem ler <b>${ sectionName }</b>."
 
+msgctxt "feminine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Insane"
+msgstr ""
+
 msgctxt "nonbinary"
 msgid "Alive"
 msgstr "Vivo"
@@ -6278,6 +6289,14 @@ msgstr "Trauma mental"
 msgctxt "nonbinary"
 msgid "Defeated"
 msgstr "Derrotado"
+
+msgctxt "nonbinary"
+msgid "Killed"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Insane"
+msgstr ""
 
 msgctxt "Traits"
 msgid "All"
@@ -8211,6 +8230,11 @@ msgstr ""
 
 msgctxt "tags"
 msgid "None"
+msgstr ""
+
+#, javascript-format
+msgctxt "ko"
+msgid "Return ${ bless } / ${ curse } tokens"
 msgstr ""
 
 msgctxt "Tarot Card"

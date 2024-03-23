@@ -5913,6 +5913,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "masculine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "masculine"
+msgid "Insane"
+msgstr ""
+
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
@@ -6024,6 +6032,14 @@ msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>$
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "feminine"
+msgid "Killed"
+msgstr ""
+
+msgctxt "feminine"
+msgid "Insane"
+msgstr ""
+
 msgctxt "nonbinary"
 msgid "Alive"
 msgstr ""
@@ -6119,6 +6135,14 @@ msgstr ""
 #, javascript-format
 msgctxt "nonbinary"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Killed"
+msgstr ""
+
+msgctxt "nonbinary"
+msgid "Insane"
 msgstr ""
 
 msgctxt "Traits"
@@ -8053,6 +8077,11 @@ msgstr ""
 
 msgctxt "tags"
 msgid "None"
+msgstr ""
+
+#, javascript-format
+msgctxt "ko"
+msgid "Return ${ bless } / ${ curse } tokens"
 msgstr ""
 
 msgctxt "Tarot Card"
