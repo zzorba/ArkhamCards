@@ -76,7 +76,7 @@ function headerForInvestigator(
     case SORT_BY_TITLE:
       return t`All Investigators`;
     case SORT_BY_PACK:
-      return investigator.pack_name || t`N/A`;
+      return (investigator.cycle_code === 'investigator' ? investigator.cycle_name : investigator.pack_name) || t`N/A`;
     default:
       return t`N/A`;
   }

@@ -1,4 +1,4 @@
-import { flatMap, map } from 'lodash';
+import { flatMap, map, takeWhile } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 
 import { DeckMeta } from '@actions/types';
@@ -15,18 +15,33 @@ interface DeckOptionsContext {
 }
 
 export function negativeQueryForInvestigator(investigator: Card, meta?: DeckMeta, isUpgrade?: boolean, isExtraDeck?: boolean, isSideDeck?: boolean): Brackets | undefined {
-  const inverted = flatMap(
+  let foundNegative = false;
+  // We keep taking options until we find the first negative option.
+  const options = takeWhile(
     isExtraDeck ? investigator.side_deck_options : investigator.deck_options,
+    option => {
+      foundNegative = foundNegative || !!option.not;
+      if (!foundNegative) {
+        return true;
+      }
+      return !!option.not;
+    }
+  );
+  if (!foundNegative) {
+    return undefined;
+  }
+  const inverted = flatMap(
+    options,
     (option, index) => {
       if (!option.not) {
-        return [];
+        return new DeckOptionQueryBuilder(option, index).toQuery(meta, isUpgrade || isSideDeck, true) || [];
       }
-      return new DeckOptionQueryBuilder(option, index).toQuery(meta, isUpgrade || isSideDeck) || [];
+      return new DeckOptionQueryBuilder(option, index).toQuery(meta, isUpgrade || isSideDeck, false) || [];
     });
   if (!inverted.length) {
     return undefined;
   }
-  return combineQueriesOpt(inverted, 'and');
+  return combineQueriesOpt(inverted, 'and', true);
 }
 
 /**

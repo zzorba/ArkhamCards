@@ -115,10 +115,10 @@ export interface TranslationData {
 const HEADER_SELECT = {
   [SORT_BY_TYPE_SLOT]: '(c.sort_by_type * 10000 + c.sort_by_slot - CASE WHEN c.permanent THEN 1 ELSE 0 END) as headerId, c.sort_by_type_header as headerTitle, c.slot as headerSlot, c.permanent as headerPermanent',
   [SORT_BY_FACTION]: 'c.sort_by_faction as headerId, c.sort_by_faction_header as headerTitle',
-  [SORT_BY_FACTION_PACK]: '(c.sort_by_faction * 10000 + c.sort_by_pack) as headerId, c.sort_by_faction_header as headerTitle, c.pack_name as headerPackName',
+  [SORT_BY_FACTION_PACK]: '(c.sort_by_faction * 10000 + c.sort_by_pack) as headerId, c.sort_by_faction_header as headerTitle, CASE WHEN c.cycle_code = \'investigator\' THEN c.cycle_name ELSE c.pack_name END as headerPackName',
   [SORT_BY_FACTION_XP]: 'c.sort_by_faction * 10000 + COALESCE(c.xp, -1) + 1 as headerId, c.sort_by_faction_header as headerTitle, c.xp as headerXp',
   [SORT_BY_COST]: 'c.cost as headerId, c.cost as headerTitle',
-  [SORT_BY_PACK]: 'c.sort_by_pack as headerId, c.pack_name as headerTitle',
+  [SORT_BY_PACK]: 'c.sort_by_pack as headerId, CASE WHEN c.cycle_code = \'investigator\' THEN c.cycle_name ELSE c.pack_name END as headerTitle',
   [SORT_BY_ENCOUNTER_SET]: 'c.encounter_code as headerId, c.sort_by_encounter_set_header as headerTitle',
   [SORT_BY_TITLE]: '"0" as headerId',
   [SORT_BY_TYPE]: 'c.sort_by_type as headerId, c.sort_by_type_header as headerTitle',
@@ -1442,7 +1442,7 @@ export default class Card {
     const sort_by_faction_header = Card.factionSortHeader(card, translation, restrictions);
     const sort_by_faction = Card.factionHeaderOrder().indexOf(sort_by_faction_header);
     const pack = data.packs[card.pack_code] || null;
-    const sort_by_pack = pack ? (pack.cycle_position * 200 + pack.position) : -1;
+    const sort_by_pack = pack ? (pack.cycle_position * 200 + (pack.cycle_code === 'investigator' ? 0 : pack.position)) : -1;
     const sort_by_cycle = pack?.cycle_position || 0;
     const sort_by_encounter_set_header = translation.encounter_name ||
       (linked_card && linked_card.encounter_name) ||

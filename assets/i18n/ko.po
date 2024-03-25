@@ -2067,19 +2067,19 @@ msgstr "새로운 캠페인"
 msgid "Adjust Weakness Set"
 msgstr "약점 세트 조정"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "이 덱은 여러 개의 기본 약점이 포함되어 있습니다."
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "이 덱은 하나의 기본 약점이 포함되어 있습니다."
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "이러한 약점들을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기를 원하십니까?"
 
@@ -5531,9 +5531,7 @@ msgid ""
 "- Because you are playing <i>The Scarlet Keys</i> campaign, a side-story costs a certain amount of <b>time</b> instead of experience.\n"
 "- Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign.\n"
 "- Each side-story may only be played once per campaign."
-msgstr ""
-"외전 이야기는 <아컴호러 카드게임> 캠페인에 속한 두 연속 시나리오 사이에 진행할 수 있는 별도의 시나리오입니다.- <i>진홍색 열쇠</i> 캠페인 확장을 플레이하고 있으므로, 외전 이야기를 즐기려면 경험치 대신 <b>시간</b>을 일정량 소비해야 합니다.- 외전 이야기에서 얻은 약점, 트라우마, 경험치, 보상은 캠페인을 마칠 때까지 조사자에게 남습니다.- 각 외전 이야기는 캠페인마다 1번씩만 즐길 수 있습니다.- 캠페인 도중에 외전 이야기를 진행한다면, 이 시나리오를 현재 진행중인 캠페인의 다음 시나리오로 간주합니다. 즉, 혼"
-"돈 주머니, 약점, 트라우마, 기존에 획득한 이야기 자산이 외전이야기에 그대로 이어집니다."
+msgstr "외전 이야기는 <아컴호러 카드게임> 캠페인에 속한 두 연속 시나리오 사이에 진행할 수 있는 별도의 시나리오입니다.- <i>진홍색 열쇠</i> 캠페인 확장을 플레이하고 있으므로, 외전 이야기를 즐기려면 경험치 대신 <b>시간</b>을 일정량 소비해야 합니다.- 외전 이야기에서 얻은 약점, 트라우마, 경험치, 보상은 캠페인을 마칠 때까지 조사자에게 남습니다.- 각 외전 이야기는 캠페인마다 1번씩만 즐길 수 있습니다.- 캠페인 도중에 외전 이야기를 진행한다면, 이 시나리오를 현재 진행중인 캠페인의 다음 시나리오로 간주합니다. 즉, 혼돈 주머니, 약점, 트라우마, 기존에 획득한 이야기 자산이 외전이야기에 그대로 이어집니다."
 
 #, javascript-format
 msgid "Mark ${ travelDistance } time"

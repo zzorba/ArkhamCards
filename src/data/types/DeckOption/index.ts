@@ -296,7 +296,7 @@ export class DeckOptionQueryBuilder {
         )] : this.filterBuilder.rangeFilter('xp', [level.min, level.max], true);
   }
 
-  toQuery(meta?: DeckMeta, isUpgrade?: boolean): Brackets | undefined {
+  toQuery(meta?: DeckMeta, isUpgrade?: boolean, negate?: boolean): Brackets | undefined {
     const clauses: Brackets[] = [
       ...this.filterBuilder.factionFilter(this.option.faction || []),
       ...this.textClause(),
@@ -310,6 +310,6 @@ export class DeckOptionQueryBuilder {
       ...this.filterBuilder.equalsVectorClause(this.option.type_code || [], 'type_code'),
       ...(this.option.text?.length ? [] : this.filterBuilder.tagFilter(this.option.tag ?? [])),
     ];
-    return combineQueriesOpt(clauses, 'and', !!this.option.not);
+    return combineQueriesOpt(clauses, 'and', negate ?? !!this.option.not);
   }
 }
