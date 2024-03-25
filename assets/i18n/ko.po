@@ -5531,7 +5531,11 @@ msgid ""
 "- Because you are playing <i>The Scarlet Keys</i> campaign, a side-story costs a certain amount of <b>time</b> instead of experience.\n"
 "- Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign.\n"
 "- Each side-story may only be played once per campaign."
-msgstr "외전 이야기는 <아컴호러 카드게임> 캠페인에 속한 두 연속 시나리오 사이에 진행할 수 있는 별도의 시나리오입니다.- <i>진홍색 열쇠</i> 캠페인 확장을 플레이하고 있으므로, 외전 이야기를 즐기려면 경험치 대신 <b>시간</b>을 일정량 소비해야 합니다.- 외전 이야기에서 얻은 약점, 트라우마, 경험치, 보상은 캠페인을 마칠 때까지 조사자에게 남습니다.- 각 외전 이야기는 캠페인마다 1번씩만 즐길 수 있습니다.- 캠페인 도중에 외전 이야기를 진행한다면, 이 시나리오를 현재 진행중인 캠페인의 다음 시나리오로 간주합니다. 즉, 혼돈 주머니, 약점, 트라우마, 기존에 획득한 이야기 자산이 외전이야기에 그대로 이어집니다."
+msgstr ""
+"외전 이야기는 <아컴호러 카드게임> 캠페인에 속한 두 연속 시나리오 사이에 진행할 수 있는 별도의 시나리오입니다.\n"
+"- <i>진홍색 열쇠</i> 캠페인 확장을 플레이하고 있으므로, 외전 이야기를 즐기려면 경험치 대신 <b>시간</b>을 일정량 소비해야 합니다.\n"
+"- 외전 이야기에서 얻은 약점, 트라우마, 경험치, 보상은 캠페인을 마칠 때까지 조사자에게 남습니다. 캠페인 도중에 외전 이야기를 진행한다면, 이 시나리오를 현재 진행중인 캠페인의 다음 시나리오로 간주합니다. 즉, 혼돈 주머니, 약점, 트라우마, 기존에 획득한 이야기 자산이 외전이야기에 그대로 이어집니다.\n"
+"- 각 외전 이야기는 캠페인마다 1번씩만 즐길 수 있습니다."
 
 #, javascript-format
 msgid "Mark ${ travelDistance } time"
@@ -6057,11 +6061,11 @@ msgstr[0] "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있
 
 msgctxt "masculine"
 msgid "Killed"
-msgstr ""
+msgstr "사망한 조사자"
 
 msgctxt "masculine"
 msgid "Insane"
-msgstr ""
+msgstr "미친 조사자"
 
 #, javascript-format
 msgctxt "feminine"
@@ -6169,11 +6173,11 @@ msgstr[0] "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있
 
 msgctxt "feminine"
 msgid "Killed"
-msgstr ""
+msgstr "사망한 조사자"
 
 msgctxt "feminine"
 msgid "Insane"
-msgstr ""
+msgstr "미친 조사자"
 
 msgctxt "nonbinary"
 msgid "Alive"
@@ -6269,11 +6273,11 @@ msgstr "캠페인 기록지의 ‘${ entry.section }’ 목록 아래에 <i>${ c
 
 msgctxt "nonbinary"
 msgid "Killed"
-msgstr ""
+msgstr "사망한 조사자"
 
 msgctxt "nonbinary"
 msgid "Insane"
-msgstr ""
+msgstr "미친 조사자"
 
 msgctxt "Traits"
 msgid "All"
