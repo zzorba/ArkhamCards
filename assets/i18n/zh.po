@@ -8193,11 +8193,6 @@ msgctxt "tags"
 msgid "None"
 msgstr "無"
 
-#, javascript-format
-msgctxt "ko"
-msgid "Return ${ bless } / ${ curse } tokens"
-msgstr ""
-
 msgctxt "Tarot Card"
 msgid "None"
 msgstr "無"
