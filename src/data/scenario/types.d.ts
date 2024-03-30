@@ -1620,6 +1620,7 @@ export interface CardErrata {
 }
 export interface ScenarioFaqEntry {
   scenario_code: string;
+  campaign_code?: string;
   questions: Question[];
 }
 export interface Question {

@@ -133,7 +133,9 @@ export default class CampaignGuide {
   }
 
   scenarioFaq(scenario: string): Question[] {
-    const scenarioFaq = find(this.errata.faq, faq => faq.scenario_code === scenario);
+    const scenarioFaq = find(this.errata.faq, faq => faq.scenario_code === scenario && (
+      !faq.campaign_code || faq.campaign_code === this.campaign.campaign.id
+    ));
     return scenarioFaq?.questions ?? [];
   }
 

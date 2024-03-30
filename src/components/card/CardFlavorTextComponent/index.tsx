@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import SimpleMarkdown from 'simple-markdown';
 import {
   MarkdownView,
@@ -252,7 +252,7 @@ function GameTagRule(style: StyleContextType, sizeScale: number): MarkdownRule<W
 
 interface Props {
   text: string;
-  onLinkPress?: (url: string) => void;
+  onLinkPress?: (url: string, context: StyleContextType) => void;
   color?: string;
   width?: number;
   sizeScale?: number;
@@ -263,7 +263,9 @@ export default function CardFlavorTextComponent(
 ) {
   const context = useContext(StyleContext);
   const { usePingFang } = useContext(LanguageContext);
-
+  const wrappedOnLinkPress = useCallback((url: string) => {
+    onLinkPress && onLinkPress(url, context);
+  }, [onLinkPress, context]);
   const textStyle: TextStyle = useMemo(() => {
     return {
       fontFamily: usePingFang ? 'PingFangTC' : 'Alegreya',
@@ -304,7 +306,7 @@ export default function CardFlavorTextComponent(
         innsmouthTag: InnsmouthTagRule(context, sizeScale),
         gameTag: GameTagRule(context, sizeScale),
       }}
-      onLinkPress={onLinkPress}
+      onLinkPress={onLinkPress ? wrappedOnLinkPress : undefined}
       styles={{
         paragraph: textStyle,
       }}

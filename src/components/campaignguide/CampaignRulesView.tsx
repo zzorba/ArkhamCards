@@ -1,10 +1,10 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
 import { NavigationProps } from '@components/nav/types';
-import StyleContext from '@styles/StyleContext';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { CampaignId } from '@actions/types';
 import { useScenarioGuideContext } from './withScenarioGuideContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
@@ -14,13 +14,15 @@ import { ProcessedCampaign } from '@data/scenario';
 import { CampaignRule, Question } from '@data/scenario/types';
 import RuleTitleComponent from '@components/settings/RuleTitleComponent';
 import space, { s } from '@styles/space';
-import { useFlag } from '@components/core/hooks';
+import { useFlag, useTabooSetId } from '@components/core/hooks';
 import ScenarioGuideContext from './ScenarioGuideContext';
 import StepsComponent from './StepsComponent';
 import CampaignHeader from './CampaignHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
 import { CAMPAIGN_SETUP_ID } from '@data/scenario/CampaignGuide';
+import { openUrl } from '@components/nav/helper';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 export interface CampaignRulesProps {
   campaignId: CampaignId;
   rules: CampaignRule[];
@@ -61,12 +63,18 @@ function RuleComponent({ rule, componentId }: { rule: CampaignRule; componentId:
   );
 }
 
-function ErrataComponent({ errata }: { errata: Question }) {
+function ErrataComponent({ errata, componentId }: { errata: Question; componentId: string }) {
   const { colors } = useContext(StyleContext);
+  const tabooSetId = useTabooSetId();
+  const { db } = useContext(DatabaseContext);
+  const linkPressed = useCallback(async(url: string, context: StyleContextType) => {
+    await openUrl(url, context, db, componentId, tabooSetId);
+  }, [componentId, tabooSetId, db]);
+
   return (
     <View style={[space.paddingTopXs, space.paddingBottomS]}>
       <View style={space.paddingSideS}>
-        <CampaignGuideTextComponent text={t`Q: ${errata.question}`} flavor />
+        <CampaignGuideTextComponent text={t`Q: ${errata.question}`} flavor onLinkPress={linkPressed} />
         <CampaignGuideTextComponent text={t`A: ${errata.answer}`}  />
       </View>
       <View style={[{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}, space.marginTopS]}>
@@ -127,12 +135,12 @@ export default function CampaignRulesView({
                 </View>
               ) : (
                 <>
-                  { map(campaignErrata, (question, idx) => <ErrataComponent errata={question} key={idx} />) }
+                  { map(campaignErrata, (question, idx) => <ErrataComponent key={idx} errata={question} componentId={componentId} />) }
                   { !!scenarioErrata?.length && (
                     <>
                       <CampaignHeader title={t`Scenario FAQ`} style={space.paddingTopM} />
                       <View style={space.paddingTopXs} />
-                      { map(scenarioErrata, (question, idx) => <ErrataComponent errata={question} key={idx} />) }
+                      { map(scenarioErrata, (question, idx) => <ErrataComponent key={idx} errata={question} componentId={componentId} />) }
                     </>
                   )}
                 </>
