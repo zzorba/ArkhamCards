@@ -1180,6 +1180,10 @@
             "text": "Helen Peters se unió al estudio."
           },
           {
+            "id": "helen_sacrificed_herself",
+            "text": "Helen Peters sacrificed herself for the investigators."
+          },
+          {
             "id": "helen_shared_a_dance",
             "text": "Helen compartió un baile."
           },
@@ -1300,6 +1304,10 @@
           {
             "id": "gideon_found_his_treasure",
             "text": "Gideon encontró su tesoro."
+          },
+          {
+            "id": "gideon_sacrificed_himself",
+            "text": "Gideon Mizrah sacrificed himself for the investigators."
           },
           {
             "id": "gideon_shared_a_dance",
@@ -1568,6 +1576,10 @@
           },
           {
             "id": "fhv_final_evening_codex_sigma",
+            "text": "dummy"
+          },
+          {
+            "id": "fhv_longest_night_agenda_flip",
             "text": "dummy"
           },
           {
@@ -2036,6 +2048,10 @@
         "section": "judith",
         "entries": [
           {
+            "id": "judith_sacrificed_himself",
+            "text": "Judith Park sacrificed herself for the investigators."
+          },
+          {
             "id": "judith_saved_your_ass",
             "text": "Judith ha salvado el pellejo a los investigadores."
           },
@@ -2067,6 +2083,10 @@
           {
             "id": "leah_is_searching_for_simeon",
             "text": "Leah está buscando a Simeon."
+          },
+          {
+            "id": "leah_sacrificed_himself",
+            "text": "Leah Atwood sacrificed herself for the investigators."
           },
           {
             "id": "leah_saw_something_in_the_mine",
@@ -2111,6 +2131,10 @@
             "text": "River va a reclamar su legado."
           },
           {
+            "id": "river_sacrificed_himself",
+            "text": "River Hawthorne sacrificed themself for the investigators."
+          },
+          {
             "id": "river_shared_a_dance",
             "text": "River compartió un baile."
           },
@@ -2142,6 +2166,10 @@
           {
             "id": "simeon_hatched_a_plan",
             "text": "Simeon ha elaborado un plan."
+          },
+          {
+            "id": "simeon_sacrificed_himself",
+            "text": "Simeon Atwood sacrificed himself for the investigators."
           },
           {
             "id": "simeon_shared_a_dance",
@@ -2177,6 +2205,10 @@
             "text": "Theo rechazó a su familia."
           },
           {
+            "id": "theo_sacrificed_himself",
+            "text": "Theo Peters sacrificed himself for the investigators."
+          },
+          {
             "id": "theo_shared_a_dance",
             "text": "Theo compartió un baile."
           },
@@ -2192,6 +2224,10 @@
           {
             "id": "william_is_resolved",
             "text": "William se ha decidido."
+          },
+          {
+            "id": "william_sacrificed_himself",
+            "text": "William Hemlock sacrificed himself for the investigators."
           },
           {
             "id": "william_shared_a_dance",
