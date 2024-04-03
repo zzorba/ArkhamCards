@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals = 2; plural = (n > 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 msgid "Guardian"
 msgstr "Gardien"
@@ -799,19 +799,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -1710,13 +1710,13 @@ msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr "Aucun soutien prenant un emplacement d'allié n'est autorisé."
 
 msgid "Too many off-class cards for Versatile"
-msgstr "Il y a trop de cartes « extra-classe » pour l'effet de Versatile."
+msgstr "Il y a trop de cartes « extra-classe » pour l'effet de Versatile"
 
 msgid "Arcane x2"
 msgstr "Arcane x2"
 
 msgid "Ally. Arcane"
-msgstr "Allié. Arcane."
+msgstr "Allié. Arcane"
 
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
@@ -4404,7 +4404,7 @@ msgid "The Magician · I"
 msgstr "I · Le Magicien"
 
 msgid "Each investigator begins the game with 3 addititonal resources"
-msgstr "Chaque investigateur commence la partie avec 3 ressources supplémentaires."
+msgstr "Chaque investigateur commence la partie avec 3 ressources supplémentaires"
 
 msgid "Each investigator begins the game with 3 fewer resources, and cannot gain resources during their first turn."
 msgstr "Chaque investigateur commence la partie avec 3 ressources de moins et ne peut pas gagner de ressource lors de son premier tour."
@@ -4850,7 +4850,7 @@ msgid ""
 "\n"
 "When it is finished, you can try to load the deck again."
 msgstr ""
-" Ce deck contient de nouvelles cartes que l'application n'a jamais vues auparavant. \n"
+"Ce deck contient de nouvelles cartes que l'application n'a jamais vues auparavant. \n"
 "Veuillez vous rendre dans l'onglet «Paramètres» et choisir «Vérifier les mises à jour d'ArkhamDB».\n"
 "Quand c'est terminé, vous pouvez essayer de charger le deck à nouveau."
 
@@ -5340,7 +5340,7 @@ msgid "Notice"
 msgstr ""
 
 msgid "Jenny's Choice"
-msgstr ""
+msgstr "Le Choix de Jenny"
 
 msgid "The Fall of the House of Usher"
 msgstr ""
@@ -5491,7 +5491,7 @@ msgid "Apply changes from last completed scenario or interlude"
 msgstr "Appliquer les modifications liées au dernier interlude ou scénario joué"
 
 msgid "This is a side-story location."
-msgstr "LIEU D'AVENTURE ANNEXE"
+msgstr "Lieu d’aventure annexe"
 
 #, javascript-format
 msgid "Travel cost: ${ travelDistance } time"
@@ -5780,7 +5780,7 @@ msgid "Automatic Backup"
 msgstr "Sauvegarde Automatique"
 
 msgid "You must have at least 7 cards from each class"
-msgstr "Vous devez avoir au moins 7 cartes de chaque classe."
+msgstr "Vous devez avoir au moins 7 cartes de chaque classe"
 
 msgid "More off-class card than the number of weaknesses in your deck and bonded cards."
 msgstr "Plus de cartes « extra-classe » que de faiblesses dans votre deck et vos cartes liées."
@@ -5792,10 +5792,10 @@ msgid "Parallel Cards"
 msgstr "Cartes Parallèles"
 
 msgid "Heart of Darkness"
-msgstr ""
+msgstr "Au Coeur des Ténébres"
 
 msgid "Information on Kurtz"
-msgstr ""
+msgstr "Informations sur Kurtz"
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
@@ -5873,89 +5873,89 @@ msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
 msgstr "Pions Scellés (${ chaosBagResults.sealedTokens.length })"
 
 msgid "Spirit Deck"
-msgstr ""
+msgstr "Deck Esprit"
 
 msgid "Edit Spirit Deck"
-msgstr ""
+msgstr "Modifier le deck Esprit"
 
 msgid "No permanents except story and signature permanents"
-msgstr ""
+msgstr "Pas de permanent, sauf les permanents d’histoire et signature"
 
 msgid "You cannot have more than 5 Survivor cards."
-msgstr ""
+msgstr "Vous ne piuvez pas avoir plus de 5 cartes Survivant."
 
 msgid "You cannot have more than 5 Mystic cards."
-msgstr ""
+msgstr "Vous ne pouvez pas avoir plus de 5 cartes Mystique."
 
 msgid "The Feast of Hemlock Vale"
-msgstr ""
+msgstr "Le Festin de Hemlock Vale"
 
 msgid "The Dunwich Legacy Investigator Expansion"
-msgstr ""
+msgstr "L’Héritage de Dunwich - Extension Investigateurs"
 
 msgid "The Dunwich Legacy Campaign Expansion"
-msgstr ""
+msgstr "L’Héritage de Dunwich - Extension Campagne"
 
 msgid "The Path to Carcosa Investigator Expansion"
-msgstr ""
+msgstr "La Route de Carcosa - Extension Investigateurs"
 
 msgid "The Path to Carcosa Campaign Expansion"
-msgstr ""
+msgstr "La Route de Carcosa - Extension Campagne"
 
 msgid "The Forgotten Age Investigator Expansion"
-msgstr ""
+msgstr "La Civilisation oubliée - Extension Investigateurs"
 
 msgid "The Forgotten Age Campaign Expansion"
-msgstr ""
+msgstr "La Civilisation oubliée - Extension Campagne"
 
 msgid "The Circle Undone Investigator Expansion"
-msgstr ""
+msgstr "Le Cercle brisé - Extension Investigateurs"
 
 msgid "The Circle Undone Campaign Expansion"
-msgstr ""
+msgstr "Le Cercle brisé - Extension Campagne"
 
 msgid "The Dream-Eaters Investigator Expansion"
-msgstr ""
+msgstr "Les Dévoreurs de Rêves - Extension Investigateurs"
 
 msgid "The Dream-Eaters Campaign Expansion"
-msgstr ""
+msgstr "Les Dévoreurs de Rêves - Extension Campagne"
 
 msgid "The Innsmouth Conspiracy Investigator Expansion"
-msgstr ""
+msgstr "La Conspiration d’Innsmouth - Extension Investigateurs"
 
 msgid "The Innsmouth Conspiracy Campaign Expansion"
-msgstr ""
+msgstr "La Conspiration d’Innsmouth - Extension Campagne"
 
 msgid "Show original release packs"
-msgstr ""
+msgstr "Montrer les paquets originaux"
 
 msgid "Non-Unique"
-msgstr ""
+msgstr "Non-Unique"
 
 #, javascript-format
 msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr ""
+msgstr "Coût en points d’expérience: ${ basicXpCost } pour les decks incluant ${ investigator.name }, ${ challengeDiscountCost } pour chaque autre joueur"
 
 msgid "Aether"
-msgstr ""
+msgstr "Éther"
 
 msgid "Campaign Rules & FAQ"
-msgstr ""
+msgstr "Règles de campagne & FAQ"
 
 msgid "Review campaign specific info"
-msgstr ""
+msgstr "Revoir les infos spécifique de la campagne"
 
 msgid "Campaign Rules"
-msgstr ""
+msgstr "Règles de la campagne"
 
 msgid "Review campaign specific rules"
-msgstr ""
+msgstr "Revoir les règles spécifiques de la campagne"
 
 msgid "Campaign FAQ"
-msgstr ""
+msgstr "FAQ de la campagne"
 
 msgid "Review campaign specific clarifications"
-msgstr ""
+msgstr "Revoir les clarifications spécifiques à la campagne"
 
 #, javascript-format
 msgid "Q: ${ errata.question }"
@@ -5966,55 +5966,55 @@ msgid "A: ${ errata.answer }"
 msgstr ""
 
 msgid "Show FAQ"
-msgstr ""
+msgstr "Montrer la FAQ"
 
 msgid "May contain light spoilers"
-msgstr ""
+msgstr "Peut contenir de légers spoilers"
 
 msgid "Note: To avoid spoilers, scenario specific questions and clarifications can be found within each scenario guide."
-msgstr ""
+msgstr "Note: pour éviter les spoilers, les questions et clarifications spécifique à chaque scénario peuvent être trouvées dans chaque guide de scénario."
 
 msgid "Rules & FAQ"
-msgstr ""
+msgstr "Règles & FAQ"
 
 msgid "Day / Time"
-msgstr ""
+msgstr "Jour / Heure"
 
 msgid "Areas Surveyed"
-msgstr ""
+msgstr "Zones Explorées"
 
 msgid "Mother Rachel"
-msgstr ""
+msgstr "Mère Rachel"
 
 msgid "Leah Atwood"
-msgstr ""
+msgstr "Leah Atwood"
 
 msgid "Simeon Atwood"
-msgstr ""
+msgstr "Simeon Atwood"
 
 msgid "William Hemlock"
-msgstr ""
+msgstr "William Hemlock"
 
 msgid "River Hawthorne"
-msgstr ""
+msgstr "River Hawthorne"
 
 msgid "Gideon Mizrah"
-msgstr ""
+msgstr "Gideon Mizrah"
 
 msgid "Judith Park"
-msgstr ""
+msgstr "Judith Park"
 
 msgid "Theo Peters"
-msgstr ""
+msgstr "Theo Peters"
 
 msgid "Relationship Level"
-msgstr ""
+msgstr "Niveau de relation"
 
 msgid "Image cache cleared"
-msgstr ""
+msgstr "Cache image nettoyé"
 
 msgid "Clear image cache"
-msgstr ""
+msgstr "Nettoyer le cache image"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6244,11 +6244,11 @@ msgstr[1] "Étant donné que ${ list } ne possèdent pas d'équipement ${ supply
 
 msgctxt "feminine"
 msgid "Killed"
-msgstr ""
+msgstr "Tué"
 
 msgctxt "feminine"
 msgid "Insane"
-msgstr ""
+msgstr "Dément"
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6349,11 +6349,11 @@ msgstr "Vaincu"
 
 msgctxt "nonbinary"
 msgid "Killed"
-msgstr ""
+msgstr "Tué"
 
 msgctxt "nonbinary"
 msgid "Insane"
-msgstr ""
+msgstr "Dément"
 
 msgctxt "Traits"
 msgid "All"
@@ -6389,7 +6389,7 @@ msgstr "Partage de campagne publié !"
 
 msgctxt "releaseNotes"
 msgid "At long last, the ability to share campaigns has been released on both iOS and Android! This has been one of the most requested features from the start, but as it required a completely new set of servers to be written (and paid for), it took me some time to get it right. You can of course continue using the app exactly as it is, but if you find yourself using multiple devices or want to share an in-progress campaign with friends so everyone can collaborate on it, this is the feature for you."
-msgstr " Enfin, la possibilité de partager des campagnes est sortie sur iOS et Android ! C'était l'une des fonctionnalités les plus demandées depuis le début, mais comme elle a nécessité l'écriture (et le paiement) d'un ensemble de serveurs complètement nouveau, il m'a fallu un certain temps pour y parvenir. Vous pouvez bien sûr continuer à utiliser l'application exactement comme elle est, mais si vous vous retrouvez à utiliser plusieurs appareils ou si vous voulez partager une campagne en cours avec des amis pour que tout le monde puisse collaborer, cette fonctionnalité est faite pour vous."
+msgstr "Enfin, la possibilité de partager des campagnes est sortie sur iOS et Android ! C'était l'une des fonctionnalités les plus demandées depuis le début, mais comme elle a nécessité l'écriture (et le paiement) d'un ensemble de serveurs complètement nouveau, il m'a fallu un certain temps pour y parvenir. Vous pouvez bien sûr continuer à utiliser l'application exactement comme elle est, mais si vous vous retrouvez à utiliser plusieurs appareils ou si vous voulez partager une campagne en cours avec des amis pour que tout le monde puisse collaborer, cette fonctionnalité est faite pour vous."
 
 msgctxt "releaseNotes"
 msgid "- First sign up for an <b>Arkham Cards</b> account via the <i>Settings</i> tab, to unlock these features. Don't forget to set your handle so your friends can find you on the app."
@@ -6529,7 +6529,7 @@ msgstr "- Seules les cartes / decks de niveau peuvent être draftées."
 
 msgctxt "releaseNotes"
 msgid "- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release."
-msgstr " - Compte tenu de leurs restrictions uniques en matière de deck-building, l'application ne permet pas encore de générer des decks aléatoires pour Lola Hayes ou Joe Diamond. C'est un point que j'essaierai de régler dans une prochaine version."
+msgstr "- Compte tenu de leurs restrictions uniques en matière de deck-building, l'application ne permet pas encore de générer des decks aléatoires pour Lola Hayes ou Joe Diamond. C'est un point que j'essaierai de régler dans une prochaine version."
 
 msgctxt "releaseNotes"
 msgid "Ultimatum of Chaos"
@@ -6537,7 +6537,7 @@ msgstr "Ultimatum du Chaos"
 
 msgctxt "releaseNotes"
 msgid "The app now supports building random decks following the steps set out by the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new option lets you choose a 'special deck', which can be used to either create the FFG suggested starter deck or a fully randomly generated one."
-msgstr " L'application permet désormais de construire des decks aléatoires en suivant les étapes définies par la règle optionnelle «Ultimatum du chaos». Lors de la construction d'un nouveau deck, une nouvelle option vous permet de choisir un «deck spécial», qui peut être utilisé pour créer soit le deck de démarrage suggéré par FFG, soit un deck entièrement généré de manière aléatoire."
+msgstr "L'application permet désormais de construire des decks aléatoires en suivant les étapes définies par la règle optionnelle «Ultimatum du chaos». Lors de la construction d'un nouveau deck, une nouvelle option vous permet de choisir un «deck spécial», qui peut être utilisé pour créer soit le deck de démarrage suggéré par FFG, soit un deck entièrement généré de manière aléatoire."
 
 msgctxt "releaseNotes"
 msgid "- The app will use your defined collection to try to generate the deck."
@@ -6609,7 +6609,7 @@ msgstr "Cette version introduit un accès plus rapide aux avant-premières des c
 
 msgctxt "releaseNotes"
 msgid "- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys investigator expansion."
-msgstr "- Comprend les cartes <b>Personnalisables</b> en avant-première de l'extension investigateur « Les Clefs Écarlates. »"
+msgstr "- Comprend les cartes <b>Personnalisables</b> en avant-première de l'extension investigateur Les Clefs Écarlates."
 
 msgctxt "releaseNotes"
 msgid "- In order to maintain compatibility with ArkhamDB, these cards are not shown by default. You can opt into them by enabling the <b>Show Fan-made cards</b> under <i>Settings</i>."
@@ -6625,7 +6625,7 @@ msgstr "Cette version ajoute la prise en charge de l'extension de campagne Les C
 
 msgctxt "releaseNotes"
 msgid "- As you may know (or will soon find out), this is by far the most ambitious campaign we've ever seen in Arkham. I've done my best to handle the new features as faithfully as I can in the app, and am pretty pleased with the implementation."
-msgstr " - Comme vous le savez peut-être (ou le découvrirez bientôt), cette campagne est de loin la plus ambitieuse que nous ayons jamais vue à Arkham. J'ai fait de mon mieux pour gérer les nouvelles fonctionnalités aussi fidèlement que possible dans l'application, et je suis plutôt satisfait de la mise en œuvre."
+msgstr "- Comme vous le savez peut-être (ou le découvrirez bientôt), cette campagne est de loin la plus ambitieuse que nous ayons jamais vue à Arkham. J'ai fait de mon mieux pour gérer les nouvelles fonctionnalités aussi fidèlement que possible dans l'application, et je suis plutôt satisfait de la mise en œuvre."
 
 msgctxt "releaseNotes"
 msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still - if you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will try to fix them as quickly as possible. But given the expansive nature of the campaign, it is possible in a worst case scenario that some progress might need to be re-entered."
@@ -6641,23 +6641,23 @@ msgstr "Comme toujours, un grand merci à mes nombreux soutiens sur Patreon -- j
 
 msgctxt "releaseNotes"
 msgid "Feast of Hemlock Vale Campaign"
-msgstr ""
+msgstr "La campagne Le Festin de Hemlock Vale"
 
 msgctxt "releaseNotes"
 msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
-msgstr ""
+msgstr "Cette version ajoute le support pour la nouvelle extension de campagne Le Festin de Hemlock Vale."
 
 msgctxt "releaseNotes"
 msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
-msgstr ""
+msgstr "J’ai fait tout mon possible pour tester cette campagne dans ses moindres recoins, mais il est possible qu’il reste quelques erreurs ou bug dans l’implantation. Si vous en trouvez, merci de me les signaler à [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) et je les corrigerai le plus rapidement possible."
 
 msgctxt "releaseNotes"
 msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
-msgstr ""
+msgstr "Également un plug-in convivial pour uploader les campagnes et les partager en utilisant votre compte Arkham Cards — cela permet à chacun de suivre plus facilement les progrès tout en gérant son propre deck."
 
 msgctxt "releaseNotes"
 msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
-msgstr ""
+msgstr "Et, comme toujours, un grand merci à mes soutiens sur Patreon — J’apprécie votre support, qui permet de continuer à faire tourner les serveurs."
 
 msgctxt "trait"
 msgid "???"
@@ -7749,11 +7749,11 @@ msgstr "Double"
 
 msgctxt "trait"
 msgid "AI"
-msgstr ""
+msgstr "IA"
 
 msgctxt "trait"
 msgid "Abandoned"
-msgstr ""
+msgstr "Abandonné"
 
 msgctxt "trait"
 msgid "Access"
@@ -7761,7 +7761,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Alexandria"
-msgstr ""
+msgstr "Alexandrie"
 
 msgctxt "trait"
 msgid "Ally? Creature"
@@ -7769,7 +7769,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Ancient One?"
-msgstr ""
+msgstr "Grand Ancien?"
 
 msgctxt "trait"
 msgid "Bad dog"
@@ -7777,7 +7777,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Bazaar"
-msgstr ""
+msgstr "Bazar"
 
 msgctxt "trait"
 msgid "Blessed?"
@@ -7789,15 +7789,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Book"
-msgstr ""
+msgstr "Livre"
 
 msgctxt "trait"
 msgid "Buenos Aires"
-msgstr ""
+msgstr "Buenos Aires"
 
 msgctxt "trait"
 msgid "Card"
-msgstr ""
+msgstr "Carte"
 
 msgctxt "trait"
 msgid "Case"
@@ -7833,7 +7833,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Corruption"
-msgstr ""
+msgstr "Corruption"
 
 msgctxt "trait"
 msgid "Darkness"
@@ -7845,7 +7845,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Downtown"
-msgstr ""
+msgstr "Centre-ville"
 
 msgctxt "trait"
 msgid "Enigma"
@@ -7869,7 +7869,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Haunted"
-msgstr ""
+msgstr "Hanté"
 
 msgctxt "trait"
 msgid "Havana"
@@ -7877,23 +7877,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Human"
-msgstr ""
+msgstr "Humain"
 
 msgctxt "trait"
 msgid "Infection"
-msgstr ""
+msgstr "Infection"
 
 msgctxt "trait"
 msgid "Istanbul"
-msgstr ""
+msgstr "Istanbul"
 
 msgctxt "trait"
 msgid "Kuala Lumpur"
-msgstr ""
+msgstr "Kuala Lumpur"
 
 msgctxt "trait"
 msgid "Local"
-msgstr ""
+msgstr "Local"
 
 msgctxt "trait"
 msgid "Locus Site"
@@ -7901,7 +7901,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "London"
-msgstr ""
+msgstr "Londres"
 
 msgctxt "trait"
 msgid "Loyal"
@@ -7917,7 +7917,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Madness?"
-msgstr ""
+msgstr "Folie?"
 
 msgctxt "trait"
 msgid "Marrakesh"
@@ -8001,11 +8001,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Sheldon Gang"
-msgstr ""
+msgstr "Le gang Sheldon"
 
 msgctxt "trait"
 msgid "Sister"
-msgstr ""
+msgstr "Soeur"
 
 msgctxt "trait"
 msgid "Slope"
@@ -8017,7 +8017,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Stable"
-msgstr ""
+msgstr "Stable"
 
 msgctxt "trait"
 msgid "Stop"
@@ -8053,7 +8053,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Unstable"
-msgstr ""
+msgstr "Instable"
 
 msgctxt "trait"
 msgid "Upper Floor"
@@ -8077,7 +8077,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Yuggoth"
-msgstr ""
+msgstr "Yuggoth"
 
 #, javascript-format
 msgctxt "filter"
@@ -8183,15 +8183,15 @@ msgstr "Provisions"
 
 msgctxt "uses"
 msgid "Evidence"
-msgstr ""
+msgstr "Preuve"
 
 msgctxt "uses"
 msgid "Time"
-msgstr ""
+msgstr "Temps"
 
 msgctxt "uses"
 msgid "Treats"
-msgstr ""
+msgstr "Traits"
 
 msgctxt "Slots"
 msgid "All"

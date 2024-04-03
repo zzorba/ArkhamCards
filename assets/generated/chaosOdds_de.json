@@ -9153,7 +9153,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Die Spaltennummer deines Ortes",
           "min": 1
         }
       },
@@ -9181,7 +9181,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Die Spaltennummer deines Ortes",
           "min": 1,
           "scale": 2
         }
@@ -9214,7 +9214,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Die Spaltennummer deines Ortes",
           "min": 1
         }
       },
@@ -9242,7 +9242,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Die Spaltennummer deines Ortes",
           "min": 1,
           "scale": 2
         }
@@ -9275,7 +9275,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Die Spaltennummer deines Ortes",
           "min": 1
         }
       },
@@ -9303,7 +9303,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Die Spaltennummer deines Ortes",
           "min": 1,
           "scale": 2
         }
@@ -9336,7 +9336,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current day number",
+          "prompt": "Die Nummer des aktuellen Tages",
           "min": 1
         }
       },
@@ -9349,7 +9349,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "<b>Verhandlung</b>sversuch",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -9366,7 +9366,7 @@
           },
           "options": [
             {
-              "prompt": "Fewer than 3 cards in hand",
+              "prompt": "Weniger als 3 Karten auf der Hand",
               "modified_value": {
                 "modifier": 0
               }
@@ -9383,7 +9383,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "<b>Verhandlung</b>sversuch",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -9398,7 +9398,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current day number",
+          "prompt": "Die Nummer des aktuellen Tages",
           "min": 1,
           "adjustment": 1
         }
@@ -9412,7 +9412,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "<b>Verhandlung</b>sversuch",
               "modified_value": {
                 "modifier": 1
               }
@@ -9429,7 +9429,7 @@
           },
           "options": [
             {
-              "prompt": "Fewer than 2 cards in hand",
+              "prompt": "Weniger als 2 Karten auf der Hand",
               "modified_value": {
                 "modifier": -2
               }
@@ -9446,7 +9446,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "<b>Verhandlung</b>sversuch",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -9465,7 +9465,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current floor number",
+          "prompt": "Aktuelle Etagennummer",
           "min": 1
         }
       },
@@ -9493,7 +9493,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current floor number",
+          "prompt": "Aktuelle Etagennummer",
           "min": 1,
           "scale": 2
         }
@@ -9526,7 +9526,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Insect]] enemies in play and in the victory display (rounded up)",
+          "prompt": "Die Hälfte der Anzahl der [[Insekt]]-Gegner im Spiel und im Siegpunktestapel (aufgerundet)",
           "min": 0
         }
       },
@@ -9566,7 +9566,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Insect]] enemies in play and in the victory display",
+          "prompt": "Die Hälfte der Anzahl der [[Insekt]]-Gegner im Spiel und im Siegpunktestapel",
           "min": 0
         }
       },

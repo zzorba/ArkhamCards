@@ -9510,14 +9510,14 @@ react-native-collapsible@1.6.1:
   resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-1.6.1.tgz#27e289831a6955aebde98abff2424a7710f36f02"
   integrity sha512-orF4BeiXd2hZW7fu9YcqIJXzN6TJcFcddY807D3MAOVktLuW9oQ+RIkrTJ5DR3v9ZOFfREkOjEmS79qeUTvkBQ==
 
-react-native-color-matrix-image-filters@6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-color-matrix-image-filters/-/react-native-color-matrix-image-filters-6.0.3.tgz#e1af9a94a07a3ee1b269c92f385f66213b289072"
-  integrity sha512-yYwPbfhZzcRWLhsmkbtKBytlr/6CsLeMkMU+ds+xUGlHQI//raED4BzjMmOHKJlkciBtG39NyIx8D5lXnSIW+w==
+react-native-color-matrix-image-filters@6.0.7:
+  version "6.0.7"
+  resolved "https://registry.npmjs.org/react-native-color-matrix-image-filters/-/react-native-color-matrix-image-filters-6.0.7.tgz#bf4efe88a0342be392a043aa015fcdaf48e0fb6a"
+  integrity sha512-bmr89veOMGG//HQvoyuFwCr7No8U0QPH0xQpjbdWrZujJcMERW3t427EmNIkOylzl55OeMal8tVXltVYvOHYNw==
   dependencies:
     concat-color-matrices "^1.0.0"
     rn-color-matrices "^4.1.0"
-    ts-tiny-invariant "^2.0.4"
+    ts-tiny-invariant "^2.0.5"
 
 react-native-config@1.5.1:
   version "1.5.1"
@@ -11199,10 +11199,10 @@ ts-log@^2.2.3:
   resolved "https://registry.yarnpkg.com/ts-log/-/ts-log-2.2.5.tgz#aef3252f1143d11047e2cb6f7cfaac7408d96623"
   integrity sha512-PGcnJoTBnVGy6yYNFxWVNkdcAuAMstvutN9MgDJIV6L0oG8fB+ZNNy1T+wJzah8RPGor1mZuPQkVfXNDpy9eHA==
 
-ts-tiny-invariant@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/ts-tiny-invariant/-/ts-tiny-invariant-2.0.4.tgz#88b20adbbaf03b0f5349b0462d07c9c58ffd37d1"
-  integrity sha512-6AIQGf3rbMyci4fZU5aq5AUJN2O3sMPPY+R8waCguQOPRJDh0n/vmxVISCp72TJr4k5kikaU1yqX8bTwfTFjcQ==
+ts-tiny-invariant@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/ts-tiny-invariant/-/ts-tiny-invariant-2.0.5.tgz#20888046ede981edcddb77615a5f6e3c1ffb0901"
+  integrity sha512-NGQzWRLGLMjOUTpsxMSRj63fuFBC8HV8L4NUxzDVgU4MFeOt3qFI2534M5L+ch22x53oDEwPaRBPXgAfRjcXHA==
 
 tslib@1.9.3:
   version "1.9.3"

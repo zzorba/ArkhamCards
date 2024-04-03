@@ -1070,7 +1070,7 @@
         "entries": [
           {
             "id": "akwan_shoreline",
-            "text": "Akwan Shoreline"
+            "text": "Akwan-Küste"
           },
           {
             "id": "eastwick_bog",
@@ -1090,11 +1090,11 @@
           },
           {
             "id": "southern_fields",
-            "text": "Souther Fields"
+            "text": "Südliche Felder"
           },
           {
             "id": "western_woods",
-            "text": "Western Woods"
+            "text": "Westliche Wälder"
           }
         ]
       },
@@ -1103,45 +1103,45 @@
         "entries": [
           {
             "id": "eat",
-            "masculine_text": "#name# finished his meal.",
-            "feminine_text": "#name# finished her meal.",
-            "nonbinary_text": "#name# finished their meal."
+            "masculine_text": "#name# hat aufgegessen.",
+            "feminine_text": "#name# hat aufgegessen.",
+            "nonbinary_text": "#name# hat aufgegessen."
           },
           {
             "id": "all_the_captives_were_lost",
-            "text": "all the captives were lost."
+            "text": "alle Gefangenen sind verloren."
           },
           {
             "id": "barely_survived",
-            "text": "investigators barely survived the Feast of Hemlock Vale."
+            "text": "die Ermittler haben das Fest von Hemlock Vale knapp überlebt."
           },
           {
             "id": "became_the_true_feast_of_hemlock_vale",
-            "text": "the investigators became the true Feast of Hemlock Vale."
+            "text": "die Ermittler waren das eigentliche Festmahl von Hemlock Vale."
           },
           {
             "id": "believed",
-            "text": "the investigators believed."
+            "text": "die Ermittler haben Mutter Rachel geglaubt."
           },
           {
             "id": "bertie_had_an_epiphany",
-            "text": "Bertie had an epiphany."
+            "text": "Bertie hatte eine Epiphanie."
           },
           {
             "id": "bertie_perished",
-            "text": "Bertie perished."
+            "text": "Bertie ist ums Leben gekommen."
           },
           {
             "id": "bertie_was_lost_in_the_woods",
-            "text": "Bertie was lost in the woods."
+            "text": "Bertie ist im Wald verschollen."
           },
           {
             "id": "bertie_was_rescued",
-            "text": "Bertie was rescued."
+            "text": "Bertie wurde gerettet."
           },
           {
             "id": "captives_were_saved",
-            "text": "the captives were saved."
+            "text": "die Gefangenen wurden gerettet."
           },
           {
             "id": "chelydran_hybrid_devoured",
@@ -1157,43 +1157,39 @@
           },
           {
             "id": "dr_marquez_has_a_hunch",
-            "text": "Dr. Marquez has a hunch."
+            "text": "Dr. Marquez hat eine Ahnung."
           },
           {
             "id": "dr_marquez_has_a_plan",
-            "text": "Dr. Marquez has a plan."
+            "text": "Dr. Marquez hat einen Plan."
           },
           {
             "id": "dr_marquez_sacrificed_herself_for_the_vale",
-            "text": "Dr. Marquez sacrificed herself for the Vale."
+            "text": "Dr. Marquez hat sich für das Tal geopfert."
           },
           {
             "id": "elizabeth_peters_was_saved",
-            "text": "Elizabeth Peters was saved."
+            "text": "Elizabeth Peters wurde gerettet."
           },
           {
             "id": "faced_the_night_alone",
-            "text": "the investigators faced the longest night alone."
+            "text": "die Ermittler haben sich der längsten Nacht allein gestellt."
           },
           {
             "id": "helen_peters_joined_the_survey",
-            "text": "Helen Peters joined the survey."
-          },
-          {
-            "id": "helen_sacrificed_herself",
-            "text": "Helen Peters sacrificed herself for the investigators."
+            "text": "Helen Peters beteiligt sich an den Nachforschungen."
           },
           {
             "id": "helen_shared_a_dance",
-            "text": "Helen shared a dance."
+            "text": "Helen hat mit dir getanzt."
           },
           {
             "id": "interrupted_the_feast",
-            "text": "the investigators interrupted the Feast."
+            "text": "die Ermittler haben das Fest unterbrochen."
           },
           {
             "id": "investigators_sacrificed_themselves_for_the_vale",
-            "text": "the investigators sacrificed themselves for the Vale."
+            "text": "die Ermittler haben sich für das Tal geopfert."
           },
           {
             "id": "laid_the_pearl_family_to_rest",
@@ -1201,15 +1197,15 @@
           },
           {
             "id": "learned_their_place",
-            "text": "the investigators learned their place."
+            "text": "die Ermittler kennen ihren Platz."
           },
           {
             "id": "lied_to_mother_rachel",
-            "text": "the investigators lied to Mother Rachel."
+            "text": "die Ermittler haben Mutter Rachel belogen."
           },
           {
             "id": "lost_the_path",
-            "text": "the investigators lost the path."
+            "text": "die Ermittler haben den Weg aus den Augen verloren."
           },
           {
             "id": "madame_pearls_diary_was_recovered",
@@ -1217,11 +1213,11 @@
           },
           {
             "id": "many_captives_were_lost",
-            "text": "many captives were lost."
+            "text": "viele Gefangene sind verloren."
           },
           {
             "id": "mother_rachel_showed_the_way",
-            "text": "Mother Rachel showed the way."
+            "text": "Mutter Rachel hat dir den Weg gewiesen."
           },
           {
             "id": "remains_were_partially_recovered",
@@ -1229,7 +1225,7 @@
           },
           {
             "id": "river_shared_their_ambitions",
-            "text": "River shared their ambitions."
+            "text": "Du kennst Rivers Ziele."
           },
           {
             "id": "survived_the_horrors_in_the_rock",
@@ -1237,27 +1233,27 @@
           },
           {
             "id": "the_bear_was_wounded",
-            "text": "the bear was wounded."
+            "text": "der Bär wurde verwundet."
           },
           {
             "id": "the_hemlocks_made_a_truce",
-            "text": "the Hemlocks made a truce."
+            "text": "die Hemlocks haben einen Waffenstillstand vereinbart."
           },
           {
             "id": "the_peters_family_was_reunited",
-            "text": "The Peters family was reunited."
+            "text": "Die Familie Peters ist wiedervereint."
           },
           {
             "id": "the_vale_burned",
-            "text": "the Vale burned."
+            "text": "das Tal wurde niedergebrannt."
           },
           {
             "id": "the_vale_is_full_of_fireworks",
-            "text": "The Vale is full of fireworks."
+            "text": "Das Tal ist gespickt mit Feuerwerk."
           },
           {
             "id": "the_vale_was_saved",
-            "text": "the Vale was saved."
+            "text": "das Tal wurde gerettet."
           },
           {
             "id": "thing_in_the_depths_was_defeated",
@@ -1299,31 +1295,31 @@
         "entries": [
           {
             "id": "gideon_finished_the_tale_of_the_annabelle_lee",
-            "text": "Gideon finished the tale of the Annabelle Lee."
+            "text": "Gideon hat die Geschichte der Annabelle Lee zu Ende erzählt."
           },
           {
             "id": "gideon_found_his_treasure",
-            "text": "Gideon found his treasure."
+            "text": "Gideon hat seinen Schatz gefunden."
           },
           {
             "id": "gideon_sacrificed_himself",
-            "text": "Gideon Mizrah sacrificed himself for the investigators."
+            "text": "Gideon Mizrah hat sich für die Ermittler geopfert."
           },
           {
             "id": "gideon_shared_a_dance",
-            "text": "Gideon shared a dance."
+            "text": "Gideon hat mit dir getanzt."
           },
           {
             "id": "gideon_stood_by_you",
-            "text": "Gideon stood by you."
+            "text": "Gideon hat dir beigestanden."
           },
           {
             "id": "gideon_told_the_story_of_captain_hemlock",
-            "text": "Gideon told the story of Captain Hemlock."
+            "text": "Gideon hat dir von Captain Hemlock erzählt."
           },
           {
             "id": "gideon_told_the_tale_of_the_annabelle_lee",
-            "text": "Gideon told the tale of the Annabelle Lee."
+            "text": "Gideon hat angefangen, die Geschichte der Annabelle Lee zu erzählen."
           }
         ]
       },
@@ -2049,15 +2045,15 @@
         "entries": [
           {
             "id": "judith_sacrificed_himself",
-            "text": "Judith Park sacrificed herself for the investigators."
+            "text": "Judith Park hat sich für die Ermittler geopfert."
           },
           {
             "id": "judith_saved_your_ass",
-            "text": "Judith saved your ass."
+            "text": "Judith hat dir den Arsch gerettet."
           },
           {
             "id": "judith_shared_a_dance",
-            "text": "Judith shared a dance."
+            "text": "Judith hat mit dir getanzt."
           },
           {
             "id": "judith_shared_a_grudge",
@@ -2065,11 +2061,11 @@
           },
           {
             "id": "judith_stood_by_you",
-            "text": "Judith stood by you."
+            "text": "Judith hat dir beigestanden."
           },
           {
             "id": "you_backed_judith_up",
-            "text": "you backed Judith up."
+            "text": "du hast Judith unterstützt."
           }
         ]
       },
@@ -2082,11 +2078,11 @@
           },
           {
             "id": "leah_is_searching_for_simeon",
-            "text": "Leah is searching for Simeon."
+            "text": "Leah sucht nach Simeon."
           },
           {
             "id": "leah_sacrificed_himself",
-            "text": "Leah Atwood sacrificed herself for the investigators."
+            "text": "Leah Atwood hat sich für die Ermittler geopfert."
           },
           {
             "id": "leah_saw_something_in_the_mine",
@@ -2094,15 +2090,15 @@
           },
           {
             "id": "leah_shared_a_dance",
-            "text": "Leah shared a dance."
+            "text": "Leah hat mit dir getanzt."
           },
           {
             "id": "leah_shared_her_frustrations",
-            "text": "Leah shared her frustrations."
+            "text": "Leah hat ihren Frust mit dir geteilt."
           },
           {
             "id": "leah_stood_by_you",
-            "text": "Leah stood by you."
+            "text": "Leah hat dir beigestanden"
           },
           {
             "id": "searched_the_pearl_ruins",
@@ -2115,11 +2111,11 @@
         "entries": [
           {
             "id": "mother_rachel_intervened",
-            "text": "Mother Rachel intervened."
+            "text": "Mutter Rachel ist eingeschritten."
           },
           {
             "id": "mother_rachel_shared_her_doubts",
-            "text": "Mother Rachel shared her doubts."
+            "text": "Mutter Rachel teilt ihre Zweifel mit dir."
           }
         ]
       },
@@ -2128,23 +2124,23 @@
         "entries": [
           {
             "id": "river_is_reclaiming_their_legacy",
-            "text": "River is reclaiming their legacy."
+            "text": "River fordert das Erbe zurück."
           },
           {
             "id": "river_sacrificed_himself",
-            "text": "River Hawthorne sacrificed themself for the investigators."
+            "text": "River Hawthorne hat sich für die Ermittler geopfert."
           },
           {
             "id": "river_shared_a_dance",
-            "text": "River shared a dance."
+            "text": "River hat mit dir getanzt."
           },
           {
             "id": "river_stood_by_you",
-            "text": "River stood by you."
+            "text": "River hat dir beigestanden."
           },
           {
             "id": "scheme_is_in_motion",
-            "text": "the scheme is in motion."
+            "text": "das Vorhaben kommt ins Rollen."
           }
         ]
       },
@@ -2153,11 +2149,11 @@
         "entries": [
           {
             "id": "plan_is_underway",
-            "text": "the plan is underway."
+            "text": "der Plan nimmt Form an."
           },
           {
             "id": "plan_is_underway_count",
-            "text": "the plan is underway: #X#"
+            "text": "der Plan nimmt Form an: #X#"
           },
           {
             "id": "simeon_disappeared",
@@ -2165,19 +2161,19 @@
           },
           {
             "id": "simeon_hatched_a_plan",
-            "text": "Simeon hatched a plan."
+            "text": "Simeon hat einen Plan geschmiedet."
           },
           {
             "id": "simeon_sacrificed_himself",
-            "text": "Simeon Atwood sacrificed himself for the investigators."
+            "text": "Simeon Atwood hat sich für die Ermittler geopfert."
           },
           {
             "id": "simeon_shared_a_dance",
-            "text": "Simeon shared a dance."
+            "text": "Simeon hat mit dir getanzt."
           },
           {
             "id": "simeon_stood_by_you",
-            "text": "Simeon stood by you."
+            "text": "Simeon hat dir beigestanden."
           },
           {
             "id": "simeon_survived",
@@ -2190,31 +2186,31 @@
         "entries": [
           {
             "id": "theo_distracted_the_bear",
-            "text": "Theo Distracted the Bear."
+            "text": "Theo hat den Bären abgelenkt."
           },
           {
             "id": "theo_is_having_second_thoughts",
-            "text": "Theo is having second thoughts."
+            "text": "Theo hegt Zweifel."
           },
           {
             "id": "theo_reconciled_with_helen",
-            "text": "Theo reconciled with Helen."
+            "text": "Theo hat sich mit Helen versöhnt."
           },
           {
             "id": "theo_rejected_his_family",
-            "text": "Theo rejected his family."
+            "text": "Theo hat seine Familie zurückgewiesen."
           },
           {
             "id": "theo_sacrificed_himself",
-            "text": "Theo Peters sacrificed himself for the investigators."
+            "text": "Theo Peters hat sich für die Ermittler geopfert."
           },
           {
             "id": "theo_shared_a_dance",
-            "text": "Theo shared a dance."
+            "text": "Theo hat mit dir getanzt."
           },
           {
             "id": "theo_stood_by_you",
-            "text": "Theo stood by you."
+            "text": "Theo hat dir beigestanden."
           }
         ]
       },
@@ -2223,27 +2219,27 @@
         "entries": [
           {
             "id": "william_is_resolved",
-            "text": "William is resolved."
+            "text": "William ist fest entschlossen."
           },
           {
             "id": "william_sacrificed_himself",
-            "text": "William Hemlock sacrificed himself for the investigators."
+            "text": "William Hemlock hat sich für die Ermittler geopfert."
           },
           {
             "id": "william_shared_a_dance",
-            "text": "William shared a dance."
+            "text": "William hat mit dir getanzt."
           },
           {
             "id": "william_shared_his_legacy",
-            "text": "William shared his legacy."
+            "text": "William hat dir sein Vermächtnis offenbart."
           },
           {
             "id": "william_stood_by_you",
-            "text": "William stood by you."
+            "text": "William hat dir beigestanden."
           },
           {
             "id": "william_took_heart",
-            "text": "William took heart."
+            "text": "William hat Mut gefasst."
           }
         ]
       }
