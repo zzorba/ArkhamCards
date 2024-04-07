@@ -5000,13 +5000,13 @@ msgid "Tarot Readings"
 msgstr "Tarot-Lesungen"
 
 msgid "Perform readings with the tarot deck"
-msgstr "Führen Lesungen mit dem Tarot Deck durch"
+msgstr "Lesungen mit dem Tarot Deck durchführen"
 
 msgid "What is this?"
 msgstr "Wofür ist das?"
 
 msgid "Choose two cards to reverse."
-msgstr "Wähle zwei Karten die umgedreht werden"
+msgstr "Wähle zwei Karten, die umgedreht werden"
 
 msgid "Reverse half of the cards (rounded up)."
 msgstr "Drehe die Hälfte der Karten (aufgerundet) um."
@@ -5052,7 +5052,7 @@ msgid "Draw cards in random positions."
 msgstr "Ziehe Karten in zufälligen Positionen."
 
 msgid "Choose reading type"
-msgstr "Wähle Lesungs Typ"
+msgstr "Wähle Art der Lesung"
 
 msgid "You must flip all cards to reveal your fate."
 msgstr "Du musst alle Karten wenden um dein Schicksal zu enthüllen."
@@ -5877,7 +5877,7 @@ msgid "You cannot have more than 5 Mystic cards."
 msgstr ""
 
 msgid "The Feast of Hemlock Vale"
-msgstr ""
+msgstr "Das Fest von Hemlock Vale"
 
 msgid "The Dunwich Legacy Investigator Expansion"
 msgstr "Das Vermächtnis von Dunwich (Ermittler-Erweiterung)"
@@ -5929,81 +5929,81 @@ msgid "Aether"
 msgstr ""
 
 msgid "Campaign Rules & FAQ"
-msgstr ""
+msgstr "Kampagnen-Regeln & FAQ"
 
 msgid "Review campaign specific info"
-msgstr ""
+msgstr "Kampagnen-spezifische Informationen überprüfen"
 
 msgid "Campaign Rules"
-msgstr ""
+msgstr "Kampagnen-Regeln"
 
 msgid "Review campaign specific rules"
-msgstr ""
+msgstr "Kampagnen-spezifische Regeln überprüfen"
 
 msgid "Campaign FAQ"
-msgstr ""
+msgstr "Kampagnen-FAQ"
 
 msgid "Review campaign specific clarifications"
-msgstr ""
+msgstr "Kampagnen-spezifische Klarstellungen überprüfen"
 
 #, javascript-format
 msgid "Q: ${ errata.question }"
-msgstr ""
+msgstr "F: ${ errata.question }"
 
 #, javascript-format
 msgid "A: ${ errata.answer }"
-msgstr ""
+msgstr "A: ${ errata.answer }"
 
 msgid "Show FAQ"
-msgstr ""
+msgstr "FAQ anzeigen"
 
 msgid "May contain light spoilers"
-msgstr ""
+msgstr "Kann leichte Spoiler enthalten"
 
 msgid "Note: To avoid spoilers, scenario specific questions and clarifications can be found within each scenario guide."
-msgstr ""
+msgstr "Hinweis: Um Spoiler zu vermeiden, finden sich szenariospezifische Fragen und Klarstellungen in jedem Szenario-Leitfaden."
 
 msgid "Rules & FAQ"
-msgstr ""
+msgstr "Regeln & FAQ"
 
 msgid "Day / Time"
-msgstr ""
+msgstr "Tag / Nacht"
 
 msgid "Areas Surveyed"
-msgstr ""
+msgstr "Untersuchte Gebiete"
 
 msgid "Mother Rachel"
-msgstr ""
+msgstr "Mutter Rachel"
 
 msgid "Leah Atwood"
-msgstr ""
+msgstr "Lead Atwood"
 
 msgid "Simeon Atwood"
-msgstr ""
+msgstr "Simeon Atwood"
 
 msgid "William Hemlock"
-msgstr ""
+msgstr "William Hemlock"
 
 msgid "River Hawthorne"
-msgstr ""
+msgstr "River Hawthorne"
 
 msgid "Gideon Mizrah"
-msgstr ""
+msgstr "Gideon Mizrah"
 
 msgid "Judith Park"
-msgstr ""
+msgstr "Judith Park"
 
 msgid "Theo Peters"
-msgstr ""
+msgstr "Theo Peters"
 
 msgid "Relationship Level"
-msgstr ""
+msgstr "Beziehungsstufe"
 
 msgid "Image cache cleared"
-msgstr ""
+msgstr "Bild-Cache geleert"
 
 msgid "Clear image cache"
-msgstr ""
+msgstr "Bild-Cache leeren"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6114,11 +6114,11 @@ msgstr[1] "Da ${ list } alle den Ausrüstungsgegenstand '${ supplyName }' nicht 
 
 msgctxt "masculine"
 msgid "Killed"
-msgstr ""
+msgstr "Getötet"
 
 msgctxt "masculine"
 msgid "Insane"
-msgstr ""
+msgstr "Wahnsinnig"
 
 #, javascript-format
 msgctxt "feminine"
@@ -6233,11 +6233,11 @@ msgstr[1] "Da ${ list } alle den Ausrüstungsgegenstand '${ supplyName }' nicht 
 
 msgctxt "feminine"
 msgid "Killed"
-msgstr ""
+msgstr "Getötet"
 
 msgctxt "feminine"
 msgid "Insane"
-msgstr ""
+msgstr "Wahnsinnig"
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6338,11 +6338,11 @@ msgstr "Besiegt"
 
 msgctxt "nonbinary"
 msgid "Killed"
-msgstr ""
+msgstr "Getötet"
 
 msgctxt "nonbinary"
 msgid "Insane"
-msgstr ""
+msgstr "Wahnsinnig"
 
 msgctxt "Traits"
 msgid "All"
