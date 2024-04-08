@@ -81,6 +81,8 @@ export default function LanguageProvider({ children }: Props) {
         return 'pl';
       case 'de':
         return 'de';
+      case 'it':
+        return 'it';
       // This requires access
       case 'es':
         if (find(profile?.flags, f => f === User_Flag_Type_Enum.EsDv)) {

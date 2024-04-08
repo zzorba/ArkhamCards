@@ -5111,7 +5111,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is <b>Infected</b>",
+              "prompt": "Votre lieu est <b>Infecté</b>",
               "modified_value": {
                 "modifier": -3
               }
@@ -5159,7 +5159,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is <b>Infected</b>",
+              "prompt": "Votre lieu est <b>Infecté</b>",
               "modified_value": {
                 "modifier": -5
               }
@@ -7569,7 +7569,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your alarm level, rounded down.",
+          "prompt": "La moitié de votre niveau d'alarme, arrondi à l'inférieur",
           "min": 1
         }
       },
@@ -7595,7 +7595,7 @@
           },
           "options": [
             {
-              "prompt": "Raise your alarm level by 1",
+              "prompt": "Augmentez votre niveau d'alarme de 1",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -7635,7 +7635,7 @@
           },
           "options": [
             {
-              "prompt": "Raise your alarm level by 1",
+              "prompt": "Augmentez votre niveau d'alarme de 1",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -8004,7 +8004,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of doom in play, rounded up",
+          "prompt": "La moitié du nombre de fatalité en jeu, arrondi au supérieur",
           "min": 0
         }
       },
@@ -8338,7 +8338,7 @@
           },
           "options": [
             {
-              "prompt": "You have 2 or more clues",
+              "prompt": "Vous avez 2 indices ou plus",
               "modified_value": {
                 "modifier": -3
               }
@@ -8355,7 +8355,7 @@
           },
           "options": [
             {
-              "prompt": "A concealed mini-card is at your location",
+              "prompt": "Une carte Dissimulée est dans votre lieu",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -8381,7 +8381,7 @@
           },
           "options": [
             {
-              "prompt": "You have 2 or more clues",
+              "prompt": "Vous avez 2 indices ou plus",
               "modified_value": {
                 "modifier": -4
               }
@@ -8398,7 +8398,7 @@
           },
           "options": [
             {
-              "prompt": "A concealed mini-card is at your location",
+              "prompt": "Une carte Dissimulée est dans votre lieu",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -8484,7 +8484,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of targets on the scenario reference card.",
+          "prompt": "Nombre de cibles sur la carte de référence du scénario",
           "min": 0
         }
       },
@@ -8513,7 +8513,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of targets on the scenario reference card.",
+          "prompt": "Nombre de cibles sur la carte de référence du scénario",
           "adjustment": 1,
           "min": 0
         }
@@ -8547,7 +8547,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of clues on a [[Cultist]] enemy in play (3 during act 3)",
+          "prompt": "Le plus grand nombre d'indices sur un ennemi [[Cultiste]] en play (3 durant l'Acte 3)",
           "min": 0
         }
       },
@@ -8560,7 +8560,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on the nearest [[Cultist]] enemy",
+              "prompt": "Placez 1 fatalité sur l'ennemi [[Cultiste] le plus proche",
               "modified_value": {
                 "modifier": -1
               }
@@ -8586,7 +8586,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of clues on [[Cultist]] enemies in play (4 during act 3)",
+          "prompt": "Total du nombre d'indices sur les ennemis [[Cultiste]] en play (4 durant l'Acte 3)",
           "min": 0
         }
       },
@@ -8599,7 +8599,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on the nearest [[Cultist]] enemy",
+              "prompt": "Placez 1 fatalité sur l'ennemi [[Cultiste] le plus proche",
               "modified_value": {
                 "modifier": -3
               }
@@ -8629,7 +8629,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of enemies in the shadows",
+          "prompt": "Nomre d'ennemis dans les ombres",
           "min": 0,
           "max": 3
         }
@@ -8655,7 +8655,7 @@
           },
           "options": [
             {
-              "prompt": "There is a concealed mini-card at your location and you don't take 1 damage",
+              "prompt": "Il y a une carte Dissimulée dans votre lieu et vous ne subissez pas 1 dégât",
               "modified_value": {
                 "modifier": -3
               }
@@ -8669,7 +8669,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of enemies in the shadows",
+          "prompt": "Nomre d'ennemis dans les ombres",
           "min": 0,
           "max": 5
         }
@@ -8695,7 +8695,7 @@
           },
           "options": [
             {
-              "prompt": "There is a concealed mini-card at your location and you don't take 1 damage",
+              "prompt": "Il y a une carte Dissimulée dans votre lieu et vous ne subissez pas 1 dégât",
               "modified_value": {
                 "modifier": -5
               }
@@ -8713,7 +8713,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Hazard]] treacheries in play",
+          "prompt": "Nombre de traitrises ",
           "min": 0
         }
       },
@@ -8752,7 +8752,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Hazard]] treacheries in play",
+          "prompt": "Nombre de traitrises ",
           "adjustment": 1,
           "min": 0
         }
@@ -8894,7 +8894,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a [[Geist]] enemy",
+              "prompt": "Vous êtes dans un lieu avec un ennemi [[Geist]]",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -8945,7 +8945,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a [[Geist]] enemy",
+              "prompt": "Vous êtes dans un lieu avec un ennemi [[Geist]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9059,7 +9059,7 @@
           },
           "options": [
             {
-              "prompt": "Flip a [[Stable]] key you control to its [[Unstable]] side",
+              "prompt": "Retournez une clef [[Stable]] que vous contrôlez sur sa face [[Instable]]",
               "modified_value": {
                 "modifier": -2
               }
@@ -9111,7 +9111,7 @@
           },
           "options": [
             {
-              "prompt": "Flip a [[Stable]] key you control to its [[Unstable]] side",
+              "prompt": "Retournez une clef [[Stable]] que vous contrôlez sur sa face [[Instable]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -9153,7 +9153,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Le nombre de la colonne de votre lieu",
           "min": 1
         }
       },
@@ -9181,7 +9181,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Le nombre de la colonne de votre lieu",
           "min": 1,
           "scale": 2
         }
@@ -9214,7 +9214,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Le nombre de la colonne de votre lieu",
           "min": 1
         }
       },
@@ -9242,7 +9242,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Le nombre de la colonne de votre lieu",
           "min": 1,
           "scale": 2
         }
@@ -9275,7 +9275,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Le nombre de la colonne de votre lieu",
           "min": 1
         }
       },
@@ -9303,7 +9303,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Le nombre de la colonne de votre lieu",
           "min": 1,
           "scale": 2
         }
@@ -9336,7 +9336,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current day number",
+          "prompt": "Le nombre du jour en cours",
           "min": 1
         }
       },
@@ -9349,7 +9349,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "tentative de <b>Discussion</b>",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -9366,7 +9366,7 @@
           },
           "options": [
             {
-              "prompt": "Fewer than 3 cards in hand",
+              "prompt": "Moins de 3 cartes en main",
               "modified_value": {
                 "modifier": 0
               }
@@ -9383,7 +9383,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "tentative de <b>Discussion</b>",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -9398,7 +9398,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current day number",
+          "prompt": "Le nombre du jour en cours",
           "min": 1,
           "adjustment": 1
         }
@@ -9412,7 +9412,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "tentative de <b>Discussion</b>",
               "modified_value": {
                 "modifier": 1
               }
@@ -9429,7 +9429,7 @@
           },
           "options": [
             {
-              "prompt": "Fewer than 2 cards in hand",
+              "prompt": "Moins de 2 cartes en main",
               "modified_value": {
                 "modifier": -2
               }
@@ -9446,7 +9446,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "tentative de <b>Discussion</b>",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -9465,7 +9465,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current floor number",
+          "prompt": "Nombre de l'étage actuel",
           "min": 1
         }
       },
@@ -9493,7 +9493,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current floor number",
+          "prompt": "Nombre de l'étage actuel",
           "min": 1,
           "scale": 2
         }
@@ -9526,7 +9526,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Insect]] enemies in play and in the victory display (rounded up)",
+          "prompt": "La moitié du nombre d'ennemis [[Insecte]] en jeu et dans la pile de victoire (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -9551,7 +9551,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Lair]] location",
+              "prompt": "Dans un lieu [[Repaire]]",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -9566,7 +9566,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Insect]] enemies in play and in the victory display",
+          "prompt": "La moitié du nombre d'ennemis [[Insecte]] en jeu et dans la pile de victoire",
           "min": 0
         }
       },
@@ -9591,7 +9591,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Lair]] location",
+              "prompt": "Dans un lieu [[Repaire]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }

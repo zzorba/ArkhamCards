@@ -3996,9 +3996,9 @@
         "entries": [
           {
             "id": "possesses_a_diving_suit",
-            "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit.",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "masculine_text": "#name# sở hữu bộ đồ lặn.",
+            "feminine_text": "#name# sở hữu bộ đồ lặn.",
+            "nonbinary_text": "#name# sở hữu bộ đồ lặn."
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -4058,11 +4058,11 @@
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "vương miện đã được đem tới ngọn hải đăng."
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "tượng thần đã được đem đến ngọn hải đăng."
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
@@ -4078,7 +4078,7 @@
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "áo choàng đã được đem tới ngọn hải đăng."
           },
           {
             "id": "marsh_out_for_blood",
@@ -4102,19 +4102,19 @@
           },
           {
             "id": "possess_a_map_of_yhanthlei",
-            "text": "the investigators possess a map of Y'ha-nthlei."
+            "text": "các điều tra viên sở hữu một bản đồ của Y'ha-nthlei."
           },
           {
             "id": "possess_the_key_to_yhanthlei",
-            "text": "the investigators possess the key to Y'ha-nthlei."
+            "text": "các điều tra viên sở hữu một chìa khóa của Y'ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
-            "text": "the investigators reached Falcon Point after sunrise."
+            "text": "các điều tra viên đã đến được Falcon Point sau khi mặt trời mọc."
           },
           {
             "id": "reached_falcon_point_before_sunrise",
-            "text": "the investigators reached Falcon Point before sunrise."
+            "text": "các điều tra viên đã đến được Falcon Point trước khi mặt trời mọc."
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
@@ -4126,11 +4126,11 @@
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "Terror of Devil Reef đã chết."
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "Terror of Devil Reef vẫn còn sống."
           },
           {
             "id": "tide_has_grown_stronger",
@@ -4163,7 +4163,7 @@
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "Ngôi nhà trên đường Water"
+            "text": "The House on Water Street (ngôi nhà trên đường Water)"
           },
           {
             "id": "accuse_little",
@@ -4179,19 +4179,19 @@
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Mệnh lệnh bí truyền của Dagon"
+            "text": "Dòng Dagon bí truyền"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Innsmouth Jail (nhà tù Innsmouth)"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Sawbone Alley (hẻm Sawbone)"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Shoreward Slums (khu ổ chuột ven biển)"
           },
           {
             "id": "act_2_setup",
@@ -4284,7 +4284,7 @@
           },
           {
             "id": "conversation_with_mr_moore",
-            "text": "a conversation with Mr. Moore"
+            "text": "cuộc trò chuyện với ông Moore"
           },
           {
             "id": "decision_to_stick_together",
@@ -4292,15 +4292,15 @@
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic"
+            "text": "phát hiện một cổ vật thần bí"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol"
+            "text": "phát hiện một tượng thần kỳ lạ"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle"
+            "text": "phát hiện ra một chiếc áo choàng tà ác"
           },
           {
             "id": "encounter_with_a_secret_cult",
@@ -4312,7 +4312,7 @@
           },
           {
             "id": "lifecycle_of_a_deep_one",
-            "text": "the lifecycle of a \"Deep One\""
+            "text": "vòng đời của một \"Deep One\""
           },
           {
             "id": "meeting_with_thomas_dawson",
@@ -4333,11 +4333,11 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "Ngôi nhà trên đường Water"
+            "text": "The House on Water Street (ngôi nhà trên đường Water)"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Innsmouth Jail (nhà tù Innsmouth)"
           },
           {
             "id": "new_church_green",
@@ -4345,15 +4345,15 @@
           },
           {
             "id": "order_of_dagon",
-            "text": "Mệnh lệnh bí truyền của Dagon"
+            "text": "Dòng Dagon bí truyền"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Sawbone Alley (hẻm Sawbone)"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Shoreward Slums (khu ổ chuột ven biển)"
           }
         ]
       },
@@ -6089,9 +6089,9 @@
         "entries": [
           {
             "id": "possesses_a_diving_suit",
-            "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit.",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "masculine_text": "#name# sở hữu bộ đồ lặn.",
+            "feminine_text": "#name# sở hữu bộ đồ lặn.",
+            "nonbinary_text": "#name# sở hữu bộ đồ lặn."
           },
           {
             "id": "agent_harpers_mission_is_complete",
@@ -6151,11 +6151,11 @@
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "vương miện đã được đem tới ngọn hải đăng."
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "tượng thần đã được đem đến ngọn hải đăng."
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
@@ -6171,7 +6171,7 @@
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "áo choàng đã được đem tới ngọn hải đăng."
           },
           {
             "id": "marsh_out_for_blood",
@@ -6195,19 +6195,19 @@
           },
           {
             "id": "possess_a_map_of_yhanthlei",
-            "text": "the investigators possess a map of Y'ha-nthlei."
+            "text": "các điều tra viên sở hữu một bản đồ của Y'ha-nthlei."
           },
           {
             "id": "possess_the_key_to_yhanthlei",
-            "text": "the investigators possess the key to Y'ha-nthlei."
+            "text": "các điều tra viên sở hữu một chìa khóa của Y'ha-nthlei."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
-            "text": "the investigators reached Falcon Point after sunrise."
+            "text": "các điều tra viên đã đến được Falcon Point sau khi mặt trời mọc."
           },
           {
             "id": "reached_falcon_point_before_sunrise",
-            "text": "the investigators reached Falcon Point before sunrise."
+            "text": "các điều tra viên đã đến được Falcon Point trước khi mặt trời mọc."
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
@@ -6219,11 +6219,11 @@
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "Terror of Devil Reef đã chết."
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "Terror of Devil Reef vẫn còn sống."
           },
           {
             "id": "tide_has_grown_stronger",
@@ -6252,7 +6252,7 @@
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "Ngôi nhà trên đường Water"
+            "text": "The House on Water Street (ngôi nhà trên đường Water)"
           },
           {
             "id": "accuse_little",
@@ -6268,19 +6268,19 @@
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Mệnh lệnh bí truyền của Dagon"
+            "text": "Dòng Dagon bí truyền"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Innsmouth Jail (nhà tù Innsmouth)"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Sawbone Alley (hẻm Sawbone)"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Shoreward Slums (khu ổ chuột ven biển)"
           },
           {
             "id": "act_2_setup",
@@ -6373,7 +6373,7 @@
           },
           {
             "id": "conversation_with_mr_moore",
-            "text": "a conversation with Mr. Moore"
+            "text": "cuộc trò chuyện với ông Moore"
           },
           {
             "id": "decision_to_stick_together",
@@ -6381,15 +6381,15 @@
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic"
+            "text": "phát hiện một cổ vật thần bí"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol"
+            "text": "phát hiện một tượng thần kỳ lạ"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle"
+            "text": "phát hiện ra một chiếc áo choàng tà ác"
           },
           {
             "id": "encounter_with_a_secret_cult",
@@ -6401,7 +6401,7 @@
           },
           {
             "id": "lifecycle_of_a_deep_one",
-            "text": "the lifecycle of a \"Deep One\""
+            "text": "vòng đời của một \"Deep One\""
           },
           {
             "id": "meeting_with_thomas_dawson",
@@ -6418,11 +6418,11 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "Ngôi nhà trên đường Water"
+            "text": "The House on Water Street (ngôi nhà trên đường Water)"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Innsmouth Jail (nhà tù Innsmouth)"
           },
           {
             "id": "new_church_green",
@@ -6430,15 +6430,15 @@
           },
           {
             "id": "order_of_dagon",
-            "text": "Mệnh lệnh bí truyền của Dagon"
+            "text": "Dòng Dagon bí truyền"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Sawbone Alley (hẻm Sawbone)"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Shoreward Slums (khu ổ chuột ven biển)"
           }
         ]
       },

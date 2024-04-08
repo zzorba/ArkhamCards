@@ -87,6 +87,7 @@ export default function ArkhamIconNode(usePingFang: boolean, { colors, fontScale
     state: RenderState & State,
   ) => {
     const icon_name = BAD_ICON_NAMES[node.name] || node.name;
+    console.error(icon_name);
     if (icon_name.startsWith('encounter=')) {
       return (
         <CenterIconWrapper key={state.key} width={width}>
