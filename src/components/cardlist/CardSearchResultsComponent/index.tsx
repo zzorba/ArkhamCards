@@ -280,7 +280,7 @@ export default function({
     if (searchTerm === '' || !searchTerm) {
       return combineQueriesOpt(parts, 'and');
     }
-    const safeSearchTerm = `%${searchNormalize(searchTerm, lang)}%`;
+    const safeSearchTerm = `%${searchNormalize(searchTerm.trim(), lang)}%`;
     const searchRealName = lang !== 'en' && searchEnglish;
     parts.push(where(
       searchRealName ?

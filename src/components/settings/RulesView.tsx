@@ -107,7 +107,7 @@ export default function RulesView({ componentId }: Props) {
     db.getRulesPaged(
       0,
       100,
-      where(`r.parentRule is null AND (r.s_title LIKE '%' || :titleSearchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules.s_title is not null AND sub_rules.s_title LIKE '%' || :titleSearchTerm || '%') OR (sub_rules.text is not null AND sub_rules.text LIKE '%' || :searchTerm || '%'))`, { searchTerm, titleSearchTerm: searchNormalize(searchTerm, lang) })
+      where(`r.parentRule is null AND (r.s_title LIKE '%' || :titleSearchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules.s_title is not null AND sub_rules.s_title LIKE '%' || :titleSearchTerm || '%') OR (sub_rules.text is not null AND sub_rules.text LIKE '%' || :searchTerm || '%'))`, { searchTerm, titleSearchTerm: searchNormalize(searchTerm.trim(), lang) })
     ).then((rules: Rule[]) => setSearchResults({
       term: searchTerm,
       rules,

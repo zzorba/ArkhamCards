@@ -56,9 +56,9 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
     isSelf: boolean,
     profile?: UserProfile
   ) => {
-    const normalizedSearch = searchTerm && searchNormalize(searchTerm, lang);
+    const normalizedSearch = searchTerm && searchNormalize(searchTerm.trim(), lang);
     const matchesSearch = (f: SimpleUser) => {
-      return !normalizedSearch || !f.handle || searchNormalize(f.handle, lang).indexOf(normalizedSearch) !== -1;
+      return !normalizedSearch || !f.handle || searchNormalize(f.handle.trim(), lang).indexOf(normalizedSearch) !== -1;
     };
     const feed: FriendFeedItem[] = [];
     if (searchTerm && searchTerm !== searchResults.term) {
