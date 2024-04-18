@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2024-02-21 21:46+0300\n"
+"PO-Revision-Date: 2024-04-18 14:31+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -2239,19 +2239,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -6026,37 +6026,37 @@ msgid "Rules & FAQ"
 msgstr "Правила и ответы на частые вопросы"
 
 msgid "Day / Time"
-msgstr ""
+msgstr "День / Время суток"
 
 msgid "Areas Surveyed"
-msgstr ""
+msgstr "Исследованные места"
 
 msgid "Mother Rachel"
-msgstr ""
+msgstr "Матушка Рейчел"
 
 msgid "Leah Atwood"
-msgstr ""
+msgstr "Лия Этвуд"
 
 msgid "Simeon Atwood"
-msgstr ""
+msgstr "Симеон Этвуд"
 
 msgid "William Hemlock"
-msgstr ""
+msgstr "Уильям Хемлок"
 
 msgid "River Hawthorne"
-msgstr ""
+msgstr "Ривер Хоуторн"
 
 msgid "Gideon Mizrah"
-msgstr ""
+msgstr "Гидеон Мизра"
 
 msgid "Judith Park"
-msgstr ""
+msgstr "Джудит Пак"
 
 msgid "Theo Peters"
-msgstr ""
+msgstr "Тео Питерс"
 
 msgid "Relationship Level"
-msgstr ""
+msgstr "Уровень доверия"
 
 msgid "Image cache cleared"
 msgstr "Кэш изображений очищен"
@@ -6180,11 +6180,11 @@ msgstr[2] "Поскольку ${ supplyName } отсутствует у ${ list 
 
 msgctxt "masculine"
 msgid "Killed"
-msgstr ""
+msgstr "Убит"
 
 msgctxt "masculine"
 msgid "Insane"
-msgstr ""
+msgstr "Сошёл с ума"
 
 #, javascript-format
 msgctxt "feminine"
@@ -6306,11 +6306,11 @@ msgstr[2] "Поскольку ${ supplyName } отсутствует у ${ list 
 
 msgctxt "feminine"
 msgid "Killed"
-msgstr ""
+msgstr "Убита"
 
 msgctxt "feminine"
 msgid "Insane"
-msgstr ""
+msgstr "Сошла с ума"
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6416,11 +6416,11 @@ msgstr "Побеждён"
 
 msgctxt "nonbinary"
 msgid "Killed"
-msgstr ""
+msgstr "Сошёл с ума"
 
 msgctxt "nonbinary"
 msgid "Insane"
-msgstr ""
+msgstr "Убит"
 
 msgctxt "Traits"
 msgid "All"
