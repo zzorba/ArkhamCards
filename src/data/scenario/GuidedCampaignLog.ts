@@ -173,17 +173,22 @@ export interface VisibleCalendarEntry {
   time: number;
 }
 
+type CampaignLogSections = {
+  [section: string]: EntrySection | undefined;
+};
+
+type CampaignLogCountsSections = {
+  [section: string]: CountSection | undefined;
+}
+type CampaignLogInvestigatorSections = {
+  [section: string]: InvestigatorSection | undefined;
+};
+
 interface GuidedCampaignLogState {
   scenarioId?: string;
-  sections: {
-    [section: string]: EntrySection | undefined;
-  };
-  countSections: {
-    [section: string]: CountSection | undefined;
-  };
-  investigatorSections: {
-    [section: string]: InvestigatorSection | undefined;
-  };
+  sections: CampaignLogSections;
+  countSections: CampaignLogCountsSections;
+  investigatorSections: CampaignLogInvestigatorSections;
   scenarioData: {
     [scenario: string]: ScenarioData | undefined;
   };
@@ -203,15 +208,9 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
 
   // State
   scenarioId?: string;
-  sections: {
-    [section: string]: EntrySection | undefined;
-  };
-  countSections: {
-    [section: string]: CountSection | undefined;
-  };
-  investigatorSections: {
-    [section: string]: InvestigatorSection | undefined;
-  };
+  sections: CampaignLogSections
+  countSections: CampaignLogCountsSections
+  investigatorSections: CampaignLogInvestigatorSections
   scenarioData: {
     [scenario: string]: ScenarioData | undefined;
   };
@@ -442,14 +441,14 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       case 'save':
         this.backupState = {
           scenarioId: this.scenarioId,
-          sections: this.sections,
-          countSections: this.countSections,
-          investigatorSections: this.investigatorSections,
-          scenarioData: this.scenarioData,
-          latestScenarioData: this.latestScenarioData,
-          campaignData: this.campaignData,
-          chaosBag: this.chaosBag,
-          swapChaosBag: this.swapChaosBag,
+          sections: cloneDeep(this.sections),
+          countSections: cloneDeep(this.countSections),
+          investigatorSections: cloneDeep(this.investigatorSections),
+          scenarioData: cloneDeep(this.scenarioData),
+          latestScenarioData: cloneDeep(this.latestScenarioData),
+          campaignData: cloneDeep(this.campaignData),
+          chaosBag: cloneDeep(this.chaosBag),
+          swapChaosBag: cloneDeep(this.swapChaosBag),
         };
         break;
       case 'restore':

@@ -727,7 +727,7 @@
       {
         "code": "07122",
         "text": "This card's [reaction] ability now reads: \"When you resolve a [bless] token during a skill test…",
-        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\nWhen you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
       },
       {
         "code": "60233",
@@ -1177,7 +1177,7 @@
       {
         "code": "07122",
         "text": "This card's [reaction] ability now reads: \"When you resolve a [bless] token during a skill test…",
-        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\nWhen you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
       },
       {
         "code": "60233",
