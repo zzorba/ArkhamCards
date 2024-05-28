@@ -5772,7 +5772,7 @@ msgid "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } t
 msgid_plural "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to ${ arriveCityName } on the way to somewhere else."
 msgstr[0] "Zaznacz ${ time } pole <b>czasu</b>, ponieważ komórka przemieszcza się z ${ departCityName } do ${ arriveCityName } w drodze do innego miejsca."
 msgstr[1] "Zaznacz ${ time } pola <b>czasu</b>, ponieważ komórka przemieszcza się z ${ departCityName } do ${ arriveCityName } w drodze do innego miejsca."
-msgstr[2] ""
+msgstr[2] "Zaznacz ${ time } pól <b>czasu</b>, ponieważ komórka przemieszcza się z ${ departCityName } do ${ arriveCityName } w drodze do innego miejsca."
 
 msgid "You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox traited."
 msgstr "Nie możesz mieć więcej niż 5 kart, które nie są kartami Poszukiwacza, neutralnymi lub z cechą Paradoks."
@@ -5975,7 +5975,7 @@ msgstr "Nie-unikatowa"
 
 #, javascript-format
 msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr "Koszt doświadczenia: ${ basicXpCost } dla talii zawierających ${ investigator.name }, ${ challengeDiscountCost } dla pozostałych graczy."
+msgstr "Koszt doświadczenia: ${ basicXpCost } dla talii zawierających ${ investigator.name }, ${ challengeDiscountCost } dla pozostałych graczy"
 
 msgid "Aether"
 msgstr ""
@@ -8347,7 +8347,7 @@ msgid "Key"
 msgid_plural "Keys"
 msgstr[0] "Klucz"
 msgstr[1] "Klucze"
-msgstr[2] ""
+msgstr[2] "Kluczy"
 
 msgctxt "tags"
 msgid "Add"
