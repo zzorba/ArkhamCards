@@ -79,7 +79,7 @@ msgid "Second Core Set"
 msgstr "Drugi Zestaw Podstawowy"
 
 msgid "Edit Collection"
-msgstr "Edytuj Kolekcje"
+msgstr "Edytuj Kolekcję"
 
 msgid "Search decks"
 msgstr "Szukaj talii"
@@ -798,19 +798,19 @@ msgstr "Worek Chaosu"
 msgid "Adjust Weakness Set"
 msgstr "Dopasuj Zestaw Osłabień"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ta talia zawiera kilka podstawowych osłabień"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ta talia zawiera podstawowe osłabienie"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Czy chcesz je usunąć z zestawu Podstawowych Osłabień tej kampanii?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Czy chcesz je usunąć z zestawu Podstawowych Osłabień tej kampanii?"
 
@@ -3677,7 +3677,7 @@ msgid "Searching cards..."
 msgstr "Szukanie kart..."
 
 msgid "This appears to be one of your decks from ArkhamDB, however you are not currently logged in. If you wish to make edits, please login through the app settings."
-msgstr "This appears to be one of your decks from ArkhamDB, however you are not currently logged in. If you wish to make edits, please login through the app settings."
+msgstr "Wygląda na to, że jest to jedna z twoich talii z ArkhamDB, ale nie jesteś obecnie zalogowany. Jeśli chcesz wprowadzić zmiany, zaloguj się w ustawieniach aplikacji."
 
 msgid "Leave campaign"
 msgstr "Opuść kampanię"
@@ -3742,9 +3742,7 @@ msgid "Scenario Card"
 msgstr "Karta scenariusza"
 
 msgid "This appears to be one of your decks from ArkhamDB, however you seem to be logged into a different ArkhamDB account? If you wish to make edits, please login through the app settings."
-msgstr ""
-"Wygląda na to, że jest to jedna z twoich talii z ArkhamDB, ale najwidoczniej jesteś zalogowany na inne konto ArkhamDB? \n"
-"Jeśli chcesz wprowadzić zmiany, zaloguj się w ustawieniach aplikacji."
+msgstr "Wygląda na to, że jest to jedna z twoich talii z ArkhamDB, ale wydaje się, że jesteś zalogowany na inne konto ArkhamDB? Jeśli chcesz wprowadzić zmiany, zaloguj się w ustawieniach aplikacji."
 
 #, javascript-format
 msgid "${ tokens[0] } and ${ tokens[1] }"
@@ -4270,16 +4268,16 @@ msgid "In the ${ sectionName } section of the Campaign Log, cross out \"MIA\" ne
 msgstr "W sekcji ${ sectionName } Dziennika kampanii skreśl „ZwA” obok ${ partnerName }."
 
 msgid "If the lead investigator was driven <b>insane</b>."
-msgstr "Jeśli główny badacz stał się <b>niepoczytalny</b>,"
+msgstr "Jeśli główny badacz stał się <b>niepoczytalny</b>."
 
 msgid "If all investigators were driven <b>insane</b>."
-msgstr "Jeśli wszyscy badacze stali się <b>niepoczytalni</b>,"
+msgstr "Jeśli wszyscy badacze stali się <b>niepoczytalni</b>."
 
 msgid "If the lead investigator is still alive."
-msgstr "Jeśli główny badacz wciąż żyje,"
+msgstr "Jeśli główny badacz wciąż żyje."
 
 msgid "If all investigatore are still alive."
-msgstr "Jeśli wszyscy badacze wciąż żyją,"
+msgstr "Jeśli wszyscy badacze wciąż żyją."
 
 msgid "The Entity"
 msgstr "Istota"
@@ -4357,7 +4355,7 @@ msgid "The Heart of Madness - Seals Recovered"
 msgstr "Serce szaleństwa - Odzyskane pieczęcie"
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
-msgstr "Możesz odzyskać 1 punkt fizycznej lub psychicznej traumy <i>Twój wybór</i>"
+msgstr "Możesz odzyskać 1 punkt fizycznej lub psychicznej traumy <i>(twój wybór)</i>"
 
 #, javascript-format
 msgid "In the ${ sectionName } section of the Campaign Log, draw a check mark next to ${ partnerName }."
@@ -4921,7 +4919,7 @@ msgid "Unable to generate deck"
 msgstr "Nie można wygenerować talii"
 
 msgid "Suggested starter deck for this investigator from FFG."
-msgstr "Sugerowana talia startowa dla tego badacza od FFG"
+msgstr "Sugerowana talia startowa dla tego badacza od FFG."
 
 msgid "An empty deck."
 msgstr "Pusta talia."
@@ -4939,13 +4937,13 @@ msgid "Re-generate deck"
 msgstr "Generuj talię ponownie"
 
 msgid "Draft from card collection"
-msgstr ""
+msgstr "Draft z kolekcji kart"
 
 msgid "Disable to choose which packs to draft from"
-msgstr ""
+msgstr "Wyłącz, aby wybrać zestawy do draftu"
 
 msgid "Draft using your card collection"
-msgstr ""
+msgstr "Draft przy użyciu twojej kolekcji kart"
 
 msgid "Draft Pool"
 msgstr "Pula draftu"
@@ -4972,7 +4970,7 @@ msgid "Each 'hand' of cards is taken at random from all possible cards that are 
 msgstr "Każda „ręka” jest losowo wybierana ze wszystkich dozwolonych kart biorąc pod uwagęaktualnego badacza oraz wymogi tworzenia talii."
 
 msgid "The drafting process will continue until your deck is full, but you can stop or change the settings at any time"
-msgstr "Proces draftowania będzie kontynuowany, dopóki talia nie będzie pełna, ale możesz zatrzymaćlub zmienić ustawienia w dowolnym momencie."
+msgstr "Proces draftowania będzie kontynuowany, dopóki talia nie będzie pełna, ale możesz zatrzymać lub zmienić ustawienia w dowolnym momencie"
 
 msgid "Begin draft"
 msgstr "Rozpocznij draft"
@@ -5024,7 +5022,7 @@ msgid "Build a deck randomly"
 msgstr "Zbuduj talię losowo"
 
 msgid "A single core set is always included"
-msgstr ""
+msgstr "Jeden zestaw podstawowy jest zawsze dołączony"
 
 msgid "Campaigns Cycles"
 msgstr ""
@@ -5060,7 +5058,7 @@ msgid "Choose one card."
 msgstr "Wybierz jedną kartę."
 
 msgid "Draw and reverse cards however you like!"
-msgstr "Dobierz i odwróć karty tak, jak lubisz! "
+msgstr "Dobierz i odwróć karty tak, jak lubisz!"
 
 msgid "Reveal"
 msgstr "Odkryj"
@@ -5221,7 +5219,7 @@ msgstr[1] "Twoje talie zostaną usunięte z ${ joinedCampaignCount } kampanii zn
 msgstr[2] "Twoje talie zostaną usunięte z ${ joinedCampaignCount } kampanii znajomych, w których brałeś udział:"
 
 msgid "I understand that all data will be deleted permanently."
-msgstr "Rozumiem, że wszystkie dane zostaną trwale usunięte"
+msgstr "Rozumiem, że wszystkie dane zostaną trwale usunięte."
 
 msgid "Confirm account deletion"
 msgstr "Potwierdź usunięcie konta"
@@ -5245,10 +5243,10 @@ msgid "Check for card updates"
 msgstr "Aktualizuj dane kart"
 
 msgid "Choose slot to remove"
-msgstr ""
+msgstr "Wybierz strefę do usunięcia"
 
 msgid "Slot"
-msgstr ""
+msgstr "Strefa"
 
 msgid ""
 "Sorry, the app cannot yet support customizable cards like this one, but we are working on it!\n"
@@ -5280,11 +5278,13 @@ msgid "Name ${ quantity } card"
 msgid_plural "Name ${ quantity } cards"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 msgid "Named card"
 msgid_plural "Named cards"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 msgid "In deck"
 msgstr "W talii"
@@ -5369,10 +5369,10 @@ msgid "Tomb of Dead Dreams"
 msgstr ""
 
 msgid "Cultists Alive"
-msgstr ""
+msgstr "Żyjący kultyści"
 
 msgid "Cultists Killed"
-msgstr ""
+msgstr "Zabici kultyści"
 
 msgid "Notice"
 msgstr ""
@@ -5390,10 +5390,10 @@ msgid "Non-canon Content"
 msgstr ""
 
 msgid "Fan-made Campaigns"
-msgstr ""
+msgstr "Kampanie fanowskie"
 
 msgid "Fan-made Scenarios"
-msgstr ""
+msgstr "Scenariusze fanowskie"
 
 msgid "Currently here"
 msgstr "Aktualnie tutaj"
@@ -5454,6 +5454,7 @@ msgid "${ used } / ${ available } used"
 msgid_plural "${ used } / ${ available } used"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 msgid "You cannot have more than 15 level 0-1 Guardian and/or Survivor cards"
 msgstr "Nie możesz mieć więcej niż 15 kart Strażnika i/lub Ocalałego o poziomie 0-1"
@@ -5468,7 +5469,7 @@ msgid ""
 msgstr ""
 
 msgid "This card has not yet been released, and cannot be included in ArkhamDB decks at this time."
-msgstr ""
+msgstr "Ta karta nie została jeszcze wydana i nie może być obecnie używana w taliach ArkhamDB."
 
 msgid "Recomputing deck changes..."
 msgstr "Przeliczanie zmian talii..."
@@ -5491,7 +5492,7 @@ msgid "Taboo Set: ${ tabooSetName }"
 msgstr "Lista tabu: ${ tabooSetName }"
 
 msgid "Specific taboo set"
-msgstr ""
+msgstr "Konkretny zestaw tabu"
 
 msgid "Deleteing ArkhamDB accounts"
 msgstr "Usuwanie kont ArkhamDB"
@@ -5512,7 +5513,7 @@ msgid "Delete Account"
 msgstr "Usuń konto"
 
 msgid "Choose a skill"
-msgstr ""
+msgstr "Wybierz umiejętność"
 
 msgid "Use the embark button below"
 msgstr "Użyj kafelka wyrusz poniżej"
@@ -5537,7 +5538,7 @@ msgstr[1] "Koszt podróży: ${ travelDistance } pola czasu"
 msgstr[2] "Koszt podróży: ${ travelDistance } pola czasu"
 
 msgid "Do you want to use the app to randomize choices?"
-msgstr ""
+msgstr "Czy chcesz używać aplikacji do losowania wyborów?"
 
 #, javascript-format
 msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
@@ -5554,7 +5555,7 @@ msgid "This includes the cost of experience cost of playing the side-story."
 msgstr ""
 
 msgid "This deck is owned by another player. You can record the changes now and they will be given an opportunity to save them to their deck when they next open the app."
-msgstr ""
+msgstr "Ta talia należy do innego gracza. Możesz teraz zapisać zmiany, a gracz będzie miał możliwość zapisania ich w swojej talii przy następnym otwarciu aplikacji."
 
 msgid "Time Passed"
 msgstr "Mijający czas"
@@ -5578,28 +5579,28 @@ msgid "Challenge Scenarios"
 msgstr ""
 
 msgid "Choose an option"
-msgstr ""
+msgstr "Wybierz opcję"
 
 msgid "Choose weakness"
-msgstr ""
+msgstr "Wybierz osłabienie"
 
 msgid "Do you want to use the app to draw random tarot cards?"
-msgstr ""
+msgstr "Czy chcesz używać aplikacji do losowania kart tarota?"
 
 msgid "Choose tarot card"
-msgstr ""
+msgstr "Wybierz kartę tarota"
 
 msgid "Choose supplies:"
-msgstr ""
+msgstr "Wybierz ekwipunek:"
 
 msgid "Asset Class Choice"
-msgstr ""
+msgstr "Wybór klasy atutu"
 
 msgid "Skill Class Choie"
-msgstr ""
+msgstr "Wybór klasy umiejętności"
 
 msgid "Event Class Choice"
-msgstr ""
+msgstr "Wybór klasy wydarzenia"
 
 msgid "If you wish to add a side-story to this campaign, you may travel to this location and spend additional time equal to the normal experience for playing that side story."
 msgstr "Jeśli chcesz włączyć historię poboczną do tej kampanii, możesz udać się do tej lokalizacji i wydać dodatkowy czas równy normalnemu kosztowi doświadczenia za rozegranie tej historii pobocznej."
@@ -5691,10 +5692,10 @@ msgid "Each investigator who is the bearer of 1 or more key attaches those keys 
 msgstr "Każdy badacz który jest posiadaczem 1 lub więcej kluczy dołącza te klucze do swojej karty badacza:"
 
 msgid "Customizable"
-msgstr ""
+msgstr "Przystosowalny"
 
 msgid "0 XP"
-msgstr ""
+msgstr "0 PD"
 
 msgid "No campaign"
 msgstr "Brak kampanii"
@@ -5738,6 +5739,7 @@ msgid "${ scenarioName }: Visit ${ attempt }"
 msgid_plural "${ scenarioName }: Visit ${ attempt }"
 msgstr[0] "${ scenarioName }: Odwiedź ${ attempt }"
 msgstr[1] "${ scenarioName }: Odwiedź ${ attempt }"
+msgstr[2] "${ scenarioName }: Odwiedź ${ attempt }"
 
 msgid "Search english card names"
 msgstr "Szukaj wśród angielskich nazw kart"
@@ -5748,12 +5750,12 @@ msgstr "Uwzględnij angielski przy szukaniu"
 #, javascript-format
 msgid "${ xp } XP"
 msgid_plural "${ xp } XP"
-msgstr[0] "${ xp } XP"
-msgstr[1] "${ xp } XP"
-msgstr[2] "${ xp } XP"
+msgstr[0] "${ xp } PD"
+msgstr[1] "${ xp } PD"
+msgstr[2] "${ xp } PD"
 
 msgid "This app is made possible by the continued support of our fans on Patreon and the Mythos Busters podcast."
-msgstr ""
+msgstr "Ta aplikacja powstała dzięki stałemu wsparciu naszych fanów na Patreon i podcastu Mythos Busters."
 
 msgid "Travel here without stopping"
 msgstr "Podróżuj tutaj bez zatrzymywania się"
@@ -5770,15 +5772,16 @@ msgid "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } t
 msgid_plural "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to ${ arriveCityName } on the way to somewhere else."
 msgstr[0] "Zaznacz ${ time } pole <b>czasu</b>, ponieważ komórka przemieszcza się z ${ departCityName } do ${ arriveCityName } w drodze do innego miejsca."
 msgstr[1] "Zaznacz ${ time } pola <b>czasu</b>, ponieważ komórka przemieszcza się z ${ departCityName } do ${ arriveCityName } w drodze do innego miejsca."
+msgstr[2] ""
 
 msgid "You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox traited."
-msgstr ""
+msgstr "Nie możesz mieć więcej niż 5 kart, które nie są kartami Poszukiwacza, neutralnymi lub z cechą Paradoks."
 
 msgid "Min"
 msgstr "Min"
 
 msgid "Max"
-msgstr "Max"
+msgstr "Maks"
 
 msgid "EASY"
 msgstr ""
@@ -5818,7 +5821,7 @@ msgid "Automatic Backup"
 msgstr "Automatyczna kopia zapasowa"
 
 msgid "You must have at least 7 cards from each class"
-msgstr ""
+msgstr "Musisz mieć co najmniej 7 kart z każdej klasy"
 
 msgid "More off-class card than the number of weaknesses in your deck and bonded cards."
 msgstr ""
@@ -5889,26 +5892,26 @@ msgstr ""
 
 #, javascript-format
 msgid "Latest Taboo List: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
-msgstr ""
+msgstr "Najnowsza lista tabu: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
 
 msgid "This card is no longer on the taboo list."
-msgstr ""
+msgstr "Ta karta nie znajduje się już na liście tabu."
 
 msgid "See taboo list history"
-msgstr ""
+msgstr "Zobacz historię listy tabu"
 
 msgid "Taboo list history:"
-msgstr ""
+msgstr "Historia listy tabu:"
 
 msgid "CHAOS BAG"
 msgstr "WOREK CHAOSU"
 
 msgid "Just a bag. No strings attached."
-msgstr ""
+msgstr "To tylko worek. Bez zobowiązań."
 
 #, javascript-format
 msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
-msgstr ""
+msgstr "Zapieczętowane (${ chaosBagResults.sealedTokens.length })"
 
 msgid "Spirit Deck"
 msgstr ""
@@ -5917,91 +5920,91 @@ msgid "Edit Spirit Deck"
 msgstr ""
 
 msgid "No permanents except story and signature permanents"
-msgstr ""
+msgstr "Bez trwałych z wyjątkiem trwałych fabularnych i powiązanych z badaczem"
 
 msgid "You cannot have more than 5 Survivor cards."
-msgstr ""
+msgstr "Nie możesz mieć więcej niż 5 kart Ocalałego."
 
 msgid "You cannot have more than 5 Mystic cards."
-msgstr ""
+msgstr "Nie możesz mieć więcej niż 5 kart Mistyka."
 
 msgid "The Feast of Hemlock Vale"
-msgstr ""
+msgstr "Uczta w Dolinie Hemlock"
 
 msgid "The Dunwich Legacy Investigator Expansion"
-msgstr ""
+msgstr "Dziedzictwo Dunwich - Rozszerzenie badaczy"
 
 msgid "The Dunwich Legacy Campaign Expansion"
-msgstr ""
+msgstr "Dziedzictwo Dunwich - Rozszerzenie kampanijne"
 
 msgid "The Path to Carcosa Investigator Expansion"
-msgstr ""
+msgstr "Szlak do Carcosy - Rozszerzenie badaczy"
 
 msgid "The Path to Carcosa Campaign Expansion"
-msgstr ""
+msgstr "Szlak do Carcosy - Rozszerzenie kampanijne"
 
 msgid "The Forgotten Age Investigator Expansion"
-msgstr ""
+msgstr "Zapomniana era - Rozszerzenie badaczy"
 
 msgid "The Forgotten Age Campaign Expansion"
-msgstr ""
+msgstr "Zapomniana era - Rozszerzenie kampanijne"
 
 msgid "The Circle Undone Investigator Expansion"
-msgstr ""
+msgstr "Przerwany krąg - Rozszerzenie badaczy"
 
 msgid "The Circle Undone Campaign Expansion"
-msgstr ""
+msgstr "Przerwany krąg - Rozszerzenie kampanijne"
 
 msgid "The Dream-Eaters Investigator Expansion"
-msgstr ""
+msgstr "Pożeracze snów - Rozszerzenie badaczy"
 
 msgid "The Dream-Eaters Campaign Expansion"
-msgstr ""
+msgstr "Pożeracze snów - Rozszerzenie kampanijne"
 
 msgid "The Innsmouth Conspiracy Investigator Expansion"
-msgstr ""
+msgstr "Zmowa nad Innsmouth - Rozszerzenie badaczy"
 
 msgid "The Innsmouth Conspiracy Campaign Expansion"
-msgstr ""
+msgstr "Zmowa nad Innsmouth - Rozszerzenie kampanijne"
 
 msgid "Show original release packs"
-msgstr ""
+msgstr "Pokaż zestawy pierwotnego wydania"
 
 msgid "Non-Unique"
-msgstr ""
+msgstr "Nie-unikatowa"
 
 #, javascript-format
 msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr ""
+msgstr "Koszt doświadczenia: ${ basicXpCost } dla talii zawierających ${ investigator.name }, ${ challengeDiscountCost } dla pozostałych graczy."
 
 msgid "Aether"
 msgstr ""
 
 msgid "Campaign Rules & FAQ"
-msgstr ""
+msgstr "Zasady kampanii i FAQ"
 
 msgid "Review campaign specific info"
-msgstr ""
+msgstr "Przegląd informacji dotyczących kampanii"
 
 msgid "Campaign Rules"
-msgstr ""
+msgstr "Zasady kampanii"
 
 msgid "Review campaign specific rules"
-msgstr ""
+msgstr "Przegląd zasad dotyczących kampanii"
 
 msgid "Campaign FAQ"
-msgstr ""
+msgstr "FAQ kampanii"
 
 msgid "Review campaign specific clarifications"
-msgstr ""
+msgstr "Przegląd wyjaśnień dotyczących kampanii"
 
 #, javascript-format
 msgid "Q: ${ errata.question }"
-msgstr ""
+msgstr "Pyt.: ${ errata.question }"
 
 #, javascript-format
 msgid "A: ${ errata.answer }"
-msgstr ""
+msgstr "Odp.: ${ errata.answer }"
 
 msgid "Show FAQ"
 msgstr "Pokaż FAQ"
@@ -6010,49 +6013,49 @@ msgid "May contain light spoilers"
 msgstr "Może zawierać lekkie spoilery"
 
 msgid "Note: To avoid spoilers, scenario specific questions and clarifications can be found within each scenario guide."
-msgstr ""
+msgstr "Uwaga: aby uniknąć spoilerów, pytania i wyjaśnienia dotyczące poszczególnych scenariuszy można znaleźć w przewodniku po każdym z nich."
 
 msgid "Rules & FAQ"
-msgstr ""
+msgstr "Zasady i FAQ"
 
 msgid "Day / Time"
-msgstr ""
+msgstr "Dzień / pora"
 
 msgid "Areas Surveyed"
-msgstr ""
+msgstr "Zbadane obszary"
 
 msgid "Mother Rachel"
-msgstr ""
+msgstr "Matka Rachel"
 
 msgid "Leah Atwood"
-msgstr ""
+msgstr "Leah Atwood"
 
 msgid "Simeon Atwood"
-msgstr ""
+msgstr "Simeon Atwood"
 
 msgid "William Hemlock"
-msgstr ""
+msgstr "William Hemlock"
 
 msgid "River Hawthorne"
-msgstr ""
+msgstr "River Hawthorne"
 
 msgid "Gideon Mizrah"
-msgstr ""
+msgstr "Gideon Mizrah"
 
 msgid "Judith Park"
-msgstr ""
+msgstr "Judith Park"
 
 msgid "Theo Peters"
-msgstr ""
+msgstr "Theo Peters"
 
 msgid "Relationship Level"
-msgstr ""
+msgstr "Stopień zażyłości"
 
 msgid "Image cache cleared"
-msgstr ""
+msgstr "Pamięć podręczna obrazów wyczyszczona"
 
 msgid "Clear image cache"
-msgstr ""
+msgstr "Wyczyść pamięć podręczną obrazów"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6065,7 +6068,7 @@ msgstr "Brak"
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } stał się<b>niepoczytalny</b>."
+msgstr "${ investigator.name } popadł w <b>obłęd</b>."
 
 #, javascript-format
 msgctxt "masculine"
@@ -6145,12 +6148,12 @@ msgstr "${ investigator.name } odczytuje <b>${ sectionName }</b>"
 #, javascript-format
 msgctxt "masculine"
 msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Jeśli <i>${ card.name }</i> nie jest wymieniony w sekcji ‘${ entry.section }’ w Dzienniku kampanii,"
+msgstr "Jeśli <i>${ card.name }</i> nie jest wymieniony w sekcji ‘${ entry.section }’ w Dzienniku kampanii."
 
 #, javascript-format
 msgctxt "masculine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Jeśli <i>${ card.name }</i> jest wymieniony w sekcji ‘${ entry.section }’ w Dzienniku kampanii,"
+msgstr "Jeśli <i>${ card.name }</i> jest wymieniony w sekcji ‘${ entry.section }’ w Dzienniku kampanii."
 
 #, javascript-format
 msgctxt "masculine"
@@ -6170,16 +6173,16 @@ msgstr[2] "Jeśli ${ list } nie posiada ${ supplyName }, musi odczytać <b>${ se
 
 msgctxt "masculine"
 msgid "Killed"
-msgstr ""
+msgstr "Zabity"
 
 msgctxt "masculine"
 msgid "Insane"
-msgstr ""
+msgstr "Popadł w obłęd"
 
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } stała się <b>niepoczytalna</b>."
+msgstr "${ investigator.name } popadła w <b>obłęd</b>."
 
 #, javascript-format
 msgctxt "feminine"
@@ -6259,12 +6262,12 @@ msgstr "${ investigator.name } odczytuje <b>${ sectionName }</b>"
 #, javascript-format
 msgctxt "feminine"
 msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Jeśli <i>${ card.name }</i> nie jest wymieniona w sekcji ‘${ entry.section }’ w Dzienniku kampanii,"
+msgstr "Jeśli <i>${ card.name }</i> nie jest wymieniona w sekcji ‘${ entry.section }’ w Dzienniku kampanii."
 
 #, javascript-format
 msgctxt "feminine"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Jeśli <i>${ card.name }</i> jest wymieniona w sekcji ‘${ entry.section }’ w Dzienniku kampanii,"
+msgstr "Jeśli <i>${ card.name }</i> jest wymieniona w sekcji ‘${ entry.section }’ w Dzienniku kampanii."
 
 msgctxt "feminine"
 msgid "Physical trauma"
@@ -6296,16 +6299,16 @@ msgstr[2] "Jeśli ${ list } nie posiadają ${ supplyName }, muszą odczytać <b>
 
 msgctxt "feminine"
 msgid "Killed"
-msgstr ""
+msgstr "Zabita"
 
 msgctxt "feminine"
 msgid "Insane"
-msgstr ""
+msgstr "Popadła w obłęd"
 
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } stało się <b>niepoczytalne</b>."
+msgstr "${ investigator.name } popadło w <b>obłęd</b>."
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6385,12 +6388,12 @@ msgstr "${ investigator.name } odczytuje <b>${ sectionName }</b>"
 #, javascript-format
 msgctxt "nonbinary"
 msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Jeśli <i>${ card.name }</i> nie jest wymieniony w sekcji ‘${ entry.section }’ w Dzienniku kampanii,"
+msgstr "Jeśli <i>${ card.name }</i> nie jest wymienione w sekcji ‘${ entry.section }’ w Dzienniku kampanii."
 
 #, javascript-format
 msgctxt "nonbinary"
 msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Jeśli <i>${ card.name }</i> jest wymieniony w sekcji ‘${ entry.section }’ w Dzienniku kampanii,"
+msgstr "Jeśli <i>${ card.name }</i> jest wymienione w sekcji ‘${ entry.section }’ w Dzienniku kampanii."
 
 msgctxt "nonbinary"
 msgid "Physical trauma"
@@ -6406,11 +6409,11 @@ msgstr "Pokonane"
 
 msgctxt "nonbinary"
 msgid "Killed"
-msgstr ""
+msgstr "Zabite"
 
 msgctxt "nonbinary"
 msgid "Insane"
-msgstr ""
+msgstr "Popadłe w obłęd"
 
 msgctxt "Traits"
 msgid "All"
@@ -6754,7 +6757,7 @@ msgstr "Pradawny"
 
 msgctxt "trait"
 msgid "Ancient One"
-msgstr "Wielkie Przedwieczny"
+msgstr "Wielki Przedwieczny"
 
 msgctxt "trait"
 msgid "Arkham"
@@ -6782,11 +6785,11 @@ msgstr "Atak"
 
 msgctxt "trait"
 msgid "Augury"
-msgstr ""
+msgstr "Zapowiedź"
 
 msgctxt "trait"
 msgid "Avatar"
-msgstr ""
+msgstr "Wcielenie"
 
 msgctxt "trait"
 msgid "Basement"
@@ -7178,7 +7181,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Insight"
-msgstr ""
+msgstr "Informacja"
 
 msgctxt "trait"
 msgid "Instrument"
@@ -8199,7 +8202,7 @@ msgstr "Dobranie zasobów"
 
 msgctxt "parley"
 msgid "Parley"
-msgstr ""
+msgstr "Pertraktacje"
 
 msgctxt "Encounter Sets"
 msgid "All"
@@ -8344,6 +8347,7 @@ msgid "Key"
 msgid_plural "Keys"
 msgstr[0] "Klucz"
 msgstr[1] "Klucze"
+msgstr[2] ""
 
 msgctxt "tags"
 msgid "Add"
