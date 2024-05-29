@@ -8153,15 +8153,15 @@ msgstr "Yuggoth"
 
 msgctxt "trait"
 msgid "Blight"
-msgstr ""
+msgstr "Zaraza"
 
 msgctxt "trait"
 msgid "Colour"
-msgstr ""
+msgstr "Kolor"
 
 msgctxt "trait"
 msgid "Crew"
-msgstr ""
+msgstr "Ekipa"
 
 msgctxt "trait"
 msgid "Delta"
@@ -8169,15 +8169,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Emissary"
-msgstr ""
+msgstr "Wysłannik"
 
 msgctxt "trait"
 msgid "Game"
-msgstr ""
+msgstr "Gra"
 
 msgctxt "trait"
 msgid "Inconspicuous"
-msgstr ""
+msgstr "Dyskretny"
 
 msgctxt "trait"
 msgid "Miasma"
@@ -8185,19 +8185,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Public"
-msgstr ""
+msgstr "Publiczna"
 
 msgctxt "trait"
 msgid "Resident"
-msgstr ""
+msgstr "Mieszkaniec"
 
 msgctxt "trait"
 msgid "Role"
-msgstr ""
+msgstr "Rola"
 
 msgctxt "trait"
 msgid "Rot"
-msgstr ""
+msgstr "Zgnilizna"
 
 msgctxt "trait"
 msgid "Sub-Level"
@@ -8205,7 +8205,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Unpracticed"
-msgstr ""
+msgstr "Niewyćwiczona"
 
 #, javascript-format
 msgctxt "filter"
