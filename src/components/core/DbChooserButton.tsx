@@ -52,7 +52,6 @@ export default function DbChooserButton({ componentId, title, all, field, includ
     db.getDistinctFields(field, query, tabooSetId, processValue).then(values => {
 
       // This code will export all traits in the english database.
-
       // console.log('const localized_traits = {')
       // forEach(values, value => {
       //  const escaped = value.replace(`'`, `\\'`);

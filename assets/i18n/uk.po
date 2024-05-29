@@ -7875,6 +7875,62 @@ msgctxt "trait"
 msgid "Yuggoth"
 msgstr ""
 
+msgctxt "trait"
+msgid "Blight"
+msgstr ""
+
+msgctxt "trait"
+msgid "Colour"
+msgstr ""
+
+msgctxt "trait"
+msgid "Crew"
+msgstr ""
+
+msgctxt "trait"
+msgid "Delta"
+msgstr ""
+
+msgctxt "trait"
+msgid "Emissary"
+msgstr ""
+
+msgctxt "trait"
+msgid "Game"
+msgstr ""
+
+msgctxt "trait"
+msgid "Inconspicuous"
+msgstr ""
+
+msgctxt "trait"
+msgid "Miasma"
+msgstr ""
+
+msgctxt "trait"
+msgid "Public"
+msgstr ""
+
+msgctxt "trait"
+msgid "Resident"
+msgstr ""
+
+msgctxt "trait"
+msgid "Role"
+msgstr ""
+
+msgctxt "trait"
+msgid "Rot"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sub-Level"
+msgstr ""
+
+msgctxt "trait"
+msgid "Unpracticed"
+msgstr ""
+
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"

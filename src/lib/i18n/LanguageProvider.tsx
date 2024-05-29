@@ -18,7 +18,7 @@ interface Props {
 let eventListenerInitialized: boolean = false;
 let currentSystemLang: string | undefined = undefined;
 
-const LOCALIZED_CARD_TRAITS = new Set(['fr', 'ru', 'de', 'zh', 'ko']);
+const LOCALIZED_CARD_TRAITS = new Set(['fr', 'ru', 'de', 'zh', 'ko', 'pl']);
 
 function getListSeperator(lang: string): string {
   switch (lang) {
