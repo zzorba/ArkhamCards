@@ -7845,7 +7845,7 @@ msgstr "Przedwieczny?"
 
 msgctxt "trait"
 msgid "Bad dog"
-msgstr ""
+msgstr "Niedobry pies"
 
 msgctxt "trait"
 msgid "Bazaar"
@@ -7889,7 +7889,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Classy"
-msgstr ""
+msgstr "Szykowny"
 
 msgctxt "trait"
 msgid "Collector"
@@ -7929,11 +7929,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Fellow Dogs"
-msgstr ""
+msgstr "Psie fumfle"
 
 msgctxt "trait"
 msgid "Footwear, but not really"
-msgstr ""
+msgstr "Obuwie lub to, co z niego zostało"
 
 msgctxt "trait"
 msgid "Hardship"
@@ -8033,7 +8033,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Pup"
-msgstr ""
+msgstr "Pieseł"
 
 msgctxt "trait"
 msgid "Resonant"
@@ -8093,7 +8093,7 @@ msgstr "Stabilny"
 
 msgctxt "trait"
 msgid "Stop"
-msgstr ""
+msgstr "Przestań"
 
 msgctxt "trait"
 msgid "Table"
@@ -8105,7 +8105,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "That's bad"
-msgstr ""
+msgstr "Nie wolno"
 
 msgctxt "trait"
 msgid "Tower"
@@ -8141,7 +8141,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "What? No"
-msgstr ""
+msgstr "Co? Nie"
 
 msgctxt "trait"
 msgid "Wonderland"
