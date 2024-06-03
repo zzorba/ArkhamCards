@@ -8423,7 +8423,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Liczba [per_investigator] zgładzonych cywilów",
+          "prompt": "Liczba [per_investigator] zgładzonych cywilów.",
           "min": 0
         }
       },
@@ -8451,7 +8451,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Liczba [per_investigator] zgładzonych cywilów",
+          "prompt": "Liczba [per_investigator] zgładzonych cywilów.",
           "min": 0,
           "scale": 2
         }
@@ -8484,7 +8484,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Liczba celów ataku na karcie pomocy scenariusza",
+          "prompt": "Liczba celów ataku na karcie pomocy scenariusza.",
           "min": 0
         }
       },
@@ -8513,7 +8513,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Liczba celów ataku na karcie pomocy scenariusza",
+          "prompt": "Liczba celów ataku na karcie pomocy scenariusza.",
           "adjustment": 1,
           "min": 0
         }

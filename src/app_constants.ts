@@ -552,7 +552,6 @@ export const specialPacks: ReprintPack[] = [
     player: false,
     cyclePosition: 5,
   },
-  /*
   {
     code: 'tdep',
     packs: ['tde', 'sfk', 'tsh', 'dsm', 'pnr', 'wgd', 'woc'],
@@ -565,6 +564,7 @@ export const specialPacks: ReprintPack[] = [
     player: false,
     cyclePosition: 6,
   },
+  /*
   {
     code: 'ticp',
     packs: ['tic', 'itd', 'def', 'hhg', 'lif', 'lod', 'itm'],
