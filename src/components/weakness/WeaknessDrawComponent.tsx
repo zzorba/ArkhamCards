@@ -10,7 +10,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import FastImage from 'react-native-blasted-image';
+import { FasterImageView as FastImage } from '@candlefinance/faster-image';
 import FlipCard from 'react-native-flip-card';
 import { t, c } from 'ttag';
 import stable from 'stable';

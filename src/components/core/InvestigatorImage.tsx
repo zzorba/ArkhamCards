@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
-import FastImage from 'react-native-blasted-image';
+import { FasterImageView as FastImage } from '@candlefinance/faster-image';
 import { Sepia } from 'react-native-color-matrix-image-filters';
 import {
   Placeholder,
@@ -220,7 +220,7 @@ function InvestigatorImage({
             },
           ]}
           source={{
-            uri: imgUri,
+            url: imgUri,
           }}
           resizeMode="contain"
         />

@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import FastImage from 'react-native-blasted-image';
+import { FasterImageView as FastImage } from '@candlefinance/faster-image';
 import { find, map, range } from 'lodash';
 
 import { TouchableShrink } from '@components/core/Touchables';
@@ -45,14 +45,14 @@ interface Props {
 
 export default function CardImage({ card, width, superCompact }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
-  const uri = card.imageUri();
-  if (uri) {
+  const url = card.imageUri();
+  if (url) {
     return (
       <FastImage
         accessibilityLabel={card.name}
         style={{ width, height: CARD_RATIO * width }}
         source={{
-          uri,
+          url,
         }}
         resizeMode="contain"
       />

@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, ScrollView, StyleSheet, View, Linking } from 'react-native';
-import FastImage from 'react-native-blasted-image';
+import { FasterImageView as FastImage } from '@candlefinance/faster-image';
 import { c } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
@@ -46,7 +46,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
         c('releaseNotes').t`This release adds support for the newly released Feast of Hemlock Vale campaign expansion.`,
         c('releaseNotes').t`- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible.`,
         c('releaseNotes').t`Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks.`,
-        c('releaseNotes').t`And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running.`,        
+        c('releaseNotes').t`And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running.`,
       ],
     },
     {
@@ -128,7 +128,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
         <View key="image" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <FastImage
             style={{ width, height: width * 589 / 676 }}
-            source={{ uri: 'https://img.arkhamcards.com/onboarding/custom-content.png' }}
+            source={{ url: 'https://img.arkhamcards.com/onboarding/custom-content.png' }}
           />
         </View>,
         c('releaseNotes').t`- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app.`,
@@ -161,7 +161,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
         <View key="image" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <FastImage
             style={{ width, height: width * 462 / 400 }}
-            source={{ uri: 'https://img.arkhamcards.com/onboarding/overlap.jpeg' }}
+            source={{ url: 'https://img.arkhamcards.com/onboarding/overlap.jpeg' }}
           />
         </View>,
         c('releaseNotes').t`If the deck has been added to a campaign, you'll also see this on the bottom of each deck in that campaign.`,
@@ -191,7 +191,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
         <View key="image" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <FastImage
             style={{ width, height: width * 822 / 676 }}
-            source={{ uri: 'https://img.arkhamcards.com/onboarding/odds-calculator.png' }}
+            source={{ url: 'https://img.arkhamcards.com/onboarding/odds-calculator.png' }}
           />
         </View>,
         c('releaseNotes').t`In addition to giving you the numeric pass/fail rate as before, the new visual stacking of tokens based on their current modifiers lets you quickly intuit how much you stand to gain with an extra +1 to your skill value, without having to mess with the difficulty controls at all.`,

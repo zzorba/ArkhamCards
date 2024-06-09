@@ -3,7 +3,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import FastImage from 'react-native-blasted-image';
+import { FasterImageView as FastImage } from '@candlefinance/faster-image';
 import ViewControl from 'react-native-zoom-view';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -49,7 +49,7 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
             style={{ height: cardHeight, width: cardWidth }}
             resizeMode="contain"
             source={{
-              uri: card.imageUri(),
+              url: card.imageUri() ?? '',
             }}
           />
         </ViewControl>
@@ -67,8 +67,7 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
           style={{ height: cardHeight, width: cardWidth }}
           resizeMode="contain"
           source={{
-            // @ts-ignore
-            uri: card.double_sided ? card.backImageUri() : card.linked_card?.imageUri(),
+            url: (card.double_sided ? card.backImageUri() : card.linked_card?.imageUri()) ?? '',
           }}
         />
       </ViewControl>
@@ -86,7 +85,7 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
         style={{ height: cardHeight, width: cardWidth }}
         resizeMode="contain"
         source={{
-          uri: card.imageUri(),
+          url: card.imageUri(),
         }}
       />
     </ViewControl>

@@ -1443,6 +1443,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@candlefinance/faster-image@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.npmjs.org/@candlefinance/faster-image/-/faster-image-1.6.1.tgz#f5cfe7d0d58de29012eb81693d88eeb25a70016b"
+  integrity sha512-Fuic0FP01ealMKvzhx//Vsw5NUKY0b919Y7dpERhhG8HJewDneSHV9A6BJyOtDLZxNj0HaWi3pWmeLer3G0Jkg==
+
 "@changesets/apply-release-plan@^6.1.4":
   version "6.1.4"
   resolved "https://registry.yarnpkg.com/@changesets/apply-release-plan/-/apply-release-plan-6.1.4.tgz#09293256090737ecd2f683842d6d732034a5e3c8"
@@ -9510,10 +9515,10 @@ react-native-collapsible@1.6.1:
   resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-1.6.1.tgz#27e289831a6955aebde98abff2424a7710f36f02"
   integrity sha512-orF4BeiXd2hZW7fu9YcqIJXzN6TJcFcddY807D3MAOVktLuW9oQ+RIkrTJ5DR3v9ZOFfREkOjEmS79qeUTvkBQ==
 
-react-native-color-matrix-image-filters@6.0.7:
-  version "6.0.7"
-  resolved "https://registry.npmjs.org/react-native-color-matrix-image-filters/-/react-native-color-matrix-image-filters-6.0.7.tgz#bf4efe88a0342be392a043aa015fcdaf48e0fb6a"
-  integrity sha512-bmr89veOMGG//HQvoyuFwCr7No8U0QPH0xQpjbdWrZujJcMERW3t427EmNIkOylzl55OeMal8tVXltVYvOHYNw==
+react-native-color-matrix-image-filters@6.0.9:
+  version "6.0.9"
+  resolved "https://registry.npmjs.org/react-native-color-matrix-image-filters/-/react-native-color-matrix-image-filters-6.0.9.tgz#36c68c9328d8563e0e81b6a05b77bf905f4101ed"
+  integrity sha512-XI/XNGRKWMDoVHRYspr9bepX7mH+0OJKmQ0zbaPTRkVQaS9AiKlb9o0nopwMkB+QPg4kiYqSs16BwKmLo8qhlg==
   dependencies:
     concat-color-matrices "^1.0.0"
     rn-color-matrices "^4.1.0"

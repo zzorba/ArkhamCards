@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useState } from 'react';
 import { Image, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
 import { withAnchorPoint } from 'react-native-anchor-point';
 import { map, range, transform } from 'lodash';
-import FastImage from 'react-native-blasted-image';
+import { FasterImageView as FastImage } from '@candlefinance/faster-image';
 
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -74,8 +74,8 @@ function LocationCardImage({ code, back, name, width, height, placeholder, toggl
       <TextCard name={name || code} placeholder={placeholder} />
     );
   }
-  const uri = back ? card.backImageUri() : card.imageUri();
-  if (!uri) {
+  const url = back ? card.backImageUri() : card.imageUri();
+  if (!url) {
     return (
       <TextCard
         name={(back && card.back_name) || card.name}
@@ -88,7 +88,7 @@ function LocationCardImage({ code, back, name, width, height, placeholder, toggl
       <FastImage
         style={[styles.verticalCardImage, { width, height }]}
         source={{
-          uri,
+          url,
         }}
         resizeMode="contain"
       />
