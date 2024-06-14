@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useRef, useEffect, useMemo, useState } from 'react';
-import { LayoutChangeEvent, Platform, ScrollView, StyleSheet, Text, TextStyle, View } from 'react-native';
+import { Image, LayoutChangeEvent, Platform, ScrollView, StyleSheet, Text, TextStyle, View } from 'react-native';
 import { interpolate } from 'react-native-reanimated';
 import PanPinchView from 'react-native-pan-pinch-view';
 import PriorityQueue from 'priority-queue-typescript';
@@ -35,7 +35,6 @@ import MapToggleButton from './MapToggleButton';
 import { MAX_WIDTH } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { VisibleCalendarEntry } from '@data/scenario/GuidedCampaignLog';
-import { trigger } from 'react-native-haptic-feedback';
 
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
@@ -1182,7 +1181,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
               />
             )) }
             <View style={[styles.texture, { width: theWidth, height: theHeight }]} opacity={0.25}>
-              <FastImage
+              <Image
                 source={PAPER_TEXTURE}
                 style={{ width: theWidth, height: theHeight }}
                 resizeMode="cover"

@@ -427,6 +427,8 @@ export default class Card {
   @Column('text', { nullable: true })
   public text?: string;
 
+  private _textAlreadyCustomized?: boolean;
+
   @Column('text', { nullable: true })
   public flavor?: string;
 
@@ -696,6 +698,9 @@ export default class Card {
     if (!customizations || !find(customizations, c => c.xp_spent || c.unlocked)) {
       return this;
     }
+    if (this._textAlreadyCustomized) {
+      return this;
+    }
     const card = this.clone();
     const xp_spent = sumBy(customizations, c => c.xp_spent) + (extraTicks || 0);
     card.xp = Math.floor((xp_spent + 1) / 2.0);
@@ -811,6 +816,7 @@ export default class Card {
       });
     });
     card.text = final_lines.join('\n');
+    card._textAlreadyCustomized = true;
     return card;
   }
 

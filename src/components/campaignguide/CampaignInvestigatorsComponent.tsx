@@ -211,7 +211,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     saveDeckUpgrade, saveDeck,
   } = props;
   const { syncCampaignChanges, campaign, campaignId, campaignGuide, campaignState, latestDecks, campaignInvestigators, spentXp } = useContext(CampaignGuideContext);
-  const { typography } = useContext(StyleContext);
   const dispatch = useAppDispatch();
 
   const appState = useAppState();
