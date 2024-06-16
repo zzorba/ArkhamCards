@@ -13,6 +13,7 @@ export const ALL_LANGUAGES = [
   'pt',
   'vi',
   'uk',
+  'cs',
 ];
 
 export const AUDIO_LANGUAGES = [
@@ -45,6 +46,7 @@ export function localizedName(lang: string) {
     case 'pt': return 'Português';
     case 'zh': return '中文';
     case 'vi': return 'tiếng Việt'
+    case 'cs': return 'čeština';
     default: return 'Unknown';
   }
 }

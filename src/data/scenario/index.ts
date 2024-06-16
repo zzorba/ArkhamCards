@@ -172,6 +172,7 @@ export function loadTaboos(lang: string): TabooSets | undefined {
     case 'pl': return require('../../../assets/generated/taboos_pl.json');
     case 'vi':
     case 'en':
+    case 'cs':
     default:
       return undefined;
   }
@@ -190,9 +191,10 @@ function getScenarioNames(lang: string): { id: string; name: string}[] {
     case 'pt': return require('../../../assets/generated/scenarioNames_pt.json');
     case 'pl': return require('../../../assets/generated/scenarioNames_pl.json');
     case 'vi': return require('../../../assets/generated/scenarioNames_vi.json');
-    case 'en': return require('../../../assets/generated/scenarioNames.json');
+    case 'en':
+    case 'cs':
     default:
-      return [];
+      return require('../../../assets/generated/scenarioNames.json');
   }
 }
 

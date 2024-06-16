@@ -50,7 +50,7 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
             source={{
               url: card.imageUri() ?? '',
               resizeMode: 'contain',
-              cachePolicy: 'discWithCacheControl',
+              cachePolicy: 'discNoCacheControl',
             }}
           />
         </ViewControl>
@@ -69,7 +69,7 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
           source={{
             url: (card.double_sided ? card.backImageUri() : card.linked_card?.imageUri()) ?? '',
             resizeMode: 'contain',
-            cachePolicy: 'discWithCacheControl',
+            cachePolicy: 'discNoCacheControl',
           }}
         />
       </ViewControl>
@@ -88,7 +88,7 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
         source={{
           url: card.imageUri() ?? '',
           resizeMode: 'contain',
-          cachePolicy: 'discWithCacheControl',
+          cachePolicy: 'discNoCacheControl',
         }}
       />
     </ViewControl>

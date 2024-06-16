@@ -221,7 +221,7 @@ function InvestigatorImage({
           ]}
           source={{
             url: imgUri,
-            cachePolicy: 'discWithCacheControl',
+            cachePolicy: 'discNoCacheControl',
             resizeMode: 'contain',
           }}
         />

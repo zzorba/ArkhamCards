@@ -73,7 +73,7 @@ export default function TarotCardComponent({ card, width, flipped, inverted, suf
             style={{ position: 'absolute', top: -4, left: -4, width: width + 8, height: height + 8 * TAROT_CARD_RATIO }}
             source={{
               url: 'https://img2.arkhamcards.com/tarot/tarot_back.jpg',
-              cachePolicy: 'discWithCacheControl',
+              cachePolicy: 'discNoCacheControl',
               resizeMode: 'contain',
             }}
           />
@@ -82,7 +82,7 @@ export default function TarotCardComponent({ card, width, flipped, inverted, suf
               style={{ overflow: 'hidden', backgroundColor: colors.M, borderRadius: 16, width: width + 8, height: height + 8 * TAROT_CARD_RATIO, position: 'absolute', top: -2, left: -4 }}
               source={{
                 url: `https://img2.arkhamcards.com/tarot/tarot_${card.position}.jpg`,
-                cachePolicy: 'discWithCacheControl',
+                cachePolicy: 'discNoCacheControl',
                 resizeMode: 'contain',
               }}
             />

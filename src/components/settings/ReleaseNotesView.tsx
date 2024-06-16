@@ -130,7 +130,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
             style={{ width, height: width * 589 / 676 }}
             source={{
               url: 'https://img2.arkhamcards.com/onboarding/custom-content.png',
-              cachePolicy: 'discWithCacheControl',
+              cachePolicy: 'discNoCacheControl',
             }}
           />
         </View>,
@@ -166,7 +166,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
             style={{ width, height: width * 462 / 400 }}
             source={{
               url: 'https://img2.arkhamcards.com/onboarding/overlap.jpeg',
-              cachePolicy: 'discWithCacheControl',
+              cachePolicy: 'discNoCacheControl',
             }}
           />
         </View>,
@@ -199,7 +199,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
             style={{ width, height: width * 822 / 676 }}
             source={{
               url: 'https://img2.arkhamcards.com/onboarding/odds-calculator.png',
-              cachePolicy: 'discWithCacheControl',
+              cachePolicy: 'discNoCacheControl',
             }}
           />
         </View>,

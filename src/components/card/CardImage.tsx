@@ -52,7 +52,7 @@ export default function CardImage({ card, width, superCompact }: Props) {
         style={{ width, height: CARD_RATIO * width }}
         source={{
           url,
-          cachePolicy: 'discWithCacheControl',
+          cachePolicy: 'discNoCacheControl',
           resizeMode: 'contain',
         }}
       />

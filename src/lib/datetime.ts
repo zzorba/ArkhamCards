@@ -5,7 +5,7 @@ import {
   isAfter,
   startOfDay,
 } from 'date-fns';
-import { de, es, ru, it, fr, ko, uk, pl, ptBR, zhTW } from 'date-fns/locale';
+import { de, es, ru, it, fr, ko, uk, pl, cs, ptBR, zhTW } from 'date-fns/locale';
 import { t } from 'ttag';
 
 const LOCALE_MAP: {
@@ -18,6 +18,7 @@ const LOCALE_MAP: {
   it: { locale: it },
   fr: { locale: fr },
   ko: { locale: ko },
+  cs: { locale: cs },
   uk: { locale: uk },
   pl: { locale: pl },
   pt: { locale: ptBR },

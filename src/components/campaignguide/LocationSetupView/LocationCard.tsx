@@ -89,7 +89,7 @@ function LocationCardImage({ code, back, name, width, height, placeholder, toggl
         style={{ width, height }}
         source={{
           url,
-          cachePolicy: 'discWithCacheControl',
+          cachePolicy: 'discNoCacheControl',
           resizeMode: 'contain',
         }}
       />

@@ -103,7 +103,7 @@ function ImageContent({ card }: { card: Card }) {
           style={styles.verticalContainer}
           source={{
             url,
-            cachePolicy: 'discWithCacheControl',
+            cachePolicy: 'discNoCacheControl',
             resizeMode: 'contain',
           }}
         />
@@ -118,7 +118,7 @@ function ImageContent({ card }: { card: Card }) {
           style={[styles.image, imageStyle(card)]}
           source={{
             url,
-            cachePolicy: 'discWithCacheControl',
+            cachePolicy: 'discNoCacheControl',
             resizeMode: 'contain',
           }}
         />

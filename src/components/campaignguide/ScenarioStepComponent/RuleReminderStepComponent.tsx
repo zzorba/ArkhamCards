@@ -32,7 +32,7 @@ function RuleImage({ scale, width, image, text }: { text?: string; scale: 'full'
         source={{
           url: `https://img2.arkhamcards.com${image.uri}`,
           resizeMode: 'cover',
-          cachePolicy: 'discWithCacheControl',
+          cachePolicy: 'discNoCacheControl',
         }}
         style={{ width: theWidth, height: (theWidth * image.ratio) }}
       />

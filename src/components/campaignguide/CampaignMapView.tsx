@@ -547,7 +547,7 @@ function DossierImage({
         <FastImage
           source={{
             url: `https://img2.arkhamcards.com${uri}`,
-            cachePolicy: 'discWithCacheControl',
+            cachePolicy: 'discNoCacheControl',
             resizeMode: 'cover',
           }}
           style={{ width: width - 8 * 2, height: (width * ratio) - 8 * 2 }}

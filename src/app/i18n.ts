@@ -14,6 +14,7 @@ const ALL_LANGUAGES = [
   'pt',
   'zh',
   'vi',
+  'cs',
   'en',
 ];
 
@@ -31,6 +32,7 @@ function getTranslationObj(locale: string) {
     case 'zh': return require('../../assets/i18n/zh.po.json');
     case 'vi': return require('../../assets/i18n/vi.po.json');
     case 'en':
+    case 'cs':
     default:
       return require('../../assets/i18n/en.po.json');
   }
