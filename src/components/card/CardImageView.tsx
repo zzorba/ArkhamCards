@@ -47,9 +47,10 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
         >
           <FastImage
             style={{ height: cardHeight, width: cardWidth }}
-            resizeMode="contain"
             source={{
               url: card.imageUri() ?? '',
+              resizeMode: 'contain',
+              cachePolicy: 'discWithCacheControl',
             }}
           />
         </ViewControl>
@@ -65,9 +66,10 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
       >
         <FastImage
           style={{ height: cardHeight, width: cardWidth }}
-          resizeMode="contain"
           source={{
             url: (card.double_sided ? card.backImageUri() : card.linked_card?.imageUri()) ?? '',
+            resizeMode: 'contain',
+            cachePolicy: 'discWithCacheControl',
           }}
         />
       </ViewControl>
@@ -83,9 +85,10 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
     >
       <FastImage
         style={{ height: cardHeight, width: cardWidth }}
-        resizeMode="contain"
         source={{
-          url: card.imageUri(),
+          url: card.imageUri() ?? '',
+          resizeMode: 'contain',
+          cachePolicy: 'discWithCacheControl',
         }}
       />
     </ViewControl>

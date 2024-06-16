@@ -128,7 +128,10 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
         <View key="image" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <FastImage
             style={{ width, height: width * 589 / 676 }}
-            source={{ url: 'https://img.arkhamcards.com/onboarding/custom-content.png' }}
+            source={{
+              url: 'https://img2.arkhamcards.com/onboarding/custom-content.png',
+              cachePolicy: 'discWithCacheControl',
+            }}
           />
         </View>,
         c('releaseNotes').t`- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app.`,
@@ -161,7 +164,10 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
         <View key="image" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <FastImage
             style={{ width, height: width * 462 / 400 }}
-            source={{ url: 'https://img.arkhamcards.com/onboarding/overlap.jpeg' }}
+            source={{
+              url: 'https://img2.arkhamcards.com/onboarding/overlap.jpeg',
+              cachePolicy: 'discWithCacheControl',
+            }}
           />
         </View>,
         c('releaseNotes').t`If the deck has been added to a campaign, you'll also see this on the bottom of each deck in that campaign.`,
@@ -191,7 +197,10 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
         <View key="image" style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <FastImage
             style={{ width, height: width * 822 / 676 }}
-            source={{ url: 'https://img.arkhamcards.com/onboarding/odds-calculator.png' }}
+            source={{
+              url: 'https://img2.arkhamcards.com/onboarding/odds-calculator.png',
+              cachePolicy: 'discWithCacheControl',
+            }}
           />
         </View>,
         c('releaseNotes').t`In addition to giving you the numeric pass/fail rate as before, the new visual stacking of tokens based on their current modifiers lets you quickly intuit how much you stand to gain with an extra +1 to your skill value, without having to mess with the difficulty controls at all.`,

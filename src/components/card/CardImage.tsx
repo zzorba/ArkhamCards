@@ -49,12 +49,12 @@ export default function CardImage({ card, width, superCompact }: Props) {
   if (url) {
     return (
       <FastImage
-        accessibilityLabel={card.name}
         style={{ width, height: CARD_RATIO * width }}
         source={{
           url,
+          cachePolicy: 'discWithCacheControl',
+          resizeMode: 'contain',
         }}
-        resizeMode="contain"
       />
     );
   }

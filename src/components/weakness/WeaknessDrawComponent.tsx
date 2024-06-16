@@ -10,7 +10,6 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { FasterImageView as FastImage } from '@candlefinance/faster-image';
 import FlipCard from 'react-native-flip-card';
 import { t, c } from 'ttag';
 import stable from 'stable';
@@ -56,19 +55,19 @@ export default function WeaknessDrawComponent({ componentId,investigator, weakne
   const [drawNewCard, setDrawNewCard] = useState(false);
   const weaknessCards = useWeaknessCards();
   const [nextCard, setNextCard] = useState<Card | undefined>();
-  useEffect(() => {
-    FastImage.preload(
-      flatMap(weaknessCards, c => {
-        const uri = c?.imageUri();
-        if (!uri) {
-          return [];
-        }
-        return {
-          uri,
-        };
-      })
-    );
-  }, [weaknessCards]);
+  // useEffect(() => {
+  //   FastImage.preload(
+  //     flatMap(weaknessCards, c => {
+  //       const uri = c?.imageUri();
+  //       if (!uri) {
+  //         return [];
+  //       }
+  //       return {
+  //         uri,
+  //       };
+  //     })
+  //   );
+  // }, [weaknessCards]);
 
   const [cardWidth, cardHeight] = useMemo(() => {
     const wBasedWidth = width - PADDING * 2;

@@ -221,8 +221,9 @@ function InvestigatorImage({
           ]}
           source={{
             url: imgUri,
+            cachePolicy: 'discWithCacheControl',
+            resizeMode: 'contain',
           }}
-          resizeMode="contain"
         />
       );
     }

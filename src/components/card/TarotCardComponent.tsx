@@ -70,22 +70,21 @@ export default function TarotCardComponent({ card, width, flipped, inverted, suf
           clickable={false}
         >
           <FastImage
-            accessibilityLabel={card.title}
-            nativeID={`tarot_${card.id}_${flipped ? 'front' : 'back'}${suffix || ''}`}
             style={{ position: 'absolute', top: -4, left: -4, width: width + 8, height: height + 8 * TAROT_CARD_RATIO }}
             source={{
-              url: 'https://img.arkhamcards.com/tarot/tarot_back.jpg',
+              url: 'https://img2.arkhamcards.com/tarot/tarot_back.jpg',
+              cachePolicy: 'discWithCacheControl',
+              resizeMode: 'contain',
             }}
-            resizeMode="contain"
           />
           <View style={{ overflow: 'hidden', backgroundColor: dark20, width, height, position: 'relative', borderRadius: 16, borderWidth: 2, borderColor: colors.faction.mythos.border }}>
             <FastImage
-              accessibilityLabel={card.title}
               style={{ overflow: 'hidden', backgroundColor: colors.M, borderRadius: 16, width: width + 8, height: height + 8 * TAROT_CARD_RATIO, position: 'absolute', top: -2, left: -4 }}
               source={{
-                url: `https://img.arkhamcards.com/tarot/tarot_${card.position}.jpg`,
+                url: `https://img2.arkhamcards.com/tarot/tarot_${card.position}.jpg`,
+                cachePolicy: 'discWithCacheControl',
+                resizeMode: 'contain',
               }}
-              resizeMode="contain"
             />
             { width > 150 ? (
               <>

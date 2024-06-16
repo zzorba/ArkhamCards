@@ -90,6 +90,7 @@ function ImageContent({ card }: { card: Card }) {
     card.backImageUri() :
     card.imageUri()
   ) ?? '';
+  console.log(url);
 
   const horizontal = card.type_code === 'act' ||
     card.type_code === 'investigator' ||
@@ -102,8 +103,9 @@ function ImageContent({ card }: { card: Card }) {
           style={styles.verticalContainer}
           source={{
             url,
+            cachePolicy: 'discWithCacheControl',
+            resizeMode: 'contain',
           }}
-          resizeMode="contain"
         />
       </View>
     );
@@ -116,8 +118,9 @@ function ImageContent({ card }: { card: Card }) {
           style={[styles.image, imageStyle(card)]}
           source={{
             url,
+            cachePolicy: 'discWithCacheControl',
+            resizeMode: 'contain',
           }}
-          resizeMode="contain"
         />
       </View>
     </View>

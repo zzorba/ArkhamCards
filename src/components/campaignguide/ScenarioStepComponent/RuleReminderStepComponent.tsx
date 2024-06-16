@@ -29,9 +29,12 @@ function RuleImage({ scale, width, image, text }: { text?: string; scale: 'full'
       alignItems: 'center',
     }, space.paddingBottomM]}>
       <FastImage
-        source={{ url: `https://img.arkhamcards.com${image.uri}` }}
+        source={{
+          url: `https://img2.arkhamcards.com${image.uri}`,
+          resizeMode: 'cover',
+          cachePolicy: 'discWithCacheControl',
+        }}
         style={{ width: theWidth, height: (theWidth * image.ratio) }}
-        resizeMode="cover"
       />
       { !!text && (
         <View style={image.alignment === 'top' ? space.paddingBottomS : space.paddingTopS}>

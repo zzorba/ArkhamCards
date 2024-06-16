@@ -86,11 +86,12 @@ function LocationCardImage({ code, back, name, width, height, placeholder, toggl
   return (
     <ToolTip label={(back && card.back_name) || card.name} height={height} width={width} toggle={toggle} setToggle={setToggle}>
       <FastImage
-        style={[styles.verticalCardImage, { width, height }]}
+        style={{ width, height }}
         source={{
           url,
+          cachePolicy: 'discWithCacheControl',
+          resizeMode: 'contain',
         }}
-        resizeMode="contain"
       />
     </ToolTip>
   );

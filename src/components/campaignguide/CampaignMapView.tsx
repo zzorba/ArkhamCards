@@ -545,9 +545,12 @@ function DossierImage({
         backgroundColor: darkMode ? COLORS.D10 : COLORS.white,
         transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
         <FastImage
-          source={{ url: `https://img.arkhamcards.com${uri}` }}
+          source={{
+            url: `https://img2.arkhamcards.com${uri}`,
+            cachePolicy: 'discWithCacheControl',
+            resizeMode: 'cover',
+          }}
           style={{ width: width - 8 * 2, height: (width * ratio) - 8 * 2 }}
-          resizeMode="cover"
         />
       </View>
     </View>

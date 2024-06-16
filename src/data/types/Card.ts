@@ -856,23 +856,29 @@ export default class Card {
 
   public imageUri(): string | undefined {
     if (this.imageurl) {
+      if (this.imageurl.startsWith('https://img.arkhamcards.com')) {
+        return this.imageurl.replace('img.arkhamcards.com', 'img2.arkhamcards.com');
+      }
       return this.imageurl;
     }
     if (!this.imagesrc) {
       return undefined;
     }
-    const baseUri = this.custom() ? 'https://img.arkhamcards.com' : 'https://arkhamdb.com';
+    const baseUri = this.custom() ? 'https://img2.arkhamcards.com' : 'https://arkhamdb.com';
     const uri = `${baseUri}${this.imagesrc}`;
     return uri;
   }
   public backImageUri(): string | undefined {
     if (this.backimageurl) {
+      if (this.backimageurl.startsWith('https://img.arkhamcards.com')) {
+        return this.backimageurl.replace('img.arkhamcards.com', 'img2.arkhamcards.com');
+      }
       return this.backimageurl;
     }
     if (!this.backimagesrc) {
       return undefined;
     }
-    const baseUri = this.custom() ? 'https://img.arkhamcards.com' : 'https://arkhamdb.com';
+    const baseUri = this.custom() ? 'https://img2.arkhamcards.com' : 'https://arkhamdb.com';
     return `${baseUri}${this.backimagesrc}`;
   }
 
