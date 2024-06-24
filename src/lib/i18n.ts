@@ -46,7 +46,7 @@ export function localizedName(lang: string) {
     case 'pt': return 'Português';
     case 'zh': return '中文';
     case 'vi': return 'tiếng Việt'
-    case 'cs': return 'čeština';
+    case 'cs': return 'Čeština';
     default: return 'Unknown';
   }
 }

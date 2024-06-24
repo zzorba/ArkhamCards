@@ -98,7 +98,7 @@ export default function CardFooterInfo({ card }: Props) {
             <View style={styles.icon}>
               <EncounterIcon
                 encounter_code={
-                  card.custom() ?
+                  card.custom() || card.cycle_code === 'return' ?
                     card.pack_code :
                     (card.cycle_code || card.pack_code)
                 }

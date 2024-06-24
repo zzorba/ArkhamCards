@@ -328,7 +328,7 @@
       {
         "id": "Revelation_Ability_Priority",
         "title": "Priorità delle Capacità Rivelazione",
-        "text": "Se un investigatore ha sia una carta Dilemma che una debolezza e/o una carta incontro nella sua mano, la debolezza e/o la carta incontro devono essere risolte prima."
+        "text": "Se un investigatore ha sia una carta [[Dilemma]] che una debolezza e/o una carta incontro nella sua mano, la debolezza e/o la carta incontro devono essere risolte prima. Se una carta [[Dilemma]] viene pescata durante la risoluzione di una prova di abilità, risolvere la prova di abilità nella sua interezza prima di risolvere l’effetto <b>Rivelazione</b> della carta [[Dilemma]]."
       }
     ]
   },
@@ -549,7 +549,12 @@
   {
     "id": "Clues",
     "title": "Indizio",
-    "text": "Gli indizi rappresentano i progressi che gli investigatori possono fare per risolvere un mistero, sventare una cospirazione e/o far proseguire\nuno scenario.\n- Quando un investigatore entra in un luogo per la prima volta, quel luogo viene aperto (girato sull’altro lato) e su di esso viene collocato un numero di indizi pari al valore di Indizi di quel luogo (prelevati dalla riserva dei segnalini); la maggior parte di questi valori è conferita in base a un valore “per investigatore” ([per_investigator]). Questo può accadere anche durante la preparazione.\n- È possibile scoprire indizi in un luogo indagando con successo in quel luogo (vedi alla voce “Indagine”) o tramite la capacità di una carta. Se un investigatore scopre 1 indizio, prende l’indizio da quel luogo e lo colloca sulla sua carta investigatore, sotto il suo controllo.\n- Se il capitolo attuale non contiene un’istruzione **Obiettivo**, gli investigatori possono proseguire con i capitoli spendendo un totale complessivo di indizi pari a un valore specificato in fondo al riquadro di testo della carta capitolo attuale; la maggior parte di questi valori è espressa in base a un valore “per investigatore” ([per_investigator]). Gli indizi spesi vanno spostati dalle carte investigatore nella riserva generale dei segnalini; questo è generalmente parte di una capacità [free] di un giocatore. Proseguire con i capitoli in questo modo non costa azioni e può essere fatto durante il turno di qualsiasi investigatore.\n- Quando la capacità di una carta si riferisce agli indizi “in un luogo”, si riferisce agli indizi non scoperti situati attualmente in quel luogo.\n\nVedi anche alle voci: [“Mazzo dei Capitoli e Mazzo delle Trame”](#Act_Deck_and_Agenda_Deck), [“Penuria di Segnalini”](#Tokens)."
+    "text": "Gli indizi rappresentano i progressi che gli investigatori possono fare per risolvere un mistero, sventare una cospirazione e/o far proseguire\nuno scenario.\n- Quando un investigatore entra in un luogo per la prima volta, quel luogo viene aperto (girato sull’altro lato) e su di esso viene collocato un numero di indizi pari al valore di Indizi di quel luogo (prelevati dalla riserva dei segnalini); la maggior parte di questi valori è conferita in base a un valore “per investigatore” ([per_investigator]). Questo può accadere anche durante la preparazione.\n- È possibile scoprire indizi in un luogo indagando con successo in quel luogo (vedi alla voce “Indagine”) o tramite la capacità di una carta. Se un investigatore scopre 1 indizio, prende l’indizio da quel luogo e lo colloca sulla sua carta investigatore, sotto il suo controllo.\n- Se il capitolo attuale non contiene un’istruzione **Obiettivo**, gli investigatori possono proseguire con i capitoli spendendo un totale complessivo di indizi pari a un valore specificato in fondo al riquadro di testo della carta capitolo attuale; la maggior parte di questi valori è espressa in base a un valore “per investigatore” ([per_investigator]). Gli indizi spesi vanno spostati dalle carte investigatore nella riserva generale dei segnalini; questo è generalmente parte di una capacità [free] di un giocatore. Proseguire con i capitoli in questo modo non costa azioni e può essere fatto durante il turno di qualsiasi investigatore.\n- Quando la capacità di una carta si riferisce agli indizi “in un luogo”, si riferisce agli indizi non scoperti situati attualmente in quel luogo.\n\nVedi anche alle voci: [“Mazzo dei Capitoli e Mazzo delle Trame”](#Act_Deck_and_Agenda_Deck), [“Penuria di Segnalini”](#Tokens).",
+    "rules":[{
+      "id": "faq_1.28",
+      "title": "Indizi sulle Carte Giocatore",
+      "text": "Gli effetti di alcune carte come la capacità di Kate Winthrop possono collocare indizi su carte controllate dagli investigatori. Gli indizi collocati su una carta giocatore sono altresì controllati da quel giocatore e possono essere spesi come di consueto. Se un effetto di gioco sta per far uscire dal gioco una carta con indizi su di essa oppure un investigatore sta per perderne il controllo, collocare ogni indizio da quella carta sul suo luogo."
+    }]
   },
   {
     "id": "Dealing_Damage_Horror",
@@ -801,7 +806,14 @@
   {
     "id": "Permanent",
     "title": "Permanente",
-    "text": "Permanente è una capacità di parola chiave di composizione del mazzo.\n- Una carta con Permanente non è considerata nella dimensione del proprio mazzo.\n- Una carta con Permanente è comunque considerata parte del proprio mazzo e deve quindi rispettare tutte le altre restrizioni di composizione del mazzo.\n- Una carta con Permanente inizia ogni partita in gioco e non viene mescolata nel proprio mazzo dell’investigatore durante la preparazione.\n- Una carta con Permanente non può lasciare il gioco in alcun modo (tranne che per eliminazione).\n- Una volta aggiunte a un mazzo, le carte con Permanente non possono essere rimosse dal mazzo né sostituite, salvo diversamente specificato."
+    "text": "Permanente è una capacità di parola chiave di composizione del mazzo.\n- Una carta con Permanente non è considerata nella dimensione del proprio mazzo.\n- Una carta con Permanente è comunque considerata parte del proprio mazzo e deve quindi rispettare tutte le altre restrizioni di composizione del mazzo.\n- Una carta con Permanente inizia ogni partita in gioco e non viene mescolata nel proprio mazzo dell’investigatore durante la preparazione.\n- Una carta con Permanente non può lasciare il gioco in alcun modo (tranne che per eliminazione).\n- Una volta aggiunte a un mazzo, le carte con Permanente non possono essere rimosse dal mazzo né sostituite, salvo diversamente specificato.",
+    "rules":[
+      {
+        "id": "faq_1.29",
+        "title": "Controllare e Assegnare Carte Permanenti",
+        "text": "Una carta con la parola chiave Permanente non può uscire dall’area di gioco del suo controllore a meno che non sia indicato dagli effetti di una carta scenario. Le carte con la parola chiave Permanente non possono essere assegnate ad altre carte nell’area di gioco di un investigatore. Gli investigatori non possono prendere il controllo di carte con Permanente di altri investigatori.\n\n<i>Esempio: Un investigatore non può assegnare il Mangia Peccati a Elle Rubash anche se il Mangia Peccati ha 1 o più destini su di esso.</i>"
+      }
+    ]
   },
   {
     "id": "Draw_Action",
@@ -1013,7 +1025,7 @@
       {
         "id": "Shifting_Slots",
         "title": "Spostamento degli Slot",
-        "text": "Gli effetti di alcune carte consentono a un investigatore di mettere supporti di un tipo di slot in altri suoi slot, oppure consentono a un tipo di slot di un investigatore di ricevere supporti di un tipo di slot differente, oppure fanno sì che i supporti non occupino più alcuno slot. In tali occasioni, l’investigatore deve decidere a quale slot è associato quale supporto nel momento in cui viene giocata una carta del genere. Questa dichiarazione non può essere sistemata successivamente a meno che i contenuti o la quantità degli slot dell’investigatore non cambino: a quel punto, l’investigatore può ridefinire a quali slot siano associati quali supporti."
+        "text": "Gli effetti di alcune carte consentono a un investigatore di mettere supporti di un tipo di slot in altri suoi slot, oppure consentono a un tipo di slot di un investigatore di ricevere supporti di un tipo di slot differente, oppure fanno sì che i supporti non occupino più alcuno slot. In tali occasioni, l’investigatore deve decidere a quale slot è associato quale supporto nel momento in cui viene giocata una carta del genere. Questa dichiarazione non può essere sistemata successivamente a meno che i contenuti o la quantità degli slot dell’investigatore non cambino: a quel punto, l’investigatore può ridefinire a quali slot siano associati quali supporti.\n<i>Esempio: Kōhaku ha in gioco il Reliquiario Occulto quando gioca la Lama Benedetta. Sceglie di ricevere con il Reliquiario Occulto 1 slot mano occupandolo con la Lama Benedetta. Se in seguito gioca un’altra carta Benedetto, come per esempio lo Specchio Sacro, può scegliere di far occupare alla nuova carta lo slot aggiuntivo e di definire il tipo di slot, mentre sposta la Lama Benedetta nello slot mano standard.</i>"
       }
     ]
   },
