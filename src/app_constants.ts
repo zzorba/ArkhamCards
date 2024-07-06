@@ -564,7 +564,6 @@ export const specialPacks: ReprintPack[] = [
     player: false,
     cyclePosition: 6,
   },
-  /*
   {
     code: 'ticp',
     packs: ['tic', 'itd', 'def', 'hhg', 'lif', 'lod', 'itm'],
@@ -577,7 +576,6 @@ export const specialPacks: ReprintPack[] = [
     player: false,
     cyclePosition: 7,
   },
-  */
 ];
 
 export const specialReprintPlayerPacks: { [code: string]: string | undefined } = {};

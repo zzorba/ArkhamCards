@@ -12,6 +12,7 @@
     "start": "react-native start",
     "lint": "eslint './src/**/*.{ts,js,tsx}'",
     "i18n-extract-en": "ttag update assets/i18n/en.po src/",
+    "i18n-extract-cs": "ttag update assets/i18n/cs.po src/",
     "i18n-extract-fr": "ttag update assets/i18n/fr.po src/",
     "i18n-extract-it": "ttag update assets/i18n/it.po src/",
     "i18n-extract-de": "ttag update assets/i18n/de.po src/",

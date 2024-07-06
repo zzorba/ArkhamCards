@@ -275,8 +275,13 @@ export class DeckOptionQueryBuilder {
     )) {
       return [where('c.heals_damage is not null AND c.heals_damage = 1')];
     }
-    if (this.option.text?.length && this.option.text[0] === '<b>Parley\\.<\\/b>') {
-      return [where(`c.real_text LIKE '%Parley.%' or linked_card.real_text LIKE '%Parley.%'`)]
+    if (
+      (this.option.tag?.length && this.option.tag[0] === 'pa') ||
+      (this.option.text?.length && this.option.text[0] === '<b>Parley\\.<\\/b>')
+    ) {
+      return [
+        where(`c.real_text LIKE '%Parley.%' or linked_card.real_text LIKE '%Parley.%' or c.tags LIKE '%pa%'`)
+      ];
     }
     if (this.option.text?.length && this.option.text[0] === '<b>Fight\\.<\\/b>') {
       return [where(`c.real_text LIKE '%Fight.%' or linked_card.real_text LIKE '%Fight.%'`)]

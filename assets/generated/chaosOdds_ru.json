@@ -9153,7 +9153,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Номер столбца вашей локации",
           "min": 1
         }
       },
@@ -9181,7 +9181,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Номер столбца вашей локации",
           "min": 1,
           "scale": 2
         }
@@ -9214,7 +9214,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Номер столбца вашей локации",
           "min": 1
         }
       },
@@ -9242,7 +9242,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Номер столбца вашей локации",
           "min": 1,
           "scale": 2
         }
@@ -9275,7 +9275,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Номер столбца вашей локации",
           "min": 1
         }
       },
@@ -9303,7 +9303,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "Номер столбца вашей локации",
           "min": 1,
           "scale": 2
         }
@@ -9336,7 +9336,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current day number",
+          "prompt": "Номер текущего дня",
           "min": 1
         }
       },
@@ -9349,7 +9349,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "Переговоры",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -9366,7 +9366,7 @@
           },
           "options": [
             {
-              "prompt": "Fewer than 3 cards in hand",
+              "prompt": "Меньше 3 карт на руке",
               "modified_value": {
                 "modifier": 0
               }
@@ -9383,7 +9383,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "Переговоры",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -9398,7 +9398,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current day number",
+          "prompt": "Номер текущего дня",
           "min": 1,
           "adjustment": 1
         }
@@ -9412,7 +9412,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "Переговоры",
               "modified_value": {
                 "modifier": 1
               }
@@ -9429,7 +9429,7 @@
           },
           "options": [
             {
-              "prompt": "Fewer than 2 cards in hand",
+              "prompt": "Меньше 2 карт на руке",
               "modified_value": {
                 "modifier": -2
               }
@@ -9446,7 +9446,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "Переговоры",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -9465,7 +9465,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current floor number",
+          "prompt": "Номер вашего этажа",
           "min": 1
         }
       },
@@ -9493,7 +9493,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current floor number",
+          "prompt": "Номер вашего этажа",
           "min": 1,
           "scale": 2
         }
@@ -9526,7 +9526,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Insect]] enemies in play and in the victory display (rounded up)",
+          "prompt": "Половина числа врагов-[[насекомых]] в игре и на победном счету (округляя вверх)",
           "min": 0
         }
       },
@@ -9551,7 +9551,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Lair]] location",
+              "prompt": "В локации-[[обители]]",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -9566,7 +9566,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Insect]] enemies in play and in the victory display",
+          "prompt": "Число врагов-[[насекомых]] в игре и на победном счету",
           "min": 0
         }
       },
@@ -9591,7 +9591,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Lair]] location",
+              "prompt": "В локации-[[обители]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9609,7 +9609,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Sunken]] locations in play (rounded up)",
+          "prompt": "Половина числа [[затонувших]] локаций в игре (округляя вверх)",
           "min": 0
         }
       },
@@ -9637,7 +9637,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Sunken]] locations in play",
+          "prompt": "Число [[затонувших]] локаций в игре",
           "min": 0
         }
       },
@@ -9669,7 +9669,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of revealed [[Cave]] locations in play (rounded up)",
+          "prompt": "Половина числа открытых локаций-[[пещер]] в игре (округляя вверх)",
           "min": 0
         }
       },
@@ -9705,7 +9705,7 @@
           },
           "options": [
             {
-              "prompt": "An [[Abomination]] enemy at your location",
+              "prompt": "Враг-[[чудовище]] в вашей локации",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -9720,7 +9720,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of revealed [[Cave]] locations in play",
+          "prompt": "Число открытых локаций-[[пещер]] в игре",
           "min": 0
         }
       },
@@ -9756,7 +9756,7 @@
           },
           "options": [
             {
-              "prompt": "An [[Abomination]] enemy at your location",
+              "prompt": "Враг-[[чудовище]] в вашей локации",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9774,7 +9774,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current darkness level",
+          "prompt": "Текущий уровень темноты",
           "min": 0
         }
       },
@@ -9802,7 +9802,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current darkness level",
+          "prompt": "Текущий уровень темноты",
           "min": 0,
           "scale": 2
         }
@@ -9835,7 +9835,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of doom in play (rounded up)",
+          "prompt": "Половина числа безысходности в игре (округляя вверх)",
           "min": 0
         }
       },
@@ -9864,7 +9864,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of doom in play",
+          "prompt": "Число безысходности в игре",
           "min": 0
         }
       },
@@ -9896,7 +9896,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current act number",
+          "prompt": "Номер текущей сцены",
           "min": 1,
           "adjustment": 1
         }
@@ -9916,7 +9916,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on your investigator card",
+              "prompt": "Положить 1 безысходность на сою карту сыщика",
               "modified_value": {
                 "modifier": 0
               }
@@ -9933,7 +9933,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against Cosmic Emissary",
+              "prompt": "Этот жетон вытянут в бою с «Посланником космоса» или при попытке ухода от него",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -9948,7 +9948,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Colour]] enemies in play",
+          "prompt": "Число врагов с чертой [[цвет]] в игре",
           "min": 0
         }
       },
@@ -9967,7 +9967,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on your investigator card",
+              "prompt": "Положить 1 безысходность на сою карту сыщика",
               "modified_value": {
                 "modifier": -3
               }
@@ -9984,7 +9984,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against Cosmic Emissary",
+              "prompt": "Этот жетон вытянут в бою с «Посланником космоса» или при попытке ухода от него",
               "modified_value": {
                 "modifier": "auto_fail"
               }

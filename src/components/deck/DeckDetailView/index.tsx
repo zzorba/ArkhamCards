@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
 import { ngettext, msgid, t, c } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
@@ -32,7 +32,7 @@ import { DeckHistoryProps } from '@components/deck/DeckHistoryView';
 import { EditSpecialCardsProps } from '@components/deck/EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter, { PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
-import { AppState } from '@reducers';
+import { AppState, getShowCustomContent } from '@reducers';
 import space, { xs, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
@@ -305,12 +305,16 @@ function DeckDetailView({
     });
     return r;
   }, [bondedCards]);
+  const showCustomContent = useSelector(getShowCustomContent);
   const cardsByName = useMemo(() => {
     const cardsByName: {
       [name: string]: Card[];
     } = {};
     forEach(possibleUpgradeCards, card => {
       if (card) {
+        if (card.custom() && !showCustomContent) {
+          return;
+        }
         const real_name = card.real_name.toLowerCase();
         if (cardsByName[real_name]) {
           cardsByName[real_name].push(card);

@@ -4640,7 +4640,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Suspect]] and [[Hideout]] cards in the victory display (rounded up)",
+          "prompt": "Połowa liczby kart z cechą [[Podejrzany]] i [[Kryjówka]] w puli zwycięstwa (zaokrąglona w górę)",
           "min": 0
         }
       },
@@ -4653,7 +4653,7 @@
           },
           "options": [
             {
-              "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+              "prompt": "Pertraktujesz z wrogiem z cechą [[Podejrzany]] lub badasz lokalizację z cechą [[Kryjówka]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -4679,7 +4679,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Suspect]] and [[Hideout]] cards in the victory display",
+          "prompt": "Liczba kart z cechą [[Podejrzany]] i [[Kryjówka]] w puli zwycięstwa",
           "min": 0
         }
       },
@@ -4692,7 +4692,7 @@
           },
           "options": [
             {
-              "prompt": "You are parleying with a [[Suspect]] enemy or investigating a [[Hideout]] location",
+              "prompt": "Pertraktujesz z wrogiem z cechą [[Podejrzany]] lub badasz lokalizację z cechą [[Kryjówka]]",
               "modified_value": {
                 "modifier": -5
               }
