@@ -2812,7 +2812,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "경보 수치의 절반(소수점 올림)",
+          "prompt": "경보 수치의 절반(소수점 이하 올림)",
           "min": 0
         }
       },
@@ -7569,7 +7569,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your alarm level, rounded down.",
+          "prompt": "경보 수치의 절반(소수점 이하 버림)",
           "min": 1
         }
       },
@@ -7595,7 +7595,7 @@
           },
           "options": [
             {
-              "prompt": "Raise your alarm level by 1",
+              "prompt": "경보 수치를 1단계 올림",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -7635,7 +7635,7 @@
           },
           "options": [
             {
-              "prompt": "Raise your alarm level by 1",
+              "prompt": "경보 수치를 1단계 올림",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -8338,7 +8338,7 @@
           },
           "options": [
             {
-              "prompt": "You have 2 or more clues",
+              "prompt": "당신이 단서를 2 개 이상 갖고 있음",
               "modified_value": {
                 "modifier": -3
               }
@@ -8355,7 +8355,7 @@
           },
           "options": [
             {
-              "prompt": "A concealed mini-card is at your location",
+              "prompt": "당신이 위치한 장소에 소형 은신 카드가 있음",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -8381,7 +8381,7 @@
           },
           "options": [
             {
-              "prompt": "You have 2 or more clues",
+              "prompt": "당신이 단서를 2 개 이상 갖고 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -8398,7 +8398,7 @@
           },
           "options": [
             {
-              "prompt": "A concealed mini-card is at your location",
+              "prompt": "당신이 위치한 장소에 소형 은신 카드가 있음",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -8423,7 +8423,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [per_investigator] civilians slain.",
+          "prompt": "사망한 민간인 1 [per_investigator]명의 개수",
           "min": 0
         }
       },
@@ -8451,7 +8451,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [per_investigator] civilians slain.",
+          "prompt": "사망한 민간인 1 [per_investigator]명의 개수",
           "min": 0,
           "scale": 2
         }
@@ -8484,7 +8484,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of targets on the scenario reference card.",
+          "prompt": "이 카드에 놓인 표적 개수",
           "min": 0
         }
       },
@@ -8513,7 +8513,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of targets on the scenario reference card.",
+          "prompt": "이 카드에 놓인 표적 개수",
           "adjustment": 1,
           "min": 0
         }
@@ -8547,7 +8547,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of clues on a [[Cultist]] enemy in play (3 during act 3)",
+          "prompt": "플레이 상태인 [[추종자]] 적 중에서, 단서가 가장 많이 놓인 [[추종자]] 적의 단서 개수 (현재 주요목적이 3이라면, X는 3)",
           "min": 0
         }
       },
@@ -8560,7 +8560,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on the nearest [[Cultist]] enemy",
+              "prompt": "가장 가까운 [[추종자]] 적에게 파멸을 1개 놓음",
               "modified_value": {
                 "modifier": -1
               }
@@ -8586,7 +8586,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total number of clues on [[Cultist]] enemies in play (4 during act 3)",
+          "prompt": "플레이 상태인 모든 [[추종자]] 적에게 놓인 단서 개수의 총합 (현재 주요목적이 3이라면, X는 4)",
           "min": 0
         }
       },
@@ -8599,7 +8599,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on the nearest [[Cultist]] enemy",
+              "prompt": "가장 가까운 [[추종자]] 적에게 파멸을 1개 놓음",
               "modified_value": {
                 "modifier": -3
               }
@@ -8629,7 +8629,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of enemies in the shadows",
+          "prompt": "그림자 속에 있는 적의 수",
           "min": 0,
           "max": 3
         }
@@ -8655,7 +8655,7 @@
           },
           "options": [
             {
-              "prompt": "There is a concealed mini-card at your location and you don't take 1 damage",
+              "prompt": "당신이 위치한 장소에 소형 은신 카드가 있고 피해를 1 받지 않음.",
               "modified_value": {
                 "modifier": -3
               }
@@ -8669,7 +8669,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of enemies in the shadows",
+          "prompt": "그림자 속에 있는 적의 수",
           "min": 0,
           "max": 5
         }
@@ -8695,7 +8695,7 @@
           },
           "options": [
             {
-              "prompt": "There is a concealed mini-card at your location and you don't take 1 damage",
+              "prompt": "당신이 위치한 장소에 소형 은신 카드가 있고 피해를 1 받지 않음.",
               "modified_value": {
                 "modifier": -5
               }
@@ -8713,7 +8713,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Hazard]] treacheries in play",
+          "prompt": "플레이 상태인 [[위기]] 음모 개수",
           "min": 0
         }
       },
@@ -8732,7 +8732,7 @@
           },
           "options": [
             {
-              "prompt": "Void Chimera is at your location",
+              "prompt": "당신이 위치한 장소에 ‘공허 키메라’가 있음",
               "modified_value": {
                 "modifier": -5
               }
@@ -8752,7 +8752,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Hazard]] treacheries in play",
+          "prompt": "플레이 상태인 [[위기]] 음모 개수",
           "adjustment": 1,
           "min": 0
         }
@@ -8772,7 +8772,7 @@
           },
           "options": [
             {
-              "prompt": "Void Chimera is at your location",
+              "prompt": "당신이 위치한 장소에 ‘공허 키메라’가 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8801,7 +8801,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a Key Locus",
+              "prompt": "당신이 ‘핵심 거점’이 위치한 장소에 있음",
               "modified_value": {
                 "modifier": -3
               }
@@ -8838,7 +8838,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a Key Locus",
+              "prompt": "당신이 ‘핵심 거점’이 위치한 장소에 있음",
               "modified_value": {
                 "modifier": -4
               }
@@ -8874,7 +8874,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of charges on Shade Reaper (rounded up)",
+          "prompt": "‘그늘 수확자’에 놓인 충전 횟수의 절반(소수점 올림)",
           "min": 0,
           "max": 6
         }
@@ -8894,7 +8894,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a [[Geist]] enemy",
+              "prompt": "당신이 위치한 장소에 [[유령]] 적이 있음",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -8912,7 +8912,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 charge on The Shade Reaper",
+              "prompt": "‘그늘 수확자’에 충전을 1 회 놓음",
               "modified_value": {
                 "modifier": 0
               }
@@ -8926,7 +8926,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of charges on Shade Reaper",
+          "prompt": "‘그늘 수확자’에 놓인 충전 횟수",
           "min": 0
         }
       },
@@ -8945,7 +8945,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a [[Geist]] enemy",
+              "prompt": "당신이 위치한 장소에 [[유령]] 적이 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8962,7 +8962,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 charge on The Shade Reaper",
+              "prompt": "‘그늘 수확자’에 충전을 1 회 놓음",
               "modified_value": {
                 "modifier": -3
               }
@@ -8994,7 +8994,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of set-aside hollows you own",
+          "prompt": "치워 두었던 현실에서 말소된 카드 중 당신이 소유한 카드 장수",
           "min": 0,
           "max": 5
         }
@@ -9025,7 +9025,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of set-aside hollows you own",
+          "prompt": "치워 두었던 현실에서 말소된 카드 중 당신이 소유한 카드 장수",
           "adjustment": 1,
           "min": 0
         }
@@ -9059,7 +9059,7 @@
           },
           "options": [
             {
-              "prompt": "Flip a [[Stable]] key you control to its [[Unstable]] side",
+              "prompt": "당신이 조종하는 [[안정한]] 열쇠 하나를 [[불안정한]] 면으로 뒤집음",
               "modified_value": {
                 "modifier": -2
               }
@@ -9076,7 +9076,7 @@
           },
           "options": [
             {
-              "prompt": "Attack against a ready [[Outsider]] enemy",
+              "prompt": "준비 상태인 [[바깥개체]] 적에 대한 공격",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9111,7 +9111,7 @@
           },
           "options": [
             {
-              "prompt": "Flip a [[Stable]] key you control to its [[Unstable]] side",
+              "prompt": "당신이 조종하는 [[안정한]] 열쇠 하나를 [[불안정한]] 면으로 뒤집음",
               "modified_value": {
                 "modifier": -4
               }
@@ -9128,7 +9128,7 @@
           },
           "options": [
             {
-              "prompt": "There is a ready [[Outsider]] enemy at your location",
+              "prompt": "당신이 위치한 장소에 준비 상태인 [[바깥개체]] 적이 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }

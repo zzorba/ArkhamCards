@@ -2978,10 +2978,10 @@ msgid "Deck is invalid"
 msgstr "덱 구성 조건을 만족하지 않습니다"
 
 msgid "Show splash cards"
-msgstr "항목에 포함된 카드 보기"
+msgstr "다른 역할군 카드 보기"
 
 msgid "Hide splash cards"
-msgstr "항목에 포함된 카드 숨기기"
+msgstr "다른 역할군 카드 숨기기"
 
 msgid "Limited Slots"
 msgstr "제한된 슬롯"
@@ -5237,7 +5237,7 @@ msgid "Add trait"
 msgstr "특성 추가"
 
 msgid "Embark"
-msgstr "탑승"
+msgstr "임무 개시"
 
 #, javascript-format
 msgid "Depart from ${ currentLocation.name }"
@@ -5430,7 +5430,7 @@ msgid "Choose a skill"
 msgstr "능력 선택"
 
 msgid "Use the embark button below"
-msgstr "아래의 탑승 기능을 사용하십시오"
+msgstr "아래의 버튼으로 임무를 개시하십시오."
 
 msgid "Review the world map"
 msgstr "세계 지도 검토"
@@ -5468,10 +5468,10 @@ msgid "This deck is owned by another player. You can record the changes now and 
 msgstr "이 덱은 다른 플레이어가 소유하고 있습니다. 지금 변경점을 기록할 수 있으며, 소유주가 다음에 앱을 열 때 덱에 저장할 수 있는 기회가 주어집니다."
 
 msgid "Time Passed"
-msgstr "흐른 시간"
+msgstr "경과한 시간"
 
 msgid "Bearer"
-msgstr "소지자"
+msgstr "보유자"
 
 msgid "You cannot have more than 5 Seeker and/or Survivor cards"
 msgstr "탐구자 그리고/또는 생존자인 카드를 5장보다 많이 포함할 수 없습니다."
@@ -5563,7 +5563,7 @@ msgid "Exile other cards"
 msgstr "다른 카드 추방"
 
 msgid "Name of Paradimensional Artifact"
-msgstr "준차원 인공물 이름"
+msgstr "초차원적 유물의 명칭"
 
 msgid "Prologue: Rain and Riddles"
 msgstr "서막: 비와 수수께끼"
@@ -6541,11 +6541,11 @@ msgstr "- 아컴디비 사이트와의 호환성을 유지하기 위해 이 카�
 
 msgctxt "releaseNotes"
 msgid "The Scarlet Keys Campaign"
-msgstr "진홍색 열쇠 캠페인 확장 (영문)"
+msgstr "진홍색 열쇠 캠페인 확장"
 
 msgctxt "releaseNotes"
 msgid "This release adds support for the newly released Scarlet Keys campaign expansion."
-msgstr "이번 배포에서 신규 공개된 진홍색 열쇠 캠페인 확장에 대한 지원(영문)이 추가됩니다."
+msgstr "이번 배포에서 신규 공개된 진홍색 열쇠 캠페인 확장에 대한 지원이 추가됩니다."
 
 msgctxt "releaseNotes"
 msgid "- As you may know (or will soon find out), this is by far the most ambitious campaign we've ever seen in Arkham. I've done my best to handle the new features as faithfully as I can in the app, and am pretty pleased with the implementation."
@@ -7297,7 +7297,7 @@ msgstr "의식"
 
 msgctxt "trait"
 msgid "Ritual Site"
-msgstr ""
+msgstr "의식터"
 
 msgctxt "trait"
 msgid "River"
@@ -7613,7 +7613,7 @@ msgstr "결연한"
 
 msgctxt "trait"
 msgid "Coterie"
-msgstr ""
+msgstr "동지회"
 
 msgctxt "trait"
 msgid "Dilemma"
@@ -7665,7 +7665,7 @@ msgstr "미개척지"
 
 msgctxt "trait"
 msgid "Casino"
-msgstr ""
+msgstr "카지노"
 
 msgctxt "trait"
 msgid "Double"
@@ -7677,7 +7677,7 @@ msgstr "AI"
 
 msgctxt "trait"
 msgid "Abandoned"
-msgstr ""
+msgstr "버려진"
 
 msgctxt "trait"
 msgid "Access"
@@ -7685,7 +7685,7 @@ msgstr "외부해치"
 
 msgctxt "trait"
 msgid "Alexandria"
-msgstr ""
+msgstr "알렉산드리아"
 
 msgctxt "trait"
 msgid "Ally? Creature"
@@ -7701,7 +7701,7 @@ msgstr "이 개놈아!"
 
 msgctxt "trait"
 msgid "Bazaar"
-msgstr ""
+msgstr "바자르"
 
 msgctxt "trait"
 msgid "Blessed?"
@@ -7717,7 +7717,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Buenos Aires"
-msgstr ""
+msgstr "부에노스아이레스"
 
 msgctxt "trait"
 msgid "Card"
@@ -7757,7 +7757,7 @@ msgstr "시체"
 
 msgctxt "trait"
 msgid "Corruption"
-msgstr ""
+msgstr "타락"
 
 msgctxt "trait"
 msgid "Darkness"
@@ -7797,7 +7797,7 @@ msgstr "신들린"
 
 msgctxt "trait"
 msgid "Havana"
-msgstr ""
+msgstr "아바나"
 
 msgctxt "trait"
 msgid "Human"
@@ -7809,11 +7809,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Istanbul"
-msgstr ""
+msgstr "이스탄불"
 
 msgctxt "trait"
 msgid "Kuala Lumpur"
-msgstr ""
+msgstr "쿠알라룸푸르"
 
 msgctxt "trait"
 msgid "Local"
@@ -7821,11 +7821,11 @@ msgstr "현지인"
 
 msgctxt "trait"
 msgid "Locus Site"
-msgstr ""
+msgstr "거점 지역"
 
 msgctxt "trait"
 msgid "London"
-msgstr ""
+msgstr "런던"
 
 msgctxt "trait"
 msgid "Loyal"
@@ -7845,7 +7845,7 @@ msgstr "정신이상?"
 
 msgctxt "trait"
 msgid "Marrakesh"
-msgstr ""
+msgstr "마라케시"
 
 msgctxt "trait"
 msgid "Medical"
@@ -7869,7 +7869,7 @@ msgstr "향수 2호"
 
 msgctxt "trait"
 msgid "Outsider"
-msgstr ""
+msgstr "바깥개체"
 
 msgctxt "trait"
 msgid "Parasitic"
@@ -7901,7 +7901,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Risen"
-msgstr ""
+msgstr "되살아난"
 
 msgctxt "trait"
 msgid "Row"
@@ -7941,7 +7941,7 @@ msgstr "병사"
 
 msgctxt "trait"
 msgid "Stable"
-msgstr ""
+msgstr "안정한"
 
 msgctxt "trait"
 msgid "Stop"
@@ -7961,7 +7961,7 @@ msgstr "나쁜"
 
 msgctxt "trait"
 msgid "Tower"
-msgstr ""
+msgstr "탑"
 
 msgctxt "trait"
 msgid "Traitor"
@@ -7977,7 +7977,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Unstable"
-msgstr ""
+msgstr "불안정한"
 
 msgctxt "trait"
 msgid "Upper Floor"
@@ -8001,7 +8001,7 @@ msgstr "이상한 나라"
 
 msgctxt "trait"
 msgid "Yuggoth"
-msgstr ""
+msgstr "유고스"
 
 msgctxt "trait"
 msgid "Blight"
@@ -8013,7 +8013,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Crew"
-msgstr ""
+msgstr "일당"
 
 msgctxt "trait"
 msgid "Delta"
@@ -8025,11 +8025,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Game"
-msgstr ""
+msgstr "게임"
 
 msgctxt "trait"
 msgid "Inconspicuous"
-msgstr ""
+msgstr "이목을 끌지 않는"
 
 msgctxt "trait"
 msgid "Miasma"
@@ -8037,7 +8037,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Public"
-msgstr ""
+msgstr "일반인 구역"
 
 msgctxt "trait"
 msgid "Resident"
@@ -8045,7 +8045,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Role"
-msgstr ""
+msgstr "역할"
 
 msgctxt "trait"
 msgid "Rot"
@@ -8057,7 +8057,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Unpracticed"
-msgstr ""
+msgstr "미숙"
 
 #, javascript-format
 msgctxt "filter"
