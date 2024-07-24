@@ -97,7 +97,7 @@
   },
   {
     "id": "bermuda",
-    "name": "The Great Work"
+    "name": "대업"
   },
   {
     "id": "bermuda_triangle",
@@ -133,7 +133,7 @@
   },
   {
     "id": "bombay",
-    "name": "Strange Architecture"
+    "name": "기묘한 건물"
   },
   {
     "id": "buenos_aires",
@@ -325,15 +325,15 @@
   },
   {
     "id": "fortune_and_folly_checkpoint",
-    "name": "The Plan"
+    "name": "계획"
   },
   {
     "id": "fortune_and_folly_part_1",
-    "name": "The Stakeout"
+    "name": "물밑 작업"
   },
   {
     "id": "fortune_and_folly_part_2",
-    "name": "The Heist"
+    "name": "강탈 작전"
   },
   {
     "id": "fragment_of_carcosa",
@@ -381,7 +381,7 @@
   },
   {
     "id": "hong_kong",
-    "name": "Blood, Sweat, and Tea"
+    "name": "피와 땀 그리고 차"
   },
   {
     "id": "horror_in_high_gear",
@@ -445,11 +445,11 @@
   },
   {
     "id": "kabul",
-    "name": "Ruses and Reclamations"
+    "name": "계략과 회수"
   },
   {
     "id": "kathmandu",
-    "name": "Whistle On the Wind"
+    "name": "바람을 타고 울려 퍼지는 휘파람"
   },
   {
     "id": "kuala_lampur",
@@ -457,7 +457,7 @@
   },
   {
     "id": "lagos",
-    "name": "Special Delivery"
+    "name": "특송"
   },
   {
     "id": "laid_to_rest",
@@ -473,7 +473,7 @@
   },
   {
     "id": "london",
-    "name": "Dead and Gone"
+    "name": "완전한 소실"
   },
   {
     "id": "lost_in_time_and_space",
@@ -501,7 +501,7 @@
   },
   {
     "id": "marrakesh",
-    "name": "죽음과 혹서"
+    "name": "죽음의 혹서"
   },
   {
     "id": "meddling_of_meowlathotep",
@@ -513,7 +513,7 @@
   },
   {
     "id": "moscow",
-    "name": "Quid Pro Quo"
+    "name": "대가 없는 호의는 없다"
   },
   {
     "id": "mourning_chorus",
@@ -529,7 +529,7 @@
   },
   {
     "id": "nairobi",
-    "name": "Infernal Machinery"
+    "name": "지독한 기계장치"
   },
   {
     "id": "night_on_the_town",
@@ -537,7 +537,7 @@
   },
   {
     "id": "perth",
-    "name": "Paranatural Selection"
+    "name": "초자연 선택설"
   },
   {
     "id": "point_of_no_return",
@@ -577,7 +577,7 @@
   },
   {
     "id": "quito",
-    "name": "Ruses and Reclamations"
+    "name": "계략과 회수"
   },
   {
     "id": "read_or_die",
@@ -777,7 +777,7 @@
   },
   {
     "id": "reykjavik",
-    "name": "Ruses and Reclamations"
+    "name": "계략과 회수"
   },
   {
     "id": "riddles_and_rain",
@@ -785,23 +785,23 @@
   },
   {
     "id": "rio_de_janiero",
-    "name": "Theory of Annihiliation"
+    "name": "소멸론"
   },
   {
     "id": "rome",
-    "name": "Romulus and Remus"
+    "name": "로물루스와 레무스"
   },
   {
     "id": "san_francisco",
-    "name": "Quid Pro Quo"
+    "name": "대가 없는 호의는 없다"
   },
   {
     "id": "san_juan",
-    "name": "Ruses and Reclamations"
+    "name": "계략과 회수"
   },
   {
     "id": "shanghai",
-    "name": "The Coiled Serpent"
+    "name": "똬리를 튼 뱀"
   },
   {
     "id": "shattered_aeons",
@@ -821,7 +821,7 @@
   },
   {
     "id": "stockholm",
-    "name": "Strange Architecture"
+    "name": "기묘한 건물"
   },
   {
     "id": "strange_moons",
@@ -829,7 +829,7 @@
   },
   {
     "id": "sydney",
-    "name": "Ringing Hollow"
+    "name": "들불처럼 번지는 말소"
   },
   {
     "id": "tcu_epilogue",
@@ -957,7 +957,7 @@
   },
   {
     "id": "the_foundation",
-    "name": "The Foundation"
+    "name": "재단"
   },
   {
     "id": "the_golden_circle",
@@ -1121,7 +1121,7 @@
   },
   {
     "id": "tokyo",
-    "name": "Special Delivery"
+    "name": "특송"
   },
   {
     "id": "tomb_of_dead_dreams",
@@ -1205,7 +1205,7 @@
   },
   {
     "id": "ybor_city",
-    "name": "The Safehouse"
+    "name": "안전가옥"
   },
   {
     "id": "zhod_epilogue",
