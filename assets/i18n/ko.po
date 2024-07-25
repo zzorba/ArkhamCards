@@ -7597,7 +7597,7 @@ msgstr "송골매 곶"
 
 msgctxt "trait"
 msgid "Lair"
-msgstr "침소"
+msgstr "침소/은거처"
 
 msgctxt "trait"
 msgid "Synergy"

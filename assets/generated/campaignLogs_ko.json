@@ -2282,7 +2282,7 @@
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "조사자들이 종업원 복장을 얻었다"
+            "text": "조사자들이 종업원 복장을 손에 넣었다"
           },
           {
             "id": "fof_stashed",
@@ -2294,35 +2294,35 @@
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#: 얼굴"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (숙련)"
+            "text": "#name#: 얼굴 (숙련)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#: 타짜"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (숙련)"
+            "text": "#name#: 타짜 (숙련)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#: 어깨"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (숙련)"
+            "text": "#name#: 어깨 (숙련)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#: 도둑"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (숙련)"
+            "text": "#name#: 도둑 (숙련)"
           },
           {
             "id": "fof_wellspring_clues",
@@ -4545,7 +4545,7 @@
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "조사자들이 종업원 복장을 얻었다"
+            "text": "조사자들이 종업원 복장을 손에 넣었다"
           },
           {
             "id": "fof_stashed",
@@ -4557,35 +4557,35 @@
           },
           {
             "id": "fof_the_face",
-            "text": "#name#: The Face"
+            "text": "#name#: 얼굴"
           },
           {
             "id": "fof_the_face_practiced",
-            "text": "#name#: The Face (숙련)"
+            "text": "#name#: 얼굴 (숙련)"
           },
           {
             "id": "fof_the_grifter",
-            "text": "#name#: The Grifter"
+            "text": "#name#: 타짜"
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (숙련)"
+            "text": "#name#: 타짜 (숙련)"
           },
           {
             "id": "fof_the_muscle",
-            "text": "#name#: The Muscle"
+            "text": "#name#: 어깨"
           },
           {
             "id": "fof_the_muscle_practiced",
-            "text": "#name#: The Muscle (숙련)"
+            "text": "#name#: 어깨 (숙련)"
           },
           {
             "id": "fof_the_thief",
-            "text": "#name#: The Thief"
+            "text": "#name#: 도둑"
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (숙련)"
+            "text": "#name#: 도둑 (숙련)"
           },
           {
             "id": "fof_wellspring_clues",
@@ -6482,11 +6482,11 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "Agent Flint is dead."
+            "text": "플린트 요원이 사망했다"
           },
           {
             "id": "agent_flint_is_missing",
-            "text": "Agent Flint is missing."
+            "text": "플린트 요원이 실종되었다"
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
@@ -6494,15 +6494,15 @@
           },
           {
             "id": "agent_quinn_has_your_back",
-            "text": "Agent Quinn has your back."
+            "text": "퀸 요원이 당신을 굳게 믿는다"
           },
           {
             "id": "agent_quinn_vanished_from_existence",
-            "text": "Agent Quinn vanished from existence."
+            "text": "퀸 요원의 존재가 현실에서 삭제되었다"
           },
           {
             "id": "aliki_is_on_your_side",
-            "text": "Aliki is on your side."
+            "text": "알리키가 당신의 편에 섰다"
           },
           {
             "id": "amaranth_has_left_the_coterie",
@@ -6514,15 +6514,15 @@
           },
           {
             "id": "cell_aided_the_knight",
-            "text": "the cell aided the knight."
+            "text": "독립 조사팀이 암적색 기사를 도왔다"
           },
           {
             "id": "cell_appreciated_the_architecture",
-            "text": "the cell appreciated the architecture."
+            "text": "독립 조사팀이 기묘한 건물을 알아봤다"
           },
           {
             "id": "cell_blew_the_whistle",
-            "text": "the cell blew the whistle."
+            "text": "독립 조사팀이 호루라기를 불었다"
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
@@ -6530,11 +6530,11 @@
           },
           {
             "id": "cell_escaped_the_red_coterie",
-            "text": "the cell escaped the Red Coterie."
+            "text": "독립 조사팀이 붉은 동지회의 손아귀에서 달아났다"
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
-            "text": "the cell failed to fend off the Beast."
+            "text": "독립 조사팀이 야수를 저지하는 데 실패했다"
           },
           {
             "id": "cell_has_been_ambushed",
@@ -6546,7 +6546,7 @@
           },
           {
             "id": "cell_is_assisting_agent_sirry",
-            "text": "the cell is assisting Agent Sirry."
+            "text": "독립 조사팀이 시리 요원을 돕고 있다"
           },
           {
             "id": "cell_is_deceiving_ece",
@@ -6554,7 +6554,7 @@
           },
           {
             "id": "cell_is_delivering_foundation_intel",
-            "text": "the cell is delivering Foundation intel."
+            "text": "독립 조사팀이 재단 첩보를 운송하고 있다"
           },
           {
             "id": "cell_is_off_mission",
@@ -6566,7 +6566,7 @@
           },
           {
             "id": "cell_joined_the_red_coterie",
-            "text": "the cell joined the Red Coterie."
+            "text": "독립 조사팀이 붉은 동지회에 입회했다"
           },
           {
             "id": "cell_knows_amaranths_real_name",
@@ -6578,7 +6578,7 @@
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
-            "text": "the cell knows the true nature of the Coterie."
+            "text": "독립 조사팀이 동지회의 실체를 알아냈다"
           },
           {
             "id": "cell_made_a_deal_with_desi",
@@ -6586,7 +6586,7 @@
           },
           {
             "id": "cell_made_a_deal_with_the_claret_knight",
-            "text": "the cell made a deal with the Claret Knight."
+            "text": "독립 조사팀이 암적색 기사와 거래를 했다"
           },
           {
             "id": "cell_made_a_deal_with_thorne",
@@ -6594,19 +6594,19 @@
           },
           {
             "id": "cell_met_dr_irawan",
-            "text": "the cell met Dr. Irawan."
+            "text": "독립 조사팀이 이라완 박사를 만났다"
           },
           {
             "id": "cell_overthrew_the_red_coterie",
-            "text": "the cell overthrew the Red Coterie."
+            "text": "독립 조사팀이 붉은 동지회를 전복시켰다"
           },
           {
             "id": "cell_possesses_a_mysterious_whistle",
-            "text": "the cell possesses a mysterious whistle."
+            "text": "독립 조사팀이 불가사의한 호루라기를 갖고 있다"
           },
           {
             "id": "cell_refused_alikis_offer",
-            "text": "the cell refused Aliki’s offer."
+            "text": "독립 조사팀이 알리키의 제안을 거절했다"
           },
           {
             "id": "cell_refused_eces_offer",
@@ -6614,7 +6614,7 @@
           },
           {
             "id": "cell_threw_away_the_whistle",
-            "text": "the cell threw away the whistle."
+            "text": "독립 조사팀이 호루라기를 던져버렸다"
           },
           {
             "id": "cell_told_the_truth_to_taylor",
@@ -6622,15 +6622,15 @@
           },
           {
             "id": "cell_was_dismantled",
-            "text": "the cell was dismantled."
+            "text": "독립 조사팀이 해체되었다"
           },
           {
             "id": "cell_was_given_a_permanent_position",
-            "text": "the cell was given a permanent position."
+            "text": "독립 조사팀이 재단에서 영구적인 지위를 획득했다"
           },
           {
             "id": "cell_was_hollowed",
-            "text": "the cell was hollowed."
+            "text": "독립 조사팀이 현실에서 말소되었다"
           },
           {
             "id": "chica_roja_is_on_your_side",
@@ -6638,7 +6638,7 @@
           },
           {
             "id": "deception",
-            "text": "Cell Deception: #X#"
+            "text": "독립 조사팀의 기만: #X#"
           },
           {
             "id": "desi_is_in_your_debt",
@@ -6646,19 +6646,19 @@
           },
           {
             "id": "dogs_are_at_war",
-            "text": "the dogs are at war."
+            "text": "전쟁의 사냥개들이 격전을 치르고 있다"
           },
           {
             "id": "dr_irawan_joined_the_cell",
-            "text": "Dr. Irawan joined the cell."
+            "text": "이라완 박사가 독립 조사팀에 합류했다"
           },
           {
             "id": "dr_irawan_traveled_to_new_guinea",
-            "text": "Dr. Irawan traveled to New Guinea."
+            "text": "이라완 박사가 뉴기니로 떠났다"
           },
           {
             "id": "dr_irawan_vanished_from_existence",
-            "text": "Dr. Irawan vanished from existence."
+            "text": "이라완 박사의 존재가 현실에서 삭제되었다"
           },
           {
             "id": "ece_does_not_trust_the_cell",
@@ -6686,11 +6686,11 @@
           },
           {
             "id": "flint_rejoined_the_cell",
-            "text": "Flint rejoined the cell."
+            "text": "플린트 요원이 독립 조사팀에 합류했다"
           },
           {
             "id": "flint_traveled_to_kuala_lampur",
-            "text": "Flint traveled to Kuala Lumpur."
+            "text": "플린트 요원이 쿠알라룸푸르로 향했다"
           },
           {
             "id": "foundation_remains_in_the_dark",
@@ -6698,7 +6698,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
-            "text": "you haven’t seen the last of Aliki Zoni Uperetria."
+            "text": "당신은 알리키 조니 우페레트리아의 최후를 목도하지 못했다"
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
@@ -6714,11 +6714,11 @@
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
-            "text": "you haven’t seen the last of the Beast in a Cowl of Crimson."
+            "text": "당신은 선홍색 망토를 두른 야수의 최후를 목도하지 못했다"
           },
           {
             "id": "have_not_seen_the_last_of_the_claret_knight",
-            "text": "you haven’t seen the last of the Claret Knight."
+            "text": "당신은 암적색 기사의 최후를 목도하지 못했다"
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
@@ -6734,7 +6734,7 @@
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "you haven’t seen the last of Tzu San Niang."
+            "text": "당신은 쯔싼냥의 최후를 목도하지 못했다"
           },
           {
             "id": "know_the_passphrase",
@@ -6750,15 +6750,15 @@
           },
           {
             "id": "outsiders_were_stopped",
-            "text": "the Outsiders were stopped."
+            "text": "바깥개체들을 저지했다"
           },
           {
             "id": "red_coterie_spared_the_cell",
-            "text": "the Red Coterie spared the cell."
+            "text": "붉은 동지회가 독립 조사팀을 살려두기로 결정했다"
           },
           {
             "id": "red_coterie_was_destroyed_from_within",
-            "text": "the Red Coterie was destroyed from within."
+            "text": "붉은 동지회가 내부로부터 붕괴되었다"
           },
           {
             "id": "sanguine_watchers_torment_continues",
@@ -6770,11 +6770,11 @@
           },
           {
             "id": "trust",
-            "text": "Foundation Trust: #X#"
+            "text": "재단 신뢰: #X#"
           },
           {
             "id": "tuwile_masai_fled_to_bermuda",
-            "text": "Tuwile Masai fled to Bermuda."
+            "text": "투윌레 마사이가 버뮤다로 달아났다"
           },
           {
             "id": "tuwile_masai_is_on_your_side",
@@ -6782,11 +6782,11 @@
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
-            "text": "Tzu San Niang has you under her sway."
+            "text": "당신이 쯔싼냥을 지배하에 두었다"
           },
           {
             "id": "tzu_san_niang_is_under_your_sway",
-            "text": "Tzu San Niang is under your sway."
+            "text": "당신이 쯔싼냥을 지배하에 두었다"
           },
           {
             "id": "void_chimera_escaped",
@@ -6794,7 +6794,7 @@
           },
           {
             "id": "work_together",
-            "text": "the Red Coterie and The Foundation agreed to work together."
+            "text": "붉은 동지회와 재단이 협력하기로 합의했다"
           },
           {
             "id": "wrong_leads",
