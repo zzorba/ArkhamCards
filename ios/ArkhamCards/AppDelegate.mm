@@ -4,7 +4,7 @@
 
 // Custom imports
 #import <Firebase.h>
-#import <RNGoogleSignin/RNGoogleSignin.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 #import <AppCenterReactNative.h>
 #import <AppCenterReactNativeCrashes.h>
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
@@ -62,7 +62,7 @@ RNKeyEvent *keyEvent = nil;
   if ([self.authorizationFlowManagerDelegate resumeExternalUserAgentFlowWithURL:url]) {
     return YES;
   }
-  return [RNGoogleSignin application:application openURL:url options:options] || [RCTLinkingManager application:application openURL:url options:options];
+  return [GIDSignIn.sharedInstance handleURL:url] || [RCTLinkingManager application:application openURL:url options:options];
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

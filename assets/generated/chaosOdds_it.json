@@ -1722,7 +1722,7 @@
             {
               "prompt": "5 o più carte nella tua mano",
               "modified_value": {
-                "modifier": -5
+                "modifier": -3
               }
             }
           ]

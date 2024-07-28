@@ -1722,7 +1722,7 @@
             {
               "prompt": "당신의 손에 카드가 5장 이상 있음",
               "modified_value": {
-                "modifier": -5
+                "modifier": -3
               }
             }
           ]

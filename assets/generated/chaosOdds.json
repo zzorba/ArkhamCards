@@ -1669,7 +1669,7 @@
           "options": [{
             "prompt": "Have 5 or more cards in your hand",
             "modified_value": {
-              "modifier": -5
+              "modifier": -3
             }
           }]
         }

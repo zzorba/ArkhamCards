@@ -1722,7 +1722,7 @@
             {
               "prompt": "你有5張或更多的手牌",
               "modified_value": {
-                "modifier": -5
+                "modifier": -3
               }
             }
           ]

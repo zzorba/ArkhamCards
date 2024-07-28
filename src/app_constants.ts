@@ -500,6 +500,7 @@ export type ReprintPackCode =
 export interface ReprintPack {
   code: ReprintPackCode;
   packs: string[];
+  codes?: string[];
   player: boolean;
   cyclePosition: number;
 }
@@ -549,6 +550,19 @@ export const specialPacks: ReprintPack[] = [
   {
     code: 'tcuc',
     packs: ['tcu', 'tsn', 'wos', 'fgg', 'uad', 'icc', 'bbt'],
+    codes: [
+      // x2
+      '05021', //Delay the inevitable
+      '05026', // Curiosity
+      '05029', // Money talks
+      '05030', // Cunning
+      '05037', // Act of desperation
+      '05038', // Able bodied
+      // x1
+      '05024', // Fingerprint Kit
+      '05025', // Connect the Dots
+      '05028', // Well Connected
+    ],
     player: false,
     cyclePosition: 5,
   },
