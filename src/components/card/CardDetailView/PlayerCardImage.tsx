@@ -90,7 +90,6 @@ function ImageContent({ card }: { card: Card }) {
     card.backImageUri() :
     card.imageUri()
   ) ?? '';
-  console.log(url);
 
   const horizontal = card.type_code === 'act' ||
     card.type_code === 'investigator' ||

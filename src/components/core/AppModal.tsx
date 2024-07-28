@@ -29,16 +29,18 @@ export default function AppModal({ children, avoidKeyboard, alignment, visible, 
       hasBackdrop
       backdropOpacity={darkMode ? 0.75 : 0.5}
       backdropColor={darkMode ? '#444444' : '#000000'}
-      style={[styles.wrapper, alignment === 'bottom' ? {
+      style={styles.wrapper}
+    >
+      <GestureHandlerRootView style={ alignment === 'bottom' ? {
+        flexDirection: 'column',
+        height: '100%',
         justifyContent: 'flex-end',
         padding: s,
         paddingBottom: NOTCH_BOTTOM_PADDING + m,
       } : {
         justifyContent: 'center',
         padding: s,
-      }]}
-    >
-      <GestureHandlerRootView>
+      }}>
         { children }
       </GestureHandlerRootView>
     </Modal>

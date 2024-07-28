@@ -38,6 +38,78 @@ export type Boolean_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['Boolean']['input']>>;
 };
 
+export type CreateCampaignInput = {
+  campaignId: Scalars['String']['input'];
+  guided?: InputMaybe<Scalars['Boolean']['input']>;
+  linked?: InputMaybe<LinkedCampaignId>;
+};
+
+export type CreateCampaignOutput = {
+  __typename?: 'CreateCampaignOutput';
+  campaignId: Scalars['Int']['output'];
+};
+
+export type CreateDeckInput = {
+  description?: InputMaybe<Scalars['String']['input']>;
+  ignoreDeckLimitSlots: Scalars['jsonb']['input'];
+  investigator: Scalars['String']['input'];
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  name: Scalars['String']['input'];
+  problem?: InputMaybe<Scalars['String']['input']>;
+  slots: Scalars['jsonb']['input'];
+  tabooSetId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CreateDeckOutput = {
+  __typename?: 'CreateDeckOutput';
+  deck?: Maybe<Arkhamdb_Deck>;
+  deckId: Scalars['String']['output'];
+};
+
+export type DeckId = {
+  __typename?: 'DeckId';
+  campaignId: Scalars['Int']['output'];
+  id: Scalars['Int']['output'];
+};
+
+export type DeleteCampaignInput = {
+  campaignId: Scalars['String']['input'];
+  serverId: Scalars['Int']['input'];
+};
+
+export type DeleteCampaignOutput = {
+  __typename?: 'DeleteCampaignOutput';
+  campaignId: Scalars['Int']['output'];
+};
+
+export type DeleteDeckInput = {
+  deckId: Scalars['Int']['input'];
+  deleteAllVersions: Scalars['Boolean']['input'];
+};
+
+export type DeleteDeckOutput = {
+  __typename?: 'DeleteDeckOutput';
+  success: Scalars['Boolean']['output'];
+};
+
+export enum EditAccessAction {
+  Grant = 'grant',
+  Revoke = 'revoke'
+}
+
+export type EditCampaignAccessInput = {
+  action: EditAccessAction;
+  campaignId: Scalars['String']['input'];
+  serverId: Scalars['Int']['input'];
+  users: Array<Scalars['String']['input']>;
+};
+
+export type EditCampaignAccessOutput = {
+  __typename?: 'EditCampaignAccessOutput';
+  campaignId: Scalars['Int']['output'];
+};
+
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['Int']['input']>;
@@ -49,6 +121,36 @@ export type Int_Comparison_Exp = {
   _lte?: InputMaybe<Scalars['Int']['input']>;
   _neq?: InputMaybe<Scalars['Int']['input']>;
   _nin?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type LinkedCampaignId = {
+  campaignIdA: Scalars['String']['input'];
+  campaignIdB: Scalars['String']['input'];
+};
+
+export type LoginInput = {
+  code: Scalars['String']['input'];
+  redirectUri: Scalars['String']['input'];
+  state: Scalars['String']['input'];
+};
+
+export type LoginOutput = {
+  __typename?: 'LoginOutput';
+  success: Scalars['Boolean']['output'];
+};
+
+export type LogoutOutput = {
+  __typename?: 'LogoutOutput';
+  success: Scalars['Boolean']['output'];
+};
+
+export type RefreshDecksInput = {
+  force: Scalars['Boolean']['input'];
+};
+
+export type RefreshDecksOutput = {
+  __typename?: 'RefreshDecksOutput';
+  updated: Scalars['Boolean']['output'];
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -82,6 +184,55 @@ export type String_Comparison_Exp = {
   _regex?: InputMaybe<Scalars['String']['input']>;
   /** does the column match the given SQL regular expression */
   _similar?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type UpdateHandleInput = {
+  handle: Scalars['String']['input'];
+  userId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type UpdateHandleOutput = {
+  __typename?: 'UpdateHandleOutput';
+  success: Scalars['Boolean']['output'];
+};
+
+export type UpgradeDeckInput = {
+  deckId: Scalars['Int']['input'];
+  exiles?: InputMaybe<Scalars['jsonb']['input']>;
+  xp: Scalars['Int']['input'];
+};
+
+export type UpgradeDeckOutput = {
+  __typename?: 'UpgradeDeckOutput';
+  deckId: Scalars['Int']['output'];
+  upgradedDeckId: Scalars['Int']['output'];
+};
+
+export type UploadLocalCampaignDeckInput = {
+  arkhamDbId: Scalars['Int']['input'];
+  localDeckId: Scalars['String']['input'];
+};
+
+export type UploadLocalCampaignDeckOutput = {
+  __typename?: 'UploadLocalCampaignDeckOutput';
+  deckIds: Array<DeckId>;
+};
+
+export type UserSearchResult = {
+  __typename?: 'UserSearchResult';
+  handle?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+};
+
+export type UsersSearchInput = {
+  continueToken?: InputMaybe<Scalars['String']['input']>;
+  search: Scalars['String']['input'];
+};
+
+export type UsersSearchOutput = {
+  __typename?: 'UsersSearchOutput';
+  hasMore?: Maybe<Scalars['String']['output']>;
+  users?: Maybe<Array<Maybe<UserSearchResult>>>;
 };
 
 /** columns and relationships of "all_card" */
@@ -2877,6 +3028,742 @@ export type All_Card_Variance_Order_By = {
   version?: InputMaybe<Order_By>;
   victory?: InputMaybe<Order_By>;
   xp?: InputMaybe<Order_By>;
+};
+
+/** columns and relationships of "arkhamdb_auth" */
+export type Arkhamdb_Auth = {
+  __typename?: 'arkhamdb_auth';
+  access_token: Scalars['String']['output'];
+  access_token_expiration: Scalars['timestamptz']['output'];
+  account_id?: Maybe<Scalars['Int']['output']>;
+  account_name?: Maybe<Scalars['String']['output']>;
+  decks_cache_key?: Maybe<Scalars['String']['output']>;
+  reauthorization_required: Scalars['Boolean']['output'];
+  refresh_token: Scalars['String']['output'];
+  refresh_token_expiration?: Maybe<Scalars['timestamptz']['output']>;
+  user_id: Scalars['String']['output'];
+};
+
+/** aggregated selection of "arkhamdb_auth" */
+export type Arkhamdb_Auth_Aggregate = {
+  __typename?: 'arkhamdb_auth_aggregate';
+  aggregate?: Maybe<Arkhamdb_Auth_Aggregate_Fields>;
+  nodes: Array<Arkhamdb_Auth>;
+};
+
+/** aggregate fields of "arkhamdb_auth" */
+export type Arkhamdb_Auth_Aggregate_Fields = {
+  __typename?: 'arkhamdb_auth_aggregate_fields';
+  avg?: Maybe<Arkhamdb_Auth_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Arkhamdb_Auth_Max_Fields>;
+  min?: Maybe<Arkhamdb_Auth_Min_Fields>;
+  stddev?: Maybe<Arkhamdb_Auth_Stddev_Fields>;
+  stddev_pop?: Maybe<Arkhamdb_Auth_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Arkhamdb_Auth_Stddev_Samp_Fields>;
+  sum?: Maybe<Arkhamdb_Auth_Sum_Fields>;
+  var_pop?: Maybe<Arkhamdb_Auth_Var_Pop_Fields>;
+  var_samp?: Maybe<Arkhamdb_Auth_Var_Samp_Fields>;
+  variance?: Maybe<Arkhamdb_Auth_Variance_Fields>;
+};
+
+
+/** aggregate fields of "arkhamdb_auth" */
+export type Arkhamdb_Auth_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Arkhamdb_Auth_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate avg on columns */
+export type Arkhamdb_Auth_Avg_Fields = {
+  __typename?: 'arkhamdb_auth_avg_fields';
+  account_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Boolean expression to filter rows from the table "arkhamdb_auth". All fields are combined with a logical 'AND'. */
+export type Arkhamdb_Auth_Bool_Exp = {
+  _and?: InputMaybe<Array<Arkhamdb_Auth_Bool_Exp>>;
+  _not?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+  _or?: InputMaybe<Array<Arkhamdb_Auth_Bool_Exp>>;
+  access_token?: InputMaybe<String_Comparison_Exp>;
+  access_token_expiration?: InputMaybe<Timestamptz_Comparison_Exp>;
+  account_id?: InputMaybe<Int_Comparison_Exp>;
+  account_name?: InputMaybe<String_Comparison_Exp>;
+  decks_cache_key?: InputMaybe<String_Comparison_Exp>;
+  reauthorization_required?: InputMaybe<Boolean_Comparison_Exp>;
+  refresh_token?: InputMaybe<String_Comparison_Exp>;
+  refresh_token_expiration?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "arkhamdb_auth" */
+export enum Arkhamdb_Auth_Constraint {
+  /** unique or primary key constraint on columns "user_id" */
+  ArkhamdbAuthPkey = 'arkhamdb_auth_pkey'
+}
+
+/** input type for incrementing numeric columns in table "arkhamdb_auth" */
+export type Arkhamdb_Auth_Inc_Input = {
+  account_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** input type for inserting data into table "arkhamdb_auth" */
+export type Arkhamdb_Auth_Insert_Input = {
+  access_token?: InputMaybe<Scalars['String']['input']>;
+  access_token_expiration?: InputMaybe<Scalars['timestamptz']['input']>;
+  account_id?: InputMaybe<Scalars['Int']['input']>;
+  account_name?: InputMaybe<Scalars['String']['input']>;
+  decks_cache_key?: InputMaybe<Scalars['String']['input']>;
+  reauthorization_required?: InputMaybe<Scalars['Boolean']['input']>;
+  refresh_token?: InputMaybe<Scalars['String']['input']>;
+  refresh_token_expiration?: InputMaybe<Scalars['timestamptz']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregate max on columns */
+export type Arkhamdb_Auth_Max_Fields = {
+  __typename?: 'arkhamdb_auth_max_fields';
+  access_token?: Maybe<Scalars['String']['output']>;
+  access_token_expiration?: Maybe<Scalars['timestamptz']['output']>;
+  account_id?: Maybe<Scalars['Int']['output']>;
+  account_name?: Maybe<Scalars['String']['output']>;
+  decks_cache_key?: Maybe<Scalars['String']['output']>;
+  refresh_token?: Maybe<Scalars['String']['output']>;
+  refresh_token_expiration?: Maybe<Scalars['timestamptz']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+};
+
+/** aggregate min on columns */
+export type Arkhamdb_Auth_Min_Fields = {
+  __typename?: 'arkhamdb_auth_min_fields';
+  access_token?: Maybe<Scalars['String']['output']>;
+  access_token_expiration?: Maybe<Scalars['timestamptz']['output']>;
+  account_id?: Maybe<Scalars['Int']['output']>;
+  account_name?: Maybe<Scalars['String']['output']>;
+  decks_cache_key?: Maybe<Scalars['String']['output']>;
+  refresh_token?: Maybe<Scalars['String']['output']>;
+  refresh_token_expiration?: Maybe<Scalars['timestamptz']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+};
+
+/** response of any mutation on the table "arkhamdb_auth" */
+export type Arkhamdb_Auth_Mutation_Response = {
+  __typename?: 'arkhamdb_auth_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Arkhamdb_Auth>;
+};
+
+/** on_conflict condition type for table "arkhamdb_auth" */
+export type Arkhamdb_Auth_On_Conflict = {
+  constraint: Arkhamdb_Auth_Constraint;
+  update_columns?: Array<Arkhamdb_Auth_Update_Column>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "arkhamdb_auth". */
+export type Arkhamdb_Auth_Order_By = {
+  access_token?: InputMaybe<Order_By>;
+  access_token_expiration?: InputMaybe<Order_By>;
+  account_id?: InputMaybe<Order_By>;
+  account_name?: InputMaybe<Order_By>;
+  decks_cache_key?: InputMaybe<Order_By>;
+  reauthorization_required?: InputMaybe<Order_By>;
+  refresh_token?: InputMaybe<Order_By>;
+  refresh_token_expiration?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: arkhamdb_auth */
+export type Arkhamdb_Auth_Pk_Columns_Input = {
+  user_id: Scalars['String']['input'];
+};
+
+/** select columns of table "arkhamdb_auth" */
+export enum Arkhamdb_Auth_Select_Column {
+  /** column name */
+  AccessToken = 'access_token',
+  /** column name */
+  AccessTokenExpiration = 'access_token_expiration',
+  /** column name */
+  AccountId = 'account_id',
+  /** column name */
+  AccountName = 'account_name',
+  /** column name */
+  DecksCacheKey = 'decks_cache_key',
+  /** column name */
+  ReauthorizationRequired = 'reauthorization_required',
+  /** column name */
+  RefreshToken = 'refresh_token',
+  /** column name */
+  RefreshTokenExpiration = 'refresh_token_expiration',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "arkhamdb_auth" */
+export type Arkhamdb_Auth_Set_Input = {
+  access_token?: InputMaybe<Scalars['String']['input']>;
+  access_token_expiration?: InputMaybe<Scalars['timestamptz']['input']>;
+  account_id?: InputMaybe<Scalars['Int']['input']>;
+  account_name?: InputMaybe<Scalars['String']['input']>;
+  decks_cache_key?: InputMaybe<Scalars['String']['input']>;
+  reauthorization_required?: InputMaybe<Scalars['Boolean']['input']>;
+  refresh_token?: InputMaybe<Scalars['String']['input']>;
+  refresh_token_expiration?: InputMaybe<Scalars['timestamptz']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type Arkhamdb_Auth_Stddev_Fields = {
+  __typename?: 'arkhamdb_auth_stddev_fields';
+  account_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Arkhamdb_Auth_Stddev_Pop_Fields = {
+  __typename?: 'arkhamdb_auth_stddev_pop_fields';
+  account_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Arkhamdb_Auth_Stddev_Samp_Fields = {
+  __typename?: 'arkhamdb_auth_stddev_samp_fields';
+  account_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Streaming cursor of the table "arkhamdb_auth" */
+export type Arkhamdb_Auth_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Arkhamdb_Auth_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Arkhamdb_Auth_Stream_Cursor_Value_Input = {
+  access_token?: InputMaybe<Scalars['String']['input']>;
+  access_token_expiration?: InputMaybe<Scalars['timestamptz']['input']>;
+  account_id?: InputMaybe<Scalars['Int']['input']>;
+  account_name?: InputMaybe<Scalars['String']['input']>;
+  decks_cache_key?: InputMaybe<Scalars['String']['input']>;
+  reauthorization_required?: InputMaybe<Scalars['Boolean']['input']>;
+  refresh_token?: InputMaybe<Scalars['String']['input']>;
+  refresh_token_expiration?: InputMaybe<Scalars['timestamptz']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregate sum on columns */
+export type Arkhamdb_Auth_Sum_Fields = {
+  __typename?: 'arkhamdb_auth_sum_fields';
+  account_id?: Maybe<Scalars['Int']['output']>;
+};
+
+/** update columns of table "arkhamdb_auth" */
+export enum Arkhamdb_Auth_Update_Column {
+  /** column name */
+  AccessToken = 'access_token',
+  /** column name */
+  AccessTokenExpiration = 'access_token_expiration',
+  /** column name */
+  AccountId = 'account_id',
+  /** column name */
+  AccountName = 'account_name',
+  /** column name */
+  DecksCacheKey = 'decks_cache_key',
+  /** column name */
+  ReauthorizationRequired = 'reauthorization_required',
+  /** column name */
+  RefreshToken = 'refresh_token',
+  /** column name */
+  RefreshTokenExpiration = 'refresh_token_expiration',
+  /** column name */
+  UserId = 'user_id'
+}
+
+export type Arkhamdb_Auth_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Arkhamdb_Auth_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Arkhamdb_Auth_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Arkhamdb_Auth_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Arkhamdb_Auth_Var_Pop_Fields = {
+  __typename?: 'arkhamdb_auth_var_pop_fields';
+  account_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate var_samp on columns */
+export type Arkhamdb_Auth_Var_Samp_Fields = {
+  __typename?: 'arkhamdb_auth_var_samp_fields';
+  account_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate variance on columns */
+export type Arkhamdb_Auth_Variance_Fields = {
+  __typename?: 'arkhamdb_auth_variance_fields';
+  account_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_Deck = {
+  __typename?: 'arkhamdb_deck';
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  created_at: Scalars['timestamptz']['output'];
+  deleted: Scalars['Boolean']['output'];
+  description: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
+  ignore_deck_limit_slots: Scalars['jsonb']['output'];
+  investigator: Scalars['String']['output'];
+  meta: Scalars['jsonb']['output'];
+  name: Scalars['String']['output'];
+  /** An object relationship */
+  next_deck?: Maybe<Arkhamdb_Deck>;
+  next_deck_id?: Maybe<Scalars['Int']['output']>;
+  /** An object relationship */
+  owner: Users;
+  owner_id: Scalars['String']['output'];
+  /** An object relationship */
+  previous_deck?: Maybe<Arkhamdb_Deck>;
+  side_slots: Scalars['jsonb']['output'];
+  slots: Scalars['jsonb']['output'];
+  tags: Scalars['jsonb']['output'];
+  updated_at: Scalars['timestamptz']['output'];
+};
+
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_DeckIgnore_Deck_Limit_SlotsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_DeckMetaArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_DeckSide_SlotsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_DeckSlotsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** columns and relationships of "arkhamdb_deck" */
+export type Arkhamdb_DeckTagsArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregated selection of "arkhamdb_deck" */
+export type Arkhamdb_Deck_Aggregate = {
+  __typename?: 'arkhamdb_deck_aggregate';
+  aggregate?: Maybe<Arkhamdb_Deck_Aggregate_Fields>;
+  nodes: Array<Arkhamdb_Deck>;
+};
+
+/** aggregate fields of "arkhamdb_deck" */
+export type Arkhamdb_Deck_Aggregate_Fields = {
+  __typename?: 'arkhamdb_deck_aggregate_fields';
+  avg?: Maybe<Arkhamdb_Deck_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Arkhamdb_Deck_Max_Fields>;
+  min?: Maybe<Arkhamdb_Deck_Min_Fields>;
+  stddev?: Maybe<Arkhamdb_Deck_Stddev_Fields>;
+  stddev_pop?: Maybe<Arkhamdb_Deck_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Arkhamdb_Deck_Stddev_Samp_Fields>;
+  sum?: Maybe<Arkhamdb_Deck_Sum_Fields>;
+  var_pop?: Maybe<Arkhamdb_Deck_Var_Pop_Fields>;
+  var_samp?: Maybe<Arkhamdb_Deck_Var_Samp_Fields>;
+  variance?: Maybe<Arkhamdb_Deck_Variance_Fields>;
+};
+
+
+/** aggregate fields of "arkhamdb_deck" */
+export type Arkhamdb_Deck_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Arkhamdb_Deck_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Arkhamdb_Deck_Append_Input = {
+  ignore_deck_limit_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  slots?: InputMaybe<Scalars['jsonb']['input']>;
+  tags?: InputMaybe<Scalars['jsonb']['input']>;
+};
+
+/** aggregate avg on columns */
+export type Arkhamdb_Deck_Avg_Fields = {
+  __typename?: 'arkhamdb_deck_avg_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Boolean expression to filter rows from the table "arkhamdb_deck". All fields are combined with a logical 'AND'. */
+export type Arkhamdb_Deck_Bool_Exp = {
+  _and?: InputMaybe<Array<Arkhamdb_Deck_Bool_Exp>>;
+  _not?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+  _or?: InputMaybe<Array<Arkhamdb_Deck_Bool_Exp>>;
+  archived?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  deleted?: InputMaybe<Boolean_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  ignore_deck_limit_slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  investigator?: InputMaybe<String_Comparison_Exp>;
+  meta?: InputMaybe<Jsonb_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  next_deck?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+  next_deck_id?: InputMaybe<Int_Comparison_Exp>;
+  owner?: InputMaybe<Users_Bool_Exp>;
+  owner_id?: InputMaybe<String_Comparison_Exp>;
+  previous_deck?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+  side_slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  slots?: InputMaybe<Jsonb_Comparison_Exp>;
+  tags?: InputMaybe<Jsonb_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "arkhamdb_deck" */
+export enum Arkhamdb_Deck_Constraint {
+  /** unique or primary key constraint on columns "next_deck_id" */
+  DeckNextDeckIdKey = 'deck_next_deck_id_key',
+  /** unique or primary key constraint on columns "id" */
+  DeckPkey1 = 'deck_pkey1'
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Arkhamdb_Deck_Delete_At_Path_Input = {
+  ignore_deck_limit_slots?: InputMaybe<Array<Scalars['String']['input']>>;
+  meta?: InputMaybe<Array<Scalars['String']['input']>>;
+  side_slots?: InputMaybe<Array<Scalars['String']['input']>>;
+  slots?: InputMaybe<Array<Scalars['String']['input']>>;
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Arkhamdb_Deck_Delete_Elem_Input = {
+  ignore_deck_limit_slots?: InputMaybe<Scalars['Int']['input']>;
+  meta?: InputMaybe<Scalars['Int']['input']>;
+  side_slots?: InputMaybe<Scalars['Int']['input']>;
+  slots?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Arkhamdb_Deck_Delete_Key_Input = {
+  ignore_deck_limit_slots?: InputMaybe<Scalars['String']['input']>;
+  meta?: InputMaybe<Scalars['String']['input']>;
+  side_slots?: InputMaybe<Scalars['String']['input']>;
+  slots?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** input type for incrementing numeric columns in table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Inc_Input = {
+  id?: InputMaybe<Scalars['Int']['input']>;
+  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** input type for inserting data into table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Insert_Input = {
+  archived?: InputMaybe<Scalars['Boolean']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  deleted?: InputMaybe<Scalars['Boolean']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  ignore_deck_limit_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  investigator?: InputMaybe<Scalars['String']['input']>;
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  next_deck?: InputMaybe<Arkhamdb_Deck_Obj_Rel_Insert_Input>;
+  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
+  owner?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  owner_id?: InputMaybe<Scalars['String']['input']>;
+  previous_deck?: InputMaybe<Arkhamdb_Deck_Obj_Rel_Insert_Input>;
+  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  slots?: InputMaybe<Scalars['jsonb']['input']>;
+  tags?: InputMaybe<Scalars['jsonb']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate max on columns */
+export type Arkhamdb_Deck_Max_Fields = {
+  __typename?: 'arkhamdb_deck_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  investigator?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  next_deck_id?: Maybe<Scalars['Int']['output']>;
+  owner_id?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** aggregate min on columns */
+export type Arkhamdb_Deck_Min_Fields = {
+  __typename?: 'arkhamdb_deck_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  investigator?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  next_deck_id?: Maybe<Scalars['Int']['output']>;
+  owner_id?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamptz']['output']>;
+};
+
+/** response of any mutation on the table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Mutation_Response = {
+  __typename?: 'arkhamdb_deck_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Arkhamdb_Deck>;
+};
+
+/** input type for inserting object relation for remote table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Obj_Rel_Insert_Input = {
+  data: Arkhamdb_Deck_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Arkhamdb_Deck_On_Conflict>;
+};
+
+/** on_conflict condition type for table "arkhamdb_deck" */
+export type Arkhamdb_Deck_On_Conflict = {
+  constraint: Arkhamdb_Deck_Constraint;
+  update_columns?: Array<Arkhamdb_Deck_Update_Column>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "arkhamdb_deck". */
+export type Arkhamdb_Deck_Order_By = {
+  archived?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  deleted?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  ignore_deck_limit_slots?: InputMaybe<Order_By>;
+  investigator?: InputMaybe<Order_By>;
+  meta?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  next_deck?: InputMaybe<Arkhamdb_Deck_Order_By>;
+  next_deck_id?: InputMaybe<Order_By>;
+  owner?: InputMaybe<Users_Order_By>;
+  owner_id?: InputMaybe<Order_By>;
+  previous_deck?: InputMaybe<Arkhamdb_Deck_Order_By>;
+  side_slots?: InputMaybe<Order_By>;
+  slots?: InputMaybe<Order_By>;
+  tags?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: arkhamdb_deck */
+export type Arkhamdb_Deck_Pk_Columns_Input = {
+  id: Scalars['Int']['input'];
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Arkhamdb_Deck_Prepend_Input = {
+  ignore_deck_limit_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  slots?: InputMaybe<Scalars['jsonb']['input']>;
+  tags?: InputMaybe<Scalars['jsonb']['input']>;
+};
+
+/** select columns of table "arkhamdb_deck" */
+export enum Arkhamdb_Deck_Select_Column {
+  /** column name */
+  Archived = 'archived',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Deleted = 'deleted',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  IgnoreDeckLimitSlots = 'ignore_deck_limit_slots',
+  /** column name */
+  Investigator = 'investigator',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  NextDeckId = 'next_deck_id',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  SideSlots = 'side_slots',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Tags = 'tags',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Set_Input = {
+  archived?: InputMaybe<Scalars['Boolean']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  deleted?: InputMaybe<Scalars['Boolean']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  ignore_deck_limit_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  investigator?: InputMaybe<Scalars['String']['input']>;
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
+  owner_id?: InputMaybe<Scalars['String']['input']>;
+  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  slots?: InputMaybe<Scalars['jsonb']['input']>;
+  tags?: InputMaybe<Scalars['jsonb']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type Arkhamdb_Deck_Stddev_Fields = {
+  __typename?: 'arkhamdb_deck_stddev_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Arkhamdb_Deck_Stddev_Pop_Fields = {
+  __typename?: 'arkhamdb_deck_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Arkhamdb_Deck_Stddev_Samp_Fields = {
+  __typename?: 'arkhamdb_deck_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Streaming cursor of the table "arkhamdb_deck" */
+export type Arkhamdb_Deck_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Arkhamdb_Deck_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Arkhamdb_Deck_Stream_Cursor_Value_Input = {
+  archived?: InputMaybe<Scalars['Boolean']['input']>;
+  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
+  deleted?: InputMaybe<Scalars['Boolean']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  ignore_deck_limit_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  investigator?: InputMaybe<Scalars['String']['input']>;
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
+  owner_id?: InputMaybe<Scalars['String']['input']>;
+  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
+  slots?: InputMaybe<Scalars['jsonb']['input']>;
+  tags?: InputMaybe<Scalars['jsonb']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
+};
+
+/** aggregate sum on columns */
+export type Arkhamdb_Deck_Sum_Fields = {
+  __typename?: 'arkhamdb_deck_sum_fields';
+  id?: Maybe<Scalars['Int']['output']>;
+  next_deck_id?: Maybe<Scalars['Int']['output']>;
+};
+
+/** update columns of table "arkhamdb_deck" */
+export enum Arkhamdb_Deck_Update_Column {
+  /** column name */
+  Archived = 'archived',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Deleted = 'deleted',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  IgnoreDeckLimitSlots = 'ignore_deck_limit_slots',
+  /** column name */
+  Investigator = 'investigator',
+  /** column name */
+  Meta = 'meta',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  NextDeckId = 'next_deck_id',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  SideSlots = 'side_slots',
+  /** column name */
+  Slots = 'slots',
+  /** column name */
+  Tags = 'tags',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Arkhamdb_Deck_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Arkhamdb_Deck_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Arkhamdb_Deck_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Arkhamdb_Deck_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Arkhamdb_Deck_Delete_Key_Input>;
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Arkhamdb_Deck_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Arkhamdb_Deck_Prepend_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Arkhamdb_Deck_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Arkhamdb_Deck_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Arkhamdb_Deck_Var_Pop_Fields = {
+  __typename?: 'arkhamdb_deck_var_pop_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate var_samp on columns */
+export type Arkhamdb_Deck_Var_Samp_Fields = {
+  __typename?: 'arkhamdb_deck_var_samp_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate variance on columns */
+export type Arkhamdb_Deck_Variance_Fields = {
+  __typename?: 'arkhamdb_deck_variance_fields';
+  id?: Maybe<Scalars['Float']['output']>;
+  next_deck_id?: Maybe<Scalars['Float']['output']>;
 };
 
 /** columns and relationships of "base_decks" */
@@ -14996,432 +15883,6 @@ export type Cycle_Variance_Fields = {
   position?: Maybe<Scalars['Float']['output']>;
 };
 
-/** columns and relationships of "deck" */
-export type Deck = {
-  __typename?: 'deck';
-  archived?: Maybe<Scalars['Boolean']['output']>;
-  created_at: Scalars['timestamptz']['output'];
-  description: Scalars['String']['output'];
-  id: Scalars['Int']['output'];
-  investigator: Scalars['String']['output'];
-  meta: Scalars['jsonb']['output'];
-  name: Scalars['String']['output'];
-  /** An object relationship */
-  next_deck?: Maybe<Deck>;
-  next_deck_id?: Maybe<Scalars['Int']['output']>;
-  /** An object relationship */
-  owner: Users;
-  owner_id: Scalars['String']['output'];
-  /** An object relationship */
-  previous_deck?: Maybe<Deck>;
-  side_slots: Scalars['jsonb']['output'];
-  slots: Scalars['jsonb']['output'];
-  tags: Scalars['jsonb']['output'];
-  updated_at: Scalars['timestamptz']['output'];
-};
-
-
-/** columns and relationships of "deck" */
-export type DeckMetaArgs = {
-  path?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** columns and relationships of "deck" */
-export type DeckSide_SlotsArgs = {
-  path?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** columns and relationships of "deck" */
-export type DeckSlotsArgs = {
-  path?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** columns and relationships of "deck" */
-export type DeckTagsArgs = {
-  path?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** aggregated selection of "deck" */
-export type Deck_Aggregate = {
-  __typename?: 'deck_aggregate';
-  aggregate?: Maybe<Deck_Aggregate_Fields>;
-  nodes: Array<Deck>;
-};
-
-/** aggregate fields of "deck" */
-export type Deck_Aggregate_Fields = {
-  __typename?: 'deck_aggregate_fields';
-  avg?: Maybe<Deck_Avg_Fields>;
-  count: Scalars['Int']['output'];
-  max?: Maybe<Deck_Max_Fields>;
-  min?: Maybe<Deck_Min_Fields>;
-  stddev?: Maybe<Deck_Stddev_Fields>;
-  stddev_pop?: Maybe<Deck_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Deck_Stddev_Samp_Fields>;
-  sum?: Maybe<Deck_Sum_Fields>;
-  var_pop?: Maybe<Deck_Var_Pop_Fields>;
-  var_samp?: Maybe<Deck_Var_Samp_Fields>;
-  variance?: Maybe<Deck_Variance_Fields>;
-};
-
-
-/** aggregate fields of "deck" */
-export type Deck_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Deck_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-/** append existing jsonb value of filtered columns with new jsonb value */
-export type Deck_Append_Input = {
-  meta?: InputMaybe<Scalars['jsonb']['input']>;
-  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
-  slots?: InputMaybe<Scalars['jsonb']['input']>;
-  tags?: InputMaybe<Scalars['jsonb']['input']>;
-};
-
-/** aggregate avg on columns */
-export type Deck_Avg_Fields = {
-  __typename?: 'deck_avg_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-  next_deck_id?: Maybe<Scalars['Float']['output']>;
-};
-
-/** Boolean expression to filter rows from the table "deck". All fields are combined with a logical 'AND'. */
-export type Deck_Bool_Exp = {
-  _and?: InputMaybe<Array<Deck_Bool_Exp>>;
-  _not?: InputMaybe<Deck_Bool_Exp>;
-  _or?: InputMaybe<Array<Deck_Bool_Exp>>;
-  archived?: InputMaybe<Boolean_Comparison_Exp>;
-  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
-  description?: InputMaybe<String_Comparison_Exp>;
-  id?: InputMaybe<Int_Comparison_Exp>;
-  investigator?: InputMaybe<String_Comparison_Exp>;
-  meta?: InputMaybe<Jsonb_Comparison_Exp>;
-  name?: InputMaybe<String_Comparison_Exp>;
-  next_deck?: InputMaybe<Deck_Bool_Exp>;
-  next_deck_id?: InputMaybe<Int_Comparison_Exp>;
-  owner?: InputMaybe<Users_Bool_Exp>;
-  owner_id?: InputMaybe<String_Comparison_Exp>;
-  previous_deck?: InputMaybe<Deck_Bool_Exp>;
-  side_slots?: InputMaybe<Jsonb_Comparison_Exp>;
-  slots?: InputMaybe<Jsonb_Comparison_Exp>;
-  tags?: InputMaybe<Jsonb_Comparison_Exp>;
-  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
-};
-
-/** unique or primary key constraints on table "deck" */
-export enum Deck_Constraint {
-  /** unique or primary key constraint on columns "next_deck_id" */
-  DeckNextDeckIdKey = 'deck_next_deck_id_key',
-  /** unique or primary key constraint on columns "id" */
-  DeckPkey1 = 'deck_pkey1'
-}
-
-/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-export type Deck_Delete_At_Path_Input = {
-  meta?: InputMaybe<Array<Scalars['String']['input']>>;
-  side_slots?: InputMaybe<Array<Scalars['String']['input']>>;
-  slots?: InputMaybe<Array<Scalars['String']['input']>>;
-  tags?: InputMaybe<Array<Scalars['String']['input']>>;
-};
-
-/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
-export type Deck_Delete_Elem_Input = {
-  meta?: InputMaybe<Scalars['Int']['input']>;
-  side_slots?: InputMaybe<Scalars['Int']['input']>;
-  slots?: InputMaybe<Scalars['Int']['input']>;
-  tags?: InputMaybe<Scalars['Int']['input']>;
-};
-
-/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-export type Deck_Delete_Key_Input = {
-  meta?: InputMaybe<Scalars['String']['input']>;
-  side_slots?: InputMaybe<Scalars['String']['input']>;
-  slots?: InputMaybe<Scalars['String']['input']>;
-  tags?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** input type for incrementing numeric columns in table "deck" */
-export type Deck_Inc_Input = {
-  id?: InputMaybe<Scalars['Int']['input']>;
-  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
-};
-
-/** input type for inserting data into table "deck" */
-export type Deck_Insert_Input = {
-  archived?: InputMaybe<Scalars['Boolean']['input']>;
-  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['Int']['input']>;
-  investigator?: InputMaybe<Scalars['String']['input']>;
-  meta?: InputMaybe<Scalars['jsonb']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  next_deck?: InputMaybe<Deck_Obj_Rel_Insert_Input>;
-  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
-  owner?: InputMaybe<Users_Obj_Rel_Insert_Input>;
-  owner_id?: InputMaybe<Scalars['String']['input']>;
-  previous_deck?: InputMaybe<Deck_Obj_Rel_Insert_Input>;
-  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
-  slots?: InputMaybe<Scalars['jsonb']['input']>;
-  tags?: InputMaybe<Scalars['jsonb']['input']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
-};
-
-/** aggregate max on columns */
-export type Deck_Max_Fields = {
-  __typename?: 'deck_max_fields';
-  created_at?: Maybe<Scalars['timestamptz']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  id?: Maybe<Scalars['Int']['output']>;
-  investigator?: Maybe<Scalars['String']['output']>;
-  name?: Maybe<Scalars['String']['output']>;
-  next_deck_id?: Maybe<Scalars['Int']['output']>;
-  owner_id?: Maybe<Scalars['String']['output']>;
-  updated_at?: Maybe<Scalars['timestamptz']['output']>;
-};
-
-/** aggregate min on columns */
-export type Deck_Min_Fields = {
-  __typename?: 'deck_min_fields';
-  created_at?: Maybe<Scalars['timestamptz']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  id?: Maybe<Scalars['Int']['output']>;
-  investigator?: Maybe<Scalars['String']['output']>;
-  name?: Maybe<Scalars['String']['output']>;
-  next_deck_id?: Maybe<Scalars['Int']['output']>;
-  owner_id?: Maybe<Scalars['String']['output']>;
-  updated_at?: Maybe<Scalars['timestamptz']['output']>;
-};
-
-/** response of any mutation on the table "deck" */
-export type Deck_Mutation_Response = {
-  __typename?: 'deck_mutation_response';
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int']['output'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Deck>;
-};
-
-/** input type for inserting object relation for remote table "deck" */
-export type Deck_Obj_Rel_Insert_Input = {
-  data: Deck_Insert_Input;
-  /** upsert condition */
-  on_conflict?: InputMaybe<Deck_On_Conflict>;
-};
-
-/** on_conflict condition type for table "deck" */
-export type Deck_On_Conflict = {
-  constraint: Deck_Constraint;
-  update_columns?: Array<Deck_Update_Column>;
-  where?: InputMaybe<Deck_Bool_Exp>;
-};
-
-/** Ordering options when selecting data from "deck". */
-export type Deck_Order_By = {
-  archived?: InputMaybe<Order_By>;
-  created_at?: InputMaybe<Order_By>;
-  description?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  investigator?: InputMaybe<Order_By>;
-  meta?: InputMaybe<Order_By>;
-  name?: InputMaybe<Order_By>;
-  next_deck?: InputMaybe<Deck_Order_By>;
-  next_deck_id?: InputMaybe<Order_By>;
-  owner?: InputMaybe<Users_Order_By>;
-  owner_id?: InputMaybe<Order_By>;
-  previous_deck?: InputMaybe<Deck_Order_By>;
-  side_slots?: InputMaybe<Order_By>;
-  slots?: InputMaybe<Order_By>;
-  tags?: InputMaybe<Order_By>;
-  updated_at?: InputMaybe<Order_By>;
-};
-
-/** primary key columns input for table: deck */
-export type Deck_Pk_Columns_Input = {
-  id: Scalars['Int']['input'];
-};
-
-/** prepend existing jsonb value of filtered columns with new jsonb value */
-export type Deck_Prepend_Input = {
-  meta?: InputMaybe<Scalars['jsonb']['input']>;
-  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
-  slots?: InputMaybe<Scalars['jsonb']['input']>;
-  tags?: InputMaybe<Scalars['jsonb']['input']>;
-};
-
-/** select columns of table "deck" */
-export enum Deck_Select_Column {
-  /** column name */
-  Archived = 'archived',
-  /** column name */
-  CreatedAt = 'created_at',
-  /** column name */
-  Description = 'description',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Investigator = 'investigator',
-  /** column name */
-  Meta = 'meta',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  NextDeckId = 'next_deck_id',
-  /** column name */
-  OwnerId = 'owner_id',
-  /** column name */
-  SideSlots = 'side_slots',
-  /** column name */
-  Slots = 'slots',
-  /** column name */
-  Tags = 'tags',
-  /** column name */
-  UpdatedAt = 'updated_at'
-}
-
-/** input type for updating data in table "deck" */
-export type Deck_Set_Input = {
-  archived?: InputMaybe<Scalars['Boolean']['input']>;
-  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['Int']['input']>;
-  investigator?: InputMaybe<Scalars['String']['input']>;
-  meta?: InputMaybe<Scalars['jsonb']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
-  owner_id?: InputMaybe<Scalars['String']['input']>;
-  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
-  slots?: InputMaybe<Scalars['jsonb']['input']>;
-  tags?: InputMaybe<Scalars['jsonb']['input']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
-};
-
-/** aggregate stddev on columns */
-export type Deck_Stddev_Fields = {
-  __typename?: 'deck_stddev_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-  next_deck_id?: Maybe<Scalars['Float']['output']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Deck_Stddev_Pop_Fields = {
-  __typename?: 'deck_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-  next_deck_id?: Maybe<Scalars['Float']['output']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Deck_Stddev_Samp_Fields = {
-  __typename?: 'deck_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-  next_deck_id?: Maybe<Scalars['Float']['output']>;
-};
-
-/** Streaming cursor of the table "deck" */
-export type Deck_Stream_Cursor_Input = {
-  /** Stream column input with initial value */
-  initial_value: Deck_Stream_Cursor_Value_Input;
-  /** cursor ordering */
-  ordering?: InputMaybe<Cursor_Ordering>;
-};
-
-/** Initial value of the column from where the streaming should start */
-export type Deck_Stream_Cursor_Value_Input = {
-  archived?: InputMaybe<Scalars['Boolean']['input']>;
-  created_at?: InputMaybe<Scalars['timestamptz']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['Int']['input']>;
-  investigator?: InputMaybe<Scalars['String']['input']>;
-  meta?: InputMaybe<Scalars['jsonb']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  next_deck_id?: InputMaybe<Scalars['Int']['input']>;
-  owner_id?: InputMaybe<Scalars['String']['input']>;
-  side_slots?: InputMaybe<Scalars['jsonb']['input']>;
-  slots?: InputMaybe<Scalars['jsonb']['input']>;
-  tags?: InputMaybe<Scalars['jsonb']['input']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']['input']>;
-};
-
-/** aggregate sum on columns */
-export type Deck_Sum_Fields = {
-  __typename?: 'deck_sum_fields';
-  id?: Maybe<Scalars['Int']['output']>;
-  next_deck_id?: Maybe<Scalars['Int']['output']>;
-};
-
-/** update columns of table "deck" */
-export enum Deck_Update_Column {
-  /** column name */
-  Archived = 'archived',
-  /** column name */
-  CreatedAt = 'created_at',
-  /** column name */
-  Description = 'description',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Investigator = 'investigator',
-  /** column name */
-  Meta = 'meta',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  NextDeckId = 'next_deck_id',
-  /** column name */
-  OwnerId = 'owner_id',
-  /** column name */
-  SideSlots = 'side_slots',
-  /** column name */
-  Slots = 'slots',
-  /** column name */
-  Tags = 'tags',
-  /** column name */
-  UpdatedAt = 'updated_at'
-}
-
-export type Deck_Updates = {
-  /** append existing jsonb value of filtered columns with new jsonb value */
-  _append?: InputMaybe<Deck_Append_Input>;
-  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-  _delete_at_path?: InputMaybe<Deck_Delete_At_Path_Input>;
-  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
-  _delete_elem?: InputMaybe<Deck_Delete_Elem_Input>;
-  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
-  _delete_key?: InputMaybe<Deck_Delete_Key_Input>;
-  /** increments the numeric columns with given value of the filtered values */
-  _inc?: InputMaybe<Deck_Inc_Input>;
-  /** prepend existing jsonb value of filtered columns with new jsonb value */
-  _prepend?: InputMaybe<Deck_Prepend_Input>;
-  /** sets the columns of the filtered rows to the given values */
-  _set?: InputMaybe<Deck_Set_Input>;
-  /** filter the rows which have to be updated */
-  where: Deck_Bool_Exp;
-};
-
-/** aggregate var_pop on columns */
-export type Deck_Var_Pop_Fields = {
-  __typename?: 'deck_var_pop_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-  next_deck_id?: Maybe<Scalars['Float']['output']>;
-};
-
-/** aggregate var_samp on columns */
-export type Deck_Var_Samp_Fields = {
-  __typename?: 'deck_var_samp_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-  next_deck_id?: Maybe<Scalars['Float']['output']>;
-};
-
-/** aggregate variance on columns */
-export type Deck_Variance_Fields = {
-  __typename?: 'deck_variance_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-  next_deck_id?: Maybe<Scalars['Float']['output']>;
-};
-
 /** columns and relationships of "faction_name" */
 export type Faction_Name = {
   __typename?: 'faction_name';
@@ -20057,6 +20518,10 @@ export type Mutation_Root = {
   __typename?: 'mutation_root';
   /** execute VOLATILE function "conquest.publish_deck" which returns "conquest.deck" */
   conquest_publish_deck?: Maybe<Conquest_Deck>;
+  createArkhamDbDeck?: Maybe<CreateDeckOutput>;
+  createCampaign?: Maybe<CreateCampaignOutput>;
+  deleteArkhamDbDeck?: Maybe<DeleteDeckOutput>;
+  deleteCampaign?: Maybe<DeleteCampaignOutput>;
   /** delete data from the table: "all_card" */
   delete_all_card?: Maybe<All_Card_Mutation_Response>;
   /** delete single row from the table: "all_card" */
@@ -20069,6 +20534,14 @@ export type Mutation_Root = {
   delete_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
   /** delete single row from the table: "all_card_updated" */
   delete_all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** delete data from the table: "arkhamdb_auth" */
+  delete_arkhamdb_auth?: Maybe<Arkhamdb_Auth_Mutation_Response>;
+  /** delete single row from the table: "arkhamdb_auth" */
+  delete_arkhamdb_auth_by_pk?: Maybe<Arkhamdb_Auth>;
+  /** delete data from the table: "arkhamdb_deck" */
+  delete_arkhamdb_deck?: Maybe<Arkhamdb_Deck_Mutation_Response>;
+  /** delete single row from the table: "arkhamdb_deck" */
+  delete_arkhamdb_deck_by_pk?: Maybe<Arkhamdb_Deck>;
   /** delete data from the table: "base_decks" */
   delete_base_decks?: Maybe<Base_Decks_Mutation_Response>;
   /** delete data from the table: "campaign" */
@@ -20217,10 +20690,6 @@ export type Mutation_Root = {
   delete_cycle_name?: Maybe<Cycle_Name_Mutation_Response>;
   /** delete single row from the table: "cycle_name" */
   delete_cycle_name_by_pk?: Maybe<Cycle_Name>;
-  /** delete data from the table: "deck" */
-  delete_deck?: Maybe<Deck_Mutation_Response>;
-  /** delete single row from the table: "deck" */
-  delete_deck_by_pk?: Maybe<Deck>;
   /** delete data from the table: "faction_name" */
   delete_faction_name?: Maybe<Faction_Name_Mutation_Response>;
   /** delete single row from the table: "faction_name" */
@@ -20435,6 +20904,7 @@ export type Mutation_Root = {
   delete_users?: Maybe<Users_Mutation_Response>;
   /** delete single row from the table: "users" */
   delete_users_by_pk?: Maybe<Users>;
+  editCampaignAccess?: Maybe<EditCampaignAccessOutput>;
   /** insert data into the table: "all_card" */
   insert_all_card?: Maybe<All_Card_Mutation_Response>;
   /** insert a single row into the table: "all_card" */
@@ -20447,6 +20917,14 @@ export type Mutation_Root = {
   insert_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
   /** insert a single row into the table: "all_card_updated" */
   insert_all_card_updated_one?: Maybe<All_Card_Updated>;
+  /** insert data into the table: "arkhamdb_auth" */
+  insert_arkhamdb_auth?: Maybe<Arkhamdb_Auth_Mutation_Response>;
+  /** insert a single row into the table: "arkhamdb_auth" */
+  insert_arkhamdb_auth_one?: Maybe<Arkhamdb_Auth>;
+  /** insert data into the table: "arkhamdb_deck" */
+  insert_arkhamdb_deck?: Maybe<Arkhamdb_Deck_Mutation_Response>;
+  /** insert a single row into the table: "arkhamdb_deck" */
+  insert_arkhamdb_deck_one?: Maybe<Arkhamdb_Deck>;
   /** insert data into the table: "base_decks" */
   insert_base_decks?: Maybe<Base_Decks_Mutation_Response>;
   /** insert a single row into the table: "base_decks" */
@@ -20599,10 +21077,6 @@ export type Mutation_Root = {
   insert_cycle_name_one?: Maybe<Cycle_Name>;
   /** insert a single row into the table: "cycle" */
   insert_cycle_one?: Maybe<Cycle>;
-  /** insert data into the table: "deck" */
-  insert_deck?: Maybe<Deck_Mutation_Response>;
-  /** insert a single row into the table: "deck" */
-  insert_deck_one?: Maybe<Deck>;
   /** insert data into the table: "faction_name" */
   insert_faction_name?: Maybe<Faction_Name_Mutation_Response>;
   /** insert a single row into the table: "faction_name" */
@@ -20839,6 +21313,8 @@ export type Mutation_Root = {
   insert_users?: Maybe<Users_Mutation_Response>;
   /** insert a single row into the table: "users" */
   insert_users_one?: Maybe<Users>;
+  loginToArkhamDb?: Maybe<LoginOutput>;
+  logoutFromArkhamDb?: Maybe<LogoutOutput>;
   /** execute VOLATILE function "rangers.publish_deck" which returns "rangers.deck" */
   rangers_publish_deck?: Maybe<Rangers_Deck>;
   /** execute VOLATILE function "rangers.remove_campaign_deck" which returns "rangers.campaign" */
@@ -20847,6 +21323,8 @@ export type Mutation_Root = {
   rangers_set_campaign_deck: Array<Rangers_Campaign>;
   /** execute VOLATILE function "rangers.upgrade_deck" which returns "rangers.deck" */
   rangers_upgrade_deck?: Maybe<Rangers_Deck>;
+  refreshArkhamDbDecks?: Maybe<RefreshDecksOutput>;
+  updateHandle?: Maybe<UpdateHandleOutput>;
   /** update data of the table: "all_card" */
   update_all_card?: Maybe<All_Card_Mutation_Response>;
   /** update single row of the table: "all_card" */
@@ -20865,6 +21343,18 @@ export type Mutation_Root = {
   update_all_card_updated_by_pk?: Maybe<All_Card_Updated>;
   /** update multiples rows of table: "all_card_updated" */
   update_all_card_updated_many?: Maybe<Array<Maybe<All_Card_Updated_Mutation_Response>>>;
+  /** update data of the table: "arkhamdb_auth" */
+  update_arkhamdb_auth?: Maybe<Arkhamdb_Auth_Mutation_Response>;
+  /** update single row of the table: "arkhamdb_auth" */
+  update_arkhamdb_auth_by_pk?: Maybe<Arkhamdb_Auth>;
+  /** update multiples rows of table: "arkhamdb_auth" */
+  update_arkhamdb_auth_many?: Maybe<Array<Maybe<Arkhamdb_Auth_Mutation_Response>>>;
+  /** update data of the table: "arkhamdb_deck" */
+  update_arkhamdb_deck?: Maybe<Arkhamdb_Deck_Mutation_Response>;
+  /** update single row of the table: "arkhamdb_deck" */
+  update_arkhamdb_deck_by_pk?: Maybe<Arkhamdb_Deck>;
+  /** update multiples rows of table: "arkhamdb_deck" */
+  update_arkhamdb_deck_many?: Maybe<Array<Maybe<Arkhamdb_Deck_Mutation_Response>>>;
   /** update data of the table: "base_decks" */
   update_base_decks?: Maybe<Base_Decks_Mutation_Response>;
   /** update multiples rows of table: "base_decks" */
@@ -21089,12 +21579,6 @@ export type Mutation_Root = {
   update_cycle_name_by_pk?: Maybe<Cycle_Name>;
   /** update multiples rows of table: "cycle_name" */
   update_cycle_name_many?: Maybe<Array<Maybe<Cycle_Name_Mutation_Response>>>;
-  /** update data of the table: "deck" */
-  update_deck?: Maybe<Deck_Mutation_Response>;
-  /** update single row of the table: "deck" */
-  update_deck_by_pk?: Maybe<Deck>;
-  /** update multiples rows of table: "deck" */
-  update_deck_many?: Maybe<Array<Maybe<Deck_Mutation_Response>>>;
   /** update data of the table: "faction_name" */
   update_faction_name?: Maybe<Faction_Name_Mutation_Response>;
   /** update single row of the table: "faction_name" */
@@ -21427,6 +21911,8 @@ export type Mutation_Root = {
   update_users_by_pk?: Maybe<Users>;
   /** update multiples rows of table: "users" */
   update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
+  upgradeArkhamDbDeck?: Maybe<UpgradeDeckOutput>;
+  uploadLocalCampaignDeck?: Maybe<UploadLocalCampaignDeckOutput>;
 };
 
 
@@ -21438,6 +21924,30 @@ export type Mutation_RootConquest_Publish_DeckArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Conquest_Deck_Order_By>>;
   where?: InputMaybe<Conquest_Deck_Bool_Exp>;
+};
+
+
+/** mutation root */
+export type Mutation_RootCreateArkhamDbDeckArgs = {
+  args: CreateDeckInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootCreateCampaignArgs = {
+  args: CreateCampaignInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootDeleteArkhamDbDeckArgs = {
+  args: DeleteDeckInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootDeleteCampaignArgs = {
+  args: DeleteCampaignInput;
 };
 
 
@@ -21475,6 +21985,30 @@ export type Mutation_RootDelete_All_Card_UpdatedArgs = {
 /** mutation root */
 export type Mutation_RootDelete_All_Card_Updated_By_PkArgs = {
   locale: Scalars['String']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Arkhamdb_AuthArgs = {
+  where: Arkhamdb_Auth_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Arkhamdb_Auth_By_PkArgs = {
+  user_id: Scalars['String']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Arkhamdb_DeckArgs = {
+  where: Arkhamdb_Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Arkhamdb_Deck_By_PkArgs = {
+  id: Scalars['Int']['input'];
 };
 
 
@@ -21934,18 +22468,6 @@ export type Mutation_RootDelete_Cycle_NameArgs = {
 export type Mutation_RootDelete_Cycle_Name_By_PkArgs = {
   code: Scalars['String']['input'];
   locale: Scalars['String']['input'];
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_DeckArgs = {
-  where: Deck_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Deck_By_PkArgs = {
-  id: Scalars['Int']['input'];
 };
 
 
@@ -22612,6 +23134,12 @@ export type Mutation_RootDelete_Users_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootEditCampaignAccessArgs = {
+  args: EditCampaignAccessInput;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_All_CardArgs = {
   objects: Array<All_Card_Insert_Input>;
   on_conflict?: InputMaybe<All_Card_On_Conflict>;
@@ -22650,6 +23178,34 @@ export type Mutation_RootInsert_All_Card_UpdatedArgs = {
 export type Mutation_RootInsert_All_Card_Updated_OneArgs = {
   object: All_Card_Updated_Insert_Input;
   on_conflict?: InputMaybe<All_Card_Updated_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Arkhamdb_AuthArgs = {
+  objects: Array<Arkhamdb_Auth_Insert_Input>;
+  on_conflict?: InputMaybe<Arkhamdb_Auth_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Arkhamdb_Auth_OneArgs = {
+  object: Arkhamdb_Auth_Insert_Input;
+  on_conflict?: InputMaybe<Arkhamdb_Auth_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Arkhamdb_DeckArgs = {
+  objects: Array<Arkhamdb_Deck_Insert_Input>;
+  on_conflict?: InputMaybe<Arkhamdb_Deck_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Arkhamdb_Deck_OneArgs = {
+  object: Arkhamdb_Deck_Insert_Input;
+  on_conflict?: InputMaybe<Arkhamdb_Deck_On_Conflict>;
 };
 
 
@@ -23178,20 +23734,6 @@ export type Mutation_RootInsert_Cycle_Name_OneArgs = {
 export type Mutation_RootInsert_Cycle_OneArgs = {
   object: Cycle_Insert_Input;
   on_conflict?: InputMaybe<Cycle_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_DeckArgs = {
-  objects: Array<Deck_Insert_Input>;
-  on_conflict?: InputMaybe<Deck_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_Deck_OneArgs = {
-  object: Deck_Insert_Input;
-  on_conflict?: InputMaybe<Deck_On_Conflict>;
 };
 
 
@@ -24000,6 +24542,12 @@ export type Mutation_RootInsert_Users_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootLoginToArkhamDbArgs = {
+  args: LoginInput;
+};
+
+
+/** mutation root */
 export type Mutation_RootRangers_Publish_DeckArgs = {
   args: Rangers_Publish_Deck_Args;
   distinct_on?: InputMaybe<Array<Rangers_Deck_Select_Column>>;
@@ -24040,6 +24588,18 @@ export type Mutation_RootRangers_Upgrade_DeckArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Rangers_Deck_Order_By>>;
   where?: InputMaybe<Rangers_Deck_Bool_Exp>;
+};
+
+
+/** mutation root */
+export type Mutation_RootRefreshArkhamDbDecksArgs = {
+  args: RefreshDecksInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdateHandleArgs = {
+  args: UpdateHandleInput;
 };
 
 
@@ -24114,6 +24674,60 @@ export type Mutation_RootUpdate_All_Card_Updated_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_All_Card_Updated_ManyArgs = {
   updates: Array<All_Card_Updated_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_AuthArgs = {
+  _inc?: InputMaybe<Arkhamdb_Auth_Inc_Input>;
+  _set?: InputMaybe<Arkhamdb_Auth_Set_Input>;
+  where: Arkhamdb_Auth_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_Auth_By_PkArgs = {
+  _inc?: InputMaybe<Arkhamdb_Auth_Inc_Input>;
+  _set?: InputMaybe<Arkhamdb_Auth_Set_Input>;
+  pk_columns: Arkhamdb_Auth_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_Auth_ManyArgs = {
+  updates: Array<Arkhamdb_Auth_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_DeckArgs = {
+  _append?: InputMaybe<Arkhamdb_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Arkhamdb_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Arkhamdb_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Arkhamdb_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Arkhamdb_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Arkhamdb_Deck_Prepend_Input>;
+  _set?: InputMaybe<Arkhamdb_Deck_Set_Input>;
+  where: Arkhamdb_Deck_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_Deck_By_PkArgs = {
+  _append?: InputMaybe<Arkhamdb_Deck_Append_Input>;
+  _delete_at_path?: InputMaybe<Arkhamdb_Deck_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Arkhamdb_Deck_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Arkhamdb_Deck_Delete_Key_Input>;
+  _inc?: InputMaybe<Arkhamdb_Deck_Inc_Input>;
+  _prepend?: InputMaybe<Arkhamdb_Deck_Prepend_Input>;
+  _set?: InputMaybe<Arkhamdb_Deck_Set_Input>;
+  pk_columns: Arkhamdb_Deck_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Arkhamdb_Deck_ManyArgs = {
+  updates: Array<Arkhamdb_Deck_Updates>;
 };
 
 
@@ -24954,38 +25568,6 @@ export type Mutation_RootUpdate_Cycle_Name_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Cycle_Name_ManyArgs = {
   updates: Array<Cycle_Name_Updates>;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_DeckArgs = {
-  _append?: InputMaybe<Deck_Append_Input>;
-  _delete_at_path?: InputMaybe<Deck_Delete_At_Path_Input>;
-  _delete_elem?: InputMaybe<Deck_Delete_Elem_Input>;
-  _delete_key?: InputMaybe<Deck_Delete_Key_Input>;
-  _inc?: InputMaybe<Deck_Inc_Input>;
-  _prepend?: InputMaybe<Deck_Prepend_Input>;
-  _set?: InputMaybe<Deck_Set_Input>;
-  where: Deck_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Deck_By_PkArgs = {
-  _append?: InputMaybe<Deck_Append_Input>;
-  _delete_at_path?: InputMaybe<Deck_Delete_At_Path_Input>;
-  _delete_elem?: InputMaybe<Deck_Delete_Elem_Input>;
-  _delete_key?: InputMaybe<Deck_Delete_Key_Input>;
-  _inc?: InputMaybe<Deck_Inc_Input>;
-  _prepend?: InputMaybe<Deck_Prepend_Input>;
-  _set?: InputMaybe<Deck_Set_Input>;
-  pk_columns: Deck_Pk_Columns_Input;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Deck_ManyArgs = {
-  updates: Array<Deck_Updates>;
 };
 
 
@@ -26203,6 +26785,18 @@ export type Mutation_RootUpdate_Users_ManyArgs = {
   updates: Array<Users_Updates>;
 };
 
+
+/** mutation root */
+export type Mutation_RootUpgradeArkhamDbDeckArgs = {
+  args: UpgradeDeckInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootUploadLocalCampaignDeckArgs = {
+  args: UploadLocalCampaignDeckInput;
+};
+
 /** column ordering options */
 export enum Order_By {
   /** in ascending order, nulls last */
@@ -26855,6 +27449,18 @@ export type Query_Root = {
   all_card_updated_aggregate: All_Card_Updated_Aggregate;
   /** fetch data from the table: "all_card_updated" using primary key columns */
   all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** fetch data from the table: "arkhamdb_auth" */
+  arkhamdb_auth: Array<Arkhamdb_Auth>;
+  /** fetch aggregated fields from the table: "arkhamdb_auth" */
+  arkhamdb_auth_aggregate: Arkhamdb_Auth_Aggregate;
+  /** fetch data from the table: "arkhamdb_auth" using primary key columns */
+  arkhamdb_auth_by_pk?: Maybe<Arkhamdb_Auth>;
+  /** fetch data from the table: "arkhamdb_deck" */
+  arkhamdb_deck: Array<Arkhamdb_Deck>;
+  /** fetch aggregated fields from the table: "arkhamdb_deck" */
+  arkhamdb_deck_aggregate: Arkhamdb_Deck_Aggregate;
+  /** fetch data from the table: "arkhamdb_deck" using primary key columns */
+  arkhamdb_deck_by_pk?: Maybe<Arkhamdb_Deck>;
   /** An array relationship */
   base_decks: Array<Base_Decks>;
   /** An aggregate relationship */
@@ -27091,12 +27697,6 @@ export type Query_Root = {
   cycle_name_aggregate: Cycle_Name_Aggregate;
   /** fetch data from the table: "cycle_name" using primary key columns */
   cycle_name_by_pk?: Maybe<Cycle_Name>;
-  /** fetch data from the table: "deck" */
-  deck: Array<Deck>;
-  /** fetch aggregated fields from the table: "deck" */
-  deck_aggregate: Deck_Aggregate;
-  /** fetch data from the table: "deck" using primary key columns */
-  deck_by_pk?: Maybe<Deck>;
   /** fetch data from the table: "faction_name" */
   faction_name: Array<Faction_Name>;
   /** fetch aggregated fields from the table: "faction_name" */
@@ -27465,6 +28065,7 @@ export type Query_Root = {
   user_settings_by_pk?: Maybe<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
+  usersSearch?: Maybe<UsersSearchOutput>;
   /** fetch aggregated fields from the table: "users" */
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
@@ -27539,6 +28140,52 @@ export type Query_RootAll_Card_Updated_AggregateArgs = {
 
 export type Query_RootAll_Card_Updated_By_PkArgs = {
   locale: Scalars['String']['input'];
+};
+
+
+export type Query_RootArkhamdb_AuthArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Auth_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Auth_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+
+export type Query_RootArkhamdb_Auth_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Auth_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Auth_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+
+export type Query_RootArkhamdb_Auth_By_PkArgs = {
+  user_id: Scalars['String']['input'];
+};
+
+
+export type Query_RootArkhamdb_DeckArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Deck_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootArkhamdb_Deck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Deck_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+};
+
+
+export type Query_RootArkhamdb_Deck_By_PkArgs = {
+  id: Scalars['Int']['input'];
 };
 
 
@@ -28472,29 +29119,6 @@ export type Query_RootCycle_Name_AggregateArgs = {
 export type Query_RootCycle_Name_By_PkArgs = {
   code: Scalars['String']['input'];
   locale: Scalars['String']['input'];
-};
-
-
-export type Query_RootDeckArgs = {
-  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<Deck_Order_By>>;
-  where?: InputMaybe<Deck_Bool_Exp>;
-};
-
-
-export type Query_RootDeck_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<Deck_Order_By>>;
-  where?: InputMaybe<Deck_Bool_Exp>;
-};
-
-
-export type Query_RootDeck_By_PkArgs = {
-  id: Scalars['Int']['input'];
 };
 
 
@@ -29987,6 +30611,11 @@ export type Query_RootUsersArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
+};
+
+
+export type Query_RootUsersSearchArgs = {
+  args: UsersSearchInput;
 };
 
 
@@ -40633,6 +41262,22 @@ export type Subscription_Root = {
   all_card_updated_by_pk?: Maybe<All_Card_Updated>;
   /** fetch data from the table in a streaming manner: "all_card_updated" */
   all_card_updated_stream: Array<All_Card_Updated>;
+  /** fetch data from the table: "arkhamdb_auth" */
+  arkhamdb_auth: Array<Arkhamdb_Auth>;
+  /** fetch aggregated fields from the table: "arkhamdb_auth" */
+  arkhamdb_auth_aggregate: Arkhamdb_Auth_Aggregate;
+  /** fetch data from the table: "arkhamdb_auth" using primary key columns */
+  arkhamdb_auth_by_pk?: Maybe<Arkhamdb_Auth>;
+  /** fetch data from the table in a streaming manner: "arkhamdb_auth" */
+  arkhamdb_auth_stream: Array<Arkhamdb_Auth>;
+  /** fetch data from the table: "arkhamdb_deck" */
+  arkhamdb_deck: Array<Arkhamdb_Deck>;
+  /** fetch aggregated fields from the table: "arkhamdb_deck" */
+  arkhamdb_deck_aggregate: Arkhamdb_Deck_Aggregate;
+  /** fetch data from the table: "arkhamdb_deck" using primary key columns */
+  arkhamdb_deck_by_pk?: Maybe<Arkhamdb_Deck>;
+  /** fetch data from the table in a streaming manner: "arkhamdb_deck" */
+  arkhamdb_deck_stream: Array<Arkhamdb_Deck>;
   /** An array relationship */
   base_decks: Array<Base_Decks>;
   /** An aggregate relationship */
@@ -40951,14 +41596,6 @@ export type Subscription_Root = {
   cycle_name_stream: Array<Cycle_Name>;
   /** fetch data from the table in a streaming manner: "cycle" */
   cycle_stream: Array<Cycle>;
-  /** fetch data from the table: "deck" */
-  deck: Array<Deck>;
-  /** fetch aggregated fields from the table: "deck" */
-  deck_aggregate: Deck_Aggregate;
-  /** fetch data from the table: "deck" using primary key columns */
-  deck_by_pk?: Maybe<Deck>;
-  /** fetch data from the table in a streaming manner: "deck" */
-  deck_stream: Array<Deck>;
   /** fetch data from the table: "faction_name" */
   faction_name: Array<Faction_Name>;
   /** fetch aggregated fields from the table: "faction_name" */
@@ -41556,6 +42193,66 @@ export type Subscription_RootAll_Card_Updated_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<All_Card_Updated_Stream_Cursor_Input>>;
   where?: InputMaybe<All_Card_Updated_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_AuthArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Auth_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Auth_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_Auth_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Auth_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Auth_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_Auth_By_PkArgs = {
+  user_id: Scalars['String']['input'];
+};
+
+
+export type Subscription_RootArkhamdb_Auth_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Arkhamdb_Auth_Stream_Cursor_Input>>;
+  where?: InputMaybe<Arkhamdb_Auth_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_DeckArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Deck_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_Deck_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Arkhamdb_Deck_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Arkhamdb_Deck_Order_By>>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
+};
+
+
+export type Subscription_RootArkhamdb_Deck_By_PkArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
+export type Subscription_RootArkhamdb_Deck_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Arkhamdb_Deck_Stream_Cursor_Input>>;
+  where?: InputMaybe<Arkhamdb_Deck_Bool_Exp>;
 };
 
 
@@ -42776,36 +43473,6 @@ export type Subscription_RootCycle_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Cycle_Stream_Cursor_Input>>;
   where?: InputMaybe<Cycle_Bool_Exp>;
-};
-
-
-export type Subscription_RootDeckArgs = {
-  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<Deck_Order_By>>;
-  where?: InputMaybe<Deck_Bool_Exp>;
-};
-
-
-export type Subscription_RootDeck_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Deck_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<Deck_Order_By>>;
-  where?: InputMaybe<Deck_Bool_Exp>;
-};
-
-
-export type Subscription_RootDeck_By_PkArgs = {
-  id: Scalars['Int']['input'];
-};
-
-
-export type Subscription_RootDeck_StreamArgs = {
-  batch_size: Scalars['Int']['input'];
-  cursor: Array<InputMaybe<Deck_Stream_Cursor_Input>>;
-  where?: InputMaybe<Deck_Bool_Exp>;
 };
 
 
@@ -46499,6 +47166,7 @@ export type Users = {
   local_decks: Array<Local_Decks>;
   /** An aggregate relationship */
   local_decks_aggregate: Local_Decks_Aggregate;
+  normalized_handle?: Maybe<Scalars['String']['output']>;
   /** An array relationship */
   received_requests: Array<User_Received_Friend_Requests>;
   /** An aggregate relationship */
@@ -46712,6 +47380,7 @@ export type Users_Bool_Exp = {
   id?: InputMaybe<String_Comparison_Exp>;
   local_decks?: InputMaybe<Local_Decks_Bool_Exp>;
   local_decks_aggregate?: InputMaybe<Local_Decks_Aggregate_Bool_Exp>;
+  normalized_handle?: InputMaybe<String_Comparison_Exp>;
   received_requests?: InputMaybe<User_Received_Friend_Requests_Bool_Exp>;
   received_requests_aggregate?: InputMaybe<User_Received_Friend_Requests_Aggregate_Bool_Exp>;
   sent_requests?: InputMaybe<User_Sent_Friend_Requests_Bool_Exp>;
@@ -46736,6 +47405,7 @@ export type Users_Insert_Input = {
   handle?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   local_decks?: InputMaybe<Local_Decks_Arr_Rel_Insert_Input>;
+  normalized_handle?: InputMaybe<Scalars['String']['input']>;
   received_requests?: InputMaybe<User_Received_Friend_Requests_Arr_Rel_Insert_Input>;
   sent_requests?: InputMaybe<User_Sent_Friend_Requests_Arr_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
@@ -46747,6 +47417,7 @@ export type Users_Max_Fields = {
   created_at?: Maybe<Scalars['timestamptz']['output']>;
   handle?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['String']['output']>;
+  normalized_handle?: Maybe<Scalars['String']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
 };
 
@@ -46756,6 +47427,7 @@ export type Users_Min_Fields = {
   created_at?: Maybe<Scalars['timestamptz']['output']>;
   handle?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['String']['output']>;
+  normalized_handle?: Maybe<Scalars['String']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
 };
 
@@ -46793,6 +47465,7 @@ export type Users_Order_By = {
   handle?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   local_decks_aggregate?: InputMaybe<Local_Decks_Aggregate_Order_By>;
+  normalized_handle?: InputMaybe<Order_By>;
   received_requests_aggregate?: InputMaybe<User_Received_Friend_Requests_Aggregate_Order_By>;
   sent_requests_aggregate?: InputMaybe<User_Sent_Friend_Requests_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -46812,6 +47485,8 @@ export enum Users_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  NormalizedHandle = 'normalized_handle',
+  /** column name */
   UpdatedAt = 'updated_at'
 }
 
@@ -46820,6 +47495,7 @@ export type Users_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']['input']>;
   handle?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
+  normalized_handle?: InputMaybe<Scalars['String']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
 };
 
@@ -46836,6 +47512,7 @@ export type Users_Stream_Cursor_Value_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']['input']>;
   handle?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
+  normalized_handle?: InputMaybe<Scalars['String']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
 };
 
@@ -46847,6 +47524,8 @@ export enum Users_Update_Column {
   Handle = 'handle',
   /** column name */
   Id = 'id',
+  /** column name */
+  NormalizedHandle = 'normalized_handle',
   /** column name */
   UpdatedAt = 'updated_at'
 }
@@ -47973,7 +48652,7 @@ export const GetCardsCacheDocument = gql`
  *   },
  * });
  */
-export function useGetCardsCacheQuery(baseOptions: Apollo.QueryHookOptions<GetCardsCacheQuery, GetCardsCacheQueryVariables>) {
+export function useGetCardsCacheQuery(baseOptions: Apollo.QueryHookOptions<GetCardsCacheQuery, GetCardsCacheQueryVariables> & ({ variables: GetCardsCacheQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetCardsCacheQuery, GetCardsCacheQueryVariables>(GetCardsCacheDocument, options);
       }
@@ -47981,8 +48660,13 @@ export function useGetCardsCacheLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetCardsCacheQuery, GetCardsCacheQueryVariables>(GetCardsCacheDocument, options);
         }
+export function useGetCardsCacheSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCardsCacheQuery, GetCardsCacheQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCardsCacheQuery, GetCardsCacheQueryVariables>(GetCardsCacheDocument, options);
+        }
 export type GetCardsCacheQueryHookResult = ReturnType<typeof useGetCardsCacheQuery>;
 export type GetCardsCacheLazyQueryHookResult = ReturnType<typeof useGetCardsCacheLazyQuery>;
+export type GetCardsCacheSuspenseQueryHookResult = ReturnType<typeof useGetCardsCacheSuspenseQuery>;
 export type GetCardsCacheQueryResult = Apollo.QueryResult<GetCardsCacheQuery, GetCardsCacheQueryVariables>;
 export const GetCardsDocument = gql`
     query getCards($locale: String!) {
@@ -48057,7 +48741,7 @@ ${PackFragmentDoc}`;
  *   },
  * });
  */
-export function useGetCardsQuery(baseOptions: Apollo.QueryHookOptions<GetCardsQuery, GetCardsQueryVariables>) {
+export function useGetCardsQuery(baseOptions: Apollo.QueryHookOptions<GetCardsQuery, GetCardsQueryVariables> & ({ variables: GetCardsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetCardsQuery, GetCardsQueryVariables>(GetCardsDocument, options);
       }
@@ -48065,8 +48749,13 @@ export function useGetCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<G
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetCardsQuery, GetCardsQueryVariables>(GetCardsDocument, options);
         }
+export function useGetCardsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCardsQuery, GetCardsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCardsQuery, GetCardsQueryVariables>(GetCardsDocument, options);
+        }
 export type GetCardsQueryHookResult = ReturnType<typeof useGetCardsQuery>;
 export type GetCardsLazyQueryHookResult = ReturnType<typeof useGetCardsLazyQuery>;
+export type GetCardsSuspenseQueryHookResult = ReturnType<typeof useGetCardsSuspenseQuery>;
 export type GetCardsQueryResult = Apollo.QueryResult<GetCardsQuery, GetCardsQueryVariables>;
 export const GetCardFaqDocument = gql`
     query getCardFaq($code: String!, $locale: String!) {
@@ -48099,7 +48788,7 @@ export const GetCardFaqDocument = gql`
  *   },
  * });
  */
-export function useGetCardFaqQuery(baseOptions: Apollo.QueryHookOptions<GetCardFaqQuery, GetCardFaqQueryVariables>) {
+export function useGetCardFaqQuery(baseOptions: Apollo.QueryHookOptions<GetCardFaqQuery, GetCardFaqQueryVariables> & ({ variables: GetCardFaqQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetCardFaqQuery, GetCardFaqQueryVariables>(GetCardFaqDocument, options);
       }
@@ -48107,8 +48796,13 @@ export function useGetCardFaqLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetCardFaqQuery, GetCardFaqQueryVariables>(GetCardFaqDocument, options);
         }
+export function useGetCardFaqSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCardFaqQuery, GetCardFaqQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCardFaqQuery, GetCardFaqQueryVariables>(GetCardFaqDocument, options);
+        }
 export type GetCardFaqQueryHookResult = ReturnType<typeof useGetCardFaqQuery>;
 export type GetCardFaqLazyQueryHookResult = ReturnType<typeof useGetCardFaqLazyQuery>;
+export type GetCardFaqSuspenseQueryHookResult = ReturnType<typeof useGetCardFaqSuspenseQuery>;
 export type GetCardFaqQueryResult = Apollo.QueryResult<GetCardFaqQuery, GetCardFaqQueryVariables>;
 export const UploadChaosBagResultsDocument = gql`
     mutation uploadChaosBagResults($id: Int!, $bless: Int!, $curse: Int!, $drawn: jsonb!, $sealed: jsonb!, $totalDrawn: Int!, $tarot: chaos_bag_tarot_mode_enum, $difficulty: campaign_difficulty_enum) {
@@ -49091,7 +49785,7 @@ ${AllDeckFragmentDoc}`;
  *   },
  * });
  */
-export function useGetMyDecksQuery(baseOptions: Apollo.QueryHookOptions<GetMyDecksQuery, GetMyDecksQueryVariables>) {
+export function useGetMyDecksQuery(baseOptions: Apollo.QueryHookOptions<GetMyDecksQuery, GetMyDecksQueryVariables> & ({ variables: GetMyDecksQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, options);
       }
@@ -49099,8 +49793,13 @@ export function useGetMyDecksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, options);
         }
+export function useGetMyDecksSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetMyDecksQuery, GetMyDecksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetMyDecksQuery, GetMyDecksQueryVariables>(GetMyDecksDocument, options);
+        }
 export type GetMyDecksQueryHookResult = ReturnType<typeof useGetMyDecksQuery>;
 export type GetMyDecksLazyQueryHookResult = ReturnType<typeof useGetMyDecksLazyQuery>;
+export type GetMyDecksSuspenseQueryHookResult = ReturnType<typeof useGetMyDecksSuspenseQuery>;
 export type GetMyDecksQueryResult = Apollo.QueryResult<GetMyDecksQuery, GetMyDecksQueryVariables>;
 export const GetLatestLocalDeckDocument = gql`
     query getLatestLocalDeck($campaign_id: Int!, $local_uuid: String!) {
@@ -49129,7 +49828,7 @@ export const GetLatestLocalDeckDocument = gql`
  *   },
  * });
  */
-export function useGetLatestLocalDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>) {
+export function useGetLatestLocalDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables> & ({ variables: GetLatestLocalDeckQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>(GetLatestLocalDeckDocument, options);
       }
@@ -49137,8 +49836,13 @@ export function useGetLatestLocalDeckLazyQuery(baseOptions?: Apollo.LazyQueryHoo
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>(GetLatestLocalDeckDocument, options);
         }
+export function useGetLatestLocalDeckSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>(GetLatestLocalDeckDocument, options);
+        }
 export type GetLatestLocalDeckQueryHookResult = ReturnType<typeof useGetLatestLocalDeckQuery>;
 export type GetLatestLocalDeckLazyQueryHookResult = ReturnType<typeof useGetLatestLocalDeckLazyQuery>;
+export type GetLatestLocalDeckSuspenseQueryHookResult = ReturnType<typeof useGetLatestLocalDeckSuspenseQuery>;
 export type GetLatestLocalDeckQueryResult = Apollo.QueryResult<GetLatestLocalDeckQuery, GetLatestLocalDeckQueryVariables>;
 export const GetLatestArkhamDbDeckDocument = gql`
     query getLatestArkhamDbDeck($campaign_id: Int!, $arkhamdb_id: Int!) {
@@ -49167,7 +49871,7 @@ export const GetLatestArkhamDbDeckDocument = gql`
  *   },
  * });
  */
-export function useGetLatestArkhamDbDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>) {
+export function useGetLatestArkhamDbDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables> & ({ variables: GetLatestArkhamDbDeckQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>(GetLatestArkhamDbDeckDocument, options);
       }
@@ -49175,8 +49879,13 @@ export function useGetLatestArkhamDbDeckLazyQuery(baseOptions?: Apollo.LazyQuery
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>(GetLatestArkhamDbDeckDocument, options);
         }
+export function useGetLatestArkhamDbDeckSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>(GetLatestArkhamDbDeckDocument, options);
+        }
 export type GetLatestArkhamDbDeckQueryHookResult = ReturnType<typeof useGetLatestArkhamDbDeckQuery>;
 export type GetLatestArkhamDbDeckLazyQueryHookResult = ReturnType<typeof useGetLatestArkhamDbDeckLazyQuery>;
+export type GetLatestArkhamDbDeckSuspenseQueryHookResult = ReturnType<typeof useGetLatestArkhamDbDeckSuspenseQuery>;
 export type GetLatestArkhamDbDeckQueryResult = Apollo.QueryResult<GetLatestArkhamDbDeckQuery, GetLatestArkhamDbDeckQueryVariables>;
 export const GetLatestDeckDocument = gql`
     query getLatestDeck($deckId: Int!) {
@@ -49202,7 +49911,7 @@ export const GetLatestDeckDocument = gql`
  *   },
  * });
  */
-export function useGetLatestDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestDeckQuery, GetLatestDeckQueryVariables>) {
+export function useGetLatestDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestDeckQuery, GetLatestDeckQueryVariables> & ({ variables: GetLatestDeckQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>(GetLatestDeckDocument, options);
       }
@@ -49210,8 +49919,13 @@ export function useGetLatestDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>(GetLatestDeckDocument, options);
         }
+export function useGetLatestDeckSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetLatestDeckQuery, GetLatestDeckQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>(GetLatestDeckDocument, options);
+        }
 export type GetLatestDeckQueryHookResult = ReturnType<typeof useGetLatestDeckQuery>;
 export type GetLatestDeckLazyQueryHookResult = ReturnType<typeof useGetLatestDeckLazyQuery>;
+export type GetLatestDeckSuspenseQueryHookResult = ReturnType<typeof useGetLatestDeckSuspenseQuery>;
 export type GetLatestDeckQueryResult = Apollo.QueryResult<GetLatestDeckQuery, GetLatestDeckQueryVariables>;
 export const GetDeckHistoryDocument = gql`
     query getDeckHistory($campaign_id: Int!, $investigator: String!) {
@@ -49240,7 +49954,7 @@ export const GetDeckHistoryDocument = gql`
  *   },
  * });
  */
-export function useGetDeckHistoryQuery(baseOptions: Apollo.QueryHookOptions<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>) {
+export function useGetDeckHistoryQuery(baseOptions: Apollo.QueryHookOptions<GetDeckHistoryQuery, GetDeckHistoryQueryVariables> & ({ variables: GetDeckHistoryQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>(GetDeckHistoryDocument, options);
       }
@@ -49248,8 +49962,13 @@ export function useGetDeckHistoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>(GetDeckHistoryDocument, options);
         }
+export function useGetDeckHistorySuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>(GetDeckHistoryDocument, options);
+        }
 export type GetDeckHistoryQueryHookResult = ReturnType<typeof useGetDeckHistoryQuery>;
 export type GetDeckHistoryLazyQueryHookResult = ReturnType<typeof useGetDeckHistoryLazyQuery>;
+export type GetDeckHistorySuspenseQueryHookResult = ReturnType<typeof useGetDeckHistorySuspenseQuery>;
 export type GetDeckHistoryQueryResult = Apollo.QueryResult<GetDeckHistoryQuery, GetDeckHistoryQueryVariables>;
 export const GetMyCampaignsDocument = gql`
     query getMyCampaigns($userId: String!) {
@@ -49286,7 +50005,7 @@ export const GetMyCampaignsDocument = gql`
  *   },
  * });
  */
-export function useGetMyCampaignsQuery(baseOptions: Apollo.QueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
+export function useGetMyCampaignsQuery(baseOptions: Apollo.QueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables> & ({ variables: GetMyCampaignsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, options);
       }
@@ -49294,8 +50013,13 @@ export function useGetMyCampaignsLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, options);
         }
+export function useGetMyCampaignsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>(GetMyCampaignsDocument, options);
+        }
 export type GetMyCampaignsQueryHookResult = ReturnType<typeof useGetMyCampaignsQuery>;
 export type GetMyCampaignsLazyQueryHookResult = ReturnType<typeof useGetMyCampaignsLazyQuery>;
+export type GetMyCampaignsSuspenseQueryHookResult = ReturnType<typeof useGetMyCampaignsSuspenseQuery>;
 export type GetMyCampaignsQueryResult = Apollo.QueryResult<GetMyCampaignsQuery, GetMyCampaignsQueryVariables>;
 export const GetCampaignDocument = gql`
     query getCampaign($campaign_id: Int!) {
@@ -49321,7 +50045,7 @@ export const GetCampaignDocument = gql`
  *   },
  * });
  */
-export function useGetCampaignQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignQuery, GetCampaignQueryVariables>) {
+export function useGetCampaignQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignQuery, GetCampaignQueryVariables> & ({ variables: GetCampaignQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetCampaignQuery, GetCampaignQueryVariables>(GetCampaignDocument, options);
       }
@@ -49329,8 +50053,13 @@ export function useGetCampaignLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetCampaignQuery, GetCampaignQueryVariables>(GetCampaignDocument, options);
         }
+export function useGetCampaignSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCampaignQuery, GetCampaignQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCampaignQuery, GetCampaignQueryVariables>(GetCampaignDocument, options);
+        }
 export type GetCampaignQueryHookResult = ReturnType<typeof useGetCampaignQuery>;
 export type GetCampaignLazyQueryHookResult = ReturnType<typeof useGetCampaignLazyQuery>;
+export type GetCampaignSuspenseQueryHookResult = ReturnType<typeof useGetCampaignSuspenseQuery>;
 export type GetCampaignQueryResult = Apollo.QueryResult<GetCampaignQuery, GetCampaignQueryVariables>;
 export const GetCampaignGuideDocument = gql`
     query getCampaignGuide($campaign_id: Int!) {
@@ -49356,7 +50085,7 @@ export const GetCampaignGuideDocument = gql`
  *   },
  * });
  */
-export function useGetCampaignGuideQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>) {
+export function useGetCampaignGuideQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignGuideQuery, GetCampaignGuideQueryVariables> & ({ variables: GetCampaignGuideQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>(GetCampaignGuideDocument, options);
       }
@@ -49364,8 +50093,13 @@ export function useGetCampaignGuideLazyQuery(baseOptions?: Apollo.LazyQueryHookO
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>(GetCampaignGuideDocument, options);
         }
+export function useGetCampaignGuideSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>(GetCampaignGuideDocument, options);
+        }
 export type GetCampaignGuideQueryHookResult = ReturnType<typeof useGetCampaignGuideQuery>;
 export type GetCampaignGuideLazyQueryHookResult = ReturnType<typeof useGetCampaignGuideLazyQuery>;
+export type GetCampaignGuideSuspenseQueryHookResult = ReturnType<typeof useGetCampaignGuideSuspenseQuery>;
 export type GetCampaignGuideQueryResult = Apollo.QueryResult<GetCampaignGuideQuery, GetCampaignGuideQueryVariables>;
 export const GetCampaignAccessDocument = gql`
     query getCampaignAccess($campaign_id: Int!) {
@@ -49400,7 +50134,7 @@ export const GetCampaignAccessDocument = gql`
  *   },
  * });
  */
-export function useGetCampaignAccessQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>) {
+export function useGetCampaignAccessQuery(baseOptions: Apollo.QueryHookOptions<GetCampaignAccessQuery, GetCampaignAccessQueryVariables> & ({ variables: GetCampaignAccessQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>(GetCampaignAccessDocument, options);
       }
@@ -49408,8 +50142,13 @@ export function useGetCampaignAccessLazyQuery(baseOptions?: Apollo.LazyQueryHook
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>(GetCampaignAccessDocument, options);
         }
+export function useGetCampaignAccessSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>(GetCampaignAccessDocument, options);
+        }
 export type GetCampaignAccessQueryHookResult = ReturnType<typeof useGetCampaignAccessQuery>;
 export type GetCampaignAccessLazyQueryHookResult = ReturnType<typeof useGetCampaignAccessLazyQuery>;
+export type GetCampaignAccessSuspenseQueryHookResult = ReturnType<typeof useGetCampaignAccessSuspenseQuery>;
 export type GetCampaignAccessQueryResult = Apollo.QueryResult<GetCampaignAccessQuery, GetCampaignAccessQueryVariables>;
 export const GetChaosBagResultsDocument = gql`
     query getChaosBagResults($campaign_id: Int!) {
@@ -49435,7 +50174,7 @@ export const GetChaosBagResultsDocument = gql`
  *   },
  * });
  */
-export function useGetChaosBagResultsQuery(baseOptions: Apollo.QueryHookOptions<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>) {
+export function useGetChaosBagResultsQuery(baseOptions: Apollo.QueryHookOptions<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables> & ({ variables: GetChaosBagResultsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>(GetChaosBagResultsDocument, options);
       }
@@ -49443,8 +50182,13 @@ export function useGetChaosBagResultsLazyQuery(baseOptions?: Apollo.LazyQueryHoo
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>(GetChaosBagResultsDocument, options);
         }
+export function useGetChaosBagResultsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>(GetChaosBagResultsDocument, options);
+        }
 export type GetChaosBagResultsQueryHookResult = ReturnType<typeof useGetChaosBagResultsQuery>;
 export type GetChaosBagResultsLazyQueryHookResult = ReturnType<typeof useGetChaosBagResultsLazyQuery>;
+export type GetChaosBagResultsSuspenseQueryHookResult = ReturnType<typeof useGetChaosBagResultsSuspenseQuery>;
 export type GetChaosBagResultsQueryResult = Apollo.QueryResult<GetChaosBagResultsQuery, GetChaosBagResultsQueryVariables>;
 export const CampaignDocument = gql`
     subscription campaign($campaign_id: Int!) {
@@ -49470,7 +50214,7 @@ export const CampaignDocument = gql`
  *   },
  * });
  */
-export function useCampaignSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignSubscription, CampaignSubscriptionVariables>) {
+export function useCampaignSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignSubscription, CampaignSubscriptionVariables> & ({ variables: CampaignSubscriptionVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useSubscription<CampaignSubscription, CampaignSubscriptionVariables>(CampaignDocument, options);
       }
@@ -49509,7 +50253,7 @@ export const CampaignAccessDocument = gql`
  *   },
  * });
  */
-export function useCampaignAccessSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignAccessSubscription, CampaignAccessSubscriptionVariables>) {
+export function useCampaignAccessSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignAccessSubscription, CampaignAccessSubscriptionVariables> & ({ variables: CampaignAccessSubscriptionVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useSubscription<CampaignAccessSubscription, CampaignAccessSubscriptionVariables>(CampaignAccessDocument, options);
       }
@@ -49539,7 +50283,7 @@ export const CampaignGuideDocument = gql`
  *   },
  * });
  */
-export function useCampaignGuideSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignGuideSubscription, CampaignGuideSubscriptionVariables>) {
+export function useCampaignGuideSubscription(baseOptions: Apollo.SubscriptionHookOptions<CampaignGuideSubscription, CampaignGuideSubscriptionVariables> & ({ variables: CampaignGuideSubscriptionVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useSubscription<CampaignGuideSubscription, CampaignGuideSubscriptionVariables>(CampaignGuideDocument, options);
       }
@@ -49569,7 +50313,7 @@ export const ChaosBagResultsDocument = gql`
  *   },
  * });
  */
-export function useChaosBagResultsSubscription(baseOptions: Apollo.SubscriptionHookOptions<ChaosBagResultsSubscription, ChaosBagResultsSubscriptionVariables>) {
+export function useChaosBagResultsSubscription(baseOptions: Apollo.SubscriptionHookOptions<ChaosBagResultsSubscription, ChaosBagResultsSubscriptionVariables> & ({ variables: ChaosBagResultsSubscriptionVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useSubscription<ChaosBagResultsSubscription, ChaosBagResultsSubscriptionVariables>(ChaosBagResultsDocument, options);
       }
@@ -49609,7 +50353,7 @@ export const GetSettingsDocument = gql`
  *   },
  * });
  */
-export function useGetSettingsQuery(baseOptions: Apollo.QueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+export function useGetSettingsQuery(baseOptions: Apollo.QueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables> & ({ variables: GetSettingsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
       }
@@ -49617,8 +50361,13 @@ export function useGetSettingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
         }
+export function useGetSettingsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+        }
 export type GetSettingsQueryHookResult = ReturnType<typeof useGetSettingsQuery>;
 export type GetSettingsLazyQueryHookResult = ReturnType<typeof useGetSettingsLazyQuery>;
+export type GetSettingsSuspenseQueryHookResult = ReturnType<typeof useGetSettingsSuspenseQuery>;
 export type GetSettingsQueryResult = Apollo.QueryResult<GetSettingsQuery, GetSettingsQueryVariables>;
 export const GetPacksDocument = gql`
     query getPacks($userId: String!) {
@@ -49646,7 +50395,7 @@ export const GetPacksDocument = gql`
  *   },
  * });
  */
-export function useGetPacksQuery(baseOptions: Apollo.QueryHookOptions<GetPacksQuery, GetPacksQueryVariables>) {
+export function useGetPacksQuery(baseOptions: Apollo.QueryHookOptions<GetPacksQuery, GetPacksQueryVariables> & ({ variables: GetPacksQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetPacksQuery, GetPacksQueryVariables>(GetPacksDocument, options);
       }
@@ -49654,8 +50403,13 @@ export function useGetPacksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<G
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetPacksQuery, GetPacksQueryVariables>(GetPacksDocument, options);
         }
+export function useGetPacksSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetPacksQuery, GetPacksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetPacksQuery, GetPacksQueryVariables>(GetPacksDocument, options);
+        }
 export type GetPacksQueryHookResult = ReturnType<typeof useGetPacksQuery>;
 export type GetPacksLazyQueryHookResult = ReturnType<typeof useGetPacksLazyQuery>;
+export type GetPacksSuspenseQueryHookResult = ReturnType<typeof useGetPacksSuspenseQuery>;
 export type GetPacksQueryResult = Apollo.QueryResult<GetPacksQuery, GetPacksQueryVariables>;
 export const UpdateSettingAlphabetizeDocument = gql`
     mutation updateSettingAlphabetize($userId: String!, $value: Boolean!) {
@@ -50136,7 +50890,7 @@ export const GetProfileDocument = gql`
  *   },
  * });
  */
-export function useGetProfileQuery(baseOptions: Apollo.QueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
+export function useGetProfileQuery(baseOptions: Apollo.QueryHookOptions<GetProfileQuery, GetProfileQueryVariables> & ({ variables: GetProfileQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
       }
@@ -50144,8 +50898,13 @@ export function useGetProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
         }
+export function useGetProfileSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetProfileQuery, GetProfileQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetProfileQuery, GetProfileQueryVariables>(GetProfileDocument, options);
+        }
 export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
 export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
+export type GetProfileSuspenseQueryHookResult = ReturnType<typeof useGetProfileSuspenseQuery>;
 export type GetProfileQueryResult = Apollo.QueryResult<GetProfileQuery, GetProfileQueryVariables>;
 export const GetDeleteInformationDocument = gql`
     query getDeleteInformation($userId: String!) {
@@ -50214,7 +50973,7 @@ export const GetDeleteInformationDocument = gql`
  *   },
  * });
  */
-export function useGetDeleteInformationQuery(baseOptions: Apollo.QueryHookOptions<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>) {
+export function useGetDeleteInformationQuery(baseOptions: Apollo.QueryHookOptions<GetDeleteInformationQuery, GetDeleteInformationQueryVariables> & ({ variables: GetDeleteInformationQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>(GetDeleteInformationDocument, options);
       }
@@ -50222,8 +50981,13 @@ export function useGetDeleteInformationLazyQuery(baseOptions?: Apollo.LazyQueryH
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>(GetDeleteInformationDocument, options);
         }
+export function useGetDeleteInformationSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>(GetDeleteInformationDocument, options);
+        }
 export type GetDeleteInformationQueryHookResult = ReturnType<typeof useGetDeleteInformationQuery>;
 export type GetDeleteInformationLazyQueryHookResult = ReturnType<typeof useGetDeleteInformationLazyQuery>;
+export type GetDeleteInformationSuspenseQueryHookResult = ReturnType<typeof useGetDeleteInformationSuspenseQuery>;
 export type GetDeleteInformationQueryResult = Apollo.QueryResult<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>;
 export const DeleteInvestigatorDecksDocument = gql`
     mutation deleteInvestigatorDecks($campaign_id: Int!, $investigator: String!, $user_id: String!) {
