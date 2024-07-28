@@ -90,7 +90,7 @@ android {
         applicationId "com.arkhamcards"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 4195421
+        versionCode 4195422
         versionName "4.6.6"
         manifestPlaceholders = [
             appAuthRedirectScheme: 'arkhamcards'
@@ -114,6 +114,20 @@ android {
             // see https://reactnative.dev/docs/signed-apk-android.
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+
+    // Add this task to remove the package attribute from all AndroidManifest.xml files in dependencies
+    tasks.whenTaskAdded { task ->
+        if (task.name == 'preDebugBuild' || task.name == 'preReleaseBuild') {
+            task.doFirst {
+                def manifestFiles = fileTree(dir: "${projectDir}/../node_modules", includes: ['**/AndroidManifest.xml'])
+                manifestFiles.each { manifestFile ->
+                    def manifestContent = manifestFile.text
+                    def updatedContent = manifestContent.replaceAll(/package="[^"]*"/, '')
+                    manifestFile.text = updatedContent
+                }
+            }
         }
     }
 }

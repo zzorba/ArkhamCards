@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { filter, find, forEach, map, partition } from 'lodash';
 import PanPinchView from 'react-native-pan-pinch-view';
-import { Canvas, Paint, Circle, Line, vec, Path } from "@shopify/react-native-skia";
+import { Canvas, Paint, Circle, Line, vec } from "@shopify/react-native-skia";
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
