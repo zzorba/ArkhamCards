@@ -34,11 +34,15 @@ export default function ArkhamCardsAccountDetails({ componentId, showAlert }: Na
     title: t`Account Name`,
     value: profile?.handle || '',
     onValidate: async (handle: string) => {
-      const result = await updateHandle({ variables: { handle } });
-      if (result.errors) {
+      try {
+        const result = await updateHandle({ variables: { handle } });
+        if (result.errors) {
+          return t`Handle is already taken`;
+        }
+        return undefined;
+      } catch (e) {
         return t`Handle is already taken`;
       }
-      return undefined;
     },
     placeholder: t`Choose a handle for your account`,
   });

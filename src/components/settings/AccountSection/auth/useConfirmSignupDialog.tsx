@@ -23,12 +23,18 @@ export default function useConfirmSignupDialog(): [React.ReactNode, () => void] 
   const [updateHandle] = useUpdateHandleMutation();
   const doSubmit = useCallback(async(submitValue: string) => {
     setSubmitting(true);
-    const result = await updateHandle({ variables: { handle: submitValue.trim() }});
-    if (result.errors?.length) {
-      setError(result.errors[0].message);
+    try {
+      const result = await updateHandle({ variables: { handle: submitValue.trim() }});
+      if (result.errors?.length) {
+        setError(result.errors[0].message);
+      }
+      setSubmitting(false);
+      refreshMyProfile();
+    } catch (e) {
+      setError(e.message);
+      setSubmitting(false);
+      refreshMyProfile();
     }
-    setSubmitting(false);
-    refreshMyProfile();
   }, [updateHandle, setError, setSubmitting, refreshMyProfile]);
   const submitButtonPressed = useCallback(() => {
     doSubmit(liveValue);

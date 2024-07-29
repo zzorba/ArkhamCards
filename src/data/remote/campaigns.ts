@@ -107,16 +107,20 @@ function useCreateCampaignRequest(): (
       campaignId: string,
       guided: boolean
     ): Promise<UploadedCampaignId> => {
-      const data = await createCampaign({ variables: { campaignId, guided } });
-      if (data.errors?.length || !data.data?.createCampaign) {
-        throw new Error(
-          data.errors?.[0].message ?? t`Unable to create campaign`
-        );
+      try {
+        const data = await createCampaign({ variables: { campaignId, guided } });
+        if (data.errors?.length || !data.data?.createCampaign) {
+          throw new Error(
+            data.errors?.[0].message ?? t`Unable to create campaign`
+          );
+        }
+        return {
+          campaignId,
+          serverId: data.data.createCampaign?.campaignId,
+        };
+      } catch (e) {
+        throw new Error(e.message);
       }
-      return {
-        campaignId,
-        serverId: data.data.createCampaign?.campaignId,
-      };
     },
     [createCampaign]
   );
@@ -147,33 +151,37 @@ function useCreateLinkedCampaignRequest(): (
       campaignIdA: UploadedCampaignId;
       campaignIdB: UploadedCampaignId;
     }> => {
-      const data = await createCampaign({
-        variables: { campaignId, guided, linked },
-      });
-      if (
-        data.errors?.length ||
-        !data.data?.createCampaign ||
-        !data.data.createCampaign.campaignIdA ||
-        !data.data.createCampaign.campaignIdB
-      ) {
-        throw new Error(
-          data.errors?.[0].message ?? t`Unable to create campaign`
-        );
+      try {
+        const data = await createCampaign({
+          variables: { campaignId, guided, linked },
+        });
+        if (
+          data.errors?.length ||
+          !data.data?.createCampaign ||
+          !data.data.createCampaign.campaignIdA ||
+          !data.data.createCampaign.campaignIdB
+        ) {
+          throw new Error(
+            data.errors?.[0].message ?? t`Unable to create campaign`
+          );
+        }
+        return {
+          campaignId: {
+            campaignId,
+            serverId: data.data.createCampaign.campaignId,
+          },
+          campaignIdA: {
+            campaignId: linked.campaignIdA,
+            serverId: data.data.createCampaign.campaignIdA,
+          },
+          campaignIdB: {
+            campaignId: linked.campaignIdB,
+            serverId: data.data.createCampaign.campaignIdB,
+          },
+        };
+      } catch (e) {
+        throw new Error(e.message);
       }
-      return {
-        campaignId: {
-          campaignId,
-          serverId: data.data.createCampaign.campaignId,
-        },
-        campaignIdA: {
-          campaignId: linked.campaignIdA,
-          serverId: data.data.createCampaign.campaignIdA,
-        },
-        campaignIdB: {
-          campaignId: linked.campaignIdB,
-          serverId: data.data.createCampaign.campaignIdB,
-        },
-      };
     },
     [createCampaign]
   );
@@ -452,9 +460,13 @@ export function useDeleteCampaignRequest() {
       if (userId) {
         deleteCampaignFromCache(client.cache, userId, campaignId, serverId);
       }
-      const data = await apiCall({ variables: { campaignId, serverId } });
-      if (data.errors?.length) {
-        throw new Error(data.errors[0].message);
+      try {
+        const data = await apiCall({ variables: { campaignId, serverId } });
+        if (data.errors?.length) {
+          throw new Error(data.errors[0].message);
+        }
+      } catch (e) {
+        throw new Error(e.message);
       }
     },
     [apiCall, client, userId]

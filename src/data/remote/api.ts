@@ -79,37 +79,41 @@ export function useUpdateFriendRequest(setError: (error: string) => void) {
   const [apiCall] = useUpdateFriendRequestMutation();
   return useCallback(
     async (userId: string, action: FriendRequestAction) => {
-      const data = await apiCall({ variables: { userId, action } });
-      if (data.errors?.length) {
-        setError(data.errors[0].message);
-      } else {
-        const targetId = client.cache.identify({
-          __typename: "users",
-          id: userId,
-        });
-        if (targetId) {
-          updateCache({
-            fields: {
-              friends(current) {
-                if (action === "revoke") {
-                  return filter(current, (f) => f.user?.__ref !== targetId);
-                }
-                return current;
-              },
-              sent_requests(current) {
-                if (action === "revoke") {
-                  return filter(current, (f) => f.user?.__ref !== targetId);
-                }
-                return current;
-              },
-              received_requests(current) {
-                if (action === "revoke") {
-                  return filter(current, (f) => f.user?.__ref !== targetId);
-                }
-              },
-            },
+      try {
+        const data = await apiCall({ variables: { userId, action } });
+        if (data.errors?.length) {
+          setError(data.errors[0].message);
+        } else {
+          const targetId = client.cache.identify({
+            __typename: "users",
+            id: userId,
           });
+          if (targetId) {
+            updateCache({
+              fields: {
+                friends(current) {
+                  if (action === "revoke") {
+                    return filter(current, (f) => f.user?.__ref !== targetId);
+                  }
+                  return current;
+                },
+                sent_requests(current) {
+                  if (action === "revoke") {
+                    return filter(current, (f) => f.user?.__ref !== targetId);
+                  }
+                  return current;
+                },
+                received_requests(current) {
+                  if (action === "revoke") {
+                    return filter(current, (f) => f.user?.__ref !== targetId);
+                  }
+                },
+              },
+            });
+          }
         }
+      } catch (e) {
+        setError(e.message);
       }
     },
     [apiCall, setError, client.cache, updateCache]
