@@ -54,7 +54,6 @@ import {
   EditAccessAction,
   useDeleteCampaignMutation,
 } from "@generated/graphql/apollo-schema";
-import { useFunction, ErrorResponse } from "./api";
 import ArkhamCardsAuthContext from "@lib/ArkhamCardsAuthContext";
 import { ChaosBag } from "@app_constants";
 import {
@@ -69,16 +68,6 @@ interface CampaignLink {
   campaignIdA: string;
   campaignIdB: string;
 }
-interface CreateCampaignRequestData {
-  campaignId: string;
-  linked?: CampaignLink;
-  guided?: boolean;
-}
-
-interface CampaignResponse extends ErrorResponse {
-  campaignId: number;
-}
-
 export function useCampaignDeleted(
   componentId: string,
   campaign?: SingleCampaignT
@@ -126,11 +115,6 @@ function useCreateCampaignRequest(): (
   );
 }
 
-interface LinkCampaignResponse extends ErrorResponse {
-  campaignId: number;
-  campaignIdA: number;
-  campaignIdB: number;
-}
 function useCreateLinkedCampaignRequest(): (
   campaignId: string,
   linked: CampaignLink,
@@ -187,19 +171,6 @@ function useCreateLinkedCampaignRequest(): (
   );
 }
 
-interface UploadLocalDeckData {
-  localDeckId: string;
-  arkhamDbId: number;
-}
-
-interface BasicResponse extends ErrorResponse {
-  success?: boolean;
-  deckIds: {
-    id: number;
-    campaignId: number;
-  }[];
-}
-
 export function useUploadLocalDeckRequest(): (
   localDeckId: string,
   arkhamDbId: number
@@ -240,17 +211,6 @@ export function useUploadLocalDeckRequest(): (
     },
     [uploadLocalDeck, userId, cache]
   );
-}
-
-interface EditCampaignAccessData {
-  campaignId: string;
-  serverId: number;
-  users: string[];
-  action: EditAccessAction;
-}
-
-interface BasicResponse extends ErrorResponse {
-  success?: boolean;
 }
 
 export function useEditCampaignAccessRequest(): (
@@ -447,10 +407,6 @@ export function useCreateCampaignActions(): CreateCampaignActions {
   }, [createCampaign, createLinkedCampaign, uploadNewCampaign]);
 }
 
-interface DeleteCampaignRequest extends ErrorResponse {
-  campaignId: string;
-  serverId: number;
-}
 export function useDeleteCampaignRequest() {
   const client = useApolloClient();
   const { userId } = useContext(ArkhamCardsAuthContext);

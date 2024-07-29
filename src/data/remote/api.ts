@@ -7,11 +7,9 @@ import { useModifyUserCache } from "@data/apollo/cache";
 
 import LanguageContext from "@lib/i18n/LanguageContext";
 import { getAppleRefreshToken, setAppleRefreshToken } from "@lib/auth";
-import { useApolloClient } from "@apollo/client";
 import {
   FriendRequestAction,
   useSearchUsersLazyQuery,
-  useSearchUsersQuery,
   useUpdateFriendRequestMutation,
 } from "@generated/graphql/apollo-schema";
 
@@ -60,11 +58,6 @@ export function useDeleteAccount() {
       return data.error;
     }
   }, [apiCall]);
-}
-
-interface UpdateFriendRequest {
-  userId: string;
-  action: "request" | "revoke";
 }
 
 export const enum FriendStatus {
@@ -173,16 +166,6 @@ function searchResultsReducer(state: SearchResults, action: SearchAction) {
       }
       return state;
   }
-}
-
-interface SearchUsersRequest {
-  search: string;
-  continueToken?: string;
-}
-
-interface SearchUsersResponse {
-  error?: string;
-  users?: SimpleUser[];
 }
 
 interface SearchUsers {
