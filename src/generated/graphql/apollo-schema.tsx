@@ -47,6 +47,8 @@ export type CreateCampaignInput = {
 export type CreateCampaignOutput = {
   __typename?: 'CreateCampaignOutput';
   campaignId: Scalars['Int']['output'];
+  campaignIdA?: Maybe<Scalars['Int']['output']>;
+  campaignIdB?: Maybe<Scalars['Int']['output']>;
 };
 
 export type CreateDeckInput = {
@@ -108,6 +110,21 @@ export type EditCampaignAccessInput = {
 export type EditCampaignAccessOutput = {
   __typename?: 'EditCampaignAccessOutput';
   campaignId: Scalars['Int']['output'];
+};
+
+export enum FriendRequestAction {
+  Request = 'request',
+  Revoke = 'revoke'
+}
+
+export type FriendRequestInput = {
+  action: FriendRequestAction;
+  userId: Scalars['String']['input'];
+};
+
+export type FriendRequestOutput = {
+  __typename?: 'FriendRequestOutput';
+  success: Scalars['Boolean']['output'];
 };
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
@@ -194,6 +211,8 @@ export type UpdateHandleInput = {
 export type UpdateHandleOutput = {
   __typename?: 'UpdateHandleOutput';
   success: Scalars['Boolean']['output'];
+  user?: Maybe<Users>;
+  userId: Scalars['String']['output'];
 };
 
 export type UpgradeDeckInput = {
@@ -220,8 +239,8 @@ export type UploadLocalCampaignDeckOutput = {
 
 export type UserSearchResult = {
   __typename?: 'UserSearchResult';
-  handle?: Maybe<Scalars['String']['output']>;
-  id?: Maybe<Scalars['String']['output']>;
+  handle: Scalars['String']['output'];
+  id: Scalars['String']['output'];
 };
 
 export type UsersSearchInput = {
@@ -231,8 +250,8 @@ export type UsersSearchInput = {
 
 export type UsersSearchOutput = {
   __typename?: 'UsersSearchOutput';
-  hasMore?: Maybe<Scalars['String']['output']>;
-  users?: Maybe<Array<Maybe<UserSearchResult>>>;
+  hasMore: Scalars['String']['output'];
+  users: Array<UserSearchResult>;
 };
 
 /** columns and relationships of "all_card" */
@@ -21324,6 +21343,7 @@ export type Mutation_Root = {
   /** execute VOLATILE function "rangers.upgrade_deck" which returns "rangers.deck" */
   rangers_upgrade_deck?: Maybe<Rangers_Deck>;
   refreshArkhamDbDecks?: Maybe<RefreshDecksOutput>;
+  updateFriendRequest?: Maybe<FriendRequestOutput>;
   updateHandle?: Maybe<UpdateHandleOutput>;
   /** update data of the table: "all_card" */
   update_all_card?: Maybe<All_Card_Mutation_Response>;
@@ -24594,6 +24614,12 @@ export type Mutation_RootRangers_Upgrade_DeckArgs = {
 /** mutation root */
 export type Mutation_RootRefreshArkhamDbDecksArgs = {
   args: RefreshDecksInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdateFriendRequestArgs = {
+  args: FriendRequestInput;
 };
 
 
@@ -47673,6 +47699,23 @@ export type ChaosBagSetDifficultyMutationVariables = Exact<{
 
 export type ChaosBagSetDifficultyMutation = { __typename?: 'mutation_root', update_chaos_bag_result_by_pk?: { __typename?: 'chaos_bag_result', id: number, difficulty?: Campaign_Difficulty_Enum | null } | null };
 
+export type CreateCampaignMutationVariables = Exact<{
+  campaignId: Scalars['String']['input'];
+  linked?: InputMaybe<LinkedCampaignId>;
+  guided?: InputMaybe<Scalars['Boolean']['input']>;
+}>;
+
+
+export type CreateCampaignMutation = { __typename?: 'mutation_root', createCampaign?: { __typename?: 'CreateCampaignOutput', campaignId: number, campaignIdA?: number | null, campaignIdB?: number | null } | null };
+
+export type UploadLocalCampaignDeckMutationVariables = Exact<{
+  localDeckId: Scalars['String']['input'];
+  arkhamDbId: Scalars['Int']['input'];
+}>;
+
+
+export type UploadLocalCampaignDeckMutation = { __typename?: 'mutation_root', uploadLocalCampaignDeck?: { __typename?: 'UploadLocalCampaignDeckOutput', deckIds: Array<{ __typename?: 'DeckId', id: number, campaignId: number }> } | null };
+
 export type UploadNewCampaignMutationVariables = Exact<{
   campaignId: Scalars['Int']['input'];
   cycleCode: Scalars['String']['input'];
@@ -48058,6 +48101,47 @@ export type GetDeleteInformationQueryVariables = Exact<{
 
 
 export type GetDeleteInformationQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, handle?: string | null, arkhamDBDeckCount: { __typename?: 'campaign_deck_aggregate', aggregate?: { __typename?: 'campaign_deck_aggregate_fields', count: number } | null }, localDeckCount: { __typename?: 'campaign_deck_aggregate', aggregate?: { __typename?: 'campaign_deck_aggregate_fields', count: number } | null }, createdCampaignCount: { __typename?: 'user_campaigns_aggregate', aggregate?: { __typename?: 'user_campaigns_aggregate_fields', count: number } | null, nodes: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, name?: string | null, cycleCode?: string | null } | null }> }, joinedCampaignCount: { __typename?: 'user_campaigns_aggregate', aggregate?: { __typename?: 'user_campaigns_aggregate_fields', count: number } | null, nodes: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, name?: string | null, cycleCode?: string | null } | null }> } } | null };
+
+export type UpdateHandleMutationVariables = Exact<{
+  handle: Scalars['String']['input'];
+}>;
+
+
+export type UpdateHandleMutation = { __typename?: 'mutation_root', updateHandle?: { __typename?: 'UpdateHandleOutput', success: boolean, user?: { __typename?: 'users', id: string, handle?: string | null } | null } | null };
+
+export type UpdateFriendRequestMutationVariables = Exact<{
+  userId: Scalars['String']['input'];
+  action: FriendRequestAction;
+}>;
+
+
+export type UpdateFriendRequestMutation = { __typename?: 'mutation_root', updateFriendRequest?: { __typename?: 'FriendRequestOutput', success: boolean } | null };
+
+export type SearchUsersQueryVariables = Exact<{
+  search: Scalars['String']['input'];
+  continueToken?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type SearchUsersQuery = { __typename?: 'query_root', results?: { __typename?: 'UsersSearchOutput', hasMore: string, users: Array<{ __typename?: 'UserSearchResult', id: string, handle: string }> } | null };
+
+export type EditCampaignAccessMutationVariables = Exact<{
+  campaignId: Scalars['String']['input'];
+  serverId: Scalars['Int']['input'];
+  users: Array<Scalars['String']['input']> | Scalars['String']['input'];
+  action: EditAccessAction;
+}>;
+
+
+export type EditCampaignAccessMutation = { __typename?: 'mutation_root', editCampaignAccess?: { __typename?: 'EditCampaignAccessOutput', campaignId: number } | null };
+
+export type DeleteCampaignMutationVariables = Exact<{
+  campaignId: Scalars['String']['input'];
+  serverId: Scalars['Int']['input'];
+}>;
+
+
+export type DeleteCampaignMutation = { __typename?: 'mutation_root', deleteCampaign?: { __typename?: 'DeleteCampaignOutput', campaignId: number } | null };
 
 export type DeleteInvestigatorDecksMutationVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
@@ -49266,6 +49350,84 @@ export function useChaosBagSetDifficultyMutation(baseOptions?: Apollo.MutationHo
 export type ChaosBagSetDifficultyMutationHookResult = ReturnType<typeof useChaosBagSetDifficultyMutation>;
 export type ChaosBagSetDifficultyMutationResult = Apollo.MutationResult<ChaosBagSetDifficultyMutation>;
 export type ChaosBagSetDifficultyMutationOptions = Apollo.BaseMutationOptions<ChaosBagSetDifficultyMutation, ChaosBagSetDifficultyMutationVariables>;
+export const CreateCampaignDocument = gql`
+    mutation createCampaign($campaignId: String!, $linked: LinkedCampaignId, $guided: Boolean) {
+  createCampaign(
+    args: {campaignId: $campaignId, linked: $linked, guided: $guided}
+  ) {
+    campaignId
+    campaignIdA
+    campaignIdB
+  }
+}
+    `;
+export type CreateCampaignMutationFn = Apollo.MutationFunction<CreateCampaignMutation, CreateCampaignMutationVariables>;
+
+/**
+ * __useCreateCampaignMutation__
+ *
+ * To run a mutation, you first call `useCreateCampaignMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateCampaignMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createCampaignMutation, { data, loading, error }] = useCreateCampaignMutation({
+ *   variables: {
+ *      campaignId: // value for 'campaignId'
+ *      linked: // value for 'linked'
+ *      guided: // value for 'guided'
+ *   },
+ * });
+ */
+export function useCreateCampaignMutation(baseOptions?: Apollo.MutationHookOptions<CreateCampaignMutation, CreateCampaignMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateCampaignMutation, CreateCampaignMutationVariables>(CreateCampaignDocument, options);
+      }
+export type CreateCampaignMutationHookResult = ReturnType<typeof useCreateCampaignMutation>;
+export type CreateCampaignMutationResult = Apollo.MutationResult<CreateCampaignMutation>;
+export type CreateCampaignMutationOptions = Apollo.BaseMutationOptions<CreateCampaignMutation, CreateCampaignMutationVariables>;
+export const UploadLocalCampaignDeckDocument = gql`
+    mutation uploadLocalCampaignDeck($localDeckId: String!, $arkhamDbId: Int!) {
+  uploadLocalCampaignDeck(
+    args: {localDeckId: $localDeckId, arkhamDbId: $arkhamDbId}
+  ) {
+    deckIds {
+      id
+      campaignId
+    }
+  }
+}
+    `;
+export type UploadLocalCampaignDeckMutationFn = Apollo.MutationFunction<UploadLocalCampaignDeckMutation, UploadLocalCampaignDeckMutationVariables>;
+
+/**
+ * __useUploadLocalCampaignDeckMutation__
+ *
+ * To run a mutation, you first call `useUploadLocalCampaignDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUploadLocalCampaignDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [uploadLocalCampaignDeckMutation, { data, loading, error }] = useUploadLocalCampaignDeckMutation({
+ *   variables: {
+ *      localDeckId: // value for 'localDeckId'
+ *      arkhamDbId: // value for 'arkhamDbId'
+ *   },
+ * });
+ */
+export function useUploadLocalCampaignDeckMutation(baseOptions?: Apollo.MutationHookOptions<UploadLocalCampaignDeckMutation, UploadLocalCampaignDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UploadLocalCampaignDeckMutation, UploadLocalCampaignDeckMutationVariables>(UploadLocalCampaignDeckDocument, options);
+      }
+export type UploadLocalCampaignDeckMutationHookResult = ReturnType<typeof useUploadLocalCampaignDeckMutation>;
+export type UploadLocalCampaignDeckMutationResult = Apollo.MutationResult<UploadLocalCampaignDeckMutation>;
+export type UploadLocalCampaignDeckMutationOptions = Apollo.BaseMutationOptions<UploadLocalCampaignDeckMutation, UploadLocalCampaignDeckMutationVariables>;
 export const UploadNewCampaignDocument = gql`
     mutation uploadNewCampaign($campaignId: Int!, $cycleCode: String!, $standaloneId: jsonb, $showInterludes: Boolean, $name: String!, $difficulty: String, $campaignNotes: jsonb, $scenarioResults: jsonb, $chaosBag: jsonb, $weaknessSet: jsonb, $tarotReading: jsonb, $guideVersion: Int, $inputs: [guide_input_insert_input!]!, $achievements: [guide_achievement_insert_input!]!, $investigator_data: [investigator_data_insert_input!]!, $investigators: [campaign_investigator_insert_input!]!) {
   insert_guide_input(objects: $inputs) {
@@ -50989,6 +51151,194 @@ export type GetDeleteInformationQueryHookResult = ReturnType<typeof useGetDelete
 export type GetDeleteInformationLazyQueryHookResult = ReturnType<typeof useGetDeleteInformationLazyQuery>;
 export type GetDeleteInformationSuspenseQueryHookResult = ReturnType<typeof useGetDeleteInformationSuspenseQuery>;
 export type GetDeleteInformationQueryResult = Apollo.QueryResult<GetDeleteInformationQuery, GetDeleteInformationQueryVariables>;
+export const UpdateHandleDocument = gql`
+    mutation updateHandle($handle: String!) {
+  updateHandle(args: {handle: $handle}) {
+    success
+    user {
+      id
+      handle
+    }
+  }
+}
+    `;
+export type UpdateHandleMutationFn = Apollo.MutationFunction<UpdateHandleMutation, UpdateHandleMutationVariables>;
+
+/**
+ * __useUpdateHandleMutation__
+ *
+ * To run a mutation, you first call `useUpdateHandleMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateHandleMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateHandleMutation, { data, loading, error }] = useUpdateHandleMutation({
+ *   variables: {
+ *      handle: // value for 'handle'
+ *   },
+ * });
+ */
+export function useUpdateHandleMutation(baseOptions?: Apollo.MutationHookOptions<UpdateHandleMutation, UpdateHandleMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateHandleMutation, UpdateHandleMutationVariables>(UpdateHandleDocument, options);
+      }
+export type UpdateHandleMutationHookResult = ReturnType<typeof useUpdateHandleMutation>;
+export type UpdateHandleMutationResult = Apollo.MutationResult<UpdateHandleMutation>;
+export type UpdateHandleMutationOptions = Apollo.BaseMutationOptions<UpdateHandleMutation, UpdateHandleMutationVariables>;
+export const UpdateFriendRequestDocument = gql`
+    mutation updateFriendRequest($userId: String!, $action: FriendRequestAction!) {
+  updateFriendRequest(args: {userId: $userId, action: $action}) {
+    success
+  }
+}
+    `;
+export type UpdateFriendRequestMutationFn = Apollo.MutationFunction<UpdateFriendRequestMutation, UpdateFriendRequestMutationVariables>;
+
+/**
+ * __useUpdateFriendRequestMutation__
+ *
+ * To run a mutation, you first call `useUpdateFriendRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateFriendRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateFriendRequestMutation, { data, loading, error }] = useUpdateFriendRequestMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      action: // value for 'action'
+ *   },
+ * });
+ */
+export function useUpdateFriendRequestMutation(baseOptions?: Apollo.MutationHookOptions<UpdateFriendRequestMutation, UpdateFriendRequestMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateFriendRequestMutation, UpdateFriendRequestMutationVariables>(UpdateFriendRequestDocument, options);
+      }
+export type UpdateFriendRequestMutationHookResult = ReturnType<typeof useUpdateFriendRequestMutation>;
+export type UpdateFriendRequestMutationResult = Apollo.MutationResult<UpdateFriendRequestMutation>;
+export type UpdateFriendRequestMutationOptions = Apollo.BaseMutationOptions<UpdateFriendRequestMutation, UpdateFriendRequestMutationVariables>;
+export const SearchUsersDocument = gql`
+    query searchUsers($search: String!, $continueToken: String) {
+  results: usersSearch(args: {search: $search, continueToken: $continueToken}) {
+    users {
+      id
+      handle
+    }
+    hasMore
+  }
+}
+    `;
+
+/**
+ * __useSearchUsersQuery__
+ *
+ * To run a query within a React component, call `useSearchUsersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchUsersQuery({
+ *   variables: {
+ *      search: // value for 'search'
+ *      continueToken: // value for 'continueToken'
+ *   },
+ * });
+ */
+export function useSearchUsersQuery(baseOptions: Apollo.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables> & ({ variables: SearchUsersQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, options);
+      }
+export function useSearchUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, options);
+        }
+export function useSearchUsersSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, options);
+        }
+export type SearchUsersQueryHookResult = ReturnType<typeof useSearchUsersQuery>;
+export type SearchUsersLazyQueryHookResult = ReturnType<typeof useSearchUsersLazyQuery>;
+export type SearchUsersSuspenseQueryHookResult = ReturnType<typeof useSearchUsersSuspenseQuery>;
+export type SearchUsersQueryResult = Apollo.QueryResult<SearchUsersQuery, SearchUsersQueryVariables>;
+export const EditCampaignAccessDocument = gql`
+    mutation editCampaignAccess($campaignId: String!, $serverId: Int!, $users: [String!]!, $action: EditAccessAction!) {
+  editCampaignAccess(
+    args: {campaignId: $campaignId, serverId: $serverId, users: $users, action: $action}
+  ) {
+    campaignId
+  }
+}
+    `;
+export type EditCampaignAccessMutationFn = Apollo.MutationFunction<EditCampaignAccessMutation, EditCampaignAccessMutationVariables>;
+
+/**
+ * __useEditCampaignAccessMutation__
+ *
+ * To run a mutation, you first call `useEditCampaignAccessMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditCampaignAccessMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editCampaignAccessMutation, { data, loading, error }] = useEditCampaignAccessMutation({
+ *   variables: {
+ *      campaignId: // value for 'campaignId'
+ *      serverId: // value for 'serverId'
+ *      users: // value for 'users'
+ *      action: // value for 'action'
+ *   },
+ * });
+ */
+export function useEditCampaignAccessMutation(baseOptions?: Apollo.MutationHookOptions<EditCampaignAccessMutation, EditCampaignAccessMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<EditCampaignAccessMutation, EditCampaignAccessMutationVariables>(EditCampaignAccessDocument, options);
+      }
+export type EditCampaignAccessMutationHookResult = ReturnType<typeof useEditCampaignAccessMutation>;
+export type EditCampaignAccessMutationResult = Apollo.MutationResult<EditCampaignAccessMutation>;
+export type EditCampaignAccessMutationOptions = Apollo.BaseMutationOptions<EditCampaignAccessMutation, EditCampaignAccessMutationVariables>;
+export const DeleteCampaignDocument = gql`
+    mutation deleteCampaign($campaignId: String!, $serverId: Int!) {
+  deleteCampaign(args: {campaignId: $campaignId, serverId: $serverId}) {
+    campaignId
+  }
+}
+    `;
+export type DeleteCampaignMutationFn = Apollo.MutationFunction<DeleteCampaignMutation, DeleteCampaignMutationVariables>;
+
+/**
+ * __useDeleteCampaignMutation__
+ *
+ * To run a mutation, you first call `useDeleteCampaignMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCampaignMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCampaignMutation, { data, loading, error }] = useDeleteCampaignMutation({
+ *   variables: {
+ *      campaignId: // value for 'campaignId'
+ *      serverId: // value for 'serverId'
+ *   },
+ * });
+ */
+export function useDeleteCampaignMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCampaignMutation, DeleteCampaignMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteCampaignMutation, DeleteCampaignMutationVariables>(DeleteCampaignDocument, options);
+      }
+export type DeleteCampaignMutationHookResult = ReturnType<typeof useDeleteCampaignMutation>;
+export type DeleteCampaignMutationResult = Apollo.MutationResult<DeleteCampaignMutation>;
+export type DeleteCampaignMutationOptions = Apollo.BaseMutationOptions<DeleteCampaignMutation, DeleteCampaignMutationVariables>;
 export const DeleteInvestigatorDecksDocument = gql`
     mutation deleteInvestigatorDecks($campaign_id: Int!, $investigator: String!, $user_id: String!) {
   delete_campaign_deck(

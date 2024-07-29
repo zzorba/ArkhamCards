@@ -11,6 +11,7 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCampaignAccess, UserProfile } from '@data/remote/hooks';
 import { FriendsViewProps } from '@components/social/FriendsView';
+import { EditAccessAction } from '@generated/graphql/apollo-schema';
 
 export interface CampaignAccessProps {
   campaignId: UploadedCampaignId;
@@ -21,10 +22,10 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
   const campaignAccess = useCampaignAccess(campaignId);
   const editCampaignAccess = useEditCampaignAccessRequest();
   const inviteUser = useCallback(async(user: string) => {
-    await editCampaignAccess(campaignId, [user], 'grant');
+    await editCampaignAccess(campaignId, [user], EditAccessAction.Grant);
   }, [editCampaignAccess, campaignId]);
   const removeUser = useCallback(async(user: string) => {
-    await editCampaignAccess(campaignId, [user], 'revoke');
+    await editCampaignAccess(campaignId, [user], EditAccessAction.Revoke);
   }, [editCampaignAccess, campaignId]);
   const editFriendsPressed = useCallback(() => {
     if (userId) {

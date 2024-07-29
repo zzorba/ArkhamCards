@@ -1,3 +1,35 @@
+mutation editCampaignAccess(
+  $campaignId: String!
+  $serverId: Int!
+  $users: [String!]!
+  $action: EditAccessAction!
+) {
+  editCampaignAccess(
+    args: {
+      campaignId: $campaignId
+      serverId: $serverId
+      users: $users
+      action: $action
+    }
+  ) {
+    campaignId
+  }
+}
+
+mutation deleteCampaign(
+  $campaignId: String!
+  $serverId: Int!
+) {
+  deleteCampaign(
+    args: {
+      campaignId: $campaignId
+      serverId: $serverId
+    }
+  ) {
+    campaignId
+  }
+}
+
 mutation deleteInvestigatorDecks(
   $campaign_id: Int!,
   $investigator: String!,

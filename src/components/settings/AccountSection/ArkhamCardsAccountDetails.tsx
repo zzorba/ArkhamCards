@@ -9,12 +9,12 @@ import { ShowAlert, useSimpleTextDialog } from '@components/deck/dialogs';
 import { NavigationProps } from '@components/nav/types';
 import { Navigation } from 'react-native-navigation';
 import { FriendsViewProps } from '@components/social/FriendsView';
-import { useUpdateHandle } from '@data/remote/api';
 import StyleContext from '@styles/StyleContext';
 import { useMyProfile } from '@data/remote/hooks';
 import { useComponentDidAppear } from '@components/core/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import ArkhamCardsLoginButton from './auth/ArkhamCardsLoginButton';
+import { useUpdateHandleMutation } from '@generated/graphql/apollo-schema';
 
 interface Props {
   showAlert: ShowAlert;
@@ -29,11 +29,17 @@ export default function ArkhamCardsAccountDetails({ componentId, showAlert }: Na
     refresh();
   }, componentId, [refresh]);
 
-  const updateHandle = useUpdateHandle();
+  const [updateHandle] = useUpdateHandleMutation();
   const [dialog, showDialog] = useSimpleTextDialog({
     title: t`Account Name`,
     value: profile?.handle || '',
-    onValidate: updateHandle,
+    onValidate: async (handle: string) => {
+      const result = await updateHandle({ variables: { handle } });
+      if (result.errors) {
+        return t`Handle is already taken`;
+      }
+      return undefined;
+    },
     placeholder: t`Choose a handle for your account`,
   });
   const editFriendsPressed = useCallback(() => {

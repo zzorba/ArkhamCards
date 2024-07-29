@@ -1,12 +1,19 @@
-import { useCallback, useContext, useReducer } from 'react';
-import { filter } from 'lodash';
-import functions from '@react-native-firebase/functions';
+import { useCallback, useContext, useReducer } from "react";
+import { filter } from "lodash";
+import functions from "@react-native-firebase/functions";
 
-import { SimpleUser } from '@data/remote/hooks';
-import { useModifyUserCache } from '@data/apollo/cache';
+import { SimpleUser } from "@data/remote/hooks";
+import { useModifyUserCache } from "@data/apollo/cache";
 
-import LanguageContext from '@lib/i18n/LanguageContext';
-import { getAppleRefreshToken, setAppleRefreshToken } from '@lib/auth';
+import LanguageContext from "@lib/i18n/LanguageContext";
+import { getAppleRefreshToken, setAppleRefreshToken } from "@lib/auth";
+import { useApolloClient } from "@apollo/client";
+import {
+  FriendRequestAction,
+  useSearchUsersLazyQuery,
+  useSearchUsersQuery,
+  useUpdateFriendRequestMutation,
+} from "@generated/graphql/apollo-schema";
 
 export interface ErrorResponse {
   error?: string;
@@ -14,27 +21,38 @@ export interface ErrorResponse {
 
 export interface EmptyRequest {}
 
-export function useFunction<RequestT=EmptyRequest, ResponseT=ErrorResponse>(functionName: string) {
+export function useFunction<RequestT = EmptyRequest, ResponseT = ErrorResponse>(
+  functionName: string
+) {
   const { lang } = useContext(LanguageContext);
-  return useCallback(async(request: RequestT): Promise<ResponseT> => {
-    const response = await functions().httpsCallable(functionName)({ ...request, locale: lang });
-    return response.data as ResponseT;
-  }, [lang, functionName]);
+  return useCallback(
+    async (request: RequestT): Promise<ResponseT> => {
+      const response = await functions().httpsCallable(functionName)({
+        ...request,
+        locale: lang,
+      });
+      return response.data as ResponseT;
+    },
+    [lang, functionName]
+  );
 }
 
-interface DeleteAccountRequest {
-}
+interface DeleteAccountRequest {}
 
 export function useDeleteAccount() {
-  const apiCall = useFunction<DeleteAccountRequest>('social-deleteAccount');
-  return useCallback(async() => {
+  const apiCall = useFunction<DeleteAccountRequest>("social-deleteAccount");
+  return useCallback(async () => {
     const appleToken = await getAppleRefreshToken();
     if (appleToken) {
       try {
-        await fetch(`https://us-central1-arkhamblob.cloudfunctions.net/apple-revokeToken?refresh_token=${encodeURIComponent(appleToken)}`)
+        await fetch(
+          `https://us-central1-arkhamblob.cloudfunctions.net/apple-revokeToken?refresh_token=${encodeURIComponent(
+            appleToken
+          )}`
+        );
       } catch (e) {
         console.log(e.message);
-        await setAppleRefreshToken('');
+        await setAppleRefreshToken("");
       }
     }
     const data = await apiCall({});
@@ -44,93 +62,73 @@ export function useDeleteAccount() {
   }, [apiCall]);
 }
 
-interface UpdateHandleRequest {
-  handle: string;
-}
-export function useUpdateHandle() {
-  const [updateCache] = useModifyUserCache();
-  const apiCall = useFunction<UpdateHandleRequest>('social-updateHandle');
-  return useCallback(async(rawHandle: string) => {
-    const handle = rawHandle.trim();
-    const data = await apiCall({ handle: handle });
-    if (data.error) {
-      return data.error;
-    }
-    updateCache({
-      fields: {
-        handle() {
-          return handle;
-        },
-      },
-    });
-  }, [apiCall, updateCache]);
-}
-
 interface UpdateFriendRequest {
   userId: string;
-  action: 'request' | 'revoke';
+  action: "request" | "revoke";
 }
 
 export const enum FriendStatus {
-  NONE = 'none',
-  RECEIVED = 'received',
-  SENT = 'sent',
-  FRIEND = 'friend',
+  NONE = "none",
+  RECEIVED = "received",
+  SENT = "sent",
+  FRIEND = "friend",
 }
 
 export function useUpdateFriendRequest(setError: (error: string) => void) {
   const [updateCache, client] = useModifyUserCache();
-  const apiCall = useFunction<UpdateFriendRequest>('social-updateFriendRequest');
-  return useCallback(async(
-    userId: string,
-    action: 'request' | 'revoke'
-  ) => {
-    const data = await apiCall({ userId, action });
-    if (data.error) {
-      setError(data.error);
-    } else {
-      const targetId = client.cache.identify({ __typename: 'users', id: userId });
-      if (targetId) {
-        updateCache({
-          fields: {
-            friends(current) {
-              if (action === 'revoke') {
-                return filter(current, f => f.user?.__ref !== targetId);
-              }
-              return current;
-            },
-            sent_requests(current) {
-              if (action === 'revoke') {
-                return filter(current, f => f.user?.__ref !== targetId);
-              }
-              return current;
-            },
-            received_requests(current) {
-              if (action === 'revoke') {
-                return filter(current, f => f.user?.__ref !== targetId);
-              }
-
-            },
-          },
+  const [apiCall] = useUpdateFriendRequestMutation();
+  return useCallback(
+    async (userId: string, action: FriendRequestAction) => {
+      const data = await apiCall({ variables: { userId, action } });
+      if (data.errors?.length) {
+        setError(data.errors[0].message);
+      } else {
+        const targetId = client.cache.identify({
+          __typename: "users",
+          id: userId,
         });
+        if (targetId) {
+          updateCache({
+            fields: {
+              friends(current) {
+                if (action === "revoke") {
+                  return filter(current, (f) => f.user?.__ref !== targetId);
+                }
+                return current;
+              },
+              sent_requests(current) {
+                if (action === "revoke") {
+                  return filter(current, (f) => f.user?.__ref !== targetId);
+                }
+                return current;
+              },
+              received_requests(current) {
+                if (action === "revoke") {
+                  return filter(current, (f) => f.user?.__ref !== targetId);
+                }
+              },
+            },
+          });
+        }
       }
-    }
-  }, [apiCall, setError, client.cache, updateCache]);
+    },
+    [apiCall, setError, client.cache, updateCache]
+  );
 }
 
 interface StartSearchAction {
-  type: 'start';
+  type: "start";
   term: string;
 }
 
 interface ErrorSearchAction {
-  type: 'error';
+  type: "error";
   term: string;
   error: string;
 }
 
 interface FinishSearchAction {
-  type: 'finish';
+  type: "finish";
   term: string;
   results: SimpleUser[];
 }
@@ -146,12 +144,12 @@ export interface SearchResults {
 
 function searchResultsReducer(state: SearchResults, action: SearchAction) {
   switch (action.type) {
-    case 'start':
+    case "start":
       return {
         term: action.term,
         loading: true,
       };
-    case 'error': {
+    case "error": {
       if (state.term === action.term) {
         return {
           term: action.term,
@@ -161,7 +159,7 @@ function searchResultsReducer(state: SearchResults, action: SearchAction) {
       }
       return state;
     }
-    case 'finish':
+    case "finish":
       if (state.term === action.term) {
         return {
           term: action.term,
@@ -188,21 +186,35 @@ interface SearchUsers {
   searchResults: SearchResults;
 }
 export function useSearchUsers(): SearchUsers {
-  const apiCall = useFunction<SearchUsersRequest, SearchUsersResponse>('social-searchUsers');
-  const [searchResults, updateSearchResults] = useReducer(searchResultsReducer, { loading: false });
-  const doSearch = useCallback(async(search: string) => {
-    updateSearchResults({ type: 'start', term: search });
-    if (!search) {
-      updateSearchResults({ type: 'finish', term: search, results: [] });
-    } else {
-      const data = await apiCall({ search });
-      if (data.error) {
-        updateSearchResults({ type: 'error', term: search, error: data.error });
+  const [apiCall] = useSearchUsersLazyQuery();
+  const [searchResults, updateSearchResults] = useReducer(
+    searchResultsReducer,
+    { loading: false }
+  );
+  const doSearch = useCallback(
+    async (search: string) => {
+      updateSearchResults({ type: "start", term: search });
+      if (!search) {
+        updateSearchResults({ type: "finish", term: search, results: [] });
       } else {
-        updateSearchResults({ type: 'finish', term: search, results: data.users || [] });
+        const data = await apiCall({ variables: { search } });
+        if (data.error?.graphQLErrors.length) {
+          updateSearchResults({
+            type: "error",
+            term: search,
+            error: data.error.graphQLErrors[0].message,
+          });
+        } else {
+          updateSearchResults({
+            type: "finish",
+            term: search,
+            results: data.data?.results?.users ?? [],
+          });
+        }
       }
-    }
-  }, [apiCall, updateSearchResults]);
+    },
+    [apiCall, updateSearchResults]
+  );
   return {
     search: doSearch,
     searchResults,

@@ -9,6 +9,7 @@ import { NavigationProps } from '@components/nav/types';
 import useFriendFeedComponent, { FriendFeedItem, UserControls } from './useFriendFeedComponent';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { searchNormalize } from '@data/types/Card';
+import { FriendRequestAction } from '@generated/graphql/apollo-schema';
 
 export interface FriendsViewProps {
   userId: string;
@@ -40,10 +41,10 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
   const [error, setError] = useState<string>();
   const updateFriendRequest = useUpdateFriendRequest(setError);
   const acceptRequest = useCallback(async(userId: string) => {
-    return await updateFriendRequest(userId, 'request');
+    return await updateFriendRequest(userId, FriendRequestAction.Request);
   }, [updateFriendRequest]);
   const rejectRequest = useCallback((userId: string) => {
-    return updateFriendRequest(userId, 'revoke');
+    return updateFriendRequest(userId, FriendRequestAction.Revoke);
   }, [updateFriendRequest]);
   const controls: UserControls = useMemo(() => {
     return {

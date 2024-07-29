@@ -1,5 +1,40 @@
 # import FullCampaign from 'fragments.graphql'
 
+mutation createCampaign(
+  $campaignId: String!
+  $linked: LinkedCampaignId
+  $guided: Boolean
+) {
+  createCampaign(
+    args: {
+      campaignId: $campaignId
+      linked: $linked
+      guided: $guided
+    }
+  ) {
+    campaignId
+    campaignIdA
+    campaignIdB
+  }
+}
+
+mutation uploadLocalCampaignDeck(
+  $localDeckId: String!
+  $arkhamDbId: Int!
+) {
+  uploadLocalCampaignDeck(
+    args: {
+      localDeckId: $localDeckId
+      arkhamDbId: $arkhamDbId
+    }
+  ) {
+    deckIds {
+      id
+      campaignId
+    }
+  }
+}
+
 mutation uploadNewCampaign(
   $campaignId: Int!,
   $cycleCode: String!,

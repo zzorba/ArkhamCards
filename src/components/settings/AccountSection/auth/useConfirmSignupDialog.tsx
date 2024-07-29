@@ -9,8 +9,8 @@ import { useMyProfile } from '@data/remote/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import NewDialog from '@components/core/NewDialog';
-import { useUpdateHandle } from '@data/remote/api';
 import DeckButton from '@components/deck/controls/DeckButton';
+import { useUpdateHandleMutation } from '@generated/graphql/apollo-schema';
 
 export default function useConfirmSignupDialog(): [React.ReactNode, () => void] {
   const { user } = useContext(ArkhamCardsAuthContext);
@@ -20,13 +20,12 @@ export default function useConfirmSignupDialog(): [React.ReactNode, () => void] 
   const [liveValue, setLiveValue] = useState('');
   const [error, setError] = useState<string | undefined>(undefined);
   const textInputRef = useRef<TextInput>(null);
-  const updateHandle = useUpdateHandle();
+  const [updateHandle] = useUpdateHandleMutation();
   const doSubmit = useCallback(async(submitValue: string) => {
     setSubmitting(true);
-    const error = await updateHandle(submitValue.trim());
-    if (error) {
-      setError(error);
-      setSubmitting(false);
+    const result = await updateHandle({ variables: { handle: submitValue.trim() }});
+    if (result.errors?.length) {
+      setError(result.errors[0].message);
     }
     setSubmitting(false);
     refreshMyProfile();

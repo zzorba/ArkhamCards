@@ -89,3 +89,45 @@ query getDeleteInformation($userId:String!) {
     }
   }
 }
+
+mutation updateHandle(
+  $handle: String!
+) {
+  updateHandle(args: {
+    handle: $handle
+  }) {
+    success
+    user {
+      id
+      handle
+    }
+  }
+}
+
+mutation updateFriendRequest(
+  $userId: String!
+  $action: FriendRequestAction!
+) {
+  updateFriendRequest(args: {
+    userId: $userId
+    action: $action
+  }) {
+    success
+  }
+}
+
+query searchUsers(
+  $search: String!
+  $continueToken: String
+) {
+  results: usersSearch(args: {
+    search: $search
+    continueToken: $continueToken
+  }) {
+    users {
+      id
+      handle
+    }
+    hasMore
+  }
+}
