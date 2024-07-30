@@ -6589,59 +6589,59 @@ msgstr "???"
 
 msgctxt "trait"
 msgid "Abomination"
-msgstr "흉물"
+msgstr "흉물 - Abomination"
 
 msgctxt "trait"
 msgid "Abyss"
-msgstr "심연"
+msgstr "심연 - Abyss"
 
 msgctxt "trait"
 msgid "Act 1"
-msgstr "주요목적 1"
+msgstr "주요목적 1 - Act 1"
 
 msgctxt "trait"
 msgid "Act 2"
-msgstr "주요목적 2"
+msgstr "주요목적 2 - Act 2"
 
 msgctxt "trait"
 msgid "Agency"
-msgstr "요원"
+msgstr "요원 - Agency"
 
 msgctxt "trait"
 msgid "Ally"
-msgstr "조력자"
+msgstr "조력자 - Ally"
 
 msgctxt "trait"
 msgid "Altered"
-msgstr "달라진"
+msgstr "달라진 - Altered"
 
 msgctxt "trait"
 msgid "Ancient"
-msgstr "고대"
+msgstr "고대 - Ancient"
 
 msgctxt "trait"
 msgid "Ancient One"
-msgstr "고대의 존재"
+msgstr "고대의 존재 - Ancient One"
 
 msgctxt "trait"
 msgid "Arkham"
-msgstr "아컴"
+msgstr "아컴 - Arkham"
 
 msgctxt "trait"
 msgid "Arkham Asylum"
-msgstr "아컴 정신병원"
+msgstr "아컴 정신병원 - Arkham Asylum"
 
 msgctxt "trait"
 msgid "Armor"
-msgstr "방어구"
+msgstr "방어구 - Armor"
 
 msgctxt "trait"
 msgid "Artist"
-msgstr "예술가"
+msgstr "예술가 - Artist"
 
 msgctxt "trait"
 msgid "Assistant"
-msgstr "조수"
+msgstr "조수 - Assistant"
 
 msgctxt "trait"
 msgid "Attack"
@@ -6649,395 +6649,395 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Augury"
-msgstr "예지"
+msgstr "예지 - Augury"
 
 msgctxt "trait"
 msgid "Avatar"
-msgstr "화신"
+msgstr "화신 - Avatar"
 
 msgctxt "trait"
 msgid "Basement"
-msgstr "지하층"
+msgstr "지하층 - Basement"
 
 msgctxt "trait"
 msgid "Bayou"
-msgstr "늪지대"
+msgstr "늪지대 - Bayou"
 
 msgctxt "trait"
 msgid "Believer"
-msgstr "신자"
+msgstr "신자 - Believer"
 
 msgctxt "trait"
 msgid "Blessed"
-msgstr "축복받은"
+msgstr "축복받은 - Blessed"
 
 msgctxt "trait"
 msgid "Blunder"
-msgstr "실수"
+msgstr "실수 - Blunder"
 
 msgctxt "trait"
 msgid "Boat"
-msgstr "배"
+msgstr "배 - Boat"
 
 msgctxt "trait"
 msgid "Bold"
-msgstr "대담한"
+msgstr "대담한 - Bold"
 
 msgctxt "trait"
 msgid "Boon"
-msgstr "이익"
+msgstr "이익 - Boon"
 
 msgctxt "trait"
 msgid "Bridge"
-msgstr "다리"
+msgstr "다리 - Bridge"
 
 msgctxt "trait"
 msgid "Brotherhood"
-msgstr "형제단"
+msgstr "형제단 - Brotherhood"
 
 msgctxt "trait"
 msgid "Byakhee"
-msgstr "비야키"
+msgstr "비야키 - Byakhee"
 
 msgctxt "trait"
 msgid "Bystander"
-msgstr "주변인"
+msgstr "주변인 - Bystander"
 
 msgctxt "trait"
 msgid "Cairo"
-msgstr "카이로"
+msgstr "카이로 - Cairo"
 
 msgctxt "trait"
 msgid "Campsite"
-msgstr "야영지"
+msgstr "야영지 - Campsite"
 
 msgctxt "trait"
 msgid "Carnevale"
-msgstr "사육제"
+msgstr "사육제 - Carnevale"
 
 msgctxt "trait"
 msgid "Cave"
-msgstr "동굴"
+msgstr "동굴 - Cave"
 
 msgctxt "trait"
 msgid "Central"
-msgstr "중심부"
+msgstr "중심부 - Central"
 
 msgctxt "trait"
 msgid "Charm"
-msgstr "부적"
+msgstr "부적 - Charm"
 
 msgctxt "trait"
 msgid "Chosen"
-msgstr "선택받은 자"
+msgstr "선택받은 자 - Chosen"
 
 msgctxt "trait"
 msgid "Circle"
-msgstr "의식진"
+msgstr "의식진 - Circle"
 
 msgctxt "trait"
 msgid "City"
-msgstr "도시"
+msgstr "도시 - City"
 
 msgctxt "trait"
 msgid "Civic"
-msgstr "공공근로자"
+msgstr "공공근로자 - Civic"
 
 msgctxt "trait"
 msgid "Clairvoyant"
-msgstr "선견자"
+msgstr "선견자 - Clairvoyant"
 
 msgctxt "trait"
 msgid "Clothing"
-msgstr "옷"
+msgstr "옷 - Clothing"
 
 msgctxt "trait"
 msgid "Clover Club"
-msgstr "클로버 클럽"
+msgstr "클로버 클럽 - Clover Club"
 
 msgctxt "trait"
 msgid "Coastal"
-msgstr "해안가"
+msgstr "해안가 - Coastal"
 
 msgctxt "trait"
 msgid "Composure"
-msgstr "침착"
+msgstr "침착 - Composure"
 
 msgctxt "trait"
 msgid "Condition"
-msgstr "상태"
+msgstr "상태 - Condition"
 
 msgctxt "trait"
 msgid "Connection"
-msgstr "인맥"
+msgstr "인맥 - Connection"
 
 msgctxt "trait"
 msgid "Conspirator"
-msgstr "음모자"
+msgstr "음모자 - Conspirator"
 
 msgctxt "trait"
 msgid "Construct"
-msgstr "구조물"
+msgstr "구조물 - Construct"
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr "성약"
+msgstr "성약 - Covenant"
 
 msgctxt "trait"
 msgid "Creature"
-msgstr "생물"
+msgstr "생물 - Creature"
 
 msgctxt "trait"
 msgid "Crime Scene"
-msgstr "범죄 현장"
+msgstr "범죄 현장 - Crime Scene"
 
 msgctxt "trait"
 msgid "Criminal"
-msgstr "범죄자"
+msgstr "범죄자 - Criminal"
 
 msgctxt "trait"
 msgid "Cultist"
-msgstr "추종자"
+msgstr "추종자 - Cultist"
 
 msgctxt "trait"
 msgid "Curse"
-msgstr "저주"
+msgstr "저주 - Curse"
 
 msgctxt "trait"
 msgid "Cursed"
-msgstr "저주받은"
+msgstr "저주받은 - Cursed"
 
 msgctxt "trait"
 msgid "Dark Young"
-msgstr "암흑의 자손"
+msgstr "암흑의 자손 - Dark Young"
 
 msgctxt "trait"
 msgid "Deep One"
-msgstr "심해인"
+msgstr "심해인 - Deep One"
 
 msgctxt "trait"
 msgid "Depths"
-msgstr "무저갱"
+msgstr "무저갱 - Depths"
 
 msgctxt "trait"
 msgid "Desert"
-msgstr "사막"
+msgstr "사막 - Desert"
 
 msgctxt "trait"
 msgid "Desperate"
-msgstr "절박함"
+msgstr "절박함 - Desperate"
 
 msgctxt "trait"
 msgid "Detective"
-msgstr "탐정"
+msgstr "탐정 - Detective"
 
 msgctxt "trait"
 msgid "Developed"
-msgstr "단련된"
+msgstr "단련된 - Developed"
 
 msgctxt "trait"
 msgid "Dhole"
-msgstr "드홀"
+msgstr "드홀 - Dhole"
 
 msgctxt "trait"
 msgid "Distortion"
-msgstr "왜곡"
+msgstr "왜곡 - Distortion"
 
 msgctxt "trait"
 msgid "Dreamer"
-msgstr "꿈꾸는 자"
+msgstr "꿈꾸는 자 - Dreamer"
 
 msgctxt "trait"
 msgid "Dreamlands"
-msgstr "몽환의 땅"
+msgstr "몽환의 땅 - Dreamlands"
 
 msgctxt "trait"
 msgid "Drifter"
-msgstr "방랑자"
+msgstr "방랑자 - Drifter"
 
 msgctxt "trait"
 msgid "Dunwich"
-msgstr "던위치"
+msgstr "던위치 - Dunwich"
 
 msgctxt "trait"
 msgid "Eldritch"
-msgstr "섬뜩한"
+msgstr "섬뜩한 - Eldritch"
 
 msgctxt "trait"
 msgid "Elite"
-msgstr "정예"
+msgstr "정예 - Elite"
 
 msgctxt "trait"
 msgid "Endtimes"
-msgstr "종말"
+msgstr "종말 - Endtimes"
 
 msgctxt "trait"
 msgid "Evidence"
-msgstr "증거"
+msgstr "증거 - Evidence"
 
 msgctxt "trait"
 msgid "Exhibit"
-msgstr "전시실"
+msgstr "전시실 - Exhibit"
 
 msgctxt "trait"
 msgid "Expedition"
-msgstr "탐사"
+msgstr "탐사 - Expedition"
 
 msgctxt "trait"
 msgid "Expert"
-msgstr "전문화"
+msgstr "전문화 - Expert"
 
 msgctxt "trait"
 msgid "Extradimensional"
-msgstr "초차원"
+msgstr "초차원 - Extradimensional"
 
 msgctxt "trait"
 msgid "Extraterrestrial"
-msgstr "외계"
+msgstr "외계 - Extraterrestrial"
 
 msgctxt "trait"
 msgid "Eztli"
-msgstr "에스틀리"
+msgstr "에스틀리 - Eztli"
 
 msgctxt "trait"
 msgid "Familiar"
-msgstr "사역령"
+msgstr "사역령 - Familiar"
 
 msgctxt "trait"
 msgid "Fated"
-msgstr "숙명"
+msgstr "숙명 - Fated"
 
 msgctxt "trait"
 msgid "Favor"
-msgstr "호의"
+msgstr "호의 - Favor"
 
 msgctxt "trait"
 msgid "Firearm"
-msgstr "총"
+msgstr "총 - Firearm"
 
 msgctxt "trait"
 msgid "Flaw"
-msgstr "결함"
+msgstr "결함 - Flaw"
 
 msgctxt "trait"
 msgid "Flora"
-msgstr "식물"
+msgstr "식물 - Flora"
 
 msgctxt "trait"
 msgid "Footwear"
-msgstr "신발"
+msgstr "신발 - Footwear"
 
 msgctxt "trait"
 msgid "Forbidden"
-msgstr "금단"
+msgstr "금단 - Forbidden"
 
 msgctxt "trait"
 msgid "Forgotten"
-msgstr "잊힌"
+msgstr "잊힌 - Forgotten"
 
 msgctxt "trait"
 msgid "Fortune"
-msgstr "행운"
+msgstr "행운 - Fortune"
 
 msgctxt "trait"
 msgid "Future"
-msgstr "미래"
+msgstr "미래 - Future"
 
 msgctxt "trait"
 msgid "Gambit"
-msgstr "도박수"
+msgstr "도박수 - Gambit"
 
 msgctxt "trait"
 msgid "Geist"
-msgstr "유령"
+msgstr "유령 - Geist"
 
 msgctxt "trait"
 msgid "Ghast"
-msgstr "가스트"
+msgstr "가스트 - Ghast"
 
 msgctxt "trait"
 msgid "Ghoul"
-msgstr "구울"
+msgstr "구울 - Ghoul"
 
 msgctxt "trait"
 msgid "Government"
-msgstr "정부"
+msgstr "정부 - Government"
 
 msgctxt "trait"
 msgid "Grant"
-msgstr "후원금"
+msgstr "후원금 - Grant"
 
 msgctxt "trait"
 msgid "Graveyard"
-msgstr "묘지"
+msgstr "묘지 - Graveyard"
 
 msgctxt "trait"
 msgid "Ground Floor"
-msgstr "1층"
+msgstr "1층 - Ground Floor"
 
 msgctxt "trait"
 msgid "Guest"
-msgstr "손님"
+msgstr "손님 - Guest"
 
 msgctxt "trait"
 msgid "Gug"
-msgstr "구그"
+msgstr "구그 - Gug"
 
 msgctxt "trait"
 msgid "Hall"
-msgstr "복도"
+msgstr "복도 - Hall"
 
 msgctxt "trait"
 msgid "Hazard"
-msgstr "위기"
+msgstr "위기 - Hazard"
 
 msgctxt "trait"
 msgid "Hex"
-msgstr "사술"
+msgstr "사술 - Hex"
 
 msgctxt "trait"
 msgid "Hideout"
-msgstr "은신처"
+msgstr "은신처 - Hideout"
 
 msgctxt "trait"
 msgid "Historical Society"
-msgstr "사학회"
+msgstr "사학회 - Historical Society"
 
 msgctxt "trait"
 msgid "Humanoid"
-msgstr "인간형"
+msgstr "인간형 - Humanoid"
 
 msgctxt "trait"
 msgid "Hunter"
-msgstr "사냥꾼"
+msgstr "사냥꾼 - Hunter"
 
 msgctxt "trait"
 msgid "Hybrid"
-msgstr "혼혈"
+msgstr "혼혈 - Hybrid"
 
 msgctxt "trait"
 msgid "Illicit"
-msgstr "불법"
+msgstr "불법 - Illicit"
 
 msgctxt "trait"
 msgid "Improvised"
-msgstr "즉흥"
+msgstr "즉흥 - Improvised"
 
 msgctxt "trait"
 msgid "Injury"
-msgstr "부상"
+msgstr "부상 - Injury"
 
 msgctxt "trait"
 msgid "Innate"
-msgstr "본성"
+msgstr "본성 - Innate"
 
 msgctxt "trait"
 msgid "Innocent"
-msgstr "무고한"
+msgstr "무고한 - Innocent"
 
 msgctxt "trait"
 msgid "Innsmouth"
-msgstr "인스머스"
+msgstr "인스머스 - Innsmouth"
 
 msgctxt "trait"
 msgid "Insect"
@@ -7045,51 +7045,51 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Insight"
-msgstr "통찰"
+msgstr "통찰 - Insight"
 
 msgctxt "trait"
 msgid "Instrument"
-msgstr "악기"
+msgstr "악기 - Instrument"
 
 msgctxt "trait"
 msgid "Island"
-msgstr "섬"
+msgstr "섬 - Island"
 
 msgctxt "trait"
 msgid "Item"
-msgstr "물품"
+msgstr "물품 - Item"
 
 msgctxt "trait"
 msgid "Job"
-msgstr "작업"
+msgstr "작업 - Job"
 
 msgctxt "trait"
 msgid "Jungle"
-msgstr "밀림"
+msgstr "밀림 - Jungle"
 
 msgctxt "trait"
 msgid "Kadath"
-msgstr "카다스"
+msgstr "카다스 - Kadath"
 
 msgctxt "trait"
 msgid "Key"
-msgstr "열쇠"
+msgstr "열쇠 - Key"
 
 msgctxt "trait"
 msgid "Lead"
-msgstr "실마리"
+msgstr "실마리 - Lead"
 
 msgctxt "trait"
 msgid "Leng"
-msgstr "렝"
+msgstr "렝 - Leng"
 
 msgctxt "trait"
 msgid "Lodge"
-msgstr "집회소"
+msgstr "집회소 - Lodge"
 
 msgctxt "trait"
 msgid "Madness"
-msgstr "정신이상"
+msgstr "정신이상 - Madness"
 
 msgctxt "trait"
 msgid "Manifold"
@@ -7097,39 +7097,39 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mask"
-msgstr "가면"
+msgstr "가면 - Mask"
 
 msgctxt "trait"
 msgid "Medic"
-msgstr "치료사"
+msgstr "치료사 - Medic"
 
 msgctxt "trait"
 msgid "Melee"
-msgstr "근접"
+msgstr "근접 - Melee"
 
 msgctxt "trait"
 msgid "Mexico City"
-msgstr "멕시코시티"
+msgstr "멕시코시티 - Mexico City"
 
 msgctxt "trait"
 msgid "Mi-Go"
-msgstr "미고"
+msgstr "미고 - Mi-Go"
 
 msgctxt "trait"
 msgid "Midtown"
-msgstr "중심가"
+msgstr "중심가 - Midtown"
 
 msgctxt "trait"
 msgid "Miskatonic"
-msgstr "미스캐토닉"
+msgstr "미스캐토닉 - Miskatonic"
 
 msgctxt "trait"
 msgid "Mnar"
-msgstr "므나르"
+msgstr "므나르 - Mnar"
 
 msgctxt "trait"
 msgid "Monster"
-msgstr "괴물"
+msgstr "괴물 - Monster"
 
 msgctxt "trait"
 msgid "Montréal"
@@ -7137,7 +7137,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mountain"
-msgstr "산"
+msgstr "산 - Mountain"
 
 msgctxt "trait"
 msgid "Mutated"
@@ -7145,11 +7145,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Mystery"
-msgstr "불가사의"
+msgstr "불가사의 - Mystery"
 
 msgctxt "trait"
 msgid "New Orleans"
-msgstr "뉴올리언스"
+msgstr "뉴올리언스 - New Orleans"
 
 msgctxt "trait"
 msgid "New York City"
@@ -7157,27 +7157,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Nightgaunt"
-msgstr "나이트건트"
+msgstr "나이트건트 - Nightgaunt"
 
 msgctxt "trait"
 msgid "Obstacle"
-msgstr "장애물"
+msgstr "장애물 - Obstacle"
 
 msgctxt "trait"
 msgid "Occult"
-msgstr "비술"
+msgstr "비술 - Occult"
 
 msgctxt "trait"
 msgid "Ocean"
-msgstr "해양"
+msgstr "해양 - Ocean"
 
 msgctxt "trait"
 msgid "Omen"
-msgstr "징조"
+msgstr "징조 - Omen"
 
 msgctxt "trait"
 msgid "Ooth-Nargai"
-msgstr "우스 나르가이"
+msgstr "우스 나르가이 - Ooth-Nargai"
 
 msgctxt "trait"
 msgid "Ooze"
@@ -7189,55 +7189,55 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Oriab"
-msgstr "오리아브"
+msgstr "오리아브 - Oriab"
 
 msgctxt "trait"
 msgid "Otherworld"
-msgstr "다른 세계"
+msgstr "다른 세계 - Otherworld"
 
 msgctxt "trait"
 msgid "Pact"
-msgstr "계약"
+msgstr "계약 - Pact"
 
 msgctxt "trait"
 msgid "Paradox"
-msgstr "역설"
+msgstr "역설 - Paradox"
 
 msgctxt "trait"
 msgid "Paris"
-msgstr "파리"
+msgstr "파리 - Paris"
 
 msgctxt "trait"
 msgid "Part 1"
-msgstr "1부"
+msgstr "1부 - Part 1"
 
 msgctxt "trait"
 msgid "Passageway"
-msgstr "통로"
+msgstr "통로 - Passageway"
 
 msgctxt "trait"
 msgid "Patron"
-msgstr "후원가"
+msgstr "후원가 - Patron"
 
 msgctxt "trait"
 msgid "Performer"
-msgstr "공연자"
+msgstr "공연자 - Performer"
 
 msgctxt "trait"
 msgid "Pnakotus"
-msgstr "프나코투스"
+msgstr "프나코투스 - Pnakotus"
 
 msgctxt "trait"
 msgid "Poison"
-msgstr "독"
+msgstr "독 - Poison"
 
 msgctxt "trait"
 msgid "Police"
-msgstr "경찰"
+msgstr "경찰 - Police"
 
 msgctxt "trait"
 msgid "Port"
-msgstr "항구"
+msgstr "항구 - Port"
 
 msgctxt "trait"
 msgid "Portal"
@@ -7245,23 +7245,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Power"
-msgstr "권능"
+msgstr "권능 - Power"
 
 msgctxt "trait"
 msgid "Practiced"
-msgstr "숙련"
+msgstr "숙련 - Practiced"
 
 msgctxt "trait"
 msgid "Present-Day"
-msgstr "오늘날"
+msgstr "오늘날 - Present-Day"
 
 msgctxt "trait"
 msgid "Prison"
-msgstr "감옥"
+msgstr "감옥 - Prison"
 
 msgctxt "trait"
 msgid "Private"
-msgstr "일반인 출입금지"
+msgstr "일반인 출입금지 - Private"
 
 msgctxt "trait"
 msgid "Providence"
@@ -7269,227 +7269,227 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Rail"
-msgstr "철로"
+msgstr "철로 - Rail"
 
 msgctxt "trait"
 msgid "Ranged"
-msgstr "원거리"
+msgstr "원거리 - Ranged"
 
 msgctxt "trait"
 msgid "Relic"
-msgstr "유물"
+msgstr "유물 - Relic"
 
 msgctxt "trait"
 msgid "Reporter"
-msgstr "기자"
+msgstr "기자 - Reporter"
 
 msgctxt "trait"
 msgid "Research"
-msgstr "연구"
+msgstr "연구 - Research"
 
 msgctxt "trait"
 msgid "Return"
-msgstr "돌아온"
+msgstr "돌아온 - Return"
 
 msgctxt "trait"
 msgid "Ritual"
-msgstr "의식"
+msgstr "의식 - Ritual"
 
 msgctxt "trait"
 msgid "Ritual Site"
-msgstr "의식터"
+msgstr "의식터 - Ritual Site"
 
 msgctxt "trait"
 msgid "River"
-msgstr "강"
+msgstr "강 - River"
 
 msgctxt "trait"
 msgid "Riverside"
-msgstr "강변"
+msgstr "강변 - Riverside"
 
 msgctxt "trait"
 msgid "Road"
-msgstr "도로"
+msgstr "도로 - Road"
 
 msgctxt "trait"
 msgid "Ruins"
-msgstr "유적"
+msgstr "유적 - Ruins"
 
 msgctxt "trait"
 msgid "Salem"
-msgstr "세일럼"
+msgstr "세일럼 - Salem"
 
 msgctxt "trait"
 msgid "Sanctum"
-msgstr "성소"
+msgstr "성소 - Sanctum"
 
 msgctxt "trait"
 msgid "Scheme"
-msgstr "모략"
+msgstr "모략 - Scheme"
 
 msgctxt "trait"
 msgid "Scholar"
-msgstr "학자"
+msgstr "학자 - Scholar"
 
 msgctxt "trait"
 msgid "Science"
-msgstr "과학"
+msgstr "과학 - Science"
 
 msgctxt "trait"
 msgid "Script"
-msgstr "글귀"
+msgstr "글귀 - Script"
 
 msgctxt "trait"
 msgid "Second Floor"
-msgstr "2층"
+msgstr "2층 - Second Floor"
 
 msgctxt "trait"
 msgid "Sentinel Hill"
-msgstr "파수꾼 언덕"
+msgstr "파수꾼 언덕 - Sentinel Hill"
 
 msgctxt "trait"
 msgid "Serpent"
-msgstr "뱀"
+msgstr "뱀 - Serpent"
 
 msgctxt "trait"
 msgid "Service"
-msgstr "서비스"
+msgstr "서비스 - Service"
 
 msgctxt "trait"
 msgid "Servitor"
-msgstr "시종"
+msgstr "시종 - Servitor"
 
 msgctxt "trait"
 msgid "Shantak"
-msgstr "샨타크"
+msgstr "샨타크 - Shantak"
 
 msgctxt "trait"
 msgid "Shattered"
-msgstr "산산조각난"
+msgstr "산산조각난 - Shattered"
 
 msgctxt "trait"
 msgid "Ship"
-msgstr "배"
+msgstr "배 - Ship"
 
 msgctxt "trait"
 msgid "Shoggoth"
-msgstr "쇼고스"
+msgstr "쇼고스 - Shoggoth"
 
 msgctxt "trait"
 msgid "Silver Twilight"
-msgstr "은빛 황혼회"
+msgstr "은빛 황혼회 - Silver Twilight"
 
 msgctxt "trait"
 msgid "Skai"
-msgstr "스카이"
+msgstr "스카이 - Skai"
 
 msgctxt "trait"
 msgid "Socialite"
-msgstr "유명인사"
+msgstr "유명인사 - Socialite"
 
 msgctxt "trait"
 msgid "Song"
-msgstr "노래"
+msgstr "노래 - Song"
 
 msgctxt "trait"
 msgid "Sorcerer"
-msgstr "주술사"
+msgstr "주술사 - Sorcerer"
 
 msgctxt "trait"
 msgid "Spectral"
-msgstr "혼령계"
+msgstr "혼령계 - Spectral"
 
 msgctxt "trait"
 msgid "Spell"
-msgstr "마법"
+msgstr "마법 - Spell"
 
 msgctxt "trait"
 msgid "Spider"
-msgstr "거미"
+msgstr "거미 - Spider"
 
 msgctxt "trait"
 msgid "Spirit"
-msgstr "영혼"
+msgstr "영혼 - Spirit"
 
 msgctxt "trait"
 msgid "St Mary's"
-msgstr "세인트 메리 병원"
+msgstr "세인트 메리 병원 - St Mary's"
 
 msgctxt "trait"
 msgid "Staff"
-msgstr "직원"
+msgstr "직원 - Staff"
 
 msgctxt "trait"
 msgid "Steps"
-msgstr "계단"
+msgstr "계단 - Steps"
 
 msgctxt "trait"
 msgid "Summon"
-msgstr "소환"
+msgstr "소환 - Summon"
 
 msgctxt "trait"
 msgid "Supply"
-msgstr "보급"
+msgstr "보급 - Supply"
 
 msgctxt "trait"
 msgid "Surface"
-msgstr "표면"
+msgstr "표면 - Surface"
 
 msgctxt "trait"
 msgid "Suspect"
-msgstr "용의자"
+msgstr "용의자 - Suspect"
 
 msgctxt "trait"
 msgid "Syndicate"
-msgstr "조직원"
+msgstr "조직원 - Syndicate"
 
 msgctxt "trait"
 msgid "Tactic"
-msgstr "전술"
+msgstr "전술 - Tactic"
 
 msgctxt "trait"
 msgid "Talent"
-msgstr "재능"
+msgstr "재능 - Talent"
 
 msgctxt "trait"
 msgid "Tarot"
-msgstr "타로"
+msgstr "타로 - Tarot"
 
 msgctxt "trait"
 msgid "Task"
-msgstr "과업"
+msgstr "과업 - Task"
 
 msgctxt "trait"
 msgid "Temple"
-msgstr "사원"
+msgstr "사원 - Temple"
 
 msgctxt "trait"
 msgid "Tenochtitlán"
-msgstr "테노치티틀란"
+msgstr "테노치티틀란 - Tenochtitlán"
 
 msgctxt "trait"
 msgid "Tentacle"
-msgstr "촉수"
+msgstr "촉수 - Tentacle"
 
 msgctxt "trait"
 msgid "Terror"
-msgstr "두려움"
+msgstr "두려움 - Terror"
 
 msgctxt "trait"
 msgid "Third Floor"
-msgstr "3층"
+msgstr "3층 - Third Floor"
 
 msgctxt "trait"
 msgid "Tindalos"
-msgstr "틴달로스"
+msgstr "틴달로스 - Tindalos"
 
 msgctxt "trait"
 msgid "Tome"
-msgstr "서적"
+msgstr "서적 - Tome"
 
 msgctxt "trait"
 msgid "Tool"
-msgstr "도구"
+msgstr "도구 - Tool"
 
 msgctxt "trait"
 msgid "Town"
@@ -7497,179 +7497,179 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Train"
-msgstr "열차"
+msgstr "열차 - Train"
 
 msgctxt "trait"
 msgid "Trap"
-msgstr "함정"
+msgstr "함정 - Trap"
 
 msgctxt "trait"
 msgid "Trick"
-msgstr "속임수"
+msgstr "속임수 - Trick"
 
 msgctxt "trait"
 msgid "Unhallowed"
-msgstr "부정한 땅"
+msgstr "부정한 땅 - Unhallowed"
 
 msgctxt "trait"
 msgid "Upgrade"
-msgstr "향상"
+msgstr "향상 - Upgrade"
 
 msgctxt "trait"
 msgid "Vale"
-msgstr "계곡"
+msgstr "계곡 - Vale"
 
 msgctxt "trait"
 msgid "Vehicle"
-msgstr "탑승물"
+msgstr "탑승물 - Vehicle"
 
 msgctxt "trait"
 msgid "Venice"
-msgstr "베네치아"
+msgstr "베네치아 - Venice"
 
 msgctxt "trait"
 msgid "Veteran"
-msgstr "참전용사"
+msgstr "참전용사 - Veteran"
 
 msgctxt "trait"
 msgid "Void"
-msgstr "공허"
+msgstr "공허 - Void"
 
 msgctxt "trait"
 msgid "Warden"
-msgstr "파수꾼"
+msgstr "파수꾼 - Warden"
 
 msgctxt "trait"
 msgid "Wastes"
-msgstr "황무지"
+msgstr "황무지 - Wastes"
 
 msgctxt "trait"
 msgid "Wayfarer"
-msgstr "여행자"
+msgstr "여행자 - Wayfarer"
 
 msgctxt "trait"
 msgid "Weapon"
-msgstr "무기"
+msgstr "무기 - Weapon"
 
 msgctxt "trait"
 msgid "Wilderness"
-msgstr "험지"
+msgstr "험지 - Wilderness"
 
 msgctxt "trait"
 msgid "Witch"
-msgstr "마녀"
+msgstr "마녀 - Witch"
 
 msgctxt "trait"
 msgid "Witch House"
-msgstr "마녀집"
+msgstr "마녀집 - Witch House"
 
 msgctxt "trait"
 msgid "Woods"
-msgstr "숲"
+msgstr "숲 - Woods"
 
 msgctxt "trait"
 msgid "Y'ha-nthlei"
-msgstr "이하 느틀레이"
+msgstr "이하 느틀레이 - Y'ha-nthlei"
 
 msgctxt "trait"
 msgid "Yithian"
-msgstr "이스인"
+msgstr "이스인 - Yithian"
 
 msgctxt "trait"
 msgid "Yoth"
-msgstr "요스"
+msgstr "요스 - Yoth"
 
 msgctxt "trait"
 msgid "Zoog"
-msgstr "주그"
+msgstr "주그 - Zoog"
 
 msgctxt "trait"
 msgid "Broken"
-msgstr "깨진"
+msgstr "깨진 - Broken"
 
 msgctxt "trait"
 msgid "Entrepreneur"
-msgstr "사업가"
+msgstr "사업가 - Entrepreneur"
 
 msgctxt "trait"
 msgid "Falcon Point"
-msgstr "송골매 곶"
+msgstr "송골매 곶 - Falcon Point"
 
 msgctxt "trait"
 msgid "Lair"
-msgstr "침소/은거처"
+msgstr "침소/은거처 - Lair"
 
 msgctxt "trait"
 msgid "Synergy"
-msgstr "시너지"
+msgstr "시너지 - Synergy"
 
 msgctxt "trait"
 msgid "Unbroken"
-msgstr "깨지지 않은"
+msgstr "깨지지 않은 - Unbroken"
 
 msgctxt "trait"
 msgid "Resolute"
-msgstr "결연한"
+msgstr "결연한 - Resolute"
 
 msgctxt "trait"
 msgid "Coterie"
-msgstr "동지회"
+msgstr "동지회 - Coterie"
 
 msgctxt "trait"
 msgid "Dilemma"
-msgstr "딜레마"
+msgstr "딜레마 - Dilemma"
 
 msgctxt "trait"
 msgid "Eidolon"
-msgstr "허깨비"
+msgstr "허깨비 - Eidolon"
 
 msgctxt "trait"
 msgid "Elder Thing"
-msgstr "옛것"
+msgstr "옛것 - Elder Thing"
 
 msgctxt "trait"
 msgid "Glacier"
-msgstr "빙하"
+msgstr "빙하 - Glacier"
 
 msgctxt "trait"
 msgid "Mainland"
-msgstr "본토"
+msgstr "본토 - Mainland"
 
 msgctxt "trait"
 msgid "Mirage"
-msgstr "신기루"
+msgstr "신기루 - Mirage"
 
 msgctxt "trait"
 msgid "Mountains"
-msgstr "산맥"
+msgstr "산맥 - Mountains"
 
 msgctxt "trait"
 msgid "Past"
-msgstr "과거"
+msgstr "과거 - Past"
 
 msgctxt "trait"
 msgid "Possessed"
-msgstr "홀린"
+msgstr "홀린 - Possessed"
 
 msgctxt "trait"
 msgid "Present"
-msgstr "현재"
+msgstr "현재 - Present"
 
 msgctxt "trait"
 msgid "Scientist"
-msgstr "과학자"
+msgstr "과학자 - Scientist"
 
 msgctxt "trait"
 msgid "Uncharted"
-msgstr "미개척지"
+msgstr "미개척지 - Uncharted"
 
 msgctxt "trait"
 msgid "Casino"
-msgstr "카지노"
+msgstr "카지노 - Casino"
 
 msgctxt "trait"
 msgid "Double"
-msgstr "이중"
+msgstr "이중 - Double"
 
 msgctxt "trait"
 msgid "AI"
@@ -7677,39 +7677,39 @@ msgstr "AI"
 
 msgctxt "trait"
 msgid "Abandoned"
-msgstr "버려진"
+msgstr "버려진 - Abandoned"
 
 msgctxt "trait"
 msgid "Access"
-msgstr "외부해치"
+msgstr "외부해치 - Access"
 
 msgctxt "trait"
 msgid "Alexandria"
-msgstr "알렉산드리아"
+msgstr "알렉산드리아 - Alexandria"
 
 msgctxt "trait"
 msgid "Ally? Creature"
-msgstr "조력자? 생물"
+msgstr "조력자? 생물 - Ally? Creature"
 
 msgctxt "trait"
 msgid "Ancient One?"
-msgstr "고대의 존재?"
+msgstr "고대의 존재? - Ancient One?"
 
 msgctxt "trait"
 msgid "Bad dog"
-msgstr "이 개놈아!"
+msgstr "이 개놈아! - Bad dog"
 
 msgctxt "trait"
 msgid "Bazaar"
-msgstr "바자르"
+msgstr "바자르 - Bazaar"
 
 msgctxt "trait"
 msgid "Blessed?"
-msgstr "축복받은?"
+msgstr "축복받은? - Blessed?"
 
 msgctxt "trait"
 msgid "Bokor"
-msgstr "부두 주술사"
+msgstr "부두 주술사 - Bokor"
 
 msgctxt "trait"
 msgid "Book"
@@ -7717,35 +7717,35 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Buenos Aires"
-msgstr "부에노스아이레스"
+msgstr "부에노스아이레스 - Buenos Aires"
 
 msgctxt "trait"
 msgid "Card"
-msgstr "카드"
+msgstr "카드 - Card"
 
 msgctxt "trait"
 msgid "Case"
-msgstr "사건"
+msgstr "사건 - Case"
 
 msgctxt "trait"
 msgid "Castle"
-msgstr "성"
+msgstr "성 - Castle"
 
 msgctxt "trait"
 msgid "Chair"
-msgstr "의자"
+msgstr "의자 - Chair"
 
 msgctxt "trait"
 msgid "Chess"
-msgstr "체스"
+msgstr "체스 - Chess"
 
 msgctxt "trait"
 msgid "Classy"
-msgstr "세련된"
+msgstr "세련된 - Classy"
 
 msgctxt "trait"
 msgid "Collector"
-msgstr "수집가"
+msgstr "수집가 - Collector"
 
 msgctxt "trait"
 msgid "Consort"
@@ -7753,11 +7753,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Corpse"
-msgstr "시체"
+msgstr "시체 - Corpse"
 
 msgctxt "trait"
 msgid "Corruption"
-msgstr "타락"
+msgstr "타락 - Corruption"
 
 msgctxt "trait"
 msgid "Darkness"
@@ -7765,15 +7765,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Device"
-msgstr "장치"
+msgstr "장치 - Device"
 
 msgctxt "trait"
 msgid "Downtown"
-msgstr "번화가"
+msgstr "번화가 - Downtown"
 
 msgctxt "trait"
 msgid "Enigma"
-msgstr "수수께끼"
+msgstr "수수께끼 - Enigma"
 
 msgctxt "trait"
 msgid "Entrance"
@@ -7781,11 +7781,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Fellow Dogs"
-msgstr "개 친구들"
+msgstr "개 친구들 - Fellow Dogs"
 
 msgctxt "trait"
 msgid "Footwear, but not really"
-msgstr "신발(못 신는다)"
+msgstr "신발(못 신는다) - Footwear, but not really"
 
 msgctxt "trait"
 msgid "Hardship"
@@ -7793,15 +7793,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Haunted"
-msgstr "신들린"
+msgstr "신들린 - Haunted"
 
 msgctxt "trait"
 msgid "Havana"
-msgstr "아바나"
+msgstr "아바나 - Havana"
 
 msgctxt "trait"
 msgid "Human"
-msgstr "인간형"
+msgstr "인간형 - Human"
 
 msgctxt "trait"
 msgid "Infection"
@@ -7809,67 +7809,67 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Istanbul"
-msgstr "이스탄불"
+msgstr "이스탄불 - Istanbul"
 
 msgctxt "trait"
 msgid "Kuala Lumpur"
-msgstr "쿠알라룸푸르"
+msgstr "쿠알라룸푸르 - Kuala Lumpur"
 
 msgctxt "trait"
 msgid "Local"
-msgstr "현지인"
+msgstr "현지인 - Local"
 
 msgctxt "trait"
 msgid "Locus Site"
-msgstr "거점 지역"
+msgstr "거점 지역 - Locus Site"
 
 msgctxt "trait"
 msgid "London"
-msgstr "런던"
+msgstr "런던 - London"
 
 msgctxt "trait"
 msgid "Loyal"
-msgstr "충직한"
+msgstr "충직한 - Loyal"
 
 msgctxt "trait"
 msgid "Lunatic"
-msgstr "광인"
+msgstr "광인 - Lunatic"
 
 msgctxt "trait"
 msgid "Machine"
-msgstr "기계"
+msgstr "기계 - Machine"
 
 msgctxt "trait"
 msgid "Madness?"
-msgstr "정신이상?"
+msgstr "정신이상? - Madness?"
 
 msgctxt "trait"
 msgid "Marrakesh"
-msgstr "마라케시"
+msgstr "마라케시 - Marrakesh"
 
 msgctxt "trait"
 msgid "Medical"
-msgstr "의료"
+msgstr "의료 - Medical"
 
 msgctxt "trait"
 msgid "Music"
-msgstr "음악"
+msgstr "음악 - Music"
 
 msgctxt "trait"
 msgid "Musician"
-msgstr "음악가"
+msgstr "음악가 - Musician"
 
 msgctxt "trait"
 msgid "Northside"
-msgstr "북부"
+msgstr "북부 - Northside"
 
 msgctxt "trait"
 msgid "Nostalgia II"
-msgstr "향수 2호"
+msgstr "향수 2호 - Nostalgia II"
 
 msgctxt "trait"
 msgid "Outsider"
-msgstr "바깥개체"
+msgstr "바깥개체 - Outsider"
 
 msgctxt "trait"
 msgid "Parasitic"
@@ -7885,7 +7885,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Pup"
-msgstr "멍멍이"
+msgstr "멍멍이 - Pup"
 
 msgctxt "trait"
 msgid "Resonant"
@@ -7893,7 +7893,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Restricted"
-msgstr "제한구역"
+msgstr "제한구역 - Restricted"
 
 msgctxt "trait"
 msgid "Retired"
@@ -7901,15 +7901,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Risen"
-msgstr "되살아난"
+msgstr "되살아난 - Risen"
 
 msgctxt "trait"
 msgid "Row"
-msgstr "열"
+msgstr "열 - Row"
 
 msgctxt "trait"
 msgid "Royalty"
-msgstr "귀족"
+msgstr "귀족 - Royalty"
 
 msgctxt "trait"
 msgid "Saga"
@@ -7917,15 +7917,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Shadow"
-msgstr "그림자"
+msgstr "그림자 - Shadow"
 
 msgctxt "trait"
 msgid "Shapeshifter"
-msgstr "형태변환자"
+msgstr "형태변환자 - Shapeshifter"
 
 msgctxt "trait"
 msgid "Sheldon Gang"
-msgstr "쉘든 조직원"
+msgstr "쉘든 조직원 - Sheldon Gang"
 
 msgctxt "trait"
 msgid "Sister"
@@ -7933,43 +7933,43 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Slope"
-msgstr "경사"
+msgstr "경사 - Slope"
 
 msgctxt "trait"
 msgid "Soldier"
-msgstr "병사"
+msgstr "병사 - Soldier"
 
 msgctxt "trait"
 msgid "Stable"
-msgstr "안정한"
+msgstr "안정한 - Stable"
 
 msgctxt "trait"
 msgid "Stop"
-msgstr "거기 서!"
+msgstr "거기 서! - Stop"
 
 msgctxt "trait"
 msgid "Table"
-msgstr "탁자"
+msgstr "탁자 - Table"
 
 msgctxt "trait"
 msgid "Tatterdemalion"
-msgstr "누더기호"
+msgstr "누더기호 - Tatterdemalion"
 
 msgctxt "trait"
 msgid "That's bad"
-msgstr "나쁜"
+msgstr "나쁜 - That's bad"
 
 msgctxt "trait"
 msgid "Tower"
-msgstr "탑"
+msgstr "탑 - Tower"
 
 msgctxt "trait"
 msgid "Traitor"
-msgstr "배신자"
+msgstr "배신자 - Traitor"
 
 msgctxt "trait"
 msgid "Tulgey Wood"
-msgstr "털진 숲"
+msgstr "털진 숲 - Tulgey Wood"
 
 msgctxt "trait"
 msgid "Underground"
@@ -7977,7 +7977,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Unstable"
-msgstr "불안정한"
+msgstr "불안정한 - Unstable"
 
 msgctxt "trait"
 msgid "Upper Floor"
@@ -7985,23 +7985,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Virtual"
-msgstr "가상"
+msgstr "가상 - Virtual"
 
 msgctxt "trait"
 msgid "Weather"
-msgstr "날씨"
+msgstr "날씨 - Weather"
 
 msgctxt "trait"
 msgid "What? No"
-msgstr "뭐? 안 돼"
+msgstr "뭐? 안 돼 - What? No"
 
 msgctxt "trait"
 msgid "Wonderland"
-msgstr "이상한 나라"
+msgstr "이상한 나라 - Wonderland"
 
 msgctxt "trait"
 msgid "Yuggoth"
-msgstr "유고스"
+msgstr "유고스 - Yuggoth"
 
 msgctxt "trait"
 msgid "Blight"
@@ -8013,7 +8013,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Crew"
-msgstr "일당"
+msgstr "일당 - Crew"
 
 msgctxt "trait"
 msgid "Delta"
@@ -8025,11 +8025,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Game"
-msgstr "게임"
+msgstr "게임 - Game"
 
 msgctxt "trait"
 msgid "Inconspicuous"
-msgstr "이목을 끌지 않는"
+msgstr "이목을 끌지 않는 - Inconspicuous"
 
 msgctxt "trait"
 msgid "Miasma"
@@ -8037,7 +8037,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Public"
-msgstr "일반인 구역"
+msgstr "일반인 구역 - Public"
 
 msgctxt "trait"
 msgid "Resident"
@@ -8045,7 +8045,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Role"
-msgstr "역할"
+msgstr "역할 - Role"
 
 msgctxt "trait"
 msgid "Rot"
@@ -8057,7 +8057,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Unpracticed"
-msgstr "미숙"
+msgstr "미숙 - Unpracticed"
 
 #, javascript-format
 msgctxt "filter"
