@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2024-06-24 13:19+0300\n"
+"PO-Revision-Date: 2024-08-01 18:19+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -27,7 +27,7 @@ msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr "«Своими силами» не позволяет вам иметь под контролем активы, занимающие слот союзника."
 
 msgid "Too many off-class cards for Versatile"
-msgstr "«Versatile» не позволяет иметь так много внеклассовых карт"
+msgstr "«Разносторонний» не позволяет иметь так много внеклассовых карт"
 
 msgid "Hand"
 msgstr "Рука"
@@ -1824,10 +1824,10 @@ msgid "Return to The Forgotten Age"
 msgstr "Забытая эпоха. Возвращение"
 
 msgid "The Dream-Quest"
-msgstr ""
+msgstr "Сновидческий поиск"
 
 msgid "The Web of Dreams"
-msgstr ""
+msgstr "Паутина грёз"
 
 msgid "The Gathering"
 msgstr "Встреча"
@@ -2052,37 +2052,37 @@ msgid "Return to the Devourer Below"
 msgstr "Пожиратель из глубин. Возвращение"
 
 msgid "Beyond the Gates of Sleep"
-msgstr ""
+msgstr "За вратами сна"
 
 msgid "The Black Cat"
-msgstr ""
+msgstr "Чёрный кот"
 
 msgid "The Search for Kadath"
-msgstr ""
+msgstr "В поисках Кадата"
 
 msgid "The Oneironauts"
-msgstr ""
+msgstr "Онейронавты"
 
 msgid "Dark Side of the Moon"
-msgstr ""
+msgstr "Тёмная сторона Луны"
 
 msgid "The Great Ones"
-msgstr ""
+msgstr "Великие боги"
 
 msgid "Where Gods Dwell"
-msgstr ""
+msgstr "Где обитают боги"
 
 msgid "Waking Nightmare"
-msgstr ""
+msgstr "Кошмар наяву"
 
 msgid "A Thousand Shapes of Horror"
-msgstr ""
+msgstr "Тысяча кошмарных форм"
 
 msgid "Point of No Return"
-msgstr ""
+msgstr "Точка невозврата"
 
 msgid "Weaver of the Cosmos"
-msgstr ""
+msgstr "Плетущая космос"
 
 msgid "The Night of the Zealot"
 msgstr "Ночь фанатички"
@@ -2136,10 +2136,10 @@ msgid "Missing Persons - Valentino Rivas"
 msgstr "Пропавшие без вести — Валентино Ривас"
 
 msgid "Evidence of Kadath"
-msgstr ""
+msgstr "Свидетельства Кадата"
 
 msgid "Steps of the Bridge"
-msgstr ""
+msgstr "Пролёты моста"
 
 msgid "Save XP"
 msgstr "Сохранить опыт"
@@ -2239,19 +2239,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -2908,7 +2908,7 @@ msgstr[1] "Показать ${ nonCollectionCount } карты не в колл�
 msgstr[2] "Показать ${ nonCollectionCount } карт не в коллекции"
 
 msgid "Hide versatile cards"
-msgstr ""
+msgstr "Скрыть карты доступные от «Разносторонний»"
 
 msgid "Version to copy"
 msgstr "Какую версию копировать"
@@ -3628,7 +3628,7 @@ msgid "Ammo"
 msgstr "Патроны"
 
 msgid "Bounties"
-msgstr ""
+msgstr "Награды"
 
 msgid "Charges"
 msgstr "Заряды"
