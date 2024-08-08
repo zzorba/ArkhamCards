@@ -9,7 +9,7 @@ import { getAudioLangPreference, getLangChoice, hasDissonantVoices } from '@redu
 import { useMyProfile } from '@data/remote/hooks';
 import { User_Flag_Type_Enum } from '@generated/graphql/apollo-schema';
 
-const NON_LOCALIZED_CARDS = new Set(['en', 'pt', 'vi']);
+const NON_LOCALIZED_CARDS = new Set(['en', 'cs', 'vi']);
 
 interface Props {
   children: React.ReactNode;
