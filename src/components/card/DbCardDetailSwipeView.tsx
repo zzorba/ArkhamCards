@@ -35,6 +35,8 @@ import CardCustomizationOptions from './CardDetailView/CardCustomizationOptions'
 import { useCardCustomizations, useParsedDeck, useSimpleDeckEdits } from '@components/deck/hooks';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';
+import { getSystemLanguage } from '@lib/i18n';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -257,7 +259,8 @@ function DbCardDetailSwipeView(props: Props) {
   useNavigationButtonPressed(({ buttonId }) => {
     if (currentCard) {
       if (buttonId === 'share') {
-        Linking.openURL(`https://arkhamdb.com/card/${currentCard.code}#reviews-header`);
+        const arkhamDbDomain = getArkhamDbDomain(getSystemLanguage());
+        Linking.openURL(`${arkhamDbDomain}/card/${currentCard.code}#reviews-header`);
       } else if (buttonId === 'deck') {
         showInvestigatorCards(currentCard.code);
       } else if (buttonId === 'faq') {
