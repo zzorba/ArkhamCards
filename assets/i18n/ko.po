@@ -7241,7 +7241,7 @@ msgstr "항구 - Port"
 
 msgctxt "trait"
 msgid "Portal"
-msgstr ""
+msgstr "차원문 - Portal"
 
 msgctxt "trait"
 msgid "Power"
