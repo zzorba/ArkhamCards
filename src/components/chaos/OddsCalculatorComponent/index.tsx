@@ -56,6 +56,7 @@ interface Props {
   scenarioCode: string | undefined;
   scenarioCardText: string | undefined;
   difficulty: CampaignDifficulty | undefined;
+  chaosBagResults: ChaosBagResultsT;
 }
 
 export const SCENARIO_CODE_FIXER: {
@@ -843,6 +844,7 @@ export default function OddsCalculatorComponent({
   scenarioCardText,
   scenarioCode,
   difficulty: campaignDifficulty,
+  chaosBagResults,
 }: Props) {
   const { lang } = useContext(LanguageContext);
   const [showBlurse, toggleShowBlurse] = useFlag(true);
@@ -857,7 +859,6 @@ export default function OddsCalculatorComponent({
   const [selectedInvestigator, onSelectInvestigator] = useState(0);
   const [scenarioCards, loading] = useCardsFromQuery({ query: SCENARIO_CARDS_QUERY });
   const [currentScenario, setCurrentScenario] = useState<Scenario | undefined>(undefined);
-  const chaosBagResults = useChaosBagResults(campaign.id);
   const chaosBag = useMemo(() => {
     const sealed: ChaosBag = {};
     forEach(chaosBagResults.sealedTokens, token => {

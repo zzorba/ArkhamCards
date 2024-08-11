@@ -19,6 +19,7 @@ import COLORS from '@styles/colors';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { showRules } from '@components/campaignguide/nav';
+
 export interface GuideDrawChaosBagProps extends CampaignGuideInputProps {
   scenarioId?: string;
   standalone?: boolean;
@@ -40,7 +41,15 @@ function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone
     scenarioId ? campaignGuide.scenarioFaq(scenarioId) : []
   ], [campaignGuide, scenarioId]);
 
-  const [loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag] = useGuideChaosBag({ campaignId, scenarioId, standalone, processedCampaign });
+  const chaosBagResults = useChaosBagResults(campaignId);
+
+  const [loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag] = useGuideChaosBag({
+    campaignId,
+    scenarioId,
+    standalone,
+    processedCampaign,
+    difficultyOverride: chaosBagResults.difficulty,
+  });
 
   useEffect(() => {
     if (scenarioCard) {
@@ -77,7 +86,6 @@ function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone
     [rules, campaignErrata, scenarioErrata, scenarioId]
   );
   const theChaosBag = liveChaosBag || chaosBag;
-  const chaosBagResults = useChaosBagResults(campaignId);
   const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag, chaosBagResults);
   const showOdds = useCallback(() => {
     if (theChaosBag) {

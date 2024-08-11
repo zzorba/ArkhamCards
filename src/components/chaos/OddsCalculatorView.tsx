@@ -3,7 +3,7 @@ import { filter, find, flatMap, head } from 'lodash';
 
 import OddsCalculatorComponent, { SCENARIO_CODE_FIXER } from './OddsCalculatorComponent';
 import { useCycleScenarios, useInvestigators } from '@components/core/hooks';
-import { useCampaign } from '@data/hooks';
+import { useCampaign, useChaosBagResults } from '@data/hooks';
 
 import { CampaignDifficulty, CampaignId } from '@actions/types';
 import { completedScenario } from '@components/campaign/constants';
@@ -57,6 +57,8 @@ export default function OddsCalculatorView({ campaignId, investigatorIds }: Odds
       difficulty,
     ];
   }, [encounterCode, scenarioCards, campaign]);
+  const chaosBagResults = useChaosBagResults(campaignId);
+
   if (!campaign || loading) {
     return <LoadingSpinner />;
   }
@@ -71,6 +73,7 @@ export default function OddsCalculatorView({ campaignId, investigatorIds }: Odds
       scenarioCode={encounterCode}
       scenarioCardText={scenarioCardText}
       scenarioName={currentScenario?.name}
+      chaosBagResults={chaosBagResults}
     />
   );
 }

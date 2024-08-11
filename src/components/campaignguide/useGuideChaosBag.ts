@@ -6,16 +6,17 @@ import useSingleCard from '@components/card/useSingleCard';
 import Card from '@data/types/Card';
 import { useScenarioGuideContext } from './withScenarioGuideContext';
 import { ProcessedCampaign } from '@data/scenario';
-
+import { Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
 
 export interface Props {
   campaignId: CampaignId;
   scenarioId?: string;
   standalone?: boolean;
   processedCampaign: ProcessedCampaign | undefined;
+  difficultyOverride: Campaign_Difficulty_Enum | undefined;
 }
 
-export default function useGuideChaosBag({ campaignId, scenarioId, standalone, processedCampaign: initialProcessedCampaign }: Props): [
+export default function useGuideChaosBag({ campaignId, difficultyOverride, scenarioId, standalone, processedCampaign: initialProcessedCampaign }: Props): [
   boolean,
   Card | undefined,
   string | undefined,
@@ -28,8 +29,18 @@ export default function useGuideChaosBag({ campaignId, scenarioId, standalone, p
   const processedScenario = scenarioContext?.processedScenario;
   const liveChaosBag = processedCampaign?.campaignLog.chaosBag;
   const [scenarioCard, loading] = useSingleCard(processedScenario?.scenarioGuide.scenarioCard(), 'encounter');
-
-  const difficulty = processedScenario?.latestCampaignLog.campaignData.difficulty;
+  const actualDifficulty = processedScenario?.latestCampaignLog.campaignData.difficulty;
+  const difficulty = useMemo(() => {
+    if (difficultyOverride) {
+      switch (difficultyOverride) {
+        case Campaign_Difficulty_Enum.Easy: return CampaignDifficulty.EASY;
+        case Campaign_Difficulty_Enum.Standard: return CampaignDifficulty.STANDARD;
+        case Campaign_Difficulty_Enum.Hard: return CampaignDifficulty.HARD;
+        case Campaign_Difficulty_Enum.Expert: return CampaignDifficulty.EXPERT;
+      }
+    }
+    return actualDifficulty;
+  }, [difficultyOverride, actualDifficulty]);
   const campaignScenarioText = difficulty && scenarioContext?.processedScenario?.scenarioGuide.scenarioCardText(difficulty);
   const scenarioCardText = useMemo(() => {
     if (!difficulty) {
