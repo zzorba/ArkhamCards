@@ -4,7 +4,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { FasterImageView as FastImage } from '@candlefinance/faster-image';
+import { Image as FastImage } from 'expo-image';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -101,10 +101,9 @@ function ImageContent({ card }: { card: Card }) {
         <FastImage
           style={styles.verticalContainer}
           source={{
-            url,
-            cachePolicy: 'discNoCacheControl',
-            resizeMode: 'contain',
+            uri: url,
           }}
+          resizeMode="contain"
         />
       </View>
     );
@@ -116,10 +115,9 @@ function ImageContent({ card }: { card: Card }) {
         <FastImage
           style={[styles.image, imageStyle(card)]}
           source={{
-            url,
-            cachePolicy: 'discNoCacheControl',
-            resizeMode: 'contain',
+            uri: url,
           }}
+          resizeMode="contain"
         />
       </View>
     </View>

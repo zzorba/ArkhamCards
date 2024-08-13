@@ -4,7 +4,7 @@ import FlipCard from 'react-native-flip-card';
 import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { TAROT_CARD_RATIO } from '@styles/sizes';
-import { FasterImageView as FastImage } from '@candlefinance/faster-image';
+import { Image as FastImage } from 'expo-image';
 import { TarotCard } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
 import { useEffectUpdate } from '@components/core/hooks';
@@ -72,19 +72,17 @@ export default function TarotCardComponent({ card, width, flipped, inverted, suf
           <FastImage
             style={{ position: 'absolute', top: -4, left: -4, width: width + 8, height: height + 8 * TAROT_CARD_RATIO }}
             source={{
-              url: 'https://img2.arkhamcards.com/tarot/tarot_back.jpg',
-              cachePolicy: 'discNoCacheControl',
-              resizeMode: 'contain',
+              uri: 'https://img2.arkhamcards.com/tarot/tarot_back.jpg',
             }}
+            resizeMode="contain"
           />
           <View style={{ overflow: 'hidden', backgroundColor: dark20, width, height, position: 'relative', borderRadius: 16, borderWidth: 2, borderColor: colors.faction.mythos.border }}>
             <FastImage
               style={{ overflow: 'hidden', backgroundColor: colors.M, borderRadius: 16, width: width + 8, height: height + 8 * TAROT_CARD_RATIO, position: 'absolute', top: -2, left: -4 }}
               source={{
-                url: `https://img2.arkhamcards.com/tarot/tarot_${card.position}.jpg`,
-                cachePolicy: 'discNoCacheControl',
-                resizeMode: 'contain',
+                uri: `https://img2.arkhamcards.com/tarot/tarot_${card.position}.jpg`,
               }}
+              resizeMode="contain"
             />
             { width > 150 ? (
               <>

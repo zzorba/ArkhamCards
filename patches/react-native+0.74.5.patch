@@ -5,7 +5,7 @@ index 20ff434..a735cc1 100644
 @@ -181,6 +181,8 @@ export interface ViewProps
     */
    hitSlop?: null | Insets | number | undefined;
-
+ 
 +  opacity?: number;
 +
    /**

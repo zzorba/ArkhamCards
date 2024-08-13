@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { FasterImageView as FastImage } from '@candlefinance/faster-image';
+import { Image as FastImage } from 'expo-image';
 import { map } from 'lodash';
 
 import SetupStepWrapper from '../SetupStepWrapper';
@@ -30,10 +30,9 @@ function RuleImage({ scale, width, image, text }: { text?: string; scale: 'full'
     }, space.paddingBottomM]}>
       <FastImage
         source={{
-          url: `https://img2.arkhamcards.com${image.uri}`,
-          resizeMode: 'cover',
-          cachePolicy: 'discNoCacheControl',
+          uri: `https://img2.arkhamcards.com${image.uri}`,
         }}
+        resizeMode="cover"
         style={{ width: theWidth, height: (theWidth * image.ratio) }}
       />
       { !!text && (

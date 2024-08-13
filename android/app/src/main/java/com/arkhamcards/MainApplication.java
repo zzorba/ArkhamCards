@@ -1,6 +1,9 @@
 package com.arkhamcards;
 
+import android.content.res.Configuration;
 import android.content.Context;
+import expo.modules.ApplicationLifecycleDispatcher;
+import expo.modules.ReactNativeHostWrapper;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactInstanceManager;
@@ -54,6 +57,7 @@ public class MainApplication extends NavigationApplication {
             DefaultNewArchitectureEntryPoint.load();
         }
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+        ApplicationLifecycleDispatcher.onApplicationCreate(this);
     }
 
     @Override
@@ -79,5 +83,12 @@ public class MainApplication extends NavigationApplication {
             }
         }
     }
+
+  @Override
+	public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    ApplicationLifecycleDispatcher.onConfigurationChanged(this, newConfig);
+  }
+
 }
 

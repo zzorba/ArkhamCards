@@ -12,7 +12,7 @@ import database from '@react-native-firebase/database';
 import Crashes from 'appcenter-crashes';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
-import { clearCache as clearFasterImageCache } from '@candlefinance/faster-image';
+import { Image } from 'expo-image';
 
 import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, SYNC_DISMISS_ONBOARDING } from '@actions/types';
 import { clearDecks } from '@actions';
@@ -160,8 +160,8 @@ export default function DiagnosticsView() {
   }, [apollo, dispatch]);
 
   const [imagesCleared, setImagesCleared] = useState(false);
-  const clearImageCache = useCallback(() => {
-    clearFasterImageCache();
+  const clearImageCache = useCallback(async () => {
+    await Image.clearDiskCache();
     setImagesCleared(true);
   }, [setImagesCleared]);
 

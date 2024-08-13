@@ -3,7 +3,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { FasterImageView as FastImage } from '@candlefinance/faster-image';
+import { Image as FastImage } from 'expo-image';
 import ViewControl from 'react-native-zoom-view';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -48,10 +48,9 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
           <FastImage
             style={{ height: cardHeight, width: cardWidth }}
             source={{
-              url: card.imageUri() ?? '',
-              resizeMode: 'contain',
-              cachePolicy: 'discNoCacheControl',
+              uri: card.imageUri() ?? '',
             }}
+            resizeMode="contain"
           />
         </ViewControl>
       );
@@ -67,10 +66,9 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
         <FastImage
           style={{ height: cardHeight, width: cardWidth }}
           source={{
-            url: (card.double_sided ? card.backImageUri() : card.linked_card?.imageUri()) ?? '',
-            resizeMode: 'contain',
-            cachePolicy: 'discNoCacheControl',
+            uri: (card.double_sided ? card.backImageUri() : card.linked_card?.imageUri()) ?? '',
           }}
+          resizeMode="contain"
         />
       </ViewControl>
     );
@@ -86,10 +84,9 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
       <FastImage
         style={{ height: cardHeight, width: cardWidth }}
         source={{
-          url: card.imageUri() ?? '',
-          resizeMode: 'contain',
-          cachePolicy: 'discNoCacheControl',
+          uri: card.imageUri() ?? '',
         }}
+        resizeMode="contain"
       />
     </ViewControl>
   );

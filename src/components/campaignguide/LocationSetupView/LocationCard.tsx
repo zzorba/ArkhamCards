@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useState } from 'react';
 import { Image, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
 import { withAnchorPoint } from 'react-native-anchor-point';
 import { map, range, transform } from 'lodash';
-import { FasterImageView as FastImage } from '@candlefinance/faster-image';
+import { Image as FastImage } from 'expo-image';
 
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -88,10 +88,9 @@ function LocationCardImage({ code, back, name, width, height, placeholder, toggl
       <FastImage
         style={{ width, height }}
         source={{
-          url,
-          cachePolicy: 'discNoCacheControl',
-          resizeMode: 'contain',
+          uri: url,
         }}
+        resizeMode="contain"
       />
     </ToolTip>
   );

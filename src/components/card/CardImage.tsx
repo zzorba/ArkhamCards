@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { FasterImageView as FastImage } from '@candlefinance/faster-image';
+import { Image as FastImage } from 'expo-image';
 import { find, map, range } from 'lodash';
 
 import { TouchableShrink } from '@components/core/Touchables';
@@ -51,10 +51,9 @@ export default function CardImage({ card, width, superCompact }: Props) {
       <FastImage
         style={{ width, height: CARD_RATIO * width }}
         source={{
-          url,
-          cachePolicy: 'discNoCacheControl',
-          resizeMode: 'contain',
+          uri: url,
         }}
+        resizeMode="contain"
       />
     );
   }
@@ -152,7 +151,7 @@ export function TouchableCardImage({ onPress, ...props }: Props & { onPress: (ca
 const styles = StyleSheet.create({
   simpleCard: {
     borderRadius: 8,
-    paddding: s,
+    padding: s,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',

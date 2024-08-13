@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, ScrollView, StyleSheet, View, Linking } from 'react-native';
-import { FasterImageView as FastImage } from '@candlefinance/faster-image';
+import { Image as FastImage } from 'expo-image';
 import { c } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
@@ -129,8 +129,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
           <FastImage
             style={{ width, height: width * 589 / 676 }}
             source={{
-              url: 'https://img2.arkhamcards.com/onboarding/custom-content.png',
-              cachePolicy: 'discNoCacheControl',
+              uri: 'https://img2.arkhamcards.com/onboarding/custom-content.png',
             }}
           />
         </View>,
@@ -165,8 +164,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
           <FastImage
             style={{ width, height: width * 462 / 400 }}
             source={{
-              url: 'https://img2.arkhamcards.com/onboarding/overlap.jpeg',
-              cachePolicy: 'discNoCacheControl',
+              uri: 'https://img2.arkhamcards.com/onboarding/overlap.jpeg',
             }}
           />
         </View>,
@@ -198,8 +196,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
           <FastImage
             style={{ width, height: width * 822 / 676 }}
             source={{
-              url: 'https://img2.arkhamcards.com/onboarding/odds-calculator.png',
-              cachePolicy: 'discNoCacheControl',
+              uri: 'https://img2.arkhamcards.com/onboarding/odds-calculator.png',
             }}
           />
         </View>,

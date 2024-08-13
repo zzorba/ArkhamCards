@@ -5,7 +5,7 @@ import PanPinchView from 'react-native-pan-pinch-view';
 import PriorityQueue from 'priority-queue-typescript';
 import { filter, flatMap, values, find, sortBy, forEach, indexOf, map, sumBy, groupBy } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
-import { FasterImageView as FastImage } from '@candlefinance/faster-image';
+import { Image as FastImage } from 'expo-image';
 import {
   Defs,
   Svg,
@@ -546,10 +546,9 @@ function DossierImage({
         transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
         <FastImage
           source={{
-            url: `https://img2.arkhamcards.com${uri}`,
-            cachePolicy: 'discNoCacheControl',
-            resizeMode: 'cover',
+            uri: `https://img2.arkhamcards.com${uri}`,
           }}
+          resizeMode="cover"
           style={{ width: width - 8 * 2, height: (width * ratio) - 8 * 2 }}
         />
       </View>
