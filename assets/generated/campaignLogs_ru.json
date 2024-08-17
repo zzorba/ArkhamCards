@@ -5381,147 +5381,147 @@
         "entries": [
           {
             "id": "broken_the_law_of_ulthar",
-            "masculine_text": "#name# has broken the law of Ulthar.",
-            "feminine_text": "#name# has broken the law of Ulthar.",
-            "nonbinary_text": "#name# has broken the law of Ulthar."
+            "masculine_text": "#name# нарушил закон Ултара.",
+            "feminine_text": "#name# нарушила закон Ултара.",
+            "nonbinary_text": "#name# нарушил закон Ултара."
           },
           {
             "id": "captured",
-            "masculine_text": "#name# was captured.",
-            "feminine_text": "#name# was captured.",
-            "nonbinary_text": "#name# was captured."
+            "masculine_text": "#name# схвачен.",
+            "feminine_text": "#name# схвачена.",
+            "nonbinary_text": "#name# схвачен."
           },
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "чёрный кот на вашей стороне."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "чёрный кот на вашей стороне."
           },
           {
             "id": "black_cat_delivered_news",
-            "text": "the black cat delivered news of your plight."
+            "text": "чёрный кот передал новости о ваших трудностях."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "у чёрного кота появились догадки."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "чёрный кот оправился на поиски истины."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "чёрный кот узнал истину."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "the black cat shared knowledge of the Dreamlands."
+            "text": "чёрный кот поделился информацией о Мире грёз."
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
-            "text": "the black cat spoke of Atlach-Nacha."
+            "text": "чёрный кот рассказал об Атлач-Наче."
           },
           {
             "id": "black_cat_spoke_of_nyarlathotep",
-            "text": "the black cat spoke of Nyarlathotep."
+            "text": "чёрный кот рассказал о Ньярлатхотепе."
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "чёрный кот предупредил остальных."
           },
           {
             "id": "carried_to_the_cold_wastes",
-            "text": "the investigators were carried to the Cold Wastes."
+            "text": "сыщиков перенесли в Холодную пустыню."
           },
           {
             "id": "cats_collected_their_tribute",
-            "text": "the cats collected their tribute from the Zoogs."
+            "text": "коты собрали дань с зугов."
           },
           {
             "id": "dreamers_awoke",
-            "text": "the dreamers awoke."
+            "text": "сновидцы проснулись."
           },
           {
             "id": "dreamers_banished_nyarlathotep",
-            "text": "the dreamers banished Nyarlathotep."
+            "text": "сновидцы изгнали Ньярлатхотепа."
           },
           {
             "id": "dreamers_escaped_nyarlathoteps_grasp",
-            "text": "the dreamers escaped from Nyarlathotep's grasp."
+            "text": "сыщики избежали хватки Ньярлатхотепа."
           },
           {
             "id": "dreamers_grow_weaker",
-            "text": "the dreamers grow weaker."
+            "text": "сновидцы слабеют."
           },
           {
             "id": "dreamers_know_of_another_path",
-            "text": "the dreamers know of another path."
+            "text": "сновидцы знают другой путь."
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "the dreamers stayed in the Dreamlands forever."
+            "text": "сновидцы навсегда остались в Мире грёз."
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "the dreamers traveled beneath the monastery."
+            "text": "сновидцы спустились в провал под монастырём."
           },
           {
             "id": "forced_way_into_temple",
-            "text": "the investigators forced their way into the temple."
+            "text": "сыщики силой прорвались в храм."
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
-            "text": "Nyarlathotep's invasion has begun."
+            "text": "вторжение Ньярлатхотепа началось."
           },
           {
             "id": "parleyed_with_zoogs",
-            "text": "the investigators parleyed with the Zoogs."
+            "text": "сыщики договорились с зугами."
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "сыщики завладели Серебряным ключом."
           },
           {
             "id": "randolph_did_not_survive_the_voyage",
-            "text": "Randolph Carter did not survive the voyage."
+            "text": "Рэндольф не пережил путешествие."
           },
           {
             "id": "randolph_eluded_capture",
-            "text": "Randolph eluded capture."
+            "text": "Рэндольф избежал плена."
           },
           {
             "id": "randolph_survived_the_voyage",
-            "text": "Randolph survived the voyage."
+            "text": "Рэндольф пережил путешествие."
           },
           {
             "id": "randolph_was_captured",
-            "text": "Randolph was captured."
+            "text": "Рэндольф схвачен."
           },
           {
             "id": "saved_by_randolph_carter",
-            "text": "the investigators were saved by Randolph Carter."
+            "text": "Рэндольф Картер спас сыщиков."
           },
           {
             "id": "strayed_from_the_path",
-            "text": "the dreamers strayed from the path."
+            "text": "сновидцы сошли с тропы."
           },
           {
             "id": "threaten_black_cat",
-            "text": "okay, fine, have it your way then."
+            "text": "ну и пожалуйста, как хотите."
           },
           {
             "id": "travelled_to_the_cold_wastes",
-            "text": "the investigators traveled to the Cold Wastes."
+            "text": "сыщики отправились в Холодную пустыню."
           },
           {
             "id": "virgil_was_captured",
-            "text": "Virgil was captured."
+            "text": "Вёрджил схвачен."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "вы сами напросились."
           }
         ]
       },
@@ -5581,111 +5581,111 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "чёрный кот на вашей стороне."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "чёрный кот на вашей стороне."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "у чёрного кота появились догадки."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "чёрный кот оправился на поиски истины."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "чёрный кот узнал истину."
           },
           {
             "id": "black_cat_requested_aid",
-            "text": "the black cat requested aid from the others."
+            "text": "чёрный кот передал просьбу о помощи."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
-            "text": "the black cat shared knowledge of the Underworld."
+            "text": "чёрный кот поделился информацией о Подземном мире."
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "чёрный кот предупредил остальных."
           },
           {
             "id": "bridge_was_completed",
-            "text": "the bridge was completed."
+            "text": "мост завершён."
           },
           {
             "id": "bridge_was_destroyed",
-            "text": "the bridge was destroyed."
+            "text": "мост уничтожен."
           },
           {
             "id": "doctor_is_alive",
-            "text": "Dr. Maheswaran is alive."
+            "text": "доктор Махесваран выжила."
           },
           {
             "id": "doctor_is_missing",
-            "text": "Dr. Maheswaran is missing."
+            "text": "доктор Махесваран пропала."
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "Dr. Maheswaran joined the investigation."
+            "text": "доктор Махесваран присоединилась к расследованию."
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "Dr. Maheswaran stayed with her patients."
+            "text": "доктор Махесваран осталась с пациентами."
           },
           {
             "id": "doctors_fate_unknown",
-            "text": "Dr. Maheswaran’s fate is unknown."
+            "text": "судьба доктора Махесваран неизвестна."
           },
           {
             "id": "found_a_way_out_of_the_underworld",
-            "text": "the investigators found a way out of the Underworld."
+            "text": "сыщики нашли выход из Подземного мира."
           },
           {
             "id": "never_escaped",
-            "text": "the investigators never escaped."
+            "text": "сыщики остались в междумирье навсегда."
           },
           {
             "id": "on_your_own",
-            "text": "you are on your own."
+            "text": "вы сами по себе."
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "сыщики завладели Серебряным ключом."
           },
           {
             "id": "randolph_did_not_survive_descent",
-            "text": "Randolph did not survive the descent."
+            "text": "Рэндольф не пережил спуск."
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph escaped the hospital on his own."
+            "text": "Рэндольф выбрался из больницы самостоятельно."
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
-            "text": "Randolph escaped the hospital with the investigators."
+            "text": "Рэндольф выбрался из больницы вместе с сыщиками."
           },
           {
             "id": "randolph_survived_descent",
-            "text": "Randolph survived the descent."
+            "text": "Рэндольф пережил спуск."
           },
           {
             "id": "returned_to_reality",
-            "text": "the investigators returned to reality."
+            "text": "сыщики вернулись в реальность."
           },
           {
             "id": "still_in_the_dreamlands",
-            "text": "the investigators are still in the Dreamlands."
+            "text": "сыщики всё ещё странствуют по Миру грёз."
           },
           {
             "id": "trapped_in_atlach_nachas_realm",
-            "text": "the investigators are trapped in Atlach-Nacha's realm."
+            "text": "сыщики в ловушке в измерении Атлач-Начи."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "вы сами напросились."
           }
         ]
       },
