@@ -5951,6 +5951,18 @@ msgstr "圖片緩存已清除"
 msgid "Clear image cache"
 msgstr "清除圖片緩存"
 
+msgid "Unable to create campaign"
+msgstr ""
+
+msgid "Handle is already taken"
+msgstr ""
+
+msgid "Portents"
+msgstr ""
+
+msgid "Truths"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自訂"

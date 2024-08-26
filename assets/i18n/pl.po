@@ -6069,6 +6069,18 @@ msgstr "Pamięć podręczna obrazów wyczyszczona"
 msgid "Clear image cache"
 msgstr "Wyczyść pamięć podręczną obrazów"
 
+msgid "Unable to create campaign"
+msgstr ""
+
+msgid "Handle is already taken"
+msgstr ""
+
+msgid "Portents"
+msgstr ""
+
+msgid "Truths"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Własny"

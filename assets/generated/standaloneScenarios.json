@@ -160,6 +160,11 @@
   {
     "type": "scenario",
     "campaignId": "side",
+    "scenarioId": "the_midwinter_gala"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
     "scenarioId": "the_nights_usurper"
   },
   {

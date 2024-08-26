@@ -5959,6 +5959,18 @@ msgstr "이미지 캐시 정리됨"
 msgid "Clear image cache"
 msgstr "이미지 캐시 비우기"
 
+msgid "Unable to create campaign"
+msgstr ""
+
+msgid "Handle is already taken"
+msgstr ""
+
+msgid "Portents"
+msgstr ""
+
+msgid "Truths"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"

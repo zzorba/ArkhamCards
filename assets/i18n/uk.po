@@ -5812,6 +5812,18 @@ msgstr ""
 msgid "Clear image cache"
 msgstr ""
 
+msgid "Unable to create campaign"
+msgstr ""
+
+msgid "Handle is already taken"
+msgstr ""
+
+msgid "Portents"
+msgstr ""
+
+msgid "Truths"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""

@@ -692,7 +692,6 @@ msgid "Each investigator pays ${ entry.xpCost } experience point to play this sc
 msgid_plural "Each investigator pays ${ entry.xpCost } experience points to play this scenario."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade?"
@@ -1132,14 +1131,12 @@ msgid "${ cycleCount } Cycle"
 msgid_plural "${ cycleCount } Cycles"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "${ standalonePackCount } Pack"
 msgid_plural "${ standalonePackCount } Packs"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Edit Spoilers"
 msgstr ""
@@ -1250,7 +1247,6 @@ msgid "(${ investigator.name } - ${ scenarioCount } scenario"
 msgid_plural "${ investigator.name } - ${ scenarioCount } scenarios"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Import"
 msgstr ""
@@ -1308,14 +1304,12 @@ msgid "${ pendingFriendCount } pending request"
 msgid_plural "${ pendingFriendCount } pending requests"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "${ friendCount } friend"
 msgid_plural "${ friendCount } friends"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Signing into Arkham Cards will let you backup your campaigns between your devices and share in-progress campaigns with other friends."
 msgstr ""
@@ -1578,13 +1572,11 @@ msgid "The campaign that you have uploaded to this account will be deleted:"
 msgid_plural "The ${ createdCampaignCount } campaigns that you have uploaded to this account will be deleted:"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "The friend's campaign that you have participated in will have your decks removed:"
 msgid_plural "The ${ joinedCampaignCount } campaigns from friends that you have participated in will have your decks removed:"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "I understand that all data will be deleted permanently."
 msgstr ""
@@ -1741,7 +1733,6 @@ msgid "${ count } Card"
 msgid_plural "${ count } Cards"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Skill Icons"
 msgstr ""
@@ -1971,7 +1962,6 @@ msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Connect to ArkhamDB"
 msgstr ""
@@ -2190,7 +2180,6 @@ msgid "${ xp } XP"
 msgid_plural "${ xp } XP"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "0 unspent"
 msgstr ""
@@ -2204,7 +2193,6 @@ msgid "${ unspentXpStr } unspent"
 msgid_plural "${ unspentXpStr } unspent"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Draw Weaknesses"
 msgstr ""
@@ -2342,7 +2330,6 @@ msgid "${ size } Card"
 msgid_plural "${ size } Cards"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Select Faction"
 msgstr ""
@@ -2482,7 +2469,6 @@ msgid "${ remainingFreeCards } additional level 0 card may be added to the deck 
 msgid_plural "Up to ${ remainingFreeCards } level 0 cards may be added to the deck  without spending experience."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #. Actually compute the diffs.
 msgid "Upgrade History"
@@ -2493,7 +2479,6 @@ msgid "(${ count } card)"
 msgid_plural "(${ count } cards)"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Collection overlap"
 msgstr ""
@@ -2604,21 +2589,18 @@ msgid "${ normalCards } card"
 msgid_plural "${ normalCards } cards"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "${ unspentXp } XP unspent"
 msgid_plural "${ unspentXp } XP unspent"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "${ normalCardCount } · ${ totalCardCount } total"
 msgid_plural "${ normalCardCount } · ${ totalCardCount } total"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Edit"
 msgstr ""
@@ -2715,7 +2697,6 @@ msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
 msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Story assets and weaknesses"
 msgstr ""
@@ -2766,7 +2747,6 @@ msgid "${ bondedCardCount } bound"
 msgid_plural "${ bondedCardCount } bound"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Experience"
 msgstr ""
@@ -2815,7 +2795,6 @@ msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid ""
@@ -2828,7 +2807,6 @@ msgid_plural ""
 "${ upgradeCards }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "You can edit your collection under Settings to adjust the eligible choices."
 msgstr ""
@@ -2853,7 +2831,6 @@ msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Faction: ${ card.faction_name }, Level: ${ level }"
@@ -3126,7 +3103,6 @@ msgid "${ tokens }/${ total } token"
 msgid_plural "${ tokens }/${ total } tokens"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "${ textModifier }, draws another ${ revealCount }"
@@ -3207,7 +3183,6 @@ msgid "Show ${ section.nonCollectionCount } non-collection investigator"
 msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "No matching investigators for \"${ searchTerm }\"."
@@ -3251,7 +3226,6 @@ msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Spoiler Settings"
 msgstr ""
@@ -3264,7 +3238,6 @@ msgid "Show ${ spoilerCardsCount } spoiler"
 msgid_plural "Show ${ spoilerCardsCount } spoilers"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Searching cards..."
 msgstr ""
@@ -3321,7 +3294,6 @@ msgid "${ used } / ${ available } used"
 msgid_plural "${ used } / ${ available } used"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Draw random basic weakness"
 msgstr ""
@@ -3484,13 +3456,11 @@ msgid "Name ${ quantity } card"
 msgid_plural "Name ${ quantity } cards"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Named card"
 msgid_plural "Named cards"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "In deck"
 msgstr ""
@@ -3506,13 +3476,11 @@ msgid "Choose ${ quantity } trait"
 msgid_plural "Choose ${ quantity } traits"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Chosen trait"
 msgid_plural "Chosen traits"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Add trait"
 msgstr ""
@@ -3786,7 +3754,6 @@ msgid "Read status report: ${ reportSymbols }"
 msgid_plural "Read status reports: ${ reportSymbols }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Take the scenic route to mark time"
 msgstr ""
@@ -3817,7 +3784,6 @@ msgid "Mark ${ travelDistance } time"
 msgid_plural "Mark ${ travelDistance } time"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Use expedited ticket"
 msgstr ""
@@ -3830,7 +3796,6 @@ msgid "Travel time: ${ travelDistance }"
 msgid_plural "Travel time: ${ travelDistance }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Locked"
 msgstr ""
@@ -3840,7 +3805,6 @@ msgid "Travel cost: ${ travelDistance } time"
 msgid_plural "Travel cost: ${ travelDistance } time"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Q: ${ errata.question }"
@@ -3996,21 +3960,18 @@ msgid "Set the ${ encounterSetString } encounter set aside, out of play."
 msgid_plural "Set the ${ encounterSetString } encounter sets aside, out of play."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Gather all cards from the ${ encounterSetString } encounter set."
 msgid_plural "Gather all cards from the following encounter sets: ${ encounterSetString }."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Each investigator who is the bearer of 1 or more key attaches those keys to their investigator card:"
 msgstr ""
@@ -4023,7 +3984,6 @@ msgid "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } t
 msgid_plural "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to ${ arriveCityName } on the way to somewhere else."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "The cell travels from ${ departCityName } to ${ arriveCityName }."
@@ -4034,7 +3994,6 @@ msgid "Mark ${ time } <b>time</b> in your Campaign Log."
 msgid_plural "Mark ${ time } <b>time</b> in your Campaign Log."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "This includes the cost of experience cost of playing the side-story."
 msgstr ""
@@ -4044,7 +4003,6 @@ msgid "${ xp } general / ${ resupplyPointsString } XP"
 msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Trauma"
 msgstr ""
@@ -4054,14 +4012,12 @@ msgid "${ count } resupply"
 msgid_plural "${ count } resupply"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "(new total: ${ total })"
@@ -4075,7 +4031,6 @@ msgid "${ input.prompt } (choose ${ quantity })"
 msgid_plural "${ input.prompt } (choose ${ quantity })"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Record damage/horror:"
 msgstr ""
@@ -4401,14 +4356,12 @@ msgid "Check Campaign Log. Because there is ${ count } mark under '${ logEntry.s
 msgid_plural "Check Campaign Log. Because there are ${ count } marks under '${ logEntry.section }'"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
 msgid_plural "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
@@ -4435,14 +4388,12 @@ msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Because there is ${ playerCount } player in the game:"
 msgid_plural "Because there are ${ playerCount } players in the game:"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "If the lead investigator was <b>killed</b>."
 msgstr ""
@@ -4500,7 +4451,6 @@ msgid "${ scenarioName }: Visit ${ attempt }"
 msgid_plural "${ scenarioName }: Visit ${ attempt }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
@@ -5854,6 +5804,18 @@ msgstr ""
 msgid "Scenario Result"
 msgstr ""
 
+msgid "Unable to create campaign"
+msgstr ""
+
+msgid "Handle is already taken"
+msgstr ""
+
+msgid "Portents"
+msgstr ""
+
+msgid "Truths"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -5916,7 +5878,6 @@ msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.ph
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -5924,7 +5885,6 @@ msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -5932,7 +5892,6 @@ msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -5940,7 +5899,6 @@ msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -5948,7 +5906,6 @@ msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -5956,7 +5913,6 @@ msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }
 msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -5964,7 +5920,6 @@ msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sec
 msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "masculine"
@@ -6042,7 +5997,6 @@ msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.ph
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "feminine"
@@ -6050,7 +6004,6 @@ msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "feminine"
@@ -6058,7 +6011,6 @@ msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "feminine"
@@ -6066,7 +6018,6 @@ msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "feminine"
@@ -6074,7 +6025,6 @@ msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "feminine"
@@ -6082,7 +6032,6 @@ msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }
 msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "feminine"
@@ -6090,7 +6039,6 @@ msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sec
 msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "feminine"
@@ -6168,7 +6116,6 @@ msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.ph
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6176,7 +6123,6 @@ msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6184,7 +6130,6 @@ msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6192,7 +6137,6 @@ msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6200,7 +6144,6 @@ msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -8123,84 +8066,72 @@ msgid "Asset"
 msgid_plural "Assets"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Event"
 msgid_plural "Events"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Skill"
 msgid_plural "Skills"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Treachery"
 msgid_plural "Treacheries"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Enemy"
 msgid_plural "Enemies"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Location"
 msgid_plural "Locations"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Story"
 msgid_plural "Stories"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Act"
 msgid_plural "Acts"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Agenda"
 msgid_plural "Agendas"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Investigator"
 msgid_plural "Investigators"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Scenario"
 msgid_plural "Scenarios"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "header"
 msgid "Key"
 msgid_plural "Keys"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "tags"
 msgid "Add"
@@ -8313,7 +8244,6 @@ msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }
 msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgctxt "mixed"
@@ -8321,7 +8251,6 @@ msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sec
 msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "tarot-reading"
 msgid "Chaos"
