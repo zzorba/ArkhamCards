@@ -6,6 +6,7 @@ import { NavigationProps } from '@components/nav/types';
 import { combineQueries, where } from '@data/sqlite/query';
 import { SORT_BY_PACK } from '@actions/types';
 import { t } from 'ttag';
+import FilterBuilder from '@lib/filters';
 
 export interface PackCardsProps {
   pack_code: string;
@@ -20,9 +21,13 @@ export default function PackCardsView({
   baseQuery,
 }: Props) {
   const query = useCallback(() => {
+    const filters = new FilterBuilder('packs');
     return combineQueries(
-      where(`c.pack_code = '${pack_code}' AND (c.hidden is null OR not c.hidden)`),
-      baseQuery ? [baseQuery] : [],
+      where(`(c.hidden is null OR not c.hidden)`),
+      [
+        ...filters.packCodes([pack_code]),
+        ...(baseQuery ? [baseQuery] : []),
+      ],
       'and'
     );
   }, [pack_code, baseQuery]);

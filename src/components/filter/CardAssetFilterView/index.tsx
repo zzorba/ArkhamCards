@@ -45,6 +45,7 @@ export function usesTranslations() {
     locks: t`Locks`,
     offerings: t`Offerings`,
     poems: c('fan-made-uses').t`Poems`,
+    portents: t`Portents`,
     portions: c('fan-made-uses').t`Portions`,
     resources: t`Resources`,
     secrets: t`Secrets`,
@@ -53,6 +54,7 @@ export function usesTranslations() {
     time: c('uses').t`Time`,
     treats: c('uses').t`Treats`,
     tries: t`Tries`,
+    truths: t`Truths`,
     whistles: t`Whistles`,
   };
 }
