@@ -32,9 +32,9 @@ export const DEFAULT_STYLE_CONTEXT: StyleContextType = {
   height: 100,
   colors: LIGHT_THEME,
   italicFont: 'Alegreya-Italic',
-  gameFont: 'Teutonic',
+  gameFont: 'Arkhamic',
   fontScale: 1,
-  typography: typography(1.0, LIGHT_THEME, 'Alegreya-Italic', 'Alegreya-ExtraBold-Italic', 'Teutonic', 'en'),
+  typography: typography(1.0, LIGHT_THEME, 'Alegreya-Italic', 'Alegreya-ExtraBold-Italic', 'Arkhamic', 'en'),
   backgroundStyle: {
     backgroundColor: LIGHT_THEME.background,
   },

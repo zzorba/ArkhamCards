@@ -369,7 +369,7 @@ export default function CardFlavorTextComponent(
             italic: '',
           },
         },
-        Teutonic: {
+        Arkhamic: {
           fontWeights: {
             300: 'Regular',
             400: 'Regular',
