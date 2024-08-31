@@ -7,7 +7,7 @@ fi
 
 if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --show-cdup`; fi
 
-LANGS=("cs" "vi" "fr" "en" "zh" "pt" "ru" "pl" "ko" "uk" "es" "de" "it");
+LANGS=("cs" "vi" "fr" "en" "zh" "zh-cn" "pt" "ru" "pl" "ko" "uk" "es" "de" "it");
 if [ $# -eq 2 ]; then
   LANGS=($2);
 fi

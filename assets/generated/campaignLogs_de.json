@@ -4908,6 +4908,10 @@
             "text": "dummy"
           },
           {
+            "id": "tmg_score_tally",
+            "text": "#X#"
+          },
+          {
             "id": "tmg_score_tally_spellbound",
             "text": "dummy"
           },
