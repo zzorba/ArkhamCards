@@ -47,7 +47,7 @@ export default function StyleProvider({ children } : Props) {
   const { fontScale, width, height } = useWindowDimensions();
   const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
-  const gameFont = lang === 'ru' ? 'Teutonic RU' : 'Teutonic';
+  const gameFont = lang === 'ru' ? 'Teutonic RU' : 'Arkhamic';
   const italicFont = usePingFang ? 'PingFangTC-Light' : 'Alegreya-Italic';
   const boldItalicFont = usePingFang ? 'PingFangTC-Semibold' : EXTRA_BOLD_ITALIC;
   const styleTypography = useMemo(() => typography(

@@ -615,7 +615,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
             italic: '',
           },
         },
-        Teutonic: {
+        Arkhamic: {
           fontWeights: {
             300: 'Regular',
             400: 'Regular',
