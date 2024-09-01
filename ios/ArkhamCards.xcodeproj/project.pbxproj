@@ -45,6 +45,7 @@
 		65862DA125F17A3D00BDD228 /* Teutonic RU.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65862DA025F17A3D00BDD228 /* Teutonic RU.ttf */; };
 		658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 658AF45324FAAD4D00874CA7 /* Conkordia.ttf */; };
 		6592B6D128876A3F00F61AB6 /* scarlet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6592B6D028876A3F00F61AB6 /* scarlet.ttf */; };
+		6595EBA52C83DEC40052C406 /* Arkhamic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6595EBA42C83DEC40052C406 /* Arkhamic.ttf */; };
 		659EB1BD25118C55007E69E0 /* Alegreya-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */; };
 		659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */; };
 		659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1C025118E2F007E69E0 /* Alegreya-ExtraBold.ttf */; };
@@ -115,6 +116,7 @@
 		65862DA025F17A3D00BDD228 /* Teutonic RU.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Teutonic RU.ttf"; path = "../assets/Teutonic RU.ttf"; sourceTree = "<group>"; };
 		658AF45324FAAD4D00874CA7 /* Conkordia.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Conkordia.ttf; path = ../assets/Conkordia.ttf; sourceTree = "<group>"; };
 		6592B6D028876A3F00F61AB6 /* scarlet.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = scarlet.ttf; path = ../assets/scarlet.ttf; sourceTree = "<group>"; };
+		6595EBA42C83DEC40052C406 /* Arkhamic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Arkhamic.ttf; path = ../assets/Arkhamic.ttf; sourceTree = "<group>"; };
 		659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-MediumItalic.ttf"; path = "../assets/Alegreya-MediumItalic.ttf"; sourceTree = "<group>"; };
 		659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-BoldItalic.ttf"; path = "../assets/Alegreya-BoldItalic.ttf"; sourceTree = "<group>"; };
 		659EB1C025118E2F007E69E0 /* Alegreya-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-ExtraBold.ttf"; path = "../assets/Alegreya-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				6595EBA42C83DEC40052C406 /* Arkhamic.ttf */,
 				651E8ACA2912FE6600A48E56 /* DMSerifDisplay-Italic.ttf */,
 				651E8ACB2912FE6600A48E56 /* DMSerifDisplay-Regular.ttf */,
 				651E8AC82911A8B600A48E56 /* AlegreyaSC-Medium.ttf */,
@@ -368,6 +371,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				651E8ACD2912FE6600A48E56 /* DMSerifDisplay-Regular.ttf in Resources */,
 				652EB73C226BAF8400F6D790 /* en.po.json in Resources */,
+				6595EBA52C83DEC40052C406 /* Arkhamic.ttf in Resources */,
 				652EB742226BAFA800F6D790 /* it.po.json in Resources */,
 				65851174250F047800DCB842 /* Alegreya-Bold.ttf in Resources */,
 				655226B5205D68D70065A1F7 /* standalone.ttf in Resources */,
@@ -663,7 +667,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 4.7.0;
+				MARKETING_VERSION = 4.7.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -715,7 +719,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 4.7.0;
+				MARKETING_VERSION = 4.7.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

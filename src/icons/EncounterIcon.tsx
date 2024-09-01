@@ -295,6 +295,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'on_the_road_again':
       case 'ptr':
       case 'path_of_the_righteous':
+      case 'pap':
+      case 'pistols_and_pearls':
+      case 'hfa':
+      case 'hunting_for_answers':
         return this.cardIcon('parallel', size, color);
       case 'cotr':
       case 'curse_of_the_rougarou':
@@ -617,6 +621,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'the_symphony_of_erich_zann':
       case 'the_symphony_of_erich_zahn':
         return this.standaloneIcon('zez', size, color);
+      case 'zcos':
       case 'the_colour_out_of_space':
         return this.standaloneIcon('meteoric_phenomenon', size, color);
       case 'a_sea_of_troubles':
