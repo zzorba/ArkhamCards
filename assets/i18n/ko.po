@@ -2978,13 +2978,13 @@ msgid "Deck is invalid"
 msgstr "덱 구성 조건을 만족하지 않습니다"
 
 msgid "Show splash cards"
-msgstr "다른 역할군 카드 보기"
+msgstr "수량 한정 카드 보기"
 
 msgid "Hide splash cards"
-msgstr "다른 역할군 카드 숨기기"
+msgstr "수량 한정 카드 숨김"
 
 msgid "Limited Slots"
-msgstr "제한된 슬롯"
+msgstr "수량 한정 카드"
 
 #, javascript-format
 msgid "${ count } of ${ limitSlotCount }"
@@ -3565,34 +3565,34 @@ msgid "${ normalCardCount } / ${ deckSize } cards"
 msgstr "${ normalCardCount } / ${ deckSize } 카드"
 
 msgid "Ammo"
-msgstr "탄약"
+msgstr "탄약 - Ammo"
 
 msgid "Bounties"
-msgstr "현상금"
+msgstr "현상금 - Bounties"
 
 msgid "Charges"
-msgstr "충전"
+msgstr "충전 - Charges"
 
 msgid "Keys"
-msgstr "열쇠"
+msgstr "열쇠 - Keys"
 
 msgid "Locks"
-msgstr "자물쇠"
+msgstr "자물쇠 - Locks"
 
 msgid "Resources"
-msgstr "자원"
+msgstr "자원 - Resources"
 
 msgid "Secrets"
-msgstr "비밀"
+msgstr "비밀 - Secrets"
 
 msgid "Tickets"
-msgstr "티켓"
+msgstr "티켓 - Tickets"
 
 msgid "Tries"
-msgstr "시도"
+msgstr "시도 - Tries"
 
 msgid "Whistles"
-msgstr "호각"
+msgstr "호각 - Whistles"
 
 msgid "Loading..."
 msgstr "불러오는 중..."
@@ -4732,13 +4732,13 @@ msgid "Note: this campaign is a fairly new addition to the app and may contain s
 msgstr "주의: 이 캠페인은 앱에 새로 추가된 것으로 약간의 오류가 있을 수 있습니다."
 
 msgid "Durability"
-msgstr "내구도"
+msgstr "내구도 - Durability"
 
 msgid "Leylines"
-msgstr "지맥"
+msgstr "지맥 - Leylines"
 
 msgid "Offerings"
-msgstr "공물"
+msgstr "공물 - Offerings"
 
 msgid "Patrol"
 msgstr "순찰"
@@ -5880,7 +5880,7 @@ msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.
 msgstr "경험치 비용: ${ investigator.name } 조사자의 경우 ${ basicXpCost }점, 다른 조사자는의 경우 ${ challengeDiscountCost }점"
 
 msgid "Aether"
-msgstr "에테르"
+msgstr "에테르 - Aether"
 
 msgid "Campaign Rules & FAQ"
 msgstr "캠페인 규칙과 자주 묻는 질문"
@@ -5960,10 +5960,10 @@ msgid "Clear image cache"
 msgstr "이미지 캐시 비우기"
 
 msgid "Unable to create campaign"
-msgstr ""
+msgstr "생성 불가능 캠페인"
 
 msgid "Handle is already taken"
-msgstr ""
+msgstr "이미 존재하는 계정명입니다."
 
 msgid "Portents"
 msgstr ""
@@ -6409,7 +6409,7 @@ msgstr "새롭게 디자인된 혼돈 주머니 확률 계산기 "
 
 msgctxt "releaseNotes"
 msgid "<center>\"Never tell me the odds!\" - Han Solo</center>"
-msgstr "<center>“절대 확률을 말하지 마세요!” - 한 솔로</center>"
+msgstr "<center>“절대 확률을 언급하지 마세요!” - 한 솔로</center>"
 
 msgctxt "releaseNotes"
 msgid "Sorry Han, this isn't the feature for you. When it came time to try to work [bless] and [curse] tokens into the existing odds calculator, this app's visual designer (Eugene Sarnetsky) worked hard to reimagine how to present the mathy information in a more intuitive and visual manner."
@@ -8159,31 +8159,31 @@ msgstr "현재"
 
 msgctxt "fan-made-uses"
 msgid "Blame"
-msgstr "비난"
+msgstr "비난 - Blame"
 
 msgctxt "fan-made-uses"
 msgid "Poems"
-msgstr "시문"
+msgstr "시문 - Poems"
 
 msgctxt "fan-made-uses"
 msgid "Portions"
-msgstr "몫"
+msgstr "몫 - Portions"
 
 msgctxt "uses"
 msgid "Supplies"
-msgstr "소모품"
+msgstr "소모품 - Supplies"
 
 msgctxt "uses"
 msgid "Evidence"
-msgstr "증거"
+msgstr "증거 - Evidence"
 
 msgctxt "uses"
 msgid "Time"
-msgstr "시간"
+msgstr "시간 - Time"
 
 msgctxt "uses"
 msgid "Treats"
-msgstr "사료"
+msgstr "사료 - Treats"
 
 msgctxt "Slots"
 msgid "All"
