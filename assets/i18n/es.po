@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.1\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 msgid "Guardian"
 msgstr "Guardián"
@@ -6020,10 +6020,10 @@ msgid "Handle is already taken"
 msgstr "Nombre de usuario ocupado"
 
 msgid "Portents"
-msgstr ""
+msgstr "Portentos"
 
 msgid "Truths"
-msgstr ""
+msgstr "Verdades"
 
 msgctxt "investigator"
 msgid "Custom"
