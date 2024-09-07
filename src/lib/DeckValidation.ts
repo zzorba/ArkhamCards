@@ -488,7 +488,7 @@ export default class DeckValidation {
 
   isCardLimited(card: Card): boolean {
     const option = this.matchingDeckOption(card, false);
-    return !!(option && option.limit && !option.dynamic && !option.not);
+    return !!(option && option.limit && !option.dynamic_id && !option.not);
   }
 
   deckOptions(): DeckOption[] {
@@ -500,7 +500,7 @@ export default class DeckValidation {
           not: true,
           slot: ["Ally"],
           error: t`No assets that take up the ally slot are allowed by On Your Own.`,
-          dynamic: true,
+          dynamic_id: ON_YOUR_OWN_CODE,
         })
       );
     }
@@ -510,7 +510,7 @@ export default class DeckValidation {
         trait: ["Covenant"],
         ignore_match: true,
         error: t`Limit 1 Covenant per deck.`,
-        dynamic: true,
+        dynamic_id: "convenant",
       });
     }
     if (specialCards.ancestralKnowledge) {
@@ -583,12 +583,22 @@ export default class DeckValidation {
   canIncludeCard(card: Card, processDeckCounts: boolean): boolean {
     const matchingOption = this.matchingDeckOption(card, processDeckCounts);
     if (matchingOption?.not) {
+      if (
+        matchingOption.dynamic_id === ON_YOUR_OWN_CODE &&
+        card.encounter_code === "the_midwinter_gala"
+      ) {
+        // ON YOUR OWN doesn't block the midwinter gala story assets,
+        // because of obscure deckbuilding reasons.
+        return true;
+      }
       return false;
     }
     return (
       !!matchingOption ||
       card.code === BODY_OF_A_YITHIAN ||
-      (!!card.encounter_code && (card.deck_limit ?? 0) > 0)
+      // Handle weird story cards that break the rules
+      (card.encounter_code === "the_midwinter_gala" &&
+        (card.deck_limit ?? 0) > 0)
     );
   }
 

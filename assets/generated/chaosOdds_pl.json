@@ -4554,7 +4554,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Liczba wrogów z cechą [[Kultysta]] w puli zwycięstwa",
+          "prompt": "Liczba wrogów z cechą [[Kultysta]] w puli zwycięstwa",
           "min": 0,
           "max": 5
         }
@@ -4568,7 +4568,7 @@
           },
           "options": [
             {
-              "prompt": "Wróg z cechą [[Kultysta]] jest z tobą w zwarciu",
+              "prompt": "Wróg z cechą [[Kultysta]] jest z tobą w zwarciu",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -4595,7 +4595,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Liczba wrogów z cechą [[Kultysta]] w puli zwycięstwa",
+          "prompt": "Liczba wrogów z cechą [[Kultysta]] w puli zwycięstwa",
           "min": 0,
           "adjustment": 1
         }
@@ -4609,7 +4609,7 @@
           },
           "options": [
             {
-              "prompt": "Wróg z cechą [[Kultysta]] jest z tobą w zwarciu",
+              "prompt": "Wróg z cechą [[Kultysta]] jest z tobą w zwarciu",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1

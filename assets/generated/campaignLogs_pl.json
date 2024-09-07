@@ -7,39 +7,39 @@
         "entries": [
           {
             "id": "arkham_succumbed",
-            "text": "na Arkham spadła straszna zemsta Umôrdhotha."
+            "text": "na Arkham spadła straszna zemsta Umôrdhotha."
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "Kapłan ghouli nadal żyje."
+            "text": "Kapłan ghouli nadal żyje."
           },
           {
             "id": "house_burned",
-            "text": "twój dom został spalony."
+            "text": "twój dom został spalony."
           },
           {
             "id": "house_standing",
-            "text": "twój dom nadal stoi."
+            "text": "twój dom nadal stoi."
           },
           {
             "id": "lita_finds_others",
-            "text": "Lita została zmuszona szukać pomocy gdzie indziej."
+            "text": "Lita została zmuszona szukać pomocy gdzie indziej."
           },
           {
             "id": "lita_sacrificed",
-            "text": "badacze poświęcili Litę Chantler na rzecz Umôrdhotha."
+            "text": "badacze poświęcili Litę Chantler na rzecz Umôrdhotha."
           },
           {
             "id": "past_midnight",
-            "text": "jest już po północy."
+            "text": "jest już po północy."
           },
           {
             "id": "ritual_broken",
-            "text": "udało się przerwać rytuał przyzwania Umôrdhotha."
+            "text": "udało się przerwać rytuał przyzwania Umôrdhotha."
           },
           {
             "id": "umordhoth_repelled",
-            "text": "badaczom udało się odeprzeć Umôrdhotha."
+            "text": "badaczom udało się odeprzeć Umôrdhotha."
           }
         ]
       },
@@ -76,19 +76,19 @@
           },
           {
             "id": "bone_to_pick",
-            "text": "gang O’Banniona ma z badaczami na pieńku."
+            "text": "gang O’Banniona ma z badaczami na pieńku."
           },
           {
             "id": "brood_escaped",
-            "text": "#X# pomiotów uciekło."
+            "text": "#X# pomiotów uciekło."
           },
           {
             "id": "calmed_townsfolk",
-            "text": "uspokoiliście mieszkańców."
+            "text": "uspokoiliście mieszkańców."
           },
           {
             "id": "closed_tear",
-            "text": "badacze zamknęli szczelinę w rzeczywistości."
+            "text": "badacze zamknęli szczelinę w rzeczywistości."
           },
           {
             "id": "destroyed_necronomicon",
@@ -100,7 +100,7 @@
           },
           {
             "id": "entered_the_gate",
-            "text": "badacze przeszli przez bramę."
+            "text": "badacze przeszli przez bramę."
           },
           {
             "id": "experiment_defeated",
@@ -108,11 +108,11 @@
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "badaczom nie udało się odzyskać Necronomiconu."
+            "text": "badaczom nie udało się odzyskać Necronomiconu."
           },
           {
             "id": "failed_to_save_students",
-            "text": "badaczom nie udało się uratować studentów."
+            "text": "badaczom nie udało się uratować studentów."
           },
           {
             "id": "francis_morgan_kidnapped",
@@ -144,11 +144,11 @@
           },
           {
             "id": "killed_silas_bishop",
-            "text": "badacze uwolnili Silasa Bishopa z jego nieszczęścia."
+            "text": "badacze uwolnili Silasa Bishopa z jego nieszczęścia."
           },
           {
             "id": "naomi_has_back",
-            "text": "Naomi jest gotowa pomóc badaczom."
+            "text": "Naomi jest gotowa pomóc badaczom."
           },
           {
             "id": "necronomicon_stolen",
@@ -156,15 +156,15 @@
           },
           {
             "id": "no_brood_escaped",
-            "text": "żaden pomiot nie uciekł."
+            "text": "żaden pomiot nie uciekł."
           },
           {
             "id": "restored_silas_bishop",
-            "text": "badacze przywrócili Silasa Bishopa do normalności."
+            "text": "badacze przywrócili Silasa Bishopa do normalności."
           },
           {
             "id": "ritual_completed",
-            "text": "rytuał został ukończony."
+            "text": "rytuał został ukończony."
           },
           {
             "id": "students_rescued",
@@ -180,7 +180,7 @@
           },
           {
             "id": "warned_townsfolk",
-            "text": "ostrzegliście mieszkańców."
+            "text": "ostrzegliście mieszkańców."
           },
           {
             "id": "warren_rice_kidnapped",
@@ -196,11 +196,11 @@
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth rozerwał na strzępy barierę miedzy światami i stał się jednością z rzeczywistością."
+            "text": "Yog-Sothoth rozerwał na strzępy barierę miedzy światami i stał się jednością z rzeczywistością."
           },
           {
             "id": "yog_sothoth_escaped",
-            "text": "Yog-Sothoth rozerwał na strzępy barierę miedzy światami i stał się jednością z rzeczywistością."
+            "text": "Yog-Sothoth rozerwał na strzępy barierę miedzy światami i stał się jednością z rzeczywistością."
           },
           {
             "id": "yog_sothoth_fled",
@@ -362,11 +362,11 @@
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "nienazwane szaleństwo uciekło."
+            "text": "nienazwane szaleństwo uciekło."
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "nienazwane szaleństwo jest bezpiecznie zamknięte w nowym gospodarzu… na razie."
+            "text": "nienazwane szaleństwo jest bezpiecznie zamknięte w nowym gospodarzu… na razie."
           },
           {
             "id": "photographed_the_astronomical_charts",
@@ -398,7 +398,7 @@
           },
           {
             "id": "surviving_members_header",
-            "text": "ocalali następujący członkowie ekspedycji:"
+            "text": "ocalali następujący członkowie ekspedycji:"
           },
           {
             "id": "surviving_partners",
@@ -446,7 +446,7 @@
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "prawda o mirażu jest poza waszym zasięgiem."
+            "text": "prawda o mirażu jest poza waszym zasięgiem."
           }
         ]
       },
@@ -2647,19 +2647,19 @@
           },
           {
             "id": "bone_to_pick",
-            "text": "gang O’Banniona ma z badaczami na pieńku."
+            "text": "gang O’Banniona ma z badaczami na pieńku."
           },
           {
             "id": "brood_escaped",
-            "text": "#X# pomiotów uciekło."
+            "text": "#X# pomiotów uciekło."
           },
           {
             "id": "calmed_townsfolk",
-            "text": "uspokoiliście mieszkańców."
+            "text": "uspokoiliście mieszkańców."
           },
           {
             "id": "closed_tear",
-            "text": "badacze zamknęli szczelinę w rzeczywistości."
+            "text": "badacze zamknęli szczelinę w rzeczywistości."
           },
           {
             "id": "destroyed_necronomicon",
@@ -2671,7 +2671,7 @@
           },
           {
             "id": "entered_the_gate",
-            "text": "badacze przeszli przez bramę."
+            "text": "badacze przeszli przez bramę."
           },
           {
             "id": "experiment_defeated",
@@ -2679,11 +2679,11 @@
           },
           {
             "id": "failed_to_recover_necronomicon",
-            "text": "badaczom nie udało się odzyskać Necronomiconu."
+            "text": "badaczom nie udało się odzyskać Necronomiconu."
           },
           {
             "id": "failed_to_save_students",
-            "text": "badaczom nie udało się uratować studentów."
+            "text": "badaczom nie udało się uratować studentów."
           },
           {
             "id": "francis_morgan_kidnapped",
@@ -2715,11 +2715,11 @@
           },
           {
             "id": "killed_silas_bishop",
-            "text": "badacze uwolnili Silasa Bishopa z jego nieszczęścia."
+            "text": "badacze uwolnili Silasa Bishopa z jego nieszczęścia."
           },
           {
             "id": "naomi_has_back",
-            "text": "Naomi jest gotowa pomóc badaczom."
+            "text": "Naomi jest gotowa pomóc badaczom."
           },
           {
             "id": "necronomicon_stolen",
@@ -2727,15 +2727,15 @@
           },
           {
             "id": "no_brood_escaped",
-            "text": "żaden pomiot nie uciekł."
+            "text": "żaden pomiot nie uciekł."
           },
           {
             "id": "restored_silas_bishop",
-            "text": "badacze przywrócili Silasa Bishopa do normalności."
+            "text": "badacze przywrócili Silasa Bishopa do normalności."
           },
           {
             "id": "ritual_completed",
-            "text": "rytuał został ukończony."
+            "text": "rytuał został ukończony."
           },
           {
             "id": "students_rescued",
@@ -2751,7 +2751,7 @@
           },
           {
             "id": "warned_townsfolk",
-            "text": "ostrzegliście mieszkańców."
+            "text": "ostrzegliście mieszkańców."
           },
           {
             "id": "warren_rice_kidnapped",
@@ -2767,11 +2767,11 @@
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth rozerwał na strzępy barierę miedzy światami i stał się jednością z rzeczywistością."
+            "text": "Yog-Sothoth rozerwał na strzępy barierę miedzy światami i stał się jednością z rzeczywistością."
           },
           {
             "id": "yog_sothoth_escaped",
-            "text": "Yog-Sothoth rozerwał na strzępy barierę miedzy światami i stał się jednością z rzeczywistością."
+            "text": "Yog-Sothoth rozerwał na strzępy barierę miedzy światami i stał się jednością z rzeczywistością."
           },
           {
             "id": "yog_sothoth_fled",
@@ -2812,39 +2812,39 @@
         "entries": [
           {
             "id": "arkham_succumbed",
-            "text": "na Arkham spadła straszna zemsta Umôrdhotha."
+            "text": "na Arkham spadła straszna zemsta Umôrdhotha."
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "Kapłan ghouli nadal żyje."
+            "text": "Kapłan ghouli nadal żyje."
           },
           {
             "id": "house_burned",
-            "text": "twój dom został spalony."
+            "text": "twój dom został spalony."
           },
           {
             "id": "house_standing",
-            "text": "twój dom nadal stoi."
+            "text": "twój dom nadal stoi."
           },
           {
             "id": "lita_finds_others",
-            "text": "Lita została zmuszona szukać pomocy gdzie indziej."
+            "text": "Lita została zmuszona szukać pomocy gdzie indziej."
           },
           {
             "id": "lita_sacrificed",
-            "text": "badacze poświęcili Litę Chantler na rzecz Umôrdhotha."
+            "text": "badacze poświęcili Litę Chantler na rzecz Umôrdhotha."
           },
           {
             "id": "past_midnight",
-            "text": "jest już po północy."
+            "text": "jest już po północy."
           },
           {
             "id": "ritual_broken",
-            "text": "udało się przerwać rytuał przyzwania Umôrdhotha."
+            "text": "udało się przerwać rytuał przyzwania Umôrdhotha."
           },
           {
             "id": "umordhoth_repelled",
-            "text": "badaczom udało się odeprzeć Umôrdhotha."
+            "text": "badaczom udało się odeprzeć Umôrdhotha."
           }
         ]
       },
@@ -3120,15 +3120,15 @@
           },
           {
             "id": "alive",
-            "text": "Gavriella żyje."
+            "text": "Gavriella żyje."
           },
           {
             "id": "dead",
-            "text": "Gavriella nie żyje."
+            "text": "Gavriella nie żyje."
           },
           {
             "id": "on_gavriellas_trail",
-            "text": "badacze są na tropie Gavrielli."
+            "text": "badacze są na tropie Gavrielli."
           }
         ]
       },
@@ -3157,15 +3157,15 @@
           },
           {
             "id": "alive",
-            "text": "Jerome żyje."
+            "text": "Jerome żyje."
           },
           {
             "id": "dead",
-            "text": "Jerome nie żyje."
+            "text": "Jerome nie żyje."
           },
           {
             "id": "on_jeromes_trail",
-            "text": "badacze są na tropie Jerome’a."
+            "text": "badacze są na tropie Jerome’a."
           }
         ]
       },
@@ -3194,15 +3194,15 @@
           },
           {
             "id": "alive",
-            "text": "Valentino żyje."
+            "text": "Valentino żyje."
           },
           {
             "id": "dead",
-            "text": "Valentino nie żyje."
+            "text": "Valentino nie żyje."
           },
           {
             "id": "on_valentinos_trail",
-            "text": "badacze są na tropie Valentino."
+            "text": "badacze są na tropie Valentino."
           }
         ]
       },
@@ -3231,15 +3231,15 @@
           },
           {
             "id": "alive",
-            "text": "Penny żyje."
+            "text": "Penny żyje."
           },
           {
             "id": "dead",
-            "text": "Penny nie żyje."
+            "text": "Penny nie żyje."
           },
           {
             "id": "on_pennys_trail",
-            "text": "badacze są na tropie Penny."
+            "text": "badacze są na tropie Penny."
           }
         ]
       },
@@ -3248,17 +3248,17 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# dołączył do fletniarzy Azathotha.",
-            "feminine_text": "#name# dołączyła do fletniarzy Azathotha.",
-            "nonbinary_text": "#name# dołączyło do fletniarzy Azathotha."
+            "masculine_text": "#name# dołączył do fletniarzy Azathotha.",
+            "feminine_text": "#name# dołączyła do fletniarzy Azathotha.",
+            "nonbinary_text": "#name# dołączyło do fletniarzy Azathotha."
           },
           {
             "id": "accepted_fate",
-            "text": "pogodziłeś się ze swym losem."
+            "text": "pogodziłeś się ze swym losem."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason jest opętana przez moce zła."
+            "text": "Anette Mason jest opętana przez moce zła."
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
@@ -3282,15 +3282,15 @@
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "badacze przejęli kontrolę nad Lożą Srebrnego Świtu."
+            "text": "badacze przejęli kontrolę nad Lożą Srebrnego Świtu."
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth pochłonął wszechświat."
+            "text": "Azathoth pochłonął wszechświat."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth śpi… na razie."
+            "text": "Azathoth śpi… na razie."
           },
           {
             "id": "being_hunted",
@@ -3298,11 +3298,11 @@
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford posiadł tajemnice wszechświata."
+            "text": "Carl Sanford posiadł tajemnice wszechświata."
           },
           {
             "id": "continued_alone",
-            "text": "badacze kontynuują śledztwo samodzielnie."
+            "text": "badacze kontynuują śledztwo samodzielnie."
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
@@ -3310,19 +3310,19 @@
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "badacze oszukują Lożę."
+            "text": "badacze oszukują Lożę."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "badacze odkryli, jak otworzyć pudełko-zagadkę."
+            "text": "badacze odkryli, jak otworzyć pudełko-zagadkę."
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "zagłada zbliża się coraz bardziej."
+            "text": "zagłada zbliża się coraz bardziej."
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "badacze są wrogami Loży."
+            "text": "badacze są wrogami Loży."
           },
           {
             "id": "erynn_joined_investigators",
@@ -3334,23 +3334,23 @@
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "strażnik pułapki pojawił się i został pokonany."
+            "text": "strażnik pułapki pojawił się i został pokonany."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "pojawił się strażnik pułapki."
+            "text": "pojawił się strażnik pułapki."
           },
           {
             "id": "heretics_released",
-            "text": "#X# heretyków zostało uwolnionych w Arkham."
+            "text": "#X# heretyków zostało uwolnionych w Arkham."
           },
           {
             "id": "hid_knowledge_of_coven",
-            "text": "badacze zataili swoją wiedzę o sabacie."
+            "text": "badacze zataili swoją wiedzę o sabacie."
           },
           {
             "id": "inducted_into_the_inner_circle",
-            "text": "badacze zostali wprowadzeni do Wewnętrznego kręgu."
+            "text": "badacze zostali wprowadzeni do Wewnętrznego kręgu."
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
@@ -3358,7 +3358,7 @@
           },
           {
             "id": "josef_disappeared_into_the_mist",
-            "text": "Josef rozpłynął się we mgle."
+            "text": "Josef rozpłynął się we mgle."
           },
           {
             "id": "josef_is_alive",
@@ -3366,23 +3366,23 @@
           },
           {
             "id": "kept_mementos_hidden",
-            "text": "badacze nie wyjawili znalezionych pamiątek."
+            "text": "badacze nie wyjawili znalezionych pamiątek."
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "badacze nie dowiedzieli się niczego na temat planów Loży."
+            "text": "badacze nie dowiedzieli się niczego na temat planów Loży."
           },
           {
             "id": "members_of_the_lodge",
-            "text": "badacze są członkami Loży."
+            "text": "badacze są członkami Loży."
           },
           {
             "id": "never_seen_again",
-            "text": "nikt więcej nie widział żadnego z badaczy."
+            "text": "nikt więcej nie widział żadnego z badaczy."
           },
           {
             "id": "path_winds_before_you",
-            "text": "przed wami wije się szlak: #X#"
+            "text": "przed wami wije się szlak: #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -3390,7 +3390,7 @@
           },
           {
             "id": "rejected_fate",
-            "text": "odrzuciłeś swój los."
+            "text": "odrzuciłeś swój los."
           },
           {
             "id": "rescued_josef",
@@ -3398,35 +3398,35 @@
           },
           {
             "id": "sided_with_the_coven",
-            "text": "badacze stanęli po stronie sabatu."
+            "text": "badacze stanęli po stronie sabatu."
           },
           {
             "id": "sided_with_the_lodge",
-            "text": "badacze stanęli po stronie Loży."
+            "text": "badacze stanęli po stronie Loży."
           },
           {
             "id": "signed_the_black_book",
-            "text": "badacze podpisali Czarną księgę Azathotha."
+            "text": "badacze podpisali Czarną księgę Azathotha."
           },
           {
             "id": "survived_the_watchers_embrace",
-            "text": "badacze przetrwali uścisk obserwatora."
+            "text": "badacze przetrwali uścisk obserwatora."
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "badacze powiedzieli Loży o sabacie."
+            "text": "badacze powiedzieli Loży o sabacie."
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "rozpoczęło się prawdziwe dzieło Loży Srebrnego Świtu."
+            "text": "rozpoczęło się prawdziwe dzieło Loży Srebrnego Świtu."
           },
           {
             "id": "witches_spell_broken",
-            "text": "udało się złamać zaklęcie wiedźm."
+            "text": "udało się złamać zaklęcie wiedźm."
           },
           {
             "id": "witches_spell_cast",
-            "text": "wiedźmy rzuciły zaklęcie."
+            "text": "wiedźmy rzuciły zaklęcie."
           }
         ]
       },
@@ -3556,7 +3556,7 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Hipnotyzujący flet"
+            "text": "Hipnotyzujący flet"
           },
           {
             "id": "ritual_components",
@@ -3564,7 +3564,7 @@
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Strzępy porwanego cienia"
+            "text": "Strzępy porwanego cienia"
           },
           {
             "id": "strange_incantation",
@@ -3595,7 +3595,7 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro zaginął."
+            "text": "Alejandro zaginął."
           },
           {
             "id": "alejandro_on_his_own",
@@ -3611,7 +3611,7 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro wszystko pamięta."
+            "text": "Alejandro wszystko pamięta."
           },
           {
             "id": "alejandro_set_against",
@@ -3619,11 +3619,11 @@
           },
           {
             "id": "braziers_are_lit",
-            "text": "koksowniki są rozpalone."
+            "text": "koksowniki są rozpalone."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "koksowniki są zgaszone."
+            "text": "koksowniki są zgaszone."
           },
           {
             "id": "cleared_path_to_temple",
@@ -3631,7 +3631,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "badacze współpracowali z Yithianami."
+            "text": "badacze współpracowali z Yithianami."
           },
           {
             "id": "earned_alejandros_trust",
@@ -3643,7 +3643,7 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "struktura czasu rozpadła się."
+            "text": "struktura czasu rozpadła się."
           },
           {
             "id": "fell_into_depths",
@@ -3651,15 +3651,15 @@
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "badaczom udało się nawiązać więź z Ichtacą."
+            "text": "badaczom udało się nawiązać więź z Ichtacą."
           },
           {
             "id": "forging_own_path",
-            "text": "zdecydowaliście zrobić po swojemu."
+            "text": "zdecydowaliście zrobić po swojemu."
           },
           {
             "id": "found_missing_relic",
-            "text": "badacze odnaleźli zaginiony relikt."
+            "text": "badacze odnaleźli zaginiony relikt."
           },
           {
             "id": "gave_relic_to_alejandro",
@@ -3699,7 +3699,7 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "wiara Ichtaci została przywrócona."
+            "text": "wiara Ichtaci została przywrócona."
           },
           {
             "id": "investigators_recovered_relic",
@@ -3707,19 +3707,19 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "badacze uratowali cywilizację Węży."
+            "text": "badacze uratowali cywilizację Węży."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "badacze uratowali cywilizację Yithian."
+            "text": "badacze uratowali cywilizację Yithian."
           },
           {
             "id": "jungle_watches",
-            "text": "dżungla was obserwuje (#name# #X#)."
+            "text": "dżungla was obserwuje (#name# #X#)."
           },
           {
             "id": "mapped_way_forward",
-            "text": "badacze zaplanowali dalszą drogę."
+            "text": "badacze zaplanowali dalszą drogę."
           },
           {
             "id": "mended_tear_in_time",
@@ -3731,15 +3731,15 @@
           },
           {
             "id": "paths_known",
-            "text": "znacie #X# ścieżek."
+            "text": "znacie #X# ścieżek."
           },
           {
             "id": "process_backfired",
-            "text": "proces miał niepożądane skutki."
+            "text": "proces miał niepożądane skutki."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "proces miał spektakularne niepożądane skutki."
+            "text": "proces miał spektakularne niepożądane skutki."
           },
           {
             "id": "process_was_perfected",
@@ -3747,7 +3747,7 @@
           },
           {
             "id": "process_was_successful",
-            "text": "proces zakończył się sukcesem."
+            "text": "proces zakończył się sukcesem."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -3763,15 +3763,15 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "badacze pozostali w zamknięciu."
+            "text": "badacze pozostali w zamknięciu."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "badacze na zawsze zapieczętowali Relikt wieczności."
+            "text": "badacze na zawsze zapieczętowali Relikt wieczności."
           },
           {
             "id": "turned_back_time",
-            "text": "badacze cofnęli czas."
+            "text": "badacze cofnęli czas."
           },
           {
             "id": "wait_for_additional_supplies",
@@ -3784,9 +3784,9 @@
         "entries": [
           {
             "id": "hote_start_with_clue",
-            "masculine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
-            "feminine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
-            "nonbinary_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>."
+            "masculine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
+            "feminine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
+            "nonbinary_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>."
           },
           {
             "id": "doy_fewer_resources",
@@ -3844,7 +3844,7 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca oddaliła się bez was."
+            "text": "Ichtaca oddaliła się bez was."
           },
           {
             "id": "jungle_beckons_reminder",
@@ -3852,7 +3852,7 @@
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "wysłuchaliście opowieści Ichtaci."
+            "text": "wysłuchaliście opowieści Ichtaci."
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -3909,7 +3909,7 @@
       {
         "id": "gasoline",
         "name": "Benzyna",
-        "description": "Wystarczy na długą podróż samochodem.",
+        "description": "Wystarczy na długą podróż samochodem.",
         "cost": 1,
         "multiple": true
       },
@@ -3959,7 +3959,7 @@
       {
         "id": "pocketknife",
         "name": "Scyzoryk",
-        "description": "Za mały, aby służyć za broń, ale łatwy do ukrycia.",
+        "description": "Za mały, aby służyć za broń, ale łatwy do ukrycia.",
         "cost": 2
       },
       {
@@ -4086,11 +4086,11 @@
           },
           {
             "id": "mission_failed",
-            "text": "misja nie powiodła się."
+            "text": "misja nie powiodła się."
           },
           {
             "id": "mission_succeeded",
-            "text": "misja się powiodła."
+            "text": "misja się powiodła."
           },
           {
             "id": "orders_ritual_was_disrupted",
@@ -4280,7 +4280,7 @@
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "walka z przerażającym diabłem"
+            "text": "walka z przerażającym diabłem"
           },
           {
             "id": "conversation_with_mr_moore",
@@ -4288,7 +4288,7 @@
           },
           {
             "id": "decision_to_stick_together",
-            "text": "decyzja o trzymaniu się razem"
+            "text": "decyzja o trzymaniu się razem"
           },
           {
             "id": "discovery_of_a_mystical_relic",
@@ -4485,7 +4485,7 @@
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua wycofał się, aby wyleczyć rany."
+            "text": "Cnidathqua wycofał się, aby wyleczyć rany."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
@@ -4493,7 +4493,7 @@
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "Cnidathqua uciekł przed słońcem w głębiny."
+            "text": "Cnidathqua uciekł przed słońcem w głębiny."
           },
           {
             "id": "constellation_was_lost_to_the_depths",
@@ -4986,15 +4986,15 @@
           },
           {
             "id": "alive",
-            "text": "Gavriella żyje."
+            "text": "Gavriella żyje."
           },
           {
             "id": "dead",
-            "text": "Gavriella nie żyje."
+            "text": "Gavriella nie żyje."
           },
           {
             "id": "on_gavriellas_trail",
-            "text": "badacze są na tropie Gavrielli."
+            "text": "badacze są na tropie Gavrielli."
           }
         ]
       },
@@ -5023,15 +5023,15 @@
           },
           {
             "id": "alive",
-            "text": "Jerome żyje."
+            "text": "Jerome żyje."
           },
           {
             "id": "dead",
-            "text": "Jerome nie żyje."
+            "text": "Jerome nie żyje."
           },
           {
             "id": "on_jeromes_trail",
-            "text": "badacze są na tropie Jerome’a."
+            "text": "badacze są na tropie Jerome’a."
           }
         ]
       },
@@ -5060,15 +5060,15 @@
           },
           {
             "id": "alive",
-            "text": "Valentino żyje."
+            "text": "Valentino żyje."
           },
           {
             "id": "dead",
-            "text": "Valentino nie żyje."
+            "text": "Valentino nie żyje."
           },
           {
             "id": "on_valentinos_trail",
-            "text": "badacze są na tropie Valentino."
+            "text": "badacze są na tropie Valentino."
           }
         ]
       },
@@ -5097,15 +5097,15 @@
           },
           {
             "id": "alive",
-            "text": "Penny żyje."
+            "text": "Penny żyje."
           },
           {
             "id": "dead",
-            "text": "Penny nie żyje."
+            "text": "Penny nie żyje."
           },
           {
             "id": "on_pennys_trail",
-            "text": "badacze są na tropie Penny."
+            "text": "badacze są na tropie Penny."
           }
         ]
       },
@@ -5114,17 +5114,17 @@
         "entries": [
           {
             "id": "lead_investigator_joins_pipers",
-            "masculine_text": "#name# dołączył do fletniarzy Azathotha.",
-            "feminine_text": "#name# dołączyła do fletniarzy Azathotha.",
-            "nonbinary_text": "#name# dołączyło do fletniarzy Azathotha."
+            "masculine_text": "#name# dołączył do fletniarzy Azathotha.",
+            "feminine_text": "#name# dołączyła do fletniarzy Azathotha.",
+            "nonbinary_text": "#name# dołączyło do fletniarzy Azathotha."
           },
           {
             "id": "accepted_fate",
-            "text": "pogodziłeś się ze swym losem."
+            "text": "pogodziłeś się ze swym losem."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason jest opętana przez moce zła."
+            "text": "Anette Mason jest opętana przez moce zła."
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
@@ -5148,15 +5148,15 @@
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "badacze przejęli kontrolę nad Lożą Srebrnego Świtu."
+            "text": "badacze przejęli kontrolę nad Lożą Srebrnego Świtu."
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth pochłonął wszechświat."
+            "text": "Azathoth pochłonął wszechświat."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth śpi… na razie."
+            "text": "Azathoth śpi… na razie."
           },
           {
             "id": "being_hunted",
@@ -5164,47 +5164,47 @@
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford posiadł tajemnice wszechświata."
+            "text": "Carl Sanford posiadł tajemnice wszechświata."
           },
           {
             "id": "continued_alone",
-            "text": "badacze kontynuują śledztwo samodzielnie."
+            "text": "badacze kontynuują śledztwo samodzielnie."
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "badacze oszukują Lożę."
+            "text": "badacze oszukują Lożę."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "badacze odkryli, jak otworzyć pudełko-zagadkę."
+            "text": "badacze odkryli, jak otworzyć pudełko-zagadkę."
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "zagłada zbliża się coraz bardziej."
+            "text": "zagłada zbliża się coraz bardziej."
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "badacze są wrogami Loży."
+            "text": "badacze są wrogami Loży."
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "strażnik pułapki pojawił się i został pokonany."
+            "text": "strażnik pułapki pojawił się i został pokonany."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "pojawił się strażnik pułapki."
+            "text": "pojawił się strażnik pułapki."
           },
           {
             "id": "heretics_released",
-            "text": "#X# heretyków zostało uwolnionych w Arkham."
+            "text": "#X# heretyków zostało uwolnionych w Arkham."
           },
           {
             "id": "hid_knowledge_of_coven",
-            "text": "badacze zataili swoją wiedzę o sabacie."
+            "text": "badacze zataili swoją wiedzę o sabacie."
           },
           {
             "id": "inducted_into_the_inner_circle",
-            "text": "badacze zostali wprowadzeni do Wewnętrznego kręgu."
+            "text": "badacze zostali wprowadzeni do Wewnętrznego kręgu."
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
@@ -5212,7 +5212,7 @@
           },
           {
             "id": "josef_disappeared_into_the_mist",
-            "text": "Josef rozpłynął się we mgle."
+            "text": "Josef rozpłynął się we mgle."
           },
           {
             "id": "josef_is_alive",
@@ -5220,23 +5220,23 @@
           },
           {
             "id": "kept_mementos_hidden",
-            "text": "badacze nie wyjawili znalezionych pamiątek."
+            "text": "badacze nie wyjawili znalezionych pamiątek."
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "badacze nie dowiedzieli się niczego na temat planów Loży."
+            "text": "badacze nie dowiedzieli się niczego na temat planów Loży."
           },
           {
             "id": "members_of_the_lodge",
-            "text": "badacze są członkami Loży."
+            "text": "badacze są członkami Loży."
           },
           {
             "id": "never_seen_again",
-            "text": "nikt więcej nie widział żadnego z badaczy."
+            "text": "nikt więcej nie widział żadnego z badaczy."
           },
           {
             "id": "path_winds_before_you",
-            "text": "przed wami wije się szlak: #X#"
+            "text": "przed wami wije się szlak: #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -5244,7 +5244,7 @@
           },
           {
             "id": "rejected_fate",
-            "text": "odrzuciłeś swój los."
+            "text": "odrzuciłeś swój los."
           },
           {
             "id": "rescued_josef",
@@ -5252,35 +5252,35 @@
           },
           {
             "id": "sided_with_the_coven",
-            "text": "badacze stanęli po stronie sabatu."
+            "text": "badacze stanęli po stronie sabatu."
           },
           {
             "id": "sided_with_the_lodge",
-            "text": "badacze stanęli po stronie Loży."
+            "text": "badacze stanęli po stronie Loży."
           },
           {
             "id": "signed_the_black_book",
-            "text": "badacze podpisali Czarną księgę Azathotha."
+            "text": "badacze podpisali Czarną księgę Azathotha."
           },
           {
             "id": "survived_the_watchers_embrace",
-            "text": "badacze przetrwali uścisk obserwatora."
+            "text": "badacze przetrwali uścisk obserwatora."
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "badacze powiedzieli Loży o sabacie."
+            "text": "badacze powiedzieli Loży o sabacie."
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "rozpoczęło się prawdziwe dzieło Loży Srebrnego Świtu."
+            "text": "rozpoczęło się prawdziwe dzieło Loży Srebrnego Świtu."
           },
           {
             "id": "witches_spell_broken",
-            "text": "udało się złamać zaklęcie wiedźm."
+            "text": "udało się złamać zaklęcie wiedźm."
           },
           {
             "id": "witches_spell_cast",
-            "text": "wiedźmy rzuciły zaklęcie."
+            "text": "wiedźmy rzuciły zaklęcie."
           }
         ]
       },
@@ -5370,7 +5370,7 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Hipnotyzujący flet"
+            "text": "Hipnotyzujący flet"
           },
           {
             "id": "ritual_components",
@@ -5378,7 +5378,7 @@
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Strzępy porwanego cienia"
+            "text": "Strzępy porwanego cienia"
           },
           {
             "id": "wisp_of_spectral_mist",
@@ -5641,15 +5641,15 @@
           },
           {
             "id": "doctor_is_alive",
-            "text": "dr Maheswaran żyje."
+            "text": "dr Maheswaran żyje."
           },
           {
             "id": "doctor_is_missing",
-            "text": "dr Maheswaran zaginęła."
+            "text": "dr Maheswaran zaginęła."
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "dr Maheswaran dołączyła do waszego śledztwa."
+            "text": "dr Maheswaran dołączyła do waszego śledztwa."
           },
           {
             "id": "doctor_stayed_with_patients",
@@ -5669,7 +5669,7 @@
           },
           {
             "id": "on_your_own",
-            "text": "jesteście zdani na siebie."
+            "text": "jesteście zdani na siebie."
           },
           {
             "id": "possess_silver_key",
@@ -5681,7 +5681,7 @@
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph uciekł ze szpitala na własną rękę."
+            "text": "Randolph uciekł ze szpitala na własną rękę."
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
@@ -5741,7 +5741,7 @@
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro zaginął."
+            "text": "Alejandro zaginął."
           },
           {
             "id": "alejandro_on_his_own",
@@ -5757,7 +5757,7 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro wszystko pamięta."
+            "text": "Alejandro wszystko pamięta."
           },
           {
             "id": "alejandro_set_against",
@@ -5765,11 +5765,11 @@
           },
           {
             "id": "braziers_are_lit",
-            "text": "koksowniki są rozpalone."
+            "text": "koksowniki są rozpalone."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "koksowniki są zgaszone."
+            "text": "koksowniki są zgaszone."
           },
           {
             "id": "cleared_path_to_temple",
@@ -5777,7 +5777,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "badacze współpracowali z Yithianami."
+            "text": "badacze współpracowali z Yithianami."
           },
           {
             "id": "earned_alejandros_trust",
@@ -5789,7 +5789,7 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "struktura czasu rozpadła się."
+            "text": "struktura czasu rozpadła się."
           },
           {
             "id": "fell_into_depths",
@@ -5797,15 +5797,15 @@
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "badaczom udało się nawiązać więź z Ichtacą."
+            "text": "badaczom udało się nawiązać więź z Ichtacą."
           },
           {
             "id": "forging_own_path",
-            "text": "zdecydowaliście zrobić po swojemu."
+            "text": "zdecydowaliście zrobić po swojemu."
           },
           {
             "id": "found_missing_relic",
-            "text": "badacze odnaleźli zaginiony relikt."
+            "text": "badacze odnaleźli zaginiony relikt."
           },
           {
             "id": "gave_relic_to_alejandro",
@@ -5845,7 +5845,7 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "wiara Ichtaci została przywrócona."
+            "text": "wiara Ichtaci została przywrócona."
           },
           {
             "id": "investigators_recovered_relic",
@@ -5853,19 +5853,19 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "badacze uratowali cywilizację Węży."
+            "text": "badacze uratowali cywilizację Węży."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "badacze uratowali cywilizację Yithian."
+            "text": "badacze uratowali cywilizację Yithian."
           },
           {
             "id": "jungle_watches",
-            "text": "dżungla was obserwuje (#name# #X#)."
+            "text": "dżungla was obserwuje (#name# #X#)."
           },
           {
             "id": "mapped_way_forward",
-            "text": "badacze zaplanowali dalszą drogę."
+            "text": "badacze zaplanowali dalszą drogę."
           },
           {
             "id": "mended_tear_in_time",
@@ -5877,15 +5877,15 @@
           },
           {
             "id": "paths_known",
-            "text": "znacie #X# ścieżek."
+            "text": "znacie #X# ścieżek."
           },
           {
             "id": "process_backfired",
-            "text": "proces miał niepożądane skutki."
+            "text": "proces miał niepożądane skutki."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "proces miał spektakularne niepożądane skutki."
+            "text": "proces miał spektakularne niepożądane skutki."
           },
           {
             "id": "process_was_perfected",
@@ -5893,7 +5893,7 @@
           },
           {
             "id": "process_was_successful",
-            "text": "proces zakończył się sukcesem."
+            "text": "proces zakończył się sukcesem."
           },
           {
             "id": "relic_is_missing",
@@ -5905,15 +5905,15 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "badacze pozostali w zamknięciu."
+            "text": "badacze pozostali w zamknięciu."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "badacze na zawsze zapieczętowali Relikt wieczności."
+            "text": "badacze na zawsze zapieczętowali Relikt wieczności."
           },
           {
             "id": "turned_back_time",
-            "text": "badacze cofnęli czas."
+            "text": "badacze cofnęli czas."
           },
           {
             "id": "wait_for_additional_supplies",
@@ -5926,9 +5926,9 @@
         "entries": [
           {
             "id": "hote_start_with_clue",
-            "masculine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
-            "feminine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
-            "nonbinary_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>."
+            "masculine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
+            "feminine_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>.",
+            "nonbinary_text": "#name# rozpoczyna scenariusz z 1 żetonem wskazówki <i>(z puli żetonów)</i>."
           },
           {
             "id": "doy_fewer_resources",
@@ -5986,7 +5986,7 @@
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca oddaliła się bez was."
+            "text": "Ichtaca oddaliła się bez was."
           },
           {
             "id": "jungle_beckons_reminder",
@@ -5994,7 +5994,7 @@
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "wysłuchaliście opowieści Ichtaci."
+            "text": "wysłuchaliście opowieści Ichtaci."
           },
           {
             "id": "tasks_completed",
@@ -6022,7 +6022,7 @@
       {
         "id": "gasoline",
         "name": "Benzyna",
-        "description": "Wystarczy na długą podróż samochodem.",
+        "description": "Wystarczy na długą podróż samochodem.",
         "cost": 1,
         "multiple": true
       },
@@ -6072,7 +6072,7 @@
       {
         "id": "pocketknife",
         "name": "Scyzoryk",
-        "description": "Za mały, aby służyć za broń, ale łatwy do ukrycia.",
+        "description": "Za mały, aby służyć za broń, ale łatwy do ukrycia.",
         "cost": 2
       },
       {
@@ -6199,11 +6199,11 @@
           },
           {
             "id": "mission_failed",
-            "text": "misja nie powiodła się."
+            "text": "misja nie powiodła się."
           },
           {
             "id": "mission_succeeded",
-            "text": "misja się powiodła."
+            "text": "misja się powiodła."
           },
           {
             "id": "orders_ritual_was_disrupted",
@@ -6389,7 +6389,7 @@
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "walka z przerażającym diabłem"
+            "text": "walka z przerażającym diabłem"
           },
           {
             "id": "conversation_with_mr_moore",
@@ -6397,7 +6397,7 @@
           },
           {
             "id": "decision_to_stick_together",
-            "text": "decyzja o trzymaniu się razem"
+            "text": "decyzja o trzymaniu się razem"
           },
           {
             "id": "discovery_of_a_mystical_relic",

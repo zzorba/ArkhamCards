@@ -1,0 +1,1230 @@
+[
+  {
+    "id": "a_confrontation",
+    "name": "A Confrontation"
+  },
+  {
+    "id": "a_house_divided",
+    "name": "A House Divided"
+  },
+  {
+    "id": "a_light_in_the_fog",
+    "name": "霧中之光"
+  },
+  {
+    "id": "a_phantom_of_truth",
+    "name": "真相幻影"
+  },
+  {
+    "id": "a_sea_of_troubles",
+    "name": "麻煩之海"
+  },
+  {
+    "id": "a_thousand_shapes_of_horror",
+    "name": "萬千駭形"
+  },
+  {
+    "id": "across_dreadful_waters",
+    "name": "Across Dreadful Waters"
+  },
+  {
+    "id": "africa_is_watching",
+    "name": "Africa is Watching"
+  },
+  {
+    "id": "against_the_wendigo",
+    "name": "Against the Wendigo"
+  },
+  {
+    "id": "alexandria",
+    "name": "戰爭之犬"
+  },
+  {
+    "id": "all_or_nothing",
+    "name": "All or Nothing"
+  },
+  {
+    "id": "anchorage",
+    "name": "如履薄冰"
+  },
+  {
+    "id": "anything_once",
+    "name": "Anything Once"
+  },
+  {
+    "id": "arkham",
+    "name": "午夜假面"
+  },
+  {
+    "id": "arkham_allied",
+    "name": "Arkham Allied"
+  },
+  {
+    "id": "arkham_in_wonderland",
+    "name": "詭境仙鎮"
+  },
+  {
+    "id": "armitages_fate",
+    "name": "Armitage's Fate"
+  },
+  {
+    "id": "at_deaths_doorstep",
+    "name": "死亡门前"
+  },
+  {
+    "id": "aw_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "aw_prologue",
+    "name": "引导故事"
+  },
+  {
+    "id": "bad_blood",
+    "name": "Bad Blood"
+  },
+  {
+    "id": "barors_gifts",
+    "name": "Bárðr's Gifts"
+  },
+  {
+    "id": "before_the_black_throne",
+    "name": "黑色王座"
+  },
+  {
+    "id": "beneath_the_waves",
+    "name": "浪濤之下"
+  },
+  {
+    "id": "bermuda",
+    "name": "远大目标"
+  },
+  {
+    "id": "bermuda_triangle",
+    "name": "無痕異域"
+  },
+  {
+    "id": "beyond_the_gates_of_sleep",
+    "name": "夢境門外"
+  },
+  {
+    "id": "black_stars_rise",
+    "name": "黑星升起"
+  },
+  {
+    "id": "bleeding_hearts",
+    "name": "淌血紅心"
+  },
+  {
+    "id": "blob_that_ate_everything",
+    "name": "The Blob That Ate Everything"
+  },
+  {
+    "id": "blob_that_ate_everything_else",
+    "name": "The Blob That Ate Everything Else"
+  },
+  {
+    "id": "blood_from_stones",
+    "name": "Blood From Stones"
+  },
+  {
+    "id": "blood_on_the_altar",
+    "name": "血色祭坛"
+  },
+  {
+    "id": "bombay",
+    "name": "奇异建筑"
+  },
+  {
+    "id": "buenos_aires",
+    "name": "訕笑陰影"
+  },
+  {
+    "id": "by_the_book",
+    "name": "By the Book"
+  },
+  {
+    "id": "carnevale_of_horrors",
+    "name": "Carnevale of Horrors"
+  },
+  {
+    "id": "ce_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "ce_prologue",
+    "name": "引导故事"
+  },
+  {
+    "id": "cf_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "cf_prologue",
+    "name": "引导故事"
+  },
+  {
+    "id": "city_of_the_elder_things",
+    "name": "古老者之城"
+  },
+  {
+    "id": "consternation_on_the_constellation",
+    "name": "Consternation on the Constellation"
+  },
+  {
+    "id": "core",
+    "name": "闇與地球之界"
+  },
+  {
+    "id": "cp_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "cp_prologue",
+    "name": "引导故事"
+  },
+  {
+    "id": "crumbling_masonry",
+    "name": "Crumbling Masonry"
+  },
+  {
+    "id": "curse_of_the_rougarou",
+    "name": "Curse of the Rougarou"
+  },
+  {
+    "id": "curtain_call",
+    "name": "谢幕"
+  },
+  {
+    "id": "dark_side_of_the_moon",
+    "name": "月之暗面"
+  },
+  {
+    "id": "dawn_of_the_final_day",
+    "name": "终日黎明"
+  },
+  {
+    "id": "dawn_of_the_second_day",
+    "name": "次日黎明"
+  },
+  {
+    "id": "dead_by_dawn",
+    "name": "Dead by Dawn"
+  },
+  {
+    "id": "dead_or_alive",
+    "name": "Dead or Alive"
+  },
+  {
+    "id": "death_at_sundown",
+    "name": "Death at Sundown"
+  },
+  {
+    "id": "devil_reef",
+    "name": "魔鬼礁石"
+  },
+  {
+    "id": "dim_carcosa",
+    "name": "卡城幽影"
+  },
+  {
+    "id": "disappearance_at_the_twilight_estate",
+    "name": "Return to Disappearance at the Twilight Estate"
+  },
+  {
+    "id": "dm_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "dm_prologue",
+    "name": "Prologue…"
+  },
+  {
+    "id": "dwl_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "dwl_interlude2",
+    "name": "幸存者"
+  },
+  {
+    "id": "dwl_prologue",
+    "name": "引导故事"
+  },
+  {
+    "id": "echoes_of_the_past",
+    "name": "往事回聲"
+  },
+  {
+    "id": "egils_relics",
+    "name": "Egil's Relics"
+  },
+  {
+    "id": "electric_nightmare",
+    "name": "Electric Nightmare"
+  },
+  {
+    "id": "endless_night",
+    "name": "無盡夜晚"
+  },
+  {
+    "id": "eoe_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "eoe_prologue",
+    "name": "引导故事"
+  },
+  {
+    "id": "essex_county_express",
+    "name": "The Essex County Express"
+  },
+  {
+    "id": "extracurricular_activity",
+    "name": "课外活动"
+  },
+  {
+    "id": "eztli",
+    "name": "埃茲特里的覆滅"
+  },
+  {
+    "id": "fatal_mirage",
+    "name": "致命幻景"
+  },
+  {
+    "id": "fatal_mirage_2",
+    "name": "致命幻景"
+  },
+  {
+    "id": "fatal_mirage_3",
+    "name": "致命幻景"
+  },
+  {
+    "id": "fate_of_the_vale",
+    "name": "Fate of the Vale"
+  },
+  {
+    "id": "fhv_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "fhv_prologue",
+    "name": "欢迎来到铁杉谷！"
+  },
+  {
+    "id": "final_night",
+    "name": "最後一夜"
+  },
+  {
+    "id": "fools_mate",
+    "name": "愚者弈局"
+  },
+  {
+    "id": "for_the_greater_good",
+    "name": "崇高利益"
+  },
+  {
+    "id": "fortune_and_folly_checkpoint",
+    "name": "计划"
+  },
+  {
+    "id": "fortune_and_folly_part_1",
+    "name": "筹划"
+  },
+  {
+    "id": "fortune_and_folly_part_2",
+    "name": "劫案"
+  },
+  {
+    "id": "fragment_of_carcosa",
+    "name": "Fragment of Carcosa"
+  },
+  {
+    "id": "friends_in_low_places",
+    "name": "Friends in Low Places"
+  },
+  {
+    "id": "going_twice",
+    "name": "Going Twice"
+  },
+  {
+    "id": "gryphon_and_mock_turtle",
+    "name": "獅鷲和假海龜"
+  },
+  {
+    "id": "havana",
+    "name": "癲狂起舞"
+  },
+  {
+    "id": "heart_of_the_elders_part_1",
+    "name": "久远腹地，第一章"
+  },
+  {
+    "id": "heart_of_the_elders_part_2",
+    "name": "久远腹地，第二章"
+  },
+  {
+    "id": "hemlock_house",
+    "name": "Hemlock House"
+  },
+  {
+    "id": "hidden_truths",
+    "name": "隱秘真相"
+  },
+  {
+    "id": "high_noon_descent",
+    "name": "High Noon Descent"
+  },
+  {
+    "id": "history_lesson",
+    "name": "History Lesson"
+  },
+  {
+    "id": "hong_kong",
+    "name": "血汗帝国"
+  },
+  {
+    "id": "horror_in_high_gear",
+    "name": "全速恐懼"
+  },
+  {
+    "id": "humpty_dumpty",
+    "name": "蛋頭先生"
+  },
+  {
+    "id": "ice_and_death",
+    "name": "Ice and Death"
+  },
+  {
+    "id": "ice_and_death_part_1",
+    "name": "亡命冰原 第I部分"
+  },
+  {
+    "id": "ice_and_death_part_2",
+    "name": "亡命冰原 第II部分"
+  },
+  {
+    "id": "ice_and_death_part_3",
+    "name": "亡命冰原 第III部分"
+  },
+  {
+    "id": "in_the_clutches_of_chaos",
+    "name": "混沌魔掌"
+  },
+  {
+    "id": "in_the_labyrinths_of_lunacy",
+    "name": "The Labyrinths of Lunacy"
+  },
+  {
+    "id": "in_the_shadow_of_earth",
+    "name": "In the Shadow of Earth"
+  },
+  {
+    "id": "in_too_deep",
+    "name": "深陷危局"
+  },
+  {
+    "id": "into_the_maelstrom",
+    "name": "暗潮之下"
+  },
+  {
+    "id": "introspection",
+    "name": "Introspection"
+  },
+  {
+    "id": "introspection_continued",
+    "name": "Introspection (continued)"
+  },
+  {
+    "id": "istanbul",
+    "name": "暗盤交易"
+  },
+  {
+    "id": "jennys_choice",
+    "name": "Jenny's Choice"
+  },
+  {
+    "id": "kabul",
+    "name": "重夺失物"
+  },
+  {
+    "id": "kathmandu",
+    "name": "风中哨音"
+  },
+  {
+    "id": "kuala_lampur",
+    "name": "苦難形影"
+  },
+  {
+    "id": "lagos",
+    "name": "特别快递"
+  },
+  {
+    "id": "laid_to_rest",
+    "name": "Laid to Rest"
+  },
+  {
+    "id": "late_risers",
+    "name": "Late Risers"
+  },
+  {
+    "id": "legions_of_fire",
+    "name": "Legions of Fire"
+  },
+  {
+    "id": "london",
+    "name": "逝者已矣"
+  },
+  {
+    "id": "lost_in_time_and_space",
+    "name": "迷失时空"
+  },
+  {
+    "id": "lost_moorings",
+    "name": "Lost Moorings"
+  },
+  {
+    "id": "lost_quantum",
+    "name": "Lost Quantum"
+  },
+  {
+    "id": "lucid_nightmare",
+    "name": "清醒夢魘"
+  },
+  {
+    "id": "machinations_through_time",
+    "name": "Machinations Through Time"
+  },
+  {
+    "id": "manokwari",
+    "name": "蜕变"
+  },
+  {
+    "id": "marrakesh",
+    "name": "致命酷熱"
+  },
+  {
+    "id": "meddling_of_meowlathotep",
+    "name": "The Meddling of Meowlathotep"
+  },
+  {
+    "id": "mission_briefing",
+    "name": "Mission Briefing"
+  },
+  {
+    "id": "moscow",
+    "name": "交换情报"
+  },
+  {
+    "id": "mourning_chorus",
+    "name": "Mourning Chorus"
+  },
+  {
+    "id": "murder_at_the_excelsior_hotel",
+    "name": "Murder at the Excelsior Hotel"
+  },
+  {
+    "id": "mysterious_benefits",
+    "name": "Mysterious Benefits"
+  },
+  {
+    "id": "nairobi",
+    "name": "地狱机械"
+  },
+  {
+    "id": "night_on_the_town",
+    "name": "Night on the Town"
+  },
+  {
+    "id": "perth",
+    "name": "悖常天择"
+  },
+  {
+    "id": "point_of_no_return",
+    "name": "無歸之地"
+  },
+  {
+    "id": "private_lives",
+    "name": "Private Lives"
+  },
+  {
+    "id": "ptc_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "ptc_interlude1",
+    "name": "癫狂奖励"
+  },
+  {
+    "id": "ptc_interlude1_reprint",
+    "name": "现实之影"
+  },
+  {
+    "id": "ptc_interlude2",
+    "name": "失魂落魄"
+  },
+  {
+    "id": "ptc_prologue",
+    "name": "引导故事"
+  },
+  {
+    "id": "puzzle_pieces",
+    "name": "記憶碎片"
+  },
+  {
+    "id": "pyroclastic_flow",
+    "name": "Pyroclastic Flow"
+  },
+  {
+    "id": "quito",
+    "name": "重夺失物"
+  },
+  {
+    "id": "read_or_die",
+    "name": "Read or Die"
+  },
+  {
+    "id": "red_tide_rising",
+    "name": "Red Tide Rising"
+  },
+  {
+    "id": "relics_of_the_past",
+    "name": "Relics of the Past"
+  },
+  {
+    "id": "restful_night",
+    "name": "宁静夜晚"
+  },
+  {
+    "id": "return_to_a_light_in_the_fog",
+    "name": "Return to A Light in the Fog"
+  },
+  {
+    "id": "return_to_a_phantom_of_truth",
+    "name": "重返真相幻影"
+  },
+  {
+    "id": "return_to_at_deaths_doorstep",
+    "name": "重返死亡門前"
+  },
+  {
+    "id": "return_to_before_the_black_throne",
+    "name": "重返黑色王座"
+  },
+  {
+    "id": "return_to_black_stars_rise",
+    "name": "重返黑星升起"
+  },
+  {
+    "id": "return_to_blood_on_the_altar",
+    "name": "重返血色祭壇"
+  },
+  {
+    "id": "return_to_curtain_call",
+    "name": "重返謝幕"
+  },
+  {
+    "id": "return_to_devil_reef",
+    "name": "Return to Devil Reef"
+  },
+  {
+    "id": "return_to_dim_carcosa",
+    "name": "重返卡城幽影"
+  },
+  {
+    "id": "return_to_echoes_of_the_past",
+    "name": "重返往事回聲"
+  },
+  {
+    "id": "return_to_essex_county_express",
+    "name": "Return to The Essex County Express"
+  },
+  {
+    "id": "return_to_extracurricular_activity",
+    "name": "重返課外活動"
+  },
+  {
+    "id": "return_to_for_the_greater_good",
+    "name": "重返崇高利益"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_1",
+    "name": "Return to Heart of the Elders, Part 1"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_2",
+    "name": "Return to Heart of the Elders, Part 2"
+  },
+  {
+    "id": "return_to_horror_in_high_gear",
+    "name": "Return to Horror in High Gear"
+  },
+  {
+    "id": "return_to_in_the_clutches_of_chaos",
+    "name": "重返混沌魔掌"
+  },
+  {
+    "id": "return_to_in_too_deep",
+    "name": "Return to In Too Deep"
+  },
+  {
+    "id": "return_to_into_the_maelstrom",
+    "name": "Return to Into the Maelstrom"
+  },
+  {
+    "id": "return_to_lost_in_time_and_space",
+    "name": "重返迷失時空"
+  },
+  {
+    "id": "return_to_shattered_aeons",
+    "name": "重返破碎永世"
+  },
+  {
+    "id": "return_to_the_boundary_beyond",
+    "name": "重返界限彼端"
+  },
+  {
+    "id": "return_to_the_city_of_archives",
+    "name": "重返天機之城"
+  },
+  {
+    "id": "return_to_the_depths_of_yoth",
+    "name": "重返幽嘶之城"
+  },
+  {
+    "id": "return_to_the_devourer_below",
+    "name": "Return to The Devourer Below"
+  },
+  {
+    "id": "return_to_the_doom_of_eztli",
+    "name": "重返埃茲特里的覆滅"
+  },
+  {
+    "id": "return_to_the_gathering",
+    "name": "重返聚集於此"
+  },
+  {
+    "id": "return_to_the_house_always_wins",
+    "name": "重返百賭百勝"
+  },
+  {
+    "id": "return_to_the_lair_of_dagon",
+    "name": "Return to The Lair of Dagon"
+  },
+  {
+    "id": "return_to_the_last_king",
+    "name": "重返最後的王者"
+  },
+  {
+    "id": "return_to_the_midnight_masks",
+    "name": "Return to The Midnight Masks"
+  },
+  {
+    "id": "return_to_the_miskatonic_museum",
+    "name": "重返博物館之夜"
+  },
+  {
+    "id": "return_to_the_pallid_mask",
+    "name": "重返蒼白面具"
+  },
+  {
+    "id": "return_to_the_pit_of_despair",
+    "name": "Return to The Pit of Despair"
+  },
+  {
+    "id": "return_to_the_secret_name",
+    "name": "重返隱密之名"
+  },
+  {
+    "id": "return_to_the_unspeakable_oath",
+    "name": "重返邪穢誓約"
+  },
+  {
+    "id": "return_to_the_untamed_wilds",
+    "name": "重返荒莽密林"
+  },
+  {
+    "id": "return_to_the_vanishing_of_elina_harper",
+    "name": "Return to The Vanishing of Elina Harper"
+  },
+  {
+    "id": "return_to_the_wages_of_sin",
+    "name": "重返惡罪報應"
+  },
+  {
+    "id": "return_to_the_witching_hour",
+    "name": "重返巫異時刻"
+  },
+  {
+    "id": "return_to_threads_of_fate",
+    "name": "重返命運之線"
+  },
+  {
+    "id": "return_to_turn_back_time",
+    "name": "Return to Turn Back Time"
+  },
+  {
+    "id": "return_to_undimensioned_and_unseen",
+    "name": "重返無人知曉"
+  },
+  {
+    "id": "return_to_union_and_disillusion",
+    "name": "重返聚合幻滅"
+  },
+  {
+    "id": "return_to_where_doom_awaits",
+    "name": "重返毀滅之地"
+  },
+  {
+    "id": "reykjavik",
+    "name": "重夺失物"
+  },
+  {
+    "id": "riddles_and_rain",
+    "name": "Riddles and Rain"
+  },
+  {
+    "id": "rio_de_janiero",
+    "name": "湮灭理论"
+  },
+  {
+    "id": "rome",
+    "name": "罗马双子"
+  },
+  {
+    "id": "san_francisco",
+    "name": "交换情报"
+  },
+  {
+    "id": "san_juan",
+    "name": "重夺失物"
+  },
+  {
+    "id": "shanghai",
+    "name": "盘据之蛇"
+  },
+  {
+    "id": "shattered_aeons",
+    "name": "破碎永世"
+  },
+  {
+    "id": "sibling_rivalry",
+    "name": "兄弟鬩牆"
+  },
+  {
+    "id": "something_big",
+    "name": "Something Big"
+  },
+  {
+    "id": "starfall",
+    "name": "Starfall"
+  },
+  {
+    "id": "stockholm",
+    "name": "奇异建筑"
+  },
+  {
+    "id": "strange_moons",
+    "name": "Strange Moons"
+  },
+  {
+    "id": "sydney",
+    "name": "空洞回声"
+  },
+  {
+    "id": "tcu_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "tde_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "tde_prologue",
+    "name": "引导故事"
+  },
+  {
+    "id": "tempest_in_a_teapot",
+    "name": "壺中風暴"
+  },
+  {
+    "id": "tentacles",
+    "name": "地底噬魔"
+  },
+  {
+    "id": "tfa_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "tfa_interlude1",
+    "name": "不眠之夜"
+  },
+  {
+    "id": "tfa_interlude2",
+    "name": "探险结束"
+  },
+  {
+    "id": "tfa_interlude3",
+    "name": "叢林的呼喚"
+  },
+  {
+    "id": "tfa_interlude4",
+    "name": "仍被監禁"
+  },
+  {
+    "id": "tfa_interlude5",
+    "name": "無盡幽暗"
+  },
+  {
+    "id": "tfa_prologue",
+    "name": "引导故事"
+  },
+  {
+    "id": "the_afternoon_war",
+    "name": "The Afternoon War"
+  },
+  {
+    "id": "the_attack",
+    "name": "袭击"
+  },
+  {
+    "id": "the_avatar_of_darkness",
+    "name": "The Avatar of Darkness"
+  },
+  {
+    "id": "the_black_cat",
+    "name": "黑貓"
+  },
+  {
+    "id": "the_black_stone",
+    "name": "黑色岩石"
+  },
+  {
+    "id": "the_boundary_beyond",
+    "name": "界限彼端"
+  },
+  {
+    "id": "the_caterpillar",
+    "name": "毛毛蟲"
+  },
+  {
+    "id": "the_city_of_archives",
+    "name": "天機之城"
+  },
+  {
+    "id": "the_colour_out_of_space",
+    "name": "星之彩"
+  },
+  {
+    "id": "the_crown",
+    "name": "The Crown"
+  },
+  {
+    "id": "the_depths_of_yoth",
+    "name": "幽嘶深淵"
+  },
+  {
+    "id": "the_disapperance",
+    "name": "失踪事件"
+  },
+  {
+    "id": "the_dodo",
+    "name": "渡渡鳥"
+  },
+  {
+    "id": "the_duchess",
+    "name": "公爵夫人"
+  },
+  {
+    "id": "the_eternal_slumber",
+    "name": "The Eternal Slumber"
+  },
+  {
+    "id": "the_fall_of_the_house_of_usher",
+    "name": "The Fall of the House of Usher"
+  },
+  {
+    "id": "the_fallen",
+    "name": "The Fallen"
+  },
+  {
+    "id": "the_final_evening",
+    "name": "终夜"
+  },
+  {
+    "id": "the_first_evening",
+    "name": "首夜"
+  },
+  {
+    "id": "the_foundation",
+    "name": "基石"
+  },
+  {
+    "id": "the_golden_circle",
+    "name": "The Golden Circle"
+  },
+  {
+    "id": "the_great_ones",
+    "name": "夢境諸神"
+  },
+  {
+    "id": "the_heart_of_madness",
+    "name": "The Heart of Madness"
+  },
+  {
+    "id": "the_heart_of_madness_part_1",
+    "name": "疯狂之心 第I部分"
+  },
+  {
+    "id": "the_heart_of_madness_part_2",
+    "name": "疯狂之心 第II部分"
+  },
+  {
+    "id": "the_house_always_wins",
+    "name": "百赌百胜"
+  },
+  {
+    "id": "the_inner_circle",
+    "name": "核心圈"
+  },
+  {
+    "id": "the_lair_of_dagon",
+    "name": "達貢巢穴"
+  },
+  {
+    "id": "the_last_king",
+    "name": "最后的王者"
+  },
+  {
+    "id": "the_lion_and_the_unicorn",
+    "name": "狮子和独角兽"
+  },
+  {
+    "id": "the_longest_night",
+    "name": "The Longest Night"
+  },
+  {
+    "id": "the_lost_sister",
+    "name": "The Lost Sister"
+  },
+  {
+    "id": "the_machine_in_yellow",
+    "name": "The Machine in Yellow"
+  },
+  {
+    "id": "the_midnight_hour",
+    "name": "The Midnight Hour"
+  },
+  {
+    "id": "the_midwinter_gala",
+    "name": "The Midwinter Gala"
+  },
+  {
+    "id": "the_miskatonic_museum",
+    "name": "博物馆之夜"
+  },
+  {
+    "id": "the_nights_usurper",
+    "name": "The Night's Usurper"
+  },
+  {
+    "id": "the_oneironauts",
+    "name": "夢境行者"
+  },
+  {
+    "id": "the_other_side",
+    "name": "彼端"
+  },
+  {
+    "id": "the_pallid_mask",
+    "name": "蒼白面具"
+  },
+  {
+    "id": "the_pit_of_despair",
+    "name": "絕望深坑"
+  },
+  {
+    "id": "the_price_of_progress",
+    "name": "进步的代价"
+  },
+  {
+    "id": "the_search_for_kadath",
+    "name": "尋覓卡達斯"
+  },
+  {
+    "id": "the_second_evening",
+    "name": "次夜"
+  },
+  {
+    "id": "the_secret_name",
+    "name": "隐秘之名"
+  },
+  {
+    "id": "the_silent_heath",
+    "name": "The Silent Heath"
+  },
+  {
+    "id": "the_symphony_of_erich_zann",
+    "name": "The Symphony of Erich Zann"
+  },
+  {
+    "id": "the_syzygy",
+    "name": "朔望"
+  },
+  {
+    "id": "the_tatterdemalion",
+    "name": "The Tatterdemalion"
+  },
+  {
+    "id": "the_thing_in_the_depths",
+    "name": "The Thing in the Depths"
+  },
+  {
+    "id": "the_twisted_hollow",
+    "name": "The Twisted Hollow"
+  },
+  {
+    "id": "the_unspeakable_oath",
+    "name": "邪穢誓約"
+  },
+  {
+    "id": "the_vanishing_of_elina_harper",
+    "name": "艾蓮娜·哈珀失蹤案"
+  },
+  {
+    "id": "the_wages_of_sin",
+    "name": "惡罪報應"
+  },
+  {
+    "id": "the_warning",
+    "name": "The Warning"
+  },
+  {
+    "id": "the_white_queen",
+    "name": "白棋王后"
+  },
+  {
+    "id": "the_witching_hour",
+    "name": "巫异时刻"
+  },
+  {
+    "id": "threads_of_fate",
+    "name": "命運之線"
+  },
+  {
+    "id": "tic_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "to_the_forbidden_peaks",
+    "name": "失落之峰"
+  },
+  {
+    "id": "to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo"
+  },
+  {
+    "id": "tokyo",
+    "name": "特别快递"
+  },
+  {
+    "id": "tomb_of_dead_dreams",
+    "name": "Tomb of Dead Dreams"
+  },
+  {
+    "id": "too_noble",
+    "name": "Too Noble"
+  },
+  {
+    "id": "torch",
+    "name": "聚集于此"
+  },
+  {
+    "id": "traces_of_egil",
+    "name": "Traces of Egil"
+  },
+  {
+    "id": "travelling",
+    "name": "旅行中......"
+  },
+  {
+    "id": "tsk_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "tunguska",
+    "name": "密鑰峰會"
+  },
+  {
+    "id": "turn_back_time",
+    "name": "Turn Back Time"
+  },
+  {
+    "id": "twist_of_fate",
+    "name": "扭轉命運"
+  },
+  {
+    "id": "undimensioned_and_unseen",
+    "name": "无人知晓"
+  },
+  {
+    "id": "union_and_disillusion",
+    "name": "聚合幻滅"
+  },
+  {
+    "id": "unscrupulous_investments",
+    "name": "Unscrupulous Investments"
+  },
+  {
+    "id": "waking_nightmare",
+    "name": "清醒噩夢"
+  },
+  {
+    "id": "war_of_the_outer_gods",
+    "name": "War of the Outer Gods"
+  },
+  {
+    "id": "weaver_of_the_cosmos",
+    "name": "編織宇宙"
+  },
+  {
+    "id": "where_doom_awaits",
+    "name": "毁灭之地"
+  },
+  {
+    "id": "where_gods_dwell",
+    "name": "Where the Gods Dwell"
+  },
+  {
+    "id": "wild_snark_chase",
+    "name": "獵捕蛇鯊"
+  },
+  {
+    "id": "wilds",
+    "name": "荒莽密林"
+  },
+  {
+    "id": "written_in_rock",
+    "name": "Written in Rock"
+  },
+  {
+    "id": "ybor_city",
+    "name": "芝麻开门"
+  },
+  {
+    "id": "zhod_epilogue",
+    "name": "尾声故事"
+  },
+  {
+    "id": "zhod_interlude_1",
+    "name": "First Night Aboard the Roi des Belges"
+  },
+  {
+    "id": "zhod_interlude_2",
+    "name": "Kurtz's Warrior"
+  },
+  {
+    "id": "zhod_prologue",
+    "name": "引导故事"
+  }
+]
