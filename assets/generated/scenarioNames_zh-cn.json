@@ -9,7 +9,7 @@
   },
   {
     "id": "a_light_in_the_fog",
-    "name": "霧中之光"
+    "name": "雾中之光"
   },
   {
     "id": "a_phantom_of_truth",
@@ -17,11 +17,11 @@
   },
   {
     "id": "a_sea_of_troubles",
-    "name": "麻煩之海"
+    "name": "麻烦之海"
   },
   {
     "id": "a_thousand_shapes_of_horror",
-    "name": "萬千駭形"
+    "name": "万千骇形"
   },
   {
     "id": "across_dreadful_waters",
@@ -37,7 +37,7 @@
   },
   {
     "id": "alexandria",
-    "name": "戰爭之犬"
+    "name": "战争之犬"
   },
   {
     "id": "all_or_nothing",
@@ -61,7 +61,7 @@
   },
   {
     "id": "arkham_in_wonderland",
-    "name": "詭境仙鎮"
+    "name": "诡境仙镇"
   },
   {
     "id": "armitages_fate",
@@ -93,7 +93,7 @@
   },
   {
     "id": "beneath_the_waves",
-    "name": "浪濤之下"
+    "name": "浪涛之下"
   },
   {
     "id": "bermuda",
@@ -101,11 +101,11 @@
   },
   {
     "id": "bermuda_triangle",
-    "name": "無痕異域"
+    "name": "无痕异域"
   },
   {
     "id": "beyond_the_gates_of_sleep",
-    "name": "夢境門外"
+    "name": "梦境门外"
   },
   {
     "id": "black_stars_rise",
@@ -113,7 +113,7 @@
   },
   {
     "id": "bleeding_hearts",
-    "name": "淌血紅心"
+    "name": "淌血红心"
   },
   {
     "id": "blob_that_ate_everything",
@@ -137,7 +137,7 @@
   },
   {
     "id": "buenos_aires",
-    "name": "訕笑陰影"
+    "name": "讪笑阴影"
   },
   {
     "id": "by_the_book",
@@ -173,7 +173,7 @@
   },
   {
     "id": "core",
-    "name": "闇與地球之界"
+    "name": "暗与地球之界"
   },
   {
     "id": "cp_epilogue",
@@ -253,7 +253,7 @@
   },
   {
     "id": "echoes_of_the_past",
-    "name": "往事回聲"
+    "name": "往事回声"
   },
   {
     "id": "egils_relics",
@@ -265,7 +265,7 @@
   },
   {
     "id": "endless_night",
-    "name": "無盡夜晚"
+    "name": "无尽夜晚"
   },
   {
     "id": "eoe_epilogue",
@@ -285,7 +285,7 @@
   },
   {
     "id": "eztli",
-    "name": "埃茲特里的覆滅"
+    "name": "埃兹特里的覆灭"
   },
   {
     "id": "fatal_mirage",
@@ -313,7 +313,7 @@
   },
   {
     "id": "final_night",
-    "name": "最後一夜"
+    "name": "最后一夜"
   },
   {
     "id": "fools_mate",
@@ -349,11 +349,11 @@
   },
   {
     "id": "gryphon_and_mock_turtle",
-    "name": "獅鷲和假海龜"
+    "name": "狮鹫和假海龟"
   },
   {
     "id": "havana",
-    "name": "癲狂起舞"
+    "name": "癫狂起舞"
   },
   {
     "id": "heart_of_the_elders_part_1",
@@ -369,7 +369,7 @@
   },
   {
     "id": "hidden_truths",
-    "name": "隱秘真相"
+    "name": "隐秘真相"
   },
   {
     "id": "high_noon_descent",
@@ -385,11 +385,11 @@
   },
   {
     "id": "horror_in_high_gear",
-    "name": "全速恐懼"
+    "name": "全速恐惧"
   },
   {
     "id": "humpty_dumpty",
-    "name": "蛋頭先生"
+    "name": "蛋头先生"
   },
   {
     "id": "ice_and_death",
@@ -437,7 +437,7 @@
   },
   {
     "id": "istanbul",
-    "name": "暗盤交易"
+    "name": "暗盘交易"
   },
   {
     "id": "jennys_choice",
@@ -453,7 +453,7 @@
   },
   {
     "id": "kuala_lampur",
-    "name": "苦難形影"
+    "name": "苦难形影"
   },
   {
     "id": "lagos",
@@ -489,7 +489,7 @@
   },
   {
     "id": "lucid_nightmare",
-    "name": "清醒夢魘"
+    "name": "清醒梦魇"
   },
   {
     "id": "machinations_through_time",
@@ -501,7 +501,7 @@
   },
   {
     "id": "marrakesh",
-    "name": "致命酷熱"
+    "name": "致命酷热"
   },
   {
     "id": "meddling_of_meowlathotep",
@@ -541,7 +541,7 @@
   },
   {
     "id": "point_of_no_return",
-    "name": "無歸之地"
+    "name": "无归之地"
   },
   {
     "id": "private_lives",
@@ -569,7 +569,7 @@
   },
   {
     "id": "puzzle_pieces",
-    "name": "記憶碎片"
+    "name": "记忆碎片"
   },
   {
     "id": "pyroclastic_flow",
@@ -605,7 +605,7 @@
   },
   {
     "id": "return_to_at_deaths_doorstep",
-    "name": "重返死亡門前"
+    "name": "重返死亡门前"
   },
   {
     "id": "return_to_before_the_black_throne",
@@ -617,11 +617,11 @@
   },
   {
     "id": "return_to_blood_on_the_altar",
-    "name": "重返血色祭壇"
+    "name": "重返血色祭坛"
   },
   {
     "id": "return_to_curtain_call",
-    "name": "重返謝幕"
+    "name": "重返谢幕"
   },
   {
     "id": "return_to_devil_reef",
@@ -633,7 +633,7 @@
   },
   {
     "id": "return_to_echoes_of_the_past",
-    "name": "重返往事回聲"
+    "name": "重返往事回声"
   },
   {
     "id": "return_to_essex_county_express",
@@ -641,7 +641,7 @@
   },
   {
     "id": "return_to_extracurricular_activity",
-    "name": "重返課外活動"
+    "name": "重返课外活动"
   },
   {
     "id": "return_to_for_the_greater_good",
@@ -673,7 +673,7 @@
   },
   {
     "id": "return_to_lost_in_time_and_space",
-    "name": "重返迷失時空"
+    "name": "重返迷失时空"
   },
   {
     "id": "return_to_shattered_aeons",
@@ -685,7 +685,7 @@
   },
   {
     "id": "return_to_the_city_of_archives",
-    "name": "重返天機之城"
+    "name": "重返天机之城"
   },
   {
     "id": "return_to_the_depths_of_yoth",
@@ -697,15 +697,15 @@
   },
   {
     "id": "return_to_the_doom_of_eztli",
-    "name": "重返埃茲特里的覆滅"
+    "name": "重返埃兹特里的覆灭"
   },
   {
     "id": "return_to_the_gathering",
-    "name": "重返聚集於此"
+    "name": "重返聚集于此"
   },
   {
     "id": "return_to_the_house_always_wins",
-    "name": "重返百賭百勝"
+    "name": "重返百赌百胜"
   },
   {
     "id": "return_to_the_lair_of_dagon",
@@ -713,7 +713,7 @@
   },
   {
     "id": "return_to_the_last_king",
-    "name": "重返最後的王者"
+    "name": "重返最后的王者"
   },
   {
     "id": "return_to_the_midnight_masks",
@@ -721,11 +721,11 @@
   },
   {
     "id": "return_to_the_miskatonic_museum",
-    "name": "重返博物館之夜"
+    "name": "重返博物馆之夜"
   },
   {
     "id": "return_to_the_pallid_mask",
-    "name": "重返蒼白面具"
+    "name": "重返苍白面具"
   },
   {
     "id": "return_to_the_pit_of_despair",
@@ -733,11 +733,11 @@
   },
   {
     "id": "return_to_the_secret_name",
-    "name": "重返隱密之名"
+    "name": "重返隐密之名"
   },
   {
     "id": "return_to_the_unspeakable_oath",
-    "name": "重返邪穢誓約"
+    "name": "重返邪秽誓约"
   },
   {
     "id": "return_to_the_untamed_wilds",
@@ -749,15 +749,15 @@
   },
   {
     "id": "return_to_the_wages_of_sin",
-    "name": "重返惡罪報應"
+    "name": "重返恶罪报应"
   },
   {
     "id": "return_to_the_witching_hour",
-    "name": "重返巫異時刻"
+    "name": "重返巫异时刻"
   },
   {
     "id": "return_to_threads_of_fate",
-    "name": "重返命運之線"
+    "name": "重返命运之线"
   },
   {
     "id": "return_to_turn_back_time",
@@ -765,15 +765,15 @@
   },
   {
     "id": "return_to_undimensioned_and_unseen",
-    "name": "重返無人知曉"
+    "name": "重返无人知晓"
   },
   {
     "id": "return_to_union_and_disillusion",
-    "name": "重返聚合幻滅"
+    "name": "重返聚合幻灭"
   },
   {
     "id": "return_to_where_doom_awaits",
-    "name": "重返毀滅之地"
+    "name": "重返毁灭之地"
   },
   {
     "id": "reykjavik",
@@ -809,7 +809,7 @@
   },
   {
     "id": "sibling_rivalry",
-    "name": "兄弟鬩牆"
+    "name": "兄弟阋墙"
   },
   {
     "id": "something_big",
@@ -845,7 +845,7 @@
   },
   {
     "id": "tempest_in_a_teapot",
-    "name": "壺中風暴"
+    "name": "壶中风暴"
   },
   {
     "id": "tentacles",
@@ -865,15 +865,15 @@
   },
   {
     "id": "tfa_interlude3",
-    "name": "叢林的呼喚"
+    "name": "丛林的呼唤"
   },
   {
     "id": "tfa_interlude4",
-    "name": "仍被監禁"
+    "name": "仍被监禁"
   },
   {
     "id": "tfa_interlude5",
-    "name": "無盡幽暗"
+    "name": "无尽幽暗"
   },
   {
     "id": "tfa_prologue",
@@ -893,7 +893,7 @@
   },
   {
     "id": "the_black_cat",
-    "name": "黑貓"
+    "name": "黑猫"
   },
   {
     "id": "the_black_stone",
@@ -905,11 +905,11 @@
   },
   {
     "id": "the_caterpillar",
-    "name": "毛毛蟲"
+    "name": "毛毛虫"
   },
   {
     "id": "the_city_of_archives",
-    "name": "天機之城"
+    "name": "天机之城"
   },
   {
     "id": "the_colour_out_of_space",
@@ -921,7 +921,7 @@
   },
   {
     "id": "the_depths_of_yoth",
-    "name": "幽嘶深淵"
+    "name": "幽嘶深渊"
   },
   {
     "id": "the_disapperance",
@@ -929,7 +929,7 @@
   },
   {
     "id": "the_dodo",
-    "name": "渡渡鳥"
+    "name": "渡渡鸟"
   },
   {
     "id": "the_duchess",
@@ -965,7 +965,7 @@
   },
   {
     "id": "the_great_ones",
-    "name": "夢境諸神"
+    "name": "梦境诸神"
   },
   {
     "id": "the_heart_of_madness",
@@ -989,7 +989,7 @@
   },
   {
     "id": "the_lair_of_dagon",
-    "name": "達貢巢穴"
+    "name": "达贡巢穴"
   },
   {
     "id": "the_last_king",
@@ -1029,7 +1029,7 @@
   },
   {
     "id": "the_oneironauts",
-    "name": "夢境行者"
+    "name": "梦境行者"
   },
   {
     "id": "the_other_side",
@@ -1037,11 +1037,11 @@
   },
   {
     "id": "the_pallid_mask",
-    "name": "蒼白面具"
+    "name": "苍白面具"
   },
   {
     "id": "the_pit_of_despair",
-    "name": "絕望深坑"
+    "name": "绝望深坑"
   },
   {
     "id": "the_price_of_progress",
@@ -1049,7 +1049,7 @@
   },
   {
     "id": "the_search_for_kadath",
-    "name": "尋覓卡達斯"
+    "name": "寻觅卡达斯"
   },
   {
     "id": "the_second_evening",
@@ -1085,15 +1085,15 @@
   },
   {
     "id": "the_unspeakable_oath",
-    "name": "邪穢誓約"
+    "name": "邪秽誓约"
   },
   {
     "id": "the_vanishing_of_elina_harper",
-    "name": "艾蓮娜·哈珀失蹤案"
+    "name": "艾莲娜·哈珀失踪案"
   },
   {
     "id": "the_wages_of_sin",
-    "name": "惡罪報應"
+    "name": "恶罪报应"
   },
   {
     "id": "the_warning",
@@ -1109,7 +1109,7 @@
   },
   {
     "id": "threads_of_fate",
-    "name": "命運之線"
+    "name": "命运之线"
   },
   {
     "id": "tic_epilogue",
@@ -1153,7 +1153,7 @@
   },
   {
     "id": "tunguska",
-    "name": "密鑰峰會"
+    "name": "密钥峰会"
   },
   {
     "id": "turn_back_time",
@@ -1161,7 +1161,7 @@
   },
   {
     "id": "twist_of_fate",
-    "name": "扭轉命運"
+    "name": "扭转命运"
   },
   {
     "id": "undimensioned_and_unseen",
@@ -1169,7 +1169,7 @@
   },
   {
     "id": "union_and_disillusion",
-    "name": "聚合幻滅"
+    "name": "聚合幻灭"
   },
   {
     "id": "unscrupulous_investments",
@@ -1177,7 +1177,7 @@
   },
   {
     "id": "waking_nightmare",
-    "name": "清醒噩夢"
+    "name": "清醒噩梦"
   },
   {
     "id": "war_of_the_outer_gods",
@@ -1185,7 +1185,7 @@
   },
   {
     "id": "weaver_of_the_cosmos",
-    "name": "編織宇宙"
+    "name": "编织宇宙"
   },
   {
     "id": "where_doom_awaits",
@@ -1197,7 +1197,7 @@
   },
   {
     "id": "wild_snark_chase",
-    "name": "獵捕蛇鯊"
+    "name": "猎捕蛇鲨"
   },
   {
     "id": "wilds",

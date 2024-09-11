@@ -4904,6 +4904,10 @@
             "text": "dummy"
           },
           {
+            "id": "tmg_calculate_score",
+            "text": "dummy"
+          },
+          {
             "id": "tmg_fabeled_jewel",
             "text": "dummy"
           },
@@ -4917,10 +4921,6 @@
           },
           {
             "id": "tmg_side_story_mode",
-            "text": "dummy"
-          },
-          {
-            "id": "tmg_tally_score",
             "text": "dummy"
           },
           {

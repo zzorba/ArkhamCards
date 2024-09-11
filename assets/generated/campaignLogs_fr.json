@@ -4897,6 +4897,10 @@
             "text": "leurre"
           },
           {
+            "id": "tmg_calculate_score",
+            "text": "leurre"
+          },
+          {
             "id": "tmg_fabeled_jewel",
             "text": "leurre"
           },
@@ -4910,10 +4914,6 @@
           },
           {
             "id": "tmg_side_story_mode",
-            "text": "leurre"
-          },
-          {
-            "id": "tmg_tally_score",
             "text": "leurre"
           },
           {

@@ -4905,6 +4905,10 @@
             "text": "dummy"
           },
           {
+            "id": "tmg_calculate_score",
+            "text": "dummy"
+          },
+          {
             "id": "tmg_fabeled_jewel",
             "text": "dummy"
           },
@@ -4918,10 +4922,6 @@
           },
           {
             "id": "tmg_side_story_mode",
-            "text": "dummy"
-          },
-          {
-            "id": "tmg_tally_score",
             "text": "dummy"
           },
           {
@@ -7313,7 +7313,7 @@
           },
           {
             "id": "humpty_dumpty",
-            "text": "蛋頭先生"
+            "text": "蛋头先生"
           },
           {
             "id": "lion_and_unicorn",
@@ -7321,11 +7321,11 @@
           },
           {
             "id": "the_caterpillar",
-            "text": "毛毛蟲"
+            "text": "毛毛虫"
           },
           {
             "id": "the_dodo",
-            "text": "渡渡鳥"
+            "text": "渡渡鸟"
           },
           {
             "id": "the_duchess",
@@ -7346,7 +7346,7 @@
           },
           {
             "id": "humpty_dumpty",
-            "text": "蛋頭先生"
+            "text": "蛋头先生"
           },
           {
             "id": "lion_and_unicorn",
@@ -7354,11 +7354,11 @@
           },
           {
             "id": "the_caterpillar",
-            "text": "毛毛蟲"
+            "text": "毛毛虫"
           },
           {
             "id": "the_dodo",
-            "text": "渡渡鳥"
+            "text": "渡渡鸟"
           },
           {
             "id": "the_duchess",
