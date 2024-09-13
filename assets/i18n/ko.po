@@ -5971,6 +5971,9 @@ msgstr ""
 msgid "Truths"
 msgstr ""
 
+msgid "Specialist"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"

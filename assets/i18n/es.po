@@ -6025,6 +6025,9 @@ msgstr "Portentos"
 msgid "Truths"
 msgstr "Verdades"
 
+msgid "Specialist"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"

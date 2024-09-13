@@ -571,6 +571,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'ticc':
       case 'the_innsmouth_conspiracy':
         return this.innsmouthIcon('tic', size, color);
+      case 'tdcp':
+        return this.arkhamIcon('auto_fail', size, color);
       case 'creatures_of_the_deep':
         return this.innsmouthIcon('creatures_from_below', size, color);
       case 'the_locals':

@@ -6017,6 +6017,9 @@ msgstr ""
 msgid "Truths"
 msgstr ""
 
+msgid "Specialist"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
