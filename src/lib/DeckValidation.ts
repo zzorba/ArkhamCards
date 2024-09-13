@@ -35,8 +35,6 @@ import {
   FORCED_LEARNING_CODE,
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
-  RANDOM_BASIC_WEAKNESS,
-  PARALLEL_AGNES_CODE,
 } from "@app_constants";
 import Card from "@data/types/Card";
 import DeckOption, { localizeDeckOptionError } from "@data/types/DeckOption";
@@ -45,7 +43,6 @@ import {
   THE_INSANE_CODE,
 } from "@data/deck/specialCards";
 import DeckRequirement from "@data/types/DeckRequirement";
-import { PARALLEL_JIM_CODE } from "@data/deck/specialMetaSlots";
 
 const THE_INSANE_TAG = "the_insane";
 
@@ -629,6 +626,23 @@ export default class DeckValidation {
         return SIGNATURE_CARD_OPTION;
       }
       return undefined;
+    }
+    if (card.restrictions_trait) {
+      const gator_traits =
+        investigator.real_traits_normalized?.split(",") ?? [];
+      if (
+        !find(gator_traits, (t) => card.restrictions_trait?.indexOf(t) !== -1)
+      ) {
+        // This card is restricted and you don't match the requirements.
+        return undefined;
+      }
+    }
+    if (card.restrictions_faction) {
+      const faction = `#${investigator.faction_code}#`;
+      if (card.restrictions_faction.indexOf(faction) === -1) {
+        // This card is restricted and you don't match the requirements.
+        return undefined;
+      }
     }
 
     //var investigator = app.data.cards.findById(investigator_code);

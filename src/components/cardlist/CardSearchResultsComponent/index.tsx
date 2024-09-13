@@ -333,6 +333,12 @@ export default function({
   const query = useMemo(() => {
     const queryParts: Brackets[] = [];
     const actuallyIncludeDuplicates = includeDuplicates;
+    // const specialtyBuilder = new FilterBuilder("specialty");
+    // return specialtyBuilder.illegalSpecialistFilter(
+    //   ["#drifter#", "#homeless#"],
+    //   ["survivor"]
+    // );
+
     if (mythosToggle) {
       if (mythosMode) {
         queryParts.push(MYTHOS_CARDS_QUERY);

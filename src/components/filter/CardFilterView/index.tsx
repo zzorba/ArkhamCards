@@ -407,6 +407,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       { label: t`Fast`, setting: 'fast' },
       { label: `${nonUniqueStr}`, setting: 'nonUnique' },
       { label: `${uniqueStr} (✷)`, setting: 'unique' },
+      { label: t`Specialist`, setting: 'specialist' },
       { label: t`Seal`, setting: 'seal' },
       { label: t`Victory`, setting: 'victory' },
       { label: t`Exile`, setting: 'exile' },

@@ -47416,6 +47416,8 @@ export type Users_Bool_Exp = {
 
 /** unique or primary key constraints on table "users" */
 export enum Users_Constraint {
+  /** unique or primary key constraint on columns "normalized_handle" */
+  UsersNormalizedHandleKey = 'users_normalized_handle_key',
   /** unique or primary key constraint on columns "id" */
   UsersPkey = 'users_pkey'
 }
@@ -48754,7 +48756,7 @@ export type GetCardsCacheSuspenseQueryHookResult = ReturnType<typeof useGetCards
 export type GetCardsCacheQueryResult = Apollo.QueryResult<GetCardsCacheQuery, GetCardsCacheQueryVariables>;
 export const GetCardsDocument = gql`
     query getCards($locale: String!) {
-  all_card(where: {version: {_lte: 6}, linked: {_is_null: true}}) {
+  all_card(where: {version: {_lte: 7}, linked: {_is_null: true}}) {
     ...SingleCard
     translations(where: {locale: {_eq: $locale}}) {
       ...CoreCardText
