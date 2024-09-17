@@ -24,7 +24,7 @@ export default function AboutView() {
   const spanishTranslators = '[@TengounplanAH](https://twitter.com/TengounplanAH), Midraed, Alvaro'
   const frenchTranslators = 'Alexandre Carpentier, Fabrice2, Aifé';
   const germanTranslators = 'Hauke, tjanu';
-  const russianTranslators = 'Eugene Sarnetsky, Alexander “Sheff” Buryakov, [Artem “NL” Grechka](https://twitter.com/lnll), Max “Youbi” Zakharov, Vladimir “Sliptip” Litvaliev, Andrey “Dartemilion” Lubyanov, Mikhail “Necros47” Lisovsky, fnordmonkey';
+  const russianTranslators = 'Eugene Sarnetsky, Alexander “Sheff” Buryakov, Eugene Karelin, [Artem “NL” Grechka](https://twitter.com/lnll), Max “Youbi” Zakharov, Vladimir “Sliptip” Litvaliev, Andrey “Dartemilion” Lubyanov, Mikhail “Necros47” Lisovsky, fnordmonkey';
   const koreanTranslators = '엘케인(elkeinkrad), 푸른이(derornos)';
   const originalIconDesigns = t`<b>Icon Attribution:</b>\n• Original icon designs: ${visualDesigner}`;
   return (
