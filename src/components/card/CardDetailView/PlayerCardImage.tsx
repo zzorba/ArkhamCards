@@ -29,7 +29,9 @@ function imageStyle(card: Card) {
     case 'investigator': return styles.investigatorImage;
     case 'agenda': return styles.agendaImage;
     case 'act': return styles.actImage;
-    case 'location': return styles.locationImage;
+    case 'enemy_location':
+    case 'location':
+      return styles.locationImage;
     case 'treachery': return styles.treacheryImage;
     default: return {};
   }

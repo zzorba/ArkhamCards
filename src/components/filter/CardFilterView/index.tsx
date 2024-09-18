@@ -491,6 +491,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
               agenda: t`Agenda`,
               story: t`Story`,
               enemy: t`Enemy`,
+              enemy_location: t`Enemy-Location`,
               treachery: t`Treachery`,
               location: t`Location`,
               investigator: c('card-type').t`Investigator`,

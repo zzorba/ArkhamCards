@@ -6084,6 +6084,9 @@ msgstr ""
 msgid "Specialist"
 msgstr ""
 
+msgid "Enemy-Location"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Własny"
@@ -8431,6 +8434,13 @@ msgid_plural "Keys"
 msgstr[0] "Klucz"
 msgstr[1] "Klucze"
 msgstr[2] "Kluczy"
+
+msgctxt "header"
+msgid "Enemy-Location"
+msgid_plural "Enemy-Locations"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 msgctxt "tags"
 msgid "Add"

@@ -3843,6 +3843,10 @@
             "text": "leurre"
           },
           {
+            "id": "hote_start_with_clue_true",
+            "text": "leurre"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "Ichtaca est partie sans vous."
           },
@@ -5982,6 +5986,10 @@
           },
           {
             "id": "hote_no_mulligan",
+            "text": "leurre"
+          },
+          {
+            "id": "hote_start_with_clue_true",
             "text": "leurre"
           },
           {

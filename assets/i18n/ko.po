@@ -5974,6 +5974,9 @@ msgstr ""
 msgid "Specialist"
 msgstr ""
 
+msgid "Enemy-Location"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"
@@ -8259,6 +8262,11 @@ msgctxt "header"
 msgid "Key"
 msgid_plural "Keys"
 msgstr[0] "열쇠"
+
+msgctxt "header"
+msgid "Enemy-Location"
+msgid_plural "Enemy-Locations"
+msgstr[0] ""
 
 msgctxt "tags"
 msgid "Add"

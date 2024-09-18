@@ -124,6 +124,7 @@ function sectionHeaderTitle(type: TypeCodeType | string, count: number): string 
     case 'skill': return c('header').ngettext(msgid`Skill`, `Skills`, count);
     case 'treachery': return c('header').ngettext(msgid`Treachery`, `Treacheries`, count);
     case 'enemy': return c('header').ngettext(msgid`Enemy`, `Enemies`, count);
+    case 'enemy_location': return c('header').ngettext(msgid`Enemy-Location`, `Enemy-Locations`, count);
     case 'location': return c('header').ngettext(msgid`Location`, `Locations`, count);
     case 'story': return c('header').ngettext(msgid`Story`, `Stories`, count);
     case 'act': return c('header').ngettext(msgid`Act`, `Acts`, count);

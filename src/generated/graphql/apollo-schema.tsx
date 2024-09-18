@@ -8990,6 +8990,7 @@ export enum Card_Type_Code_Enum {
   Agenda = 'agenda',
   Asset = 'asset',
   Enemy = 'enemy',
+  EnemyLocation = 'enemy_location',
   Event = 'event',
   Investigator = 'investigator',
   Key = 'key',

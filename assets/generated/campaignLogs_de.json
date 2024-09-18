@@ -3843,6 +3843,10 @@
             "text": "dummy"
           },
           {
+            "id": "hote_start_with_clue_true",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "Ichtaca ist ohne dich gegangen."
           },
@@ -5989,6 +5993,10 @@
           },
           {
             "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
+            "id": "hote_start_with_clue_true",
             "text": "dummy"
           },
           {

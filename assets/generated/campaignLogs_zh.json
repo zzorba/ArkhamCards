@@ -3843,6 +3843,10 @@
             "text": "dummy"
           },
           {
+            "id": "hote_start_with_clue_true",
+            "text": "dummy"
+          },
+          {
             "id": "ichtaca_left_without_you",
             "text": "伊塔卡獨自離開。"
           },
@@ -5982,6 +5986,10 @@
           },
           {
             "id": "hote_no_mulligan",
+            "text": "dummy"
+          },
+          {
+            "id": "hote_start_with_clue_true",
             "text": "dummy"
           },
           {
