@@ -48,6 +48,7 @@ export function getDownloadLink(lang: string, customData?: CustomData) {
     case 'ko':
     case 'en':
     case 'zh':
+    case 'zh-cn':
     case 'fr':
     case 'es':
     case 'pt':

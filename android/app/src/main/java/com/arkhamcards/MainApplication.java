@@ -1,7 +1,12 @@
 package com.arkhamcards;
 
+import android.os.Build;
 import android.content.res.Configuration;
 import android.content.Context;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import androidx.annotation.Nullable;
 import expo.modules.ApplicationLifecycleDispatcher;
 import expo.modules.ReactNativeHostWrapper;
 
@@ -17,6 +22,7 @@ import com.reactnativenavigation.react.NavigationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class MainApplication extends NavigationApplication {
 
@@ -58,6 +64,15 @@ public class MainApplication extends NavigationApplication {
         }
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
         ApplicationLifecycleDispatcher.onApplicationCreate(this);
+    }
+
+    @Override
+    public Intent registerReceiver(@Nullable BroadcastReceiver receiver, IntentFilter filter) {
+        if (Build.VERSION.SDK_INT >= 34 && getApplicationInfo().targetSdkVersion >= 34) {
+            return super.registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED);
+        } else {
+            return super.registerReceiver(receiver, filter);
+        }
     }
 
     @Override

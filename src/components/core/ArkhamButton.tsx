@@ -18,12 +18,12 @@ interface Props {
 }
 
 const computeHeight = (fontScale: number, lang: string) => {
-  return (fontScale * (lang === 'zh' ? 22 : 20)) + 20 + 20;
+  return (fontScale * (lang === 'zh' || lang === 'zh-cn' ? 22 : 20)) + 20 + 20;
 };
 function ArkhamButton({ icon, title, onPress, grow, variant = 'fill', noShadow }: Props) {
   const { colors, fontScale, shadow, typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
-  const height = ((lang === 'zh' ? 22 : 20) * fontScale) + 20;
+  const height = ((lang === 'zh' || lang === 'zh-cn' ? 22 : 20) * fontScale) + 20;
   const shadowClass = variant === 'fill' ? shadow.medium : shadow.small;
   const wrappedOnPress = useCallback(() => {
     ReactNativeHapticFeedback.trigger('impactLight');

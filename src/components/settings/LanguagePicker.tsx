@@ -99,6 +99,13 @@ function dialogStrings(lang: string): DialogStrings {
         confirmButton: '開始下載',
         cancelButton: '取消',
       };
+    case 'zh-cn':
+      return {
+        title: '确认',
+        description: '更改APP语言需要从ArkhamDB下载翻译过的卡牌，需要网路连线与一点时间。',
+        confirmButton: '开始下载',
+        cancelButton: '取消',
+      };
     case 'pt':
       return {
         title: 'Confirmar',

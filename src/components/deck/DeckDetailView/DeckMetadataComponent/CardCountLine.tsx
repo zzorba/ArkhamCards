@@ -30,7 +30,7 @@ export default function CardCountLine({ parsedDeck: { normalCardCount, totalCard
         { ngettext(msgid`${normalCardCount} · ${totalCardCount} total`, `${normalCardCount} · ${totalCardCount} total`, totalCardCount) }
       </Text>
       { bondedCardCount > 0 && (
-        <Text style={[typography.small, { color: colors.M, lineHeight: (lang === 'zh' ? 22 : 20) * fontScale }]}>
+        <Text style={[typography.small, { color: colors.M, lineHeight: (lang === 'zh' || lang === 'zh-cn' ? 22 : 20) * fontScale }]}>
           {'· '}{ ngettext(msgid`${bondedCardCount} bound`, `${bondedCardCount} bound`, bondedCardCount) }
         </Text>
       ) }

@@ -52,7 +52,7 @@ export function localizedName(lang: string) {
     case "zh":
       return "中文";
     case "zh-cn":
-      return "简体字";
+      return "简体中文";
     case "vi":
       return "tiếng Việt";
     case "cs":

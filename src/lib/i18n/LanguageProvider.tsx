@@ -18,11 +18,13 @@ interface Props {
 let eventListenerInitialized: boolean = false;
 let currentSystemLang: string | undefined = undefined;
 
-const LOCALIZED_CARD_TRAITS = new Set(['fr', 'ru', 'de', 'zh', 'ko', 'pl']);
+const LOCALIZED_CARD_TRAITS = new Set(['fr', 'ru', 'de', 'zh', 'zh-cn', 'ko', 'pl']);
 
 function getListSeperator(lang: string): string {
   switch (lang) {
-    case 'zh': return '、';
+    case 'zh':
+    case 'zh-cn':
+      return '、';
     default: return ', ';
   }
 }
@@ -103,7 +105,7 @@ export default function LanguageProvider({ children }: Props) {
       listSeperator: getListSeperator(lang),
       colon: getColon(lang),
       arkhamDbDomain: getArkhamDbDomain(lang),
-      usePingFang: (lang === 'zh' && Platform.OS === 'ios' && majorVersionIOS >= 13),
+      usePingFang: ((lang === 'zh' || lang === 'zh-cn') && Platform.OS === 'ios' && majorVersionIOS >= 13),
       audioLang,
     };
   }, [lang, audioLang]);

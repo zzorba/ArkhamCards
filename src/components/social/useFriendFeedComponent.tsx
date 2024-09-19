@@ -188,7 +188,7 @@ function AccessControlsComponent({ user, hasAccess, inviteUser, removeUser }: {
 }
 
 const userRowHeight = (fontScale: number, lang: string) => {
-  return m * 2 + StyleSheet.hairlineWidth + (lang === 'zh' ? 22 : 20) * fontScale;
+  return m * 2 + StyleSheet.hairlineWidth + (lang === 'zh' || lang === 'zh-cn' ? 22 : 20) * fontScale;
 };
 
 function UserRow({ user, showUser, status, controls, refetchMyProfile }: {

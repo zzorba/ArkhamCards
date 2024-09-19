@@ -122,7 +122,7 @@ function DifficultyButton({ difficulty, title, onPress, selection }: {
 }) {
   const { colors, typography, fontScale } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
-  const height = ((lang === 'zh' ? 22 : 20) * fontScale) + s * 2;
+  const height = ((lang === 'zh' || lang === 'zh-cn' ? 22 : 20) * fontScale) + s * 2;
 
   const handleOnPress = useCallback(() => onPress(difficulty), [difficulty, onPress]);
   const selected = difficulty === selection;

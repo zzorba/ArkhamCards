@@ -1,12 +1,19 @@
+import { getTime, format, addDays, isAfter, startOfDay } from "date-fns";
 import {
-  getTime,
-  format,
-  addDays,
-  isAfter,
-  startOfDay,
-} from 'date-fns';
-import { de, es, ru, it, fr, ko, uk, pl, cs, ptBR, zhTW } from 'date-fns/locale';
-import { t } from 'ttag';
+  de,
+  es,
+  ru,
+  it,
+  fr,
+  ko,
+  uk,
+  pl,
+  cs,
+  ptBR,
+  zhTW,
+  zhCN,
+} from "date-fns/locale";
+import { t } from "ttag";
 
 const LOCALE_MAP: {
   [key: string]: undefined | { locale: any };
@@ -23,6 +30,7 @@ const LOCALE_MAP: {
   pl: { locale: pl },
   pt: { locale: ptBR },
   zh: { locale: zhTW },
+  "zh-cn": { locale: zhCN },
 };
 
 /**
@@ -51,14 +59,18 @@ export function toDaysRemaining(endDate: number) {
 
 export function toDateStringMonthName(timestamp: number) {
   const date = new Date(timestamp * 1000);
-  return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 export function toRelativeDateString(date: Date | string, locale: string) {
   if (date === undefined) {
-    return '???';
+    return "???";
   }
-  if (typeof date === 'string') {
+  if (typeof date === "string") {
     date = new Date(Date.parse(date));
   }
   const nowDate = new Date();
@@ -70,35 +82,53 @@ export function toRelativeDateString(date: Date | string, locale: string) {
     return t`Updated yesterday`;
   }
   if (isAfter(date, addDays(startOfNowDate, -6))) {
-    const dayOfWeek = format(date, 'EEEE');
+    const dayOfWeek = format(date, "EEEE");
     switch (dayOfWeek) {
-      case 'Monday': return t`Updated Monday`;
-      case 'Tuesday': return t`Updated Tuesday`;
-      case 'Wednesday': return t`Updated Wednesday`;
-      case 'Thursday': return t`Updated Thursday`;
-      case 'Friday': return t`Updated Friday`;
-      case 'Saturday': return t`Updated Saturday`;
-      case 'Sunday': return t`Updated Sunday`;
-      default: return t`Updated ${dayOfWeek}`;
+      case "Monday":
+        return t`Updated Monday`;
+      case "Tuesday":
+        return t`Updated Tuesday`;
+      case "Wednesday":
+        return t`Updated Wednesday`;
+      case "Thursday":
+        return t`Updated Thursday`;
+      case "Friday":
+        return t`Updated Friday`;
+      case "Saturday":
+        return t`Updated Saturday`;
+      case "Sunday":
+        return t`Updated Sunday`;
+      default:
+        return t`Updated ${dayOfWeek}`;
     }
   }
-  const dateString = localizedDate(date, locale, locale === 'ko');
+  const dateString = localizedDate(date, locale, locale === "ko");
   return t`Updated ${dateString}`;
 }
 
-export function localizedDate(date: Date, locale: string, noDayOfWeek: boolean = false) {
+export function localizedDate(
+  date: Date,
+  locale: string,
+  noDayOfWeek: boolean = false
+) {
   if (noDayOfWeek) {
     switch (locale) {
-      case 'fr':
-      case 'it':
-        return format(date, 'd MMMM yyyy', LOCALE_MAP[locale]);
-      case 'ko':
-        return format(date, 'y년 M월 d일', LOCALE_MAP[locale]);
+      case "fr":
+      case "it":
+        return format(date, "d MMMM yyyy", LOCALE_MAP[locale]);
+      case "ko":
+        return format(date, "y년 M월 d일", LOCALE_MAP[locale]);
       default:
-        return format(date, 'MMMM d, yyyy', LOCALE_MAP[locale]);
+        return format(date, "MMMM d, yyyy", LOCALE_MAP[locale]);
     }
   }
-  return format(date, !noDayOfWeek && (locale === 'fr' || locale === 'it') ? 'iiii d MMMM yyyy' : 'MMMM d, yyyy', LOCALE_MAP[locale]);
+  return format(
+    date,
+    !noDayOfWeek && (locale === "fr" || locale === "it")
+      ? "iiii d MMMM yyyy"
+      : "MMMM d, yyyy",
+    LOCALE_MAP[locale]
+  );
 }
 
 /**
@@ -129,9 +159,8 @@ function localDateToUtc(localDate: Date) {
   return (localDate.getTime() - timeZoneOffset) / 1000;
 }
 
-
 export function objectIdToTimestamp(oid: string) {
-  return parseInt(oid.substring(0,8), 16);
+  return parseInt(oid.substring(0, 8), 16);
 }
 
 export default {
