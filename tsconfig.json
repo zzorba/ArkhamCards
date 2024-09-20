@@ -12,6 +12,7 @@
     "isolatedModules": true,
     "resolveJsonModule": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "useUnknownInCatchVariables": false,
     "moduleResolution": "node",
     "baseUrl": ".",

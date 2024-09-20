@@ -15,7 +15,7 @@
       android:allowBackup="false"
       android:hardwareAccelerated="true"
       android:theme="@style/AppSplash"
-
+      android:supportsRtl="true"
       tools:replace="android:theme"
     >
         <meta-data android:name="asset_statements" android:resource="@string/asset_statements" />
