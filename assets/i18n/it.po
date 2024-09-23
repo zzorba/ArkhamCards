@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.5\n"
 
 msgid "Guardian"
 msgstr "Guardiano"
@@ -804,19 +804,19 @@ msgstr "Sacchetto del Caos"
 msgid "Adjust Weakness Set"
 msgstr "Correggi Debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Questo mazzo contiene numerose debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Questo mazzo contiene una debolezza base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverle dal set di debolezze base della campagna?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverla dal set di debolezze base della campagna?"
 
@@ -4647,7 +4647,7 @@ msgid "Move to deck"
 msgstr ""
 
 msgid "Unarchive standalone"
-msgstr ""
+msgstr "Ripristina lo scenario autoconclusivo"
 
 msgid "Archive standalone"
 msgstr "Archivia lo scenario autoconclusivo"
@@ -4764,7 +4764,7 @@ msgid "Offerings"
 msgstr ""
 
 msgid "Patrol"
-msgstr ""
+msgstr "Pattuglia"
 
 msgid "Consternation on the Constellation"
 msgstr ""
@@ -4801,6 +4801,9 @@ msgid ""
 "\n"
 "You can also upload in-progress campaigns and share them with friends and even share a synchronized chaos bag."
 msgstr ""
+"Usare un account Arkham Cards ti permetterà di eseguire il backup e sincronizzare i dati della tua campagna tra diversi dispositivi.\n"
+"\n"
+"Puoi anche caricare le campagne in corso e condividerle con gli amici, incluso un sacchetto del caos sincronizzato."
 
 msgid "Sync campaigns to share with friends"
 msgstr "Sincronizza le campagne per condividerle con gli amici"
@@ -4830,6 +4833,11 @@ msgid ""
 "\n"
 "When it is finished, you can try to load the deck again."
 msgstr ""
+"Questo mazzo contiene nuove carte che l'app non riconosce.\n"
+"\n"
+"Vai alla scheda 'Impostazioni' e seleziona 'Controlla gli aggiornamenti delle carta'.\n"
+"\n"
+"Quando il processo sarà terminato, potrai provare a caricare nuovamente il mazzo."
 
 msgid "Other investigator cards"
 msgstr "Altre carte investigatore"
@@ -5145,7 +5153,7 @@ msgstr "Sei sicuro di voler rimuovere il tuo account in modo <b>permanente</b>? 
 
 #, javascript-format
 msgid "You are currently signed in as <b>${ handle }</b>."
-msgstr ""
+msgstr "Ti sei autenticato come <b>${ handle }</b>."
 
 msgid "The friend's campaign that you have participated in will have your decks removed:"
 msgid_plural "The ${ joinedCampaignCount } campaigns from friends that you have participated in will have your decks removed:"
@@ -5842,43 +5850,43 @@ msgid "The Feast of Hemlock Vale"
 msgstr "La Festa di Hemlock Vale"
 
 msgid "The Dunwich Legacy Investigator Expansion"
-msgstr ""
+msgstr "L'Eredità di Dunwich Espansione Investigatori"
 
 msgid "The Dunwich Legacy Campaign Expansion"
-msgstr ""
+msgstr "L'Eredità di Dunwich Espansione Campagna"
 
 msgid "The Path to Carcosa Investigator Expansion"
-msgstr ""
+msgstr "La Strada per Carcosa Espansione Investigatori"
 
 msgid "The Path to Carcosa Campaign Expansion"
-msgstr ""
+msgstr "La Strada per Carcosa Espansione Campagna"
 
 msgid "The Forgotten Age Investigator Expansion"
-msgstr ""
+msgstr "L'Era Dimenticata Espansione Investigatori"
 
 msgid "The Forgotten Age Campaign Expansion"
-msgstr ""
+msgstr "L'Era Dimenticata Espansione Campagna"
 
 msgid "The Circle Undone Investigator Expansion"
-msgstr ""
+msgstr "Il Circolo Spezzato Espansione Investigatori"
 
 msgid "The Circle Undone Campaign Expansion"
-msgstr ""
+msgstr "Il Circolo Spezzato Espansione Campagna"
 
 msgid "The Dream-Eaters Investigator Expansion"
-msgstr ""
+msgstr "I Divoratori di Sogni Espansione Investigatori"
 
 msgid "The Dream-Eaters Campaign Expansion"
-msgstr ""
+msgstr "I Divoratori di Sogni Espansione Campagna"
 
 msgid "The Innsmouth Conspiracy Investigator Expansion"
-msgstr ""
+msgstr "La Cospirazione di Innsmouth Espansione Investigatori"
 
 msgid "The Innsmouth Conspiracy Campaign Expansion"
-msgstr ""
+msgstr "La Cospirazione di Innsmouth Espansione Campagna"
 
 msgid "Show original release packs"
-msgstr ""
+msgstr "Mostra come elenco di pack"
 
 msgid "Non-Unique"
 msgstr ""
