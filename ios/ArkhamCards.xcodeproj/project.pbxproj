@@ -64,6 +64,7 @@
 		65F8DBA4247EEBC100286F16 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8DBA3247EEBC100286F16 /* Bridge.swift */; };
 		680254E39CBCB8DC7AADC8D2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C917A2C5B18C818B8FB113CE /* PrivacyInfo.xcprivacy */; };
 		764F9747FC780D2E0EF5102E /* Pods_ArkhamCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A04E39D4B83639D6FD6A3F /* Pods_ArkhamCards.framework */; };
+		9DC6CE6F2CA2554B00ADEC10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DC6CE6D2CA2554B00ADEC10 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,9 @@
 		65F8DB9C247EE0B500286F16 /* pl.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pl.po.json; path = ../assets/i18n/pl.po.json; sourceTree = "<group>"; };
 		65F8DB9D247EE0B500286F16 /* uk.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = uk.po.json; path = ../assets/i18n/uk.po.json; sourceTree = "<group>"; };
 		65F8DBA3247EEBC100286F16 /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
+		9DC6CE682CA2543400ADEC10 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9DC6CE6E2CA2554B00ADEC10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = ArkhamCards/Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DC6CE702CA2557D00ADEC10 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ArkhamCards/ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C917A2C5B18C818B8FB113CE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ArkhamCards/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		CAB040D549E643C0A271ADCC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		D015900F71F34A5187CC75F4 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				9DC6CE6D2CA2554B00ADEC10 /* InfoPlist.strings */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */,
 				65F8DBA3247EEBC100286F16 /* Bridge.swift */,
@@ -380,6 +385,7 @@
 				6506962425D05D5300B134B0 /* tokens.ttf in Resources */,
 				659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */,
 				656D0CC42B5C2D4E006906B4 /* arkhamslim.ttf in Resources */,
+				9DC6CE6F2CA2554B00ADEC10 /* InfoPlist.strings in Resources */,
 				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
 				6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */,
 				659EB1C525146636007E69E0 /* innsmouth.ttf in Resources */,
@@ -624,9 +630,19 @@
 				65CA4CEB2128932A0084A1CE /* de */,
 				65CA4CEC2128932F0084A1CE /* it */,
 				65CA4CED212893370084A1CE /* fr */,
+				9DC6CE682CA2543400ADEC10 /* ko */,
 			);
 			name = LaunchScreen.xib;
 			path = ArkhamCards;
+			sourceTree = "<group>";
+		};
+		9DC6CE6D2CA2554B00ADEC10 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DC6CE6E2CA2554B00ADEC10 /* Base */,
+				9DC6CE702CA2557D00ADEC10 /* ko */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
