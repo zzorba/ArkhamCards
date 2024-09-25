@@ -5642,7 +5642,7 @@ msgid "Edit deck tags"
 msgstr ""
 
 msgid "Clear tags"
-msgstr ""
+msgstr "Rimuovi i tag"
 
 msgid "Solo"
 msgstr ""
@@ -5651,10 +5651,10 @@ msgid "Beginner"
 msgstr ""
 
 msgid "+ Add"
-msgstr ""
+msgstr "+ Aggiungi"
 
 msgid "Deck tags"
-msgstr ""
+msgstr "Tag del mazzo"
 
 msgid "Tags"
 msgstr ""
@@ -5705,7 +5705,7 @@ msgid "Max"
 msgstr ""
 
 msgid "EASY"
-msgstr ""
+msgstr "FACILE"
 
 msgid "STND"
 msgstr ""
@@ -5810,7 +5810,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Latest Taboo List: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
-msgstr ""
+msgstr "Ultima Lista Taboo: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
 
 msgid "This card is no longer on the taboo list."
 msgstr ""
@@ -5970,13 +5970,13 @@ msgid "Relationship Level"
 msgstr ""
 
 msgid "Image cache cleared"
-msgstr ""
+msgstr "Cache delle immagini ripulita"
 
 msgid "Clear image cache"
-msgstr ""
+msgstr "Svuota la cache immagini"
 
 msgid "Narration Language"
-msgstr ""
+msgstr "Lingua di narrazione"
 
 msgid "Unable to create campaign"
 msgstr ""
@@ -6669,11 +6669,11 @@ msgstr "Alleato"
 
 msgctxt "trait"
 msgid "Altered"
-msgstr ""
+msgstr "Alterato"
 
 msgctxt "trait"
 msgid "Ancient"
-msgstr ""
+msgstr "Antico"
 
 msgctxt "trait"
 msgid "Ancient One"
@@ -6693,7 +6693,7 @@ msgstr "Armatura"
 
 msgctxt "trait"
 msgid "Artist"
-msgstr ""
+msgstr "Artista"
 
 msgctxt "trait"
 msgid "Assistant"
@@ -6757,7 +6757,7 @@ msgstr "Byakhee"
 
 msgctxt "trait"
 msgid "Bystander"
-msgstr ""
+msgstr "Passante"
 
 msgctxt "trait"
 msgid "Cairo"
@@ -6777,7 +6777,7 @@ msgstr "Caverna"
 
 msgctxt "trait"
 msgid "Central"
-msgstr ""
+msgstr "Centro"
 
 msgctxt "trait"
 msgid "Charm"
@@ -6785,7 +6785,7 @@ msgstr "Amuleto"
 
 msgctxt "trait"
 msgid "Chosen"
-msgstr ""
+msgstr "Prescelto"
 
 msgctxt "trait"
 msgid "Circle"
@@ -6797,7 +6797,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Civic"
-msgstr ""
+msgstr "Civico"
 
 msgctxt "trait"
 msgid "Clairvoyant"
@@ -6805,11 +6805,11 @@ msgstr "Chiaroveggente"
 
 msgctxt "trait"
 msgid "Clothing"
-msgstr ""
+msgstr "Vestiario"
 
 msgctxt "trait"
 msgid "Clover Club"
-msgstr ""
+msgstr "Clover Club"
 
 msgctxt "trait"
 msgid "Coastal"
@@ -6821,11 +6821,11 @@ msgstr "Padronanza"
 
 msgctxt "trait"
 msgid "Condition"
-msgstr ""
+msgstr "Condizione"
 
 msgctxt "trait"
 msgid "Connection"
-msgstr ""
+msgstr "Contatto"
 
 msgctxt "trait"
 msgid "Conspirator"
@@ -6837,7 +6837,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr ""
+msgstr "Sodalizio"
 
 msgctxt "trait"
 msgid "Creature"
@@ -6893,19 +6893,19 @@ msgstr "Sviluppato"
 
 msgctxt "trait"
 msgid "Dhole"
-msgstr ""
+msgstr "Dhole"
 
 msgctxt "trait"
 msgid "Distortion"
-msgstr ""
+msgstr "Distorsione"
 
 msgctxt "trait"
 msgid "Dreamer"
-msgstr ""
+msgstr "Sognatore"
 
 msgctxt "trait"
 msgid "Dreamlands"
-msgstr ""
+msgstr "Mondo dei Sogni"
 
 msgctxt "trait"
 msgid "Drifter"
@@ -6933,7 +6933,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Exhibit"
-msgstr ""
+msgstr "Mostra"
 
 msgctxt "trait"
 msgid "Expedition"
@@ -6961,11 +6961,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Fated"
-msgstr ""
+msgstr "Predestinato"
 
 msgctxt "trait"
 msgid "Favor"
-msgstr ""
+msgstr "Favore"
 
 msgctxt "trait"
 msgid "Firearm"
@@ -6973,7 +6973,7 @@ msgstr "Arma da Fuoco"
 
 msgctxt "trait"
 msgid "Flaw"
-msgstr ""
+msgstr "Difetto"
 
 msgctxt "trait"
 msgid "Flora"
@@ -6997,7 +6997,7 @@ msgstr "Sorte"
 
 msgctxt "trait"
 msgid "Future"
-msgstr ""
+msgstr "Futuro"
 
 msgctxt "trait"
 msgid "Gambit"
@@ -7021,7 +7021,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Grant"
-msgstr ""
+msgstr "Donazione"
 
 msgctxt "trait"
 msgid "Graveyard"
@@ -7037,7 +7037,7 @@ msgstr "Ospite"
 
 msgctxt "trait"
 msgid "Gug"
-msgstr ""
+msgstr "Gug"
 
 msgctxt "trait"
 msgid "Hall"
@@ -7057,7 +7057,7 @@ msgstr "Nascondiglio"
 
 msgctxt "trait"
 msgid "Historical Society"
-msgstr ""
+msgstr "Società Storica"
 
 msgctxt "trait"
 msgid "Humanoid"
@@ -7077,11 +7077,11 @@ msgstr "Illecito"
 
 msgctxt "trait"
 msgid "Improvised"
-msgstr ""
+msgstr "Improvvisato"
 
 msgctxt "trait"
 msgid "Injury"
-msgstr ""
+msgstr "Ferita"
 
 msgctxt "trait"
 msgid "Innate"
@@ -7117,7 +7117,7 @@ msgstr "Oggetto"
 
 msgctxt "trait"
 msgid "Job"
-msgstr ""
+msgstr "Incarico"
 
 msgctxt "trait"
 msgid "Jungle"
@@ -7269,11 +7269,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Passageway"
-msgstr ""
+msgstr "Passaggio"
 
 msgctxt "trait"
 msgid "Patron"
-msgstr ""
+msgstr "Sostenitore"
 
 msgctxt "trait"
 msgid "Performer"
@@ -7285,7 +7285,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Poison"
-msgstr ""
+msgstr "Veleno"
 
 msgctxt "trait"
 msgid "Police"
@@ -7297,7 +7297,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Portal"
-msgstr ""
+msgstr "Portale"
 
 msgctxt "trait"
 msgid "Power"
@@ -7313,11 +7313,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Prison"
-msgstr ""
+msgstr "Prigione"
 
 msgctxt "trait"
 msgid "Private"
-msgstr ""
+msgstr "Privato"
 
 msgctxt "trait"
 msgid "Providence"
@@ -7325,7 +7325,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Rail"
-msgstr ""
+msgstr "Ferrovia"
 
 msgctxt "trait"
 msgid "Ranged"
@@ -7337,7 +7337,7 @@ msgstr "Reliquia"
 
 msgctxt "trait"
 msgid "Reporter"
-msgstr ""
+msgstr "Reporter"
 
 msgctxt "trait"
 msgid "Research"
@@ -7381,7 +7381,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Scheme"
-msgstr ""
+msgstr "Complotto"
 
 msgctxt "trait"
 msgid "Scholar"
@@ -7393,7 +7393,7 @@ msgstr "Scienza"
 
 msgctxt "trait"
 msgid "Script"
-msgstr ""
+msgstr "Scritto"
 
 msgctxt "trait"
 msgid "Second Floor"
@@ -7401,7 +7401,7 @@ msgstr "Primo Piano"
 
 msgctxt "trait"
 msgid "Sentinel Hill"
-msgstr ""
+msgstr "Colle Guardiano"
 
 msgctxt "trait"
 msgid "Serpent"
@@ -7413,7 +7413,7 @@ msgstr "Servizio"
 
 msgctxt "trait"
 msgid "Servitor"
-msgstr ""
+msgstr "Servo"
 
 msgctxt "trait"
 msgid "Shantak"
@@ -7441,11 +7441,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Socialite"
-msgstr ""
+msgstr "Mondano"
 
 msgctxt "trait"
 msgid "Song"
-msgstr ""
+msgstr "Canto"
 
 msgctxt "trait"
 msgid "Sorcerer"
@@ -7481,7 +7481,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Summon"
-msgstr ""
+msgstr "Evocazione"
 
 msgctxt "trait"
 msgid "Supply"
@@ -7509,7 +7509,7 @@ msgstr "Talento"
 
 msgctxt "trait"
 msgid "Tarot"
-msgstr ""
+msgstr "Tarocco"
 
 msgctxt "trait"
 msgid "Task"
@@ -7553,11 +7553,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Train"
-msgstr ""
+msgstr "Treno"
 
 msgctxt "trait"
 msgid "Trap"
-msgstr ""
+msgstr "Trappola"
 
 msgctxt "trait"
 msgid "Trick"
@@ -7565,7 +7565,7 @@ msgstr "Trucchetto"
 
 msgctxt "trait"
 msgid "Unhallowed"
-msgstr ""
+msgstr "Sconsacrato"
 
 msgctxt "trait"
 msgid "Upgrade"
@@ -7609,11 +7609,11 @@ msgstr "Arma"
 
 msgctxt "trait"
 msgid "Wilderness"
-msgstr ""
+msgstr "Selva"
 
 msgctxt "trait"
 msgid "Witch"
-msgstr ""
+msgstr "Strega"
 
 msgctxt "trait"
 msgid "Witch House"
@@ -7701,7 +7701,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Past"
-msgstr ""
+msgstr "Passato"
 
 msgctxt "trait"
 msgid "Possessed"
@@ -7709,11 +7709,11 @@ msgstr "Posseduto"
 
 msgctxt "trait"
 msgid "Present"
-msgstr ""
+msgstr "Presente"
 
 msgctxt "trait"
 msgid "Scientist"
-msgstr ""
+msgstr "Scienziato"
 
 msgctxt "trait"
 msgid "Uncharted"
@@ -7725,7 +7725,7 @@ msgstr "Casinò"
 
 msgctxt "trait"
 msgid "Double"
-msgstr ""
+msgstr "Doppio"
 
 msgctxt "trait"
 msgid "AI"
@@ -7981,7 +7981,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Sheldon Gang"
-msgstr ""
+msgstr "Banda degli Sheldon"
 
 msgctxt "trait"
 msgid "Sister"
@@ -8178,7 +8178,7 @@ msgstr "Risorsa"
 
 msgctxt "parley"
 msgid "Parley"
-msgstr ""
+msgstr "Negozia"
 
 msgctxt "Encounter Sets"
 msgid "All"
@@ -8321,15 +8321,15 @@ msgstr[1] ""
 
 msgctxt "tags"
 msgid "Add"
-msgstr ""
+msgstr "Aggiungi"
 
 msgctxt "tags"
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 msgctxt "tags"
 msgid "None"
-msgstr ""
+msgstr "Nessuno"
 
 msgctxt "Tarot Card"
 msgid "None"
@@ -8349,43 +8349,43 @@ msgstr "VS"
 
 msgctxt "sort"
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 msgctxt "sort"
 msgid "Class"
-msgstr ""
+msgstr "Classe"
 
 msgctxt "sort"
 msgid "Cost"
-msgstr ""
+msgstr "Costo"
 
 msgctxt "sort"
 msgid "Pack"
-msgstr ""
+msgstr "Pack"
 
 msgctxt "sort"
 msgid "Cycle"
-msgstr ""
+msgstr "Ciclo"
 
 msgctxt "sort"
 msgid "Title"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "sort"
 msgid "Encounter Set"
-msgstr ""
+msgstr "Set Incontri"
 
 msgctxt "sort"
 msgid "Level"
-msgstr ""
+msgstr "Livello"
 
 msgctxt "sort"
 msgid "Card number"
-msgstr ""
+msgstr "Codice Carta"
 
 msgctxt "sort"
 msgid "Slot"
-msgstr ""
+msgstr "Slot"
 
 msgctxt "card-chooser"
 msgid "Choose additional"
@@ -8414,7 +8414,7 @@ msgstr "Riproduzione audio"
 #, javascript-format
 msgctxt "narration"
 msgid "Audio speed: ${ rate }"
-msgstr ""
+msgstr "Velocità di riproduzione: ${ rate }"
 
 msgctxt "campaign_log_entry"
 msgid "Other."
@@ -8476,7 +8476,7 @@ msgstr "Campagne"
 
 msgctxt "new_campaign_type"
 msgid "Campaigns"
-msgstr ""
+msgstr "Campagne"
 
 msgctxt "new_campaign_type"
 msgid "Standalones"
