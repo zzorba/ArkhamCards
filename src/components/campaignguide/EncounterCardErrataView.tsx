@@ -66,7 +66,7 @@ function CardErrataComponent({ errata, cards }: { errata: CardErrata; cards: Car
 function EncounterCardErrataView({ errata }: EncounterCardErrataProps) {
   const { colors } = useContext(StyleContext);
   const errataCodes = useMemo(() => flatMap(errata, e => e.code), [errata]);
-  const [errataCards, loading] = useCardList(errataCodes, 'encounter');
+  const [errataCards, loading] = useCardList(errataCodes, 'encounter', false);
   const cardsMap = useMemo(() => {
     const result: CardsMap = {};
     forEach(errataCards, card => {

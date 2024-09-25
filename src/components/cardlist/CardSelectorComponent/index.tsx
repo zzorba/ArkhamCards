@@ -37,7 +37,7 @@ export default function CardSelectorComponent({ componentId, slots, fixedSlots, 
     showCard(componentId, card.code, card, colors, { showSpoilers: true });
   }, [colors, componentId]);
   const initialCards = useMemo(() => uniq(concat(keys(slots), flatMap(counts, (count, code) => count > 0 ? code : []))), [slots, counts])
-  const [cards] = usePlayerCards(initialCards);
+  const [cards] = usePlayerCards(initialCards, false);
   const fixedCards = useMemo(() => {
     if (!cards) {
       return [];

@@ -21,7 +21,7 @@ export default function CampaignLogScarletKeysComponent({ keys, campaignLog }: P
   const codes = useMemo(() => flatMap(keys, key => {
     return keyStatus[key.id]?.investigator || [];
   }), [keys, keyStatus]);
-  const [cards, loading] = useCardMap(codes, 'player');
+  const [cards, loading] = useCardMap(codes, 'player', false);
   if (loading) {
     return <ActivityIndicator size="small" animating />;
   }

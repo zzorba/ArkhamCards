@@ -11,7 +11,7 @@ const FILTER_BUILDER = new FilterBuilder('clw');
 const EMPTY_CODES: string[] = [];
 const EMPTY_CARDS: Card[] = [];
 
-export default function useCardList(codes: string[], type: 'player' | 'encounter', tabooSetOverride?: number): [Card[], boolean] {
+export default function useCardList(codes: string[], type: 'player' | 'encounter', store: boolean, tabooSetOverride?: number): [Card[], boolean] {
   const [playerCodes, query] = useMemo(() => {
     if (type === 'player') {
       return [codes, undefined];
@@ -21,7 +21,7 @@ export default function useCardList(codes: string[], type: 'player' | 'encounter
       'and'
     )];
   }, [codes, type]);
-  const [playerCards, playerCardsLoading] = usePlayerCards(playerCodes, tabooSetOverride);
+  const [playerCards, playerCardsLoading] = usePlayerCards(playerCodes, store, tabooSetOverride);
   const [queryCards, queryCardsLoading] = useCardsFromQuery({ query, tabooSetOverride });
   return useMemo(() => {
     if (!codes.length) {
@@ -38,8 +38,8 @@ export default function useCardList(codes: string[], type: 'player' | 'encounter
   }, [codes, type, playerCards, queryCards, queryCardsLoading]);
 }
 
-export function useCardMap(codes: string[], type: 'player' | 'encounter', tabooSetOverride?: number): [CardsMap, boolean] {
-  const [cards, loading] = useCardList(codes, type, tabooSetOverride);
+export function useCardMap(codes: string[], type: 'player' | 'encounter', store: boolean, tabooSetOverride?: number): [CardsMap, boolean] {
+  const [cards, loading] = useCardList(codes, type, store, tabooSetOverride);
   const cardMap = useMemo(() => {
     const r: CardsMap = {};
     forEach(cards, c => {

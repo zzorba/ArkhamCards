@@ -33,7 +33,6 @@ import { xpString } from '@components/deck/hooks';
 interface Props {
   lang: string;
   deck: LatestDeckT;
-  investigator?: Card;
   onPress?: (deck: LatestDeckT, investigator: Card | undefined) => void;
   width: number;
   editDeckTags?: (deck: LatestDeckT, investigator: Card | undefined) => void;
@@ -134,13 +133,23 @@ function DeckListRowDetails({
 export default function ThinDeckListRow({
   lang,
   deck,
-  investigator,
   onPress,
   width,
   editDeckTags,
 }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
+
+  const [cards] = useLatestDeckCards(deck, false);
+  const { listSeperator } = useContext(LanguageContext);
+  const parsedDeck = useMemo(() => {
+    if (deck && cards) {
+      return parseBasicDeck(deck.deck, cards, listSeperator, deck.previousDeck);
+    }
+    return undefined;
+  }, [deck, cards, listSeperator]);
+  const investigator = deck ? cards?.[deck.investigator] : undefined;
+
   const onDeckPressFunction = useCallback(() => {
     onPress && onPress(deck, investigator);
   }, [deck, investigator, onPress]);
@@ -155,14 +164,7 @@ export default function ThinDeckListRow({
     }
     return investigator.eliminated(deck.campaign?.trauma);
   }, [investigator, deck]);
-  const [cards] = useLatestDeckCards(deck);
-  const { listSeperator } = useContext(LanguageContext);
-  const parsedDeck = useMemo(() => {
-    if (deck && cards) {
-      return parseBasicDeck(deck.deck, cards, listSeperator, deck.previousDeck);
-    }
-    return undefined;
-  }, [deck, cards, listSeperator]);
+
   const tags = useMemo(() => {
     if (deck?.tags?.length) {
       return deck.tags;

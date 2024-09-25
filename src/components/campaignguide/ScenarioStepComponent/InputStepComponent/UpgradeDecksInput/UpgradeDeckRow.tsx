@@ -117,7 +117,7 @@ function StoryCardRow({ card, countChanged, count, editable, description }: {
 }
 
 function StoryCardChoices({ slots, slotActions, storyCards, editable, campaignGuide }: { campaignGuide: CampaignGuide; slots: Slots; slotActions?: EditSlotsActions; storyCards: string[]; editable: boolean }) {
-  const [cards] = useCardList(storyCards, 'player');
+  const [cards] = useCardList(storyCards, 'player', false);
   return (
     <>
       { flatMap(cards, card => {
@@ -415,8 +415,8 @@ function UpgradeDeckRow({
   }, [onCardPress]);
   const storyAssetCodes = useMemo(() => flatMap(storyAssetDeltas, (count, code) => count !== 0 ? code : []), [storyAssetDeltas]);
   const allStoryAssetCodes = useMemo(() => flatMap(storyAssets, (count, code) => count > 0 ? code : []), [storyAssets]);
-  const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
-  const [allStoryAssetCards] = useCardList(allStoryAssetCodes, 'player');
+  const [storyAssetCards] = useCardList(storyAssetCodes, 'player', false);
+  const [allStoryAssetCards] = useCardList(allStoryAssetCodes, 'player', false);
   const storyAssetSection = useMemo(() => {
     if (!storyAssetCards.length && !(storyCards && (editable || find(storyCardSlots, count => count !== 0)))) {
       return null;

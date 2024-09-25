@@ -43,7 +43,6 @@ function DeckListItem({
   const { width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const deck = useLatestDeck(deckId, deckToCampaign);
-  const [investigator] = useSingleCard(deck?.investigator, 'player', deck?.deck.taboo_id || 0);
   if (!deck) {
     return null;
   }
@@ -52,7 +51,6 @@ function DeckListItem({
       key={deckId.id.uuid}
       lang={lang}
       deck={deck}
-      investigator={investigator}
       onPress={deckClicked}
       editDeckTags={editDeckTags}
       width={width}
@@ -101,7 +99,7 @@ export default function DeckList({
     setNumDecks(numDecks + 10);
   }, [numDecks, setNumDecks]);
 
-  usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items]);
+  usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items], false);
   const renderItem = useCallback(({ deckId }: { deckId: MiniDeckT }) => {
     return (
       <MemoDeckListItem

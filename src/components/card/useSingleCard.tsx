@@ -15,8 +15,8 @@ export default function useSingleCard(code: undefined | string, type: 'player' |
     }
     return [EMPTY_CODES, [code]];
   }, [code, type]);
-  const [playerCards] = usePlayerCards(playerCodes, tabooSetOverride);
-  const [encounterCards, loading] = useCardList(encounterCodes, 'encounter', tabooSetOverride);
+  const [playerCards] = usePlayerCards(playerCodes, false, tabooSetOverride);
+  const [encounterCards, loading] = useCardList(encounterCodes, 'encounter', false, tabooSetOverride);
   if (!code) {
     return [undefined, false];
   }

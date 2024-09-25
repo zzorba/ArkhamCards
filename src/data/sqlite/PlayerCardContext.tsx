@@ -4,7 +4,7 @@ import Card, { CardsMap } from '@data/types/Card';
 
 export interface PlayerCardContext {
   getExistingCards: (tabooSetId: number) => CardsMap;
-  getPlayerCards: (codes: string[], tabooSetId: number) => Promise<CardsMap>;
+  getPlayerCards: (codes: string[], tabooSetId: number, store: boolean) => Promise<CardsMap>;
   storePlayerCards: (cards: Card[]) => void;
 }
 

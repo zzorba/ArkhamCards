@@ -267,7 +267,7 @@ function CampaignDetailView(props: Props) {
     processedCampaign: undefined,
   });
   const latestDecks = useMemo(() => campaign?.latestDecks(), [campaign]);
-  const [cards] = useLatestDecksCards(latestDecks, latestDecks?.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
+  const [cards] = useLatestDecksCards(latestDecks, false, latestDecks?.length ? (latestDecks[0].deck.taboo_id || 0) : 0);
 
   if (!campaign) {
     if (campaignId.serverId) {

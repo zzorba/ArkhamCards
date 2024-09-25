@@ -23,7 +23,7 @@ export default function CheckCampaignLogCardsComponent({ effect, input, numberIn
       return card ? card : [];
     });
   }, [campaignGuide, codes]);
-  const [cards] = useCardList(codes, effect.card_type);
+  const [cards] = useCardList(codes, effect.card_type, false);
   const cardWithCounts = useMemo(() => {
     if (numberInput && numberInput.length === cards.length) {
       return flatMap(zip(codes, numberInput), ([code, count]) => {

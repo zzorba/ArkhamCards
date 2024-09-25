@@ -62,7 +62,7 @@ export default function useXpSection({
     }
   }, [colors, campaign, deck, investigator]);
   const ownerDeck = !deck?.owner || !userId || deck.owner.id === userId;
-  const [cards] = useLatestDeckCards(deck);
+  const [cards] = useLatestDeckCards(deck, false);
   const { listSeperator } = useContext(LanguageContext);
   const parsedDeck = useMemo(() => {
     if (!deck || uploading || !cards) {

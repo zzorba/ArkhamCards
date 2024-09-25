@@ -50,8 +50,8 @@ export function PlayerCardProvider({ children }: Props) {
   const getExistingCards = useCallback((tabooSetId: number): CardsMap => {
     return db.globalLoadedCards[tabooSetId] || {};
   }, [db]);
-  const getPlayerCards = useCallback(async(codes: string[], tabooSetId: number): Promise<CardsMap> => {
-    if (!db.globalLoadedCards[tabooSetId]) {
+  const getPlayerCards = useCallback(async(codes: string[], tabooSetId: number, store: boolean): Promise<CardsMap> => {
+    if (store && !db.globalLoadedCards[tabooSetId]) {
       const newCards: CardsMap = {};
       forEach(db.globalLoadedCards[0], card => {
         if (card && card.taboo_set_id === null) {
@@ -61,14 +61,17 @@ export function PlayerCardProvider({ children }: Props) {
       })
       db.globalLoadedCards[tabooSetId] = newCards;
     }
-    const knownCards = db.globalLoadedCards[tabooSetId] || {};
-    const pending = new Set(flatMap(locallyFetched.current, c => c.tabooSetId === tabooSetId ? c.codes : []));
+    const knownCards = store ? db.globalLoadedCards[tabooSetId] ?? {} :
+    {
+      ...db.globalLoadedCards[tabooSetId] ?? {}
+    };
+    const pending = store ? new Set(flatMap(locallyFetched.current, c => c.tabooSetId === tabooSetId ? c.codes : [])) : new Set([]);
     const unknownCodes = filter(codes, code => {
       if (knownCards[code]) {
         return false;
       }
       return true;
-    });
+    }) ?? [];
     const toWaitFor: Promise<Card[]>[] = [];
     const toFetch: string[] = [];
     for (let i = 0; i < unknownCodes.length; i++) {
@@ -83,30 +86,36 @@ export function PlayerCardProvider({ children }: Props) {
       toFetch.push(code);
     }
     if (toFetch.length) {
-      const chunks = Platform.OS === 'ios' ? [toFetch] : chunk(toFetch, 50)
+      const chunks = true || Platform.OS === 'ios' ? [toFetch] : chunk(toFetch, 50)
       const newCardsP = Promise.all(
         map(chunks, codes => db.getCards(where(`c.code IN (:...codes)`, { codes }), tabooSetId))
       ).then(result => flatMap(result, x => x));
-      locallyFetched.current.push({ codes: toFetch, tabooSetId, cardsP: newCardsP });
+      if (store) {
+        locallyFetched.current.push({ codes: toFetch, tabooSetId, cardsP: newCardsP });
+      }
 
       const newCards = await newCardsP;
       forEach(newCards, card => {
         if (card.taboo_set_id === null) {
-          // It's a generic, so every taboo set (we care about) gets this card.
-          forEach(db.globalLoadedCards, (cardSet) => {
-            if (cardSet) {
-              cardSet[card.code] = card;
-            }
-          })
+          if (store) {
+            // It's a generic, so every taboo set (we care about) gets this card.
+            forEach(db.globalLoadedCards, (cardSet) => {
+              if (cardSet) {
+                cardSet[card.code] = card;
+              }
+            });
+          }
+          knownCards[card.code] = card;
         } else {
           // It's taboo specific, so just the one.
           knownCards[card.code] = card;
         }
       });
-      // tslint:disable-next-line: strict-comparisons
-      locallyFetched.current = filter(locallyFetched.current, c => c.cardsP !== newCardsP);
+      if (store) {
+        locallyFetched.current = filter(locallyFetched.current, c => c.cardsP !== newCardsP);
+      }
     }
-    const uniqWaits = uniq(toWaitFor);
+    const uniqWaits = uniq(toWaitFor) ?? [];
     for (let i = 0; i < uniqWaits.length; i++) {
       await uniqWaits[i];
     }

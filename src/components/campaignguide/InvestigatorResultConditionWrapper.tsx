@@ -25,7 +25,7 @@ function InvestigatorResultConditionOption<T>({ result, option, renderOption, ex
     });
     return investigators;
   }, [result.investigatorChoices, option.id]);
-  const [cards, loading] = useCardList(investigators, 'player');
+  const [cards, loading] = useCardList(investigators, 'player', false);
   if (!investigators.length || loading) {
     return null;
   }

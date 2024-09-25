@@ -267,7 +267,7 @@ export default function CampaignDetailTab({
   }, [componentId, rules, errata, rulesHeader, campaignId]);
 
   const latestDecksList = campaign.latestDecks();
-  const [cards] = useLatestDecksCards(latestDecksList, latestDecksList.length ? (latestDecksList[0].deck.taboo_id || 0) : 0);
+  const [cards] = useLatestDecksCards(latestDecksList, false, latestDecksList.length ? (latestDecksList[0].deck.taboo_id || 0) : 0);
   const [showMap, embarking] = useMemo(() => [
     !!campaignGuide.campaignMap() && !!processedCampaign.campaignLog.campaignData.scarlet.showMap,
     !!processedCampaign.campaignLog.campaignData.scarlet.embark,

@@ -329,7 +329,7 @@ function ChooseCardAdvancedControl({ componentId, deckId, choice, editable, setC
       encodedChoice: codes.join('^'),
     })
   }, [choice, setSelected, setChoice]);
-  const [inDeckCards, loadingDeck] = useCardList(inDeckCodes, 'player');
+  const [inDeckCards, loadingDeck] = useCardList(inDeckCodes, 'player', false);
   const query = useMemo(() =>{
     if (!choice.option.card) {
       return undefined;

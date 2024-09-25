@@ -135,7 +135,7 @@ export default function PartnerTraumaComponent({ id, input, text }: Props) {
   }, [partners, campaignLog]);
   const [physical, incPhysical, decPhysical] = useCounters(initialPhysical);
   const [mental, incMental, decMental] = useCounters(initialMental);
-  const [cards] = useCardList(codes, 'encounter');
+  const [cards] = useCardList(codes, 'encounter', false);
   const save = useCallback(async() => {
     const choices: NumberChoices = {};
     forEach(codes, c => {

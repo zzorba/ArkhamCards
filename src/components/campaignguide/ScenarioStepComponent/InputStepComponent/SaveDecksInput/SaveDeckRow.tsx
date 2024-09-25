@@ -171,7 +171,7 @@ function SaveDeckRow({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const storyAssetCodes = useMemo(() => flatMap(storyAssetDeltas, (count, code) => count !== 0 ? code : []), [storyAssetDeltas]);
-  const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
+  const [storyAssetCards] = useCardList(storyAssetCodes, 'player', false);
   const storyAssetSection = useMemo(() => {
     if (!storyAssetCards.length) {
       return null;
