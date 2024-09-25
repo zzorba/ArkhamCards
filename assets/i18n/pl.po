@@ -4774,7 +4774,7 @@ msgstr ""
 "<b>Współtwórcy:</b>\n"
 "• Projekt wizualny: ${ visualDesigner }\n"
 "• Cyfrowy worek chaosu + kalkulator szans: ${ chaosBagDeveloper }\n"
-"• Inetegracja audio Dissonant Voices: ${ dissonantVoicesDeveloper }\n"
+"• Integracja audio Dissonant Voices: ${ dissonantVoicesDeveloper }\n"
 "• Wsparcie narzędziowe: ${ toolingDeveloper }"
 
 #, javascript-format
@@ -4804,7 +4804,7 @@ msgid "Locations"
 msgstr ""
 
 msgid "Note: this campaign is a fairly new addition to the app and may contain some mistakes."
-msgstr "Uwaga: ta kampania jest stosunkowo nowym dodatkiem do aplikacje, stąd może zawierać parę błędów."
+msgstr "Uwaga: ta kampania jest stosunkowo nowym dodatkiem do aplikacji, stąd może zawierać parę błędów."
 
 msgid "Durability"
 msgstr ""
@@ -5680,7 +5680,7 @@ msgid "Dealings in the Dark"
 msgstr "Szemrane interesy"
 
 msgid "Dancing Mad"
-msgstr "Szalańczy twist"
+msgstr "Szaleńczy twist"
 
 msgid "On Thin Ice"
 msgstr "Po cienkim lodzie"
