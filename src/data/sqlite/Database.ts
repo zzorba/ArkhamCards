@@ -18,6 +18,7 @@ import {
   OrderByCondition,
   QueryRunner,
 } from "typeorm/browser";
+import * as QuickSQLite from "@op-engineering/op-sqlite";
 
 import Card, { CardsMap, PartialCard } from "../types/Card";
 import EncounterSet from "../types/EncounterSet";
@@ -41,6 +42,73 @@ import { TabooTextMigration1693598075386 } from "./migration/TabooTextMigration"
 import { SideDeckMigration1698073688677 } from "./migration/SideDeckMigration";
 import { SpecialtyCardsMigration1726180741370 } from "./migration/SpecialtyCardsMigration";
 
+/**
+ * DO NOT USE THIS! THIS IS MEANT FOR TYPEORM
+ * If you are looking for a convenience wrapper use `connect`
+ */
+export const typeORMDriver = {
+  openDatabase: (
+    options: {
+      name: string;
+      location?: string;
+    },
+    ok: (db: any) => void,
+    fail: (msg: string) => void
+  ): any => {
+    try {
+      const db = QuickSQLite.open({
+        name: options.name,
+        location: options.location,
+      });
+      const connection = {
+        executeSql: async (
+          sql: string,
+          params: any[] | undefined,
+          ok: (res: QuickSQLite.QueryResult) => void,
+          fail: (msg: string) => void
+        ) => {
+          try {
+            let response = await db.execute(sql, params);
+            // enhanceQueryResult(response);
+            ok(response);
+          } catch (e) {
+            fail(e);
+          }
+        },
+        transaction: (
+          fn: (tx: QuickSQLite.Transaction) => Promise<void>
+        ): Promise<void> => {
+          return db.transaction(fn);
+        },
+        close: (ok: any, fail: any) => {
+          try {
+            db.close();
+            ok();
+          } catch (e) {
+            fail(e);
+          }
+        },
+        attach: (
+          dbNameToAttach: string,
+          alias: string,
+          location: string | undefined,
+          callback: () => void
+        ) => {
+          db.attach(options.name, dbNameToAttach, alias, location);
+          callback();
+        },
+        detach: (alias: string, callback: () => void) => {
+          db.detach(options.name, alias);
+          callback();
+        },
+      };
+      ok(connection);
+      return connection;
+    } catch (e) {
+      fail(e);
+    }
+  },
+};
 type DatabaseListener = () => void;
 
 export interface SqliteVersion {
@@ -59,6 +127,7 @@ async function createDatabaseConnection(recreate: boolean) {
     database: "arkham4",
     location: "default",
     logging: ["error", "schema"],
+    driver: typeORMDriver,
     // maxQueryExecutionTime: 4000,
     migrations: [
       HealsDamageMigration1657382994910,
@@ -82,7 +151,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 48;
+  static SCHEMA_VERSION: number = 50;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;

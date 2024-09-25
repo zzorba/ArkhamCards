@@ -197,7 +197,7 @@ export default function DrawSimulatorView({ componentId, customizations, slots }
   useEffect(() => {
     Navigation.mergeOptions(componentId, navigationOptions({ lightButton: true }));
   }, [componentId]);
-  const [cards] = usePlayerCardsFunc(() => keys(slots), [slots], 0);
+  const [cards] = usePlayerCardsFunc(() => keys(slots), [slots], false, 0);
   const shuffleFreshDeck = useCallback(() => {
     return shuffle(
       flatMap(

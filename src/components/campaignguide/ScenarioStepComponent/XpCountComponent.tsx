@@ -53,7 +53,7 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   const { latestDecks, spentXp } = useContext(CampaignGuideContext);
   const deck = latestDecks[investigator.code];
   const earnedXp = campaignLog.earnedXp(investigator.code);
-  const [playerCards] = useLatestDeckCards(deck);
+  const [playerCards] = useLatestDeckCards(deck, false);
   if (deck) {
     if (!deck.previousDeck) {
       return children(earnedXp);

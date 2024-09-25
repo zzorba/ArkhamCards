@@ -36,11 +36,11 @@ export default function SignatureCardsComponent({ componentId, investigator, par
       ...parallelCodes,
     ];
   }, [investigator, parallelCodes]);
-  const [requiredCards, requiredCardsLoading] = useCardList(requiredCodes, 'player');
+  const [requiredCards, requiredCardsLoading] = useCardList(requiredCodes, 'player', false);
   const alternateCodes = useMemo(() => {
     return uniq(flatMap(investigator.deck_requirements?.card || [], req => (req.alternates || [])));
   }, [investigator]);
-  const [alternateCards, alternateCardsLoading] = useCardList(alternateCodes, 'player');
+  const [alternateCards, alternateCardsLoading] = useCardList(alternateCodes, 'player', false);
   const bondedCards = useMemo(() => {
     return [
       ...(requiredCards || []),

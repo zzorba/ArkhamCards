@@ -214,7 +214,7 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
     disabled: !visible && editingPack,
     mode,
   });
-  const [deckCards, ] = useLatestDeckCards(deck);
+  const [deckCards, ] = useLatestDeckCards(deck, false);
   const possibleCodes = useRef<string[]>([]);
   useEffect(() => {
     if (allPossibleCodes) {

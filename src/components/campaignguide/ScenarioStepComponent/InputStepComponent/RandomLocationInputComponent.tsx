@@ -55,7 +55,7 @@ export default function RandomLocationInputComponent({ input }: Props) {
   const clearLocations = useCallback(() => {
     updateChoices('clear');
   }, [updateChoices]);
-  const [cards, loading] = useCardList(input.cards, 'encounter');
+  const [cards, loading] = useCardList(input.cards, 'encounter', false);
   if (loading || !cards) {
     return null;
   }

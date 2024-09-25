@@ -43,7 +43,7 @@ export default function PartnerChoiceComponent({ id, input }: Props) {
     const quantity = input.quantity ? Math.min(getOperand(input.quantity, campaignLog), selectedPartners.length) : undefined;
     return [selectedPartners, quantity, selection];
   }, [input, campaignLog]);
-  const [cards] = useCardList(codes, 'encounter');
+  const [cards] = useCardList(codes, 'encounter', false);
 
   const items: ListItem[] = useMemo(() => map(partners, p => {
     return {

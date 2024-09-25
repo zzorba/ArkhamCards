@@ -64,6 +64,7 @@
     "@apollo/client": "3.11.1",
     "@invertase/react-native-apple-authentication": "2.2.2",
     "@miblanchard/react-native-slider": "^2.3.1",
+    "@op-engineering/op-sqlite": "^8.0.3",
     "@react-hook/debounce": "4.0.0",
     "@react-hook/throttle": "2.2.0",
     "@react-native-async-storage/async-storage": "1.24.0",
@@ -129,6 +130,7 @@
     "react-native-pager-view": "6.2.2",
     "react-native-pan-pinch-view": "2.0.0",
     "react-native-progress": "5.0.1",
+    "react-native-quick-sqlite": "github:margelo/react-native-quick-sqlite#a550bf7bd2f44b95b0ea607d967c87407d3db26f",
     "react-native-reanimated": "3.15.0",
     "react-native-redash": "18.1.1",
     "react-native-scrubber": "1.0.0",
@@ -224,5 +226,9 @@
   "packageManager": "yarn@4.3.1",
   "engines": {
     "node": ">=18"
+  },
+  "op-sqlite": {
+    "performanceMode": "2",
+    "iosSqlite": true
   }
 }

@@ -21,7 +21,7 @@ interface Props {
 export default function CampaignLogPartnersComponent({ partners, campaignLog, width }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const codes = useMemo(() => map(partners, p => p.code), [partners]);
-  const [cards, loading] = useCardList(codes, 'encounter');
+  const [cards, loading] = useCardList(codes, 'encounter', false);
 
   if (loading) {
     return <ActivityIndicator size="small" animating />;

@@ -603,13 +603,17 @@ export function useTabooSetId(tabooSetOverride?: number): number {
   return useSelector((state: AppState) => selector(state, tabooSetOverride)) || 0;
 }
 
-export function usePlayerCards(codes: string[], tabooSetOverride?: number): [CardsMap | undefined, boolean, boolean] {
+export function usePlayerCards(
+  codes: string[],
+  store: boolean,
+  tabooSetOverride?: number,
+): [CardsMap | undefined, boolean, boolean] {
   const tabooSetId = useTabooSetId(tabooSetOverride);
   const [cards, setCards] = useState<CardsMap>();
   const [loading, setLoading] = useState(true);
   const { getPlayerCards, getExistingCards } = useContext(PlayerCardContext);
   useEffect(() => {
-    const knownCards = getExistingCards(tabooSetId);
+    const knownCards: CardsMap = store ? getExistingCards(tabooSetId) : {};
     if (findIndex(codes, code => !knownCards[code]) === -1) {
       const cards: CardsMap = {};
       forEach(codes, code => {
@@ -623,7 +627,7 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
     setLoading(true);
     let canceled = false;
     if (codes.length) {
-      getPlayerCards(codes, tabooSetId).then(cards => {
+      getPlayerCards(codes, tabooSetId, store).then(cards => {
         if (!canceled) {
           setCards(cards);
           setLoading(false);
@@ -636,7 +640,7 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
     return () => {
       canceled = true;
     };
-  }, [tabooSetId, codes, getExistingCards, getPlayerCards, setLoading]);
+  }, [tabooSetId, codes, store, getExistingCards, getPlayerCards, setLoading]);
   const cardsMissing = useMemo(() => {
     if (codes.length === 0) {
       return false;
@@ -646,10 +650,10 @@ export function usePlayerCards(codes: string[], tabooSetOverride?: number): [Car
   return [cards, loading, cardsMissing];
 }
 
-export function usePlayerCardsFunc(generator: () => string[], deps: any[], tabooSetOverride?: number) {
+export function usePlayerCardsFunc(generator: () => string[], deps: any[], store: boolean, tabooSetOverride?: number) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const codes = useMemo(generator, deps);
-  return usePlayerCards(codes, tabooSetOverride);
+  return usePlayerCards(codes, store, tabooSetOverride);
 }
 
 function deckToSlots(deck: LatestDeckT): string[] {
@@ -667,16 +671,16 @@ function deckToSlots(deck: LatestDeckT): string[] {
 }
 
 const EMPTY_CARD_LIST: string[] = [];
-export function useLatestDeckCards(deck: LatestDeckT | undefined): [CardsMap | undefined, boolean, boolean] {
-  return usePlayerCardsFunc(() => deck ? deckToSlots(deck) : EMPTY_CARD_LIST, [deck], deck?.deck.taboo_id);
+export function useLatestDeckCards(deck: LatestDeckT | undefined, store: boolean): [CardsMap | undefined, boolean, boolean] {
+  return usePlayerCardsFunc(() => deck ? deckToSlots(deck) : EMPTY_CARD_LIST, [deck], store, deck?.deck.taboo_id);
 }
 
-export function useLatestDecksCards(decks: LatestDeckT[] | undefined, tabooSetId: number): [CardsMap | undefined, boolean, boolean] {
-  return usePlayerCardsFunc(() => decks ? uniq(flatMap(decks, deckToSlots)) : EMPTY_CARD_LIST, [decks], tabooSetId);
+export function useLatestDecksCards(decks: LatestDeckT[] | undefined, store: boolean, tabooSetId: number): [CardsMap | undefined, boolean, boolean] {
+  return usePlayerCardsFunc(() => decks ? uniq(flatMap(decks, deckToSlots)) : EMPTY_CARD_LIST, [decks], store, tabooSetId);
 }
 
 export function useInvestigators(codes: string[], tabooSetOverride?: number): CardsMap | undefined {
-  const [cards] = useCardMap(codes, 'player', tabooSetOverride)
+  const [cards] = useCardMap(codes, 'player', true, tabooSetOverride)
   return cards;
 }
 export function useCopyAction(value: string, confirmationText: string): () => void {

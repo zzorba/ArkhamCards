@@ -25,7 +25,7 @@ export default function InvestigatorChoicePartnerComponent({ id, input, text, bu
     const selectedPartners = filter(campaignLog.campaignGuide.campaignLogPartners(input.condition.section), p => selectionSet.has(p.code));
     return [selectedPartners, selection];
   }, [input, campaignLog]);
-  const [cards, loading] = useCardList(codes, 'encounter');
+  const [cards, loading] = useCardList(codes, 'encounter', false);
   const options: UniversalChoices = useMemo(() => {
     return {
       type: 'universal',

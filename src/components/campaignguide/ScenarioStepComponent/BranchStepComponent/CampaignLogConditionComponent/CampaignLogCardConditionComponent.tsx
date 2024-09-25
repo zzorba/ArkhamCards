@@ -48,7 +48,7 @@ interface InvestigatorCardsProps {
 export function CampaignLogCardsInvestigatorConditionComponent({ step, cards, prompt }: InvestigatorCardsProps) {
   const { colors, typography } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
-  const [investigatorCards, loading] = useCardList(cards, 'player');
+  const [investigatorCards, loading] = useCardList(cards, 'player', false);
   const investigators = useMemo(() => stringList(map(investigatorCards, card => card.name), listSeperator), [investigatorCards, listSeperator]);
   if (loading) {
     return <ActivityIndicator animating size="small" color={colors.lightText} />;

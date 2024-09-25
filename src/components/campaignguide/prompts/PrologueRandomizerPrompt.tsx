@@ -64,7 +64,7 @@ export default function PrologueRandomizerPrompt({ id, input }: Props) {
   const choices = useMemo(() => chooseOneInputChoices(input.choices, campaignLog), [input.choices, campaignLog]);
   const decision = scenarioState.stringChoices(id);
   const codes = useMemo(() => map(choices, c => c.id), [choices]);
-  const [cards, loading] = useCardList(codes, 'encounter');
+  const [cards, loading] = useCardList(codes, 'encounter', false);
   const [liveChoices, setChoices] = useState<Results>({});
   const setRandomChoice = useCallback((item: DisplayChoiceWithId) => {
     const alreadyChosen = new Set(values(liveChoices));

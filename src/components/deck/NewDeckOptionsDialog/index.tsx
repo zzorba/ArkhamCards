@@ -213,7 +213,7 @@ function NewDeckOptionsDialog({
     }),
   ];
   }, [investigator]);
-  const [cards] = useCardMap(requiredCardCodes, 'player', tabooSetId);
+  const [cards] = useCardMap(requiredCardCodes, 'player', false, tabooSetId);
   const requiredCardOptions = useMemo(() => {
     if (!cards || !investigator) {
       return [];

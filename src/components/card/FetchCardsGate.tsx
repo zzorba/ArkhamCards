@@ -117,12 +117,12 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   useEffect(() => {
     if (promptForUpdate) {
       if (fetchNeeded) {
-        doFetch();
+        // doFetch();
         return;
       }
       cardCount().then(cardCount => {
         if (cardCount === 0) {
-          doFetch();
+          // doFetch();
           return;
         }
         if (langUpdateNeeded && !CHANGING_LANGUAGE) {

@@ -1002,13 +1002,13 @@ export default class FilterBuilder {
     if (unique) {
       result.push(
         where(
-          '(c.is_unique = 1 OR linked_card.is_unique = 1) AND c.type_code != "enemy"'
+          `(c.is_unique = 1 OR linked_card.is_unique = 1) AND c.type_code != 'enemy'`
         )
       );
     } else if (nonUnique) {
       result.push(
         where(
-          '(c.is_unique is null OR c.is_unique = 0 OR linked_card.is_unique = 0) AND c.type_code != "enemy"'
+          `(c.is_unique is null OR c.is_unique = 0 OR linked_card.is_unique = 0) AND c.type_code != 'enemy'`
         )
       );
     }

@@ -160,7 +160,7 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
       ...keys(d.ignoreDeckLimitSlots),
       ...keys(d.slots),
     ])
-  ), [deck, baseDeck, latestDeck], deck?.deck.taboo_id || 0);
+  ), [deck, baseDeck, latestDeck], false, deck?.deck.taboo_id || 0);
   const { listSeperator } = useContext(LanguageContext);
   const parsedCurrentDeck = useMemo(() => cards && deck && parseBasicDeck(deck?.deck, cards, listSeperator), [cards, deck, listSeperator]);
   const parsedBaseDeck = useMemo(() => cards && baseDeck && parseBasicDeck(baseDeck, cards, listSeperator), [cards, baseDeck, listSeperator]);
