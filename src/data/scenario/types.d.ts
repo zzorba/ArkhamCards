@@ -6,13 +6,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Schema =
-  | AllCampaigns
-  | Log
-  | Errata
-  | Rules
-  | ChaosTokens
-  | TabooSets;
+export type Schema = AllCampaigns | Log | Errata | Rules | ChaosTokens | TabooSets;
 export type Step =
   | BranchStep
   | EffectsStep
@@ -107,24 +101,9 @@ export type ScenarioDataEffect =
   | ScenarioDataInvestigatorStatusEffect
   | ScenarioDataAddInvestigatorEffect
   | ScenarioDataStatusEffect;
-export type InvestigatorStatus =
-  | "alive"
-  | "resigned"
-  | "physical"
-  | "mental"
-  | "eliminated"
-  | "killed"
-  | "insane";
-export type ScenarioStatus =
-  | "not_started"
-  | "skipped"
-  | "started"
-  | "resolution"
-  | "completed"
-  | "unlocked";
-export type ChaosToken =
-  | ("+1" | "0" | "-1" | "-2" | "-3" | "-4" | "-5" | "-6" | "-7" | "-8")
-  | SpecialChaosToken;
+export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated" | "killed" | "insane";
+export type ScenarioStatus = "not_started" | "skipped" | "started" | "resolution" | "completed" | "unlocked";
+export type ChaosToken = ("+1" | "0" | "-1" | "-2" | "-3" | "-4" | "-5" | "-6" | "-7" | "-8") | SpecialChaosToken;
 export type SpecialChaosToken =
   | "skull"
   | "cultist"
@@ -135,19 +114,9 @@ export type SpecialChaosToken =
   | "bless"
   | "curse"
   | "frost";
-export type ChoiceIcon =
-  | "mental"
-  | "physical"
-  | "resign"
-  | "dismiss"
-  | "accept"
-  | "killed"
-  | "insane";
+export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept" | "killed" | "insane";
 export type DefaultOption = Option;
-export type MathCondition =
-  | MathCompareCondition
-  | MathOpCondition
-  | MathEqualsCondition;
+export type MathCondition = MathCompareCondition | MathOpCondition | MathEqualsCondition;
 export type Operand =
   | CampaignLogCountOperand
   | ChaosBagOperand
@@ -186,9 +155,7 @@ export type ScenarioDataCondition =
   | ScenarioDataPlayerCountCondition
   | ScenarioDataFixedInvestigatorStatusCondition;
 export type TraumaCondition = KilledTraumaCondition | BasicTraumaCondition;
-export type CheckSuppliesCondition =
-  | CheckSuppliesAllCondition
-  | CheckSuppliesAnyCondition;
+export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
 export type Input =
   | UpgradeDecksInput
   | CardChoiceInput
@@ -252,10 +219,7 @@ export type Choice1 =
   | InvestigatorCounterChoice
   | CounterChoice
   | InvestigatorChoice;
-export type SingleChaosTokenValue =
-  | SimpleChaosTokenValue
-  | CounterChaosTokenValue
-  | ConditionChaosTokenValue;
+export type SingleChaosTokenValue = SimpleChaosTokenValue | CounterChaosTokenValue | ConditionChaosTokenValue;
 export type ChaosTokens = ScenarioChaosTokens[];
 export type TabooSets = TabooSet[];
 
@@ -346,13 +310,7 @@ export interface MapLabel {
   y: number;
   name: string;
   direction: "left" | "center" | "right";
-  type:
-    | "connection"
-    | "ocean"
-    | "small_ocean"
-    | "sea"
-    | "continent"
-    | "country";
+  type: "connection" | "ocean" | "small_ocean" | "sea" | "continent" | "country";
   lang_position?: {
     es?: {
       x: number;
@@ -476,12 +434,7 @@ export interface StoryStepEffect {
 }
 export interface EarnXpEffect {
   type: "earn_xp";
-  investigator:
-    | "all"
-    | "defeated"
-    | "$input_value"
-    | "lead_investigator"
-    | "$fixed_investigator";
+  investigator: "all" | "defeated" | "$input_value" | "lead_investigator" | "$fixed_investigator";
   fixed_investigator?: string;
   bonus?: number;
   input_scale?: number;
@@ -508,11 +461,7 @@ export interface SetCardCountEffect {
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";
-  investigator:
-    | "all"
-    | "$input_value"
-    | "lead_investigator"
-    | "$fixed_investigator";
+  investigator: "all" | "$input_value" | "lead_investigator" | "$fixed_investigator";
   fixed_investigator?: string;
   weakness_traits: string[];
   select_traits?: boolean;
@@ -597,12 +546,7 @@ export interface CampaignLogCardsEffect {
   masculine_text?: string;
   feminine_text?: string;
   nonbinary_text?: string;
-  cards?:
-    | "$lead_investigator"
-    | "$all_investigators"
-    | "$defeated_investigators"
-    | "$input_value"
-    | "$fixed_codes";
+  cards?: "$lead_investigator" | "$all_investigators" | "$defeated_investigators" | "$input_value" | "$fixed_codes";
   codes?: string[];
   cross_out?: boolean;
   remove?: boolean;
@@ -623,12 +567,7 @@ export interface CampaignLogInvestigatorCountEffect {
   type: "campaign_log_investigator_count";
   section: string;
   id: string;
-  investigator:
-    | "all"
-    | "defeated"
-    | "$input_value"
-    | "lead_investigator"
-    | "$fixed_investigator";
+  investigator: "all" | "defeated" | "$input_value" | "lead_investigator" | "$fixed_investigator";
   fixed_investigator?: string;
   operation: "set_input" | "set" | "add_input" | "add" | "cross_out";
   value?: number;
@@ -674,11 +613,7 @@ export interface CampaignDataEmbarkEffect {
 }
 export interface CampaignDataUpdateLocationEffect {
   type: "campaign_data";
-  setting:
-    | "unlock_location"
-    | "lock_location"
-    | "unlock_dossier"
-    | "hide_dossier";
+  setting: "unlock_location" | "lock_location" | "unlock_dossier" | "hide_dossier";
   value: string;
 }
 export interface CampaignDataUnlockMapEffect {
@@ -1153,13 +1088,7 @@ export interface InvestigatorChoiceInput {
   type: "investigator_choice";
   source: "campaign" | "scenario";
   optional?: boolean;
-  investigator:
-    | "all"
-    | "choice"
-    | "any"
-    | "resigned"
-    | "defeated"
-    | "not_defeated";
+  investigator: "all" | "choice" | "any" | "resigned" | "defeated" | "not_defeated";
   min?: ConstantOperand | CampaignLogCountOperand;
   max?: ConstantOperand | CampaignLogCountOperand;
   condition?: InvestigatorChoiceCondition;
@@ -1579,7 +1508,6 @@ export interface CustomData {
     pl?: string;
     uk?: string;
     pt?: string;
-    "zh-cn"?: string;
   };
 }
 export interface Achievement {
