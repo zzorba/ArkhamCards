@@ -27,6 +27,7 @@ import {
   EffectsWithInput,
   EffectsStep,
   CampaignLogCardsEffect,
+  AddCardEffect,
 } from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from './effectHelper';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from '@data/scenario/inputHelper';
@@ -144,16 +145,31 @@ export default class ScenarioStep {
           }
           switch (specialEffect.type) {
             case 'add_weakness': {
-              forEach(choiceList, (choices, code) => {
+              forEach(choiceList, (choices: string[] | string[][], code) => {
                 result.push({
                   input: [code],
-                  effects: map(choices, card => {
-                    return {
-                      type: 'add_card',
-                      investigator: '$input_value',
-                      non_story: true,
-                      card,
-                    };
+                  effects: flatMap(choices, (card): AddCardEffect[] => {
+                    // Some old code had a problem where it would pass arrays of arrays here.
+                    // We have a bandaid to workaround this.
+                    if (Array.isArray(card)) {
+                      return map(card, c => ({
+                        type: 'add_card',
+                        investigator: '$input_value',
+                        non_story: true,
+                        card: c,
+                      }));
+                    }
+                    if (typeof card === 'string') {
+                      return [
+                        {
+                          type: 'add_card',
+                          investigator: '$input_value',
+                          non_story: true,
+                          card,
+                        }
+                      ];
+                    }
+                    return [];
                   }),
                 });
               });

@@ -42,6 +42,18 @@ import { TabooTextMigration1693598075386 } from "./migration/TabooTextMigration"
 import { SideDeckMigration1698073688677 } from "./migration/SideDeckMigration";
 import { SpecialtyCardsMigration1726180741370 } from "./migration/SpecialtyCardsMigration";
 
+const enhanceQueryResult = (result: QuickSQLite.QueryResult): void => {
+  if (result.rows == null) {
+    result.rows = {
+      _array: [],
+      item: (index: number) => result.rows?._array[index],
+      length: 0,
+    };
+  } else {
+    result.rows.item = (index: number) => result.rows?._array[index];
+  }
+};
+
 /**
  * DO NOT USE THIS! THIS IS MEANT FOR TYPEORM
  * If you are looking for a convenience wrapper use `connect`
@@ -68,8 +80,8 @@ export const typeORMDriver = {
           fail: (msg: string) => void
         ) => {
           try {
-            let response = await db.execute(sql, params);
-            // enhanceQueryResult(response);
+            const response = await db.executeWithHostObjects(sql, params);
+            enhanceQueryResult(response);
             ok(response);
           } catch (e) {
             fail(e);
@@ -80,7 +92,7 @@ export const typeORMDriver = {
         ): Promise<void> => {
           return db.transaction(fn);
         },
-        close: (ok: any, fail: any) => {
+        close: (ok: () => void, fail: (argument0: unknown) => void) => {
           try {
             db.close();
             ok();
@@ -102,7 +114,9 @@ export const typeORMDriver = {
           callback();
         },
       };
+
       ok(connection);
+
       return connection;
     } catch (e) {
       fail(e);
@@ -151,7 +165,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 50;
+  static SCHEMA_VERSION: number = 51;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
@@ -253,9 +267,9 @@ export default class Database {
   async sqliteVersion(): Promise<SqliteVersion> {
     try {
       const connection = await this.connectionP;
-      const queryRunner = connection.createQueryRunner();
-      const manager = connection.createEntityManager(queryRunner);
-      const result = await manager.query("select sqlite_version() as version");
+      const result = await connection.query(
+        "select sqlite_version() as version"
+      );
       const version = result[0].version;
       if (typeof version === "string") {
         const splitV = version.split(".");
@@ -275,19 +289,6 @@ export default class Database {
       minor: 0,
       patch: 0,
     };
-  }
-
-  async queryRunner(): Promise<QueryRunner> {
-    const connection = await this.connectionP;
-    const queryRunner = connection.createQueryRunner();
-    await queryRunner.connect();
-    return queryRunner;
-  }
-
-  async startTransaction(): Promise<QueryRunner> {
-    const queryRunner = await this.queryRunner();
-    await queryRunner.startTransaction();
-    return queryRunner;
   }
 
   async insertCards(cards: Card[]): Promise<InsertResult> {

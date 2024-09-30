@@ -25,7 +25,14 @@ export default function InvestigatorChoicePrompt({ investigators, includeTrauma,
           name: investigator.name,
           gender: investigator.gender,
           color: colors.faction[investigator.factionCode()].background,
-          component: includeTrauma ? <TraumaSummary trauma={campaignLog.traumaAndCardData(investigator.code)} investigator={investigator} whiteText hideNone /> : undefined,
+          component: includeTrauma ? (
+            <TraumaSummary
+              trauma={campaignLog.traumaAndCardData(investigator.code)}
+              investigator={investigator}
+              whiteText
+              hideNone
+            />
+          ) : undefined,
         };
       })}
     />

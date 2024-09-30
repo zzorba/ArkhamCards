@@ -56,10 +56,12 @@ function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandom
   );
 }
 
+type WeaknessChoice = { [index: string]: string };
+
 export default function DrawRandomWeaknessComponent({ id, investigators, weaknessCards, standalone, traits, realTraits, campaignLog, scenarioState, count }: Props) {
   const { campaignInvestigators, latestDecks, weaknessSet } = useContext(CampaignGuideContext);
   const { borderStyle } = useContext(StyleContext);
-  const [choices, setChoices] = useState<{ [code: string]: { [index: string]: string }}>({});
+  const [choices, setChoices] = useState<{ [code: string]: WeaknessChoice}>({});
   const effectiveWeaknessSet: WeaknessSet = useMemo(() => {
     return campaignLog.effectiveWeaknessSet(
       campaignInvestigators,
@@ -88,8 +90,8 @@ export default function DrawRandomWeaknessComponent({ id, investigators, weaknes
       setChoices({
         ...choices,
         [investigator.code]: {
-          ...(choices[investigator.code] || {}),
-          [index]: [card.code],
+          ...(choices[investigator.code] ?? {}),
+          [`${index}`]: card.code,
         },
       });
     }

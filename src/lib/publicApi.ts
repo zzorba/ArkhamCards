@@ -256,7 +256,7 @@ export const syncCards = async function (
     }
     VERBOSE && console.log("Starting download.");
     VERBOSE && console.time("download");
-    updateProgress(0.2, Platform.OS === "ios" ? 3000 : 5000);
+    updateProgress(0.4, Platform.OS === "ios" ? 8000 : 10000);
     const cardsResponse = await anonClient.query<
       GetCardsQuery,
       GetCardsQueryVariables
@@ -268,7 +268,7 @@ export const syncCards = async function (
       fetchPolicy: "no-cache",
       canonizeResults: false,
     });
-    updateProgress(0.2);
+    updateProgress(0.4);
     VERBOSE && console.timeEnd("download");
     VERBOSE && console.log("Download completed!");
 
@@ -349,12 +349,12 @@ export const syncCards = async function (
     };
     const allCards = map(cardsResponse.data.all_card, (card, idx) => {
       if (idx % 500 === 0) {
-        updateProgress(0.2 + ((idx * 1.0) / total) * 0.1);
+        updateProgress(0.4 + ((idx * 1.0) / total) * 0.1);
       }
       return Card.fromGraphQl(card, translationData);
     });
     VERBOSE && console.timeEnd("parse");
-    updateProgress(0.3);
+    updateProgress(0.5);
     VERBOSE && console.time("clear-db");
     const encounterSets = await db.encounterSets();
     const tabooSets = await db.tabooSets();
@@ -367,10 +367,10 @@ export const syncCards = async function (
     await rules.createQueryBuilder().delete().execute();
     await db.clearCache();
     VERBOSE && console.timeEnd("clear-db");
-    updateProgress(0.32);
+    updateProgress(0.52);
     VERBOSE && console.time("rules");
     await syncRules(db, sqliteVersion, lang);
-    updateProgress(0.38);
+    updateProgress(0.58);
     VERBOSE && console.timeEnd("rules");
     const cardsToInsert: Card[] = [];
     const dupes: {
@@ -404,7 +404,7 @@ export const syncCards = async function (
 
     VERBOSE && console.timeEnd("tabooSets");
 
-    updateProgress(0.4);
+    updateProgress(0.6);
     VERBOSE && console.time("derivedData");
     const linkedSet = new Set(
       flatMap(cardsToInsert, (c: Card) =>
@@ -421,40 +421,35 @@ export const syncCards = async function (
       (card) => !!card.linked_card
     );
     VERBOSE && console.timeEnd("derivedData");
-    const queryRunner = await db.startTransaction();
-    try {
-      const totalCards =
-        linkedCards.length +
-          normalCards.length +
-          sumBy(linkedCards, (c) => (c.linked_card ? 1 : 0)) || 3000;
-      let processedCards = 0;
-      async function insertCards(c: Card[]) {
-        await queryRunner.manager.insert(Card, c);
-        if (processedCards / 200 < (processedCards + c.length) / 200) {
-          updateProgress(0.4 + (processedCards / (1.0 * totalCards)) * 0.5);
-        }
-        processedCards += c.length;
+
+    const totalCards =
+      linkedCards.length +
+        normalCards.length +
+        sumBy(linkedCards, (c) => (c.linked_card ? 1 : 0)) || 3000;
+    let processedCards = 0;
+    async function insertCards(c: Card[]) {
+      await (await db.cards()).insert(c);
+      if (processedCards / 200 < (processedCards + c.length) / 200) {
+        updateProgress(0.6 + (processedCards / (1.0 * totalCards)) * 0.35);
       }
-      VERBOSE && console.time("linkedCards-backs");
-      await insertChunk(
-        sqliteVersion,
-        flatMap(linkedCards, (c) => (c.linked_card ? [c.linked_card] : [])),
-        insertCards
-      );
-      VERBOSE && console.timeEnd("linkedCards-backs");
-
-      VERBOSE && console.time("linkedCards");
-      await insertChunk(sqliteVersion, linkedCards, insertCards);
-      VERBOSE && console.timeEnd("linkedCards");
-
-      VERBOSE && console.time("normalCards");
-      await insertChunk(sqliteVersion, normalCards, insertCards);
-      VERBOSE && console.timeEnd("normalCards");
-    } finally {
-      VERBOSE && console.time("commit");
-      await queryRunner.commitTransaction();
-      VERBOSE && console.timeEnd("commit");
+      processedCards += c.length;
     }
+    VERBOSE && console.time("linkedCards-backs");
+    await insertChunk(
+      sqliteVersion,
+      flatMap(linkedCards, (c) => (c.linked_card ? [c.linked_card] : [])),
+      insertCards
+    );
+    VERBOSE && console.timeEnd("linkedCards-backs");
+
+    VERBOSE && console.time("linkedCards");
+    await insertChunk(sqliteVersion, linkedCards, insertCards);
+    VERBOSE && console.timeEnd("linkedCards");
+
+    VERBOSE && console.time("normalCards");
+    await insertChunk(sqliteVersion, normalCards, insertCards);
+    VERBOSE && console.timeEnd("normalCards");
+
     updateProgress(0.95);
     VERBOSE && console.time("countCards");
     const cardCount = await cards.count();

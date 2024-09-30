@@ -127,8 +127,8 @@ export default function InvestigatorCampaignRow({
   }, [traumaAndCardData, investigator, showTraumaDialog]);
 
   const storyAssetSection = useMemo(() => {
-    const storyAssets = traumaAndCardData.storyAssets || [];
-    const addedCards = traumaAndCardData.addedCards || [];
+    const storyAssets = traumaAndCardData.storyAssets ?? [];
+    const addedCards = traumaAndCardData.addedCards ?? [];
     if (!storyAssets.length && !addedCards.length) {
       return null;
     }
