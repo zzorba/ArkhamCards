@@ -42,16 +42,12 @@ import { TabooTextMigration1693598075386 } from "./migration/TabooTextMigration"
 import { SideDeckMigration1698073688677 } from "./migration/SideDeckMigration";
 import { SpecialtyCardsMigration1726180741370 } from "./migration/SpecialtyCardsMigration";
 
-const enhanceQueryResult = (result: QuickSQLite.QueryResult): void => {
-  if (result.rows == null) {
-    result.rows = {
-      _array: [],
-      item: (index: number) => result.rows?._array[index],
-      length: 0,
-    };
-  } else {
-    result.rows.item = (index: number) => result.rows?._array[index];
+const enhanceQueryResult = (result: QuickSQLite.QueryResult) => {
+  if (!result.rows) {
+    result.rows = [];
   }
+  // @ts-ignore
+  result.rows.item = (index: number) => result.rows?.[index] ?? undefined;
 };
 
 /**
@@ -116,7 +112,6 @@ export const typeORMDriver = {
       };
 
       ok(connection);
-
       return connection;
     } catch (e) {
       fail(e);

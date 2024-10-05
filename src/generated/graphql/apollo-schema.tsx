@@ -20546,11 +20546,11 @@ export type Local_Decks_Variance_Order_By = {
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
+  apiDeleteArkhamDbDeck?: Maybe<DeleteDeckOutput>;
   /** execute VOLATILE function "conquest.publish_deck" which returns "conquest.deck" */
   conquest_publish_deck?: Maybe<Conquest_Deck>;
   createArkhamDbDeck?: Maybe<CreateDeckOutput>;
   createCampaign?: Maybe<CreateCampaignOutput>;
-  deleteArkhamDbDeck?: Maybe<DeleteDeckOutput>;
   deleteCampaign?: Maybe<DeleteCampaignOutput>;
   /** delete data from the table: "all_card" */
   delete_all_card?: Maybe<All_Card_Mutation_Response>;
@@ -21949,6 +21949,12 @@ export type Mutation_Root = {
 
 
 /** mutation root */
+export type Mutation_RootApiDeleteArkhamDbDeckArgs = {
+  args: DeleteDeckInput;
+};
+
+
+/** mutation root */
 export type Mutation_RootConquest_Publish_DeckArgs = {
   args: Conquest_Publish_Deck_Args;
   distinct_on?: InputMaybe<Array<Conquest_Deck_Select_Column>>;
@@ -21968,12 +21974,6 @@ export type Mutation_RootCreateArkhamDbDeckArgs = {
 /** mutation root */
 export type Mutation_RootCreateCampaignArgs = {
   args: CreateCampaignInput;
-};
-
-
-/** mutation root */
-export type Mutation_RootDeleteArkhamDbDeckArgs = {
-  args: DeleteDeckInput;
 };
 
 
@@ -47596,6 +47596,74 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']['input']>>;
 };
 
+export type RefreshArkhamDbDecksMutationVariables = Exact<{
+  force: Scalars['Boolean']['input'];
+}>;
+
+
+export type RefreshArkhamDbDecksMutation = { __typename?: 'mutation_root', refreshArkhamDbDecks?: { __typename?: 'RefreshDecksOutput', updated: boolean } | null };
+
+export type GetArkhamDbDecksQueryVariables = Exact<{
+  userId: Scalars['String']['input'];
+}>;
+
+
+export type GetArkhamDbDecksQuery = { __typename?: 'query_root', arkhamdb_deck: Array<{ __typename?: 'arkhamdb_deck', id: number, owner_id: string, slots: any, side_slots: any, meta: any, tags: any, archived?: boolean | null, investigator: string, name: string, created_at: any, updated_at: any, description: string, next_deck_id?: number | null, ignore_deck_limit_slots: any, deleted: boolean }> };
+
+export type MigrateLoginMutationVariables = Exact<{
+  accessToken: Scalars['String']['input'];
+  refreshToken: Scalars['String']['input'];
+}>;
+
+
+export type MigrateLoginMutation = { __typename?: 'mutation_root', migrateLoginToArkhamDb?: { __typename?: 'MigrateLoginOutput', success: boolean } | null };
+
+export type LoginMutationVariables = Exact<{
+  code: Scalars['String']['input'];
+  redirectUri: Scalars['String']['input'];
+  state: Scalars['String']['input'];
+}>;
+
+
+export type LoginMutation = { __typename?: 'mutation_root', loginToArkhamDb?: { __typename?: 'LoginOutput', success: boolean } | null };
+
+export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LogoutMutation = { __typename?: 'mutation_root', logoutFromArkhamDb?: { __typename?: 'LogoutOutput', success: boolean } | null };
+
+export type CreateArkhamDbDeckMutationVariables = Exact<{
+  investigator: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  slots: Scalars['jsonb']['input'];
+  ignoreDeckLimitSlots: Scalars['jsonb']['input'];
+  problem?: InputMaybe<Scalars['String']['input']>;
+  tabooSetId?: InputMaybe<Scalars['Int']['input']>;
+  meta?: InputMaybe<Scalars['jsonb']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type CreateArkhamDbDeckMutation = { __typename?: 'mutation_root', createArkhamDbDeck?: { __typename?: 'CreateDeckOutput', deckId: string } | null };
+
+export type UpgradeArkhamDbDeckMutationVariables = Exact<{
+  deckId: Scalars['Int']['input'];
+  xp: Scalars['Int']['input'];
+  exiles?: InputMaybe<Scalars['jsonb']['input']>;
+}>;
+
+
+export type UpgradeArkhamDbDeckMutation = { __typename?: 'mutation_root', upgradeArkhamDbDeck?: { __typename?: 'UpgradeDeckOutput', deckId: number, upgradedDeckId: number } | null };
+
+export type ApiDeleteArkhamDbDeckMutationVariables = Exact<{
+  deckId: Scalars['Int']['input'];
+  deleteAllVersions: Scalars['Boolean']['input'];
+}>;
+
+
+export type ApiDeleteArkhamDbDeckMutation = { __typename?: 'mutation_root', apiDeleteArkhamDbDeck?: { __typename?: 'DeleteDeckOutput', success: boolean } | null };
+
 export type GetCardsCacheQueryVariables = Exact<{
   locale: Scalars['String']['input'];
 }>;
@@ -48744,6 +48812,311 @@ export const FullCampaignGuideStateFragmentDoc = gql`
 }
     ${GuideInputFragmentDoc}
 ${GuideAchievementFragmentDoc}`;
+export const RefreshArkhamDbDecksDocument = gql`
+    mutation refreshArkhamDbDecks($force: Boolean!) {
+  refreshArkhamDbDecks(args: {force: $force}) {
+    updated
+  }
+}
+    `;
+export type RefreshArkhamDbDecksMutationFn = Apollo.MutationFunction<RefreshArkhamDbDecksMutation, RefreshArkhamDbDecksMutationVariables>;
+
+/**
+ * __useRefreshArkhamDbDecksMutation__
+ *
+ * To run a mutation, you first call `useRefreshArkhamDbDecksMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRefreshArkhamDbDecksMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [refreshArkhamDbDecksMutation, { data, loading, error }] = useRefreshArkhamDbDecksMutation({
+ *   variables: {
+ *      force: // value for 'force'
+ *   },
+ * });
+ */
+export function useRefreshArkhamDbDecksMutation(baseOptions?: Apollo.MutationHookOptions<RefreshArkhamDbDecksMutation, RefreshArkhamDbDecksMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RefreshArkhamDbDecksMutation, RefreshArkhamDbDecksMutationVariables>(RefreshArkhamDbDecksDocument, options);
+      }
+export type RefreshArkhamDbDecksMutationHookResult = ReturnType<typeof useRefreshArkhamDbDecksMutation>;
+export type RefreshArkhamDbDecksMutationResult = Apollo.MutationResult<RefreshArkhamDbDecksMutation>;
+export type RefreshArkhamDbDecksMutationOptions = Apollo.BaseMutationOptions<RefreshArkhamDbDecksMutation, RefreshArkhamDbDecksMutationVariables>;
+export const GetArkhamDbDecksDocument = gql`
+    query getArkhamDbDecks($userId: String!) {
+  arkhamdb_deck(where: {owner_id: {_eq: $userId}}) {
+    id
+    owner_id
+    slots
+    side_slots
+    meta
+    tags
+    archived
+    investigator
+    name
+    created_at
+    updated_at
+    description
+    next_deck_id
+    ignore_deck_limit_slots
+    deleted
+  }
+}
+    `;
+
+/**
+ * __useGetArkhamDbDecksQuery__
+ *
+ * To run a query within a React component, call `useGetArkhamDbDecksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetArkhamDbDecksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetArkhamDbDecksQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useGetArkhamDbDecksQuery(baseOptions: Apollo.QueryHookOptions<GetArkhamDbDecksQuery, GetArkhamDbDecksQueryVariables> & ({ variables: GetArkhamDbDecksQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetArkhamDbDecksQuery, GetArkhamDbDecksQueryVariables>(GetArkhamDbDecksDocument, options);
+      }
+export function useGetArkhamDbDecksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetArkhamDbDecksQuery, GetArkhamDbDecksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetArkhamDbDecksQuery, GetArkhamDbDecksQueryVariables>(GetArkhamDbDecksDocument, options);
+        }
+export function useGetArkhamDbDecksSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetArkhamDbDecksQuery, GetArkhamDbDecksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetArkhamDbDecksQuery, GetArkhamDbDecksQueryVariables>(GetArkhamDbDecksDocument, options);
+        }
+export type GetArkhamDbDecksQueryHookResult = ReturnType<typeof useGetArkhamDbDecksQuery>;
+export type GetArkhamDbDecksLazyQueryHookResult = ReturnType<typeof useGetArkhamDbDecksLazyQuery>;
+export type GetArkhamDbDecksSuspenseQueryHookResult = ReturnType<typeof useGetArkhamDbDecksSuspenseQuery>;
+export type GetArkhamDbDecksQueryResult = Apollo.QueryResult<GetArkhamDbDecksQuery, GetArkhamDbDecksQueryVariables>;
+export const MigrateLoginDocument = gql`
+    mutation migrateLogin($accessToken: String!, $refreshToken: String!) {
+  migrateLoginToArkhamDb(
+    args: {accessToken: $accessToken, refreshToken: $refreshToken}
+  ) {
+    success
+  }
+}
+    `;
+export type MigrateLoginMutationFn = Apollo.MutationFunction<MigrateLoginMutation, MigrateLoginMutationVariables>;
+
+/**
+ * __useMigrateLoginMutation__
+ *
+ * To run a mutation, you first call `useMigrateLoginMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useMigrateLoginMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [migrateLoginMutation, { data, loading, error }] = useMigrateLoginMutation({
+ *   variables: {
+ *      accessToken: // value for 'accessToken'
+ *      refreshToken: // value for 'refreshToken'
+ *   },
+ * });
+ */
+export function useMigrateLoginMutation(baseOptions?: Apollo.MutationHookOptions<MigrateLoginMutation, MigrateLoginMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<MigrateLoginMutation, MigrateLoginMutationVariables>(MigrateLoginDocument, options);
+      }
+export type MigrateLoginMutationHookResult = ReturnType<typeof useMigrateLoginMutation>;
+export type MigrateLoginMutationResult = Apollo.MutationResult<MigrateLoginMutation>;
+export type MigrateLoginMutationOptions = Apollo.BaseMutationOptions<MigrateLoginMutation, MigrateLoginMutationVariables>;
+export const LoginDocument = gql`
+    mutation login($code: String!, $redirectUri: String!, $state: String!) {
+  loginToArkhamDb(args: {code: $code, redirectUri: $redirectUri, state: $state}) {
+    success
+  }
+}
+    `;
+export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
+
+/**
+ * __useLoginMutation__
+ *
+ * To run a mutation, you first call `useLoginMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLoginMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [loginMutation, { data, loading, error }] = useLoginMutation({
+ *   variables: {
+ *      code: // value for 'code'
+ *      redirectUri: // value for 'redirectUri'
+ *      state: // value for 'state'
+ *   },
+ * });
+ */
+export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options);
+      }
+export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
+export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
+export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const LogoutDocument = gql`
+    mutation logout {
+  logoutFromArkhamDb {
+    success
+  }
+}
+    `;
+export type LogoutMutationFn = Apollo.MutationFunction<LogoutMutation, LogoutMutationVariables>;
+
+/**
+ * __useLogoutMutation__
+ *
+ * To run a mutation, you first call `useLogoutMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLogoutMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [logoutMutation, { data, loading, error }] = useLogoutMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLogoutMutation(baseOptions?: Apollo.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, options);
+      }
+export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
+export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>;
+export type LogoutMutationOptions = Apollo.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
+export const CreateArkhamDbDeckDocument = gql`
+    mutation createArkhamDbDeck($investigator: String!, $name: String!, $slots: jsonb!, $ignoreDeckLimitSlots: jsonb!, $problem: String, $tabooSetId: Int, $meta: jsonb, $description: String, $tags: String) {
+  createArkhamDbDeck(
+    args: {investigator: $investigator, name: $name, slots: $slots, ignoreDeckLimitSlots: $ignoreDeckLimitSlots, problem: $problem, tabooSetId: $tabooSetId, meta: $meta, description: $description, tags: $tags}
+  ) {
+    deckId
+  }
+}
+    `;
+export type CreateArkhamDbDeckMutationFn = Apollo.MutationFunction<CreateArkhamDbDeckMutation, CreateArkhamDbDeckMutationVariables>;
+
+/**
+ * __useCreateArkhamDbDeckMutation__
+ *
+ * To run a mutation, you first call `useCreateArkhamDbDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateArkhamDbDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createArkhamDbDeckMutation, { data, loading, error }] = useCreateArkhamDbDeckMutation({
+ *   variables: {
+ *      investigator: // value for 'investigator'
+ *      name: // value for 'name'
+ *      slots: // value for 'slots'
+ *      ignoreDeckLimitSlots: // value for 'ignoreDeckLimitSlots'
+ *      problem: // value for 'problem'
+ *      tabooSetId: // value for 'tabooSetId'
+ *      meta: // value for 'meta'
+ *      description: // value for 'description'
+ *      tags: // value for 'tags'
+ *   },
+ * });
+ */
+export function useCreateArkhamDbDeckMutation(baseOptions?: Apollo.MutationHookOptions<CreateArkhamDbDeckMutation, CreateArkhamDbDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateArkhamDbDeckMutation, CreateArkhamDbDeckMutationVariables>(CreateArkhamDbDeckDocument, options);
+      }
+export type CreateArkhamDbDeckMutationHookResult = ReturnType<typeof useCreateArkhamDbDeckMutation>;
+export type CreateArkhamDbDeckMutationResult = Apollo.MutationResult<CreateArkhamDbDeckMutation>;
+export type CreateArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<CreateArkhamDbDeckMutation, CreateArkhamDbDeckMutationVariables>;
+export const UpgradeArkhamDbDeckDocument = gql`
+    mutation upgradeArkhamDbDeck($deckId: Int!, $xp: Int!, $exiles: jsonb) {
+  upgradeArkhamDbDeck(args: {deckId: $deckId, xp: $xp, exiles: $exiles}) {
+    deckId
+    upgradedDeckId
+  }
+}
+    `;
+export type UpgradeArkhamDbDeckMutationFn = Apollo.MutationFunction<UpgradeArkhamDbDeckMutation, UpgradeArkhamDbDeckMutationVariables>;
+
+/**
+ * __useUpgradeArkhamDbDeckMutation__
+ *
+ * To run a mutation, you first call `useUpgradeArkhamDbDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpgradeArkhamDbDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [upgradeArkhamDbDeckMutation, { data, loading, error }] = useUpgradeArkhamDbDeckMutation({
+ *   variables: {
+ *      deckId: // value for 'deckId'
+ *      xp: // value for 'xp'
+ *      exiles: // value for 'exiles'
+ *   },
+ * });
+ */
+export function useUpgradeArkhamDbDeckMutation(baseOptions?: Apollo.MutationHookOptions<UpgradeArkhamDbDeckMutation, UpgradeArkhamDbDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpgradeArkhamDbDeckMutation, UpgradeArkhamDbDeckMutationVariables>(UpgradeArkhamDbDeckDocument, options);
+      }
+export type UpgradeArkhamDbDeckMutationHookResult = ReturnType<typeof useUpgradeArkhamDbDeckMutation>;
+export type UpgradeArkhamDbDeckMutationResult = Apollo.MutationResult<UpgradeArkhamDbDeckMutation>;
+export type UpgradeArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<UpgradeArkhamDbDeckMutation, UpgradeArkhamDbDeckMutationVariables>;
+export const ApiDeleteArkhamDbDeckDocument = gql`
+    mutation apiDeleteArkhamDbDeck($deckId: Int!, $deleteAllVersions: Boolean!) {
+  apiDeleteArkhamDbDeck(
+    args: {deckId: $deckId, deleteAllVersions: $deleteAllVersions}
+  ) {
+    success
+  }
+}
+    `;
+export type ApiDeleteArkhamDbDeckMutationFn = Apollo.MutationFunction<ApiDeleteArkhamDbDeckMutation, ApiDeleteArkhamDbDeckMutationVariables>;
+
+/**
+ * __useApiDeleteArkhamDbDeckMutation__
+ *
+ * To run a mutation, you first call `useApiDeleteArkhamDbDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useApiDeleteArkhamDbDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [apiDeleteArkhamDbDeckMutation, { data, loading, error }] = useApiDeleteArkhamDbDeckMutation({
+ *   variables: {
+ *      deckId: // value for 'deckId'
+ *      deleteAllVersions: // value for 'deleteAllVersions'
+ *   },
+ * });
+ */
+export function useApiDeleteArkhamDbDeckMutation(baseOptions?: Apollo.MutationHookOptions<ApiDeleteArkhamDbDeckMutation, ApiDeleteArkhamDbDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ApiDeleteArkhamDbDeckMutation, ApiDeleteArkhamDbDeckMutationVariables>(ApiDeleteArkhamDbDeckDocument, options);
+      }
+export type ApiDeleteArkhamDbDeckMutationHookResult = ReturnType<typeof useApiDeleteArkhamDbDeckMutation>;
+export type ApiDeleteArkhamDbDeckMutationResult = Apollo.MutationResult<ApiDeleteArkhamDbDeckMutation>;
+export type ApiDeleteArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<ApiDeleteArkhamDbDeckMutation, ApiDeleteArkhamDbDeckMutationVariables>;
 export const GetCardsCacheDocument = gql`
     query getCardsCache($locale: String!) {
   all_card_updated(where: {locale: {_eq: $locale}}) {

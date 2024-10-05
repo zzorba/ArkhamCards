@@ -83,7 +83,6 @@ const legacyGuidesPersistConfig = {
   storage: AsyncStorage,
 };
 
-
 const guidesPersistConfig = {
   key: 'guides_2',
   timeout: 0,
@@ -136,6 +135,7 @@ const signedInPersistConfig = {
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
+
 const dissonantVoicesPersistConfig = {
   key: 'dissonantVoices',
   throttle: Platform.OS === 'android' ? 1000 : undefined,

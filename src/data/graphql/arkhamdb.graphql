@@ -1,0 +1,90 @@
+mutation refreshArkhamDbDecks($force: Boolean!) {
+  refreshArkhamDbDecks(args: { force: $force }) {
+    updated
+  }
+}
+
+query getArkhamDbDecks($userId: String!) {
+  arkhamdb_deck(where: { owner_id: { _eq: $userId } }) {
+    id
+    owner_id
+    slots
+    side_slots
+    meta
+    tags
+    archived
+    investigator
+    name
+    created_at
+    updated_at
+    description
+    next_deck_id
+    ignore_deck_limit_slots
+    deleted
+  }
+}
+
+mutation migrateLogin($accessToken: String!, $refreshToken: String!) {
+  migrateLoginToArkhamDb(
+    args: { accessToken: $accessToken, refreshToken: $refreshToken }
+  ) {
+    success
+  }
+}
+
+mutation login($code: String!, $redirectUri: String!, $state: String!) {
+  loginToArkhamDb(
+    args: { code: $code, redirectUri: $redirectUri, state: $state }
+  ) {
+    success
+  }
+}
+
+mutation logout {
+  logoutFromArkhamDb {
+    success
+  }
+}
+
+mutation createArkhamDbDeck(
+  $investigator: String!
+  $name: String!
+  $slots: jsonb!
+  $ignoreDeckLimitSlots: jsonb!
+  $problem: String
+  $tabooSetId: Int
+  $meta: jsonb
+  $description: String
+  $tags: String
+) {
+  createArkhamDbDeck(
+    args: {
+      investigator: $investigator
+      name: $name
+      slots: $slots
+      ignoreDeckLimitSlots: $ignoreDeckLimitSlots
+      problem: $problem
+      tabooSetId: $tabooSetId
+      meta: $meta
+      description: $description
+      tags: $tags
+    }
+  ) {
+    deckId
+  }
+}
+
+mutation upgradeArkhamDbDeck($deckId: Int!, $xp: Int!, $exiles: jsonb) {
+  upgradeArkhamDbDeck(args: { deckId: $deckId, xp: $xp, exiles: $exiles }) {
+    deckId
+    upgradedDeckId
+  }
+}
+
+mutation apiDeleteArkhamDbDeck($deckId: Int!, $deleteAllVersions: Boolean!) {
+  apiDeleteArkhamDbDeck(
+    args: { deckId: $deckId, deleteAllVersions: $deleteAllVersions }
+  ) {
+    success
+  }
+}

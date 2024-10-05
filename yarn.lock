@@ -4977,13 +4977,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@op-engineering/op-sqlite@npm:^8.0.3":
-  version: 8.0.3
-  resolution: "@op-engineering/op-sqlite@npm:8.0.3"
+"@op-engineering/op-sqlite@npm:9.1.2":
+  version: 9.1.2
+  resolution: "@op-engineering/op-sqlite@npm:9.1.2"
   peerDependencies:
     react: "*"
     react-native: ">0.73.0"
-  checksum: 10c0/0d42edef3a897c823f9283a7991471fe40a583546f6d065f2a1ba17b5d7856da8c56b42b165ac6b7a6e6301edb8aa46e42abd6ba367fc44f585cfd0262d4270d
+  checksum: 10c0/c495ad0b34c97c661659486da8f2503acd171a9aecb0e7702cedbdbf13799fb5bee9995960e4db07d85730544571a5896ee3924f62af98baf654f481f7a7940f
   languageName: node
   linkType: hard
 
@@ -7146,7 +7146,7 @@ __metadata:
     "@graphql-codegen/typescript-react-apollo": "npm:4.3.0"
     "@invertase/react-native-apple-authentication": "npm:2.2.2"
     "@miblanchard/react-native-slider": "npm:^2.3.1"
-    "@op-engineering/op-sqlite": "npm:^8.0.3"
+    "@op-engineering/op-sqlite": "npm:9.1.2"
     "@react-hook/debounce": "npm:4.0.0"
     "@react-hook/throttle": "npm:2.2.0"
     "@react-native-async-storage/async-storage": "npm:1.24.0"

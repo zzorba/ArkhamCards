@@ -171,7 +171,7 @@ PODS:
   - lottie-react-native (6.0.1):
     - lottie-ios (~> 4.2.0)
     - React-Core
-  - op-sqlite (8.0.3):
+  - op-sqlite (9.1.2):
     - React
     - React-callinvoker
     - React-Core
@@ -1964,7 +1964,7 @@ SPEC CHECKSUMS:
   libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
   lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   lottie-react-native: 646955b3212c448d59cf1895a0cb485a0a7be3cf
-  op-sqlite: 66dd88dc0c3bf1611f4209d0bd4c0102589fe978
+  op-sqlite: 6d8fe9a611fe83827ec3c16d90ecd48a40620bc6
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RCT-Folly: 02617c592a293bd6d418e0a88ff4ee1f88329b47
   RCTDeprecation: 3afceddffa65aee666dafd6f0116f1d975db1584
