@@ -161,6 +161,16 @@ export type LogoutOutput = {
   success: Scalars['Boolean']['output'];
 };
 
+export type MigrateLoginInput = {
+  accessToken: Scalars['String']['input'];
+  refreshToken: Scalars['String']['input'];
+};
+
+export type MigrateLoginOutput = {
+  __typename?: 'MigrateLoginOutput';
+  success: Scalars['Boolean']['output'];
+};
+
 export type RefreshDecksInput = {
   force: Scalars['Boolean']['input'];
 };
@@ -21335,6 +21345,7 @@ export type Mutation_Root = {
   insert_users_one?: Maybe<Users>;
   loginToArkhamDb?: Maybe<LoginOutput>;
   logoutFromArkhamDb?: Maybe<LogoutOutput>;
+  migrateLoginToArkhamDb?: Maybe<MigrateLoginOutput>;
   /** execute VOLATILE function "rangers.publish_deck" which returns "rangers.deck" */
   rangers_publish_deck?: Maybe<Rangers_Deck>;
   /** execute VOLATILE function "rangers.remove_campaign_deck" which returns "rangers.campaign" */
@@ -24565,6 +24576,12 @@ export type Mutation_RootInsert_Users_OneArgs = {
 /** mutation root */
 export type Mutation_RootLoginToArkhamDbArgs = {
   args: LoginInput;
+};
+
+
+/** mutation root */
+export type Mutation_RootMigrateLoginToArkhamDbArgs = {
+  args: MigrateLoginInput;
 };
 
 
@@ -47586,12 +47603,26 @@ export type GetCardsCacheQueryVariables = Exact<{
 
 export type GetCardsCacheQuery = { __typename?: 'query_root', all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any, card_count?: number | null }> };
 
-export type GetCardsQueryVariables = Exact<{
+export type GetTranslationDataQueryVariables = Exact<{
   locale: Scalars['String']['input'];
 }>;
 
 
-export type GetCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }> } | null }>, taboo_set: Array<{ __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number, current: boolean }>, faction_name: Array<{ __typename?: 'faction_name', code: string, name: string }>, card_type_name: Array<{ __typename?: 'card_type_name', code: Card_Type_Code_Enum, name: string }>, card_subtype_name: Array<{ __typename?: 'card_subtype_name', code: string, name: string }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'pack_name', name: string }> }> }>, all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any, card_count?: number | null }> };
+export type GetTranslationDataQuery = { __typename?: 'query_root', faction_name: Array<{ __typename?: 'faction_name', code: string, name: string }>, card_type_name: Array<{ __typename?: 'card_type_name', code: Card_Type_Code_Enum, name: string }>, card_subtype_name: Array<{ __typename?: 'card_subtype_name', code: string, name: string }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'pack_name', name: string }> }> }> };
+
+export type GetPlayerCardsQueryVariables = Exact<{
+  locale: Scalars['String']['input'];
+}>;
+
+
+export type GetPlayerCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }> } | null }>, all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any, card_count?: number | null }>, taboo_set: Array<{ __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number, current: boolean }> };
+
+export type GetEncounterCardsQueryVariables = Exact<{
+  locale: Scalars['String']['input'];
+}>;
+
+
+export type GetEncounterCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }> } | null }>, all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any, card_count?: number | null }> };
 
 export type GetCardFaqQueryVariables = Exact<{
   code: Scalars['String']['input'];
@@ -48755,23 +48786,8 @@ export type GetCardsCacheQueryHookResult = ReturnType<typeof useGetCardsCacheQue
 export type GetCardsCacheLazyQueryHookResult = ReturnType<typeof useGetCardsCacheLazyQuery>;
 export type GetCardsCacheSuspenseQueryHookResult = ReturnType<typeof useGetCardsCacheSuspenseQuery>;
 export type GetCardsCacheQueryResult = Apollo.QueryResult<GetCardsCacheQuery, GetCardsCacheQueryVariables>;
-export const GetCardsDocument = gql`
-    query getCards($locale: String!) {
-  all_card(where: {version: {_lte: 7}, linked: {_is_null: true}}) {
-    ...SingleCard
-    translations(where: {locale: {_eq: $locale}}) {
-      ...CoreCardText
-    }
-    linked_card {
-      ...SingleCard
-      translations(where: {locale: {_eq: $locale}}) {
-        ...CoreCardText
-      }
-    }
-  }
-  taboo_set(where: {active: {_eq: true}}) {
-    ...TabooSet
-  }
+export const GetTranslationDataDocument = gql`
+    query getTranslationData($locale: String!) {
   faction_name(where: {locale: {_eq: $locale}}) {
     code
     name
@@ -48799,6 +48815,120 @@ export const GetCardsDocument = gql`
       }
     }
   }
+}
+    ${EncounterSetFragmentDoc}
+${CycleFragmentDoc}
+${PackFragmentDoc}`;
+
+/**
+ * __useGetTranslationDataQuery__
+ *
+ * To run a query within a React component, call `useGetTranslationDataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTranslationDataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTranslationDataQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetTranslationDataQuery(baseOptions: Apollo.QueryHookOptions<GetTranslationDataQuery, GetTranslationDataQueryVariables> & ({ variables: GetTranslationDataQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTranslationDataQuery, GetTranslationDataQueryVariables>(GetTranslationDataDocument, options);
+      }
+export function useGetTranslationDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTranslationDataQuery, GetTranslationDataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTranslationDataQuery, GetTranslationDataQueryVariables>(GetTranslationDataDocument, options);
+        }
+export function useGetTranslationDataSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetTranslationDataQuery, GetTranslationDataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetTranslationDataQuery, GetTranslationDataQueryVariables>(GetTranslationDataDocument, options);
+        }
+export type GetTranslationDataQueryHookResult = ReturnType<typeof useGetTranslationDataQuery>;
+export type GetTranslationDataLazyQueryHookResult = ReturnType<typeof useGetTranslationDataLazyQuery>;
+export type GetTranslationDataSuspenseQueryHookResult = ReturnType<typeof useGetTranslationDataSuspenseQuery>;
+export type GetTranslationDataQueryResult = Apollo.QueryResult<GetTranslationDataQuery, GetTranslationDataQueryVariables>;
+export const GetPlayerCardsDocument = gql`
+    query getPlayerCards($locale: String!) {
+  all_card(
+    where: {version: {_lte: 7}, linked: {_is_null: true}, encounter_code: {_is_null: true}}
+  ) {
+    ...SingleCard
+    translations(where: {locale: {_eq: $locale}}) {
+      ...CoreCardText
+    }
+    linked_card {
+      ...SingleCard
+      translations(where: {locale: {_eq: $locale}}) {
+        ...CoreCardText
+      }
+    }
+  }
+  all_card_updated(where: {locale: {_eq: $locale}}) {
+    translation_updated_at
+    cards_updated_at
+    card_count
+  }
+  taboo_set(where: {active: {_eq: true}}) {
+    ...TabooSet
+  }
+}
+    ${SingleCardFragmentDoc}
+${CoreCardTextFragmentDoc}
+${TabooSetFragmentDoc}`;
+
+/**
+ * __useGetPlayerCardsQuery__
+ *
+ * To run a query within a React component, call `useGetPlayerCardsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPlayerCardsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPlayerCardsQuery({
+ *   variables: {
+ *      locale: // value for 'locale'
+ *   },
+ * });
+ */
+export function useGetPlayerCardsQuery(baseOptions: Apollo.QueryHookOptions<GetPlayerCardsQuery, GetPlayerCardsQueryVariables> & ({ variables: GetPlayerCardsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPlayerCardsQuery, GetPlayerCardsQueryVariables>(GetPlayerCardsDocument, options);
+      }
+export function useGetPlayerCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPlayerCardsQuery, GetPlayerCardsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPlayerCardsQuery, GetPlayerCardsQueryVariables>(GetPlayerCardsDocument, options);
+        }
+export function useGetPlayerCardsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetPlayerCardsQuery, GetPlayerCardsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetPlayerCardsQuery, GetPlayerCardsQueryVariables>(GetPlayerCardsDocument, options);
+        }
+export type GetPlayerCardsQueryHookResult = ReturnType<typeof useGetPlayerCardsQuery>;
+export type GetPlayerCardsLazyQueryHookResult = ReturnType<typeof useGetPlayerCardsLazyQuery>;
+export type GetPlayerCardsSuspenseQueryHookResult = ReturnType<typeof useGetPlayerCardsSuspenseQuery>;
+export type GetPlayerCardsQueryResult = Apollo.QueryResult<GetPlayerCardsQuery, GetPlayerCardsQueryVariables>;
+export const GetEncounterCardsDocument = gql`
+    query getEncounterCards($locale: String!) {
+  all_card(
+    where: {version: {_lte: 7}, linked: {_is_null: true}, encounter_code: {_is_null: false}}
+  ) {
+    ...SingleCard
+    translations(where: {locale: {_eq: $locale}}) {
+      ...CoreCardText
+    }
+    linked_card {
+      ...SingleCard
+      translations(where: {locale: {_eq: $locale}}) {
+        ...CoreCardText
+      }
+    }
+  }
   all_card_updated(where: {locale: {_eq: $locale}}) {
     translation_updated_at
     cards_updated_at
@@ -48806,44 +48936,40 @@ export const GetCardsDocument = gql`
   }
 }
     ${SingleCardFragmentDoc}
-${CoreCardTextFragmentDoc}
-${TabooSetFragmentDoc}
-${EncounterSetFragmentDoc}
-${CycleFragmentDoc}
-${PackFragmentDoc}`;
+${CoreCardTextFragmentDoc}`;
 
 /**
- * __useGetCardsQuery__
+ * __useGetEncounterCardsQuery__
  *
- * To run a query within a React component, call `useGetCardsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCardsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetEncounterCardsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetEncounterCardsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetCardsQuery({
+ * const { data, loading, error } = useGetEncounterCardsQuery({
  *   variables: {
  *      locale: // value for 'locale'
  *   },
  * });
  */
-export function useGetCardsQuery(baseOptions: Apollo.QueryHookOptions<GetCardsQuery, GetCardsQueryVariables> & ({ variables: GetCardsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+export function useGetEncounterCardsQuery(baseOptions: Apollo.QueryHookOptions<GetEncounterCardsQuery, GetEncounterCardsQueryVariables> & ({ variables: GetEncounterCardsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetCardsQuery, GetCardsQueryVariables>(GetCardsDocument, options);
+        return Apollo.useQuery<GetEncounterCardsQuery, GetEncounterCardsQueryVariables>(GetEncounterCardsDocument, options);
       }
-export function useGetCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCardsQuery, GetCardsQueryVariables>) {
+export function useGetEncounterCardsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetEncounterCardsQuery, GetEncounterCardsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetCardsQuery, GetCardsQueryVariables>(GetCardsDocument, options);
+          return Apollo.useLazyQuery<GetEncounterCardsQuery, GetEncounterCardsQueryVariables>(GetEncounterCardsDocument, options);
         }
-export function useGetCardsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCardsQuery, GetCardsQueryVariables>) {
+export function useGetEncounterCardsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetEncounterCardsQuery, GetEncounterCardsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetCardsQuery, GetCardsQueryVariables>(GetCardsDocument, options);
+          return Apollo.useSuspenseQuery<GetEncounterCardsQuery, GetEncounterCardsQueryVariables>(GetEncounterCardsDocument, options);
         }
-export type GetCardsQueryHookResult = ReturnType<typeof useGetCardsQuery>;
-export type GetCardsLazyQueryHookResult = ReturnType<typeof useGetCardsLazyQuery>;
-export type GetCardsSuspenseQueryHookResult = ReturnType<typeof useGetCardsSuspenseQuery>;
-export type GetCardsQueryResult = Apollo.QueryResult<GetCardsQuery, GetCardsQueryVariables>;
+export type GetEncounterCardsQueryHookResult = ReturnType<typeof useGetEncounterCardsQuery>;
+export type GetEncounterCardsLazyQueryHookResult = ReturnType<typeof useGetEncounterCardsLazyQuery>;
+export type GetEncounterCardsSuspenseQueryHookResult = ReturnType<typeof useGetEncounterCardsSuspenseQuery>;
+export type GetEncounterCardsQueryResult = Apollo.QueryResult<GetEncounterCardsQuery, GetEncounterCardsQueryVariables>;
 export const GetCardFaqDocument = gql`
     query getCardFaq($code: String!, $locale: String!) {
   faq_by_pk(code: $code) {

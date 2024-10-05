@@ -6,22 +6,7 @@ query getCardsCache($locale: String!) {
   }
 }
 
-query getCards($locale: String!) {
-  all_card(where: { version: { _lte: 7 }, linked: { _is_null: true } }) {
-    ...SingleCard
-    translations(where: { locale: { _eq: $locale } }) {
-      ...CoreCardText
-    }
-    linked_card {
-      ...SingleCard
-      translations(where: { locale: { _eq: $locale } }) {
-        ...CoreCardText
-      }
-    }
-  }
-  taboo_set(where: { active: { _eq: true } }) {
-    ...TabooSet
-  }
+query getTranslationData($locale: String!) {
   faction_name(where: { locale: { _eq: $locale } }) {
     code
     name
@@ -46,6 +31,56 @@ query getCards($locale: String!) {
       ...Pack
       translations(where: { locale: { _eq: $locale } }) {
         name
+      }
+    }
+  }
+}
+
+query getPlayerCards($locale: String!) {
+  all_card(
+    where: {
+      version: { _lte: 7 }
+      linked: { _is_null: true }
+      encounter_code: { _is_null: true }
+    }
+  ) {
+    ...SingleCard
+    translations(where: { locale: { _eq: $locale } }) {
+      ...CoreCardText
+    }
+    linked_card {
+      ...SingleCard
+      translations(where: { locale: { _eq: $locale } }) {
+        ...CoreCardText
+      }
+    }
+  }
+  all_card_updated(where: { locale: { _eq: $locale } }) {
+    translation_updated_at
+    cards_updated_at
+    card_count
+  }
+  taboo_set(where: { active: { _eq: true } }) {
+    ...TabooSet
+  }
+}
+
+query getEncounterCards($locale: String!) {
+  all_card(
+    where: {
+      version: { _lte: 7 }
+      linked: { _is_null: true }
+      encounter_code: { _is_null: false }
+    }
+  ) {
+    ...SingleCard
+    translations(where: { locale: { _eq: $locale } }) {
+      ...CoreCardText
+    }
+    linked_card {
+      ...SingleCard
+      translations(where: { locale: { _eq: $locale } }) {
+        ...CoreCardText
       }
     }
   }

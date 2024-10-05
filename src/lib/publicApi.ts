@@ -30,14 +30,25 @@ import Rule from "@data/types/Rule";
 import Database, { SqliteVersion } from "@data/sqlite/Database";
 import TabooSet from "@data/types/TabooSet";
 import FaqEntry from "@data/types/FaqEntry";
-import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloQueryResult,
+  NormalizedCacheObject,
+} from "@apollo/client";
 import {
   GetCardsCacheDocument,
   GetCardsCacheQuery,
   GetCardsCacheQueryVariables,
-  GetCardsDocument,
-  GetCardsQuery,
-  GetCardsQueryVariables,
+  GetPlayerCardsDocument,
+  GetPlayerCardsQuery,
+  GetPlayerCardsQueryVariables,
+  GetEncounterCardsDocument,
+  GetEncounterCardsQuery,
+  GetEncounterCardsQueryVariables,
+  GetPlayerCardsQueryResult,
+  GetTranslationDataQuery,
+  GetTranslationDataQueryVariables,
+  GetTranslationDataDocument,
 } from "@generated/graphql/apollo-schema";
 import { Dispatch } from "react";
 import CardReprintInfo from "@data/types/CardReprintInfo";
@@ -207,6 +218,178 @@ function handleDerivativeData(
     }
   );
 }
+
+function processTranslationData(
+  translationResponse: ApolloQueryResult<GetTranslationDataQuery>,
+  lang: string | undefined,
+  dispatch: Dispatch<PacksActions | SettingsActions>
+): TranslationData {
+  const packs: {
+    [pack_code: string]: Pack & {
+      cycle_code: string;
+      cycle_name: string;
+    };
+  } = {};
+  const standardPacks: Pack[] = [];
+  const customPacks: Pack[] = [];
+  forEach(translationResponse.data.cycle, (cycle) => {
+    const cycle_name = head(cycle.translations)?.name || cycle.real_name;
+    const cycle_packs = map(cycle.packs, (pack) => {
+      return {
+        id: pack.code,
+        code: pack.code,
+        name: head(pack.translations)?.name || pack.real_name,
+        position: pack.position || 0,
+        cycle_position: cycle.position,
+        cycle_code: cycle.code,
+        cycle_name,
+        known: 0,
+        total: 0,
+      };
+    });
+
+    forEach(cycle_packs, (pack) => {
+      packs[pack.code] = pack;
+      if (!cycle.official) {
+        customPacks.push(pack);
+      } else {
+        standardPacks.push(pack);
+      }
+    });
+  });
+
+  dispatch({
+    type: PACKS_AVAILABLE,
+    packs: standardPacks,
+    lang: lang || "en",
+    timestamp: new Date(),
+    lastModified: undefined,
+  });
+  dispatch({
+    type: CUSTOM_PACKS_AVAILABLE,
+    packs: customPacks,
+    lang: lang || "en",
+  });
+
+  const factionNames: { [code: string]: string } = {};
+  forEach(translationResponse.data.faction_name, (faction) => {
+    factionNames[faction.code] = faction.name;
+  });
+  const typeNames: { [code: string]: string } = {};
+  forEach(translationResponse.data.card_type_name, (type) => {
+    typeNames[type.code] = type.name;
+  });
+
+  const subTypeNames: { [code: string]: string } = {};
+  forEach(translationResponse.data.card_subtype_name, (type) => {
+    subTypeNames[type.code] = type.name;
+  });
+
+  const allEncounterSets: { [code: string]: string | undefined } = {};
+  forEach(translationResponse.data.card_encounter_set, (encounterSet) => {
+    allEncounterSets[encounterSet.code] = encounterSet.name;
+  });
+
+  VERBOSE && console.time("parse");
+  return {
+    lang: lang || "en",
+    encounterSets: allEncounterSets,
+    packs,
+    cardTypeNames: typeNames,
+    subTypeNames,
+    factionNames,
+  };
+}
+
+async function processCardResult(
+  updateProgress: (
+    progress: number,
+    estimateMillis?: number,
+    msg?: string
+  ) => void,
+  db: Database,
+  sqliteVersion: SqliteVersion,
+  all_cards: ApolloQueryResult<GetPlayerCardsQuery>["data"]["all_card"],
+  translationData: TranslationData,
+  progress: number
+) {
+  updateProgress(progress);
+  VERBOSE && console.timeEnd("download");
+  VERBOSE && console.log("Download completed!");
+
+  const total = all_cards.length;
+
+  const allCards = map(all_cards, (card, idx) => {
+    if (idx % 500 === 0) {
+      updateProgress(progress + ((idx * 1.0) / total) * 0.05);
+    }
+    return Card.fromGraphQl(card, translationData);
+  });
+  VERBOSE && console.timeEnd("parse");
+  progress += 0.05;
+  updateProgress(progress);
+  const cardsToInsert: Card[] = [];
+  const dupes: {
+    [code: string]: Card[] | undefined;
+  } = {};
+  forEach(allCards, (card) => {
+    if (!card.taboo_set_id && card.duplicate_of_code) {
+      dupes[card.duplicate_of_code] = [
+        ...(dupes[card.duplicate_of_code] || []),
+        card,
+      ];
+    }
+    cardsToInsert.push(card);
+  });
+  VERBOSE && console.time("tabooSets");
+
+  VERBOSE && console.time("derivedData");
+  const linkedSet = new Set(
+    flatMap(cardsToInsert, (c: Card) =>
+      c.linked_card ? [c.linked_card.code] : []
+    )
+  );
+  const dedupedCards = filter(
+    cardsToInsert,
+    (c: Card) => !!c.linked_card || !linkedSet.has(c.code)
+  );
+  handleDerivativeData(dedupedCards, dupes);
+  const [linkedCards, normalCards] = partition(
+    dedupedCards,
+    (card) => !!card.linked_card
+  );
+  VERBOSE && console.timeEnd("derivedData");
+
+  const totalCards =
+    linkedCards.length +
+    normalCards.length +
+    sumBy(linkedCards, (c) => (c.linked_card ? 1 : 0));
+  let processedCards = 0;
+  const dbCards = await db.cards();
+  async function insertCards(c: Card[]) {
+    await dbCards.insert(c);
+    if (processedCards / 200 < (processedCards + c.length) / 200) {
+      updateProgress(progress + (processedCards / (1.0 * totalCards)) * 0.15);
+    }
+    processedCards += c.length;
+  }
+  VERBOSE && console.time("linkedCards-backs");
+  await insertChunk(
+    sqliteVersion,
+    flatMap(linkedCards, (c) => (c.linked_card ? [c.linked_card] : [])),
+    insertCards
+  );
+  VERBOSE && console.timeEnd("linkedCards-backs");
+
+  VERBOSE && console.time("linkedCards");
+  await insertChunk(sqliteVersion, linkedCards, insertCards);
+  VERBOSE && console.timeEnd("linkedCards");
+
+  VERBOSE && console.time("normalCards");
+  await insertChunk(sqliteVersion, normalCards, insertCards);
+  VERBOSE && console.timeEnd("normalCards");
+}
+
 export const syncCards = async function (
   updateProgress: (
     progress: number,
@@ -222,8 +405,8 @@ export const syncCards = async function (
 ): Promise<CardCache | null> {
   VERBOSE && console.log("syncCards called");
   try {
-    const cards = await db.cards();
     try {
+      const cards = await db.cards();
       VERBOSE && console.log("Checking cache ");
       if (cache?.lastModified && cache?.lastModifiedTranslation) {
         VERBOSE && console.time("cache-check");
@@ -250,207 +433,116 @@ export const syncCards = async function (
           // Cache hit, no need to download cards our local database is in sync.
           return cache;
         }
+        console.log(serverCache, {
+          cardCount,
+          cards_updated_at: cache.lastModified,
+          translation_updated_at: cache.lastModifiedTranslation,
+        });
       }
     } catch (e) {
       console.log(e.message);
     }
     VERBOSE && console.log("Starting download.");
     VERBOSE && console.time("download");
-    updateProgress(0.4, Platform.OS === "ios" ? 8000 : 10000);
-    const cardsResponse = await anonClient.query<
-      GetCardsQuery,
-      GetCardsQueryVariables
+
+    const translationDataF = anonClient.query<
+      GetTranslationDataQuery,
+      GetTranslationDataQueryVariables
     >({
-      query: GetCardsDocument,
+      query: GetTranslationDataDocument,
       variables: {
         locale: lang || "en",
       },
       fetchPolicy: "no-cache",
       canonizeResults: false,
     });
-    updateProgress(0.4);
-    VERBOSE && console.timeEnd("download");
-    VERBOSE && console.log("Download completed!");
-
-    const allEncounterSets: { [code: string]: string | undefined } = {};
-    forEach(cardsResponse.data.card_encounter_set, (encounterSet) => {
-      allEncounterSets[encounterSet.code] = encounterSet.name;
-    });
-    const packs: {
-      [pack_code: string]: Pack & {
-        cycle_code: string;
-        cycle_name: string;
-      };
-    } = {};
-    const standardPacks: Pack[] = [];
-    const customPacks: Pack[] = [];
-    forEach(cardsResponse.data.cycle, (cycle) => {
-      const cycle_name = head(cycle.translations)?.name || cycle.real_name;
-      const cycle_packs = map(cycle.packs, (pack) => {
-        return {
-          id: pack.code,
-          code: pack.code,
-          name: head(pack.translations)?.name || pack.real_name,
-          position: pack.position || 0,
-          cycle_position: cycle.position,
-          cycle_code: cycle.code,
-          cycle_name,
-          known: 0,
-          total: 0,
-        };
-      });
-
-      forEach(cycle_packs, (pack) => {
-        packs[pack.code] = pack;
-        if (!cycle.official) {
-          customPacks.push(pack);
-        } else {
-          standardPacks.push(pack);
-        }
-      });
-    });
-
-    dispatch({
-      type: PACKS_AVAILABLE,
-      packs: standardPacks,
-      lang: lang || "en",
-      timestamp: new Date(),
-      lastModified: undefined,
-    });
-    dispatch({
-      type: CUSTOM_PACKS_AVAILABLE,
-      packs: customPacks,
-      lang: lang || "en",
-    });
-
-    const factionNames: { [code: string]: string } = {};
-    forEach(cardsResponse.data.faction_name, (faction) => {
-      factionNames[faction.code] = faction.name;
-    });
-    const typeNames: { [code: string]: string } = {};
-    forEach(cardsResponse.data.card_type_name, (type) => {
-      typeNames[type.code] = type.name;
-    });
-
-    const subTypeNames: { [code: string]: string } = {};
-    forEach(cardsResponse.data.card_subtype_name, (type) => {
-      subTypeNames[type.code] = type.name;
-    });
-
-    VERBOSE && console.time("parse");
-    const total = cardsResponse.data.all_card.length;
-    const translationData: TranslationData = {
-      lang: lang || "en",
-      encounterSets: allEncounterSets,
-      packs,
-      cardTypeNames: typeNames,
-      subTypeNames,
-      factionNames,
-    };
-    const allCards = map(cardsResponse.data.all_card, (card, idx) => {
-      if (idx % 500 === 0) {
-        updateProgress(0.4 + ((idx * 1.0) / total) * 0.1);
-      }
-      return Card.fromGraphQl(card, translationData);
-    });
-    VERBOSE && console.timeEnd("parse");
-    updateProgress(0.5);
-    VERBOSE && console.time("clear-db");
-    const encounterSets = await db.encounterSets();
-    const tabooSets = await db.tabooSets();
-    const rules = await db.rules();
 
     // Delete the tables.
+    const cards = await db.cards();
     await cards.createQueryBuilder().delete().execute();
+
+    const encounterSets = await db.encounterSets();
     await encounterSets.createQueryBuilder().delete().execute();
+
+    const tabooSets = await db.tabooSets();
     await tabooSets.createQueryBuilder().delete().execute();
+
+    const rules = await db.rules();
     await rules.createQueryBuilder().delete().execute();
+
     await db.clearCache();
-    VERBOSE && console.timeEnd("clear-db");
-    updateProgress(0.52);
     VERBOSE && console.time("rules");
     await syncRules(db, sqliteVersion, lang);
-    updateProgress(0.58);
     VERBOSE && console.timeEnd("rules");
-    const cardsToInsert: Card[] = [];
-    const dupes: {
-      [code: string]: Card[] | undefined;
-    } = {};
-    forEach(allCards, (card) => {
-      if (!card.taboo_set_id && card.duplicate_of_code) {
-        dupes[card.duplicate_of_code] = [
-          ...(dupes[card.duplicate_of_code] || []),
-          card,
-        ];
-      }
-      cardsToInsert.push(card);
-    });
-    VERBOSE && console.time("tabooSets");
-    const allTabooSets = map(cardsResponse.data.taboo_set, (tabooSet) => {
-      return TabooSet.fromGQL(tabooSet);
-    });
-    await tabooSets.insert(allTabooSets);
-    const largestTabooSetId = maxBy(
-      allTabooSets,
-      (tabooSet) => tabooSet.id
-    )?.id;
 
-    if (largestTabooSetId !== undefined) {
-      dispatch({
-        type: SET_CURRENT_TABOO_SET,
-        tabooId: largestTabooSetId,
+    updateProgress(0.1, Platform.OS === "ios" ? 2000 : 3000);
+    const translationData = processTranslationData(
+      await translationDataF,
+      lang,
+      dispatch
+    );
+    updateProgress(0.1);
+
+    updateProgress(0.3, Platform.OS === "ios" ? 5000 : 8000);
+    {
+      const cardsResponse = await anonClient.query<
+        GetPlayerCardsQuery,
+        GetPlayerCardsQueryVariables
+      >({
+        query: GetPlayerCardsDocument,
+        variables: {
+          locale: lang || "en",
+        },
+        fetchPolicy: "no-cache",
+        canonizeResults: false,
       });
-    }
+      await processCardResult(
+        updateProgress,
+        db,
+        sqliteVersion,
+        cardsResponse.data.all_card,
+        translationData,
+        0.3
+      );
 
-    VERBOSE && console.timeEnd("tabooSets");
+      const allTabooSets = map(cardsResponse.data.taboo_set, (tabooSet) => {
+        return TabooSet.fromGQL(tabooSet);
+      });
+      await tabooSets.insert(allTabooSets);
+      const largestTabooSetId = maxBy(
+        allTabooSets,
+        (tabooSet) => tabooSet.id
+      )?.id;
 
-    updateProgress(0.6);
-    VERBOSE && console.time("derivedData");
-    const linkedSet = new Set(
-      flatMap(cardsToInsert, (c: Card) =>
-        c.linked_card ? [c.linked_card.code] : []
-      )
-    );
-    const dedupedCards = filter(
-      cardsToInsert,
-      (c: Card) => !!c.linked_card || !linkedSet.has(c.code)
-    );
-    handleDerivativeData(dedupedCards, dupes);
-    const [linkedCards, normalCards] = partition(
-      dedupedCards,
-      (card) => !!card.linked_card
-    );
-    VERBOSE && console.timeEnd("derivedData");
-
-    const totalCards =
-      linkedCards.length +
-        normalCards.length +
-        sumBy(linkedCards, (c) => (c.linked_card ? 1 : 0)) || 3000;
-    let processedCards = 0;
-    async function insertCards(c: Card[]) {
-      await (await db.cards()).insert(c);
-      if (processedCards / 200 < (processedCards + c.length) / 200) {
-        updateProgress(0.6 + (processedCards / (1.0 * totalCards)) * 0.35);
+      if (largestTabooSetId !== undefined) {
+        dispatch({
+          type: SET_CURRENT_TABOO_SET,
+          tabooId: largestTabooSetId,
+        });
       }
-      processedCards += c.length;
     }
-    VERBOSE && console.time("linkedCards-backs");
-    await insertChunk(
+
+    updateProgress(0.7, Platform.OS === "ios" ? 5000 : 8000);
+    const cardsResponse = await anonClient.query<
+      GetEncounterCardsQuery,
+      GetEncounterCardsQueryVariables
+    >({
+      query: GetEncounterCardsDocument,
+      variables: {
+        locale: lang || "en",
+      },
+      fetchPolicy: "no-cache",
+      canonizeResults: false,
+    });
+
+    await processCardResult(
+      updateProgress,
+      db,
       sqliteVersion,
-      flatMap(linkedCards, (c) => (c.linked_card ? [c.linked_card] : [])),
-      insertCards
+      cardsResponse.data.all_card,
+      translationData,
+      0.7
     );
-    VERBOSE && console.timeEnd("linkedCards-backs");
-
-    VERBOSE && console.time("linkedCards");
-    await insertChunk(sqliteVersion, linkedCards, insertCards);
-    VERBOSE && console.timeEnd("linkedCards");
-
-    VERBOSE && console.time("normalCards");
-    await insertChunk(sqliteVersion, normalCards, insertCards);
-    VERBOSE && console.timeEnd("normalCards");
-
-    updateProgress(0.95);
     VERBOSE && console.time("countCards");
     const cardCount = await cards.count();
     VERBOSE && console.timeEnd("countCards");
