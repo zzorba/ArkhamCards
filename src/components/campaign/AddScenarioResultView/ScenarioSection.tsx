@@ -31,7 +31,7 @@ interface OwnProps {
   initialScenarioCode?: string;
 }
 
-const SCENARIO_QUERY = where('c.type_code = "scenario"');
+const SCENARIO_QUERY = where(`c.type_code = 'scenario'`);
 const SCENARIO_SORT: QuerySort[] = [{ s: 'c.position', direction: 'ASC' }];
 
 export default function ScenarioSection({ campaign, initialScenarioCode, scenarioChanged, showTextEditDialog }: OwnProps) {
@@ -76,7 +76,7 @@ export default function ScenarioSection({ campaign, initialScenarioCode, scenari
     );
   }, [allScenarioCards, fixedCycleScenarios, campaign.scenarioResults, cyclePacks, standalonePacks]);
 
-  const [selectedScenario, setSelectedScenario] = useState<Scenario | typeof CUSTOM>(head(allScenarios) || CUSTOM);
+  const [selectedScenario, setSelectedScenario] = useState<Scenario | typeof CUSTOM>(head(allScenarios) ?? CUSTOM);
   const [customScenario, setCustomScenario] = useState('');
   const [resolution, setResolution] = useState('');
   const dispatch = useAppDispatch();
@@ -117,7 +117,11 @@ export default function ScenarioSection({ campaign, initialScenarioCode, scenari
       filter(allScenarios, scenario => showInterludes || !scenario.interlude),
       scenario => {
         return {
-          iconNode: scenario.interlude ? <AppIcon name="log" size={24} color={colors.M} /> : <EncounterIcon encounter_code={scenario.code} size={24} color={colors.M} />,
+          iconNode: scenario.interlude ? (
+            <AppIcon name="log" size={24} color={colors.M} />
+          ) : (
+            <EncounterIcon encounter_code={scenario.code} size={24} color={colors.M} />
+          ),
           title: scenario.name,
           value: scenario,
         };
@@ -135,16 +139,16 @@ export default function ScenarioSection({ campaign, initialScenarioCode, scenari
     onValueChange: setSelectedScenario,
   });
   const customScenarioTextChanged = useCallback((value?: string) => {
-    setCustomScenario(value || '');
+    setCustomScenario(value ?? '');
   }, [setCustomScenario]);
   const showCustomScenarioDialog = useCallback(() => {
-    showTextEditDialog(t`Scenario name`, customScenario || '', customScenarioTextChanged);
+    showTextEditDialog(t`Scenario name`, customScenario ?? '', customScenarioTextChanged);
   }, [showTextEditDialog, customScenario, customScenarioTextChanged]);
   const resolutionChanged = useCallback((value?: string) => {
     setResolution(value || '');
   }, [setResolution]);
   const showResolutionDialog = useCallback(() => {
-    showTextEditDialog(t`Resolution`, resolution || '', resolutionChanged);
+    showTextEditDialog(t`Resolution`, resolution ?? '', resolutionChanged);
   }, [showTextEditDialog, resolution, resolutionChanged]);
 
   const scenarioName = useMemo(() => {

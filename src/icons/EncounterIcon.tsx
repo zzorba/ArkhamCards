@@ -311,7 +311,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.standaloneIcon('the_blob_that_ate_everything', size, color);
       case 'blbe':
       case 'blob_that_ate_everything_else':
-        return this.standaloneIcon('the_blob_that_ate_everything_else', size, color);
+        return this.standaloneIcon('blob_that_ate_everything_else', size, color);
       case 'migo_incursion':
         return this.standaloneIcon('migo', size, color);
       case 'migo_incursion_2':
