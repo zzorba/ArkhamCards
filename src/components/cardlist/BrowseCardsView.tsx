@@ -21,5 +21,5 @@ function BrowseCardsView({ componentId }: Props) {
 
 export default withFetchCardsGate<Props>(
   BrowseCardsView,
-  { promptForUpdate: false }
+  { promptForUpdate: true }
 );

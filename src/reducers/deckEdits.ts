@@ -15,6 +15,7 @@ import {
   getDeckId,
   SYNC_DECK,
   Slots,
+  ChecklistSlots,
 } from '@actions/types';
 import { encodeExtraDeckSlots, getExtraDeckSlots } from '@lib/parseDeck';
 
@@ -25,8 +26,8 @@ interface DeckEditsState {
   editting: {
     [id: string]: boolean | undefined;
   };
-  checklist: {
-    [id: string]: string[] | undefined;
+  checklist_counts?: {
+    [id: string]: ChecklistSlots | undefined;
   };
   deck_uploads?: {
     [uuid: string]: string[] | undefined;
@@ -36,7 +37,7 @@ interface DeckEditsState {
 const DEFAULT_DECK_EDITS_STATE: DeckEditsState = {
   edits: {},
   editting: {},
-  checklist: {},
+  checklist_counts: {},
   deck_uploads: {},
 };
 
@@ -263,37 +264,40 @@ export default function(
   if (action.type === RESET_DECK_CHECKLIST) {
     return {
       ...state,
-      checklist: {
-        ...(state.checklist || {}),
-        [action.id.uuid]: [],
+      checklist_counts: {
+        ...(state.checklist_counts ?? {}),
+        [action.id.uuid]: {},
       },
     };
   }
   if (action.type === SET_DECK_CHECKLIST_CARD) {
-    const currentChecklist = (state.checklist || {})[action.id.uuid] || [];
-    const checklist = action.value ? [
-      ...currentChecklist,
-      action.card,
-    ] : filter(currentChecklist, card => card !== action.card);
+    const checklist = {
+      ...(state.checklist_counts ?? {})[action.id.uuid] ?? {},
+    };
+    const counts = filter((checklist[action.card] ?? []), card => card !== action.value);
+    if (action.toggle) {
+      counts.push(action.value);
+    }
+    checklist[action.card] = counts;
     return {
       ...state,
-      checklist: {
-        ...(state.checklist || {}),
+      checklist_counts: {
+        ...(state.checklist_counts ?? {}),
         [action.id.uuid]: checklist,
       },
     };
   }
 
   if (action.type === DELETE_DECK) {
-    const checklist = {
-      ...(state.checklist || {}),
+    const checklist_counts = {
+      ...(state.checklist_counts ?? {}),
     };
-    if (checklist[action.id.uuid]) {
-      delete checklist[action.id.uuid];
+    if (checklist_counts[action.id.uuid]) {
+      delete checklist_counts[action.id.uuid];
     }
     return {
       ...state,
-      checklist,
+      checklist_counts,
     };
   }
   if (action.type === UPDATE_DECK) {
@@ -324,16 +328,16 @@ export default function(
   }
 
   if (action.type === REPLACE_LOCAL_DECK) {
-    const checklist = {
-      ...(state.checklist || {}),
+    const checklist_counts = {
+      ...(state.checklist_counts ?? {}),
     };
-    if (checklist[action.localId.uuid]) {
-      checklist[getDeckId(action.deck).uuid] = checklist[action.localId.uuid];
-      delete checklist[action.localId.uuid];
+    if (checklist_counts[action.localId.uuid]) {
+      checklist_counts[getDeckId(action.deck).uuid] = checklist_counts[action.localId.uuid];
+      delete checklist_counts[action.localId.uuid];
     }
     return {
       ...state,
-      checklist,
+      checklist_counts,
     };
   }
   return state;

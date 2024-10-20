@@ -443,9 +443,6 @@ msgstr "Vérifier les mises à jour des cartes ?"
 msgid "Ask me later"
 msgstr "Me demander plus tard"
 
-msgid "Check for updates"
-msgstr "Vérifier les mises à jour"
-
 msgid "Add Campaign Log Section"
 msgstr "Ajouter une mention dans le Carnet de Campagne"
 
@@ -1266,13 +1263,6 @@ msgstr ""
 "Les données sur ArkhamDB seront conservées, mais toutes les données de la campagne et toutes les modifications effectuées sans connexion risquent d’être perdues.\n"
 "\n"
 "Si vous rencontrez des problèmes avec votre compte, vous pouvez également vous reconnecter."
-
-msgid ""
-"It has been more than a week since you checked for new cards.\n"
-"Check for new cards from ArkhamDB?"
-msgstr ""
-"Cela fait plus d’une semaine que vous n'avez pas vérifié s'il y a de nouvelles cartes.\n"
-"Rechercher des nouvelles cartes sur ArkhamDB ?"
 
 msgid "Edit Assigned Weaknesses"
 msgstr "Modifier les faiblesses attribuées"
@@ -6032,6 +6022,33 @@ msgid "Specialist"
 msgstr ""
 
 msgid "Enemy-Location"
+msgstr ""
+
+msgid "Incomplete card database"
+msgstr ""
+
+msgid "New cards available"
+msgstr ""
+
+msgid ""
+"Your most recent sync did not complete.\n"
+"\n"
+"When trying again, please keep the app open and in the foreground until it is finished."
+msgstr ""
+
+#, javascript-format
+msgid "It looks like your app is missing ${ updates.missingCardCount } card."
+msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
+msgstr ""
+
+msgid "Download cards"
+msgstr ""
+
+msgid "It has been more than a week since you checked for new cards."
 msgstr ""
 
 msgctxt "investigator"

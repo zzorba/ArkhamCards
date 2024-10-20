@@ -390,6 +390,71 @@ async function processCardResult(
   VERBOSE && console.timeEnd("normalCards");
 }
 
+export interface PendingCardUpdates {
+  missingCardCount: number;
+  lastSynced: Date | undefined;
+
+  lastServerUpdate: Date | undefined;
+  possiblePartialSync: boolean;
+
+  cache?: CardCache;
+}
+
+const CARD_SCHEMA_VERSION = 7;
+
+export const checkForPendingCards = async function(
+  db: Database,
+  anonClient: ApolloClient<NormalizedCacheObject>,
+  lang?: string,
+  cache?: CardCache
+): Promise<PendingCardUpdates | undefined> {
+  try {
+    const cards = await db.cards();
+    VERBOSE && console.log("Checking cache ");
+    const cacheResponse = await anonClient.query<
+      GetCardsCacheQuery,
+      GetCardsCacheQueryVariables
+    >({
+      query: GetCardsCacheDocument,
+      variables: {
+        locale: lang || "en",
+        version: CARD_SCHEMA_VERSION,
+      },
+      fetchPolicy: "no-cache",
+      canonizeResults: false,
+    });
+    const serverCache = cacheResponse?.data.all_card_updated[0];
+    if (cache?.lastModified && cache?.lastModifiedTranslation) {
+      VERBOSE && console.time("cache-check");
+      const cardCount = await cards.count();
+      VERBOSE && console.timeEnd("cache-check");
+      if (
+        serverCache.card_count === cardCount &&
+        serverCache.cards_updated_at === cache.lastModified &&
+        serverCache.translation_updated_at === cache.lastModifiedTranslation
+      ) {
+        VERBOSE && console.log("Cache hit, skipping fetch");
+        // Cache hit, no need to download cards our local database is in sync.
+        return undefined;
+      }
+    }
+    const lastSynced = cache?.lastAttemptedSync ? new Date(cache.lastAttemptedSync) : undefined;
+    const lastServerUpdate = new Date(serverCache.cards_updated_at);
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
+    console.log(lastSynced, oneHourAgo);
+    const possiblePartialSync = !!lastSynced && lastSynced > oneHourAgo;
+    return {
+      missingCardCount: (serverCache.card_count ?? 0) - (cache?.cardCount ?? 0),
+      lastSynced,
+      lastServerUpdate,
+      possiblePartialSync,
+    };
+  } catch (e) {
+    console.log(e.message);
+    return undefined;
+  }
+}
+
 export const syncCards = async function (
   updateProgress: (
     progress: number,
@@ -405,42 +470,9 @@ export const syncCards = async function (
 ): Promise<CardCache | null> {
   VERBOSE && console.log("syncCards called");
   try {
-    try {
-      const cards = await db.cards();
-      VERBOSE && console.log("Checking cache ");
-      if (cache?.lastModified && cache?.lastModifiedTranslation) {
-        VERBOSE && console.time("cache-check");
-        const cacheResponse = await anonClient.query<
-          GetCardsCacheQuery,
-          GetCardsCacheQueryVariables
-        >({
-          query: GetCardsCacheDocument,
-          variables: {
-            locale: lang || "en",
-          },
-          fetchPolicy: "no-cache",
-          canonizeResults: false,
-        });
-        const cardCount = await cards.count();
-        VERBOSE && console.timeEnd("cache-check");
-        const serverCache = cacheResponse?.data.all_card_updated[0];
-        if (
-          serverCache.card_count === cardCount &&
-          serverCache.cards_updated_at === cache.lastModified &&
-          serverCache.translation_updated_at === cache.lastModifiedTranslation
-        ) {
-          VERBOSE && console.log("Cache hit, skipping fetch");
-          // Cache hit, no need to download cards our local database is in sync.
-          return cache;
-        }
-        console.log(serverCache, {
-          cardCount,
-          cards_updated_at: cache.lastModified,
-          translation_updated_at: cache.lastModifiedTranslation,
-        });
-      }
-    } catch (e) {
-      console.log(e.message);
+    const needsSync = await checkForPendingCards(db, anonClient, lang, cache);
+    if (!needsSync) {
+      return cache ?? null;
     }
     VERBOSE && console.log("Starting download.");
     VERBOSE && console.time("download");
@@ -492,6 +524,7 @@ export const syncCards = async function (
         query: GetPlayerCardsDocument,
         variables: {
           locale: lang || "en",
+          version: CARD_SCHEMA_VERSION,
         },
         fetchPolicy: "no-cache",
         canonizeResults: false,
@@ -530,6 +563,7 @@ export const syncCards = async function (
       query: GetEncounterCardsDocument,
       variables: {
         locale: lang || "en",
+        version: CARD_SCHEMA_VERSION,
       },
       fetchPolicy: "no-cache",
       canonizeResults: false,

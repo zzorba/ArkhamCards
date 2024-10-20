@@ -440,9 +440,6 @@ msgstr "检查卡牌更新？"
 msgid "Ask me later"
 msgstr "稍后询问"
 
-msgid "Check for updates"
-msgstr "检查更新"
-
 msgid "Add Campaign Log Section"
 msgstr "新增冒险日志栏位"
 
@@ -1256,13 +1253,6 @@ msgstr ""
 "在ArkhamDB上的资料将被保留，但所有的剧本资料以及任何没有网路连线时所做的编辑将无法储存。\n"
 "\n"
 "如果你的帐户发生任何问题，可以尝试重新连线。"
-
-msgid ""
-"It has been more than a week since you checked for new cards.\n"
-"Check for new cards from ArkhamDB?"
-msgstr ""
-"自从上次检查新牌组资料已经间隔一周以上。\n"
-"是否要检查ArkhamDB上的新卡牌资料？"
 
 msgid "Edit Assigned Weaknesses"
 msgstr "编辑已指定的弱点"
@@ -5969,6 +5959,32 @@ msgstr ""
 msgid "Enemy-Location"
 msgstr ""
 
+msgid "Incomplete card database"
+msgstr ""
+
+msgid "New cards available"
+msgstr ""
+
+msgid ""
+"Your most recent sync did not complete.\n"
+"\n"
+"When trying again, please keep the app open and in the foreground until it is finished."
+msgstr ""
+
+#, javascript-format
+msgid "It looks like your app is missing ${ updates.missingCardCount } card."
+msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
+msgstr[0] ""
+
+msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
+msgstr ""
+
+msgid "Download cards"
+msgstr ""
+
+msgid "It has been more than a week since you checked for new cards."
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自订"
@@ -8259,6 +8275,7 @@ msgctxt "header"
 msgid "Enemy-Location"
 msgid_plural "Enemy-Locations"
 msgstr[0] ""
+msgstr[1] ""
 
 msgctxt "tags"
 msgid "Add"

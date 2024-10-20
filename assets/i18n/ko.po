@@ -1193,18 +1193,8 @@ msgstr "세팅에서 금기 목록을 선택하고 덱을 만들면, 금기 목�
 msgid "Check for updated cards?"
 msgstr "갱신된 카드가 있는지 확인하시겠습니까?"
 
-msgid ""
-"It has been more than a week since you checked for new cards.\n"
-"Check for new cards from ArkhamDB?"
-msgstr ""
-"새로운 카드를 확인한 후 1주일이 지났습니다.\n"
-"아컴디비에서 새로운 카드가 있는지 확인해보시겠습니까?"
-
 msgid "Ask me later"
 msgstr "나중에 알려주십시오"
-
-msgid "Check for updates"
-msgstr "갱신 내역을 확인합니다"
 
 msgid "Error loading cards, make sure your network is working."
 msgstr "카드를 불러오는데 오류가 발생했습니다. 인터넷 연결이 정상인지 확인해주십시오."
@@ -5977,6 +5967,32 @@ msgstr ""
 msgid "Enemy-Location"
 msgstr ""
 
+msgid "Incomplete card database"
+msgstr ""
+
+msgid "New cards available"
+msgstr ""
+
+msgid ""
+"Your most recent sync did not complete.\n"
+"\n"
+"When trying again, please keep the app open and in the foreground until it is finished."
+msgstr ""
+
+#, javascript-format
+msgid "It looks like your app is missing ${ updates.missingCardCount } card."
+msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
+msgstr[0] ""
+
+msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
+msgstr ""
+
+msgid "Download cards"
+msgstr ""
+
+msgid "It has been more than a week since you checked for new cards."
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"
@@ -8267,6 +8283,7 @@ msgctxt "header"
 msgid "Enemy-Location"
 msgid_plural "Enemy-Locations"
 msgstr[0] ""
+msgstr[1] ""
 
 msgctxt "tags"
 msgid "Add"

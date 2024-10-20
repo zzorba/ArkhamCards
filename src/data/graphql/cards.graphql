@@ -1,5 +1,5 @@
-query getCardsCache($locale: String!) {
-  all_card_updated(where: { locale: { _eq: $locale } }) {
+query getCardsCache($locale: String!, $version: Int!) {
+  all_card_updated: all_card_updated_by_version(where: { locale: { _eq: $locale }, version: { _eq: $version } }) {
     translation_updated_at
     cards_updated_at
     card_count
@@ -36,10 +36,10 @@ query getTranslationData($locale: String!) {
   }
 }
 
-query getPlayerCards($locale: String!) {
+query getPlayerCards($locale: String!, $version: Int!) {
   all_card(
     where: {
-      version: { _lte: 7 }
+      version: { _lte: $version }
       linked: { _is_null: true }
       encounter_code: { _is_null: true }
     }
@@ -55,7 +55,7 @@ query getPlayerCards($locale: String!) {
       }
     }
   }
-  all_card_updated(where: { locale: { _eq: $locale } }) {
+  all_card_updated: all_card_updated_by_version(where: { locale: { _eq: $locale }, version: { _eq: $version }  }) {
     translation_updated_at
     cards_updated_at
     card_count
@@ -65,7 +65,7 @@ query getPlayerCards($locale: String!) {
   }
 }
 
-query getEncounterCards($locale: String!) {
+query getEncounterCards($locale: String!, $version: Int!) {
   all_card(
     where: {
       version: { _lte: 7 }
@@ -84,7 +84,7 @@ query getEncounterCards($locale: String!) {
       }
     }
   }
-  all_card_updated(where: { locale: { _eq: $locale } }) {
+  all_card_updated: all_card_updated_by_version(where: { locale: { _eq: $locale }, version: { _eq: $version } }) {
     translation_updated_at
     cards_updated_at
     card_count

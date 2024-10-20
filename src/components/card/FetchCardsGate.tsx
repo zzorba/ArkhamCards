@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Animated, { useSharedValue, SharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
-import { t } from 'ttag';
+import { msgid, ngettext, t } from 'ttag';
 
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import BasicButton from '@components/core/BasicButton';
@@ -24,6 +24,7 @@ import useReduxMigrator from '@components/settings/useReduxMigrator';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { useAppDispatch } from '@app/store';
+import { checkForPendingCards, PendingCardUpdates } from '@lib/publicApi';
 
 const REFETCH_DAYS = 30;
 const REPROMPT_DAYS = 30;
@@ -66,9 +67,13 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   const [needsMigration, migrating, doMigrate] = useReduxMigrator();
   const dispatch = useAppDispatch();
   const fetchNeeded = useSelector((state: AppState) => state.packs.all.length === 0);
-  const currentCardLang = useSelector((state: AppState) => state.cards.card_lang || 'en');
-  const fetchRequest = useSelector((state: AppState) => state.cards.fetch);
+  const cardsCache = useSelector((state: AppState) => state.cards.cache);
+  const { anonClient } = useContext(ApolloClientContext);
   const { lang: choiceLang } = useContext(LanguageContext);
+
+  const fetchRequest = useSelector((state: AppState) => state.cards.fetch);
+
+  const currentCardLang = useSelector((state: AppState) => state.cards.card_lang || 'en');
   const useSystemLang = currentCardLang === 'system';
   const fetchProgress = useSharedValue(0);
   const loading = useSelector((state: AppState) => state.packs.loading || state.cards.loading);
@@ -79,7 +84,6 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
     const cards = await db.cards();
     return await cards.count();
   }, [db]);
-  const { anonClient } = useContext(ApolloClientContext);
 
   const doFetch = useCallback(() => {
     fetchProgress.value = 0;
@@ -103,16 +107,13 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   }, [dispatch]);
 
   const langUpdateNeeded = !!(currentCardLang && useSystemLang && choiceLang !== currentCardLang);
-  const updateNeeded = useMemo(() => {
+  const shouldNagForUpdates = useMemo(() => {
     const nowSeconds = (new Date()).getTime() / 1000;
     return (
-      !dateFetched ||
-      (dateFetched + REFETCH_SECONDS) < nowSeconds
-    ) && (
       !dateUpdatePrompt ||
       (dateUpdatePrompt + REPROMPT_SECONDS) < nowSeconds
     );
-  }, [dateFetched, dateUpdatePrompt]);
+  }, [dateUpdatePrompt]);
 
   useEffect(() => {
     if (promptForUpdate) {
@@ -120,8 +121,9 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
         doFetch();
         return;
       }
-      cardCount().then(cardCount => {
-        if (cardCount === 0) {
+      (async () => {
+        const numCards = await cardCount();
+        if (numCards === 0) {
           doFetch();
           return;
         }
@@ -136,17 +138,42 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
               { text: t`Download now`, onPress: doFetch },
             ]
           );
-        } else if (updateNeeded) {
-          Alert.alert(
-            t`Check for updated cards?`,
-            t`It has been more than a week since you checked for new cards.\nCheck for new cards from ArkhamDB?`,
-            [
-              { text: t`Ask me later`, onPress: ignoreUpdate, style: 'cancel' },
-              { text: t`Check for updates`, onPress: doFetch },
-            ],
-          );
+          return;
         }
-      });
+
+        const updates = await checkForPendingCards(db, anonClient, choiceLang, cardsCache);
+        if (updates) {
+          if (updates.missingCardCount) {
+            Alert.alert(
+              updates.possiblePartialSync ? t`Incomplete card database` : t`New cards available`,
+              [
+                updates?.possiblePartialSync ?
+                  t`Your most recent sync did not complete.\n\nWhen trying again, please keep the app open and in the foreground until it is finished.`
+                : ngettext(
+                    msgid`It looks like your app is missing ${updates.missingCardCount} card.`,
+                    `It looks like your app is missing ${updates.missingCardCount} cards.`,
+                    updates.missingCardCount
+                  ),
+                '\n',
+                ...updates?.possiblePartialSync ? [t`Some decks may not load fully and campaigns might appear incomplete until this is fixed.`] : []
+              ].join('\n'),
+              [
+                { text: t`Not now`, onPress: () => {}, style: 'cancel' },
+                { text: t`Download cards`, onPress: doFetch },
+              ],
+            );
+          } else if (shouldNagForUpdates) {
+            Alert.alert(
+              t`Check for updated cards?`,
+              t`It has been more than a week since you checked for new cards.`,
+              [
+                { text: t`Ask me later`, onPress: ignoreUpdate, style: 'cancel' },
+                { text: t`Download cards`, onPress: doFetch },
+              ],
+            );
+          }
+        }
+      })();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [promptForUpdate]);

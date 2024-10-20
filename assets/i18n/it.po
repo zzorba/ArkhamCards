@@ -445,9 +445,6 @@ msgstr "Controlla aggiornamenti delle carte?"
 msgid "Ask me later"
 msgstr "Chiedimelo dopo"
 
-msgid "Check for updates"
-msgstr "Controllo aggiornamenti"
-
 msgid "Add Campaign Log Section"
 msgstr "Aggiungi una voce"
 
@@ -804,19 +801,19 @@ msgstr "Sacchetto del Caos"
 msgid "Adjust Weakness Set"
 msgstr "Correggi Debolezze Base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Questo mazzo contiene numerose debolezze Base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Questo mazzo contiene una debolezza base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverle dal set di debolezze base della campagna?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverla dal set di debolezze base della campagna?"
 
@@ -1258,13 +1255,6 @@ msgstr ""
 "I dati su ArkhamDB verranno conservati, ma tutti i dati della campagna e tutte le modifiche apportate senza una connessione Internet potrebbero andare perse.\n"
 "\n"
 "Se hai problemi con il tuo Account, puoi anche provare a connetterlo nuovamente."
-
-msgid ""
-"It has been more than a week since you checked for new cards.\n"
-"Check for new cards from ArkhamDB?"
-msgstr ""
-"E' passata più di una settimana da quando hai controllato se ci sono nuove carte.\n"
-"Vuoi controllare ora se ci sono nuove carte su ArkhamDB?"
 
 msgid "Edit Assigned Weaknesses"
 msgstr "Modifica Debolezze Assegnate"
@@ -5994,6 +5984,33 @@ msgid "Specialist"
 msgstr ""
 
 msgid "Enemy-Location"
+msgstr ""
+
+msgid "Incomplete card database"
+msgstr ""
+
+msgid "New cards available"
+msgstr ""
+
+msgid ""
+"Your most recent sync did not complete.\n"
+"\n"
+"When trying again, please keep the app open and in the foreground until it is finished."
+msgstr ""
+
+#, javascript-format
+msgid "It looks like your app is missing ${ updates.missingCardCount } card."
+msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
+msgstr ""
+
+msgid "Download cards"
+msgstr ""
+
+msgid "It has been more than a week since you checked for new cards."
 msgstr ""
 
 msgctxt "investigator"

@@ -62,6 +62,10 @@ export const DEFAULT_MYTHOS_SORT: SortType[] = [SORT_BY_ENCOUNTER_SET];
 export interface Slots {
   [code: string]: number;
 }
+export interface ChecklistSlots {
+  [code: string]: number[] | undefined;
+}
+
 export const INVESTIGATOR_PROBLEM = "investigator";
 export const TOO_MANY_COPIES = "too_many_copies";
 export const INVALID_CARDS = "invalid_cards";
@@ -781,9 +785,10 @@ export interface CustomPacksAvailableAction {
 }
 
 export interface CardCache {
-  cardCount: number;
+  cardCount?: number;
   lastModified?: string;
   lastModifiedTranslation?: string;
+  lastAttemptedSync?: string;
 }
 
 export interface TabooCache {
@@ -1533,7 +1538,8 @@ export interface SetDeckChecklistCardAction {
   type: typeof SET_DECK_CHECKLIST_CARD;
   id: DeckId;
   card: string;
-  value: boolean;
+  value: number;
+  toggle: boolean;
 }
 
 export const REDUX_MIGRATION = "REDUX_MIGRATION";

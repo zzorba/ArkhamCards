@@ -2133,18 +2133,8 @@ msgstr "Agora não"
 msgid "Check for updated cards?"
 msgstr "Verificar por atualizações de cartas?"
 
-msgid ""
-"It has been more than a week since you checked for new cards.\n"
-"Check for new cards from ArkhamDB?"
-msgstr ""
-"Já se passou mais de uma semana desde que você verificou se existem novas cartas.\n"
-"Verificar se há cartas novas no ArkhamDB?"
-
 msgid "Ask me later"
 msgstr "Pergunte-me depois"
-
-msgid "Check for updates"
-msgstr "Verificando atualizações"
 
 msgid "Error loading cards, make sure your network is working."
 msgstr "Erro ao carregar cartas, certifique-se que sua rede está funcionando."
@@ -5975,6 +5965,33 @@ msgid "Specialist"
 msgstr ""
 
 msgid "Enemy-Location"
+msgstr ""
+
+msgid "Incomplete card database"
+msgstr ""
+
+msgid "New cards available"
+msgstr ""
+
+msgid ""
+"Your most recent sync did not complete.\n"
+"\n"
+"When trying again, please keep the app open and in the foreground until it is finished."
+msgstr ""
+
+#, javascript-format
+msgid "It looks like your app is missing ${ updates.missingCardCount } card."
+msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
+msgstr ""
+
+msgid "Download cards"
+msgstr ""
+
+msgid "It has been more than a week since you checked for new cards."
 msgstr ""
 
 msgctxt "investigator"

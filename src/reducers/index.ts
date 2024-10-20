@@ -50,6 +50,8 @@ import {
   CardScreenType,
   DEFAULT_MYTHOS_SORT,
   FIXED_CHAOS_BAG_CAMPAIGN_ID,
+  Slots,
+  ChecklistSlots,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA, reprintPackToPack, specialPacks } from '@app_constants';
@@ -797,12 +799,12 @@ export const makeCampaignForDeckSelector = () =>
     }
   );
 
-const EMTPY_CHECKLIST: string[] = [];
+const EMTPY_CHECKLIST: ChecklistSlots = {};
 export const getDeckChecklist = createSelector(
-  (state: AppState) => state.deckEdits.checklist,
+  (state: AppState) => state.deckEdits.checklist_counts,
   (state: AppState, id: DeckId) => id,
-  (checklist: { [id: string]: string[] | undefined }, id: DeckId) => {
-    return (checklist || {})[id.uuid] || EMTPY_CHECKLIST;
+  (checklists: { [id: string]: ChecklistSlots | undefined } | undefined, id: DeckId) => {
+    return (checklists ?? {})[id.uuid] ?? EMTPY_CHECKLIST;
   }
 );
 

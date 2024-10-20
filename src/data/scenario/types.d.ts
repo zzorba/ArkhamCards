@@ -1508,6 +1508,7 @@ export interface CustomData {
     pl?: string;
     uk?: string;
     pt?: string;
+    "zh-cn"?: string;
   };
 }
 export interface Achievement {

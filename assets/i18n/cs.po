@@ -3407,15 +3407,7 @@ msgstr ""
 msgid "Check for updated cards?"
 msgstr ""
 
-msgid ""
-"It has been more than a week since you checked for new cards.\n"
-"Check for new cards from ArkhamDB?"
-msgstr ""
-
 msgid "Ask me later"
-msgstr ""
-
-msgid "Check for updates"
 msgstr ""
 
 msgid "Error loading cards, make sure your network is working."
@@ -5822,6 +5814,34 @@ msgstr ""
 msgid "Enemy-Location"
 msgstr ""
 
+msgid "Incomplete card database"
+msgstr ""
+
+msgid "New cards available"
+msgstr ""
+
+msgid ""
+"Your most recent sync did not complete.\n"
+"\n"
+"When trying again, please keep the app open and in the foreground until it is finished."
+msgstr ""
+
+#, javascript-format
+msgid "It looks like your app is missing ${ updates.missingCardCount } card."
+msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
+msgstr ""
+
+msgid "Download cards"
+msgstr ""
+
+msgid "It has been more than a week since you checked for new cards."
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
@@ -8144,7 +8164,6 @@ msgid "Enemy-Location"
 msgid_plural "Enemy-Locations"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgctxt "tags"
 msgid "Add"

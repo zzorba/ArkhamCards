@@ -1,13 +1,12 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Options } from 'react-native-navigation';
 import { Text, View, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { find } from 'lodash';
 import { t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import { iconsMap } from '@app/NavIcons';
-import { Slots, SORT_BY_TYPE, SortType, DeckId, CampaignId, DEFAULT_SORT } from '@actions/types';
+import { Slots, SortType, DeckId, CampaignId, ChecklistSlots } from '@actions/types';
 import { AppState, getCardSort, getDeckChecklist } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
 import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actions';
@@ -45,13 +44,13 @@ function ChecklistCard({
   deckId: DeckId;
   id: string;
   card: Card;
-  checklist: string[];
+  checklist: ChecklistSlots;
   pressCard: (code: string, card: Card) => void;
 }) {
   const [count] = useDeckSlotCount(deckId, card.code);
   const dispatch = useDispatch();
-  const toggleValue = useCallback((value: boolean) => {
-    dispatch(setDeckChecklistCard(deckId, card.code, value));
+  const toggleValue = useCallback((value: number, toggle: boolean) => {
+    dispatch(setDeckChecklistCard(deckId, card.code, value, toggle));
   }, [dispatch, deckId, card.code]);
   return (
     <CardSearchResult
@@ -62,7 +61,7 @@ function ChecklistCard({
       control={{
         type: 'count_with_toggle',
         count,
-        value: !!find(checklist, c => c === card.code),
+        values: checklist[card.code] ?? [],
         toggleValue,
       }}
     />

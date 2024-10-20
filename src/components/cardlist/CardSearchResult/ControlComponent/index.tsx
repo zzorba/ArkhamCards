@@ -6,6 +6,7 @@ import DeckQuantityComponent from './DeckQuantityComponent';
 import { CardCount } from './CardCount';
 import CardUpgradeButton from './CardUpgradeButton';
 import CardToggle from './CardToggle';
+import CardChecklistToggles from './CardChecklistToggles';
 import CardQuantityComponent from './CardQuantityComponent';
 import { EditSlotsActions } from '@components/core/hooks';
 import { DeckId } from '@actions/types';
@@ -48,8 +49,8 @@ export type ControlType = {
 } | {
   type: 'count_with_toggle';
   count: number;
-  value: boolean;
-  toggleValue: (value: boolean) => void;
+  values: number[];
+  toggleValue: (value: number, toggle: boolean) => void;
 } | {
   type: 'shuffle';
   count?: number;
@@ -105,13 +106,20 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
         />
       );
     case 'toggle':
-      return <CardToggle value={control.value} toggleValue={control.toggleValue} disabled={control.disabled} />;
+      return (
+        <CardToggle
+          value={control.value}
+          toggleValue={control.toggleValue}
+          disabled={control.disabled}
+        />
+      );
     case 'count_with_toggle':
       return (
-        <>
-          <CardCount count={control.count} />
-          <CardToggle value={control.value} toggleValue={control.toggleValue} />
-        </>
+        <CardChecklistToggles
+          values={control.values}
+          toggleValue={control.toggleValue}
+          quantity={control.count}
+        />
       );
     case 'quantity':
       return (

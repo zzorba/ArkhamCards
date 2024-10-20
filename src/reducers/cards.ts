@@ -67,6 +67,9 @@ export default function(
         error: null,
         progress: undefined,
         fetch: undefined,
+        cache: {
+          lastAttemptedSync: new Date().toISOString(),
+        },
       };
     }
     case CARD_FETCH_SUCCESS: {
@@ -75,7 +78,10 @@ export default function(
         loading: false,
         error: null,
         progress: undefined,
-        cache: action.cache,
+        cache: {
+          lastAttemptedSync: state.cache?.lastAttemptedSync,
+          ...action.cache,
+        },
         tabooCache: action.tabooCache,
         lang: undefined,
         fetch: undefined,

@@ -2686,6 +2686,249 @@ export type All_Card_Updated_Bool_Exp = {
   translation_updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
 };
 
+/** columns and relationships of "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version = {
+  __typename?: 'all_card_updated_by_version';
+  card_count: Scalars['Int']['output'];
+  cards_updated_at: Scalars['timestamp']['output'];
+  locale: Scalars['String']['output'];
+  translation_updated_at: Scalars['timestamp']['output'];
+  version: Scalars['Int']['output'];
+};
+
+/** aggregated selection of "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Aggregate = {
+  __typename?: 'all_card_updated_by_version_aggregate';
+  aggregate?: Maybe<All_Card_Updated_By_Version_Aggregate_Fields>;
+  nodes: Array<All_Card_Updated_By_Version>;
+};
+
+/** aggregate fields of "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Aggregate_Fields = {
+  __typename?: 'all_card_updated_by_version_aggregate_fields';
+  avg?: Maybe<All_Card_Updated_By_Version_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<All_Card_Updated_By_Version_Max_Fields>;
+  min?: Maybe<All_Card_Updated_By_Version_Min_Fields>;
+  stddev?: Maybe<All_Card_Updated_By_Version_Stddev_Fields>;
+  stddev_pop?: Maybe<All_Card_Updated_By_Version_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<All_Card_Updated_By_Version_Stddev_Samp_Fields>;
+  sum?: Maybe<All_Card_Updated_By_Version_Sum_Fields>;
+  var_pop?: Maybe<All_Card_Updated_By_Version_Var_Pop_Fields>;
+  var_samp?: Maybe<All_Card_Updated_By_Version_Var_Samp_Fields>;
+  variance?: Maybe<All_Card_Updated_By_Version_Variance_Fields>;
+};
+
+
+/** aggregate fields of "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<All_Card_Updated_By_Version_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate avg on columns */
+export type All_Card_Updated_By_Version_Avg_Fields = {
+  __typename?: 'all_card_updated_by_version_avg_fields';
+  card_count?: Maybe<Scalars['Float']['output']>;
+  version?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Boolean expression to filter rows from the table "all_card_updated_by_version". All fields are combined with a logical 'AND'. */
+export type All_Card_Updated_By_Version_Bool_Exp = {
+  _and?: InputMaybe<Array<All_Card_Updated_By_Version_Bool_Exp>>;
+  _not?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+  _or?: InputMaybe<Array<All_Card_Updated_By_Version_Bool_Exp>>;
+  card_count?: InputMaybe<Int_Comparison_Exp>;
+  cards_updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  locale?: InputMaybe<String_Comparison_Exp>;
+  translation_updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  version?: InputMaybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "all_card_updated_by_version" */
+export enum All_Card_Updated_By_Version_Constraint {
+  /** unique or primary key constraint on columns "locale", "version" */
+  AllCardUpdatedByVersionPkey = 'all_card_updated_by_version_pkey'
+}
+
+/** input type for incrementing numeric columns in table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Inc_Input = {
+  card_count?: InputMaybe<Scalars['Int']['input']>;
+  version?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** input type for inserting data into table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Insert_Input = {
+  card_count?: InputMaybe<Scalars['Int']['input']>;
+  cards_updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  translation_updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  version?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate max on columns */
+export type All_Card_Updated_By_Version_Max_Fields = {
+  __typename?: 'all_card_updated_by_version_max_fields';
+  card_count?: Maybe<Scalars['Int']['output']>;
+  cards_updated_at?: Maybe<Scalars['timestamp']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  translation_updated_at?: Maybe<Scalars['timestamp']['output']>;
+  version?: Maybe<Scalars['Int']['output']>;
+};
+
+/** aggregate min on columns */
+export type All_Card_Updated_By_Version_Min_Fields = {
+  __typename?: 'all_card_updated_by_version_min_fields';
+  card_count?: Maybe<Scalars['Int']['output']>;
+  cards_updated_at?: Maybe<Scalars['timestamp']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  translation_updated_at?: Maybe<Scalars['timestamp']['output']>;
+  version?: Maybe<Scalars['Int']['output']>;
+};
+
+/** response of any mutation on the table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Mutation_Response = {
+  __typename?: 'all_card_updated_by_version_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<All_Card_Updated_By_Version>;
+};
+
+/** on_conflict condition type for table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_On_Conflict = {
+  constraint: All_Card_Updated_By_Version_Constraint;
+  update_columns?: Array<All_Card_Updated_By_Version_Update_Column>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "all_card_updated_by_version". */
+export type All_Card_Updated_By_Version_Order_By = {
+  card_count?: InputMaybe<Order_By>;
+  cards_updated_at?: InputMaybe<Order_By>;
+  locale?: InputMaybe<Order_By>;
+  translation_updated_at?: InputMaybe<Order_By>;
+  version?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: all_card_updated_by_version */
+export type All_Card_Updated_By_Version_Pk_Columns_Input = {
+  locale: Scalars['String']['input'];
+  version: Scalars['Int']['input'];
+};
+
+/** select columns of table "all_card_updated_by_version" */
+export enum All_Card_Updated_By_Version_Select_Column {
+  /** column name */
+  CardCount = 'card_count',
+  /** column name */
+  CardsUpdatedAt = 'cards_updated_at',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  TranslationUpdatedAt = 'translation_updated_at',
+  /** column name */
+  Version = 'version'
+}
+
+/** input type for updating data in table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Set_Input = {
+  card_count?: InputMaybe<Scalars['Int']['input']>;
+  cards_updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  translation_updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  version?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type All_Card_Updated_By_Version_Stddev_Fields = {
+  __typename?: 'all_card_updated_by_version_stddev_fields';
+  card_count?: Maybe<Scalars['Float']['output']>;
+  version?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type All_Card_Updated_By_Version_Stddev_Pop_Fields = {
+  __typename?: 'all_card_updated_by_version_stddev_pop_fields';
+  card_count?: Maybe<Scalars['Float']['output']>;
+  version?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type All_Card_Updated_By_Version_Stddev_Samp_Fields = {
+  __typename?: 'all_card_updated_by_version_stddev_samp_fields';
+  card_count?: Maybe<Scalars['Float']['output']>;
+  version?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Streaming cursor of the table "all_card_updated_by_version" */
+export type All_Card_Updated_By_Version_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: All_Card_Updated_By_Version_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type All_Card_Updated_By_Version_Stream_Cursor_Value_Input = {
+  card_count?: InputMaybe<Scalars['Int']['input']>;
+  cards_updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  translation_updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  version?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate sum on columns */
+export type All_Card_Updated_By_Version_Sum_Fields = {
+  __typename?: 'all_card_updated_by_version_sum_fields';
+  card_count?: Maybe<Scalars['Int']['output']>;
+  version?: Maybe<Scalars['Int']['output']>;
+};
+
+/** update columns of table "all_card_updated_by_version" */
+export enum All_Card_Updated_By_Version_Update_Column {
+  /** column name */
+  CardCount = 'card_count',
+  /** column name */
+  CardsUpdatedAt = 'cards_updated_at',
+  /** column name */
+  Locale = 'locale',
+  /** column name */
+  TranslationUpdatedAt = 'translation_updated_at',
+  /** column name */
+  Version = 'version'
+}
+
+export type All_Card_Updated_By_Version_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<All_Card_Updated_By_Version_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<All_Card_Updated_By_Version_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: All_Card_Updated_By_Version_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type All_Card_Updated_By_Version_Var_Pop_Fields = {
+  __typename?: 'all_card_updated_by_version_var_pop_fields';
+  card_count?: Maybe<Scalars['Float']['output']>;
+  version?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate var_samp on columns */
+export type All_Card_Updated_By_Version_Var_Samp_Fields = {
+  __typename?: 'all_card_updated_by_version_var_samp_fields';
+  card_count?: Maybe<Scalars['Float']['output']>;
+  version?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate variance on columns */
+export type All_Card_Updated_By_Version_Variance_Fields = {
+  __typename?: 'all_card_updated_by_version_variance_fields';
+  card_count?: Maybe<Scalars['Float']['output']>;
+  version?: Maybe<Scalars['Float']['output']>;
+};
+
 /** unique or primary key constraints on table "all_card_updated" */
 export enum All_Card_Updated_Constraint {
   /** unique or primary key constraint on columns "locale" */
@@ -20564,6 +20807,10 @@ export type Mutation_Root = {
   delete_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
   /** delete single row from the table: "all_card_updated" */
   delete_all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** delete data from the table: "all_card_updated_by_version" */
+  delete_all_card_updated_by_version?: Maybe<All_Card_Updated_By_Version_Mutation_Response>;
+  /** delete single row from the table: "all_card_updated_by_version" */
+  delete_all_card_updated_by_version_by_pk?: Maybe<All_Card_Updated_By_Version>;
   /** delete data from the table: "arkhamdb_auth" */
   delete_arkhamdb_auth?: Maybe<Arkhamdb_Auth_Mutation_Response>;
   /** delete single row from the table: "arkhamdb_auth" */
@@ -20945,6 +21192,10 @@ export type Mutation_Root = {
   insert_all_card_text_one?: Maybe<All_Card_Text>;
   /** insert data into the table: "all_card_updated" */
   insert_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
+  /** insert data into the table: "all_card_updated_by_version" */
+  insert_all_card_updated_by_version?: Maybe<All_Card_Updated_By_Version_Mutation_Response>;
+  /** insert a single row into the table: "all_card_updated_by_version" */
+  insert_all_card_updated_by_version_one?: Maybe<All_Card_Updated_By_Version>;
   /** insert a single row into the table: "all_card_updated" */
   insert_all_card_updated_one?: Maybe<All_Card_Updated>;
   /** insert data into the table: "arkhamdb_auth" */
@@ -21373,6 +21624,12 @@ export type Mutation_Root = {
   update_all_card_updated?: Maybe<All_Card_Updated_Mutation_Response>;
   /** update single row of the table: "all_card_updated" */
   update_all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** update data of the table: "all_card_updated_by_version" */
+  update_all_card_updated_by_version?: Maybe<All_Card_Updated_By_Version_Mutation_Response>;
+  /** update single row of the table: "all_card_updated_by_version" */
+  update_all_card_updated_by_version_by_pk?: Maybe<All_Card_Updated_By_Version>;
+  /** update multiples rows of table: "all_card_updated_by_version" */
+  update_all_card_updated_by_version_many?: Maybe<Array<Maybe<All_Card_Updated_By_Version_Mutation_Response>>>;
   /** update multiples rows of table: "all_card_updated" */
   update_all_card_updated_many?: Maybe<Array<Maybe<All_Card_Updated_Mutation_Response>>>;
   /** update data of the table: "arkhamdb_auth" */
@@ -22017,6 +22274,19 @@ export type Mutation_RootDelete_All_Card_UpdatedArgs = {
 /** mutation root */
 export type Mutation_RootDelete_All_Card_Updated_By_PkArgs = {
   locale: Scalars['String']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_All_Card_Updated_By_VersionArgs = {
+  where: All_Card_Updated_By_Version_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_All_Card_Updated_By_Version_By_PkArgs = {
+  locale: Scalars['String']['input'];
+  version: Scalars['Int']['input'];
 };
 
 
@@ -23203,6 +23473,20 @@ export type Mutation_RootInsert_All_Card_Text_OneArgs = {
 export type Mutation_RootInsert_All_Card_UpdatedArgs = {
   objects: Array<All_Card_Updated_Insert_Input>;
   on_conflict?: InputMaybe<All_Card_Updated_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_All_Card_Updated_By_VersionArgs = {
+  objects: Array<All_Card_Updated_By_Version_Insert_Input>;
+  on_conflict?: InputMaybe<All_Card_Updated_By_Version_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_All_Card_Updated_By_Version_OneArgs = {
+  object: All_Card_Updated_By_Version_Insert_Input;
+  on_conflict?: InputMaybe<All_Card_Updated_By_Version_On_Conflict>;
 };
 
 
@@ -24712,6 +24996,28 @@ export type Mutation_RootUpdate_All_Card_Updated_By_PkArgs = {
   _inc?: InputMaybe<All_Card_Updated_Inc_Input>;
   _set?: InputMaybe<All_Card_Updated_Set_Input>;
   pk_columns: All_Card_Updated_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_Updated_By_VersionArgs = {
+  _inc?: InputMaybe<All_Card_Updated_By_Version_Inc_Input>;
+  _set?: InputMaybe<All_Card_Updated_By_Version_Set_Input>;
+  where: All_Card_Updated_By_Version_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_Updated_By_Version_By_PkArgs = {
+  _inc?: InputMaybe<All_Card_Updated_By_Version_Inc_Input>;
+  _set?: InputMaybe<All_Card_Updated_By_Version_Set_Input>;
+  pk_columns: All_Card_Updated_By_Version_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_All_Card_Updated_By_Version_ManyArgs = {
+  updates: Array<All_Card_Updated_By_Version_Updates>;
 };
 
 
@@ -27493,6 +27799,12 @@ export type Query_Root = {
   all_card_updated_aggregate: All_Card_Updated_Aggregate;
   /** fetch data from the table: "all_card_updated" using primary key columns */
   all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** fetch data from the table: "all_card_updated_by_version" */
+  all_card_updated_by_version: Array<All_Card_Updated_By_Version>;
+  /** fetch aggregated fields from the table: "all_card_updated_by_version" */
+  all_card_updated_by_version_aggregate: All_Card_Updated_By_Version_Aggregate;
+  /** fetch data from the table: "all_card_updated_by_version" using primary key columns */
+  all_card_updated_by_version_by_pk?: Maybe<All_Card_Updated_By_Version>;
   /** fetch data from the table: "arkhamdb_auth" */
   arkhamdb_auth: Array<Arkhamdb_Auth>;
   /** fetch aggregated fields from the table: "arkhamdb_auth" */
@@ -28184,6 +28496,30 @@ export type Query_RootAll_Card_Updated_AggregateArgs = {
 
 export type Query_RootAll_Card_Updated_By_PkArgs = {
   locale: Scalars['String']['input'];
+};
+
+
+export type Query_RootAll_Card_Updated_By_VersionArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_By_Version_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_By_Version_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+
+export type Query_RootAll_Card_Updated_By_Version_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_By_Version_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_By_Version_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+
+export type Query_RootAll_Card_Updated_By_Version_By_PkArgs = {
+  locale: Scalars['String']['input'];
+  version: Scalars['Int']['input'];
 };
 
 
@@ -41304,6 +41640,14 @@ export type Subscription_Root = {
   all_card_updated_aggregate: All_Card_Updated_Aggregate;
   /** fetch data from the table: "all_card_updated" using primary key columns */
   all_card_updated_by_pk?: Maybe<All_Card_Updated>;
+  /** fetch data from the table: "all_card_updated_by_version" */
+  all_card_updated_by_version: Array<All_Card_Updated_By_Version>;
+  /** fetch aggregated fields from the table: "all_card_updated_by_version" */
+  all_card_updated_by_version_aggregate: All_Card_Updated_By_Version_Aggregate;
+  /** fetch data from the table: "all_card_updated_by_version" using primary key columns */
+  all_card_updated_by_version_by_pk?: Maybe<All_Card_Updated_By_Version>;
+  /** fetch data from the table in a streaming manner: "all_card_updated_by_version" */
+  all_card_updated_by_version_stream: Array<All_Card_Updated_By_Version>;
   /** fetch data from the table in a streaming manner: "all_card_updated" */
   all_card_updated_stream: Array<All_Card_Updated>;
   /** fetch data from the table: "arkhamdb_auth" */
@@ -42230,6 +42574,37 @@ export type Subscription_RootAll_Card_Updated_AggregateArgs = {
 
 export type Subscription_RootAll_Card_Updated_By_PkArgs = {
   locale: Scalars['String']['input'];
+};
+
+
+export type Subscription_RootAll_Card_Updated_By_VersionArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_By_Version_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_By_Version_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_Updated_By_Version_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<All_Card_Updated_By_Version_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<All_Card_Updated_By_Version_Order_By>>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
+};
+
+
+export type Subscription_RootAll_Card_Updated_By_Version_By_PkArgs = {
+  locale: Scalars['String']['input'];
+  version: Scalars['Int']['input'];
+};
+
+
+export type Subscription_RootAll_Card_Updated_By_Version_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<All_Card_Updated_By_Version_Stream_Cursor_Input>>;
+  where?: InputMaybe<All_Card_Updated_By_Version_Bool_Exp>;
 };
 
 
@@ -47666,10 +48041,11 @@ export type ApiDeleteArkhamDbDeckMutation = { __typename?: 'mutation_root', apiD
 
 export type GetCardsCacheQueryVariables = Exact<{
   locale: Scalars['String']['input'];
+  version: Scalars['Int']['input'];
 }>;
 
 
-export type GetCardsCacheQuery = { __typename?: 'query_root', all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any, card_count?: number | null }> };
+export type GetCardsCacheQuery = { __typename?: 'query_root', all_card_updated: Array<{ __typename?: 'all_card_updated_by_version', translation_updated_at: any, cards_updated_at: any, card_count: number }> };
 
 export type GetTranslationDataQueryVariables = Exact<{
   locale: Scalars['String']['input'];
@@ -47680,17 +48056,19 @@ export type GetTranslationDataQuery = { __typename?: 'query_root', faction_name:
 
 export type GetPlayerCardsQueryVariables = Exact<{
   locale: Scalars['String']['input'];
+  version: Scalars['Int']['input'];
 }>;
 
 
-export type GetPlayerCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }> } | null }>, all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any, card_count?: number | null }>, taboo_set: Array<{ __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number, current: boolean }> };
+export type GetPlayerCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }> } | null }>, all_card_updated: Array<{ __typename?: 'all_card_updated_by_version', translation_updated_at: any, cards_updated_at: any, card_count: number }>, taboo_set: Array<{ __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number, current: boolean }> };
 
 export type GetEncounterCardsQueryVariables = Exact<{
   locale: Scalars['String']['input'];
+  version: Scalars['Int']['input'];
 }>;
 
 
-export type GetEncounterCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }> } | null }>, all_card_updated: Array<{ __typename?: 'all_card_updated', translation_updated_at: any, cards_updated_at: any, card_count?: number | null }> };
+export type GetEncounterCardsQuery = { __typename?: 'query_root', all_card: Array<{ __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }>, linked_card?: { __typename?: 'all_card', id: string, code: string, cost?: number | null, clues?: number | null, doom?: number | null, stage?: number | null, illustrator?: string | null, double_sided?: boolean | null, deck_limit?: number | null, encounter_code?: string | null, encounter_position?: number | null, exceptional?: boolean | null, exile?: boolean | null, faction_code: string, health?: number | null, health_per_investigator?: boolean | null, is_unique?: boolean | null, myriad?: boolean | null, pack_code: string, pack_position: number, permanent?: boolean | null, position: number, quantity: number, real_flavor?: string | null, real_name: string, real_pack_name: string, real_slot?: string | null, real_subname?: string | null, real_text?: string | null, real_traits?: string | null, real_back_name?: string | null, real_back_text?: string | null, real_back_flavor?: string | null, real_encounter_set_name?: string | null, sanity?: number | null, skill_agility?: number | null, skill_combat?: number | null, skill_intellect?: number | null, skill_willpower?: number | null, skill_wild?: number | null, subtype_code?: string | null, type_code: Card_Type_Code_Enum, victory?: number | null, shroud?: number | null, back_link_id?: string | null, enemy_horror?: number | null, enemy_damage?: number | null, enemy_evade?: number | null, enemy_fight?: number | null, hidden?: boolean | null, deck_options?: any | null, deck_requirements?: any | null, side_deck_options?: any | null, side_deck_requirements?: any | null, restrictions?: any | null, imageurl?: string | null, backimageurl?: string | null, faction2_code?: string | null, faction3_code?: string | null, xp?: number | null, version: number, alternate_required_code?: string | null, clues_fixed?: boolean | null, errata_date?: string | null, alternate_of_code?: string | null, duplicate_of_code?: string | null, spoiler?: boolean | null, vengeance?: number | null, customization_options?: any | null, taboo_set_id?: number | null, taboo_xp?: number | null, real_customization_text?: string | null, real_customization_change?: string | null, real_taboo_text_change?: string | null, real_taboo_original_text?: string | null, real_taboo_original_back_text?: string | null, preview?: boolean | null, official: boolean, taboo_placeholder?: boolean | null, gender?: Gender_Enum | null, alt_art_investigator?: boolean | null, tags?: any | null, translations: Array<{ __typename?: 'all_card_text', flavor?: string | null, name: string, slot?: string | null, subname?: string | null, text?: string | null, traits?: string | null, back_flavor?: string | null, back_text?: string | null, back_name?: string | null, customization_change?: string | null, customization_text?: string | null, taboo_text_change?: string | null, taboo_original_text?: string | null, taboo_original_back_text?: string | null }> } | null }>, all_card_updated: Array<{ __typename?: 'all_card_updated_by_version', translation_updated_at: any, cards_updated_at: any, card_count: number }> };
 
 export type GetCardFaqQueryVariables = Exact<{
   code: Scalars['String']['input'];
@@ -49118,8 +49496,10 @@ export type ApiDeleteArkhamDbDeckMutationHookResult = ReturnType<typeof useApiDe
 export type ApiDeleteArkhamDbDeckMutationResult = Apollo.MutationResult<ApiDeleteArkhamDbDeckMutation>;
 export type ApiDeleteArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<ApiDeleteArkhamDbDeckMutation, ApiDeleteArkhamDbDeckMutationVariables>;
 export const GetCardsCacheDocument = gql`
-    query getCardsCache($locale: String!) {
-  all_card_updated(where: {locale: {_eq: $locale}}) {
+    query getCardsCache($locale: String!, $version: Int!) {
+  all_card_updated: all_card_updated_by_version(
+    where: {locale: {_eq: $locale}, version: {_eq: $version}}
+  ) {
     translation_updated_at
     cards_updated_at
     card_count
@@ -49140,6 +49520,7 @@ export const GetCardsCacheDocument = gql`
  * const { data, loading, error } = useGetCardsCacheQuery({
  *   variables: {
  *      locale: // value for 'locale'
+ *      version: // value for 'version'
  *   },
  * });
  */
@@ -49226,9 +49607,9 @@ export type GetTranslationDataLazyQueryHookResult = ReturnType<typeof useGetTran
 export type GetTranslationDataSuspenseQueryHookResult = ReturnType<typeof useGetTranslationDataSuspenseQuery>;
 export type GetTranslationDataQueryResult = Apollo.QueryResult<GetTranslationDataQuery, GetTranslationDataQueryVariables>;
 export const GetPlayerCardsDocument = gql`
-    query getPlayerCards($locale: String!) {
+    query getPlayerCards($locale: String!, $version: Int!) {
   all_card(
-    where: {version: {_lte: 7}, linked: {_is_null: true}, encounter_code: {_is_null: true}}
+    where: {version: {_lte: $version}, linked: {_is_null: true}, encounter_code: {_is_null: true}}
   ) {
     ...SingleCard
     translations(where: {locale: {_eq: $locale}}) {
@@ -49241,7 +49622,9 @@ export const GetPlayerCardsDocument = gql`
       }
     }
   }
-  all_card_updated(where: {locale: {_eq: $locale}}) {
+  all_card_updated: all_card_updated_by_version(
+    where: {locale: {_eq: $locale}, version: {_eq: $version}}
+  ) {
     translation_updated_at
     cards_updated_at
     card_count
@@ -49267,6 +49650,7 @@ ${TabooSetFragmentDoc}`;
  * const { data, loading, error } = useGetPlayerCardsQuery({
  *   variables: {
  *      locale: // value for 'locale'
+ *      version: // value for 'version'
  *   },
  * });
  */
@@ -49287,7 +49671,7 @@ export type GetPlayerCardsLazyQueryHookResult = ReturnType<typeof useGetPlayerCa
 export type GetPlayerCardsSuspenseQueryHookResult = ReturnType<typeof useGetPlayerCardsSuspenseQuery>;
 export type GetPlayerCardsQueryResult = Apollo.QueryResult<GetPlayerCardsQuery, GetPlayerCardsQueryVariables>;
 export const GetEncounterCardsDocument = gql`
-    query getEncounterCards($locale: String!) {
+    query getEncounterCards($locale: String!, $version: Int!) {
   all_card(
     where: {version: {_lte: 7}, linked: {_is_null: true}, encounter_code: {_is_null: false}}
   ) {
@@ -49302,7 +49686,9 @@ export const GetEncounterCardsDocument = gql`
       }
     }
   }
-  all_card_updated(where: {locale: {_eq: $locale}}) {
+  all_card_updated: all_card_updated_by_version(
+    where: {locale: {_eq: $locale}, version: {_eq: $version}}
+  ) {
     translation_updated_at
     cards_updated_at
     card_count
@@ -49324,6 +49710,7 @@ ${CoreCardTextFragmentDoc}`;
  * const { data, loading, error } = useGetEncounterCardsQuery({
  *   variables: {
  *      locale: // value for 'locale'
+ *      version: // value for 'version'
  *   },
  * });
  */

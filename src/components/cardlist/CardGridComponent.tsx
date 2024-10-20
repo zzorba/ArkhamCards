@@ -9,6 +9,7 @@ import StyleContext from '@styles/StyleContext';
 import { CARD_RATIO } from '@styles/sizes';
 import { showCard } from '@components/nav/helper';
 import CardImage, { TouchableCardImage } from '@components/card/CardImage';
+import { FOOTER_HEIGHT } from '@components/DeckNavFooter/constants';
 
 export interface DraftHistory {
   cycle: number;
@@ -152,6 +153,7 @@ export default function CardGridComponent<ItemT extends GridItem>({
   return (
     <ScrollView style={[backgroundStyle, { flex: 1 }]} contentContainerStyle={[styles.gridView, { width, minHeight: height * 0.75 }, space.paddingTopS]}>
       { map(items, (item) => renderCardItem(item)) }
+      <View style={styles.footerPadding} />
     </ScrollView>
   );
 }
@@ -164,5 +166,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexWrap: 'wrap',
     paddingLeft: s,
+  },
+  footerPadding: {
+    height: FOOTER_HEIGHT,
   },
 });

@@ -703,13 +703,15 @@ export function resetDeckChecklist(
 export function setDeckChecklistCard(
   id: DeckId,
   card: string,
-  value: boolean
+  value: number,
+  toggle: boolean
 ): SetDeckChecklistCardAction {
   return {
     type: SET_DECK_CHECKLIST_CARD,
     id,
     card,
     value,
+    toggle,
   };
 }
 

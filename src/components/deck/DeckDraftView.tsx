@@ -12,7 +12,7 @@ import { CampaignId, DeckId, INVESTIGATOR_PROBLEM, SET_CURRENT_DRAFT, SET_CURREN
 import { useCampaignDeck } from '@data/hooks';
 import { useParsedDeck } from './hooks';
 import StyleContext from '@styles/StyleContext';
-import DeckNavFooter from './DeckNavFooter';
+import DeckNavFooter, { FOOTER_HEIGHT } from './DeckNavFooter';
 import { Navigation, OptionsTopBar, OptionsTopBarButton } from 'react-native-navigation';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import Card from '@data/types/Card';
@@ -413,6 +413,7 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
             <FlatList
               data={draftItems}
               renderItem={renderCardItem}
+              contentContainerStyle={styles.footerPadding}
             />
           ) }
         </>
@@ -440,4 +441,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  footerPadding: {
+    height: FOOTER_HEIGHT,
+  }
 });
