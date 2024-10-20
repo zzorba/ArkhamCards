@@ -26,6 +26,7 @@ export default function AboutView() {
   const germanTranslators = 'Hauke, tjanu';
   const russianTranslators = 'Eugene Sarnetsky, Alexander “Sheff” Buryakov, Eugene Karelin, [Artem “NL” Grechka](https://twitter.com/lnll), Max “Youbi” Zakharov, Vladimir “Sliptip” Litvaliev, Andrey “Dartemilion” Lubyanov, Mikhail “Necros47” Lisovsky, fnordmonkey';
   const koreanTranslators = '엘케인(elkeinkrad), 푸른이(derornos)';
+  const simplifiedChineseTranslators = 'Chris 崔家宁';
   const originalIconDesigns = t`<b>Icon Attribution:</b>\n• Original icon designs: ${visualDesigner}`;
   return (
     <ScrollView style={[space.paddingM, backgroundStyle]}>
@@ -33,7 +34,11 @@ export default function AboutView() {
         text={t`The information presented in this app about Arkham Horror: The Card Game, both literal and graphical, is copyrighted by Fantasy Flight Games. This app is not produced, endorsed, supported, or affiliated with Fantasy Flight Games.\n\nThis application was created by Daniel Salinas as a fan project to help support the Arkham Horror: The Card Game community, with design from ${visualDesigner} and additional development by ${dissonantVoicesDeveloper}, ${chaosBagDeveloper}, and ${toolingDeveloper}. If you find yourself managing lots of decks and campaigns, I\'m hoping it proves useful.\n\nFeedback and bug reports are welcome by email at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)\n\nMany thanks to ArkhamDB.com for providing the structured data, API access and access to card images. Without their continued support, this project wouldn\'t be possible.`} />
       <View style={space.marginTopM}>
         <CardTextComponent onLinkPress={linkPressed}
-          text={t`<b>Translation:</b>\n• Spanish: ${spanishTranslators}\n• French: ${frenchTranslators}\n• German: ${germanTranslators}\n• Russian: ${russianTranslators}\n• Korean: ${koreanTranslators}`} />
+          text={
+            [
+              t`<b>Translation:</b>\n• Spanish: ${spanishTranslators}\n• French: ${frenchTranslators}\n• German: ${germanTranslators}\n• Russian: ${russianTranslators}\n• Korean: ${koreanTranslators}`,
+              t`Chinese (Simplified): ${simplifiedChineseTranslators}`,
+            ].join('\n')} />
       </View>
       <View style={space.marginTopM}>
         <CardTextComponent onLinkPress={linkPressed}

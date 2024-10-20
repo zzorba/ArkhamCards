@@ -494,6 +494,32 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
           paddingTop: 8,
           paddingBottom: 8,
         },
+        heading1: context.typography.bigGameFont,
+        heading2: {
+          ...context.typography.gameFont,
+          fontSize: 22,
+          lineHeight: 24,
+        },
+        heading3: {
+          ...context.typography.gameFont,
+          fontSize: 20,
+          lineHeight: 22,
+        },
+        heading4: {
+          ...context.typography.gameFont,
+          fontSize: 18,
+          lineHeight: 20,
+        },
+        heading5: {
+          ...context.typography.gameFont,
+          fontSize: 16,
+          lineHeight: 18,
+        },
+        heading6: {
+          ...context.typography.gameFont,
+          fontSize: 14,
+          lineHeight: 16,
+        },
       }}
       fonts={{
         PingFangTC: {
