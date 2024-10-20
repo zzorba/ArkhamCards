@@ -58,7 +58,11 @@ function SingleEffectComponent({ id, effect, border, input, numberInput, step, w
     case 'check_campaign_log_cards':
       return (
         <View style={border ? space.paddingSideL : undefined}>
-          <CheckCampaignLogCardsComponent effect={effect} input={input} numberInput={numberInput} />
+          <CheckCampaignLogCardsComponent
+            effect={effect}
+            input={input}
+            numberInput={numberInput}
+          />
         </View>
       );
     case 'check_campaign_log_count':

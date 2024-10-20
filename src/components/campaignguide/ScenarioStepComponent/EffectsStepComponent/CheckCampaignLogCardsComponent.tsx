@@ -73,17 +73,18 @@ export default function CheckCampaignLogCardsComponent({ effect, input, numberIn
   return (
     <>
       { map(cardWithCounts, ({ card, count }) => {
-        let text: string = effect.text || '';
+        let text: string = effect.text ?? effect.masculine_text ?? '';
         if (card.gender) {
           switch (card.gender) {
             case Gender_Enum.M:
-              text = effect.masculine_text || text;
+              text = effect.masculine_text ?? text;
               break;
             case Gender_Enum.F:
-              text = effect.feminine_text || text;
+              text = effect.feminine_text ?? text;
               break;
             case Gender_Enum.Nb:
-              text = effect.nonbinary_text || text;
+            default:
+              text = effect.nonbinary_text ?? text;
               break;
           }
         }
