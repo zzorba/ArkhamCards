@@ -5836,6 +5836,7 @@ msgstr ""
 msgid "It looks like your app is missing ${ updates.missingCardCount } card."
 msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
 msgstr[0] ""
+msgstr[1] ""
 
 msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
 msgstr ""
@@ -5844,6 +5845,10 @@ msgid "Download cards"
 msgstr ""
 
 msgid "It has been more than a week since you checked for new cards."
+msgstr ""
+
+#, javascript-format
+msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
 msgstr ""
 
 msgctxt "investigator"

@@ -6013,6 +6013,10 @@ msgstr ""
 msgid "It has been more than a week since you checked for new cards."
 msgstr ""
 
+#, javascript-format
+msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""

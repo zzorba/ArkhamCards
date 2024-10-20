@@ -98,7 +98,7 @@ export function SimpleChaosBagItem({ componentId }: NavigationProps) {
           faction="neutral"
           noSpace
         >
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
             <View style={[{ flexDirection: 'column', flex: 1, justifyContent: 'space-between' }, space.paddingS]}>
               <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                 <View style={[{ borderRadius: 32, backgroundColor: colors.L10 }, space.paddingXs]}>
@@ -110,7 +110,9 @@ export function SimpleChaosBagItem({ componentId }: NavigationProps) {
               </View>
               <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                 <View style={[{ height: 1, width: '100%', backgroundColor: colors.L15 }, space.marginTopS, space.marginBottomS]} />
-                <Text style={[typography.smallButtonLabel, { color: colors.M }]}>{t`Just a bag. No strings attached.`}</Text>
+                <Text style={[typography.smallButtonLabel, { color: colors.M }]}>
+                  {t`Just a bag. No strings attached.`}
+                </Text>
               </View>
             </View>
             <View style={[space.paddingS, { flexDirection: 'column', alignItems: 'flex-end' }]}>
