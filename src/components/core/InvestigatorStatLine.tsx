@@ -16,12 +16,23 @@ interface Props {
   investigator: Card;
 }
 
+
+function specialCost(index: number) {
+  if (index === -2) {
+    return 'X';
+  }
+  if (index === -1) {
+    return '-';
+  }
+  return `${index}`;
+}
+
 export default function InvestigatorStatLine({ investigator }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const willpower = investigator.skill_willpower || 0;
-  const intellect = investigator.skill_intellect || 0;
-  const combat = investigator.skill_combat || 0;
-  const agility = investigator.skill_agility || 0;
+  const willpower = investigator.skill_willpower ?? 0;
+  const intellect = investigator.skill_intellect ?? 0;
+  const combat = investigator.skill_combat ?? 0;
+  const agility = investigator.skill_agility ?? 0;
 
   const skillIconBlockStyle = [
     styles.skillIconBlock,
@@ -31,25 +42,25 @@ export default function InvestigatorStatLine({ investigator }: Props) {
     <View style={styles.skillRow}>
       <View style={skillIconBlockStyle} accessibilityLabel={t`Willpower: ${willpower}`}>
         <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-          { willpower}
+          { specialCost(willpower) }
         </Text>
         <SkillIcon skill="willpower" size={26} />
       </View>
       <View style={skillIconBlockStyle} accessibilityLabel={t`Intellect: ${intellect}`}>
         <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-          { intellect }
+          { specialCost(intellect) }
         </Text>
         <SkillIcon skill="intellect" size={26} />
       </View>
       <View style={skillIconBlockStyle} accessibilityLabel={t`Combat: ${combat}`}>
         <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-          { combat }
+          { specialCost(combat) }
         </Text>
         <SkillIcon skill="combat" size={26} />
       </View>
       <View style={skillIconBlockStyle} accessibilityLabel={t`Agility: ${agility}`}>
         <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-          { agility }
+          { specialCost(agility) }
         </Text>
         <SkillIcon skill="agility" size={26} />
       </View>

@@ -31,8 +31,8 @@ export default function EnemyStatLine({ enemy }: Props) {
   ];
 
   const damageLine = flatten([
-    (enemy.enemy_damage || 0) > 0 ? [`Damage: ${enemy.enemy_damage || 0}.`] : [],
-    (enemy.enemy_horror || 0) > 0 ? [`Horror: ${enemy.enemy_horror || 0}.`] : [],
+    (enemy.enemy_damage ?? 0) > 0 ? [`Damage: ${enemy.enemy_damage ?? 0}.`] : [],
+    (enemy.enemy_horror ?? 0) > 0 ? [`Horror: ${enemy.enemy_horror ?? 0}.`] : [],
   ]).join(' ');
   return (
     <>
@@ -66,10 +66,10 @@ export default function EnemyStatLine({ enemy }: Props) {
         </View>
       </View>
       <View style={styles.iconRow} accessibilityLabel={damageLine}>
-        { map(range(0, enemy.enemy_damage || 0), idx => (
+        { map(range(0, enemy.enemy_damage ?? 0), idx => (
           <HealthSanityIcon key={idx} type="health" />
         )) }
-        { map(range(0, enemy.enemy_horror || 0), idx => (
+        { map(range(0, enemy.enemy_horror ?? 0), idx => (
           <HealthSanityIcon key={idx} type="sanity" />
         )) }
       </View>
