@@ -53,14 +53,21 @@ export function negativeQueryForInvestigator(
         );
       })
     : [];
+
+  let invertedClause: Brackets[] = [];
+  if (inverted.length) {
+    const [firstInverted, ...otherInverted] = inverted;
+    invertedClause.push(combineQueries(firstInverted, otherInverted, 'and'));
+  }
+
   const specialtyBuilder = new FilterBuilder("specialty");
-  inverted.push(
+  invertedClause.push(
     specialtyBuilder.illegalSpecialistFilter(
       investigator.real_traits_normalized?.split(",") ?? [],
       [investigator.faction_code ?? "neutral"]
     )
   );
-  return combineQueriesOpt(inverted, "or", true);
+  return combineQueriesOpt(invertedClause, "or", true);
 }
 
 /**
@@ -82,6 +89,7 @@ export function queryForInvestigator(
   const deck_options = context?.extraDeck
     ? investigator.side_deck_options
     : investigator.deck_options;
+
   // We assume that there is always at least one normalClause.
   const normalQuery = combineQueriesOpt(
     flatMap(deck_options, (option, index) => {
