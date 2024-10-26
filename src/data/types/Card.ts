@@ -54,6 +54,7 @@ import {
   specialReprintPlayerPacks,
   specialReprintCampaignPacks,
   specialPacks,
+  specialReprintCardPacks,
 } from "@app_constants";
 import DeckRequirement from "./DeckRequirement";
 import DeckOption from "./DeckOption";
@@ -1237,6 +1238,10 @@ export default class Card {
     if (alternatePack && packInCollection[alternatePack]) {
       quantity += this.quantity ?? 0;
     }
+    const alternateCodePack = specialReprintCardPacks[this.code];
+    if (alternateCodePack && packInCollection[alternateCodePack]) {
+      quantity += this.quantity ?? 0;
+    }
     return quantity;
   }
 
@@ -1990,6 +1995,10 @@ export function cardInCollection(
     ? specialReprintCampaignPacks[card.pack_code]
     : specialReprintPlayerPacks[card.pack_code];
   if (alternatePack && packInCollection[alternatePack]) {
+    return true;
+  }
+  const alternateCardPack = specialReprintCardPacks[card.code];
+  if (alternateCardPack && packInCollection[alternateCardPack]) {
     return true;
   }
   const reprintPacks = card.reprint_pack_codes || REPRINT_CARDS[card.code];

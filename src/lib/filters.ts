@@ -891,6 +891,7 @@ export default class FilterBuilder {
         packs,
         (pack) => pack.player
       );
+      const extraCodes = packs.flatMap(p => p.codes ?? []);
       if (playerPacks.length) {
         result.push(
           combineQueries(
@@ -916,6 +917,12 @@ export default class FilterBuilder {
             "and"
           )
         );
+      }
+      if (extraCodes.length) {
+        const clause = combineQueriesOpt(this.equalsVectorClause(extraCodes, 'code', ['extra_pack_codes']), 'or');
+        if (clause) {
+          result.push(clause);
+        }
       }
     }
     if (result.length) {

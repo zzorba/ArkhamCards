@@ -96,6 +96,7 @@ export interface DeckMeta {
   alternate_front?: string;
   alternate_back?: string;
   extra_deck?: string;
+  transform_into?: string;
   [key: string]: string | undefined;
 }
 

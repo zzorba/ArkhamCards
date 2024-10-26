@@ -662,10 +662,14 @@ export const specialPacks: ReprintPack[] = [
   },
 ];
 
-export const specialReprintPlayerPacks: { [code: string]: string | undefined } =
-  {};
+export const specialReprintPlayerPacks: {
+  [pack_code: string]: string | undefined;
+} = {};
 export const specialReprintCampaignPacks: {
-  [code: string]: string | undefined;
+  [pack_code: string]: string | undefined;
+} = {};
+export const specialReprintCardPacks: {
+  [card_code: string]: string | undefined;
 } = {};
 forEach(specialPacks, (pack) => {
   forEach(pack.packs, (p) => {
@@ -674,6 +678,9 @@ forEach(specialPacks, (pack) => {
     } else {
       specialReprintCampaignPacks[p] = pack.code;
     }
+  });
+  forEach(pack.codes ?? [], (c) => {
+    specialReprintCardPacks[c] = pack.code;
   });
 });
 
