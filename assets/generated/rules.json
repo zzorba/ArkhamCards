@@ -110,8 +110,24 @@
   },
   {
     "id": "Alert",
-    "cycle": ["tfa", "rttfa", "tcu", "rttcu", "tde", "tdea", "tdeb", "eoe", "tskc", "fof", "zdm", "zcf"],
-    "scenarios": ["fortune_and_folly_part_1", "fortune_and_folly_part_2"],
+    "cycle": [
+      "tfa",
+      "rttfa",
+      "tcu",
+      "rttcu",
+      "tde",
+      "tdea",
+      "tdeb",
+      "eoe",
+      "tskc",
+      "fof",
+      "zdm",
+      "zcf"
+    ],
+    "scenarios": [
+      "fortune_and_folly_part_1",
+      "fortune_and_folly_part_2"
+    ],
     "title": "Alert",
     "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the \"Alert\" keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
   },
@@ -171,6 +187,11 @@
     "id": "Base_Value",
     "title": "Base Value",
     "text": "Base value is the value of an element before any modifiers are applied. Unless otherwise specified, the base value of an element derived from a card is the value printed on that card."
+  },
+  {
+    "id": "Basic_Action_types",
+    "title": "Basic Action Types",
+    "text": "A basic action is an action a player may take and resolve in full without any other modifiers or abilities, including bold action designators. The following are basic actions: <b>Draw</b>, <b>Resource</b>, <b>Move</b>, <b>Investigate</b>, <b>Fight</b>, <b>Engage</b>, and <b>Evade</b>.\n<b>Activate</b>, <b>Play</b>, <b>Resign</b>, and <b>Parley</b> are not basic actions.\n<i>For example: An investigator may use Close the Circle’s ability to take a basic <b>Fight</b> action but cannot use it to <b>Play</b> an event with a <b>Fight</b> action designator, as playing an event is not considered a basic action."
   },
   {
     "id": "Bearer",
@@ -246,13 +267,17 @@
     "rules": [
       {
         "id": "Bless_and_Curse_Tokens",
-        "cycle": ["tic"],
+        "cycle": [
+          "tic"
+        ],
         "title": "Bless and Curse Tokens",
         "text": "This expansion introduces two new kinds of chaos tokens: bless ([bless]) tokens and curse ([curse]) tokens. By default, the chaos bag does not contain any [bless] or [curse] tokens. However, certain card effects can add these tokens or remove them from the chaos bag.\n- [bless] tokens revealed during a skill test have the following effects: \"+2. Reveal another token. Instead of returning this token to the chaos bag, return it to the token pool.\" No more than 10 total [bless] tokens can be included in the chaos bag or sealed on cards in play at any given time.\n- [curse] tokens revealed during a skill test have the following effects: \"–2. Reveal another token. Instead of returning this token to the chaos bag, return it to the token pool.\" No more than 10 total [curse] tokens can be included in the chaos bag or sealed on cards in play at any given time.\n- [bless] or [curse] tokens revealed outside of a skill test have no effect on their own unless otherwise specified by a card effect.\nFAQ:\n- <i>Do [bless] and [curse] tokens have a modifier or value if they are revealed outside of a skill test?</i> No. [bless] and [curse] tokens revealed outside of a skill test have no modifier or value.\n- <i>If adding a certain number of [bless] or [curse] tokens to the chaos bag is part of an ability's effect, and there are not enough [bless] or [curse] tokens remaining to fulfill that effect, what happens?</i> You perform as much of the ability as you can, adding [bless] or [curse] tokens until there are none left to add.\n- <i>If adding a certain number of [bless] or [curse] tokens to the chaos bag is part of a card/ability's cost, and there are not enough [bless] or [curse] tokens remaining to fulfill that cost, what happens?</i> If the cost cannot be paid, the card/ability therefore cannot be played/triggered.\n- <i>During a campaign, do [bless] and [curse] tokens remain in the chaos bag from scenario to scenario?</i> No, [bless] and [curse] tokens do not carry over from scenario to scenario.\n- <i>When exactly are [bless] and [curse] tokens removed from the chaos bag? Are they still present in the chaos bag during the resolution of a scenario?</i> [bless] and [curse] tokens should be removed from the chaos bag when the game is cleaned up after the resolution of a scenario. This occurs before moving onto any subsequent story interludes, unless otherwise noted."
       },
       {
         "id": "Frost_Tokens",
-        "cycle": ["eoe"],
+        "cycle": [
+          "eoe"
+        ],
         "title": "Frost Tokens",
         "text": "This expansion introduces a new type of chaos token: the frost ([frost]) token. At the start of the <i>Edge of the Earth</i> campaign, the chaos bag contains only a few relatively harmless [frost] tokens, if any. As the expedition continues, depending on the decisions the investigators make and the events that unfold, more [frost] tokens may be added to (or removed from) the chaos bag, altering the difficulty of every test the investigators perform. The more frost tokens are added to the chaos bag, the more crippling their effects become.\n- The first [frost] token revealed from the chaos bag during a skill test has the following effect: \"-1. Reveal another token.\" If another [frost] token is revealed from the chaos bag during the same test, immediately end the \"reveal chaos tokens\" step of the skill test and resolve the test as an automatic failure. <i>(Return all revealed [frost] tokens to the chaos bag after the test ends.)</i>\n<i>For example: Bob investigates and there are two [frost] tokens in the chaos bag. During Bob's first investigation attempt, he reveals a [frost] token. This reduces his skill value by 1 and causes him to reveal another token. The next token he reveals is a +1, resulting in a total of 0 from both tokens. Bob succeeds! Emboldened, Bob attempts to investigate a second time. This time, he reveals a [frost] token, followed by a second [frost] token. Bob must immediately stop revealing tokens and resolve the investigation as an automatic failure.</i>\n- No more than eight total [frost] tokens can be included in the chaos bag and/or sealed on cards in play at any given time.\n- A [frost] token revealed outside of a skill test has no effect on its own unless otherwise specified by a card effect.\n- A [frost] token added to the chaos bag remains in the chaos bag from scenario to scenario unless removed by a card or game effect. The app will track these additions/removals automatically."
       },
@@ -265,7 +290,9 @@
   },
   {
     "id": "Checkpoints",
-    "cycle": ["eoe"],
+    "cycle": [
+      "eoe"
+    ],
     "title": "Checkpoints",
     "text": "Some of the scenarios in the <i>Edge of the Earth</i> campaign are split into multiple parts. Players may choose to play these parts one at a time (with breaks between each part), or they may play multiple parts one after another as part of a longer session. Each part is its own game with its own setup and resolution.\nAfter completing one part of a scenario, the campaign guide directs the investigators to a Checkpoint that instructs them how to proceed. If the investigators wish to proceed directly to the next part of the scenario, the Checkpoint will instruct them how to clean up the game to prepare for the next part of the scenario. If the investigators wish to take a break and resume playing during their next game session, the Checkpoint will instruct them to record information in the Campaign Log that makes setup for the next session quick and easy."
   },
@@ -279,7 +306,6 @@
     "title": "Clues",
     "text": "Clues represent the progress the investigators can make towards solving a mystery, unraveling a conspiracy, and/or advancing in a scenario.\n- The first time an investigator enters a location, that location is revealed (turned face-up) and a number of clues equal to that location's clue value are placed on that location (from the token pool). Most clue values are conveyed as a \"per investigator ([per_investigator])\" value. This may occur during setup.\n- A clue at a location can be discovered by successfully investigating the location (see \"[Investigate Action](#Investigate_Action)\" on page 13), or by a card ability. If an investigator discovers a clue, he or she takes the clue from the location and places it on his or her investigator card, under his or her control.\n- If there are no \"<b>Objective</b> – \" requirements for advancing the current act, during any investigator's turn the investigators may, as a group, spend the requisite number of clues (usually conveyed as a \"per investigator\" value) from their investigator cards to advance the act deck. This is normally done as a [free] player ability. Any or all investigators may contribute any number of clues towards the total number of clues required to advance the act.\n- A card ability that refers to clues \"at a location\" is referring to the undiscovered clues that are currently on that location.\nSee also: \"[Act Deck and Agenda Deck](#Act_Deck_and_Agenda_Deck)\", \"[Tokens, Running out of](#Tokens)\"."
   },
-
   {
     "id": "Clues_on_Player_Cards",
     "title": "Clues on Player Cards",
@@ -293,13 +319,17 @@
   {
     "id": "Concealed_X",
     "title": "Concealed X",
-    "cycle": ["tskc"],
+    "cycle": [
+      "tskc"
+    ],
     "text": "Concealed X is a keyword that appears on some enemy cards in <i>The Scarlet Keys</i> campaign. Concealed enemies represent hidden enemies whose true location is a mystery until the investigators work to expose where—and in some cases, who—they truly are.\nWhen a scenario includes one or more concealed enemies, investigators are instructed to set aside several concealed mini-cards. These mini-cards are double-sided. The facedown side represents the possible location of a concealed enemy. The revealed side reveals the mini-card’s true nature—an enemy’s true location, or simply a decoy.\nWhen an investigator draws an enemy with the concealed X keyword (or is instructed to resolve an enemy’s concealed keyword), they spawn that enemy into a game area above the agenda deck, not at any location. This area is called “the shadows,” and represents enemies the investigators know exist somewhere on the map, but are unsure where. Then, that investigator takes the set-aside concealed mini-card that matches that enemy, along with X decoys (where X is defined by that enemy’s concealed X value), shuffles them facedown, and puts them into play distributed as evenly as possible among each location in play, starting with the locations nearest to them. Then, at each of those locations that already had 1 or more concealed mini-cards, they shuffle each of them facedown as well.\n<i>For example: Amina draws Coterie Agent (A), which has “concealed 2.” She first spawns the Coterie Agent into the shadows. Then, she takes the set-aside Coterie Agent (A) mini-card, along with 2 decoys, shuffles them facedown, and places one at each of the three locations nearest to her. Then, if any of those locations already had 1 or more concealed mini-cards, she would shuffle each concealed mini-card at those locations, as well.</i>\nEnemies in the shadows observe the following additional rules:\n= Enemies in the shadows are considered to be in play, but not at any particular location. They cannot move until they leave the shadows.\n= Enemies in the shadows can qualify as the “nearest” enemy, but only if there are no other enemies in play at any location.\n= Enemies in the shadows cannot be damaged or leave play via player card effects.\nSee also \"[Concealed Mini-Cards](#Concealed_Mini_Cards)\""
   },
   {
     "id": "Concealed_Mini_Cards",
     "title": "Concealed Mini-Cards",
-    "cycle": ["tskc"],
+    "cycle": [
+      "tskc"
+    ],
     "text": "While in play, concealed mini-cards represent the possible location of an enemy in the shadows. In order to deal with such an enemy, its true location must first be discovered by exposing its mini-card. This can be done via one of three methods: fighting, evading, or investigating.\n= Concealed mini-cards are not enemies and cannot be engaged like enemies. However, any investigator at the same location as a concealed mini-card may attempt to expose it by successfully attacking it or evading it (as if it were an engaged enemy), or by successfully investigating its location. The difficulty to successfully attack or evade a concealed mini-card is equal to the shroud value of its location.\n-- An investigator may also use a card effect that automatically evades an enemy, deals damage to an enemy, or discovers a clue at a location in order to instead expose a concealed mini-card.\n= If an investigator chooses to expose a concealed mini-card, that effect replaces the standard effects of the action or ability that exposed it. <i>(i.e., if an enemy’s mini-card is exposed by evasion or damage, the matching enemy is not evaded, nor does it take damage. If a mini-card is exposed by discovering clues or investigating, no clues are discovered.)</i>\n= If a concealed mini-card is exposed <i>(via any of the above methods)</i>, flip it to its revealed side.\n-- If it is a decoy, set it aside, out of play, with no effect.\n-- If it is an enemy’s mini-card, that enemy is now exposed. Place the matching enemy in the shadows at that mini-card’s location, then set that mini-card aside, out of play. <i>(That enemy is no longer in the shadows, and is now at the location where its mini-card was located).</i> Then, if there are no other enemies in the shadows, set all remaining concealed mini-cards in play aside, out of play.\n= Only one concealed mini-card may be exposed per effect unless explicitly stated. <i>(i.e., an effect that deals 3 damage to each enemy at a location does not expose all concealed mini-cards at that location; only one.)</i>\n<i>For example: There is a Coterie Agent and a Coterie Assassin in the shadows. There is a concealed mini-card at Kymani’s location and another concealed mini-card at a connecting location. (1) First, Kymani plays an event that discovers a clue at their location, but instead of discovering a clue, they choose to expose the concealed mini-card at their location, flipping it over. That mini-card is a decoy, and is set aside without effect. (2) Next, they move to the connecting location with the other concealed mini-card and attempt to expose it using an evade action. They succeed and flip the mini-card over… revealing the Coterie Assassin’s mini-card! (3) The Coterie Assassin’s mini-card is set aside, and the Coterie Assassin in the shadows is moved to Kymani’s location, engaging them. Because there is another enemy in the shadows, they do not remove any of the other concealed mini-cards from play.</i>"
   },
   {
@@ -330,7 +360,7 @@
       {
         "id": "Ignoring_All_Costs",
         "title": "Ignoring all costs",
-        "text": "Some cards like Knowledge is Power or Word of Woe allow an investigator to play a card or activate an ability on an asset, “ignoring all costs.” These effects only ignore the costs of initiating an ability. They do not ignore additional costs that must be paid when resolving that ability—in other words, anything “before the colon” is ignored, but any additional costs “after the colon” must be paid as normal.\n<i>For example, if an investigator uses Knowledge is Power to activate the [action] ability on Old Book of Lore, Knowledge is Power allows you to ignore the action cost and exhausting of Old Book of Lore to activate its ability and search your deck for a card, but does not waive the additional cost to spend a secret to play that card. Likewise, playing Word of Woe waives the action cost to activate the ability on Earthly Serenity, but does not waive the cost to spend charges to heal an investigator at your location."
+        "text": "Some cards like Knowledge is Power or Word of Woe allow an investigator to play a card or activate an ability on an asset, “ignoring all costs.” These effects only ignore the costs of initiating an ability, such as [action] costs, resource costs, spending uses, etc. They do not ignore additional costs that must be paid when resolving that ability—in other words, anything “before the colon” is ignored, but any additional costs “after the colon” must be paid as normal. Abilities that exile a card and/or remove a card from the game as a cost cannot be ignored.\n<i>For example, if an investigator uses Knowledge is Power to activate the [action] ability on Old Book of Lore, Knowledge is Power allows you to ignore the action cost and exhausting of Old Book of Lore to activate its ability and search your deck for a card, but does not waive the additional cost to spend a secret to play that card. Likewise, playing Word of Woe waives the action cost to activate the ability on Earthly Serenity, but does not waive the cost to spend charges to heal an investigator at your location. Additionally, Pushed to the Limit does not allow an investigator to waive the cost of exiling Fire Extinguisher when resolving its second ability.</i>"
       }
     ]
   },
@@ -421,7 +451,10 @@
   {
     "id": "Doubt_and_Conviction",
     "title": "Doubt and Conviction",
-    "cycle": ["ptc", "rtptc"],
+    "cycle": [
+      "ptc",
+      "rtptc"
+    ],
     "text": "Some story resolutions and interludes in <i>The Path to Carcosa</i> campaign instruct the players to \"Mark one <b>Doubt</b>\" or \"Mark one <b>Conviction</b>\" in their Campaign Log. This is done by filling in one of the boxes next to \"<b>Doubt</b>\" or \"<b>Conviction</b> at the bottom of the Campaign Log.\nLater in the campaign, some scenarios may be changed or altered depending on whether the investigators \"have more <b>Doubt</b> than <b>Conviction</b>\" or \"have more <b>Conviction</b> than <b>Doubt</b>.\" The investigators have more <b>Doubt</b> than <b>Conviction</b> if the number of boxes filled in next to <b>Doubt</b> is greater than the number of boxes filled in next to <b>Conviction</b> (and vice versa). <b>Doubt</b> and <b>Conviction</b> are shared among all of the investigators, and they are not tied to any specific investigator. <b>Doubt</b> and <b>Conviction</b> have no game effect except when explicitly referenced by the Campaign Guide or by a card effect."
   },
   {
@@ -446,7 +479,9 @@
   },
   {
     "id": "Elusive",
-    "cycle": ["fhv"],
+    "cycle": [
+      "fhv"
+    ],
     "title": "Elusive",
     "text": "If a ready enemy with the elusive keyword attacks or is attacked, after that attack resolves, that enemy immediately disengages from all investigators, moves to a connecting location (with no investigators, if able), and exhausts. This effect occurs whether the enemy was engaged with the attacking investigator or not."
   },
@@ -527,8 +562,14 @@
   },
   {
     "id": "Explore",
-    "cycle": ["tfa", "gob"],
-    "scenarios": ["the_eternal_slumber", "the_nights_usurper"],
+    "cycle": [
+      "tfa",
+      "gob"
+    ],
+    "scenarios": [
+      "the_eternal_slumber",
+      "the_nights_usurper"
+    ],
     "title": "Explore",
     "text": "Some abilities in this campaign (and others) are identified with an \"Explore\" action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the \"activate\" action.\n\"Explore\" abilities instruct you to draw the top card of the \"exploration deck,\" which is a separate deck that is constructed during the setup of some scenarios. This deck consists of several single-sided locations and treachery cards.\n- Each \"Explore\" ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a \"successful\" exploration.\n- If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck.\n- If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an \"unsuccessful\" exploration.\n- As a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value.\n<i>Example: Agenda 1a — “Expedition into the Wild” has the following ability: “[action]: <b>Explore.</b> Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
   },
@@ -554,7 +595,10 @@
   },
   {
     "id": "Flood_Tokens",
-    "cycle": ["tic", "zrttic"],
+    "cycle": [
+      "tic",
+      "zrttic"
+    ],
     "title": "Flood Tokens",
     "text": "Throughout this campaign, scenario card effects can flood locations. Each location has one of three different flood levels: it is either unflooded, partially flooded, or fully flooded. A location's flood level can be tracked using the double‑sided flood tokens included in this deluxe box. <b>A location's flood level has no inherent game effect.</b> However, some card effects may change or become stronger while you are at a flooded location, particularly if that location is fully flooded.\n- A location with no flood token is unflooded.\n- If a location becomes partially flooded, place a flood token on it with the partially flooded side faceup to designate this.\n- If a location becomes fully flooded, place a flood token on it with the fully flooded side faceup (or if it is already partially flooded, flip its flood token over) to designate this.\n- If a location's flood level is \"increased,\" it changes from unflooded to partially flooded, or from partially flooded to fully flooded. A fully flooded location cannot have its flood level increased.\n- If a location's flood level is \"decreased,\" it changes from fully flooded to partially flooded, or from partially flooded to unflooded. If a location becomes unflooded, remove its flood token.\n- For the purposes of card effects, both partially flooded locations and fully flooded locations are considered to be \"flooded.\"\nQ: <i>If an investigator starts their turn at a fully flooded location, enters an unrevealed location with no flood token, and that location becomes flooded “after it is revealed,” does the investigator still “struggle for air?” Or does this count as entering an unflooded location?</i> A: Technically the investigator has entered an unflooded location, which then became flooded after it was revealed, so they would not struggle for air."
   },
@@ -591,8 +635,13 @@
   {
     "id": "Haunted",
     "title": "Haunted",
-    "cycle": ["tcu", "rttcu"],
-    "scenarios": ["laid_to_rest"],
+    "cycle": [
+      "tcu",
+      "rttcu"
+    ],
+    "scenarios": [
+      "laid_to_rest"
+    ],
     "text": "Haunted is a new ability that appears on some locations. Each time an investigator fails a skill test while investigating a location, after applying all results for that skill test, that investigator must resolve all \"<b>Haunted</b> –\" abilities on that location.\nA location is \"haunted\" for the purposes of other card effects if it has at least one \"<b>Haunted</b> –\" ability (printed or otherwise)."
   },
   {
@@ -602,7 +651,18 @@
   },
   {
     "id": "Hidden",
-    "cycle": ["ptc", "rtptc", "tcu", "rttcu", "tde", "tdea", "tdeb", "tskc", "zdm", "zcf"],
+    "cycle": [
+      "ptc",
+      "rtptc",
+      "tcu",
+      "rttcu",
+      "tde",
+      "tdea",
+      "tdeb",
+      "tskc",
+      "zdm",
+      "zcf"
+    ],
     "title": "Hidden",
     "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.\n- While a hidden treachery is in your hand, treat it as if it were in your threat area. Its constant abilities are active, and abilities on it can be triggered, but only by you.\n- While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. However, its constant abilities are active, and abilities on it can be triggered, but only by you.\n-A hidden card counts toward your hand size, but it cannot leave your hand by any means except those described on the card. When discarded, a hidden card is placed in its appropriate discard pile.\nFor the best experience, players are encouraged to stay \"in character\" and not share information about hidden cards in their hand.",
     "rules": [
@@ -665,13 +725,18 @@
   },
   {
     "id": "Keys",
-    "cycle": ["tic", "zrttic"],
+    "cycle": [
+      "tic",
+      "zrttic"
+    ],
     "title": "Keys (token)",
     "text": "This expansion introduces key tokens that represent important objects or pieces of information that can be claimed and used during scenarios.\nKey tokens have two sides. When facedown, all seven keys have the same universal key symbol, so they can be randomized without the investigators knowing which is which. When faceup, each key is color coded with a unique color (<i>red</i>, <i>blue</i>, <i>green</i>, <i>yellow</i>, <i>purple</i>, <i>black</i>, <i>white</i>).\nIf a scenario uses one or more keys, the setup of that scenario indicates how many are set aside and whether they should be faceup or randomized facedown. Keys can enter play via several different card effects, and they are usually placed on an enemy, location, or story asset. Keys can be acquired in any of three ways:\n- If a location with a key on it has no clues, an investigator may take control of each of the location's keys as a [free] ability.\n- If an investigator causes an enemy with a key on it to leave play, that investigator must take control of each of the keys that were on that enemy. (If it leaves play through some other means, place its keys on its location.)\n- Some card effects may allow an investigator to take control of keys in other ways.\nWhen an investigator takes control of a key, they flip it faceup (if it is facedown) and place it on their investigator card. If an investigator who controls one or more keys is eliminated, place each of their keys on their location. As an [action] ability, an investigator may give any number of their keys to another investigator at the same location.\n<b>Keys have no inherent game effect.</b> However, some card effects may change depending on which keys an investigator controls. Additionally, keys may sometimes be required in order to progress during a scenario."
   },
   {
     "id": "Keys2",
-    "cycle": ["tskc"],
+    "cycle": [
+      "tskc"
+    ],
     "title": "Keys (card)",
     "text": "<i>The Scarlet Keys</i> campaign features a new cardtype: keys. Keys are powerful artifacts that may be “shifted” to either aid or hinder investigators, depending on whom they are attached to and whether their [[Stable]] or [[Unstable]] side is faceup.\n= During the resolution of a scenario, a key may become bound to a single bearer, whose name is marked in the Campaign Log. A key may be bound to an investigator, a story asset, or an enemy.\n= A key always enters play attached to its bearer (as marked in the Campaign Log). At the start of each scenario, each investigator who is the bearer of 1 or more keys attaches those keys to their investigator card. Whenever a story asset or enemy enters play, if it is the bearer of 1 or more keys, those keys also enter play attached to their bearer.\n-- If a key’s bearer is an investigator or a story asset, it enters play [[Stable]] side faceup.\n-- If a key’s bearer is an enemy, it enters play [[Unstable]] side faceup.\n= A key cannot leave play unless its bearer leaves play. If the bearer of 1 or more keys leaves play, each key they control is set aside, out of play. <i>(Those keys do, however, remain bound to their bearer for future scenarios unless explicitly noted otherwise.)</i>\n= While a key is attached to an investigator, that investigator may trigger its shift ability during any player window as a [fast] ability. This is called “shifting” the key. As part of this ability’s resolution, it will instruct the investigator to flip the key to its other side, so its other shift ability is active. The investigator will then have to perform the shift ability on its [[Unstable]] side in order to flip it back over again.\n-- While a key is attached to a story asset, it may be shifted by any investigator who controls that asset in the same way.\n-- Each key (by title) attached to an investigator or story asset can only be shifted once per round.\n= While a key is under an enemy’s control, its shift ability only resolves when a card or game effect instructs an investigator to shift that key, after which it remains [[Unstable]] side faceup.\n-- A key attached to an enemy cannot be flipped to its [[Stable]] side.\n-- There is no limit to the number of times a key attached to an enemy can be shifted.\n= Some card effects may directly flip a key attached to an investigator or story asset from its [[Stable]] side to its [[Unstable]] side, or vice versa. This is not the same as shifting a key, and does not resolve its shift ability."
   },
@@ -798,7 +863,9 @@
   },
   {
     "id": "Myriad",
-    "cycle": ["tde"],
+    "cycle": [
+      "tde"
+    ],
     "title": "Myriad",
     "text": "An investigator may include up to three copies of a player card with the myriad keyword in their deck (by title), instead of the normal limit of two copies. Additionally, when you purchase a myriad card for your deck, you may purchase up to two additional copies of that card (at the same level) at no experience cost.\nWhen counting the total amount of experience in your deck, each copy of a Myriad card after the first copy does not count towards your experience total."
   },
@@ -835,13 +902,23 @@
   {
     "id": "Partner",
     "title": "Partner",
-    "cycle": ["eoe"],
+    "cycle": [
+      "eoe"
+    ],
     "text": "Partner is a keyword ability that appears on the nine story assets in the <i>Expedition Team</i> encounter set. Each of these assets represents a powerful ally whom investigators can bring along during scenarios in this campaign to improve their chances of success. However, bringing an asset with the partner keyword endangers that asset, with the risk of losing them permanently.\n- At the start of each scenario in this campaign, each investigator is given the option to choose a partner asset and put it into play. Partner assets cannot be added to an investigator's deck. An investigator may choose a different partner (or no partner) to bring each time they are given this choice.\n- A partner asset cannot leave play unless it is defeated (for example, it cannot be discarded by card effects unless it is explicitly defeated). If an investigator is defeated, any partner asset they have with them is also defeated.\n- If a partner asset is defeated, remove it from the game. Then, cross off that character's name in the Expedition Team section of the Campaign Log.\n- Damage or horror on a partner asset is recorded in the Expedition Team section of the Campaign Log at the end of each game. <i>(The Campaign Guide will instruct you when to do this.)</i>\n- If an investigator resigns from a scenario, their partner asset leaves play, but is not defeated. Keep all damage and horror on it, as it will be recorded in the Campaign Log after the game ends."
   },
   {
     "id": "Patrol",
-    "cycle": ["side", "eoe", "tskc", "fof"],
-    "scenarios": ["fortune_and_folly_part_1", "fortune_and_folly_part_2"],
+    "cycle": [
+      "side",
+      "eoe",
+      "tskc",
+      "fof"
+    ],
+    "scenarios": [
+      "fortune_and_folly_part_1",
+      "fortune_and_folly_part_2"
+    ],
     "title": "Patrol",
     "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).\n- If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward.\n- If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
   },
@@ -895,7 +972,10 @@
   {
     "id": "Prologue_Investigators",
     "title": "Prologue Investigators",
-    "cycle": ["tcu", "rttcu"],
+    "cycle": [
+      "tcu",
+      "rttcu"
+    ],
     "text": "The four investigator cards depicted here (Gavriella Mizrah, Jerome Davids, Penny White, and Valentino Rivas) are marked with the <i>Disappearance at the Twilight Estate</i> encounter set icon and can only be used in the prologue for <i>The Circle Undone</i>. They cannot be used in other scenarios. Keep them with the rest of the scenario cards for <i>Disappearance at the Twilight Estate</i>, and do not integrate them into your collection of player cards."
   },
   {
@@ -941,7 +1021,9 @@
   {
     "id": "Researched",
     "title": "Researched",
-    "cycle": ["eoe"],
+    "cycle": [
+      "eoe"
+    ],
     "text": "Researched is a keyword ability that appears on some higher-level cards (most prominently on Seeker cards.)\nTo be included in an investigator's deck, a card with the Researched keyword must first be \"identified\" or \"translated\" by performing a task on the lower level version of that card and recording the result in your Campaign Log.\n- You can only include a researched card in your deck by upgrading it from its lower level version.\n- You may only include a researched card in your deck if, in your Campaign Log, you have recorded the completion of the task described in the lower level version of that card.\n- After an investigator has completed this task and recorded it in the Campaign Log, any investigator in that campaign may upgrade the relevant card following the normal rules for upgrading player cards.\n<i>For example, Archive of Conduits (Gateway to Tindalos) has the \"Researched\" keyword. Therefore, an investigator cannot purchase Archive of Conduits (Gateway to Tindalos) directly. They must instead upgrade it from Archive of Conduits (Unidentified), and they can only do so if they have \"identified the gateway.\"</i>"
   },
   {
@@ -977,7 +1059,9 @@
   {
     "id": "Seal",
     "title": "Seal",
-    "cycle": ["zdm"],
+    "cycle": [
+      "zdm"
+    ],
     "text": "As an additional cost for a card with the seal keyword to enter play, its controller must search the chaos bag for the specified chaos token and place it on top of the card, thereby sealing it. If there is a choice of which token to seal, the card's controller chooses. If the specified token is not in the chaos bag, the card cannot enter play. A sealed chaos token is not considered to be in the chaos bag, and therefore cannot be revealed from the chaos bag as part of a skill test or ability.\nWhen a chaos token is \"released,\" it is returned to the chaos bag and is no longer considered sealed. <b>If a card with one or more chaos tokens sealed on it leaves play for any reason, any chaos tokens sealed on it are immediately released.</b>\nSome cards (with or without the seal keyword) may also have abilities that seal one or more chaos tokens as part of their effect. This is done following the same process as above: searching the chaos bag for the specified token, removing it from the chaos bag, and placing it on the card. If the specified token is not in the chaos bag, the effect fails."
   },
   {
@@ -1010,7 +1094,7 @@
   {
     "id": "Signature_Cards",
     "title": "Signature Cards",
-    "text": "An investigator’s “signature cards” are the cards that are only available to that investigator, and cannot be included in another investigator’s deck. This includes player cards with the text “(Investigator Name) deck only,” as well as non-basic weaknesses that are listed under “Deckbuilding Requirements” and therefore can only be included in that investigator’s deck.\nSignature cards are governed by the following additional rules:\n- The number of each signature card listed under an investigator’s “Deckbuilding Requirements” is the exact number of copies of that card that is to be included in that investigator’s deck. If no number is specified, that number is 1.\n<i>For example: Under “Deckbuilding Requirements” for Roland Banks, the following cards are listed: “Roland’s .38 Special, Cover Up, 1 random basic weakness.” Roland Banks must include exactly 1 copy of his signature cards—Roland’s .38 Special and Cover Up. He is not permitted to include more than 1 copy of either of these cards.</i>\n- An investigator cannot play another investigator’s signature cards, control another investigator’s signature cards while they are in play, or possess another investigator’s signature cards in their hand. If a game effect would force a player to take control of a card with another investigator’s signature card attached to it, that signature card is discarded. <i>For example: Roland has the Roland’s .38 Special card in play. He has the card “Teamwork” which can allow investigators at the same location to trade or give assets among one another. However, because Roland’s .38 Special is one of Roland’s signature cards, he cannot give it to another investigator.</i>\n- Signature cards need not abide by typical deckbuilding restrictions, and do not count toward any deckbuilding limitations if other cards share the same title."
+    "text": "An investigator’s “signature cards” are the cards that are only available to that investigator, and cannot be included in another investigator’s deck. This includes player cards with the text “(Investigator Name) deck only,” as well as non-basic weaknesses that are listed under “Deckbuilding Requirements” and therefore can only be included in that investigator’s deck.\nSignature cards are governed by the following additional rules:\n- The number of each signature card listed under an investigator’s “Deckbuilding Requirements” is the exact number of copies of that card that is to be included in that investigator’s deck. If no number is specified, that number is 1.\n<i>For example: Under “Deckbuilding Requirements” for Roland Banks, the following cards are listed: “Roland’s .38 Special, Cover Up, 1 random basic weakness.” Roland Banks must include exactly 1 copy of his signature cards—Roland’s .38 Special and Cover Up. He is not permitted to include more than 1 copy of either of these cards.</i>\n- An investigator cannot play or commit another investigator’s signature cards, control another investigator’s signature cards while they are in play, or possess another investigator’s signature cards in their hand. If a game effect would force a player to take control of a card with another investigator’s signature card attached to it, that signature card is discarded. <i>For example: Roland has the Roland’s .38 Special card in play. He has the card “Teamwork” which can allow investigators at the same location to trade or give assets among one another. However, because Roland’s .38 Special is one of Roland’s signature cards, he cannot give it to another investigator.</i>\n- Signature cards need not abide by typical deckbuilding restrictions, and do not count toward any deckbuilding limitations if other cards share the same title."
   },
   {
     "id": "Skill_Cards",
@@ -1052,13 +1136,30 @@
   {
     "id": "Story_Cards",
     "title": "Story Cards",
-    "cycle": ["ptc", "rtptc", "tfa", "rttfa", "tcu", "rttcu", "tde", "tdea", "tdeb", "eoe", "tskc", "fof", "gob"],
+    "cycle": [
+      "ptc",
+      "rtptc",
+      "tfa",
+      "rttfa",
+      "tcu",
+      "rttcu",
+      "tde",
+      "tdea",
+      "tdeb",
+      "eoe",
+      "tskc",
+      "fof",
+      "gob"
+    ],
     "text": "Story cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any."
   },
   {
     "id": "Supplies",
     "title": "Supplies",
-    "cycle": ["tfa", "rttfa"],
+    "cycle": [
+      "tfa",
+      "rttfa"
+    ],
     "text": "At certain points throughout *The Forgotten Age* campaign, investigators are given the opportunity to choose supplies to bring on their expeditions into the wilds. These supplies are recorded in the Campaign Log, under each investigator's \"Supplies\" section.\nSupplies are purchased with supply points, which are granted to investigators whenever they are given the opportunity to purchase supplies. Leftover supply points are not recorded, and are lost.\nAn investigator's supplies will determine the possible options available during gameplay and throughout the story of this campaign. <b>Each supply has no effect on its own.</b> Some card effects, story options, and resolutions may change or become available depending on the supplies carried by the investigator(s)."
   },
   {
@@ -1068,8 +1169,15 @@
   },
   {
     "id": "Swarming X",
-    "cycle": ["tde", "tdea", "tdeb", "zdm"],
-    "scenarios": ["war_of_the_outer_gods"],
+    "cycle": [
+      "tde",
+      "tdea",
+      "tdeb",
+      "zdm"
+    ],
+    "scenarios": [
+      "war_of_the_outer_gods"
+    ],
     "title": "Swarming X",
     "text": "An enemy with the swarming X keyword is actually a pack of enemies operating in unison. After you put any enemy with the swarming X keyword into play, place the top X cards of your deck facedown underneath the enemy as swarm cards, without looking at them. The enemy they are underneath is called the \"host enemy.\" Some scenario card effects may also instruct a player to add swarm cards to an enemy. This is done using the same process.\n- If it is ever unclear which investigator should add swarm cards, the lead investigator does so.\n- Each swarm card underneath the host enemy acts as a separate instance of that enemy for most purposes. Each swarm card has the same values and text as its host card. <i>(For example, if an investigator is engaged with a host enemy with 2 swarm cards underneath it, that investigator is engaged with 3 enemies in total.)</i>\n- Each swarm card attacks separately when enemies attack during the enemy phase. Once the host enemy and all of its swarm cards have attacked during this step, exhaust all of them.\n- Each swarm card can be attacked or dealt damage separately, but the host enemy cannot be defeated while it still has swarm cards underneath it. When a swarm card is defeated, any excess damage may be dealt to another swarm card underneath the same host enemy or to the host enemy itself. <i>(For example, Tony Morgan uses a .41 Derringer to attack a Stealthy Zoog with 2 swarm cards. The attack deals 2 damage. The first point of damage defeats 1 of the 2 swarm cards, so the excess point of damage may be dealt to another swarm card, defeating it as well.)</i>\n- Anytime a swarm card leaves play, place it on the bottom of its owner's deck. If you are unsure of the owner of the swarm card, you may look at it to determine its owner.\n- The host enemy and all of its swarm cards move, engage, and exhaust as a single entity. <i>(For example, if a host enemy or any of its swarm cards are evaded, all of them exhaust and become disengaged.)</i>\nQ: <i>What happens if an enemy with the swarming keyword loses swarming or is blanked, such as via Mind Wipe? </i> A: Swarming only resolves when the enemy with the swarming keyword enters play. If it later loses the swarming keyword or its text box is blanked, its swarm cards remain in play and it is still considered a host enemy\nQ: <i>Can I use a card effect that discards a host enemy without defeating it, such as Close Call? If so, what happens to its swarm cards?? </i> A: A host enemy cannot be defeated while it still has swarm cards underneath it, but it can still be discarded or removed through other methods. In such a case, its swarm cards would also leave play"
   },
@@ -1091,7 +1199,9 @@
   {
     "id": "Tekelili",
     "title": "Tekeli-li!",
-    "cycle": ["eoe"],
+    "cycle": [
+      "eoe"
+    ],
     "text": "This campaign includes an encounter set of 16 weaknesses, each with the title \"Tekeli-li!\" These cards are shuffled together to form a special Tekeli-li deck during the setup of each scenario of this campaign.\nLike normal weaknesses, if one of these cards is added to an investigator's deck, it becomes a part of that deck and stays with that investigator from scenario to scenario. However, the resolution of each Tekeli-li! weakness instructs the investigator to return it to the Tekeli-li deck (removing it from their own deck). As a result, the number of cards in the Tekeli-li deck varies based on how many of these weaknesses are in each investigator's deck.\n<i>Note: While all Tekeli-li! cards share the same title, they may have differing effects.</i>"
   },
   {
@@ -1164,8 +1274,13 @@
   {
     "id": "Vengeance_X",
     "title": "Vengeance X",
-    "cycle": ["tfa", "rttfa"],
-    "scenarios": ["relics_of_the_past"],
+    "cycle": [
+      "tfa",
+      "rttfa"
+    ],
+    "scenarios": [
+      "relics_of_the_past"
+    ],
     "text": "Some encounter cards are worth vengeance points. The text <b>Vengeance X</b> indicates that a card is worth X vengeance points.\nLike <b>Victory X</b>, when an encounter card with <b>Vengeance X</b> is overcome by the investigators, it is stored in the victory display until the end of the scenario. However, unlike victory points, vengeance represents the awareness and animosity of the Father of Serpents, and it is generally a good idea to avoid accruing vengeance points whenever possible.\nVengeance points in the victory display have no impact upon the game unless specifically referenced by another encounter card.\n- As an enemy with <b>Vengeance X</b> is defeated, place the card in the victory display instead of in the discard pile.\n- At the end of a scenario, take each location with <b>Vengeance X</b> that is in play, revealed, and has no clues on it, and place it in the victory display.\n- As a treachery card with **Vengeance X** completes its resolution, place it in the victory display instead of in the discard pile.\n- Cards worth vengeance points are not also worth victory points unless the card has both <b>Victory X</b> and <b>Vengeance X</b>."
   },
   {
@@ -1187,20 +1302,17 @@
     "id": "Wild_Skill_Icons",
     "title": "Wild Skill Icons",
     "text": "A Wild ([wild]) skill icon on a player card may be used to match any other skill icon for the purposes of both card abilities and counting how many matching icons are committed to a skill test. When using Wild icons for the purpose of resolving a card ability, a player must state which icon the Wild is matching at the time the card is used.\nWild icons committed to a skill test are considered \"matching\" icons for the purposes of card abilities."
-  }
-  ,
+  },
   {
     "id": "Winning_and_Losing",
     "title": "Winning and Losing",
     "text": "Each scenario has a number of different possible endings.\nThe act deck represents the progress of the investigators through a scenario. Some instructions in the act deck (as well as on other encounter cardtypes) contain resolution points, in the format of: \"**(→R#)**.\" The players' primary objective is to advance through the act deck until a (hopefully favorable) resolution point is reached. Should the act deck invoke a resolution, the players have completed the scenario (they may even have \"won!\"). Instructions for resolving the designated resolution are found in the \"do not read until end of game\" section of the campaign manual.\nThe agenda deck represents the objectives and progress of the malicious forces pitted against the investigators in the scenario. Some instructions in the agenda deck (as well as on other encounter cardtypes) also contain resolution points, in the format of: \"<b>(→R#)</b>.\" Should the agenda deck invoke a (usually darker) resolution, the players have lost the scenario. Instructions for resolving the designated resolution are found in the \"do not read until end of game\" section of the campaign guide.\nShould the scenario end with no resolution being reached *(for example, if all investigators have been eliminated or have resigned)*, instructions for resolving the scenario can be found in the \"do not read until end of game\" section of the campaign guide.\n- If playing in a campaign, players will proceed to the next scenario in the campaign regardless of the outcome of the scenario. Even if players \"lose\" a scenario, they still continue their campaign (although with some negative consequences from their failure).\n- When playing a standalone scenario, players either win or lose the scenario. They win if they complete a resolution on an act card. Any other resolution is considered a loss (see \"[Standalone Mode](#Standalone_Mode)\").\nSee \"[Act Deck and Agenda Deck](#Act_Deck_and_Agenda_Deck)\"."
-  }
-  ,
+  },
   {
     "id": "The_letter_X",
     "title": "The letter \"X\"",
     "text": "The value of the letter X is defined by a card ability or a granted player choice. If X is not defined, its value is equal to 0.\n- For costs involving the letter X, the value of X is defined by card ability or player choice, after which the amount paid may be modified by effects without altering the value of X."
-  }
-  ,
+  },
   {
     "id": "You_Your",
     "title": "You/Your",
@@ -1227,43 +1339,283 @@
         "id": "Phase_Sequence_Timing",
         "title": "Phase Sequence timing chart",
         "table": [
-          { "row": [{ "text": "I. Mythos phase (skip during first round of game)" }] },
-          { "row": [{ "color": "green", "text": "1.1 Round begins. Mythos phase begins." }] },
-          { "row": [{ "color": "green", "text": "1.2 Place 1 doom on the current agenda." }] },
-          { "row": [{ "color": "green", "text": "1.3 Check doom threshold." }] },
-          { "row": [{ "color": "green", "text": "1.4 Each investigator draws 1 encounter card." }] },
-          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
-          { "row": [{ "color": "green", "text": "1.5 Mythos phase ends." }] },
-          { "row": [{ "color": "grey", "text": "Proceed to Investigation Phase." }] },
-          { "row": [] },
-          { "row": [{ "text": "II. Investigation phase" }] },
-          { "row": [{ "color": "green", "text": "2.1 Investigation phase begins." }] },
-          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
-          { "row": [{ "color": "green", "text": "2.2 Next investigator's turn begins." }] },
-          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
-          { "row": [{ "color": "green", "text": "2.2.1 Active investigator may take an action, if able. If an action was taken, return to previous player window. If no action was taken, proceed to 2.2.2." }] },
-          { "row": [{ "color": "green", "text": "2.2.2 Investigator's turn ends. If an investigator has not yet taken a turn this phase, return to 2.2. If each investigator has taken a turn this phase, proceed to 2.3." }] },
-          { "row": [{ "color": "green", "text": "2.3 Investigation phase ends." }] },
-          { "row": [{ "color": "grey", "text": "Proceed to Enemy Phase." }] },
-          { "row": [] },
-          { "row": [{ "text": "III. Enemy phase" }] },
-          { "row": [{ "color": "green", "text": "3.1 Enemy phase begins." }] },
-          { "row": [{ "color": "green", "text": "3.2 Hunter enemies move." }] },
-          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
-          { "row": [{ "color": "green", "text": "3.3 Next investigator resolves engaged enemy attacks. If an investigator has not yet resolved enemy attacks this phase, return to previous player window. After final investigator resolves engaged enemy attacks, proceed to next player window." }] },
-          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
-          { "row": [{ "color": "green", "text": "3.4 Enemy phase ends." }] },
-          { "row": [{ "color": "grey", "text": "Proceed to Upkeep Phase." }] },
-          { "row": [] },
-          { "row": [{ "text": "IV. Upkeep phase" }] },
-          { "row": [{ "color": "green", "text": "4.1 Upkeep phase begins." }] },
-          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
-          { "row": [{ "color": "green", "text": "4.2 Reset actions." }] },
-          { "row": [{ "color": "green", "text": "4.3 Ready each exhausted card." }] },
-          { "row": [{ "color": "green", "text": "4.4 Each investigator draws 1 card and gains 1 resource." }] },
-          { "row": [{ "color": "green", "text": "4.5 Each investigator checks hand size." }] },
-          { "row": [{ "color": "green", "text": "4.6 Upkeep phase ends. Round ends." }] },
-          { "row": [{ "color": "grey", "text": "Proceed to Mythos Phase of next game round." }] }
+          {
+            "row": [
+              {
+                "text": "I. Mythos phase (skip during first round of game)"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "1.1 Round begins. Mythos phase begins."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "1.2 Place 1 doom on the current agenda."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "1.3 Check doom threshold."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "1.4 Each investigator draws 1 encounter card."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] PLAYER WINDOW"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "1.5 Mythos phase ends."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "grey",
+                "text": "Proceed to Investigation Phase."
+              }
+            ]
+          },
+          {
+            "row": []
+          },
+          {
+            "row": [
+              {
+                "text": "II. Investigation phase"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "2.1 Investigation phase begins."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] PLAYER WINDOW"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "2.2 Next investigator's turn begins."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] PLAYER WINDOW"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "2.2.1 Active investigator may take an action, if able. If an action was taken, return to previous player window. If no action was taken, proceed to 2.2.2."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "2.2.2 Investigator's turn ends. If an investigator has not yet taken a turn this phase, return to 2.2. If each investigator has taken a turn this phase, proceed to 2.3."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "2.3 Investigation phase ends."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "grey",
+                "text": "Proceed to Enemy Phase."
+              }
+            ]
+          },
+          {
+            "row": []
+          },
+          {
+            "row": [
+              {
+                "text": "III. Enemy phase"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "3.1 Enemy phase begins."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "3.2 Hunter enemies move."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] PLAYER WINDOW"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "3.3 Next investigator resolves engaged enemy attacks. If an investigator has not yet resolved enemy attacks this phase, return to previous player window. After final investigator resolves engaged enemy attacks, proceed to next player window."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] PLAYER WINDOW"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "3.4 Enemy phase ends."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "grey",
+                "text": "Proceed to Upkeep Phase."
+              }
+            ]
+          },
+          {
+            "row": []
+          },
+          {
+            "row": [
+              {
+                "text": "IV. Upkeep phase"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.1 Upkeep phase begins."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] PLAYER WINDOW"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.2 Reset actions."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.3 Ready each exhausted card."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.4 Each investigator draws 1 card and gains 1 resource."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.5 Each investigator checks hand size."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.6 Upkeep phase ends. Round ends."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "grey",
+                "text": "Proceed to Mythos Phase of next game round."
+              }
+            ]
+          }
         ]
       },
       {
@@ -1297,17 +1649,93 @@
         "id": "Skill_Test_Timing",
         "title": "Skill Test Timing",
         "table": [
-          { "row": [{ "text": "Skill Test Timing"}] },
-          { "row": [{ "color": "green", "text": "ST.1 Determine skill of test. Skill test of that type begins."}] },
-          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW"}] },
-          { "row": [{ "color": "green", "text": "ST.2 Commit cards from hand to skill test."}] },
-          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW"}] },
-          { "row": [{ "color": "green", "text": "ST.3 Reveal chaos token."}] },
-          { "row": [{ "color": "green", "text": "ST.4 Resolve chaos symbol effect(s)."}] },
-          { "row": [{ "color": "green", "text": "ST.5 Determine investigator's modified skill value."}] },
-          { "row": [{ "color": "green", "text": "ST.6 Determine success/failure of skill test."}] },
-          { "row": [{ "color": "green", "text": "ST.7 Apply skill test results."}] },
-          { "row": [{ "color": "green", "text": "ST.8 Skill test ends."}] }
+          {
+            "row": [
+              {
+                "text": "Skill Test Timing"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "ST.1 Determine skill of test. Skill test of that type begins."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] PLAYER WINDOW"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "ST.2 Commit cards from hand to skill test."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] PLAYER WINDOW"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "ST.3 Reveal chaos token."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "ST.4 Resolve chaos symbol effect(s)."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "ST.5 Determine investigator's modified skill value."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "ST.6 Determine success/failure of skill test."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "ST.7 Apply skill test results."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "ST.8 Skill test ends."
+              }
+            ]
+          }
         ],
         "rules": [
           {
