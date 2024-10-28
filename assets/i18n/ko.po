@@ -5962,41 +5962,44 @@ msgid "Truths"
 msgstr ""
 
 msgid "Specialist"
-msgstr ""
+msgstr "전문가"
 
 msgid "Enemy-Location"
-msgstr ""
+msgstr "적-장소"
 
 msgid "Incomplete card database"
-msgstr ""
+msgstr "불완전한 카드 데이터베이스"
 
 msgid "New cards available"
-msgstr ""
+msgstr "사용 가능한 새로운 카드"
 
 msgid ""
 "Your most recent sync did not complete.\n"
 "\n"
 "When trying again, please keep the app open and in the foreground until it is finished."
 msgstr ""
+"가장 최근 동기화가 완료되지 않았습니다.\n"
+"\n"
+"다시 동기화를 시도할 때에는, 완료될 때까지 앱을 열려 있는 상태로 유지하십시오."
 
 #, javascript-format
 msgid "It looks like your app is missing ${ updates.missingCardCount } card."
 msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "앱에 카드 ${ updates.missingCardCount }장이 누락된 것 같습니다."
+msgstr[1] "앱에 카드 ${ updates.missingCardCount }장이 누락된 것 같습니다."
 
 msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
-msgstr ""
+msgstr "일부 덱은 완전히 불러올 수 없으며, 이 문제가 해결될 때까지 캠페인이 불완전하게 표시될 수 있습니다."
 
 msgid "Download cards"
-msgstr ""
+msgstr "카드 내려받기"
 
 msgid "It has been more than a week since you checked for new cards."
-msgstr ""
+msgstr "새 카드를 확인하지 않은지 너무 오래되었습니다."
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
-msgstr ""
+msgstr "중국어(간체): ${ simplifiedChineseTranslators }"
 
 msgctxt "investigator"
 msgid "Custom"
