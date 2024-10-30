@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2024-08-25 13:43+0300\n"
+"PO-Revision-Date: 2024-10-30 16:13+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -13,7 +13,7 @@ msgstr ""
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
 "x-poedit-basepath: .\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
@@ -2229,19 +2229,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -6055,10 +6055,10 @@ msgid "Clear image cache"
 msgstr "Очистить кэш изображений"
 
 msgid "Unable to create campaign"
-msgstr ""
+msgstr "Не удается создать кампанию"
 
 msgid "Handle is already taken"
-msgstr ""
+msgstr "Это имя аккаунта уже занято"
 
 msgid "Portents"
 msgstr ""
@@ -6070,38 +6070,42 @@ msgid "Specialist"
 msgstr ""
 
 msgid "Enemy-Location"
-msgstr ""
+msgstr "Враги-локации"
 
 msgid "Incomplete card database"
-msgstr ""
+msgstr "Неполная база данных карт"
 
 msgid "New cards available"
-msgstr ""
+msgstr "Доступны новые карты"
 
 msgid ""
 "Your most recent sync did not complete.\n"
 "\n"
 "When trying again, please keep the app open and in the foreground until it is finished."
 msgstr ""
+"Последняя синхронизация не была завершена.\n"
+"\n"
+"При повторной попытке, пожалуйста, держите приложение открытым и на переднем плане, пока оно не завершится."
 
 #, javascript-format
 msgid "It looks like your app is missing ${ updates.missingCardCount } card."
 msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Похоже, что в вашем приложении не хватает ${ updates.missingCardCount } карты."
+msgstr[1] "Похоже, что в вашем приложении не хватает ${ updates.missingCardCount } карт."
+msgstr[2] "Похоже, что в вашем приложении не хватает ${ updates.missingCardCount } карт."
 
 msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
-msgstr ""
+msgstr "Некоторые колоды могут загружаться не полностью, а кампании могут выглядеть незавершенными, пока это не будет исправлено."
 
 msgid "Download cards"
-msgstr ""
+msgstr "Скачать карты"
 
 msgid "It has been more than a week since you checked for new cards."
-msgstr ""
+msgstr "Прошло уже больше недели с тех пор, как вы проверяли наличие новых карт."
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
-msgstr ""
+msgstr "• Китайский (Упрощённый): ${ simplifiedChineseTranslators }"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7030,7 +7034,7 @@ msgstr "Искажённая"
 
 msgctxt "trait"
 msgid "Dreamer"
-msgstr ""
+msgstr "Сновидец"
 
 msgctxt "trait"
 msgid "Dreamlands"
@@ -7138,7 +7142,7 @@ msgstr "Привидение"
 
 msgctxt "trait"
 msgid "Ghast"
-msgstr ""
+msgstr "Гаст"
 
 msgctxt "trait"
 msgid "Ghoul"
@@ -8230,11 +8234,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Role"
-msgstr ""
+msgstr "Роль"
 
 msgctxt "trait"
 msgid "Rot"
-msgstr ""
+msgstr "Гниль"
 
 msgctxt "trait"
 msgid "Sub-Level"
@@ -8242,7 +8246,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Unpracticed"
-msgstr ""
+msgstr "Неумелая"
 
 #, javascript-format
 msgctxt "filter"
@@ -8457,8 +8461,9 @@ msgstr[2] "Ключи"
 msgctxt "header"
 msgid "Enemy-Location"
 msgid_plural "Enemy-Locations"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Враг-локация"
+msgstr[1] "Врага-локации"
+msgstr[2] "Врагов-локации"
 
 msgctxt "tags"
 msgid "Add"
