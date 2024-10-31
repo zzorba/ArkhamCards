@@ -6075,38 +6075,42 @@ msgid "Specialist"
 msgstr ""
 
 msgid "Enemy-Location"
-msgstr ""
+msgstr "Wróg-lokalizacja"
 
 msgid "Incomplete card database"
-msgstr ""
+msgstr "Niekompletna baza danych kart"
 
 msgid "New cards available"
-msgstr ""
+msgstr "Dostępne nowe karty"
 
 msgid ""
 "Your most recent sync did not complete.\n"
 "\n"
 "When trying again, please keep the app open and in the foreground until it is finished."
 msgstr ""
+"Ostatnia synchronizacja nie została ukończona.\n"
+"\n"
+"Podczas ponownej próby sychronizacji, proszę trzymaj aplikację otwartą i na pierwszym planie, aż do jej zakończenia."
 
 #, javascript-format
 msgid "It looks like your app is missing ${ updates.missingCardCount } card."
 msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Wygląda na to, że w twojej aplikacji brakuje ${ updates.missingCardCount } karty."
+msgstr[1] "Wygląda na to, że w twojej aplikacji brakuje ${ updates.missingCardCount } kart."
+msgstr[2] "Wygląda na to, że w twojej aplikacji brakuje ${ updates.missingCardCount } kart."
 
 msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
-msgstr ""
+msgstr "Niektóre talie mogą nie zostać w pełni załadowane, a kampanie mogą wydawać się niekompletne, dopóki ten problem nie zostanie rozwiązany."
 
 msgid "Download cards"
-msgstr ""
+msgstr "Pobierz karty"
 
 msgid "It has been more than a week since you checked for new cards."
-msgstr ""
+msgstr "Minął już ponad tydzień odkąd ostatnio sprawdzałeś czy są nowe karty."
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
-msgstr ""
+msgstr "chiński (uproszczony): ${ simplifiedChineseTranslators }"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -8459,8 +8463,9 @@ msgstr[2] "Kluczy"
 msgctxt "header"
 msgid "Enemy-Location"
 msgid_plural "Enemy-Locations"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Wróg-lokalizacja"
+msgstr[1] "Wrogowie-lokalizacje"
+msgstr[2] "Wrogów-lokalizacji"
 
 msgctxt "tags"
 msgid "Add"
