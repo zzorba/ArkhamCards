@@ -26,9 +26,7 @@ import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { useAppDispatch } from '@app/store';
 import { checkForPendingCards, PendingCardUpdates } from '@lib/publicApi';
 
-const REFETCH_DAYS = 30;
-const REPROMPT_DAYS = 30;
-const REFETCH_SECONDS = REFETCH_DAYS * 24 * 60 * 60;
+const REPROMPT_DAYS = 7;
 const REPROMPT_SECONDS = REPROMPT_DAYS * 24 * 60 * 60;
 
 let CHANGING_LANGUAGE = false;
@@ -144,24 +142,30 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
         const updates = await checkForPendingCards(db, anonClient, choiceLang, cardsCache);
         if (updates) {
           if (updates.missingCardCount) {
-            Alert.alert(
-              updates.possiblePartialSync ? t`Incomplete card database` : t`New cards available`,
-              [
-                updates?.possiblePartialSync ?
-                  t`Your most recent sync did not complete.\n\nWhen trying again, please keep the app open and in the foreground until it is finished.`
-                : ngettext(
-                    msgid`It looks like your app is missing ${updates.missingCardCount} card.`,
-                    `It looks like your app is missing ${updates.missingCardCount} cards.`,
-                    updates.missingCardCount
-                  ),
-                '\n',
-                ...updates?.possiblePartialSync ? [t`Some decks may not load fully and campaigns might appear incomplete until this is fixed.`] : []
-              ].join('\n'),
-              [
-                { text: t`Not now`, onPress: () => {}, style: 'cancel' },
-                { text: t`Download cards`, onPress: doFetch },
-              ],
-            );
+            if (updates.possiblePartialSync || shouldNagForUpdates) {
+              Alert.alert(
+                updates.possiblePartialSync ? t`Incomplete card database` : t`New cards available`,
+                [
+                  updates?.possiblePartialSync ?
+                    t`Your most recent sync did not complete.\n\nWhen trying again, please keep the app open and in the foreground until it is finished.`
+                  : ngettext(
+                      msgid`It looks like your app is missing ${updates.missingCardCount} card.`,
+                      `It looks like your app is missing ${updates.missingCardCount} cards.`,
+                      updates.missingCardCount
+                    ),
+                  '\n',
+                  ...updates?.possiblePartialSync ?
+                    [t`Some decks may not load fully and campaigns might appear incomplete until this is fixed.`] :
+                    [t`These cards might have been updated, from a new taboo list, or contain minor corrections.`]
+                ].join('\n'),
+                [
+                  { text: t`Not now`, onPress: () => {
+
+                  }, style: 'cancel' },
+                  { text: t`Download cards`, onPress: doFetch },
+                ],
+              );
+
           } else if (shouldNagForUpdates) {
             Alert.alert(
               t`Check for updated cards?`,

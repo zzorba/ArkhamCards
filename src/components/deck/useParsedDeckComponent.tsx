@@ -173,11 +173,11 @@ function deckToSections(
         forEach(byName, otherCard => {
           const count = existingSlots[otherCard.code];
           if (count > 0) {
-            existingXp += count * ((otherCard?.xp || 0) * (otherCard?.exceptional ? 2 : 1) + (card?.extra_xp || 0));
+            existingXp += count * ((otherCard?.xp ?? 0) * (otherCard?.exceptional ? 2 : 1) + (card?.extra_xp ?? 0));
           }
         });
       }
-      return cardId.quantity * ((card?.xp || 0) * (card?.exceptional ? 2 : 1) + (card?.extra_xp || 0)) - existingXp;
+      return cardId.quantity * ((card?.xp ?? 0) * (card?.exceptional ? 2 : 1) + (card?.extra_xp ?? 0)) - existingXp;
     });
   }
   if (halfDeck.Assets) {

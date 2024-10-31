@@ -215,7 +215,7 @@ function splitCards(
 
 function computeXp(card?: Card): number {
   return card
-    ? (card.exceptional ? 2 : 1) * ((card.xp || 0) + (card.extra_xp || 0))
+    ? (card.exceptional ? 2 : 1) * (card.xp || 0) + (card.extra_xp || 0)
     : 0;
 }
 
