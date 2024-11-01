@@ -165,16 +165,16 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
                   { text: t`Download cards`, onPress: doFetch },
                 ],
               );
-
-          } else if (shouldNagForUpdates) {
-            Alert.alert(
-              t`Check for updated cards?`,
-              t`It has been more than a week since you checked for new cards.`,
-              [
-                { text: t`Ask me later`, onPress: ignoreUpdate, style: 'cancel' },
-                { text: t`Download cards`, onPress: doFetch },
-              ],
-            );
+            } else if (shouldNagForUpdates) {
+              Alert.alert(
+                t`Check for updated cards?`,
+                t`It has been more than a week since you checked for new cards.`,
+                [
+                  { text: t`Ask me later`, onPress: ignoreUpdate, style: 'cancel' },
+                  { text: t`Download cards`, onPress: doFetch },
+                ],
+              );
+            }
           }
         }
       })();
