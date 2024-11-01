@@ -1090,7 +1090,7 @@
         ],
         "customization_change": "- <i>« Révolte-toi. »</i> Infligez 1 dégât à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur de combat est inférieure ou égale à celle de l'ennemi attaché.\n- <i>« Affaisse-toi. »</i> Inclinez cet ennemi.\n- <i>« Confesse-toi. »</i> Découvrez 1 indice dans le lieu de cet ennemi si sa vie est supérieure ou égale à la valeur occulte du lieu.\n- <i>« Fais diversion. »</i> Échappez automatiquement à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur d'évasion est inférieure ou égale à celle de l'ennemi attaché.\n[fast] : renvoyez dans votre main Mot de Pouvoir.\nVous avez le droit d'activer la capacité Discussion du Mot de Pouvoir depuis votre lieu ou depuis un lieu éloigné de 1 connexion de l'ennemi attaché.\n[action] Si l'ennemi attaché est dans votre lieu : <b>Discussion.</b> Vous avez le droit de donner jusqu'à deux ordres différents (limite d'une fois par round) –\nVous avez le droit d'inclure 3 exemplaires de Mot de Pouvoir dans votre deck. Quand vous donnez un ordre en utilisant un de ces exemplaires, donnez également cet ordre à chaque autre ennemi auquel vous avez attaché un exemplaire du Mot de Pouvoir.",
         "customization_text": "□ <b>Trahison.</b> Ajoutez l'ordre : - <i>« Révolte-toi. »</i> Infligez 1 dégât à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur de combat est inférieure ou égale à celle de l'ennemi attaché.\n□ <b>Affaisser.</b> Ajoutez l'ordre : - <i>« Affaisse-toi. »</i> Inclinez cet ennemi.\n□ <b>Confession.</b> Ajoutez l'ordre : - <i>« Confesse-toi. »</i> Découvrez 1 indice dans le lieu de cet ennemi si sa vie est supérieure ou égale à la valeur occulte du lieu.\n□ <b>Diversion.</b> Ajoutez l'ordre : - <i>« Fais diversion. »</i> Échappez automatiquement à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur d'évasion est inférieure ou égale à celle de l'ennemi attaché.\n□□ <b>Contrôle Accru.</b> Mot de Pouvoir gagne : « [fast] : renvoyez dans votre main Mot de Pouvoir. »\n□□□ <b>Lié.</b> Vous avez le droit d'activer la capacité Discussion du Mot de Pouvoir depuis votre lieu ou depuis un lieu éloigné de 1 connexion de l'ennemi attaché.\n□□□ <b>Virelangue.</b> Quand vous discutez via le Mot de Pouvoir, vous avez le droit de donner jusqu'à deux ordres différents.\n□□□ <b>Trois Paroles.</b> Vous avez le droit d'inclure 3 exemplaires de Mot de Pouvoir dans votre deck. Quand vous donnez un ordre en utilisant un de ces exemplaires, donnez également cet ordre à chaque autre ennemi auquel vous avez attaché un exemplaire du Mot de Pouvoir.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "replacement_text": "Mutée. Personnalisable. Rapide. À jouer uniquement lors de votre tour.\nAttachez cette carte à un ennemi non-[[Élite]] dans votre lieu.\n[action] Si l'ennemi attaché est dans votre lieu : <b>Discussion</b>. Effectuez un test de [willpower] (3). En cas de réussite, donnez-lui un ordre (limite d'une fois par round et par ordre) –\n- <i>« Va-t'en. »</i> Cet ennemi se déplace une fois dans la direction de votre choix."
       }
     ]
   },
@@ -1368,7 +1368,7 @@
       {
         "code": "60423",
         "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal damage to the attacking enemy equal to its damage or horror."
+        "replacement_text": "Mutée. Rapide. À jouer quand un ennemi attaque un investigateur dans votre lieu.\nAnnulez cette attaque. Ensuite, révélez un pion pris au hasard dans la réserve du chaos. Si celui-ci est un sybmole, infligez des dégâts à l'ennemi qui vous attaque équivalant à ses dégâts ou horreurs."
       },
       {
         "code": "02269",
@@ -1418,8 +1418,8 @@
       },
       {
         "code": "04233",
-        "text": "This card’s ability now reads: “Gain 1 resource for each action you spent this turn…”",
-        "replacement_text": "Mutated. Gain 1 resource for each action you spent this turn <i>(including this one)</i>. If it is your turn, end your turn."
+        "text": "La capacité de cette carte indique désormais : « Gagnez 1 ressource pour chaque action que vous avez effectuée à ce tour… »",
+        "replacement_text": "Mutée. Gagnez 1 ressource pour chaque action que vous avez effectuée à ce tour <i>(y compris celle-ci)</i>. Si c'est votre tour, celui-ci prend fin."
       },
       {
         "code": "06002",
@@ -1559,7 +1559,7 @@
         ],
         "customization_change": "- <i>« Révolte-toi. »</i> Infligez 1 dégât à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur de combat est inférieure ou égale à celle de l'ennemi attaché.\n- <i>« Affaisse-toi. »</i> Inclinez cet ennemi.\n- <i>« Confesse-toi. »</i> Découvrez 1 indice dans le lieu de cet ennemi si sa vie est supérieure ou égale à la valeur occulte du lieu.\n- <i>« Fais diversion. »</i> Échappez automatiquement à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur d'évasion est inférieure ou égale à celle de l'ennemi attaché.\n[fast] : renvoyez dans votre main Mot de Pouvoir.\nVous avez le droit d'activer la capacité Discussion du Mot de Pouvoir depuis votre lieu ou depuis un lieu éloigné de 1 connexion de l'ennemi attaché.\n[action] Si l'ennemi attaché est dans votre lieu : <b>Discussion.</b> Vous avez le droit de donner jusqu'à deux ordres différents (limite d'une fois par round) –\nVous avez le droit d'inclure 3 exemplaires de Mot de Pouvoir dans votre deck. Quand vous donnez un ordre en utilisant un de ces exemplaires, donnez également cet ordre à chaque autre ennemi auquel vous avez attaché un exemplaire du Mot de Pouvoir.",
         "customization_text": "□ <b>Trahison.</b> Ajoutez l'ordre : - <i>« Révolte-toi. »</i> Infligez 1 dégât à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur de combat est inférieure ou égale à celle de l'ennemi attaché.\n□ <b>Affaisser.</b> Ajoutez l'ordre : - <i>« Affaisse-toi. »</i> Inclinez cet ennemi.\n□ <b>Confession.</b> Ajoutez l'ordre : - <i>« Confesse-toi. »</i> Découvrez 1 indice dans le lieu de cet ennemi si sa vie est supérieure ou égale à la valeur occulte du lieu.\n□ <b>Diversion.</b> Ajoutez l'ordre : - <i>« Fais diversion. »</i> Échappez automatiquement à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur d'évasion est inférieure ou égale à celle de l'ennemi attaché.\n□□ <b>Contrôle Accru.</b> Mot de Pouvoir gagne : « [fast] : renvoyez dans votre main Mot de Pouvoir. »\n□□□ <b>Lié.</b> Vous avez le droit d'activer la capacité Discussion du Mot de Pouvoir depuis votre lieu ou depuis un lieu éloigné de 1 connexion de l'ennemi attaché.\n□□□ <b>Virelangue.</b> Quand vous discutez via le Mot de Pouvoir, vous avez le droit de donner jusqu'à deux ordres différents.\n□□□ <b>Trois Paroles.</b> Vous avez le droit d'inclure 3 exemplaires de Mot de Pouvoir dans votre deck. Quand vous donnez un ordre en utilisant un de ces exemplaires, donnez également cet ordre à chaque autre ennemi auquel vous avez attaché un exemplaire du Mot de Pouvoir.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "replacement_text": "Mutée. Personnalisable. Rapide. À jouer uniquement lors de votre tour.\nAttachez cette carte à un ennemi non-[[Élite]] dans votre lieu.\n[action] Si l'ennemi attaché est dans votre lieu : <b>Discussion</b>. Effectuez un test de [willpower] (3). En cas de réussite, donnez-lui un ordre (limite d'une fois par round et par ordre) –\n- <i>« Va-t'en. »</i> Cet ennemi se déplace une fois dans la direction de votre choix."
       }
     ]
   },
@@ -1849,7 +1849,7 @@
       {
         "code": "60423",
         "text": "Mutée.\nCette carte indique désormais « un symbole » au lieu de la liste de symboles indiqués.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal damage to the attacking enemy equal to its damage or horror."
+        "replacement_text": "Mutée. Rapide. À jouer quand un ennemi attaque un investigateur dans votre lieu.\nAnnulez cette attaque. Ensuite, révélez un pion pris au hasard dans la réserve du chaos. Si celui-ci est un sybmole, infligez des dégâts à l'ennemi qui vous attaque équivalant à ses dégâts ou horreurs."
       },
       {
         "code": "02269",
@@ -1899,8 +1899,8 @@
       },
       {
         "code": "04233",
-        "text": "This card’s ability now reads: “Gain 1 resource for each action you spent this turn…”",
-        "replacement_text": "Mutated. Gain 1 resource for each action you spent this turn <i>(including this one)</i>. If it is your turn, end your turn."
+        "text": "La capacité de cette carte indique désormais : « Gagnez 1 ressource pour chaque action que vous avez effectuée à ce tour… »",
+        "replacement_text": "Mutée. Gagnez 1 ressource pour chaque action que vous avez effectuée à ce tour <i>(y compris celle-ci)</i>. Si c'est votre tour, celui-ci prend fin."
       },
       {
         "code": "06002",
@@ -1987,8 +1987,8 @@
       },
       {
         "code": "08113",
-        "text": "The first line of this card gains: \"Campaign Mode only.\"",
-        "replacement_text": "Campaign Mode only. Limit 1 per investigator. Cannot leave play.\nAfter you play Unscrupulous Loan: Gain 10 resources.\n<b>Forced</b> - When the game ends or you are eliminated, if you have fewer than 10 resources in your resource pool: Exile Unscrupulous Loan."
+        "text": "La première ligne de cette carte gagne : « Mode Campagne uniquement. »",
+        "replacement_text": "Campaign Mode only. Limit 1 per investigator. Cannot leave play.\n[reaction] After you play Unscrupulous Loan: Gain 10 resources.\n<b>Forced</b> - When the game ends or you are eliminated, if you have fewer than 10 resources in your resource pool: Exile Unscrupulous Loan."
       },
       {
         "code": "08093",
@@ -2045,12 +2045,12 @@
         ],
         "customization_change": "- <i>« Révolte-toi. »</i> Infligez 1 dégât à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur de combat est inférieure ou égale à celle de l'ennemi attaché.\n- <i>« Affaisse-toi. »</i> Inclinez cet ennemi.\n- <i>« Confesse-toi. »</i> Découvrez 1 indice dans le lieu de cet ennemi si sa vie est supérieure ou égale à la valeur occulte du lieu.\n- <i>« Fais diversion. »</i> Échappez automatiquement à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur d'évasion est inférieure ou égale à celle de l'ennemi attaché.\n[fast] : renvoyez dans votre main Mot de Pouvoir.\nVous avez le droit d'activer la capacité Discussion du Mot de Pouvoir depuis votre lieu ou depuis un lieu éloigné de 1 connexion de l'ennemi attaché.\n[action] Si l'ennemi attaché est dans votre lieu : <b>Discussion.</b> Vous avez le droit de donner jusqu'à deux ordres différents (limite d'une fois par round) –\nVous avez le droit d'inclure 3 exemplaires de Mot de Pouvoir dans votre deck. Quand vous donnez un ordre en utilisant un de ces exemplaires, donnez également cet ordre à chaque autre ennemi auquel vous avez attaché un exemplaire du Mot de Pouvoir.",
         "customization_text": "□ <b>Trahison.</b> Ajoutez l'ordre : - <i>« Révolte-toi. »</i> Infligez 1 dégât à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur de combat est inférieure ou égale à celle de l'ennemi attaché.\n□ <b>Affaisser.</b> Ajoutez l'ordre : - <i>« Affaisse-toi. »</i> Inclinez cet ennemi.\n□ <b>Confession.</b> Ajoutez l'ordre : - <i>« Confesse-toi. »</i> Découvrez 1 indice dans le lieu de cet ennemi si sa vie est supérieure ou égale à la valeur occulte du lieu.\n□ <b>Diversion.</b> Ajoutez l'ordre : - <i>« Fais diversion. »</i> Échappez automatiquement à un ennemi situé dans le lieu de l'ennemi attaché dont la valeur d'évasion est inférieure ou égale à celle de l'ennemi attaché.\n□□ <b>Contrôle Accru.</b> Mot de Pouvoir gagne : « [fast] : renvoyez dans votre main Mot de Pouvoir. »\n□□□ <b>Lié.</b> Vous avez le droit d'activer la capacité Discussion du Mot de Pouvoir depuis votre lieu ou depuis un lieu éloigné de 1 connexion de l'ennemi attaché.\n□□□ <b>Virelangue.</b> Quand vous discutez via le Mot de Pouvoir, vous avez le droit de donner jusqu'à deux ordres différents.\n□□□ <b>Trois Paroles.</b> Vous avez le droit d'inclure 3 exemplaires de Mot de Pouvoir dans votre deck. Quand vous donnez un ordre en utilisant un de ces exemplaires, donnez également cet ordre à chaque autre ennemi auquel vous avez attaché un exemplaire du Mot de Pouvoir.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "replacement_text": "Mutée. Personnalisable. Rapide. À jouer uniquement lors de votre tour.\nAttachez cette carte à un ennemi non-[[Élite]] dans votre lieu.\n[action] Si l'ennemi attaché est dans votre lieu : <b>Discussion</b>. Effectuez un test de [willpower] (3). En cas de réussite, donnez-lui un ordre (limite d'une fois par round et par ordre) –\n- <i>« Va-t'en. »</i> Cet ennemi se déplace une fois dans la direction de votre choix."
       },
       {
         "code": "09041",
-        "text": "This card's [fast] ability gains \"(Limit twice per round.)\"",
-        "replacement_text": "Customizable. Limit 1 per investigator.\n<b>Forced</b> - At the start of the round: Choose one of the following criteria for this round\n- You fail a test by 2 or more.\n- You succeed at a test by 3 or more.\nWhen the chosen criteria is met, you may exhaust Empirical Hypothesis to add 1 evidence to it.\n[fast] Spend 1 evidence: Draw 1 card. (Limit twice per round.)"
+        "text": "La capacité [fast] de cette carte indique désormais : « Limite d'une fois par round. »",
+        "replacement_text": "Personnalisable. Limite de 1 par investigateur.\n<b>Forcé</b> - Au début du round : choisissez un des critères suivants pour ce round\n- Vous échouez à un test avec une différence de 2 ou plus.\n- Vous réussisez avec une différence de 3 ou plus.\nQuand le critère choisi est rempli, vous avez le droit d'incliner Hypothèse Empirique pour y ajouter 1 preuve.\n[fast] Dépensez 1 preuve : piochez 1 carte. (Limite de deux fois par round.)"
       }
     ]
   }

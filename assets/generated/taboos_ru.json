@@ -1988,7 +1988,7 @@
       {
         "code": "08113",
         "text": "The first line of this card gains: \"Campaign Mode only.\"",
-        "replacement_text": "Campaign Mode only. Limit 1 per investigator. Cannot leave play.\nAfter you play Unscrupulous Loan: Gain 10 resources.\n<b>Forced</b> - When the game ends or you are eliminated, if you have fewer than 10 resources in your resource pool: Exile Unscrupulous Loan."
+        "replacement_text": "Campaign Mode only. Limit 1 per investigator. Cannot leave play.\n[reaction] After you play Unscrupulous Loan: Gain 10 resources.\n<b>Forced</b> - When the game ends or you are eliminated, if you have fewer than 10 resources in your resource pool: Exile Unscrupulous Loan."
       },
       {
         "code": "08093",
@@ -2050,7 +2050,7 @@
       {
         "code": "09041",
         "text": "This card's [fast] ability gains \"(Limit twice per round.)\"",
-        "replacement_text": "Customizable. Limit 1 per investigator.\n<b>Forced</b> - At the start of the round: Choose one of the following criteria for this round\n- You fail a test by 2 or more.\n- You succeed at a test by 3 or more.\nWhen the chosen criteria is met, you may exhaust Empirical Hypothesis to add 1 evidence to it.\n[fast] Spend 1 evidence: Draw 1 card. (Limit twice per round.)"
+        "replacement_text": "Адаптация. Не более 1 такой карты на сыщика.\n<b>Обязательно</b> — В начале раунда: Выберите на этот раунд одно условие\n- Вы провалили проверку хотя бы на 2.\n- Вы превысили сложность проверки хотя бы на 3.\nКогда выбранное условие выполняется, можете повернуть эту карту и положить на неё 1 подтверждение.\n[fast] Потратьте 1 подтверждение: Возьмите 1 карту. (Не чаще 2 раз за раунд.)"
       }
     ]
   }

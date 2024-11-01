@@ -1987,8 +1987,8 @@
       },
       {
         "code": "08113",
-        "text": "The first line of this card gains: \"Campaign Mode only.\"",
-        "replacement_text": "Campaign Mode only. Limit 1 per investigator. Cannot leave play.\nAfter you play Unscrupulous Loan: Gain 10 resources.\n<b>Forced</b> - When the game ends or you are eliminated, if you have fewer than 10 resources in your resource pool: Exile Unscrupulous Loan."
+        "text": "이 카드의 첫 번째 줄은 다음 문구를 얻습니다: “캠페인 모드 전용.”",
+        "replacement_text": "Campaign Mode only. Limit 1 per investigator. Cannot leave play.\n[reaction] After you play Unscrupulous Loan: Gain 10 resources.\n<b>Forced</b> - When the game ends or you are eliminated, if you have fewer than 10 resources in your resource pool: Exile Unscrupulous Loan."
       },
       {
         "code": "08093",
@@ -2049,8 +2049,8 @@
       },
       {
         "code": "09041",
-        "text": "This card's [fast] ability gains \"(Limit twice per round.)\"",
-        "replacement_text": "Customizable. Limit 1 per investigator.\n<b>Forced</b> - At the start of the round: Choose one of the following criteria for this round\n- You fail a test by 2 or more.\n- You succeed at a test by 3 or more.\nWhen the chosen criteria is met, you may exhaust Empirical Hypothesis to add 1 evidence to it.\n[fast] Spend 1 evidence: Draw 1 card. (Limit twice per round.)"
+        "text": "이 카드의 [fast] 기능은 “(라운드당 2번 한정.)” 문구를 얻습니다.",
+        "replacement_text": "맞춤형. 조사자당 1장 한정.\n<b>강제</b> - 라운드 시작에: 다음 중에서 이번 라운드에 적용될 준거를 하나 선택합니다.\n─ 난이도에 모자란 차이 2 이상으로 실패함.\n─ 난이도를 넘어선 차이 3 이상으로 성공함.\n선택한 준거가 충족될 때, 이 카드에 증거를 1개 추가하기 위해 당신은 ‘실험적 가설’을 소진해도 됩니다.\n[fast] 증거를 1개 소비합니다: 카드를 1장 뽑습니다. (라운드당 2번 한정.)"
       }
     ]
   }

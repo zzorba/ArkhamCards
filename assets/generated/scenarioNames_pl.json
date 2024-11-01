@@ -201,11 +201,11 @@
   },
   {
     "id": "dawn_of_the_final_day",
-    "name": "Dawn of the Final Day"
+    "name": "Poranek ostatniego dnia"
   },
   {
     "id": "dawn_of_the_second_day",
-    "name": "Dawn of the Second Day"
+    "name": "Poranek drugiego dnia"
   },
   {
     "id": "dead_by_dawn",
@@ -309,7 +309,7 @@
   },
   {
     "id": "fhv_prologue",
-    "name": "Welcome to Hemlock Vale!"
+    "name": "Witajcie w Dolinie Hemlock!"
   },
   {
     "id": "final_night",
@@ -949,11 +949,11 @@
   },
   {
     "id": "the_final_evening",
-    "name": "The Final Evening"
+    "name": "Ostatni wieczór"
   },
   {
     "id": "the_first_evening",
-    "name": "The First Evening"
+    "name": "Pierwszy wieczór"
   },
   {
     "id": "the_foundation",
@@ -1053,7 +1053,7 @@
   },
   {
     "id": "the_second_evening",
-    "name": "The Second Evening"
+    "name": "Drugi wieczór"
   },
   {
     "id": "the_secret_name",
