@@ -2876,7 +2876,7 @@ msgid "Hide versatile cards"
 msgstr "Vielseitig-Karten ausblenden"
 
 msgid "Version to copy"
-msgstr "Version zum kopieren"
+msgstr "Version zum Kopieren"
 
 msgid "Updated Monday"
 msgstr "Montag aktualisiert"
@@ -3194,7 +3194,7 @@ msgid "Pending Friend Requests"
 msgstr "Unbeantwortete Freundschaftsanfragen"
 
 msgid "Search for friends to add"
-msgstr "Suche nach Freunden zum hinzufügen"
+msgstr "Suche nach Freunden zum Hinzufügen"
 
 msgid "Search Results"
 msgstr "Suchergebnisse"

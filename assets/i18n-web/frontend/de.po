@@ -507,7 +507,7 @@ msgid "Registration saved."
 msgstr "Anmeldung gespeichert."
 
 msgid "Login to register"
-msgstr "Einloggen zum anmelden."
+msgstr "Einloggen zum Anmelden"
 
 msgid "Register group"
 msgstr "Gruppe anmelden"
