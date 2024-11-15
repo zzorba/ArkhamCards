@@ -29,7 +29,7 @@ msgid ""
 "${ patreon }. If you like what we are doing, consider supporting us."
 msgstr ""
 "Die Kosten für die Aufrechterhaltung der Seite werden durch die großzügige "
-"Unterstützung von Fans auf ${ patreon } bereitgestellt.Wenn du magst, was wir tun, "
+"Unterstützung von Fans auf ${ patreon } bereitgestellt. Wenn du magst, was wir tun, "
 "kannst du uns gerne unterstützen."
 
 msgid "Host your own Epic Multiplayer event"
