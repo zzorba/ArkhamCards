@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 
 msgid "Guardian"
 msgstr "Wächter"
@@ -794,19 +794,19 @@ msgstr "Chaosbeutel"
 msgid "Adjust Weakness Set"
 msgstr "Schwächeset anpassen"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Dieses Deck enthält mehrere Grundschwächen"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Dieses Deck enthält eine Grundschwäche"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Willst du sie aus dem Grundschwächenset der Kampagne entfernen?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Willst du es aus dem Grundschwächenset der Kampagne entfernen?"
 
@@ -2876,7 +2876,7 @@ msgid "Hide versatile cards"
 msgstr "Vielseitig-Karten ausblenden"
 
 msgid "Version to copy"
-msgstr "Version zum kopieren"
+msgstr "Version zum Kopieren"
 
 msgid "Updated Monday"
 msgstr "Montag aktualisiert"
@@ -3194,7 +3194,7 @@ msgid "Pending Friend Requests"
 msgstr "Unbeantwortete Freundschaftsanfragen"
 
 msgid "Search for friends to add"
-msgstr "Suche nach Freunden zum hinzufügen"
+msgstr "Suche nach Freunden zum Hinzufügen"
 
 msgid "Search Results"
 msgstr "Suchergebnisse"
@@ -3703,13 +3703,13 @@ msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] } und ${ tokens[1] }"
 
 msgid "Dark Matter"
-msgstr ""
+msgstr "Dunkle Materie"
 
 msgid "Impending Doom"
-msgstr ""
+msgstr "Bevorstehendes Verderben"
 
 msgid "Memories"
-msgstr ""
+msgstr "Erinnerungen"
 
 msgid "Fan-Made Campaigns"
 msgstr "Fan-Kampagnen"
@@ -4174,7 +4174,7 @@ msgid ""
 msgstr ""
 "Die Kartendatenbank wurde zurückgesetzt.\n"
 "\n"
-"Bitte die App beenden und neu starten um eine vollständige Synchronisation der Kartendaten anzustoßen"
+"Bitte die App beenden und neu starten um eine vollständige Synchronisation der Kartendaten anzustoßen."
 
 #, javascript-format
 msgid "Sqlite version: ${ sqliteVersion }"
@@ -4795,9 +4795,9 @@ msgid ""
 "\n"
 "You can also upload in-progress campaigns and share them with friends and even share a synchronized chaos bag."
 msgstr ""
-"Wenn du einen Arkham Cards Konto benuzt, kannst du deinen Kampagnen zwischen deinen Geräten synchronisieren.\n"
+"Wenn du ein Arkham Cards Konto benutzt, kannst du deinen Kampagnen zwischen deinen Geräten synchronisieren.\n"
 "\n"
-"Du kannst dann auch angefangenen Kampagnen hochladen, mit deinen Freunden teilen und sogar den Chaosbeutel mit ihnen synchronisieren"
+"Du kannst dann auch angefangene Kampagnen hochladen, mit deinen Freunden teilen und sogar den Chaosbeutel mit ihnen synchronisieren."
 
 msgid "Sync campaigns to share with friends"
 msgstr "Synchronisiere Kampagnen um sie mit Freunden zu teilen"
@@ -4996,7 +4996,7 @@ msgid "What is this?"
 msgstr "Wofür ist das?"
 
 msgid "Choose two cards to reverse."
-msgstr "Wähle zwei Karten, die umgedreht werden"
+msgstr "Wähle zwei Karten, die umgedreht werden."
 
 msgid "Reverse half of the cards (rounded up)."
 msgstr "Drehe die Hälfte der Karten (aufgerundet) um."
@@ -5062,7 +5062,7 @@ msgid "Deck Id"
 msgstr "Deck Id"
 
 msgid "Symphony of Erich Zann"
-msgstr ""
+msgstr "Sinfonie des Erich Zann"
 
 #, javascript-format
 msgid "${ card.title } (inverted)"
@@ -5150,7 +5150,7 @@ msgid "Delete your account"
 msgstr "Lösche deinen Konto"
 
 msgid "Loading account details..."
-msgstr "Lade Kontodetails"
+msgstr "Lade Kontodetails..."
 
 msgid "Are you sure that you want to <b>permanently</b> delete your account? This <b>cannot be undone</b>."
 msgstr "Bist du sicher, dass du dein Konto <b>permanent</b> löschen möchtest? Dies kann <b>nicht mehr rückgängig</b> gemacht werden."
@@ -5444,7 +5444,7 @@ msgid ""
 "\n"
 "If you would like to delete your account, please contact the webmaster of ArkhamDB at arkhamdb@kamalisk.com"
 msgstr ""
-"ArkhamDB is eine Drittanbieter Webseite und unabhängig von Arkham Cards. Arkham Cards ermöglicht dir nur dich mit deinem ArkhamDB Konto zu verbinden.\n"
+"ArkhamDB ist eine Drittanbieter Webseite und unabhängig von Arkham Cards. Arkham Cards ermöglicht dir nur dich mit deinem ArkhamDB Konto zu verbinden.\n"
 "\n"
 "Wenn du dein ArkhamDB Konto löschen möchtest, kontaktiere bitte die Betreiber von ArkhamDB via arkhamdb@kamalisk.com."
 
@@ -5525,7 +5525,7 @@ msgid "Choose weakness"
 msgstr "Wähle eine Schwäche"
 
 msgid "Do you want to use the app to draw random tarot cards?"
-msgstr "Möchtest du, dass die App zufällige Tarotkarten zieht? "
+msgstr "Möchtest du, dass die App zufällige Tarotkarten zieht?"
 
 msgid "Choose tarot card"
 msgstr "Wähle eine Tarot Karte"
@@ -5842,7 +5842,7 @@ msgid "Taboo list history:"
 msgstr ""
 
 msgid "CHAOS BAG"
-msgstr ""
+msgstr "CHAOS BEUTEL"
 
 msgid "Just a bag. No strings attached."
 msgstr ""
@@ -5852,19 +5852,19 @@ msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
 msgstr ""
 
 msgid "Spirit Deck"
-msgstr ""
+msgstr "Geister Deck"
 
 msgid "Edit Spirit Deck"
-msgstr ""
+msgstr "Geister Deck bearbeiten"
 
 msgid "No permanents except story and signature permanents"
-msgstr ""
+msgstr "Keine dauerhaften Vorteilskarten außer Story- und Signatur-Karten"
 
 msgid "You cannot have more than 5 Survivor cards."
-msgstr ""
+msgstr "Du kannst nicht mehr als 5 Überlebender Karten haben."
 
 msgid "You cannot have more than 5 Mystic cards."
-msgstr ""
+msgstr "Du kannst nicht mehr als 5 Mystiker Karten haben."
 
 msgid "The Feast of Hemlock Vale"
 msgstr "Das Fest von Hemlock Vale"
@@ -5888,28 +5888,28 @@ msgid "The Forgotten Age Campaign Expansion"
 msgstr "Das vergessene Zeitalter (Kampagnen-Erweiterung)"
 
 msgid "The Circle Undone Investigator Expansion"
-msgstr ""
+msgstr "Der gebrochene Kreis (Ermittler-Erweiterung)"
 
 msgid "The Circle Undone Campaign Expansion"
-msgstr ""
+msgstr "Der gebrochene Kreis (Kampagnen-Erweiterung)"
 
 msgid "The Dream-Eaters Investigator Expansion"
-msgstr ""
+msgstr "Die Traumfresser (Ermittler-Erweiterung)"
 
 msgid "The Dream-Eaters Campaign Expansion"
-msgstr ""
+msgstr "Die Traumfresser (Kampagnen-Erweiterung)"
 
 msgid "The Innsmouth Conspiracy Investigator Expansion"
-msgstr ""
+msgstr "Die Innsmouth-Verschwörung (Ermittler-Erweiterung)"
 
 msgid "The Innsmouth Conspiracy Campaign Expansion"
-msgstr ""
+msgstr "Die Innsmouth-Verschwörung (Kampagnen-Erweiterung)"
 
 msgid "Show original release packs"
-msgstr ""
+msgstr "Original Release-Pakete anzeigen"
 
 msgid "Non-Unique"
-msgstr ""
+msgstr "Nicht-Einzigartig"
 
 #, javascript-format
 msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
@@ -5996,7 +5996,7 @@ msgid "Clear image cache"
 msgstr "Bild-Cache leeren"
 
 msgid "Unable to create campaign"
-msgstr ""
+msgstr "Kampagne konnte nicht erstellt werden"
 
 msgid "Handle is already taken"
 msgstr ""
@@ -6008,37 +6008,40 @@ msgid "Truths"
 msgstr ""
 
 msgid "Specialist"
-msgstr ""
+msgstr "Spezialist"
 
 msgid "Enemy-Location"
-msgstr ""
+msgstr "Gegner-Ort"
 
 msgid "Incomplete card database"
-msgstr ""
+msgstr "Unvollständige Karten Datenbank"
 
 msgid "New cards available"
-msgstr ""
+msgstr "Neue Karten verfügbar"
 
 msgid ""
 "Your most recent sync did not complete.\n"
 "\n"
 "When trying again, please keep the app open and in the foreground until it is finished."
 msgstr ""
+"Dein letzter Sync wurde nicht abgeschlossen.\n"
+"\n"
+"Achte beim nächsten Versuch darauf, die App offen und im Vordergrund zu halten, bis er abgeschlossen ist."
 
 #, javascript-format
 msgid "It looks like your app is missing ${ updates.missingCardCount } card."
 msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Deiner App scheint ${ updates.missingCardCount } Karte zu fehlen."
+msgstr[1] "Deiner App scheinen ${ updates.missingCardCount } Karten zu fehlen."
 
 msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
-msgstr ""
+msgstr "Manche Decks könnten nicht vollständig laden und Kampagnen könnten unvollständig sein, bis dies behoben ist."
 
 msgid "Download cards"
-msgstr ""
+msgstr "Karten herunterladen"
 
 msgid "It has been more than a week since you checked for new cards."
-msgstr ""
+msgstr "Es ist mehr als eine Woche her, dass du nach neuen Karten gesucht hast."
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
