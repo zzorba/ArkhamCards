@@ -791,10 +791,17 @@ function getDeckChangesHelper(
   };
 }
 
+function slotsToCards(slots: Slots, cards: CardsMap): Card[] {
+  return flatMap(Object.keys(slots), (code) => {
+    return range(0, slots[code] ?? 0).map(_ => cards[code]);
+  }).flatMap(card => card ?? []);
+}
+
 function getDeckChanges(
   cards: CardsMap,
   validation: DeckValidation,
   deck: Deck,
+  newDeckCards: Card[],
   meta: DeckMeta,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
@@ -816,11 +823,7 @@ function getDeckChanges(
   if (!previousInvestigator) {
     return undefined;
   }
-  const oldDeckSize = new DeckValidation(
-    previousInvestigator,
-    previousDeck.slots || {},
-    previousDeck.meta
-  ).getDeckSize();
+
   const previousDeckCards: Card[] = getCards(
     cards,
     previousDeck.slots || {},
@@ -828,8 +831,15 @@ function getDeckChanges(
     listSeperator,
     customizations
   );
-  const invalidCards = validation.getInvalidCards(previousDeckCards);
-  const newDeckSize = validation.getDeckSize();
+  const oldDeckSize = new DeckValidation(
+    previousInvestigator,
+    previousDeck.slots || {},
+    previousDeck.meta
+  ).getDeckSize(previousDeckCards);
+  const invalidCards = validation.getInvalidCards(previousDeckCards);  
+
+
+  const newDeckSize = validation.getDeckSize(newDeckCards);
   const extraDeckSize = newDeckSize - oldDeckSize;
   const totalFreeCards = extraDeckSize + totalExiledCards;
 
@@ -1207,7 +1217,7 @@ export function parseDeck(
       meta,
       { side_deck: true }
     );
-    extraDeckSize = extraValidation.getDeckSize();
+    extraDeckSize = extraValidation.getDeckSize(extraDeckCards);
     extraProblem = extraValidation.getProblem(extraDeckCards);
     const invalidExtraCodes = new Set(
       problem?.invalidCards.map((c) => c.code) ?? []
@@ -1369,12 +1379,20 @@ export function parseDeck(
     }
   );
 
+  const newDeckCards: Card[] = getCards(
+    cards,
+    slots,
+    ignoreDeckLimitSlots,
+    listSeperator,
+    customizations
+  );
   const changes =
     originalDeck &&
     getDeckChanges(
       cards,
       validation,
       originalDeck,
+      newDeckCards,
       meta,
       slots,
       ignoreDeckLimitSlots,
@@ -1424,7 +1442,7 @@ export function parseDeck(
     slots,
     customizations,
     normalCardCount: sumBy(normalCards, (c) => c.quantity),
-    deckSize: validation.getDeckSize(),
+    deckSize: validation.getDeckSize(newDeckCards),
     totalCardCount: sum(cardIds.map((c) => c.quantity)),
     experience: totalXp,
     availableExperience: (originalDeck?.xp || 0) + (xpAdjustment || 0),

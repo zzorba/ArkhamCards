@@ -36,7 +36,7 @@ import {
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
 } from "@app_constants";
-import Card from "@data/types/Card";
+import Card, { CardsMap } from "@data/types/Card";
 import DeckOption, { localizeDeckOptionError } from "@data/types/DeckOption";
 import {
   BONDED_WEAKNESS_COUNTS,
@@ -134,7 +134,7 @@ export default class DeckValidation {
       : this.investigator.deck_requirements;
   }
 
-  getDeckSize(): number {
+  getDeckSize(cards: Card[]): number {
     const deckOptions = this.deckOptions();
     const specialCards = this.specialCardCounts();
     var size: number = 30;
@@ -291,7 +291,7 @@ export default class DeckValidation {
       this.insane_data = this.getInsaneData(cards);
     }
 
-    const size = this.getDeckSize();
+    const size = this.getDeckSize(cards);
 
     // too many copies of one card
     const copiesAndDeckLimit = this.getCopiesAndDeckLimit(cards);

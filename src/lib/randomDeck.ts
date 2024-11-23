@@ -48,7 +48,7 @@ function getSpecialInvestigatorPredicate(
     case SUZI_CODE:
     case LOLA_CODE: {
       const requiredFactions = (validation.investigator.code === LOLA_CODE ? 3 : 5);
-      const deckSize = validation.getDeckSize();
+      const deckSize = validation.getDeckSize(deckCards);
       const drawDeckSize = sumBy(deckCards, (card) => card.permanent || card.subtype_code || card.restrictions_investigator ? 0 : 1);
       if (drawDeckSize + (requiredFactions * 7) < deckSize) {
         return undefined;
@@ -70,7 +70,7 @@ function getSpecialInvestigatorPredicate(
       };
     }
     case JOE_DIAMOND_CODE: {
-      const deckSize = validation.getDeckSize();
+      const deckSize = validation.getDeckSize(deckCards);
       const drawDeckSize = sumBy(deckCards, (card) => card.permanent || card.subtype_code || card.restrictions_investigator ? 0 : 1);
       if (drawDeckSize + 11 < deckSize) {
         // No need for special logic yet.
@@ -202,7 +202,7 @@ export default function randomDeck(
   const slots: Slots = {};
   const validation = new DeckValidation(investigatorBack, slots, meta, { random_deck: true, side_deck: mode === 'extra' });
   let deckSize = 0;
-  while (deckSize < validation.getDeckSize()) {
+  while (deckSize < validation.getDeckSize(deckCards)) {
     const investigatorClause = getSpecialInvestigatorPredicate(validation, deckCards);
     const [card, newPossibleCards] = randomAllowedCardHelper(
       validation,
@@ -220,7 +220,7 @@ export default function randomDeck(
     deckCards.push(card);
     if (!card.permanent) {
       deckSize++;
-      progress.value = withTiming(deckSize * 1.0 / validation.getDeckSize());
+      progress.value = withTiming(deckSize * 1.0 / validation.getDeckSize(deckCards));
     }
   }
   if (mode !== 'extra') {
