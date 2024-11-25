@@ -5,12 +5,14 @@ import { View, StyleSheet } from 'react-native';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import DeckQuantityComponent from './DeckQuantityComponent';
-import { DeckId } from '@actions/types';
+import { ChecklistSlots, DeckId } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { AppState, getDeckChecklist } from '@reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { find } from 'lodash';
 import { setDeckChecklistCard } from '@components/deck/actions';
+import { useDeckSlotCount } from '@components/deck/hooks';
+import CardChecklistToggles from './CardChecklistToggles';
 
 interface Props {
   deckId: DeckId;
@@ -21,21 +23,24 @@ interface Props {
   editable?: boolean
 }
 
+const EMPTY_CHECKLIST: number[] = [];
+
 function ChecklistButton({ deckId, code }: { deckId: DeckId; code: string }) {
+  const [count] = useDeckSlotCount(deckId, code);
   const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, deckId), [deckId]);
-  const checklist = useSelector(checklistSelector);
-  const checked = useMemo(() => !!find(checklist, x => x === code), [checklist, code]);
+  const checklist: ChecklistSlots = useSelector(checklistSelector);
+  console.log(count, checklist[code]);
   const dispatch = useDispatch();
-  const toggleValue = useCallback((value: boolean) => {
-    dispatch(setDeckChecklistCard(deckId, code, value));
+  const toggleValue = useCallback((value: number, toggle: boolean) => {
+    dispatch(setDeckChecklistCard(deckId, code, value, toggle));
   }, [dispatch, deckId, code]);
 
   return (
-    <ArkhamSwitch
-      color="light"
-      value={checked}
-      onValueChange={toggleValue}
-      animateTouchOnly
+    <CardChecklistToggles
+      code={code}
+      values={checklist[code] ?? EMPTY_CHECKLIST}
+      quantity={count}
+      toggleValue={toggleValue}
     />
   );
 }

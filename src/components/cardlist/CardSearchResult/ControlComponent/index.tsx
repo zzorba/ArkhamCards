@@ -116,6 +116,7 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
     case 'count_with_toggle':
       return (
         <CardChecklistToggles
+          code={card.code}
           values={control.values}
           toggleValue={control.toggleValue}
           quantity={control.count}

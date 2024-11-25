@@ -1988,7 +1988,7 @@
       {
         "code": "08113",
         "text": "이 카드의 첫 번째 줄은 다음 문구를 얻습니다: “캠페인 모드 전용.”",
-        "replacement_text": "Campaign Mode only. Limit 1 per investigator. Cannot leave play.\n[reaction] After you play Unscrupulous Loan: Gain 10 resources.\n<b>Forced</b> - When the game ends or you are eliminated, if you have fewer than 10 resources in your resource pool: Exile Unscrupulous Loan."
+        "replacement_text": "캠페인 모드 전용. 조사자당 1장 한정. 이 카드는 플레이 영역에서 나갈 수 없습니다.\n[reaction] 당신이 ‘비양심적인 대출’을 플레이한 후: 자원을 10개 획득합니다.\n<b>강제</b> - 게임이 끝나거나 당신이 탈락할 때, 당신의 자원 저장소에 있는 자원이 10개 미만이라면: ‘비양심적인 대출’을 추방합니다."
       },
       {
         "code": "08093",

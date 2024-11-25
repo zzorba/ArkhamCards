@@ -2,21 +2,22 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { find, range } from 'lodash';
+import { find, indexOf, range } from 'lodash';
 
 interface Props {
+  code: string;
   quantity: number;
   values: number[];
   toggleValue: (value: number, toggle: boolean) => void;
 }
-export default function CardChecklistToggles({ values, quantity, toggleValue }: Props) {
+export default function CardChecklistToggles({ code, values, quantity, toggleValue }: Props) {
   return (
     <View style={styles.switchButton}>
       { range(0, quantity).map(idx => {
-        const enabled = !!find(values, v => v === idx);
+        const enabled: boolean = values.indexOf(idx) !== -1;
         return (
           <ArkhamSwitch
-            key={idx}
+            key={`${code}-${idx}`}
             value={enabled}
             onValueChange={() => toggleValue(idx, !enabled)}
           />
@@ -28,7 +29,6 @@ export default function CardChecklistToggles({ values, quantity, toggleValue }: 
 
 const styles = StyleSheet.create({
   switchButton: {
-    marginTop: 6,
     marginRight: 6,
     flexDirection: 'row',
   },
