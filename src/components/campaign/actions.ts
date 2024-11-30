@@ -571,7 +571,7 @@ export function addScenarioResult(
       dispatch(updateCampaignScenarioResults(actions, campaign.id, scenarioResults));
 
       if (campaignNotes) {
-        updateCampaignNotes(actions.setCampaignNotes, campaign.id, campaignNotes);
+        dispatch(updateCampaignNotes(actions.setCampaignNotes, campaign.id, campaignNotes));
       }
     }
   };
