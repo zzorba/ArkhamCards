@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { map } from 'lodash';
-import { StyleSheet, Text, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -13,6 +13,8 @@ import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useParallelInvestigators } from '@components/core/hooks';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
+import { NewDeckOptionsProps } from '@components/deck/NewDeckOptionsDialog';
+import { getDeckOptions } from '@components/nav/helper';
 
 interface Props {
   componentId?: string;
@@ -37,6 +39,32 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
   const showParallelInvestigatorCardsPressed = useCallback(() => {
     showInvestigatorCards && parallelInvestigator && showInvestigatorCards(parallelInvestigator.code);
   }, [showInvestigatorCards, parallelInvestigator]);
+
+  const showCreateDeck = useCallback(() => {
+    if (componentId) {
+      Navigation.showModal({
+        stack: {
+          children: [{
+            component: {
+              name: 'Deck.NewOptions',
+              passProps: {
+                campaignId: undefined,
+                investigatorId: card.code,
+                onCreateDeck: undefined,
+              },
+              options: {
+                ...getDeckOptions(colors, { title: t`New Deck` }, card),
+                modalPresentationStyle: Platform.OS === 'ios' ?
+                  OptionsModalPresentationStyle.fullScreen :
+                  OptionsModalPresentationStyle.overCurrentContext,
+                bottomTabs: {},
+              },
+            },
+          }]
+        },
+      });
+    }
+  }, [componentId, card]);
 
   if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
     return null;
@@ -76,6 +104,11 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
             onPress={showParallelInvestigatorCardsPressed}
           />
         ) }
+        <ArkhamButton
+          icon="deck"
+          title={t`New deck`}
+          onPress={showCreateDeck}
+        />
       </View>
       <SignatureCardsComponent
         componentId={componentId}

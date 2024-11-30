@@ -24,6 +24,7 @@ import { useCampaignDeck } from '@data/hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import KeepAwake from 'react-native-keep-awake';
 import { updateCardSorts } from '@components/filter/actions';
+import { find } from 'lodash';
 
 export interface DeckChecklistProps {
   id: DeckId;
@@ -86,6 +87,9 @@ function DeckChecklistView({
 
   const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, id), [id]);
   const checklist = useSelector(checklistSelector);
+  const hasChecklist = useMemo(() => {
+    return !!checklist && !!find(Object.values(checklist), f => !!f?.length);
+  }, [checklist]);
   const [sortDialog, showSortDialog] = useSortDialog(setSorts, sorts, false);
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'sort') {
@@ -114,8 +118,8 @@ function DeckChecklistView({
     return [
       [(
         <View style={[space.paddingM, styles.headerRow, { width }]} key="header">
-          <TouchableOpacity onPress={clearChecklist} disabled={!checklist.length}>
-            <Text style={[typography.text, checklist.length ? typography.light : { color: colors.L10 }]}>
+          <TouchableOpacity onPress={clearChecklist} disabled={!hasChecklist}>
+            <Text style={[typography.text, hasChecklist ? typography.light : { color: colors.L10 }]}>
               { t`Clear` }
             </Text>
           </TouchableOpacity>

@@ -52,7 +52,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 export interface NewDeckOptionsProps {
   investigatorId: string;
   campaignId: CampaignId | undefined;
-  onCreateDeck: (deck: Deck) => void;
+  onCreateDeck?: (deck: Deck) => void;
 }
 
 type Props = NavigationProps &
