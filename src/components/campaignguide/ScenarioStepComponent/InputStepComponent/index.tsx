@@ -209,6 +209,7 @@ export default function InputStepComponent({ step, color, componentId, campaignL
             defaultState
             min={step.input.choose_none_steps ? 0 : 1}
             max={4}
+            includeParallel={step.input.include_parallel}
             allowNewDecks
             includeLeadInvestigator={!!step.input.lead_investigator_effects}
           />

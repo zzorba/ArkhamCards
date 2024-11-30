@@ -164,6 +164,10 @@
     "name": "Prólogo"
   },
   {
+    "id": "chasing_rainbows",
+    "name": "Chasing Rainbows"
+  },
+  {
     "id": "city_of_the_elder_things",
     "name": "Ciudad de los Antiguos"
   },
@@ -220,6 +224,18 @@
     "name": "Muerte a la puesta de sol"
   },
   {
+    "id": "deep_impact",
+    "name": "Deep Impact"
+  },
+  {
+    "id": "defense_of_the_realm",
+    "name": "Defense of the Realm"
+  },
+  {
+    "id": "desaturation",
+    "name": "Desaturation"
+  },
+  {
     "id": "devil_reef",
     "name": "Arrecife del Diablo"
   },
@@ -238,6 +254,10 @@
   {
     "id": "dm_prologue",
     "name": "Prólogo"
+  },
+  {
+    "id": "double_whammy",
+    "name": "Double Whammy"
   },
   {
     "id": "dwl_epilogue",
@@ -352,6 +372,10 @@
     "name": "El Grifo y la Falsa Tortuga"
   },
   {
+    "id": "hall_of_the_mountain_king",
+    "name": "Hall of the Mountain King"
+  },
+  {
     "id": "havana",
     "name": "Bailar como locos"
   },
@@ -406,6 +430,10 @@
   {
     "id": "ice_and_death_part_3",
     "name": "Hielo y muerte, parte III"
+  },
+  {
+    "id": "illumination",
+    "name": "Illumination"
   },
   {
     "id": "in_the_clutches_of_chaos",
@@ -508,6 +536,10 @@
     "name": "La intromisión de Miaulathotep"
   },
   {
+    "id": "misery_loves_company",
+    "name": "Misery Loves Company"
+  },
+  {
     "id": "mission_briefing",
     "name": "Informe de misión"
   },
@@ -534,6 +566,14 @@
   {
     "id": "night_on_the_town",
     "name": "Noche en la ciudad"
+  },
+  {
+    "id": "oz_epilogue",
+    "name": "Epílogo"
+  },
+  {
+    "id": "oz_prologue",
+    "name": "Prólogo"
   },
   {
     "id": "perth",
@@ -792,6 +832,10 @@
     "name": "Rómulo y Remo"
   },
   {
+    "id": "royal_audience",
+    "name": "Royal Audience"
+  },
+  {
     "id": "san_francisco",
     "name": "Quid pro quo"
   },
@@ -1048,6 +1092,10 @@
     "name": "El precio del progreso"
   },
   {
+    "id": "the_road_to_oz",
+    "name": "The Road to Oz"
+  },
+  {
     "id": "the_search_for_kadath",
     "name": "La búsqueda de Kadath"
   },
@@ -1148,6 +1196,10 @@
     "name": "Mientras viajas…"
   },
   {
+    "id": "true_colours",
+    "name": "True Colours"
+  },
+  {
     "id": "tsk_epilogue",
     "name": "Epílogo"
   },
@@ -1178,6 +1230,10 @@
   {
     "id": "waking_nightmare",
     "name": "Pesadilla consciente"
+  },
+  {
+    "id": "war_council",
+    "name": "War Council"
   },
   {
     "id": "war_of_the_outer_gods",

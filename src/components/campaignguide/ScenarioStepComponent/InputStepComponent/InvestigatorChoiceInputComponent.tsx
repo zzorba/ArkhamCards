@@ -28,6 +28,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
           case 'resigned': return campaignLog.resigned(c.code);
           case 'defeated': return campaignLog.isDefeated(c.code);
           case 'not_defeated': return !campaignLog.isDefeated(c.code);
+          case 'alive': return campaignLog.isAlive(c.code);
           default: return true;
         }
       })

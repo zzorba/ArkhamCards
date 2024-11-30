@@ -6,7 +6,7 @@ import { map } from 'lodash';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { Platform } from 'react-native';
 
-import { CampaignId, Deck, DeckId, getDeckId } from '@actions/types';
+import { CampaignCycleCode, CampaignId, Deck, DeckId, getDeckId, OZ } from '@actions/types';
 import { addInvestigator } from '@components/campaign/actions';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
 import Card from '@data/types/Card';
@@ -19,6 +19,7 @@ type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
 type ChooseDeckType = (
   campaignId: CampaignId,
+  cycleCode: CampaignCycleCode | undefined,
   campaignInvestigators: Card[],
   singleInvestigator?: Card,
   callback?: (code: string) => Promise<void>,
@@ -38,6 +39,7 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
 
   const showChooseDeck = useCallback((
     campaignId: CampaignId,
+    cycleCode: CampaignCycleCode | undefined,
     campaignInvestigators: Card[],
     singleInvestigator?: Card,
     callback?: (code: string) => Promise<void>
@@ -56,17 +58,18 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
     };
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
       campaignId: campaignId,
-      singleInvestigator: singleInvestigator.code,
+      singleInvestigator: singleInvestigator.alternate_of_code ?? singleInvestigator.code,
       onDeckSelect,
     } : {
       campaignId: campaignId,
       selectedInvestigatorIds: map(
         campaignInvestigators,
-        investigator => investigator.code
+        investigator => investigator.alternate_of_code ?? investigator.code
       ),
       onDeckSelect,
       onInvestigatorSelect,
       simpleOptions: true,
+      includeParallel: cycleCode === OZ,
     };
     Navigation.showModal({
       stack: {

@@ -97,7 +97,7 @@ export default function CampaignDetailTab({
       scenarioId,
       processedCampaign
     );
-  }, [componentId, campaignId, campaignGuide, processedCampaign, scenarioId]);
+  }, [componentId, processedCampaign, campaignId, campaignGuide, scenarioId]);
 
   const showCampaignAchievements = useCallback(() => {
     Navigation.push<CampaignAchievementsProps>(componentId, {

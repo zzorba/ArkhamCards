@@ -55,7 +55,7 @@ export default function DecksSection({
   showTextEditDialog,
   showCountDialog,
 }: Props) {
-  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const { borderStyle, colors } = useContext(StyleContext);
   const removeDeckPrompt = useCallback((investigator: Card) => {
     const deck = find(latestDecks, deck => {
       return !!(deck && deck.investigator === investigator.code);

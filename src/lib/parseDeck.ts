@@ -1252,7 +1252,7 @@ export function parseDeck(
           listSeperator,
           customizations[card.code]
         );
-        const invalid = !extraValidation.canIncludeCard(customizedCard, false);
+        const invalid = !extraValidation.canIncludeCard(customizedCard, false, []);
         return {
           id,
           quantity: extraDeckSlots?.[id] || 0,
@@ -1261,7 +1261,7 @@ export function parseDeck(
             invalidExtraCodes.has(id) ||
             (customizedCard.deck_limit !== undefined &&
               (extraDeckSlots?.[id] ?? 0) > customizedCard.deck_limit),
-          limited: extraValidation.isCardLimited(customizedCard),
+          limited: extraValidation.isCardLimited(customizedCard, []),
           custom: card.custom(),
         };
       }
@@ -1298,7 +1298,7 @@ export function parseDeck(
         listSeperator,
         customizations[card.code]
       );
-      const invalid = !validation.canIncludeCard(customizedCard, false);
+      const invalid = !validation.canIncludeCard(customizedCard, false, deckCards);
       return {
         id,
         quantity: slots[id] || 0,
@@ -1307,7 +1307,7 @@ export function parseDeck(
           invalidCodes.has(id) ||
           (customizedCard.deck_limit !== undefined &&
             slots[id] > customizedCard.deck_limit),
-        limited: validation.isCardLimited(customizedCard),
+        limited: validation.isCardLimited(customizedCard, deckCards),
         custom: card.custom(),
       };
     }
@@ -1440,6 +1440,7 @@ export function parseDeck(
     investigatorBack: cards[investigator_back_code] || investigator,
     deck: originalDeck,
     slots,
+    deckCards,
     customizations,
     normalCardCount: sumBy(normalCards, (c) => c.quantity),
     deckSize: validation.getDeckSize(newDeckCards),
@@ -1476,7 +1477,7 @@ export function parseDeck(
     problem,
     extraProblem,
     limitedSlots: !!find(
-      validation.deckOptions(),
+      validation.deckOptions(newDeckCards),
       (option) =>
         !!option.limit &&
         !find(option.trait || [], (trait) => trait === "Covenant")

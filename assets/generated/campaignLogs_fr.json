@@ -8807,5 +8807,557 @@
       }
     ],
     "supplies": []
+  },
+  {
+    "campaignId": "zoz",
+    "sections": [
+      {
+        "section": "advantages",
+        "entries": [
+          {
+            "id": "meteor_observation",
+            "text": "Meteor Observation"
+          },
+          {
+            "id": "polychrome",
+            "text": "Polychrome"
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "arrival_was_delayed",
+            "text": "the investigators' arrival was delayed."
+          },
+          {
+            "id": "entered_the_island_quickly",
+            "text": "the investigators' entered the island quickly."
+          },
+          {
+            "id": "general_guph_surrendered",
+            "text": "General Guph surrendered."
+          },
+          {
+            "id": "mombi_was_subdued",
+            "text": "Mombi was subdued."
+          },
+          {
+            "id": "ruggedo_crumbled_to_dust",
+            "text": "Ruggedo crumbled to dust."
+          },
+          {
+            "id": "ruggedo_survived_the_colours_infection",
+            "text": "Ruggedo survived the Colour's infection."
+          },
+          {
+            "id": "ruggedos_fate_is_unknown",
+            "text": "Ruggedo's fate is unknown."
+          },
+          {
+            "id": "the_colour_consumed_oz_and_the_world",
+            "text": "the Colour consumed Oz and the world."
+          },
+          {
+            "id": "the_colour_has_returned_to_the_depths_of_space",
+            "text": "the Colours has returned to the depths of space."
+          },
+          {
+            "id": "the_colour_is_aware_of_your_strength",
+            "text": "the Colour is aware of your strength."
+          },
+          {
+            "id": "the_emerald_city_lies_in_ruins",
+            "text": "the Emerald City lies in ruins."
+          },
+          {
+            "id": "the_emerald_city_was_damaged_by_the_invading_army",
+            "text": "the Emerald City was damaged by the invading army."
+          },
+          {
+            "id": "the_emerald_city_was_damaged_by_witches",
+            "text": "the Emerald City was damaged by witches."
+          },
+          {
+            "id": "the_investigators_defended_the_emerald_city",
+            "text": "the investigators defended the Emerald City."
+          },
+          {
+            "id": "the_investigators_survived_the_colours_departure",
+            "text": "the investigators survived the Colour's departure."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "setup_curse_token",
+            "masculine_text": "#name# adds 1 [curse] token to the chaos bag.",
+            "feminine_text": "#name# adds 1 [curse] token to the chaos bag.",
+            "nonbinary_text": "#name# adds 1 [curse] token to the chaos bag."
+          },
+          {
+            "id": "setup_fewer_cards",
+            "masculine_text": "#name# begins the scenario with 1 fewer card.",
+            "feminine_text": "#name# begins the scenario with 1 fewer card.",
+            "nonbinary_text": "#name# begins the scenario with 1 fewer card."
+          },
+          {
+            "id": "setup_fewer_resources",
+            "masculine_text": "#name# begins the scenario with 1 fewer resource.",
+            "feminine_text": "#name# begins the scenario with 1 fewer resource.",
+            "nonbinary_text": "#name# begins the scenario with 1 fewer resource."
+          },
+          {
+            "id": "setup_limited_mulligan",
+            "masculine_text": "#name# can only mulligan 3 cards.",
+            "feminine_text": "#name# can only mulligan 3 cards.",
+            "nonbinary_text": "#name# can only mulligan 3 cards."
+          },
+          {
+            "id": "s2_companion_capn_bill",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_frogman",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_jack",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_lion",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_patchwork",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_sawhorse",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_scarecrow",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_shaggy",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_tiger",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_tik_tok",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_tinman",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_companion_wizard",
+            "text": "leurre"
+          },
+          {
+            "id": "s2_completed_a_deck",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_capn_bill",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_frogman",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_jack",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_lion",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_patchwork",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_sawhorse",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_scarecrow",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_shaggy",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_tiger",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_tik_tok",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_tinman",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_companion_wizard",
+            "text": "leurre"
+          },
+          {
+            "id": "s3_completed_a_deck",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_capn_bill",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_frogman",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_jack",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_lion",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_patchwork",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_sawhorse",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_scarecrow",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_shaggy",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_tiger",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_tik_tok",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_tinman",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_companion_wizard",
+            "text": "leurre"
+          },
+          {
+            "id": "s4_completed_a_deck",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_capn_bill",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_frogman",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_jack",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_lion",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_patchwork",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_sawhorse",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_scarecrow",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_shaggy",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_tiger",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_tik_tok",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_tinman",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_companion_wizard",
+            "text": "leurre"
+          },
+          {
+            "id": "s5_completed_a_deck",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_capn_bill",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_frogman",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_jack",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_lion",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_patchwork",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_sawhorse",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_scarecrow",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_shaggy",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_tiger",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_tik_tok",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_tinman",
+            "text": "leurre"
+          },
+          {
+            "id": "s6_companion_wizard",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_capn_bill",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_frogman",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_jack",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_lion",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_patchwork",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_sawhorse",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_scarecrow",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_shaggy",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_tiger",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_tik_tok",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_tinman",
+            "text": "leurre"
+          },
+          {
+            "id": "s7_companion_wizard",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_capn_bill",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_frogman",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_jack",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_lion",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_patchwork",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_sawhorse",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_scarecrow",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_shaggy",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_tiger",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_tik_tok",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_tinman",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_companion_wizard",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_completed_act",
+            "text": "leurre"
+          },
+          {
+            "id": "s8_someone_alive",
+            "text": "leurre"
+          }
+        ]
+      },
+      {
+        "section": "knowledge_of_the_colour",
+        "entries": [
+          {
+            "id": "destructive_methods",
+            "text": "...destructive methods."
+          },
+          {
+            "id": "full_effects_on_the_body",
+            "text": "...full effects on the body."
+          },
+          {
+            "id": "full_effects_on_the_land",
+            "text": "...full effects on the land."
+          },
+          {
+            "id": "full_spectroscopic_analysis",
+            "text": "...full spectroscopic analysis."
+          },
+          {
+            "id": "mental_influence",
+            "text": "...mental influence."
+          },
+          {
+            "id": "physical_limitations",
+            "text": "...physical limitations."
+          },
+          {
+            "id": "scientific_composition",
+            "text": "...scientific composition."
+          },
+          {
+            "id": "true_origin",
+            "text": "...true origin"
+          },
+          {
+            "id": "true_origin",
+            "text": "...true origin."
+          }
+        ]
+      },
+      {
+        "section": "order_of_events",
+        "entries": [
+          {
+            "id": "gillikin_country",
+            "text": "Gillikin Country"
+          },
+          {
+            "id": "munchkin_country",
+            "text": "Munchin Country"
+          },
+          {
+            "id": "quadling_country",
+            "text": "Quadling Country"
+          },
+          {
+            "id": "winkie_country",
+            "text": "Winkie Country"
+          }
+        ]
+      },
+      {
+        "section": "preparations",
+        "entries": [
+          {
+            "id": "preparations_one",
+            "text": "concerning Miskatonic venture to Pacific 8th April, 1926"
+          },
+          {
+            "id": "preparations_three",
+            "text": "Personnel acknowledge the following items, accepting associated risks:"
+          },
+          {
+            "id": "preparations_two",
+            "text": "Auxiliary personnel assigned to venture performed additional research concerning expedition subject hereafter referred to as the Colour approved by expedition administrators (J. Park, R. Bradshaw, M. Gutierrez)."
+          }
+        ]
+      }
+    ],
+    "supplies": []
   }
 ]

@@ -37,6 +37,7 @@ interface CollectionSettings {
 }
 function hasUpgrades(
   code: string,
+  deckCards: Card[],
   cards: CardsMap,
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
@@ -52,13 +53,14 @@ function hasUpgrades(
       upgradeCard.code !== code &&
       (upgradeCard.xp || 0) > (card.xp || 0) &&
       (isArkhamDbDeck ? !card.custom() : (showCustomContent || !card.custom())) &&
-      validation.canIncludeCard(upgradeCard, false) &&
+      validation.canIncludeCard(upgradeCard, false, deckCards) &&
       ((upgradeCard.pack_code === 'core' && !inCollection.no_core) || ignoreCollection || cardInCollection(upgradeCard, inCollection))
     )));
 }
 
 function hasCustomizationUpgrades(
   code: string,
+  deckCards: Card[],
   cards: CardsMap,
   customizations: Customizations | undefined,
   validation: DeckValidation
@@ -67,7 +69,11 @@ function hasCustomizationUpgrades(
   return !!(
     card &&
     card.customization_options &&
-    validation.canIncludeCard(card.withCustomizations(',', customizations?.[code], 1), false)
+    validation.canIncludeCard(
+      card.withCustomizations(',', customizations?.[code], 1), 
+      false,
+      deckCards
+    )
   );
 }
 
@@ -142,6 +148,7 @@ function deckToSections(
   footer: React.ReactNode | undefined,
   index: number,
   halfDeck: SplitCards,
+  deckCards: Card[],
   cards: CardsMap,
   cardsByName: undefined | { [name: string]: Card[] },
   validation: DeckValidation,
@@ -216,13 +223,14 @@ function deckToSections(
             mode: mode === 'special' && c.ignoreCount ? 'ignore' : mode,
             hasUpgrades: !!cardsByName && hasUpgrades(
               c.id,
+              deckCards,
               cards,
               cardsByName,
               validation,
               settings,
               isArkhamDbDeck,
             ),
-            customizable: hasCustomizationUpgrades(c.id, cards, customizations, validation),
+            customizable: hasCustomizationUpgrades(c.id, deckCards, cards, customizations, validation),
           };
         }),
       });
@@ -274,13 +282,14 @@ function deckToSections(
             mode: mode === 'special' && c.ignoreCount ? 'ignore' : mode,
             hasUpgrades: !!cardsByName && hasUpgrades(
               c.id,
+              deckCards,
               cards,
               cardsByName,
               validation,
               settings,
               isArkhamDbDeck,
             ),
-            customizable: hasCustomizationUpgrades(c.id, cards, customizations, validation),
+            customizable: hasCustomizationUpgrades(c.id,  deckCards, cards, customizations, validation),
           };
         }),
       });
@@ -420,6 +429,7 @@ export default function useParsedDeckComponent({
     const sideCards = parsedDeck.sideCards;
     const extraCards = parsedDeck.extraCards;
     const slots = parsedDeck.slots;
+    const deckCards = parsedDeck.deckCards;
     const validation = new DeckValidation(parsedDeck.investigatorBack, slots, meta);
     const shouldDraft = !parsedDeck.changes && !!showDraftCards;
     const hasNormalCards = (!!normalCards.Assets?.length ||
@@ -453,6 +463,7 @@ export default function useParsedDeckComponent({
       ),
       0,
       normalCards,
+      deckCards,
       cards,
       cardsByName,
       validation,
@@ -471,6 +482,7 @@ export default function useParsedDeckComponent({
       undefined,
       deckIndex,
       specialCards,
+      deckCards,
       cards,
       cardsByName,
       validation,
@@ -512,6 +524,7 @@ export default function useParsedDeckComponent({
           mode: undefined,
           hasUpgrades: !!cardsByName && hasUpgrades(
             card.id,
+            deckCards,
             cards,
             cardsByName,
             validation,
@@ -522,7 +535,7 @@ export default function useParsedDeckComponent({
             },
             isArkhamDbDeck
           ),
-          customizable: hasCustomizationUpgrades(card.id, cards, customizations, validation),
+          customizable: hasCustomizationUpgrades(card.id, deckCards, cards, customizations, validation),
         };
       });
       const count = sumBy(limitedCards, card => slots[card.id] || 0);
@@ -576,6 +589,7 @@ export default function useParsedDeckComponent({
         ),
         currentIndex,
         extraCards,
+        deckCards,
         cards,
         cardsByName,
         new DeckValidation(parsedDeck.investigatorBack, slots, meta, { side_deck: true }),
@@ -603,6 +617,7 @@ export default function useParsedDeckComponent({
       />,
       currentIndex,
       sideCards,
+      deckCards,
       cards,
       cardsByName,
       validation,

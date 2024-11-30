@@ -29,7 +29,6 @@ function ChecklistButton({ deckId, code }: { deckId: DeckId; code: string }) {
   const [count] = useDeckSlotCount(deckId, code);
   const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, deckId), [deckId]);
   const checklist: ChecklistSlots = useSelector(checklistSelector);
-  console.log(count, checklist[code]);
   const dispatch = useDispatch();
   const toggleValue = useCallback((value: number, toggle: boolean) => {
     dispatch(setDeckChecklistCard(deckId, code, value, toggle));

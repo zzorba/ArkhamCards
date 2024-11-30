@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { forEach, filter, find, map, reverse, partition, sortBy, sumBy, shuffle, flatMap, uniq } from 'lodash';
+import { forEach, filter, find, map, reverse, partition, sortBy, sumBy, shuffle, flatMap, uniq, range } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t, ngettext, msgid } from 'ttag';
 
@@ -27,6 +27,8 @@ import { useDialog } from '../dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { DeckId } from '@actions/types';
 import { getExtraDeckSlots } from '@lib/parseDeck';
+import { useCardMap } from '@components/card/useCardList';
+import { useDeck } from '@data/hooks';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
@@ -69,8 +71,23 @@ export default function CardUpgradeDialog({
     });
     return r;
   }, [cardsByName]);
+  const deck = useDeck(id);
   const deckEdits = useSimpleDeckEdits(id);
   const slots = useMemo(() => mode === 'extra' ? deckEdits?.meta && getExtraDeckSlots(deckEdits?.meta) : deckEdits?.slots, [mode, deckEdits]);
+  const codes = useMemo(() => Object.keys(slots ?? {}), [slots]);
+  const [deckCardsMap] = useCardMap(codes, 'player', false, deckEdits?.tabooSetChange ?? deck?.deck.taboo_id ?? 0);
+  const deckCards = useMemo(() => {
+    const result: Card[] = [];
+    forEach(slots, (count, code) => {
+      const card = deckCardsMap[code];
+      if (card && count > 0) {
+        range(0, count).forEach(() => {
+          result.push(card);
+        });
+      }
+    })
+    return result;
+  }, [deckCardsMap, slots]);
   const originalCodes = useMemo(() => {
     if (!slots) {
       return new Set();
@@ -112,10 +129,10 @@ export default function CardUpgradeDialog({
     const validation = new DeckValidation(investigator, slots, deckEdits.meta, { side_deck: mode === 'extra' });
     return sortBy(
       filter(dedupedCardsByName,
-        card => validation.canIncludeCard(card, false)),
+        card => validation.canIncludeCard(card, false, deckCards)),
       card => card.xp || 0
     );
-  }, [dedupedCardsByName, investigator, deckEdits, slots, mode]);
+  }, [dedupedCardsByName, deckCards, investigator, deckEdits, slots, mode]);
   const onIncrementIgnore = useCallback((code: string) => {
     dispatch(incIgnoreDeckSlot(id, code));
   }, [dispatch, id]);

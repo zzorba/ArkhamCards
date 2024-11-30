@@ -289,6 +289,7 @@ export interface ParsedDeck {
   factionCounts: FactionCounts;
   costHistogram: number[];
   skillIconCounts: SkillCounts;
+  deckCards: Card[];
   slotCounts: SlotCounts;
   normalCards: SplitCards;
   specialCards: SplitCards;
@@ -475,6 +476,7 @@ export const FOF = "fof";
 export const STANDALONE = "standalone";
 export const DARK_MATTER = "zdm";
 export const ALICE_IN_WONDERLAND = "zaw";
+export const OZ = "zoz";
 export const CROWN_OF_EGIL = "zce";
 export const CALL_OF_THE_PLAGUEBEARER = "zcp";
 export const CYCLOPEAN_FOUNDATIONS = "zcf";
@@ -505,6 +507,7 @@ export type CampaignCycleCode =
   | typeof DARK_MATTER
   | typeof CYCLOPEAN_FOUNDATIONS
   | typeof ALICE_IN_WONDERLAND
+  | typeof OZ
   | typeof CROWN_OF_EGIL
   | typeof HEART_OF_DARKNESS
   | typeof CALL_OF_THE_PLAGUEBEARER
@@ -538,6 +541,7 @@ export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   CYCLOPEAN_FOUNDATIONS,
   HEART_OF_DARKNESS,
   RTTIC,
+  OZ,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -567,12 +571,12 @@ export const GUIDED_CAMPAIGNS = new Set([
   CYCLOPEAN_FOUNDATIONS,
   HEART_OF_DARKNESS,
   RTTIC,
+  OZ,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
-  HEART_OF_DARKNESS,
-  FHV,
+  OZ,
 ]);
 
 export interface CustomCampaignLog {

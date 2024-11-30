@@ -1987,8 +1987,8 @@
       },
       {
         "code": "08113",
-        "text": "The first line of this card gains: \"Campaign Mode only.\"",
-        "replacement_text": "Campaign Mode only. Limit 1 per investigator. Cannot leave play.\n[reaction] After you play Unscrupulous Loan: Gain 10 resources.\n<b>Forced</b> - When the game ends or you are eliminated, if you have fewer than 10 resources in your resource pool: Exile Unscrupulous Loan."
+        "text": "此卡牌的第一行獲得：\"劇本模式專用。\"",
+        "replacement_text": "劇本模式專用。每位調查員限制1張。不能離場。\n[reaction]在你打出大肆借貸後：獲得10資源。\n<b>強制</b> - 在遊戲結束或你退場時，如果你的資源池中的資源少於10：放逐大肆借貸。"
       },
       {
         "code": "08093",
@@ -2049,8 +2049,8 @@
       },
       {
         "code": "09041",
-        "text": "This card's [fast] ability gains \"(Limit twice per round.)\"",
-        "replacement_text": "Customizable. Limit 1 per investigator.\n<b>Forced</b> - At the start of the round: Choose one of the following criteria for this round\n- You fail a test by 2 or more.\n- You succeed at a test by 3 or more.\nWhen the chosen criteria is met, you may exhaust Empirical Hypothesis to add 1 evidence to it.\n[fast] Spend 1 evidence: Draw 1 card. (Limit twice per round.)"
+        "text": "此卡牌的[fast]能力獲得\"每輪限制兩次\"",
+        "replacement_text": "特製。每位調查員限制1張。\n<b>強制</b> - 當一輪開始時：為本輪選擇以下一個假設標準\n- 你檢定失敗且低於難度至少2點。\n- 你檢定成功且超過難度至少3點。\n在達成所選的假設標準時，你可以消耗經驗假設法來增加1證據到其上。\n[fast]花費1證據：抽取1張卡牌。(每輪限制兩次)"
       }
     ]
   }

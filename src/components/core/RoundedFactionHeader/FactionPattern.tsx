@@ -26,7 +26,11 @@ interface Props {
 }
 
 // flip horizontally: transform={`translate(${width},0) scale(-1,1)`}
-function RepeatPattern({ patternWidth, height, children }: { patternWidth: number; height: number; children: React.ReactNode }) {
+function RepeatPattern({ patternWidth, height, children }: { 
+  patternWidth: number; 
+  height: number; 
+  children: React.ReactNode;
+}) {
   return (
     <Pattern
       id="FactionPattern"
@@ -49,7 +53,12 @@ function StretchPattern({
   width,
   height,
   children,
-}: { patternWidth: number; width: number; height: number; children: React.ReactNode }) {
+}: { 
+  patternWidth: number; 
+  width: number; 
+  height: number; 
+  children: React.ReactNode;
+}) {
   if (width < patternWidth) {
     return (
       <RepeatPattern patternWidth={patternWidth} height={height}>
@@ -75,7 +84,12 @@ function StretchPattern({
 }
 
 
-function HeaderPattern({ faction, width, height, transparent }: { faction : string; width: number; height: number; transparent?: boolean }) {
+function HeaderPattern({ faction, width, height, transparent }: { 
+  faction : string; 
+  width: number; 
+  height: number; 
+  transparent?: boolean;
+}) {
   switch (faction) {
     case 'campaign':
       return (
@@ -135,7 +149,12 @@ function HeaderPattern({ faction, width, height, transparent }: { faction : stri
   }
 }
 
-function HeaderPath({ width, height, opacity, fullRound }: { width: number; height: number; opacity: number; fullRound?: boolean }) {
+function HeaderPath({ width, height, opacity, fullRound }: { 
+  width: number; 
+  height: number; 
+  opacity: number; 
+  fullRound?: boolean;
+}) {
   const topWidth = width - 16;
   const sideHeight = height - 8;
   return (
@@ -172,21 +191,38 @@ function getOpacity(faction: string, transparent?: boolean) {
   }
   return transparent || (faction === 'seeker' || faction === 'neutral') ? 0.07 : 0.1;
 }
-const FactionPatternComponent = React.memo(function FactionPattern({ width, height, faction, transparent, fullRound }: Props) {
+const FactionPattern = ({ width, height, faction, transparent, fullRound }: Props) => {
   const opacity = getOpacity(faction, transparent);
   return (
-    <View style={[styles.pattern, { width, height }, Platform.OS === 'android' ? { opacity } : {}]}>
+    <View 
+      style={[
+        styles.pattern,
+        { width, height, overflow: 'hidden' }, 
+        Platform.OS === 'android' ? { opacity } : {},
+      ]}
+      needsOffscreenAlphaCompositing
+    >
       <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
         <Defs>
-          <HeaderPattern faction={faction} width={width} height={height} transparent={transparent} />
+          <HeaderPattern 
+            faction={faction} 
+            width={width} 
+            height={height} 
+            transparent={transparent} 
+          />
         </Defs>
-        <HeaderPath fullRound={fullRound} width={width} height={height} opacity={opacity} />
+        <HeaderPath 
+          fullRound={fullRound} 
+          width={width} 
+          height={height}
+          opacity={opacity} 
+        />
       </Svg>
     </View>
   );
-});
+};
 
-export default FactionPatternComponent;
+export default FactionPattern;
 
 const styles = StyleSheet.create({
   pattern: {

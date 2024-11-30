@@ -164,6 +164,10 @@
     "name": "Prologo"
   },
   {
+    "id": "chasing_rainbows",
+    "name": "Chasing Rainbows"
+  },
+  {
     "id": "city_of_the_elder_things",
     "name": "La Città degli Antichi"
   },
@@ -220,6 +224,18 @@
     "name": "Death at Sundown"
   },
   {
+    "id": "deep_impact",
+    "name": "Deep Impact"
+  },
+  {
+    "id": "defense_of_the_realm",
+    "name": "Defense of the Realm"
+  },
+  {
+    "id": "desaturation",
+    "name": "Desaturation"
+  },
+  {
     "id": "devil_reef",
     "name": "Lo Scoglio del Diavolo"
   },
@@ -238,6 +254,10 @@
   {
     "id": "dm_prologue",
     "name": "Prologue…"
+  },
+  {
+    "id": "double_whammy",
+    "name": "Double Whammy"
   },
   {
     "id": "dwl_epilogue",
@@ -352,6 +372,10 @@
     "name": "Gryphon and Mock Turtle"
   },
   {
+    "id": "hall_of_the_mountain_king",
+    "name": "Hall of the Mountain King"
+  },
+  {
     "id": "havana",
     "name": "Danza Selvaggia"
   },
@@ -406,6 +430,10 @@
   {
     "id": "ice_and_death_part_3",
     "name": "Ghiaccio e Morte - Parte 3"
+  },
+  {
+    "id": "illumination",
+    "name": "Illumination"
   },
   {
     "id": "in_the_clutches_of_chaos",
@@ -508,6 +536,10 @@
     "name": "Lo Zampino di Miaolathotep"
   },
   {
+    "id": "misery_loves_company",
+    "name": "Misery Loves Company"
+  },
+  {
     "id": "mission_briefing",
     "name": "Mission Briefing"
   },
@@ -534,6 +566,14 @@
   {
     "id": "night_on_the_town",
     "name": "Night on the Town"
+  },
+  {
+    "id": "oz_epilogue",
+    "name": "Epilogo"
+  },
+  {
+    "id": "oz_prologue",
+    "name": "Prologo"
   },
   {
     "id": "perth",
@@ -792,6 +832,10 @@
     "name": "Romolo e Remo"
   },
   {
+    "id": "royal_audience",
+    "name": "Royal Audience"
+  },
+  {
     "id": "san_francisco",
     "name": "Do Ut Des"
   },
@@ -1048,6 +1092,10 @@
     "name": "Il Prezzo del Progresso"
   },
   {
+    "id": "the_road_to_oz",
+    "name": "The Road to Oz"
+  },
+  {
     "id": "the_search_for_kadath",
     "name": "Alla Ricerca di Kadath"
   },
@@ -1148,6 +1196,10 @@
     "name": "Durante il viaggio…"
   },
   {
+    "id": "true_colours",
+    "name": "True Colours"
+  },
+  {
     "id": "tsk_epilogue",
     "name": "Epilogo"
   },
@@ -1178,6 +1230,10 @@
   {
     "id": "waking_nightmare",
     "name": "Incubo a Occhi Aperti"
+  },
+  {
+    "id": "war_council",
+    "name": "War Council"
   },
   {
     "id": "war_of_the_outer_gods",

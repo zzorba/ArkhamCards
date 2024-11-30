@@ -73,7 +73,7 @@ interface CampaignLogCard {
   card: string;
   count: number;
 }
-interface CampaignLogCardEntry extends BasicEntry {
+export interface CampaignLogCardEntry extends BasicEntry {
   type: "card";
   cards: CampaignLogCard[];
 }
@@ -629,6 +629,11 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   resigned(investigator: string): boolean {
     const status = this.investigatorResolutionStatus()[investigator];
     return status === "resigned";
+  }
+
+  isAlive(investigator: string): boolean {
+    const status = this.investigatorResolutionStatus()[investigator];
+    return status === "alive";
   }
 
   isDefeated(investigator: string): boolean {

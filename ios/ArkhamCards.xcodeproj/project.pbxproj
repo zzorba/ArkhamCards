@@ -65,6 +65,7 @@
 		680254E39CBCB8DC7AADC8D2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C917A2C5B18C818B8FB113CE /* PrivacyInfo.xcprivacy */; };
 		764F9747FC780D2E0EF5102E /* Pods_ArkhamCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A04E39D4B83639D6FD6A3F /* Pods_ArkhamCards.framework */; };
 		9DC6CE6F2CA2554B00ADEC10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DC6CE6D2CA2554B00ADEC10 /* InfoPlist.strings */; };
+		FE431F832CFA75EE00F1E50B /* oz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE431F822CFA75EE00F1E50B /* oz.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +146,7 @@
 		D015900F71F34A5187CC75F4 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		DD2B3F9071761A240528D656 /* Pods-ArkhamCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.debug.xcconfig"; path = "Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.debug.xcconfig"; sourceTree = "<group>"; };
 		EA9558AF96C7453B9D642AC9 /* AppCenter-Config.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "ArkhamCards/AppCenter-Config.plist"; sourceTree = "<group>"; };
+		FE431F822CFA75EE00F1E50B /* oz.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = oz.ttf; path = ../assets/oz.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				FE431F822CFA75EE00F1E50B /* oz.ttf */,
 				6595EBA42C83DEC40052C406 /* Arkhamic.ttf */,
 				651E8ACA2912FE6600A48E56 /* DMSerifDisplay-Italic.ttf */,
 				651E8ACB2912FE6600A48E56 /* DMSerifDisplay-Regular.ttf */,
@@ -409,6 +412,7 @@
 				650DBD8426EFA507006170CC /* edge.ttf in Resources */,
 				657276D0265984A200157DE3 /* alice.ttf in Resources */,
 				651E8ACC2912FE6600A48E56 /* DMSerifDisplay-Italic.ttf in Resources */,
+				FE431F832CFA75EE00F1E50B /* oz.ttf in Resources */,
 				651E8AC92911A8B600A48E56 /* AlegreyaSC-Medium.ttf in Resources */,
 				659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */,
 				655E70E928A55C7500DBB0DF /* cyclopean.ttf in Resources */,

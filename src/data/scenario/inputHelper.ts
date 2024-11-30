@@ -68,8 +68,12 @@ export function investigatorChoiceInputChoices(
         switch (input.investigator) {
           case 'resigned':
             return campaignLog.resigned(code);
+          case 'defeated':
+            return campaignLog.isDefeated(code);
           case 'not_defeated':
             return !campaignLog.isDefeated(code);
+          case 'alive':
+            return campaignLog.isAlive(code);
           default:
             return true;
         }

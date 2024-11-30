@@ -13,6 +13,7 @@ import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import InputWrapper from '../InputWrapper';
 import ListItem from './ListItem';
+import { StepPaddingContext } from '@components/campaignguide/StepPaddingContext';
 
 export interface ChoiceListComponentProps {
   id: string;
@@ -103,6 +104,7 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
     }
     return detailed ? undefined : -1;
   }, [detailed, selectedChoice]);
+  const { side } = useContext(StepPaddingContext);
   const choicesComponent = useMemo(() => {
     const results = flatMap(items, (item, idx) => {
       const choices = options.type === 'universal' ?
@@ -123,7 +125,7 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
           editable={inputChoices === undefined}
           detailed={detailed}
           firstItem={idx === 0}
-          width={width - s * (inputChoices === undefined ? 4 : 2)}
+          width={width - s * (inputChoices === undefined ? 4 : 2) - side * 2}
         />
       );
     });
@@ -143,7 +145,8 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
       );
     }
     return results;
-  }, [inputChoices, hideInvestigatorSection, items, detailed, options, optional, width, getChoice, onChoiceChange]);
+  }, [inputChoices, 
+    side, hideInvestigatorSection, items, detailed, options, optional, width, getChoice, onChoiceChange]);
   const disabledText = useMemo(() => {
     if (detailed && !every(items, item => selectedChoice[item.code] !== undefined)) {
       return t`Continue`;

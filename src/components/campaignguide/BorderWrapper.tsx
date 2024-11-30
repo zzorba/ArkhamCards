@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import StepBorder from './StepBorder';
 import { l, m } from '@styles/space';
+import { ExtraStepPaddingProvider, StepPaddingContext } from './StepPaddingContext';
 
 interface Props {
   width: number;
@@ -23,7 +24,9 @@ export default function BorderWrapper({ border, children, width, color }: Props)
     <View style={styles.wrapper}>
       <StepBorder type="top" width={width} margin={16} color={color} />
       <View style={styles.innerWrapper}>
-        { children }
+        <ExtraStepPaddingProvider padding={l}>
+          { children }
+        </ExtraStepPaddingProvider>
       </View>
       <StepBorder type="bottom" width={width} margin={16} color={color} />
     </View>

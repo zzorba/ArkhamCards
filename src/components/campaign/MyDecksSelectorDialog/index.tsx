@@ -40,6 +40,7 @@ export interface MyDecksSelectorProps {
 
   onlyShowSelected?: boolean;
   simpleOptions?: boolean;
+  includeParallel?: boolean;
 }
 
 type Props = NavigationProps & MyDecksSelectorProps;
@@ -90,7 +91,11 @@ function investigatorOptions(): Options {
 
 function MyDecksSelectorDialog(props: Props) {
   const { fontScale, typography, width } = useContext(StyleContext);
-  const { componentId, campaignId, onDeckSelect, onInvestigatorSelect, singleInvestigator, selectedDecks, selectedInvestigatorIds, onlyShowSelected, simpleOptions } = props;
+  const { 
+    componentId, campaignId, onDeckSelect, onInvestigatorSelect, 
+    singleInvestigator, selectedDecks, selectedInvestigatorIds, 
+    onlyShowSelected, simpleOptions, includeParallel, 
+  } = props;
 
   const campaign = useCampaign(campaignId);
 
@@ -282,9 +287,10 @@ function MyDecksSelectorDialog(props: Props) {
         onInvestigatorSelect={onInvestigatorSelect}
         searchOptions={searchOptions(false)}
         filterInvestigators={filterInvestigators}
+        includeParallel={includeParallel}
       />
     );
-  }, [componentId, selectedSort, onInvestigatorSelect, searchOptions, filterInvestigators]);
+  }, [componentId, selectedSort, onInvestigatorSelect, searchOptions, filterInvestigators, includeParallel]);
   const tabs = useMemo(() => {
     return investigatorTab ? [
       {

@@ -711,6 +711,7 @@ export function multiConditionResult(
             return investigatorCardConditionResult(subCondition, campaignLog).options ? 1 : 0;
           }
           return binaryCardConditionResult(subCondition, campaignLog).option ? 1 : 0;
+        case 'campaign_log_cards':
         case 'campaign_log':
         case 'campaign_log_section_exists':
           return campaignLogConditionResult(subCondition, campaignLog).option ? 1 : 0;
@@ -879,6 +880,10 @@ export function investigatorStatusConditionResult(condition: ScenarioDataInvesti
         return !campaignLog.isDefeated(code);
       case 'resigned':
         return campaignLog.resigned(code);
+      case 'not_resigned':
+        return !campaignLog.resigned(code);
+      case 'alive':
+        return campaignLog.isAlive(code);
     }
   });
   return binaryConditionResult(

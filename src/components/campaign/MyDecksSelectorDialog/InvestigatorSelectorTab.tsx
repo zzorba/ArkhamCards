@@ -12,6 +12,7 @@ interface Props {
   searchOptions?: SearchOptions;
   sort: SortType[];
   filterInvestigators: string[];
+  includeParallel?: boolean;
 }
 
 export default function InvestigatorSelectorTab({
@@ -20,6 +21,7 @@ export default function InvestigatorSelectorTab({
   filterInvestigators,
   sort,
   onInvestigatorSelect,
+  includeParallel,
 }: Props) {
   const investigatorSelected = useCallback((card: Card) => {
     onInvestigatorSelect(card);
@@ -34,6 +36,7 @@ export default function InvestigatorSelectorTab({
       searchOptions={searchOptions}
       onPress={investigatorSelected}
       filterInvestigators={filterInvestigators}
+      includeParallelInvestigators={includeParallel}
     />
   );
 }

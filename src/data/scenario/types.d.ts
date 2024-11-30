@@ -235,6 +235,7 @@ export interface Campaign {
   position: number;
   no_side_scenario_xp?: boolean;
   map?: CampaignMap;
+  include_parallel_investigators?: boolean;
   cards?: {
     code: string;
     name: string;
@@ -333,8 +334,10 @@ export interface CampaignLogSectionDefinition {
     | "header"
     | "partner"
     | "scarlet_keys"
+    | "fatigue"
     | "relationship"
-    | "checklist";
+    | "checklist"
+    | "investigator_checklist";
   hidden?: boolean;
   partners?: Partner[];
   checklist?: ChecklistItem[];
@@ -387,6 +390,7 @@ export interface MultiCondition {
   type: "multi";
   conditions: (
     | CampaignLogCondition
+    | CampaignLogCardsCondition
     | CampaignLogSectionExistsCondition
     | CampaignDataChaosBagCondition
     | CampaignDataNextScenarioCondition
@@ -706,6 +710,12 @@ export interface BackupStateEffect {
   type: "backup_state";
   operation: "save" | "restore";
 }
+export interface CampaignLogCardsCondition {
+  type: "campaign_log_cards";
+  section: string;
+  id: string;
+  options: BoolOption[];
+}
 export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";
   section: string;
@@ -897,7 +907,7 @@ export interface ScarletKeyCountCondition {
 export interface ScenarioDataInvestigatorStatusCondition {
   type: "scenario_data";
   scenario_data: "investigator_status";
-  investigator: "defeated" | "not_defeated" | "resigned";
+  investigator: "alive" | "defeated" | "not_defeated" | "resigned" | "not_resigned";
   options: BoolOption[];
 }
 export interface CampaignLogInvestigatorCountCondition {
@@ -947,12 +957,6 @@ export interface CheckSuppliesAnyCondition {
   id: string;
   name: string;
   prompt?: string;
-  options: BoolOption[];
-}
-export interface CampaignLogCardsCondition {
-  type: "campaign_log_cards";
-  section: string;
-  id: string;
   options: BoolOption[];
 }
 export interface CampaignLogCardsSwitchCondition {
@@ -1088,7 +1092,7 @@ export interface InvestigatorChoiceInput {
   type: "investigator_choice";
   source: "campaign" | "scenario";
   optional?: boolean;
-  investigator: "all" | "choice" | "any" | "resigned" | "defeated" | "not_defeated";
+  investigator: "all" | "choice" | "any" | "alive" | "resigned" | "defeated" | "not_defeated";
   min?: ConstantOperand | CampaignLogCountOperand;
   max?: ConstantOperand | CampaignLogCountOperand;
   condition?: InvestigatorChoiceCondition;
@@ -1198,6 +1202,7 @@ export interface ScenarioInvestigatorsInput {
   type: "scenario_investigators";
   choose_none_steps?: string[];
   lead_investigator_effects?: Effect[];
+  include_parallel?: boolean;
 }
 export interface PlayScenarioInput {
   type: "play_scenario";

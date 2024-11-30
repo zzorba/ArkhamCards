@@ -40,7 +40,7 @@ function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & Na
       return false;
     }
     const validation = new DeckValidation(investigator, {}, undefined, { all_options: true, all_customizations: true });
-    return validation.canIncludeCard(card, false);
+    return validation.canIncludeCard(card, false, []);
   }, [card]);
 
   useNavigationButtonPressed(({ buttonId }) => {

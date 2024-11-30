@@ -34,6 +34,7 @@ import {
   HEART_OF_DARKNESS,
   RTTIC,
   FHV,
+  OZ,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
@@ -127,6 +128,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case CYCLOPEAN_FOUNDATIONS: return t`Cyclopean Foundations`;
     case HEART_OF_DARKNESS: return t`Heart of Darkness`;
     case RTTIC: return t`The (Unofficial) Return to the Innsmouth Conspiracy`
+    case OZ: return t`The Colour Out of Oz`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -467,6 +469,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
     case GOB:
     case FOF:
     case HEART_OF_DARKNESS:
+    case OZ:
 
       return [];
     default: {
@@ -500,6 +503,7 @@ export function campaignNames() {
     fof: t`Fortune and Folly`,
     zdm: t`Dark Matter`,
     zaw: t`Alice in Wonderland`,
+    zoz: t`The Colour Out of Oz`,
     zce: t`The Crown of Egil`,
     standalone: t`Standalone`,
     zcf: t`Cyclopean Foundations`,
@@ -531,6 +535,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
       return colors.campaign.standalone;
     case TCU:
     case RTTCU:
+    case OZ:
       return colors.campaign.tcu;
     case TDEA:
     case TDEB:
@@ -739,6 +744,16 @@ export function getCampaignLog(
         ],
         counts: [t`Information on Kurtz`],
       };
+    case OZ:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Preparations`,
+          t`Companions of Oz`,
+          t`Advantages`,
+          t`Order of Events`
+        ],
+      };
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -880,6 +895,14 @@ const ZHOD_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-7': 1, '-8': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
 };
 
+const OZ_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 1, '-3': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, '-5': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 3, '-2': 2, '-3': 1, '-4': 1, '-5': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+};
+
+
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
     case 'blood_on_the_altar':
@@ -975,6 +998,8 @@ export function getChaosBag(
       return CYCLOPEAN_BAG[difficulty];
     case HEART_OF_DARKNESS:
       return ZHOD_BAG[difficulty];
+    case OZ:
+      return OZ_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

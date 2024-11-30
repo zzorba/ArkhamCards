@@ -31,7 +31,10 @@ export default function CompactInvestigatorRow({
   hideImage,
   color,
   image,
-  eliminated, name, description, investigator, transparent, yithian, open, detail, badge, leftContent, imageOffset, children, width, arkhamCardsImg }: Props) {
+  eliminated, name, description, investigator, 
+  transparent, yithian, open, detail, badge, 
+  leftContent, imageOffset, children, width, arkhamCardsImg,
+}: Props) {
   const { colors, typography } = useContext(StyleContext);
   return (
     <RoundedFactionHeader

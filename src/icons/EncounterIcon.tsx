@@ -12,6 +12,7 @@ import DunwichIcon from './DunwichIcon';
 import EdgeIcon from './EdgeIcon';
 import ForgottenIcon from './ForgottenIcon';
 import HemlockIcon from './HemlockIcon';
+import OzIcon from './OzIcon';
 import StandaloneIcon from './StandaloneIcon';
 import InnsmouthIcon from './InnsmouthIcon';
 import AliceIcon from './AliceIcon';
@@ -26,6 +27,9 @@ interface Props {
 export default class EncounterIcon extends React.PureComponent<Props> {
   aliceIcon(name: string, size: number, color: string) {
     return (<AliceIcon name={name} size={size} color={color} />);
+  }
+  ozIcon(name: string, size: number, color: string) {
+    return (<OzIcon name={name} size={size} color={color} />);
   }
   arkhamIcon(name: string, size: number, color: string) {
     return (<ArkhamIcon name={name} size={size} color={color} />);
@@ -1018,6 +1022,39 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'zlf':
       case 'legions_of_fire':
         return this.standaloneIcon('legions_of_fire', size, color);
+
+
+      
+      case 'zoz_the_road_to_oz': return this.ozIcon('the_road_to_oz', size, color);
+      case 'zoz_ferocious_beasts': return this.ozIcon('ferocious_beasts', size, color);
+      case 'zoz_wicked_witches': return this.ozIcon('wicked_witches', size, color);
+      case 'zoz_prismatic_evils': return this.ozIcon('prismatic_evils', size, color);
+      case 'zoz_terror_out_of_space': return this.ozIcon('terror_out_of_space', size, color);
+      case 'zoz_princess_of_oz': return this.ozIcon('princess_of_oz', size, color);
+      case 'zoz_chromatic_infection': return this.ozIcon('chromatic_infection', size, color);
+      case 'zoz_deep_impact': return this.ozIcon('deep_impact', size, color);
+      case 'zoz_emerald_city': return this.ozIcon('emerald_city', size, color);
+      case 'zoz_alien_vibrance': return this.ozIcon('alien_vibrance', size, color);
+      case 'zoz_horrid_infection': return this.ozIcon('horrid_infection', size, color);
+      case 'zoz_companions_of_oz': return this.ozIcon('companions_of_oz', size, color);
+      case 'zoz_spiraling_decay': return this.ozIcon('spiraling_decay', size, color);
+      case 'zoz_double_whammy': return this.ozIcon('double_whammy', size, color);
+      case 'zoz_chasing_rainbows': return this.ozIcon('chasing_rainbows', size, color);
+      case 'zoz_blighted_land': return this.ozIcon('blighted_land', size, color);
+      case 'zoz_misery_loves_company': return this.ozIcon('misery_loves_company', size, color);
+      case 'zoz_nomes': return this.ozIcon('nomes', size, color);
+      case 'zoz_violent_invasion': return this.ozIcon('violent_invasion', size, color);
+      case 'zoz_hall_of_the_mountain_king': return this.ozIcon('hall_of_the_mountain_king', size, color);
+      case 'zoz_defense_of_the_realm': return this.ozIcon('defense_of_the_realm', size, color);
+      case 'zoz_true_colours': return this.ozIcon('true_colours', size, color);
+      case 'zoz_the_colour_itself': return this.ozIcon('the_colour_itself', size, '#B405F6');
+      case 'zoz_munchkin': return this.ozIcon('munchkin_country', size, color);
+      case 'zoz_winkie': return this.ozIcon('winkie_country', size, color);
+      case 'zoz_quadling': return this.ozIcon('quadling_country', size, color);
+      case 'zoz_gillikin': return this.ozIcon('gillikin_country', size, color);
+      case 'zoz':
+      case 'the_colour_out_of_oz':
+        return this.ozIcon('zoz', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);

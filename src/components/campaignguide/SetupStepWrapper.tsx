@@ -10,6 +10,7 @@ import space, { s, m, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ScenarioStepContext from './ScenarioStepContext';
 import ScenarioGuideContext from './ScenarioGuideContext';
+import { ExtraStepPaddingProvider } from './StepPaddingContext';
 
 interface Props {
   bulletType?: BulletType;
@@ -96,7 +97,9 @@ export default function SetupStepWrapper({ bulletType, noPadding, reverseSpacing
     ]}>
       { bulletNode }
       <View style={styles.mainText}>
-        { children }
+        <ExtraStepPaddingProvider padding={noPadding ? 0 : m}>
+          { children }
+        </ExtraStepPaddingProvider>
       </View>
     </View>
   );

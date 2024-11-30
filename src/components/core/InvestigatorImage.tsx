@@ -25,7 +25,7 @@ interface Props {
   backCard?: Card;
   componentId?: string;
   border?: boolean;
-  size?: 'large' | 'small' | 'tiny';
+  size?: 'large' | 'small' | 'tiny' | 'extra_tiny';
   killedOrInsane?: boolean;
   yithian?: boolean;
   imageLink?: boolean;
@@ -38,12 +38,14 @@ interface Props {
 }
 
 const IMAGE_SIZE = {
+  extra_tiny: 30,
   tiny: 40,
   small: 65,
   large: 110,
 };
 
 const ICON_SIZE = {
+  extra_tiny: 20,
   tiny: 26,
   small: 40,
   large: 65,
@@ -128,8 +130,8 @@ const INVESTIGATOR_HORIZONTAL_OFFSET: { [key: string]: number | undefined } = {
   '09015': 1.4,
 };
 
-function getImpliedSize(size: 'large' | 'small' | 'tiny', fontScale: number) {
-  if (size === 'small' || size === 'tiny') {
+function getImpliedSize(size: 'large' | 'small' | 'tiny' | 'extra_tiny', fontScale: number) {
+  if (size === 'small' || size === 'tiny' || size === 'extra_tiny') {
     return size;
   }
   return toggleButtonMode(fontScale) ? 'small' : 'large';
@@ -172,6 +174,7 @@ function InvestigatorImage({
   const imageStyle = useMemo(() => {
     if (card?.type_code === 'asset') {
       switch (impliedSize) {
+        case 'extra_tiny': return imageOffset === 'right' ? styles.extraTinyRightAsset : styles.extraTinyAsset;
         case 'tiny': return imageOffset === 'right' ? styles.tinyRightAsset : styles.tinyAsset;
         case 'small': return imageOffset === 'right' ? styles.smallRightAsset : styles.smallAsset;
         case 'large': return imageOffset === 'right' ? styles.largeRightAsset : styles.largeAsset;
@@ -179,12 +182,14 @@ function InvestigatorImage({
     }
     if (yithian) {
       switch (impliedSize) {
+        case 'extra_tiny': return styles.yithianExtraTiny
         case 'tiny': return styles.yithianTiny;
         case 'small': return styles.yithianSmall;
         case 'large': return styles.yithianLarge;
       }
     }
     switch (impliedSize) {
+      case 'extra_tiny': return styles.extraTiny;
       case 'tiny': return styles.tiny;
       case 'small': return styles.small;
       case 'large': return styles.large;
@@ -350,6 +355,13 @@ InvestigatorImage.computeHeight = (size: 'large' | 'small' | 'tiny' = 'large', f
 export default InvestigatorImage;
 
 const styles = StyleSheet.create({
+  yithianExtraTiny: {
+    position: 'absolute',
+    top: -18,
+    left: -8,
+    width: (166 + 44) * 0.35,
+    height: (136 + 34) * 0.35,
+  },
   yithianTiny: {
     position: 'absolute',
     top: -18,
@@ -378,6 +390,13 @@ const styles = StyleSheet.create({
   relative: {
     position: 'relative',
   },
+  extraTiny: {
+    position: 'absolute',
+    top: -12,
+    left: -4,
+    width: (166 + 44) * 0.35,
+    height: (136 + 34) * 0.35,
+  },
   tiny: {
     position: 'absolute',
     top: -18,
@@ -398,6 +417,13 @@ const styles = StyleSheet.create({
     left: -20,
     width: (166 + 44) * 1.25,
     height: (136 + 34) * 1.25,
+  },
+  extraTinyAsset: {
+    position: 'absolute',
+    top: -5,
+    left: -6,
+    width: (136 + 34) * 0.3,
+    height: (166 + 44) * 0.3,
   },
   tinyAsset: {
     position: 'absolute',
@@ -421,6 +447,13 @@ const styles = StyleSheet.create({
     height: (166 + 44) * 1.25,
   },
 
+  extraTinyRightAsset: {
+    position: 'absolute',
+    top: -12,
+    left: -27,
+    width: (136 + 34) * 0.25,
+    height: (166 + 44) * 0.25,
+  },
   tinyRightAsset: {
     position: 'absolute',
     top: -12,

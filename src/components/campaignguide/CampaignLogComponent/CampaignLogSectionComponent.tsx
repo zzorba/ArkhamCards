@@ -31,7 +31,7 @@ export default function CampaignLogSectionComponent({ sectionId, campaignGuide, 
   return (
     <>
       { flatMap(section.entries, (entry, idx) => (
-        entry.id === '$relationship' ? null :
+        (entry.id === '$relationship' || entry.id === '$fatigue') ? null :
         <View key={`${entry.id}_${idx}`}>
           <CampaignLogEntryComponent
             entry={entry}

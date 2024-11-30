@@ -122,6 +122,7 @@
 		<string>DMSerifDisplay-Regular.ttf</string>
 		<string>hemlock.ttf</string>
 		<string>arkhamslim.ttf</string>
+		<string>oz.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

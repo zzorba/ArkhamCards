@@ -27,6 +27,7 @@ interface Props {
   allowNewDecks?: boolean;
   includeLeadInvestigator?: boolean;
   investigators?: string[];
+  includeParallel?: boolean;
   filter?: (investigator: Card) => boolean;
 }
 
@@ -42,6 +43,7 @@ export default function InvestigatorCheckListComponent({
   includeLeadInvestigator,
   investigators: investigatorCodes,
   filter: filterCard,
+  includeParallel,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const { campaignState, campaignInvestigators } = useContext(CampaignGuideContext);

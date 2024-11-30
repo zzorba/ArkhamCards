@@ -135,7 +135,7 @@ export default class DeckValidation {
   }
 
   getDeckSize(cards: Card[]): number {
-    const deckOptions = this.deckOptions();
+    const deckOptions = this.deckOptions(cards);
     const specialCards = this.specialCardCounts();
     var size: number = 30;
     const requirements = this.deckRequirements();
@@ -151,14 +151,20 @@ export default class DeckValidation {
         size = parseInt(this.meta.deck_size_selected, 10);
       }
     }
+    const extraSize = sumBy(cards, card => (
+      card.type_code === 'investigator' ? 0 :
+      card.deck_requirements?.size ?? 0
+    ));
+   
     return (
       size +
+      extraSize + 
       5 *
         (specialCards.versatile +
           specialCards.ancestralKnowledge +
           specialCards.forcedLearning * 3) +
       10 * specialCards.underworldMarket +
-      +sumBy(deckOptions, (o) => o.size || 0) -
+      sumBy(deckOptions, (o) => o.size || 0) -
       5 * specialCards.underworldSupport
     );
   }
@@ -348,7 +354,7 @@ export default class DeckValidation {
       };
     }
 
-    const deck_options = this.deckOptions();
+    const deck_options = this.deckOptions(cards);
     for (let i = 0; i < deck_options.length; i++) {
       const option = deck_options[i];
       if (!option) {
@@ -434,7 +440,7 @@ export default class DeckValidation {
     return null;
   }
 
-  private initDeckOptionsCounts() {
+  private initDeckOptionsCounts(cards: Card[]) {
     const specialCards = this.specialCardCounts();
     this.deck_options_counts = [];
     if (specialCards.onYourOwn > 0) {
@@ -476,26 +482,26 @@ export default class DeckValidation {
   }
 
   getInvalidCards(cards: Card[]): Card[] {
-    this.initDeckOptionsCounts();
+    this.initDeckOptionsCounts(cards);
     return filter(
       sortBy(cards, (c) => -(c.xp ?? 0)),
-      (card) => !this.canIncludeCard(card, true)
+      (card) => !this.canIncludeCard(card, true, cards)
     );
   }
 
-  isCardLimited(card: Card): boolean {
-    const option = this.matchingDeckOption(card, false);
+  isCardLimited(card: Card, allCards: Card[]): boolean {
+    const option = this.matchingDeckOption(card, false, allCards);
     return !!(option && option.limit && !option.dynamic_id && !option.not);
   }
 
-  deckOptions(): DeckOption[] {
+  deckOptions(cards: Card[]): DeckOption[] {
     const specialCards = this.specialCardCounts();
     var deck_options: DeckOption[] = [];
     if (specialCards.onYourOwn > 0) {
       deck_options.push(
         DeckOption.parse({
           not: true,
-          slot: ["Ally"],
+          slot: ['Ally'],
           error: t`No assets that take up the ally slot are allowed by On Your Own.`,
           dynamic_id: ON_YOUR_OWN_CODE,
         })
@@ -577,8 +583,8 @@ export default class DeckValidation {
     return deck_options;
   }
 
-  canIncludeCard(card: Card, processDeckCounts: boolean): boolean {
-    const matchingOption = this.matchingDeckOption(card, processDeckCounts);
+  canIncludeCard(card: Card, processDeckCounts: boolean, allCards: Card[]): boolean {
+    const matchingOption = this.matchingDeckOption(card, processDeckCounts, allCards);
     if (matchingOption?.not) {
       if (
         matchingOption.dynamic_id === ON_YOUR_OWN_CODE &&
@@ -601,7 +607,8 @@ export default class DeckValidation {
 
   private matchingDeckOption(
     card: Card,
-    processDeckCounts: boolean
+    processDeckCounts: boolean,
+    allCards: Card[]
   ): DeckOption | undefined {
     const investigator = this.investigator;
 
@@ -646,7 +653,7 @@ export default class DeckValidation {
     }
 
     //var investigator = app.data.cards.findById(investigator_code);
-    const deck_options: DeckOption[] = this.deckOptions();
+    const deck_options: DeckOption[] = this.deckOptions(allCards);
     if (deck_options.length) {
       for (let i = 0; i < deck_options.length; i++) {
         const finalOption = i === deck_options.length - 1;

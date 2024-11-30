@@ -18,9 +18,10 @@ interface Props {
   button?: React.ReactNode;
   first?: boolean;
   last?: boolean;
+  noWrapper?: boolean;
 }
 
-export default function TextEntryComponent({ text, icon, crossedOut, entry, decoration, button, first, last }: Props) {
+export default function TextEntryComponent({ text, icon, crossedOut, entry, decoration, button, first, last, noWrapper }: Props) {
   const { colors, typography, fontScale } = useContext(StyleContext);
   const actualText = entry.type === 'count' ?
     text.replace('#X#', `${entry.count}`) :
@@ -28,18 +29,21 @@ export default function TextEntryComponent({ text, icon, crossedOut, entry, deco
   return (
     <View style={icon ? [
       { backgroundColor: colors.L20 },
-      space.paddingSideS,
+      noWrapper ? undefined : space.paddingSideS,
       first ? { borderTopLeftRadius: 4, borderTopRightRadius: 4, marginTop: xs } : undefined,
       last ? { borderBottomLeftRadius: 4, borderBottomRightRadius: 4, marginBottom: s } : undefined,
     ] : undefined}>
-      <View style={[styles.wrapper, space.paddingTopS, space.paddingBottomS, !last && icon ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined]}>
+      <View style={[
+        noWrapper ? undefined : styles.wrapper, 
+        space.paddingTopS, space.paddingBottomS, !last && icon ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined
+      ]}>
         { !!icon && <View style={space.paddingRightS}><AppIcon name={icon} size={36} color={colors.M} /></View> }
         { actualText.startsWith('[') && actualText.endsWith(']') ? (
           <ArkhamSlimIcon name={actualText.substring(1, actualText.length - 1)} color={colors.D30} size={36} />
         ) : (
           <Text style={[
             icon ? typography.menuText : typography.large,
-            icon ? undefined : space.marginBottomS,
+            icon ? undefined : noWrapper ? undefined : space.marginBottomS,
             icon ? { color: colors.D20 } : undefined,
             crossedOut ? typography.strike : undefined,
             decoration === 'circle' ? typography.underline : undefined,
@@ -61,5 +65,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+  },
+  noWrapper: {
+    alignItems: 'center',
   },
 });

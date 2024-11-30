@@ -44,11 +44,12 @@ export default function useCampaignGuideContextFromActions(
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch: AsyncDispatch = useDispatch();
   const [campaignChooseDeck, campaignAddInvestigator] = useChooseDeck(createDeckActions, updateCampaignActions);
+  const cycleCode = campaignData?.campaign?.cycleCode;
   const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => {
     if (campaignInvestigators !== undefined) {
-      campaignChooseDeck(campaignId, campaignInvestigators, singleInvestigator, callback);
+      campaignChooseDeck(campaignId, cycleCode, campaignInvestigators, singleInvestigator, callback);
     }
-  }, [campaignId, campaignChooseDeck, campaignInvestigators]);
+  }, [campaignId, cycleCode, campaignChooseDeck, campaignInvestigators]);
   const remoteGuideActions = useGuideActions();
   const setBinaryAchievement = useCallback((achievementId: string, value: boolean) => {
     dispatch(guideActions.setBinaryAchievement(userId, remoteGuideActions, campaignId, achievementId, value));

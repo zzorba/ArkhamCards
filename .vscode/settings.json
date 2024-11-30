@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": false,
+  "[typescriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "editor.tabSize": 2
+}
+

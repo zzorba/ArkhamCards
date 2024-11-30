@@ -13,6 +13,7 @@ import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import { throttle } from 'lodash';
+import { ExtraStepPaddingProvider, StepPaddingContext } from '../StepPaddingContext';
 
 interface Props {
   bulletType?: BulletType;
@@ -29,7 +30,14 @@ interface Props {
   noDivider?: boolean;
 }
 
-function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletType }: { bulletType?: BulletType; titleStyle: 'header' | 'setup'; title?: string; titleNode?: React.ReactNode; titleButton?: React.ReactNode; editable?: boolean }) {
+function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletType }: { 
+  bulletType?: BulletType; 
+  titleStyle: 'header' | 'setup'; 
+  title?: string; 
+  titleNode?: React.ReactNode; 
+  titleButton?: React.ReactNode; 
+  editable?: boolean;
+}) {
   const { colors, typography } = useContext(StyleContext);
   const elementCount = (title ? 1 : 0) + (titleNode ? 1 : 0) + (titleButton ? 1 : 0);
   const titleText = useMemo(() => {
@@ -83,7 +91,9 @@ function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletT
       (editable || !bulletType) ? space.paddingXs : undefined,
       editable ? { marginLeft: xs, marginRight: xs, borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined,
     ]}>
-      { content }
+      <ExtraStepPaddingProvider padding={editable ? xs : 0}>
+        { content }
+      </ExtraStepPaddingProvider>
     </View>
   );
 }
@@ -142,7 +152,7 @@ export default function InputWrapper({
       onPress={undo}
     />
   ) : undefined;
-
+  const { side } = useContext(StepPaddingContext);
   if (investigator) {
     return (
       <View style={[space.paddingSideS, space.marginBottomL]}>
@@ -150,7 +160,7 @@ export default function InputWrapper({
           noSpace
           noShadow={!editable}
           faction={investigator.factionCode()}
-          header={<CompactInvestigatorRow investigator={investigator} width={width - s * 2} open />}
+          header={<CompactInvestigatorRow investigator={investigator} width={width - side * 2} open />}
         >
           <TitleRow
             bulletType={bulletType}
@@ -160,7 +170,11 @@ export default function InputWrapper({
             titleButton={editable ? (titleButton || undoButton) : undefined}
             editable={editable}
           />
-          <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs]}>{ children }</View>
+          <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs]}>
+            <ExtraStepPaddingProvider padding={s}>
+              { children }
+            </ExtraStepPaddingProvider>
+          </View>
           { editable && <ButtonRow buttons={buttons} onSubmit={onSubmit} disabledText={disabledText} /> }
         </RoundedFactionBlock>
       </View>
@@ -176,18 +190,34 @@ export default function InputWrapper({
           space.marginBottomL,
           { backgroundColor: colors.L20 },
         ]}>
-        <TitleRow bulletType={bulletType} titleStyle={titleStyle} title={title} titleNode={titleNode} titleButton={titleButton || undoButton} editable />
-        <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs]}>{ children }</View>
+        <TitleRow 
+          bulletType={bulletType} 
+          titleStyle={titleStyle} 
+          title={title} 
+          titleNode={titleNode} 
+          titleButton={titleButton || undoButton} 
+          editable 
+        />
+        <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs]}>
+          <ExtraStepPaddingProvider padding={s * 2}>
+            { children }
+          </ExtraStepPaddingProvider>
+        </View>
         <ButtonRow buttons={buttons} onSubmit={onSubmit} disabledText={disabledText} />
       </View>
     );
   }
   return (
+    
     <View style={[
       bulletType ? undefined : space.paddingS,
     ]}>
       <TitleRow bulletType={bulletType} titleStyle={titleStyle} title={title} titleNode={titleNode} titleButton={titleButton} />
-      <View style={bulletType ? space.paddingSideS : undefined}>{ children }</View>
+      <View style={bulletType ? space.paddingSideS : undefined}>
+        <ExtraStepPaddingProvider padding={s}>
+          { children }
+        </ExtraStepPaddingProvider>
+      </View>
       <View style={[bulletType ? space.marginSideS : undefined, noDivider ? undefined : { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]} />
     </View>
   );

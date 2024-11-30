@@ -12,7 +12,8 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import StyleContext from '@styles/StyleContext';
 import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
-import space from '@styles/space';
+import space, { xs } from '@styles/space';
+import { ExtraStepPaddingProvider } from '@components/campaignguide/StepPaddingContext';
 
 interface OwnProps {
   id: string;
@@ -41,17 +42,19 @@ function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandom
   }, [index, drawRandomWeakness]);
   return (
     <View style={space.paddingXs}>
-      <InvestigatorButton
-        investigator={investigator}
-        value={choice === undefined ?
-          t`Draw random weakness` :
-          (choiceCard?.name || 'Missing Card')
-        }
-        detail={!!choice ? choiceCard?.subname : undefined}
-        onPress={onPress}
-        disabled={disabled}
-        widget="shuffle"
-      />
+      <ExtraStepPaddingProvider padding={xs}>
+        <InvestigatorButton
+          investigator={investigator}
+          value={choice === undefined ?
+            t`Draw` :
+            (choiceCard?.name || 'Missing Card')
+          }
+          detail={!!choice ? choiceCard?.subname : undefined}
+          onPress={onPress}
+          disabled={disabled}
+          widget="shuffle"
+        />
+      </ExtraStepPaddingProvider>
     </View>
   );
 }

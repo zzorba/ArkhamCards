@@ -7,7 +7,7 @@ import { t } from 'ttag';
 import { Action } from 'redux';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignId, CUSTOM, Deck, DeckId, getDeckId, Slots, Trauma, WeaknessSet } from '@actions/types';
+import { CampaignId, CUSTOM, Deck, DeckId, getDeckId, OZ, Slots, Trauma, WeaknessSet } from '@actions/types';
 import DecksSection from './DecksSection';
 import { updateCampaignXp, cleanBrokenCampaigns, addInvestigator, removeInvestigator, updateCampaignInvestigatorTrauma, updateCampaignWeaknessSet, updateCampaignName } from '../actions';
 import { NavigationProps } from '@components/nav/types';
@@ -174,17 +174,18 @@ function CampaignDetailView(props: Props) {
     }
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
       campaignId: campaign.id,
-      singleInvestigator: singleInvestigator.code,
+      singleInvestigator: singleInvestigator.alternate_of_code ?? singleInvestigator.code,
       onDeckSelect: onAddDeck,
     } : {
       campaignId: campaign.id,
       selectedInvestigatorIds: map(
         allInvestigators,
-        investigator => investigator.code
+        investigator => investigator.alternate_of_code ?? investigator.code
       ),
       onDeckSelect: onAddDeck,
       onInvestigatorSelect: onAddInvestigator,
       simpleOptions: true,
+      includeParallel: campaign.cycleCode === OZ,
     };
     Navigation.showModal({
       stack: {

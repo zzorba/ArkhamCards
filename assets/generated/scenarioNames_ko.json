@@ -164,6 +164,10 @@
     "name": "서막"
   },
   {
+    "id": "chasing_rainbows",
+    "name": "Chasing Rainbows"
+  },
+  {
     "id": "city_of_the_elder_things",
     "name": "옛것의 도시"
   },
@@ -220,6 +224,18 @@
     "name": "해질녘의 최후"
   },
   {
+    "id": "deep_impact",
+    "name": "Deep Impact"
+  },
+  {
+    "id": "defense_of_the_realm",
+    "name": "Defense of the Realm"
+  },
+  {
+    "id": "desaturation",
+    "name": "Desaturation"
+  },
+  {
     "id": "devil_reef",
     "name": "악마의 암초"
   },
@@ -238,6 +254,10 @@
   {
     "id": "dm_prologue",
     "name": "서막…?"
+  },
+  {
+    "id": "double_whammy",
+    "name": "Double Whammy"
   },
   {
     "id": "dwl_epilogue",
@@ -352,6 +372,10 @@
     "name": "그리폰과 가짜 거북"
   },
   {
+    "id": "hall_of_the_mountain_king",
+    "name": "Hall of the Mountain King"
+  },
+  {
     "id": "havana",
     "name": "춤추는 광기"
   },
@@ -406,6 +430,10 @@
   {
     "id": "ice_and_death_part_3",
     "name": "얼음과 죽음(3부)"
+  },
+  {
+    "id": "illumination",
+    "name": "Illumination"
   },
   {
     "id": "in_the_clutches_of_chaos",
@@ -508,6 +536,10 @@
     "name": "냐옹라토텝의 역습"
   },
   {
+    "id": "misery_loves_company",
+    "name": "Misery Loves Company"
+  },
+  {
     "id": "mission_briefing",
     "name": "임무 브리핑"
   },
@@ -534,6 +566,14 @@
   {
     "id": "night_on_the_town",
     "name": "기나긴 밤"
+  },
+  {
+    "id": "oz_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "oz_prologue",
+    "name": "서막"
   },
   {
     "id": "perth",
@@ -792,6 +832,10 @@
     "name": "로물루스와 레무스"
   },
   {
+    "id": "royal_audience",
+    "name": "Royal Audience"
+  },
+  {
     "id": "san_francisco",
     "name": "대가 없는 호의는 없다"
   },
@@ -1048,6 +1092,10 @@
     "name": "진보에는 희생이 따른다"
   },
   {
+    "id": "the_road_to_oz",
+    "name": "The Road to Oz"
+  },
+  {
     "id": "the_search_for_kadath",
     "name": "카다스를 찾아서"
   },
@@ -1148,6 +1196,10 @@
     "name": "여행하는 동안..."
   },
   {
+    "id": "true_colours",
+    "name": "True Colours"
+  },
+  {
     "id": "tsk_epilogue",
     "name": "후일담"
   },
@@ -1178,6 +1230,10 @@
   {
     "id": "waking_nightmare",
     "name": "깨어난 악몽"
+  },
+  {
+    "id": "war_council",
+    "name": "War Council"
   },
   {
     "id": "war_of_the_outer_gods",

@@ -32,32 +32,32 @@
       },
       {
         "code": "01033",
-        "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\""
+        "text": "此卡牌的[reaction]能力改为：\"在你成功调查后，消耗米兰·克里斯托弗博士……\""
       },
       {
         "code": "02002",
-        "text": "This card's [reaction] ability gains: \"(Limit once per round.)\""
+        "text": "此卡牌的[reaction]能力获得：\"(每轮限制一次。)\""
       },
       {
         "code": "02111",
-        "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\""
+        "text": "此卡牌获得：\"团队限制胜利牌区中2张过度深入。\""
       },
       {
         "code": "02229",
-        "text": "This card gains: \"Max 1 committed per skill test.\""
+        "text": "此卡牌获得：\"每次技能检定最多投入一张。\""
       },
       {
         "code": "02266",
-        "text": "This card gains: \"Max once per round.\""
+        "text": "此卡牌获得：\"每轮最多一次。\""
       },
       {
         "code": "03029",
-        "text": "This card's ability now reads: \"Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.\""
+        "text": "此卡牌的能力改为：\"将手牌中一张占用不超过2个手部槽位的[[道具]]支援卡放置入场。\""
       },
       {
         "code": "03315",
         "exceptional": true,
-        "text": "This card gains the Exceptional keyword."
+        "text": "此卡牌获得卓越关键词。"
       }
     ]
   },
@@ -106,32 +106,32 @@
       },
       {
         "code": "01033",
-        "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\""
+        "text": "此卡牌的[reaction]能力改为：\"在你成功调查后，消耗米兰·克里斯托弗博士……\""
       },
       {
         "code": "02002",
-        "text": "This card's [reaction] ability gains: \"(Limit once per round.)\""
+        "text": "此卡牌的[reaction]能力获得：\"(每轮限制一次。)\""
       },
       {
         "code": "02111",
-        "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\""
+        "text": "此卡牌获得：\"团队限制胜利牌区中2张过度深入。\""
       },
       {
         "code": "02229",
-        "text": "This card gains: \"Max 1 committed per skill test.\""
+        "text": "此卡牌获得：\"每次技能检定最多投入一张。\""
       },
       {
         "code": "02266",
-        "text": "This card gains: \"Max once per round.\""
+        "text": "此卡牌获得：\"每轮最多一次。\""
       },
       {
         "code": "03029",
-        "text": "This card's ability now reads: \"Put an [[Item]] asset that takes up fewer than 2 hand slots into play from your hand.\""
+        "text": "此卡牌的能力改为：\"将手牌中一张占用不超过2个手部槽位的[[道具]]支援卡放置入场。\""
       },
       {
         "code": "03315",
         "exceptional": true,
-        "text": "This card gains the Exceptional keyword."
+        "text": "此卡牌获得卓越关键词。"
       }
     ]
   },
@@ -200,57 +200,57 @@
       },
       {
         "code": "01033",
-        "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\""
+        "text": "此卡牌的[reaction]能力改为：\"在你成功调查后，消耗米兰·克里斯托弗博士……\""
       },
       {
         "code": "02002",
-        "text": "This card's [reaction] ability gains: \"(Limit once per round.)\""
+        "text": "此卡牌的[reaction]能力获得：\"(每轮限制一次。)\""
       },
       {
         "code": "02111",
-        "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\""
+        "text": "此卡牌获得：\"团队限制胜利牌区中2张过度深入。\""
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: \"(max once per round).\""
+        "text": "在此卡牌能力文本的最后，加上：\"(每轮最多一次。)\""
       },
       {
         "code": "02266",
-        "text": "This card gains: \"Max once per round.\""
+        "text": "此卡牌获得：\"每轮最多一次。\""
       },
       {
         "code": "03029",
-        "text": "This card's ability now reads: \"Put a level 0-3 [[Item]] asset into play from your hand.\""
+        "text": "此卡牌的能力改为：\"将手牌中的一张等级0-3的[[道具]]支援卡放置入场。\""
       },
       {
         "code": "03315",
         "exceptional": true,
-        "text": "This card gains the Exceptional keyword."
+        "text": "此卡牌获得卓越关键词。"
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: \"Remove All In from the game.\""
+        "text": "在此卡牌能力文本的最后，加上：\"将孤注一掷移出游戏。\""
       },
       {
         "code": "05116",
-        "text": "This card's [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改为[fast]能力。"
       },
       {
         "code": "05188",
-        "text": "This card's [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改为[fast]能力。"
       },
       {
         "code": "05189",
-        "text": "This card's [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改为[fast]能力。"
       },
       {
         "code": "06195",
-        "text": "This card's [action] ability now reads: \"[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.\""
+        "text": "此卡牌的[action]能力改为：\"[action]花费1子弹：<b>攻击</b>。这次攻击你+2[combat]。如果这次攻击中抽出的混乱标记为非负数修正值，这次攻击造成+2伤害。\""
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "禁止。"
       }
     ]
   },
@@ -267,7 +267,7 @@
       },
       {
         "code": "01050",
-        "text": "This card now reads: \"Disengage from each enemy engaged with you and move to a connecting location with no enemies.\""
+        "text": "此卡牌改为：\"所有与你交战的敌人解除交战状态，你移动到一个没有敌人的连接地点。\""
       },
       {
         "code": "02108",
@@ -291,7 +291,7 @@
       },
       {
         "code": "02226",
-        "text": "This card's [action] ability gains: \"This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.\""
+        "text": "此卡牌的[action]能力获得：\"这次攻击可以选择位于标准射程一个地点外的一个非[[精英]]敌人作为目标，忽略其冷漠和反击关键词。\""
       },
       {
         "code": "04305",
@@ -307,7 +307,7 @@
       },
       {
         "code": "05230",
-        "text": "This card loses the text: \"Attached asset cannot be used to attack enemies engaged with you.\""
+        "text": "此卡牌失去以下文本：\"被叠加支援卡不能被用来攻击与你交战的敌人。\""
       },
       {
         "code": "05231",
@@ -315,15 +315,15 @@
       },
       {
         "code": "05324",
-        "text": "This card's ability gains: \"Remove Eucatastrophe from the game.\""
+        "text": "此卡牌的能力获得：\"将美满结局移出游戏。\""
       },
       {
         "code": "06022",
-        "text": "This card's constant ability now reads: \"If this card has no charges, remove it from the game.\""
+        "text": "此卡牌的持续能力改为：\"如果此卡牌没有充能，将其移出游戏。\""
       },
       {
         "code": "06199",
-        "text": "This card's ability gains: \"Remove each committed copy of Three Aces from the game.\""
+        "text": "此卡牌的能力获得：\"将所有投入的三条A移出游戏。\""
       },
       {
         "code": "60233",
@@ -331,65 +331,65 @@
       },
       {
         "code": "07269",
-        "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\""
+        "text": "此卡牌的能力获得：\"将警戒和平移出游戏。\""
       },
       {
         "code": "07301",
-        "text": "This card's ability gains: \"Remove Hallow from the game.\""
+        "text": "此卡牌的能力获得：\"将圣洁移出游戏。\""
       },
       {
         "code": "01033",
-        "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\""
+        "text": "此卡牌的[reaction]能力改为：\"在你成功调查后，消耗米兰·克里斯托弗博士……\""
       },
       {
         "code": "02002",
-        "text": "This card's [reaction] ability gains: \"(Limit once per round.)\""
+        "text": "此卡牌的[reaction]能力获得：\"(每轮限制一次。)\""
       },
       {
         "code": "02111",
-        "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\""
+        "text": "此卡牌获得：\"团队限制胜利牌区中2张过度深入。\""
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: \"(max once per round).\""
+        "text": "在此卡牌能力文本的最后，加上：\"(每轮最多一次。)\""
       },
       {
         "code": "02266",
-        "text": "This card gains: \"Max once per round.\""
+        "text": "此卡牌获得：\"每轮最多一次。\""
       },
       {
         "code": "03029",
-        "text": "This card's ability now reads: \"Put a level 0-3 [[Item]] asset into play from your hand.\""
+        "text": "此卡牌的能力改为：\"将手牌中的一张等级0-3的[[道具]]支援卡放置入场。\""
       },
       {
         "code": "03315",
         "exceptional": true,
-        "text": "This card gains the Exceptional keyword."
+        "text": "此卡牌获得卓越关键词。"
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: \"Remove All In from the game.\""
+        "text": "在此卡牌能力文本的最后，加上：\"将孤注一掷移出游戏。\""
       },
       {
         "code": "05116",
-        "text": "This card's [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改为[fast]能力。"
       },
       {
         "code": "05188",
-        "text": "This card's [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改为[fast]能力。"
       },
       {
         "code": "05189",
-        "text": "This card's [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改为[fast]能力。"
       },
       {
         "code": "06195",
-        "text": "This card's [action] ability now reads: \"[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.\""
+        "text": "此卡牌的[action]能力改为：\"[action]花费1子弹：<b>攻击</b>。这次攻击你+2[combat]。如果这次攻击中抽出的混乱标记为非负数修正值，这次攻击造成+2伤害。\""
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "禁止。"
       }
     ]
   },
@@ -402,7 +402,7 @@
     "cards": [
       {
         "code": "01050",
-        "text": "This card now reads: \"Disengage from each enemy engaged with you and move to a connecting location with no enemies.\""
+        "text": "此卡牌改为：\"所有与你交战的敌人解除交战状态，你移动到一个没有敌人的连接地点。\""
       },
       {
         "code": "02108",
@@ -426,7 +426,7 @@
       },
       {
         "code": "02226",
-        "text": "This card's [action] ability gains: \"This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.\""
+        "text": "此卡牌的[action]能力获得：\"这次攻击可以选择位于标准射程一个地点外的一个非[[精英]]敌人作为目标，忽略其冷漠和反击关键词。\""
       },
       {
         "code": "04305",
@@ -434,7 +434,7 @@
       },
       {
         "code": "05153",
-        "text": "This card's [fast] ability is now a [action] ability."
+        "text": "此卡牌的[fast]能力改为[action]能力。"
       },
       {
         "code": "05159",
@@ -442,7 +442,7 @@
       },
       {
         "code": "05230",
-        "text": "This card loses the text: \"Attached asset cannot be used to attack enemies engaged with you.\""
+        "text": "此卡牌失去以下文本：\"被叠加支援卡不能被用来攻击与你交战的敌人。\""
       },
       {
         "code": "05231",
@@ -450,15 +450,15 @@
       },
       {
         "code": "05324",
-        "text": "This card's ability gains: \"Remove Eucatastrophe from the game.\""
+        "text": "此卡牌的能力获得：\"将美满结局移出游戏。\""
       },
       {
         "code": "06022",
-        "text": "This card's constant ability now reads: \"If this card has no charges, remove it from the game.\""
+        "text": "此卡牌的持续能力改为：\"如果此卡牌没有充能，将其移出游戏。\""
       },
       {
         "code": "06199",
-        "text": "This card's ability gains: \"Remove each committed copy of Three Aces from the game.\""
+        "text": "此卡牌的能力获得：\"将所有投入的三条A移出游戏。\""
       },
       {
         "code": "60233",
@@ -486,101 +486,101 @@
       },
       {
         "code": "07269",
-        "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\""
+        "text": "此卡牌的能力获得：\"将警戒和平移出游戏。\""
       },
       {
         "code": "07301",
-        "text": "This card's ability gains: \"Remove Hallow from the game.\""
+        "text": "此卡牌的能力获得：\"将圣洁移出游戏。\""
       },
       {
         "code": "01033",
-        "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\""
+        "text": "此卡牌的[reaction]能力改为：\"在你成功调查后，消耗米兰·克里斯托弗博士……\""
       },
       {
         "code": "02002",
-        "text": "This card's [reaction] ability gains: \"(Limit once per round.)\""
+        "text": "此卡牌的[reaction]能力获得：\"(每轮限制一次。)\""
       },
       {
         "code": "02111",
-        "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\""
+        "text": "此卡牌获得：\"团队限制胜利牌区中2张过度深入。\""
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: \"(max once per round).\""
+        "text": "在此卡牌能力文本的最后，加上：\"(每轮最多一次。)\""
       },
       {
         "code": "02266",
-        "text": "This card gains: \"Max once per round.\""
+        "text": "此卡牌获得：\"每轮最多一次。\""
       },
       {
         "code": "03029",
-        "text": "This card's ability now reads: \"Put a level 0-3 [[Item]] asset into play from your hand.\""
+        "text": "此卡牌的能力改为：\"将手牌中的一张等级0-3的[[道具]]支援卡放置入场。\""
       },
       {
         "code": "03315",
         "exceptional": true,
-        "text": "This card gains the Exceptional keyword."
+        "text": "此卡牌获得卓越关键词。"
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: \"Remove All In from the game.\""
+        "text": "在此卡牌能力文本的最后，加上：\"将孤注一掷移出游戏。\""
       },
       {
         "code": "05116",
-        "text": "This card's [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改为[fast]能力。"
       },
       {
         "code": "05188",
-        "text": "This card's [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改为[fast]能力。"
       },
       {
         "code": "05189",
-        "text": "This card's [action] ability is now a [fast] ability."
+        "text": "此卡牌的[action]能力改为[fast]能力。"
       },
       {
         "code": "06195",
-        "text": "This card's [action] ability now reads: \"[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.\""
+        "text": "此卡牌的[action]能力改为：\"[action]花费1子弹：<b>攻击</b>。这次攻击你+2[combat]。如果这次攻击中抽出的混乱标记为非负数修正值，这次攻击造成+2伤害。\""
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden."
+        "text": "禁止。"
       },
       {
         "code": "02029",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。"
       },
       {
         "code": "02269",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。"
       },
       {
         "code": "60416",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。"
       },
       {
         "code": "02263",
-        "text": "This card's fight ability now reads \"+1 damage\" instead of \"+2 damage.\""
+        "text": "此卡牌的攻击能力文本改为\"造成+1伤害\"，而不是\"造成+2伤害\"。"
       },
       {
         "code": "03006",
-        "text": "This card's forced ability is moved to its reverse side, and it should now read: \"<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).\"\nThis card's front side additionally gains: \"[action]: Switch roles. Does not provoke attacks of opportunity.\""
+        "text": "此卡牌的强制能力移动到卡牌的背面，并改为：\"<b>额外设置</b>：在你抽取起始手牌后：选择一个角色([survivor]、[guardian]、[seeker]、[rogue]、[mystic]或中立)。\"\n此卡牌的正面额外获得：\"[action]：切换角色。本行动不会触发趁乱攻击。\""
       },
       {
         "code": "03019",
-        "text": "This card's revelation ability now reads: \"Discard 1 card in your hand or play area of your current role. Then...\""
+        "text": "此卡牌的显现能力改为：\"丢弃1张你当前角色的手牌或玩家区域的牌。然后……\""
       },
       {
         "code": "04032",
-        "text": "This card now reads \"a non-[elder_sign] symbol\" instead of \"a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.\""
+        "text": "此卡牌的文本改为\"1个非[elder_sign]的符号\"，而不是\"1个[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记\"。"
       },
       {
         "code": "04110",
-        "text": "This card now reads \"a non-[auto_fail] symbol\" instead of \"a [skull], [cultist], [tablet], or [elder_thing] chaos token.\""
+        "text": "此卡牌的文本改为\"抽出非[auto_fail]的符号标记\"，而不是\"抽出[skull]、[cultist]、[tablet]或[elder_thing]混乱标记\"。"
       },
       {
         "code": "06002",
-        "text": "This investigator now reads: \"Deck Size: 50\" and \"Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...\"",
+        "text": "此调查员的文本改为：\"卡牌张数：50\"以及\"牌组构建需求(不计入卡牌张数)：3张神秘证据……\"",
         "deck_options": [
           {
             "faction": [
@@ -632,27 +632,27 @@
         "code": "07268",
         "exceptional": false,
         "deck_limit": 1,
-        "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\""
+        "text": "此卡牌失去卓越关键词并获得\"每副牌组限制1张。\""
       },
       {
         "code": "08045",
-        "text": "This card's constant ability now reads: \"...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\""
+        "text": "此卡牌的持续能力改为：\"……你获得+1[intellect]和+1[agility]，并且忽略你每个回合第一次的趁乱攻击。\""
       },
       {
         "code": "08055",
-        "text": "This card gains: \"Max once per round.\""
+        "text": "此卡牌获得：\"每轮最多一次。\""
       },
       {
         "code": "08098",
-        "text": "This card should read \"following basic actions\" instead of \"following actions.\""
+        "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。"
       },
       {
         "code": "08100",
-        "text": "This card should read \"following basic actions\" instead of \"following actions.\""
+        "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。"
       },
       {
         "code": "08093",
-        "text": "This card's parenthetical now reads: \"...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)\""
+        "text": "此卡牌的括弧内文本改为：\"……(如果你成功且超过难度至少3点，你可以消耗巨石锤，改为造成+2伤害并且可以将其移动远离你最多2个地点。)\""
       }
     ]
   },
@@ -665,8 +665,8 @@
     "cards": [
       {
         "code": "01050",
-        "text": "This card now reads: \"Disengage from each enemy engaged with you and move to a connecting location with no enemies.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nDisengage from each enemy engaged with you and move to a connecting location with no enemies."
+        "text": "此卡牌改为：\"所有与你交战的敌人解除交战状态，你移动到一个没有敌人的连接地点。\"",
+        "replacement_text": "变异。快速。只能在你回合期间打出。\n所有与你交战的敌人解除交战状态，你移动到一个没有敌人的连接地点。"
       },
       {
         "code": "02108",
@@ -674,8 +674,8 @@
       },
       {
         "code": "02226",
-        "text": "This card's [action] ability gains: \"This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.\"",
-        "replacement_text": "Mutated. Uses (3 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +3 [combat] and deal +2 damage for this attack. This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords. Cannot be used to attack enemies engaged with you."
+        "text": "此卡牌的[action]能力获得：\"这次攻击可以选择位于标准射程一个地点外的一个非[[精英]]敌人作为目标，忽略其冷漠和反击关键词。\"",
+        "replacement_text": "变异。使用(3子弹)。\n[action]花费1子弹：<b>攻击</b>。这次攻击中你+3[combat]，并+2伤害。不能用于攻击与你交战的敌人。这次攻击可以选择位于标准射程一个地点外的一个非[[精英]]敌人作为目标，忽略其冷漠和反击关键词。不能用于攻击与你交战的敌人。"
       },
       {
         "code": "04305",
@@ -683,8 +683,8 @@
       },
       {
         "code": "05153",
-        "text": "This card's [fast] ability is now a [action] ability.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[action] Exhaust Mr. \"Rook\" and spend 1 secret: Search the top 3, 6, or 9 cards of your deck for any card and draw it. If at least 1 weakness is among the searched cards, draw 1 of them, as well. Shuffle your deck."
+        "text": "此卡牌的[fast]能力改为[action]能力。",
+        "replacement_text": "使用(3秘密)。\n[action]消耗\\\"老千\\\"先生并花费1秘密：在你牌堆顶部3张、6张、或9张卡牌中查找并抽取任意一张卡牌。如果查找的卡牌中有至少1张弱点，也抽取其中1张。混洗你的牌堆。"
       },
       {
         "code": "05159",
@@ -692,8 +692,8 @@
       },
       {
         "code": "05230",
-        "text": "This card loses the text: \"Attached asset cannot be used to attack enemies engaged with you.\"",
-        "replacement_text": "Mutated. Fast. Attach to a [[Firearm]] asset you control that takes up two hand slots.\nWhen you perform a <b>Fight</b> action using attached asset, if you are engaged with no enemies, exhaust Telecopic Sight: This attack can target a non-[[Elite]] enemy at a connecting location. Ignore the aloof and retaliate keywords for this attack."
+        "text": "此卡牌失去以下文本：\"被叠加支援卡不能被用来攻击与你交战的敌人。\"",
+        "replacement_text": "变异。快速。叠加到你控制的一张占用2个手部槽位的[[枪械]]支援卡。\n[reaction]在你使用被叠加的支援卡执行<b>攻击</b>行动时，如果你未与敌人交战，消耗瞄准镜：这次攻击可以选择位于一个连接地点的一名非[[精英]]敌人作为目标。这次攻击忽略冷漠和反击关键词。"
       },
       {
         "code": "05231",
@@ -701,33 +701,33 @@
       },
       {
         "code": "05324",
-        "text": "This card's ability gains: \"Remove Eucatastrophe from the game.\"",
-        "replacement_text": "Mutated. Fast. Play when you reveal a chaos token that would reduce your skill value to 0 during a skill test (including the [auto_fail] token).\nCancel that token and treat it as an [elder_sign] token, instead. Remove Eucatastrophe from the game."
+        "text": "此卡牌的能力获得：\"将美满结局移出游戏。\"",
+        "replacement_text": "变异。快速。在你技能检定中抽出1个会令你的技能值减少到零的混乱标记时打出(包括[auto_fail]标记)。\n取消该标记并改为将其视为[elder_sign]标记。将美满结局移出游戏。"
       },
       {
         "code": "06022",
-        "text": "This card's constant ability now reads: \"If this card has no charges, remove it from the game.\"",
-        "replacement_text": "Mutated. Bonded (Segment of Onyx). Uses (3 charges). If this card has no charges, remove it from the game.\n[fast] Exhaust Pendant of the Queen and spend 1 charge: Choose a revealed location and select one - move to that location, discover 1 clue at that location, or automatically evade an enemy at that location."
+        "text": "此卡牌的持续能力改为：\"如果此卡牌没有充能，将其移出游戏。\"",
+        "replacement_text": "变异。绑定(一瓣缟玛瑙)。使用(3充能)。如果本卡牌没有充能，将其放在一边，位于场外。\n[free]消耗皇后的挂坠并花费1充能：选择一个已揭示地点并选择以下一项 - 移动到该地点、发现该地点的1个线索、自动躲避该地点的一名敌人。"
       },
       {
         "code": "06199",
-        "text": "This card's ability gains: \"Remove each committed copy of Three Aces from the game.\"",
-        "replacement_text": "Mutated. Myriad.\nIf you commit 3 copies of Three Aces to a skill test, that test automatically succeeds <i>(do not reveal chaos tokens from the chaos bag)</i>. Then draw 3 cards and gain 3 resources (max once per test). Remove each committed copy of Three Aces from the game."
+        "text": "此卡牌的能力获得：\"将所有投入的三条A移出游戏。\"",
+        "replacement_text": "变异。多重。\n如果你将3张三条A投入到一次技能检定，该次检定自动成功<i>(不要从混乱袋抽出混乱标记)</i>。然后，抽取3张卡牌并获得3资源(本效果每次检定最多一次)。将所有投入的三条A移出游戏。"
       },
       {
         "code": "60318",
-        "text": "Instead of \"Shuffle each weakness that was discarded…\", this card's ability now reads: \"After this skill test resolves, draw each weakness discarded by this effect.\"",
-        "replacement_text": "Mutated. After you commit Daredevil to a skill test, discard cards from the top of your deck until you discard a [rogue] skill you can commit to this test. Commit it. After this skill test resolves, draw each weakness discarded by this effect."
+        "text": "此卡牌的能力改为：\"在这次技能检定结算后，抽取本效果中丢弃的每张弱点卡。\"，而不是\"将本效果中丢弃的所有弱点卡洗回你的牌堆。\"",
+        "replacement_text": "变异。在你将虎口拔牙投入到技能检定后，从你牌堆顶部弃牌，直到丢弃一张可以投入这次检定的[rogue]技能卡。将其投入。在这次技能检定结算后，抽取本效果中丢弃的每张弱点卡。"
       },
       {
         "code": "07003",
-        "text": "This card's [reaction] ability now reads: \"After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)",
-        "replacement_text": "Mutated.\n[reaction] After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)\n[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead."
+        "text": "此卡牌的[reaction]能力改为：\"你在有敌人的地点发现线索后：发现该地点的额外1个线索，或者如果该敌人非[[精英]]，自动躲避该敌人(每轮限制一次)。\"",
+        "replacement_text": "变异。\n[reaction]你在有敌人的地点发现线索后：发现该地点的额外1个线索，或者如果该敌人非[[精英]]，自动躲避该敌人(每轮限制一次)。\n[elder_sign]效果：+2。如果是调查检定，你可以选择任一已揭示地点；改为如同你正在该地点调查。"
       },
       {
         "code": "07122",
-        "text": "This card's [reaction] ability now reads: \"When you resolve a [bless] token during a skill test…",
-        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+        "text": "此卡牌的[reaction]能力改为：\"在技能检定期间你结算一个[bless]标记时……\"",
+        "replacement_text": "变异。永久。每副牌组限制1张[[圣约]]。\n[reaction]在技能检定期间你结算一个[bless]标记时，消耗古代圣约：不要为此[bless]标记的效果抽出另一个标记。"
       },
       {
         "code": "60233",
@@ -739,8 +739,8 @@
       },
       {
         "code": "03112",
-        "text": "This card's [fast] ability now reads: \"…Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources).\"",
-        "replacement_text": "Mutated. While David Renfield has at least 1 doom on him, you get +1 [willpower].\n[fast] Exhaust David Renfield: You may place 1 doom on David Renfield. Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources)."
+        "text": "此卡牌的[fast]能力改为：\"……大卫·伦费尔德身上每有一个毁灭标记，获得1资源(最多3资源)。\"",
+        "replacement_text": "变异。只要大卫·伦费尔德身上有至少1个毁灭标记，你得到+1[willpower]。\n[fast]消耗大卫·伦费尔德：你可以在大卫·伦费尔德身上放置1个毁灭标记。大卫·伦费尔德身上每有一个毁灭标记，获得1资源(最多3资源)。"
       },
       {
         "code": "07308",
@@ -797,8 +797,8 @@
             "position": 1
           }
         ],
-        "customization_text": "□ <b>Heirloom.</b> This asset gets -1 cost and gains the [[Relic]] trait.\n□ <b>Inscription of Glory.</b> Add this inscription: \"- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.\"\n□ <b>Inscription of the Elders.</b> Add this inscription: \"- <i>Elders</i> - If this attack succeeds by an amount equal to or greater than your location's shroud, discover 1 clue at your location.\"\n□□ <b>Inscription of the Hunt.</b> Add this inscription: \"- <i>Hunt</i> - Immediately move to a connecting location or engage an enemy at your location.\"\n□ <b>Inscription of Fury.</b> Add this inscription: \"- <i>Fury</i> - If this attack is successful, in addition to its standard damage, deal 1 damage to each other enemy engaged with you.\"\n□□□ <b>Ancient Power.</b> You may imbue the same inscription up to three times.\n□□□ <b>Saga.</b> Replenish 2 of Runic Axe's charges at the start of each round, instead of only 1.\n□□□□ <b>Scriptweaver.</b> For every charge spent, you may imbue the axe with up to two different inscriptions.",
-        "text": "Upgrade – <b>Inscription of the Hunt:</b> +1 experience."
+        "customization_text": "□<b>家传。</b>本支援卡费用降低1点，并获得[[遗物]]属性。\n□<b>荣耀雕文。</b>增加此描述\"- <i>荣耀</i>—如果这次攻击击败敌人，选择一项：抽取1张卡牌、治愈1点伤害或治愈1点恐惧。\"。\n□<b>长者雕文。</b>增加此描述\"- <i>长者</i>—如果这次攻击成功且超过难度在你所在地点的隐藏值以上，发现你所在地点的1个线索。\"\n□□<b>追猎雕文</b>增加此描述\"- <i>追猎</i>—立即移动到连接地点或与你所在地点的一名敌人交战。\"\n□<b>狂怒雕文。</b>增加此描述\"- <i>狂怒</i>—如果这次攻击成功，除了其基础伤害以外，对每名与你交战的其馀敌人造成1点伤害。\"\n□□□<b>远古力量。</b>你可以重复灌输在同一项描述上最多三次。\n□□□<b>传说。</b>当每轮开始时卢恩斧的充能不补充1，改为补充2。\n□□□□<b>织法者</b>对于每1个花费的充能，你可以灌输到此斧的最多两条不同的描述上。",
+        "text": "升级 – <b>追猎雕文</b>：+1经验。"
       },
       {
         "code": "09108",
@@ -806,155 +806,155 @@
       },
       {
         "code": "07269",
-        "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\"",
-        "replacement_text": "As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nMutated. Fast. Play when the \"draw encounter cards\" step of the mythos phase would begin. Skip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "text": "此卡牌的能力获得：\"将警戒和平移出游戏。\"",
+        "replacement_text": "作为打出警戒和平的额外费用，在混乱袋和/或场上的卡牌中查找总共5个[bless]标记，并将其返回供应堆。\n变异。快速。在神话阶段的\\\"抽取遭遇卡\\\"步骤(步骤1.4)将要开始时打出。跳过神话阶段的此步骤。将警戒和平移出游戏。"
       },
       {
         "code": "07301",
-        "text": "This card's ability gains: \"Remove Hallow from the game.\"",
-        "replacement_text": "As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nMutated.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "text": "此卡牌的能力获得：\"将圣洁移出游戏。\"",
+        "replacement_text": "作为打出圣洁的额外费用，将混乱袋内或封印在场上卡牌上的总计10个[bless]标记返回供应堆。\n变异。\n移除场上任一卡牌上的1个毁灭标记。将圣洁移出游戏。"
       },
       {
         "code": "08019",
-        "text": "This card's <b>Forced</b> effect now reads: \"<b>Forced</b> – When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets…\"",
-        "replacement_text": "Mutated. Permanent. Limit 1 per deck. Purchase at deck creation.\n<b>Forced</b> - When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets from your hand, reducing the cost of each by 1. During this turn, you have 3 fewer actions to take."
+        "text": "此卡牌的<b>强制</b>效果改为：\"<b>强制</b> – 在你游戏的第一回合开始时：一次一张，打出你手牌中最多5张[[道具]]支援卡……\"",
+        "replacement_text": "变异。永久。每副牌组限制1张。当牌组构建时购买。\n<b>强制</b> - 在你游戏的第一回合开始时：一次一张，打出你手牌中最多5张[[道具]]支援卡，每张费用减少1点。这回合中你减少3次行动。"
       },
       {
         "code": "08032",
-        "text": "This card's ability gains: \"(Max twice per game.)\"",
-        "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After Jeremiah Kirby enters play, choose \"even\" or \"odd:\" Reveal the top 5 cards of your deck. Draw each card with a cost that matches the chosen option. Shuffle the remaining cards into your deck. (Max twice per game.)"
+        "text": "此卡牌的能力获得：\"(每场游戏最多两次。)\"",
+        "replacement_text": "变异。\n你获得+1[intellect]。\n[reaction]在耶利米·科尔比入场后，选择\\\"偶数\\\"或\\\"奇数\\\"：揭示你牌堆顶部的5张卡牌。抽取费用符合你所选择的每张卡牌。将剩馀卡牌与你的牌堆混洗。(每场游戏最多两次。)"
       },
       {
         "code": "01033",
-        "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\"",
-        "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After you successfully investigate, exhaust Dr. Milan Christopher: Gain 1 resource."
+        "text": "此卡牌的[reaction]能力改为：\"在你成功调查后，消耗米兰·克里斯托弗博士……\"",
+        "replacement_text": "变异。\n你获得+1[intellect]。\n[reaction]在你成功调查后，消耗米兰·克里斯托弗博士：获得1个资源。"
       },
       {
         "code": "02002",
-        "text": "This card's [reaction] ability gains: \"(Limit once per round.)\"",
-        "replacement_text": "Mutated.\n[reaction] After you succeed at a skill test by 2 or more while investigating: Discover 1 clue at your location. (Limit once per round.)\n[elder_sign] effect: +2. You may instead choose to automatically fail this skill test to draw 3 cards."
+        "text": "此卡牌的[reaction]能力获得：\"(每轮限制一次。)\"",
+        "replacement_text": "变异。\n[reaction]在调查时技能检定成功后，如果你超过难度至少2点：发现所在地点1个线索。(每轮限制一次。)\n[elder_sign]效果：+2。你可以选择让这次检定自动失败，来抽取3张卡牌。"
       },
       {
         "code": "02111",
-        "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\"",
-        "replacement_text": "Mutated.\nIn player order, each investigator draws 1 card from the top of the encounter deck. Then, add Delve Too Deep to the victory display.\nGroup limit 2 copies of Delve Too Deep in the victory display."
+        "text": "此卡牌获得：\"团队限制胜利牌区中2张过度深入。\"",
+        "replacement_text": "变异。\n按玩家顺序，每位调查员抽取1张遭遇卡。然后，将过度深入加入胜利牌区。\n团队限制胜利牌区中2张过度深入。"
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: \"(max once per round).\"",
-        "replacement_text": "Mutated.\nIf this skill test is successful by 2 or more, after it resolves, you may immediately take an action as if it were your turn (this action does not count toward the number of actions you can take each turn). (Max once per round.)"
+        "text": "在此卡牌能力文本的最后，加上：\"(每轮最多一次。)\"",
+        "replacement_text": "变异。\n如果该技能检定超过难度至少2点，在完成结算后，你可以立刻进行一个行动，如同在你的回合中(该行动不计入你每回合可进行的行动数)。(每轮最多一次。)"
       },
       {
         "code": "02266",
-        "text": "This card gains: \"Max once per round.\"",
-        "replacement_text": "Mutated. Exceptional. Fast. Play only during your turn.\nYou may take an additional 3 actions this turn. (Max once per round.)"
+        "text": "此卡牌获得：\"每轮最多一次。\"",
+        "replacement_text": "变异。卓越。快速。只能在你的回合中打出。\n该回合中，你可以额外进行3个行动。(每轮最多一次。)"
       },
       {
         "code": "03029",
-        "text": "This card's ability now reads: \"Put a level 0-3 [[Item]] asset into play from your hand.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nPut a level 0-3 [[Item]] asset into play from your hand. At the end of your turn, if that asset is still in play, return it to your hand."
+        "text": "此卡牌的能力改为：\"将手牌中的一张等级0-3的[[道具]]支援卡放置入场。\"",
+        "replacement_text": "变异。快速。只能在你回合中打出。\n将手牌中的一张等级0-3的[[道具]]支援卡放置入场。当你回合结束时，如果该支援卡还在场上，将其收回你的手牌。"
       },
       {
         "code": "03315",
         "exceptional": true,
-        "text": "This card gains the Exceptional keyword.",
-        "replacement_text": "Mutated. Exceptional. You get +1 to each of your skills for each horror on Key of Ys.\n<b>Forced</b> - When any amount of horror would be placed on you: Place 1 of that horror on Key of Ys.\n<b>Forced</b> - When Key of Ys leaves play: Discard the top 10 cards of your deck."
+        "text": "此卡牌获得卓越关键词。",
+        "replacement_text": "变异。卓越。伊苏之匙上每有1点恐惧你每项技能+1。\n<b>强制</b> - 在任意数量的恐惧将要放置到你身上时：将其中1点恐惧放置到伊苏之匙上。\n<b>强制</b> - 在伊苏之匙离场时：丢弃你牌堆顶的10张卡牌。"
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: \"Remove All In from the game.\"",
-        "replacement_text": "Mutated.\nMax 1 committed per skill test.\nIf this test is successful, draw 1 card for each point you succeeded by, to a maximum of 5. Shuffle each weakness drawn by this effect back into your deck without resolving it. Remove All In from the game."
+        "text": "在此卡牌能力文本的最后，加上：\"将孤注一掷移出游戏。\"",
+        "replacement_text": "变异。每次技能检定最多投入1张。\n如果本次检定成功，你每超过难度1点，抽取1张卡牌，最多可抽取5张。将本效果中抽到的所有弱点洗回你的牌堆，而不进行结算。将孤注一掷移出游戏。"
       },
       {
         "code": "05116",
-        "text": "This card's [action] ability is now a [fast] ability.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the bottom card of any investigator's deck or the encounter deck. Then, either discard that card, add it to its owner's hand, place it on the bottom of its deck, or place it on the top of its deck."
+        "text": "此卡牌的[action]能力改为[fast]能力。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]消耗秘密卷轴并花费1秘密：查看遭遇牌堆或任意一位调查员牌堆底部的卡牌。然后，丢弃该卡牌、将其加入其所有者手牌，或将其放到该牌堆顶部或牌堆底部。"
       },
       {
         "code": "05188",
-        "text": "This card's [action] ability is now a [fast] ability.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the bottom 3 cards of any investigator's deck or the encounter deck. You may discard 1 of those cards. You may add 1 of those cards to its owner's hand. Place the rest of those cards on either the top or bottom of their deck, in any order."
+        "text": "此卡牌的[action]能力改为[fast]能力。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]消耗秘密卷轴并花费1秘密：查看任意一位调查员牌堆或遭遇牌堆底部的3张卡牌。你可以丢弃其中1张。你可以将其中1张加入其所有者的手牌。将其中剩余的卡牌以任意顺序放到该牌堆底部或者顶部。"
       },
       {
         "code": "05189",
-        "text": "This card's [action] ability is now a [fast] ability.",
+        "text": "此卡牌的[action]能力改为[fast]能力。",
         "replacement_text": "Mutated. Uses (4 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the top or bottom card of any investigator's deck or the encounter deck. Then, either discard that card, add it to its owner's hand, place it on the bottom of its deck, or place it on top of its deck."
       },
       {
         "code": "05020",
-        "text": "This card's ability now reads \"<b>Parley.</b> Choose a non-[[Elite]] enemy at your location…\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose a non-[[Elite]] enemy at your location and test [combat] (3). This test gets +X difficulty, where X is the chosen enemy's damage value. If you succeed, discover 1 clue at your location and 1 clue at any other location."
+        "text": "此卡牌的能力改为：\"<b>谈判</b>。选择你所在地点的一名非[[精英]]敌人……\"",
+        "replacement_text": "变异。\n<b>谈判</b>。选择你所在地点的一个非[[精英]]敌人并检定[combat](3)。这次检定难度+X，X为所选敌人的伤害值。如果你成功，发现你所在地点的1个线索和其它任意地点的1个线索。"
       },
       {
         "code": "06195",
-        "text": "This card's [action] ability now reads: \"[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.\"",
-        "replacement_text": "Mutated. Uses (5 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack.  If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage."
+        "text": "此卡牌的[action]能力改为：\"[action]花费1子弹：<b>攻击</b>。这次攻击你+2[combat]。如果这次攻击中抽出的混乱标记为非负数修正值，这次攻击造成+2伤害。\"",
+        "replacement_text": "变异。使用(5子弹)。\n[action]花费1子弹：<b>攻击</b>。这次攻击你+2[combat]。如果这次攻击中抽出的混乱标记为非负数修正值，这次攻击造成+2伤害。"
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden.",
-        "replacement_text": "Mutated. Forbidden.\nMax 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice."
+        "text": "禁止。",
+        "replacement_text": "变异。禁止。\n每次技能检定最多投入1张。\n将该次检定难度加倍。如果检定成功，结算胜利效果两次。"
       },
       {
         "code": "02029",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\n[reaction] After a symbol is revealed during a test you are performing: You get +1 skill value for this test."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n[reaction]在你执行的技能检定期间，抽出一个符号后：你这次检定技能值+1。"
       },
       {
         "code": "02153",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal the attacking enemy's damage to itself."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。快速。在一名敌人攻击你所在地点的调查员时打出。\n取消该次攻击。然后从混乱袋中抽出1个标记。如果是符号，将敌人的伤害转移给敌人自身。"
       },
       {
         "code": "02269",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\nAfter a symbol is revealed during a skill test at your location, exhaust Jewel of Aureolus: Draw 1 card or gain 2 resources."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n[reaction]在你所在地点的技能检定期间，抽出一个符号后，消耗奥鲁斯的珠宝：抽取1张卡牌，或获得2个资源。"
       },
       {
         "code": "60416",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\nGain 1 resource. Reveal 3 random tokens from the chaos bag. For each symbol revealed, gain an additional 2 resources."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n获得1个资源。从混乱袋随机抽出3个标记。每抽出1个符号，额外获得2个资源。"
       },
       {
         "code": "05113",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\n<b>Evade.</b> Use only on a non-[[Elite]] enemy. This evasion attempt uses [willpower] instead of [agility]. If you succeed, move the enemy just evaded to any location in play. If you succeed and a symbol was revealed during this evasion attempt, that enemy does not ready during the next upkeep phase."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n<b>躲避</b>。仅可对非[[精英]]敌人使用。这次躲避尝试不使用[agility]，改为使用[willpower]。如果你成功，将刚刚躲避的敌人移动到场上任意一个地点。如果你成功，且这次躲避尝试期间抽出了一个符号，该敌人在下一个补给阶段中不准备。"
       },
       {
         "code": "02263",
-        "text": "This card's fight ability now reads \"+1 damage\" instead of \"+2 damage.\"",
-        "replacement_text": "Mutated. Researched. Uses (3 supplies).\n[action] Spend 1 supply: <b>Fight.</b> Attack with a base [combat] skill of 6. This attack deals +1 damage."
+        "text": "此卡牌的攻击能力文本改为\"造成+1伤害\"，而不是\"造成+2伤害\"。",
+        "replacement_text": "变异。研究。使用(3补给)。\n[action]花费1补给：<b>攻击</b>。该次攻击[combat]基础值视为6。这次攻击造成+1伤害。"
       },
       {
         "code": "03006",
-        "text": "This card's forced ability is moved to its reverse side, and it should now read: \"<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).\"\nThis card's front side additionally gains: \"[action]: Switch roles. Does not provoke attacks of opportunity.\"",
-        "replacement_text": "Mutated.\nYou can only play, commit, or trigger abilities on Neutral cards or cards of your role.\n[free]: Switch your role. (Limit once per round.)\n[action]: Switch roles. Does not provoke attacks of opportunity.\n[elder_sign] effect: +2. You may switch roles.",
-        "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 35.\n<b>Deckbuilding Options</b>: Survivor, Guardian, Seeker, Rogue, and Mystic cards ([survivor], [guardian], [seeker], [rogue], and [mystic]) level 0-3, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 2 copies of Improvisation, 2 copies of Crisis of Identity, 1 random basic weakness.\n<b>Additional Requirements</b>: Your deck must include at least 7 cards each from 3 different classes ([survivor], [guardian], [seeker], [rogue], or [mystic]).\n<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral)."
+        "text": "此卡牌的强制能力移动到卡牌的背面，并改为：\"<b>额外设置</b>：在你抽取起始手牌后：选择一个角色([survivor]、[guardian]、[seeker]、[rogue]、[mystic]或中立)。\"\n此卡牌的正面额外获得：\"[action]：切换角色。本行动不会触发趁乱攻击。\"",
+        "replacement_text": "变异。\n你打出、投入或触发能力的卡牌只限于中立卡和你所选角色的卡牌。\n[free]：切换你的角色。(每轮限制一次。)\n[action]：切换角色。本行动不会触发趁乱攻击。\n[elder_sign]效果：+2。你可以切换角色。",
+        "replacement_back_text": "变异。\n<b>卡牌张数</b>：35。\n<b>牌组构建选项</b>：求生者、守卫者、探求者、流浪者和潜修者卡([survivor]、[guardian]、[seeker]、[rogue]、[mystic])等级0-3，中立卡牌等级0-5。\n<b>牌组构建需求</b>(不计入卡牌张数)：2张即兴表演、2张身分危机、1张随机基础弱点。\n<b>其它需求</b>：你的牌组必须包含3个不同职阶([survivor]、[guardian]、[seeker]、[rogue]、[mystic])，每个职阶至少7张卡牌。\n<b>额外设置</b>：在你抽取起始手牌后：选择一个角色([survivor]、[guardian]、[seeker]、[rogue]、[mystic]或中立)。"
       },
       {
         "code": "03019",
-        "text": "This card's revelation ability now reads: \"Discard 1 card in your hand or play area of your current role. Then...\"",
-        "replacement_text": "Mutated.\n<b>Revelation</b> - Discard 1 card in your hand or play area of your current role. Then, discard the top card of your deck. Switch your role to the class of the discarded card (if the discarded card is a weakness, switch your role to neutral)."
+        "text": "此卡牌的显现能力改为：\"丢弃1张你当前角色的手牌或玩家区域的牌。然后……\"",
+        "replacement_text": "变异。\n<b>显现</b> - 丢弃1张你当前角色的手牌或玩家区域的牌。然后，丢弃你牌堆顶的1张卡牌。将你的角色切换到该丢弃的卡牌职阶(如果丢弃的卡牌是弱点，切换为中立角色)。"
       },
       {
         "code": "04032",
-        "text": "This card now reads \"a non-[elder_sign] symbol\" instead of \"a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.\"",
-        "replacement_text": "Mutated. Fast. Play when you would reveal a chaos token.\nReveal 5 chaos tokens instead of 1. Choose one of those tokens with a non-[elder_sign] symbol to resolve, and ignore the rest. (If no such token is revealed, choose any one of those tokens to resolve, and ignore the rest.)"
+        "text": "此卡牌的文本改为\"1个非[elder_sign]的符号\"，而不是\"1个[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记\"。",
+        "replacement_text": "变异。快速。在你将要抽出混乱标记时打出。\n改为抽出5个混乱标记，而不是1个。从这些标记中选择1个非[elder_sign]的符号来结算，忽略其馀标记。(如果没有抽出上述标记，从这些标记中选择任意1个标记来结算，忽略其馀标记。)"
       },
       {
         "code": "04105",
-        "text": "This card's ability now reads \"<b>Parley.</b> Choose a non-weakness enemy at your location…\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose a non-weakness enemy at your location and test [intellect] (3). This test gets +X difficulty, where X is that enemy's horror value. If you succeed, shuffle the chosen enemy into the encounter deck. If the chosen enemy is [[Elite]], automatically evade it instead."
+        "text": "此卡牌的能力改为：\"<b>谈判</b>。选择你所在地点的一个非弱点敌人……\"",
+        "replacement_text": "变异。\n<b>谈判</b>。选择你所在地点的一个非弱点敌人，检定[intellect](3)。这次检定难度+X，X为该敌人的恐惧值。如果你成功，将所选的敌人洗回遭遇牌堆。如果所选的敌人为[[精英]]，改为自动躲避它。"
       },
       {
         "code": "04110",
-        "text": "This card now reads \"a non-[auto_fail] symbol\" instead of \"a [skull], [cultist], [tablet], or [elder_thing] chaos token.\"",
-        "replacement_text": "Mutated. Fast. Play when a non-[auto_fail] symbol is revealed during a skill test at your location.\nCancel that chaos token. <i>(Do not reveal a new chaos token to replace it.)</i>"
+        "text": "此卡牌的文本改为\"抽出非[auto_fail]的符号标记\"，而不是\"抽出[skull]、[cultist]、[tablet]或[elder_thing]混乱标记\"。",
+        "replacement_text": "变异。快速。在你所在地点的技能检定期间抽出一个非[auto_fail]符号时打出。\n取消该混乱标记。<i>(不要再抽1个混乱标记来替代。)</i>"
       },
       {
         "code": "06002",
-        "text": "This investigator now reads: \"Deck Size: 50\" and \"Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...\"",
+        "text": "此调查员的文本改为：\"卡牌张数：50\"以及\"牌组构建需求(不计入卡牌张数)：3张神秘证据……\"",
         "deck_options": [
           {
             "faction": [
@@ -1001,53 +1001,53 @@
             }
           ]
         },
-        "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 50.\n<b>Secondary Class Choice</b>: At deck creation, choose Mystic ([mystic]), Rogue ([rogue]), or Survivor ([survivor]).\n<b>Deckbuilding Options</b>: Seeker cards ([seeker]) level 0-5, Neutral cards level 0-5, up to 10 level 0-1 events and/or skills of your chosen secondary class.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 3 copies of Occult Evidence, Shocking Discovery, 1 random basic weakness."
+        "replacement_back_text": "变异。\n<b>卡牌张数</b>：50。\n<b>次级职阶选择</b>：构筑牌组时，选择潜修者([mystic])、流浪者([rogue])或求生者([survivor])。\n<b>牌组构建选项</b>：探求者([seeker])等级0-5，中立卡牌等级0-5，最多10张你所选次级职阶的等级0-1事件卡和/或技能卡。\n<b>牌组构建需求</b>(不计入卡牌张数)：3张神秘证据、惊人的发现、1张随机基础弱点。"
       },
       {
         "code": "07268",
         "exceptional": false,
         "deck_limit": 1,
-        "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\"",
-        "replacement_text": "Mutated. Limited 1 per deck. Seal (up to X [curse]).\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "text": "此卡牌失去卓越关键词并获得\"每副牌组限制1张。\"",
+        "replacement_text": "变异。每副牌组限制1张。封印(最多X[curse])。\n[action]消耗外神的长笛并释放其上封印的1个[curse]标记：选择你所在地点一名非[[精英]]敌人。移动所选敌人到连接地点，或对其地点的任一敌人造成所选敌人伤害值的伤害。这个行动不会引起趁乱攻击。"
       },
       {
         "code": "08045",
-        "text": "This card's constant ability now reads: \"...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\"",
-        "replacement_text": "Mutated.\nWhile you are not at the locus, you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\n[reaction]After Prophesiae Profana enters play: Choose a revealed location. That location is \"the locus\" until Prophesiae Profana leaves play.\n[action]: Move any investigator to the locus."
+        "text": "此卡牌的持续能力改为：\"……你获得+1[intellect]和+1[agility]，并且忽略你每个回合第一次的趁乱攻击。\"",
+        "replacement_text": "变异。\n只要你没位于座标点，你获得+1[intellect]和+1[agility]，并且忽略你每个回合第一次的趁乱攻击。\n[reaction]在亵渎预言入场后：选择一个已揭示地点。该地点为\\\"座标点\\\"，直到亵渎预言离场为止。\n[action]：移动任一位调查员到座标点。"
       },
       {
         "code": "08055",
-        "text": "This card gains: \"Max once per round.\"",
-        "replacement_text": "Mutated. Fast. Play at the start of the investigation phase. Max once per round.\nOne at a time, reveal cards from the top of any investigator deck(s) until exactly 5 cards have been revealed. Set those cards aside, out of play. While set aside, any investigator may play any of those cards as if they were in their hand. At the start of the next investigation phase, shuffle each of those cards still set aside into its owner's deck."
+        "text": "此卡牌获得：\"每轮最多一次。\"",
+        "replacement_text": "变异。快速。当调查阶段开始时打出。每轮最多一次。\n依次从任一调查员的牌堆顶部揭示卡牌，直到正好揭示5张卡牌。将这些卡牌放在一边，位于场外。只要这些卡牌放在一边，任何调查员可以将其视为自己的手牌打出。当下次调查阶段开始时，将仍放在一边的这些卡牌混洗入其所有者的牌堆。"
       },
       {
         "code": "08076",
-        "text": "This card's ability gains \"(Max twice per game.)\"",
-        "replacement_text": "Mutated.\nExile a level 0-5 card in your hand. Discover 2 clues at your location. If the exiled card was level 2 or higher, remove 1 doom from the current agenda. Exile Burn After Reading. (Max twice per game.)\n<b>Card designed by the Council-in-Exile at Gen Con 2020</b>"
+        "text": "此卡牌的能力获得：\"(每场游戏最多两次。)\"",
+        "replacement_text": "变异。\n放逐你手中1张等级0-5的卡牌。发现你所在地点的2个线索。如果被放逐卡牌为等级2或更高，从当前密谋移除1个毁灭标记。放逐阅后即焚。(每场游戏最多两次。)\n<b>卡牌设计：Council-in-Exile，Gen Con 2020</b>"
       },
       {
         "code": "08098",
-        "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take one of the following basic actions (move, evade, or investigate)."
+        "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]在你的回合中，消耗远古海图并花费1秘密：选择并进行以下1个基础行动(移动、躲避或调查)。"
       },
       {
         "code": "08100",
-        "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast]During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two of the following basic actions, in any order (move, evade, or investigate)."
+        "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]在你的回合中，消耗远古海图并花费1秘密：从以下基础行动(移动、躲避或调查)选择2个不同的行动，并以任意顺序进行。"
       },
       {
         "code": "08093",
-        "text": "This card's parenthetical now reads: \"...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)\"",
-        "replacement_text": "Mutated.\n[action]: <b>Fight.</b> Add your [willpower] to your skill value for this attack. You deal +1 damage for this attack. If you succeed and the enemy is non-[[Elite]], you may move it one location away from you. (If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and may move the enemy up to two locations away from you.)"
+        "text": "此卡牌的括弧内文本改为：\"……(如果你成功且超过难度至少3点，你可以消耗巨石锤，改为造成+2伤害并且可以将其移动远离你最多2个地点。)\"",
+        "replacement_text": "变异。\n[action]：<b>攻击</b>。这次攻击将你的[willpower]加入你的技能值。你这次攻击造成+1伤害。如果你成功且该敌人非[[精英]]，你可以将其移动远离你1个地点。(如果你成功且超过难度至少3点，你可以消耗巨石锤，改为造成+2伤害并且可以将其移动远离你最多2个地点。)"
       },
       {
         "code": "09045",
-        "text": "This card's second ability gains: \"(max 3 evidence spent per round).\"",
-        "replacement_text": "Mutated.\n[reaction] After a player card ability places 1 or more of your clues on your location: Place that many resources on Research Notes, as evidence.\n[action]: Test [intellect] (0). For each point you succeed by, you may spend 1 evidence to discover 1 clue at your location (max 3 evidence spent per round)."
+        "text": "此卡牌的第二项能力获得：\"(每轮最多花费3证据。)\"",
+        "replacement_text": "变异。\n[reaction]在一张玩家卡的能力将你的线索放置在你所在地点上后：放置同等数量的资源在研究笔记上，作为证据。\n[action]：检定[intellect](0)。你每成功且超过难度1点，就可以花费1证据来发现你所在地点的1个线索。(每轮最多花费3证据。)"
       },
       {
         "code": "09081",
-        "text": "This card’s text box now reads: \"[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command) – \"Go.\" This enemy moves once in a direction of your choice.\"\nThis card’s customizable sheet loses the \"Mercy\" ability and gains\"☐Cower. Add the command: \"- ‘Cower.’ This enemy exhausts.\"",
+        "text": "此卡牌的[action]能力改为：\"[action]如果被叠加的敌人在你所在地点：<b>谈判</b>。检定[willpower](3)。如果你成功，给它一个命令(每轮每命令限制一次) – \"滚。\"此敌人朝你选择的方向移动一次。\"\n此卡牌的特制表单失去\"慈悲\"能力，并获得\"☐懦夫。增加命令：\"- ‘懦夫。’消耗此敌人。\"",
         "customization_options": [
           {
             "xp": 1,
@@ -1088,9 +1088,9 @@
             "position": 1
           }
         ],
-        "customization_change": "- <i>\"Betray.\"</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>\"Confess.\"</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>\"Distract.\"</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Give it up to two different commands (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
-        "customization_text": "□ <b>Betray.</b> Add the command: \"- <i>'Betray.'</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\"\n□ <b>Cower.</b> Add the command: \"- <i>'Cower.'</i> This enemy exhausts.\"\n□ <b>Confess.</b> Add the command: \"- <i>'Confess.'</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\"\n□ <b>Distract.</b> Add the command: \"- <i>'Distract.'</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\"\n□□ <b>Greater Control.</b> Power Word gains \"[fast]: Return Power Word to your hand.\"\n□□□ <b>Bonded.</b> You may activate the parley ability on Power Word from up to one location away from the attached enemy.\n□□□ <b>Tonguetwister.</b> When you parley with Power Word, you may give up to two different commands.\n□□□ <b>Thrice Spoken.</b> You may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "customization_change": "- <i>\"背叛。\"</i>对此敌人所在地点的任一名攻击值在此敌人以下的敌人造成1点伤害。\n- <i>\"懦夫。\"</i>消耗此敌人。\n- <i>\"忏悔。\"</i>如果此敌人的生命值在其所在地点的隐藏值以上，在其所在地点发现1个线索。\n- <i>\"分散注意。\"</i>自动躲避此敌人所在地点任一名躲避值在此敌人以下的敌人。\n[fast]：将真言术返回你的手牌。\n你可以在离被叠加的敌人最多一个连接地点远的地点启动真言术上的谈判能力。\n[action]如果被叠加的敌人在你所在地点：<b>谈判</b>。给它最多两个不同的命令(每轮每命令限制1次) -\n你的牌组里可以包含三张真言术。在你使用一张真言术给予命令时，也对其它有叠加你其它张真言术的敌人给予该命令。",
+        "customization_text": "□<b>背叛。</b>增加以下命令：\"- <i>'背叛。'</i>对此敌人所在地点的任一名攻击值在此敌人以下的敌人造成1点伤害。\"\n□<b>懦夫。</b>增加以下命令：\"- <i>'懦夫。'</i>消耗此敌人。\"\n□<b>忏悔。</b>增加以下命令：\"- <i>'忏悔。'</i>如果此敌人的生命值在其所在地点的隐藏值以上，在其所在地点发现1个线索。\"\n□<b>分散注意。</b>增加以下命令：\"- <i>'分散注意。'</i>自动躲避此敌人所在地点任一名躲避值在此敌人以下的敌人。\"\n□□<b>绝佳控制。</b>真言术获得\"[fast]：将真言术返回你的手牌。\"\n□□□<b>维系。</b>你可以在离被叠加的敌人最多一个连接地点远的地点启动真言术上的谈判能力。\n□□□<b>绕口令。</b>在你用真言术谈判时，你可以给予最多两个不同的命令。\n□□□<b>三重语词。</b>你的牌组里可以包含三张真言术。在你使用一张真言术给予命令时，也对其它有叠加你其它张真言术的敌人给予该命令。",
+        "replacement_text": "变异。特制。快速。只能在你的回合中打出。\n叠加到你所在地点的一名非[[精英]]敌人。\n[action] 如果被叠加的敌人在你所在地点：<b>谈判</b>。检定[willpower](3)。如果你成功，给它一个命令(每轮每命令限制一次)\n – \"滚。\"此敌人朝你选择的方向移动一次。"
       }
     ]
   },
@@ -1115,8 +1115,8 @@
       },
       {
         "code": "01050",
-        "text": "This card now reads: \"Disengage from each enemy engaged with you and move to a connecting location with no enemies.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nDisengage from each enemy engaged with you and move to a connecting location with no enemies."
+        "text": "此卡牌改为：\"所有与你交战的敌人解除交战状态，你移动到一个没有敌人的连接地点。\"",
+        "replacement_text": "变异。快速。只能在你回合期间打出。\n所有与你交战的敌人解除交战状态，你移动到一个没有敌人的连接地点。"
       },
       {
         "code": "02108",
@@ -1124,8 +1124,8 @@
       },
       {
         "code": "02226",
-        "text": "This card's [action] ability gains: \"This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.\"",
-        "replacement_text": "Mutated. Uses (3 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +3 [combat] and deal +2 damage for this attack. This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords. Cannot be used to attack enemies engaged with you."
+        "text": "此卡牌的[action]能力获得：\"这次攻击可以选择位于标准射程一个地点外的一个非[[精英]]敌人作为目标，忽略其冷漠和反击关键词。\"",
+        "replacement_text": "变异。使用(3子弹)。\n[action]花费1子弹：<b>攻击</b>。这次攻击中你+3[combat]，并+2伤害。不能用于攻击与你交战的敌人。这次攻击可以选择位于标准射程一个地点外的一个非[[精英]]敌人作为目标，忽略其冷漠和反击关键词。不能用于攻击与你交战的敌人。"
       },
       {
         "code": "04305",
@@ -1133,8 +1133,8 @@
       },
       {
         "code": "05153",
-        "text": "This card's [fast] ability is now a [action] ability.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[action] Exhaust Mr. \"Rook\" and spend 1 secret: Search the top 3, 6, or 9 cards of your deck for any card and draw it. If at least 1 weakness is among the searched cards, draw 1 of them, as well. Shuffle your deck."
+        "text": "此卡牌的[fast]能力改为[action]能力。",
+        "replacement_text": "使用(3秘密)。\n[action]消耗\\\"老千\\\"先生并花费1秘密：在你牌堆顶部3张、6张、或9张卡牌中查找并抽取任意一张卡牌。如果查找的卡牌中有至少1张弱点，也抽取其中1张。混洗你的牌堆。"
       },
       {
         "code": "05159",
@@ -1142,8 +1142,8 @@
       },
       {
         "code": "05230",
-        "text": "This card loses the text: \"Attached asset cannot be used to attack enemies engaged with you.\"",
-        "replacement_text": "Mutated. Fast. Attach to a [[Firearm]] asset you control that takes up two hand slots.\nWhen you perform a <b>Fight</b> action using attached asset, if you are engaged with no enemies, exhaust Telecopic Sight: This attack can target a non-[[Elite]] enemy at a connecting location. Ignore the aloof and retaliate keywords for this attack."
+        "text": "此卡牌失去以下文本：\"被叠加支援卡不能被用来攻击与你交战的敌人。\"",
+        "replacement_text": "变异。快速。叠加到你控制的一张占用2个手部槽位的[[枪械]]支援卡。\n[reaction]在你使用被叠加的支援卡执行<b>攻击</b>行动时，如果你未与敌人交战，消耗瞄准镜：这次攻击可以选择位于一个连接地点的一名非[[精英]]敌人作为目标。这次攻击忽略冷漠和反击关键词。"
       },
       {
         "code": "05231",
@@ -1151,33 +1151,33 @@
       },
       {
         "code": "05324",
-        "text": "This card's ability gains: \"Remove Eucatastrophe from the game.\"",
-        "replacement_text": "Mutated. Fast. Play when you reveal a chaos token that would reduce your skill value to 0 during a skill test (including the [auto_fail] token).\nCancel that token and treat it as an [elder_sign] token, instead. Remove Eucatastrophe from the game."
+        "text": "此卡牌的能力获得：\"将美满结局移出游戏。\"",
+        "replacement_text": "变异。快速。在你技能检定中抽出1个会令你的技能值减少到零的混乱标记时打出(包括[auto_fail]标记)。\n取消该标记并改为将其视为[elder_sign]标记。将美满结局移出游戏。"
       },
       {
         "code": "06022",
-        "text": "This card's constant ability now reads: \"If this card has no charges, remove it from the game.\"",
-        "replacement_text": "Mutated. Bonded (Segment of Onyx). Uses (3 charges). If this card has no charges, remove it from the game.\n[fast] Exhaust Pendant of the Queen and spend 1 charge: Choose a revealed location and select one - move to that location, discover 1 clue at that location, or automatically evade an enemy at that location."
+        "text": "此卡牌的持续能力改为：\"如果此卡牌没有充能，将其移出游戏。\"",
+        "replacement_text": "变异。绑定(一瓣缟玛瑙)。使用(3充能)。如果本卡牌没有充能，将其放在一边，位于场外。\n[free]消耗皇后的挂坠并花费1充能：选择一个已揭示地点并选择以下一项 - 移动到该地点、发现该地点的1个线索、自动躲避该地点的一名敌人。"
       },
       {
         "code": "06199",
-        "text": "This card's ability gains: \"Remove each committed copy of Three Aces from the game.\"",
-        "replacement_text": "Mutated. Myriad.\nIf you commit 3 copies of Three Aces to a skill test, that test automatically succeeds <i>(do not reveal chaos tokens from the chaos bag)</i>. Then draw 3 cards and gain 3 resources (max once per test). Remove each committed copy of Three Aces from the game."
+        "text": "此卡牌的能力获得：\"将所有投入的三条A移出游戏。\"",
+        "replacement_text": "变异。多重。\n如果你将3张三条A投入到一次技能检定，该次检定自动成功<i>(不要从混乱袋抽出混乱标记)</i>。然后，抽取3张卡牌并获得3资源(本效果每次检定最多一次)。将所有投入的三条A移出游戏。"
       },
       {
         "code": "60318",
-        "text": "Instead of \"Shuffle each weakness that was discarded…\", this card's ability now reads: \"After this skill test resolves, draw each weakness discarded by this effect.\"",
-        "replacement_text": "Mutated. After you commit Daredevil to a skill test, discard cards from the top of your deck until you discard a [rogue] skill you can commit to this test. Commit it. After this skill test resolves, draw each weakness discarded by this effect."
+        "text": "此卡牌的能力改为：\"在这次技能检定结算后，抽取本效果中丢弃的每张弱点卡。\"，而不是\"将本效果中丢弃的所有弱点卡洗回你的牌堆。\"",
+        "replacement_text": "变异。在你将虎口拔牙投入到技能检定后，从你牌堆顶部弃牌，直到丢弃一张可以投入这次检定的[rogue]技能卡。将其投入。在这次技能检定结算后，抽取本效果中丢弃的每张弱点卡。"
       },
       {
         "code": "07003",
-        "text": "This card's [reaction] ability now reads: \"After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)",
-        "replacement_text": "Mutated.\n[reaction] After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)\n[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead."
+        "text": "此卡牌的[reaction]能力改为：\"你在有敌人的地点发现线索后：发现该地点的额外1个线索，或者如果该敌人非[[精英]]，自动躲避该敌人(每轮限制一次)。\"",
+        "replacement_text": "变异。\n[reaction]你在有敌人的地点发现线索后：发现该地点的额外1个线索，或者如果该敌人非[[精英]]，自动躲避该敌人(每轮限制一次)。\n[elder_sign]效果：+2。如果是调查检定，你可以选择任一已揭示地点；改为如同你正在该地点调查。"
       },
       {
         "code": "07122",
-        "text": "This card's [reaction] ability now reads: \"When you resolve a [bless] token during a skill test…",
-        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+        "text": "此卡牌的[reaction]能力改为：\"在技能检定期间你结算一个[bless]标记时……\"",
+        "replacement_text": "变异。永久。每副牌组限制1张[[圣约]]。\n[reaction]在技能检定期间你结算一个[bless]标记时，消耗古代圣约：不要为此[bless]标记的效果抽出另一个标记。"
       },
       {
         "code": "60233",
@@ -1189,8 +1189,8 @@
       },
       {
         "code": "03112",
-        "text": "This card's [fast] ability now reads: \"…Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources).\"",
-        "replacement_text": "Mutated. While David Renfield has at least 1 doom on him, you get +1 [willpower].\n[fast] Exhaust David Renfield: You may place 1 doom on David Renfield. Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources)."
+        "text": "此卡牌的[fast]能力改为：\"……大卫·伦费尔德身上每有一个毁灭标记，获得1资源(最多3资源)。\"",
+        "replacement_text": "变异。只要大卫·伦费尔德身上有至少1个毁灭标记，你得到+1[willpower]。\n[fast]消耗大卫·伦费尔德：你可以在大卫·伦费尔德身上放置1个毁灭标记。大卫·伦费尔德身上每有一个毁灭标记，获得1资源(最多3资源)。"
       },
       {
         "code": "07308",
@@ -1251,8 +1251,8 @@
             "position": 1
           }
         ],
-        "customization_text": "□ <b>Heirloom.</b> This asset gets -1 cost and gains the [[Relic]] trait.\n□ <b>Inscription of Glory.</b> Add this inscription: \"- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.\"\n□ <b>Inscription of the Elders.</b> Add this inscription: \"- <i>Elders</i> - If this attack succeeds by an amount equal to or greater than your location's shroud, discover 1 clue at your location.\"\n□□ <b>Inscription of the Hunt.</b> Add this inscription: \"- <i>Hunt</i> - Immediately move to a connecting location or engage an enemy at your location.\"\n□ <b>Inscription of Fury.</b> Add this inscription: \"- <i>Fury</i> - If this attack is successful, in addition to its standard damage, deal 1 damage to each other enemy engaged with you.\"\n□□□ <b>Ancient Power.</b> You may imbue the same inscription up to three times.\n□□□ <b>Saga.</b> Replenish 2 of Runic Axe's charges at the start of each round, instead of only 1.\n□□□□ <b>Scriptweaver.</b> For every charge spent, you may imbue the axe with up to two different inscriptions.",
-        "text": "Upgrade – <b>Inscription of the Hunt:</b> +1 experience."
+        "customization_text": "□<b>家传。</b>本支援卡费用降低1点，并获得[[遗物]]属性。\n□<b>荣耀雕文。</b>增加此描述\"- <i>荣耀</i>—如果这次攻击击败敌人，选择一项：抽取1张卡牌、治愈1点伤害或治愈1点恐惧。\"。\n□<b>长者雕文。</b>增加此描述\"- <i>长者</i>—如果这次攻击成功且超过难度在你所在地点的隐藏值以上，发现你所在地点的1个线索。\"\n□□<b>追猎雕文</b>增加此描述\"- <i>追猎</i>—立即移动到连接地点或与你所在地点的一名敌人交战。\"\n□<b>狂怒雕文。</b>增加此描述\"- <i>狂怒</i>—如果这次攻击成功，除了其基础伤害以外，对每名与你交战的其馀敌人造成1点伤害。\"\n□□□<b>远古力量。</b>你可以重复灌输在同一项描述上最多三次。\n□□□<b>传说。</b>当每轮开始时卢恩斧的充能不补充1，改为补充2。\n□□□□<b>织法者</b>对于每1个花费的充能，你可以灌输到此斧的最多两条不同的描述上。",
+        "text": "升级 – <b>追猎雕文</b>：+1经验。"
       },
       {
         "code": "09108",
@@ -1260,170 +1260,170 @@
       },
       {
         "code": "07269",
-        "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\"",
-        "replacement_text": "As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nMutated. Fast. Play when the \"draw encounter cards\" step of the mythos phase would begin. Skip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "text": "此卡牌的能力获得：\"将警戒和平移出游戏。\"",
+        "replacement_text": "作为打出警戒和平的额外费用，在混乱袋和/或场上的卡牌中查找总共5个[bless]标记，并将其返回供应堆。\n变异。快速。在神话阶段的\\\"抽取遭遇卡\\\"步骤(步骤1.4)将要开始时打出。跳过神话阶段的此步骤。将警戒和平移出游戏。"
       },
       {
         "code": "07301",
-        "text": "This card's ability gains: \"Remove Hallow from the game.\"",
-        "replacement_text": "As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nMutated.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "text": "此卡牌的能力获得：\"将圣洁移出游戏。\"",
+        "replacement_text": "作为打出圣洁的额外费用，将混乱袋内或封印在场上卡牌上的总计10个[bless]标记返回供应堆。\n变异。\n移除场上任一卡牌上的1个毁灭标记。将圣洁移出游戏。"
       },
       {
         "code": "08019",
-        "text": "This card's <b>Forced</b> effect now reads: \"<b>Forced</b> – When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets…\"",
-        "replacement_text": "Mutated. Permanent. Limit 1 per deck. Purchase at deck creation.\n<b>Forced</b> - When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets from your hand, reducing the cost of each by 1. During this turn, you have 3 fewer actions to take."
+        "text": "此卡牌的<b>强制</b>效果改为：\"<b>强制</b> – 在你游戏的第一回合开始时：一次一张，打出你手牌中最多5张[[道具]]支援卡……\"",
+        "replacement_text": "变异。永久。每副牌组限制1张。当牌组构建时购买。\n<b>强制</b> - 在你游戏的第一回合开始时：一次一张，打出你手牌中最多5张[[道具]]支援卡，每张费用减少1点。这回合中你减少3次行动。"
       },
       {
         "code": "08032",
-        "text": "This card's ability gains: \"(Max twice per game.)\"",
-        "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After Jeremiah Kirby enters play, choose \"even\" or \"odd:\" Reveal the top 5 cards of your deck. Draw each card with a cost that matches the chosen option. Shuffle the remaining cards into your deck. (Max twice per game.)"
+        "text": "此卡牌的能力获得：\"(每场游戏最多两次。)\"",
+        "replacement_text": "变异。\n你获得+1[intellect]。\n[reaction]在耶利米·科尔比入场后，选择\\\"偶数\\\"或\\\"奇数\\\"：揭示你牌堆顶部的5张卡牌。抽取费用符合你所选择的每张卡牌。将剩馀卡牌与你的牌堆混洗。(每场游戏最多两次。)"
       },
       {
         "code": "01033",
-        "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\"",
-        "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After you successfully investigate, exhaust Dr. Milan Christopher: Gain 1 resource."
+        "text": "此卡牌的[reaction]能力改为：\"在你成功调查后，消耗米兰·克里斯托弗博士……\"",
+        "replacement_text": "变异。\n你获得+1[intellect]。\n[reaction]在你成功调查后，消耗米兰·克里斯托弗博士：获得1个资源。"
       },
       {
         "code": "02002",
-        "text": "This card's [reaction] ability gains: \"(Limit once per round.)\"",
-        "replacement_text": "Mutated.\n[reaction] After you succeed at a skill test by 2 or more while investigating: Discover 1 clue at your location. (Limit once per round.)\n[elder_sign] effect: +2. You may instead choose to automatically fail this skill test to draw 3 cards."
+        "text": "此卡牌的[reaction]能力获得：\"(每轮限制一次。)\"",
+        "replacement_text": "变异。\n[reaction]在调查时技能检定成功后，如果你超过难度至少2点：发现所在地点1个线索。(每轮限制一次。)\n[elder_sign]效果：+2。你可以选择让这次检定自动失败，来抽取3张卡牌。"
       },
       {
         "code": "02111",
-        "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\"",
-        "replacement_text": "Mutated.\nIn player order, each investigator draws 1 card from the top of the encounter deck. Then, add Delve Too Deep to the victory display.\nGroup limit 2 copies of Delve Too Deep in the victory display."
+        "text": "此卡牌获得：\"团队限制胜利牌区中2张过度深入。\"",
+        "replacement_text": "变异。\n按玩家顺序，每位调查员抽取1张遭遇卡。然后，将过度深入加入胜利牌区。\n团队限制胜利牌区中2张过度深入。"
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: \"(max once per round).\"",
-        "replacement_text": "Mutated.\nIf this skill test is successful by 2 or more, after it resolves, you may immediately take an action as if it were your turn (this action does not count toward the number of actions you can take each turn). (Max once per round.)"
+        "text": "在此卡牌能力文本的最后，加上：\"(每轮最多一次。)\"",
+        "replacement_text": "变异。\n如果该技能检定超过难度至少2点，在完成结算后，你可以立刻进行一个行动，如同在你的回合中(该行动不计入你每回合可进行的行动数)。(每轮最多一次。)"
       },
       {
         "code": "02266",
-        "text": "This card gains: \"Max once per round.\"",
-        "replacement_text": "Mutated. Exceptional. Fast. Play only during your turn.\nYou may take an additional 3 actions this turn. (Max once per round.)"
+        "text": "此卡牌获得：\"每轮最多一次。\"",
+        "replacement_text": "变异。卓越。快速。只能在你的回合中打出。\n该回合中，你可以额外进行3个行动。(每轮最多一次。)"
       },
       {
         "code": "03029",
-        "text": "This card's ability now reads: \"Put a level 0-3 [[Item]] asset into play from your hand.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nPut a level 0-3 [[Item]] asset into play from your hand. At the end of your turn, if that asset is still in play, return it to your hand."
+        "text": "此卡牌的能力改为：\"将手牌中的一张等级0-3的[[道具]]支援卡放置入场。\"",
+        "replacement_text": "变异。快速。只能在你回合中打出。\n将手牌中的一张等级0-3的[[道具]]支援卡放置入场。当你回合结束时，如果该支援卡还在场上，将其收回你的手牌。"
       },
       {
         "code": "03315",
         "exceptional": true,
-        "text": "This card gains the Exceptional keyword.",
-        "replacement_text": "Mutated. Exceptional. You get +1 to each of your skills for each horror on Key of Ys.\n<b>Forced</b> - When any amount of horror would be placed on you: Place 1 of that horror on Key of Ys.\n<b>Forced</b> - When Key of Ys leaves play: Discard the top 10 cards of your deck."
+        "text": "此卡牌获得卓越关键词。",
+        "replacement_text": "变异。卓越。伊苏之匙上每有1点恐惧你每项技能+1。\n<b>强制</b> - 在任意数量的恐惧将要放置到你身上时：将其中1点恐惧放置到伊苏之匙上。\n<b>强制</b> - 在伊苏之匙离场时：丢弃你牌堆顶的10张卡牌。"
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: \"Remove All In from the game.\"",
-        "replacement_text": "Mutated.\nMax 1 committed per skill test.\nIf this test is successful, draw 1 card for each point you succeeded by, to a maximum of 5. Shuffle each weakness drawn by this effect back into your deck without resolving it. Remove All In from the game."
+        "text": "在此卡牌能力文本的最后，加上：\"将孤注一掷移出游戏。\"",
+        "replacement_text": "变异。每次技能检定最多投入1张。\n如果本次检定成功，你每超过难度1点，抽取1张卡牌，最多可抽取5张。将本效果中抽到的所有弱点洗回你的牌堆，而不进行结算。将孤注一掷移出游戏。"
       },
       {
         "code": "05116",
-        "text": "This card's [action] ability is now a [fast] ability.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the bottom card of any investigator's deck or the encounter deck. Then, either discard that card, add it to its owner's hand, place it on the bottom of its deck, or place it on the top of its deck."
+        "text": "此卡牌的[action]能力改为[fast]能力。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]消耗秘密卷轴并花费1秘密：查看遭遇牌堆或任意一位调查员牌堆底部的卡牌。然后，丢弃该卡牌、将其加入其所有者手牌，或将其放到该牌堆顶部或牌堆底部。"
       },
       {
         "code": "05188",
-        "text": "This card's [action] ability is now a [fast] ability.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the bottom 3 cards of any investigator's deck or the encounter deck. You may discard 1 of those cards. You may add 1 of those cards to its owner's hand. Place the rest of those cards on either the top or bottom of their deck, in any order."
+        "text": "此卡牌的[action]能力改为[fast]能力。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]消耗秘密卷轴并花费1秘密：查看任意一位调查员牌堆或遭遇牌堆底部的3张卡牌。你可以丢弃其中1张。你可以将其中1张加入其所有者的手牌。将其中剩余的卡牌以任意顺序放到该牌堆底部或者顶部。"
       },
       {
         "code": "05189",
-        "text": "This card's [action] ability is now a [fast] ability.",
+        "text": "此卡牌的[action]能力改为[fast]能力。",
         "replacement_text": "Mutated. Uses (4 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the top or bottom card of any investigator's deck or the encounter deck. Then, either discard that card, add it to its owner's hand, place it on the bottom of its deck, or place it on top of its deck."
       },
       {
         "code": "05020",
-        "text": "This card's ability now reads \"<b>Parley.</b> Choose a non-[[Elite]] enemy at your location…\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose a non-[[Elite]] enemy at your location and test [combat] (3). This test gets +X difficulty, where X is the chosen enemy's damage value. If you succeed, discover 1 clue at your location and 1 clue at any other location."
+        "text": "此卡牌的能力改为：\"<b>谈判</b>。选择你所在地点的一名非[[精英]]敌人……\"",
+        "replacement_text": "变异。\n<b>谈判</b>。选择你所在地点的一个非[[精英]]敌人并检定[combat](3)。这次检定难度+X，X为所选敌人的伤害值。如果你成功，发现你所在地点的1个线索和其它任意地点的1个线索。"
       },
       {
         "code": "06195",
-        "text": "This card's [action] ability now reads: \"[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.\"",
-        "replacement_text": "Mutated. Uses (5 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack.  If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage."
+        "text": "此卡牌的[action]能力改为：\"[action]花费1子弹：<b>攻击</b>。这次攻击你+2[combat]。如果这次攻击中抽出的混乱标记为非负数修正值，这次攻击造成+2伤害。\"",
+        "replacement_text": "变异。使用(5子弹)。\n[action]花费1子弹：<b>攻击</b>。这次攻击你+2[combat]。如果这次攻击中抽出的混乱标记为非负数修正值，这次攻击造成+2伤害。"
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden.",
-        "replacement_text": "Mutated. Forbidden.\nMax 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice."
+        "text": "禁止。",
+        "replacement_text": "变异。禁止。\n每次技能检定最多投入1张。\n将该次检定难度加倍。如果检定成功，结算胜利效果两次。"
       },
       {
         "code": "02029",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\n[reaction] After a symbol is revealed during a test you are performing: You get +1 skill value for this test."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n[reaction]在你执行的技能检定期间，抽出一个符号后：你这次检定技能值+1。"
       },
       {
         "code": "02153",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal the attacking enemy's damage to itself."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。快速。在一名敌人攻击你所在地点的调查员时打出。\n取消该次攻击。然后从混乱袋中抽出1个标记。如果是符号，将敌人的伤害转移给敌人自身。"
       },
       {
         "code": "60414",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal the attacking enemy's damage to itself."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。快速。在一名敌人攻击你所在地点的调查员时打出。\n取消该次攻击。然后从混乱袋中抽出1个标记。如果是符号，将敌人的伤害转移给敌人自身。"
       },
       {
         "code": "60423",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal damage to the attacking enemy equal to its damage or horror."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。快速。在一名敌人攻击你所在地点的调查员时打出。\n取消该次攻击。然后从混乱袋中抽出1个标记。如果抽出符号标记，将敌人的伤害转移给敌人自身。"
       },
       {
         "code": "02269",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\nAfter a symbol is revealed during a skill test at your location, exhaust Jewel of Aureolus: Draw 1 card or gain 2 resources."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n[reaction]在你所在地点的技能检定期间，抽出一个符号后，消耗奥鲁斯的珠宝：抽取1张卡牌，或获得2个资源。"
       },
       {
         "code": "60416",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\nGain 1 resource. Reveal 3 random tokens from the chaos bag. For each symbol revealed, gain an additional 2 resources."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n获得1个资源。从混乱袋随机抽出3个标记。每抽出1个符号，额外获得2个资源。"
       },
       {
         "code": "05113",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\n<b>Evade.</b> Use only on a non-[[Elite]] enemy. This evasion attempt uses [willpower] instead of [agility]. If you succeed, move the enemy just evaded to any location in play. If you succeed and a symbol was revealed during this evasion attempt, that enemy does not ready during the next upkeep phase."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n<b>躲避</b>。仅可对非[[精英]]敌人使用。这次躲避尝试不使用[agility]，改为使用[willpower]。如果你成功，将刚刚躲避的敌人移动到场上任意一个地点。如果你成功，且这次躲避尝试期间抽出了一个符号，该敌人在下一个补给阶段中不准备。"
       },
       {
         "code": "02263",
-        "text": "This card's fight ability now reads \"+1 damage\" instead of \"+2 damage.\"",
-        "replacement_text": "Mutated. Researched. Uses (3 supplies).\n[action] Spend 1 supply: <b>Fight.</b> Attack with a base [combat] skill of 6. This attack deals +1 damage."
+        "text": "此卡牌的攻击能力文本改为\"造成+1伤害\"，而不是\"造成+2伤害\"。",
+        "replacement_text": "变异。研究。使用(3补给)。\n[action]花费1补给：<b>攻击</b>。该次攻击[combat]基础值视为6。这次攻击造成+1伤害。"
       },
       {
         "code": "03006",
-        "text": "This card's forced ability is moved to its reverse side, and it should now read: \"<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).\"\nThis card's front side additionally gains: \"[action]: Switch roles. Does not provoke attacks of opportunity.\"",
-        "replacement_text": "Mutated.\nYou can only play, commit, or trigger abilities on Neutral cards or cards of your role.\n[free]: Switch your role. (Limit once per round.)\n[action]: Switch roles. Does not provoke attacks of opportunity.\n[elder_sign] effect: +2. You may switch roles.",
-        "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 35.\n<b>Deckbuilding Options</b>: Survivor, Guardian, Seeker, Rogue, and Mystic cards ([survivor], [guardian], [seeker], [rogue], and [mystic]) level 0-3, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 2 copies of Improvisation, 2 copies of Crisis of Identity, 1 random basic weakness.\n<b>Additional Requirements</b>: Your deck must include at least 7 cards each from 3 different classes ([survivor], [guardian], [seeker], [rogue], or [mystic]).\n<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral)."
+        "text": "此卡牌的强制能力移动到卡牌的背面，并改为：\"<b>额外设置</b>：在你抽取起始手牌后：选择一个角色([survivor]、[guardian]、[seeker]、[rogue]、[mystic]或中立)。\"\n此卡牌的正面额外获得：\"[action]：切换角色。本行动不会触发趁乱攻击。\"",
+        "replacement_text": "变异。\n你打出、投入或触发能力的卡牌只限于中立卡和你所选角色的卡牌。\n[free]：切换你的角色。(每轮限制一次。)\n[action]：切换角色。本行动不会触发趁乱攻击。\n[elder_sign]效果：+2。你可以切换角色。",
+        "replacement_back_text": "变异。\n<b>卡牌张数</b>：35。\n<b>牌组构建选项</b>：求生者、守卫者、探求者、流浪者和潜修者卡([survivor]、[guardian]、[seeker]、[rogue]、[mystic])等级0-3，中立卡牌等级0-5。\n<b>牌组构建需求</b>(不计入卡牌张数)：2张即兴表演、2张身分危机、1张随机基础弱点。\n<b>其它需求</b>：你的牌组必须包含3个不同职阶([survivor]、[guardian]、[seeker]、[rogue]、[mystic])，每个职阶至少7张卡牌。\n<b>额外设置</b>：在你抽取起始手牌后：选择一个角色([survivor]、[guardian]、[seeker]、[rogue]、[mystic]或中立)。"
       },
       {
         "code": "03019",
-        "text": "This card's revelation ability now reads: \"Discard 1 card in your hand or play area of your current role. Then...\"",
-        "replacement_text": "Mutated.\n<b>Revelation</b> - Discard 1 card in your hand or play area of your current role. Then, discard the top card of your deck. Switch your role to the class of the discarded card (if the discarded card is a weakness, switch your role to neutral)."
+        "text": "此卡牌的显现能力改为：\"丢弃1张你当前角色的手牌或玩家区域的牌。然后……\"",
+        "replacement_text": "变异。\n<b>显现</b> - 丢弃1张你当前角色的手牌或玩家区域的牌。然后，丢弃你牌堆顶的1张卡牌。将你的角色切换到该丢弃的卡牌职阶(如果丢弃的卡牌是弱点，切换为中立角色)。"
       },
       {
         "code": "04032",
-        "text": "This card now reads \"a non-[elder_sign] symbol\" instead of \"a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.\"",
-        "replacement_text": "Mutated. Fast. Play when you would reveal a chaos token.\nReveal 5 chaos tokens instead of 1. Choose one of those tokens with a non-[elder_sign] symbol to resolve, and ignore the rest. (If no such token is revealed, choose any one of those tokens to resolve, and ignore the rest.)"
+        "text": "此卡牌的文本改为\"1个非[elder_sign]的符号\"，而不是\"1个[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记\"。",
+        "replacement_text": "变异。快速。在你将要抽出混乱标记时打出。\n改为抽出5个混乱标记，而不是1个。从这些标记中选择1个非[elder_sign]的符号来结算，忽略其馀标记。(如果没有抽出上述标记，从这些标记中选择任意1个标记来结算，忽略其馀标记。)"
       },
       {
         "code": "04105",
-        "text": "This card's ability now reads \"<b>Parley.</b> Choose a non-weakness enemy at your location…\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose a non-weakness enemy at your location and test [intellect] (3). This test gets +X difficulty, where X is that enemy's horror value. If you succeed, shuffle the chosen enemy into the encounter deck. If the chosen enemy is [[Elite]], automatically evade it instead."
+        "text": "此卡牌的能力改为：\"<b>谈判</b>。选择你所在地点的一个非弱点敌人……\"",
+        "replacement_text": "变异。\n<b>谈判</b>。选择你所在地点的一个非弱点敌人，检定[intellect](3)。这次检定难度+X，X为该敌人的恐惧值。如果你成功，将所选的敌人洗回遭遇牌堆。如果所选的敌人为[[精英]]，改为自动躲避它。"
       },
       {
         "code": "04110",
-        "text": "This card now reads \"a non-[auto_fail] symbol\" instead of \"a [skull], [cultist], [tablet], or [elder_thing] chaos token.\"",
-        "replacement_text": "Mutated. Fast. Play when a non-[auto_fail] symbol is revealed during a skill test at your location.\nCancel that chaos token. <i>(Do not reveal a new chaos token to replace it.)</i>"
+        "text": "此卡牌的文本改为\"抽出非[auto_fail]的符号标记\"，而不是\"抽出[skull]、[cultist]、[tablet]或[elder_thing]混乱标记\"。",
+        "replacement_text": "变异。快速。在你所在地点的技能检定期间抽出一个非[auto_fail]符号时打出。\n取消该混乱标记。<i>(不要再抽1个混乱标记来替代。)</i>"
       },
       {
         "code": "04233",
-        "text": "This card’s ability now reads: “Gain 1 resource for each action you spent this turn…”",
-        "replacement_text": "Mutated. Gain 1 resource for each action you spent this turn <i>(including this one)</i>. If it is your turn, end your turn."
+        "text": "此卡牌的能力改为：\"本回合你每花费1个行动，获得1资源……\"",
+        "replacement_text": "变异。本回合你每花费1个行动，获得1资源(包括本行动)。如果此时是你的回合，则结束你的回合。"
       },
       {
         "code": "06002",
-        "text": "This investigator now reads: \"Deck Size: 50\" and \"Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...\"",
+        "text": "此调查员的文本改为：\"卡牌张数：50\"以及\"牌组构建需求(不计入卡牌张数)：3张神秘证据……\"",
         "deck_options": [
           {
             "faction": [
@@ -1470,53 +1470,53 @@
             }
           ]
         },
-        "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 50.\n<b>Secondary Class Choice</b>: At deck creation, choose Mystic ([mystic]), Rogue ([rogue]), or Survivor ([survivor]).\n<b>Deckbuilding Options</b>: Seeker cards ([seeker]) level 0-5, Neutral cards level 0-5, up to 10 level 0-1 events and/or skills of your chosen secondary class.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 3 copies of Occult Evidence, Shocking Discovery, 1 random basic weakness."
+        "replacement_back_text": "变异。\n<b>卡牌张数</b>：50。\n<b>次级职阶选择</b>：构筑牌组时，选择潜修者([mystic])、流浪者([rogue])或求生者([survivor])。\n<b>牌组构建选项</b>：探求者([seeker])等级0-5，中立卡牌等级0-5，最多10张你所选次级职阶的等级0-1事件卡和/或技能卡。\n<b>牌组构建需求</b>(不计入卡牌张数)：3张神秘证据、惊人的发现、1张随机基础弱点。"
       },
       {
         "code": "07268",
         "exceptional": false,
         "deck_limit": 1,
-        "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\"",
-        "replacement_text": "Mutated. Limited 1 per deck. Seal (up to X [curse]).\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "text": "此卡牌失去卓越关键词并获得\"每副牌组限制1张。\"",
+        "replacement_text": "变异。每副牌组限制1张。封印(最多X[curse])。\n[action]消耗外神的长笛并释放其上封印的1个[curse]标记：选择你所在地点一名非[[精英]]敌人。移动所选敌人到连接地点，或对其地点的任一敌人造成所选敌人伤害值的伤害。这个行动不会引起趁乱攻击。"
       },
       {
         "code": "08045",
-        "text": "This card's constant ability now reads: \"...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\"",
-        "replacement_text": "Mutated.\nWhile you are not at the locus, you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\n[reaction]After Prophesiae Profana enters play: Choose a revealed location. That location is \"the locus\" until Prophesiae Profana leaves play.\n[action]: Move any investigator to the locus."
+        "text": "此卡牌的持续能力改为：\"……你获得+1[intellect]和+1[agility]，并且忽略你每个回合第一次的趁乱攻击。\"",
+        "replacement_text": "变异。\n只要你没位于座标点，你获得+1[intellect]和+1[agility]，并且忽略你每个回合第一次的趁乱攻击。\n[reaction]在亵渎预言入场后：选择一个已揭示地点。该地点为\\\"座标点\\\"，直到亵渎预言离场为止。\n[action]：移动任一位调查员到座标点。"
       },
       {
         "code": "08055",
-        "text": "This card gains: \"Max once per round.\"",
-        "replacement_text": "Mutated. Fast. Play at the start of the investigation phase. Max once per round.\nOne at a time, reveal cards from the top of any investigator deck(s) until exactly 5 cards have been revealed. Set those cards aside, out of play. While set aside, any investigator may play any of those cards as if they were in their hand. At the start of the next investigation phase, shuffle each of those cards still set aside into its owner's deck."
+        "text": "此卡牌获得：\"每轮最多一次。\"",
+        "replacement_text": "变异。快速。当调查阶段开始时打出。每轮最多一次。\n依次从任一调查员的牌堆顶部揭示卡牌，直到正好揭示5张卡牌。将这些卡牌放在一边，位于场外。只要这些卡牌放在一边，任何调查员可以将其视为自己的手牌打出。当下次调查阶段开始时，将仍放在一边的这些卡牌混洗入其所有者的牌堆。"
       },
       {
         "code": "08076",
-        "text": "This card's ability gains \"(Max twice per game.)\"",
-        "replacement_text": "Mutated.\nExile a level 0-5 card in your hand. Discover 2 clues at your location. If the exiled card was level 2 or higher, remove 1 doom from the current agenda. Exile Burn After Reading. (Max twice per game.)\n<b>Card designed by the Council-in-Exile at Gen Con 2020</b>"
+        "text": "此卡牌的能力获得：\"(每场游戏最多两次。)\"",
+        "replacement_text": "变异。\n放逐你手中1张等级0-5的卡牌。发现你所在地点的2个线索。如果被放逐卡牌为等级2或更高，从当前密谋移除1个毁灭标记。放逐阅后即焚。(每场游戏最多两次。)\n<b>卡牌设计：Council-in-Exile，Gen Con 2020</b>"
       },
       {
         "code": "08098",
-        "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take one of the following basic actions (move, evade, or investigate)."
+        "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]在你的回合中，消耗远古海图并花费1秘密：选择并进行以下1个基础行动(移动、躲避或调查)。"
       },
       {
         "code": "08100",
-        "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast]During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two of the following basic actions, in any order (move, evade, or investigate)."
+        "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]在你的回合中，消耗远古海图并花费1秘密：从以下基础行动(移动、躲避或调查)选择2个不同的行动，并以任意顺序进行。"
       },
       {
         "code": "08093",
-        "text": "This card's parenthetical now reads: \"...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)\"",
-        "replacement_text": "Mutated.\n[action]: <b>Fight.</b> Add your [willpower] to your skill value for this attack. You deal +1 damage for this attack. If you succeed and the enemy is non-[[Elite]], you may move it one location away from you. (If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and may move the enemy up to two locations away from you.)"
+        "text": "此卡牌的括弧内文本改为：\"……(如果你成功且超过难度至少3点，你可以消耗巨石锤，改为造成+2伤害并且可以将其移动远离你最多2个地点。)\"",
+        "replacement_text": "变异。\n[action]：<b>攻击</b>。这次攻击将你的[willpower]加入你的技能值。你这次攻击造成+1伤害。如果你成功且该敌人非[[精英]]，你可以将其移动远离你1个地点。(如果你成功且超过难度至少3点，你可以消耗巨石锤，改为造成+2伤害并且可以将其移动远离你最多2个地点。)"
       },
       {
         "code": "09045",
-        "text": "This card's second ability gains: \"(max 3 evidence spent per round).\"",
-        "replacement_text": "Mutated.\n[reaction] After a player card ability places 1 or more of your clues on your location: Place that many resources on Research Notes, as evidence.\n[action]: Test [intellect] (0). For each point you succeed by, you may spend 1 evidence to discover 1 clue at your location (max 3 evidence spent per round)."
+        "text": "此卡牌的第二项能力获得：\"(每轮最多花费3证据。)\"",
+        "replacement_text": "变异。\n[reaction]在一张玩家卡的能力将你的线索放置在你所在地点上后：放置同等数量的资源在研究笔记上，作为证据。\n[action]：检定[intellect](0)。你每成功且超过难度1点，就可以花费1证据来发现你所在地点的1个线索。(每轮最多花费3证据。)"
       },
       {
         "code": "09081",
-        "text": "This card’s text box now reads: \"[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command) – \"Go.\" This enemy moves once in a direction of your choice.\"\nThis card’s customizable sheet loses the \"Mercy\" ability and gains\"☐Cower. Add the command: \"- ‘Cower.’ This enemy exhausts.\"",
+        "text": "此卡牌的[action]能力改为：\"[action]如果被叠加的敌人在你所在地点：<b>谈判</b>。检定[willpower](3)。如果你成功，给它一个命令(每轮每命令限制一次) – \"滚。\"此敌人朝你选择的方向移动一次。\"\n此卡牌的特制表单失去\"慈悲\"能力，并获得\"☐懦夫。增加命令：\"- ‘懦夫。’消耗此敌人。\"",
         "customization_options": [
           {
             "xp": 1,
@@ -1557,9 +1557,9 @@
             "position": 1
           }
         ],
-        "customization_change": "- <i>\"Betray.\"</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>\"Confess.\"</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>\"Distract.\"</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Give it up to two different commands (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
-        "customization_text": "□ <b>Betray.</b> Add the command: \"- <i>'Betray.'</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\"\n□ <b>Cower.</b> Add the command: \"- <i>'Cower.'</i> This enemy exhausts.\"\n□ <b>Confess.</b> Add the command: \"- <i>'Confess.'</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\"\n□ <b>Distract.</b> Add the command: \"- <i>'Distract.'</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\"\n□□ <b>Greater Control.</b> Power Word gains \"[fast]: Return Power Word to your hand.\"\n□□□ <b>Bonded.</b> You may activate the parley ability on Power Word from up to one location away from the attached enemy.\n□□□ <b>Tonguetwister.</b> When you parley with Power Word, you may give up to two different commands.\n□□□ <b>Thrice Spoken.</b> You may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "customization_change": "- <i>\"背叛。\"</i>对此敌人所在地点的任一名攻击值在此敌人以下的敌人造成1点伤害。\n- <i>\"懦夫。\"</i>消耗此敌人。\n- <i>\"忏悔。\"</i>如果此敌人的生命值在其所在地点的隐藏值以上，在其所在地点发现1个线索。\n- <i>\"分散注意。\"</i>自动躲避此敌人所在地点任一名躲避值在此敌人以下的敌人。\n[fast]：将真言术返回你的手牌。\n你可以在离被叠加的敌人最多一个连接地点远的地点启动真言术上的谈判能力。\n[action]如果被叠加的敌人在你所在地点：<b>谈判</b>。给它最多两个不同的命令(每轮每命令限制1次) -\n你的牌组里可以包含三张真言术。在你使用一张真言术给予命令时，也对其它有叠加你其它张真言术的敌人给予该命令。",
+        "customization_text": "□<b>背叛。</b>增加以下命令：\"- <i>'背叛。'</i>对此敌人所在地点的任一名攻击值在此敌人以下的敌人造成1点伤害。\"\n□<b>懦夫。</b>增加以下命令：\"- <i>'懦夫。'</i>消耗此敌人。\"\n□<b>忏悔。</b>增加以下命令：\"- <i>'忏悔。'</i>如果此敌人的生命值在其所在地点的隐藏值以上，在其所在地点发现1个线索。\"\n□<b>分散注意。</b>增加以下命令：\"- <i>'分散注意。'</i>自动躲避此敌人所在地点任一名躲避值在此敌人以下的敌人。\"\n□□<b>绝佳控制。</b>真言术获得\"[fast]：将真言术返回你的手牌。\"\n□□□<b>维系。</b>你可以在离被叠加的敌人最多一个连接地点远的地点启动真言术上的谈判能力。\n□□□<b>绕口令。</b>在你用真言术谈判时，你可以给予最多两个不同的命令。\n□□□<b>三重语词。</b>你的牌组里可以包含三张真言术。在你使用一张真言术给予命令时，也对其它有叠加你其它张真言术的敌人给予该命令。",
+        "replacement_text": "变异。特制。快速。只能在你的回合中打出。\n叠加到你所在地点的一名非[[精英]]敌人。\n[action] 如果被叠加的敌人在你所在地点：<b>谈判</b>。检定[willpower](3)。如果你成功，给它一个命令(每轮每命令限制一次)\n – \"滚。\"此敌人朝你选择的方向移动一次。"
       }
     ]
   },
@@ -1584,8 +1584,8 @@
       },
       {
         "code": "01050",
-        "text": "This card now reads: \"Disengage from each enemy engaged with you and move to a connecting location with no enemies.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nDisengage from each enemy engaged with you and move to a connecting location with no enemies."
+        "text": "此卡牌改为：\"所有与你交战的敌人解除交战状态，你移动到一个没有敌人的连接地点。\"",
+        "replacement_text": "变异。快速。只能在你回合期间打出。\n所有与你交战的敌人解除交战状态，你移动到一个没有敌人的连接地点。"
       },
       {
         "code": "02108",
@@ -1593,8 +1593,8 @@
       },
       {
         "code": "02226",
-        "text": "This card's [action] ability gains: \"This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords.\"",
-        "replacement_text": "Mutated. Uses (3 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +3 [combat] and deal +2 damage for this attack. This attack may target a non-[[Elite]] enemy up to one location away from its standard range, ignoring the aloof and retaliate keywords. Cannot be used to attack enemies engaged with you."
+        "text": "此卡牌的[action]能力获得：\"这次攻击可以选择位于标准射程一个地点外的一个非[[精英]]敌人作为目标，忽略其冷漠和反击关键词。\"",
+        "replacement_text": "变异。使用(3子弹)。\n[action]花费1子弹：<b>攻击</b>。这次攻击中你+3[combat]，并+2伤害。不能用于攻击与你交战的敌人。这次攻击可以选择位于标准射程一个地点外的一个非[[精英]]敌人作为目标，忽略其冷漠和反击关键词。不能用于攻击与你交战的敌人。"
       },
       {
         "code": "04305",
@@ -1602,8 +1602,8 @@
       },
       {
         "code": "05153",
-        "text": "This card's [fast] ability is now a [action] ability.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[action] Exhaust Mr. \"Rook\" and spend 1 secret: Search the top 3, 6, or 9 cards of your deck for any card and draw it. If at least 1 weakness is among the searched cards, draw 1 of them, as well. Shuffle your deck."
+        "text": "此卡牌的[fast]能力改为[action]能力。",
+        "replacement_text": "使用(3秘密)。\n[action]消耗\\\"老千\\\"先生并花费1秘密：在你牌堆顶部3张、6张、或9张卡牌中查找并抽取任意一张卡牌。如果查找的卡牌中有至少1张弱点，也抽取其中1张。混洗你的牌堆。"
       },
       {
         "code": "05159",
@@ -1611,8 +1611,8 @@
       },
       {
         "code": "05230",
-        "text": "This card loses the text: \"Attached asset cannot be used to attack enemies engaged with you.\"",
-        "replacement_text": "Mutated. Fast. Attach to a [[Firearm]] asset you control that takes up two hand slots.\nWhen you perform a <b>Fight</b> action using attached asset, if you are engaged with no enemies, exhaust Telecopic Sight: This attack can target a non-[[Elite]] enemy at a connecting location. Ignore the aloof and retaliate keywords for this attack."
+        "text": "此卡牌失去以下文本：\"被叠加支援卡不能被用来攻击与你交战的敌人。\"",
+        "replacement_text": "变异。快速。叠加到你控制的一张占用2个手部槽位的[[枪械]]支援卡。\n[reaction]在你使用被叠加的支援卡执行<b>攻击</b>行动时，如果你未与敌人交战，消耗瞄准镜：这次攻击可以选择位于一个连接地点的一名非[[精英]]敌人作为目标。这次攻击忽略冷漠和反击关键词。"
       },
       {
         "code": "05231",
@@ -1620,33 +1620,33 @@
       },
       {
         "code": "05324",
-        "text": "This card's ability gains: \"Remove Eucatastrophe from the game.\"",
-        "replacement_text": "Mutated. Fast. Play when you reveal a chaos token that would reduce your skill value to 0 during a skill test (including the [auto_fail] token).\nCancel that token and treat it as an [elder_sign] token, instead. Remove Eucatastrophe from the game."
+        "text": "此卡牌的能力获得：\"将美满结局移出游戏。\"",
+        "replacement_text": "变异。快速。在你技能检定中抽出1个会令你的技能值减少到零的混乱标记时打出(包括[auto_fail]标记)。\n取消该标记并改为将其视为[elder_sign]标记。将美满结局移出游戏。"
       },
       {
         "code": "06022",
-        "text": "This card's constant ability now reads: \"If this card has no charges, remove it from the game.\"",
-        "replacement_text": "Mutated. Bonded (Segment of Onyx). Uses (3 charges). If this card has no charges, remove it from the game.\n[fast] Exhaust Pendant of the Queen and spend 1 charge: Choose a revealed location and select one - move to that location, discover 1 clue at that location, or automatically evade an enemy at that location."
+        "text": "此卡牌的持续能力改为：\"如果此卡牌没有充能，将其移出游戏。\"",
+        "replacement_text": "变异。绑定(一瓣缟玛瑙)。使用(3充能)。如果本卡牌没有充能，将其放在一边，位于场外。\n[free]消耗皇后的挂坠并花费1充能：选择一个已揭示地点并选择以下一项 - 移动到该地点、发现该地点的1个线索、自动躲避该地点的一名敌人。"
       },
       {
         "code": "06199",
-        "text": "This card's ability gains: \"Remove each committed copy of Three Aces from the game.\"",
-        "replacement_text": "Mutated. Myriad.\nIf you commit 3 copies of Three Aces to a skill test, that test automatically succeeds <i>(do not reveal chaos tokens from the chaos bag)</i>. Then draw 3 cards and gain 3 resources (max once per test). Remove each committed copy of Three Aces from the game."
+        "text": "此卡牌的能力获得：\"将所有投入的三条A移出游戏。\"",
+        "replacement_text": "变异。多重。\n如果你将3张三条A投入到一次技能检定，该次检定自动成功<i>(不要从混乱袋抽出混乱标记)</i>。然后，抽取3张卡牌并获得3资源(本效果每次检定最多一次)。将所有投入的三条A移出游戏。"
       },
       {
         "code": "60318",
-        "text": "Instead of \"Shuffle each weakness that was discarded…\", this card's ability now reads: \"After this skill test resolves, draw each weakness discarded by this effect.\"",
-        "replacement_text": "Mutated. After you commit Daredevil to a skill test, discard cards from the top of your deck until you discard a [rogue] skill you can commit to this test. Commit it. After this skill test resolves, draw each weakness discarded by this effect."
+        "text": "此卡牌的能力改为：\"在这次技能检定结算后，抽取本效果中丢弃的每张弱点卡。\"，而不是\"将本效果中丢弃的所有弱点卡洗回你的牌堆。\"",
+        "replacement_text": "变异。在你将虎口拔牙投入到技能检定后，从你牌堆顶部弃牌，直到丢弃一张可以投入这次检定的[rogue]技能卡。将其投入。在这次技能检定结算后，抽取本效果中丢弃的每张弱点卡。"
       },
       {
         "code": "07003",
-        "text": "This card's [reaction] ability now reads: \"After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)",
-        "replacement_text": "Mutated.\n[reaction] After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)\n[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead."
+        "text": "此卡牌的[reaction]能力改为：\"你在有敌人的地点发现线索后：发现该地点的额外1个线索，或者如果该敌人非[[精英]]，自动躲避该敌人(每轮限制一次)。\"",
+        "replacement_text": "变异。\n[reaction]你在有敌人的地点发现线索后：发现该地点的额外1个线索，或者如果该敌人非[[精英]]，自动躲避该敌人(每轮限制一次)。\n[elder_sign]效果：+2。如果是调查检定，你可以选择任一已揭示地点；改为如同你正在该地点调查。"
       },
       {
         "code": "07122",
-        "text": "This card's [reaction] ability now reads: \"When you resolve a [bless] token during a skill test…",
-        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+        "text": "此卡牌的[reaction]能力改为：\"在技能检定期间你结算一个[bless]标记时……\"",
+        "replacement_text": "变异。永久。每副牌组限制1张[[圣约]]。\n[reaction]在技能检定期间你结算一个[bless]标记时，消耗古代圣约：不要为此[bless]标记的效果抽出另一个标记。"
       },
       {
         "code": "60233",
@@ -1658,8 +1658,8 @@
       },
       {
         "code": "03112",
-        "text": "This card's [fast] ability now reads: \"…Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources).\"",
-        "replacement_text": "Mutated. While David Renfield has at least 1 doom on him, you get +1 [willpower].\n[fast] Exhaust David Renfield: You may place 1 doom on David Renfield. Gain 1 resource for each doom on David Renfield (to a maximum of 3 resources)."
+        "text": "此卡牌的[fast]能力改为：\"……大卫·伦费尔德身上每有一个毁灭标记，获得1资源(最多3资源)。\"",
+        "replacement_text": "变异。只要大卫·伦费尔德身上有至少1个毁灭标记，你得到+1[willpower]。\n[fast]消耗大卫·伦费尔德：你可以在大卫·伦费尔德身上放置1个毁灭标记。大卫·伦费尔德身上每有一个毁灭标记，获得1资源(最多3资源)。"
       },
       {
         "code": "07308",
@@ -1728,8 +1728,8 @@
             "position": 1
           }
         ],
-        "customization_text": "□ <b>Heirloom.</b> This asset gets -1 cost and gains the [[Relic]] trait.\n□ <b>Inscription of Glory.</b> Add this inscription: \"- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.\"\n□ <b>Inscription of the Elders.</b> Add this inscription: \"- <i>Elders</i> - If this attack succeeds by an amount equal to or greater than your location's shroud, discover 1 clue at your location.\"\n□□ <b>Inscription of the Hunt.</b> Add this inscription: \"- <i>Hunt</i> - Immediately move to a connecting location or engage an enemy at your location.\"\n□ <b>Inscription of Fury.</b> Add this inscription: \"- <i>Fury</i> - If this attack is successful, in addition to its standard damage, deal 1 damage to each other enemy engaged with you.\"\n□□□ <b>Ancient Power.</b> You may imbue the same inscription up to three times.\n□□□ <b>Saga.</b> Replenish 2 of Runic Axe's charges at the start of each round, instead of only 1.\n□□□□ <b>Scriptweaver.</b> For every charge spent, you may imbue the axe with up to two different inscriptions.",
-        "text": "Upgrade – <b>Inscription of the Hunt:</b> +1 experience."
+        "customization_text": "□<b>家传。</b>本支援卡费用降低1点，并获得[[遗物]]属性。\n□<b>荣耀雕文。</b>增加此描述\"- <i>荣耀</i>—如果这次攻击击败敌人，选择一项：抽取1张卡牌、治愈1点伤害或治愈1点恐惧。\"。\n□<b>长者雕文。</b>增加此描述\"- <i>长者</i>—如果这次攻击成功且超过难度在你所在地点的隐藏值以上，发现你所在地点的1个线索。\"\n□□<b>追猎雕文</b>增加此描述\"- <i>追猎</i>—立即移动到连接地点或与你所在地点的一名敌人交战。\"\n□<b>狂怒雕文。</b>增加此描述\"- <i>狂怒</i>—如果这次攻击成功，除了其基础伤害以外，对每名与你交战的其馀敌人造成1点伤害。\"\n□□□<b>远古力量。</b>你可以重复灌输在同一项描述上最多三次。\n□□□<b>传说。</b>当每轮开始时卢恩斧的充能不补充1，改为补充2。\n□□□□<b>织法者</b>对于每1个花费的充能，你可以灌输到此斧的最多两条不同的描述上。",
+        "text": "升级 – <b>追猎雕文</b>：+1经验。"
       },
       {
         "code": "09077",
@@ -1741,170 +1741,170 @@
       },
       {
         "code": "07269",
-        "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\"",
-        "replacement_text": "As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nMutated. Fast. Play when the \"draw encounter cards\" step of the mythos phase would begin. Skip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "text": "此卡牌的能力获得：\"将警戒和平移出游戏。\"",
+        "replacement_text": "作为打出警戒和平的额外费用，在混乱袋和/或场上的卡牌中查找总共5个[bless]标记，并将其返回供应堆。\n变异。快速。在神话阶段的\\\"抽取遭遇卡\\\"步骤(步骤1.4)将要开始时打出。跳过神话阶段的此步骤。将警戒和平移出游戏。"
       },
       {
         "code": "07301",
-        "text": "This card's ability gains: \"Remove Hallow from the game.\"",
-        "replacement_text": "As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nMutated.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "text": "此卡牌的能力获得：\"将圣洁移出游戏。\"",
+        "replacement_text": "作为打出圣洁的额外费用，将混乱袋内或封印在场上卡牌上的总计10个[bless]标记返回供应堆。\n变异。\n移除场上任一卡牌上的1个毁灭标记。将圣洁移出游戏。"
       },
       {
         "code": "08019",
-        "text": "This card's <b>Forced</b> effect now reads: \"<b>Forced</b> – When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets…\"",
-        "replacement_text": "Mutated. Permanent. Limit 1 per deck. Purchase at deck creation.\n<b>Forced</b> - When your first turn of the game begins: One at a time, play up to 5 [[Item]] assets from your hand, reducing the cost of each by 1. During this turn, you have 3 fewer actions to take."
+        "text": "此卡牌的<b>强制</b>效果改为：\"<b>强制</b> – 在你游戏的第一回合开始时：一次一张，打出你手牌中最多5张[[道具]]支援卡……\"",
+        "replacement_text": "变异。永久。每副牌组限制1张。当牌组构建时购买。\n<b>强制</b> - 在你游戏的第一回合开始时：一次一张，打出你手牌中最多5张[[道具]]支援卡，每张费用减少1点。这回合中你减少3次行动。"
       },
       {
         "code": "08032",
-        "text": "This card's ability gains: \"(Max twice per game.)\"",
-        "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After Jeremiah Kirby enters play, choose \"even\" or \"odd:\" Reveal the top 5 cards of your deck. Draw each card with a cost that matches the chosen option. Shuffle the remaining cards into your deck. (Max twice per game.)"
+        "text": "此卡牌的能力获得：\"(每场游戏最多两次。)\"",
+        "replacement_text": "变异。\n你获得+1[intellect]。\n[reaction]在耶利米·科尔比入场后，选择\\\"偶数\\\"或\\\"奇数\\\"：揭示你牌堆顶部的5张卡牌。抽取费用符合你所选择的每张卡牌。将剩馀卡牌与你的牌堆混洗。(每场游戏最多两次。)"
       },
       {
         "code": "01033",
-        "text": "This card's [reaction] ability now reads: \"After you successfully investigate, exhaust Dr. Milan Christopher...\"",
-        "replacement_text": "Mutated.\nYou get +1 [intellect].\n[reaction] After you successfully investigate, exhaust Dr. Milan Christopher: Gain 1 resource."
+        "text": "此卡牌的[reaction]能力改为：\"在你成功调查后，消耗米兰·克里斯托弗博士……\"",
+        "replacement_text": "变异。\n你获得+1[intellect]。\n[reaction]在你成功调查后，消耗米兰·克里斯托弗博士：获得1个资源。"
       },
       {
         "code": "02002",
-        "text": "This card's [reaction] ability gains: \"(Limit once per round.)\"",
-        "replacement_text": "Mutated.\n[reaction] After you succeed at a skill test by 2 or more while investigating: Discover 1 clue at your location. (Limit once per round.)\n[elder_sign] effect: +2. You may instead choose to automatically fail this skill test to draw 3 cards."
+        "text": "此卡牌的[reaction]能力获得：\"(每轮限制一次。)\"",
+        "replacement_text": "变异。\n[reaction]在调查时技能检定成功后，如果你超过难度至少2点：发现所在地点1个线索。(每轮限制一次。)\n[elder_sign]效果：+2。你可以选择让这次检定自动失败，来抽取3张卡牌。"
       },
       {
         "code": "02111",
-        "text": "This card gains: \"Group limit 2 copies of Delve Too Deep in the victory display.\"",
-        "replacement_text": "Mutated.\nIn player order, each investigator draws 1 card from the top of the encounter deck. Then, add Delve Too Deep to the victory display.\nGroup limit 2 copies of Delve Too Deep in the victory display."
+        "text": "此卡牌获得：\"团队限制胜利牌区中2张过度深入。\"",
+        "replacement_text": "变异。\n按玩家顺序，每位调查员抽取1张遭遇卡。然后，将过度深入加入胜利牌区。\n团队限制胜利牌区中2张过度深入。"
       },
       {
         "code": "02229",
-        "text": "At the end of its ability, this card gains: \"(max once per round).\"",
-        "replacement_text": "Mutated.\nIf this skill test is successful by 2 or more, after it resolves, you may immediately take an action as if it were your turn (this action does not count toward the number of actions you can take each turn). (Max once per round.)"
+        "text": "在此卡牌能力文本的最后，加上：\"(每轮最多一次。)\"",
+        "replacement_text": "变异。\n如果该技能检定超过难度至少2点，在完成结算后，你可以立刻进行一个行动，如同在你的回合中(该行动不计入你每回合可进行的行动数)。(每轮最多一次。)"
       },
       {
         "code": "02266",
-        "text": "This card gains: \"Max once per round.\"",
-        "replacement_text": "Mutated. Exceptional. Fast. Play only during your turn.\nYou may take an additional 3 actions this turn. (Max once per round.)"
+        "text": "此卡牌获得：\"每轮最多一次。\"",
+        "replacement_text": "变异。卓越。快速。只能在你的回合中打出。\n该回合中，你可以额外进行3个行动。(每轮最多一次。)"
       },
       {
         "code": "03029",
-        "text": "This card's ability now reads: \"Put a level 0-3 [[Item]] asset into play from your hand.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nPut a level 0-3 [[Item]] asset into play from your hand. At the end of your turn, if that asset is still in play, return it to your hand."
+        "text": "此卡牌的能力改为：\"将手牌中的一张等级0-3的[[道具]]支援卡放置入场。\"",
+        "replacement_text": "变异。快速。只能在你回合中打出。\n将手牌中的一张等级0-3的[[道具]]支援卡放置入场。当你回合结束时，如果该支援卡还在场上，将其收回你的手牌。"
       },
       {
         "code": "03315",
         "exceptional": true,
-        "text": "This card gains the Exceptional keyword.",
-        "replacement_text": "Mutated. Exceptional. You get +1 to each of your skills for each horror on Key of Ys.\n<b>Forced</b> - When any amount of horror would be placed on you: Place 1 of that horror on Key of Ys.\n<b>Forced</b> - When Key of Ys leaves play: Discard the top 10 cards of your deck."
+        "text": "此卡牌获得卓越关键词。",
+        "replacement_text": "变异。卓越。伊苏之匙上每有1点恐惧你每项技能+1。\n<b>强制</b> - 在任意数量的恐惧将要放置到你身上时：将其中1点恐惧放置到伊苏之匙上。\n<b>强制</b> - 在伊苏之匙离场时：丢弃你牌堆顶的10张卡牌。"
       },
       {
         "code": "04309",
-        "text": "At the end of its ability, this card gains: \"Remove All In from the game.\"",
-        "replacement_text": "Mutated.\nMax 1 committed per skill test.\nIf this test is successful, draw 1 card for each point you succeeded by, to a maximum of 5. Shuffle each weakness drawn by this effect back into your deck without resolving it. Remove All In from the game."
+        "text": "在此卡牌能力文本的最后，加上：\"将孤注一掷移出游戏。\"",
+        "replacement_text": "变异。每次技能检定最多投入1张。\n如果本次检定成功，你每超过难度1点，抽取1张卡牌，最多可抽取5张。将本效果中抽到的所有弱点洗回你的牌堆，而不进行结算。将孤注一掷移出游戏。"
       },
       {
         "code": "05116",
-        "text": "This card's [action] ability is now a [fast] ability.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the bottom card of any investigator's deck or the encounter deck. Then, either discard that card, add it to its owner's hand, place it on the bottom of its deck, or place it on the top of its deck."
+        "text": "此卡牌的[action]能力改为[fast]能力。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]消耗秘密卷轴并花费1秘密：查看遭遇牌堆或任意一位调查员牌堆底部的卡牌。然后，丢弃该卡牌、将其加入其所有者手牌，或将其放到该牌堆顶部或牌堆底部。"
       },
       {
         "code": "05188",
-        "text": "This card's [action] ability is now a [fast] ability.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the bottom 3 cards of any investigator's deck or the encounter deck. You may discard 1 of those cards. You may add 1 of those cards to its owner's hand. Place the rest of those cards on either the top or bottom of their deck, in any order."
+        "text": "此卡牌的[action]能力改为[fast]能力。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]消耗秘密卷轴并花费1秘密：查看任意一位调查员牌堆或遭遇牌堆底部的3张卡牌。你可以丢弃其中1张。你可以将其中1张加入其所有者的手牌。将其中剩余的卡牌以任意顺序放到该牌堆底部或者顶部。"
       },
       {
         "code": "05189",
-        "text": "This card's [action] ability is now a [fast] ability.",
+        "text": "此卡牌的[action]能力改为[fast]能力。",
         "replacement_text": "Mutated. Uses (4 secrets).\n[fast] Exhaust Scroll of Secrets and spend 1 secret: Look at the top or bottom card of any investigator's deck or the encounter deck. Then, either discard that card, add it to its owner's hand, place it on the bottom of its deck, or place it on top of its deck."
       },
       {
         "code": "05020",
-        "text": "This card's ability now reads \"<b>Parley.</b> Choose a non-[[Elite]] enemy at your location…\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose a non-[[Elite]] enemy at your location and test [combat] (3). This test gets +X difficulty, where X is the chosen enemy's damage value. If you succeed, discover 1 clue at your location and 1 clue at any other location."
+        "text": "此卡牌的能力改为：\"<b>谈判</b>。选择你所在地点的一名非[[精英]]敌人……\"",
+        "replacement_text": "变异。\n<b>谈判</b>。选择你所在地点的一个非[[精英]]敌人并检定[combat](3)。这次检定难度+X，X为所选敌人的伤害值。如果你成功，发现你所在地点的1个线索和其它任意地点的1个线索。"
       },
       {
         "code": "06195",
-        "text": "This card's [action] ability now reads: \"[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack. If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage.\"",
-        "replacement_text": "Mutated. Uses (5 ammo).\n[action] Spend 1 ammo: <b>Fight.</b> You get +2 [combat] for this attack.  If a chaos token with a non-negative modifier is revealed during this attack, this attack deals +2 damage."
+        "text": "此卡牌的[action]能力改为：\"[action]花费1子弹：<b>攻击</b>。这次攻击你+2[combat]。如果这次攻击中抽出的混乱标记为非负数修正值，这次攻击造成+2伤害。\"",
+        "replacement_text": "变异。使用(5子弹)。\n[action]花费1子弹：<b>攻击</b>。这次攻击你+2[combat]。如果这次攻击中抽出的混乱标记为非负数修正值，这次攻击造成+2伤害。"
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Forbidden.",
-        "replacement_text": "Mutated. Forbidden.\nMax 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice."
+        "text": "禁止。",
+        "replacement_text": "变异。禁止。\n每次技能检定最多投入1张。\n将该次检定难度加倍。如果检定成功，结算胜利效果两次。"
       },
       {
         "code": "02029",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\n[reaction] After a symbol is revealed during a test you are performing: You get +1 skill value for this test."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n[reaction]在你执行的技能检定期间，抽出一个符号后：你这次检定技能值+1。"
       },
       {
         "code": "02153",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal the attacking enemy's damage to itself."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。快速。在一名敌人攻击你所在地点的调查员时打出。\n取消该次攻击。然后从混乱袋中抽出1个标记。如果是符号，将敌人的伤害转移给敌人自身。"
       },
       {
         "code": "60414",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal the attacking enemy's damage to itself."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。快速。在一名敌人攻击你所在地点的调查员时打出。\n取消该次攻击。然后从混乱袋中抽出1个标记。如果是符号，将敌人的伤害转移给敌人自身。"
       },
       {
         "code": "60423",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated. Fast. Play when an enemy attacks an investigator at your location.\nCancel that attack. Then, reveal a random token from the chaos bag. If it has a symbol, deal damage to the attacking enemy equal to its damage or horror."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。快速。在一名敌人攻击你所在地点的调查员时打出。\n取消该次攻击。然后从混乱袋中抽出1个标记。如果抽出符号标记，将敌人的伤害转移给敌人自身。"
       },
       {
         "code": "02269",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\nAfter a symbol is revealed during a skill test at your location, exhaust Jewel of Aureolus: Draw 1 card or gain 2 resources."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n[reaction]在你所在地点的技能检定期间，抽出一个符号后，消耗奥鲁斯的珠宝：抽取1张卡牌，或获得2个资源。"
       },
       {
         "code": "60416",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\nGain 1 resource. Reveal 3 random tokens from the chaos bag. For each symbol revealed, gain an additional 2 resources."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n获得1个资源。从混乱袋随机抽出3个标记。每抽出1个符号，额外获得2个资源。"
       },
       {
         "code": "05113",
-        "text": "This card now reads \"a symbol\" instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\n<b>Evade.</b> Use only on a non-[[Elite]] enemy. This evasion attempt uses [willpower] instead of [agility]. If you succeed, move the enemy just evaded to any location in play. If you succeed and a symbol was revealed during this evasion attempt, that enemy does not ready during the next upkeep phase."
+        "text": "此卡牌的文本改为\"抽出符号标记\"，而不是原本列出的符号清单。",
+        "replacement_text": "变异。\n<b>躲避</b>。仅可对非[[精英]]敌人使用。这次躲避尝试不使用[agility]，改为使用[willpower]。如果你成功，将刚刚躲避的敌人移动到场上任意一个地点。如果你成功，且这次躲避尝试期间抽出了一个符号，该敌人在下一个补给阶段中不准备。"
       },
       {
         "code": "02263",
-        "text": "This card's fight ability now reads \"+1 damage\" instead of \"+2 damage.\"",
-        "replacement_text": "Mutated. Researched. Uses (3 supplies).\n[action] Spend 1 supply: <b>Fight.</b> Attack with a base [combat] skill of 6. This attack deals +1 damage."
+        "text": "此卡牌的攻击能力文本改为\"造成+1伤害\"，而不是\"造成+2伤害\"。",
+        "replacement_text": "变异。研究。使用(3补给)。\n[action]花费1补给：<b>攻击</b>。该次攻击[combat]基础值视为6。这次攻击造成+1伤害。"
       },
       {
         "code": "03006",
-        "text": "This card's forced ability is moved to its reverse side, and it should now read: \"<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral).\"\nThis card's front side additionally gains: \"[action]: Switch roles. Does not provoke attacks of opportunity.\"",
-        "replacement_text": "Mutated.\nYou can only play, commit, or trigger abilities on Neutral cards or cards of your role.\n[free]: Switch your role. (Limit once per round.)\n[action]: Switch roles. Does not provoke attacks of opportunity.\n[elder_sign] effect: +2. You may switch roles.",
-        "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 35.\n<b>Deckbuilding Options</b>: Survivor, Guardian, Seeker, Rogue, and Mystic cards ([survivor], [guardian], [seeker], [rogue], and [mystic]) level 0-3, Neutral cards level 0-5.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 2 copies of Improvisation, 2 copies of Crisis of Identity, 1 random basic weakness.\n<b>Additional Requirements</b>: Your deck must include at least 7 cards each from 3 different classes ([survivor], [guardian], [seeker], [rogue], or [mystic]).\n<b>Additional Setup</b>: After you draw your opening hand, choose a role ([survivor], [guardian], [seeker], [rogue], [mystic], or Neutral)."
+        "text": "此卡牌的强制能力移动到卡牌的背面，并改为：\"<b>额外设置</b>：在你抽取起始手牌后：选择一个角色([survivor]、[guardian]、[seeker]、[rogue]、[mystic]或中立)。\"\n此卡牌的正面额外获得：\"[action]：切换角色。本行动不会触发趁乱攻击。\"",
+        "replacement_text": "变异。\n你打出、投入或触发能力的卡牌只限于中立卡和你所选角色的卡牌。\n[free]：切换你的角色。(每轮限制一次。)\n[action]：切换角色。本行动不会触发趁乱攻击。\n[elder_sign]效果：+2。你可以切换角色。",
+        "replacement_back_text": "变异。\n<b>卡牌张数</b>：35。\n<b>牌组构建选项</b>：求生者、守卫者、探求者、流浪者和潜修者卡([survivor]、[guardian]、[seeker]、[rogue]、[mystic])等级0-3，中立卡牌等级0-5。\n<b>牌组构建需求</b>(不计入卡牌张数)：2张即兴表演、2张身分危机、1张随机基础弱点。\n<b>其它需求</b>：你的牌组必须包含3个不同职阶([survivor]、[guardian]、[seeker]、[rogue]、[mystic])，每个职阶至少7张卡牌。\n<b>额外设置</b>：在你抽取起始手牌后：选择一个角色([survivor]、[guardian]、[seeker]、[rogue]、[mystic]或中立)。"
       },
       {
         "code": "03019",
-        "text": "This card's revelation ability now reads: \"Discard 1 card in your hand or play area of your current role. Then...\"",
-        "replacement_text": "Mutated.\n<b>Revelation</b> - Discard 1 card in your hand or play area of your current role. Then, discard the top card of your deck. Switch your role to the class of the discarded card (if the discarded card is a weakness, switch your role to neutral)."
+        "text": "此卡牌的显现能力改为：\"丢弃1张你当前角色的手牌或玩家区域的牌。然后……\"",
+        "replacement_text": "变异。\n<b>显现</b> - 丢弃1张你当前角色的手牌或玩家区域的牌。然后，丢弃你牌堆顶的1张卡牌。将你的角色切换到该丢弃的卡牌职阶(如果丢弃的卡牌是弱点，切换为中立角色)。"
       },
       {
         "code": "04032",
-        "text": "This card now reads \"a non-[elder_sign] symbol\" instead of \"a [skull], [cultist], [tablet], [elder_thing], or [auto_fail] symbol.\"",
-        "replacement_text": "Mutated. Fast. Play when you would reveal a chaos token.\nReveal 5 chaos tokens instead of 1. Choose one of those tokens with a non-[elder_sign] symbol to resolve, and ignore the rest. (If no such token is revealed, choose any one of those tokens to resolve, and ignore the rest.)"
+        "text": "此卡牌的文本改为\"1个非[elder_sign]的符号\"，而不是\"1个[skull]、[cultist]、[tablet]、[elder_thing]或[auto_fail]标记\"。",
+        "replacement_text": "变异。快速。在你将要抽出混乱标记时打出。\n改为抽出5个混乱标记，而不是1个。从这些标记中选择1个非[elder_sign]的符号来结算，忽略其馀标记。(如果没有抽出上述标记，从这些标记中选择任意1个标记来结算，忽略其馀标记。)"
       },
       {
         "code": "04105",
-        "text": "This card's ability now reads \"<b>Parley.</b> Choose a non-weakness enemy at your location…\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose a non-weakness enemy at your location and test [intellect] (3). This test gets +X difficulty, where X is that enemy's horror value. If you succeed, shuffle the chosen enemy into the encounter deck. If the chosen enemy is [[Elite]], automatically evade it instead."
+        "text": "此卡牌的能力改为：\"<b>谈判</b>。选择你所在地点的一个非弱点敌人……\"",
+        "replacement_text": "变异。\n<b>谈判</b>。选择你所在地点的一个非弱点敌人，检定[intellect](3)。这次检定难度+X，X为该敌人的恐惧值。如果你成功，将所选的敌人洗回遭遇牌堆。如果所选的敌人为[[精英]]，改为自动躲避它。"
       },
       {
         "code": "04110",
-        "text": "This card now reads \"a non-[auto_fail] symbol\" instead of \"a [skull], [cultist], [tablet], or [elder_thing] chaos token.\"",
-        "replacement_text": "Mutated. Fast. Play when a non-[auto_fail] symbol is revealed during a skill test at your location.\nCancel that chaos token. <i>(Do not reveal a new chaos token to replace it.)</i>"
+        "text": "此卡牌的文本改为\"抽出非[auto_fail]的符号标记\"，而不是\"抽出[skull]、[cultist]、[tablet]或[elder_thing]混乱标记\"。",
+        "replacement_text": "变异。快速。在你所在地点的技能检定期间抽出一个非[auto_fail]符号时打出。\n取消该混乱标记。<i>(不要再抽1个混乱标记来替代。)</i>"
       },
       {
         "code": "04233",
-        "text": "This card’s ability now reads: “Gain 1 resource for each action you spent this turn…”",
-        "replacement_text": "Mutated. Gain 1 resource for each action you spent this turn <i>(including this one)</i>. If it is your turn, end your turn."
+        "text": "此卡牌的能力改为：\"本回合你每花费1个行动，获得1资源……\"",
+        "replacement_text": "变异。本回合你每花费1个行动，获得1资源(包括本行动)。如果此时是你的回合，则结束你的回合。"
       },
       {
         "code": "06002",
-        "text": "This investigator now reads: \"Deck Size: 50\" and \"Deckbuilding Requirements (do not count towards deck size): 3 copies of Occult Evidence...\"",
+        "text": "此调查员的文本改为：\"卡牌张数：50\"以及\"牌组构建需求(不计入卡牌张数)：3张神秘证据……\"",
         "deck_options": [
           {
             "faction": [
@@ -1951,58 +1951,58 @@
             }
           ]
         },
-        "replacement_back_text": "Mutated.\n<b>Deck Size</b>: 50.\n<b>Secondary Class Choice</b>: At deck creation, choose Mystic ([mystic]), Rogue ([rogue]), or Survivor ([survivor]).\n<b>Deckbuilding Options</b>: Seeker cards ([seeker]) level 0-5, Neutral cards level 0-5, up to 10 level 0-1 events and/or skills of your chosen secondary class.\n<b>Deckbuilding Requirements</b> (do not count toward deck size): 3 copies of Occult Evidence, Shocking Discovery, 1 random basic weakness."
+        "replacement_back_text": "变异。\n<b>卡牌张数</b>：50。\n<b>次级职阶选择</b>：构筑牌组时，选择潜修者([mystic])、流浪者([rogue])或求生者([survivor])。\n<b>牌组构建选项</b>：探求者([seeker])等级0-5，中立卡牌等级0-5，最多10张你所选次级职阶的等级0-1事件卡和/或技能卡。\n<b>牌组构建需求</b>(不计入卡牌张数)：3张神秘证据、惊人的发现、1张随机基础弱点。"
       },
       {
         "code": "07268",
         "exceptional": false,
         "deck_limit": 1,
-        "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\"",
-        "replacement_text": "Mutated. Limited 1 per deck. Seal (up to X [curse]).\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "text": "此卡牌失去卓越关键词并获得\"每副牌组限制1张。\"",
+        "replacement_text": "变异。每副牌组限制1张。封印(最多X[curse])。\n[action]消耗外神的长笛并释放其上封印的1个[curse]标记：选择你所在地点一名非[[精英]]敌人。移动所选敌人到连接地点，或对其地点的任一敌人造成所选敌人伤害值的伤害。这个行动不会引起趁乱攻击。"
       },
       {
         "code": "08045",
-        "text": "This card's constant ability now reads: \"...you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\"",
-        "replacement_text": "Mutated.\nWhile you are not at the locus, you get +1 [intellect], +1 [agility], and ignore the first attack of opportunity you take each turn.\n[reaction]After Prophesiae Profana enters play: Choose a revealed location. That location is \"the locus\" until Prophesiae Profana leaves play.\n[action]: Move any investigator to the locus."
+        "text": "此卡牌的持续能力改为：\"……你获得+1[intellect]和+1[agility]，并且忽略你每个回合第一次的趁乱攻击。\"",
+        "replacement_text": "变异。\n只要你没位于座标点，你获得+1[intellect]和+1[agility]，并且忽略你每个回合第一次的趁乱攻击。\n[reaction]在亵渎预言入场后：选择一个已揭示地点。该地点为\\\"座标点\\\"，直到亵渎预言离场为止。\n[action]：移动任一位调查员到座标点。"
       },
       {
         "code": "08055",
-        "text": "This card gains: \"Max once per round.\"",
-        "replacement_text": "Mutated. Fast. Play at the start of the investigation phase. Max once per round.\nOne at a time, reveal cards from the top of any investigator deck(s) until exactly 5 cards have been revealed. Set those cards aside, out of play. While set aside, any investigator may play any of those cards as if they were in their hand. At the start of the next investigation phase, shuffle each of those cards still set aside into its owner's deck."
+        "text": "此卡牌获得：\"每轮最多一次。\"",
+        "replacement_text": "变异。快速。当调查阶段开始时打出。每轮最多一次。\n依次从任一调查员的牌堆顶部揭示卡牌，直到正好揭示5张卡牌。将这些卡牌放在一边，位于场外。只要这些卡牌放在一边，任何调查员可以将其视为自己的手牌打出。当下次调查阶段开始时，将仍放在一边的这些卡牌混洗入其所有者的牌堆。"
       },
       {
         "code": "08076",
-        "text": "This card's ability gains \"(Max twice per game.)\"",
-        "replacement_text": "Mutated.\nExile a level 0-5 card in your hand. Discover 2 clues at your location. If the exiled card was level 2 or higher, remove 1 doom from the current agenda. Exile Burn After Reading. (Max twice per game.)\n<b>Card designed by the Council-in-Exile at Gen Con 2020</b>"
+        "text": "此卡牌的能力获得：\"(每场游戏最多两次。)\"",
+        "replacement_text": "变异。\n放逐你手中1张等级0-5的卡牌。发现你所在地点的2个线索。如果被放逐卡牌为等级2或更高，从当前密谋移除1个毁灭标记。放逐阅后即焚。(每场游戏最多两次。)\n<b>卡牌设计：Council-in-Exile，Gen Con 2020</b>"
       },
       {
         "code": "08098",
-        "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take one of the following basic actions (move, evade, or investigate)."
+        "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]在你的回合中，消耗远古海图并花费1秘密：选择并进行以下1个基础行动(移动、躲避或调查)。"
       },
       {
         "code": "08100",
-        "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast]During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two of the following basic actions, in any order (move, evade, or investigate)."
+        "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。",
+        "replacement_text": "变异。使用(3秘密)。\n[fast]在你的回合中，消耗远古海图并花费1秘密：从以下基础行动(移动、躲避或调查)选择2个不同的行动，并以任意顺序进行。"
       },
       {
         "code": "08113",
-        "text": "The first line of this card gains: \"Campaign Mode only.\"",
-        "replacement_text": "Campaign Mode only. Limit 1 per investigator. Cannot leave play.\n[reaction] After you play Unscrupulous Loan: Gain 10 resources.\n<b>Forced</b> - When the game ends or you are eliminated, if you have fewer than 10 resources in your resource pool: Exile Unscrupulous Loan."
+        "text": "此卡牌的第一行获得：\"剧本模式专用。\"",
+        "replacement_text": "剧本模式专用。每位调查员限制1张。不能离场。\n[reaction]在你打出大肆借贷后：获得10资源。\n<b>强制</b> - 在游戏结束或你退场时，如果你的资源池中的资源少于10：放逐大肆借贷。"
       },
       {
         "code": "08093",
-        "text": "This card's parenthetical now reads: \"...(If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and move the enemy up to two locations away from you.)\"",
-        "replacement_text": "Mutated.\n[action]: <b>Fight.</b> Add your [willpower] to your skill value for this attack. You deal +1 damage for this attack. If you succeed and the enemy is non-[[Elite]], you may move it one location away from you. (If you succeed by 3 or more, you may exhaust Cyclopean Hammer to instead deal +2 damage and may move the enemy up to two locations away from you.)"
+        "text": "此卡牌的括弧内文本改为：\"……(如果你成功且超过难度至少3点，你可以消耗巨石锤，改为造成+2伤害并且可以将其移动远离你最多2个地点。)\"",
+        "replacement_text": "变异。\n[action]：<b>攻击</b>。这次攻击将你的[willpower]加入你的技能值。你这次攻击造成+1伤害。如果你成功且该敌人非[[精英]]，你可以将其移动远离你1个地点。(如果你成功且超过难度至少3点，你可以消耗巨石锤，改为造成+2伤害并且可以将其移动远离你最多2个地点。)"
       },
       {
         "code": "09045",
-        "text": "This card's second ability gains: \"(max 3 evidence spent per round).\"",
-        "replacement_text": "Mutated.\n[reaction] After a player card ability places 1 or more of your clues on your location: Place that many resources on Research Notes, as evidence.\n[action]: Test [intellect] (0). For each point you succeed by, you may spend 1 evidence to discover 1 clue at your location (max 3 evidence spent per round)."
+        "text": "此卡牌的第二项能力获得：\"(每轮最多花费3证据。)\"",
+        "replacement_text": "变异。\n[reaction]在一张玩家卡的能力将你的线索放置在你所在地点上后：放置同等数量的资源在研究笔记上，作为证据。\n[action]：检定[intellect](0)。你每成功且超过难度1点，就可以花费1证据来发现你所在地点的1个线索。(每轮最多花费3证据。)"
       },
       {
         "code": "09081",
-        "text": "This card’s text box now reads: \"[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command) – \"Go.\" This enemy moves once in a direction of your choice.\"\nThis card’s customizable sheet loses the \"Mercy\" ability and gains\"☐Cower. Add the command: \"- ‘Cower.’ This enemy exhausts.\"",
+        "text": "此卡牌的[action]能力改为：\"[action]如果被叠加的敌人在你所在地点：<b>谈判</b>。检定[willpower](3)。如果你成功，给它一个命令(每轮每命令限制一次) – \"滚。\"此敌人朝你选择的方向移动一次。\"\n此卡牌的特制表单失去\"慈悲\"能力，并获得\"☐懦夫。增加命令：\"- ‘懦夫。’消耗此敌人。\"",
         "customization_options": [
           {
             "xp": 1,
@@ -2043,14 +2043,14 @@
             "position": 1
           }
         ],
-        "customization_change": "- <i>\"Betray.\"</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>\"Confess.\"</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>\"Distract.\"</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Give it up to two different commands (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
-        "customization_text": "□ <b>Betray.</b> Add the command: \"- <i>'Betray.'</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\"\n□ <b>Cower.</b> Add the command: \"- <i>'Cower.'</i> This enemy exhausts.\"\n□ <b>Confess.</b> Add the command: \"- <i>'Confess.'</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\"\n□ <b>Distract.</b> Add the command: \"- <i>'Distract.'</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\"\n□□ <b>Greater Control.</b> Power Word gains \"[fast]: Return Power Word to your hand.\"\n□□□ <b>Bonded.</b> You may activate the parley ability on Power Word from up to one location away from the attached enemy.\n□□□ <b>Tonguetwister.</b> When you parley with Power Word, you may give up to two different commands.\n□□□ <b>Thrice Spoken.</b> You may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](3). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "customization_change": "- <i>\"背叛。\"</i>对此敌人所在地点的任一名攻击值在此敌人以下的敌人造成1点伤害。\n- <i>\"懦夫。\"</i>消耗此敌人。\n- <i>\"忏悔。\"</i>如果此敌人的生命值在其所在地点的隐藏值以上，在其所在地点发现1个线索。\n- <i>\"分散注意。\"</i>自动躲避此敌人所在地点任一名躲避值在此敌人以下的敌人。\n[fast]：将真言术返回你的手牌。\n你可以在离被叠加的敌人最多一个连接地点远的地点启动真言术上的谈判能力。\n[action]如果被叠加的敌人在你所在地点：<b>谈判</b>。给它最多两个不同的命令(每轮每命令限制1次) -\n你的牌组里可以包含三张真言术。在你使用一张真言术给予命令时，也对其它有叠加你其它张真言术的敌人给予该命令。",
+        "customization_text": "□<b>背叛。</b>增加以下命令：\"- <i>'背叛。'</i>对此敌人所在地点的任一名攻击值在此敌人以下的敌人造成1点伤害。\"\n□<b>懦夫。</b>增加以下命令：\"- <i>'懦夫。'</i>消耗此敌人。\"\n□<b>忏悔。</b>增加以下命令：\"- <i>'忏悔。'</i>如果此敌人的生命值在其所在地点的隐藏值以上，在其所在地点发现1个线索。\"\n□<b>分散注意。</b>增加以下命令：\"- <i>'分散注意。'</i>自动躲避此敌人所在地点任一名躲避值在此敌人以下的敌人。\"\n□□<b>绝佳控制。</b>真言术获得\"[fast]：将真言术返回你的手牌。\"\n□□□<b>维系。</b>你可以在离被叠加的敌人最多一个连接地点远的地点启动真言术上的谈判能力。\n□□□<b>绕口令。</b>在你用真言术谈判时，你可以给予最多两个不同的命令。\n□□□<b>三重语词。</b>你的牌组里可以包含三张真言术。在你使用一张真言术给予命令时，也对其它有叠加你其它张真言术的敌人给予该命令。",
+        "replacement_text": "变异。特制。快速。只能在你的回合中打出。\n叠加到你所在地点的一名非[[精英]]敌人。\n[action] 如果被叠加的敌人在你所在地点：<b>谈判</b>。检定[willpower](3)。如果你成功，给它一个命令(每轮每命令限制一次)\n – \"滚。\"此敌人朝你选择的方向移动一次。"
       },
       {
         "code": "09041",
-        "text": "This card's [fast] ability gains \"(Limit twice per round.)\"",
-        "replacement_text": "Customizable. Limit 1 per investigator.\n<b>Forced</b> - At the start of the round: Choose one of the following criteria for this round\n- You fail a test by 2 or more.\n- You succeed at a test by 3 or more.\nWhen the chosen criteria is met, you may exhaust Empirical Hypothesis to add 1 evidence to it.\n[fast] Spend 1 evidence: Draw 1 card. (Limit twice per round.)"
+        "text": "此卡牌的[fast]能力获得\"每轮限制两次\"",
+        "replacement_text": "特制。每位调查员限制1张。\n<b>强制</b> - 当一轮开始时：为本轮选择以下一个假设标准\n- 你检定失败且低于难度至少2点。\n- 你检定成功且超过难度至少3点。\n在达成所选的假设标准时，你可以消耗经验假设法来增加1证据到其上。\n[fast]花费1证据：抽取1张卡牌。(每轮限制两次)"
       }
     ]
   }

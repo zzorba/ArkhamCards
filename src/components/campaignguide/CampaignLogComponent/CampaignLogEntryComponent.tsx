@@ -20,6 +20,7 @@ interface Props {
   title?: string;
   first: boolean;
   last: boolean;
+  noWrapper?: boolean;
 }
 
 function FreeFormCampaignLogEntryComponent({ entry, interScenarioId }: { entry: CampaignLogFreeformEntry, interScenarioId?: string }) {
@@ -65,7 +66,7 @@ function FreeFormCampaignLogEntryComponent({ entry, interScenarioId }: { entry: 
   );
 }
 
-export default function CampaignLogEntryComponent({ entry, interScenarioId, campaignGuide, section, sectionId, title, first, last }: Props) {
+export default function CampaignLogEntryComponent({ entry, interScenarioId, campaignGuide, section, sectionId, title, first, last, noWrapper }: Props) {
   if (entry.type === 'freeform') {
     return <FreeFormCampaignLogEntryComponent entry={entry} interScenarioId={interScenarioId} />;
   }
@@ -129,6 +130,7 @@ export default function CampaignLogEntryComponent({ entry, interScenarioId, camp
           crossedOut={crossedOut}
           entry={entry}
           decoration={decoration}
+          noWrapper={noWrapper}          
         />
       );
     case 'investigator_count':

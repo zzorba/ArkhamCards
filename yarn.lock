@@ -6341,16 +6341,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.2.6":
-  version: 18.3.3
-  resolution: "@types/react@npm:18.3.3"
-  dependencies:
-    "@types/prop-types": "npm:*"
-    csstype: "npm:^3.0.2"
-  checksum: 10c0/fe455f805c5da13b89964c3d68060cebd43e73ec15001a68b34634604a78140e6fc202f3f61679b9d809dde6d7a7c2cb3ed51e0fd1462557911db09879b55114
-  languageName: node
-  linkType: hard
-
 "@types/scheduler@npm:*":
   version: 0.16.3
   resolution: "@types/scheduler@npm:0.16.3"
@@ -7168,7 +7158,6 @@ __metadata:
     "@types/deep-equal": "npm:1.0.3"
     "@types/hoist-non-react-statics": "npm:3.3.4"
     "@types/lodash": "npm:4.14.200"
-    "@types/react": "npm:^18.2.6"
     "@types/react-native-flip-card": "npm:3.5.4"
     "@types/react-native-keep-awake": "npm:2.0.5"
     "@types/react-native-share": "npm:3.3.5"
@@ -7202,7 +7191,6 @@ __metadata:
     metro-react-native-babel-preset: "npm:0.76.8"
     patch-package: "npm:8.0.0"
     postinstall-postinstall: "npm:2.1.0"
-    prettier: "npm:2.8.8"
     priority-queue-typescript: "npm:1.0.1"
     query-string: "npm:8.1.0"
     react: "npm:18.2.0"
@@ -15675,15 +15663,6 @@ __metadata:
   dependencies:
     fast-diff: "npm:^1.1.2"
   checksum: 10c0/81e0027d731b7b3697ccd2129470ed9913ecb111e4ec175a12f0fcfab0096516373bf0af2fef132af50cafb0a905b74ff57996d615f59512bb9ac7378fcc64ab
-  languageName: node
-  linkType: hard
-
-"prettier@npm:2.8.8":
-  version: 2.8.8
-  resolution: "prettier@npm:2.8.8"
-  bin:
-    prettier: bin-prettier.js
-  checksum: 10c0/463ea8f9a0946cd5b828d8cf27bd8b567345cf02f56562d5ecde198b91f47a76b7ac9eae0facd247ace70e927143af6135e8cf411986b8cb8478784a4d6d724a
   languageName: node
   linkType: hard
 

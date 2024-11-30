@@ -8,6 +8,7 @@ import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import space, { s } from '@styles/space';
 import COLORS from '@styles/colors';
 import { TouchableShrink } from '@components/core/Touchables';
+import { StepPaddingContext } from './StepPaddingContext';
 
 interface Props {
   investigator: Card;
@@ -30,16 +31,18 @@ export default function InvestigatorButton({
   gameFont,
   disabled,
 }: Props) {
-  const { typography, width } = useContext(StyleContext);
+  const { typography, width: fullWidth } = useContext(StyleContext);
+  const { side } = useContext(StepPaddingContext);
   const onTouchablePress = useCallback(() => {
     onPress(investigator);
   }, [onPress, investigator]);
+  const width = fullWidth - side * 2;
   return (
-    <TouchableShrink onPress={onTouchablePress} disabled={disabled}>
+    <TouchableShrink style={{ width }} onPress={onTouchablePress} disabled={disabled}>
       <CompactInvestigatorRow
         investigator={investigator}
         color={color}
-        width={width - s * (disabled ? 2 : 4)}
+        width={width}
       >
         { !!value && (
           <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>

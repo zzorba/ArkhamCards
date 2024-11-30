@@ -26,6 +26,7 @@ import {
   NewStandaloneCampaignAction,
   NEW_GUIDED_CAMPAIGNS,
   BROWSE_CAMPAIGNS,
+  OZ,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
@@ -204,15 +205,22 @@ function NewCampaignView({ componentId }: NavigationProps) {
     updateInvestigatorIds({ type: 'remove', investigator: card.code });
   }, [updateInvestigatorIds]);
 
+  const includeParallel = selection.type === 'campaign' && selection.code === OZ;
   const deckAdded = useCallback(async(deck: Deck) => {
     setSelectedDecks([...selectedDecks, new LatestDeckRedux(deck, undefined, undefined)]);
-    updateInvestigatorIds({ type: 'add', investigator: deck.investigator_code });
+    const investigatorId = includeParallel ? (
+      deck.meta?.alternate_front ?? deck.investigator_code
+    ) : deck.investigator_code;
+    updateInvestigatorIds({ type: 'add', investigator: investigatorId });
     setInvestigatorToDeck({
       ...investigatorToDeck,
-      [deck.investigator_code]: getDeckId(deck),
+      [investigatorId]: getDeckId(deck),
     });
     checkNewDeckForWeakness(deck);
-  }, [setSelectedDecks, updateInvestigatorIds, setInvestigatorToDeck, checkNewDeckForWeakness, selectedDecks, investigatorToDeck]);
+  }, [
+    setSelectedDecks, updateInvestigatorIds, setInvestigatorToDeck, checkNewDeckForWeakness, 
+    selectedDecks, investigatorToDeck, includeParallel,
+  ]);
 
 
   const deckRemoved = useCallback((id: DeckId, deck?: Deck) => {
@@ -488,7 +496,8 @@ function NewCampaignView({ componentId }: NavigationProps) {
       </View>
     );
   }, [typography, colors, hasDefinedChaosBag, hasDefinedCampaignLog, isGuided, campaignLog, selection,
-    showCampaignLogDialog, deleteCampaignNoteSection]);
+    showCampaignLogDialog, deleteCampaignNoteSection,
+  ]);
 
   const showDeckSelector = useCallback(() => {
     if (deckAdded) {
@@ -498,6 +507,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         onInvestigatorSelect: investigatorAdded,
         selectedDecks,
         selectedInvestigatorIds: investigatorIds,
+        includeParallel,
       };
       Navigation.showModal<MyDecksSelectorProps>({
         stack: {
@@ -515,7 +525,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
         },
       });
     }
-  }, [selectedDecks, investigatorIds, deckAdded, investigatorAdded]);
+  }, [includeParallel, selectedDecks, investigatorIds, deckAdded, investigatorAdded]);
   const [dialog, showDialog] = useSimpleTextDialog({
     title: t`Name`,
     placeholder: placeholderName,
