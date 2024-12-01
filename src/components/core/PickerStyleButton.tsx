@@ -7,6 +7,7 @@ import { TouchableShrink } from '@components/core/Touchables';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
+import IconizedText from './IconizedText';
 
 interface Props {
   title: string;
@@ -116,7 +117,7 @@ export default function PickerStyleButton({
                 },
               ]}
             >
-              { value }
+              <IconizedText text={value} iconSize={16} />
             </Text>
           ) }
           { !disabled && widgetIcon }

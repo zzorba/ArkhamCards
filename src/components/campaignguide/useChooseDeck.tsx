@@ -45,9 +45,9 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
     callback?: (code: string) => Promise<void>
   ) => {
     const onDeckSelect = async(deck: Deck) => {
-      await doAddInvestigator(campaignId, deck.investigator_code, getDeckId(deck));
+      await doAddInvestigator(campaignId, singleInvestigator?.code ?? deck.investigator_code, getDeckId(deck));
       if (callback) {
-        await callback(deck.investigator_code);
+        await callback(singleInvestigator?.code ?? deck.investigator_code);
       }
     };
     const onInvestigatorSelect = async(card: Card) => {

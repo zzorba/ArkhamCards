@@ -9,12 +9,12 @@ export function where(query: string, params?: QueryParams): Brackets {
   return new Brackets((qb) => qb.where(`(${query})`, params));
 }
 
-export const ON_YOUR_OWN_RESTRICTION = new NotBrackets((qb) =>
-  qb.where(
-    `c.slots_normalized is not null AND c.slots_normalized LIKE :slot AND (c.removable_slot is null OR not c.removable_slot)`,
-    { slot: "%#ally#%" }
-  )
+export const ON_YOUR_OWN_RESTRICTION = where(
+  `c.slots_normalized is not null AND c.slots_normalized LIKE :slot AND (c.removable_slot is null OR not c.removable_slot)`,
+  { slot: "%#ally#%" }
 );
+
+export const DECK_BUILDING_OPTION_CARDS_QUERY = where(`c.type_code <> 'investigator' AND c.deck_limit > 0 AND c.deck_options <> '[]'`);
 
 export const BASIC_QUERY = where("c.browse_visible != 0");
 export const NO_CUSTOM_CARDS_QUERY = where("c.browse_visible < 16");

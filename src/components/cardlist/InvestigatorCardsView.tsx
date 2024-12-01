@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { queryForInvestigator } from '@lib/InvestigatorRequirements';
+import { queryForInvestigatorWithoutDeck } from '@lib/InvestigatorRequirements';
 import { NavigationProps } from '@components/nav/types';
 import CardSearchComponent from './CardSearchComponent';
 import useSingleCard from '@components/card/useSingleCard';
@@ -18,7 +18,14 @@ export default function InvestigatorCardsView({ investigatorCode, componentId }:
     if (!investigator) {
       return undefined;
     }
-    return (filters: FilterState | undefined) => queryForInvestigator(investigator, undefined, filters);
+    return (filters: FilterState | undefined) => queryForInvestigatorWithoutDeck(
+      investigator,
+      undefined,
+      {
+        filters,
+        allOptions: true,
+      }
+    );
   }, [investigator]);
   if (!investigator) {
     return null;

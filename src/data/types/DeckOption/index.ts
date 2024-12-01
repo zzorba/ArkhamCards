@@ -5,9 +5,9 @@ import { t } from "ttag";
 import { DeckMeta } from "@actions/types";
 import DeckAtLeastOption from "./DeckAtLeastOption";
 import DeckOptionLevel from "./DeckOptionLevel";
-import { FactionCodeType, TypeCodeType } from "@app_constants";
+import { FactionCodeType, ON_YOUR_OWN_CODE, TypeCodeType } from "@app_constants";
 import FilterBuilder from "@lib/filters";
-import { combineQueries, combineQueriesOpt, where } from "@data/sqlite/query";
+import { combineQueries, combineQueriesOpt, ON_YOUR_OWN_RESTRICTION, where } from "@data/sqlite/query";
 
 export function localizeDeckOptionError(error?: string): undefined | string {
   if (!error) {
@@ -346,6 +346,10 @@ export class DeckOptionQueryBuilder {
     isUpgrade?: boolean,
     negate?: boolean
   ): Brackets | undefined {
+    // Special logic since the stuff can be removed on this one.
+    if (this.option.dynamic_id === ON_YOUR_OWN_CODE) {
+      return combineQueriesOpt([ON_YOUR_OWN_RESTRICTION], 'and', negate ?? !!this.option.not);
+    }
     const clauses: Brackets[] = [
       ...this.filterBuilder.factionFilter(this.option.faction || []),
       ...this.textClause(),

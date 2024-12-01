@@ -10,6 +10,7 @@ import {
   indexOf,
   sumBy,
   sortBy,
+  partition,
 } from "lodash";
 import { t } from "ttag";
 
@@ -36,7 +37,7 @@ import {
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
 } from "@app_constants";
-import Card, { CardsMap } from "@data/types/Card";
+import Card from "@data/types/Card";
 import DeckOption, { localizeDeckOptionError } from "@data/types/DeckOption";
 import {
   BONDED_WEAKNESS_COUNTS,
@@ -49,7 +50,6 @@ const THE_INSANE_TAG = "the_insane";
 interface SpecialCardCounts {
   ancestralKnowledge: number;
   versatile: number;
-  onYourOwn: number;
   underworldSupport: number;
   underworldMarket: number;
   forcedLearning: number;
@@ -73,17 +73,35 @@ interface InsaneData {
 
 const SIGNATURE_CARD_OPTION = new DeckOption();
 
+function partitionDeckOptions(options: DeckOption[]): {
+  negated: DeckOption[];
+  normal: DeckOption[];
+  limited: DeckOption[];
+} {
+  const [negated, other] = partition(options, option => !!option.not);
+  const [limited, normal] = partition(other, option => option.limit !== undefined);
+
+  return {
+    negated,
+    normal,
+    limited,
+  }
+}
+
 export default class DeckValidation {
   investigator: Card;
   slots: Slots;
   meta?: DeckMeta;
   problem_list: string[] = [];
   deck_options_counts: DeckOptionsCount[] = [];
+
+  for_query: boolean;
   all_options: boolean;
   all_customizations: boolean;
   random_deck: boolean;
-  side_deck: boolean;
+  extra_deck: boolean;
   insane_data: InsaneData | undefined;
+  hide_versatile: boolean;
 
   /**
    *
@@ -97,31 +115,36 @@ export default class DeckValidation {
     slots: Slots,
     meta: DeckMeta | undefined,
     {
+      for_query,
       all_options,
       all_customizations,
       random_deck,
-      side_deck,
+      extra_deck,
+      hide_versatile
     }: {
+      for_query?: boolean;
       all_options?: boolean;
       all_customizations?: boolean;
       random_deck?: boolean;
-      side_deck?: boolean;
+      extra_deck?: boolean;
+      hide_versatile?: boolean;
     } = {}
   ) {
     this.investigator = investigator;
     this.slots = slots;
     this.meta = meta;
-    this.all_options = all_options || false;
-    this.all_customizations = all_customizations || false;
-    this.random_deck = random_deck || false;
-    this.side_deck = side_deck || false;
+    this.all_options = all_options ?? false;
+    this.all_customizations = all_customizations ?? false;
+    this.random_deck = random_deck ?? false;
+    this.extra_deck = extra_deck ?? false;
+    this.hide_versatile = hide_versatile ?? false;
+    this.for_query = for_query ?? false;
   }
 
   specialCardCounts(): SpecialCardCounts {
     return {
       ancestralKnowledge: this.slots[ANCESTRAL_KNOWLEDGE_CODE] || 0,
       versatile: this.slots[VERSATILE_CODE] || 0,
-      onYourOwn: this.slots[ON_YOUR_OWN_CODE] || 0,
       underworldSupport: this.slots[UNDERWORLD_SUPPORT_CODE] || 0,
       underworldMarket: this.slots[UNDERWORLD_MARKET_CODE] || 0,
       forcedLearning: this.slots[FORCED_LEARNING_CODE] || 0,
@@ -129,7 +152,7 @@ export default class DeckValidation {
   }
 
   deckRequirements(): DeckRequirement | undefined {
-    return this.side_deck
+    return this.extra_deck
       ? this.investigator.side_deck_requirements
       : this.investigator.deck_requirements;
   }
@@ -155,10 +178,10 @@ export default class DeckValidation {
       card.type_code === 'investigator' ? 0 :
       card.deck_requirements?.size ?? 0
     ));
-   
+
     return (
       size +
-      extraSize + 
+      extraSize +
       5 *
         (specialCards.versatile +
           specialCards.ancestralKnowledge +
@@ -237,7 +260,7 @@ export default class DeckValidation {
             card.xp === undefined ||
             card.xp === null
           ) &&
-          (specialCards.underworldSupport > 0 || this.side_deck)
+          (specialCards.underworldSupport > 0 || this.extra_deck)
         ) {
           return {
             nb_copies: group.length,
@@ -441,44 +464,14 @@ export default class DeckValidation {
   }
 
   private initDeckOptionsCounts(cards: Card[]) {
-    const specialCards = this.specialCardCounts();
     this.deck_options_counts = [];
-    if (specialCards.onYourOwn > 0) {
+    const options = this.deckOptions(cards);
+    forEach(options, () => {
       this.deck_options_counts.push({
         limit: 0,
         atleast: {},
       });
-    }
-    // For the new global covenant restriction.
-    this.deck_options_counts.push({
-      limit: 0,
-      atleast: {},
     });
-
-    if (specialCards.ancestralKnowledge) {
-      this.deck_options_counts.push({
-        limit: 0,
-        atleast: {},
-      });
-    }
-    const deck_options = this.side_deck
-      ? this.investigator.side_deck_options
-      : this.investigator.deck_options;
-
-    if (deck_options) {
-      for (var i = 0; i < deck_options.length; i++) {
-        this.deck_options_counts.push({
-          limit: 0,
-          atleast: {},
-        });
-      }
-    }
-    if (specialCards.versatile > 0) {
-      this.deck_options_counts.push({
-        limit: 0,
-        atleast: {},
-      });
-    }
   }
 
   getInvalidCards(cards: Card[]): Card[] {
@@ -494,20 +487,24 @@ export default class DeckValidation {
     return !!(option && option.limit && !option.dynamic_id && !option.not);
   }
 
+
   deckOptions(cards: Card[]): DeckOption[] {
     const specialCards = this.specialCardCounts();
-    var deck_options: DeckOption[] = [];
-    if (specialCards.onYourOwn > 0) {
-      deck_options.push(
-        DeckOption.parse({
-          not: true,
-          slot: ['Ally'],
-          error: t`No assets that take up the ally slot are allowed by On Your Own.`,
-          dynamic_id: ON_YOUR_OWN_CODE,
-        })
-      );
-    }
-    if (!this.all_options) {
+    var deck_options: DeckOption[] = []
+
+    const dynamicOptions = partitionDeckOptions(cards.flatMap((card) => {
+      if (card.type_code !== 'investigator' && card.deck_options) {
+        return map(card.deck_options, o => {
+          return {
+            ...o,
+            dynamic_id: card.code,
+          };
+        });
+      }
+      return [];
+    }));
+
+    if (!this.all_options && !this.for_query) {
       deck_options.push({
         limit: 1,
         trait: ["Covenant"],
@@ -516,7 +513,7 @@ export default class DeckValidation {
         dynamic_id: "convenant",
       });
     }
-    if (specialCards.ancestralKnowledge) {
+    if (specialCards.ancestralKnowledge&& !this.for_query) {
       deck_options.push(
         DeckOption.parse({
           type: ["skill"],
@@ -530,7 +527,7 @@ export default class DeckValidation {
         })
       );
     }
-    const investigator_deck_options = this.side_deck
+    const investigator_deck_options = this.extra_deck
       ? this.investigator.side_deck_options
       : this.investigator.deck_options;
     if (investigator_deck_options && investigator_deck_options.length) {
@@ -568,19 +565,27 @@ export default class DeckValidation {
         }
       });
     }
-    if (specialCards.versatile > 0) {
+    if (specialCards.versatile > 0 && !this.hide_versatile) {
       deck_options.push(
         DeckOption.parse({
           level: {
             min: 0,
             max: 0,
           },
+          faction: ["guardian", "seeker", "rogue", "mystic", "survivor"],
           limit: specialCards.versatile,
           error: t`Too many off-class cards for Versatile`,
         })
       );
     }
-    return deck_options;
+    const [limited, other] = partition(deck_options, (option) => option.limit !== undefined);
+    return [
+      ...dynamicOptions.negated,
+      ...other,
+      ...dynamicOptions.normal,
+      ...limited,
+      ...dynamicOptions.limited,
+    ];
   }
 
   canIncludeCard(card: Card, processDeckCounts: boolean, allCards: Card[]): boolean {

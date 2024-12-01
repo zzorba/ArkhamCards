@@ -2,6 +2,8 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { flatMap, keys, range, map, sum, values } from 'lodash';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { t } from 'ttag';
 
 import ChaosBagLine from '@components/core/ChaosBagLine';
@@ -51,12 +53,12 @@ function RelationshipBoxes({ section, isFatigue }: { section: EntrySection; isFa
   const fatigueValue = fatigueEntry?.type === 'count' ? fatigueEntry.count : 0;
   return (
     <View style={{ flexDirection: 'row' }}>
-      <Text 
+      <Text
         style={[
-          typography.cursive, 
-          { fontSize: 14, lineHeight: 16, color: colors.D30 }, 
+          typography.cursive,
+          { fontSize: 14, lineHeight: 16, color: colors.D30 },
           space.paddingRightXs,
-        ]} 
+        ]}
         allowFontScaling={false}
       >
         {isFatigue ? t`Fatigue` : t`Relationship Level`}
@@ -72,9 +74,9 @@ function RelationshipBoxes({ section, isFatigue }: { section: EntrySection; isFa
           borderColor: colors.D10,
           position: 'relative',
         }}>
-          { isFatigue && idx === 5 && (
-            <View style={{ position: 'absolute', top: 0, left: 0 }}>
-              <MaterialIcons size={12} name="skull" color={colors.L10} allowFontScaling={false} />
+          { isFatigue && idx === 4 && (
+            <View style={{ position: 'absolute', top: 0, left: 0 }} opacity={0.5}>
+              <MaterialCommunityIcons size={12} name="skull" color={colors.D10} allowFontScaling={false} />
             </View>
           )}
           { relationshipValue > idx ? (
@@ -83,8 +85,8 @@ function RelationshipBoxes({ section, isFatigue }: { section: EntrySection; isFa
             </View>
           ) : null }
           { fatigueValue > idx ? (
-            <View style={{ position: 'absolute', top: 0, left: 0 }}>
-              <MaterialIcons size={12} name="cross" color={colors.D20} allowFontScaling={false} />
+            <View style={{ position: 'absolute', top: 0, left: 2 }}>
+              <Text style={{ color: colors.D30, fontSize: 11 }} maxFontSizeMultiplier={1} allowFontScaling={false}>X</Text>
             </View>
           ) : null }
         </View>
@@ -304,7 +306,7 @@ export default function CampaignLogComponent({
       case 'fatigue':
       default: {
         const section = campaignLog.sections[id];
-        if (CARD_REGEX.test(id) || type === 'relationship') {
+        if (CARD_REGEX.test(id) || type === 'relationship' || type === 'fatigue') {
           return (
             <View style={[space.paddingTopS, space.paddingSideS]}>
               <CardSection

@@ -153,8 +153,8 @@ function CampaignDetailView(props: Props) {
   }, [weaknessCards, campaign, updateWeaknessAssignedCards, showAlert]);
   const deckActions = useDeckActions();
   const checkNewDeckForWeakness = useMaybeShowWeaknessPrompt(componentId, checkForWeaknessPrompt);
-  const onAddDeck = useCallback(async(deck: Deck) => {
-    await asyncDispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, deck.investigator_code, getDeckId(deck)));
+  const onAddDeck = useCallback(async(deck: Deck, investigator_code?: string) => {
+    await asyncDispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, investigator_code ?? deck.investigator_code, getDeckId(deck)));
     checkNewDeckForWeakness(deck);
   }, [userId, campaignId, deckActions, updateCampaignActions, checkNewDeckForWeakness, asyncDispatch]);
 
@@ -172,10 +172,11 @@ function CampaignDetailView(props: Props) {
     if (!campaign) {
       return;
     }
+    console.log(`Show choose deck: `, singleInvestigator?.code);
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
       campaignId: campaign.id,
       singleInvestigator: singleInvestigator.alternate_of_code ?? singleInvestigator.code,
-      onDeckSelect: onAddDeck,
+      onDeckSelect: (deck: Deck) => onAddDeck(deck, singleInvestigator.code ?? deck.investigator_code),
     } : {
       campaignId: campaign.id,
       selectedInvestigatorIds: map(

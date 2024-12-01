@@ -3,14 +3,17 @@ import { Brackets } from 'typeorm/browser';
 
 import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '@app_constants';
 import CardSearchComponent from '@components/cardlist/CardSearchComponent';
-import { queryForInvestigator, negativeQueryForInvestigator } from '@lib/InvestigatorRequirements';
-import FilterBuilder, { defaultFilterState, FilterState } from '@lib/filters';
-import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from '@data/sqlite/query';
+import { queryForInvestigator } from '@lib/InvestigatorRequirements';
+import { FilterState } from '@lib/filters';
+import { STORY_CARDS_QUERY, where, combineQueries, DECK_BUILDING_OPTION_CARDS_QUERY } from '@data/sqlite/query';
 import { NavigationProps } from '@components/nav/types';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
 import { DeckId } from '@actions/types';
 import useSingleCard from '@components/card/useSingleCard';
+import { forEach, map, range } from 'lodash';
+import Card from '@data/types/Card';
+import { useCardMapFromQuery } from '@components/card/useCardList';
 
 export interface EditDeckProps {
   id: DeckId;
@@ -34,10 +37,20 @@ export default function DeckEditView({
   const [hideVersatile, setHideVersatile] = useState(false);
   const [hideSplash, setHideSplash] = useState(false);
   const [investigator] = useSingleCard(deckEdits?.meta.alternate_back || deck?.deck.investigator_code, 'player', tabooSetId);
+  const [specialCards] = useCardMapFromQuery(DECK_BUILDING_OPTION_CARDS_QUERY);
+  const slots = deckType === 'extra' ? {} :  deckEdits?.slots;
+  const specialDeckCards = useMemo(() => {
+    const special: Card[] = [];
+    forEach(slots, (count, code) => {
+      const card = specialCards[code];
+      if (card && count > 0) {
+        special.push(...map(range(0, count), () => card));
+      }
+    });
+    return special;
+  }, [slots, specialCards]);
 
   const hasVersatile = deckType !== 'extra' && (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
-  const versatile = !hideVersatile && hasVersatile;
-  const onYourOwn = deckType !== 'extra' && deckEdits && deckEdits.slots[ON_YOUR_OWN_CODE] > 0;
   const isUpgrade = !!deck?.previousDeck;
 
   const queryOpt = useMemo(() => {
@@ -61,47 +74,23 @@ export default function DeckEditView({
     return (filters: FilterState | undefined) => {
       const investigatorPart = investigator && queryForInvestigator(
         investigator,
+        // Special deck building won't apply to extra decks, for now...
+        deckType === 'extra' ? {} : deckEdits?.slots,
         deckEdits?.meta,
-        filters,
+        specialDeckCards,
         {
+          filters,
           isUpgrade,
           hideSplash,
           extraDeck: deckType === 'extra',
           side: deckType === 'side',
+          hideVersatile,
+          includeStory: true,
         },
       );
-      if (deckType === 'extra') {
-        return investigatorPart;
-      }
-      const parts: Brackets[] = [
-        ...(investigatorPart ? [investigatorPart] : []),
-      ];
-
-      if (!weaknessOnly && versatile && (!filters?.levelEnabled || filters?.level[0] === 0)) {
-        const versatileQuery = new FilterBuilder('versatile').filterToQuery({
-          ...defaultFilterState,
-          factions: ['guardian', 'seeker', 'rogue', 'mystic', 'survivor'],
-          level: [0, 0],
-          levelEnabled: true,
-        }, false);
-        if (versatileQuery) {
-          const invertedClause = negativeQueryForInvestigator(investigator, deckEdits?.meta, isUpgrade);
-          if (invertedClause) {
-            parts.push(
-              new Brackets(qb => qb.where(invertedClause).andWhere(versatileQuery))
-            );
-          } else {
-            parts.push(versatileQuery);
-          }
-        }
-      }
-      const joinedQuery = combineQueries(STORY_CARDS_QUERY, parts, 'or');
-      if (onYourOwn) {
-        return combineQueries(joinedQuery, [ON_YOUR_OWN_RESTRICTION], 'and');
-      }
-      return joinedQuery;
+      return investigatorPart;
     }
-  }, [deckEdits?.meta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, versatile, onYourOwn]);
+  }, [deckEdits?.meta, specialDeckCards, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
   const mode = useMemo(() => {
     if (storyOnly || weaknessOnly) {
       return 'story';
