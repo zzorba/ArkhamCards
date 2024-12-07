@@ -8811,12 +8811,28 @@
         "section": "advantages",
         "entries": [
           {
+            "id": "great_book_of_records",
+            "text": "Great Book of Records"
+          },
+          {
             "id": "meteor_observation",
             "text": "Meteor Observation"
           },
           {
             "id": "polychrome",
             "text": "Polychrome"
+          },
+          {
+            "id": "reeras_help",
+            "text": "Reera's Help"
+          },
+          {
+            "id": "school_pills",
+            "text": "School Pills"
+          },
+          {
+            "id": "zosozo",
+            "text": "Zosozo"
           }
         ]
       },

@@ -81,6 +81,7 @@ export interface CampaignLogCardEntry extends BasicEntry {
 interface CampaignLogCountEntry extends BasicEntry {
   type: "count";
   count: number;
+  otherCount?: number;
 }
 
 interface CampaignLogBasicEntry extends BasicEntry {
@@ -1809,11 +1810,14 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       | "set_input"
       | "cross_out",
     value: number,
-    min?: number
+    min?: number,
+    alternate?: boolean
   ): EntrySection {
     // Normal entry
     const entry = find(section.entries, (entry) => entry.id === id);
-    const count = entry && entry.type === "count" ? entry.count : 0;
+    const count = entry && entry.type === "count" ? (
+      alternate ? (entry.otherCount ?? 0) : entry.count
+    ) : 0;
     const applyMin = (value: number) =>
       min !== undefined && min !== null ? Math.max(min, value) : value;
     switch (operation) {
@@ -1830,37 +1834,76 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         break;
       case "subtract_input":
         if (entry && entry.type === "count") {
-          entry.count = count - value;
+          if (alternate) {
+            entry.otherCount = count - value;
+          } else {
+            entry.count = count - value;
+          }
         } else {
-          section.entries.push({
-            type: "count",
-            id,
-            count: applyMin(count - value),
-          });
+          if (alternate) {
+            section.entries.push({
+              type: "count",
+              id,
+              count: 0,
+              otherCount: applyMin(count - value),
+            });
+          } else {
+            section.entries.push({
+              type: "count",
+              id,
+              count: applyMin(count - value),
+            });
+          }
         }
         break;
       case "add":
       case "add_input":
         if (entry && entry.type === "count") {
-          entry.count = count + value;
+          if (alternate) {
+            entry.otherCount = count + value;
+          } else {
+            entry.count = count + value;
+          }
         } else {
-          section.entries.push({
-            type: "count",
-            id,
-            count: applyMin(count + value),
-          });
+          if (alternate) {
+            section.entries.push({
+              type: "count",
+              id,
+              count: 0,
+              otherCount: applyMin(count + value),
+            });
+          } else {
+            section.entries.push({
+              type: "count",
+              id,
+              count: applyMin(count + value),
+            });
+          }
         }
         break;
       case "set":
       case "set_input":
         if (entry && entry.type === "count") {
-          entry.count = applyMin(value);
+          if (alternate) {
+            entry.otherCount = applyMin(value);
+          } else {
+            entry.count = applyMin(value);
+          }
         } else {
-          section.entries.push({
-            type: "count",
-            id,
-            count: applyMin(value),
-          });
+          if (alternate) {
+            section.entries.push({
+              type: "count",
+              id,
+              count: 0,
+              otherCount: applyMin(value),
+            });
+          } else {
+            section.entries.push({
+              type: "count",
+              id,
+              count: applyMin(value),
+            });
+          }
         }
         break;
     }
@@ -1939,7 +1982,8 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         effect.id,
         effect.operation,
         value,
-        effect.min
+        effect.min,
+        effect.alternate
       );
     }
   }

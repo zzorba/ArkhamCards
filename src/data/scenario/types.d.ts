@@ -566,6 +566,7 @@ export interface CampaignLogCountEffect {
   text?: string;
   hidden?: boolean;
   min?: number;
+  alternate?: boolean;
 }
 export interface CampaignLogInvestigatorCountEffect {
   type: "campaign_log_investigator_count";

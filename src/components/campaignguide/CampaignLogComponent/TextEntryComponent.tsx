@@ -24,7 +24,7 @@ interface Props {
 export default function TextEntryComponent({ text, icon, crossedOut, entry, decoration, button, first, last, noWrapper }: Props) {
   const { colors, typography, fontScale } = useContext(StyleContext);
   const actualText = entry.type === 'count' ?
-    text.replace('#X#', `${entry.count}`) :
+    text.replace('#X#', `${entry.count}`).replace('#Y#', `${entry.otherCount ?? 0}`) :
     text;
   return (
     <View style={icon ? [
