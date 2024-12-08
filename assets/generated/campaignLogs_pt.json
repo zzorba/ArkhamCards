@@ -9340,19 +9340,19 @@
         "entries": [
           {
             "id": "gillikin_country",
-            "text": "Gillikin Country"
+            "text": "[elder_thing] - Gillikin Country"
           },
           {
             "id": "munchkin_country",
-            "text": "Munchin Country"
+            "text": "[skull] - Munchkin Country"
           },
           {
             "id": "quadling_country",
-            "text": "Quadling Country"
+            "text": "[tablet] - Quadling Country"
           },
           {
             "id": "winkie_country",
-            "text": "Winkie Country"
+            "text": "[cultist] - Winkie Country"
           }
         ]
       },

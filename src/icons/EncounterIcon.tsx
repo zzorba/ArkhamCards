@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Animated, { interpolateColor, useAnimatedProps, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import ArkhamIcon from './ArkhamIcon';
 import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
@@ -22,6 +22,30 @@ interface Props {
   encounter_code: string;
   size: number;
   color: string;
+}
+
+const AnimatedOzIcon = Animated.createAnimatedComponent(OzIcon);
+
+const TheColourItself = ({ size }: { size: number }) => {
+  const color = useSharedValue(1);
+  const animatedProps = useAnimatedProps(() => {
+    const purpleColor = interpolateColor(
+      color.value,
+      [0, 1, 2],
+      ['#B405F6', '#c025fb', '#a004db']
+    );
+    return {
+      color: purpleColor,
+    };
+  });
+  React.useEffect(() => {
+    color.value = withRepeat(
+      withTiming(2, { duration: 1200 }),
+      -1,
+      true
+    );
+  }, [color]);
+  return <AnimatedOzIcon size={size} name="the_colour_itself" animatedProps={animatedProps} />;
 }
 
 export default class EncounterIcon extends React.PureComponent<Props> {
@@ -1024,7 +1048,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.standaloneIcon('legions_of_fire', size, color);
 
 
-      
+
       case 'zoz_the_road_to_oz': return this.ozIcon('the_road_to_oz', size, color);
       case 'zoz_ferocious_beasts': return this.ozIcon('ferocious_beasts', size, color);
       case 'zoz_wicked_witches': return this.ozIcon('wicked_witches', size, color);
@@ -1047,7 +1071,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'zoz_hall_of_the_mountain_king': return this.ozIcon('hall_of_the_mountain_king', size, color);
       case 'zoz_defense_of_the_realm': return this.ozIcon('defense_of_the_realm', size, color);
       case 'zoz_true_colours': return this.ozIcon('true_colours', size, color);
-      case 'zoz_the_colour_itself': return this.ozIcon('the_colour_itself', size, '#B405F6');
+      case 'zoz_the_colour_itself':
+        return <TheColourItself size={size} />
       case 'zoz_munchkin': return this.ozIcon('munchkin_country', size, color);
       case 'zoz_winkie': return this.ozIcon('winkie_country', size, color);
       case 'zoz_quadling': return this.ozIcon('quadling_country', size, color);

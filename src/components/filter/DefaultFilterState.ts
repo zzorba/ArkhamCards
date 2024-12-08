@@ -1,4 +1,4 @@
-import { concat, forEach, map, filter } from "lodash";
+import { concat, forEach, map, filter, uniq } from "lodash";
 
 import Card from "@data/types/Card";
 import { CardFilterData, FilterState, defaultFilterState } from "@lib/filters";
@@ -25,7 +25,18 @@ export async function calculateDefaultDbFilterState(
   const cards = await db.cards();
   let factionsQuery = cards
     .createQueryBuilder("c")
-    .select("distinct c.faction_code as faction_code")
+    .select(`distinct c.faction_code as faction_code`)
+    .leftJoin("c.linked_card", "linked_card")
+    .where(tabooSetQuery(tabooSetId));
+
+  let factions2Query = cards
+    .createQueryBuilder("c")
+    .select(`distinct c.faction2_code as faction_code`)
+    .leftJoin("c.linked_card", "linked_card")
+    .where(tabooSetQuery(tabooSetId));
+  let factions3Query = cards
+    .createQueryBuilder("c")
+    .select(`distinct c.faction3_code as faction_code`)
     .leftJoin("c.linked_card", "linked_card")
     .where(tabooSetQuery(tabooSetId));
   let cardsQuery = cards
@@ -51,9 +62,15 @@ export async function calculateDefaultDbFilterState(
   if (query) {
     cardsQuery = cardsQuery.andWhere(query);
     factionsQuery = factionsQuery.andWhere(query);
+    factions2Query = factions2Query.andWhere(query);
+    factions3Query = factions3Query.andWhere(query);
   }
   const countsP = cardsQuery.getRawMany();
-  const factionsP = factionsQuery.getRawMany();
+  const factionsP = Promise.all([
+    factionsQuery.getRawMany(),
+    factions2Query.getRawMany(),
+    factions3Query.getRawMany()
+  ]);
   const counts = (await countsP)[0];
   const fields = {
     level: "xp",
@@ -75,7 +92,8 @@ export async function calculateDefaultDbFilterState(
       Math.max(counts[dbField], counts[`linked_${dbField}`]),
     ];
   });
-  const allFactions = map(await factionsP, (result) => result.faction_code);
+  const factionsQ = await factionsP;
+  const allFactions = uniq(factionsQ.flatMap(result => map(result, r => r.faction_code)));
   const factions = new Set(allFactions);
   const filterData: CardFilterData = {
     hasCost: counts.cost !== null || counts.linked_cost !== null,
