@@ -1,0 +1,13 @@
+diff --git a/node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js b/node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js
+index 4e781a2..01b5246 100644
+--- a/node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js
++++ b/node_modules/typeorm/browser/driver/react-native/ReactNativeDriver.js
+@@ -77,7 +77,7 @@ var ReactNativeDriver = /** @class */ (function (_super) {
+      */
+     ReactNativeDriver.prototype.loadDependencies = function () {
+         try {
+-            var sqlite = this.options.driver || require("react-native-sqlite-storage");
++            var sqlite = this.options.driver;
+             this.sqlite = sqlite;
+         }
+         catch (e) {

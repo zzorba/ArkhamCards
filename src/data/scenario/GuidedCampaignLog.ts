@@ -57,7 +57,7 @@ import {
 } from "./types";
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from "./CampaignGuide";
 import Card, { CardsMap } from "@data/types/Card";
-import scenario, { LatestDecks } from "@data/scenario";
+import { LatestDecks } from "@data/scenario/coreTypes";
 import CampaignStateHelper from "@data/scenario/CampaignStateHelper";
 import {
   INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX,

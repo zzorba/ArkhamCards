@@ -28,13 +28,13 @@ import CampaignGuide, {
 import ScenarioGuide from "./ScenarioGuide";
 import ScenarioStep from "./ScenarioStep";
 import GuidedCampaignLog from "./GuidedCampaignLog";
-import LatestDeckT from "@data/interfaces/LatestDeckT";
 import Card from "@data/types/Card";
 import { useContext, useMemo } from "react";
 import LanguageContext from "@lib/i18n/LanguageContext";
 import { Gender_Enum } from "@generated/graphql/apollo-schema";
-import { Binary } from "typeorm";
+import { type LatestDecks } from './coreTypes';
 
+export { LatestDecks };
 export interface ScenarioId {
   scenarioId: string;
   replayAttempt?: number;
@@ -75,10 +75,6 @@ export type ProcessedScenario = PlayedScenario | UnplayedScenario;
 export interface ProcessedCampaign {
   scenarios: ProcessedScenario[];
   campaignLog: GuidedCampaignLog;
-}
-
-export interface LatestDecks {
-  [code: string]: LatestDeckT | undefined;
 }
 
 export interface DisplayChoice {

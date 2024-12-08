@@ -3,7 +3,6 @@ import { persistCache } from 'apollo-cache-persist';
 import { Navigation } from 'react-native-navigation';
 import Crashes from 'appcenter-crashes';
 import database from '@react-native-firebase/database';
-import 'react-native-sqlite-storage';
 import 'react-native-gesture-handler';
 import 'react-native-console-time-polyfill';
 import 'reflect-metadata';
