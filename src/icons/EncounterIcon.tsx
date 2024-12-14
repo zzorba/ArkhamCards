@@ -1047,8 +1047,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'legions_of_fire':
         return this.standaloneIcon('legions_of_fire', size, color);
 
-
-
       case 'zoz_the_road_to_oz': return this.ozIcon('the_road_to_oz', size, color);
       case 'zoz_ferocious_beasts': return this.ozIcon('ferocious_beasts', size, color);
       case 'zoz_wicked_witches': return this.ozIcon('wicked_witches', size, color);

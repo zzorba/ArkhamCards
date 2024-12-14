@@ -64,12 +64,13 @@ export function getDownloadLink(lang: string, customData?: CustomData) {
   }
 }
 
-function hasNarrationAccess(narration: Narration, narrationLang: string | undefined): boolean {
+function hasNarrationAccess(narration: Narration, narrationLangs: string[]): string | undefined {
+  const set = new Set(narrationLangs);
   // Not every entry has a 'DissonantVoices' one present, due to some missing entries, sometimes in the original.
-  return !!narrationLang && !!find(narration.lang, lang => lang === narrationLang);
+  return find(narration.lang, lang => set.has(lang));
 }
 
-function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: ScenarioStateHelper, narrationLang: string | undefined) {
+function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: ScenarioStateHelper, narrationLangs: string[]) {
   const campaignCode = processedScenario.scenarioGuide.campaignGuide.campaignCycleCode();
   const campaignName = processedScenario.scenarioGuide.campaignGuide.campaignName();
   const scenarioName = processedScenario.scenarioGuide.scenarioName();
@@ -99,26 +100,28 @@ function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: 
         const narration = processedScenario.scenarioGuide.resolution(
           scenarioStep.step.resolution
         )?.narration;
-        if (narration && hasNarrationAccess(narration, narrationLang)) {
+        const lang = narration ? hasNarrationAccess(narration, narrationLangs) : undefined;
+        if (narration && lang) {
           queue.push({
             ...narration,
             campaignCode,
             campaignName,
             scenarioName,
-            lang: narrationLang,
+            lang,
           });
         }
         break;
       }
       default: {
         const narration = scenarioStep.step.narration;
-        if (narration && hasNarrationAccess(narration, narrationLang)) {
+        const lang = narration ? hasNarrationAccess(narration, narrationLangs) : undefined;
+        if (narration && lang) {
           queue.push({
             ...narration,
             campaignCode,
             campaignName,
             scenarioName,
-            lang: narrationLang,
+            lang,
           });
         }
       }
@@ -242,15 +245,15 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       },
     });
   }, [componentId, campaignId, processedScenario.id]);
-  const [hasAudio, narrationLang] = useAudioAccess()
+  const [hasAudio, narrationLangs] = useAudioAccess()
 
   useEffect(() => {
     if (!hasAudio) {
       return;
     }
-    const queue = getNarrationQueue(processedScenario, scenarioState, narrationLang);
+    const queue = getNarrationQueue(processedScenario, scenarioState, narrationLangs);
     setNarrationQueue(queue);
-  }, [processedScenario, scenarioState, hasAudio, narrationLang]);
+  }, [processedScenario, scenarioState, hasAudio, narrationLangs]);
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
     processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;

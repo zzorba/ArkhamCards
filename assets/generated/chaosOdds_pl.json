@@ -3639,7 +3639,7 @@
           },
           "options": [
             {
-              "prompt": "Jeśli znajdujesz się w lokalizacji z cechą [[Bayou]]",
+              "prompt": "Jeśli znajdujesz się w lokalizacji z cechą [[Zalewisko]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -3689,7 +3689,7 @@
           },
           "options": [
             {
-              "prompt": "Jeśli znajdujesz się w lokalizacji z cechą [[Bayou]]",
+              "prompt": "Jeśli znajdujesz się w lokalizacji z cechą [[Zalewisko]]",
               "modified_value": {
                 "modifier": -6
               }
@@ -3738,7 +3738,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Innocent Revelers underneath the agenda deck",
+          "prompt": "Liczba Niewinnych biesiadników znajdujących się pod talią tajemnic",
           "min": 0,
           "max": 3,
           "adjustment": 2
@@ -3769,7 +3769,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Innocent Revelers underneath the act or agenda decks",
+          "prompt": "Liczba Niewinnych biesiadników znajdujących się pod aktem lub talią tajemnic",
           "min": 0,
           "max": 3,
           "adjustment": 2
@@ -4272,7 +4272,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Scientist]] asset is at your location",
+              "prompt": "W twojej lokalizacji znajduje się atut z cechą [[Naukowiec]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -4323,7 +4323,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Scientist]] asset is at your location",
+              "prompt": "W twojej lokalizacji znajduje się atut z cechą [[Naukowiec]]",
               "modified_value": {
                 "modifier": -6
               }

@@ -18,8 +18,11 @@ import { useDispatch } from 'react-redux';
 import { SET_PLAYBACK_RATE } from '@actions/types';
 
 export function useNarration(narration?: Narration): Narration | undefined {
-  const [hasAudio, narrationLang] = useAudioAccess();
-  if (!hasAudio || !narration || !narrationLang || !find(narration.lang, lang => lang === narrationLang)) {
+  const [hasAudio, narrationLangs] = useAudioAccess();
+  if (!hasAudio || 
+    !narration || 
+    !find(narration.lang, lang => narrationLangs.find(narrationLang => narrationLang === lang))
+  ) {
     return undefined;
   }
   return narration;

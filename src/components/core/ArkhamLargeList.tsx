@@ -130,6 +130,7 @@ export default function ArkhamLargeList<Item>({
           refreshing={debouncedRefreshing}
           onRefresh={handleRefresh}
           tintColor={colors.background}
+          opacity={0}
         />
       }
       scrollEventThrottle={16}

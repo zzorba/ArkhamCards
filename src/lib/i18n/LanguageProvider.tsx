@@ -3,7 +3,7 @@ import { AppState, DeviceEventEmitter, Platform } from 'react-native';
 import { find } from 'lodash';
 import { useSelector } from 'react-redux';
 
-import LanguageContext from './LanguageContext';
+import LanguageContext, { LanguageContextType } from './LanguageContext';
 import { getSystemLanguage } from '@lib/i18n';
 import { getAudioLangPreference, getLangChoice, hasDissonantVoices } from '@reducers';
 import { useMyProfile } from '@data/remote/hooks';
@@ -70,34 +70,34 @@ export default function LanguageProvider({ children }: Props) {
 
   const hasDV = useSelector(hasDissonantVoices);
   const [profile] = useMyProfile(true);
-  const audioLang = useMemo(() => {
+  const audioLangs = useMemo(() => {
     switch (audioLangChoice) {
       case 'en':
         if (hasDV) {
-          return 'dv';
+          return ['dv', 'en'];
         }
-        return undefined;
+        return ['en'];
       case 'ru':
-        return 'ru';
+        return ['ru'];
       case 'pl':
-        return 'pl';
+        return ['pl'];
       case 'de':
-        return 'de';
+        return ['de'];
       case 'it':
-        return 'it';
+        return ['it'];
       // This requires access
       case 'es':
         if (find(profile?.flags, f => f === User_Flag_Type_Enum.EsDv)) {
           // ES requires special ArkhamCards access
-          return 'es';
+          return ['es'];
         }
-        return undefined;
+        return [];
       default:
-        return undefined;
+        return [];
     }
   }, [hasDV, profile, audioLangChoice]);
 
-  const context = useMemo(() => {
+  const context: LanguageContextType = useMemo(() => {
     const majorVersionIOS = Platform.OS === 'ios' ? parseInt(Platform.Version, 10) : 0;
     return {
       lang,
@@ -106,9 +106,9 @@ export default function LanguageProvider({ children }: Props) {
       colon: getColon(lang),
       arkhamDbDomain: getArkhamDbDomain(lang),
       usePingFang: ((lang === 'zh' || lang === 'zh-cn') && Platform.OS === 'ios' && majorVersionIOS >= 13),
-      audioLang,
+      audioLangs,
     };
-  }, [lang, audioLang]);
+  }, [lang, audioLangs]);
   return (
     <LanguageContext.Provider value={context}>
       { children }

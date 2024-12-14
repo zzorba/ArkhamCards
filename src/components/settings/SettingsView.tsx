@@ -54,6 +54,9 @@ function showDeKofi() {
 function showRuDonate() {
   Linking.openURL('https://www.tinkoff.ru/cf/27GmNzxhhUk');
 }
+function showEnAudio() {
+  Linking.openURL('https://therestrictedcollection.podbean.com/');
+}
 
 export default function SettingsView({ componentId }: NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
@@ -260,7 +263,11 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   onValueChange={setSearchEnglish}
                 />
               ) }
-              <NarrationLanguagePicker first last />
+            </RoundedFactionBlock>
+            <RoundedFactionBlock faction="neutral" header={<DeckSectionHeader faction="neutral" title={t`Narration`} />}>
+              <View style={space.paddingTopS}>
+                <NarrationLanguagePicker first last />
+              </View>
               { audioLang === 'de' && (
                 <>
                   <View style={space.paddingS}>
@@ -286,7 +293,16 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   </View>
                 </>
               ) }
-              { audioLang == 'en' && <DissonantVoicesLoginButton showAlert={showAlert} last /> }
+              { audioLang == 'en' && (
+                <>
+                  <DissonantVoicesLoginButton showAlert={showAlert} last /> 
+                  <View style={space.paddingS}>
+                    <Text style={typography.text}>
+                      Additional narration for fan-made campaigns has been provided by Head Librarian Chad <Text style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showEnAudio}>The Restricted Collection</Text> and Scarlett.
+                    </Text>
+                  </View>
+                </>
+              ) }
             </RoundedFactionBlock>
           </View>
           <SocialBlock />

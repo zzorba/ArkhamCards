@@ -1543,7 +1543,7 @@ PODS:
     - React-Core
   - RNSVG (13.14.0):
     - React-Core
-  - RNVectorIcons (10.1.0):
+  - RNVectorIcons (10.2.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2046,15 +2046,15 @@ SPEC CHECKSUMS:
   RNSha256: e1bc64e9e50b293d5282bb4caa1b2043931f1c9d
   RNShare: 32e97adc8d8c97d4a26bcdd3c45516882184f8b6
   RNSVG: d00c8f91c3cbf6d476451313a18f04d220d4f396
-  RNVectorIcons: 7ac7aaa83f8f3d4c7c0f7daea5a431e91a29b0cd
+  RNVectorIcons: 3e3d9442edd8b15b0ef3cac19960048380a10399
   SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
   SDWebImageAVIFCoder: 00310d246aab3232ce77f1d8f0076f8c4b021d90
   SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   SwiftAudioEx: 6f511018b7a0fdfd14ed1bb4081f953588245cc0
-  Yoga: 1ab23c1835475da69cf14e211a560e73aab24cb0
+  Yoga: 33622183a85805e12703cd618b2c16bfd18bfffb
 
 PODFILE CHECKSUM: 60ac42a557b4944ac158886959ef688729a4a229
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2

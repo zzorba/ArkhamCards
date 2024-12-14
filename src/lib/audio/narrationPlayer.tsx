@@ -8,9 +8,9 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { useSelector } from 'react-redux';
 import { AppState } from '@reducers';
 
-export function useAudioAccess(): [boolean, string | undefined] {
-  const { audioLang } = useContext(LanguageContext);
-  return [!!audioLang, audioLang];
+export function useAudioAccess(): [boolean, string[]] {
+  const { audioLangs } = useContext(LanguageContext);
+  return [audioLangs.length > 0, audioLangs];
 }
 
 interface TrackPlayerFunctions {
