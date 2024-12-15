@@ -19,6 +19,7 @@ import StyleContext from '@styles/StyleContext';
 import { ControlComponent, ControlType } from './ControlComponent';
 import { usePressCallback, useSettingValue } from '@components/core/hooks';
 import AppIcon from '@icons/AppIcon';
+import IconizedText from '@components/core/IconizedText';
 
 interface Props {
   card: Card;
@@ -244,7 +245,7 @@ function CardSearchResult(props: Props) {
             { color, flex: 1 },
             invalid ? { textDecorationLine: 'line-through' } : {},
           ]} numberOfLines={1} ellipsizeMode="tail">
-            { card.renderName }
+            <IconizedText text={card.renderName} iconSize={14} />
             { custom && '  ' }
             { custom && <EncounterIcon encounter_code={card.pack_code} size={18} color={colors.L10} /> }
           </Text>
@@ -262,7 +263,7 @@ function CardSearchResult(props: Props) {
             { (!!card.renderSubname || !!description || custom) && (
               <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
                 <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
-                  { description || card.renderSubname }
+                  <IconizedText text={description ?? card.renderSubname ?? ''} iconSize={12} color={colors.D10} />
                 </Text>
               </View>
             ) }

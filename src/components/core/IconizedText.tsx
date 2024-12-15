@@ -8,6 +8,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 interface Props {
   text: string;
   iconSize: number;
+  color?: string;
 }
 
 const ICON_MATCH = /^(.*?)(\[.*?\])(.*?)?$/;
@@ -39,7 +40,7 @@ const parseText = (title: string): TitlePiece[] => {
   return matches;
 }
 
-export default function IconizedText({ text, iconSize }: Props) {
+export default function IconizedText({ text, iconSize, color }: Props) {
   const { colors } = useContext(StyleContext);
   const parsed: TitlePiece[] = useMemo(() => parseText(text), [text]);
   return (
@@ -48,7 +49,7 @@ export default function IconizedText({ text, iconSize }: Props) {
         if (item.type === 'text') {
           return <Text key={idx}>{item.text}</Text>;
         }
-        return <ArkhamIcon key={idx} name={item.icon} size={iconSize} color={colors.darkText} />;
+        return <ArkhamIcon key={idx} name={item.icon} size={iconSize} color={color ?? colors.darkText} />;
       }) }
     </>
   );
