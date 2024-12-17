@@ -5881,10 +5881,10 @@ msgid "Unchained - "
 msgstr ""
 
 msgid "Forbidden"
-msgstr ""
+msgstr "Zakazana"
 
 msgid "Mutated"
-msgstr ""
+msgstr "Zmutowana"
 
 msgid "Original card text"
 msgstr "Oryginalny tekst karty"
@@ -7332,7 +7332,7 @@ msgstr "Góra"
 
 msgctxt "trait"
 msgid "Mutated"
-msgstr "Zmutowany"
+msgstr "Zmutowana"
 
 msgctxt "trait"
 msgid "Mystery"
@@ -8325,7 +8325,7 @@ msgstr "Wszyscy"
 
 msgctxt "Taboo List"
 msgid "None"
-msgstr "Brak"
+msgstr "Żadna"
 
 #, javascript-format
 msgctxt "Taboo List"
@@ -8606,11 +8606,11 @@ msgstr "Przeznaczenie"
 
 msgctxt "tarot-reading"
 msgid "Observed"
-msgstr ""
+msgstr "Obserwowany"
 
 msgctxt "tarot-reading"
 msgid "Damned"
-msgstr ""
+msgstr "Potępiony"
 
 msgctxt "tarot-reading"
 msgid "Custom"
