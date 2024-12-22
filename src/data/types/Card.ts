@@ -5,8 +5,8 @@ import {
   PrimaryColumn,
   JoinColumn,
   OneToOne,
-} from "typeorm/browser";
-import { Platform } from "react-native";
+} from 'typeorm/browser';
+import { Platform } from 'react-native';
 import {
   head,
   forEach,
@@ -14,16 +14,15 @@ import {
   filter,
   find,
   keys,
-  map,
   min,
   omit,
   sortBy,
   indexOf,
   sumBy,
-} from "lodash";
-import { removeDiacriticalMarks } from "remove-diacritical-marks";
-import { remove as removeAccents } from "remove-accents";
-import { c, t } from "ttag";
+} from 'lodash';
+import { removeDiacriticalMarks } from 'remove-diacritical-marks';
+import { remove as removeAccents } from 'remove-accents';
+import { c, t } from 'ttag';
 
 import {
   Pack,
@@ -43,7 +42,7 @@ import {
   SORT_BY_SLOT,
   ExtendedSortType,
   SORT_BY_TYPE_SLOT,
-} from "@actions/types";
+} from '@actions/types';
 import {
   BASIC_SKILLS,
   RANDOM_BASIC_WEAKNESS,
@@ -55,23 +54,23 @@ import {
   specialReprintCampaignPacks,
   specialPacks,
   specialReprintCardPacks,
-} from "@app_constants";
-import DeckRequirement from "./DeckRequirement";
-import DeckOption from "./DeckOption";
-import { QuerySort } from "../sqlite/types";
+} from '@app_constants';
+import DeckRequirement from './DeckRequirement';
+import DeckOption from './DeckOption';
+import { QuerySort } from '../sqlite/types';
 import {
   CoreCardTextFragment,
   Gender_Enum,
   SingleCardFragment,
-} from "@generated/graphql/apollo-schema";
+} from '@generated/graphql/apollo-schema';
 import CustomizationOption, {
   CustomizationChoice,
-} from "./CustomizationOption";
-import { processAdvancedChoice } from "@lib/parseDeck";
-import CardTextFields from "./CardTextFields";
-import CardReprintInfo from "./CardReprintInfo";
+} from './CustomizationOption';
+import { processAdvancedChoice } from '@lib/parseDeck';
+import CardTextFields from './CardTextFields';
+import CardReprintInfo from './CardReprintInfo';
 
-const SERPENTS_OF_YIG = "04014";
+const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = /.*Uses\s*\([0-9]+(\s\[per_investigator\])?\s(.+)\)\..*/;
 const BONDED_REGEX = /.*Bonded\s*\((.+?)\)\..*/;
 const SEAL_REGEX = /.*Seal \(.+\)\..*/;
@@ -79,24 +78,24 @@ const SEARCH_REGEX = /["“”‹›«»〞〝〟„＂❝❞‘’❛❜‛',�
 const RUSSIAN_E_REGEX = /ё/g;
 
 export const enum CardStatusType {
-  PREVIEW = "p",
-  CUSTOM = "c",
+  PREVIEW = 'p',
+  CUSTOM = 'c',
 }
 
 export function searchNormalize(text: string, lang: string) {
   if (!text) {
-    return "";
+    return '';
   }
   const r = text
     .toLocaleLowerCase(lang)
-    .replace(SEARCH_REGEX, "")
-    .replace(RUSSIAN_E_REGEX, "е");
+    .replace(SEARCH_REGEX, '')
+    .replace(RUSSIAN_E_REGEX, 'е');
   try {
-    if (Platform.OS === "ios") {
+    if (Platform.OS === 'ios') {
       return removeDiacriticalMarks(r);
-    } else {
-      return removeAccents(r);
     }
+    return removeAccents(r);
+
   } catch (e) {
     console.log(e);
     return r;
@@ -106,13 +105,13 @@ export function searchNormalize(text: string, lang: string) {
 export const CARD_NUM_COLUMNS = 140;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
-    return "-";
+    return '-';
   }
   if (value === -2) {
-    return "X";
+    return 'X';
   }
   if (value === -3) {
-    return "?";
+    return '?';
   }
   return `${value}`;
 }
@@ -120,29 +119,29 @@ function arkham_num(value: number | null | undefined) {
 const REPRINT_CARDS: {
   [code: string]: string[] | undefined;
 } = {
-  "01017": ["nat"],
-  "01023": ["nat"],
-  "01025": ["nat"],
-  "02186": ["har"],
-  "02020": ["har"],
-  "01039": ["har"],
-  "01044": ["win"],
-  "03030": ["win"],
-  "04107": ["win"],
-  "04232": ["win"],
-  "03194": ["win"],
-  "01053": ["win"],
-  "02029": ["jac"],
-  "03034": ["jac"],
-  "02190": ["jac"],
-  "02153": ["jac"],
-  "04032": ["jac"],
+  '01017': ['nat'],
+  '01023': ['nat'],
+  '01025': ['nat'],
+  '02186': ['har'],
+  '02020': ['har'],
+  '01039': ['har'],
+  '01044': ['win'],
+  '03030': ['win'],
+  '04107': ['win'],
+  '04232': ['win'],
+  '03194': ['win'],
+  '01053': ['win'],
+  '02029': ['jac'],
+  '03034': ['jac'],
+  '02190': ['jac'],
+  '02153': ['jac'],
+  '04032': ['jac'],
 
-  "07004": ["bob"],
-  "07005": ["tdg"],
-  "02003": ["hoth"],
-  "05001": ["tftbw"],
-  "08004": ["iotv"],
+  '07004': ['bob'],
+  '07005': ['tdg'],
+  '02003': ['hoth'],
+  '05001': ['tftbw'],
+  '08004': ['iotv'],
 };
 
 export interface TranslationData {
@@ -223,7 +222,7 @@ export class PartialCard {
       return SORT_BY_TYPE;
     }
     if (sorts.length >= 2) {
-      if (sorts[0] == SORT_BY_FACTION) {
+      if (sorts[0] === SORT_BY_FACTION) {
         if (sorts[1] === SORT_BY_PACK) {
           return SORT_BY_FACTION_PACK;
         }
@@ -251,7 +250,7 @@ export class PartialCard {
       `c.encounter_code as encounter_code`,
       HEADER_SELECT[PartialCard.headerSort(sorts)],
     ];
-    return parts.join(", ");
+    return parts.join(', ');
   }
 
   public static fromRaw(
@@ -280,7 +279,7 @@ export class PartialCard {
           break;
         case SORT_BY_FACTION_XP:
           header =
-            typeof raw.headerXp === "number"
+            typeof raw.headerXp === 'number'
               ? `${raw.headerTitle} (${raw.headerXp})`
               : raw.headerTitle;
           break;
@@ -299,7 +298,7 @@ export class PartialCard {
         }
         case SORT_BY_SLOT:
           header =
-            raw.headerTitle === null ? c("slots").t`None` : raw.headerTitle;
+            raw.headerTitle === null ? c('slots').t`None` : raw.headerTitle;
           break;
       }
       return new PartialCard(
@@ -307,11 +306,11 @@ export class PartialCard {
         raw.code,
         raw.renderName,
         raw.headerId === null || raw.headerId === undefined
-          ? "null"
+          ? 'null'
           : `${raw.headerId}`,
         header,
         raw.pack_code,
-        raw.reprint_pack_codes ? raw.reprint_pack_codes.split(",") : undefined,
+        raw.reprint_pack_codes ? raw.reprint_pack_codes.split(',') : undefined,
         raw.renderSubname,
         !!raw.spoiler,
         raw.encounter_code
@@ -328,445 +327,445 @@ interface CardRestrictions {
   restrictions_trait?: string[];
 }
 
-@Entity("card")
-@Index("code_taboo", ["code", "taboo_set_id"], { unique: true })
-@Index("player_cards", ["browse_visible"])
-@Index("sort_type", [
-  "browse_visible",
-  "taboo_set_id",
-  "sort_by_type",
-  "renderName",
-  "xp",
+@Entity('card')
+@Index('code_taboo', ['code', 'taboo_set_id'], { unique: true })
+@Index('player_cards', ['browse_visible'])
+@Index('sort_type', [
+  'browse_visible',
+  'taboo_set_id',
+  'sort_by_type',
+  'renderName',
+  'xp',
 ])
-@Index("sort_faction", [
-  "browse_visible",
-  "taboo_set_id",
-  "sort_by_faction",
-  "renderName",
-  "xp",
+@Index('sort_faction', [
+  'browse_visible',
+  'taboo_set_id',
+  'sort_by_faction',
+  'renderName',
+  'xp',
 ])
-@Index("sort_cost", [
-  "browse_visible",
-  "taboo_set_id",
-  "cost",
-  "renderName",
-  "xp",
+@Index('sort_cost', [
+  'browse_visible',
+  'taboo_set_id',
+  'cost',
+  'renderName',
+  'xp',
 ])
-@Index("sort_pack", [
-  "browse_visible",
-  "taboo_set_id",
-  "sort_by_pack",
-  "position",
+@Index('sort_pack', [
+  'browse_visible',
+  'taboo_set_id',
+  'sort_by_pack',
+  'position',
 ])
-@Index("sort_pack_encounter", [
-  "browse_visible",
-  "taboo_set_id",
-  "sort_by_pack",
-  "encounter_code",
-  "encounter_position",
+@Index('sort_pack_encounter', [
+  'browse_visible',
+  'taboo_set_id',
+  'sort_by_pack',
+  'encounter_code',
+  'encounter_position',
 ])
-@Index("sort_name_xp", ["browse_visible", "taboo_set_id", "renderName", "xp"])
-@Index("sort_cycle_xp", ["browse_visible", "taboo_set_id", "sort_by_cycle"])
-@Index("encounter_query_index", [
-  "browse_visible",
-  "taboo_set_id",
-  "encounter_code",
+@Index('sort_name_xp', ['browse_visible', 'taboo_set_id', 'renderName', 'xp'])
+@Index('sort_cycle_xp', ['browse_visible', 'taboo_set_id', 'sort_by_cycle'])
+@Index('encounter_query_index', [
+  'browse_visible',
+  'taboo_set_id',
+  'encounter_code',
 ])
-@Index("type_code", ["type_code"])
+@Index('type_code', ['type_code'])
 export default class Card {
-  @PrimaryColumn("text")
+  @PrimaryColumn('text')
   public id!: string;
 
-  @Index("code")
-  @Column("text")
+  @Index('code')
+  @Column('text')
   public code!: string;
 
-  @Column("text")
+  @Column('text')
   public name!: string;
 
-  @Index("real_name")
-  @Column("text")
+  @Index('real_name')
+  @Column('text')
   public real_name!: string;
 
   @Index()
-  @Column("text")
+  @Column('text')
   public renderName!: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public duplicate_of_code?: string;
 
-  @Column("simple-array", { nullable: true })
+  @Column('simple-array', { nullable: true })
   public reprint_pack_codes?: string[];
 
-  @Column("simple-json", { nullable: true })
+  @Column('simple-json', { nullable: true })
   public reprint_info?: CardReprintInfo[];
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public status?: CardStatusType;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public gender?: Gender_Enum;
 
-  @Column("text")
+  @Column('text')
   public type_code!: TypeCodeType;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public alternate_of_code?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public alternate_required_code?: string;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public taboo_set_id?: number;
 
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public taboo_placeholder?: boolean;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public taboo_text_change?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public taboo_original_text?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public taboo_original_back_text?: string;
 
-  @Index("pack_code")
-  @Column("text")
+  @Index('pack_code')
+  @Column('text')
   public pack_code!: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public pack_name?: string;
 
-  @Column("text")
+  @Column('text')
   public type_name!: string;
 
-  @Column("text", { nullable: true })
-  public subtype_code?: "basicweakness" | "weakness";
+  @Column('text', { nullable: true })
+  public subtype_code?: 'basicweakness' | 'weakness';
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public subtype_name?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public slot?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public real_slot?: string;
 
-  @Index("faction_code")
-  @Column("text", { nullable: true })
+  @Index('faction_code')
+  @Column('text', { nullable: true })
   public faction_code?: FactionCodeType;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public faction_name?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public faction2_code?: FactionCodeType;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public faction2_name?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public faction3_code?: FactionCodeType;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public faction3_name?: string;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public position?: number;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public enemy_damage?: number;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public enemy_horror?: number;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public enemy_fight?: number;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public enemy_evade?: number;
 
-  @Index("encounter_code")
-  @Column("text", { nullable: true })
+  @Index('encounter_code')
+  @Column('text', { nullable: true })
   public encounter_code?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public encounter_name?: string;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public encounter_position?: number;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public encounter_size?: number;
 
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public exceptional?: boolean;
 
-  @Index("xp")
-  @Column("integer", { nullable: true })
+  @Index('xp')
+  @Column('integer', { nullable: true })
   public xp?: number;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public extra_xp?: number;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public victory?: number;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public vengeance?: number;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public renderSubname?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public subname?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public firstName?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public illustrator?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public text?: string;
 
   private _textAlreadyCustomized?: boolean;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public flavor?: string;
 
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public cost?: number;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public real_text?: string;
-  @Column("simple-array", { nullable: true })
+  @Column('simple-array', { nullable: true })
   public tags?: string[];
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public back_name?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public back_text?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public back_flavor?: string;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public quantity?: number;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public spoiler?: boolean;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public advanced?: boolean;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public stage?: number; // Act/Agenda deck
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public clues?: number;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public shroud?: number;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public clues_fixed?: boolean;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public doom?: number;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public health?: number;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public health_per_investigator?: boolean;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public sanity?: number;
 
-  @Column("text", { select: false })
+  @Column('text', { select: false })
   public s_search_name!: string;
-  @Column("text", { select: false })
+  @Column('text', { select: false })
   public s_search_name_back!: string;
-  @Column("text", { select: false })
+  @Column('text', { select: false })
   public s_search_game?: string;
-  @Column("text", { select: false })
+  @Column('text', { select: false })
   public s_search_game_back?: string;
-  @Column("text", { select: false })
+  @Column('text', { select: false })
   public s_search_flavor?: string;
-  @Column("text", { select: false })
+  @Column('text', { select: false })
   public s_search_flavor_back?: string;
 
-  @Column("text", { select: false })
+  @Column('text', { select: false })
   public s_search_real_name!: string;
-  @Column("text", { select: false })
+  @Column('text', { select: false })
   public s_search_real_name_back!: string;
-  @Column("text", { select: false })
+  @Column('text', { select: false })
   public s_search_real_game?: string;
 
-  @Index("deck_limit")
-  @Column("integer", { nullable: true })
+  @Index('deck_limit')
+  @Column('integer', { nullable: true })
   public deck_limit?: number;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public traits?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public real_traits?: string;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public is_unique?: boolean;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public exile?: boolean;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public hidden?: boolean;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public myriad?: boolean;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public permanent?: boolean;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public double_sided?: boolean;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public url?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public octgn_id?: string;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public imageurl?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public backimageurl?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public imagesrc?: string;
 
   hasImage(): boolean {
     return !!this.imageurl || !!this.imagesrc;
   }
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public backimagesrc?: string;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public skill_willpower?: number;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public skill_intellect?: number;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public skill_combat?: number;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public skill_agility?: number;
-  @Column("integer", { nullable: true })
+  @Column('integer', { nullable: true })
   public skill_wild?: number;
 
   // Effective skills (add wilds to them)
-  @Column("integer", { nullable: true, select: false })
+  @Column('integer', { nullable: true, select: false })
   public eskill_willpower?: number;
-  @Column("integer", { nullable: true, select: false })
+  @Column('integer', { nullable: true, select: false })
   public eskill_intellect?: number;
-  @Column("integer", { nullable: true, select: false })
+  @Column('integer', { nullable: true, select: false })
   public eskill_combat?: number;
-  @Column("integer", { nullable: true, select: false })
+  @Column('integer', { nullable: true, select: false })
   public eskill_agility?: number;
-  @Column("text", { nullable: true, select: false })
+  @Column('text', { nullable: true, select: false })
   public linked_to_code?: string;
-  @Column("text", { nullable: true, select: false })
+  @Column('text', { nullable: true, select: false })
   public linked_to_name?: string;
 
-  @Column("simple-array", { nullable: true })
+  @Column('simple-array', { nullable: true })
   public restrictions_all_investigators?: string[];
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public restrictions_investigator?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public restrictions_trait?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public restrictions_faction?: string;
 
-  @Column("simple-json", { nullable: true })
+  @Column('simple-json', { nullable: true })
   public deck_requirements?: DeckRequirement;
-  @Column("simple-json", { nullable: true })
+  @Column('simple-json', { nullable: true })
   public deck_options?: DeckOption[];
 
-  @Column("simple-json", { nullable: true })
+  @Column('simple-json', { nullable: true })
   public side_deck_requirements?: DeckRequirement;
-  @Column("simple-json", { nullable: true })
+  @Column('simple-json', { nullable: true })
   public side_deck_options?: DeckOption[];
 
-  @Column("simple-json", { nullable: true })
+  @Column('simple-json', { nullable: true })
   public customization_options?: CustomizationOption[];
 
   @OneToOne(() => Card, { cascade: true, eager: true })
   @Index()
-  @JoinColumn({ name: "linked_card_id" })
+  @JoinColumn({ name: 'linked_card_id' })
   public linked_card?: Card;
 
-  @Column("boolean", { nullable: true, select: false })
+  @Column('boolean', { nullable: true, select: false })
   public back_linked?: boolean;
 
   // Derived data.
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public altArtInvestigator?: boolean;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public cycle_name?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public cycle_code?: string;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public has_restrictions?: boolean;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public has_upgrades?: boolean;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public traits_normalized?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public real_traits_normalized?: string;
-  @Column("text", { nullable: true, select: false })
+  @Column('text', { nullable: true, select: false })
   public slots_normalized?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public real_slots_normalized?: string;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public removable_slot?: boolean;
 
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public uses?: string;
-  @Column("text", { nullable: true })
+  @Column('text', { nullable: true })
   public bonded_name?: string;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public bonded_from?: boolean;
 
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public seal?: boolean;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public heals_horror?: boolean;
-  @Column("boolean", { nullable: true })
+  @Column('boolean', { nullable: true })
   public heals_damage?: boolean;
 
-  @Column("integer", { nullable: true, select: false })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_type?: number;
-  @Column("text", { nullable: true, select: false })
+  @Column('text', { nullable: true, select: false })
   public sort_by_type_header?: string;
-  @Column("integer", { nullable: true, select: false })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_faction?: number;
-  @Column("text", { nullable: true, select: false })
+  @Column('text', { nullable: true, select: false })
   public sort_by_faction_header?: string;
-  @Column("text", { nullable: true, select: false })
+  @Column('text', { nullable: true, select: false })
   public sort_by_encounter_set_header?: string;
-  @Column("integer", { nullable: true, select: false })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_pack?: number;
-  @Column("integer", { nullable: true, select: false })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_cycle?: number;
-  @Column("integer", { nullable: true, select: false })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_slot?: number;
 
-  @Column("integer", { nullable: true, select: false })
+  @Column('integer', { nullable: true, select: false })
   public browse_visible!: number;
 
-  @Column("boolean")
+  @Column('boolean')
   public mythos_card!: boolean;
 
   public static ELIDED_FIELDS = [
-    "c.slots_normalized",
-    "c.back_linked",
-    "c.eskill_willpower",
-    "c.eskill_intellect",
-    "c.eskill_combat",
-    "c.eskill_agility",
-    "c.linked_to_code",
-    "c.linked_to_name",
-    "c.sort_by_type",
-    "c.sort_by_type_header",
-    "c.sort_by_faction",
-    "c.sort_by_faction_header",
-    "c.sort_by_encounter_set_header",
-    "c.sort_by_pack",
-    "c.browse_visible",
-    "c.s_search_name",
-    "c.s_search_name_back",
-    "c.s_search_game",
-    "c.s_search_game_back",
-    "c.s_search_flavor",
-    "c.s_search_flavor_back",
-    "c.s_search_real_name",
-    "c.s_search_real_name_back",
-    "c.s_search_real_game",
+    'c.slots_normalized',
+    'c.back_linked',
+    'c.eskill_willpower',
+    'c.eskill_intellect',
+    'c.eskill_combat',
+    'c.eskill_agility',
+    'c.linked_to_code',
+    'c.linked_to_name',
+    'c.sort_by_type',
+    'c.sort_by_type_header',
+    'c.sort_by_faction',
+    'c.sort_by_faction_header',
+    'c.sort_by_encounter_set_header',
+    'c.sort_by_pack',
+    'c.browse_visible',
+    'c.s_search_name',
+    'c.s_search_name_back',
+    'c.s_search_game',
+    'c.s_search_game_back',
+    'c.s_search_flavor',
+    'c.s_search_flavor_back',
+    'c.s_search_real_name',
+    'c.s_search_real_name_back',
+    'c.s_search_real_game',
   ];
 
   public clone(): Card {
@@ -830,7 +829,7 @@ export default class Card {
       filter(customizations, (c) => c.unlocked),
       (c) => c.option.index
     );
-    const lines = (card.text || "").split("\n");
+    const lines = (card.text || '').split('\n');
 
     const text_edits: string[] = [];
     forEach(unlocked, (change) => {
@@ -857,18 +856,18 @@ export default class Card {
       if (option.tags?.length) {
         card.tags = [...(card.tags || []), ...option.tags];
       }
-      let text_edit = option.text_edit || "";
+      let text_edit = option.text_edit || '';
       if (option.text_change && option.choice) {
         switch (change.type) {
-          case "choose_trait": {
+          case 'choose_trait': {
             const traits =
-              change.choice.map((x) => `[[${x}]]`).join(listSeperator) || "";
+              change.choice.map((x) => `[[${x}]]`).join(listSeperator) || '';
             text_edit = traits
-              ? text_edit.replace("_____", `<u>${traits}</u>`)
+              ? text_edit.replace('_____', `<u>${traits}</u>`)
               : text_edit;
             break;
           }
-          case "choose_card": {
+          case 'choose_card': {
             const cardNames = change.cards
               .map((card) => card.name)
               .join(listSeperator);
@@ -877,10 +876,10 @@ export default class Card {
               : text_edit;
             break;
           }
-          case "choose_skill": {
+          case 'choose_skill': {
             const skill = change.choice;
             text_edit = skill
-              ? text_edit.replace("_____", `[${skill}]`)
+              ? text_edit.replace('_____', `[${skill}]`)
               : text_edit;
             break;
           }
@@ -889,18 +888,18 @@ export default class Card {
       text_edits.push(text_edit);
       if (option.text_change && text_edit) {
         const position = option.position || 0;
-        if (option.choice !== "choose_card") {
+        if (option.choice !== 'choose_card') {
           switch (option.text_change) {
-            case "trait":
+            case 'trait':
               card.traits = text_edit;
               break;
-            case "insert":
+            case 'insert':
               // Delayed execution
               break;
-            case "replace":
+            case 'replace':
               lines[position] = text_edit;
               break;
-            case "append":
+            case 'append':
               lines.push(text_edit);
               break;
           }
@@ -908,25 +907,25 @@ export default class Card {
       }
       if (option.choice) {
         switch (change.type) {
-          case "remove_slot": {
+          case 'remove_slot': {
             if (card.real_slot) {
               card.real_slot = flatMap(
-                card.real_slot.split("."),
+                card.real_slot.split('.'),
                 (slot, index) => {
                   if (index === change.choice) {
                     return [];
                   }
                   return slot.trim();
                 }
-              ).join(". ");
+              ).join('. ');
             }
             if (card.slot) {
-              card.slot = flatMap(card.slot.split("."), (slot, index) => {
+              card.slot = flatMap(card.slot.split('.'), (slot, index) => {
                 if (index === change.choice) {
                   return [];
                 }
                 return slot.trim();
-              }).join(". ");
+              }).join('. ');
             }
           }
         }
@@ -936,7 +935,7 @@ export default class Card {
     forEach(unlocked, ({ option }, idx) => {
       const text_edit = text_edits[idx];
       if (
-        option.text_change === "insert" &&
+        option.text_change === 'insert' &&
         option.position === -1 &&
         text_edit
       ) {
@@ -949,7 +948,7 @@ export default class Card {
       forEach(unlocked, ({ option }, unlockedIdx) => {
         const text_edit = text_edits[unlockedIdx];
         if (
-          option.text_change === "insert" &&
+          option.text_change === 'insert' &&
           option.position === idx &&
           text_edit
         ) {
@@ -957,7 +956,7 @@ export default class Card {
         }
       });
     });
-    card.text = final_lines.join("\n");
+    card.text = final_lines.join('\n');
     card._textAlreadyCustomized = true;
     return card;
   }
@@ -970,7 +969,7 @@ export default class Card {
     return (
       this.status === CardStatusType.CUSTOM ||
       this.status === CardStatusType.PREVIEW ||
-      this.code.startsWith("z")
+      this.code.startsWith('z')
     );
   }
 
@@ -1009,10 +1008,10 @@ export default class Card {
 
   public imageUri(): string | undefined {
     if (this.imageurl) {
-      if (this.imageurl.startsWith("https://img.arkhamcards.com")) {
+      if (this.imageurl.startsWith('https://img.arkhamcards.com')) {
         return this.imageurl.replace(
-          "img.arkhamcards.com",
-          "img2.arkhamcards.com"
+          'img.arkhamcards.com',
+          'img2.arkhamcards.com'
         );
       }
       return this.imageurl;
@@ -1021,17 +1020,17 @@ export default class Card {
       return undefined;
     }
     const baseUri = this.custom()
-      ? "https://img2.arkhamcards.com"
-      : "https://arkhamdb.com";
+      ? 'https://img2.arkhamcards.com'
+      : 'https://arkhamdb.com';
     const uri = `${baseUri}${this.imagesrc}`;
     return uri;
   }
   public backImageUri(): string | undefined {
     if (this.backimageurl) {
-      if (this.backimageurl.startsWith("https://img.arkhamcards.com")) {
+      if (this.backimageurl.startsWith('https://img.arkhamcards.com')) {
         return this.backimageurl.replace(
-          "img.arkhamcards.com",
-          "img2.arkhamcards.com"
+          'img.arkhamcards.com',
+          'img2.arkhamcards.com'
         );
       }
       return this.backimageurl;
@@ -1040,24 +1039,24 @@ export default class Card {
       return undefined;
     }
     const baseUri = this.custom()
-      ? "https://img2.arkhamcards.com"
-      : "https://arkhamdb.com";
+      ? 'https://img2.arkhamcards.com'
+      : 'https://arkhamdb.com';
     return `${baseUri}${this.backimagesrc}`;
   }
 
   isBasicWeakness(): boolean {
     return (
-      this.type_code !== "scenario" && this.subtype_code === "basicweakness"
+      this.type_code !== 'scenario' && this.subtype_code === 'basicweakness'
     );
   }
 
   factionCode(): FactionCodeType {
-    return this.faction_code || "neutral";
+    return this.faction_code || 'neutral';
   }
 
   factionCodes(): FactionCodeType[] {
     return [
-      this.faction_code || "neutral",
+      this.faction_code || 'neutral',
       ...(this.faction2_code ? [this.faction2_code] : []),
       ...(this.faction3_code ? [this.faction3_code] : []),
     ];
@@ -1144,14 +1143,14 @@ export default class Card {
   }
 
   realCost(linked?: boolean) {
-    if (this.type_code !== "asset" && this.type_code !== "event") {
+    if (this.type_code !== 'asset' && this.type_code !== 'event') {
       return null;
     }
-    if (this.code === "02010" || this.code === "03238" || this.cost === -2) {
-      return "X";
+    if (this.code === '02010' || this.code === '03238' || this.cost === -2) {
+      return 'X';
     }
     if (this.permanent || this.double_sided || linked || this.cost === null) {
-      return "-";
+      return '-';
     }
     return `${this.cost}`;
   }
@@ -1159,22 +1158,22 @@ export default class Card {
   costString(linked?: boolean) {
     const actualCost = this.realCost(linked);
     if (actualCost === null) {
-      return "";
+      return '';
     }
     return t`Cost: ${actualCost}`;
   }
 
   skillCount(skill: SkillCodeType): number {
     switch (skill) {
-      case "willpower":
+      case 'willpower':
         return this.skill_willpower || 0;
-      case "intellect":
+      case 'intellect':
         return this.skill_intellect || 0;
-      case "combat":
+      case 'combat':
         return this.skill_combat || 0;
-      case "agility":
+      case 'agility':
         return this.skill_agility || 0;
-      case "wild":
+      case 'wild':
         return this.skill_wild || 0;
       default: {
         /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -1185,7 +1184,7 @@ export default class Card {
   }
 
   investigatorSelectOptions(): DeckOption[] {
-    if (this.type_code === "investigator" && this.deck_options) {
+    if (this.type_code === 'investigator' && this.deck_options) {
       return filter(this.deck_options, (option) => {
         return (
           !!(option.faction_select && option.faction_select.length > 0) ||
@@ -1206,7 +1205,7 @@ export default class Card {
     }
 
     let quantity = this.quantity || 0;
-    if (this.pack_code === "core") {
+    if (this.pack_code === 'core') {
       if (packInCollection.no_core) {
         quantity = 0;
       } else if (packInCollection.core) {
@@ -1252,7 +1251,7 @@ export default class Card {
     if (ignore_collection) {
       return this.deck_limit || 0;
     }
-    if (this.pack_code !== "core" || packInCollection.core) {
+    if (this.pack_code !== 'core' || packInCollection.core) {
       return this.deck_limit || 0;
     }
     const reprintPacks = this.reprint_pack_codes || REPRINT_CARDS[this.code];
@@ -1326,17 +1325,17 @@ export default class Card {
 
   static factionCodeToName(code: string, defaultName: string) {
     switch (code) {
-      case "guardian":
+      case 'guardian':
         return t`Guardian`;
-      case "rogue":
+      case 'rogue':
         return t`Rogue`;
-      case "mystic":
+      case 'mystic':
         return t`Mystic`;
-      case "seeker":
+      case 'seeker':
         return t`Seeker`;
-      case "survivor":
+      case 'survivor':
         return t`Survivor`;
-      case "neutral":
+      case 'neutral':
         return t`Neutral`;
       default:
         return defaultName;
@@ -1352,9 +1351,9 @@ export default class Card {
       return t`Mythos`;
     }
     switch (card.subtype_code) {
-      case "basicweakness":
+      case 'basicweakness':
         return t`Basic Weakness`;
-      case "weakness":
+      case 'weakness':
         if (card.restrictions || restrictions?.restrictions_investigator) {
           return t`Signature Weakness`;
         }
@@ -1389,7 +1388,7 @@ export default class Card {
           return `${f1} / ${f2}`;
         }
         if (
-          card.faction_code === "neutral" &&
+          card.faction_code === 'neutral' &&
           restrictions?.restrictions_trait?.length
         ) {
           return t`Specialist`;
@@ -1442,33 +1441,33 @@ export default class Card {
     }
     if (card.real_slot) {
       switch (card.real_slot) {
-        case "Hand":
+        case 'Hand':
           return 1;
-        case "Hand x2":
+        case 'Hand x2':
           return 2;
-        case "Accessory":
+        case 'Accessory':
           return 3;
-        case "Ally":
+        case 'Ally':
           return 4;
-        case "Arcane":
+        case 'Arcane':
           return 5;
-        case "Arcane x2":
+        case 'Arcane x2':
           return 6;
-        case "Body":
+        case 'Body':
           return 7;
-        case "Tarot":
+        case 'Tarot':
           return 8;
-        case "Body. Arcane":
+        case 'Body. Arcane':
           return 9;
-        case "Body. Hand x2":
+        case 'Body. Hand x2':
           return 10;
-        case "Hand. Arcane":
+        case 'Hand. Arcane':
           return 11;
-        case "Hand x2. Arcane":
+        case 'Hand x2. Arcane':
           return 12;
-        case "Ally. Arcane":
+        case 'Ally. Arcane':
           return 13;
-        case "Arcane. Accessory":
+        case 'Arcane. Accessory':
           return 14;
         default:
           return 16;
@@ -1485,9 +1484,9 @@ export default class Card {
       return Card.typeSortHeader(card.linked_card, restrictions);
     }
     switch (card.subtype_code) {
-      case "basicweakness":
+      case 'basicweakness':
         return t`Basic Weakness`;
-      case "weakness":
+      case 'weakness':
         if (card.spoiler) {
           return t`Story`;
         }
@@ -1500,13 +1499,13 @@ export default class Card {
           return t`Story`;
         }
         switch (card.type_code) {
-          case "asset":
+          case 'asset':
             return t`Asset`;
-          case "event":
+          case 'event':
             return t`Event`;
-          case "skill":
+          case 'skill':
             return t`Skill`;
-          case "investigator":
+          case 'investigator':
             return t`Investigator`;
           default:
             return t`Scenario`;
@@ -1516,21 +1515,21 @@ export default class Card {
 
   private static slotText(real_slot: string) {
     switch (real_slot.toLowerCase()) {
-      case "hand":
+      case 'hand':
         return t`Hand`;
-      case "arcane":
+      case 'arcane':
         return t`Arcane`;
-      case "accessory":
+      case 'accessory':
         return t`Accessory`;
-      case "body":
+      case 'body':
         return t`Body`;
-      case "ally":
+      case 'ally':
         return t`Ally`;
-      case "tarot":
+      case 'tarot':
         return t`Tarot`;
-      case "hand x2":
+      case 'hand x2':
         return t`Hand x2`;
-      case "arcane x2":
+      case 'arcane x2':
         return t`Arcane x2`;
       default:
         return undefined;
@@ -1613,12 +1612,12 @@ export default class Card {
       ? DeckRequirement.parse(card.side_deck_requirements)
       : null;
 
-    if (card.code === "03004") {
+    if (card.code === '03004') {
       card.deck_options = [
-        { faction: ["mystic", "neutral"], level: { min: 0, max: 5 } },
-        { tag: ["uc"], level: { min: 0, max: 4 } },
-        { uses: ["charges", "charge"], level: { min: 0, max: 4 } },
-        { trait: ["occult"], level: { min: 0, max: 0 } },
+        { faction: ['mystic', 'neutral'], level: { min: 0, max: 5 } },
+        { tag: ['uc'], level: { min: 0, max: 4 } },
+        { uses: ['charges', 'charge'], level: { min: 0, max: 4 } },
+        { trait: ['occult'], level: { min: 0, max: 0 } },
       ];
     }
     const deck_options = card.deck_options
@@ -1627,7 +1626,7 @@ export default class Card {
 
     const wild = card.skill_wild || 0;
     const eskills: any = {};
-    if (card.type_code !== "investigator" && wild > 0) {
+    if (card.type_code !== 'investigator' && wild > 0) {
       forEach(BASIC_SKILLS, (skill) => {
         const value = card[`skill_${skill}`] || 0;
         if (value > 0) {
@@ -1636,15 +1635,15 @@ export default class Card {
       });
     }
 
-    const name = translation.name.replace("", "");
+    const name = translation.name.replace('', '');
     let renderName = name;
     let renderSubname = translation.subname;
     const json = card;
-    if (card.type_code === "act" && json.stage) {
+    if (card.type_code === 'act' && json.stage) {
       renderSubname = t`Act ${json.stage}`;
-    } else if (card.type_code === "agenda" && json.stage) {
+    } else if (card.type_code === 'agenda' && json.stage) {
       renderSubname = t`Agenda ${json.stage}`;
-    } else if (card.type_code === "scenario") {
+    } else if (card.type_code === 'scenario') {
       renderSubname = t`Scenario`;
     }
     const linked_card = card.linked_card
@@ -1654,9 +1653,9 @@ export default class Card {
       linked_card.back_linked = true;
       if (card.hidden && !linked_card.hidden) {
         renderName = linked_card.name;
-        if (linked_card.type_code === "act" && linked_card.stage) {
+        if (linked_card.type_code === 'act' && linked_card.stage) {
           renderSubname = t`Act ${linked_card.stage}`;
-        } else if (linked_card.type_code === "agenda" && linked_card.stage) {
+        } else if (linked_card.type_code === 'agenda' && linked_card.stage) {
           renderSubname = t`Agenda ${linked_card.stage}`;
         } else {
           renderSubname = linked_card.subname;
@@ -1669,7 +1668,7 @@ export default class Card {
     );
     const removable_slot = !!find(
       customization_options,
-      (option) => option.choice === "remove_slot"
+      (option) => option.choice === 'remove_slot'
     );
     const real_traits =
       find(customization_options, (t) => !!t.real_traits)?.real_traits ||
@@ -1680,19 +1679,19 @@ export default class Card {
         ?.map((t) => t.toLowerCase().trim())
         .filter((t) => !!t)
         .map((t) => `#${t}#`)
-        .join(",") ?? null;
-    const real_traits_normalized = normalize_array(real_traits?.split("."));
-    const traits_normalized = normalize_array(translation.traits?.split("."));
-    const real_slots_normalized = normalize_array(card.real_slot?.split("."));
-    const slots_normalized = normalize_array(translation.slot?.split("."));
+        .join(',') ?? null;
+    const real_traits_normalized = normalize_array(real_traits?.split('.'));
+    const traits_normalized = normalize_array(translation.traits?.split('.'));
+    const real_slots_normalized = normalize_array(card.real_slot?.split('.'));
+    const slots_normalized = normalize_array(translation.slot?.split('.'));
 
     const restrictions = Card.parseRestrictions(card.restrictions);
     const uses_match =
-      card.code === "08062"
-        ? ["foo", "bar", "charges"]
+      card.code === '08062'
+        ? ['foo', 'bar', 'charges']
         : card.real_text && card.real_text.match(USES_REGEX);
     const usesRaw = uses_match ? uses_match[2].toLowerCase() : null;
-    const uses = usesRaw === "charge" ? "charges" : usesRaw;
+    const uses = usesRaw === 'charge' ? 'charges' : usesRaw;
 
     const bonded_match = card.real_text && card.real_text.match(BONDED_REGEX);
     const bonded_name = bonded_match ? bonded_match[1] : null;
@@ -1701,21 +1700,21 @@ export default class Card {
     const seal = !!seal_match || card.code === SERPENTS_OF_YIG;
 
     const heals_horror =
-      !!find(card.tags, (t) => t === "hh") ||
+      !!find(card.tags, (t) => t === 'hh') ||
       !!find(
         customization_options,
-        (option) => !!find(option.tags, (t) => t === "hh")
+        (option) => !!find(option.tags, (t) => t === 'hh')
       );
     const heals_damage =
-      !!find(card.tags, (t) => t === "hd") ||
+      !!find(card.tags, (t) => t === 'hd') ||
       !!find(
         customization_options,
-        (option) => !!find(option.tags, (t) => t === "hd")
+        (option) => !!find(option.tags, (t) => t === 'hd')
       );
 
-    const myriad = !!card.real_text && card.real_text.indexOf("Myriad.") !== -1;
+    const myriad = !!card.real_text && card.real_text.indexOf('Myriad.') !== -1;
     const advanced =
-      !!card.real_text && card.real_text.indexOf("Advanced.") !== -1;
+      !!card.real_text && card.real_text.indexOf('Advanced.') !== -1;
 
     const sort_by_type_header = Card.typeSortHeader(card, restrictions);
     const sort_by_type = Card.typeHeaderOrder().indexOf(sort_by_type_header);
@@ -1730,7 +1729,7 @@ export default class Card {
     const pack = data.packs[card.pack_code] || null;
     const sort_by_pack = pack
       ? pack.cycle_position * 200 +
-        (pack.cycle_code === "investigator" ? 0 : pack.position)
+        (pack.cycle_code === 'investigator' ? 0 : pack.position)
       : -1;
     const sort_by_cycle = pack?.cycle_position || 0;
     const sort_by_encounter_set_header =
@@ -1740,14 +1739,14 @@ export default class Card {
     const sort_by_slot = Card.slotPosition(card);
     const spoiler = !!(card.spoiler || (linked_card && linked_card.spoiler));
     const enemy_horror =
-      card.type_code === "enemy" ? card.enemy_horror || 0 : null;
+      card.type_code === 'enemy' ? card.enemy_horror || 0 : null;
     const enemy_damage =
-      card.type_code === "enemy" ? card.enemy_damage || 0 : null;
+      card.type_code === 'enemy' ? card.enemy_damage || 0 : null;
     const firstName =
-      card.type_code === "investigator" && translation.name.indexOf(" ") !== -1
+      card.type_code === 'investigator' && translation.name.indexOf(' ') !== -1
         ? translation.name
-            .substring(0, translation.name.indexOf(" "))
-            .replace(/"/g, "")
+          .substring(0, translation.name.indexOf(' '))
+          .replace(/"/g, '')
         : translation.name;
     const permanent = !!card.permanent;
 
@@ -1759,63 +1758,63 @@ export default class Card {
       status = CardStatusType.PREVIEW;
     }
     const s_search_name = searchNormalize(
-      filter([renderName, renderSubname], (x) => !!x).join(" "),
+      filter([renderName, renderSubname], (x) => !!x).join(' '),
       data.lang
     );
     const s_search_name_back = searchNormalize(
       filter(
         [name, translation.subname, translation.back_name],
         (x) => !!x
-      ).join(" "),
+      ).join(' '),
       data.lang
     );
     const s_search_game = searchNormalize(
-      filter([translation.text, translation.traits], (x) => !!x).join(" "),
+      filter([translation.text, translation.traits], (x) => !!x).join(' '),
       data.lang
     );
     const s_search_game_back =
       (translation.back_text &&
         searchNormalize(translation.back_text, data.lang)) ||
-      "";
+      '';
     const s_search_flavor =
       (translation.flavor && searchNormalize(translation.flavor, data.lang)) ||
-      "";
+      '';
     const s_search_flavor_back =
       (translation.back_flavor &&
         searchNormalize(translation.back_flavor, data.lang)) ||
-      "";
+      '';
 
     const s_search_real_name = searchNormalize(
-      filter([card.real_name, card.real_subname], (x) => !!x).join(" "),
-      "en"
+      filter([card.real_name, card.real_subname], (x) => !!x).join(' '),
+      'en'
     );
     const s_search_real_name_back = searchNormalize(
-      filter([card.real_name, card.real_subname], (x) => !!x).join(" "),
-      "en"
+      filter([card.real_name, card.real_subname], (x) => !!x).join(' '),
+      'en'
     );
     const s_search_real_game = searchNormalize(
-      filter([card.real_text, real_traits], (x) => !!x).join(" "),
-      "en"
+      filter([card.real_text, real_traits], (x) => !!x).join(' '),
+      'en'
     );
     const result = {
       ...omit(card, [
-        "customization_options",
-        "customization_text",
-        "deck_options",
-        "deck_requirements",
-        "side_deck_requirements",
-        "alt_art_investigator",
-        "taboo_xp",
-        "official",
-        "preview",
-        "permanent",
-        "real_pack_name",
-        "real_flavor",
-        "real_customization_text",
-        "real_taboo_text_change",
-        "real_taboo_original_text_change",
-        "real_taboo_original_back_text_change",
-        "real_customization_text",
+        'customization_options',
+        'customization_text',
+        'deck_options',
+        'deck_requirements',
+        'side_deck_requirements',
+        'alt_art_investigator',
+        'taboo_xp',
+        'official',
+        'preview',
+        'permanent',
+        'real_pack_name',
+        'real_flavor',
+        'real_customization_text',
+        'real_taboo_text_change',
+        'real_taboo_original_text_change',
+        'real_taboo_original_back_text_change',
+        'real_customization_text',
       ]),
       ...translation,
       ...eskills,
@@ -1877,7 +1876,7 @@ export default class Card {
     };
     result.browse_visible = 0;
     if (
-      result.code.startsWith("z") ||
+      result.code.startsWith('z') ||
       result.status === CardStatusType.PREVIEW ||
       result.status === CardStatusType.CUSTOM
     ) {
@@ -1925,44 +1924,44 @@ export default class Card {
     forEach(sorts, (sort) => {
       switch (sort) {
         case SORT_BY_TYPE:
-          result.push({ s: "c.sort_by_type", direction: "ASC" });
+          result.push({ s: 'c.sort_by_type', direction: 'ASC' });
           break;
         case SORT_BY_FACTION:
-          result.push({ s: "c.sort_by_faction", direction: "ASC" });
+          result.push({ s: 'c.sort_by_faction', direction: 'ASC' });
           break;
         case SORT_BY_COST:
-          result.push({ s: "c.cost", direction: "ASC" });
+          result.push({ s: 'c.cost', direction: 'ASC' });
           break;
         case SORT_BY_PACK:
-          result.push({ s: "c.sort_by_pack", direction: "ASC" });
+          result.push({ s: 'c.sort_by_pack', direction: 'ASC' });
           break;
         case SORT_BY_TITLE:
           sortByName = false;
           result.push({
-            s: sortIgnoreQuotes ? "c.s_search_name" : "c.renderName",
-            direction: "ASC",
+            s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName',
+            direction: 'ASC',
           });
           break;
         case SORT_BY_XP:
           sortByXp = false;
-          result.push({ s: "c.xp", direction: "ASC" });
+          result.push({ s: 'c.xp', direction: 'ASC' });
           break;
         case SORT_BY_CYCLE:
-          result.push({ s: "c.sort_by_cycle", direction: "ASC" });
+          result.push({ s: 'c.sort_by_cycle', direction: 'ASC' });
           break;
         case SORT_BY_CARD_ID:
-          result.push({ s: "c.code", direction: "ASC" });
+          result.push({ s: 'c.code', direction: 'ASC' });
           break;
         case SORT_BY_SLOT:
-          result.push({ s: "c.sort_by_slot", direction: "ASC" });
-          result.push({ s: "c.permanent", direction: "DESC" });
+          result.push({ s: 'c.sort_by_slot', direction: 'ASC' });
+          result.push({ s: 'c.permanent', direction: 'DESC' });
           break;
         case SORT_BY_ENCOUNTER_SET:
           sortByName = false;
           sortByXp = false;
-          result.push({ s: "c.sort_by_pack", direction: "ASC" });
-          result.push({ s: "c.encounter_code", direction: "ASC" });
-          result.push({ s: "c.encounter_position", direction: "ASC" });
+          result.push({ s: 'c.sort_by_pack', direction: 'ASC' });
+          result.push({ s: 'c.encounter_code', direction: 'ASC' });
+          result.push({ s: 'c.encounter_position', direction: 'ASC' });
           break;
         default:
           /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -1973,12 +1972,12 @@ export default class Card {
     });
     if (sortByName) {
       result.push({
-        s: sortIgnoreQuotes ? "c.s_search_name" : "c.renderName",
-        direction: "ASC",
+        s: sortIgnoreQuotes ? 'c.s_search_name' : 'c.renderName',
+        direction: 'ASC',
       });
     }
     if (sortByXp) {
-      result.push({ s: "c.xp", direction: "ASC" });
+      result.push({ s: 'c.xp', direction: 'ASC' });
     }
     return result;
   }

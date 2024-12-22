@@ -17,7 +17,7 @@ import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { useFlag, useSettingValue } from '@components/core/hooks';
 import { DeckMeta, CardId, ParsedDeck, SplitCards, EditDeckState, Customizations, Slots } from '@actions/types';
-import { TypeCodeType, RANDOM_BASIC_WEAKNESS, DOWN_THE_RABBIT_HOLE_CODE } from '@app_constants';
+import { TypeCodeType, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card, { CardsMap, cardInCollection } from '@data/types/Card';
 import DeckValidation from '@lib/DeckValidation';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
@@ -289,7 +289,7 @@ function deckToSections(
               settings,
               isArkhamDbDeck,
             ),
-            customizable: hasCustomizationUpgrades(c.id,  deckCards, cards, customizations, validation),
+            customizable: hasCustomizationUpgrades(c.id, deckCards, cards, customizations, validation),
           };
         }),
       });
@@ -389,7 +389,7 @@ export default function useParsedDeckComponent({
     const bondedCards: Card[] = [];
     const bondedCounts: Slots = {};
     if (investigator?.back.real_name) {
-      const possibleBondedInvestigatorCards =  bondedCardsByName?.[investigator.back.real_name];
+      const possibleBondedInvestigatorCards = bondedCardsByName?.[investigator.back.real_name];
       forEach(possibleBondedInvestigatorCards, bonded => {
         bondedCards.push(bonded);
         bondedCounts[bonded.code] = 1;
@@ -490,14 +490,14 @@ export default function useParsedDeckComponent({
       {
         inCollection,
         ignoreCollection: ignore_collection,
-        showCustomContent
+        showCustomContent,
       },
       isArkhamDbDeck,
       {
         extraSections: requiredCards && [{
           title: t`Other investigator cards`,
           codes: requiredCards,
-        }]
+        }],
       },
     );
     const newData: DeckSection[] = [deckSection, specialSection];
@@ -639,6 +639,7 @@ export default function useParsedDeckComponent({
     currentIndex = sideIndex;
     setData(newData);
   }, [
+    bondedCounts, showCustomContent, showEditExtra,
     customizations,
     requiredCards,
     theLimitSlotCount,

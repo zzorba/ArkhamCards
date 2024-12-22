@@ -1,6 +1,5 @@
-import { filter } from 'lodash';
+import { filter, slice, take } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
-import { slice, take } from 'lodash';
 
 import {
   UPDATE_CHAOS_BAG_RESULTS,

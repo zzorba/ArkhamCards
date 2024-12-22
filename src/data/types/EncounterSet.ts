@@ -5,10 +5,10 @@ import Card from './Card';
 @Entity('encounter_set')
 export default class EncounterSet {
   @PrimaryColumn('text')
-  code!: string;
+    code!: string;
 
   @Column('text', { nullable: true })
-  name!: string;
+    name!: string;
 
   static fromCard(card: Card): EncounterSet | undefined {
     if (!card.encounter_code || !card.encounter_name) {

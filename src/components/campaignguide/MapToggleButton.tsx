@@ -13,7 +13,6 @@ import { useSettingFlag } from '@components/core/hooks';
 const SIZE = 36;
 
 interface Props extends Record<string, unknown> {
-  setting: 'card_grid' | 'draft_grid';
   lightButton?: boolean;
 }
 

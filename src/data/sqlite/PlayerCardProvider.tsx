@@ -62,9 +62,9 @@ export function PlayerCardProvider({ children }: Props) {
       db.globalLoadedCards[tabooSetId] = newCards;
     }
     const knownCards = store ? db.globalLoadedCards[tabooSetId] ?? {} :
-    {
-      ...db.globalLoadedCards[tabooSetId] ?? {}
-    };
+      {
+        ...db.globalLoadedCards[tabooSetId] ?? {},
+      };
     const pending = store ? new Set(flatMap(locallyFetched.current, c => c.tabooSetId === tabooSetId ? c.codes : [])) : new Set([]);
     const unknownCodes = filter(codes, code => {
       if (knownCards[code]) {

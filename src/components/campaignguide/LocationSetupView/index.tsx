@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { filter, find, forEach, map, partition } from 'lodash';
+import { filter, forEach, map, partition } from 'lodash';
 import PanPinchView from 'react-native-pan-pinch-view';
-import { Canvas, Paint, Circle, Line, vec } from "@shopify/react-native-skia";
+import { Canvas, Paint, Circle, Line, vec } from '@shopify/react-native-skia';
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
@@ -32,11 +32,13 @@ interface CardSizes {
   verticalPadding: number;
 }
 
-export default function LocationSetupView({ step: { locations, cards, annotations, arrows, decorations, vertical, horizontal, note, location_names, resource_dividers } }: Props) {
-  const { width, height } = useContext(StyleContext);
-  const rowCount = locations.length;
-  const rowSize = locations[0].length;
-
+type ParsedLocationStepData = {
+  names: { [code: string]: string | undefined };
+  placeholders: { [code: string]: boolean | undefined };
+  randoms: { [code: string]: boolean | undefined };
+  faded: { [code: string]: boolean | undefined };
+}
+function useParsedLocationStepData(location_names: LocationSetupStep['location_names']): ParsedLocationStepData {
   const names = useMemo(() => {
     const result: { [code: string]: string | undefined } = {};
     forEach(location_names || [], entry => {
@@ -61,6 +63,78 @@ export default function LocationSetupView({ step: { locations, cards, annotation
     });
     return [p, r, f];
   }, [location_names]);
+  return { names, placeholders, randoms, faded };
+}
+
+function DecoratedLocationCard({
+  keyProp,
+  cardDimensions,
+  card, resourceDividers, annotations, rowWidth, rowHeight,
+  step: { resource_dividers, vertical, horizontal },
+  parsed: { names, placeholders, randoms, faded },
+}: {
+  keyProp: string;
+  step: LocationSetupStep;
+  parsed: ParsedLocationStepData;
+  cardDimensions: {
+    betweenPadding: number;
+    cardWidth: number;
+    cardHeight: number;
+  }
+  card: LocationSetupCard;
+  resourceDividers?: {
+    right?: number;
+    bottom?: number;
+  };
+  annotations: LocationAnnotation[];
+  rowWidth: number;
+  rowHeight: number;
+ }) {
+  const {
+    betweenPadding,
+    cardWidth,
+    cardHeight,
+  } = cardDimensions;
+
+  const cardHeightWithPadding = (cardHeight + TOP_PADDING);
+  const verticalScale = vertical === 'half' ? 2.0 : 1.0;
+  const top = cardHeightWithPadding / verticalScale * (card.y + verticalScale) + (
+    resource_dividers ? 50 * card.y : 0
+  );
+  const cardWidthWithPadding = (cardWidth + betweenPadding);
+  const horizontalScale = horizontal === 'half' ? 2.0 : 1.0;
+  const left = cardWidthWithPadding / horizontalScale * (card.x + horizontalScale) + (
+    resource_dividers ? 50 * card.x : 0
+  );
+  const item = card.code;
+  const cleanCode = cleanLocationCode(item);
+  return (
+    <LocationCard
+      keyProp={keyProp}
+      code={item}
+      name={names[cleanCode]}
+      placeholder={placeholders[cleanCode]}
+      faded={faded[cleanCode]}
+      random={randoms[cleanCode]}
+      rotate={card.rotate}
+      top={TOP_PADDING + top}
+      left={SIDE_PADDING + left}
+      height={cardHeight}
+      width={cardWidth}
+      annotations={annotations}
+      resource_dividers={resourceDividers}
+      rowWidth={rowWidth}
+      rowHeight={rowHeight}
+    />
+  );
+}
+
+export default function LocationSetupView({ step }: Props) {
+  const { locations, cards, annotations, arrows, decorations, vertical, horizontal, note, location_names, resource_dividers } = step;
+  const { width, height } = useContext(StyleContext);
+  const rowCount = locations.length;
+  const rowSize = locations[0].length;
+  const parsed = useParsedLocationStepData(location_names);
 
   const heightConstrained: CardSizes = useMemo(() => {
     const cardsPerColumn = rowCount / (vertical === 'half' ? 2 : 1);
@@ -103,58 +177,6 @@ export default function LocationSetupView({ step: { locations, cards, annotation
     return heightConstrained;
   }, [widthConstrained, heightConstrained]);
 
-  const renderCard = useCallback(({ card, key, resourceDividers, annotations }: {
-    card: LocationSetupCard;
-    key: string;
-    resourceDividers?: {
-      right?: number;
-      bottom?: number;
-    };
-    annotations: LocationAnnotation[];
-    rowWidth: number;
-    rowHeight: number;
-   }) => {
-    const {
-      betweenPadding,
-      cardWidth,
-      cardHeight,
-    } = cardDimensions;
-
-    const cardHeightWithPadding = (cardHeight + TOP_PADDING);
-    const verticalScale = vertical === 'half' ? 2.0 : 1.0;
-    const top = cardHeightWithPadding / verticalScale * (card.y + verticalScale) + (
-      resource_dividers ? 50 * card.y : 0
-    );
-    const cardWidthWithPadding = (cardWidth + betweenPadding);
-    const horizontalScale = horizontal === 'half' ? 2.0 : 1.0;
-    const left = cardWidthWithPadding / horizontalScale * (card.x + horizontalScale) + (
-      resource_dividers ? 50 * card.x : 0
-    );
-    const item = card.code;
-    const cleanCode = cleanLocationCode(item);
-    return (
-      <LocationCard
-        key={key}
-        keyProp={key}
-        code={item}
-        name={names[cleanCode]}
-        placeholder={placeholders[cleanCode]}
-        faded={faded[cleanCode]}
-        random={randoms[cleanCode]}
-        rotate={card.rotate}
-        top={TOP_PADDING + top}
-        left={SIDE_PADDING + left}
-        height={cardHeight}
-        width={cardWidth}
-        annotations={annotations}
-        resource_dividers={resourceDividers}
-        rowWidth={rowWidth}
-        rowHeight={rowHeight}
-      />
-    );
-  }, [vertical, horizontal, resource_dividers, cardDimensions, names]);
-
-
   const renderRow = useCallback((locationsRow: string[], rowNumber: number, rowWidth: number, rowHeight: number) => {
     return map(locationsRow, (item, x) => {
       const currentAnnotations = filter(annotations, a => a.x === x && a.y === rowNumber);
@@ -167,21 +189,28 @@ export default function LocationSetupView({ step: { locations, cards, annotation
       } else if (item.indexOf('_invert') !== -1) {
         rotate = 'invert';
       }
-      return renderCard({
-        key: `${rowNumber}x${x}`,
-        card: {
-          code: item,
-          x: x,
-          y: rowNumber,
-          rotate,
-        },
-        annotations: currentAnnotations,
-        resourceDividers: resources,
-        rowWidth,
-        rowHeight,
-      });
+      const key = `${rowNumber}x${x}`;
+      return (
+        <DecoratedLocationCard
+          key={key}
+          keyProp={key}
+          card={{
+            code: item,
+            x: x,
+            y: rowNumber,
+            rotate,
+          }}
+          cardDimensions={cardDimensions}
+          annotations={currentAnnotations}
+          step={step}
+          parsed={parsed}
+          resourceDividers={resources}
+          rowWidth={rowWidth}
+          rowHeight={rowHeight}
+        />
+      );
     });
-  }, [vertical, annotations, horizontal, cardDimensions, names, resource_dividers]);
+  }, [annotations, cardDimensions, step, parsed, resource_dividers]);
 
   const {
     cardHeight,
@@ -222,15 +251,29 @@ export default function LocationSetupView({ step: { locations, cards, annotation
             decorations={bottomDecorations}
             unitWidth={unitWidth}
             unitHeight={unitHeight}
-            width={rowWidth}
-            height={rowHeight * rowCount}
             horizontalScale={horizontalScale}
             verticalScale={verticalScale}
           />
         ) }
         <View style={[styles.container, { height: rowHeight, margin: m * 2 }]}>
           { map(locations, (locs, row) => renderRow(locs, row, rowWidth, rowHeight)) }
-          { map(cards, (card, idx) => renderCard({ card, key: `${idx}`, rowWidth, rowHeight, annotations: [] })) }
+          { map(cards, (card, idx) => {
+            const key = `${idx}`;
+            return (
+              <DecoratedLocationCard
+                key={key}
+                keyProp={key}
+                card={card}
+                cardDimensions={cardDimensions}
+                annotations={[]}
+                step={step}
+                parsed={parsed}
+                resourceDividers={undefined}
+                rowWidth={rowWidth}
+                rowHeight={rowHeight}
+              />
+            );
+          }) }
           { !!arrows?.length && (
             <Arrows
               arrows={arrows}
@@ -245,8 +288,6 @@ export default function LocationSetupView({ step: { locations, cards, annotation
             decorations={bottomDecorations}
             unitWidth={unitWidth}
             unitHeight={unitHeight}
-            width={width}
-            height={rowHeight * rowCount}
             horizontalScale={horizontalScale}
             verticalScale={verticalScale}
           />
@@ -265,7 +306,13 @@ function getColor(colors: ThemeColors, color?: 'blue' | 'red') {
   }
 }
 
-function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, verticalScale, width, height }: { decorations: LocationDecoration[]; unitWidth: number; unitHeight: number; width: number; height: number; horizontalScale: number; verticalScale: number }) {
+function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, verticalScale }: {
+  decorations: LocationDecoration[];
+  unitWidth: number;
+  unitHeight: number;
+  horizontalScale: number;
+  verticalScale: number;
+}) {
   const { colors } = useContext(StyleContext);
   const toX = (x: number) => unitWidth * (x + horizontalScale + 3 / horizontalScale) + SIDE_PADDING;
   const toY = (y: number) => unitHeight * (y + verticalScale + 2 / verticalScale) + TOP_PADDING;
@@ -288,6 +335,7 @@ function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, vert
                 r={radius}
                 color="transparent"
               >
+                { /* eslint-disable-next-line react/style-prop-object */ }
                 <Paint color={getColor(colors, d.color)} style="stroke" strokeWidth={4} />
               </Circle>
             );
@@ -299,6 +347,7 @@ function Decorations({ decorations, unitWidth, unitHeight, horizontalScale, vert
                 p1={vec(startX, startY)}
                 p2={vec(endX, endY)}
                 color={getColor(colors, d.color)}
+                // eslint-disable-next-line react/style-prop-object
                 style="stroke"
                 strokeWidth={4}
               />
@@ -349,7 +398,7 @@ function Arrows({ arrows, unitWidth, unitHeight }: {
               name={icon}
               size={Math.min(unitHeight * scale, unitWidth * scale)}
               color={getColor(colors, a.color)}
-              style={a.rotation ? { transform: [{ rotate: a.rotation }]} : undefined}
+              style={a.rotation ? { transform: [{ rotate: a.rotation }] } : undefined}
             />
           </View>
         );

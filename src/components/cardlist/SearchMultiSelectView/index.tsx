@@ -34,6 +34,7 @@ function keyExtractor(item: Item) {
   return item.value;
 }
 
+// eslint-disable-next-line react/prop-types
 export default function SearchMultiSelectView({ componentId, placeholder, onChange, values, selection: initialSelection, capitalize }: NavigationProps & SearchSelectProps) {
   const { backgroundStyle, fontScale } = useContext(StyleContext);
   const [selection, setSelection] = useState<string[]>(initialSelection || []);

@@ -11,7 +11,7 @@ import { Action } from 'redux';
 import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
-import { AlertButton, ShowAlert, useDialog } from '@components/deck/dialogs';
+import { ShowAlert, useDialog } from '@components/deck/dialogs';
 import space, { s, xs } from '@styles/space';
 import { useFlag } from '@components/core/hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
@@ -415,7 +415,6 @@ function EmailSubmitForm({ mode, setMode, backPressed, loginSucceeded }: {
 
 interface Props {
   showAlert: ShowAlert;
-  handle: string;
 }
 
 export default function ArkhamCardsLoginButton({ showAlert }: Props) {

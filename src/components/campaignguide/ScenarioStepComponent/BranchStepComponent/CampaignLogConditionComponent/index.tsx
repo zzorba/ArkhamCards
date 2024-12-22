@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { Text } from 'react-native';
-import { every, filter } from 'lodash';
+import { every } from 'lodash';
 import { t } from 'ttag';
 
 import CampaignLogCardConditionComponent, { CampaignLogCardsInvestigatorConditionComponent } from './CampaignLogCardConditionComponent';
@@ -20,10 +20,9 @@ interface InvestigatorCardsProps {
   step: BranchStep;
   condition: InvestigatorCampaignLogCardsCondition;
   campaignLog: GuidedCampaignLog;
-  color?: BorderColor;
 }
 
-export function InvestigatorCampaignLogCardsConditionComponent({ step, condition, campaignLog, color}: InvestigatorCardsProps) {
+export function InvestigatorCampaignLogCardsConditionComponent({ step, condition, campaignLog }: InvestigatorCardsProps) {
   const eligibleInvestigators = useMemo(() => {
     return investigatorCampaignLogCardsResult(condition, campaignLog).input ?? [];
   }, [condition, campaignLog]);

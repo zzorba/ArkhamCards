@@ -1,6 +1,6 @@
 import StyleContext from '@styles/StyleContext';
 import React, { useCallback, useContext, useReducer } from 'react';
-import { StyleSheet, View, InteractionManager } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { filter, map, findIndex } from 'lodash';
 
 import Ripple from '@lib/react-native-material-ripple';

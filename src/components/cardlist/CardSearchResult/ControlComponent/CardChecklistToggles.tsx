@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { find, indexOf, range } from 'lodash';
+import { range } from 'lodash';
 
 interface Props {
   code: string;
@@ -19,6 +19,7 @@ export default function CardChecklistToggles({ code, values, quantity, toggleVal
           <ArkhamSwitch
             key={`${code}-${idx}`}
             value={enabled}
+            // eslint-disable-next-line react/jsx-no-bind
             onValueChange={() => toggleValue(idx, !enabled)}
           />
         );

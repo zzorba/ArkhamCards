@@ -11,7 +11,6 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import { useLatestDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useDebounce } from 'use-debounce/lib';
-import useSingleCard from '@components/card/useSingleCard';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import ThinDeckListRow from './ThinDeckListRow';
 
@@ -100,7 +99,10 @@ export default function DeckList({
   }, [numDecks, setNumDecks]);
 
   usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items], false);
-  const renderItem = useCallback(({ deckId }: { deckId: MiniDeckT }) => {
+  const renderItem = useCallback(({ deckId }: {
+    // eslint-disable-next-line react/no-unused-prop-types
+    deckId: MiniDeckT;
+  }) => {
     return (
       <MemoDeckListItem
         key={deckId.id.uuid}

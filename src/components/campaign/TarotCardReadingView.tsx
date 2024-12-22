@@ -132,9 +132,7 @@ function TarotCardButton({
   scenarioName?: string;
   flipped: boolean;
   showTarotCard: (id: string) => void;
-  onFlip: (id: string) => void;
   inverted: boolean;
-  onInvert?: (id: string, inverted: boolean) => void;
 }) {
   const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => {
@@ -240,13 +238,15 @@ export function useTarotCardReadingPicker({ value, onValueChange } : {
   });
 }
 
+type Props = NavigationProps & TarotCardReadingProps;
 function TarotCardReadingView({
+  // eslint-disable-next-line react/prop-types
   componentId,
   scenarios,
   readingType,
   id,
   originalReading,
-}: NavigationProps & TarotCardReadingProps) {
+}: Props) {
   const [savedReading, setSavedReading] = useState(originalReading);
   const [saving, setSaving] = useState(false);
   const { backgroundStyle, colors, height, typography, width } = useContext(StyleContext);
@@ -380,9 +380,8 @@ function TarotCardReadingView({
     ) : (width - s * 8);
   }, [width, height]);
   const renderSwipeCard = useCallback(({ item }: {
+    // eslint-disable-next-line react/no-unused-prop-types
     item: TarotCard;
-    index: number;
-    dataIndex: number;
   }): React.ReactNode => {
     return (
       <View key={item.id} style={[
@@ -414,8 +413,8 @@ function TarotCardReadingView({
           itemWidth={dialogCardWidth}
           sliderWidth={width + s * 4}
           vertical={false}
-          //itemHeight={dialogCardWidth * TAROT_CARD_RATIO}
-          //sliderHeight={height * 0.7 + m * 2}
+          // itemHeight={dialogCardWidth * TAROT_CARD_RATIO}
+          // sliderHeight={height * 0.7 + m * 2}
           firstItem={jumpIndex}
           inactiveSlideOpacity={1}
           onScrollIndexChanged={setIndex}
@@ -596,12 +595,10 @@ function TarotCardReadingView({
                 <TarotCardButton
                   card={card}
                   flipped={!!flipped[card.id]}
-                  onFlip={toggleFlipped}
                   showTarotCard={showTarotCard}
                   inverted={!!reversed[card.id]}
                   scenario={scenario}
                   scenarioName={scenario ? scenarioNames[scenario] : undefined}
-                  onInvert={onInvert}
                   first={idx === 0}
                   last={idx === tarotCards.length - 1}
                 />

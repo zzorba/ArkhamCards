@@ -15,7 +15,7 @@ import {
   pick,
   concat,
   dropRight,
-} from "lodash";
+} from 'lodash';
 
 import {
   CampaignDifficulty,
@@ -23,9 +23,9 @@ import {
   Slots,
   TraumaAndCardData,
   WeaknessSet,
-} from "@actions/types";
-import { ChaosBag, CHAOS_BAG_TOKEN_COUNTS } from "@app_constants";
-import { traumaDelta } from "@lib/trauma";
+} from '@actions/types';
+import { ChaosBag, CHAOS_BAG_TOKEN_COUNTS } from '@app_constants';
+import { traumaDelta } from '@lib/trauma';
 import {
   AddRemoveChaosTokenEffect,
   AddCardEffect,
@@ -54,15 +54,15 @@ import {
   ScarletKeyEffect,
   SaveDecksEffect,
   BackupStateEffect,
-} from "./types";
-import CampaignGuide, { CAMPAIGN_SETUP_ID } from "./CampaignGuide";
-import Card, { CardsMap } from "@data/types/Card";
-import scenario, { LatestDecks } from "@data/scenario";
-import CampaignStateHelper from "@data/scenario/CampaignStateHelper";
+} from './types';
+import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
+import Card, { CardsMap } from '@data/types/Card';
+import { LatestDecks } from '@data/scenario';
+import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import {
   INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX,
   SELECTED_PARTNERS_CAMPAIGN_LOG_ID,
-} from "./fixedSteps";
+} from './fixedSteps';
 
 interface BasicEntry {
   id: string;
@@ -74,24 +74,24 @@ interface CampaignLogCard {
   count: number;
 }
 export interface CampaignLogCardEntry extends BasicEntry {
-  type: "card";
+  type: 'card';
   cards: CampaignLogCard[];
 }
 
 interface CampaignLogCountEntry extends BasicEntry {
-  type: "count";
+  type: 'count';
   count: number;
   otherCount?: number;
 }
 
 interface CampaignLogBasicEntry extends BasicEntry {
-  type: "basic";
+  type: 'basic';
 }
 
 const EMPTY_TRAUMA: TraumaAndCardData = {};
 
 export interface CampaignLogFreeformEntry extends BasicEntry {
-  type: "freeform";
+  type: 'freeform';
   text: string;
   interScenario?: {
     scenarioId: string;
@@ -108,7 +108,7 @@ export type CampaignLogEntry =
 export interface EntrySection {
   entries: CampaignLogEntry[];
   decoration?: {
-    [key: string]: "circle" | undefined;
+    [key: string]: 'circle' | undefined;
   };
   sectionCrossedOut?: boolean;
 }
@@ -150,7 +150,7 @@ interface CampaignData {
   scenarioReplayCount: {
     [code: string]: number | undefined;
   };
-  result?: "win" | "lose" | "survived";
+  result?: 'win' | 'lose' | 'survived';
   difficulty?: CampaignDifficulty;
   nextScenario: string[];
   noSideScenario?: boolean;
@@ -226,28 +226,28 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
 
   static isCampaignLogEffect(effect: Effect): boolean {
     switch (effect.type) {
-      case "campaign_log":
-      case "campaign_log_count":
-      case "campaign_log_investigator_count":
-      case "campaign_log_cards":
-      case "freeform_campaign_log":
-      case "scenario_data":
-      case "campaign_data":
-      case "add_chaos_token":
-      case "remove_chaos_token":
-      case "trauma":
-      case "add_card":
-      case "set_card_count":
-      case "remove_card":
-      case "replace_card":
-      case "earn_xp":
-      case "upgrade_decks":
-      case "save_decks":
-      case "gain_supplies":
-      case "lose_supplies":
-      case "partner_status":
-      case "scarlet_key":
-      case "backup_state":
+      case 'campaign_log':
+      case 'campaign_log_count':
+      case 'campaign_log_investigator_count':
+      case 'campaign_log_cards':
+      case 'freeform_campaign_log':
+      case 'scenario_data':
+      case 'campaign_data':
+      case 'add_chaos_token':
+      case 'remove_chaos_token':
+      case 'trauma':
+      case 'add_card':
+      case 'set_card_count':
+      case 'remove_card':
+      case 'replace_card':
+      case 'earn_xp':
+      case 'upgrade_decks':
+      case 'save_decks':
+      case 'gain_supplies':
+      case 'lose_supplies':
+      case 'partner_status':
+      case 'scarlet_key':
+      case 'backup_state':
         return true;
       default:
         return false;
@@ -292,7 +292,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         investigatorData: {},
         lastSavedInvestigatorData: {},
         everyStoryAsset: [],
-        redirect_experience: "",
+        redirect_experience: '',
         scarlet: {
           visitedLocations: [],
           unlockedLocations: [],
@@ -308,10 +308,10 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       forEach(campaignGuide.campaignLogSections(), (log) => {
         if (!log.hidden) {
           switch (log.type) {
-            case "count":
+            case 'count':
               this.countSections[log.id] = { count: 0 };
               break;
-            case "supplies":
+            case 'supplies':
               this.investigatorSections[log.id] = {};
               break;
             default:
@@ -357,71 +357,71 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       forEach(effectsWithInput, ({ effects, input, numberInput }) => {
         forEach(effects, (effect) => {
           switch (effect.type) {
-            case "backup_state":
+            case 'backup_state':
               this.handleBackupState(effect);
               break;
-            case "lose_supplies":
+            case 'lose_supplies':
               this.handleLoseSuppliesEffect(effect);
               break;
-            case "gain_supplies":
+            case 'gain_supplies':
               this.handleGainSuppliesEffect(effect, input);
               break;
-            case "campaign_data":
+            case 'campaign_data':
               this.handleCampaignDataEffect(effect);
               break;
-            case "scenario_data":
+            case 'scenario_data':
               this.handleScenarioDataEffect(effect, scenarioId, input);
               break;
-            case "freeform_campaign_log":
+            case 'freeform_campaign_log':
               this.handleFreeformCampaignLogEffect(effect, input);
               break;
-            case "campaign_log":
+            case 'campaign_log':
               this.handleCampaignLogEffect(effect, input);
               break;
-            case "campaign_log_investigator_count":
+            case 'campaign_log_investigator_count':
               this.handleCampaignLogInvestigatorCountEffect(
                 effect,
                 input,
                 numberInput && numberInput.length ? numberInput[0] : undefined
               );
               break;
-            case "campaign_log_count":
+            case 'campaign_log_count':
               this.handleCampaignLogCountEffect(
                 effect,
                 numberInput && numberInput.length ? numberInput[0] : undefined
               );
               break;
-            case "campaign_log_cards":
+            case 'campaign_log_cards':
               this.handleCampaignLogCardsEffect(effect, input, numberInput);
               break;
-            case "add_chaos_token":
-            case "remove_chaos_token":
+            case 'add_chaos_token':
+            case 'remove_chaos_token':
               this.handleAddRemoveChaosTokenEffect(effect);
               break;
-            case "trauma":
+            case 'trauma':
               this.handleTraumaEffect(effect, input, numberInput);
               break;
-            case "set_card_count":
+            case 'set_card_count':
               this.handleSetCardCountEffect(effect, input);
               break;
-            case "add_card":
+            case 'add_card':
               this.handleAddCardEffect(effect, input);
               break;
-            case "remove_card":
+            case 'remove_card':
               this.handleRemoveCardEffect(effect, input);
               break;
-            case "replace_card":
+            case 'replace_card':
               this.handleReplaceCardEffect(effect);
               break;
-            case "earn_xp":
+            case 'earn_xp':
               if (this.campaignData.redirect_experience) {
                 const count_effect: CampaignLogInvestigatorCountEffect = {
-                  type: "campaign_log_investigator_count",
+                  type: 'campaign_log_investigator_count',
                   section: this.campaignData.redirect_experience,
-                  id: "$count",
+                  id: '$count',
                   investigator: effect.investigator,
                   fixed_investigator: effect.fixed_investigator,
-                  operation: "add",
+                  operation: 'add',
                   value:
                     (effect.bonus || 0) +
                     (numberInput?.length ? numberInput[0] : 0),
@@ -431,16 +431,16 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
                 this.handleEarnXpEffect(effect, input, numberInput);
               }
               break;
-            case "upgrade_decks":
+            case 'upgrade_decks':
               this.handleUpgradeDecksEffect();
               break;
-            case "save_decks":
+            case 'save_decks':
               this.handleSaveDecksEffect(effect);
               break;
-            case "partner_status":
+            case 'partner_status':
               this.handlePartnerStatusEffect(effect, input);
               break;
-            case "scarlet_key":
+            case 'scarlet_key':
               this.handleScarletKeyEffect(effect, input);
               break;
             default:
@@ -453,7 +453,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
 
   handleBackupState(effect: BackupStateEffect) {
     switch (effect.operation) {
-      case "save":
+      case 'save':
         this.backupState = {
           scenarioId: this.scenarioId,
           sections: cloneDeep(this.sections),
@@ -466,7 +466,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           swapChaosBag: cloneDeep(this.swapChaosBag),
         };
         break;
-      case "restore":
+      case 'restore':
         if (this.backupState) {
           this.scenarioId = this.backupState.scenarioId;
           this.sections = cloneDeep(this.backupState.sections);
@@ -489,11 +489,11 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
 
   leadInvestigatorChoice(): string {
     if (this.scenarioId === undefined) {
-      throw new Error("Lead investigator called outside of a scenario.");
+      throw new Error('Lead investigator called outside of a scenario.');
     }
     const scenario = this.scenarioData[this.scenarioId];
     if (!scenario || !scenario.leadInvestigator) {
-      throw new Error("Lead Investigator called before decision");
+      throw new Error('Lead Investigator called before decision');
     }
     return scenario.leadInvestigator;
   }
@@ -533,11 +533,11 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   ): boolean {
     const trauma = this.traumaAndCardData(partner.code);
     switch (status) {
-      case "eliminated":
-      case "alive": {
+      case 'eliminated':
+      case 'alive': {
         const resolute = !!find(
           trauma.storyAssets || [],
-          (s) => s === "resolute"
+          (s) => s === 'resolute'
         );
         const health = (resolute && partner.resolute_health) || partner.health;
         const sanity = (resolute && partner.resolute_sanity) || partner.sanity;
@@ -546,32 +546,32 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           trauma.killed ||
           (trauma.physical || 0) >= health ||
           (trauma.mental || 0) >= sanity;
-        return status === "eliminated" ? eliminated : !eliminated;
+        return status === 'eliminated' ? eliminated : !eliminated;
       }
-      case "has_damage":
+      case 'has_damage':
         return (trauma.physical || 0) > 0;
-      case "has_horror":
+      case 'has_horror':
         return (trauma.mental || 0) > 0;
-      case "mia":
-      case "safe":
-      case "resolute":
-      case "victim":
-      case "cannot_take":
+      case 'mia':
+      case 'safe':
+      case 'resolute':
+      case 'victim':
+      case 'cannot_take':
         return !!find(trauma.storyAssets || [], (s) => s === status);
-      case "investigator_selected": {
+      case 'investigator_selected': {
         const entry = findLast(
           this.sections[sectionId]?.entries,
           (entry) =>
             entry.id === SELECTED_PARTNERS_CAMPAIGN_LOG_ID &&
-            entry.type === "card"
+            entry.type === 'card'
         );
         const cards = map(
-          entry?.type === "card" ? entry.cards : [],
+          entry?.type === 'card' ? entry.cards : [],
           (card) => card.card
         );
         return !!find(cards, (code) => code === partner.code);
       }
-      case "investigator_defeated": {
+      case 'investigator_defeated': {
         const investigators = filter(
           this.investigatorCodes(true),
           (investigator) => this.isDefeated(investigator)
@@ -582,10 +582,10 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
             (entry) =>
               entry.id ===
                 `${INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX}${investigator}` &&
-              entry.type === "card"
+              entry.type === 'card'
           );
           return !!find(
-            entry?.type === "card" ? entry.cards : [],
+            entry?.type === 'card' ? entry.cards : [],
             (c) => c.card === partner.code
           );
         });
@@ -629,17 +629,17 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
 
   resigned(investigator: string): boolean {
     const status = this.investigatorResolutionStatus()[investigator];
-    return status === "resigned";
+    return status === 'resigned';
   }
 
   isAlive(investigator: string): boolean {
     const status = this.investigatorResolutionStatus()[investigator];
-    return status === "alive";
+    return status === 'alive';
   }
 
   isDefeated(investigator: string): boolean {
     const status = this.investigatorResolutionStatus()[investigator];
-    return status !== "alive" && status !== "resigned";
+    return status !== 'alive' && status !== 'resigned';
   }
 
   hasCard(investigator: string, card: string): boolean {
@@ -653,18 +653,18 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   investigatorResolutionStatus(): { [code: string]: InvestigatorStatus } {
     if (this.scenarioId === undefined) {
       throw new Error(
-        "investigatorResolutionStatus called outside of a scenario."
+        'investigatorResolutionStatus called outside of a scenario.'
       );
     }
     const scenario = this.scenarioData[this.scenarioId];
     if (!scenario) {
-      throw new Error("investigatorResolutionStatus called before decision");
+      throw new Error('investigatorResolutionStatus called before decision');
     }
     return scenario.investigatorStatus;
   }
 
   scenarioStatus(scenarioId: string): ScenarioStatus {
-    return this.campaignData.scenarioStatus[scenarioId] || "not_started";
+    return this.campaignData.scenarioStatus[scenarioId] || 'not_started';
   }
 
   campaignNextScenarioId(): string | undefined {
@@ -710,14 +710,14 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     }
     if (!id) {
       return flatMap(section.entries, (entry) => {
-        if (entry.type === "card") {
+        if (entry.type === 'card') {
           return map(entry.cards || [], (card) => card.card);
         }
         return [];
       });
     }
     return flatMap(section.entries, (entry) => {
-      if (entry.id === id && entry.type === "card" && !entry.crossedOut) {
+      if (entry.id === id && entry.type === 'card' && !entry.crossedOut) {
         return map(entry.cards || [], (card) => card.card);
       }
       return [];
@@ -731,14 +731,14 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     }
     if (!id) {
       return flatMap(section.entries, (entry) => {
-        if (entry.type === "card") {
+        if (entry.type === 'card') {
           return map(entry.cards || [], (card) => card.count);
         }
         return [];
       });
     }
     return flatMap(section.entries, (entry) => {
-      if (entry.id === id && entry.type === "card" && !entry.crossedOut) {
+      if (entry.id === id && entry.type === 'card' && !entry.crossedOut) {
         return map(entry.cards || [], (card) => card.count);
       }
       return [];
@@ -769,7 +769,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   resolution(): string {
     const playing = this.latestScenarioData.playingScenario;
     if (!playing || !this.latestScenarioData.resolution) {
-      throw new Error("Resolution accessed before it was set.");
+      throw new Error('Resolution accessed before it was set.');
     }
     return this.latestScenarioData.resolution;
   }
@@ -795,7 +795,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   investigatorCodes(includeEliminated: boolean): string[] {
     const playing = this.latestScenarioData.playingScenario;
     if (!playing) {
-      throw new Error("Investigator codes accessed before they were set.");
+      throw new Error('Investigator codes accessed before they were set.');
     }
     const leadInvestigatorCode = this.leadInvestigatorChoiceSafe();
     return sortBy(
@@ -826,7 +826,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       this.campaignGuide.campaignLogSections(),
       (section) => section.id === sectionId
     );
-    if (!section || section.type !== "count" || !section.calendar) {
+    if (!section || section.type !== 'count' || !section.calendar) {
       return result;
     }
     forEach(section.calendar, (c) => {
@@ -836,7 +836,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           symbol: c.symbol,
         });
       } else if (c.entry) {
-        const count = this.count("hidden", c.entry);
+        const count = this.count('hidden', c.entry);
         if (count) {
           result.push({
             time: count,
@@ -852,7 +852,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     if (this.sections[sectionId]?.sectionCrossedOut) {
       return 0;
     }
-    if (id === "$count") {
+    if (id === '$count') {
       const section = this.countSections[sectionId];
       if (section) {
         return section.count;
@@ -862,14 +862,14 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
 
     const section = this.sections[sectionId];
     if (section) {
-      if (id === "$num_entries") {
+      if (id === '$num_entries') {
         return sumBy(section.entries, (entry) => (entry.crossedOut ? 0 : 1));
       }
       const entry = find(
         section.entries,
         (entry) => entry.id === id && !entry.crossedOut
       );
-      if (entry && entry.type === "count") {
+      if (entry && entry.type === 'count') {
         return entry.count;
       }
     }
@@ -881,55 +881,55 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     input?: string[]
   ): string[] {
     switch (investigator) {
-      case "lead_investigator":
+      case 'lead_investigator':
         return [this.leadInvestigatorChoice()];
-      case "all":
+      case 'all':
         if (!this.latestScenarioData) {
-          throw new Error("All investigators called before being set");
+          throw new Error('All investigators called before being set');
         }
         return this.investigatorCodes(false);
-      case "defeated": {
+      case 'defeated': {
         const result: string[] = [];
         forEach(this.investigatorResolutionStatus(), (status, code) => {
-          if (status !== "alive" && status !== "resigned") {
+          if (status !== 'alive' && status !== 'resigned') {
             result.push(code);
           }
         });
         return result;
       }
-      case "not_defeated": {
+      case 'not_defeated': {
         const result: string[] = [];
         forEach(this.investigatorResolutionStatus(), (status, code) => {
-          if (status === "alive" || status === "resigned") {
+          if (status === 'alive' || status === 'resigned') {
             result.push(code);
           }
         });
         return result;
       }
-      case "resigned": {
+      case 'resigned': {
         const result: string[] = [];
         forEach(this.investigatorResolutionStatus(), (status, code) => {
-          if (status === "resigned") {
+          if (status === 'resigned') {
             result.push(code);
           }
         });
         return result;
       }
-      case "not_resigned": {
+      case 'not_resigned': {
         const result: string[] = [];
         forEach(this.investigatorResolutionStatus(), (status, code) => {
-          if (status !== "resigned") {
+          if (status !== 'resigned') {
             result.push(code);
           }
         });
         return result;
       }
-      case "$input_value":
+      case '$input_value':
         return input || [];
-      case "any":
-      case "any_resigned":
-      case "choice":
-      case "$fixed_investigator":
+      case 'any':
+      case 'any_resigned':
+      case 'choice':
+      case '$fixed_investigator':
         // These are rewritten in ScenarioStep
         throw new Error(`should not happen: ${investigator}`);
     }
@@ -1274,7 +1274,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   }
 
   private handleRemoveCardEffect(effect: RemoveCardEffect, input?: string[]) {
-    const allCards = effect.card === "$input_value" ? input : [effect.card];
+    const allCards = effect.card === '$input_value' ? input : [effect.card];
     const cards = new Set(allCards);
     const investigatorRestriction = effect.investigator
       ? new Set(this.getInvestigators(effect.investigator, input))
@@ -1327,21 +1327,21 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   private handleScarletKeyEffect(effect: ScarletKeyEffect, input?: string[]) {
     const inputValue = (input || [])[0];
     switch (effect.bearer_type) {
-      case "investigator":
+      case 'investigator':
         if (inputValue) {
           this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
             investigator: inputValue,
           };
         }
         break;
-      case "enemy":
+      case 'enemy':
         if (effect.enemy_code) {
           this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
             enemy: effect.enemy_code,
           };
         }
         break;
-      case "steal":
+      case 'steal':
         if (inputValue) {
           this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
             investigator:
@@ -1351,7 +1351,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           };
         }
         break;
-      case "return":
+      case 'return':
         this.campaignData.scarlet.keyStatus[effect.scarlet_key] = {
           investigator:
             this.campaignData.scarlet.keyStatus[effect.scarlet_key]
@@ -1367,21 +1367,21 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     input?: string[]
   ) {
     const partners =
-      (effect.partner === "$fixed_partner" && effect.fixed_partner
+      (effect.partner === '$fixed_partner' && effect.fixed_partner
         ? [effect.fixed_partner]
         : input) || [];
     forEach(partners, (code) => {
       const data: TraumaAndCardData =
         this.campaignData.investigatorData[code] || {};
       switch (effect.status) {
-        case "cannot_take":
-        case "mia":
-        case "safe":
-        case "resolute":
-        case "the_entity":
-        case "victim":
+        case 'cannot_take':
+        case 'mia':
+        case 'safe':
+        case 'resolute':
+        case 'the_entity':
+        case 'victim':
           // Standard ones, implemented as story assets on the trauma data.
-          if (effect.operation === "add") {
+          if (effect.operation === 'add') {
             data.storyAssets = uniq([
               ...(data.storyAssets ?? []),
               effect.status,
@@ -1393,13 +1393,13 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
             );
           }
           break;
-        case "eliminated":
+        case 'eliminated':
           data.killed = true;
           break;
-        case "heal_damage":
+        case 'heal_damage':
           data.physical = Math.max(0, (data.physical || 0) - 1);
           break;
-        case "heal_horror":
+        case 'heal_horror':
           data.mental = Math.max(0, (data.mental || 0) - 1);
           break;
         default:
@@ -1426,10 +1426,10 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         }
         const value = numberInput[0];
         switch (effect.heal_input) {
-          case "mental":
+          case 'mental':
             trauma.mental = (trauma.mental ?? 0) - value;
             break;
-          case "physical":
+          case 'physical':
             trauma.physical = (trauma.physical ?? 0) - value;
             break;
         }
@@ -1454,7 +1454,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       }
       if (effect.mental_or_physical) {
         throw new Error(
-          "These should be filtered out before it reaches campaign log"
+          'These should be filtered out before it reaches campaign log'
         );
       }
 
@@ -1465,7 +1465,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   private handleAddRemoveChaosTokenEffect(effect: AddRemoveChaosTokenEffect) {
     forEach(effect.tokens, (token) => {
       const currentCount = this.chaosBag[token] || 0;
-      if (effect.type === "add_chaos_token") {
+      if (effect.type === 'add_chaos_token') {
         this.chaosBag[token] = Math.min(
           currentCount + 1,
           CHAOS_BAG_TOKEN_COUNTS[token] || 0
@@ -1480,16 +1480,16 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   }
 
   private handleLoseSuppliesEffect(effect: LoseSuppliesEffect) {
-    if (effect.investigator !== "all") {
-      throw new Error("Unexpected investigator type for lose_supplies effect.");
+    if (effect.investigator !== 'all') {
+      throw new Error('Unexpected investigator type for lose_supplies effect.');
     }
     const investigators = this.getInvestigators(effect.investigator);
     forEach(investigators, (investigator) => {
       const countEffect: CampaignLogInvestigatorCountEffect = {
-        type: "campaign_log_investigator_count",
+        type: 'campaign_log_investigator_count',
         section: effect.section,
-        investigator: "$input_value",
-        operation: "cross_out",
+        investigator: '$input_value',
+        operation: 'cross_out',
         id: effect.supply,
       };
       this.handleCampaignLogInvestigatorCountEffect(countEffect, [
@@ -1502,19 +1502,19 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     effect: GainSuppliesEffect,
     input?: string[]
   ) {
-    if (effect.investigator !== "$input_value") {
-      throw new Error("Unexpected investigator type for gain_supplies effect.");
+    if (effect.investigator !== '$input_value') {
+      throw new Error('Unexpected investigator type for gain_supplies effect.');
     }
     if (!input || !input.length) {
-      throw new Error("input required for scenarioData effect");
+      throw new Error('input required for scenarioData effect');
     }
     forEach(input, (investigator) => {
       forEach(effect.supplies, (supply) => {
         const countEffect: CampaignLogInvestigatorCountEffect = {
-          type: "campaign_log_investigator_count",
+          type: 'campaign_log_investigator_count',
           section: effect.section,
-          investigator: "$input_value",
-          operation: "add",
+          investigator: '$input_value',
+          operation: 'add',
           id: supply.id,
           value: 1,
         };
@@ -1527,39 +1527,39 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
 
   private handleCampaignDataEffect(effect: CampaignDataEffect) {
     switch (effect.setting) {
-      case "result":
+      case 'result':
         this.campaignData.result = effect.value;
         break;
-      case "difficulty":
+      case 'difficulty':
         switch (effect.value) {
-          case "easy":
+          case 'easy':
             this.campaignData.difficulty = CampaignDifficulty.EASY;
             break;
-          case "standard":
+          case 'standard':
             this.campaignData.difficulty = CampaignDifficulty.STANDARD;
             break;
-          case "hard":
+          case 'hard':
             this.campaignData.difficulty = CampaignDifficulty.HARD;
             break;
-          case "expert":
+          case 'expert':
             this.campaignData.difficulty = CampaignDifficulty.EXPERT;
             break;
         }
         break;
-      case "set_scenarios":
+      case 'set_scenarios':
         this.campaignData.scenarios = effect.scenarios;
         break;
-      case "skip_scenario":
-        this.campaignData.scenarioStatus[effect.scenario] = "skipped";
+      case 'skip_scenario':
+        this.campaignData.scenarioStatus[effect.scenario] = 'skipped';
         break;
-      case "replay_scenario": {
+      case 'replay_scenario': {
         const replayCount =
           this.campaignData.scenarioReplayCount[effect.scenario] || 0;
         this.campaignData.scenarioReplayCount[effect.scenario] =
           replayCount + 1;
         break;
       }
-      case "next_scenario":
+      case 'next_scenario':
         this.campaignData.nextScenario = [
           ...this.campaignData.nextScenario,
           effect.scenario,
@@ -1568,14 +1568,14 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           this.campaignData.noSideScenario = true;
           this.scenarioData[effect.scenario] = {
             ...pick(this.latestScenarioData || {}, [
-              "playingScenario",
-              "leadInvestigator",
+              'playingScenario',
+              'leadInvestigator',
             ]),
             investigatorStatus: {},
           };
         }
         break;
-      case "swap_chaos_bag": {
+      case 'swap_chaos_bag': {
         const swap = this.swapChaosBag;
         this.swapChaosBag = this.chaosBag;
         if (effect.initialize) {
@@ -1585,38 +1585,38 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         }
         break;
       }
-      case "redirect_experience": {
+      case 'redirect_experience': {
         this.campaignData.redirect_experience = effect.investigator_count;
         break;
       }
-      case "lock_location":
+      case 'lock_location':
         this.campaignData.scarlet.unlockedLocations = filter(
           this.campaignData.scarlet.unlockedLocations,
           (id) => id !== effect.value
         );
         break;
-      case "unlock_map":
+      case 'unlock_map':
         this.campaignData.scarlet.showMap = true;
         break;
-      case "unlock_location":
+      case 'unlock_location':
         this.campaignData.scarlet.unlockedLocations = [
           ...this.campaignData.scarlet.unlockedLocations,
           effect.value,
         ];
         break;
-      case "hide_dossier":
+      case 'hide_dossier':
         this.campaignData.scarlet.unlockedDossiers = filter(
           this.campaignData.scarlet.unlockedDossiers,
           (x) => x !== effect.value
         );
         break;
-      case "unlock_dossier":
+      case 'unlock_dossier':
         this.campaignData.scarlet.unlockedDossiers = [
           ...this.campaignData.scarlet.unlockedDossiers,
           effect.value,
         ];
         break;
-      case "embark": {
+      case 'embark': {
         if (effect.location) {
           if (!effect.transit) {
             this.campaignData.scarlet.visitedLocations = [
@@ -1650,8 +1650,8 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     if (scenarioId === undefined) {
       throw new Error(`Cannot set scenario_data effects outside of scenarios.`);
     }
-    if (effect.setting === "scenario_status") {
-      if (effect.status === "started") {
+    if (effect.setting === 'scenario_status') {
+      if (effect.status === 'started') {
         this.campaignData.noSideScenario = false;
         if (
           this.campaignData.nextScenario.length &&
@@ -1668,7 +1668,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       }
       this.campaignData.scenarioStatus[scenarioId] = effect.status;
 
-      if (effect.status === "resolution") {
+      if (effect.status === 'resolution') {
         const scenario = this.scenarioData[scenarioId] || {
           investigatorStatus: {},
         };
@@ -1684,10 +1684,10 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       investigatorStatus: {},
     };
 
-    if (effect.setting === "add_investigator") {
-      if (effect.investigator !== "$fixed_investigator") {
+    if (effect.setting === 'add_investigator') {
+      if (effect.investigator !== '$fixed_investigator') {
         throw new Error(
-          "add_investigator should always be $fixed_investigator"
+          'add_investigator should always be $fixed_investigator'
         );
       }
       scenario.playingScenario = [
@@ -1695,19 +1695,19 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         { investigator: effect.fixed_investigator },
       ];
     } else {
-      if (effect.investigator !== "$input_value") {
-        throw new Error("investigator_status should always be $input_value");
+      if (effect.investigator !== '$input_value') {
+        throw new Error('investigator_status should always be $input_value');
       }
       if (!input) {
-        throw new Error("input required for scenarioData effect");
+        throw new Error('input required for scenarioData effect');
       }
       switch (effect.setting) {
-        case "investigator_status":
+        case 'investigator_status':
           forEach(input, (code) => {
             scenario.investigatorStatus[code] = effect.investigator_status;
           });
           break;
-        case "playing_scenario": {
+        case 'playing_scenario': {
           const playing: PlayingScenarioItem[] = map(
             input || [],
             (investigator) => {
@@ -1719,7 +1719,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           scenario.playingScenario = playing;
           break;
         }
-        case "lead_investigator":
+        case 'lead_investigator':
           scenario.leadInvestigator = input[0];
           break;
       }
@@ -1740,7 +1740,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       return;
     }
     section.entries.push({
-      type: "freeform",
+      type: 'freeform',
       id:
         effect.scenario_id && effect.index !== undefined
           ? `${effect.scenario_id}$${effect.index}`
@@ -1749,16 +1749,16 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       interScenario:
         effect.scenario_id && effect.index !== undefined
           ? {
-              scenarioId: effect.scenario_id,
-              index: effect.index,
-            }
+            scenarioId: effect.scenario_id,
+            index: effect.index,
+          }
           : undefined,
     });
   }
 
   private handleCampaignLogEffect(effect: CampaignLogEffect, input?: string[]) {
     const sectionId =
-      effect.section === "$input_value" && input?.length
+      effect.section === '$input_value' && input?.length
         ? input[0]
         : effect.section;
     const section: EntrySection = this.sections[sectionId] || {
@@ -1769,7 +1769,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         section.sectionCrossedOut = effect.cross_out;
       }
     } else {
-      const ids = effect.id === "$input_value" ? input : [effect.id];
+      const ids = effect.id === '$input_value' ? input : [effect.id];
       forEach(ids, (id) => {
         if (effect.cross_out !== undefined) {
           section.entries = map(section.entries, (entry) => {
@@ -1790,7 +1790,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           section.entries = filter(section.entries, (entry) => entry.id !== id);
         } else {
           section.entries.push({
-            type: "basic",
+            type: 'basic',
             id,
           });
         }
@@ -1803,25 +1803,26 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     section: EntrySection,
     id: string,
     operation:
-      | "add"
-      | "add_input"
-      | "subtract_input"
-      | "set"
-      | "set_input"
-      | "cross_out",
+      | 'add'
+      | 'add_input'
+      | 'subtract_input'
+      | 'set'
+      | 'set_input'
+      | 'cross_out',
     value: number,
     min?: number,
     alternate?: boolean
   ): EntrySection {
     // Normal entry
     const entry = find(section.entries, (entry) => entry.id === id);
-    const count = entry && entry.type === "count" ? (
+    // eslint-disable-next-line no-nested-ternary
+    const count = entry && entry.type === 'count' ? (
       alternate ? (entry.otherCount ?? 0) : entry.count
     ) : 0;
     const applyMin = (value: number) =>
       min !== undefined && min !== null ? Math.max(min, value) : value;
     switch (operation) {
-      case "cross_out":
+      case 'cross_out':
         section.entries = map(section.entries, (entry) => {
           if (entry.id === id) {
             return {
@@ -1832,8 +1833,8 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           return entry;
         });
         break;
-      case "subtract_input":
-        if (entry && entry.type === "count") {
+      case 'subtract_input':
+        if (entry && entry.type === 'count') {
           if (alternate) {
             entry.otherCount = count - value;
           } else {
@@ -1842,23 +1843,23 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         } else {
           if (alternate) {
             section.entries.push({
-              type: "count",
+              type: 'count',
               id,
               count: 0,
               otherCount: applyMin(count - value),
             });
           } else {
             section.entries.push({
-              type: "count",
+              type: 'count',
               id,
               count: applyMin(count - value),
             });
           }
         }
         break;
-      case "add":
-      case "add_input":
-        if (entry && entry.type === "count") {
+      case 'add':
+      case 'add_input':
+        if (entry && entry.type === 'count') {
           if (alternate) {
             entry.otherCount = count + value;
           } else {
@@ -1867,23 +1868,23 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         } else {
           if (alternate) {
             section.entries.push({
-              type: "count",
+              type: 'count',
               id,
               count: 0,
               otherCount: applyMin(count + value),
             });
           } else {
             section.entries.push({
-              type: "count",
+              type: 'count',
               id,
               count: applyMin(count + value),
             });
           }
         }
         break;
-      case "set":
-      case "set_input":
-        if (entry && entry.type === "count") {
+      case 'set':
+      case 'set_input':
+        if (entry && entry.type === 'count') {
           if (alternate) {
             entry.otherCount = applyMin(value);
           } else {
@@ -1892,14 +1893,14 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         } else {
           if (alternate) {
             section.entries.push({
-              type: "count",
+              type: 'count',
               id,
               count: 0,
               otherCount: applyMin(value),
             });
           } else {
             section.entries.push({
-              type: "count",
+              type: 'count',
               id,
               count: applyMin(value),
             });
@@ -1918,7 +1919,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     const investigatorSection = this.investigatorSections[effect.section] || {};
     const investigators = this.getInvestigators(effect.investigator, input);
     const value: number =
-      (effect.operation === "add_input" || effect.operation === "set_input"
+      (effect.operation === 'add_input' || effect.operation === 'set_input'
         ? numberInput
         : effect.value) || 0;
     forEach(investigators, (investigator) => {
@@ -1946,19 +1947,19 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       };
       let count = section.count;
       switch (effect.operation) {
-        case "add":
+        case 'add':
           count = count + (effect.value ?? 0);
           break;
-        case "set":
+        case 'set':
           count = effect.value ?? 0;
           break;
-        case "add_input":
+        case 'add_input':
           count = count + (numberInput ?? 0);
           break;
-        case "subtract_input":
+        case 'subtract_input':
           count = count - (numberInput ?? 0);
           break;
-        case "set_input":
+        case 'set_input':
           count = numberInput || 0;
           break;
       }
@@ -1968,10 +1969,10 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       section.count = count;
       this.countSections[effect.section] = section;
     } else {
-      let value: number =
-        (effect.operation === "add_input" ||
-        effect.operation === "set_input" ||
-        effect.operation === "subtract_input"
+      const value: number =
+        (effect.operation === 'add_input' ||
+        effect.operation === 'set_input' ||
+        effect.operation === 'subtract_input'
           ? numberInput
           : effect.value) ?? 0;
       const section = this.sections[effect.section] || {
@@ -1992,7 +1993,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     effect: CampaignLogCardsEffect,
     input?: string[]
   ): string[] | undefined {
-    if (effect.id === "$input_value") {
+    if (effect.id === '$input_value') {
       if (input === undefined) {
         throw new Error(`Cannot read unset $input_value: ${effect.id}`);
       }
@@ -2010,7 +2011,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     numberInput?: number[]
   ) {
     const sectionIds: string[] =
-      effect.section === "$input_value" ? input || [] : [effect.section];
+      effect.section === '$input_value' ? input || [] : [effect.section];
     const ids: string[] | undefined = this.cardsIds(effect, input);
     forEach(sectionIds, (sectionId) => {
       const section: EntrySection = this.sections[sectionId] || {
@@ -2024,19 +2025,19 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       } else {
         forEach(ids, (id) => {
           const cards: CampaignLogCard[] = [];
-          if (effect.section === "$input_value") {
+          if (effect.section === '$input_value') {
             cards.push({
               card: sectionId,
               count: 1,
             });
-          } else if (effect.id === "$input_value") {
+          } else if (effect.id === '$input_value') {
             cards.push({
               card: id,
               count: 1,
             });
           } else if (effect.cards) {
             switch (effect.cards) {
-              case "$input_value":
+              case '$input_value':
                 if (input && numberInput) {
                   forEach(zip(input, numberInput), ([card, number]) => {
                     if (card && number) {
@@ -2055,19 +2056,19 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
                   );
                 }
                 break;
-              case "$lead_investigator": {
+              case '$lead_investigator': {
                 cards.push({
                   card: this.leadInvestigatorChoice(),
                   count: 1,
                 });
                 break;
               }
-              case "$all_investigators": {
+              case '$all_investigators': {
                 forEach(this.investigatorCodes(true), (code) => {
                   cards.push({ card: code, count: 1 });
                 });
               }
-              case "$defeated_investigators": {
+              case '$defeated_investigators': {
                 forEach(this.investigatorCodes(true), (code) => {
                   if (this.isDefeated(code)) {
                     cards.push({
@@ -2077,7 +2078,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
                   }
                 });
               }
-              case "$fixed_codes": {
+              case '$fixed_codes': {
                 forEach(effect.codes || [], (code) => {
                   cards.push({
                     card: code,
@@ -2101,7 +2102,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
               section.entries = map(section.entries, (entry) => {
                 if (
                   entry.id === id &&
-                  entry.type === "card" &&
+                  entry.type === 'card' &&
                   find(entry.cards, (card) => removals.has(card.card))
                 ) {
                   return {
@@ -2131,14 +2132,14 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           } else {
             if (id === SELECTED_PARTNERS_CAMPAIGN_LOG_ID) {
               section.entries.push({
-                type: "card",
+                type: 'card',
                 id,
                 cards,
               });
             } else {
               forEach(cards, (card) => {
                 section.entries.push({
-                  type: "card",
+                  type: 'card',
                   id,
                   cards: [card],
                 });

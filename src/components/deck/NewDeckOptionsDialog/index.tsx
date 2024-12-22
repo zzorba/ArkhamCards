@@ -206,12 +206,12 @@ function NewDeckOptionsDialog({
       RANDOM_BASIC_WEAKNESS,
       ...(investigator?.deck_requirements?.choice?.find(choice => choice.target === 'subtype' && choice.value === 'basicweakness') ? [BASIC_WEAKNESS_CHOICE] : []),
       ...flatMap(investigator?.deck_requirements?.card || [], cardRequirement => {
-      return [
-        ...(cardRequirement.code ? [cardRequirement.code] : []),
-        ...(cardRequirement.alternates || []),
-      ];
-    }),
-  ];
+        return [
+          ...(cardRequirement.code ? [cardRequirement.code] : []),
+          ...(cardRequirement.alternates || []),
+        ];
+      }),
+    ];
   }, [investigator]);
   const [cards] = useCardMap(requiredCardCodes, 'player', false, tabooSetId);
   const requiredCardOptions = useMemo(() => {

@@ -1,17 +1,16 @@
-import { MigrationInterface, QueryRunner, TableColumn } from "typeorm";
+import { MigrationInterface, QueryRunner, TableColumn } from 'typeorm';
 
 export class SpecialtyCardsMigration1726180741370
-  implements MigrationInterface
-{
-  name: string = "SpecialtyCardsMigration1726180741370";
+implements MigrationInterface {
+  name: string = 'SpecialtyCardsMigration1726180741370';
   async up(queryRunner: QueryRunner): Promise<void> {
-    const hasCardsTable = await queryRunner.hasTable("cards");
+    const hasCardsTable = await queryRunner.hasTable('cards');
     if (hasCardsTable) {
       await queryRunner.addColumn(
-        "cards",
+        'cards',
         new TableColumn({
-          name: "restrictions_trait",
-          type: "text",
+          name: 'restrictions_trait',
+          type: 'text',
           // we make the new field nullable in order to enable the update
           // for existing data (schema sync will later update this column to be non
           // nullable)
@@ -19,10 +18,10 @@ export class SpecialtyCardsMigration1726180741370
         })
       );
       await queryRunner.addColumn(
-        "cards",
+        'cards',
         new TableColumn({
-          name: "restrictions_faction",
-          type: "text",
+          name: 'restrictions_faction',
+          type: 'text',
           // we make the new field nullable in order to enable the update
           // for existing data (schema sync will later update this column to be non
           // nullable)
@@ -33,10 +32,10 @@ export class SpecialtyCardsMigration1726180741370
   }
 
   async down(queryRunner: QueryRunner) {
-    const hasCardsTable = await queryRunner.hasTable("cards");
+    const hasCardsTable = await queryRunner.hasTable('cards');
     if (hasCardsTable) {
-      await queryRunner.dropColumn("cards", "restrictions_trait");
-      await queryRunner.dropColumn("cards", "restrictions_faction");
+      await queryRunner.dropColumn('cards', 'restrictions_trait');
+      await queryRunner.dropColumn('cards', 'restrictions_faction');
     }
   }
 }

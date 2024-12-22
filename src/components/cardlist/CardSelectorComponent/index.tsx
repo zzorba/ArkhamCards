@@ -58,7 +58,7 @@ export default function CardSelectorComponent({ componentId, slots, fixedSlots, 
         return (card && card.name) || '';
       }
     );
-  }, [cards, fixedSlots]);
+  }, [cards, fixedSlots, initialCards]);
   const matchingCards = useMemo(() => {
     if (!cards) {
       return [];
@@ -82,7 +82,7 @@ export default function CardSelectorComponent({ componentId, slots, fixedSlots, 
     );
   }, [slots, initialCards, counts, locked, cards, filterCard]);
 
-  if ((!matchingCards.length  && !fixedCards.length) || !cards) {
+  if ((!matchingCards.length && !fixedCards.length) || !cards) {
     if (forceHeader) {
       return (
         <>

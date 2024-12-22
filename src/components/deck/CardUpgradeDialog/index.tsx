@@ -164,7 +164,7 @@ export default function CardUpgradeDialog({
     ) && possibleDecrement) {
       dispatch(decDeckSlot(id, possibleDecrement.code, mode));
     }
-  }, [deckEdits, dispatch, cards, namedCards, ignoreData, id]);
+  }, [mode, slots, deckEdits, dispatch, cards, namedCards, ignoreData, id]);
 
   const onDecrement = useCallback((code: string) => {
     dispatch(decDeckSlot(id, code, mode));
@@ -176,11 +176,11 @@ export default function CardUpgradeDialog({
     }
     const limit = mode === 'extra' ? 1 : (
       (namedCards && namedCards.length) ?
-      (namedCards[0].deck_limit || 2) :
-      2
+        (namedCards[0].deck_limit || 2) :
+        2
     );
     return sumBy(namedCards, card => (slots[card.code] || 0) - (deckEdits.ignoreDeckLimitSlots[card.code] || 0)) > limit;
-  }, [deckEdits, namedCards]);
+  }, [mode, slots, deckEdits, namedCards]);
 
   const showNonCollectionPressed = useCallback(() => {
     setShowNonCollection(true);
@@ -234,7 +234,7 @@ export default function CardUpgradeDialog({
         />
       </View>
     );
-  }, [componentId, slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
+  }, [componentId, mode, slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
     specialIgnoreRule, onIncrementIgnore, onDecrementIgnore, onIncrement, onDecrement]);
 
   const doShrewdAnalysis = useCallback(() => {
@@ -257,7 +257,7 @@ export default function CardUpgradeDialog({
       setShrewdAnalysisResult([firstCard.code, secondCard.code]);
       dispatch(setDeckXpAdjustment(id, deckEdits.xpAdjustment + xpCost));
     }
-  }, [deckEdits, namedCards, dispatch, id, isCardInCollection, shrewdAnalysisRule]);
+  }, [deckEdits, namedCards, slots, dispatch, id, isCardInCollection, shrewdAnalysisRule]);
 
   const shrewdAnalysisContent = useMemo(() => {
     if (!deckEdits) {
@@ -385,7 +385,7 @@ export default function CardUpgradeDialog({
         ) : null }
       </>
     );
-  }, [slots, deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, isCardInCollection, specialIgnoreRule, ignoreData, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
+  }, [mode, slots, deckEdits, borderStyle, namedCards, typography, shrewdAnalysisCards, isCardInCollection, specialIgnoreRule, ignoreData, shrewdAnalysisRule, askShrewdAnalysis, renderCard, showNonCollectionPressed]);
   return (
     <View
       style={[styles.wrapper, backgroundStyle]}

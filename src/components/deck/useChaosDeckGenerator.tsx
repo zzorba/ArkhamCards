@@ -1,16 +1,16 @@
 import { useCallback, useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useSharedValue } from 'react-native-reanimated';
-import { find, flatMap, forEach, omit } from 'lodash';
+import { flatMap, forEach, omit } from 'lodash';
 import { t } from 'ttag';
 
 import { DeckMeta, Slots } from '@actions/types';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
-import useSingleCard, { useInvestigatorChoice } from '@components/card/useSingleCard';
+import { useInvestigatorChoice } from '@components/card/useSingleCard';
 import { combineQueries, NO_BARKHAM_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, NO_DUPLICATES_QUERY, where } from '@data/sqlite/query';
 import { queryForInvestigatorWithoutDeck } from '@lib/InvestigatorRequirements';
 import randomDeck from '@lib/randomDeck';
-import Card, { CardsMap, InvestigatorChoice, cardInCollection } from '@data/types/Card';
+import { CardsMap, InvestigatorChoice, cardInCollection } from '@data/types/Card';
 import specialCards from '@data/deck/specialCards';
 import { usePlayerCards, useSettingValue } from '@components/core/hooks';
 import { getPacksInCollection } from '@reducers';
@@ -79,7 +79,7 @@ export function useDraftableCards({
       return undefined;
     }
     return combineQueries(
-      queryForInvestigatorWithoutDeck(investigator, cleanMeta, { extraDeck: mode === 'extra'}),
+      queryForInvestigatorWithoutDeck(investigator, cleanMeta, { extraDeck: mode === 'extra' }),
       [
         where('c.xp = 0 OR c.xp is null'),
         where('c.extra_xp is null OR c.extra_xp = 0'),
@@ -137,7 +137,7 @@ export default function useChaosDeckGenerator({
     in_collection,
     ignore_collection,
   });
-  const [_, extraPossibleCodes, extraCards] = useDraftableCards({
+  const [, extraPossibleCodes, extraCards] = useDraftableCards({
     investigatorCode,
     meta,
     tabooSetId: tabooSetId || 0,
@@ -197,7 +197,7 @@ export default function useChaosDeckGenerator({
     }
   }, [possibleCodes, cards, progress, investigator,
     in_collection, ignore_collection,
-    setError, setSlots, setMeta, extraPossibleCodes,
+    setError, setSlots, setMeta, extraPossibleCodes, extraCards,
     meta, tabooSetId, investigatorCode]);
   const allCards = useMemo(() => {
     return {

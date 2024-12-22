@@ -49,15 +49,17 @@ export function useInvestigatorChoice(code: string | undefined, meta?: DeckMeta,
     ]);
   }, [code, meta]);
   const [playerCards] = usePlayerCards(codes, false, tabooSetOverride);
-  if (!code) {
-    return undefined;
-  }
-  const main = playerCards?.[code];
-  const front = playerCards?.[meta?.alternate_front ?? code];
-  const back = playerCards?.[meta?.alternate_back ?? code];
-  if (!front || !back || !main) {
-    return undefined;
-  }
-  return { front, back, main };
+  return useMemo(() => {
+    if (!code) {
+      return undefined;
+    }
+    const main = playerCards?.[code];
+    const front = playerCards?.[meta?.alternate_front ?? code];
+    const back = playerCards?.[meta?.alternate_back ?? code];
+    if (!front || !back || !main) {
+      return undefined;
+    }
+    return { front, back, main };
+  }, [code, meta, playerCards]);
 }
 

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -24,7 +24,7 @@ import useReduxMigrator from '@components/settings/useReduxMigrator';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { useAppDispatch } from '@app/store';
-import { checkForPendingCards, PendingCardUpdates } from '@lib/publicApi';
+import { checkForPendingCards } from '@lib/publicApi';
 
 const REPROMPT_DAYS = 7;
 const REPROMPT_SECONDS = REPROMPT_DAYS * 24 * 60 * 60;
@@ -76,7 +76,6 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
   const fetchProgress = useSharedValue(0);
   const loading = useSelector((state: AppState) => state.packs.loading || state.cards.loading);
   const error = useSelector((state: AppState) => state.packs.error || state.cards.error || undefined);
-  const dateFetched = useSelector((state: AppState) => state.packs.dateFetched || undefined);
   const dateUpdatePrompt = useSelector((state: AppState) => state.packs.dateUpdatePrompt || undefined);
   const cardCount = useCallback(async() => {
     const cards = await db.cards();
@@ -119,7 +118,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
         doFetch();
         return;
       }
-      (async () => {
+      (async() => {
         const numCards = await cardCount();
         if (numCards === 0) {
           doFetch();
@@ -148,7 +147,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
                 [
                   updates?.possiblePartialSync ?
                     t`Your most recent sync did not complete.\n\nWhen trying again, please keep the app open and in the foreground until it is finished.`
-                  : ngettext(
+                    : ngettext(
                       msgid`It looks like your app is missing ${updates.missingCardCount} card.`,
                       `It looks like your app is missing ${updates.missingCardCount} cards.`,
                       updates.missingCardCount
@@ -156,7 +155,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
                   '\n',
                   ...updates?.possiblePartialSync ?
                     [t`Some decks may not load fully and campaigns might appear incomplete until this is fixed.`] :
-                    [t`These cards might have been updated, from a new taboo list, or contain minor corrections.`]
+                    [t`These cards might have been updated, from a new taboo list, or contain minor corrections.`],
                 ].join('\n'),
                 [
                   { text: t`Not now`, onPress: () => {

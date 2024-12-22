@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { flatMap, find, filter, forEach, keys, map, omit, sortBy, pick } from 'lodash';
+import { flatMap, find, forEach, keys, map, omit, sortBy, pick } from 'lodash';
 import { t } from 'ttag';
 
 import { Deck, Slots, NumberChoices, getDeckId } from '@actions/types';
@@ -346,7 +346,7 @@ function UpgradeDeckRow({
       }
     });
     return newSlots;
-  }, [deck, mergedExileCounts, specialExile, storyAssets, storyAssetDeltas, storyCards, initialStoryCardSlots, storyCardSlots]);
+  }, [deck, mergedExileCounts, storyAssets, storyAssetDeltas, storyCards, initialStoryCardSlots, storyCardSlots]);
 
   const saveDelayedDeck = useCallback(async(ownerId: string) => {
     const choices = getChoices(xp);
@@ -370,13 +370,13 @@ function UpgradeDeckRow({
     }
   }, [skipDeckSave, getChoices, xp, storyCountsForDeck, campaignLog, mergedExileCounts, investigator.code, choiceId, scenarioState]);
 
-  const saveDeck = useCallback(async () => {
+  const saveDeck = useCallback(async() => {
     if (skipDeckSave) {
       await saveDeckWithoutUpgrade(deck, 0, storyCountsForDeck, undefined, xp);
     } else {
       await saveDeckUpgrade(deck, xp, storyCountsForDeck, campaignLog.ignoreStoryAssets(investigator.code), mergedExileCounts, undefined);
     }
-  }, [skipDeckSave, saveDeckUpgrade, deck, xp, storyCountsForDeck, campaignLog, mergedExileCounts, investigator.code]);
+  }, [skipDeckSave, saveDeckUpgrade, saveDeckWithoutUpgrade, deck, xp, storyCountsForDeck, campaignLog, mergedExileCounts, investigator.code]);
   const save = useCallback(() => {
     if (deck) {
       if (!deck?.owner || !userId || deck.owner.id === userId) {
@@ -387,7 +387,7 @@ function UpgradeDeckRow({
     } else {
       saveCampaignLog(xpAdjust);
     }
-  }, [deck, skipDeckSave, xpAdjust, userId, saveCampaignLog, saveDeck, saveDelayedDeck]);
+  }, [deck, xpAdjust, userId, saveCampaignLog, saveDeck, saveDelayedDeck]);
 
 
   const onCardPress = useCallback((card: Card) => {
@@ -632,12 +632,12 @@ function UpgradeDeckRow({
   const specialExileSection = useMemo(() => {
     const exileOtherButton = (
       choices === undefined && (exile || (exileCounts[BURN_AFTER_READING_CODE] || 0) > 0) && !saving) ? (
-      <ArkhamButton
-        icon="card"
-        title={t`Exile other cards`}
-        onPress={onExileMorePressed}
-      />
-    ) : null;
+        <ArkhamButton
+          icon="card"
+          title={t`Exile other cards`}
+          onPress={onExileMorePressed}
+        />
+      ) : null;
     if ((choices === undefined && editable ? keys(specialExileSlots).length : keys(specialExile).length) > 0) {
       return (
         <>

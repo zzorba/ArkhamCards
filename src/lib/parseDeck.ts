@@ -18,8 +18,8 @@ import {
   union,
   uniq,
   sumBy,
-} from "lodash";
-import { t } from "ttag";
+} from 'lodash';
+import { t } from 'ttag';
 
 import {
   AssetGroup,
@@ -39,8 +39,8 @@ import {
   Slots,
   SpecialDiscount,
   SplitCards,
-} from "@actions/types";
-import Card, { CardKey, CardsMap } from "@data/types/Card";
+} from '@actions/types';
+import Card, { CardKey, CardsMap } from '@data/types/Card';
 import {
   ARCANE_RESEARCH_CODE,
   DOWN_THE_RABBIT_HOLE_CODE,
@@ -56,21 +56,21 @@ import {
   ACE_OF_RODS_CODE,
   PARALLEL_AGNES_CODE,
   PARALLEL_SKIDS_CODE,
-} from "@app_constants";
-import DeckValidation from "./DeckValidation";
+} from '@app_constants';
+import DeckValidation from './DeckValidation';
 import CustomizationOption, {
   CoreCustomizationChoice,
   CustomizationChoice,
-} from "@data/types/CustomizationOption";
+} from '@data/types/CustomizationOption';
 import {
   JIM_VENGEFUL_SHADE_CODE,
   PARALLEL_JIM_CODE,
-} from "@data/deck/specialMetaSlots";
+} from '@data/deck/specialMetaSlots';
 
 export function getExtraDeckSlots(meta: DeckMeta): Slots {
   return mapValues(
     groupBy(
-      filter((meta.extra_deck ?? "").split(","), (x) => x),
+      filter((meta.extra_deck ?? '').split(','), (x) => x),
       (x) => x
     ),
     (x) => x.length
@@ -79,8 +79,8 @@ export function getExtraDeckSlots(meta: DeckMeta): Slots {
 
 export function encodeExtraDeckSlots(slots: Slots): string {
   return flatMap(slots, (count, code) =>
-    count ? map(range(0, count), (_) => code) : []
-  ).join(",");
+    count ? map(range(0, count), () => code) : []
+  ).join(',');
 }
 
 function filterBy(
@@ -102,7 +102,7 @@ function groupAssets(
   customizations: Customizations,
   cards: CardsMap
 ): AssetGroup[] {
-  const assets = filterBy(cardIds, cards, "type_code", "asset");
+  const assets = filterBy(cardIds, cards, 'type_code', 'asset');
   const groups = groupBy(assets, (c) => {
     const card = cards[c.id]?.withCustomizations(
       listSeperator,
@@ -112,27 +112,27 @@ function groupAssets(
       return t`Other`;
     }
     switch (card.real_slot) {
-      case "Hand":
+      case 'Hand':
         return t`Hand`;
-      case "Hand. Arcane":
+      case 'Hand. Arcane':
         return t`Hand. Arcane`;
-      case "Hand x2":
+      case 'Hand x2':
         return t`Hand x2`;
-      case "Arcane":
+      case 'Arcane':
         return t`Arcane`;
-      case "Arcane x2":
+      case 'Arcane x2':
         return t`Arcane x2`;
-      case "Accessory":
+      case 'Accessory':
         return t`Accessory`;
-      case "Body":
+      case 'Body':
         return t`Body`;
-      case "Body. Hand x2":
+      case 'Body. Hand x2':
         return t`Body. Hand x2`;
-      case "Ally. Arcane":
+      case 'Ally. Arcane':
         return t`Ally. Arcane`;
-      case "Ally":
+      case 'Ally':
         return t`Ally`;
-      case "Tarot":
+      case 'Tarot':
         return t`Tarot`;
       default:
         return t`Other`;
@@ -167,8 +167,8 @@ export function isSpecialCard(card?: Card): boolean {
     card &&
     (card.code === RANDOM_BASIC_WEAKNESS ||
       card.permanent ||
-      card.subtype_code === "weakness" ||
-      card.subtype_code === "basicweakness" ||
+      card.subtype_code === 'weakness' ||
+      card.subtype_code === 'basicweakness' ||
       card.mythos_card ||
       card.has_restrictions)
   );
@@ -191,22 +191,22 @@ function splitCards(
   if (groupedAssets.length > 0) {
     result.Assets = groupedAssets;
   }
-  const otherTypes: CardSplitType[] = ["Event", "Skill", "Treachery", "Enemy"];
+  const otherTypes: CardSplitType[] = ['Event', 'Skill', 'Treachery', 'Enemy'];
   otherTypes.forEach((type_code) => {
     const typeCards = filterBy(
       cardIds,
       cards,
-      "type_code",
+      'type_code',
       type_code.toLowerCase()
     );
     const combinedCards =
-      type_code === "Treachery"
+      type_code === 'Treachery'
         ? [
-            ...typeCards,
-            ...filterBy(cardIds, cards, "type_code", "investigator"),
-          ]
+          ...typeCards,
+          ...filterBy(cardIds, cards, 'type_code', 'investigator'),
+        ]
         : typeCards;
-    if (type_code !== "Assets" && combinedCards.length > 0) {
+    if (type_code !== 'Assets' && combinedCards.length > 0) {
       result[type_code] = combinedCards;
     }
   });
@@ -228,7 +228,7 @@ function slotCount(
     map(
       filter(cardIds, (c) => {
         const card = cards[c.id];
-        if (!card || card.type_code !== "asset") {
+        if (!card || card.type_code !== 'asset') {
           return false;
         }
         const slots = card.real_slots_normalized;
@@ -247,7 +247,7 @@ function factionCount(
   const nonPermanentCards = cardIds.filter((c) => {
     const card = cards[c.id];
     return (
-      !!card && !card.permanent && !card.double_sided && card.code !== "02014"
+      !!card && !card.permanent && !card.double_sided && card.code !== '02014'
     );
   });
   return [
@@ -291,10 +291,10 @@ function costHistogram(cardIds: CardId[], cards: CardsMap): number[] {
           return 0;
         }
         const realCost = card.realCost();
-        if (realCost === "X") {
+        if (realCost === 'X') {
           return -2;
         }
-        if (realCost === "-") {
+        if (realCost === '-') {
           return -1;
         }
         return realCost;
@@ -594,8 +594,8 @@ function getDeckChangesHelper(
         arcaneResearchUses > 0 &&
         removedCard.real_traits_normalized &&
         addedCard.real_traits_normalized &&
-        removedCard.real_traits_normalized.indexOf("#spell#") !== -1 &&
-        addedCard.real_traits_normalized.indexOf("#spell#") !== -1
+        removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
+        addedCard.real_traits_normalized.indexOf('#spell#') !== -1
       ) {
         let xpCost = computeXp(addedCard) - computeXp(removedCard);
         if (dtrFirst && xpCost > 0 && downTheRabitHoleUses > 0) {
@@ -679,8 +679,8 @@ function getDeckChangesHelper(
           (arcaneResearchUses > 1 &&
             removedCard.real_traits_normalized &&
             addedCard.real_traits_normalized &&
-            removedCard.real_traits_normalized.indexOf("#spell#") !== -1 &&
-            addedCard.real_traits_normalized.indexOf("#spell#") !== -1))
+            removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
+            addedCard.real_traits_normalized.indexOf('#spell#') !== -1))
       ) {
         incSlot(upgraded, addedCard);
         extraAddedCards.push(removedCard);
@@ -731,7 +731,7 @@ function getDeckChangesHelper(
     if (
       arcaneResearchUses > 0 &&
       card.real_traits_normalized &&
-      card.real_traits_normalized.indexOf("#spell#") !== -1
+      card.real_traits_normalized.indexOf('#spell#') !== -1
     ) {
       while (xpCost > 0 && arcaneResearchUses > 0) {
         xpCost--;
@@ -791,12 +791,6 @@ function getDeckChangesHelper(
   };
 }
 
-function slotsToCards(slots: Slots, cards: CardsMap): Card[] {
-  return flatMap(Object.keys(slots), (code) => {
-    return range(0, slots[code] ?? 0).map(_ => cards[code]);
-  }).flatMap(card => card ?? []);
-}
-
 function getDeckChanges(
   cards: CardsMap,
   validation: DeckValidation,
@@ -811,7 +805,7 @@ function getDeckChanges(
   previousCustomizations?: Customizations
 ): DeckChanges | undefined {
   const exiledCards = deck.exile_string
-    ? mapValues(groupBy(deck.exile_string.split(",")), (items) => items.length)
+    ? mapValues(groupBy(deck.exile_string.split(',')), (items) => items.length)
     : {};
   const totalExiledCards = sum(values(exiledCards));
   if (!previousDeck) {
@@ -824,7 +818,7 @@ function getDeckChanges(
   const main = cards[previousDeck.investigator_code];
   const previousInvestigatorBack = cards[previous_investigator_back_code];
   const previousInvestigatorFront = cards[previous_investigator_front_code];
-  if (!previousInvestigatorBack || !previousInvestigatorFront || !main)  {
+  if (!previousInvestigatorBack || !previousInvestigatorFront || !main) {
     return undefined;
   }
 
@@ -871,9 +865,9 @@ function getDeckChanges(
       }
     }
     if (
-      ignoreDelta != 0 &&
+      ignoreDelta !== 0 &&
       code !== ACE_OF_RODS_CODE &&
-      (validation.investigator.back.code == PARALLEL_AGNES_CODE ||
+      (validation.investigator.back.code === PARALLEL_AGNES_CODE ||
         validation.investigator.back.code === PARALLEL_SKIDS_CODE)
     ) {
       ignoredCardsDelta[code] = ignoreDelta;
@@ -1009,12 +1003,12 @@ export function parseCustomizationDecision(
   if (!value) {
     return [];
   }
-  return flatMap(value.split(","), (choice) => {
-    const parts = choice.split("|");
-    if (!parts[0] || parts[0] === "NaN") {
+  return flatMap(value.split(','), (choice) => {
+    const parts = choice.split('|');
+    if (!parts[0] || parts[0] === 'NaN') {
       return [];
     }
-    if (parts.length > 1 && (!parts[1] || parts[1] === "NaN")) {
+    if (parts.length > 1 && (!parts[1] || parts[1] === 'NaN')) {
       return [];
     }
     return {
@@ -1038,52 +1032,52 @@ export function processAdvancedChoice(
     };
   }
   switch (option.choice) {
-    case "remove_slot":
+    case 'remove_slot':
       return {
-        type: "remove_slot",
+        type: 'remove_slot',
         ...basic,
-        encodedChoice: choice || "0",
-        choice: parseInt(choice || "0", 10),
+        encodedChoice: choice || '0',
+        choice: parseInt(choice || '0', 10),
       };
-    case "choose_trait":
+    case 'choose_trait':
       return {
-        type: "choose_trait",
+        type: 'choose_trait',
         ...basic,
-        encodedChoice: choice || "",
+        encodedChoice: choice || '',
         choice: filter(
-          map(choice?.split("^") || [], (x) => x.trim()),
+          map(choice?.split('^') || [], (x) => x.trim()),
           (x) => !!x
         ),
       };
-    case "choose_card": {
-      const codes = choice?.split("^") || [];
+    case 'choose_card': {
+      const codes = choice?.split('^') || [];
       return {
-        type: "choose_card",
+        type: 'choose_card',
         ...basic,
         choice: codes,
-        encodedChoice: choice || "",
+        encodedChoice: choice || '',
         cards: flatMap(codes, (code) => cards?.[code] || []),
       };
     }
-    case "choose_skill": {
+    case 'choose_skill': {
       if (
-        choice === "willpower" ||
-        choice === "intellect" ||
-        choice === "combat" ||
-        choice === "agility"
+        choice === 'willpower' ||
+        choice === 'intellect' ||
+        choice === 'combat' ||
+        choice === 'agility'
       ) {
         return {
-          type: "choose_skill",
+          type: 'choose_skill',
           ...basic,
           choice,
           encodedChoice: choice,
         };
       }
       return {
-        type: "choose_skill",
+        type: 'choose_skill',
         ...basic,
         choice: undefined,
-        encodedChoice: "",
+        encodedChoice: '',
       };
     }
     default:
@@ -1108,7 +1102,7 @@ export function parseCustomizations(
     if (!card?.customization_options || !count) {
       return;
     }
-    const value = meta[`cus_${code}`] || "";
+    const value = meta[`cus_${code}`] || '';
     const previousEntry =
       (previousSlots?.[code] || 0) > 0
         ? previousMeta?.[`cus_${code}`]
@@ -1248,7 +1242,7 @@ export function parseDeck(
         ),
         (id) => {
           const card = cards[id];
-          return (card && card.name) || "???";
+          return (card && card.name) || '???';
         }
       ),
       (id) => {
@@ -1294,7 +1288,7 @@ export function parseDeck(
       ),
       (id) => {
         const card = cards[id];
-        return (card && card.name) || "???";
+        return (card && card.name) || '???';
       }
     ),
     (id) => {
@@ -1370,7 +1364,7 @@ export function parseDeck(
       ),
       (id) => {
         const card = cards[id];
-        return (card && card.name) || "???";
+        return (card && card.name) || '???';
       }
     ),
     (id) => {
@@ -1456,7 +1450,7 @@ export function parseDeck(
     availableExperience: (originalDeck?.xp || 0) + (xpAdjustment || 0),
     packs: uniqBy(cardIds, (c) => {
       const card = cards[c.id];
-      return (card && card.pack_code) || "";
+      return (card && card.pack_code) || '';
     }).length,
     factionCounts,
     costHistogram: costHistogram(cardIds, cards),
@@ -1476,8 +1470,8 @@ export function parseDeck(
     extraDeckSize,
     extraNormalCardCount: extraCards
       ? sumBy(extraCards, (c) =>
-          c.id === JIM_VENGEFUL_SHADE_CODE ? 0 : c.quantity
-        )
+        c.id === JIM_VENGEFUL_SHADE_CODE ? 0 : c.quantity
+      )
       : undefined,
     ignoreDeckLimitSlots,
     changes,
@@ -1487,7 +1481,7 @@ export function parseDeck(
       validation.deckOptions(newDeckCards),
       (option) =>
         !!option.limit &&
-        !find(option.trait || [], (trait) => trait === "Covenant")
+        !find(option.trait || [], (trait) => trait === 'Covenant')
     ),
     customContent:
       !!find(normalCards, (c) => c.custom) ||

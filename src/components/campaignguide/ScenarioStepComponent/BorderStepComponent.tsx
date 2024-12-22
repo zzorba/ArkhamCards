@@ -19,7 +19,7 @@ interface Props {
   processedScenario: ProcessedScenario;
   scenarioState: ScenarioStateHelper;
   campaignLog: GuidedCampaignLog;
-  switchCampaignScenario: () => void;
+  switchCampaignScenario?: () => void;
 }
 
 export default function BorderStepComponent({ componentId, switchCampaignScenario, step, width, processedScenario, scenarioState, campaignLog }: Props) {

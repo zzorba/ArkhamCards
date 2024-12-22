@@ -26,13 +26,13 @@ import StyleContext from '@styles/StyleContext';
 import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards, useSettingValue } from '@components/core/hooks';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { where } from '@data/sqlite/query';
-import DeckNavFooter, { FOOTER_HEIGHT, PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
+import { FOOTER_HEIGHT, PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
 import { Customizations, DeckId } from '@actions/types';
 import { CardInvestigatorProps } from './CardInvestigatorsView';
 import CardCustomizationOptions from './CardDetailView/CardCustomizationOptions';
-import { useCardCustomizations, useParsedDeck, useSimpleDeckEdits } from '@components/deck/hooks';
+import { useCardCustomizations, useParsedDeck } from '@components/deck/hooks';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';
@@ -153,6 +153,7 @@ function ScrollableCard(props: {
 }
 
 function DbCardDetailSwipeView(props: Props) {
+  // eslint-disable-next-line react/prop-types
   const { componentId, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
   const { listSeperator } = useContext(LanguageContext);
   const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
@@ -341,7 +342,7 @@ function DbCardDetailSwipeView(props: Props) {
         customizationsEditable={editable || customizationsEditable}
       />
     );
-  }, [slots, customizationsEditable, editable, customizations, mode, componentId, deckId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
+  }, [slots, customizationsEditable, tabooSetId, editable, customizations, mode, componentId, deckId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
   const data: (Card | undefined)[] = useMemo(() => {
     return map(cardCodes, code => cards[code]);
   }, [cardCodes, cards]);

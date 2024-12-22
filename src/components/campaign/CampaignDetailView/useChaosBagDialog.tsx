@@ -17,11 +17,9 @@ import StyleContext from '@styles/StyleContext';
 import { updateCampaignChaosBag } from '../actions';
 import { SetCampaignChaosBagAction } from '@data/remote/campaigns';
 import { ProcessedCampaign } from '@data/scenario';
-import { Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
 import { useAppDispatch } from '@app/store';
 import { MAX_WIDTH } from '@styles/sizes';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
-import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
 
 interface Props {
   componentId: string;
@@ -43,7 +41,7 @@ export function useSimpleChaosBagDialog(chaosBag?: ChaosBag, chaosBagResults?: C
   const content = useMemo(() => {
     const sealedChaosBag: ChaosBag = {};
     forEach(chaosBagResults?.sealedTokens, (token) => {
-      sealedChaosBag[token.icon] = ( sealedChaosBag[token.icon] ?? 0) + 1;
+      sealedChaosBag[token.icon] = (sealedChaosBag[token.icon] ?? 0) + 1;
     });
     if (!chaosBag) {
       return null;
@@ -64,13 +62,13 @@ export function useSimpleChaosBagDialog(chaosBag?: ChaosBag, chaosBagResults?: C
         )}
       </View>
     );
-  }, [chaosBag, chaosBagResults, width]);
+  }, [colors, typography, chaosBag, chaosBagResults, width]);
   const tokenCount = useMemo(() =>
     sum(values(chaosBag)) +
       (chaosBagResults?.blessTokens ?? 0) +
       (chaosBagResults?.curseTokens ?? 0) -
       (chaosBagResults?.sealedTokens?.length ?? 0),
-    [chaosBag, chaosBagResults]);
+  [chaosBag, chaosBagResults]);
   const { dialog, showDialog } = useDialog({
     title: t`Chaos Bag (${tokenCount})`,
     content,
@@ -110,7 +108,7 @@ export default function useChaosBagDialog({
     } else {
       showDrawChaosBag(componentId, campaignId, allInvestigators, cycleCode);
     }
-  }, [campaignId, componentId, guided, chaosBag, allInvestigators, scenarioId, standalone, cycleCode, processedCampaign]);
+  }, [campaignId, componentId, guided, allInvestigators, scenarioId, standalone, cycleCode]);
   const dispatch = useAppDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
     if (setChaosBag) {

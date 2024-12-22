@@ -56,7 +56,7 @@ function MyDecksComponent({
     myDecksUpdated,
     refreshing,
     error,
-  }, onRefresh] = useMyDecks(deckActions, live);
+  }, onRefresh] = useMyDecks(deckActions);
 
   useEffect(() => {
     const now = new Date();

@@ -46,7 +46,7 @@ export default function TravelCostStepComponent({ campaignGuide }: { campaignGui
       `${travelSentence} ${costSentence}`,
       sideScenario ? [{ text: t`This includes the cost of experience cost of playing the side-story.` }] : undefined,
     ];
-  }, [embarkData, sideScenario, theMap]);
+  }, [embarkData, lang, sideScenario, theMap]);
   if (!message) {
     return null;
   }

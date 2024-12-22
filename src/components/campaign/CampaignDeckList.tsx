@@ -4,7 +4,6 @@ import { View } from 'react-native';
 import { DeckId } from '@actions/types';
 
 export interface CampaignDeckListProps {
-  componentId: string;
   investigatorToDeck: {
     [code: string]: DeckId | undefined;
   };

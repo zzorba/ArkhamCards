@@ -17,7 +17,7 @@ interface Props {
   id: string;
   input: ReceiveCampaignLinkInput;
   campaignLog: GuidedCampaignLog;
-  switchCampaignScenario: () => void;
+  switchCampaignScenario?: () => void;
 }
 
 export default function ReceiveCampaignLinkInputComponent({

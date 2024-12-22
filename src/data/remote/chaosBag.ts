@@ -274,7 +274,7 @@ export function useChaosBagActions(): ChaosBagActions {
         break;
       }
     }
-  }, [drawTokenReq, updateDrawTokensReq, returnChaosBagTokensReq, returnChaosBagTokensWithBlurseReq]);
+  }, [cache, drawTokenReq, updateDrawTokensReq, returnChaosBagTokensReq, returnChaosBagTokensWithBlurseReq]);
 
   const sealTokens = useCallback(async(campaignId: UploadedCampaignId, sealed: SealedToken[]) => {
     await sealTokensReq({

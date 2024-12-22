@@ -7,10 +7,9 @@ import React, {
   useReducer,
   useRef,
   useState,
-} from "react";
-import useDebouncedEffect from "use-debounced-effect-hook";
-import { Navigation } from "react-native-navigation";
-import { Platform } from "react-native";
+} from 'react';
+import useDebouncedEffect from 'use-debounced-effect-hook';
+import { Navigation } from 'react-native-navigation';
 import {
   filter,
   find,
@@ -21,12 +20,12 @@ import {
   uniq,
   flatMap,
   groupBy,
-} from "lodash";
-import deepEqual from "deep-equal";
-import { ngettext, msgid, t } from "ttag";
-import { useDispatch, useSelector } from "react-redux";
+} from 'lodash';
+import deepEqual from 'deep-equal';
+import { ngettext, msgid, t } from 'ttag';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useAppDispatch } from "@app/store";
+import { useAppDispatch } from '@app/store';
 import {
   CampaignId,
   Customizations,
@@ -35,42 +34,42 @@ import {
   EditDeckState,
   ParsedDeck,
   Slots,
-} from "@actions/types";
-import { useDeck } from "@data/hooks";
+} from '@actions/types';
+import { useDeck } from '@data/hooks';
 import {
   Toggles,
   useComponentVisible,
   useDeckWithFetch,
   usePlayerCardsFunc,
-} from "@components/core/hooks";
+} from '@components/core/hooks';
 import {
   finishDeckEdit,
   startDeckEdit,
   updateDeckCustomizationChoice,
-} from "@components/deck/actions";
-import { CardsMap } from "@data/types/Card";
+} from '@components/deck/actions';
+import { CardsMap } from '@data/types/Card';
 import {
   getExtraDeckSlots,
   parseCustomizationDecision,
   parseCustomizations,
   parseDeck,
-} from "@lib/parseDeck";
-import { AppState, makeDeckEditsSelector } from "@reducers";
-import { DeckActions } from "@data/remote/decks";
-import LatestDeckT from "@data/interfaces/LatestDeckT";
-import ArkhamCardsAuthContext from "@lib/ArkhamCardsAuthContext";
-import { RANDOM_BASIC_WEAKNESS, RAVEN_QUILL_CODE } from "@app_constants";
-import StyleContext from "@styles/StyleContext";
-import { DrawWeaknessProps } from "@components/weakness/WeaknessDrawDialog";
-import { ShowAlert } from "./dialogs";
-import COLORS from "@styles/colors";
-import { CampaignDrawWeaknessProps } from "@components/campaign/CampaignDrawWeaknessDialog";
-import useSingleCard from "@components/card/useSingleCard";
-import { CustomizationChoice } from "@data/types/CustomizationOption";
-import { useCardMap } from "@components/card/useCardList";
-import LanguageContext from "@lib/i18n/LanguageContext";
-import { createSelector } from "reselect";
-import { PARALLEL_JIM_CODE } from "@data/deck/specialMetaSlots";
+} from '@lib/parseDeck';
+import { AppState, makeDeckEditsSelector } from '@reducers';
+import { DeckActions } from '@data/remote/decks';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { RANDOM_BASIC_WEAKNESS, RAVEN_QUILL_CODE } from '@app_constants';
+import StyleContext from '@styles/StyleContext';
+import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
+import { ShowAlert } from './dialogs';
+import COLORS from '@styles/colors';
+import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
+import useSingleCard from '@components/card/useSingleCard';
+import { CustomizationChoice } from '@data/types/CustomizationOption';
+import { useCardMap } from '@components/card/useCardList';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { createSelector } from 'reselect';
+import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 
 export function xpString(xp: number): string {
   return ngettext(msgid`${xp} XP`, `${xp} XP`, xp);
@@ -131,7 +130,7 @@ export function useLiveCustomizations(
         if (!choice.choice) {
           return [];
         }
-        return choice.choice?.split("^") || [];
+        return choice.choice?.split('^') || [];
       }
     );
     const slotCodes = slots ? keys(slots) : [];
@@ -139,7 +138,7 @@ export function useLiveCustomizations(
   }, [slots, ravenChoice]);
   const [cards] = useCardMap(
     codes,
-    "player",
+    'player',
     false,
     deckEdits?.tabooSetChange !== undefined
       ? deckEdits.tabooSetChange
@@ -164,7 +163,7 @@ export function useLiveCustomizations(
 export function useDeckSlotCount(
   { uuid }: DeckId,
   code: string,
-  mode?: "side" | "extra" | "ignore"
+  mode?: 'side' | 'extra' | 'ignore'
 ): [number, number] {
   const selector = useMemo(
     () =>
@@ -176,29 +175,28 @@ export function useDeckSlotCount(
           state: AppState,
           uuid: string,
           code: string,
-          mode?: "side" | "extra" | "ignore"
         ) => code,
         (
           state: AppState,
           uuid: string,
           code: string,
-          mode?: "side" | "extra" | "ignore"
+          mode?: 'side' | 'extra' | 'ignore'
         ) => mode,
         (editting, edits, uuid, code, mode): [number, number] => {
           if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
             return [0, 0];
           }
-          if (mode === "side") {
+          if (mode === 'side') {
             return [edits[uuid]?.side[code] || 0, 0];
           }
-          if (mode === "extra") {
+          if (mode === 'extra') {
             const extraDeck = groupBy(
-              (edits[uuid]?.meta.extra_deck ?? "").split(","),
+              (edits[uuid]?.meta.extra_deck ?? '').split(','),
               (x) => x
             );
             return [extraDeck[code]?.length ?? 0, 0];
           }
-          if (mode === "ignore") {
+          if (mode === 'ignore') {
             return [edits[uuid]?.ignoreDeckLimitSlots[code] || 0, 0];
           }
           return [
@@ -215,7 +213,7 @@ export function useDeckSlotCount(
 export function useDeckEdits(
   id: DeckId | undefined,
   initialDeck?: LatestDeckT,
-  initialMode?: "edit" | "upgrade"
+  initialMode?: 'edit' | 'upgrade'
 ): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
   const dispatch = useAppDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
@@ -245,7 +243,7 @@ export function useDeckEdits(
         ignoreDeckLimitSlots: initialDeck.deck.ignoreDeckLimitSlots || {},
         meta: initialDeck.deck.meta || {},
         side: initialDeck.deck.sideSlots || {},
-        mode: "view",
+        mode: 'view',
         editable: false,
       };
     }
@@ -272,7 +270,7 @@ export interface ParsedDeckResults {
   editable: boolean;
   parsedDeck?: ParsedDeck;
   parsedDeckRef: MutableRefObject<ParsedDeck | undefined>;
-  mode: "upgrade" | "edit" | "view";
+  mode: 'upgrade' | 'edit' | 'view';
   cardsMissing: boolean;
   dirty: MutableRefObject<boolean>;
 }
@@ -288,7 +286,7 @@ function useParsedDeckHelper(
   }: {
     fetchIfMissing?: boolean;
     waitForEdits?: boolean;
-    initialMode?: "upgrade" | "edit";
+    initialMode?: 'upgrade' | 'edit';
   } = {}
 ): ParsedDeckResults {
   const dirtyRef = useRef<boolean>(true);
@@ -309,7 +307,7 @@ function useParsedDeckHelper(
           if (!choice.choice) {
             return [];
           }
-          return choice.choice?.split("^") || [];
+          return choice.choice?.split('^') || [];
         }
       );
       return uniq([
@@ -328,10 +326,10 @@ function useParsedDeckHelper(
           : []),
         ...(deckEdits?.meta.alternate_back === PARALLEL_JIM_CODE
           ? [
-              ...keys(getExtraDeckSlots(deck?.deck.meta ?? {})),
-              ...keys(getExtraDeckSlots(deckEdits?.meta ?? {})),
-              ...keys(getExtraDeckSlots(deck?.previousDeck?.meta ?? {})),
-            ]
+            ...keys(getExtraDeckSlots(deck?.deck.meta ?? {})),
+            ...keys(getExtraDeckSlots(deckEdits?.meta ?? {})),
+            ...keys(getExtraDeckSlots(deck?.previousDeck?.meta ?? {})),
+          ]
           : []),
         ...keys(deck?.previousDeck?.slots || {}),
         ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
@@ -374,7 +372,7 @@ function useParsedDeckHelper(
       parsedDeckRef.current = pd;
       setParsedDeck(pd);
     }
-  }, [deck, cards, fetchIfMissing, listSeperator, parsedDeck]);
+  }, [deck, deckEdits, waitForEdits, cards, fetchIfMissing, listSeperator, parsedDeck]);
 
   useDebouncedEffect(
     () => {
@@ -413,7 +411,7 @@ function useParsedDeckHelper(
     parsedDeck,
     parsedDeckRef,
     editable: !!deckEdits?.editable,
-    mode: deckEdits?.mode || initialMode || "view",
+    mode: deckEdits?.mode || initialMode || 'view',
     cardsMissing: !cardsLoading && cardsMissing,
     dirty: dirtyRef,
   };
@@ -423,7 +421,7 @@ export function useParsedDeckWithFetch(
   id: DeckId,
   componentId: string,
   actions: DeckActions,
-  initialMode?: "upgrade" | "edit"
+  initialMode?: 'upgrade' | 'edit'
 ): ParsedDeckResults {
   const deck = useDeckWithFetch(id, actions);
   return useParsedDeckHelper(id, componentId, deck, {
@@ -436,7 +434,7 @@ export function useParsedDeckWithFetch(
 export function useParsedDeck(
   id: DeckId | undefined,
   componentId: string,
-  initialMode?: "upgrade" | "edit"
+  initialMode?: 'upgrade' | 'edit'
 ): ParsedDeckResults {
   const deck = useDeck(id);
   return useParsedDeckHelper(id, componentId, deck, { initialMode });
@@ -509,7 +507,7 @@ export interface DeckEditState {
   };
   hasPendingEdits: boolean;
   addedBasicWeaknesses: string[];
-  mode: "edit" | "upgrade" | "view";
+  mode: 'edit' | 'upgrade' | 'view';
 }
 
 export function useDeckEditState({
@@ -597,7 +595,7 @@ export function useDeckEditState({
     const addedWeaknesses: string[] = [];
     forEach(slotDeltas.additions, (addition, code) => {
       const card = cards[code];
-      if (card && card.subtype_code === "basicweakness") {
+      if (card && card.subtype_code === 'basicweakness') {
         forEach(range(0, addition), () => addedWeaknesses.push(code));
       }
     });
@@ -608,7 +606,7 @@ export function useDeckEditState({
     slotDeltas,
     addedBasicWeaknesses,
     hasPendingEdits,
-    mode: hasPendingEdits && mode === "view" ? "edit" : mode,
+    mode: hasPendingEdits && mode === 'view' ? 'edit' : mode,
   };
 }
 
@@ -632,7 +630,7 @@ export function useShowDrawWeakness({
   const { colors } = useContext(StyleContext);
   const [investigator] = useSingleCard(
     deck?.investigator,
-    "player",
+    'player',
     deck?.deck.taboo_id || 0
   );
   const [unsavedAssignedWeaknesses, setUnsavedAssignedWeaknesses] = useState<
@@ -649,17 +647,17 @@ export function useShowDrawWeakness({
         deckEditsRef.current.slots[RANDOM_BASIC_WEAKNESS] > 0
       ) {
         dispatch({
-          type: "UPDATE_DECK_EDIT_COUNTS",
-          countType: "slots",
-          operation: "dec",
+          type: 'UPDATE_DECK_EDIT_COUNTS',
+          countType: 'slots',
+          operation: 'dec',
           id,
           code: RANDOM_BASIC_WEAKNESS,
         });
       }
       dispatch({
-        type: "UPDATE_DECK_EDIT_COUNTS",
-        countType: "slots",
-        operation: "inc",
+        type: 'UPDATE_DECK_EDIT_COUNTS',
+        countType: 'slots',
+        operation: 'inc',
         id,
         code,
       });
@@ -677,7 +675,7 @@ export function useShowDrawWeakness({
   const editCollection = useCallback(() => {
     Navigation.push(componentId, {
       component: {
-        name: "My.Collection",
+        name: 'My.Collection',
       },
     });
   }, [componentId]);
@@ -688,11 +686,11 @@ export function useShowDrawWeakness({
         return;
       }
       const backgroundColor =
-        colors.faction[investigator ? investigator.factionCode() : "neutral"]
+        colors.faction[investigator ? investigator.factionCode() : 'neutral']
           .background;
       Navigation.push<DrawWeaknessProps>(componentId, {
         component: {
-          name: "Weakness.Draw",
+          name: 'Weakness.Draw',
           passProps: {
             investigator,
             slots: deckEditsRef.current.slots,
@@ -701,7 +699,7 @@ export function useShowDrawWeakness({
           },
           options: {
             statusBar: {
-              style: "light",
+              style: 'light',
               backgroundColor,
             },
             topBar: {
@@ -711,7 +709,7 @@ export function useShowDrawWeakness({
               },
               backButton: {
                 title: t`Back`,
-                color: "white",
+                color: 'white',
               },
               background: {
                 color: backgroundColor,
@@ -731,12 +729,12 @@ export function useShowDrawWeakness({
         [
           {
             text: t`Draw From Collection`,
-            icon: "draw",
-            style: "default",
+            icon: 'draw',
+            style: 'default',
             onPress: () => showWeaknessDialog(alwaysReplaceRandomBasicWeakness),
           },
-          { text: t`Edit Collection`, icon: "edit", onPress: editCollection },
-          { text: t`Cancel`, style: "cancel" },
+          { text: t`Edit Collection`, icon: 'edit', onPress: editCollection },
+          { text: t`Cancel`, style: 'cancel' },
         ]
       );
     },
@@ -749,11 +747,11 @@ export function useShowDrawWeakness({
         return;
       }
       const backgroundColor =
-        colors.faction[investigator ? investigator.factionCode() : "neutral"]
+        colors.faction[investigator ? investigator.factionCode() : 'neutral']
           .background;
       Navigation.push<CampaignDrawWeaknessProps>(componentId, {
         component: {
-          name: "Dialog.CampaignDrawWeakness",
+          name: 'Dialog.CampaignDrawWeakness',
           passProps: {
             campaignId,
             deckSlots: deckEditsRef.current.slots,
@@ -763,7 +761,7 @@ export function useShowDrawWeakness({
           },
           options: {
             statusBar: {
-              style: "light",
+              style: 'light',
             },
             topBar: {
               title: {
@@ -772,7 +770,7 @@ export function useShowDrawWeakness({
               },
               backButton: {
                 title: t`Back`,
-                color: "white",
+                color: 'white',
               },
               background: {
                 color: backgroundColor,
@@ -797,18 +795,18 @@ export function useShowDrawWeakness({
 }
 
 interface UpdateDeckAction {
-  type: "update-deck";
+  type: 'update-deck';
   initialTags: string[];
 }
 
 interface SetToggleAction {
-  type: "set-toggle";
+  type: 'set-toggle';
   key: string | number;
   value: boolean;
 }
 
 interface ToggleAction {
-  type: "toggle";
+  type: 'toggle';
   key: string;
 }
 
@@ -842,12 +840,12 @@ export function useDeckTags(): DeckTagsResult {
   const [{ deckTags, dirty }, updateTags] = useReducer(
     (state: DeckTagsState, action: DeckTagsAction): DeckTagsState => {
       switch (action.type) {
-        case "set-toggle":
-        case "toggle": {
+        case 'set-toggle':
+        case 'toggle': {
           const toggles = {
             ...state.deckTags,
             [action.key]:
-              action.type === "set-toggle"
+              action.type === 'set-toggle'
                 ? action.value
                 : !state.deckTags[action.key],
           };
@@ -857,7 +855,7 @@ export function useDeckTags(): DeckTagsResult {
             dirty: isDirty(state.initialTags, toggles),
           };
         }
-        case "update-deck": {
+        case 'update-deck': {
           const toggles: Toggles = {};
           forEach(action.initialTags, (t) => {
             toggles[t] = true;
@@ -874,19 +872,19 @@ export function useDeckTags(): DeckTagsResult {
   );
   const toggleDeckTag = useCallback(
     (tag: string) => {
-      updateTags({ type: "toggle", key: tag });
+      updateTags({ type: 'toggle', key: tag });
     },
     [updateTags]
   );
   const setDeckTag = useCallback(
     (tag: string, value: boolean) => {
-      updateTags({ type: "set-toggle", key: tag, value });
+      updateTags({ type: 'set-toggle', key: tag, value });
     },
     [updateTags]
   );
   const setInitialTags = useCallback(
     (initialTags: string[]) => {
-      updateTags({ type: "update-deck", initialTags });
+      updateTags({ type: 'update-deck', initialTags });
     },
     [updateTags]
   );

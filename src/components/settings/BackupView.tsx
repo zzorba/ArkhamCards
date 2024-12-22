@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   Alert,
   PermissionsAndroid,
@@ -69,7 +69,7 @@ async function hasFileSystemPermission(read: boolean) {
 }
 
 function AutommaticBackupItem({ componentId, backup }: { backup: AutomaticBackupFile } & NavigationProps) {
-  const onPress = useCallback(async () => {
+  const onPress = useCallback(async() => {
     const json = JSON.parse(await safeReadFile(backup.file.path));
     const campaigns: Campaign[] = [];
     forEach(values(json.campaigns), campaign => {
@@ -97,7 +97,7 @@ function AutommaticBackupItem({ componentId, backup }: { backup: AutomaticBackup
         },
       },
     });
-  }, [backup]);
+  }, [componentId, backup]);
   return <SettingsItem onPress={onPress} text={format(backup.date, 'yyyy-MM-dd')} />
 }
 
@@ -122,7 +122,7 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
     return () => {
       unmounted = true;
     };
-  }, [setAutoBackups]);
+  }, [safeMode, setAutoBackups]);
   const backupData = useSelector(getBackupData);
   const pickBackupFile = useCallback(async() => {
     if (!await hasFileSystemPermission(true)) {

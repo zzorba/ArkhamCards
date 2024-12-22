@@ -7,7 +7,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { Counters, useCounters, useEffectUpdate } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
-import space, { isBig } from '@styles/space';
+import space from '@styles/space';
 import { isTablet } from 'react-native-device-info';
 
 interface Props {
@@ -45,16 +45,16 @@ export default function SliderChooser({
 
   const shouldSync = useRef(true);
 
-  const [liveValues, inc, dec, _, sync] = useCounters(
+  const [liveValues, inc, dec, , sync] = useCounters(
     { min: values[0], max: values[1] },
     {
-      checkConstraints: (change: String, counters: Counters) => {
+      checkConstraints: (change: string, counters: Counters) => {
         shouldSync.current = false;
         if ((counters.min || 0) <= (counters.max || 0)) {
           return counters;
         }
 
-        if (change == 'min') {
+        if (change === 'min') {
           return {
             ...counters,
             max: counters.min,
@@ -110,13 +110,13 @@ export default function SliderChooser({
             onDecrement={decMin}
             dialogStyle
             showZeroCount
-            count={liveValues['min'] || 0}
+            count={liveValues.min || 0}
           >
-            <Text style={[{ minWidth: 28 }, typography.counter, typography.dark, typography.center]}>{liveValues['min'] || 0}</Text>
+            <Text style={[{ minWidth: 28 }, typography.counter, typography.dark, typography.center]}>{liveValues.min || 0}</Text>
           </PlusMinusButtons>
         </View>
         <View style={[styles.counter, { borderColor: colors.L10 }, space.paddingS]}>
-        <Text style={[typography.counter, space.marginSideS]}>{t`Max`}</Text>
+          <Text style={[typography.counter, space.marginSideS]}>{t`Max`}</Text>
           <PlusMinusButtons
             min={0}
             max={max}
@@ -125,9 +125,9 @@ export default function SliderChooser({
             dialogStyle
 
             showZeroCount
-            count={liveValues['max'] || 0}
+            count={liveValues.max || 0}
           >
-            <Text style={[{ minWidth: 28 }, typography.counter, typography.dark, typography.center]}>{liveValues['max'] || 0}</Text>
+            <Text style={[{ minWidth: 28 }, typography.counter, typography.dark, typography.center]}>{liveValues.max || 0}</Text>
           </PlusMinusButtons>
         </View>
       </View>

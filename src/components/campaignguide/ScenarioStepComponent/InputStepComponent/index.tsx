@@ -38,7 +38,7 @@ interface Props {
   step: InputStep;
   componentId: string;
   campaignLog: GuidedCampaignLog;
-  switchCampaignScenario: () => void;
+  switchCampaignScenario?: () => void;
   color?: BorderColor;
   border?: boolean;
 }
@@ -68,7 +68,6 @@ export default function InputStepComponent({ step, color, componentId, campaignL
           defaultChoice={step.input.default_choice}
           compact={step.input.style === 'compact'}
           icon={step.input.icon}
-          showHiddenChoices={step.input.show_hidden_choices}
         />
       );
     case 'checklist': {
@@ -209,7 +208,6 @@ export default function InputStepComponent({ step, color, componentId, campaignL
             defaultState
             min={step.input.choose_none_steps ? 0 : 1}
             max={4}
-            includeParallel={step.input.include_parallel}
             allowNewDecks
             includeLeadInvestigator={!!step.input.lead_investigator_effects}
           />

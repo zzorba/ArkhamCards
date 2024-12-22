@@ -1,5 +1,5 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { filter, flatMap, forEach, keys, map } from 'lodash';
+import React, { ReactNode, useCallback, useContext, useMemo, useRef, useState } from 'react';
+import { filter, forEach, keys, map } from 'lodash';
 import {
   ActivityIndicator,
   Image,

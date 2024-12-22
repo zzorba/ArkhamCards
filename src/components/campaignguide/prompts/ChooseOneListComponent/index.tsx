@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import { SimpleGrid } from 'react-native-super-grid';
-import { filter, flatMap } from 'lodash';
+import { flatMap } from 'lodash';
 
 import { DisplayChoice } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
@@ -11,8 +11,6 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { TouchableShrink } from '@components/core/Touchables';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
-import typography from '@styles/typography';
-import CardTextComponent from '@components/card/CardTextComponent';
 import EncounterIcon from '@icons/EncounterIcon';
 
 interface Props {
@@ -41,7 +39,7 @@ export default function ChooseOneListComponent({
         idx++;
       }
       if (!editable) {
-        if(choice.conditionHidden || currentIndex != selectedIndex) {
+        if(choice.conditionHidden || currentIndex !== selectedIndex) {
           return [];
         }
       } else {
@@ -55,29 +53,43 @@ export default function ChooseOneListComponent({
       return {
         choice,
         key: originalIndex,
-      disabled: !!choice.conditionHidden,
+        disabled: !!choice.conditionHidden,
         idx: currentIndex,
       };
     });
-  }, [choices, editable, selectedIndex]);
+  }, [choices, compact, editable, selectedIndex]);
+  const renderItem = useCallback(({ item: { choice, key, idx } }: { item: { choice: DisplayChoice; key: number; idx: number; disabled: boolean } }) => {
+    return (
+      <CompactChoiceComponent
+        key={key}
+        icon={icon ?? processedScenario.id.scenarioId}
+        index={idx}
+        onSelect={onSelect}
+        choice={choice}
+        selected={selectedIndex === idx}
+        editable={editable}
+        last={!editable || choices.length <= 2 || idx === choices.length - 1}
+      />
+    );
+  }, [choices.length, editable, icon, onSelect, processedScenario.id.scenarioId, selectedIndex]);
   if (compact) {
     if (!editable) {
       return (
         <>
           { flatMap(visibleChoices, ({ choice, key, idx }) => {
-              return (
-                <CompactChoiceComponent
-                  key={key}
-                  icon={icon ?? processedScenario.id.scenarioId}
-                  index={idx}
-                  onSelect={onSelect}
-                  choice={choice}
-                  selected={selectedIndex === idx}
-                  editable={editable}
-                  last={!editable || choices.length <= 2 || idx === choices.length - 1}
-                />
-              );
-            }) }
+            return (
+              <CompactChoiceComponent
+                key={key}
+                icon={icon ?? processedScenario.id.scenarioId}
+                index={idx}
+                onSelect={onSelect}
+                choice={choice}
+                selected={selectedIndex === idx}
+                editable={editable}
+                last={!editable || choices.length <= 2 || idx === choices.length - 1}
+              />
+            );
+          }) }
         </>
       );
     }
@@ -87,20 +99,7 @@ export default function ChooseOneListComponent({
         style={{ padding: 0 }}
         itemDimension={60}
         data={visibleChoices}
-        renderItem={({ item: { choice, key, idx } }) => {
-          return (
-            <CompactChoiceComponent
-              key={key}
-              icon={icon ?? processedScenario.id.scenarioId}
-              index={idx}
-              onSelect={onSelect}
-              choice={choice}
-              selected={selectedIndex === idx}
-              editable={editable}
-              last={!editable || choices.length <= 2 || idx === choices.length - 1}
-            />
-          );
-        }}
+        renderItem={renderItem}
       />
     );
   }
@@ -154,7 +153,7 @@ function ChoiceComponent({
         { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
       </>
     );
-  }, [choice]);
+  }, [choice, disabled]);
   const showBorder = !last && isTablet;
   return (
     <View style={[
@@ -191,7 +190,6 @@ function CompactChoiceComponent({
   selected,
   editable,
   onSelect,
-  last,
   icon,
 }: ChoiceComponentProps & { icon: string }) {
   const { colors, typography } = useContext(StyleContext);
@@ -202,7 +200,7 @@ function CompactChoiceComponent({
     return (
       <Text style={[typography.cardName, selected ? typography.inverted : undefined]}>{choice.text}</Text>
     );
-  }, [choice, selected]);
+  }, [choice, selected, typography]);
   if (!editable) {
     return (
       <View style={{ flexDirection: 'row' }}>

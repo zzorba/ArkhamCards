@@ -32,7 +32,7 @@ import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
-import { SortType, Slots, DeckId, Customizations, DEFAULT_SORT } from '@actions/types';
+import { SortType, Slots, Customizations, DEFAULT_SORT } from '@actions/types';
 import { combineQueries, where } from '@data/sqlite/query';
 import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
 import Card, { cardInCollection, CardsMap, InvestigatorChoice, PartialCard } from '@data/types/Card';
@@ -41,11 +41,9 @@ import space, { m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { ParsedDeckResults, useLiveCustomizations, useSimpleDeckEdits } from '@components/deck/hooks';
-import { useDeck } from '@data/hooks';
+import { ParsedDeckResults, useLiveCustomizations } from '@components/deck/hooks';
 import { useCards, useEffectUpdate, useSettingValue, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
-import { ControlType } from '../CardSearchResult/ControlComponent';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -198,6 +196,7 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
   const fetchedOne = useRef(false);
   useEffect(() => {
     fetchedOne.current = false;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visibleCards, ...deps]);
   useEffect(() => {
     if (visibleCards.length) {
@@ -529,7 +528,7 @@ function useSectionFeed({
       if (!card) {
         return [];
       }
-      return map(range(0, deckCardCounts[key] ?? 0), (_) => card);
+      return map(range(0, deckCardCounts[key] ?? 0), () => card);
     });
     return {
       deckValidation,
@@ -1100,7 +1099,7 @@ export default function({
       default:
         return <View />;
     }
-  }, [lockedPermanents, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, borderStyle]);
+  }, [mode, lockedPermanents, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, borderStyle]);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);
   }, [fontScale, headerHeight, lang]);

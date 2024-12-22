@@ -22,7 +22,7 @@ export const THE_INSANE_CODE = 'zci_00001';
 export const JOE_DIAMOND_CODE = '05002';
 export const SUZI_CODE = '89001';
 
-export const BONDED_WEAKNESS_COUNTS: { [code: string]: number | undefined } =  {
+export const BONDED_WEAKNESS_COUNTS: { [code: string]: number | undefined } = {
   '06018': 3, // Hungering Blade
   '06024': 1, // Crystallizer of Dreams
   '06282': 1, // Summoned Hound
@@ -44,7 +44,7 @@ const specialCards: AllSpecialCards = {
       min: 0,
       max: 0,
       codes: [
-        '90052'
+        '90052',
       ],
     },
   },

@@ -49,7 +49,7 @@ function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound
   }
   const color = colors.faction[dualFaction ? 'dual' : faction][props.color === 'dark' ? 'darkBackground' : 'background'];
   return (
-    <View 
+    <View
       style={[
         styles.cardTitle,
         fullRound ? styles.fullRound : undefined,
@@ -57,7 +57,7 @@ function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound
           backgroundColor: color,
           borderColor: color,
         } : undefined,
-      ]} 
+      ]}
       opacity={eliminated ? 0.6 : undefined}
     >
       <FactionPattern

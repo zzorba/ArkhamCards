@@ -1,15 +1,13 @@
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import DeckQuantityComponent from './DeckQuantityComponent';
 import { ChecklistSlots, DeckId } from '@actions/types';
-import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { AppState, getDeckChecklist } from '@reducers';
 import { useDispatch, useSelector } from 'react-redux';
-import { find } from 'lodash';
 import { setDeckChecklistCard } from '@components/deck/actions';
 import { useDeckSlotCount } from '@components/deck/hooks';
 import CardChecklistToggles from './CardChecklistToggles';

@@ -9,7 +9,7 @@ export interface AutomaticBackupFile {
   file: RNFS.ReadDirItem;
 }
 
-const BACKUP_DIRECTORY = RNFS.DocumentDirectoryPath + '/ArkhamCards/';
+const BACKUP_DIRECTORY = `${RNFS.DocumentDirectoryPath }/ArkhamCards/`;
 
 export async function loadBackupFiles(): Promise<AutomaticBackupFile[]> {
   const contents = await RNFS.readDir(BACKUP_DIRECTORY);

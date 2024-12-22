@@ -17,8 +17,6 @@ import StyleContext from '@styles/StyleContext';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import useConnectionProblemBanner from '@components/core/useConnectionProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import useNetworkStatus from '@components/core/useNetworkStatus';
-import { NetInfoStateType } from '@react-native-community/netinfo';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import ArkhamButton from '@components/core/ArkhamButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -137,8 +135,6 @@ function CampaignList({ onScroll, header, componentId, campaigns, footer, footer
     }
   }, [componentId]);
 
-  const [{ networkType, isConnected }] = useNetworkStatus();
-  const offline = !isConnected || networkType === NetInfoStateType.none;
   const deckActions = useDeckActions();
   const [{ refreshing: decksRefreshing, error }, refreshDecks] = useMyDecks(deckActions);
   const [connectionProblemBanner] = useConnectionProblemBanner({ width, arkhamdbState: { error, reLogin } });

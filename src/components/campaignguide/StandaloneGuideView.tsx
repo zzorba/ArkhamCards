@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
@@ -15,7 +15,6 @@ import { useDeckActions } from '@data/remote/decks';
 import { InjectedCampaignGuideContextProps } from './withCampaignGuideContext';
 import space from '@styles/space';
 import ScenarioGuideContext from './ScenarioGuideContext';
-import StyleContext from '@styles/StyleContext';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import CampaignHeader from './CampaignHeader';
 
@@ -25,7 +24,6 @@ export interface StandaloneGuideProps extends ScenarioGuideInputProps {
 }
 
 function StandaloneGuideView({ campaignId, componentId, setCampaignServerId, upload }: StandaloneGuideProps & NavigationProps & InjectedCampaignGuideContextProps) {
-  const { typography } = useContext(StyleContext);
   const { campaign } = useContext(CampaignGuideContext);
   const { processedScenario } = useContext(ScenarioGuideContext);
   useStopAudioOnUnmount();
@@ -56,7 +54,7 @@ function StandaloneGuideView({ campaignId, componentId, setCampaignServerId, upl
         />
       </View>
     );
-  }, [componentId, upload, campaignId, setCampaignServerId, showAlert, updateCampaignActions, deckActions, campaign, typography]);
+  }, [componentId, upload, campaignId, setCampaignServerId, showAlert, updateCampaignActions, deckActions, campaign]);
 
   return (
     <>

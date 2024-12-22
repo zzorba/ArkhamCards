@@ -190,7 +190,7 @@ export default function DeckViewTab(props: Props) {
     );
   }, [
     investigator, deck, tabooSetId, tabooSet, showTaboo, tabooOpen, editable, deckEdits?.meta, parsedDeck?.changes,
-    setMeta, setParallel, setTabooSet, renderXpButton, xpLabel,
+    hideTabooPicker, setMeta, setParallel, setTabooSet, renderXpButton, xpLabel,
   ]);
 
   const investigatorBlock = useMemo(() => {

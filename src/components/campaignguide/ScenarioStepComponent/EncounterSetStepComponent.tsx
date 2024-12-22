@@ -16,7 +16,6 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import space from '@styles/space';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import StyleContext from '@styles/StyleContext';
-import { CampaignId } from '@actions/types';
 import ArkhamButton from '@components/core/ArkhamButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useSettingValue } from '@components/core/hooks';
@@ -30,7 +29,6 @@ const CORE_SET_ICONS = new Set([
 
 interface Props {
   componentId: string;
-  campaignId: CampaignId;
   step: EncounterSetsStep;
   campaignGuide: CampaignGuide
   color?: BorderColor;
@@ -49,17 +47,16 @@ function EncounterSetIcon({ set }: { set: { code: string; name: string | undefin
       setToggle={setToggle}
     >
       <EncounterIcon
-          encounter_code={set.code}
-          size={48}
-          color={CORE_SET_ICONS.has(set.code) ? colors.skill.combat.icon : colors.darkText}
+        encounter_code={set.code}
+        size={48}
+        color={CORE_SET_ICONS.has(set.code) ? colors.skill.combat.icon : colors.darkText}
       />
     </ToolTip>
   );
 }
 
-export default function EncounterSetStepComponent({ componentId, color, campaignId, step, campaignGuide }: Props) {
+export default function EncounterSetStepComponent({ componentId, color, step, campaignGuide }: Props) {
   const alphabetizeEncounterSets = useSettingValue('alphabetize');
-  const { colors } = useContext(StyleContext);
   const { lang, listSeperator } = useContext(LanguageContext);
 
   const errata = useMemo(() => campaignGuide.cardErrata(step.encounter_sets), [campaignGuide, step.encounter_sets]);

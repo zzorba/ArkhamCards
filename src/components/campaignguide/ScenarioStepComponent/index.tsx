@@ -40,7 +40,7 @@ interface Props {
   border?: boolean;
   color?: BorderColor;
   noTitle?: boolean;
-  switchCampaignScenario: () => void;
+  switchCampaignScenario?: () => void;
 }
 
 
@@ -52,7 +52,7 @@ function ScenarioStepComponentContent({
   color,
   switchCampaignScenario,
 }: Props) {
-  const { campaignGuide, campaignId } = useContext(CampaignGuideContext);
+  const { campaignGuide } = useContext(CampaignGuideContext);
   const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
   if (step.border_only && !border) {
     return null;
@@ -95,7 +95,6 @@ function ScenarioStepComponentContent({
         <EncounterSetStepComponent
           step={step}
           campaignGuide={campaignGuide}
-          campaignId={campaignId}
           color={color}
           componentId={componentId}
         />

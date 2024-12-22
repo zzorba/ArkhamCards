@@ -1,20 +1,20 @@
-import { find, findIndex, flatMap, forEach, map, partition } from "lodash";
+import { find, findIndex, flatMap, forEach, map, partition } from 'lodash';
 
-import { QueryParams } from "@data/sqlite/types";
+import { QueryParams } from '@data/sqlite/types';
 import {
   BASIC_QUERY,
   combineQueries,
   combineQueriesOpt,
   where,
-} from "@data/sqlite/query";
+} from '@data/sqlite/query';
 import {
   SKILLS,
   FactionCodeType,
   CARD_FACTION_CODES,
   specialPacksSet,
   specialPacks,
-} from "@app_constants";
-import { Brackets } from "typeorm/browser";
+} from '@app_constants';
+import { Brackets } from 'typeorm/browser';
 
 export interface CardFilterData {
   hasCost: boolean;
@@ -152,15 +152,15 @@ export interface FilterState {
 }
 
 const ACTION_TEXT: { [key: string]: string } = {
-  fight: "<b>Fight.</b>",
-  engage: "<b>Engage.</b>",
-  investigate: "<b>Investigate.</b>",
-  play: "<b>Play.</b>",
-  draw: "<b>Draw.</b>",
-  move: "<b>Move.</b>",
-  evade: "<b>Evade.</b>",
-  resource: "<b>Resource.</b>",
-  parley: "<b>Parley.</b>",
+  fight: '<b>Fight.</b>',
+  engage: '<b>Engage.</b>',
+  investigate: '<b>Investigate.</b>',
+  play: '<b>Play.</b>',
+  draw: '<b>Draw.</b>',
+  move: '<b>Move.</b>',
+  evade: '<b>Evade.</b>',
+  resource: '<b>Resource.</b>',
+  parley: '<b>Parley.</b>',
 };
 
 export const defaultFilterState: FilterState = {
@@ -263,10 +263,10 @@ export const defaultFilterState: FilterState = {
 };
 
 export const VENGEANCE_FILTER: Brackets = where(
-  "c.vengeance >= 0 or linked_card.vengeance >= 0"
+  'c.vengeance >= 0 or linked_card.vengeance >= 0'
 );
-export const UNIQUE_FILTER: Brackets = where("c.is_unique = 1");
-export const NON_STORY_FILTER: Brackets = where("c.xp is not null");
+export const UNIQUE_FILTER: Brackets = where('c.is_unique = 1');
+export const NON_STORY_FILTER: Brackets = where('c.xp is not null');
 
 export default class FilterBuilder {
   prefix: string;
@@ -276,7 +276,7 @@ export default class FilterBuilder {
   }
 
   private fieldName(parts: string[]): string {
-    return [this.prefix, ...parts].join("_");
+    return [this.prefix, ...parts].join('_');
   }
 
   rangeFilter(
@@ -289,38 +289,38 @@ export default class FilterBuilder {
     ): string => `${model}.${field}`
   ): Brackets[] {
     if (values[0] === values[1]) {
-      const fieldName = this.fieldName([field, "value"]);
+      const fieldName = this.fieldName([field, 'value']);
       return [
         where(
-          `${formula("c", field)} = :${fieldName}${
+          `${formula('c', field)} = :${fieldName}${
             linked
               ? ` OR (linked_card.${field} is not null AND ${formula(
-                  "linked_card",
-                  field
-                )} = :${fieldName})`
-              : ""
+                'linked_card',
+                field
+              )} = :${fieldName})`
+              : ''
           }`,
           { [fieldName]: values[0] }
         ),
       ];
     }
-    const minFieldName = this.fieldName([field, "min"]);
-    const maxFieldName = this.fieldName([field, "max"]);
+    const minFieldName = this.fieldName([field, 'min']);
+    const maxFieldName = this.fieldName([field, 'max']);
     return [
       where(
-        `(${formula("c", field)} >= :${minFieldName} AND ${formula(
-          "c",
+        `(${formula('c', field)} >= :${minFieldName} AND ${formula(
+          'c',
           field
         )} <= :${maxFieldName})${
           linked
             ? ` OR (linked_card.${field} is not null AND (${formula(
-                "linked_card",
-                field
-              )} >= :${minFieldName} AND ${formula(
-                "linked_card",
-                field
-              )} <= :${maxFieldName}))`
-            : ""
+              'linked_card',
+              field
+            )} >= :${minFieldName} AND ${formula(
+              'linked_card',
+              field
+            )} <= :${maxFieldName}))`
+            : ''
         }`,
         {
           [minFieldName]: values[0],
@@ -334,7 +334,7 @@ export default class FilterBuilder {
     field: string,
     elements: string[],
     clause: (valueName: string) => string,
-    join = " OR "
+    join = ' OR '
   ): Brackets[] {
     if (!elements.length) {
       return [];
@@ -349,9 +349,9 @@ export default class FilterBuilder {
   }
 
   slotFilter(slots: string[]): Brackets[] {
-    const [none, otherSlots] = partition(slots, (s) => s === "none");
+    const [none, otherSlots] = partition(slots, (s) => s === 'none');
     const clause: Brackets[] = this.complexVectorClause(
-      "slot",
+      'slot',
       map(otherSlots, (slot) => `%#${slot}#%`),
       (valueName: string) => `c.real_slots_normalized LIKE :${valueName}`
     );
@@ -361,22 +361,22 @@ export default class FilterBuilder {
     const noneClause: Brackets = where(
       `c.real_slots_normalized is null AND c.type_code = 'asset' and NOT c.permanent`
     );
-    return [combineQueries(noneClause, clause, "or")];
+    return [combineQueries(noneClause, clause, 'or')];
   }
 
   customizableFilter(filters: FilterState): Brackets[] {
     if (!filters.customizable) {
       return [];
     }
-    return [where("c.customization_options is not null")];
+    return [where('c.customization_options is not null')];
   }
 
   traitFilter(traits: string[], localizedTraits: boolean): Brackets[] {
     const traits_field = localizedTraits
-      ? "traits_normalized"
-      : "real_traits_normalized";
+      ? 'traits_normalized'
+      : 'real_traits_normalized';
     return this.complexVectorClause(
-      "trait",
+      'trait',
       map(traits, (trait) => `%#${trait.toLowerCase()}#%`),
       (valueName: string) =>
         `c.${traits_field} LIKE :${valueName} OR (linked_card.${traits_field} is not null AND linked_card.${traits_field} LIKE :${valueName})`
@@ -387,39 +387,39 @@ export default class FilterBuilder {
   // has_restriction AND no match 1 and no match 2 and no match 3
   illegalSpecialistFilter(traits: string[], factions: string[]): Brackets {
     const traitClause = combineQueries(
-      where("c.restrictions_trait IS NOT NULL"),
+      where('c.restrictions_trait IS NOT NULL'),
       this.complexVectorClause(
-        "spec_trait",
+        'spec_trait',
         traits.map((trait) => `%${trait}%`),
         (valueName: string) => `c.restrictions_trait NOT LIKE :${valueName}`,
-        " AND "
+        ' AND '
       ),
-      "and"
+      'and'
     );
     return traitClause;
     const factionsClause = combineQueries(
-      where("c.restrictions_faction IS NOT NULL"),
+      where('c.restrictions_faction IS NOT NULL'),
       this.complexVectorClause(
-        "spec_faction",
+        'spec_faction',
         map(factions, (faction) => `%#${faction.toLowerCase()}#%`),
         (valueName: string) => `c.restrictions_faction NOT LIKE :${valueName}`,
-        " AND "
+        ' AND '
       ),
-      "and"
+      'and'
     );
 
-    return combineQueries(traitClause, [factionsClause], "and", true);
+    return combineQueries(traitClause, [factionsClause], 'and', true);
   }
 
   tagFilter(tags: string[]): Brackets[] {
     if (!tags.length) {
       return [];
     }
-    if (tags.length === 1 && tags[0] === "the_insane") {
+    if (tags.length === 1 && tags[0] === 'the_insane') {
       return [];
     }
     return this.complexVectorClause(
-      "tag",
+      'tag',
       map(tags, (tag) => `%${tag}%`),
       (valueName: string) =>
         `c.tags LIKE :${valueName} OR (linked_card.tags is not null AND linked_card.tags LIKE :${valueName})`
@@ -449,7 +449,7 @@ export default class FilterBuilder {
         new Brackets((qb) =>
           qb
             .where(`c.type_code != 'investigator'`)
-            .andWhere(`(${parts.join(" OR ")})`)
+            .andWhere(`(${parts.join(' OR ')})`)
         ),
       ];
     }
@@ -468,8 +468,8 @@ export default class FilterBuilder {
       locationVictoryEnabled,
     } = filters;
     const result: Brackets[] = [
-      ...(shroudEnabled ? this.rangeFilter("shroud", shroud, true) : []),
-      ...(cluesEnabled ? [...this.rangeFilter("shroud", shroud, true)] : []),
+      ...(shroudEnabled ? this.rangeFilter('shroud', shroud, true) : []),
+      ...(cluesEnabled ? [...this.rangeFilter('shroud', shroud, true)] : []),
     ];
     if (cluesEnabled && (clues[0] !== clues[1] || clues[0] !== 0)) {
       result.push(
@@ -486,7 +486,7 @@ export default class FilterBuilder {
       );
     }
     if (locationVictoryEnabled) {
-      result.push(where("c.victory >= 0 or linked_card.victory >= 0"));
+      result.push(where('c.victory >= 0 or linked_card.victory >= 0'));
     }
     if (locationVengeanceEnabled) {
       result.push(VENGEANCE_FILTER);
@@ -522,7 +522,7 @@ export default class FilterBuilder {
     ) {
       result.push(where(`c.real_text LIKE '%+_ skill value%'`));
     }
-    const combinedResult = combineQueriesOpt(result, "or");
+    const combinedResult = combineQueriesOpt(result, 'or');
     if (combinedResult) {
       return [combinedResult];
     }
@@ -540,10 +540,10 @@ export default class FilterBuilder {
     } = filters;
     const result: Brackets[] = [
       ...(assetHealthEnabled
-        ? this.rangeFilter("health", assetHealth, true)
+        ? this.rangeFilter('health', assetHealth, true)
         : []),
       ...(assetSanityEnabled
-        ? this.rangeFilter("sanity", assetSanity, true)
+        ? this.rangeFilter('sanity', assetSanity, true)
         : []),
       ...(skillModifiersEnabled
         ? this.skillModifierFilters(skillModifiers)
@@ -556,7 +556,7 @@ export default class FilterBuilder {
       combineQueries(
         where(`c.type_code = 'asset' OR linked_card.type_code = 'asset'`),
         result,
-        "and"
+        'and'
       ),
     ];
   }
@@ -595,28 +595,28 @@ export default class FilterBuilder {
     } = filters;
     const result: Brackets[] = [
       ...(enemyFightEnabled
-        ? this.rangeFilter("enemy_fight", enemyFight, true)
+        ? this.rangeFilter('enemy_fight', enemyFight, true)
         : []),
       ...(enemyEvadeEnabled
-        ? this.rangeFilter("enemy_evade", enemyEvade, true)
+        ? this.rangeFilter('enemy_evade', enemyEvade, true)
         : []),
       ...(enemyDamageEnabled
-        ? this.rangeFilter("enemy_damage", enemyDamage, true)
+        ? this.rangeFilter('enemy_damage', enemyDamage, true)
         : []),
       ...(enemyHorrorEnabled
-        ? this.rangeFilter("enemy_horror", enemyHorror, true)
+        ? this.rangeFilter('enemy_horror', enemyHorror, true)
         : []),
       ...(enemyHealthEnabled
         ? [
-            ...this.rangeFilter("health", enemyHealth, true),
-            where(
-              `(c.type_code = 'enemy' AND c.health_per_investigator = ${
-                enemyHealthPerInvestigator ? 1 : 0
-              }) OR (linked_card.type_code = 'enemy' AND linked_card.health_per_investigator = ${
-                enemyHealthPerInvestigator ? 1 : 0
-              })`
-            ),
-          ]
+          ...this.rangeFilter('health', enemyHealth, true),
+          where(
+            `(c.type_code = 'enemy' AND c.health_per_investigator = ${
+              enemyHealthPerInvestigator ? 1 : 0
+            }) OR (linked_card.type_code = 'enemy' AND linked_card.health_per_investigator = ${
+              enemyHealthPerInvestigator ? 1 : 0
+            })`
+          ),
+        ]
         : []),
     ];
     if (enemyElite && !enemyNonElite) {
@@ -719,7 +719,7 @@ export default class FilterBuilder {
       );
     }
     if (enemyVictory) {
-      result.push(where("c.victory >= 0 or linked_card.victory >= 0"));
+      result.push(where('c.victory >= 0 or linked_card.victory >= 0'));
     }
     if (enemyVengeance) {
       result.push(VENGEANCE_FILTER);
@@ -741,10 +741,10 @@ export default class FilterBuilder {
     const { victory, multiClass } = filters;
     const result: Brackets[] = [];
     if (multiClass) {
-      result.push(where("c.faction2_code is not null"));
+      result.push(where('c.faction2_code is not null'));
     }
     if (victory) {
-      result.push(where("c.victory >= 0 or linked_card.victory >= 0"));
+      result.push(where('c.victory >= 0 or linked_card.victory >= 0'));
     }
     return result;
   }
@@ -755,7 +755,7 @@ export default class FilterBuilder {
       return [];
     }
     const q = this.rangeFilter(
-      "xp",
+      'xp',
       xpCost,
       false,
       (model: string, field: string) => {
@@ -764,7 +764,7 @@ export default class FilterBuilder {
     );
     if (xpCost[0] > 0) {
       return [
-        combineQueries(where(`c.customization_options is not null`), q, "or"),
+        combineQueries(where(`c.customization_options is not null`), q, 'or'),
       ];
     }
     return q;
@@ -775,10 +775,10 @@ export default class FilterBuilder {
     if (!levelEnabled) {
       return [];
     }
-    const q = this.rangeFilter("xp", level, false);
+    const q = this.rangeFilter('xp', level, false);
     if (level[0] > 0) {
       return [
-        combineQueries(where(`c.customization_options is not null`), q, "or"),
+        combineQueries(where(`c.customization_options is not null`), q, 'or'),
       ];
     }
     return q;
@@ -807,7 +807,7 @@ export default class FilterBuilder {
   costFilter(filters: FilterState): Brackets[] {
     const { costEnabled, costEven, costOdd, cost } = filters;
     if (costEnabled) {
-      const costQuery = this.rangeFilter("cost", cost, false);
+      const costQuery = this.rangeFilter('cost', cost, false);
       if (costEven || costOdd) {
         if (costEven && costOdd) {
           return costQuery;
@@ -815,17 +815,17 @@ export default class FilterBuilder {
         if (costEven) {
           return [
             combineQueries(
-              where("c.cost is not null AND c.cost % 2 = 0"),
+              where('c.cost is not null AND c.cost % 2 = 0'),
               costQuery,
-              "and"
+              'and'
             ),
           ];
         }
         return [
           combineQueries(
-            where("c.cost is not null AND c.cost % 2 = 1"),
+            where('c.cost is not null AND c.cost % 2 = 1'),
             costQuery,
-            "and"
+            'and'
           ),
         ];
       }
@@ -860,7 +860,7 @@ export default class FilterBuilder {
     );
     const result: Brackets[] = [];
 
-    const packClause = this.equalsVectorClause(normalPacks, "pack_code");
+    const packClause = this.equalsVectorClause(normalPacks, 'pack_code');
     if (packClause.length && normalPacks.length) {
       const [packCode, ...otherCodes] = normalPacks;
       result.push(
@@ -878,7 +878,7 @@ export default class FilterBuilder {
             ),
             ...packClause,
           ],
-          "or"
+          'or'
         )
       );
     }
@@ -898,10 +898,10 @@ export default class FilterBuilder {
             where(`c.encounter_code is null`),
             this.equalsVectorClause(
               flatMap(playerPacks, (pack) => pack.packs),
-              "pack_code",
-              ["player"]
+              'pack_code',
+              ['player']
             ),
-            "and"
+            'and'
           )
         );
       }
@@ -911,10 +911,10 @@ export default class FilterBuilder {
             where(`c.encounter_code is not null`),
             this.equalsVectorClause(
               flatMap(campaignPacks, (pack) => pack.packs),
-              "pack_code",
-              ["campaign"]
+              'pack_code',
+              ['campaign']
             ),
-            "and"
+            'and'
           )
         );
       }
@@ -927,7 +927,7 @@ export default class FilterBuilder {
     }
     if (result.length) {
       const [first, ...others] = result;
-      return [combineQueries(first, others, "or")];
+      return [combineQueries(first, others, 'or')];
     }
     return [];
   }
@@ -952,7 +952,7 @@ export default class FilterBuilder {
     } = filters;
     const result: Brackets[] = [
       ...this.slotFilter(slots),
-      ...this.equalsVectorClause(uses, "uses"),
+      ...this.equalsVectorClause(uses, 'uses'),
     ];
     if (specialist) {
       result.push(where(`c.restrictions_trait IS NOT NULL`));
@@ -1040,7 +1040,7 @@ export default class FilterBuilder {
           );
         }
       });
-      const combined = combineQueriesOpt(parts, "or");
+      const combined = combineQueriesOpt(parts, 'or');
       if (combined) {
         result.push(combined);
       }
@@ -1049,7 +1049,7 @@ export default class FilterBuilder {
   }
 
   bondedFilter(
-    field: "real_name" | "bonded_name",
+    field: 'real_name' | 'bonded_name',
     bonded_names: string[]
   ): Brackets | undefined {
     const bondedClause = where(`c.${field} IN (:...bonded_names)`, {
@@ -1059,21 +1059,21 @@ export default class FilterBuilder {
       BASIC_QUERY,
       [
         bondedClause,
-        ...(field === "bonded_name" ? [] : [where("c.bonded_name is NULL")]),
+        ...(field === 'bonded_name' ? [] : [where('c.bonded_name is NULL')]),
       ],
-      "and"
+      'and'
     );
   }
 
   upgradeCardsByNameFilter(real_names: string[]): Brackets | undefined {
     const nameClause = where(`c.real_name IN (:...real_names)`, { real_names });
     const levelClause = where(`c.xp is not null AND c.xp > 0`);
-    return combineQueries(BASIC_QUERY, [nameClause, levelClause], "and");
+    return combineQueries(BASIC_QUERY, [nameClause, levelClause], 'and');
   }
 
   factionFilter(factions: FactionCodeType[]): Brackets[] {
     return this.complexVectorClause(
-      "faction",
+      'faction',
       factions,
       (valueName) =>
         `(c.faction_code = :${valueName} OR c.faction2_code = :${valueName} OR c.faction3_code = :${valueName})`
@@ -1099,12 +1099,12 @@ export default class FilterBuilder {
       [
         ...this.tabooSetFilter(filters.taboo_set),
         ...this.factionFilter(filters.factions),
-        ...this.equalsVectorClause(filters.types, "type_code"),
-        ...this.equalsVectorClause(filters.subTypes, "subtype_code"),
+        ...this.equalsVectorClause(filters.types, 'type_code'),
+        ...this.equalsVectorClause(filters.subTypes, 'subtype_code'),
         ...this.playerCardFilters(filters),
         ...this.packCodes(filters.packCodes),
-        ...this.equalsVectorClause(filters.encounters, "encounter_name"),
-        ...this.equalsVectorClause(filters.illustrators, "illustrator"),
+        ...this.equalsVectorClause(filters.encounters, 'encounter_name'),
+        ...this.equalsVectorClause(filters.illustrators, 'illustrator'),
         ...this.miscFilter(filters),
         ...this.levelFilter(filters),
         ...this.xpCostFilter(filters),
@@ -1116,7 +1116,7 @@ export default class FilterBuilder {
         ...this.locationFilters(filters),
         ...this.skillIconFilter(filters),
       ],
-      "and"
+      'and'
     );
   }
 }

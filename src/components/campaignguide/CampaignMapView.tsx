@@ -557,7 +557,7 @@ function DossierImage({
 }
 
 
-function DossierComponent({ dossier, showCity }: { dossier: Dossier; idx: number; showCity: (city: string) => void }) {
+function DossierComponent({ dossier, showCity }: { dossier: Dossier; showCity: (city: string) => void }) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   return (
     <View style={[
@@ -653,7 +653,6 @@ function LocationContent({
   visited,
   status,
   hasFast,
-  nextStatusReportTime,
   statusReports,
   currentTime,
   showCity,
@@ -670,7 +669,6 @@ function LocationContent({
   hasFast: boolean;
   statusReports: VisibleCalendarEntry[];
   currentTime: number;
-  nextStatusReportTime: number | undefined;
   showCity: (city: string) => void;
 }) {
   const { listSeperator } = useContext(LanguageContext);
@@ -698,7 +696,7 @@ function LocationContent({
       fast: false,
       transitOnly: true,
     });
-  }, [setCurrentLocation, location]);
+  }, [setCurrentLocation, travelDistance, location]);
 
   const atLocation = currentLocation?.id === location.id;
   const dossier = useMemo(() => {
@@ -732,7 +730,7 @@ function LocationContent({
       />
     );
 
-  }, [setCurrentLocation, makeCurrentTransit, travelDistance, listSeperator, nextStatusReportTime, currentTime, statusReports]);
+  }, [setCurrentLocation, makeCurrentTransit, travelDistance, listSeperator, currentTime, statusReports]);
   const travelSection = useMemo(() => {
     if (atLocation) {
       return (
@@ -840,7 +838,7 @@ function LocationContent({
               <CardDetailSectionHeader title={t`Information`} />
             </View>
             { map(dossier, (entry, idx) => (
-              <DossierComponent key={idx} dossier={entry} idx={idx} showCity={showCity} />
+              <DossierComponent key={idx} dossier={entry} showCity={showCity} />
             )) }
           </View>
         ) }
@@ -905,12 +903,6 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
       new Set(visitedLocations),
     ];
   }, [campaignMap, props.currentLocation, visitedLocations]);
-  const nextStatusReportTime: number | undefined = useMemo(() => find(
-      sortBy(statusReports, report => report.time),
-      report => report.time > currentTime
-    )?.time,
-    [currentTime, statusReports]
-  );
 
   const { colors, backgroundStyle, typography, width, height } = useContext(StyleContext);
   const [selectedLocation, setSelectedLocation] = useState<MapLocation>();
@@ -987,7 +979,6 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
         travelDistance={travelDistances?.[selectedLocation.id]?.time || 1}
         setCurrentLocation={onSelect ? moveToLocation : undefined}
         hasFast={hasFast}
-        nextStatusReportTime={nextStatusReportTime}
         statusReports={statusReports}
         currentTime={currentTime}
         unlockedDossiers={unlockedDossiers}
@@ -1069,7 +1060,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
       }
     );
   }, [campaignMap.locations, props.currentLocation, unlockedLocations, travelDistances, visited]);
-/*
+  /*
   code to generate all the connections
   useEffect(() => {
     forEach(campaignMap.locations, currentLocation => {

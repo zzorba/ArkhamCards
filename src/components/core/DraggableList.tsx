@@ -9,12 +9,12 @@ interface Props<T> {
   data: T[];
 }
 
-export default function DraggableList<T>({ keyExtractor, renderItem, data, onChanged}: Props<T>): JSX.Element | null {
+export default function DraggableList<T>({ keyExtractor, renderItem, data, onChanged }: Props<T>): JSX.Element | null {
   const renderItemIos = useCallback((info: RenderItemParams<T>) => (
     <ScaleDecorator key={keyExtractor(info.item)}>
       { renderItem(info) }
     </ScaleDecorator>
-  ), [renderItem]);
+  ), [renderItem, keyExtractor]);
   const onDragEnd = useCallback((info: DragEndParams<T>) => {
     onChanged(info.data);
   }, [onChanged]);

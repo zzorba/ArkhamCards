@@ -11,8 +11,8 @@ import {
   sumBy,
   sortBy,
   partition,
-} from "lodash";
-import { t } from "ttag";
+} from 'lodash';
+import { t } from 'ttag';
 
 import {
   DeckInvestigatorProblemType,
@@ -25,7 +25,7 @@ import {
   TOO_FEW_CARDS,
   TOO_MANY_CARDS,
   TOO_MANY_COPIES,
-} from "@actions/types";
+} from '@actions/types';
 import {
   ANCESTRAL_KNOWLEDGE_CODE,
   UNDERWORLD_MARKET_CODE,
@@ -36,16 +36,16 @@ import {
   FORCED_LEARNING_CODE,
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
-} from "@app_constants";
-import Card, { InvestigatorChoice } from "@data/types/Card";
-import DeckOption, { localizeDeckOptionError } from "@data/types/DeckOption";
+} from '@app_constants';
+import Card, { InvestigatorChoice } from '@data/types/Card';
+import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
 import {
   BONDED_WEAKNESS_COUNTS,
   THE_INSANE_CODE,
-} from "@data/deck/specialCards";
-import DeckRequirement from "@data/types/DeckRequirement";
+} from '@data/deck/specialCards';
+import DeckRequirement from '@data/types/DeckRequirement';
 
-const THE_INSANE_TAG = "the_insane";
+const THE_INSANE_TAG = 'the_insane';
 
 interface SpecialCardCounts {
   ancestralKnowledge: number;

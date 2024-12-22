@@ -365,7 +365,7 @@ export default function TwoSidedCardComponent(props: Props) {
         </View>
       </View>
     );
-  }, [backCard, card, componentId, simple, width, linked, shadow.large,
+  }, [props.showBack, backCard, card, componentId, simple, width, linked, shadow.large,
     colors, backgroundStyle, typography, showBack, typeLine, cardFooter, flavorFirst,
     toggleShowBack, showTaboo, showFaq]);
 

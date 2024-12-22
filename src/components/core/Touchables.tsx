@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { GestureResponderEvent, Pressable, ViewStyle, PressableProps } from 'react-native';
-import Animated, { AnimateStyle, cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
+import Animated, { cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
 
 interface Props extends Omit<PressableProps, 'onPressIn' | 'onPressOut' | 'style' | 'disabled' | 'onPress'> {
   style?: ViewStyle | ViewStyle[];

@@ -182,7 +182,7 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status, border }: {
       }
     }
     return null;
-  }, [iconKey, size, colors]);
+  }, [iconKey, size, border, colors]);
 
   if (iconKey === 'another') {
     return (

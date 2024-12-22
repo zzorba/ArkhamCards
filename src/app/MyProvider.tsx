@@ -3,7 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ApolloClient, ApolloProvider } from '@apollo/client';
-import { Persistor } from "redux-persist/es/types";
+import { Persistor } from 'redux-persist/es/types';
 
 import DatabaseProvider from '../data/sqlite/DatabaseProvider';
 import StyleProvider from '../styles/StyleProvider';

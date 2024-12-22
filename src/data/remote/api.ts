@@ -1,17 +1,17 @@
-import { useCallback, useContext, useReducer } from "react";
-import { filter } from "lodash";
-import functions from "@react-native-firebase/functions";
+import { useCallback, useContext, useReducer } from 'react';
+import { filter } from 'lodash';
+import functions from '@react-native-firebase/functions';
 
-import { SimpleUser } from "@data/remote/hooks";
-import { useModifyUserCache } from "@data/apollo/cache";
+import { SimpleUser } from '@data/remote/hooks';
+import { useModifyUserCache } from '@data/apollo/cache';
 
-import LanguageContext from "@lib/i18n/LanguageContext";
-import { getAppleRefreshToken, setAppleRefreshToken } from "@lib/auth";
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { getAppleRefreshToken, setAppleRefreshToken } from '@lib/auth';
 import {
   FriendRequestAction,
   useSearchUsersLazyQuery,
   useUpdateFriendRequestMutation,
-} from "@generated/graphql/apollo-schema";
+} from '@generated/graphql/apollo-schema';
 
 export interface ErrorResponse {
   error?: string;
@@ -24,7 +24,7 @@ export function useFunction<RequestT = EmptyRequest, ResponseT = ErrorResponse>(
 ) {
   const { lang } = useContext(LanguageContext);
   return useCallback(
-    async (request: RequestT): Promise<ResponseT> => {
+    async(request: RequestT): Promise<ResponseT> => {
       const response = await functions().httpsCallable(functionName)({
         ...request,
         locale: lang,
@@ -38,8 +38,8 @@ export function useFunction<RequestT = EmptyRequest, ResponseT = ErrorResponse>(
 interface DeleteAccountRequest {}
 
 export function useDeleteAccount() {
-  const apiCall = useFunction<DeleteAccountRequest>("social-deleteAccount");
-  return useCallback(async () => {
+  const apiCall = useFunction<DeleteAccountRequest>('social-deleteAccount');
+  return useCallback(async() => {
     const appleToken = await getAppleRefreshToken();
     if (appleToken) {
       try {
@@ -50,7 +50,7 @@ export function useDeleteAccount() {
         );
       } catch (e) {
         console.log(e.message);
-        await setAppleRefreshToken("");
+        await setAppleRefreshToken('');
       }
     }
     const data = await apiCall({});
@@ -61,43 +61,43 @@ export function useDeleteAccount() {
 }
 
 export const enum FriendStatus {
-  NONE = "none",
-  RECEIVED = "received",
-  SENT = "sent",
-  FRIEND = "friend",
+  NONE = 'none',
+  RECEIVED = 'received',
+  SENT = 'sent',
+  FRIEND = 'friend',
 }
 
 export function useUpdateFriendRequest(setError: (error: string) => void) {
   const [updateCache, client] = useModifyUserCache();
   const [apiCall] = useUpdateFriendRequestMutation();
   return useCallback(
-    async (userId: string, action: FriendRequestAction) => {
+    async(userId: string, action: FriendRequestAction) => {
       try {
         const data = await apiCall({ variables: { userId, action } });
         if (data.errors?.length) {
           setError(data.errors[0].message);
         } else {
           const targetId = client.cache.identify({
-            __typename: "users",
+            __typename: 'users',
             id: userId,
           });
           if (targetId) {
             updateCache({
               fields: {
                 friends(current) {
-                  if (action === "revoke") {
+                  if (action === 'revoke') {
                     return filter(current, (f) => f.user?.__ref !== targetId);
                   }
                   return current;
                 },
                 sent_requests(current) {
-                  if (action === "revoke") {
+                  if (action === 'revoke') {
                     return filter(current, (f) => f.user?.__ref !== targetId);
                   }
                   return current;
                 },
                 received_requests(current) {
-                  if (action === "revoke") {
+                  if (action === 'revoke') {
                     return filter(current, (f) => f.user?.__ref !== targetId);
                   }
                 },
@@ -114,18 +114,18 @@ export function useUpdateFriendRequest(setError: (error: string) => void) {
 }
 
 interface StartSearchAction {
-  type: "start";
+  type: 'start';
   term: string;
 }
 
 interface ErrorSearchAction {
-  type: "error";
+  type: 'error';
   term: string;
   error: string;
 }
 
 interface FinishSearchAction {
-  type: "finish";
+  type: 'finish';
   term: string;
   results: SimpleUser[];
 }
@@ -141,12 +141,12 @@ export interface SearchResults {
 
 function searchResultsReducer(state: SearchResults, action: SearchAction) {
   switch (action.type) {
-    case "start":
+    case 'start':
       return {
         term: action.term,
         loading: true,
       };
-    case "error": {
+    case 'error': {
       if (state.term === action.term) {
         return {
           term: action.term,
@@ -156,7 +156,7 @@ function searchResultsReducer(state: SearchResults, action: SearchAction) {
       }
       return state;
     }
-    case "finish":
+    case 'finish':
       if (state.term === action.term) {
         return {
           term: action.term,
@@ -179,21 +179,21 @@ export function useSearchUsers(): SearchUsers {
     { loading: false }
   );
   const doSearch = useCallback(
-    async (search: string) => {
-      updateSearchResults({ type: "start", term: search });
+    async(search: string) => {
+      updateSearchResults({ type: 'start', term: search });
       if (!search) {
-        updateSearchResults({ type: "finish", term: search, results: [] });
+        updateSearchResults({ type: 'finish', term: search, results: [] });
       } else {
         const data = await apiCall({ variables: { search } });
         if (data.error?.graphQLErrors.length) {
           updateSearchResults({
-            type: "error",
+            type: 'error',
             term: search,
             error: data.error.graphQLErrors[0].message,
           });
         } else {
           updateSearchResults({
-            type: "finish",
+            type: 'finish',
             term: search,
             results: data.data?.results?.users ?? [],
           });

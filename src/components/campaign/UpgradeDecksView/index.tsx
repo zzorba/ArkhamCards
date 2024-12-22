@@ -30,6 +30,7 @@ import { useAppDispatch } from '@app/store';
 
 export interface UpgradeDecksProps {
   id: CampaignId;
+  // eslint-disable-next-line react/no-unused-prop-types
   scenarioResult: ScenarioResult;
 }
 

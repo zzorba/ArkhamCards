@@ -24,7 +24,7 @@ import {
   campaignDataStandaloneConditionResult,
   campaignDataInvestigatorStatusConditionResult,
 } from '@data/scenario/conditionHelper';
-import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId, BinaryConditionalChoiceWithId } from '@data/scenario';
+import { PersonalizedChoices, UniversalChoices, BinaryConditionalChoiceWithId } from '@data/scenario';
 
 export function chooseOneInputChoices(
   choices: BinaryConditionalChoice[],

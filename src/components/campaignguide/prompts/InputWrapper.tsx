@@ -30,12 +30,12 @@ interface Props {
   noDivider?: boolean;
 }
 
-function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletType }: { 
-  bulletType?: BulletType; 
-  titleStyle: 'header' | 'setup'; 
-  title?: string; 
-  titleNode?: React.ReactNode; 
-  titleButton?: React.ReactNode; 
+function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletType }: {
+  bulletType?: BulletType;
+  titleStyle: 'header' | 'setup';
+  title?: string;
+  titleNode?: React.ReactNode;
+  titleButton?: React.ReactNode;
   editable?: boolean;
 }) {
   const { colors, typography } = useContext(StyleContext);
@@ -190,13 +190,13 @@ export default function InputWrapper({
           space.marginBottomL,
           { backgroundColor: colors.L20 },
         ]}>
-        <TitleRow 
-          bulletType={bulletType} 
-          titleStyle={titleStyle} 
-          title={title} 
-          titleNode={titleNode} 
-          titleButton={titleButton || undoButton} 
-          editable 
+        <TitleRow
+          bulletType={bulletType}
+          titleStyle={titleStyle}
+          title={title}
+          titleNode={titleNode}
+          titleButton={titleButton || undoButton}
+          editable
         />
         <View style={[space.paddingSideS, space.paddingTopS, space.paddingBottomXs]}>
           <ExtraStepPaddingProvider padding={s * 2}>
@@ -208,7 +208,7 @@ export default function InputWrapper({
     );
   }
   return (
-    
+
     <View style={[
       bulletType ? undefined : space.paddingS,
     ]}>

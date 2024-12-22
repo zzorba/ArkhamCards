@@ -1,10 +1,9 @@
 import React, { useContext, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { flatMap, forEach, map, range, shuffle } from 'lodash';
+import { flatMap, map, range, shuffle } from 'lodash';
 import { t } from 'ttag';
 
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import { CalendarEntry } from '@data/scenario/types';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import AppIcon from '@icons/AppIcon';

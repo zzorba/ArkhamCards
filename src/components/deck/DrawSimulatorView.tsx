@@ -192,6 +192,7 @@ function CardItem({ item, card, width, onPress, toggleSelection, grid }: { width
   );
 }
 
+// eslint-disable-next-line react/prop-types
 export default function DrawSimulatorView({ componentId, customizations, slots }: DrawSimulatorProps & NavigationProps) {
   const { backgroundStyle, colors, typography, width } = useContext(StyleContext);
   useEffect(() => {

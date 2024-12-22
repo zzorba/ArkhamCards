@@ -39,7 +39,7 @@ import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPac
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';
-import { EditChaosBagProps, useEditChaosBagDialog } from '../../chaos/EditChaosBagDialog';
+import { useEditChaosBagDialog } from '../../chaos/EditChaosBagDialog';
 import COLORS from '@styles/colors';
 import space, { m, s, l } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -218,7 +218,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
     });
     checkNewDeckForWeakness(deck);
   }, [
-    setSelectedDecks, updateInvestigatorIds, setInvestigatorToDeck, checkNewDeckForWeakness, 
+    setSelectedDecks, updateInvestigatorIds, setInvestigatorToDeck, checkNewDeckForWeakness,
     selectedDecks, investigatorToDeck, includeParallel,
   ]);
 
@@ -612,7 +612,6 @@ function NewCampaignView({ componentId }: NavigationProps) {
               noSpace
             >
               <DeckSelector
-                componentId={componentId}
                 investigatorToDeck={investigatorToDeck}
                 investigatorIds={investigatorIds}
                 deckRemoved={deckRemoved}

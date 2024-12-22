@@ -5,7 +5,7 @@ import {
   ARKHAMDB_LOGIN_WITH_ARKHAM_CARDS,
   ARKHAMDB_LOGOUT,
   SignInActions,
-} from "@actions/types";
+} from '@actions/types';
 
 interface SignedInState {
   loading: boolean;
@@ -22,7 +22,7 @@ const DEFAULT_SIGNED_IN_STATE: SignedInState = {
   with_arkhamcards: false,
 };
 
-export default function (
+export default function(
   state: SignedInState = DEFAULT_SIGNED_IN_STATE,
   action: SignInActions
 ): SignedInState {
@@ -47,7 +47,7 @@ export default function (
     return Object.assign({}, state, {
       loading: false,
       error:
-        action.error.toString() === "User Cancelled." ? action.error : null,
+        action.error.toString() === 'User Cancelled.' ? action.error : null,
     });
   }
   if (action.type === ARKHAMDB_LOGOUT) {

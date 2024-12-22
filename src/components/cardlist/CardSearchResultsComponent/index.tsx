@@ -21,7 +21,7 @@ import {
   combineQueries,
   combineQueriesOpt,
 } from '@data/sqlite/query';
-import Card, { InvestigatorChoice, searchNormalize } from '@data/types/Card';
+import { InvestigatorChoice, searchNormalize } from '@data/types/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';

@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { Platform, StyleSheet, Text, ScrollView, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import { NestableScrollContainer } from 'react-native-draggable-flatlist';
 import { map } from 'lodash';
 

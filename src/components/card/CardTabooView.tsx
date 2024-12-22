@@ -13,7 +13,7 @@ import Card from '@data/types/Card';
 import TabooSet from '@data/types/TabooSet';
 import CardTextComponent from './CardTextComponent';
 import { NavigationProps } from '@components/nav/types';
-import space, { l, m, xs, s } from '@styles/space';
+import space, { m, xs, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import useDbData from '@components/core/useDbData';
 import { useSelector } from 'react-redux';
@@ -116,6 +116,7 @@ function TabooSection({ id }: { id: string }) {
   const [showPastVersions, setShowPastVersions] = useState(false);
   const fetch = useCallback((db: Database) => fetchTabooData(db, id), [id]);
   const currentTabooSetId = useSelector((appState: AppState) => appState.settings.currentTabooSetId);
+  const onSeePastVersions = useCallback(() => setShowPastVersions(true), [setShowPastVersions]);
 
   const tabooData = useDbData(fetch);
   if (!tabooData) {
@@ -142,7 +143,7 @@ function TabooSection({ id }: { id: string }) {
       { !!find(taboos, taboo => taboo.taboo_set_id !== currentTaboo && !taboo.taboo_placeholder) && (
         <View style={space.paddingTopL}>
           { !showPastVersions ?
-            <DeckButton icon="taboo" title={t`See taboo list history`} onPress={() => setShowPastVersions(true)} />
+            <DeckButton icon="taboo" title={t`See taboo list history`} onPress={onSeePastVersions} />
             : <Text style={typography.large}>{t`Taboo list history:`}</Text>
           }
           { !!showPastVersions &&
@@ -172,10 +173,6 @@ export default function CardTabooView({ id }: Props) {
 const styles = StyleSheet.create({
   container: {
     margin: m,
-  },
-  header: {
-    marginTop: l,
-    marginBottom: m,
   },
   gameTextBlock: {
     borderLeftWidth: 4,

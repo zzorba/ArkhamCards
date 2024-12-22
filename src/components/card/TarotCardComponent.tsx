@@ -18,7 +18,6 @@ interface Props {
   width: number;
   flipped: boolean;
   inverted: boolean;
-  suffix?: string;
 
   onFlip?: (id: string) => void;
   onInvert?: (id: string, newInverted: boolean) => void;
@@ -29,7 +28,7 @@ function degToRad(deg: number): string {
   return `${((deg * Math.PI) / 180)}rad`;
 }
 
-export default function TarotCardComponent({ card, width, flipped, inverted, suffix, onFlip, onInvert }: Props) {
+export default function TarotCardComponent({ card, width, flipped, inverted, onFlip, onInvert }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const height = TAROT_CARD_RATIO * width;
   const onPress = useCallback(() => {

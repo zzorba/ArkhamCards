@@ -1,19 +1,18 @@
-import { useCallback, useContext, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { filter, flatMap, concat, map, sortBy, reverse } from "lodash";
+import { useCallback, useContext, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { filter, flatMap, concat, map, sortBy, reverse } from 'lodash';
 
 import {
   AppState,
   getCampaigns,
   MyDecksState,
-  makeChaosBagResultsSelector,
   makeCampaignChaosBagSelector,
-} from "@reducers";
-import { Campaign, CampaignId, DeckId } from "@actions/types";
-import MiniCampaignT from "@data/interfaces/MiniCampaignT";
-import SingleCampaignT from "@data/interfaces/SingleCampaignT";
-import ChaosBagResultsT from "@data/interfaces/ChaosBagResultsT";
-import Card from "@data/types/Card";
+} from '@reducers';
+import { Campaign, CampaignId, DeckId } from '@actions/types';
+import MiniCampaignT from '@data/interfaces/MiniCampaignT';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import Card from '@data/types/Card';
 import {
   useMyDecksRemote,
   useRemoteCampaigns,
@@ -24,8 +23,8 @@ import {
   useCampaignDeckFromRemote,
   useChaosBagResultsFromRemote,
   useDeckHistoryRemote,
-} from "@data/remote/hooks";
-import CampaignGuideStateT from "./interfaces/CampaignGuideStateT";
+} from '@data/remote/hooks';
+import CampaignGuideStateT from './interfaces/CampaignGuideStateT';
 import {
   useCampaignFromRedux,
   useCampaignGuideFromRedux,
@@ -34,24 +33,22 @@ import {
   useDeckHistoryRedux,
   useLatestDeckRedux,
   useMyDecksRedux,
-} from "./local/hooks";
-import LatestDeckT from "./interfaces/LatestDeckT";
-import { refreshMyDecks } from "@actions";
-import { DeckActions, syncCampaignDecksFromArkhamDB } from "./remote/decks";
-import ArkhamCardsAuthContext from "@lib/ArkhamCardsAuthContext";
-import MiniDeckT from "./interfaces/MiniDeckT";
-import { ThunkDispatch } from "redux-thunk";
-import { Action } from "redux";
-import { usePlayerCards } from "@components/core/hooks";
-import { ChaosBag } from "@app_constants";
-import { useApolloClient } from "@apollo/client";
-import { useRefreshArkhamDbDecksMutation } from "@generated/graphql/apollo-schema";
+} from './local/hooks';
+import LatestDeckT from './interfaces/LatestDeckT';
+import { refreshMyDecks } from '@actions';
+import { DeckActions, syncCampaignDecksFromArkhamDB } from './remote/decks';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import MiniDeckT from './interfaces/MiniDeckT';
+import { ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
+import { usePlayerCards } from '@components/core/hooks';
+import { ChaosBag } from '@app_constants';
 
 export function useCampaigns(): [
   MiniCampaignT[],
   boolean,
   undefined | (() => void)
-] {
+  ] {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaigns = useSelector(getCampaigns);
   const [serverCampaigns, loading, refresh] = useRemoteCampaigns();
@@ -59,9 +56,9 @@ export function useCampaigns(): [
     const serverIds = new Set(map(serverCampaigns, (c) => c.uuid));
     const toSort = userId
       ? concat(
-          filter(campaigns, (c) => !serverIds.has(c.uuid)),
-          serverCampaigns
-        )
+        filter(campaigns, (c) => !serverIds.has(c.uuid)),
+        serverCampaigns
+      )
       : campaigns;
     return sortBy(toSort, (c) => -c.updatedAt.getTime());
   }, [campaigns, serverCampaigns, userId]);
@@ -209,16 +206,15 @@ export function useArkhamDbError(): string | undefined {
 }
 
 export function useMyDecks(
-  deckActions: DeckActions,
-  live?: boolean
+  deckActions: DeckActions
 ): [MyDecksState, (cacheArkhamDb: boolean) => Promise<void>] {
   const dispatch: ThunkDispatch<AppState, unknown, Action> = useDispatch();
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { myDecks, error, refreshing, myDecksUpdated } = useMyDecksRedux();
   const [remoteMyDecks, remoteRefreshing, refreshRemoteDecks] =
-    useMyDecksRemote(deckActions, live);
+    useMyDecksRemote(deckActions);
   const onRefresh = useCallback(
-    async (cacheArkhamDb: boolean) => {
+    async(cacheArkhamDb: boolean) => {
       if (!refreshing) {
         const remoteDecksPromise = userId && refreshRemoteDecks();
         const arkhamDbDeckPromise =
@@ -233,7 +229,7 @@ export function useMyDecks(
               deckActions
             );
           } catch (error) {
-            console.log("Could not sync decks at the moment");
+            console.log('Could not sync decks at the moment');
             console.log(error);
           }
         }

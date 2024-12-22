@@ -1,7 +1,5 @@
 import React, { useCallback, useContext, useRef, useMemo, useState } from 'react';
-import { FlatList, View, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent, RefreshControl, Platform } from 'react-native';
-import RefreshableWrapper from 'react-native-fresh-refresh';
-import Animated, { useSharedValue } from 'react-native-reanimated';
+import { FlatList, View, ListRenderItemInfo, ListRenderItem, NativeSyntheticEvent, NativeScrollEvent, RefreshControl } from 'react-native';
 import { map } from 'lodash';
 
 import { searchBoxHeight } from './SearchBox';
@@ -65,7 +63,6 @@ export default function ArkhamLargeList<Item>({
     }, 500);
   }, [onRefresh]);
 
-  const contentOffset = useSharedValue(0);
   const searchBarHeight = searchBoxHeight(fontScale);
   const flatData: FlatDataItem<Item>[] = useMemo(() => {
     let offset: number = 0;
@@ -108,10 +105,6 @@ export default function ArkhamLargeList<Item>({
       />
     </View>
   ), [searchBarHeight]);
-  const renderLoader = useCallback(() => {
-    return noSearch ? loader : <View />;
-  }, [noSearch, loader]);
-
   const renderRealHeader = useCallback(() => {
     return (
       <View>

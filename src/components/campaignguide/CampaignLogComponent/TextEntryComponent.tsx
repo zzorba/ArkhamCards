@@ -34,8 +34,8 @@ export default function TextEntryComponent({ text, icon, crossedOut, entry, deco
       last ? { borderBottomLeftRadius: 4, borderBottomRightRadius: 4, marginBottom: s } : undefined,
     ] : undefined}>
       <View style={[
-        noWrapper ? undefined : styles.wrapper, 
-        space.paddingTopS, space.paddingBottomS, !last && icon ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined
+        noWrapper ? undefined : styles.wrapper,
+        space.paddingTopS, space.paddingBottomS, !last && icon ? { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.L10 } : undefined,
       ]}>
         { !!icon && <View style={space.paddingRightS}><AppIcon name={icon} size={36} color={colors.M} /></View> }
         { actualText.startsWith('[') && actualText.endsWith(']') ? (
@@ -65,8 +65,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-  },
-  noWrapper: {
-    alignItems: 'center',
   },
 });

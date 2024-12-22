@@ -4,19 +4,19 @@ import { Entity, Column, PrimaryColumn } from 'typeorm/browser';
 export default class FaqEntry {
 
   @PrimaryColumn('text')
-  code!: string;
+    code!: string;
 
   @Column('text', { nullable: true })
-  text?: string;
+    text?: string;
 
   @Column('text', { nullable: true })
-  updated?: string;
+    updated?: string;
 
   @Column('datetime', { nullable: true })
-  fetched?: Date;
+    fetched?: Date;
 
   @Column('text', { nullable: true })
-  lastModified?: string;
+    lastModified?: string;
 
   static fromJson(code: string, json: any, lastModified?: string) {
     return {

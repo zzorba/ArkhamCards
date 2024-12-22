@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop:  0,
+    paddingTop: 0,
   },
   circle: {
     borderRadius: SIZE / 2,

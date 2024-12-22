@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import ChooseOneListComponent from '../ChooseOneListComponent';
 import SinglePickerComponent from '../SinglePickerComponent';
-import { DisplayChoice, DisplayChoiceWithId } from '@data/scenario';
+import { DisplayChoice } from '@data/scenario';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';

@@ -37,7 +37,7 @@ const SUPPORT_MULTI_CLASS = true;
 
 const PLAYER_FACTIONS = new Set<FactionCodeType>(['guardian', 'seeker', 'rogue', 'mystic', 'survivor']);
 
-const FACTION_POSITION: { [key in FactionCodeType | 'multiClass']: number }= {
+const FACTION_POSITION: { [key in FactionCodeType | 'multiClass']: number } = {
   'guardian': 0,
   'seeker': 1,
   'rogue': 2,

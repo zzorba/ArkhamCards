@@ -119,9 +119,9 @@ export function SimpleChaosBagItem({ componentId }: NavigationProps) {
               { map(chaosBagLines, (line, idx) => (
                 <View key={idx} style={[{ height: EXTRA_TINY_TOKEN_SIZE, position: 'relative', width: (EXTRA_TINY_TOKEN_SIZE * (1 - OVERLAP_PERCENT) * line.length) + EXTRA_TINY_TOKEN_SIZE * OVERLAP_PERCENT }, space.marginBottomXs]}>
                   { map(line, (token, idx) =>
-                    <View key={idx} style={{ position: 'absolute', top: 0, left: idx * (EXTRA_TINY_TOKEN_SIZE * (1 - OVERLAP_PERCENT)) }}>
-                     <ChaosToken size="extraTiny" iconKey={token} />
-                    </View>
+                    (<View key={idx} style={{ position: 'absolute', top: 0, left: idx * (EXTRA_TINY_TOKEN_SIZE * (1 - OVERLAP_PERCENT)) }}>
+                      <ChaosToken size="extraTiny" iconKey={token} />
+                    </View>)
                   ) }
                 </View>
               )) }

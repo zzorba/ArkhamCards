@@ -274,8 +274,8 @@ export default function DeckButton({
             { iconContent }
           </View>
         ) }
-        { textComponent ? <View style={space.paddingSideXs}>{textComponent}</View> :
-        <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, shrink ? undefined : styles.grow, space.paddingTopXs]}>
+        { textComponent ? <View style={space.paddingSideXs}>{textComponent}</View> : (
+          <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, shrink ? undefined : styles.grow, space.paddingTopXs]}>
             <View style={styles.row}>
               <Text
                 numberOfLines={1}
@@ -296,7 +296,7 @@ export default function DeckButton({
               </Text>
             ) }
           </View>
-        }
+        ) }
         { !!rightNode && rightNode }
       </View>
     </Ripple>

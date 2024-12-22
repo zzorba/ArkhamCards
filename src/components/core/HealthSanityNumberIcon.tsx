@@ -1,7 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { t } from 'ttag';
@@ -57,7 +56,7 @@ export default function HealthSanityIcon({ type, count, perInvestigator }: Props
       width: iconSize(fontScale) * (type === 'sanity' ? 1.4 : 0.8),
       height: iconSize(fontScale),
     };
-  }, [fontScale]);
+  }, [type, fontScale]);
   return (
     <View style={{ flexDirection: 'row' }}>
       <View style={[styles.wrapper, style]} accessibilityLabel={label(type, count)}>

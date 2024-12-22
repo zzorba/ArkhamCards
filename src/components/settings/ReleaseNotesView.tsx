@@ -231,7 +231,7 @@ function getReleaseNotes(lang: string, width: number): ReleaseNote[] {
   ];
 }
 
-function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
+function ReleaseNote({ note }: { note: ReleaseNote }) {
   const { colors, typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const { faction, title, lines, date } = note;
@@ -295,7 +295,7 @@ function ReleaseNote({ note }: { componentId: string; note: ReleaseNote }) {
     </AnimatedRoundedFactionBlock>
   );
 }
-export default function ReleaseNotesView({ componentId }: { componentId: string }) {
+export default function ReleaseNotesView() {
   const { backgroundStyle, width } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const releaseNotes = useMemo(() => getReleaseNotes(lang, width - s * 4), [width, lang]);
@@ -305,7 +305,7 @@ export default function ReleaseNotesView({ componentId }: { componentId: string 
         { map(releaseNotes, (note, idx) => {
           return (
             <View style={space.paddingBottomS} key={idx}>
-              <ReleaseNote note={note} componentId={componentId} />
+              <ReleaseNote note={note} />
             </View>
           )
         }) }

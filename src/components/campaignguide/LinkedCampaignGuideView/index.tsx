@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useRef, useContext } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useMemo, useRef } from 'react';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -21,7 +21,6 @@ import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
 import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
-import StyleContext from '@styles/StyleContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import CampaignErrorView from '@components/campaignguide/CampaignErrorView';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
@@ -47,7 +46,6 @@ function LinkedCampaignGuideView(props: Props) {
     campaignIdA: props.campaignIdA,
     campaignIdB: props.campaignIdB,
   });
-  const { typography } = useContext(StyleContext);
   const dispatch = useAppDispatch();
   const deckActions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
@@ -121,7 +119,7 @@ function LinkedCampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [showAlert, setCampaignLinkedServerId, updateCampaignActions, typography, campaign, deckActions, componentId, campaignId, upload]);
+  }, [showAlert, setCampaignLinkedServerId, updateCampaignActions, campaign, deckActions, componentId, campaignId, upload]);
 
   const campaignATab = useMemo(() => {
     if (!campaignDataA) {

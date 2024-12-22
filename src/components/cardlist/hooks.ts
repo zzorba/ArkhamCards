@@ -12,8 +12,8 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 
 const makeFilterSelector = (): (state: AppState, filterId: string, useCardTraits: boolean) => [boolean, CardFilterData | undefined] =>
   createSelector(
-    (state: AppState, filterId: string, useCardTraits: boolean) => getCardFilterData(state, filterId),
-    (state: AppState, filterId: string, useCardTraits: boolean) => getFilterState(state, filterId),
+    (state: AppState, filterId: string) => getCardFilterData(state, filterId),
+    (state: AppState, filterId: string) => getFilterState(state, filterId),
     (state: AppState, filterId: string, useCardTraits: boolean) => useCardTraits,
     (cardData, filters, useCardTraits) => {
       if (!filters) {
@@ -25,7 +25,6 @@ const makeFilterSelector = (): (state: AppState, filterId: string, useCardTraits
       ];
     }
   );
-
 
 
 export function useFilterButton({ componentId, filterId, baseQuery, modal }: { componentId: string, filterId: string, baseQuery?: (filters: FilterState | undefined) => Brackets, modal?: boolean }): [boolean, () => void] {

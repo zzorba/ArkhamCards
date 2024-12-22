@@ -20,7 +20,7 @@ export default function useProcessedCampaign(
       return [undefined, undefined];
     }
     return campaignGuide.processAllScenarios(campaignState, standaloneId, previousCampaign.current, lang);
-  }, [campaignGuide, campaignState, standaloneId, skip]);
+  }, [campaignGuide, lang, campaignState, standaloneId, skip]);
   useEffect(() => {
     previousCampaign.current = processedCampaign;
   }, [processedCampaign]);

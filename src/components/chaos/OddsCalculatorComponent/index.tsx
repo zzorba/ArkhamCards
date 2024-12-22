@@ -13,7 +13,6 @@ import Card from '@data/types/Card';
 import space, { isTablet, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCounter, useCounters, useFlag } from '@components/core/hooks';
-import { useChaosBagResults } from '@data/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { SCENARIO_CARDS_QUERY } from '@data/sqlite/query';
 import LoadingSpinner from '@components/core/LoadingSpinner';

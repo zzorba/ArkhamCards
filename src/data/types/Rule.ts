@@ -37,7 +37,7 @@ export default class Rule {
   public text?: string;
 
   @Column('simple-json', { nullable: true })
-  table?: RuleTableRow[];
+    table?: RuleTableRow[];
 
   @OneToMany(() => Rule, rule => rule.parentRule, { cascade: true, eager: true })
   public rules?: Rule[];

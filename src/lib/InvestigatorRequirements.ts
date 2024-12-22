@@ -1,12 +1,12 @@
-import { dropRightWhile, find, flatMap } from "lodash";
-import { Brackets } from "typeorm/browser";
+import { dropRightWhile, find, flatMap } from 'lodash';
+import { Brackets } from 'typeorm/browser';
 
-import { DeckMeta, Slots } from "@actions/types";
-import Card, { InvestigatorChoice } from "@data/types/Card";
-import DeckOption, { DeckOptionQueryBuilder } from "@data/types/DeckOption";
-import { combineQueries, combineQueriesOpt, STORY_CARDS_QUERY, where } from "@data/sqlite/query";
-import FilterBuilder, { FilterState } from "./filters";
-import DeckValidation from "./DeckValidation";
+import { DeckMeta, Slots } from '@actions/types';
+import Card, { InvestigatorChoice } from '@data/types/Card';
+import DeckOption, { DeckOptionQueryBuilder } from '@data/types/DeckOption';
+import { combineQueries, combineQueriesOpt, STORY_CARDS_QUERY, where } from '@data/sqlite/query';
+import FilterBuilder, { FilterState } from './filters';
+import DeckValidation from './DeckValidation';
 
 interface DeckOptionsContext {
   filters?: FilterState,
@@ -36,39 +36,39 @@ function negativeQueryForInvestigator(
   const foundNegative = !!find(options, option => !!option.not);
   const inverted = foundNegative
     ? flatMap(options, (option, index) => {
-        if (!option.not) {
-          return (
-            new DeckOptionQueryBuilder(option, index).toQuery(
-              meta,
-              context?.isUpgrade || context?.side,
-              true
-            ) || []
-          );
-        }
+      if (!option.not) {
         return (
           new DeckOptionQueryBuilder(option, index).toQuery(
             meta,
             context?.isUpgrade || context?.side,
-            false
+            true
           ) || []
         );
-      })
+      }
+      return (
+        new DeckOptionQueryBuilder(option, index).toQuery(
+          meta,
+          context?.isUpgrade || context?.side,
+          false
+        ) || []
+      );
+    })
     : [];
 
-  let invertedClause: Brackets[] = [];
+  const invertedClause: Brackets[] = [];
   if (inverted.length) {
     const [firstInverted, ...otherInverted] = inverted;
     invertedClause.push(combineQueries(firstInverted, otherInverted, 'and'));
   }
 
-  const specialtyBuilder = new FilterBuilder("specialty");
+  const specialtyBuilder = new FilterBuilder('specialty');
   invertedClause.push(
     specialtyBuilder.illegalSpecialistFilter(
-      investigator.front.real_traits_normalized?.split(",") ?? [],
-      [investigator.front.faction_code ?? "neutral"]
+      investigator.front.real_traits_normalized?.split(',') ?? [],
+      [investigator.front.faction_code ?? 'neutral']
     )
   );
-  return combineQueriesOpt(invertedClause, "or", true);
+  return combineQueriesOpt(invertedClause, 'or', true);
 }
 /**
  * Turn the given realm card into a sqlite string, for use with investigators deckbuilding where.
@@ -132,18 +132,18 @@ export function queryForInvestigator(
         ) || []
       );
     }),
-    "or"
+    'or'
   );
   const mainClause = combineQueriesOpt(
     [
       ...(invertedClause ? [invertedClause] : []),
       ...(normalQuery ? [normalQuery] : []),
     ],
-    "and"
+    'and'
   );
 
   const requiredCardsQuery = context?.extraDeck ?
-    where("c.code IN (:...values)", {
+    where('c.code IN (:...values)', {
       values: flatMap(
         investigator.back.side_deck_requirements?.card ?? [],
         (card) => [
@@ -152,8 +152,8 @@ export function queryForInvestigator(
         ]
       ),
     })
-  : where(
-      "c.restrictions_investigator IN (:...values) OR c.alternate_required_code IN (:...values)",
+    : where(
+      'c.restrictions_investigator IN (:...values) OR c.alternate_required_code IN (:...values)',
       {
         values: [
           investigator.back.code,
@@ -166,7 +166,7 @@ export function queryForInvestigator(
   let combined = combineQueries(
     requiredCardsQuery,
     mainClause ? [mainClause] : [],
-    "or"
+    'or'
   );
   if (!context?.extraDeck && context?.includeStory) {
     combined = combineQueries(STORY_CARDS_QUERY, [combined], 'or');

@@ -19,8 +19,8 @@ import { SET_PLAYBACK_RATE } from '@actions/types';
 
 export function useNarration(narration?: Narration): Narration | undefined {
   const [hasAudio, narrationLangs] = useAudioAccess();
-  if (!hasAudio || 
-    !narration || 
+  if (!hasAudio ||
+    !narration ||
     !find(narration.lang, lang => narrationLangs.find(narrationLang => narrationLang === lang))
   ) {
     return undefined;

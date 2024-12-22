@@ -33,7 +33,7 @@ export default function ArkhamCardsAccountDetails({ componentId, showAlert }: Na
   const [dialog, showDialog] = useSimpleTextDialog({
     title: t`Account Name`,
     value: profile?.handle || '',
-    onValidate: async (handle: string) => {
+    onValidate: async(handle: string) => {
       try {
         const result = await updateHandle({ variables: { handle } });
         if (result.errors) {
@@ -115,7 +115,7 @@ export default function ArkhamCardsAccountDetails({ componentId, showAlert }: Na
           />
         </>
       ) }
-      <ArkhamCardsLoginButton showAlert={showAlert} handle={accountNameLabel} />
+      <ArkhamCardsLoginButton showAlert={showAlert} />
       { dialog }
     </View>
   );

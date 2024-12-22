@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, ReactNode } from 'react';
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
@@ -94,17 +94,5 @@ const styles = StyleSheet.create({
   icon: {
     minWidth: 32,
     minHeight: 32,
-  },
-  circle: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    borderWidth: 1,
-    padding: 3,
-  },
-  circleFill: {
-    width: 16,
-    height: 16,
-    borderRadius: 8,
   },
 });

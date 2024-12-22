@@ -1,6 +1,6 @@
-import { Action } from "redux";
-import { ThunkAction } from "redux-thunk";
-import { find, forEach, values } from "lodash";
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { find, forEach, values } from 'lodash';
 
 import {
   CLEAR_DECKS,
@@ -22,12 +22,12 @@ import {
   SYNC_PACK_SPOILER,
   SyncInCollectionAction,
   SyncPackSpoilerAction,
-} from "./types";
-import { AppState, getAllPacks, getArkhamDbDecks } from "@reducers";
+} from './types';
+import { AppState, getAllPacks, getArkhamDbDecks } from '@reducers';
 
-import { getAccessToken, signInFlow, signOutFlow } from "@lib/auth";
-import * as dissonantVoices from "@lib/dissonantVoices";
-import { decks } from "@lib/authApi";
+import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
+import * as dissonantVoices from '@lib/dissonantVoices';
+import { decks } from '@lib/authApi';
 
 export function login(): ThunkAction<void, AppState, unknown, Action<string>> {
   return (dispatch): void => {
@@ -68,7 +68,7 @@ export function verifyLogin(): ThunkAction<
   AppState,
   unknown,
   Action<string>
-> {
+  > {
   return (dispatch) => {
     getAccessToken().then((accessToken) => {
       if (accessToken) {
@@ -89,7 +89,7 @@ export function dissonantVoicesLogin(): ThunkAction<
   AppState,
   unknown,
   Action<string>
-> {
+  > {
   return (dispatch): void => {
     dispatch({
       type: DISSONANT_VOICES_LOGIN_STARTED,
@@ -114,7 +114,7 @@ export function dissonantVoicesLogout(): ThunkAction<
   AppState,
   unknown,
   Action<string>
-> {
+  > {
   return (dispatch) => {
     dispatch({
       type: DISSONANT_VOICES_LOGIN_STARTED,
@@ -132,7 +132,7 @@ export function dissonantVoicesVerifyLogin(): ThunkAction<
   AppState,
   unknown,
   Action<string>
-> {
+  > {
   return (dispatch) => {
     dissonantVoices.getAccessToken().then((accessToken) => {
       if (accessToken) {
@@ -161,7 +161,7 @@ function getDecksLastModified(state: AppState): string | undefined {
 export function refreshMyDecks(
   cacheArkhamDb: boolean
 ): ThunkAction<Promise<ArkhamDbDeck[]>, AppState, unknown, Action<string>> {
-  return async (dispatch, getState) => {
+  return async(dispatch, getState) => {
     if (cacheArkhamDb) {
       const [arkhamDbDecks] = getArkhamDbDecks(getState());
       return arkhamDbDecks;
@@ -201,22 +201,22 @@ export function refreshMyDecks(
 }
 
 export function syncPackSettings(
-  type: "in_collection" | "show_spoilers",
+  type: 'in_collection' | 'show_spoilers',
   updates: { [code: string]: boolean }
 ): SyncInCollectionAction | SyncPackSpoilerAction {
   return {
-    type: type === "in_collection" ? SYNC_IN_COLLECTION : SYNC_PACK_SPOILER,
+    type: type === 'in_collection' ? SYNC_IN_COLLECTION : SYNC_PACK_SPOILER,
     updates,
   };
 }
 
 type UpdateRemotePack = (
-  type: "in_collection" | "show_spoilers",
+  type: 'in_collection' | 'show_spoilers',
   updates: { [code: string]: boolean }
 ) => void;
 
 function setPack(
-  type: "in_collection" | "show_spoilers",
+  type: 'in_collection' | 'show_spoilers',
   code: string,
   value: boolean,
   updateRemote: UpdateRemotePack | undefined
@@ -227,7 +227,7 @@ function setPack(
 }
 
 export function setCycle(
-  type: "in_collection" | "show_spoilers",
+  type: 'in_collection' | 'show_spoilers',
   cycle_code: string,
   value: boolean,
   updateRemote: UpdateRemotePack | undefined
@@ -253,7 +253,7 @@ export function setInCollection(
   value: boolean,
   updateRemote: UpdateRemotePack
 ) {
-  return setPack("in_collection", code, value, updateRemote);
+  return setPack('in_collection', code, value, updateRemote);
 }
 
 export function setCycleInCollection(
@@ -261,7 +261,7 @@ export function setCycleInCollection(
   value: boolean,
   updateRemote: UpdateRemotePack
 ): ThunkAction<void, AppState, unknown, Action<string>> {
-  return setCycle("in_collection", cycle_code, value, updateRemote);
+  return setCycle('in_collection', cycle_code, value, updateRemote);
 }
 
 export function setPackSpoiler(
@@ -269,7 +269,7 @@ export function setPackSpoiler(
   value: boolean,
   updateRemote: UpdateRemotePack
 ) {
-  return setPack("show_spoilers", code, value, updateRemote);
+  return setPack('show_spoilers', code, value, updateRemote);
 }
 
 export function setCyclePackSpoiler(
@@ -277,7 +277,7 @@ export function setCyclePackSpoiler(
   value: boolean,
   updateRemote: UpdateRemotePack
 ): ThunkAction<void, AppState, unknown, Action<string>> {
-  return setCycle("show_spoilers", cycle_code, value, updateRemote);
+  return setCycle('show_spoilers', cycle_code, value, updateRemote);
 }
 
 export function setPackDraft(

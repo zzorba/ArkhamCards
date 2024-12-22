@@ -107,7 +107,6 @@ export default function BranchStepComponent({ step, campaignLog, color }: Props)
           step={step}
           campaignLog={campaignLog}
           condition={condition}
-          color={color}
         />
       );
     case 'campaign_log':

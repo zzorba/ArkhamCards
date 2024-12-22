@@ -5,7 +5,6 @@ import { t } from 'ttag';
 
 import { LocationSetupProps } from '../LocationSetupView';
 import { LocationSetupStep } from '@data/scenario/types';
-import ArkhamButton from '@components/core/ArkhamButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
 

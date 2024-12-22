@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { find, flatMap, partition } from 'lodash';
-import { InteractionManager, StyleSheet, Text, View } from 'react-native';
+import { InteractionManager, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 

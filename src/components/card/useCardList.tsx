@@ -22,7 +22,7 @@ export default function useCardList(codes: string[], type: 'player' | 'encounter
       'and'
     )];
   }, [codes, type]);
-  const [playerCards, playerCardsLoading] = usePlayerCards(playerCodes, store, tabooSetOverride);
+  const [playerCards] = usePlayerCards(playerCodes, store, tabooSetOverride);
   const [queryCards, queryCardsLoading] = useCardsFromQuery({ query, tabooSetOverride });
   return useMemo(() => {
     if (!codes.length) {

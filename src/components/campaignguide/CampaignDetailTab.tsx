@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { InteractionManager, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { InteractionManager, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
 import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
@@ -33,8 +33,6 @@ import { getTarotReadingLabel, TarotCardReadingProps, TarotReadingType, useTarot
 import { CampaignMapProps } from './CampaignMapView';
 import COLORS from '@styles/colors';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { CampaignRulesProps } from './CampaignRulesView';
-import { CAMPAIGN_SETUP_ID } from '@data/scenario/CampaignGuide';
 import CampaignHeader from './CampaignHeader';
 import { showRules } from './nav';
 
@@ -57,7 +55,7 @@ export default function CampaignDetailTab({
   componentId, processedCampaign, displayLinkScenarioCount, footerButtons, updateCampaignActions,
   showLinkedScenario, showAlert, showCountDialog, login,
 }: Props) {
-  const { backgroundStyle, typography, width } = useContext(StyleContext);
+  const { backgroundStyle, width } = useContext(StyleContext);
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { lang } = useContext(LanguageContext);
   const reLogin = useCallback(() => login(), [login]);
@@ -248,7 +246,7 @@ export default function CampaignDetailTab({
     value: undefined,
     onValueChange: onTarotPress,
   })
-  const rules = useMemo(() => processedCampaign.campaignLog.campaignGuide.campaignRules(lang), [lang]);
+  const rules = useMemo(() => processedCampaign.campaignLog.campaignGuide.campaignRules(lang), [lang, processedCampaign.campaignLog.campaignGuide]);
   const errata = useMemo(() => campaignGuide.campaignFaq(), [campaignGuide]);
   const [rulesHeader, rulesDescription] = useMemo(() => {
     if (rules.length && errata.length) {
@@ -261,10 +259,10 @@ export default function CampaignDetailTab({
       return [t`Campaign FAQ`, t`Review campaign specific clarifications`];
     }
     return [undefined, undefined];
-  }, [rules]);
+  }, [rules, errata]);
   const showRulesPressed = useCallback(() => {
     showRules(componentId, campaignId, { rules, campaignErrata: errata });
-  }, [componentId, rules, errata, rulesHeader, campaignId]);
+  }, [componentId, rules, errata, campaignId]);
 
   const latestDecksList = campaign.latestDecks();
   const [cards] = useLatestDecksCards(latestDecksList, false, latestDecksList.length ? (latestDecksList[0].deck.taboo_id || 0) : 0);

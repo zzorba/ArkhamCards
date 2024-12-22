@@ -1,6 +1,6 @@
-import { Text, TouchableOpacity, View } from "react-native";
-import React, { useState, useContext, ReactNode, useCallback } from "react";
-import StyleContext from "@styles/StyleContext";
+import { Text, TouchableOpacity, View } from 'react-native';
+import React, { useContext, ReactNode, useCallback } from 'react';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   label: string | undefined;
@@ -27,12 +27,12 @@ export default function ToolTip({ label, height, width, children, toggle, setTog
         <>
           <View
             style={{
-              position: "absolute",
+              position: 'absolute',
               backgroundColor: colors.background,
-              bottom: height+5,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              bottom: height + 5,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               flex: 1,
               borderRadius: 10,
               borderColor: colors.lightText,
@@ -43,7 +43,7 @@ export default function ToolTip({ label, height, width, children, toggle, setTog
               right: -40,
             }}
           >
-            <Text style={[typography.small, typography.regular,  { textAlign: "center" }]}>
+            <Text style={[typography.small, typography.regular, { textAlign: 'center' }]}>
               {label}
             </Text>
           </View>
@@ -53,16 +53,16 @@ export default function ToolTip({ label, height, width, children, toggle, setTog
               height: 0,
               left: width / 2 - 7.5,
               bottom: height,
-              backgroundColor: "transparent",
-              borderStyle: "solid",
+              backgroundColor: 'transparent',
+              borderStyle: 'solid',
               borderLeftWidth: 7.5,
               borderRightWidth: 7.5,
               borderBottomWidth: 6,
-              borderLeftColor: "transparent",
-              borderRightColor: "transparent",
+              borderLeftColor: 'transparent',
+              borderRightColor: 'transparent',
               borderBottomColor: colors.lightText,
-              position: "absolute",
-              transform: [{ rotate: "180deg" }],
+              position: 'absolute',
+              transform: [{ rotate: '180deg' }],
             }}
           />
         </>

@@ -42,7 +42,7 @@ function RuleComponent({ rule, componentId }: { rule: CampaignRule; componentId:
   const steps = useMemo(() => {
     const { processedScenario, scenarioState } = scenarioContext;
     return processedScenario.scenarioGuide.expandSteps(rule.steps, scenarioState, processedScenario.latestCampaignLog);
-  }, [scenarioContext]);
+  }, [scenarioContext, rule.steps]);
   return (
     <View style={space.paddingVerticalXs}>
       <TouchableOpacity onPress={toggleExpanded} style={[space.paddingVerticalXs, space.paddingSideS]}>
@@ -55,7 +55,6 @@ function RuleComponent({ rule, componentId }: { rule: CampaignRule; componentId:
           steps={steps}
           componentId={componentId}
           width={width - s * 2}
-          switchCampaignScenario={() => {}}
           noTitle
         />
       )}
@@ -75,12 +74,12 @@ function ErrataComponent({ errata, componentId }: { errata: Question; componentI
     <View style={[space.paddingTopXs, space.paddingBottomS]}>
       <View style={space.paddingSideS}>
         <CampaignGuideTextComponent text={t`Q: ${errata.question}`} flavor onLinkPress={linkPressed} />
-        <CampaignGuideTextComponent text={t`A: ${errata.answer}`}  />
+        <CampaignGuideTextComponent text={t`A: ${errata.answer}`} />
       </View>
-      <View style={[{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}, space.marginTopS]}>
+      <View style={[{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }, space.marginTopS]}>
         <View style={{ height: 1, width: '40%', backgroundColor: colors.divider }} />
       </View>
-   </View>
+    </View>
   );
 }
 
@@ -96,7 +95,7 @@ export default function CampaignRulesView({
   processedCampaign: initialProcessedCampaign,
 }: Props) {
   const { backgroundStyle, typography } = useContext(StyleContext);
-  const [campaignContext, scenarioContext, _, processedCampaignError] = useScenarioGuideContext(campaignId, scenarioId, false, standalone, initialProcessedCampaign);
+  const [campaignContext, scenarioContext, , processedCampaignError] = useScenarioGuideContext(campaignId, scenarioId, false, standalone, initialProcessedCampaign);
   const [showFAQ, toggleShowFAQ] = useFlag(false);
   const hasFAQ = !!(campaignErrata.length || scenarioErrata?.length);
   if (!campaignContext || !scenarioContext) {
@@ -123,7 +122,7 @@ export default function CampaignRulesView({
             </>
           ) }
           { !!hasFAQ && (
-             <>
+            <>
               { !showFAQ ? (
                 <View style={space.paddingS}>
                   <DeckButton
@@ -145,7 +144,7 @@ export default function CampaignRulesView({
                   )}
                 </>
               )}
-             </>
+            </>
           ) }
           { scenarioId === CAMPAIGN_SETUP_ID && (
             <View style={space.paddingS}>

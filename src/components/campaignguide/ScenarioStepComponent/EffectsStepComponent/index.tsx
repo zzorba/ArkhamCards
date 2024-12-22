@@ -25,7 +25,7 @@ interface Props {
   width: number;
   step: EffectsStep;
   campaignLog: GuidedCampaignLog;
-  switchCampaignScenario: () => void;
+  switchCampaignScenario?: () => void;
 }
 
 function SingleEffectComponent({ id, effect, border, input, numberInput, step, width, componentId, campaignLog, switchCampaignScenario, color }: {

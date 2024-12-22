@@ -70,6 +70,10 @@ interface HeaderItem {
 }
 type Item = SortItem | HeaderItem;
 
+function keyExtractor(item: Item) {
+  return item.type === 'sort' ? item.sort : item.title;
+}
+
 export function useSortDialog(
   saveSorts: (sort: SortType[]) => void,
   savedSorts: SortType[],
@@ -96,8 +100,12 @@ export function useSortDialog(
     if (mythosMode || find(selectedSorts, s => s === SORT_BY_ENCOUNTER_SET)) {
       sorts.push(SORT_BY_ENCOUNTER_SET);
     }
-    const chosenSorts: SortItem[] = map(selectedSorts, sort => { return { type: 'sort', sort }; });
-    const otherSorts: SortItem[] = map(filter(sorts, s => !find(selectedSorts, s2 => s2 === s)),  sort => { return { type: 'sort', sort }; });
+    const chosenSorts: SortItem[] = map(selectedSorts, sort => {
+      return { type: 'sort', sort };
+    });
+    const otherSorts: SortItem[] = map(filter(sorts, s => !find(selectedSorts, s2 => s2 === s)), sort => {
+      return { type: 'sort', sort };
+    });
     const availableHeader: HeaderItem = { type: 'header', title: t`Other` };
     return [
       ...chosenSorts,
@@ -150,7 +158,7 @@ export function useSortDialog(
   const onCancel = useCallback(() => {
     sortChanged(savedSorts);
   }, [sortChanged, savedSorts]);
-  const { dialog, showDialog} = useDialog({
+  const { dialog, showDialog } = useDialog({
     title: t`Sort by`,
     allowDismiss: true,
     alignment: 'bottom',
@@ -169,7 +177,7 @@ export function useSortDialog(
           data={items}
           onChanged={onChanged}
           renderItem={renderItem}
-          keyExtractor={(item) => item.type == 'sort' ? item.sort : item.title}
+          keyExtractor={keyExtractor}
         />
       </View>
     ),

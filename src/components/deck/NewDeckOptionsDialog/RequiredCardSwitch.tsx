@@ -20,7 +20,7 @@ interface Props {
   onPress: (card: Card) => void;
 }
 
-export default function RequiredCardSwitch({ index, disabled, cards, value, onValueChange, onPress, last, randomBasicWeakness,randomBasicWeaknessCount  }: Props) {
+export default function RequiredCardSwitch({ index, disabled, cards, value, onValueChange, onPress, last, randomBasicWeakness,randomBasicWeaknessCount }: Props) {
   const { borderStyle } = useContext(StyleContext);
 
   const handleOnValueChange = useCallback((value: boolean) => {

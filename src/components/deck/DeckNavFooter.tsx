@@ -43,6 +43,7 @@ function fabPadding(control?: 'fab' | 'counts') {
 
 
 interface PreloadedProps {
+  // eslint-disable-next-line react/no-unused-prop-types
   componentId: string;
   parsedDeckObj: ParsedDeckResults;
   onPress: () => void;

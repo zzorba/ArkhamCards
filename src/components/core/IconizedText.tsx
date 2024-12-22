@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { Platform, Text } from 'react-native';
+import { Text } from 'react-native';
 
 import StyleContext from '@styles/StyleContext';
 import { map } from 'lodash';

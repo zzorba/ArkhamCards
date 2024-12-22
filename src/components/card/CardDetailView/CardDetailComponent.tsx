@@ -13,7 +13,6 @@ import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useParallelInvestigators } from '@components/core/hooks';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
-import { NewDeckOptionsProps } from '@components/deck/NewDeckOptionsDialog';
 import { getDeckOptions } from '@components/nav/helper';
 
 interface Props {
@@ -60,11 +59,11 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
                 bottomTabs: {},
               },
             },
-          }]
+          }],
         },
       });
     }
-  }, [componentId, card]);
+  }, [componentId, card, colors]);
 
   if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
     return null;

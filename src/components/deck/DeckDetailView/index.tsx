@@ -31,7 +31,7 @@ import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import { DeckHistoryProps } from '@components/deck/DeckHistoryView';
 import { EditSpecialCardsProps } from '@components/deck/EditSpecialDeckCardsView';
 import DeckViewTab from './DeckViewTab';
-import DeckNavFooter, { PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
+import { PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
 import { AppState, getShowCustomContent } from '@reducers';
 import space, { xs, s } from '@styles/space';
 import COLORS from '@styles/colors';
@@ -62,7 +62,7 @@ import { localizeTag } from '@components/deck/TagChiclet';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import useTagPile from '@components/deck/useTagPile';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
-import { getExtraDeckSlots, parseDeck } from '@lib/parseDeck';
+import { getExtraDeckSlots } from '@lib/parseDeck';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -270,7 +270,7 @@ function DeckDetailView({
       ...(parsedDeck?.investigator ? [parsedDeck.investigator.front, parsedDeck.investigator.back] : []),
       ...flatMap(deckCards, c =>
         c && ((deckEdits?.slots[c.code] || 0) > 0 || (deckEdits?.ignoreDeckLimitSlots[c.code] || 0) > 0 || (extraDeckSlots[c.code] || 0) > 0) ? c : []),
-      ];
+    ];
   }, [deckCards, deckEdits, parsedDeck?.investigator]);
   const [possibleUpgradeCards] = useUpgradeCardsByName(flatDeckCards, tabooSetId)
   const [bondedCards] = useBondedFromCards(flatDeckCards, DEFAULT_SORT, tabooSetId);
@@ -324,7 +324,7 @@ function DeckDetailView({
       }
     });
     return cardsByName;
-  }, [possibleUpgradeCards]);
+  }, [showCustomContent, possibleUpgradeCards]);
 
   const setMode = useCallback((mode: 'view' | 'edit' | 'upgrade') => {
     dispatch({

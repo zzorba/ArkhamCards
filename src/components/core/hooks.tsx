@@ -4,7 +4,7 @@ import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, Comp
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
 
-import { CampaignCycleCode, DeckId, MiscLocalSetting, MiscRemoteSetting, MiscSetting, SORT_BY_CARD_ID, SORT_BY_PACK, SORT_BY_TYPE, Slots, SortType } from '@actions/types';
+import { CampaignCycleCode, DeckId, MiscLocalSetting, MiscRemoteSetting, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap, InvestigatorChoice } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -264,7 +264,7 @@ export function useCounters(initialValue: Counters, extra?: {
   ) => {
     switch (action.type) {
       case 'set':
-      let newState = {
+        let newState = {
           ...state,
           [action.key]: action.value,
         };

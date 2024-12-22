@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import StepBorder from './StepBorder';
 import { l, m } from '@styles/space';
-import { ExtraStepPaddingProvider, StepPaddingContext } from './StepPaddingContext';
+import { ExtraStepPaddingProvider } from './StepPaddingContext';
 
 interface Props {
   width: number;

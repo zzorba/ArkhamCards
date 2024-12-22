@@ -130,7 +130,7 @@ export default function CampaignLogEntryComponent({ entry, interScenarioId, camp
           crossedOut={crossedOut}
           entry={entry}
           decoration={decoration}
-          noWrapper={noWrapper}          
+          noWrapper={noWrapper}
         />
       );
     case 'investigator_count':

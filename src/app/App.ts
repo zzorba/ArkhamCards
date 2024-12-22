@@ -13,7 +13,6 @@ import { getLangPreference, AppState, getThemeOverride, getStartingTab } from '@
 import { DARK_THEME, LIGHT_THEME } from '@styles/theme';
 import { BROWSE_CAMPAIGNS, BROWSE_CARDS, BROWSE_DECKS, BROWSE_SETTINGS, CHANGE_TAB, StartingTabType } from '@actions/types';
 import { maybeSaveAutomaticBackup } from './autoBackup';
-import { ALL_LANGUAGES } from '@lib/i18n';
 
 // @ts-ignore ts2339
 TouchableOpacity.defaultProps = {
@@ -293,19 +292,6 @@ export default class App {
               color: COLORS.M,
               accessibilityLabel: t`New Campaign`,
             }],
-          },
-        },
-      },
-    };
-
-    const browseChaosBags = {
-      component: {
-        name: 'My.ChaosBag',
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos Bag`,
-            },
           },
         },
       },

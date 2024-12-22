@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { Appearance, Dimensions, Platform, ScaledSize, useWindowDimensions } from 'react-native';
+import React, { useContext, useMemo } from 'react';
+import { Appearance, useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { throttle } from 'lodash';
 
@@ -8,7 +8,6 @@ import { getAppFontScale, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { useSettingValue } from '@components/core/hooks';
 
 const EXTRA_BOLD_ITALIC = 'Alegreya-ExtraBoldItalic';
 function useColorScheme(delay = 2000) {

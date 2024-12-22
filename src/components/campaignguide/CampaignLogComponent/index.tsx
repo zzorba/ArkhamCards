@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import { flatMap, keys, range, map, sum, values } from 'lodash';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { t } from 'ttag';
 
 import ChaosBagLine from '@components/core/ChaosBagLine';
@@ -130,7 +129,7 @@ function CardSection({ code, section, campaignGuide, width, isRelationship, isFa
         open={!eliminated}
       />
     );
-  }, [card, detail, eliminated, width]);
+  }, [card, detail, eliminated, width, campaignGuide, code]);
   const entries = useMemo(() => {
     return section?.entries.filter(entry => entry.id !== '$fatigue' && entry.id !== '$relationship') ?? []
   }, [section?.entries]);
@@ -221,7 +220,6 @@ export default function CampaignLogComponent({
                 interScenarioId={interScenarioId}
                 campaignGuide={campaignGuide}
                 campaignLog={campaignLog}
-                width={width - s * 2}
               />
             ) }
           </View>

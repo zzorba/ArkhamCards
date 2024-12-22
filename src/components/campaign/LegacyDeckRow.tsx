@@ -6,7 +6,6 @@ import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import { useLatestDeckCards, usePressCallback } from '@components/core/hooks';
-import { DeckActions } from '@data/remote/decks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import useSingleCard from '@components/card/useSingleCard';
@@ -25,7 +24,6 @@ export interface LegacyDeckRowProps {
   renderDetails?: RenderDeckDetails;
   killedOrInsane?: boolean;
   skipRender?: (deck: Deck, investigator: Card) => boolean;
-  actions: DeckActions;
 }
 
 interface Props extends LegacyDeckRowProps {

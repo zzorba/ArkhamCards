@@ -8,7 +8,7 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { DisplayChoiceWithId } from '@data/scenario';
 import space, { s } from '@styles/space';
-import { filter, findIndex, forEach, throttle } from 'lodash';
+import { findIndex, forEach, throttle } from 'lodash';
 import InputWrapper from './InputWrapper';
 import ActionButton from './ActionButton';
 import ChaosBagLine from '@components/core/ChaosBagLine';
@@ -26,7 +26,6 @@ interface Props {
   defaultChoice?: string;
   compact?: boolean;
   icon?: string;
-  showHiddenChoices?: boolean;
 }
 
 export default function ChooseOnePrompt({
@@ -39,7 +38,6 @@ export default function ChooseOnePrompt({
   defaultChoice,
   compact,
   icon,
-  showHiddenChoices,
 }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { colors, width } = useContext(StyleContext);

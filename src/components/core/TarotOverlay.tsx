@@ -49,7 +49,6 @@ export default function TarotOverlay({ componentId, tarot, inverted, flipped, on
       >
         <View style={[{ width, height }, styles.background]}>
           <TarotCardComponent
-            suffix="_MODAL"
             width={cardWidth}
             card={tarot}
             flipped={localFlipped}

@@ -1,6 +1,6 @@
-import { ColorValue, Platform, StyleSheet, TextStyle } from "react-native";
+import { ColorValue, Platform, StyleSheet, TextStyle } from 'react-native';
 
-import COLORS from "./colors";
+import COLORS from './colors';
 
 export interface TypographyColors {
   D10: ColorValue;
@@ -52,8 +52,8 @@ export interface Typography {
   invertedLight: TextStyle;
 }
 
-const ITALIC_FONT_STYLE = Platform.OS === "ios" ? "italic" : undefined;
-export default function (
+const ITALIC_FONT_STYLE = Platform.OS === 'ios' ? 'italic' : undefined;
+export default function(
   fontScale: number,
   colors: TypographyColors,
   italicFont: string,
@@ -63,19 +63,19 @@ export default function (
 ): Typography {
   return StyleSheet.create({
     cursive: {
-      fontFamily: "Caveat",
+      fontFamily: 'Caveat',
       fontSize: Math.ceil(22 * fontScale),
       lineHeight: Math.ceil(24 * fontScale),
       color: colors.D30,
     },
     searchLabel: {
-      fontFamily: "Alegreya-Regular",
+      fontFamily: 'Alegreya-Regular',
       fontSize: Math.ceil(16 * fontScale),
       lineHeight: Math.ceil(20 * fontScale),
       color: colors.L20,
     },
     smallLabel: {
-      fontFamily: "Alegreya-Regular",
+      fontFamily: 'Alegreya-Regular',
       fontSize: Math.ceil(15 * fontScale),
       lineHeight: Math.ceil(18 * fontScale),
       letterSpacing: 0.3,
@@ -86,13 +86,13 @@ export default function (
       fontStyle: ITALIC_FONT_STYLE,
       fontSize: Math.ceil(14 * fontScale),
       lineHeight: Math.ceil(
-        (lang === "zh" || lang === "zh-cn" ? 17 : 16) * fontScale
+        (lang === 'zh' || lang === 'zh-cn' ? 17 : 16) * fontScale
       ),
       letterSpacing: 0.3,
       color: colors.lightText,
     },
     small: {
-      fontFamily: "Alegreya-Regular",
+      fontFamily: 'Alegreya-Regular',
       fontSize: Math.ceil(16 * fontScale),
       lineHeight: Math.ceil(18 * fontScale),
       color: colors.darkText,
@@ -106,86 +106,86 @@ export default function (
       includeFontPadding: false,
     },
     tiny: {
-      fontFamily: "Alegreya-Regular",
+      fontFamily: 'Alegreya-Regular',
       fontSize: Math.ceil(12 * fontScale),
       lineHeight: Math.ceil(
-        (lang === "zh" || lang === "zh-cn" ? 16 : 14) * fontScale
+        (lang === 'zh' || lang === 'zh-cn' ? 16 : 14) * fontScale
       ),
       color: colors.darkText,
     },
     cardName: {
-      fontFamily: "Alegreya-Medium",
+      fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(20 * fontScale),
       lineHeight: Math.ceil(
-        (lang === "zh" || lang === "zh-cn" ? 24 : 22) * fontScale
+        (lang === 'zh' || lang === 'zh-cn' ? 24 : 22) * fontScale
       ),
       color: colors.darkText,
-      textAlignVertical: "center",
+      textAlignVertical: 'center',
     },
     large: {
-      fontFamily: "Alegreya-Medium",
+      fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(18 * fontScale),
       lineHeight: Math.ceil(
-        (lang === "zh" || lang === "zh-cn" ? 22 : 20) * fontScale
+        (lang === 'zh' || lang === 'zh-cn' ? 22 : 20) * fontScale
       ),
       color: colors.darkText,
     },
     counter: {
-      fontFamily: "Alegreya-Medium",
+      fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(24 * fontScale),
       lineHeight: Math.ceil(
-        (lang === "zh" || lang === "zh-cn" ? 28 : 26) * fontScale
+        (lang === 'zh' || lang === 'zh-cn' ? 28 : 26) * fontScale
       ),
       color: colors.D10,
     },
     header: {
-      fontFamily: "Alegreya-Medium",
+      fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(22 * fontScale),
       lineHeight: Math.ceil(
-        (lang === "zh" || lang === "zh-cn" ? 26 : 24) * fontScale
+        (lang === 'zh' || lang === 'zh-cn' ? 26 : 24) * fontScale
       ),
       color: colors.darkText,
     },
     button: {
-      fontFamily: "Alegreya-Regular",
+      fontFamily: 'Alegreya-Regular',
       fontSize: Math.ceil(18 * fontScale),
       lineHeight: Math.ceil(
-        (lang === "zh" || lang === "zh-cn" ? 22 : 20) * fontScale
+        (lang === 'zh' || lang === 'zh-cn' ? 22 : 20) * fontScale
       ),
       color: colors.L30,
     },
     subHeaderText: {
-      fontFamily: "Alegreya-Medium",
+      fontFamily: 'Alegreya-Medium',
       // fontVariant: ['small-caps'],
       fontSize: Math.ceil(18 * fontScale),
       lineHeight: Math.ceil(22 * fontScale),
       color: colors.D10,
     },
     menuText: {
-      fontFamily: "Alegreya-Medium",
+      fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(18 * fontScale),
       lineHeight: Math.ceil(20 * fontScale),
       color: colors.D30,
     },
     text: {
-      fontFamily: "Alegreya-Regular",
+      fontFamily: 'Alegreya-Regular',
       fontSize: Math.ceil(18 * fontScale),
       lineHeight: Math.ceil(22 * fontScale),
       color: colors.darkText,
     },
     regular: {
-      fontFamily: "Alegreya-Regular",
-      fontWeight: Platform.OS === "ios" ? "400" : undefined,
+      fontFamily: 'Alegreya-Regular',
+      fontWeight: Platform.OS === 'ios' ? '400' : undefined,
     },
     bold: {
-      fontFamily: "Alegreya-Bold",
-      fontWeight: Platform.OS === "ios" ? "700" : undefined,
+      fontFamily: 'Alegreya-Bold',
+      fontWeight: Platform.OS === 'ios' ? '700' : undefined,
       color: colors.darkText,
     },
     boldItalic: {
       fontFamily: boldItalicFont,
       fontStyle: ITALIC_FONT_STYLE,
-      fontWeight: Platform.OS === "ios" ? "700" : undefined,
+      fontWeight: Platform.OS === 'ios' ? '700' : undefined,
       color: colors.darkText,
     },
     italic: {
@@ -205,7 +205,7 @@ export default function (
       color: colors.darkText,
     },
     simpleTitleFont: {
-      fontFamily: "Alegreya-Medium",
+      fontFamily: 'Alegreya-Medium',
       fontSize: Math.ceil(28 * fontScale),
       lineHeight: Math.ceil(36 * fontScale),
       color: colors.darkText,
@@ -227,22 +227,22 @@ export default function (
       },
     }) as TextStyle,
     left: {
-      textAlign: "left",
+      textAlign: 'left',
     },
     right: {
-      textAlign: "right",
+      textAlign: 'right',
     },
     center: {
-      textAlign: "center",
+      textAlign: 'center',
     },
     strike: {
-      textDecorationLine: "line-through",
+      textDecorationLine: 'line-through',
     },
     underline: {
-      textDecorationLine: "underline",
+      textDecorationLine: 'underline',
     },
     uppercase: {
-      textTransform: "uppercase",
+      textTransform: 'uppercase',
     },
     inverted: {
       color: colors.L30,

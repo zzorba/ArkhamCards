@@ -12,8 +12,8 @@ import {
   sumBy,
   values,
   maxBy,
-} from "lodash";
-import { Platform } from "react-native";
+} from 'lodash';
+import { Platform } from 'react-native';
 
 import {
   CardCache,
@@ -23,18 +23,18 @@ import {
   PACKS_AVAILABLE,
   SET_CURRENT_TABOO_SET,
   SettingsActions,
-} from "@actions/types";
-import { Rule as JsonRule } from "@data/scenario/types";
-import Card, { CARD_NUM_COLUMNS, TranslationData } from "@data/types/Card";
-import Rule from "@data/types/Rule";
-import Database, { SqliteVersion } from "@data/sqlite/Database";
-import TabooSet from "@data/types/TabooSet";
-import FaqEntry from "@data/types/FaqEntry";
+} from '@actions/types';
+import { Rule as JsonRule } from '@data/scenario/types';
+import Card, { CARD_NUM_COLUMNS, TranslationData } from '@data/types/Card';
+import Rule from '@data/types/Rule';
+import Database, { SqliteVersion } from '@data/sqlite/Database';
+import TabooSet from '@data/types/TabooSet';
+import FaqEntry from '@data/types/FaqEntry';
 import {
   ApolloClient,
   ApolloQueryResult,
   NormalizedCacheObject,
-} from "@apollo/client";
+} from '@apollo/client';
 import {
   GetCardsCacheDocument,
   GetCardsCacheQuery,
@@ -45,13 +45,12 @@ import {
   GetEncounterCardsDocument,
   GetEncounterCardsQuery,
   GetEncounterCardsQueryVariables,
-  GetPlayerCardsQueryResult,
   GetTranslationDataQuery,
   GetTranslationDataQueryVariables,
   GetTranslationDataDocument,
-} from "@generated/graphql/apollo-schema";
-import { Dispatch } from "react";
-import CardReprintInfo from "@data/types/CardReprintInfo";
+} from '@generated/graphql/apollo-schema';
+import { Dispatch } from 'react';
+import CardReprintInfo from '@data/types/CardReprintInfo';
 
 const VERBOSE = false;
 
@@ -62,7 +61,7 @@ function computeMaxInset(sqliteVersion: SqliteVersion): number {
   if (sqliteVersion.major === 3 && sqliteVersion.minor >= 32) {
     return Math.floor(NEW_SQLITE_NUM_VARIABLES / CARD_NUM_COLUMNS) - 1;
   }
-  if (Platform.OS === "ios") {
+  if (Platform.OS === 'ios') {
     return 50;
   }
   return Math.floor(OLD_SQLITE_NUM_VARIABLES / CARD_NUM_COLUMNS);
@@ -83,49 +82,49 @@ async function insertChunk<T>(
 
 function rulesJson(lang?: string) {
   switch (lang) {
-    case "fr":
-      return require("../../assets/generated/rules_fr.json");
-    case "es":
-      return require("../../assets/generated/rules_es.json");
-    case "ru":
-      return require("../../assets/generated/rules_ru.json");
-    case "de":
-      return require("../../assets/generated/rules_de.json");
-    case "ko":
-      return require("../../assets/generated/rules_ko.json");
-    case "zh":
-      return require("../../assets/generated/rules_zh.json");
-    case "zh-cn":
-      return require("../../assets/generated/rules_zh-cn.json");
-    case "pl":
-      return require("../../assets/generated/rules_pl.json");
-    case "it":
-      return require("../../assets/generated/rules_it.json");
-    case "en":
+    case 'fr':
+      return require('../../assets/generated/rules_fr.json');
+    case 'es':
+      return require('../../assets/generated/rules_es.json');
+    case 'ru':
+      return require('../../assets/generated/rules_ru.json');
+    case 'de':
+      return require('../../assets/generated/rules_de.json');
+    case 'ko':
+      return require('../../assets/generated/rules_ko.json');
+    case 'zh':
+      return require('../../assets/generated/rules_zh.json');
+    case 'zh-cn':
+      return require('../../assets/generated/rules_zh-cn.json');
+    case 'pl':
+      return require('../../assets/generated/rules_pl.json');
+    case 'it':
+      return require('../../assets/generated/rules_it.json');
+    case 'en':
     default:
-      return require("../../assets/generated/rules.json");
+      return require('../../assets/generated/rules.json');
   }
 }
 
-export const syncRules = async function (
+export const syncRules = async function(
   db: Database,
   sqliteVersion: SqliteVersion,
   lang?: string
 ): Promise<void> {
   const rules: JsonRule[] = rulesJson(lang);
   const allRules = flatMap(rules, (jsonRule, index) => {
-    const rule = Rule.parse(lang || "en", jsonRule, index);
+    const rule = Rule.parse(lang || 'en', jsonRule, index);
     return [rule];
   });
-  VERBOSE && console.log("Parsed all rules");
+  VERBOSE && console.log('Parsed all rules');
 
   const [simpleRules, complexRules] = partition(allRules, (r) => !r.rules);
   await insertChunk(
     sqliteVersion,
     simpleRules,
-    async (rules) => await db.insertRules(rules)
+    async(rules) => await db.insertRules(rules)
   );
-  VERBOSE && console.log("Inserted all simple rules");
+  VERBOSE && console.log('Inserted all simple rules');
 
   for (let i = 0; i < complexRules.length; i++) {
     const r = complexRules[i];
@@ -134,7 +133,7 @@ export const syncRules = async function (
       ...flatMap(r.rules || [], (r2) => [r2, ...(r2.rules || [])]),
     ]);
   }
-  VERBOSE && console.log("Inserted all complex rules");
+  VERBOSE && console.log('Inserted all complex rules');
 };
 
 function handleDerivativeData(
@@ -261,14 +260,14 @@ function processTranslationData(
   dispatch({
     type: PACKS_AVAILABLE,
     packs: standardPacks,
-    lang: lang || "en",
+    lang: lang || 'en',
     timestamp: new Date(),
     lastModified: undefined,
   });
   dispatch({
     type: CUSTOM_PACKS_AVAILABLE,
     packs: customPacks,
-    lang: lang || "en",
+    lang: lang || 'en',
   });
 
   const factionNames: { [code: string]: string } = {};
@@ -290,9 +289,9 @@ function processTranslationData(
     allEncounterSets[encounterSet.code] = encounterSet.name;
   });
 
-  VERBOSE && console.time("parse");
+  VERBOSE && console.time('parse');
   return {
-    lang: lang || "en",
+    lang: lang || 'en',
     encounterSets: allEncounterSets,
     packs,
     cardTypeNames: typeNames,
@@ -309,13 +308,13 @@ async function processCardResult(
   ) => void,
   db: Database,
   sqliteVersion: SqliteVersion,
-  all_cards: ApolloQueryResult<GetPlayerCardsQuery>["data"]["all_card"],
+  all_cards: ApolloQueryResult<GetPlayerCardsQuery>['data']['all_card'],
   translationData: TranslationData,
   progress: number
 ) {
   updateProgress(progress);
-  VERBOSE && console.timeEnd("download");
-  VERBOSE && console.log("Download completed!");
+  VERBOSE && console.timeEnd('download');
+  VERBOSE && console.log('Download completed!');
 
   const total = all_cards.length;
 
@@ -325,7 +324,7 @@ async function processCardResult(
     }
     return Card.fromGraphQl(card, translationData);
   });
-  VERBOSE && console.timeEnd("parse");
+  VERBOSE && console.timeEnd('parse');
   progress += 0.05;
   updateProgress(progress);
   const cardsToInsert: Card[] = [];
@@ -341,9 +340,9 @@ async function processCardResult(
     }
     cardsToInsert.push(card);
   });
-  VERBOSE && console.time("tabooSets");
+  VERBOSE && console.time('tabooSets');
 
-  VERBOSE && console.time("derivedData");
+  VERBOSE && console.time('derivedData');
   const linkedSet = new Set(
     flatMap(cardsToInsert, (c: Card) =>
       c.linked_card ? [c.linked_card.code] : []
@@ -358,7 +357,7 @@ async function processCardResult(
     dedupedCards,
     (card) => !!card.linked_card
   );
-  VERBOSE && console.timeEnd("derivedData");
+  VERBOSE && console.timeEnd('derivedData');
 
   const totalCards =
     linkedCards.length +
@@ -373,21 +372,21 @@ async function processCardResult(
     }
     processedCards += c.length;
   }
-  VERBOSE && console.time("linkedCards-backs");
+  VERBOSE && console.time('linkedCards-backs');
   await insertChunk(
     sqliteVersion,
     flatMap(linkedCards, (c) => (c.linked_card ? [c.linked_card] : [])),
     insertCards
   );
-  VERBOSE && console.timeEnd("linkedCards-backs");
+  VERBOSE && console.timeEnd('linkedCards-backs');
 
-  VERBOSE && console.time("linkedCards");
+  VERBOSE && console.time('linkedCards');
   await insertChunk(sqliteVersion, linkedCards, insertCards);
-  VERBOSE && console.timeEnd("linkedCards");
+  VERBOSE && console.timeEnd('linkedCards');
 
-  VERBOSE && console.time("normalCards");
+  VERBOSE && console.time('normalCards');
   await insertChunk(sqliteVersion, normalCards, insertCards);
-  VERBOSE && console.timeEnd("normalCards");
+  VERBOSE && console.timeEnd('normalCards');
 }
 
 export interface PendingCardUpdates {
@@ -410,30 +409,30 @@ export const checkForPendingCards = async function(
 ): Promise<PendingCardUpdates | undefined> {
   try {
     const cards = await db.cards();
-    VERBOSE && console.log("Checking cache ");
+    VERBOSE && console.log('Checking cache ');
     const cacheResponse = await anonClient.query<
       GetCardsCacheQuery,
       GetCardsCacheQueryVariables
     >({
       query: GetCardsCacheDocument,
       variables: {
-        locale: lang || "en",
+        locale: lang || 'en',
         version: CARD_SCHEMA_VERSION,
       },
-      fetchPolicy: "no-cache",
+      fetchPolicy: 'no-cache',
       canonizeResults: false,
     });
     const serverCache = cacheResponse?.data.all_card_updated[0];
     if (cache?.lastModified && cache?.lastModifiedTranslation) {
-      VERBOSE && console.time("cache-check");
+      VERBOSE && console.time('cache-check');
       const cardCount = await cards.count();
-      VERBOSE && console.timeEnd("cache-check");
+      VERBOSE && console.timeEnd('cache-check');
       if (
         serverCache.card_count === cardCount &&
         serverCache.cards_updated_at === cache.lastModified &&
         serverCache.translation_updated_at === cache.lastModifiedTranslation
       ) {
-        VERBOSE && console.log("Cache hit, skipping fetch");
+        VERBOSE && console.log('Cache hit, skipping fetch');
         // Cache hit, no need to download cards our local database is in sync.
         return undefined;
       }
@@ -455,7 +454,7 @@ export const checkForPendingCards = async function(
   }
 }
 
-export const syncCards = async function (
+export const syncCards = async function(
   updateProgress: (
     progress: number,
     estimateMillis?: number,
@@ -468,14 +467,14 @@ export const syncCards = async function (
   lang?: string,
   cache?: CardCache
 ): Promise<CardCache | null> {
-  VERBOSE && console.log("syncCards called");
+  VERBOSE && console.log('syncCards called');
   try {
     const needsSync = await checkForPendingCards(db, anonClient, lang, cache);
     if (!needsSync) {
       return cache ?? null;
     }
-    VERBOSE && console.log("Starting download.");
-    VERBOSE && console.time("download");
+    VERBOSE && console.log('Starting download.');
+    VERBOSE && console.time('download');
 
     const translationDataF = anonClient.query<
       GetTranslationDataQuery,
@@ -483,9 +482,9 @@ export const syncCards = async function (
     >({
       query: GetTranslationDataDocument,
       variables: {
-        locale: lang || "en",
+        locale: lang || 'en',
       },
-      fetchPolicy: "no-cache",
+      fetchPolicy: 'no-cache',
       canonizeResults: false,
     });
 
@@ -503,11 +502,11 @@ export const syncCards = async function (
     await rules.createQueryBuilder().delete().execute();
 
     await db.clearCache();
-    VERBOSE && console.time("rules");
+    VERBOSE && console.time('rules');
     await syncRules(db, sqliteVersion, lang);
-    VERBOSE && console.timeEnd("rules");
+    VERBOSE && console.timeEnd('rules');
 
-    updateProgress(0.1, Platform.OS === "ios" ? 2000 : 3000);
+    updateProgress(0.1, Platform.OS === 'ios' ? 2000 : 3000);
     const translationData = processTranslationData(
       await translationDataF,
       lang,
@@ -515,7 +514,7 @@ export const syncCards = async function (
     );
     updateProgress(0.1);
 
-    updateProgress(0.3, Platform.OS === "ios" ? 5000 : 8000);
+    updateProgress(0.3, Platform.OS === 'ios' ? 5000 : 8000);
     {
       const cardsResponse = await anonClient.query<
         GetPlayerCardsQuery,
@@ -523,10 +522,10 @@ export const syncCards = async function (
       >({
         query: GetPlayerCardsDocument,
         variables: {
-          locale: lang || "en",
+          locale: lang || 'en',
           version: CARD_SCHEMA_VERSION,
         },
-        fetchPolicy: "no-cache",
+        fetchPolicy: 'no-cache',
         canonizeResults: false,
       });
       await processCardResult(
@@ -555,17 +554,17 @@ export const syncCards = async function (
       }
     }
 
-    updateProgress(0.7, Platform.OS === "ios" ? 5000 : 8000);
+    updateProgress(0.7, Platform.OS === 'ios' ? 5000 : 8000);
     const cardsResponse = await anonClient.query<
       GetEncounterCardsQuery,
       GetEncounterCardsQueryVariables
     >({
       query: GetEncounterCardsDocument,
       variables: {
-        locale: lang || "en",
+        locale: lang || 'en',
         version: CARD_SCHEMA_VERSION,
       },
-      fetchPolicy: "no-cache",
+      fetchPolicy: 'no-cache',
       canonizeResults: false,
     });
 
@@ -577,9 +576,9 @@ export const syncCards = async function (
       translationData,
       0.7
     );
-    VERBOSE && console.time("countCards");
+    VERBOSE && console.time('countCards');
     const cardCount = await cards.count();
-    VERBOSE && console.timeEnd("countCards");
+    VERBOSE && console.timeEnd('countCards');
 
     const updated = cardsResponse.data.all_card_updated[0];
     return {
@@ -594,27 +593,27 @@ export const syncCards = async function (
   }
 };
 
-export const getFaqEntry = async function (db: Database, code: string) {
+export const getFaqEntry = async function(db: Database, code: string) {
   const faqs = await db.faqEntries();
   const faqEntry = await faqs
     .createQueryBuilder()
-    .where("code = :code")
+    .where('code = :code')
     .setParameters({ code })
     .getOne();
 
   const headers = new Headers();
   if (faqEntry && faqEntry.lastModified) {
-    headers.append("If-Modified-Since", faqEntry.lastModified);
+    headers.append('If-Modified-Since', faqEntry.lastModified);
   }
   const uri = `https://arkhamdb.com/api/public/faq/${code}.json`;
   const response = await fetch(uri, {
-    method: "GET",
+    method: 'GET',
     headers: headers,
   });
   if (response.status === 304) {
     return Promise.resolve(true);
   }
-  const lastModified = response.headers.get("Last-Modified") || undefined;
+  const lastModified = response.headers.get('Last-Modified') || undefined;
   const json = await response.json();
   if (json.length) {
     faqs.save(FaqEntry.fromJson(code, json[0], lastModified));

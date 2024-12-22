@@ -16,11 +16,10 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
 import StyleContext from '@styles/StyleContext';
 import { ReprintPack, reprintPackToPack, specialPacks } from '@app_constants';
-import ArkhamSwitch from '../ArkhamSwitch';
 import ArkhamButton from '../ArkhamButton';
 import { useToggles } from '../hooks';
 
-type PackItem =  {
+type PackItem = {
   type: 'pack';
   pack: Pack;
 } | {
@@ -215,11 +214,12 @@ export default function PackListComponent({
         }
         return (
           <View>
+            { /* eslint-disable-next-line react/jsx-no-bind */ }
             <ArkhamButton icon="show" title={t`Show original release packs`} onPress={() => setShowLegacy(item.cycleCode)} />
           </View>
         );
     }
-  }, [renderPack, checkState, setShowLegacy, showLegacy]);
+  }, [baseQuery, compact, componentId, cyclesOnly, setChecked, setCycleChecked, renderPack, checkState, setShowLegacy, showLegacy]);
 
 
   if (!packs.length) {

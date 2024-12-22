@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Linking, StyleSheet, Text, View } from 'react-native';
+import { Linking, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -16,7 +16,6 @@ import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space, { s } from '@styles/space';
 import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
-import StyleContext from '@styles/StyleContext';
 import DeckButton from '@components/deck/controls/DeckButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getDownloadLink } from './ScenarioComponent';
@@ -35,7 +34,6 @@ function CampaignGuideView(props: Props) {
   const [countDialog, showCountDialog] = useCountDialog();
   const { componentId, setCampaignServerId, login, upload } = props;
   const campaignData = useContext(CampaignGuideContext);
-  const { typography } = useContext(StyleContext);
   const { lang } = useContext(LanguageContext);
   const { campaignId } = campaignData;
   const dispatch = useAppDispatch();
@@ -110,7 +108,7 @@ function CampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [componentId, campaign, campaignId, deckActions, typography, customData, updateCampaignActions, upload, downloadPressed, setCampaignServerId, showAlert]);
+  }, [componentId, campaign, campaignId, deckActions, customData, updateCampaignActions, upload, downloadPressed, setCampaignServerId, showAlert]);
   if (!processedCampaign) {
     if (processedCampaignError) {
       return <CampaignErrorView message={processedCampaignError} />;

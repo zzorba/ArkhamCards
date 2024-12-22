@@ -9,8 +9,7 @@ import { Navigation } from 'react-native-navigation';
 import useGuideChaosBag from '../campaignguide/useGuideChaosBag';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useChaosBagResults } from '@data/hooks';
-import withCampaignGuideContext, { InjectedCampaignGuideContextProps } from '@components/campaignguide/withCampaignGuideContext';
-import { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
+import withCampaignGuideContext, { InjectedCampaignGuideContextProps, CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import useProcessedCampaign from '@components/campaignguide/useProcessedCampaign';
 import { t } from 'ttag';
@@ -38,7 +37,7 @@ function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone
   const rules = useMemo(() => campaignGuide.scenarioRules(lang, scenarioId), [lang, scenarioId, campaignGuide]);
   const [campaignErrata, scenarioErrata] = useMemo(() => [
     campaignGuide.campaignFaq(),
-    scenarioId ? campaignGuide.scenarioFaq(scenarioId) : []
+    scenarioId ? campaignGuide.scenarioFaq(scenarioId) : [],
   ], [campaignGuide, scenarioId]);
 
   const chaosBagResults = useChaosBagResults(campaignId);

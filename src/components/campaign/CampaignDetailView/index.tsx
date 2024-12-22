@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
-import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 import { useDispatch } from 'react-redux';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
@@ -57,7 +57,7 @@ function CampaignDetailView(props: Props) {
   const [textEditDialog, showTextEditDialog] = useTextEditDialog();
   const [countDialog, showCountDialog] = useCountDialog();
   const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(props.campaignId);
-  const { backgroundStyle, typography } = useContext(StyleContext);
+  const { backgroundStyle } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const weaknessCards = useWeaknessCards();
   const campaign = useCampaign(campaignId, true);

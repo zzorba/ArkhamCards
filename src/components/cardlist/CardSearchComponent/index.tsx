@@ -7,7 +7,7 @@ import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
 import { CardScreenType, DeckId, SortType } from '@actions/types';
-import Card, { InvestigatorChoice } from '@data/types/Card';
+import { InvestigatorChoice } from '@data/types/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
 import { FilterState } from '@lib/filters';
@@ -281,7 +281,7 @@ export default function CardSearchComponent(props: Props) {
       );
     }
     return [result, headerHeight];
-  }, [filters, fontScale, width, deckId, hideVersatile, setHideVersatile, setHideSplash, componentId, typography, onFilterChange, onToggleChange]);
+  }, [hideSplash, filters, fontScale, width, deckId, hideVersatile, setHideVersatile, setHideSplash, componentId, typography, onFilterChange, onToggleChange]);
   return (
     <>
       <CardSearchResultsComponent

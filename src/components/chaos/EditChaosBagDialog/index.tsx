@@ -23,7 +23,7 @@ import {
 } from '@app_constants';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useBackButton, useComponentVisible, useEffectUpdate, useNavigationButtonPressed } from '@components/core/hooks';
+import { useBackButton, useComponentVisible, useNavigationButtonPressed } from '@components/core/hooks';
 import { useAlertDialog, useDialog } from '@components/deck/dialogs';
 import { CampaignCycleCode, CampaignDifficulty, CUSTOM, EOE } from '@actions/types';
 import space, { s, xs } from '@styles/space';
@@ -51,7 +51,7 @@ function ChaosBagCounter({ count, token, limit, onInc, onDec, fullWidth, left }:
   left: boolean;
 }) {
   const { colors, typography } = useContext(StyleContext);
-  const onIncrement = useCallback(() => onInc(token, limit), [onInc, token]);
+  const onIncrement = useCallback(() => onInc(token, limit), [onInc, limit, token]);
   const onDecrement = useCallback(() => onDec(token), [onDec, token]);
   const tokenSpacing = fullWidth ? 0.2 : 0.15;
   return (
@@ -81,7 +81,7 @@ function ChaosBagCounter({ count, token, limit, onInc, onDec, fullWidth, left }:
               { count === 0 ? (
                 <ChaosToken iconKey={token} size="extraTiny" sealed border />
               ) : (
-                <View style={{ position: 'relative', width: EXTRA_TINY_TOKEN_SIZE + (count - 1) * EXTRA_TINY_TOKEN_SIZE * tokenSpacing,  height: EXTRA_TINY_TOKEN_SIZE }}>
+                <View style={{ position: 'relative', width: EXTRA_TINY_TOKEN_SIZE + (count - 1) * EXTRA_TINY_TOKEN_SIZE * tokenSpacing, height: EXTRA_TINY_TOKEN_SIZE }}>
                   { map(range(0, count), idx => (
                     <View key={idx} style={{ position: 'absolute', top: 0, left: (EXTRA_TINY_TOKEN_SIZE * tokenSpacing) * idx }}>
                       <ChaosToken iconKey={token} size="extraTiny" sealed={count === 0} border />
@@ -129,7 +129,7 @@ function DifficultyButton({ difficulty, title, onPress, selection }: {
   return (
     <View style={{ flex: 1 }}>
       <Pressable onPress={handleOnPress}>
-        <View style={[styles.presetButton, { height, borderRadius: height / 2}, selected ? { borderWidth: 1, borderColor: colors.L15 } : undefined, space.paddingSideM]}>
+        <View style={[styles.presetButton, { height, borderRadius: height / 2 }, selected ? { borderWidth: 1, borderColor: colors.L15 } : undefined, space.paddingSideM]}>
           <Text style={[space.paddingTopXs, typography.large, selected ? typography.bold : undefined]}>{title}</Text>
         </View>
       </Pressable>
@@ -151,12 +151,12 @@ export function useEditChaosBagDialog({
       case 'inc':
         return {
           ...state,
-          [action.token]:  Math.min((state[action.token] || 0) + 1, action.limit),
+          [action.token]: Math.min((state[action.token] || 0) + 1, action.limit),
         };
       case 'dec':
         return {
           ...state,
-          [action.token]:  Math.max((state[action.token] || 0) -1, 0),
+          [action.token]: Math.max((state[action.token] || 0) - 1, 0),
         };
       case 'set':
         return {
@@ -174,7 +174,7 @@ export function useEditChaosBagDialog({
   const onSetDefault = useCallback((difficulty: CampaignDifficulty) => {
     mutateChaosBag({ type: 'set', chaosBag: getChaosBag(cycleCode, difficulty) });
     setDifficulty(difficulty);
-  }, [mutateChaosBag, setDifficulty]);
+  }, [mutateChaosBag, setDifficulty, cycleCode]);
   const allTokens = useMemo(() => sortBy(CHAOS_TOKENS, x => CHAOS_TOKEN_ORDER[x]), []);
   return useDialog({
     title: t`Edit chaos bag`,
@@ -198,18 +198,18 @@ export function useEditChaosBagDialog({
       </View>
       <View style={[space.marginSideXs, space.marginBottomS, { height: 1, backgroundColor: colors.L15, width: '100%' }]} />
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-        { map(allTokens, (token, idx) => <ChaosBagCounter
+        { map(allTokens, (token, idx) => (<ChaosBagCounter
           key={token}
           token={token}
           count={chaosBag[token] || 0}
           onInc={onInc}
           onDec={onDec}
           limit={CHAOS_BAG_TOKEN_COUNTS[token] || 0}
-          fullWidth={idx == allTokens.length - 1 && !!(allTokens.length % 2)}
+          fullWidth={idx === allTokens.length - 1 && !!(allTokens.length % 2)}
           left={!!(idx % 2)}
-        />)}
+        />))}
       </View>
-    </View>
+    </View>,
   });
 }
 
@@ -344,17 +344,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  count: {
-    minWidth: 32,
-    paddingRight: xs,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
   },
   button: {
     borderRadius: 4,

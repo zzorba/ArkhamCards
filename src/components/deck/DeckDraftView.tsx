@@ -160,12 +160,12 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
   );
 }
 
+// eslint-disable-next-line react/prop-types
 export default function DeckDraftView({ componentId, id, campaignId, mode }: DeckDraftProps & NavigationProps) {
   const deck = useCampaignDeck(id, campaignId);
   const {
     deckEdits,
     tabooSetId,
-    parsedDeck,
     visible,
   } = useParsedDeck(id, componentId);
   const meta = deckEdits?.meta;
@@ -214,7 +214,7 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
     disabled: !visible && editingPack,
     mode,
   });
-  const [deckCards, ] = useLatestDeckCards(deck, false);
+  const [deckCards] = useLatestDeckCards(deck, false);
   const possibleCodes = useRef<string[]>([]);
   useEffect(() => {
     if (allPossibleCodes) {
@@ -443,5 +443,5 @@ const styles = StyleSheet.create({
   },
   footerPadding: {
     height: FOOTER_HEIGHT,
-  }
+  },
 });

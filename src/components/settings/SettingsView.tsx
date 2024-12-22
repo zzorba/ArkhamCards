@@ -293,9 +293,9 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   </View>
                 </>
               ) }
-              { audioLang == 'en' && (
+              { audioLang === 'en' && (
                 <>
-                  <DissonantVoicesLoginButton showAlert={showAlert} last /> 
+                  <DissonantVoicesLoginButton showAlert={showAlert} last />
                   <View style={space.paddingS}>
                     <Text style={typography.text}>
                       Additional narration for fan-made campaigns has been provided by Head Librarian Chad <Text style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showEnAudio}>The Restricted Collection</Text> and Scarlett.

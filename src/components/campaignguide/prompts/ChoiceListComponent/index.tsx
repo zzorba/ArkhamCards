@@ -145,7 +145,7 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
       );
     }
     return results;
-  }, [inputChoices, 
+  }, [inputChoices,
     side, hideInvestigatorSection, items, detailed, options, optional, width, getChoice, onChoiceChange]);
   const disabledText = useMemo(() => {
     if (detailed && !every(items, item => selectedChoice[item.code] !== undefined)) {

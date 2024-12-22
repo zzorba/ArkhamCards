@@ -1,7 +1,7 @@
-import { useCallback, useContext, useMemo, useEffect } from "react";
-import { filter, forEach, map, omit, uniq, keys, concat } from "lodash";
-import { useApolloClient } from "@apollo/client";
-import { Navigation } from "react-native-navigation";
+import { useCallback, useContext, useMemo, useEffect } from 'react';
+import { filter, forEach, map, omit, uniq, keys, concat } from 'lodash';
+import { useApolloClient } from '@apollo/client';
+import { Navigation } from 'react-native-navigation';
 
 import {
   Campaign,
@@ -17,9 +17,9 @@ import {
   TraumaAndCardData,
   UploadedCampaignId,
   WeaknessSet,
-} from "@actions/types";
-import { deleteCampaignFromCache, uploadLocalDeck } from "@data/remote/apollo";
-import { useModifyUserCache } from "@data/apollo/cache";
+} from '@actions/types';
+import { deleteCampaignFromCache, uploadLocalDeck } from '@data/remote/apollo';
+import { useModifyUserCache } from '@data/apollo/cache';
 import {
   useAddGuideInputMutation,
   useAddCampaignInvestigatorMutation,
@@ -53,16 +53,16 @@ import {
   useEditCampaignAccessMutation,
   EditAccessAction,
   useDeleteCampaignMutation,
-} from "@generated/graphql/apollo-schema";
-import ArkhamCardsAuthContext from "@lib/ArkhamCardsAuthContext";
-import { ChaosBag } from "@app_constants";
+} from '@generated/graphql/apollo-schema';
+import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import { ChaosBag } from '@app_constants';
 import {
   handleUploadNewCampaign,
   handleUploadChaosBagResults,
   optimisticUpdates,
-} from "./apollo";
-import SingleCampaignT from "@data/interfaces/SingleCampaignT";
-import { t } from "ttag";
+} from './apollo';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { t } from 'ttag';
 
 interface CampaignLink {
   campaignIdA: string;
@@ -92,7 +92,7 @@ function useCreateCampaignRequest(): (
 ) => Promise<UploadedCampaignId> {
   const [createCampaign] = useCreateCampaignMutation();
   return useCallback(
-    async (
+    async(
       campaignId: string,
       guided: boolean
     ): Promise<UploadedCampaignId> => {
@@ -126,7 +126,7 @@ function useCreateLinkedCampaignRequest(): (
 }> {
   const [createCampaign] = useCreateCampaignMutation();
   return useCallback(
-    async (
+    async(
       campaignId: string,
       linked: CampaignLink,
       guided: boolean
@@ -180,7 +180,7 @@ export function useUploadLocalDeckRequest(): (
   const [uploadLocalDecks] = useUploadLocalCampaignDeckMutation();
   const cache = apollo.cache;
   return useCallback(
-    async (localDeckId: string, arkhamDbId: number): Promise<void> => {
+    async(localDeckId: string, arkhamDbId: number): Promise<void> => {
       if (userId) {
         try {
           const data = await uploadLocalDecks({
@@ -209,7 +209,7 @@ export function useUploadLocalDeckRequest(): (
         }
       }
     },
-    [uploadLocalDeck, userId, cache]
+    [uploadLocalDecks, userId, cache]
   );
 }
 
@@ -220,7 +220,7 @@ export function useEditCampaignAccessRequest(): (
 ) => Promise<void> {
   const [apiCall] = useEditCampaignAccessMutation();
   return useCallback(
-    async (
+    async(
       campaignId: UploadedCampaignId,
       users: string[],
       action: EditAccessAction
@@ -254,8 +254,8 @@ function guideAchievementToInsert(
   return {
     campaign_id: serverId,
     id: a.id,
-    bool_value: a.type === "binary" ? a.value : null,
-    value: a.type === "count" ? a.value : null,
+    bool_value: a.type === 'binary' ? a.value : null,
+    value: a.type === 'count' ? a.value : null,
     type: a.type,
   };
 }
@@ -271,7 +271,7 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
   const [uploadChaosBagResults] = useUploadChaosBagResultsMutation();
 
   return useCallback(
-    async (
+    async(
       campaignId: number,
       campaign: Campaign,
       chaosBagResults: ChaosBagResults,
@@ -289,9 +289,9 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
       };
       await uploadChaosBagResults({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_chaos_bag_result_by_pk: {
-            __typename: "chaos_bag_result",
+            __typename: 'chaos_bag_result',
             ...variables,
           },
         },
@@ -412,7 +412,7 @@ export function useDeleteCampaignRequest() {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [apiCall] = useDeleteCampaignMutation();
   return useCallback(
-    async ({ campaignId, serverId }: UploadedCampaignId): Promise<void> => {
+    async({ campaignId, serverId }: UploadedCampaignId): Promise<void> => {
       if (userId) {
         deleteCampaignFromCache(client.cache, userId, campaignId, serverId);
       }
@@ -434,11 +434,11 @@ export function useLeaveCampaignRequest() {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const editCampaignAccess = useEditCampaignAccessRequest();
   return useCallback(
-    async (campaignId: UploadedCampaignId): Promise<void> => {
+    async(campaignId: UploadedCampaignId): Promise<void> => {
       if (userId) {
         await editCampaignAccess(campaignId, [userId], EditAccessAction.Revoke);
         const targetCampaignId = client.cache.identify({
-          __typename: "campaign",
+          __typename: 'campaign',
           id: campaignId.serverId,
         });
         if (targetCampaignId) {
@@ -466,12 +466,12 @@ export type SetCampaignChaosBagAction = (
 export function useSetCampaignChaosBag(): SetCampaignChaosBagAction {
   const [updateChaosBag] = useUpdateChaosBagMutation();
   return useCallback(
-    async (campaignId: UploadedCampaignId, chaosBag: ChaosBag) => {
+    async(campaignId: UploadedCampaignId, chaosBag: ChaosBag) => {
       await updateChaosBag({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_campaign_by_pk: {
-            __typename: "campaign",
+            __typename: 'campaign',
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             chaosBag,
@@ -497,12 +497,12 @@ export type SetCampaignWeaknessSetAction = (
 export function useSetCampaignWeaknessSet(): SetCampaignWeaknessSetAction {
   const [updateWeaknessSet] = useUpdateWeaknessSetMutation();
   return useCallback(
-    async (campaignId: UploadedCampaignId, weaknessSet: WeaknessSet) => {
+    async(campaignId: UploadedCampaignId, weaknessSet: WeaknessSet) => {
       await updateWeaknessSet({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_campaign_by_pk: {
-            __typename: "campaign",
+            __typename: 'campaign',
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             weaknessSet,
@@ -528,15 +528,15 @@ export type SetCampaignTarotReadingAction = (
 export function useSetCampaignTarotReading(): SetCampaignTarotReadingAction {
   const [updateTarotReading] = useUpdateTarotReadingMutation();
   return useCallback(
-    async (
+    async(
       campaignId: UploadedCampaignId,
       tarotReading: TarotReading | undefined
     ) => {
       await updateTarotReading({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_campaign_by_pk: {
-            __typename: "campaign",
+            __typename: 'campaign',
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             tarot_reading: tarotReading,
@@ -562,12 +562,12 @@ export type SetCampaignNotesAction = (
 export function useSetCampaignNotes(): SetCampaignNotesAction {
   const [updateCampaignNotes] = useUpdateCampaignNotesMutation();
   return useCallback(
-    async (campaignId: UploadedCampaignId, campaignNotes: CampaignNotes) => {
+    async(campaignId: UploadedCampaignId, campaignNotes: CampaignNotes) => {
       await updateCampaignNotes({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_campaign_by_pk: {
-            __typename: "campaign",
+            __typename: 'campaign',
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             campaignNotes,
@@ -593,12 +593,12 @@ export type SetCampaignShowInterludes = (
 export function useSetCampaignShowInterludes(): SetCampaignShowInterludes {
   const [updateShowInterlude] = useUpdateCampaignShowInterludesMutation();
   return useCallback(
-    async (campaignId: UploadedCampaignId, showInterludes: boolean) => {
+    async(campaignId: UploadedCampaignId, showInterludes: boolean) => {
       await updateShowInterlude({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_campaign_by_pk: {
-            __typename: "campaign",
+            __typename: 'campaign',
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             showInterludes,
@@ -647,7 +647,7 @@ export interface UpdateCampaignActions {
   setXp: (
     campaignId: UploadedCampaignId,
     investigator: string,
-    type: "spentXp" | "availableXp",
+    type: 'spentXp' | 'availableXp',
     xp: number
   ) => Promise<void>;
   setCampaigName: (
@@ -691,12 +691,12 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   const setCampaignNotes = useSetCampaignNotes();
 
   const setArchived = useCallback(
-    async (campaignId: UploadedCampaignId, archived: boolean) => {
+    async(campaignId: UploadedCampaignId, archived: boolean) => {
       await updateArchived({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_campaign_by_pk: {
-            __typename: "campaign",
+            __typename: 'campaign',
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             archived,
@@ -715,12 +715,12 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   );
 
   const setDifficulty = useCallback(
-    async (campaignId: UploadedCampaignId, difficulty?: CampaignDifficulty) => {
+    async(campaignId: UploadedCampaignId, difficulty?: CampaignDifficulty) => {
       await updateDifficulty({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_campaign_by_pk: {
-            __typename: "campaign",
+            __typename: 'campaign',
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             difficulty,
@@ -739,12 +739,12 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   );
 
   const setGuideVersion = useCallback(
-    async (campaignId: UploadedCampaignId, guideVersion: number) => {
+    async(campaignId: UploadedCampaignId, guideVersion: number) => {
       await updateGuideVersion({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_campaign_by_pk: {
-            __typename: "campaign",
+            __typename: 'campaign',
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             guide_version: guideVersion,
@@ -763,15 +763,15 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   );
 
   const setScenarioResults = useCallback(
-    async (
+    async(
       campaignId: UploadedCampaignId,
       scenarioResults: ScenarioResult[]
     ) => {
       await updateScenarioResults({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_campaign_by_pk: {
-            __typename: "campaign",
+            __typename: 'campaign',
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             scenarioResults,
@@ -790,12 +790,12 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   );
 
   const addInvestigator = useCallback(
-    async (campaignId: UploadedCampaignId, investigator: string) => {
+    async(campaignId: UploadedCampaignId, investigator: string) => {
       await insertInvestigator({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           insert_campaign_investigator_one: {
-            __typename: "campaign_investigator",
+            __typename: 'campaign_investigator',
             campaign_id: campaignId.serverId,
             id: `${campaignId.serverId}-${investigator}`,
             investigator,
@@ -814,15 +814,15 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
     [insertInvestigator]
   );
   const removeInvestigator = useCallback(
-    async (campaignId: UploadedCampaignId, investigator: string) => {
+    async(campaignId: UploadedCampaignId, investigator: string) => {
       await deleteInvestigator({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           delete_campaign_investigator: {
-            __typename: "campaign_investigator_mutation_response",
+            __typename: 'campaign_investigator_mutation_response',
             returning: [
               {
-                __typename: "campaign_investigator",
+                __typename: 'campaign_investigator',
                 id: `${campaignId.serverId}-${investigator}`,
                 campaign_id: campaignId.serverId,
                 investigator,
@@ -843,21 +843,21 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
     [deleteInvestigator]
   );
   const removeInvestigatorDeck = useCallback(
-    async (campaignId: UploadedCampaignId, investigator: string) => {
+    async(campaignId: UploadedCampaignId, investigator: string) => {
       if (!userId) {
         return;
       }
       await deleteInvestigatorDecks({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           delete_campaign_deck: {
-            __typename: "campaign_deck_mutation_response",
+            __typename: 'campaign_deck_mutation_response',
             returning: [
               {
                 id: -1,
                 campaign_id: campaignId.serverId,
                 arkhamdb_id: -1,
-                local_uuid: "",
+                local_uuid: '',
                 investigator,
                 owner_id: userId,
               },
@@ -879,7 +879,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   );
 
   const setInvestigatorTrauma = useCallback(
-    async (
+    async(
       campaignId: UploadedCampaignId,
       investigator: string,
       trauma: Trauma
@@ -894,9 +894,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       };
       await updateInvestigatorTrauma({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           insert_investigator_data_one: {
-            __typename: "investigator_data",
+            __typename: 'investigator_data',
             id: `${campaignId.serverId} ${investigator}`,
             ...variables,
           },
@@ -912,7 +912,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   );
 
   const setInvestigatorData = useCallback(
-    async (
+    async(
       campaignId: UploadedCampaignId,
       investigator: string,
       data: TraumaAndCardData
@@ -934,9 +934,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       };
       await updateInvestigatorData({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           insert_investigator_data_one: {
-            __typename: "investigator_data",
+            __typename: 'investigator_data',
             id: `${campaignId.serverId} ${investigator}`,
             ...variables,
           },
@@ -952,12 +952,12 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   );
 
   const setCampaigName = useCallback(
-    async (campaignId: UploadedCampaignId, name: string) => {
+    async(campaignId: UploadedCampaignId, name: string) => {
       await updateCampaignName({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           update_campaign_by_pk: {
-            __typename: "campaign",
+            __typename: 'campaign',
             id: campaignId.serverId,
             uuid: campaignId.campaignId,
             name,
@@ -975,18 +975,18 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
     [updateCampaignName]
   );
   const setXp = useCallback(
-    async (
+    async(
       campaignId: UploadedCampaignId,
       investigator: string,
-      type: "spentXp" | "availableXp",
+      type: 'spentXp' | 'availableXp',
       xp: number
     ) => {
-      if (type === "spentXp") {
+      if (type === 'spentXp') {
         await updateSpentXp({
           optimisticResponse: {
-            __typename: "mutation_root",
+            __typename: 'mutation_root',
             insert_investigator_data_one: {
-              __typename: "investigator_data",
+              __typename: 'investigator_data',
               id: `${campaignId.serverId} ${investigator}`,
               campaign_id: campaignId.serverId,
               investigator,
@@ -1006,9 +1006,9 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
       } else {
         updateAvailableXp({
           optimisticResponse: {
-            __typename: "mutation_root",
+            __typename: 'mutation_root',
             insert_investigator_data_one: {
-              __typename: "investigator_data",
+              __typename: 'investigator_data',
               id: `${campaignId.serverId} ${investigator}`,
               campaign_id: campaignId.serverId,
               investigator,
@@ -1070,14 +1070,14 @@ export function guideInputToInsert(
   index?: number
 ) {
   return {
-    id: `${serverId}(${input.type},${input.scenario || ""},${
-      input.step || ""
+    id: `${serverId}(${input.type},${input.scenario || ''},${
+      input.step || ''
     })`,
     type: input.type,
     campaign_id: serverId,
     scenario: input.scenario || null,
     step: input.step || null,
-    payload: omit(input, ["scenario", "step", "type"]),
+    payload: omit(input, ['scenario', 'step', 'type']),
     inserted_idx: index !== undefined ? index : null,
   };
 }
@@ -1108,14 +1108,14 @@ export function useGuideActions(): GuideActions {
   const [removeGuideInputs] = useRemoveGuideInputsMutation();
   const [setGuideInput] = useAddGuideInputMutation();
   const setInput = useCallback(
-    async (campaignId: UploadedCampaignId, input: GuideInput) => {
+    async(campaignId: UploadedCampaignId, input: GuideInput) => {
       const insert = guideInputToInsert(input, campaignId.serverId);
       await setGuideInput({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           insert_guide_input_one: {
             ...insert,
-            __typename: "guide_input",
+            __typename: 'guide_input',
           },
         },
         variables: insert,
@@ -1128,16 +1128,16 @@ export function useGuideActions(): GuideActions {
     [setGuideInput]
   );
   const removeInputs = useCallback(
-    async (campaignId: UploadedCampaignId, inputs: GuideInput[]) => {
+    async(campaignId: UploadedCampaignId, inputs: GuideInput[]) => {
       const ids = map(
         inputs,
         (input) => guideInputToInsert(input, campaignId.serverId).id
       );
       await removeGuideInputs({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           delete_guide_input: {
-            __typename: "guide_input_mutation_response",
+            __typename: 'guide_input_mutation_response',
             affected_rows: ids.length,
             returning: map(ids, (id) => {
               return {
@@ -1161,19 +1161,19 @@ export function useGuideActions(): GuideActions {
   );
 
   const setBinaryAchievement = useCallback(
-    async (
+    async(
       campaignId: UploadedCampaignId,
       achievementId: string,
       value: boolean
     ) => {
       await setBinary({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           insert_guide_achievement_one: {
-            __typename: "guide_achievement",
+            __typename: 'guide_achievement',
             id: achievementId,
             campaign_id: campaignId.serverId,
-            type: "binary",
+            type: 'binary',
             value: null,
             bool_value: value,
           },
@@ -1192,19 +1192,19 @@ export function useGuideActions(): GuideActions {
     [setBinary]
   );
   const setCountAchievement = useCallback(
-    async (
+    async(
       campaignId: UploadedCampaignId,
       achievementId: string,
       value: number
     ) => {
       await setCount({
         optimisticResponse: {
-          __typename: "mutation_root",
+          __typename: 'mutation_root',
           insert_guide_achievement_one: {
-            __typename: "guide_achievement",
+            __typename: 'guide_achievement',
             id: achievementId,
             campaign_id: campaignId.serverId,
-            type: "count",
+            type: 'count',
             value,
             bool_value: null,
           },

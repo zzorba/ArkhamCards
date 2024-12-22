@@ -12,7 +12,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 type LEFT_ICON = 'plus-button' | 'check' | 'close' | 'undo' | 'shuffle' | 'deck' | 'edit';
 interface Props {
   color: 'dark' | 'light' | 'green' | 'red';
-  onPress: () => void;
+  onPress: undefined | (() => void);
   leftIcon?: LEFT_ICON;
   rightIcon?: 'right-arrow';
   title: string;

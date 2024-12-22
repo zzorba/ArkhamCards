@@ -8,7 +8,7 @@ interface Props {
   steps: ScenarioStep[];
   componentId: string;
   width: number;
-  switchCampaignScenario: () => void;
+  switchCampaignScenario?: () => void;
   noTitle?: boolean;
 }
 

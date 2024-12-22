@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress, PlaybackState } from 'react-native-track-player';
+import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress } from 'react-native-track-player';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import EncounterIcon from '@icons/EncounterIcon';
@@ -392,7 +392,6 @@ function TitleView({ style, track }: TitleProps) {
 
 interface PlaybackButtonProps {
   name: string;
-  type?: string;
   size?: number;
   disabled?: boolean;
   onPress?: () => void;
@@ -413,6 +412,7 @@ function PlaybackButton({ name, size = 30, onPress, disabled }: PlaybackButtonPr
 
 interface ButtonProps {
   onPress?: () => void;
+  // eslint-disable-next-line react/no-unused-prop-types
   disabled?: boolean;
 }
 function PreviousButton({ onPress }: ButtonProps) {

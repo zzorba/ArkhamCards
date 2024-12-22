@@ -156,7 +156,7 @@ export function getDraftCards(
   allDeckCards: CardsMap | undefined,
   mode?: 'extra',
 ): [Card[], string[]] {
-  const validation = new DeckValidation(investigator, slots, meta, { extra_deck: mode === 'extra'});
+  const validation = new DeckValidation(investigator, slots, meta, { extra_deck: mode === 'extra' });
   const draftCards: Card[] = [];
   let possibleCodes: string[] = possibleCards;
   const deckCards: Card[] = getCards({

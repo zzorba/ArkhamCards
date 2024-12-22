@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import { Brackets } from 'typeorm/browser';
 
-import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '@app_constants';
+import { VERSATILE_CODE } from '@app_constants';
 import CardSearchComponent from '@components/cardlist/CardSearchComponent';
 import { queryForInvestigator } from '@lib/InvestigatorRequirements';
 import { FilterState } from '@lib/filters';
@@ -10,7 +9,7 @@ import { NavigationProps } from '@components/nav/types';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
 import { DeckId } from '@actions/types';
-import useSingleCard, { useInvestigatorChoice } from '@components/card/useSingleCard';
+import { useInvestigatorChoice } from '@components/card/useSingleCard';
 import { forEach, map, range } from 'lodash';
 import Card from '@data/types/Card';
 import { useCardMapFromQuery } from '@components/card/useCardList';
@@ -38,7 +37,7 @@ export default function DeckEditView({
   const [hideSplash, setHideSplash] = useState(false);
   const investigator = useInvestigatorChoice(deck?.deck.investigator_code, deckEdits?.meta, tabooSetId);
   const [specialCards] = useCardMapFromQuery(DECK_BUILDING_OPTION_CARDS_QUERY);
-  const slots = deckType === 'extra' ? {} :  deckEdits?.slots;
+  const slots = useMemo(() => deckType === 'extra' ? {} : deckEdits?.slots, [deckType, deckEdits?.slots])
   const specialDeckCards = useMemo(() => {
     const special: Card[] = [];
     forEach(slots, (count, code) => {
@@ -90,7 +89,7 @@ export default function DeckEditView({
       );
       return investigatorPart;
     }
-  }, [deckEdits?.meta, specialDeckCards, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
+  }, [deckEdits?.slots, deckEdits?.meta, specialDeckCards, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
   const mode = useMemo(() => {
     if (storyOnly || weaknessOnly) {
       return 'story';

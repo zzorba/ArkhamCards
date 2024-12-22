@@ -13,13 +13,12 @@ import { RUSSIAN_LOCATIONS } from '@components/campaign/constants';
 interface Props {
   currentLocation?: MapLocation;
   onPress: () => void;
-  isActive: boolean;
   last?: boolean;
 }
 
 function russianDeparture(location: MapLocation) {
   const genitiveCityName = RUSSIAN_LOCATIONS[location.id]?.genitive;
-  const currentLocation = { name: genitiveCityName || location.name};
+  const currentLocation = { name: genitiveCityName || location.name };
   return t`Depart from ${currentLocation.name}`;
 }
 

@@ -1,4 +1,4 @@
-import { find, findIndex, filter, flatMap, forEach, reverse, slice, sortBy, orderBy } from 'lodash';
+import { find, findIndex, filter, flatMap, forEach, reverse, slice } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
 import { GuideStartCustomSideScenarioInput } from '@actions/types';
@@ -140,7 +140,7 @@ export default class CampaignGuide {
   }
 
   campaignRules(lang: string): CampaignRule[] {
-    return stable(this.campaign.campaign.rules ?? [],  (a, b) => a.title.localeCompare(b.title, lang));
+    return stable(this.campaign.campaign.rules ?? [], (a, b) => a.title.localeCompare(b.title, lang));
   }
 
   scenarioRules(lang: string, scenario: string | undefined): CampaignRule[] {

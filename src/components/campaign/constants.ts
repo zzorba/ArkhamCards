@@ -719,7 +719,7 @@ export function getCampaignLog(
           t`Gideon Mizrah`,
           t`Judith Park`,
           t`Theo Peters`,
-        ]
+        ],
       }
     case GOB:
     case FOF:
@@ -740,7 +740,7 @@ export function getCampaignLog(
     case HEART_OF_DARKNESS:
       return {
         sections: [
-          t`Campaign Notes`
+          t`Campaign Notes`,
         ],
         counts: [t`Information on Kurtz`],
       };
@@ -751,7 +751,7 @@ export function getCampaignLog(
           t`Preparations`,
           t`Companions of Oz`,
           t`Advantages`,
-          t`Order of Events`
+          t`Order of Events`,
         ],
       };
     default: {
@@ -891,7 +891,7 @@ const FOF_BAG: ChaosBagByDifficulty = {
 const ZHOD_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
-  [CampaignDifficulty.HARD]:  { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-7': 1, '-8': 1, skull: 2, cultist: 2, auto_fail: 1, elder_sign: 1 },
 };
 
@@ -1018,7 +1018,7 @@ export const RUSSIAN_LOCATIONS: { [key: string]: RussianLocation | undefined } =
   anchorage: {
     nominative: 'Анкоридж',
     genitive: 'Анкориджа',
-    dative: 'Анкоридж'
+    dative: 'Анкоридж',
   },
   san_francisco: {
     nominative: 'Сан-Франциско',

@@ -211,12 +211,11 @@ export default function LanguagePicker({ first, last, showAlert }: { first?: boo
 
 
 export function NarrationLanguagePicker({ first, last }: { first?: boolean; last?: boolean; }) {
-  const { lang } = useContext(LanguageContext);
   const langChoice = useSelector(getAudioLangChoice);
   const dispatch = useDispatch();
   const appLang = useSelector((state: AppState) => !state.settings.lang || state.settings.lang === 'system' ? getSystemLanguage() : state.settings.lang);
   const useAppLang = useSelector((state: AppState) => state.settings.audioLang === 'system');
-  const items = useMemo(() => audioLanguages(appLang), [lang]);
+  const items = useMemo(() => audioLanguages(appLang), [appLang]);
   const onLanguageChange = useCallback((newLang: string) => {
     dispatch(setAudioLanguageChoice(newLang));
   }, [dispatch]);

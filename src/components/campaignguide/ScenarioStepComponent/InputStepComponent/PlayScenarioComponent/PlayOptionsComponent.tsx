@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { findIndex, filter, find, map, flatMap } from 'lodash';
+import { findIndex, find, map, flatMap } from 'lodash';
 import { t } from 'ttag';
 
 import BranchButton from './BranchButton';

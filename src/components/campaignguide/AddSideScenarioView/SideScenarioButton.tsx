@@ -11,7 +11,6 @@ import space, { s, m } from '@styles/space';
 import { ChallengeScenarioProps } from '@components/campaignguide/ChallengeScenarioView';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
-import useCardList from '@components/card/useCardList';
 
 interface Props {
   componentId: string;
@@ -20,7 +19,6 @@ interface Props {
   useTime: boolean;
 }
 
-const EMPTY_LIST: string[] = [];
 function ChallengeBlock({ scenario, challenge, useTime }: { scenario: Scenario; challenge: ChallengeData; useTime: boolean }) {
   const { typography } = useContext(StyleContext);
   const [investigatorCard] = useSingleCard(challenge.investigator, 'player');

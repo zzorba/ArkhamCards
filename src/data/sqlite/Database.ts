@@ -6,7 +6,7 @@ import {
   pull,
   sortBy,
   sortedUniq,
-} from "lodash";
+} from 'lodash';
 import {
   createConnection,
   Brackets,
@@ -16,31 +16,30 @@ import {
   SelectQueryBuilder,
   InsertResult,
   OrderByCondition,
-  QueryRunner,
-} from "typeorm/browser";
-import * as QuickSQLite from "@op-engineering/op-sqlite";
+} from 'typeorm/browser';
+import * as QuickSQLite from '@op-engineering/op-sqlite';
 
-import Card, { CardsMap, PartialCard } from "../types/Card";
-import EncounterSet from "../types/EncounterSet";
-import FaqEntry from "../types/FaqEntry";
-import TabooSet from "../types/TabooSet";
-import Rule from "../types/Rule";
-import { QuerySort } from "./types";
-import { tabooSetQuery, where } from "./query";
-import syncPlayerCards, { PlayerCardState } from "./syncPlayerCards";
-import { SORT_BY_ENCOUNTER_SET, SORT_BY_XP, SortType } from "@actions/types";
-import { HealsDamageMigration1657382994910 } from "./migration/HealsDamageMigration";
-import { CustomizeMigration1657651357621 } from "./migration/CustomizationMigration";
-import { RemovableSlot1658075280573 } from "./migration/RemovableSlot";
-import { AlternateRequiredCodeMigration1660064759967 } from "./migration/AlternateRequiredCodeMigration";
-import { CardStatusMigration1662999387731 } from "./migration/CardStatusMigration";
-import { GenderMigration1663271269593 } from "./migration/GenderMigration";
-import { CardTagsMigraiton1663617607335 } from "./migration/CardTagsMigration";
-import { ImageMigration1665529094145 } from "./migration/ImageMigration";
-import { ReprintQuantityMigration1671202311300 } from "./migration/ReprintQuantityMigration";
-import { TabooTextMigration1693598075386 } from "./migration/TabooTextMigration";
-import { SideDeckMigration1698073688677 } from "./migration/SideDeckMigration";
-import { SpecialtyCardsMigration1726180741370 } from "./migration/SpecialtyCardsMigration";
+import Card, { CardsMap, PartialCard } from '../types/Card';
+import EncounterSet from '../types/EncounterSet';
+import FaqEntry from '../types/FaqEntry';
+import TabooSet from '../types/TabooSet';
+import Rule from '../types/Rule';
+import { QuerySort } from './types';
+import { tabooSetQuery, where } from './query';
+import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
+import { SORT_BY_ENCOUNTER_SET, SORT_BY_XP, SortType } from '@actions/types';
+import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigration';
+import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
+import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
+import { AlternateRequiredCodeMigration1660064759967 } from './migration/AlternateRequiredCodeMigration';
+import { CardStatusMigration1662999387731 } from './migration/CardStatusMigration';
+import { GenderMigration1663271269593 } from './migration/GenderMigration';
+import { CardTagsMigraiton1663617607335 } from './migration/CardTagsMigration';
+import { ImageMigration1665529094145 } from './migration/ImageMigration';
+import { ReprintQuantityMigration1671202311300 } from './migration/ReprintQuantityMigration';
+import { TabooTextMigration1693598075386 } from './migration/TabooTextMigration';
+import { SideDeckMigration1698073688677 } from './migration/SideDeckMigration';
+import { SpecialtyCardsMigration1726180741370 } from './migration/SpecialtyCardsMigration';
 
 const enhanceQueryResult = (result: QuickSQLite.QueryResult) => {
   if (!result.rows) {
@@ -69,7 +68,7 @@ export const typeORMDriver = {
         location: options.location,
       });
       const connection = {
-        executeSql: async (
+        executeSql: async(
           sql: string,
           params: any[] | undefined,
           ok: (res: QuickSQLite.QueryResult) => void,
@@ -132,10 +131,10 @@ export interface SectionCount {
 
 async function createDatabaseConnection(recreate: boolean) {
   const connection = await createConnection({
-    type: "react-native",
-    database: "arkham4",
-    location: "default",
-    logging: ["error", "schema"],
+    type: 'react-native',
+    database: 'arkham4',
+    location: 'default',
+    logging: ['error', 'schema'],
     driver: typeORMDriver,
     // maxQueryExecutionTime: 4000,
     migrations: [
@@ -168,8 +167,8 @@ export default class Database {
   globalLoadedCards: {
     [tabooSetId: number]: CardsMap | undefined;
   } = {
-    [0]: {},
-  };
+      [0]: {},
+    };
 
   listeners: DatabaseListener[] = [];
 
@@ -216,8 +215,8 @@ export default class Database {
   async cardsQuery(): Promise<SelectQueryBuilder<Card>> {
     const cards = await this.cards();
     return cards
-      .createQueryBuilder("c")
-      .leftJoinAndSelect("c.linked_card", "linked_card");
+      .createQueryBuilder('c')
+      .leftJoinAndSelect('c.linked_card', 'linked_card');
   }
 
   async tabooSets(): Promise<Repository<TabooSet>> {
@@ -263,11 +262,11 @@ export default class Database {
     try {
       const connection = await this.connectionP;
       const result = await connection.query(
-        "select sqlite_version() as version"
+        'select sqlite_version() as version'
       );
       const version = result[0].version;
-      if (typeof version === "string") {
-        const splitV = version.split(".");
+      if (typeof version === 'string') {
+        const splitV = version.split('.');
         if (splitV.length === 3) {
           return {
             major: parseInt(splitV[0], 10),
@@ -310,14 +309,14 @@ export default class Database {
     query?: Brackets
   ): Promise<Rule[]> {
     let rulesQuery = (await this.rules())
-      .createQueryBuilder("r")
-      .leftJoinAndSelect("r.rules", "sub_rules")
-      .leftJoinAndSelect("sub_rules.rules", "sub_rules_2");
+      .createQueryBuilder('r')
+      .leftJoinAndSelect('r.rules', 'sub_rules')
+      .leftJoinAndSelect('sub_rules.rules', 'sub_rules_2');
     if (query) {
       rulesQuery = rulesQuery.where(query);
     }
     return await rulesQuery
-      .orderBy("r.order", "ASC")
+      .orderBy('r.order', 'ASC')
       .skip(pageSize * page)
       .take(pageSize)
       .getMany();
@@ -331,11 +330,11 @@ export default class Database {
   ): Promise<string[]> {
     const cards = await this.cards();
     let cardsQuery = cards
-      .createQueryBuilder("c")
+      .createQueryBuilder('c')
       .select(
         `distinct c.${field} as value, linked_card.${field} as linked_value`
       )
-      .leftJoin("c.linked_card", "linked_card");
+      .leftJoin('c.linked_card', 'linked_card');
     cardsQuery = cardsQuery.where(tabooSetQuery(tabooSetId));
     if (query) {
       cardsQuery = cardsQuery.andWhere(query);
@@ -370,9 +369,9 @@ export default class Database {
     const cards = await this.cards();
     const primarySort = PartialCard.headerSort(sorts);
     let cardsQuery = cards
-      .createQueryBuilder("c")
+      .createQueryBuilder('c')
       .select(PartialCard.selectStatement(sorts))
-      .leftJoin("c.linked_card", "linked_card");
+      .leftJoin('c.linked_card', 'linked_card');
     cardsQuery = cardsQuery.where(tabooSetQuery(tabooSetId));
     if (query) {
       cardsQuery = cardsQuery.andWhere(query);
@@ -381,11 +380,11 @@ export default class Database {
       // The primarySort sometimes impacts how we sort things.
       switch (primarySort) {
         case SORT_BY_XP:
-          cardsQuery = cardsQuery.andWhere(where("c.xp is not null"));
+          cardsQuery = cardsQuery.andWhere(where('c.xp is not null'));
           break;
         case SORT_BY_ENCOUNTER_SET:
           cardsQuery = cardsQuery.andWhere(
-            where("c.encounter_code is not null")
+            where('c.encounter_code is not null')
           );
           break;
       }
@@ -417,8 +416,8 @@ export default class Database {
   async getCardsByIds(ids: string[]): Promise<Card[]> {
     const cards = await this.cards();
     return await cards
-      .createQueryBuilder("c")
-      .leftJoinAndSelect("c.linked_card", "linked_card")
+      .createQueryBuilder('c')
+      .leftJoinAndSelect('c.linked_card', 'linked_card')
       .where(where(`c.id IN (:...cardIds)`, { cardIds: ids }))
       .getMany();
   }

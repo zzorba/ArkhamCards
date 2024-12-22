@@ -91,10 +91,10 @@ function investigatorOptions(): Options {
 
 function MyDecksSelectorDialog(props: Props) {
   const { fontScale, typography, width } = useContext(StyleContext);
-  const { 
-    componentId, campaignId, onDeckSelect, onInvestigatorSelect, 
-    singleInvestigator, selectedDecks, selectedInvestigatorIds, 
-    onlyShowSelected, simpleOptions, includeParallel, 
+  const {
+    componentId, campaignId, onDeckSelect, onInvestigatorSelect,
+    singleInvestigator, selectedDecks, selectedInvestigatorIds,
+    onlyShowSelected, simpleOptions, includeParallel,
   } = props;
 
   const campaign = useCampaign(campaignId);

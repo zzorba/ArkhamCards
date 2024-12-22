@@ -40,7 +40,7 @@ export default function ChaosBagTab({ componentId }: NavigationProps) {
       };
       dispatch(action);
     }
-  }, [dummyCampaign]);
+  }, [dispatch, dummyCampaign]);
   const chaosBag = dummyCampaign?.chaosBag;
   const chaosBagResults = useChaosBagResultsRedux(FIXED_CHAOS_BAG_CAMPAIGN_ID);
 
@@ -80,7 +80,7 @@ export default function ChaosBagTab({ componentId }: NavigationProps) {
     }
   }, [componentId, dummyCampaign, updateChaosBag]);
   useNavigationButtonPressed(
-    ({ buttonId  }) => {
+    ({ buttonId }) => {
       if (buttonId === 'edit') {
         showEditChaosBagDialog();
       }

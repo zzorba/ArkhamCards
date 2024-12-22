@@ -10,7 +10,6 @@ interface Props {
   title: string;
   faction: FactionCodeType;
   body: string;
-  img?: string;
 }
 
 export default function OnboardingSlide({ title, faction, body }: Props) {

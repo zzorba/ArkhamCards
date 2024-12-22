@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { find, flatMap, map } from 'lodash';
+import { flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
 import TwoSidedCardComponent from './TwoSidedCardComponent';

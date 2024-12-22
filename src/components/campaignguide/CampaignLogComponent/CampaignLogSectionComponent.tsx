@@ -31,19 +31,20 @@ export default function CampaignLogSectionComponent({ sectionId, campaignGuide, 
   return (
     <>
       { flatMap(section.entries, (entry, idx) => (
-        (entry.id === '$relationship' || entry.id === '$fatigue') ? null :
-        <View key={`${entry.id}_${idx}`}>
-          <CampaignLogEntryComponent
-            entry={entry}
-            sectionId={sectionId}
-            campaignGuide={campaignGuide}
-            section={section}
-            interScenarioId={interScenarioId}
-            title={title}
-            first={idx === 0}
-            last={idx === section.entries.length - 1}
-          />
-        </View>
+        (entry.id === '$relationship' || entry.id === '$fatigue') ? null : (
+          <View key={`${entry.id}_${idx}`}>
+            <CampaignLogEntryComponent
+              entry={entry}
+              sectionId={sectionId}
+              campaignGuide={campaignGuide}
+              section={section}
+              interScenarioId={interScenarioId}
+              title={title}
+              first={idx === 0}
+              last={idx === section.entries.length - 1}
+            />
+          </View>
+        )
       )) }
       { interScenarioId && sectionId === 'campaign_notes' && (
         <DeckButton

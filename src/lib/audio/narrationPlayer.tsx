@@ -77,7 +77,7 @@ export function narrationPlayer(): Promise<TrackPlayerFunctions> {
             play: TrackPlayer.play,
             pause: TrackPlayer.pause,
             skipToNext: TrackPlayer.skipToNext,
-            getState: async () => (await TrackPlayer.getPlaybackState()).state,
+            getState: async() => (await TrackPlayer.getPlaybackState()).state,
             skip: TrackPlayer.skip,
             add: TrackPlayer.add,
             remove: TrackPlayer.remove,

@@ -3,16 +3,16 @@ import {
   PermissionsAndroid,
   Platform,
   Share as LegacyShare,
-} from "react-native";
-import Share from "react-native-share";
-import RNFS from "react-native-fs";
-import base64 from "react-native-base64";
-import utf8 from "utf8";
-import { t } from "ttag";
-import { isAndroidVersion } from "@components/DeckNavFooter/constants";
+} from 'react-native';
+import Share from 'react-native-share';
+import RNFS from 'react-native-fs';
+import base64 from 'react-native-base64';
+import utf8 from 'utf8';
+import { t } from 'ttag';
+import { isAndroidVersion } from '@components/DeckNavFooter/constants';
 
 async function hasFileSystemPermission(read: boolean) {
-  if (Platform.OS === "ios") {
+  if (Platform.OS === 'ios') {
     return true;
   }
   if (isAndroidVersion(13)) {
@@ -21,8 +21,8 @@ async function hasFileSystemPermission(read: boolean) {
   try {
     const granted = await PermissionsAndroid.request(
       read
-        ? "android.permission.READ_EXTERNAL_STORAGE"
-        : "android.permission.WRITE_EXTERNAL_STORAGE"
+        ? 'android.permission.READ_EXTERNAL_STORAGE'
+        : 'android.permission.WRITE_EXTERNAL_STORAGE'
     );
     switch (granted) {
       case PermissionsAndroid.RESULTS.GRANTED:
@@ -55,9 +55,9 @@ export async function saveFile(
   if (!(await hasFileSystemPermission(false))) {
     return;
   }
-  if (Platform.OS === "ios") {
+  if (Platform.OS === 'ios') {
     const path = `${RNFS.CachesDirectoryPath}/${filename}.${extension}`;
-    await RNFS.writeFile(path, data, "utf8");
+    await RNFS.writeFile(path, data, 'utf8');
     if (Platform.Version && parseInt(`${Platform.Version}`, 10) < 13) {
       await LegacyShare.share({
         url: `file://${path}`,
@@ -68,7 +68,7 @@ export async function saveFile(
         saveToFiles: true,
         filename,
         title: filename,
-        type: "text/json",
+        type: 'text/json',
       });
     }
   } else {
@@ -76,7 +76,7 @@ export async function saveFile(
       title,
       message: filename,
       url: `data:application/json;base64,${base64.encode(utf8.encode(data))}`,
-      type: "data:application/json",
+      type: 'data:application/json',
       filename,
       failOnCancel: false,
       showAppsToView: true,

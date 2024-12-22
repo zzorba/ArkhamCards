@@ -30,7 +30,6 @@ import {
   SortType,
   CampaignGuideState,
   NEW_CHAOS_BAG_RESULTS,
-  SORT_BY_TYPE,
   EditDeckState,
   DeckId,
   getDeckId,
@@ -50,7 +49,6 @@ import {
   CardScreenType,
   DEFAULT_MYTHOS_SORT,
   FIXED_CHAOS_BAG_CAMPAIGN_ID,
-  Slots,
   ChecklistSlots,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';

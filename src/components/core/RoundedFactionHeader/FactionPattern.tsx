@@ -26,9 +26,9 @@ interface Props {
 }
 
 // flip horizontally: transform={`translate(${width},0) scale(-1,1)`}
-function RepeatPattern({ patternWidth, height, children }: { 
-  patternWidth: number; 
-  height: number; 
+function RepeatPattern({ patternWidth, height, children }: {
+  patternWidth: number;
+  height: number;
   children: React.ReactNode;
 }) {
   return (
@@ -53,10 +53,10 @@ function StretchPattern({
   width,
   height,
   children,
-}: { 
-  patternWidth: number; 
-  width: number; 
-  height: number; 
+}: {
+  patternWidth: number;
+  width: number;
+  height: number;
   children: React.ReactNode;
 }) {
   if (width < patternWidth) {
@@ -84,10 +84,10 @@ function StretchPattern({
 }
 
 
-function HeaderPattern({ faction, width, height, transparent }: { 
-  faction : string; 
-  width: number; 
-  height: number; 
+function HeaderPattern({ faction, width, height, transparent }: {
+  faction : string;
+  width: number;
+  height: number;
   transparent?: boolean;
 }) {
   switch (faction) {
@@ -149,10 +149,10 @@ function HeaderPattern({ faction, width, height, transparent }: {
   }
 }
 
-function HeaderPath({ width, height, opacity, fullRound }: { 
-  width: number; 
-  height: number; 
-  opacity: number; 
+function HeaderPath({ width, height, opacity, fullRound }: {
+  width: number;
+  height: number;
+  opacity: number;
   fullRound?: boolean;
 }) {
   const topWidth = width - 16;
@@ -194,28 +194,28 @@ function getOpacity(faction: string, transparent?: boolean) {
 const FactionPattern = ({ width, height, faction, transparent, fullRound }: Props) => {
   const opacity = getOpacity(faction, transparent);
   return (
-    <View 
+    <View
       style={[
         styles.pattern,
-        { width, height, overflow: 'hidden' }, 
+        { width, height, overflow: 'hidden' },
         Platform.OS === 'android' ? { opacity } : {},
       ]}
       needsOffscreenAlphaCompositing
     >
       <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
         <Defs>
-          <HeaderPattern 
-            faction={faction} 
-            width={width} 
-            height={height} 
-            transparent={transparent} 
+          <HeaderPattern
+            faction={faction}
+            width={width}
+            height={height}
+            transparent={transparent}
           />
         </Defs>
-        <HeaderPath 
-          fullRound={fullRound} 
-          width={width} 
+        <HeaderPath
+          fullRound={fullRound}
+          width={width}
           height={height}
-          opacity={opacity} 
+          opacity={opacity}
         />
       </Svg>
     </View>

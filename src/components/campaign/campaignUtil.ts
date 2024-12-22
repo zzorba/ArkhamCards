@@ -101,7 +101,7 @@ export function flattenChaosBag(chaosBag: ChaosBag, tarot: Chaos_Bag_Tarot_Mode_
     const baseCount = (chaosBagResults && (token === 'bless' || token === 'curse')) ?
       (token === 'bless' ? chaosBagResults.blessTokens : chaosBagResults.curseTokens) :
       (chaosBag[token] ?? 0);
-     const count = Math.max(
+    const count = Math.max(
       baseCount - sumBy(chaosBagResults?.sealedTokens ?? [], (sealedToken) => sealedToken.icon === token ? 1 : 0),
       0
     );

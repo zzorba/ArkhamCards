@@ -4,25 +4,25 @@ import { Entity, Column, PrimaryColumn } from 'typeorm/browser';
 @Entity('taboo_set')
 export default class TabooSet {
   @PrimaryColumn('integer')
-  id!: number;
+    id!: number;
 
   @Column('text', { nullable: true })
-  code?: string;
+    code?: string;
 
   @Column('text', { nullable: true })
-  name?: string;
+    name?: string;
 
   @Column('integer', { nullable: true })
-  cardCount?: number;
+    cardCount?: number;
 
   @Column('boolean', { nullable: true })
-  active?: boolean;
+    active?: boolean;
 
   @Column('text', { nullable: true })
-  date_start?: string;
+    date_start?: string;
 
   @Column('text', { nullable: true })
-  date_update?: string;
+    date_update?: string;
 
   static fromGQL(tabooSet: TabooSetFragment): TabooSet {
     return {

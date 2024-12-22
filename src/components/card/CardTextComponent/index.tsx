@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import SimpleMarkdown from 'simple-markdown';
-import { reduce } from 'lodash';
 import {
   MarkdownView,
   MarkdownRule,
@@ -447,7 +446,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
       alignSelf: 'flex-start',
       flexShrink: 1,
     };
-  }, [context, usePingFang, sizeScale]);
+  }, [context, usePingFang, sizeScale, style]);
   // Text that has hyperlinks uses a different style for the icons.
   return (
     <MarkdownView

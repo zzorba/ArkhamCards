@@ -160,7 +160,7 @@ export default function DiagnosticsView() {
   }, [apollo, dispatch]);
 
   const [imagesCleared, setImagesCleared] = useState(false);
-  const clearImageCache = useCallback(async () => {
+  const clearImageCache = useCallback(async() => {
     await Image.clearDiskCache();
     setImagesCleared(true);
   }, [setImagesCleared]);
@@ -252,7 +252,7 @@ export default function DiagnosticsView() {
         />
         <SettingsItem
           onPress={clearImageCache}
-          text={imagesCleared ? t`Image cache cleared` :t`Clear image cache`}
+          text={imagesCleared ? t`Image cache cleared` : t`Clear image cache`}
         />
         { !schemaCleared && (
           <SettingsItem

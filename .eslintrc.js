@@ -35,6 +35,8 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   'rules': {
+    'react/no-unused-prop-types': 'off',
+    'no-nested-ternary': 'off',
     'no-unused-vars': 'off',
 // Enable additional rules for ESLint:
     // http://eslint.org/docs/rules/
@@ -90,7 +92,6 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     // 'new-cap': 'error',
     'no-multiple-empty-lines': 'error',
-    'no-nested-ternary': 'error',
     'no-tabs': 'error',
     'no-trailing-spaces': 'error',
     'object-curly-spacing': ['error', 'always'],
@@ -122,7 +123,6 @@ module.exports = {
     'react/no-did-mount-set-state': 'error',
     'react/no-did-update-set-state': 'error',
     'react/no-string-refs': 'error',
-    'react/no-unused-prop-types': 'error',
     'react/self-closing-comp': ['error', {
       'component': true,
       'html': false,

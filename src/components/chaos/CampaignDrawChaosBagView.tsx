@@ -1,5 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
 import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -10,7 +9,6 @@ import { NavigationProps } from '@components/nav/types';
 import { ChaosBag } from '@app_constants';
 import COLORS from '@styles/colors';
 import { EditChaosBagProps } from './EditChaosBagDialog';
-import { AppState, makeCampaignChaosBagSelector } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator } from '../campaign/nav';

@@ -79,7 +79,6 @@ function InvestigatorDeckRow({ id, actions, deckRemoved }: {
 export default function DeckSelector({
   investigatorRemoved,
   deckRemoved,
-  componentId,
   investigatorToDeck,
   investigatorIds,
 }: Props) {
@@ -118,7 +117,6 @@ export default function DeckSelector({
     <CampaignDeckList
       renderDeck={renderDeck}
       renderInvestigator={renderInvestigator}
-      componentId={componentId}
       investigatorToDeck={investigatorToDeck}
       investigatorIds={investigatorIds}
     />
