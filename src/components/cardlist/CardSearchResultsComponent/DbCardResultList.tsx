@@ -35,7 +35,7 @@ import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } fro
 import { SortType, Slots, DeckId, Customizations, DEFAULT_SORT } from '@actions/types';
 import { combineQueries, where } from '@data/sqlite/query';
 import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
-import Card, { cardInCollection, CardsMap, PartialCard } from '@data/types/Card';
+import Card, { cardInCollection, CardsMap, InvestigatorChoice, PartialCard } from '@data/types/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import space, { m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -70,7 +70,7 @@ interface Props {
   searchTerm?: string;
   expandSearchControls?: ReactNode;
   expandSearchControlsHeight?: number;
-  investigator?: Card;
+  investigator?: InvestigatorChoice;
   cardPressed?: (card: Card) => void;
   renderCard?: (card: Card, id: string, onPressId: (id: string, card: Card) => void) => JSX.Element;
   headerItems?: React.ReactNode[];
@@ -288,7 +288,7 @@ interface SectionFeedProps {
   storyOnly?: boolean;
   mode?: 'extra' | 'side';
   hasHeader?: boolean;
-  investigator?: Card;
+  investigator?: InvestigatorChoice;
   footerPadding?: number;
   includeBonded?: boolean;
   expandSearchControlsHeight?: number;
@@ -520,7 +520,7 @@ function useSectionFeed({
   );
 
   const theInsaneStuff = useMemo(() => {
-    if (investigator?.code !== THE_INSANE_CODE || !deckCardCounts) {
+    if (investigator?.back.code !== THE_INSANE_CODE || !deckCardCounts) {
       return undefined;
     }
     const deckValidation = new DeckValidation(investigator, deckCardCounts, undefined);
@@ -1015,7 +1015,7 @@ export default function({
       showSpoilerCards,
       tabooSetOverride,
       deckId,
-      investigator,
+      investigator?.front,
       true,
       customizations
     );
@@ -1061,7 +1061,7 @@ export default function({
           <CardSectionHeader
             key={item.id}
             section={item.header}
-            investigator={investigator}
+            investigator={investigator?.front}
           />
         );
       case 'loading':

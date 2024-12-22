@@ -7,7 +7,7 @@ import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
 import { CardScreenType, DeckId, SortType } from '@actions/types';
-import Card from '@data/types/Card';
+import Card, { InvestigatorChoice } from '@data/types/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
 import { FilterState } from '@lib/filters';
@@ -53,7 +53,7 @@ interface Props {
 
   screenType: CardScreenType;
 
-  investigator?: Card;
+  investigator?: InvestigatorChoice;
   deckId?: DeckId;
   hideVersatile?: boolean;
   setHideVersatile?: (value: boolean) => void;

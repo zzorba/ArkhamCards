@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
 
 import { usePlayerCards } from '@components/core/hooks';
-import Card from '@data/types/Card';
+import Card, { InvestigatorChoice } from '@data/types/Card';
 import useCardList from './useCardList';
+import { DeckMeta } from '@actions/types';
+import { uniq } from 'lodash';
 
 const EMPTY_CODES: string[] = [];
 export default function useSingleCard(code: undefined | string, type: 'player' | 'encounter', tabooSetOverride?: number): [Card | undefined, boolean] {
@@ -34,3 +36,28 @@ export default function useSingleCard(code: undefined | string, type: 'player' |
   }
   return [encounterCards[0], loading];
 }
+
+export function useInvestigatorChoice(code: string | undefined, meta?: DeckMeta, tabooSetOverride?: number): InvestigatorChoice | undefined {
+  const codes = useMemo(() => {
+    if (!code) {
+      return EMPTY_CODES;
+    }
+    return uniq([
+      code,
+      meta?.alternate_front ?? code,
+      meta?.alternate_back ?? code,
+    ]);
+  }, [code, meta]);
+  const [playerCards] = usePlayerCards(codes, false, tabooSetOverride);
+  if (!code) {
+    return undefined;
+  }
+  const main = playerCards?.[code];
+  const front = playerCards?.[meta?.alternate_front ?? code];
+  const back = playerCards?.[meta?.alternate_back ?? code];
+  if (!front || !back || !main) {
+    return undefined;
+  }
+  return { front, back, main };
+}
+

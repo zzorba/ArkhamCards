@@ -205,7 +205,7 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
   const [in_collection, ignore_collection] = useSelector(getDraftPacks);
   const [editingPack, setEditingPacks] = useState(false);
 
-  const [investigatorBack, allPossibleCodes, cards] = useDraftableCards({
+  const [investigator, allPossibleCodes, cards] = useDraftableCards({
     investigatorCode: deck?.investigator,
     meta,
     tabooSetId,
@@ -225,10 +225,10 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
   const [alertDialog, showAlert] = useAlertDialog();
   const { listSeperator } = useContext(LanguageContext);
   const onDraftNewCards = useCallback(() => {
-    if (!meta || !investigatorBack) {
+    if (!meta || !investigator) {
       return;
     }
-    const currentParsedDeck = parseDeck(investigatorBack.code, meta, localSlots.current, {}, {}, {
+    const currentParsedDeck = parseDeck(investigator.main.code, meta, localSlots.current, {}, {}, {
       ...cards,
       ...deckCards,
     }, listSeperator);
@@ -248,7 +248,7 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
       return;
     }
     const [draftOptions, newPossibleCodes] = getDraftCards(
-      investigatorBack,
+      investigator,
       meta,
       localSlots.current,
       handSize,
@@ -261,7 +261,7 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
     );
     setDraftCards(map(draftOptions, c => c.code));
     possibleCodes.current = newPossibleCodes;
-  }, [componentId, deckCards, showAlert, setDraftCards, listSeperator, investigatorBack, meta, handSize, cards, in_collection, ignore_collection]);
+  }, [componentId, deckCards, showAlert, setDraftCards, listSeperator, investigator, meta, handSize, cards, in_collection, ignore_collection]);
 
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);

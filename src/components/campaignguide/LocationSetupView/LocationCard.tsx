@@ -1,7 +1,7 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { Image, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { Image, StyleSheet, Text, TextStyle, View } from 'react-native';
 import { withAnchorPoint } from 'react-native-anchor-point';
-import { map, range, transform } from 'lodash';
+import { map, range } from 'lodash';
 import { Image as FastImage } from 'expo-image';
 
 import { s } from '@styles/space';

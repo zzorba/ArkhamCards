@@ -1984,6 +1984,12 @@ export default class Card {
   }
 }
 
+export type InvestigatorChoice = {
+  main: Card;
+  front: Card;
+  back: Card;
+};
+
 export function cardInCollection(
   card: Card | PartialCard,
   packInCollection: { [pack_code: string]: boolean | undefined }

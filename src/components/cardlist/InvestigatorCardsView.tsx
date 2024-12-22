@@ -19,7 +19,7 @@ export default function InvestigatorCardsView({ investigatorCode, componentId }:
       return undefined;
     }
     return (filters: FilterState | undefined) => queryForInvestigatorWithoutDeck(
-      investigator,
+      { main: investigator, front: investigator, back: investigator },
       undefined,
       {
         filters,

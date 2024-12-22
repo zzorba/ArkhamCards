@@ -13,6 +13,7 @@ export default function withFetchCardsGate<Props>(
   const result = function(props: Props) {
     return (
       <FetchCardsGate promptForUpdate={promptForUpdate}>
+        { /* @ts-ignore */ }
         <WrappedComponent {...props} />
       </FetchCardsGate>
     );

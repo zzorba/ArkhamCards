@@ -5,7 +5,7 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
 
 import { CampaignCycleCode, DeckId, MiscLocalSetting, MiscRemoteSetting, MiscSetting, SORT_BY_CARD_ID, SORT_BY_PACK, SORT_BY_TYPE, Slots, SortType } from '@actions/types';
-import Card, { CardsMap } from '@data/types/Card';
+import Card, { CardsMap, InvestigatorChoice } from '@data/types/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   AppState,
@@ -794,23 +794,23 @@ export function useParallelInvestigators(investigatorCode?: string, tabooSetOver
   return [cards, loading];
 }
 
-export function useRequiredCards(investigatorFront: Card | undefined, investigatorBack: Card | undefined, tabooSetOverride?: number): [Card[], boolean] {
+export function useRequiredCards(investigator?: InvestigatorChoice, tabooSetOverride?: number): [Card[], boolean] {
   const [codes, loading] = useMemo(() => {
-    if (!investigatorFront || !investigatorBack) {
+    if (!investigator?.front || !investigator?.back) {
       return [[], true];
     }
     return [
       uniq([
-        ...flatMap(investigatorBack.deck_requirements?.card || [], req => [
+        ...flatMap(investigator.back.deck_requirements?.card || [], req => [
           ...(req.code ? [req.code] : []),
           ...(req.alternates || []),
         ]),
-        ...(specialCards[investigatorFront.code]?.front?.codes || []),
-        ...(specialCards[investigatorBack.code]?.back?.codes || []),
+        ...(specialCards[investigator.front.code]?.front?.codes || []),
+        ...(specialCards[investigator.back.code]?.back?.codes || []),
       ]),
       false,
     ];
-  }, [investigatorBack, investigatorFront]);
+  }, [investigator]);
   const query = useMemo(() => codes?.length ? where('c.code in (:...codes)', { codes }) : undefined, [codes]);
   const [cards, cardsLoading] = useCardsFromQuery({ query, tabooSetOverride });
   const { storePlayerCards } = useContext(PlayerCardContext);

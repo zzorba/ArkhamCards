@@ -15,7 +15,7 @@ import {
 import COLORS from '@styles/colors';
 import DeckProgressComponent from '../DeckProgressComponent';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import Card, { CardsMap } from '@data/types/Card';
+import Card, { CardsMap, InvestigatorChoice } from '@data/types/Card';
 import TabooSet from '@data/types/TabooSet';
 import space, { isBig, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -37,8 +37,7 @@ interface Props {
   suggestArkhamDbLogin: boolean;
   deck: Deck;
   deckId: DeckId;
-  investigatorFront?: Card;
-  investigatorBack?: Card;
+  investigator?: InvestigatorChoice;
   parsedDeck: ParsedDeck;
   hasPendingEdits?: boolean;
   cards: CardsMap;
@@ -87,8 +86,7 @@ export default function DeckViewTab(props: Props) {
     tabooSetId,
     cards,
     deckId,
-    investigatorFront,
-    investigatorBack,
+    investigator,
     deck,
     parsedDeck,
     singleCardView,
@@ -120,7 +118,6 @@ export default function DeckViewTab(props: Props) {
   } = props;
   const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { backgroundStyle, shadow, typography } = useContext(StyleContext);
-  const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
 
   const showDeckUpgrades = useMemo(() => {
     return !!(deck.previousDeckId && !deck.nextDeckId);
@@ -198,7 +195,7 @@ export default function DeckViewTab(props: Props) {
 
   const investigatorBlock = useMemo(() => {
     const yithian = parsedDeck.slots && (parsedDeck.slots[BODY_OF_A_YITHIAN] || 0) > 0;
-    const investigatorCard = (yithian ? cards[BODY_OF_A_YITHIAN] : undefined) || investigatorFront;
+    const investigatorCard = (yithian ? cards[BODY_OF_A_YITHIAN] : undefined) || investigator?.front;
 
     if (!investigatorCard) {
       return null;
@@ -206,13 +203,13 @@ export default function DeckViewTab(props: Props) {
     return (
       <InvestigatorSummaryBlock
         investigator={investigatorCard}
-        investigatorBack={investigatorBack}
+        investigatorBack={investigator?.back}
         yithian={yithian}
         componentId={componentId}
         tabooSetId={tabooSetId}
       />
     );
-  }, [componentId, parsedDeck.slots, cards, investigatorFront, investigatorBack, tabooSetId]);
+  }, [componentId, parsedDeck.slots, cards, investigator, tabooSetId]);
   const [parsedDeckComponent, bondedCardCount] = useParsedDeckComponent({
     componentId,
     parsedDeck,

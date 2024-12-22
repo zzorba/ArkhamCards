@@ -186,7 +186,7 @@ export function showCardCharts(
       },
       options: getDeckOptions(colors, {
         title: t`Charts`,
-      }, parsedDeck.investigator),
+      }, parsedDeck.investigator.front),
     },
   });
 }
@@ -213,7 +213,7 @@ export function showDrawSimulator(
         {
           title: t`Draw Simulator`,
         },
-        investigator),
+        investigator.front),
     },
   });
 }

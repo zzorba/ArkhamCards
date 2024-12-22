@@ -19,7 +19,7 @@ import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useDeckSlotCount, useParsedDeck } from '@components/deck/hooks';
 import { useNavigationButtonPressed } from '@components/core/hooks';
-import useSingleCard from '@components/card/useSingleCard';
+import useSingleCard, { useInvestigatorChoice } from '@components/card/useSingleCard';
 import { useCampaignDeck } from '@data/hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import KeepAwake from 'react-native-keep-awake';
@@ -128,7 +128,7 @@ function DeckChecklistView({
       m * 2 + 22 * fontScale,
     ];
   }, [checklist, typography, colors, fontScale, clearChecklist, width]);
-  const [investigator] = useSingleCard(deckEdits?.meta.alternate_back || deck?.investigator, 'player', deckEdits?.tabooSetChange || deck?.deck.taboo_id);
+  const investigator = useInvestigatorChoice(deck?.investigator, deckEdits?.meta, deckEdits?.tabooSetChange || deck?.deck.taboo_id);
 
   if (!deckEdits) {
     return null;

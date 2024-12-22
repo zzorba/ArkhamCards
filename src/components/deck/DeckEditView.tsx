@@ -10,7 +10,7 @@ import { NavigationProps } from '@components/nav/types';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
 import { DeckId } from '@actions/types';
-import useSingleCard from '@components/card/useSingleCard';
+import useSingleCard, { useInvestigatorChoice } from '@components/card/useSingleCard';
 import { forEach, map, range } from 'lodash';
 import Card from '@data/types/Card';
 import { useCardMapFromQuery } from '@components/card/useCardList';
@@ -36,7 +36,7 @@ export default function DeckEditView({
   const tabooSetId = (deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.deck.taboo_id) || 0;
   const [hideVersatile, setHideVersatile] = useState(false);
   const [hideSplash, setHideSplash] = useState(false);
-  const [investigator] = useSingleCard(deckEdits?.meta.alternate_back || deck?.deck.investigator_code, 'player', tabooSetId);
+  const investigator = useInvestigatorChoice(deck?.deck.investigator_code, deckEdits?.meta, tabooSetId);
   const [specialCards] = useCardMapFromQuery(DECK_BUILDING_OPTION_CARDS_QUERY);
   const slots = deckType === 'extra' ? {} :  deckEdits?.slots;
   const specialDeckCards = useMemo(() => {
@@ -72,7 +72,7 @@ export default function DeckEditView({
       return undefined;
     }
     return (filters: FilterState | undefined) => {
-      const investigatorPart = investigator && queryForInvestigator(
+      const investigatorPart = queryForInvestigator(
         investigator,
         // Special deck building won't apply to extra decks, for now...
         deckType === 'extra' ? {} : deckEdits?.slots,
@@ -104,7 +104,7 @@ export default function DeckEditView({
   if (!investigator || !queryOpt || !deck || !deckEdits) {
     return null;
   }
-  const hasSplash = !!investigator.deck_options?.find(option => option.limit);
+  const hasSplash = !!investigator.back.deck_options?.find(option => option.limit);
 
   return (
     <CardSearchComponent

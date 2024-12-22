@@ -103,7 +103,7 @@ export default function DeckHistoryView({
   const onDeckPress = useCallback((deckId: DeckId, parsedDeck: ParsedDeck) => {
     const options = getDeckOptions(colors, {
       title: parsedDeck.deck?.name || '',
-    }, parsedDeck.investigator);
+    }, parsedDeck.investigator.front);
     Navigation.push<DeckDetailProps>(componentId, {
       component: {
         name: 'Deck',

@@ -21,7 +21,7 @@ import {
   combineQueries,
   combineQueriesOpt,
 } from '@data/sqlite/query';
-import Card, { searchNormalize } from '@data/types/Card';
+import Card, { InvestigatorChoice, searchNormalize } from '@data/types/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
@@ -51,7 +51,7 @@ interface Props {
   toggleMythosMode: () => void;
   clearSearchFilters: () => void;
 
-  investigator?: Card;
+  investigator?: InvestigatorChoice;
   headerItems?: React.ReactNode[];
   headerHeight?: number;
   mode?: 'story' | 'side' | 'extra';

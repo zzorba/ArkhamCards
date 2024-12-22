@@ -90,6 +90,7 @@ export default function ArkhamLoadingSpinner({
         autoPlay={autoPlay}
         loop={loop}
         ref={lottieRef}
+        // @ts-ignore
         progress={progress}
         source={colorizedSource}
         resizeMode="contain"

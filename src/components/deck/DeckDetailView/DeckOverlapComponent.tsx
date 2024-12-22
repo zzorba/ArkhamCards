@@ -79,7 +79,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
   const in_collection = useSelector(getPacksInCollection);
   const [excludeInvestigators, toggleExcludeInvestigators] = useToggles({});
   const ignore_collection = useSettingValue('ignore_collection');
-  const currentInvestigator = parsedDeck?.investigator.code;
+  const currentInvestigator = parsedDeck?.investigator.front.code;
   const activeDecks = useMemo(() => {
     return flatMap(latestDecks, deck => {
       const investigator = find(campaignInvestigators, i => i.code === deck.investigator);
@@ -194,7 +194,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
         true,
         parsedDeck?.deck?.taboo_id,
         undefined,
-        parsedDeck?.investigator,
+        parsedDeck?.investigator.front,
         false,
         parsedDeck?.customizations
       );
@@ -206,7 +206,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
   }
   return (
     <DeckSectionBlock
-      faction={parsedDeck?.investigator.factionCode() || 'neutral'}
+      faction={parsedDeck?.faction ?? 'neutral'}
       title={parsedDeck ? t`Collection overlap` : t`Deck overlap`}
       collapsedText={!open ? t`Show collection overlap` : t`Hide collection overlap`}
       collapsed={!open}
@@ -218,7 +218,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
       </Text>
       <View style={[styles.leftRow, space.paddingS, space.paddingBottomM]}>
         { map(activeDecks, ({ investigator }) => (
-          investigator.code === parsedDeck?.investigator.code || excludeInvestigators[investigator.code] ? null : (
+          investigator.code === parsedDeck?.investigator.front.code || excludeInvestigators[investigator.code] ? null : (
             <View style={space.paddingRightS} key={investigator.code}>
               <InvestigatorImageButton
                 onPress={toggleExcludeInvestigators}
@@ -231,7 +231,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
         )) }
         <View style={styles.rightRow}>
           { map(activeDecks, ({ investigator }) => (
-            investigator.code === parsedDeck?.investigator.code || !excludeInvestigators[investigator.code] ? null : (
+            investigator.code === parsedDeck?.investigator.front.code || !excludeInvestigators[investigator.code] ? null : (
               <View style={space.paddingLeftS} key={investigator.code}>
                 <InvestigatorImageButton
                   onPress={toggleExcludeInvestigators}

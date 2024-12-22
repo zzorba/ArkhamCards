@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useContext, useImperativeHandle } from 'react';
+import React, { ForwardedRef, forwardRef, useCallback, useContext, useImperativeHandle } from 'react';
 import {
   ActivityIndicator,
   View,
@@ -21,7 +21,7 @@ import DeckButton from './controls/DeckButton';
 import { SaveDeckUpgrade } from './useDeckUpgradeAction';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 
-interface DeckUpgradeProps extends NavigationProps{
+interface DeckUpgradeProps extends NavigationProps {
   investigator: Card;
   deck: LatestDeckT;
   hideXp?: boolean;
@@ -40,23 +40,24 @@ export interface DeckUpgradeHandles {
   save: () => void;
 }
 
-function DeckUpgradeComponent({
-  componentId,
-  investigator,
-  deck,
-  startingXp,
-  campaignSection,
-  exileSection,
-  storyCounts,
-  ignoreStoryCounts,
-  saveDeckUpgrade,
-  saveButtonText,
-  saving,
-  error,
-  hideXp,
-}: DeckUpgradeProps, ref: any) {
+function DeckUpgradeComponent(props: DeckUpgradeProps, ref: ForwardedRef<DeckUpgradeHandles>) {
+  const {
+    componentId,
+    investigator,
+    deck,
+    startingXp,
+    campaignSection,
+    exileSection,
+    storyCounts,
+    ignoreStoryCounts,
+    saveDeckUpgrade,
+    saveButtonText,
+    saving,
+    error,
+    hideXp,
+  } = props;
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
-  const [xp, incXp, decXp] = useCounter(startingXp || 0, { min: 0 });
+  const [xp, incXp, decXp] = useCounter(startingXp ?? 0, { min: 0 });
   const [exileCounts, updateExileCounts] = useSlots({});
 
   const doSave = useCallback(() => {
@@ -136,7 +137,8 @@ function DeckUpgradeComponent({
   );
 }
 
-export default forwardRef(DeckUpgradeComponent);
+// @ts-ignore
+export default forwardRef<DeckUpgradeHandles, DeckUpgradeProps>(DeckUpgradeComponent);
 
 const styles = StyleSheet.create({
   container: {

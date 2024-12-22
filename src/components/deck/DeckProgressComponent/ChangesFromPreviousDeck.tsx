@@ -121,7 +121,7 @@ export default function ChangesFromPreviousDeck({
         true,
         tabooSetId,
         parsedDeck.id,
-        investigator,
+        investigator.front,
         false,
         parsedDeck.customizations,
         editable
@@ -130,7 +130,7 @@ export default function ChangesFromPreviousDeck({
   }, [colors, allCards, investigator, componentId, parsedDeck.id,
     parsedDeck.customizations, tabooSetId, singleCardView, editable]);
 
-  const faction = parsedDeck.investigator.factionCode();
+  const faction = parsedDeck.faction;
   const renderSection = useCallback((slots: Slots, id: string, title: string) => {
     const cards = getCards(slots, id);
     if (!cards.length) {

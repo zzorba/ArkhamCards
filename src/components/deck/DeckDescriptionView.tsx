@@ -40,7 +40,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const parsedDeckObj = useParsedDeck(id, componentId);
   const { mode } = useDeckEditState(parsedDeckObj);
   const { deck, deckEdits, parsedDeck } = parsedDeckObj;
-  const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
+  const factionColor = useMemo(() => colors.faction[parsedDeck?.faction ?? 'neutral'].background, [parsedDeck, colors.faction]);
   const [description, setDescription] = useState(deckEdits?.descriptionChange || deck?.description_md || '');
   useEffect(() => {
     setDescription(deckEdits?.descriptionChange || deck?.description_md || '');

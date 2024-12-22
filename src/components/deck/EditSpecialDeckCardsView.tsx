@@ -42,7 +42,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     parsedDeck,
     parsedDeckRef,
   } = parsedDeckObj;
-  const [requiredCards, requiredCardsLoading] = useRequiredCards(parsedDeck?.investigatorFront, parsedDeck?.investigatorBack, tabooSetId);
+  const [requiredCards, requiredCardsLoading] = useRequiredCards(parsedDeck?.investigator, tabooSetId);
 
   const cardPressed = useCallback((card: Card) => {
     Navigation.push<CardDetailProps>(componentId, {
@@ -69,7 +69,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     assignedWeaknesses,
   });
 
-  const factionColor = parsedDeck?.investigator?.factionCode() || 'neutral';
+  const factionColor = parsedDeck?.faction ?? 'neutral';
   const editStoryPressed = useCallback(() => {
     const backgroundColor = colors.faction[factionColor].background;
     Navigation.push<EditDeckProps>(componentId, {

@@ -139,6 +139,7 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.registerComponent('ListToggleButton', providerWrapper(ListToggleButton), () => ListToggleButton);
   Navigation.registerComponent('MapToggleButton', providerWrapper(MapToggleButton), () => MapToggleButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
+  // @ts-ignore
   Navigation.registerComponent('RulesTitle', providerWrapper(RuleTitleComponent), () => MythosButton);
 
   Navigation.setLazyComponentRegistrator((componentName: string | number) => {

@@ -70,7 +70,7 @@ function hasCustomizationUpgrades(
     card &&
     card.customization_options &&
     validation.canIncludeCard(
-      card.withCustomizations(',', customizations?.[code], 1), 
+      card.withCustomizations(',', customizations?.[code], 1),
       false,
       deckCards
     )
@@ -379,18 +379,17 @@ export default function useParsedDeckComponent({
   const showCustomContent = useSelector(getShowCustomContent);
   const ignore_collection = useSettingValue('ignore_collection');
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
-  const investigatorFront = parsedDeck?.investigatorFront;
   const slots = parsedDeck?.slots;
   const lockedPermanents = parsedDeck?.lockedPermanents;
-  const investigatorBack = parsedDeck?.investigatorBack;
+  const investigator = parsedDeck?.investigator;
   const [uniqueBondedCards, bondedCounts, bondedCardsCount] = useMemo((): [Card[], Slots, number] => {
     if (!slots) {
       return [[], {}, 0];
     }
     const bondedCards: Card[] = [];
     const bondedCounts: Slots = {};
-    if (investigatorBack?.real_name) {
-      const possibleBondedInvestigatorCards =  bondedCardsByName?.[investigatorBack.real_name];
+    if (investigator?.back.real_name) {
+      const possibleBondedInvestigatorCards =  bondedCardsByName?.[investigator.back.real_name];
       forEach(possibleBondedInvestigatorCards, bonded => {
         bondedCards.push(bonded);
         bondedCounts[bonded.code] = 1;
@@ -415,13 +414,13 @@ export default function useParsedDeckComponent({
     const uniqueBondedCards = uniqBy(bondedCards, c => c.code);
     const bondedCardsCount = sumBy(uniqueBondedCards, card => bondedCounts[card.code]);
     return [uniqueBondedCards, bondedCounts, bondedCardsCount];
-  }, [slots, cards, bondedCardsByName]);
-  const theLimitSlotCount = useMemo(() => find(investigatorBack?.deck_options, option => !!option.limit)?.limit || 0, [investigatorBack]);
+  }, [slots, investigator, cards, bondedCardsByName]);
+  const theLimitSlotCount = useMemo(() => find(investigator?.back.deck_options, option => !!option.limit)?.limit || 0, [investigator?.back]);
   const [data, setData] = useState<DeckSection[]>([]);
   const customizations = parsedDeck?.customizations;
 
   useEffect(() => {
-    if (!parsedDeck?.investigatorBack || !visible) {
+    if (!parsedDeck?.investigator || !visible) {
       return;
     }
     const normalCards = parsedDeck.normalCards;
@@ -430,7 +429,7 @@ export default function useParsedDeckComponent({
     const extraCards = parsedDeck.extraCards;
     const slots = parsedDeck.slots;
     const deckCards = parsedDeck.deckCards;
-    const validation = new DeckValidation(parsedDeck.investigatorBack, slots, meta);
+    const validation = new DeckValidation(parsedDeck.investigator, slots, meta);
     const shouldDraft = !parsedDeck.changes && !!showDraftCards;
     const hasNormalCards = (!!normalCards.Assets?.length ||
       !!normalCards.Enemy?.length ||
@@ -540,7 +539,7 @@ export default function useParsedDeckComponent({
       });
       const count = sumBy(limitedCards, card => slots[card.id] || 0);
       if (count > 0) {
-        const limitSlotCount = (validation.investigator.code === THE_INSANE_CODE ?
+        const limitSlotCount = (validation.investigator.back.code === THE_INSANE_CODE ?
           validation.getInsaneData(flatMap(keys(slots), (code) => {
             const card = cards[code];
             const count = (slots[code] ?? 0);
@@ -567,7 +566,7 @@ export default function useParsedDeckComponent({
         }
       }
     }
-    const [extraSection, extraIndex] = parsedDeck.investigatorBack.code === PARALLEL_JIM_CODE && extraCards ?
+    const [extraSection, extraIndex] = parsedDeck.investigator.back.code === PARALLEL_JIM_CODE && extraCards ?
       deckToSections(
         t`Spirit Deck`,
         showEditExtra,
@@ -592,7 +591,7 @@ export default function useParsedDeckComponent({
         deckCards,
         cards,
         cardsByName,
-        new DeckValidation(parsedDeck.investigatorBack, slots, meta, { side_deck: true }),
+        new DeckValidation(parsedDeck.investigator, slots, meta, { extra_deck: true }),
         customizations,
         'extra',
         {
@@ -655,7 +654,7 @@ export default function useParsedDeckComponent({
     visible,
   ]);
 
-  const faction = parsedDeck?.investigator.factionCode() || 'neutral';
+  const faction = parsedDeck?.faction ?? 'neutral';
   const renderSectionHeader = useCallback((section: CardSection) => {
     if (section.superTitle) {
       return (
@@ -745,11 +744,11 @@ export default function useParsedDeckComponent({
       false,
       tabooSetId,
       deckId,
-      investigatorFront,
+      investigator?.front,
       editable,
       customizations,
     );
-  }, [componentId, customizations, data, editable, colors, deckId, investigatorFront, tabooSetId, singleCardView, cards]);
+  }, [componentId, customizations, data, editable, colors, deckId, investigator, tabooSetId, singleCardView, cards]);
   const { listSeperator } = useContext(LanguageContext);
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];

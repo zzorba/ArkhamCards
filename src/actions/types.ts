@@ -6,7 +6,7 @@ import {
   SlotCodeType,
 } from "@app_constants";
 import { CardFilterData, FilterState } from "@lib/filters";
-import Card from "@data/types/Card";
+import Card, { InvestigatorChoice } from "@data/types/Card";
 import { LEAD_INVESTIGATOR_STEP_ID } from "@data/scenario/fixedSteps";
 import {
   Campaign_Difficulty_Enum,
@@ -274,9 +274,8 @@ export interface ParsedDeck {
   deck?: Deck;
   customizations: Customizations;
 
-  investigator: Card;
-  investigatorFront: Card;
-  investigatorBack: Card;
+  faction: FactionCodeType;
+  investigator: InvestigatorChoice;
   slots: Slots;
   deckSize: number;
   extraDeckSize: number | undefined;

@@ -817,10 +817,14 @@ function getDeckChanges(
   if (!previousDeck) {
     return undefined;
   }
-  const previous_investigator_code =
-    (previousDeck.meta || {}).alternate_back || previousDeck.investigator_code;
-  const previousInvestigator = cards[previous_investigator_code];
-  if (!previousInvestigator) {
+  const previous_investigator_back_code =
+    previousDeck.meta?.alternate_back || previousDeck.investigator_code;
+  const previous_investigator_front_code =
+    previousDeck.meta?.alternate_front || previousDeck.investigator_code;
+  const main = cards[previousDeck.investigator_code];
+  const previousInvestigatorBack = cards[previous_investigator_back_code];
+  const previousInvestigatorFront = cards[previous_investigator_front_code];
+  if (!previousInvestigatorBack || !previousInvestigatorFront || !main)  {
     return undefined;
   }
 
@@ -832,11 +836,11 @@ function getDeckChanges(
     customizations
   );
   const oldDeckSize = new DeckValidation(
-    previousInvestigator,
+    { main, back: previousInvestigatorBack, front: previousInvestigatorFront },
     previousDeck.slots || {},
     previousDeck.meta
   ).getDeckSize(previousDeckCards);
-  const invalidCards = validation.getInvalidCards(previousDeckCards);  
+  const invalidCards = validation.getInvalidCards(previousDeckCards);
 
 
   const newDeckSize = validation.getDeckSize(newDeckCards);
@@ -869,13 +873,13 @@ function getDeckChanges(
     if (
       ignoreDelta != 0 &&
       code !== ACE_OF_RODS_CODE &&
-      (validation.investigator.code == PARALLEL_AGNES_CODE ||
-        validation.investigator.code === PARALLEL_SKIDS_CODE)
+      (validation.investigator.back.code == PARALLEL_AGNES_CODE ||
+        validation.investigator.back.code === PARALLEL_SKIDS_CODE)
     ) {
       ignoredCardsDelta[code] = ignoreDelta;
     }
   });
-  if (previous_investigator_code === PARALLEL_JIM_CODE) {
+  if (previous_investigator_back_code === PARALLEL_JIM_CODE) {
     const extraSlots = getExtraDeckSlots(meta);
     const previousExtraSlots = getExtraDeckSlots(previousDeck.meta ?? {});
     forEach(uniq(union(keys(extraSlots), keys(previousExtraSlots))), (code) => {
@@ -1183,10 +1187,14 @@ export function parseDeck(
   const investigator_front_code = meta.alternate_front || investigator_code;
   const investigator_back_code = meta.alternate_back || investigator_code;
 
-  const investigator: Card | undefined = cards[investigator_back_code];
-  if (!investigator) {
+  const main = cards[investigator_code];
+  const investigator_front = cards[investigator_front_code];
+  const investigator_back = cards[investigator_back_code];
+  if (!investigator_back || !investigator_front || !main) {
     return undefined;
   }
+  const investigator = { main, back: investigator_back, front: investigator_front };
+
   const validation = new DeckValidation(investigator, slots, meta);
   const deckCards = getCards(
     cards,
@@ -1215,7 +1223,7 @@ export function parseDeck(
       investigator,
       extraDeckSlots,
       meta,
-      { side_deck: true }
+      { extra_deck: true }
     );
     extraDeckSize = extraValidation.getDeckSize(extraDeckCards);
     extraProblem = extraValidation.getProblem(extraDeckCards);
@@ -1435,9 +1443,8 @@ export function parseDeck(
   }
   return {
     id: originalDeck ? getDeckId(originalDeck) : undefined,
-    investigator,
-    investigatorFront: cards[investigator_front_code] || investigator,
-    investigatorBack: cards[investigator_back_code] || investigator,
+    faction: investigator.front.factionCode(),
+    investigator: investigator,
     deck: originalDeck,
     slots,
     deckCards,

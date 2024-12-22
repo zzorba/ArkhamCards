@@ -37,7 +37,7 @@ import {
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
 } from "@app_constants";
-import Card from "@data/types/Card";
+import Card, { InvestigatorChoice } from "@data/types/Card";
 import DeckOption, { localizeDeckOptionError } from "@data/types/DeckOption";
 import {
   BONDED_WEAKNESS_COUNTS,
@@ -89,7 +89,7 @@ function partitionDeckOptions(options: DeckOption[]): {
 }
 
 export default class DeckValidation {
-  investigator: Card;
+  investigator: InvestigatorChoice;
   slots: Slots;
   meta?: DeckMeta;
   problem_list: string[] = [];
@@ -111,7 +111,7 @@ export default class DeckValidation {
    * @param all_options
    */
   constructor(
-    investigator: Card,
+    investigator: InvestigatorChoice,
     slots: Slots,
     meta: DeckMeta | undefined,
     {
@@ -153,8 +153,8 @@ export default class DeckValidation {
 
   deckRequirements(): DeckRequirement | undefined {
     return this.extra_deck
-      ? this.investigator.side_deck_requirements
-      : this.investigator.deck_requirements;
+      ? this.investigator.back.side_deck_requirements
+      : this.investigator.back.deck_requirements;
   }
 
   getDeckSize(cards: Card[]): number {
@@ -316,7 +316,7 @@ export default class DeckValidation {
     // get investigator data
     var card = this.investigator;
     const requirements = this.deckRequirements();
-    if (card.code === THE_INSANE_CODE) {
+    if (card.back.code === THE_INSANE_CODE) {
       this.insane_data = this.getInsaneData(cards);
     }
 
@@ -528,8 +528,8 @@ export default class DeckValidation {
       );
     }
     const investigator_deck_options = this.extra_deck
-      ? this.investigator.side_deck_options
-      : this.investigator.deck_options;
+      ? this.investigator.back.side_deck_options
+      : this.investigator.back.deck_options;
     if (investigator_deck_options && investigator_deck_options.length) {
       forEach(investigator_deck_options, (deck_option) => {
         if (deck_option.option_select) {
@@ -631,8 +631,8 @@ export default class DeckValidation {
         find(
           card.restrictions_all_investigators,
           (code) =>
-            code === investigator.code ||
-            code === investigator.alternate_of_code
+            code === investigator.back.code ||
+            code === investigator.back.alternate_of_code
         )
       ) {
         return SIGNATURE_CARD_OPTION;
@@ -641,7 +641,7 @@ export default class DeckValidation {
     }
     if (card.restrictions_trait) {
       const gator_traits =
-        investigator.real_traits_normalized?.split(",") ?? [];
+        investigator.front.real_traits_normalized?.split(",") ?? [];
       if (
         !find(gator_traits, (t) => card.restrictions_trait?.indexOf(t) !== -1)
       ) {
@@ -650,7 +650,7 @@ export default class DeckValidation {
       }
     }
     if (card.restrictions_faction) {
-      const faction = `#${investigator.faction_code}#`;
+      const faction = `#${investigator.front.faction_code}#`;
       if (card.restrictions_faction.indexOf(faction) === -1) {
         // This card is restricted and you don't match the requirements.
         return undefined;

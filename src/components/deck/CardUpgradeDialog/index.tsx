@@ -11,7 +11,7 @@ import CardUpgradeOption from './CardUpgradeOption';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/actions';
 import DeckValidation from '@lib/DeckValidation';
-import Card, { CardsMap, cardInCollection } from '@data/types/Card';
+import Card, { CardsMap, InvestigatorChoice, cardInCollection } from '@data/types/Card';
 import { NavigationProps } from '@components/nav/types';
 import space, { m } from '@styles/space';
 import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
@@ -34,7 +34,7 @@ export interface CardUpgradeDialogProps {
   componentId: string;
   id: DeckId;
   cardsByName: Card[];
-  investigator: Card;
+  investigator: InvestigatorChoice;
   mode: 'extra' | undefined;
 }
 
@@ -126,7 +126,7 @@ export default function CardUpgradeDialog({
     if (!slots || !deckEdits) {
       return [];
     }
-    const validation = new DeckValidation(investigator, slots, deckEdits.meta, { side_deck: mode === 'extra' });
+    const validation = new DeckValidation(investigator, slots, deckEdits.meta, { extra_deck: mode === 'extra' });
     return sortBy(
       filter(dedupedCardsByName,
         card => validation.canIncludeCard(card, false, deckCards)),
@@ -141,7 +141,7 @@ export default function CardUpgradeDialog({
     dispatch(decIgnoreDeckSlot(id, code));
   }, [dispatch, id]);
 
-  const ignoreData = useMemo(() => ignoreRule(investigator.code), [investigator.code]);
+  const ignoreData = useMemo(() => ignoreRule(investigator.back.code), [investigator.back.code]);
 
   const onIncrement = useCallback((code: string) => {
     if (!deckEdits || !slots) {

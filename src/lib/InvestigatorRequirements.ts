@@ -2,7 +2,7 @@ import { dropRightWhile, find, flatMap } from "lodash";
 import { Brackets } from "typeorm/browser";
 
 import { DeckMeta, Slots } from "@actions/types";
-import Card from "@data/types/Card";
+import Card, { InvestigatorChoice } from "@data/types/Card";
 import DeckOption, { DeckOptionQueryBuilder } from "@data/types/DeckOption";
 import { combineQueries, combineQueriesOpt, STORY_CARDS_QUERY, where } from "@data/sqlite/query";
 import FilterBuilder, { FilterState } from "./filters";
@@ -20,7 +20,7 @@ interface DeckOptionsContext {
 }
 
 function negativeQueryForInvestigator(
-  investigator: Card,
+  investigator: InvestigatorChoice,
   allOptions: DeckOption[],
   meta?: DeckMeta,
   context?: DeckOptionsContext
@@ -64,8 +64,8 @@ function negativeQueryForInvestigator(
   const specialtyBuilder = new FilterBuilder("specialty");
   invertedClause.push(
     specialtyBuilder.illegalSpecialistFilter(
-      investigator.real_traits_normalized?.split(",") ?? [],
-      [investigator.faction_code ?? "neutral"]
+      investigator.front.real_traits_normalized?.split(",") ?? [],
+      [investigator.front.faction_code ?? "neutral"]
     )
   );
   return combineQueriesOpt(invertedClause, "or", true);
@@ -75,7 +75,7 @@ function negativeQueryForInvestigator(
  * There are no story
  */
 export function queryForInvestigatorWithoutDeck(
-  investigator: Card,
+  investigator: InvestigatorChoice,
   meta: DeckMeta | undefined,
   context?: DeckOptionsContext
 ) {
@@ -86,7 +86,7 @@ export function queryForInvestigatorWithoutDeck(
  * Turn the given realm card into a sqlite string.
  */
 export function queryForInvestigator(
-  investigator: Card,
+  investigator: InvestigatorChoice,
   slots: Slots | undefined,
   meta: DeckMeta | undefined,
   cards: Card[],
@@ -145,7 +145,7 @@ export function queryForInvestigator(
   const requiredCardsQuery = context?.extraDeck ?
     where("c.code IN (:...values)", {
       values: flatMap(
-        investigator.side_deck_requirements?.card ?? [],
+        investigator.back.side_deck_requirements?.card ?? [],
         (card) => [
           ...(card.code ? [card.code] : []),
           ...(card.alternates ?? []),
@@ -156,9 +156,9 @@ export function queryForInvestigator(
       "c.restrictions_investigator IN (:...values) OR c.alternate_required_code IN (:...values)",
       {
         values: [
-          investigator.code,
-          ...(investigator.alternate_of_code
-            ? [investigator.alternate_of_code]
+          investigator.back.code,
+          ...(investigator.back.alternate_of_code
+            ? [investigator.back.alternate_of_code]
             : []),
         ],
       }

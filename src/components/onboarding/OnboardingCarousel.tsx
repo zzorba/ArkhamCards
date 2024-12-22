@@ -37,6 +37,7 @@ export default function OnboardingCarousel({ width, slides, onEndReached }: Prop
   }): React.ReactElement => {
     return item;
   }, []);
+  // @ts-ignore
   const slidesWithDummy: React.ReactElement[] = useMemo(() => {
     if (slides.length) {
       return [
@@ -59,6 +60,7 @@ export default function OnboardingCarousel({ width, slides, onEndReached }: Prop
         defaultIndex={0}
         windowSize={3}
         inactiveSlideOpacity={1}
+        // @ts-ignore
         renderItem={renderItem}
         width={width}
         onSnapToItem={onScrollIndexChanged}

@@ -62,7 +62,7 @@ import { localizeTag } from '@components/deck/TagChiclet';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import useTagPile from '@components/deck/useTagPile';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
-import { getExtraDeckSlots } from '@lib/parseDeck';
+import { getExtraDeckSlots, parseDeck } from '@lib/parseDeck';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -265,16 +265,16 @@ function DeckDetailView({
   const extraProblem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
   const flatDeckCards = useMemo(() => {
-    const extraDeckSlots = parsedDeck?.investigatorBack.code === PARALLEL_JIM_CODE ? getExtraDeckSlots(deckEdits?.meta ?? {}) : {};
+    const extraDeckSlots = parsedDeck?.investigator.back.code === PARALLEL_JIM_CODE ? getExtraDeckSlots(deckEdits?.meta ?? {}) : {};
     return [
-      ...(parsedDeck?.investigator ? [parsedDeck.investigator] : []),
+      ...(parsedDeck?.investigator ? [parsedDeck.investigator.front, parsedDeck.investigator.back] : []),
       ...flatMap(deckCards, c =>
         c && ((deckEdits?.slots[c.code] || 0) > 0 || (deckEdits?.ignoreDeckLimitSlots[c.code] || 0) > 0 || (extraDeckSlots[c.code] || 0) > 0) ? c : []),
       ];
   }, [deckCards, deckEdits, parsedDeck?.investigator]);
   const [possibleUpgradeCards] = useUpgradeCardsByName(flatDeckCards, tabooSetId)
   const [bondedCards] = useBondedFromCards(flatDeckCards, DEFAULT_SORT, tabooSetId);
-  const [requiredCards] = useRequiredCards(parsedDeck?.investigatorFront, parsedDeck?.investigatorBack, tabooSetId);
+  const [requiredCards] = useRequiredCards(parsedDeck?.investigator, tabooSetId);
   const cards = useMemo(() => {
     const r = {
       ...deckCards,
@@ -348,7 +348,7 @@ function DeckDetailView({
   }, componentId, [saveEdits, toggleMenuOpen, handleBackPress]);
   useBackButton(handleBackPress);
   const hasInvestigator = !!parsedDeck?.investigator;
-  const factionColor = useMemo(() => colors.faction[parsedDeck?.investigator.factionCode() || 'neutral'].background, [parsedDeck, colors.faction]);
+  const factionColor = useMemo(() => colors.faction[parsedDeck?.faction ?? 'neutral'].background, [parsedDeck, colors.faction]);
   useEffect(() => {
     if (hasInvestigator) {
       const textColors = {
@@ -787,7 +787,7 @@ function DeckDetailView({
     }
     setFabOpen(false);
     setMenuOpen(false);
-    const backgroundColor = colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].background;
+    const backgroundColor = colors.faction[parsedDeck?.faction ?? 'neutral'].background;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -807,7 +807,7 @@ function DeckDetailView({
               color: 'white',
             },
             subtitle: {
-              text: parsedDeck ? parsedDeck.investigator.name : '',
+              text: parsedDeck ? parsedDeck.investigator.front.name : '',
               color: 'white',
             },
             background: {
@@ -853,7 +853,7 @@ function DeckDetailView({
             componentId,
             id,
           },
-          options: getDeckOptions(colors, { title: t`Notes` }, parsedDeck.investigator),
+          options: getDeckOptions(colors, { title: t`Notes` }, parsedDeck.investigator.front),
         },
       });
     }
@@ -928,7 +928,7 @@ function DeckDetailView({
           investigator: parsedDeck.investigator,
           mode,
         },
-        options: getDeckOptions(colors, { title: card.name }, parsedDeck.investigator),
+        options: getDeckOptions(colors, { title: card.name }, parsedDeck.investigator.front),
       },
     });
   }, [componentId, cardsByName, parsedDeck, id, colors]);
@@ -1040,9 +1040,9 @@ function DeckDetailView({
           passProps: {
             id,
             campaign,
-            investigator: parsedDeck.investigator.code,
+            investigator: parsedDeck.investigator.front.code,
           },
-          options: getDeckOptions(colors, { title: t`Upgrade History` }, parsedDeck.investigator),
+          options: getDeckOptions(colors, { title: t`Upgrade History` }, parsedDeck.investigator.front),
         },
       });
     }
@@ -1215,7 +1215,7 @@ function DeckDetailView({
           onPress={toggleCopyDialog}
           title={t`Clone deck`}
         />
-        { deck.local && !(deck.investigator_code === CUSTOM_INVESTIGATOR || deck.investigator_code.startsWith('z') || parsedDeck.investigator?.custom()) && editable && (
+        { deck.local && !(deck.investigator_code === CUSTOM_INVESTIGATOR || deck.investigator_code.startsWith('z') || parsedDeck.investigator?.front.custom() || parsedDeck.investigator?.back.custom()) && editable && (
           <MenuButton
             icon="world"
             onPress={uploadToArkhamDB}
@@ -1461,8 +1461,7 @@ function DeckDetailView({
               visible={visible}
               deckId={id}
               suggestArkhamDbLogin={suggestArkhamDbLogin}
-              investigatorFront={parsedDeck.investigatorFront}
-              investigatorBack={parsedDeck.investigatorBack}
+              investigator={parsedDeck.investigator}
               deck={deck}
               editable={editable}
               tabooSet={tabooSet}

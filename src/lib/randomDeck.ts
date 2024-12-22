@@ -3,7 +3,7 @@ import { SharedValue, withTiming } from 'react-native-reanimated';
 
 import { DeckMeta, INVESTIGATOR_PROBLEM, Slots, TOO_FEW_CARDS } from '@actions/types';
 import specialCards, { JOE_DIAMOND_CODE, LOLA_CODE, SUZI_CODE } from '@data/deck/specialCards';
-import Card, { CardsMap } from '@data/types/Card';
+import Card, { CardsMap, InvestigatorChoice } from '@data/types/Card';
 import DeckValidation from './DeckValidation';
 import { getCards } from './parseDeck';
 
@@ -44,10 +44,10 @@ function getSpecialInvestigatorPredicate(
   validation: DeckValidation,
   deckCards: Card[]
 ): undefined | ((card: Card) => boolean) {
-  switch (validation.investigator.code) {
+  switch (validation.investigator.back.code) {
     case SUZI_CODE:
     case LOLA_CODE: {
-      const requiredFactions = (validation.investigator.code === LOLA_CODE ? 3 : 5);
+      const requiredFactions = (validation.investigator.back.code === LOLA_CODE ? 3 : 5);
       const deckSize = validation.getDeckSize(deckCards);
       const drawDeckSize = sumBy(deckCards, (card) => card.permanent || card.subtype_code || card.restrictions_investigator ? 0 : 1);
       if (drawDeckSize + (requiredFactions * 7) < deckSize) {
@@ -144,7 +144,7 @@ function randomAllowedCardHelper(
 }
 
 export function getDraftCards(
-  investigatorBack: Card,
+  investigator: InvestigatorChoice,
   meta: DeckMeta,
   slots: Slots,
   count: number,
@@ -156,7 +156,7 @@ export function getDraftCards(
   allDeckCards: CardsMap | undefined,
   mode?: 'extra',
 ): [Card[], string[]] {
-  const validation = new DeckValidation(investigatorBack, slots, meta, { side_deck: mode === 'extra'});
+  const validation = new DeckValidation(investigator, slots, meta, { extra_deck: mode === 'extra'});
   const draftCards: Card[] = [];
   let possibleCodes: string[] = possibleCards;
   const deckCards: Card[] = getCards({
@@ -186,8 +186,7 @@ export function getDraftCards(
 }
 
 export default function randomDeck(
-  investigatorCode: string,
-  investigatorBack: Card,
+  investigator: InvestigatorChoice,
   meta: DeckMeta,
   possibleCodes: string[],
   cards: CardsMap,
@@ -200,7 +199,7 @@ export default function randomDeck(
   const deckCards: Card[] = [];
   let localPossibleCards: string[] = [...possibleCodes];
   const slots: Slots = {};
-  const validation = new DeckValidation(investigatorBack, slots, meta, { random_deck: true, side_deck: mode === 'extra' });
+  const validation = new DeckValidation(investigator, slots, meta, { random_deck: true, extra_deck: mode === 'extra' });
   let deckSize = 0;
   while (deckSize < validation.getDeckSize(deckCards)) {
     const investigatorClause = getSpecialInvestigatorPredicate(validation, deckCards);
@@ -225,8 +224,8 @@ export default function randomDeck(
   }
   if (mode !== 'extra') {
     // Handle special cards, like for Lily/Parallel Roland
-    const specialFront = specialCards[meta.alternate_front || investigatorCode]?.front
-    const specialBack = specialCards[meta.alternate_back || investigatorCode]?.back;
+    const specialFront = specialCards[investigator.front.code]?.front
+    const specialBack = specialCards[investigator.back.code]?.back;
     if (specialFront) {
       forEach(take(shuffle(specialFront.codes), specialFront.min), code => {
         slots[code] = 1;

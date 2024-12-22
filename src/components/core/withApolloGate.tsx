@@ -105,6 +105,7 @@ export default function withApolloGate<Props>(WrappedComponent: React.ComponentT
   const result = function(props: Props) {
     return (
       <ApolloGate>
+        { /* @ts-ignore */ }
         <WrappedComponent {...props} />
       </ApolloGate>
     );

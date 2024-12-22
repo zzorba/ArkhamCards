@@ -27,7 +27,6 @@ module.exports = {
     '@typescript-eslint',
     'react',
     'react-native',
-    'destructuring',
   ],
   'extends': [
     'plugin:react/recommended',
