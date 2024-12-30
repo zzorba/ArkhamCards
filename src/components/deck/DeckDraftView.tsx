@@ -442,6 +442,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   footerPadding: {
-    height: FOOTER_HEIGHT,
+    height: FOOTER_HEIGHT * 3,
   },
 });

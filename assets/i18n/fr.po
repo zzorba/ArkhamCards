@@ -1696,9 +1696,6 @@ msgstr "Dernier deck : ${ deck.changes.spentXp } sur ${ deck.availableExperience
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr "Dernier deck : ${ deck.availableExperience } XP"
 
-msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "Aucun soutien prenant un emplacement d'allié n'est autorisé."
-
 msgid "Too many off-class cards for Versatile"
 msgstr "Il y a trop de cartes « extra-classe » pour l'effet de Versatile"
 
@@ -1846,9 +1843,6 @@ msgstr "Vous subissez 1 traumatisme physique ou mental <i>(votre choix)</i>."
 
 msgid "All weaknesses have been assigned."
 msgstr "Toutes les faiblesses ont été assignées."
-
-msgid "Draw random weakness"
-msgstr "Piocher une faiblesse au hasard"
 
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "Voulez-vous utiliser l'application pour choisir les faiblesses au hasard ?"
@@ -6053,6 +6047,33 @@ msgstr ""
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
+msgstr ""
+
+msgid "Narration"
+msgstr ""
+
+msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
+msgstr ""
+
+msgid "New deck"
+msgstr ""
+
+msgid "Fatigue"
+msgstr ""
+
+msgid "The Colour Out of Oz"
+msgstr ""
+
+msgid "Preparations"
+msgstr ""
+
+msgid "Companions of Oz"
+msgstr ""
+
+msgid "Advantages"
+msgstr ""
+
+msgid "Order of Events"
 msgstr ""
 
 msgctxt "investigator"

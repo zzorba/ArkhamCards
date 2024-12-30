@@ -362,9 +362,6 @@ msgstr ""
 msgid "Too many cards (${ drawDeckSize } / ${ size })."
 msgstr ""
 
-msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr ""
-
 msgid "Limit 1 Covenant per deck."
 msgstr ""
 
@@ -4295,9 +4292,6 @@ msgstr ""
 msgid "Chosen trauma type"
 msgstr ""
 
-msgid "Draw random weakness"
-msgstr ""
-
 msgid "All weaknesses have been assigned."
 msgstr ""
 
@@ -5843,6 +5837,33 @@ msgstr ""
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
+msgstr ""
+
+msgid "Narration"
+msgstr ""
+
+msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
+msgstr ""
+
+msgid "New deck"
+msgstr ""
+
+msgid "Fatigue"
+msgstr ""
+
+msgid "The Colour Out of Oz"
+msgstr ""
+
+msgid "Preparations"
+msgstr ""
+
+msgid "Companions of Oz"
+msgstr ""
+
+msgid "Advantages"
+msgstr ""
+
+msgid "Order of Events"
 msgstr ""
 
 msgctxt "investigator"

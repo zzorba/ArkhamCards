@@ -20,9 +20,6 @@ msgstr ""
 msgid "${ action.name } (Campaign B)"
 msgstr ""
 
-msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr ""
-
 msgid "Too many off-class cards for Versatile"
 msgstr ""
 
@@ -1387,9 +1384,6 @@ msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr ""
 
 msgid "All weaknesses have been assigned."
-msgstr ""
-
-msgid "Draw random weakness"
 msgstr ""
 
 msgid "Do you want to use the app to randomize weaknesses?"
@@ -5851,6 +5845,33 @@ msgstr ""
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
+msgstr ""
+
+msgid "Narration"
+msgstr ""
+
+msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
+msgstr ""
+
+msgid "New deck"
+msgstr ""
+
+msgid "Fatigue"
+msgstr ""
+
+msgid "The Colour Out of Oz"
+msgstr ""
+
+msgid "Preparations"
+msgstr ""
+
+msgid "Companions of Oz"
+msgstr ""
+
+msgid "Advantages"
+msgstr ""
+
+msgid "Order of Events"
 msgstr ""
 
 msgctxt "investigator"

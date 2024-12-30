@@ -22,9 +22,6 @@ msgstr "${ action.name } (캠페인 A)"
 msgid "${ action.name } (Campaign B)"
 msgstr "${ action.name } (캠페인 B)"
 
-msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "'홀로서기' 카드의 효과로 조력자 슬롯을 차지하는 자산은 허용되지 않습니다."
-
 msgid "Too many off-class cards for Versatile"
 msgstr "'다재다능' 카드의 효과를 적용하더라도 다른 역할군 카드가 너무 많습니다."
 
@@ -1438,9 +1435,6 @@ msgstr "당신은 육체적 트라우마를 1 또는 정신적 트라우마를 1
 
 msgid "All weaknesses have been assigned."
 msgstr "모든 약점이 할당되어 있습니다."
-
-msgid "Draw random weakness"
-msgstr "무작위 약점 뽑기"
 
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "앱을 이용해서 약점을 무작위로 선택하기를 원하십니까?"
@@ -6000,6 +5994,33 @@ msgstr "새 카드를 확인하지 않은지 너무 오래되었습니다."
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
 msgstr "중국어(간체): ${ simplifiedChineseTranslators }"
+
+msgid "Narration"
+msgstr ""
+
+msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
+msgstr ""
+
+msgid "New deck"
+msgstr ""
+
+msgid "Fatigue"
+msgstr ""
+
+msgid "The Colour Out of Oz"
+msgstr ""
+
+msgid "Preparations"
+msgstr ""
+
+msgid "Companions of Oz"
+msgstr ""
+
+msgid "Advantages"
+msgstr ""
+
+msgid "Order of Events"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

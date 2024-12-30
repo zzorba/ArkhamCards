@@ -15,12 +15,13 @@ import { clearFilters, toggleFilter, updateFilter } from './actions';
 import { NavigationProps } from '@components/nav/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import deepEqual from 'deep-equal';
+import { Slots } from '@actions/types';
 
 export interface FilterFunctionProps {
   filterId: string;
   tabooSetId?: number;
   modal?: boolean;
-  baseQuery?: (filters: FilterState | undefined) => Brackets;
+  baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
 }
 
 export interface WithFilterFunctionsOptions {
@@ -79,7 +80,7 @@ export default function useFilterFunctions({
     db.getCardCount(
       combineQueriesOpt(
         [
-          ...(baseQuery ? [baseQuery(currentFilters)] : []),
+          ...(baseQuery ? [baseQuery(currentFilters, undefined)] : []),
           NO_CUSTOM_CARDS_QUERY,
           ...(filterParts ? [filterParts] : []),
         ],

@@ -1688,9 +1688,6 @@ msgstr "Ultimo Mazzo: ${ deck.changes.spentXp } di ${ deck.availableExperience }
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr "Ultimo Mazzo: ${ deck.availableExperience } PE"
 
-msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "“Tutto da Solo” non consente risorse che occupino uno slot alleato."
-
 msgid "Too many off-class cards for Versatile"
 msgstr "Troppe carte neutre per Versatile"
 
@@ -1838,9 +1835,6 @@ msgstr "Subite 1 trauma fisico o mentale <i>(a vostra scelta)</i>."
 
 msgid "All weaknesses have been assigned."
 msgstr "Tutte le debolezze sono state assegnate."
-
-msgid "Draw random weakness"
-msgstr "Pesca una debolezza casuale"
 
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "Volete utilizzare l’App per rendere casuali le debolezze?"
@@ -6015,6 +6009,33 @@ msgstr ""
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
+msgstr ""
+
+msgid "Narration"
+msgstr ""
+
+msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
+msgstr ""
+
+msgid "New deck"
+msgstr ""
+
+msgid "Fatigue"
+msgstr ""
+
+msgid "The Colour Out of Oz"
+msgstr ""
+
+msgid "Preparations"
+msgstr ""
+
+msgid "Companions of Oz"
+msgstr ""
+
+msgid "Advantages"
+msgstr ""
+
+msgid "Order of Events"
 msgstr ""
 
 msgctxt "investigator"

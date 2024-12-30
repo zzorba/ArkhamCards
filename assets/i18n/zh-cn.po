@@ -1685,9 +1685,6 @@ msgstr "最新牌组: 已花费${ deck.changes.spentXp }点经验，总共${ dec
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr "最新牌组: ${ deck.availableExperience }点经验"
 
-msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "使用自食其力时，不允许使用占用盟友槽位的支援卡。"
-
 msgid "Too many off-class cards for Versatile"
 msgstr "多才多艺有太多不符合职阶的卡牌"
 
@@ -1832,9 +1829,6 @@ msgstr "你受到1点肉体创伤或1点精神创伤<i>(自行选择)</i>。"
 
 msgid "All weaknesses have been assigned."
 msgstr "所有弱点卡都已经被选择了。"
-
-msgid "Draw random weakness"
-msgstr "抽取随机弱点"
 
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "你是否想使用此APP随机挑选弱点？"
@@ -5988,6 +5982,33 @@ msgstr ""
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
+msgstr ""
+
+msgid "Narration"
+msgstr ""
+
+msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
+msgstr ""
+
+msgid "New deck"
+msgstr ""
+
+msgid "Fatigue"
+msgstr ""
+
+msgid "The Colour Out of Oz"
+msgstr ""
+
+msgid "Preparations"
+msgstr ""
+
+msgid "Companions of Oz"
+msgstr ""
+
+msgid "Advantages"
+msgstr ""
+
+msgid "Order of Events"
 msgstr ""
 
 msgctxt "investigator"

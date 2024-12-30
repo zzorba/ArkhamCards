@@ -168,6 +168,6 @@ const styles = StyleSheet.create({
     paddingLeft: s,
   },
   footerPadding: {
-    height: FOOTER_HEIGHT,
+    height: FOOTER_HEIGHT * 4,
   },
 });

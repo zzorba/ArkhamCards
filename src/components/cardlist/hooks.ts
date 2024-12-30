@@ -9,6 +9,7 @@ import FilterBuilder, { CardFilterData, FilterState } from '@lib/filters';
 import { getFilterState, getCardFilterData, AppState } from '@reducers';
 import { CardFilterProps } from '@components/filter/CardFilterView';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { Slots } from '@actions/types';
 
 const makeFilterSelector = (): (state: AppState, filterId: string, useCardTraits: boolean) => [boolean, CardFilterData | undefined] =>
   createSelector(
@@ -27,7 +28,14 @@ const makeFilterSelector = (): (state: AppState, filterId: string, useCardTraits
   );
 
 
-export function useFilterButton({ componentId, filterId, baseQuery, modal }: { componentId: string, filterId: string, baseQuery?: (filters: FilterState | undefined) => Brackets, modal?: boolean }): [boolean, () => void] {
+type Props = {
+  componentId: string;
+  filterId: string;
+  baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
+  modal?: boolean;
+};
+
+export function useFilterButton({ componentId, filterId, baseQuery, modal }: Props): [boolean, () => void] {
   const { useCardTraits } = useContext(LanguageContext);
   const filterSelector = useMemo(() => makeFilterSelector(), []);
   const [filters, cardData] = useSelector((state: AppState) => filterSelector(state, filterId, useCardTraits));

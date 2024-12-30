@@ -6,7 +6,7 @@ import RegexEscape from 'regex-escape';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { SORT_BY_ENCOUNTER_SET, SortType, DeckId } from '@actions/types';
+import { SORT_BY_ENCOUNTER_SET, SortType, DeckId, EditDeckState, Slots } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';
@@ -35,13 +35,14 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { useSettingValue } from '@components/core/hooks';
 import { useParsedDeck } from '@components/deck/hooks';
+import { useWhyDidYouUpdate } from '@lib/hooks';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
 interface Props {
   componentId: string;
   deckId?: DeckId;
-  baseQuery?: (filters: FilterState | undefined) => Brackets;
+  baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   selectedSorts?: SortType[];
@@ -330,7 +331,7 @@ export default function({
     />
   );
 
-  const query = useMemo(() => {
+  const query = useCallback((slots: Slots | undefined) => {
     const queryParts: Brackets[] = [];
     const actuallyIncludeDuplicates = includeDuplicates;
     // const specialtyBuilder = new FilterBuilder("specialty");
@@ -351,7 +352,7 @@ export default function({
       }
     }
     if (baseQuery) {
-      queryParts.push(baseQuery(filters));
+      queryParts.push(baseQuery(filters, slots));
     }
     if (find(selectedSorts, s => s === SORT_BY_ENCOUNTER_SET)) {
       // queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));

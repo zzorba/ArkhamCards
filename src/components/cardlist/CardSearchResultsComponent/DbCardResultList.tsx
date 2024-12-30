@@ -32,7 +32,7 @@ import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
-import { SortType, Slots, Customizations, DEFAULT_SORT } from '@actions/types';
+import { SortType, Slots, Customizations, DEFAULT_SORT, EditDeckState } from '@actions/types';
 import { combineQueries, where } from '@data/sqlite/query';
 import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
 import Card, { cardInCollection, CardsMap, InvestigatorChoice, PartialCard } from '@data/types/Card';
@@ -53,12 +53,13 @@ import { FilterState } from '@lib/filters';
 import DeckValidation from '@lib/DeckValidation';
 import { THE_INSANE_CODE } from '@data/deck/specialCards';
 import { getExtraDeckSlots } from '@lib/parseDeck';
+import { useWhyDidYouUpdate } from '@lib/hooks';
 
 interface Props {
   componentId: string;
   parsedDeck?: ParsedDeckResults;
   currentDeckOnly?: boolean;
-  query?: Brackets;
+  query?: (deckEdits: Slots | undefined) => Brackets;
   filterQuery?: Brackets;
   filters?: FilterState;
   textQuery?: Brackets;
@@ -221,7 +222,12 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
   };
 }
 
-function useDeckQuery(deckCardCounts?: Slots, originalDeckSlots?: Slots): [Brackets | undefined, boolean, () => void] {
+function useDeckQuery(deckCardCounts?: Slots, originalDeckSlots?: Slots, toQuery?: (slots: Slots | undefined) => Brackets): {
+  deckQuery: Brackets | undefined;
+  hasDeckChanges: boolean;
+  query: Brackets | undefined;
+  refreshDeck: () => void;
+} {
   const [{ refreshCounter, updateCounter }, updateRefreshCounts] = useReducer((
     { refreshCounter, updateCounter }: { refreshCounter: number; updateCounter: number },
     action: 'update' | 'refresh'
@@ -249,17 +255,20 @@ function useDeckQuery(deckCardCounts?: Slots, originalDeckSlots?: Slots): [Brack
   }, [deckCardCounts]);
 
   const hasDeckChanges = (updateCounter > refreshCounter);
-  const deckCodes = useMemo(() => {
+  const [deckCodes, query] = useMemo(() => {
     if (!originalDeckSlots && !deckCardCounts) {
-      return [];
+      return [[], undefined];
     }
-    return filter(
-      uniq(concat(keys(originalDeckSlots), keys(deckCardCounts))),
-      code => !!(
-        (originalDeckSlots && originalDeckSlots[code] > 0) ||
-        (deckCardCounts && deckCardCounts[code] > 0)
-      )
-    );
+    return [
+      filter(
+        uniq(concat(keys(originalDeckSlots), keys(deckCardCounts))),
+        code => !!(
+          (originalDeckSlots && originalDeckSlots[code] > 0) ||
+          (deckCardCounts && deckCardCounts[code] > 0)
+        )
+      ),
+      toQuery?.(deckCardCounts),
+    ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshCounter]);
   const deckQuery = useMemo(() => {
@@ -269,12 +278,12 @@ function useDeckQuery(deckCardCounts?: Slots, originalDeckSlots?: Slots): [Brack
     return where(`c.code in (:...codes)`, { codes: deckCodes });
   }, [deckCodes]);
 
-  return [deckQuery, hasDeckChanges, refreshDeck];
+  return { deckQuery, hasDeckChanges, query, refreshDeck };
 }
 
 interface SectionFeedProps {
   componentId: string;
-  query?: Brackets;
+  toQuery?: (deckEdits: Slots | undefined) => Brackets;
   sorts?: SortType[];
   tabooSetId?: number;
   filterQuery?: Brackets;
@@ -302,6 +311,7 @@ interface SectionFeed {
   fetchMore?: () => void;
   showSpoilerCards: boolean;
   refreshDeck?: () => void;
+  query: Brackets | undefined;
 }
 
 interface LoadedState {
@@ -313,7 +323,7 @@ interface LoadedState {
 function useSectionFeed({
   componentId,
   hasHeader,
-  query,
+  toQuery,
   investigator,
   sorts,
   tabooSetId,
@@ -340,8 +350,8 @@ function useSectionFeed({
   const packInCollection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
   const [showNonCollection, , setShowNonCollection, clearShowNonCollection] = useToggles({});
+  const { deckQuery, hasDeckChanges, query, refreshDeck } = useDeckQuery(deckCardCounts, originalDeckSlots, toQuery);
   const storyQuery = storyOnly ? query : undefined;
-  const [deckQuery, hasDeckChanges, refreshDeck] = useDeckQuery(deckCardCounts, originalDeckSlots);
   const [{ cards: deckCards, textQuery: deckCardsTextQuery, loading: deckCardsLoading }, setDeckCards] = useState<LoadedState>({
     cards: [],
     loading: !!deckQuery,
@@ -571,6 +581,7 @@ function useSectionFeed({
     }
   }, [deckQuery, refreshDeck]);
 
+  useWhyDidYouUpdate('DbCard', { query, filterQuery, sorts, theTabooSetId, sortIgnoreQuotes, db });
   useEffect(() => {
     let ignore = false;
     // This is for the really big changes.
@@ -853,6 +864,7 @@ function useSectionFeed({
     fetchMore,
     showSpoilerCards: showSpoilers,
     refreshDeck: deckQuery ? doRefresh : undefined,
+    query,
   };
 }
 
@@ -880,7 +892,7 @@ export default function({
   componentId,
   parsedDeck,
   currentDeckOnly,
-  query,
+  query: toQuery,
   filterQuery,
   filters,
   textQuery,
@@ -937,10 +949,11 @@ export default function({
     fetchMore,
     showSpoilerCards,
     refreshDeck,
+    query,
   } = useSectionFeed({
     componentId,
     investigator,
-    query,
+    toQuery,
     sorts,
     hasHeader: (headerItems?.length || 0) > 0,
     tabooSetId,

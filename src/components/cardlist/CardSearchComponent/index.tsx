@@ -6,7 +6,7 @@ import { Navigation, OptionsTopBarButton, OptionsTopBar } from 'react-native-nav
 import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
-import { CardScreenType, DeckId, SortType } from '@actions/types';
+import { CardScreenType, DeckId, EditDeckState, Slots, SortType } from '@actions/types';
 import { InvestigatorChoice } from '@data/types/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
@@ -46,7 +46,7 @@ export function useFilterSortDialog(filterId: string, screenType: CardScreenType
 interface Props {
   componentId: string;
   filterId?: string;
-  baseQuery?: (filters: FilterState | undefined) => Brackets;
+  baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   sort?: SortType;
@@ -70,7 +70,7 @@ interface CardSearchNavigationOptions {
   modal?: boolean;
   lightButton?: boolean;
   mythosToggle?: boolean;
-  baseQuery?: (filters: FilterState | undefined) => Brackets;
+  baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
   title?: string;
 }
 export function navigationOptions(

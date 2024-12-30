@@ -1691,9 +1691,6 @@ msgstr "Ostatnia Talia: ${ deck.changes.spentXp } na ${ deck.availableExperience
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr "Ostatnia Talia: ${ deck.availableExperience } XP"
 
-msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "Atuty zajmujące strefę sprzymierzeńca nie są dozwolone przez Zdanego na siebie."
-
 msgid "Too many off-class cards for Versatile"
 msgstr "Za dużo pozaklasowych kart dla atutu: Wszechstronny"
 
@@ -1844,9 +1841,6 @@ msgstr "Otrzymujesz 1 punkt traumy fizycznej lub psychicznej <i>(your choice)</i
 
 msgid "All weaknesses have been assigned."
 msgstr "Wszystkie osłabienia zostały przypisane."
-
-msgid "Draw random weakness"
-msgstr "Dobierz Losowe Osłabienie"
 
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "Czy chcesz użyć aplikacji do losowania osłabień?"
@@ -6111,6 +6105,33 @@ msgstr "Minął już ponad tydzień odkąd ostatnio sprawdzałeś czy są nowe k
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
 msgstr "chiński (uproszczony): ${ simplifiedChineseTranslators }"
+
+msgid "Narration"
+msgstr ""
+
+msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
+msgstr ""
+
+msgid "New deck"
+msgstr ""
+
+msgid "Fatigue"
+msgstr ""
+
+msgid "The Colour Out of Oz"
+msgstr ""
+
+msgid "Preparations"
+msgstr ""
+
+msgid "Companions of Oz"
+msgstr ""
+
+msgid "Advantages"
+msgstr ""
+
+msgid "Order of Events"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

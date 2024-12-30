@@ -794,19 +794,19 @@ msgstr "Chaosbeutel"
 msgid "Adjust Weakness Set"
 msgstr "Schwächeset anpassen"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Dieses Deck enthält mehrere Grundschwächen"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Dieses Deck enthält eine Grundschwäche"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Willst du sie aus dem Grundschwächenset der Kampagne entfernen?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Willst du es aus dem Grundschwächenset der Kampagne entfernen?"
 
@@ -1688,9 +1688,6 @@ msgstr "Aktuelles Deck: ${ deck.changes.spentXp } von ${ deck.availableExperienc
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr "Aktuelles Deck: ${ deck.availableExperience } XP"
 
-msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "\"Auf dich allein gestellt\" erlaubt keine Vorteilskarten, die den Verbündeten-Slot belegen."
-
 msgid "Too many off-class cards for Versatile"
 msgstr "Zu viele Off-Class-Karten für \"Vielseitig\""
 
@@ -1838,9 +1835,6 @@ msgstr "Du erleidest 1 körperliches oder seelisches Trauma <i>(du entscheidest)
 
 msgid "All weaknesses have been assigned."
 msgstr "Alle Schwächen wurden zugewiesen."
-
-msgid "Draw random weakness"
-msgstr "Zufällige Schwäche ziehen"
 
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "Soll die App die zufällige Auswahl der Schwächen übernehmen?"
@@ -6045,6 +6039,33 @@ msgstr "Es ist mehr als eine Woche her, dass du nach neuen Karten gesucht hast."
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
+msgstr ""
+
+msgid "Narration"
+msgstr ""
+
+msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
+msgstr ""
+
+msgid "New deck"
+msgstr ""
+
+msgid "Fatigue"
+msgstr ""
+
+msgid "The Colour Out of Oz"
+msgstr ""
+
+msgid "Preparations"
+msgstr ""
+
+msgid "Companions of Oz"
+msgstr ""
+
+msgid "Advantages"
+msgstr ""
+
+msgid "Order of Events"
 msgstr ""
 
 msgctxt "investigator"

@@ -23,9 +23,6 @@ msgstr "${ action.name } (Кампания А)"
 msgid "${ action.name } (Campaign B)"
 msgstr "${ action.name } (Кампания Б)"
 
-msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "«Своими силами» не позволяет вам иметь под контролем активы, занимающие слот союзника."
-
 msgid "Too many off-class cards for Versatile"
 msgstr "«Разносторонний» не позволяет иметь так много внеклассовых карт"
 
@@ -1585,9 +1582,6 @@ msgstr "Ментальная травма"
 msgid "All weaknesses have been assigned."
 msgstr "Все слабости назначены."
 
-msgid "Draw random weakness"
-msgstr "Взять случайную слабость"
-
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "Взять слабость случайным образом?"
 
@@ -2229,19 +2223,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -6106,6 +6100,33 @@ msgstr "Прошло уже больше недели с тех пор, как �
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
 msgstr "• Китайский (Упрощённый): ${ simplifiedChineseTranslators }"
+
+msgid "Narration"
+msgstr ""
+
+msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
+msgstr ""
+
+msgid "New deck"
+msgstr ""
+
+msgid "Fatigue"
+msgstr ""
+
+msgid "The Colour Out of Oz"
+msgstr ""
+
+msgid "Preparations"
+msgstr ""
+
+msgid "Companions of Oz"
+msgstr ""
+
+msgid "Advantages"
+msgstr ""
+
+msgid "Order of Events"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
