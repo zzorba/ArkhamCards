@@ -35,7 +35,6 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { useSettingValue } from '@components/core/hooks';
 import { useParsedDeck } from '@components/deck/hooks';
-import { useWhyDidYouUpdate } from '@lib/hooks';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 

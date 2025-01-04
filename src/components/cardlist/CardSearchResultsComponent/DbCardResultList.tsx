@@ -53,7 +53,6 @@ import { FilterState } from '@lib/filters';
 import DeckValidation from '@lib/DeckValidation';
 import { THE_INSANE_CODE } from '@data/deck/specialCards';
 import { getExtraDeckSlots } from '@lib/parseDeck';
-import { useWhyDidYouUpdate } from '@lib/hooks';
 
 interface Props {
   componentId: string;
@@ -222,7 +221,11 @@ function useCardFetcher(visibleCards: PartialCard[], partialCardsLoading: boolea
   };
 }
 
-function useDeckQuery(deckCardCounts?: Slots, originalDeckSlots?: Slots, toQuery?: (slots: Slots | undefined) => Brackets): {
+function useDeckQuery(
+  deckCardCounts?: Slots,
+  originalDeckSlots?: Slots,
+  toQuery?: (slots: Slots | undefined) => Brackets
+): {
   deckQuery: Brackets | undefined;
   hasDeckChanges: boolean;
   query: Brackets | undefined;
@@ -257,7 +260,7 @@ function useDeckQuery(deckCardCounts?: Slots, originalDeckSlots?: Slots, toQuery
   const hasDeckChanges = (updateCounter > refreshCounter);
   const [deckCodes, query] = useMemo(() => {
     if (!originalDeckSlots && !deckCardCounts) {
-      return [[], undefined];
+      return [[], toQuery?.(undefined)];
     }
     return [
       filter(
@@ -581,7 +584,6 @@ function useSectionFeed({
     }
   }, [deckQuery, refreshDeck]);
 
-  useWhyDidYouUpdate('DbCard', { query, filterQuery, sorts, theTabooSetId, sortIgnoreQuotes, db });
   useEffect(() => {
     let ignore = false;
     // This is for the really big changes.

@@ -18,14 +18,17 @@ export default function InvestigatorCardsView({ investigatorCode, componentId }:
     if (!investigator) {
       return undefined;
     }
-    return (filters: FilterState | undefined) => queryForInvestigatorWithoutDeck(
-      { main: investigator, front: investigator, back: investigator },
-      undefined,
-      {
-        filters,
-        allOptions: true,
-      }
-    );
+    return (filters: FilterState | undefined) => {
+      console.log(`calculating deck for ${investigator.code}`);
+      return queryForInvestigatorWithoutDeck(
+        { main: investigator, front: investigator, back: investigator },
+        undefined,
+        {
+          filters,
+          allOptions: true,
+        }
+      );
+    }
   }, [investigator]);
   if (!investigator) {
     return null;
