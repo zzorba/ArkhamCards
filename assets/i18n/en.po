@@ -7987,6 +7987,106 @@ msgctxt "trait"
 msgid "Unpracticed"
 msgstr ""
 
+msgctxt "trait"
+msgid "Allied"
+msgstr ""
+
+msgctxt "trait"
+msgid "Bog"
+msgstr ""
+
+msgctxt "trait"
+msgid "Cart"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dark"
+msgstr ""
+
+msgctxt "trait"
+msgid "Dormant"
+msgstr ""
+
+msgctxt "trait"
+msgid "Fairy"
+msgstr ""
+
+msgctxt "trait"
+msgid "Farm"
+msgstr ""
+
+msgctxt "trait"
+msgid "Field"
+msgstr ""
+
+msgctxt "trait"
+msgid "Forest"
+msgstr ""
+
+msgctxt "trait"
+msgid "Hemlock Vale"
+msgstr ""
+
+msgctxt "trait"
+msgid "Kingsport"
+msgstr ""
+
+msgctxt "trait"
+msgid "Lantern Club"
+msgstr ""
+
+msgctxt "trait"
+msgid "Leader"
+msgstr ""
+
+msgctxt "trait"
+msgid "Lit"
+msgstr ""
+
+msgctxt "trait"
+msgid "Machination"
+msgstr ""
+
+msgctxt "trait"
+msgid "Manor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Misfortune"
+msgstr ""
+
+msgctxt "trait"
+msgid "Oz"
+msgstr ""
+
+msgctxt "trait"
+msgid "Plot"
+msgstr ""
+
+msgctxt "trait"
+msgid "Rival"
+msgstr ""
+
+msgctxt "trait"
+msgid "Room"
+msgstr ""
+
+msgctxt "trait"
+msgid "Scion"
+msgstr ""
+
+msgctxt "trait"
+msgid "Station"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sunken"
+msgstr ""
+
+msgctxt "trait"
+msgid "Unlit"
+msgstr ""
+
 #, javascript-format
 msgctxt "filter"
 msgid "${ cycleNames[cycle_position] } Cycle"
