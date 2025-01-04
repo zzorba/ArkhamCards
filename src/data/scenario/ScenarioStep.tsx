@@ -847,7 +847,7 @@ export default class ScenarioStep {
         const effectsWithInput: EffectsWithInput[] = flatMap(
           keys(choiceList), investigator => {
             const count = choiceList[investigator];
-            if (!count || count[0] === -1 || count[0] === 0) {
+            if (!count) {
               return [];
             }
             const effectWithInput: EffectsWithInput = {
