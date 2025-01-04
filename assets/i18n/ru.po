@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2024-12-11 16:33+0300\n"
+"PO-Revision-Date: 2024-12-16 20:05+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -2479,7 +2479,7 @@ msgid "Checklist"
 msgstr "Список карт"
 
 msgid "Limit 1 Covenant per deck."
-msgstr ""
+msgstr "Не более 1 завета в колоде."
 
 msgid "Checking for FAQ"
 msgstr "Проверяем FAQ"
@@ -3602,7 +3602,7 @@ msgid "${ _spentXp } of ${ _totalXp } spent"
 msgstr "Потрачено ${ _spentXp } из ${ _totalXp }"
 
 msgid "Decks with Ancestral Knowledge must include at least 10 skills."
-msgstr ""
+msgstr "В колоде с «Памятью предков» должно быть хотя бы 10 навыков."
 
 #, javascript-format
 msgid "${ normalCardCount } / ${ deckSize } cards"
