@@ -1,6 +1,7 @@
 import React from 'react';
 import Animated, { interpolateColor, useAnimatedProps, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import ArkhamIcon from './ArkhamIcon';
+import AgesIcon from './AgesIcon';
 import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CyclopeanIcon from './CyclopeanIcon';
@@ -17,7 +18,6 @@ import StandaloneIcon from './StandaloneIcon';
 import InnsmouthIcon from './InnsmouthIcon';
 import AliceIcon from './AliceIcon';
 import ScarletIcon from './ScarletIcon';
-import AgesIcon from './AgesIcon';
 
 interface Props {
   encounter_code: string;
