@@ -54,6 +54,7 @@
 		65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A43C65233EE33F00A79EA3 /* dreameaters.ttf */; };
 		65B74401272B19A800602ACD /* cardicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65B74400272B19A700602ACD /* cardicons.ttf */; };
 		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
+		65C0135F2D2AF0FA0022AB10 /* ages.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65C0135E2D2AF0FA0022AB10 /* ages.ttf */; };
 		65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */; };
 		65CF51E0220386F400A1D2FA /* circle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65CF51DF220386F400A1D2FA /* circle.ttf */; };
 		65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65D3FA05210FF315000F8B9D /* Teutonic.ttf */; };
@@ -126,6 +127,7 @@
 		659EB1C425146635007E69E0 /* innsmouth.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = innsmouth.ttf; path = ../assets/innsmouth.ttf; sourceTree = "<group>"; };
 		65A43C65233EE33F00A79EA3 /* dreameaters.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dreameaters.ttf; path = ../assets/dreameaters.ttf; sourceTree = "<group>"; };
 		65B74400272B19A700602ACD /* cardicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cardicons.ttf; path = ../assets/cardicons.ttf; sourceTree = "<group>"; };
+		65C0135E2D2AF0FA0022AB10 /* ages.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ages.ttf; path = ../assets/ages.ttf; sourceTree = "<group>"; };
 		65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AnkeCalligraphicFG.ttf; path = ../assets/AnkeCalligraphicFG.ttf; sourceTree = "<group>"; };
 		65CA4CEA212893160084A1CE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65CA4CEB2128932A0084A1CE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				65C0135E2D2AF0FA0022AB10 /* ages.ttf */,
 				FE431F822CFA75EE00F1E50B /* oz.ttf */,
 				6595EBA42C83DEC40052C406 /* Arkhamic.ttf */,
 				651E8ACA2912FE6600A48E56 /* DMSerifDisplay-Italic.ttf */,
@@ -390,6 +393,7 @@
 				9DC6CE6F2CA2554B00ADEC10 /* InfoPlist.strings in Resources */,
 				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
 				6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */,
+				65C0135F2D2AF0FA0022AB10 /* ages.ttf in Resources */,
 				659EB1C525146636007E69E0 /* innsmouth.ttf in Resources */,
 				655226F4205EEAF10065A1F7 /* app.ttf in Resources */,
 				65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */,
@@ -686,7 +690,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 4.8.0;
+				MARKETING_VERSION = 4.8.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -738,7 +742,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 4.8.0;
+				MARKETING_VERSION = 4.8.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

@@ -83,6 +83,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>tokens.ttf</string>
+		<string>ages.ttf</string>
 		<string>Conkordia.ttf</string>
 		<string>Alegreya-ExtraBold.ttf</string>
 		<string>Alegreya-ExtraBoldItalic.ttf</string>

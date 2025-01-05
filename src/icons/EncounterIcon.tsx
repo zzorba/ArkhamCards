@@ -1,6 +1,7 @@
 import React from 'react';
 import Animated, { interpolateColor, useAnimatedProps, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import ArkhamIcon from './ArkhamIcon';
+import AgesIcon from './AgesIcon';
 import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CyclopeanIcon from './CyclopeanIcon';
@@ -57,6 +58,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
   }
   arkhamIcon(name: string, size: number, color: string) {
     return (<ArkhamIcon name={name} size={size} color={color} />);
+  }
+  agesIcon(name: string, size: number, color: string) {
+    return (<AgesIcon name={name} size={size} color={color} />);
   }
   appIcon(name: string, size: number, color: string) {
     return (<AppIcon name={name} size={size} color={color} />);
