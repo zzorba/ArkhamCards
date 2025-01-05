@@ -56,9 +56,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
   ozIcon(name: string, size: number, color: string) {
     return (<OzIcon name={name} size={size} color={color} />);
   }
-  agesIcon(name: string, size: number, color: string) {
-    return (<AgesIcon name={name} size={size} color={color} />);
-  }
   arkhamIcon(name: string, size: number, color: string) {
     return (<ArkhamIcon name={name} size={size} color={color} />);
   }
