@@ -1,7 +1,6 @@
 import React from 'react';
 import Animated, { interpolateColor, useAnimatedProps, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import ArkhamIcon from './ArkhamIcon';
-import AgesIcon from './AgesIcon';
 import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CyclopeanIcon from './CyclopeanIcon';
