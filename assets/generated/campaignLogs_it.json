@@ -1266,27 +1266,27 @@
         "entries": [
           {
             "id": "day_1_day",
-            "text": "Day 1 ([day])"
+            "text": "Giorno 1 ([day])"
           },
           {
             "id": "day_1_night",
-            "text": "Night 1 ([night])"
+            "text": "Notte 1 ([night])"
           },
           {
             "id": "day_2_day",
-            "text": "Day 2 ([day])"
+            "text": "Giorno 2 ([day])"
           },
           {
             "id": "day_2_night",
-            "text": "Night 2 ([night])"
+            "text": "Notte 2 ([night])"
           },
           {
             "id": "day_3_day",
-            "text": "Day 3 ([day])"
+            "text": "Giorno 3 ([day])"
           },
           {
             "id": "day_3_night",
-            "text": "Night 3 ([night])"
+            "text": "Notte 3 ([night])"
           }
         ]
       },
