@@ -2056,19 +2056,28 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
                   );
                 }
                 break;
-              case '$lead_investigator': {
+              case '$lead_investigator':
                 cards.push({
                   card: this.leadInvestigatorChoice(),
                   count: 1,
                 });
                 break;
-              }
-              case '$all_investigators': {
+              case '$all_investigators':
                 forEach(this.investigatorCodes(true), (code) => {
                   cards.push({ card: code, count: 1 });
                 });
-              }
-              case '$defeated_investigators': {
+                break;
+              case '$not_resigned':
+                forEach(this.investigatorCodes(true), (code) => {
+                  if (!this.resigned(code)) {
+                    cards.push({
+                      card: code,
+                      count: 1,
+                    });
+                  }
+                });
+                break;
+              case '$defeated_investigators':
                 forEach(this.investigatorCodes(true), (code) => {
                   if (this.isDefeated(code)) {
                     cards.push({
@@ -2077,15 +2086,15 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
                     });
                   }
                 });
-              }
-              case '$fixed_codes': {
+                break;
+              case '$fixed_codes':
                 forEach(effect.codes || [], (code) => {
                   cards.push({
                     card: code,
                     count: 1,
                   });
                 });
-              }
+                break;
             }
           } else {
             cards.push({

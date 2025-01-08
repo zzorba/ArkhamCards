@@ -550,7 +550,13 @@ export interface CampaignLogCardsEffect {
   masculine_text?: string;
   feminine_text?: string;
   nonbinary_text?: string;
-  cards?: "$lead_investigator" | "$all_investigators" | "$defeated_investigators" | "$input_value" | "$fixed_codes";
+  cards?:
+    | "$lead_investigator"
+    | "$all_investigators"
+    | "$defeated_investigators"
+    | "$input_value"
+    | "$fixed_codes"
+    | "$not_resigned";
   codes?: string[];
   cross_out?: boolean;
   remove?: boolean;
