@@ -788,7 +788,7 @@ export default class ScenarioStep {
               step.id,
               [
                 `$campaign_log#${nextIteration}`,
-                `${base_step_id}#${nextIteration}`,
+                `${CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [],
