@@ -273,7 +273,7 @@ function useDeckQuery(
       toQuery?.(deckCardCounts),
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refreshCounter]);
+  }, [refreshCounter, toQuery]);
   const deckQuery = useMemo(() => {
     if (!deckCodes.length) {
       return undefined;

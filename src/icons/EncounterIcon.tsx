@@ -1082,24 +1082,24 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'zoz':
       case 'the_colour_out_of_oz':
         return this.ozIcon('zoz', size, color);
-      case 'zau_night_of_fire': return this.agesIcon('a_night_of_fire', size, color); 
-      case 'zau_myriad_gentleman': return this.agesIcon('the_myriad_gentleman', size, color); 
-      case 'zau_world_torn_down': return this.agesIcon('a_world_torn_down', size, color); 
-      case 'zau_unstuck': return this.agesIcon('unstuck', size, color); 
-      case 'zau_year_to_plan': return this.agesIcon('a_year_to_plan', size, color); 
-      case 'zau_world_torn_down_again': return this.agesIcon('a_world_torn_down_again', size, color); 
-      case 'zau_time_runs_out': return this.agesIcon('time_runs_out', size, color); 
-      case 'zau_agents_of_aforgomon': return this.agesIcon('agents_of_aforgomon', size, color); 
-      case 'zau_missions': return this.agesIcon('missions', size, color); 
-      case 'zau_myriad': return this.agesIcon('myriad', size, color); 
-      case 'zau_night_of_the_ritual': return this.agesIcon('night_of_the_ritual', size, color); 
-      case 'zau_nyctophobia': return this.agesIcon('nyctophobia', size, color); 
-      case 'zau_paradox': return this.agesIcon('paradox', size, color); 
-      case 'zau_shifting_reality': return this.agesIcon('shifting_reality', size, color); 
-      case 'zau_thugs': return this.agesIcon('thugs', size, color); 
-      case 'zau_unleashed_chaos': return this.agesIcon('unleashed_chaos', size, color); 
-      case 'zau_unravelling_years': return this.agesIcon('unravelling_years', size, color); 
-      case 'zau': return this.agesIcon('ages_unwound', size, color)
+      case 'zau_night_of_fire': return this.agesIcon('a_night_of_fire', size, color);
+      case 'zau_myriad_gentleman': return this.agesIcon('the_myriad_gentleman', size, color);
+      case 'zau_world_torn_down': return this.agesIcon('a_world_torn_down', size, color);
+      case 'zau_unstuck': return this.agesIcon('unstuck', size, color);
+      case 'zau_year_to_plan': return this.agesIcon('a_year_to_plan', size, color);
+      case 'zau_world_torn_down_again': return this.agesIcon('a_world_torn_down_again', size, color);
+      case 'zau_time_runs_out': return this.agesIcon('time_runs_out', size, color);
+      case 'zau_agents_of_aforgomon': return this.agesIcon('agents_of_aforgomon', size, color);
+      case 'zau_missions': return this.agesIcon('missions', size, color);
+      case 'zau_myriad': return this.agesIcon('myriad', size, color);
+      case 'zau_night_of_the_ritual': return this.agesIcon('night_of_the_ritual', size, color);
+      case 'zau_nyctophobia': return this.agesIcon('nyctophobia', size, color);
+      case 'zau_paradox': return this.agesIcon('paradox', size, color);
+      case 'zau_shifting_reality': return this.agesIcon('shifting_reality', size, color);
+      case 'zau_thugs': return this.agesIcon('thugs', size, color);
+      case 'zau_unleashed_chaos': return this.agesIcon('unleashed_chaos', size, color);
+      case 'zau_unravelling_years': return this.agesIcon('unravelling_years', size, color);
+      case 'zau': return this.agesIcon('ages_unwound', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);
