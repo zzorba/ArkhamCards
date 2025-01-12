@@ -100,7 +100,8 @@ export type ScenarioDataEffect =
   | ScenarioDataInvestigatorEffect
   | ScenarioDataInvestigatorStatusEffect
   | ScenarioDataAddInvestigatorEffect
-  | ScenarioDataStatusEffect;
+  | ScenarioDataStatusEffect
+  | ScenarioDataPlayScenarioEffect;
 export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated" | "killed" | "insane";
 export type ScenarioStatus = "not_started" | "skipped" | "started" | "resolution" | "completed" | "unlocked";
 export type ChaosToken = ("+1" | "0" | "-1" | "-2" | "-3" | "-4" | "-5" | "-6" | "-7" | "-8") | SpecialChaosToken;
@@ -653,6 +654,11 @@ export interface ScenarioDataStatusEffect {
   setting: "scenario_status";
   status: ScenarioStatus;
   resolution?: string;
+}
+export interface ScenarioDataPlayScenarioEffect {
+  type: "scenario_data";
+  setting: "play_scenario_step_id";
+  step_id: string;
 }
 export interface AddRemoveChaosTokenEffect {
   type: "add_chaos_token" | "remove_chaos_token";
