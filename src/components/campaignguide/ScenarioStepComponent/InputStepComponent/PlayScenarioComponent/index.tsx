@@ -7,7 +7,7 @@ import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { PlayScenarioInput } from '@data/scenario/types';
-import { PlayingScenarioBranch, PLAY_SCENARIO_STEP_ID } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import { CampaignId } from '@actions/types';
@@ -23,6 +23,9 @@ interface Props {
 }
 
 export default function PlayScenarioComponent({ componentId, campaignId, id, input }: Props) {
+  const iteration = useMemo(() => {
+    return id.split('#')[1];
+  }, [id]);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
   const { colors, typography } = useContext(StyleContext);
@@ -77,7 +80,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
 
   return (
     <>
-      { (id === PLAY_SCENARIO_STEP_ID) && (
+      { !iteration && (
         <SetupStepWrapper>
           <CampaignGuideTextComponent
             text={t`Start playing the scenario now.`}

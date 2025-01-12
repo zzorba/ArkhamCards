@@ -668,6 +668,7 @@ export function getFixedStep(
     case DUMMY_END_SCENARIO_STEP_ID:
       return dummyEndScenarioStep;
     case CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID: {
+      const stepId = campaignLog.currentPlayScenarioStepId();
       const step: BranchStep = {
         id: CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID,
         hidden: true,
@@ -682,7 +683,7 @@ export function getFixedStep(
             },
             {
               boolCondition: false,
-              steps: [iteration !== undefined ? `${PLAY_SCENARIO_STEP_ID}#${iteration}` : PLAY_SCENARIO_STEP_ID],
+              steps: [iteration !== undefined ? `${stepId}#${iteration}` : stepId],
             },
           ],
         },

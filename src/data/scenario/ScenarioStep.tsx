@@ -673,7 +673,6 @@ export default class ScenarioStep {
       }
       case 'play_scenario': {
         const choice = scenarioState.choice(step.id);
-        const base_step_id = step.id.split('#')[0];
         if (choice === undefined) {
           return undefined;
         }
@@ -687,7 +686,7 @@ export default class ScenarioStep {
               step.id,
               [
                 `${fixedStep}#${nextIteration}`,
-                `${base_step_id}#${nextIteration}`,
+                `${CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [],
@@ -770,7 +769,7 @@ export default class ScenarioStep {
                     step.id,
                     [
                       ...choiceSteps,
-                      `${base_step_id}#${nextIteration}`,
+                      `${CHECK_CONTINUE_PLAY_SCENARIO_STEP_ID}#${nextIteration}`,
                       ...this.remainingStepIds,
                     ],
                     [

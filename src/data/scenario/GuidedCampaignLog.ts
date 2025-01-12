@@ -61,6 +61,7 @@ import { LatestDecks } from '@data/scenario';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import {
   INVESTIGATOR_PARTNER_CAMPAIGN_LOG_ID_PREFIX,
+  PLAY_SCENARIO_STEP_ID,
   SELECTED_PARTNERS_CAMPAIGN_LOG_ID,
 } from './fixedSteps';
 
@@ -132,6 +133,7 @@ interface KeyStatus {
 interface ScenarioData {
   resolution?: string;
   leadInvestigator?: string;
+  playScenarioStepId?: string;
   playingScenario?: PlayingScenarioItem[];
   investigatorStatus: {
     [code: string]: InvestigatorStatus;
@@ -661,6 +663,16 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       throw new Error('investigatorResolutionStatus called before decision');
     }
     return scenario.investigatorStatus;
+  }
+
+  currentPlayScenarioStepId(): string {
+    if (!this.scenarioId) {
+      return PLAY_SCENARIO_STEP_ID;
+    }
+    const scenario = this.scenarioData[this.scenarioId] || {
+      investigatorStatus: {},
+    };
+    return scenario.playScenarioStepId ?? PLAY_SCENARIO_STEP_ID;
   }
 
   scenarioStatus(scenarioId: string): ScenarioStatus {
@@ -1683,6 +1695,11 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     const scenario = this.scenarioData[scenarioId] || {
       investigatorStatus: {},
     };
+    if (effect.setting === 'play_scenario_step_id') {
+      scenario.playScenarioStepId = effect.step_id;
+      return;
+    }
+
 
     if (effect.setting === 'add_investigator') {
       if (effect.investigator !== '$fixed_investigator') {
