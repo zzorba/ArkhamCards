@@ -355,6 +355,12 @@ export const getAllRealPacks = createSelector(
           name: t`Against the Wendigo`,
           position: 13,
         },
+        {
+          code: 'zau',
+          cycle_code: 'fan',
+          name: t`Ages Unwound`,
+          position: 14,
+        },
       ], (p): Pack => {
         return {
           id: p.code,

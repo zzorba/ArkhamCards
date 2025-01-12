@@ -35,6 +35,7 @@ import {
   RTTIC,
   FHV,
   OZ,
+  AGES_UNWOUND,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
@@ -45,11 +46,13 @@ import { Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
 const authors = {
   [DARK_MATTER]: 'Axolotl',
   [ALICE_IN_WONDERLAND]: 'The Beard',
+  [OZ]: 'The Beard',
   [CROWN_OF_EGIL]: 'The Mad Juggler',
   [CALL_OF_THE_PLAGUEBEARER]: 'Walker Graves',
   [CYCLOPEAN_FOUNDATIONS]: 'The Beard',
   [HEART_OF_DARKNESS]: 'Vinn Quest',
   [RTTIC]: 'DerBK',
+  [AGES_UNWOUND]: 'Olivia Juliet',
 }
 
 export function campaignDescription(packCode: CampaignCycleCode): string | undefined {
@@ -64,10 +67,12 @@ export function campaignDescription(packCode: CampaignCycleCode): string | undef
       return t`Two-part campaign variant`;
     case DARK_MATTER:
     case ALICE_IN_WONDERLAND:
+    case OZ:
     case CROWN_OF_EGIL:
     case CALL_OF_THE_PLAGUEBEARER:
     case CYCLOPEAN_FOUNDATIONS:
     case HEART_OF_DARKNESS:
+    case AGES_UNWOUND:
     case RTTIC:
       const author = authors[packCode];
       return t`Fan-made campaign by ${author}`;
@@ -127,8 +132,9 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case CALL_OF_THE_PLAGUEBEARER: return t`Call of the Plaguebearer`;
     case CYCLOPEAN_FOUNDATIONS: return t`Cyclopean Foundations`;
     case HEART_OF_DARKNESS: return t`Heart of Darkness`;
-    case RTTIC: return t`The (Unofficial) Return to the Innsmouth Conspiracy`
+    case RTTIC: return t`The (Unofficial) Return to the Innsmouth Conspiracy`;
     case OZ: return t`The Colour Out of Oz`;
+    case AGES_UNWOUND: return t`Ages Unwound`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -461,6 +467,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
         { name: t`Lucid Nightmare`, code: 'Lucid Nightmare', pack_code: 'zaw' },
         { name: t`Epilogue`, code: 'aw_epilogue', pack_code: 'zaw', interlude: true },
       ];
+    case AGES_UNWOUND:
     case CROWN_OF_EGIL:
     case CALL_OF_THE_PLAGUEBEARER:
     case TDE:
@@ -501,6 +508,7 @@ export function campaignNames() {
     fhv: t`The Feast of Hemlock Vale`,
     gob: t`Guardians of the Abyss`,
     fof: t`Fortune and Folly`,
+    zau: t`Ages Unwound`,
     zdm: t`Dark Matter`,
     zaw: t`Alice in Wonderland`,
     zoz: t`The Colour Out of Oz`,
@@ -526,6 +534,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
       return colors.campaign.dwl;
     case PTC:
     case RTPTC:
+    case AGES_UNWOUND:
       return colors.campaign.ptc;
     case TFA:
     case RTTFA:
@@ -754,6 +763,14 @@ export function getCampaignLog(
           t`Order of Events`,
         ],
       };
+    case AGES_UNWOUND:
+      return {
+        sections: [
+          t`Timeline`,
+          t`Campaign Notes`,
+        ],
+        counts: [t`Strange Assistance`],
+      };
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -901,6 +918,12 @@ const OZ_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.HARD]: { '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, '-5': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 3, '-2': 2, '-3': 1, '-4': 1, '-5': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
 };
+const AGES_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 3, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 3, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 3, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+};
 
 
 function basicScenarioRewards(encounterCode: string) {
@@ -1000,6 +1023,8 @@ export function getChaosBag(
       return ZHOD_BAG[difficulty];
     case OZ:
       return OZ_BAG[difficulty];
+    case AGES_UNWOUND:
+      return AGES_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
