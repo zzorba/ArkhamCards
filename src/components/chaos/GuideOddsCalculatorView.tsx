@@ -22,7 +22,7 @@ export interface GuideOddsCalculatorProps {
 
 export default function GuideOddsCalculatorView({ campaignId, investigatorIds, chaosBag, scenarioId, standalone, processedCampaign }: GuideOddsCalculatorProps) {
   const chaosBagResults = useChaosBagResults(campaignId);
-  const [loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag, scenarioName, scenarioCode] = useGuideChaosBag({
+  const { loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag, scenarioName, scenarioIcon, scenarioCode } = useGuideChaosBag({
     campaignId,
     scenarioId,
     standalone,
@@ -37,6 +37,7 @@ export default function GuideOddsCalculatorView({ campaignId, investigatorIds, c
   const allInvestigators: Card[] = useMemo(() => {
     return flatMap(investigatorIds, code => (investigators && investigators[code]) || []);
   }, [investigators, investigatorIds]);
+  console.log(`ScenarioCode: ${scenarioIcon}`);
   if (!campaign || loading) {
     return <LoadingSpinner />
   }
@@ -48,6 +49,7 @@ export default function GuideOddsCalculatorView({ campaignId, investigatorIds, c
       allInvestigators={allInvestigators}
       scenarioCard={scenarioCard}
       scenarioCode={scenarioCode}
+      scenarioIcon={scenarioIcon}
       scenarioName={scenarioName}
       scenarioCardText={scenarioCardText}
       difficulty={difficulty}

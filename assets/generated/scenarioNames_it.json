@@ -24,6 +24,18 @@
     "name": "Le Mille Forme dell'Orrore"
   },
   {
+    "id": "a_world_torn_down",
+    "name": "A World Torn Down"
+  },
+  {
+    "id": "a_world_torn_down_again",
+    "name": "A World Torn Down, Again"
+  },
+  {
+    "id": "a_year_to_plan",
+    "name": "A Year to Plan"
+  },
+  {
     "id": "across_dreadful_waters",
     "name": "Across Dreadful Waters"
   },
@@ -42,6 +54,10 @@
   {
     "id": "all_or_nothing",
     "name": "Tutto o Niente"
+  },
+  {
+    "id": "an_unknown_benefactor",
+    "name": "An Unknown Benefactor"
   },
   {
     "id": "anchorage",
@@ -70,6 +86,14 @@
   {
     "id": "at_deaths_doorstep",
     "name": "Sulla Soglia della Morte"
+  },
+  {
+    "id": "au_epilogue",
+    "name": "Epilogo"
+  },
+  {
+    "id": "au_prologue",
+    "name": "Prologo"
   },
   {
     "id": "aw_epilogue",
@@ -205,11 +229,11 @@
   },
   {
     "id": "dawn_of_the_final_day",
-    "name": "Dawn of the Final Day"
+    "name": "L'Alba dell'Ultimo Giorno"
   },
   {
     "id": "dawn_of_the_second_day",
-    "name": "Dawn of the Second Day"
+    "name": "L'Alba del Secondo Giorno"
   },
   {
     "id": "dead_by_dawn",
@@ -321,7 +345,7 @@
   },
   {
     "id": "fate_of_the_vale",
-    "name": "Fate of the Vale"
+    "name": "Il Destino della Valle"
   },
   {
     "id": "fhv_epilogue",
@@ -329,7 +353,7 @@
   },
   {
     "id": "fhv_prologue",
-    "name": "Welcome to Hemlock Vale!"
+    "name": "Benvenuti a Hemlock Vale!"
   },
   {
     "id": "final_night",
@@ -389,7 +413,7 @@
   },
   {
     "id": "hemlock_house",
-    "name": "Hemlock House"
+    "name": "La Casa degli Hemlock"
   },
   {
     "id": "hidden_truths",
@@ -562,6 +586,10 @@
   {
     "id": "nairobi",
     "name": "Congegno Infernale"
+  },
+  {
+    "id": "night_of_fire",
+    "name": "Night of Fire"
   },
   {
     "id": "night_on_the_town",
@@ -993,11 +1021,11 @@
   },
   {
     "id": "the_final_evening",
-    "name": "The Final Evening"
+    "name": "L'Ultima Sera"
   },
   {
     "id": "the_first_evening",
-    "name": "The First Evening"
+    "name": "La Prima Sera"
   },
   {
     "id": "the_foundation",
@@ -1045,11 +1073,11 @@
   },
   {
     "id": "the_longest_night",
-    "name": "The Longest Night"
+    "name": "La Notte Più Lunga"
   },
   {
     "id": "the_lost_sister",
-    "name": "The Lost Sister"
+    "name": "La Sorella Perduta"
   },
   {
     "id": "the_machine_in_yellow",
@@ -1066,6 +1094,10 @@
   {
     "id": "the_miskatonic_museum",
     "name": "Il Museo della Miskatonic"
+  },
+  {
+    "id": "the_myriad_gentleman",
+    "name": "The Myriad Gentleman"
   },
   {
     "id": "the_nights_usurper",
@@ -1101,7 +1133,7 @@
   },
   {
     "id": "the_second_evening",
-    "name": "The Second Evening"
+    "name": "La Seconda Sera"
   },
   {
     "id": "the_secret_name",
@@ -1109,7 +1141,7 @@
   },
   {
     "id": "the_silent_heath",
-    "name": "The Silent Heath"
+    "name": "La Brughiera Silente"
   },
   {
     "id": "the_symphony_of_erich_zann",
@@ -1125,11 +1157,11 @@
   },
   {
     "id": "the_thing_in_the_depths",
-    "name": "The Thing in the Depths"
+    "name": "L'Essere dagli Abissi"
   },
   {
     "id": "the_twisted_hollow",
-    "name": "The Twisted Hollow"
+    "name": "La Cavità Contorta"
   },
   {
     "id": "the_unspeakable_oath",
@@ -1162,6 +1194,10 @@
   {
     "id": "tic_epilogue",
     "name": "Epilogo"
+  },
+  {
+    "id": "time_runs_out",
+    "name": "Time Runs Out"
   },
   {
     "id": "to_the_forbidden_peaks",
@@ -1228,6 +1264,10 @@
     "name": "Unscrupulous Investments"
   },
   {
+    "id": "unstuck",
+    "name": "Unstuck"
+  },
+  {
     "id": "waking_nightmare",
     "name": "Incubo a Occhi Aperti"
   },
@@ -1261,7 +1301,7 @@
   },
   {
     "id": "written_in_rock",
-    "name": "Written in Rock"
+    "name": "Inciso nella Pietra"
   },
   {
     "id": "ybor_city",

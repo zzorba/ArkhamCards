@@ -71,6 +71,7 @@ export default function OddsCalculatorView({ campaignId, investigatorIds }: Odds
       difficulty={difficulty}
       scenarioCard={scenarioCard}
       scenarioCode={encounterCode}
+      scenarioIcon={encounterCode}
       scenarioCardText={scenarioCardText}
       scenarioName={currentScenario?.name}
       chaosBagResults={chaosBagResults}

@@ -16,15 +16,16 @@ export interface Props {
   difficultyOverride: Campaign_Difficulty_Enum | undefined;
 }
 
-export default function useGuideChaosBag({ campaignId, difficultyOverride, scenarioId, standalone, processedCampaign: initialProcessedCampaign }: Props): [
-  boolean,
-  Card | undefined,
-  string | undefined,
-  CampaignDifficulty | undefined,
-  ChaosBag | undefined,
-  string | undefined,
-  string | undefined,
-] {
+export default function useGuideChaosBag({ campaignId, difficultyOverride, scenarioId, standalone, processedCampaign: initialProcessedCampaign }: Props): {
+  loading: boolean;
+  scenarioCard: Card | undefined;
+  scenarioCardText:string | undefined;
+  difficulty: CampaignDifficulty | undefined;
+  liveChaosBag: ChaosBag | undefined;
+  scenarioName: string | undefined;
+  scenarioIcon: string | undefined;
+  scenarioCode: string | undefined;
+} {
   const [, scenarioContext, processedCampaign] = useScenarioGuideContext(campaignId, scenarioId, false, standalone, initialProcessedCampaign);
   const processedScenario = scenarioContext?.processedScenario;
   const liveChaosBag = processedCampaign?.campaignLog.chaosBag;
@@ -62,8 +63,10 @@ export default function useGuideChaosBag({ campaignId, difficultyOverride, scena
     return rest.join('\n');
   }, [campaignScenarioText, scenarioCard, difficulty]);
 
-  return [loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag,
-    processedScenario?.scenarioGuide.scenarioName(),
-    processedScenario?.scenarioGuide.scenarioIcon(),
-  ];
+  return {
+    loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag,
+    scenarioName: processedScenario?.scenarioGuide.scenarioName(),
+    scenarioIcon: processedScenario?.scenarioGuide.scenarioIcon(),
+    scenarioCode: processedScenario?.scenarioGuide.scenarioId(),
+  };
 }

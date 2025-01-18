@@ -7111,6 +7111,249 @@
     "supplies": []
   },
   {
+    "campaignId": "zau",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "late_return",
+            "masculine_text": "#name# returned to Arkham late.",
+            "feminine_text": "#name# returned to Arkham late.",
+            "nonbinary_text": "#name# returned to Arkham late."
+          },
+          {
+            "id": "marked",
+            "masculine_text": "#name# still bears Aforgomon's mark.",
+            "feminine_text": "#name# still bears Aforgomon's mark.",
+            "nonbinary_text": "#name# still bears Aforgomon's mark."
+          },
+          {
+            "id": "waning",
+            "masculine_text": "#name#'s existence is waning.",
+            "feminine_text": "#name#'s existence is waning.",
+            "nonbinary_text": "#name#'s existence is waning."
+          },
+          {
+            "id": "advanced_the_schemes_of_the_silver_twilight_lodge",
+            "text": "you have advanced the schemes of the Silver Twilight Lodge."
+          },
+          {
+            "id": "all_times_are_one",
+            "text": "all times are one."
+          },
+          {
+            "id": "bound_aforgomon_in_a_prison_of_time",
+            "text": "the investigators bound Aforgomon in a prison of time."
+          },
+          {
+            "id": "escaped_night_of_fire",
+            "text": "the investigators sescaped the night of fire."
+          },
+          {
+            "id": "fled_manor",
+            "text": "the investigators fled the Gentleman's manor."
+          },
+          {
+            "id": "investigators_eliminated_the_high_priest",
+            "text": "the investigators eliminated the high priest."
+          },
+          {
+            "id": "learnt_of_ritual",
+            "text": "the investigators learnt of the Myriad's ritual."
+          },
+          {
+            "id": "myriad_harnessed_the_power_of_another_realm",
+            "text": "the Myriad harnessed the power of another realm."
+          },
+          {
+            "id": "myriad_raised_a_powerful_warding",
+            "text": "the Myriad raised a powerful warding."
+          },
+          {
+            "id": "myriad_recruited_a_cruel_sorcerer",
+            "text": "the Myriad recruited a cruel sorcerer."
+          },
+          {
+            "id": "myriad_solved_the_riddle_of_the_sphinx",
+            "text": "the Myriad solved the riddle of the sphinx."
+          },
+          {
+            "id": "myriad_took_control_of_a_color_out_of_space",
+            "text": "the Myriad took control of a color out of space."
+          },
+          {
+            "id": "myriad_weaved_a_dread_curse",
+            "text": "the Myriad weaved a dread curse."
+          },
+          {
+            "id": "new_quarry",
+            "text": "your hunters found a new quarry."
+          },
+          {
+            "id": "offer_accepted",
+            "text": "the investigators accepted an offer of help."
+          },
+          {
+            "id": "offer_declined",
+            "text": "the investigators declined an offer of help."
+          },
+          {
+            "id": "ritual_is_nigh",
+            "text": "the ritual is nigh."
+          },
+          {
+            "id": "slew_observer",
+            "text": "the investigators slew their strange observer."
+          },
+          {
+            "id": "solved_the_riddle_of_the_sphinx",
+            "text": "you solved the riddle of the sphinx."
+          },
+          {
+            "id": "survived_night_of_fire",
+            "text": "the investigators survived the night of fire."
+          },
+          {
+            "id": "timeline_was_weakened",
+            "text": "the timeline was weakened."
+          },
+          {
+            "id": "took_tea_with_the_ruler_of_a_strange_dimension",
+            "text": "You took tea with the ruler of a strange dimension."
+          },
+          {
+            "id": "violated_causality",
+            "text": "the investigators violated causality."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "final_preparations",
+            "text": "dummy"
+          },
+          {
+            "id": "first_circle_check",
+            "text": "dummy"
+          },
+          {
+            "id": "future_circle",
+            "text": "future circle is in play"
+          },
+          {
+            "id": "helping_yourself_complete",
+            "text": "dummy"
+          },
+          {
+            "id": "marked",
+            "text": "one or more investigators still bear Aforgomon's mark."
+          },
+          {
+            "id": "past_circle",
+            "text": "past circle is in play"
+          },
+          {
+            "id": "somebody_disappeared_unexpectedly",
+            "text": "dummy"
+          },
+          {
+            "id": "strange_portal_complete",
+            "text": "dummy"
+          },
+          {
+            "id": "timeline_act_3",
+            "text": "dummy"
+          },
+          {
+            "id": "tunguska_complete",
+            "text": "dummy"
+          },
+          {
+            "id": "unleashed_chaos_check",
+            "text": "dummy"
+          },
+          {
+            "id": "waning",
+            "text": "one or more investigators' existence is waning."
+          }
+        ]
+      },
+      {
+        "section": "timeline",
+        "entries": [
+          {
+            "id": "assassin_disappeared_unexpectedly",
+            "text": "Myriad Assassin disappeared unexpectedly."
+          },
+          {
+            "id": "boundary_broken",
+            "text": "the boundary is broken (#X#, #Y#)."
+          },
+          {
+            "id": "broke_first_circle",
+            "text": "the investigators broke the first circle (#X#, #Y#)."
+          },
+          {
+            "id": "chronophage_disappeared_unexpectedly",
+            "text": "Chronophage disappeared unexpectedly."
+          },
+          {
+            "id": "dispelled_ward",
+            "text": "the investigators dispelled the ward (#X#, #Y#)."
+          },
+          {
+            "id": "fell_to_the_myriad",
+            "text": "the investigators fell to the Myriad (#X#, #Y#)."
+          },
+          {
+            "id": "gentleman_disappeared_unexpectedly",
+            "text": "the Myriad Gentleman disappeared unexpectedly."
+          },
+          {
+            "id": "investigators_stepped_into_future",
+            "text": "the investigators stepped into the future."
+          },
+          {
+            "id": "investigators_stepped_into_past",
+            "text": "the investigators stepped into the past."
+          },
+          {
+            "id": "irregulars_disappeared_unexpectedly",
+            "text": "Irregulars disappeared unexpectedly."
+          },
+          {
+            "id": "put_down_hound",
+            "text": "the investigators put down the Hound of Unmaking (#X#, #Y#)."
+          },
+          {
+            "id": "repelled_hound",
+            "text": "the investigators repelled the Hound of Unmaking (#X#, #Y#)."
+          },
+          {
+            "id": "snuck_in_back",
+            "text": "the investigators snuck into the back of the school."
+          },
+          {
+            "id": "thugs_disappeared_unexpectedly",
+            "text": "Hired Thugs disappeared unexpectedly."
+          },
+          {
+            "id": "unleashed_chaos",
+            "text": "the investigators unleashed chaos (#X#, #Y#)."
+          },
+          {
+            "id": "used_front_door",
+            "text": "the investigators used the school's front door."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zaw",
     "sections": [
       {

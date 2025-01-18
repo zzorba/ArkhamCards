@@ -52,6 +52,7 @@ interface Props {
   cycleScenarios?: Scenario[];
   scenarioName: string | undefined;
   scenarioCard: Card | undefined;
+  scenarioIcon: string | undefined;
   scenarioCode: string | undefined;
   scenarioCardText: string | undefined;
   difficulty: CampaignDifficulty | undefined;
@@ -841,6 +842,7 @@ export default function OddsCalculatorComponent({
   scenarioName,
   scenarioCard,
   scenarioCardText,
+  scenarioIcon,
   scenarioCode,
   difficulty: campaignDifficulty,
   chaosBagResults,
@@ -898,11 +900,11 @@ export default function OddsCalculatorComponent({
 
   const items: Item<Scenario | undefined>[] = useMemo(() => {
     return [
-      ...(scenarioName && scenarioCard && scenarioCode ? [
+      ...(scenarioName && scenarioCard && scenarioIcon ? [
         {
           title: scenarioName,
           value: undefined,
-          iconNode: <EncounterIcon encounter_code={scenarioCode} size={24} color={colors.M} />,
+          iconNode: <EncounterIcon encounter_code={scenarioIcon} size={24} color={colors.M} />,
         },
       ] : []),
       ...map(filter(
@@ -922,7 +924,7 @@ export default function OddsCalculatorComponent({
         };
       }),
     ];
-  }, [colors, cycleScenarios, standaloneScenarios, scenarioCode, scenarioCard, scenarioName]);
+  }, [colors, cycleScenarios, standaloneScenarios, scenarioIcon, scenarioCode, scenarioCard, scenarioName]);
   const name = currentScenario?.name || scenarioName;
   const code = currentScenario?.code || scenarioCode;
 

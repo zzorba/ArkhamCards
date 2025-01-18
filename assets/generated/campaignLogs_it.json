@@ -1070,31 +1070,31 @@
         "entries": [
           {
             "id": "akwan_shoreline",
-            "text": "Akwan Shoreline"
+            "text": "Litorale di Akwan"
           },
           {
             "id": "eastwick_bog",
-            "text": "Eastwick Bog"
+            "text": "Pantano Eastwick"
           },
           {
             "id": "hemlock_harbor",
-            "text": "Hemlock Harbor"
+            "text": "Porto Hemlock"
           },
           {
             "id": "north_point_mine",
-            "text": "North Point Mine"
+            "text": "Miniera di Punta Nord"
           },
           {
             "id": "pearl_ridge",
-            "text": "Pearl Ridge"
+            "text": "Crinale Pearl"
           },
           {
             "id": "southern_fields",
-            "text": "Souther Fields"
+            "text": "Campi Meridionali"
           },
           {
             "id": "western_woods",
-            "text": "Western Woods"
+            "text": "Boschi Occidentali"
           }
         ]
       },
@@ -1103,161 +1103,161 @@
         "entries": [
           {
             "id": "eat",
-            "masculine_text": "#name# finished his meal.",
-            "feminine_text": "#name# finished her meal.",
-            "nonbinary_text": "#name# finished their meal."
+            "masculine_text": "#name# ha terminato il suo pasto.",
+            "feminine_text": "#name# ha terminato il suo pasto.",
+            "nonbinary_text": "#name# ha terminato il suo pasto."
           },
           {
             "id": "all_the_captives_were_lost",
-            "text": "all the captives were lost."
+            "text": "tutti i prigionieri sono morti."
           },
           {
             "id": "barely_survived",
-            "text": "investigators barely survived the Feast of Hemlock Vale."
+            "text": "siete sopravvissuti a stento alla Festa di Hemlock Vale."
           },
           {
             "id": "became_the_true_feast_of_hemlock_vale",
-            "text": "the investigators became the true Feast of Hemlock Vale."
+            "text": "siete diventati l'essenza stessa della Festa di Hemlock Vale."
           },
           {
             "id": "believed",
-            "text": "the investigators believed."
+            "text": "siete dei credenti."
           },
           {
             "id": "bertie_had_an_epiphany",
-            "text": "Bertie had an epiphany."
+            "text": "Bertie ha avuto un'epifania."
           },
           {
             "id": "bertie_perished",
-            "text": "Bertie perished."
+            "text": "Bertie è morto."
           },
           {
             "id": "bertie_was_lost_in_the_woods",
-            "text": "Bertie was lost in the woods."
+            "text": "Bertie si è smarrito nei boschi."
           },
           {
             "id": "bertie_was_rescued",
-            "text": "Bertie was rescued."
+            "text": "Bertie è stato ritrovato."
           },
           {
             "id": "captives_were_saved",
-            "text": "the captives were saved."
+            "text": "i prigionieri sono stati salvati."
           },
           {
             "id": "chelydran_hybrid_devoured",
-            "text": "the Chelydran Hybrid was devoured."
+            "text": "l'ibrido Chelidride è stato divorato."
           },
           {
             "id": "chelydran_hybrid_lived",
-            "text": "the Chelydran Hybrid lived."
+            "text": "l'ibrido Chelidride è vivo."
           },
           {
             "id": "chelydran_hybrid_perished",
-            "text": "the Chelydran Hybrid perished."
+            "text": "l'ibrido Chelidride è morto."
           },
           {
             "id": "dr_marquez_has_a_hunch",
-            "text": "Dr. Marquez has a hunch."
+            "text": "La dottoressa Marquez ha un presentimento."
           },
           {
             "id": "dr_marquez_has_a_plan",
-            "text": "Dr. Marquez has a plan."
+            "text": "Dott.ssa Marquez ha un piano."
           },
           {
             "id": "dr_marquez_sacrificed_herself_for_the_vale",
-            "text": "Dr. Marquez sacrificed herself for the Vale."
+            "text": "La dottoressa Marquez si è sacrificata per la valle."
           },
           {
             "id": "elizabeth_peters_was_saved",
-            "text": "Elizabeth Peters was saved."
+            "text": "Elizabeth Peters è stata salvata."
           },
           {
             "id": "faced_the_night_alone",
-            "text": "the investigators faced the longest night alone."
+            "text": "avete affrontato la notte più lunga da soli."
           },
           {
             "id": "helen_peters_joined_the_survey",
-            "text": "Helen Peters joined the survey."
+            "text": "Helen Peters si è unita alla squadra di ricerca."
           },
           {
             "id": "helen_shared_a_dance",
-            "text": "Helen shared a dance."
+            "text": "Helen ha accettato di ballare."
           },
           {
             "id": "interrupted_the_feast",
-            "text": "the investigators interrupted the Feast."
+            "text": "avete interrotto la Festa."
           },
           {
             "id": "investigators_sacrificed_themselves_for_the_vale",
-            "text": "the investigators sacrificed themselves for the Vale."
+            "text": "vi siete sacrificati per la valle."
           },
           {
             "id": "laid_the_pearl_family_to_rest",
-            "text": "the investigators laid the Pearl Family to rest."
+            "text": "la famiglia Pearl riposa in pace."
           },
           {
             "id": "learned_their_place",
-            "text": "the investigators learned their place."
+            "text": "avete capito qual è il vostro ruolo."
           },
           {
             "id": "lied_to_mother_rachel",
-            "text": "the investigators lied to Mother Rachel."
+            "text": "avete mentito a Madre Rachel."
           },
           {
             "id": "lost_the_path",
-            "text": "the investigators lost the path."
+            "text": "vi siete persi."
           },
           {
             "id": "madame_pearls_diary_was_recovered",
-            "text": "Madame Pearl’s diary was recovered."
+            "text": "è stato rinvenuto il diario di Madame Pearl."
           },
           {
             "id": "many_captives_were_lost",
-            "text": "many captives were lost."
+            "text": "molti prigionieri sono morti."
           },
           {
             "id": "mother_rachel_showed_the_way",
-            "text": "Mother Rachel showed the way."
+            "text": "Madre Rachel vi ha mostrato la via."
           },
           {
             "id": "remains_were_partially_recovered",
-            "text": "the remains were partially recovered."
+            "text": "sono stati recuperati solo alcuni resti."
           },
           {
             "id": "river_shared_their_ambitions",
-            "text": "River shared their ambitions."
+            "text": "River ha condiviso le sue ambizioni."
           },
           {
             "id": "survived_the_horrors_in_the_rock",
-            "text": "the investigators survived the horrors in the rock."
+            "text": "siete sopravvissuti agli orrori tra le rocce."
           },
           {
             "id": "the_bear_was_wounded",
-            "text": "the bear was wounded."
+            "text": "l'orso è stato ferito."
           },
           {
             "id": "the_hemlocks_made_a_truce",
-            "text": "the Hemlocks made a truce."
+            "text": "gli Hemlock hanno siglato una tregua."
           },
           {
             "id": "the_peters_family_was_reunited",
-            "text": "The Peters family was reunited."
+            "text": "La famiglia Peters è stata riunita."
           },
           {
             "id": "the_vale_burned",
-            "text": "the Vale burned."
+            "text": "la valle è bruciata."
           },
           {
             "id": "the_vale_is_full_of_fireworks",
-            "text": "The Vale is full of fireworks."
+            "text": "La valle è disseminata di fuochi d'artificio."
           },
           {
             "id": "the_vale_was_saved",
-            "text": "the Vale was saved."
+            "text": "avete salvato la valle."
           },
           {
             "id": "thing_in_the_depths_was_defeated",
-            "text": "The Thing in the Depths was defeated."
+            "text": "l'Essere dagli Abissi è stato sconfitto."
           }
         ]
       },
@@ -1295,31 +1295,31 @@
         "entries": [
           {
             "id": "gideon_finished_the_tale_of_the_annabelle_lee",
-            "text": "Gideon finished the tale of the Annabelle Lee."
+            "text": "Gideon ha finito la storia della Annabelle Lee."
           },
           {
             "id": "gideon_found_his_treasure",
-            "text": "Gideon found his treasure."
+            "text": "Gideon ha trovato il suo tesoro."
           },
           {
             "id": "gideon_sacrificed_himself",
-            "text": "Gideon Mizrah sacrificed himself for the investigators."
+            "text": "Gideon Mizrah ha sacrificato se stesso per gli investigatori."
           },
           {
             "id": "gideon_shared_a_dance",
-            "text": "Gideon shared a dance."
+            "text": "Gideon ha accettato di ballare."
           },
           {
             "id": "gideon_stood_by_you",
-            "text": "Gideon stood by you."
+            "text": "Gideon vi ha coperto le spalle."
           },
           {
             "id": "gideon_told_the_story_of_captain_hemlock",
-            "text": "Gideon told the story of Captain Hemlock."
+            "text": "Gideon ha raccontato la storia del capitano Hemlock."
           },
           {
             "id": "gideon_told_the_tale_of_the_annabelle_lee",
-            "text": "Gideon told the tale of the Annabelle Lee."
+            "text": "Gideon ha raccontato la storia della Annabelle Lee."
           }
         ]
       },
@@ -2045,27 +2045,27 @@
         "entries": [
           {
             "id": "judith_sacrificed_himself",
-            "text": "Judith Park sacrificed herself for the investigators."
+            "text": "Judith Park ha sacrificato se stessa per gli investigatori."
           },
           {
             "id": "judith_saved_your_ass",
-            "text": "Judith saved your ass."
+            "text": "Judith vi ha salvato la pellaccia."
           },
           {
             "id": "judith_shared_a_dance",
-            "text": "Judith shared a dance."
+            "text": "Judith ha accettato di ballare."
           },
           {
             "id": "judith_shared_a_grudge",
-            "text": "Judith shared a grudge."
+            "text": "Judith ha condiviso un rancore."
           },
           {
             "id": "judith_stood_by_you",
-            "text": "Judith stood by you."
+            "text": "Judith vi ha coperto le spalle."
           },
           {
             "id": "you_backed_judith_up",
-            "text": "you backed Judith up."
+            "text": "avete aiutato Judith."
           }
         ]
       },
@@ -2074,35 +2074,35 @@
         "entries": [
           {
             "id": "leah_and_simeon_were_reunited",
-            "text": "Leah and Simeon were reunited."
+            "text": "Leah e Simeon si sono riuniti."
           },
           {
             "id": "leah_is_searching_for_simeon",
-            "text": "Leah is searching for Simeon."
+            "text": "Leah sta cercando Simeon."
           },
           {
             "id": "leah_sacrificed_himself",
-            "text": "Leah Atwood sacrificed herself for the investigators."
+            "text": "Leah Atwood ha sacrificato se stessa per gli investigatori."
           },
           {
             "id": "leah_saw_something_in_the_mine",
-            "text": "Leah saw something in the mine."
+            "text": "Leah ha visto qualcosa nella miniera."
           },
           {
             "id": "leah_shared_a_dance",
-            "text": "Leah shared a dance."
+            "text": "Leah ha accettato di ballare."
           },
           {
             "id": "leah_shared_her_frustrations",
-            "text": "Leah shared her frustrations."
+            "text": "Leah ha condiviso la sua frustrazione."
           },
           {
             "id": "leah_stood_by_you",
-            "text": "Leah stood by you."
+            "text": "Leah vi ha coperto le spalle."
           },
           {
             "id": "searched_the_pearl_ruins",
-            "text": "Leah searched the Pearl Ruins."
+            "text": "Leah ha esplorato le rovine dei Pearl."
           }
         ]
       },
@@ -2111,11 +2111,11 @@
         "entries": [
           {
             "id": "mother_rachel_intervened",
-            "text": "Mother Rachel intervened."
+            "text": "Madre Rachel è intervenuta."
           },
           {
             "id": "mother_rachel_shared_her_doubts",
-            "text": "Mother Rachel shared her doubts."
+            "text": "Madre Rachel ha condiviso i propri dubbi."
           }
         ]
       },
@@ -2124,23 +2124,23 @@
         "entries": [
           {
             "id": "river_is_reclaiming_their_legacy",
-            "text": "River is reclaiming their legacy."
+            "text": "River sta reclamando la sua eredità."
           },
           {
             "id": "river_sacrificed_himself",
-            "text": "River Hawthorne sacrificed themself for the investigators."
+            "text": "River Hawthorne ha sacrificato se stessa per gli investigatori."
           },
           {
             "id": "river_shared_a_dance",
-            "text": "River shared a dance."
+            "text": "River ha accettato di ballare."
           },
           {
             "id": "river_stood_by_you",
-            "text": "River stood by you."
+            "text": "River vi ha coperto le spalle."
           },
           {
             "id": "scheme_is_in_motion",
-            "text": "the scheme is in motion."
+            "text": "la congiura è in atto."
           }
         ]
       },
@@ -2149,35 +2149,35 @@
         "entries": [
           {
             "id": "plan_is_underway",
-            "text": "the plan is underway."
+            "text": "il piano è in moto."
           },
           {
             "id": "plan_is_underway_count",
-            "text": "the plan is underway: #X#"
+            "text": "il piano è in moto: #X#"
           },
           {
             "id": "simeon_disappeared",
-            "text": "Simeon disappeared."
+            "text": "Simeon è scomparso."
           },
           {
             "id": "simeon_hatched_a_plan",
-            "text": "Simeon hatched a plan."
+            "text": "Simeon ha escogitato un piano."
           },
           {
             "id": "simeon_sacrificed_himself",
-            "text": "Simeon Atwood sacrificed himself for the investigators."
+            "text": "Simeon Atwood ha sacrificato se stesso per gli investigatori."
           },
           {
             "id": "simeon_shared_a_dance",
-            "text": "Simeon shared a dance."
+            "text": "Simeon ha accettato di ballare."
           },
           {
             "id": "simeon_stood_by_you",
-            "text": "Simeon stood by you."
+            "text": "Simeon vi ha coperto le spalle."
           },
           {
             "id": "simeon_survived",
-            "text": "Simeon survived."
+            "text": "Simeon è sopravvissuto."
           }
         ]
       },
@@ -2186,31 +2186,31 @@
         "entries": [
           {
             "id": "theo_distracted_the_bear",
-            "text": "Theo Distracted the Bear."
+            "text": "Theo ha distratto l'orso."
           },
           {
             "id": "theo_is_having_second_thoughts",
-            "text": "Theo is having second thoughts."
+            "text": "Theo sta avendo dei ripensamenti."
           },
           {
             "id": "theo_reconciled_with_helen",
-            "text": "Theo reconciled with Helen."
+            "text": "Theo ha fatto pace con Helen."
           },
           {
             "id": "theo_rejected_his_family",
-            "text": "Theo rejected his family."
+            "text": "Theo ha rinnegato la sua famiglia."
           },
           {
             "id": "theo_sacrificed_himself",
-            "text": "Theo Peters sacrificed himself for the investigators."
+            "text": "Theo Peters ha sacrificato se stesso per gli investigatori."
           },
           {
             "id": "theo_shared_a_dance",
-            "text": "Theo shared a dance."
+            "text": "Theo ha accettato di ballare."
           },
           {
             "id": "theo_stood_by_you",
-            "text": "Theo stood by you."
+            "text": "Theo vi ha coperto le spalle."
           }
         ]
       },
@@ -2219,27 +2219,27 @@
         "entries": [
           {
             "id": "william_is_resolved",
-            "text": "William is resolved."
+            "text": "William è determinato."
           },
           {
             "id": "william_sacrificed_himself",
-            "text": "William Hemlock sacrificed himself for the investigators."
+            "text": "William Hemlock ha sacrificato se stesso per gli investigatori."
           },
           {
             "id": "william_shared_a_dance",
-            "text": "William shared a dance."
+            "text": "William ha accettato di ballare."
           },
           {
             "id": "william_shared_his_legacy",
-            "text": "William shared his legacy."
+            "text": "William ha condiviso il suo retaggio."
           },
           {
             "id": "william_stood_by_you",
-            "text": "William stood by you."
+            "text": "William vi ha coperto le spalle."
           },
           {
             "id": "william_took_heart",
-            "text": "William took heart."
+            "text": "William si è fatto coraggio."
           }
         ]
       }
@@ -7096,6 +7096,249 @@
           {
             "id": "yay_votes",
             "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zau",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "late_return",
+            "masculine_text": "#name# returned to Arkham late.",
+            "feminine_text": "#name# returned to Arkham late.",
+            "nonbinary_text": "#name# returned to Arkham late."
+          },
+          {
+            "id": "marked",
+            "masculine_text": "#name# still bears Aforgomon's mark.",
+            "feminine_text": "#name# still bears Aforgomon's mark.",
+            "nonbinary_text": "#name# still bears Aforgomon's mark."
+          },
+          {
+            "id": "waning",
+            "masculine_text": "#name#'s existence is waning.",
+            "feminine_text": "#name#'s existence is waning.",
+            "nonbinary_text": "#name#'s existence is waning."
+          },
+          {
+            "id": "advanced_the_schemes_of_the_silver_twilight_lodge",
+            "text": "you have advanced the schemes of the Silver Twilight Lodge."
+          },
+          {
+            "id": "all_times_are_one",
+            "text": "all times are one."
+          },
+          {
+            "id": "bound_aforgomon_in_a_prison_of_time",
+            "text": "the investigators bound Aforgomon in a prison of time."
+          },
+          {
+            "id": "escaped_night_of_fire",
+            "text": "the investigators sescaped the night of fire."
+          },
+          {
+            "id": "fled_manor",
+            "text": "the investigators fled the Gentleman's manor."
+          },
+          {
+            "id": "investigators_eliminated_the_high_priest",
+            "text": "the investigators eliminated the high priest."
+          },
+          {
+            "id": "learnt_of_ritual",
+            "text": "the investigators learnt of the Myriad's ritual."
+          },
+          {
+            "id": "myriad_harnessed_the_power_of_another_realm",
+            "text": "the Myriad harnessed the power of another realm."
+          },
+          {
+            "id": "myriad_raised_a_powerful_warding",
+            "text": "the Myriad raised a powerful warding."
+          },
+          {
+            "id": "myriad_recruited_a_cruel_sorcerer",
+            "text": "the Myriad recruited a cruel sorcerer."
+          },
+          {
+            "id": "myriad_solved_the_riddle_of_the_sphinx",
+            "text": "the Myriad solved the riddle of the sphinx."
+          },
+          {
+            "id": "myriad_took_control_of_a_color_out_of_space",
+            "text": "the Myriad took control of a color out of space."
+          },
+          {
+            "id": "myriad_weaved_a_dread_curse",
+            "text": "the Myriad weaved a dread curse."
+          },
+          {
+            "id": "new_quarry",
+            "text": "your hunters found a new quarry."
+          },
+          {
+            "id": "offer_accepted",
+            "text": "the investigators accepted an offer of help."
+          },
+          {
+            "id": "offer_declined",
+            "text": "the investigators declined an offer of help."
+          },
+          {
+            "id": "ritual_is_nigh",
+            "text": "the ritual is nigh."
+          },
+          {
+            "id": "slew_observer",
+            "text": "the investigators slew their strange observer."
+          },
+          {
+            "id": "solved_the_riddle_of_the_sphinx",
+            "text": "you solved the riddle of the sphinx."
+          },
+          {
+            "id": "survived_night_of_fire",
+            "text": "the investigators survived the night of fire."
+          },
+          {
+            "id": "timeline_was_weakened",
+            "text": "the timeline was weakened."
+          },
+          {
+            "id": "took_tea_with_the_ruler_of_a_strange_dimension",
+            "text": "You took tea with the ruler of a strange dimension."
+          },
+          {
+            "id": "violated_causality",
+            "text": "the investigators violated causality."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "final_preparations",
+            "text": "dummy"
+          },
+          {
+            "id": "first_circle_check",
+            "text": "dummy"
+          },
+          {
+            "id": "future_circle",
+            "text": "future circle is in play"
+          },
+          {
+            "id": "helping_yourself_complete",
+            "text": "dummy"
+          },
+          {
+            "id": "marked",
+            "text": "one or more investigators still bear Aforgomon's mark."
+          },
+          {
+            "id": "past_circle",
+            "text": "past circle is in play"
+          },
+          {
+            "id": "somebody_disappeared_unexpectedly",
+            "text": "dummy"
+          },
+          {
+            "id": "strange_portal_complete",
+            "text": "dummy"
+          },
+          {
+            "id": "timeline_act_3",
+            "text": "dummy"
+          },
+          {
+            "id": "tunguska_complete",
+            "text": "dummy"
+          },
+          {
+            "id": "unleashed_chaos_check",
+            "text": "dummy"
+          },
+          {
+            "id": "waning",
+            "text": "one or more investigators' existence is waning."
+          }
+        ]
+      },
+      {
+        "section": "timeline",
+        "entries": [
+          {
+            "id": "assassin_disappeared_unexpectedly",
+            "text": "Myriad Assassin disappeared unexpectedly."
+          },
+          {
+            "id": "boundary_broken",
+            "text": "the boundary is broken (#X#, #Y#)."
+          },
+          {
+            "id": "broke_first_circle",
+            "text": "the investigators broke the first circle (#X#, #Y#)."
+          },
+          {
+            "id": "chronophage_disappeared_unexpectedly",
+            "text": "Chronophage disappeared unexpectedly."
+          },
+          {
+            "id": "dispelled_ward",
+            "text": "the investigators dispelled the ward (#X#, #Y#)."
+          },
+          {
+            "id": "fell_to_the_myriad",
+            "text": "the investigators fell to the Myriad (#X#, #Y#)."
+          },
+          {
+            "id": "gentleman_disappeared_unexpectedly",
+            "text": "the Myriad Gentleman disappeared unexpectedly."
+          },
+          {
+            "id": "investigators_stepped_into_future",
+            "text": "the investigators stepped into the future."
+          },
+          {
+            "id": "investigators_stepped_into_past",
+            "text": "the investigators stepped into the past."
+          },
+          {
+            "id": "irregulars_disappeared_unexpectedly",
+            "text": "Irregulars disappeared unexpectedly."
+          },
+          {
+            "id": "put_down_hound",
+            "text": "the investigators put down the Hound of Unmaking (#X#, #Y#)."
+          },
+          {
+            "id": "repelled_hound",
+            "text": "the investigators repelled the Hound of Unmaking (#X#, #Y#)."
+          },
+          {
+            "id": "snuck_in_back",
+            "text": "the investigators snuck into the back of the school."
+          },
+          {
+            "id": "thugs_disappeared_unexpectedly",
+            "text": "Hired Thugs disappeared unexpectedly."
+          },
+          {
+            "id": "unleashed_chaos",
+            "text": "the investigators unleashed chaos (#X#, #Y#)."
+          },
+          {
+            "id": "used_front_door",
+            "text": "the investigators used the school's front door."
           }
         ]
       }

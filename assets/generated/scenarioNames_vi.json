@@ -24,6 +24,18 @@
     "name": "A Thousand Shapes of Horror"
   },
   {
+    "id": "a_world_torn_down",
+    "name": "A World Torn Down"
+  },
+  {
+    "id": "a_world_torn_down_again",
+    "name": "A World Torn Down, Again"
+  },
+  {
+    "id": "a_year_to_plan",
+    "name": "A Year to Plan"
+  },
+  {
     "id": "across_dreadful_waters",
     "name": "Across Dreadful Waters"
   },
@@ -42,6 +54,10 @@
   {
     "id": "all_or_nothing",
     "name": "All or Nothing"
+  },
+  {
+    "id": "an_unknown_benefactor",
+    "name": "An Unknown Benefactor"
   },
   {
     "id": "anchorage",
@@ -70,6 +86,14 @@
   {
     "id": "at_deaths_doorstep",
     "name": "At Death's Doorstep"
+  },
+  {
+    "id": "au_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "au_prologue",
+    "name": "Lời mở đầu"
   },
   {
     "id": "aw_epilogue",
@@ -562,6 +586,10 @@
   {
     "id": "nairobi",
     "name": "Infernal Machinery"
+  },
+  {
+    "id": "night_of_fire",
+    "name": "Night of Fire"
   },
   {
     "id": "night_on_the_town",
@@ -1068,6 +1096,10 @@
     "name": "The Miskatonic Museum"
   },
   {
+    "id": "the_myriad_gentleman",
+    "name": "The Myriad Gentleman"
+  },
+  {
     "id": "the_nights_usurper",
     "name": "The Night's Usurper"
   },
@@ -1164,6 +1196,10 @@
     "name": "Phần kết"
   },
   {
+    "id": "time_runs_out",
+    "name": "Time Runs Out"
+  },
+  {
     "id": "to_the_forbidden_peaks",
     "name": "To the Forbidden Peaks"
   },
@@ -1226,6 +1262,10 @@
   {
     "id": "unscrupulous_investments",
     "name": "Unscrupulous Investments"
+  },
+  {
+    "id": "unstuck",
+    "name": "Unstuck"
   },
   {
     "id": "waking_nightmare",
