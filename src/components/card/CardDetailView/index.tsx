@@ -125,7 +125,7 @@ function CardDetailView({
       component: {
         name: 'Browse.InvestigatorCards',
         passProps: {
-          investigatorCode: back_id || id,
+          investigatorCode: back_id ?? id,
         },
         options: {
           topBar: {

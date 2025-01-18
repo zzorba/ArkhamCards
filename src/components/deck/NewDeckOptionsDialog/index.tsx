@@ -28,7 +28,7 @@ import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '@data/deck/starterDecks';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useParallelInvestigators, useSettingValue, useTabooSetId } from '@components/core/hooks';
+import { useFlag, useNavigationButtonPressed, useParallelInvestigators, useSettingValue, useTabooSetId } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
@@ -53,6 +53,7 @@ export interface NewDeckOptionsProps {
   investigatorId: string;
   campaignId: CampaignId | undefined;
   onCreateDeck?: (deck: Deck) => void;
+  isModal?: boolean;
 }
 
 type Props = NavigationProps &
@@ -78,6 +79,7 @@ function NewDeckOptionsDialog({
   componentId,
   signedIn,
   login,
+  isModal,
 }: Props) {
   const deckActions = useDeckActions();
   const defaultTabooSetId = useTabooSetId();
@@ -588,8 +590,17 @@ function NewDeckOptionsDialog({
     login, refreshNetworkStatus, renderNamePicker, setParallel, updateMeta]);
 
   const cancelPressed = useCallback(() => {
-    Navigation.pop(componentId);
-  }, [componentId]);
+    if (isModal) {
+      Navigation.dismissAllModals();
+    } else {
+      Navigation.pop(componentId);
+    }
+  }, [isModal, componentId]);
+  useNavigationButtonPressed(({ buttonId }) => {
+    if ((buttonId === 'back' || buttonId === 'androidBack') && isModal) {
+      Navigation.dismissAllModals();
+    }
+  }, componentId, [isModal]);
 
   if (!investigator) {
     return null;
@@ -597,6 +608,8 @@ function NewDeckOptionsDialog({
   const okDisabled = saving || !(specialDeckDialog === 'starter' || !!find(optionSelected, selected => selected));
   const showRegenerateButton = specialDeckMode === 'chaos' && chaosSlots !== undefined;
   const footerSize = m + NOTCH_BOTTOM_PADDING + (s + 54 * fontScale) * (showRegenerateButton ? 2 : 1);
+
+
   if (saving) {
     return (
       <LoadingSpinner large />

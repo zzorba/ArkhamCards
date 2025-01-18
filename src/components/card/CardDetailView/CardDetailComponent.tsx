@@ -50,9 +50,10 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
                 campaignId: undefined,
                 investigatorId: card.code,
                 onCreateDeck: undefined,
+                isModal: true,
               },
               options: {
-                ...getDeckOptions(colors, { title: t`New Deck` }, card),
+                ...getDeckOptions(colors, { title: t`New Deck`, modal: true }, card),
                 modalPresentationStyle: Platform.OS === 'ios' ?
                   OptionsModalPresentationStyle.fullScreen :
                   OptionsModalPresentationStyle.overCurrentContext,
