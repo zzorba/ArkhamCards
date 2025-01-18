@@ -32,7 +32,7 @@ import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
-import { SortType, Slots, Customizations, DEFAULT_SORT, EditDeckState } from '@actions/types';
+import { SortType, Slots, Customizations, DEFAULT_SORT } from '@actions/types';
 import { combineQueries, where } from '@data/sqlite/query';
 import { getPacksInCollection, makeTabooSetSelector, AppState, getPackSpoilers } from '@reducers';
 import Card, { cardInCollection, CardsMap, InvestigatorChoice, PartialCard } from '@data/types/Card';

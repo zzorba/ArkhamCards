@@ -6,7 +6,7 @@ import RegexEscape from 'regex-escape';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { SORT_BY_ENCOUNTER_SET, SortType, DeckId, EditDeckState, Slots } from '@actions/types';
+import { SORT_BY_ENCOUNTER_SET, SortType, DeckId, Slots } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';

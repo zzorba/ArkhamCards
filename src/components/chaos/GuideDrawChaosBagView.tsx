@@ -42,7 +42,7 @@ function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone
 
   const chaosBagResults = useChaosBagResults(campaignId);
 
-  const {loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag} = useGuideChaosBag({
+  const { loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag } = useGuideChaosBag({
     campaignId,
     scenarioId,
     standalone,
