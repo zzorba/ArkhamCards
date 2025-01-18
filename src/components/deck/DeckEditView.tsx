@@ -37,18 +37,6 @@ export default function DeckEditView({
   const [hideSplash, setHideSplash] = useState(false);
   const investigator = useInvestigatorChoice(deck?.deck.investigator_code, deckEdits?.meta, tabooSetId);
   const [specialCards] = useCardMapFromQuery(DECK_BUILDING_OPTION_CARDS_QUERY);
-  const slots = useMemo(() => deckType === 'extra' ? {} : deckEdits?.slots, [deckType, deckEdits?.slots])
-  const specialDeckCards = useMemo(() => {
-    const special: Card[] = [];
-    forEach(slots, (count, code) => {
-      const card = specialCards[code];
-      if (card && count > 0) {
-        special.push(...map(range(0, count), () => card));
-      }
-    });
-    return special;
-  }, [slots, specialCards]);
-
   const hasVersatile = deckType !== 'extra' && (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
   const isUpgrade = !!deck?.previousDeck;
   const meta = deckEdits?.meta;
@@ -71,6 +59,13 @@ export default function DeckEditView({
       return undefined;
     }
     return (filters: FilterState | undefined, slots: Slots | undefined) => {
+      const specialDeckCards: Card[] = [];
+      forEach(slots, (count, code) => {
+        const card = specialCards[code];
+        if (card && count > 0) {
+          specialDeckCards.push(...map(range(0, count), () => card));
+        }
+      });
       const investigatorPart = queryForInvestigator(
         investigator,
         // Special deck building won't apply to extra decks, for now...
@@ -89,7 +84,7 @@ export default function DeckEditView({
       );
       return investigatorPart;
     }
-  }, [specialDeckCards, meta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
+  }, [specialCards, meta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
   const mode = useMemo(() => {
     if (storyOnly || weaknessOnly) {
       return 'story';
