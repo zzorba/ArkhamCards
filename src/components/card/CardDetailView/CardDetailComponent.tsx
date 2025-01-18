@@ -92,7 +92,7 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
           </Text>
         </View>
         <ArkhamButton
-          icon="deck"
+          icon="card"
           title={t`Show all available cards`}
           onPress={showInvestigatorCardsPressed}
         />
@@ -106,7 +106,7 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
         ) }
         <ArkhamButton
           icon="deck"
-          title={t`New deck`}
+          title={t`Create new deck`}
           onPress={showCreateDeck}
         />
       </View>

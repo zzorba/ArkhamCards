@@ -6112,9 +6112,6 @@ msgstr ""
 msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
 msgstr ""
 
-msgid "New deck"
-msgstr ""
-
 msgid "Fatigue"
 msgstr ""
 
@@ -6131,6 +6128,18 @@ msgid "Advantages"
 msgstr ""
 
 msgid "Order of Events"
+msgstr ""
+
+msgid "Ages Unwound"
+msgstr ""
+
+msgid "Create new deck"
+msgstr ""
+
+msgid "Timeline"
+msgstr ""
+
+msgid "Strange Assistance"
 msgstr ""
 
 msgctxt "investigator"

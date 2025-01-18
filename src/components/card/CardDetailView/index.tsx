@@ -47,7 +47,7 @@ export function rightButtonsForCard(card?: Card, color?: string) {
   }
   if (card && card.type_code === 'investigator') {
     rightButtons.push({
-      icon: iconsMap.deck,
+      icon: iconsMap.cards,
       id: 'deck',
       color: color || COLORS.M,
       accessibilityLabel: t`Deckbuilding Cards`,
