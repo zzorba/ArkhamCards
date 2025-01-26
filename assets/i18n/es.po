@@ -794,19 +794,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -6010,47 +6010,50 @@ msgid "Truths"
 msgstr "Verdades"
 
 msgid "Specialist"
-msgstr ""
+msgstr "Especialista"
 
 msgid "Enemy-Location"
-msgstr ""
+msgstr "Lugar-Enemigo"
 
 msgid "Incomplete card database"
-msgstr ""
+msgstr "Base de datos incompleta"
 
 msgid "New cards available"
-msgstr ""
+msgstr "Nuevas cartas disponibles"
 
 msgid ""
 "Your most recent sync did not complete.\n"
 "\n"
 "When trying again, please keep the app open and in the foreground until it is finished."
 msgstr ""
+"La sincronización más reciente no se completó.\n"
+"\n"
+"Cuando lo reintentes, mantén la app abierta en segundo plano hasta que finalice."
 
 #, javascript-format
 msgid "It looks like your app is missing ${ updates.missingCardCount } card."
 msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Parece que a tu app le falta ${ updates.missingCardCount } carta."
+msgstr[1] "Parece que a tu app le faltan ${ updates.missingCardCount } cartas."
 
 msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
-msgstr ""
+msgstr "Algunos mazos y campañas no se cargarán por completo hasta que no se solucione."
 
 msgid "Download cards"
-msgstr ""
+msgstr "Descargar cartas"
 
 msgid "It has been more than a week since you checked for new cards."
-msgstr ""
+msgstr "Ha pasado más de una semana desde que revisaste si había nuevas cartas."
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
-msgstr ""
+msgstr "Chino (Simplificado): ${ simplifiedChineseTranslators }"
 
 msgid "Narration"
-msgstr ""
+msgstr "Narración"
 
 msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
-msgstr ""
+msgstr "Pueden ser cartas que se hayan actualizado, corregido, o cartas de la lista de tabúes."
 
 msgid "Fatigue"
 msgstr ""
@@ -6074,7 +6077,7 @@ msgid "Ages Unwound"
 msgstr ""
 
 msgid "Create new deck"
-msgstr ""
+msgstr "Crear nuevo mazo"
 
 msgid "Timeline"
 msgstr ""
