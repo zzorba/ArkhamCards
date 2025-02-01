@@ -874,8 +874,8 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
             mode: 'view',
           },
         });
-        setSaving(false);
       }
+      setSaving(false);
     } catch(e) {
       handleSaveError(e);
     }
