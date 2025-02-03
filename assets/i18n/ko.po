@@ -5996,10 +5996,10 @@ msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
 msgstr "중국어(간체): ${ simplifiedChineseTranslators }"
 
 msgid "Narration"
-msgstr ""
+msgstr "나레이션"
 
 msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
-msgstr ""
+msgstr "이러한 카드는 새로운 금기 목록에서 업데이트되었거나 사소한 수정 사항이 포함되어 있을 수 있습니다."
 
 msgid "Fatigue"
 msgstr ""
