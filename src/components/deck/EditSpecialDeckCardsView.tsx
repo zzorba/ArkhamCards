@@ -21,6 +21,7 @@ import { useAlertDialog } from './dialogs';
 import { CampaignId, DeckId } from '@actions/types';
 import StyleContext from '@styles/StyleContext';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
+import { useDeckAttachments } from './useParsedDeckComponent';
 
 export interface EditSpecialCardsProps {
   id: DeckId;
@@ -42,6 +43,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     parsedDeck,
     parsedDeckRef,
   } = parsedDeckObj;
+  const [, attachmentsForCard] = useDeckAttachments(parsedDeck?.investigator, parsedDeck?.slots);
   const [requiredCards, requiredCardsLoading] = useRequiredCards(parsedDeck?.investigator, tabooSetId);
 
   const cardPressed = useCallback((card: Card) => {
@@ -202,12 +204,13 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
               deckId: id,
               min: lockedPermanents?.[card.code],
               limit: card.deck_limit || 1,
+              attachments: attachmentsForCard(card),
             }}
           />
         )) }
       </>
     );
-  }, [id, lockedPermanents, cardPressed, deckEdits, requiredCards, requiredCardsLoading]);
+  }, [id, lockedPermanents, attachmentsForCard, cardPressed, deckEdits, requiredCards, requiredCardsLoading]);
 
   const storyCards = useMemo(() => {
     if (!deckEdits) {
@@ -235,8 +238,10 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
             card={card}
             onPress={cardPressed}
             control={{
-              type: 'count',
+              type: 'deck_count',
+              deckId: id,
               count: deckEdits.slots[card.code],
+              attachments: attachmentsForCard(card),
             }}
           />
         )) }
@@ -247,7 +252,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         />
       </>
     );
-  }, [deckEdits, storyCards, cardPressed, editStoryPressed]);
+  }, [deckEdits, storyCards, id, attachmentsForCard, cardPressed, editStoryPressed]);
   const setIgnoreCardCount = useCallback((card: Card, count: number) => {
     dispatch(setIgnoreDeckSlot(id, card.code, count));
   }, [dispatch, id]);

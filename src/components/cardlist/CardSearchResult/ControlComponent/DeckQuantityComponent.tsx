@@ -9,9 +9,10 @@ import { EditSlotsActions, useEffectUpdate } from '@components/core/hooks';
 import { incDeckSlot, decDeckSlot, setDeckSlot } from '@components/deck/actions';
 import CardQuantityComponent from './CardQuantityComponent';
 import { useDeckSlotCount } from '@components/deck/hooks';
-import { DeckId } from '@actions/types';
+import { AttachableDefinition, DeckId } from '@actions/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { PossibleAttachmentsCounts } from './AttachmentComponent';
 
 interface DeckCardQuantityProps {
   deckId: DeckId;
@@ -22,9 +23,11 @@ interface DeckCardQuantityProps {
   showZeroCount?: boolean;
   forceBig?: boolean;
   editable?: boolean;
+  attachments: AttachableDefinition[];
 }
 
-function DeckQuantityComponent({ min, deckId, editable, code, limit: propsLimit, showZeroCount, forceBig, mode }: DeckCardQuantityProps) {
+
+function DeckQuantityComponent({ min, deckId, editable, code, limit: propsLimit, showZeroCount, forceBig, mode, attachments }: DeckCardQuantityProps) {
   const limit = Math.min(propsLimit, mode === 'extra' ? 1 : propsLimit);
   const { colors } = useContext(StyleContext);
   const [actualCount, ignoreCount] = useDeckSlotCount(deckId, code, mode);
@@ -75,12 +78,13 @@ function DeckQuantityComponent({ min, deckId, editable, code, limit: propsLimit,
           </RoundButton>
         </View>
       ) }
+      <PossibleAttachmentsCounts deckId={deckId} code={code} count={count} locked={!editable} attachments={attachments} />
       <CardQuantityComponent
         code={code}
         min={min}
         limit={limit}
         countChanged={countChanged}
-        count={count || 0}
+        count={count ?? 0}
         adjustment={-ignoreCount}
         showZeroCount={showZeroCount}
         forceBig={forceBig}

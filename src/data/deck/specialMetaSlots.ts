@@ -1,5 +1,5 @@
 import { DeckMeta, Slots } from '@actions/types';
-import { encodeExtraDeckSlots, getExtraDeckSlots } from '@lib/parseDeck';
+import { encodeMetaSlots, parseMetaSlots } from '@lib/parseDeck';
 
 export const MANDY_CODE = '06002';
 export const OCCULT_EVIDENCE_CODE = '06008';
@@ -19,11 +19,11 @@ export function ensureConsistentMeta(
   switch (investigator_code) {
     case JIM_CODE: {
       if (meta.alternate_back === PARALLEL_JIM_CODE) {
-        const extraDeck = getExtraDeckSlots(meta);
+        const extraDeck = parseMetaSlots(meta.extra_deck);
         extraDeck[JIM_VENGEFUL_SHADE_CODE] = 1;
         return {
           ...meta,
-          extra_deck: encodeExtraDeckSlots(extraDeck),
+          extra_deck: encodeMetaSlots(extraDeck),
         };
       }
       return meta;

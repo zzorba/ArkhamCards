@@ -52,7 +52,8 @@ import { useAppDispatch } from '@app/store';
 import { FilterState } from '@lib/filters';
 import DeckValidation from '@lib/DeckValidation';
 import { THE_INSANE_CODE } from '@data/deck/specialCards';
-import { getExtraDeckSlots } from '@lib/parseDeck';
+import { parseMetaSlots } from '@lib/parseDeck';
+import { useDeckAttachments } from '@components/deck/useParsedDeckComponent';
 
 interface Props {
   componentId: string;
@@ -921,6 +922,7 @@ export default function({
   const deck = parsedDeck?.deckT;
   const deckEdits = parsedDeck?.deckEdits;
   const deckId = deck?.id;
+  const [, attachmentsForCard] = useDeckAttachments(parsedDeck?.parsedDeck?.investigator, parsedDeck?.parsedDeck?.slots);
   const customizations = useLiveCustomizations(deck, deckEdits);
   const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
   const tabooSetOverride = parsedDeck?.deck !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
@@ -935,8 +937,8 @@ export default function({
         return [deckEdits?.side, deck?.deck.sideSlots, 'side'];
       case 'extra':
         return [
-          deckEdits ? getExtraDeckSlots(deckEdits.meta ?? {}) : undefined,
-          deck ? getExtraDeckSlots(deck.deck.meta ?? {}) : undefined,
+          deckEdits ? parseMetaSlots(deckEdits.meta.extra_deck) : undefined,
+          deck ? parseMetaSlots(deck.deck.meta?.extra_deck) : undefined,
           'extra',
         ];
       default:
@@ -1066,6 +1068,7 @@ export default function({
               min: lockedPermanents?.[card.code],
               limit: deck_limit,
               mode,
+              attachments: attachmentsForCard(card),
             }) : undefined}
           />
         );
@@ -1114,7 +1117,11 @@ export default function({
       default:
         return <View />;
     }
-  }, [mode, lockedPermanents, headerItems, expandSearchControls, footerPadding, width, cardOnPressId, deckId, packInCollection, ignore_collection, investigator, renderCard, typography, borderStyle]);
+  }, [mode, lockedPermanents, deckId, packInCollection, ignore_collection, width, typography, borderStyle,
+    headerItems, expandSearchControls, footerPadding,
+    attachmentsForCard, cardOnPressId,
+    investigator, renderCard,
+  ]);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);
   }, [fontScale, headerHeight, lang]);

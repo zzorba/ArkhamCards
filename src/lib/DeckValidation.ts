@@ -513,7 +513,7 @@ export default class DeckValidation {
         dynamic_id: "convenant",
       });
     }
-    if (specialCards.ancestralKnowledge&& !this.for_query) {
+    if (specialCards.ancestralKnowledge && !this.for_query) {
       deck_options.push(
         DeckOption.parse({
           type: ["skill"],

@@ -67,17 +67,17 @@ import {
   PARALLEL_JIM_CODE,
 } from '@data/deck/specialMetaSlots';
 
-export function getExtraDeckSlots(meta: DeckMeta): Slots {
+export function parseMetaSlots(value: string | undefined): Slots {
   return mapValues(
     groupBy(
-      filter((meta.extra_deck ?? '').split(','), (x) => x),
+      filter((value ?? '').split(','), (x) => x),
       (x) => x
     ),
     (x) => x.length
   );
 }
 
-export function encodeExtraDeckSlots(slots: Slots): string {
+export function encodeMetaSlots(slots: Slots): string {
   return flatMap(slots, (count, code) =>
     count ? map(range(0, count), () => code) : []
   ).join(',');
@@ -874,8 +874,8 @@ function getDeckChanges(
     }
   });
   if (previous_investigator_back_code === PARALLEL_JIM_CODE) {
-    const extraSlots = getExtraDeckSlots(meta);
-    const previousExtraSlots = getExtraDeckSlots(previousDeck.meta ?? {});
+    const extraSlots = parseMetaSlots(meta.extra_deck);
+    const previousExtraSlots = parseMetaSlots(previousDeck.meta?.extra_deck);
     forEach(uniq(union(keys(extraSlots), keys(previousExtraSlots))), (code) => {
       const oldCount = previousExtraSlots[code] || 0;
       const newCount = extraSlots[code] || 0;
@@ -1205,7 +1205,7 @@ export function parseDeck(
   let extraDeckSize: number | undefined;
   let extraProblem: DeckProblem | undefined;
   if (investigator_back_code === PARALLEL_JIM_CODE) {
-    extraDeckSlots = getExtraDeckSlots(meta);
+    extraDeckSlots = parseMetaSlots(meta.extra_deck);
     const extraDeckCards = getCards(
       cards,
       extraDeckSlots,
@@ -1230,8 +1230,8 @@ export function parseDeck(
           filter(
             uniq([
               ...keys(extraDeckSlots),
-              ...keys(getExtraDeckSlots(originalDeck?.meta ?? {})),
-              ...keys(getExtraDeckSlots(previousDeck?.meta ?? {})),
+              ...keys(parseMetaSlots(originalDeck?.meta?.extra_deck)),
+              ...keys(parseMetaSlots(previousDeck?.meta?.extra_deck)),
             ]),
             (id) => !!cards[id]
           ),

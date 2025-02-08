@@ -20,6 +20,7 @@ import {
   uniq,
   flatMap,
   groupBy,
+  sumBy,
 } from 'lodash';
 import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
@@ -27,6 +28,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@app/store';
 import {
+  AttachableDefinition,
   CampaignId,
   Customizations,
   Deck,
@@ -49,7 +51,7 @@ import {
 } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
 import {
-  getExtraDeckSlots,
+  parseMetaSlots,
   parseCustomizationDecision,
   parseCustomizations,
   parseDeck,
@@ -158,6 +160,76 @@ export function useLiveCustomizations(
       deck?.previousDeck?.slots
     )[0];
   }, [meta, slots, previousMeta, cards, deck?.previousDeck?.slots]);
+}
+
+export function useDeckAttachmentSlots(
+  { uuid }: DeckId,
+  attachment: AttachableDefinition,
+): Slots {
+  const selector = useMemo(
+    () =>
+      createSelector(
+        (state: AppState) => state.deckEdits.editting,
+        (state: AppState) => state.deckEdits.edits,
+        (state: AppState, uuid: string) => uuid,
+        (
+          state: AppState,
+          uuid: string,
+          attachment: AttachableDefinition,
+        ) => attachment,
+        (editting, edits, uuid, attachment): Slots => {
+          if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
+            return {};
+          }
+          return parseMetaSlots(
+            edits[uuid]?.meta?.[`attachment_${attachment.code}`]
+          );
+        }
+      ),
+    []
+  );
+  return useSelector((state: AppState) => selector(state, uuid, attachment));
+}
+
+export function useDeckAttachmentCount(
+  { uuid }: DeckId,
+  code: string,
+  attachment: AttachableDefinition,
+): [number, boolean] {
+  const selector = useMemo(
+    () =>
+      createSelector(
+        (state: AppState) => state.deckEdits.editting,
+        (state: AppState) => state.deckEdits.edits,
+        (state: AppState, uuid: string) => uuid,
+        (
+          state: AppState,
+          uuid: string,
+          code: string,
+        ) => code,
+        (
+          state: AppState,
+          uuid: string,
+          code: string,
+          attachment: AttachableDefinition,
+        ) => attachment,
+        (editting, edits, uuid, code, attachment): [number, boolean] => {
+          const required = attachment.requiredCards?.[code];
+          if (required) {
+            return [required, true];
+          }
+          if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
+            return [0, true];
+          }
+          return [sumBy(
+            (edits[uuid]?.meta?.[`attachment_${attachment.code}`] ?? '').split(','),
+            c => code === c ? 1 : 0
+          ), false];
+        }
+      ),
+    []
+  );
+  return useSelector((state: AppState) => selector(state, uuid, code, attachment));
 }
 
 export function useDeckSlotCount(
@@ -326,9 +398,9 @@ function useParsedDeckHelper(
           : []),
         ...(deckEdits?.meta.alternate_back === PARALLEL_JIM_CODE
           ? [
-            ...keys(getExtraDeckSlots(deck?.deck.meta ?? {})),
-            ...keys(getExtraDeckSlots(deckEdits?.meta ?? {})),
-            ...keys(getExtraDeckSlots(deck?.previousDeck?.meta ?? {})),
+            ...keys(parseMetaSlots(deck?.deck.meta?.extra_deck)),
+            ...keys(parseMetaSlots(deckEdits?.meta.extra_deck)),
+            ...keys(parseMetaSlots(deck?.previousDeck?.meta?.extra_deck)),
           ]
           : []),
         ...keys(deck?.previousDeck?.slots || {}),

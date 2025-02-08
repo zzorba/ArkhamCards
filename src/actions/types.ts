@@ -33,6 +33,18 @@ export const BROWSE_DECKS = 'BROWSE_DECKS';
 export const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
 export const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
 
+
+export type AttachableDefinition = {
+  code: string;
+  icon: string;
+  limit?: number;
+  name: string;
+  buttonLabel: string;
+  requiredCards?: Record<string, number>;
+  targetSize: number;
+  traits?: string[];
+};
+
 export type StartingTabType =
   | typeof BROWSE_CARDS
   | typeof BROWSE_DECKS
@@ -97,6 +109,9 @@ export interface DeckMeta {
   alternate_back?: string;
   extra_deck?: string;
   transform_into?: string;
+  card_pool?: string; // comma separated list of new style packs
+  // Other types:
+  // attachmens_{code}: id1,id2,id3 etc
   [key: string]: string | undefined;
 }
 
@@ -992,32 +1007,46 @@ export interface UpdateDeckEditAction {
 
 export const UPDATE_DECK_EDIT_COUNTS = 'UPDATE_DECK_EDIT_COUNTS';
 
-interface UpdateDeckEditCountsSetAction {
+type BasicUpdateDeckEditCountsSetAction<T> = {
   type: typeof UPDATE_DECK_EDIT_COUNTS;
   id: DeckId;
   code: string;
   operation: 'set';
   value: number;
+} & T;
+
+type UpdateDeckEditCountsSetAction = BasicUpdateDeckEditCountsSetAction<{
   countType:
     | 'slots'
     | 'ignoreDeckLimitSlots'
     | 'side'
     | 'extra'
     | 'xpAdjustment';
-}
-interface UpdateDeckEditCountsAdjustAction {
+}> | BasicUpdateDeckEditCountsSetAction<{
+  countType: 'attachment';
+  attachment_code: string;
+}>;
+
+type BasicUpdateDeckEditCountsAdjustAction<T> = {
   type: typeof UPDATE_DECK_EDIT_COUNTS;
   id: DeckId;
   code: string;
   operation: 'inc' | 'dec';
   limit?: number;
+} & T;
+
+type UpdateDeckEditCountsAdjustAction = BasicUpdateDeckEditCountsAdjustAction<{
   countType:
     | 'slots'
     | 'ignoreDeckLimitSlots'
     | 'side'
     | 'extra'
     | 'xpAdjustment';
-}
+}> | BasicUpdateDeckEditCountsAdjustAction<{
+  countType: 'attachment';
+  attachment_code: string;
+}>;
+
 export type UpdateDeckEditCountsAction =
   | UpdateDeckEditCountsSetAction
   | UpdateDeckEditCountsAdjustAction;

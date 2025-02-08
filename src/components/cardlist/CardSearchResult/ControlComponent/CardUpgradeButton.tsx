@@ -7,7 +7,7 @@ import StyleContext from '@styles/StyleContext';
 import Card from '@data/types/Card';
 import RoundButton from '@components/core/RoundButton';
 import DeckQuantityComponent from './DeckQuantityComponent';
-import { DeckId } from '@actions/types';
+import { AttachableDefinition, DeckId } from '@actions/types';
 import space from '@styles/space';
 
 interface Props {
@@ -18,9 +18,10 @@ interface Props {
   limit: number;
   mode: 'side' | 'extra' | 'ignore' | undefined;
   editable: boolean;
+  attachments: AttachableDefinition[];
 }
 
-export default function CardUpgradeButton({ min, onUpgradePress, editable, card, deckId, limit, mode }: Props) {
+export default function CardUpgradeButton({ min, onUpgradePress, editable, card, deckId, limit, mode, attachments }: Props) {
   const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => onUpgradePress && onUpgradePress(card, mode === 'extra' ? 'extra' : undefined), [onUpgradePress, card, mode]);
   return (
@@ -45,6 +46,7 @@ export default function CardUpgradeButton({ min, onUpgradePress, editable, card,
         limit={limit}
         mode={mode}
         editable={editable}
+        attachments={attachments}
       />
     </View>
   );

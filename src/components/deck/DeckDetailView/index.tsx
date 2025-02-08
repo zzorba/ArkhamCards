@@ -62,7 +62,7 @@ import { localizeTag } from '@components/deck/TagChiclet';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import useTagPile from '@components/deck/useTagPile';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
-import { getExtraDeckSlots } from '@lib/parseDeck';
+import { parseMetaSlots } from '@lib/parseDeck';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -265,7 +265,7 @@ function DeckDetailView({
   const extraProblem = parsedDeck?.problem;
   const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
   const flatDeckCards = useMemo(() => {
-    const extraDeckSlots = parsedDeck?.investigator.back.code === PARALLEL_JIM_CODE ? getExtraDeckSlots(deckEdits?.meta ?? {}) : {};
+    const extraDeckSlots = parsedDeck?.investigator.back.code === PARALLEL_JIM_CODE ? parseMetaSlots(deckEdits?.meta.extra_deck) : {};
     return [
       ...(parsedDeck?.investigator ? [parsedDeck.investigator.front, parsedDeck.investigator.back] : []),
       ...flatMap(deckCards, c =>

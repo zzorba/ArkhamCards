@@ -58,7 +58,16 @@ function TinyCardQuantityComponent({ min, code, locked, count: propsCount, adjus
   );
 }
 
-function NormalCardQuantityComponent({ min, code, locked, adjustment = 0, count: propsCount, countChanged: { incSlot, decSlot }, limit, showZeroCount }: Props) {
+function NormalCardQuantityComponent({
+  min,
+  code,
+  locked,
+  adjustment = 0,
+  count: propsCount,
+  countChanged: { incSlot, decSlot },
+  limit,
+  showZeroCount,
+}: Props) {
   const { fontScale } = useContext(StyleContext);
   const [count, incCount, decCount, setCount] = useCounter(propsCount, { min, max: limit, hapticFeedback: true });
   useEffectUpdate(() => {

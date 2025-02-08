@@ -5,7 +5,7 @@ import { View, StyleSheet } from 'react-native';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import DeckQuantityComponent from './DeckQuantityComponent';
-import { ChecklistSlots, DeckId } from '@actions/types';
+import { AttachableDefinition, ChecklistSlots, DeckId } from '@actions/types';
 import { AppState, getDeckChecklist } from '@reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDeckChecklistCard } from '@components/deck/actions';
@@ -19,7 +19,9 @@ interface Props {
   limit: number;
   mode?: 'side' | 'extra' | 'ignore' | 'checklist';
   editable?: boolean
+  attachments: AttachableDefinition[];
 }
+
 
 const EMPTY_CHECKLIST: number[] = [];
 
@@ -42,7 +44,7 @@ function ChecklistButton({ deckId, code }: { deckId: DeckId; code: string }) {
   );
 }
 
-export default function FloatingDeckQuantityComponent({ deckId, editable, code, limit, min, mode }: Props) {
+export default function FloatingDeckQuantityComponent({ deckId, editable, code, limit, min, mode, attachments }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[styles.fab, shadow.large, { backgroundColor: colors.D20 }]}>
@@ -56,6 +58,7 @@ export default function FloatingDeckQuantityComponent({ deckId, editable, code, 
         showZeroCount
         forceBig
         editable={mode !== 'checklist' && editable}
+        attachments={attachments}
       />
     </View>
   );

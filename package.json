@@ -94,6 +94,7 @@
     "hoist-non-react-statics": "3.3.2",
     "lodash": "4.17.21",
     "lottie-react-native": "6.0.1",
+    "lucide-react-native": "^0.475.0",
     "priority-queue-typescript": "1.0.1",
     "query-string": "8.1.0",
     "react": "18.2.0",

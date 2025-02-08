@@ -26,7 +26,7 @@ import DeckProblemBanner from '../DeckProblemBanner';
 import { useDialog } from '../dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { DeckId } from '@actions/types';
-import { getExtraDeckSlots } from '@lib/parseDeck';
+import { parseMetaSlots } from '@lib/parseDeck';
 import { useCardMap } from '@components/card/useCardList';
 import { useDeck } from '@data/hooks';
 
@@ -73,7 +73,7 @@ export default function CardUpgradeDialog({
   }, [cardsByName]);
   const deck = useDeck(id);
   const deckEdits = useSimpleDeckEdits(id);
-  const slots = useMemo(() => mode === 'extra' ? deckEdits?.meta && getExtraDeckSlots(deckEdits?.meta) : deckEdits?.slots, [mode, deckEdits]);
+  const slots = useMemo(() => mode === 'extra' ? deckEdits?.meta && parseMetaSlots(deckEdits?.meta.extra_deck) : deckEdits?.slots, [mode, deckEdits]);
   const codes = useMemo(() => Object.keys(slots ?? {}), [slots]);
   const [deckCardsMap] = useCardMap(codes, 'player', false, deckEdits?.tabooSetChange ?? deck?.deck.taboo_id ?? 0);
   const deckCards = useMemo(() => {

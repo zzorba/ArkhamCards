@@ -3,15 +3,16 @@ import { View } from 'react-native';
 
 import Card from '@data/types/Card';
 import DeckQuantityComponent from './DeckQuantityComponent';
-import { CardCount } from './CardCount';
+import { CardCount, DeckCardCount } from './CardCount';
 import CardUpgradeButton from './CardUpgradeButton';
 import CardToggle from './CardToggle';
 import CardChecklistToggles from './CardChecklistToggles';
 import CardQuantityComponent from './CardQuantityComponent';
 import { EditSlotsActions } from '@components/core/hooks';
-import { DeckId } from '@actions/types';
+import { AttachableDefinition, DeckId } from '@actions/types';
 import ShuffleButton, { DraftButton } from './ShuffleButton';
 import { DiscountComponent } from './DiscountComponent';
+import { AttachmentDetailCount } from './AttachmentComponent';
 
 export type ControlType = {
   type: 'deck';
@@ -19,6 +20,7 @@ export type ControlType = {
   min: number | undefined;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore';
+  attachments: AttachableDefinition[];
 } | {
   type: 'quantity';
   count: number;
@@ -28,10 +30,21 @@ export type ControlType = {
   showZeroCount: boolean;
   reversed?: boolean;
 } | {
+  type: 'deck_count';
+  count: number;
+  deltaCountMode?: boolean;
+  showZeroCount?: boolean;
+  deckId: DeckId;
+  attachments: AttachableDefinition[];
+} | {
   type: 'count';
   count: number;
   deltaCountMode?: boolean;
   showZeroCount?: boolean;
+} | {
+  type: 'attachment';
+  deckId: DeckId;
+  attachment: AttachableDefinition;
 } | {
   type: 'upgrade';
   deckId: DeckId;
@@ -41,6 +54,7 @@ export type ControlType = {
   editable: boolean;
   onUpgradePress?: (card: Card, mode: 'extra' | undefined) => void;
   customizable: boolean;
+  attachments: AttachableDefinition[];
 } | {
   type: 'toggle';
   value: boolean;
@@ -80,6 +94,7 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
           code={card.code}
           mode={control.mode}
           editable
+          attachments={control.attachments}
         />
       );
     case 'shuffle':
@@ -91,8 +106,34 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
       );
     case 'draft':
       return <DraftButton card={card} onPress={control.onDraft} />;
+    case 'attachment': {
+      return (
+        <AttachmentDetailCount
+          deckId={control.deckId}
+          code={card.code}
+          attachment={control.attachment}
+        />
+      );
+    }
+    case 'deck_count':
+      return (
+        <DeckCardCount
+          count={control.count}
+          code={card.code}
+          deltaCountMode={control.deltaCountMode}
+          showZeroCount={control.showZeroCount}
+          deckId={control.deckId}
+          attachments={control.attachments}
+        />
+      );
     case 'count':
-      return <CardCount count={control.count} deltaCountMode={control.deltaCountMode} showZeroCount={control.showZeroCount} />;
+      return (
+        <CardCount
+          count={control.count}
+          deltaCountMode={control.deltaCountMode}
+          showZeroCount={control.showZeroCount}
+        />
+      );
     case 'upgrade':
       return (
         <CardUpgradeButton
@@ -103,6 +144,7 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
           editable={control.editable}
           limit={control.limit}
           mode={control.mode}
+          attachments={control.attachments}
         />
       );
     case 'toggle':

@@ -5,14 +5,15 @@ import {
   StyleSheet,
   Platform,
   View,
+  Text,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 import SnapCarousel from 'react-native-snap-carousel';
 import Animated from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
-import { t } from 'ttag';
-import { find, flatMap, filter, map, slice } from 'lodash';
+import { msgid, ngettext, t } from 'ttag';
+import { find, flatMap, filter, map, slice, sortBy, sumBy } from 'lodash';
 
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import { rightButtonsForCard } from './CardDetailView';
@@ -29,14 +30,19 @@ import { where } from '@data/sqlite/query';
 import { FOOTER_HEIGHT, PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
-import { Customizations, DeckId } from '@actions/types';
+import { AttachableDefinition, Customizations, DeckId } from '@actions/types';
 import { CardInvestigatorProps } from './CardInvestigatorsView';
 import CardCustomizationOptions from './CardDetailView/CardCustomizationOptions';
-import { useCardCustomizations, useParsedDeck } from '@components/deck/hooks';
+import { useCardCustomizations, useDeckAttachmentSlots, useParsedDeck } from '@components/deck/hooks';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';
 import { getSystemLanguage } from '@lib/i18n';
+import { useAttachableCards, useDeckAttachments } from '@components/deck/useParsedDeckComponent';
+import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
+import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
+import space, { s } from '@styles/space';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -68,6 +74,79 @@ const options = (passProps: CardDetailSwipeProps) => {
 
 const NO_CUSTOMIZATIONS: CustomizationChoice[] = [];
 
+function AttachmentSection({ card, deckId, attachment, attachmentCards, width }: { width: number; card: Card, deckId: DeckId; attachment: AttachableDefinition; attachmentCards: Card[] }) {
+  const { typography } = useContext(StyleContext);
+  const sorted = useMemo(() => sortBy(attachmentCards, a => a.name), [attachmentCards]);
+  const slots = useDeckAttachmentSlots(deckId, attachment);
+  const total = useMemo(() => sumBy(Object.values(slots), c => c), [slots]);
+  const errorMessage = useMemo(() => {
+    if (total > attachment.targetSize) {
+      return t`Too many selected`;
+    }
+    const limit = attachment.limit;
+    if (limit) {
+      let too_many_by_name = false;
+      Object.keys(slots).forEach((code) => {
+        const count = slots[code];
+        if (count > limit) {
+          too_many_by_name = true;
+          return;
+        }
+        const card = find(attachmentCards, c => c.code === code);
+        const allNamedCards = filter(attachmentCards, c => c.name === card?.name);
+        const totalByName = sumBy(allNamedCards, c => {
+          return c ? slots[c.code] : 0;
+        });
+        if (totalByName > limit) {
+          too_many_by_name = true;
+          return;
+        }
+      });
+      if (too_many_by_name) {
+        if (limit === 1) {
+          return t`Each card must be different`
+        }
+        return ngettext(
+          msgid`Limit of ${limit} card`,
+          `Limit of ${limit} cards`,
+          limit
+        );
+      }
+    }
+    return undefined;
+  }, [total, slots, attachment, attachmentCards])
+  return (
+    <View style={space.paddingSideS}>
+      <RoundedFactionBlock faction={card.factionCode()} header={
+        <RoundedFactionHeader
+          width={width - s * 2}
+          faction={card.factionCode()}
+        >
+          <View style={[space.paddingSideS, { alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }]}>
+            <Text style={[typography.cardName, { color: '#FFFFFF', flex: 1 }]}>
+              {attachment.name}
+            </Text>
+            <View>
+              <Text style={[typography.right, typography.small, { color: '#FFFFFF' }]}>
+                { t`${total} of ${attachment.targetSize}` }
+              </Text>
+              { !!errorMessage && (
+                <Text style={[typography.right, typography.small, { color: '#FFFFFF' }]}>
+                  { errorMessage }
+                </Text>
+              )}
+            </View>
+          </View>
+        </RoundedFactionHeader>
+      }>
+        { map(sorted, (c, idx) => (
+          <CardSearchResult key={c.code} noSidePadding noBorder={idx === sorted.length - 1} card={c} control={{ type: 'attachment', deckId, attachment }} />
+        ))}
+      </RoundedFactionBlock>
+    </View>
+  );
+}
+
 function ScrollableCard(props: {
   componentId: string;
   card: Card | undefined;
@@ -83,10 +162,13 @@ function ScrollableCard(props: {
   toggleShowSpoilers: (code: string) => void;
   showInvestigatorCards: (code: string) => void;
   mode?: 'view' | 'edit' | 'upgrade';
+  attachment?: AttachableDefinition;
+  attachmentCards: Card[];
 }) {
   const {
     componentId, mode, customizationsEditable, card, tabooSetId,
     width, height, deckId, customizations, deckCount,
+    attachment, attachmentCards,
     setChoice, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler,
   } = props;
   const { backgroundStyle, colors } = useContext(StyleContext);
@@ -147,6 +229,15 @@ function ScrollableCard(props: {
           setChoice={setChoice}
         />
       ) }
+      { !!card && !!deckId && !!attachment && (
+        <AttachmentSection
+          card={card}
+          width={width}
+          deckId={deckId}
+          attachment={attachment}
+          attachmentCards={attachmentCards}
+        />
+      )}
       { deckId !== undefined && <View style={{ width, height: FOOTER_HEIGHT }} /> }
     </ScrollView>
   );
@@ -295,6 +386,9 @@ function DbCardDetailSwipeView(props: Props) {
     return !!(showAllSpoilers || showSpoilers[card.pack_code] || spoilers[card.code]);
   }, [showSpoilers, spoilers, showAllSpoilers]);
   const lockedPermanents = parsedDeck?.parsedDeck?.lockedPermanents;
+  const slots = deckEdits?.slots;
+  const [attachments, attachmentsForCard] = useDeckAttachments(parsedDeck.parsedDeck?.investigator, slots);
+
   const deckCountControls = useMemo(() => {
     if (deckId === undefined || !currentCard) {
       return null;
@@ -302,6 +396,7 @@ function DbCardDetailSwipeView(props: Props) {
     if (currentControl === 'bonded') {
       return null;
     }
+    const attachments = attachmentsForCard(currentCard);
     const deck_limit: number = currentCard.collectionDeckLimit(packInCollection, ignore_collection);
     return (
       <FloatingDeckQuantityComponent
@@ -311,11 +406,16 @@ function DbCardDetailSwipeView(props: Props) {
         limit={deck_limit}
         mode={(currentControl === 'side' || currentControl === 'extra' || currentControl === 'ignore' || currentControl === 'checklist') ? currentControl : undefined}
         editable={editable}
+        attachments={attachments}
       />
     );
-  }, [lockedPermanents, deckId, editable, currentCard, currentControl, packInCollection, ignore_collection]);
+  }, [attachmentsForCard, lockedPermanents, deckId, editable, currentCard, currentControl, packInCollection, ignore_collection]);
   const mode = deckEdits?.mode;
-  const slots = deckEdits?.slots;
+  const data: (Card | undefined)[] = useMemo(() => {
+    return map(cardCodes, code => cards[code]);
+  }, [cardCodes, cards]);
+
+  const attachableCards = useAttachableCards();
   const renderCard = useCallback((
     { item: card, index: itemIndex }: {
       item: Card | undefined;
@@ -323,6 +423,8 @@ function DbCardDetailSwipeView(props: Props) {
       animationValue?: Animated.SharedValue<number>;
     }
   ): React.ReactElement => {
+    const attachment = card ? attachableCards[card.code] : undefined;
+    const attachmentCards = attachment ? data.flatMap(c => c && !!find(attachment.traits, t => c?.real_traits_normalized?.indexOf(`#${t}#`) !== -1) ? [c] : []) : [];
     return (
       <ScrollableCard
         key={itemIndex}
@@ -340,12 +442,11 @@ function DbCardDetailSwipeView(props: Props) {
         setChoice={setChoice}
         deckCount={card && slots?.[card.code]}
         customizationsEditable={editable || customizationsEditable}
+        attachment={attachment}
+        attachmentCards={attachmentCards}
       />
     );
-  }, [slots, customizationsEditable, tabooSetId, editable, customizations, mode, componentId, deckId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
-  const data: (Card | undefined)[] = useMemo(() => {
-    return map(cardCodes, code => cards[code]);
-  }, [cardCodes, cards]);
+  }, [attachableCards, data, slots, customizationsEditable, tabooSetId, editable, customizations, mode, componentId, deckId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
   return (
     <View
       style={[styles.wrapper, backgroundStyle, { width, height }]}

@@ -6,7 +6,8 @@ import {
   ChaosTokenModifier,
   SimpleChaosTokenValue,
 } from '@data/scenario/types';
-import { Pack } from '@actions/types';
+import { AttachableDefinition, Pack } from '@actions/types';
+import { JOE_DIAMOND_CODE } from '@data/deck/specialCards';
 
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = true;
@@ -376,6 +377,61 @@ export const FORCED_LEARNING_CODE = '08031'; // Deck size +15
 export const UNDERWORLD_SUPPORT_CODE = '08046';
 export const DOWN_THE_RABBIT_HOLE_CODE = '08059';
 export const UNDERWORLD_MARKET_CODE = '09077';
+export const BEWITCHING_CODE = '10079';
+export const STICK_TO_THE_PLAN_CODE = '03264';
+export const UNSOLVED_CASE_CODE = '05010';
+export const ELDRITCH_BRAND_CODE = '11080';
+
+export function getAttachableCards(): { [code: string]: AttachableDefinition } {
+  return {
+    [BEWITCHING_CODE]: {
+      code: BEWITCHING_CODE,
+      limit: 1,
+      name: t`Attachments`,
+      buttonLabel: t`Bewitching`,
+      traits: ['trick'],
+      icon: 'wand',
+      targetSize: 3,
+    },
+    [JOE_DIAMOND_CODE]: {
+      code: JOE_DIAMOND_CODE,
+      traits: ['insight'],
+      name: t`Hunch deck`,
+      buttonLabel: t`Hunch deck`,
+      icon: 'lightbulb',
+      targetSize: 11,
+      requiredCards: {
+        [UNSOLVED_CASE_CODE]: 1,
+      },
+    },
+    [STICK_TO_THE_PLAN_CODE]: {
+      code: STICK_TO_THE_PLAN_CODE,
+      limit: 1,
+      traits: ['tactic', 'supply'],
+      name: t`Attachments`,
+      buttonLabel: t`Stick to the Plan`,
+      icon: 'package',
+      targetSize: 3,
+    },
+    [UNDERWORLD_MARKET_CODE]: {
+      code: UNDERWORLD_MARKET_CODE,
+      traits: ['illicit'],
+      name: t`Market deck`,
+      buttonLabel: t`Market deck`,
+      icon: 'store',
+      targetSize: 10,
+    },
+    [ELDRITCH_BRAND_CODE]: {
+      code: ELDRITCH_BRAND_CODE,
+      traits: ['spell'],
+      name: t`Branded spell`,
+      buttonLabel: t`Branded spell`,
+      icon: 'stamp',
+      targetSize: 1,
+    },
+  };
+}
+export const ATTACHABLE_CARDS: { [code: string]: AttachableDefinition } = getAttachableCards();
 
 export const UNIDENTIFIED_UNTRANSLATED = new Set([
   '02021', // Strange Solution

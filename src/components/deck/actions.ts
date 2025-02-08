@@ -559,6 +559,19 @@ export function decDeckSlot(id: DeckId, code: string, mode?: 'side' | 'extra' | 
   };
 }
 
+
+export function setDeckAttachmentSlot(id: DeckId, code: string, value: number, attachment_code: string): UpdateDeckEditCountsAction {
+  return {
+    type: UPDATE_DECK_EDIT_COUNTS,
+    id,
+    code: code,
+    operation: 'set',
+    value,
+    countType: 'attachment',
+    attachment_code,
+  };
+}
+
 export function setDeckSlot(id: DeckId, code: string, value: number, mode?: 'side' | 'extra' | 'ignore'): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,

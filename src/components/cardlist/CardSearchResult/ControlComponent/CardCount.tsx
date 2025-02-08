@@ -3,6 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { AttachableDefinition, DeckId } from '@actions/types';
+import { PossibleAttachmentsCounts } from './AttachmentComponent';
+
 interface Props {
   count: number;
   deltaCountMode?: boolean;
@@ -33,6 +36,28 @@ export function CardCount({ count, deltaCountMode, showZeroCount }: Props) {
     );
   }
   return null;
+}
+
+
+interface Props {
+  count: number;
+  deltaCountMode?: boolean;
+  showZeroCount?: boolean;
+  attachments?: AttachableDefinition[];
+}
+
+export function DeckCardCount({ count, code, deltaCountMode, showZeroCount, attachments, deckId }: Props & {
+  code: string;
+  attachments: AttachableDefinition[];
+  deckId: DeckId;
+}) {
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center',justifyContent: 'flex-end'}}>
+      <PossibleAttachmentsCounts locked code={code} deckId={deckId} count={count} attachments={attachments} />
+      <CardCount count={count} deltaCountMode={deltaCountMode} showZeroCount={showZeroCount} />
+    </View>
+  );
+
 }
 
 const styles = StyleSheet.create({

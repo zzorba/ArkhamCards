@@ -16,9 +16,9 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
 import ArkhamLoadingSpinner from '@components/core/ArkhamLoadingSpinner';
 import { useFlag, useSettingValue } from '@components/core/hooks';
-import { DeckMeta, CardId, ParsedDeck, SplitCards, EditDeckState, Customizations, Slots } from '@actions/types';
-import { TypeCodeType, RANDOM_BASIC_WEAKNESS } from '@app_constants';
-import Card, { CardsMap, cardInCollection } from '@data/types/Card';
+import { DeckMeta, CardId, ParsedDeck, SplitCards, EditDeckState, Customizations, Slots, AttachableDefinition } from '@actions/types';
+import { TypeCodeType, RANDOM_BASIC_WEAKNESS, getAttachableCards } from '@app_constants';
+import Card, { CardsMap, InvestigatorChoice, cardInCollection } from '@data/types/Card';
 import DeckValidation from '@lib/DeckValidation';
 import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import { getPacksInCollection, getShowCustomContent } from '@reducers';
@@ -368,7 +368,32 @@ interface Props {
     [name: string]: Card[];
   };
 }
+export function useAttachableCards() {
+  const { lang } = useContext(LanguageContext);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return useMemo(() => getAttachableCards(), [lang]);
+}
+export function useDeckAttachments(
+  investigator: InvestigatorChoice | undefined,
+  slots: Slots | undefined
+): [AttachableDefinition[], (card: Card) => AttachableDefinition[]] {
+  const attachableCards = useAttachableCards();
+  const attachables = useMemo(() => {
+    return filter(Object.values(attachableCards), attachment => {
+      console.log(attachment.code, slots);
+      return attachment.code === investigator?.main.code || !!slots?.[attachment.code];
+    });
+  }, [attachableCards, investigator, slots]);
 
+  const forCard = useCallback((card: Card) => {
+    return attachables.filter(attachment =>
+      (attachment.requiredCards?.[card.code] ?? 0) > 0 ||
+      !!attachment.traits?.find(trait => card.real_traits_normalized?.indexOf(`#${trait}#`) !== -1)
+    );
+  }, [attachables]);
+
+  return [attachables, forCard];
+}
 
 export default function useParsedDeckComponent({
   componentId, tabooSetId, parsedDeck, cardsByName,
@@ -380,8 +405,9 @@ export default function useParsedDeckComponent({
   const ignore_collection = useSettingValue('ignore_collection');
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const slots = parsedDeck?.slots;
-  const lockedPermanents = parsedDeck?.lockedPermanents;
   const investigator = parsedDeck?.investigator;
+  const [, attachablesForCard] = useDeckAttachments(investigator, slots);
+  const lockedPermanents = parsedDeck?.lockedPermanents;
   const [uniqueBondedCards, bondedCounts, bondedCardsCount] = useMemo((): [Card[], Slots, number] => {
     if (!slots) {
       return [[], {}, 0];
@@ -687,14 +713,17 @@ export default function useParsedDeckComponent({
         onShufflePress: () => showDrawWeakness(true),
       };
     }
-    if (mode === 'view' || item.mode === 'bonded') {
-      return count !== undefined ? {
-        type: 'count',
-        count,
-      } : undefined;
-    }
+    const possibleAttachments = attachablesForCard(card);
     if (!deckId) {
       return undefined;
+    }
+    if (mode === 'view' || item.mode === 'bonded') {
+      return count !== undefined ? {
+        type: 'deck_count',
+        count,
+        deckId,
+        attachments: possibleAttachments,
+      } : undefined;
     }
     const upgradeEnabled = editable && item.hasUpgrades;
     return {
@@ -706,8 +735,11 @@ export default function useParsedDeckComponent({
       limit: card.collectionDeckLimit(inCollection, ignore_collection),
       onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : (undefined),
       customizable: !!editable && item.customizable,
+      attachments: possibleAttachments,
     };
-  }, [mode, lockedPermanents, deckId, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
+  }, [mode, lockedPermanents, deckId,
+    attachablesForCard,
+    showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
   const singleCardView = useSettingValue('single_card');
   const { colors } = useContext(StyleContext);
   const showSwipeCard = useCallback((id: string, card: Card) => {

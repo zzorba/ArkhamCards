@@ -15,7 +15,7 @@ import specialCards from '@data/deck/specialCards';
 import { usePlayerCards, useSettingValue } from '@components/core/hooks';
 import { getPacksInCollection } from '@reducers';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
-import { encodeExtraDeckSlots } from '@lib/parseDeck';
+import { encodeMetaSlots } from '@lib/parseDeck';
 import deepEqual from 'deep-equal';
 
 interface Props {
@@ -162,7 +162,7 @@ export default function useChaosDeckGenerator({
           'extra'
         );
         if (extraSuccess) {
-          setMeta('extra_deck', encodeExtraDeckSlots(extraSlots));
+          setMeta('extra_deck', encodeMetaSlots(extraSlots));
         }
       }
       setSlots(undefined);
