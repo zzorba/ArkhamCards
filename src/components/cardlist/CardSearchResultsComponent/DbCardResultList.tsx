@@ -922,7 +922,7 @@ export default function({
   const deck = parsedDeck?.deckT;
   const deckEdits = parsedDeck?.deckEdits;
   const deckId = deck?.id;
-  const [, attachmentsForCard] = useDeckAttachments(parsedDeck?.parsedDeck?.investigator, parsedDeck?.parsedDeck?.slots);
+  const [attachmentsForCard] = useDeckAttachments(parsedDeck?.parsedDeck?.investigator, parsedDeck?.parsedDeck?.slots);
   const customizations = useLiveCustomizations(deck, deckEdits);
   const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
   const tabooSetOverride = parsedDeck?.deck !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;

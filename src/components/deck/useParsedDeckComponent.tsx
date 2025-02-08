@@ -25,7 +25,7 @@ import { getPacksInCollection, getShowCustomContent } from '@reducers';
 import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { xpString } from './hooks';
+import { useDeckAttachmentSlots, xpString } from './hooks';
 import { BONDED_WEAKNESS_COUNTS, THE_INSANE_CODE } from '@data/deck/specialCards';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 
@@ -80,12 +80,12 @@ function hasCustomizationUpgrades(
 function getCount(item: SectionCardId): [number, 'side' | 'extra' | 'ignore' | undefined] {
   if (item.ignoreCount) {
     return [item.quantity, 'ignore'];
-  } else if (item.mode === 'side') {
+  }
+  if (item.mode === 'side') {
     return [item.quantity, 'side'];
-  } else if (item.mode === 'extra') {
+  }
+  if (item.mode === 'extra') {
     return [item.quantity, 'extra'];
-  } else if (item.mode === 'bonded') {
-    return [item.quantity, undefined];
   }
   return [
     item.quantity,
@@ -95,7 +95,7 @@ function getCount(item: SectionCardId): [number, 'side' | 'extra' | 'ignore' | u
 
 
 interface SectionCardId extends CardId {
-  mode: 'special' | 'extra' | 'side' | 'bonded' | 'ignore' | undefined;
+  mode: 'special' | 'extra' | 'side' | 'bonded' | 'attachment' | 'ignore' | undefined;
   hasUpgrades: boolean;
   customizable: boolean;
   index: number;
@@ -305,6 +305,40 @@ function deckToSections(
   ];
 }
 
+function attachmentSection(
+  attachment: AttachableDefinition,
+  slots: Slots,
+  cards: Card[],
+  attachmentSlots: Slots,
+  index: number,
+): [DeckSection | undefined, number] {
+  if (!cards.length) {
+    return [undefined, index];
+  }
+  const total = sumBy(cards, c => attachment.requiredCards?.[c.code] ?? attachmentSlots[c.code] ?? 0);
+  const sections: CardSection[] = [{
+    id: `attachment_${attachment.code}`,
+    cards: map(cards, c => {
+      return {
+        id: c.code,
+        quantity: slots[c.code] ?? 0,
+        index: index++,
+        mode: 'attachment',
+        bonded: true,
+        hasUpgrades: false,
+        limited: false,
+        invalid: false,
+        customizable: false,
+      };
+    }),
+    last: true,
+  }];
+  return [{
+    title: `${attachment.name} (${total} / ${attachment.targetSize})`,
+    sections,
+  }, index];
+}
+
 function bondedSections(
   uniqBondedCards: Card[],
   counts: Slots,
@@ -376,11 +410,10 @@ export function useAttachableCards() {
 export function useDeckAttachments(
   investigator: InvestigatorChoice | undefined,
   slots: Slots | undefined
-): [AttachableDefinition[], (card: Card) => AttachableDefinition[]] {
+): [(card: Card) => AttachableDefinition[], AttachableDefinition | undefined] {
   const attachableCards = useAttachableCards();
   const attachables = useMemo(() => {
     return filter(Object.values(attachableCards), attachment => {
-      console.log(attachment.code, slots);
       return attachment.code === investigator?.main.code || !!slots?.[attachment.code];
     });
   }, [attachableCards, investigator, slots]);
@@ -392,7 +425,7 @@ export function useDeckAttachments(
     );
   }, [attachables]);
 
-  return [attachables, forCard];
+  return [forCard, investigator?.main ? attachableCards[investigator.main.code] : undefined];
 }
 
 export default function useParsedDeckComponent({
@@ -406,7 +439,8 @@ export default function useParsedDeckComponent({
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const slots = parsedDeck?.slots;
   const investigator = parsedDeck?.investigator;
-  const [, attachablesForCard] = useDeckAttachments(investigator, slots);
+  const [attachablesForCard, investigatorAttachment] = useDeckAttachments(investigator, slots);
+  const investigatorAttachmentSlots = useDeckAttachmentSlots(parsedDeck?.id, investigatorAttachment);
   const lockedPermanents = parsedDeck?.lockedPermanents;
   const [uniqueBondedCards, bondedCounts, bondedCardsCount] = useMemo((): [Card[], Slots, number] => {
     if (!slots) {
@@ -528,11 +562,29 @@ export default function useParsedDeckComponent({
     );
     const newData: DeckSection[] = [deckSection, specialSection];
     let currentIndex = specialIndex;
+
+    if (investigatorAttachment) {
+      const theSlots = {
+        ...(mode === 'view' ? investigatorAttachmentSlots : slots),
+        ...(investigatorAttachment.requiredCards ?? {}),
+      };
+      const possibleCards = filter(flatMap(Object.keys(theSlots), code => cards[code] ?? []), c =>
+        !!investigatorAttachment.requiredCards?.[c.code] ||
+        !!investigatorAttachment.traits?.find(t => c.real_traits_normalized?.indexOf(`#${t}#`) !== -1)
+      );
+      const [section, attachmentIndex] = attachmentSection(investigatorAttachment, theSlots, possibleCards, investigatorAttachmentSlots, currentIndex);
+      if (section) {
+        newData.push(section)
+        currentIndex = attachmentIndex;
+      }
+    }
+
     const [bonded, bondedIndex] = bondedSections(uniqueBondedCards, bondedCounts, bondedCardsCount, currentIndex);
     if (bonded) {
       newData.push(bonded);
       currentIndex = bondedIndex;
     }
+
     if (theLimitSlotCount > 0) {
       let index = currentIndex;
       const limitedCards: SectionCardId[] = map(filter(flatten([
@@ -665,6 +717,9 @@ export default function useParsedDeckComponent({
     currentIndex = sideIndex;
     setData(newData);
   }, [
+    investigatorAttachment,
+    investigatorAttachmentSlots,
+    mode,
     bondedCounts, showCustomContent, showEditExtra,
     customizations,
     requiredCards,
@@ -713,10 +768,10 @@ export default function useParsedDeckComponent({
         onShufflePress: () => showDrawWeakness(true),
       };
     }
-    const possibleAttachments = attachablesForCard(card);
     if (!deckId) {
       return undefined;
     }
+    const possibleAttachments = mode === 'view' && item.mode === 'attachment' ? [] : attachablesForCard(card);
     if (mode === 'view' || item.mode === 'bonded') {
       return count !== undefined ? {
         type: 'deck_count',
@@ -725,6 +780,7 @@ export default function useParsedDeckComponent({
         attachments: possibleAttachments,
       } : undefined;
     }
+
     const upgradeEnabled = editable && item.hasUpgrades;
     return {
       type: 'upgrade',
@@ -755,7 +811,7 @@ export default function useParsedDeckComponent({
     }
     const index = parseInt(id, 10);
     const visibleCards: Card[] = [];
-    const controls: ('deck' | 'side' | 'extra' | 'special' | 'ignore' | 'bonded')[] = [];
+    const controls: ('deck' | 'side' | 'extra' | 'special' | 'ignore' | 'attachment' | 'bonded')[] = [];
     forEach(data, deckSection => {
       forEach(deckSection.sections, section => {
         forEach(section.cards, item => {

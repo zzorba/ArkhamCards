@@ -40,7 +40,7 @@ export type AttachableDefinition = {
   limit?: number;
   name: string;
   buttonLabel: string;
-  requiredCards?: Record<string, number>;
+  requiredCards?: Slots;
   targetSize: number;
   traits?: string[];
 };

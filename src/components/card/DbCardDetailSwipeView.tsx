@@ -46,7 +46,7 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
-  controls?: ('deck' | 'side' | 'extra' | 'special' | 'ignore' | 'bonded' | 'checklist')[];
+  controls?: ('deck' | 'side' | 'extra' | 'special' | 'ignore' | 'bonded' | 'checklist' | 'attachment')[];
   initialCards?: Card[];
   initialIndex: number;
   whiteNav: boolean;
@@ -387,7 +387,7 @@ function DbCardDetailSwipeView(props: Props) {
   }, [showSpoilers, spoilers, showAllSpoilers]);
   const lockedPermanents = parsedDeck?.parsedDeck?.lockedPermanents;
   const slots = deckEdits?.slots;
-  const [attachments, attachmentsForCard] = useDeckAttachments(parsedDeck.parsedDeck?.investigator, slots);
+  const [attachmentsForCard, investigatorAttachment] = useDeckAttachments(parsedDeck.parsedDeck?.investigator, slots);
 
   const deckCountControls = useMemo(() => {
     if (deckId === undefined || !currentCard) {
@@ -396,8 +396,21 @@ function DbCardDetailSwipeView(props: Props) {
     if (currentControl === 'bonded') {
       return null;
     }
-    const attachments = attachmentsForCard(currentCard);
     const deck_limit: number = currentCard.collectionDeckLimit(packInCollection, ignore_collection);
+    if (currentControl === 'attachment' && investigatorAttachment) {
+      return (
+        <FloatingDeckQuantityComponent
+          code={currentCard.code}
+          deckId={deckId}
+          min={lockedPermanents?.[currentCard.code]}
+          limit={deck_limit}
+          mode={undefined}
+          editable={editable}
+          attachments={[investigatorAttachment]}
+        />
+      );
+    }
+    const attachments = attachmentsForCard(currentCard)
     return (
       <FloatingDeckQuantityComponent
         code={currentCard.code}
@@ -409,7 +422,7 @@ function DbCardDetailSwipeView(props: Props) {
         attachments={attachments}
       />
     );
-  }, [attachmentsForCard, lockedPermanents, deckId, editable, currentCard, currentControl, packInCollection, ignore_collection]);
+  }, [attachmentsForCard, investigatorAttachment, lockedPermanents, deckId, editable, currentCard, currentControl, packInCollection, ignore_collection]);
   const mode = deckEdits?.mode;
   const data: (Card | undefined)[] = useMemo(() => {
     return map(cardCodes, code => cards[code]);

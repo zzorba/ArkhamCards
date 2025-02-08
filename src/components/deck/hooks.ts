@@ -163,21 +163,24 @@ export function useLiveCustomizations(
 }
 
 export function useDeckAttachmentSlots(
-  { uuid }: DeckId,
-  attachment: AttachableDefinition,
+  deckId: DeckId | undefined,
+  attachment: AttachableDefinition | undefined,
 ): Slots {
   const selector = useMemo(
     () =>
       createSelector(
         (state: AppState) => state.deckEdits.editting,
         (state: AppState) => state.deckEdits.edits,
-        (state: AppState, uuid: string) => uuid,
+        (state: AppState, uuid: string | undefined) => uuid,
         (
           state: AppState,
-          uuid: string,
-          attachment: AttachableDefinition,
+          uuid: string | undefined,
+          attachment: AttachableDefinition | undefined,
         ) => attachment,
         (editting, edits, uuid, attachment): Slots => {
+          if (!uuid || !attachment) {
+            return {};
+          }
           if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
             return {};
           }
@@ -188,7 +191,7 @@ export function useDeckAttachmentSlots(
       ),
     []
   );
-  return useSelector((state: AppState) => selector(state, uuid, attachment));
+  return useSelector((state: AppState) => selector(state, deckId?.uuid, attachment));
 }
 
 export function useDeckAttachmentCount(

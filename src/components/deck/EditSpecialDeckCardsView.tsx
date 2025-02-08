@@ -43,7 +43,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     parsedDeck,
     parsedDeckRef,
   } = parsedDeckObj;
-  const [, attachmentsForCard] = useDeckAttachments(parsedDeck?.investigator, parsedDeck?.slots);
+  const [attachmentsForCard] = useDeckAttachments(parsedDeck?.investigator, parsedDeck?.slots);
   const [requiredCards, requiredCardsLoading] = useRequiredCards(parsedDeck?.investigator, tabooSetId);
 
   const cardPressed = useCallback((card: Card) => {

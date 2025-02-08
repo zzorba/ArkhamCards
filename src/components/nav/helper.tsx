@@ -221,7 +221,7 @@ export function showDrawSimulator(
 export function showCardSwipe(
   componentId: string,
   codes: string[],
-  controls: undefined | 'side' | 'extra' | 'checklist' | ('side' | 'deck' | 'extra' | 'ignore' | 'bonded' | 'special' | 'checklist')[],
+  controls: undefined | 'side' | 'extra' | 'checklist' | ('side' | 'deck' | 'extra' | 'ignore' | 'bonded' | 'attachment' | 'special' | 'checklist')[],
   index: number,
   colors: ThemeColors,
   initialCards?: Card[],
