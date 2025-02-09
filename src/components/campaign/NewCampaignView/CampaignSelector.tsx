@@ -23,28 +23,23 @@ interface CampaignState {
 }
 
 export default function CampaignSelector({ componentId, campaignChanged }: Props) {
-  const [campaignState, setCampaignState] = useState<CampaignState>({
-    hasGuide: true,
-    selectedCampaign: t`The Night of the Zealot`,
-    selection: {
-      type: 'campaign',
-      code: CORE,
-    },
-  });
+  const [campaignState, setCampaignState] = useState<CampaignState | undefined>();
   useEffect(() => {
-    const {
-      selectedCampaign,
-      selection,
-      customCampaign,
-      hasGuide,
-    } = campaignState;
-    campaignChanged(
-      selection,
-      (selection.type === 'campaign' && selection.code === CUSTOM) ?
-        (customCampaign || 'Custom Campaign') :
+    if (campaignState) {
+      const {
         selectedCampaign,
-      hasGuide
-    );
+        selection,
+        customCampaign,
+        hasGuide,
+      } = campaignState;
+      campaignChanged(
+        selection,
+        (selection.type === 'campaign' && selection.code === CUSTOM) ?
+          (customCampaign || 'Custom Campaign') :
+          selectedCampaign,
+        hasGuide
+      );
+    }
   }, [campaignState, campaignChanged]);
 
   const handleCampaignChanged = useCallback((selection: CampaignSelection, text: string, hasGuide: boolean) => {
@@ -73,17 +68,12 @@ export default function CampaignSelector({ componentId, campaignChanged }: Props
     });
   }, [componentId, handleCampaignChanged]);
 
-  const {
-    selectedCampaign,
-    selection,
-  } = campaignState;
-
   return (
     <DeckPickerStyleButton
       first
       editable
-      title={selection.type === 'campaign' ? t`Campaign` : t`Standalone`}
-      valueLabel={selectedCampaign}
+      title={!campaignState || campaignState.selection.type === 'campaign' ? t`Campaign` : t`Standalone`}
+      valueLabel={campaignState?.selectedCampaign}
       onPress={campaignPressed}
       icon="book"
     />

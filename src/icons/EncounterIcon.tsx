@@ -9,6 +9,7 @@ import CircleIcon from './CircleIcon';
 import CoreSetIcon from './CoreSetIcon';
 import DarkMatterIcon from './DarkMatterIcon';
 import DreamEatersIcon from './DreamEatersIcon';
+import DrownedIcon from './DrownedIcon';
 import DunwichIcon from './DunwichIcon';
 import EdgeIcon from './EdgeIcon';
 import ForgottenIcon from './ForgottenIcon';
@@ -76,6 +77,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
   }
   darkMatterIcon(name: string, size: number, color: string) {
     return (<DarkMatterIcon name={name} size={size} color={color} />);
+  }
+  drownedIcon(name: string, size: number, color: string) {
+    return (<DrownedIcon name={name} size={size} color={color} />);
   }
 
   cyclopeanIcon(name: string, size: number, color: string) {
@@ -606,8 +610,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'ticc':
       case 'the_innsmouth_conspiracy':
         return this.innsmouthIcon('tic', size, color);
+      case 'tdc':
       case 'tdcp':
-        return this.arkhamIcon('auto_fail', size, color);
+        return this.drownedIcon('tdcp', size, color);
       case 'creatures_of_the_deep':
         return this.innsmouthIcon('creatures_from_below', size, color);
       case 'the_locals':

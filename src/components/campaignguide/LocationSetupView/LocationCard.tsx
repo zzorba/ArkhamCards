@@ -84,7 +84,7 @@ function LocationCardImage({ code, back, name, width, height, placeholder, toggl
     );
   }
   return (
-    <ToolTip label={(back && card.back_name) || card.name} height={height} width={width} toggle={toggle} setToggle={setToggle}>
+    <ToolTip title={(back && card.back_name) || card.name} height={height} width={width} toggle={toggle} setToggle={setToggle}>
       <FastImage
         style={{ width, height }}
         source={{

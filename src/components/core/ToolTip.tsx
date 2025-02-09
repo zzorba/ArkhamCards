@@ -3,14 +3,15 @@ import React, { useContext, ReactNode, useCallback } from 'react';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
-  label: string | undefined;
+  title: string | undefined;
+  label?: string;
   children: ReactNode;
   height: number;
   width: number;
   toggle: boolean;
   setToggle: (toggle: boolean) => void;
 }
-export default function ToolTip({ label, height, width, children, toggle, setToggle }: Props) {
+export default function ToolTip({ title, label, height, width, children, toggle, setToggle }: Props) {
   const { colors, typography } = useContext(StyleContext);
 
   const handlePressIn = useCallback(() => {
@@ -43,9 +44,14 @@ export default function ToolTip({ label, height, width, children, toggle, setTog
               right: -40,
             }}
           >
-            <Text style={[typography.small, typography.regular, { textAlign: 'center' }]}>
-              {label}
+            <Text style={[typography.small, label ? typography.bold : typography.regular, { textAlign: 'center' }]}>
+              { title }
             </Text>
+            { !!label && (
+              <Text style={[typography.tiny, typography.regular, { textAlign: 'center' }]}>
+                { label }
+              </Text>
+            )}
           </View>
           <View
             style={{
