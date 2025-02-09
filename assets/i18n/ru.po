@@ -2223,19 +2223,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -6135,6 +6135,41 @@ msgid "Timeline"
 msgstr ""
 
 msgid "Strange Assistance"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Bewitching"
+msgstr ""
+
+msgid "Hunch deck"
+msgstr ""
+
+msgid "Stick to the Plan"
+msgstr ""
+
+msgid "Market deck"
+msgstr ""
+
+msgid "Branded spell"
+msgstr ""
+
+msgid "Too many selected"
+msgstr ""
+
+msgid "Each card must be different"
+msgstr ""
+
+#, javascript-format
+msgid "Limit of ${ limit } card"
+msgid_plural "Limit of ${ limit } cards"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#, javascript-format
+msgid "${ total } of ${ attachment.targetSize }"
 msgstr ""
 
 msgctxt "investigator"

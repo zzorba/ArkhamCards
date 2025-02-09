@@ -887,7 +887,7 @@
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
+            "text": "La Pietra Nera"
           },
           {
             "id": "unrequited_love",
@@ -968,7 +968,7 @@
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
+            "text": "La Pietra Nera"
           },
           {
             "id": "university_halls",
@@ -3699,7 +3699,7 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "<i>Avete stretto un legame con Ichtaca</i>."
+            "text": "avete stretto un legame con Ichtaca."
           },
           {
             "id": "investigators_recovered_relic",
@@ -4413,67 +4413,67 @@
           },
           {
             "id": "atw_bernards_fate",
-            "text": "you have discovered Bernard's fate."
+            "text": "avete scoperto il destino di Bernard."
           },
           {
             "id": "atw_custodian_of_knowledge",
-            "text": "you are the custodian of Ithaqua's knowledge."
+            "text": "sei custode del sapere di Ithaqua."
           },
           {
             "id": "atw_defeated_the_wendigo",
-            "text": "you defated the Wendigo."
+            "text": "avete sconfitto il Wendigo."
           },
           {
             "id": "atw_discovered_the_fate_of_the_students",
-            "text": "you have discovered the fate of Dr. Nadelmann's students."
+            "text": "avete scoperto il destino degli studenti del dottor Nadelmann."
           },
           {
             "id": "atw_found_the_gold",
-            "text": "you have found Hanninah's gold."
+            "text": "avete trovato l'oro dell'Hanninah."
           },
           {
             "id": "atw_have_enough_evidence",
-            "text": "you have enough evidence to clear Dr. Nadelmann."
+            "text": "avete prove a sufficienza per scagionare il dottor Nadelmann."
           },
           {
             "id": "atw_norman_alive",
-            "text": "Norman is alive."
+            "text": "Norman è vivo."
           },
           {
             "id": "atw_norman_dead",
-            "text": "You let Norman die."
+            "text": "Avete lasciato morire Norman."
           },
           {
             "id": "atw_normans_fate",
-            "text": "you have discovered Norman's fate."
+            "text": "avete scoperto il destino di Norman."
           },
           {
             "id": "atw_sarcee_are_hunting",
-            "text": "the Sarcee are hunting you down."
+            "text": "i Sarcee vi danno la caccia."
           },
           {
             "id": "atw_saved_charlie",
-            "text": "you saved Charlie."
+            "text": "avete salvato Charlie."
           },
           {
             "id": "atw_saved_the_gold_prospector",
-            "text": "you saved the gold prospector."
+            "text": "avete salvato il cercatore d'oro."
           },
           {
             "id": "atw_sylvias_fate",
-            "text": "you have discovered Sylvia's fate."
+            "text": "avete scoperto il destino di Sylvia."
           },
           {
             "id": "atw_wendigo_still_roams",
-            "text": "you know that the Wendigo still roams the North Hanninah valley."
+            "text": "sapete che il Wendigo vaga ancora per la valle del Nord Hanninah."
           },
           {
             "id": "banished_shax",
-            "text": "the investigators banished Shax."
+            "text": "gli investigatori hanno esiliato Shax."
           },
           {
             "id": "banished_the_gilded_spirit",
-            "text": "the investigators banished the gilded spirit."
+            "text": "gli investigatori hanno esiliato lo Spirito Dorato."
           },
           {
             "id": "blob_contained",
@@ -4501,27 +4501,27 @@
           },
           {
             "id": "constellation_was_lost_to_the_depths",
-            "text": "the Constellation was lost to the depths."
+            "text": "la Costellazione è ormai persa negli abissi."
           },
           {
             "id": "constellation_was_saved",
-            "text": "the Constellation was saved."
+            "text": "la Costellazione è salva."
           },
           {
             "id": "dario_was_turned_into_solid_gold",
-            "text": "Dario was turned into solid gold."
+            "text": "Dario è stato trasformato in oro massiccio."
           },
           {
             "id": "darios_investment_didnt_pay_off",
-            "text": "Dario's investment didn't pay off."
+            "text": "l'investimento di Dario non è stato ammortizzato."
           },
           {
             "id": "dr_maleson_was_lost_between_dimensions",
-            "text": "Dr. Maleson was lost between dimensions."
+            "text": "il Dott. Maleson è scomparso tra le dimensioni."
           },
           {
             "id": "dr_malesons_experiment_was_a_failure",
-            "text": "Dr. Maleson's experiment was a failure."
+            "text": "l'esperimento del Dott. Maleson è stato un fallimento."
           },
           {
             "id": "fof_alarm_level",
@@ -4597,19 +4597,19 @@
           },
           {
             "id": "gathered_samples_from_another_earth",
-            "text": "the investigators gathered samples from another Earth."
+            "text": "gli investigatori hanno raccolto dei campioni da un'altra Terra."
           },
           {
             "id": "halted_the_blood_ceremony",
-            "text": "the investigators halted the blood ceremony."
+            "text": "gli investigatori hanno interrotto la cerimonia del sangue."
           },
           {
             "id": "madame_labranche_has_lost_her_fortune",
-            "text": "Madame Labranche has lost her fortune."
+            "text": "Madame Labranche ha perso la sua fortuna."
           },
           {
             "id": "madame_labranche_has_settled_accounts",
-            "text": "Madame Labranche has settled accounts."
+            "text": "Madame Labranche ha regolato i conti."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -4629,35 +4629,35 @@
           },
           {
             "id": "observed_the_aftereffects_of_the_shift",
-            "text": "the investigators observed the aftereffects of the shift."
+            "text": "gli investigatori hanno studiato gli effetti collaterali del cambio di frequenza."
           },
           {
             "id": "olive_has_sworn_off_blood_magic",
-            "text": "Olive has sworn off blood magic."
+            "text": "Olive ha ripudiato la Magia del Sangue."
           },
           {
             "id": "olive_paid_the_price_for_her_curiosity",
-            "text": "Olive paid the price for her curiosity."
+            "text": "Olive ha pagato a caro prezzo la sua curiosità."
           },
           {
             "id": "purged_the_police_station",
-            "text": "the investigators purged the police station."
+            "text": "gli investigatori hanno epurato la stazione di polizia."
           },
           {
             "id": "renewed_the_labranches_pact",
-            "text": "the investigators renewed the Labranches' pact."
+            "text": "gli investigatori hanno rinnovato il patto di Labranche"
           },
           {
             "id": "repaired_the_golden_artifact",
-            "text": "the investigators repaired the golden artifact."
+            "text": "gli investigatori hanno riparato l'artefatto d'oro."
           },
           {
             "id": "ritual_at_sea_was_completed",
-            "text": "the ritual at sea was completed."
+            "text": "il rituale è stato completato."
           },
           {
             "id": "ritual_at_sea_was_halted",
-            "text": "the ritual at sea was halted."
+            "text": "il rituale è stato interrotto."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
@@ -4673,7 +4673,7 @@
           },
           {
             "id": "saved_the_mutated_officer",
-            "text": "the investigators saved the mutated officer."
+            "text": "gli investigatori hanno salvato l'agente mutato."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -4697,11 +4697,11 @@
           },
           {
             "id": "testsuo_made_a_noble_sacrifice",
-            "text": "Tetsuo made a noble sacrifice."
+            "text": "Tetsuo si è sacrificato nobilmente."
           },
           {
             "id": "tetsuos_investigation_has_failed",
-            "text": "Tetsuo's investigation has failed."
+            "text": "l'indagine di Tetsuo è fallita."
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
@@ -4717,15 +4717,15 @@
           },
           {
             "id": "used_the_sorcrerers_magic_against_them",
-            "text": "the investigators used the sorcerers' magic against them."
+            "text": "gli investigatori hanno utilizzato la magia degli stregoni contro loro stessi."
           },
           {
             "id": "zbs_have_seen_and_understood",
-            "text": "you have seen, and understood."
+            "text": "avete visto, e avete compreso."
           },
           {
             "id": "zbs_the_monolith_broods_in_silence",
-            "text": "the monolith broods in silence."
+            "text": "il Monolito attende nel silenzio."
           },
           {
             "id": "zcos_abandoned_the_people_of_eastwick",
@@ -4741,7 +4741,7 @@
           },
           {
             "id": "zez_all_is_quiet",
-            "text": "all is quiet at Rue d'Auseil… for now."
+            "text": "nella Rue d'Auseil tutto è calmo... per ora."
           },
           {
             "id": "zhu_avenged_the_house_of_usher",
@@ -4753,19 +4753,19 @@
           },
           {
             "id": "zlf_ignis_destroy_humanity",
-            "text": "Ignis will bring about the destruction of humanity."
+            "text": "Ignis distruggerà l'umanità."
           },
           {
             "id": "zlf_ignis_spirit_has_been_crushed",
-            "text": "Ignis’ spirit has been crushed."
+            "text": "lo spirito di Ignis è stato frantumato."
           },
           {
             "id": "zlf_italy_has_ceased_to_exist",
-            "text": "Italy has ceased to exist."
+            "text": "l'Italia non esiste più."
           },
           {
             "id": "zlf_slain_the_eldrich_god",
-            "text": "you have slain the eldrich god of fire."
+            "text": "gli investigatori hanno ucciso l'antico Dio del Fuoco."
           }
         ]
       },
@@ -5849,7 +5849,7 @@
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "<i>Avete stretto un legame con Ichtaca</i>."
+            "text": "avete stretto un legame con Ichtaca."
           },
           {
             "id": "investigators_recovered_relic",
@@ -7353,151 +7353,151 @@
         "entries": [
           {
             "id": "alice_perished_and_wonderland_has_been_lost_forever",
-            "text": "Alice perished and Wonderland has been lost forever."
+            "text": "Alice è morta e Wonderland è persa per sempre."
           },
           {
             "id": "controlled_the_snark",
-            "text": "the investigators controlled the Snark."
+            "text": "gli investigatori hanno controllato lo Snark."
           },
           {
             "id": "gurathnaka_and_its_shadows_consumed_the_earth",
-            "text": "Gurathnaka and its shadows consumed the earth."
+            "text": "Gurathnaka e le sue ombre hanno divorato la Terra."
           },
           {
             "id": "gurathnaka_and_its_shadows_were_banished_from_arkham",
-            "text": "Gurathnaka and its shadows were banished from Arkham."
+            "text": "Gurathnaka e le sue ombre sono state esiliate da Arkham."
           },
           {
             "id": "hare_and_hatter_enjoyed_your_company",
-            "text": "the Hare and  Hatter thoroughly enjoyed your company."
+            "text": "la Lepre Marzolina e il Cappellaio hanno davvero apprezzato la vostra compagnia."
           },
           {
             "id": "hare_and_hatter_were_cast_into_the_shadows",
-            "text": "the Hare and the Hatter were cast into the shadows."
+            "text": "la Lepre Marzolina ed il Cappellaio sono stati catturati dalle ombre."
           },
           {
             "id": "hare_couldnt_cope_with_hatters_death",
-            "text": "the Hare couldn't cope with the Hatter's death."
+            "text": "la Lepre Marzolina non ha potuto sopportare la perdita del Cappellaio."
           },
           {
             "id": "hare_hatter_and_dormouse_were_consumed_by_shadows",
-            "text": "the Hare, Hatter, and Dormouse were consumed by shadows."
+            "text": "la Lepre Marzolina, il Cappellaio e il Ghiro sono stati divorati dalle ombre."
           },
           {
             "id": "hatter_couldnt_cope_with_hares_death",
-            "text": "the Hatter couldn't cope with the Hare's death."
+            "text": "il Cappellaio non ha potuto sopportare la perdita della Lepre Marzolina."
           },
           {
             "id": "intimidated_the_snark",
-            "text": "the investigators intimidated the Snark."
+            "text": "gli investigatori hanno intimidito lo Snark."
           },
           {
             "id": "intrigued_the_snark",
-            "text": "the investigators intrigued the Snark."
+            "text": "gli investigatori hanno incuriosito lo Snark."
           },
           {
             "id": "jabberwock_still_haunts_the_tulgey_wood",
-            "text": "the Jabberwock still haunts the Tulgey Wood."
+            "text": "il Jabberwock infesta ancora il Bosco Tulgato."
           },
           {
             "id": "one_of_the_tweedles_learned_about_the_cost_of_war",
-            "text": "one of the Tweedles learned about the cost of war."
+            "text": "uno dei gemelli ha conosciuto il prezzo della guerra."
           },
           {
             "id": "puzzled_the_snark",
-            "text": "the investigators puzzled the Snark."
+            "text": "gli investigatori hanno suscitato la perplessità dello Snark."
           },
           {
             "id": "queen_destroyed_the_shadows_in_a_fit_of_rage",
-            "text": "the Queen destroyed the shadows in a fit of rage."
+            "text": "la Regina ha distrutto le ombre in un moto d'ira."
           },
           {
             "id": "queens_castle_was_consumed_by_shadows",
-            "text": "the Queen's castle was consumed by shadows."
+            "text": "il castello della Regina è stato divorato dalle ombre."
           },
           {
             "id": "separated_alices_dreams_from_the_real_world",
-            "text": "the investigators separated Alice's dreams from the real world."
+            "text": "che gli investigatori hanno separato i sogni di Alice dal mondo reale."
           },
           {
             "id": "shadows_grow_stronger_with_each_passing_moment",
-            "text": "the shadows grow stronger with each passing moment."
+            "text": "le ombre diventano più forti ogni minuto che passa."
           },
           {
             "id": "shadows_maintain_their_grip_on_alices_dreams",
-            "text": "the shadows maintain their grip on Alice's dreams."
+            "text": "le ombre mantengono la presa sui sogni di Alice."
           },
           {
             "id": "shadows_weakened_by_wonderlands_instability",
-            "text": "the shadows have been weakened by Wonderland's instability."
+            "text": "le ombre sono state indebolite dall'instabilità di Wonderland."
           },
           {
             "id": "snark_and_its_hunters_were_never_met_with_again",
-            "text": "the Snark and its hunters were never met with again."
+            "text": "lo Snark e i suoi cacciatori non sono mai più stati visti."
           },
           {
             "id": "took_the_jabberwocks_head",
-            "text": "the investigators took the Jabberwock's head."
+            "text": "gli investigatori hanno raccolto la testa del Jabberwock."
           },
           {
             "id": "tricked_the_snark",
-            "text": "the investigators tricked the Snark."
+            "text": "gli investigatori hanno imbrogliato lo Snark."
           },
           {
             "id": "tweedles_learned_that_there_are_worse_things_than_fighting_each_other",
-            "text": "the Tweedles learned that there are worse things than fighting each other."
+            "text": "i gemelli hanno imparato che ci sono cose peggiori che combattere l'uno contro l'altro."
           },
           {
             "id": "tweedles_perished_in_their_bloody_battle",
-            "text": "the Tweedles perished in their bloody battle."
+            "text": "i gemelli sono morti nella loro battaglia sanguinaria."
           },
           {
             "id": "tweedles_war_war_brought_to_an_end",
-            "text": "the Tweedles' war was brought to an end."
+            "text": "la guerra dei Gemelli è giunta al termine."
           },
           {
             "id": "walrus_and_carpenter_ate_their_last_meal",
-            "text": "the Walrus and the Carpenter ate their last meal."
+            "text": "il Tricheco e il Falegname hanno consumato il loro ultimo pasto."
           },
           {
             "id": "walrus_and_carpenter_have_lost_their_appetites",
-            "text": "the Walrus and the Carpenter have lost their appetites."
+            "text": "il Tricheco e il Falegname hanno perso l'appetito."
           },
           {
             "id": "walrus_and_carpenter_were_completely_obliterated",
-            "text": "the Walrus and the Carpenter were completely obliterated."
+            "text": "il Tricheco e il Falegname sono stati completamente obliterati."
           },
           {
             "id": "went_down_the_rabbit_hole",
-            "text": "the investigators went down the rabbit hole."
+            "text": "gli investigatori sono scesi nella tana del Coniglio."
           },
           {
             "id": "went_through_the_looking_glass",
-            "text": "the investigators went through the looking glass."
+            "text": "gli investigatori sono passati attraverso lo Specchio."
           },
           {
             "id": "white_king_celebrates_a_grand_victory",
-            "text": "the White King celebrates a grand victory."
+            "text": "il Re Bianco festeggia una grandiosa vittoria."
           },
           {
             "id": "white_king_was_slain_by_the_red_pieces",
-            "text": "the White King was slain by the red pieces."
+            "text": "il Re Bianco è stato ucciso dai rossi."
           },
           {
             "id": "white_knight_has_fallen_in_battle_to_the_red_queen",
-            "text": "the White Knight has fallen in battle to the Red Queen."
+            "text": "il Cavaliere Bianco è caduto nella battaglia contro la Regina Rossa."
           },
           {
             "id": "white_knight_revels_in_your_victory_over_the_red_queen",
-            "text": "the White Knight revels in your victory over the Red Queen."
+            "text": "il Cavaliere Bianco festeggia la vostra vittoria sulla Regina Rossa."
           },
           {
             "id": "white_rabbit_consumed_by_shadows",
-            "text": "the White Rabbit was consumed by shadows."
+            "text": "il Coniglio Bianco è stato consumato dalle ombre."
           },
           {
             "id": "white_rabbit_survived_the_monsters_attack",
-            "text": "the White Rabbit survived the monster's attack."
+            "text": "il Coniglio Bianco è sopravvissuto all'attacco del mostro."
           }
         ]
       },
@@ -7506,27 +7506,27 @@
         "entries": [
           {
             "id": "compassion",
-            "text": "Compassion"
+            "text": "Compassione"
           },
           {
             "id": "courage",
-            "text": "Courage"
+            "text": "Coraggio"
           },
           {
             "id": "curiosity",
-            "text": "Curiosity"
+            "text": "Curiosità"
           },
           {
             "id": "intuition",
-            "text": "Intuition"
+            "text": "Intuito"
           },
           {
             "id": "patience",
-            "text": "Patience"
+            "text": "Pazienza"
           },
           {
             "id": "reason",
-            "text": "Reason"
+            "text": "Ragione"
           }
         ]
       },
@@ -7552,7 +7552,7 @@
         "entries": [
           {
             "id": "gryphon_and_mock_turtle",
-            "text": "The Gryphon and the Mock Turtle"
+            "text": "Il Grifone e la Finta Tartaruga"
           },
           {
             "id": "humpty_dumpty",
@@ -7560,23 +7560,23 @@
           },
           {
             "id": "lion_and_unicorn",
-            "text": "The Lion and the Unicorn"
+            "text": "Il Leone e l'Unicorno"
           },
           {
             "id": "the_caterpillar",
-            "text": "The Caterpillar"
+            "text": "Il Bruco"
           },
           {
             "id": "the_dodo",
-            "text": "The Dodo"
+            "text": "Il Dodo"
           },
           {
             "id": "the_duchess",
-            "text": "The Duchess"
+            "text": "La Duchessa"
           },
           {
             "id": "the_white_queen",
-            "text": "The White Queen"
+            "text": "La Regina Bianca"
           }
         ]
       },
@@ -7585,7 +7585,7 @@
         "entries": [
           {
             "id": "gryphon_and_mock_turtle",
-            "text": "The Gryphon and the Mock Turtle"
+            "text": "Il Grifone e la Finta Tartaruga"
           },
           {
             "id": "humpty_dumpty",
@@ -7593,23 +7593,23 @@
           },
           {
             "id": "lion_and_unicorn",
-            "text": "The Lion and the Unicorn"
+            "text": "Il Leone e l'Unicorno"
           },
           {
             "id": "the_caterpillar",
-            "text": "The Caterpillar"
+            "text": "Il Bruco"
           },
           {
             "id": "the_dodo",
-            "text": "The Dodo"
+            "text": "Il Dodo"
           },
           {
             "id": "the_duchess",
-            "text": "The Duchess"
+            "text": "La Duchessa"
           },
           {
             "id": "the_white_queen",
-            "text": "The White Queen"
+            "text": "La Regina Bianca"
           }
         ]
       }
@@ -7793,105 +7793,105 @@
         "entries": [
           {
             "id": "took_out_a_loan",
-            "masculine_text": "#name# took out a loan.",
-            "feminine_text": "#name# took out a loan.",
-            "nonbinary_text": "#name# took out a loan."
+            "masculine_text": "#name# ha chiesto un prestito.",
+            "feminine_text": "#name# ha chiesto un prestito.",
+            "nonbinary_text": "#name# ha chiesto un prestito."
           },
           {
             "id": "architects_project_was_fully_completed",
-            "text": "the architects' project was fully completed."
+            "text": "il progetto degli Architetti è stato completato."
           },
           {
             "id": "architects_project_was_sabotaged",
-            "text": "the architects's project was sabotaged."
+            "text": "il progetto degli Architetti è stato sabotato."
           },
           {
             "id": "arrived_on_schedule",
-            "text": "the investigators arrived on schedule."
+            "text": "gli investigatori sono arrivati in tempo."
           },
           {
             "id": "chose_the_least_predictable_route",
-            "text": "the investigators chose the least predictable route."
+            "text": "gli investigatori hanno scelto la rotta meno prevedibile."
           },
           {
             "id": "chose_the_most_direct_route",
-            "text": "the investigators chose the most direct route."
+            "text": "gli investigatori hanno scelto la via più diretta."
           },
           {
             "id": "chose_the_most_populous_route",
-            "text": "the investigators chose the most popular route."
+            "text": "gli investigatori hanno scelto la rotta più trafficata."
           },
           {
             "id": "cthulhu_reigns",
-            "text": "Cthulhu reigns over all humankind."
+            "text": "Cthulhu regna su tutta l'umanità."
           },
           {
             "id": "cthulhu_slumbers",
-            "text": "Cthulhu slumbers in the deep once more."
+            "text": "Cthulhu dorme ancora una volta negli abissi."
           },
           {
             "id": "cults_project_nears_completion",
-            "text": "the cult's project nears completion."
+            "text": "il progetto del culto sta per essere completato."
           },
           {
             "id": "escaped_rlyeh",
-            "text": "the investigators escaped from R'lyeh."
+            "text": "gli investigatori sono fuggiti da R'lyeh."
           },
           {
             "id": "expelled_the_traitors",
-            "text": "the investigators expelled the traitors."
+            "text": "gli investigatori hanno scacciato i traditori."
           },
           {
             "id": "explored_the_myra_louise",
-            "text": "the investigators explored the Myra Louise."
+            "text": "gli investigatori hanno esplorato la Myra Louise."
           },
           {
             "id": "exposed_the_traitors",
-            "text": "the investigators exposed the traitors."
+            "text": "gli investigatori hanno smascherato i traditori."
           },
           {
             "id": "failed_to_find_the_myra_louise",
-            "text": "the investigators failed to find the Myra Louise."
+            "text": "gli investigatori non sono riusciti a rintracciare la Myra Louise."
           },
           {
             "id": "failed_to_stop_the_traitors_plan",
-            "text": "the investigators failed to stop the traitors' plan."
+            "text": "gli investigatori non sono riusciti a fermare il piano dei traditori."
           },
           {
             "id": "forced_to_withdraw",
-            "text": "the investigators were forced to withdraw."
+            "text": "gli investigatori sono stati costretti a ritirarsi."
           },
           {
             "id": "found_the_missing_artifacts",
-            "text": "the investigators found the missing artifacts."
+            "text": "gli investigatori hanno trovato i manufatti scomparsi."
           },
           {
             "id": "found_the_myra_louise",
-            "text": "the investigators found the Myra Louise."
+            "text": "gli investigatori hanno rintracciato la Myra Louise."
           },
           {
             "id": "have_been_observed",
-            "text": "the investigators have been observed."
+            "text": "gli investigatori sono tenuti d'occhio."
           },
           {
             "id": "interviewed_the_broker",
-            "text": "the investigators interviewed the broker."
+            "text": "gli investigatori hanno interrogato la banditrice."
           },
           {
             "id": "know_the_full_story",
-            "text": "the investigators know the full story."
+            "text": "gli investigatori conoscono tutta la verità."
           },
           {
             "id": "left_the_auction_early",
-            "text": "the investigators left the auction early."
+            "text": "gli investigatori hanno lasciato l'asta in anticipo."
           },
           {
             "id": "severely_delayed",
-            "text": "the investigators were severely delayed."
+            "text": "gli investigatori sono in grave ritardo."
           },
           {
             "id": "understand_the_truth",
-            "text": "the investigators understand the truth."
+            "text": "gli investigatori hanno compreso la verità."
           }
         ]
       },
@@ -7920,7 +7920,7 @@
           },
           {
             "id": "wallace",
-            "text": "Wallce Thorpe"
+            "text": "Wallace Thorpe"
           }
         ]
       },
@@ -7950,10 +7950,6 @@
           {
             "id": "wallace",
             "text": "Wallace Thorpe"
-          },
-          {
-            "id": "wallace",
-            "text": "Wallce Thorpe"
           }
         ]
       },
@@ -8727,139 +8723,139 @@
         "entries": [
           {
             "id": "ancestors_approve_of_your_actions",
-            "text": "the ancestors approve of your actions."
+            "text": "gli antenati approvano le vostre azioni."
           },
           {
             "id": "captain_marlow_is_alive",
-            "text": "Captain Marlow is alive."
+            "text": "il Capitano Marlow è vivo."
           },
           {
             "id": "captain_marlow_is_in_the_hands_of_the_ancestors",
-            "text": "Captain Marlow is in the hands of the ancestors."
+            "text": "il Capitano Marlow è nelle mani degli Antenati."
           },
           {
             "id": "darkness_has_descended_on_the_congo",
-            "text": "the Avatar of Darkness freely walks the Earth."
+            "text": "l'Incarnazione delle Tenebre cammina liberamente sulla Terra."
           },
           {
             "id": "darkness_has_descended_on_the_congo",
-            "text": "the Darkness has descended on the Congo."
+            "text": "le Tenebre sono discese sul Congo."
           },
           {
             "id": "darkness_stared_back_at_you",
-            "text": "the Darkness stared back at you."
+            "text": "le Tenebre hanno scrutato anche dentro di voi."
           },
           {
             "id": "deciphered_the_journal_of_the_mad_russian",
-            "text": "you deciphered the journal of a mad Russian."
+            "text": "avete decifrato il Diario di un Russo Folle."
           },
           {
             "id": "director_does_not_trust_you",
-            "text": "the Director does not trust you."
+            "text": "il Direttore non si fida di voi."
           },
           {
             "id": "director_is_conspiring_against_kurtz",
-            "text": "the Director is conspiring against Kurtz."
+            "text": "il Direttore sta cospirando contro Kurtz."
           },
           {
             "id": "drove_off_a_tribe_of_darkness_worshippers",
-            "text": "you drove off a tribe of Darkness worshippers."
+            "text": "avete scacciato una tribù di adoratori delle Tenebre."
           },
           {
             "id": "extracted_a_confession_from_kurtzs_warrior",
-            "text": "you extracted a confession from Kurtz's Warrior."
+            "text": "avete estorto una confessione al Guerriero di Kurtz."
           },
           {
             "id": "found_a_strange_encrypted_book",
-            "text": "you found a strange encrypted book."
+            "text": "avete trovato uno strano libro cifrato."
           },
           {
             "id": "found_a_strange_obsidian_status",
-            "text": "you found a strange obsidian statue."
+            "text": "avete trovato una strana statuetta di ossidiana."
           },
           {
             "id": "found_kurtzs_personal_belongings",
-            "text": "you found Kurtz's personal belongings."
+            "text": "avete trovato gli effetti personali di Kurtz."
           },
           {
             "id": "have_a_prisoner_on_board",
-            "text": "you have a prisoner on board."
+            "text": "avete un prigioniero a bordo."
           },
           {
             "id": "have_injured_the_white_ape",
-            "text": "you have injured the White Ape."
+            "text": "avete ferito la Scimmia Bianca."
           },
           {
             "id": "know_about_miss_promise",
-            "text": "you know about Miss Promise."
+            "text": "sapete di Miss Promise."
           },
           {
             "id": "know_how_to_imprison_the_darkness",
-            "text": "you know how to imprison the Darkness."
+            "text": "sapete come imprigionare le Tenebre."
           },
           {
             "id": "made_a_promise_to_kurtz",
-            "text": "you made a promise to Kurtz."
+            "text": "avete fatto una promessa a Kurtz."
           },
           {
             "id": "prisoner_died",
-            "text": "the prisoner died while trying to escape"
+            "text": "il prigioniero è morto cercando di evadere"
           },
           {
             "id": "prisoner_escaped",
-            "text": "the prisoner escaped"
+            "text": "il prigioniero è fuggito"
           },
           {
             "id": "questioned_kurtzs_warrior",
-            "text": "you questioned Kurtz's Warrior."
+            "text": "avete interrogato il Guerriero di Kurtz."
           },
           {
             "id": "returned_from_the_heart_of_darkness",
-            "text": "the investigators have returned from the heart of darkness."
+            "text": "gli investigatori sono ritornati dal Cuore delle Tenebre."
           },
           {
             "id": "saw_a_dark_shadow_in_the_flames",
-            "text": "you saw a dark shadow in the flames."
+            "text": "avete scorto un'ombra tra le fiamme."
           },
           {
             "id": "solved_the_mystery_of_freslevens_murder",
-            "text": "you solved the mystery of Fresleven's murder."
+            "text": "avete risolto il mistero dell'omicidio di Fresleven."
           },
           {
             "id": "spent_a_long_time_going_up_the_congo_river",
-            "text": "you spent a long time going up the Congo river."
+            "text": "avete perso molto tempo per risalire il fiume Congo."
           },
           {
             "id": "stared_into_the_darkness",
-            "text": "you have stared into the Darkness."
+            "text": "avete scrutato nelle Tenebre."
           },
           {
             "id": "the_ancestors_are_proud_of_you",
-            "text": "the Ancestors are proud of you."
+            "text": "gli Antenati sono orgogliosi di voi."
           },
           {
             "id": "the_ancestors_are_watching_you",
-            "text": "the Ancestors are watching you."
+            "text": "gli Antenati ti osservano."
           },
           {
             "id": "told_about_the_area_around_the_inner_station",
-            "text": "you were told about the area around the Inner Station."
+            "text": "vi è stato parlato dell'area attorno alla Stazione Interna."
           },
           {
             "id": "treated_at_the_central_stations_infirmary",
-            "text": "you were treated at the Central Station's infirmary."
+            "text": "siete stati curati nell'infermeria della Stazione Centrale."
           },
           {
             "id": "tribe_of_the_black_hand_has_left_their_lands",
-            "text": "the Tribe of the Black Hand has left their lands."
+            "text": "la Tribù della Mano Nera ha lasciato le proprie terre."
           },
           {
             "id": "unable_to_bring_kurtz_back_alive",
-            "text": "the investigators were unable to bring Kurtz back alive."
+            "text": "gli investigatori non sono riusciti a recuperare Kurtz vivo."
           },
           {
             "id": "went_up_the_congo_river",
-            "text": "you went up the Congo river."
+            "text": "avete risalito il fiume Congo."
           }
         ]
       },

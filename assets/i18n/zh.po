@@ -6020,6 +6020,39 @@ msgstr ""
 msgid "Strange Assistance"
 msgstr ""
 
+msgid "Attachments"
+msgstr ""
+
+msgid "Bewitching"
+msgstr ""
+
+msgid "Hunch deck"
+msgstr ""
+
+msgid "Stick to the Plan"
+msgstr ""
+
+msgid "Market deck"
+msgstr ""
+
+msgid "Branded spell"
+msgstr ""
+
+msgid "Too many selected"
+msgstr ""
+
+msgid "Each card must be different"
+msgstr ""
+
+#, javascript-format
+msgid "Limit of ${ limit } card"
+msgid_plural "Limit of ${ limit } cards"
+msgstr[0] ""
+
+#, javascript-format
+msgid "${ total } of ${ attachment.targetSize }"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自訂"

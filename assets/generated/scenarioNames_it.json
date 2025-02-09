@@ -5,7 +5,7 @@
   },
   {
     "id": "a_house_divided",
-    "name": "A House Divided"
+    "name": "Una Casa Frammentata"
   },
   {
     "id": "a_light_in_the_fog",
@@ -17,7 +17,7 @@
   },
   {
     "id": "a_sea_of_troubles",
-    "name": "A Sea of Troubles"
+    "name": "Un Mare di Guai"
   },
   {
     "id": "a_thousand_shapes_of_horror",
@@ -37,15 +37,15 @@
   },
   {
     "id": "across_dreadful_waters",
-    "name": "Across Dreadful Waters"
+    "name": "Su Acque Terrificanti"
   },
   {
     "id": "africa_is_watching",
-    "name": "Africa is Watching"
+    "name": "L'Africa Osserva"
   },
   {
     "id": "against_the_wendigo",
-    "name": "Against the Wendigo"
+    "name": "Contro il Wendigo"
   },
   {
     "id": "alexandria",
@@ -65,7 +65,7 @@
   },
   {
     "id": "anything_once",
-    "name": "Anything Once"
+    "name": "Tutto, Almeno Una Volta"
   },
   {
     "id": "arkham",
@@ -77,7 +77,7 @@
   },
   {
     "id": "arkham_in_wonderland",
-    "name": "Arkham in Wonderland"
+    "name": "Arkham nel Paese delle Meraviglie"
   },
   {
     "id": "armitages_fate",
@@ -137,7 +137,7 @@
   },
   {
     "id": "bleeding_hearts",
-    "name": "Bleeding Hearts"
+    "name": "Cuori Sanguinanti"
   },
   {
     "id": "blob_that_ate_everything",
@@ -149,7 +149,7 @@
   },
   {
     "id": "blood_from_stones",
-    "name": "Blood From Stones"
+    "name": "Sangue dalle Pietre"
   },
   {
     "id": "blood_on_the_altar",
@@ -197,7 +197,7 @@
   },
   {
     "id": "consternation_on_the_constellation",
-    "name": "Consternation on the Constellation"
+    "name": "Costernazione sulla Costellazione"
   },
   {
     "id": "core",
@@ -213,7 +213,7 @@
   },
   {
     "id": "crumbling_masonry",
-    "name": "Crumbling Masonry"
+    "name": "Architettura Decadente"
   },
   {
     "id": "curse_of_the_rougarou",
@@ -361,7 +361,7 @@
   },
   {
     "id": "fools_mate",
-    "name": "Fool's Mate"
+    "name": "Il Matto dello Stolto"
   },
   {
     "id": "for_the_greater_good",
@@ -389,11 +389,11 @@
   },
   {
     "id": "going_twice",
-    "name": "Going Twice"
+    "name": "Qualcuno Offre di Più?"
   },
   {
     "id": "gryphon_and_mock_turtle",
-    "name": "Gryphon and Mock Turtle"
+    "name": "Il Grifone e la Finta Tartaruga"
   },
   {
     "id": "hall_of_the_mountain_king",
@@ -493,7 +493,7 @@
   },
   {
     "id": "jennys_choice",
-    "name": "Jenny's Choice"
+    "name": "La Scelta di Jenny"
   },
   {
     "id": "kabul",
@@ -521,7 +521,7 @@
   },
   {
     "id": "legions_of_fire",
-    "name": "Legions of Fire"
+    "name": "Legioni di Fuoco"
   },
   {
     "id": "london",
@@ -533,7 +533,7 @@
   },
   {
     "id": "lost_moorings",
-    "name": "Lost Moorings"
+    "name": "Ormeggi Sciolti"
   },
   {
     "id": "lost_quantum",
@@ -541,7 +541,7 @@
   },
   {
     "id": "lucid_nightmare",
-    "name": "Lucid Nightmare"
+    "name": "Incubo Lucido"
   },
   {
     "id": "machinations_through_time",
@@ -581,7 +581,7 @@
   },
   {
     "id": "mysterious_benefits",
-    "name": "Mysterious Benefits"
+    "name": "Benefattori Misteriosi"
   },
   {
     "id": "nairobi",
@@ -613,7 +613,7 @@
   },
   {
     "id": "private_lives",
-    "name": "Private Lives"
+    "name": "Vite Private"
   },
   {
     "id": "ptc_epilogue",
@@ -641,7 +641,7 @@
   },
   {
     "id": "pyroclastic_flow",
-    "name": "Pyroclastic Flow"
+    "name": "Flusso Piroclastico"
   },
   {
     "id": "quito",
@@ -881,11 +881,11 @@
   },
   {
     "id": "sibling_rivalry",
-    "name": "Sibling Rivalry"
+    "name": "Rivalità tra Fratelli"
   },
   {
     "id": "something_big",
-    "name": "Something Big"
+    "name": "Qualcosa di Grosso"
   },
   {
     "id": "starfall",
@@ -917,7 +917,7 @@
   },
   {
     "id": "tempest_in_a_teapot",
-    "name": "Tempest in a Teapot"
+    "name": "Tempesta in una Tazza di Tè"
   },
   {
     "id": "tentacles",
@@ -961,7 +961,7 @@
   },
   {
     "id": "the_avatar_of_darkness",
-    "name": "The Avatar of Darkness"
+    "name": "L'Incarnazione delle Tenebre"
   },
   {
     "id": "the_black_cat",
@@ -969,7 +969,7 @@
   },
   {
     "id": "the_black_stone",
-    "name": "The Black Stone"
+    "name": "La Pietra Nera"
   },
   {
     "id": "the_boundary_beyond",
@@ -977,7 +977,7 @@
   },
   {
     "id": "the_caterpillar",
-    "name": "The Caterpillar"
+    "name": "Il Bruco"
   },
   {
     "id": "the_city_of_archives",
@@ -985,7 +985,7 @@
   },
   {
     "id": "the_colour_out_of_space",
-    "name": "The Colour Out of Space"
+    "name": "Il Colore Venuto dallo Spazio"
   },
   {
     "id": "the_crown",
@@ -1001,11 +1001,11 @@
   },
   {
     "id": "the_dodo",
-    "name": "The Dodo"
+    "name": "Il Dodo"
   },
   {
     "id": "the_duchess",
-    "name": "The Duchess"
+    "name": "La Duchessa"
   },
   {
     "id": "the_eternal_slumber",
@@ -1013,7 +1013,7 @@
   },
   {
     "id": "the_fall_of_the_house_of_usher",
-    "name": "The Fall of the House of Usher"
+    "name": "La Caduta della Casa degli Usher"
   },
   {
     "id": "the_fallen",
@@ -1069,7 +1069,7 @@
   },
   {
     "id": "the_lion_and_the_unicorn",
-    "name": "The Lion and the Unicorn"
+    "name": "Il Leone e l'Unicorno"
   },
   {
     "id": "the_longest_night",
@@ -1089,7 +1089,7 @@
   },
   {
     "id": "the_midwinter_gala",
-    "name": "The Midwinter Gala"
+    "name": "Il Gala di Mezzo Inverno"
   },
   {
     "id": "the_miskatonic_museum",
@@ -1145,7 +1145,7 @@
   },
   {
     "id": "the_symphony_of_erich_zann",
-    "name": "The Symphony of Erich Zann"
+    "name": "La Sinfonia di Erich Zann"
   },
   {
     "id": "the_syzygy",
@@ -1181,7 +1181,7 @@
   },
   {
     "id": "the_white_queen",
-    "name": "The White Queen"
+    "name": "La Regina Bianca"
   },
   {
     "id": "the_witching_hour",
@@ -1205,7 +1205,7 @@
   },
   {
     "id": "to_the_heart_of_the_congo",
-    "name": "To the Heart of the Congo"
+    "name": "Nel Cuore del Congo"
   },
   {
     "id": "tokyo",
@@ -1213,11 +1213,11 @@
   },
   {
     "id": "tomb_of_dead_dreams",
-    "name": "Tomb of Dead Dreams"
+    "name": "La Tomba dei Sogni Morenti"
   },
   {
     "id": "too_noble",
-    "name": "Too Noble"
+    "name": "Troppo Nobile"
   },
   {
     "id": "torch",
@@ -1261,7 +1261,7 @@
   },
   {
     "id": "unscrupulous_investments",
-    "name": "Unscrupulous Investments"
+    "name": "Investimenti Senza Scrupoli"
   },
   {
     "id": "unstuck",
@@ -1293,7 +1293,7 @@
   },
   {
     "id": "wild_snark_chase",
-    "name": "Wild Snark Chase"
+    "name": "La Caccia allo Snark"
   },
   {
     "id": "wilds",
@@ -1313,11 +1313,11 @@
   },
   {
     "id": "zhod_interlude_1",
-    "name": "First Night Aboard the Roi des Belges"
+    "name": "Prima Notte a Bordo del Roi des Belges"
   },
   {
     "id": "zhod_interlude_2",
-    "name": "Kurtz's Warrior"
+    "name": "Il Guerriero di Kurtz"
   },
   {
     "id": "zhod_prologue",
