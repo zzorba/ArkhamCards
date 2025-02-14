@@ -349,11 +349,14 @@ export default class FilterBuilder {
   }
 
   slotFilter(slots: string[]): Brackets[] {
+    if (!slots.length) {
+      return [];
+    }
     const [none, otherSlots] = partition(slots, (s) => s === 'none');
     const clause: Brackets[] = this.complexVectorClause(
       'slot',
       map(otherSlots, (slot) => `%#${slot}#%`),
-      (valueName: string) => `c.real_slots_normalized LIKE :${valueName}`
+      (valueName: string) => `c.real_slots_normalized is not null AND c.real_slots_normalized LIKE :${valueName}`
     );
     if (!none.length) {
       return clause;
