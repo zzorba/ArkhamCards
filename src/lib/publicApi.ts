@@ -443,7 +443,7 @@ export const checkForPendingCards = async function(
     console.log(lastSynced, oneHourAgo);
     const possiblePartialSync = !!lastSynced && lastSynced > oneHourAgo;
     return {
-      missingCardCount: (serverCache.card_count ?? 0) - (cache?.cardCount ?? 0),
+      missingCardCount: Math.max((serverCache.card_count ?? 0) - (cache?.cardCount ?? 0), 0),
       lastSynced,
       lastServerUpdate,
       possiblePartialSync,
