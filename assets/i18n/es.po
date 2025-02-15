@@ -794,19 +794,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -5773,7 +5773,7 @@ msgid "Parallel Cards"
 msgstr "Cartas paralelas"
 
 msgid "Heart of Darkness"
-msgstr ""
+msgstr "El corazón de las tinieblas"
 
 msgid "Information on Kurtz"
 msgstr ""
@@ -6056,68 +6056,68 @@ msgid "These cards might have been updated, from a new taboo list, or contain mi
 msgstr "Pueden ser cartas que se hayan actualizado, corregido, o cartas de la lista de tabúes."
 
 msgid "Fatigue"
-msgstr ""
+msgstr "Fatiga"
 
 msgid "The Colour Out of Oz"
-msgstr ""
+msgstr "El color de Oz"
 
 msgid "Preparations"
-msgstr ""
+msgstr "Preparativos"
 
 msgid "Companions of Oz"
-msgstr ""
+msgstr "Compañeros de Oz"
 
 msgid "Advantages"
-msgstr ""
+msgstr "Ventajas"
 
 msgid "Order of Events"
-msgstr ""
+msgstr "Orden de los eventos"
 
 msgid "Ages Unwound"
-msgstr ""
+msgstr "Eras desatadas"
 
 msgid "Create new deck"
 msgstr "Crear nuevo mazo"
 
 msgid "Timeline"
-msgstr ""
+msgstr "Cronología"
 
 msgid "Strange Assistance"
-msgstr ""
+msgstr "Asistencia extraña"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Vinculadas"
 
 msgid "Bewitching"
-msgstr ""
+msgstr "Encantadora"
 
 msgid "Hunch deck"
-msgstr ""
+msgstr "Mazo de Corazonadas"
 
 msgid "Stick to the Plan"
-msgstr ""
+msgstr "Ceñirse al plan"
 
 msgid "Market deck"
-msgstr ""
+msgstr "Mazo de Mercado"
 
 msgid "Branded spell"
-msgstr ""
+msgstr "Hechizo marcado"
 
 msgid "Too many selected"
-msgstr ""
+msgstr "Demasiadas seleccionadas"
 
 msgid "Each card must be different"
-msgstr ""
+msgstr "Cada carta debe ser diferente"
 
 #, javascript-format
 msgid "Limit of ${ limit } card"
 msgid_plural "Limit of ${ limit } cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Límite de ${ limit } carta"
+msgstr[1] "Límite de ${ limit } cartas"
 
 #, javascript-format
 msgid "${ total } of ${ attachment.targetSize }"
-msgstr ""
+msgstr "${ total } de ${ attachment.targetSize }"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -8539,8 +8539,8 @@ msgstr[1] "Llaves"
 msgctxt "header"
 msgid "Enemy-Location"
 msgid_plural "Enemy-Locations"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lugar-Enemigo"
+msgstr[1] "Lugares-Enemigo"
 
 msgctxt "tags"
 msgid "Add"
