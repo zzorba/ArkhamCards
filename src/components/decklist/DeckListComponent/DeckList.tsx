@@ -57,7 +57,7 @@ function DeckListItem({
   );
 }
 
-const MemoDeckListItem = React.memo(DeckListItem);
+const MemoDeckListItem = DeckListItem;
 
 export default function DeckList({
   deckIds, header, searchTerm, refreshing, deckToCampaign,

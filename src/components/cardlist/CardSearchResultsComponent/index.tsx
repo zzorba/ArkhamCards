@@ -35,6 +35,8 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { useSettingValue } from '@components/core/hooks';
 import { useParsedDeck } from '@components/deck/hooks';
+import { ParsedDeckContextProvider } from '@components/deck/DeckEditContext';
+import { useWhyDidYouUpdate } from '@lib/hooks';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -368,6 +370,7 @@ export default function({
       'and'
     );
   }, [baseQuery, filters, mythosToggle, selectedSorts, mythosMode, includeDuplicates, showCustomContent]);
+  useWhyDidYouUpdate('CardSearchResultsComponent.Query', { baseQuery, filters, mythosToggle, selectedSorts, mythosMode, includeDuplicates, showCustomContent });
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
   const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId, baseQuery });
   const renderFabIcon = useCallback(() => (
@@ -392,62 +395,64 @@ export default function({
   });
   const parsedDeck = useParsedDeck(deckId, componentId);
   return (
-    <CollapsibleSearchBox
-      prompt={t`Search for a card`}
-      advancedOptions={{
-        controls,
-        height: searchOptionsHeight(fontScale),
-      }}
-      searchTerm={searchTerm || ''}
-      onSearchChange={setSearchTerm}
-    >
-      { (handleScroll, showHeader) => (
-        <>
-          <DbCardResultList
-            componentId={componentId}
-            parsedDeck={parsedDeck}
-            filterId={filterId}
-            query={query}
-            filters={filters}
-            filterQuery={filterQuery || undefined}
-            textQuery={textQuery}
-            searchTerm={searchTerm}
-            sorts={selectedSorts}
-            investigator={investigator}
-            handleScroll={handleScroll}
-            showHeader={showHeader}
-            expandSearchControls={expandSearchControls}
-            expandSearchControlsHeight={expandSearchControlsHeight * ArkhamButton.computeHeight(fontScale, lang)}
-            headerItems={headerItems}
-            headerHeight={headerHeight}
-            showNonCollection={showNonCollection}
-            storyOnly={mode === 'story'}
-            specialMode={(mode === 'side' || mode === 'extra') ? mode : undefined}
-            mythosToggle={mythosToggle}
-            initialSort={initialSort}
-            footerPadding={deckId !== undefined ? DeckNavFooter.height : undefined}
-          />
-          { !!deckId && (
-            <>
-              <PreLoadedDeckNavFooter
-                componentId={componentId}
-                parsedDeckObj={parsedDeck}
-                control="fab"
-                onPress={backPressed}
-                mode={mode === 'extra' ? 'extra' : undefined}
-              />
-              <ActionButton
-                buttonColor={colors.D10}
-                renderIcon={renderFabIcon}
-                onPress={showFiltersPress}
-                offsetX={s + xs}
-                offsetY={NOTCH_BOTTOM_PADDING + s + xs}
-              />
-            </>
-          ) }
-        </>
-      ) }
-    </CollapsibleSearchBox>
+    <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>
+      <CollapsibleSearchBox
+        prompt={t`Search for a card`}
+        advancedOptions={{
+          controls,
+          height: searchOptionsHeight(fontScale),
+        }}
+        searchTerm={searchTerm || ''}
+        onSearchChange={setSearchTerm}
+      >
+        { (handleScroll, showHeader) => (
+          <>
+            <DbCardResultList
+              componentId={componentId}
+              deck={parsedDeck.deckT}
+              filterId={filterId}
+              query={query}
+              filters={filters}
+              filterQuery={filterQuery || undefined}
+              textQuery={textQuery}
+              searchTerm={searchTerm}
+              sorts={selectedSorts}
+              investigator={investigator}
+              handleScroll={handleScroll}
+              showHeader={showHeader}
+              expandSearchControls={expandSearchControls}
+              expandSearchControlsHeight={expandSearchControlsHeight * ArkhamButton.computeHeight(fontScale, lang)}
+              headerItems={headerItems}
+              headerHeight={headerHeight}
+              showNonCollection={showNonCollection}
+              storyOnly={mode === 'story'}
+              specialMode={(mode === 'side' || mode === 'extra') ? mode : undefined}
+              mythosToggle={mythosToggle}
+              initialSort={initialSort}
+              footerPadding={deckId !== undefined ? DeckNavFooter.height : undefined}
+            />
+            { !!deckId && (
+              <>
+                <PreLoadedDeckNavFooter
+                  componentId={componentId}
+                  parsedDeckObj={parsedDeck}
+                  control="fab"
+                  onPress={backPressed}
+                  mode={mode === 'extra' ? 'extra' : undefined}
+                />
+                <ActionButton
+                  buttonColor={colors.D10}
+                  renderIcon={renderFabIcon}
+                  onPress={showFiltersPress}
+                  offsetX={s + xs}
+                  offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+                />
+              </>
+            ) }
+          </>
+        ) }
+      </CollapsibleSearchBox>
+    </ParsedDeckContextProvider>
   );
 }
 

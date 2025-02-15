@@ -1,68 +1,35 @@
-import React, { useCallback, useMemo, useContext, useState, useRef, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import RoundButton from '@components/core/RoundButton';
-import { EditSlotsActions, useEffectUpdate } from '@components/core/hooks';
-import { incDeckSlot, decDeckSlot, setDeckSlot } from '@components/deck/actions';
 import CardQuantityComponent from './CardQuantityComponent';
-import { useDeckSlotCount } from '@components/deck/hooks';
-import { AttachableDefinition, DeckId } from '@actions/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { PossibleAttachmentsCounts } from './AttachmentComponent';
+import { ParsedDeckContext, useEligibleAttachments, useMutableDeckSlotCount } from '@components/deck/DeckEditContext';
+import Card from '@data/types/Card';
+import { AttachableDefinition } from '@actions/types';
 
 interface DeckCardQuantityProps {
-  deckId: DeckId;
-  code: string;
-  min: number | undefined;
+  card: Card;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore';
   showZeroCount?: boolean;
   forceBig?: boolean;
   editable?: boolean;
-  attachments: AttachableDefinition[];
+  attachmentOverride?: AttachableDefinition | undefined;
 }
 
 
-function DeckQuantityComponent({ min, deckId, editable, code, limit: propsLimit, showZeroCount, forceBig, mode, attachments }: DeckCardQuantityProps) {
+function DeckQuantityComponent({ editable, card, limit: propsLimit, showZeroCount, forceBig, mode, attachmentOverride }: DeckCardQuantityProps) {
   const limit = Math.min(propsLimit, mode === 'extra' ? 1 : propsLimit);
   const { colors } = useContext(StyleContext);
-  const [actualCount, ignoreCount] = useDeckSlotCount(deckId, code, mode);
-  const [count, setCount] = useState(actualCount);
-  useEffectUpdate(() => {
-    setCount(actualCount)
-  }, [setCount, actualCount]);
-  const countRef = useRef(count);
-  useEffect(() => {
-    countRef.current = count;
-  }, [count]);
-  const dispatch = useDispatch();
-  const countChanged: EditSlotsActions = useMemo(() => {
-    return {
-      setSlot: (code: string, count: number) => {
-        setCount(count);
-        setTimeout(() => dispatch(setDeckSlot(deckId, code, count, mode)), 20);
-      },
-      incSlot: (code: string) => {
-        setCount(Math.min(limit, countRef.current + 1));
-        setTimeout(() => dispatch(incDeckSlot(deckId, code, limit, mode)), 20);
-      },
-      decSlot: (code: string) => {
-        setCount(Math.max(0, countRef.current - 1));
-        setTimeout(() => dispatch(decDeckSlot(deckId, code, mode)), 20);
-      },
-    };
-  }, [dispatch, deckId, limit, mode, setCount]);
-  const onSidePress = useCallback(() => {
-    setCount(Math.max(0, countRef.current - 1));
-    setTimeout(() => {
-      dispatch(decDeckSlot(deckId, code, 'side'));
-      dispatch(incDeckSlot(deckId, code, limit, undefined));
-    }, 20);
-  }, [dispatch, deckId, code, limit]);
+  const attachments = useEligibleAttachments(card, attachmentOverride);
+  const { lockedPermanents } = useContext(ParsedDeckContext);
+  const min = !mode ? lockedPermanents?.[card.code] : 0;
+  const { count, ignoreCount, countChanged, onSidePress } = useMutableDeckSlotCount(card.code, limit, mode);
   return (
     <>
       { mode === 'side' && count > 0 && !!editable && (
@@ -78,9 +45,9 @@ function DeckQuantityComponent({ min, deckId, editable, code, limit: propsLimit,
           </RoundButton>
         </View>
       ) }
-      <PossibleAttachmentsCounts deckId={deckId} code={code} count={count} locked={!editable} attachments={attachments} />
+      <PossibleAttachmentsCounts code={card.code} count={count} locked={!editable} attachments={attachments} />
       <CardQuantityComponent
-        code={code}
+        code={card.code}
         min={min}
         limit={limit}
         countChanged={countChanged}
@@ -94,7 +61,7 @@ function DeckQuantityComponent({ min, deckId, editable, code, limit: propsLimit,
   );
 }
 
-export default React.memo(DeckQuantityComponent);
+export default DeckQuantityComponent;
 
 
 const styles = StyleSheet.create({

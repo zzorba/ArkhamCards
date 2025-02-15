@@ -134,7 +134,7 @@ function CardIcon({ card }: { card: Card }) {
   );
 }
 
-function CardSearchResult(props: Props) {
+export default function CardSearchResult(props: Props) {
   const {
     card,
     id,
@@ -339,8 +339,6 @@ function CardSearchResult(props: Props) {
     </View>
   );
 }
-export default React.memo(CardSearchResult);
-
 
 const styles = StyleSheet.create({
   rowContainer: {

@@ -3,8 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { AttachableDefinition, DeckId } from '@actions/types';
+import { AttachableDefinition } from '@actions/types';
 import { PossibleAttachmentsCounts } from './AttachmentComponent';
+import { useEligibleAttachments } from '@components/deck/DeckEditContext';
+import Card from '@data/types/Card';
 
 interface Props {
   count: number;
@@ -43,17 +45,15 @@ interface Props {
   count: number;
   deltaCountMode?: boolean;
   showZeroCount?: boolean;
-  attachments?: AttachableDefinition[];
 }
 
-export function DeckCardCount({ count, code, deltaCountMode, showZeroCount, attachments, deckId }: Props & {
-  code: string;
-  attachments: AttachableDefinition[];
-  deckId: DeckId;
+export function DeckCardCount({ count, card, deltaCountMode, showZeroCount }: Props & {
+  card: Card;
 }) {
+  const attachments = useEligibleAttachments(card);
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center',justifyContent: 'flex-end'}}>
-      <PossibleAttachmentsCounts locked code={code} deckId={deckId} count={count} attachments={attachments} />
+      <PossibleAttachmentsCounts locked code={card.code} count={count} attachments={attachments} />
       <CardCount count={count} deltaCountMode={deltaCountMode} showZeroCount={showZeroCount} />
     </View>
   );

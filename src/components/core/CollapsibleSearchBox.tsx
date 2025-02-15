@@ -58,6 +58,7 @@ export default function CollapsibleSearchBox({ banner, prompt, advancedOptions, 
       animateScroll(true);
     }
   }, [visible, animateScroll]);
+
   const hideHeader = useCallback(() => {
     if (visible && searchTerm === '') {
       animateScroll(false);

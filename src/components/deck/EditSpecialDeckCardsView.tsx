@@ -21,7 +21,7 @@ import { useAlertDialog } from './dialogs';
 import { CampaignId, DeckId } from '@actions/types';
 import StyleContext from '@styles/StyleContext';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
-import { useDeckAttachments } from './useParsedDeckComponent';
+import { ParsedDeckContextProvider } from './DeckEditContext';
 
 export interface EditSpecialCardsProps {
   id: DeckId;
@@ -29,9 +29,8 @@ export interface EditSpecialCardsProps {
   assignedWeaknesses?: string[];
 }
 
-function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps) {
+function EditSpecialDeckCardsView({ componentId, campaignId, assignedWeaknesses, id }: EditSpecialCardsProps & NavigationProps) {
   const { backgroundStyle, colors } = useContext(StyleContext);
-  const { componentId, campaignId, assignedWeaknesses, id } = props;
   const dispatch = useDispatch();
   const parsedDeckObj = useParsedDeck(id, componentId, 'edit');
   const {
@@ -43,9 +42,8 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     parsedDeck,
     parsedDeckRef,
   } = parsedDeckObj;
-  const [attachmentsForCard] = useDeckAttachments(parsedDeck?.investigator, parsedDeck?.slots);
   const [requiredCards, requiredCardsLoading] = useRequiredCards(parsedDeck?.investigator, tabooSetId);
-
+  const deckInvestigatorId = deckT?.investigator;
   const cardPressed = useCallback((card: Card) => {
     Navigation.push<CardDetailProps>(componentId, {
       component: {
@@ -55,11 +53,12 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
           pack_code: card.pack_code,
           showSpoilers: true,
           deckId: id,
+          deckInvestigatorId,
           initialCustomizations: parsedDeckRef.current?.customizations,
         },
       },
     });
-  }, [componentId, id, parsedDeckRef]);
+  }, [componentId, id, deckInvestigatorId, parsedDeckRef]);
   const [alertDialog, showAlert] = useAlertDialog();
   const showDrawWeakness = useShowDrawWeakness({
     componentId,
@@ -185,9 +184,9 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
       </>
     );
   }, [weaknesses, deckEdits, showDrawWeakness, editWeaknessPressed, cardPressed]);
-  const lockedPermanents = parsedDeck?.lockedPermanents;
+  const hasDeck = !!deckEdits;
   const investigatorSection = useMemo(() => {
-    if (!deckEdits) {
+    if (!hasDeck) {
       return null;
     }
     return (
@@ -201,16 +200,13 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
             onPress={cardPressed}
             control={{
               type: 'deck',
-              deckId: id,
-              min: lockedPermanents?.[card.code],
               limit: card.deck_limit || 1,
-              attachments: attachmentsForCard(card),
             }}
           />
         )) }
       </>
     );
-  }, [id, lockedPermanents, attachmentsForCard, cardPressed, deckEdits, requiredCards, requiredCardsLoading]);
+  }, [cardPressed, hasDeck, requiredCards, requiredCardsLoading]);
 
   const storyCards = useMemo(() => {
     if (!deckEdits) {
@@ -239,9 +235,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
             onPress={cardPressed}
             control={{
               type: 'deck_count',
-              deckId: id,
               count: deckEdits.slots[card.code],
-              attachments: attachmentsForCard(card),
             }}
           />
         )) }
@@ -252,7 +246,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         />
       </>
     );
-  }, [deckEdits, storyCards, id, attachmentsForCard, cardPressed, editStoryPressed]);
+  }, [deckEdits, storyCards, cardPressed, editStoryPressed]);
   const setIgnoreCardCount = useCallback((card: Card, count: number) => {
     dispatch(setIgnoreDeckSlot(id, card.code, count));
   }, [dispatch, id]);
@@ -273,15 +267,17 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   }, [componentId, setIgnoreCardCount, deckEdits, isSpecial]);
 
   return (
-    <>
-      <ScrollView style={[styles.wrapper, backgroundStyle]}>
-        { investigatorSection }
-        { ignoreCardsSection }
-        { storySection }
-        { basicWeaknessSection }
-      </ScrollView>
-      { alertDialog }
-    </>
+    <ParsedDeckContextProvider parsedDeckObj={parsedDeckObj}>
+      <>
+        <ScrollView style={[styles.wrapper, backgroundStyle]}>
+          { investigatorSection }
+          { ignoreCardsSection }
+          { storySection }
+          { basicWeaknessSection }
+        </ScrollView>
+        { alertDialog }
+      </>
+    </ParsedDeckContextProvider>
   );
 }
 

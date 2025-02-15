@@ -29,6 +29,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 import { Action } from 'redux';
 import useSingleCard from '@components/card/useSingleCard';
+import { SimpleDeckEditContextProvider } from './DeckEditContext';
 
 export interface UpgradeDeckProps {
   id: DeckId;
@@ -125,27 +126,29 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   return (
     <View style={styles.wrapper}>
       { traumaDialog }
-      <ScrollView style={[styles.container, backgroundStyle]}>
-        <View style={space.paddingM}>
-          <Text style={typography.text}>
-            { t`Upgrading your deck allows changes and experience to be tracked over the course of a campaign.` }
-          </Text>
-        </View>
-        <DeckUpgradeComponent
-          componentId={componentId}
-          deck={deck}
-          investigator={investigator}
-          startingXp={xp}
-          storyCounts={storyCounts}
-          ignoreStoryCounts={{}}
-          campaignSection={campaignSection}
-          saveButtonText={t`Save upgrade`}
-          ref={deckUpgradeComponent}
-          saving={saving}
-          error={error}
-          saveDeckUpgrade={saveDeckUpgrade}
-        />
-      </ScrollView>
+      <SimpleDeckEditContextProvider deckId={id} investigator={deck.investigator}>
+        <ScrollView style={[styles.container, backgroundStyle]}>
+          <View style={space.paddingM}>
+            <Text style={typography.text}>
+              { t`Upgrading your deck allows changes and experience to be tracked over the course of a campaign.` }
+            </Text>
+          </View>
+          <DeckUpgradeComponent
+            componentId={componentId}
+            deck={deck}
+            investigator={investigator}
+            startingXp={xp}
+            storyCounts={storyCounts}
+            ignoreStoryCounts={{}}
+            campaignSection={campaignSection}
+            saveButtonText={t`Save upgrade`}
+            ref={deckUpgradeComponent}
+            saving={saving}
+            error={error}
+            saveDeckUpgrade={saveDeckUpgrade}
+          />
+        </ScrollView>
+      </SimpleDeckEditContextProvider>
     </View>
   );
 }

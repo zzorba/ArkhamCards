@@ -63,6 +63,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import useTagPile from '@components/deck/useTagPile';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 import { parseMetaSlots } from '@lib/parseDeck';
+import { ParsedDeckContextProvider } from '../DeckEditContext';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -1443,84 +1444,86 @@ function DeckDetailView({
   const showTaboo: boolean = !!(tabooSetId !== deck.taboo_id && (tabooSetId || deck.taboo_id));
   const theProblem = problem ?? extraProblem;
   return (
-    <View style={[styles.flex, backgroundStyle]}>
-      <SideMenu
-        isOpen={menuOpen}
-        onChange={setMenuOpen}
-        menu={sideMenu}
-        openMenuOffset={menuWidth}
-        autoClosing
-        menuPosition="right"
-      >
-        <View>
-          <View style={[styles.container, backgroundStyle] }>
-            <DeckViewTab
-              componentId={componentId}
-              campaignId={campaignId}
-              fromCampaign={fromCampaign}
-              visible={visible}
-              deckId={id}
-              suggestArkhamDbLogin={suggestArkhamDbLogin}
-              investigator={parsedDeck.investigator}
-              deck={deck}
-              editable={editable}
-              tabooSet={tabooSet}
-              tabooSetId={tabooSetId}
-              showTaboo={showTaboo}
-              tabooOpen={tabooOpen}
-              hideTabooPicker={hideTabooPicker}
-              singleCardView={singleCardView}
-              parsedDeck={parsedDeck}
-              problem={problem ?? extraProblem}
-              hasPendingEdits={hasPendingEdits}
-              cards={cards}
-              cardsByName={cardsByName}
-              bondedCardsByName={bondedCardsByName}
-              requiredCards={extraRequiredCards}
-              buttons={buttons}
-              showDrawWeakness={showDrawWeakness}
-              showDraftCards={SHOW_DRAFT_CARDS ? onDraftCards : undefined}
-              showDraftExtraCards={SHOW_DRAFT_CARDS ? onDraftExtraCards : undefined}
-              showEditCards={onAddCardsPressed}
-              showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
-              showEditSide={deck.nextDeckId ? undefined : onEditSidePressed}
-              showEditExtra={onEditExtraPressed}
-              showDeckHistory={showUpgradeHistoryPressed}
-              showXpAdjustmentDialog={showXpAdjustmentDialog}
-              showCardUpgradeDialog={showCardUpgradeDialog}
-              signedIn={signedIn}
-              login={login}
-              width={width}
-              deckEdits={deckEdits}
-              deckEditsRef={deckEditsRef}
-              mode={mode}
-            />
-            { !!theProblem && mode !== 'view' && (
-              <DeckProblemBanner
-                problem={theProblem}
-              />
-            ) }
-            { mode !== 'view' && (
-              <PreLoadedDeckNavFooter
-                parsedDeckObj={parsedDeckObj}
+    <ParsedDeckContextProvider parsedDeckObj={parsedDeckObj}>
+      <View style={[styles.flex, backgroundStyle]}>
+        <SideMenu
+          isOpen={menuOpen}
+          onChange={setMenuOpen}
+          menu={sideMenu}
+          openMenuOffset={menuWidth}
+          autoClosing
+          menuPosition="right"
+        >
+          <View>
+            <View style={[styles.container, backgroundStyle] }>
+              <DeckViewTab
                 componentId={componentId}
-                control="fab"
-                onPress={saveEdits}
+                campaignId={campaignId}
+                fromCampaign={fromCampaign}
+                visible={visible}
+                deckId={id}
+                suggestArkhamDbLogin={suggestArkhamDbLogin}
+                investigator={parsedDeck.investigator}
+                deck={deck}
+                editable={editable}
+                tabooSet={tabooSet}
+                tabooSetId={tabooSetId}
+                showTaboo={showTaboo}
+                tabooOpen={tabooOpen}
+                hideTabooPicker={hideTabooPicker}
+                singleCardView={singleCardView}
+                parsedDeck={parsedDeck}
+                problem={problem ?? extraProblem}
+                hasPendingEdits={hasPendingEdits}
+                cards={cards}
+                cardsByName={cardsByName}
+                bondedCardsByName={bondedCardsByName}
+                requiredCards={extraRequiredCards}
+                buttons={buttons}
+                showDrawWeakness={showDrawWeakness}
+                showDraftCards={SHOW_DRAFT_CARDS ? onDraftCards : undefined}
+                showDraftExtraCards={SHOW_DRAFT_CARDS ? onDraftExtraCards : undefined}
+                showEditCards={onAddCardsPressed}
+                showEditSpecial={deck.nextDeckId ? undefined : onEditSpecialPressed}
+                showEditSide={deck.nextDeckId ? undefined : onEditSidePressed}
+                showEditExtra={onEditExtraPressed}
+                showDeckHistory={showUpgradeHistoryPressed}
+                showXpAdjustmentDialog={showXpAdjustmentDialog}
+                showCardUpgradeDialog={showCardUpgradeDialog}
+                signedIn={signedIn}
+                login={login}
+                width={width}
+                deckEdits={deckEdits}
+                deckEditsRef={deckEditsRef}
+                mode={mode}
               />
-            ) }
-            { fab }
+              { !!theProblem && mode !== 'view' && (
+                <DeckProblemBanner
+                  problem={theProblem}
+                />
+              ) }
+              { mode !== 'view' && (
+                <PreLoadedDeckNavFooter
+                  parsedDeckObj={parsedDeckObj}
+                  componentId={componentId}
+                  control="fab"
+                  onPress={saveEdits}
+                />
+              ) }
+              { fab }
+            </View>
           </View>
-        </View>
-      </SideMenu>
-      { editNameDialog }
-      { xpAdjustmentDialog }
-      { savingDialog }
-      { uploadLocalDeckDialog }
-      { deletingDialog }
-      { copyDialog }
-      { alertDialog }
-      { tagsDialog }
-    </View>
+        </SideMenu>
+        { editNameDialog }
+        { xpAdjustmentDialog }
+        { savingDialog }
+        { uploadLocalDeckDialog }
+        { deletingDialog }
+        { copyDialog }
+        { alertDialog }
+        { tagsDialog }
+      </View>
+    </ParsedDeckContextProvider>
   );
 }
 

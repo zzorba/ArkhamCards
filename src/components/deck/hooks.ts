@@ -47,7 +47,6 @@ import {
 import {
   finishDeckEdit,
   startDeckEdit,
-  updateDeckCustomizationChoice,
 } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
 import {
@@ -67,11 +66,10 @@ import { ShowAlert } from './dialogs';
 import COLORS from '@styles/colors';
 import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
 import useSingleCard from '@components/card/useSingleCard';
-import { CustomizationChoice } from '@data/types/CustomizationOption';
 import { useCardMap } from '@components/card/useCardList';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { createSelector } from 'reselect';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
+import { DeckEditContext } from './DeckEditContext';
 
 export function xpString(xp: number): string {
   return ngettext(msgid`${xp} XP`, `${xp} XP`, xp);
@@ -121,8 +119,8 @@ export function useSimpleDeckEdits(
 
 export function useLiveCustomizations(
   deck: LatestDeckT | undefined,
-  deckEdits: EditDeckState | undefined
 ): Customizations | undefined {
+  const { deckEdits } = useContext(DeckEditContext);
   const slots = deckEdits?.slots;
   const ravenChoice = deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`];
   const codes = useMemo(() => {
@@ -160,129 +158,6 @@ export function useLiveCustomizations(
       deck?.previousDeck?.slots
     )[0];
   }, [meta, slots, previousMeta, cards, deck?.previousDeck?.slots]);
-}
-
-export function useDeckAttachmentSlots(
-  deckId: DeckId | undefined,
-  attachment: AttachableDefinition | undefined,
-): Slots {
-  const selector = useMemo(
-    () =>
-      createSelector(
-        (state: AppState) => state.deckEdits.editting,
-        (state: AppState) => state.deckEdits.edits,
-        (state: AppState, uuid: string | undefined) => uuid,
-        (
-          state: AppState,
-          uuid: string | undefined,
-          attachment: AttachableDefinition | undefined,
-        ) => attachment,
-        (editting, edits, uuid, attachment): Slots => {
-          if (!uuid || !attachment) {
-            return {};
-          }
-          if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
-            return {};
-          }
-          return parseMetaSlots(
-            edits[uuid]?.meta?.[`attachment_${attachment.code}`]
-          );
-        }
-      ),
-    []
-  );
-  return useSelector((state: AppState) => selector(state, deckId?.uuid, attachment));
-}
-
-export function useDeckAttachmentCount(
-  { uuid }: DeckId,
-  code: string,
-  attachment: AttachableDefinition,
-): [number, boolean] {
-  const selector = useMemo(
-    () =>
-      createSelector(
-        (state: AppState) => state.deckEdits.editting,
-        (state: AppState) => state.deckEdits.edits,
-        (state: AppState, uuid: string) => uuid,
-        (
-          state: AppState,
-          uuid: string,
-          code: string,
-        ) => code,
-        (
-          state: AppState,
-          uuid: string,
-          code: string,
-          attachment: AttachableDefinition,
-        ) => attachment,
-        (editting, edits, uuid, code, attachment): [number, boolean] => {
-          const required = attachment.requiredCards?.[code];
-          if (required) {
-            return [required, true];
-          }
-          if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
-            return [0, true];
-          }
-          return [sumBy(
-            (edits[uuid]?.meta?.[`attachment_${attachment.code}`] ?? '').split(','),
-            c => code === c ? 1 : 0
-          ), false];
-        }
-      ),
-    []
-  );
-  return useSelector((state: AppState) => selector(state, uuid, code, attachment));
-}
-
-export function useDeckSlotCount(
-  { uuid }: DeckId,
-  code: string,
-  mode?: 'side' | 'extra' | 'ignore'
-): [number, number] {
-  const selector = useMemo(
-    () =>
-      createSelector(
-        (state: AppState) => state.deckEdits.editting,
-        (state: AppState) => state.deckEdits.edits,
-        (state: AppState, uuid: string) => uuid,
-        (
-          state: AppState,
-          uuid: string,
-          code: string,
-        ) => code,
-        (
-          state: AppState,
-          uuid: string,
-          code: string,
-          mode?: 'side' | 'extra' | 'ignore'
-        ) => mode,
-        (editting, edits, uuid, code, mode): [number, number] => {
-          if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
-            return [0, 0];
-          }
-          if (mode === 'side') {
-            return [edits[uuid]?.side[code] || 0, 0];
-          }
-          if (mode === 'extra') {
-            const extraDeck = groupBy(
-              (edits[uuid]?.meta.extra_deck ?? '').split(','),
-              (x) => x
-            );
-            return [extraDeck[code]?.length ?? 0, 0];
-          }
-          if (mode === 'ignore') {
-            return [edits[uuid]?.ignoreDeckLimitSlots[code] || 0, 0];
-          }
-          return [
-            edits[uuid]?.slots[code] || 0,
-            edits[uuid]?.ignoreDeckLimitSlots[code] || 0,
-          ];
-        }
-      ),
-    []
-  );
-  return useSelector((state: AppState) => selector(state, uuid, code, mode));
 }
 
 export function useDeckEdits(
@@ -334,6 +209,7 @@ export function useDeckEdits(
 }
 
 export interface ParsedDeckResults {
+  id: DeckId | undefined;
   deck?: Deck;
   deckT?: LatestDeckT;
   cards?: CardsMap;
@@ -475,6 +351,7 @@ function useParsedDeckHelper(
     200
   );
   return {
+    id,
     deck: deck?.deck,
     deckT: deck,
     cards,
@@ -513,65 +390,6 @@ export function useParsedDeck(
 ): ParsedDeckResults {
   const deck = useDeck(id);
   return useParsedDeckHelper(id, componentId, deck, { initialMode });
-}
-
-interface UpdateCustomizationAction {
-  code: string;
-  choice: CustomizationChoice;
-}
-export function useCardCustomizations(
-  deckId: DeckId | undefined,
-  initialCustomizations: Customizations | undefined
-): [Customizations, (code: string, choice: CustomizationChoice) => void] {
-  const dispatch = useAppDispatch();
-  const [, deckEditsRef] = useDeckEdits(deckId);
-  const [customizations, updateCustomizations] = useReducer<
-    React.Reducer<Customizations, UpdateCustomizationAction>
-  >((state: Customizations, action: UpdateCustomizationAction) => {
-    const { code, choice } = action;
-    const updated: Customizations = { ...state };
-    updated[code] = sortBy(
-      [
-        ...filter(
-          state[code] || [],
-          (c) => c.option.index !== choice.option.index
-        ),
-        {
-          ...choice,
-          xp_locked:
-            find(
-              state[code] || [],
-              (c) => c.option.index === choice.option.index
-            )?.xp_locked || 0,
-        },
-      ],
-      (c) => c.option.index
-    );
-    return updated;
-  }, initialCustomizations || {});
-
-  const setChoice = useCallback(
-    (code: string, choice: CustomizationChoice) => {
-      updateCustomizations({ code, choice });
-      if (deckEditsRef.current && deckId) {
-        const decision = {
-          index: choice.option.index,
-          spent_xp: choice.xp_spent,
-          choice: choice.type ? choice.encodedChoice : undefined,
-        };
-        dispatch(
-          updateDeckCustomizationChoice(
-            deckId,
-            deckEditsRef.current,
-            code,
-            decision
-          )
-        );
-      }
-    },
-    [dispatch, deckId, deckEditsRef, updateCustomizations]
-  );
-  return [customizations, setChoice];
 }
 
 export interface DeckEditState {

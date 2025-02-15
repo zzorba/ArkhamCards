@@ -1,64 +1,54 @@
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import DeckQuantityComponent from './DeckQuantityComponent';
-import { AttachableDefinition, ChecklistSlots, DeckId } from '@actions/types';
-import { AppState, getDeckChecklist } from '@reducers';
-import { useDispatch, useSelector } from 'react-redux';
-import { setDeckChecklistCard } from '@components/deck/actions';
-import { useDeckSlotCount } from '@components/deck/hooks';
 import CardChecklistToggles from './CardChecklistToggles';
+import { useChecklistCount, useDeckSlotCount } from '@components/deck/DeckEditContext';
+import Card from '@data/types/Card';
+import { AttachableDefinition } from '@actions/types';
 
 interface Props {
-  deckId: DeckId;
-  code: string;
+  card: Card;
   min: number | undefined;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore' | 'checklist';
   editable?: boolean
-  attachments: AttachableDefinition[];
+  attachmentOverride?: AttachableDefinition;
 }
 
 
 const EMPTY_CHECKLIST: number[] = [];
 
-function ChecklistButton({ deckId, code }: { deckId: DeckId; code: string }) {
-  const [count] = useDeckSlotCount(deckId, code);
-  const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, deckId), [deckId]);
-  const checklist: ChecklistSlots = useSelector(checklistSelector);
-  const dispatch = useDispatch();
-  const toggleValue = useCallback((value: number, toggle: boolean) => {
-    dispatch(setDeckChecklistCard(deckId, code, value, toggle));
-  }, [dispatch, deckId, code]);
-
+function ChecklistButton({ code }: { code: string }) {
+  const [count] = useDeckSlotCount(code);
+  const { checklist, toggleValue } = useChecklistCount(code);
   return (
     <CardChecklistToggles
       code={code}
-      values={checklist[code] ?? EMPTY_CHECKLIST}
+      values={checklist ?? EMPTY_CHECKLIST}
       quantity={count}
       toggleValue={toggleValue}
     />
   );
 }
 
-export default function FloatingDeckQuantityComponent({ deckId, editable, code, limit, min, mode, attachments }: Props) {
+export default function FloatingDeckQuantityComponent({ editable, card, limit, min, mode, attachmentOverride }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[styles.fab, shadow.large, { backgroundColor: colors.D20 }]}>
-      { mode === 'checklist' && <ChecklistButton deckId={deckId} code={code} /> }
+      { mode === 'checklist' && <ChecklistButton code={card.code} /> }
       <DeckQuantityComponent
-        deckId={deckId}
-        code={code}
+        card={card}
         min={min}
         limit={limit}
         mode={mode !== 'checklist' ? mode : undefined}
         showZeroCount
         forceBig
         editable={mode !== 'checklist' && editable}
-        attachments={attachments}
+        attachmentOverride={attachmentOverride}
       />
     </View>
   );

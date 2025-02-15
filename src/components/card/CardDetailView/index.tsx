@@ -24,11 +24,9 @@ import space from '@styles/space';
 import useSingleCard from '../useSingleCard';
 import CardCustomizationOptions from './CardCustomizationOptions';
 import { Customizations, DeckId } from '@actions/types';
-import { useCardCustomizations, useParsedDeck } from '@components/deck/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { CustomizationChoice } from '@data/types/CustomizationOption';
-import { flatMap } from 'lodash';
 import { CardInvestigatorProps } from '../CardInvestigatorsView';
+import { SimpleDeckEditContextProvider, useAllCardCustomizations, useCardCustomizations, useDeckSlotCount } from '@components/deck/DeckEditContext';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = card?.custom() ? [] : [{
@@ -69,11 +67,12 @@ export interface CardDetailProps {
   pack_code: string;
   showSpoilers?: boolean;
   tabooSetId?: number;
-  deckId: DeckId | undefined;
   initialCustomizations: Customizations | undefined;
+  deckId: DeckId | undefined;
+  deckInvestigatorId: string | undefined;
 }
 
-type Props = NavigationProps & CardDetailProps;
+type Props = NavigationProps & Omit<CardDetailProps, 'deckId' | 'deckInvestigatorId'>;
 
 function options() {
   return {
@@ -104,7 +103,6 @@ function showFaq(componentId: string, id: string) {
   });
 }
 
-const NO_CUSTOMIZATIONS: CustomizationChoice[] = [];
 function CardDetailView({
   componentId,
   id,
@@ -112,7 +110,6 @@ function CardDetailView({
   pack_code,
   showSpoilers: propsShowSpoilers,
   tabooSetId: tabooSetIdOverride,
-  deckId,
   initialCustomizations,
 }: Props) {
   const { backgroundStyle, typography, width } = useContext(StyleContext);
@@ -179,27 +176,10 @@ function CardDetailView({
     }
   }, componentId, [componentId, id, showInvestigatorCards]);
   const [card, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);
-  const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
   const { listSeperator } = useContext(LanguageContext);
-  const parsedDeckObj = useParsedDeck(deckId, componentId);
-  const deckCount = card && parsedDeckObj.deckEdits?.slots[card.code];
-  const customizationChoices: CustomizationChoice[] | undefined = useMemo(() => {
-    if (card && deckId) {
-      if (deckCount) {
-        if (customizations[card.code]) {
-          return customizations[card.code];
-        }
-        return flatMap(card.customization_options, (option, idx) => {
-          if (option.xp === 0) {
-            return card.customizationChoice(idx, 0, undefined, undefined) || [];
-          }
-          return [];
-        })
-      }
-      return NO_CUSTOMIZATIONS;
-    }
-    return undefined;
-  }, [deckId, customizations, card, deckCount]);
+  const [deckCount] = useDeckSlotCount(id);
+  const [customizations, setChoice] = useAllCardCustomizations(initialCustomizations);
+  const customizationChoices = useCardCustomizations(card, deckCount, customizations);
   const customizedCard = useMemo(() => card?.withCustomizations(listSeperator, customizationChoices), [listSeperator, card, customizationChoices]);
   const [backCard] = useSingleCard(back_id, 'encounter', tabooSetIdOverride);
   useEffect(() => {
@@ -237,22 +217,33 @@ function CardDetailView({
         <CardCustomizationOptions
           componentId={componentId}
           card={card}
-          mode={parsedDeckObj.deckEdits?.mode}
-          deckId={deckId}
           customizationOptions={customizedCard.customization_options}
           customizationChoices={customizationChoices}
           width={width}
-          editable={parsedDeckObj.editable}
           setChoice={setChoice}
+          editable
         />
       ) }
     </ScrollView>
   );
 }
 
-CardDetailView.options = options;
+function CardDetailViewWraper({
+  deckId,
+  deckInvestigatorId,
+  ...props
+}: Props & { deckId: DeckId | undefined; deckInvestigatorId: string | undefined }) {
+  return (
+    <SimpleDeckEditContextProvider deckId={deckId} investigator={deckInvestigatorId}>
+      <CardDetailView
+        {...props}
+      />
+    </SimpleDeckEditContextProvider>
+  );
+}
+CardDetailViewWraper.options = options;
 
-export default CardDetailView;
+export default CardDetailViewWraper;
 
 const styles = StyleSheet.create({
   wrapper: {
