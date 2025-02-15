@@ -261,6 +261,11 @@ export default function(
               };
             }
             break;
+          case 'attachment':
+            if (currentSlots[action.code] > (currentEdits.slots[action.code] ?? 0)) {
+              currentSlots[action.code] = 0;
+            }
+            break;
         }
         break;
       }

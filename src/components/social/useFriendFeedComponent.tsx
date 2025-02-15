@@ -331,7 +331,6 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
       case 'user':
         return (
           <UserRow
-            key={item.id}
             user={item.user}
             refetchMyProfile={refetchMyProfile}
             controls={item.controls}
@@ -341,11 +340,11 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
         );
       case 'header':
         return (
-          <CardSectionHeader key={item.id} section={{ title: item.header }} />
+          <CardSectionHeader section={{ title: item.header }} />
         );
       case 'button':
         return (
-          <ArkhamButton key={item.id} onPress={item.onPress} title={item.title} icon={item.icon} />
+          <ArkhamButton onPress={item.onPress} title={item.title} icon={item.icon} />
         );
       case 'placeholder':
         return (
@@ -407,6 +406,7 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
       data={data}
       renderItem={renderItem}
       heightForItem={heightItem}
+      estimatedItemSize={UserRow.computeHeight(fontScale, lang)}
     />
   ), doRefresh];
 }

@@ -1,20 +1,22 @@
 import React, { useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { ParsedDeckResults, useSimpleDeckEdits } from './hooks';
-import { AttachableDefinition, ChecklistSlots, Customizations, Deck, DeckId, EditDeckState, Slots } from '@actions/types';
+import { AttachableDefinition, ChecklistSlots, Customizations, Deck, DeckId, DeckMeta, EditDeckState, Slots } from '@actions/types';
 import { parseMetaSlots } from '@lib/parseDeck';
 import { EditSlotsActions, useEffectUpdate } from '@components/core/hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { decDeckSlot, incDeckSlot, setDeckAttachmentSlot, setDeckChecklistCard, setDeckSlot, updateDeckCustomizationChoice } from './actions';
+import { decDeckSlot, incDeckSlot, incDeckAttachmentSlot, setDeckChecklistCard, setDeckSlot, updateDeckCustomizationChoice } from './actions';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 import { useAppDispatch } from '@app/store';
-import { filter, find, flatMap, forEach, pickBy, sortBy } from 'lodash';
+import { filter, find, flatMap, forEach, omitBy, pickBy, sortBy } from 'lodash';
 import { AppState, getDeckChecklist } from '@reducers/index';
 import Card from '@data/types/Card';
 import { useAttachableCards } from './useParsedDeckComponent';
+import deepEqual from 'deep-equal';
 
 export type DeckEditContextType = {
   deckId: DeckId | undefined;
   deckEdits: EditDeckState | undefined;
+  deckBuildingMeta: Partial<DeckMeta> | undefined;
   extraDeckSlots: Slots | undefined;
   checklist: ChecklistSlots | undefined;
   attachmentCounts: {
@@ -31,6 +33,7 @@ export type DeckEditContextType = {
 export const DeckEditContext = React.createContext<DeckEditContextType>({
   deckId: undefined,
   deckEdits: undefined,
+  deckBuildingMeta: undefined,
   extraDeckSlots: undefined,
   checklist: undefined,
   attachmentCounts: undefined,
@@ -72,12 +75,7 @@ export function DeckEditContextProvider({ children, deckEdits, deckId, investiga
       return attachment.code === investigator || !!slots?.[attachment.code];
     });
   }, [attachableCards, investigator, slots]);
-  const [attachments, customizables] = useMemo(() => (
-    [
-      pickBy(meta, (_, key) => key.startsWith('attachment_')),
-      pickBy(meta, (_, key) => key.startsWith('cus_')),
-    ]
-  ), [meta]);
+  const attachmentEntries = useMemo(() => pickBy(meta, (_, key) => key.startsWith('attachment_')), [meta]);
   const [attachmentCounts, attachmentSlots] = useMemo(() => {
     const counts: {
       [code: string] : {
@@ -86,38 +84,49 @@ export function DeckEditContextProvider({ children, deckEdits, deckId, investiga
     } = {};
     const attachmentSlots: { [attachable: string]: Slots | undefined } = {};
     forEach(
-      Object.keys(attachments),
-      attachable => {
-        const slots = parseMetaSlots(attachments[attachable]);
-        attachmentSlots[attachable] = slots;
+      Object.keys(attachmentEntries),
+      key => {
+        const slots = parseMetaSlots(attachmentEntries[key]);
+        const attachableCode = key.substring('attachment_'.length);
+        attachmentSlots[attachableCode] = slots;
         forEach(
           Object.keys(slots),
           code => {
             if (!counts[code]) {
               counts[code] = {
-                [attachable]: slots[code],
+                [attachableCode]: slots[code],
               };
             } else {
-              counts[code]![attachable] = slots[code];
+              counts[code]![attachableCode] = slots[code];
             }
           }
         );
       }
     );
     return [counts, attachmentSlots];
-  }, [attachments])
+  }, [attachmentEntries]);
+  const deckBuildingMetaRef = useRef<DeckMeta>();
+  const deckBuildingMeta = useMemo(() => {
+    const cleanMeta = omitBy(meta, (_, key) => key.startsWith('attachment_') || key.startsWith('cus_'));
+    if (!deepEqual(deckBuildingMetaRef.current, cleanMeta)) {
+      deckBuildingMetaRef.current = cleanMeta;
+      return cleanMeta;
+    }
+    return deckBuildingMetaRef.current;
+  }, [meta])
 
   const extraDeckSlots = useMemo(() => extraDeck ? parseMetaSlots(extraDeck) : undefined , [extraDeck]);
   const checklist = useSelector((state: AppState) => deckId ? getDeckChecklist(state, deckId) : undefined);
   const context = useMemo(() => ({
     deckEdits,
+    deckBuildingMeta,
     deckId,
     extraDeckSlots,
     checklist,
     attachmentCounts,
     attachmentSlots,
     deckAttachments,
-  }), [deckId, deckEdits, extraDeckSlots, checklist, attachmentCounts, attachmentSlots, deckAttachments]);
+  }), [deckId, deckEdits, deckBuildingMeta, extraDeckSlots, checklist, attachmentCounts, attachmentSlots, deckAttachments]);
   return (
     <DeckEditContext.Provider value={context}>
       {children}
@@ -209,22 +218,29 @@ export function useDeckAttachmentCount(
 ): { attachCount: number; forceLocked: boolean; onPress: () => void } {
   const { deckEdits, deckId, attachmentCounts } = useContext(DeckEditContext);
   const required = attachment.requiredCards?.[code];
-  const attachCount = attachmentCounts?.[code]?.[attachment.code] ?? 0;
+  const actualCount = attachmentCounts?.[code]?.[attachment.code] ?? 0;
+  const [localAttachCount, setLocalAttachCount] = useState(actualCount);
+  useEffectUpdate(() => {
+    setLocalAttachCount(actualCount);
+  }, [actualCount]);
   const dispatch = useDispatch();
+  const slotCount = deckEdits?.slots[code] ?? 0;
   const onPress = useCallback(() => {
-    const newCount = attachCount + 1 > (attachment.limit ?? attachCount) || (attachCount + 1) > (attachCount) ?
-      0 : attachCount + 1;
+    const incCount = localAttachCount + 1;
+    setLocalAttachCount((incCount > (attachment.limit ?? slotCount)) || (incCount > slotCount) ? 0 : incCount);
     if (deckId) {
-      dispatch(setDeckAttachmentSlot(deckId, code, newCount, attachment.code));
+      setTimeout(() => {
+        dispatch(incDeckAttachmentSlot(deckId, code, attachment.limit, attachment.code));
+      }, 20);
     }
-  }, [attachment, attachCount, deckId, code, dispatch]);
+  }, [attachment, slotCount, localAttachCount, deckId, code, dispatch]);
   if (required) {
     return { attachCount: required, forceLocked: true, onPress };
   }
   if (!deckEdits?.editable) {
-    return { attachCount, forceLocked: true, onPress };
+    return { attachCount: localAttachCount, forceLocked: true, onPress };
   }
-  return { attachCount, forceLocked: false, onPress };
+  return { attachCount: localAttachCount, forceLocked: false, onPress };
 }
 
 

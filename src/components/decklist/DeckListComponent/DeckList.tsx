@@ -84,7 +84,7 @@ export default function DeckList({
         return searchMatchesText(searchTerm, [deckId.name, investigator.name]);
       }), deckId => {
         return {
-          key: `${deckId.id.uuid}`,
+          type: 'deck',
           deckId: deckId,
           deckClicked,
         };
@@ -100,12 +100,10 @@ export default function DeckList({
 
   usePlayerCardsFunc(() => take(uniq(map(items, deck => deck.deckId.investigator)), 15), [items], false);
   const renderItem = useCallback(({ deckId }: {
-    // eslint-disable-next-line react/no-unused-prop-types
     deckId: MiniDeckT;
   }) => {
     return (
       <MemoDeckListItem
-        key={deckId.id.uuid}
         deckId={deckId}
         deckClicked={deckClicked}
         deckToCampaign={deckToCampaign}
@@ -126,6 +124,7 @@ export default function DeckList({
       renderItem={renderItem}
       renderHeader={renderHeader}
       renderFooter={renderFooter}
+      estimatedItemSize={50}
     />
   );
 }

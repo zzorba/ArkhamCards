@@ -14,7 +14,6 @@ import Card from '@data/types/Card';
 import { useCardMapFromQuery } from '@components/card/useCardList';
 import { DeckEditContext, SimpleDeckEditContextProvider } from './DeckEditContext';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import { useWhyDidYouUpdate } from '@lib/hooks';
 
 export interface EditDeckProps {
   id: DeckId;
@@ -45,7 +44,7 @@ function DeckEditView({
   weaknessOnly,
   deck,
 }: Props & { deck: LatestDeckT | undefined }) {
-  const { deckEdits } = useContext(DeckEditContext);
+  const { deckEdits, deckBuildingMeta } = useContext(DeckEditContext);
   const tabooSetId = (deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.deck.taboo_id) || 0;
   const [hideVersatile, setHideVersatile] = useState(false);
   const [hideSplash, setHideSplash] = useState(false);
@@ -53,7 +52,6 @@ function DeckEditView({
   const [specialCards] = useCardMapFromQuery(DECK_BUILDING_OPTION_CARDS_QUERY);
   const hasVersatile = deckType !== 'extra' && (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
   const isUpgrade = !!deck?.previousDeck;
-  const meta = deckEdits?.meta;
   const queryOpt = useMemo(() => {
     if (weaknessOnly) {
       return () => combineQueries(
@@ -84,7 +82,7 @@ function DeckEditView({
         investigator,
         // Special deck building won't apply to extra decks, for now...
         deckType === 'extra' ? {} : slots,
-        meta,
+        deckBuildingMeta,
         specialDeckCards,
         {
           filters,
@@ -98,8 +96,7 @@ function DeckEditView({
       );
       return investigatorPart;
     }
-  }, [specialCards, meta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
-  useWhyDidYouUpdate('DeckEditView.queryOpt', { specialCards, meta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile });
+  }, [specialCards, deckBuildingMeta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
   const mode = useMemo(() => {
     if (storyOnly || weaknessOnly) {
       return 'story';

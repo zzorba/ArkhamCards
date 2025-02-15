@@ -41,7 +41,7 @@ import space, { m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { ParsedDeckResults, useLiveCustomizations } from '@components/deck/hooks';
+import { useLiveCustomizations } from '@components/deck/hooks';
 import { useCards, useEffectUpdate, useSettingValue, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
@@ -53,7 +53,6 @@ import { FilterState } from '@lib/filters';
 import DeckValidation from '@lib/DeckValidation';
 import { THE_INSANE_CODE } from '@data/deck/specialCards';
 import { DeckEditContext, useDeckDeltas, useTabooSetOverride } from '@components/deck/DeckEditContext';
-import { useWhyDidYouUpdate } from '@lib/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
@@ -893,7 +892,6 @@ function itemHeight(item: Item, fontScale: number, headerHeight: number, lang: s
 }
 
 export default function DbCardResultList(props: Props) {
-  useWhyDidYouUpdate('DbCardResultList', props);
   const {
     componentId,
     deck,
@@ -1031,7 +1029,6 @@ export default function DbCardResultList(props: Props) {
       case 'button':
         return (
           <ArkhamButton
-            key={item.id}
             title={item.title}
             onPress={item.onPress}
             icon={item.icon}
@@ -1045,7 +1042,6 @@ export default function DbCardResultList(props: Props) {
         const deck_limit: number = card.collectionDeckLimit(packInCollection, ignore_collection);
         return (
           <CardSearchResult
-            key={item.id}
             card={card}
             onPressId={cardOnPressId}
             id={item.id}
@@ -1061,18 +1057,17 @@ export default function DbCardResultList(props: Props) {
       case 'header':
         return (
           <CardSectionHeader
-            key={item.id}
             section={item.header}
             investigator={investigator?.front}
           />
         );
       case 'loading':
         return (
-          <LoadingCardSearchResult key={item.id} />
+          <LoadingCardSearchResult />
         );
       case 'text':
         return (
-          <View key={item.id} style={[
+          <View style={[
             item.border ? styles.emptyText : space.paddingM,
             item.border ? borderStyle : undefined,
             item.paddingTop ? { paddingTop: item.paddingTop } : undefined,
@@ -1083,10 +1078,10 @@ export default function DbCardResultList(props: Props) {
           </View>
         )
       case 'padding':
-        return <View key={item.id} style={{ height: item.size }} />;
+        return <View style={{ height: item.size }} />;
       case 'list_header':
         return (
-          <View key={item.id} style={[styles.column, { width: width }]}>
+          <View style={[styles.column, { width: width }]}>
             { headerItems }
           </View>
         );
@@ -1119,6 +1114,7 @@ export default function DbCardResultList(props: Props) {
       onRefresh={refreshDeck}
       refreshing={refreshing || refreshingSearch}
       noSearch={noSearch}
+      estimatedItemSize={rowHeight(fontScale)}
     />
   );
 }

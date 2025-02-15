@@ -121,8 +121,9 @@ export function useLiveCustomizations(
   deck: LatestDeckT | undefined,
 ): Customizations | undefined {
   const { deckEdits } = useContext(DeckEditContext);
+  const meta = deckEdits?.meta;
   const slots = deckEdits?.slots;
-  const ravenChoice = deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`];
+  const ravenChoice = meta?.[`cus_${RAVEN_QUILL_CODE}`];
   const codes = useMemo(() => {
     const ravenQuillChoices = flatMap(
       parseCustomizationDecision(ravenChoice),
@@ -144,7 +145,6 @@ export function useLiveCustomizations(
       ? deckEdits.tabooSetChange
       : deck?.deck.taboo_id
   );
-  const meta = deckEdits?.meta;
   const previousMeta = deck?.previousDeck?.meta;
   return useMemo(() => {
     if (!meta || !slots || !cards) {
@@ -250,17 +250,28 @@ function useParsedDeckHelper(
     deckEdits?.tabooSetChange !== undefined
       ? deckEdits.tabooSetChange
       : deck?.deck.taboo_id || 0;
+
+  const ravenQuillMeta = deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`];
+  const ravenQuillChoices = useMemo(() => flatMap(
+    parseCustomizationDecision(ravenQuillMeta),
+    (choice) => {
+      if (!choice.choice) {
+        return [];
+      }
+      return choice.choice?.split('^') || [];
+    }
+  ), [ravenQuillMeta])
+  const alternateBack = deckEdits?.meta.alternate_back;
+  const alternateFront = deckEdits?.meta.alternate_front;
+  const extraDeck = deckEdits?.meta.extra_deck
+  const extraDeckCodes = useMemo(() => alternateBack === PARALLEL_JIM_CODE ?
+    [
+      ...keys(parseMetaSlots(deck?.deck.meta?.extra_deck)),
+      ...keys(parseMetaSlots(extraDeck)),
+      ...keys(parseMetaSlots(deck?.previousDeck?.meta?.extra_deck)),
+    ] : [], [extraDeck, alternateBack, deck]);
   const [cards, cardsLoading, cardsMissing] = usePlayerCardsFunc(
     () => {
-      const ravenQuillChoices = flatMap(
-        parseCustomizationDecision(deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`]),
-        (choice) => {
-          if (!choice.choice) {
-            return [];
-          }
-          return choice.choice?.split('^') || [];
-        }
-      );
       return uniq([
         ...(deck ? [deck.investigator] : []),
         ...(deck ? keys(deck.deck.slots) : []),
@@ -269,25 +280,15 @@ function useParsedDeckHelper(
         ...keys(deckEdits?.side),
         ...keys(deckEdits?.slots),
         ...keys(deckEdits?.ignoreDeckLimitSlots),
-        ...(deckEdits?.meta.alternate_back
-          ? [deckEdits.meta.alternate_back]
-          : []),
-        ...(deckEdits?.meta.alternate_front
-          ? [deckEdits.meta.alternate_front]
-          : []),
-        ...(deckEdits?.meta.alternate_back === PARALLEL_JIM_CODE
-          ? [
-            ...keys(parseMetaSlots(deck?.deck.meta?.extra_deck)),
-            ...keys(parseMetaSlots(deckEdits?.meta.extra_deck)),
-            ...keys(parseMetaSlots(deck?.previousDeck?.meta?.extra_deck)),
-          ]
-          : []),
+        ...(alternateBack ? [alternateBack] : []),
+        ...(alternateFront ? [alternateFront] : []),
+        ...extraDeckCodes,
         ...keys(deck?.previousDeck?.slots || {}),
         ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
         ...ravenQuillChoices,
       ]);
     },
-    [deckEdits, deck],
+    [deckEdits?.side, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, deck, ravenQuillChoices, extraDeckCodes],
     false,
     tabooSetId
   );

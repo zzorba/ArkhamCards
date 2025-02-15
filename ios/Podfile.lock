@@ -1440,6 +1440,27 @@ PODS:
     - Firebase/Functions (= 10.29.0)
     - React-Core
     - RNFBApp
+  - RNFlashList (1.7.3):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNFS (2.20.0):
     - React-Core
   - RNGestureHandler (2.17.1):
@@ -1670,6 +1691,7 @@ DEPENDENCIES:
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBDatabase (from `../node_modules/@react-native-firebase/database`)"
   - "RNFBFunctions (from `../node_modules/@react-native-firebase/functions`)"
+  - "RNFlashList (from `../node_modules/@shopify/flash-list`)"
   - RNFS (from `../node_modules/react-native-fs`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
@@ -1896,6 +1918,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/database"
   RNFBFunctions:
     :path: "../node_modules/@react-native-firebase/functions"
+  RNFlashList:
+    :path: "../node_modules/@shopify/flash-list"
   RNFS:
     :path: "../node_modules/react-native-fs"
   RNGestureHandler:
@@ -2036,6 +2060,7 @@ SPEC CHECKSUMS:
   RNFBAuth: e923d3f87088009ac8505140599ec1e784d77bd0
   RNFBDatabase: 2f80e39b4042387410f351a4640f975d83ee3fa7
   RNFBFunctions: b9d609f075a4dec06d4c1f918972fd0a5d99f881
+  RNFlashList: de723c222366759e52bb12ca43123b8b0cd3a74a
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
   RNGestureHandler: 5538c370587d7e757667b9283ca867dd7635f154
   RNGoogleSignin: 08dc4ba7eac2096c7fecfe109f0950fa4683c803

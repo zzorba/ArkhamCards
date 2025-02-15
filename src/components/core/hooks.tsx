@@ -612,6 +612,13 @@ export function usePlayerCards(
   const [cards, setCards] = useState<CardsMap>();
   const [loading, setLoading] = useState(true);
   const { getPlayerCards, getExistingCards } = useContext(PlayerCardContext);
+  const previousTabooSetId = useRef<number | undefined>(tabooSetId);
+  const currentCards = useRef<CardsMap>(cards ?? {});
+  useEffect(() => {
+    if (cards) {
+      currentCards.current = cards;
+    }
+  }, [cards]);
   useEffect(() => {
     const knownCards: CardsMap = store ? getExistingCards(tabooSetId) : {};
     if (findIndex(codes, code => !knownCards[code]) === -1) {
@@ -624,18 +631,34 @@ export function usePlayerCards(
       return;
     }
 
-    setLoading(true);
+    const existingCards: CardsMap = {};
+    let codesToFetch: string[] = [];
+    if (previousTabooSetId.current === tabooSetId) {
+      forEach(codes, code => {
+        if (currentCards.current[code]) {
+          existingCards[code] = currentCards.current[code];
+        } else {
+          codesToFetch.push(code);
+        }
+      })
+    } else {
+      codesToFetch = codes;
+    }
     let canceled = false;
-    if (codes.length) {
-      getPlayerCards(codes, tabooSetId, store).then(cards => {
+    if (codesToFetch.length) {
+      setLoading(true);
+      getPlayerCards(codesToFetch, tabooSetId, store).then(cards => {
         if (!canceled) {
-          setCards(cards);
+          previousTabooSetId.current = tabooSetId;
+          setCards({
+            ...cards,
+            ...existingCards,
+          });
           setLoading(false);
         }
       });
     } else {
-      setCards({});
-      setLoading(false);
+      setCards(existingCards);
     }
     return () => {
       canceled = true;

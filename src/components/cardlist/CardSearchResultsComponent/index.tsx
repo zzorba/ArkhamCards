@@ -36,7 +36,6 @@ import useDebouncedEffect from 'use-debounced-effect-hook';
 import { useSettingValue } from '@components/core/hooks';
 import { useParsedDeck } from '@components/deck/hooks';
 import { ParsedDeckContextProvider } from '@components/deck/DeckEditContext';
-import { useWhyDidYouUpdate } from '@lib/hooks';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -370,7 +369,6 @@ export default function({
       'and'
     );
   }, [baseQuery, filters, mythosToggle, selectedSorts, mythosMode, includeDuplicates, showCustomContent]);
-  useWhyDidYouUpdate('CardSearchResultsComponent.Query', { baseQuery, filters, mythosToggle, selectedSorts, mythosMode, includeDuplicates, showCustomContent });
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
   const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId, baseQuery });
   const renderFabIcon = useCallback(() => (
