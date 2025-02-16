@@ -47,7 +47,7 @@ export const SYNC_CARDS_QUERY = where(
 export const BROWSE_CARDS_WITH_DUPLICATES_QUERY = where(
   'c.browse_visible in (1,3,4,5,7,9,11,12,17,19,20,21,23,25,27,28)'
 );
-export const INVESTIGATOR_CARDS_QUERY = where('c.sort_by_type = 0');
+export const INVESTIGATOR_CARDS_QUERY = where('c.sort_by_type = 0 AND (c.hidden is null OR NOT c.hidden)');
 
 export function tabooSetQuery(tabooSetId?: number) {
   return `(c.taboo_set_id is null OR c.taboo_set_id = ${tabooSetId || 0})`;

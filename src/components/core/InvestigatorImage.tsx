@@ -75,6 +75,14 @@ const INVESTIGATOR_VERTICAL_OFFSET: { [key: string]: number | undefined } = {
   'zsti_00004': 1.5,
   '10001': 0.95,
   '10012': 0.95,
+  '11001': 0.9,
+  '11007': 0.9,
+  '11008': 0.9,
+  '11011': 0.95,
+  '11014': 0.95,
+  '11017': 0.95,
+  '08004': 0.95,
+  '07002': 0.90,
 };
 const INVESTIGATOR_HORIZONTAL_OFFSET: { [key: string]: number | undefined } = {
   'zbh_00001': 1.2,
@@ -84,7 +92,7 @@ const INVESTIGATOR_HORIZONTAL_OFFSET: { [key: string]: number | undefined } = {
   '04001': 1.4,
   '03001': 0.7,
   '60101': 1.3,
-  '07001': 1.9,
+  '07001': 1.85,
   '06001': 0.5,
   '02001': 1.2,
   '07002': 1.7,
@@ -128,6 +136,11 @@ const INVESTIGATOR_HORIZONTAL_OFFSET: { [key: string]: number | undefined } = {
   '10009': 1.3,
   '09008': 0.5,
   '09015': 1.4,
+  '11001': 1.4,
+  '11007': 1.8,
+  '11008': 1.8,
+  '11011': 1.8,
+  '11014': 1.7,
 };
 
 function getImpliedSize(size: 'large' | 'small' | 'tiny' | 'extra_tiny', fontScale: number) {
