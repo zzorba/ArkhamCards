@@ -1115,6 +1115,7 @@ export default function DbCardResultList(props: Props) {
       refreshing={refreshing || refreshingSearch}
       noSearch={noSearch}
       estimatedItemSize={rowHeight(fontScale)}
+      onEndReachedThreshold={0.7}
     />
   );
 }

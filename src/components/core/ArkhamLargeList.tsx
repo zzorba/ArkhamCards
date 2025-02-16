@@ -25,6 +25,7 @@ interface Props<T extends string, Item extends ItemT<T>> {
   refreshing: boolean;
   noSearch?: boolean;
   estimatedItemSize: number;
+  onEndReachedThreshold?: number;
 }
 
 interface BaseItem {
@@ -52,6 +53,7 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
   onScroll,
   heightForItem,
   estimatedItemSize,
+  onEndReachedThreshold,
 }: Props<T, Item>) {
   const { fontScale, height, colors } = useContext(StyleContext);
   const [fakeRefresh, setFakeRefresh] = useState(false);
@@ -97,9 +99,6 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
     }
   }, [renderItem]);
 
-  const getItemLayout = useCallback((data: null | undefined | ArrayLike<FlatDataItem<T, Item>>, idx: number): { length: number; offset: number; index: number } => {
-    return data?.[idx].layout || { offset: 0, length: 0, index: idx };
-  }, []);
   const loader = useMemo(() => (
     <View style={[{
       height: searchBarHeight,
@@ -139,10 +138,10 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
       renderItem={renderFlatItem}
       scrollsToTop
       onEndReached={onLoading}
-      onEndReachedThreshold={0.5}
       removeClippedSubviews
       getItemType={getItemType}
       estimatedItemSize={estimatedItemSize}
+      onEndReachedThreshold={onEndReachedThreshold ?? 0.5}
       // getItemLayout={heightForItem ? getItemLayout : undefined}
       ListHeaderComponent={renderRealHeader}
       ListFooterComponent={renderFooter || <View />}
