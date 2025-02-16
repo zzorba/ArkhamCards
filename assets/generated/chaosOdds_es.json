@@ -6010,7 +6010,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of the current ‘c’ Agenda",
+          "prompt": "El número del Plan c actual",
           "min": 1,
           "max": 4,
           "adjustment": 1
@@ -6062,7 +6062,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of the current ‘c’ Agenda",
+          "prompt": "El número del Plan c actual",
           "min": 1,
           "max": 5,
           "adjustment": 2
@@ -6794,7 +6794,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Night]] location",
+              "prompt": "En un Lugar [[Noche]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -6840,7 +6840,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Night]] location",
+              "prompt": "En un Lugar [[Noche]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -7205,7 +7205,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Miasma]] location",
+              "prompt": "Estás en un Lugar [[Miasma]]",
               "modified_value": {
                 "modifier": -5
               }
@@ -7240,7 +7240,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Miasma]] location",
+              "prompt": "Estás en un Lugar [[Miasma]]",
               "modified_value": {
                 "modifier": -6
               }
@@ -7387,7 +7387,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The [[Floor]] of your location",
+          "prompt": "El [[Piso]] de tu Lugar",
           "min": 0
         }
       },
@@ -7415,7 +7415,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The [[Floor]] of your location",
+          "prompt": "El [[Piso]] de tu Lugar",
           "min": 0,
           "adjustment": 2
         }
@@ -8004,7 +8004,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of doom in play, rounded up",
+          "prompt": "La mitad de la cantidad de perdición en juego, redondeando hacia arriba",
           "min": 0
         }
       },
