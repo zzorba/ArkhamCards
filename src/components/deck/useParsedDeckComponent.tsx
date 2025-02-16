@@ -25,9 +25,10 @@ import { getPacksInCollection, getShowCustomContent } from '@reducers';
 import space from '@styles/space';
 import RoundedFooterDoubleButton from '@components/core/RoundedFooterDoubleButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { useDeckAttachmentSlots, xpString } from './hooks';
+import { xpString } from './hooks';
 import { BONDED_WEAKNESS_COUNTS, THE_INSANE_CODE } from '@data/deck/specialCards';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
+import { useDeckAttachmentSlots } from './DeckEditContext';
 
 interface CollectionSettings {
   inCollection: { [pack_code: string]: boolean };
@@ -407,6 +408,7 @@ export function useAttachableCards() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => getAttachableCards(), [lang]);
 }
+
 export function useDeckAttachments(
   investigator: InvestigatorChoice | undefined,
   slots: Slots | undefined
@@ -439,8 +441,8 @@ export default function useParsedDeckComponent({
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const slots = parsedDeck?.slots;
   const investigator = parsedDeck?.investigator;
-  const [attachablesForCard, investigatorAttachment] = useDeckAttachments(investigator, slots);
-  const investigatorAttachmentSlots = useDeckAttachmentSlots(parsedDeck?.id, investigatorAttachment);
+  const [_, investigatorAttachment] = useDeckAttachments(investigator, slots);
+  const investigatorAttachmentSlots = useDeckAttachmentSlots(investigatorAttachment);
   const lockedPermanents = parsedDeck?.lockedPermanents;
   const [uniqueBondedCards, bondedCounts, bondedCardsCount] = useMemo((): [Card[], Slots, number] => {
     if (!slots) {
@@ -759,7 +761,7 @@ export default function useParsedDeckComponent({
     }
     return null;
   }, [faction]);
-  const deckId = parsedDeck?.id;
+  const hasDeck = !!parsedDeck;
   const controlForCard = useCallback((item: SectionCardId, card: Card, count: number | undefined, countMode: 'ignore' | 'side' | 'extra' | undefined): ControlType | undefined => {
     if (card.code === RANDOM_BASIC_WEAKNESS && editable && showDrawWeakness) {
       return {
@@ -768,36 +770,30 @@ export default function useParsedDeckComponent({
         onShufflePress: () => showDrawWeakness(true),
       };
     }
-    if (!deckId) {
+    if (!hasDeck) {
       return undefined;
     }
-    const possibleAttachments = mode === 'view' && item.mode === 'attachment' ? [] : attachablesForCard(card);
     if (mode === 'view' || item.mode === 'bonded') {
       return count !== undefined ? {
         type: 'deck_count',
         count,
-        deckId,
-        attachments: possibleAttachments,
       } : undefined;
     }
 
     const upgradeEnabled = editable && item.hasUpgrades;
     return {
       type: 'upgrade',
-      deckId: deckId,
       mode: countMode,
       editable: !!editable,
       min: lockedPermanents?.[card.code],
       limit: card.collectionDeckLimit(inCollection, ignore_collection),
       onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : (undefined),
       customizable: !!editable && item.customizable,
-      attachments: possibleAttachments,
     };
-  }, [mode, lockedPermanents, deckId,
-    attachablesForCard,
-    showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
+  }, [mode, lockedPermanents, hasDeck, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
   const singleCardView = useSettingValue('single_card');
   const { colors } = useContext(StyleContext);
+  const deckId = parsedDeck?.id;
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(
@@ -805,7 +801,7 @@ export default function useParsedDeckComponent({
         card.code,
         card,
         colors,
-        { showSpoilers: true, deckId, initialCustomizations: customizations, tabooSetId },
+        { showSpoilers: true, deckId, deckInvestigatorId: investigator?.main.code, initialCustomizations: customizations, tabooSetId },
       );
       return;
     }

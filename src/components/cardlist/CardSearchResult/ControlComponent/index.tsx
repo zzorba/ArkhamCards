@@ -16,11 +16,8 @@ import { AttachmentDetailCount } from './AttachmentComponent';
 
 export type ControlType = {
   type: 'deck';
-  deckId: DeckId;
-  min: number | undefined;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore';
-  attachments: AttachableDefinition[];
 } | {
   type: 'quantity';
   count: number;
@@ -34,8 +31,6 @@ export type ControlType = {
   count: number;
   deltaCountMode?: boolean;
   showZeroCount?: boolean;
-  deckId: DeckId;
-  attachments: AttachableDefinition[];
 } | {
   type: 'count';
   count: number;
@@ -43,18 +38,15 @@ export type ControlType = {
   showZeroCount?: boolean;
 } | {
   type: 'attachment';
-  deckId: DeckId;
   attachment: AttachableDefinition;
 } | {
   type: 'upgrade';
-  deckId: DeckId;
   min: number | undefined;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore'
   editable: boolean;
   onUpgradePress?: (card: Card, mode: 'extra' | undefined) => void;
   customizable: boolean;
-  attachments: AttachableDefinition[];
 } | {
   type: 'toggle';
   value: boolean;
@@ -88,13 +80,10 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
     case 'deck':
       return (
         <DeckQuantityComponent
-          deckId={control.deckId}
-          min={control.min}
           limit={control.limit}
-          code={card.code}
+          card={card}
           mode={control.mode}
           editable
-          attachments={control.attachments}
         />
       );
     case 'shuffle':
@@ -109,7 +98,6 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
     case 'attachment': {
       return (
         <AttachmentDetailCount
-          deckId={control.deckId}
           code={card.code}
           attachment={control.attachment}
         />
@@ -119,11 +107,9 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
       return (
         <DeckCardCount
           count={control.count}
-          code={card.code}
+          card={card}
           deltaCountMode={control.deltaCountMode}
           showZeroCount={control.showZeroCount}
-          deckId={control.deckId}
-          attachments={control.attachments}
         />
       );
     case 'count':
@@ -139,12 +125,10 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
         <CardUpgradeButton
           onUpgradePress={control.customizable ? handleCardPress : control.onUpgradePress}
           card={card}
-          deckId={control.deckId}
           min={control.min}
           editable={control.editable}
           limit={control.limit}
           mode={control.mode}
-          attachments={control.attachments}
         />
       );
     case 'toggle':

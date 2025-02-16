@@ -47,7 +47,6 @@ import {
 import {
   finishDeckEdit,
   startDeckEdit,
-  updateDeckCustomizationChoice,
 } from '@components/deck/actions';
 import { CardsMap } from '@data/types/Card';
 import {
@@ -67,11 +66,10 @@ import { ShowAlert } from './dialogs';
 import COLORS from '@styles/colors';
 import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
 import useSingleCard from '@components/card/useSingleCard';
-import { CustomizationChoice } from '@data/types/CustomizationOption';
 import { useCardMap } from '@components/card/useCardList';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { createSelector } from 'reselect';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
+import { DeckEditContext } from './DeckEditContext';
 
 export function xpString(xp: number): string {
   return ngettext(msgid`${xp} XP`, `${xp} XP`, xp);
@@ -121,10 +119,11 @@ export function useSimpleDeckEdits(
 
 export function useLiveCustomizations(
   deck: LatestDeckT | undefined,
-  deckEdits: EditDeckState | undefined
 ): Customizations | undefined {
+  const { deckEdits } = useContext(DeckEditContext);
+  const meta = deckEdits?.meta;
   const slots = deckEdits?.slots;
-  const ravenChoice = deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`];
+  const ravenChoice = meta?.[`cus_${RAVEN_QUILL_CODE}`];
   const codes = useMemo(() => {
     const ravenQuillChoices = flatMap(
       parseCustomizationDecision(ravenChoice),
@@ -146,7 +145,6 @@ export function useLiveCustomizations(
       ? deckEdits.tabooSetChange
       : deck?.deck.taboo_id
   );
-  const meta = deckEdits?.meta;
   const previousMeta = deck?.previousDeck?.meta;
   return useMemo(() => {
     if (!meta || !slots || !cards) {
@@ -160,129 +158,6 @@ export function useLiveCustomizations(
       deck?.previousDeck?.slots
     )[0];
   }, [meta, slots, previousMeta, cards, deck?.previousDeck?.slots]);
-}
-
-export function useDeckAttachmentSlots(
-  deckId: DeckId | undefined,
-  attachment: AttachableDefinition | undefined,
-): Slots {
-  const selector = useMemo(
-    () =>
-      createSelector(
-        (state: AppState) => state.deckEdits.editting,
-        (state: AppState) => state.deckEdits.edits,
-        (state: AppState, uuid: string | undefined) => uuid,
-        (
-          state: AppState,
-          uuid: string | undefined,
-          attachment: AttachableDefinition | undefined,
-        ) => attachment,
-        (editting, edits, uuid, attachment): Slots => {
-          if (!uuid || !attachment) {
-            return {};
-          }
-          if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
-            return {};
-          }
-          return parseMetaSlots(
-            edits[uuid]?.meta?.[`attachment_${attachment.code}`]
-          );
-        }
-      ),
-    []
-  );
-  return useSelector((state: AppState) => selector(state, deckId?.uuid, attachment));
-}
-
-export function useDeckAttachmentCount(
-  { uuid }: DeckId,
-  code: string,
-  attachment: AttachableDefinition,
-): [number, boolean] {
-  const selector = useMemo(
-    () =>
-      createSelector(
-        (state: AppState) => state.deckEdits.editting,
-        (state: AppState) => state.deckEdits.edits,
-        (state: AppState, uuid: string) => uuid,
-        (
-          state: AppState,
-          uuid: string,
-          code: string,
-        ) => code,
-        (
-          state: AppState,
-          uuid: string,
-          code: string,
-          attachment: AttachableDefinition,
-        ) => attachment,
-        (editting, edits, uuid, code, attachment): [number, boolean] => {
-          const required = attachment.requiredCards?.[code];
-          if (required) {
-            return [required, true];
-          }
-          if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
-            return [0, true];
-          }
-          return [sumBy(
-            (edits[uuid]?.meta?.[`attachment_${attachment.code}`] ?? '').split(','),
-            c => code === c ? 1 : 0
-          ), false];
-        }
-      ),
-    []
-  );
-  return useSelector((state: AppState) => selector(state, uuid, code, attachment));
-}
-
-export function useDeckSlotCount(
-  { uuid }: DeckId,
-  code: string,
-  mode?: 'side' | 'extra' | 'ignore'
-): [number, number] {
-  const selector = useMemo(
-    () =>
-      createSelector(
-        (state: AppState) => state.deckEdits.editting,
-        (state: AppState) => state.deckEdits.edits,
-        (state: AppState, uuid: string) => uuid,
-        (
-          state: AppState,
-          uuid: string,
-          code: string,
-        ) => code,
-        (
-          state: AppState,
-          uuid: string,
-          code: string,
-          mode?: 'side' | 'extra' | 'ignore'
-        ) => mode,
-        (editting, edits, uuid, code, mode): [number, number] => {
-          if (!editting || !editting[uuid] || !edits || !edits[uuid]) {
-            return [0, 0];
-          }
-          if (mode === 'side') {
-            return [edits[uuid]?.side[code] || 0, 0];
-          }
-          if (mode === 'extra') {
-            const extraDeck = groupBy(
-              (edits[uuid]?.meta.extra_deck ?? '').split(','),
-              (x) => x
-            );
-            return [extraDeck[code]?.length ?? 0, 0];
-          }
-          if (mode === 'ignore') {
-            return [edits[uuid]?.ignoreDeckLimitSlots[code] || 0, 0];
-          }
-          return [
-            edits[uuid]?.slots[code] || 0,
-            edits[uuid]?.ignoreDeckLimitSlots[code] || 0,
-          ];
-        }
-      ),
-    []
-  );
-  return useSelector((state: AppState) => selector(state, uuid, code, mode));
 }
 
 export function useDeckEdits(
@@ -334,6 +209,7 @@ export function useDeckEdits(
 }
 
 export interface ParsedDeckResults {
+  id: DeckId | undefined;
   deck?: Deck;
   deckT?: LatestDeckT;
   cards?: CardsMap;
@@ -374,17 +250,28 @@ function useParsedDeckHelper(
     deckEdits?.tabooSetChange !== undefined
       ? deckEdits.tabooSetChange
       : deck?.deck.taboo_id || 0;
+
+  const ravenQuillMeta = deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`];
+  const ravenQuillChoices = useMemo(() => flatMap(
+    parseCustomizationDecision(ravenQuillMeta),
+    (choice) => {
+      if (!choice.choice) {
+        return [];
+      }
+      return choice.choice?.split('^') || [];
+    }
+  ), [ravenQuillMeta])
+  const alternateBack = deckEdits?.meta.alternate_back;
+  const alternateFront = deckEdits?.meta.alternate_front;
+  const extraDeck = deckEdits?.meta.extra_deck
+  const extraDeckCodes = useMemo(() => alternateBack === PARALLEL_JIM_CODE ?
+    [
+      ...keys(parseMetaSlots(deck?.deck.meta?.extra_deck)),
+      ...keys(parseMetaSlots(extraDeck)),
+      ...keys(parseMetaSlots(deck?.previousDeck?.meta?.extra_deck)),
+    ] : [], [extraDeck, alternateBack, deck]);
   const [cards, cardsLoading, cardsMissing] = usePlayerCardsFunc(
     () => {
-      const ravenQuillChoices = flatMap(
-        parseCustomizationDecision(deckEdits?.meta[`cus_${RAVEN_QUILL_CODE}`]),
-        (choice) => {
-          if (!choice.choice) {
-            return [];
-          }
-          return choice.choice?.split('^') || [];
-        }
-      );
       return uniq([
         ...(deck ? [deck.investigator] : []),
         ...(deck ? keys(deck.deck.slots) : []),
@@ -393,25 +280,15 @@ function useParsedDeckHelper(
         ...keys(deckEdits?.side),
         ...keys(deckEdits?.slots),
         ...keys(deckEdits?.ignoreDeckLimitSlots),
-        ...(deckEdits?.meta.alternate_back
-          ? [deckEdits.meta.alternate_back]
-          : []),
-        ...(deckEdits?.meta.alternate_front
-          ? [deckEdits.meta.alternate_front]
-          : []),
-        ...(deckEdits?.meta.alternate_back === PARALLEL_JIM_CODE
-          ? [
-            ...keys(parseMetaSlots(deck?.deck.meta?.extra_deck)),
-            ...keys(parseMetaSlots(deckEdits?.meta.extra_deck)),
-            ...keys(parseMetaSlots(deck?.previousDeck?.meta?.extra_deck)),
-          ]
-          : []),
+        ...(alternateBack ? [alternateBack] : []),
+        ...(alternateFront ? [alternateFront] : []),
+        ...extraDeckCodes,
         ...keys(deck?.previousDeck?.slots || {}),
         ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
         ...ravenQuillChoices,
       ]);
     },
-    [deckEdits, deck],
+    [deckEdits?.side, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, deck, ravenQuillChoices, extraDeckCodes],
     false,
     tabooSetId
   );
@@ -475,6 +352,7 @@ function useParsedDeckHelper(
     200
   );
   return {
+    id,
     deck: deck?.deck,
     deckT: deck,
     cards,
@@ -513,65 +391,6 @@ export function useParsedDeck(
 ): ParsedDeckResults {
   const deck = useDeck(id);
   return useParsedDeckHelper(id, componentId, deck, { initialMode });
-}
-
-interface UpdateCustomizationAction {
-  code: string;
-  choice: CustomizationChoice;
-}
-export function useCardCustomizations(
-  deckId: DeckId | undefined,
-  initialCustomizations: Customizations | undefined
-): [Customizations, (code: string, choice: CustomizationChoice) => void] {
-  const dispatch = useAppDispatch();
-  const [, deckEditsRef] = useDeckEdits(deckId);
-  const [customizations, updateCustomizations] = useReducer<
-    React.Reducer<Customizations, UpdateCustomizationAction>
-  >((state: Customizations, action: UpdateCustomizationAction) => {
-    const { code, choice } = action;
-    const updated: Customizations = { ...state };
-    updated[code] = sortBy(
-      [
-        ...filter(
-          state[code] || [],
-          (c) => c.option.index !== choice.option.index
-        ),
-        {
-          ...choice,
-          xp_locked:
-            find(
-              state[code] || [],
-              (c) => c.option.index === choice.option.index
-            )?.xp_locked || 0,
-        },
-      ],
-      (c) => c.option.index
-    );
-    return updated;
-  }, initialCustomizations || {});
-
-  const setChoice = useCallback(
-    (code: string, choice: CustomizationChoice) => {
-      updateCustomizations({ code, choice });
-      if (deckEditsRef.current && deckId) {
-        const decision = {
-          index: choice.option.index,
-          spent_xp: choice.xp_spent,
-          choice: choice.type ? choice.encodedChoice : undefined,
-        };
-        dispatch(
-          updateDeckCustomizationChoice(
-            deckId,
-            deckEditsRef.current,
-            code,
-            decision
-          )
-        );
-      }
-    },
-    [dispatch, deckId, deckEditsRef, updateCustomizations]
-  );
-  return [customizations, setChoice];
 }
 
 export interface DeckEditState {

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 
 import { VERSATILE_CODE } from '@app_constants';
 import CardSearchComponent from '@components/cardlist/CardSearchComponent';
@@ -6,13 +6,14 @@ import { queryForInvestigator } from '@lib/InvestigatorRequirements';
 import { FilterState } from '@lib/filters';
 import { STORY_CARDS_QUERY, where, combineQueries, DECK_BUILDING_OPTION_CARDS_QUERY } from '@data/sqlite/query';
 import { NavigationProps } from '@components/nav/types';
-import { useSimpleDeckEdits } from '@components/deck/hooks';
 import { useDeck } from '@data/hooks';
 import { DeckId, Slots } from '@actions/types';
 import { useInvestigatorChoice } from '@components/card/useSingleCard';
 import { forEach, map, range } from 'lodash';
 import Card from '@data/types/Card';
 import { useCardMapFromQuery } from '@components/card/useCardList';
+import { DeckEditContext, SimpleDeckEditContextProvider } from './DeckEditContext';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 export interface EditDeckProps {
   id: DeckId;
@@ -23,15 +24,27 @@ export interface EditDeckProps {
 
 type Props = NavigationProps & EditDeckProps;
 
-export default function DeckEditView({
+export default function DeckEditViewWrapper({
+  id,
+  ...props
+}: Props) {
+  const deck = useDeck(id);
+  return (
+    <SimpleDeckEditContextProvider deckId={id} investigator={deck?.investigator}>
+      <DeckEditView id={id} deck={deck} {...props} />
+    </SimpleDeckEditContextProvider>
+  );
+}
+
+function DeckEditView({
   componentId,
   id,
   deckType,
   storyOnly,
   weaknessOnly,
-}: Props) {
-  const deck = useDeck(id);
-  const deckEdits = useSimpleDeckEdits(id);
+  deck,
+}: Props & { deck: LatestDeckT | undefined }) {
+  const { deckEdits, deckBuildingMeta } = useContext(DeckEditContext);
   const tabooSetId = (deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.deck.taboo_id) || 0;
   const [hideVersatile, setHideVersatile] = useState(false);
   const [hideSplash, setHideSplash] = useState(false);
@@ -39,7 +52,6 @@ export default function DeckEditView({
   const [specialCards] = useCardMapFromQuery(DECK_BUILDING_OPTION_CARDS_QUERY);
   const hasVersatile = deckType !== 'extra' && (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
   const isUpgrade = !!deck?.previousDeck;
-  const meta = deckEdits?.meta;
   const queryOpt = useMemo(() => {
     if (weaknessOnly) {
       return () => combineQueries(
@@ -70,7 +82,7 @@ export default function DeckEditView({
         investigator,
         // Special deck building won't apply to extra decks, for now...
         deckType === 'extra' ? {} : slots,
-        meta,
+        deckBuildingMeta,
         specialDeckCards,
         {
           filters,
@@ -84,7 +96,7 @@ export default function DeckEditView({
       );
       return investigatorPart;
     }
-  }, [specialCards, meta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
+  }, [specialCards, deckBuildingMeta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
   const mode = useMemo(() => {
     if (storyOnly || weaknessOnly) {
       return 'story';

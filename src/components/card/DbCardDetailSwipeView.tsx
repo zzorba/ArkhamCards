@@ -13,7 +13,7 @@ import SnapCarousel from 'react-native-snap-carousel';
 import Animated from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { msgid, ngettext, t } from 'ttag';
-import { find, flatMap, filter, map, slice, sortBy, sumBy } from 'lodash';
+import { find, filter, map, slice, sortBy, sumBy } from 'lodash';
 
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import { rightButtonsForCard } from './CardDetailView';
@@ -30,10 +30,10 @@ import { where } from '@data/sqlite/query';
 import { FOOTER_HEIGHT, PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
-import { AttachableDefinition, Customizations, DeckId } from '@actions/types';
+import { AttachableDefinition, Customizations, DeckId, Slots } from '@actions/types';
 import { CardInvestigatorProps } from './CardInvestigatorsView';
 import CardCustomizationOptions from './CardDetailView/CardCustomizationOptions';
-import { useCardCustomizations, useDeckAttachmentSlots, useParsedDeck } from '@components/deck/hooks';
+import { useParsedDeck } from '@components/deck/hooks';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';
@@ -43,6 +43,7 @@ import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import space, { s } from '@styles/space';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
+import { DeckEditContext, ParsedDeckContextProvider, useAllCardCustomizations, useCardCustomizations, useDeckAttachmentSlots } from '@components/deck/DeckEditContext';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -72,12 +73,10 @@ const options = (passProps: CardDetailSwipeProps) => {
   };
 };
 
-const NO_CUSTOMIZATIONS: CustomizationChoice[] = [];
-
-function AttachmentSection({ card, deckId, attachment, attachmentCards, width }: { width: number; card: Card, deckId: DeckId; attachment: AttachableDefinition; attachmentCards: Card[] }) {
+function AttachmentSection({ card, attachment, attachmentCards, width }: { width: number; card: Card, attachment: AttachableDefinition; attachmentCards: Card[] }) {
   const { typography } = useContext(StyleContext);
   const sorted = useMemo(() => sortBy(attachmentCards, a => a.name), [attachmentCards]);
-  const slots = useDeckAttachmentSlots(deckId, attachment);
+  const slots = useDeckAttachmentSlots(attachment);
   const total = useMemo(() => sumBy(Object.values(slots), c => c), [slots]);
   const errorMessage = useMemo(() => {
     if (total > attachment.targetSize) {
@@ -140,7 +139,12 @@ function AttachmentSection({ card, deckId, attachment, attachmentCards, width }:
         </RoundedFactionHeader>
       }>
         { map(sorted, (c, idx) => (
-          <CardSearchResult key={c.code} noSidePadding noBorder={idx === sorted.length - 1} card={c} control={{ type: 'attachment', deckId, attachment }} />
+          <CardSearchResult
+            key={c.code}
+            noSidePadding
+            noBorder={idx === sorted.length - 1}
+            card={c}
+            control={{ type: 'attachment', attachment }} />
         ))}
       </RoundedFactionBlock>
     </View>
@@ -155,41 +159,24 @@ function ScrollableCard(props: {
   setChoice: (code: string, choice: CustomizationChoice) => void;
   width: number;
   height: number;
-  deckId: DeckId | undefined;
   deckCount?: number;
   customizations: Customizations;
   showCardSpoiler: (card: Card) => boolean;
   toggleShowSpoilers: (code: string) => void;
   showInvestigatorCards: (code: string) => void;
-  mode?: 'view' | 'edit' | 'upgrade';
   attachment?: AttachableDefinition;
   attachmentCards: Card[];
 }) {
   const {
-    componentId, mode, customizationsEditable, card, tabooSetId,
-    width, height, deckId, customizations, deckCount,
+    componentId, customizationsEditable, card, tabooSetId,
+    width, height, customizations, deckCount,
     attachment, attachmentCards,
     setChoice, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler,
   } = props;
+  const { deckId } = useContext(DeckEditContext);
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
-  const customizationChoices: CustomizationChoice[] | undefined = useMemo(() => {
-    if (card && deckId) {
-      if (deckCount) {
-        if (customizations[card.code]) {
-          return customizations[card.code];
-        }
-        return flatMap(card.customization_options, (option, idx) => {
-          if (option.xp === 0) {
-            return card.customizationChoice(idx, 0, undefined, undefined) || [];
-          }
-          return [];
-        })
-      }
-      return NO_CUSTOMIZATIONS;
-    }
-    return undefined;
-  }, [deckId, customizations, card, deckCount]);
+  const customizationChoices = useCardCustomizations(card, deckCount, customizations);
   const customizedCard = useMemo(() => {
     return card?.withCustomizations(listSeperator, customizationChoices);
   }, [card, listSeperator, customizationChoices]);
@@ -220,8 +207,6 @@ function ScrollableCard(props: {
         <CardCustomizationOptions
           componentId={componentId}
           card={card}
-          mode={mode}
-          deckId={deckId}
           customizationOptions={customizedCard.customization_options}
           customizationChoices={customizationChoices}
           width={width}
@@ -233,7 +218,6 @@ function ScrollableCard(props: {
         <AttachmentSection
           card={card}
           width={width}
-          deckId={deckId}
           attachment={attachment}
           attachmentCards={attachmentCards}
         />
@@ -247,7 +231,7 @@ function DbCardDetailSwipeView(props: Props) {
   // eslint-disable-next-line react/prop-types
   const { componentId, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
   const { listSeperator } = useContext(LanguageContext);
-  const [customizations, setChoice] = useCardCustomizations(deckId, initialCustomizations);
+  const [customizations, setChoice] = useAllCardCustomizations(initialCustomizations);
   const parsedDeck = useParsedDeck(deckId, componentId);
   const deckEdits = parsedDeck?.deckEdits;
   const { backgroundStyle, width, height } = useContext(StyleContext);
@@ -387,43 +371,7 @@ function DbCardDetailSwipeView(props: Props) {
   }, [showSpoilers, spoilers, showAllSpoilers]);
   const lockedPermanents = parsedDeck?.parsedDeck?.lockedPermanents;
   const slots = deckEdits?.slots;
-  const [attachmentsForCard, investigatorAttachment] = useDeckAttachments(parsedDeck.parsedDeck?.investigator, slots);
-
-  const deckCountControls = useMemo(() => {
-    if (deckId === undefined || !currentCard) {
-      return null;
-    }
-    if (currentControl === 'bonded') {
-      return null;
-    }
-    const deck_limit: number = currentCard.collectionDeckLimit(packInCollection, ignore_collection);
-    if (currentControl === 'attachment' && investigatorAttachment) {
-      return (
-        <FloatingDeckQuantityComponent
-          code={currentCard.code}
-          deckId={deckId}
-          min={lockedPermanents?.[currentCard.code]}
-          limit={deck_limit}
-          mode={undefined}
-          editable={editable}
-          attachments={[investigatorAttachment]}
-        />
-      );
-    }
-    const attachments = attachmentsForCard(currentCard)
-    return (
-      <FloatingDeckQuantityComponent
-        code={currentCard.code}
-        deckId={deckId}
-        min={lockedPermanents?.[currentCard.code]}
-        limit={deck_limit}
-        mode={(currentControl === 'side' || currentControl === 'extra' || currentControl === 'ignore' || currentControl === 'checklist') ? currentControl : undefined}
-        editable={editable}
-        attachments={attachments}
-      />
-    );
-  }, [attachmentsForCard, investigatorAttachment, lockedPermanents, deckId, editable, currentCard, currentControl, packInCollection, ignore_collection]);
-  const mode = deckEdits?.mode;
+  const investigator = parsedDeck.deck?.investigator_code;
   const data: (Card | undefined)[] = useMemo(() => {
     return map(cardCodes, code => cards[code]);
   }, [cardCodes, cards]);
@@ -444,9 +392,7 @@ function DbCardDetailSwipeView(props: Props) {
         card={card}
         width={width}
         height={height}
-        deckId={deckId}
         tabooSetId={tabooSetId}
-        mode={mode}
         componentId={componentId}
         customizations={customizations}
         showCardSpoiler={showCardSpoiler}
@@ -459,42 +405,96 @@ function DbCardDetailSwipeView(props: Props) {
         attachmentCards={attachmentCards}
       />
     );
-  }, [attachableCards, data, slots, customizationsEditable, tabooSetId, editable, customizations, mode, componentId, deckId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
+  }, [attachableCards, data, slots, customizationsEditable, tabooSetId, editable, customizations, componentId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
   return (
-    <View
-      style={[styles.wrapper, backgroundStyle, { width, height }]}
-    >
-      <SnapCarousel
-        vertical={false}
-        data={data}
-        firstItem={initialIndex}
-        inactiveSlideOpacity={1}
-        initialNumToRender={data[initialIndex]?.type_code === 'investigator' ? 1 : 2}
-        maxToRenderPerBatch={3}
-        renderItem={renderCard}
-        sliderWidth={width}
-        itemWidth={width}
-        useExperimentalSnap
-        onScrollIndexChanged={setIndex}
-        disableIntervalMomentum
-        activeSlideOffset={5}
-        shouldOptimizeUpdates
-        apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
+    <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>
+      <View
+        style={[styles.wrapper, backgroundStyle, { width, height }]}
+      >
+        <SnapCarousel
+          vertical={false}
+          data={data}
+          firstItem={initialIndex}
+          inactiveSlideOpacity={1}
+          initialNumToRender={data[initialIndex]?.type_code === 'investigator' ? 1 : 2}
+          maxToRenderPerBatch={3}
+          renderItem={renderCard}
+          sliderWidth={width}
+          itemWidth={width}
+          useExperimentalSnap
+          onScrollIndexChanged={setIndex}
+          disableIntervalMomentum
+          activeSlideOffset={5}
+          shouldOptimizeUpdates
+          apparitionDelay={Platform.OS === 'ios' ? 50 : undefined}
+        />
+        { !!parsedDeck && (
+          <>
+            <PreLoadedDeckNavFooter
+              mode={currentControl === 'extra' ? 'extra' : undefined}
+              componentId={componentId}
+              parsedDeckObj={parsedDeck}
+              control="counts"
+              onPress={backPressed}
+            />
+            { !!currentCard && currentControl && (
+              <DeckCardControls
+                currentCard={currentCard}
+                currentControl={currentControl}
+                packInCollection={packInCollection}
+                ignoreCollection={ignore_collection}
+                investigator={investigator}
+                lockedPermanents={lockedPermanents}
+                editable={!!editable}
+              />
+            ) }
+          </>
+        ) }
+        { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
+      </View>
+    </ParsedDeckContextProvider>
+  );
+}
+
+function DeckCardControls({
+  currentControl, currentCard, packInCollection, ignoreCollection, investigator,
+  editable, lockedPermanents,
+}: {
+  currentCard: Card;
+  currentControl: 'deck' | 'side' | 'extra' | 'special' | 'ignore' | 'bonded' | 'checklist' | 'attachment';
+  packInCollection: { [pack_code: string]: boolean };
+  ignoreCollection: boolean;
+  investigator: string | undefined;
+  lockedPermanents: Slots | undefined;
+  editable: boolean;
+
+}) {
+  const { deckAttachments } = useContext(DeckEditContext);
+  const investigatorAttachment = useMemo(() => find(deckAttachments, a => a.code === investigator), [deckAttachments, investigator]);
+  if (currentControl === 'bonded') {
+    return null;
+  }
+  const deck_limit: number = currentCard.collectionDeckLimit(packInCollection, ignoreCollection);
+  if (currentControl === 'attachment' && investigatorAttachment) {
+    return (
+      <FloatingDeckQuantityComponent
+        card={currentCard}
+        min={lockedPermanents?.[currentCard.code]}
+        limit={deck_limit}
+        mode={undefined}
+        editable={editable}
+        attachmentOverride={investigatorAttachment}
       />
-      { !!parsedDeck && (
-        <>
-          <PreLoadedDeckNavFooter
-            mode={currentControl === 'extra' ? 'extra' : undefined}
-            componentId={componentId}
-            parsedDeckObj={parsedDeck}
-            control="counts"
-            onPress={backPressed}
-          />
-          { deckCountControls }
-        </>
-      ) }
-      { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
-    </View>
+    );
+  }
+  return (
+    <FloatingDeckQuantityComponent
+      card={currentCard}
+      min={lockedPermanents?.[currentCard.code]}
+      limit={deck_limit}
+      mode={(currentControl === 'side' || currentControl === 'extra' || currentControl === 'ignore' || currentControl === 'checklist') ? currentControl : undefined}
+      editable={editable}
+    />
   );
 }
 
@@ -516,3 +516,4 @@ const styles = StyleSheet.create({
     width: 10,
   },
 });
+

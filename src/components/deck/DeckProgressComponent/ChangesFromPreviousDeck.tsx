@@ -109,7 +109,7 @@ export default function ChangesFromPreviousDeck({
 
   const showCardPressed = useCallback((id: string, card: Card) => {
     if (singleCardView) {
-      showCard(componentId, card.code, card, colors, { showSpoilers: true, deckId: parsedDeck.id, initialCustomizations: parsedDeck.customizations });
+      showCard(componentId, card.code, card, colors, { showSpoilers: true, deckId: parsedDeck.id, deckInvestigatorId: parsedDeck.deck?.investigator_code, initialCustomizations: parsedDeck.customizations });
     } else {
       showCardSwipe(
         componentId,

@@ -41,7 +41,7 @@ import space, { m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { searchBoxHeight } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { ParsedDeckResults, useLiveCustomizations } from '@components/deck/hooks';
+import { useLiveCustomizations } from '@components/deck/hooks';
 import { useCards, useEffectUpdate, useSettingValue, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
@@ -52,12 +52,12 @@ import { useAppDispatch } from '@app/store';
 import { FilterState } from '@lib/filters';
 import DeckValidation from '@lib/DeckValidation';
 import { THE_INSANE_CODE } from '@data/deck/specialCards';
-import { parseMetaSlots } from '@lib/parseDeck';
-import { useDeckAttachments } from '@components/deck/useParsedDeckComponent';
+import { DeckEditContext, useDeckDeltas, useTabooSetOverride } from '@components/deck/DeckEditContext';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
   componentId: string;
-  parsedDeck?: ParsedDeckResults;
+  deck?: LatestDeckT;
   currentDeckOnly?: boolean;
   query?: (deckEdits: Slots | undefined) => Brackets;
   filterQuery?: Brackets;
@@ -891,60 +891,47 @@ function itemHeight(item: Item, fontScale: number, headerHeight: number, lang: s
   }
 }
 
-export default function({
-  componentId,
-  parsedDeck,
-  currentDeckOnly,
-  query: toQuery,
-  filterQuery,
-  filters,
-  textQuery,
-  sorts,
-  initialSort,
-  searchTerm,
-  expandSearchControls,
-  expandSearchControlsHeight,
-  investigator,
-  renderCard,
-  cardPressed,
-  noSearch,
-  headerItems,
-  headerHeight,
-  handleScroll,
-  showHeader,
-  storyOnly,
-  specialMode,
-  showNonCollection,
-  footerPadding,
-  filterId,
-}: Props) {
+export default function DbCardResultList(props: Props) {
+  const {
+    componentId,
+    deck,
+    currentDeckOnly,
+    query: toQuery,
+    filterQuery,
+    filters,
+    textQuery,
+    sorts,
+    initialSort,
+    searchTerm,
+    expandSearchControls,
+    expandSearchControlsHeight,
+    investigator,
+    renderCard,
+    cardPressed,
+    noSearch,
+    headerItems,
+    headerHeight,
+    handleScroll,
+    showHeader,
+    storyOnly,
+    specialMode,
+    showNonCollection,
+    footerPadding,
+    filterId,
+  } = props;
   const { db } = useContext(DatabaseContext);
-  const deck = parsedDeck?.deckT;
-  const deckEdits = parsedDeck?.deckEdits;
-  const deckId = deck?.id;
-  const [attachmentsForCard] = useDeckAttachments(parsedDeck?.parsedDeck?.investigator, parsedDeck?.parsedDeck?.slots);
-  const customizations = useLiveCustomizations(deck, deckEdits);
+  const { deckId } = useContext(DeckEditContext);
+  // const deck = parsedDeck?.deckT;
+  // const { deckEdits, deckId } = useContext(DeckEditContext);
+  const customizations = useLiveCustomizations(deck);
   const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
-  const tabooSetOverride = parsedDeck?.deck !== undefined ? ((deckEdits?.tabooSetChange || deck?.deck.taboo_id) || 0) : undefined;
+  const tabooSetOverride = useTabooSetOverride();
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
   const singleCardView = useSettingValue('single_card');
   const packInCollection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
-  const [deckCardCounts, originalDeckSlots, mode] = useMemo((): [Slots | undefined, Slots | undefined, 'side' | 'extra' | undefined] => {
-    switch(specialMode) {
-      case 'side':
-        return [deckEdits?.side, deck?.deck.sideSlots, 'side'];
-      case 'extra':
-        return [
-          deckEdits ? parseMetaSlots(deckEdits.meta.extra_deck) : undefined,
-          deck ? parseMetaSlots(deck.deck.meta?.extra_deck) : undefined,
-          'extra',
-        ];
-      default:
-        return [deckEdits?.slots, deck?.deck.slots, undefined];
-    }
-  }, [specialMode, deckEdits, deck]);
+  const { deckCardCounts, originalDeckSlots, mode } = useDeckDeltas(specialMode);
   const {
     feed,
     fullFeed,
@@ -1004,7 +991,7 @@ export default function({
         card.code,
         card,
         colors,
-        { showSpoilers: true, deckId, initialCustomizations: customizations, tabooSetId: tabooSetOverride }
+        { showSpoilers: true, deckId, deckInvestigatorId: investigator?.main.code, initialCustomizations: customizations, tabooSetId: tabooSetOverride }
       );
       return;
     }
@@ -1037,13 +1024,11 @@ export default function({
     );
   }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, specialMode, cardPressed]);
   const { lang } = useContext(LanguageContext);
-  const lockedPermanents = parsedDeck?.parsedDeck?.lockedPermanents;
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {
       case 'button':
         return (
           <ArkhamButton
-            key={item.id}
             title={item.title}
             onPress={item.onPress}
             icon={item.icon}
@@ -1057,18 +1042,14 @@ export default function({
         const deck_limit: number = card.collectionDeckLimit(packInCollection, ignore_collection);
         return (
           <CardSearchResult
-            key={item.id}
             card={card}
             onPressId={cardOnPressId}
             id={item.id}
             backgroundColor="transparent"
             control={deckId !== undefined ? ({
               type: 'deck',
-              deckId,
-              min: lockedPermanents?.[card.code],
               limit: deck_limit,
               mode,
-              attachments: attachmentsForCard(card),
             }) : undefined}
           />
         );
@@ -1076,18 +1057,17 @@ export default function({
       case 'header':
         return (
           <CardSectionHeader
-            key={item.id}
             section={item.header}
             investigator={investigator?.front}
           />
         );
       case 'loading':
         return (
-          <LoadingCardSearchResult key={item.id} />
+          <LoadingCardSearchResult />
         );
       case 'text':
         return (
-          <View key={item.id} style={[
+          <View style={[
             item.border ? styles.emptyText : space.paddingM,
             item.border ? borderStyle : undefined,
             item.paddingTop ? { paddingTop: item.paddingTop } : undefined,
@@ -1098,10 +1078,10 @@ export default function({
           </View>
         )
       case 'padding':
-        return <View key={item.id} style={{ height: item.size }} />;
+        return <View style={{ height: item.size }} />;
       case 'list_header':
         return (
-          <View key={item.id} style={[styles.column, { width: width }]}>
+          <View style={[styles.column, { width: width }]}>
             { headerItems }
           </View>
         );
@@ -1117,10 +1097,9 @@ export default function({
       default:
         return <View />;
     }
-  }, [mode, lockedPermanents, deckId, packInCollection, ignore_collection, width, typography, borderStyle,
-    headerItems, expandSearchControls, footerPadding,
-    attachmentsForCard, cardOnPressId,
-    investigator, renderCard,
+  }, [mode, deckId, packInCollection, ignore_collection, width, typography, borderStyle,
+    headerItems, expandSearchControls, footerPadding, investigator,
+    cardOnPressId, renderCard,
   ]);
   const heightForItem = useCallback((item: Item): number => {
     return itemHeight(item, fontScale, headerHeight || 0, lang);
@@ -1135,6 +1114,7 @@ export default function({
       onRefresh={refreshDeck}
       refreshing={refreshing || refreshingSearch}
       noSearch={noSearch}
+      estimatedItemSize={rowHeight(fontScale)}
     />
   );
 }

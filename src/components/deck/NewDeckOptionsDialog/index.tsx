@@ -20,9 +20,9 @@ import useNetworkStatus from '@components/core/useNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import { saveNewDeck } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
-import { CampaignId, Deck, DeckMeta, getDeckId, Slots } from '@actions/types';
+import { CampaignId, Deck, DeckMeta, EditDeckState, getDeckId, ParsedDeck, Slots } from '@actions/types';
 import { BASIC_WEAKNESS_CHOICE, CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
-import Card from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import { AppState } from '@reducers';
 import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
@@ -45,9 +45,10 @@ import useSingleCard from '@components/card/useSingleCard';
 import { useCardMap } from '@components/card/useCardList';
 import specialMetaSlots, { ensureConsistentMeta } from '@data/deck/specialMetaSlots';
 import useChaosDeckGenerator from '../useChaosDeckGenerator';
-import { parseDeck } from '@lib/parseDeck';
+import { parseDeck, parseMetaSlots } from '@lib/parseDeck';
 import useParsedDeckComponent from '../useParsedDeckComponent';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { DeckEditContext, DeckEditContextProvider } from '../DeckEditContext';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -70,6 +71,20 @@ function specialDeckModeLabel(mode: SpecialDeckMode): string {
     case 'starter': return t`Starter deck`;
     case 'chaos': return t`Ultimatum of Chaos`;
   }
+}
+
+function ChaosDeckPreview({ componentId, parsedDeck, meta, cards, tabooSetId }: {
+  componentId: string; meta: DeckMeta; parsedDeck: ParsedDeck; cards: CardsMap; tabooSetId: number | undefined }) {
+  const [parsedDeckComponent] = useParsedDeckComponent({
+    componentId,
+    meta,
+    parsedDeck,
+    mode: 'view',
+    cards,
+    tabooSetId,
+    visible: true,
+  });
+  return <>{parsedDeckComponent}</>;
 }
 
 function NewDeckOptionsDialog({
@@ -498,16 +513,22 @@ function NewDeckOptionsDialog({
     };
     return parseDeck(investigatorBack.code, meta, slots, {}, {}, chaosCards, listSeperator);
   }, [investigatorBack, meta, chaosSlots, requiredSlots, chaosCards, specialDeckMode, listSeperator]);
+  const chaosEditState = useMemo(() => {
+    if (!parsedChaosDeck) {
+      return undefined;
+    }
+    const edits: EditDeckState = {
+      xpAdjustment: 0,
+      slots: parsedChaosDeck.slots,
+      ignoreDeckLimitSlots: parsedChaosDeck.ignoreDeckLimitSlots,
+      side: {},
+      meta,
+      mode: 'view',
+      editable: false,
+    };
+    return edits;
+  }, [parsedChaosDeck, meta]);
 
-  const [parsedDeckComponent] = useParsedDeckComponent({
-    componentId,
-    meta,
-    parsedDeck: parsedChaosDeck,
-    mode: 'view',
-    cards: chaosCards,
-    tabooSetId,
-    visible: true,
-  });
   const formContent = useMemo(() => {
     return (
       <>
@@ -558,7 +579,11 @@ function NewDeckOptionsDialog({
         ) }
         { !!find(requiredCardOptions, option => option.length > 0) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
-            { specialDeckMode === 'chaos' && !!chaosSlots && parsedDeckComponent }
+            { specialDeckMode === 'chaos' && !!chaosSlots && !!parsedChaosDeck && !!chaosEditState && (
+              <DeckEditContextProvider deckEdits={chaosEditState} investigator={investigatorId} deckId={undefined}>
+                <ChaosDeckPreview componentId={componentId} parsedDeck={parsedChaosDeck} meta={meta} cards={chaosCards} tabooSetId={tabooSetId} />
+              </DeckEditContextProvider>
+            )}
             { specialDeckMode !== 'starter' && (
               <DeckSectionBlock title={t`Required Cards`} faction="neutral">
                 { map(requiredCardOptions, (requiredCards, index) => {
@@ -584,7 +609,8 @@ function NewDeckOptionsDialog({
       </>
     );
   }, [investigatorId, signedIn, isCustomContent, randomWeaknessCount, cards,
-    networkType, isConnected, chaosSlots, specialDeckMode, parsedDeckComponent,
+    networkType, isConnected, chaosSlots, specialDeckMode, chaosEditState, chaosCards,
+    componentId, parsedChaosDeck,
     offlineDeck, optionSelected, tabooSetId, requiredCardOptions, meta, typography,
     setTabooSetId, onCardPress, toggleOptionsSelected,toggleOfflineDeck,
     login, refreshNetworkStatus, renderNamePicker, setParallel, updateMeta]);

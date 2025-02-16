@@ -38,28 +38,30 @@ export default function useSingleCard(code: undefined | string, type: 'player' |
 }
 
 export function useInvestigatorChoice(code: string | undefined, meta?: DeckMeta, tabooSetOverride?: number): InvestigatorChoice | undefined {
+  const alternateFront = meta?.alternate_front;
+  const alternateBack = meta?.alternate_back;
   const codes = useMemo(() => {
     if (!code) {
       return EMPTY_CODES;
     }
     return uniq([
       code,
-      meta?.alternate_front ?? code,
-      meta?.alternate_back ?? code,
+      alternateFront ?? code,
+      alternateBack ?? code,
     ]);
-  }, [code, meta]);
+  }, [code, alternateFront, alternateBack]);
   const [playerCards] = usePlayerCards(codes, false, tabooSetOverride);
   return useMemo(() => {
     if (!code) {
       return undefined;
     }
     const main = playerCards?.[code];
-    const front = playerCards?.[meta?.alternate_front ?? code];
-    const back = playerCards?.[meta?.alternate_back ?? code];
+    const front = playerCards?.[alternateFront ?? code];
+    const back = playerCards?.[alternateBack ?? code];
     if (!front || !back || !main) {
       return undefined;
     }
     return { front, back, main };
-  }, [code, meta, playerCards]);
+  }, [code, alternateFront, alternateBack, playerCards]);
 }
 

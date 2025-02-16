@@ -135,18 +135,21 @@ export function showDeckModal(
   });
 }
 
+type ShowCardOptions = {
+  showSpoilers: undefined | boolean;
+  tabooSetId?: number;
+  backCode?: string;
+  initialCustomizations?: Customizations;
+  deckId?: DeckId;
+  deckInvestigatorId?: string;
+}
+
 export function showCard(
   componentId: string,
   code: string,
   card: Card,
   colors: ThemeColors,
-  options: {
-    showSpoilers: undefined | boolean,
-    deckId?: DeckId,
-    initialCustomizations?: Customizations,
-    tabooSetId?: number,
-    backCode?: string,
-  }
+  options: ShowCardOptions
 ) {
   const { showSpoilers, deckId, initialCustomizations, tabooSetId, backCode } = options;
   Navigation.push<CardDetailProps>(componentId, {
@@ -159,6 +162,7 @@ export function showCard(
         showSpoilers: !!showSpoilers,
         tabooSetId,
         deckId,
+        deckInvestigatorId: options.deckInvestigatorId,
         initialCustomizations,
       },
       options: {

@@ -560,13 +560,13 @@ export function decDeckSlot(id: DeckId, code: string, mode?: 'side' | 'extra' | 
 }
 
 
-export function setDeckAttachmentSlot(id: DeckId, code: string, value: number, attachment_code: string): UpdateDeckEditCountsAction {
+export function incDeckAttachmentSlot(id: DeckId, code: string, limit: number | undefined, attachment_code: string): UpdateDeckEditCountsAction {
   return {
     type: UPDATE_DECK_EDIT_COUNTS,
     id,
     code: code,
-    operation: 'set',
-    value,
+    operation: 'inc',
+    limit,
     countType: 'attachment',
     attachment_code,
   };

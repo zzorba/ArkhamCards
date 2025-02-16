@@ -62,16 +62,18 @@ function getCurrentSlots(edits: EditDeckState, action: UpdateDeckEditCountsActio
 
 function cleanAttachmentCounts(meta: DeckMeta, code: string, count: number): DeckMeta {
   const newMeta = { ...meta };
+  let changed = false;
   forEach(Object.keys(meta), key => {
     if (key.startsWith('attachment_')) {
       const slots = parseMetaSlots(meta[key]);
       if ((slots[code] ?? 0) > count) {
+        changed = true;
         slots[code] = count;
         newMeta[key] = encodeMetaSlots(slots);
       }
     }
   });
-  return newMeta;
+  return changed ? newMeta : meta;
 }
 
 export default function(
@@ -259,6 +261,11 @@ export default function(
               };
             }
             break;
+          case 'attachment':
+            if (currentSlots[action.code] > (currentEdits.slots[action.code] ?? 0)) {
+              currentSlots[action.code] = 0;
+            }
+            break;
         }
         break;
       }
@@ -350,16 +357,16 @@ export default function(
       return {
         ...state,
         edits: {
-          ...(state.edits || {}),
+          ...(state.edits ?? {}),
           [action.id.uuid]: {
             nameChange: undefined,
             tagsChange: undefined,
             tabooSetChange: undefined,
-            slots: action.deck.slots || {},
-            side: action.deck.sideSlots || {},
-            ignoreDeckLimitSlots: action.deck.ignoreDeckLimitSlots || {},
-            meta: action.deck.meta || {},
-            xpAdjustment: action.deck.xp_adjustment || 0,
+            slots: action.deck.slots ?? {},
+            side: action.deck.sideSlots ?? {},
+            ignoreDeckLimitSlots: action.deck.ignoreDeckLimitSlots ?? {},
+            meta: action.deck.meta ?? {},
+            xpAdjustment: action.deck.xp_adjustment ?? 0,
             mode: 'view',
             editable: !action.deck.nextDeckId,
           },

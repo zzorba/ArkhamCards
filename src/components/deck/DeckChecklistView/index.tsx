@@ -6,18 +6,18 @@ import { t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import { iconsMap } from '@app/NavIcons';
-import { Slots, SortType, DeckId, CampaignId, ChecklistSlots } from '@actions/types';
-import { AppState, getCardSort, getDeckChecklist } from '@reducers';
+import { Slots, SortType, DeckId, CampaignId } from '@actions/types';
+import { AppState, getCardSort } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
-import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actions';
+import { resetDeckChecklist } from '@components/deck/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import DbCardResultList from '@components/cardlist/CardSearchResultsComponent/DbCardResultList';
 import { useSortDialog } from '@components/cardlist/CardSortDialog';
-import Card from '@data/types/Card';
+import Card, { InvestigatorChoice } from '@data/types/Card';
 import COLORS from '@styles/colors';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useDeckSlotCount, useParsedDeck } from '@components/deck/hooks';
+import { ParsedDeckResults, useParsedDeck } from '@components/deck/hooks';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { useInvestigatorChoice } from '@components/card/useSingleCard';
 import { useCampaignDeck } from '@data/hooks';
@@ -25,6 +25,7 @@ import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import KeepAwake from 'react-native-keep-awake';
 import { updateCardSorts } from '@components/filter/actions';
 import { find } from 'lodash';
+import { DeckEditContext, ParsedDeckContextProvider, useChecklistCount, useDeckSlotCount } from '../DeckEditContext';
 
 export interface DeckChecklistProps {
   id: DeckId;
@@ -36,23 +37,16 @@ export interface DeckChecklistProps {
 type Props = DeckChecklistProps & NavigationProps;
 
 function ChecklistCard({
-  deckId,
   id,
   card,
-  checklist,
   pressCard,
 }: {
-  deckId: DeckId;
   id: string;
   card: Card;
-  checklist: ChecklistSlots;
   pressCard: (code: string, card: Card) => void;
 }) {
-  const [count] = useDeckSlotCount(deckId, card.code);
-  const dispatch = useDispatch();
-  const toggleValue = useCallback((value: number, toggle: boolean) => {
-    dispatch(setDeckChecklistCard(deckId, card.code, value, toggle));
-  }, [dispatch, deckId, card.code]);
+  const { checklist, toggleValue } = useChecklistCount(card.code);
+  const [count] = useDeckSlotCount(card.code);
   return (
     <CardSearchResult
       card={card}
@@ -62,7 +56,7 @@ function ChecklistCard({
       control={{
         type: 'count_with_toggle',
         count,
-        values: checklist[card.code] ?? [],
+        values: checklist,
         toggleValue,
       }}
     />
@@ -72,22 +66,19 @@ function ChecklistCard({
 function DeckChecklistView({
   componentId,
   id,
-  campaignId,
-}: Props) {
+  parsedDeck,
+  investigator,
+}: { id: DeckId; parsedDeck: ParsedDeckResults; investigator: InvestigatorChoice | undefined } & NavigationProps) {
   const { backgroundStyle, colors, typography, fontScale, width } = useContext(StyleContext);
-  const deck = useCampaignDeck(id, campaignId);
-  const parsedDeck = useParsedDeck(id, componentId);
-  const deckEdits = parsedDeck.deckEdits;
+  const { checklist } = useContext(DeckEditContext);
+
   const dispatch = useDispatch();
   const sortSelector = useCallback((state: AppState) => getCardSort(state, 'checklist', false), []);
   const sorts = useSelector(sortSelector);
   const setSorts = useCallback((sorts: SortType[]) => {
     dispatch(updateCardSorts(sorts, 'checklist', false));
   }, [dispatch]);
-
-  const checklistSelector = useCallback((state: AppState) => getDeckChecklist(state, id), [id]);
-  const checklist = useSelector(checklistSelector);
-  const hasChecklist = useMemo(() => {
+  const hasCheckedItems = useMemo(() => {
     return !!checklist && !!find(Object.values(checklist), f => !!f?.length);
   }, [checklist]);
   const [sortDialog, showSortDialog] = useSortDialog(setSorts, sorts, false);
@@ -101,14 +92,12 @@ function DeckChecklistView({
     return (
       <ChecklistCard
         key={card.code}
-        deckId={id}
         id={cardId}
         card={card}
         pressCard={onPressId}
-        checklist={checklist}
       />
     );
-  }, [id, checklist]);
+  }, []);
 
   const clearChecklist = useCallback(() => {
     dispatch(resetDeckChecklist(id));
@@ -118,8 +107,8 @@ function DeckChecklistView({
     return [
       [(
         <View style={[space.paddingM, styles.headerRow, { width }]} key="header">
-          <TouchableOpacity onPress={clearChecklist} disabled={!hasChecklist}>
-            <Text style={[typography.text, hasChecklist ? typography.light : { color: colors.L10 }]}>
+          <TouchableOpacity onPress={clearChecklist} disabled={!hasCheckedItems}>
+            <Text style={[typography.text, hasCheckedItems ? typography.light : { color: colors.L10 }]}>
               { t`Clear` }
             </Text>
           </TouchableOpacity>
@@ -127,19 +116,14 @@ function DeckChecklistView({
       )],
       m * 2 + 22 * fontScale,
     ];
-  }, [hasChecklist, typography, colors, fontScale, clearChecklist, width]);
-  const investigator = useInvestigatorChoice(deck?.investigator, deckEdits?.meta, deckEdits?.tabooSetChange || deck?.deck.taboo_id);
-
-  if (!deckEdits) {
-    return null;
-  }
+  }, [hasCheckedItems, typography, colors, fontScale, clearChecklist, width]);
 
   return (
     <View style={[backgroundStyle, { flex: 1 }]}>
       <KeepAwake />
       <DbCardResultList
         componentId={componentId}
-        parsedDeck={parsedDeck}
+        deck={parsedDeck.deckT}
         filterId={id.uuid}
         investigator={investigator}
         sorts={sorts}
@@ -156,7 +140,20 @@ function DeckChecklistView({
   );
 }
 
-DeckChecklistView.options = (): Options => {
+function DeckChecklistViewWrapper({ campaignId, id, componentId }: Props) {
+  const deck = useCampaignDeck(id, campaignId);
+  const parsedDeck = useParsedDeck(id, componentId);
+  const deckEdits = parsedDeck?.deckEdits;
+  const investigator = useInvestigatorChoice(deck?.investigator, deckEdits?.meta, deckEdits?.tabooSetChange || deck?.deck.taboo_id);
+
+  return (
+    <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>
+      <DeckChecklistView id={id} componentId={componentId} parsedDeck={parsedDeck} investigator={investigator} />
+    </ParsedDeckContextProvider>
+  );
+}
+
+DeckChecklistViewWrapper.options = (): Options => {
   return {
     topBar: {
       title: {
@@ -174,7 +171,7 @@ DeckChecklistView.options = (): Options => {
     },
   };
 };
-export default DeckChecklistView;
+export default DeckChecklistViewWrapper;
 
 const styles = StyleSheet.create({
   headerRow: {

@@ -16,7 +16,7 @@ import Card, { cardInCollection } from '@data/types/Card';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getPacksInCollection } from '@reducers';
-import space, { s } from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { useAllInvestigators, useSettingValue, useToggles } from '@components/core/hooks';
@@ -26,6 +26,7 @@ import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailS
 import FactionIcon from '@icons/FactionIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import AppIcon from '@icons/AppIcon';
+import InvestigatorRow from '@components/core/InvestigatorRow';
 
 interface Props {
   componentId: string;
@@ -84,7 +85,7 @@ function headerForInvestigator(
 
 function renderSectionHeader(item: HeaderItem) {
   return (
-    <View style={space.paddingS} key={item.title}>
+    <View style={space.paddingS}>
       <CardDetailSectionHeader title={item.title} color="dark" normalCase />
     </View>
   );
@@ -304,7 +305,6 @@ export default function InvestigatorsListComponent({
       case 'card':
         return (
           <CustomInvestigatorRow
-            key={item.card.code}
             investigator={item.card}
             onInvestigatorPress={onInvestigatorPress}
             showFaction
@@ -346,6 +346,7 @@ export default function InvestigatorsListComponent({
           data={data}
           renderFooter={renderFooter}
           renderItem={renderItem}
+          estimatedItemSize={40}
         />
       ) }
     </CollapsibleSearchBox>

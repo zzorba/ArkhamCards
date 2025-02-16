@@ -206,7 +206,6 @@ function CampaignList({ onScroll, header, componentId, campaigns, footer, footer
         const standaloneId = campaign.standaloneId;
         return standaloneId ? (
           <StandaloneItem
-            key={campaign.uuid}
             campaign={campaign}
             onPress={onPress}
             scenarioName={standalonesById[standaloneId.campaignId][standaloneId.scenarioId]}
@@ -215,7 +214,6 @@ function CampaignList({ onScroll, header, componentId, campaigns, footer, footer
       }
       return (
         <CampaignItem
-          key={campaign.uuid}
           campaign={campaign}
           onPress={onPress}
         />
@@ -238,6 +236,7 @@ function CampaignList({ onScroll, header, componentId, campaigns, footer, footer
       heightForItem={heightForItem}
       renderItem={renderItem}
       renderHeader={renderHeader}
+      estimatedItemSize={CampaignItem.computeHeight(fontScale)}
     />
   );
 }
