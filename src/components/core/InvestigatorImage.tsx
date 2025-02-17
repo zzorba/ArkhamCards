@@ -35,6 +35,7 @@ interface Props {
   arkhamCardsImg?: string;
   imageOffset?: 'right' | 'left';
   round?: boolean;
+  onPress?: () => void;
 }
 
 const IMAGE_SIZE = {
@@ -166,6 +167,7 @@ function InvestigatorImage({
   imageOffset,
   round,
   image,
+  ...props
 }: Props) {
   const { colors, fontScale, shadow } = useContext(StyleContext);
 
@@ -353,7 +355,7 @@ function InvestigatorImage({
 
   if (componentId && card) {
     return (
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={props?.onPress ?? onPress}>
         { imageNode }
       </TouchableOpacity>
     );

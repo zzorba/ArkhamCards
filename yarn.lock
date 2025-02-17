@@ -4987,6 +4987,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@openspacelabs/react-native-zoomable-view@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "@openspacelabs/react-native-zoomable-view@npm:2.3.1"
+  dependencies:
+    prop-types: "npm:^15.7.2"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-native: ">=0.54.0"
+  checksum: 10c0/17b37543d8cadc78d4ee09168eed94e5e40e09be3f4bace7fd4bd0e24a51035015bb69fbb31b6ca86bd17dc8dea2c18244a2eeb37e0286b452a420eec483ac3c
+  languageName: node
+  linkType: hard
+
 "@peculiar/asn1-schema@npm:^2.3.6":
   version: 2.3.6
   resolution: "@peculiar/asn1-schema@npm:2.3.6"
@@ -7143,6 +7155,7 @@ __metadata:
     "@invertase/react-native-apple-authentication": "npm:2.2.2"
     "@miblanchard/react-native-slider": "npm:^2.3.1"
     "@op-engineering/op-sqlite": "npm:9.1.2"
+    "@openspacelabs/react-native-zoomable-view": "npm:^2.3.1"
     "@react-hook/debounce": "npm:4.0.0"
     "@react-hook/throttle": "npm:2.2.0"
     "@react-native-async-storage/async-storage": "npm:1.24.0"

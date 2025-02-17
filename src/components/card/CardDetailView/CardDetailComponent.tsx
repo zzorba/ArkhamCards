@@ -26,9 +26,10 @@ interface Props {
   tabooSetId?: number | undefined;
   toggleShowSpoilers?: (code: string) => void;
   showInvestigatorCards?: (code: string) => void;
+  toggleImageMode?: () => void;
 }
 
-function InvestigatorInfoComponent({ componentId, card, width, simple, showInvestigatorCards }: Props) {
+function InvestigatorInfoComponent({ componentId, card, width, simple, toggleImageMode, showInvestigatorCards }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const [parallelInvestigators] = useParallelInvestigators(card.type_code === 'investigator' ? card.code : undefined);
   const showInvestigatorCardsPressed = useCallback(() => {
@@ -81,6 +82,7 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
               card={parallel}
               width={width}
               simple={!!simple}
+              toggleImageMode={toggleImageMode}
             />
           )) }
         </>
@@ -152,7 +154,7 @@ function SpoilersComponent({ componentId, card, width, toggleShowSpoilers }: Pro
 
 export default function CardDetailComponent({
   componentId, card, backCard, width, showSpoilers, tabooSetId, simple, noImage,
-  toggleShowSpoilers, showInvestigatorCards,
+  toggleShowSpoilers, showInvestigatorCards, toggleImageMode,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const shouldBlur = !showSpoilers && !!(card && card.mythos_card);
@@ -181,6 +183,7 @@ export default function CardDetailComponent({
           width={width}
           simple={!!simple}
           noImage={noImage}
+          toggleImageMode={toggleImageMode}
         />
         { !simple && (
           <BondedCardsComponent

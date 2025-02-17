@@ -1,10 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import {
+  GestureResponderEvent,
+  PanResponderGestureState,
   StyleSheet,
   View,
 } from 'react-native';
 import { Image as FastImage } from 'expo-image';
-import ViewControl from 'react-native-zoom-view';
+import { ReactNativeZoomableView, ZoomableViewEvent } from '@openspacelabs/react-native-zoomable-view';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -18,6 +20,7 @@ import useSingleCard from './useSingleCard';
 
 export interface CardImageProps {
   id: string;
+  embedded?: boolean;
 }
 
 type Props = CardImageProps & NavigationProps;
@@ -32,18 +35,36 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
   const cardRatio = 68 / 95;
   const cardHeight = (height - HEADER_HEIGHT) * cardRatio;
   const cardWidth = width - 16;
+  const onShouldBlockNativeResponderHandler = useCallback((
+    event: GestureResponderEvent,
+    gestureState: PanResponderGestureState,
+    zoomableViewEventObject: ZoomableViewEvent
+  ): boolean => {
+    if (zoomableViewEventObject.zoomLevel === 1) {
+      return false;
+    }
+    return true;
+  }, []);
   if (!card) {
     return null;
   }
   if (card.double_sided || (card.linked_card && card.linked_card.hasImage())) {
     if (!flipped) {
       return (
-        <ViewControl
-          cropWidth={width}
-          cropHeight={height - HEADER_HEIGHT}
-          imageWidth={cardWidth}
-          imageHeight={cardHeight}
-          style={[styles.container, backgroundStyle]}
+        <ReactNativeZoomableView
+          maxZoom={3}
+          minZoom={1}
+          initialZoom={1}
+          style={{
+            width,
+            height: height - HEADER_HEIGHT,
+          }}
+          // contentWidth={cardWidth}
+          // contentHeight={cardHeight}
+          onShouldBlockNativeResponder={onShouldBlockNativeResponderHandler}
+          disablePanOnInitialZoom
+          panBoundaryPadding={10}
+          // style={[styles.container, backgroundStyle]}
         >
           <FastImage
             style={{ height: cardHeight, width: cardWidth }}
@@ -52,16 +73,26 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
             }}
             resizeMode="contain"
           />
-        </ViewControl>
+        </ReactNativeZoomableView>
       );
     }
     return (
-      <ViewControl
-        cropWidth={width}
-        cropHeight={height - HEADER_HEIGHT}
-        imageWidth={cardWidth}
-        imageHeight={cardHeight}
-        style={[styles.container, backgroundStyle]}
+      <ReactNativeZoomableView
+        maxZoom={3}
+        minZoom={1}
+        initialZoom={1}
+        // cropWidth={width}
+        // cropHeight={height - HEADER_HEIGHT}
+        contentWidth={cardWidth}
+        contentHeight={cardHeight}
+        disablePanOnInitialZoom
+        panBoundaryPadding={10}
+        onShouldBlockNativeResponder={onShouldBlockNativeResponderHandler}
+        style={{
+          width,
+          height: height - HEADER_HEIGHT,
+        }}
+        // style={[styles.container, backgroundStyle]}
       >
         <FastImage
           style={{ height: cardHeight, width: cardWidth }}
@@ -70,16 +101,26 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
           }}
           resizeMode="contain"
         />
-      </ViewControl>
+      </ReactNativeZoomableView>
     );
   }
   return (
-    <ViewControl
-      cropWidth={width}
-      cropHeight={height - HEADER_HEIGHT}
-      imageWidth={cardWidth}
-      imageHeight={cardHeight}
-      style={[styles.container, backgroundStyle]}
+    <ReactNativeZoomableView
+      maxZoom={3}
+      minZoom={1}
+      initialZoom={1}
+      // cropWidth={width}
+      // cropHeight={height - HEADER_HEIGHT}
+      contentWidth={cardWidth}
+      contentHeight={cardHeight}
+      disablePanOnInitialZoom
+      onShouldBlockNativeResponder={onShouldBlockNativeResponderHandler}
+      panBoundaryPadding={10}
+      style={{
+        width,
+        height: height - HEADER_HEIGHT,
+      }}
+      // style={[styles.container, backgroundStyle]}
     >
       <FastImage
         style={{ height: cardHeight, width: cardWidth }}
@@ -88,11 +129,11 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
         }}
         resizeMode="contain"
       />
-    </ViewControl>
+    </ReactNativeZoomableView>
   );
 }
 
-export default function CardImageView({ componentId, id }: Props) {
+export default function CardImageView({ componentId, id, embedded }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const [flipped, toggleFlipped] = useFlag(false);
   useNavigationButtonPressed(({ buttonId }) => {
@@ -102,7 +143,7 @@ export default function CardImageView({ componentId, id }: Props) {
   }, componentId, [toggleFlipped]);
   const [card] = useSingleCard(id, 'encounter');
   useEffect(() => {
-    if (!card) {
+    if (!card || embedded) {
       return;
     }
     const doubleCard: boolean = card.double_sided || !!(card.linked_card && card.linked_card.hasImage());
@@ -116,7 +157,7 @@ export default function CardImageView({ componentId, id }: Props) {
         }] : [],
       },
     });
-  }, [card, componentId]);
+  }, [card, embedded, componentId]);
   return (
     <View style={[styles.container, backgroundStyle]}>
       <CardImageDetail

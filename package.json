@@ -65,6 +65,7 @@
     "@invertase/react-native-apple-authentication": "2.2.2",
     "@miblanchard/react-native-slider": "^2.3.1",
     "@op-engineering/op-sqlite": "9.1.2",
+    "@openspacelabs/react-native-zoomable-view": "^2.3.1",
     "@react-hook/debounce": "4.0.0",
     "@react-hook/throttle": "2.2.0",
     "@react-native-async-storage/async-storage": "1.24.0",
