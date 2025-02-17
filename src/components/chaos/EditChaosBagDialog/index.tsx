@@ -265,7 +265,6 @@ function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackD
     return true;
   }, [componentId, visible, hasPendingEdits, saveChanges, showAlert]);
 
-
   useBackButton(handleBackPress);
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'save') {

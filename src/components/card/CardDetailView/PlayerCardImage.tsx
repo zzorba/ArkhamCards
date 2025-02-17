@@ -21,6 +21,7 @@ interface Props {
   componentId?: string;
   card: Card;
   size?: 'tiny';
+  onPress?: () => void;
 }
 
 function imageStyle(card: Card) {
@@ -126,7 +127,7 @@ function ImageContent({ card }: { card: Card }) {
   );
 }
 
-export default function PlayerCardImage({ componentId, card }: Props) {
+export default function PlayerCardImage({ componentId, card, ...props }: Props) {
   const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => {
     if (componentId) {
@@ -144,7 +145,7 @@ export default function PlayerCardImage({ componentId, card }: Props) {
 
   if (componentId) {
     return (
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={props.onPress ?? onPress}>
         <ImageContent card={card} />
       </TouchableOpacity>
     );

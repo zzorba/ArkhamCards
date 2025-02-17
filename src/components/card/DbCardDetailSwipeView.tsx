@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useReducer, useState } from 'react';
 import {
   ActivityIndicator,
   Linking,
@@ -10,7 +10,7 @@ import {
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 import SnapCarousel from 'react-native-snap-carousel';
-import Animated from 'react-native-reanimated';
+import Animated, { SlideInRight, SlideOutLeft } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { msgid, ngettext, t } from 'ttag';
 import { find, filter, map, slice, sortBy, sumBy } from 'lodash';
@@ -24,7 +24,7 @@ import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards, useSettingValue } from '@components/core/hooks';
+import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards, useSettingValue, useBackButton } from '@components/core/hooks';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { where } from '@data/sqlite/query';
 import { FOOTER_HEIGHT, PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
@@ -38,12 +38,13 @@ import { CustomizationChoice } from '@data/types/CustomizationOption';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';
 import { getSystemLanguage } from '@lib/i18n';
-import { useAttachableCards, useDeckAttachments } from '@components/deck/useParsedDeckComponent';
+import { useAttachableCards } from '@components/deck/useParsedDeckComponent';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import space, { s } from '@styles/space';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { DeckEditContext, ParsedDeckContextProvider, useAllCardCustomizations, useCardCustomizations, useDeckAttachmentSlots } from '@components/deck/DeckEditContext';
+import CardImageView from './CardImageView';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -66,6 +67,8 @@ const options = (passProps: CardDetailSwipeProps) => {
   return {
     topBar: {
       backButton: {
+        id: 'back',
+        popStackOnPress: false,
         title: t`Back`,
         color: passProps.whiteNav ? 'white' : COLORS.M,
       },
@@ -164,14 +167,16 @@ function ScrollableCard(props: {
   showCardSpoiler: (card: Card) => boolean;
   toggleShowSpoilers: (code: string) => void;
   showInvestigatorCards: (code: string) => void;
+  toggleImageMode: () => void;
   attachment?: AttachableDefinition;
   attachmentCards: Card[];
+  imageMode: boolean;
 }) {
   const {
     componentId, customizationsEditable, card, tabooSetId,
     width, height, customizations, deckCount,
-    attachment, attachmentCards,
-    setChoice, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler,
+    attachment, attachmentCards, imageMode,
+    setChoice, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler, toggleImageMode,
   } = props;
   const { deckId } = useContext(DeckEditContext);
   const { backgroundStyle, colors } = useContext(StyleContext);
@@ -187,43 +192,53 @@ function ScrollableCard(props: {
       </View>
     );
   }
+  if (imageMode && card) {
+    return (
+      <Animated.View entering={SlideInRight} exiting={SlideOutLeft} style={{ width, height }}>
+        <CardImageView componentId={componentId} id={card.code} embedded />
+      </Animated.View>
+    );
+  }
   return (
-    <ScrollView
-      overScrollMode="never"
-      showsVerticalScrollIndicator={false}
-      bounces={false}
-      contentContainerStyle={backgroundStyle}
-    >
-      <CardDetailComponent
-        componentId={componentId}
-        card={customizedCard}
-        showSpoilers={showCardSpoiler(customizedCard)}
-        toggleShowSpoilers={toggleShowSpoilers}
-        showInvestigatorCards={showInvestigatorCards}
-        width={width}
-        tabooSetId={tabooSetId}
-      />
-      { !!customizedCard.customization_options && !!card && (
-        <CardCustomizationOptions
+    <Animated.View exiting={SlideOutLeft}>
+      <ScrollView
+        overScrollMode="never"
+        showsVerticalScrollIndicator={false}
+        bounces={false}
+        contentContainerStyle={backgroundStyle}
+      >
+        <CardDetailComponent
           componentId={componentId}
-          card={card}
-          customizationOptions={customizedCard.customization_options}
-          customizationChoices={customizationChoices}
+          card={customizedCard}
+          showSpoilers={showCardSpoiler(customizedCard)}
+          toggleShowSpoilers={toggleShowSpoilers}
+          toggleImageMode={toggleImageMode}
+          showInvestigatorCards={showInvestigatorCards}
           width={width}
-          editable={!!customizationsEditable && !!deckCount}
-          setChoice={setChoice}
+          tabooSetId={tabooSetId}
         />
-      ) }
-      { !!card && !!deckId && !!attachment && (
-        <AttachmentSection
-          card={card}
-          width={width}
-          attachment={attachment}
-          attachmentCards={attachmentCards}
-        />
-      )}
-      { deckId !== undefined && <View style={{ width, height: FOOTER_HEIGHT }} /> }
-    </ScrollView>
+        { !!customizedCard.customization_options && !!card && (
+          <CardCustomizationOptions
+            componentId={componentId}
+            card={card}
+            customizationOptions={customizedCard.customization_options}
+            customizationChoices={customizationChoices}
+            width={width}
+            editable={!!customizationsEditable && !!deckCount}
+            setChoice={setChoice}
+          />
+        ) }
+        { !!card && !!deckId && !!attachment && (
+          <AttachmentSection
+            card={card}
+            width={width}
+            attachment={attachment}
+            attachmentCards={attachmentCards}
+          />
+        )}
+        { deckId !== undefined && <View style={{ width, height: FOOTER_HEIGHT }} /> }
+      </ScrollView>
+    </Animated.View>
   );
 }
 
@@ -244,6 +259,7 @@ function DbCardDetailSwipeView(props: Props) {
   const [spoilers, toggleShowSpoilers] = useToggles({});
   const [index, setIndex] = useState(initialIndex);
   const [cards, updateCards] = useCards('code', initialCards);
+  const [imageMode, toggleImageMode] = useReducer((value) => !value, false);
   const [currentCode, currentControl] = useMemo(() => {
     return [
       cardCodes[index],
@@ -327,13 +343,21 @@ function DbCardDetailSwipeView(props: Props) {
     });
   }, [componentId]);
   const backPressed = useCallback(() => {
-    Navigation.pop(componentId);
-  }, [componentId]);
+    if (imageMode) {
+      toggleImageMode();
+    } else {
+      Navigation.pop(componentId);
+    }
+  }, [componentId, imageMode, toggleImageMode]);
   useComponentDidAppear(() => {
     Navigation.mergeOptions(componentId, options(props));
   }, componentId, [componentId]);
+
   useNavigationButtonPressed(({ buttonId }) => {
-    if (currentCard) {
+    console.log('BUTTON PRESS!', buttonId)
+    if (buttonId === 'RNN.back') {
+      backPressed();
+    } else if (currentCard) {
       if (buttonId === 'share') {
         const arkhamDbDomain = getArkhamDbDomain(getSystemLanguage());
         Linking.openURL(`${arkhamDbDomain}/card/${currentCard.code}#reviews-header`);
@@ -360,11 +384,9 @@ function DbCardDetailSwipeView(props: Props) {
         });
       } else if (buttonId === 'investigator') {
         showInvestigators(currentCard.code);
-      } else if (buttonId === 'back') {
-        Navigation.pop(componentId);
       }
     }
-  }, componentId, [currentCard, showInvestigators, showInvestigatorCards]);
+  }, componentId, [currentCard, imageMode, backPressed, toggleImageMode, showInvestigators, showInvestigatorCards]);
 
   const showCardSpoiler = useCallback((card: Card) => {
     return !!(showAllSpoilers || showSpoilers[card.pack_code] || spoilers[card.code]);
@@ -390,6 +412,8 @@ function DbCardDetailSwipeView(props: Props) {
       <ScrollableCard
         key={itemIndex}
         card={card}
+        toggleImageMode={toggleImageMode}
+        imageMode={imageMode}
         width={width}
         height={height}
         tabooSetId={tabooSetId}
@@ -405,7 +429,11 @@ function DbCardDetailSwipeView(props: Props) {
         attachmentCards={attachmentCards}
       />
     );
-  }, [attachableCards, data, slots, customizationsEditable, tabooSetId, editable, customizations, componentId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
+  }, [
+    imageMode, attachableCards, data, slots, customizationsEditable, tabooSetId,
+    editable, customizations, componentId, width, height,
+    setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards, toggleImageMode,
+  ]);
   return (
     <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>
       <View

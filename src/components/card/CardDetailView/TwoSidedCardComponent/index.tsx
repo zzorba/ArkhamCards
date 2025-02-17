@@ -66,10 +66,11 @@ interface Props {
   width: number;
   noImage?: boolean;
   showBack?: boolean;
+  toggleImageMode?: () => void;
 }
 
 export default function TwoSidedCardComponent(props: Props) {
-  const { componentId, card, backCard, linked, notFirst, simple, width } = props;
+  const { componentId, card, backCard, linked, notFirst, simple, width, toggleImageMode } = props;
   const custom = card.custom();
   const { backgroundStyle, fontScale, shadow, colors, typography } = useContext(StyleContext);
   const [showBack, toggleShowBack] = useFlag(props.showBack ?? false);
@@ -286,6 +287,7 @@ export default function TwoSidedCardComponent(props: Props) {
             width={width}
             simple={simple}
             showBack={props.showBack}
+            toggleImageMode={toggleImageMode}
             key="linked"
           />
         </View>
@@ -367,7 +369,7 @@ export default function TwoSidedCardComponent(props: Props) {
     );
   }, [props.showBack, backCard, card, componentId, simple, width, linked, shadow.large,
     colors, backgroundStyle, typography, showBack, typeLine, cardFooter, flavorFirst,
-    toggleShowBack, showTaboo, showFaq]);
+    toggleImageMode, toggleShowBack, showTaboo, showFaq]);
 
   const image = useMemo(() => {
     if (card.type_code === 'story' || card.type_code === 'scenario' || props.noImage) {
@@ -377,17 +379,23 @@ export default function TwoSidedCardComponent(props: Props) {
       <View style={styles.column}>
         <View style={styles.playerImage}>
           { card.type_code === 'investigator' ? (
-            <InvestigatorImage card={card} componentId={componentId} imageLink />
+            <InvestigatorImage
+              card={card}
+              componentId={componentId}
+              imageLink
+              onPress={toggleImageMode}
+            />
           ) : (
             <PlayerCardImage
               card={card}
               componentId={componentId}
+              onPress={toggleImageMode}
             />
           ) }
         </View>
       </View>
     );
-  }, [card, componentId, props.noImage]);
+  }, [card, componentId, props.noImage, toggleImageMode]);
 
   const cardText = useMemo(() => {
     return (
