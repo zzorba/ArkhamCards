@@ -33,7 +33,7 @@ import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult
 import { AttachableDefinition, Customizations, DeckId, Slots } from '@actions/types';
 import { CardInvestigatorProps } from './CardInvestigatorsView';
 import CardCustomizationOptions from './CardDetailView/CardCustomizationOptions';
-import { useParsedDeck } from '@components/deck/hooks';
+import { ParsedDeckResults, useParsedDeck } from '@components/deck/hooks';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';
@@ -228,11 +228,21 @@ function ScrollableCard(props: {
 }
 
 function DbCardDetailSwipeView(props: Props) {
+  const { componentId, deckId } = props;
+  const parsedDeck = useParsedDeck(deckId, componentId);
+
+  return (
+    <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>
+      <DbCardDetailSwipeViewComponent {...props} parsedDeck={parsedDeck} />
+    </ParsedDeckContextProvider>
+  );
+}
+function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckResults }) {
   // eslint-disable-next-line react/prop-types
-  const { componentId, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, deckId, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
+  const { componentId, parsedDeck, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
+
   const { listSeperator } = useContext(LanguageContext);
   const [customizations, setChoice] = useAllCardCustomizations(initialCustomizations);
-  const parsedDeck = useParsedDeck(deckId, componentId);
   const deckEdits = parsedDeck?.deckEdits;
   const { backgroundStyle, width, height } = useContext(StyleContext);
   const { db } = useContext(DatabaseContext);
