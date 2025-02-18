@@ -168,7 +168,7 @@ export function ParsedDeckContextProvider({ children, parsedDeckObj }: {
 export function useTabooSetOverride() {
   const { deckEdits } = useContext(DeckEditContext);
   const { deck } = useContext(ParsedDeckContext);
-  return deckEdits?.tabooSetChange ?? deck?.taboo_id ?? 0;
+  return deckEdits?.tabooSetChange ?? deck?.taboo_id;
 }
 
 export function useDeckDeltas(specialMode?: 'side' | 'extra' | 'checklist'):
