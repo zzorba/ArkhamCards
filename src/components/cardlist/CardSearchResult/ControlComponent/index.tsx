@@ -9,7 +9,7 @@ import CardToggle from './CardToggle';
 import CardChecklistToggles from './CardChecklistToggles';
 import CardQuantityComponent from './CardQuantityComponent';
 import { EditSlotsActions } from '@components/core/hooks';
-import { AttachableDefinition, DeckId } from '@actions/types';
+import { AttachableDefinition } from '@actions/types';
 import ShuffleButton, { DraftButton } from './ShuffleButton';
 import { DiscountComponent } from './DiscountComponent';
 import { AttachmentDetailCount } from './AttachmentComponent';
@@ -41,7 +41,6 @@ export type ControlType = {
   attachment: AttachableDefinition;
 } | {
   type: 'upgrade';
-  min: number | undefined;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore'
   editable: boolean;
@@ -125,7 +124,6 @@ export function ControlComponent({ card, control, handleCardPress }: Props) {
         <CardUpgradeButton
           onUpgradePress={control.customizable ? handleCardPress : control.onUpgradePress}
           card={card}
-          min={control.min}
           editable={control.editable}
           limit={control.limit}
           mode={control.mode}

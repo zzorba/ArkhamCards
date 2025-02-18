@@ -12,7 +12,6 @@ import { AttachableDefinition } from '@actions/types';
 
 interface Props {
   card: Card;
-  min: number | undefined;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore' | 'checklist';
   editable?: boolean
@@ -35,14 +34,13 @@ function ChecklistButton({ code }: { code: string }) {
   );
 }
 
-export default function FloatingDeckQuantityComponent({ editable, card, limit, min, mode, attachmentOverride }: Props) {
+export default function FloatingDeckQuantityComponent({ editable, card, limit, mode, attachmentOverride }: Props) {
   const { colors, shadow } = useContext(StyleContext);
   return (
     <View style={[styles.fab, shadow.large, { backgroundColor: colors.D20 }]}>
       { mode === 'checklist' && <ChecklistButton code={card.code} /> }
       <DeckQuantityComponent
         card={card}
-        min={min}
         limit={limit}
         mode={mode !== 'checklist' ? mode : undefined}
         showZeroCount

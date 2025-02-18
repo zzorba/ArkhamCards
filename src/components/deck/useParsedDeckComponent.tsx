@@ -785,12 +785,11 @@ export default function useParsedDeckComponent({
       type: 'upgrade',
       mode: countMode,
       editable: !!editable,
-      min: lockedPermanents?.[card.code],
       limit: card.collectionDeckLimit(inCollection, ignore_collection),
       onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : (undefined),
       customizable: !!editable && item.customizable,
     };
-  }, [mode, lockedPermanents, hasDeck, showCardUpgradeDialog, showDrawWeakness, ignore_collection, editable, inCollection]);
+  }, [mode, editable, showCardUpgradeDialog, showDrawWeakness, ignore_collection, hasDeck, inCollection]);
   const singleCardView = useSettingValue('single_card');
   const { colors } = useContext(StyleContext);
   const deckId = parsedDeck?.id;

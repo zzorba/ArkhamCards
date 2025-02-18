@@ -52,7 +52,7 @@ import { useAppDispatch } from '@app/store';
 import { FilterState } from '@lib/filters';
 import DeckValidation from '@lib/DeckValidation';
 import { THE_INSANE_CODE } from '@data/deck/specialCards';
-import { DeckEditContext, useDeckDeltas, useTabooSetOverride } from '@components/deck/DeckEditContext';
+import { DeckEditContext, useDeckDeltas, useCurrentDeckTabooSet } from '@components/deck/DeckEditContext';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
@@ -925,7 +925,7 @@ export default function DbCardResultList(props: Props) {
   // const { deckEdits, deckId } = useContext(DeckEditContext);
   const customizations = useLiveCustomizations(deck);
   const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
-  const tabooSetOverride = useTabooSetOverride();
+  const tabooSetOverride = useCurrentDeckTabooSet();
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
   const singleCardView = useSettingValue('single_card');

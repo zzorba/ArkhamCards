@@ -8,18 +8,16 @@ import Card from '@data/types/Card';
 import RoundButton from '@components/core/RoundButton';
 import DeckQuantityComponent from './DeckQuantityComponent';
 import space from '@styles/space';
-import { useEligibleAttachments } from '@components/deck/DeckEditContext';
 
 interface Props {
   card: Card;
   onUpgradePress?: (card: Card, mode: 'extra' | undefined) => void;
-  min: number | undefined;
   limit: number;
   mode: 'side' | 'extra' | 'ignore' | undefined;
   editable: boolean;
 }
 
-export default function CardUpgradeButton({ min, onUpgradePress, editable, card, limit, mode }: Props) {
+export default function CardUpgradeButton({ onUpgradePress, editable, card, limit, mode }: Props) {
   const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => onUpgradePress && onUpgradePress(card, mode === 'extra' ? 'extra' : undefined), [onUpgradePress, card, mode]);
   return (
@@ -39,7 +37,6 @@ export default function CardUpgradeButton({ min, onUpgradePress, editable, card,
       ) }
       <DeckQuantityComponent
         card={card}
-        min={min}
         limit={limit}
         mode={mode}
         editable={editable}

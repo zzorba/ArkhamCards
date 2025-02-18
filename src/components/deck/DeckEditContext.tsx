@@ -165,7 +165,7 @@ export function ParsedDeckContextProvider({ children, parsedDeckObj }: {
   );
 }
 
-export function useTabooSetOverride() {
+export function useCurrentDeckTabooSet() {
   const { deckEdits } = useContext(DeckEditContext);
   const { deck } = useContext(ParsedDeckContext);
   return deckEdits?.tabooSetChange ?? deck?.taboo_id;

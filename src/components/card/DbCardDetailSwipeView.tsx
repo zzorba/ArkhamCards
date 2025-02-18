@@ -30,7 +30,7 @@ import { where } from '@data/sqlite/query';
 import { FOOTER_HEIGHT, PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
-import { AttachableDefinition, Customizations, DeckId, Slots } from '@actions/types';
+import { AttachableDefinition, Customizations, DeckId } from '@actions/types';
 import { CardInvestigatorProps } from './CardInvestigatorsView';
 import CardCustomizationOptions from './CardDetailView/CardCustomizationOptions';
 import { ParsedDeckResults, useParsedDeck } from '@components/deck/hooks';
@@ -38,7 +38,7 @@ import { CustomizationChoice } from '@data/types/CustomizationOption';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getArkhamDbDomain } from '@lib/i18n/LanguageProvider';
 import { getSystemLanguage } from '@lib/i18n';
-import { useAttachableCards, useDeckAttachments } from '@components/deck/useParsedDeckComponent';
+import { useAttachableCards } from '@components/deck/useParsedDeckComponent';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import space, { s } from '@styles/space';
@@ -379,7 +379,6 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
   const showCardSpoiler = useCallback((card: Card) => {
     return !!(showAllSpoilers || showSpoilers[card.pack_code] || spoilers[card.code]);
   }, [showSpoilers, spoilers, showAllSpoilers]);
-  const lockedPermanents = parsedDeck?.parsedDeck?.lockedPermanents;
   const slots = deckEdits?.slots;
   const investigator = parsedDeck.deck?.investigator_code;
   const data: (Card | undefined)[] = useMemo(() => {
@@ -454,7 +453,6 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
                 packInCollection={packInCollection}
                 ignoreCollection={ignore_collection}
                 investigator={investigator}
-                lockedPermanents={lockedPermanents}
                 editable={!!editable}
               />
             ) }
@@ -467,15 +465,13 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
 }
 
 function DeckCardControls({
-  currentControl, currentCard, packInCollection, ignoreCollection, investigator,
-  editable, lockedPermanents,
+  currentControl, currentCard, packInCollection, ignoreCollection, investigator, editable,
 }: {
   currentCard: Card;
   currentControl: 'deck' | 'side' | 'extra' | 'special' | 'ignore' | 'bonded' | 'checklist' | 'attachment';
   packInCollection: { [pack_code: string]: boolean };
   ignoreCollection: boolean;
   investigator: string | undefined;
-  lockedPermanents: Slots | undefined;
   editable: boolean;
 
 }) {
@@ -489,7 +485,6 @@ function DeckCardControls({
     return (
       <FloatingDeckQuantityComponent
         card={currentCard}
-        min={lockedPermanents?.[currentCard.code]}
         limit={deck_limit}
         mode={undefined}
         editable={editable}
@@ -500,7 +495,6 @@ function DeckCardControls({
   return (
     <FloatingDeckQuantityComponent
       card={currentCard}
-      min={lockedPermanents?.[currentCard.code]}
       limit={deck_limit}
       mode={(currentControl === 'side' || currentControl === 'extra' || currentControl === 'ignore' || currentControl === 'checklist') ? currentControl : undefined}
       editable={editable}
