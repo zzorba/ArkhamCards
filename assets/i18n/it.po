@@ -801,19 +801,19 @@ msgstr "Sacchetto del Caos"
 msgid "Adjust Weakness Set"
 msgstr "Correggi Debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Questo mazzo contiene numerose debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Questo mazzo contiene una debolezza base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverle dal set di debolezze base della campagna?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverla dal set di debolezze base della campagna?"
 
@@ -3734,28 +3734,28 @@ msgid "${ tokens[0] } and ${ tokens[1] }"
 msgstr "${ tokens[0] } e ${ tokens[1] }"
 
 msgid "Dark Matter"
-msgstr ""
+msgstr "Materia Oscura"
 
 msgid "Alice in Wonderland"
-msgstr ""
+msgstr "Alice nel Paese delle Meraviglie"
 
 msgid "Impending Doom"
-msgstr ""
+msgstr "Destino Incombente"
 
 msgid "Memories"
-msgstr ""
+msgstr "Ricordi"
 
 msgid "Fragments of Alice"
-msgstr ""
+msgstr "Frammenti di Alice"
 
 msgid "Wonderland Boons"
-msgstr ""
+msgstr "Protettori di Wonderland"
 
 msgid "Wonderland Banes"
-msgstr ""
+msgstr "Rovina di Wonderland"
 
 msgid "Strength of Wonderland"
-msgstr ""
+msgstr "Forza di Wonderland"
 
 msgid "Fan-Made Campaigns"
 msgstr "Campagne \"Fan-Made\""
@@ -3990,13 +3990,13 @@ msgid "Edit my spoiler settings"
 msgstr "Modifica le mie impostazioni sugli spoiler"
 
 msgid "Crown of Egil"
-msgstr ""
+msgstr "Corona di Egil"
 
 msgid "The Crown of Egil"
-msgstr ""
+msgstr "La Corona di Egil"
 
 msgid "Traces of Egil"
-msgstr ""
+msgstr "Tracce di Egil"
 
 #, javascript-format
 msgid "Fan-made campaign by ${ author }"
@@ -4192,7 +4192,7 @@ msgid "Uploading campaign"
 msgstr "Caricamento campagna"
 
 msgid "Resolute"
-msgstr "Risoluto"
+msgstr "Determinato"
 
 msgid "Fix duplicates"
 msgstr "Rimuovi i duplicati"
@@ -4579,7 +4579,7 @@ msgid "Note that this is an ArkhamCards account, which is separate from your Ark
 msgstr "Nota che questo è un Account ArkhamCards, che è distinto dal tuo Account ArkhamDB."
 
 msgid "Side Deck"
-msgstr ""
+msgstr "Side Deck"
 
 msgid "Edit Side Deck"
 msgstr "Modifica Side Deck"
@@ -4603,7 +4603,7 @@ msgid "Hide collection overlap"
 msgstr "Nascondi sovrapposizione di collezione"
 
 msgid "The total number of these cards among decks from this campaign exceeds your card collection."
-msgstr ""
+msgstr "Il numero totale di queste carte tra i mazzi di questa campagna supera la vostra collezione di carte."
 
 #, javascript-format
 msgid "After completion of ${ scenarionName }"
@@ -4628,7 +4628,7 @@ msgid "Select Option"
 msgstr "Seleziona Opzione"
 
 msgid "Move to deck"
-msgstr ""
+msgstr "Sposta nel mazzo"
 
 msgid "Unarchive standalone"
 msgstr "Ripristina lo scenario autoconclusivo"
@@ -4681,6 +4681,13 @@ msgid ""
 "\n"
 "Many thanks to ArkhamDB.com for providing the structured data, API access and access to card images. Without their continued support, this project wouldn't be possible."
 msgstr ""
+"Le informazioni presentate in questa applicazione su Arkham Horror: The Card Game, sia letterali che grafiche, sono protette da copyright di Fantasy Flight Games. Questa applicazione non è prodotta, approvata, supportata o affiliata a Fantasy Flight Games.\n"
+"\n"
+"Questa applicazione è stata creata da Daniel Salinas come progetto dei fan per aiutare a sostenere la comunità di Arkham Horror: The Card Game, progettata da ${ visualDesigner } e sviluppata da ${ dissonantVoicesDeveloper }, ${ chaosBagDeveloper } e ${ toolingDeveloper }. Se vi trovate a gestire molti mazzi e campagne, spero che vi sia utile.\n"
+"\n"
+"Feedback e segnalazioni di bug sono benvenuti via email a [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)\n"
+"\n"
+"Ringrazio ArkhamDB.com per aver fornito i dati strutturati, l'accesso alle API e l'accesso alle immagini delle carte. Senza il loro continuo supporto, questo progetto non sarebbe possibile."
 
 #, javascript-format
 msgid ""
@@ -4721,13 +4728,13 @@ msgstr ""
 "• Disegno di icone originali: ${ visualDesigner }"
 
 msgid "Call of the Plaguebearer"
-msgstr ""
+msgstr "Il Richiamo della Piaga"
 
 msgid "Eliminated"
-msgstr ""
+msgstr "Eliminato"
 
 msgid "Locations"
-msgstr ""
+msgstr "Luoghi"
 
 msgid "Reauthorize ArkhamDB"
 msgstr "Ri autorizza ArkhamDB"
@@ -4739,19 +4746,19 @@ msgid "Note: this campaign is a fairly new addition to the app and may contain s
 msgstr "Nota: questa campagna è un'aggiunta abbastanza nuova all'app e potrebbe contenere alcuni errori."
 
 msgid "Durability"
-msgstr ""
+msgstr "Durabilità"
 
 msgid "Leylines"
-msgstr ""
+msgstr "Linee Temporanee"
 
 msgid "Offerings"
-msgstr ""
+msgstr "Offerte"
 
 msgid "Patrol"
 msgstr "Pattuglia"
 
 msgid "Consternation on the Constellation"
-msgstr ""
+msgstr "Costernazione sulla Costellazione"
 
 msgid "Deck contains custom content"
 msgstr "Il mazzo contiene materiale personalizzato"
@@ -4769,7 +4776,7 @@ msgid "Show fan-made cards"
 msgstr "Mostra carte fan-made"
 
 msgid "Reset onboarding"
-msgstr ""
+msgstr "Reset onboarding"
 
 msgid "Signing into Arkham Cards will let you backup your campaigns between your devices and share in-progress campaigns with other friends."
 msgstr "L'accesso ad Arkham Cards ti consentirà di eseguire il backup delle tue campagne tra i tuoi dispositivi e di condividere le campagne in corso con altri amici."
@@ -4827,40 +4834,42 @@ msgid "Other investigator cards"
 msgstr "Altre carte investigatore"
 
 msgid "Ultimatum of Chaos"
-msgstr ""
+msgstr "Ultimatum del Caos"
 
 msgid "Generate deck"
 msgstr "Genera mazzo"
 
 msgid "- Adjust your card collection in the app settings."
-msgstr ""
+msgstr "- Imposta la tua collezione di carte nelle impostazioni dell'app."
 
 msgid "- Remove the parallel investigator choice, which might require a larger card collection."
-msgstr ""
+msgstr "- Rimuovi la scelta dell'investigatore parallelo, che potrebbe richiedere una collezione di carte più ampia."
 
 msgid "- Remove the taboo list, which removes some card options."
-msgstr ""
+msgstr "- Rimuovi la lista dei tabù, che rimuove alcune opzioni sulle carte."
 
 #, javascript-format
 msgid ""
 "Unable to build a random deck for this investigator:\n"
 "${ remedy }"
 msgstr ""
+"Impossibile costruire un mazzo casuale per questo investigatore:\n"
+"${ remedy }"
 
 msgid "Starter deck"
-msgstr ""
+msgstr "Mazzo di partenza"
 
 msgid "Unable to generate deck"
-msgstr ""
+msgstr "Impossibile generare il mazzo"
 
 msgid "Suggested starter deck for this investigator from FFG."
-msgstr ""
+msgstr "Mazzo di partenza suggerito per questo investigatore dalla FFG."
 
 msgid "An empty deck."
 msgstr "Un mazzo vuoto."
 
 msgid "Sorry, the app cannot generate random decks for this investigator yet."
-msgstr ""
+msgstr "Scusa, l'app non può ancora generare mazzi casuali per questo investigatore."
 
 msgid "A fully randomized deck."
 msgstr "Un mazzo completamente casuale."
@@ -4881,16 +4890,16 @@ msgid "Draft using your card collection"
 msgstr "Pesca usando la tua collezione di carte"
 
 msgid "Draft Pool"
-msgstr ""
+msgstr "Selezione di Carte"
 
 msgid "Grid"
-msgstr ""
+msgstr "Griglia"
 
 msgid "Invalid deck"
 msgstr "Mazzo non valido"
 
 msgid "This deck is currently invalid in some way. Please address the issues before continuing the draft."
-msgstr ""
+msgstr "Questo mazzo è al momento non valido. Trova una soluzione prima di continuare a pescare."
 
 msgid "Hand size:"
 msgstr "Dimensione mano:"
@@ -4905,7 +4914,7 @@ msgid "Each 'hand' of cards is taken at random from all possible cards that are 
 msgstr "Ogni 'mano' di carte è presa a caso tra tutte le carte possibili permesse all'investigatore attuale + opzioni di deckbuilding che hai scelto."
 
 msgid "The drafting process will continue until your deck is full, but you can stop or change the settings at any time"
-msgstr ""
+msgstr "Il draft continuerà finché il mazzo non è completo, ma ti puoi fermare o cambiare le impostazioni in qualsiasi momento"
 
 msgid "Begin draft"
 msgstr "Inizia il draft"
@@ -4924,6 +4933,9 @@ msgid ""
 "\n"
 "Please address these outstanding deck issues before drafting cards."
 msgstr ""
+"Il mazzo contiene una o più carte proibite.\n"
+"\n"
+"Trova una soluzione al problema prima di pescare altre carte."
 
 msgid "Deck is full"
 msgstr "Il mazzo è completo"
@@ -4935,6 +4947,11 @@ msgid ""
 "\n"
 "At the moment it is only possible to draft level 0 cards using the app."
 msgstr ""
+"Questo mazzo è completo.\n"
+"\n"
+"Rimuovi alcune carte o crea un nuovo mazzo se vuoi fare un draft.\n"
+"\n"
+"Al momento è possibile pescare solo carte di livello 0 utilizzando l'app."
 
 msgid "Draft Cards"
 msgstr "Pesca Carte"
@@ -4952,10 +4969,10 @@ msgid "A single core set is always included"
 msgstr "Un singolo set base è sempre incluso"
 
 msgid "Campaigns Cycles"
-msgstr ""
+msgstr "Cicli delle Campagne"
 
 msgid "Take"
-msgstr ""
+msgstr "Prendi"
 
 msgid "If you are using the digital chaos bag in the app, be sure to enable the tarot option on the chaos bag screen."
 msgstr "Se stai usando il sacchetto del caos digitale nell'app, assicurati di abilitare l'opzione tarocchi nella schermata del sacchetto del caos."
@@ -4973,158 +4990,158 @@ msgid "Perform readings with the tarot deck"
 msgstr "Fai la lettura del mazzo tarocchi"
 
 msgid "What is this?"
-msgstr ""
+msgstr "Cos'è questo?"
 
 msgid "Choose two cards to reverse."
-msgstr ""
+msgstr "Scegli due carte da rovesciare."
 
 msgid "Reverse half of the cards (rounded up)."
-msgstr ""
+msgstr "Rovescia metà della carte (arrotondato per eccesso)."
 
 msgid "Choose one card."
 msgstr "Scegli una carta."
 
 msgid "Draw and reverse cards however you like!"
-msgstr ""
+msgstr "Pesca e rovescia le carte come preferisci!"
 
 msgid "Reveal"
 msgstr "Rivela"
 
 #, javascript-format
 msgid "${ card.title } - Inverted"
-msgstr "${ card.title } - Invertita"
+msgstr "${ card.title } - Rovesciata"
 
 msgid "Inverted"
-msgstr ""
+msgstr "Rovesciata"
 
 msgid "Upright"
-msgstr ""
+msgstr "Dritta"
 
 msgid "A single card in a random position."
 msgstr "Una singola carta in una posizione casuale."
 
 msgid "Two cards, one upright and one reversed."
-msgstr ""
+msgstr "Due carte, una dritta e una rovesciata."
 
 msgid "Reveal three upright cards, choose two to reverse."
-msgstr ""
+msgstr "Rivela tre carte dritte, scegline due da rovesciare."
 
 msgid "A reading for the full campaign."
-msgstr ""
+msgstr "Lettura della campagna."
 
 msgid "Choose from three upright cards."
-msgstr ""
+msgstr "Scegli tra tre carte dritte."
 
 msgid "A single reversed card."
-msgstr ""
+msgstr "Una singola carta rovesciata."
 
 msgid "Draw cards in random positions."
-msgstr ""
+msgstr "Pesca carte in ordine casuale."
 
 msgid "Choose reading type"
 msgstr "Scegli il tipo di lettura"
 
 msgid "You must flip all cards to reveal your fate."
-msgstr ""
+msgstr "Devi girare tutte le carte per rivelare il tuo destino."
 
 #, javascript-format
 msgid "Too many card reversed (${ currentReversedCount } / ${ requiredReversedCount })"
-msgstr ""
+msgstr "Troppe carte rovesciate (${ currentReversedCount } / ${ requiredReversedCount })"
 
 #, javascript-format
 msgid "Not enough cards reversed (${ currentReversedCount } / ${ requiredReversedCount })"
-msgstr "Non ci sono abbastanza carte invertite (${ currentReversedCount } / ${ requiredReversedCount })"
+msgstr "Non ci sono abbastanza carte rovesciate (${ currentReversedCount } / ${ requiredReversedCount })"
 
 msgid "Reject fate (redraw)"
-msgstr ""
+msgstr "Rifiuta destino (pesca di nuovo)"
 
 msgid "Deck Id"
 msgstr "ID mazzo"
 
 msgid "Symphony of Erich Zann"
-msgstr ""
+msgstr "La Sinfonia di Erich Zann"
 
 #, javascript-format
 msgid "${ card.title } (inverted)"
-msgstr "${ card.title } (invertita)"
+msgstr "${ card.title } (rovesciata)"
 
 msgid "Destiny Tarot Reading"
-msgstr ""
+msgstr "Lettura Tarocchi Destino"
 
 msgid "The Tatterdemalion"
-msgstr ""
+msgstr "Lo Straccione"
 
 msgid "Electric Nightmare"
-msgstr ""
+msgstr "Incubo Elettrico"
 
 msgid "Mission Briefing"
-msgstr ""
+msgstr "Briefing della Missione"
 
 msgid "Lost Quantum"
-msgstr ""
+msgstr "Quantum Perso"
 
 msgid "In the Shadow of Earth"
-msgstr ""
+msgstr "All'Ombra della Terra"
 
 msgid "Strange Moons"
-msgstr ""
+msgstr "Strane Lune"
 
 msgid "Introspection"
-msgstr ""
+msgstr "Introspezione"
 
 msgid "The Machine in Yellow"
-msgstr ""
+msgstr "La Macchina in Giallo"
 
 msgid "Fragment of Carcosa"
-msgstr ""
+msgstr "Frammento di Carcosa"
 
 msgid "Starfall"
-msgstr ""
+msgstr "Caduta di Stelle"
 
 msgid "Arkham in Wonderland"
-msgstr ""
+msgstr "Arkham nel Paese delle Meraviglie"
 
 msgid "The Dodo"
-msgstr ""
+msgstr "Il Dodo"
 
 msgid "A Sea of Troubles"
-msgstr ""
+msgstr "Un Mare di Guai"
 
 msgid "The Caterpillar"
-msgstr ""
+msgstr "Il Bruco"
 
 msgid "Tempest in a Teapot"
-msgstr ""
+msgstr "Tempesta in una Tazza di Tè"
 
 msgid "The Duchess"
-msgstr ""
+msgstr "La Duchessa"
 
 msgid "Bleeding Hearts"
-msgstr ""
+msgstr "Cuori Sanguinanti"
 
 msgid "Gryphon and Mock Turtle"
-msgstr ""
+msgstr "Il Grifone e la Finta Tartaruga"
 
 msgid "Wild Snark Chase"
-msgstr ""
+msgstr "La Caccia allo Snark"
 
 msgid "Humpty Dumpty"
-msgstr ""
+msgstr "Humpty Dumpty"
 
 msgid "Sibling Rivalry"
-msgstr ""
+msgstr "Rivalità tra Fratelli"
 
 msgid "The Lion and the Unicorn"
-msgstr ""
+msgstr "Il Leone e l'Unicorno"
 
 msgid "Fool's Mate"
-msgstr ""
+msgstr "Il Matto dello Stolto"
 
 msgid "The White Queen"
-msgstr ""
+msgstr "La Regina Bianca"
 
 msgid "Lucid Nightmare"
-msgstr ""
+msgstr "Incubo Lucido"
 
 msgid "Delete your account"
 msgstr "Elimina il tuo account"
@@ -5141,8 +5158,8 @@ msgstr "Ti sei autenticato come <b>${ handle }</b>."
 
 msgid "The friend's campaign that you have participated in will have your decks removed:"
 msgid_plural "The ${ joinedCampaignCount } campaigns from friends that you have participated in will have your decks removed:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "La campagna del tuo amico in cui hai partecipato rimuoverà i tuoi mazzi:"
+msgstr[1] "La campagne dei tuoi amici in cui hai partecipato rimuoveranno i tuoi mazzi:"
 
 msgid "I understand that all data will be deleted permanently."
 msgstr "Comprendo che tutti i dati verranno eliminati in modo permanente."
@@ -5158,8 +5175,8 @@ msgstr "Se scegli di eliminare questo account, i seguenti dati verranno rimossi.
 
 msgid "The campaign that you have uploaded to this account will be deleted:"
 msgid_plural "The ${ createdCampaignCount } campaigns that you have uploaded to this account will be deleted:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "La campagna che hai caricato in questo account verrà cancellata:"
+msgstr[1] "Le campagne che hai caricato in questo account verranno cancellate:"
 
 msgid "Beta"
 msgstr "Beta"
@@ -5178,9 +5195,12 @@ msgid ""
 "\n"
 "Please check for pending app updates and try again later."
 msgstr ""
+"Scusa, l'app non supporta carte personalizzate come questa, ma ci stiamo lavorando!\n"
+"\n"
+"Controlla gli aggiornamenti dell'app e riprova più avanti."
 
 msgid "Customizations"
-msgstr ""
+msgstr "Personalizzazioni"
 
 msgid "Show selected customizations"
 msgstr "Mostra le personalizzazioni selezionate"
@@ -5203,8 +5223,8 @@ msgstr[1] "Nomina ${ quantity } carte"
 
 msgid "Named card"
 msgid_plural "Named cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Carta nominata"
+msgstr[1] "Carte nominate"
 
 msgid "In deck"
 msgstr "Nel mazzo"
@@ -5220,7 +5240,7 @@ msgid "${ textModifier }, draws another ${ revealCount }"
 msgstr "${ textModifier }, pesca altri ${ revealCount }"
 
 msgid "The Colour Out of Space"
-msgstr ""
+msgstr "Il Colore Venuto dallo Spazio"
 
 msgid "Remove trait"
 msgstr "Rimuovi tratto"
@@ -5257,55 +5277,55 @@ msgid "${ investigator.name } Fan-Made Challenge Scenario by ${ scenario.custom.
 msgstr "${ investigator.name } Scenario Fan-Made di ${ scenario.custom.creator }"
 
 msgid "Cyclopean Foundations"
-msgstr ""
+msgstr "Fondazioni Ciclopiche"
 
 msgid "Lost Moorings"
-msgstr ""
+msgstr "Ormeggi Sciolti"
 
 msgid "Going Twice"
-msgstr ""
+msgstr "Qualcuno Offre di Più?"
 
 msgid "Private Lives"
-msgstr ""
+msgstr "Vite Private"
 
 msgid "Crumbling Masonry"
-msgstr ""
+msgstr "Architettura Decadente"
 
 msgid "A House Divided"
-msgstr ""
+msgstr "Una Casa Frammentata"
 
 msgid "Across Dreaful Waters"
-msgstr ""
+msgstr "Su Acque Terrificanti"
 
 msgid "Blood From Stones"
-msgstr ""
+msgstr "Sangue dalle Pietre"
 
 msgid "Pyroclastic Flow"
-msgstr ""
+msgstr "Flusso Piroclastico"
 
 msgid "Tomb of Dead Dreams"
-msgstr ""
+msgstr "La Tomba dei Sogni Morenti"
 
 msgid "Cultists Alive"
-msgstr ""
+msgstr "Cultisti Vivi"
 
 msgid "Cultists Killed"
-msgstr ""
+msgstr "Cultisti Uccisi"
 
 msgid "Notice"
-msgstr ""
+msgstr "Sospetto"
 
 msgid "Jenny's Choice"
-msgstr "Jenny's Choice"
+msgstr "La Scelta di Jenny"
 
 msgid "The Fall of the House of Usher"
-msgstr ""
+msgstr "La Caduta della Casa degli Usher"
 
 msgid "Against the Wendigo"
-msgstr ""
+msgstr "Contro il Wendigo"
 
 msgid "Non-canon Content"
-msgstr ""
+msgstr "Contenuto non canonico"
 
 msgid "Fan-made Campaigns"
 msgstr "Campagne \"Fan-made\""
@@ -5330,10 +5350,10 @@ msgid "Departing from ${ location }"
 msgstr "In partenza da ${ location }"
 
 msgid "Customization upgrades"
-msgstr ""
+msgstr "Migliorie personalizzabili"
 
 msgid "Special discounts"
-msgstr ""
+msgstr "Sconti speciali"
 
 #, javascript-format
 msgid "${ remainingFreeCards } additional level 0 card may be added to the deck without spending experience."
@@ -5355,10 +5375,10 @@ msgid "Difficulty override: ${ msg[difficulty] }"
 msgstr "Sovrascrivi difficoltà: ${ msg[difficulty] }"
 
 msgid "Select scenario effects difficulty"
-msgstr ""
+msgstr "Seleziona la difficoltà degli effetti dello scenario"
 
 msgid "In order to support custom modes like \"Stan-hard\", you may choose to use either side of the scenario reference card to show token effects and odds calculations in the app."
-msgstr ""
+msgstr "Per supportare le modalità personalizzate come “Stan-hard”, è possibile scegliere di utilizzare uno dei due lati della carta di riferimento dello scenario per mostrare gli effetti delle pedine e i calcoli delle probabilità nell'app."
 
 msgid "Disabled"
 msgstr "Disabilitato"
@@ -5383,9 +5403,12 @@ msgid ""
 "\n"
 "Please remove these cards from the deck list and try again."
 msgstr ""
+"Siamo spiacenti, questo mazzo non può essere caricato su ArkhamDB perché contiene contenuti fan-made/anteprima che ArkhamDB non riconosce.\n"
+"\n"
+"Rimuovere queste carte dall'elenco del mazzo e riprovare."
 
 msgid "This card has not yet been released, and cannot be included in ArkhamDB decks at this time."
-msgstr ""
+msgstr "Questa carta non è ancora stata rilasciata e al momento non può essere inclusa nei mazzi di ArkhamDB."
 
 msgid "Recomputing deck changes..."
 msgstr "Ricalcolo le modifiche del mazzo..."
@@ -5401,14 +5424,14 @@ msgid "Key"
 msgstr "Chiave"
 
 msgid "Taboo Set"
-msgstr ""
+msgstr "Set Tabù"
 
 #, javascript-format
 msgid "Taboo Set: ${ tabooSetName }"
-msgstr ""
+msgstr "Set Tabù: ${ tabooSetName }"
 
 msgid "Specific taboo set"
-msgstr ""
+msgstr "Set tabù specifico"
 
 msgid "Deleteing ArkhamDB accounts"
 msgstr "Cancellazione degli account ArkhamDB"
@@ -5487,19 +5510,19 @@ msgid "Fan-made Investigators"
 msgstr "Investigatori \"Fan-made\""
 
 msgid "Do you want to use the app to draw random tarot cards?"
-msgstr ""
+msgstr "Vuoi usare l'app per pescare carte tarocco casuali?"
 
 msgid "Choose tarot card"
-msgstr ""
+msgstr "Scegli una carta tarocco"
 
 msgid "Choose supplies:"
-msgstr ""
+msgstr "Scegli le scorte:"
 
 msgid "Choose an option"
-msgstr ""
+msgstr "Scegli un opzione"
 
 msgid "Choose weakness"
-msgstr ""
+msgstr "Scegli una debolezza"
 
 msgid "Fortune and Folly"
 msgstr "Fortuna e Follia"
@@ -5508,27 +5531,27 @@ msgid "Challenge Scenarios"
 msgstr "Scenari Sfida"
 
 msgid "Asset Class Choice"
-msgstr ""
+msgstr "Scelta Supporto Classe"
 
 msgid "Skill Class Choie"
-msgstr ""
+msgstr "Scelta Abilità Classe"
 
 msgid "Event Class Choice"
-msgstr ""
+msgstr "Scelta Evento Classe"
 
 msgid "If you wish to add a side-story to this campaign, you may travel to this location and spend additional time equal to the normal experience for playing that side story."
 msgstr "Se desiderate aggiungere una storia secondaria a questa campagna, potete recarvi in questo luogo e trascorrere un tempo aggiuntivo pari alla normale esperienza per giocare quella storia secondaria."
 
 msgid "Use expedited ticket"
-msgstr ""
+msgstr "Utilizzate il biglietto prioritario"
 
 #, javascript-format
 msgid "Time cost: ${ xpCost }"
-msgstr ""
+msgstr "Costo del tempo: ${ xpCost }"
 
 #, javascript-format
 msgid "Additional experience cost for ${ investigator.name }: ${ additionalXpCost }"
-msgstr ""
+msgstr "Costo aggiuntivo dell'esperienza per ${ investigator.name }: ${ additionalXpCost }"
 
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign.\n"
@@ -5536,12 +5559,16 @@ msgid ""
 "- Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign.\n"
 "- Each side-story may only be played once per campaign."
 msgstr ""
+"Una storia secondaria è uno scenario che può essere giocato tra due scenari di una campagna di <i>Arkham Horror LCG</i>\n"
+"- Poiché state giocando la campagna <i>Le Chiavi Scarlatte</i>, una storia secondaria costa un certo ammontare di <b>tempo</b> invece dell'esperienza.\n"
+"- Debolezze, traumi, esperienza e ricompense ottenute giocando una storia secondaria rimangono agli investigatori per il resto della campagna.\n"
+"- Ogni storia secondaria può essere giocata una sola volta per campagna."
 
 #, javascript-format
 msgid "Mark ${ travelDistance } time"
 msgid_plural "Mark ${ travelDistance } time"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Spunta ${ travelDistance } tempo"
+msgstr[1] "Spunta ${ travelDistance } tempo"
 
 msgid "Mark 1 time"
 msgstr "Spunta 1 tempo"
@@ -5549,20 +5576,20 @@ msgstr "Spunta 1 tempo"
 #, javascript-format
 msgid "Travel time: ${ travelDistance }"
 msgid_plural "Travel time: ${ travelDistance }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tempo di viaggio: ${ travelDistance }"
+msgstr[1] "Tempo di viaggio: ${ travelDistance }"
 
 msgid "Secret / Locked"
-msgstr ""
+msgstr "Segreto / Chiuso"
 
 msgid "Cannot stop here until unlocked"
-msgstr ""
+msgstr "Non ci si può fermare qui finché non viene sbloccato"
 
 msgid "Select cards to exile"
-msgstr ""
+msgstr "Scegli carte da esiliare"
 
 msgid "Exile other cards"
-msgstr ""
+msgstr "Esilia altre carte"
 
 msgid "Name of Paradimensional Artifact"
 msgstr "Nome degli Artefatti Paradimensionali"
@@ -5614,25 +5641,28 @@ msgstr "Nessuna campagna"
 
 #, javascript-format
 msgid "×${ parsedDeck.totalCardCount }"
-msgstr ""
+msgstr "×${ parsedDeck.totalCardCount }"
 
 msgid ""
 "Your ArkhamDB login has expired.\n"
 "\n"
 "You will need to login again on the Settings tab before you can save changes to this deck."
 msgstr ""
+"Il tuo login ad ArkhamDB è scaduto.\n"
+"\n"
+"Per salvare le modifiche a questo mazzo è necessario effettuare nuovamente il login nella scheda Impostazioni."
 
 msgid "Edit deck tags"
-msgstr ""
+msgstr "Modifica i tag del mazzo"
 
 msgid "Clear tags"
 msgstr "Rimuovi i tag"
 
 msgid "Solo"
-msgstr ""
+msgstr "Solo"
 
 msgid "Beginner"
-msgstr ""
+msgstr "Principiante"
 
 msgid "+ Add"
 msgstr "+ Aggiungi"
@@ -5641,13 +5671,13 @@ msgid "Deck tags"
 msgstr "Tag del mazzo"
 
 msgid "Tags"
-msgstr ""
+msgstr "Tag"
 
 #, javascript-format
 msgid "${ scenarioName }: Visit ${ attempt }"
 msgid_plural "${ scenarioName }: Visit ${ attempt }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ scenarioName }: Visit ${ attempt }"
+msgstr[1] "${ scenarioName }: Visit ${ attempt }"
 
 msgid "Search english card names"
 msgstr "Cerca nomi di carte in inglese"
@@ -5662,59 +5692,59 @@ msgstr[0] "${ xp } PE"
 msgstr[1] "${ xp } PE"
 
 msgid "This app is made possible by the continued support of our fans on Patreon and the Mythos Busters podcast."
-msgstr ""
+msgstr "Questa applicazione è resa possibile dal continuo supporto dei nostri fan su Patreon e del podcast Mythos Busters."
 
 msgid "Travel here without stopping"
-msgstr ""
+msgstr "Viaggia qui senza fermarti"
 
 #, javascript-format
 msgid "Read status report: ${ reportSymbols }"
 msgid_plural "Read status reports: ${ reportSymbols }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Leggere rapporto sullo stato: ${ reportSymbols }"
+msgstr[1] "Leggere rapporti sullo stato: ${ reportSymbols }"
 
 #, javascript-format
 msgid "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to ${ arriveCityName } on the way to somewhere else."
 msgid_plural "Mark ${ time } <b>time</b> as the cell travels from ${ departCityName } to ${ arriveCityName } on the way to somewhere else."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Spunta ${ time } <b>tempo</b> mentre la cellula si sposta da ${ departCityName } a ${ arriveCityName } in viaggio verso un altro luogo."
+msgstr[1] "Spunta ${ time } <b>tempo</b> mentre la cellula si sposta da ${ departCityName } a ${ arriveCityName } in viaggio verso un altro luogo."
 
 msgid "You cannot have more than 5 cards that are not Seeker, Neutral, or Paradox traited."
-msgstr ""
+msgstr "Non puoi avere più di 5 carte che non siano Studioso, Neutrale o Paradosso."
 
 msgid "Min"
-msgstr ""
+msgstr "Minimo"
 
 msgid "Max"
-msgstr ""
+msgstr "Massimo"
 
 msgid "EASY"
 msgstr "FACILE"
 
 msgid "STND"
-msgstr ""
+msgstr "STND"
 
 msgid "HARD"
-msgstr ""
+msgstr "DIFF"
 
 msgid "EXPT"
-msgstr ""
+msgstr "ESPT"
 
 msgid "Class Choice"
-msgstr ""
+msgstr "Scelta Classe"
 
 msgid "Class"
-msgstr ""
+msgstr "Classe"
 
 msgid "Selected"
-msgstr ""
+msgstr "Selezionata"
 
 #, javascript-format
 msgid "App language: ${ appLanguage }"
 msgstr "Lingua App: ${ appLanguage }"
 
 msgid "Take the scenic route to mark time"
-msgstr ""
+msgstr "Prendete il percorso panoramico per spuntare il tempo"
 
 msgid "Manual Backup"
 msgstr "Backup Manuale"
@@ -5723,87 +5753,87 @@ msgid "Automatic Backup"
 msgstr "Backup Automatico"
 
 msgid "You must have at least 7 cards from each class"
-msgstr ""
+msgstr "Devi avere almeno 7 carte di ogni classe"
 
 msgid "More off-class card than the number of weaknesses in your deck and bonded cards."
-msgstr ""
+msgstr "Più carte fuori classe rispetto al numero di debolezze e carte vincolate nel tuo mazzo."
 
 msgid "Concealed"
 msgstr "Celato"
 
 msgid "Parallel Cards"
-msgstr ""
+msgstr "Carte parallele"
 
 msgid "Heart of Darkness"
-msgstr ""
+msgstr "Cuore di Tenebra"
 
 msgid "Information on Kurtz"
-msgstr ""
+msgstr "Informazioni su Kurtz"
 
 #, javascript-format
 msgid "Return, but ${ doNotRemove } ${ bless } / ${ curse } tokens"
-msgstr ""
+msgstr "Rimetti, ma ${ doNotRemove } ${ bless } / ${ curse } segnalini"
 
 msgid "Recent token history"
 msgstr "Token recenti"
 
 msgid "The (Unofficial) Return to the Innsmouth Conspiracy"
-msgstr ""
+msgstr "Ritorno (Non Ufficiale) a... La Cospirazione di Innsmouth"
 
 msgid "Return to The Pit of Despair"
-msgstr ""
+msgstr "Ritorno a... La Grotta della Disperazione"
 
 msgid "Return to The Vanishing of Elina Harper"
-msgstr ""
+msgstr "Ritorno a... La Scomparsa di Elina Harper"
 
 msgid "Return to In Too Deep"
-msgstr ""
+msgstr "Ritorno a... Con l’Acqua alla Gola"
 
 msgid "Return to Devil Reef"
-msgstr ""
+msgstr "Ritorno a... Lo Scoglio del Diavolo"
 
 msgid "Return to Horror in High Gear"
-msgstr ""
+msgstr "Ritorno a... Orrore ad Alta Velocità"
 
 msgid "Return to A Light in the Fog"
-msgstr ""
+msgstr "Ritorno a... Una Luce nella Nebbia"
 
 msgid "Return to The Lair of Dagon"
-msgstr ""
+msgstr "Ritorno a... Il Covo di Dagon"
 
 msgid "Return to Into the Maelstrom"
-msgstr ""
+msgstr "Ritorno a... Nel Maelstrom"
 
 msgid "Chained - "
-msgstr ""
+msgstr "Limitato - "
 
 msgid "Unchained - "
-msgstr ""
+msgstr "Agevolato - "
 
 msgid "Forbidden"
-msgstr ""
+msgstr "Proibito"
 
 msgid "Mutated"
-msgstr ""
+msgstr "Mutato"
 
 msgid "Original card text"
-msgstr ""
+msgstr "Testo originale della carta"
 
 msgid "Original card text (back)"
-msgstr ""
+msgstr "Testo originale della carta (retro)"
 
 #, javascript-format
 msgid "Latest Taboo List: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
-msgstr "Ultima Lista Taboo: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
+msgstr "Ultima Lista Tabù: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
 
 msgid "This card is no longer on the taboo list."
-msgstr ""
+msgstr "Questa carta non è più nella lista tabù."
 
 msgid "See taboo list history"
-msgstr ""
+msgstr "Vedi elenco dei tabù"
 
 msgid "Taboo list history:"
-msgstr ""
+msgstr "Elenco dei tabù:"
 
 msgid "CHAOS BAG"
 msgstr "SACCHETTO DEL CAOS"
@@ -5813,22 +5843,22 @@ msgstr "Solo una borsa. Senza obblighi."
 
 #, javascript-format
 msgid "Sealed (${ chaosBagResults.sealedTokens.length })"
-msgstr ""
+msgstr "Sigillato (${ chaosBagResults.sealedTokens.length })"
 
 msgid "Spirit Deck"
-msgstr ""
+msgstr "Mazzo Spirito"
 
 msgid "Edit Spirit Deck"
-msgstr ""
+msgstr "Modifica Mazzo Spirito"
 
 msgid "No permanents except story and signature permanents"
-msgstr ""
+msgstr "Nessun permanente ad eccezione di quelli storia e caratteristici"
 
 msgid "You cannot have more than 5 Survivor cards."
-msgstr ""
+msgstr "Non puoi avere più di 5 carte Sopravvissuto."
 
 msgid "You cannot have more than 5 Mystic cards."
-msgstr ""
+msgstr "Non puoi avere più di 5 carte Mistico."
 
 msgid "The Feast of Hemlock Vale"
 msgstr "La Festa di Hemlock Vale"
@@ -5873,14 +5903,14 @@ msgid "Show original release packs"
 msgstr "Mostra come elenco di pack"
 
 msgid "Non-Unique"
-msgstr ""
+msgstr "Non unico"
 
 #, javascript-format
 msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr ""
+msgstr "Costo dell'esperienza: ${ basicXpCost } per i mazzi che includono ${ investigator.name }, ${ challengeDiscountCost } per ogni altro giocatore"
 
 msgid "Aether"
-msgstr ""
+msgstr "Etere"
 
 msgid "Campaign Rules & FAQ"
 msgstr "Regole della Campagna & FAQ"
@@ -5921,37 +5951,37 @@ msgid "Rules & FAQ"
 msgstr "Regole & FAQ"
 
 msgid "Day / Time"
-msgstr ""
+msgstr "Giorno / Notte"
 
 msgid "Areas Surveyed"
-msgstr ""
+msgstr "Zone Esplorate"
 
 msgid "Mother Rachel"
-msgstr ""
+msgstr "Madre Rachel"
 
 msgid "Leah Atwood"
-msgstr ""
+msgstr "Leah Atwood"
 
 msgid "Simeon Atwood"
-msgstr ""
+msgstr "Simeon Atwood"
 
 msgid "William Hemlock"
-msgstr ""
+msgstr "Simeon Atwood"
 
 msgid "River Hawthorne"
-msgstr ""
+msgstr "River Hawthorne"
 
 msgid "Gideon Mizrah"
-msgstr ""
+msgstr "Gideon Mizrah"
 
 msgid "Judith Park"
-msgstr ""
+msgstr "Judith Park"
 
 msgid "Theo Peters"
-msgstr ""
+msgstr "Theo Peters"
 
 msgid "Relationship Level"
-msgstr ""
+msgstr "Livello di Relazione"
 
 msgid "Image cache cleared"
 msgstr "Cache delle immagini ripulita"
@@ -5963,127 +5993,130 @@ msgid "Narration Language"
 msgstr "Lingua di narrazione"
 
 msgid "Unable to create campaign"
-msgstr ""
+msgstr "Impossibile creare la campagna"
 
 msgid "Handle is already taken"
-msgstr ""
+msgstr "La gestione è già in corso"
 
 msgid "Portents"
-msgstr ""
+msgstr "Premonizioni"
 
 msgid "Truths"
-msgstr ""
+msgstr "Verità"
 
 msgid "Specialist"
-msgstr ""
+msgstr "Specialista"
 
 msgid "Enemy-Location"
-msgstr ""
+msgstr "Nemico-Luogo"
 
 msgid "Incomplete card database"
-msgstr ""
+msgstr "Database delle carte incompleto"
 
 msgid "New cards available"
-msgstr ""
+msgstr "Nuove carte disponibili"
 
 msgid ""
 "Your most recent sync did not complete.\n"
 "\n"
 "When trying again, please keep the app open and in the foreground until it is finished."
 msgstr ""
+"La sincronizzazione più recente non è stata completata.n\n"
+"\n"
+"Quando si riprova, tenere l'applicazione aperta e in primo piano fino al termine dell'operazione."
 
 #, javascript-format
 msgid "It looks like your app is missing ${ updates.missingCardCount } card."
 msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Sembra che nell'app manchino ${ updates.missingCardCount } carte."
+msgstr[1] "Sembra che nell'app manchino ${ updates.missingCardCount } carte."
 
 msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
-msgstr ""
+msgstr "Alcuni mazzi potrebbero non caricarsi completamente e le campagne potrebbero apparire incomplete fino a quando il problema non sarà risolto."
 
 msgid "Download cards"
-msgstr ""
+msgstr "Scarica le carte"
 
 msgid "It has been more than a week since you checked for new cards."
-msgstr ""
+msgstr "È passata più di una settimana da quando hai controllato per delle nuove carte."
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
-msgstr ""
+msgstr "Cinese (Simplified): ${ simplifiedChineseTranslators }"
 
 msgid "Narration"
-msgstr ""
+msgstr "Narrazione"
 
 msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
-msgstr ""
+msgstr "Queste carte potrebbero essere state aggiornate, provenienti da un nuovo elenco di tabù, o contenere piccole correzioni."
 
 msgid "Fatigue"
-msgstr ""
+msgstr "Stanchezza"
 
 msgid "The Colour Out of Oz"
-msgstr ""
+msgstr "Il Colore Venuto da Oz"
 
 msgid "Preparations"
-msgstr ""
+msgstr "Preparazione"
 
 msgid "Companions of Oz"
-msgstr ""
+msgstr "Compagni di Oz"
 
 msgid "Advantages"
-msgstr ""
+msgstr "Vantaggi"
 
 msgid "Order of Events"
-msgstr ""
+msgstr "Ordine degli Eventi"
 
 msgid "Ages Unwound"
-msgstr ""
+msgstr "Il Groviglio delle Ere"
 
 msgid "Create new deck"
-msgstr ""
+msgstr "Crea un nuovo mazzo"
 
 msgid "Timeline"
-msgstr ""
+msgstr "Linea temporale"
 
 msgid "Strange Assistance"
-msgstr ""
+msgstr "Assistenza Strana"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Allegati"
 
 msgid "Bewitching"
-msgstr ""
+msgstr "Ammaliante"
 
 msgid "Hunch deck"
-msgstr ""
+msgstr "Mazzo del presagio"
 
 msgid "Stick to the Plan"
-msgstr ""
+msgstr "Attenersi al Piano"
 
 msgid "Market deck"
-msgstr ""
+msgstr "Mazzo del mercato"
 
 msgid "Branded spell"
-msgstr ""
+msgstr "Incantesimo marchiato"
 
 msgid "Too many selected"
-msgstr ""
+msgstr "Troppe selezioni"
 
 msgid "Each card must be different"
-msgstr ""
+msgstr "Ogni carta deve essere differente"
 
 #, javascript-format
 msgid "Limit of ${ limit } card"
 msgid_plural "Limit of ${ limit } cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Limite di ${ limit } carta"
+msgstr[1] "Limite di ${ limit } carte"
 
 #, javascript-format
 msgid "${ total } of ${ attachment.targetSize }"
-msgstr ""
+msgstr "${ total } di ${ attachment.targetSize }"
 
 msgctxt "investigator"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizzato"
 
 msgctxt "slots"
 msgid "None"
@@ -6190,11 +6223,11 @@ msgstr[1] "Poiché ${ list } non hanno ${ supplyName }, si deve leggere <b>${ se
 
 msgctxt "masculine"
 msgid "Killed"
-msgstr ""
+msgstr "Ucciso"
 
 msgctxt "masculine"
 msgid "Insane"
-msgstr ""
+msgstr "Impazzito"
 
 #, javascript-format
 msgctxt "feminine"
@@ -6309,11 +6342,11 @@ msgstr[1] "Poiché ${ list } non hanno ${ supplyName }, si deve leggere <b>${ se
 
 msgctxt "feminine"
 msgid "Killed"
-msgstr ""
+msgstr "Uccisa"
 
 msgctxt "feminine"
 msgid "Insane"
-msgstr ""
+msgstr "Impazzita"
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6414,11 +6447,11 @@ msgstr "Sconfitto"
 
 msgctxt "nonbinary"
 msgid "Killed"
-msgstr ""
+msgstr "Ucciso"
 
 msgctxt "nonbinary"
 msgid "Insane"
-msgstr ""
+msgstr "Impazzito"
 
 msgctxt "Traits"
 msgid "All"
@@ -6426,303 +6459,305 @@ msgstr "Tutti"
 
 msgctxt "releaseNotes"
 msgid "Fan-made cards + Barkham Horror"
-msgstr ""
+msgstr "Carte fan-made + Arkcan Horror"
 
 msgctxt "releaseNotes"
 msgid "Starting with this release, there is a new setting to unlock some 'unofficial' content when searching for cards and building decks. While fan-made campaigns have been available for some time, the cards associated with them have not been searchable. To start, this includes the cards released as part of the <i>Barkham Horror</i> promotional set, as well as the excellent <i>Alice in Wonderland</i> campaign by The Beard."
-msgstr ""
+msgstr "A partire da questa versione, c'è una nuova impostazione per sbloccare alcuni contenuti 'non ufficiali' durante la ricerca delle carte e la costruzione dei mazzi. Mentre le campagne fan-made sono disponibili da tempo, le carte ad esse associate non sono ricercabili. Per cominciare, questo include le carte rilasciate come parte del set promozionale <i>Arkcan Horror</i>, così come l'eccellente campagna <i>Alice nel Paese delle Meraviglie</i> di The Beard."
 
 msgctxt "releaseNotes"
 msgid "- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app."
-msgstr ""
+msgstr "- Per attivare questa funzione, è sufficiente selezionare la casella <b>Mostra carte fan-made</b> nelle <i>Impostazioni</i>. Se non siete interessati ai contenuti creati dai fan, non dovete cambiare nulla: per impostazione predefinita non vedrete queste carte nell'app."
 
 msgctxt "releaseNotes"
 msgid "- Decks containing 'fan-made' cards (including <i>Barkham Horror</i>), cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, these custom cards will be hidden."
-msgstr ""
+msgstr "- I mazzi contenenti carte fan-made (incluso <i>Arkcan Horror</i>) non possono essere caricati o salvati su ArkhamDB. Quando si modifica un mazzo ArkhamDB, queste carte personalizzate saranno nascoste."
 
 msgctxt "releaseNotes"
 msgid "- Fan-made cards are shown with a small watermark icon indicating what set they came from, so you can tell they are unofficial."
-msgstr ""
+msgstr "- Le carte fan-made sono mostrate con una piccola icona di filigrana che indica il set da cui provengono, in modo che si possa capire che non sono ufficiali."
 
 msgctxt "releaseNotes"
 msgid "Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
-msgstr ""
+msgstr "Se avete dei contenuti fan-made che vorreste vedere nell'app, fatemelo sapere a [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
 
 msgctxt "releaseNotes"
 msgid "Campaign sharing released!"
-msgstr ""
+msgstr "Condivisione della campagna rilasciata!"
 
 msgctxt "releaseNotes"
 msgid "At long last, the ability to share campaigns has been released on both iOS and Android! This has been one of the most requested features from the start, but as it required a completely new set of servers to be written (and paid for), it took me some time to get it right. You can of course continue using the app exactly as it is, but if you find yourself using multiple devices or want to share an in-progress campaign with friends so everyone can collaborate on it, this is the feature for you."
 msgstr ""
+"Finalmente è stata rilasciata la possibilità di condividere le campagne sia su iOS che su Android! Questa è stata una delle funzioni più richieste fin dall'inizio, ma dato che ha richiesto la scrittura di una serie di server completamente nuovi (e pagati), mi ci è voluto un po' di tempo per realizzarla al meglio. Naturalmente potete continuare a usare l'app esattamente com'è, ma se vi trovate a usare più dispositivi o volete condividere una campagna in corso con gli amici in modo che tutti "
+"possano collaborare, questa è la funzione che fa per voi."
 
 msgctxt "releaseNotes"
 msgid "- First sign up for an <b>Arkham Cards</b> account via the <i>Settings</i> tab, to unlock these features. Don't forget to set your handle so your friends can find you on the app."
-msgstr ""
+msgstr "- Per sbloccare queste funzioni, prima registratevi per un account <b>Arkham Cards</b> tramite la scheda <i>Impostazioni</i>. Non dimenticate di impostare il vostro nickname in modo che i vostri amici possano trovarvi nell'app."
 
 msgctxt "releaseNotes"
 msgid "- On the main screen of every campaign (or when creating a new one), there is a new option to 'Upload' the campaign to the cloud. This will cause the campaign to be synced between all of your devices."
-msgstr ""
+msgstr "- Nella schermata principale di ogni campagna (o quando se ne crea una nuova), c'è una nuova opzione per “caricare” la campagna nel cloud. In questo modo la campagna verrà sincronizzata tra tutti i dispositivi."
 
 msgctxt "releaseNotes"
 msgid "- After uploading the campaign, you'll find a new option on the campaign to <b>Edit players</b>. Simply select your friends and the campaign will pop up in their app as well."
-msgstr ""
+msgstr "- Dopo aver caricato la campagna, troverete una nuova opzione sulla campagna per <b>Modificare i giocatori</b>. Basta selezionare i propri amici e la campagna apparirà anche nella loro app."
 
 msgctxt "releaseNotes"
 msgid "- Then just use the campaign as normal -- decisions and changes that you make will be synced automatically with everyone, including the chaos bag."
-msgstr ""
+msgstr "- Quindi utilizzate la campagna come di consueto: le decisioni e le modifiche apportate saranno sincronizzate automaticamente con tutti, compreso il sacchetto del caos."
 
 msgctxt "releaseNotes"
 msgid "- If someone else saves your deck for you at the end of a scenario, you'll need to open the campaign to <b>Claim the previous scneario's XP</b> for yourself."
-msgstr ""
+msgstr "- Se qualcun altro salva il mazzo per voi alla fine di uno scenario, dovrete aprire la campagna per <b>Reclamare i punti XP dello scenario precedente</b>."
 
 msgctxt "releaseNotes"
 msgid "If you like to make changes to your decks on ArkhamDB as well as in the app, just pop open the app and make sure you see your latest deck updates there. After opening the app it should remain in sync, but if you use the app infrequently the ArkhamDB login might expire and need to be authorized."
-msgstr ""
+msgstr "Se si desidera apportare modifiche ai propri mazzi su ArkhamDB oltre che nell'app, basta aprire l'app e assicurarsi di vedere gli ultimi aggiornamenti dei mazzi. Dopo l'apertura dell'app dovrebbe rimanere sincronizzato, ma se si usa l'app di rado il login ad ArkhamDB potrebbe scadere e dover essere autorizzato."
 
 msgctxt "releaseNotes"
 msgid "Find overlap between decks"
-msgstr ""
+msgstr "Trova le sovrapposizioni tra i mazzi"
 
 msgctxt "releaseNotes"
 msgid "If you build decks for multiple players from a single card collection, this release is for you. By adding the decks to a shared campaign, the app will calculate which cards are included in too many decks (based on your collection)."
-msgstr ""
+msgstr "Se costruite mazzi per più giocatori a partire da un'unica collezione di carte, questa versione fa al caso vostro. Aggiungendo i mazzi a una campagna condivisa, l'applicazione calcolerà quali carte sono incluse in un numero eccessivo di mazzi (in base alla vostra collezione)."
 
 msgctxt "releaseNotes"
 msgid "If the deck has been added to a campaign, you'll also see this on the bottom of each deck in that campaign."
-msgstr ""
+msgstr "Se il mazzo è stato aggiunto a una campagna, si vedrà anche in fondo a ogni mazzo di quella campagna."
 
 msgctxt "releaseNotes"
 msgid "Edge of the Earth campaign is now out"
-msgstr ""
+msgstr "La campagna Ai Confini della Terra è ora disponibile"
 
 msgctxt "releaseNotes"
 msgid "The full setup instructions for Edge of the Earth campaigns are now available in the app! This was the largest single drop of campaign content in the history of the game and a large group of volunteers helped prepare the story text so I could focus on the new mechanics to get this out as close to release date as possible."
-msgstr ""
+msgstr "Le istruzioni di configurazione complete per le campagne di Ai Confini della Terra sono ora disponibili nell'app! Si tratta della più grande release di contenuti nella storia del gioco e un nutrito gruppo di volontari ha contribuito a preparare il testo della storia, in modo che potessi concentrarmi sulle nuove meccaniche per farle uscire il più vicino possibile alla data di uscita."
 
 msgctxt "releaseNotes"
 msgid "Frost tokens ([frost]) are also now available in the digital chaos bags for all Edge of the Earth campaigns."
-msgstr ""
+msgstr "I segnalini gelo ([frost]) sono ora disponibili anche nel sacchetto del caos digitale per tutte le campagne di Ai Confini della Terra."
 
 msgctxt "releaseNotes"
 msgid "Stay warm out there!"
-msgstr ""
+msgstr "State al caldo là fuori!"
 
 msgctxt "releaseNotes"
 msgid "Newly designed chaos odds calculator"
-msgstr ""
+msgstr "Nuovo calcolatore delle probabilità del caos"
 
 msgctxt "releaseNotes"
 msgid "<center>\"Never tell me the odds!\" - Han Solo</center>"
-msgstr ""
+msgstr "<center>\"Non dirmi mai le probabilità!\" - Han Solo</center>"
 
 msgctxt "releaseNotes"
 msgid "Sorry Han, this isn't the feature for you. When it came time to try to work [bless] and [curse] tokens into the existing odds calculator, this app's visual designer (Eugene Sarnetsky) worked hard to reimagine how to present the mathy information in a more intuitive and visual manner."
-msgstr ""
+msgstr "Spiacente Han, questa non è la funzione che fa per te. Quando si è trattato di inserire i segnalini [bless] e [curse] nel calcolatore di probabilità esistente, il visual designer di questa app (Eugene Sarnetsky) ha lavorato duramente per immaginare come presentare le informazioni matematiche in modo più intuitivo e visivo."
 
 msgctxt "releaseNotes"
 msgid "As you can see below, the results are incredible:"
-msgstr ""
+msgstr "Come potete vedere qui sotto, i risultati sono incredibili:"
 
 msgctxt "releaseNotes"
 msgid "In addition to giving you the numeric pass/fail rate as before, the new visual stacking of tokens based on their current modifiers lets you quickly intuit how much you stand to gain with an extra +1 to your skill value, without having to mess with the difficulty controls at all."
-msgstr ""
+msgstr "Oltre a fornire il tasso numerico di superamento/fallimento come in precedenza, il nuovo sistema di impilamento visivo dei segnalini in base ai loro modificatori attuali consente di intuire rapidamente quanto si può guadagnare con un +1 in più al valore della propria abilità, senza dover ricorrere ai controlli della difficoltà."
 
 msgctxt "releaseNotes"
 msgid "You'll also see small bands of color to represent [bless] and [curse] worked into the display. These are spaced to show how much your odds of passing changes if you draw a single [bless] or [curse] token: in the above picture a single [curse] token draw will cause 47% of the tokens in the bag to now result in a failure -- not great!"
-msgstr ""
+msgstr "Nel display sono presenti anche piccole bande di colore che rappresentano [benedizione] e [maledizione]. Queste sono distanziate per mostrare quanto cambiano le probabilità di passare se si estrae un singolo segnalino [bless] o [curse]: nell'immagine qui sopra, l'estrazione di un singolo segnalino [curse] farà sì che il 47% dei gettoni nel sacchetto risulti ora in un fallimento... non è il massimo!"
 
 msgctxt "releaseNotes"
 msgid "Down below you can also see the odds of drawing a [bless]/[curse] token based on the current bag contents. Here the adjustment to your success odds is shown as a range, the first number being drawing one token, the second if you were to draw multiple."
-msgstr ""
+msgstr "In basso potete anche vedere le probabilità di estrarre un segnalino [bless]/[curse] in base al contenuto attuale del sacchetto. Il primo numero corrisponde all'estrazione di un segnalino, il secondo all'estrazione di più segnalini."
 
 msgctxt "releaseNotes"
 msgid "Support for fan-made campaigns"
-msgstr ""
+msgstr "Supporto per le campagne fan-made"
 
 msgctxt "releaseNotes"
 msgid "Did you know that this game has a thriving community of homebrew content creators? Well it does, and starting today, you'll start to find some of these campaigns and side-scenarios in the app."
-msgstr ""
+msgstr "Sapevate che questo gioco ha una fiorente comunità di creatori di contenuti fatti in casa? Ebbene, è così e da oggi potrete trovare alcune di queste campagne e scenari secondari nell'app."
 
 msgctxt "releaseNotes"
 msgid "Adding more campaigns will be an ongoing effort, but as of now we the following campaigns are available:"
-msgstr ""
+msgstr "L'aggiunta di altre campagne sarà uno sforzo continuo, ma al momento sono disponibili le seguenti campagne:"
 
 msgctxt "releaseNotes"
 msgid "- Alice in Wonderland by The Beard"
-msgstr ""
+msgstr "- Alice nel Paese delle Meraviglie di The Beard"
 
 msgctxt "releaseNotes"
 msgid "- Dark Matter by Axolotl"
-msgstr ""
+msgstr "- Materia Oscura di Axolotl"
 
 msgctxt "releaseNotes"
 msgid "- Crown of Egil by The Mad Juggler"
-msgstr ""
+msgstr "- La Corona di Egil di The Mad Juggler"
 
 msgctxt "releaseNotes"
 msgid "- Call of the Plaguebearer by Walker Graves"
-msgstr ""
+msgstr "- Il Richiamo della Peste di Walker Graves"
 
 msgctxt "releaseNotes"
 msgid "As for standalone scenarios:"
-msgstr ""
+msgstr "Per quanto riguarda gli scenari autoconclusivi:"
 
 msgctxt "releaseNotes"
 msgid "- Consternation on the Constellation - by The Mythos Busters"
-msgstr ""
+msgstr "- Costernazione sulla Costellazione di The Mythos Busters"
 
 msgctxt "releaseNotes"
 msgid "If you are a content creator who is interested in getting your (completed) campaign into the app, you can reach me at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
-msgstr ""
+msgstr "Se sei un creatore di contenuti interessato a inserire la tua campagna (completata) nell'app, puoi contattarmi all'indirizzo [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
 
 msgctxt "releaseNotes"
 msgid "Drafting player decks"
-msgstr ""
+msgstr "Creazione mazzi dei giocatori"
 
 msgctxt "releaseNotes"
 msgid "As a follow up to the earlier Ultimatum of Chaos release, the app now supports building a deck via a set of drafting rules. Choose what packs you want to pull from and how big each draft 'hand' should be, and build your deck one card at a time."
-msgstr ""
+msgstr "Come seguito al precedente rilascio di Ultimatum of Chaos, l'applicazione ora supporta la costruzione di un mazzo tramite una serie di regole di drafting. Scegliete i mazzi da cui volete attingere e la dimensione di ogni “mano” del draft, e costruite il vostro mazzo una carta alla volta."
 
 msgctxt "releaseNotes"
 msgid "- You can find this feature on the deck edit screen in the menu."
-msgstr ""
+msgstr "- Questa funzione si trova nella schermata di modifica del mazzo nel menu."
 
 msgctxt "releaseNotes"
 msgid "- Only level cards / decks can be drafted."
-msgstr ""
+msgstr "- È possibile creare solo carte o mazzi che dispongono di un livello."
 
 msgctxt "releaseNotes"
 msgid "- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release."
-msgstr ""
+msgstr "- Date le loro particolari restrizioni nella costruzione dei mazzi, l'app non supporta ancora la generazione di mazzi casuali per Lola Hayes o Joe Diamond. Cercherò di risolvere questo problema in una prossima versione."
 
 msgctxt "releaseNotes"
 msgid "Ultimatum of Chaos"
-msgstr ""
+msgstr "Ultimatum del Caos"
 
 msgctxt "releaseNotes"
 msgid "The app now supports building random decks following the steps set out by the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new option lets you choose a 'special deck', which can be used to either create the FFG suggested starter deck or a fully randomly generated one."
-msgstr ""
+msgstr "L'applicazione ora supporta la costruzione di mazzi casuali seguendo le fasi stabilite dalla regola opzionale “Ultimatum del Caos”. Quando si costruisce un nuovo mazzo, una nuova opzione permette di scegliere un “mazzo speciale”, che può essere usato per creare il mazzo iniziale suggerito da FFG o un mazzo completamente generato a caso."
 
 msgctxt "releaseNotes"
 msgid "- The app will use your defined collection to try to generate the deck."
-msgstr ""
+msgstr "- L'applicazione utilizzerà la collezione definita per cercare di generare il mazzo."
 
 msgctxt "releaseNotes"
 msgid "- Support the deckbuilding focused permanents included in the Edge of the Earth Investigator expansion (Underworld Support/Forced Learning)."
-msgstr ""
+msgstr "- Supporto per i permanenti incentrati sul deckbuilding inclusi nell'espansione Investigatore di Ai Confini della Terra (Sostegno della Mala/Apprendimento Forzato)."
 
 msgctxt "releaseNotes"
 msgid "- Shows the deck before you actully save it, so you can re-roll if it produced something particularly unviable."
-msgstr ""
+msgstr "- Mostra il mazzo prima di salvarlo, in modo da poterlo rifare se ha creato problemi irrisolvibili."
 
 msgctxt "releaseNotes"
 msgid "Note: You might need to refresh the cards once (using <b>Check for card updates</b>)."
-msgstr ""
+msgstr "Nota: potrebbe essere necessario aggiornare le carte una volta (utilizzando <b>Controlla gli aggiornamenti delle carte</b>)."
 
 msgctxt "releaseNotes"
 msgid "Settings synchronization"
-msgstr ""
+msgstr "Sincronizzazione delle impostazioni"
 
 msgctxt "releaseNotes"
 msgid "Good news for players who use Arkham Cards with more than one device, if you sign into your Arkham Cards account your settings will now sync between devices automatically!"
-msgstr ""
+msgstr "Buone notizie per i giocatori che utilizzano Arkham Cards con più di un dispositivo: se accedete al vostro account Arkham Cards, le vostre impostazioni si sincronizzeranno automaticamente tra i dispositivi!"
 
 msgctxt "releaseNotes"
 msgid "- This includes your collection + spoiler settings, as well as many general app preferences."
-msgstr ""
+msgstr "- Questo include le impostazioni della collezione e degli spoiler, oltre a molte preferenze generali dell'applicazione."
 
 msgctxt "releaseNotes"
 msgid "I've had some reports of slower performance on some devices, and have a new <i>\"Low Memory Mode\"</i> setting to try out."
-msgstr ""
+msgstr "Ho ricevuto alcune segnalazioni di prestazioni più lente su alcuni dispositivi, c'è una nuova impostazione “Modalità Bassa Memoria” da provare."
 
 msgctxt "releaseNotes"
 msgid "- If you've been experiencing slow app behavior in anyway, please try it out."
-msgstr ""
+msgstr "- Se avete riscontrato un comportamento lento dell'applicazione, provatela."
 
 msgctxt "releaseNotes"
 msgid "- And if you try it out, send me an email at arkhamcards@gmail.com, I would love to hear how it is working in the wild."
-msgstr ""
+msgstr "- E se lo provate, inviatemi un'e-mail a arkhamcards@gmail.com, mi piacerebbe sapere come funziona all'atto pratico."
 
 msgctxt "releaseNotes"
 msgid "BTW, support for the newly announced mechanic from The Scarlet Keys is in the works, so stay tuned."
-msgstr ""
+msgstr "Comunque, il supporto per la meccanica appena annunciata di The Scarlet Keys è in lavorazione, quindi rimanete sintonizzati."
 
 msgctxt "releaseNotes"
 msgid "Cyclopean Foundations"
-msgstr ""
+msgstr "Fondazioni Ciclopiche"
 
 msgctxt "releaseNotes"
 msgid "This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard."
-msgstr ""
+msgstr "Questa versione aggiunge la campagna fan-made Fondazioni Ciclopiche di The Beard."
 
 msgctxt "releaseNotes"
 msgid "- Includes a fully guided mode, with all setup and resolution text accounted for."
-msgstr ""
+msgstr "- Include una modalità completamente guidata, con preparazione e risoluzioni."
 
 msgctxt "releaseNotes"
 msgid "This update also adds support for \"The Colour Out of Space\", a fan-made standalone scenario."
-msgstr ""
+msgstr "Questo aggiornamento aggiunge anche il supporto per “Il Colore Venuto dallo Spazio”, uno scenario standalone fan-made."
 
 msgctxt "releaseNotes"
 msgid "Preview Cards"
-msgstr ""
+msgstr "Anteprima Carte"
 
 msgctxt "releaseNotes"
 msgid "This release introduces faster access to previewed cards."
-msgstr ""
+msgstr "Questa versione introduce un accesso più rapido alle carte in anteprima."
 
 msgctxt "releaseNotes"
 msgid "- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys investigator expansion."
-msgstr ""
+msgstr "- Include le carte <b>Personalizzabili</b> in anteprima dell'espansione investigatore Le Chiavi Scarlatte."
 
 msgctxt "releaseNotes"
 msgid "- In order to maintain compatibility with ArkhamDB, these cards are not shown by default. You can opt into them by enabling the <b>Show Fan-made cards</b> under <i>Settings</i>."
-msgstr ""
+msgstr "- Per mantenere la compatibilità con ArkhamDB, queste carte non vengono mostrate di default. Si può scegliere di visualizzarle attivando la voce <b>Mostra carte fan-made</b> in <i>Preferenze</i>."
 
 msgctxt "releaseNotes"
 msgid "The Scarlet Keys Campaign"
-msgstr ""
+msgstr "Campagna Le Chiavi Scarlatte"
 
 msgctxt "releaseNotes"
 msgid "This release adds support for the newly released Scarlet Keys campaign expansion."
-msgstr ""
+msgstr "Questa versione aggiunge il supporto per la nuova espansione campagna Le Chiavi Scarlatte."
 
 msgctxt "releaseNotes"
 msgid "- As you may know (or will soon find out), this is by far the most ambitious campaign we've ever seen in Arkham. I've done my best to handle the new features as faithfully as I can in the app, and am pretty pleased with the implementation."
-msgstr ""
+msgstr "- Come forse sapete (o scoprirete presto), questa è di gran lunga la campagna più ambiziosa che abbiamo mai visto in Arkham. Ho fatto del mio meglio per gestire le nuove funzionalità nel modo più fedele possibile nell'applicazione e sono abbastanza soddisfatto dell'implementazione."
 
 msgctxt "releaseNotes"
 msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still - if you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will try to fix them as quickly as possible. But given the expansive nature of the campaign, it is possible in a worst case scenario that some progress might need to be re-entered."
-msgstr ""
+msgstr "- Ho fatto del mio meglio per testare tutte le parti di questa campagna, ma è molto probabile che ci siano ancora alcuni errori o bug nell'implementazione - se ne trovate qualcuno fatemelo sapere a [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) e cercherò di risolverlo il più rapidamente possibile. Ma data la natura espansiva della campagna, è possibile che, nel peggiore dei casi, alcuni progressi debbano essere reinseriti."
 
 msgctxt "releaseNotes"
 msgid "- I've also taken the liberty of including some small story reminders when map locations become unlocked through the course of play. I tried my best to capture the story text, and hope you find it helpful (in case like me you sometimes go weeks between game sessions)."
-msgstr ""
+msgstr "- Mi sono anche preso la libertà di includere alcuni piccoli promemoria della storia quando i luoghi della mappa vengono sbloccati nel corso del gioco. Ho fatto del mio meglio per centrare il testo della storia e spero che vi sia utile (nel caso in cui, come me, a volte passino settimane tra una sessione di gioco e l'altra)."
 
 msgctxt "releaseNotes"
 msgid "As always, many thanks to my many supporters on Patreon -- I appreciate your support which helps make all of this possible."
-msgstr ""
+msgstr "Come sempre, ringrazio i miei numerosi sostenitori su Patreon: apprezzo il vostro supporto che contribuisce a rendere possibile tutto questo."
 
 msgctxt "releaseNotes"
 msgid "Feast of Hemlock Vale Campaign"
-msgstr ""
+msgstr "Campagna Festa di Hemlock Vale"
 
 msgctxt "releaseNotes"
 msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
-msgstr ""
+msgstr "Questa versione aggiunge il supporto per la nuova espansione campagna Festa di Hemlock Vale."
 
 msgctxt "releaseNotes"
 msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
-msgstr ""
+msgstr "- Ho fatto del mio meglio per testare tutte le parti di questa campagna, ma è molto probabile che ci siano ancora alcuni errori o bug nell'implementazione. Se ne trovate qualcuno, fatemelo sapere all'indirizzo [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) e mi impegnerò a risolverlo il più rapidamente possibile."
 
 msgctxt "releaseNotes"
 msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
-msgstr ""
+msgstr "Inoltre, vi invitiamo a caricare le campagne e a condividerle con i vostri amici utilizzando il vostro account Arkham Cards: in questo modo sarà più facile per tutti seguire i progressi e gestire i propri mazzi."
 
 msgctxt "releaseNotes"
 msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
-msgstr ""
+msgstr "E come sempre, grazie ai miei numerosi sostenitori su Patreon - apprezzo il vostro supporto che aiuta a mantenere i server in funzione."
 
 msgctxt "trait"
 msgid "???"
@@ -6734,7 +6769,7 @@ msgstr "Abominio"
 
 msgctxt "trait"
 msgid "Abyss"
-msgstr ""
+msgstr "Abisso"
 
 msgctxt "trait"
 msgid "Act 1"
@@ -6786,19 +6821,19 @@ msgstr "Assistente"
 
 msgctxt "trait"
 msgid "Attack"
-msgstr ""
+msgstr "Attacco"
 
 msgctxt "trait"
 msgid "Augury"
-msgstr ""
+msgstr "Auspicio"
 
 msgctxt "trait"
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 msgctxt "trait"
 msgid "Basement"
-msgstr ""
+msgstr "Seminterrato"
 
 msgctxt "trait"
 msgid "Bayou"
@@ -6814,27 +6849,27 @@ msgstr "Benedetto"
 
 msgctxt "trait"
 msgid "Blunder"
-msgstr ""
+msgstr "Abbaglio"
 
 msgctxt "trait"
 msgid "Boat"
-msgstr ""
+msgstr "Barca"
 
 msgctxt "trait"
 msgid "Bold"
-msgstr ""
+msgstr "Audacia"
 
 msgctxt "trait"
 msgid "Boon"
-msgstr ""
+msgstr "Dono"
 
 msgctxt "trait"
 msgid "Bridge"
-msgstr ""
+msgstr "Ponte"
 
 msgctxt "trait"
 msgid "Brotherhood"
-msgstr ""
+msgstr "Confraternità"
 
 msgctxt "trait"
 msgid "Byakhee"
@@ -6846,15 +6881,15 @@ msgstr "Passante"
 
 msgctxt "trait"
 msgid "Cairo"
-msgstr ""
+msgstr "Il Cairo"
 
 msgctxt "trait"
 msgid "Campsite"
-msgstr ""
+msgstr "Accampamento"
 
 msgctxt "trait"
 msgid "Carnevale"
-msgstr ""
+msgstr "Carnevale"
 
 msgctxt "trait"
 msgid "Cave"
@@ -6874,11 +6909,11 @@ msgstr "Prescelto"
 
 msgctxt "trait"
 msgid "Circle"
-msgstr ""
+msgstr "Cerchio"
 
 msgctxt "trait"
 msgid "City"
-msgstr ""
+msgstr "Città"
 
 msgctxt "trait"
 msgid "Civic"
@@ -6898,7 +6933,7 @@ msgstr "Clover Club"
 
 msgctxt "trait"
 msgid "Coastal"
-msgstr ""
+msgstr "Costiero"
 
 msgctxt "trait"
 msgid "Composure"
@@ -6918,7 +6953,7 @@ msgstr "Cospiratore"
 
 msgctxt "trait"
 msgid "Construct"
-msgstr ""
+msgstr "Costrutto"
 
 msgctxt "trait"
 msgid "Covenant"
@@ -6930,7 +6965,7 @@ msgstr "Creatura"
 
 msgctxt "trait"
 msgid "Crime Scene"
-msgstr ""
+msgstr "Scena del Crimine"
 
 msgctxt "trait"
 msgid "Criminal"
@@ -6958,7 +6993,7 @@ msgstr "Abitatore del Profondo"
 
 msgctxt "trait"
 msgid "Depths"
-msgstr ""
+msgstr "Profondità"
 
 msgctxt "trait"
 msgid "Desert"
@@ -7014,7 +7049,7 @@ msgstr "Ultimi Giorni"
 
 msgctxt "trait"
 msgid "Evidence"
-msgstr ""
+msgstr "Reperto"
 
 msgctxt "trait"
 msgid "Exhibit"
@@ -7034,15 +7069,15 @@ msgstr "Extradimensionale"
 
 msgctxt "trait"
 msgid "Extraterrestrial"
-msgstr ""
+msgstr "Extraterrestre"
 
 msgctxt "trait"
 msgid "Eztli"
-msgstr ""
+msgstr "Eztli"
 
 msgctxt "trait"
 msgid "Familiar"
-msgstr ""
+msgstr "Famiglio"
 
 msgctxt "trait"
 msgid "Fated"
@@ -7062,7 +7097,7 @@ msgstr "Difetto"
 
 msgctxt "trait"
 msgid "Flora"
-msgstr ""
+msgstr "Flora"
 
 msgctxt "trait"
 msgid "Footwear"
@@ -7070,11 +7105,11 @@ msgstr "Scarpe"
 
 msgctxt "trait"
 msgid "Forbidden"
-msgstr ""
+msgstr "Proibito"
 
 msgctxt "trait"
 msgid "Forgotten"
-msgstr ""
+msgstr "Dimenticato"
 
 msgctxt "trait"
 msgid "Fortune"
@@ -7094,7 +7129,7 @@ msgstr "Geist"
 
 msgctxt "trait"
 msgid "Ghast"
-msgstr ""
+msgstr "Ghast"
 
 msgctxt "trait"
 msgid "Ghoul"
@@ -7102,7 +7137,7 @@ msgstr "Ghoul"
 
 msgctxt "trait"
 msgid "Government"
-msgstr ""
+msgstr "Governo"
 
 msgctxt "trait"
 msgid "Grant"
@@ -7126,7 +7161,7 @@ msgstr "Gug"
 
 msgctxt "trait"
 msgid "Hall"
-msgstr ""
+msgstr "Area Comune"
 
 msgctxt "trait"
 msgid "Hazard"
@@ -7154,7 +7189,7 @@ msgstr "Cacciatore"
 
 msgctxt "trait"
 msgid "Hybrid"
-msgstr ""
+msgstr "Ibrido"
 
 msgctxt "trait"
 msgid "Illicit"
@@ -7178,11 +7213,11 @@ msgstr "Innocente"
 
 msgctxt "trait"
 msgid "Innsmouth"
-msgstr ""
+msgstr "Innsmouth"
 
 msgctxt "trait"
 msgid "Insect"
-msgstr ""
+msgstr "Insetto"
 
 msgctxt "trait"
 msgid "Insight"
@@ -7210,7 +7245,7 @@ msgstr "Giungla"
 
 msgctxt "trait"
 msgid "Kadath"
-msgstr ""
+msgstr "Kadath"
 
 msgctxt "trait"
 msgid "Key"
@@ -7218,15 +7253,15 @@ msgstr "Chiave"
 
 msgctxt "trait"
 msgid "Lead"
-msgstr ""
+msgstr "Traccia"
 
 msgctxt "trait"
 msgid "Leng"
-msgstr ""
+msgstr "Leng"
 
 msgctxt "trait"
 msgid "Lodge"
-msgstr ""
+msgstr "Loggia"
 
 msgctxt "trait"
 msgid "Madness"
@@ -7250,7 +7285,7 @@ msgstr "Mischia"
 
 msgctxt "trait"
 msgid "Mexico City"
-msgstr ""
+msgstr "Città del Messico"
 
 msgctxt "trait"
 msgid "Mi-Go"
@@ -7258,7 +7293,7 @@ msgstr "Mi-Go"
 
 msgctxt "trait"
 msgid "Midtown"
-msgstr ""
+msgstr "Cittadino"
 
 msgctxt "trait"
 msgid "Miskatonic"
@@ -7266,7 +7301,7 @@ msgstr "Miskatonic"
 
 msgctxt "trait"
 msgid "Mnar"
-msgstr ""
+msgstr "Mnar"
 
 msgctxt "trait"
 msgid "Monster"
@@ -7278,11 +7313,11 @@ msgstr "Montréal"
 
 msgctxt "trait"
 msgid "Mountain"
-msgstr ""
+msgstr "Montagna"
 
 msgctxt "trait"
 msgid "Mutated"
-msgstr ""
+msgstr "Mutato"
 
 msgctxt "trait"
 msgid "Mystery"
@@ -7294,7 +7329,7 @@ msgstr "New Orleans"
 
 msgctxt "trait"
 msgid "New York City"
-msgstr ""
+msgstr "New York City"
 
 msgctxt "trait"
 msgid "Nightgaunt"
@@ -7310,7 +7345,7 @@ msgstr "Occulto"
 
 msgctxt "trait"
 msgid "Ocean"
-msgstr ""
+msgstr "Oceano"
 
 msgctxt "trait"
 msgid "Omen"
@@ -7318,19 +7353,19 @@ msgstr "Presagio"
 
 msgctxt "trait"
 msgid "Ooth-Nargai"
-msgstr ""
+msgstr "Ooth-Nargai"
 
 msgctxt "trait"
 msgid "Ooze"
-msgstr ""
+msgstr "Melma"
 
 msgctxt "trait"
 msgid "Oozified"
-msgstr ""
+msgstr "Smelmato"
 
 msgctxt "trait"
 msgid "Oriab"
-msgstr ""
+msgstr "Oriab"
 
 msgctxt "trait"
 msgid "Otherworld"
@@ -7350,7 +7385,7 @@ msgstr "Parigi"
 
 msgctxt "trait"
 msgid "Part 1"
-msgstr ""
+msgstr "Parte 1"
 
 msgctxt "trait"
 msgid "Passageway"
@@ -7366,7 +7401,7 @@ msgstr "Intrattenitore"
 
 msgctxt "trait"
 msgid "Pnakotus"
-msgstr ""
+msgstr "Pnakotus"
 
 msgctxt "trait"
 msgid "Poison"
@@ -7378,7 +7413,7 @@ msgstr "Polizia"
 
 msgctxt "trait"
 msgid "Port"
-msgstr ""
+msgstr "Porto"
 
 msgctxt "trait"
 msgid "Portal"
@@ -7394,7 +7429,7 @@ msgstr "Allenamento"
 
 msgctxt "trait"
 msgid "Present-Day"
-msgstr ""
+msgstr "Presente"
 
 msgctxt "trait"
 msgid "Prison"
@@ -7406,7 +7441,7 @@ msgstr "Privato"
 
 msgctxt "trait"
 msgid "Providence"
-msgstr ""
+msgstr "Providence"
 
 msgctxt "trait"
 msgid "Rail"
@@ -7426,11 +7461,11 @@ msgstr "Reporter"
 
 msgctxt "trait"
 msgid "Research"
-msgstr ""
+msgstr "Ricerca"
 
 msgctxt "trait"
 msgid "Return"
-msgstr ""
+msgstr "Ritorno"
 
 msgctxt "trait"
 msgid "Ritual"
@@ -7438,19 +7473,19 @@ msgstr "Rituale"
 
 msgctxt "trait"
 msgid "Ritual Site"
-msgstr ""
+msgstr "Sito del Rituale"
 
 msgctxt "trait"
 msgid "River"
-msgstr ""
+msgstr "Fiume"
 
 msgctxt "trait"
 msgid "Riverside"
-msgstr ""
+msgstr "Sponda del Fiume"
 
 msgctxt "trait"
 msgid "Road"
-msgstr ""
+msgstr "Strada"
 
 msgctxt "trait"
 msgid "Ruins"
@@ -7458,11 +7493,11 @@ msgstr "Rovine"
 
 msgctxt "trait"
 msgid "Salem"
-msgstr ""
+msgstr "Salem"
 
 msgctxt "trait"
 msgid "Sanctum"
-msgstr ""
+msgstr "Sancta Sanctorum"
 
 msgctxt "trait"
 msgid "Scheme"
@@ -7490,7 +7525,7 @@ msgstr "Colle Guardiano"
 
 msgctxt "trait"
 msgid "Serpent"
-msgstr ""
+msgstr "Serpente"
 
 msgctxt "trait"
 msgid "Service"
@@ -7502,19 +7537,19 @@ msgstr "Servo"
 
 msgctxt "trait"
 msgid "Shantak"
-msgstr ""
+msgstr "Shantak"
 
 msgctxt "trait"
 msgid "Shattered"
-msgstr ""
+msgstr "Infranto"
 
 msgctxt "trait"
 msgid "Ship"
-msgstr ""
+msgstr "Nave"
 
 msgctxt "trait"
 msgid "Shoggoth"
-msgstr ""
+msgstr "Shoggoth"
 
 msgctxt "trait"
 msgid "Silver Twilight"
@@ -7522,7 +7557,7 @@ msgstr "Crepuscolo d'Argento"
 
 msgctxt "trait"
 msgid "Skai"
-msgstr ""
+msgstr "Skai"
 
 msgctxt "trait"
 msgid "Socialite"
@@ -7546,7 +7581,7 @@ msgstr "Incantesimo"
 
 msgctxt "trait"
 msgid "Spider"
-msgstr ""
+msgstr "Ragno"
 
 msgctxt "trait"
 msgid "Spirit"
@@ -7554,15 +7589,15 @@ msgstr "Spirito"
 
 msgctxt "trait"
 msgid "St Mary's"
-msgstr ""
+msgstr "St. Mary"
 
 msgctxt "trait"
 msgid "Staff"
-msgstr ""
+msgstr "Staff"
 
 msgctxt "trait"
 msgid "Steps"
-msgstr ""
+msgstr "Scalinata"
 
 msgctxt "trait"
 msgid "Summon"
@@ -7574,7 +7609,7 @@ msgstr "Scorta"
 
 msgctxt "trait"
 msgid "Surface"
-msgstr ""
+msgstr "Superficie"
 
 msgctxt "trait"
 msgid "Suspect"
@@ -7602,15 +7637,15 @@ msgstr "Impresa"
 
 msgctxt "trait"
 msgid "Temple"
-msgstr ""
+msgstr "Tempio"
 
 msgctxt "trait"
 msgid "Tenochtitlán"
-msgstr ""
+msgstr "Tenochtitlán"
 
 msgctxt "trait"
 msgid "Tentacle"
-msgstr ""
+msgstr "Tentacolo"
 
 msgctxt "trait"
 msgid "Terror"
@@ -7634,7 +7669,7 @@ msgstr "Strumenti"
 
 msgctxt "trait"
 msgid "Town"
-msgstr ""
+msgstr "Cittadina"
 
 msgctxt "trait"
 msgid "Train"
@@ -7658,7 +7693,7 @@ msgstr "Miglioria"
 
 msgctxt "trait"
 msgid "Vale"
-msgstr ""
+msgstr "Valle"
 
 msgctxt "trait"
 msgid "Vehicle"
@@ -7674,7 +7709,7 @@ msgstr "Veterano"
 
 msgctxt "trait"
 msgid "Void"
-msgstr ""
+msgstr "Vuoto"
 
 msgctxt "trait"
 msgid "Warden"
@@ -7682,7 +7717,7 @@ msgstr "Custode"
 
 msgctxt "trait"
 msgid "Wastes"
-msgstr ""
+msgstr "Desolazione"
 
 msgctxt "trait"
 msgid "Wayfarer"
@@ -7702,7 +7737,7 @@ msgstr "Strega"
 
 msgctxt "trait"
 msgid "Witch House"
-msgstr ""
+msgstr "Casa Stregata"
 
 msgctxt "trait"
 msgid "Woods"
@@ -7718,11 +7753,11 @@ msgstr "Yithiano"
 
 msgctxt "trait"
 msgid "Yoth"
-msgstr ""
+msgstr "Yoth"
 
 msgctxt "trait"
 msgid "Zoog"
-msgstr ""
+msgstr "Zoog"
 
 msgctxt "trait"
 msgid "Broken"
@@ -7734,11 +7769,11 @@ msgstr "Imprenditore"
 
 msgctxt "trait"
 msgid "Falcon Point"
-msgstr ""
+msgstr "Punta del Falco"
 
 msgctxt "trait"
 msgid "Lair"
-msgstr ""
+msgstr "Covo"
 
 msgctxt "trait"
 msgid "Synergy"
@@ -7750,7 +7785,7 @@ msgstr "Integro"
 
 msgctxt "trait"
 msgid "Resolute"
-msgstr ""
+msgstr "Determinato"
 
 msgctxt "trait"
 msgid "Coterie"
@@ -7758,31 +7793,31 @@ msgstr "Società"
 
 msgctxt "trait"
 msgid "Dilemma"
-msgstr ""
+msgstr "Dilemma"
 
 msgctxt "trait"
 msgid "Eidolon"
-msgstr ""
+msgstr "Eidolon"
 
 msgctxt "trait"
 msgid "Elder Thing"
-msgstr ""
+msgstr "Antico"
 
 msgctxt "trait"
 msgid "Glacier"
-msgstr ""
+msgstr "Ghiacciaio"
 
 msgctxt "trait"
 msgid "Mainland"
-msgstr ""
+msgstr "Terraferma"
 
 msgctxt "trait"
 msgid "Mirage"
-msgstr ""
+msgstr "Miraggio"
 
 msgctxt "trait"
 msgid "Mountains"
-msgstr ""
+msgstr "Montagne"
 
 msgctxt "trait"
 msgid "Past"
@@ -7814,255 +7849,255 @@ msgstr "Doppio"
 
 msgctxt "trait"
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 msgctxt "trait"
 msgid "Abandoned"
-msgstr ""
+msgstr "Abbandonato"
 
 msgctxt "trait"
 msgid "Access"
-msgstr ""
+msgstr "Ingresso"
 
 msgctxt "trait"
 msgid "Alexandria"
-msgstr ""
+msgstr "Alessandria"
 
 msgctxt "trait"
 msgid "Ally? Creature"
-msgstr ""
+msgstr "Alleato? Creatura"
 
 msgctxt "trait"
 msgid "Ancient One?"
-msgstr ""
+msgstr "Grande Antico?"
 
 msgctxt "trait"
 msgid "Bad dog"
-msgstr ""
+msgstr "Cane cattivo"
 
 msgctxt "trait"
 msgid "Bazaar"
-msgstr ""
+msgstr "Bazar"
 
 msgctxt "trait"
 msgid "Blessed?"
-msgstr ""
+msgstr "Benedetto?"
 
 msgctxt "trait"
 msgid "Bokor"
-msgstr ""
+msgstr "Bokor"
 
 msgctxt "trait"
 msgid "Book"
-msgstr ""
+msgstr "Libro"
 
 msgctxt "trait"
 msgid "Buenos Aires"
-msgstr ""
+msgstr "Buenos Aires"
 
 msgctxt "trait"
 msgid "Card"
-msgstr ""
+msgstr "Carta"
 
 msgctxt "trait"
 msgid "Case"
-msgstr ""
+msgstr "Scatola"
 
 msgctxt "trait"
 msgid "Castle"
-msgstr ""
+msgstr "Castello"
 
 msgctxt "trait"
 msgid "Chair"
-msgstr ""
+msgstr "Sedia"
 
 msgctxt "trait"
 msgid "Chess"
-msgstr ""
+msgstr "Scacchi"
 
 msgctxt "trait"
 msgid "Classy"
-msgstr ""
+msgstr "Elegante"
 
 msgctxt "trait"
 msgid "Collector"
-msgstr ""
+msgstr "Collezionista"
 
 msgctxt "trait"
 msgid "Consort"
-msgstr ""
+msgstr "Consorte"
 
 msgctxt "trait"
 msgid "Corpse"
-msgstr ""
+msgstr "Cadavere"
 
 msgctxt "trait"
 msgid "Corruption"
-msgstr ""
+msgstr "Corruzione"
 
 msgctxt "trait"
 msgid "Darkness"
-msgstr ""
+msgstr "Oscurità"
 
 msgctxt "trait"
 msgid "Device"
-msgstr ""
+msgstr "Dispositivo"
 
 msgctxt "trait"
 msgid "Downtown"
-msgstr ""
+msgstr "Centro città"
 
 msgctxt "trait"
 msgid "Enigma"
-msgstr ""
+msgstr "Enigma"
 
 msgctxt "trait"
 msgid "Entrance"
-msgstr ""
+msgstr "Ingresso"
 
 msgctxt "trait"
 msgid "Fellow Dogs"
-msgstr ""
+msgstr "Cani Amici"
 
 msgctxt "trait"
 msgid "Footwear, but not really"
-msgstr ""
+msgstr "Scarpa, ma non proprio"
 
 msgctxt "trait"
 msgid "Hardship"
-msgstr ""
+msgstr "Disagio"
 
 msgctxt "trait"
 msgid "Haunted"
-msgstr ""
+msgstr "Infestato"
 
 msgctxt "trait"
 msgid "Havana"
-msgstr ""
+msgstr "L'Avana"
 
 msgctxt "trait"
 msgid "Human"
-msgstr ""
+msgstr "Umano"
 
 msgctxt "trait"
 msgid "Infection"
-msgstr ""
+msgstr "Infezione"
 
 msgctxt "trait"
 msgid "Istanbul"
-msgstr ""
+msgstr "Istanbul"
 
 msgctxt "trait"
 msgid "Kuala Lumpur"
-msgstr ""
+msgstr "Kuala Lumpur"
 
 msgctxt "trait"
 msgid "Local"
-msgstr ""
+msgstr "Del Posto"
 
 msgctxt "trait"
 msgid "Locus Site"
-msgstr ""
+msgstr "Sito del Locus"
 
 msgctxt "trait"
 msgid "London"
-msgstr ""
+msgstr "Londra"
 
 msgctxt "trait"
 msgid "Loyal"
-msgstr ""
+msgstr "Fedele"
 
 msgctxt "trait"
 msgid "Lunatic"
-msgstr ""
+msgstr "Lunatico"
 
 msgctxt "trait"
 msgid "Machine"
-msgstr ""
+msgstr "Macchina"
 
 msgctxt "trait"
 msgid "Madness?"
-msgstr ""
+msgstr "Follia?"
 
 msgctxt "trait"
 msgid "Marrakesh"
-msgstr ""
+msgstr "Marrakesh"
 
 msgctxt "trait"
 msgid "Medical"
-msgstr ""
+msgstr "Medico"
 
 msgctxt "trait"
 msgid "Music"
-msgstr ""
+msgstr "Musica"
 
 msgctxt "trait"
 msgid "Musician"
-msgstr ""
+msgstr "Musicista"
 
 msgctxt "trait"
 msgid "Northside"
-msgstr ""
+msgstr "Northside"
 
 msgctxt "trait"
 msgid "Nostalgia II"
-msgstr ""
+msgstr "Nostalgia II"
 
 msgctxt "trait"
 msgid "Outsider"
-msgstr ""
+msgstr "Esterno"
 
 msgctxt "trait"
 msgid "Parasitic"
-msgstr ""
+msgstr "Parassitario"
 
 msgctxt "trait"
 msgid "Plains"
-msgstr ""
+msgstr "Pianure"
 
 msgctxt "trait"
 msgid "Priestess"
-msgstr ""
+msgstr "Sacerdotessa"
 
 msgctxt "trait"
 msgid "Pup"
-msgstr ""
+msgstr "Cucciolo"
 
 msgctxt "trait"
 msgid "Resonant"
-msgstr ""
+msgstr "Risonante"
 
 msgctxt "trait"
 msgid "Restricted"
-msgstr ""
+msgstr "Limitato"
 
 msgctxt "trait"
 msgid "Retired"
-msgstr ""
+msgstr "Ritirato"
 
 msgctxt "trait"
 msgid "Risen"
-msgstr ""
+msgstr "Risorto"
 
 msgctxt "trait"
 msgid "Row"
-msgstr ""
+msgstr "Fila"
 
 msgctxt "trait"
 msgid "Royalty"
-msgstr ""
+msgstr "Reale"
 
 msgctxt "trait"
 msgid "Saga"
-msgstr ""
+msgstr "Saga"
 
 msgctxt "trait"
 msgid "Shadow"
-msgstr ""
+msgstr "Obra"
 
 msgctxt "trait"
 msgid "Shapeshifter"
-msgstr ""
+msgstr "Mutaforma"
 
 msgctxt "trait"
 msgid "Sheldon Gang"
@@ -8070,235 +8105,235 @@ msgstr "Banda degli Sheldon"
 
 msgctxt "trait"
 msgid "Sister"
-msgstr ""
+msgstr "Sorella"
 
 msgctxt "trait"
 msgid "Slope"
-msgstr ""
+msgstr "Pendenza"
 
 msgctxt "trait"
 msgid "Soldier"
-msgstr ""
+msgstr "Soldato"
 
 msgctxt "trait"
 msgid "Stable"
-msgstr ""
+msgstr "Stabile"
 
 msgctxt "trait"
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 msgctxt "trait"
 msgid "Table"
-msgstr ""
+msgstr "Tavolo"
 
 msgctxt "trait"
 msgid "Tatterdemalion"
-msgstr ""
+msgstr "Tatterdemalion"
 
 msgctxt "trait"
 msgid "That's bad"
-msgstr ""
+msgstr "Questo è male"
 
 msgctxt "trait"
 msgid "Tower"
-msgstr ""
+msgstr "Torre"
 
 msgctxt "trait"
 msgid "Traitor"
-msgstr ""
+msgstr "Traditore"
 
 msgctxt "trait"
 msgid "Tulgey Wood"
-msgstr ""
+msgstr "Bosco di Tulgey"
 
 msgctxt "trait"
 msgid "Underground"
-msgstr ""
+msgstr "Sotterraneo"
 
 msgctxt "trait"
 msgid "Unstable"
-msgstr ""
+msgstr "Instabile"
 
 msgctxt "trait"
 msgid "Upper Floor"
-msgstr ""
+msgstr "Piano superiore"
 
 msgctxt "trait"
 msgid "Virtual"
-msgstr ""
+msgstr "Virtuale"
 
 msgctxt "trait"
 msgid "Weather"
-msgstr ""
+msgstr "Clima"
 
 msgctxt "trait"
 msgid "What? No"
-msgstr ""
+msgstr "Cosa? No"
 
 msgctxt "trait"
 msgid "Wonderland"
-msgstr ""
+msgstr "Paese delle Meraviglie"
 
 msgctxt "trait"
 msgid "Yuggoth"
-msgstr ""
+msgstr "Yuggoth"
 
 msgctxt "trait"
 msgid "Blight"
-msgstr ""
+msgstr "Degrado"
 
 msgctxt "trait"
 msgid "Colour"
-msgstr ""
+msgstr "Colore"
 
 msgctxt "trait"
 msgid "Crew"
-msgstr ""
+msgstr "Equipaggio"
 
 msgctxt "trait"
 msgid "Delta"
-msgstr ""
+msgstr "Delta"
 
 msgctxt "trait"
 msgid "Emissary"
-msgstr ""
+msgstr "Emissario"
 
 msgctxt "trait"
 msgid "Game"
-msgstr ""
+msgstr "Gioco"
 
 msgctxt "trait"
 msgid "Inconspicuous"
-msgstr ""
+msgstr "Circospetto"
 
 msgctxt "trait"
 msgid "Miasma"
-msgstr ""
+msgstr "Miasma"
 
 msgctxt "trait"
 msgid "Public"
-msgstr ""
+msgstr "Pubblico"
 
 msgctxt "trait"
 msgid "Resident"
-msgstr ""
+msgstr "Abitante"
 
 msgctxt "trait"
 msgid "Role"
-msgstr ""
+msgstr "Ruolo"
 
 msgctxt "trait"
 msgid "Rot"
-msgstr ""
+msgstr "Marcio"
 
 msgctxt "trait"
 msgid "Sub-Level"
-msgstr ""
+msgstr "Sotto-Livello"
 
 msgctxt "trait"
 msgid "Unpracticed"
-msgstr ""
+msgstr "Inesperto"
 
 msgctxt "trait"
 msgid "Allied"
-msgstr ""
+msgstr "Alleato"
 
 msgctxt "trait"
 msgid "Bog"
-msgstr ""
+msgstr "Palude"
 
 msgctxt "trait"
 msgid "Cart"
-msgstr ""
+msgstr "Carrello"
 
 msgctxt "trait"
 msgid "Dark"
-msgstr ""
+msgstr "Scuro"
 
 msgctxt "trait"
 msgid "Dormant"
-msgstr ""
+msgstr "Dormiente"
 
 msgctxt "trait"
 msgid "Fairy"
-msgstr ""
+msgstr "Fata"
 
 msgctxt "trait"
 msgid "Farm"
-msgstr ""
+msgstr "Fattoria"
 
 msgctxt "trait"
 msgid "Field"
-msgstr ""
+msgstr "Campo"
 
 msgctxt "trait"
 msgid "Forest"
-msgstr ""
+msgstr "Foresta"
 
 msgctxt "trait"
 msgid "Hemlock Vale"
-msgstr ""
+msgstr "Hemlock Vale"
 
 msgctxt "trait"
 msgid "Kingsport"
-msgstr ""
+msgstr "Kingsport"
 
 msgctxt "trait"
 msgid "Lantern Club"
-msgstr ""
+msgstr "Club della Lanterna"
 
 msgctxt "trait"
 msgid "Leader"
-msgstr ""
+msgstr "Leader"
 
 msgctxt "trait"
 msgid "Lit"
-msgstr ""
+msgstr "Illuminato"
 
 msgctxt "trait"
 msgid "Machination"
-msgstr ""
+msgstr "Macchinazione"
 
 msgctxt "trait"
 msgid "Manor"
-msgstr ""
+msgstr "Maniero"
 
 msgctxt "trait"
 msgid "Misfortune"
-msgstr ""
+msgstr "Sfortuna"
 
 msgctxt "trait"
 msgid "Oz"
-msgstr ""
+msgstr "Oz"
 
 msgctxt "trait"
 msgid "Plot"
-msgstr ""
+msgstr "Complotto"
 
 msgctxt "trait"
 msgid "Rival"
-msgstr ""
+msgstr "Rivale"
 
 msgctxt "trait"
 msgid "Room"
-msgstr ""
+msgstr "Stanza"
 
 msgctxt "trait"
 msgid "Scion"
-msgstr ""
+msgstr "Rampollo"
 
 msgctxt "trait"
 msgid "Station"
-msgstr ""
+msgstr "Stazione"
 
 msgctxt "trait"
 msgid "Sunken"
-msgstr ""
+msgstr "Sommerso"
 
 msgctxt "trait"
 msgid "Unlit"
-msgstr ""
+msgstr "Non Illuminato"
 
 #, javascript-format
 msgctxt "filter"
@@ -8380,23 +8415,23 @@ msgstr "Nessuna"
 #, javascript-format
 msgctxt "Taboo List"
 msgid "Current - ${ latestTabooSet.name }"
-msgstr ""
+msgstr "Attuale - ${ latestTabooSet.name }"
 
 msgctxt "Taboo List"
 msgid "Current"
-msgstr ""
+msgstr "Attuale"
 
 msgctxt "fan-made-uses"
 msgid "Blame"
-msgstr ""
+msgstr "Colpa"
 
 msgctxt "fan-made-uses"
 msgid "Poems"
-msgstr ""
+msgstr "Poesie"
 
 msgctxt "fan-made-uses"
 msgid "Portions"
-msgstr ""
+msgstr "Porzioni"
 
 msgctxt "uses"
 msgid "Supplies"
@@ -8404,15 +8439,15 @@ msgstr "Scorte"
 
 msgctxt "uses"
 msgid "Evidence"
-msgstr ""
+msgstr "Prova"
 
 msgctxt "uses"
 msgid "Time"
-msgstr ""
+msgstr "Tempo"
 
 msgctxt "uses"
 msgid "Treats"
-msgstr ""
+msgstr "Dolci"
 
 msgctxt "Slots"
 msgid "All"
@@ -8495,14 +8530,14 @@ msgstr[1] "Scenari"
 msgctxt "header"
 msgid "Key"
 msgid_plural "Keys"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Chiave"
+msgstr[1] "Chiavi"
 
 msgctxt "header"
 msgid "Enemy-Location"
 msgid_plural "Enemy-Locations"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nemico-Luogo"
+msgstr[1] "Nemici-Luoghi"
 
 msgctxt "tags"
 msgid "Add"
@@ -8574,7 +8609,7 @@ msgstr "Slot"
 
 msgctxt "card-chooser"
 msgid "Choose additional"
-msgstr ""
+msgstr "Sceglierne un'altra"
 
 msgctxt "lead-investigator"
 msgid "Lead"
@@ -8625,31 +8660,31 @@ msgstr[1] "Poiché ${ list } non hanno ${ supplyName }, si deve leggere <b>${ se
 
 msgctxt "tarot-reading"
 msgid "Chaos"
-msgstr ""
+msgstr "Caos"
 
 msgctxt "tarot-reading"
 msgid "Balance"
-msgstr ""
+msgstr "Equilibrio"
 
 msgctxt "tarot-reading"
 msgid "Choice"
-msgstr ""
+msgstr "Scelta"
 
 msgctxt "tarot-reading"
 msgid "Destiny"
-msgstr ""
+msgstr "Destino"
 
 msgctxt "tarot-reading"
 msgid "Observed"
-msgstr ""
+msgstr "Osservato"
 
 msgctxt "tarot-reading"
 msgid "Damned"
-msgstr ""
+msgstr "Dannato"
 
 msgctxt "tarot-reading"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizzata"
 
 msgctxt "trauma"
 msgid "None"
@@ -8657,7 +8692,7 @@ msgstr "Nessuno"
 
 msgctxt "campaign"
 msgid "Custom"
-msgstr "Campagne"
+msgstr "Personalizzata"
 
 msgctxt "new_campaign_type"
 msgid "Campaigns"
@@ -8669,4 +8704,4 @@ msgstr "Scenari Autoconclusivi"
 
 msgctxt "scenario"
 msgid "Custom"
-msgstr ""
+msgstr "Personalizzato"
