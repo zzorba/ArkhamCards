@@ -7250,7 +7250,7 @@ __metadata:
     react-native-svg-transformer: "npm:1.5.0"
     react-native-tab-view: "npm:3.5.2"
     react-native-table-component: "npm:^1.2.2"
-    react-native-track-player: "npm:4.0.1"
+    react-native-track-player: "npm:4.1.1"
     react-native-uuid: "npm:2.0.1"
     react-native-vector-icons: "npm:10.2.0"
     react-native-zoom-view: "npm:1.0.2"
@@ -16604,17 +16604,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-track-player@npm:4.0.1":
-  version: 4.0.1
-  resolution: "react-native-track-player@npm:4.0.1"
+"react-native-track-player@npm:4.1.1":
+  version: 4.1.1
+  resolution: "react-native-track-player@npm:4.1.1"
   peerDependencies:
     react: ">=16.8.6"
     react-native: ">=0.60.0-rc.2"
     react-native-windows: ">=0.63.0"
+    shaka-player: ^4.7.9
   peerDependenciesMeta:
     react-native-windows:
       optional: true
-  checksum: 10c0/b09ff0cb016eba1078e738b75b3c62d9921222accce18c8549c170422599b04805556ad047fe509537fbda5130967073f4e9770e40445c080cd6bce726f38829
+    shaka-player:
+      optional: true
+  checksum: 10c0/ffaaee7582603f4930e163d0fbe2d6e5c268470b92c86d8fd3bb42ca50fd72e49686c5ae897721ef3129d49579b508281cf4f3409fbd25ebc33f2dbb21a93c5a
   languageName: node
   linkType: hard
 
