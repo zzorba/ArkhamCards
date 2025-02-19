@@ -55,7 +55,7 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
   estimatedItemSize,
   onEndReachedThreshold,
 }: Props<T, Item>) {
-  const { fontScale, height, colors } = useContext(StyleContext);
+  const { fontScale, colors } = useContext(StyleContext);
   const [fakeRefresh, setFakeRefresh] = useState(false);
   const [debouncedRefreshing] = [refreshing || fakeRefresh];
   const isRefreshing = useRef(debouncedRefreshing);

@@ -3,7 +3,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { CampaignSelection, SelectCampagaignProps } from '@components/campaign/SelectCampaignDialog';
-import { CUSTOM, CORE } from '@actions/types';
+import { CUSTOM } from '@actions/types';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 
 interface Props {

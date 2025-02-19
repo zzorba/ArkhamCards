@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { AttachableDefinition } from '@actions/types';
 import { PossibleAttachmentsCounts } from './AttachmentComponent';
 import { useEligibleAttachments } from '@components/deck/DeckEditContext';
 import Card from '@data/types/Card';
@@ -52,7 +51,7 @@ export function DeckCardCount({ count, card, deltaCountMode, showZeroCount }: Pr
 }) {
   const attachments = useEligibleAttachments(card);
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center',justifyContent: 'flex-end'}}>
+    <View style={{ flexDirection: 'row', alignItems: 'center',justifyContent: 'flex-end' }}>
       <PossibleAttachmentsCounts locked code={card.code} count={count} attachments={attachments} />
       <CardCount count={count} deltaCountMode={deltaCountMode} showZeroCount={showZeroCount} />
     </View>

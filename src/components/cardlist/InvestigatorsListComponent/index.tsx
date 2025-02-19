@@ -16,7 +16,7 @@ import Card, { cardInCollection } from '@data/types/Card';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getPacksInCollection } from '@reducers';
-import space, { s, xs } from '@styles/space';
+import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { useAllInvestigators, useSettingValue, useToggles } from '@components/core/hooks';
@@ -26,7 +26,6 @@ import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailS
 import FactionIcon from '@icons/FactionIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import AppIcon from '@icons/AppIcon';
-import InvestigatorRow from '@components/core/InvestigatorRow';
 
 interface Props {
   componentId: string;

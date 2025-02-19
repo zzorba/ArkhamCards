@@ -1,4 +1,4 @@
-import { filter, forEach, pickBy } from 'lodash';
+import { filter, forEach } from 'lodash';
 
 import {
   DELETE_DECK,

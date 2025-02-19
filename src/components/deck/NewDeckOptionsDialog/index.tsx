@@ -45,10 +45,10 @@ import useSingleCard from '@components/card/useSingleCard';
 import { useCardMap } from '@components/card/useCardList';
 import specialMetaSlots, { ensureConsistentMeta } from '@data/deck/specialMetaSlots';
 import useChaosDeckGenerator from '../useChaosDeckGenerator';
-import { parseDeck, parseMetaSlots } from '@lib/parseDeck';
+import { parseDeck } from '@lib/parseDeck';
 import useParsedDeckComponent from '../useParsedDeckComponent';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { DeckEditContext, DeckEditContextProvider } from '../DeckEditContext';
+import { DeckEditContextProvider } from '../DeckEditContext';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;

@@ -107,9 +107,10 @@ export default function ChangesFromPreviousDeck({
     );
   }, [changes, discountCards, getCards]);
 
+  const deckInvestigatorId = parsedDeck.deck?.investigator_code;
   const showCardPressed = useCallback((id: string, card: Card) => {
     if (singleCardView) {
-      showCard(componentId, card.code, card, colors, { showSpoilers: true, deckId: parsedDeck.id, deckInvestigatorId: parsedDeck.deck?.investigator_code, initialCustomizations: parsedDeck.customizations });
+      showCard(componentId, card.code, card, colors, { showSpoilers: true, deckId: parsedDeck.id, deckInvestigatorId: deckInvestigatorId, initialCustomizations: parsedDeck.customizations });
     } else {
       showCardSwipe(
         componentId,
@@ -127,7 +128,7 @@ export default function ChangesFromPreviousDeck({
         editable
       );
     }
-  }, [colors, allCards, investigator, componentId, parsedDeck.id,
+  }, [colors, allCards, investigator, componentId, parsedDeck.id, deckInvestigatorId,
     parsedDeck.customizations, tabooSetId, singleCardView, editable]);
 
   const faction = parsedDeck.faction;

@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Wand, Store, Package, Lightbulb, Stamp, FileQuestion } from 'lucide-react-native';
 
 import RoundButton from '@components/core/RoundButton';
-import { AttachableDefinition, DeckId } from '@actions/types';
+import { AttachableDefinition } from '@actions/types';
 import space, { xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { map, range } from 'lodash';

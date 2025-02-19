@@ -1,4 +1,4 @@
-import React, {
+import {
   MutableRefObject,
   useCallback,
   useContext,
@@ -11,16 +11,12 @@ import React, {
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { Navigation } from 'react-native-navigation';
 import {
-  filter,
   find,
   forEach,
   keys,
-  sortBy,
   range,
   uniq,
   flatMap,
-  groupBy,
-  sumBy,
 } from 'lodash';
 import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
@@ -28,7 +24,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@app/store';
 import {
-  AttachableDefinition,
   CampaignId,
   Customizations,
   Deck,

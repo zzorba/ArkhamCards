@@ -441,9 +441,8 @@ export default function useParsedDeckComponent({
   const [limitedSlots, toggleLimitedSlots] = useFlag(false);
   const slots = parsedDeck?.slots;
   const investigator = parsedDeck?.investigator;
-  const [_, investigatorAttachment] = useDeckAttachments(investigator, slots);
+  const [, investigatorAttachment] = useDeckAttachments(investigator, slots);
   const investigatorAttachmentSlots = useDeckAttachmentSlots(investigatorAttachment);
-  const lockedPermanents = parsedDeck?.lockedPermanents;
   const [uniqueBondedCards, bondedCounts, bondedCardsCount] = useMemo((): [Card[], Slots, number] => {
     if (!slots) {
       return [[], {}, 0];

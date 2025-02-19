@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -22,7 +22,6 @@ import { useSettingValue } from '@components/core/hooks';
 import ToolTip from '@components/core/ToolTip';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { where } from '@data/sqlite/query';
-import useCardList from '@components/card/useCardList';
 import { Brackets } from 'typeorm/browser';
 import { QuerySort } from '@data/sqlite/types';
 
