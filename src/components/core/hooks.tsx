@@ -644,22 +644,22 @@ export function usePlayerCards(
     } else {
       codesToFetch = codes;
     }
-    let canceled = false;
-    if (codesToFetch.length) {
-      setLoading(true);
-      getPlayerCards(codesToFetch, tabooSetId, store).then(cards => {
-        if (!canceled) {
-          previousTabooSetId.current = tabooSetId;
-          setCards({
-            ...cards,
-            ...existingCards,
-          });
-          setLoading(false);
-        }
-      });
-    } else {
+    if (!codesToFetch.length) {
       setCards(existingCards);
+      return;
     }
+    let canceled = false;
+    setLoading(true);
+    getPlayerCards(codesToFetch, tabooSetId, store).then(cards => {
+      if (!canceled) {
+        previousTabooSetId.current = tabooSetId;
+        setCards({
+          ...cards,
+          ...existingCards,
+        });
+        setLoading(false);
+      }
+    });
     return () => {
       canceled = true;
     };
