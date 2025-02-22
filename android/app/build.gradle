@@ -14,7 +14,7 @@ apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.grad
  * By default you don't need to apply any configuration, just uncomment the lines you need.
  */
 
-react = [
+react = {
     /* Folders */
     //   The root of your project, i.e. where "package.json" lives. Default is '../..'
     // root = file("../../")
@@ -57,7 +57,7 @@ react = [
 
     /* Autolinking */
     autolinkLibrariesWithApp()
-]
+}
 
 project.ext.vectoricons = [
     iconFontsDir: 'android/app/src/main/assets/fonts',

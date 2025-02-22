@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, OptionsTopBarButton } from 'react-native-navigation';
 import { ngettext, msgid, t, c } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
-import ActionButton from 'react-native-action-button';
+import { FloatingAction } from 'react-native-floating-action';
 import { format } from 'date-fns';
 
 import MenuButton from '@components/core/MenuButton';
@@ -1252,10 +1252,71 @@ function DeckDetailView({
     onShowTagsDialog,
   ]);
 
-  const fabIcon = useCallback(() => {
+  const fabIcon = useMemo(() => {
     return <AppIcon name="plus-button" color={colors.L30} size={32} />;
   }, [colors]);
 
+  const items = useMemo(() => [{
+    text: t`Draw simulator`,
+    icon:<AppIcon name="draw" color="#FFF" size={34} />,
+    name: 'draw_simulator',
+    position: 1,
+  },
+  {
+    text: t`Charts`,
+    name: 'charts',
+    icon: <AppIcon name="chart" color="#FFF" size={34} />,
+    position: 2,
+  },
+  ...(editable && mode === 'view' ? [{
+    text: t`Upgrade with XP`,
+    name: 'upgrade',
+    icon: <AppIcon name="upgrade"color="#FFF" size={32} />,
+    position: 3,
+  }] : []),
+  ...(editable && !!SHOW_DRAFT_CARDS && !deck?.previousDeckId ? [{
+    position: 4,
+    text: t`Draft cards`,
+    name: 'draft',
+    icon: <AppIcon name="draft" color="#FFF" size={32} />,
+  }]: []),
+  ...(editable ? [{
+    position: 5,
+    text: t`Add cards`,
+    name: 'add_cards',
+    icon: <AppIcon name="addcard" color="#FFF" size={32} />,
+  }] : []),
+  ...(editable && mode === 'view' ? [{
+    position: 5,
+    text: t`Edit`,
+    name: 'edit',
+    icon: <AppIcon name="edit" color="#FFF" size={32} />,
+  }] : [])].map((item, idx) => ({
+    ...item,
+    position: idx + 1,
+  })), [deck?.previousDeckId, editable, mode]);
+  const onPressItem = useCallback((name?: string) => {
+    switch (name) {
+      case 'draw_simulator':
+        showDrawSimulatorPressed();
+        break;
+      case 'charts':
+        showCardChartsPressed();
+        break;
+      case 'upgrade':
+        onUpgradePressed();
+        break;
+      case 'draft':
+        onDraftCards();
+        break;
+      case 'add_cards':
+        onAddCardsPressed();
+        break;
+      case 'edit':
+        onEditPressed();
+        break;
+    }
+  }, [onUpgradePressed, onDraftCards, onAddCardsPressed, onEditPressed, showCardChartsPressed, showDrawSimulatorPressed]);
   const fab = useMemo(() => {
     const actionLabelStyle = {
       ...typography.small,
@@ -1272,92 +1333,19 @@ function DeckDetailView({
       marginTop: -3,
     };
     return (
-      <ActionButton
-        active={fabOpen}
-        buttonColor={(mode !== 'view' || fabOpen) ? colors.D10 : factionColor}
-        renderIcon={fabIcon}
-        onPress={toggleFabOpen}
-        offsetX={s + xs}
-        offsetY={NOTCH_BOTTOM_PADDING + s + xs}
-        shadowStyle={shadow.large}
-        fixNativeFeedbackRadius
-      >
-        <ActionButton.Item
-          buttonColor={factionColor}
-          textStyle={actionLabelStyle}
-          textContainerStyle={actionContainerStyle}
-          title={t`Draw simulator`}
-          onPress={showDrawSimulatorPressed}
-          shadowStyle={shadow.medium}
-          useNativeFeedback={false}
-        >
-          <AppIcon name="draw" color="#FFF" size={34} />
-        </ActionButton.Item>
-        <ActionButton.Item
-          buttonColor={factionColor}
-          textStyle={actionLabelStyle}
-          textContainerStyle={actionContainerStyle}
-          title={t`Charts`}
-          onPress={showCardChartsPressed}
-          shadowStyle={shadow.medium}
-          useNativeFeedback={false}
-        >
-          <AppIcon name="chart" color="#FFF" size={34} />
-        </ActionButton.Item>
-        { editable && mode === 'view' && (
-          <ActionButton.Item
-            buttonColor={factionColor}
-            textStyle={actionLabelStyle}
-            textContainerStyle={actionContainerStyle}
-            title={t`Upgrade with XP`}
-            onPress={onUpgradePressed}
-            useNativeFeedback={false}
-          >
-            <AppIcon name="upgrade"color="#FFF" size={32} />
-          </ActionButton.Item>
-        ) }
-        { editable && !!SHOW_DRAFT_CARDS && !deck?.previousDeckId && (
-          <ActionButton.Item
-            buttonColor={factionColor}
-            textStyle={actionLabelStyle}
-            textContainerStyle={actionContainerStyle}
-            title={t`Draft cards`}
-            onPress={onDraftCards}
-            shadowStyle={shadow.medium}
-            useNativeFeedback={false}
-          >
-            <AppIcon name="draft" color="#FFF" size={32} />
-          </ActionButton.Item>
-        ) }
-        { editable && (
-          <ActionButton.Item
-            buttonColor={factionColor}
-            textStyle={actionLabelStyle}
-            textContainerStyle={actionContainerStyle}
-            title={t`Add cards`}
-            onPress={onAddCardsPressed}
-            shadowStyle={shadow.medium}
-            useNativeFeedback={false}
-          >
-            <AppIcon name="addcard" color="#FFF" size={32} />
-          </ActionButton.Item>
-        ) }
-        { editable && mode === 'view' && (
-          <ActionButton.Item
-            buttonColor={factionColor}
-            textStyle={actionLabelStyle}
-            textContainerStyle={actionContainerStyle}
-            title={t`Edit`}
-            onPress={onEditPressed}
-            shadowStyle={shadow.medium}
-            useNativeFeedback={false}
-          >
-            <AppIcon name="edit" color="#FFF" size={32} />
-          </ActionButton.Item>
-        ) }
-      </ActionButton>
+      <FloatingAction
+        color={(mode !== 'view' || fabOpen) ? colors.D10 : factionColor}
+        floatingIcon={fabIcon}
+        onPressMain={toggleFabOpen}
+        onPressItem={onPressItem}
+        // offsetX={s + xs}
+        // offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+        // shadowStyle={shadow.large}
+        // fixNativeFeedbackRadius
+        actions={items}
+      />
     );
-  }, [factionColor, fabOpen, editable, mode, shadow, onDraftCards, fabIcon, colors, toggleFabOpen, onEditPressed, onAddCardsPressed, onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, typography, deck]);
+  }, [factionColor, fabOpen, mode, onPressItem, items, fabIcon, colors, toggleFabOpen, typography]);
   const extraRequiredCards = useMemo(() => {
     if (mode === 'view' || !requiredCards) {
       return [];

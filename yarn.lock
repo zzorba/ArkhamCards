@@ -4942,9 +4942,9 @@ babel-preset-current-node-syntax@^1.0.0:
     "@babel/plugin-syntax-top-level-await" "^7.14.5"
 
 babel-preset-expo@~12.0.8:
-  version "12.0.8"
-  resolved "https://registry.npmjs.org/babel-preset-expo/-/babel-preset-expo-12.0.8.tgz#7cff59cecac8049e68de37508d860d6bb74c66d8"
-  integrity sha512-bojAddWZJusLs3NVdF+jN3WweTYVEZXBKIeO0sOhqOg7UPh5w1bnMkx7SDua0FgQMGBxb13qM31Y46yeZnmXjw==
+  version "12.0.9"
+  resolved "https://registry.npmjs.org/babel-preset-expo/-/babel-preset-expo-12.0.9.tgz#2e40923bab7f92ec7caeff9c5d42e888cf632eb4"
+  integrity sha512-1c+ysrTavT49WgVAj0OX/TEzt1kU2mfPhDaDajstshNHXFKPenMPWSViA/DHrJKVIMwaqr+z3GbUOD9GtKgpdg==
   dependencies:
     "@babel/plugin-proposal-decorators" "^7.12.9"
     "@babel/plugin-transform-export-namespace-from" "^7.22.11"
@@ -10978,12 +10978,6 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-"react-native-action-button@https://github.com/mastermoo/react-native-action-button.git#ad8c7e5d482296ab4f92aebcf9dcfd28481d7e15":
-  version "2.9.0"
-  resolved "https://github.com/mastermoo/react-native-action-button.git#ad8c7e5d482296ab4f92aebcf9dcfd28481d7e15"
-  dependencies:
-    prop-types "^15.5.10"
-
 react-native-anchor-point@^1.0.6:
   version "1.0.6"
   resolved "https://registry.npmjs.org/react-native-anchor-point/-/react-native-anchor-point-1.0.6.tgz#87226a4079cda6c3914c7d3d6b0a341503f02414"
@@ -11085,6 +11079,11 @@ react-native-flip-card@3.5.7:
     deprecated-react-native-prop-types "^4.0.0"
     prop-types "^15.8.1"
 
+react-native-floating-action@^1.22.0:
+  version "1.22.0"
+  resolved "https://registry.npmjs.org/react-native-floating-action/-/react-native-floating-action-1.22.0.tgz#7ec476f320e16855ad4077a3a9f36511d1718a52"
+  integrity sha512-m/9ueh2bgV+Dopelam2hu+FIY1wrIOPjpcBNgU3I5J9SqWmPQCarSz5L8zsW5QWE4YgXuaVbYAO/pgb0P8x/gQ==
+
 react-native-fresh-refresh@2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/react-native-fresh-refresh/-/react-native-fresh-refresh-2.1.1.tgz#1afd80650cccfcfc2ea5106063aaade49551d91c"
@@ -11107,13 +11106,6 @@ react-native-gesture-handler@2.17.1:
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
     prop-types "^15.7.2"
-
-react-native-gradients@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/react-native-gradients/-/react-native-gradients-2.0.1.tgz#93ce3a4d17be3f43e8b407a8d575016e5d17c2cc"
-  integrity sha512-loIfloqx/BpejlEMm10S4ZlScE+Zk04tqmGaiUBEg0eJOZL8TueVsNK6/RyfPGTaEHUtmfTulSkyte0fwP2AXA==
-  dependencies:
-    react-native-svg ">=13.2.0"
 
 react-native-haptic-feedback@2.2.0:
   version "2.2.0"
@@ -11270,7 +11262,7 @@ react-native-svg-transformer@1.5.0:
     "@svgr/plugin-svgo" "^8.1.0"
     path-dirname "^1.0.2"
 
-react-native-svg@13.14.0, react-native-svg@>=13.2.0:
+react-native-svg@13.14.0:
   version "13.14.0"
   resolved "https://registry.npmjs.org/react-native-svg/-/react-native-svg-13.14.0.tgz#879930cfe10e877e51ebb77dfcc2cd65fc6b0d21"
   integrity sha512-27ZnxUkHgWICimhuj6MuqBkISN53lVvgWJB7pIypjXysAyM+nqgQBPh4vXg+7MbqLBoYvR4PiBgKfwwGAqVxHg==

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import ActionButton from 'react-native-action-button';
+import { FloatingAction } from 'react-native-floating-action';
 
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { useComponentDidDisappear, useFlag, useKeyboardHeight, useTabooSetId } from '@components/core/hooks';
@@ -49,7 +49,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const linkPressed = useCallback(async(url: string, context: StyleContextType) => {
     await openUrl(url, context, db, componentId, tabooSetId);
   }, [componentId, tabooSetId, db]);
-  const fabIcon = useCallback(() => (
+  const fabIcon = useMemo(() => (
     <AppIcon name={edit ? 'check' : 'edit'} color={mode === 'view' && !edit ? '#FFFFFF' : colors.L30} size={24} />
   ), [edit, colors, mode]);
   const saveChanges = useCallback(() => {
@@ -79,14 +79,14 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   }, [toggleEdit, textInputRef]);
   const fab = useMemo(() => {
     return (
-      <ActionButton
-        buttonColor={mode === 'view' && !edit ? factionColor : colors.D20}
-        renderIcon={fabIcon}
-        onPress={edit ? saveChanges : onEdit}
-        offsetX={s + xs}
-        offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + s + xs}
-        shadowStyle={shadow.large}
-        fixNativeFeedbackRadius
+      <FloatingAction
+        color={mode === 'view' && !edit ? factionColor : colors.D20}
+        floatingIcon={fabIcon}
+        onPressMain={edit ? saveChanges : onEdit}
+        // offsetX={s + xs}
+        // offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + s + xs}
+        // shadowStyle={shadow.large}
+        // fixNativeFeedbackRadius
       />
     );
   }, [shadow, edit, fabIcon, onEdit, saveChanges, colors, mode, factionColor, keyboardHeight]);
