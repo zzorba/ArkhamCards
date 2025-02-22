@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2025-01-19 12:53+0300\n"
+"PO-Revision-Date: 2025-02-22 13:29+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -2223,19 +2223,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -2735,34 +2735,34 @@ msgid "Curse"
 msgstr "Проклятие"
 
 msgid "The Syzygy"
-msgstr ""
+msgstr "Сизигия"
 
 msgid "In Too Deep"
-msgstr ""
+msgstr "В пучину"
 
 msgid "Devil Reef"
-msgstr ""
+msgstr "Риф Дьявола"
 
 msgid "Horror in High Gear"
-msgstr ""
+msgstr "Кошмар на полном ходу"
 
 msgid "A Light in the Fog"
-msgstr ""
+msgstr "Свет в тумане"
 
 msgid "The Lair of Dagon"
-msgstr ""
+msgstr "Обитель Дагона"
 
 msgid "Hidden Truths"
-msgstr ""
+msgstr "Сокрытые истины"
 
 msgid "Into the Maelstrom"
-msgstr ""
+msgstr "Сквозь водоворот"
 
 msgid "Possible Suspects"
-msgstr ""
+msgstr "Подозреваемые"
 
 msgid "Possible Hideouts"
-msgstr ""
+msgstr "Возможные укрытия"
 
 msgid "In Bag"
 msgstr "В мешке"
@@ -2853,19 +2853,19 @@ msgid "Upgrade with Shrewd Analysis"
 msgstr "Улучшить «Тонким анализом»"
 
 msgid "The Pit of Despair"
-msgstr ""
+msgstr "Яма отчаяния"
 
 msgid "Puzzle Pieces"
-msgstr ""
+msgstr "Кусочки головоломки"
 
 msgid "The Vanishing of Elina Harper"
-msgstr ""
+msgstr "Исчезновение Элины Харпер"
 
 msgid "Beneath the Waves"
-msgstr ""
+msgstr "Укрытые волнами"
 
 msgid "Memories Recovered"
-msgstr ""
+msgstr "Восстановленные воспоминания"
 
 msgid ""
 "Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\n"
@@ -6105,7 +6105,7 @@ msgid "Narration"
 msgstr "Голосовое сопровождение"
 
 msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
-msgstr ""
+msgstr "Эти карты могут быть обновлены, взяты из нового списка табу или содержать незначительные исправления."
 
 msgid "Fatigue"
 msgstr ""
@@ -6138,39 +6138,39 @@ msgid "Strange Assistance"
 msgstr ""
 
 msgid "Attachments"
-msgstr ""
+msgstr "Прикрепления"
 
 msgid "Bewitching"
-msgstr ""
+msgstr "Очарование"
 
 msgid "Hunch deck"
-msgstr ""
+msgstr "Колода чутья"
 
 msgid "Stick to the Plan"
-msgstr ""
+msgstr "Всё по плану"
 
 msgid "Market deck"
-msgstr ""
+msgstr "Колода рынка"
 
 msgid "Branded spell"
 msgstr ""
 
 msgid "Too many selected"
-msgstr ""
+msgstr "Выбрано слишком много"
 
 msgid "Each card must be different"
-msgstr ""
+msgstr "Все карты должны быть разными"
 
 #, javascript-format
 msgid "Limit of ${ limit } card"
 msgid_plural "Limit of ${ limit } cards"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Предел из ${ limit } карты"
+msgstr[1] "Предел из ${ limit } карт"
+msgstr[2] "Предел из ${ limit } карт"
 
 #, javascript-format
 msgid "${ total } of ${ attachment.targetSize }"
-msgstr ""
+msgstr "${ total } из ${ attachment.targetSize }"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7035,7 +7035,7 @@ msgstr "Творение"
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr ""
+msgstr "Завет"
 
 msgctxt "trait"
 msgid "Creature"
@@ -7251,7 +7251,7 @@ msgstr "Колдовство"
 
 msgctxt "trait"
 msgid "Hideout"
-msgstr ""
+msgstr "Укрытие"
 
 msgctxt "trait"
 msgid "Historical Society"
@@ -8319,19 +8319,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Bog"
-msgstr ""
+msgstr "Трясина"
 
 msgctxt "trait"
 msgid "Cart"
-msgstr ""
+msgstr "Тележка"
 
 msgctxt "trait"
 msgid "Dark"
-msgstr ""
+msgstr "Тёмная"
 
 msgctxt "trait"
 msgid "Dormant"
-msgstr ""
+msgstr "Дремлющая"
 
 msgctxt "trait"
 msgid "Fairy"
@@ -8339,19 +8339,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Farm"
-msgstr ""
+msgstr "Ферма"
 
 msgctxt "trait"
 msgid "Field"
-msgstr ""
+msgstr "Поле"
 
 msgctxt "trait"
 msgid "Forest"
-msgstr ""
+msgstr "Чаща"
 
 msgctxt "trait"
 msgid "Hemlock Vale"
-msgstr ""
+msgstr "Хемлок-Вейл"
 
 msgctxt "trait"
 msgid "Kingsport"
@@ -8367,7 +8367,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Lit"
-msgstr ""
+msgstr "Зажённый"
 
 msgctxt "trait"
 msgid "Machination"
@@ -8395,7 +8395,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Room"
-msgstr ""
+msgstr "Комната"
 
 msgctxt "trait"
 msgid "Scion"
@@ -8407,11 +8407,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Sunken"
-msgstr ""
+msgstr "Затонувшая"
 
 msgctxt "trait"
 msgid "Unlit"
-msgstr ""
+msgstr "Незажённый"
 
 #, javascript-format
 msgctxt "filter"
