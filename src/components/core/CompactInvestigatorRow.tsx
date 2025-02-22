@@ -7,6 +7,7 @@ import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import space from '@styles/space';
 import CollapsibleFactionBlock from './CollapsibleFactionBlock';
+import AppIcon from '@icons/AppIcon';
 
 interface Props {
   investigator?: Card;
@@ -26,6 +27,7 @@ interface Props {
   hideImage?: boolean;
   arkhamCardsImg?: string;
   imageOffset?: 'right' | 'left';
+  showParallel?: boolean;
 }
 export default function CompactInvestigatorRow({
   hideImage,
@@ -34,14 +36,16 @@ export default function CompactInvestigatorRow({
   eliminated, name, description, investigator,
   transparent, yithian, open, detail, badge,
   leftContent, imageOffset, children, width, arkhamCardsImg,
+  showParallel,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const isParallel = investigator?.cycle_code === 'parallel'
   return (
     <RoundedFactionHeader
       transparent={transparent}
       eliminated={eliminated}
       faction={investigator?.factionCode() || 'neutral'}
-      parallel={!!investigator?.alternate_of_code}
+      parallel={isParallel}
       fullRound={!open}
       width={width}
       color={color}
@@ -72,13 +76,16 @@ export default function CompactInvestigatorRow({
             { name || investigator?.name }
           </Text>
           { detail ?? (
-            <Text
-              style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}
-              numberOfLines={1}
-              ellipsizeMode="tail"
-            >
-              { description !== undefined ? description : investigator?.subname }
-            </Text>
+            <View style={styles.row}>
+              <Text
+                style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
+                { description !== undefined ? description : investigator?.subname }
+              </Text>
+              { !!showParallel && isParallel && <AppIcon color="#FFFFFF" name="parallel" size={18} /> }
+            </View>
           ) }
         </View>
         { !!children && <View style={[styles.rightRow, space.paddingLeftS]}>{ children }</View> }

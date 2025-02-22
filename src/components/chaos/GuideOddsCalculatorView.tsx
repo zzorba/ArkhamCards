@@ -37,7 +37,6 @@ export default function GuideOddsCalculatorView({ campaignId, investigatorIds, c
   const allInvestigators: Card[] = useMemo(() => {
     return flatMap(investigatorIds, code => (investigators && investigators[code]) || []);
   }, [investigators, investigatorIds]);
-  console.log(`ScenarioCode: ${scenarioIcon}`);
   if (!campaign || loading) {
     return <LoadingSpinner />
   }

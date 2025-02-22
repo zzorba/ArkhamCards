@@ -1,4 +1,4 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken, TarotReading, ChaosBagHistory } from '@actions/types';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken, TarotReading, ChaosBagHistory, OZ } from '@actions/types';
 import { uniq, concat, flatMap, sumBy, trim, find, findLast, maxBy, map, last, forEach, findLastIndex, filter, isArray } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
@@ -48,10 +48,11 @@ function fragmentToFullInvestigatorData(campaign: FullCampaignFragment): Investi
 }
 
 function fragmentToInvestigators(campaign: MiniCampaignFragment): string[] {
+  const includeParallel = campaign.cycleCode === OZ;
   return uniq(
     concat(
       flatMap(campaign.investigators, i => i.investigator),
-      flatMap(campaign.latest_decks, d => d.deck?.investigator || []),
+      includeParallel ? [] : flatMap(campaign.latest_decks, d => d.deck?.investigator || []),
     )
   );
 }

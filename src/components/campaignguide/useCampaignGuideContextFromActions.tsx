@@ -19,6 +19,7 @@ import {
   CampaignId,
   DelayedDeckEdits,
   EmbarkData,
+  OZ,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
@@ -45,6 +46,8 @@ export default function useCampaignGuideContextFromActions(
   const dispatch: AsyncDispatch = useDispatch();
   const [campaignChooseDeck, campaignAddInvestigator] = useChooseDeck(createDeckActions, updateCampaignActions);
   const cycleCode = campaignData?.campaign?.cycleCode;
+  const includeParallel = cycleCode === OZ;
+
   const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => {
     if (campaignInvestigators !== undefined) {
       campaignChooseDeck(campaignId, cycleCode, campaignInvestigators, singleInvestigator, callback);
@@ -209,8 +212,9 @@ export default function useCampaignGuideContextFromActions(
       [code: string]: LatestDeckT | undefined;
     } = {};
     forEach(latestDecks, deck => {
-      if (deck && deck.investigator) {
-        decksByInvestigator[deck.investigator] = deck;
+      const investigatorCode = includeParallel ? deck.deck.meta?.alternate_front ?? deck.investigator : deck.investigator;
+      if (deck && investigatorCode) {
+        decksByInvestigator[investigatorCode] = deck;
       }
     });
     return decksByInvestigator;

@@ -1,7 +1,7 @@
 import { find, findIndex, filter, flatMap, forEach, reverse, slice } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
-import { GuideStartCustomSideScenarioInput } from '@actions/types';
+import { GuideStartCustomSideScenarioInput, OZ } from '@actions/types';
 import { PlayedScenario, ProcessedCampaign, ProcessedScenario, ScenarioId } from '@data/scenario';
 import { createInvestigatorStatusStep, PLAY_SCENARIO_STEP_ID, PROCEED_STEP_ID, UPGRADE_DECKS_STEP_ID } from './fixedSteps';
 import GuidedCampaignLog from './GuidedCampaignLog';
@@ -114,6 +114,10 @@ export default class CampaignGuide {
       }
       return [];
     });
+  }
+
+  includeParallelInvestigators() {
+    return this.campaignCycleCode() === OZ;
   }
 
   scenarioSetupStepIds(): string[] {

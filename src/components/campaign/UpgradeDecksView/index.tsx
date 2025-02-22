@@ -41,7 +41,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
   const dispatch = useAppDispatch();
   const campaign = useCampaign(id);
   const [allInvestigators] = useCampaignInvestigators(campaign);
-  const latestDecks = campaign?.latestDecks() || EMPTY_DECKS;
+  const latestDecks = campaign?.latestDecks() ?? EMPTY_DECKS;
   const lang = useSelector(getLangPreference);
   const updateCampaignActions = useUpdateCampaignActions();
   const originalDeckUuids = useRef(new Set(map(latestDecks, deck => deck.id.uuid)));

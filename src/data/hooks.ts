@@ -103,7 +103,7 @@ export function useCampaignInvestigators(
   campaign: undefined | SingleCampaignT
 ): [Card[] | undefined, boolean] {
   const [allInvestigators] = usePlayerCards(
-    campaign?.investigators || NO_INVESTIGATOR_CODES,
+    campaign?.investigators ?? NO_INVESTIGATOR_CODES,
     false
   );
   const campaignInvestigators = campaign?.investigators;

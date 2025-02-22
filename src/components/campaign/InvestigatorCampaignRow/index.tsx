@@ -261,6 +261,7 @@ export default function InvestigatorCampaignRow({
         open={open}
         badge={badge || (upgradeBadge ? 'upgrade' : undefined)}
         width={width - s * 2}
+        showParallel={campaignGuide?.includeParallelInvestigators()}
         headerContent={!open && (
           <View style={styles.trauma}>
             <TraumaSummary trauma={traumaAndCardData} investigator={investigator} whiteText />
