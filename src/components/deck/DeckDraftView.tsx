@@ -5,7 +5,6 @@ import Animated, { SharedValue, SlideInLeft, SlideOutDown, useAnimatedReaction, 
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { FloatingAction } from 'react-native-floating-action';
 
 import { NavigationProps } from '@components/nav/types';
 import { CampaignId, DeckId, INVESTIGATOR_PROBLEM, SET_CURRENT_DRAFT, SET_CURRENT_DRAFT_SIZE, Slots, TOO_FEW_CARDS } from '@actions/types';
@@ -35,6 +34,7 @@ import { useAlertDialog } from './dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { CollectionEditProps } from '@components/settings/CollectionEditView';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import SimpleFab from '@components/core/SimpleFab';
 
 export interface DeckDraftProps {
   id: DeckId;
@@ -107,14 +107,13 @@ function FabDraftButton({ onPress, loading, secondaryAction }: { onPress: () => 
     );
   }, [loading, colors])
   return (
-    <FloatingAction
+    <SimpleFab
       color={secondaryAction ? colors.D20 : colors.warn}
-      floatingIcon={renderIcon}
-      onPressMain={localPress}
-      // offsetX={s + xs}
-      // offsetY={NOTCH_BOTTOM_PADDING + s + xs}
-      // shadowStyle={shadow.large}
-      // fixNativeFeedbackRadius
+      icon={renderIcon}
+      onPress={localPress}
+      offsetX={s + xs}
+      offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+      accessiblityLabel={t`Draft`}
     />
   );
 }

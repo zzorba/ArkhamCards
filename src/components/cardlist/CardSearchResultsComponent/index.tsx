@@ -27,7 +27,6 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
 import DeckNavFooter, { PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
-import { FloatingAction } from 'react-native-floating-action';
 import AppIcon from '@icons/AppIcon';
 import { useFilterButton } from '../hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -36,6 +35,7 @@ import useDebouncedEffect from 'use-debounced-effect-hook';
 import { useSettingValue } from '@components/core/hooks';
 import { useParsedDeck } from '@components/deck/hooks';
 import { ParsedDeckContextProvider } from '@components/deck/DeckEditContext';
+import SimpleFab from '@components/core/SimpleFab';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -438,13 +438,14 @@ export default function({
                   onPress={backPressed}
                   mode={mode === 'extra' ? 'extra' : undefined}
                 />
-                <FloatingAction
+                <SimpleFab
                   color={colors.D10}
-                  floatingIcon={renderFabIcon}
-                  onPressMain={showFiltersPress}
+                  icon={renderFabIcon}
+                  onPress={showFiltersPress}
+                  accessiblityLabel={t`Filters`}
                   position="right"
-                  // offsetX={s + xs}
-                  // offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+                  offsetX={s + xs}
+                  offsetY={NOTCH_BOTTOM_PADDING + s + xs}
                 />
               </>
             ) }

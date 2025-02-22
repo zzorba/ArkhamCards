@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import { FloatingAction } from 'react-native-floating-action';
 
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { useComponentDidDisappear, useFlag, useKeyboardHeight, useTabooSetId } from '@components/core/hooks';
@@ -24,6 +23,8 @@ import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { setDeckDescription } from './actions';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { DeckId } from '@actions/types';
+import SimpleFab from '@components/core/SimpleFab';
+import { t } from 'ttag';
 
 export interface DeckDescriptionProps {
   id: DeckId;
@@ -79,14 +80,14 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   }, [toggleEdit, textInputRef]);
   const fab = useMemo(() => {
     return (
-      <FloatingAction
+      <SimpleFab
         color={mode === 'view' && !edit ? factionColor : colors.D20}
-        floatingIcon={fabIcon}
-        onPressMain={edit ? saveChanges : onEdit}
-        // offsetX={s + xs}
-        // offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + s + xs}
-        // shadowStyle={shadow.large}
-        // fixNativeFeedbackRadius
+        icon={fabIcon}
+        onPress={edit ? saveChanges : onEdit}
+        position="right"
+        accessiblityLabel={t`Edit`}
+        offsetX={s + xs}
+        offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + s + xs}
       />
     );
   }, [shadow, edit, fabIcon, onEdit, saveChanges, colors, mode, factionColor, keyboardHeight]);

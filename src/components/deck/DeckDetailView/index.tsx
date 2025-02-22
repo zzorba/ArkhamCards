@@ -1294,6 +1294,9 @@ function DeckDetailView({
   }] : [])].map((item, idx) => ({
     ...item,
     position: idx + 1,
+
+    color: colors.D20,
+    margin: s,
   })), [deck?.previousDeckId, editable, mode]);
   const onPressItem = useCallback((name?: string) => {
     switch (name) {
@@ -1326,11 +1329,6 @@ function DeckDetailView({
       paddingRight: s,
     };
     const actionContainerStyle = {
-      backgroundColor: colors.D20,
-      borderRadius: 16,
-      borderWidth: 0,
-      minHeight: 32,
-      marginTop: -3,
     };
     return (
       <FloatingAction
@@ -1338,8 +1336,8 @@ function DeckDetailView({
         floatingIcon={fabIcon}
         onPressMain={toggleFabOpen}
         onPressItem={onPressItem}
-        // offsetX={s + xs}
-        // offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+        position="right"
+        distanceToEdge={{ vertical: NOTCH_BOTTOM_PADDING + s + xs, horizontal: s + xs}}
         // shadowStyle={shadow.large}
         // fixNativeFeedbackRadius
         actions={items}
