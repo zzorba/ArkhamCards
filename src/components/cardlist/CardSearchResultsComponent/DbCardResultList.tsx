@@ -402,7 +402,7 @@ function useSectionFeed({
   }, [db, storyQuery, filters, textQuery, filterQuery, deckQuery, sortIgnoreQuotes, theTabooSetId, sorts]);
   const [partialCards, partialCardsLoading] = textQuery ? [textQueryCards, textQueryCardsLoading] : [mainQueryCards, mainQueryCardsLoading];
   const [showSpoilers, setShowSpoilers] = useState(false);
-  const expandSectionRef = useRef<(sectionId: string) => void>();
+  const expandSectionRef = useRef<(sectionId: string) => void>(null);
   const editCollectionSettings = useCallback(() => {
     Keyboard.dismiss();
     Navigation.push(componentId, {
@@ -976,7 +976,7 @@ export default function DbCardResultList(props: Props) {
   const feedValues = useRef<{
     feed: Item[];
     fullFeed: PartialCard[];
-  }>();
+  }>(null);
   useEffect(() => {
     feedValues.current = {
       feed,

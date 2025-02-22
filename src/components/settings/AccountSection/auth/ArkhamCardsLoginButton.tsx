@@ -423,7 +423,7 @@ export default function ArkhamCardsLoginButton({ showAlert }: Props) {
   const dispatch = useAppDispatch();
   const { userId, loading, user } = useContext(ArkhamCardsAuthContext);
   const [emailLogin, toggleEmailLogin, setEmailLogin] = useFlag(false);
-  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const setVisibleRef = useRef<(visible: boolean) => void>(null);
   const [mode, setMode] = useState<'login' | 'create' | undefined>();
   const apollo = useApolloClient();
   const doLogout = useCallback(async() => {

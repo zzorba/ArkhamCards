@@ -1,11 +1,12 @@
 import React, { useContext, useMemo } from 'react';
-import { StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { ColorValue, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { t } from 'ttag';
 import Svg, {
   Defs,
   RadialGradient as SVGRadialGradient,
   Rect,
   Stop,
+  NumberProp,
 } from 'react-native-svg';
 
 import { ChaosTokenType } from '@app_constants';
@@ -16,7 +17,11 @@ import { TINY_PHONE } from '@styles/sizes';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 
-export const RadialGradient = ({ colorList, x, y, rx, ry }: { colorList: string[]; x: string; y: string; rx: string; ry: string}) => {
+export const RadialGradient = ({ colorList, x, y, rx, ry }: { colorList: {
+  offset: NumberProp;
+  color: ColorValue;
+  opacity: NumberProp
+}[]; x: string; y: string; rx: string; ry: string}) => {
   return (
     <Svg height="100%" width="100%">
       <Defs>

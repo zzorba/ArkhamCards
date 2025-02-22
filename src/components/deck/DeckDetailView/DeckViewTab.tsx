@@ -261,12 +261,12 @@ export default function DeckViewTab(props: Props) {
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       { suggestArkhamDbLogin && (
-        <View opacity={0.95} style={[
+        <View style={[
           styles.banner,
           shadow.large,
           space.paddingVerticalXs,
           space.paddingSideS,
-          { backgroundColor: COLORS.red },
+          { backgroundColor: COLORS.red, opacity: 0.95 },
         ]}>
           <Text style={[space.paddingS, typography.small, typography.white]}>
             { arkhamDb ?

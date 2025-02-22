@@ -14,7 +14,7 @@ apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.grad
  * By default you don't need to apply any configuration, just uncomment the lines you need.
  */
 
-react = {
+react {
     /* Folders */
     //   The root of your project, i.e. where "package.json" lives. Default is '../..'
     // root = file("../../")
@@ -149,7 +149,6 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-    implementation 'androidx.core:core-splashscreen:1.0.0'
     implementation 'com.facebook.fresco:webpsupport:2.5.0'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 }

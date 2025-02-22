@@ -215,7 +215,7 @@ export default function DrawSimulatorView({ componentId, customizations, slots }
           return map(range(0, slots[cardId]), copy => `${cardId}-${copy}`);
         }));
   }, [cards, slots]);
-  const [drawState, updateDrawState] = useReducer<React.Reducer<DrawnState, DrawnStateAction>>((state: DrawnState, action: DrawnStateAction): DrawnState => {
+  const [drawState, updateDrawState] = useReducer((state: DrawnState, action: DrawnStateAction): DrawnState => {
     switch (action.type) {
       case 'selection': {
         if (state.selectedCards.indexOf(action.id) !== -1) {

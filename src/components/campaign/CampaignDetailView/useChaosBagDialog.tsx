@@ -92,7 +92,7 @@ export default function useChaosBagDialog({
   processedCampaign,
 }: Props): [React.ReactNode, () => void, (visible: boolean) => void] {
   const { width } = useContext(StyleContext);
-  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const setVisibleRef = useRef<(visible: boolean) => void>(null);
   const oddsCalculatorPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {

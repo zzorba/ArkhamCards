@@ -15,7 +15,7 @@ interface Props {
 
 export function useOnboardingCarousel(slides: React.ReactNode[]): [React.ReactNode, () => void] {
   const { width } = useContext(StyleContext);
-  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const setVisibleRef = useRef<(visible: boolean) => void>(null);
   const onDismiss = useCallback(() => {
     setVisibleRef.current?.(false);
   }, []);

@@ -60,7 +60,7 @@ export default function TextBoxInputComponent({ id, prompt, showUndo }: Props) {
       editable
     >
       <TextInput
-        style={[styles.textInput, borderStyle, typography.dark, { backgroundColor: colors.L30 }]}
+        style={[styles.textInput, typography.dark, { backgroundColor: colors.L30 }]}
         onChangeText={setText}
         onSubmitEditing={onSubmit}
         returnKeyType="done"

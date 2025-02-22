@@ -10,8 +10,8 @@ interface Props {
 export default function CampaignErrorView({ message }: Props) {
   const { backgroundStyle, typography } = useContext(StyleContext);
   return (
-    <View style={[styles.wrapper, backgroundStyle, space.paddingSideS, typography.center]}>
-      <Text style={typography.text}>
+    <View style={[styles.wrapper, backgroundStyle, space.paddingSideS]}>
+      <Text style={[typography.text, typography.center]}>
         { message }
       </Text>
     </View>

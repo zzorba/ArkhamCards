@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppSplash" parent="ArkhamCards.DayNight">
-        <item name="android:windowBackground">@color/colorBackground</item>
-        <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
-    </style>
 </resources>
