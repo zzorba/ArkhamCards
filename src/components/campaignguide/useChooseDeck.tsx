@@ -44,10 +44,12 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
     singleInvestigator?: Card,
     callback?: (code: string) => Promise<void>
   ) => {
+    const includeParallel = cycleCode === OZ;
     const onDeckSelect = async(deck: Deck) => {
-      await doAddInvestigator(campaignId, singleInvestigator?.code ?? deck.investigator_code, getDeckId(deck));
+      const investigatorCode = includeParallel ? deck.meta?.alternate_front ?? deck.investigator_code : singleInvestigator?.code ?? deck.investigator_code;
+      await doAddInvestigator(campaignId, investigatorCode, getDeckId(deck));
       if (callback) {
-        await callback(singleInvestigator?.code ?? deck.investigator_code);
+        await callback(investigatorCode);
       }
     };
     const onInvestigatorSelect = async(card: Card) => {
@@ -69,7 +71,7 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
       onDeckSelect,
       onInvestigatorSelect,
       simpleOptions: true,
-      includeParallel: cycleCode === OZ,
+      includeParallel,
     };
     Navigation.showModal({
       stack: {

@@ -54,6 +54,7 @@ type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
 function CampaignDetailView(props: Props) {
   const { componentId, upload } = props;
+
   const [textEditDialog, showTextEditDialog] = useTextEditDialog();
   const [countDialog, showCountDialog] = useCountDialog();
   const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(props.campaignId);
@@ -172,7 +173,6 @@ function CampaignDetailView(props: Props) {
     if (!campaign) {
       return;
     }
-    console.log(`Show choose deck: `, singleInvestigator?.code);
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
       campaignId: campaign.id,
       singleInvestigator: singleInvestigator.alternate_of_code ?? singleInvestigator.code,

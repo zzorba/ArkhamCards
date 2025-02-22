@@ -7,7 +7,7 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { ThunkDispatch } from 'redux-thunk';
 import { t } from 'ttag';
 
-import { CampaignId, Deck, getDeckId, Slots } from '@actions/types';
+import { CampaignId, Deck, getDeckId, OZ, Slots } from '@actions/types';
 import { updateCampaignWeaknessSet } from './actions';
 import { NavigationProps } from '@components/nav/types';
 import BasicButton from '@components/core/BasicButton';
@@ -140,6 +140,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
       onDeckSelect: selectDeck,
       selectedDecks: latestDecks,
       onlyShowSelected: true,
+      includeParallel: campaign?.cycleCode === OZ,
     };
     Navigation.showModal({
       stack: {
