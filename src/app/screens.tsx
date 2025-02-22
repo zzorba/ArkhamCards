@@ -108,7 +108,6 @@ function getRootComponent(name: string | number): any {
 
 // register all screens of the app (including internal ones)
 export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S>>, store: S) {
-
   function providerWrapper<Props extends Record<string, unknown>>(
     ScreenComponenet: React.ComponentType<Props>,
   ) {

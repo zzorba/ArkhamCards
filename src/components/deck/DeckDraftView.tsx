@@ -5,7 +5,7 @@ import Animated, { SharedValue, SlideInLeft, SlideOutDown, useAnimatedReaction, 
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import ActionButton from 'react-native-action-button';
+import { FloatingAction } from 'react-native-floating-action';
 
 import { NavigationProps } from '@components/nav/types';
 import { CampaignId, DeckId, INVESTIGATOR_PROBLEM, SET_CURRENT_DRAFT, SET_CURRENT_DRAFT_SIZE, Slots, TOO_FEW_CARDS } from '@actions/types';
@@ -101,20 +101,20 @@ function FabDraftButton({ onPress, loading, secondaryAction }: { onPress: () => 
       onPress();
     }
   }, [loading, onPress]);
-  const renderIcon = useCallback(() => {
+  const renderIcon = useMemo(() => {
     return loading ? <ActivityIndicator size="small" color={colors.L30} animating /> : (
       <AppIcon name="draft" size={24} color={colors.L30} />
     );
   }, [loading, colors])
   return (
-    <ActionButton
-      buttonColor={secondaryAction ? colors.D20 : colors.warn}
-      renderIcon={renderIcon}
-      onPress={localPress}
-      offsetX={s + xs}
-      offsetY={NOTCH_BOTTOM_PADDING + s + xs}
-      shadowStyle={shadow.large}
-      fixNativeFeedbackRadius
+    <FloatingAction
+      color={secondaryAction ? colors.D20 : colors.warn}
+      floatingIcon={renderIcon}
+      onPressMain={localPress}
+      // offsetX={s + xs}
+      // offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+      // shadowStyle={shadow.large}
+      // fixNativeFeedbackRadius
     />
   );
 }
