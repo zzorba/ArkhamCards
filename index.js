@@ -14,7 +14,7 @@ import App from './src/app/App';
 import MyProvider from './src/app/MyProvider';
 import { ENABLE_ARKHAM_CARDS_ACCOUNT } from './src/app_constants';
 import createApolloClient from './src/data/apollo/createApolloClient';
-
+import TrackPlayer from 'react-native-track-player';
 
 
 if (ENABLE_ARKHAM_CARDS_ACCOUNT) {
@@ -35,6 +35,9 @@ function shouldProcess() {
 Crashes.setListener({
   shouldProcess,
 });
+
+TrackPlayer.registerPlaybackService(() => require('./src/lib/audio/audioService'));
+
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 let app = null;
