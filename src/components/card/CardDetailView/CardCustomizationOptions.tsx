@@ -334,7 +334,7 @@ function ChooseCardAdvancedControl({ componentId, choice, editable, setChoice }:
     const builder = new DeckOptionQueryBuilder(choice.option.card, 0, 'custom');
     return builder.toQuery();
   }, [choice.option]);
-  const setDialogVisibleRef = useRef<(visible: boolean) => void>();
+  const setDialogVisibleRef = useRef<(visible: boolean) => void>(null);
   const showCardPicker = useCallback(() => {
     setDialogVisibleRef.current?.(false);
     Navigation.push<CardSelectorProps>(componentId, {
@@ -483,7 +483,7 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
       choice: selectedTraits,
     });
   }, [selectedTraits]);
-  const setDialogVisibleRef = useRef<(visible: boolean) => void>();
+  const setDialogVisibleRef = useRef<(visible: boolean) => void>(null);
   const selectedText = useMemo(() => selectedTraits.join(listSeperator), [selectedTraits, listSeperator])
   const quantity = choice.option.quantity || 1;
   const title = editable ?

@@ -333,7 +333,7 @@ export function useSimpleTextDialog({
   onValidate,
   placeholder,
 }: SimpleTextDialogOptions): [React.ReactNode, () => void] {
-  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const setVisibleRef = useRef<(visible: boolean) => void>(null);
   const [liveValue, setLiveValue] = useState(value);
   const [error, setError] = useState<string | undefined>(undefined);
   const [submitting, setSubmitting] = useState(false);
@@ -457,7 +457,7 @@ export function usePickerDialog<T>({
   noIcons,
 }: PickerDialogOptions<T>): [React.ReactNode, () => void] {
   const { borderStyle, typography } = useContext(StyleContext);
-  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const setVisibleRef = useRef<(visible: boolean) => void>(null);
   const onValuePress = useCallback((value: T) => {
     onValueChange(value);
     if (setVisibleRef.current) {
@@ -537,7 +537,7 @@ export function useMultiPickerDialog<T>({
   onValueChange,
 }: MultiPickerDialogOptions<T>): [React.ReactNode, () => void] {
   const { borderStyle, typography } = useContext(StyleContext);
-  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const setVisibleRef = useRef<(visible: boolean) => void>(null);
   const onValuePress = useCallback((value: T) => {
     onValueChange(value, !selectedValues?.has(value));
   }, [onValueChange, selectedValues]);

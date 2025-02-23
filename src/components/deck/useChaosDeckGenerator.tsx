@@ -66,7 +66,7 @@ export function useDraftableCards({
     ];
   }, [alternate_front, alternate_back, investigatorCode]);
   const [investigatorSpecialCards] = usePlayerCards(specialCodes, false, tabooSetId);
-  const metaRef = useRef<DeckMeta>();
+  const metaRef = useRef<DeckMeta>(null);
   const cleanMeta = useMemo(() => {
     const partialMeta = omit(meta, 'extra_deck');
     if (!metaRef.current || !deepEqual(metaRef.current, partialMeta)) {

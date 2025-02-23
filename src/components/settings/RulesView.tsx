@@ -113,7 +113,7 @@ export default function RulesView({ componentId }: Props) {
       rules,
     }), console.log);
   }, [db, lang, searchResults.term]);
-  const [rules, appendRules] = useReducer<Reducer<PagedRules, AppendPagedRules>>(
+  const [rules, appendRules] = useReducer(
     (state: PagedRules, action: AppendPagedRules): PagedRules => {
       return {
         rules: {
@@ -126,7 +126,7 @@ export default function RulesView({ componentId }: Props) {
       rules: {},
       endReached: false,
     });
-  const [, fetchPage] = useReducer<ReducerWithoutAction<number>>((page: number) => {
+  const [, fetchPage] = useReducer((page: number) => {
     if (!rules.endReached) {
       db.getRulesPaged(
         page,

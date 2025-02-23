@@ -195,7 +195,7 @@ export function useDeckEdits(
     return undefined;
   }, [userId, initialDeck]);
   const reduxDeckEdits = useSimpleDeckEdits(id);
-  const deckEditsRef = useRef<EditDeckState>();
+  const deckEditsRef = useRef<EditDeckState>(undefined);
   const deckEdits = otherDeckEdits || reduxDeckEdits;
   useEffect(() => {
     deckEditsRef.current = deckEdits;

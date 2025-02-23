@@ -378,8 +378,11 @@ function PointOfInterest({
               ) }
             </View>
             <View
-              style={{ width: dotRadius * 2, height: dotRadius * 2 }}
-              opacity={visited && !currentLocation ? 0.5 : 1}
+              style={{
+                width: dotRadius * 2,
+                height: dotRadius * 2,
+                opacity: visited && !currentLocation ? 0.5 : 1,
+              }}
             >
               <AppIcon
                 color={statusColors[status]}
@@ -811,7 +814,7 @@ function LocationContent({
   return (
     <>
       <View style={[space.paddingSideS, { flexDirection: 'column', position: 'relative' }]}>
-        <View style={{ position: 'absolute', top: 0, right: s }} opacity={0.15}>
+        <View style={{ position: 'absolute', top: 0, right: s, opacity: 0.15 }}>
           <EncounterIcon encounter_code={location.id} size={Math.min(width, MAX_WIDTH) / 3.2} color={colors.D20} />
         </View>
         <CardDetailSectionHeader title={t`Location`} />
@@ -906,7 +909,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
 
   const { colors, backgroundStyle, typography, width, height } = useContext(StyleContext);
   const [selectedLocation, setSelectedLocation] = useState<MapLocation>();
-  const setDialogVisibleRef = useRef<(visible: boolean) => void>();
+  const setDialogVisibleRef = useRef<(visible: boolean) => void>(null);
   const hiding = useRef<boolean>(false);
   const onDismiss = useCallback(() => {
     setDialogVisibleRef.current?.(false);
@@ -1004,7 +1007,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
       showDialog();
     }
   }, [selectedLocation, showDialog]);
-  const pinchRef = useRef<any>();
+  const pinchRef = useRef<any>(null);
 
   useEffect(() => {
     if (currentLocation && pinchRef.current) {
@@ -1173,7 +1176,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
                 mapLabelStyles={labelStyles}
               />
             )) }
-            <View style={[styles.texture, { width: theWidth, height: theHeight }]} opacity={0.25}>
+            <View style={[styles.texture, { width: theWidth, height: theHeight, opacity: 0.25 }]}>
               <Image
                 source={PAPER_TEXTURE}
                 style={{ width: theWidth, height: theHeight }}

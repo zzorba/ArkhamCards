@@ -39,7 +39,7 @@ export default function useConfirmSignupDialog(): [React.ReactNode, () => void] 
   const submitButtonPressed = useCallback(() => {
     doSubmit(liveValue);
   }, [doSubmit, liveValue]);
-  const setVisibleRef = useRef<(visible: boolean) => void>();
+  const setVisibleRef = useRef<(visible: boolean) => void>(null);
   const closeDialog = useCallback(() => {
     if (setVisibleRef.current) {
       setVisibleRef.current(false);

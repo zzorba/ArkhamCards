@@ -17,8 +17,8 @@ interface Props {
 export type ShowScenario = (scenarioId: string) => void;
 
 export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, campaignB, campaignDataB, setSelectedTab }: Props): [ShowScenario, ShowScenario, number] {
-  const showScenarioA = useRef<ShowScenario | undefined>();
-  const showScenarioB = useRef<ShowScenario | undefined>();
+  const showScenarioA = useRef<ShowScenario | undefined>(null);
+  const showScenarioB = useRef<ShowScenario | undefined>(null);
   const [counter, incCounter] = useCounter(0, {});
   const showCampaignScenarioA = useCallback((scenarioId: string) => {
     if (!campaignA || !campaignDataA) {

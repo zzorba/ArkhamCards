@@ -17,7 +17,7 @@ interface Props extends TextInputProps {
   value: string;
   placeholder?: string;
   crossedOut?: boolean;
-  style?: ViewStyle;
+  style?: TextStyle;
   textStyle?: TextStyle;
   multiline?: boolean;
   ellipsizeMode?: string;
@@ -33,7 +33,15 @@ export default function TextBoxButton({ value, multiline, crossedOut, placeholde
   return (
     <View style={styles.container}>
       <TextInput
-        style={styles.textInput}
+        style={{
+          paddingTop: (xs / 2),
+          width: '100%',
+          padding: 0,
+          paddingLeft: xs,
+          minHeight: 22,
+          flexDirection: 'column',
+          justifyContent: 'center',
+        }}
         editable={false}
         multiline={multiline}
         {...otherProps}
@@ -64,15 +72,6 @@ const styles = StyleSheet.create({
     paddingBottom: xs,
     overflow: 'hidden',
     marginBottom: xs,
-  },
-  textInput: {
-    paddingTop: (xs / 2),
-    width: '100%',
-    padding: 0,
-    paddingLeft: xs,
-    minHeight: 22,
-    flexDirection: 'column',
-    justifyContent: 'center',
   },
   input: {
     width: '100%',

@@ -327,9 +327,10 @@ export default function CardSearchResult(props: Props) {
         onPress={handleCardPress}
         disabled={!onPress && !onPressId}
       >
-        <View opacity={faded ? 0.5 : 1.0} style={[
+        <View style={[
           styles.cardTextRow,
           !noSidePadding ? space.paddingLeftS : undefined,
+          { opacity: faded ? 0.5 : 1.0 },
         ]}>
           <CardIcon card={card} />
           { cardName }

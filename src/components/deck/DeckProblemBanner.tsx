@@ -14,12 +14,12 @@ interface Props {
 export default function DeckProblemBanner({ problem }: Props) {
   const { shadow } = useContext(StyleContext);
   return (
-    <View opacity={0.95} style={[
+    <View style={[
       styles.banner,
       shadow.large,
       space.paddingVerticalXs,
       space.paddingSideS,
-      { backgroundColor: COLORS.red },
+      { backgroundColor: COLORS.red, opacity: 0.95 },
     ]}>
       <DeckProblemRow
         problem={problem}

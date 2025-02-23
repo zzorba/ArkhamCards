@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import ActionButton from 'react-native-action-button';
 
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { useComponentDidDisappear, useFlag, useKeyboardHeight, useTabooSetId } from '@components/core/hooks';
@@ -24,6 +23,8 @@ import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { setDeckDescription } from './actions';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { DeckId } from '@actions/types';
+import SimpleFab from '@components/core/SimpleFab';
+import { t } from 'ttag';
 
 export interface DeckDescriptionProps {
   id: DeckId;
@@ -49,7 +50,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   const linkPressed = useCallback(async(url: string, context: StyleContextType) => {
     await openUrl(url, context, db, componentId, tabooSetId);
   }, [componentId, tabooSetId, db]);
-  const fabIcon = useCallback(() => (
+  const fabIcon = useMemo(() => (
     <AppIcon name={edit ? 'check' : 'edit'} color={mode === 'view' && !edit ? '#FFFFFF' : colors.L30} size={24} />
   ), [edit, colors, mode]);
   const saveChanges = useCallback(() => {
@@ -79,14 +80,14 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
   }, [toggleEdit, textInputRef]);
   const fab = useMemo(() => {
     return (
-      <ActionButton
-        buttonColor={mode === 'view' && !edit ? factionColor : colors.D20}
-        renderIcon={fabIcon}
+      <SimpleFab
+        color={mode === 'view' && !edit ? factionColor : colors.D20}
+        icon={fabIcon}
         onPress={edit ? saveChanges : onEdit}
+        position="right"
+        accessiblityLabel={t`Edit`}
         offsetX={s + xs}
         offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + s + xs}
-        shadowStyle={shadow.large}
-        fixNativeFeedbackRadius
       />
     );
   }, [shadow, edit, fabIcon, onEdit, saveChanges, colors, mode, factionColor, keyboardHeight]);

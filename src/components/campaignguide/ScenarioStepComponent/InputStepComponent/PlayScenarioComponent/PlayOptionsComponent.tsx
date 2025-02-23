@@ -45,13 +45,13 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
     () => input.fixed_resolution ? [] : processedScenario.latestCampaignLog.investigators(false),
     [input.fixed_resolution, processedScenario.latestCampaignLog]
   );
-  const setChaosBagDialogVisibleRef = useRef<(visible: boolean) => void>();
+  const setChaosBagDialogVisibleRef = useRef<(visible: boolean) => void>(null);
   const standalone = !!campaign.standaloneId;
 
   const branchPress = useCallback((index: number) => {
     scenarioState.setChoice(id, index);
   }, [scenarioState, id]);
-  const setCampaignLogDialogVisibleRef = useRef<(visible: boolean) => void>();
+  const setCampaignLogDialogVisibleRef = useRef<(visible: boolean) => void>(null);
 
   const editCampaignLogPressed = useCallback(() => {
     setCampaignLogDialogVisibleRef.current?.(false);

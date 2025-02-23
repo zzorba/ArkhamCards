@@ -105,7 +105,7 @@ export function DeckEditContextProvider({ children, deckEdits, deckId, investiga
     );
     return [counts, attachmentSlots];
   }, [attachmentEntries]);
-  const deckBuildingMetaRef = useRef<DeckMeta>();
+  const deckBuildingMetaRef = useRef<DeckMeta>(undefined);
   const deckBuildingMeta = useMemo(() => {
     const cleanMeta = omitBy(meta, (_, key) => key.startsWith('attachment_') || key.startsWith('cus_'));
     if (!deepEqual(deckBuildingMetaRef.current, cleanMeta)) {
@@ -253,9 +253,8 @@ export function useAllCardCustomizations(
 ): [Customizations, (code: string, choice: CustomizationChoice) => void] {
   const dispatch = useAppDispatch();
   const { deckEdits, deckId } = useContext(DeckEditContext);
-  const [customizations, updateCustomizations] = useReducer<
-    React.Reducer<Customizations, UpdateCustomizationAction>
-  >((state: Customizations, action: UpdateCustomizationAction) => {
+  const [customizations, updateCustomizations] = useReducer(
+    (state: Customizations, action: UpdateCustomizationAction) => {
     const { code, choice } = action;
     const updated: Customizations = { ...state };
     updated[code] = sortBy(
@@ -276,7 +275,7 @@ export function useAllCardCustomizations(
       (c) => c.option.index
     );
     return updated;
-  }, initialCustomizations || {});
+  }, initialCustomizations ?? {});
   const deckEditsRef = useRef<EditDeckState | undefined>(deckEdits);
   useEffect(() => {
     deckEditsRef.current = deckEdits;

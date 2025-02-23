@@ -1,7 +1,13 @@
 import React, { useContext, useMemo } from 'react';
-import { StyleSheet, Text, View, ViewStyle } from 'react-native';
-import { RadialGradient } from 'react-native-gradients';
+import { ColorValue, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { t } from 'ttag';
+import Svg, {
+  Defs,
+  RadialGradient as SVGRadialGradient,
+  Rect,
+  Stop,
+  NumberProp,
+} from 'react-native-svg';
 
 import { ChaosTokenType } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
@@ -10,6 +16,37 @@ import AppIcon from '@icons/AppIcon';
 import { TINY_PHONE } from '@styles/sizes';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
+
+export const RadialGradient = ({ colorList, x, y, rx, ry }: { colorList: {
+  offset: NumberProp;
+  color: ColorValue;
+  opacity: NumberProp
+}[]; x: string; y: string; rx: string; ry: string}) => {
+  return (
+    <Svg height="100%" width="100%">
+      <Defs>
+        <SVGRadialGradient
+          id="grad"
+          cx={x}
+          cy={y}
+          rx={rx}
+          ry={ry}
+          gradientUnits="userSpaceOnUse"
+        >
+          {colorList.map((value, index) => (
+            <Stop
+              key={`RadialGradientItem_${index}`}
+              offset={value.offset}
+              stopColor={value.color}
+              stopOpacity={value.opacity}
+            />
+          ))}
+        </SVGRadialGradient>
+      </Defs>
+      <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)" />
+    </Svg>
+  );
+};
 
 interface Props {
   iconKey?: ChaosTokenType | 'tap' | 'another' | 'return' | 'odds' | 'bag' | 'more';
