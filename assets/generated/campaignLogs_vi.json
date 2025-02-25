@@ -241,60 +241,60 @@
         "entries": [
           {
             "id": "killed_in_plane_crash",
-            "masculine_text": "#name# was killed in the plane crash.",
-            "feminine_text": "#name# was killed in the plane crash."
+            "masculine_text": "#name# đã thiệt mạng trong vụ tai nạn máy bay.",
+            "feminine_text": "#name# đã thiệt mạng trong vụ tai nạn máy bay."
           },
           {
             "id": "camp_barrier_camp",
-            "text": "Camp - Barrier Camp (7)"
+            "text": "Trại - Barrier Camp (Trại Rào chắn) (7)"
           },
           {
             "id": "camp_broad_snowdrifts",
-            "text": "Camp - Broad Snowdrifts (4)"
+            "text": "Trại - Broad Snowdrifts (Đụn Tuyết Rộng) (4)"
           },
           {
             "id": "camp_crash_site",
-            "text": "Camp - Crash Site (0)"
+            "text": "Trại - Crash Site (Nơi Máy bay Rơi) (0)"
           },
           {
             "id": "camp_crystalline_cavern",
-            "text": "Camp - Crystalline Cavern (8)"
+            "text": "Trại - Crystalline Cavern (Hang Pha lê) (8)"
           },
           {
             "id": "camp_frigid_cave",
-            "text": "Camp - Frigid Cave (6)"
+            "text": "Trại - Frigid Cave (Hang Băng Lạnh lẽo) (6)"
           },
           {
             "id": "camp_frozen_shores",
-            "text": "Camp - Frozen Shores (2)"
+            "text": "Trại - Frozen Shores (Bờ Băng Giá) (2)"
           },
           {
             "id": "camp_icebreaker_landing",
-            "text": "Camp - Icebreaker Landing (5)"
+            "text": "Trại - Icebreaker Landing (Điểm Đổ bộ Phá Băng) (5)"
           },
           {
             "id": "camp_icy_wastes",
-            "text": "Camp - Icy Wastes (4)"
+            "text": "Trại - Icy Wastes (Vùng Đất Băng Giá) (4)"
           },
           {
             "id": "camp_precarious_ice_sheet",
-            "text": "Camp - Precarious Ice Sheet (2)"
+            "text": "Trại - Precarious Ice Sheet (Tấm Băng Nguy hiểm) (2)"
           },
           {
             "id": "camp_remnants_of_lakes_camp",
-            "text": "Camp - Remnants of Lake's Camp (7)"
+            "text": "Trại - Remnants of Lake's Camp (Tàn tích Trại của Lake) (7)"
           },
           {
             "id": "camp_rocky_crags",
-            "text": "Camp - Rocky Crags (3)"
+            "text": "Trại - Rocky Crags (Vách Đá Gồ ghề) (3)"
           },
           {
             "id": "camp_snow_graves",
-            "text": "Camp - Snow Graves (5)"
+            "text": "Trại - Snow Graves (Mộ Tuyết) (5)"
           },
           {
             "id": "camp_treacherous_path",
-            "text": "Camp - Treacherous Path (1)"
+            "text": "Trại - Treacherous Path (Con đường Lừa dối) (1)"
           },
           {
             "id": "claypool_has_confronted_his_demons",
@@ -302,7 +302,7 @@
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
-            "text": "the investigators convinced Dyer to allow the expedition."
+            "text": "các điều tra viên đã thuyết phục Dyer đồng ý cho cuộc thám hiểm."
           },
           {
             "id": "cookie_has_confronted_his_demons",
@@ -314,7 +314,7 @@
           },
           {
             "id": "did_not_believe_dyers_report",
-            "text": "the investigators did not believe Dyer's report."
+            "text": "các điều tra viên không tin vào báo cáo của Dyer."
           },
           {
             "id": "discovered_an_ancient_vault",
@@ -770,55 +770,55 @@
         "entries": [
           {
             "id": "barrier_camp",
-            "text": "Barrier Camp"
+            "text": "Barrier Camp (Trại Rào chắn)"
           },
           {
             "id": "broad_snowdrifts",
-            "text": "Broad Snowdrifts"
+            "text": "Broad Snowdrifts (Đụn Tuyết Rộng)"
           },
           {
             "id": "crash_site",
-            "text": "Crash Site"
+            "text": "Crash Site (Nơi Máy bay Rơi)"
           },
           {
             "id": "crystalline_cavern",
-            "text": "Crystalline Cavern"
+            "text": "Crystalline Cavern (Hang Pha lê)"
           },
           {
             "id": "frigid_cave",
-            "text": "Frigid Cave"
+            "text": "Frigid Cave (Hang Băng Lạnh lẽo)"
           },
           {
             "id": "frozen_shores",
-            "text": "Frozen Shores"
+            "text": "Frozen Shores (Bờ Băng Giá)"
           },
           {
             "id": "icebreaker_landing",
-            "text": "Icebreaker Landing"
+            "text": "Icebreaker Landing (Điểm Đổ bộ Phá Băng)"
           },
           {
             "id": "icy_wastes",
-            "text": "Icy Wastes"
+            "text": "Icy Wastes (Vùng Đất Băng Giá)"
           },
           {
             "id": "precarious_ice_sheet",
-            "text": "Precarious Ice Sheet"
+            "text": "Precarious Ice Sheet (Tấm Băng Nguy hiểm)"
           },
           {
             "id": "remnants_of_lakes_camp",
-            "text": "Remnants of Lake's Camp"
+            "text": "Remnants of Lake's Camp (Tàn tích Trại của Lake)"
           },
           {
             "id": "rocky_crags",
-            "text": "Rocky Crags"
+            "text": "Rocky Crags (Vách Đá Gồ ghề)"
           },
           {
             "id": "snow_graves",
-            "text": "Snow Graves"
+            "text": "Snow Graves (Mộ Tuyết)"
           },
           {
             "id": "treacherous_path",
-            "text": "Treacherous Path"
+            "text": "Treacherous Path (Con đường Lừa dối)"
           }
         ]
       },
@@ -1031,31 +1031,31 @@
         "entries": [
           {
             "id": "dynamite",
-            "text": "Dynamite"
+            "text": "Dynamite (Thuốc nổ)"
           },
           {
             "id": "green_soapstone",
-            "text": "Green Soapstone"
+            "text": "Green Soapstone (Đá Xanh)"
           },
           {
             "id": "miasmic_crystal",
-            "text": "Miasmic Crystal"
+            "text": "Miasmic Crystal (Pha lê Mù sương)"
           },
           {
             "id": "mineral_specimen",
-            "text": "Mineral Specimen"
+            "text": "Mineral Specimen (Mẫu Khoáng sản)"
           },
           {
             "id": "small_radio",
-            "text": "Small Radio"
+            "text": "Small Radio (Radio Nhỏ)"
           },
           {
             "id": "spare_parts",
-            "text": "Spare Parts"
+            "text": "Spare Parts (Phụ tùng Dự phòng)"
           },
           {
             "id": "wooden_sledge",
-            "text": "Wooden Sledge"
+            "text": "Wooden Sledge (Xe Trượt Gỗ)"
           }
         ]
       }

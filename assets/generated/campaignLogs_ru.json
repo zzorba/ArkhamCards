@@ -4000,17 +4000,17 @@
         "entries": [
           {
             "id": "possesses_a_diving_suit",
-            "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit.",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "masculine_text": "#name# раздобыл водолазный костюм.",
+            "feminine_text": "#name# раздобыла водолазный костюм.",
+            "nonbinary_text": "#name# раздобыл водолазный костюм."
           },
           {
             "id": "agent_harpers_mission_is_complete",
-            "text": "Agent Harper's mission is complete."
+            "text": "миссия Харпер завершилась успехом."
           },
           {
             "id": "agent_harpers_mission_is_complete_at_what_cost",
-            "text": "Agent Harper's mission is complete… but at what cost?"
+            "text": "миссия Харпер завершилась успехом… но какой ценой?"
           },
           {
             "id": "allen_out_for_blood",
@@ -4022,23 +4022,23 @@
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "Дагон пробудился."
           },
           {
             "id": "dagon_still_slumbers",
-            "text": "Dagon still slumbers."
+            "text": "Дагон покоится во сне."
           },
           {
             "id": "deep_ones_have_flooded_the_earth",
-            "text": "the Deep Ones have flooded the Earth."
+            "text": "глубоководные потопили всю Землю."
           },
           {
             "id": "escaped_yhanthlei",
-            "text": "the investigators escaped Y'ha-nthlei."
+            "text": "сыщики выбрались из Й’ха-нтлеи."
           },
           {
             "id": "flood_has_begun",
-            "text": "the flood has begun."
+            "text": "потоп начался."
           },
           {
             "id": "friendly_out_for_blood",
@@ -4046,11 +4046,11 @@
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "привратник Ордена побеждён."
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "Й'ха-нтлеи признаёт в вас законного хранителя"
           },
           {
             "id": "gilman_out_for_blood",
@@ -4058,19 +4058,19 @@
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "хранитель Й’ха-нтлеи повержен."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "венец перенесён на маяк."
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "идол перенесён на маяк."
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
-            "text": "Innsmouth was consumed by the rising tide."
+            "text": "прибывающая вода поглотила Инсмут."
           },
           {
             "id": "little_out_for_blood",
@@ -4078,11 +4078,11 @@
           },
           {
             "id": "made_it_safely_to_their_vehicles",
-            "text": "the investigators made it safely to their vehicles."
+            "text": "сыщики благополучно добрались до своих автомобилей."
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "покров перенесён на маяк."
           },
           {
             "id": "marsh_out_for_blood",
@@ -4098,47 +4098,47 @@
           },
           {
             "id": "orders_ritual_was_disrupted",
-            "text": "the Order's ritual was disrupted."
+            "text": "ритуал Ордена сорван."
           },
           {
             "id": "plot_of_the_deep_ones_was_thwarted",
-            "text": "the plot of the Deep Ones was thwarted."
+            "text": "заговор глубоководных сорван."
           },
           {
             "id": "possess_a_map_of_yhanthlei",
-            "text": "the investigators possess a map of Y'ha-nthlei."
+            "text": "сыщики раздобыли карту Й'ха-нтлеи."
           },
           {
             "id": "possess_the_key_to_yhanthlei",
-            "text": "the investigators possess the key to Y'ha-nthlei."
+            "text": "сыщики раздобыли ключ к Й'ха-нтлеи."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
-            "text": "the investigators reached Falcon Point after sunrise."
+            "text": "сыщики добрались до Фэлкон-Пойнт после рассвета."
           },
           {
             "id": "reached_falcon_point_before_sunrise",
-            "text": "the investigators reached Falcon Point before sunrise."
+            "text": "сыщики добрались до Фэлкон-Пойнт до рассвета."
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
-            "text": "the riches of the deep are destroyed… but at what cost?"
+            "text": "сокровища глубоководных уничтожены… но какой ценой?"
           },
           {
             "id": "riches_of_the_deep_are_lost_forever",
-            "text": "the riches of the deep are lost forever."
+            "text": "сокровища глубоководных утеряны навсегда."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "ужас Дьяволова рифа мёртв."
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "ужас Дьяволова рифа всё ещё жив."
           },
           {
             "id": "tide_has_grown_stronger",
-            "text": "the tide has grown stronger."
+            "text": "прилив усиливается."
           }
         ]
       },
@@ -4151,51 +4151,51 @@
           },
           {
             "id": "accuse_allen",
-            "text": "Zadok Allen"
+            "text": "Зейдок Аллен"
           },
           {
             "id": "accuse_burnham",
-            "text": "Brian Burnham"
+            "text": "Брайан Бёрнем"
           },
           {
             "id": "accuse_friendly",
-            "text": "Robert Friendly"
+            "text": "Роберт Френдли"
           },
           {
             "id": "accuse_gilman",
-            "text": "Othera Gilman"
+            "text": "Отера Гилман"
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "Дом на Уотер-стрит"
           },
           {
             "id": "accuse_little",
-            "text": "Joyce Little"
+            "text": "Джойс Литтл"
           },
           {
             "id": "accuse_marsh",
-            "text": "Barnabas Marsh"
+            "text": "Барнабас Марш"
           },
           {
             "id": "accuse_new_church_green",
-            "text": "New Church Green"
+            "text": "Нью-Чёрч-Грин"
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Эзотерический орден Дагона"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Инсмутская тюрьма"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Переулок Костоправа"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Прибрежные трущобы"
           },
           {
             "id": "act_2_setup",
@@ -4268,59 +4268,59 @@
         "entries": [
           {
             "id": "a_deal_with_joe_sargent",
-            "text": "a deal with Joe Sargent"
+            "text": "сделка с Джо Сарджентом"
           },
           {
             "id": "a_followed_lead",
-            "text": "a followed lead"
+            "text": "проверенная зацепка"
           },
           {
             "id": "a_jailbreak",
-            "text": "a jailbreak"
+            "text": "побег из тюрьмы"
           },
           {
             "id": "an_intervention",
-            "text": "an intervention"
+            "text": "стороннее вмешательство"
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "битва с морским дьяволом"
           },
           {
             "id": "conversation_with_mr_moore",
-            "text": "a conversation with Mr. Moore"
+            "text": "разговор с мистером Муром"
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "решение держаться вместе"
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic"
+            "text": "обнаружение таинственной реликвии"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol"
+            "text": "обнаружение необычного идола"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle"
+            "text": "обнаружение богомерзкой мантии"
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "встреча с тайным культом"
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "ужасная правда"
           },
           {
             "id": "lifecycle_of_a_deep_one",
-            "text": "the lifecycle of a \"Deep One\""
+            "text": "жизненный цикл «глубоководного»"
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "встреча с Томасом Доусоном"
           },
           {
             "id": "remember_where_you_have_to_go",
@@ -4328,7 +4328,7 @@
           },
           {
             "id": "stinging_betrayal",
-            "text": "a stinging betrayal"
+            "text": "жгучее предательство"
           }
         ]
       },
@@ -4337,27 +4337,27 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "Дом на Уотер-стрит"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Инсмутская тюрьма"
           },
           {
             "id": "new_church_green",
-            "text": "New Church Green"
+            "text": "Нью-Чёрч-Грин"
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Эзотерический орден Дагона"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Переулок Костоправа"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Прибрежные трущобы"
           }
         ]
       },
@@ -4366,27 +4366,27 @@
         "entries": [
           {
             "id": "allen",
-            "text": "Zadok Allen"
+            "text": "Зейдок Аллен"
           },
           {
             "id": "burnham",
-            "text": "Brian Burnham"
+            "text": "Брайан Бёрнем"
           },
           {
             "id": "friendly",
-            "text": "Robert Friendly"
+            "text": "Роберт Френдли"
           },
           {
             "id": "gilman",
-            "text": "Othera Gilman"
+            "text": "Отера Гилман"
           },
           {
             "id": "little",
-            "text": "Joyce Little"
+            "text": "Джойс Литтл"
           },
           {
             "id": "marsh",
-            "text": "Barnabas Marsh"
+            "text": "Барнабас Марш"
           }
         ]
       }
@@ -6117,17 +6117,17 @@
         "entries": [
           {
             "id": "possesses_a_diving_suit",
-            "masculine_text": "#name# possesses a diving suit.",
-            "feminine_text": "#name# possesses a diving suit.",
-            "nonbinary_text": "#name# possesses a diving suit."
+            "masculine_text": "#name# раздобыл водолазный костюм.",
+            "feminine_text": "#name# раздобыла водолазный костюм.",
+            "nonbinary_text": "#name# раздобыл водолазный костюм."
           },
           {
             "id": "agent_harpers_mission_is_complete",
-            "text": "Agent Harper's mission is complete."
+            "text": "миссия Харпер завершилась успехом."
           },
           {
             "id": "agent_harpers_mission_is_complete_at_what_cost",
-            "text": "Agent Harper's mission is complete… but at what cost?"
+            "text": "миссия Харпер завершилась успехом… но какой ценой?"
           },
           {
             "id": "allen_out_for_blood",
@@ -6139,23 +6139,23 @@
           },
           {
             "id": "dagon_has_awakened",
-            "text": "Dagon has awakened."
+            "text": "Дагон пробудился."
           },
           {
             "id": "dagon_still_slumbers",
-            "text": "Dagon still slumbers."
+            "text": "Дагон покоится во сне."
           },
           {
             "id": "deep_ones_have_flooded_the_earth",
-            "text": "the Deep Ones have flooded the Earth."
+            "text": "глубоководные потопили всю Землю."
           },
           {
             "id": "escaped_yhanthlei",
-            "text": "the investigators escaped Y'ha-nthlei."
+            "text": "сыщики выбрались из Й’ха-нтлеи."
           },
           {
             "id": "flood_has_begun",
-            "text": "the flood has begun."
+            "text": "потоп начался."
           },
           {
             "id": "friendly_out_for_blood",
@@ -6163,11 +6163,11 @@
           },
           {
             "id": "gatekeeper_has_been_defeated",
-            "text": "the gatekeeper has been defeated."
+            "text": "привратник Ордена побеждён."
           },
           {
             "id": "gateway_to_yhanthlei_recognizes_you_as_its_rightful_keeper",
-            "text": "the gateway to Y’ha-nthlei recognizes you as its rightful keeper"
+            "text": "Й'ха-нтлеи признаёт в вас законного хранителя"
           },
           {
             "id": "gilman_out_for_blood",
@@ -6175,19 +6175,19 @@
           },
           {
             "id": "guardian_of_yhanthlei_is_dispatched",
-            "text": "the guardian of Y’ha-nthlei is dispatched."
+            "text": "хранитель Й’ха-нтлеи повержен."
           },
           {
             "id": "headdress_brought_to_the_lighthouse",
-            "text": "the headdress was brought to the lighthouse."
+            "text": "венец перенесён на маяк."
           },
           {
             "id": "idol_brought_to_the_lighthouse",
-            "text": "the idol was brought to the lighthouse."
+            "text": "идол перенесён на маяк."
           },
           {
             "id": "innsmouth_was_consumed_by_the_rising_tide",
-            "text": "Innsmouth was consumed by the rising tide."
+            "text": "прибывающая вода поглотила Инсмут."
           },
           {
             "id": "little_out_for_blood",
@@ -6195,11 +6195,11 @@
           },
           {
             "id": "made_it_safely_to_their_vehicles",
-            "text": "the investigators made it safely to their vehicles."
+            "text": "сыщики благополучно добрались до своих автомобилей."
           },
           {
             "id": "mantle_brought_to_the_lighthouse",
-            "text": "the mantle was brought to the lighthouse."
+            "text": "покров перенесён на маяк."
           },
           {
             "id": "marsh_out_for_blood",
@@ -6215,47 +6215,47 @@
           },
           {
             "id": "orders_ritual_was_disrupted",
-            "text": "the Order's ritual was disrupted."
+            "text": "ритуал Ордена сорван."
           },
           {
             "id": "plot_of_the_deep_ones_was_thwarted",
-            "text": "the plot of the Deep Ones was thwarted."
+            "text": "заговор глубоководных сорван."
           },
           {
             "id": "possess_a_map_of_yhanthlei",
-            "text": "the investigators possess a map of Y'ha-nthlei."
+            "text": "сыщики раздобыли карту Й'ха-нтлеи."
           },
           {
             "id": "possess_the_key_to_yhanthlei",
-            "text": "the investigators possess the key to Y'ha-nthlei."
+            "text": "сыщики раздобыли ключ к Й'ха-нтлеи."
           },
           {
             "id": "reached_falcon_point_after_sunrise",
-            "text": "the investigators reached Falcon Point after sunrise."
+            "text": "сыщики добрались до Фэлкон-Пойнт после рассвета."
           },
           {
             "id": "reached_falcon_point_before_sunrise",
-            "text": "the investigators reached Falcon Point before sunrise."
+            "text": "сыщики добрались до Фэлкон-Пойнт до рассвета."
           },
           {
             "id": "riches_of_the_deep_are_destroyed_at_what_cost",
-            "text": "the riches of the deep are destroyed… but at what cost?"
+            "text": "сокровища глубоководных уничтожены… но какой ценой?"
           },
           {
             "id": "riches_of_the_deep_are_lost_forever",
-            "text": "the riches of the deep are lost forever."
+            "text": "сокровища глубоководных утеряны навсегда."
           },
           {
             "id": "terror_of_devil_reef_is_dead",
-            "text": "the Terror of Devil Reef is dead."
+            "text": "ужас Дьяволова рифа мёртв."
           },
           {
             "id": "terror_of_devil_reef_is_still_alive",
-            "text": "the Terror of Devil Reef is still alive."
+            "text": "ужас Дьяволова рифа всё ещё жив."
           },
           {
             "id": "tide_has_grown_stronger",
-            "text": "the tide has grown stronger."
+            "text": "прилив усиливается."
           }
         ]
       },
@@ -6264,51 +6264,51 @@
         "entries": [
           {
             "id": "accuse_allen",
-            "text": "Zadok Allen"
+            "text": "Зейдок Аллен"
           },
           {
             "id": "accuse_burnham",
-            "text": "Brian Burnham"
+            "text": "Брайан Бёрнем"
           },
           {
             "id": "accuse_friendly",
-            "text": "Robert Friendly"
+            "text": "Роберт Френдли"
           },
           {
             "id": "accuse_gilman",
-            "text": "Othera Gilman"
+            "text": "Отера Гилман"
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "Дом на Уотер-стрит"
           },
           {
             "id": "accuse_little",
-            "text": "Joyce Little"
+            "text": "Джойс Литтл"
           },
           {
             "id": "accuse_marsh",
-            "text": "Barnabas Marsh"
+            "text": "Барнабас Марш"
           },
           {
             "id": "accuse_new_church_green",
-            "text": "New Church Green"
+            "text": "Нью-Чёрч-Грин"
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Эзотерический орден Дагона"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Инсмутская тюрьма"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Переулок Костоправа"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Прибрежные трущобы"
           },
           {
             "id": "act_2_setup",
@@ -6381,63 +6381,63 @@
         "entries": [
           {
             "id": "a_deal_with_joe_sargent",
-            "text": "a deal with Joe Sargent"
+            "text": "сделка с Джо Сарджентом"
           },
           {
             "id": "a_followed_lead",
-            "text": "a followed lead"
+            "text": "проверенная зацепка"
           },
           {
             "id": "a_jailbreak",
-            "text": "a jailbreak"
+            "text": "побег из тюрьмы"
           },
           {
             "id": "an_intervention",
-            "text": "an intervention"
+            "text": "стороннее вмешательство"
           },
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "битва с морским дьяволом"
           },
           {
             "id": "conversation_with_mr_moore",
-            "text": "a conversation with Mr. Moore"
+            "text": "разговор с мистером Муром"
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "решение держаться вместе"
           },
           {
             "id": "discovery_of_a_mystical_relic",
-            "text": "discovery of a mystical relic"
+            "text": "обнаружение таинственной реликвии"
           },
           {
             "id": "discovery_of_a_strange_idol",
-            "text": "discovery of a strange idol"
+            "text": "обнаружение необычного идола"
           },
           {
             "id": "discovery_of_an_unholy_mantle",
-            "text": "discovery of an unholy mantle"
+            "text": "обнаружение богомерзкой мантии"
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "встреча с тайным культом"
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "ужасная правда"
           },
           {
             "id": "lifecycle_of_a_deep_one",
-            "text": "the lifecycle of a \"Deep One\""
+            "text": "жизненный цикл «глубоководного»"
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "встреча с Томасом Доусоном"
           },
           {
             "id": "stinging_betrayal",
-            "text": "a stinging betrayal"
+            "text": "жгучее предательство"
           }
         ]
       },
@@ -6446,27 +6446,27 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "Дом на Уотер-стрит"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Инсмутская тюрьма"
           },
           {
             "id": "new_church_green",
-            "text": "New Church Green"
+            "text": "Нью-Чёрч-Грин"
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Эзотерический орден Дагона"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Переулок Костоправа"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Прибрежные трущобы"
           }
         ]
       },
@@ -6475,27 +6475,27 @@
         "entries": [
           {
             "id": "allen",
-            "text": "Zadok Allen"
+            "text": "Зейдок Аллен"
           },
           {
             "id": "burnham",
-            "text": "Brian Burnham"
+            "text": "Брайан Бёрнем"
           },
           {
             "id": "friendly",
-            "text": "Robert Friendly"
+            "text": "Роберт Френдли"
           },
           {
             "id": "gilman",
-            "text": "Othera Gilman"
+            "text": "Отера Гилман"
           },
           {
             "id": "little",
-            "text": "Joyce Little"
+            "text": "Джойс Литтл"
           },
           {
             "id": "marsh",
-            "text": "Barnabas Marsh"
+            "text": "Барнабас Марш"
           }
         ]
       }

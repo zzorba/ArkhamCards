@@ -305,7 +305,7 @@
   },
   {
     "id": "electric_nightmare",
-    "name": "Electric Nightmare"
+    "name": "Incubo Elettrico"
   },
   {
     "id": "endless_night",
@@ -381,7 +381,7 @@
   },
   {
     "id": "fragment_of_carcosa",
-    "name": "Fragment of Carcosa"
+    "name": "Frammento di Carcosa"
   },
   {
     "id": "friends_in_low_places",
@@ -469,7 +469,7 @@
   },
   {
     "id": "in_the_shadow_of_earth",
-    "name": "In the Shadow of Earth"
+    "name": "All'Ombra della Terra"
   },
   {
     "id": "in_too_deep",
@@ -481,7 +481,7 @@
   },
   {
     "id": "introspection",
-    "name": "Introspection"
+    "name": "Introspezione"
   },
   {
     "id": "introspection_continued",
@@ -537,7 +537,7 @@
   },
   {
     "id": "lost_quantum",
-    "name": "Lost Quantum"
+    "name": "Quantum Perso"
   },
   {
     "id": "lucid_nightmare",
@@ -565,7 +565,7 @@
   },
   {
     "id": "mission_briefing",
-    "name": "Mission Briefing"
+    "name": "Briefing della Missione"
   },
   {
     "id": "moscow",
@@ -665,7 +665,7 @@
   },
   {
     "id": "return_to_a_light_in_the_fog",
-    "name": "Return to A Light in the Fog"
+    "name": "Ritorno a... Una Luce nella Nebbia"
   },
   {
     "id": "return_to_a_phantom_of_truth",
@@ -693,7 +693,7 @@
   },
   {
     "id": "return_to_devil_reef",
-    "name": "Return to Devil Reef"
+    "name": "Ritorno a... Lo Scoglio del Diavolo"
   },
   {
     "id": "return_to_dim_carcosa",
@@ -725,7 +725,7 @@
   },
   {
     "id": "return_to_horror_in_high_gear",
-    "name": "Return to Horror in High Gear"
+    "name": "Ritorno a... Orrore ad Alta Velocità"
   },
   {
     "id": "return_to_in_the_clutches_of_chaos",
@@ -733,11 +733,11 @@
   },
   {
     "id": "return_to_in_too_deep",
-    "name": "Return to In Too Deep"
+    "name": "Ritorno a... Con l’Acqua alla Gola"
   },
   {
     "id": "return_to_into_the_maelstrom",
-    "name": "Return to Into the Maelstrom"
+    "name": "Ritorno a... Nel Maelstrom"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -777,7 +777,7 @@
   },
   {
     "id": "return_to_the_lair_of_dagon",
-    "name": "Return to The Lair of Dagon"
+    "name": "Ritorno a... Il Covo di Dagon"
   },
   {
     "id": "return_to_the_last_king",
@@ -797,7 +797,7 @@
   },
   {
     "id": "return_to_the_pit_of_despair",
-    "name": "Return to The Pit of Despair"
+    "name": "Ritorno a... La Grotta della Disperazione"
   },
   {
     "id": "return_to_the_secret_name",
@@ -813,7 +813,7 @@
   },
   {
     "id": "return_to_the_vanishing_of_elina_harper",
-    "name": "Return to The Vanishing of Elina Harper"
+    "name": "Ritorno a... La Scomparsa di Elina Harper"
   },
   {
     "id": "return_to_the_wages_of_sin",
@@ -889,7 +889,7 @@
   },
   {
     "id": "starfall",
-    "name": "Starfall"
+    "name": "Caduta di Stelle"
   },
   {
     "id": "stockholm",
@@ -897,7 +897,7 @@
   },
   {
     "id": "strange_moons",
-    "name": "Strange Moons"
+    "name": "Strane Lune"
   },
   {
     "id": "sydney",
@@ -1081,7 +1081,7 @@
   },
   {
     "id": "the_machine_in_yellow",
-    "name": "The Machine in Yellow"
+    "name": "La Macchina in Giallo"
   },
   {
     "id": "the_midnight_hour",
@@ -1153,7 +1153,7 @@
   },
   {
     "id": "the_tatterdemalion",
-    "name": "The Tatterdemalion"
+    "name": "Lo Straccione"
   },
   {
     "id": "the_thing_in_the_depths",
@@ -1225,7 +1225,7 @@
   },
   {
     "id": "traces_of_egil",
-    "name": "Traces of Egil"
+    "name": "Tracce di Egil"
   },
   {
     "id": "travelling",
