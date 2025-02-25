@@ -260,7 +260,6 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
       controls ? controls[index] : undefined,
     ];
   }, [cardCodes, controls, index]);
-
   const currentCard = useMemo(() => {
     const card = cards[currentCode];
     return card && card.withCustomizations(listSeperator, customizations[currentCode]);
@@ -446,7 +445,7 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
               control="counts"
               onPress={backPressed}
             />
-            { !!currentCard && currentControl && (
+            { !!currentCard && (
               <DeckCardControls
                 currentCard={currentCard}
                 currentControl={currentControl}
@@ -468,7 +467,7 @@ function DeckCardControls({
   currentControl, currentCard, packInCollection, ignoreCollection, investigator, editable,
 }: {
   currentCard: Card;
-  currentControl: 'deck' | 'side' | 'extra' | 'special' | 'ignore' | 'bonded' | 'checklist' | 'attachment';
+  currentControl?: 'deck' | 'side' | 'extra' | 'special' | 'ignore' | 'bonded' | 'checklist' | 'attachment';
   packInCollection: { [pack_code: string]: boolean };
   ignoreCollection: boolean;
   investigator: string | undefined;
