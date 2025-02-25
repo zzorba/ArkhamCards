@@ -27,7 +27,6 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
 import DeckNavFooter, { PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
-import ActionButton from 'react-native-action-button';
 import AppIcon from '@icons/AppIcon';
 import { useFilterButton } from '../hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -36,6 +35,7 @@ import useDebouncedEffect from 'use-debounced-effect-hook';
 import { useSettingValue } from '@components/core/hooks';
 import { useParsedDeck } from '@components/deck/hooks';
 import { ParsedDeckContextProvider } from '@components/deck/DeckEditContext';
+import SimpleFab from '@components/core/SimpleFab';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -371,7 +371,7 @@ export default function({
   }, [baseQuery, filters, mythosToggle, selectedSorts, mythosMode, includeDuplicates, showCustomContent]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
   const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId, baseQuery });
-  const renderFabIcon = useCallback(() => (
+  const renderFabIcon = useMemo(() => (
     <View style={styles.relative}>
       <AppIcon name="filter" color={colors.L30} size={24} />
       { hasFilters && <View style={styles.chiclet} /> }
@@ -438,10 +438,12 @@ export default function({
                   onPress={backPressed}
                   mode={mode === 'extra' ? 'extra' : undefined}
                 />
-                <ActionButton
-                  buttonColor={colors.D10}
-                  renderIcon={renderFabIcon}
+                <SimpleFab
+                  color={colors.D10}
+                  icon={renderFabIcon}
                   onPress={showFiltersPress}
+                  accessiblityLabel={t`Filters`}
+                  position="right"
                   offsetX={s + xs}
                   offsetY={NOTCH_BOTTOM_PADDING + s + xs}
                 />

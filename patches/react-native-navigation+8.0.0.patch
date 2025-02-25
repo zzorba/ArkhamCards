@@ -1,0 +1,77 @@
+diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
+index 481aaf0..5e093ee 100644
+--- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
++++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/NavigationActivity.java
+@@ -33,6 +33,8 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
+ 
+     protected Navigator navigator;
+ 
++    protected RootPresenter rootPresenter;
++
+     private OnBackPressedCallback callback;
+ 
+     @Override
+@@ -46,7 +48,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
+                 new ChildControllersRegistry(),
+                 new ModalStack(this),
+                 new OverlayManager(),
+-                new RootPresenter()
++                rootPresenter = new RootPresenter()
+         );
+         navigator.bindViews();
+         getReactGateway().onActivityCreated(this);
+diff --git a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java
+index f7a07c0..1a0c04c 100644
+--- a/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java
++++ b/node_modules/react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/viewcontrollers/viewcontroller/RootPresenter.java
+@@ -19,11 +19,16 @@ public class RootPresenter {
+     private final RootAnimator animator;
+     private CoordinatorLayout rootLayout;
+     private final LayoutDirectionApplier layoutDirectionApplier;
++    private boolean setRootCalled = false;
+ 
+     public void setRootContainer(CoordinatorLayout rootLayout) {
+         this.rootLayout = rootLayout;
+     }
+     
++    public boolean setRootCalled() {
++        return setRootCalled;
++    }
++
+     public RootPresenter() {
+         this(new RootAnimator(), new LayoutDirectionApplier());
+     }
+@@ -35,6 +40,7 @@ public class RootPresenter {
+     }
+ 
+     public void setRoot(ViewController appearingRoot, ViewController<?> disappearingRoot, Options defaultOptions, CommandListener listener, ReactInstanceManager reactInstanceManager) {
++        setRootCalled = true;
+         layoutDirectionApplier.apply(appearingRoot, defaultOptions);
+         rootLayout.addView(appearingRoot.getView(), matchParentWithBehaviour(new BehaviourDelegate(appearingRoot)));
+         Options options = appearingRoot.resolveCurrentOptions(defaultOptions);
+diff --git a/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m b/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
+index 1ec6a7b..8155261 100644
+--- a/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
++++ b/node_modules/react-native-navigation/lib/ios/TabBarItemAppearanceCreator.m
+@@ -10,7 +10,9 @@ - (UITabBarItem *)createTabBarItem:(UITabBarItem *)mergeItem {
+ }
+ 
+ - (void)setTitleAttributes:(UITabBarItem *)tabItem titleAttributes:(NSDictionary *)titleAttributes {
+-    tabItem.standardAppearance.stackedLayoutAppearance.normal.titleTextAttributes = titleAttributes;
++    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
++      tabItem.standardAppearance.stackedLayoutAppearance.normal.titleTextAttributes = titleAttributes;
++    }
+     tabItem.standardAppearance.compactInlineLayoutAppearance.normal.titleTextAttributes =
+         titleAttributes;
+     tabItem.standardAppearance.inlineLayoutAppearance.normal.titleTextAttributes = titleAttributes;
+@@ -18,8 +20,10 @@ - (void)setTitleAttributes:(UITabBarItem *)tabItem titleAttributes:(NSDictionary
+ 
+ - (void)setSelectedTitleAttributes:(UITabBarItem *)tabItem
+            selectedTitleAttributes:(NSDictionary *)selectedTitleAttributes {
++    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+     tabItem.standardAppearance.stackedLayoutAppearance.selected.titleTextAttributes =
+         selectedTitleAttributes;
++    }
+     tabItem.standardAppearance.compactInlineLayoutAppearance.selected.titleTextAttributes =
+         selectedTitleAttributes;
+     tabItem.standardAppearance.inlineLayoutAppearance.selected.titleTextAttributes =

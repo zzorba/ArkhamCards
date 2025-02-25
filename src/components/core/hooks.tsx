@@ -359,7 +359,7 @@ export function useToggles(initialState: (Toggles) | (() => Toggles), sync?: (to
   (state?: Toggles) => void,
   (code: string) => void,
 ] {
-  const [toggles, updateToggles] = useReducer<Reducer<Toggles, SectionToggleAction>, null>((state: Toggles, action: SectionToggleAction) => {
+  const [toggles, updateToggles] = useReducer((state: Toggles, action: SectionToggleAction) => {
     switch (action.type) {
       case 'clear':
         return action.state || (typeof initialState === 'function' ? initialState() : initialState);
@@ -576,7 +576,7 @@ function lazyCardMap(indexBy: 'code' | 'id'): Reducer<LazyCardsState, LoadCardsA
 }
 
 export function useCards(indexBy: 'code' | 'id', initialCards?: Card[]): [CardsMap, (action: LoadCardsAction) => void, Set<string>] {
-  const [{ cards, fetching }, updateCards] = useReducer<Reducer<LazyCardsState, LoadCardsAction>, Card[] | null>(
+  const [{ cards, fetching }, updateCards] = useReducer(
     lazyCardMap(indexBy),
     initialCards || null,
     (initialCards: Card[] | null) => {
@@ -644,22 +644,22 @@ export function usePlayerCards(
     } else {
       codesToFetch = codes;
     }
-    let canceled = false;
-    if (codesToFetch.length) {
-      setLoading(true);
-      getPlayerCards(codesToFetch, tabooSetId, store).then(cards => {
-        if (!canceled) {
-          previousTabooSetId.current = tabooSetId;
-          setCards({
-            ...cards,
-            ...existingCards,
-          });
-          setLoading(false);
-        }
-      });
-    } else {
+    if (!codesToFetch.length) {
       setCards(existingCards);
+      return;
     }
+    let canceled = false;
+    setLoading(true);
+    getPlayerCards(codesToFetch, tabooSetId, store).then(cards => {
+      if (!canceled) {
+        previousTabooSetId.current = tabooSetId;
+        setCards({
+          ...cards,
+          ...existingCards,
+        });
+        setLoading(false);
+      }
+    });
     return () => {
       canceled = true;
     };
@@ -930,7 +930,7 @@ export function usePressCallback(callback: undefined | (() => void), bufferTime:
 }
 
 export function useInterval(callback: () => void, delay: number) {
-  const savedCallback = useRef<() => void>();
+  const savedCallback = useRef<() => void>(null);
 
   useEffect(() => {
     savedCallback.current = callback;

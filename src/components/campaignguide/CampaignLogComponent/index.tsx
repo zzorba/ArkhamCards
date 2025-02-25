@@ -74,7 +74,7 @@ function RelationshipBoxes({ section, isFatigue }: { section: EntrySection; isFa
           position: 'relative',
         }}>
           { isFatigue && idx === 4 && (
-            <View style={{ position: 'absolute', top: 0, left: 0 }} opacity={0.5}>
+            <View style={{ position: 'absolute', top: 0, left: 0, opacity: 0.5 }}>
               <MaterialCommunityIcons size={12} name="skull" color={colors.D10} allowFontScaling={false} />
             </View>
           )}

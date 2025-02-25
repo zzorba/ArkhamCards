@@ -217,7 +217,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
   const syncCampaignData = useCallback(() => {
     syncCampaignChanges(processedCampaign);
   }, [syncCampaignChanges, processedCampaign]);
-  const syncCampaignDataRef = useRef<() => void>(syncCampaignData);
+  const syncCampaignDataRef = useRef<() => void>(null);
 
   useEffect(() => {
     syncCampaignDataRef.current = syncCampaignData;
@@ -233,7 +233,7 @@ export default function CampaignInvestigatorsComponent(props: Props) {
   useEffect(() => {
     // Update the campaign on unmount.
     return () => {
-      syncCampaignDataRef.current();
+      syncCampaignDataRef.current?.();
     };
   }, []);
 

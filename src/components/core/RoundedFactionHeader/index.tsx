@@ -57,8 +57,10 @@ function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound
           backgroundColor: color,
           borderColor: color,
         } : undefined,
+        {
+          opacity: eliminated ? 0.6 : undefined,
+        },
       ]}
-      opacity={eliminated ? 0.6 : undefined}
     >
       <FactionPattern
         faction={dualFaction ? 'dual' : faction}

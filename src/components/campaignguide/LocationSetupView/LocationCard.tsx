@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { Image, StyleSheet, Text, TextStyle, View } from 'react-native';
+import { Image, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
 import { withAnchorPoint } from 'react-native-anchor-point';
 import { map, range } from 'lodash';
 import { Image as FastImage } from 'expo-image';
@@ -147,12 +147,12 @@ export default function LocationCard({ keyProp, rowWidth, rowHeight, annotations
   const { borderStyle, colors } = useContext(StyleContext);
   const mini = code.indexOf('_mini') !== -1;
 
-  const transformStyle = useMemo(() => {
+  const transformStyle = useMemo((): ViewStyle | undefined => {
     switch (rotate) {
       case 'left':
-        return withAnchorPoint({ transform: [{ rotate: '-90deg' }] }, { x: 0, y: 1 }, { width, height });
+        return withAnchorPoint({ transform: [{ rotate: '-90deg' }] }, { x: 0, y: 1 }, { width, height }) as any;
       case 'right':
-        return withAnchorPoint({ transform: [{ rotate: '90deg' }] }, { x: 1, y: 0 }, { width, height });
+        return withAnchorPoint({ transform: [{ rotate: '90deg' }] }, { x: 1, y: 0 }, { width, height }) as any;
       case 'invert':
         return { transform: [{ rotate: '-180deg' }] };
       default:

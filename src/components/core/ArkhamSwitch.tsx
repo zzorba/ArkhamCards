@@ -99,13 +99,13 @@ export default function ArkhamSwitch({ type, disabledColor, value: propValue, on
       {...props}
     >
       <Animated.View style={animStyle}>
-        <View style={[styles.icon, large ? styles.largeIcon : undefined]} opacity={disabled && !disabledColor ? 0.7 : 1}>
+        <View style={[styles.icon, large ? styles.largeIcon : undefined, { opacity: disabled && !disabledColor ? 0.7 : 1 }]}>
           <AppIcon
             size={large ? 34 : 28}
             name={large ? 'circle-thin' : 'check-circle'}
             color={disabled ? (disabledColor || colors.L20) : theCircleColor}
           />
-          <View style={large ? styles.largeCheck : styles.check} opacity={!!value ? 1 : 0}>
+          <View style={[large ? styles.largeCheck : styles.check, { opacity: !!value ? 1 : 0 }]}>
             <AppIcon
               size={large ? 26 : 20}
               name="check"

@@ -5,7 +5,6 @@ import Animated, { SharedValue, SlideInLeft, SlideOutDown, useAnimatedReaction, 
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import ActionButton from 'react-native-action-button';
 
 import { NavigationProps } from '@components/nav/types';
 import { CampaignId, DeckId, INVESTIGATOR_PROBLEM, SET_CURRENT_DRAFT, SET_CURRENT_DRAFT_SIZE, Slots, TOO_FEW_CARDS } from '@actions/types';
@@ -35,6 +34,7 @@ import { useAlertDialog } from './dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { CollectionEditProps } from '@components/settings/CollectionEditView';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import SimpleFab from '@components/core/SimpleFab';
 
 export interface DeckDraftProps {
   id: DeckId;
@@ -101,20 +101,19 @@ function FabDraftButton({ onPress, loading, secondaryAction }: { onPress: () => 
       onPress();
     }
   }, [loading, onPress]);
-  const renderIcon = useCallback(() => {
+  const renderIcon = useMemo(() => {
     return loading ? <ActivityIndicator size="small" color={colors.L30} animating /> : (
       <AppIcon name="draft" size={24} color={colors.L30} />
     );
   }, [loading, colors])
   return (
-    <ActionButton
-      buttonColor={secondaryAction ? colors.D20 : colors.warn}
-      renderIcon={renderIcon}
+    <SimpleFab
+      color={secondaryAction ? colors.D20 : colors.warn}
+      icon={renderIcon}
       onPress={localPress}
       offsetX={s + xs}
       offsetY={NOTCH_BOTTOM_PADDING + s + xs}
-      shadowStyle={shadow.large}
-      fixNativeFeedbackRadius
+      accessiblityLabel={t`Draft`}
     />
   );
 }
