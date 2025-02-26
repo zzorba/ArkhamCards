@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useRef, useMemo, useState } from 'react';
 import { FlashList, ListRenderItemInfo, ListRenderItem } from '@shopify/flash-list';
-import { View, NativeSyntheticEvent, NativeScrollEvent, RefreshControl } from 'react-native';
+import { FlatList, ListRenderItem as FlatListRenderItem, View, NativeSyntheticEvent, NativeScrollEvent, RefreshControl, Platform } from 'react-native';
 import { map } from 'lodash';
 
 import { searchBoxHeight } from './SearchBox';
@@ -90,7 +90,15 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
       };
     });
   }, [data, heightForItem]);
-  const renderFlatItem: ListRenderItem<FlatDataItem<T, Item>> = useCallback(({ item }: ListRenderItemInfo<FlatDataItem<T, Item>>) => {
+  const renderFlatItem: FlatListRenderItem<FlatDataItem<T, Item>> = useCallback(({ item }) => {
+    switch (item.type) {
+      case 'item':
+        return renderItem(item.item);
+      default:
+        return null;
+    }
+  }, [renderItem]);
+  const renderFlashItem: ListRenderItem<FlatDataItem<T, Item>> = useCallback(({ item }: ListRenderItemInfo<FlatDataItem<T, Item>>) => {
     switch (item.type) {
       case 'item':
         return renderItem(item.item);
@@ -118,7 +126,43 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
       </View>
     );
   }, [noSearch, loader, renderHeader]);
+
+  const getItemLayout = useCallback((data: null | undefined | ArrayLike<FlatDataItem<T, Item>>, idx: number): { length: number; offset: number; index: number } => {
+    return data?.[idx].layout || { offset: 0, length: 0, index: idx };
+   }, []);
+
   const getItemType = useCallback((item: FlatDataItem<T, Item>) => item.type === 'item' ? item.item.type : item.type, []);
+  if (Platform.OS === 'android') {
+    return (
+      <FlatList
+        data={flatData}
+        // contentContainerStyle={{ minHeight: height }}
+        refreshControl={
+          <RefreshControl
+            progressViewOffset={noSearch ? 0 : searchBarHeight}
+            refreshing={debouncedRefreshing}
+            onRefresh={handleRefresh}
+            tintColor={colors.background}
+          />
+        }
+        scrollEventThrottle={16}
+        onScroll={onScroll}
+        keyboardShouldPersistTaps="always"
+        keyboardDismissMode="on-drag"
+        renderItem={renderFlatItem}
+        scrollsToTop
+        onEndReached={onLoading}
+        removeClippedSubviews
+        onEndReachedThreshold={onEndReachedThreshold ?? 0.5}
+        getItemLayout={heightForItem ? getItemLayout : undefined}
+        ListHeaderComponent={renderRealHeader}
+        ListFooterComponent={renderFooter || <View />}
+        initialNumToRender={20}
+        maxToRenderPerBatch={40}
+        updateCellsBatchingPeriod={10}
+      />
+    );
+  }
   return (
     <FlashList
       data={flatData}
@@ -135,7 +179,7 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
       onScroll={onScroll}
       keyboardShouldPersistTaps="always"
       keyboardDismissMode="on-drag"
-      renderItem={renderFlatItem}
+      renderItem={renderFlashItem}
       scrollsToTop
       onEndReached={onLoading}
       removeClippedSubviews
