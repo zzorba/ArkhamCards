@@ -2341,7 +2341,7 @@ SPEC CHECKSUMS:
   appcenter-crashes: 9cb825ee8f89715a1b0a7164a71fc8c582b0e796
   AppCenterReactNativeShared: e6f6bd4d0e055bf1a3d7337edb4993bfce79185b
   boost: 1dca942403ed9342f98334bf4c3621f011aa7946
-  DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
+  DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
   EXConstants: 0472d3c23d97943fe3505306daf9cde8024365c2
   Expo: 8a2753e86ee7c1943ca0975b643d73ed03b113a1
   ExpoAdapterGoogleSignIn: 20e6be8bff6e951607ace66e6d3d11b30f2e9e3a
@@ -2363,8 +2363,8 @@ SPEC CHECKSUMS:
   FirebaseFunctions: 63d23f720c9a2c537369add7e54cf7e56eb3520a
   FirebaseMessagingInterop: 75220a5ee806720951fd8df07c359266a54c1980
   FirebaseSharedSwift: 672954eac7b141d6954fab9a32d45d6b1d922df8
-  fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
-  glog: fdfdfe5479092de0c4bdbebedd9056951f092c4f
+  fmt: 10c6e61f4be25dc963c36bd73fc7b1705fe975be
+  glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
@@ -2377,7 +2377,7 @@ SPEC CHECKSUMS:
   lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   lottie-react-native: 646955b3212c448d59cf1895a0cb485a0a7be3cf
   op-sqlite: ff63ae7ee48c3696d19731191aeea83873030b50
-  RCT-Folly: 02617c592a293bd6d418e0a88ff4ee1f88329b47
+  RCT-Folly: bf5c0376ffe4dd2cf438dcf86db385df9fdce648
   RCTDeprecation: 7691283dd69fed46f6653d376de6fa83aaad774c
   RCTRequired: eac044a04629288f272ee6706e31f81f3a2b4bfe
   RCTTypeSafety: cfe499e127eda6dd46e5080e12d80d0bfe667228
@@ -2472,8 +2472,8 @@ SPEC CHECKSUMS:
   SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   SwiftAudioEx: f6aa653770f3a0d3851edaf8d834a30aee4a7646
-  Yoga: d213adae4f2c5518e9b19f919afa25a73848ecfb
+  Yoga: 069a51fa94a03880d83adc91995fe180e997ce58
 
 PODFILE CHECKSUM: d4f3581939d491bcd971bc03ad7f7447dfd51505
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.14.3
