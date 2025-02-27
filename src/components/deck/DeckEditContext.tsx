@@ -255,27 +255,27 @@ export function useAllCardCustomizations(
   const { deckEdits, deckId } = useContext(DeckEditContext);
   const [customizations, updateCustomizations] = useReducer(
     (state: Customizations, action: UpdateCustomizationAction) => {
-    const { code, choice } = action;
-    const updated: Customizations = { ...state };
-    updated[code] = sortBy(
-      [
-        ...filter(
-          state[code] || [],
-          (c) => c.option.index !== choice.option.index
-        ),
-        {
-          ...choice,
-          xp_locked:
+      const { code, choice } = action;
+      const updated: Customizations = { ...state };
+      updated[code] = sortBy(
+        [
+          ...filter(
+            state[code] || [],
+            (c) => c.option.index !== choice.option.index
+          ),
+          {
+            ...choice,
+            xp_locked:
             find(
               state[code] || [],
               (c) => c.option.index === choice.option.index
             )?.xp_locked || 0,
-        },
-      ],
-      (c) => c.option.index
-    );
-    return updated;
-  }, initialCustomizations ?? {});
+          },
+        ],
+        (c) => c.option.index
+      );
+      return updated;
+    }, initialCustomizations ?? {});
   const deckEditsRef = useRef<EditDeckState | undefined>(deckEdits);
   useEffect(() => {
     deckEditsRef.current = deckEdits;

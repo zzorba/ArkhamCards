@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { filter, forEach } from 'lodash';
 import {
   Keyboard,
@@ -19,7 +19,7 @@ import { getPacksInCollection } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { useAllInvestigators, useParallelInvestigators, useSettingValue, useToggles } from '@components/core/hooks';
+import { useAllInvestigators, useSettingValue, useToggles } from '@components/core/hooks';
 import CompactInvestigatorRow, { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 import { TouchableShrink } from '@components/core/Touchables';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';

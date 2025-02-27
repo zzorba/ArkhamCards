@@ -213,7 +213,7 @@ function DeckDetailView({
   fromCampaign,
 }: Props) {
   const { lang, arkhamDbDomain } = useContext(LanguageContext);
-  const { backgroundStyle, colors, darkMode, typography, shadow, width } = useContext(StyleContext);
+  const { backgroundStyle, colors, darkMode, typography, width } = useContext(StyleContext);
   const deckActions = useDeckActions();
   const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
@@ -1258,7 +1258,7 @@ function DeckDetailView({
 
   const items = useMemo(() => [{
     text: t`Draw simulator`,
-    icon:<AppIcon name="draw" color="#FFF" size={34} />,
+    icon: <AppIcon name="draw" color="#FFF" size={34} />,
     name: 'draw_simulator',
     position: 1,
   },
@@ -1279,7 +1279,7 @@ function DeckDetailView({
     text: t`Draft cards`,
     name: 'draft',
     icon: <AppIcon name="draft" color="#FFF" size={32} />,
-  }]: []),
+  }] : []),
   ...(editable ? [{
     position: 5,
     text: t`Add cards`,
@@ -1297,7 +1297,7 @@ function DeckDetailView({
 
     color: colors.D20,
     margin: s,
-  })), [deck?.previousDeckId, editable, mode]);
+  })), [deck?.previousDeckId, colors, editable, mode]);
   const onPressItem = useCallback((name?: string) => {
     switch (name) {
       case 'draw_simulator':
@@ -1321,15 +1321,6 @@ function DeckDetailView({
     }
   }, [onUpgradePressed, onDraftCards, onAddCardsPressed, onEditPressed, showCardChartsPressed, showDrawSimulatorPressed]);
   const fab = useMemo(() => {
-    const actionLabelStyle = {
-      ...typography.small,
-      color: colors.L30,
-      paddingTop: 5,
-      paddingLeft: s,
-      paddingRight: s,
-    };
-    const actionContainerStyle = {
-    };
     return (
       <FloatingAction
         color={(mode !== 'view' || fabOpen) ? colors.D10 : factionColor}
@@ -1337,13 +1328,13 @@ function DeckDetailView({
         onPressMain={toggleFabOpen}
         onPressItem={onPressItem}
         position="right"
-        distanceToEdge={{ vertical: NOTCH_BOTTOM_PADDING + s + xs, horizontal: s + xs}}
+        distanceToEdge={{ vertical: NOTCH_BOTTOM_PADDING + s + xs, horizontal: s + xs }}
         // shadowStyle={shadow.large}
         // fixNativeFeedbackRadius
         actions={items}
       />
     );
-  }, [factionColor, fabOpen, mode, onPressItem, items, fabIcon, colors, toggleFabOpen, typography]);
+  }, [factionColor, fabOpen, mode, onPressItem, items, fabIcon, colors, toggleFabOpen]);
   const extraRequiredCards = useMemo(() => {
     if (mode === 'view' || !requiredCards) {
       return [];

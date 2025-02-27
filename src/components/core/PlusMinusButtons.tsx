@@ -109,7 +109,7 @@ export default function PlusMinusButtons({
           rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: width / 2, backgroundColor: incrementEnabled ? roundedColor : undefined } : undefined,
         ]}>
           { dialogStyle ? (
-            <View style={{ opacity: incrementEnabled ? 1 : 0.3}}>
+            <View style={{ opacity: incrementEnabled ? 1 : 0.3 }}>
               <AppIcon
                 name="plus-button"
                 size={rounded || large ? 36 : 28}
@@ -142,7 +142,7 @@ export default function PlusMinusButtons({
           rounded ? { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: width / 2, backgroundColor: decrementEnabled ? roundedColor : undefined } : undefined,
         ]}>
           { dialogStyle ? (
-            <View style={{ opacity: decrementEnabled ? 1 : 0.3}}>
+            <View style={{ opacity: decrementEnabled ? 1 : 0.3 }}>
               <AppIcon
                 name="minus-button"
                 size={rounded || large ? 36 : 28}

@@ -157,7 +157,7 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
         }],
       },
     });
-  }, [latestDecks, props.campaignId, selectDeck]);
+  }, [latestDecks, props.campaignId, selectDeck, campaign?.cycleCode]);
 
   const updateDrawnCard = useCallback((nextCard: string, assignedCards: Slots) => {
     setPendingNextCard(nextCard);

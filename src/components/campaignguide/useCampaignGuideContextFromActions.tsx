@@ -218,7 +218,7 @@ export default function useCampaignGuideContextFromActions(
       }
     });
     return decksByInvestigator;
-  }, [latestDecks]);
+  }, [latestDecks, includeParallel]);
 
   const actions = useMemo(() => {
     return {

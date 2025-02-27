@@ -129,7 +129,7 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
 
   const getItemLayout = useCallback((data: null | undefined | ArrayLike<FlatDataItem<T, Item>>, idx: number): { length: number; offset: number; index: number } => {
     return data?.[idx].layout || { offset: 0, length: 0, index: idx };
-   }, []);
+  }, []);
 
   const getItemType = useCallback((item: FlatDataItem<T, Item>) => item.type === 'item' ? item.item.type : item.type, []);
   if (Platform.OS === 'android') {

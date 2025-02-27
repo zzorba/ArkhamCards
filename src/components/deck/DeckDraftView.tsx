@@ -95,7 +95,7 @@ export function navigationOptions(
 
 
 function FabDraftButton({ onPress, loading, secondaryAction }: { onPress: () => void; loading: boolean; secondaryAction?: boolean }) {
-  const { colors, shadow } = useContext(StyleContext);
+  const { colors } = useContext(StyleContext);
   const localPress = useCallback(() => {
     if (!loading) {
       onPress();

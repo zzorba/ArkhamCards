@@ -11245,9 +11245,10 @@ react-native-table-component@^1.2.1, react-native-table-component@^1.2.2:
   dependencies:
     prop-types "^15.6.1"
 
-"react-native-track-player@github:zzorba/react-native-track-player#aa4f1f5afa36430263984ab4645ca1321b90c4de":
+react-native-track-player@4.1.1:
   version "4.1.1"
-  resolved "https://codeload.github.com/zzorba/react-native-track-player/tar.gz/aa4f1f5afa36430263984ab4645ca1321b90c4de"
+  resolved "https://registry.npmjs.org/react-native-track-player/-/react-native-track-player-4.1.1.tgz#96f8688f270c5a01bc597b6331843b191402502b"
+  integrity sha512-E5N/eK/+HtAVJUAzXpm1cWz8ROheV9jb0TI6h2bM+333U+DWibTTnT2T1122FkCoXLXIYavtm2FR2if+5jH8cA==
 
 react-native-uuid@2.0.1:
   version "2.0.1"

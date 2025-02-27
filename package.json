@@ -146,7 +146,7 @@
     "react-native-svg": "15.11.1",
     "react-native-tab-view": "3.5.2",
     "react-native-table-component": "^1.2.2",
-    "react-native-track-player": "github:zzorba/react-native-track-player#aa4f1f5afa36430263984ab4645ca1321b90c4de",
+    "react-native-track-player": "4.1.1",
     "react-native-uuid": "2.0.1",
     "react-native-vector-icons": "10.2.0",
     "react-native-zoom-view": "1.0.2",

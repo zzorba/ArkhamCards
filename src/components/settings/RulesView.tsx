@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer, Reducer, ReducerWithoutAction } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer } from 'react';
 import { flatMap, keys, map, sortBy } from 'lodash';
 import { StyleSheet, ListRenderItemInfo, View, Platform } from 'react-native';
 import { t } from 'ttag';

@@ -17,7 +17,7 @@ interface Props {
 
 export default function TextBoxInputComponent({ id, prompt, showUndo }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
-  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const [text, setText] = useState('');
 
   const undo = useMemo(() => throttle(() => {

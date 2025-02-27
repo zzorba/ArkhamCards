@@ -34,7 +34,7 @@ type Props = DeckDescriptionProps & NavigationProps;
 
 export default function DeckDescriptionView({ id, componentId }: Props) {
   const { db } = useContext(DatabaseContext);
-  const { backgroundStyle, colors, shadow, typography } = useContext(StyleContext);
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const textInputRef = useRef<TextInput>(null);
   const dispatch = useDispatch();
   const tabooSetId = useTabooSetId();
@@ -90,7 +90,7 @@ export default function DeckDescriptionView({ id, componentId }: Props) {
         offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + s + xs}
       />
     );
-  }, [shadow, edit, fabIcon, onEdit, saveChanges, colors, mode, factionColor, keyboardHeight]);
+  }, [edit, fabIcon, onEdit, saveChanges, colors, mode, factionColor, keyboardHeight]);
   return (
     <View style={styles.wrapper}>
       { edit ? (

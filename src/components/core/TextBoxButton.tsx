@@ -7,7 +7,6 @@ import {
   TextInput,
   TextInputProps,
   View,
-  ViewStyle,
 } from 'react-native';
 
 import { xs } from '@styles/space';
