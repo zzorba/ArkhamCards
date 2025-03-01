@@ -44,7 +44,7 @@ function CollectionEditView({ componentId, draftMode }: CollectionEditProps & Na
 
   const setCycleChecked = useCallback((cycle_code: string, value: boolean) => {
     if (draftMode) {
-      dispatch(setCycleDraft(cycle_code, value));
+      dispatch(setPackDraft(cycle_code, value));
     } else {
       dispatch(setCycleInCollection(cycle_code, value, updateRemotePack));
     }
@@ -108,6 +108,7 @@ function CollectionEditView({ componentId, draftMode }: CollectionEditProps & Na
     <View style={[styles.container, backgroundStyle]}>
       { !draftMode && ignoreCollection ? header : (
         <PackListComponent
+          draftMode={draftMode}
           alwaysShowCoreSet={draftMode}
           coreSetName={t`Second Core Set`}
           componentId={componentId}
@@ -116,8 +117,8 @@ function CollectionEditView({ componentId, draftMode }: CollectionEditProps & Na
           cyclesOnly={draftMode}
           includeNoCore
           checkState={draftMode ? draft : in_collection}
-          setChecked={setChecked}
-          setCycleChecked={setCycleChecked}
+          setChecked={draftMode && draftFromCollection ? undefined : setChecked}
+          setCycleChecked={draftMode && draftFromCollection ? undefined : setCycleChecked}
         />
       ) }
     </View>

@@ -45,7 +45,7 @@ interface Props {
   coreSetName?: string;
   packs: Pack[];
   checkState?: { [pack_code: string]: boolean | undefined };
-  setChecked: (pack_code: string, checked: boolean) => void;
+  setChecked?: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_code: string, checked: boolean) => void;
   header?: JSX.Element;
   renderFooter?: () => JSX.Element;
@@ -53,6 +53,7 @@ interface Props {
   compact?: boolean;
   noFlatList?: boolean;
   includeNoCore?: boolean;
+  draftMode?: boolean;
 }
 
 function keyExtractor(item: PackItem) {
@@ -112,6 +113,7 @@ export default function PackListComponent({
   noFlatList,
   cyclesOnly,
   includeNoCore,
+  draftMode,
 }: Props) {
   const { typography } = useContext(StyleContext);
   const [showLegacy, setShowLegacy] = useToggles({});
@@ -130,12 +132,11 @@ export default function PackListComponent({
               pack={pack}
               packId="no_core"
               nameOverride={t`Core Set`}
-              description={alwaysShowCoreSet ? t`A single core set is always included` : undefined}
               cycle={cyclePacks}
               baseQuery={baseQuery}
               compact={compact}
-              setChecked={!alwaysShowCoreSet && !checkState?.core ? setChecked : undefined}
-              checked={alwaysShowCoreSet || !checkState?.no_core}
+              setChecked={!checkState?.core ? setChecked : undefined}
+              checked={!checkState?.no_core}
             />
           ) }
           { (!includeNoCore || !checkState?.no_core) && (
@@ -249,7 +250,7 @@ export default function PackListComponent({
       pack => (cyclesOnly && pack.cycle_position >= 2 && pack.cycle_position < 50) ? 2 : pack.cycle_position),
     (group, key) => {
       const reprintPacks = filter(specialPacks, reprintPack => `${reprintPack.cyclePosition}` === key);
-      if (reprintPacks.length) {
+      if (!cyclesOnly && reprintPacks.length) {
         const items: PackItem[] = [
           ...map(reprintPacks, reprint => {
             const item: PackItem = {

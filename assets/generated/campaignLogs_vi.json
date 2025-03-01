@@ -410,7 +410,7 @@
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
-            "text": "the team barely escaped the ice shelf."
+            "text": "nhóm bạn vừa thoát khỏi thềm băng trong gang tấc."
           },
           {
             "id": "team_climbed_to_the_summit",
@@ -418,7 +418,7 @@
           },
           {
             "id": "team_defeated_the_hunting_creatures",
-            "text": "the team defeated the hunting creatures."
+            "text": "nhóm bạn đã đánh bại lũ sinh vật săn mồi."
           },
           {
             "id": "team_escaped_the_facility",
@@ -426,7 +426,7 @@
           },
           {
             "id": "team_fled_to_the_mountains",
-            "text": "the team fled to the mountains."
+            "text": "nhóm bạn đã chạy trốn lên núi."
           },
           {
             "id": "team_found_another_way_through_the_mountains",
@@ -455,9 +455,9 @@
         "entries": [
           {
             "id": "partner_missing",
-            "text": "#name# is MIA.",
-            "masculine_text": "#name# is MIA.",
-            "feminine_text": "#name# is MIA."
+            "text": "#name# là MIA.",
+            "masculine_text": "#name# là MIA.",
+            "feminine_text": "#name# là MIA."
           },
           {
             "id": "camp_shelter",

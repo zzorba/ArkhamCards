@@ -474,7 +474,7 @@ function DeckCardControls({
   editable: boolean;
 
 }) {
-  const { deckAttachments } = useContext(DeckEditContext);
+  const { deckAttachments, deckId } = useContext(DeckEditContext);
   const investigatorAttachment = useMemo(() => find(deckAttachments, a => a.code === investigator), [deckAttachments, investigator]);
   if (currentControl === 'bonded') {
     return null;
@@ -491,14 +491,17 @@ function DeckCardControls({
       />
     );
   }
-  return (
-    <FloatingDeckQuantityComponent
-      card={currentCard}
-      limit={deck_limit}
-      mode={(currentControl === 'side' || currentControl === 'extra' || currentControl === 'ignore' || currentControl === 'checklist') ? currentControl : undefined}
-      editable={editable}
-    />
-  );
+  if (deckId) {
+    return (
+      <FloatingDeckQuantityComponent
+        card={currentCard}
+        limit={deck_limit}
+        mode={(currentControl === 'side' || currentControl === 'extra' || currentControl === 'ignore' || currentControl === 'checklist') ? currentControl : undefined}
+        editable={editable}
+      />
+    );
+  }
+  return null;
 }
 
 DbCardDetailSwipeView.options = options;

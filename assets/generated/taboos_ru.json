@@ -722,12 +722,12 @@
       {
         "code": "07003",
         "text": "This card's [reaction] ability now reads: \"After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)",
-        "replacement_text": "Mutated.\n[reaction] After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)\n[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead."
+        "replacement_text": "Изменённая.\n[reaction] После того как вы нашли хотя бы 1 улику в локации с врагом: Либо найдите в той же локации 1 дополнительную улику, либо автоматически уйдите от того врага, если он не [[элитный]]. (Не чаще 1 раза в раунд.)\n[elder_sign]: +2. Если это проверка при исследовании, можете выбрать любую открытую локацию и считать, как будто вы исследуете, находясь в той локации вместо вашей."
       },
       {
         "code": "07122",
         "text": "This card's [reaction] ability now reads: \"When you resolve a [bless] token during a skill test…",
-        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+        "replacement_text": "Изменённый. Постоянный. Не более 1 [[завета]] в колоде.\n[reaction] Когда вы разыгрываете жетон [bless] в проверке навыка, поверните «Древний завет»: Не вытягивайте ещё один жетон как часть эффекта того жетона [bless]."
       },
       {
         "code": "60233",
@@ -807,12 +807,12 @@
       {
         "code": "07269",
         "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\"",
-        "replacement_text": "As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nMutated. Fast. Play when the \"draw encounter cards\" step of the mythos phase would begin. Skip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "replacement_text": "В качестве дополнительной цены розыгрыша «Бдительного спокойствия» найдите в мешке хаоса и/или на картах в игре суммарно 5 жетонов [bless] и верните их в резерв.\nИзменённое. Быстрое. Играйте, когда должен начаться шаг взятия карт контактов в фазе Мифа.\nПропустите этот шаг в этой фазе Мифа. Удалите «Бдительное спокойствие» из игры."
       },
       {
         "code": "07301",
         "text": "This card's ability gains: \"Remove Hallow from the game.\"",
-        "replacement_text": "As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nMutated.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "replacement_text": "В качестве дополнительной цены розыгрыша этой карты верните в резерв суммарно 10 жетонов [bless] из числа запечатанных на картах в игре и находящихся в мешке хаоса.\nИзменённое.\nУдалите 1 безысходность с любой карты в игре. Удалите «Таинство освящения» из игры."
       },
       {
         "code": "08019",
@@ -1008,7 +1008,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\"",
-        "replacement_text": "Mutated. Limited 1 per deck. Seal (up to X [curse]).\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "replacement_text": "Изменённая. Не более 1 такой карты в колоде. Печать (до X [curse]).\n[action] Поверните эту карту и освободите 1 запечатанный на ней жетон [curse]: Выберите не [[элитного]] врага в вашей локации и либо переместите его в связанную локацию, либо нанесите любому врагу в его локации столько ран, каково значение ран выбранного врага. Это действие не вызывает внеочередных атак."
       },
       {
         "code": "08045",
@@ -1172,12 +1172,12 @@
       {
         "code": "07003",
         "text": "This card's [reaction] ability now reads: \"After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)",
-        "replacement_text": "Mutated.\n[reaction] After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)\n[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead."
+        "replacement_text": "Изменённая.\n[reaction] После того как вы нашли хотя бы 1 улику в локации с врагом: Либо найдите в той же локации 1 дополнительную улику, либо автоматически уйдите от того врага, если он не [[элитный]]. (Не чаще 1 раза в раунд.)\n[elder_sign]: +2. Если это проверка при исследовании, можете выбрать любую открытую локацию и считать, как будто вы исследуете, находясь в той локации вместо вашей."
       },
       {
         "code": "07122",
         "text": "This card's [reaction] ability now reads: \"When you resolve a [bless] token during a skill test…",
-        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+        "replacement_text": "Изменённый. Постоянный. Не более 1 [[завета]] в колоде.\n[reaction] Когда вы разыгрываете жетон [bless] в проверке навыка, поверните «Древний завет»: Не вытягивайте ещё один жетон как часть эффекта того жетона [bless]."
       },
       {
         "code": "60233",
@@ -1261,12 +1261,12 @@
       {
         "code": "07269",
         "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\"",
-        "replacement_text": "As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nMutated. Fast. Play when the \"draw encounter cards\" step of the mythos phase would begin. Skip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "replacement_text": "В качестве дополнительной цены розыгрыша «Бдительного спокойствия» найдите в мешке хаоса и/или на картах в игре суммарно 5 жетонов [bless] и верните их в резерв.\nИзменённое. Быстрое. Играйте, когда должен начаться шаг взятия карт контактов в фазе Мифа.\nПропустите этот шаг в этой фазе Мифа. Удалите «Бдительное спокойствие» из игры."
       },
       {
         "code": "07301",
         "text": "This card's ability gains: \"Remove Hallow from the game.\"",
-        "replacement_text": "As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nMutated.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "replacement_text": "В качестве дополнительной цены розыгрыша этой карты верните в резерв суммарно 10 жетонов [bless] из числа запечатанных на картах в игре и находящихся в мешке хаоса.\nИзменённое.\nУдалите 1 безысходность с любой карты в игре. Удалите «Таинство освящения» из игры."
       },
       {
         "code": "08019",
@@ -1477,7 +1477,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\"",
-        "replacement_text": "Mutated. Limited 1 per deck. Seal (up to X [curse]).\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "replacement_text": "Изменённая. Не более 1 такой карты в колоде. Печать (до X [curse]).\n[action] Поверните эту карту и освободите 1 запечатанный на ней жетон [curse]: Выберите не [[элитного]] врага в вашей локации и либо переместите его в связанную локацию, либо нанесите любому врагу в его локации столько ран, каково значение ран выбранного врага. Это действие не вызывает внеочередных атак."
       },
       {
         "code": "08045",
@@ -1641,12 +1641,12 @@
       {
         "code": "07003",
         "text": "This card's [reaction] ability now reads: \"After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)",
-        "replacement_text": "Mutated.\n[reaction] After you discover 1 or more clues at a location with an enemy: Either discover 1 additional clue at that location, or automatically evade that enemy if it is non-[[Elite]]. (Limit once per round.)\n[elder_sign] effect: +2. If this is an investigation, you may choose any revealed location; you are now investigating as if you were at that location instead."
+        "replacement_text": "Изменённая.\n[reaction] После того как вы нашли хотя бы 1 улику в локации с врагом: Либо найдите в той же локации 1 дополнительную улику, либо автоматически уйдите от того врага, если он не [[элитный]]. (Не чаще 1 раза в раунд.)\n[elder_sign]: +2. Если это проверка при исследовании, можете выбрать любую открытую локацию и считать, как будто вы исследуете, находясь в той локации вместо вашей."
       },
       {
         "code": "07122",
         "text": "This card's [reaction] ability now reads: \"When you resolve a [bless] token during a skill test…",
-        "replacement_text": "Mutated. Permanent. Limit 1 [[Covenant]] per deck.\n[reaction] When you resolve a [bless] token during a skill test, exhaust Ancient Covenant: Do not reveal another token as part of this [bless] token's effect."
+        "replacement_text": "Изменённый. Постоянный. Не более 1 [[завета]] в колоде.\n[reaction] Когда вы разыгрываете жетон [bless] в проверке навыка, поверните «Древний завет»: Не вытягивайте ещё один жетон как часть эффекта того жетона [bless]."
       },
       {
         "code": "60233",
@@ -1742,12 +1742,12 @@
       {
         "code": "07269",
         "text": "This card's ability gains: \"Remove A Watchful Peace from the game.\"",
-        "replacement_text": "As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nMutated. Fast. Play when the \"draw encounter cards\" step of the mythos phase would begin. Skip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "replacement_text": "В качестве дополнительной цены розыгрыша «Бдительного спокойствия» найдите в мешке хаоса и/или на картах в игре суммарно 5 жетонов [bless] и верните их в резерв.\nИзменённое. Быстрое. Играйте, когда должен начаться шаг взятия карт контактов в фазе Мифа.\nПропустите этот шаг в этой фазе Мифа. Удалите «Бдительное спокойствие» из игры."
       },
       {
         "code": "07301",
         "text": "This card's ability gains: \"Remove Hallow from the game.\"",
-        "replacement_text": "As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nMutated.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "replacement_text": "В качестве дополнительной цены розыгрыша этой карты верните в резерв суммарно 10 жетонов [bless] из числа запечатанных на картах в игре и находящихся в мешке хаоса.\nИзменённое.\nУдалите 1 безысходность с любой карты в игре. Удалите «Таинство освящения» из игры."
       },
       {
         "code": "08019",
@@ -1958,7 +1958,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "This card loses the exceptional keyword and gains \"Limit 1 per deck.\"",
-        "replacement_text": "Mutated. Limited 1 per deck. Seal (up to X [curse]).\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "replacement_text": "Изменённая. Не более 1 такой карты в колоде. Печать (до X [curse]).\n[action] Поверните эту карту и освободите 1 запечатанный на ней жетон [curse]: Выберите не [[элитного]] врага в вашей локации и либо переместите его в связанную локацию, либо нанесите любому врагу в его локации столько ран, каково значение ран выбранного врага. Это действие не вызывает внеочередных атак."
       },
       {
         "code": "08045",
