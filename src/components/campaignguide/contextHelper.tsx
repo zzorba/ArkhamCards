@@ -16,6 +16,8 @@ import { useMemo } from 'react';
 import { useCampaign, useCampaignGuideState, useCampaignInvestigators } from '@data/hooks';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { useParallelInvestigators } from '@components/core/hooks';
+import { map } from 'lodash';
 
 export interface SingleCampaignGuideData {
   campaign: SingleCampaignT;
@@ -23,6 +25,7 @@ export interface SingleCampaignGuideData {
   campaignState: CampaignGuideStateT;
   linkedCampaignState?: CampaignGuideStateT;
   campaignInvestigators?: Card[];
+  parallelInvestigators?: Card[];
 }
 
 const makeCampaignGuideSelector = (): (state: AppState, campaign?: SingleCampaignT) => CampaignGuide | undefined =>
@@ -49,13 +52,15 @@ export function useSingleCampaignGuideData(
 ): [SingleCampaignGuideData | undefined, SingleCampaignGuideStatus | undefined] {
   const campaign = useCampaign(campaignId, live);
   const [campaignInvestigators, campaignInvestigatorsLoading] = useCampaignInvestigators(campaign);
+  const campaignInvestigatorCodes = useMemo(() => campaign?.investigators, [campaign]);
+  const [parallelInvestigators, parallelInvestigatorsLoading] = useParallelInvestigators(campaignInvestigatorCodes)
   const campaignGuideSelector = useMemo(makeCampaignGuideSelector, []);
   const campaignGuide = useSelector((state: AppState) => campaignGuideSelector(state, campaign));
 
   const campaignState = useCampaignGuideState(campaignId, live);
   const linkedCampaignState = useCampaignGuideState(campaign?.linkedCampaignId, false);
   return useMemo(() => {
-    if (!campaign || !campaign.cycleCode || !campaignState) {
+    if (!campaign || !campaign.cycleCode || !campaignState || campaignInvestigatorsLoading || parallelInvestigatorsLoading) {
       return [undefined, 'loading'];
     }
     if (!campaignGuide) {
@@ -67,6 +72,8 @@ export function useSingleCampaignGuideData(
       campaignState,
       linkedCampaignState,
       campaignInvestigators: campaignInvestigatorsLoading ? undefined : campaignInvestigators,
+      parallelInvestigators: parallelInvestigatorsLoading ? undefined : parallelInvestigators,
     }, undefined];
-  }, [campaign, campaignGuide, campaignState, linkedCampaignState, campaignInvestigators, campaignInvestigatorsLoading]);
+  }, [campaign, campaignGuide, campaignState, linkedCampaignState,
+    campaignInvestigators, campaignInvestigatorsLoading, parallelInvestigators, parallelInvestigatorsLoading]);
 }

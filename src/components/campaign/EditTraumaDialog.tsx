@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useMemo } from 'react';
+import React, { useCallback, useEffect, useState, useMemo, useContext } from 'react';
 
 import EditTraumaDialogContent from './EditTraumaDialogContent';
 import NewDialog from '@components/core/NewDialog';
@@ -6,6 +6,7 @@ import { t } from 'ttag';
 import { Trauma } from '@actions/types';
 import Card from '@data/types/Card';
 import DeckButton from '@components/deck/controls/DeckButton';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 
 interface Props {
   visible: boolean;
@@ -16,21 +17,23 @@ interface Props {
   hideKilledInsane?: boolean;
 }
 
-export default function EditTraumaDialog({ visible, investigator, trauma, updateTrauma, hideDialog, hideKilledInsane }: Props) {
+export default function EditTraumaDialog({ visible, investigator: theInvestigator, trauma, updateTrauma, hideDialog, hideKilledInsane }: Props) {
   const [traumaState, setTraumaState] = useState<Trauma>({});
   useEffect(() => {
     if (visible) {
-      setTraumaState(trauma || {});
+      setTraumaState(trauma ?? {});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
 
+  const { campaignState } = useContext(CampaignGuideContext);
+  const investigator = useMemo(() => theInvestigator ? campaignState.investigatorCard(theInvestigator.code) : undefined, [theInvestigator, campaignState]);
   const onSubmit = useCallback(() => {
-    if (investigator) {
-      updateTrauma(investigator.code, traumaState);
+    if (theInvestigator) {
+      updateTrauma(theInvestigator.code, traumaState);
     }
     hideDialog();
-  }, [investigator, updateTrauma, hideDialog, traumaState]);
+  }, [theInvestigator, updateTrauma, hideDialog, traumaState]);
 
   const onCancel = useCallback(() => {
     hideDialog();

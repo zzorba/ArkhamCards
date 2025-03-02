@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { StyleSheet, Text, TextStyle, View } from 'react-native';
 import { range, map } from 'lodash';
 import { c, t } from 'ttag';
@@ -9,6 +9,7 @@ import StyleContext from '@styles/StyleContext';
 import space, { xs } from '@styles/space';
 import Card from '@data/types/Card';
 import { TINY_PHONE } from '@styles/sizes';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 
 interface Props {
   trauma: TraumaAndCardData;
@@ -42,8 +43,10 @@ export function TraumaIconPile({ physical, mental, whiteText, paddingTop, tiny }
 }
 
 
-export default function TraumaSummary({ trauma, investigator, whiteText, hideNone, textStyle, tiny }: Props) {
+export default function TraumaSummary({ trauma, investigator: theInvestigator, whiteText, hideNone, textStyle, tiny }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const { campaignState } = useContext(CampaignGuideContext);
+  const investigator = useMemo(() => campaignState.investigatorCard(theInvestigator.code) ?? theInvestigator, [campaignState, theInvestigator]);
   const physical = (trauma.physical || 0);
   const mental = (trauma.mental || 0);
   const textColorStyle = whiteText ? { color: '#FFF' } : { color: colors.D30 };

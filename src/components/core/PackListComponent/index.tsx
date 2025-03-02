@@ -53,7 +53,6 @@ interface Props {
   compact?: boolean;
   noFlatList?: boolean;
   includeNoCore?: boolean;
-  draftMode?: boolean;
 }
 
 function keyExtractor(item: PackItem) {
@@ -113,7 +112,6 @@ export default function PackListComponent({
   noFlatList,
   cyclesOnly,
   includeNoCore,
-  draftMode,
 }: Props) {
   const { typography } = useContext(StyleContext);
   const [showLegacy, setShowLegacy] = useToggles({});

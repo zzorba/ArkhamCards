@@ -805,8 +805,20 @@ export function useAllInvestigators(
   return useCardsFromQuery({ query, sort, tabooSetOverride });
 }
 
-export function useParallelInvestigators(investigatorCode?: string, tabooSetOverride?: number): [Card[], boolean] {
+export function useParallelInvestigator(investigatorCode?: string, tabooSetOverride?: number): [Card[], boolean] {
   const query = useMemo(() => investigatorCode ? where('c.alternate_of_code = :investigatorCode', { investigatorCode }) : undefined, [investigatorCode]);
+  const [cards, loading] = useCardsFromQuery({ query, tabooSetOverride });
+  const { storePlayerCards } = useContext(PlayerCardContext);
+  useEffect(() => {
+    if (cards.length) {
+      storePlayerCards(cards);
+    }
+  }, [cards, storePlayerCards]);
+  return [cards, loading];
+}
+
+export function useParallelInvestigators(codes?: string[], tabooSetOverride?: number): [Card[], boolean] {
+  const query = useMemo(() => codes ? where('c.alternate_of_code in (:...codes)', { codes }) : undefined, [codes]);
   const [cards, loading] = useCardsFromQuery({ query, tabooSetOverride });
   const { storePlayerCards } = useContext(PlayerCardContext);
   useEffect(() => {

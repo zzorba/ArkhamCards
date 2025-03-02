@@ -9,7 +9,7 @@ import { t } from 'ttag';
 
 import PackListComponent from '@components/core/PackListComponent';
 import { NavigationProps } from '@components/nav/types';
-import { setInCollection, setCycleInCollection, setPackDraft, setCycleDraft } from '@actions';
+import { setInCollection, setCycleInCollection, setPackDraft } from '@actions';
 import { getAllRealPacks, getDraftPacks, getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
@@ -108,7 +108,6 @@ function CollectionEditView({ componentId, draftMode }: CollectionEditProps & Na
     <View style={[styles.container, backgroundStyle]}>
       { !draftMode && ignoreCollection ? header : (
         <PackListComponent
-          draftMode={draftMode}
           alwaysShowCoreSet={draftMode}
           coreSetName={t`Second Core Set`}
           componentId={componentId}

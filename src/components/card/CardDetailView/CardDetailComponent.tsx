@@ -11,7 +11,7 @@ import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useParallelInvestigators } from '@components/core/hooks';
+import { useParallelInvestigator } from '@components/core/hooks';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
 import { getDeckOptions } from '@components/nav/helper';
 
@@ -30,7 +30,7 @@ interface Props {
 
 function InvestigatorInfoComponent({ componentId, card, width, simple, showInvestigatorCards }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const [parallelInvestigators] = useParallelInvestigators(card.type_code === 'investigator' ? card.code : undefined);
+  const [parallelInvestigators] = useParallelInvestigator(card.type_code === 'investigator' ? card.code : undefined);
   const showInvestigatorCardsPressed = useCallback(() => {
     showInvestigatorCards && showInvestigatorCards(card.code);
   }, [card, showInvestigatorCards]);

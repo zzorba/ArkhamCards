@@ -28,7 +28,7 @@ import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '@data/deck/starterDecks';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useNavigationButtonPressed, useParallelInvestigators, useSettingValue, useTabooSetId } from '@components/core/hooks';
+import { useFlag, useNavigationButtonPressed, useParallelInvestigator, useSettingValue, useTabooSetId } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
@@ -152,7 +152,7 @@ function NewDeckOptionsDialog({
     investigatorId.startsWith('z') ||
     !!investigator?.custom()
   ), [investigator, investigatorId]);
-  const [parallelInvestigators] = useParallelInvestigators(investigatorId, tabooSetId);
+  const [parallelInvestigators] = useParallelInvestigator(investigatorId, tabooSetId);
 
   const [investigatorFront, investigatorBack] = useMemo(() => [
     metaState.alternate_front && metaState.alternate_back !== investigatorId ? find(parallelInvestigators, c => c.code === metaState.alternate_front) : investigator,

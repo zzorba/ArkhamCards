@@ -26,13 +26,15 @@ export function useScenarioGuideContext(
   initialProcessedCampaign?: ProcessedCampaign
 ): [CampaignGuideContextType | undefined, ScenarioGuideContextType | undefined, ProcessedCampaign | undefined, string | undefined, (serverId: number) => void, boolean] {
   const [campaignContext, campaignStatus, setCampaignServerId, loading] = useCampaignGuideContext(campaignId, rootView);
-  const [processedScenario, processedCampaign, processedScenarioError] = useProcessedScenario(scenarioId, standalone, campaignContext?.campaignGuide, campaignContext?.campaignState, initialProcessedCampaign);
+  const [processedScenario, processedCampaign, processedScenarioError] = useProcessedScenario(
+    scenarioId, standalone, campaignContext?.campaignGuide, campaignContext?.campaignState, initialProcessedCampaign
+  );
   const scenarioState = useMemo(() => {
     if (!campaignContext || !processedScenario) {
       return undefined;
     }
     const { campaignState } = campaignContext;
-    return processedScenario && new ScenarioStateHelper(processedScenario.scenarioGuide.id, campaignState);
+    return processedScenario ? new ScenarioStateHelper(processedScenario.scenarioGuide.id, campaignState) : undefined;
   }, [processedScenario, campaignContext]);
   const scenarioContext = useMemo(() => {
     if (!processedScenario || !scenarioState || !processedCampaign) {

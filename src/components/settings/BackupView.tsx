@@ -105,7 +105,6 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
   const { colors } = useContext(StyleContext);
   const dispatch = useDispatch();
   useEffect(() => {
-
     dispatch(ensureUuid());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

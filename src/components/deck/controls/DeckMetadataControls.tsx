@@ -2,7 +2,7 @@ import React from 'react';
 
 import DeckTabooPickerButton from './DeckTabooPickerButton';
 import InvestigatorOptionsControl, { hasInvestigatorOptions } from './InvestigatorOptionsControl';
-import { useParallelInvestigators } from '@components/core/hooks';
+import { useParallelInvestigator } from '@components/core/hooks';
 import { DeckMeta } from '@actions/types';
 import useSingleCard from '@components/card/useSingleCard';
 
@@ -37,7 +37,7 @@ export default function DeckMetadataControls({
   hasPreviousDeck,
   showTaboo,
 }: Props) {
-  const [parallelInvestigators] = useParallelInvestigators(investigatorCode, tabooSetId);
+  const [parallelInvestigators] = useParallelInvestigator(investigatorCode, tabooSetId);
   const [investigator] = useSingleCard(investigatorCode, 'player', tabooSetId);
   if (!investigator) {
     return null;

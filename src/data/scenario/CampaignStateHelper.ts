@@ -21,6 +21,8 @@ import {
 import { ScenarioId, StepId } from '@data/scenario';
 import Card, { CardsMap } from '@data/types/Card';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { find } from 'lodash';
 
 export interface CampaignGuideActions {
   showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => void;
@@ -47,28 +49,21 @@ export interface CampaignGuideActions {
 }
 
 export default class CampaignStateHelper {
-  state: CampaignGuideStateT;
-  investigators: CardsMap;
-  actions: CampaignGuideActions;
-  tarotReading: TarotReading | undefined;
-
-  linkedState?: CampaignGuideStateT;
-  guideVersion: number;
-
   constructor(
-    state: CampaignGuideStateT,
-    tarotReading: TarotReading | undefined,
-    investigators: CardsMap,
-    actions: CampaignGuideActions,
-    guideVersion: number,
-    linkedState?: CampaignGuideStateT
-  ) {
-    this.guideVersion = guideVersion;
-    this.state = state;
-    this.tarotReading = tarotReading;
-    this.investigators = investigators;
-    this.actions = actions;
-    this.linkedState = linkedState;
+    public state: CampaignGuideStateT,
+    public tarotReading: TarotReading | undefined,
+    public investigators: CardsMap,
+    public actions: CampaignGuideActions,
+    public guideVersion: number,
+    public latestDecks: LatestDeckT[] | undefined,
+    public parallelInvestigators: CardsMap | undefined,
+    public linkedState?: CampaignGuideStateT,
+  ) {}
+
+  investigatorCard(code: string): Card | undefined {
+    const deck = find(this.latestDecks || [], deck => deck.investigator === code);
+    const investigatorCode = deck?.deck.meta?.alternate_front ?? code;
+    return this.parallelInvestigators?.[investigatorCode] ?? this.investigators[investigatorCode] ?? this.investigators[code];
   }
 
   lastUpdated(): Date {

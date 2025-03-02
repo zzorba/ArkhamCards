@@ -43,6 +43,7 @@ export default function useCampaignGuideContextFromActions(
 ): CampaignGuideContextType | undefined {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
+  const parallelCampaignInvestigators = campaignData?.parallelInvestigators;
   const dispatch: AsyncDispatch = useDispatch();
   const [campaignChooseDeck, campaignAddInvestigator] = useChooseDeck(createDeckActions, updateCampaignActions);
   const cycleCode = campaignData?.campaign?.cycleCode;
@@ -245,16 +246,20 @@ export default function useCampaignGuideContextFromActions(
   }, [addInvestigator, showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
     setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo,
     setBinaryAchievement, setCountAchievement]);
-  const investigators = useMemo(() => {
+  const [investigators, parallelInvestigators] = useMemo(() => {
     if (!campaignInvestigators) {
-      return undefined;
+      return [undefined, undefined];
     }
+    const p: CardsMap = {};
+    forEach(parallelCampaignInvestigators, c => {
+      p[c.code] = c;
+    });
     const r: CardsMap = {};
     forEach(campaignInvestigators, c => {
       r[c.code] = c;
     });
-    return r;
-  }, [campaignInvestigators]);
+    return [r, p];
+  }, [campaignInvestigators, parallelCampaignInvestigators]);
   const campaignStateHelper = useMemo(() => {
     if (!investigators || !campaignData) {
       return undefined;
@@ -266,9 +271,11 @@ export default function useCampaignGuideContextFromActions(
       investigators,
       actions,
       guideVersion === undefined ? -1 : guideVersion,
-      campaignData.linkedCampaignState
+      latestDecks,
+      parallelInvestigators,
+      campaignData.linkedCampaignState,
     );
-  }, [campaignData, investigators, actions]);
+  }, [campaignData, investigators, actions, latestDecks, parallelInvestigators]);
   const campaign = campaignData?.campaign;
   const campaignGuide = campaignData?.campaignGuide;
   const spentXp = useMemo(() => {

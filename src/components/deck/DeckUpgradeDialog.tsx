@@ -59,10 +59,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   const setInvestigatorTrauma = useCallback((investigator: string, trauma: Trauma) => {
     setTraumaUpdate(trauma);
   }, [setTraumaUpdate]);
-  const {
-    showTraumaDialog,
-    traumaDialog,
-  } = useTraumaDialog(setInvestigatorTrauma);
+  const { showTraumaDialog, traumaDialog } = useTraumaDialog(setInvestigatorTrauma);
 
   const save = useCallback(() => {
     if (deckUpgradeComponent.current) {

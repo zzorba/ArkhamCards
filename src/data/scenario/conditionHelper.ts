@@ -310,7 +310,11 @@ export function campaignLogCardsSwitchResult(
   };
 }
 
-function checkTraumaCondition(code: string, trauma: 'killed' | 'insane' | 'alive', campaignLog: GuidedCampaignLog) {
+function checkTraumaCondition(
+  code: string,
+  trauma: 'killed' | 'insane' | 'alive',
+  campaignLog: GuidedCampaignLog
+) {
   switch(trauma) {
     case 'killed': return campaignLog.isKilled(code);
     case 'insane': return campaignLog.isInsane(code);
@@ -385,7 +389,11 @@ export function partnerStatusConditionResult(
   );
 }
 
-function basicTrauma(code: string, trauma: 'mental' | 'physical' | 'alive', campaignLog: GuidedCampaignLog) {
+function basicTrauma(
+  code: string,
+  trauma: 'mental' | 'physical' | 'alive',
+  campaignLog: GuidedCampaignLog
+) {
   switch (trauma) {
     case 'mental': return campaignLog.hasMentalTrauma(code);
     case 'physical': return campaignLog.hasPhysicalTrauma(code);

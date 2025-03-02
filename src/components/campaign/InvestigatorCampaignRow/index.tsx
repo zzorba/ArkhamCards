@@ -37,6 +37,7 @@ interface Props {
   campaignGuide?: CampaignGuide;
   traumaAndCardData: TraumaAndCardData;
   badge?: 'deck' | 'upgrade';
+  eliminated?: boolean;
   chooseDeckForInvestigator?: (investigator: Card) => void;
   deck?: LatestDeckT;
   showXpDialog: (investigator: Card) => void;
@@ -85,6 +86,7 @@ export default function InvestigatorCampaignRow({
   children,
   miniButtons,
   badge,
+  eliminated,
   showXpDialog,
   chooseDeckForInvestigator,
   removeInvestigator,
@@ -99,7 +101,6 @@ export default function InvestigatorCampaignRow({
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, { showSpoilers: true });
   }, [componentId, colors]);
-  const eliminated = useMemo(() => investigator.eliminated(traumaAndCardData), [investigator, traumaAndCardData]);
 
   const editXpPressed = useCallback(() => {
     showXpDialog(investigator);

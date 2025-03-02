@@ -42,7 +42,9 @@ export default function withCampaignGuideContext<Props>(
     const [context, campaignGuideStatus, setCampaignServerId, uploading] = useCampaignGuideContext(props.campaignId, rootView);
     if (!context) {
       if (campaignGuideStatus === 'update') {
-        return <CampaignErrorView message={t`An app update is required to access this campaign.`} />;
+        return (
+          <CampaignErrorView message={t`An app update is required to access this campaign.`} />
+        );
       }
       return (
         <LoadingSpinner large message={uploading ? t`Uploading campaign` : undefined} />

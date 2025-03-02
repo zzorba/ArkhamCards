@@ -290,7 +290,6 @@ export function useAllCardCustomizations(
           spent_xp: choice.xp_spent,
           choice: choice.type ? choice.encodedChoice : undefined,
         };
-        console.log('Dispatching updateDeckCustomizationChoice');
         dispatch(
           updateDeckCustomizationChoice(
             deckId,

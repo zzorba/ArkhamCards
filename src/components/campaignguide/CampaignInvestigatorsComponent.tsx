@@ -108,9 +108,10 @@ function AliveInvestigatorRow({
   }, [saveDeck, saveDeckUpgrade, nextDeckUpgradeStepId, deck, campaignState, setSaving]);
   const arkhamDbError = useArkhamDbError();
   const needsArkhamDbReauth = !deck?.deck.local && arkhamDbError === 'badAccessToken';
-  const traumaAndCardData = useMemo(() =>
-    processedCampaign.campaignLog.traumaAndCardData(investigator.code),
-  [processedCampaign.campaignLog, investigator.code]);
+  const traumaAndCardData = useMemo(
+    () => processedCampaign.campaignLog.traumaAndCardData(investigator.code),
+    [processedCampaign.campaignLog, investigator.code]
+  );
   return (
     <InvestigatorCampaignRow
       campaign={campaign}
@@ -350,15 +351,20 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           ) }
           { map(killedInvestigators, investigator => {
             const traumaAndCardData = processedCampaign.campaignLog.traumaAndCardData(investigator.code);
+            const theInvestigator = processedCampaign.campaignLog.campaignState.investigatorCard(investigator.code) ?? investigator;
             return (
               <InvestigatorCampaignRow
                 campaignGuide={campaignGuide}
                 key={investigator.code}
+                eliminated
                 spentXp={spentXp[investigator.code] || 0}
                 totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
                 unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}
                 showXpDialog={showXpDialogPressed}
-                showTraumaDialog={betweenScenarios && ((traumaAndCardData?.physical && traumaAndCardData?.physical === investigator.health) || (traumaAndCardData?.mental && traumaAndCardData?.mental === investigator.sanity)) ? showTraumaDialog : undefined}
+                showTraumaDialog={betweenScenarios && (
+                  (traumaAndCardData?.physical && traumaAndCardData?.physical === theInvestigator.health) ||
+                  (traumaAndCardData?.mental && traumaAndCardData?.mental === theInvestigator.sanity)
+                ) ? showTraumaDialog : undefined}
                 campaign={campaign}
                 deck={latestDecks[investigator.code]}
                 componentId={componentId}

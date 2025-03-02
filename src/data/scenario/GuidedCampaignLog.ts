@@ -207,7 +207,6 @@ interface GuidedCampaignLogState {
 
 export default class GuidedCampaignLog implements GuidedCampaignLogState {
   campaignGuide: CampaignGuide;
-  investigatorCards: CardsMap;
   linked: boolean;
   guideVersion: number;
 
@@ -259,14 +258,13 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   constructor(
     effectsWithInput: EffectsWithInput[],
     campaignGuide: CampaignGuide,
-    campaignState: CampaignStateHelper,
+    public campaignState: CampaignStateHelper,
     standalone: boolean,
     readThrough?: GuidedCampaignLog,
     scenarioId?: string
   ) {
     this.scenarioId = scenarioId;
     this.campaignGuide = campaignGuide;
-    this.investigatorCards = campaignState.investigators;
     this.linked = !!campaignState.linkedState;
     this.guideVersion =
       campaignState.guideVersion === -1
@@ -598,12 +596,13 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   isEliminated(investigator: Card) {
     const investigatorData =
       this.campaignData.investigatorData[investigator.code];
-    return investigator.eliminated(investigatorData);
+    const actualInvestigator = this.campaignState.investigatorCard(investigator.code) ?? investigator;
+    return actualInvestigator.eliminated(investigatorData);
   }
 
   isKilled(investigator: string): boolean {
     const investigatorData = this.campaignData.investigatorData[investigator];
-    const card = this.investigatorCards[investigator];
+    const card = this.campaignState.investigatorCard(investigator);
     if (card) {
       return card.killed(investigatorData);
     }
@@ -612,7 +611,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
 
   isInsane(investigator: string): boolean {
     const investigatorData = this.campaignData.investigatorData[investigator];
-    const card = this.investigatorCards[investigator];
+    const card = this.campaignState.investigatorCard(investigator);
     if (card) {
       return card.insane(investigatorData);
     }
@@ -817,7 +816,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           if (includeEliminated) {
             return true;
           }
-          const card = this.investigatorCards[code];
+          const card = this.campaignState.investigatorCard(code);
           return !!card && !this.isEliminated(card);
         }
       ),
@@ -828,7 +827,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   investigators(includeEliminated: boolean): Card[] {
     return flatMap(
       this.investigatorCodes(includeEliminated),
-      (code) => this.investigatorCards[code] || []
+      (code) => this.campaignState.investigatorCard(code) ?? []
     );
   }
 
