@@ -10,6 +10,7 @@ import { useMyProfile } from '@data/remote/hooks';
 import { User_Flag_Type_Enum } from '@generated/graphql/apollo-schema';
 
 const NON_LOCALIZED_CARDS = new Set(['en', 'cs', 'vi']);
+const NON_ARKHAMDB_CARDS: { [key: string]: string | undefined } = { 'zh-cn': 'zh' };
 
 interface Props {
   children: React.ReactNode;
@@ -40,7 +41,8 @@ export function getArkhamDbDomain(lang: string): string {
   if (NON_LOCALIZED_CARDS.has(lang)) {
     return 'https://arkhamdb.com';
   }
-  return `https://${lang}.arkhamdb.com`;
+  const theLang = NON_ARKHAMDB_CARDS[lang] ?? lang;
+  return `https://${theLang}.arkhamdb.com`;
 }
 
 export default function LanguageProvider({ children }: Props) {
