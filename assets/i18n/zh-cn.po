@@ -4927,9 +4927,6 @@ msgstr "已复制牌组的连结！"
 msgid "Build a deck randomly"
 msgstr "随机构建牌组"
 
-msgid "A single core set is always included"
-msgstr "至少包含一套基础游戏"
-
 msgid "Campaigns Cycles"
 msgstr "剧本循环"
 
@@ -6048,9 +6045,73 @@ msgstr ""
 msgid "Limit of ${ limit } card"
 msgid_plural "Limit of ${ limit } cards"
 msgstr[0] ""
+msgstr[1] ""
 
 #, javascript-format
 msgid "${ total } of ${ attachment.targetSize }"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+#, javascript-format
+msgid "Act: ${ count }"
+msgid_plural "Acts: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Agenda: ${ count }"
+msgid_plural "Agendas: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Location: ${ count }"
+msgid_plural "Locations: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Enemy: ${ count }"
+msgid_plural "Enemies: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Enemy-Location: ${ count }"
+msgid_plural "Enemy-Locations: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Treachery: ${ count }"
+msgid_plural "Treacheries: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Story: ${ count }"
+msgid_plural "Stories: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Key: ${ count }"
+msgid_plural "Keys: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Asset: ${ count }"
+msgid_plural "Assets: ${ count }"
+msgstr[0] ""
+
+msgid "Scenario reference"
+msgid_plural "Scenario references: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Unknown: ${ count }"
+msgid_plural "Unknowns: ${ count }"
+msgstr[0] ""
+
+msgid "Campaign required"
+msgstr ""
+
+msgid "You must select a campaign."
 msgstr ""
 
 msgctxt "investigator"

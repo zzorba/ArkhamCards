@@ -4935,9 +4935,6 @@ msgstr "복사된 덱으로의 링크"
 msgid "Build a deck randomly"
 msgstr "무작위로 덱 구성"
 
-msgid "A single core set is always included"
-msgstr "기본판 하나는 항상 포함됩니다."
-
 msgid "Campaigns Cycles"
 msgstr "캠페인 사이클"
 
@@ -6063,6 +6060,69 @@ msgstr[0] "카드 ${ limit }장 한정"
 #, javascript-format
 msgid "${ total } of ${ attachment.targetSize }"
 msgstr "${ attachment.targetSize }/${ total }"
+
+msgid "Draft"
+msgstr ""
+
+#, javascript-format
+msgid "Act: ${ count }"
+msgid_plural "Acts: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Agenda: ${ count }"
+msgid_plural "Agendas: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Location: ${ count }"
+msgid_plural "Locations: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Enemy: ${ count }"
+msgid_plural "Enemies: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Enemy-Location: ${ count }"
+msgid_plural "Enemy-Locations: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Treachery: ${ count }"
+msgid_plural "Treacheries: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Story: ${ count }"
+msgid_plural "Stories: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Key: ${ count }"
+msgid_plural "Keys: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Asset: ${ count }"
+msgid_plural "Assets: ${ count }"
+msgstr[0] ""
+
+msgid "Scenario reference"
+msgid_plural "Scenario references: ${ count }"
+msgstr[0] ""
+
+#, javascript-format
+msgid "Unknown: ${ count }"
+msgid_plural "Unknowns: ${ count }"
+msgstr[0] ""
+
+msgid "Campaign required"
+msgstr ""
+
+msgid "You must select a campaign."
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

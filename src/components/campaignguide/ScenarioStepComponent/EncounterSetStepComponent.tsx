@@ -54,27 +54,27 @@ function EncounterSetIcon({ set }: { set: { code: string; name: string | undefin
       const entries = sortBy(Object.entries(byType).map(([type, count]) => {
         switch (type) {
           case 'act':
-            return ngettext(msgid`Act: ${count}`, t`Acts: ${count}`, count);
+            return ngettext(msgid`Act: ${count}`, `Acts: ${count}`, count);
           case 'agenda':
-            return ngettext(msgid`Agenda: ${count}`, t`Agendas: ${count}`, count);
+            return ngettext(msgid`Agenda: ${count}`, `Agendas: ${count}`, count);
           case 'location':
-            return ngettext(msgid`Location: ${count}`, t`Locations: ${count}`, count);
+            return ngettext(msgid`Location: ${count}`, `Locations: ${count}`, count);
           case 'enemy':
-            return ngettext(msgid`Enemy: ${count}`, t`Enemies: ${count}`, count);
+            return ngettext(msgid`Enemy: ${count}`, `Enemies: ${count}`, count);
           case 'enemy_location':
-            return ngettext(msgid`Enemy-Location: ${count}`, t`Enemy-Locations: ${count}`, count);
+            return ngettext(msgid`Enemy-Location: ${count}`, `Enemy-Locations: ${count}`, count);
           case 'treachery':
-            return ngettext(msgid`Treachery: ${count}`, t`Treacheries: ${count}`, count);
+            return ngettext(msgid`Treachery: ${count}`, `Treacheries: ${count}`, count);
           case 'story':
-            return ngettext(msgid`Story: ${count}`, t`Stories: ${count}`, count);
+            return ngettext(msgid`Story: ${count}`, `Stories: ${count}`, count);
           case 'key':
-            return ngettext(msgid`Key: ${count}`, t`Keys: ${count}`, count);
+            return ngettext(msgid`Key: ${count}`, `Keys: ${count}`, count);
           case 'asset':
-            return ngettext(msgid`Asset: ${count}`, t`Assets: ${count}`, count);
+            return ngettext(msgid`Asset: ${count}`, `Assets: ${count}`, count);
           case 'scenario':
-            return ngettext(msgid`Scenario reference`, t`Scenario references: ${count}`, count);
+            return ngettext(msgid`Scenario reference`, `Scenario references: ${count}`, count);
           default:
-            return ngettext(msgid`Unknown: ${count}`, t`Unknowns: ${count}`, count);
+            return ngettext(msgid`Unknown: ${count}`, `Unknowns: ${count}`, count);
         }
       }), s => s);
       return entries.join('\n');

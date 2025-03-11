@@ -794,19 +794,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -4970,9 +4970,6 @@ msgstr "¡Enlace al mazo copiado!"
 msgid "Build a deck randomly"
 msgstr "Crear mazo al azar"
 
-msgid "A single core set is always included"
-msgstr "Una copia de la Caja básica siempre está incluida"
-
 msgid "Campaigns Cycles"
 msgstr "Campañas"
 
@@ -6118,6 +6115,80 @@ msgstr[1] "Límite de ${ limit } cartas"
 #, javascript-format
 msgid "${ total } of ${ attachment.targetSize }"
 msgstr "${ total } de ${ attachment.targetSize }"
+
+msgid "Draft"
+msgstr ""
+
+#, javascript-format
+msgid "Act: ${ count }"
+msgid_plural "Acts: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Agenda: ${ count }"
+msgid_plural "Agendas: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Location: ${ count }"
+msgid_plural "Locations: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Enemy: ${ count }"
+msgid_plural "Enemies: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Enemy-Location: ${ count }"
+msgid_plural "Enemy-Locations: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Treachery: ${ count }"
+msgid_plural "Treacheries: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Story: ${ count }"
+msgid_plural "Stories: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Key: ${ count }"
+msgid_plural "Keys: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Asset: ${ count }"
+msgid_plural "Assets: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Scenario reference"
+msgid_plural "Scenario references: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+#, javascript-format
+msgid "Unknown: ${ count }"
+msgid_plural "Unknowns: ${ count }"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Campaign required"
+msgstr ""
+
+msgid "You must select a campaign."
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
