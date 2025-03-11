@@ -298,7 +298,7 @@
           },
           {
             "id": "claypool_has_confronted_his_demons",
-            "text": "Claypool has confronted his demons."
+            "text": "Claypool đã đối mặt với con quỷ của mình."
           },
           {
             "id": "convinced_dyer_to_allow_the_expedition",
@@ -306,11 +306,11 @@
           },
           {
             "id": "cookie_has_confronted_his_demons",
-            "text": "Cookie has confronted his demons."
+            "text": "Cookie đã đối mặt với con quỷ của mình."
           },
           {
             "id": "danforth_has_confronted_his_demons",
-            "text": "Danforth has confronted his demons."
+            "text": "Danforth đã đối mặt với con quỷ của mình."
           },
           {
             "id": "did_not_believe_dyers_report",
@@ -326,7 +326,7 @@
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
-            "text": "Dr. Kensler has confronted her demons."
+            "text": "Tiến sĩ Kensler đã đối mặt với con quỷ của mình."
           },
           {
             "id": "dr_kensler_is_on_the_verge_of_understanding",
@@ -342,19 +342,19 @@
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
-            "text": "Dr. Sinha has confronted her demons."
+            "text": "Tiến sĩ Sinha đã đối mặt với con quỷ của mình."
           },
           {
             "id": "dyer_has_confronted_his_demons",
-            "text": "Dyer has confronted his demons."
+            "text": "Dyer đã đối mặt với con quỷ của mình."
           },
           {
             "id": "eliyah_has_confronted_his_demons",
-            "text": "Eliyah has confronted his demons."
+            "text": "Eliyah đã đối mặt với con quỷ của mình."
           },
           {
             "id": "ellsworth_has_confronted_his_demons",
-            "text": "Ellsworth has confronted his demons."
+            "text": "Ellsworth đã đối mặt với con quỷ của mình."
           },
           {
             "id": "facility_was_destroyed",
@@ -406,7 +406,7 @@
           },
           {
             "id": "takada_has_confronted_her_demons",
-            "text": "Takada has confronted her demons."
+            "text": "Takada đã đối mặt với con quỷ của mình."
           },
           {
             "id": "team_barely_escaped_the_ice_shelf",
@@ -414,7 +414,7 @@
           },
           {
             "id": "team_climbed_to_the_summit",
-            "text": "the team climbed to the summit."
+            "text": "đội đã leo lên đỉnh núi."
           },
           {
             "id": "team_defeated_the_hunting_creatures",
@@ -430,7 +430,7 @@
           },
           {
             "id": "team_found_another_way_through_the_mountains",
-            "text": "the team found another way through the mountains."
+            "text": "đội đã tìm ra một lối khác qua dãy núi."
           },
           {
             "id": "team_found_the_hidden_tunnel",
@@ -827,63 +827,63 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "Airfield (Sân Bay)"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "Alaskan Wilds (Vùng Hoang Dã Alaska)"
           },
           {
             "id": "alien_translation",
-            "text": "Memory of an Alien Translation"
+            "text": "Memory of an Alien Translation (Ký Ức về Bản Dịch Kỳ Lạ)"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "Cluttered Dormitory (Ký Túc Xá Lộn Xộn)"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "Dr. Kensler's Office (Văn Phòng Tiến sĩ Kensler)"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "Dyer's Classroom (Lớp Học của Dyer)"
           },
           {
             "id": "hunt_gone_awry",
-            "text": "Memory of a Hunt Gone Awry"
+            "text": "Memory of a Hunt Gone Awry (Ký Ức về Cuộc Săn Sai Lầm)"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "Infirmary (Phòng Y Tế)"
           },
           {
             "id": "lost_patient",
-            "text": "Memory of a Lost Patient"
+            "text": "Memory of a Lost Patient (Ký Ức về Bệnh Nhân Đã Mất)"
           },
           {
             "id": "missing_father",
-            "text": "Memory of a Missing Father"
+            "text": "Memory of a Missing Father (Ký Ức về Người Cha Mất Tích)"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "Mo'ai Statues (Tượng Mo'ai)"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "Ottoman Front (Mặt Trận Ottoman)"
           },
           {
             "id": "ravaged_country",
-            "text": "Memory of a Ravaged Country"
+            "text": "Memory of a Ravaged Country (Ký Ức về Đất Nước Tàn Phá)"
           },
           {
             "id": "regretful_voyage",
-            "text": "Memory of a Regretful Voyage"
+            "text": "Memory of a Regretful Voyage (Ký Ức về Chuyến Đi Hối Tiếc)"
           },
           {
             "id": "terrible_discovery",
-            "text": "Memory of a Terrible Discovery"
+            "text": "Memory of a Terrible Discovery (Ký Ức về Phát Hiện Kinh Hoàng)"
           },
           {
             "id": "the_black_stone",
@@ -891,11 +891,11 @@
           },
           {
             "id": "unrequited_love",
-            "text": "Memory of an Unrequited Love"
+            "text": "Memory of an Unrequited Love (Ký Ức về Tình Yêu Không Được Đáp Lại)"
           },
           {
             "id": "unspeakable_evil",
-            "text": "Memory of an Unspeakable Evil"
+            "text": "Memory of an Unspeakable Evil (Ký Ức về Cái Ác Không Thể Nói)"
           }
         ]
       },
@@ -904,67 +904,67 @@
         "entries": [
           {
             "id": "airfield",
-            "text": "Airfield"
+            "text": "Airfield (Sân Bay)"
           },
           {
             "id": "alaskan_wilds",
-            "text": "Alaskan Wilds"
+            "text": "Alaskan Wilds (Vùng Hoang Dã Alaska)"
           },
           {
             "id": "base_camp",
-            "text": "Base Camp"
+            "text": "Base Camp (Trại Cơ Sở)"
           },
           {
             "id": "cluttered_dormitory",
-            "text": "Cluttered Dormitory"
+            "text": "Cluttered Dormitory (Ký Túc Xá Lộn Xộn)"
           },
           {
             "id": "coastal_waters",
-            "text": "Coastal Waters"
+            "text": "Coastal Waters (Vùng Nước Ven Bờ)"
           },
           {
             "id": "deck_of_the_theodosia",
-            "text": "Deck of the Theodosia"
+            "text": "Deck of the Theodosia (Boong Tàu Theodosia)"
           },
           {
             "id": "deserted_station",
-            "text": "Deserted Station"
+            "text": "Deserted Station (Trạm Bị Bỏ Hoang)"
           },
           {
             "id": "dr_kenslers_office",
-            "text": "Dr. Kensler's Office"
+            "text": "Dr. Kensler's Office (Văn Phòng Tiến sĩ Kensler)"
           },
           {
             "id": "dyers_classroom",
-            "text": "Dyer's Classroom"
+            "text": "Dyer's Classroom (Lớp Học của Dyer)"
           },
           {
             "id": "elder_chamber",
-            "text": "Elder Chamber"
+            "text": "Elder Chamber (Phòng Cổ Xưa)"
           },
           {
             "id": "hedge_maze",
-            "text": "Hedge Maze"
+            "text": "Hedge Maze (Mê Cung Hàng Rào)"
           },
           {
             "id": "infirmary",
-            "text": "Infirmary"
+            "text": "Infirmary (Phòng Y Tế)"
           },
           {
             "id": "moai_statues",
-            "text": "Mo'ai Statues"
+            "text": "Mo'ai Statues (Tượng Mo'ai)"
           },
           {
             "id": "ottoman_front",
-            "text": "Ottoman Front"
+            "text": "Ottoman Front (Mặt Trận Ottoman)"
           },
           {
             "id": "riverview_theatre",
-            "text": "Riverview Theatre"
+            "text": "Riverview Theatre (Nhà Hát Riverview)"
           },
           {
             "id": "standing_stones",
-            "text": "Standing Stones"
+            "text": "Standing Stones (Đá Đứng)"
           },
           {
             "id": "the_black_stone",
@@ -972,7 +972,7 @@
           },
           {
             "id": "university_halls",
-            "text": "University Halls"
+            "text": "University Halls (Đại Sảnh Đại Học)"
           }
         ]
       },
@@ -5391,6 +5391,235 @@
           {
             "id": "worn_crucific",
             "text": "Thánh Giá Hao Mòn"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tdc",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "enforce_the_rules",
+            "text": "Enforce the Rules: "
+          },
+          {
+            "id": "no_place_like_home",
+            "text": "No Place Like Home: "
+          },
+          {
+            "id": "walking_with_faith",
+            "text": "Walking with Faith: "
+          }
+        ]
+      },
+      {
+        "section": "artifacts_obtained",
+        "entries": [
+          {
+            "id": "barrier_node",
+            "text": "Barrier Node"
+          },
+          {
+            "id": "clah_horror",
+            "text": "Clay Horror"
+          },
+          {
+            "id": "ghoulish_mask",
+            "text": "Ghoulish Mask"
+          },
+          {
+            "id": "obsidian_claw",
+            "text": "Obsidian Claw"
+          },
+          {
+            "id": "shard",
+            "text": "Shard of Y'ch'lecht"
+          },
+          {
+            "id": "tide_tablet",
+            "text": "Tide Tablet"
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "banished_cthulhu",
+            "text": "the investigators banished Cthulhu."
+          },
+          {
+            "id": "cthulhu_wiped_out_arkham_city",
+            "text": "Cthulhu wiped out Arkham City."
+          },
+          {
+            "id": "did_not_confront_the_nightmare",
+            "text": "the investigators did not confront the nightmare."
+          },
+          {
+            "id": "drove_cthulhu_away",
+            "text": "the investigators drove Cthulhu away."
+          },
+          {
+            "id": "expedition_abandoned_pilgrim",
+            "text": "the expedition abandoned the pilgrim."
+          },
+          {
+            "id": "expedition_headed_east",
+            "text": "the expedition headed east."
+          },
+          {
+            "id": "expedition_headed_west",
+            "text": "the expedition headed west."
+          },
+          {
+            "id": "expedition_helped_pilgrim",
+            "text": "the expedition helped the pilgrim."
+          },
+          {
+            "id": "exterminated_the_alien_pests",
+            "text": "the investigators exterminated the alien pests."
+          },
+          {
+            "id": "found_cthulhu_but_failed",
+            "text": "the investigators found Cthulhu, but Arkham was destroyed."
+          },
+          {
+            "id": "held_out_together",
+            "text": "the investigators held out together."
+          },
+          {
+            "id": "opened_the_inner_sanctum",
+            "text": "the investigators opened the inner sanctum."
+          },
+          {
+            "id": "pilgrims_were_devoured",
+            "text": "the pilgrims were devoured."
+          },
+          {
+            "id": "saved_the_pilgrims",
+            "text": "the investigators saved the pilgrims."
+          },
+          {
+            "id": "stopped_cthulu_from_awakening",
+            "text": "the investigators stopped Cthulhu from awakening."
+          },
+          {
+            "id": "the_power_was_diverted",
+            "text": "the power was diverted."
+          },
+          {
+            "id": "your_allies_have_a_plan",
+            "text": "your allies have a plan."
+          }
+        ]
+      },
+      {
+        "section": "campiagn_notes",
+        "entries": [
+          {
+            "id": "ruby_lost_the_bet",
+            "text": "Ruby lost the bet."
+          },
+          {
+            "id": "ruby_won_the_bet",
+            "text": "Ruby won the bet."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "kept_barrier_node",
+            "text": "dummy"
+          },
+          {
+            "id": "kept_fragment",
+            "text": "dummy"
+          },
+          {
+            "id": "kept_ghoulish_mask",
+            "text": "dummy"
+          },
+          {
+            "id": "kept_obsidian_jar",
+            "text": "dummy"
+          },
+          {
+            "id": "kept_tide_tablet",
+            "text": "dummy"
+          },
+          {
+            "id": "task_enforce_the_rules",
+            "text": "dummy"
+          },
+          {
+            "id": "task_no_place_like_home",
+            "text": "dummy"
+          },
+          {
+            "id": "task_walking_with_faith",
+            "text": "dummy"
+          },
+          {
+            "id": "tdc_chamber_core",
+            "text": "dummy"
+          },
+          {
+            "id": "tdc_helped_with_the_ropes",
+            "text": "#name# helped with the ropes"
+          },
+          {
+            "id": "tdc_hive_mind",
+            "text": "dummy"
+          },
+          {
+            "id": "tdc_lost_pilgrims",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "possible_artifacts",
+        "entries": [
+          {
+            "id": "barrier_node",
+            "text": "Barrier Node"
+          },
+          {
+            "id": "ghoulish_mask",
+            "text": "Ghoulish Mask"
+          },
+          {
+            "id": "obsidian_claw",
+            "text": "Obsidian Claw"
+          },
+          {
+            "id": "shard",
+            "text": "Shard of Y'ch'lecht"
+          },
+          {
+            "id": "tide_tablet",
+            "text": "Tide Tablet"
+          }
+        ]
+      },
+      {
+        "section": "symbols",
+        "entries": [
+          {
+            "id": "tdc_hash",
+            "text": "[tdc_hash]: Depths"
+          },
+          {
+            "id": "tdc_hash_placeholder",
+            "text": "[tdc_hash]: ???"
           }
         ]
       }

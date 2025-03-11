@@ -78,6 +78,7 @@ function AttachmentSection({ card, attachment, attachmentCards, width }: { width
   const sorted = useMemo(() => sortBy(attachmentCards, a => a.name), [attachmentCards]);
   const slots = useDeckAttachmentSlots(attachment);
   const total = useMemo(() => sumBy(Object.values(slots), c => c), [slots]);
+
   const errorMessage = useMemo(() => {
     if (total > attachment.targetSize) {
       return t`Too many selected`;

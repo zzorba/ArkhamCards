@@ -1946,7 +1946,8 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         section,
         effect.id,
         effect.operation,
-        value
+        value,
+        effect.min
       );
     });
     this.investigatorSections[effect.section] = investigatorSection;
@@ -2030,7 +2031,11 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       effect.section === '$input_value' ? input || [] : [effect.section];
     const ids: string[] | undefined = this.cardsIds(effect, input);
     forEach(sectionIds, (sectionId) => {
-      const section: EntrySection = this.sections[sectionId] || {
+      const section: EntrySection = (
+        effect.investigator_section ?
+          this.investigatorSections[sectionId]?.[effect.investigator_section] :
+          this.sections[sectionId]
+      ) ?? {
         entries: [],
       };
       if (!ids) {
@@ -2174,7 +2179,14 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         });
       }
       // Update the section
-      this.sections[sectionId] = section;
+      if (effect.investigator_section) {
+        if (!this.investigatorSections[sectionId]) {
+          this.investigatorSections[sectionId] = {};
+        }
+        this.investigatorSections[sectionId][effect.investigator_section] = section;
+      } else {
+        this.sections[sectionId] = section;
+      }
     });
   }
 }

@@ -5398,6 +5398,235 @@
     "supplies": []
   },
   {
+    "campaignId": "tdc",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "enforce_the_rules",
+            "text": "Enforce the Rules: "
+          },
+          {
+            "id": "no_place_like_home",
+            "text": "No Place Like Home: "
+          },
+          {
+            "id": "walking_with_faith",
+            "text": "Walking with Faith: "
+          }
+        ]
+      },
+      {
+        "section": "artifacts_obtained",
+        "entries": [
+          {
+            "id": "barrier_node",
+            "text": "Barrier Node"
+          },
+          {
+            "id": "clah_horror",
+            "text": "Clay Horror"
+          },
+          {
+            "id": "ghoulish_mask",
+            "text": "Ghoulish Mask"
+          },
+          {
+            "id": "obsidian_claw",
+            "text": "Obsidian Claw"
+          },
+          {
+            "id": "shard",
+            "text": "Shard of Y'ch'lecht"
+          },
+          {
+            "id": "tide_tablet",
+            "text": "Tide Tablet"
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "banished_cthulhu",
+            "text": "the investigators banished Cthulhu."
+          },
+          {
+            "id": "cthulhu_wiped_out_arkham_city",
+            "text": "Cthulhu wiped out Arkham City."
+          },
+          {
+            "id": "did_not_confront_the_nightmare",
+            "text": "the investigators did not confront the nightmare."
+          },
+          {
+            "id": "drove_cthulhu_away",
+            "text": "the investigators drove Cthulhu away."
+          },
+          {
+            "id": "expedition_abandoned_pilgrim",
+            "text": "the expedition abandoned the pilgrim."
+          },
+          {
+            "id": "expedition_headed_east",
+            "text": "the expedition headed east."
+          },
+          {
+            "id": "expedition_headed_west",
+            "text": "the expedition headed west."
+          },
+          {
+            "id": "expedition_helped_pilgrim",
+            "text": "the expedition helped the pilgrim."
+          },
+          {
+            "id": "exterminated_the_alien_pests",
+            "text": "the investigators exterminated the alien pests."
+          },
+          {
+            "id": "found_cthulhu_but_failed",
+            "text": "the investigators found Cthulhu, but Arkham was destroyed."
+          },
+          {
+            "id": "held_out_together",
+            "text": "the investigators held out together."
+          },
+          {
+            "id": "opened_the_inner_sanctum",
+            "text": "the investigators opened the inner sanctum."
+          },
+          {
+            "id": "pilgrims_were_devoured",
+            "text": "the pilgrims were devoured."
+          },
+          {
+            "id": "saved_the_pilgrims",
+            "text": "the investigators saved the pilgrims."
+          },
+          {
+            "id": "stopped_cthulu_from_awakening",
+            "text": "the investigators stopped Cthulhu from awakening."
+          },
+          {
+            "id": "the_power_was_diverted",
+            "text": "the power was diverted."
+          },
+          {
+            "id": "your_allies_have_a_plan",
+            "text": "your allies have a plan."
+          }
+        ]
+      },
+      {
+        "section": "campiagn_notes",
+        "entries": [
+          {
+            "id": "ruby_lost_the_bet",
+            "text": "Ruby lost the bet."
+          },
+          {
+            "id": "ruby_won_the_bet",
+            "text": "Ruby won the bet."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "kept_barrier_node",
+            "text": "dummy"
+          },
+          {
+            "id": "kept_fragment",
+            "text": "dummy"
+          },
+          {
+            "id": "kept_ghoulish_mask",
+            "text": "dummy"
+          },
+          {
+            "id": "kept_obsidian_jar",
+            "text": "dummy"
+          },
+          {
+            "id": "kept_tide_tablet",
+            "text": "dummy"
+          },
+          {
+            "id": "task_enforce_the_rules",
+            "text": "dummy"
+          },
+          {
+            "id": "task_no_place_like_home",
+            "text": "dummy"
+          },
+          {
+            "id": "task_walking_with_faith",
+            "text": "dummy"
+          },
+          {
+            "id": "tdc_chamber_core",
+            "text": "dummy"
+          },
+          {
+            "id": "tdc_helped_with_the_ropes",
+            "text": "#name# helped with the ropes"
+          },
+          {
+            "id": "tdc_hive_mind",
+            "text": "dummy"
+          },
+          {
+            "id": "tdc_lost_pilgrims",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "possible_artifacts",
+        "entries": [
+          {
+            "id": "barrier_node",
+            "text": "Barrier Node"
+          },
+          {
+            "id": "ghoulish_mask",
+            "text": "Ghoulish Mask"
+          },
+          {
+            "id": "obsidian_claw",
+            "text": "Obsidian Claw"
+          },
+          {
+            "id": "shard",
+            "text": "Shard of Y'ch'lecht"
+          },
+          {
+            "id": "tide_tablet",
+            "text": "Tide Tablet"
+          }
+        ]
+      },
+      {
+        "section": "symbols",
+        "entries": [
+          {
+            "id": "tdc_hash",
+            "text": "[tdc_hash]: Depths"
+          },
+          {
+            "id": "tdc_hash_placeholder",
+            "text": "[tdc_hash]: ???"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "tdea",
     "sections": [
       {

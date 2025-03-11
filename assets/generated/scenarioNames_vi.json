@@ -56,6 +56,10 @@
     "name": "All or Nothing"
   },
   {
+    "id": "an_offer_you_cant_refuse",
+    "name": "An Offer You Can't Refuse"
+  },
+  {
     "id": "an_unknown_benefactor",
     "name": "An Unknown Benefactor"
   },
@@ -322,6 +326,10 @@
   {
     "id": "essex_county_express",
     "name": "The Essex County Express"
+  },
+  {
+    "id": "expedition_to_ryleh",
+    "name": "Expedition to R'lyeh"
   },
   {
     "id": "extracurricular_activity",
@@ -596,6 +604,14 @@
     "name": "Night on the Town"
   },
   {
+    "id": "obsidian_canyons",
+    "name": "Obsidian Canyons"
+  },
+  {
+    "id": "one_last_job",
+    "name": "One Last Job"
+  },
+  {
     "id": "oz_epilogue",
     "name": "Phần kết"
   },
@@ -670,6 +686,10 @@
   {
     "id": "return_to_a_phantom_of_truth",
     "name": "Return to A Phantom of Truth"
+  },
+  {
+    "id": "return_to_arkham",
+    "name": "Return to Arkham"
   },
   {
     "id": "return_to_at_deaths_doorstep",
@@ -908,6 +928,14 @@
     "name": "Phần kết"
   },
   {
+    "id": "tdc_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "tdc_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
     "id": "tde_epilogue",
     "name": "Phần kết"
   },
@@ -956,12 +984,20 @@
     "name": "The Afternoon War"
   },
   {
+    "id": "the_apiary",
+    "name": "The Apiary"
+  },
+  {
     "id": "the_attack",
     "name": "The Attack"
   },
   {
     "id": "the_avatar_of_darkness",
     "name": "The Avatar of Darkness"
+  },
+  {
+    "id": "the_awakening",
+    "name": "The Awakening"
   },
   {
     "id": "the_black_cat",
@@ -988,6 +1024,10 @@
     "name": "The Colour Out of Space"
   },
   {
+    "id": "the_court_of_the_ancients",
+    "name": "The Court of the Ancients"
+  },
+  {
     "id": "the_crown",
     "name": "The Crown"
   },
@@ -1002,6 +1042,18 @@
   {
     "id": "the_dodo",
     "name": "The Dodo"
+  },
+  {
+    "id": "the_doom_of_arkham",
+    "name": "The Doom of Arkham"
+  },
+  {
+    "id": "the_doom_of_arkham_part_1",
+    "name": "The Doom of Arkham: Part I"
+  },
+  {
+    "id": "the_doom_of_arkham_part_2",
+    "name": "The Doom of Arkham: Part II"
   },
   {
     "id": "the_duchess",
@@ -1034,6 +1086,10 @@
   {
     "id": "the_golden_circle",
     "name": "The Golden Circle"
+  },
+  {
+    "id": "the_great_chamber",
+    "name": "The Great Chamber"
   },
   {
     "id": "the_great_ones",
@@ -1144,6 +1200,14 @@
     "name": "The Silent Heath"
   },
   {
+    "id": "the_sleepers_tomb",
+    "name": "The Sleeper's Tomb"
+  },
+  {
+    "id": "the_sunken_quarter",
+    "name": "The Sunken Quarter"
+  },
+  {
     "id": "the_symphony_of_erich_zann",
     "name": "The Symphony of Erich Zann"
   },
@@ -1178,6 +1242,10 @@
   {
     "id": "the_warning",
     "name": "The Warning"
+  },
+  {
+    "id": "the_western_wall",
+    "name": "The Western Wall"
   },
   {
     "id": "the_white_queen",

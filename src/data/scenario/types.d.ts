@@ -546,6 +546,7 @@ export interface CampaignLogEffect {
 export interface CampaignLogCardsEffect {
   type: "campaign_log_cards";
   section: string;
+  investigator_section?: string;
   id?: string;
   text?: string;
   masculine_text?: string;
@@ -584,6 +585,7 @@ export interface CampaignLogInvestigatorCountEffect {
   operation: "set_input" | "set" | "add_input" | "add" | "cross_out";
   value?: number;
   text?: string;
+  min?: number;
 }
 export interface CampaignDataSetScenariosEffect {
   type: "campaign_data";

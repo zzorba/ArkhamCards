@@ -250,7 +250,9 @@ export default function(
         break;
       }
       case 'inc': {
-        currentSlots[action.code] = Math.min((currentSlots[action.code] || 0) + 1, action.limit || 2);
+        if (action.countType !== 'attachment') {
+          currentSlots[action.code] = Math.min((currentSlots[action.code] || 0) + 1, action.limit ?? 2);
+        }
         // Special logic for inc related to ignoreDeckLimitSlots.
         switch (action.countType) {
           case 'ignoreDeckLimitSlots':
@@ -261,11 +263,15 @@ export default function(
               };
             }
             break;
-          case 'attachment':
-            if (currentSlots[action.code] > (currentEdits.slots[action.code] ?? 0)) {
+          case 'attachment': {
+            const newCount = (currentSlots[action.code] ?? 0) + 1;
+            if (newCount > (currentEdits.slots[action.code] ?? 0) || (action.limit && newCount > action.limit)) {
               currentSlots[action.code] = 0;
+            } else {
+              currentSlots[action.code] = newCount;
             }
             break;
+          }
         }
         break;
       }
