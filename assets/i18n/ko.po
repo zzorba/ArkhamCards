@@ -6023,7 +6023,7 @@ msgid "Ages Unwound"
 msgstr ""
 
 msgid "Create new deck"
-msgstr ""
+msgstr "새로운 덱 생성하기"
 
 msgid "Timeline"
 msgstr ""
@@ -6032,37 +6032,37 @@ msgid "Strange Assistance"
 msgstr ""
 
 msgid "Attachments"
-msgstr ""
+msgstr "부착"
 
 msgid "Bewitching"
-msgstr ""
+msgstr "환혹"
 
 msgid "Hunch deck"
-msgstr ""
+msgstr "직감 덱"
 
 msgid "Stick to the Plan"
-msgstr ""
+msgstr "계획 엄수"
 
 msgid "Market deck"
-msgstr ""
+msgstr "거래 덱"
 
 msgid "Branded spell"
-msgstr ""
+msgstr "낙인 마법"
 
 msgid "Too many selected"
-msgstr ""
+msgstr "너무 많이 선택되었습니다"
 
 msgid "Each card must be different"
-msgstr ""
+msgstr "각 카드는 서로 달라야 합니다"
 
 #, javascript-format
 msgid "Limit of ${ limit } card"
 msgid_plural "Limit of ${ limit } cards"
-msgstr[0] ""
+msgstr[0] "카드 ${ limit }장 한정"
 
 #, javascript-format
 msgid "${ total } of ${ attachment.targetSize }"
-msgstr ""
+msgstr "${ attachment.targetSize }/${ total }"
 
 msgctxt "investigator"
 msgid "Custom"
