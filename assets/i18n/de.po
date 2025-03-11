@@ -794,19 +794,19 @@ msgstr "Chaosbeutel"
 msgid "Adjust Weakness Set"
 msgstr "Schwächeset anpassen"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Dieses Deck enthält mehrere Grundschwächen"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Dieses Deck enthält eine Grundschwäche"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Willst du sie aus dem Grundschwächenset der Kampagne entfernen?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Willst du es aus dem Grundschwächenset der Kampagne entfernen?"
 
@@ -4617,7 +4617,7 @@ msgid "Show decks from other campaigns"
 msgstr "Zeige Decks von anderen Kampagnen"
 
 msgid "Trait Choice"
-msgstr "Vorteilswahl"
+msgstr "Ausgewähltes Merkmal"
 
 msgid "Blessed"
 msgstr "Gesegnet"
@@ -4626,7 +4626,7 @@ msgid "Cursed"
 msgstr "Verflucht"
 
 msgid "Blessed and Cursed"
-msgstr "Gesegnet und verflucht"
+msgstr "Gesegnet und Verflucht"
 
 msgid "Select Option"
 msgstr "Wähle Option"
@@ -4746,7 +4746,7 @@ msgid "Durability"
 msgstr "Haltbarkeit"
 
 msgid "Leylines"
-msgstr "Kraftlinien"
+msgstr "Ley-Linien"
 
 msgid "Offerings"
 msgstr "Angebote"
@@ -5728,7 +5728,7 @@ msgid "EXPT"
 msgstr ""
 
 msgid "Class Choice"
-msgstr ""
+msgstr "Ausgewählte Klasse"
 
 msgid "Class"
 msgstr ""
@@ -5910,7 +5910,7 @@ msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.
 msgstr ""
 
 msgid "Aether"
-msgstr ""
+msgstr "Äther"
 
 msgid "Campaign Rules & FAQ"
 msgstr "Kampagnen-Regeln & FAQ"
@@ -5996,10 +5996,10 @@ msgid "Handle is already taken"
 msgstr ""
 
 msgid "Portents"
-msgstr ""
+msgstr "Vorzeichen"
 
 msgid "Truths"
-msgstr ""
+msgstr "Wahrheiten"
 
 msgid "Specialist"
 msgstr "Spezialist"
@@ -7688,7 +7688,7 @@ msgstr "Upgrade"
 
 msgctxt "trait"
 msgid "Vale"
-msgstr "Vale"
+msgstr "Tal"
 
 msgctxt "trait"
 msgid "Vehicle"
@@ -7848,7 +7848,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Abandoned"
-msgstr ""
+msgstr "Verlassen"
 
 msgctxt "trait"
 msgid "Access"
@@ -7872,7 +7872,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Bazaar"
-msgstr ""
+msgstr "Basar"
 
 msgctxt "trait"
 msgid "Blessed?"
@@ -7928,7 +7928,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Corruption"
-msgstr ""
+msgstr "Verderbnis"
 
 msgctxt "trait"
 msgid "Darkness"
@@ -7964,7 +7964,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Haunted"
-msgstr ""
+msgstr "Heimgesucht"
 
 msgctxt "trait"
 msgid "Havana"
@@ -7992,7 +7992,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Locus Site"
-msgstr ""
+msgstr "Fokuspunkt"
 
 msgctxt "trait"
 msgid "London"
@@ -8040,7 +8040,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Outsider"
-msgstr ""
+msgstr "Außenseiter"
 
 msgctxt "trait"
 msgid "Parasitic"
@@ -8064,7 +8064,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Restricted"
-msgstr ""
+msgstr "Gesperrt"
 
 msgctxt "trait"
 msgid "Retired"
@@ -8072,7 +8072,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Risen"
-msgstr ""
+msgstr "Auferstanden"
 
 msgctxt "trait"
 msgid "Row"
@@ -8112,7 +8112,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Stable"
-msgstr ""
+msgstr "Stabil"
 
 msgctxt "trait"
 msgid "Stop"
@@ -8132,7 +8132,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Tower"
-msgstr ""
+msgstr "Turm"
 
 msgctxt "trait"
 msgid "Traitor"
@@ -8148,7 +8148,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Unstable"
-msgstr ""
+msgstr "Instabil"
 
 msgctxt "trait"
 msgid "Upper Floor"
@@ -8176,11 +8176,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Blight"
-msgstr ""
+msgstr "Seuche"
 
 msgctxt "trait"
 msgid "Colour"
-msgstr ""
+msgstr "Farbe"
 
 msgctxt "trait"
 msgid "Crew"
@@ -8192,11 +8192,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Emissary"
-msgstr ""
+msgstr "Abgesandter"
 
 msgctxt "trait"
 msgid "Game"
-msgstr ""
+msgstr "Spiel"
 
 msgctxt "trait"
 msgid "Inconspicuous"
@@ -8208,19 +8208,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Public"
-msgstr ""
+msgstr "Öffentlich"
 
 msgctxt "trait"
 msgid "Resident"
-msgstr ""
+msgstr "Anwohner"
 
 msgctxt "trait"
 msgid "Role"
-msgstr ""
+msgstr "Rolle"
 
 msgctxt "trait"
 msgid "Rot"
-msgstr ""
+msgstr "Verrottung"
 
 msgctxt "trait"
 msgid "Sub-Level"
@@ -8228,27 +8228,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Unpracticed"
-msgstr ""
+msgstr "Untrainiert"
 
 msgctxt "trait"
 msgid "Allied"
-msgstr ""
+msgstr "Verbündet"
 
 msgctxt "trait"
 msgid "Bog"
-msgstr ""
+msgstr "Sumpf"
 
 msgctxt "trait"
 msgid "Cart"
-msgstr ""
+msgstr "Karren"
 
 msgctxt "trait"
 msgid "Dark"
-msgstr ""
+msgstr "Dunkel"
 
 msgctxt "trait"
 msgid "Dormant"
-msgstr ""
+msgstr "Ruhend"
 
 msgctxt "trait"
 msgid "Fairy"
@@ -8256,15 +8256,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Farm"
-msgstr ""
+msgstr "Farm"
 
 msgctxt "trait"
 msgid "Field"
-msgstr ""
+msgstr "Feld"
 
 msgctxt "trait"
 msgid "Forest"
-msgstr ""
+msgstr "Wald"
 
 msgctxt "trait"
 msgid "Hemlock Vale"
@@ -8276,15 +8276,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Lantern Club"
-msgstr ""
+msgstr "Lantern Club"
 
 msgctxt "trait"
 msgid "Leader"
-msgstr ""
+msgstr "Anführer"
 
 msgctxt "trait"
 msgid "Lit"
-msgstr ""
+msgstr "Angezündet"
 
 msgctxt "trait"
 msgid "Machination"
@@ -8292,11 +8292,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Manor"
-msgstr ""
+msgstr "Herrenhaus"
 
 msgctxt "trait"
 msgid "Misfortune"
-msgstr ""
+msgstr "Unglück"
 
 msgctxt "trait"
 msgid "Oz"
@@ -8308,27 +8308,27 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Rival"
-msgstr ""
+msgstr "Rivale"
 
 msgctxt "trait"
 msgid "Room"
-msgstr ""
+msgstr "Raum"
 
 msgctxt "trait"
 msgid "Scion"
-msgstr ""
+msgstr "Spross"
 
 msgctxt "trait"
 msgid "Station"
-msgstr ""
+msgstr "Haltestelle"
 
 msgctxt "trait"
 msgid "Sunken"
-msgstr ""
+msgstr "Versunken"
 
 msgctxt "trait"
 msgid "Unlit"
-msgstr ""
+msgstr "Erloschen"
 
 #, javascript-format
 msgctxt "filter"
@@ -8434,11 +8434,11 @@ msgstr "Ausrüstung"
 
 msgctxt "uses"
 msgid "Evidence"
-msgstr ""
+msgstr "Beweise"
 
 msgctxt "uses"
 msgid "Time"
-msgstr ""
+msgstr "Zeit"
 
 msgctxt "uses"
 msgid "Treats"
