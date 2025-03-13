@@ -641,6 +641,15 @@ function getDeckChangesHelper(
         decSlot(upgraded, removedCards[i]);
         incSlot(upgraded, addedCard);
         pullAt(removedCards, [i]);
+        if (addedCard.myriad) {
+          const myriadKey = `${addedCard.real_name}_${addedCard.xp}`;
+          if (!myriadBuys[myriadKey]) {
+            // Pay the cost only once for myriad.
+            myriadBuys[myriadKey] = true;
+            return computeDiscountedXpCost(removedCard);
+          }
+          return 0;
+        }
         return computeDiscountedXpCost(removedCard);
       }
     }
