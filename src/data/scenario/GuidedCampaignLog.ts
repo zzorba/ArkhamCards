@@ -2183,7 +2183,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         if (!this.investigatorSections[sectionId]) {
           this.investigatorSections[sectionId] = {};
         }
-        this.investigatorSections[sectionId][effect.investigator_section] = section;
+        this.investigatorSections[sectionId]![effect.investigator_section] = section;
       } else {
         this.sections[sectionId] = section;
       }
