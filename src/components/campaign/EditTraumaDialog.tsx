@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import { Trauma } from '@actions/types';
 import Card from '@data/types/Card';
 import DeckButton from '@components/deck/controls/DeckButton';
-import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import CampaignGuideContext, { useCampaignInvestigator } from '@components/campaignguide/CampaignGuideContext';
 
 interface Props {
   visible: boolean;
@@ -25,9 +25,7 @@ export default function EditTraumaDialog({ visible, investigator: theInvestigato
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
-
-  const { campaignState } = useContext(CampaignGuideContext);
-  const investigator = useMemo(() => theInvestigator ? campaignState.investigatorCard(theInvestigator.code) : undefined, [theInvestigator, campaignState]);
+  const investigator = useCampaignInvestigator(theInvestigator);
   const onSubmit = useCallback(() => {
     if (theInvestigator) {
       updateTrauma(theInvestigator.code, traumaState);

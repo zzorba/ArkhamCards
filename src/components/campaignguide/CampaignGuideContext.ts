@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 
 import { WeaknessSet, CampaignId } from '@actions/types';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
@@ -27,3 +27,8 @@ export const CampaignGuideContext = React.createContext<CampaignGuideContextType
 );
 
 export default CampaignGuideContext;
+
+export function useCampaignInvestigator(theInvestigator: Card | undefined): Card | undefined {
+  const { campaignState } = useContext(CampaignGuideContext);
+  return useMemo(() => theInvestigator ? campaignState?.investigatorCard(theInvestigator.code) ?? theInvestigator : undefined, [theInvestigator, campaignState]);  
+}

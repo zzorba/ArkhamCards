@@ -613,6 +613,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'tdc':
       case 'tdcp':
         return this.drownedIcon('tdcp', size, color);
+      case 'tdcc':
+        return this.drownedIcon('tdcc', size, color);
       case 'creatures_of_the_deep':
         return this.innsmouthIcon('creatures_from_below', size, color);
       case 'the_locals':

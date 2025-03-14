@@ -9,7 +9,7 @@ import StyleContext from '@styles/StyleContext';
 import space, { xs } from '@styles/space';
 import Card from '@data/types/Card';
 import { TINY_PHONE } from '@styles/sizes';
-import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import CampaignGuideContext, { useCampaignInvestigator } from '@components/campaignguide/CampaignGuideContext';
 
 interface Props {
   trauma: TraumaAndCardData;
@@ -45,15 +45,14 @@ export function TraumaIconPile({ physical, mental, whiteText, paddingTop, tiny }
 
 export default function TraumaSummary({ trauma, investigator: theInvestigator, whiteText, hideNone, textStyle, tiny }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const { campaignState } = useContext(CampaignGuideContext);
-  const investigator = useMemo(() => campaignState.investigatorCard(theInvestigator.code) ?? theInvestigator, [campaignState, theInvestigator]);
+  const investigator = useCampaignInvestigator(theInvestigator);
   const physical = (trauma.physical || 0);
   const mental = (trauma.mental || 0);
   const textColorStyle = whiteText ? { color: '#FFF' } : { color: colors.D30 };
-  if (investigator.killed(trauma)) {
+  if (investigator?.killed(trauma)) {
     return <Text style={textStyle || [typography.subHeaderText, textColorStyle]}>{t`Killed`}</Text>;
   }
-  if (investigator.insane(trauma)) {
+  if (investigator?.insane(trauma)) {
     return <Text style={textStyle || [typography.subHeaderText, textColorStyle]}>{t`Insane`}</Text>;
   }
   if (physical + mental === 0) {
