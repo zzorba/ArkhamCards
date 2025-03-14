@@ -8,6 +8,7 @@ import {
 } from '@data/scenario/types';
 import { AttachableDefinition, Pack } from '@actions/types';
 import { JOE_DIAMOND_CODE } from '@data/deck/specialCards';
+import Card from '@data/types/Card';
 
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA = true;
 export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = true;
@@ -403,6 +404,7 @@ export function getAttachableCards(): { [code: string]: AttachableDefinition } {
       requiredCards: {
         [UNSOLVED_CASE_CODE]: 1,
       },
+      filter: (card: Card) => card.type_code === 'event',
     },
     [STICK_TO_THE_PLAN_CODE]: {
       code: STICK_TO_THE_PLAN_CODE,
@@ -412,6 +414,7 @@ export function getAttachableCards(): { [code: string]: AttachableDefinition } {
       buttonLabel: t`Stick to the Plan`,
       icon: 'package',
       targetSize: 3,
+      filter: (card: Card) => card.type_code === 'event',
     },
     [UNDERWORLD_MARKET_CODE]: {
       code: UNDERWORLD_MARKET_CODE,
@@ -427,7 +430,8 @@ export function getAttachableCards(): { [code: string]: AttachableDefinition } {
       name: t`Branded spell`,
       buttonLabel: t`Branded spell`,
       icon: 'stamp',
-      targetSize: 1,
+      targetSize: 1,      
+      filter: (card: Card) => card.type_code === 'asset' && !card.restrictions_investigator,
     },
   };
 }

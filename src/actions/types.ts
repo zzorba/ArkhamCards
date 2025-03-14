@@ -43,6 +43,7 @@ export type AttachableDefinition = {
   requiredCards?: Slots;
   targetSize: number;
   traits?: string[];
+  filter?: (card: Card) => boolean;
 };
 
 export type StartingTabType =

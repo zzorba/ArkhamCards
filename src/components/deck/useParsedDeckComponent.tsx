@@ -423,7 +423,8 @@ export function useDeckAttachments(
   const forCard = useCallback((card: Card) => {
     return attachables.filter(attachment =>
       (attachment.requiredCards?.[card.code] ?? 0) > 0 ||
-      !!attachment.traits?.find(trait => card.real_traits_normalized?.indexOf(`#${trait}#`) !== -1)
+      (!!attachment.traits?.find(trait => card.real_traits_normalized?.indexOf(`#${trait}#`) !== -1) &&
+      (!attachment.filter || attachment.filter(card)))
     );
   }, [attachables]);
 
