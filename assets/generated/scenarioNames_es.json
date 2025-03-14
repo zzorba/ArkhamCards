@@ -1056,6 +1056,10 @@
     "name": "The Doom of Arkham: Part II"
   },
   {
+    "id": "the_drowned_quarter",
+    "name": "The Sunken Quarter"
+  },
+  {
     "id": "the_duchess",
     "name": "La Duquesa"
   },
@@ -1202,10 +1206,6 @@
   {
     "id": "the_sleepers_tomb",
     "name": "The Sleeper's Tomb"
-  },
-  {
-    "id": "the_sunken_quarter",
-    "name": "The Sunken Quarter"
   },
   {
     "id": "the_symphony_of_erich_zann",
