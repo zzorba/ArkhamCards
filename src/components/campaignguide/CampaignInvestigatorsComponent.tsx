@@ -355,11 +355,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           ) }
           { map(killedInvestigators, investigator => {
             const traumaAndCardData = processedCampaign.campaignLog.traumaAndCardData(investigator.code);
-            const actualInvestigator = processedCampaign.campaignLog.campaignState.investigatorCard(investigator.code);
-            const theInvestigator = actualInvestigator ? {
-              code: investigator.code,
-              card: actualInvestigator,
-            } : investigator;
             return (
               <InvestigatorCampaignRow
                 campaignGuide={campaignGuide}
@@ -370,8 +365,8 @@ export default function CampaignInvestigatorsComponent(props: Props) {
                 unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}
                 showXpDialog={showXpDialogPressed}
                 showTraumaDialog={betweenScenarios && (
-                  (traumaAndCardData?.physical && traumaAndCardData?.physical === theInvestigator.card.health) ||
-                  (traumaAndCardData?.mental && traumaAndCardData?.mental === theInvestigator.card.sanity)
+                  (traumaAndCardData?.physical && traumaAndCardData?.physical === investigator.card.health) ||
+                  (traumaAndCardData?.mental && traumaAndCardData?.mental === investigator.card.sanity)
                 ) ? showTraumaDialog : undefined}
                 campaign={campaign}
                 deck={latestDecks[investigator.code]}

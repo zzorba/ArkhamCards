@@ -218,6 +218,7 @@ interface GuidedCampaignLogState {
 export type CampaignInvestigator = {
   code: string;
   card: Card;
+  alternate_code: string | undefined;
 }
 
 export default class GuidedCampaignLog implements GuidedCampaignLogState {
@@ -642,8 +643,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   isEliminated(investigator: CampaignInvestigator) {
     const investigatorData =
       this.campaignData.investigatorData[investigator.code];
-    const actualInvestigator = this.campaignState.investigatorCard(investigator.code) ?? investigator.card;
-    return actualInvestigator.eliminated(investigatorData);
+    return investigator.card.eliminated(investigatorData);
   }
 
   isKilled(investigator: string): boolean {
@@ -863,7 +863,11 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
             return true;
           }
           const card = this.campaignState.investigatorCard(code);
-          return !!card && !this.isEliminated({ code, card });
+          return !!card && !this.isEliminated({
+            code,
+            card,
+            alternate_code: card.alternate_of_code ? card.code : undefined,
+          });
         }
       ),
       (code) => (code === leadInvestigatorCode ? 0 : 1)
@@ -881,6 +885,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         return {
           card,
           code,
+          alternate_code: card.alternate_of_code ? card.code : undefined,
         };
       }
     );

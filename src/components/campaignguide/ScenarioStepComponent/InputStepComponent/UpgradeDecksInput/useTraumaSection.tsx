@@ -57,13 +57,8 @@ export default function useTraumaSection({
     return (choices.mental && choices.mental[0]) || 0;
   }, [choices, mentalAdjust, editable]);
   const [health, sanity] = useMemo(() => {
-    const altCard = campaignLog.campaignState.investigatorCard(investigator.code);
-    const theInvestigator = altCard ? {
-      code: investigator.code,
-      card: altCard,
-    } : investigator;
     const traumaAndCardData = campaignLog.traumaAndCardData(investigator.code);
-    return [theInvestigator.card.getHealth(traumaAndCardData), theInvestigator.card.getSanity(traumaAndCardData)];
+    return [investigator.card.getHealth(traumaAndCardData), investigator.card.getSanity(traumaAndCardData)];
   }, [campaignLog, investigator]);
   const baseTrauma = useMemo(() => campaignLog.baseTrauma(investigator.code), [campaignLog, investigator]);
   const traumaDelta = useMemo(() => campaignLog.traumaChanges(investigator.code), [campaignLog, investigator]);

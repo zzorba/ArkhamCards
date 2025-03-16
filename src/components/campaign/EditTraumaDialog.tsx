@@ -5,7 +5,6 @@ import NewDialog from '@components/core/NewDialog';
 import { t } from 'ttag';
 import { Trauma } from '@actions/types';
 import DeckButton from '@components/deck/controls/DeckButton';
-import { useCampaignInvestigator } from '@components/campaignguide/CampaignGuideContext';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
@@ -17,7 +16,7 @@ interface Props {
   hideKilledInsane?: boolean;
 }
 
-export default function EditTraumaDialog({ visible, investigator: theInvestigator, trauma, updateTrauma, hideDialog, hideKilledInsane }: Props) {
+export default function EditTraumaDialog({ visible, investigator, trauma, updateTrauma, hideDialog, hideKilledInsane }: Props) {
   const [traumaState, setTraumaState] = useState<Trauma>({});
   useEffect(() => {
     if (visible) {
@@ -25,13 +24,12 @@ export default function EditTraumaDialog({ visible, investigator: theInvestigato
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
-  const investigator = useCampaignInvestigator(theInvestigator);
   const onSubmit = useCallback(() => {
-    if (theInvestigator) {
-      updateTrauma(theInvestigator.code, traumaState);
+    if (investigator) {
+      updateTrauma(investigator.code, traumaState);
     }
     hideDialog();
-  }, [theInvestigator, updateTrauma, hideDialog, traumaState]);
+  }, [investigator, updateTrauma, hideDialog, traumaState]);
 
   const onCancel = useCallback(() => {
     hideDialog();

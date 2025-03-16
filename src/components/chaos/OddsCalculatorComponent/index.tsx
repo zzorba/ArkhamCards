@@ -1157,7 +1157,11 @@ export default function OddsCalculatorComponent({
             <InvestigatorRadioChoice
               key={investigator.code}
               type="investigator"
-              investigator={{ code: investigator.code, card: investigator }}
+              investigator={{
+                code: investigator.alternate_of_code ?? investigator.code,
+                card: investigator,
+                alternate_code: investigator.alternate_of_code ? investigator.code : undefined,
+              }}
               description={investigator.subname}
               index={index}
               onSelect={onSelectInvestigator}

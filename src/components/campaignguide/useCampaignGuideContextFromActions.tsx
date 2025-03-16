@@ -44,7 +44,6 @@ export default function useCampaignGuideContextFromActions(
 ): CampaignGuideContextType | undefined {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
-  const parallelCampaignInvestigators = campaignData?.parallelInvestigators;
   const dispatch: AsyncDispatch = useDispatch();
   const [campaignChooseDeck, campaignAddInvestigator] = useChooseDeck(createDeckActions, updateCampaignActions);
   const cycleCode = campaignData?.campaign?.cycleCode;
@@ -247,6 +246,7 @@ export default function useCampaignGuideContextFromActions(
   }, [addInvestigator, showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
     setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo,
     setBinaryAchievement, setCountAchievement]);
+  const parallelCampaignInvestigators = campaignData?.parallelInvestigators;
   const [investigators, parallelInvestigators] = useMemo(() => {
     if (!campaignInvestigators) {
       return [undefined, undefined];

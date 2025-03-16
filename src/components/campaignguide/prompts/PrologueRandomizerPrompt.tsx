@@ -41,7 +41,7 @@ function PrologueRow({ item, setChoice, options, decision, editable, card, rando
     setChoice(item);
   }, [item, setChoice]);
   const selection = useMemo(() => (decision && find(options, o => o.condition === decision)) || undefined, [decision, options]);
-  const investigator = useMemo(() => card ? ({ code: card.code, card }) : undefined, [card]);
+  const investigator = useMemo(() => card ? ({ code: card.code, card, alternate_code: undefined }) : undefined, [card]);
   if (!investigator) {
     return null;
   }
@@ -140,7 +140,7 @@ export default function PrologueRandomizerPrompt({ id, input }: Props) {
   })
   const showInvestigatorDialog = useCallback((item: DisplayChoiceWithId) => {
     const card = find(cards, card => card.code === item.id);
-    setDialogInvestigator(card ? { code: card.code, card } : undefined);
+    setDialogInvestigator(card ? { code: card.code, card, alternate_code: undefined } : undefined);
     showDialog();
   }, [setDialogInvestigator, cards, showDialog]);
   return (

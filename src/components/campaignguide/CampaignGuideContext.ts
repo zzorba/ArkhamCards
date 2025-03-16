@@ -27,17 +27,3 @@ export const CampaignGuideContext = React.createContext<CampaignGuideContextType
 );
 
 export default CampaignGuideContext;
-
-export function useCampaignInvestigator(theInvestigator: CampaignInvestigator | undefined): CampaignInvestigator | undefined {
-  const { campaignState } = useContext(CampaignGuideContext);
-  return useMemo(() => {
-    const card = theInvestigator && campaignState?.investigatorCard(theInvestigator.code);
-    if (card) {
-      return {
-        code: theInvestigator.code,
-        card,
-      };
-    }
-    return theInvestigator;
-  }, [theInvestigator, campaignState]);
-}

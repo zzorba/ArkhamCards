@@ -40,9 +40,10 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import MiniDeckT from './interfaces/MiniDeckT';
 import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
-import { usePlayerCards } from '@components/core/hooks';
+import { useParallelInvestigators, usePlayerCards } from '@components/core/hooks';
 import { ChaosBag } from '@app_constants';
 import { CampaignInvestigator } from './scenario/GuidedCampaignLog';
+import Card from './types/Card';
 
 export function useCampaigns(): [
   MiniCampaignT[],
@@ -101,30 +102,38 @@ export function useCampaign(
 const NO_INVESTIGATOR_CODES: string[] = [];
 export function useCampaignInvestigators(
   campaign: undefined | SingleCampaignT
-): [CampaignInvestigator[] | undefined, boolean] {
+): [CampaignInvestigator[], Card[], false] | [undefined, undefined, true] {
+  const campaignInvestigators = campaign?.investigators;
+  const decks = campaign?.latestDecks();
   const [allInvestigators] = usePlayerCards(
-    campaign?.investigators ?? NO_INVESTIGATOR_CODES,
+    campaignInvestigators ?? NO_INVESTIGATOR_CODES,
     false
   );
-  const campaignInvestigators = campaign?.investigators;
+  const campaignInvestigatorCodes = useMemo(() => campaign?.investigators, [campaign]);
+  const [parallelInvestigators, parallelInvestigatorsLoading] = useParallelInvestigators(campaignInvestigatorCodes)
   return useMemo(() => {
-    if (!campaignInvestigators || !allInvestigators) {
-      return [undefined, true];
+    if (!campaignInvestigators || !allInvestigators || parallelInvestigatorsLoading) {
+      return [undefined, undefined, true];
     }
+    const result: CampaignInvestigator[] = flatMap(campaignInvestigators, (code) => {
+      const deck = decks?.find((deck) => deck.investigator === code);
+      const card_code = deck?.deck.meta?.alternate_front ?? code;
+      const card = parallelInvestigators.find(c => c.code === card_code) ?? allInvestigators[card_code] ?? allInvestigators[code];
+      if (!card) {
+        return [];
+      }
+      return {
+        code,
+        card,
+        alternate_code: card.alternate_of_code ? card.code : undefined,
+      };
+    });
     return [
-      flatMap(campaignInvestigators, (code) => {
-        const card = allInvestigators[code];
-        if (!card) {
-          return [];
-        }
-        return {
-          code,
-          card,
-        };
-      }),
+      result,
+      parallelInvestigators,
       false,
     ];
-  }, [campaignInvestigators, allInvestigators]);
+  }, [decks, campaignInvestigators, parallelInvestigators, parallelInvestigatorsLoading, allInvestigators]);
 }
 
 function shouldUseReduxDeck(

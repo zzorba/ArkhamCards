@@ -1,4 +1,4 @@
-import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults, TarotReading, ChaosBagHistory } from '@actions/types';
+import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults, TarotReading, ChaosBagHistory, OZ } from '@actions/types';
 import { find, findLast, uniq, map, concat, last, maxBy, sumBy, filter, trim } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
@@ -40,9 +40,10 @@ export class MiniCampaignRedux implements MiniCampaignT {
     this.campaignDecks = campaignDecks;
 
     this.updatedAt = updatedAt;
+    const includeParallel = this.campaign.cycleCode === OZ;
     this.investigators = uniq(
       concat(
-        map(this.campaignDecks, d => d.investigator),
+        map(this.campaignDecks, d => includeParallel ? d.deck.meta?.alternate_front ?? d.investigator : d.investigator),
         this.campaign.nonDeckInvestigators || [],
       )
     );

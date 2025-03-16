@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
-import { last } from 'lodash';
+import { find, last } from 'lodash';
 import {
   View,
   ScrollView,
@@ -30,6 +30,9 @@ import { AppState } from '@reducers';
 import { Action } from 'redux';
 import useSingleCard from '@components/card/useSingleCard';
 import { SimpleDeckEditContextProvider } from './DeckEditContext';
+import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface UpgradeDeckProps {
   id: DeckId;
@@ -38,6 +41,24 @@ export interface UpgradeDeckProps {
 }
 
 const EMPTY_TRAUMA = {};
+
+function useCampaignInvestigatorForCampaign(campaign: SingleCampaignT | undefined, deck: LatestDeckT | undefined): CampaignInvestigator | undefined {
+  const [investigatorCard] = useSingleCard(deck?.deck.meta?.alternate_front ?? deck?.deck.investigator_code, 'player', deck?.deck.taboo_id);
+  return useMemo(() => {
+    if (!deck || !investigatorCard) {
+      return undefined;
+    }
+    const code = find(campaign?.investigators, i => i === investigatorCard.alternate_of_code || i === investigatorCard.code);
+    if (!code) {
+      return undefined;
+    }
+    return {
+      code,
+      card: investigatorCard,
+      alternate_code: investigatorCard.alternate_of_code ? investigatorCard.code : undefined,
+    };
+  }, [investigatorCard, deck, campaign]);
+}
 
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
@@ -73,9 +94,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     }
   }, componentId, [save]);
 
-  const [investigatorCard] = useSingleCard(deck?.deck.investigator_code, 'player', deck?.deck.taboo_id);
-  const investigator = useMemo(() => investigatorCard ? { code: investigatorCard.code, card: investigatorCard } : undefined, [investigatorCard]);
-
+  const investigator = useCampaignInvestigatorForCampaign(campaign, deck);
   const deckUpgradeComplete = useCallback(async(deck: Deck) => {
     if (campaignId && traumaUpdate) {
       return dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, deck.investigator_code, traumaUpdate));
@@ -100,7 +119,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
         { !campaign.guided && (
           <EditTraumaComponent
             investigator={investigator}
-            traumaData={traumaUpdate || ((campaign.investigatorData || {})[investigator.code]) || EMPTY_TRAUMA}
+            traumaData={traumaUpdate || ((campaign.investigatorData ?? {})[investigator.code]) || EMPTY_TRAUMA}
             showTraumaDialog={showTraumaDialog}
             sectionHeader
           />

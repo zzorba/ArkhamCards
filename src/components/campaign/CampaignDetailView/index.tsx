@@ -63,7 +63,7 @@ function CampaignDetailView(props: Props) {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const weaknessCards = useWeaknessCards();
   const campaign = useCampaign(campaignId, true);
-  const [allInvestigators, loadingInvestigators] = useCampaignInvestigators(campaign);
+  const [allInvestigators,, loadingInvestigators] = useCampaignInvestigators(campaign);
 
   const updateCampaignActions = useUpdateCampaignActions();
   const dispatch = useAppDispatch();
@@ -188,8 +188,9 @@ function CampaignDetailView(props: Props) {
       onDeckSelect: onAddDeck,
       onInvestigatorSelect: (card: Card) => {
         onAddInvestigator({
-          code: includeParallel ? card.code : (card.alternate_of_code ?? card.code),
+          code: card.alternate_of_code ?? card.code,
           card,
+          alternate_code: card.alternate_of_code ? card.code : undefined,
         })
       },
       simpleOptions: true,

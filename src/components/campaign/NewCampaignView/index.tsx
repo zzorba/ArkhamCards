@@ -199,11 +199,12 @@ function NewCampaignView({ componentId }: NavigationProps) {
   }, [updateInvestigatorIds]);
 
   const includeParallel = campaignChoice?.selection.type === 'campaign' && campaignChoice.selection.code === OZ;
+  const getDeckInvestigator = useCallback((deck: Deck) => {
+    return includeParallel ? deck.meta?.alternate_front ?? deck.investigator_code : deck.investigator_code
+  }, [includeParallel]);
   const deckAdded = useCallback(async(deck: Deck) => {
     setSelectedDecks([...selectedDecks, new LatestDeckRedux(deck, undefined, undefined)]);
-    const investigatorId = includeParallel ? (
-      deck.meta?.alternate_front ?? deck.investigator_code
-    ) : deck.investigator_code;
+    const investigatorId = getDeckInvestigator(deck);
     updateInvestigatorIds({ type: 'add', investigator: investigatorId });
     setInvestigatorToDeck({
       ...investigatorToDeck,
@@ -212,7 +213,7 @@ function NewCampaignView({ componentId }: NavigationProps) {
     checkNewDeckForWeakness(deck);
   }, [
     setSelectedDecks, updateInvestigatorIds, setInvestigatorToDeck, checkNewDeckForWeakness,
-    selectedDecks, investigatorToDeck, includeParallel,
+    selectedDecks, investigatorToDeck, getDeckInvestigator,
   ]);
 
 
@@ -226,9 +227,13 @@ function NewCampaignView({ componentId }: NavigationProps) {
     setSelectedDecks(filter(selectedDecks, deck => deck.id.uuid !== id.uuid));
     if (deck) {
       updateInvestigatorIds({ type: 'remove', investigator: deck.investigator_code });
+      if (deck.meta?.alternate_front) {
+        updateInvestigatorIds({ type: 'remove', investigator: deck.meta.alternate_front });
+      }
     }
     setInvestigatorToDeck(updatedInvestigatorToDeck);
-  }, [investigatorToDeck, selectedDecks, setSelectedDecks, updateInvestigatorIds, setInvestigatorToDeck]);
+  }, [investigatorToDeck, selectedDecks,
+    setSelectedDecks, updateInvestigatorIds, setInvestigatorToDeck]);
 
   const placeholderName = useMemo(() => {
     if (!campaignChoice) {

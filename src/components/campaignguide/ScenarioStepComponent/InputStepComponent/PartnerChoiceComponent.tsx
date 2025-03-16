@@ -51,7 +51,7 @@ export default function PartnerChoiceComponent({ id, input }: Props) {
       code: p.code,
       name: p.name,
       description: p.description,
-      investigator: card ? { code: p.code, card } : undefined,
+      investigator: card ? { code: p.code, card, alternate_code: undefined } : undefined,
     };
   }), [partners, cards]);
   const { scenarioState } = useContext(ScenarioGuideContext);

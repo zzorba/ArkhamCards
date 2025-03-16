@@ -550,7 +550,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   EOE,
   TSK,
   FHV,
-  // TDC,
+  TDC,
 ];
 export const STANDALONE_CAMPAGINS: CampaignCycleCode[] = [GOB, FOF];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [

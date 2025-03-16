@@ -8,7 +8,6 @@ import HealthSanityIcon from '@components/core/HealthSanityIcon';
 import StyleContext from '@styles/StyleContext';
 import space, { xs } from '@styles/space';
 import { TINY_PHONE } from '@styles/sizes';
-import { useCampaignInvestigator } from '@components/campaignguide/CampaignGuideContext';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
@@ -43,9 +42,8 @@ export function TraumaIconPile({ physical, mental, whiteText, paddingTop, tiny }
 }
 
 
-export default function TraumaSummary({ trauma, investigator: theInvestigator, whiteText, hideNone, textStyle, tiny }: Props) {
+export default function TraumaSummary({ trauma, investigator, whiteText, hideNone, textStyle, tiny }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const investigator = useCampaignInvestigator(theInvestigator);
   const physical = (trauma.physical || 0);
   const mental = (trauma.mental || 0);
   const textColorStyle = whiteText ? { color: '#FFF' } : { color: colors.D30 };
