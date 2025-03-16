@@ -2341,7 +2341,7 @@ SPEC CHECKSUMS:
   appcenter-crashes: db54624c501b81471ad17b4ebd95e05ec6c24a0a
   AppCenterReactNativeShared: e6f6bd4d0e055bf1a3d7337edb4993bfce79185b
   boost: 1dca942403ed9342f98334bf4c3621f011aa7946
-  DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
+  DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
   EXConstants: 30c43b9ca8391c31bab9cc45c97f16eddcf11042
   Expo: 761b71aa05939776b5ad3ee934619a6957bfe496
   ExpoAdapterGoogleSignIn: 2d8de6fc349c488bf08b5241d7212115edad4499
@@ -2363,8 +2363,8 @@ SPEC CHECKSUMS:
   FirebaseFunctions: 63d23f720c9a2c537369add7e54cf7e56eb3520a
   FirebaseMessagingInterop: 75220a5ee806720951fd8df07c359266a54c1980
   FirebaseSharedSwift: 672954eac7b141d6954fab9a32d45d6b1d922df8
-  fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
-  glog: fdfdfe5479092de0c4bdbebedd9056951f092c4f
+  fmt: 10c6e61f4be25dc963c36bd73fc7b1705fe975be
+  glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
@@ -2377,7 +2377,7 @@ SPEC CHECKSUMS:
   lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   lottie-react-native: 718b49a709b322422ceca31837017bcf873136e9
   op-sqlite: 7df71a25a959bd1b3474919799467b31477dee04
-  RCT-Folly: 02617c592a293bd6d418e0a88ff4ee1f88329b47
+  RCT-Folly: bf5c0376ffe4dd2cf438dcf86db385df9fdce648
   RCTDeprecation: 7691283dd69fed46f6653d376de6fa83aaad774c
   RCTRequired: eac044a04629288f272ee6706e31f81f3a2b4bfe
   RCTTypeSafety: cfe499e127eda6dd46e5080e12d80d0bfe667228

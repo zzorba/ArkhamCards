@@ -69,7 +69,9 @@ export type Effect =
   | CheckCampaignLogCardsEffect
   | CheckCampaignLogCountEffect
   | ScarletKeyEffect
-  | BackupStateEffect;
+  | BackupStateEffect
+  | CampaignLogAssignTaskEffect
+  | CampaignLogTaskEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
   | "lead_investigator"
@@ -120,6 +122,7 @@ export type DefaultOption = Option;
 export type MathCondition = MathCompareCondition | MathOpCondition | MathEqualsCondition;
 export type Operand =
   | CampaignLogCountOperand
+  | CampaignLogTaskOperand
   | ChaosBagOperand
   | ConstantOperand
   | MostXpEarnedOperand
@@ -725,6 +728,22 @@ export interface BackupStateEffect {
   type: "backup_state";
   operation: "save" | "restore";
 }
+export interface CampaignLogAssignTaskEffect {
+  type: "campaign_log_assign_task";
+  section: string;
+  id: string;
+  investigator: "$input_value";
+  task_section: string;
+  task_id: string;
+}
+export interface CampaignLogTaskEffect {
+  type: "campaign_log_task";
+  section: string;
+  id: string;
+  operation: "set_input" | "set" | "add_input" | "add" | "subtract_input";
+  value?: number;
+  min?: number;
+}
 export interface CampaignLogCardsCondition {
   type: "campaign_log_cards";
   section: string;
@@ -842,6 +861,11 @@ export interface CampaignLogCountOperand {
   type: "campaign_log_count";
   section: string;
   id?: string;
+}
+export interface CampaignLogTaskOperand {
+  type: "campaign_log_task";
+  section: string;
+  id: string;
 }
 export interface ChaosBagOperand {
   type: "chaos_bag";

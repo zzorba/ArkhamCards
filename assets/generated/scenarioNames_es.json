@@ -208,6 +208,10 @@
     "name": "Los confines de la tierra"
   },
   {
+    "id": "court_of_the_ancients",
+    "name": "The Court of the Ancients"
+  },
+  {
     "id": "cp_epilogue",
     "name": "Epílogo"
   },
@@ -892,6 +896,10 @@
     "name": "Estratagemas y recuperación"
   },
   {
+    "id": "sepulchre_of_the_sleeper",
+    "name": "The Sleeper's Tomb"
+  },
+  {
     "id": "shanghai",
     "name": "La serpiente enroscada"
   },
@@ -1024,10 +1032,6 @@
     "name": "El color que cayó del cielo"
   },
   {
-    "id": "the_court_of_the_ancients",
-    "name": "The Court of the Ancients"
-  },
-  {
     "id": "the_crown",
     "name": "The Crown"
   },
@@ -1092,8 +1096,8 @@
     "name": "The Golden Circle"
   },
   {
-    "id": "the_great_chamber",
-    "name": "The Great Chamber"
+    "id": "the_grand_vault",
+    "name": "The Grand Vault"
   },
   {
     "id": "the_great_ones",
@@ -1202,10 +1206,6 @@
   {
     "id": "the_silent_heath",
     "name": "El páramo silencioso"
-  },
-  {
-    "id": "the_sleepers_tomb",
-    "name": "The Sleeper's Tomb"
   },
   {
     "id": "the_symphony_of_erich_zann",

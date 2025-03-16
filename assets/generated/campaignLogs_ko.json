@@ -5404,16 +5404,16 @@
         "section": "$input_value",
         "entries": [
           {
-            "id": "enforce_the_rules",
-            "text": "Enforce the Rules: "
-          },
-          {
             "id": "no_place_like_home",
-            "text": "No Place Like Home: "
+            "text": "No Place Like Home: #x#"
           },
           {
-            "id": "walking_with_faith",
-            "text": "Walking with Faith: "
+            "id": "toe_the_line",
+            "text": "Toe the Line: "
+          },
+          {
+            "id": "walk_in_faith",
+            "text": "Walk in Faith: "
           }
         ]
       },
@@ -5556,15 +5556,15 @@
             "text": "더미"
           },
           {
-            "id": "task_enforce_the_rules",
-            "text": "더미"
-          },
-          {
             "id": "task_no_place_like_home",
             "text": "더미"
           },
           {
-            "id": "task_walking_with_faith",
+            "id": "task_toe_the_line",
+            "text": "더미"
+          },
+          {
+            "id": "task_walk_in_faith",
             "text": "더미"
           },
           {
@@ -5614,12 +5614,12 @@
         "section": "symbols",
         "entries": [
           {
-            "id": "tdc_hash",
-            "text": "[tdc_hash]: Depths"
+            "id": "tdc_rune_a",
+            "text": "[tdc_rune_a]: Depths"
           },
           {
-            "id": "tdc_hash_placeholder",
-            "text": "[tdc_hash]: ???"
+            "id": "tdc_rune_a_placeholder",
+            "text": "[tdc_rune_a]: ???"
           }
         ]
       }

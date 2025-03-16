@@ -190,6 +190,7 @@ export default function InputStepComponent({ step, color, componentId, campaignL
           campaignId={campaignId}
           componentId={componentId}
           input={step.input}
+          text={step.text}
         />
       );
     case 'scenario_investigators':

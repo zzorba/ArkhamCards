@@ -176,6 +176,8 @@ export function getOperand(
   switch (op.type) {
     case 'campaign_log_count':
       return campaignLog.count(op.section, op.id || '$count');
+    case 'campaign_log_task':
+      return campaignLog.task(op.section, op.id);
     case 'chaos_bag':
       return campaignLog.chaosBag[op.token] || 0;
     case 'constant':

@@ -54,6 +54,8 @@ import {
   ScarletKeyEffect,
   SaveDecksEffect,
   BackupStateEffect,
+  CampaignLogAssignTaskEffect,
+  CampaignLogTaskEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
@@ -85,6 +87,13 @@ interface CampaignLogCountEntry extends BasicEntry {
   otherCount?: number;
 }
 
+interface CampaignLogTaskEntry extends BasicEntry {
+  type: 'task';
+  investigator: string;
+  task_section: string;
+  task_id: string;
+}
+
 interface CampaignLogBasicEntry extends BasicEntry {
   type: 'basic';
 }
@@ -104,7 +113,8 @@ export type CampaignLogEntry =
   | CampaignLogCountEntry
   | CampaignLogBasicEntry
   | CampaignLogCardEntry
-  | CampaignLogFreeformEntry;
+  | CampaignLogFreeformEntry
+  | CampaignLogTaskEntry;
 
 export interface EntrySection {
   entries: CampaignLogEntry[];
@@ -227,6 +237,8 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
 
   static isCampaignLogEffect(effect: Effect): boolean {
     switch (effect.type) {
+      case 'campaign_log_assign_task':
+      case 'campaign_log_task':
       case 'campaign_log':
       case 'campaign_log_count':
       case 'campaign_log_investigator_count':
@@ -386,6 +398,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
               );
               break;
             case 'campaign_log_count':
+            case 'campaign_log_task':
               this.handleCampaignLogCountEffect(
                 effect,
                 numberInput && numberInput.length ? numberInput[0] : undefined
@@ -443,12 +456,40 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
             case 'scarlet_key':
               this.handleScarletKeyEffect(effect, input);
               break;
+            case 'campaign_log_assign_task':
+              this.handleCampaignLogAssignTaskEffect(effect, input);
+              break;
             default:
               break;
           }
         });
       });
     }
+  }
+
+  handleCampaignLogAssignTaskEffect(effect: CampaignLogAssignTaskEffect, input?: string[]) {
+    const section = this.sections[effect.section];
+    if (!section) {
+      return;
+    }
+    if (effect.investigator !== '$input_value' || !input){
+      return;
+    }
+    const investigator = input[0];
+    if (!investigator) {
+      return;
+    }
+    const entry: CampaignLogTaskEntry = {
+      type: 'task',
+      id: effect.id,
+      investigator,
+      task_section: effect.task_section,
+      task_id: effect.task_id,
+    };
+    if (!section.entries) {
+      section.entries = [];
+    }
+    section.entries.push(entry);
   }
 
   handleBackupState(effect: BackupStateEffect) {
@@ -885,6 +926,32 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       }
     }
     return 0;
+  }
+
+  task(sectionId: string, id: string): number {
+    const section = this.sections[sectionId];
+    if (!section) {
+      return 0;
+    }
+    const entry = find(
+      section.entries,
+      (entry) => entry.id === id && !entry.crossedOut
+    );
+    if (!entry || entry.type !== 'task') {
+      return 0;
+    }
+    const investigatorSection = this.investigatorSections[entry.task_section]?.[entry.investigator];
+    if (!investigatorSection) {
+      return 0;
+    }
+    const task = find(
+      investigatorSection.entries,
+      (task) => task.id === entry.task_id && !task.crossedOut
+    );
+    if (!task || task.type !== 'count') {
+      return 0;
+    }
+    return task.count;
   }
 
   getInvestigators(
@@ -1954,7 +2021,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   }
 
   private handleCampaignLogCountEffect(
-    effect: CampaignLogCountEffect,
+    effect: CampaignLogCountEffect | CampaignLogTaskEffect,
     numberInput?: number
   ) {
     if (!effect.id) {
@@ -1992,17 +2059,43 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         effect.operation === 'subtract_input'
           ? numberInput
           : effect.value) ?? 0;
-      const section = this.sections[effect.section] || {
-        entries: [],
-      };
-      this.sections[effect.section] = this.updateSectionWithCount(
-        section,
-        effect.id,
-        effect.operation,
-        value,
-        effect.min,
-        effect.alternate
-      );
+
+      switch (effect.type) {
+        case 'campaign_log_count': {
+          const section = this.sections[effect.section] ?? {
+            entries: [],
+          };
+          this.sections[effect.section] = this.updateSectionWithCount(
+            section,
+            effect.id,
+            effect.operation,
+            value,
+            effect.min,
+            effect.alternate
+          );
+          break;
+        }
+        case 'campaign_log_task': {
+          const taskSection = this.sections[effect.section] ?? { entries: [] };
+          const entry = find(taskSection.entries, (entry) => entry.id === effect.id);
+          if (entry?.type !== 'task') {
+            return;
+          }
+          const investigator = entry.investigator;
+          const sectionId = entry.task_section;
+          if (!this.investigatorSections[sectionId]) {
+            this.investigatorSections[sectionId] = {};
+          }
+          const section = this.investigatorSections[sectionId]![investigator] ?? { entries: [] };
+          this.investigatorSections[sectionId]![investigator] = this.updateSectionWithCount(
+            section,
+            entry.task_id,
+            effect.operation,
+            value,
+            effect.min,
+          );
+        }
+      }
     }
   }
 

@@ -20,9 +20,10 @@ interface Props {
   campaignId: CampaignId;
   id: string;
   input: PlayScenarioInput;
+  text?: string
 }
 
-export default function PlayScenarioComponent({ componentId, campaignId, id, input }: Props) {
+export default function PlayScenarioComponent({ componentId, campaignId, id, input, text }: Props) {
   const iteration = useMemo(() => {
     return id.split('#')[1];
   }, [id]);
@@ -83,7 +84,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
       { !iteration && (
         <SetupStepWrapper>
           <CampaignGuideTextComponent
-            text={t`Start playing the scenario now.`}
+            text={text ?? t`Start playing the scenario now.`}
           />
         </SetupStepWrapper>
       ) }
