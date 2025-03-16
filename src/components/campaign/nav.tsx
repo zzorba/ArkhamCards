@@ -5,8 +5,7 @@ import { GuideDrawChaosBagProps } from '@components/chaos/GuideDrawChaosBagView'
 import { GuideOddsCalculatorProps } from '@components/chaos/GuideOddsCalculatorView';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuide from '@data/scenario/CampaignGuide';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import Card from '@data/types/Card';
+import GuidedCampaignLog, { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import { map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -122,7 +121,7 @@ export function showGuideDrawChaosBag(
 export function showDrawChaosBag(
   componentId: string,
   campaignId: CampaignId,
-  allInvestigators: Card[] | undefined,
+  allInvestigators: CampaignInvestigator[] | undefined,
   cycleCode: CampaignCycleCode
 ) {
   Navigation.push<CampaignDrawChaosBagProps>(componentId, {
@@ -147,13 +146,13 @@ export function showDrawChaosBag(
   });
 }
 
-export function showChaosBagOddsCalculator(componentId: string, campaignId: CampaignId, allInvestigators: Card[] | undefined) {
+export function showChaosBagOddsCalculator(componentId: string, campaignId: CampaignId, allInvestigators: CampaignInvestigator[] | undefined) {
   Navigation.push<OddsCalculatorProps>(componentId, {
     component: {
       name: 'OddsCalculator',
       passProps: {
         campaignId,
-        investigatorIds: map(allInvestigators, card => card.code),
+        investigatorIds: map(allInvestigators, card => card.card.code),
       },
       options: {
         topBar: {

@@ -6,12 +6,12 @@ import { t } from 'ttag';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import InvestigatorSelectorWrapper from '@components/campaignguide/InvestigatorSelectorWrapper';
 import { AddCardEffect } from '@data/scenario/types';
-import Card from '@data/types/Card';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import useSingleCard from '@components/card/useSingleCard';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   id: string;
@@ -19,14 +19,14 @@ interface Props {
   input?: string[];
 }
 
-function renderInvestigators(investigators: Card[], card: { name: string; advanced?: boolean }) {
+function renderInvestigators(investigators: CampaignInvestigator[], card: { name: string; advanced?: boolean }) {
   return map(investigators, (investigator, idx) => (
     <SetupStepWrapper bulletType="small" key={idx}>
       <CampaignGuideTextComponent
         text={
           card.advanced ?
-            t`${investigator.name} earns ${card.name} (Advanced).` :
-            t`${investigator.name} earns ${card.name}.`}
+            t`${investigator.card.name} earns ${card.name} (Advanced).` :
+            t`${investigator.card.name} earns ${card.name}.`}
       />
     </SetupStepWrapper>
   ));

@@ -5405,7 +5405,7 @@
         "entries": [
           {
             "id": "no_place_like_home",
-            "text": "No Place Like Home: #x#"
+            "text": "No Place Like Home: "
           },
           {
             "id": "toe_the_line",
@@ -5418,7 +5418,7 @@
         ]
       },
       {
-        "section": "artifacts_obtained",
+        "section": "artifacts_earned",
         "entries": [
           {
             "id": "barrier_node",
@@ -5426,11 +5426,11 @@
           },
           {
             "id": "clah_horror",
-            "text": "Clay Horror"
+            "text": "Horror in Clay"
           },
           {
-            "id": "ghoulish_mask",
-            "text": "Ghoulish Mask"
+            "id": "grisly_mask",
+            "text": "Grisly Mask"
           },
           {
             "id": "obsidian_claw",
@@ -5441,8 +5441,8 @@
             "text": "Shard of Y'ch'lecht"
           },
           {
-            "id": "tide_tablet",
-            "text": "Tide Tablet"
+            "id": "tidal_tablet",
+            "text": "Tidal Tablet"
           }
         ]
       },
@@ -5450,20 +5450,24 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "banished_cthulhu",
-            "text": "the investigators banished Cthulhu."
+            "id": "cthulhu_annihilated_the_city_of_arkham",
+            "text": "Cthulhu annihilated the city of Arkham."
           },
           {
-            "id": "cthulhu_wiped_out_arkham_city",
-            "text": "Cthulhu wiped out Arkham City."
+            "id": "cthulhu_was_banished",
+            "text": "Cthulhu was banished."
+          },
+          {
+            "id": "cthulhu_was_banished_but_arkham_was_destroyed",
+            "text": "Cthulhu was banished, but Arkham was destroyed."
+          },
+          {
+            "id": "cthulhu_was_driven_away",
+            "text": "Cthulhu was driven away."
           },
           {
             "id": "did_not_confront_the_nightmare",
             "text": "the investigators did not confront the nightmare."
-          },
-          {
-            "id": "drove_cthulhu_away",
-            "text": "the investigators drove Cthulhu away."
           },
           {
             "id": "expedition_abandoned_pilgrim",
@@ -5482,32 +5486,28 @@
             "text": "the expedition helped the pilgrim."
           },
           {
-            "id": "exterminated_the_alien_pests",
-            "text": "the investigators exterminated the alien pests."
+            "id": "exterminated_the_alien_parasites",
+            "text": "the investigators exterminated the alien parasites."
           },
           {
-            "id": "found_cthulhu_but_failed",
-            "text": "the investigators found Cthulhu, but Arkham was destroyed."
-          },
-          {
-            "id": "held_out_together",
-            "text": "the investigators held out together."
-          },
-          {
-            "id": "opened_the_inner_sanctum",
-            "text": "the investigators opened the inner sanctum."
+            "id": "halted_cthulhus_awakening",
+            "text": "the investigators halted Cthulhu's awakening."
           },
           {
             "id": "pilgrims_were_devoured",
             "text": "the pilgrims were devoured."
           },
           {
-            "id": "saved_the_pilgrims",
-            "text": "the investigators saved the pilgrims."
+            "id": "pilgrims_were_saved",
+            "text": "the pilgrims were saved."
           },
           {
-            "id": "stopped_cthulu_from_awakening",
-            "text": "the investigators stopped Cthulhu from awakening."
+            "id": "stood_together",
+            "text": "the investigators stood together."
+          },
+          {
+            "id": "the_inner_sanctum_was_unsealed",
+            "text": "the inner sanctum was unsealed."
           },
           {
             "id": "the_power_was_diverted",
@@ -5544,7 +5544,7 @@
             "text": "dummy"
           },
           {
-            "id": "kept_ghoulish_mask",
+            "id": "kept_grisly_mask",
             "text": "dummy"
           },
           {
@@ -5552,7 +5552,7 @@
             "text": "dummy"
           },
           {
-            "id": "kept_tide_tablet",
+            "id": "kept_tidal_tablet",
             "text": "dummy"
           },
           {
@@ -5568,10 +5568,6 @@
             "text": "dummy"
           },
           {
-            "id": "tdc_chamber_core",
-            "text": "dummy"
-          },
-          {
             "id": "tdc_helped_with_the_ropes",
             "text": "#name# helped with the ropes"
           },
@@ -5581,6 +5577,10 @@
           },
           {
             "id": "tdc_lost_pilgrims",
+            "text": "dummy"
+          },
+          {
+            "id": "tdc_vault_core",
             "text": "dummy"
           }
         ]
@@ -5593,8 +5593,8 @@
             "text": "Barrier Node"
           },
           {
-            "id": "ghoulish_mask",
-            "text": "Ghoulish Mask"
+            "id": "grisly_mask",
+            "text": "Grisly Mask"
           },
           {
             "id": "obsidian_claw",
@@ -5605,8 +5605,8 @@
             "text": "Shard of Y'ch'lecht"
           },
           {
-            "id": "tide_tablet",
-            "text": "Tide Tablet"
+            "id": "tidal_tablet",
+            "text": "Tidal Tablet"
           }
         ]
       },

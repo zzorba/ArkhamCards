@@ -9,15 +9,15 @@ import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { InvestigatorNotes } from '@actions/types';
-import Card from '@data/types/Card';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import { ShowCountDialog } from '@components/deck/dialogs';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
-  investigator: Card;
+  investigator: CampaignInvestigator;
   updateInvestigatorNotes: (investigatorNotes: InvestigatorNotes) => void;
   investigatorNotes: InvestigatorNotes | undefined;
   showDialog: ShowTextEditDialog;
@@ -93,7 +93,7 @@ export default function InvestigatorSectionRow({
       </View>
     );
   }, [investigator, investigatorNotes?.counts, showCountDialog, countChanged]);
-  const faction = investigator.factionCode();
+  const faction = investigator.card.factionCode();
   if (investigatorNotes?.sections?.length === 0 && investigatorNotes?.counts?.length === 0) {
     return null;
   }
@@ -108,7 +108,7 @@ export default function InvestigatorSectionRow({
   return (
     <View style={space.paddingBottomS}>
       <RoundedFactionBlock
-        header={<DeckSectionHeader faction={faction} title={investigator.name} />}
+        header={<DeckSectionHeader faction={faction} title={investigator.card.name} />}
         faction={faction}
       >
         { notesSection }

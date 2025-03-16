@@ -4,8 +4,8 @@ import { map } from 'lodash';
 import { t, msgid, ngettext } from 'ttag';
 
 import { XpCountStep } from '@data/scenario/types';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import Card, { CardsMap } from '@data/types/Card';
+import GuidedCampaignLog, { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';
 import { Deck } from '@actions/types';
@@ -46,7 +46,7 @@ function SpentDeckXpComponent({ deck, campaignLog, previousDeck, playerCards, ch
 }
 
 function SpentXpComponent({ investigator, campaignLog, children }: {
-  investigator: Card;
+  investigator: CampaignInvestigator;
   campaignLog: GuidedCampaignLog;
   children: (xp: number) => JSX.Element | null;
 }) {
@@ -72,14 +72,14 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   return children(earnedXp + campaignLog.totalXp(investigator.code) - (spentXp[investigator.code] || 0));
 }
 
-function InvestigatorXpComponent({ investigator, campaignLog, width, resupplyPointsString }: { investigator: Card; campaignLog: GuidedCampaignLog; width: number; resupplyPointsString: string | undefined }) {
+function InvestigatorXpComponent({ investigator, campaignLog, width, resupplyPointsString }: { investigator: CampaignInvestigator; campaignLog: GuidedCampaignLog; width: number; resupplyPointsString: string | undefined }) {
   const { typography } = useContext(StyleContext);
   const trauma = campaignLog.traumaAndCardData(investigator.code);
   const hasTrauma = (trauma.physical || 0) > 0 || (trauma.mental || 0) > 0;
   const renderXpHeader = useCallback((xp: number) => {
     return () => (
       <CompactInvestigatorRow
-        investigator={investigator}
+        investigator={investigator.card}
         width={width - s * 2}
         open={hasTrauma}
       >
@@ -102,7 +102,7 @@ function InvestigatorXpComponent({ investigator, campaignLog, width, resupplyPoi
       <SpentXpComponent investigator={investigator} campaignLog={campaignLog}>
         { (xp: number) => (
           <CollapsibleFactionBlock
-            faction={investigator.factionCode()}
+            faction={investigator.card.factionCode()}
             renderHeader={renderXpHeader(xp)}
             open={hasTrauma}
             disabled
@@ -128,7 +128,7 @@ function InvestigatorXpComponent({ investigator, campaignLog, width, resupplyPoi
 
 export default function XpCountComponent({ step, campaignLog }: Props) {
   const { colors, typography, width } = useContext(StyleContext);
-  const specialString = useCallback((investigator: Card) => {
+  const specialString = useCallback((investigator: CampaignInvestigator) => {
     const count = campaignLog.specialXp(investigator.code, step.special_xp);
     switch (step.special_xp) {
       case 'resupply_points':

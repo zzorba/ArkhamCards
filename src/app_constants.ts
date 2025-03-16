@@ -430,7 +430,7 @@ export function getAttachableCards(): { [code: string]: AttachableDefinition } {
       name: t`Branded spell`,
       buttonLabel: t`Branded spell`,
       icon: 'stamp',
-      targetSize: 1,      
+      targetSize: 1,
       filter: (card: Card) => card.type_code === 'asset' && !card.restrictions_investigator,
     },
   };

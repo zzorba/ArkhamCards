@@ -1523,11 +1523,11 @@ msgid "Start playing the scenario now."
 msgstr "Вы готовы играть сценарий."
 
 #, javascript-format
-msgid "${ investigator.name } earns ${ card.name } (Advanced)."
+msgid "${ investigator.card.name } earns ${ card.name } (Advanced)."
 msgstr "${ investigator.name } получает карту ${ card.name } (Продвинутую)"
 
 #, javascript-format
-msgid "${ investigator.name } earns ${ card.name }."
+msgid "${ investigator.card.name } earns ${ card.name }."
 msgstr "${ investigator.name } получает карту ${ card.name }"
 
 #, javascript-format
@@ -1559,11 +1559,11 @@ msgid "Remove ${ tokenString } from the chaos bag."
 msgstr "Удалите ${ tokenString } из мешка хаоса."
 
 #, javascript-format
-msgid "${ investigator.name } removes ${ card.name } (Advanced)"
+msgid "${ investigator.card.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } удаляет ${ card.name } (Продвинутую)"
 
 #, javascript-format
-msgid "${ investigator.name } removes ${ card.name }"
+msgid "${ investigator.card.name } removes ${ card.name }"
 msgstr "${ investigator.name } удаляет ${ card.name }"
 
 #, javascript-format
@@ -1770,8 +1770,8 @@ msgid "Resolution"
 msgstr "Исход"
 
 #, javascript-format
-msgid "${ investigator.firstName }’s Trauma"
-msgstr "Травмы ${ investigator.firstName }"
+msgid "${ investigator.card.firstName }’s Trauma"
+msgstr "Травмы ${ investigator.card.firstName }"
 
 msgid "Physical Trauma"
 msgstr "Физическая травма"

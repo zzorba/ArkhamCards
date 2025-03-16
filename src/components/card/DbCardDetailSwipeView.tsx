@@ -394,8 +394,8 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
     }
   ): React.ReactElement => {
     const attachment = card ? attachableCards[card.code] : undefined;
-    const attachmentCards = attachment ? data.flatMap(c => 
-      c && !!find(attachment.traits, t => c?.real_traits_normalized?.indexOf(`#${t}#`) !== -1) && 
+    const attachmentCards = attachment ? data.flatMap(c =>
+      c && !!find(attachment.traits, t => c?.real_traits_normalized?.indexOf(`#${t}#`) !== -1) &&
       (!attachment.filter || attachment.filter(c)) ? [c] : []) : [];
     return (
       <ScrollableCard

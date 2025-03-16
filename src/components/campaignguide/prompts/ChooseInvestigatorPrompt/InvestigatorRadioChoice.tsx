@@ -2,12 +2,12 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
-import Card from '@data/types/Card';
 import RadioButton from '../RadioButton';
 import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import { TouchableShrink } from '@components/core/Touchables';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface BasicProps {
   selected: boolean;
@@ -20,7 +20,7 @@ interface BasicProps {
 }
 interface InvestigatorProps extends BasicProps {
   type: 'investigator';
-  investigator: Card;
+  investigator: CampaignInvestigator;
   yithian?: boolean;
 }
 
@@ -42,7 +42,7 @@ export default function InvestigatorRadioChoice({ transparent, description, sele
     if (props.type === 'investigator') {
       return (
         <CompactInvestigatorRow
-          investigator={props.investigator}
+          investigator={props.investigator.card}
           description={description}
           width={width}
           transparent={transparent && !selected}

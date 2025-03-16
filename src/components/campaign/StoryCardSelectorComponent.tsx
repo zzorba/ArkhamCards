@@ -15,10 +15,11 @@ import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 import { ActivityIndicator } from 'react-native';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   componentId: string;
-  investigator: Card;
+  investigator: CampaignInvestigator;
   deck: LatestDeckT;
   encounterCodes: string[];
   scenarioName?: string;
@@ -86,7 +87,7 @@ export default function StoryCardSelectorComponent({
     }
     const header = (
       <CardSectionHeader
-        investigator={investigator}
+        investigator={investigator.card}
         section={{ superTitle: scenarioName ? t`Story cards to add - ${scenarioName}` : t`Story cards to add` }}
       />
     );
@@ -114,7 +115,7 @@ export default function StoryCardSelectorComponent({
 
     const header = (
       <CardSectionHeader
-        investigator={investigator}
+        investigator={investigator.card}
         section={{ superTitle: t`Story Cards - Existing` }}
       />
     );

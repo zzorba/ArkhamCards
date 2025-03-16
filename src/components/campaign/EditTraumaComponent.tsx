@@ -6,14 +6,14 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import NavButton from '@components/core/NavButton';
 import LabeledTextBox from '@components/core/LabeledTextBox';
 import { Trauma } from '@actions/types';
-import Card from '@data/types/Card';
 import space from '@styles/space';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
-  investigator: Card;
+  investigator: CampaignInvestigator;
   traumaData: Trauma;
-  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
+  showTraumaDialog: (investigator: CampaignInvestigator, traumaData: Trauma) => void;
   sectionHeader?: boolean;
 }
 
@@ -23,12 +23,12 @@ export default function EditTraumaComponent({ investigator, traumaData, showTrau
     showTraumaDialog(investigator, traumaData);
   }, [traumaData, showTraumaDialog, investigator]);
 
-  const traumaString = investigator.traumaString(listSeperator, traumaData);
+  const traumaString = investigator.card.traumaString(listSeperator, traumaData);
   if (sectionHeader) {
     return (
       <>
         <CardSectionHeader
-          investigator={investigator}
+          investigator={investigator.card}
           section={{ superTitle: t`Trauma` }}
         />
         <NavButton

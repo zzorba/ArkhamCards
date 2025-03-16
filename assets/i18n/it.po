@@ -475,8 +475,8 @@ msgid "Trauma"
 msgstr "Traumi"
 
 #, javascript-format
-msgid "${ investigator.firstName }’s Trauma"
-msgstr "Traumi di ${ investigator.firstName }"
+msgid "${ investigator.card.firstName }’s Trauma"
+msgstr "Traumi di ${ investigator.card.firstName }"
 
 msgid "Physical Trauma"
 msgstr "Traumi Fisici"
@@ -801,19 +801,19 @@ msgstr "Sacchetto del Caos"
 msgid "Adjust Weakness Set"
 msgstr "Correggi Debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Questo mazzo contiene numerose debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Questo mazzo contiene una debolezza base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverle dal set di debolezze base della campagna?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverla dal set di debolezze base della campagna?"
 
@@ -2211,19 +2211,19 @@ msgid "Play this scenario"
 msgstr "Gioca questo scenario"
 
 #, javascript-format
-msgid "${ investigator.name } earns ${ card.name } (Advanced)."
+msgid "${ investigator.card.name } earns ${ card.name } (Advanced)."
 msgstr "${ investigator.name } ottiene ${ card.name } (Migliorata)."
 
 #, javascript-format
-msgid "${ investigator.name } earns ${ card.name }."
+msgid "${ investigator.card.name } earns ${ card.name }."
 msgstr "${ investigator.name } ottiene ${ card.name }."
 
 #, javascript-format
-msgid "${ investigator.name } removes ${ card.name } (Advanced)"
+msgid "${ investigator.card.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } perde ${ card.name } (Migliorata)"
 
 #, javascript-format
-msgid "${ investigator.name } removes ${ card.name }"
+msgid "${ investigator.card.name } removes ${ card.name }"
 msgstr "${ investigator.name } perde ${ card.name }"
 
 msgid "Challenge Scenario"

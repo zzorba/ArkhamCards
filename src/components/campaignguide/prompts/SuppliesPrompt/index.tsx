@@ -112,10 +112,10 @@ export default function SuppliesPrompt({ id, bulletType, text, input }: Props) {
           return (
             <View style={space.paddingBottomXs} key={idx}>
               <RoundedFactionBlock
-                faction={investigator.factionCode()}
+                faction={investigator.card.factionCode()}
                 header={
                   <CompactInvestigatorRow
-                    investigator={investigator}
+                    investigator={investigator.card}
                     width={width - s * (suppliesInput === undefined ? 4 : 2)}
                     open
                   >

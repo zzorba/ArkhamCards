@@ -12,7 +12,7 @@ import { BODY_OF_A_YITHIAN, BURN_AFTER_READING_CODE } from '@app_constants';
 import Card from '@data/types/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import GuidedCampaignLog, { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
 import { EditSlotsActions, useCounter, useEffectUpdate, useFlag, useSlots } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
@@ -48,7 +48,7 @@ interface Props {
   id: string;
   campaignState: CampaignStateHelper;
   scenarioState: ScenarioStateHelper;
-  investigator: Card;
+  investigator: CampaignInvestigator;
   storyCards?: string[];
   deck?: LatestDeckT;
   campaignLog: GuidedCampaignLog;
@@ -62,7 +62,7 @@ interface Props {
   hideXp?: boolean;
 }
 
-function computeChoiceId(stepId: string, investigator: Card) {
+function computeChoiceId(stepId: string, investigator: CampaignInvestigator) {
   return `${stepId}#${investigator.code}`;
 }
 
@@ -501,7 +501,7 @@ function UpgradeDeckRow({
     const deckButton = deck && choices !== undefined && deckChoice && (
       <ShowDeckButton
         deckId={deckChoice}
-        investigator={investigator}
+        investigator={investigator.card}
       />
     );
     if (choices === undefined && !editable) {
@@ -698,7 +698,7 @@ function UpgradeDeckRow({
     <View style={space.paddingBottomS}>
       <AnimatedCompactInvestigatorRow
         yithian={isYithian}
-        investigator={investigator}
+        investigator={investigator.card}
         open={choices === undefined || open}
         toggleOpen={toggleOpen}
         disabled={choices === undefined}

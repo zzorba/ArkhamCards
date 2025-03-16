@@ -3068,11 +3068,11 @@ msgid "Start playing the scenario now."
 msgstr "Bắt đầu màn chơi."
 
 #, javascript-format
-msgid "${ investigator.name } earns ${ card.name } (Advanced)."
+msgid "${ investigator.card.name } earns ${ card.name } (Advanced)."
 msgstr "${ investigator.name } nhận được ${ card.name } (Advanced)."
 
 #, javascript-format
-msgid "${ investigator.name } earns ${ card.name }."
+msgid "${ investigator.card.name } earns ${ card.name }."
 msgstr "${ investigator.name } nhận được ${ card.name }."
 
 #, javascript-format
@@ -3147,11 +3147,11 @@ msgid "In the ${ sectionName } section of the Campaign Log, draw a check mark ne
 msgstr ""
 
 #, javascript-format
-msgid "${ investigator.name } removes ${ card.name } (Advanced)"
+msgid "${ investigator.card.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } loại bỏ ${ card.name } (Advanced)"
 
 #, javascript-format
-msgid "${ investigator.name } removes ${ card.name }"
+msgid "${ investigator.card.name } removes ${ card.name }"
 msgstr "${ investigator.name } loại bỏ ${ card.name }"
 
 #, javascript-format
@@ -3513,7 +3513,7 @@ msgid "Interlude"
 msgstr ""
 
 #, javascript-format
-msgid "${ investigator.firstName }’s Trauma"
+msgid "${ investigator.card.firstName }’s Trauma"
 msgstr ""
 
 msgid "Physical Trauma"
@@ -3556,19 +3556,19 @@ msgstr ""
 msgid "Adjust Weakness Set"
 msgstr ""
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr ""
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr ""
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr ""
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr ""
 

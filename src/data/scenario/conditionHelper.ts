@@ -554,7 +554,7 @@ function investigatorConditionMatches(
     }
     const matches = filter(
       options,
-      option => investigatorDataMatches(card, investigatorData, option.condition)
+      option => investigatorDataMatches(card.card, investigatorData, option.condition)
     );
     if (matches.length) {
       investigatorChoices[card.code] = map(matches, match => match.condition);

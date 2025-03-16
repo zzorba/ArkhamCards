@@ -4,8 +4,8 @@ import { WeaknessSet, CampaignId } from '@actions/types';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { LatestDecks, ProcessedCampaign } from '@data/scenario';
-import Card from '@data/types/Card';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface CampaignGuideContextType {
   campaignId: CampaignId;
@@ -15,7 +15,7 @@ export interface CampaignGuideContextType {
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;
   spentXp: { [code: string]: number | undefined };
-  campaignInvestigators?: Card[];
+  campaignInvestigators?: CampaignInvestigator[];
   weaknessSet: WeaknessSet;
   latestDecks: LatestDecks;
   syncCampaignChanges: (campaignLog: ProcessedCampaign) => Promise<void>;
@@ -28,7 +28,16 @@ export const CampaignGuideContext = React.createContext<CampaignGuideContextType
 
 export default CampaignGuideContext;
 
-export function useCampaignInvestigator(theInvestigator: Card | undefined): Card | undefined {
+export function useCampaignInvestigator(theInvestigator: CampaignInvestigator | undefined): CampaignInvestigator | undefined {
   const { campaignState } = useContext(CampaignGuideContext);
-  return useMemo(() => theInvestigator ? campaignState?.investigatorCard(theInvestigator.code) ?? theInvestigator : undefined, [theInvestigator, campaignState]);  
+  return useMemo(() => {
+    const card = theInvestigator && campaignState?.investigatorCard(theInvestigator.code);
+    if (card) {
+      return {
+        code: theInvestigator.code,
+        card,
+      };
+    }
+    return theInvestigator;
+  }, [theInvestigator, campaignState]);
 }

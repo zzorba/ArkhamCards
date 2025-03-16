@@ -1,9 +1,9 @@
-import Card from '@data/types/Card';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 export default interface ListItem {
   code: string;
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   name: string;
   description?: string;
   color?: string;

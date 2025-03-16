@@ -17,14 +17,14 @@ import { useCampaign, useCampaignGuideState, useCampaignInvestigators } from '@d
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { useParallelInvestigators } from '@components/core/hooks';
-import { map } from 'lodash';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface SingleCampaignGuideData {
   campaign: SingleCampaignT;
   campaignGuide: CampaignGuide;
   campaignState: CampaignGuideStateT;
   linkedCampaignState?: CampaignGuideStateT;
-  campaignInvestigators?: Card[];
+  campaignInvestigators?: CampaignInvestigator[];
   parallelInvestigators?: Card[];
 }
 

@@ -4,11 +4,11 @@ import { map } from 'lodash';
 
 import EditCountComponent from '../EditCountComponent';
 import { InvestigatorNotes } from '@actions/types';
-import Card from '@data/types/Card';
 import { ShowCountDialog } from '@components/deck/dialogs';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
-  investigator: Card;
+  investigator: CampaignInvestigator;
   updateInvestigatorNotes: (investigatorNotes: InvestigatorNotes) => void;
   investigatorNotes: InvestigatorNotes;
   showCountDialog: ShowCountDialog;

@@ -8,7 +8,7 @@ import Card, { CardsMap } from '@data/types/Card';
 import { drawWeakness } from '@lib/weaknessHelper';
 import InvestigatorButton from '@components/campaignguide/InvestigatorButton';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import GuidedCampaignLog, { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import StyleContext from '@styles/StyleContext';
 import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
@@ -17,7 +17,7 @@ import { ExtraStepPaddingProvider } from '@components/campaignguide/StepPaddingC
 
 interface OwnProps {
   id: string;
-  investigators: Card[];
+  investigators: CampaignInvestigator[];
   weaknessCards: CardsMap;
   traits: string[];
   standalone: boolean;
@@ -30,14 +30,14 @@ interface OwnProps {
 type Props = OwnProps;
 
 function DrawRandomWeaknessButton({ investigator, choice, choiceCard, drawRandomWeakness, index, disabled }: {
-  investigator: Card;
+  investigator: CampaignInvestigator;
   choice?: string;
   choiceCard?: Card;
   index: number;
   disabled: boolean;
-  drawRandomWeakness: (investigator: Card, index: number) => void;
+  drawRandomWeakness: (investigator: CampaignInvestigator, index: number) => void;
 }) {
-  const onPress = useCallback((investigator: Card) => {
+  const onPress = useCallback((investigator: CampaignInvestigator) => {
     drawRandomWeakness(investigator, index);
   }, [index, drawRandomWeakness]);
   return (
@@ -75,9 +75,9 @@ export default function DrawRandomWeaknessComponent({ id, investigators, weaknes
     );
   }, [weaknessCards, campaignLog, choices, campaignInvestigators, latestDecks, weaknessSet]);
 
-  const drawRandomWeakness = useCallback((investigator: Card, index: number) => {
+  const drawRandomWeakness = useCallback((investigator: CampaignInvestigator, index: number) => {
     const card = drawWeakness(
-      investigator,
+      investigator.card,
       effectiveWeaknessSet,
       weaknessCards,
       {

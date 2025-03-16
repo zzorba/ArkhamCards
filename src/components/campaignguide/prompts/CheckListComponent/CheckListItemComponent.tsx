@@ -5,7 +5,6 @@ import { TouchableQuickSize, TouchableShrink } from '@components/core/Touchables
 import ArkhamIcon from '@icons/ArkhamIcon';
 import space, { isTablet, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import Card from '@data/types/Card';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
@@ -13,10 +12,11 @@ import { find } from 'lodash';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import TraumaSummary from '@components/campaign/TraumaSummary';
 import COLORS from '@styles/colors';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   code: string;
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   trauma?: boolean;
   investigatorButton?: React.ReactElement;
   name: string;
@@ -40,7 +40,7 @@ function InvesigatorCheckListItemComponent({
   editable,
 }: {
   code: string;
-  investigator: Card;
+  investigator: CampaignInvestigator;
   investigatorButton?: React.ReactElement;
   trauma?: boolean;
   selected: boolean;
@@ -83,7 +83,7 @@ function InvesigatorCheckListItemComponent({
       <CompactInvestigatorRow
         width={width - s * (editable ? 4 : 2)}
         leftContent={onSecondaryChoice ? switchContent : undefined}
-        investigator={investigator}
+        investigator={investigator.card}
         yithian={yithian}
       >
         <View style={styles.rowRight}>

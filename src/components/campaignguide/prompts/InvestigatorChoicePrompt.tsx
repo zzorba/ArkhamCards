@@ -3,12 +3,12 @@ import { map } from 'lodash';
 
 import ChoiceListComponent, { ChoiceListComponentProps } from './ChoiceListComponent';
 import ScenarioStepContext from '../ScenarioStepContext';
-import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import TraumaSummary from '@components/campaign/TraumaSummary';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props extends ChoiceListComponentProps {
-  investigators?: Card[];
+  investigators?: CampaignInvestigator[];
   includeTrauma?: boolean;
 }
 
@@ -18,13 +18,13 @@ export default function InvestigatorChoicePrompt({ investigators, includeTrauma,
   return (
     <ChoiceListComponent
       {...otherProps}
-      items={map(investigators || scenarioInvestigators, investigator => {
+      items={map(investigators ?? scenarioInvestigators, investigator => {
         return {
           code: investigator.code,
           investigator,
-          name: investigator.name,
-          gender: investigator.gender,
-          color: colors.faction[investigator.factionCode()].background,
+          name: investigator.card.name,
+          gender: investigator.card.gender,
+          color: colors.faction[investigator.card.factionCode()].background,
           component: includeTrauma ? (
             <TraumaSummary
               trauma={campaignLog.traumaAndCardData(investigator.code)}

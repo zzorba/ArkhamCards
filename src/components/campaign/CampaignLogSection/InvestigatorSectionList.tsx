@@ -7,13 +7,13 @@ import {
 
 import InvestigatorSectionRow from './InvestigatorSectionRow';
 import { InvestigatorNotes } from '@actions/types';
-import Card from '@data/types/Card';
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { s } from '@styles/space';
 import { ShowCountDialog } from '@components/deck/dialogs';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
-  allInvestigators: Card[];
+  allInvestigators: CampaignInvestigator[];
   updateInvestigatorNotes: (notes: InvestigatorNotes) => void;
   investigatorNotes: InvestigatorNotes | undefined;
   showDialog: ShowTextEditDialog;
@@ -21,7 +21,7 @@ interface Props {
 }
 
 export default function InvestigatorSectionList({ allInvestigators, updateInvestigatorNotes, investigatorNotes, showDialog, showCountDialog }: Props) {
-  const renderDeckRow = useCallback((investigator: Card) => {
+  const renderDeckRow = useCallback((investigator: CampaignInvestigator) => {
     return (
       <InvestigatorSectionRow
         key={investigator.code}

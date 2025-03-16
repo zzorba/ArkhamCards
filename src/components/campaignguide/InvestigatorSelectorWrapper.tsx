@@ -5,13 +5,12 @@ import { t } from 'ttag';
 import ScenarioStepContext from './ScenarioStepContext';
 import ChooseInvestigatorPrompt from './prompts/ChooseInvestigatorPrompt';
 import { InvestigatorSelector } from '@data/scenario/types';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import Card from '@data/types/Card';
+import GuidedCampaignLog, { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import ScenarioGuideContext from './ScenarioGuideContext';
 
 function getInvestigatorChoices(
   investigator: InvestigatorSelector,
-  investigators: Card[],
+  investigators: CampaignInvestigator[],
   campaignLog: GuidedCampaignLog
 ): string[] | undefined {
   switch (investigator) {
@@ -38,7 +37,7 @@ interface Props<T> {
   optional?: boolean;
   input?: string[];
   fixedInvestigator?: string;
-  render: (investigators: Card[], extraArg: T) => React.ReactNode;
+  render: (investigators: CampaignInvestigator[], extraArg: T) => React.ReactNode;
   extraArg: T;
 }
 
@@ -55,7 +54,7 @@ export default function InvestigatorSelectorWrapper<T = undefined>({
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { campaignLog } = useContext(ScenarioStepContext);
   const scenarioInvestigators = useMemo(() => campaignLog.investigators(false), [campaignLog]);
-  const investigators = useCallback((choice?: string): Card[] => {
+  const investigators = useCallback((choice?: string): CampaignInvestigator[] => {
     switch (investigator) {
       case 'lead_investigator': {
         const leadInvestigator = campaignLog.leadInvestigatorChoice();

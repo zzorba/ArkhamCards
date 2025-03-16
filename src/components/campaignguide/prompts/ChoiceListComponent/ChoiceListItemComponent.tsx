@@ -79,7 +79,7 @@ export default function ChoiceListItemComponent({
     return (
       <>
         { !noInvestigatorItems && (investigator ? (
-          <CompactInvestigatorRow investigator={investigator} width={width} />
+          <CompactInvestigatorRow investigator={investigator.card} width={width} />
         ) : (
           <View style={[
             styles.headerRow,

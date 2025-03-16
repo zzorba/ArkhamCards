@@ -11,7 +11,7 @@ import NonDeckDetailsButton from './NonDeckDetailsButton';
 import UpgradeDeckButton from './UpgradeDeckButton';
 import { Deck, getDeckId, ParsedDeck } from '@actions/types';
 import InvestigatorRow from '@components/core/InvestigatorRow';
-import Card, { CardsMap } from '@data/types/Card';
+import { CardsMap } from '@data/types/Card';
 import { parseBasicDeck } from '@lib/parseDeck';
 import LegacyDeckRow from '@components/campaign/LegacyDeckRow';
 import { s } from '@styles/space';
@@ -21,15 +21,16 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   lang: string;
-  showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
-  updateInvestigatorXp: (investigator: Card, xp: number) => void;
+  showDeckUpgradeDialog: (deck: Deck, investigator?: CampaignInvestigator) => void;
+  updateInvestigatorXp: (investigator: CampaignInvestigator, xp: number) => void;
   campaign: SingleCampaignT;
   originalDeckUuids: Set<string>;
   decks: LatestDeckT[];
-  allInvestigators?: Card[];
+  allInvestigators?: CampaignInvestigator[];
 }
 
 function experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
@@ -59,13 +60,13 @@ export default function UpgradeDecksList({
   const renderDetails = useCallback((
     deck: Deck,
     cards: CardsMap,
-    investigator: Card,
+    investigator: CampaignInvestigator,
     previousDeck?: Deck
   ) => {
     if (!deck) {
       return null;
     }
-    const eliminated = investigator.eliminated(campaign.investigatorData?.[investigator.code]);
+    const eliminated = investigator.card.eliminated(campaign.investigatorData?.[investigator.code]);
     if (eliminated) {
       return null;
     }
@@ -94,14 +95,14 @@ export default function UpgradeDecksList({
     );
   }, [campaign.investigatorData, originalDeckUuids, typography, listSeperator, showDeckUpgradeDialog]);
 
-  const saveXp = useCallback((investigator: Card, xp: number) => {
+  const saveXp = useCallback((investigator: CampaignInvestigator, xp: number) => {
     updateInvestigatorXp(investigator, xp);
     setSaved(investigator.code, true);
   }, [updateInvestigatorXp, setSaved]);
 
   const investigators = filter(
     allInvestigators,
-    investigator => !investigator.eliminated(campaign.investigatorData?.[investigator.code] || {})
+    investigator => !investigator.card.eliminated(campaign.investigatorData?.[investigator.code] || {})
   );
   if (allInvestigators === undefined) {
     return <LoadingCardSearchResult noBorder />;
@@ -115,6 +116,7 @@ export default function UpgradeDecksList({
             <LegacyDeckRow
               key={deck.id.local ? deck.id.uuid : deck.id.id}
               lang={lang}
+              investigator={investigator}
               campaign={campaign}
               deck={deck}
               renderDetails={renderDetails}

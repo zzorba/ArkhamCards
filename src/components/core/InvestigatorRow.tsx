@@ -14,22 +14,22 @@ import { TouchableOpacity } from '@components/core/Touchables';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardCostIcon from '@components/core/CardCostIcon';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import Card from '@data/types/Card';
 import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import AppIcon from '@icons/AppIcon';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   superTitle?: string;
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   yithian?: boolean;
   description?: string;
   eliminated?: boolean;
   button?: React.ReactNode;
   bigImage?: boolean;
-  onPress?: (card: Card) => void;
-  onRemove?: (card: Card) => void;
+  onPress?: (card: CampaignInvestigator) => void;
+  onRemove?: (card: CampaignInvestigator) => void;
   children?: React.ReactNode;
   noFactionIcon?: boolean;
 }
@@ -61,7 +61,7 @@ export default function InvestigatorRow({
     if (eliminated) {
       return colors.faction.dead.background;
     }
-    return colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    return colors.faction[investigator ? investigator.card.factionCode() : 'neutral'].background;
   }, [eliminated, investigator, colors]);
   const fadeAnim = useCallback((props: any) => {
     return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
@@ -94,7 +94,7 @@ export default function InvestigatorRow({
         <View style={[styles.row, !superTitle ? space.paddingTopS : {}]}>
           <View style={styles.image}>
             <InvestigatorImage
-              card={investigator}
+              card={investigator?.card}
               killedOrInsane={eliminated}
               yithian={yithian}
               size={bigImage ? 'large' : 'small'}
@@ -107,7 +107,7 @@ export default function InvestigatorRow({
                 superTitle ? typography.gameFont : typography.bigGameFont,
                 typography.dark,
               ]}>
-                { description ? `${investigator.name}${colon}${description}` : investigator.name }
+                { description ? `${investigator.card.name}${colon}${description}` : investigator.card.name }
               </Text>
             ) : (
               <Placeholder Animation={detailFadeAnim}>
@@ -122,9 +122,9 @@ export default function InvestigatorRow({
             <View style={space.marginRightM}>
               { !onRemove && investigator && (
                 <ArkhamIcon
-                  name={CardCostIcon.factionIcon(investigator)}
+                  name={CardCostIcon.factionIcon(investigator.card)}
                   size={ICON_SIZE}
-                  color={colors.faction[eliminated ? 'dead' : investigator.factionCode()].background}
+                  color={colors.faction[eliminated ? 'dead' : investigator.card.factionCode()].background}
                 />
               ) }
             </View>

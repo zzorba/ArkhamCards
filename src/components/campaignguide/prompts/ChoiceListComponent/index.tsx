@@ -10,15 +10,15 @@ import { BulletType } from '@data/scenario/types';
 import { Choices, DisplayChoiceWithId } from '@data/scenario';
 import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import Card from '@data/types/Card';
 import InputWrapper from '../InputWrapper';
 import ListItem from './ListItem';
 import { StepPaddingContext } from '@components/campaignguide/StepPaddingContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface ChoiceListComponentProps {
   id: string;
   hideInvestigatorSection?: boolean;
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   bulletType?: BulletType;
   promptType?: 'header' | 'setup';
   text?: string;
@@ -171,7 +171,7 @@ export default function ChoiceListComponent({ id, promptType, investigator, bull
   return (
     <InputWrapper
       editable={!hasDecision}
-      investigator={investigator}
+      investigator={investigator?.card}
       onSubmit={save}
       disabledText={disabledText}
       title={(inputChoices !== undefined ? confirmText : undefined) || text}

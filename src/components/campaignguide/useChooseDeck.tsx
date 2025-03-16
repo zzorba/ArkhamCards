@@ -14,14 +14,15 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions } from '@data/remote/decks';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
 import { AppState } from '@reducers';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
 type ChooseDeckType = (
   campaignId: CampaignId,
   cycleCode: CampaignCycleCode | undefined,
-  campaignInvestigators: Card[],
-  singleInvestigator?: Card,
+  campaignInvestigators: CampaignInvestigator[],
+  singleInvestigator?: CampaignInvestigator,
   callback?: (code: string) => Promise<void>,
 ) => void;
 
@@ -40,8 +41,8 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
   const showChooseDeck = useCallback((
     campaignId: CampaignId,
     cycleCode: CampaignCycleCode | undefined,
-    campaignInvestigators: Card[],
-    singleInvestigator?: Card,
+    campaignInvestigators: CampaignInvestigator[],
+    singleInvestigator?: CampaignInvestigator,
     callback?: (code: string) => Promise<void>
   ) => {
     const includeParallel = cycleCode === OZ;
@@ -60,13 +61,13 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
     };
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
       campaignId: campaignId,
-      singleInvestigator: singleInvestigator.alternate_of_code ?? singleInvestigator.code,
+      singleInvestigator: singleInvestigator.code,
       onDeckSelect,
     } : {
       campaignId: campaignId,
       selectedInvestigatorIds: map(
         campaignInvestigators,
-        investigator => investigator.alternate_of_code ?? investigator.code
+        investigator => investigator.code
       ),
       onDeckSelect,
       onInvestigatorSelect,

@@ -9,12 +9,12 @@ import { NumberChoices } from '@actions/types';
 import { m } from '@styles/space';
 import { Counters, useCounters } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
-import Card from '@data/types/Card';
 import InputWrapper from '../InputWrapper';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface CounterItem {
   code: string;
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   name: string;
   description?: string;
   color?: string;

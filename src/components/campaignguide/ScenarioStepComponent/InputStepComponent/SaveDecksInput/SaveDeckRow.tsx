@@ -15,7 +15,7 @@ import Card from '@data/types/Card';
 import space, { s, xs } from '@styles/space';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import GuidedCampaignLog, { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import StyleContext from '@styles/StyleContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { DeckActions } from '@data/remote/decks';
@@ -53,7 +53,7 @@ interface Props {
   id: string;
   campaignState: CampaignStateHelper;
   scenarioState: ScenarioStateHelper;
-  investigator: Card;
+  investigator: CampaignInvestigator;
   deck?: LatestDeckT;
   campaignLog: GuidedCampaignLog;
   editable: boolean;
@@ -62,7 +62,7 @@ interface Props {
   adjustXp: boolean;
 }
 
-function computeChoiceId(stepId: string, investigator: Card) {
+function computeChoiceId(stepId: string, investigator: CampaignInvestigator) {
   return `${stepId}#${investigator.code}`;
 }
 
@@ -241,7 +241,7 @@ function SaveDeckRow({
     const deckButton = deck && choices !== undefined && deckChoice && (
       <ShowDeckButton
         deckId={deckChoice}
-        investigator={investigator}
+        investigator={investigator.card}
       />
     );
 
@@ -291,7 +291,7 @@ function SaveDeckRow({
     <View style={space.paddingBottomS}>
       <AnimatedCompactInvestigatorRow
         yithian={isYithian}
-        investigator={investigator}
+        investigator={investigator.card}
         open={choices === undefined || open}
         toggleOpen={toggleOpen}
         disabled={choices === undefined}

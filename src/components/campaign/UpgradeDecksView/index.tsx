@@ -13,7 +13,6 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import { CampaignId, Deck, getDeckId, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import Card from '@data/types/Card';
 import { getLangPreference } from '@reducers';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
@@ -27,6 +26,7 @@ import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useAppDispatch } from '@app/store';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface UpgradeDecksProps {
   id: CampaignId;
@@ -54,7 +54,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
     }
   }, componentId, [close]);
 
-  const updateInvestigatorXp = useCallback((investigator: Card, xp: number) => {
+  const updateInvestigatorXp = useCallback((investigator: CampaignInvestigator, xp: number) => {
     if (campaign) {
       const investigatorData = campaign.getInvestigatorData(investigator.code);
       const oldXp = investigatorData.availableXp || 0;
@@ -68,8 +68,8 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
     }
   }, [campaign, id, updateCampaignActions, dispatch]);
 
-  const showDeckUpgradeDialog = useCallback((deck: Deck, investigator?: Card) => {
-    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+  const showDeckUpgradeDialog = useCallback((deck: Deck, investigator?: CampaignInvestigator) => {
+    const backgroundColor = colors.faction[investigator ? investigator?.card.factionCode() : 'neutral'].background;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -89,7 +89,7 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
               color: 'white',
             },
             subtitle: {
-              text: investigator ? investigator.name : '',
+              text: investigator ? investigator.card.name : '',
               color: 'white',
             },
             background: {

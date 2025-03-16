@@ -73,14 +73,15 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     }
   }, componentId, [save]);
 
-  const [investigator] = useSingleCard(deck?.deck.investigator_code, 'player', deck?.deck.taboo_id);
+  const [investigatorCard] = useSingleCard(deck?.deck.investigator_code, 'player', deck?.deck.taboo_id);
+  const investigator = useMemo(() => investigatorCard ? { code: investigatorCard.code, card: investigatorCard } : undefined, [investigatorCard]);
 
   const deckUpgradeComplete = useCallback(async(deck: Deck) => {
     if (campaignId && traumaUpdate) {
       return dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, deck.investigator_code, traumaUpdate));
     }
     if (showNewDeck) {
-      showDeckModal(getDeckId(deck), deck, campaign?.id, colors, investigator, 'upgrade');
+      showDeckModal(getDeckId(deck), deck, campaign?.id, colors, investigator?.card, 'upgrade');
     } else {
       Navigation.pop(componentId);
     }

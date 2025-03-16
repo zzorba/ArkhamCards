@@ -3,7 +3,7 @@ import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
 import { useCountDialog } from '@components/deck/dialogs';
-import Card from '@data/types/Card';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 
 interface LinkedCampaignId {
@@ -37,10 +37,10 @@ export function useCampaignId(campaignId: CampaignId): [CampaignId, (serverId: n
 
 export function useXpDialog(updateSpentXp: (investigator: string, spentXp: number) => void): [
   React.ReactNode,
-  (investigator: Card, spentXp: number, totalXp: number) => void,
+  (investigator: CampaignInvestigator, spentXp: number, totalXp: number) => void,
 ] {
   const [dialog, showCountDialog] = useCountDialog();
-  const showXpAdjustmentDialog = useCallback((investigator: Card, spentXp: number, totalXp: number) => {
+  const showXpAdjustmentDialog = useCallback((investigator: CampaignInvestigator, spentXp: number, totalXp: number) => {
     showCountDialog({
       title: t`Adjust XP`,
       label: t`Experience`,

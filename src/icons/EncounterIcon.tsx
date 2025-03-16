@@ -610,11 +610,35 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'ticc':
       case 'the_innsmouth_conspiracy':
         return this.innsmouthIcon('tic', size, color);
-      case 'tdc':
       case 'tdcp':
         return this.drownedIcon('tdcp', size, color);
+      case 'tdc':
       case 'tdcc':
-        return this.drownedIcon('tdcc', size, color);
+      case 'one_last_job':
+      case 'the_drowned_quarter':
+      case 'the_apiary':
+      case 'tasks':
+      case 'the_inescapable':
+      case 'elder_mist':
+      case 'dreams':
+      case 'domination':
+      case 'deep_ones':
+      case 'cosmic_legacy':
+      case 'alien_machinery':
+      case 'court_of_the_ancients':
+      case 'tdc_flood':
+      case 'tdc_expedition':
+      case 'pilgrims':
+      case 'rlyeh':
+      case 'obsidian_canyons':
+      case 'sepulchre_of_the_sleeper':
+      case 'star_spawn':
+      case 'stowaways':
+      case 'the_doom_of_arkham_part_1':
+      case 'the_doom_of_arkham_part_2':
+      case 'the_western_wall':
+      case 'undersea_creatures':
+        return this.drownedIcon(encounter_code, size, color);
       case 'creatures_of_the_deep':
         return this.innsmouthIcon('creatures_from_below', size, color);
       case 'the_locals':
@@ -719,7 +743,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'alice_in_wonderland':
       case 'zaw':
         return this.aliceIcon('alice_in_wonderland', size, color);
-      case 'deep_ones':
+      case 'coc_deep_ones':
       case 'sinking_ship':
       case 'the_black_stone':
       case 'occultism':

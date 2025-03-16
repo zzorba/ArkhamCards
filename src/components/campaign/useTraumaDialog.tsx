@@ -2,11 +2,11 @@ import React, { useCallback, useMemo, useState } from 'react';
 
 import EditTraumaDialog from './EditTraumaDialog';
 import { Trauma } from '@actions/types';
-import Card from '@data/types/Card';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface TraumaProps {
   showTraumaDialog: (
-    investigator: Card,
+    investigator: CampaignInvestigator,
     traumaData: Trauma,
   ) => void;
 
@@ -14,14 +14,14 @@ export interface TraumaProps {
 }
 
 interface VisibleState {
-  investigator: Card,
+  investigator: CampaignInvestigator,
   traumaData: Trauma
 }
 
 export default function useTraumaDialog(updateTrauma: (investigator: string, traumaData: Trauma) => void, hideKilledInsane?: boolean): TraumaProps {
   const [state, setState] = useState<VisibleState | undefined>();
 
-  const showTraumaDialog = useCallback((investigator: Card, traumaData: Trauma) => {
+  const showTraumaDialog = useCallback((investigator: CampaignInvestigator, traumaData: Trauma) => {
     setState({
       investigator: investigator,
       traumaData,

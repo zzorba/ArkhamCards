@@ -1,16 +1,16 @@
-import React, { useCallback, useEffect, useState, useMemo, useContext } from 'react';
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 
 import EditTraumaDialogContent from './EditTraumaDialogContent';
 import NewDialog from '@components/core/NewDialog';
 import { t } from 'ttag';
 import { Trauma } from '@actions/types';
-import Card from '@data/types/Card';
 import DeckButton from '@components/deck/controls/DeckButton';
-import CampaignGuideContext, { useCampaignInvestigator } from '@components/campaignguide/CampaignGuideContext';
+import { useCampaignInvestigator } from '@components/campaignguide/CampaignGuideContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   visible: boolean;
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   trauma?: Trauma;
   updateTrauma: (investigator_code: string, trauma: Trauma) => void;
   hideDialog: () => void;
@@ -64,7 +64,7 @@ export default function EditTraumaDialog({ visible, investigator: theInvestigato
   return (
     <NewDialog
       title={investigator ?
-        t`${investigator.firstName}’s Trauma` :
+        t`${investigator.card.firstName}’s Trauma` :
         t`Trauma`}
       visible={visible}
       dismissable
@@ -72,7 +72,7 @@ export default function EditTraumaDialog({ visible, investigator: theInvestigato
       buttons={buttons}
     >
       <EditTraumaDialogContent
-        investigator={investigator}
+        investigator={investigator?.card}
         trauma={traumaState}
         mutateTrauma={mutateTrauma}
         hideKilledInsane={hideKilledInsane}

@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, TextStyle, View } from 'react-native';
 import { range, map } from 'lodash';
 import { c, t } from 'ttag';
@@ -7,13 +7,13 @@ import { TraumaAndCardData } from '@actions/types';
 import HealthSanityIcon from '@components/core/HealthSanityIcon';
 import StyleContext from '@styles/StyleContext';
 import space, { xs } from '@styles/space';
-import Card from '@data/types/Card';
 import { TINY_PHONE } from '@styles/sizes';
-import CampaignGuideContext, { useCampaignInvestigator } from '@components/campaignguide/CampaignGuideContext';
+import { useCampaignInvestigator } from '@components/campaignguide/CampaignGuideContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   trauma: TraumaAndCardData;
-  investigator: Card;
+  investigator: CampaignInvestigator;
   whiteText?: boolean;
   hideNone?: boolean;
   textStyle?: TextStyle | TextStyle[];
@@ -49,10 +49,10 @@ export default function TraumaSummary({ trauma, investigator: theInvestigator, w
   const physical = (trauma.physical || 0);
   const mental = (trauma.mental || 0);
   const textColorStyle = whiteText ? { color: '#FFF' } : { color: colors.D30 };
-  if (investigator?.killed(trauma)) {
+  if (investigator?.card.killed(trauma)) {
     return <Text style={textStyle || [typography.subHeaderText, textColorStyle]}>{t`Killed`}</Text>;
   }
-  if (investigator?.insane(trauma)) {
+  if (investigator?.card.insane(trauma)) {
     return <Text style={textStyle || [typography.subHeaderText, textColorStyle]}>{t`Insane`}</Text>;
   }
   if (physical + mental === 0) {

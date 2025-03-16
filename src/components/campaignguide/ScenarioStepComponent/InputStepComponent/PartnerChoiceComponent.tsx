@@ -46,11 +46,12 @@ export default function PartnerChoiceComponent({ id, input }: Props) {
   const [cards] = useCardList(codes, 'encounter', false);
 
   const items: ListItem[] = useMemo(() => map(partners, p => {
+    const card = find(cards, c => c.code === p.code);
     return {
       code: p.code,
       name: p.name,
       description: p.description,
-      investigator: find(cards, c => c.code === p.code),
+      investigator: card ? { code: p.code, card } : undefined,
     };
   }), [partners, cards]);
   const { scenarioState } = useContext(ScenarioGuideContext);

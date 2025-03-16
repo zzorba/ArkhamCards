@@ -3,14 +3,14 @@ import { View } from 'react-native';
 import { t } from 'ttag';
 
 import { Deck } from '@actions/types';
-import Card from '@data/types/Card';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   deck: Deck;
-  investigator: Card;
-  onPress: (deck: Deck, investigator: Card) => void;
+  investigator: CampaignInvestigator;
+  onPress: (deck: Deck, investigator: CampaignInvestigator) => void;
 }
 
 export default function UpgradeDeckButton({ deck, investigator, onPress }: Props) {

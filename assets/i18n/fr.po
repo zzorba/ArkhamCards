@@ -473,8 +473,8 @@ msgid "Trauma"
 msgstr "Traumatisme"
 
 #, javascript-format
-msgid "${ investigator.firstName }’s Trauma"
-msgstr "Traumatismes de ${investigator.firstName}"
+msgid "${ investigator.card.firstName }’s Trauma"
+msgstr "Traumatismes de ${investigator.card.firstName}"
 
 msgid "Physical Trauma"
 msgstr "Traumatismes physiques"
@@ -796,19 +796,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -2220,19 +2220,19 @@ msgid "Play this scenario"
 msgstr "Jouer ce scénario"
 
 #, javascript-format
-msgid "${ investigator.name } earns ${ card.name } (Advanced)."
+msgid "${ investigator.card.name } earns ${ card.name } (Advanced)."
 msgstr "${ investigator.name } gagne la carte ${ card.name } (Avancée)."
 
 #, javascript-format
-msgid "${ investigator.name } earns ${ card.name }."
+msgid "${ investigator.card.name } earns ${ card.name }."
 msgstr "${ investigator.name } gagne la carte ${ card.name }."
 
 #, javascript-format
-msgid "${ investigator.name } removes ${ card.name } (Advanced)"
+msgid "${ investigator.card.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } retire la carte ${ card.name } (Avancée)."
 
 #, javascript-format
-msgid "${ investigator.name } removes ${ card.name }"
+msgid "${ investigator.card.name } removes ${ card.name }"
 msgstr "${ investigator.name } retire la carte ${ card.name }."
 
 msgid "Challenge Scenario"

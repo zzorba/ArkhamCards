@@ -16,6 +16,7 @@ import RadioButton from './RadioButton';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import { TraumaIconPile } from '@components/campaign/TraumaSummary';
 import AppIcon from '@icons/AppIcon';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   title: string;
@@ -24,7 +25,7 @@ interface Props {
   choices: DisplayChoice[];
   formatLabel?: (index: number) => string;
   onChoiceChange: (index: number | null) => void;
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   selectedIndex?: number;
   width: number;
   editable: boolean;
@@ -105,7 +106,7 @@ export default function SinglePickerComponent({
     selectedValue: selectedIndex,
   });
   const selectedLabel = (selectedIndex === undefined || selectedIndex === -1) ? defaultLabel : (
-    selectedDisplayChoiceText(choices[selectedIndex], investigator?.gender)
+    selectedDisplayChoiceText(choices[selectedIndex], investigator?.card.gender)
   );
 
   const selectedDescription = (selectedIndex === undefined || selectedIndex === -1) ? undefined : (choices[selectedIndex].description || choices[selectedIndex].card?.subname);
@@ -143,7 +144,7 @@ export default function SinglePickerComponent({
             disabled={!editable}
           >
             <CompactInvestigatorRow
-              investigator={investigator}
+              investigator={investigator.card}
               width={width}
             >
               { !!component && editable && (

@@ -14,6 +14,7 @@ import { PersonalizedChoices, UniversalChoices } from '@data/scenario';
 import { NumberChoices } from '@actions/types';
 import space from '@styles/space';
 import { Gender_Enum } from '@generated/graphql/apollo-schema';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   id: string;
@@ -22,7 +23,7 @@ interface Props {
   input?: string[];
 }
 
-function InvestigatorTraumaChoiceComponent({ investigators, heal, id, effect, border }: Props & { investigators: Card[]; heal: boolean }) {
+function InvestigatorTraumaChoiceComponent({ investigators, heal, id, effect, border }: Props & { investigators: CampaignInvestigator[]; heal: boolean }) {
   const { campaignLog } = useContext(ScenarioStepContext)
   const options: PersonalizedChoices | UniversalChoices = useMemo(() => {
     if (!heal) {
@@ -261,7 +262,7 @@ export default function TraumaEffectComponent({ id, effect, border, input }: Pro
   }, [effect]);
 
   const renderInvestigators = useCallback((
-    investigators: Card[]
+    investigators: CampaignInvestigator[]
   ) => {
     if (effect.mental_or_physical) {
       const heal = effect.mental_or_physical === -1;
@@ -279,7 +280,7 @@ export default function TraumaEffectComponent({ id, effect, border, input }: Pro
       <View key={investigator.code} style={border ? space.paddingSideL : undefined}>
         <SetupStepWrapper key={idx} bulletType="small">
           <CampaignGuideTextComponent
-            text={message(investigator)}
+            text={message(investigator.card)}
           />
         </SetupStepWrapper>
       </View>

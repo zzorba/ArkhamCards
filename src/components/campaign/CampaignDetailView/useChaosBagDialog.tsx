@@ -9,7 +9,6 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import space, { m } from '@styles/space';
 import { Navigation } from 'react-native-navigation';
 import { EditChaosBagProps } from '../../chaos/EditChaosBagDialog';
-import Card from '@data/types/Card';
 import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
 import { useDialog } from '@components/deck/dialogs';
@@ -20,10 +19,11 @@ import { ProcessedCampaign } from '@data/scenario';
 import { useAppDispatch } from '@app/store';
 import { MAX_WIDTH } from '@styles/sizes';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   componentId: string;
-  allInvestigators: Card[] | undefined;
+  allInvestigators: CampaignInvestigator[] | undefined;
   campaignId: CampaignId;
   scenarioId: string | undefined;
   chaosBag: ChaosBag;

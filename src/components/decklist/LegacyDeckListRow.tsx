@@ -15,7 +15,6 @@ import { keys, uniq } from 'lodash';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import { Campaign, Deck, getDeckId, ParsedDeck } from '@actions/types';
-import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import DeckProblemRow from '@components/core/DeckProblemRow';
@@ -26,14 +25,15 @@ import StyleContext from '@styles/StyleContext';
 import { usePlayerCardsFunc } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   lang: string;
   deck: Deck;
   previousDeck?: Deck;
   deckToCampaign?: { [deck_id: string]: Campaign };
-  investigator?: Card;
-  onPress?: (deck: Deck, investigator?: Card) => void;
+  investigator?: CampaignInvestigator;
+  onPress?: (deck: Deck, investigator?: CampaignInvestigator) => void;
   details?: ReactNode;
   subDetails?: ReactNode;
   compact?: boolean;
@@ -56,7 +56,7 @@ function deckXpString(parsedDeck: ParsedDeck) {
 }
 
 interface DetailProps {
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   campaign?: Campaign;
   deck: Deck;
   previousDeck?: Deck;
@@ -120,7 +120,7 @@ function LegacyDeckListRowDetails({
       </Text>
       { eliminated && (
         <Text style={typography.small}>
-          { investigator.traumaString(listSeperator, traumaData) }
+          { investigator.card.traumaString(listSeperator, traumaData) }
         </Text>
       ) }
       { !!xpString && (
@@ -170,7 +170,7 @@ export default function LegacyDeckListRow({
       return false;
     }
     const traumaData = campaign && campaign.investigatorData?.[investigator.code];
-    return investigator.eliminated(traumaData);
+    return investigator.card.eliminated(traumaData);
   }, [killedOrInsane, investigator, campaign]);
 
   const contents = useMemo(() => {

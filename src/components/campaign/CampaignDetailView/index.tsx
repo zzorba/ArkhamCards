@@ -41,6 +41,7 @@ import { AppState } from '@reducers';
 import { useAppDispatch } from '@app/store';
 import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
 import CampaignHeader from '@components/campaignguide/CampaignHeader';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
@@ -159,34 +160,40 @@ function CampaignDetailView(props: Props) {
     checkNewDeckForWeakness(deck);
   }, [userId, campaignId, deckActions, updateCampaignActions, checkNewDeckForWeakness, asyncDispatch]);
 
-  const onAddInvestigator = useCallback((card: Card) => {
+  const onAddInvestigator = useCallback((card: CampaignInvestigator) => {
     dispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card.code));
   }, [userId, campaignId, deckActions, updateCampaignActions, dispatch]);
 
-  const onRemoveInvestigator = useCallback((investigator: Card, removedDeckId?: DeckId) => {
+  const onRemoveInvestigator = useCallback((investigator: CampaignInvestigator, removedDeckId?: DeckId) => {
     dispatch(removeInvestigator(userId, updateCampaignActions, campaignId, investigator.code, removedDeckId));
   }, [userId, updateCampaignActions, campaignId, dispatch]);
 
   const showChooseDeck = useCallback((
-    singleInvestigator?: Card,
+    singleInvestigator?: CampaignInvestigator,
   ) => {
     if (!campaign) {
       return;
     }
+    const includeParallel = campaign.cycleCode === OZ;
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
       campaignId: campaign.id,
-      singleInvestigator: singleInvestigator.alternate_of_code ?? singleInvestigator.code,
-      onDeckSelect: (deck: Deck) => onAddDeck(deck, singleInvestigator.code ?? deck.investigator_code),
+      singleInvestigator: singleInvestigator.card.alternate_of_code ?? singleInvestigator.card.code,
+      onDeckSelect: (deck: Deck) => onAddDeck(deck, singleInvestigator.card.code ?? deck.investigator_code),
     } : {
       campaignId: campaign.id,
       selectedInvestigatorIds: map(
         allInvestigators,
-        investigator => investigator.alternate_of_code ?? investigator.code
+        investigator => investigator.card.alternate_of_code ?? investigator.code
       ),
       onDeckSelect: onAddDeck,
-      onInvestigatorSelect: onAddInvestigator,
+      onInvestigatorSelect: (card: Card) => {
+        onAddInvestigator({
+          code: includeParallel ? card.code : (card.alternate_of_code ?? card.code),
+          card,
+        })
+      },
       simpleOptions: true,
-      includeParallel: campaign.cycleCode === OZ,
+      includeParallel,
     };
     Navigation.showModal({
       stack: {
@@ -209,7 +216,7 @@ function CampaignDetailView(props: Props) {
     showChooseDeck();
   }, [showChooseDeck]);
   const [xpDialog, actuallyShowXpDialog] = useXpDialog(updateSpentXp);
-  const showXpDialog = useCallback((investigator: Card) => {
+  const showXpDialog = useCallback((investigator: CampaignInvestigator) => {
     const data = campaign?.getInvestigatorData(investigator.code) || {};
     actuallyShowXpDialog(investigator, data?.spentXp || 0, data?.availableXp || 0);
   }, [actuallyShowXpDialog, campaign]);

@@ -12,8 +12,8 @@ import { BulletType } from '@data/scenario/types';
 import { m, s } from '@styles/space';
 import { Toggles, useEffectUpdate, useToggles } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
-import Card from '@data/types/Card';
 import InputWrapper from '../InputWrapper';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface ListItem {
   code: string;
@@ -21,7 +21,7 @@ export interface ListItem {
   description?: string;
   color?: string;
   trauma?: boolean;
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   investigatorButton?: React.ReactElement;
 }
 

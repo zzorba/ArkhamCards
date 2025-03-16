@@ -470,8 +470,8 @@ msgid "Trauma"
 msgstr "创伤"
 
 #, javascript-format
-msgid "${ investigator.firstName }’s Trauma"
-msgstr "${ investigator.firstName }的创伤"
+msgid "${ investigator.card.firstName }’s Trauma"
+msgstr "${ investigator.card.firstName }的创伤"
 
 msgid "Physical Trauma"
 msgstr "肉体创伤"
@@ -793,19 +793,19 @@ msgstr "混乱袋"
 msgid "Adjust Weakness Set"
 msgstr "调整弱点牌库"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "本牌组包含这些基础弱点"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "本牌组包含此基础弱点"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "是否将这些弱点卡从本剧本模式之基础弱点牌库中移除？"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "是否将此弱点卡从本剧本模式之基础弱点牌库中移除？"
 
@@ -2201,19 +2201,19 @@ msgid "Play this scenario"
 msgstr "进行冒险"
 
 #, javascript-format
-msgid "${ investigator.name } earns ${ card.name } (Advanced)."
+msgid "${ investigator.card.name } earns ${ card.name } (Advanced)."
 msgstr "${ investigator.name }获得${ card.name } (进阶版)。"
 
 #, javascript-format
-msgid "${ investigator.name } earns ${ card.name }."
+msgid "${ investigator.card.name } earns ${ card.name }."
 msgstr "${ investigator.name }获得${ card.name }。"
 
 #, javascript-format
-msgid "${ investigator.name } removes ${ card.name } (Advanced)"
+msgid "${ investigator.card.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name }移除${ card.name } (进阶版)。"
 
 #, javascript-format
-msgid "${ investigator.name } removes ${ card.name }"
+msgid "${ investigator.card.name } removes ${ card.name }"
 msgstr "${ investigator.name }移除${ card.name }。"
 
 msgid "Challenge Scenario"

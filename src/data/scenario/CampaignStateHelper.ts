@@ -23,12 +23,13 @@ import Card, { CardsMap } from '@data/types/Card';
 import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { find } from 'lodash';
+import { CampaignInvestigator } from './GuidedCampaignLog';
 
 export interface CampaignGuideActions {
-  showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => void;
+  showChooseDeck: (singleInvestigator?: CampaignInvestigator, callback?: (code: string) => Promise<void>) => void;
   removeDeck: (deckId: DeckId, investigator: string) => void;
   addInvestigator: (code: string, deckId?: DeckId) => void;
-  removeInvestigator: (investigator: Card) => void;
+  removeInvestigator: (investigator: CampaignInvestigator) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
   setSupplies: (id: string, supplyCounts: SupplyCounts, scenarioId?: string) => void;
@@ -81,7 +82,7 @@ export default class CampaignStateHelper {
     };
   }
 
-  showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => Promise<void>) {
+  showChooseDeck(singleInvestigator?: CampaignInvestigator, callback?: (code: string) => Promise<void>) {
     this.actions.showChooseDeck(singleInvestigator, callback);
   }
 
@@ -93,7 +94,7 @@ export default class CampaignStateHelper {
     this.actions.removeDeck(deckId, investigator);
   }
 
-  removeInvestigator(investigator: Card) {
+  removeInvestigator(investigator: CampaignInvestigator) {
     this.actions.removeInvestigator(investigator);
   }
 

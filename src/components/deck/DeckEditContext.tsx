@@ -140,7 +140,7 @@ export function useEligibleAttachments(card: Card, attachmentOverride?: Attachab
     attachmentOverride ? [attachmentOverride] :
       deckAttachments.filter(attachment =>
         (attachment.requiredCards?.[card.code] ?? 0) > 0 ||
-        (!!attachment.traits?.find(trait => card.real_traits_normalized?.indexOf(`#${trait}#`) !== -1) && 
+        (!!attachment.traits?.find(trait => card.real_traits_normalized?.indexOf(`#${trait}#`) !== -1) &&
         (!attachment.filter || attachment.filter(card)))
       )
   ), [deckAttachments, attachmentOverride, card]);

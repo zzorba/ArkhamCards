@@ -482,6 +482,7 @@ export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 export const TIC = 'tic';
+export const TDC = 'tdc';
 export const RTTIC = 'rttic';
 export const EOE = 'eoe';
 export const TSK = 'tskc';
@@ -517,6 +518,7 @@ export type CampaignCycleCode =
   | typeof EOE
   | typeof TSK
   | typeof FHV
+  | typeof TDC
   | typeof GOB
   | typeof FOF
   | typeof STANDALONE
@@ -548,6 +550,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   EOE,
   TSK,
   FHV,
+  // TDC,
 ];
 export const STANDALONE_CAMPAGINS: CampaignCycleCode[] = [GOB, FOF];
 export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
@@ -591,11 +594,13 @@ export const GUIDED_CAMPAIGNS = new Set([
   RTTIC,
   OZ,
   AGES_UNWOUND,
+  // TDC,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
   OZ,
+  // TDC,
 ]);
 
 export interface CustomCampaignLog {

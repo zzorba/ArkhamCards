@@ -3,17 +3,17 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { showDeckModal } from '@components/nav/helper';
 import LegacyDeckListRow from '../decklist/LegacyDeckListRow';
 import { Deck } from '@actions/types';
-import Card, { CardsMap } from '@data/types/Card';
+import { CardsMap } from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import { useLatestDeckCards, usePressCallback } from '@components/core/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import useSingleCard from '@components/card/useSingleCard';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 type RenderDeckDetails = (
   deck: Deck,
   cards: CardsMap,
-  investigator: Card,
+  investigator: CampaignInvestigator,
   previousDeck?: Deck
 ) => JSX.Element | null;
 
@@ -23,12 +23,13 @@ export interface LegacyDeckRowProps {
   lang: string;
   renderDetails?: RenderDeckDetails;
   killedOrInsane?: boolean;
-  skipRender?: (deck: Deck, investigator: Card) => boolean;
+  skipRender?: (deck: Deck, investigator: CampaignInvestigator) => boolean;
 }
 
 interface Props extends LegacyDeckRowProps {
   compact?: boolean;
   viewDeckButton?: boolean;
+  investigator: CampaignInvestigator;
 }
 
 export default function LegacyDeckRow({
@@ -40,12 +41,12 @@ export default function LegacyDeckRow({
   skipRender,
   compact,
   viewDeckButton,
+  investigator,
 }: Props) {
   const { colors } = useContext(StyleContext);
   const [cards] = useLatestDeckCards(deck, false);
-  const [investigator] = useSingleCard(deck.deck.investigator_code, 'player');
   const onDeckPressFunction = useCallback(() => {
-    showDeckModal(deck.id, deck.deck, campaign.id, colors, investigator);
+    showDeckModal(deck.id, deck.deck, campaign.id, colors, investigator.card);
   }, [deck, campaign, colors, investigator]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
   const details = useMemo(() => {

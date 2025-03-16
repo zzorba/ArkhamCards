@@ -19,6 +19,7 @@ import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import space from '@styles/space';
 import InvestigatorImageButton from '@components/core/InvestigatorImageButton';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   parsedDeck?: ParsedDeck;
@@ -73,7 +74,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
   cards: CardsMap;
   campaign: SingleCampaignT;
   latestDecks: LatestDeckT[];
-  campaignInvestigators: Card[] | undefined;
+  campaignInvestigators: CampaignInvestigator[] | undefined;
 }) {
   const { colors, typography } = useContext(StyleContext);
   const in_collection = useSelector(getPacksInCollection);
@@ -84,7 +85,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
     return flatMap(latestDecks, deck => {
       const investigator = find(campaignInvestigators, i => i.code === deck.investigator);
       if (deck.investigator === currentInvestigator ||
-        (!investigator || investigator.eliminated(campaign.getInvestigatorData(investigator.code)))) {
+        (!investigator || investigator.card.eliminated(campaign.getInvestigatorData(investigator.code)))) {
         return [];
       }
       return {
@@ -110,7 +111,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
           allSlots[code] = (allSlots[code] || 0) + quantity;
           investigatorCards[code] = [
             ...(investigatorCards[code] || []),
-            investigator,
+            investigator.card,
           ];
         }
       });
@@ -223,7 +224,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
               <InvestigatorImageButton
                 onPress={toggleExcludeInvestigators}
                 selected={!excludeInvestigators[investigator.code]}
-                card={investigator}
+                card={investigator.card}
                 size="tiny"
               />
             </View>
@@ -236,7 +237,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
                 <InvestigatorImageButton
                   onPress={toggleExcludeInvestigators}
                   selected={!excludeInvestigators[investigator.code]}
-                  card={investigator}
+                  card={investigator.card}
                   size="tiny"
                 />
               </View>

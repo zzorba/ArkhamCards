@@ -7,7 +7,6 @@ import { t } from 'ttag';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { CampaignId, CampaignNotes, InvestigatorNotes, Deck, DeckId, getDeckId, Trauma } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
-import Card from '@data/types/Card';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
@@ -21,6 +20,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useAppDispatch } from '@app/store';
 import CampaignHeader from '@components/campaignguide/CampaignHeader';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   componentId: string;
@@ -28,11 +28,11 @@ interface Props {
   campaign: SingleCampaignT;
   loading: boolean;
   latestDecks: LatestDeckT[];
-  allInvestigators?: Card[];
-  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
-  removeInvestigator: (investigator: Card, removedDeckId?: DeckId) => void;
-  showChooseDeck: (investigator?: Card) => void;
-  showXpDialog: (investigator: Card) => void;
+  allInvestigators?: CampaignInvestigator[];
+  showTraumaDialog: (investigator: CampaignInvestigator, traumaData: Trauma) => void;
+  removeInvestigator: (investigator: CampaignInvestigator, removedDeckId?: DeckId) => void;
+  showChooseDeck: (investigator?: CampaignInvestigator) => void;
+  showXpDialog: (investigator: CampaignInvestigator) => void;
   setCampaignNotes: SetCampaignNotesAction;
   showAlert: ShowAlert;
   showTextEditDialog: ShowTextEditDialog;
@@ -56,15 +56,15 @@ export default function DecksSection({
   showCountDialog,
 }: Props) {
   const { borderStyle, colors } = useContext(StyleContext);
-  const removeDeckPrompt = useCallback((investigator: Card) => {
+  const removeDeckPrompt = useCallback((investigator: CampaignInvestigator) => {
     const deck = find(latestDecks, deck => {
       return !!(deck && deck.investigator === investigator.code);
     });
     showAlert(
-      t`Remove ${investigator.name}?`,
+      t`Remove ${investigator.card.name}?`,
       deck ?
         t`Are you sure you want to remove this deck from the campaign?\n\nThe deck will remain on ArkhamDB.` :
-        t`Are you sure you want to remove ${investigator.name} from this campaign?\n\nCampaign log data associated with them may be lost.`,
+        t`Are you sure you want to remove ${investigator.card.name} from this campaign?\n\nCampaign log data associated with them may be lost.`,
       [
         {
           text: t`Cancel`,
@@ -79,8 +79,8 @@ export default function DecksSection({
     );
   }, [latestDecks, removeInvestigator, showAlert]);
 
-  const showDeckUpgradeDialog = useCallback((investigator: Card, deck: Deck) => {
-    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+  const showDeckUpgradeDialog = useCallback((investigator: CampaignInvestigator, deck: Deck) => {
+    const backgroundColor = colors.faction[investigator ? investigator.card.factionCode() : 'neutral'].background;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -100,7 +100,7 @@ export default function DecksSection({
               color: 'white',
             },
             subtitle: {
-              text: investigator ? investigator.name : '',
+              text: investigator ? investigator.card.name : '',
               color: 'white',
             },
             background: {
@@ -112,7 +112,7 @@ export default function DecksSection({
     });
   }, [componentId, campaign, colors]);
 
-  const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
+  const showChooseDeckForInvestigator = useCallback((investigator: CampaignInvestigator) => {
     showChooseDeck(investigator);
   }, [showChooseDeck]);
   const dispatch = useAppDispatch();
@@ -132,7 +132,7 @@ export default function DecksSection({
     });
   }, [delayedUpdateCampaignNotes, campaign.campaignNotes]);
 
-  const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: LatestDeckT) => {
+  const renderInvestigator = useCallback((investigator: CampaignInvestigator, eliminated: boolean, deck?: LatestDeckT) => {
     const traumaAndCardData = campaign.getInvestigatorData(investigator.code);
     return (
       <InvestigatorCampaignRow
@@ -176,7 +176,7 @@ export default function DecksSection({
 
   const [killedInvestigators, aliveInvestigators] = useMemo(() => {
     return partition(allInvestigators, investigator => {
-      return investigator.eliminated(campaign.getInvestigatorData(investigator.code));
+      return investigator.card.eliminated(campaign.getInvestigatorData(investigator.code));
     });
   }, [allInvestigators, campaign]);
   if (loading || allInvestigators === undefined) {

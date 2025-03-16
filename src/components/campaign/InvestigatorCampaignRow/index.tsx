@@ -26,11 +26,12 @@ import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import { AppState, makeUploadingDeckSelector } from '@reducers';
 import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 import CampaignGuide from '@data/scenario/CampaignGuide';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   componentId: string;
   campaign: MiniCampaignT;
-  investigator: Card;
+  investigator: CampaignInvestigator;
   spentXp: number;
   totalXp: number;
   unspentXp: number;
@@ -38,13 +39,13 @@ interface Props {
   traumaAndCardData: TraumaAndCardData;
   badge?: 'deck' | 'upgrade';
   eliminated?: boolean;
-  chooseDeckForInvestigator?: (investigator: Card) => void;
+  chooseDeckForInvestigator?: (investigator: CampaignInvestigator) => void;
   deck?: LatestDeckT;
-  showXpDialog: (investigator: Card) => void;
-  removeInvestigator?: (investigator: Card) => void;
+  showXpDialog: (investigator: CampaignInvestigator) => void;
+  removeInvestigator?: (investigator: CampaignInvestigator) => void;
   // For legacy system
-  showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
-  showTraumaDialog?: (investigator: Card, traumaData: TraumaAndCardData) => void;
+  showDeckUpgrade?: (investigator: CampaignInvestigator, deck: Deck) => void;
+  showTraumaDialog?: (investigator: CampaignInvestigator, traumaData: TraumaAndCardData) => void;
   miniButtons?: React.ReactNode;
 
   children?: React.ReactNode;
@@ -173,7 +174,7 @@ export default function InvestigatorCampaignRow({
         deck.deck,
         campaign?.id,
         colors,
-        investigator,
+        investigator.card,
         undefined,
         true
       );
@@ -256,7 +257,7 @@ export default function InvestigatorCampaignRow({
     <View style={space.marginBottomS}>
       <AnimatedCompactInvestigatorRow
         toggleOpen={toggleOpen}
-        investigator={investigator}
+        investigator={investigator.card}
         eliminated={eliminated}
         yithian={yithian}
         open={open}

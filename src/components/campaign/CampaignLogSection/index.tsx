@@ -5,7 +5,6 @@ import { map } from 'lodash';
 
 import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import { CampaignNotes, InvestigatorNotes } from '@actions/types';
-import Card from '@data/types/Card';
 import InvestigatorSectionList from './InvestigatorSectionList';
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
@@ -13,6 +12,7 @@ import space, { s, xs } from '@styles/space';
 import { ShowCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   campaignNotes: CampaignNotes | undefined;
@@ -26,7 +26,7 @@ interface Props {
       perInvestigator: boolean
     ) => void
   ) => void;
-  allInvestigators?: Card[];
+  allInvestigators?: CampaignInvestigator[];
 }
 
 export default function CampaignLogSection(props: Props) {

@@ -8,7 +8,6 @@ import { Trauma } from '@actions/types';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign, StepId } from '@data/scenario';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
-import Card from '@data/types/Card';
 import space, { s, l } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
@@ -24,6 +23,7 @@ import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResul
 import { useArkhamDbError } from '@data/hooks';
 import { useAppDispatch } from '@app/store';
 import CampaignHeader from './CampaignHeader';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   componentId: string;
@@ -34,7 +34,7 @@ interface Props {
   login: () => void;
   showAddInvestigator: () => void;
   showCountDialog: ShowCountDialog;
-  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
+  showTraumaDialog: (investigator: CampaignInvestigator, traumaData: Trauma) => void;
   showAlert: ShowAlert;
   saveDeckUpgrade: SaveDeckUpgrade<StepId>;
   saveDeck: SaveDeck<StepId>;
@@ -46,16 +46,16 @@ function AliveInvestigatorRow({
   saveDeckUpgrade, saveDeck,
 }: {
   componentId: string;
-  investigator: Card;
+  investigator: CampaignInvestigator;
   processedCampaign: ProcessedCampaign;
   investigatorCountSections: CampaignLogSectionDefinition[];
   suppliesSections: CampaignLogSectionDefinition[];
   savingDeckUpgrade: boolean;
   login: () => void;
-  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
-  showChooseDeckForInvestigator: (investigator: Card) => void;
-  showXpDialogPressed: (investigator: Card) => void;
-  removeInvestigatorPressed: (investigator: Card) => void;
+  showTraumaDialog: (investigator: CampaignInvestigator, traumaData: Trauma) => void;
+  showChooseDeckForInvestigator: (investigator: CampaignInvestigator) => void;
+  showXpDialogPressed: (investigator: CampaignInvestigator) => void;
+  removeInvestigatorPressed: (investigator: CampaignInvestigator) => void;
   saveDeckUpgrade: SaveDeckUpgrade<StepId>;
   saveDeck: SaveDeck<StepId>;
 }) {
@@ -242,10 +242,10 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     };
   }, []);
 
-  const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
+  const showChooseDeckForInvestigator = useCallback((investigator: CampaignInvestigator) => {
     campaignState.showChooseDeck(investigator);
   }, [campaignState]);
-  const removeInvestigatorPressed = useCallback((investigator: Card) => {
+  const removeInvestigatorPressed = useCallback((investigator: CampaignInvestigator) => {
     const deck = latestDecks[investigator.code];
     if (deck) {
       showAlert(
@@ -284,9 +284,9 @@ export default function CampaignInvestigatorsComponent(props: Props) {
     investigator => processedCampaign.campaignLog.isEliminated(investigator)
   ), [processedCampaign.campaignLog, campaignInvestigators]);
 
-  const showXpDialogPressed = useCallback((investigator: Card) => {
+  const showXpDialogPressed = useCallback((investigator: CampaignInvestigator) => {
     showCountDialog({
-      title: investigator.name,
+      title: investigator.card.name,
       label: t`Spent experience`,
       value: spentXp[investigator.code] || 0,
       max: processedCampaign.campaignLog.totalXp(investigator.code),
@@ -355,7 +355,11 @@ export default function CampaignInvestigatorsComponent(props: Props) {
           ) }
           { map(killedInvestigators, investigator => {
             const traumaAndCardData = processedCampaign.campaignLog.traumaAndCardData(investigator.code);
-            const theInvestigator = processedCampaign.campaignLog.campaignState.investigatorCard(investigator.code) ?? investigator;
+            const actualInvestigator = processedCampaign.campaignLog.campaignState.investigatorCard(investigator.code);
+            const theInvestigator = actualInvestigator ? {
+              code: investigator.code,
+              card: actualInvestigator,
+            } : investigator;
             return (
               <InvestigatorCampaignRow
                 campaignGuide={campaignGuide}
@@ -366,8 +370,8 @@ export default function CampaignInvestigatorsComponent(props: Props) {
                 unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}
                 showXpDialog={showXpDialogPressed}
                 showTraumaDialog={betweenScenarios && (
-                  (traumaAndCardData?.physical && traumaAndCardData?.physical === theInvestigator.health) ||
-                  (traumaAndCardData?.mental && traumaAndCardData?.mental === theInvestigator.sanity)
+                  (traumaAndCardData?.physical && traumaAndCardData?.physical === theInvestigator.card.health) ||
+                  (traumaAndCardData?.mental && traumaAndCardData?.mental === theInvestigator.card.sanity)
                 ) ? showTraumaDialog : undefined}
                 campaign={campaign}
                 deck={latestDecks[investigator.code]}

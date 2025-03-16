@@ -18,6 +18,7 @@ import {
   TDEA,
   TDEB,
   TIC,
+  TDC,
   CampaignDifficulty,
   CampaignCycleCode,
   CustomCampaignLog,
@@ -41,7 +42,6 @@ import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
 import { ThemeColors } from '@styles/theme';
 import { Campaign_Difficulty_Enum } from '@generated/graphql/apollo-schema';
-
 
 const authors = {
   [DARK_MATTER]: 'Axolotl',
@@ -135,6 +135,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case RTTIC: return t`The (Unofficial) Return to the Innsmouth Conspiracy`;
     case OZ: return t`The Colour Out of Oz`;
     case AGES_UNWOUND: return t`Ages Unwound`;
+    case TDC: return t`The Drowned City`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -467,6 +468,9 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
         { name: t`Lucid Nightmare`, code: 'Lucid Nightmare', pack_code: 'zaw' },
         { name: t`Epilogue`, code: 'aw_epilogue', pack_code: 'zaw', interlude: true },
       ];
+    case TDC:
+      return [];
+
     case AGES_UNWOUND:
     case CROWN_OF_EGIL:
     case CALL_OF_THE_PLAGUEBEARER:
@@ -506,6 +510,7 @@ export function campaignNames() {
     eoe: t`Edge of the Earth`,
     tskc: t`The Scarlet Keys`,
     fhv: t`The Feast of Hemlock Vale`,
+    tdc: t`The Drowned City`,
     gob: t`Guardians of the Abyss`,
     fof: t`Fortune and Folly`,
     zau: t`Ages Unwound`,
@@ -531,6 +536,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case RTDWL:
     case CROWN_OF_EGIL:
     case CYCLOPEAN_FOUNDATIONS:
+    case TDC:
       return colors.campaign.dwl;
     case PTC:
     case RTPTC:
@@ -729,6 +735,17 @@ export function getCampaignLog(
           t`Judith Park`,
           t`Theo Peters`,
         ],
+      };
+    case TDC:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Artifacts Earned`,
+          t`Alien Glyphs`,
+          t`Locations Explored`,
+        ],
+
+        investigatorCounts: [t`Task Progress`],
       }
     case GOB:
     case FOF:
@@ -856,6 +873,14 @@ const FHV_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 2, '-4': 1, skull: 2, elder_sign: 1 },
   [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-5': 2, '-7': 1, skull: 2, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 2, '-6': 2, '-8': 1, skull: 2, elder_sign: 1 },
+};
+
+
+const TDC_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
 };
 
 const DARK_MATTER_BAG: ChaosBagByDifficulty = {
@@ -1005,6 +1030,8 @@ export function getChaosBag(
       return TSK_BAG[difficulty];
     case FHV:
       return FHV_BAG[difficulty];
+    case TDC:
+      return TDC_BAG[difficulty];
     case DARK_MATTER:
       return DARK_MATTER_BAG[difficulty];
     case ALICE_IN_WONDERLAND:

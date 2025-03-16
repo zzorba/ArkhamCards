@@ -15,6 +15,7 @@ import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 import { Toggles } from '@components/core/hooks';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import space from '@styles/space';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   id: string;
@@ -52,7 +53,7 @@ export default function InvestigatorCheckListComponent({
     campaignState.showChooseDeck();
   }, [campaignState]);
 
-  const filterInvestigator = useCallback((investigator: Card): boolean => {
+  const filterInvestigator = useCallback((investigator: CampaignInvestigator): boolean => {
     if (investigatorCodes) {
       return findIndex(
         investigatorCodes,
@@ -60,7 +61,7 @@ export default function InvestigatorCheckListComponent({
       ) !== -1;
     }
     if (filterCard) {
-      return filterCard(investigator);
+      return filterCard(investigator.card);
     }
     return true;
   }, [investigatorCodes, filterCard]);
@@ -125,12 +126,12 @@ export default function InvestigatorCheckListComponent({
       investigators,
       (investigator): ListItem => {
         return {
-          investigator: investigator,
+          investigator,
           investigatorButton: investigator.code === leadInvestigator ? selectedRadioButton : defaultRadioButton,
           trauma: includeLeadInvestigator,
           code: investigator.code,
-          name: investigator.name,
-          color: colors.faction[investigator.factionCode()].background,
+          name: investigator.card.name,
+          color: colors.faction[investigator.card.factionCode()].background,
         };
       });
   }, [investigators, includeLeadInvestigator, colors, selectedRadioButton, defaultRadioButton, leadInvestigator]);

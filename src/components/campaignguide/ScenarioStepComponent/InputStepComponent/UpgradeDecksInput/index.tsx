@@ -131,12 +131,12 @@ export default function UpgradeDecksInput({ componentId, id, exile, hideXp, skip
             <View style={[space.paddingSideS, space.paddingVerticalXs]} key={investigator.code}>
               <CompactInvestigatorRow
                 key={investigator.code}
-                investigator={investigator}
+                investigator={investigator.card}
                 eliminated
                 width={width - s * (hasDecision ? 4 : 2)}
               >
                 <Text style={[typography.mediumGameFont, typography.white]}>
-                  {investigator.traumaString(listSeperator, campaignLog.traumaAndCardData(investigator.code))}
+                  {investigator.card.traumaString(listSeperator, campaignLog.traumaAndCardData(investigator.code))}
                 </Text>
               </CompactInvestigatorRow>
             </View>

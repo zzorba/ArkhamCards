@@ -176,7 +176,7 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
   const query = useMemo(() => {
     if (selectedCards === undefined) {
       // No choice yet, so pull up everything possible.
-      const queryOpt = mainQuery(input.query, processedScenario, scenarioInvestigators, latestDecks);
+      const queryOpt = mainQuery(input.query, processedScenario, scenarioInvestigators.map(c => c.card), latestDecks);
       const parts = [
         ...(queryOpt ? [queryOpt] : []),
         ...FILTER_BUILDER.equalsVectorClause(extraCards, 'code', ['extra']),

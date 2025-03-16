@@ -21,7 +21,7 @@ import {
   EmbarkData,
   OZ,
 } from '@actions/types';
-import Card, { CardsMap } from '@data/types/Card';
+import { CardsMap } from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
@@ -31,6 +31,7 @@ import { DeckActions } from '@data/remote/decks';
 import { ProcessedCampaign } from '@data/scenario';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { AppState } from '@reducers';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 const EMPTY_SPENT_XP = {};
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
@@ -49,7 +50,7 @@ export default function useCampaignGuideContextFromActions(
   const cycleCode = campaignData?.campaign?.cycleCode;
   const includeParallel = cycleCode === OZ;
 
-  const showChooseDeck = useCallback((singleInvestigator?: Card, callback?: (code: string) => Promise<void>) => {
+  const showChooseDeck = useCallback((singleInvestigator?: CampaignInvestigator, callback?: (code: string) => Promise<void>) => {
     if (campaignInvestigators !== undefined) {
       campaignChooseDeck(campaignId, cycleCode, campaignInvestigators, singleInvestigator, callback);
     }
@@ -74,7 +75,7 @@ export default function useCampaignGuideContextFromActions(
     campaignAddInvestigator(campaignId, investigator, deckId);
   }, [campaignAddInvestigator, campaignId]);
 
-  const removeInvestigator = useCallback((investigator: Card) => {
+  const removeInvestigator = useCallback((investigator: CampaignInvestigator) => {
     dispatch(campaignActions.removeInvestigator(userId, updateCampaignActions, campaignId, investigator.code));
   }, [dispatch, campaignId, userId, updateCampaignActions]);
 
@@ -256,7 +257,7 @@ export default function useCampaignGuideContextFromActions(
     });
     const r: CardsMap = {};
     forEach(campaignInvestigators, c => {
-      r[c.code] = c;
+      r[c.code] = c.card;
     });
     return [r, p];
   }, [campaignInvestigators, parallelCampaignInvestigators]);

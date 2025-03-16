@@ -3,7 +3,6 @@ import { t } from 'ttag';
 
 import { Deck } from '@actions/types';
 import { showDeckModal } from '@components/nav/helper';
-import Card from '@data/types/Card';
 import { parseBasicDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
 import MiniPickerStyleButton from '@components/deck/controls/MiniPickerStyleButton';
@@ -12,12 +11,13 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useLatestDeckCards } from '@components/core/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   deck?: LatestDeckT;
   campaign: MiniCampaignT;
-  investigator: Card;
-  showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
+  investigator: CampaignInvestigator;
+  showDeckUpgrade?: (investigator: CampaignInvestigator, deck: Deck) => void;
   editXpPressed?: () => void;
 
   unspentXp: number;
@@ -56,7 +56,7 @@ export default function useXpSection({
         deck.deck,
         campaign?.id,
         colors,
-        investigator,
+        investigator.card,
         'upgrade',
       );
     }

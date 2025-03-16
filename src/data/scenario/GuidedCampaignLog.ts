@@ -215,6 +215,11 @@ interface GuidedCampaignLogState {
   swapChaosBag: ChaosBag;
 }
 
+export type CampaignInvestigator = {
+  code: string;
+  card: Card;
+}
+
 export default class GuidedCampaignLog implements GuidedCampaignLogState {
   campaignGuide: CampaignGuide;
   linked: boolean;
@@ -550,7 +555,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     return scenario.leadInvestigator;
   }
 
-  hasInvestigatorPlayedScenario(investigator: Card) {
+  hasInvestigatorPlayedScenario(investigator: CampaignInvestigator) {
     return !!find(this.scenarioData, (scenarioData, scenario) => {
       if (scenario === CAMPAIGN_SETUP_ID) {
         // campaign setup is probably okay?
@@ -634,10 +639,10 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     }
   }
 
-  isEliminated(investigator: Card) {
+  isEliminated(investigator: CampaignInvestigator) {
     const investigatorData =
       this.campaignData.investigatorData[investigator.code];
-    const actualInvestigator = this.campaignState.investigatorCard(investigator.code) ?? investigator;
+    const actualInvestigator = this.campaignState.investigatorCard(investigator.code) ?? investigator.card;
     return actualInvestigator.eliminated(investigatorData);
   }
 
@@ -858,17 +863,26 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
             return true;
           }
           const card = this.campaignState.investigatorCard(code);
-          return !!card && !this.isEliminated(card);
+          return !!card && !this.isEliminated({ code, card });
         }
       ),
       (code) => (code === leadInvestigatorCode ? 0 : 1)
     );
   }
 
-  investigators(includeEliminated: boolean): Card[] {
+  investigators(includeEliminated: boolean): CampaignInvestigator[] {
     return flatMap(
       this.investigatorCodes(includeEliminated),
-      (code) => this.campaignState.investigatorCard(code) ?? []
+      (code) => {
+        const card = this.campaignState.investigatorCard(code);
+        if (!card) {
+          return []
+        };
+        return {
+          card,
+          code,
+        };
+      }
     );
   }
 
@@ -1060,7 +1074,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
   }
 
   effectiveWeaknessSet(
-    campaignInvestigators: Card[] | undefined,
+    campaignInvestigators: CampaignInvestigator[] | undefined,
     latestDecks: LatestDecks,
     campaignWeaknessSet: WeaknessSet,
     cards: CardsMap,

@@ -22,6 +22,7 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import CampaignErrorView from './CampaignErrorView';
 import useProcessedCampaign from './useProcessedCampaign';
 import { useAppDispatch } from '@app/store';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export type WeaknessSetProps = CampaignGuideInputProps;
 
@@ -104,7 +105,7 @@ interface WeaknessItem {
   count: number;
 }
 
-function InvestigatorWeakness({ investigator, width, investigatorData, weaknesses }: { componentId: string; investigator: Card; width: number; investigatorData: TraumaAndCardData; weaknesses: CardsMap | undefined }) {
+function InvestigatorWeakness({ investigator, width, investigatorData, weaknesses }: { componentId: string; investigator: CampaignInvestigator; width: number; investigatorData: TraumaAndCardData; weaknesses: CardsMap | undefined }) {
   const [open, toggleOpen] = useFlag(false);
   const { campaign } = useContext(CampaignGuideContext);
   const deck = useMemo(() => find(campaign.latestDecks(), deck => deck.investigator === investigator.code), [investigator.code, campaign]);
@@ -152,7 +153,7 @@ function InvestigatorWeakness({ investigator, width, investigatorData, weaknesse
   }, [weaknesses, deck, investigatorData]);
   return (
     <AnimatedCompactInvestigatorRow
-      investigator={investigator}
+      investigator={investigator.card}
       width={width}
       toggleOpen={toggleOpen}
       open={open}

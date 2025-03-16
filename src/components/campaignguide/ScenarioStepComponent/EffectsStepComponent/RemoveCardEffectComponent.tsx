@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorCheckListComponent from '../../prompts/InvestigatorCheckListComponent';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import GuidedCampaignLog, { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import { RemoveCardEffect } from '@data/scenario/types';
 import Card from '@data/types/Card';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
@@ -22,14 +22,14 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-function renderInvestigators(investigators: Card[], card: Card) {
+function renderInvestigators(investigators: CampaignInvestigator[], card: Card) {
   return map(investigators, (investigator, idx) => (
     <SetupStepWrapper bulletType="small" key={idx}>
       <CampaignGuideTextComponent
         text={
           card.advanced ?
-            t`${investigator.name} removes ${card.name} (Advanced)` :
-            t`${investigator.name} removes ${card.name}`
+            t`${investigator.card.name} removes ${card.name} (Advanced)` :
+            t`${investigator.card.name} removes ${card.name}`
         }
       />
     </SetupStepWrapper>

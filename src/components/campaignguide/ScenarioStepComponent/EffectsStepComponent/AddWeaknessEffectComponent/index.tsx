@@ -17,6 +17,7 @@ import { useWeaknessCards } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   id: string;
@@ -49,7 +50,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
     );
   }, [effect.count, firstDecisionId, effect.choose_only]);
 
-  const renderCardChoice = useCallback((cards: Card[], investigators: Card[]) => {
+  const renderCardChoice = useCallback((cards: Card[], investigators: CampaignInvestigator[]) => {
     return (
       <InvestigatorChoicePrompt
         bulletType="none"
@@ -90,7 +91,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input, numberIn
 
   const [possibleWeaknessCards, possibleWeaknessCardsLoading] = useCardsFromQuery({ query });
   const renderSecondPrompt = useCallback((
-    investigators: Card[],
+    investigators: CampaignInvestigator[],
     scenarioState: ScenarioStateHelper
   ) => {
     if (!weaknessCards) {

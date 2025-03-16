@@ -3,7 +3,6 @@ import { Text, View } from 'react-native';
 import { find } from 'lodash';
 
 import AppIcon from '@icons/AppIcon';
-import Card from '@data/types/Card';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { Supply } from '@data/scenario/types';
 import space from '@styles/space';
@@ -11,9 +10,10 @@ import StyleContext from '@styles/StyleContext';
 import SupplyInputItem from './SupplyInputItem';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
-  investigator: Card;
+  investigator: CampaignInvestigator;
   sectionId: string;
   supply: Supply;
   count: number;

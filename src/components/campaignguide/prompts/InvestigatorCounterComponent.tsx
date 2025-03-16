@@ -32,8 +32,8 @@ export default function InvestigatorCounterComponent({
         return {
           code: investigator.code,
           investigator,
-          name: investigator.name,
-          color: colors.faction[investigator.factionCode()].background,
+          name: investigator.card.name,
+          color: colors.faction[investigator.card.factionCode()].background,
           limit: maxLimits ? maxLimits[investigator.code] : undefined,
           min: (minLimits && minLimits[investigator.code]) || 0,
           description: description ? description[investigator.code] : undefined,

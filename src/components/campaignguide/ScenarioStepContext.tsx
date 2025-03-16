@@ -1,11 +1,10 @@
 import React from 'react';
 
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import Card from '@data/types/Card';
+import GuidedCampaignLog, { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface ScenarioStepContextType {
   campaignLog: GuidedCampaignLog;
-  scenarioInvestigators: Card[];
+  scenarioInvestigators: CampaignInvestigator[];
 }
 
 export const ScenarioStepContext = React.createContext<ScenarioStepContextType>(

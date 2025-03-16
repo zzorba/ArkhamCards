@@ -27,6 +27,7 @@ import AppModal from '@components/core/AppModal';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { parseDeck } from '@lib/parseDeck';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 
 interface ModalOptions {
@@ -440,7 +441,7 @@ interface PickerItem<T> {
 export type Item<T> = PickerItemHeader | PickerItem<T>;
 interface PickerDialogOptions<T> {
   title: string;
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   description?: string | React.ReactNode;
   items: Item<T>[];
   selectedValue?: T;
@@ -505,7 +506,7 @@ export function usePickerDialog<T>({
   }, [items, onValuePress, descriptionSection, noIcons, selectedValue]);
   const { setVisible, dialog } = useDialog({
     title,
-    investigator,
+    investigator: investigator?.card,
     allowDismiss: true,
     content,
     alignment: 'bottom',

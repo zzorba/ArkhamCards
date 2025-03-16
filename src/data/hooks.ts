@@ -12,7 +12,6 @@ import { Campaign, CampaignId, DeckId } from '@actions/types';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
-import Card from '@data/types/Card';
 import {
   useMyDecksRemote,
   useRemoteCampaigns,
@@ -43,6 +42,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
 import { usePlayerCards } from '@components/core/hooks';
 import { ChaosBag } from '@app_constants';
+import { CampaignInvestigator } from './scenario/GuidedCampaignLog';
 
 export function useCampaigns(): [
   MiniCampaignT[],
@@ -101,7 +101,7 @@ export function useCampaign(
 const NO_INVESTIGATOR_CODES: string[] = [];
 export function useCampaignInvestigators(
   campaign: undefined | SingleCampaignT
-): [Card[] | undefined, boolean] {
+): [CampaignInvestigator[] | undefined, boolean] {
   const [allInvestigators] = usePlayerCards(
     campaign?.investigators ?? NO_INVESTIGATOR_CODES,
     false
@@ -112,7 +112,16 @@ export function useCampaignInvestigators(
       return [undefined, true];
     }
     return [
-      flatMap(campaignInvestigators, (i) => allInvestigators[i] || []),
+      flatMap(campaignInvestigators, (code) => {
+        const card = allInvestigators[code];
+        if (!card) {
+          return [];
+        }
+        return {
+          code,
+          card,
+        };
+      }),
       false,
     ];
   }, [campaignInvestigators, allInvestigators]);

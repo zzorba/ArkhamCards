@@ -4,13 +4,13 @@ import { Text, View, StyleSheet } from 'react-native';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import Card from '@data/types/Card';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   code: string;
   name: string;
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   description?: string;
   color?: string;
   value: number;
@@ -40,7 +40,7 @@ export default function CounterListItemComponent({ code, investigator, name, des
     return (
       <View style={space.paddingBottomXs}>
         <CompactInvestigatorRow
-          investigator={investigator}
+          investigator={investigator.card}
           width={width - s * (editable ? 4 : 2)}
           description={editable && !!description ? description : undefined}
         >

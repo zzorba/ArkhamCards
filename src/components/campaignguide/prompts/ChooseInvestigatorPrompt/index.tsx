@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import { filter, findIndex, map, keys, find } from 'lodash';
 import { t } from 'ttag';
 
-import Card from '@data/types/Card';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import StyleContext from '@styles/StyleContext';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
@@ -12,6 +11,7 @@ import InvestigatorRadioChoice from './InvestigatorRadioChoice';
 import { s } from '@styles/space';
 import { BulletType } from '@data/scenario/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   id: string;
@@ -22,8 +22,8 @@ interface Props {
   defaultLabel?: string;
   required?: boolean;
   investigators?: string[];
-  investigatorToValue?: (card: Card) => string;
-  renderResults?: (investigator?: Card) => React.ReactNode;
+  investigatorToValue?: (card: CampaignInvestigator) => string;
+  renderResults?: (investigator?: CampaignInvestigator) => React.ReactNode;
 }
 
 export default function ChooseInvestigatorPrompt({

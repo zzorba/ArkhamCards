@@ -6,14 +6,14 @@ import BasicButton from '@components/core/BasicButton';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import { useCounter } from '@components/core/hooks';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
-  investigator: Card;
+  investigator: CampaignInvestigator;
   saved: boolean;
-  saveXp: (investigator: Card, xp: number) => void;
+  saveXp: (investigator: CampaignInvestigator, xp: number) => void;
 }
 
 export default function NonDeckDetailsButton({ investigator, saved, saveXp }: Props) {
@@ -28,7 +28,7 @@ export default function NonDeckDetailsButton({ investigator, saved, saveXp }: Pr
   return (
     <View>
       <CardSectionHeader
-        investigator={investigator}
+        investigator={investigator.card}
         section={{ superTitle: t`Experience points` }}
       />
       <BasicListRow>

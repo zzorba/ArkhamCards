@@ -12,13 +12,13 @@ import { EditChaosBagProps } from './EditChaosBagDialog';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator } from '../campaign/nav';
-import Card from '@data/types/Card';
 import { useSetCampaignChaosBag } from '@data/remote/campaigns';
 import { useChaosBagResults, useNonGuideChaosBag } from '@data/hooks';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 export interface CampaignDrawChaosBagProps {
   campaignId: CampaignId;
-  allInvestigators: Card[];
+  allInvestigators: CampaignInvestigator[];
   cycleCode: CampaignCycleCode,
 }
 

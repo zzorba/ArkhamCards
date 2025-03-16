@@ -15,7 +15,6 @@ import { map } from 'lodash';
 
 import { TouchableShrink } from '@components/core/Touchables';
 import { Campaign } from '@actions/types';
-import Card from '@data/types/Card';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { getProblemMessage } from '@components/core/DeckProblemRow';
 import { toRelativeDateString } from '@lib/datetime';
@@ -33,12 +32,13 @@ import { useDeckXpStrings } from '@components/deck/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import TraumaSummary from '@components/campaign/TraumaSummary';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   lang: string;
   deck: LatestDeckT;
-  investigator?: Card;
-  onPress?: (deck: LatestDeckT, investigator: Card | undefined) => void;
+  investigator?: CampaignInvestigator;
+  onPress?: (deck: LatestDeckT, investigator: CampaignInvestigator | undefined) => void;
   details?: ReactNode;
   subDetails?: ReactNode;
   viewDeckButton?: boolean;
@@ -47,7 +47,7 @@ interface Props {
 }
 
 interface DetailProps {
-  investigator?: Card;
+  investigator?: CampaignInvestigator;
   campaign?: Campaign;
   deck: LatestDeckT;
   details?: ReactNode;
@@ -179,11 +179,11 @@ export default function NewDeckListRow({
     if (!investigator) {
       return false;
     }
-    return investigator.eliminated(deck.campaign?.trauma);
+    return investigator.card.eliminated(deck.campaign?.trauma);
   }, [killedOrInsane, investigator, deck]);
 
   const contents = useMemo(() => {
-    const faction = investigator?.factionCode();
+    const faction = investigator?.card.factionCode();
     if (!deck) {
       return (
         <View style={styles.row}>
@@ -209,9 +209,9 @@ export default function NewDeckListRow({
                 <Text style={[typography.large, typography.white]} numberOfLines={1} ellipsizeMode="tail">
                   { deck.deck.name }
                 </Text>
-                { investigator?.name ? (
+                { investigator?.card.name ? (
                   <Text style={[typography.smallLabel, typography.italic, typography.white]}>
-                    { investigator?.name || '' }
+                    { investigator?.card.name ?? '' }
                   </Text>
                 ) : (
                   <Placeholder Animation={loadingAnimation}>
@@ -235,7 +235,7 @@ export default function NewDeckListRow({
           <View style={styles.deckRow}>
             <View style={styles.image}>
               <InvestigatorImage
-                card={investigator}
+                card={investigator?.card}
                 killedOrInsane={eliminated}
                 yithian={yithian}
                 border

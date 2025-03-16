@@ -11,7 +11,7 @@ import {
   InputStep,
   InvestigatorChoiceWithSuppliesInput,
 } from '@data/scenario/types';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import GuidedCampaignLog, { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 interface Props {
@@ -41,21 +41,21 @@ export default function InvestigatorChoiceWithSuppliesInputComponent({ step, inp
     );
   }, [input, campaignLog]);
 
-  const investigatorToString = useCallback((card: Card) => {
+  const investigatorToString = useCallback((card: CampaignInvestigator) => {
     if (investigatorHasSupply(card.code)) {
       return input.name;
     }
     return '';
   }, [input, investigatorHasSupply]);
 
-  const renderInvestigatorChoiceResults = useCallback((investigator?: Card) => {
+  const renderInvestigatorChoiceResults = useCallback((investigator?: CampaignInvestigator) => {
     if (!investigator) {
       return null;
     }
     const decision = investigatorHasSupply(investigator.code);
     const option = decision ? input.positiveChoice : input.negativeChoice;
     const sectionName = option.text;
-    const prompt = getPrompt(investigator, sectionName);
+    const prompt = getPrompt(investigator.card, sectionName);
     return (
       <SetupStepWrapper bulletType="small">
         <CampaignGuideTextComponent text={prompt} />
