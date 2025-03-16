@@ -440,7 +440,6 @@ export const checkForPendingCards = async function(
     const lastSynced = cache?.lastAttemptedSync ? new Date(cache.lastAttemptedSync) : undefined;
     const lastServerUpdate = new Date(serverCache.cards_updated_at);
     const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
-    console.log(lastSynced, oneHourAgo);
     const possiblePartialSync = !!lastSynced && lastSynced > oneHourAgo;
     return {
       missingCardCount: Math.max((serverCache.card_count ?? 0) - (cache?.cardCount ?? 0), 0),

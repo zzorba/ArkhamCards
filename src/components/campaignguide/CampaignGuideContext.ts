@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React from 'react';
 
 import { WeaknessSet, CampaignId } from '@actions/types';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';

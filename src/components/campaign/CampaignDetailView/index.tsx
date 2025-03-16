@@ -188,7 +188,7 @@ function CampaignDetailView(props: Props) {
       onDeckSelect: onAddDeck,
       onInvestigatorSelect: (card: Card) => {
         onAddInvestigator({
-          code: card.alternate_of_code ?? card.code,
+          code: includeParallel ? card.code : card.alternate_of_code ?? card.code,
           card,
           alternate_code: card.alternate_of_code ? card.code : undefined,
         })
