@@ -164,10 +164,8 @@ function AliveInvestigatorRow({
               return null;
             }
             const investigatorSection = section[investigator.code];
-
             const alternateTitleEntry = find(investigatorSection?.entries, e => e.type === 'basic');
-            const alternateTitle = alternateTitleEntry ? campaignGuide.logEntry(investigatorCount.id, alternateTitleEntry.id) : undefined;
-
+            const alternateTitle = alternateTitleEntry ? campaignGuide.logEntry(investigatorCount.id, alternateTitleEntry.id, true) : undefined;
             const countEntry = find(investigatorSection?.entries, e => e.id === '$count' && e.type === 'count');
             return (
               <View key={`${investigator.code}-${investigatorCount.id}`} style={space.paddingBottomS}>

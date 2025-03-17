@@ -694,7 +694,7 @@ export default class CampaignGuide {
     };
   }
 
-  logEntry(sectionId: string, id: string): LogEntry {
+  logEntry(sectionId: string, id: string, hack?: boolean): LogEntry {
     const section = find(
       this.campaign.campaign.campaign_log,
       logSection => logSection.id === sectionId
@@ -713,7 +713,7 @@ export default class CampaignGuide {
         supply,
       };
     }
-    if (section.type === 'investigator_count') {
+    if (section.type === 'investigator_count' && !hack) {
       return {
         type: 'investigator_count',
         section: section.title,

@@ -15,6 +15,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import CardTextComponent from '@components/card/CardTextComponent';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
+const ENCOUNTER_BACK = require('../../../../assets/encounter-back.png');
 const ATLACH = require('../../../../assets/atlach.jpg');
 const RAIL_SIZE = 25;
 interface Props {
@@ -182,6 +183,14 @@ export default function LocationCard({ keyProp, rowWidth, rowHeight, annotations
           <Image
             style={styles.verticalCardImage}
             source={PLAYER_BACK}
+            resizeMode="contain"
+          />
+        );
+      case 'encounter_back':
+        return (
+          <Image
+            style={styles.verticalCardImage}
+            source={ENCOUNTER_BACK}
             resizeMode="contain"
           />
         );

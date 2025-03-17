@@ -69,6 +69,7 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
             id: resolution.id,
             large: true,
             text: `<b>${resolution.title}</b>`,
+            condition: resolution.condition,
             description: resolution.description ? `<i>${resolution.description}</i>` : undefined,
             hidden: resolution.hidden,
             steps: [

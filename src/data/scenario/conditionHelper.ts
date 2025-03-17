@@ -54,6 +54,7 @@ import {
   ScarletKeyCountCondition,
   CampaignDataStandaloneCondition,
   InvestigatorCampaignLogCardsCondition,
+  CampaignLogTaskCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/types/Card';
@@ -275,7 +276,7 @@ export function investigatorCampaignLogCardsResult(
 }
 
 export function campaignLogConditionResult(
-  condition: CampaignLogSectionExistsCondition | CampaignLogCondition | CampaignLogCardsCondition,
+  condition: CampaignLogSectionExistsCondition | CampaignLogCondition | CampaignLogCardsCondition | CampaignLogTaskCondition,
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
   switch (condition.type) {
@@ -296,6 +297,16 @@ export function campaignLogConditionResult(
         campaignLog.allCards(condition.section, condition.id),
         campaignLog.allCardCounts(condition.section, condition.id)
       );
+    case 'campaign_log_task': {
+      const investigator = campaignLog.taskAssignee(condition.section, condition.id);
+      const count = campaignLog.task(condition.section, condition.id);
+      return binaryConditionResult(
+        !!investigator,
+        condition.options,
+        investigator ? [investigator] : [],
+        [count]
+      );
+    }
   }
 }
 export function campaignLogCardsSwitchResult(
@@ -920,6 +931,7 @@ export function conditionResult(
     case 'campaign_log_cards':
     case 'campaign_log_section_exists':
     case 'campaign_log':
+    case 'campaign_log_task':
       return campaignLogConditionResult(condition, campaignLog);
     case 'campaign_log_cards_switch':
       return campaignLogCardsSwitchResult(condition, campaignLog);

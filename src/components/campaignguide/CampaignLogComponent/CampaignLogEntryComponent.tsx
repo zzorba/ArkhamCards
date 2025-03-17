@@ -21,6 +21,7 @@ interface Props {
   first: boolean;
   last: boolean;
   noWrapper?: boolean;
+  alternateText?: string;
 }
 
 function FreeFormCampaignLogEntryComponent({ entry, interScenarioId }: { entry: CampaignLogFreeformEntry, interScenarioId?: string }) {
@@ -66,7 +67,7 @@ function FreeFormCampaignLogEntryComponent({ entry, interScenarioId }: { entry: 
   );
 }
 
-export default function CampaignLogEntryComponent({ entry, interScenarioId, campaignGuide, section, sectionId, title, first, last, noWrapper }: Props) {
+export default function CampaignLogEntryComponent({ entry, interScenarioId, campaignGuide, section, sectionId, title, first, last, noWrapper, alternateText }: Props) {
   if (entry.type === 'freeform') {
     return <FreeFormCampaignLogEntryComponent entry={entry} interScenarioId={interScenarioId} />;
   }
@@ -137,7 +138,7 @@ export default function CampaignLogEntryComponent({ entry, interScenarioId, camp
       return (
         <TextEntryComponent
           entry={entry}
-          text={`${title}: #X#`}
+          text={alternateText ? `${alternateText} #X#` : `${title}: #X#`}
         />
       );
     case 'section_count':

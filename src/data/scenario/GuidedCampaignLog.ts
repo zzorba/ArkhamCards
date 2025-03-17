@@ -947,6 +947,21 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     return 0;
   }
 
+  taskAssignee(sectionId: string, id: string): string | undefined {
+    const section = this.sections[sectionId];
+    if (!section) {
+      return undefined;
+    }
+    const entry = find(
+      section.entries,
+      (entry) => entry.id === id && !entry.crossedOut
+    );
+    if (entry && entry.type === 'task') {
+      return entry.investigator;
+    }
+    return undefined;
+  }
+
   task(sectionId: string, id: string): number {
     const section = this.sections[sectionId];
     if (!section) {
@@ -1863,7 +1878,11 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       effect.section === '$input_value' && input?.length
         ? input[0]
         : effect.section;
-    const section: EntrySection = this.sections[sectionId] || {
+    const section: EntrySection = (
+      effect.investigator_section ?
+        this.investigatorSections[effect.investigator_section]?.[sectionId] :
+        this.sections[sectionId]
+    ) ?? {
       entries: [],
     };
     if (!effect.id) {
@@ -1898,7 +1917,14 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         }
       });
     }
-    this.sections[sectionId] = section;
+    if (effect.investigator_section) {
+      if (!this.investigatorSections[effect.investigator_section]) {
+        this.investigatorSections[effect.investigator_section] = {};
+      }
+      this.investigatorSections[effect.investigator_section]![sectionId] = section;
+    } else {
+      this.sections[sectionId] = section;
+    }
   }
 
   private updateSectionWithCount(
@@ -2143,11 +2169,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       effect.section === '$input_value' ? input || [] : [effect.section];
     const ids: string[] | undefined = this.cardsIds(effect, input);
     forEach(sectionIds, (sectionId) => {
-      const section: EntrySection = (
-        effect.investigator_section ?
-          this.investigatorSections[sectionId]?.[effect.investigator_section] :
-          this.sections[sectionId]
-      ) ?? {
+      const section: EntrySection = this.sections[sectionId] ?? {
         entries: [],
       };
       if (!ids) {
@@ -2291,14 +2313,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         });
       }
       // Update the section
-      if (effect.investigator_section) {
-        if (!this.investigatorSections[sectionId]) {
-          this.investigatorSections[sectionId] = {};
-        }
-        this.investigatorSections[sectionId]![effect.investigator_section] = section;
-      } else {
-        this.sections[sectionId] = section;
-      }
+      this.sections[sectionId] = section;
     });
   }
 }

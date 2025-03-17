@@ -30,6 +30,7 @@ export type Condition =
   | CampaignLogCondition
   | CampaignLogCountCondition
   | CampaignLogInvestigatorCountCondition
+  | CampaignLogTaskCondition
   | MathCondition
   | CardCondition
   | CampaignDataCondition
@@ -540,6 +541,7 @@ export interface CampaignLogEffect {
   section: string;
   id?: string;
   text?: string;
+  investigator_section?: string;
   cross_out?: boolean;
   bullet_type?: BulletType;
   decorate?: "circle";
@@ -549,7 +551,6 @@ export interface CampaignLogEffect {
 export interface CampaignLogCardsEffect {
   type: "campaign_log_cards";
   section: string;
-  investigator_section?: string;
   id?: string;
   text?: string;
   masculine_text?: string;
@@ -955,6 +956,12 @@ export interface CampaignLogInvestigatorCountCondition {
   investigator: "any" | "all";
   options: NumOption[];
   default_option?: DefaultOption;
+}
+export interface CampaignLogTaskCondition {
+  type: "campaign_log_task";
+  section: string;
+  id: string;
+  options: BoolOption[];
 }
 export interface CampaignDataLinkedCondition {
   type: "campaign_data";
@@ -1613,6 +1620,7 @@ export interface Resolution {
   investigator_status?: InvestigatorStatus[];
   steps: string[];
   narration?: Narration;
+  condition?: BinaryChoiceCondition;
 }
 export interface Log {
   campaignName: string;

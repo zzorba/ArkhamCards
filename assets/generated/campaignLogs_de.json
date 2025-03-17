@@ -5408,19 +5408,39 @@
     "campaignId": "tdc",
     "sections": [
       {
-        "section": "$input_value",
+        "section": "task_progress",
         "entries": [
           {
+            "id": "do_no_harm",
+            "text": "Task Progress - Do No Harm:"
+          },
+          {
+            "id": "dreams_of_destruction",
+            "text": "Task Progress - Dreams of Destruction:"
+          },
+          {
+            "id": "good_money",
+            "text": "Task Progress - Good Money:"
+          },
+          {
             "id": "no_place_like_home",
-            "text": "No Place Like Home: "
+            "text": "Task Progress - No Place Like Home:"
+          },
+          {
+            "id": "plumb_the_depths",
+            "text": "Task Progress - Plumb the Depths:"
+          },
+          {
+            "id": "prove_your_worth",
+            "text": "Task Progress - Prove Your Worth:"
           },
           {
             "id": "toe_the_line",
-            "text": "Toe the Line: "
+            "text": "Task Progress - Toe the Line:"
           },
           {
             "id": "walk_in_faith",
-            "text": "Walk in Faith: "
+            "text": "Task Progress - Walk in Faith:"
           }
         ]
       },
@@ -5457,6 +5477,54 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "no_place_like_home_succeed",
+            "masculine_text": "#name# found his true home.",
+            "feminine_text": "#name# found her true home.",
+            "nonbinary_text": "#name# found their true home."
+          },
+          {
+            "id": "toe_the_line_succeed",
+            "masculine_text": "#name# found new work.",
+            "feminine_text": "#name# found new work.",
+            "nonbinary_text": "#name# found new work."
+          },
+          {
+            "id": "walk_in_faith_succeed",
+            "masculine_text": "#name# is strong in their faith.",
+            "feminine_text": "#name# is strong in their faith.",
+            "nonbinary_text": "#name# is strong in their faith."
+          },
+          {
+            "id": "plumb_the_depths_succeed",
+            "masculine_text": "#name# learned the secret truth.",
+            "feminine_text": "#name# learned the secret truth.",
+            "nonbinary_text": "#name# learned the secret truth."
+          },
+          {
+            "id": "good_money_succeed",
+            "masculine_text": "#name# made bank.",
+            "feminine_text": "#name# made bank.",
+            "nonbinary_text": "#name# made bank."
+          },
+          {
+            "id": "prove_your_worth_succeed",
+            "masculine_text": "#name# pulled their weight.",
+            "feminine_text": "#name# pulled their weight.",
+            "nonbinary_text": "#name# pulled their weight."
+          },
+          {
+            "id": "do_no_harm_succeed",
+            "masculine_text": "#name# swore an oath to protect others.",
+            "feminine_text": "#name# swore an oath to protect others.",
+            "nonbinary_text": "#name# swore an oath to protect others."
+          },
+          {
+            "id": "dreams_of_destruction_succeed",
+            "masculine_text": "#name# understands the future.",
+            "feminine_text": "#name# understands the future.",
+            "nonbinary_text": "#name# understands the future."
+          },
+          {
             "id": "cthulhu_annihilated_the_city_of_arkham",
             "text": "Cthulhu annihilated the city of Arkham."
           },
@@ -5478,7 +5546,7 @@
           },
           {
             "id": "expedition_abandoned_pilgrim",
-            "text": "the expedition abandoned the pilgrim."
+            "text": "the expedition left the pilgrim behind."
           },
           {
             "id": "expedition_headed_east",
@@ -5509,6 +5577,14 @@
             "text": "the pilgrims were saved."
           },
           {
+            "id": "ruby_lost_the_bet",
+            "text": "Ruby lost the bet."
+          },
+          {
+            "id": "ruby_won_the_bet",
+            "text": "Ruby won the bet."
+          },
+          {
             "id": "stood_together",
             "text": "the investigators stood together."
           },
@@ -5527,21 +5603,20 @@
         ]
       },
       {
-        "section": "campiagn_notes",
-        "entries": [
-          {
-            "id": "ruby_lost_the_bet",
-            "text": "Ruby lost the bet."
-          },
-          {
-            "id": "ruby_won_the_bet",
-            "text": "Ruby won the bet."
-          }
-        ]
-      },
-      {
         "section": "hidden",
         "entries": [
+          {
+            "id": "tdc_good_money_no_upkeep",
+            "masculine_text": "#name# cannot gain resources during the upkeep phase.",
+            "feminine_text": "#name# cannot gain resources during the upkeep phase.",
+            "nonbinary_text": "#name# cannot gain resources during the upkeep phase."
+          },
+          {
+            "id": "tdc_good_money_extra_resources",
+            "masculine_text": "#name# starts with 3 additional resources.",
+            "feminine_text": "#name# starts with 3 additional resources.",
+            "nonbinary_text": "#name# starts with 3 additional resources."
+          },
           {
             "id": "kept_barrier_node",
             "text": "dummy"
@@ -5563,20 +5638,48 @@
             "text": "dummy"
           },
           {
-            "id": "task_no_place_like_home",
+            "id": "picked_do_no_harm",
             "text": "dummy"
           },
           {
-            "id": "task_toe_the_line",
+            "id": "picked_dreams_of_destruction",
             "text": "dummy"
           },
           {
-            "id": "task_walk_in_faith",
+            "id": "picked_good_money",
+            "text": "dummy"
+          },
+          {
+            "id": "picked_no_place_like_home",
+            "text": "dummy"
+          },
+          {
+            "id": "picked_plumb_the_depths",
+            "text": "dummy"
+          },
+          {
+            "id": "picked_prove_your_worth",
+            "text": "dummy"
+          },
+          {
+            "id": "picked_toe_the_line",
+            "text": "dummy"
+          },
+          {
+            "id": "picked_walk_in_faith",
+            "text": "dummy"
+          },
+          {
+            "id": "tasks_active",
+            "text": "dummy"
+          },
+          {
+            "id": "tasks_done",
             "text": "dummy"
           },
           {
             "id": "tdc_helped_with_the_ropes",
-            "text": "#name# helped with the ropes"
+            "text": "dummy"
           },
           {
             "id": "tdc_hive_mind",
