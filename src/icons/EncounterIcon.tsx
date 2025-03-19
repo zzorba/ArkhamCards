@@ -1147,6 +1147,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'zau_unravelling_years': return this.agesIcon('unravelling_years', size, color);
       case 'zau':
       case 'zau_ages_unwound': return this.agesIcon('ages_unwound', size, color);
+      case 'tablet':
+        return this.arkhamIcon('tablet', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);

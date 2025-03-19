@@ -28,6 +28,7 @@ import CampaignLogCalendarComponent from './CampaignLogCalendarComponent';
 import { MAX_WIDTH } from '@styles/sizes';
 import CampaignLogChecklistComponent from './CampaignLogChecklistComponent';
 import CampaignLogInvestigatorChecklistComponent from './CampaignLogInvestigatorChecklistComponent';
+import CampaignLogGlyphsComponent from './CampaignLogGlyphsComponent';
 
 interface Props {
   componentId: string;
@@ -173,7 +174,7 @@ export default function CampaignLogComponent({
   const renderLogEntrySectionContent = useCallback((
     id: string,
     title: string,
-    type?: 'investigator_count' | 'investigator_checklist' | 'count' | 'checklist' | 'supplies' | 'header' | 'partner' | 'scarlet_keys' | 'relationship' | 'fatigue',
+    type?: 'investigator_count' | 'investigator_checklist' | 'count' | 'checklist' | 'supplies' | 'header' | 'partner' | 'scarlet_keys' | 'relationship' | 'fatigue' | 'glyphs',
     checklist?: ChecklistItem[],
     partners?: Partner[],
     calendar?: CalendarEntry[],
@@ -302,8 +303,26 @@ export default function CampaignLogComponent({
         );
       case 'relationship':
       case 'fatigue':
+      case 'glyphs':
       default: {
         const section = campaignLog.sections[id];
+        if (type === 'glyphs') {
+          return (
+            <View style={space.paddingSideS}>
+              <DeckBubbleHeader title={title} crossedOut={section && section.sectionCrossedOut} />
+              { !!section && (
+                <View style={[space.paddingTopS, space.paddingSideS, space.paddingBottomS]}>
+                  <CampaignLogGlyphsComponent
+                    sectionId={id}
+                    campaignGuide={campaignGuide}
+                    section={section}
+                    interScenarioId={interScenarioId}
+                  />
+                </View>
+              ) }
+            </View>
+          );
+        }
         if (CARD_REGEX.test(id) || type === 'relationship' || type === 'fatigue') {
           return (
             <View style={[space.paddingTopS, space.paddingSideS]}>

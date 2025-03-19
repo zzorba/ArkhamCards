@@ -5603,6 +5603,15 @@
         ]
       },
       {
+        "section": "glyphs",
+        "entries": [
+          {
+            "id": "tdc_rune_a",
+            "text": "Depths"
+          }
+        ]
+      },
+      {
         "section": "hidden",
         "entries": [
           {
@@ -5717,19 +5726,6 @@
           {
             "id": "tidal_tablet",
             "text": "Tidal Tablet"
-          }
-        ]
-      },
-      {
-        "section": "symbols",
-        "entries": [
-          {
-            "id": "tdc_rune_a",
-            "text": "[tdc_rune_a]: Depths"
-          },
-          {
-            "id": "tdc_rune_a_placeholder",
-            "text": "[tdc_rune_a]: ???"
           }
         ]
       }

@@ -72,7 +72,8 @@ export type Effect =
   | ScarletKeyEffect
   | BackupStateEffect
   | CampaignLogAssignTaskEffect
-  | CampaignLogTaskEffect;
+  | CampaignLogTaskEffect
+  | CampaignLogTextEffect;
 export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
   | "lead_investigator"
@@ -209,6 +210,7 @@ export type BinaryChoiceCondition =
   | PartnerStatusCondition
   | LocationCondition
   | ScarletKeyCondition;
+export type TextBoxEffect = FreeformCampaignLogEffect | CampaignLogTextEffect;
 export type LocationConnector =
   | "purple_moon"
   | "blue_triangle"
@@ -342,7 +344,8 @@ export interface CampaignLogSectionDefinition {
     | "fatigue"
     | "relationship"
     | "checklist"
-    | "investigator_checklist";
+    | "investigator_checklist"
+    | "glyphs";
   hidden?: boolean;
   partners?: Partner[];
   checklist?: ChecklistItem[];
@@ -744,6 +747,13 @@ export interface CampaignLogTaskEffect {
   operation: "set_input" | "set" | "add_input" | "add" | "subtract_input";
   value?: number;
   min?: number;
+}
+export interface CampaignLogTextEffect {
+  type: "campaign_log_text";
+  section: string;
+  id: string;
+  hidden?: boolean;
+  bullet_type?: BulletType;
 }
 export interface CampaignLogCardsCondition {
   type: "campaign_log_cards";
@@ -1262,7 +1272,7 @@ export interface PlayScenarioInput {
 export interface TextBoxInput {
   type: "text_box";
   undo?: boolean;
-  effects: FreeformCampaignLogEffect[];
+  effects: TextBoxEffect[];
 }
 export interface ReceiveCampaignLinkInput {
   type: "receive_campaign_link";

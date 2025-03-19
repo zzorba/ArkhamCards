@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import {
   ActivityIndicator,
   Text,
+  View,
 } from 'react-native';
 import { t } from 'ttag';
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideContext from '../../CampaignGuideContext';
-import { CampaignLogEffect, FreeformCampaignLogEffect, BulletType, CampaignLogCardsEffect } from '@data/scenario/types';
+import { CampaignLogEffect, FreeformCampaignLogEffect, BulletType, CampaignLogCardsEffect, CampaignLogTextEffect } from '@data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import useSingleCard from '@components/card/useSingleCard';
 import StyleContext from '@styles/StyleContext';
@@ -16,7 +17,7 @@ import { LogEntryText } from '@data/scenario/CampaignGuide';
 import { Gender_Enum } from '@generated/graphql/apollo-schema';
 
 interface Props {
-  effect: CampaignLogEffect | FreeformCampaignLogEffect | CampaignLogCardsEffect;
+  effect: CampaignLogEffect | CampaignLogTextEffect | FreeformCampaignLogEffect | CampaignLogCardsEffect;
   input?: string[];
   numberInput?: number[];
   bulletType?: BulletType;
@@ -97,7 +98,7 @@ function getText(
 }
 
 function CampaignLogEffectsContent({ effect, input }: {
-  effect: CampaignLogEffect | FreeformCampaignLogEffect | CampaignLogCardsEffect;
+  effect: CampaignLogEffect | CampaignLogTextEffect | FreeformCampaignLogEffect | CampaignLogCardsEffect;
   input?: string[];
 }) {
   const { campaignGuide } = useContext(CampaignGuideContext);
@@ -108,6 +109,15 @@ function CampaignLogEffectsContent({ effect, input }: {
       <CampaignGuideTextComponent
         text={t`In your Campaign Log, record that <i>${text}</i>`}
       />
+    );
+  }
+  if (effect.type === 'campaign_log_text') {
+    const text = input && input.length ?
+      input[0] : 'Missing text entry';
+    return (
+      <View style={{ flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
+        <CampaignGuideTextComponent text={`${text}`} />
+      </View>
     );
   }
   if (effect.id) {

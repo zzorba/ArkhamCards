@@ -48,6 +48,7 @@ function SingleEffectComponent({ id, effect, border, input, numberInput, step, w
   }, [campaign.investigators, effect]);
   switch (effect.type) {
     case 'freeform_campaign_log':
+    case 'campaign_log_text':
       return (
         <CampaignLogEffectComponent
           effect={effect}

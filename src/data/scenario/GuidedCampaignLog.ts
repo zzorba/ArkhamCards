@@ -56,6 +56,7 @@ import {
   BackupStateEffect,
   CampaignLogAssignTaskEffect,
   CampaignLogTaskEffect,
+  CampaignLogTextEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from '@data/types/Card';
@@ -250,6 +251,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       case 'campaign_log_investigator_count':
       case 'campaign_log_cards':
       case 'freeform_campaign_log':
+      case 'campaign_log_text':
       case 'scenario_data':
       case 'campaign_data':
       case 'add_chaos_token':
@@ -392,6 +394,9 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
               break;
             case 'freeform_campaign_log':
               this.handleFreeformCampaignLogEffect(effect, input);
+              break;
+            case 'campaign_log_text':
+              this.handleCampaignLogText(effect, input);
               break;
             case 'campaign_log':
               this.handleCampaignLogEffect(effect, input);
@@ -1870,6 +1875,24 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
             index: effect.index,
           }
           : undefined,
+    });
+  }
+
+
+  private handleCampaignLogText(
+    effect: CampaignLogTextEffect,
+    input?: string[]
+  ) {
+    const section: EntrySection = this.sections[effect.section] || {
+      entries: [],
+    };
+    if (!input || !input.length) {
+      return;
+    }
+    section.entries.push({
+      type: 'freeform',
+      id: effect.id,
+      text: input[0],
     });
   }
 

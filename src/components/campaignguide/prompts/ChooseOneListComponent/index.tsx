@@ -12,7 +12,7 @@ import { TouchableShrink } from '@components/core/Touchables';
 import DeckButton from '@components/deck/controls/DeckButton';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import EncounterIcon from '@icons/EncounterIcon';
-import ArkhamIcon, { ArkhamSlimIcon } from '@icons/ArkhamIcon';
+import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
 
 interface Props {
   choices: DisplayChoice[];
@@ -281,7 +281,8 @@ function GlyphChoiceComponent({
         borderWidth: 1,
         borderRadius: 8,
         backgroundColor: selected ? colors.L10 : 'transparent',
-        borderColor: selected ? colors.M : 'transparent', justifyContent: 'center', alignItems: 'center' }}>
+        borderColor: selected ? colors.M : 'transparent', justifyContent: 'center', alignItems: 'center' }}
+      >
         <ArkhamSlimIcon name={icon} size={48} color={colors.D30} />
       </View>
     </Pressable>
