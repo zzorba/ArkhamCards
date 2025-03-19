@@ -1176,7 +1176,7 @@ export interface ChooseOneInput {
   confirm_text?: string;
   show_hidden_choices?: boolean;
   choices: BinaryConditionalChoice[];
-  style?: "compact";
+  style?: "compact" | "glyphs";
   icon?: string;
 }
 export interface BinaryConditionalChoice {

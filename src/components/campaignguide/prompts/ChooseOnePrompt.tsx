@@ -24,7 +24,7 @@ interface Props {
   choices: DisplayChoiceWithId[];
   largePrompt?: boolean;
   defaultChoice?: string;
-  compact?: boolean;
+  style?: 'compact' | 'glyphs';
   icon?: string;
 }
 
@@ -36,7 +36,7 @@ export default function ChooseOnePrompt({
   choices,
   showUndo,
   defaultChoice,
-  compact,
+  style,
   icon,
 }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
@@ -111,7 +111,7 @@ export default function ChooseOnePrompt({
             selectedIndex={selectedChoice}
             onSelect={setSelectedChoice}
             editable={decision === undefined}
-            compact={compact}
+            style={style}
             icon={icon}
           />
         </View>

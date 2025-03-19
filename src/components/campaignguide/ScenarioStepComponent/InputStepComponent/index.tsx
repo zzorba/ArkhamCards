@@ -66,7 +66,7 @@ export default function InputStepComponent({ step, color, componentId, campaignL
           confirmText={step.input.confirm_text}
           choices={chooseOneInputChoices(step.input.choices, campaignLog, step.input.show_hidden_choices)}
           defaultChoice={step.input.default_choice}
-          compact={step.input.style === 'compact'}
+          style={step.input.style}
           icon={step.input.icon}
         />
       );
