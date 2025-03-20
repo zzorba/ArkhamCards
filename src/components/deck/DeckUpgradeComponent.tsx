@@ -20,9 +20,10 @@ import { useCounter, useSlots } from '@components/core/hooks';
 import DeckButton from './controls/DeckButton';
 import { SaveDeckUpgrade } from './useDeckUpgradeAction';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
-interface DeckUpgradeProps extends NavigationProps {
-  investigator: Card;
+export interface DeckUpgradeComponentProps extends NavigationProps {
+  investigator: CampaignInvestigator;
   deck: LatestDeckT;
   hideXp?: boolean;
   startingXp?: number;
@@ -40,7 +41,7 @@ export interface DeckUpgradeHandles {
   save: () => void;
 }
 
-function DeckUpgradeComponent(props: DeckUpgradeProps, ref: ForwardedRef<DeckUpgradeHandles>) {
+function DeckUpgradeComponent(props: DeckUpgradeComponentProps, ref: ForwardedRef<DeckUpgradeHandles>) {
   const {
     componentId,
     investigator,
@@ -97,7 +98,7 @@ function DeckUpgradeComponent(props: DeckUpgradeProps, ref: ForwardedRef<DeckUpg
       { !hideXp && (
         <View style={styles.xpBlock}>
           <CardSectionHeader
-            investigator={investigator}
+            investigator={investigator.card}
             section={{ superTitle: t`Experience points` }}
           />
           <BasicListRow>
@@ -119,7 +120,7 @@ function DeckUpgradeComponent(props: DeckUpgradeProps, ref: ForwardedRef<DeckUpg
         label={(
           <CardSectionHeader
             section={{ superTitle: t`Exiled cards` }}
-            investigator={investigator}
+            investigator={investigator.card}
           />
         )}
         exileCounts={exileCounts}
@@ -138,7 +139,7 @@ function DeckUpgradeComponent(props: DeckUpgradeProps, ref: ForwardedRef<DeckUpg
 }
 
 // @ts-ignore
-export default forwardRef<DeckUpgradeHandles, DeckUpgradeProps>(DeckUpgradeComponent);
+export default forwardRef<DeckUpgradeHandles, DeckUpgradeComponentProps>(DeckUpgradeComponent);
 
 const styles = StyleSheet.create({
   container: {

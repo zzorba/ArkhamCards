@@ -48,6 +48,13 @@ function useCampaignInvestigatorForCampaign(campaign: SingleCampaignT | undefine
     if (!deck || !investigatorCard) {
       return undefined;
     }
+    if (!campaign) {
+      return {
+        code: investigatorCard.code,
+        card: investigatorCard,
+        alternate_code: investigatorCard.alternate_of_code ? investigatorCard.code : undefined,
+      };
+    }
     const code = find(campaign?.investigators, i => i === investigatorCard.alternate_of_code || i === investigatorCard.code);
     if (!code) {
       return undefined;

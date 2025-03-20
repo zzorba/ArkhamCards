@@ -5702,6 +5702,39 @@
         ]
       },
       {
+        "section": "locations",
+        "entries": [
+          {
+            "id": "court_of_the_ancients",
+            "text": "Court of the Ancients"
+          },
+          {
+            "id": "obsidian_canyons",
+            "text": "Obsidian Canyons"
+          },
+          {
+            "id": "sepulchre_of_the_sleeper",
+            "text": "Sepulchre of the Sleeper"
+          },
+          {
+            "id": "the_apiary",
+            "text": "The Apiary"
+          },
+          {
+            "id": "the_drowned_quarter",
+            "text": "The Drowned Quarter"
+          },
+          {
+            "id": "the_grand_vault",
+            "text": "The Grand Vault"
+          },
+          {
+            "id": "the_western_wall",
+            "text": "The Western Wall"
+          }
+        ]
+      },
+      {
         "section": "possible_artifacts",
         "entries": [
           {
