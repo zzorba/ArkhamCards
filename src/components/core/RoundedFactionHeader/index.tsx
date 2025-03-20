@@ -59,6 +59,7 @@ function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound
         } : undefined,
         {
           opacity: eliminated ? 0.6 : undefined,
+          height: 30 + 18 * fontScale,
         },
       ]}
     >
