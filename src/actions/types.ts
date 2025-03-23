@@ -594,7 +594,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   RTTIC,
   OZ,
   AGES_UNWOUND,
-  // TDC,
+  TDC,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
