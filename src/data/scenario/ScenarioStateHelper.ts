@@ -26,8 +26,8 @@ export default class ScenarioStateHelper {
     return this.campaignState.choice(id, this.scenarioId);
   }
 
-  setText(id: string, value: string) {
-    this.campaignState.setText(id, value, this.scenarioId);
+  setText(id: string, value: string, inputId: string | undefined) {
+    this.campaignState.setText(id, value, this.scenarioId, inputId);
   }
 
   text(id: string): string | undefined {

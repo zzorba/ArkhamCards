@@ -108,14 +108,27 @@ export default function useCampaignGuideContextFromActions(
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
-  const setText = useCallback((stepId: string, value: string, scenarioId?: string) => {
+  const setText = useCallback((stepId: string, value: string, scenarioId: string | undefined, inputId: string | undefined) => {
     dispatch(guideActions.setScenarioText(
       userId,
       remoteGuideActions,
       campaignId,
       stepId,
       value,
-      scenarioId
+      scenarioId,
+      inputId
+    ));
+  }, [dispatch, campaignId, remoteGuideActions, userId]);
+
+  const updateText = useCallback((stepId: string, value: string, scenarioId: string | undefined, inputId: string | undefined) => {
+    dispatch(guideActions.updateScenarioText(
+      userId,
+      remoteGuideActions,
+      campaignId,
+      stepId,
+      value,
+      scenarioId,
+      inputId
     ));
   }, [dispatch, campaignId, remoteGuideActions, userId]);
 
@@ -240,12 +253,13 @@ export default function useCampaignGuideContextFromActions(
       resetScenario,
       setInterScenarioData,
       undo,
+      updateText,
       setBinaryAchievement,
       setCountAchievement,
     };
   }, [addInvestigator, showChooseDeck, removeDeck, removeInvestigator, startScenario, startSideScenario, setCount, setDecision, setSupplies,
     setNumberChoices, setStringChoices, setChoice, setCampaignLink, setText, resetScenario, setInterScenarioData, undo,
-    setBinaryAchievement, setCountAchievement]);
+    setBinaryAchievement, setCountAchievement, updateText]);
   const parallelCampaignInvestigators = campaignData?.parallelInvestigators;
   const [investigators, parallelInvestigators] = useMemo(() => {
     if (!campaignInvestigators) {

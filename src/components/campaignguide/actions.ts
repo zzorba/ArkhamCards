@@ -5,6 +5,7 @@ import {
   CampaignId,
   GuideInput,
   GUIDE_SET_INPUT,
+  GUIDE_UPDATE_INPUT,
   GUIDE_RESET_SCENARIO,
   GUIDE_UNDO_INPUT,
   UpdateCampaignAction,
@@ -25,6 +26,7 @@ import {
   UPDATE_CAMPAIGN,
   DelayedDeckEdits,
   EmbarkData,
+  GuideUpdeateInputAction,
 } from '@actions/types';
 
 import { AppState, makeCampaignGuideStateSelector, makeCampaignSelector, makeChaosBagResultsSelector } from '@reducers';
@@ -230,6 +232,26 @@ function setGuideInputAction(
     }
   };
 }
+
+function updateGuideInputAction(
+  userId: string | undefined,
+  actions: GuideActions,
+  campaignId: CampaignId,
+  input: GuideInput
+): ThunkAction<void, AppState, unknown, GuideUpdeateInputAction> {
+  return async(dispatch) => {
+    if (userId && campaignId.serverId) {
+      await actions.setInput(campaignId, input);
+    } else {
+      dispatch({
+        type: GUIDE_UPDATE_INPUT,
+        campaignId,
+        input,
+        now: new Date(),
+      });
+    }
+  };
+}
 export function startScenario(
   userId: string | undefined,
   actions: GuideActions,
@@ -378,13 +400,33 @@ export function setScenarioText(
   campaignId: CampaignId,
   step: string,
   text: string,
-  scenario?: string
+  scenario: string | undefined,
+  inputId: string | undefined,
 ): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
   return setGuideInputAction(userId, actions, campaignId, {
     type: 'text',
     scenario,
     step,
     text,
+    inputId,
+  });
+}
+
+export function updateScenarioText(
+  userId: string | undefined,
+  actions: GuideActions,
+  campaignId: CampaignId,
+  step: string,
+  text: string,
+  scenario: string | undefined,
+  inputId: string | undefined,
+): ThunkAction<void, AppState, unknown, GuideSetInputAction> {
+  return updateGuideInputAction(userId, actions, campaignId, {
+    type: 'text',
+    scenario,
+    step,
+    text,
+    inputId,
   });
 }
 
@@ -420,4 +462,5 @@ export default {
   undo,
   setBinaryAchievement,
   setCountAchievement,
+  updateScenarioText,
 };

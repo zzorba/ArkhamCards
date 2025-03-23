@@ -220,6 +220,7 @@ export default function InputStepComponent({ step, color, componentId, campaignL
           id={step.id}
           prompt={step.text}
           showUndo={!!step.input.undo}
+          inputId={step.input.id}
         />
       );
     case 'send_campaign_link':

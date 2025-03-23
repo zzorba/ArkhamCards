@@ -36,7 +36,8 @@ export interface CampaignGuideActions {
   setNumberChoices: (id: string, choices: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits, scenarioId?: string) => Promise<void>;
   setStringChoices: (id: string, choices: StringChoices, scenarioId?: string) => void;
   setChoice: (id: string, choice: number, scenarioId?: string) => void;
-  setText: (id: string, text: string, scenarioId?: string) => void;
+  setText: (id: string, text: string, scenarioId: string | undefined, inputId: string | undefined) => void;
+  updateText: (id: string, text: string, scenarioId: string | undefined, inputId: string | undefined) => void;
   setCampaignLink: (id: string, value: string, scenarioId?: string) => void;
   setInterScenarioData: (investigatorData: InvestigatorTraumaData, scenarioId: undefined | string, campaignLogEntries: string[] | undefined) => void;
   startScenario: (scenarioId: string, embarkData: EmbarkData | undefined) => void;
@@ -161,8 +162,8 @@ export default class CampaignStateHelper {
     this.actions.setChoice(id, value, scenarioId);
   }
 
-  setText(id: string, value: string, scenarioId?: string) {
-    this.actions.setText(id, value, scenarioId);
+  setText(id: string, value: string, scenarioId: string | undefined, inputId: string | undefined) {
+    this.actions.setText(id, value, scenarioId, inputId);
   }
 
   setNumberChoices(id: string, value: NumberChoices, deckId?: DeckId, deckEdits?: DelayedDeckEdits, scenarioId?: string) {
@@ -248,6 +249,13 @@ export default class CampaignStateHelper {
       );
     } else {
       this.actions.undo(scenarioId);
+    }
+  }
+
+  replaceTextInput(inputId: string, text: string) {
+    const textInput = this.state.findInput((input) => input.type === 'text' && input.inputId === inputId);
+    if (textInput && textInput.type === 'text') {
+      this.actions.updateText(textInput.step, text, textInput.scenario, inputId);
     }
   }
 

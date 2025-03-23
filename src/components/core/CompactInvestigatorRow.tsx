@@ -5,7 +5,7 @@ import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import InvestigatorImage from '@components/core/InvestigatorImage';
-import space, { s } from '@styles/space';
+import space from '@styles/space';
 import CollapsibleFactionBlock from './CollapsibleFactionBlock';
 import AppIcon from '@icons/AppIcon';
 
@@ -38,7 +38,7 @@ export default function CompactInvestigatorRow({
   leftContent, imageOffset, children, width, arkhamCardsImg,
   showParallel,
 }: Props) {
-  const { colors, typography, fontScale } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const isParallel = investigator?.cycle_code === 'parallel'
   return (
     <RoundedFactionHeader

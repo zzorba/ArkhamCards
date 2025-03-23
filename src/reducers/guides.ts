@@ -3,6 +3,7 @@ import { forEach, findLastIndex, filter, map } from 'lodash';
 import {
   DELETE_CAMPAIGN,
   GUIDE_SET_INPUT,
+  GUIDE_UPDATE_INPUT,
   GUIDE_UNDO_INPUT,
   GUIDE_UPDATE_ACHIEVEMENT,
   GUIDE_RESET_SCENARIO,
@@ -111,13 +112,30 @@ export default function(
           filter(campaign.inputs,
             input => !(
               input.type === action.input.type &&
-              // tslint:disable-next-line
               input.step === action.input.step &&
-              // tslint:disable-next-line
               input.scenario === action.input.scenario
             )
           ) : campaign.inputs;
         const inputs = [...existingInputs, action.input];
+        return {
+          ...campaign,
+          undo: filter(campaign.undo || [], id => id !== guideInputToId(action.input)),
+          inputs,
+        };
+      });
+  }
+  if (action.type === GUIDE_UPDATE_INPUT) {
+    return updateCampaignHelper(
+      state,
+      action.campaignId,
+      action.now,
+      campaign => {
+        const inputs = map(campaign.inputs, i => {
+          if (i.type === action.input.type && i.step === action.input.step && i.scenario === action.input.scenario) {
+            return action.input;
+          }
+          return i;
+        })
         return {
           ...campaign,
           undo: filter(campaign.undo || [], id => id !== guideInputToId(action.input)),

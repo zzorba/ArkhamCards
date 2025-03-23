@@ -600,7 +600,7 @@ export const GUIDED_CAMPAIGNS = new Set([
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);
 export const NEW_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([
   OZ,
-  // TDC,
+  TDC,
 ]);
 
 export interface CustomCampaignLog {
@@ -1405,6 +1405,7 @@ export interface GuideStringInput extends BasicInput {
   type: 'text';
   step: string;
   text: string;
+  inputId: string | undefined;
 }
 
 export interface GuideChoiceInput extends BasicInput {
@@ -1503,6 +1504,14 @@ export interface GuideResetScenarioAction {
 export const GUIDE_SET_INPUT = 'GUIDE_SET_INPUT';
 export interface GuideSetInputAction {
   type: typeof GUIDE_SET_INPUT;
+  campaignId: CampaignId;
+  input: GuideInput;
+  now: Date;
+}
+
+export const GUIDE_UPDATE_INPUT = 'GUIDE_UPDATE_INPUT';
+export interface GuideUpdeateInputAction {
+  type: typeof GUIDE_UPDATE_INPUT;
   campaignId: CampaignId;
   input: GuideInput;
   now: Date;
@@ -1697,6 +1706,7 @@ export type GuideActions =
   | RestoreComplexBackupAction
   | ArkhamDbLogoutAction
   | GuideSetInputAction
+  | GuideUpdeateInputAction
   | GuideUndoInputAction
   | GuideResetScenarioAction
   | GuideUpdateAchievementAction

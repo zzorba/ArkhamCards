@@ -29,6 +29,7 @@ import { MAX_WIDTH } from '@styles/sizes';
 import CampaignLogChecklistComponent from './CampaignLogChecklistComponent';
 import CampaignLogInvestigatorChecklistComponent from './CampaignLogInvestigatorChecklistComponent';
 import CampaignLogGlyphsComponent from './CampaignLogGlyphsComponent';
+import useTextEditDialog from '@components/core/useTextEditDialog';
 
 interface Props {
   componentId: string;
@@ -171,6 +172,7 @@ export default function CampaignLogComponent({
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   const { colon } = useContext(LanguageContext);
+  const [dialog, showTextEditDialog] = useTextEditDialog();
   const renderLogEntrySectionContent = useCallback((
     id: string,
     title: string,
@@ -317,6 +319,7 @@ export default function CampaignLogComponent({
                     campaignGuide={campaignGuide}
                     section={section}
                     interScenarioId={interScenarioId}
+                    showTextEditDialog={showTextEditDialog}
                   />
                 </View>
               ) }
@@ -354,7 +357,7 @@ export default function CampaignLogComponent({
         );
       }
     }
-  }, [campaignLog, campaignGuide, width, interScenarioId, colon]);
+  }, [campaignLog, campaignGuide, width, interScenarioId, colon, showTextEditDialog]);
 
   const oddsCalculatorPressed = useCallback(() => {
     showGuideChaosBagOddsCalculator(componentId, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe(), scenarioId, standalone, processedCampaign);
@@ -409,19 +412,22 @@ export default function CampaignLogComponent({
     );
   }, [campaignLog, hideChaosBagButtons, chaosBagSimulatorPressed, oddsCalculatorPressed, width, hideChaosBag, standalone]);
   return (
-    <View style={[backgroundStyle, space.paddingBottomM]}>
-      { chaosBagSection }
-      { flatMap(campaignGuide.campaignLogSections(), log => {
-        if (log.hidden) {
-          return null;
-        }
-        return (
-          <View key={log.id}>
-            { renderLogEntrySectionContent(log.id, log.title, log.type, log.checklist, log.partners, log.calendar, log.scarlet_keys) }
-          </View>
-        );
-      }) }
-    </View>
+    <>
+      <View style={[backgroundStyle, space.paddingBottomM]}>
+        { chaosBagSection }
+        { flatMap(campaignGuide.campaignLogSections(), log => {
+          if (log.hidden) {
+            return null;
+          }
+          return (
+            <View key={log.id}>
+              { renderLogEntrySectionContent(log.id, log.title, log.type, log.checklist, log.partners, log.calendar, log.scarlet_keys) }
+            </View>
+          );
+        }) }
+      </View>
+      { dialog }
+    </>
   );
 }
 

@@ -1271,6 +1271,7 @@ export interface PlayScenarioInput {
 }
 export interface TextBoxInput {
   type: "text_box";
+  id?: string;
   undo?: boolean;
   effects: TextBoxEffect[];
 }
