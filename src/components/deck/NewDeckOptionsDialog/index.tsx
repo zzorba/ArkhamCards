@@ -55,6 +55,7 @@ export interface NewDeckOptionsProps {
   campaignId: CampaignId | undefined;
   onCreateDeck?: (deck: Deck) => void;
   isModal?: boolean;
+  alternateInvestigatorId?: string;
 }
 
 type Props = NavigationProps &
@@ -95,6 +96,7 @@ function NewDeckOptionsDialog({
   signedIn,
   login,
   isModal,
+  alternateInvestigatorId,
 }: Props) {
   const deckActions = useDeckActions();
   const defaultTabooSetId = useTabooSetId();
@@ -126,7 +128,10 @@ function NewDeckOptionsDialog({
       delete newMeta[key];
     }
     return newMeta;
-  }, {});
+  }, {
+    alternate_back: alternateInvestigatorId,
+    alternate_front: alternateInvestigatorId,
+  });
   const setTabooSetId = useCallback((tabooSetId: number) => {
     actuallySetTabooSetId(tabooSetId);
     setSlots(undefined);

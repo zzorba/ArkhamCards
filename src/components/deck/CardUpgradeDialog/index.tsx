@@ -156,7 +156,7 @@ export default function CardUpgradeDialog({
       );
     });
     const card = cards[code];
-    dispatch(incDeckSlot(id, code, undefined, mode));
+    dispatch(incDeckSlot(id, code, card?.deck_limit, mode));
     if ((
       !ignoreData ||
       !card ||

@@ -23,11 +23,12 @@ export interface NewDeckProps {
   onCreateDeck: (deck: Deck) => void;
   filterInvestigators?: string[];
   onlyInvestigators?: string[];
+  includeParallel?: boolean;
 }
 
 type Props = NewDeckProps & NavigationProps;
 
-function NewDeckView({ onCreateDeck, campaignId, filterInvestigators, onlyInvestigators, componentId }: Props) {
+function NewDeckView({ onCreateDeck, campaignId, filterInvestigators, onlyInvestigators, componentId, includeParallel }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
   const selectedSort = useSelector(getInvestigatorSort);
   const dispatch = useDispatch();
@@ -54,8 +55,9 @@ function NewDeckView({ onCreateDeck, campaignId, filterInvestigators, onlyInvest
         name: 'Deck.NewOptions',
         passProps: {
           campaignId,
-          investigatorId: investigator.code,
+          investigatorId: investigator.alternate_of_code ?? investigator.code,
           onCreateDeck,
+          alternateInvestigatorId: investigator.alternate_of_code ? investigator.code : undefined,
         },
         options: {
           ...getDeckOptions(colors, { title: t`New Deck` }, investigator),
@@ -74,6 +76,7 @@ function NewDeckView({ onCreateDeck, campaignId, filterInvestigators, onlyInvest
           onlyInvestigators={onlyInvestigators}
           sort={selectedSort}
           onPress={onPress}
+          includeParallelInvestigators={includeParallel}
         />
       </View>
       { sortDialog}

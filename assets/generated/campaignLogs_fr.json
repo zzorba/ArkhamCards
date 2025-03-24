@@ -5733,31 +5733,6 @@
             "text": "The Western Wall"
           }
         ]
-      },
-      {
-        "section": "possible_artifacts",
-        "entries": [
-          {
-            "id": "barrier_node",
-            "text": "Barrier Node"
-          },
-          {
-            "id": "grisly_mask",
-            "text": "Grisly Mask"
-          },
-          {
-            "id": "obsidian_claw",
-            "text": "Obsidian Claw"
-          },
-          {
-            "id": "shard",
-            "text": "Shard of Y'ch'lecht"
-          },
-          {
-            "id": "tidal_tablet",
-            "text": "Tidal Tablet"
-          }
-        ]
       }
     ],
     "supplies": []

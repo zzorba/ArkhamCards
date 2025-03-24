@@ -179,6 +179,7 @@ function CampaignDetailView(props: Props) {
       campaignId: campaign.id,
       singleInvestigator: singleInvestigator.card.alternate_of_code ?? singleInvestigator.card.code,
       onDeckSelect: (deck: Deck) => onAddDeck(deck, singleInvestigator.card.code ?? deck.investigator_code),
+      includeParallel,
     } : {
       campaignId: campaign.id,
       selectedInvestigatorIds: map(

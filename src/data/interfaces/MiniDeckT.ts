@@ -4,6 +4,7 @@ export default interface MiniDeckT {
   id: DeckId;
   name: string;
   investigator: string;
+  alternate_investigator?: string;
   date_update: string;
   campaign_id?: CampaignId;
   tags?: string[];

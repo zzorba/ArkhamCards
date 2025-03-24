@@ -63,6 +63,7 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
       campaignId: campaignId,
       singleInvestigator: singleInvestigator.code,
       onDeckSelect,
+      includeParallel,
     } : {
       campaignId: campaignId,
       selectedInvestigatorIds: map(

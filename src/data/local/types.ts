@@ -233,9 +233,11 @@ export class MiniDeckRedux implements MiniDeckT {
   id: DeckId;
   name: string;
   investigator: string;
+  alternate_investigator?: string;
   date_update: string;
   campaign_id?: CampaignId;
   tags?: string[];
+
 
   constructor(deck: Deck, campaign: Campaign | undefined) {
     this.id = getDeckId(deck);
@@ -244,6 +246,7 @@ export class MiniDeckRedux implements MiniDeckT {
     this.date_update = deck.date_update;
     this.campaign_id = campaign ? getCampaignId(campaign) : undefined;
     this.tags = deck.tags === '{}' ? [] : filter(map((deck.tags || '').split(/[, ]/), t => trim(t)), x => !!x);
+    this.alternate_investigator = deck.meta?.alternate_front;
   }
 }
 

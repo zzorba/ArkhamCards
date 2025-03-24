@@ -322,6 +322,7 @@ export function fragmentToDeckId(deck: LatestDeckFragment): DeckId {
 export class MiniDeckRemote implements MiniDeckT {
   id: DeckId;
   investigator: string;
+  alternate_investigator?: string;
   date_update: string;
   name: string;
   campaign_id?: CampaignId;
@@ -329,6 +330,7 @@ export class MiniDeckRemote implements MiniDeckT {
 
   constructor(deck: LatestDeckFragment) {
     this.id = fragmentToDeckId(deck);
+    this.alternate_investigator = deck.content?.meta?.alternate_front ?? undefined;
     this.investigator = deck.investigator;
     this.name = deck.content?.name || '';
     this.date_update = deck.content?.date_update || '';

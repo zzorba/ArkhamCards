@@ -133,7 +133,7 @@ function MyDecksSelectorDialog(props: Props) {
     }
     return undefined;
   }, [singleInvestigator]);
-
+  console.log('includeParallel', includeParallel)
   const showNewDeckDialog = useMemo(() => {
     return throttle(() => {
       Navigation.push<NewDeckProps>(componentId, {
@@ -144,11 +144,12 @@ function MyDecksSelectorDialog(props: Props) {
             onCreateDeck: onDeckSelect,
             filterInvestigators,
             onlyInvestigators,
+            includeParallel,
           },
         },
       });
     }, 200);
-  }, [componentId, campaignId, onDeckSelect, filterInvestigators, onlyInvestigators]);
+  }, [componentId, campaignId, onDeckSelect, filterInvestigators, onlyInvestigators, includeParallel]);
   const [investigatorSortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, setSelectedSort);
   const showSortDialog = useCallback(() => {
     Keyboard.dismiss();
@@ -232,16 +233,16 @@ function MyDecksSelectorDialog(props: Props) {
   }, [componentId, props]);
 
   const filterDeck = useCallback((deck: MiniDeckT): string | undefined => {
-    if (singleInvestigator && deck.investigator !== singleInvestigator) {
+    if (singleInvestigator && deck.investigator !== singleInvestigator && deck.alternate_investigator !== singleInvestigator) {
       return 'wrong_investigator';
     }
-    if (selectedInvestigatorIds && find(selectedInvestigatorIds, i => i === deck.investigator)) {
-      return 'selected_investtigator';
+    if (selectedInvestigatorIds && find(selectedInvestigatorIds, i => i === deck.investigator || i === deck.alternate_investigator)) {
+      return 'selected_investigator';
     }
     if (onlyShowSelected) {
       return undefined;
     }
-    if (find(filterInvestigators, deck.investigator)) {
+    if (find(filterInvestigators, deck.investigator) || (deck.alternate_investigator && find(filterInvestigators, deck.alternate_investigator))) {
       return 'filtered_investigator';
     }
     if (hideOtherCampaignDecks && deck.campaign_id) {
