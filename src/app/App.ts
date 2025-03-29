@@ -1,4 +1,4 @@
-import Crashes from 'appcenter-crashes';
+import * as Sentry from '@sentry/react-native';
 import { forEach } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
 import { Appearance, TouchableOpacity, Platform, Linking, LogBox, ColorSchemeName } from 'react-native';
@@ -66,28 +66,12 @@ export default class App {
     }
   }
 
-  static crashDeltaSeconds(report: Crashes.ErrorReport) {
-    if (Platform.OS === 'android') {
-      const startTime = parseInt(`${report.appStartTime}`, 10) / 1000;
-      const endTime = parseInt(`${report.appErrorTime}`, 10) / 1000;
-      return (endTime - startTime) / 60;
-    }
-    if (typeof report.appErrorTime === 'number' && typeof report.appStartTime === 'number') {
-      return (report.appErrorTime - report.appStartTime) / 60;
-    }
-    return 0;
-  }
-
   async initialAppStart(store: Store<AppState, Action<string>>): Promise<boolean> {
     try {
-      const previousCrash = await Crashes.hasCrashedInLastSession();
+      const previousCrash = await Sentry.crashedLastRun();
       if (previousCrash && !__DEV__) {
-        const report = await Crashes.lastSessionCrashReport();
-        const deltaSeconds = App.crashDeltaSeconds(report);
-        if (deltaSeconds < 20) {
-          this.startSafeMode(store);
-          return true;
-        }
+        this.startSafeMode(store);
+        return true;
       }
     } catch (error) {
       // Who crash reports the crash report system.
@@ -381,3 +365,4 @@ export default class App {
     });
   }
 }
+

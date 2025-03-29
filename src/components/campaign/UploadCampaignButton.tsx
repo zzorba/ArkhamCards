@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useRef, useEffect, useState } from 'react';
 import { ThunkDispatch } from 'redux-thunk';
-import { AppState, getEnableArkhamCardsAccount } from '@reducers';
+import { AppState } from '@reducers';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
@@ -41,7 +41,6 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
-  const enableArkhamCardsAccount = useSelector(getEnableArkhamCardsAccount);
   const dispatch: Dispatch = useDispatch();
   const createCampaignActions = useCreateCampaignActions();
   const uploadingRef = useRef(uploading);
@@ -101,9 +100,6 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (!userId) {
-    if (!enableArkhamCardsAccount) {
-      return null;
-    }
     return (
       <DeckButton
         icon="backup"

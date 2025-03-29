@@ -4756,19 +4756,19 @@ msgstr ""
 msgid "Adjust Weakness Set"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr ""
 
@@ -5729,21 +5729,10 @@ msgstr ""
 msgid "Add note"
 msgstr ""
 
-#, javascript-format
-msgid "Remove ${ investigator.name }?"
-msgstr ""
-
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
 "\n"
 "The deck will remain on ArkhamDB."
-msgstr ""
-
-#, javascript-format
-msgid ""
-"Are you sure you want to remove ${ investigator.name } from this campaign?\n"
-"\n"
-"Campaign log data associated with them may be lost."
 msgstr ""
 
 msgid "Record Scenario Results"
@@ -5914,81 +5903,96 @@ msgid "Act: ${ count }"
 msgid_plural "Acts: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Agenda: ${ count }"
 msgid_plural "Agendas: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Location: ${ count }"
 msgid_plural "Locations: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Enemy: ${ count }"
 msgid_plural "Enemies: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Enemy-Location: ${ count }"
 msgid_plural "Enemy-Locations: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Treachery: ${ count }"
 msgid_plural "Treacheries: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Story: ${ count }"
 msgid_plural "Stories: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Key: ${ count }"
 msgid_plural "Keys: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Asset: ${ count }"
 msgid_plural "Assets: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Scenario reference"
 msgid_plural "Scenario references: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #, javascript-format
 msgid "Unknown: ${ count }"
 msgid_plural "Unknowns: ${ count }"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 msgid "Campaign required"
 msgstr ""
 
 msgid "You must select a campaign."
+msgstr ""
+
+msgid "The Drowned City"
+msgstr ""
+
+msgid "Artifacts Earned"
+msgstr ""
+
+msgid "Alien Glyphs"
+msgstr ""
+
+msgid "Locations Explored"
+msgstr ""
+
+msgid "Task Progress"
+msgstr ""
+
+#, javascript-format
+msgid "Remove ${ investigator.card.name }?"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Are you sure you want to remove ${ investigator.card.name } from this campaign?\n"
+"\n"
+"Campaign log data associated with them may be lost."
 msgstr ""
 
 msgctxt "investigator"

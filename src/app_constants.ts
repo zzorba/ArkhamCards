@@ -10,18 +10,6 @@ import { AttachableDefinition, Pack } from '@actions/types';
 import { JOE_DIAMOND_CODE } from '@data/deck/specialCards';
 import Card from '@data/types/Card';
 
-export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA = true;
-export const ENABLE_ARKHAM_CARDS_ACCOUNT_IOS = true;
-export const ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA = true;
-export const ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID = true;
-export const ENABLE_ARKHAM_CARDS_ACCOUNT =
-  (Platform.OS === 'ios' &&
-    (ENABLE_ARKHAM_CARDS_ACCOUNT_IOS ||
-      ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA)) ||
-  (Platform.OS === 'android' &&
-    (ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID ||
-      ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA));
-
 export type TypeCodeType =
   | 'asset'
   | 'event'

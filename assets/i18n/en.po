@@ -786,19 +786,19 @@ msgstr ""
 msgid "Adjust Weakness Set"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr ""
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr ""
 
@@ -857,10 +857,6 @@ msgid "${ totalXp } total"
 msgstr ""
 
 msgid "Upgrade Deck"
-msgstr ""
-
-#, javascript-format
-msgid "Remove ${ investigator.name }?"
 msgstr ""
 
 msgid "Remove"
@@ -2237,13 +2233,6 @@ msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
 "\n"
 "The deck will remain on ArkhamDB."
-msgstr ""
-
-#, javascript-format
-msgid ""
-"Are you sure you want to remove ${ investigator.name } from this campaign?\n"
-"\n"
-"Campaign log data associated with them may be lost."
 msgstr ""
 
 msgid "Scenario or Interlude"
@@ -5980,6 +5969,32 @@ msgid "Campaign required"
 msgstr ""
 
 msgid "You must select a campaign."
+msgstr ""
+
+msgid "The Drowned City"
+msgstr ""
+
+msgid "Artifacts Earned"
+msgstr ""
+
+msgid "Alien Glyphs"
+msgstr ""
+
+msgid "Locations Explored"
+msgstr ""
+
+msgid "Task Progress"
+msgstr ""
+
+#, javascript-format
+msgid "Remove ${ investigator.card.name }?"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Are you sure you want to remove ${ investigator.card.name } from this campaign?\n"
+"\n"
+"Campaign log data associated with them may be lost."
 msgstr ""
 
 msgctxt "investigator"

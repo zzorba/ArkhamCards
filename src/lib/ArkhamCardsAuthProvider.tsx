@@ -5,7 +5,7 @@ import database from '@react-native-firebase/database';
 
 import ArkhamCardsAuthContext from './ArkhamCardsAuthContext';
 import { useSelector } from 'react-redux';
-import { AppState, getEnableArkhamCardsAccount } from '@reducers';
+import { AppState } from '@reducers';
 
 interface Props {
   children: React.ReactNode;
@@ -34,65 +34,62 @@ interface State {
 export default function ArkhamCardsAuthProvider({ children }: Props) {
   const arkhamDb = useSelector((state: AppState) => state.signedIn.status);
   const arkhamDbUser = useSelector((state: AppState) => state.signedIn.status ? state.decks.arkhamDbUser : undefined);
-  const enableArkhamCardsAccount = useSelector(getEnableArkhamCardsAccount);
   const [state, setState] = useState<State>({
     user: currentUser,
     userId: currentUser?.uid,
     loading: currentUserLoading,
   });
   useEffect(() => {
-    if (enableArkhamCardsAccount) {
-      const authUserChanged = (user: FirebaseAuthTypes.User | undefined) => {
-        setState({
-          user,
-          userId: user?.uid,
-          loading: false,
-        });
-      };
-      if (!eventListenerInitialized) {
-        // We only want to listen to this once, hence the singleton pattern.
-        const sub = DeviceEventEmitter.addListener('onAuthStateChanged', authUserChanged);
-        const callback = async(user: FirebaseAuthTypes.User | null) => {
-          currentUserLoading = false;
-          currentUser = user || undefined;
-          if (user) {
-            const idTokenResult = await user.getIdTokenResult();
-            const hasuraClaims = idTokenResult.claims['https://hasura.io/jwt/claims'];
-            if (hasuraClaims) {
-              DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
-            } else {
-              // Check if refresh is required.
-              const metadataRef = database().ref(`metadata/${user.uid}/refreshTime`);
-              metadataRef.on('value', async(data) => {
-                if (!data.exists()) {
-                  setTimeout(() => callback(user), 500);
-                  return;
-                }
-                const idTokenResult = await user.getIdTokenResult(true);
-                if (idTokenResult.claims['https://hasura.io/jwt/claims']) {
-                  // Force refresh to pick up the latest custom claims changes.
-                  DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
-                } else {
-                  setTimeout(() => callback(user), 500);
-                }
-              });
-            }
-          } else {
+    const authUserChanged = (user: FirebaseAuthTypes.User | undefined) => {
+      setState({
+        user,
+        userId: user?.uid,
+        loading: false,
+      });
+    };
+    if (!eventListenerInitialized) {
+      // We only want to listen to this once, hence the singleton pattern.
+      const sub = DeviceEventEmitter.addListener('onAuthStateChanged', authUserChanged);
+      const callback = async(user: FirebaseAuthTypes.User | null) => {
+        currentUserLoading = false;
+        currentUser = user || undefined;
+        if (user) {
+          const idTokenResult = await user.getIdTokenResult();
+          const hasuraClaims = idTokenResult.claims['https://hasura.io/jwt/claims'];
+          if (hasuraClaims) {
             DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
+          } else {
+            // Check if refresh is required.
+            const metadataRef = database().ref(`metadata/${user.uid}/refreshTime`);
+            metadataRef.on('value', async(data) => {
+              if (!data.exists()) {
+                setTimeout(() => callback(user), 500);
+                return;
+              }
+              const idTokenResult = await user.getIdTokenResult(true);
+              if (idTokenResult.claims['https://hasura.io/jwt/claims']) {
+                // Force refresh to pick up the latest custom claims changes.
+                DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
+              } else {
+                setTimeout(() => callback(user), 500);
+              }
+            });
           }
-        };
-        auth().onAuthStateChanged(callback);
-        eventListenerInitialized = true;
-        return () => {
-          sub.remove();
-        };
-      }
-      const listener = DeviceEventEmitter.addListener('onAuthStateChanged', authUserChanged);
+        } else {
+          DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
+        }
+      };
+      auth().onAuthStateChanged(callback);
+      eventListenerInitialized = true;
       return () => {
-        listener.remove();
+        sub.remove();
       };
     }
-  }, [enableArkhamCardsAccount]);
+    const listener = DeviceEventEmitter.addListener('onAuthStateChanged', authUserChanged);
+    return () => {
+      listener.remove();
+    };
+  }, []);
   const context = useMemo(() => {
     return {
       ...state,

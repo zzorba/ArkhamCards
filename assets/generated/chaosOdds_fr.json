@@ -3066,13 +3066,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Votre lieu est partiellement inondé",
               "modified_value": {
                 "modifier": -2
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Votre lieu est complètement inondé",
               "modified_value": {
                 "modifier": -3
               }
@@ -3109,13 +3109,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Votre lieu est partiellement inondé",
               "modified_value": {
                 "modifier": -3
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Votre lieu est complètement inondé",
               "modified_value": {
                 "modifier": -4
               }
@@ -3766,7 +3766,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Innocent Revelers underneath the agenda deck",
+          "prompt": "Le nombre de Fêtards innocents sous le deck Acte",
           "min": 0,
           "max": 3,
           "adjustment": 2
@@ -3797,7 +3797,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Innocent Revelers underneath the act or agenda decks",
+          "prompt": "Le nombre de Fêtards innocents sous les decks Acte et Intrigue",
           "min": 0,
           "max": 3,
           "adjustment": 2
@@ -5101,7 +5101,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Music]] treacheries in play.",
+          "prompt": "Le nombre de traîtrise [[Musique]] en jeu",
           "min": 0,
           "reveal_another": 1
         }
@@ -5156,7 +5156,7 @@
           },
           "options": [
             {
-              "prompt": "An investigator or Ally has <i>Withered Away>/i>",
+              "prompt": "Un Investigateur ou un Allié est <i>Flétri</i>",
               "modified_value": {
                 "modifier": -4
               }
@@ -5204,7 +5204,7 @@
           },
           "options": [
             {
-              "prompt": "An investigator or Ally has <i>Withered Away>/i>",
+              "prompt": "Un Investigateur ou un Allié est <i>Flétri</i>",
               "modified_value": {
                 "modifier": -6
               }
@@ -5239,7 +5239,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is exhausted",
+              "prompt": "Votre lieu est incliné",
               "modified_value": {
                 "modifier": -4
               }
@@ -5276,7 +5276,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is exhausted",
+              "prompt": "Votre lieu est incliné",
               "modified_value": {
                 "modifier": -5
               }
@@ -5312,7 +5312,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[AI]] encounter cards in your threat area",
+          "prompt": "Le nombre de cartes rencontre [[AI]] dans votre zone de menace",
           "min": 0
         }
       },
@@ -5328,7 +5328,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[AI]] encounter cards in your threat area",
+          "prompt": "Le nombre de cartes rencontre [[AI]] dans votre zone de menace",
           "min": 0
         }
       },
@@ -5348,7 +5348,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your “Memories” (rounded down)",
+          "prompt": "La moitié de vos « Souvenirs » (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -5372,7 +5372,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your “Memories”",
+          "prompt": "Vos « Souvenirs »",
           "min": 0
         }
       },
@@ -5400,7 +5400,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of face-down encounter cards in your threat area",
+          "prompt": "Le nombre de cartes rencontre face cachée dans votre zone de menace",
           "min": 0
         }
       },
@@ -5408,7 +5408,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations in play (rounded down)",
+          "prompt": "La moitié du nombre de lieux en jeu (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -5431,7 +5431,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of face-down encounter cards in your threat area",
+          "prompt": "Le nombre de cartes rencontre face cachée dans votre zone de menace",
           "min": 0
         }
       },
@@ -5439,7 +5439,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations in play",
+          "prompt": "Le nombre de lieux en jeu",
           "min": 0
         }
       },
@@ -5466,7 +5466,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of damage on you and assets you control (rounded down)",
+          "prompt": "La moitié des dégâts sur vous et sur les soutiens que vous contrôlez (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -5492,7 +5492,7 @@
           },
           "options": [
             {
-              "prompt": "Take 2 damage",
+              "prompt": "Subissez 2 dégâts",
               "modified_value": {
                 "modifier": 0
               }
@@ -5506,7 +5506,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of damage on you and assets you control (rounded up)",
+          "prompt": "La moitié des dégâts sur vous et sur les soutiens que vous contrôlez (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -5532,7 +5532,7 @@
           },
           "options": [
             {
-              "prompt": "Take 3 damage",
+              "prompt": "Subissez 3 dégâts",
               "modified_value": {
                 "modifier": 0
               }
@@ -5574,7 +5574,7 @@
           },
           "options": [
             {
-              "prompt": "An attack or evasion attempt against a [[Byakhee]] enemy",
+              "prompt": "Une attaque ou une tentative d’évasion contre un ennemi [[Byakhee]]",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -5613,7 +5613,7 @@
           },
           "options": [
             {
-              "prompt": "An attack or evasion attempt against a [[Byakhee]] enemy",
+              "prompt": "Une attaque ou une tentative d’évasion contre un ennemi [[Byakhee]]",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -5632,7 +5632,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your “Memories” (rounded down)",
+          "prompt": "La moitié de vos « Souvenirs » (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -5640,7 +5640,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of hidden cards in your hand",
+          "prompt": "Le nombre de cartes cachées dans votre main",
           "min": 0
         }
       },
@@ -5661,7 +5661,7 @@
           },
           "options": [
             {
-              "prompt": "Cross out a tally mark next to your “Memories”",
+              "prompt": "Cochez une marque dans vos « Souvenirs »",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -5675,7 +5675,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your “Memories”",
+          "prompt": "Vos « Souvenirs »",
           "min": 0
         }
       },
@@ -5683,7 +5683,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of hidden cards in your hand",
+          "prompt": "Le nombre de cartes cachées dans votre main",
           "min": 0
         }
       },
@@ -5704,7 +5704,7 @@
           },
           "options": [
             {
-              "prompt": "Cross out a tally mark next to your “Memories”",
+              "prompt": "Cochez une marque dans vos « Souvenirs »",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -5740,7 +5740,7 @@
           },
           "options": [
             {
-              "prompt": "Cross out 1 tally mark next to your “Memories”",
+              "prompt": "Cochez une marque dans vos « Souvenirs »",
               "modified_value": {
                 "modifier": -1
               }
@@ -5757,13 +5757,13 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Carcosa]] location",
+              "prompt": "Vous êtes dans un lieu [[Carcosa]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
             },
             {
-              "prompt": "You are at a [[Carcosa]] location and choose to add 1 doom",
+              "prompt": "Vous êtes dans un lieu [[Carcosa]] et choisissez d’ajouter 1 fatalité",
               "modified_value": {
                 "modifier": -2
               }
@@ -5795,7 +5795,7 @@
           },
           "options": [
             {
-              "prompt": "Cross out 1 tally mark next to your “Memories”",
+              "prompt": "Cochez une marque dans vos « Souvenirs »",
               "modified_value": {
                 "modifier": -2
               }
@@ -5812,13 +5812,13 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Carcosa]] location",
+              "prompt": "Vous êtes dans un lieu [[Carcosa]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
             },
             {
-              "prompt": "You are at a [[Carcosa]] location and choose to add 1 doom",
+              "prompt": "Vous êtes dans un lieu [[Carcosa]] et choisissez d’ajouter 1 fatalité",
               "modified_value": {
                 "modifier": -3
               }
@@ -5836,7 +5836,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of revealed locations without clues (rounded up)",
+          "prompt": "La moitié des lieux révélés sans indice (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -5866,7 +5866,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations in play (rounded up)",
+          "prompt": "La moitié des lieux en jeu (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -5900,7 +5900,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Wonderland]] locations in play",
+          "prompt": "Le nombre de lieux [[Pays des Merveilles]] en jeu",
           "min": 0,
           "max": 5
         }
@@ -5917,7 +5917,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Wonderland]] locations in play",
+          "prompt": "Le nombre de lieux [[Pays des Merveilles]] en jeu",
           "min": 0,
           "adjustment": 1
         }
@@ -5949,7 +5949,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "Pas d’huîtres sur votre lieu",
               "modified_value": {
                 "modifier": -5
               }
@@ -5966,7 +5966,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "Pas d’huîtres sur votre lieu",
               "modified_value": {
                 "modifier": -5
               }
@@ -5997,7 +5997,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "Pas d’huîtres sur votre lieu",
               "modified_value": {
                 "modifier": -6
               }
@@ -6014,7 +6014,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "Pas d’huîtres sur votre lieu",
               "modified_value": {
                 "modifier": -6
               }
@@ -6159,7 +6159,7 @@
           },
           "options": [
             {
-              "prompt": "Queen of Hearts is at your location",
+              "prompt": "La Reine de Coeur est dans votre lieu",
               "modified_value": {
                 "modifier": -4
               }
@@ -6210,7 +6210,7 @@
           },
           "options": [
             {
-              "prompt": "Queen of Hearts is at your location or a connecting location",
+              "prompt": "La Reine de Coeur est dans votre lieu ou dans un lieu connexe",
               "modified_value": {
                 "modifier": -4
               }
@@ -6252,7 +6252,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on the current agenda (rounded up)",
+          "prompt": "La moitié du nombre de fatalité sur l’Intrigue en cours (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -6265,7 +6265,7 @@
           },
           "options": [
             {
-              "prompt": "Spend 1 action",
+              "prompt": "Perdez 1 action",
               "modified_value": {
                 "modifier": -2
               }
@@ -6288,7 +6288,7 @@
           },
           "options": [
             {
-              "prompt": "The Jabberwock is in play",
+              "prompt": "Le Jabberwocky est en jeu",
               "modified_value": {
                 "modifier": -4
               }
@@ -6302,7 +6302,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on the current agenda (rounded up)",
+          "prompt": "La moitié du nombre de fatalité sur l’Intrigue en cours (arrondi au supérieur)",
           "min": 0,
           "adjustment": 1
         }
@@ -6316,7 +6316,7 @@
           },
           "options": [
             {
-              "prompt": "Spend 1 action",
+              "prompt": "Perdez 1 action",
               "modified_value": {
                 "modifier": -3
               }
@@ -6340,7 +6340,7 @@
           },
           "options": [
             {
-              "prompt": "The Jabberwock is in play",
+              "prompt": "Le Jabberwocky est en jeu",
               "modified_value": {
                 "modifier": -5
               }
@@ -6380,7 +6380,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "Pas un nombre égal de pions dégâts et horreur sur la carte scénario",
               "modified_value": {
                 "modifier": -4
               }
@@ -6397,7 +6397,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "Pas un nombre égal de pions dégâts et horreur sur la carte scénario",
               "modified_value": {
                 "modifier": -4
               }
@@ -6439,7 +6439,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "Pas un nombre égal de pions dégâts et horreur sur la carte scénario",
               "modified_value": {
                 "modifier": -5
               }
@@ -6456,7 +6456,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "Pas un nombre égal de pions dégâts et horreur sur la carte scénario",
               "modified_value": {
                 "modifier": -5
               }
@@ -6480,7 +6480,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Chess]] enemies in play",
+          "prompt": "Le nombre d’ennemis [[Echecs]] en jeu",
           "min": 0,
           "max": 5
         }
@@ -6494,7 +6494,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Echecs]]",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6512,7 +6512,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Echecs]]",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6530,7 +6530,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Shadow]] location",
+              "prompt": "Vous êtes dans un lieu [[Ombre]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -6544,7 +6544,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Chess]] enemies in play",
+          "prompt": "Le nombre d’ennemis [[Echecs]] en jeu",
           "min": 0
         }
       },
@@ -6557,7 +6557,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Echecs]]",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6575,7 +6575,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Echecs]]",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6593,7 +6593,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Shadow]] location",
+              "prompt": "Vous êtes dans un lieu [[Ombre]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -6616,7 +6616,7 @@
           },
           "options": [
             {
-              "prompt": "More total damage and horror on Alice than on your investigator",
+              "prompt": "Plus que la somme des dégâts et des horreurs sur Alice que sur votre investigateur",
               "modified_value": {
                 "modifier": -4
               }
@@ -6633,7 +6633,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Wonderland]] or [[Shadow]] location",
+              "prompt": "Dans un lieu [[Pays des Merveilles]] ou [[Ombre]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -6667,7 +6667,7 @@
           },
           "options": [
             {
-              "prompt": "Gurathnaka is at your location",
+              "prompt": "Gurathnaka est dans votre lieu",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6687,7 +6687,7 @@
           },
           "options": [
             {
-              "prompt": "There is more total damage and horror on Alice than on your investigator",
+              "prompt": "Il y a plus de dégâts et d’horreurs sur Alice que sur votre investigateur",
               "modified_value": {
                 "modifier": -5
               }
@@ -6704,7 +6704,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Wonderland]] or [[Shadow]] location",
+              "prompt": "Dans un lieu [[Pays des Merveilles]] ou [[Ombre]]",
               "modified_value": {
                 "modifier": -5
               }
@@ -6738,7 +6738,7 @@
           },
           "options": [
             {
-              "prompt": "Gurathnaka is at your location",
+              "prompt": "Gurathnaka est dans votre lieu",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -6822,7 +6822,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Night]] location",
+              "prompt": "Dans un lieu [[Nuit]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -6834,7 +6834,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in hand",
+          "prompt": "Le nombre de cartes dans votre main",
           "min": 0,
           "max": 3
         }
@@ -6843,7 +6843,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of damage on you",
+          "prompt": "Le nombre de dégâts sur vous",
           "min": 0,
           "max": 3
         }
@@ -6868,7 +6868,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Night]] location",
+              "prompt": "Dans un lieu [[Nuit]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -6880,7 +6880,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in hand",
+          "prompt": "Le nombre de cartes dans votre main",
           "min": 0,
           "max": 4
         }
@@ -6889,7 +6889,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Amount of damage on you",
+          "prompt": "Le nombre de dégâts sur vous",
           "min": 0,
           "max": 4
         }
@@ -6913,7 +6913,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of revealed [[Tundra]] locations",
+          "prompt": "Le nombre de lieux [[Toundra]] révélés",
           "min": 0,
           "max": 4
         }
@@ -6931,7 +6931,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "The highest cost of a hand asset in your play area",
+          "prompt": "Le coût le plus élevé d’un soutien main dans votre zone de jeu",
           "min": 0,
           "max": 4
         }
@@ -6940,7 +6940,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "The highest cost of an arcane asset in your play area",
+          "prompt": "Le coût le plus élevé d’un soutien arcane dans votre zone de jeu",
           "min": 0,
           "max": 4
         }
@@ -6951,7 +6951,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of revealed [[Tundra]] locations",
+          "prompt": "Le nombre de lieux [[Toundra]] révélés",
           "min": 0,
           "max": 5
         }
@@ -6969,7 +6969,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "The highest cost of a hand asset in your play area",
+          "prompt": "Le coût le plus élevé d’un soutien main dans votre zone de jeu",
           "min": 0,
           "adjustment": 1
         }
@@ -6978,7 +6978,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "The highest cost of an arcane asset in your play area",
+          "prompt": "Le coût le plus élevé d’un soutien arcane dans votre zone de jeu",
           "min": 0,
           "adjustment": 1
         }
@@ -6993,7 +6993,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Twice the number of the current agenda",
+          "prompt": "Deux fois le numéro de l’Acte en cours",
           "min": 2
         }
       },
@@ -7001,7 +7001,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[cultist]] in the chaos bag",
+          "prompt": "Le nombre de [cultiste] dans la réserve du chaos",
           "min": 0,
           "adjustment": 1
         }
@@ -7010,7 +7010,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[tablet]] in the chaos bag",
+          "prompt": "Le nombre de [tablet] dans la réserve du chaos",
           "min": 0,
           "adjustment": 1
         }
@@ -7019,7 +7019,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[elder_thing]] in the chaos bag",
+          "prompt": "Le nombre de [elder_thing] dans la réserve du chaos",
           "min": 0,
           "adjustment": 1
         }
@@ -7030,7 +7030,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Twice the number of the current agenda",
+          "prompt": "Deux fois le numéro de l’Acte en cours",
           "min": 2,
           "adjustment": 1
         }
@@ -7039,7 +7039,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[cultist]] in the chaos bag",
+          "prompt": "Le nombre de [cultiste] dans la réserve du chaos",
           "min": 0,
           "adjustment": 2
         }
@@ -7048,7 +7048,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[tablet]] in the chaos bag",
+          "prompt": "Le nombre de [tablet] dans la réserve du chaos",
           "min": 0,
           "adjustment": 2
         }
@@ -7057,7 +7057,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[elder_thing]] in the chaos bag",
+          "prompt": "Le nombre de [elder_thing] dans la réserve du chaos",
           "min": 0,
           "adjustment": 2
         }
@@ -7219,7 +7219,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The highest number of doom on an enemy in play",
+          "prompt": "Le plus grand nombre de fatalités sur un ennemi en jeu",
           "min": 0,
           "max": 4
         }
@@ -7233,7 +7233,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Miasma]] location",
+              "prompt": "Vous êtes dans un lieu [[Miasme]]",
               "modified_value": {
                 "modifier": -5
               }
@@ -7253,7 +7253,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The highest number of doom on an enemy in play",
+          "prompt": "Le plus grand nombre de fatalités sur un ennemi en jeu",
           "min": 0,
           "max": 6,
           "adjustment": 1
@@ -7268,7 +7268,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Miasma]] location",
+              "prompt": "Vous êtes dans un lieu [[Miasme]]",
               "modified_value": {
                 "modifier": -6
               }
@@ -7353,7 +7353,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The most damage or horror on a location",
+          "prompt": "Le plus de dégâts ou d’horreurs sur un lieu",
           "min": 0,
           "max": 4
         }
@@ -7382,7 +7382,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The most damage or horror on a location",
+          "prompt": "Le plus de dégâts ou d’horreurs sur un lieu",
           "min": 0,
           "max": 6
         }
@@ -7476,7 +7476,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations with horror on them",
+          "prompt": "Le nombre de lieux avec de l’horreur sur eux",
           "min": 0,
           "max": 4
         }
@@ -7505,7 +7505,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations with horror on them",
+          "prompt": "Le nombre de lieux avec de l’horreur sur eux",
           "min": 0
         }
       },
@@ -7781,7 +7781,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the Auction Deck",
+          "prompt": "Le nombre de carte dans le Deck Enchères",
           "min": 0,
           "adjustment": -4,
           "scale": -1
@@ -7816,7 +7816,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the Auction Deck",
+          "prompt": "Le nombre de carte dans le Deck Enchères",
           "min": 0,
           "adjustment": -5,
           "scale": -1
@@ -7855,7 +7855,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of revealed locations with no clues on them",
+          "prompt": "Le nombre de lieux révélés sans indice sur eux",
           "min": 0,
           "max": 4
         }
@@ -7875,7 +7875,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is Non-Euclidean",
+              "prompt": "Votre lieu est Non-Euclidien",
               "modified_value": {
                 "modifier": -4
               }
@@ -7895,7 +7895,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of revealed locations with no clues on them",
+          "prompt": "Le nombre de lieux révélés sans indice sur eux",
           "min": 0
         }
       },
@@ -7914,7 +7914,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is Non-Euclidean",
+              "prompt": "Votre lieu est Non-Euclidien",
               "modified_value": {
                 "modifier": -5
               }
@@ -7938,7 +7938,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the Traitor Deck",
+          "prompt": "Le nombre de cartes dans le Deck Traitre",
           "min": 0,
           "adjustment": -4,
           "scale": -1
@@ -7953,7 +7953,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Traitor]] enemy in play",
+              "prompt": "Il y a un ennemi [[Traitre]] en jeu",
               "modified_value": {
                 "modifier": -4
               }
@@ -7979,7 +7979,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards in the Traitor Deck",
+          "prompt": "Le nombre de cartes dans le Deck Traitre",
           "min": 0,
           "adjustment": -5,
           "scale": -1
@@ -7994,7 +7994,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Traitor]] enemy in play",
+              "prompt": "Il y a un ennemi [[Traitre]] en jeu",
               "modified_value": {
                 "modifier": -5
               }
@@ -8102,7 +8102,7 @@
           },
           "options": [
             {
-              "prompt": "Performing a test against a [[Conspirator]] enemy and did not take a damage",
+              "prompt": "Durant un test contre une traitrise [[Conspirateur]] et ne subissez pas de dégât",
               "modified_value": {
                 "modifier": -4
               }
@@ -8119,7 +8119,7 @@
           },
           "options": [
             {
-              "prompt": "Performing a test against a [[Paradox]] treachery and did not take a horror",
+              "prompt": "Durant un test contre une traitrise [[Paradoxe]] et ne subissez pas d’horreur",
               "modified_value": {
                 "modifier": -4
               }
@@ -8136,7 +8136,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is Non-Euclidean",
+              "prompt": "Votre lieu est Non-Euclidien",
               "modified_value": {
                 "modifier": -5
               }
@@ -8163,7 +8163,7 @@
           },
           "options": [
             {
-              "prompt": "Performing a test against a [[Conspirator]] enemy and did not take a damage",
+              "prompt": "Durant un test contre une traitrise [[Conspirateur]] et ne subissez pas de dégât",
               "modified_value": {
                 "modifier": -5
               }
@@ -8180,7 +8180,7 @@
           },
           "options": [
             {
-              "prompt": "Performing a test against a [[Paradox]] treachery and did not take a horror",
+              "prompt": "Durant un test contre une traitrise [[Paradoxe]] et ne subissez pas d’horreur",
               "modified_value": {
                 "modifier": -5
               }
@@ -8197,7 +8197,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is Non-Euclidean",
+              "prompt": "Votre lieu est Non-Euclidien",
               "modified_value": {
                 "modifier": -6
               }
@@ -8215,7 +8215,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Non-Euclidean effects on your location",
+          "prompt": "Nombre d’effesr Non-Euclidien dans votre lieu",
           "min": 0,
           "adjustment": 2
         }
@@ -8244,7 +8244,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of Non-Euclidean effects on your location",
+          "prompt": "Nombre d’effesr Non-Euclidien dans votre lieu",
           "min": 0,
           "adjustment": 3
         }
@@ -8303,7 +8303,7 @@
           },
           "options": [
             {
-              "prompt": "Cthulhu is at your location",
+              "prompt": "Cthulhu est dans votre lieu",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8343,7 +8343,7 @@
           },
           "options": [
             {
-              "prompt": "Cthulhu is at your location",
+              "prompt": "Cthulhu est dans votre lieu",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8451,7 +8451,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [per_investigator] civilians slain.",
+          "prompt": "Le nombre [per_investigator] de civils tués",
           "min": 0
         }
       },
@@ -8479,7 +8479,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [per_investigator] civilians slain.",
+          "prompt": "Le nombre [per_investigator] de civils tués",
           "min": 0,
           "scale": 2
         }
@@ -8741,7 +8741,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre de traitrises ",
+          "prompt": "Nombre de traitrises [[Danger]] en jeu",
           "min": 0
         }
       },
@@ -8760,7 +8760,7 @@
           },
           "options": [
             {
-              "prompt": "Void Chimera is at your location",
+              "prompt": "La Chimère du Vide est dans votre lieu",
               "modified_value": {
                 "modifier": -5
               }
@@ -8780,7 +8780,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre de traitrises ",
+          "prompt": "Nombre de traitrises [[Danger]] en jeu",
           "adjustment": 1,
           "min": 0
         }
@@ -8800,7 +8800,7 @@
           },
           "options": [
             {
-              "prompt": "Void Chimera is at your location",
+              "prompt": "La Chimère du Vide est dans votre lieu",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -8829,7 +8829,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a Key Locus",
+              "prompt": "Vous êtes dans un lieu avec un Locus Clé",
               "modified_value": {
                 "modifier": -3
               }
@@ -8866,7 +8866,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a location with a Key Locus",
+              "prompt": "Vous êtes dans un lieu avec un Locus Clé",
               "modified_value": {
                 "modifier": -4
               }
@@ -8902,7 +8902,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of charges on Shade Reaper (rounded up)",
+          "prompt": "La moitié du nombre de charges sur Le Faucheur d’Ombre (arrondi au supérieur)",
           "min": 0,
           "max": 6
         }
@@ -8940,7 +8940,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 charge on The Shade Reaper",
+              "prompt": "Placez 1 charge sur Le Faucheur d’Ombre",
               "modified_value": {
                 "modifier": 0
               }
@@ -8954,7 +8954,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of charges on Shade Reaper",
+          "prompt": "Le nombre de charges sur Le Faucheur d’Ombre",
           "min": 0
         }
       },
@@ -8990,7 +8990,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 charge on The Shade Reaper",
+              "prompt": "Placez 1 charge sur Le Faucheur d’Ombre",
               "modified_value": {
                 "modifier": -3
               }
@@ -9008,7 +9008,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations in play (rounded down)",
+          "prompt": "La moitié du nombre de lieux en jeu (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -9104,7 +9104,7 @@
           },
           "options": [
             {
-              "prompt": "Attack against a ready [[Outsider]] enemy",
+              "prompt": "Une attaque conte un ennemi [[Outsider]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9156,7 +9156,7 @@
           },
           "options": [
             {
-              "prompt": "There is a ready [[Outsider]] enemy at your location",
+              "prompt": "Il y a un ennemi [[Outsider]] dans votre lieu",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9637,7 +9637,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Sunken]] locations in play (rounded up)",
+          "prompt": "La moitié du nombre de lieux [[Coulé]] en jeu (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -9665,7 +9665,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Sunken]] locations in play",
+          "prompt": "Le nombre de lieux [[Coulé]] en jeu",
           "min": 0
         }
       },
@@ -9697,7 +9697,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of revealed [[Cave]] locations in play (rounded up)",
+          "prompt": "La moitié du nombre de lieux [[Grotte]] révélés en jeu (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -9733,7 +9733,7 @@
           },
           "options": [
             {
-              "prompt": "An [[Abomination]] enemy at your location",
+              "prompt": "Un ennemi [[Abomination]] est dans votre lieu",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -9748,7 +9748,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of revealed [[Cave]] locations in play",
+          "prompt": "Le nombre de lieux [[Grotte]] révélés en jeu",
           "min": 0
         }
       },
@@ -9784,7 +9784,7 @@
           },
           "options": [
             {
-              "prompt": "An [[Abomination]] enemy at your location",
+              "prompt": "Un ennemi [[Abomination]] est dans votre lieu",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9802,7 +9802,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current darkness level",
+          "prompt": "Le niveau d’obscurité actuel",
           "min": 0
         }
       },
@@ -9830,7 +9830,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current darkness level",
+          "prompt": "Le niveau d’obscurité actuel",
           "min": 0,
           "scale": 2
         }
@@ -9863,7 +9863,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of doom in play (rounded up)",
+          "prompt": "La moitié du nombre de fatalités en jeu (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -9892,7 +9892,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of doom in play",
+          "prompt": "Le nombre de fatalités en jeu",
           "min": 0
         }
       },
@@ -9924,7 +9924,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current act number",
+          "prompt": "Le numéro de l’Acte en cours",
           "min": 1,
           "adjustment": 1
         }
@@ -9944,7 +9944,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on your investigator card",
+              "prompt": "Placez 1 fatalité sur votre carte investigateur",
               "modified_value": {
                 "modifier": 0
               }
@@ -9961,7 +9961,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against Cosmic Emissary",
+              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre l’Émissaire cosmique",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -9976,7 +9976,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Colour]] enemies in play",
+          "prompt": "Le nombre d’ennemis [[Couleur]] en jeu",
           "min": 0
         }
       },
@@ -9995,7 +9995,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on your investigator card",
+              "prompt": "Placez 1 fatalité sur votre carte investigateur",
               "modified_value": {
                 "modifier": -3
               }
@@ -10012,7 +10012,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against Cosmic Emissary",
+              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre l’Émissaire cosmique",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -10030,7 +10030,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations in the Arkham Streets deck (rounded down)"
+          "prompt": "La moitié du nombre de lieux dans le deck Rues d’Arkham (arrondi à l’inférieur)"
         }
       },
       {
@@ -10049,7 +10049,7 @@
           },
           "options": [
             {
-              "prompt": "You have moved this turn",
+              "prompt": "Vous vous êtes déplacé durant ce tout",
               "modified_value": {
                 "modifier": -1
               }
@@ -10063,7 +10063,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations in the Arkham Streets deck"
+          "prompt": "Le nombre de lieux dans le deck Rues d’Arkham"
         }
       },
       {
@@ -10082,7 +10082,7 @@
           },
           "options": [
             {
-              "prompt": "You have moved this turn",
+              "prompt": "Vous vous êtes déplacé durant ce tout",
               "modified_value": {
                 "modifier": -2
               }
@@ -10105,7 +10105,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Myriad]] enemy at your location",
+              "prompt": "Il y a un ennemi [[Myriad]] dans votre lieu",
               "modified_value": {
                 "modifier": -3
               }
@@ -10136,7 +10136,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Myriad]] enemy at your location",
+              "prompt": "Il y a un ennemi [[Myriad]] dans votre lieu",
               "modified_value": {
                 "modifier": -4
               }
@@ -10166,7 +10166,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of actions you have remaining (rounded up)"
+          "prompt": "La moitié du nombre d’actions qu’il vous reste (arrondi au supérieur)"
         }
       },
       {
@@ -10194,7 +10194,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of actions you have remaining"
+          "prompt": "Le nombre d’actions qu’il vous reste"
         }
       },
       {
@@ -10255,7 +10255,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The sum of the current act number and the current agenda number",
+          "prompt": "La somme des numéros de l’Acte et de l’Intrigue en cours",
           "min": 2
         }
       },
@@ -10288,7 +10288,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of completed [[Tasks]] (rounded down)",
+          "prompt": "La moitié du nombre de [[Tâches]] complétées (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -10316,7 +10316,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of completed [[Tasks]]",
+          "prompt": "Le nombre de [[Tâches]] complétées",
           "min": 0
         }
       },
@@ -10348,7 +10348,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of actions you have remaining"
+          "prompt": "Le nombre d’actions qu’il vous reste"
         }
       },
       {
@@ -10375,7 +10375,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of actions you have remaining",
+          "prompt": "Le nombre d’actions qu’il vous reste",
           "adjustment": 1
         }
       },
@@ -10407,7 +10407,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current act number",
+          "prompt": "Le numéro de l’Acte en cours",
           "min": 1
         }
       },
@@ -10435,7 +10435,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current act number",
+          "prompt": "Le numéro de l’Acte en cours",
           "min": 1,
           "scale": 2
         }
@@ -10468,7 +10468,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Criminal]] enemies in play",
+          "prompt": "Le nombre d’ennemis [[Criminel]] en jeu",
           "min": 0,
           "max": 4
         }
@@ -10482,7 +10482,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Criminal]] enemy at your location",
+              "prompt": "Un ennemi [[Criminel]] dans votre lieu",
               "modified_value": {
                 "modifier": -4
               }
@@ -10502,7 +10502,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Criminal]] enemies in play",
+          "prompt": "Le nombre d’ennemis [[Criminel]] en jeu",
           "min": 0,
           "adjustment": 1
         }
@@ -10516,7 +10516,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Criminal]] enemy at your location",
+              "prompt": "Un ennemi [[Criminel]] dans votre lieu",
               "modified_value": {
                 "modifier": -5
               }
@@ -10540,7 +10540,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's level",
+          "prompt": "L’étage de votre lieu",
           "min": 0,
           "max": 5
         }
@@ -10566,7 +10566,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Votre lieu est complètement inondé",
               "modified_value": {
                 "modifier": -5
               }
@@ -10580,7 +10580,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's level",
+          "prompt": "L’étage de votre lieu",
           "min": 0,
           "max": 5,
           "adjustment": 2
@@ -10607,7 +10607,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Votre lieu est complètement inondé",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -10625,7 +10625,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of revealed locations in play (rounded down)",
+          "prompt": "La moitié du nombre de lieux révélés en jeu (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -10650,7 +10650,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is not flooded",
+              "prompt": "Votre lieu n’est pas inondé",
               "modified_value": {
                 "modifier": -5
               }
@@ -10664,7 +10664,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of revealed locations in play",
+          "prompt": "Le nombre de lieux révélés en jeu",
           "min": 1
         }
       },
@@ -10689,7 +10689,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is not flooded",
+              "prompt": "Votre lieu n’est pas inondé",
               "modified_value": {
                 "modifier": -6
               }
@@ -10707,7 +10707,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of doom on enemies and assets in play (rounded down)",
+          "prompt": "La moitié du nombre de fatalités sur des ennemis ou des soutiens en jeu (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -10720,7 +10720,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Cultist]] enemy at your location",
+              "prompt": "Il y a un ennemi [[Cultiste]] dans votre lieu",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -10747,7 +10747,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom on enemies and assets in play",
+          "prompt": "Le nombre de fatalités sur des ennemis et des soutiens en jeu",
           "min": 0
         }
       },
@@ -10760,7 +10760,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Cultist]] enemy at your location",
+              "prompt": "Il y a un ennemi [[Cultiste]] dans votre lieu",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -10791,7 +10791,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of activated locations (rounded down)",
+          "prompt": "La moitié du nombre de lieux activés (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -10810,13 +10810,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Votre lieu est partiellement inondé",
               "modified_value": {
                 "modifier": -3
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Votre lieu est complètement inondé",
               "modified_value": {
                 "modifier": -4
               }
@@ -10836,7 +10836,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of activated locations",
+          "prompt": "Le nombre de lieux activés",
           "min": 0
         }
       },
@@ -10855,13 +10855,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Votre lieu est partiellement inondé",
               "modified_value": {
                 "modifier": -4
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Votre lieu est complètement inondé",
               "modified_value": {
                 "modifier": -5
               }
@@ -10885,7 +10885,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Glyph]] cards in the victory display",
+          "prompt": "Le nombre de cartes [[Glyphe]] dans la pile de victoire",
           "min": 0
         }
       },
@@ -10898,7 +10898,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Stowaway]] enemy at your location",
+              "prompt": "Le nombre d’ennemis [[Clandestins]] dans votre lieu",
               "modified_value": {
                 "modifier": -4
               }
@@ -10915,7 +10915,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Votre lieu est inondé",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -10936,7 +10936,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Glyph]] cards in the victory display",
+          "prompt": "Le nombre de cartes [[Glyphe]] dans la pile de victoire",
           "min": 0,
           "adjustment": 1
         }
@@ -10950,7 +10950,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Stowaway]] enemy at your location",
+              "prompt": "Le nombre d’ennemis [[Clandestins]] dans votre lieu",
               "modified_value": {
                 "modifier": -5
               }
@@ -10967,7 +10967,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Votre lieu est inondé",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -10992,7 +10992,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Storm Intensity",
+          "prompt": "L’Intensité de la Tempête actuelle",
           "min": 0
         }
       },
@@ -11006,7 +11006,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "The number of open skys adjacent to your location",
+          "prompt": "Le nombre de Ciels Ouverts adjacents à votre lieu",
           "min": 0,
           "max": 4
         }
@@ -11020,7 +11020,7 @@
           },
           "options": [
             {
-              "prompt": "There is an enemy at your location",
+              "prompt": "Il y a un ennemi dans votre lieu",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -11035,7 +11035,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Storm Intensity",
+          "prompt": "L’Intensité de la Tempête actuelle",
           "min": 0,
           "adjustment": 2
         }
@@ -11050,7 +11050,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "The number of open skys adjacent to your location",
+          "prompt": "Le nombre de Ciels Ouverts adjacents à votre lieu",
           "min": 0,
           "max": 4,
           "scale": 2
@@ -11065,7 +11065,7 @@
           },
           "options": [
             {
-              "prompt": "There is an enemy at your location",
+              "prompt": "Il y a un ennemi dans votre lieu",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -11084,7 +11084,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Disturbance",
+          "prompt": "Le nombre actuel de Perturbations",
           "min": 0,
           "max": 6
         }
@@ -11114,7 +11114,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Disturbance",
+          "prompt": "Le nombre actuel de Perturbations",
           "min": 0
         }
       },
@@ -11147,7 +11147,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations with no scenario cards beneath them (rounded up)",
+          "prompt": "La moitié du nombre de lieux sans carte scénario sous eux (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -11172,7 +11172,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Votre lieu est inondé",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -11187,7 +11187,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with no scenario cards beneath them (rounded up)",
+          "prompt": "Le nombre de lieux sans carte scénario sous eux",
           "min": 0
         }
       },
@@ -11212,7 +11212,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Votre lieu est inondé",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1

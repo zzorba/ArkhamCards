@@ -3,6 +3,7 @@ import { InteractionManager, Platform, ScrollView, StyleSheet, View } from 'reac
 import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
 import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
+import * as Sentry from '@sentry/react-native';
 
 import { iconsMap } from '@app/NavIcons';
 import { ProcessedCampaign, StepId } from '@data/scenario';
@@ -276,6 +277,7 @@ export default function CampaignDetailTab({
     !!campaignGuide.campaignMap() && !!processedCampaign.campaignLog.campaignData.scarlet.showMap,
     !!processedCampaign.campaignLog.campaignData.scarlet.embark,
   ], [campaignGuide, processedCampaign.campaignLog]);
+
   return (
     <View style={styles.wrapper}>
       <ScrollView contentContainerStyle={backgroundStyle} showsVerticalScrollIndicator={false}>

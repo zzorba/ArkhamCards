@@ -5,8 +5,6 @@
 // Custom imports
 #import <Firebase.h>
 #import <GoogleSignIn/GoogleSignIn.h>
-#import <AppCenterReactNative.h>
-#import <AppCenterReactNativeCrashes.h>
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 #import <RNKeyEvent.h>
 

@@ -796,19 +796,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -870,10 +870,6 @@ msgstr "${totalXp} au total"
 
 msgid "Upgrade Deck"
 msgstr "Améliorer ce deck"
-
-#, javascript-format
-msgid "Remove ${ investigator.name }?"
-msgstr "Retirer ${investigator.name} ?"
 
 msgid "Remove"
 msgstr "Retirer"
@@ -2323,16 +2319,6 @@ msgstr ""
 "Êtes-vous sûr de vouloir supprimer ce deck de la campagne ?\n"
 "\n"
 "Ce deck restera sur ArkhamDB."
-
-#, javascript-format
-msgid ""
-"Are you sure you want to remove ${ investigator.name } from this campaign?\n"
-"\n"
-"Campaign log data associated with them may be lost."
-msgstr ""
-"Êtes-vous sûr de vouloir supprimer ${ investigator.name } de la campagne ?\n"
-"\n"
-"Les données du Carnet de Campagne y étant associées seront perdues."
 
 msgid "Scenario or Interlude"
 msgstr "Scénario ou Interlude"
@@ -6188,6 +6174,32 @@ msgid "Campaign required"
 msgstr ""
 
 msgid "You must select a campaign."
+msgstr ""
+
+msgid "The Drowned City"
+msgstr ""
+
+msgid "Artifacts Earned"
+msgstr ""
+
+msgid "Alien Glyphs"
+msgstr ""
+
+msgid "Locations Explored"
+msgstr ""
+
+msgid "Task Progress"
+msgstr ""
+
+#, javascript-format
+msgid "Remove ${ investigator.card.name }?"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Are you sure you want to remove ${ investigator.card.name } from this campaign?\n"
+"\n"
+"Campaign log data associated with them may be lost."
 msgstr ""
 
 msgctxt "investigator"

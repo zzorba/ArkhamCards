@@ -9,7 +9,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import database from '@react-native-firebase/database';
-import Crashes from 'appcenter-crashes';
+import * as Sentry from '@sentry/react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 import { Image } from 'expo-image';
@@ -27,7 +27,6 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useApolloClient } from '@apollo/client';
 import { useSimpleTextDialog } from '@components/deck/dialogs';
-import { ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS } from '@app_constants';
 import { useSettingFlag } from '@components/core/hooks';
 import { useUpdateOnboarding } from '@data/remote/settings';
 import { format } from 'date-fns';
@@ -172,7 +171,7 @@ export default function DiagnosticsView() {
   }, [clearDatabase, doSyncCards]);
 
   const crash = useCallback(() => {
-    Crashes.generateTestCrash();
+    Sentry.nativeCrash();
   }, []);
 
   const setDissonantVoicesToken = useCallback(() => {
@@ -234,8 +233,7 @@ export default function DiagnosticsView() {
           onPress={exportCampaignData}
           text={t`Export diagnostic data`}
         />
-        { ((Platform.OS === 'android' && ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID) ||
-          (Platform.OS === 'ios' && ENABLE_ARKHAM_CARDS_ACCOUNT_IOS && !ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA)) && (
+        { false && (
           <>
             <CardSectionHeader section={{ title: t`Beta testing` }} />
             <SettingsItem

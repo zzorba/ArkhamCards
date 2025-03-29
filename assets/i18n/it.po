@@ -801,19 +801,19 @@ msgstr "Sacchetto del Caos"
 msgid "Adjust Weakness Set"
 msgstr "Correggi Debolezze Base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Questo mazzo contiene numerose debolezze Base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Questo mazzo contiene una debolezza base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverle dal set di debolezze base della campagna?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverla dal set di debolezze base della campagna?"
 
@@ -873,10 +873,6 @@ msgstr "${ totalXp } Totali"
 
 msgid "Upgrade Deck"
 msgstr "Aggiorna il mazzo"
-
-#, javascript-format
-msgid "Remove ${ investigator.name }?"
-msgstr "Rimuovere ${ investigator.name }?"
 
 msgid "Remove"
 msgstr "Rimuovi"
@@ -2314,16 +2310,6 @@ msgstr ""
 "Sei sicuro di voler rimuovere questo mazzo dalla campagna?\n"
 "\n"
 "Il mazzo rimarrà su ArkhamDB."
-
-#, javascript-format
-msgid ""
-"Are you sure you want to remove ${ investigator.name } from this campaign?\n"
-"\n"
-"Campaign log data associated with them may be lost."
-msgstr ""
-"Sei sicuro di voler rimuovere ${ investigator.name } da questa campagna?\n"
-"\n"
-"I dati del Diario della Campagna associati potrebbero andare persi."
 
 msgid "Scenario or Interlude"
 msgstr "Scenario o Interludio"
@@ -6183,6 +6169,32 @@ msgid "Campaign required"
 msgstr ""
 
 msgid "You must select a campaign."
+msgstr ""
+
+msgid "The Drowned City"
+msgstr ""
+
+msgid "Artifacts Earned"
+msgstr ""
+
+msgid "Alien Glyphs"
+msgstr ""
+
+msgid "Locations Explored"
+msgstr ""
+
+msgid "Task Progress"
+msgstr ""
+
+#, javascript-format
+msgid "Remove ${ investigator.card.name }?"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Are you sure you want to remove ${ investigator.card.name } from this campaign?\n"
+"\n"
+"Campaign log data associated with them may be lost."
 msgstr ""
 
 msgctxt "investigator"

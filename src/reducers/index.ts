@@ -52,7 +52,7 @@ import {
   ChecklistSlots,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
-import { ChaosBag, ENABLE_ARKHAM_CARDS_ACCOUNT, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID, ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS, ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA, reprintPackToPack, specialPacks } from '@app_constants';
+import { ChaosBag, reprintPackToPack, specialPacks } from '@app_constants';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { LatestDeckRedux, MiniCampaignRedux, MiniDeckRedux, MiniLinkedCampaignRedux } from '@data/local/types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -856,16 +856,6 @@ export const getCardFilterData = createSelector(
   (state: AppState, filterId: string) => filterId,
   (cardData, filterId): CardFilterData | undefined => {
     return cardData[filterId];
-  }
-);
-
-export const getEnableArkhamCardsAccount = createSelector(
-  (state: AppState) => state.settings.beta1,
-  (beta1: undefined | boolean): boolean => {
-    return ENABLE_ARKHAM_CARDS_ACCOUNT && (
-      (Platform.OS === 'ios' && (ENABLE_ARKHAM_CARDS_ACCOUNT_IOS_BETA || (ENABLE_ARKHAM_CARDS_ACCOUNT_IOS && !!beta1))) ||
-      (Platform.OS === 'android' && (ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID_BETA || (ENABLE_ARKHAM_CARDS_ACCOUNT_ANDROID && !!beta1)))
-    );
   }
 );
 
