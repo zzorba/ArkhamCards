@@ -3,6 +3,7 @@
 .DS_Store
 .expo
 
+*/sentry.properties
 # VSCode
 .vscode/
 # Xcode
