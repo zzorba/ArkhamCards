@@ -9,7 +9,7 @@ import {
 import FactionPattern from './FactionPattern';
 import { FactionCodeType } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
-import { s, xs } from '@styles/space';
+import { s, xs, isTablet } from '@styles/space';
 
 interface Props {
   faction?: FactionCodeType;
@@ -21,12 +21,14 @@ interface Props {
   eliminated?: boolean;
   transparent?: boolean;
   color?: 'dark' | 'light';
+  isCardHeader?: boolean;
 }
 
 const HEIGHT = 48;
 
-function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound, eliminated, transparent, ...props }: Props) {
-  const { colors, fontScale } = useContext(StyleContext);
+function RoundedFactionHeader({ isCardHeader, faction, width, dualFaction, children, fullRound, eliminated, transparent, ...props }: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const height = s + (isCardHeader ? s : 0) + typography.cardHeaderHeight;
   const fadeAnim = useCallback((props: any) => {
     return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
   }, [colors]);
@@ -39,7 +41,7 @@ function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound
             fullRound ? styles.fullRound : undefined,
             {
               width: width - 2,
-              height: 30 + 18 * fontScale,
+              height,
             },
           ]} color={colors.D10} />
         </Placeholder>
@@ -59,14 +61,14 @@ function RoundedFactionHeader({ faction, width, dualFaction, children, fullRound
         } : undefined,
         {
           opacity: eliminated ? 0.6 : undefined,
-          height: 30 + 18 * fontScale,
+          height,
         },
       ]}
     >
       <FactionPattern
         faction={dualFaction ? 'dual' : faction}
         width={width}
-        height={30 + 18 * fontScale}
+        height={height}
         transparent={transparent}
         fullRound={fullRound}
       />

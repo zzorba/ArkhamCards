@@ -2975,11 +2975,22 @@
     "standard": [
       {
         "token": "skull",
-        "type": "counter",
-        "counter": {
-          "prompt": "-1 (-2 instead if your location is partially flooded; -3 instead if your location is fully flooded)",
-          "min": 1,
-          "max": 3
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [{
+            "prompt": "Your location is partially flooded",
+            "modified_value": {
+              "modifier": -2
+            }
+          },{
+            "prompt": "Your location is fully flooded",
+            "modified_value": {
+              "modifier": -3
+            }
+          }]
         }
       },
       {
@@ -3004,11 +3015,22 @@
     "hard": [
       {
         "token": "skull",
-        "type": "counter",
-        "counter": {
-          "prompt": "-2 (-3 instead if your location is partially flooded; -4 instead if your location is fully flooded)",
-          "min": 2,
-          "max": 4
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "Your location is partially flooded",
+            "modified_value": {
+              "modifier": -3
+            }
+          },{
+            "prompt": "Your location is fully flooded",
+            "modified_value": {
+              "modifier": -4
+            }
+          }]
         }
       },
       {
@@ -10067,6 +10089,798 @@
         "token": "elder_thing",
         "value": {
           "modifier": -8
+        }
+      }
+    ]
+  },
+  
+  {
+    "code": "11501",
+    "scenario": "one_last_job",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Criminal]] enemies in play",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "A [[Criminal]] enemy at your location",
+            "modified_value": {
+              "modifier": -4
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Criminal]] enemies in play",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "A [[Criminal]] enemy at your location",
+            "modified_value": {
+              "modifier": -5
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+
+  {
+    "code": "11517",
+    "scenario": "the_western_wall",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your location's level",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "Your location is fully flooded",
+            "modified_value": {
+              "modifier": -5
+            }
+          }]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Your location's level",
+          "min": 0,
+          "max": 5,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -5
+          },
+          "options": [{
+            "prompt": "Your location is fully flooded",
+            "modified_value": {
+              "modifier": "auto_fail"
+            }
+          }]
+        }
+      }
+    ]
+  },
+  {
+    "code": "11536",
+    "scenario": "the_drowned_quarter",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of revealed locations in play (rounded down)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "Your location is not flooded",
+            "modified_value": {
+              "modifier": -5
+            }
+          }]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of revealed locations in play",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [{
+            "prompt": "Your location is not flooded",
+            "modified_value": {
+              "modifier": -6
+            }
+          }]
+        }
+      }
+    ]
+  },
+  {
+    "code": "11553",
+    "scenario": "the_apiary",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the amount of doom on enemies and assets in play (rounded down)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [{
+            "prompt": "There is a [[Cultist]] enemy at your location",
+            "modified_value": {
+              "modifier": -1,
+              "reveal_another": 1
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The amount of doom on enemies and assets in play",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "There is a [[Cultist]] enemy at your location",
+            "modified_value": {
+              "modifier": -3,
+              "reveal_another": 1
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -6
+        }
+      }
+    ]
+  },
+  {
+    "code": "11587",
+    "scenario": "the_grand_vault",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of activated locations (rounded down)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "Your location is partially flooded",
+            "modified_value": {
+              "modifier": -3
+            }
+          },{
+            "prompt": "Your location is fully flooded",
+            "modified_value": {
+              "modifier": -4
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of activated locations",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "Your location is partially flooded",
+            "modified_value": {
+              "modifier": -4
+            }
+          },{
+            "prompt": "Your location is fully flooded",
+            "modified_value": {
+              "modifier": -5
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "11612",
+    "scenario": "court_of_the_ancients",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[Glyph]] cards in the victory display",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "There is a [[Stowaway]] enemy at your location",
+            "modified_value": {
+              "modifier": -4
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "Your location is flooded",
+            "modified_value": {
+              "modifier": -2,
+              "reveal_another": 1
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+     
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of [[Glyph]] cards in the victory display",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "There is a [[Stowaway]] enemy at your location",
+            "modified_value": {
+              "modifier": -5
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "Your location is flooded",
+            "modified_value": {
+              "modifier": -3,
+              "reveal_another": 1
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "11639",
+    "scenario": "obsidian_canyons",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The current Storm Intensity",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of open skys adjacent to your location",
+          "min": 0,
+          "max": 4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "There is an enemy at your location",
+            "modified_value": {
+              "modifier": -2,
+              "reveal_another": 1
+            }
+          }]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The current Storm Intensity",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -6
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "counter",
+        "counter": {
+          "prompt": "The number of open skys adjacent to your location",
+          "min": 0,
+          "max": 4,
+          "scale": 2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [{
+            "prompt": "There is an enemy at your location",
+            "modified_value": {
+              "modifier": -4,
+              "reveal_another": 1
+            }
+          }]
+        }
+      }
+    ]
+  },
+  {
+    "code": "11673",
+    "scenario": "sepulchre_of_the_sleeper",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The current Disturbance",
+          "min": 0,
+          "max": 6
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3,
+          "reveal_another": 1
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "The current Disturbance",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -6
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -6
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4,
+          "reveal_another": 1
+        }
+      }
+    ]
+  },
+  {
+    "code": "11682",
+    "scenario": "the_doom_of_arkham_part_1",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the number of locations with no scenario cards beneath them (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [{
+            "prompt": "Your location is flooded",
+            "modified_value": {
+              "modifier": -2,
+              "reveal_another": 1
+            }
+          }]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations with no scenario cards beneath them (rounded up)",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [{
+            "prompt": "Your location is flooded",
+            "modified_value": {
+              "modifier": -4,
+              "reveal_another": 1
+            }
+          }]
+        }
+      }
+    ]
+  },
+
+  {
+    "code": "11688a",
+    "scenario": "the_doom_of_arkham_part_2",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Cthulhu's Rage",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -1,
+          "reveal_another": 1
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Cthulhu's Rage",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -5
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3,
+          "reveal_another": 1
         }
       }
     ]

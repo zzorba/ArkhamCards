@@ -203,7 +203,7 @@ function HeaderContent({ card, back }: { card: Card, back: boolean}) {
 
 export default function CardDetailHeader({ card, width, back, linked }: Props) {
   return (
-    <RoundedFactionHeader faction={card.factionCode()} width={width} dualFaction={!!card.faction2_code}>
+    <RoundedFactionHeader isCardHeader faction={card.factionCode()} width={width} dualFaction={!!card.faction2_code}>
       <HeaderContent card={card} back={!!back} />
       <FactionIcons card={card} linked={linked} />
     </RoundedFactionHeader>

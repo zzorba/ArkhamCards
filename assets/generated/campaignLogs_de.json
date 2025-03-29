@@ -5635,15 +5635,15 @@
             "text": "dummy"
           },
           {
-            "id": "kept_fragment",
-            "text": "dummy"
-          },
-          {
             "id": "kept_grisly_mask",
             "text": "dummy"
           },
           {
-            "id": "kept_obsidian_jar",
+            "id": "kept_obsidian_claw",
+            "text": "dummy"
+          },
+          {
+            "id": "kept_shard",
             "text": "dummy"
           },
           {

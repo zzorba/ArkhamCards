@@ -318,11 +318,11 @@
           },
           {
             "id": "discovered_an_ancient_vault",
-            "text": "The team discovered an ancient vault."
+            "text": "Đội đã phát hiện một hầm cổ."
           },
           {
             "id": "dr_kensler_has_a_plan",
-            "text": "Dr. Kensler has a plan."
+            "text": "Tiến sĩ Kensler có một kế hoạch."
           },
           {
             "id": "dr_kensler_has_confronted_her_demons",
@@ -334,11 +334,11 @@
           },
           {
             "id": "dr_kensler_is_sharing_her_research_with_you",
-            "text": "Dr. Kensler is sharing her research with you."
+            "text": "Tiến sĩ Kensler đang chia sẻ nghiên cứu của bà với bạn."
           },
           {
             "id": "dr_kensler_understands_the_true_nature_of_the_miasma",
-            "text": "Dr. Kensler understands the true nature of the miasma."
+            "text": "Tiến sĩ Kensler hiểu bản chất thực sự của sương mù."
           },
           {
             "id": "dr_sinha_has_confronted_her_demons",
@@ -358,23 +358,23 @@
           },
           {
             "id": "facility_was_destroyed",
-            "text": "the facility was destroyed."
+            "text": "cơ sở đã bị phá hủy."
           },
           {
             "id": "nameless_madness_escaped",
-            "text": "the nameless madness escaped."
+            "text": "sự điên loạn không tên đã thoát ra."
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "the nameless madness is contained safely within its host… for now."
+            "text": "sự đien loạn không tên được kìm hãm an toàn trong vật chủ của nó… tạm thời."
           },
           {
             "id": "photographed_the_astronomical_charts",
-            "text": "The team photographed the astronomical charts."
+            "text": "Đội đã chụp ảnh các biểu đồ thiên văn."
           },
           {
             "id": "read_the_map",
-            "text": "the team read the map."
+            "text": "đội đã đọc bản đồ."
           },
           {
             "id": "scouted_the_city_outskirts",
@@ -382,27 +382,27 @@
           },
           {
             "id": "scouted_the_forked_passage",
-            "text": "the investigators scouted the forked passage."
+            "text": "các điều tra viên đã trinh sát lối rẽ đôi."
           },
           {
             "id": "scouted_the_mountain_pass",
-            "text": "the investigators scouted the mountain pass."
+            "text": "các điều tra viên đã trinh sát lối qua núi."
           },
           {
             "id": "studied_the_mural_carvings",
-            "text": "the team studied the mural carvings."
+            "text": "đội đã nghiên cứu các bức khắc trên tường."
           },
           {
             "id": "surviving_investigators",
-            "text": "- #name#"
+            "text": "- #tên#"
           },
           {
             "id": "surviving_members_header",
-            "text": "the survivors of the expedition were:"
+            "text": "những người sống sót của chuyến thám hiểm là:"
           },
           {
             "id": "surviving_partners",
-            "text": "- #name#"
+            "text": "- #tên#"
           },
           {
             "id": "takada_has_confronted_her_demons",
@@ -422,7 +422,7 @@
           },
           {
             "id": "team_escaped_the_facility",
-            "text": "the team escaped the facility."
+            "text": "đội đã thoát khỏi cơ sở."
           },
           {
             "id": "team_fled_to_the_mountains",
@@ -434,19 +434,19 @@
           },
           {
             "id": "team_found_the_hidden_tunnel",
-            "text": "the team found the hidden tunnel."
+            "text": "đội đã tìm thấy đường hầm ẩn."
           },
           {
             "id": "team_was_guided_to_the_hidden_tunnel",
-            "text": "the team was guided to the hidden tunnel."
+            "text": "đội đã được dẫn đến đường hầm ẩn."
           },
           {
             "id": "the_seal_was_used_improperly",
-            "text": "the seal was used… improperly."
+            "text": "phong ấn đã được dùng… không đúng cách."
           },
           {
             "id": "truth_of_the_mirage_eludes_you",
-            "text": "the truth of the mirage eludes you."
+            "text": "sự thật về ảo ảnh vượt ngoài tầm hiểu biết của bạn."
           }
         ]
       },
@@ -5628,15 +5628,15 @@
             "text": "dummy"
           },
           {
-            "id": "kept_fragment",
-            "text": "dummy"
-          },
-          {
             "id": "kept_grisly_mask",
             "text": "dummy"
           },
           {
-            "id": "kept_obsidian_jar",
+            "id": "kept_obsidian_claw",
+            "text": "dummy"
+          },
+          {
+            "id": "kept_shard",
             "text": "dummy"
           },
           {

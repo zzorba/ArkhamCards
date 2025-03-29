@@ -238,6 +238,7 @@ export interface Campaign {
   id: string;
   name: string;
   tarot?: string[];
+  pack_codes?: string[];
   version: number;
   position: number;
   no_side_scenario_xp?: boolean;
