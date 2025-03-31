@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals = 2; plural = (n > 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 msgid "Guardian"
 msgstr "Gardien"
@@ -796,19 +796,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -2217,19 +2217,19 @@ msgstr "Jouer ce scénario"
 
 #, javascript-format
 msgid "${ investigator.card.name } earns ${ card.name } (Advanced)."
-msgstr "${ investigator.name } gagne la carte ${ card.name } (Avancée)."
+msgstr "${ investigator.card.name } gagne la carte ${ card.name } (Avancée)."
 
 #, javascript-format
 msgid "${ investigator.card.name } earns ${ card.name }."
-msgstr "${ investigator.name } gagne la carte ${ card.name }."
+msgstr "${ investigator.card.name } gagne la carte ${ card.name }."
 
 #, javascript-format
 msgid "${ investigator.card.name } removes ${ card.name } (Advanced)"
-msgstr "${ investigator.name } retire la carte ${ card.name } (Avancée)."
+msgstr "${ investigator.card.name } retire la carte ${ card.name } (Avancée)."
 
 #, javascript-format
 msgid "${ investigator.card.name } removes ${ card.name }"
-msgstr "${ investigator.name } retire la carte ${ card.name }."
+msgstr "${ investigator.card.name } retire la carte ${ card.name }."
 
 msgid "Challenge Scenario"
 msgstr "Scénario Défi"
@@ -4724,7 +4724,7 @@ msgstr ""
 "• Visuel des icônes d'origine : ${ visualDesigner }"
 
 msgid "Call of the Plaguebearer"
-msgstr ""
+msgstr "Call of the Plaguebearer"
 
 msgid "Eliminated"
 msgstr "Éliminé"
@@ -4875,7 +4875,7 @@ msgid "Re-generate deck"
 msgstr "Regénérer un deck"
 
 msgid "Draft from card collection"
-msgstr "Préparer depuis la collection"
+msgstr "Tirage depuis la collection"
 
 msgid "Disable to choose which packs to draft from"
 msgstr "À désactiver pour choisir des paquets en particulier"
@@ -4884,7 +4884,7 @@ msgid "Draft using your card collection"
 msgstr "Cartes de la collection uniquement"
 
 msgid "Draft Pool"
-msgstr "Cartes pour la Préparation"
+msgstr "Cartes pour le Tirage"
 
 msgid "Grid"
 msgstr "Grille"
@@ -4893,7 +4893,7 @@ msgid "Invalid deck"
 msgstr "Deck invalide"
 
 msgid "This deck is currently invalid in some way. Please address the issues before continuing the draft."
-msgstr "Ce deck est invalide. Veuillez régler les incompatibilités avant de continuer la préparation."
+msgstr "Ce deck est invalide. Veuillez régler les incompatibilités avant de continuer le tirage."
 
 msgid "Hand size:"
 msgstr "Cartes en main :"
@@ -4908,16 +4908,16 @@ msgid "Each 'hand' of cards is taken at random from all possible cards that are 
 msgstr "Chaque main de cartes est choisie au hasard parmi toutes les cartes disponibles pour l'investigateur actuel + les options de construction de deck que vous avez choisies."
 
 msgid "The drafting process will continue until your deck is full, but you can stop or change the settings at any time"
-msgstr "Le processus de préparation continuera jusqu'à ce que votre deck soit complet, mais vous pouvez décider d'arrêter ou de changer les paramètres à n'importe quel moment."
+msgstr "Le processus de tirage continuera jusqu'à ce que votre deck soit complet, mais vous pouvez décider d'arrêter ou de changer les paramètres à n'importe quel moment."
 
 msgid "Begin draft"
-msgstr "Commencer la préparation"
+msgstr "Commencer le tirage"
 
 msgid "Selection"
 msgstr "Sélection"
 
 msgid "Draft cards"
-msgstr "Préparer"
+msgstr "Tirage"
 
 msgid "Please correct invalid deck issues"
 msgstr "Veuillez corriger les problèmes du deck invalide"
@@ -4929,7 +4929,7 @@ msgid ""
 msgstr ""
 "Ce deck contient actuellement une ou plusieurs cartes interdites.\n"
 "\n"
-"Veuillez résoudre les incompatibilités du deck avant de préparer les cartes."
+"Veuillez résoudre les incompatibilités du deck avant de tirer les cartes."
 
 msgid "Deck is full"
 msgstr "Le deck est complet"
@@ -4943,12 +4943,12 @@ msgid ""
 msgstr ""
 "Ce deck est complet.\n"
 "\n"
-"Retirez certaines cartes ou créez un nouveau deck si vous souhaitez effectuer une préparation.\n"
+"Retirez certaines cartes ou créez un nouveau deck si vous souhaitez effectuer un tirage.\n"
 "\n"
 "Pour le moment, il n'est possible de préparer que des cartes de niveau 0 avec l'application."
 
 msgid "Draft Cards"
-msgstr "Préparation"
+msgstr "Tirage"
 
 msgid "Deck id copied!"
 msgstr "Identifiant du deck copié !"
@@ -5060,7 +5060,7 @@ msgid "Destiny Tarot Reading"
 msgstr "Tirage de Tarot « Destinée »"
 
 msgid "The Tatterdemalion"
-msgstr ""
+msgstr "The Tatterdemalion"
 
 msgid "Electric Nightmare"
 msgstr ""
@@ -5268,7 +5268,7 @@ msgid "${ investigator.name } Fan-Made Challenge Scenario by ${ scenario.custom.
 msgstr "${ investigator.name } Scénario Défi Fan-Made créé par ${ scenario.custom.creator }"
 
 msgid "Cyclopean Foundations"
-msgstr ""
+msgstr "Cyclopean Foundations"
 
 msgid "Lost Moorings"
 msgstr ""
@@ -5926,11 +5926,11 @@ msgstr "Revoir les clarifications spécifiques à la campagne"
 
 #, javascript-format
 msgid "Q: ${ errata.question }"
-msgstr ""
+msgstr "Q : ${ errata.question }"
 
 #, javascript-format
 msgid "A: ${ errata.answer }"
-msgstr ""
+msgstr "R : ${ errata.answer }"
 
 msgid "Show FAQ"
 msgstr "Montrer la FAQ"
@@ -5975,7 +5975,7 @@ msgid "Theo Peters"
 msgstr "Theo Peters"
 
 msgid "Relationship Level"
-msgstr "Niveau de relation"
+msgstr "Niveau de Relation"
 
 msgid "Image cache cleared"
 msgstr "Cache image nettoyé"
@@ -5984,7 +5984,7 @@ msgid "Clear image cache"
 msgstr "Nettoyer le cache image"
 
 msgid "Unable to create campaign"
-msgstr ""
+msgstr "Impossible de créer la campagne"
 
 msgid "Handle is already taken"
 msgstr ""
@@ -5999,44 +5999,47 @@ msgid "Specialist"
 msgstr ""
 
 msgid "Enemy-Location"
-msgstr ""
+msgstr "Ennemi-Lieu"
 
 msgid "Incomplete card database"
-msgstr ""
+msgstr "Base de données de cartes incomplète"
 
 msgid "New cards available"
-msgstr ""
+msgstr "Nouvelles cartes disponibles"
 
 msgid ""
 "Your most recent sync did not complete.\n"
 "\n"
 "When trying again, please keep the app open and in the foreground until it is finished."
 msgstr ""
+"Votre synchronisation la plus récente ne s'est pas achevée correctement.\n"
+"\n"
+"En cas de nouvelle tentative, nous vous conseillons de maintenir l'application ouverte au premier plan jusqu'à la fin du processus."
 
 #, javascript-format
 msgid "It looks like your app is missing ${ updates.missingCardCount } card."
 msgid_plural "It looks like your app is missing ${ updates.missingCardCount } cards."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ updates.missingCardCount } carte semble manquer dans votre application."
+msgstr[1] "${ updates.missingCardCount } cartes semblent manquer dans votre application."
 
 msgid "Some decks may not load fully and campaigns might appear incomplete until this is fixed."
-msgstr ""
+msgstr "Il se peut que certains decks ne se chargent pas complètement et que certaines campagnes apparaissent incomplètes jusqu'à ce que cela soit résolu."
 
 msgid "Download cards"
-msgstr ""
+msgstr "Télécharger les cartes"
 
 msgid "It has been more than a week since you checked for new cards."
-msgstr ""
+msgstr "Cela fait plus d'une semaine que vous n'avez pas vérifié les mises à jour des cartes."
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
-msgstr ""
+msgstr "Chinois (Simplifié): ${ simplifiedChineseTranslators }"
 
 msgid "Narration"
-msgstr ""
+msgstr "Narration"
 
 msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
-msgstr ""
+msgstr "Il se peut que ces cartes aient été mises à jour dans la liste des tabous ou qu'elles contiennent de corrections mineures."
 
 msgid "Fatigue"
 msgstr ""
@@ -6060,7 +6063,7 @@ msgid "Ages Unwound"
 msgstr ""
 
 msgid "Create new deck"
-msgstr ""
+msgstr "Créer un nouveau deck"
 
 msgid "Timeline"
 msgstr ""
@@ -6069,131 +6072,131 @@ msgid "Strange Assistance"
 msgstr ""
 
 msgid "Attachments"
-msgstr ""
+msgstr "Attachements"
 
 msgid "Bewitching"
-msgstr ""
+msgstr "Faire du Charme"
 
 msgid "Hunch deck"
-msgstr ""
+msgstr "Deck Intuition"
 
 msgid "Stick to the Plan"
-msgstr ""
+msgstr "S'en Tenir au Plan"
 
 msgid "Market deck"
-msgstr ""
+msgstr "Deck Marché"
 
 msgid "Branded spell"
-msgstr ""
+msgstr "Sort marqué"
 
 msgid "Too many selected"
-msgstr ""
+msgstr "Trop de cartes choisies"
 
 msgid "Each card must be different"
-msgstr ""
+msgstr "Chaque carte doit être différente"
 
 #, javascript-format
 msgid "Limit of ${ limit } card"
 msgid_plural "Limit of ${ limit } cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Limite d'${ limit } carte"
+msgstr[1] "Limite de ${ limit } cartes"
 
 #, javascript-format
 msgid "${ total } of ${ attachment.targetSize }"
-msgstr ""
+msgstr "${ total } sur ${ attachment.targetSize }"
 
 msgid "Draft"
-msgstr ""
+msgstr "Tirage"
 
 #, javascript-format
 msgid "Act: ${ count }"
 msgid_plural "Acts: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Acte : ${ count }"
+msgstr[1] "Actes : ${ count }"
 
 #, javascript-format
 msgid "Agenda: ${ count }"
 msgid_plural "Agendas: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Intrigue : ${ count }"
+msgstr[1] "Intrigues : ${ count }"
 
 #, javascript-format
 msgid "Location: ${ count }"
 msgid_plural "Locations: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lieu : ${ count }"
+msgstr[1] "Lieux : ${ count }"
 
 #, javascript-format
 msgid "Enemy: ${ count }"
 msgid_plural "Enemies: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ennemi : ${ count }"
+msgstr[1] "Ennemis : ${ count }"
 
 #, javascript-format
 msgid "Enemy-Location: ${ count }"
 msgid_plural "Enemy-Locations: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ennemi-Lieu : ${ count }"
+msgstr[1] "Ennemis-Lieux : ${ count }"
 
 #, javascript-format
 msgid "Treachery: ${ count }"
 msgid_plural "Treacheries: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Traîtrise : ${ count }"
+msgstr[1] "Traîtrises : ${ count }"
 
 #, javascript-format
 msgid "Story: ${ count }"
 msgid_plural "Stories: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Histoire : ${ count }"
+msgstr[1] "Histoires : ${ count }"
 
 #, javascript-format
 msgid "Key: ${ count }"
 msgid_plural "Keys: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Clé : ${ count }"
+msgstr[1] "Clés : ${ count }"
 
 #, javascript-format
 msgid "Asset: ${ count }"
 msgid_plural "Assets: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Soutien : ${ count }"
+msgstr[1] "Soutiens : ${ count }"
 
 msgid "Scenario reference"
 msgid_plural "Scenario references: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Référence du Scénario"
+msgstr[1] "Références du Scénario : ${ count }"
 
 #, javascript-format
 msgid "Unknown: ${ count }"
 msgid_plural "Unknowns: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Indéfini : ${ count }"
+msgstr[1] "Indéfinis : ${ count }"
 
 msgid "Campaign required"
-msgstr ""
+msgstr "Campagne requise"
 
 msgid "You must select a campaign."
-msgstr ""
+msgstr "Vous devez sélectionner une campagne."
 
 msgid "The Drowned City"
-msgstr ""
+msgstr "La Cité Engloutie"
 
 msgid "Artifacts Earned"
-msgstr ""
+msgstr "Artéfacts Obtenus"
 
 msgid "Alien Glyphs"
-msgstr ""
+msgstr "Glyphes Extraterrestres"
 
 msgid "Locations Explored"
-msgstr ""
+msgstr "Zones Explorées"
 
 msgid "Task Progress"
-msgstr ""
+msgstr "Progression des Tâches"
 
 #, javascript-format
 msgid "Remove ${ investigator.card.name }?"
-msgstr ""
+msgstr "Retirer ${ investigator.card.name } ?"
 
 #, javascript-format
 msgid ""
@@ -6201,6 +6204,9 @@ msgid ""
 "\n"
 "Campaign log data associated with them may be lost."
 msgstr ""
+"Êtes-vous sûr(e) de vouloir retirer ${ investigator.card.name } de cette campagne ?\n"
+"\n"
+"Les informations lui étant associées dans le Carnet de Campagne risquent d'être perdues."
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6266,7 +6272,7 @@ msgstr "Vivant"
 
 msgctxt "masculine"
 msgid "Resigned"
-msgstr "Abandon"
+msgstr "A abandonné"
 
 msgctxt "masculine"
 msgid "Defeated: physical trauma"
@@ -6311,11 +6317,11 @@ msgstr[1] "Étant donné que ${ list } ne possèdent pas d'équipement ${ supply
 
 msgctxt "masculine"
 msgid "Killed"
-msgstr ""
+msgstr "Tué"
 
 msgctxt "masculine"
 msgid "Insane"
-msgstr ""
+msgstr "Dément"
 
 #, javascript-format
 msgctxt "feminine"
@@ -6373,7 +6379,7 @@ msgstr "Vivante"
 
 msgctxt "feminine"
 msgid "Resigned"
-msgstr "Abandon"
+msgstr "A abandonné"
 
 msgctxt "feminine"
 msgid "Defeated: physical trauma"
@@ -6430,11 +6436,11 @@ msgstr[1] "Étant donné que ${ list } ne possèdent pas d'équipement ${ supply
 
 msgctxt "feminine"
 msgid "Killed"
-msgstr "Tué"
+msgstr "Tuée"
 
 msgctxt "feminine"
 msgid "Insane"
-msgstr "Dément"
+msgstr "Démente"
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -6699,11 +6705,11 @@ msgstr "Si vous êtes un créateur de contenu personnalisé et que vous souhaite
 
 msgctxt "releaseNotes"
 msgid "Drafting player decks"
-msgstr "Préparation des decks des joueurs"
+msgstr "Tirage des decks des joueurs"
 
 msgctxt "releaseNotes"
 msgid "As a follow up to the earlier Ultimatum of Chaos release, the app now supports building a deck via a set of drafting rules. Choose what packs you want to pull from and how big each draft 'hand' should be, and build your deck one card at a time."
-msgstr "Dans le prolongement de la version précédente de l'Ultimatum du Chaos, l'application permet désormais de construire un deck via un ensemble de règles de draft. Choisissez les paquets dans lesquels vous voulez puiser et la taille de chaque «main» de draft, et construisez votre deck une carte à la fois."
+msgstr "Dans le prolongement de la version précédente de l'Ultimatum du Chaos, l'application permet désormais de construire un deck via un ensemble de règles de tirage. Choisissez les paquets dans lesquels vous voulez puiser et la taille de chaque « main » de tirage, et construisez votre deck une carte à la fois."
 
 msgctxt "releaseNotes"
 msgid "- You can find this feature on the deck edit screen in the menu."
@@ -6711,7 +6717,7 @@ msgstr "- Vous pouvez trouver cette fonction sur l'écran d'édition du deck dan
 
 msgctxt "releaseNotes"
 msgid "- Only level cards / decks can be drafted."
-msgstr "- Seules les cartes / decks de niveau peuvent être draftées."
+msgstr "- Seules les cartes / decks de niveau peuvent être tirés."
 
 msgctxt "releaseNotes"
 msgid "- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release."
@@ -7859,7 +7865,7 @@ msgstr "Pointe du Faucon"
 
 msgctxt "trait"
 msgid "Lair"
-msgstr "Antre"
+msgstr "Tanière"
 
 msgctxt "trait"
 msgid "Synergy"
@@ -7943,7 +7949,7 @@ msgstr "Abandonné"
 
 msgctxt "trait"
 msgid "Access"
-msgstr ""
+msgstr "Accès"
 
 msgctxt "trait"
 msgid "Alexandria"
@@ -7951,7 +7957,7 @@ msgstr "Alexandrie"
 
 msgctxt "trait"
 msgid "Ally? Creature"
-msgstr ""
+msgstr "Allié ? Créature"
 
 msgctxt "trait"
 msgid "Ancient One?"
@@ -7959,7 +7965,7 @@ msgstr "Grand Ancien?"
 
 msgctxt "trait"
 msgid "Bad dog"
-msgstr ""
+msgstr "Vilain chien"
 
 msgctxt "trait"
 msgid "Bazaar"
@@ -7967,11 +7973,11 @@ msgstr "Bazar"
 
 msgctxt "trait"
 msgid "Blessed?"
-msgstr ""
+msgstr "Béni ?"
 
 msgctxt "trait"
 msgid "Bokor"
-msgstr ""
+msgstr "Bokor"
 
 msgctxt "trait"
 msgid "Book"
@@ -7987,35 +7993,35 @@ msgstr "Carte"
 
 msgctxt "trait"
 msgid "Case"
-msgstr ""
+msgstr "Affaire"
 
 msgctxt "trait"
 msgid "Castle"
-msgstr ""
+msgstr "Château"
 
 msgctxt "trait"
 msgid "Chair"
-msgstr ""
+msgstr "Chaise"
 
 msgctxt "trait"
 msgid "Chess"
-msgstr ""
+msgstr "Échecs"
 
 msgctxt "trait"
 msgid "Classy"
-msgstr ""
+msgstr "Chic"
 
 msgctxt "trait"
 msgid "Collector"
-msgstr ""
+msgstr "Collectionneur"
 
 msgctxt "trait"
 msgid "Consort"
-msgstr ""
+msgstr "Consort"
 
 msgctxt "trait"
 msgid "Corpse"
-msgstr ""
+msgstr "Cadavre"
 
 msgctxt "trait"
 msgid "Corruption"
@@ -8023,11 +8029,11 @@ msgstr "Corruption"
 
 msgctxt "trait"
 msgid "Darkness"
-msgstr ""
+msgstr "Ténèbres"
 
 msgctxt "trait"
 msgid "Device"
-msgstr ""
+msgstr "Appareil"
 
 msgctxt "trait"
 msgid "Downtown"
@@ -8035,23 +8041,23 @@ msgstr "Centre-ville"
 
 msgctxt "trait"
 msgid "Enigma"
-msgstr ""
+msgstr "Énigme"
 
 msgctxt "trait"
 msgid "Entrance"
-msgstr ""
+msgstr "Entrée"
 
 msgctxt "trait"
 msgid "Fellow Dogs"
-msgstr ""
+msgstr "Chiens Domestiques"
 
 msgctxt "trait"
 msgid "Footwear, but not really"
-msgstr ""
+msgstr "Paire de chaussures, enfin plus vraiment"
 
 msgctxt "trait"
 msgid "Hardship"
-msgstr ""
+msgstr "Adversité"
 
 msgctxt "trait"
 msgid "Haunted"
@@ -8059,7 +8065,7 @@ msgstr "Hanté"
 
 msgctxt "trait"
 msgid "Havana"
-msgstr ""
+msgstr "La Havane"
 
 msgctxt "trait"
 msgid "Human"
@@ -8083,7 +8089,7 @@ msgstr "Local"
 
 msgctxt "trait"
 msgid "Locus Site"
-msgstr ""
+msgstr "Site d'un Locus"
 
 msgctxt "trait"
 msgid "London"
@@ -8091,15 +8097,15 @@ msgstr "Londres"
 
 msgctxt "trait"
 msgid "Loyal"
-msgstr ""
+msgstr "Loyal"
 
 msgctxt "trait"
 msgid "Lunatic"
-msgstr ""
+msgstr "Aliéné"
 
 msgctxt "trait"
 msgid "Machine"
-msgstr ""
+msgstr "Machine"
 
 msgctxt "trait"
 msgid "Madness?"
@@ -8107,83 +8113,83 @@ msgstr "Folie?"
 
 msgctxt "trait"
 msgid "Marrakesh"
-msgstr ""
+msgstr "Marrakech"
 
 msgctxt "trait"
 msgid "Medical"
-msgstr ""
+msgstr "Médical"
 
 msgctxt "trait"
 msgid "Music"
-msgstr ""
+msgstr "Musique"
 
 msgctxt "trait"
 msgid "Musician"
-msgstr ""
+msgstr "Musicien"
 
 msgctxt "trait"
 msgid "Northside"
-msgstr ""
+msgstr "Quartier Nord"
 
 msgctxt "trait"
 msgid "Nostalgia II"
-msgstr ""
+msgstr "Nostalgie II"
 
 msgctxt "trait"
 msgid "Outsider"
-msgstr ""
+msgstr "Ceux d'Ailleurs"
 
 msgctxt "trait"
 msgid "Parasitic"
-msgstr ""
+msgstr "Parasitaire"
 
 msgctxt "trait"
 msgid "Plains"
-msgstr ""
+msgstr "Plaines"
 
 msgctxt "trait"
 msgid "Priestess"
-msgstr ""
+msgstr "Prêtresse"
 
 msgctxt "trait"
 msgid "Pup"
-msgstr ""
+msgstr "Chiot"
 
 msgctxt "trait"
 msgid "Resonant"
-msgstr ""
+msgstr "Résonnant"
 
 msgctxt "trait"
 msgid "Restricted"
-msgstr ""
+msgstr "Restreint"
 
 msgctxt "trait"
 msgid "Retired"
-msgstr ""
+msgstr "Retraité"
 
 msgctxt "trait"
 msgid "Risen"
-msgstr ""
+msgstr "Ressuscité"
 
 msgctxt "trait"
 msgid "Row"
-msgstr ""
+msgstr "Rangée"
 
 msgctxt "trait"
 msgid "Royalty"
-msgstr ""
+msgstr "Royauté"
 
 msgctxt "trait"
 msgid "Saga"
-msgstr ""
+msgstr "Épopée"
 
 msgctxt "trait"
 msgid "Shadow"
-msgstr ""
+msgstr "Ombre"
 
 msgctxt "trait"
 msgid "Shapeshifter"
-msgstr ""
+msgstr "Métamorphe"
 
 msgctxt "trait"
 msgid "Sheldon Gang"
@@ -8195,11 +8201,11 @@ msgstr "Soeur"
 
 msgctxt "trait"
 msgid "Slope"
-msgstr ""
+msgstr "Pente"
 
 msgctxt "trait"
 msgid "Soldier"
-msgstr ""
+msgstr "Soldat"
 
 msgctxt "trait"
 msgid "Stable"
@@ -8207,35 +8213,35 @@ msgstr "Stable"
 
 msgctxt "trait"
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 msgctxt "trait"
 msgid "Table"
-msgstr ""
+msgstr "Table"
 
 msgctxt "trait"
 msgid "Tatterdemalion"
-msgstr ""
+msgstr "Tatterdemalion"
 
 msgctxt "trait"
 msgid "That's bad"
-msgstr ""
+msgstr "C'est vilain"
 
 msgctxt "trait"
 msgid "Tower"
-msgstr ""
+msgstr "Tour"
 
 msgctxt "trait"
 msgid "Traitor"
-msgstr ""
+msgstr "Traître"
 
 msgctxt "trait"
 msgid "Tulgey Wood"
-msgstr ""
+msgstr "Bois de Tulgey"
 
 msgctxt "trait"
 msgid "Underground"
-msgstr ""
+msgstr "Souterrain"
 
 msgctxt "trait"
 msgid "Unstable"
@@ -8243,23 +8249,23 @@ msgstr "Instable"
 
 msgctxt "trait"
 msgid "Upper Floor"
-msgstr ""
+msgstr "Étage Supérieur"
 
 msgctxt "trait"
 msgid "Virtual"
-msgstr ""
+msgstr "Virtuel"
 
 msgctxt "trait"
 msgid "Weather"
-msgstr ""
+msgstr "Météo"
 
 msgctxt "trait"
 msgid "What? No"
-msgstr ""
+msgstr "Quoi ? Non"
 
 msgctxt "trait"
 msgid "Wonderland"
-msgstr ""
+msgstr "Pays des Merveilles"
 
 msgctxt "trait"
 msgid "Yuggoth"
@@ -8267,159 +8273,159 @@ msgstr "Yuggoth"
 
 msgctxt "trait"
 msgid "Blight"
-msgstr ""
+msgstr "Décrépitude"
 
 msgctxt "trait"
 msgid "Colour"
-msgstr ""
+msgstr "Couleur"
 
 msgctxt "trait"
 msgid "Crew"
-msgstr ""
+msgstr "Équipe"
 
 msgctxt "trait"
 msgid "Delta"
-msgstr ""
+msgstr "Delta"
 
 msgctxt "trait"
 msgid "Emissary"
-msgstr ""
+msgstr "Émissaire"
 
 msgctxt "trait"
 msgid "Game"
-msgstr ""
+msgstr "Jeu"
 
 msgctxt "trait"
 msgid "Inconspicuous"
-msgstr ""
+msgstr "Discret"
 
 msgctxt "trait"
 msgid "Miasma"
-msgstr ""
+msgstr "Miasme"
 
 msgctxt "trait"
 msgid "Public"
-msgstr ""
+msgstr "Public"
 
 msgctxt "trait"
 msgid "Resident"
-msgstr ""
+msgstr "Habitant"
 
 msgctxt "trait"
 msgid "Role"
-msgstr ""
+msgstr "Rôle"
 
 msgctxt "trait"
 msgid "Rot"
-msgstr ""
+msgstr "Pourriture"
 
 msgctxt "trait"
 msgid "Sub-Level"
-msgstr ""
+msgstr "Sous-Niveau"
 
 msgctxt "trait"
 msgid "Unpracticed"
-msgstr ""
+msgstr "Inexpérimenté"
 
 msgctxt "trait"
 msgid "Allied"
-msgstr ""
+msgstr "Associé"
 
 msgctxt "trait"
 msgid "Bog"
-msgstr ""
+msgstr "Marais"
 
 msgctxt "trait"
 msgid "Cart"
-msgstr ""
+msgstr "Wagonnet"
 
 msgctxt "trait"
 msgid "Dark"
-msgstr ""
+msgstr "Sombre"
 
 msgctxt "trait"
 msgid "Dormant"
-msgstr ""
+msgstr "En Sommeil"
 
 msgctxt "trait"
 msgid "Fairy"
-msgstr ""
+msgstr "Fée"
 
 msgctxt "trait"
 msgid "Farm"
-msgstr ""
+msgstr "Ferme"
 
 msgctxt "trait"
 msgid "Field"
-msgstr ""
+msgstr "Champ"
 
 msgctxt "trait"
 msgid "Forest"
-msgstr ""
+msgstr "Forêt"
 
 msgctxt "trait"
 msgid "Hemlock Vale"
-msgstr ""
+msgstr "Hemlock Vale"
 
 msgctxt "trait"
 msgid "Kingsport"
-msgstr ""
+msgstr "Kingsport"
 
 msgctxt "trait"
 msgid "Lantern Club"
-msgstr ""
+msgstr "Club de la Lanterne"
 
 msgctxt "trait"
 msgid "Leader"
-msgstr ""
+msgstr "Leader"
 
 msgctxt "trait"
 msgid "Lit"
-msgstr ""
+msgstr "Allumé"
 
 msgctxt "trait"
 msgid "Machination"
-msgstr ""
+msgstr "Machination"
 
 msgctxt "trait"
 msgid "Manor"
-msgstr ""
+msgstr "Manoir"
 
 msgctxt "trait"
 msgid "Misfortune"
-msgstr ""
+msgstr "Malchance"
 
 msgctxt "trait"
 msgid "Oz"
-msgstr ""
+msgstr "Oz"
 
 msgctxt "trait"
 msgid "Plot"
-msgstr ""
+msgstr "Complot"
 
 msgctxt "trait"
 msgid "Rival"
-msgstr ""
+msgstr "Rival"
 
 msgctxt "trait"
 msgid "Room"
-msgstr ""
+msgstr "Pièce"
 
 msgctxt "trait"
 msgid "Scion"
-msgstr ""
+msgstr "Progéniture"
 
 msgctxt "trait"
 msgid "Station"
-msgstr ""
+msgstr "Gare"
 
 msgctxt "trait"
 msgid "Sunken"
-msgstr ""
+msgstr "Englouti"
 
 msgctxt "trait"
 msgid "Unlit"
-msgstr ""
+msgstr "Éteint"
 
 #, javascript-format
 msgctxt "filter"
@@ -8622,8 +8628,8 @@ msgstr[1] "Clés"
 msgctxt "header"
 msgid "Enemy-Location"
 msgid_plural "Enemy-Locations"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ennemi-Lieu"
+msgstr[1] "Ennemis-Lieux"
 
 msgctxt "tags"
 msgid "Cancel"
