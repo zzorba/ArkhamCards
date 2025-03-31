@@ -36,6 +36,7 @@ import {
   FORCED_LEARNING_CODE,
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
+  RANDOM_BASIC_WEAKNESS,
 } from '@app_constants';
 import Card, { InvestigatorChoice } from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
@@ -589,6 +590,9 @@ export default class DeckValidation {
   }
 
   canIncludeCard(card: Card, processDeckCounts: boolean, allCards: Card[]): boolean {
+    if (card.subtype_code === 'basicweakness') {
+      return true;
+    }
     const matchingOption = this.matchingDeckOption(card, processDeckCounts, allCards);
     if (matchingOption?.not) {
       if (
@@ -666,7 +670,7 @@ export default class DeckValidation {
         if (DeckOption.deckSizeOnly(option)) {
           continue;
         }
-        if (option.restrictions !== undefined) {
+        if (option.restrictions !== undefined && option.restrictions !== null) {
           if (option.restrictions != !!card.restrictions_investigator) {
             continue;
           }
@@ -882,7 +886,7 @@ export default class DeckValidation {
 
         if (option.level) {
           var level_valid = false;
-          if (card.xp !== undefined && option.level) {
+          if (card.xp !== undefined && card.xp !== null) {
             if (card.customization_options && this.all_customizations) {
               // Permissive mode, any XP could work for this investigator.
               level_valid = true;
@@ -894,6 +898,9 @@ export default class DeckValidation {
             } else {
               continue;
             }
+          }
+          if (!level_valid) {
+            continue;
           }
         }
 
