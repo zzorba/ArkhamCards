@@ -589,6 +589,7 @@ export default class DeckValidation {
     ];
   }
 
+
   canIncludeCard(card: Card, processDeckCounts: boolean, allCards: Card[]): boolean {
     if ((card.subtype_code === 'basicweakness' || card.encounter_code) &&
       (card.deck_limit ?? 0) > 0
