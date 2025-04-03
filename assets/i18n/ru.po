@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2025-03-13 12:49+0300\n"
+"PO-Revision-Date: 2025-04-01 12:20+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -6257,7 +6257,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Remove ${ investigator.card.name }?"
-msgstr ""
+msgstr "Удалить ${ investigator.card.name }?"
 
 #, javascript-format
 msgid ""
@@ -6265,6 +6265,9 @@ msgid ""
 "\n"
 "Campaign log data associated with them may be lost."
 msgstr ""
+"Вы действительно хотите удалить ${ investigator.card.name } из этой кампании?\n"
+"\n"
+"Все связанные записи в журнале кампании будут утеряны."
 
 msgctxt "investigator"
 msgid "Custom"
