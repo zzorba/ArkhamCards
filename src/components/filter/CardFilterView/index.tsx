@@ -160,6 +160,7 @@ const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
       8: t`Edge of the Earth`,
       9: t`The Scarlet Keys`,
       10: t`The Feast of Hemlock Vale`,
+      11: t`The Drowned City`,
     };
     const specialPackNames = getSpecialPackNames();
     const selectedPacks = [

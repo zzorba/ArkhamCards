@@ -285,7 +285,7 @@ function useParsedDeckHelper(
     },
     [deckEdits?.side, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, deck, ravenQuillChoices, extraDeckCodes],
     false,
-    tabooSetId
+    tabooSetId,
   );
   const visible = useComponentVisible(componentId);
   const initialized = useRef(false);

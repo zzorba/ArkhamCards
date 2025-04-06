@@ -2,7 +2,7 @@ import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { CampaignLogEntry, EntrySection } from '@data/scenario/GuidedCampaignLog';
 import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
-import { m, s } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { find, range } from 'lodash';
 import React, { useCallback, useContext, useMemo } from 'react';
@@ -58,7 +58,7 @@ function GlyphEntry({ glyph, sectionId, section, campaignGuide, showTextEditDial
       <ArkhamSlimIcon size={48} name={glyph} color={colors.D30} />
       { !!text ? (
         <Pressable onPress={glyph !== 'tdc_rune_a' ? onEditGlyph : undefined}>
-          <Text style={typography.cursive}>{text}</Text>
+          <Text style={typography.cursive}>{'  '}{text}{'  '}</Text>
         </Pressable>
       ) : <View style={{ height: 20 }} />}
     </View>

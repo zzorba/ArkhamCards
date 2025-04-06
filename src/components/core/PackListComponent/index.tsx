@@ -76,6 +76,7 @@ function cycleName(position: string): string {
     case '8': return t`Edge of the Earth`;
     case '9': return t`The Scarlet Keys`;
     case '10': return t`The Feast of Hemlock Vale`;
+    case '11': return t`The Drowned City`;
     case '50': return t`Return to...`;
     case '60': return t`Investigator Starter Decks`;
     case '70': return t`Standalone`;

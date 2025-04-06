@@ -4413,59 +4413,59 @@
           },
           {
             "id": "atw_bernards_fate",
-            "text": "you have discovered Bernard's fate."
+            "text": "vous avez découvert le sort de Bernard."
           },
           {
             "id": "atw_custodian_of_knowledge",
-            "text": "you are the custodian of Ithaqua's knowledge."
+            "text": "vous êtes dépositaire du savoir d'Ithaqua."
           },
           {
             "id": "atw_defeated_the_wendigo",
-            "text": "you defated the Wendigo."
+            "text": "vous avez vaincu le Wendigo."
           },
           {
             "id": "atw_discovered_the_fate_of_the_students",
-            "text": "you have discovered the fate of Dr. Nadelmann's students."
+            "text": "vous avez découvert le sort des étudiants du Dr Nadelmann."
           },
           {
             "id": "atw_found_the_gold",
-            "text": "you have found Hanninah's gold."
+            "text": "vous avez trouvé L'or de l’Hanninah."
           },
           {
             "id": "atw_have_enough_evidence",
-            "text": "you have enough evidence to clear Dr. Nadelmann."
+            "text": "vous avez assez de preuves pour innocenter le Dr Nadelmann."
           },
           {
             "id": "atw_norman_alive",
-            "text": "Norman is alive."
+            "text": "Norman est vivant."
           },
           {
             "id": "atw_norman_dead",
-            "text": "You let Norman die."
+            "text": "Vous avez laissé mourir Norman."
           },
           {
             "id": "atw_normans_fate",
-            "text": "you have discovered Norman's fate."
+            "text": "vous avez découvert le sort de Norman."
           },
           {
             "id": "atw_sarcee_are_hunting",
-            "text": "the Sarcee are hunting you down."
+            "text": "les Sarsis vous traquent."
           },
           {
             "id": "atw_saved_charlie",
-            "text": "you saved Charlie."
+            "text": "vous avez sauvé Charlie."
           },
           {
             "id": "atw_saved_the_gold_prospector",
-            "text": "you saved the gold prospector."
+            "text": "vous avez sauvé le prospecteur d'or."
           },
           {
             "id": "atw_sylvias_fate",
-            "text": "you have discovered Sylvia's fate."
+            "text": "vous avez découvert le sort de Sylvia."
           },
           {
             "id": "atw_wendigo_still_roams",
-            "text": "you know that the Wendigo still roams the North Hanninah valley."
+            "text": "vous savez que le Wendigo rôde toujours dans la vallée de la Nord-Hanninah."
           },
           {
             "id": "banished_shax",
@@ -4745,11 +4745,11 @@
           },
           {
             "id": "zhu_avenged_the_house_of_usher",
-            "text": "the investigators avenged the House of Usher."
+            "text": "les investigateur ont vengé la Maison Usher."
           },
           {
             "id": "zhu_house_of_usher_has_fallen",
-            "text": "the House of Usher has fallen."
+            "text": "la Maison Usher est tombée."
           },
           {
             "id": "zlf_ignis_destroy_humanity",
@@ -5536,6 +5536,10 @@
           {
             "id": "did_not_confront_the_nightmare",
             "text": "les investigateurs ne se sont pas confrontés au cauchemar."
+          },
+          {
+            "id": "discovered_an_alien_language",
+            "text": "the investigators discovered an alien language."
           },
           {
             "id": "expedition_abandoned_pilgrim",
