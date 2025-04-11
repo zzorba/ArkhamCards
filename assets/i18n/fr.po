@@ -796,19 +796,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -1157,7 +1157,7 @@ msgstr "Paramètres"
 
 #, javascript-format
 msgid "Additional XP: ${ taboo.extra_xp }."
-msgstr "Enchaînée ( +${taboo.extra_xp} expérience)."
+msgstr "( +${taboo.extra_xp} expérience)."
 
 msgid "The List of Taboos is a list of Arkham Horror: The Card Game cards with optional deckbuilding restrictions or text changes. This list is designed to craft a healthy balance between investigator power and scenario difficulty, and to enforce shifts in deckbuilding environments over time."
 msgstr "La Liste des Tabous est une liste de cartes pour <i>Horreur à Arkham : le Jeu de Cartes</i> comportant des restrictions de construction du deck ou des changements de texte optionnels. Cette liste est conçue pour établir un meilleur équilibre entre la puissance des investigateurs et la difficulté du scénario, tout en appliquant des modifications dans la manière de construire son deck au fil du temps."
@@ -1547,7 +1547,7 @@ msgstr "Cartes Rencontre"
 
 #, javascript-format
 msgid "XP Discount: ${ taboo.extra_xp }."
-msgstr "Déchaînée ( ${ taboo.extra_xp } expérience)."
+msgstr "( ${ taboo.extra_xp } expérience)."
 
 msgid "At Death's Doorstep"
 msgstr "Aux Portes de la Mort"
@@ -4593,7 +4593,7 @@ msgid "Deck overlap"
 msgstr "Dépassement dans les decks"
 
 msgid "Show collection overlap"
-msgstr "Montrer les dépassements de collection"
+msgstr "Afficher les dépassements de collection"
 
 msgid "Hide collection overlap"
 msgstr "Masquer les dépassements de collection"
@@ -5412,7 +5412,7 @@ msgid "Grants access to previewed player cards"
 msgstr "Les cartes Fan-Made apparaîtront dans l'application"
 
 msgid "Key"
-msgstr "Clé"
+msgstr "Clef"
 
 msgid "Taboo Set"
 msgstr "Liste des Tabous"
@@ -5619,7 +5619,7 @@ msgid "Unlocked Locations"
 msgstr "Destinations débloquées"
 
 msgid "Each investigator who is the bearer of 1 or more key attaches those keys to their investigator card:"
-msgstr "Chaque investigateur qui est détenteur d'une ou plusieurs clés attache ces clés à sa carte Investigateur :"
+msgstr "Chaque investigateur qui est détenteur d'une ou plusieurs clefs attache ces clés à sa carte Investigateur :"
 
 msgid "Customizable"
 msgstr "Personnalisable"
@@ -5894,7 +5894,7 @@ msgid "The Innsmouth Conspiracy Campaign Expansion"
 msgstr "La Conspiration d’Innsmouth - Extension Campagne"
 
 msgid "Show original release packs"
-msgstr "Montrer les paquets originaux"
+msgstr "Afficher les paquets originaux"
 
 msgid "Non-Unique"
 msgstr "Non-Unique"
@@ -5933,7 +5933,7 @@ msgid "A: ${ errata.answer }"
 msgstr "R : ${ errata.answer }"
 
 msgid "Show FAQ"
-msgstr "Montrer la FAQ"
+msgstr "Afficher la FAQ"
 
 msgid "May contain light spoilers"
 msgstr "Peut contenir de légers spoilers"
@@ -6153,8 +6153,8 @@ msgstr[1] "Histoires : ${ count }"
 #, javascript-format
 msgid "Key: ${ count }"
 msgid_plural "Keys: ${ count }"
-msgstr[0] "Clé : ${ count }"
-msgstr[1] "Clés : ${ count }"
+msgstr[0] "Clefs : ${ count }"
+msgstr[1] "Clefs : ${ count }"
 
 #, javascript-format
 msgid "Asset: ${ count }"
@@ -6741,7 +6741,7 @@ msgstr "- Prend en charge les cartes permanentes axées sur la Construction du D
 
 msgctxt "releaseNotes"
 msgid "- Shows the deck before you actully save it, so you can re-roll if it produced something particularly unviable."
-msgstr "- Montre le deck avant de le sauvegarder, pour pouvoir recommencer s'il a produit quelque chose de non viable."
+msgstr "- Affiche le deck avant de le sauvegarder, pour pouvoir recommencer s'il a produit quelque chose de non viable."
 
 msgctxt "releaseNotes"
 msgid "Note: You might need to refresh the cards once (using <b>Check for card updates</b>)."
@@ -8622,8 +8622,8 @@ msgstr[1] "Scénarios"
 msgctxt "header"
 msgid "Key"
 msgid_plural "Keys"
-msgstr[0] "Clé"
-msgstr[1] "Clés"
+msgstr[0] "Clef"
+msgstr[1] "Clefs"
 
 msgctxt "header"
 msgid "Enemy-Location"
