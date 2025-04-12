@@ -3766,7 +3766,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de Fêtards innocents sous le deck Acte",
+          "prompt": "Nombre de Participants Innocents sous le deck Intrigue",
           "min": 0,
           "max": 3,
           "adjustment": 2
@@ -3797,7 +3797,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de Fêtards innocents sous les decks Acte et Intrigue",
+          "prompt": "Nombre de Participants Innocents sous les decks Intrigue ou Acte",
           "min": 0,
           "max": 3,
           "adjustment": 2
@@ -5101,7 +5101,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de traîtrise [[Musique]] en jeu",
+          "prompt": "Nombre de traîtrises [[Musique]] en jeu",
           "min": 0,
           "reveal_another": 1
         }
@@ -5312,7 +5312,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de cartes rencontre [[AI]] dans votre zone de menace",
+          "prompt": "Nombre de cartes Rencontre [[IA]] dans votre zone de menace",
           "min": 0
         }
       },
@@ -5328,7 +5328,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de cartes rencontre [[AI]] dans votre zone de menace",
+          "prompt": "Nombre de cartes Rencontre [[IA]] dans votre zone de menace",
           "min": 0
         }
       },
@@ -5348,7 +5348,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié de vos « Souvenirs » (arrondi à l’inférieur)",
+          "prompt": "Moitié de vos « Souvenirs » (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -5400,7 +5400,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de cartes rencontre face cachée dans votre zone de menace",
+          "prompt": "Nombre de cartes Rencontre face cachée dans votre zone de menace",
           "min": 0
         }
       },
@@ -5408,7 +5408,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de lieux en jeu (arrondi à l’inférieur)",
+          "prompt": "Moitié du nombre de lieux en jeu (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -5431,7 +5431,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de cartes rencontre face cachée dans votre zone de menace",
+          "prompt": "Nombre de cartes Rencontre face cachée dans votre zone de menace",
           "min": 0
         }
       },
@@ -5439,7 +5439,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux en jeu",
+          "prompt": "Nombre de lieux en jeu",
           "min": 0
         }
       },
@@ -5466,7 +5466,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié des dégâts sur vous et sur les soutiens que vous contrôlez (arrondi à l’inférieur)",
+          "prompt": "Moitié des dégâts sur vous et sur les soutiens que vous contrôlez (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -5492,7 +5492,7 @@
           },
           "options": [
             {
-              "prompt": "Subissez 2 dégâts",
+              "prompt": "Subir 2 dégâts",
               "modified_value": {
                 "modifier": 0
               }
@@ -5506,7 +5506,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié des dégâts sur vous et sur les soutiens que vous contrôlez (arrondi au supérieur)",
+          "prompt": "Moitié des dégâts sur vous et sur les soutiens que vous contrôlez (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -5532,7 +5532,7 @@
           },
           "options": [
             {
-              "prompt": "Subissez 3 dégâts",
+              "prompt": "Subir 3 dégâts",
               "modified_value": {
                 "modifier": 0
               }
@@ -5632,7 +5632,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié de vos « Souvenirs » (arrondi à l’inférieur)",
+          "prompt": "Moitié de vos « Souvenirs » (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -5661,7 +5661,7 @@
           },
           "options": [
             {
-              "prompt": "Cochez une marque dans vos « Souvenirs »",
+              "prompt": "Rayez un trait inscrit dans vos « Souvenirs »",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -5704,7 +5704,7 @@
           },
           "options": [
             {
-              "prompt": "Cochez une marque dans vos « Souvenirs »",
+              "prompt": "Rayez un trait inscrit dans vos « Souvenirs »",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -5740,7 +5740,7 @@
           },
           "options": [
             {
-              "prompt": "Cochez une marque dans vos « Souvenirs »",
+              "prompt": "Rayez 1 trait inscrit dans vos « Souvenirs »",
               "modified_value": {
                 "modifier": -1
               }
@@ -5795,7 +5795,7 @@
           },
           "options": [
             {
-              "prompt": "Cochez une marque dans vos « Souvenirs »",
+              "prompt": "Rayez 1 trait inscrit dans vos « Souvenirs »",
               "modified_value": {
                 "modifier": -2
               }
@@ -5836,7 +5836,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié des lieux révélés sans indice (arrondi au supérieur)",
+          "prompt": "Moitié des lieux révélés sans indice (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -5866,7 +5866,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié des lieux en jeu (arrondi au supérieur)",
+          "prompt": "Moitié des lieux en jeu (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -5900,7 +5900,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux [[Pays des Merveilles]] en jeu",
+          "prompt": "Nombre de lieux [[Pays des Merveilles]] en jeu",
           "min": 0,
           "max": 5
         }
@@ -5917,7 +5917,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux [[Pays des Merveilles]] en jeu",
+          "prompt": "Nombre de lieux [[Pays des Merveilles]] en jeu",
           "min": 0,
           "adjustment": 1
         }
@@ -6038,7 +6038,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of the current ‘c’ Agenda",
+          "prompt": "Numéro de l'Intrigue en cours",
           "min": 1,
           "max": 4,
           "adjustment": 1
@@ -6053,7 +6053,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "Vous « avez de terribles manières »",
               "modified_value": {
                 "modifier": -4
               }
@@ -6070,7 +6070,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "Vous « avez de terribles manières »",
               "modified_value": {
                 "modifier": -4
               }
@@ -6090,7 +6090,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of the current ‘c’ Agenda",
+          "prompt": "Numéro de l'Intrigue en cours",
           "min": 1,
           "max": 5,
           "adjustment": 2
@@ -6105,7 +6105,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "Vous « avez de terribles manières »",
               "modified_value": {
                 "modifier": -5
               }
@@ -6122,7 +6122,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "Vous « avez de terribles manières »",
               "modified_value": {
                 "modifier": -5
               }
@@ -6363,7 +6363,7 @@
           },
           "options": [
             {
-              "prompt": "At least 1[investigator] total tokens on the scenario card",
+              "prompt": "Il y a au moins 1[investigator]",
               "modified_value": {
                 "modifier": -3
               }
@@ -6380,7 +6380,7 @@
           },
           "options": [
             {
-              "prompt": "Pas un nombre égal de pions dégâts et horreur sur la carte scénario",
+              "prompt": "Pas un nombre égal de pions dégât et horreur sur la carte Scénario",
               "modified_value": {
                 "modifier": -4
               }
@@ -6397,7 +6397,7 @@
           },
           "options": [
             {
-              "prompt": "Pas un nombre égal de pions dégâts et horreur sur la carte scénario",
+              "prompt": "Pas un nombre égal de pions dégât et horreur sur la carte Scénario",
               "modified_value": {
                 "modifier": -4
               }
@@ -6422,7 +6422,7 @@
           },
           "options": [
             {
-              "prompt": "At least 1[investigator] total tokens on the scenario card",
+              "prompt": "Il y a au moins 1[investigator]",
               "modified_value": {
                 "modifier": -4
               }
@@ -6439,7 +6439,7 @@
           },
           "options": [
             {
-              "prompt": "Pas un nombre égal de pions dégâts et horreur sur la carte scénario",
+              "prompt": "Pas un nombre égal de pions dégât et horreur sur la carte Scénario",
               "modified_value": {
                 "modifier": -5
               }
@@ -6456,7 +6456,7 @@
           },
           "options": [
             {
-              "prompt": "Pas un nombre égal de pions dégâts et horreur sur la carte scénario",
+              "prompt": "Pas un nombre égal de pions dégât et horreur sur la carte Scénario",
               "modified_value": {
                 "modifier": -5
               }
@@ -6480,7 +6480,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre d’ennemis [[Echecs]] en jeu",
+          "prompt": "Nombre d’ennemis [[Échecs]] en jeu",
           "min": 0,
           "max": 5
         }
@@ -6494,7 +6494,7 @@
           },
           "options": [
             {
-              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Echecs]]",
+              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Échecs]]",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6512,7 +6512,7 @@
           },
           "options": [
             {
-              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Echecs]]",
+              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Échecs]]",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6544,7 +6544,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre d’ennemis [[Echecs]] en jeu",
+          "prompt": "Nombre d’ennemis [[Échecs]] en jeu",
           "min": 0
         }
       },
@@ -6557,7 +6557,7 @@
           },
           "options": [
             {
-              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Echecs]]",
+              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Échecs]]",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6575,7 +6575,7 @@
           },
           "options": [
             {
-              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Echecs]]",
+              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre un ennemi [[Échecs]]",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6650,7 +6650,7 @@
           },
           "options": [
             {
-              "prompt": "3 or fewer [[Wonderland]] locations in play",
+              "prompt": "Il y a 3 lieux ou plus [[Pays des Merveilles]] en jeu",
               "modified_value": {
                 "modifier": -4
               }
@@ -6721,7 +6721,7 @@
           },
           "options": [
             {
-              "prompt": "3 or fewer [[Wonderland]] locations in play",
+              "prompt": "Il y a 3 lieux ou plus [[Pays des Merveilles]] en jeu",
               "modified_value": {
                 "modifier": -5
               }
@@ -6834,7 +6834,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de cartes dans votre main",
+          "prompt": "Nombre de cartes dans votre main",
           "min": 0,
           "max": 3
         }
@@ -6843,7 +6843,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de dégâts sur vous",
+          "prompt": "Nombre de dégâts sur vous",
           "min": 0,
           "max": 3
         }
@@ -6880,7 +6880,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de cartes dans votre main",
+          "prompt": "Nombre de cartes dans votre main",
           "min": 0,
           "max": 4
         }
@@ -6889,7 +6889,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de dégâts sur vous",
+          "prompt": "Nombre de dégâts sur vous",
           "min": 0,
           "max": 4
         }
@@ -6913,7 +6913,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux [[Toundra]] révélés",
+          "prompt": "Nombre de lieux [[Toundra]] révélés",
           "min": 0,
           "max": 4
         }
@@ -6931,7 +6931,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Le coût le plus élevé d’un soutien main dans votre zone de jeu",
+          "prompt": "Coût le plus élevé d’un soutien occupant un emplacement main dans votre zone de jeu",
           "min": 0,
           "max": 4
         }
@@ -6940,7 +6940,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Le coût le plus élevé d’un soutien arcane dans votre zone de jeu",
+          "prompt": "Coût le plus élevé d’un soutien occupant un emplacement d'arcane dans votre zone de jeu",
           "min": 0,
           "max": 4
         }
@@ -6951,7 +6951,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux [[Toundra]] révélés",
+          "prompt": "Nombre de lieux [[Toundra]] révélés",
           "min": 0,
           "max": 5
         }
@@ -6969,7 +6969,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Le coût le plus élevé d’un soutien main dans votre zone de jeu",
+          "prompt": "Coût le plus élevé d’un soutien occupant un emplacement main dans votre zone de jeu",
           "min": 0,
           "adjustment": 1
         }
@@ -6978,7 +6978,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Le coût le plus élevé d’un soutien arcane dans votre zone de jeu",
+          "prompt": "Coût le plus élevé d’un soutien occupant un emplacement d'arcane dans votre zone de jeu",
           "min": 0,
           "adjustment": 1
         }
@@ -7001,7 +7001,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de [cultiste] dans la réserve du chaos",
+          "prompt": "Nombre de pions [cultist] dans la réserve du Chaos",
           "min": 0,
           "adjustment": 1
         }
@@ -7010,7 +7010,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de [tablet] dans la réserve du chaos",
+          "prompt": "Nombre de pions [tablet] dans la réserve du Chaos",
           "min": 0,
           "adjustment": 1
         }
@@ -7019,7 +7019,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de [elder_thing] dans la réserve du chaos",
+          "prompt": "Nombre de pions [elder_thing] dans la réserve du Chaos",
           "min": 0,
           "adjustment": 1
         }
@@ -7039,7 +7039,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de [cultiste] dans la réserve du chaos",
+          "prompt": "Nombre de pions [cultist] dans la réserve du Chaos",
           "min": 0,
           "adjustment": 2
         }
@@ -7048,7 +7048,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de [tablet] dans la réserve du chaos",
+          "prompt": "Nombre de pions [tablet] dans la réserve du Chaos",
           "min": 0,
           "adjustment": 2
         }
@@ -7057,7 +7057,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de [elder_thing] dans la réserve du chaos",
+          "prompt": "Nombre de pions [elder_thing] dans la réserve du Chaos",
           "min": 0,
           "adjustment": 2
         }
@@ -7219,7 +7219,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le plus grand nombre de fatalités sur un ennemi en jeu",
+          "prompt": "Plus grand nombre de fatalités sur un ennemi en jeu",
           "min": 0,
           "max": 4
         }
@@ -7253,7 +7253,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le plus grand nombre de fatalités sur un ennemi en jeu",
+          "prompt": "Plus grand nombre de fatalités sur un ennemi en jeu",
           "min": 0,
           "max": 6,
           "adjustment": 1
@@ -7415,7 +7415,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The [[Floor]] of your location",
+          "prompt": "L'[[Étage]] de votre lieu",
           "min": 0
         }
       },
@@ -7443,7 +7443,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The [[Floor]] of your location",
+          "prompt": "L'[[Étage]] de votre lieu",
           "min": 0,
           "adjustment": 2
         }
@@ -7476,7 +7476,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux avec de l’horreur sur eux",
+          "prompt": "Nombre de lieux avec de l’horreur sur eux",
           "min": 0,
           "max": 4
         }
@@ -7505,7 +7505,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux avec de l’horreur sur eux",
+          "prompt": "Nombre de lieux avec de l’horreur sur eux",
           "min": 0
         }
       },
@@ -7537,7 +7537,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Meowsk]] enemies in play, in the victory display, and attached to Meowlathotep, rounded up",
+          "prompt": "Moitié du nombre d'ennemis [[Miaousque]] en jeu, dans la pile de victoire et attachés à Myarlathotep, arrondi au supérieur",
           "min": 0
         }
       },
@@ -7565,7 +7565,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Meowsk]] enemies in play, in the victory display, and attached to Meowlathotep",
+          "prompt": "Nombre d'ennemis [[Miaousque]] en jeu, dans la pile de victoire et attachés à Myarlathotep",
           "min": 0
         }
       },
@@ -7597,7 +7597,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié de votre niveau d'alarme, arrondi à l'inférieur",
+          "prompt": "Moitié de votre niveau d'alarme, arrondi à l'inférieur",
           "min": 1
         }
       },
@@ -7623,7 +7623,7 @@
           },
           "options": [
             {
-              "prompt": "Augmentez votre niveau d'alarme de 1",
+              "prompt": "Augmenter votre niveau d'alarme de 1",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -7663,7 +7663,7 @@
           },
           "options": [
             {
-              "prompt": "Augmentez votre niveau d'alarme de 1",
+              "prompt": "Augmenter votre niveau d'alarme de 1",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -7681,7 +7681,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The [[Altered]] value of your location.",
+          "prompt": "La valeur [[Altéré]] de votre lieu",
           "min": 0
         }
       },
@@ -7710,7 +7710,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The [[Altered]] value of your location.",
+          "prompt": "La valeur [[Altéré]] de votre lieu",
           "min": 0,
           "adjustment": 2
         }
@@ -7781,7 +7781,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de carte dans le Deck Enchères",
+          "prompt": "Nombre de cartes dans le Deck Enchères",
           "min": 0,
           "adjustment": -4,
           "scale": -1
@@ -7802,7 +7802,7 @@
           },
           "options": [
             {
-              "prompt": "No resources on an Auction Lot card in play",
+              "prompt": "Aucune ressource sur une carte Enchères en jeu",
               "modified_value": {
                 "modifier": -4
               }
@@ -7816,7 +7816,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de carte dans le Deck Enchères",
+          "prompt": "Nombre de cartes dans le Deck Enchères",
           "min": 0,
           "adjustment": -5,
           "scale": -1
@@ -7837,7 +7837,7 @@
           },
           "options": [
             {
-              "prompt": "No resources on an Auction Lot card in play",
+              "prompt": "Aucune ressource sur une carte Enchères en jeu",
               "modified_value": {
                 "modifier": -5
               }
@@ -7855,7 +7855,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux révélés sans indice sur eux",
+          "prompt": "Nombre de lieux révélés sans indice sur eux",
           "min": 0,
           "max": 4
         }
@@ -7895,7 +7895,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux révélés sans indice sur eux",
+          "prompt": "Nombre de lieux révélés sans indice sur eux",
           "min": 0
         }
       },
@@ -7938,7 +7938,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de cartes dans le Deck Traitre",
+          "prompt": "Nombre de cartes dans le Deck Traître",
           "min": 0,
           "adjustment": -4,
           "scale": -1
@@ -7953,7 +7953,7 @@
           },
           "options": [
             {
-              "prompt": "Il y a un ennemi [[Traitre]] en jeu",
+              "prompt": "Il y a un ennemi [[Traître]] en jeu",
               "modified_value": {
                 "modifier": -4
               }
@@ -7979,7 +7979,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de cartes dans le Deck Traitre",
+          "prompt": "Nombre de cartes dans le Deck Traître",
           "min": 0,
           "adjustment": -5,
           "scale": -1
@@ -7994,7 +7994,7 @@
           },
           "options": [
             {
-              "prompt": "Il y a un ennemi [[Traitre]] en jeu",
+              "prompt": "Il y a un ennemi [[Traître]] en jeu",
               "modified_value": {
                 "modifier": -5
               }
@@ -8032,7 +8032,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de fatalité en jeu, arrondi au supérieur",
+          "prompt": "Moitié du nombre de fatalités en jeu, arrondi au supérieur",
           "min": 0
         }
       },
@@ -8215,7 +8215,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre d’effesr Non-Euclidien dans votre lieu",
+          "prompt": "Nombre d’effets Non-Euclidien dans votre lieu",
           "min": 0,
           "adjustment": 2
         }
@@ -8244,7 +8244,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre d’effesr Non-Euclidien dans votre lieu",
+          "prompt": "Nombre d’effets Non-Euclidien dans votre lieu",
           "min": 0,
           "adjustment": 3
         }
@@ -8451,7 +8451,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre [per_investigator] de civils tués",
+          "prompt": "Nombre [per_investigator] de civils tués",
           "min": 0
         }
       },
@@ -8479,7 +8479,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre [per_investigator] de civils tués",
+          "prompt": "Nombre [per_investigator] de civils tués",
           "min": 0,
           "scale": 2
         }
@@ -8575,7 +8575,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le plus grand nombre d'indices sur un ennemi [[Cultiste]] en play (3 durant l'Acte 3)",
+          "prompt": "Plus grand nombre d'indices sur un ennemi [[Cultiste]] en jeu (3 s'il s'agit de l'Acte 3)",
           "min": 0
         }
       },
@@ -8588,7 +8588,7 @@
           },
           "options": [
             {
-              "prompt": "Placez 1 fatalité sur l'ennemi [[Cultiste] le plus proche",
+              "prompt": "Placer 1 fatalité sur l'ennemi [[Cultiste] le plus proche",
               "modified_value": {
                 "modifier": -1
               }
@@ -8614,7 +8614,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Total du nombre d'indices sur les ennemis [[Cultiste]] en play (4 durant l'Acte 3)",
+          "prompt": "Nombre total d'indices sur les ennemis [[Cultiste]] en jeu (4 s'il s'agit de l'Acte 3)",
           "min": 0
         }
       },
@@ -8627,7 +8627,7 @@
           },
           "options": [
             {
-              "prompt": "Placez 1 fatalité sur l'ennemi [[Cultiste] le plus proche",
+              "prompt": "Placer 1 fatalité sur l'ennemi [[Cultiste] le plus proche",
               "modified_value": {
                 "modifier": -3
               }
@@ -8657,7 +8657,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nomre d'ennemis dans les ombres",
+          "prompt": "Nombre d'ennemis dans les ombres",
           "min": 0,
           "max": 3
         }
@@ -8697,7 +8697,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nomre d'ennemis dans les ombres",
+          "prompt": "Nombre d'ennemis dans les ombres",
           "min": 0,
           "max": 5
         }
@@ -8741,7 +8741,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre de traitrises [[Danger]] en jeu",
+          "prompt": "Nombre de traîtrises [[Risque]] en jeu",
           "min": 0
         }
       },
@@ -8780,7 +8780,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre de traitrises [[Danger]] en jeu",
+          "prompt": "Nombre de traîtrises [[Risque]] en jeu",
           "adjustment": 1,
           "min": 0
         }
@@ -8902,7 +8902,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de charges sur Le Faucheur d’Ombre (arrondi au supérieur)",
+          "prompt": "Moitié du nombre de charges sur Le Faucheur d’Ombre (arrondi au supérieur)",
           "min": 0,
           "max": 6
         }
@@ -8940,7 +8940,7 @@
           },
           "options": [
             {
-              "prompt": "Placez 1 charge sur Le Faucheur d’Ombre",
+              "prompt": "Placer 1 charge sur Le Faucheur d’Ombre",
               "modified_value": {
                 "modifier": 0
               }
@@ -8954,7 +8954,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de charges sur Le Faucheur d’Ombre",
+          "prompt": "Nombre de charges sur Le Faucheur d’Ombre",
           "min": 0
         }
       },
@@ -8990,7 +8990,7 @@
           },
           "options": [
             {
-              "prompt": "Placez 1 charge sur Le Faucheur d’Ombre",
+              "prompt": "Placer 1 charge sur Le Faucheur d’Ombre",
               "modified_value": {
                 "modifier": -3
               }
@@ -9008,7 +9008,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de lieux en jeu (arrondi à l’inférieur)",
+          "prompt": "Moitié du nombre de lieux en jeu (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -9022,7 +9022,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of set-aside hollows you own",
+          "prompt": "Nombre de disparitions mises de côté que vous possédez",
           "min": 0,
           "max": 5
         }
@@ -9053,7 +9053,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of set-aside hollows you own",
+          "prompt": "Nombre de disparitions mises de côté que vous possédez",
           "adjustment": 1,
           "min": 0
         }
@@ -9087,7 +9087,7 @@
           },
           "options": [
             {
-              "prompt": "Retournez une clef [[Stable]] que vous contrôlez sur sa face [[Instable]]",
+              "prompt": "Retourner une clef [[Stable]] que vous contrôlez sur sa face [[Instable]]",
               "modified_value": {
                 "modifier": -2
               }
@@ -9104,7 +9104,7 @@
           },
           "options": [
             {
-              "prompt": "Une attaque conte un ennemi [[Outsider]]",
+              "prompt": "Attaque contre un ennemi [[Ceux d'Ailleurs]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9139,7 +9139,7 @@
           },
           "options": [
             {
-              "prompt": "Retournez une clef [[Stable]] que vous contrôlez sur sa face [[Instable]]",
+              "prompt": "Retourner une clef [[Stable]] que vous contrôlez sur sa face [[Instable]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -9156,7 +9156,7 @@
           },
           "options": [
             {
-              "prompt": "Il y a un ennemi [[Outsider]] dans votre lieu",
+              "prompt": "Il y a un ennemi [[Ceux d'Ailleurs]] dans votre lieu",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9181,7 +9181,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de la colonne de votre lieu",
+          "prompt": "Numéro de colonne de votre lieu",
           "min": 1
         }
       },
@@ -9209,7 +9209,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de la colonne de votre lieu",
+          "prompt": "Numéro de colonne de votre lieu",
           "min": 1,
           "scale": 2
         }
@@ -9242,7 +9242,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de la colonne de votre lieu",
+          "prompt": "Numéro de colonne de votre lieu",
           "min": 1
         }
       },
@@ -9270,7 +9270,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de la colonne de votre lieu",
+          "prompt": "Numéro de colonne de votre lieu",
           "min": 1,
           "scale": 2
         }
@@ -9303,7 +9303,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de la colonne de votre lieu",
+          "prompt": "Numéro de colonne de votre lieu",
           "min": 1
         }
       },
@@ -9331,7 +9331,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de la colonne de votre lieu",
+          "prompt": "Numéro de colonne de votre lieu",
           "min": 1,
           "scale": 2
         }
@@ -9364,7 +9364,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre du jour en cours",
+          "prompt": "Numéro du jour en cours",
           "min": 1
         }
       },
@@ -9377,7 +9377,7 @@
           },
           "options": [
             {
-              "prompt": "tentative de <b>Discussion</b>",
+              "prompt": "Tentative de <b>Discussion</b>",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -9411,7 +9411,7 @@
           },
           "options": [
             {
-              "prompt": "tentative de <b>Discussion</b>",
+              "prompt": "Tentative de <b>Discussion</b>",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -9426,7 +9426,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre du jour en cours",
+          "prompt": "Numéro du jour en cours",
           "min": 1,
           "adjustment": 1
         }
@@ -9440,7 +9440,7 @@
           },
           "options": [
             {
-              "prompt": "tentative de <b>Discussion</b>",
+              "prompt": "Tentative de <b>Discussion</b>",
               "modified_value": {
                 "modifier": 1
               }
@@ -9474,7 +9474,7 @@
           },
           "options": [
             {
-              "prompt": "tentative de <b>Discussion</b>",
+              "prompt": "Tentative de <b>Discussion</b>",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -9493,7 +9493,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre de l'étage actuel",
+          "prompt": "Numéro de l'étage actuel",
           "min": 1
         }
       },
@@ -9521,7 +9521,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Nombre de l'étage actuel",
+          "prompt": "Numéro de l'étage actuel",
           "min": 1,
           "scale": 2
         }
@@ -9554,7 +9554,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre d'ennemis [[Insecte]] en jeu et dans la pile de victoire (arrondi au supérieur)",
+          "prompt": "Moitié du nombre d'ennemis [[Insecte]] en jeu et dans la pile de victoire (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -9579,7 +9579,7 @@
           },
           "options": [
             {
-              "prompt": "Dans un lieu [[Repaire]]",
+              "prompt": "Dans un lieu [[Tanière]]",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -9594,7 +9594,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre d'ennemis [[Insecte]] en jeu et dans la pile de victoire",
+          "prompt": "Moitié du nombre d'ennemis [[Insecte]] en jeu et dans la pile de victoire",
           "min": 0
         }
       },
@@ -9619,7 +9619,7 @@
           },
           "options": [
             {
-              "prompt": "Dans un lieu [[Repaire]]",
+              "prompt": "Dans un lieu [[Tanière]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9637,7 +9637,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de lieux [[Coulé]] en jeu (arrondi au supérieur)",
+          "prompt": "Moitié du nombre de lieux [[Englouti]] en jeu (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -9665,7 +9665,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux [[Coulé]] en jeu",
+          "prompt": "Nombre de lieux [[Englouti]] en jeu",
           "min": 0
         }
       },
@@ -9697,7 +9697,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de lieux [[Grotte]] révélés en jeu (arrondi au supérieur)",
+          "prompt": "Moitié du nombre de lieux [[Grotte]] révélés en jeu (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -9748,7 +9748,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux [[Grotte]] révélés en jeu",
+          "prompt": "Nombre de lieux [[Grotte]] révélés en jeu",
           "min": 0
         }
       },
@@ -9802,7 +9802,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le niveau d’obscurité actuel",
+          "prompt": "Niveau de ténèbres en cours",
           "min": 0
         }
       },
@@ -9830,7 +9830,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le niveau d’obscurité actuel",
+          "prompt": "Niveau de ténèbres en cours",
           "min": 0,
           "scale": 2
         }
@@ -9863,7 +9863,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de fatalités en jeu (arrondi au supérieur)",
+          "prompt": "Moitié du nombre de fatalités en jeu (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -9892,7 +9892,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de fatalités en jeu",
+          "prompt": "Nombre de fatalités en jeu",
           "min": 0
         }
       },
@@ -9924,7 +9924,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le numéro de l’Acte en cours",
+          "prompt": "Numéro de l’acte en cours",
           "min": 1,
           "adjustment": 1
         }
@@ -9944,7 +9944,7 @@
           },
           "options": [
             {
-              "prompt": "Placez 1 fatalité sur votre carte investigateur",
+              "prompt": "Placez 1 fatalité sur votre carte Investigateur",
               "modified_value": {
                 "modifier": 0
               }
@@ -9961,7 +9961,7 @@
           },
           "options": [
             {
-              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre l’Émissaire cosmique",
+              "prompt": "Ce pion est révélé lors d'un combat ou une tentative d’évasion contre l’Émissaire Cosmique",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -9976,7 +9976,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre d’ennemis [[Couleur]] en jeu",
+          "prompt": "Nombre d’ennemis [[Couleur]] en jeu",
           "min": 0
         }
       },
@@ -9995,7 +9995,7 @@
           },
           "options": [
             {
-              "prompt": "Placez 1 fatalité sur votre carte investigateur",
+              "prompt": "Placez 1 fatalité sur votre carte Investigateur",
               "modified_value": {
                 "modifier": -3
               }
@@ -10012,7 +10012,7 @@
           },
           "options": [
             {
-              "prompt": "Ce pion est révélé durant un combat ou une tentative d’évasion contre l’Émissaire cosmique",
+              "prompt": "Ce pion est révélé lors d'un combat ou une tentative d’évasion contre l’Émissaire Cosmique",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -10030,7 +10030,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de lieux dans le deck Rues d’Arkham (arrondi à l’inférieur)"
+          "prompt": "Moitié du nombre de lieux dans le deck Rues d’Arkham (arrondi à l’inférieur)"
         }
       },
       {
@@ -10049,7 +10049,7 @@
           },
           "options": [
             {
-              "prompt": "Vous vous êtes déplacé durant ce tout",
+              "prompt": "Vous vous êtes déplacé durant ce tour",
               "modified_value": {
                 "modifier": -1
               }
@@ -10063,7 +10063,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux dans le deck Rues d’Arkham"
+          "prompt": "Nombre de lieux dans le deck Rues d’Arkham"
         }
       },
       {
@@ -10082,7 +10082,7 @@
           },
           "options": [
             {
-              "prompt": "Vous vous êtes déplacé durant ce tout",
+              "prompt": "Vous vous êtes déplacé durant ce tour",
               "modified_value": {
                 "modifier": -2
               }
@@ -10105,7 +10105,7 @@
           },
           "options": [
             {
-              "prompt": "Il y a un ennemi [[Myriad]] dans votre lieu",
+              "prompt": "Il y a un ennemi [[Myriade]] dans votre lieu",
               "modified_value": {
                 "modifier": -3
               }
@@ -10136,7 +10136,7 @@
           },
           "options": [
             {
-              "prompt": "Il y a un ennemi [[Myriad]] dans votre lieu",
+              "prompt": "Il y a un ennemi [[Myriade]] dans votre lieu",
               "modified_value": {
                 "modifier": -4
               }
@@ -10166,7 +10166,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre d’actions qu’il vous reste (arrondi au supérieur)"
+          "prompt": "Moitié du nombre d’actions qu’il vous reste (arrondi au supérieur)"
         }
       },
       {
@@ -10194,7 +10194,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre d’actions qu’il vous reste"
+          "prompt": "Nombre d’actions qu’il vous reste"
         }
       },
       {
@@ -10255,7 +10255,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La somme des numéros de l’Acte et de l’Intrigue en cours",
+          "prompt": "Somme des numéros de l’Acte et de l’Intrigue en cours",
           "min": 2
         }
       },
@@ -10288,7 +10288,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de [[Tâches]] complétées (arrondi à l’inférieur)",
+          "prompt": "Moitié du nombre de [[Tâches]] complétées (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -10316,7 +10316,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de [[Tâches]] complétées",
+          "prompt": "Nombre de [[Tâches]] complétées",
           "min": 0
         }
       },
@@ -10348,7 +10348,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre d’actions qu’il vous reste"
+          "prompt": "Nombre d’actions qu’il vous reste"
         }
       },
       {
@@ -10375,7 +10375,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre d’actions qu’il vous reste",
+          "prompt": "Nombre d’actions qu’il vous reste",
           "adjustment": 1
         }
       },
@@ -10407,7 +10407,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le numéro de l’Acte en cours",
+          "prompt": "Numéro de l’acte en cours",
           "min": 1
         }
       },
@@ -10435,7 +10435,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le numéro de l’Acte en cours",
+          "prompt": "Numéro de l’acte en cours",
           "min": 1,
           "scale": 2
         }
@@ -10468,7 +10468,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre d’ennemis [[Criminel]] en jeu",
+          "prompt": "Nombre d’ennemis [[Criminel]] en jeu",
           "min": 0,
           "max": 4
         }
@@ -10482,7 +10482,7 @@
           },
           "options": [
             {
-              "prompt": "Un ennemi [[Criminel]] dans votre lieu",
+              "prompt": "Un ennemi [[Criminel]] est dans votre lieu",
               "modified_value": {
                 "modifier": -4
               }
@@ -10502,7 +10502,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre d’ennemis [[Criminel]] en jeu",
+          "prompt": "Nombre d’ennemis [[Criminel]] en jeu",
           "min": 0,
           "adjustment": 1
         }
@@ -10516,7 +10516,7 @@
           },
           "options": [
             {
-              "prompt": "Un ennemi [[Criminel]] dans votre lieu",
+              "prompt": "Un ennemi [[Criminel]] est dans votre lieu",
               "modified_value": {
                 "modifier": -5
               }
@@ -10625,7 +10625,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de lieux révélés en jeu (arrondi à l’inférieur)",
+          "prompt": "Moitié du nombre de lieux révélés en jeu (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -10664,7 +10664,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux révélés en jeu",
+          "prompt": "Nombre de lieux révélés en jeu",
           "min": 1
         }
       },
@@ -10707,7 +10707,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de fatalités sur des ennemis ou des soutiens en jeu (arrondi à l’inférieur)",
+          "prompt": "Moitié du nombre de fatalités sur des ennemis ou soutiens en jeu (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -10747,7 +10747,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de fatalités sur des ennemis et des soutiens en jeu",
+          "prompt": "Nombre de fatalités sur des ennemis et soutiens en jeu",
           "min": 0
         }
       },
@@ -10791,7 +10791,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de lieux activés (arrondi à l’inférieur)",
+          "prompt": "Moitié du nombre de lieux activés (arrondi à l’inférieur)",
           "min": 0
         }
       },
@@ -10836,7 +10836,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux activés",
+          "prompt": "Nombre de lieux activés",
           "min": 0
         }
       },
@@ -10885,7 +10885,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de cartes [[Glyphe]] dans la pile de victoire",
+          "prompt": "Nombre de cartes [[Glyphe]] dans la pile de victoire",
           "min": 0
         }
       },
@@ -10898,7 +10898,7 @@
           },
           "options": [
             {
-              "prompt": "Le nombre d’ennemis [[Clandestins]] dans votre lieu",
+              "prompt": "Il y a un ennemi [[Clandestin]] dans votre lieu",
               "modified_value": {
                 "modifier": -4
               }
@@ -10936,7 +10936,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de cartes [[Glyphe]] dans la pile de victoire",
+          "prompt": "Nombre de cartes [[Glyphe]] dans la pile de victoire",
           "min": 0,
           "adjustment": 1
         }
@@ -10950,7 +10950,7 @@
           },
           "options": [
             {
-              "prompt": "Le nombre d’ennemis [[Clandestins]] dans votre lieu",
+              "prompt": "Il y a un ennemi [[Clandestin]] dans votre lieu",
               "modified_value": {
                 "modifier": -5
               }
@@ -10992,7 +10992,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "L’Intensité de la Tempête actuelle",
+          "prompt": "Intensité de la Tempête actuelle",
           "min": 0
         }
       },
@@ -11006,7 +11006,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de Ciels Ouverts adjacents à votre lieu",
+          "prompt": "Nombre de Ciels Ouverts adjacents à votre lieu actuel",
           "min": 0,
           "max": 4
         }
@@ -11035,7 +11035,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "L’Intensité de la Tempête actuelle",
+          "prompt": "Intensité de la Tempête actuelle",
           "min": 0,
           "adjustment": 2
         }
@@ -11050,7 +11050,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de Ciels Ouverts adjacents à votre lieu",
+          "prompt": "Nombre de Ciels Ouverts adjacents à votre lieu actuel",
           "min": 0,
           "max": 4,
           "scale": 2
@@ -11084,7 +11084,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre actuel de Perturbations",
+          "prompt": "Niveau de Perturbations actuel",
           "min": 0,
           "max": 6
         }
@@ -11114,7 +11114,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre actuel de Perturbations",
+          "prompt": "Niveau de Perturbations actuel",
           "min": 0
         }
       },
@@ -11147,7 +11147,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La moitié du nombre de lieux sans carte scénario sous eux (arrondi au supérieur)",
+          "prompt": "Moitié du nombre de lieux sans carte Scénario sous eux (arrondi au supérieur)",
           "min": 0
         }
       },
@@ -11187,7 +11187,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Le nombre de lieux sans carte scénario sous eux",
+          "prompt": "Nombre de lieux sans carte Scénario sous eux (arrondi au supérieur)",
           "min": 0
         }
       },
