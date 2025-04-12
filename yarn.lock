@@ -3024,10 +3024,10 @@
   dependencies:
     semver "^7.3.5"
 
-"@op-engineering/op-sqlite@9.2.7":
-  version "9.2.7"
-  resolved "https://registry.npmjs.org/@op-engineering/op-sqlite/-/op-sqlite-9.2.7.tgz#3f6e9b0336f09ccc9bed8878e937040403dd8765"
-  integrity sha512-jKyk7A20frOHZyzfGP3XfcpzsCt9w76PWjDTVoF18zvO9sOgjv0iDhksEumlsxAtB5qGgNznqEkWBvWxBx+1eA==
+"@op-engineering/op-sqlite@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.npmjs.org/@op-engineering/op-sqlite/-/op-sqlite-12.0.0.tgz#acf08f14a2c90183c74cca789125173bb19dfd4b"
+  integrity sha512-DMfoK0MnO0Ic0gN09S02dbiGq7AObvOKOmueiFlEXat3fl4zZ5YFc0kcq0tRn/G4OpUo2/s1L9ZkCh86FMh2jA==
 
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"

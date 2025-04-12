@@ -1,4 +1,3 @@
-import { Platform } from 'react-native';
 import { find, forEach } from 'lodash';
 import { t } from 'ttag';
 

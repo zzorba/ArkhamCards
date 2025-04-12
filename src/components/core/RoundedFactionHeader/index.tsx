@@ -9,7 +9,7 @@ import {
 import FactionPattern from './FactionPattern';
 import { FactionCodeType } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
-import { s, xs, isTablet } from '@styles/space';
+import { s, xs } from '@styles/space';
 
 interface Props {
   faction?: FactionCodeType;

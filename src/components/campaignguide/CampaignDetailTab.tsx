@@ -3,7 +3,6 @@ import { InteractionManager, Platform, ScrollView, StyleSheet, View } from 'reac
 import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
 import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
-import * as Sentry from '@sentry/react-native';
 
 import { iconsMap } from '@app/NavIcons';
 import { ProcessedCampaign, StepId } from '@data/scenario';

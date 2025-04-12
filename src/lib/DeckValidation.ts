@@ -36,7 +36,6 @@ import {
   FORCED_LEARNING_CODE,
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
-  RANDOM_BASIC_WEAKNESS,
 } from '@app_constants';
 import Card, { InvestigatorChoice } from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';

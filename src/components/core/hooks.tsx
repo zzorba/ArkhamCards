@@ -2,7 +2,7 @@ import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRe
 import { BackHandler, Keyboard, Platform } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { forEach, findIndex, flatMap, debounce, find, uniq, keys, filter } from 'lodash';
+import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
 
 import { CampaignCycleCode, DeckId, MiscLocalSetting, MiscRemoteSetting, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap, InvestigatorChoice } from '@data/types/Card';

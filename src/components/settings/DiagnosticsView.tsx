@@ -3,7 +3,6 @@ import { forEach } from 'lodash';
 import {
   Alert,
   Keyboard,
-  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,

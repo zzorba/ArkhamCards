@@ -101,11 +101,15 @@ export const typeORMDriver = {
           location: string | undefined,
           callback: () => void
         ) => {
-          db.attach(options.name, dbNameToAttach, alias, location);
+          db.attach({
+            secondaryDbFileName: dbNameToAttach,
+            alias,
+            location,
+          });
           callback();
         },
         detach: (alias: string, callback: () => void) => {
-          db.detach(options.name, alias);
+          db.detach(alias);
           callback();
         },
       };

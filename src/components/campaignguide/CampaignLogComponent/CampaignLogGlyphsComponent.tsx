@@ -2,7 +2,7 @@ import { ShowTextEditDialog } from '@components/core/useTextEditDialog';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { CampaignLogEntry, EntrySection } from '@data/scenario/GuidedCampaignLog';
 import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
-import space, { m, s } from '@styles/space';
+import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { find, range } from 'lodash';
 import React, { useCallback, useContext, useMemo } from 'react';
