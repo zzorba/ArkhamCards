@@ -5612,6 +5612,39 @@
         ]
       },
       {
+        "section": "flooded_neighborhoods",
+        "entries": [
+          {
+            "id": "downtown",
+            "text": "Downtown"
+          },
+          {
+            "id": "easttown",
+            "text": "Easttown"
+          },
+          {
+            "id": "miskatonic_university",
+            "text": "米斯卡塔尼克大学"
+          },
+          {
+            "id": "northside",
+            "text": "Northside"
+          },
+          {
+            "id": "rivertown",
+            "text": "Rivertown"
+          },
+          {
+            "id": "southside",
+            "text": "Southside"
+          },
+          {
+            "id": "st_marys_hospital",
+            "text": "St. Mary's Hospital"
+          }
+        ]
+      },
+      {
         "section": "glyphs",
         "entries": [
           {

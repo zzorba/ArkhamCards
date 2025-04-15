@@ -5539,7 +5539,7 @@
           },
           {
             "id": "discovered_an_alien_language",
-            "text": "the investigators discovered an alien language."
+            "text": "Les investigateurs ont découvert un langage extraterrestre."
           },
           {
             "id": "expedition_abandoned_pilgrim",
@@ -5600,6 +5600,39 @@
           {
             "id": "your_allies_have_a_plan",
             "text": "vos alliés ont un plan."
+          }
+        ]
+      },
+      {
+        "section": "flooded_neighborhoods",
+        "entries": [
+          {
+            "id": "downtown",
+            "text": "Downtown"
+          },
+          {
+            "id": "easttown",
+            "text": "Easttown"
+          },
+          {
+            "id": "miskatonic_university",
+            "text": "Université Miskatonic"
+          },
+          {
+            "id": "northside",
+            "text": "Northside"
+          },
+          {
+            "id": "rivertown",
+            "text": "Quartier de la Rivière"
+          },
+          {
+            "id": "southside",
+            "text": "Southside"
+          },
+          {
+            "id": "st_marys_hospital",
+            "text": "St. Mary's Hospital"
           }
         ]
       },

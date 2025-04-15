@@ -5604,6 +5604,39 @@
         ]
       },
       {
+        "section": "flooded_neighborhoods",
+        "entries": [
+          {
+            "id": "downtown",
+            "text": "Downtown"
+          },
+          {
+            "id": "easttown",
+            "text": "Easttown"
+          },
+          {
+            "id": "miskatonic_university",
+            "text": "미스캐토닉 대학"
+          },
+          {
+            "id": "northside",
+            "text": "Northside"
+          },
+          {
+            "id": "rivertown",
+            "text": "강변"
+          },
+          {
+            "id": "southside",
+            "text": "남부"
+          },
+          {
+            "id": "st_marys_hospital",
+            "text": "St. Mary's Hospital"
+          }
+        ]
+      },
+      {
         "section": "glyphs",
         "entries": [
           {

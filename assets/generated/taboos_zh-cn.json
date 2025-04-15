@@ -1033,7 +1033,7 @@
       {
         "code": "08100",
         "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。",
-        "replacement_text": "变异。使用(3秘密)。\n[fast]在你的回合中，消耗远古海图并花费1秘密：从以下基础行动(移动、躲避或调查)选择2个不同的行动，并以任意顺序进行。"
+        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
       },
       {
         "code": "08093",
@@ -1502,7 +1502,7 @@
       {
         "code": "08100",
         "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。",
-        "replacement_text": "变异。使用(3秘密)。\n[fast]在你的回合中，消耗远古海图并花费1秘密：从以下基础行动(移动、躲避或调查)选择2个不同的行动，并以任意顺序进行。"
+        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
       },
       {
         "code": "08093",
@@ -1983,7 +1983,7 @@
       {
         "code": "08100",
         "text": "此卡牌的文本应为\"以下1个基础行动\"，而不是\"以下1个行动\"。",
-        "replacement_text": "变异。使用(3秘密)。\n[fast]在你的回合中，消耗远古海图并花费1秘密：从以下基础行动(移动、躲避或调查)选择2个不同的行动，并以任意顺序进行。"
+        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
       },
       {
         "code": "08113",

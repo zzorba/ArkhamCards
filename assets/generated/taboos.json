@@ -1033,7 +1033,7 @@
       {
         "code": "08100",
         "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast]During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two of the following basic actions, in any order (move, evade, or investigate)."
+        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
       },
       {
         "code": "08093",
@@ -1502,7 +1502,7 @@
       {
         "code": "08100",
         "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast]During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two of the following basic actions, in any order (move, evade, or investigate)."
+        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
       },
       {
         "code": "08093",
@@ -1983,7 +1983,7 @@
       {
         "code": "08100",
         "text": "This card should read \"following basic actions\" instead of \"following actions.\"",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast]During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two of the following basic actions, in any order (move, evade, or investigate)."
+        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
       },
       {
         "code": "08113",

@@ -1033,7 +1033,7 @@
       {
         "code": "08100",
         "text": "이 카드의 문구는 “다음 행동”에서 “다음 기본 행동”으로 바뀝니다.",
-        "replacement_text": "변형. 사용(비밀 3개).\n[fast] 당신의 차례 동안, ‘억겁의 지도’를 소진하고 비밀을 1개 소비합니다: 다음 기본 행동 중 서로 다른 두 가지를 선택해서 원하는 순서대로 수행합니다(이동/회피/조사)."
+        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
       },
       {
         "code": "08093",
@@ -1502,7 +1502,7 @@
       {
         "code": "08100",
         "text": "이 카드의 문구는 “다음 행동”에서 “다음 기본 행동”으로 바뀝니다.",
-        "replacement_text": "변형. 사용(비밀 3개).\n[fast] 당신의 차례 동안, ‘억겁의 지도’를 소진하고 비밀을 1개 소비합니다: 다음 기본 행동 중 서로 다른 두 가지를 선택해서 원하는 순서대로 수행합니다(이동/회피/조사)."
+        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
       },
       {
         "code": "08093",
@@ -1983,7 +1983,7 @@
       {
         "code": "08100",
         "text": "이 카드의 문구는 “다음 행동”에서 “다음 기본 행동”으로 바뀝니다.",
-        "replacement_text": "변형. 사용(비밀 3개).\n[fast] 당신의 차례 동안, ‘억겁의 지도’를 소진하고 비밀을 1개 소비합니다: 다음 기본 행동 중 서로 다른 두 가지를 선택해서 원하는 순서대로 수행합니다(이동/회피/조사)."
+        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
       },
       {
         "code": "08113",
