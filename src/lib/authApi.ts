@@ -1,5 +1,5 @@
 import Config from 'react-native-config';
-import { flatMap, filter, keys, map, omit, trim } from 'lodash';
+import { flatMap, filter, keys, map, omit, trim, forEach } from 'lodash';
 
 import { getAccessToken } from './auth';
 import { Deck, DeckMeta, DeckProblemType, ArkhamDbApiDeck, ArkhamDbDeck } from '@actions/types';
@@ -35,6 +35,14 @@ function cleanDeck(apiDeck: ArkhamDbApiDeck): ArkhamDbDeck {
         deck.tags = undefined;
       }
     }
+  }
+  const slots = deck.slots;
+  if (slots) {
+    forEach(Object.keys(slots), code => {
+      if ((slots[code] ?? 0) < 0) {
+        slots[code] = 0;
+      }
+    });
   }
   if (apiDeck.previous_deck) {
     deck.previousDeckId = {

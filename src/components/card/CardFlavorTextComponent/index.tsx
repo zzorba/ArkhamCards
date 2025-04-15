@@ -102,6 +102,20 @@ function ItalicHtmlTagRule(): MarkdownRule<WithChildren, State> {
 }
 
 
+function EmHtmlTagRule(): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<em>([\\s\\S]+?)<\\/em>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorItalicNode(),
+  };
+}
+
+
 function BoldHtmlTagRule(usePingFang: boolean): MarkdownRule<WithText, State> {
   return {
     match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
@@ -300,6 +314,7 @@ export default function CardFlavorTextComponent(
         centerTag: CenterHtmlTagRule,
         rightTag: RightHtmlTagRule,
         iTag: ItalicHtmlTagRule(),
+        emTag: EmHtmlTagRule(),
         smallCapsTag: SmallCapsHtmlTagRule(context),
         miniCapsTag: MiniCapsHtmlTagRule(),
         typewriterTag: TypewriterHtmlTagRule(context),
