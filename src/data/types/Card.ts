@@ -19,6 +19,7 @@ import {
   sortBy,
   indexOf,
   sumBy,
+  uniq,
 } from 'lodash';
 import { removeDiacriticalMarks } from 'remove-diacritical-marks';
 import { remove as removeAccents } from 'remove-accents';
@@ -907,6 +908,18 @@ export default class Card {
       }
       if (option.choice) {
         switch (change.type) {
+          case 'choose_trait': {
+            change.choice.find((trait) => {
+              const lower = trait.toLowerCase().trim();
+              const translated = c('trait').t`Firearm`.toLowerCase();
+              if (lower === 'firearm' || lower === translated) {
+                card.tags = uniq([
+                  ...(card.tags || []),
+                  'fa'
+                ]);
+              }
+            })
+          }
           case 'remove_slot': {
             if (card.real_slot) {
               card.real_slot = flatMap(
