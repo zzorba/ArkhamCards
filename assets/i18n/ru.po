@@ -4325,7 +4325,7 @@ msgid "${ textModifier }, draws another"
 msgstr "${ textModifier } + ещё жетон"
 
 msgid "You may heal 1 physical or mental trauma <i>(your choice)</i>"
-msgstr "Вы можете вылечить 1 травму </i>(физическую или ментальную — на ваш выбор)</i>"
+msgstr "Вы можете вылечить 1 травму <i>(физическую или ментальную — на ваш выбор)</i>"
 
 #, javascript-format
 msgid "In the ${ sectionName } section of the Campaign Log, draw a check mark next to ${ partnerName }."
