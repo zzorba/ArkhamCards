@@ -1987,9 +1987,9 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       case 'subtract_input':
         if (entry && entry.type === 'count') {
           if (alternate) {
-            entry.otherCount = count - value;
+            entry.otherCount = applyMin(count - value);
           } else {
-            entry.count = count - value;
+            entry.count = applyMin(count - value);
           }
         } else {
           if (alternate) {
@@ -2012,9 +2012,9 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       case 'add_input':
         if (entry && entry.type === 'count') {
           if (alternate) {
-            entry.otherCount = count + value;
+            entry.otherCount = applyMin(count + value);
           } else {
-            entry.count = count + value;
+            entry.count = applyMin(count + value);
           }
         } else {
           if (alternate) {

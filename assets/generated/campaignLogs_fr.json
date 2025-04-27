@@ -5608,11 +5608,11 @@
         "entries": [
           {
             "id": "downtown",
-            "text": "Downtown"
+            "text": "Centre-Ville"
           },
           {
             "id": "easttown",
-            "text": "Easttown"
+            "text": "Quartier Est"
           },
           {
             "id": "miskatonic_university",
@@ -5620,7 +5620,7 @@
           },
           {
             "id": "northside",
-            "text": "Northside"
+            "text": "Quartier Nord"
           },
           {
             "id": "rivertown",
@@ -5628,11 +5628,11 @@
           },
           {
             "id": "southside",
-            "text": "Southside"
+            "text": "Quarier Sud"
           },
           {
             "id": "st_marys_hospital",
-            "text": "St. Mary's Hospital"
+            "text": "Hôpital St. Mary"
           }
         ]
       },
@@ -5642,6 +5642,10 @@
           {
             "id": "tdc_rune_a",
             "text": "Profonds"
+          },
+          {
+            "id": "tdc_rune_s",
+            "text": "Machine"
           }
         ]
       },

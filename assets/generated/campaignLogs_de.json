@@ -5412,35 +5412,35 @@
         "entries": [
           {
             "id": "do_no_harm",
-            "text": "Task Progress - Do No Harm:"
+            "text": "Aufgabe-Fortschritt – Keinen Schaden zufügen:"
           },
           {
             "id": "dreams_of_destruction",
-            "text": "Task Progress - Dreams of Destruction:"
+            "text": "Aufgabe-Fortschritt – Zerstörerische Träume:"
           },
           {
             "id": "good_money",
-            "text": "Task Progress - Good Money:"
+            "text": "Aufgabe-Fortschritt – Gutes Geld:"
           },
           {
             "id": "no_place_like_home",
-            "text": "Task Progress - No Place Like Home:"
+            "text": "Aufgabe-Fortschritt – Zu Hause ist es am schönsten:"
           },
           {
             "id": "plumb_the_depths",
-            "text": "Task Progress - Plumb the Depths:"
+            "text": "Aufgabe-Fortschritt – Die Tiefen ausloten:"
           },
           {
             "id": "prove_your_worth",
-            "text": "Task Progress - Prove Your Worth:"
+            "text": "Aufgabe-Fortschritt – Beweise deinen Wert:"
           },
           {
             "id": "toe_the_line",
-            "text": "Task Progress - Toe the Line:"
+            "text": "Aufgabe-Fortschritt – Rehabilitieren:"
           },
           {
             "id": "walk_in_faith",
-            "text": "Task Progress - Walk in Faith:"
+            "text": "Aufgabe-Fortschritt – Im Glauben wandeln:"
           }
         ]
       },
@@ -5449,7 +5449,7 @@
         "entries": [
           {
             "id": "barrier_node",
-            "text": "Barrier Node"
+            "text": "Barriereknoten"
           },
           {
             "id": "clah_horror",
@@ -5457,19 +5457,19 @@
           },
           {
             "id": "grisly_mask",
-            "text": "Grisly Mask"
+            "text": "Grausige „Maske“"
           },
           {
             "id": "obsidian_claw",
-            "text": "Obsidian Claw"
+            "text": "Obsidianklaue"
           },
           {
             "id": "shard",
-            "text": "Shard of Y'ch'lecht"
+            "text": "Splitter von Y’ch’lecht"
           },
           {
             "id": "tidal_tablet",
-            "text": "Tidal Tablet"
+            "text": "Tafel der Gezeiten"
           }
         ]
       },
@@ -5546,27 +5546,27 @@
           },
           {
             "id": "discovered_an_alien_language",
-            "text": "the investigators discovered an alien language."
+            "text": "die Ermittler haben eine fremdartige Sprache entdeckt."
           },
           {
             "id": "expedition_abandoned_pilgrim",
-            "text": "the expedition left the pilgrim behind."
+            "text": "die Expedition hat den Pilger zurückgelassen."
           },
           {
             "id": "expedition_headed_east",
-            "text": "the expedition headed east."
+            "text": "die Expedition ist nach Osten aufgebrochen."
           },
           {
             "id": "expedition_headed_west",
-            "text": "the expedition headed west."
+            "text": "die Expedition ist nach Westen aufgebrochen."
           },
           {
             "id": "expedition_helped_pilgrim",
-            "text": "the expedition helped the pilgrim."
+            "text": "die Expedition hat dem Pilger geholfen."
           },
           {
             "id": "exterminated_the_alien_parasites",
-            "text": "the investigators exterminated the alien parasites."
+            "text": "Die Ermittler haben die fremdartigen Parasiten vernichtet."
           },
           {
             "id": "halted_cthulhus_awakening",
@@ -5574,19 +5574,19 @@
           },
           {
             "id": "pilgrims_were_devoured",
-            "text": "the pilgrims were devoured."
+            "text": "Die Pilger wurden verschlungen."
           },
           {
             "id": "pilgrims_were_saved",
-            "text": "the pilgrims were saved."
+            "text": "Die Pilger wurden gerettet."
           },
           {
             "id": "ruby_lost_the_bet",
-            "text": "Ruby lost the bet."
+            "text": "Ruby hat die Wette verloren."
           },
           {
             "id": "ruby_won_the_bet",
-            "text": "Ruby won the bet."
+            "text": "Ruby hat die Wette gewonnen."
           },
           {
             "id": "stood_together",
@@ -5594,15 +5594,15 @@
           },
           {
             "id": "the_creature_was_defeated",
-            "text": "the creature was defeated."
+            "text": "die Kreatur wurde besiegt."
           },
           {
             "id": "the_inner_sanctum_was_unsealed",
-            "text": "the inner sanctum was unsealed."
+            "text": "das Siegel des Innersten Heiligtums wurde gebrochen."
           },
           {
             "id": "the_power_was_diverted",
-            "text": "the power was diverted."
+            "text": "Die Energie wurde umgeleitet."
           },
           {
             "id": "your_allies_have_a_plan",
@@ -5649,6 +5649,10 @@
           {
             "id": "tdc_rune_a",
             "text": "Depths"
+          },
+          {
+            "id": "tdc_rune_s",
+            "text": "Machine"
           }
         ]
       },
@@ -5656,16 +5660,16 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "tdc_good_money_no_upkeep",
-            "masculine_text": "#name# cannot gain resources during the upkeep phase.",
-            "feminine_text": "#name# cannot gain resources during the upkeep phase.",
-            "nonbinary_text": "#name# cannot gain resources during the upkeep phase."
+            "id": "tdc_good_money_extra_resources",
+            "masculine_text": "#name# beginnt mit 3 zusätzlichen Ressourcen.",
+            "feminine_text": "#name# beginnt mit 3 zusätzlichen Ressourcen.",
+            "nonbinary_text": "#name# beginnt mit 3 zusätzlichen Ressourcen."
           },
           {
-            "id": "tdc_good_money_extra_resources",
-            "masculine_text": "#name# starts with 3 additional resources.",
-            "feminine_text": "#name# starts with 3 additional resources.",
-            "nonbinary_text": "#name# starts with 3 additional resources."
+            "id": "tdc_good_money_no_upkeep",
+            "masculine_text": "#name# kann während der Unterhaltsphase keine Ressourcen erhalten.",
+            "feminine_text": "#name# kann während der Unterhaltsphase keine Ressourcen erhalten.",
+            "nonbinary_text": "#name# kann während der Unterhaltsphase keine Ressourcen erhalten."
           },
           {
             "id": "kept_barrier_node",
