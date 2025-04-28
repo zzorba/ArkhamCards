@@ -796,19 +796,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -6216,641 +6216,6 @@ msgctxt "slots"
 msgid "None"
 msgstr "Aucun"
 
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } est devenu <b>dément</b>."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } a été <b>tué</b>."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(son choix)</i>."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } heals ${ mental } mental trauma."
-msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
-msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } heals ${ physical } physical trauma."
-msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
-msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.physical } traumatismes physiques."
-
-msgctxt "masculine"
-msgid "Alive"
-msgstr "Vivant"
-
-msgctxt "masculine"
-msgid "Resigned"
-msgstr "A abandonné"
-
-msgctxt "masculine"
-msgid "Defeated: physical trauma"
-msgstr "Vaincu : traumatisme physique"
-
-msgctxt "masculine"
-msgid "Defeated: mental trauma"
-msgstr "Vaincu : traumatisme mental"
-
-msgctxt "masculine"
-msgid "Defeated: no trauma"
-msgstr "Vaincu : aucun traumatisme"
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "masculine"
-msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Si <i>${ card.name }</i> n'est pas inscrit sous la mention « ${ entry.section } » dans votre Carnet de Campagne."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Si <i>${ card.name }</i> est inscrit sous la mention « ${ entry.section } » dans votre Carnet de Campagne."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgstr[0] "Étant donné que ${ list } possède l'équipement ${ supplyName }, il doit lire <b>${ sectionName }</b>."
-msgstr[1] "Étant donné que ${ list } possèdent tous l'équipement ${ supplyName }, ils doivent lire <b>${ sectionName }</b>."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgstr[0] "Étant donné que ${ list } ne possède pas d'équipement ${ supplyName }, il doit lire <b>${ sectionName }</b>."
-msgstr[1] "Étant donné que ${ list } ne possèdent pas d'équipement ${ supplyName }, il doivent lire <b>${ sectionName }</b>."
-
-msgctxt "masculine"
-msgid "Killed"
-msgstr "Tué"
-
-msgctxt "masculine"
-msgid "Insane"
-msgstr "Dément"
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } est devenue <b>démente</b>."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } a été <b>tuée</b>."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(son choix)</i>."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } heals ${ mental } mental trauma."
-msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
-msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } heals ${ physical } physical trauma."
-msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
-msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.physical } traumatismes physiques."
-
-msgctxt "feminine"
-msgid "Alive"
-msgstr "Vivante"
-
-msgctxt "feminine"
-msgid "Resigned"
-msgstr "A abandonné"
-
-msgctxt "feminine"
-msgid "Defeated: physical trauma"
-msgstr "Vaincue : traumatisme physique"
-
-msgctxt "feminine"
-msgid "Defeated: mental trauma"
-msgstr "Vaincue : traumatisme mental"
-
-msgctxt "feminine"
-msgid "Defeated: no trauma"
-msgstr "Vaincue : aucun traumatisme"
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "feminine"
-msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Si <i>${ card.name }</i> n'est pas inscrite sous la mention '${ entry.section }' dans votre Carnet de Campagne."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Si <i>${ card.name }</i> est inscrite sous la mention '${ entry.section }' dans votre Carnet de Campagne."
-
-msgctxt "feminine"
-msgid "Physical trauma"
-msgstr "Traumatisme physique"
-
-msgctxt "feminine"
-msgid "Mental trauma"
-msgstr "Traumatisme mental"
-
-msgctxt "feminine"
-msgid "Defeated"
-msgstr "Vaincue"
-
-#, javascript-format
-msgctxt "feminine"
-msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgstr[0] "Étant donné que ${ list } possède l'équipement ${ supplyName }, elle doit lire <b>${ sectionName }</b>."
-msgstr[1] "Étant donné que ${ list } possèdent toutes l'équipement ${ supplyName }, elles doivent lire <b>${ sectionName }</b>."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgstr[0] "Étant donné que ${ list } ne possède pas d'équipement ${ supplyName }, elle doit lire <b>${ sectionName }</b>."
-msgstr[1] "Étant donné que ${ list } ne possèdent pas d'équipement ${ supplyName }, elles doivent lire <b>${ sectionName }</b>."
-
-msgctxt "feminine"
-msgid "Killed"
-msgstr "Tuée"
-
-msgctxt "feminine"
-msgid "Insane"
-msgstr "Démente"
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } est devenu <b>dément</b>."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } a été <b>tué</b>."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(son choix)</i>."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } heals ${ mental } mental trauma."
-msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
-msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } heals ${ physical } physical trauma."
-msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
-msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.physical } traumatismes physiques."
-
-msgctxt "nonbinary"
-msgid "Alive"
-msgstr "Vivant"
-
-msgctxt "nonbinary"
-msgid "Resigned"
-msgstr "Abandon"
-
-msgctxt "nonbinary"
-msgid "Defeated: physical trauma"
-msgstr "Vaincu : traumatisme physique"
-
-msgctxt "nonbinary"
-msgid "Defeated: mental trauma"
-msgstr "Vaincu : traumatisme mental"
-
-msgctxt "nonbinary"
-msgid "Defeated: no trauma"
-msgstr "Vaincu : aucun traumatisme"
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Si <i>${ card.name }</i> n'est pas inscrit sous la mention « ${ entry.section } » dans votre Carnet de Campagne."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "Si <i>${ card.name }</i> est inscrit sous la mention « ${ entry.section } » dans votre Carnet de Campagne."
-
-msgctxt "nonbinary"
-msgid "Physical trauma"
-msgstr "Traumatisme physique"
-
-msgctxt "nonbinary"
-msgid "Mental trauma"
-msgstr "Traumatismes mentaux"
-
-msgctxt "nonbinary"
-msgid "Defeated"
-msgstr "Vaincu"
-
-msgctxt "nonbinary"
-msgid "Killed"
-msgstr "Tué"
-
-msgctxt "nonbinary"
-msgid "Insane"
-msgstr "Dément"
-
-msgctxt "Traits"
-msgid "All"
-msgstr "Tous"
-
-msgctxt "releaseNotes"
-msgid "Fan-made cards + Barkham Horror"
-msgstr "Cartes Fan-Made + Horreur à Warkham"
-
-msgctxt "releaseNotes"
-msgid "Starting with this release, there is a new setting to unlock some 'unofficial' content when searching for cards and building decks. While fan-made campaigns have been available for some time, the cards associated with them have not been searchable. To start, this includes the cards released as part of the <i>Barkham Horror</i> promotional set, as well as the excellent <i>Alice in Wonderland</i> campaign by The Beard."
-msgstr "Pour bien commencer, il y a un nouveau paramètre qui permet de déverrouiller du contenu \"non-officiel\" lorsque vous recherchez des cartes ou construisez des decks. Bien que les campagnes Fan-Made soient disponibles depuis un certain temps, les cartes qui y étaient associées ne pouvaient pas êtres recherchées à travers l'application. Nous avons commencé par inclure les cartes publiées dans le set promotionnel d'Horreur à Warkham, ainsi que l'excellente campagne <i>Alice in Wonderland</i> créée par The Beard."
-
-msgctxt "releaseNotes"
-msgid "- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app."
-msgstr "- Pour activer cette fonctionnalité, cochez simplement <b>Afficher les cartes Fan-Made</b> dans les <i>Paramètres</i>. Si le contenu Fan-Made ne vous intéresse pas, vous n'êtes pas obligé de changer quoi que ce soit, l'application ne l'affiche pas par défaut."
-
-msgctxt "releaseNotes"
-msgid "- Decks containing 'fan-made' cards (including <i>Barkham Horror</i>), cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, these custom cards will be hidden."
-msgstr "- Les decks contenant des cartes \"Fan-Made\" (incluant <i>Horreur à Warkham</i>) ne peuvent pas être transférés ou sauvegardés sur ArkhamDB. Quand vous modifierez un deck d'ArkhamDB, ces cartes personnalisées seront cachées."
-
-msgctxt "releaseNotes"
-msgid "- Fan-made cards are shown with a small watermark icon indicating what set they came from, so you can tell they are unofficial."
-msgstr "- Les cartes Fan-Made se distinguent par une petite icône inscrite à côté de leur titre, symbolisant le paquet duquel elles sont issues, afin d'indiquer qu'elles ne sont pas officielles."
-
-msgctxt "releaseNotes"
-msgid "Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
-msgstr "S'il y a du contenu Fan-Made que vous aimeriez voir dans l'application, faites-le moi savoir à [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
-
-msgctxt "releaseNotes"
-msgid "Campaign sharing released!"
-msgstr "Partage de campagne publié !"
-
-msgctxt "releaseNotes"
-msgid "At long last, the ability to share campaigns has been released on both iOS and Android! This has been one of the most requested features from the start, but as it required a completely new set of servers to be written (and paid for), it took me some time to get it right. You can of course continue using the app exactly as it is, but if you find yourself using multiple devices or want to share an in-progress campaign with friends so everyone can collaborate on it, this is the feature for you."
-msgstr "Enfin, la possibilité de partager des campagnes est sortie sur iOS et Android ! C'était l'une des fonctionnalités les plus demandées depuis le début, mais comme elle a nécessité l'écriture (et le paiement) d'un ensemble de serveurs complètement nouveau, il m'a fallu un certain temps pour y parvenir. Vous pouvez bien sûr continuer à utiliser l'application exactement comme elle est, mais si vous vous retrouvez à utiliser plusieurs appareils ou si vous voulez partager une campagne en cours avec des amis pour que tout le monde puisse collaborer, cette fonctionnalité est faite pour vous."
-
-msgctxt "releaseNotes"
-msgid "- First sign up for an <b>Arkham Cards</b> account via the <i>Settings</i> tab, to unlock these features. Don't forget to set your handle so your friends can find you on the app."
-msgstr "- Commencez par vous créer un compte <b>Arkham Cards</b> via l'onglet <i>Paramètres</i>, pour débloquer ces fonctionnalités. N'oubliez pas de définir votre identifiant pour que vos amis puissent vous retrouver sur l'application."
-
-msgctxt "releaseNotes"
-msgid "- On the main screen of every campaign (or when creating a new one), there is a new option to 'Upload' the campaign to the cloud. This will cause the campaign to be synced between all of your devices."
-msgstr "- Sur l'écran principal de chaque campagne (ou lors de la création d'une nouvelle campagne), il y a une nouvelle option pour \"Charger\" la campagne sur le cloud. Cela entraînera la synchronisation de la campagne entre tous vos appareils."
-
-msgctxt "releaseNotes"
-msgid "- After uploading the campaign, you'll find a new option on the campaign to <b>Edit players</b>. Simply select your friends and the campaign will pop up in their app as well."
-msgstr "- Après avoir chargé la campagne, vous trouverez une nouvelle option sur la campagne pour <b>Modifier les joueurs</b>. Il suffit de sélectionner vos amis et la campagne apparaîtra également dans leur application."
-
-msgctxt "releaseNotes"
-msgid "- Then just use the campaign as normal -- decisions and changes that you make will be synced automatically with everyone, including the chaos bag."
-msgstr "- Ensuite, il suffit d'utiliser la campagne comme d'habitude – les décisions et les changements que vous faites seront synchronisés automatiquement avec tout le monde, y compris la réserve du Chaos."
-
-msgctxt "releaseNotes"
-msgid "- If someone else saves your deck for you at the end of a scenario, you'll need to open the campaign to <b>Claim the previous scneario's XP</b> for yourself."
-msgstr "- Si quelqu'un d'autre sauvegarde votre deck pour vous à la fin d'un scénario, vous devrez ouvrir la campagne pour <b>Réclamer l'XP du scénario précédent</b> pour vous-même."
-
-msgctxt "releaseNotes"
-msgid "If you like to make changes to your decks on ArkhamDB as well as in the app, just pop open the app and make sure you see your latest deck updates there. After opening the app it should remain in sync, but if you use the app infrequently the ArkhamDB login might expire and need to be authorized."
-msgstr "Si vous aimez apporter des modifications à vos decks sur ArkhamDB ainsi que dans l'application, il suffit d'ouvrir l'application et de vous assurer que vous y voyez les dernières mises à jour de vos decks. Après l'ouverture de l'application, la synchronisation devrait être maintenue, mais si vous n'utilisez pas souvent l'application, le login ArkhamDB peut expirer et doit être autorisé."
-
-msgctxt "releaseNotes"
-msgid "Find overlap between decks"
-msgstr "Dépassements parmi les decks"
-
-msgctxt "releaseNotes"
-msgid "If you build decks for multiple players from a single card collection, this release is for you. By adding the decks to a shared campaign, the app will calculate which cards are included in too many decks (based on your collection)."
-msgstr "Si vous construisez des decks pour plusieurs joueurs depuis une seule collection de cartes, cette fonctionnalité est faite pour vous. Lorsque vous ajouterez les decks aux campagnes partagées, l'application calculera si trop de cartes ont été incluses dans les decks (en fonction de votre collection)."
-
-msgctxt "releaseNotes"
-msgid "If the deck has been added to a campaign, you'll also see this on the bottom of each deck in that campaign."
-msgstr "Si le deck a été ajouté à une campagne, vous verrez aussi ceci en dessous de chaque deck de la campagne."
-
-msgctxt "releaseNotes"
-msgid "Edge of the Earth campaign is now out"
-msgstr "La campagne Aux Confins de la Terre est maintenant disponible"
-
-msgctxt "releaseNotes"
-msgid "The full setup instructions for Edge of the Earth campaigns are now available in the app! This was the largest single drop of campaign content in the history of the game and a large group of volunteers helped prepare the story text so I could focus on the new mechanics to get this out as close to release date as possible."
-msgstr "Toutes les instructions de mise en place de la campagne Aux Confins de la Terre sont maintenant disponibles dans l'application ! Cela a été la campagne qui a demandé la plus grande quantité de travail de l'histoire de la création du jeu. Un énorme groupe de volontaires a aidé à préparer les textes d'histoire afin que je puisse me focaliser sur les nouvelles mécaniques de jeu et rendre cela accessible au plus tôt après sa sortie."
-
-msgctxt "releaseNotes"
-msgid "Frost tokens ([frost]) are also now available in the digital chaos bags for all Edge of the Earth campaigns."
-msgstr "Les pions Gel ([frost]) sont maintenant aussi disponibles dans la réserve du Chaos digitale pour toute la campagne Aux Confins de la Terre."
-
-msgctxt "releaseNotes"
-msgid "Stay warm out there!"
-msgstr "N'attrapez pas froid !"
-
-msgctxt "releaseNotes"
-msgid "Newly designed chaos odds calculator"
-msgstr "Un calculateur de probabilités tout récemment conçu"
-
-msgctxt "releaseNotes"
-msgid "<center>\"Never tell me the odds!\" - Han Solo</center>"
-msgstr "<center>« Tu sais, moi et les probabilités… » - Han Solo</center>"
-
-msgctxt "releaseNotes"
-msgid "Sorry Han, this isn't the feature for you. When it came time to try to work [bless] and [curse] tokens into the existing odds calculator, this app's visual designer (Eugene Sarnetsky) worked hard to reimagine how to present the mathy information in a more intuitive and visual manner."
-msgstr "Désolé Han, cet outil n'est pas pour toi. Quand arriva le temps d'essayer d'ajouter les pions [bless] et [curse] au calculateur de probabilités déjà existant, le responsable de l'aspect visuel de l'application (Eugene Sarnetsky) a travaillé dur pour repenser la manière dont sont présentées les statistiques mathématiques pour que ce soit plus intuitif et agréable, visuellement parlant."
-
-msgctxt "releaseNotes"
-msgid "As you can see below, the results are incredible:"
-msgstr "Comme vous pouvez le voir ci-dessous, les résultats sont impressionnants :"
-
-msgctxt "releaseNotes"
-msgid "In addition to giving you the numeric pass/fail rate as before, the new visual stacking of tokens based on their current modifiers lets you quickly intuit how much you stand to gain with an extra +1 to your skill value, without having to mess with the difficulty controls at all."
-msgstr "En plus de vous donner le taux de réussite/échec comme avant, le nouveau système de regroupement de pions basé sur leurs modificateurs vous permet de rapidement savoir si un bonus de +1 à votre valeur de compétence ferait la différence, tout cela sans avoir à mettre les mains dans les contrôles de difficulté de test."
-
-msgctxt "releaseNotes"
-msgid "You'll also see small bands of color to represent [bless] and [curse] worked into the display. These are spaced to show how much your odds of passing changes if you draw a single [bless] or [curse] token: in the above picture a single [curse] token draw will cause 47% of the tokens in the bag to now result in a failure -- not great!"
-msgstr "Vous verrez aussi de petites lignes colorées qui représentent visuellement l'incidence des pions [bless] et [curse]. Elles sont espacées en fonction des changements de probabilités de réussite que la pioche d'un pion [bless] ou [curse] apportera : sur l'image ci-dessus, on voit que 47% des pions Chaos vous feront échouer à votre test après la pioche d'un seul pion [curse] -- pas génial !"
-
-msgctxt "releaseNotes"
-msgid "Down below you can also see the odds of drawing a [bless]/[curse] token based on the current bag contents. Here the adjustment to your success odds is shown as a range, the first number being drawing one token, the second if you were to draw multiple."
-msgstr "Un peu plus bas, vous pouvez aussi voir les probabilités de piocher un pion [bless]/[curse] selon le contenu de la réserve du Chaos actuelle. Ici, l'ajustement de vos probabilités de réussite est affichée sous forme d'intervalle : le premier nombre est le cas où vous piochez un seul de ces pions, et le second est le cas où vous en piochez plusieurs."
-
-msgctxt "releaseNotes"
-msgid "Support for fan-made campaigns"
-msgstr "Prise en charge des campagnes Fan-Made"
-
-msgctxt "releaseNotes"
-msgid "Did you know that this game has a thriving community of homebrew content creators? Well it does, and starting today, you'll start to find some of these campaigns and side-scenarios in the app."
-msgstr "Saviez-vous que ce jeu a une communauté qui regorge de créateurs de contenus faits maison ? Maintenant, oui ! Et à partir d'aujourd'hui, vous pourrez trouver certaines campagnes qui en sont issues ainsi que des scénarios indépendants dans l'application."
-
-msgctxt "releaseNotes"
-msgid "Adding more campaigns will be an ongoing effort, but as of now we the following campaigns are available:"
-msgstr "L'ajout de campagnes supplémentaires nous demandera un effort continu, mais voici les campagnes qui sont déjà disponibles :"
-
-msgctxt "releaseNotes"
-msgid "- Alice in Wonderland by The Beard"
-msgstr "- Alice in Wonderland, créée par The Beard"
-
-msgctxt "releaseNotes"
-msgid "- Dark Matter by Axolotl"
-msgstr "- Dark Matter, créée par Axolotl"
-
-msgctxt "releaseNotes"
-msgid "- Crown of Egil by The Mad Juggler"
-msgstr "- Crown of Egil, créée par The Mad Juggler"
-
-msgctxt "releaseNotes"
-msgid "- Call of the Plaguebearer by Walker Graves"
-msgstr "- Call of the Plaguebearer, créée par Walker Graves"
-
-msgctxt "releaseNotes"
-msgid "As for standalone scenarios:"
-msgstr "Quant aux scénarios indépendants :"
-
-msgctxt "releaseNotes"
-msgid "- Consternation on the Constellation - by The Mythos Busters"
-msgstr "- Consternation on the Constellation, créé par The Mythos Busters"
-
-msgctxt "releaseNotes"
-msgid "If you are a content creator who is interested in getting your (completed) campaign into the app, you can reach me at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
-msgstr "Si vous êtes un créateur de contenu personnalisé et que vous souhaitez intégrer votre campagne (achevée) à l'application, contactez-moi à [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
-
-msgctxt "releaseNotes"
-msgid "Drafting player decks"
-msgstr "Tirage des decks des joueurs"
-
-msgctxt "releaseNotes"
-msgid "As a follow up to the earlier Ultimatum of Chaos release, the app now supports building a deck via a set of drafting rules. Choose what packs you want to pull from and how big each draft 'hand' should be, and build your deck one card at a time."
-msgstr "Dans le prolongement de la version précédente de l'Ultimatum du Chaos, l'application permet désormais de construire un deck via un ensemble de règles de tirage. Choisissez les paquets dans lesquels vous voulez puiser et la taille de chaque « main » de tirage, et construisez votre deck une carte à la fois."
-
-msgctxt "releaseNotes"
-msgid "- You can find this feature on the deck edit screen in the menu."
-msgstr "- Vous pouvez trouver cette fonction sur l'écran d'édition du deck dans le menu."
-
-msgctxt "releaseNotes"
-msgid "- Only level cards / decks can be drafted."
-msgstr "- Seules les cartes / decks de niveau 0 peuvent être tirés."
-
-msgctxt "releaseNotes"
-msgid "- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release."
-msgstr "- Compte tenu de leurs restrictions uniques en matière de construction de deck, l'application ne permet pas encore de générer des decks aléatoires pour Lola Hayes ou Joe Diamond. C'est un point que j'essaierai de régler dans une prochaine version."
-
-msgctxt "releaseNotes"
-msgid "Ultimatum of Chaos"
-msgstr "Ultimatum du Chaos"
-
-msgctxt "releaseNotes"
-msgid "The app now supports building random decks following the steps set out by the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new option lets you choose a 'special deck', which can be used to either create the FFG suggested starter deck or a fully randomly generated one."
-msgstr "L'application permet désormais de construire des decks aléatoires en suivant les étapes définies par la règle optionnelle « Ultimatum du Chaos ». Lors de la construction d'un nouveau deck, une nouvelle option vous permet de choisir un « deck spécial », qui peut être utilisée soit pour créer le deck de démarrage suggéré par FFG, soit un deck généré de manière entièrement aléatoire."
-
-msgctxt "releaseNotes"
-msgid "- The app will use your defined collection to try to generate the deck."
-msgstr "- L'application utilisera votre collection définie pour essayer de générer le deck."
-
-msgctxt "releaseNotes"
-msgid "- Support the deckbuilding focused permanents included in the Edge of the Earth Investigator expansion (Underworld Support/Forced Learning)."
-msgstr "- Prend en charge les cartes permanentes axées sur la Construction du Deck dans l'Extension Investigateurs de la campagne Aux Confins de la Terre (Soutien de la Pègre/Apprentissage Forcé)."
-
-msgctxt "releaseNotes"
-msgid "- Shows the deck before you actully save it, so you can re-roll if it produced something particularly unviable."
-msgstr "- Affiche le deck avant de le sauvegarder, pour pouvoir recommencer s'il a produit quelque chose de non viable."
-
-msgctxt "releaseNotes"
-msgid "Note: You might need to refresh the cards once (using <b>Check for card updates</b>)."
-msgstr "Note : vous devrez peut-être rafraîchir les cartes une fois (en appuyant sur <b>Mettre à jour les cartes</b>)."
-
-msgctxt "releaseNotes"
-msgid "Settings synchronization"
-msgstr "Synchronisation des paramètres"
-
-msgctxt "releaseNotes"
-msgid "Good news for players who use Arkham Cards with more than one device, if you sign into your Arkham Cards account your settings will now sync between devices automatically!"
-msgstr "Bonne nouvelle pour les joueurs qui utilisent Arkham Cards avec plus d'un appareil, si vous vous connectez à votre compte Arkham Cards, vos paramètres se synchroniseront désormais automatiquement entre les appareils !"
-
-msgctxt "releaseNotes"
-msgid "- This includes your collection + spoiler settings, as well as many general app preferences."
-msgstr "- Cela inclut vos paramètres de collection et de spoiler, ainsi que de nombreuses préférences générales de l'application."
-
-msgctxt "releaseNotes"
-msgid "I've had some reports of slower performance on some devices, and have a new <i>\"Low Memory Mode\"</i> setting to try out."
-msgstr "J'ai reçu des rapports faisant état de performances plus lentes sur certains appareils, et j'ai un nouveau paramètre <i>\"Mode mémoire faible\"</i> à tester."
-
-msgctxt "releaseNotes"
-msgid "- If you've been experiencing slow app behavior in anyway, please try it out."
-msgstr "- Si le comportement de l'application est lent, essayez-le."
-
-msgctxt "releaseNotes"
-msgid "- And if you try it out, send me an email at arkhamcards@gmail.com, I would love to hear how it is working in the wild."
-msgstr "- Et si vous l'essayez, envoyez-moi un courriel à arkhamcards@gmail.com, j'adorerais savoir comment il fonctionne en pratique."
-
-msgctxt "releaseNotes"
-msgid "BTW, support for the newly announced mechanic from The Scarlet Keys is in the works, so stay tuned."
-msgstr "La prise en charge de la mécanique récemment annoncée des « Clefs Écarlates » est en progrès, alors restez à l'écoute."
-
-msgctxt "releaseNotes"
-msgid "Cyclopean Foundations"
-msgstr "Cyclopean Foundations"
-
-msgctxt "releaseNotes"
-msgid "This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard."
-msgstr "Cette version ajoute la campagne Cyclopean Foundations de The Beard, récemment réalisée par des fans."
-
-msgctxt "releaseNotes"
-msgid "- Includes a fully guided mode, with all setup and resolution text accounted for."
-msgstr "- Comprend un mode entièrement guidé, avec tous les textes de configuration et de résolution pris en compte."
-
-msgctxt "releaseNotes"
-msgid "This update also adds support for \"The Colour Out of Space\", a fan-made standalone scenario."
-msgstr "Cette mise à jour ajoute également la prise en charge de « La Couleur Tombée du Ciel », un scénario indépendant créé par un fan."
-
-msgctxt "releaseNotes"
-msgid "Preview Cards"
-msgstr "Avant-premières des cartes"
-
-msgctxt "releaseNotes"
-msgid "This release introduces faster access to previewed cards."
-msgstr "Cette version introduit un accès plus rapide aux avant-premières des cartes."
-
-msgctxt "releaseNotes"
-msgid "- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys investigator expansion."
-msgstr "- Comprend les cartes <b>Personnalisables</b> en avant-première de l'Extension Investigateurs pour Les Clefs Écarlates."
-
-msgctxt "releaseNotes"
-msgid "- In order to maintain compatibility with ArkhamDB, these cards are not shown by default. You can opt into them by enabling the <b>Show Fan-made cards</b> under <i>Settings</i>."
-msgstr "- Afin de maintenir la compatibilité avec ArkhamDB, ces cartes ne sont pas affichées par défaut. Vous pouvez les afficher en activant l'option <b>Afficher les cartes Fan-Made</b> sous <i>Paramètres</i>."
-
-msgctxt "releaseNotes"
-msgid "The Scarlet Keys Campaign"
-msgstr "Campagne - Les Clefs Écarlates"
-
-msgctxt "releaseNotes"
-msgid "This release adds support for the newly released Scarlet Keys campaign expansion."
-msgstr "Cette version ajoute la prise en charge de la toute nouvelle extension de campagne Les Clefs Écarlates."
-
-msgctxt "releaseNotes"
-msgid "- As you may know (or will soon find out), this is by far the most ambitious campaign we've ever seen in Arkham. I've done my best to handle the new features as faithfully as I can in the app, and am pretty pleased with the implementation."
-msgstr "- Comme vous le savez peut-être (ou le découvrirez bientôt), cette campagne est de loin la plus ambitieuse que nous ayons jamais vue à Arkham. J'ai fait de mon mieux pour gérer les nouvelles fonctionnalités aussi fidèlement que possible dans l'application, et je suis plutôt satisfait de la mise en œuvre."
-
-msgctxt "releaseNotes"
-msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still - if you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will try to fix them as quickly as possible. But given the expansive nature of the campaign, it is possible in a worst case scenario that some progress might need to be re-entered."
-msgstr "- J'ai fait de mon mieux pour tester les recoins de cette campagne, mais il est tout à fait possible qu'il y ait encore quelques erreurs ou bugs dans la réalisation - si vous en trouvez, faites-le moi savoir à [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) et j'essaierai de les corriger aussi vite que possible. Mais étant donné la nature expansive de la campagne, il est possible, dans le pire des cas, que certains développements doivent être réintroduits."
-
-msgctxt "releaseNotes"
-msgid "- I've also taken the liberty of including some small story reminders when map locations become unlocked through the course of play. I tried my best to capture the story text, and hope you find it helpful (in case like me you sometimes go weeks between game sessions)."
-msgstr "- J'ai également pris la liberté d'inclure quelques petits rappels d'histoire lorsque des emplacements de cartes se débloquent au cours du jeu. J'ai fait de mon mieux pour retranscrire le texte de l'histoire, et j'espère que vous le trouverez utile (au cas où, comme moi, il vous arrive de passer des semaines entre deux sessions de jeu)."
-
-msgctxt "releaseNotes"
-msgid "As always, many thanks to my many supporters on Patreon -- I appreciate your support which helps make all of this possible."
-msgstr "Comme toujours, un grand merci à mes nombreux soutiens sur Patreon -- j'apprécie votre soutien qui permet de rendre tout cela possible."
-
-msgctxt "releaseNotes"
-msgid "Feast of Hemlock Vale Campaign"
-msgstr "Campagne - Le Festin de Hemlock Vale"
-
-msgctxt "releaseNotes"
-msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
-msgstr "Cette version ajoute la prise en charge de la toute nouvelle extension de campagne Le Festin de Hemlock Vale."
-
-msgctxt "releaseNotes"
-msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
-msgstr "J’ai fait tout mon possible pour tester cette campagne dans ses moindres recoins, mais il est possible qu’il reste quelques erreurs ou bug dans l’implantation. Si vous en trouvez, merci de me les signaler à [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) et je les corrigerai le plus rapidement possible."
-
-msgctxt "releaseNotes"
-msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
-msgstr "Également un plug-in convivial pour transférer les campagnes et les partager en utilisant votre compte Arkham Cards — cela permet à chacun de suivre plus facilement ses progrès tout en gérant son propre deck."
-
-msgctxt "releaseNotes"
-msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
-msgstr "Et, comme toujours, un grand merci à mes fans sur Patreon — J’apprécie votre soutien, qui permet de continuer à faire tourner les serveurs."
-
 msgctxt "trait"
 msgid "???"
 msgstr "???"
@@ -8426,6 +7791,729 @@ msgstr "Englouti"
 msgctxt "trait"
 msgid "Unlit"
 msgstr "Éteint"
+
+msgctxt "trait"
+msgid "Adrift"
+msgstr ""
+
+msgctxt "trait"
+msgid "Arkham?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Artifact"
+msgstr ""
+
+msgctxt "trait"
+msgid "Brand"
+msgstr ""
+
+msgctxt "trait"
+msgid "Completed"
+msgstr ""
+
+msgctxt "trait"
+msgid "Cretaceous"
+msgstr ""
+
+msgctxt "trait"
+msgid "Egypt"
+msgstr ""
+
+msgctxt "trait"
+msgid "France"
+msgstr ""
+
+msgctxt "trait"
+msgid "Glyph"
+msgstr ""
+
+msgctxt "trait"
+msgid "Headgear"
+msgstr ""
+
+msgctxt "trait"
+msgid "Incomplete"
+msgstr ""
+
+msgctxt "trait"
+msgid "Monsters"
+msgstr ""
+
+msgctxt "trait"
+msgid "Posture"
+msgstr ""
+
+msgctxt "trait"
+msgid "Prosthesis"
+msgstr ""
+
+msgctxt "trait"
+msgid "R'lyeh"
+msgstr ""
+
+msgctxt "trait"
+msgid "Rome"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sailor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Star Spawn"
+msgstr ""
+
+msgctxt "trait"
+msgid "Stowaway"
+msgstr ""
+
+msgctxt "trait"
+msgid "Student"
+msgstr ""
+
+msgctxt "trait"
+msgid "Symbiote"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tandem"
+msgstr ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr "${ investigator.name } est devenu <b>dément</b>."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr "${ investigator.name } a été <b>tué</b>."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
+msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(son choix)</i>."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
+msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
+msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.physical } traumatismes physiques."
+
+msgctxt "masculine"
+msgid "Alive"
+msgstr "Vivant"
+
+msgctxt "masculine"
+msgid "Resigned"
+msgstr "A abandonné"
+
+msgctxt "masculine"
+msgid "Defeated: physical trauma"
+msgstr "Vaincu : traumatisme physique"
+
+msgctxt "masculine"
+msgid "Defeated: mental trauma"
+msgstr "Vaincu : traumatisme mental"
+
+msgctxt "masculine"
+msgid "Defeated: no trauma"
+msgstr "Vaincu : aucun traumatisme"
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
+
+#, javascript-format
+msgctxt "masculine"
+msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "Si <i>${ card.name }</i> n'est pas inscrit sous la mention « ${ entry.section } » dans votre Carnet de Campagne."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "Si <i>${ card.name }</i> est inscrit sous la mention « ${ entry.section } » dans votre Carnet de Campagne."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] "Étant donné que ${ list } possède l'équipement ${ supplyName }, il doit lire <b>${ sectionName }</b>."
+msgstr[1] "Étant donné que ${ list } possèdent tous l'équipement ${ supplyName }, ils doivent lire <b>${ sectionName }</b>."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] "Étant donné que ${ list } ne possède pas d'équipement ${ supplyName }, il doit lire <b>${ sectionName }</b>."
+msgstr[1] "Étant donné que ${ list } ne possèdent pas d'équipement ${ supplyName }, il doivent lire <b>${ sectionName }</b>."
+
+msgctxt "masculine"
+msgid "Killed"
+msgstr "Tué"
+
+msgctxt "masculine"
+msgid "Insane"
+msgstr "Dément"
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr "${ investigator.name } est devenue <b>démente</b>."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr "${ investigator.name } a été <b>tuée</b>."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
+msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(son choix)</i>."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
+msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
+msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.physical } traumatismes physiques."
+
+msgctxt "feminine"
+msgid "Alive"
+msgstr "Vivante"
+
+msgctxt "feminine"
+msgid "Resigned"
+msgstr "A abandonné"
+
+msgctxt "feminine"
+msgid "Defeated: physical trauma"
+msgstr "Vaincue : traumatisme physique"
+
+msgctxt "feminine"
+msgid "Defeated: mental trauma"
+msgstr "Vaincue : traumatisme mental"
+
+msgctxt "feminine"
+msgid "Defeated: no trauma"
+msgstr "Vaincue : aucun traumatisme"
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
+
+#, javascript-format
+msgctxt "feminine"
+msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "Si <i>${ card.name }</i> n'est pas inscrite sous la mention '${ entry.section }' dans votre Carnet de Campagne."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "Si <i>${ card.name }</i> est inscrite sous la mention '${ entry.section }' dans votre Carnet de Campagne."
+
+msgctxt "feminine"
+msgid "Physical trauma"
+msgstr "Traumatisme physique"
+
+msgctxt "feminine"
+msgid "Mental trauma"
+msgstr "Traumatisme mental"
+
+msgctxt "feminine"
+msgid "Defeated"
+msgstr "Vaincue"
+
+#, javascript-format
+msgctxt "feminine"
+msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] "Étant donné que ${ list } possède l'équipement ${ supplyName }, elle doit lire <b>${ sectionName }</b>."
+msgstr[1] "Étant donné que ${ list } possèdent toutes l'équipement ${ supplyName }, elles doivent lire <b>${ sectionName }</b>."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] "Étant donné que ${ list } ne possède pas d'équipement ${ supplyName }, elle doit lire <b>${ sectionName }</b>."
+msgstr[1] "Étant donné que ${ list } ne possèdent pas d'équipement ${ supplyName }, elles doivent lire <b>${ sectionName }</b>."
+
+msgctxt "feminine"
+msgid "Killed"
+msgstr "Tuée"
+
+msgctxt "feminine"
+msgid "Insane"
+msgstr "Démente"
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr "${ investigator.name } est devenu <b>dément</b>."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr "${ investigator.name } a été <b>tué</b>."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
+msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(son choix)</i>."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
+msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
+msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.physical } traumatismes physiques."
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr "Vivant"
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr "Abandon"
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr "Vaincu : traumatisme physique"
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr "Vaincu : traumatisme mental"
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr "Vaincu : aucun traumatisme"
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } lit <b>${ sectionName }</b>"
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "Si <i>${ card.name }</i> n'est pas inscrit sous la mention « ${ entry.section } » dans votre Carnet de Campagne."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "Si <i>${ card.name }</i> est inscrit sous la mention « ${ entry.section } » dans votre Carnet de Campagne."
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr "Traumatisme physique"
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr "Traumatismes mentaux"
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr "Vaincu"
+
+msgctxt "nonbinary"
+msgid "Killed"
+msgstr "Tué"
+
+msgctxt "nonbinary"
+msgid "Insane"
+msgstr "Dément"
+
+msgctxt "Traits"
+msgid "All"
+msgstr "Tous"
+
+msgctxt "releaseNotes"
+msgid "Fan-made cards + Barkham Horror"
+msgstr "Cartes Fan-Made + Horreur à Warkham"
+
+msgctxt "releaseNotes"
+msgid "Starting with this release, there is a new setting to unlock some 'unofficial' content when searching for cards and building decks. While fan-made campaigns have been available for some time, the cards associated with them have not been searchable. To start, this includes the cards released as part of the <i>Barkham Horror</i> promotional set, as well as the excellent <i>Alice in Wonderland</i> campaign by The Beard."
+msgstr "Pour bien commencer, il y a un nouveau paramètre qui permet de déverrouiller du contenu \"non-officiel\" lorsque vous recherchez des cartes ou construisez des decks. Bien que les campagnes Fan-Made soient disponibles depuis un certain temps, les cartes qui y étaient associées ne pouvaient pas êtres recherchées à travers l'application. Nous avons commencé par inclure les cartes publiées dans le set promotionnel d'Horreur à Warkham, ainsi que l'excellente campagne <i>Alice in Wonderland</i> créée par The Beard."
+
+msgctxt "releaseNotes"
+msgid "- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app."
+msgstr "- Pour activer cette fonctionnalité, cochez simplement <b>Afficher les cartes Fan-Made</b> dans les <i>Paramètres</i>. Si le contenu Fan-Made ne vous intéresse pas, vous n'êtes pas obligé de changer quoi que ce soit, l'application ne l'affiche pas par défaut."
+
+msgctxt "releaseNotes"
+msgid "- Decks containing 'fan-made' cards (including <i>Barkham Horror</i>), cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, these custom cards will be hidden."
+msgstr "- Les decks contenant des cartes \"Fan-Made\" (incluant <i>Horreur à Warkham</i>) ne peuvent pas être transférés ou sauvegardés sur ArkhamDB. Quand vous modifierez un deck d'ArkhamDB, ces cartes personnalisées seront cachées."
+
+msgctxt "releaseNotes"
+msgid "- Fan-made cards are shown with a small watermark icon indicating what set they came from, so you can tell they are unofficial."
+msgstr "- Les cartes Fan-Made se distinguent par une petite icône inscrite à côté de leur titre, symbolisant le paquet duquel elles sont issues, afin d'indiquer qu'elles ne sont pas officielles."
+
+msgctxt "releaseNotes"
+msgid "Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
+msgstr "S'il y a du contenu Fan-Made que vous aimeriez voir dans l'application, faites-le moi savoir à [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
+
+msgctxt "releaseNotes"
+msgid "Campaign sharing released!"
+msgstr "Partage de campagne publié !"
+
+msgctxt "releaseNotes"
+msgid "At long last, the ability to share campaigns has been released on both iOS and Android! This has been one of the most requested features from the start, but as it required a completely new set of servers to be written (and paid for), it took me some time to get it right. You can of course continue using the app exactly as it is, but if you find yourself using multiple devices or want to share an in-progress campaign with friends so everyone can collaborate on it, this is the feature for you."
+msgstr "Enfin, la possibilité de partager des campagnes est sortie sur iOS et Android ! C'était l'une des fonctionnalités les plus demandées depuis le début, mais comme elle a nécessité l'écriture (et le paiement) d'un ensemble de serveurs complètement nouveau, il m'a fallu un certain temps pour y parvenir. Vous pouvez bien sûr continuer à utiliser l'application exactement comme elle est, mais si vous vous retrouvez à utiliser plusieurs appareils ou si vous voulez partager une campagne en cours avec des amis pour que tout le monde puisse collaborer, cette fonctionnalité est faite pour vous."
+
+msgctxt "releaseNotes"
+msgid "- First sign up for an <b>Arkham Cards</b> account via the <i>Settings</i> tab, to unlock these features. Don't forget to set your handle so your friends can find you on the app."
+msgstr "- Commencez par vous créer un compte <b>Arkham Cards</b> via l'onglet <i>Paramètres</i>, pour débloquer ces fonctionnalités. N'oubliez pas de définir votre identifiant pour que vos amis puissent vous retrouver sur l'application."
+
+msgctxt "releaseNotes"
+msgid "- On the main screen of every campaign (or when creating a new one), there is a new option to 'Upload' the campaign to the cloud. This will cause the campaign to be synced between all of your devices."
+msgstr "- Sur l'écran principal de chaque campagne (ou lors de la création d'une nouvelle campagne), il y a une nouvelle option pour \"Charger\" la campagne sur le cloud. Cela entraînera la synchronisation de la campagne entre tous vos appareils."
+
+msgctxt "releaseNotes"
+msgid "- After uploading the campaign, you'll find a new option on the campaign to <b>Edit players</b>. Simply select your friends and the campaign will pop up in their app as well."
+msgstr "- Après avoir chargé la campagne, vous trouverez une nouvelle option sur la campagne pour <b>Modifier les joueurs</b>. Il suffit de sélectionner vos amis et la campagne apparaîtra également dans leur application."
+
+msgctxt "releaseNotes"
+msgid "- Then just use the campaign as normal -- decisions and changes that you make will be synced automatically with everyone, including the chaos bag."
+msgstr "- Ensuite, il suffit d'utiliser la campagne comme d'habitude – les décisions et les changements que vous faites seront synchronisés automatiquement avec tout le monde, y compris la réserve du Chaos."
+
+msgctxt "releaseNotes"
+msgid "- If someone else saves your deck for you at the end of a scenario, you'll need to open the campaign to <b>Claim the previous scneario's XP</b> for yourself."
+msgstr "- Si quelqu'un d'autre sauvegarde votre deck pour vous à la fin d'un scénario, vous devrez ouvrir la campagne pour <b>Réclamer l'XP du scénario précédent</b> pour vous-même."
+
+msgctxt "releaseNotes"
+msgid "If you like to make changes to your decks on ArkhamDB as well as in the app, just pop open the app and make sure you see your latest deck updates there. After opening the app it should remain in sync, but if you use the app infrequently the ArkhamDB login might expire and need to be authorized."
+msgstr "Si vous aimez apporter des modifications à vos decks sur ArkhamDB ainsi que dans l'application, il suffit d'ouvrir l'application et de vous assurer que vous y voyez les dernières mises à jour de vos decks. Après l'ouverture de l'application, la synchronisation devrait être maintenue, mais si vous n'utilisez pas souvent l'application, le login ArkhamDB peut expirer et doit être autorisé."
+
+msgctxt "releaseNotes"
+msgid "Find overlap between decks"
+msgstr "Dépassements parmi les decks"
+
+msgctxt "releaseNotes"
+msgid "If you build decks for multiple players from a single card collection, this release is for you. By adding the decks to a shared campaign, the app will calculate which cards are included in too many decks (based on your collection)."
+msgstr "Si vous construisez des decks pour plusieurs joueurs depuis une seule collection de cartes, cette fonctionnalité est faite pour vous. Lorsque vous ajouterez les decks aux campagnes partagées, l'application calculera si trop de cartes ont été incluses dans les decks (en fonction de votre collection)."
+
+msgctxt "releaseNotes"
+msgid "If the deck has been added to a campaign, you'll also see this on the bottom of each deck in that campaign."
+msgstr "Si le deck a été ajouté à une campagne, vous verrez aussi ceci en dessous de chaque deck de la campagne."
+
+msgctxt "releaseNotes"
+msgid "Edge of the Earth campaign is now out"
+msgstr "La campagne Aux Confins de la Terre est maintenant disponible"
+
+msgctxt "releaseNotes"
+msgid "The full setup instructions for Edge of the Earth campaigns are now available in the app! This was the largest single drop of campaign content in the history of the game and a large group of volunteers helped prepare the story text so I could focus on the new mechanics to get this out as close to release date as possible."
+msgstr "Toutes les instructions de mise en place de la campagne Aux Confins de la Terre sont maintenant disponibles dans l'application ! Cela a été la campagne qui a demandé la plus grande quantité de travail de l'histoire de la création du jeu. Un énorme groupe de volontaires a aidé à préparer les textes d'histoire afin que je puisse me focaliser sur les nouvelles mécaniques de jeu et rendre cela accessible au plus tôt après sa sortie."
+
+msgctxt "releaseNotes"
+msgid "Frost tokens ([frost]) are also now available in the digital chaos bags for all Edge of the Earth campaigns."
+msgstr "Les pions Gel ([frost]) sont maintenant aussi disponibles dans la réserve du Chaos digitale pour toute la campagne Aux Confins de la Terre."
+
+msgctxt "releaseNotes"
+msgid "Stay warm out there!"
+msgstr "N'attrapez pas froid !"
+
+msgctxt "releaseNotes"
+msgid "Newly designed chaos odds calculator"
+msgstr "Un calculateur de probabilités tout récemment conçu"
+
+msgctxt "releaseNotes"
+msgid "<center>\"Never tell me the odds!\" - Han Solo</center>"
+msgstr "<center>« Tu sais, moi et les probabilités… » - Han Solo</center>"
+
+msgctxt "releaseNotes"
+msgid "Sorry Han, this isn't the feature for you. When it came time to try to work [bless] and [curse] tokens into the existing odds calculator, this app's visual designer (Eugene Sarnetsky) worked hard to reimagine how to present the mathy information in a more intuitive and visual manner."
+msgstr "Désolé Han, cet outil n'est pas pour toi. Quand arriva le temps d'essayer d'ajouter les pions [bless] et [curse] au calculateur de probabilités déjà existant, le responsable de l'aspect visuel de l'application (Eugene Sarnetsky) a travaillé dur pour repenser la manière dont sont présentées les statistiques mathématiques pour que ce soit plus intuitif et agréable, visuellement parlant."
+
+msgctxt "releaseNotes"
+msgid "As you can see below, the results are incredible:"
+msgstr "Comme vous pouvez le voir ci-dessous, les résultats sont impressionnants :"
+
+msgctxt "releaseNotes"
+msgid "In addition to giving you the numeric pass/fail rate as before, the new visual stacking of tokens based on their current modifiers lets you quickly intuit how much you stand to gain with an extra +1 to your skill value, without having to mess with the difficulty controls at all."
+msgstr "En plus de vous donner le taux de réussite/échec comme avant, le nouveau système de regroupement de pions basé sur leurs modificateurs vous permet de rapidement savoir si un bonus de +1 à votre valeur de compétence ferait la différence, tout cela sans avoir à mettre les mains dans les contrôles de difficulté de test."
+
+msgctxt "releaseNotes"
+msgid "You'll also see small bands of color to represent [bless] and [curse] worked into the display. These are spaced to show how much your odds of passing changes if you draw a single [bless] or [curse] token: in the above picture a single [curse] token draw will cause 47% of the tokens in the bag to now result in a failure -- not great!"
+msgstr "Vous verrez aussi de petites lignes colorées qui représentent visuellement l'incidence des pions [bless] et [curse]. Elles sont espacées en fonction des changements de probabilités de réussite que la pioche d'un pion [bless] ou [curse] apportera : sur l'image ci-dessus, on voit que 47% des pions Chaos vous feront échouer à votre test après la pioche d'un seul pion [curse] -- pas génial !"
+
+msgctxt "releaseNotes"
+msgid "Down below you can also see the odds of drawing a [bless]/[curse] token based on the current bag contents. Here the adjustment to your success odds is shown as a range, the first number being drawing one token, the second if you were to draw multiple."
+msgstr "Un peu plus bas, vous pouvez aussi voir les probabilités de piocher un pion [bless]/[curse] selon le contenu de la réserve du Chaos actuelle. Ici, l'ajustement de vos probabilités de réussite est affichée sous forme d'intervalle : le premier nombre est le cas où vous piochez un seul de ces pions, et le second est le cas où vous en piochez plusieurs."
+
+msgctxt "releaseNotes"
+msgid "Support for fan-made campaigns"
+msgstr "Prise en charge des campagnes Fan-Made"
+
+msgctxt "releaseNotes"
+msgid "Did you know that this game has a thriving community of homebrew content creators? Well it does, and starting today, you'll start to find some of these campaigns and side-scenarios in the app."
+msgstr "Saviez-vous que ce jeu a une communauté qui regorge de créateurs de contenus faits maison ? Maintenant, oui ! Et à partir d'aujourd'hui, vous pourrez trouver certaines campagnes qui en sont issues ainsi que des scénarios indépendants dans l'application."
+
+msgctxt "releaseNotes"
+msgid "Adding more campaigns will be an ongoing effort, but as of now we the following campaigns are available:"
+msgstr "L'ajout de campagnes supplémentaires nous demandera un effort continu, mais voici les campagnes qui sont déjà disponibles :"
+
+msgctxt "releaseNotes"
+msgid "- Alice in Wonderland by The Beard"
+msgstr "- Alice in Wonderland, créée par The Beard"
+
+msgctxt "releaseNotes"
+msgid "- Dark Matter by Axolotl"
+msgstr "- Dark Matter, créée par Axolotl"
+
+msgctxt "releaseNotes"
+msgid "- Crown of Egil by The Mad Juggler"
+msgstr "- Crown of Egil, créée par The Mad Juggler"
+
+msgctxt "releaseNotes"
+msgid "- Call of the Plaguebearer by Walker Graves"
+msgstr "- Call of the Plaguebearer, créée par Walker Graves"
+
+msgctxt "releaseNotes"
+msgid "As for standalone scenarios:"
+msgstr "Quant aux scénarios indépendants :"
+
+msgctxt "releaseNotes"
+msgid "- Consternation on the Constellation - by The Mythos Busters"
+msgstr "- Consternation on the Constellation, créé par The Mythos Busters"
+
+msgctxt "releaseNotes"
+msgid "If you are a content creator who is interested in getting your (completed) campaign into the app, you can reach me at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
+msgstr "Si vous êtes un créateur de contenu personnalisé et que vous souhaitez intégrer votre campagne (achevée) à l'application, contactez-moi à [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
+
+msgctxt "releaseNotes"
+msgid "Drafting player decks"
+msgstr "Tirage des decks des joueurs"
+
+msgctxt "releaseNotes"
+msgid "As a follow up to the earlier Ultimatum of Chaos release, the app now supports building a deck via a set of drafting rules. Choose what packs you want to pull from and how big each draft 'hand' should be, and build your deck one card at a time."
+msgstr "Dans le prolongement de la version précédente de l'Ultimatum du Chaos, l'application permet désormais de construire un deck via un ensemble de règles de tirage. Choisissez les paquets dans lesquels vous voulez puiser et la taille de chaque « main » de tirage, et construisez votre deck une carte à la fois."
+
+msgctxt "releaseNotes"
+msgid "- You can find this feature on the deck edit screen in the menu."
+msgstr "- Vous pouvez trouver cette fonction sur l'écran d'édition du deck dans le menu."
+
+msgctxt "releaseNotes"
+msgid "- Only level cards / decks can be drafted."
+msgstr "- Seules les cartes / decks de niveau 0 peuvent être tirés."
+
+msgctxt "releaseNotes"
+msgid "- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release."
+msgstr "- Compte tenu de leurs restrictions uniques en matière de construction de deck, l'application ne permet pas encore de générer des decks aléatoires pour Lola Hayes ou Joe Diamond. C'est un point que j'essaierai de régler dans une prochaine version."
+
+msgctxt "releaseNotes"
+msgid "Ultimatum of Chaos"
+msgstr "Ultimatum du Chaos"
+
+msgctxt "releaseNotes"
+msgid "The app now supports building random decks following the steps set out by the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new option lets you choose a 'special deck', which can be used to either create the FFG suggested starter deck or a fully randomly generated one."
+msgstr "L'application permet désormais de construire des decks aléatoires en suivant les étapes définies par la règle optionnelle « Ultimatum du Chaos ». Lors de la construction d'un nouveau deck, une nouvelle option vous permet de choisir un « deck spécial », qui peut être utilisée soit pour créer le deck de démarrage suggéré par FFG, soit un deck généré de manière entièrement aléatoire."
+
+msgctxt "releaseNotes"
+msgid "- The app will use your defined collection to try to generate the deck."
+msgstr "- L'application utilisera votre collection définie pour essayer de générer le deck."
+
+msgctxt "releaseNotes"
+msgid "- Support the deckbuilding focused permanents included in the Edge of the Earth Investigator expansion (Underworld Support/Forced Learning)."
+msgstr "- Prend en charge les cartes permanentes axées sur la Construction du Deck dans l'Extension Investigateurs de la campagne Aux Confins de la Terre (Soutien de la Pègre/Apprentissage Forcé)."
+
+msgctxt "releaseNotes"
+msgid "- Shows the deck before you actully save it, so you can re-roll if it produced something particularly unviable."
+msgstr "- Affiche le deck avant de le sauvegarder, pour pouvoir recommencer s'il a produit quelque chose de non viable."
+
+msgctxt "releaseNotes"
+msgid "Note: You might need to refresh the cards once (using <b>Check for card updates</b>)."
+msgstr "Note : vous devrez peut-être rafraîchir les cartes une fois (en appuyant sur <b>Mettre à jour les cartes</b>)."
+
+msgctxt "releaseNotes"
+msgid "Settings synchronization"
+msgstr "Synchronisation des paramètres"
+
+msgctxt "releaseNotes"
+msgid "Good news for players who use Arkham Cards with more than one device, if you sign into your Arkham Cards account your settings will now sync between devices automatically!"
+msgstr "Bonne nouvelle pour les joueurs qui utilisent Arkham Cards avec plus d'un appareil, si vous vous connectez à votre compte Arkham Cards, vos paramètres se synchroniseront désormais automatiquement entre les appareils !"
+
+msgctxt "releaseNotes"
+msgid "- This includes your collection + spoiler settings, as well as many general app preferences."
+msgstr "- Cela inclut vos paramètres de collection et de spoiler, ainsi que de nombreuses préférences générales de l'application."
+
+msgctxt "releaseNotes"
+msgid "I've had some reports of slower performance on some devices, and have a new <i>\"Low Memory Mode\"</i> setting to try out."
+msgstr "J'ai reçu des rapports faisant état de performances plus lentes sur certains appareils, et j'ai un nouveau paramètre <i>\"Mode mémoire faible\"</i> à tester."
+
+msgctxt "releaseNotes"
+msgid "- If you've been experiencing slow app behavior in anyway, please try it out."
+msgstr "- Si le comportement de l'application est lent, essayez-le."
+
+msgctxt "releaseNotes"
+msgid "- And if you try it out, send me an email at arkhamcards@gmail.com, I would love to hear how it is working in the wild."
+msgstr "- Et si vous l'essayez, envoyez-moi un courriel à arkhamcards@gmail.com, j'adorerais savoir comment il fonctionne en pratique."
+
+msgctxt "releaseNotes"
+msgid "BTW, support for the newly announced mechanic from The Scarlet Keys is in the works, so stay tuned."
+msgstr "La prise en charge de la mécanique récemment annoncée des « Clefs Écarlates » est en progrès, alors restez à l'écoute."
+
+msgctxt "releaseNotes"
+msgid "Cyclopean Foundations"
+msgstr "Cyclopean Foundations"
+
+msgctxt "releaseNotes"
+msgid "This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard."
+msgstr "Cette version ajoute la campagne Cyclopean Foundations de The Beard, récemment réalisée par des fans."
+
+msgctxt "releaseNotes"
+msgid "- Includes a fully guided mode, with all setup and resolution text accounted for."
+msgstr "- Comprend un mode entièrement guidé, avec tous les textes de configuration et de résolution pris en compte."
+
+msgctxt "releaseNotes"
+msgid "This update also adds support for \"The Colour Out of Space\", a fan-made standalone scenario."
+msgstr "Cette mise à jour ajoute également la prise en charge de « La Couleur Tombée du Ciel », un scénario indépendant créé par un fan."
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr "Avant-premières des cartes"
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr "Cette version introduit un accès plus rapide aux avant-premières des cartes."
+
+msgctxt "releaseNotes"
+msgid "- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys investigator expansion."
+msgstr "- Comprend les cartes <b>Personnalisables</b> en avant-première de l'Extension Investigateurs pour Les Clefs Écarlates."
+
+msgctxt "releaseNotes"
+msgid "- In order to maintain compatibility with ArkhamDB, these cards are not shown by default. You can opt into them by enabling the <b>Show Fan-made cards</b> under <i>Settings</i>."
+msgstr "- Afin de maintenir la compatibilité avec ArkhamDB, ces cartes ne sont pas affichées par défaut. Vous pouvez les afficher en activant l'option <b>Afficher les cartes Fan-Made</b> sous <i>Paramètres</i>."
+
+msgctxt "releaseNotes"
+msgid "The Scarlet Keys Campaign"
+msgstr "Campagne - Les Clefs Écarlates"
+
+msgctxt "releaseNotes"
+msgid "This release adds support for the newly released Scarlet Keys campaign expansion."
+msgstr "Cette version ajoute la prise en charge de la toute nouvelle extension de campagne Les Clefs Écarlates."
+
+msgctxt "releaseNotes"
+msgid "- As you may know (or will soon find out), this is by far the most ambitious campaign we've ever seen in Arkham. I've done my best to handle the new features as faithfully as I can in the app, and am pretty pleased with the implementation."
+msgstr "- Comme vous le savez peut-être (ou le découvrirez bientôt), cette campagne est de loin la plus ambitieuse que nous ayons jamais vue à Arkham. J'ai fait de mon mieux pour gérer les nouvelles fonctionnalités aussi fidèlement que possible dans l'application, et je suis plutôt satisfait de la mise en œuvre."
+
+msgctxt "releaseNotes"
+msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still - if you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will try to fix them as quickly as possible. But given the expansive nature of the campaign, it is possible in a worst case scenario that some progress might need to be re-entered."
+msgstr "- J'ai fait de mon mieux pour tester les recoins de cette campagne, mais il est tout à fait possible qu'il y ait encore quelques erreurs ou bugs dans la réalisation - si vous en trouvez, faites-le moi savoir à [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) et j'essaierai de les corriger aussi vite que possible. Mais étant donné la nature expansive de la campagne, il est possible, dans le pire des cas, que certains développements doivent être réintroduits."
+
+msgctxt "releaseNotes"
+msgid "- I've also taken the liberty of including some small story reminders when map locations become unlocked through the course of play. I tried my best to capture the story text, and hope you find it helpful (in case like me you sometimes go weeks between game sessions)."
+msgstr "- J'ai également pris la liberté d'inclure quelques petits rappels d'histoire lorsque des emplacements de cartes se débloquent au cours du jeu. J'ai fait de mon mieux pour retranscrire le texte de l'histoire, et j'espère que vous le trouverez utile (au cas où, comme moi, il vous arrive de passer des semaines entre deux sessions de jeu)."
+
+msgctxt "releaseNotes"
+msgid "As always, many thanks to my many supporters on Patreon -- I appreciate your support which helps make all of this possible."
+msgstr "Comme toujours, un grand merci à mes nombreux soutiens sur Patreon -- j'apprécie votre soutien qui permet de rendre tout cela possible."
+
+msgctxt "releaseNotes"
+msgid "Feast of Hemlock Vale Campaign"
+msgstr "Campagne - Le Festin de Hemlock Vale"
+
+msgctxt "releaseNotes"
+msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
+msgstr "Cette version ajoute la prise en charge de la toute nouvelle extension de campagne Le Festin de Hemlock Vale."
+
+msgctxt "releaseNotes"
+msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
+msgstr "J’ai fait tout mon possible pour tester cette campagne dans ses moindres recoins, mais il est possible qu’il reste quelques erreurs ou bug dans l’implantation. Si vous en trouvez, merci de me les signaler à [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) et je les corrigerai le plus rapidement possible."
+
+msgctxt "releaseNotes"
+msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
+msgstr "Également un plug-in convivial pour transférer les campagnes et les partager en utilisant votre compte Arkham Cards — cela permet à chacun de suivre plus facilement ses progrès tout en gérant son propre deck."
+
+msgctxt "releaseNotes"
+msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
+msgstr "Et, comme toujours, un grand merci à mes fans sur Patreon — J’apprécie votre soutien, qui permet de continuer à faire tourner les serveurs."
 
 #, javascript-format
 msgctxt "filter"

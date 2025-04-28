@@ -6277,663 +6277,6 @@ msgctxt "slots"
 msgid "None"
 msgstr "Нет"
 
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } <b>сошёл с ума</b>."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } is <b>killed</b>."
-msgstr "Сыщик ${ investigator.name } <b>убит</b>."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr "${ investigator.name } получает 1 физическую или ментальную травму <i>(на ваш выбор)</i>."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
-msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
-msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } heals ${ mental } mental trauma."
-msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } вылечивает ${ mental } ментальную травму."
-msgstr[1] "${ investigator.name } вылечивает ${ mental } ментальную травму."
-msgstr[2] "${ investigator.name } вылечивает ${ mental } ментальную травму."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную травму."
-msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную травму."
-msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную травму."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } heals ${ physical } physical trauma."
-msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } вылечивает ${ physical } физическую травму."
-msgstr[1] "${ investigator.name } вылечивает ${ physical } физическую травму."
-msgstr[2] "${ investigator.name } вылечивает ${ physical } физическую травму."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } получает ${ effect.physical } физическую травму."
-msgstr[1] "${ investigator.name } получает ${ effect.physical } физическую травму."
-msgstr[2] "${ investigator.name } получает ${ effect.physical } физическую травму."
-
-msgctxt "masculine"
-msgid "Alive"
-msgstr "Жив"
-
-msgctxt "masculine"
-msgid "Resigned"
-msgstr "Совершил побег"
-
-msgctxt "masculine"
-msgid "Defeated: physical trauma"
-msgstr "Побеждён: физическая травма"
-
-msgctxt "masculine"
-msgid "Defeated: mental trauma"
-msgstr "Побеждён: ментальная травма"
-
-msgctxt "masculine"
-msgid "Defeated: no trauma"
-msgstr "Побеждён: без травмы"
-
-#, javascript-format
-msgctxt "masculine"
-msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "masculine"
-msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "<i>${ card.name }</i> не записан в графе «${ entry.section }» журнала кампании."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "<i>${ card.name }</i> записан в графе «${ entry.section }» журнала кампании."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgstr[0] "Поскольку ${ supplyName } есть у ${ list }, этот сыщик читает <b>${ sectionName }</b>."
-msgstr[1] "Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
-msgstr[2] "Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
-
-#, javascript-format
-msgctxt "masculine"
-msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgstr[0] "Поскольку ${ supplyName } отсутствует у ${ list }, этот сыщик читает <b>${ sectionName }</b>."
-msgstr[1] "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
-msgstr[2] "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
-
-msgctxt "masculine"
-msgid "Killed"
-msgstr "Убит"
-
-msgctxt "masculine"
-msgid "Insane"
-msgstr "Сошёл с ума"
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } <b>сошла с ума</b>."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } is <b>killed</b>."
-msgstr "Сыщик ${ investigator.name } <b>убита</b>."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr "${ investigator.name } получает 1 физическую или ментальную травму <i>(на ваш выбор)</i>."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
-msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
-msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } heals ${ mental } mental trauma."
-msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } вылечивает ${ mental } ментальную травму."
-msgstr[1] "${ investigator.name } вылечивает ${ mental } ментальную травму."
-msgstr[2] "${ investigator.name } вылечивает ${ mental } ментальную травму."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную травму."
-msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную травму."
-msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную травму."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } heals ${ physical } physical trauma."
-msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } вылечивает ${ physical } физическую травму."
-msgstr[1] "${ investigator.name } вылечивает ${ physical } физическую травму."
-msgstr[2] "${ investigator.name } вылечивает ${ physical } физическую травму."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } получает ${ effect.physical } физическую травму."
-msgstr[1] "${ investigator.name } получает ${ effect.physical } физическую травму."
-msgstr[2] "${ investigator.name } получает ${ effect.physical } физическую травму."
-
-msgctxt "feminine"
-msgid "Alive"
-msgstr "Жива"
-
-msgctxt "feminine"
-msgid "Resigned"
-msgstr "Совершила побег"
-
-msgctxt "feminine"
-msgid "Defeated: physical trauma"
-msgstr "Побеждена: физическая травма"
-
-msgctxt "feminine"
-msgid "Defeated: mental trauma"
-msgstr "Побеждена: ментальная травма"
-
-msgctxt "feminine"
-msgid "Defeated: no trauma"
-msgstr "Побеждена: без травмы"
-
-#, javascript-format
-msgctxt "feminine"
-msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "feminine"
-msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "<i>${ card.name }</i> не записана в графе «${ entry.section }» журнала кампании."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "<i>${ card.name }</i> записана в графе «${ entry.section }» журнала кампании."
-
-msgctxt "feminine"
-msgid "Physical trauma"
-msgstr "Физическая травма"
-
-msgctxt "feminine"
-msgid "Mental trauma"
-msgstr "Ментальная травма"
-
-msgctxt "feminine"
-msgid "Defeated"
-msgstr "Побеждена"
-
-#, javascript-format
-msgctxt "feminine"
-msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgstr[0] "Поскольку ${ supplyName } есть у ${ list }, этот сыщик читает <b>${ sectionName }</b>."
-msgstr[1] "Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
-msgstr[2] "Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
-
-#, javascript-format
-msgctxt "feminine"
-msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
-msgstr[0] "Поскольку ${ supplyName } отсутствует у ${ list }, этот сыщик читает <b>${ sectionName }</b>."
-msgstr[1] "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
-msgstr[2] "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
-
-msgctxt "feminine"
-msgid "Killed"
-msgstr "Убита"
-
-msgctxt "feminine"
-msgid "Insane"
-msgstr "Сошла с ума"
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } <b>сошёл с ума</b>."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } is <b>killed</b>."
-msgstr "Сыщик ${ investigator.name } <b>убит</b>."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr "${ investigator.name } получает 1 физическую или ментальную травму <i>(на ваш выбор)</i>."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
-msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
-msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } heals ${ mental } mental trauma."
-msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } вылечивает ${ mental } ментальную травму."
-msgstr[1] "${ investigator.name } вылечивает ${ mental } ментальную травму."
-msgstr[2] "${ investigator.name } вылечивает ${ mental } ментальную травму."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную травму."
-msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную травму."
-msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную травму."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } heals ${ physical } physical trauma."
-msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } вылечивает ${ physical } физическую травму."
-msgstr[1] "${ investigator.name } вылечивает ${ physical } физическую травму."
-msgstr[2] "${ investigator.name } вылечивает ${ physical } физическую травму."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } получает ${ effect.physical } физическую травму."
-msgstr[1] "${ investigator.name } получает ${ effect.physical } физическую травму."
-msgstr[2] "${ investigator.name } получает ${ effect.physical } физическую травму."
-
-msgctxt "nonbinary"
-msgid "Alive"
-msgstr "Жив"
-
-msgctxt "nonbinary"
-msgid "Resigned"
-msgstr "Совершил побег"
-
-msgctxt "nonbinary"
-msgid "Defeated: physical trauma"
-msgstr "Побеждён: физическая травма"
-
-msgctxt "nonbinary"
-msgid "Defeated: mental trauma"
-msgstr "Побеждён: ментальная травма"
-
-msgctxt "nonbinary"
-msgid "Defeated: no trauma"
-msgstr "Побеждён: без травмы"
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "${ investigator.name } reads <b>${ sectionName }</b>"
-msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "<i>${ card.name }</i> не записан в графе «${ entry.section }» журнала кампании."
-
-#, javascript-format
-msgctxt "nonbinary"
-msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
-msgstr "<i>${ card.name }</i> записан в графе «${ entry.section }» журнала кампании."
-
-msgctxt "nonbinary"
-msgid "Physical trauma"
-msgstr "Физическая травма"
-
-msgctxt "nonbinary"
-msgid "Mental trauma"
-msgstr "Ментальная травма"
-
-msgctxt "nonbinary"
-msgid "Defeated"
-msgstr "Побеждён"
-
-msgctxt "nonbinary"
-msgid "Killed"
-msgstr "Сошёл с ума"
-
-msgctxt "nonbinary"
-msgid "Insane"
-msgstr "Убит"
-
-msgctxt "Traits"
-msgid "All"
-msgstr "Все"
-
-msgctxt "releaseNotes"
-msgid "Fan-made cards + Barkham Horror"
-msgstr "Фанатские сценарии + Ужас Гавкхэма"
-
-msgctxt "releaseNotes"
-msgid "Starting with this release, there is a new setting to unlock some 'unofficial' content when searching for cards and building decks. While fan-made campaigns have been available for some time, the cards associated with them have not been searchable. To start, this includes the cards released as part of the <i>Barkham Horror</i> promotional set, as well as the excellent <i>Alice in Wonderland</i> campaign by The Beard."
-msgstr "Начиная с этого обновления мы будем добавлять в приложение карты из неофициальных (и официальных, но «неканоничных») дополнений. Они будут доступны в поиске и при составлении колод. Для начала мы добавили карты из дополнения <i>«Ужас Гавкхэма» (Barkham Horror)</i> и из фанатского дополнения <i>«Алиса в стране чудес»</i> за авторством The Beard."
-
-msgctxt "releaseNotes"
-msgid "- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app."
-msgstr "- Чтобы увидеть эти карты в списке, поставьте галочку напротив пункта «Неканоничные карты» в Настройках. Если вас не интересует фанатский контент, то не надо ничего предпринимать, и вы их не увидите."
-
-msgctxt "releaseNotes"
-msgid "- Decks containing 'fan-made' cards (including <i>Barkham Horror</i>), cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, these custom cards will be hidden."
-msgstr "- Колоды с неканоничными картами (в том числе из «Ужаса Гавкхэма») нельзя загружать на ArkhamDB. При редактировании колод с ArkhamDB эти карты также будут скрыты."
-
-msgctxt "releaseNotes"
-msgid "- Fan-made cards are shown with a small watermark icon indicating what set they came from, so you can tell they are unofficial."
-msgstr "- Неканоничные карты отображаются в приложении символом соответствующего дополнения, чтобы вы могли отличить их от официальных."
-
-msgctxt "releaseNotes"
-msgid "Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
-msgstr "Если у вас есть фанатский сценарий, который вы хотели бы увидеть в приложении, напишите на [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
-
-msgctxt "releaseNotes"
-msgid "Campaign sharing released!"
-msgstr "Совместные кампании"
-
-msgctxt "releaseNotes"
-msgid "At long last, the ability to share campaigns has been released on both iOS and Android! This has been one of the most requested features from the start, but as it required a completely new set of servers to be written (and paid for), it took me some time to get it right. You can of course continue using the app exactly as it is, but if you find yourself using multiple devices or want to share an in-progress campaign with friends so everyone can collaborate on it, this is the feature for you."
-msgstr "Наконец-то возможность подключить своих друзей к кампании доступна и на iOS, и на Андроиде! Об этом функционале просили давно и настойчиво, но поскольку он требовал настроить, написать и оплатить выделенный сервер, на его качественную реализацию потребовалось какое-то время. Разумеется, вы можете продолжить пользоваться приложением как привыкли, но если вы пользуетесь несколькими устройствами или хотите подключить к кампании своих друзей, чтобы каждый мог редактировать свою колоду или пользоваться общим мешком, то эта функция для вас."
-
-msgctxt "releaseNotes"
-msgid "- First sign up for an <b>Arkham Cards</b> account via the <i>Settings</i> tab, to unlock these features. Don't forget to set your handle so your friends can find you on the app."
-msgstr "- Первым делом создайте учётную запись <b>Arkham Cards</b> в Настройках — это откроет вам доступ к функциям Совместных кампаний. Не забудьте задать своё имя пользователя, чтобы ваши друзья смогли найти вас."
-
-msgctxt "releaseNotes"
-msgid "- On the main screen of every campaign (or when creating a new one), there is a new option to 'Upload' the campaign to the cloud. This will cause the campaign to be synced between all of your devices."
-msgstr "- На главном экране вашей кампании (или при её создании) вы увидите кнопку, позволяющую «Загрузить» вашу кампанию на сервер. После этого вы сможете синхронизировать данные и состояние кампании между всеми вашими устройствами."
-
-msgctxt "releaseNotes"
-msgid "- After uploading the campaign, you'll find a new option on the campaign to <b>Edit players</b>. Simply select your friends and the campaign will pop up in their app as well."
-msgstr "- После загрузки на сервер вы увидите новую функцию — <b>«Добавить/удалить игроков»</b>. Выберите друзей из списка, и они увидят эту кампанию в своём приложении."
-
-msgctxt "releaseNotes"
-msgid "- Then just use the campaign as normal -- decisions and changes that you make will be synced automatically with everyone, including the chaos bag."
-msgstr "- Играйте как обычно — ваши решения и изменения в кампании, включая состав и состояние мешка хаоса, синхронизируются между всеми участниками кампании."
-
-msgctxt "releaseNotes"
-msgid "- If someone else saves your deck for you at the end of a scenario, you'll need to open the campaign to <b>Claim the previous scneario's XP</b> for yourself."
-msgstr "- Если кто-то другой применит изменения к вашей колоде в конце сценария, вам будет нужно открыть приложение и самостоятельно <b>Получить опыт за пройденный сценарий</b>."
-
-msgctxt "releaseNotes"
-msgid "If you like to make changes to your decks on ArkhamDB as well as in the app, just pop open the app and make sure you see your latest deck updates there. After opening the app it should remain in sync, but if you use the app infrequently the ArkhamDB login might expire and need to be authorized."
-msgstr "Если вы хотите отредактировать свою колоду не только в приложении, но и на ArkhamDB, откройте приложение и убедитесь, что в нём все ваши колоды актуальны. После открытия приложения колоды должны будут синхронизироваться и оставаться актуальными, но если вы используете приложение нечасто, вам может понадобиться заново войти в ArkhamDB через приложение."
-
-msgctxt "releaseNotes"
-msgid "Find overlap between decks"
-msgstr "Пересечения коллекции"
-
-msgctxt "releaseNotes"
-msgid "If you build decks for multiple players from a single card collection, this release is for you. By adding the decks to a shared campaign, the app will calculate which cards are included in too many decks (based on your collection)."
-msgstr "Если вы составляете колоды на нескольких игроков из одной коллекции карт, то это обновление для вас. Привяжите несколько колод к кампании — и приложение покажет, каких карт в колодах больше, чем у вас в коллекции."
-
-msgctxt "releaseNotes"
-msgid "If the deck has been added to a campaign, you'll also see this on the bottom of each deck in that campaign."
-msgstr "Если колода привязана к кампании, то при просмотре её состава вы также найдёте список пересекающихся карт в конце перечня карт."
-
-msgctxt "releaseNotes"
-msgid "Edge of the Earth campaign is now out"
-msgstr "«На краю земли» уже в приложении"
-
-msgctxt "releaseNotes"
-msgid "The full setup instructions for Edge of the Earth campaigns are now available in the app! This was the largest single drop of campaign content in the history of the game and a large group of volunteers helped prepare the story text so I could focus on the new mechanics to get this out as close to release date as possible."
-msgstr "Полный путеводитель по кампании «На краю земли» уже в приложении! "
-
-msgctxt "releaseNotes"
-msgid "Frost tokens ([frost]) are also now available in the digital chaos bags for all Edge of the Earth campaigns."
-msgstr "Жетоны мороза ([frost]) доступны в цифровом мешке хаоса для всех сценариев кампании."
-
-msgctxt "releaseNotes"
-msgid "Stay warm out there!"
-msgstr "Русскоязычная озвучка тоже в работе и появится в приложении к концу октября."
-
-msgctxt "releaseNotes"
-msgid "Newly designed chaos odds calculator"
-msgstr "Обновлённый калькулятор вероятностей"
-
-msgctxt "releaseNotes"
-msgid "<center>\"Never tell me the odds!\" - Han Solo</center>"
-msgstr "<center>«Никогда не говори мне о шансах!» — Хан Соло</center>"
-
-msgctxt "releaseNotes"
-msgid "Sorry Han, this isn't the feature for you. When it came time to try to work [bless] and [curse] tokens into the existing odds calculator, this app's visual designer (Eugene Sarnetsky) worked hard to reimagine how to present the mathy information in a more intuitive and visual manner."
-msgstr "Прости, Хан, это обновление не для тебя. Когда пришло время научить прежний калькулятор вероятностей переваривать жетоны [bless] и [curse], визуальному дизайнеру этого приложения (Евгению Сарнецкому) пришлось засучить рукава, чтобы представить сухие цифры в интуитивно понятной форме."
-
-msgctxt "releaseNotes"
-msgid "As you can see below, the results are incredible:"
-msgstr "Как видите, труд принёс плоды:"
-
-msgctxt "releaseNotes"
-msgid "In addition to giving you the numeric pass/fail rate as before, the new visual stacking of tokens based on their current modifiers lets you quickly intuit how much you stand to gain with an extra +1 to your skill value, without having to mess with the difficulty controls at all."
-msgstr "Жетоны представлены в виде стопок, отсортированных по текущему значению модификатора. Такое представление позволяет легко визуально оценить, насколько выгодно вам будет добавить +1 в навыку в проверке, не вынуждая лишний раз тыкать в счётчики навыка и сложности."
-
-msgctxt "releaseNotes"
-msgid "You'll also see small bands of color to represent [bless] and [curse] worked into the display. These are spaced to show how much your odds of passing changes if you draw a single [bless] or [curse] token: in the above picture a single [curse] token draw will cause 47% of the tokens in the bag to now result in a failure -- not great!"
-msgstr "А тонкие разделительные линии показывают эффект жетонов [bless] и [curse]. Каждая такая линия — это место, куда сдвинется грань между успехом и провалом после каждого такого жетона. В примере на скриншоте всего один жетон [curse] превратит 47% жетонов в мешке из успешных в провальные — неприятная ситуация!"
-
-msgctxt "releaseNotes"
-msgid "Down below you can also see the odds of drawing a [bless]/[curse] token based on the current bag contents. Here the adjustment to your success odds is shown as a range, the first number being drawing one token, the second if you were to draw multiple."
-msgstr "Ниже также указана вероятность вытянуть [bless]/[curse] при текущем составе мешка. Влияние этих жетонов на ваши шансы показаны диапазоном, в котором первое число — изменение шансов при вытягивании одного такого жетона, а второе — при вытягивании нескольких."
-
-msgctxt "releaseNotes"
-msgid "Support for fan-made campaigns"
-msgstr "Поддержка фанатского контента"
-
-msgctxt "releaseNotes"
-msgid "Did you know that this game has a thriving community of homebrew content creators? Well it does, and starting today, you'll start to find some of these campaigns and side-scenarios in the app."
-msgstr "Знаете ли вы, что у этой игры есть активное сообщество разработчиков фанатского контента? Ну вот теперь знаете, а с сегодняшнего дня вы сможете найти некоторые их творения в приложении."
-
-msgctxt "releaseNotes"
-msgid "Adding more campaigns will be an ongoing effort, but as of now we the following campaigns are available:"
-msgstr "Со временем мы будем добавлять больше контента и постепенно постараемся перевести его на русский язык, а прямо сейчас доступны кампании на английском:"
-
-msgctxt "releaseNotes"
-msgid "- Alice in Wonderland by The Beard"
-msgstr "— Alice in Wonderland (автор: The Beard)"
-
-msgctxt "releaseNotes"
-msgid "- Dark Matter by Axolotl"
-msgstr "— Dark Matter (автор: Axolotl)"
-
-msgctxt "releaseNotes"
-msgid "- Crown of Egil by The Mad Juggler"
-msgstr "— Crown of Egil (автор: The Mad Juggler)"
-
-msgctxt "releaseNotes"
-msgid "- Call of the Plaguebearer by Walker Graves"
-msgstr "— Call of the Plaguebearer (автор: Walker Graves)"
-
-msgctxt "releaseNotes"
-msgid "As for standalone scenarios:"
-msgstr "И отдельный сценарий (кстати, он уже переведён на русский язык!):"
-
-msgctxt "releaseNotes"
-msgid "- Consternation on the Constellation - by The Mythos Busters"
-msgstr "— «Застывшее созвездие» (авторы: The Mythos Busters)"
-
-msgctxt "releaseNotes"
-msgid "If you are a content creator who is interested in getting your (completed) campaign into the app, you can reach me at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
-msgstr "Если вы разрабатываете собственный фанатский контент и у вас есть готовая кампания, которую вы бы хотели увидеть в приложении, напишите на [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
-
-msgctxt "releaseNotes"
-msgid "Drafting player decks"
-msgstr "Драфт колод игроков"
-
-msgctxt "releaseNotes"
-msgid "As a follow up to the earlier Ultimatum of Chaos release, the app now supports building a deck via a set of drafting rules. Choose what packs you want to pull from and how big each draft 'hand' should be, and build your deck one card at a time."
-msgstr "Развивая функционал «Ультиматума Хаоса», в приложении теперь можно составить колоду через драфт. Выберите, по сколько карт драфтить за раз и из каких дополнений, и карта за картой соберите всю колоду."
-
-msgctxt "releaseNotes"
-msgid "- You can find this feature on the deck edit screen in the menu."
-msgstr "- Функция доступна на экране редактирования колоды."
-
-msgctxt "releaseNotes"
-msgid "- Only level cards / decks can be drafted."
-msgstr "- Драфтить можно только карты уровня 0."
-
-msgctxt "releaseNotes"
-msgid "- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release."
-msgstr "- У Джо Даймонда и Лолы Хейз особые правила составления колод, так что пока их колоды драфтить не получится. Мы ещё подумаем, как с ними быть."
-
-msgctxt "releaseNotes"
-msgid "Ultimatum of Chaos"
-msgstr "Ультиматум Хаоса"
-
-msgctxt "releaseNotes"
-msgid "The app now supports building random decks following the steps set out by the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new option lets you choose a 'special deck', which can be used to either create the FFG suggested starter deck or a fully randomly generated one."
-msgstr "Приложение теперь умеет составлять случайные колоды по правилам «Ультиматума Хаоса». При создании новой колоды приложение предложит вам варианты «особых колод», среди которых — колоды, предложенные FFG, а также опция генерации случайной колоды."
-
-msgctxt "releaseNotes"
-msgid "- The app will use your defined collection to try to generate the deck."
-msgstr "- В колоде будут только карты из вашей коллекции."
-
-msgctxt "releaseNotes"
-msgid "- Support the deckbuilding focused permanents included in the Edge of the Earth Investigator expansion (Underworld Support/Forced Learning)."
-msgstr "- Генератор включает поддержку карт, меняющих правила составления колод (из дополнения «На краю земли»)."
-
-msgctxt "releaseNotes"
-msgid "- Shows the deck before you actully save it, so you can re-roll if it produced something particularly unviable."
-msgstr "- Просмотрите карты прежде чем сохранить колоду. Если вышло что-то совершенно неиграемое, вы можете перегенерировать колоду."
-
-msgctxt "releaseNotes"
-msgid "Note: You might need to refresh the cards once (using <b>Check for card updates</b>)."
-msgstr "Обратите внимание: вам может потребоваться обновить данные карт."
-
-msgctxt "releaseNotes"
-msgid "Settings synchronization"
-msgstr "Синхронизация настроек"
-
-msgctxt "releaseNotes"
-msgid "Good news for players who use Arkham Cards with more than one device, if you sign into your Arkham Cards account your settings will now sync between devices automatically!"
-msgstr "Хорошие новости для игроков с несколькими устройствами: если вы залогинитесь в один аккаунт на нескольких своих устройствах, все настройки синхронизируются между ними!"
-
-msgctxt "releaseNotes"
-msgid "- This includes your collection + spoiler settings, as well as many general app preferences."
-msgstr "- Синхронизируется отмеченные коллекция и спойлеры и также большинство общих настроек приложения."
-
-msgctxt "releaseNotes"
-msgid "I've had some reports of slower performance on some devices, and have a new <i>\"Low Memory Mode\"</i> setting to try out."
-msgstr "Владельцы некоторых устройств жаловались на медленную работу приложения — специально для таких случаев появилась новая опция «Режим экономии ОЗУ»."
-
-msgctxt "releaseNotes"
-msgid "- If you've been experiencing slow app behavior in anyway, please try it out."
-msgstr "- Если вы сталкивались с плохой производительностью приложения, попробуйте включить её."
-
-msgctxt "releaseNotes"
-msgid "- And if you try it out, send me an email at arkhamcards@gmail.com, I would love to hear how it is working in the wild."
-msgstr "- И если попробуете, то напишите потом мне на arkhamcards@gmail.com, интересно узнать, решает ли это проблему."
-
-msgctxt "releaseNotes"
-msgid "BTW, support for the newly announced mechanic from The Scarlet Keys is in the works, so stay tuned."
-msgstr "К слову, мы уже работаем над новыми механиками, анонсированными для «Алых ключей»."
-
-msgctxt "releaseNotes"
-msgid "Cyclopean Foundations"
-msgstr "[EN] Cyclopean Foundations"
-
-msgctxt "releaseNotes"
-msgid "This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard."
-msgstr ""
-"(Это обновление касается нелокализованного контента, так что и анонс оставим на английском, чтоб не давать никому ложных надежд)\n"
-"\n"
-"This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard."
-
-msgctxt "releaseNotes"
-msgid "- Includes a fully guided mode, with all setup and resolution text accounted for."
-msgstr ""
-
-msgctxt "releaseNotes"
-msgid "This update also adds support for \"The Colour Out of Space\", a fan-made standalone scenario."
-msgstr ""
-
-msgctxt "releaseNotes"
-msgid "Preview Cards"
-msgstr "Пре-релизные спойлеры"
-
-msgctxt "releaseNotes"
-msgid "This release introduces faster access to previewed cards."
-msgstr "В этом обновлении мы представляем вам доступ к официально показанным картам из ещё не вышедших дополнений."
-
-msgctxt "releaseNotes"
-msgid "- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys investigator expansion."
-msgstr "- Карты-адаптации из дополнения «Алые ключи. Сыщики» уже здесь."
-
-msgctxt "releaseNotes"
-msgid "- In order to maintain compatibility with ArkhamDB, these cards are not shown by default. You can opt into them by enabling the <b>Show Fan-made cards</b> under <i>Settings</i>."
-msgstr "- Чтобы поддерживать совместимость с базой данных ArkhamDB, по умолчанию такие карты скрыты. Они станут отображаться в списке карт при включённой опции <b>«Неканоничные карты»</b> в настройках приложения."
-
-msgctxt "releaseNotes"
-msgid "The Scarlet Keys Campaign"
-msgstr "Алые ключи. Кампания"
-
-msgctxt "releaseNotes"
-msgid "This release adds support for the newly released Scarlet Keys campaign expansion."
-msgstr "В этом обновлении добавлена поддержка недавно вышедшей кампании «Алые ключи»."
-
-msgctxt "releaseNotes"
-msgid "- As you may know (or will soon find out), this is by far the most ambitious campaign we've ever seen in Arkham. I've done my best to handle the new features as faithfully as I can in the app, and am pretty pleased with the implementation."
-msgstr "- Как вы знаете (или скоро узнаете), эта кампания намного превосходит всё, что мы видели в игре, по масштабам полёта фантазии авторов. Я сделал всё, что мог, чтобы отразить новые механики в приложении настолько близко к оригиналу, насколько возможно, и результатом я доволен."
-
-msgctxt "releaseNotes"
-msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still - if you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will try to fix them as quickly as possible. But given the expansive nature of the campaign, it is possible in a worst case scenario that some progress might need to be re-entered."
-msgstr "- Кажется, я оттестировал все закоулки этой кампании, но вполне вероятно, что где-о ещё остались ошибки или недочёты. Если вы найдёте что-то такое, пишите на [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) и я постараюсь всё исправить как можно скорее (про перевод на русский только не пишите). К сожалению, камапния настолько сложна и обширна, что я не могу исключить худшего — что при ошибке приложения вам придётся вручную восстановить часть прогресса вашей кампании."
-
-msgctxt "releaseNotes"
-msgid "- I've also taken the liberty of including some small story reminders when map locations become unlocked through the course of play. I tried my best to capture the story text, and hope you find it helpful (in case like me you sometimes go weeks between game sessions)."
-msgstr "- Я также позволил себе вольность и включил небольшие напоминания о доступных локациях по ходу кампании. Я постарался держаться как можно ближе к сюжетному тексту, и надеюсь, что эти напоминания вам пригодятся (на случай если вы, как я, порой делаете перерывы между партиями по несколько недель)."
-
-msgctxt "releaseNotes"
-msgid "As always, many thanks to my many supporters on Patreon -- I appreciate your support which helps make all of this possible."
-msgstr "И как всегда, я благодарю всех моих подписчиков на Patreon — ваша поддержка даёт мне воплощать это приложение в реальность.— Дэн."
-
-msgctxt "releaseNotes"
-msgid "Feast of Hemlock Vale Campaign"
-msgstr "Пир в Хемлок-Вейл. Кампания"
-
-msgctxt "releaseNotes"
-msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
-msgstr "В этом обновлении добавлена поддержка недавно вышедшей кампании «Пир в Хемлок-Вейл»."
-
-msgctxt "releaseNotes"
-msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
-msgstr "- Кажется, я оттестировал все закоулки этой кампании, но вполне вероятно, что где-о ещё остались ошибки или недочёты. Если вы найдёте что-то такое, пишите на [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) и я постараюсь всё исправить как можно скорее (про перевод на русский только не пишите)."
-
-msgctxt "releaseNotes"
-msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
-msgstr "Кроме того, вы можете загружать кампании и делиться ими с друзьями, используя свой аккаунт Arkham Cards - так всем будет проще следить за прогрессом и управлять своими колодами."
-
-msgctxt "releaseNotes"
-msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
-msgstr "И как всегда, я благодарю всех моих подписчиков на Patreon — ваша поддержка помогает поддерживать работу серверов.— Дэн."
-
 msgctxt "trait"
 msgid "???"
 msgstr "???"
@@ -8509,6 +7852,751 @@ msgstr "Затонувшая"
 msgctxt "trait"
 msgid "Unlit"
 msgstr "Незажённый"
+
+msgctxt "trait"
+msgid "Adrift"
+msgstr ""
+
+msgctxt "trait"
+msgid "Arkham?"
+msgstr ""
+
+msgctxt "trait"
+msgid "Artifact"
+msgstr ""
+
+msgctxt "trait"
+msgid "Brand"
+msgstr ""
+
+msgctxt "trait"
+msgid "Completed"
+msgstr ""
+
+msgctxt "trait"
+msgid "Cretaceous"
+msgstr ""
+
+msgctxt "trait"
+msgid "Egypt"
+msgstr ""
+
+msgctxt "trait"
+msgid "France"
+msgstr ""
+
+msgctxt "trait"
+msgid "Glyph"
+msgstr ""
+
+msgctxt "trait"
+msgid "Headgear"
+msgstr ""
+
+msgctxt "trait"
+msgid "Incomplete"
+msgstr ""
+
+msgctxt "trait"
+msgid "Monsters"
+msgstr ""
+
+msgctxt "trait"
+msgid "Posture"
+msgstr ""
+
+msgctxt "trait"
+msgid "Prosthesis"
+msgstr ""
+
+msgctxt "trait"
+msgid "R'lyeh"
+msgstr ""
+
+msgctxt "trait"
+msgid "Rome"
+msgstr ""
+
+msgctxt "trait"
+msgid "Sailor"
+msgstr ""
+
+msgctxt "trait"
+msgid "Star Spawn"
+msgstr ""
+
+msgctxt "trait"
+msgid "Stowaway"
+msgstr ""
+
+msgctxt "trait"
+msgid "Student"
+msgstr ""
+
+msgctxt "trait"
+msgid "Symbiote"
+msgstr ""
+
+msgctxt "trait"
+msgid "Tandem"
+msgstr ""
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr "${ investigator.name } <b>сошёл с ума</b>."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr "Сыщик ${ investigator.name } <b>убит</b>."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
+msgstr "${ investigator.name } получает 1 физическую или ментальную травму <i>(на ваш выбор)</i>."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
+msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
+msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] "${ investigator.name } вылечивает ${ mental } ментальную травму."
+msgstr[1] "${ investigator.name } вылечивает ${ mental } ментальную травму."
+msgstr[2] "${ investigator.name } вылечивает ${ mental } ментальную травму."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную травму."
+msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную травму."
+msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную травму."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] "${ investigator.name } вылечивает ${ physical } физическую травму."
+msgstr[1] "${ investigator.name } вылечивает ${ physical } физическую травму."
+msgstr[2] "${ investigator.name } вылечивает ${ physical } физическую травму."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } получает ${ effect.physical } физическую травму."
+msgstr[1] "${ investigator.name } получает ${ effect.physical } физическую травму."
+msgstr[2] "${ investigator.name } получает ${ effect.physical } физическую травму."
+
+msgctxt "masculine"
+msgid "Alive"
+msgstr "Жив"
+
+msgctxt "masculine"
+msgid "Resigned"
+msgstr "Совершил побег"
+
+msgctxt "masculine"
+msgid "Defeated: physical trauma"
+msgstr "Побеждён: физическая травма"
+
+msgctxt "masculine"
+msgid "Defeated: mental trauma"
+msgstr "Побеждён: ментальная травма"
+
+msgctxt "masculine"
+msgid "Defeated: no trauma"
+msgstr "Побеждён: без травмы"
+
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
+
+#, javascript-format
+msgctxt "masculine"
+msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "<i>${ card.name }</i> не записан в графе «${ entry.section }» журнала кампании."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "<i>${ card.name }</i> записан в графе «${ entry.section }» журнала кампании."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] "Поскольку ${ supplyName } есть у ${ list }, этот сыщик читает <b>${ sectionName }</b>."
+msgstr[1] "Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
+msgstr[2] "Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
+
+#, javascript-format
+msgctxt "masculine"
+msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] "Поскольку ${ supplyName } отсутствует у ${ list }, этот сыщик читает <b>${ sectionName }</b>."
+msgstr[1] "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
+msgstr[2] "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
+
+msgctxt "masculine"
+msgid "Killed"
+msgstr "Убит"
+
+msgctxt "masculine"
+msgid "Insane"
+msgstr "Сошёл с ума"
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr "${ investigator.name } <b>сошла с ума</b>."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr "Сыщик ${ investigator.name } <b>убита</b>."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
+msgstr "${ investigator.name } получает 1 физическую или ментальную травму <i>(на ваш выбор)</i>."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
+msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
+msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] "${ investigator.name } вылечивает ${ mental } ментальную травму."
+msgstr[1] "${ investigator.name } вылечивает ${ mental } ментальную травму."
+msgstr[2] "${ investigator.name } вылечивает ${ mental } ментальную травму."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную травму."
+msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную травму."
+msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную травму."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] "${ investigator.name } вылечивает ${ physical } физическую травму."
+msgstr[1] "${ investigator.name } вылечивает ${ physical } физическую травму."
+msgstr[2] "${ investigator.name } вылечивает ${ physical } физическую травму."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } получает ${ effect.physical } физическую травму."
+msgstr[1] "${ investigator.name } получает ${ effect.physical } физическую травму."
+msgstr[2] "${ investigator.name } получает ${ effect.physical } физическую травму."
+
+msgctxt "feminine"
+msgid "Alive"
+msgstr "Жива"
+
+msgctxt "feminine"
+msgid "Resigned"
+msgstr "Совершила побег"
+
+msgctxt "feminine"
+msgid "Defeated: physical trauma"
+msgstr "Побеждена: физическая травма"
+
+msgctxt "feminine"
+msgid "Defeated: mental trauma"
+msgstr "Побеждена: ментальная травма"
+
+msgctxt "feminine"
+msgid "Defeated: no trauma"
+msgstr "Побеждена: без травмы"
+
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
+
+#, javascript-format
+msgctxt "feminine"
+msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "<i>${ card.name }</i> не записана в графе «${ entry.section }» журнала кампании."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "<i>${ card.name }</i> записана в графе «${ entry.section }» журнала кампании."
+
+msgctxt "feminine"
+msgid "Physical trauma"
+msgstr "Физическая травма"
+
+msgctxt "feminine"
+msgid "Mental trauma"
+msgstr "Ментальная травма"
+
+msgctxt "feminine"
+msgid "Defeated"
+msgstr "Побеждена"
+
+#, javascript-format
+msgctxt "feminine"
+msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] "Поскольку ${ supplyName } есть у ${ list }, этот сыщик читает <b>${ sectionName }</b>."
+msgstr[1] "Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
+msgstr[2] "Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
+
+#, javascript-format
+msgctxt "feminine"
+msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
+msgstr[0] "Поскольку ${ supplyName } отсутствует у ${ list }, этот сыщик читает <b>${ sectionName }</b>."
+msgstr[1] "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
+msgstr[2] "Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
+
+msgctxt "feminine"
+msgid "Killed"
+msgstr "Убита"
+
+msgctxt "feminine"
+msgid "Insane"
+msgstr "Сошла с ума"
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr "${ investigator.name } <b>сошёл с ума</b>."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr "Сыщик ${ investigator.name } <b>убит</b>."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
+msgstr "${ investigator.name } получает 1 физическую или ментальную травму <i>(на ваш выбор)</i>."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
+msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
+msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную и ${ effect.physical } физическую травму."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] "${ investigator.name } вылечивает ${ mental } ментальную травму."
+msgstr[1] "${ investigator.name } вылечивает ${ mental } ментальную травму."
+msgstr[2] "${ investigator.name } вылечивает ${ mental } ментальную травму."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] "${ investigator.name } получает ${ effect.mental } ментальную травму."
+msgstr[1] "${ investigator.name } получает ${ effect.mental } ментальную травму."
+msgstr[2] "${ investigator.name } получает ${ effect.mental } ментальную травму."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] "${ investigator.name } вылечивает ${ physical } физическую травму."
+msgstr[1] "${ investigator.name } вылечивает ${ physical } физическую травму."
+msgstr[2] "${ investigator.name } вылечивает ${ physical } физическую травму."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] "${ investigator.name } получает ${ effect.physical } физическую травму."
+msgstr[1] "${ investigator.name } получает ${ effect.physical } физическую травму."
+msgstr[2] "${ investigator.name } получает ${ effect.physical } физическую травму."
+
+msgctxt "nonbinary"
+msgid "Alive"
+msgstr "Жив"
+
+msgctxt "nonbinary"
+msgid "Resigned"
+msgstr "Совершил побег"
+
+msgctxt "nonbinary"
+msgid "Defeated: physical trauma"
+msgstr "Побеждён: физическая травма"
+
+msgctxt "nonbinary"
+msgid "Defeated: mental trauma"
+msgstr "Побеждён: ментальная травма"
+
+msgctxt "nonbinary"
+msgid "Defeated: no trauma"
+msgstr "Побеждён: без травмы"
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "${ investigator.name } reads <b>${ sectionName }</b>"
+msgstr "${ investigator.name } читает <b>${ sectionName }</b>"
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "If <i>${ card.name }</i> is not listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "<i>${ card.name }</i> не записан в графе «${ entry.section }» журнала кампании."
+
+#, javascript-format
+msgctxt "nonbinary"
+msgid "If <i>${ card.name }</i> is listed under ‘${ entry.section }’ in your Campaign Log."
+msgstr "<i>${ card.name }</i> записан в графе «${ entry.section }» журнала кампании."
+
+msgctxt "nonbinary"
+msgid "Physical trauma"
+msgstr "Физическая травма"
+
+msgctxt "nonbinary"
+msgid "Mental trauma"
+msgstr "Ментальная травма"
+
+msgctxt "nonbinary"
+msgid "Defeated"
+msgstr "Побеждён"
+
+msgctxt "nonbinary"
+msgid "Killed"
+msgstr "Сошёл с ума"
+
+msgctxt "nonbinary"
+msgid "Insane"
+msgstr "Убит"
+
+msgctxt "Traits"
+msgid "All"
+msgstr "Все"
+
+msgctxt "releaseNotes"
+msgid "Fan-made cards + Barkham Horror"
+msgstr "Фанатские сценарии + Ужас Гавкхэма"
+
+msgctxt "releaseNotes"
+msgid "Starting with this release, there is a new setting to unlock some 'unofficial' content when searching for cards and building decks. While fan-made campaigns have been available for some time, the cards associated with them have not been searchable. To start, this includes the cards released as part of the <i>Barkham Horror</i> promotional set, as well as the excellent <i>Alice in Wonderland</i> campaign by The Beard."
+msgstr "Начиная с этого обновления мы будем добавлять в приложение карты из неофициальных (и официальных, но «неканоничных») дополнений. Они будут доступны в поиске и при составлении колод. Для начала мы добавили карты из дополнения <i>«Ужас Гавкхэма» (Barkham Horror)</i> и из фанатского дополнения <i>«Алиса в стране чудес»</i> за авторством The Beard."
+
+msgctxt "releaseNotes"
+msgid "- To enable this feature, simply check the box for <b>Show Fan-made cards</b> under <i>Settings</i>. If you aren't interested in fan-made content, you don't have to change anything, by default you won't see these cards in the app."
+msgstr "- Чтобы увидеть эти карты в списке, поставьте галочку напротив пункта «Неканоничные карты» в Настройках. Если вас не интересует фанатский контент, то не надо ничего предпринимать, и вы их не увидите."
+
+msgctxt "releaseNotes"
+msgid "- Decks containing 'fan-made' cards (including <i>Barkham Horror</i>), cannot be uploaded or saved to ArkhamDB. When editing an ArkhamDB deck, these custom cards will be hidden."
+msgstr "- Колоды с неканоничными картами (в том числе из «Ужаса Гавкхэма») нельзя загружать на ArkhamDB. При редактировании колод с ArkhamDB эти карты также будут скрыты."
+
+msgctxt "releaseNotes"
+msgid "- Fan-made cards are shown with a small watermark icon indicating what set they came from, so you can tell they are unofficial."
+msgstr "- Неканоничные карты отображаются в приложении символом соответствующего дополнения, чтобы вы могли отличить их от официальных."
+
+msgctxt "releaseNotes"
+msgid "Have some fan-made content you'd like to see in the app, let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
+msgstr "Если у вас есть фанатский сценарий, который вы хотели бы увидеть в приложении, напишите на [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
+
+msgctxt "releaseNotes"
+msgid "Campaign sharing released!"
+msgstr "Совместные кампании"
+
+msgctxt "releaseNotes"
+msgid "At long last, the ability to share campaigns has been released on both iOS and Android! This has been one of the most requested features from the start, but as it required a completely new set of servers to be written (and paid for), it took me some time to get it right. You can of course continue using the app exactly as it is, but if you find yourself using multiple devices or want to share an in-progress campaign with friends so everyone can collaborate on it, this is the feature for you."
+msgstr "Наконец-то возможность подключить своих друзей к кампании доступна и на iOS, и на Андроиде! Об этом функционале просили давно и настойчиво, но поскольку он требовал настроить, написать и оплатить выделенный сервер, на его качественную реализацию потребовалось какое-то время. Разумеется, вы можете продолжить пользоваться приложением как привыкли, но если вы пользуетесь несколькими устройствами или хотите подключить к кампании своих друзей, чтобы каждый мог редактировать свою колоду или пользоваться общим мешком, то эта функция для вас."
+
+msgctxt "releaseNotes"
+msgid "- First sign up for an <b>Arkham Cards</b> account via the <i>Settings</i> tab, to unlock these features. Don't forget to set your handle so your friends can find you on the app."
+msgstr "- Первым делом создайте учётную запись <b>Arkham Cards</b> в Настройках — это откроет вам доступ к функциям Совместных кампаний. Не забудьте задать своё имя пользователя, чтобы ваши друзья смогли найти вас."
+
+msgctxt "releaseNotes"
+msgid "- On the main screen of every campaign (or when creating a new one), there is a new option to 'Upload' the campaign to the cloud. This will cause the campaign to be synced between all of your devices."
+msgstr "- На главном экране вашей кампании (или при её создании) вы увидите кнопку, позволяющую «Загрузить» вашу кампанию на сервер. После этого вы сможете синхронизировать данные и состояние кампании между всеми вашими устройствами."
+
+msgctxt "releaseNotes"
+msgid "- After uploading the campaign, you'll find a new option on the campaign to <b>Edit players</b>. Simply select your friends and the campaign will pop up in their app as well."
+msgstr "- После загрузки на сервер вы увидите новую функцию — <b>«Добавить/удалить игроков»</b>. Выберите друзей из списка, и они увидят эту кампанию в своём приложении."
+
+msgctxt "releaseNotes"
+msgid "- Then just use the campaign as normal -- decisions and changes that you make will be synced automatically with everyone, including the chaos bag."
+msgstr "- Играйте как обычно — ваши решения и изменения в кампании, включая состав и состояние мешка хаоса, синхронизируются между всеми участниками кампании."
+
+msgctxt "releaseNotes"
+msgid "- If someone else saves your deck for you at the end of a scenario, you'll need to open the campaign to <b>Claim the previous scneario's XP</b> for yourself."
+msgstr "- Если кто-то другой применит изменения к вашей колоде в конце сценария, вам будет нужно открыть приложение и самостоятельно <b>Получить опыт за пройденный сценарий</b>."
+
+msgctxt "releaseNotes"
+msgid "If you like to make changes to your decks on ArkhamDB as well as in the app, just pop open the app and make sure you see your latest deck updates there. After opening the app it should remain in sync, but if you use the app infrequently the ArkhamDB login might expire and need to be authorized."
+msgstr "Если вы хотите отредактировать свою колоду не только в приложении, но и на ArkhamDB, откройте приложение и убедитесь, что в нём все ваши колоды актуальны. После открытия приложения колоды должны будут синхронизироваться и оставаться актуальными, но если вы используете приложение нечасто, вам может понадобиться заново войти в ArkhamDB через приложение."
+
+msgctxt "releaseNotes"
+msgid "Find overlap between decks"
+msgstr "Пересечения коллекции"
+
+msgctxt "releaseNotes"
+msgid "If you build decks for multiple players from a single card collection, this release is for you. By adding the decks to a shared campaign, the app will calculate which cards are included in too many decks (based on your collection)."
+msgstr "Если вы составляете колоды на нескольких игроков из одной коллекции карт, то это обновление для вас. Привяжите несколько колод к кампании — и приложение покажет, каких карт в колодах больше, чем у вас в коллекции."
+
+msgctxt "releaseNotes"
+msgid "If the deck has been added to a campaign, you'll also see this on the bottom of each deck in that campaign."
+msgstr "Если колода привязана к кампании, то при просмотре её состава вы также найдёте список пересекающихся карт в конце перечня карт."
+
+msgctxt "releaseNotes"
+msgid "Edge of the Earth campaign is now out"
+msgstr "«На краю земли» уже в приложении"
+
+msgctxt "releaseNotes"
+msgid "The full setup instructions for Edge of the Earth campaigns are now available in the app! This was the largest single drop of campaign content in the history of the game and a large group of volunteers helped prepare the story text so I could focus on the new mechanics to get this out as close to release date as possible."
+msgstr "Полный путеводитель по кампании «На краю земли» уже в приложении! "
+
+msgctxt "releaseNotes"
+msgid "Frost tokens ([frost]) are also now available in the digital chaos bags for all Edge of the Earth campaigns."
+msgstr "Жетоны мороза ([frost]) доступны в цифровом мешке хаоса для всех сценариев кампании."
+
+msgctxt "releaseNotes"
+msgid "Stay warm out there!"
+msgstr "Русскоязычная озвучка тоже в работе и появится в приложении к концу октября."
+
+msgctxt "releaseNotes"
+msgid "Newly designed chaos odds calculator"
+msgstr "Обновлённый калькулятор вероятностей"
+
+msgctxt "releaseNotes"
+msgid "<center>\"Never tell me the odds!\" - Han Solo</center>"
+msgstr "<center>«Никогда не говори мне о шансах!» — Хан Соло</center>"
+
+msgctxt "releaseNotes"
+msgid "Sorry Han, this isn't the feature for you. When it came time to try to work [bless] and [curse] tokens into the existing odds calculator, this app's visual designer (Eugene Sarnetsky) worked hard to reimagine how to present the mathy information in a more intuitive and visual manner."
+msgstr "Прости, Хан, это обновление не для тебя. Когда пришло время научить прежний калькулятор вероятностей переваривать жетоны [bless] и [curse], визуальному дизайнеру этого приложения (Евгению Сарнецкому) пришлось засучить рукава, чтобы представить сухие цифры в интуитивно понятной форме."
+
+msgctxt "releaseNotes"
+msgid "As you can see below, the results are incredible:"
+msgstr "Как видите, труд принёс плоды:"
+
+msgctxt "releaseNotes"
+msgid "In addition to giving you the numeric pass/fail rate as before, the new visual stacking of tokens based on their current modifiers lets you quickly intuit how much you stand to gain with an extra +1 to your skill value, without having to mess with the difficulty controls at all."
+msgstr "Жетоны представлены в виде стопок, отсортированных по текущему значению модификатора. Такое представление позволяет легко визуально оценить, насколько выгодно вам будет добавить +1 в навыку в проверке, не вынуждая лишний раз тыкать в счётчики навыка и сложности."
+
+msgctxt "releaseNotes"
+msgid "You'll also see small bands of color to represent [bless] and [curse] worked into the display. These are spaced to show how much your odds of passing changes if you draw a single [bless] or [curse] token: in the above picture a single [curse] token draw will cause 47% of the tokens in the bag to now result in a failure -- not great!"
+msgstr "А тонкие разделительные линии показывают эффект жетонов [bless] и [curse]. Каждая такая линия — это место, куда сдвинется грань между успехом и провалом после каждого такого жетона. В примере на скриншоте всего один жетон [curse] превратит 47% жетонов в мешке из успешных в провальные — неприятная ситуация!"
+
+msgctxt "releaseNotes"
+msgid "Down below you can also see the odds of drawing a [bless]/[curse] token based on the current bag contents. Here the adjustment to your success odds is shown as a range, the first number being drawing one token, the second if you were to draw multiple."
+msgstr "Ниже также указана вероятность вытянуть [bless]/[curse] при текущем составе мешка. Влияние этих жетонов на ваши шансы показаны диапазоном, в котором первое число — изменение шансов при вытягивании одного такого жетона, а второе — при вытягивании нескольких."
+
+msgctxt "releaseNotes"
+msgid "Support for fan-made campaigns"
+msgstr "Поддержка фанатского контента"
+
+msgctxt "releaseNotes"
+msgid "Did you know that this game has a thriving community of homebrew content creators? Well it does, and starting today, you'll start to find some of these campaigns and side-scenarios in the app."
+msgstr "Знаете ли вы, что у этой игры есть активное сообщество разработчиков фанатского контента? Ну вот теперь знаете, а с сегодняшнего дня вы сможете найти некоторые их творения в приложении."
+
+msgctxt "releaseNotes"
+msgid "Adding more campaigns will be an ongoing effort, but as of now we the following campaigns are available:"
+msgstr "Со временем мы будем добавлять больше контента и постепенно постараемся перевести его на русский язык, а прямо сейчас доступны кампании на английском:"
+
+msgctxt "releaseNotes"
+msgid "- Alice in Wonderland by The Beard"
+msgstr "— Alice in Wonderland (автор: The Beard)"
+
+msgctxt "releaseNotes"
+msgid "- Dark Matter by Axolotl"
+msgstr "— Dark Matter (автор: Axolotl)"
+
+msgctxt "releaseNotes"
+msgid "- Crown of Egil by The Mad Juggler"
+msgstr "— Crown of Egil (автор: The Mad Juggler)"
+
+msgctxt "releaseNotes"
+msgid "- Call of the Plaguebearer by Walker Graves"
+msgstr "— Call of the Plaguebearer (автор: Walker Graves)"
+
+msgctxt "releaseNotes"
+msgid "As for standalone scenarios:"
+msgstr "И отдельный сценарий (кстати, он уже переведён на русский язык!):"
+
+msgctxt "releaseNotes"
+msgid "- Consternation on the Constellation - by The Mythos Busters"
+msgstr "— «Застывшее созвездие» (авторы: The Mythos Busters)"
+
+msgctxt "releaseNotes"
+msgid "If you are a content creator who is interested in getting your (completed) campaign into the app, you can reach me at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
+msgstr "Если вы разрабатываете собственный фанатский контент и у вас есть готовая кампания, которую вы бы хотели увидеть в приложении, напишите на [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com)."
+
+msgctxt "releaseNotes"
+msgid "Drafting player decks"
+msgstr "Драфт колод игроков"
+
+msgctxt "releaseNotes"
+msgid "As a follow up to the earlier Ultimatum of Chaos release, the app now supports building a deck via a set of drafting rules. Choose what packs you want to pull from and how big each draft 'hand' should be, and build your deck one card at a time."
+msgstr "Развивая функционал «Ультиматума Хаоса», в приложении теперь можно составить колоду через драфт. Выберите, по сколько карт драфтить за раз и из каких дополнений, и карта за картой соберите всю колоду."
+
+msgctxt "releaseNotes"
+msgid "- You can find this feature on the deck edit screen in the menu."
+msgstr "- Функция доступна на экране редактирования колоды."
+
+msgctxt "releaseNotes"
+msgid "- Only level cards / decks can be drafted."
+msgstr "- Драфтить можно только карты уровня 0."
+
+msgctxt "releaseNotes"
+msgid "- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release."
+msgstr "- У Джо Даймонда и Лолы Хейз особые правила составления колод, так что пока их колоды драфтить не получится. Мы ещё подумаем, как с ними быть."
+
+msgctxt "releaseNotes"
+msgid "Ultimatum of Chaos"
+msgstr "Ультиматум Хаоса"
+
+msgctxt "releaseNotes"
+msgid "The app now supports building random decks following the steps set out by the optional 'Ultimatum of Chaos' rule. When constructing a new deck, a new option lets you choose a 'special deck', which can be used to either create the FFG suggested starter deck or a fully randomly generated one."
+msgstr "Приложение теперь умеет составлять случайные колоды по правилам «Ультиматума Хаоса». При создании новой колоды приложение предложит вам варианты «особых колод», среди которых — колоды, предложенные FFG, а также опция генерации случайной колоды."
+
+msgctxt "releaseNotes"
+msgid "- The app will use your defined collection to try to generate the deck."
+msgstr "- В колоде будут только карты из вашей коллекции."
+
+msgctxt "releaseNotes"
+msgid "- Support the deckbuilding focused permanents included in the Edge of the Earth Investigator expansion (Underworld Support/Forced Learning)."
+msgstr "- Генератор включает поддержку карт, меняющих правила составления колод (из дополнения «На краю земли»)."
+
+msgctxt "releaseNotes"
+msgid "- Shows the deck before you actully save it, so you can re-roll if it produced something particularly unviable."
+msgstr "- Просмотрите карты прежде чем сохранить колоду. Если вышло что-то совершенно неиграемое, вы можете перегенерировать колоду."
+
+msgctxt "releaseNotes"
+msgid "Note: You might need to refresh the cards once (using <b>Check for card updates</b>)."
+msgstr "Обратите внимание: вам может потребоваться обновить данные карт."
+
+msgctxt "releaseNotes"
+msgid "Settings synchronization"
+msgstr "Синхронизация настроек"
+
+msgctxt "releaseNotes"
+msgid "Good news for players who use Arkham Cards with more than one device, if you sign into your Arkham Cards account your settings will now sync between devices automatically!"
+msgstr "Хорошие новости для игроков с несколькими устройствами: если вы залогинитесь в один аккаунт на нескольких своих устройствах, все настройки синхронизируются между ними!"
+
+msgctxt "releaseNotes"
+msgid "- This includes your collection + spoiler settings, as well as many general app preferences."
+msgstr "- Синхронизируется отмеченные коллекция и спойлеры и также большинство общих настроек приложения."
+
+msgctxt "releaseNotes"
+msgid "I've had some reports of slower performance on some devices, and have a new <i>\"Low Memory Mode\"</i> setting to try out."
+msgstr "Владельцы некоторых устройств жаловались на медленную работу приложения — специально для таких случаев появилась новая опция «Режим экономии ОЗУ»."
+
+msgctxt "releaseNotes"
+msgid "- If you've been experiencing slow app behavior in anyway, please try it out."
+msgstr "- Если вы сталкивались с плохой производительностью приложения, попробуйте включить её."
+
+msgctxt "releaseNotes"
+msgid "- And if you try it out, send me an email at arkhamcards@gmail.com, I would love to hear how it is working in the wild."
+msgstr "- И если попробуете, то напишите потом мне на arkhamcards@gmail.com, интересно узнать, решает ли это проблему."
+
+msgctxt "releaseNotes"
+msgid "BTW, support for the newly announced mechanic from The Scarlet Keys is in the works, so stay tuned."
+msgstr "К слову, мы уже работаем над новыми механиками, анонсированными для «Алых ключей»."
+
+msgctxt "releaseNotes"
+msgid "Cyclopean Foundations"
+msgstr "[EN] Cyclopean Foundations"
+
+msgctxt "releaseNotes"
+msgid "This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard."
+msgstr ""
+"(Это обновление касается нелокализованного контента, так что и анонс оставим на английском, чтоб не давать никому ложных надежд)\n"
+"\n"
+"This release adds the newly finished fan-made Cyclopean Foundations campaign by The Beard."
+
+msgctxt "releaseNotes"
+msgid "- Includes a fully guided mode, with all setup and resolution text accounted for."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "This update also adds support for \"The Colour Out of Space\", a fan-made standalone scenario."
+msgstr ""
+
+msgctxt "releaseNotes"
+msgid "Preview Cards"
+msgstr "Пре-релизные спойлеры"
+
+msgctxt "releaseNotes"
+msgid "This release introduces faster access to previewed cards."
+msgstr "В этом обновлении мы представляем вам доступ к официально показанным картам из ещё не вышедших дополнений."
+
+msgctxt "releaseNotes"
+msgid "- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys investigator expansion."
+msgstr "- Карты-адаптации из дополнения «Алые ключи. Сыщики» уже здесь."
+
+msgctxt "releaseNotes"
+msgid "- In order to maintain compatibility with ArkhamDB, these cards are not shown by default. You can opt into them by enabling the <b>Show Fan-made cards</b> under <i>Settings</i>."
+msgstr "- Чтобы поддерживать совместимость с базой данных ArkhamDB, по умолчанию такие карты скрыты. Они станут отображаться в списке карт при включённой опции <b>«Неканоничные карты»</b> в настройках приложения."
+
+msgctxt "releaseNotes"
+msgid "The Scarlet Keys Campaign"
+msgstr "Алые ключи. Кампания"
+
+msgctxt "releaseNotes"
+msgid "This release adds support for the newly released Scarlet Keys campaign expansion."
+msgstr "В этом обновлении добавлена поддержка недавно вышедшей кампании «Алые ключи»."
+
+msgctxt "releaseNotes"
+msgid "- As you may know (or will soon find out), this is by far the most ambitious campaign we've ever seen in Arkham. I've done my best to handle the new features as faithfully as I can in the app, and am pretty pleased with the implementation."
+msgstr "- Как вы знаете (или скоро узнаете), эта кампания намного превосходит всё, что мы видели в игре, по масштабам полёта фантазии авторов. Я сделал всё, что мог, чтобы отразить новые механики в приложении настолько близко к оригиналу, насколько возможно, и результатом я доволен."
+
+msgctxt "releaseNotes"
+msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still - if you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will try to fix them as quickly as possible. But given the expansive nature of the campaign, it is possible in a worst case scenario that some progress might need to be re-entered."
+msgstr "- Кажется, я оттестировал все закоулки этой кампании, но вполне вероятно, что где-о ещё остались ошибки или недочёты. Если вы найдёте что-то такое, пишите на [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) и я постараюсь всё исправить как можно скорее (про перевод на русский только не пишите). К сожалению, камапния настолько сложна и обширна, что я не могу исключить худшего — что при ошибке приложения вам придётся вручную восстановить часть прогресса вашей кампании."
+
+msgctxt "releaseNotes"
+msgid "- I've also taken the liberty of including some small story reminders when map locations become unlocked through the course of play. I tried my best to capture the story text, and hope you find it helpful (in case like me you sometimes go weeks between game sessions)."
+msgstr "- Я также позволил себе вольность и включил небольшие напоминания о доступных локациях по ходу кампании. Я постарался держаться как можно ближе к сюжетному тексту, и надеюсь, что эти напоминания вам пригодятся (на случай если вы, как я, порой делаете перерывы между партиями по несколько недель)."
+
+msgctxt "releaseNotes"
+msgid "As always, many thanks to my many supporters on Patreon -- I appreciate your support which helps make all of this possible."
+msgstr "И как всегда, я благодарю всех моих подписчиков на Patreon — ваша поддержка даёт мне воплощать это приложение в реальность.— Дэн."
+
+msgctxt "releaseNotes"
+msgid "Feast of Hemlock Vale Campaign"
+msgstr "Пир в Хемлок-Вейл. Кампания"
+
+msgctxt "releaseNotes"
+msgid "This release adds support for the newly released Feast of Hemlock Vale campaign expansion."
+msgstr "В этом обновлении добавлена поддержка недавно вышедшей кампании «Пир в Хемлок-Вейл»."
+
+msgctxt "releaseNotes"
+msgid "- I've done my best to test the corners of this campaign, but it is quite possible there will be some mistakes or bugs in the implementation still. If you find any please let me know at [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) and I will work to fix them as quickly as possible."
+msgstr "- Кажется, я оттестировал все закоулки этой кампании, но вполне вероятно, что где-о ещё остались ошибки или недочёты. Если вы найдёте что-то такое, пишите на [arkhamcards@gmail.com](mailto:arkhamcards@gmail.com) и я постараюсь всё исправить как можно скорее (про перевод на русский только не пишите)."
+
+msgctxt "releaseNotes"
+msgid "Also just a friendly plug to upload campaigns and share them with your friends using your Arkham Cards account -- it makes it easier for everyone to keep up with progress while managing their own decks."
+msgstr "Кроме того, вы можете загружать кампании и делиться ими с друзьями, используя свой аккаунт Arkham Cards - так всем будет проще следить за прогрессом и управлять своими колодами."
+
+msgctxt "releaseNotes"
+msgid "And as always, many thanks to my many supporters on Patreon -- I appreciate your support which helps keep the servers running."
+msgstr "И как всегда, я благодарю всех моих подписчиков на Patreon — ваша поддержка помогает поддерживать работу серверов.— Дэн."
 
 #, javascript-format
 msgctxt "filter"
