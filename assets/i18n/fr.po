@@ -796,19 +796,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -5858,40 +5858,40 @@ msgid "The Feast of Hemlock Vale"
 msgstr "Le Festin de Hemlock Vale"
 
 msgid "The Dunwich Legacy Investigator Expansion"
-msgstr "L’Héritage de Dunwich - Extension Investigateurs"
+msgstr "L’Héritage de Dunwich – Extension Investigateurs"
 
 msgid "The Dunwich Legacy Campaign Expansion"
-msgstr "L’Héritage de Dunwich - Extension Campagne"
+msgstr "L’Héritage de Dunwich – Extension Campagne"
 
 msgid "The Path to Carcosa Investigator Expansion"
-msgstr "La Route de Carcosa - Extension Investigateurs"
+msgstr "La Route de Carcosa – Extension Investigateurs"
 
 msgid "The Path to Carcosa Campaign Expansion"
-msgstr "La Route de Carcosa - Extension Campagne"
+msgstr "La Route de Carcosa – Extension Campagne"
 
 msgid "The Forgotten Age Investigator Expansion"
-msgstr "La Civilisation oubliée - Extension Investigateurs"
+msgstr "La Civilisation Oubliée – Extension Investigateurs"
 
 msgid "The Forgotten Age Campaign Expansion"
-msgstr "La Civilisation oubliée - Extension Campagne"
+msgstr "La Civilisation Oubliée – Extension Campagne"
 
 msgid "The Circle Undone Investigator Expansion"
-msgstr "Le Cercle brisé - Extension Investigateurs"
+msgstr "Le Cercle Brisé – Extension Investigateurs"
 
 msgid "The Circle Undone Campaign Expansion"
-msgstr "Le Cercle brisé - Extension Campagne"
+msgstr "Le Cercle Brisé – Extension Campagne"
 
 msgid "The Dream-Eaters Investigator Expansion"
-msgstr "Les Dévoreurs de Rêves - Extension Investigateurs"
+msgstr "Les Dévoreurs de Rêves – Extension Investigateurs"
 
 msgid "The Dream-Eaters Campaign Expansion"
-msgstr "Les Dévoreurs de Rêves - Extension Campagne"
+msgstr "Les Dévoreurs de Rêves Ǿ Extension Campagne"
 
 msgid "The Innsmouth Conspiracy Investigator Expansion"
-msgstr "La Conspiration d’Innsmouth - Extension Investigateurs"
+msgstr "La Conspiration d’Innsmouth – Extension Investigateurs"
 
 msgid "The Innsmouth Conspiracy Campaign Expansion"
-msgstr "La Conspiration d’Innsmouth - Extension Campagne"
+msgstr "La Conspiration d’Innsmouth – Extension Campagne"
 
 msgid "Show original release packs"
 msgstr "Afficher les paquets originaux"
@@ -7798,11 +7798,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Arkham?"
-msgstr ""
+msgstr "Arkham ?"
 
 msgctxt "trait"
 msgid "Artifact"
-msgstr ""
+msgstr "Artéfact"
 
 msgctxt "trait"
 msgid "Brand"
@@ -7810,23 +7810,23 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Completed"
-msgstr ""
+msgstr "Achevé"
 
 msgctxt "trait"
 msgid "Cretaceous"
-msgstr ""
+msgstr "Crétacé"
 
 msgctxt "trait"
 msgid "Egypt"
-msgstr ""
+msgstr "Egypte"
 
 msgctxt "trait"
 msgid "France"
-msgstr ""
+msgstr "France"
 
 msgctxt "trait"
 msgid "Glyph"
-msgstr ""
+msgstr "Glyphe"
 
 msgctxt "trait"
 msgid "Headgear"
@@ -7834,11 +7834,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Incomplete"
-msgstr ""
+msgstr "Inachevé"
 
 msgctxt "trait"
 msgid "Monsters"
-msgstr ""
+msgstr "Monstres"
 
 msgctxt "trait"
 msgid "Posture"
@@ -7846,15 +7846,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Prosthesis"
-msgstr ""
+msgstr "Prothèse"
 
 msgctxt "trait"
 msgid "R'lyeh"
-msgstr ""
+msgstr "R'lyeh"
 
 msgctxt "trait"
 msgid "Rome"
-msgstr ""
+msgstr "Rome"
 
 msgctxt "trait"
 msgid "Sailor"
@@ -7862,15 +7862,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Star Spawn"
-msgstr ""
+msgstr "Larve Stellaire"
 
 msgctxt "trait"
 msgid "Stowaway"
-msgstr ""
+msgstr "Clandestin"
 
 msgctxt "trait"
 msgid "Student"
-msgstr ""
+msgstr "Étudiant"
 
 msgctxt "trait"
 msgid "Symbiote"
