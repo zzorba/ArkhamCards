@@ -52,7 +52,7 @@ function showDeKofi() {
 }
 
 function showRuDonate() {
-  Linking.openURL('https://www.tinkoff.ru/cf/27GmNzxhhUk');
+  Linking.openURL('https://messenger.online.sberbank.ru/sl/rgONgm2VJesBMZNMh');
 }
 function showEnAudio() {
   Linking.openURL('https://therestrictedcollection.podbean.com/');

@@ -1,5 +1,10 @@
 [
   {
+    "type": "scenario",
+    "campaignId": "fhv",
+    "scenarioId": "the_longest_night"
+  },
+  {
     "type": "campaign",
     "campaignId": "fof"
   },

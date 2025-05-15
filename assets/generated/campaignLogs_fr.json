@@ -1103,9 +1103,9 @@
         "entries": [
           {
             "id": "eat",
-            "masculine_text": "#nom de l’investigateur# a terminé son repas.",
-            "feminine_text": "#nom de l’investigateur# a terminé son repas.",
-            "nonbinary_text": "#nom de l’investigateur# a terminé son repas."
+            "masculine_text": "#name# a terminé son repas.",
+            "feminine_text": "#name# a terminé son repas.",
+            "nonbinary_text": "#name# a terminé son repas."
           },
           {
             "id": "all_the_captives_were_lost",
@@ -1177,7 +1177,7 @@
           },
           {
             "id": "helen_peters_joined_the_survey",
-            "text": "Helen Peters joined the survey."
+            "text": "Helen Peters a rejoint l’équipe de recherche."
           },
           {
             "id": "helen_shared_a_dance",
@@ -1209,7 +1209,7 @@
           },
           {
             "id": "madame_pearls_diary_was_recovered",
-            "text": "Le journal intime de Ms Pearl a été retrouvé."
+            "text": "le journal intime de Ms Pearl a été retrouvé."
           },
           {
             "id": "many_captives_were_lost",
@@ -1245,7 +1245,7 @@
           },
           {
             "id": "the_vale_burned",
-            "text": "Val a brûlé."
+            "text": "Vale a brûlé."
           },
           {
             "id": "the_vale_is_full_of_fireworks",
@@ -1253,11 +1253,11 @@
           },
           {
             "id": "the_vale_was_saved",
-            "text": "que Vale a été sauvé."
+            "text": "Vale a été sauvé."
           },
           {
             "id": "thing_in_the_depths_was_defeated",
-            "text": "La Chose des Profondeurs a été vaincue."
+            "text": "la Chose des Profondeurs a été vaincue."
           }
         ]
       },
@@ -1295,7 +1295,7 @@
         "entries": [
           {
             "id": "gideon_finished_the_tale_of_the_annabelle_lee",
-            "text": "Gideon a terminé l’histoire de l’Annabelle Lee."
+            "text": "Gideon a terminé l’histoire de l’<i>Annabelle Lee</i>."
           },
           {
             "id": "gideon_found_his_treasure",
@@ -2045,11 +2045,11 @@
         "entries": [
           {
             "id": "judith_sacrificed_himself",
-            "text": "Judith Parksk s’est sacrifiée pour les investigateurs."
+            "text": "Judith Park s’est sacrifiée pour les investigateurs."
           },
           {
             "id": "judith_saved_your_ass",
-            "text": "Judith vous a sauvé les miches<."
+            "text": "Judith vous a sauvé les miches."
           },
           {
             "id": "judith_shared_a_dance",
@@ -2128,7 +2128,7 @@
           },
           {
             "id": "river_sacrificed_himself",
-            "text": "River Hathorne s’est sacrifiée pour les investigateurs."
+            "text": "River Hawthorne s’est sacrifiée pour les investigateurs."
           },
           {
             "id": "river_shared_a_dance",
