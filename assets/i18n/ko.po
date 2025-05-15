@@ -6048,78 +6048,78 @@ msgid "${ total } of ${ attachment.targetSize }"
 msgstr "${ attachment.targetSize }/${ total }"
 
 msgid "Draft"
-msgstr ""
+msgstr "드래프트"
 
 #, javascript-format
 msgid "Act: ${ count }"
 msgid_plural "Acts: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "주요목적: ${ count }"
+msgstr[1] "주요목적: ${ count }"
 
 #, javascript-format
 msgid "Agenda: ${ count }"
 msgid_plural "Agendas: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "주요사건: ${ count }"
+msgstr[1] "주요사건: ${ count }"
 
 #, javascript-format
 msgid "Location: ${ count }"
 msgid_plural "Locations: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "장소: ${ count }"
+msgstr[1] "장소: ${ count }"
 
 #, javascript-format
 msgid "Enemy: ${ count }"
 msgid_plural "Enemies: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "적: ${ count }"
+msgstr[1] "적: ${ count }"
 
 #, javascript-format
 msgid "Enemy-Location: ${ count }"
 msgid_plural "Enemy-Locations: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "적-장소: ${ count }"
+msgstr[1] "적-장소: ${ count }"
 
 #, javascript-format
 msgid "Treachery: ${ count }"
 msgid_plural "Treacheries: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "음모: ${ count }"
+msgstr[1] "음모: ${ count }"
 
 #, javascript-format
 msgid "Story: ${ count }"
 msgid_plural "Stories: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "이야기: ${ count }"
+msgstr[1] "이야기: ${ count }"
 
 #, javascript-format
 msgid "Key: ${ count }"
 msgid_plural "Keys: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "열쇠: ${ count }"
+msgstr[1] "열쇠: ${ count }"
 
 #, javascript-format
 msgid "Asset: ${ count }"
 msgid_plural "Assets: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "자산: ${ count }"
+msgstr[1] "자산: ${ count }"
 
 msgid "Scenario reference"
 msgid_plural "Scenario references: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "시나리오 참조"
+msgstr[1] "시나리오 참조: ${ count }"
 
 #, javascript-format
 msgid "Unknown: ${ count }"
 msgid_plural "Unknowns: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "알 수 없음: ${ count }"
+msgstr[1] "알 수 없음: ${ count }"
 
 msgid "Campaign required"
 msgstr ""
 
 msgid "You must select a campaign."
-msgstr ""
+msgstr "캠페인을 반드시 선택해야 합니다."
 
 msgid "The Drowned City"
 msgstr ""
@@ -6138,7 +6138,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Remove ${ investigator.card.name }?"
-msgstr ""
+msgstr "${ investigator.card.name } 조사자를 제거하시겠습니까?"
 
 #, javascript-format
 msgid ""
@@ -6146,6 +6146,9 @@ msgid ""
 "\n"
 "Campaign log data associated with them may be lost."
 msgstr ""
+"정말로 캠페인에서 ${ investigator.card.name } 조사자를 제거하시겠습니까?\n"
+"\n"
+"관련된 캠페인 기록지 데이터가 손실될 수 있습니다."
 
 msgctxt "investigator"
 msgid "Custom"
@@ -6613,7 +6616,7 @@ msgstr "인스머스 - Innsmouth"
 
 msgctxt "trait"
 msgid "Insect"
-msgstr ""
+msgstr "곤충 - Insect"
 
 msgctxt "trait"
 msgid "Insight"
@@ -6713,7 +6716,7 @@ msgstr "산 - Mountain"
 
 msgctxt "trait"
 msgid "Mutated"
-msgstr ""
+msgstr "변이체 - Mutated"
 
 msgctxt "trait"
 msgid "Mystery"
@@ -7577,11 +7580,11 @@ msgstr "유고스 - Yuggoth"
 
 msgctxt "trait"
 msgid "Blight"
-msgstr ""
+msgstr "마름병 - Blight"
 
 msgctxt "trait"
 msgid "Colour"
-msgstr ""
+msgstr "색체 - Colour"
 
 msgctxt "trait"
 msgid "Crew"
@@ -7593,7 +7596,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Emissary"
-msgstr ""
+msgstr "특사 - Emissary"
 
 msgctxt "trait"
 msgid "Game"
@@ -7613,7 +7616,7 @@ msgstr "일반인 구역 - Public"
 
 msgctxt "trait"
 msgid "Resident"
-msgstr ""
+msgstr "주민 - Resident"
 
 msgctxt "trait"
 msgid "Role"
@@ -7621,7 +7624,7 @@ msgstr "역할 - Role"
 
 msgctxt "trait"
 msgid "Rot"
-msgstr ""
+msgstr "부패 - Rot"
 
 msgctxt "trait"
 msgid "Sub-Level"
@@ -7637,19 +7640,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Bog"
-msgstr ""
+msgstr "습지 - Bog"
 
 msgctxt "trait"
 msgid "Cart"
-msgstr ""
+msgstr "수레 - Cart"
 
 msgctxt "trait"
 msgid "Dark"
-msgstr ""
+msgstr "어둠 - Dark"
 
 msgctxt "trait"
 msgid "Dormant"
-msgstr ""
+msgstr "휴면 - Dormant"
 
 msgctxt "trait"
 msgid "Fairy"
@@ -7657,19 +7660,19 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Farm"
-msgstr ""
+msgstr "농장 - Farm"
 
 msgctxt "trait"
 msgid "Field"
-msgstr ""
+msgstr "벌판 - Field"
 
 msgctxt "trait"
 msgid "Forest"
-msgstr ""
+msgstr "산림 - Forest"
 
 msgctxt "trait"
 msgid "Hemlock Vale"
-msgstr ""
+msgstr "헴록 베일 - Hemlock Vale"
 
 msgctxt "trait"
 msgid "Kingsport"
@@ -7685,7 +7688,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Lit"
-msgstr ""
+msgstr "불 켜진 - Lit"
 
 msgctxt "trait"
 msgid "Machination"
@@ -7713,7 +7716,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Room"
-msgstr ""
+msgstr "방 - Room"
 
 msgctxt "trait"
 msgid "Scion"
@@ -7721,15 +7724,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Station"
-msgstr ""
+msgstr "역 - Station"
 
 msgctxt "trait"
 msgid "Sunken"
-msgstr ""
+msgstr "가라앉은 - Sunken"
 
 msgctxt "trait"
 msgid "Unlit"
-msgstr ""
+msgstr "불 꺼진 - Unlit"
 
 msgctxt "trait"
 msgid "Adrift"
