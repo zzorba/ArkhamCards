@@ -36,6 +36,7 @@ import {
   FORCED_LEARNING_CODE,
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
+  ELDRITCH_BRAND_CODE,
 } from '@app_constants';
 import Card, { InvestigatorChoice } from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
@@ -44,6 +45,7 @@ import {
   THE_INSANE_CODE,
 } from '@data/deck/specialCards';
 import DeckRequirement from '@data/types/DeckRequirement';
+import {parseMetaSlots} from "@lib/parseDeck";
 
 const THE_INSANE_TAG = 'the_insane';
 
@@ -53,6 +55,7 @@ interface SpecialCardCounts {
   underworldSupport: number;
   underworldMarket: number;
   forcedLearning: number;
+  eldritchBrand: number;
 }
 
 // Code taken from:
@@ -148,7 +151,17 @@ export default class DeckValidation {
       underworldSupport: this.slots[UNDERWORLD_SUPPORT_CODE] || 0,
       underworldMarket: this.slots[UNDERWORLD_MARKET_CODE] || 0,
       forcedLearning: this.slots[FORCED_LEARNING_CODE] || 0,
+      eldritchBrand: this.slots[ELDRITCH_BRAND_CODE] || 0,
     };
+  }
+
+  eldritchBrandedCardCode(): string | undefined {
+    if (this.specialCardCounts().eldritchBrand > 0 && this.meta) {
+      const key = `attachment_${ELDRITCH_BRAND_CODE}`
+      const slots = parseMetaSlots(this.meta[key])
+      return Object.keys(slots)[0] ?? undefined;
+    }
+    return undefined;
   }
 
   deckRequirements(): DeckRequirement | undefined {
@@ -266,6 +279,16 @@ export default class DeckValidation {
             nb_copies: group.length,
             deck_limit: 1,
           };
+        }
+        if (specialCards.eldritchBrand > 0 && this.meta) {
+          const key = `attachment_${ELDRITCH_BRAND_CODE}`
+          const slots = parseMetaSlots(this.meta[key])
+          if ((slots[card.code] ?? 0) > 0) {
+            return {
+              nb_copies: group.length,
+              deck_limit: 1,
+            };
+          }
         }
         const isPreciousMemento =
           card.code === PRECIOUS_MEMENTO_FORMER_CODE ||

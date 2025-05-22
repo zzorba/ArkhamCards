@@ -368,6 +368,7 @@ function getDeckChangesHelper(
   cards: CardsMap,
   slots: Slots,
   extraDeckSize: number,
+  eldritchBrandRemoved: number,
   totalFreeCards: number,
   {
     changedCards,
@@ -554,6 +555,11 @@ function getDeckChangesHelper(
       if (extraDeckSize > 0) {
         // If your deck grew in size you can swap in extra cards for free.
         extraDeckSize--;
+        return 0;
+      }
+      if (eldritchBrandRemoved > 0) {
+        // If you removed extra copies of branded cards you can swap in new cards for free
+        eldritchBrandRemoved--;
         return 0;
       }
 
@@ -845,6 +851,10 @@ function getDeckChanges(
   ).getDeckSize(previousDeckCards);
   const invalidCards = validation.getInvalidCards(previousDeckCards);
 
+  const eldritchBrandedCardCode = validation.eldritchBrandedCardCode();
+  const eldritchBrandRemoved = eldritchBrandedCardCode && previousDeck && previousDeck.slots && deck.slots ?
+    Math.max(0, (previousDeck.slots[eldritchBrandedCardCode] ?? 0) - Math.max(1, deck.slots[eldritchBrandedCardCode] ?? 0)) :
+    0;
 
   const newDeckSize = validation.getDeckSize(newDeckCards);
   const extraDeckSize = newDeckSize - oldDeckSize;
@@ -912,6 +922,7 @@ function getDeckChanges(
     cards,
     slots,
     extraDeckSize,
+    eldritchBrandRemoved,
     totalFreeCards,
     {
       changedCards,
@@ -930,6 +941,7 @@ function getDeckChanges(
       cards,
       slots,
       extraDeckSize,
+      eldritchBrandRemoved,
       totalFreeCards,
       {
         changedCards,
