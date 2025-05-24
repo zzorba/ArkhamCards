@@ -57,7 +57,7 @@
   },
   {
     "id": "an_offer_you_cant_refuse",
-    "name": "An Offer You Can't Refuse"
+    "name": "Propozycja nie do odrzucenia"
   },
   {
     "id": "an_unknown_benefactor",
@@ -333,7 +333,7 @@
   },
   {
     "id": "expedition_to_ryleh",
-    "name": "Expedition to R'lyeh"
+    "name": "Ekspedycja do R'lyeh"
   },
   {
     "id": "extracurricular_activity",
@@ -693,7 +693,7 @@
   },
   {
     "id": "return_to_arkham",
-    "name": "Return to Arkham"
+    "name": "Powrót do Arkham"
   },
   {
     "id": "return_to_at_deaths_doorstep",
@@ -1005,7 +1005,7 @@
   },
   {
     "id": "the_awakening",
-    "name": "The Awakening"
+    "name": "Przebudzenie"
   },
   {
     "id": "the_black_cat",
@@ -1049,15 +1049,15 @@
   },
   {
     "id": "the_doom_of_arkham",
-    "name": "The Doom of Arkham"
+    "name": "Zagłada Arkham"
   },
   {
     "id": "the_doom_of_arkham_part_1",
-    "name": "The Doom of Arkham: Part I"
+    "name": "Zagłada Arkham część I"
   },
   {
     "id": "the_doom_of_arkham_part_2",
-    "name": "The Doom of Arkham: Part II"
+    "name": "Zagłada Arkham część II"
   },
   {
     "id": "the_drowned_quarter",

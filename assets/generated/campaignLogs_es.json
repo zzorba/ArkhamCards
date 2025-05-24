@@ -5641,7 +5641,7 @@
         "entries": [
           {
             "id": "tdc_rune_a",
-            "text": "Depths"
+            "text": "Profundos"
           },
           {
             "id": "tdc_rune_s",
@@ -5747,31 +5747,31 @@
         "entries": [
           {
             "id": "court_of_the_ancients",
-            "text": "Court of the Ancients"
+            "text": "La corte de los antiguos"
           },
           {
             "id": "obsidian_canyons",
-            "text": "Obsidian Canyons"
+            "text": "Cañones de obsidiana"
           },
           {
             "id": "sepulchre_of_the_sleeper",
-            "text": "Sepulchre of the Sleeper"
+            "text": "Sepulcro del durmiente"
           },
           {
             "id": "the_apiary",
-            "text": "The Apiary"
+            "text": "El apiario"
           },
           {
             "id": "the_drowned_quarter",
-            "text": "The Drowned Quarter"
+            "text": "El barrio sumergido"
           },
           {
             "id": "the_grand_vault",
-            "text": "The Grand Vault"
+            "text": "La gran cámara"
           },
           {
             "id": "the_western_wall",
-            "text": "The Western Wall"
+            "text": "La muralla occidental"
           }
         ]
       }

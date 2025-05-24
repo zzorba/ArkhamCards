@@ -3066,13 +3066,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Twoja lokalizacja jest częściowo zalana",
               "modified_value": {
                 "modifier": -2
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Twoja lokalizacja jest całkowicie zalana",
               "modified_value": {
                 "modifier": -3
               }
@@ -3109,13 +3109,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Twoja lokalizacja jest częściowo zalana",
               "modified_value": {
                 "modifier": -3
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Twoja lokalizacja jest całkowicie zalana",
               "modified_value": {
                 "modifier": -4
               }
@@ -10288,7 +10288,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of completed [[Tasks]] (rounded down)",
+          "prompt": "Połowa liczby ukończonych [[Zadań]] (zaokrąglona w dół)",
           "min": 0
         }
       },
@@ -10316,7 +10316,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of completed [[Tasks]]",
+          "prompt": "Liczba ukończonych [[Zadań]]",
           "min": 0
         }
       },
@@ -10468,7 +10468,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Criminal]] enemies in play",
+          "prompt": "Liczba wrogów z cechą [[Przestępca]] w grze",
           "min": 0,
           "max": 4
         }
@@ -10482,7 +10482,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Criminal]] enemy at your location",
+              "prompt": "Wróg z cechą [[Przestępca]] w twojej lokalizacji",
               "modified_value": {
                 "modifier": -4
               }
@@ -10502,7 +10502,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Criminal]] enemies in play",
+          "prompt": "Liczba wrogów z cechą [[Przestępca]] w grze",
           "min": 0,
           "adjustment": 1
         }
@@ -10516,7 +10516,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Criminal]] enemy at your location",
+              "prompt": "Wróg z cechą [[Przestępca]] w twojej lokalizacji",
               "modified_value": {
                 "modifier": -5
               }
@@ -10540,7 +10540,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's level",
+          "prompt": "Poziom twojej lokalizacji",
           "min": 0,
           "max": 5
         }
@@ -10566,7 +10566,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Twoja lokalizacja jest całkowicie zalana",
               "modified_value": {
                 "modifier": -5
               }
@@ -10580,7 +10580,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's level",
+          "prompt": "Poziom twojej lokalizacji",
           "min": 0,
           "max": 5,
           "adjustment": 2
@@ -10607,7 +10607,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Twoja lokalizacja jest całkowicie zalana",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -10625,7 +10625,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of revealed locations in play (rounded down)",
+          "prompt": "Połowa liczby odkrytych lokalizacji (zaokrąglając w dół)",
           "min": 0
         }
       },
@@ -10650,7 +10650,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is not flooded",
+              "prompt": "Twoja lokalizacja nie jest zalana",
               "modified_value": {
                 "modifier": -5
               }
@@ -10664,7 +10664,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of revealed locations in play",
+          "prompt": "Liczba odkrytych lokalizacji w grze",
           "min": 1
         }
       },
@@ -10689,7 +10689,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is not flooded",
+              "prompt": "Twoja lokalizacja nie jest zalana",
               "modified_value": {
                 "modifier": -6
               }
@@ -10707,7 +10707,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of doom on enemies and assets in play (rounded down)",
+          "prompt": "Połowa liczby żetonów zagłady na wrogach i atutach w grze (zaokrąglając w dół)",
           "min": 0
         }
       },
@@ -10720,7 +10720,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Cultist]] enemy at your location",
+              "prompt": "W twojej lokalizacji znajduje się wróg z cechą [[Kultysta]]",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -10747,7 +10747,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom on enemies and assets in play",
+          "prompt": "Liczba żetonów zagłady na wrogach i atutach w grze",
           "min": 0
         }
       },
@@ -10760,7 +10760,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Cultist]] enemy at your location",
+              "prompt": "W twojej lokalizacji znajduje się wróg z cechą [[Kultysta]]",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -10791,7 +10791,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of activated locations (rounded down)",
+          "prompt": "Połowa liczby aktywowanych lokalizacji (zaokrąglając w dół)",
           "min": 0
         }
       },
@@ -10810,13 +10810,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Twoja lokalizacja jest częściowo zalana",
               "modified_value": {
                 "modifier": -3
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Twoja lokalizacja jest całkowicie zalana",
               "modified_value": {
                 "modifier": -4
               }
@@ -10836,7 +10836,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of activated locations",
+          "prompt": "Liczba aktywowanych lokalizacji",
           "min": 0
         }
       },
@@ -10855,13 +10855,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Twoja lokalizacja jest częściowo zalana",
               "modified_value": {
                 "modifier": -4
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Twoja lokalizacja jest całkowicie zalana",
               "modified_value": {
                 "modifier": -5
               }
@@ -10885,7 +10885,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Glyph]] cards in the victory display",
+          "prompt": "Liczba kart z cechą [[Glif]] w puli zwycięstwa",
           "min": 0
         }
       },
@@ -10898,7 +10898,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Stowaway]] enemy at your location",
+              "prompt": "W twojej lokalizacji znajduje się wróg z cechą [[Gapowicz]]",
               "modified_value": {
                 "modifier": -4
               }
@@ -10915,7 +10915,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Twoja lokalizacja jest zalana",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -10936,7 +10936,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Glyph]] cards in the victory display",
+          "prompt": "Liczba kart z cechą [[Glif]] w puli zwycięstwa",
           "min": 0,
           "adjustment": 1
         }
@@ -10950,7 +10950,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Stowaway]] enemy at your location",
+              "prompt": "W twojej lokalizacji znajduje się wróg z cechą [[Gapowicz]]",
               "modified_value": {
                 "modifier": -5
               }
@@ -10967,7 +10967,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Twoja lokalizacja jest zalana",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -10992,7 +10992,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Storm Intensity",
+          "prompt": "Obecny poziom siły burzy",
           "min": 0
         }
       },
@@ -11006,7 +11006,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "The number of open skys adjacent to your location",
+          "prompt": "Liczba otwartych niebios, które sąsiaduje z twoją lokalizacją",
           "min": 0,
           "max": 4
         }
@@ -11020,7 +11020,7 @@
           },
           "options": [
             {
-              "prompt": "There is an enemy at your location",
+              "prompt": "W twojej lokalizacji znajduje się wróg",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -11035,7 +11035,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Storm Intensity",
+          "prompt": "Obecny poziom siły burzy",
           "min": 0,
           "adjustment": 2
         }
@@ -11050,7 +11050,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "The number of open skys adjacent to your location",
+          "prompt": "Liczba otwartych niebios, które sąsiaduje z twoją lokalizacją",
           "min": 0,
           "max": 4,
           "scale": 2
@@ -11065,7 +11065,7 @@
           },
           "options": [
             {
-              "prompt": "There is an enemy at your location",
+              "prompt": "W twojej lokalizacji znajduje się wróg",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -11084,7 +11084,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Disturbance",
+          "prompt": "Obecny poziom Świadomości",
           "min": 0,
           "max": 6
         }
@@ -11114,7 +11114,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Disturbance",
+          "prompt": "Obecny poziom Świadomości",
           "min": 0
         }
       },
@@ -11147,7 +11147,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations with no scenario cards beneath them (rounded up)",
+          "prompt": "Połowa liczby lokalizacji, pod którymi nie ma żadnych kart scenariusza (zaokrąglając w górę)",
           "min": 0
         }
       },
@@ -11172,7 +11172,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Twoja lokalizacja jest zalana",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -11187,7 +11187,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with no scenario cards beneath them (rounded up)",
+          "prompt": "Liczba lokalizacji, pod którymi nie ma żadnych kart scenariusza (zaokrąglając w górę)",
           "min": 0
         }
       },
@@ -11212,7 +11212,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Twoja lokalizacja jest zalana",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
