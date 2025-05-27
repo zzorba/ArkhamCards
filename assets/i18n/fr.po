@@ -1200,7 +1200,7 @@ msgstr "Liste des Tabous"
 
 #, javascript-format
 msgid "Additional XP: ${ card.extra_xp }."
-msgstr "Enchaînée ( +${card.extra_xp} expérience)."
+msgstr "( +${card.extra_xp} expérience)."
 
 msgid ""
 "No decks yet.\n"
@@ -1557,7 +1557,7 @@ msgstr "Pions Scellés"
 
 #, javascript-format
 msgid "XP Discount: ${ card.extra_xp }."
-msgstr "Déchaînée ( ${ card.extra_xp } expérience)."
+msgstr "( ${ card.extra_xp } expérience)."
 
 msgid "Add Investigator Deck"
 msgstr "Ajouter un investigateur"
@@ -1879,7 +1879,7 @@ msgstr "Vérifiez votre Carnet de Campagne, <i>${ logEntry.section }</i> n'est-i
 msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
 msgstr[0] "${ investigators } doit lire <b>${ prompt }</b>."
-msgstr[1] "${ investigators } doivent lire <b>${ prompt }</b>."
+msgstr[1] "${ investigators } doit lire <b>${ prompt }</b>."
 
 #, javascript-format
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
@@ -2891,19 +2891,19 @@ msgid "Books"
 msgstr "Livres"
 
 msgid "Upgraded"
-msgstr "Amélioré"
+msgstr "Améliorée(s)"
 
 msgid "Added"
-msgstr "Ajouté"
+msgstr "Ajoutée(s)"
 
 msgid "Removed"
-msgstr "Retiré"
+msgstr "Retirée(s)"
 
 msgid "Exiled"
-msgstr "Bannie"
+msgstr "Bannie(s)"
 
 msgid "Latest upgrade"
-msgstr "Dernière amélioration"
+msgstr "Dernières améliorations"
 
 msgid "Add cards"
 msgstr "Ajouter des cartes"
@@ -5344,7 +5344,7 @@ msgid "Customization upgrades"
 msgstr "Améliorations de la personnalisation"
 
 msgid "Special discounts"
-msgstr "Remises spéciales"
+msgstr "Économies d'expérience"
 
 #, javascript-format
 msgid "${ remainingFreeCards } additional level 0 card may be added to the deck without spending experience."
@@ -7883,52 +7883,52 @@ msgstr ""
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } est devenu <b>dément</b>."
+msgstr "${ investigator.name } devient <b>dément</b>."
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } a été <b>tué</b>."
+msgstr "${ investigator.name } est <b>tué</b>."
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(son choix)</i>."
+msgstr "${ investigator.name } subit 1 traumatisme physique ou mental <i>(son choix)</i>."
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
+msgstr[0] "${ investigator.name } subit ${ effect.mental } traumatisme mental et ${ effect.physical } traumatisme physique."
+msgstr[1] "${ investigator.name } subit ${ effect.mental } traumatismes mentaux et ${ effect.physical } traumatismes physiques."
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
-msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
+msgstr[0] "${ investigator.name } soigne ${ mental } traumatisme mental."
+msgstr[1] "${ investigator.name } soigne ${ mental } traumatismes mentaux."
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
+msgstr[0] "${ investigator.name } subit ${ effect.mental } traumatisme mental."
+msgstr[1] "${ investigator.name } subit ${ effect.mental } traumatismes mentaux."
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
-msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
+msgstr[0] "${ investigator.name } soigne ${ physical } traumatisme physique."
+msgstr[1] "${ investigator.name } soigne ${ physical } traumatismes physiques."
 
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.physical } traumatismes physiques."
+msgstr[0] "${ investigator.name } subit ${ effect.physical } traumatisme physique."
+msgstr[1] "${ investigator.name } subit ${ effect.physical } traumatismes physiques."
 
 msgctxt "masculine"
 msgid "Alive"
@@ -7990,52 +7990,52 @@ msgstr "Dément"
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } est devenue <b>démente</b>."
+msgstr "${ investigator.name } devient <b>démente</b>."
 
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } a été <b>tuée</b>."
+msgstr "${ investigator.name } est <b>tuée</b>."
 
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(son choix)</i>."
+msgstr "${ investigator.name } subit 1 traumatisme physique ou mental <i>(son choix)</i>."
 
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
+msgstr[0] "${ investigator.name } subit ${ effect.mental } traumatisme mental et ${ effect.physical } traumatisme physique."
+msgstr[1] "${ investigator.name } subit ${ effect.mental } traumatismes mentaux et ${ effect.physical } traumatismes physiques."
 
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
-msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
+msgstr[0] "${ investigator.name } soigne ${ mental } traumatisme mental."
+msgstr[1] "${ investigator.name } soigne ${ mental } traumatismes mentaux."
 
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
+msgstr[0] "${ investigator.name } subit ${ effect.mental } traumatisme mental."
+msgstr[1] "${ investigator.name } subit ${ effect.mental } traumatismes mentaux."
 
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
-msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
+msgstr[0] "${ investigator.name } soigne ${ physical } traumatisme physique."
+msgstr[1] "${ investigator.name } soigne ${ physical } traumatismes physiques."
 
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.physical } traumatismes physiques."
+msgstr[0] "${ investigator.name } subit ${ effect.physical } traumatisme physique."
+msgstr[1] "${ investigator.name } subit ${ effect.physical } traumatismes physiques."
 
 msgctxt "feminine"
 msgid "Alive"
@@ -8109,72 +8109,72 @@ msgstr "Démente"
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } est devenu <b>dément</b>."
+msgstr "${ investigator.name } devient <b>dément(e)</b>."
 
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } a été <b>tué</b>."
+msgstr "${ investigator.name } est <b>tué(e)</b>."
 
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(son choix)</i>."
+msgstr "${ investigator.name } subit 1 traumatisme physique ou mental <i>(son choix)</i>."
 
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
+msgstr[0] "${ investigator.name } subit ${ effect.mental } traumatisme mental et ${ effect.physical } traumatisme physique."
+msgstr[1] "${ investigator.name } subit ${ effect.mental } traumatismes mentaux et ${ effect.physical } traumatismes physiques."
 
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
-msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
+msgstr[0] "${ investigator.name } soigne ${ mental } traumatisme mental."
+msgstr[1] "${ investigator.name } soigne ${ mental } traumatismes mentaux."
 
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.mental } traumatisme mental."
-msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
+msgstr[0] "${ investigator.name } subit ${ effect.mental } traumatisme mental."
+msgstr[1] "${ investigator.name } subit ${ effect.mental } traumatismes mentaux."
 
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name } se soigne ${ physical } traumatisme physique."
-msgstr[1] "${ investigator.name } se soigne ${ physical } traumatismes physiques."
+msgstr[0] "${ investigator.name } soigne ${ physical } traumatisme physique."
+msgstr[1] "${ investigator.name } soigne ${ physical } traumatismes physiques."
 
 #, javascript-format
 msgctxt "nonbinary"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name } souffre d' ${ effect.physical } traumatisme physique."
-msgstr[1] "${ investigator.name } souffre de ${ effect.physical } traumatismes physiques."
+msgstr[0] "${ investigator.name } subit ${ effect.physical } traumatisme physique."
+msgstr[1] "${ investigator.name } subit ${ effect.physical } traumatismes physiques."
 
 msgctxt "nonbinary"
 msgid "Alive"
-msgstr "Vivant"
+msgstr "Vivant(e)"
 
 msgctxt "nonbinary"
 msgid "Resigned"
-msgstr "Abandon"
+msgstr "A abandonné"
 
 msgctxt "nonbinary"
 msgid "Defeated: physical trauma"
-msgstr "Vaincu : traumatisme physique"
+msgstr "Vaincu(e) : traumatisme physique"
 
 msgctxt "nonbinary"
 msgid "Defeated: mental trauma"
-msgstr "Vaincu : traumatisme mental"
+msgstr "Vaincu(e) : traumatisme mental"
 
 msgctxt "nonbinary"
 msgid "Defeated: no trauma"
-msgstr "Vaincu : aucun traumatisme"
+msgstr "Vaincu(e) : aucun traumatisme"
 
 #, javascript-format
 msgctxt "nonbinary"
@@ -8201,15 +8201,15 @@ msgstr "Traumatismes mentaux"
 
 msgctxt "nonbinary"
 msgid "Defeated"
-msgstr "Vaincu"
+msgstr "Vaincu(e)"
 
 msgctxt "nonbinary"
 msgid "Killed"
-msgstr "Tué"
+msgstr "Tué(e)"
 
 msgctxt "nonbinary"
 msgid "Insane"
-msgstr "Dément"
+msgstr "Dément(e)"
 
 msgctxt "Traits"
 msgid "All"

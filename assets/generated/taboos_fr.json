@@ -2050,7 +2050,7 @@
       {
         "code": "09041",
         "text": "La capacité [fast] de cette carte indique désormais : « Limite d'une fois par round. »",
-        "replacement_text": "Personnalisable. Limite de 1 par investigateur.\n<b>Forcé</b> - Au début du round : choisissez un des critères suivants pour ce round\n- Vous échouez à un test avec une différence de 2 ou plus.\n- Vous réussisez avec une différence de 3 ou plus.\nQuand le critère choisi est rempli, vous avez le droit d'incliner Hypothèse Empirique pour y ajouter 1 preuve.\n[fast] Dépensez 1 preuve : piochez 1 carte. (Limite de deux fois par round.)"
+        "replacement_text": "Mutée. Personnalisable. Limite de 1 par investigateur.\n<b>Forcé</b> – Au début du round : choisissez un des critères suivants pour ce round (vous échouez à un test avec une différence de 2 ou plus / vous réussissez un test avec une différence de 3 ou plus). Quand le critère choisi est rempli, vous avez le droit d'incliner Hypothèse Empirique pour y ajouter 1 preuve.\n[fast] Dépensez 1 preuve : piochez 1 carte. (Limite de deux fois par round.)"
       }
     ]
   }
