@@ -22,6 +22,7 @@ import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
 import StyleContext from '@styles/StyleContext';
 import StoryButton from './StoryButton';
 import { MAX_WIDTH } from '@styles/sizes';
+import { showGuideDrawChaosBag } from '@components/campaign/nav';
 
 
 interface Props {
@@ -80,6 +81,11 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
       branchPress(chaosBagIndex);
     }
   }, [chaosBagIndex, branchPress]);
+  const drawChaosBagPressed = useCallback(() => {
+    showGuideDrawChaosBag(componentId, campaignId, map(allInvestigators, c => c.code),
+      processedScenario.id.scenarioId,
+      !!standalone);
+  }, [campaignId, componentId, allInvestigators, processedScenario, standalone]);
   const [chaosBagDialog, showChaosBagDialog, setChaosBagDialogVisible] = useChaosBagDialog({
     componentId,
     allInvestigators,
@@ -130,6 +136,9 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
   const recordTraumaPressed = useCallback(() => {
     branchPress(PlayingScenarioBranch.RECORD_TRAUMA);
   }, [branchPress]);
+  const changeLeadInvestigatorPressed = useCallback(() => {
+    branchPress(PlayingScenarioBranch.CHANGE_LEAD_INVESTIGATOR);
+  }, [branchPress]);
 
   const showScenarioFaq = useCallback(() => {
     Navigation.push<ScenarioFaqProps>(componentId, {
@@ -153,11 +162,28 @@ export default function PlayOptionsComponent({ input, componentId, campaignId, i
           onPress={showCampaignLogDialog}
           bottomMargin={s}
         />
+        <View style={[styles.row, space.paddingBottomS]}>
+          <DeckButton
+            icon="chaos_bag"
+            title={t`Draw`}
+            detail={t`Draw random token`}
+            onPress={drawChaosBagPressed}
+            rightMargin={xs}
+          />
+          <DeckButton
+            icon="chaos_bag"
+            title={chaosBagIndex !== undefined ? t`View or edit` : t`View`}
+            detail={t`Review chaos bag`}
+            onPress={showChaosBagDialog}
+          />
+        </View>
         <DeckButton
-          icon="chaos_bag"
-          title={t`Chaos bag`}
-          detail={t`Review and simulate draw`}
-          onPress={showChaosBagDialog}
+          icon="per_investigator"
+          color="dark_gray"
+          title={t`Change lead investigator`}
+          noShadow
+          onPress={changeLeadInvestigatorPressed}
+          detail={t`To handle resignation or elimination`}
           bottomMargin={s}
         />
         { !input.fixed_resolution && (

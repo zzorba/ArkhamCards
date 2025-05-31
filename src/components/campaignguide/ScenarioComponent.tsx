@@ -1,8 +1,11 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import {
   Alert,
   KeyboardAvoidingView,
+  LayoutChangeEvent,
   Linking,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
   ScrollView,
   StyleSheet,
   View,
@@ -30,6 +33,10 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import { CustomData, Narration } from '@data/scenario/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useAudioAccess } from '@lib/audio/narrationPlayer';
+import Animated, { interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import RoundButton from '@components/core/RoundButton';
+import AppIcon from '@icons/AppIcon';
+import { m } from '@styles/space';
 
 interface ScenarioProps {
   standalone: boolean;
@@ -264,6 +271,62 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       Linking.openURL(link);
     }
   }, [customData, lang]);
+  const [showFAB, setShowFAB] = useState(false);
+  const [contentHeight, setContentHeight] = useState(0);
+  const [scrollViewHeight, setScrollViewHeight] = useState(0);
+  const scrollY = useRef(0);
+  const scrollViewRef = useRef<ScrollView>(null);
+  const fabOpacity = useSharedValue(0)
+
+  // Function to check if FAB should be visible
+  const checkFABVisibility = useCallback(() => {
+    if (contentHeight === 0 || scrollViewHeight === 0) {
+      return;
+    }
+
+    const distanceFromBottom = contentHeight - (scrollY.current + scrollViewHeight);
+    const shouldShowFAB = distanceFromBottom > 250;
+
+    if (shouldShowFAB !== showFAB) {
+      setShowFAB(shouldShowFAB);
+      fabOpacity.value = withTiming(shouldShowFAB ? 1 : 0, {
+        duration: 200,
+      });
+    }
+  }, [setShowFAB, contentHeight, scrollViewHeight, showFAB, fabOpacity]);
+
+  const handleScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const { contentOffset } = event.nativeEvent;
+    scrollY.current = contentOffset.y;
+    checkFABVisibility();
+  }, [checkFABVisibility]);
+
+  const scrollToBottom = useCallback(() => {
+    scrollViewRef.current?.scrollToEnd({ animated: true });
+  }, [scrollViewRef]);
+
+  const animatedFabStyle = useAnimatedStyle(() => {
+    return {
+      opacity: fabOpacity.value,
+      transform: [
+        {
+          scale: interpolate(fabOpacity.value, [0, 1], [0.8, 1]),
+        },
+      ],
+    };
+  });
+
+  const onContentSizeChange = useCallback((width: number, height: number) => {
+    setContentHeight(height);
+    // Check FAB visibility when content size changes
+    setTimeout(() => checkFABVisibility(), 0);
+  }, [setContentHeight, checkFABVisibility]);
+  const onLayout = useCallback((event: LayoutChangeEvent) => {
+    setScrollViewHeight(event.nativeEvent.layout.height);
+    // Check FAB visibility when content size changes
+    setTimeout(() => checkFABVisibility(), 0);
+  }, [setScrollViewHeight, checkFABVisibility]);
+
   return (
     <KeyboardAvoidingView
       style={[styles.keyboardView, backgroundStyle]}
@@ -273,19 +336,39 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
     >
       <KeepAwake />
       <NarrationWrapper>
-        <ScrollView contentContainerStyle={backgroundStyle} keyboardShouldPersistTaps="always">
-          { !!customData && <ArkhamButton icon="world" title={t`Download print and play cards`} onPress={downloadPressed} /> }
-          { !!hasInterludeFaq && (
-            <ArkhamButton icon="faq" title={t`Interlude FAQ`} onPress={showScenarioFaq} />
-          ) }
-          <StepsComponent
-            componentId={componentId}
-            width={width}
-            steps={processedScenario.steps}
-            switchCampaignScenario={switchCampaignScenario}
-          />
-          { !!footer ? footer : <View style={{ height: 100 }} /> }
-        </ScrollView>
+        <View style={{ position: 'relative' }}>
+          <ScrollView
+            ref={scrollViewRef}
+            contentContainerStyle={backgroundStyle}
+            keyboardShouldPersistTaps="always"
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
+            onContentSizeChange={onContentSizeChange}
+            onLayout={onLayout}
+          >
+            { !!customData && <ArkhamButton icon="world" title={t`Download print and play cards`} onPress={downloadPressed} /> }
+            { !!hasInterludeFaq && (
+              <ArkhamButton icon="faq" title={t`Interlude FAQ`} onPress={showScenarioFaq} />
+            ) }
+            <StepsComponent
+              componentId={componentId}
+              width={width}
+              steps={processedScenario.steps}
+              switchCampaignScenario={switchCampaignScenario}
+            />
+            { !!footer ? footer : <View style={{ height: 100 }} /> }
+          </ScrollView>
+          <View style={{ position: 'absolute', bottom: m, right: m }}>
+            <Animated.View
+              style={animatedFabStyle}
+              pointerEvents={showFAB ? 'auto' : 'none'}
+            >
+              <RoundButton onPress={scrollToBottom}>
+                <AppIcon name="expand_more" size={28} color={COLORS.D10} />
+              </RoundButton>
+            </Animated.View>
+          </View>
+        </View>
       </NarrationWrapper>
     </KeyboardAvoidingView>
   );

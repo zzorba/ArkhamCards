@@ -741,11 +741,8 @@ export default class FilterBuilder {
   }
 
   miscFilter(filters: FilterState): Brackets[] {
-    const { victory, multiClass } = filters;
+    const { victory } = filters;
     const result: Brackets[] = [];
-    if (multiClass) {
-      result.push(where('c.faction2_code is not null'));
-    }
     if (victory) {
       result.push(where('c.victory >= 0 or linked_card.victory >= 0'));
     }
@@ -1074,13 +1071,22 @@ export default class FilterBuilder {
     return combineQueries(BASIC_QUERY, [nameClause, levelClause], 'and');
   }
 
-  factionFilter(factions: FactionCodeType[]): Brackets[] {
-    return this.complexVectorClause(
-      'faction',
-      factions,
-      (valueName) =>
-        `(c.faction_code = :${valueName} OR c.faction2_code = :${valueName} OR c.faction3_code = :${valueName})`
-    );
+  factionFilter(filters: Partial<Pick<FilterState, 'factions' | 'multiClass'>>): Brackets[] {
+    const { factions, multiClass } = filters;
+    const result: Brackets[] = [];
+    if (multiClass) {
+      result.push(where('c.faction2_code is not null'));
+    }
+    if (factions?.length) {
+      result.push(...this.complexVectorClause(
+        'faction',
+        factions,
+        (valueName) =>
+          `(c.faction_code = :${valueName} OR c.faction2_code = :${valueName} OR c.faction3_code = :${valueName})`
+      ));
+    }
+    const query = combineQueriesOpt(result, 'or');
+    return query ? [query] : [];
   }
 
   tabooSetFilter(taboo_set: number): Brackets[] {
@@ -1101,7 +1107,7 @@ export default class FilterBuilder {
     return combineQueriesOpt(
       [
         ...this.tabooSetFilter(filters.taboo_set),
-        ...this.factionFilter(filters.factions),
+        ...this.factionFilter(filters),
         ...this.equalsVectorClause(filters.types, 'type_code'),
         ...this.equalsVectorClause(filters.subTypes, 'subtype_code'),
         ...this.playerCardFilters(filters),

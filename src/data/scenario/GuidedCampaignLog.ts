@@ -538,6 +538,9 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
         break;
     }
   }
+  recentLeadInvestigatorChoice(): string | undefined {
+    return this.latestScenarioData.leadInvestigator;
+  }
 
   leadInvestigatorChoice(): string {
     if (this.scenarioId === undefined) {

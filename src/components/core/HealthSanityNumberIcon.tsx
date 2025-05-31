@@ -94,7 +94,7 @@ export default function HealthSanityIcon({ type, count, perInvestigator }: Props
           { theCount > 10 ? (
             <>
               <CardIcon
-                name={`${getNumber(theCount % 10 )}-outline`}
+                name={`${getNumber(theCount % 10)}-outline`}
                 size={NUMBER_SIZE}
                 color={colors[type]}
               />
@@ -109,7 +109,7 @@ export default function HealthSanityIcon({ type, count, perInvestigator }: Props
               name={`${getNumber(count)}-outline`}
               size={NUMBER_SIZE}
               color={colors[type]}
-            /> 
+            />
           ) }
         </View>
       </View>

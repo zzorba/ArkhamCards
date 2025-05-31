@@ -339,8 +339,8 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   cultist: 4,
   tablet: 4,
   elder_thing: 4,
-  auto_fail: 1,
-  elder_sign: 1,
+  auto_fail: 2,
+  elder_sign: 2,
 };
 
 export const BURN_AFTER_READING_CODE = '08076';

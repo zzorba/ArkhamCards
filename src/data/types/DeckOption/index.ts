@@ -234,10 +234,10 @@ export class DeckOptionQueryBuilder {
         ) {
           // If we have a deck select ONLY the ones they specified.
           // If not select them all.
-          return this.filterBuilder.factionFilter([selection]);
+          return this.filterBuilder.factionFilter({ factions: [selection] });
         }
       }
-      return this.filterBuilder.factionFilter(this.option.faction_select);
+      return this.filterBuilder.factionFilter({ factions: this.option.faction_select });
     }
     return [];
   }
@@ -351,7 +351,7 @@ export class DeckOptionQueryBuilder {
       return combineQueriesOpt([ON_YOUR_OWN_RESTRICTION], 'and', negate ?? !!this.option.not);
     }
     const clauses: Brackets[] = [
-      ...this.filterBuilder.factionFilter(this.option.faction || []),
+      ...this.filterBuilder.factionFilter({ factions: this.option.faction || [] }),
       ...this.textClause(),
       ...this.levelFilter(isUpgrade),
       ...this.selectedFactionFilter(meta),

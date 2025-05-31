@@ -87,7 +87,7 @@ export default function InvestigatorCheckListComponent({
         scenarioInvestigators,
       filterInvestigator);
   }, [allowNewDecks, campaignInvestigators, campaignLog, scenarioInvestigators, filterInvestigator]);
-  const [leadInvestigatorState, setLeadInvestigator] = useState<string | undefined>();
+  const [leadInvestigatorState, setLeadInvestigator] = useState<string | undefined>(() => campaignLog.recentLeadInvestigatorChoice());
   const syncSelection = useCallback((selection: Toggles) => {
     const selectedInvestigators = filter(keys(selection), code => !!selection[code]);
     if (leadInvestigatorState === undefined) {

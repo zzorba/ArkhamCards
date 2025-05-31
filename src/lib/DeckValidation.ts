@@ -45,7 +45,7 @@ import {
   THE_INSANE_CODE,
 } from '@data/deck/specialCards';
 import DeckRequirement from '@data/types/DeckRequirement';
-import {parseMetaSlots} from "@lib/parseDeck";
+import { parseMetaSlots } from '@lib/parseDeck';
 
 const THE_INSANE_TAG = 'the_insane';
 

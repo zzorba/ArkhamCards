@@ -27,6 +27,7 @@ export const enum PlayingScenarioBranch {
   RESOLUTION = -2,
   DRAW_WEAKNESS = -3,
   RECORD_TRAUMA = -4,
+  CHANGE_LEAD_INVESTIGATOR = -5,
 }
 
 const CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID = '$check_investigator_defeat';
@@ -251,6 +252,33 @@ function editCampaignLogStep(): InputStep {
       ],
     },
   };
+}
+
+export const CHANGE_LEAD_INVESTIGATOR_STEP_ID = '$change_lead_investigator';
+function changeLeadInvestigatorStep(): InputStep {
+  return {
+    id: LEAD_INVESTIGATOR_STEP_ID,
+    type: 'input',
+    text: t`Choose lead investigator`,
+    input: {
+      type: 'investigator_choice',
+      investigator: 'any',
+      source: 'scenario',
+      choices: [
+        {
+          id: 'lead',
+          text: t`Lead Investigator`,
+          effects: [
+            {
+              type: 'scenario_data',
+              setting: 'lead_investigator',
+              investigator: '$input_value',
+            },
+          ],
+        },
+      ],
+    },
+  }
 }
 
 export const LEAD_INVESTIGATOR_STEP_ID = '$lead_investigator';
@@ -697,6 +725,8 @@ export function getFixedStep(
       return upgradeDecksStep;
     case LEAD_INVESTIGATOR_STEP_ID:
       return leadInvestigatorStep();
+    case CHANGE_LEAD_INVESTIGATOR_STEP_ID:
+      return changeLeadInvestigatorStep();
     case SAVE_STANDALONE_DECKS_ID:
       return saveStandaloneDecksStep;
     case RECORD_TRAUMA_STEP_ID:

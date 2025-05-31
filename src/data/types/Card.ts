@@ -909,13 +909,13 @@ export default class Card {
       if (option.choice) {
         switch (change.type) {
           case 'choose_trait': {
-            change.choice.find((trait) => {
+            change.choice.forEach((trait) => {
               const lower = trait.toLowerCase().trim();
               const translated = c('trait').t`Firearm`.toLowerCase();
               if (lower === 'firearm' || lower === translated) {
                 card.tags = uniq([
                   ...(card.tags || []),
-                  'fa'
+                  'fa',
                 ]);
               }
             })
