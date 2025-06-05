@@ -3867,9 +3867,6 @@ msgstr "Revisar e adicionar registros"
 msgid "Chaos bag"
 msgstr "Bolsa do caos"
 
-msgid "Review and simulate draw"
-msgstr "Revise e simule uma compra"
-
 msgid "Draw random"
 msgstr "Compra aleatória"
 
@@ -6143,6 +6140,24 @@ msgid ""
 "Are you sure you want to remove ${ investigator.card.name } from this campaign?\n"
 "\n"
 "Campaign log data associated with them may be lost."
+msgstr ""
+
+msgid "Draw random token"
+msgstr ""
+
+msgid "View or edit"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "Review chaos bag"
+msgstr ""
+
+msgid "Change lead investigator"
+msgstr ""
+
+msgid "To handle resignation or elimination"
 msgstr ""
 
 msgctxt "investigator"

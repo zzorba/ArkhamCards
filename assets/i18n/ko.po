@@ -3844,9 +3844,6 @@ msgstr "열람 및 기록 추가"
 msgid "Chaos bag"
 msgstr "혼돈 주머니"
 
-msgid "Review and simulate draw"
-msgstr "열람 및 뽑기 시뮬레이션"
-
 msgid "Draw random"
 msgstr "무작위 뽑기"
 
@@ -6149,6 +6146,24 @@ msgstr ""
 "정말로 캠페인에서 ${ investigator.card.name } 조사자를 제거하시겠습니까?\n"
 "\n"
 "관련된 캠페인 기록지 데이터가 손실될 수 있습니다."
+
+msgid "Draw random token"
+msgstr ""
+
+msgid "View or edit"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "Review chaos bag"
+msgstr ""
+
+msgid "Change lead investigator"
+msgstr ""
+
+msgid "To handle resignation or elimination"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

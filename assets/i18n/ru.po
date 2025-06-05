@@ -3892,9 +3892,6 @@ msgstr "Свериться и записать"
 msgid "Chaos bag"
 msgstr "Мешок хаоса"
 
-msgid "Review and simulate draw"
-msgstr "Посмотреть состав и тянуть жетоны"
-
 msgid "Draw random"
 msgstr "Взять случайную"
 
@@ -6268,6 +6265,24 @@ msgstr ""
 "Вы действительно хотите удалить ${ investigator.card.name } из этой кампании?\n"
 "\n"
 "Все связанные записи в журнале кампании будут утеряны."
+
+msgid "Draw random token"
+msgstr ""
+
+msgid "View or edit"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "Review chaos bag"
+msgstr ""
+
+msgid "Change lead investigator"
+msgstr ""
+
+msgid "To handle resignation or elimination"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
