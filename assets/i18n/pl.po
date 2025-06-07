@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.5\n"
 
 msgid "Guardian"
 msgstr "Strażnik"
@@ -216,10 +216,10 @@ msgid "Restore Campaign Data"
 msgstr "Przywracanie Kampanii"
 
 msgid "Caches"
-msgstr "Cache"
+msgstr "Pamięć podręczna"
 
 msgid "Clear cache"
-msgstr "Wyczyść cache"
+msgstr "Wyczyść pamięć podręczną"
 
 msgid "Are you sure you want to sign out?"
 msgstr "Czy na pewno chcesz się wylogować?"
@@ -581,7 +581,7 @@ msgid "Return to The House Always Wins"
 msgstr "Powrót Kasyna, które zawsze wygrywa"
 
 msgid "Return to The Miskatonic Museum"
-msgstr "Powrór Muzeum Miskatonic"
+msgstr "Powrót Muzeum Miskatonic"
 
 msgid "Return to Essex County Express"
 msgstr "Powrót Essex County Express"
@@ -933,7 +933,7 @@ msgstr "Tak"
 
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
-msgstr "Przygody of ${ investigator.name }"
+msgstr "Przygody ${ investigator.name }"
 
 #, javascript-format
 msgid "${ investigator.name } Investigates"
@@ -4777,10 +4777,10 @@ msgid "Durability"
 msgstr ""
 
 msgid "Leylines"
-msgstr ""
+msgstr "Linie geomantyczne"
 
 msgid "Offerings"
-msgstr ""
+msgstr "Ofiary"
 
 msgid "Patrol"
 msgstr ""
@@ -4939,7 +4939,7 @@ msgid "This tool lets you build a deck progressively, choosing one card at a tim
 msgstr "To narzędzie pozwala stopniowo budować talię, wybierając jedną kartę na razz ograniczonego zestawu kart."
 
 msgid "Each 'hand' of cards is taken at random from all possible cards that are allowed given the current investigator + deckbuilding option choices you have made."
-msgstr "Każda „ręka” jest losowo wybierana ze wszystkich dozwolonych kart biorąc pod uwagęaktualnego badacza oraz wymogi tworzenia talii."
+msgstr "Każda „ręka” jest losowo wybierana ze wszystkich dozwolonych kart biorąc pod uwagę aktualnego badacza oraz wymogi tworzenia talii."
 
 msgid "The drafting process will continue until your deck is full, but you can stop or change the settings at any time"
 msgstr "Proces draftowania będzie kontynuowany, dopóki talia nie będzie pełna, ale możesz zatrzymać lub zmienić ustawienia w dowolnym momencie"
@@ -5410,7 +5410,7 @@ msgid "Select scenario effects difficulty"
 msgstr "Wybierz poziom trudności scenariusza"
 
 msgid "In order to support custom modes like \"Stan-hard\", you may choose to use either side of the scenario reference card to show token effects and odds calculations in the app."
-msgstr ""
+msgstr "Aby obsłużyć niestandardowy poziom trudności, możesz użyć dowolnej strony karty pomocy scenariusza, aby wyświetlać jej efekty żetonów i użyć ich do kalkulatora szans aplikacji."
 
 msgid "Disabled"
 msgstr "Wyłączone"
@@ -5954,7 +5954,7 @@ msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.
 msgstr "Koszt doświadczenia: ${ basicXpCost } dla talii zawierających ${ investigator.name }, ${ challengeDiscountCost } dla pozostałych graczy"
 
 msgid "Aether"
-msgstr ""
+msgstr "Eter"
 
 msgid "Campaign Rules & FAQ"
 msgstr "Zasady kampanii i FAQ"
@@ -6034,7 +6034,7 @@ msgid "Clear image cache"
 msgstr "Wyczyść pamięć podręczną obrazów"
 
 msgid "Unable to create campaign"
-msgstr ""
+msgstr "Nie udało się stworzyć kampanii"
 
 msgid "Handle is already taken"
 msgstr ""
@@ -6087,10 +6087,10 @@ msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
 msgstr "chiński (uproszczony): ${ simplifiedChineseTranslators }"
 
 msgid "Narration"
-msgstr ""
+msgstr "Narracja"
 
 msgid "These cards might have been updated, from a new taboo list, or contain minor corrections."
-msgstr ""
+msgstr "Karty te mogły zostać zaktualizowane z nowej listy tabu, bądź zawierać drobne poprawki."
 
 msgid "Fatigue"
 msgstr ""
@@ -6149,89 +6149,101 @@ msgstr ""
 #, javascript-format
 msgid "Limit of ${ limit } card"
 msgid_plural "Limit of ${ limit } cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Limit ${ limit } karty"
+msgstr[1] "Limit ${ limit } kart"
+msgstr[2] "Limit ${ limit } kart"
 
 #, javascript-format
 msgid "${ total } of ${ attachment.targetSize }"
-msgstr ""
+msgstr "${ total } z ${ attachment.targetSize }"
 
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 #, javascript-format
 msgid "Act: ${ count }"
 msgid_plural "Acts: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Akt: ${ count }"
+msgstr[1] "Akty: ${ count }"
+msgstr[2] "Akty: ${ count }"
 
 #, javascript-format
 msgid "Agenda: ${ count }"
 msgid_plural "Agendas: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tajemnica: ${ count }"
+msgstr[1] "Tajemnice: ${ count }"
+msgstr[2] "Tajemnice: ${ count }"
 
 #, javascript-format
 msgid "Location: ${ count }"
 msgid_plural "Locations: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lokalizacja: ${ count }"
+msgstr[1] "Lokalizacje: ${ count }"
+msgstr[2] "Lokalizacje: ${ count }"
 
 #, javascript-format
 msgid "Enemy: ${ count }"
 msgid_plural "Enemies: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Wróg: ${ count }"
+msgstr[1] "Wrogowie: ${ count }"
+msgstr[2] "Wrogowie: ${ count }"
 
 #, javascript-format
 msgid "Enemy-Location: ${ count }"
 msgid_plural "Enemy-Locations: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Wróg-lokalizacja: ${ count }"
+msgstr[1] "Wrogowie-lokalizacje: ${ count }"
+msgstr[2] "Wrogowie-lokalizacje: ${ count }"
 
 #, javascript-format
 msgid "Treachery: ${ count }"
 msgid_plural "Treacheries: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Podstęp: ${ count }"
+msgstr[1] "Podstępy: ${ count }"
+msgstr[2] "Podstępy: ${ count }"
 
 #, javascript-format
 msgid "Story: ${ count }"
 msgid_plural "Stories: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Fabularna: ${ count }"
+msgstr[1] "Fabularne: ${ count }"
+msgstr[2] "Fabularne: ${ count }"
 
 #, javascript-format
 msgid "Key: ${ count }"
 msgid_plural "Keys: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Klucz: ${ count }"
+msgstr[1] "Klucze: ${ count }"
+msgstr[2] "Klucze: ${ count }"
 
 #, javascript-format
 msgid "Asset: ${ count }"
 msgid_plural "Assets: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Atut: ${ count }"
+msgstr[1] "Atuty: ${ count }"
+msgstr[2] "Atuty: ${ count }"
 
 msgid "Scenario reference"
 msgid_plural "Scenario references: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Karta pomocy scenariusza"
+msgstr[1] "Karty pomocy scenariusza: ${ count }"
+msgstr[2] "Karty pomocy scenariusza: ${ count }"
 
 #, javascript-format
 msgid "Unknown: ${ count }"
 msgid_plural "Unknowns: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nieznana: ${ count }"
+msgstr[1] "Nieznane: ${ count }"
+msgstr[2] "Nieznane: ${ count }"
 
 msgid "Campaign required"
-msgstr ""
+msgstr "Wymagana kampania"
 
 msgid "You must select a campaign."
-msgstr ""
+msgstr "Musisz wybrać kampanię."
 
 msgid "The Drowned City"
-msgstr ""
+msgstr "Zatopione miasto"
 
 msgid "Artifacts Earned"
 msgstr ""
@@ -6247,7 +6259,7 @@ msgstr ""
 
 #, javascript-format
 msgid "Remove ${ investigator.card.name }?"
-msgstr ""
+msgstr "Usunąć ${ investigator.card.name }?"
 
 #, javascript-format
 msgid ""
@@ -6255,6 +6267,9 @@ msgid ""
 "\n"
 "Campaign log data associated with them may be lost."
 msgstr ""
+"Jesteś pewny, że chcesz usunąć ${ investigator.card.name } z tej kampanii?\n"
+"\n"
+"Dane Dziennika Kampanii powiązane z tym badaczem mogą zostać utracone."
 
 msgid "Draw random token"
 msgstr ""
@@ -7864,11 +7879,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Arkham?"
-msgstr ""
+msgstr "Arkham?"
 
 msgctxt "trait"
 msgid "Artifact"
-msgstr ""
+msgstr "Artefakt"
 
 msgctxt "trait"
 msgid "Brand"
@@ -7884,15 +7899,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Egypt"
-msgstr ""
+msgstr "Egipt"
 
 msgctxt "trait"
 msgid "France"
-msgstr ""
+msgstr "Francja"
 
 msgctxt "trait"
 msgid "Glyph"
-msgstr ""
+msgstr "Glif"
 
 msgctxt "trait"
 msgid "Headgear"
@@ -7916,7 +7931,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "R'lyeh"
-msgstr ""
+msgstr "R'lyeh"
 
 msgctxt "trait"
 msgid "Rome"
@@ -7928,11 +7943,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Star Spawn"
-msgstr ""
+msgstr "Gwiezdny pomiot"
 
 msgctxt "trait"
 msgid "Stowaway"
-msgstr ""
+msgstr "Gapowicz"
 
 msgctxt "trait"
 msgid "Student"
@@ -8704,11 +8719,11 @@ msgstr "Ekwipunek"
 
 msgctxt "uses"
 msgid "Evidence"
-msgstr ""
+msgstr "Dowód"
 
 msgctxt "uses"
 msgid "Time"
-msgstr ""
+msgstr "Czas"
 
 msgctxt "uses"
 msgid "Treats"
