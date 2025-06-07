@@ -311,6 +311,16 @@ export class DeckOptionQueryBuilder {
       ];
     }
     if (
+      (this.option.tag?.length && this.option.tag[0] === 'in') ||
+      (this.option.text?.length && this.option.text[0] === 'investigate')
+    ) {
+      return [
+        where(
+          `c.real_text LIKE '%investigate%' or linked_card.real_text LIKE '%investigate%' or c.tags LIKE '%in%'`
+        ),
+      ];
+    }
+    if (
       this.option.text?.length &&
       this.option.text[0] === '<b>Fight\\.<\\/b>'
     ) {
