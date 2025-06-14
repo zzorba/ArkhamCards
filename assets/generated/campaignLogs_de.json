@@ -3925,13 +3925,6 @@
         "multiple": true
       },
       {
-        "id": "medicine",
-        "name": "Medizin",
-        "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
-        "cost": 2,
-        "multiple": true
-      },
-      {
         "id": "pendant",
         "name": "Glücksbringer",
         "description": "Eigentlich nutzlos, aber angenehme Erinnerungen spenden Reisenden fern der Heimat Behaglichkeit.",
@@ -6425,13 +6418,6 @@
       {
         "id": "medicine",
         "name": "Medikamente",
-        "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
-        "cost": 2,
-        "multiple": true
-      },
-      {
-        "id": "medicine",
-        "name": "Medizin",
         "description": "Um Krankheiten, Infektionen oder Gift zu bekämpfen.",
         "cost": 2,
         "multiple": true

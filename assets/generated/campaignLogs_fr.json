@@ -5405,35 +5405,35 @@
         "entries": [
           {
             "id": "do_no_harm",
-            "text": "Progression de la Tâche - Ne Pas Nuire :"
+            "text": "Progression de la Tâche – Ne Pas Nuire :"
           },
           {
             "id": "dreams_of_destruction",
-            "text": "Progression de la Tâche - Rêves de Destruction :"
+            "text": "Progression de la Tâche – Rêves de Destruction :"
           },
           {
             "id": "good_money",
-            "text": "Progression de la Tâche - Une Somme Inespérée :"
+            "text": "Progression de la Tâche – Une Somme Inespérée :"
           },
           {
             "id": "no_place_like_home",
-            "text": "Progression de la Tâche - On n’Est Bien que Chez Soi :"
+            "text": "Progression de la Tâche – On n’Est Bien que Chez Soi :"
           },
           {
             "id": "plumb_the_depths",
-            "text": "Progression de la Tâche - Sonder les Profondeurs :"
+            "text": "Progression de la Tâche – Sonder les Profondeurs :"
           },
           {
             "id": "prove_your_worth",
-            "text": "Progression de la Tâche - Prouvez Votre Valeur :"
+            "text": "Progression de la Tâche – Prouvez Votre Valeur :"
           },
           {
             "id": "toe_the_line",
-            "text": "Progression de la Tâche - Rentrer Dans le Rang :"
+            "text": "Progression de la Tâche – Rentrer Dans le Rang :"
           },
           {
             "id": "walk_in_faith",
-            "text": "Progression de la Tâche - Marcher Dans la Foi :"
+            "text": "Progression de la Tâche – Marcher Dans la Foi :"
           }
         ]
       },
@@ -5539,7 +5539,7 @@
           },
           {
             "id": "discovered_an_alien_language",
-            "text": "Les investigateurs ont découvert un langage extraterrestre."
+            "text": "les investigateurs ont découvert un langage extraterrestre."
           },
           {
             "id": "expedition_abandoned_pilgrim",
@@ -5555,7 +5555,7 @@
           },
           {
             "id": "expedition_helped_pilgrim",
-            "text": ">l’expédition a aidé le pèlerin."
+            "text": "l’expédition a aidé le pèlerin."
           },
           {
             "id": "exterminated_the_alien_parasites",
@@ -5654,15 +5654,15 @@
         "entries": [
           {
             "id": "tdc_good_money_extra_resources",
-            "masculine_text": "commence la partie avec 3 ressources supplémentaires.",
-            "feminine_text": "commence la partie avec 3 ressources supplémentaires.",
-            "nonbinary_text": "commence la partie avec 3 ressources supplémentaires."
+            "masculine_text": "#name# commence la partie avec 3 ressources supplémentaires.",
+            "feminine_text": "#name# commence la partie avec 3 ressources supplémentaires.",
+            "nonbinary_text": "#name# commence la partie avec 3 ressources supplémentaires."
           },
           {
             "id": "tdc_good_money_no_upkeep",
-            "masculine_text": "ne peut pas gagner de ressources lors de la phase d’entretien.",
-            "feminine_text": "ne peut pas gagner de ressources lors de la phase d’entretien.",
-            "nonbinary_text": "ne peut pas gagner de ressources lors de la phase d’entretien."
+            "masculine_text": "#name# ne peut pas gagner de ressources lors de la phase d’entretien.",
+            "feminine_text": "#name# ne peut pas gagner de ressources lors de la phase d’entretien.",
+            "nonbinary_text": "#name# ne peut pas gagner de ressources lors de la phase d’entretien."
           },
           {
             "id": "kept_barrier_node",
@@ -5747,7 +5747,7 @@
         "entries": [
           {
             "id": "court_of_the_ancients",
-            "text": "Cour des Anciens"
+            "text": "La Cour des Anciens"
           },
           {
             "id": "obsidian_canyons",
@@ -5771,7 +5771,7 @@
           },
           {
             "id": "the_western_wall",
-            "text": "Le Mur occidental"
+            "text": "Le Mur Occidental"
           }
         ]
       }

@@ -796,19 +796,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -1730,7 +1730,7 @@ msgstr "Abandon"
 
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
-msgstr "Passez au <b>${ nextScenarioName }</b>."
+msgstr "Passez à <b>${ nextScenarioName }</b>."
 
 msgid "Mark the scenarios you've played through to make the results start showing up in search results."
 msgstr "Marquez les scénarios que vous avez déjà joués pour les rendre visibles dans les résultats de recherche."
@@ -1879,7 +1879,7 @@ msgstr "Vérifiez votre Carnet de Campagne, <i>${ logEntry.section }</i> n'est-i
 msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
 msgstr[0] "${ investigators } doit lire <b>${ prompt }</b>."
-msgstr[1] "${ investigators } doit lire <b>${ prompt }</b>."
+msgstr[1] "${ investigators } doivent lire <b>${ prompt }</b>."
 
 #, javascript-format
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
@@ -1907,7 +1907,7 @@ msgstr "Si tous les investigateurs ont été <b>tués</b>."
 
 #, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr "Vérifiez vos ${ logEntry.section }. <i>Si ${ logEntry.text }..</i>"
+msgstr "Vérifiez vos ${ logEntry.section }. Si <i>${ logEntry.text }..</i>"
 
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
@@ -3911,7 +3911,7 @@ msgstr "Modifier la sélection"
 
 #, javascript-format
 msgid "Check Campaign Log. <i>If ${ logEntry.text }</i>"
-msgstr "Vérifiez votre Carnet de Campagne. <i>Si ${ logEntry.text }</i> :"
+msgstr "Vérifiez votre Carnet de Campagne. Si <i>${ logEntry.text }</i> :"
 
 msgid "Discord"
 msgstr "Discord"
@@ -6206,22 +6206,22 @@ msgstr ""
 "Les informations lui étant associées dans le Carnet de Campagne risquent d'être perdues."
 
 msgid "Draw random token"
-msgstr ""
+msgstr "Révéler un pion Chaos au hasard"
 
 msgid "View or edit"
-msgstr ""
+msgstr "Voir ou modifier"
 
 msgid "View"
-msgstr ""
+msgstr "Voir"
 
 msgid "Review chaos bag"
-msgstr ""
+msgstr "Examiner la réserve du Chaos"
 
 msgid "Change lead investigator"
-msgstr ""
+msgstr "Changer d'investigateur principal"
 
 msgid "To handle resignation or elimination"
-msgstr ""
+msgstr "En cas d'abandon ou d'élimination"
 
 msgctxt "investigator"
 msgid "Custom"
