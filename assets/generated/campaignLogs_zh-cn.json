@@ -887,6 +887,10 @@
           },
           {
             "id": "the_black_stone",
+            "text": "The Black Stone"
+          },
+          {
+            "id": "the_black_stone",
             "text": "黑色岩石"
           },
           {
@@ -965,6 +969,10 @@
           {
             "id": "standing_stones",
             "text": "耸立岩石"
+          },
+          {
+            "id": "the_black_stone",
+            "text": "The Black Stone"
           },
           {
             "id": "the_black_stone",
