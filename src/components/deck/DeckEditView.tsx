@@ -97,6 +97,7 @@ function DeckEditView({
       return investigatorPart;
     }
   }, [specialCards, deckBuildingMeta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
+
   const mode = useMemo(() => {
     if (storyOnly || weaknessOnly) {
       return 'story';

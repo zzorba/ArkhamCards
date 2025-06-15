@@ -46,8 +46,8 @@ export function useInvestigatorChoice(code: string | undefined, meta?: DeckMeta,
     }
     return uniq([
       code,
-      alternateFront ?? code,
-      alternateBack ?? code,
+      alternateFront || code,
+      alternateBack || code,
     ]);
   }, [code, alternateFront, alternateBack]);
   const [playerCards] = usePlayerCards(codes, false, tabooSetOverride);
@@ -56,8 +56,8 @@ export function useInvestigatorChoice(code: string | undefined, meta?: DeckMeta,
       return undefined;
     }
     const main = playerCards?.[code];
-    const front = playerCards?.[alternateFront ?? code];
-    const back = playerCards?.[alternateBack ?? code];
+    const front = playerCards?.[alternateFront || code];
+    const back = playerCards?.[alternateBack || code];
     if (!front || !back || !main) {
       return undefined;
     }

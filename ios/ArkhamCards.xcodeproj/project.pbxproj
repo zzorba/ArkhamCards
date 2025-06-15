@@ -721,7 +721,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 5.0.8;
+				MARKETING_VERSION = 5.0.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -773,7 +773,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 5.0.8;
+				MARKETING_VERSION = 5.0.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
