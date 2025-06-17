@@ -50,7 +50,7 @@ function renderInvestigators(investigatorCards: Card[], option: BoolOption, list
         text={ngettext(
           msgid`${investigators} must read <b>${prompt}</b>.`,
           `${investigators} must read <b>${prompt}</b>.`,
-          investigators.length
+          investigatorCards.length
         )}
       />
     </SetupStepWrapper>
