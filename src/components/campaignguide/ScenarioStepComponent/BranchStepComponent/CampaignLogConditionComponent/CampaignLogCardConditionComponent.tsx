@@ -58,7 +58,7 @@ export function CampaignLogCardsInvestigatorConditionComponent({ step, cards, pr
         text={ngettext(
           msgid`${investigators} must read <b>${prompt}</b>.`,
           `${investigators} must read <b>${prompt}</b>.`,
-          investigators.length
+          investigatorCards.length
         )}
       />
     </SetupStepWrapper>
