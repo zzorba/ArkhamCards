@@ -1419,7 +1419,7 @@
       {
         "code": "04233",
         "text": "La capacité de cette carte indique désormais : « Gagnez 1 ressource pour chaque action que vous avez effectuée à ce tour… »",
-        "replacement_text": "Mutée. Gagnez 1 ressource pour chaque action que vous avez effectuée à ce tour <i>(y compris celle-ci)</i>. Si c'est votre tour, celui-ci prend fin."
+        "replacement_text": "Mutée. Gagnez 1 ressource pour chaque action que vous avez effectuée à ce tour <i>(en comptant celle-ci)</i>. Si c'est votre tour, terminez votre tour."
       },
       {
         "code": "06002",
@@ -1900,7 +1900,7 @@
       {
         "code": "04233",
         "text": "La capacité de cette carte indique désormais : « Gagnez 1 ressource pour chaque action que vous avez effectuée à ce tour… »",
-        "replacement_text": "Mutée. Gagnez 1 ressource pour chaque action que vous avez effectuée à ce tour <i>(y compris celle-ci)</i>. Si c'est votre tour, celui-ci prend fin."
+        "replacement_text": "Mutée. Gagnez 1 ressource pour chaque action que vous avez effectuée à ce tour <i>(en comptant celle-ci)</i>. Si c'est votre tour, terminez votre tour."
       },
       {
         "code": "06002",

@@ -2010,7 +2010,7 @@ msgid "Draw random basic weakness"
 msgstr "Piocher une faiblesse de base au hasard"
 
 msgid "Start playing the scenario now."
-msgstr "Commencer le scénario maintenant."
+msgstr "Vous êtes maintenant prêt à commencer."
 
 #, javascript-format
 msgid "In your Campaign Log, record that <i>${ text }</i>"
@@ -5882,7 +5882,7 @@ msgid "The Dream-Eaters Investigator Expansion"
 msgstr "Les Dévoreurs de Rêves – Extension Investigateurs"
 
 msgid "The Dream-Eaters Campaign Expansion"
-msgstr "Les Dévoreurs de Rêves Ǿ Extension Campagne"
+msgstr "Les Dévoreurs de Rêves – Extension Campagne"
 
 msgid "The Innsmouth Conspiracy Investigator Expansion"
 msgstr "La Conspiration d’Innsmouth – Extension Investigateurs"
