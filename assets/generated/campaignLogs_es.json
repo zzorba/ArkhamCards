@@ -5405,35 +5405,35 @@
         "entries": [
           {
             "id": "do_no_harm",
-            "text": "Task Progress - Do No Harm:"
+            "text": "Progreso de la tarea No hacer daño:"
           },
           {
             "id": "dreams_of_destruction",
-            "text": "Task Progress - Dreams of Destruction:"
+            "text": "Progreso de la tarea Sueños de destrucción:"
           },
           {
             "id": "good_money",
-            "text": "Task Progress - Good Money:"
+            "text": "Progreso de la tarea Un buen dinero:"
           },
           {
             "id": "no_place_like_home",
-            "text": "Task Progress - No Place Like Home:"
+            "text": "Progreso de la tarea Como en casa, en ningún sitio:"
           },
           {
             "id": "plumb_the_depths",
-            "text": "Task Progress - Plumb the Depths:"
+            "text": "Progreso de la tarea Sondear las profundidades:"
           },
           {
             "id": "prove_your_worth",
-            "text": "Task Progress - Prove Your Worth:"
+            "text": "Progreso de la tarea Demostrar tu valía:"
           },
           {
             "id": "toe_the_line",
-            "text": "Task Progress - Toe the Line:"
+            "text": "Progreso de la tarea Cumplir las normas:"
           },
           {
             "id": "walk_in_faith",
-            "text": "Task Progress - Walk in Faith:"
+            "text": "Progreso de la tarea Caminar con fe:"
           }
         ]
       },
@@ -5462,7 +5462,7 @@
           },
           {
             "id": "tidal_tablet",
-            "text": "Tidal Tablet"
+            "text": "Tabilla de marea"
           }
         ]
       },
@@ -5539,23 +5539,23 @@
           },
           {
             "id": "discovered_an_alien_language",
-            "text": "the investigators discovered an alien language."
+            "text": "los investigadores descubrieron un idioma alienígena."
           },
           {
             "id": "expedition_abandoned_pilgrim",
-            "text": "the expedition left the pilgrim behind."
+            "text": "la expedición abandonó al peregrino."
           },
           {
             "id": "expedition_headed_east",
-            "text": "the expedition headed east."
+            "text": "la expedición se dirigió hacia el este."
           },
           {
             "id": "expedition_headed_west",
-            "text": "the expedition headed west."
+            "text": "la expedición se dirigió hacia el oeste."
           },
           {
             "id": "expedition_helped_pilgrim",
-            "text": "the expedition helped the pilgrim."
+            "text": "la expedición ayudó al peregrino."
           },
           {
             "id": "exterminated_the_alien_parasites",
@@ -5575,11 +5575,11 @@
           },
           {
             "id": "ruby_lost_the_bet",
-            "text": "Ruby lost the bet."
+            "text": "Ruby perdió la apuesta."
           },
           {
             "id": "ruby_won_the_bet",
-            "text": "Ruby won the bet."
+            "text": "Ruby ganó la apuesta."
           },
           {
             "id": "stood_together",
@@ -5587,11 +5587,11 @@
           },
           {
             "id": "the_creature_was_defeated",
-            "text": "the creature was defeated."
+            "text": "la criatura ha sido derrotada."
           },
           {
             "id": "the_inner_sanctum_was_unsealed",
-            "text": "the inner sanctum was unsealed."
+            "text": "los investigadores abrieron el santuario interior."
           },
           {
             "id": "the_power_was_diverted",
@@ -5653,16 +5653,16 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "tdc_good_money_no_upkeep",
-            "masculine_text": "#name# cannot gain resources during the upkeep phase.",
-            "feminine_text": "#name# cannot gain resources during the upkeep phase.",
-            "nonbinary_text": "#name# cannot gain resources during the upkeep phase."
+            "id": "tdc_good_money_extra_resources",
+            "masculine_text": "#name# comienza la partida con 3 recursos adicionales.",
+            "feminine_text": "#name# comienza la partida con 3 recursos adicionales.",
+            "nonbinary_text": "#name# comienza la partida con 3 recursos adicionales."
           },
           {
-            "id": "tdc_good_money_extra_resources",
-            "masculine_text": "#name# starts with 3 additional resources.",
-            "feminine_text": "#name# starts with 3 additional resources.",
-            "nonbinary_text": "#name# starts with 3 additional resources."
+            "id": "tdc_good_money_no_upkeep",
+            "masculine_text": "#name# no puede obtener recursos durante la fase de Mantenimiento.",
+            "feminine_text": "#name# no puede obtener recursos durante la fase de Mantenimiento.",
+            "nonbinary_text": "#name# no puede obtener recursos durante la fase de Mantenimiento."
           },
           {
             "id": "kept_barrier_node",
