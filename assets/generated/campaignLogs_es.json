@@ -5442,23 +5442,23 @@
         "entries": [
           {
             "id": "barrier_node",
-            "text": "Barrier Node"
+            "text": "Nodo de la barrera"
           },
           {
             "id": "clah_horror",
-            "text": "Horror in Clay"
+            "text": "Horror de arcilla"
           },
           {
             "id": "grisly_mask",
-            "text": "Grisly Mask"
+            "text": "“Máscara” macabra"
           },
           {
             "id": "obsidian_claw",
-            "text": "Obsidian Claw"
+            "text": "Garra de obsidiana"
           },
           {
             "id": "shard",
-            "text": "Shard of Y'ch'lecht"
+            "text": "Fragmento de Y’ch’lecht"
           },
           {
             "id": "tidal_tablet",
@@ -5470,72 +5470,72 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "no_place_like_home_succeed",
-            "masculine_text": "#name# found his true home.",
-            "feminine_text": "#name# found her true home.",
-            "nonbinary_text": "#name# found their true home."
-          },
-          {
-            "id": "toe_the_line_succeed",
-            "masculine_text": "#name# found new work.",
-            "feminine_text": "#name# found new work.",
-            "nonbinary_text": "#name# found new work."
-          },
-          {
-            "id": "walk_in_faith_succeed",
-            "masculine_text": "#name# is strong in their faith.",
-            "feminine_text": "#name# is strong in their faith.",
-            "nonbinary_text": "#name# is strong in their faith."
-          },
-          {
             "id": "plumb_the_depths_succeed",
-            "masculine_text": "#name# learned the secret truth.",
-            "feminine_text": "#name# learned the secret truth.",
-            "nonbinary_text": "#name# learned the secret truth."
+            "masculine_text": "#name# descubrió la verdad secreta.",
+            "feminine_text": "#name# descubrió la verdad secreta.",
+            "nonbinary_text": "#name# descubrió la verdad secreta."
           },
           {
-            "id": "good_money_succeed",
-            "masculine_text": "#name# made bank.",
-            "feminine_text": "#name# made bank.",
-            "nonbinary_text": "#name# made bank."
-          },
-          {
-            "id": "prove_your_worth_succeed",
-            "masculine_text": "#name# pulled their weight.",
-            "feminine_text": "#name# pulled their weight.",
-            "nonbinary_text": "#name# pulled their weight."
-          },
-          {
-            "id": "do_no_harm_succeed",
-            "masculine_text": "#name# swore an oath to protect others.",
-            "feminine_text": "#name# swore an oath to protect others.",
-            "nonbinary_text": "#name# swore an oath to protect others."
+            "id": "no_place_like_home_succeed",
+            "masculine_text": "#name# encontró su verdadero hogar.",
+            "feminine_text": "#name# encontró su verdadero hogar.",
+            "nonbinary_text": "#name# encontró su verdadero hogar."
           },
           {
             "id": "dreams_of_destruction_succeed",
-            "masculine_text": "#name# understands the future.",
-            "feminine_text": "#name# understands the future.",
-            "nonbinary_text": "#name# understands the future."
+            "masculine_text": "#name# entiende el futuro.",
+            "feminine_text": "#name# entiende el futuro.",
+            "nonbinary_text": "#name# entiende el futuro."
+          },
+          {
+            "id": "walk_in_faith_succeed",
+            "masculine_text": "#name# es fuerte en su fe.",
+            "feminine_text": "#name# es fuerte en su fe.",
+            "nonbinary_text": "#name# es fuerte en su fe."
+          },
+          {
+            "id": "toe_the_line_succeed",
+            "masculine_text": "#name# ha encontrado trabajo.",
+            "feminine_text": "#name# ha encontrado trabajo.",
+            "nonbinary_text": "#name# ha encontrado trabajo."
+          },
+          {
+            "id": "prove_your_worth_succeed",
+            "masculine_text": "#name# ha hecho su parte.",
+            "feminine_text": "#name# ha hecho su parte.",
+            "nonbinary_text": "#name# ha hecho su parte."
+          },
+          {
+            "id": "do_no_harm_succeed",
+            "masculine_text": "#name# hizo el juramento de proteger a los demás.",
+            "feminine_text": "#name# hizo el juramento de proteger a los demás.",
+            "nonbinary_text": "#name# hizo el juramento de proteger a los demás."
+          },
+          {
+            "id": "good_money_succeed",
+            "masculine_text": "#name# se ha forrado.",
+            "feminine_text": "#name# se ha forrado.",
+            "nonbinary_text": "#name# se ha forrado."
           },
           {
             "id": "cthulhu_annihilated_the_city_of_arkham",
-            "text": "Cthulhu annihilated the city of Arkham."
+            "text": "Cthulhu aniquiló la ciudad de Arkham."
           },
           {
             "id": "cthulhu_was_banished",
-            "text": "Cthulhu was banished."
+            "text": "los investigadores desterraron a Cthulhu."
           },
           {
             "id": "cthulhu_was_banished_but_arkham_was_destroyed",
-            "text": "Cthulhu was banished, but Arkham was destroyed."
+            "text": "los investigadores desterraron a Cthulhu, pero Arkham quedó destruida."
           },
           {
             "id": "cthulhu_was_driven_away",
-            "text": "Cthulhu was driven away."
+            "text": "los investigadores hicieron huir a Cthulhu."
           },
           {
             "id": "did_not_confront_the_nightmare",
-            "text": "the investigators did not confront the nightmare."
+            "text": "los investigadores no se enfrentaron a la pesadilla."
           },
           {
             "id": "discovered_an_alien_language",
@@ -5559,19 +5559,19 @@
           },
           {
             "id": "exterminated_the_alien_parasites",
-            "text": "the investigators exterminated the alien parasites."
+            "text": "los investigadores exterminaron a los parásitos alienígenas."
           },
           {
             "id": "halted_cthulhus_awakening",
-            "text": "the investigators halted Cthulhu's awakening."
+            "text": "los investigadores detuvieron el despertar de Cthulhu."
           },
           {
             "id": "pilgrims_were_devoured",
-            "text": "the pilgrims were devoured."
+            "text": "los peregrinos fueron devorados."
           },
           {
             "id": "pilgrims_were_saved",
-            "text": "the pilgrims were saved."
+            "text": "los investigadores salvaron a los peregrinos."
           },
           {
             "id": "ruby_lost_the_bet",
@@ -5583,7 +5583,7 @@
           },
           {
             "id": "stood_together",
-            "text": "the investigators stood together."
+            "text": "los investigadores resistieron juntos."
           },
           {
             "id": "the_creature_was_defeated",
@@ -5595,11 +5595,11 @@
           },
           {
             "id": "the_power_was_diverted",
-            "text": "the power was diverted."
+            "text": "la energía fue desviada."
           },
           {
             "id": "your_allies_have_a_plan",
-            "text": "your allies have a plan."
+            "text": "tus aliados tienen un plan."
           }
         ]
       },
@@ -5608,11 +5608,11 @@
         "entries": [
           {
             "id": "downtown",
-            "text": "Downtown"
+            "text": "Centro"
           },
           {
             "id": "easttown",
-            "text": "Easttown"
+            "text": "Barrio Este"
           },
           {
             "id": "miskatonic_university",
@@ -5620,19 +5620,19 @@
           },
           {
             "id": "northside",
-            "text": "Northside"
+            "text": "Barrio Norte"
           },
           {
             "id": "rivertown",
-            "text": "Rivertown"
+            "text": "Barrio Fluvial"
           },
           {
             "id": "southside",
-            "text": "Southside"
+            "text": "Barrio Sur"
           },
           {
             "id": "st_marys_hospital",
-            "text": "St. Mary's Hospital"
+            "text": "Hospital de Santa María"
           }
         ]
       },
@@ -5645,7 +5645,7 @@
           },
           {
             "id": "tdc_rune_s",
-            "text": "Machine"
+            "text": "Máquina"
           }
         ]
       },

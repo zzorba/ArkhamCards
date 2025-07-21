@@ -11231,7 +11231,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Cthulhu's Rage",
+          "prompt": "Furia de Cthulhu",
           "min": 0
         }
       },
@@ -11260,7 +11260,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Cthulhu's Rage",
+          "prompt": "Furia de Cthulhu",
           "min": 0,
           "adjustment": 2
         }
