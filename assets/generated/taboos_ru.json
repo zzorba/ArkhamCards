@@ -1033,7 +1033,7 @@
       {
         "code": "08100",
         "text": "Данная карта позволяет совершить только базовые движение, уход, исследование.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Изменённая. Многоразовая (3 тайны).\n[fast] В свой ход поверните «Схему эонов» и потратьте 1 тайну: Выберите и совершите два разных базовых действия из следующих — <b>«Движение»</b>, <b>«Уход»</b> или <b>«Исследование»</b>."
       },
       {
         "code": "08093",
@@ -1502,7 +1502,7 @@
       {
         "code": "08100",
         "text": "Данная карта позволяет совершить только базовые движение, уход, исследование.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Изменённая. Многоразовая (3 тайны).\n[fast] В свой ход поверните «Схему эонов» и потратьте 1 тайну: Выберите и совершите два разных базовых действия из следующих — <b>«Движение»</b>, <b>«Уход»</b> или <b>«Исследование»</b>."
       },
       {
         "code": "08093",
@@ -1983,7 +1983,7 @@
       {
         "code": "08100",
         "text": "Данная карта позволяет совершить только базовые движение, уход, исследование.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Изменённая. Многоразовая (3 тайны).\n[fast] В свой ход поверните «Схему эонов» и потратьте 1 тайну: Выберите и совершите два разных базовых действия из следующих — <b>«Движение»</b>, <b>«Уход»</b> или <b>«Исследование»</b>."
       },
       {
         "code": "08113",
@@ -2125,17 +2125,17 @@
       {
         "code": "05156",
         "text": "This card gains \"(Limit twice per round.)\"",
-        "replacement_text": "Mutated. Fast. Play during any investigator's turn, except during an action.\nImmediately take an action as if it were your turn. This action does not count toward the number of actions you can take each turn. (Limit twice per round.)"
+        "replacement_text": "Изменённое. Играйте в ход любого сыщика, но не во время действия.\nСовершите 1 действие, как если бы сейчас был ваш ход (это действие не идёт в счёт числа действий, которые вы можете совершить за ход). (Не чаще 2 раз в раунд.)"
       },
       {
         "code": "09072",
         "text": "This card's first bullet point now reads: \"That event gains: \"Fast. Play only during your turn.\"\"",
-        "replacement_text": "Mutated. [reaction] When you play a [[Tactic]] or [[Trick]] event, exhaust Chuck Fergus: Choose one -\n- That event gains: \"Fast. Play only during your turn.\"\n- That event costs 2 fewer resources to play.\n- You get +2 skill value while performing a skill test during the resolution of that event."
+        "replacement_text": "Изменённый. [reaction] Когда вы играете событие-[[уловку]] или событие-[[тактику]], поверните «Чака Фергюса»: Выберите одно:\n- Это событие получает: «Быстрое. Играйте только в свой ход.» \n- Снизьте на 2 цену этого события в ресурсах.\n- У вас +2 к навыку в одной проверке, которую вы проходите при розыгрыше этого события."
       },
       {
         "code": "60332",
         "text": "This card's first bullet point now reads: \"That event gains: \"Fast. Play only during your turn.\"\"",
-        "replacement_text": "Mutated. [reaction] When you play a [[Tactic]] or [[Trick]] event, exhaust Chuck Fergus: Choose two -\n- That event gains: \"Fast. Play only during your turn.\"\n- That event costs 2 fewer resources to play.\n- You get +2 skill value while performing a skill test during the resolution of that event."
+        "replacement_text": "Изменённый. [reaction] Когда вы играете событие-[[уловку]] или событие-[[тактику]], поверните «Чака Фергюса»: Выберите два:\n- Это событие получает: «Быстрое. Играйте только в свой ход.» \n- Снизьте на 2 цену этого события в ресурсах.\n- У вас +2 к навыку в одной проверке, которую вы проходите при розыгрыше этого события."
       },
       {
         "code": "05324",
@@ -2171,7 +2171,7 @@
         "code": "60233",
         "deck_limit": 0,
         "text": "Запрещена.",
-        "replacement_text": "Forbidden. Uses (6 secrets). Limit 1 per deck.\n[fast] Spend 1 secret: You get +2 skill value for this test.\n[fast] Spend 2 secrets: Draw 2 cards.\n[fast] Spend 3 secrets: Discover 1 clue at any location.\n][fast] Spend 4 secrets: Deal 3 damage to an enemy engaged with you."
+        "replacement_text": "Запрещён. Многоразовый (6 тайн). Не более 1 такой карты в колоде.\n[fast] Потратьте 1 тайну: У вас +2 к навыку в этой проверке.\n[fast] Потратьте 2 тайны: Возьмите 2 карты.\n[fast] Потратьте 3 тайны: Найдите 1 улику в любой локации.\n[fast] Потратьте 4 тайны: Нанесите 3 раны врагу, который сражается с вами."
       },
       {
         "code": "07197",
@@ -2355,7 +2355,7 @@
         "code": "02026",
         "deck_limit": 0,
         "text": "Запрещена.",
-        "replacement_text": "Forbidden. Max 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice."
+        "replacement_text": "Запрещено. Максимум 1 такая карта на проверку.\nУдвойте сложность этой проверки. При успехе разыграйте эффект успешной проверки дважды."
       },
       {
         "code": "02029",
@@ -2509,7 +2509,7 @@
       {
         "code": "08100",
         "text": "Данная карта позволяет совершить только базовые движение, уход, исследование.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Изменённая. Многоразовая (3 тайны).\n[fast] В свой ход поверните «Схему эонов» и потратьте 1 тайну: Выберите и совершите два разных базовых действия из следующих — <b>«Движение»</b>, <b>«Уход»</b> или <b>«Исследование»</b>."
       },
       {
         "code": "08113",
@@ -2571,7 +2571,7 @@
         ],
         "customization_change": "- <i>«Предай»</i>. Нанесите 1 рану любому врагу (в локации этого врага), чьё значение боя не выше, чем у этого врага.\n- <i>«Скройся»</i>. Этот враг поворачивается.\n- <i>«Сознайся»</i>. Найдите 1 улику в локации этого врага, если её неясность не выше здоровья этого врага.\n- <i>«Смути»</i>. Автоматически уйдите от любого врага (в локации этого врага), чьё значение ухода не выше, чем у этого врага.\n[fast]: Верните «Слово силы» себе на руку.\nМожете совершать <b>перегооры</b> со «Слова силы», будучи на расстоянии до 1 связи от локации прикреплённого врага.\n[action] Если прикреплённый враг в вашей локации: <b>Переговоры.</b> Пройдите проверку [willpower](3). При успехе дайте ему приказ (каждый разный приказ — не чаще 1 раза в раунд)\nМожете включить в колоду до 3 экземпляров «Слова силы». Когда даёте приказ с любого экземпляра «Слова силы», его выполняет каждый враг, к которому прикреплён ваш экземпляр «Слова силы».",
         "customization_text": "□ <b>Предай.</b> Добавьте приказ: «• <i>„Предай\".</i> Нанесите 1 рану любому врагу (в локации этого врага), чьё значение боя не выше, чем у этого врага».\n□ <b>«Скройся».</b> Добавьте приказ: «• <i>«Скройся».</i> Этот враг поворачивается.»\n□ <b>Сознайся.</b> Добавьте приказ: «• <i>„Сознайся\".</i> Найдите 1 улику в локации этого врага, если её неясность не выше здоровья этого врага».\n□ <b>Смути.</b> Добавьте приказ: «• <i>„Смути\".</i> Автоматически уйдите от любого врага (в локации этого врага), чьё значение ухода не выше, чем у этого врага».\n□□ <b>Контроль.</b> Считайте, что на «Слове силы» ука­зано: «[fast]: Верните „Слово силы\" себе на руку».\n□□□ <b>Ментальная связь.</b> Можете совершать <b>пере­говоры</b> со «Слова силы», будучи на расстоянии до 1 связи от локации прикреплённого врага.\n□□□ <b>Скороговорка.</b> Когда совершаете переговоры со «Слова силы», можете дать до 2 разных приказов.\n□□□ <b>Молвить трижды.</b> Можете включить в колоду до 3 экземпляров «Слова силы». Когда даёте приказ с любого экземпляра «Слова силы», его выполняет каждый враг, к которому прикреплён ваш экземпляр «Слова силы».",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "replacement_text": "Изменённое. Адаптация. Быстрое. Играйте только в свой ход.\nПрикрепите к не [[элитному]] врагу в вашей локации.\n[action] Если прикреплённый враг в вашей локации: <b>Переговоры.</b> Пройдите проверку [willpower](2). При успехе дайте ему приказ (каждый разный приказ — не чаще 1 раза в раунд):\n– «Иди». Этот враг единожды перемещается в направлении по вашему выбору."
       },
       {
         "code": "09041",
@@ -2581,12 +2581,12 @@
       {
         "code": "10026",
         "text": "This card's ability reads: \"...If you succeed, play the chosen asset, reducing its cost by the amount you succeeded by.\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose an enemy at your location and an [[Item]] asset in your hand. Perform a fight action against the chosen enemy. If you succeed, play the chosen asset, reducing its cost by the amount you succeeded by."
+        "replacement_text": "Изменённое.\n<b>Переговоры.</b> Выберите врага в вашей локации и актив-[[вещь]] у вас на руке. Бейтесь с выбранным врагом. При успехе сыграйте выбранный актив, снизив его цену на столько единиц, на сколько вы превысили сложность проверки."
       },
       {
         "code": "10030",
         "text": "This card's ability reads: \"Resolve an [action] ability on a level 0-3 [[Tool]] or [[Weapon]] asset you control, ignoring all costs.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nResolve an [action] ability on a level 0-3 [[Tool]] or [[Weapon]] asset you control, ignoring all costs."
+        "replacement_text": "Изменённое. Быстрое. Играйте только в свой ход.\nРазыграйте свойство [action] с актива-[[инструмента]] или [[оружия]] уровня 0-3 под своим контролем, игнорируя все его цены."
       },
       {
         "code": "11065",
