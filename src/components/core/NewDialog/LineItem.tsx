@@ -16,9 +16,10 @@ interface Props {
   disabled?: boolean;
   description?: string;
   last: boolean;
+  showDisabledIcons?: boolean;
 }
 const ARKHAM_ICONS = new Set(['weakness', 'wild']);
-export default function LineItem({ iconName, iconNode, disabled, text, description, rightNode, last, indicatorNode }: Props) {
+export default function LineItem({ iconName, iconNode, disabled, text, description, rightNode, last, indicatorNode, showDisabledIcons }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const icon = useMemo(() => {
     if (iconNode) {
@@ -38,7 +39,7 @@ export default function LineItem({ iconName, iconNode, disabled, text, descripti
         <View style={styles.leadRow}>
           { !!icon && (
             <View style={[styles.icon, space.marginRightS]}>
-              { !disabled && icon }
+              { (!disabled || !!showDisabledIcons) && icon }
             </View>
           ) }
           { description ? (

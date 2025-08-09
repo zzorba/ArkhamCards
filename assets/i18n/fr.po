@@ -6295,9 +6295,6 @@ msgstr ""
 msgid "Choose any number of packs to use for this custom pool."
 msgstr ""
 
-msgid "Packs"
-msgstr ""
-
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Investigateur personnalisé"

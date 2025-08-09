@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, useCallback, useContext, useRef } from 'react';
-import { find, forEach, map, throttle } from 'lodash';
+import { find, forEach, map, sumBy, throttle } from 'lodash';
 import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Action } from 'redux';
@@ -525,28 +525,34 @@ interface MultiPickerDialogOptions<T> {
   title: string;
   investigator?: Card;
   description?: string;
+  header?: React.ReactNode;
   error?: string;
   items: Item<T>[];
   selectedValues?: Set<T>;
   onValueChange: (value: T, selected: boolean) => void;
+  max?: number;
 }
 export function useMultiPickerDialog<T>({
   title,
+  header,
   investigator,
   description,
   error,
   items,
   selectedValues,
   onValueChange,
+  max,
 }: MultiPickerDialogOptions<T>): [React.ReactNode, () => void] {
   const { borderStyle, typography } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>(null);
   const onValuePress = useCallback((value: T) => {
     onValueChange(value, !selectedValues?.has(value));
   }, [onValueChange, selectedValues]);
+  const selectedCount = useMemo(() => sumBy(items, item => item.type !== 'header' && selectedValues?.has(item.value) ? 1 : 0), [selectedValues, items]);
   const content = useMemo(() => {
     return (
       <View>
+        { !!header && header }
         { !!description && (
           <View style={[space.marginS, space.paddingBottomS, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
             <Text style={typography.text}>{ description } </Text>
@@ -569,13 +575,15 @@ export function useMultiPickerDialog<T>({
             indicator="check"
             onValueChange={onValuePress}
             // tslint:disable-next-line
+            showDisabledIcons
             selected={!!selectedValues?.has(item.value)}
             last={idx === items.length - 1 || items[idx + 1].type === 'header'}
+            disabled={!selectedValues?.has(item.value) && !!max && selectedCount >= max}
           />
         )) }
       </View>
     );
-  }, [items, onValuePress, borderStyle, typography, description, selectedValues]);
+  }, [items, onValuePress, borderStyle, typography, description, selectedValues, max, selectedCount, error, header]);
   const { setVisible, dialog } = useDialog({
     title,
     investigator,

@@ -50,6 +50,8 @@ import useParsedDeckComponent from '../useParsedDeckComponent';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { DeckEditContextProvider } from '../DeckEditContext';
 import EncounterIcon from '@icons/EncounterIcon';
+import DeckBubbleHeader from '../section/DeckBubbleHeader';
+import NewDialog from '@components/core/NewDialog';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -148,6 +150,9 @@ function usePackCycles(mode: CardPoolMode): Item<string>[] {
 
   return useMemo(() => {
     const result: Item<string>[] = [];
+    if (mode === 'legacy' || mode === 'current') {
+      return [];
+    }
     forEach(cycles, cycle => {
       if (cycle.fanMade && !fanMadeContent) {
         return;
@@ -162,7 +167,7 @@ function usePackCycles(mode: CardPoolMode): Item<string>[] {
       forEach(cycle.packs, pack => {
         result.push({
           title: packsByName[pack],
-          iconNode: <EncounterIcon encounter_code={pack} size={28} color={colors.D10} />,
+          iconNode: <EncounterIcon encounter_code={pack} size={28} color={colors.D20} />,
           value: pack,
         });
       });
@@ -193,7 +198,7 @@ function useCardPoolButtonLabel(mode: CardPoolMode, selectedPacks: Set<string>):
     case 'custom':
       return [t`Custom: ${selectedPacks.size} packs selected`, undefined];
     default:
-      return ['', undefined];
+      return [cardPoolModeLabel(mode), undefined];
   }
 }
 
@@ -568,13 +573,33 @@ function NewDeckOptionsDialog({
     };
     setCardPool(newCardPool);
   }, [cardPool, setCardPool, setSelectedPacks, packInCollection])
-  const [cardPoolDialog, showCardPoolDialog] = usePickerDialog({
-    title: t`Card pool`,
-    description: t`This is an optional variant that push players to build their decks creatively using a smaller cardpool.`,
-    items: cardPoolItems,
-    selectedValue: cardPool,
-    onValueChange: onCardPoolChange,
-  });
+  const cardPoolHeader = useMemo(() => {
+    return (
+      <>
+        <Text style={typography.text}>
+          {t`This is an optional variant that push players to build their decks creatively using a smaller cardpool.`}
+        </Text>
+        { map(cardPoolItems, (item, idx) => item.type === 'header' ? (
+          <DeckBubbleHeader title={item.title} key={idx} />
+        ) : (
+          <NewDialog.PickerItem<T>
+            key={idx}
+            iconName={item.icon}
+            iconNode={item.iconNode}
+            text={item.title}
+            description={item.description}
+            value={item.value}
+            disabled={item.disabled}
+            rightNode={item.rightNode}
+            onValueChange={onCardPoolChange}
+            selected={cardPool === item.value}
+            last={idx === cardPoolItems.length - 1 || cardPoolItems[idx + 1].type === 'header'}
+          />
+        )) }
+      </>
+    )
+
+  }, [cardPool, cardPoolItems, onCardPoolChange, typography]);
 
   const onPackChanged = useCallback((pack: string, selected: boolean) => {
     setSelectedPacks(current => {
@@ -601,10 +626,12 @@ function NewDeckOptionsDialog({
       cardPool === 'limited' ?
         t`Choose a core set and three expansions to use for this limited pool.` :
         t`Choose any number of packs to use for this custom pool.`,
+    header: cardPoolHeader,
     error: packsButtonError,
     selectedValues: selectedPackSet,
     items: packItems,
     onValueChange: onPackChanged,
+    max: cardPool === 'limited' ? 4 : undefined,
   });
   const renderNamePicker = useCallback((last: boolean) => {
     return (
@@ -620,19 +647,10 @@ function NewDeckOptionsDialog({
         <DeckPickerStyleButton
           icon="deck"
           title={t`Card pool`}
-          valueLabel={cardPoolModeLabel(cardPool)}
-          onPress={showCardPoolDialog}
+          valueLabel={packsButtonError ?? packsButtonLabel}
+          onPress={showPackDialog}
           editable
         />
-        { (cardPool === 'limited' || cardPool === 'custom') && (
-          <DeckPickerStyleButton
-            icon="deck"
-            title={t`Packs`}
-            valueLabel={packsButtonError ?? packsButtonLabel}
-            onPress={showPackDialog}
-            editable
-          />
-        )}
         <DeckPickerStyleButton
           last={last}
           icon="card-outline"
@@ -644,8 +662,8 @@ function NewDeckOptionsDialog({
       </>
     );
   }, [
-    deckNameChange, defaultDeckName, cardPool, specialDeckMode, packsButtonLabel,
-    showNameDialog, showSpecialDeckDialog, showCardPoolDialog, showPackDialog,
+    deckNameChange, defaultDeckName, specialDeckMode, packsButtonLabel,
+    showNameDialog, showSpecialDeckDialog, showPackDialog, packsButtonError,
   ]);
 
   const onCardPress = useCallback((card: Card) => {
@@ -892,7 +910,6 @@ function NewDeckOptionsDialog({
       { errorDialog }
       { nameDialog }
       { specialDeckDialog }
-      { cardPoolDialog }
       { packDialog }
     </SafeAreaView>
   );
