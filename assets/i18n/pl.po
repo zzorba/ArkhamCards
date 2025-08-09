@@ -6289,6 +6289,81 @@ msgstr ""
 msgid "To handle resignation or elimination"
 msgstr ""
 
+msgid "Core set"
+msgstr ""
+
+msgid "Cycles"
+msgstr ""
+
+msgid "Starter decks"
+msgstr ""
+
+msgid "Fan-made Cycles"
+msgstr ""
+
+msgid "Legacy"
+msgstr ""
+
+msgid "Current"
+msgstr ""
+
+msgid "Limited"
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid "Use all cards from any product"
+msgstr ""
+
+msgid "Use only cards from recent expansions"
+msgstr ""
+
+msgid "Use only cards from your choice of three expansions"
+msgstr ""
+
+msgid "Use a completely custom card pool"
+msgstr ""
+
+msgid "Investigator Expansion"
+msgstr ""
+
+#, javascript-format
+msgid "Limited: ${ selectedPacks.size } packs selected"
+msgstr ""
+
+msgid "Not enough cycles selected"
+msgstr ""
+
+msgid "Too many cycles selected"
+msgstr ""
+
+#, javascript-format
+msgid "Limited: ${ limitedPacksStr }"
+msgstr ""
+
+#, javascript-format
+msgid "Custom: ${ selectedPacks.size } packs selected"
+msgstr ""
+
+msgid "Card pool"
+msgstr ""
+
+msgid "This is an optional variant that push players to build their decks creatively using a smaller cardpool."
+msgstr ""
+
+msgid "Select packs"
+msgstr ""
+
+msgid "Choose a core set and three expansions to use for this limited pool."
+msgstr ""
+
+msgid "Choose any number of packs to use for this custom pool."
+msgstr ""
+
+msgid "Packs"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Własny"

@@ -525,6 +525,7 @@ interface MultiPickerDialogOptions<T> {
   title: string;
   investigator?: Card;
   description?: string;
+  error?: string;
   items: Item<T>[];
   selectedValues?: Set<T>;
   onValueChange: (value: T, selected: boolean) => void;
@@ -533,6 +534,7 @@ export function useMultiPickerDialog<T>({
   title,
   investigator,
   description,
+  error,
   items,
   selectedValues,
   onValueChange,
@@ -548,6 +550,11 @@ export function useMultiPickerDialog<T>({
         { !!description && (
           <View style={[space.marginS, space.paddingBottomS, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
             <Text style={typography.text}>{ description } </Text>
+          </View>
+        )}
+        { !!error && (
+          <View style={[space.marginS, space.paddingBottomS, { borderBottomWidth: StyleSheet.hairlineWidth }, borderStyle]}>
+            <Text style={[typography.text, typography.error]}>{ error } </Text>
           </View>
         )}
         { map(items, (item, idx) => item.type === 'header' ? (

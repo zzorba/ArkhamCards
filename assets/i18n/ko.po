@@ -6165,6 +6165,81 @@ msgstr "대표 조사자 변경하기"
 msgid "To handle resignation or elimination"
 msgstr "후퇴하거나 쓰러진 경우에 처리하기"
 
+msgid "Core set"
+msgstr ""
+
+msgid "Cycles"
+msgstr ""
+
+msgid "Starter decks"
+msgstr ""
+
+msgid "Fan-made Cycles"
+msgstr ""
+
+msgid "Legacy"
+msgstr ""
+
+msgid "Current"
+msgstr ""
+
+msgid "Limited"
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid "Use all cards from any product"
+msgstr ""
+
+msgid "Use only cards from recent expansions"
+msgstr ""
+
+msgid "Use only cards from your choice of three expansions"
+msgstr ""
+
+msgid "Use a completely custom card pool"
+msgstr ""
+
+msgid "Investigator Expansion"
+msgstr ""
+
+#, javascript-format
+msgid "Limited: ${ selectedPacks.size } packs selected"
+msgstr ""
+
+msgid "Not enough cycles selected"
+msgstr ""
+
+msgid "Too many cycles selected"
+msgstr ""
+
+#, javascript-format
+msgid "Limited: ${ limitedPacksStr }"
+msgstr ""
+
+#, javascript-format
+msgid "Custom: ${ selectedPacks.size } packs selected"
+msgstr ""
+
+msgid "Card pool"
+msgstr ""
+
+msgid "This is an optional variant that push players to build their decks creatively using a smaller cardpool."
+msgstr ""
+
+msgid "Select packs"
+msgstr ""
+
+msgid "Choose a core set and three expansions to use for this limited pool."
+msgstr ""
+
+msgid "Choose any number of packs to use for this custom pool."
+msgstr ""
+
+msgid "Packs"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"
@@ -8713,6 +8788,14 @@ msgctxt "sort"
 msgid "Slot"
 msgstr "슬롯"
 
+msgctxt "card-chooser"
+msgid "Choose additional"
+msgstr "추가 선택"
+
+msgctxt "lead-investigator"
+msgid "Lead"
+msgstr "대표"
+
 msgctxt "narration"
 msgid "Pause"
 msgstr "일시정지"
@@ -8753,14 +8836,6 @@ msgctxt "mixed"
 msgid "Since ${ list } does not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgid_plural "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] "${ list } 조사자가 ${ supplyName } 탐험 물자를 가지고 있지 않으므로, 해당 조사자는 <b>${ sectionName }</b> 항목을 읽어야만 합니다."
-
-msgctxt "card-chooser"
-msgid "Choose additional"
-msgstr "추가 선택"
-
-msgctxt "lead-investigator"
-msgid "Lead"
-msgstr "대표"
 
 msgctxt "tarot-reading"
 msgid "Chaos"

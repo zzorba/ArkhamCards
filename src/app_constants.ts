@@ -621,6 +621,60 @@ export interface ReprintPack {
   player: boolean;
   cyclePosition: number;
 }
+
+
+export function getCardPoolSections(_lang: string): {
+  section: string;
+  packs: string[];
+  type: 'core' | 'fan' | 'custom' | 'limited';
+  fanMade?: boolean;
+  custom?: boolean;
+}[] {
+  return [
+    {
+      type: 'core',
+      section: t`Core set`,
+      packs: ['core', 'rcore'],
+    },
+    {
+      type: 'limited',
+      section: t`Cycles`,
+      packs: [
+        'dwlp',
+        'ptcp',
+        'tfap',
+        'tcup',
+        'tdep',
+        'ticp',
+        'eoep',
+        'tskp',
+        'fhvp',
+        'tdcp',
+      ],
+    },
+    {
+      type: 'custom',
+      section: t`Starter decks`,
+      custom: true,
+      packs: [
+        'nat',
+        'har',
+        'win',
+        'jac',
+        'ste',
+      ],
+    },
+    {
+      type: 'fan',
+      section: t`Fan-made Cycles`,
+      fanMade: true,
+      packs: [
+        'zgoo',
+        'zdh',
+      ],
+    },
+  ];
+}
 export const specialPacks: ReprintPack[] = [
   {
     code: 'dwlp',

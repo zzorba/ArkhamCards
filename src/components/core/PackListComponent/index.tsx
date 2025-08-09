@@ -92,9 +92,7 @@ function cycleName(position: string): string {
 
 function renderSectionHeader({ section }: { section: SectionListData<PackItem> }) {
   return (
-    <CardSectionHeader
-      section={{ subTitle: section.title }}
-    />
+    <CardSectionHeader section={{ subTitle: section.title }} />
   );
 }
 
