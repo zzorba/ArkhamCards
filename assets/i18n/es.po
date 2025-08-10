@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.1\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.2\n"
 
 msgid "Guardian"
 msgstr "Guardián"
@@ -794,19 +794,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -6203,94 +6203,94 @@ msgstr ""
 "El registro de campaña asociado puede perderse."
 
 msgid "Draw random token"
-msgstr ""
+msgstr "Roba una ficha"
 
 msgid "View or edit"
-msgstr ""
+msgstr "Ver o editar"
 
 msgid "View"
-msgstr ""
+msgstr "Ver"
 
 msgid "Review chaos bag"
-msgstr ""
+msgstr "Revisa la bolsa"
 
 msgid "Change lead investigator"
-msgstr ""
+msgstr "Cambiar investigador jefe"
 
 msgid "To handle resignation or elimination"
-msgstr ""
+msgstr "Si ha desistido o ha sido eliminado"
 
 msgid "Core set"
-msgstr ""
+msgstr "Caja básica"
 
 msgid "Cycles"
-msgstr ""
+msgstr "Ciclos"
 
 msgid "Starter decks"
-msgstr ""
+msgstr "Mazos iniciales"
 
 msgid "Fan-made Cycles"
-msgstr ""
+msgstr "Ciclos fanmade"
 
 msgid "Legacy"
-msgstr ""
+msgstr "Legado"
 
 msgid "Current"
-msgstr ""
+msgstr "Actual"
 
 msgid "Limited"
-msgstr ""
+msgstr "Limitado"
 
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 msgid "Use all cards from any product"
-msgstr ""
+msgstr "Usar todas las cartas de cualquier producto"
 
 msgid "Use only cards from recent expansions"
-msgstr ""
+msgstr "Usar solo cartas de expansiones recientes"
 
 msgid "Use only cards from your choice of three expansions"
-msgstr ""
+msgstr "Usar solo cartas de 3 expansiones a tu elección"
 
 msgid "Use a completely custom card pool"
-msgstr ""
+msgstr "Usar un conjunto de cartas totalmente personalizado"
 
 msgid "Investigator Expansion"
-msgstr ""
+msgstr "Expansión de investigadores"
 
 #, javascript-format
 msgid "Limited: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "Limitado: ${ selectedPacks.size } packs seleccionados"
 
 msgid "Not enough cycles selected"
-msgstr ""
+msgstr "No hay suficientes ciclos seleccionados"
 
 msgid "Too many cycles selected"
-msgstr ""
+msgstr "Demasiados ciclos seleccionados"
 
 #, javascript-format
 msgid "Limited: ${ limitedPacksStr }"
-msgstr ""
+msgstr "Limitado: ${ limitedPacksStr }"
 
 #, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "Personalizado: ${ selectedPacks.size } packs seleccionados"
 
 msgid "Card pool"
-msgstr ""
+msgstr "Cartas disponibles"
 
 msgid "This is an optional variant that push players to build their decks creatively using a smaller cardpool."
-msgstr ""
+msgstr "Esta es una variante opcional para forzar a los jugadores a crear mazos limitando el acceso a la colección de cartas."
 
 msgid "Select packs"
-msgstr ""
+msgstr "Selecciona packs"
 
 msgid "Choose a core set and three expansions to use for this limited pool."
-msgstr ""
+msgstr "Elige una caja básica y tres expansiones para limitar tus cartas."
 
 msgid "Choose any number of packs to use for this custom pool."
-msgstr ""
+msgstr "Elige cualquier número de packs para limitar tus cartas."
 
 msgctxt "investigator"
 msgid "Custom"
