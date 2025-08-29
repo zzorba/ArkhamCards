@@ -6,7 +6,7 @@ import AppIcon from './AppIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CyclopeanIcon from './CyclopeanIcon';
 import CircleIcon from './CircleIcon';
-import CircusExMortisIcon from ',/CircusExMortisIcon';
+import CircusExMortisIcon from './CircusExMortisIcon';
 import CoreSetIcon from './CoreSetIcon';
 import DarkMatterIcon from './DarkMatterIcon';
 import DreamEatersIcon from './DreamEatersIcon';
