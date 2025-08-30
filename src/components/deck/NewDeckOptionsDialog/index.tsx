@@ -7,11 +7,11 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { filter, find, flatMap, forEach, map, mapValues, sumBy, throttle, uniq, uniqBy } from 'lodash';
+import { find, flatMap, forEach, map, sumBy, throttle, uniqBy } from 'lodash';
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
-import { t, useLocale } from 'ttag';
+import { t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import RequiredCardSwitch from './RequiredCardSwitch';
@@ -21,9 +21,9 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import { saveNewDeck } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
 import { CampaignId, Deck, DeckMeta, EditDeckState, getDeckId, ParsedDeck, Slots } from '@actions/types';
-import { BASIC_WEAKNESS_CHOICE, CUSTOM_INVESTIGATOR, getCardPoolSections, getSpecialPackNames, RANDOM_BASIC_WEAKNESS } from '@app_constants';
+import { BASIC_WEAKNESS_CHOICE, CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card, { CardsMap } from '@data/types/Card';
-import { AppState, getAllRealPacks, getPacksInCollection } from '@reducers';
+import { AppState, getPacksInCollection } from '@reducers';
 import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '@data/deck/starterDecks';
@@ -36,7 +36,7 @@ import DeckSectionBlock from '../section/DeckSectionBlock';
 import DeckCheckboxButton from '../controls/DeckCheckboxButton';
 import DeckButton from '../controls/DeckButton';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import { Item, useAlertDialog, useMultiPickerDialog, usePickerDialog, useSimpleTextDialog } from '@components/deck/dialogs';
+import { Item, useAlertDialog, usePickerDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import InvestigatorSummaryBlock from '@components/card/InvestigatorSummaryBlock';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -49,9 +49,7 @@ import { parseDeck } from '@lib/parseDeck';
 import useParsedDeckComponent from '../useParsedDeckComponent';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { DeckEditContextProvider } from '../DeckEditContext';
-import EncounterIcon from '@icons/EncounterIcon';
-import DeckBubbleHeader from '../section/DeckBubbleHeader';
-import NewDialog from '@components/core/NewDialog';
+import { defaultCardPoolSet } from '../controls/DeckCardPoolButton';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -68,7 +66,6 @@ type Props = NavigationProps &
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
 type SpecialDeckMode = 'none' | 'starter' | 'chaos';
-type CardPoolMode = 'legacy' | 'current' | 'limited' | 'custom';
 
 function specialDeckModeLabel(mode: SpecialDeckMode): string {
   switch (mode) {
@@ -78,32 +75,6 @@ function specialDeckModeLabel(mode: SpecialDeckMode): string {
   }
 }
 
-function cardPoolModeLabel(mode: CardPoolMode): string {
-  switch (mode) {
-    case 'legacy': return t`Legacy`;
-    case 'current': return t`Current`;
-    case 'limited': return t`Limited`;
-    case 'custom': return t`Custom`;
-  }
-}
-
-function cardPoolSet(mode: CardPoolMode, hasRevisedCore: boolean): string[] {
-  switch (mode) {
-    case 'legacy': return [];
-    case 'current': return [hasRevisedCore ? 'rcore' : 'core','tdcp','fhvp','tskp','nat','har','win','jac','ste'];
-    case 'limited': return [hasRevisedCore ? 'rcore' : 'core', 'nat', 'har', 'win', 'jac', 'ste'];
-    case 'custom': return [hasRevisedCore ? 'rcore' : 'core'];
-  }
-}
-
-function cardPoolDescription(mode: CardPoolMode): string {
-  switch (mode) {
-    case 'legacy': return t`Use all cards from any product`;
-    case 'current': return t`Use only cards from recent expansions`;
-    case 'limited': return t`Use only cards from your choice of three expansions`;
-    case 'custom': return t`Use a completely custom card pool`;
-  }
-}
 
 function ChaosDeckPreview({ componentId, parsedDeck, meta, cards, tabooSetId }: {
   componentId: string; meta: DeckMeta; parsedDeck: ParsedDeck; cards: CardsMap; tabooSetId: number | undefined }) {
@@ -119,89 +90,6 @@ function ChaosDeckPreview({ componentId, parsedDeck, meta, cards, tabooSetId }: 
   return <>{parsedDeckComponent}</>;
 }
 
-function usePackNames(): { [code: string]: string } {
-  const { lang } = useContext(LanguageContext);
-  const packs = useSelector(getAllRealPacks);
-  const specialPackNames = useMemo(
-    () => getSpecialPackNames(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [lang]
-  );
-  return useMemo(() => {
-    const result: { [code: string]: string } = {
-      ...specialPackNames,
-    };
-    forEach(packs, pack => {
-      if (pack.name) {
-        result[pack.code] = pack.name;
-      }
-    });
-    return mapValues(result, name => name.replace(t`Investigator Expansion`, ''));
-  }, [packs, specialPackNames]);
-
-}
-
-function usePackCycles(mode: CardPoolMode): Item<string>[] {
-  const { lang } = useContext(LanguageContext);
-  const { colors } = useContext(StyleContext);
-  const fanMadeContent = useSettingValue('custom_content');
-  const cycles = useMemo(() => getCardPoolSections(lang), [lang]);
-  const packsByName = usePackNames();
-
-  return useMemo(() => {
-    const result: Item<string>[] = [];
-    if (mode === 'legacy' || mode === 'current') {
-      return [];
-    }
-    forEach(cycles, cycle => {
-      if (cycle.fanMade && !fanMadeContent) {
-        return;
-      }
-      if (cycle.custom && mode !== 'custom') {
-        return;
-      }
-      result.push({
-        type: 'header',
-        title: cycle.section,
-      });
-      forEach(cycle.packs, pack => {
-        result.push({
-          title: packsByName[pack],
-          iconNode: <EncounterIcon encounter_code={pack} size={28} color={colors.D20} />,
-          value: pack,
-        });
-      });
-    });
-    return result;
-  }, [cycles, packsByName, fanMadeContent, mode, colors]);
-}
-
-
-function useCardPoolButtonLabel(mode: CardPoolMode, selectedPacks: Set<string>): [string, string | undefined] {
-  const { lang, listSeperator } = useContext(LanguageContext);
-  const cycles = useMemo(() => getCardPoolSections(lang), [lang]);
-  const packNames = usePackNames();
-  switch (mode) {
-    case 'limited':
-      const coreSet = selectedPacks.has('rcore') ? 'Revised Core' : 'Core';
-      const limitedCycle = cycles.find(cycle => cycle.type === 'limited');
-      if (!limitedCycle) {
-        return [t`Limited: ${selectedPacks.size} packs selected`, undefined];
-      }
-      const limitedPacks = [
-        coreSet,
-        ...flatMap(filter(limitedCycle.packs, pack => selectedPacks.has(pack)), pack => packNames[pack] ?? []),
-      ];
-      const error = limitedPacks.length === 4 ? undefined : limitedPacks.length < 4 ? t`Not enough cycles selected` : t`Too many cycles selected`;
-      const limitedPacksStr = limitedPacks.join(listSeperator);
-      return [t`Limited: ${limitedPacksStr}`, error];
-    case 'custom':
-      return [t`Custom: ${selectedPacks.size} packs selected`, undefined];
-    default:
-      return [cardPoolModeLabel(mode), undefined];
-  }
-}
-
 function NewDeckOptionsDialog({
   investigatorId,
   onCreateDeck,
@@ -212,12 +100,13 @@ function NewDeckOptionsDialog({
   isModal,
   alternateInvestigatorId,
 }: Props) {
+  const packInCollection = useSelector(getPacksInCollection);
+  const initialCardPool = useMemo(() => defaultCardPoolSet('current', !!packInCollection.rcore).join(','), [packInCollection]);
   const deckActions = useDeckActions();
   const defaultTabooSetId = useTabooSetId();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const singleCardView = useSettingValue('single_card');
-  const packInCollection = useSelector(getPacksInCollection);
   const { backgroundStyle, colors, fontScale, typography, width, shadow } = useContext(StyleContext);
   const [saving, setSaving] = useState(false);
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
@@ -230,8 +119,6 @@ function NewDeckOptionsDialog({
   const [optionSelected, setOptionSelected] = useState<boolean[]>([true]);
   const [tabooSetIdChoice, actuallySetTabooSetId] = useState<number>(defaultTabooSetId);
   const [specialDeckMode, setSpecialDeckMode] = useState<SpecialDeckMode>('none');
-  const [cardPool, setCardPool] = useState<CardPoolMode>('current');
-  const [selectedPacks, setSelectedPacks] = useState<string[]>(() => cardPoolSet(cardPool, !!packInCollection.rcore));
   const tabooSetId = useMemo(() => {
     if (specialDeckMode === 'starter') {
       return undefined;
@@ -248,7 +135,9 @@ function NewDeckOptionsDialog({
   }, {
     alternate_back: alternateInvestigatorId,
     alternate_front: alternateInvestigatorId,
+    card_pool: initialCardPool,
   });
+
   const setTabooSetId = useCallback((tabooSetId: number) => {
     actuallySetTabooSetId(tabooSetId);
     setSlots(undefined);
@@ -256,6 +145,7 @@ function NewDeckOptionsDialog({
   const setMeta = useCallback((key: keyof DeckMeta, value?: string) => {
     setMetaField({ key, value });
   }, [setMetaField]);
+
   const updateMeta = useCallback((key: keyof DeckMeta, value?: string) => {
     setMetaField({ key, value });
     setSlots(undefined);
@@ -559,80 +449,6 @@ function NewDeckOptionsDialog({
     onValueChange: setSpecialDeckMode,
   });
 
-  const cardPoolItems: Item<CardPoolMode>[] = useMemo(() => {
-    const allCardPools: CardPoolMode[] = ['current', 'legacy', 'limited', 'custom'];
-    return allCardPools.map(cardPool => ({
-      title: cardPoolModeLabel(cardPool),
-      description: cardPoolDescription(cardPool),
-      value: cardPool,
-    }));
-  }, []);
-  const onCardPoolChange = useCallback((newCardPool: CardPoolMode) => {
-    if (cardPool !== newCardPool) {
-      setSelectedPacks(cardPoolSet(newCardPool, !!packInCollection.rcore))
-    };
-    setCardPool(newCardPool);
-  }, [cardPool, setCardPool, setSelectedPacks, packInCollection])
-  const cardPoolHeader = useMemo(() => {
-    return (
-      <>
-        <Text style={typography.text}>
-          {t`This is an optional variant that push players to build their decks creatively using a smaller cardpool.`}
-        </Text>
-        { map(cardPoolItems, (item, idx) => item.type === 'header' ? (
-          <DeckBubbleHeader title={item.title} key={idx} />
-        ) : (
-          <NewDialog.PickerItem<T>
-            key={idx}
-            iconName={item.icon}
-            iconNode={item.iconNode}
-            text={item.title}
-            description={item.description}
-            value={item.value}
-            disabled={item.disabled}
-            rightNode={item.rightNode}
-            onValueChange={onCardPoolChange}
-            selected={cardPool === item.value}
-            last={idx === cardPoolItems.length - 1 || cardPoolItems[idx + 1].type === 'header'}
-          />
-        )) }
-      </>
-    )
-
-  }, [cardPool, cardPoolItems, onCardPoolChange, typography]);
-
-  const onPackChanged = useCallback((pack: string, selected: boolean) => {
-    setSelectedPacks(current => {
-      if (selected) {
-        const newPacks = uniq([...current, pack]);
-        if (pack === 'core' || pack === 'rcore') {
-          return filter(newPacks, p => p !== (pack === 'core' ? 'rcore' : 'core'));
-        }
-        return newPacks;
-      }
-      const newPacks = current.filter(p => p !== pack);
-      if (pack === 'core' || pack === 'rcore') {
-        return uniq([...newPacks, pack === 'core' ? 'rcore' : 'core'])
-      }
-      return newPacks;
-    });
-  }, [setSelectedPacks]);
-  const selectedPackSet = useMemo(() => new Set(selectedPacks), [selectedPacks]);
-  const packItems = usePackCycles(cardPool);
-  const [packsButtonLabel, packsButtonError] = useCardPoolButtonLabel(cardPool, selectedPackSet);
-  const [packDialog, showPackDialog] = useMultiPickerDialog({
-    title: t`Select packs`,
-    description:
-      cardPool === 'limited' ?
-        t`Choose a core set and three expansions to use for this limited pool.` :
-        t`Choose any number of packs to use for this custom pool.`,
-    header: cardPoolHeader,
-    error: packsButtonError,
-    selectedValues: selectedPackSet,
-    items: packItems,
-    onValueChange: onPackChanged,
-    max: cardPool === 'limited' ? 4 : undefined,
-  });
   const renderNamePicker = useCallback((last: boolean) => {
     return (
       <>
@@ -645,13 +461,6 @@ function NewDeckOptionsDialog({
           editable
         />
         <DeckPickerStyleButton
-          icon="deck"
-          title={t`Card pool`}
-          valueLabel={packsButtonError ?? packsButtonLabel}
-          onPress={showPackDialog}
-          editable
-        />
-        <DeckPickerStyleButton
           last={last}
           icon="card-outline"
           title={t`Special deck`}
@@ -661,10 +470,7 @@ function NewDeckOptionsDialog({
         />
       </>
     );
-  }, [
-    deckNameChange, defaultDeckName, specialDeckMode, packsButtonLabel,
-    showNameDialog, showSpecialDeckDialog, showPackDialog, packsButtonError,
-  ]);
+  }, [deckNameChange, defaultDeckName, specialDeckMode, showNameDialog, showSpecialDeckDialog]);
 
   const onCardPress = useCallback((card: Card) => {
     if (singleCardView) {
@@ -910,7 +716,6 @@ function NewDeckOptionsDialog({
       { errorDialog }
       { nameDialog }
       { specialDeckDialog }
-      { packDialog }
     </SafeAreaView>
   );
 }

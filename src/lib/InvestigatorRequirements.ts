@@ -108,6 +108,7 @@ export function queryForInvestigator(
     context,
   );
 
+  const limited_card_pool = meta?.card_pool?.split(',');
   // We assume that there is always at least one normalClause.
   const normalQuery = combineQueriesOpt(
     flatMap(deck_options, (option, index) => {
@@ -134,10 +135,12 @@ export function queryForInvestigator(
     }),
     'or'
   );
+  const card_pool_filter = new FilterBuilder('card_pool');
   const mainClause = combineQueriesOpt(
     [
       ...(invertedClause ? [invertedClause] : []),
       ...(normalQuery ? [normalQuery] : []),
+      ...(limited_card_pool?.length ? card_pool_filter.packCodes(limited_card_pool) : []),
     ],
     'and'
   );

@@ -1156,26 +1156,26 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.arkhamIcon('tablet', size, color);
       case 'zcx':
         return this.circusExMortisIcon('zcx_circus_ex_mortis',size, color);
-      case 'zcx_one_night_only': 
-      case 'zcx_primrose_path': 
-      case 'zcx_harms_way': 
-      case 'zcx_all_points_west': 
+      case 'zcx_one_night_only':
+      case 'zcx_primrose_path':
+      case 'zcx_harms_way':
+      case 'zcx_all_points_west':
       case 'zcx_piper_at_the_gates_of_dawn':
-      case 'zcx_bacchanalia': 
-      case 'zcx_red_sunrise': 
+      case 'zcx_bacchanalia':
+      case 'zcx_red_sunrise':
       case 'zcx_thousand_to_one':
-      case 'zcx_children_of_the_goat': 
-      case 'zcx_circus_grounds': 
+      case 'zcx_children_of_the_goat':
+      case 'zcx_circus_grounds':
       case 'zcx_cult_of_shub_niggurath':
-      case 'zcx_illusory_tricks': 
-      case 'zcx_lunatic_night': 
+      case 'zcx_illusory_tricks':
+      case 'zcx_lunatic_night':
       case 'zcx_new_moon_daredevils':
-      case 'zcx_new_moon_entertainers': 
-      case 'zcx_panicked_masses': 
-      case 'zcx_primordial_evils': 
-      case 'zcx_savage_woods': 
-      case 'zcx_destiny_and_prophecy': 
-      case 'zcx_circus_ex_mortis': 
+      case 'zcx_new_moon_entertainers':
+      case 'zcx_panicked_masses':
+      case 'zcx_primordial_evils':
+      case 'zcx_savage_woods':
+      case 'zcx_destiny_and_prophecy':
+      case 'zcx_circus_ex_mortis':
         return this.circusExMortisIcon(encounter_code,size, color);
       case 'rcore':
       default:

@@ -623,7 +623,7 @@ export interface ReprintPack {
 }
 
 
-export function getCardPoolSections(_lang: string): {
+export function getCardPoolSections(): {
   section: string;
   packs: string[];
   type: 'core' | 'fan' | 'custom' | 'limited';
