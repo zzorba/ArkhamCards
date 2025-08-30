@@ -2124,18 +2124,18 @@
       },
       {
         "code": "05156",
-        "text": "This card gains \"(Limit twice per round.)\"",
-        "replacement_text": "Mutated. Fast. Play during any investigator's turn, except during an action.\nImmediately take an action as if it were your turn. This action does not count toward the number of actions you can take each turn. (Limit twice per round.)"
+        "text": "Esta carta obtiene: “Máximo de dos veces por ronda.”",
+        "replacement_text": "Mutada. Rápido. Juega esta carta durante el turno de cualquier investigador, excepto durante una acción.\nRealiza una acción inmediatamente como si fuera tu turno. Esta acción no cuenta para el número de acciones que puedes realizar cada turno. Máximo de dos veces por ronda."
       },
       {
         "code": "09072",
-        "text": "This card's first bullet point now reads: \"That event gains: \"Fast. Play only during your turn.\"\"",
-        "replacement_text": "Mutated. [reaction] When you play a [[Tactic]] or [[Trick]] event, exhaust Chuck Fergus: Choose one -\n- That event gains: \"Fast. Play only during your turn.\"\n- That event costs 2 fewer resources to play.\n- You get +2 skill value while performing a skill test during the resolution of that event."
+        "text": "El primer punto de esta carta ahora dice: “Ese Evento obtiene: “Rápido. Juega esta carta sólo durante tu turno.””",
+        "replacement_text": "Mutated. [reaction] Cuando juegues un Evento [[Táctica]] o [[Truco]], agota a Chuck Fergus: Elige una opción -\n- Ese Evento obtiene: “Rápido. Juega esta carta sólo durante tu turno.”\n- Ese Evento cuesta 2 recursos menos para jugarlo.\n- Recibes +2 a tu valor de habilidad al realizar una prueba de habilidad durante la resolución de ese Evento."
       },
       {
         "code": "60332",
-        "text": "This card's first bullet point now reads: \"That event gains: \"Fast. Play only during your turn.\"\"",
-        "replacement_text": "Mutated. [reaction] When you play a [[Tactic]] or [[Trick]] event, exhaust Chuck Fergus: Choose two -\n- That event gains: \"Fast. Play only during your turn.\"\n- That event costs 2 fewer resources to play.\n- You get +2 skill value while performing a skill test during the resolution of that event."
+        "text": "El primer punto de esta carta ahora dice: “Ese Evento obtiene: “Rápido. Juega esta carta sólo durante tu turno.””",
+        "replacement_text": "Mutada. [reaction] Cuando juegues un Evento Táctica o Truco, agota a Chuck Fergus y elige dos opciones:\n- Ese Evento obtiene: “Rápido. Juega esta carta sólo durante tu turno.”\n- Ese Evento cuesta 2 recursos menos para jugarlo.\n- Recibes +2 a tu valor de habilidad al realizar una prueba de habilidad durante la resolución de ese Evento."
       },
       {
         "code": "05324",
@@ -2171,7 +2171,7 @@
         "code": "60233",
         "deck_limit": 0,
         "text": "Prohibida.",
-        "replacement_text": "Forbidden. Uses (6 secrets). Limit 1 per deck.\n[fast] Spend 1 secret: You get +2 skill value for this test.\n[fast] Spend 2 secrets: Draw 2 cards.\n[fast] Spend 3 secrets: Discover 1 clue at any location.\n][fast] Spend 4 secrets: Deal 3 damage to an enemy engaged with you."
+        "replacement_text": "Prohibida. Usos (6 secretos). Límite de 1 por mazo.\n[fast] Gasta 1 secreto: Recibes +2 al valor de habilidad para esta prueba de habilidad.\n[fast] Gasta 2 secretos: Roba 2 cartas.\n[fast] Gasta 3 secretos: Descubre 1 pista en cualquier Lugar.\n[fast] Gasta 4 secretos: Inflige 3 puntos de daño a un Enemigo enfrentado a ti."
       },
       {
         "code": "07197",
@@ -2355,7 +2355,7 @@
         "code": "02026",
         "deck_limit": 0,
         "text": "Prohibida.",
-        "replacement_text": "Forbidden. Max 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice."
+        "replacement_text": "Prohibida. Máximo de 1 asignada por prueba de habilidad.\nDobla la dificultad de esta prueba de habilidad. Si esta prueba de habilidad tiene éxito, resuelve dos veces los efectos de la prueba con éxito."
       },
       {
         "code": "02029",
@@ -2528,7 +2528,7 @@
       },
       {
         "code": "09081",
-        "text": "This card’s text box now reads: \"[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command) – \"Go.\" This enemy moves once in a direction of your choice.\"\nThis card’s customizable sheet loses the \"Mercy\" ability and gains\"☐Cower. Add the command: \"- ‘Cower.’ This enemy exhausts.\"",
+        "text": "La capacidad [action] de esta carta ahora dice: “[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar</b>. Realiza una prueba de [willpower] (2). Si tienes éxito, dale una orden (límite de una vez por ronda y por orden) – “Vete”. Este Enemigo se mueve una vez en una dirección de tu elección.\nLa lista de mejoras de esta carta pierde la capacidad “Apiádate” y obtiene “☐ Acobárdate. Añade la orden:\"– “Acobárdate”. Este Enemigo se agota.\"",
         "customization_options": [
           {
             "xp": 1,
@@ -2571,7 +2571,7 @@
         ],
         "customization_change": "- <i>\"Traiciona\".</i> Inflige 1 punto de daño a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de combate igual o menor que este Enemigo.\n- <i>\"Acobárdate.\"</i> Este Enemigo se agota.\n- <i>\"Confiesa\".</i> Descubre 1 pista en el Lugar de este Enemigo si su salud es igual o mayor que el velo de su Lugar.\n- <i>\"Distrae\".</i> Evita automáticamente a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de evitar igual o menor que este Enemigo.\n[free]: Devuelve la Palabra de poder a tu mano.\nPuedes activar la capacidad de negociar de la Palabra de poder desde un máximo de un Lugar de distancia del Enemigo vinculado.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar.</b> Realiza una prueba de [willpower] (3). Si tienes éxito, dale hasta dos órdenes distintas (límite de una vez por ronda y por orden) -\nPuedes incluir tres copias de la Palabra de poder en tu mazo. Cuando des una orden usando una copia, dale también esa orden a cada uno de los demás Enemigos que tenga vinculada una de tus copias de la Palabra de poder.",
         "customization_text": "□ <b>Traiciona.</b> Añade la orden: \"- <i>'Traiciona'.</i> Inflige 1 punto de daño a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de combate igual o menor que este Enemigo.\".\n□ <b>Acobárdate.</b> Añade la orden: \"- <i>'Acobárdate.'</i> Este Enemigo se agota.\".\n□ <b>Confiesa.</b> Añade la orden: \"- <i>'Confiesa'.</i> Descubre 1 pista en el Lugar de este Enemigo si su salud es igual o mayor que el velo de su Lugar.\".\n□ <b>Distrae.</b> Añade la orden: \"- <i>'Distrae'.</i> Evita automáticamente a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de evitar igual o menor que este Enemigo.\".\n□□ <b>Mayor control.</b> La Palabra de poder obtiene \"[free]: Devuelve la Palabra de poder a tu mano.\".\n□□□ <b>Atado.</b> Puedes activar la capacidad de negociar de la Palabra de poder desde un máximo de un Lugar de distancia del Enemigo vinculado.\n□□□ <b>Trabalenguas.</b> Cuando negocies con la Palabra de poder, puedes dar hasta dos órdenes distintas.\n□□□ <b> Pronunciada tres veces.</b> Puedes incluir tres copias de la Palabra de poder en tu mazo. Cuando des una orden usando una copia, dale también esa orden a cada uno de los demás Enemigos que tenga vinculada una de tus copias de la Palabra de poder.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "replacement_text": "Mutada. Personalizable. Rápido. Juega esta carta sólo durante tu turno.\nVincula esta carta a un Enemigo que no sea [[Élite]] que esté en tu Lugar.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar</b>. Realiza una prueba de [willpower] (2). Si tienes éxito, dale una orden (límite de una vez por ronda y por orden)\n– “Vete”. Este Enemigo se mueve una vez en una dirección de tu elección.\"."
       },
       {
         "code": "09041",
@@ -2580,18 +2580,18 @@
       },
       {
         "code": "10026",
-        "text": "This card's ability reads: \"...If you succeed, play the chosen asset, reducing its cost by the amount you succeeded by.\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose an enemy at your location and an [[Item]] asset in your hand. Perform a fight action against the chosen enemy. If you succeed, play the chosen asset, reducing its cost by the amount you succeeded by."
+        "text": "La capacidad de esta carta ahora dice: “… Si tienes éxito, juega el Apoyo elegido, reduciendo su coste por cada punto que tuvieras por encima del valor mínimo de éxito.\"",
+        "replacement_text": "Mutada.\n<b>Negociar</b>. Elige un Enemigo que esté en tu Lugar y un Apoyo [[Objeto]] de tu mano. Realiza una acción de combatir contra el Enemigo elegido. Si tienes éxito, juega el Apoyo elegido, reduciendo su coste por cada punto que tuvieras por encima del valor mínimo de éxito."
       },
       {
         "code": "10030",
-        "text": "This card's ability reads: \"Resolve an [action] ability on a level 0-3 [[Tool]] or [[Weapon]] asset you control, ignoring all costs.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nResolve an [action] ability on a level 0-3 [[Tool]] or [[Weapon]] asset you control, ignoring all costs."
+        "text": "La capacidad de esta carta ahora dice: \"Resuelve una capacidad [action] de un Apoyo [[Herramienta]] o [[Arma]] de nivel 0–3 que controles, ignorando todos los costes.\"",
+        "replacement_text": "Mutada. Rápido. Juega esta carta sólo durante tu turno.\nResuelve una capacidad [action] de un Apoyo [[Herramienta]] o [[Arma]] de nivel 0–3 que controles, ignorando todos los costes."
       },
       {
         "code": "11065",
-        "text": "This card's [reaction] ability reads \"[reaction] When doom is placed on a card you control: Place 1 resource (from the token pool) on Blood of Thoth, as an offering.\"\nThis card's [free] ability reads \"[free] During the investigation phase, except during an action, spend 2 offerings and exhaust Blood of Thoth: Choose an investigator at your location to immediately take an action as if it were their turn.\"",
-        "replacement_text": "Mutated.\n[reaction] When doom is placed on a card you control: Place 1 resource <i>(from the token pool)</i>, on this card, as an offering.\n[fast] During the investigation phase, except during an action, spend 2 offerings and exhaust Blood of Thoth: Choose an investigator at your location to immediately take an action as if it were their turn."
+        "text": "La capacidad [reaction] de esta carta ahora dice: “[reaction] Cuando se coloque perdición en una carta que controles: Coloca 1 recurso en esta carta <i>(de la reserva de fichas)</i>, como ofrenda.\"\nLa capacidad [free] de esta carta ahora dice: “[free] Durante la fase de investigación, excepto durante una acción, retira 2 ofrendas y agota la Sangre de Thoth: Elige un investigador que esté en tu Lugar para que realice una acción inmediatamente como si fuera su turno.”",
+        "replacement_text": "Mutada.\n[reaction] Cuando se coloque perdición en una carta que controles: Coloca 1 recurso en esta carta <i>(de la reserva de fichas)</i>, como ofrenda.\n[fast] Durante la fase de investigación, excepto durante una acción, retira 2 ofrendas y agota la Sangre de Thoth: Elige un investigador que esté en tu Lugar para que realice una acción inmediatamente como si fuera su turno."
       }
     ]
   }

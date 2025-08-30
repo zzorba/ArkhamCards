@@ -209,7 +209,7 @@
   },
   {
     "id": "court_of_the_ancients",
-    "name": "Court of the Ancients"
+    "name": "Hof der Uralten"
   },
   {
     "id": "cp_epilogue",
@@ -609,11 +609,11 @@
   },
   {
     "id": "obsidian_canyons",
-    "name": "Obsidian Canyons"
+    "name": "Obsidian-Schluchten"
   },
   {
     "id": "one_last_job",
-    "name": "One Last Job"
+    "name": "Ein letzter Job"
   },
   {
     "id": "oz_epilogue",
@@ -641,7 +641,7 @@
   },
   {
     "id": "ptc_interlude1",
-    "name": "Belohnung des Wahnsinns"
+    "name": "Der Schatten der Realität"
   },
   {
     "id": "ptc_interlude1_reprint",
@@ -693,7 +693,7 @@
   },
   {
     "id": "return_to_arkham",
-    "name": "Return to Arkham"
+    "name": "Rückkehr nach Arkham"
   },
   {
     "id": "return_to_at_deaths_doorstep",
@@ -897,7 +897,7 @@
   },
   {
     "id": "sepulchre_of_the_sleeper",
-    "name": "Sepulchre of the Sleeper"
+    "name": "Die Gruft des Schläfers"
   },
   {
     "id": "shanghai",
@@ -993,7 +993,7 @@
   },
   {
     "id": "the_apiary",
-    "name": "The Apiary"
+    "name": "Das Apiarium"
   },
   {
     "id": "the_attack",
@@ -1005,7 +1005,7 @@
   },
   {
     "id": "the_awakening",
-    "name": "The Awakening"
+    "name": "Das Erwachen"
   },
   {
     "id": "the_black_cat",
@@ -1049,19 +1049,19 @@
   },
   {
     "id": "the_doom_of_arkham",
-    "name": "The Doom of Arkham"
+    "name": "Arkhams Verderben"
   },
   {
     "id": "the_doom_of_arkham_part_1",
-    "name": "The Doom of Arkham: Part I"
+    "name": "Arkhams Verderben (Teil I)"
   },
   {
     "id": "the_doom_of_arkham_part_2",
-    "name": "The Doom of Arkham: Part II"
+    "name": "Arkhams Verderben (Teil II)"
   },
   {
     "id": "the_drowned_quarter",
-    "name": "The Drowned Quarter"
+    "name": "Das überflutete Viertel"
   },
   {
     "id": "the_duchess",
@@ -1097,7 +1097,7 @@
   },
   {
     "id": "the_grand_vault",
-    "name": "The Grand Vault"
+    "name": "Das große Gewölbe"
   },
   {
     "id": "the_great_ones",
@@ -1245,7 +1245,7 @@
   },
   {
     "id": "the_western_wall",
-    "name": "The Western Wall"
+    "name": "Der Westwall"
   },
   {
     "id": "the_white_queen",

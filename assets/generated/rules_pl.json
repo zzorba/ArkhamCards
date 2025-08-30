@@ -18,7 +18,7 @@
     "id": "Action",
     "title": "Akcja",
     "text": "Podczas swojej tury badacz może wykonać maksymalnie **trzy** akcje. Podczas wykonywania akcji należy najpierw zapłacić wszelkie koszty związane z daną akcją. Dopiero potem można rozpatrzyć konsekwencje danej akcji.\n- Jeśli polecenie nakazuje badaczowi stracić 1 lub więcej akcji, wówczas w danej rundzie ma on odpowiednio mniej akcji.\nNiektóre zdolności kart zapewniają badaczom „dodatkowe akcje”. Jeśli badacz ma podczas swojej tury jedną lub więcej dodatkowych akcji, pierwsza akcja, jaką wykonuje, jest uznawana za daną dodatkową akcję (jeśli wykonywana akcja kwalifikuje się jako dana dodatkowa akcja).\n<i>Przykład: zdolność Daisy Walker głosi: „Podczas twojej tury możesz wykonać dodatkową akcję, która może być zużyta tylko na potrzeby zdolności [action] kart z cechą **Księga**”. Za pierwszym razem w każdej turze, gdy Daisy wykonuje zdolność [action] z karty z cechą **Księga**, automatycznie zużywa na to daną dodatkową akcję, a nie jedną z 3 standardowych akcji Daisy</i>.\nJeśli akcja kwalifikuje się jako więcej niż jedna z dodatkowych akcji badacza, może on zdecydować, którą dodatkową akcję zużywa\nJeśli efekt spowoduje, że badacz ma stracić jedną lub więcej akcji, dany badacz posiada tyle mniej standardowych akcji w danej turze (badacz w pierwszej kolejności „traci” swoje standardowe akcje). Jeśli badaczowi pozostały już tylko dodatkowe akcje, wtedy traci dodatkowe akcje (w kolejności wybranej przez tego badacza).\n<i>Przykład: efekt powoduje, że Daisy ma stracić 2 akcje. Posiada więc 2 akcje mniej do wykonania podczas jej tury. Nie może zdecydować, że „straci” swoje dodatkowe akcje, chyba że są to jedyne akcje, jakie jej pozostały</i>.\nPełna lista dostępnych akcji znajduje się w opisie kroku „[2.2.1 Badacz wykonuje akcję, jeśli jest w stanie to zrobić.](#Investigation_Phase)”.",
-    "rules":[
+    "rules": [
       {
         "id": "Only_As_Your_First_Action",
         "title": "„…tylko jako twoją pierwszą akcję”",
@@ -79,7 +79,10 @@
   {
     "id": "Prologue_Investigators",
     "title": "Badacze z Prologu",
-    "cycle": ["tcu"],
+    "cycle": [
+      "tcu",
+      "rttcu"
+    ],
     "text": "Cztery pokazane obok karty badaczy (Gavriella Mizrah, Jerome Davids, Penny White i Valentino Rivas) zostały oznaczone symbolem zestawu spotkań <i>Zaginięcia w Posiadłości Świtu</i> i mogą być wykorzystywane jedynie w prologu kampanii Przerwany krąg. Nie można ich używać w innych scenariuszach. Należy przechowywać je z pozostałymi kartami scenariusza <i>Zaginięcia w Posiadłości Świtu</i> i nie umieszczać ich w kolekcji kart gracza."
   },
   {
@@ -99,7 +102,24 @@
   },
   {
     "id": "Alert",
-    "cycle": ["tfa", "tcu", "tde", "eoe"],
+    "cycle": [
+      "tfa",
+      "rttfa",
+      "tcu",
+      "rttcu",
+      "tde",
+      "tdea",
+      "tdeb",
+      "eoe",
+      "tskc",
+      "fof",
+      "zdm",
+      "zcf"
+    ],
+    "scenarios": [
+      "fortune_and_folly_part_1",
+      "fortune_and_folly_part_2"
+    ],
     "title": "Czujny",
     "text": "Za każdym razem, gdy podczas próby wymknięcia się potworowi ze słowem kluczowym Czujny test umiejętności badacza zakończy się porażką, po zastosowaniu wszystkich rezultatów tego testu umiejętności dany potwór wykonuje atak przeciwko wymykającemu się badaczowi. Wróg nie zostaje wyczerpany po wykonaniu ataku wynikającego ze słowa kluczowego Czujny. Ten atak zostaje wykonany bez względu na to, czy wróg jest w zwarciu z wymykającym się badaczem, czy nie."
   },
@@ -174,14 +194,24 @@
   },
   {
     "id": "Explore",
-    "cycle": ["tfa"],
+    "cycle": [
+      "tfa",
+      "gob"
+    ],
+    "scenarios": [
+      "the_eternal_slumber",
+      "the_nights_usurper"
+    ],
     "title": "Eksploracja",
     "text": "Niektóre zdolności w tej kampanii zostały oznaczone jako akcja <b>Eksploracji</b>. Takie zdolności zazwyczaj pozwalają graczom odnaleźć nowe lokacje, które mogą umieścić w grze, i są inicjowane poprzez akcję „aktywacji”.\nZdolności <b>Eksploracja</b> nakazują graczowi dobrać wierzchnią kartę z „talii eksploracji”, która jest osobną talią konstruowaną podczas przygotowania niektórych scenariuszy. Talia ta składa się z jednostronnych kart lokalizacji oraz kart podstępu.\n- Każda zdolność <b>Eksploracji</b> wskazuje konkretny typ lokalizacji, jaki jest celem eksploracji. <b>Jeśli gracz dobierze lokalizację takiego typu, umieszcza ją w grze i porusza się do danej lokalizacji</b>. Uznaje się to za udaną eksplorację (sukces).\n- Jeśli zostanie dobrana jakakolwiek inna lokalizacja, gracz umieszcza ją obok talii eksploracji i dobiera kolejną kartę z talii eksploracji. Proces ten należy powtarzać, dopóki nie zostanie dobrana lokalizacja określonego typu lub karta podstępu. Kiedy gracz zakończy tę akcję, wtasowuje do talii eksploracji wszystkie leżące obok niej karty.\n- Jeśli zostanie dobrana karta podstępu, gracz rozpatruje ją w normalny sposób. Kiedy zostaje odrzucona, należy ją normalnie umieścić w stosie odrzuconych kart spotkań. Talia eksploracji nie posiada własnego stosu kart odrzuconych. Uznaje się to za nieudaną eksplorację (porażka).\n- Kiedy jednostronna lokalizacja zostaje umieszczona w grze z talii eksploracji, należy umieścić na niej żetony wskazówek w liczbie równej jej wartości wskazówek.\n<i>Przykład: Tajemnica 1a – „Wyprawa w dzicz” posiada następującą zdolność: “[action]: <b>Eksploracja.</b> Dobierz wierzchnią kartę z talii eksploracji. Jeśli jest to połączona lokalizacja, umieść ją w grze i porusz się na nią”. Ursula Downs znajduje się w Obozie ekspedycji i chciałaby znaleźć nową lokalizację, do której mogłaby się poruszyć. Wydaje swoją pierwszą akcję, aby eksplorować poprzez dobranie wierzchniej karty z talii eksploracji. Dobrała kartę Zawiła ścieżka. Ponieważ nie jest to lokalizacja połączona z Obozem ekspedycji, Ursula umieszcza tę kartę obok talii eksploracji i dobiera nową. Tym razem dobiera kartę podstępu Zasoby się kończą, którą rozpatruje w normalny sposób, a następnie umieszcza ją w stosie odrzuconych kart spotkań. Jej eksploracja była nieudana i musi wtasować dobraną wcześniej Zawiłą ścieżkę z powrotem do talii eksploracji. Ursula decyduje się jeszcze raz eksplorować, wydając w tym celu drugą akcję. Tym razem dobiera Ciernistą ścieżkę, która jest połączona z Obozem ekspedycji. Jej eksploracja była udana. Ciernista ścieżka zostaje umieszczona w grze z liczbą żetonów wskazówek równą jej wartości wskazówek, a Ursula natychmiast porusza się z Obozu ekspedycji na Ciernistą ścieżkę.</i>"
   },
   {
     "id": "Supplies",
     "title": "Ekwipunek",
-    "cycle": ["tfa"],
+    "cycle": [
+      "tfa",
+      "rttfa"
+    ],
     "text": "W niektórych momentach kampanii <i>Zapomniana era</i> badacze mają możliwość wybrania ekwipunku, który zabiorą ze sobą na wyprawę w dzicz. Ekwipunek należy zanotować w Dzienniku kampanii, w sekcji „Ekwipunek” każdego badacza.\nEkwipunek można nabyć za punkty ekwipunku, które są przyznawane badaczom za każdym razem, gdy mają szansę nabyć ekwipunek. Niewykorzystane punkty ekwipunku nie są odnotowywane i przepadają.\nEkwipunek badacza będzie określał jego możliwości podczas rozgrywki i całej historii tej kampanii. <b>Żaden element ekwipunku nie ma sam z siebie efektu w grze.</b> Niektóre efekty kart, opcje fabularne i rozwiązania mogą się zmieniać lub staną się dostępne w zależności od tego, jaki ekwipunek posiada gracz (gracze)."
   },
   {
@@ -264,13 +294,27 @@
   {
     "id": "Story_Cards",
     "title": "Karty fabuły",
-    "cycle": ["ptc", "tfa", "tcu", "tde", "eoe"],
+    "cycle": [
+      "ptc",
+      "rtptc",
+      "tfa",
+      "rttfa",
+      "tcu",
+      "rttcu",
+      "tde",
+      "tdea",
+      "tdeb",
+      "eoe",
+      "tskc",
+      "fof",
+      "gob"
+    ],
     "text": "Karty fabuły to nowy rodzaj kart wprowadzający dodatkową warstwę narracyjną i zazwyczaj stanowią rewers innej karty scenariusza. Kiedy gracze są proszeni o rozpatrzenie karty fabuły, po prostu czytają jej tekst fabularny oraz rozpatrują jej efekt w grze (jeśli jakiś jest)."
   },
   {
     "id": "Signature_Cards",
     "title": "Karty osobiste",
-    "text": "„Karty osobiste” badacza to karty, które są dostępne jedynie dla danego badacza i nie mogą być zawarte w talii innego badacza. Dotyczy to kart graczy zawierających tekst „Tylko talia (imię badacza)” oraz niepodstawowych osłabień wymienionych w sekcji „Wymogi tworzenia talii”, które z tego powodu mogą być zawarte tylko w talii danego badacza.\nKart osobistych dotyczą następujące *dodatkowe* zasady:\n- Liczba każdej karty osobistej wymienionej w sekcji „Wymogi tworzenia talii” każdego badacza jest dokładną liczbą kopii danej karty, które należy zawrzeć w talii danego badacza. Jeśli obok nazwy karty nie pojawia się żadna cyfra, liczba kopii danej karty wynosi 1. <i>Przykład: w sekcji „Wymogi tworzenia talii” Rolanda Banksa wymienione są następujące karty: Specjalna .38 Rolanda, Zacieranie śladów, 1 losowe podstawowe osłabienie. Roland Banks musi więc zawrzeć w swojej talii dokładnie po 1 kopii swoich kart osobistych: Specjalnej .38 Rolanda i Zacierania śladów. Nie wolno mu zawrzeć w swojej talii więcej niż 1 kopii żadnej z tych kart.</i>\n- Badacz nie może: zagrać karty osobistej innego badacza, kontrolować karty osobistej innego badacza znajdującej się w grze, bądź posiadać karty osobistej innego badacza na ręce. Jeśli jakiś efekt gry zmusi gracza do przejęcia kontroli nad kartą, do której jest dołączona karta osobista innego badacza, ta karta osobista zostaje odrzucona.\n<i>Przykład: Roland posiada w grze Specjalną .38 Rolanda. Ma również kartę Praca zespołowa, która pozwala badaczom w tej samej lokalizacji wymieniać się lub przekazywać sobie atuty. Jednak ponieważ Specjalna .38 Rolanda jest jego kartą osobistą, nie może jej przekazać innemu badaczowi.</i>\n- Karty osobiste nie muszą podlegać typowym wymogom tworzenia talii i nie wliczają się do żadnych ograniczeń talii jeśli inne karty mają tą samą nazwę."
+    "text": "„Karty osobiste” badacza to karty, które są dostępne jedynie dla danego badacza i nie mogą być zawarte w talii innego badacza. Dotyczy to kart graczy zawierających tekst „Tylko talia (imię badacza)” oraz niepodstawowych osłabień wymienionych w sekcji „Wymogi tworzenia talii”, które z tego powodu mogą być zawarte tylko w talii danego badacza.\nKart osobistych dotyczą następujące *dodatkowe* zasady:\n- Liczba każdej karty osobistej wymienionej w sekcji „Wymogi tworzenia talii” każdego badacza jest dokładną liczbą kopii danej karty, które należy zawrzeć w talii danego badacza. Jeśli obok nazwy karty nie pojawia się żadna cyfra, liczba kopii danej karty wynosi 1. <i>Przykład: w sekcji „Wymogi tworzenia talii” Rolanda Banksa wymienione są następujące karty: Specjalna .38 Rolanda, Zacieranie śladów, 1 losowe podstawowe osłabienie. Roland Banks musi więc zawrzeć w swojej talii dokładnie po 1 kopii swoich kart osobistych: Specjalnej .38 Rolanda i Zacierania śladów. Nie wolno mu zawrzeć w swojej talii więcej niż 1 kopii żadnej z tych kart.</i>\n- Badacz nie może: zagrać ani przeznaczyć na rzecz testu umiejętności karty osobistej innego badacza, kontrolować karty osobistej innego badacza znajdującej się w grze, bądź posiadać karty osobistej innego badacza na ręce. Jeśli jakiś efekt gry zmusi gracza do przejęcia kontroli nad kartą, do której jest dołączona karta osobista innego badacza, ta karta osobista zostaje odrzucona.\n<i>Przykład: Roland posiada w grze Specjalną .38 Rolanda. Ma również kartę Praca zespołowa, która pozwala badaczom w tej samej lokalizacji wymieniać się lub przekazywać sobie atuty. Jednak ponieważ Specjalna .38 Rolanda jest jego kartą osobistą, nie może jej przekazać innemu badaczowi.</i>\n- Karty osobiste nie muszą podlegać typowym wymogom tworzenia talii i nie wliczają się do żadnych ograniczeń talii jeśli inne karty mają tą samą nazwę."
   },
   {
     "id": "Encounter_Cards_Vs_Scenario_Cards",
@@ -289,9 +333,20 @@
   },
   {
     "id": "Keys",
-    "cycle": ["tic"],
-    "title": "Klucze",
+    "cycle": [
+      "tic",
+      "zrttic"
+    ],
+    "title": "Klucze (żeton)",
     "text": "To rozszerzenie wprowadza żetony kluczy, które reprezentują ważne przedmioty lub informacje, które mogą zostać pozyskane i wykorzystane podczas scenariuszy.\nŻetony kluczy mają dwie strony. Wszystkie 7 żetonów mają taką samą stronę zakrytą (uniwersalny symbol klucza), dzięki czemu można je pomieszać w taki sposób, aby gracze nie wiedzieli, który jest który. Na stronie odkrytej każdy klucz został oznaczony konkretnym, unikatowym kolorem (<i>czerwony</i>, <i>niebieski</i>, <i>zielony</i>, <i>żółty</i>, <i>fioletowy</i>, <i>czarny</i>, <i>biały</i>).\nJeśli scenariusz wykorzystuje jeden lub więcej kluczy, przygotowanie danego scenariusza wskaże, ile z nich należy odłożyć na bok i czy powinny być one odkryte, czy też zakryte i wymieszane. Klucze mogą wejść do gry poprzez różne efekty kart i zwykle są umieszczane na wrogu, lokalizacji lub atucie fabularnym. Klucze można zdobyć na trzy sposoby:\n- Jeśli na lokalizacji z kluczem nie ma żadnych żetonów wskazówek, badacz może przejąć kontrolę nad każdym kluczem w danej lokalizacji w ramach zdolności [free].\n- Jeśli badacz spowoduje, że wróg z kluczem opuści grę, dany badacz musi przejąć kontrolę nad każdym kluczem, który znajdował się na danym wrogu. ( Jeśli wróg opuścił grę w wyniku innego efektu, umieść dane klucze na jego lokalizacji).\n- Niektóre efekty kart mogą pozwolić badaczowi przejąć kontrolę nad kluczami w inny sposób.\nKiedy badacz przejmie kontrolę nad kluczem, obraca go na stronę odkrytą (jeśli był zakryty) i umieszcza na swojej karcie badacza. Jeśli badacz, który kontroluje 1 lub więcej kluczy, zostanie wyeliminowany, należy umieścić każdy z tych kluczy na jego lokalizacji. Dowolny badacz może w ramach zdolności [action] dać innemu badaczowi w tej samej lokalizacji dowolną liczbę swoich kluczy.\n<b>Klucze same z siebie nie mają żadnego efektu w grze.</b> . Jednak niektóre efekty kart mogą się zmieniać w zależności od tego, które klucze kontroluje badacz. Dodatkowo klucze mogą czasami być niezbędne, aby scenariusz postąpił dalej."
+  },
+  {
+    "id": "Keys2",
+    "cycle": [
+      "tskc"
+    ],
+    "title": "Klucze (karta)",
+    "text": "Karty kluczy to nowy rodzaj kart pojawiający się w kampanii <i>Szkarłatne klucze</i>. Klucze to potężne artefakty, które mogą zostać „przemienione”, aby pomóc lub przeszkodzić badaczom, w zależności od tego, do kogo zostaną dołączone i czy widoczna jest ich strona z cechą [[Stabilny]] czy [[Niestabilny]].\n= Podczas rozpatrywania scenariusza klucz może zostać powiązany z jednym posiadaczem, którego nazwa zostaje zanotowana w Dzienniku kampanii. Klucz może zostać powiązany z badaczem, atutem fabularnym lub wrogiem.\n= Klucz zawsze wchodzi do gry dołączony do jego posiadacza (tak jak zanotowano w Dzienniku kampanii). Na początku każdego scenariusza każdy badacz, który jest posiadaczem przynajmniej 1 klucza, dołącza dane klucze do swojej karty badacza. Za każdym razem, kiedy atut fabularny lub wróg wejdzie do gry, jeśli jest on posiadaczem przynajmniej 1 klucza, dane klucze również wchodzą do gry dołączone do ich posiadacza.\n-- Jeśli posiadacz klucza jest badaczem lub atutem fabularnym, klucz wchodzi do gry stroną z cechą [[Stabilny]] do góry.\n-- Jeśli posiadacz klucza jest wrogiem, klucz wchodzi do gry stroną z cechą [[Niestabilny]] do góry.\n= Klucz nie może opuścić gry, chyba że jego posiadacz opuści grę. Jeśli posiadacz przynajmniej 1 klucza opuści grę, każdy kontrolowany przez niego klucz zostaje odłożony na bok, poza grę. <i>(Klucze te pozostają jednak powiązane ze swoimi posiadaczami w przyszłych scenariuszach, chyba że zostało zaznaczone inaczej).</i>\n= Dopóki klucz jest dołączony do badacza, dany badacz może aktywować jego zdolność przemiany podczas dowolnego okna gracza jako zdolność [fast]. Nazywa się to „przemianą” klucza. Rozpatrując tę zdolność, gra każe badaczowi odwrócić klucz na jego drugą stronę tak, aby jego druga zdolność przemiany stała się aktywna. Aby ponownie odwrócić kartę, badacz będzie musiał wykonać zdolność przemiany na jej stronie z cechą [[Niestabilny]].\n-- Dopóki klucz jest dołączony do atutu fabularnego, może zostać przemieniony w ten sam sposób przez dowolnego badacza, który kontroluje dany atut fabularny.\n-- Każdy klucz (według tytułu) dołączony do dowolnego badacza lub atutu fabularnego może zostać przemieniony tylko raz na rundę.\n= Dopóki klucz znajduje się pod kontrolą wroga, jego zdolność przemiany jest rozpatrywana jedynie wtedy, gdy karta lub efekt karty każe dowolnemu badaczowi przemienić dany klucz, po czym pozostaje on stroną z cechą [[Niestabilny]] do góry.\n-- Klucz dołączony do wroga nie może zostać odwrócony na stronę z cechą [[Stabilny]].\n-- Nie ma limitu, ile razy klucz dołączony do wroga może zostać przemieniony.\n= Niektóre efekty kart mogą bezpośrednio odwrócić klucz dołączony do badacza lub atutu fabularnego ze strony z cechą [[Stabilny]] na [[Niestabilny]] i na odwrót. Nie jest to równoznaczne z przemianą klucza i nie powoduje to rozpatrzenia jego zdolności przemiany."
   },
   {
     "id": "Collection",
@@ -321,7 +376,7 @@
       {
         "id": "Ignoring_All_Costs",
         "title": "„Ignorując wszystkie koszty”",
-        "text": "Niektóre karty, takie jak Wiedza to potęga lub Słowa rozpaczy, pozwalają badaczowi zagrać kartę lub aktywować zdolność na karcie atutu, „ignorując wszystkie koszty”. Efekty te ignorują jedynie koszty inicjowania zdolności. Nie ignorują dodatkowych kosztów, które należy ponieść podczas rozpatrywania tej zdolności — innymi słowy, wszystko „przed dwukropkiem” jest ignorowane, ale wszelkie dodatkowe koszty „za dwukropkiem” muszą zostać płacone normalnie.\n<i>Na przykład, jeśli badacz użyje Wiedzy to Potęgi, aby aktywować zdolność [action] Starej Księgi Wiedzy Tajemnej, Wiedza to Potęga pozwala ci zignorować koszt akcji i wyczerpania Starej Księgi Wiedzy, w celu aktywacji jej zdolności i przeszukania talii w poszukiwaniu karty, ale nie znosi dodatkowego kosztu zagrania sekretów, aby zagrać tę kartę. Podobnie zagranie Słowa rozpaczy znosi koszt akcji w celu aktywacji zdolności na Ziemskiej Łagodności, ale nie znosi kosztu wydawania ładunków na leczenie badacza w twojej lokalizacji."
+        "text": "Niektóre karty, takie jak Wiedza to potęga lub Słowa rozpaczy, pozwalają badaczowi zagrać kartę lub aktywować zdolność na karcie atutu, „ignorując wszystkie koszty”. Efekty te ignorują jedynie koszty inicjowania zdolności, takie jak koszt [action], koszt w zasobach, wydawanie zużywalnych żetonów itd. Nie ignorują dodatkowych kosztów, które należy ponieść podczas rozpatrywania tej zdolności — innymi słowy, wszystko „przed dwukropkiem” jest ignorowane, ale wszelkie dodatkowe koszty „za dwukropkiem” muszą zostać płacone normalnie. Zdolności, które wyganiają karty i/lub usuwają karty z gry jako koszt zagrania nie mogą być zignorowane.\n<i>Na przykład, jeśli badacz użyje Wiedzy to Potęgi, aby aktywować zdolność [action] Starej Księgi Wiedzy Tajemnej, Wiedza to Potęga pozwala ci zignorować koszt akcji i wyczerpania Starej Księgi Wiedzy, w celu aktywacji jej zdolności i przeszukania talii w poszukiwaniu karty, ale nie znosi dodatkowego kosztu zagrania sekretów, aby zagrać tę kartę. Podobnie zagranie Słowa rozpaczy znosi koszt akcji w celu aktywacji zdolności na Ziemskiej Łagodności, ale nie znosi kosztu wydawania ładunków na leczenie badacza w twojej lokalizacji. Dodatkowo Do granic wytrzymałości nie zezwala na zniesienie kosztu wygnania Gaśnicy przy rozpatrywaniu jej drugiej zdolności.</i>"
       }
     ]
   },
@@ -364,7 +419,6 @@
   },
   {
     "id": "Lola_and_Roles",
-    "cycle": ["ptc"],
     "title": "Lola i jej „role”",
     "text": "Jako uznana aktorka Lola Hayes potrafi odgrywać wiele różnych ról. Na początku każdego scenariusza, po dobraniu przez graczy początkowych kart, Lola Hayes musi wybrać rolę (Neutralna, Strażnik, Poszukiwacz, Łotr, Mistyk lub Ocalały). Lola może zagrywać, przeznaczać do testów umiejętności lub aktywować zdolności [action], [fast] lub [reaction] tylko kart neutralnych lub kart należących do tej samej klasy co wybrana przez Lolę rola. To ograniczenie dotyczy tylko kart gracza, nie dotyczy zaś kart spotkań ani osłabień. Należy pamiętać, że zdolności stałe oraz <b>Wymuszone</b> na kartach, które należą do innej klasy niż wybrana przez Lolę rola, pozostają aktywne."
   },
@@ -436,7 +490,13 @@
   {
     "id": "Haunted",
     "title": "Nawiedzona",
-    "cycle": ["tcu"],
+    "cycle": [
+      "tcu",
+      "rttcu"
+    ],
+    "scenarios": [
+      "laid_to_rest"
+    ],
     "text": "„Nawiedzona” to nowa zdolność pojawiająca się na niektórych lokalizacjach. Za każdym razem, kiedy podczas badania lokalizacji test umiejętności badacza zakończy się porażką, po zastosowaniu wszystkich rezultatów tego testu umiejętności dany badacz musi rozpatrzeć wszystkie zdolności „<b>Nawiedzona</b> –” danej lokalizacji.\nDla celów rozpatrywania efektów innych kart lokalizacja jest „nawiedzona”, jeśli posiada przynajmniej jedną zdolność „<b>Nawiedzona</b> –” (może być ona wydrukowana na danej lokalizacji lub pochodzić z innego źródła)."
   },
   {
@@ -445,8 +505,18 @@
     "text": "Określenie „nie może” jest ostateczne i nie może zostać zniesione przez inne zdolności."
   },
   {
+    "id": "Elusive",
+    "cycle": [
+      "fhv"
+    ],
+    "title": "Nieuchwytny",
+    "text": "Jeśli przygotowany wróg ze słowem kluczowym Nieuchwytny zaatakuje lub zostanie zaatakowany, po rozpatrzeniu tego ataku dany wróg natychmiast uwalnia się ze zwarcia ze wszystkimi badaczami, porusza się do połączonej lokalizacji (w której nie ma żadnego badacza, jeśli to możliwe) i zostaje wyczerpany. Dzieje się tak bez względu na to, czy wróg był w zwarciu z atakującym badaczem, czy nie."
+  },
+  {
     "id": "Myriad",
-    "cycle": ["tde"],
+    "cycle": [
+      "tde"
+    ],
     "title": "Niezliczone",
     "text": "Badacz może zawrzeć w swojej talii do 3 kopii karty gracza (o tej samej nazwie) ze słowem kluczowym Niezliczone, zamiast normalnego limitu 2 kopii. Dodatkowo gdy gracz kupuje do swojej talii kartę ze słowem kluczowym Niezliczone, może zakupić do 2 dodatkowych kopii danej karty (o tym samym poziomie), nie płacąc za nie punktami doświadczenia."
   },
@@ -465,7 +535,6 @@
     "title": "Odłożenie na bok",
     "text": "Niektóre scenariusze nakazują graczom odłożyć na bok określone karty. Odłożone na bok karty nie wchodzą w interakcję z grą, dopóki nie odniosą się do nich instrukcje scenariusza lub zdolności kart.\nJeśli efekt nakazuje badaczowi przejąć kontrolę nad kartą, która obecnie jest odłożona na bok, dany efekt umieszcza daną kartę w grze, w obszarze gry danego badacza."
   },
-
   {
     "id": "Immune",
     "title": "Odporny",
@@ -494,7 +563,9 @@
   {
     "id": "Seal",
     "title": "Pieczęć",
-    "cycle": ["tfa", "eoe"],
+    "cycle": [
+      "zdm"
+    ],
     "text": "Jako dodatkowy koszt wejścia do gry karty ze słowem kluczowym Pieczęć gracz kontrolujący tę kartę musi przeszukać worek chaosu w poszukiwaniu określonego żetonu chaosu i umieścić go na danej karcie, tym samym go pieczętując. Jeśli istnieje wybór, który żeton zapieczętować, decyduje gracz kontrolujący kartę. Jeśli określonego żetonu nie ma w worku chaosu, karta nie może wejść do gry.\nUważa się, że zapieczętowany żeton chaosu nie znajduje się w worku chaosu i z tego powodu nie może zostać z niego odkryty podczas testu umiejętności lub zdolności\nKiedy żeton chaosu zostanie „uwolniony”, wraca do worka chaosu i nie jest już zapieczętowany. <b>Jeśli karta, na której znajduje się 1 lub więcej zapieczętowanych żetonów chaosu, z jakiegokolwiek powodu opuści grę, każdy znajdujący się na niej zapieczętowany żeton chaosu zostaje uwolniony.</b>\nNiektóre karty (ze słowem kluczowym Pieczęć lub bez niego) mogą także posiadać zdolności, które pieczętują 1 lub więcej żetonów chaosu jako część ich efektu. Należy przeprowadzić to w ten sam sposób: przeszukać worek chaosu w poszukiwaniu określonego żetonu, usunąć go z worka chaosu i umieścić na danej karcie. Jeśli określonego żetonu nie ma w worku chaosu, efekt karty jest nieudany."
   },
   {
@@ -511,6 +582,11 @@
     "id": "Base_Value",
     "title": "Podstawowa wartość",
     "text": "Podstawowa wartość to wartość elementu przed zastosowaniem jakichkolwiek modyfikatorów. Jeśli nie zaznaczono inaczej, podstawowa wartość elementu z karty to wartość wydrukowana na danej karcie."
+  },
+  {
+    "id": "Basic_Action_types",
+    "title": "Podstawowe typy akcji",
+    "text": "Podstawowa akcja to akcja którą gracz może wykonać i rozpatrzyć w pełni bez innych modyfikatorów lub zdolności, włączając w to pogrubione oznaczenia akcji. Poniższe są podstawowymi akcjami: <b>Dobranie</b>, <b>Zyskanie zasobów</b>, <b>Poruszanie się</b>, <b>Badanie</b>, <b>Walka</b>, <b>Zwarcie się</b> oraz <b>Wymykanie się</b>.\n<b>Aktywacja</b>, <b>Zagranie</b>, <b>Rezygnowanie</b> oraz <b>Pertraktacje</b> nie są podstawowymi akcjami.\n<i>Przykład: Badacz może użyć zdolności Domknięcia kręgu w celu wykonania podstawowej akcji <b>Walki</b>, ale nie może użyć go do <b>Zagrania</b> wydarzenia z oznaczeniem akcji <b>Walki</b>, gdyż zagranie wydarzenia nie jest uważane za postawową akcję."
   },
   {
     "id": "Treachery_Cards",
@@ -551,7 +627,6 @@
   },
   {
     "id": "Bonded",
-    "cycle": ["tcu", "tde"],
     "title": "Powiązana",
     "text": "Karty ze słowem kluczowym Powiązana odwołują się do innej karty gracza. Nie posiadają poziomu i dlatego nie są dostępne podczas budowania talii. Zamiast tego karta, z którą są powiązane (która jest wymieniona w nawiasie przy tym słowie kluczowym), przywołuje powiązane karty do gry.\nJeśli talia badacza zawiera kartę, która przywołuje jedną lub więcej powiązanych kart, dane powiązane karty powinny być odłożone na bok na początku każdej gry.\nJeśli osłabienie ze słowem kluczowym Powiązana zostaje dodane do talii badacza, jego ręki, obszaru zagrożenia lub obszaru gry, nie pozostaje ono częścią talii danego badacza do końca kampanii (w przeciwieństwie do innych osłabień). Takie osłabienie rozpoczyna każdą grę odłożone z boku, razem z innymi powiązanymi kartami danego badacza.\n<i>Przykład: Nadzieja, Gorliwość i Przepowiednia posiadają słowo kluczowe „Powiązana (Panna Doyle)”. Oznacza to, że dane karty są powiązane z Panną Doyle. Nadzieja, Gorliwość i Przepowiednia nie posiadają poziomu i dlatego nie są dostępne podczas budowania talii. Jednak w momencie zagrania Panny Doyle przywołuje ona każdą z danych kart. Dlatego gracz posiadający w swojej talii Pannę Doyle powinien na początku każdej gry odłożyć na bok Nadzieję, Gorliwość i Przepowiednię. Dane karty nie stanowią części talii danego badacza i nie wliczają się do jego limitu kart w talii.</i>\nJeśli talia badacza zawiera kartę, która przywołuje jedną lub więcej powiązanych kart, na początku każdej gry te powiązane karty są odkładane na bok, poza grę. Liczba egzemplarzy każdej innej połączonej karty, które są odkładane w ten sposób, jest równa liczbie kopii, które zostały zawarte w produkcie, w którym ta powiązana karta została wprowadzona. Liczba kart w twojej talii, które przywołują daną powiązaną kartę, nie wlicza się do tego limitu.\n<i>Przykład: Badacz może mieć odłożone na bok tylko 3 kopie Kojącej Melodii na początku gry. Podobnie, na początku gry badacz może odłożyć na bok tylko 1 Istotę snu, niezależnie od tego, ile kopii Dziennika Snów zawarł w swojej talii.</i>"
   },
@@ -579,7 +654,7 @@
     "id": "Search",
     "title": "Przeszukanie",
     "text": "Kiedy gracz zostanie poinstruowany, aby przeszukać jakiś obszar w poszukiwaniu karty, to gracz ten może podejrzeć wszystkie karty w przeszukiwanym obszarze bez ujawniania ich pozostałym graczom.\n- Jeśli efekt nakazuje przeszukać całą talię, talia ta musi zostać potasowana po zakończeniu przeszukiwania.\n- Podczas rozpatrywania efektu przeszukiwania gracz jest zmuszony do odnalezienia celu przeszukiwania, jeśli w przeszukiwanym obszarze znajduje się jedna lub więcej dozwolonych opcji.\n- Kiedy karty są częścią procesu przeszukiwania, nie uznaje się, że opuściły obszar, z którego pochodzą.",
-    "rules":[
+    "rules": [
       {
         "id": "Looking_At_Searching_And_Finding",
         "title": "„Podejrzyj”, „Przeszukaj” oraz „Znajdź”",
@@ -609,7 +684,9 @@
   },
   {
     "id": "Checkpoints",
-    "cycle": ["eoe"],
+    "cycle": [
+      "eoe"
+    ],
     "title": "Punkty zapisu",
     "text": "Niektóre scenariusze kampanii <i>Na krawędzi Ziemi</i> są podzielone na kilka części. Gracze mogą zdecydować się na rozegranie tych części pojedynczo (robiąc przerwy pomiędzy kolejnymi częściami) lub jedna po drugiej podczas dłuższego spotkania. Każda część jest osobną rozgrywką z własnym przygotowaniem i zakończeniem.\nPo rozegraniu jednej części scenariusza, Księga kampanii pokieruje badaczy do Punktu zapisu, który zawiera dalsze instrukcje postępowania. Jeśli badacze chcą przejść bezpośrednio do następnej części scenariusza, Punkt zapisu powie im, w jaki sposób przygotować grę do rozegrania następnego scenariusza. Jeśli badacze chcą zrobić przerwę i wznowić grę później, Punkt zapisu powie im, jakie informacje powinni zanotować w Dzienniku kampanii, aby łatwo i szybko przygotować grę podczas następnego spotkania."
   },
@@ -640,7 +717,15 @@
   },
   {
     "id": "Swarming X",
-    "cycle": ["tde", "side"],
+    "cycle": [
+      "tde",
+      "tdea",
+      "tdeb",
+      "zdm"
+    ],
+    "scenarios": [
+      "war_of_the_outer_gods"
+    ],
     "title": "Rojowisko X",
     "text": "Wróg ze słowem kluczowym Rojowisko X to tak naprawdę grupa wrogów działających niczym jedność. Po tym, jak badacz umieści w grze wroga ze słowem kluczowym Rojowisko X, dany badacz umieszcza X wierzchnich kart swojej talii pod danym wrogiem (zakrytych, bez podglądania) jako karty roju. Wróg, pod którym znajdują się dane karty, nazywany jest „wrogiem-żywicielem”. Również niektóre karty scenariusza mogą spowodować dodanie kart roju do dowolnego wroga. Należy to zrobić w ten sam sposób.\n- Jeśli nie jest jasne, który badacz powinien dodać karty roju, robi to główny badacz.\n- W większości przypadków każda karta roju znajdująca się pod wrogiem-żywicielem zachowuje się jak niezależna część danego wroga. Każda karta roju posiada takie same wartości i tekst umiejętności jak jej karta-żywiciel. <i>(Przykładowo jeśli badacz jest w zwarciu z wrogiem-żywicielem, pod którym znajdują się 2 karty roju, dany badacz jest w zwarciu z łącznie 3 wrogami).</i>\n- Kiedy wrogowie atakują podczas fazy wrogów, każda karta roju atakuje oddzielnie. Kiedy wróg-żywiciel i wszystkie jego karty roju już zaatakują podczas danego kroku, należy wyczerpać je wszystkie.\n- Każdą kartę roju można zaatakować osobno i zadać jej obrażenia, ale wróg-żywiciel nie może zostać pokonany, dopóki znajdują się pod nim jakieś karty roju. Kiedy karta roju zostaje pokonana, wszelkie nadmiarowe obrażenia mogą zostać zadane innej karcie roju znajdującej się pod tym samym wrogiem-żywicielem lub samemu wrogowi-żywicielowi. <i>(Przykładowo Tony Morgan używa Derringera .41, aby zaatakować Podstępnego zuga z 2 kartami roju. Atak zadaje 2 obrażenia. Pierwszy punkt obrażeń pokonuje 1 z 2 kart roju, więc nadmiarowy punkt obrażeń może zostać zadany drugiej karcie roju, co spowoduje pokonanie również jej).</i>\n- Za każdym razem, gdy karta roju opuszcza grę, należy ją umieścić na spodzie talii jej właściciela. Jeśli gracze nie są pewni, do kogo należy dana karta roju, mogą ją podglądnąć, aby ustalić jej właściciela.\n- Wróg-żywiciel i wszystkie jego karty roju poruszają się, wchodzą w zwarcie i są wyczerpywane jako jedna całość. <i>(Przykładowo jeśli badacz wymknie się wrogowi-żywicielowi lub dowolnej z jego kart roju, wszystkie one zostają wyczerpane i uwolnione ze zwarcia).</i>"
   },
@@ -729,7 +814,6 @@
   {
     "id": "Joes_Hunch_Deck",
     "title": "„Talia przeczuć” Joego",
-    "cycle": ["tcu"],
     "text": "Jako prywatny detektyw Joe Diamond nauczył się, że należy podążać za swoim przeczuciem. Z tego powodu posiada on własną talię przeczuć, którą tworzy się podczas kroku 4 przygotowania każdego scenariusza. Karty do talii przeczuć należy wybrać z 40-kartowej talii Joego, dlatego wliczają się one do ogólnego limitu kart w jego talii. Poza tymi instrukcjami przygotowania wszelkie odwołania do „talii” Joego dotyczą jego standardowej talii badacza, a nie talii przeczuć. Talia przeczuć Joego nie posiada własnego stosu kart odrzuconych – po zagraniu karty z talii przeczuć należy ją odrzucić na standardowy stos kart odrzuconych gracza."
   },
   {
@@ -740,7 +824,9 @@
   {
     "id": "Tekelili",
     "title": "Tekeli-li!",
-    "cycle": ["eoe"],
+    "cycle": [
+      "eoe"
+    ],
     "text": "Ta kampania wprowadza zestaw spotkań składający się z 16 osłabień o nazwie „Tekeli-li!”. Podczas przygotowania każdego scenariusza tej kampanii należy potasować te karty i stworzyć z nich specjalną talię Tekeli-li.\nTak jak w przypadku normalnych osłabień, jeśli jedna z tych kart zostanie dodana do talii badacza, staje się częścią tej talii i pozostaje w niej pomiędzy scenariuszami. Jednak efekt Odkrycia każdego osłabienia Tekeli-li! każe badaczowi odłożyć daną kartę z powrotem do talii Tekeli-li (tym samym usuwając ją z jego talii). W związku z tym liczba kart w talii Tekeli-li zmienia się w zależności od tego, ile takich osłabień znajduje się w danym momencie w taliach badaczy.\n<i>Uwaga: Chociaż wszystkie karty Tekeli-li! mają ten sam tytuł, ich efekty mogą się różnić.</i>"
   },
   {
@@ -756,7 +842,9 @@
   {
     "id": "Partner",
     "title": "Towarzysz",
-    "cycle": ["eoe"],
+    "cycle": [
+      "eoe"
+    ],
     "text": "Towarzysz to słowo kluczowe, które pojawia się na dziewięciu atutach fabularnych w zestawie spotkań <i>Członkowie ekspedycji</i>. Każdy z tych atutów reprezentuje potężnego sprzymierzeńca, którego badacze mogą wziąć ze sobą podczas scenariuszy w tej kampanii, aby zwiększyć swoje szanse na zwycięstwo. Jednak zabranie ze sobą atutu ze słowem kluczowym Towarzysz niesie za sobą ryzyko utracenia tego atutu na stałe.\n- Na początku każdego scenariusza tej kampanii każdy badacz ma możliwość wybrania atutu ze słowem kluczowym Towarzysz i umieszczenia go w grze. Takie atuty nie mogą zostać dodane do talii badacza. Za każdym razem, kiedy badacz otrzymuje taką możliwość, może wybrać innego Towarzysza (lub nie wybrać żadnego).\n- Atut z cechą Towarzysz nie może opuścić gry, chyba że zostanie pokonany (np. nie może zostać odrzucony przez efekt karty, chyba że mówi on bezpośrednio o pokonaniu). Jeśli badacz zostanie pokonany, każdy atut ze słowem kluczowym Towarzysz, który wziął ze sobą, również zostaje pokonany.\n- Jeśli atut ze słowem kluczowym Towarzysz zostanie pokonany, należy usunąć go z gry. Następnie należy wykreślić imię danej postaci z sekcji „Członkowie ekspedycji” w Dzienniku kampanii.\n- Na końcu każdej gry należy zanotować w sekcji „Członkowie ekspedycji” w Dzienniku kampanii obrażenia i punkty przerażenia znajdujące się na atucie ze słowem kluczowym Towarzysz. <i>(Przewodnik kampanii powie wam, kiedy to zrobić).</i>\n- Jeśli badacz zrezygnuje podczas scenariusza, jego atut ze słowem kluczowym Towarzysz opuszcza grę, ale nie zostaje pokonany. Należy pozostawić na nim wszystkie obrażenia i punkty przerażenia, ponieważ na końcu gry będzie trzeba je zanotować w Dzienniku kampanii."
   },
   {
@@ -805,7 +893,18 @@
   },
   {
     "id": "Hidden",
-    "cycle": ["tcu", "tde"],
+    "cycle": [
+      "ptc",
+      "rtptc",
+      "tcu",
+      "rttcu",
+      "tde",
+      "tdea",
+      "tdeb",
+      "tskc",
+      "zdm",
+      "zcf"
+    ],
     "title": "Ukryta",
     "text": "Karta spotkania lub osłabienie ze słowem kluczowym Ukryta posiada efekt Odkrycia, który w tajemnicy dodaje daną kartę na rękę badacza. Powinno to się odbyć bez ujawniania danej karty ani jej tekstu pozostałych graczom.\n- Dopóki ukryty podstęp znajduje się na ręce gracza, powinien traktować go tak, jakby była on w jego obszarze zagrożenia. Zdolności stałe tej karty są aktywne, a inne jej zdolności mogą być aktywowane, ale tylko przez gracza, który ma ją na ręce.\n- Dopóki ukryty wróg znajduje się na ręce badacza, nie jest on uważany za będącego w zwarciu z danym badaczem ani za znajdującego się w jego obszarze zagrożenia, oraz nie atakuje on, chyba że zaznaczono inaczej. Jednak jego zdolności stałe są aktywne, a inne jego zdolności mogą być aktywowane, ale tylko przez gracza, który ma go na ręce.\n- Ukryta karta wlicza się do limitu kart na ręce, ale nie może opuścić ręki w żaden sposób poza tym opisanym na karcie. Kiedy ukryta karta zostaje odrzucona, umieszcza się ją na odpowiednim stosie kart odrzuconych.\n- Kiedy badacz zostaje wyeliminowany, każdą kartę spotkań z jego ręki ze słowem kluczowym Ukryta należy umieścić na stosie odrzuconych kart spotkań, w taki sam sposób, jak karty spotkań z jego obszaru zagrożenia.\nZachęcamy, aby gracze jak najbardziej wczuwali się w swoje postaci i nie dzielili się z innymi graczami informacjami na temat ukrytych kart na ich ręce."
   },
@@ -830,6 +929,22 @@
     "text": "Karta, która została usunięta z gry, jest umieszczana z dala od obszaru gry i nie wchodzi już w żadną interakcję z grą, dopóki pozostaje usunięta.\nJeśli nie został sprecyzowany czas trwania, karta, która została usunięta z gry, jest uznawana za usuniętą do końca rozgrywki."
   },
   {
+    "id": "Concealed_X",
+    "title": "Utajony X",
+    "cycle": [
+      "tskc"
+    ],
+    "text": "Utajony X to słowo kluczowe, które pojawia się na niektórych kartach wrogów z kampanii <i>Szkarłatne klucze</i>. Wrogowie ze słowem kluczowym Utajony reprezentują ukrytych wrogów, których prawdziwa lokalizacja pozostanie tajemnicą, dopóki badaczom nie uda się ujawnić, gdzie się znajdują, a w niektórych przypadkach nawet – kim tak naprawdę są.\nJeśli scenariusz zawiera 1 lub więcej wrogów z cechą Utajony, gra każe badaczom odłożyć na bok kilka utajonych, dwustronnych małych kart. Ich strona zakryta reprezentuje możliwe miejsce pobytu utajonego wroga, zaś strona odkryta to prawdziwa natura karty – lokalizacja, w której się znajduje, lub zwykła przynęta.\nKiedy badacz dobiera wroga ze słowem kluczowym Utajony X (lub otrzymał polecenie rozpatrzenia słowa kluczowego Utajony z wroga), rozstawia danego wroga w obszarze gry powyżej talii tajemnic, poza jakąkolwiek lokalizacją. Ten obszar nazywany jest „cieniem” i reprezentuje wrogów, o których badacze wiedzą, że znajdują się gdzieś na mapie, ale nie wiedzą, gdzie dokładnie. Następnie dany badacz bierze odłożone na bok utajone małe karty odpowiadające danemu wrogowi oraz X przynęt (gdzie X jest określone przez wartość słowa kluczowego Utajony X danego wroga), tasuje je zakryte, po czym umieszcza je w grze, rozdając je możliwie jak najrówniej pomiędzy wszystkie lokalizacje w grze, rozpoczynając od lokalizacji najbliżej niego. Następnie, jeśli któreś z danych lokalizacji miały już wcześniej 1 lub więcej utajonych małych kart, badacz tasuje wszystkie zakryte małe karty z danej lokalizacji.\n<i>Przykład: Amina dobiera Agenta Koterii (A), który posiada słowo kluczowe „Utajony 2”. Najpierw rozstawia Agenta Koterii w cieniu. Następnie bierze odłożoną na bok małą kartę Agenta Koterii (A) oraz 2 przynęty, zakrywa je i tasuje razem, po czym umieszcza po 1 w każdej z 3 najbliższych jej lokalizacji. Następnie jeśli w którejś z tych lokalizacji znajdowała się już wcześniej 1 lub więcej utajonych małych kart, potasowałaby je również.</i>\nWrogów znajdujących się w cieniu obowiązują następujące dodatkowe zasady:\n= Uznaje się, że wrogowie w cieniu znajdują się w grze, ale nie są w żadnej konkretnej lokalizacji. Nie mogą się poruszać, dopóki nie opuszczą cienia.\n= Wrogowie w cieniu mogą zostać uznani za „najbliższego” wroga, ale tylko jeśli nie ma żadnych innych wrogów w grze, w żadnej lokalizacji.\n= Wrogowie w cieniu nie mogą otrzymywać obrażeń ani opuścić gry w wyniku efektu karty gracza.\nPatrz także \"[Utajone małe karty](#Concealed_Mini_Cards)\""
+  },
+  {
+    "id": "Concealed_Mini_Cards",
+    "title": "Utajone małe karty",
+    "cycle": [
+      "tskc"
+    ],
+    "text": "Znajdujące się w grze utajone małe karty reprezentują możliwą lokalizację wroga w cieniu. Aby rozprawić się z takim wrogiem, jego prawdziwa lokalizacja musi zostać najpierw odkryta poprzez ujawnienie jego małej karty. Można to zrobić na trzy sposoby: walkę, wymykanie się lub badanie.\n= Utajone małe karty nie są wrogami i nie można z nimi wchodzić w zwarcie jak z wrogami. Jednak dowolny badacz w tej samej lokalizacji co utajona mała karta może podjąć próbę jej ujawnienia przez wykonanie udanego ataku lub wymknięcia się (tak, jakby był w zwarciu z wrogiem) lub poprzez udane badanie jej lokalizacji. Trudność testu ataku lub wymykania się ukrytej małej karcie jest równa wartości zasłony jej lokalizacji.\n-- Badacz może również użyć efektu karty, który powoduje automatyczne wymknięcie się wrogowi, zadanie obrażeń wrogowi lub odkrycie żetonu wskazówki w lokalizacji, aby zamiast tego ujawnić utajoną małą kartę.\n= Jeśli badacz zdecyduje się ujawnić utajoną małą kartę, dany efekt zastępuje standardowe efekty akcji lub zdolności, która ją ujawniła. <i>(Oznacza to, że jeśli mała karta wroga zostanie ujawniona w wyniku wymknięcia się lub zadania obrażeń, badacz nie wymyka się odpowiadającemu jej wrogowi ani nie zadaje mu obrażeń. Jeśli mała karta została ujawniona w wyniku odkrycia żetonów wskazówek lub badania, nie zostają odkryte żadne żetony wskazówek).</i>\n= Jeśli utajona mała karta zostanie ujawniona <i>(na dowolny z powyższych sposobów)</i>, odwróć ją na jej odkrytą stronę.\n-- Jeśli to przynęta, odłóż ją na bok, poza grę – nic się nie dzieje.\n-- Jeśli to mała karta wroga, dany wróg ujawnia się. Umieść odpowiadającego jej wroga z cienia w lokalizacji danej małej karty, a następnie odłóż daną małą kartę na bok, poza grę. <i>(Dany wróg nie znajduje się już w cieniu i jest teraz w lokalizacji, w której znajdowała się wcześniej mała karta).</i> Następnie, jeśli w cieniu nie ma żadnych innych wrogów, odłóż wszystkie znajdujące się w grze pozostałe utajone małe karty na bok, poza grę.\n= W wyniku 1 efektu może zostać odkryta tylko 1 utajona mała karta, chyba że zaznaczono inaczej. <i>(Oznacza to, że efekt zadający 3 obrażenia każdemu wrogowi w dowolnej lokalizacji nie spowoduje ujawnienia wszystkich utajonych małych kart w danej lokalizacji, a tylko jednej).</i>\n<i>Przykład: W cieniu znajduje się Agent Koterii i Zabójca Koterii. Jedna utajona mała karta znajduje się w lokalizacji Kymani, zaś druga w połączonej lokalizacji. (1) Najpierw Kymani zagrywa kartę wydarzenia, która odkrywa żeton wskazówki w obecnej lokalizacji, jednak zamiast odkrywać żeton wskazówki postanawia ujawnić 1 utajoną małą kartę w swojej lokalizacji. Odkrywa ją – to przynęta, dlatego odkłada ją na bok bez żadnego efektu. (2) Następnie porusza się do połączonej lokalizacji, w której znajduje się druga utajona mała karta, i próbuje ją ujawnić przy pomocy akcji wymykania się. Uzyskuje sukces i odwraca małą kartę, która okazuje się… małą kartą Zabójcy Koterii! (3) Mała karta Zabójcy Koterii zostaje odłożona na bok, a wróg Zabójca Koterii z cienia zostaje poruszony do lokalizacji Kymani i wchodzi w zwarcie. Ponieważ w cieniu znajduje się jeszcze inny wróg, Kymani nie usuwa żadnych innych utajonych małych kart z gry.</i>"
+  },
+  {
     "id": "In_Play_and_Out_of_Play",
     "title": "W grze i poza grą",
     "text": "Uznaje się, że karty, które gracz kontroluje na swoim obszarze gry, znajdują się w grze.\nUznaje się, że obecny akt, obecna tajemnica, każda lokalizacja na obszarze gry oraz wszystkie karty spotkań na obszarach zagrożenia badaczy lub w lokalizacjach znajdują się w grze.\nOkreślenie „poza grą” odnosi się do kart na rękach graczy, w dowolnej talii, na dowolnym stosie kart odrzuconych, w puli zwycięstwa oraz kart, które zostały odłożone na bok i/lub usunięte z gry.\n- Karta wchodzi do gry, kiedy przechodzi z obszaru poza grą do obszaru w grze.\n- Karta opuszcza grę, kiedy przechodzi z obszaru w grze do obszaru poza grą.\n- Uznaje się, że żetony na kartach znajdują się w grze. Zasoby znajdujące się w pulach zasobów badaczy także są uznawane za obecne w grze."
@@ -852,7 +967,10 @@
   {
     "id": "Doubt_and_Conviction",
     "title": "Wątpliwości oraz Przeświadczenia",
-    "cycle": ["ptc"],
+    "cycle": [
+      "ptc",
+      "rtptc"
+    ],
     "text": "Niektóre zakończenia i antrakty kampanii Szlak do Carcosy wymagają od graczy, aby zaznaczyli w Dzienniku kampanii „jedną <b>Wątpliwość</b>” lub „jedno <b>Przeświadczenie</b>”. W tym celu gracze stawiają krzyżyk w jednym z pustych pul obok napisu „<b>Wątpliwości</b>” lub „<b>Przeświadczenia</b>” na dole Dziennika kampanii.\nW dalszej części kampanii niektóre scenariusze mogą mieć różny przebieg w zależności od tego, czy „badacze mają więcej <b>Wątpliwości</b> niż <b>Przeświadczeń</b>”, czy „badacze mają więcej <b>Przeświadczeń</b> niż <b>Wątpliwości</b>”. Badacze mają więcej <b>Wątpliwości</b> niż <b>Przeświadczeń</b>, jeśli obok napisu „<b>Wątpliwości</b>” na dole Dziennika kampanii postawili więcej krzyżyków niż obok napisu „<b>Przeświadczenia</b>” (i na odwrót). Wątpliwości i Przeświadczenia są wspólne dla wszystkich badaczy i nie są przypisane do żadnego z nich. <b>Wątpliwości</b> i <b>Przeświadczenia</b> nie wpływają bezpośrednio na grę, chyba że Dziennik kampanii lub efekt karty wyraźnie na to wskazuje."
   },
   {
@@ -862,7 +980,16 @@
   },
   {
     "id": "Patrol",
-    "cycle": ["side", "eoe"],
+    "cycle": [
+      "side",
+      "eoe",
+      "tskc",
+      "fof"
+    ],
+    "scenarios": [
+      "fortune_and_folly_part_1",
+      "fortune_and_folly_part_2"
+    ],
     "title": "Wędrujący",
     "text": "Niektórzy wrogowie posiadają słowo kluczowe Wędrujący. Podczas fazy wrogów (w kroku ramowym 3.2) każdy przygotowany, niebędący w zwarciu wróg ze słowem kluczowym Wędrujący porusza się do połączonej lokalizacji najkrótszą możliwą drogą w stronę wyznaczonej lokalizacji (opisanej w nawiasie obok słowa kluczowego Wędrujący).\n- Jeśli istnieje kilka lokalizacji, które spełniają wymagania wyznaczonej lokalizacji, główny badacz może wybrać, w kierunku której lokalizacji poruszy się wróg.\n- Jeśli wróg ze słowem kluczowym Wędrujący byłby zmuszony do poruszenia się do lokalizacji, która jest zablokowana przez zdolność karty, wróg nie porusza się."
   },
@@ -914,7 +1041,7 @@
   {
     "id": "Exile",
     "title": "Wygnanie",
-    "text": "Niektóre karty graczy muszą zostać wygnane po wykorzystaniu. Kiedy karta zostaje wygnana, usuwa się ją z gry i zwraca do kolekcji kart gracza. Jeśli podczas rozgrywania kampanii gracz chce ponownie dodać ją do swojej talii, to musi zapłacić za nią punktami doświadczenia (pomiędzy scenariuszami). Jeśli wygnanie 1 lub większej liczby kart sprawi, że w talii badacza znajdzie się mniejsza od wymaganej liczba kart, pomiędzy kolejnymi scenariuszami gracz ten musi zakupić karty, aby zachować wymagany rozmiar talii (podczas zakupu kart może w ten sposób kupować karty o poziomie 0 za 0 punktów doświadczenia, do momentu osiągnięcia w ymaganej wielkości talii)."
+    "text": "Niektóre karty graczy muszą zostać wygnane po wykorzystaniu. Kiedy karta zostaje wygnana, usuwa się ją z gry i zwraca do kolekcji kart gracza. Jeśli podczas rozgrywania kampanii gracz chce ponownie dodać ją do swojej talii, to musi zapłacić za nią punktami doświadczenia (pomiędzy scenariuszami). Jeśli wygnanie 1 lub większej liczby kart sprawi, że w talii badacza znajdzie się mniejsza od wymaganej liczba kart, pomiędzy kolejnymi scenariuszami gracz ten musi zakupić karty, aby zachować wymagany rozmiar talii (podczas zakupu kart może w ten sposób kupować karty o poziomie 0 za 0 punktów doświadczenia, do momentu osiągnięcia w wymaganej wielkości talii)."
   },
   {
     "id": "Exceptional",
@@ -1016,7 +1143,9 @@
   {
     "id": "Researched",
     "title": "Zbadany",
-    "cycle": ["eoe"],
+    "cycle": [
+      "eoe"
+    ],
     "text": "Zbadany to słowo kluczowe, która pojawia się na niektórych kartach wyższego poziomu (przede wszystkim na kartach Poszukiwacza).\nAby znaleźć się w talii badacza, karta ze słowem kluczowym Zbadany musi najpierw zostać „zidentyfikowana” lub „przetłumaczona”. wykonując zadanie na niższej wersji tej karty i zapisując wynik w Dzienniku kampanii.\n- Kartę ze słowem kluczowym Zbadany możesz dodać do swojej talii tylko przez ulepszenie jej z karty niższego poziomu.\n- Kartę ze słowem kluczowym Zbadany możesz dodać do swojej talii tylko wtedy, gdy w Dzienniku kampanii odnotowałeś wykonanie zadania opisanego dla niższej wersji tej karty.\n- Po ukończeniu tego zadania przez badacza i zapisaniu go w Dzienniku kampanii, badacz ten może ulepszyć odpowiednią kartę zgodnie z normalnymi zasadami ulepszania kart graczy.\n<i>Na przykład Księga połączeń (Brama do Tindalos) ma słowo kluczowe „Zbadany”. Dlatego badacz nie może bezpośrednio kupić Księgi połączeń (Brama do Tindalos). Zamiast tego musi ulepszyć ją z Księgi połączeń (Niezidentyfikowany) i może to zrobić tylko wtedy, gdy „zlokalizowaliście przejście”.</i>"
   },
   {
@@ -1077,9 +1206,20 @@
     "text": "Patrz „[Zdolności](#Abilities_Forced)”."
   },
   {
+    "id": "Switch_and_Swap_Abilities",
+    "title": "Zdolności zamiany",
+    "text": "Niektóre efekty nakazują badaczom zamienić miejscami dwie karty w grze lub kartę w grze z inną kartą z obszaru poza grą. W trakcie zamiany kart, każda z kart zachowuje swój status (przygotowana/wyczerpana) oraz żetony (obrażeń, przerażenia, zużywalne itp.), chyba że wskazano inaczej. Jeśli jest to karta dołączona do innej karty, zostaje od niej odłączona podczas zamiany i dołączona do nowego elementu gry.\n<i>Na przykład, jeśli badacz zamienia się miejscami z wrogiem przy użyciu Eterycznego zniknięcia, uważa się że opuścił swoją lokalizację i wszedł do innej, ale nie uważa się że się poruszył na potrzeby efektów kart takich jak Pogrzebane sekrety.</i>"
+  },
+  {
     "id": "Vengeance_X",
     "title": "Zemsta X",
-    "cycle": ["tfa"],
+    "cycle": [
+      "tfa",
+      "rttfa"
+    ],
+    "scenarios": [
+      "relics_of_the_past"
+    ],
     "text": "Niektóre karty spotkań mają wartość w punktach zemsty. Wyrażenie <b>Zemsta X</b> oznacza, że dana karta jest warta X punktów zemsty.\nTak jak w przypadku wyrażenia <b>Zwycięstwo X</b>, gdy badacze zmierzą się już z kartą spotkania z <b>Zemstą X</b>, do końca scenariusza ta karta jest przechowywana w puli zwycięstwa. Jednak w przeciwieństwie do punktów zwycięstwa, zemsta reprezentuje świadomość i nienawiść Ojca węży, dlatego dobrym pomysłem jest unikanie zdobywania punktów zemsty, kiedy to tylko możliwe.\nZnajdujące się w puli zwycięstwa punkty zemsty nie mają żadnego wpływu na grę, chyba że inna karta spotkania wyraźnie na to wskazuje.\n- Gdy wróg z <b>Zemstą X</b> zostaje pokonany, należy umieścić kartę w puli zwycięstwa zamiast w stosie odrzuconych kart spotkań.\n- Na końcu scenariusza należy wziąć każdą lokalizację z <b>Zemstą X</b>, która znajduje się w grze, jest odkryta i nie ma na niej żetonów wskazówek, i umieścić ją w puli zwycięstwa.\n- Gdy karta podstępu z <b>Zemstą X</b> zostanie w pełni rozpatrzona, należy ją umieścić w puli zwycięstwa zamiast w stosie odrzuconych kart spotkań.\n- Karty z wartością punktów zemsty nie mają wartości punktów zwycięstwa, chyba że na karcie znajduje się zarówno wyrażenie <b>Zwycięstwo X</b>, jak i <b>Zemsta X</b>."
   },
   {
@@ -1113,19 +1253,28 @@
     "text": "Słowo „zyskujesz” jest używane w różnych kontekstach.\n- Jeśli gracz zyskuje jeden lub kilka surowców, to bierze z puli żetonów odpowiednią liczbę żetonów i dodaje je do swojej puli żetonów.\n- Jeśli badacz zyskuje akcję, to w wyznaczonym okresie może wydać jedną dodatkową akcję.\n- Jeśli karta zyskuje treść (symbol, cechę, słowo kluczowe lub tekst zdolności), to funkcjonuje tak, jakby posiadała zyskaną treść.\n- „Zyskana” treść nie jest uznawana za „wydrukowaną” na karcie. Jeśli zdolność odnosi się do treści wydrukowanych na karcie, to nie odnosi się do zyskanych elementów.\nPatrz także „[Limit żetonów](#Tokens)”."
   },
   {
+    "id": "Gaining_Spending_and_Forfeiting_Actions",
+    "title": "Zyskiwanie, wydawanie i poddawanie akcji",
+    "text": "Badacze zyskują akcje podczas kroku 4.2 fazy utrzymania. Każda nieużyta akcja jest poddawana w momencie decyji o zakończeniu tury badacza (podczas kroku 2.2.2 fazy badaczy). Badacz może stracić akcję w wyniku efektu karty poza swoją turą, ale nie może dobrowolnie wydawać akcji poza swoją turą bez wyraźnego zezwolenia  przyznanego przez efekt karty.\n<i>Uwaga: Badacze <b>zawsze</b> zaczynają grę z 3 akcjami.</i>"
+  },
+  {
     "id": "Chaos_Tokens",
     "title": "Żetony chaosu",
     "text": "Żetony chaosu są wyciągane z worka chaosu podczas testów umiejętności w celu zmodyfikowania wyniku danego testu.\n[skull] [cultist] [elder_thing] [tablet] – Jeśli któryś z tych żetonów zostanie odkryty podczas testu umiejętności, należy rozpatrzyć efekt danego symbolu zgodnie z tym, co opisano na karcie pomocy obecnego scenariusza.\n[auto_fail] – Żeton automatycznej porażki. Jeśli podczas testu umiejętności zostanie odkryty ten symbol, oznacza to, że dla badacza test kończy się automatyczną porażką (patrz „[Automatyczna porażka/sukces](#Automatic_Failure_Success)”).\n[elder_sign] – Żeton Znaku Starszych Bogów. Jeśli podczas testu umiejętności zostanie odkryty ten symbol, należy rozpatrzyć efekt [elder_sign] opisany na karcie badacza należącej do gracza wykonującego dany test umiejętności.\nJeśli odkryty żeton chaosu (lub efekt, do którego odnosi się żeton chaosu) posiada wartość liczbową, dany modyfikator należy zastosować do testowanej obecnie wartości umiejętności badacza.\nPatrz „[KR.3 Odkrycie żetonu chaosu](#Skill_Test_Timing)”.",
     "rules": [
       {
         "id": "Bless_and_Curse_Tokens",
-        "cycle": ["tic"],
+        "cycle": [
+          "tic"
+        ],
         "title": "Żetony błogosławieństwa i klątwy",
         "text": "To rozszerzenie wprowadza dwa nowe rodzaje żetonów chaosu: żetony błogosławieństwa ([bless])  i żetony klątwy ([curse]).  Domyślnie worek chaosu nie zawiera żadnych żetonów [bless] ani [curse]. Jednak pewne efekty kart mogą dodać te żetony do worka chaosu lub je z niego usunąć.\n- Żetony [bless]  odkryte podczas testu umiejętności mają następujący efekt: „+2. Odkryj nowy żeton. Zamiast odkładać ten żeton z powrotem do worka chaosu, zwróć go do puli żetonów”. W dowolnym momencie w worku chaosu i zapieczętowanych na kartach w grze może być łącznie nie więcej niż 10 żetonów [bless].\n- Żetony [curse] odkryte podczas testu umiejętności mają następujący efekt: „–2. Odkryj nowy żeton. Zamiast odkładać ten żeton z powrotem do worka chaosu, zwróć go do puli żetonów”. W dowolnym momencie w worku chaosu i zapieczętowanych na kartach w grze może być łącznie nie więcej niż 10 żetonów [curse].\n- Żetony [bless] lub [curse] odkryte poza testem umiejętności same z siebie nie mają żadnego efektu, chyba że efekt karty wskazuje inaczej.\nFAQ:\n- <i>Jeśli dodanie pewnej liczby żetonów [bless] lub [curse] do worka chaosu jest częścią efektu zdolności i nie ma wystarczającej liczby żetonów [bless] lub [curse] aby spełnić ten efekt, co się dzieje?</i> Wykonujesz tyle umiejętności, ile możesz, dodając żetony [bless] lub [curse] aż nie zostaną wyczerpane.\n- <i>Jeśli dodanie pewnej liczby żetonów [bless] lub [curse] jest częścią kosztu karty/umiejętności i jest za mało żetonów [bless] lub [curse], aby spełnić koszt, co się dzieje?</i> Jeśli koszt nie może zostać zapłacony, karta/zdolność nie może zostać zagrana/aktywowana.\n- <i>Czy w trakcie trwania kampanii, żetony [bless] i [curse] pozostają w worku chaosu między scenariuszami?</i> Nie, żetony [bless] i [curse] nie przechodzą ze scenariusza do scenariusza.\n - <i>Kiedy dokładnie usuwa się żetony [bless] i [curse] z worka chaosu? Czy nadal znajdują się w worku chaosu podczas rozpatrywania zakończenia scenariusza?</i> Żetony [bless] i [curse] należy usunąć z worka chaosu, gdy gra jest czyszczona po rozpatrzeniu zakończenia scenariusza. Dzieje się to przed przejściem do następujących antraktów, chyba że zaznaczono inaczej."
       },
       {
         "id": "Frost_Tokens",
-        "cycle": ["eoe"],
+        "cycle": [
+          "eoe"
+        ],
         "title": "Żetony mrozu",
         "text": "To rozszerzenie wprowadza nowy typ żetonów chaosu: żetony mrozu ([frost]). Na początku kampanii <i>Na krawędzi Ziemi</i> worek chaosu zawiera zaledwie kilka stosunkowo niegroźnych żetonów [frost] (lub nie zawiera ich wcale). Jednak im dłużej trwa ekspedycja badaczy, w zależności od podejmowanych przez nich decyzji i rozpatrywanych wydarzeń, kolejne żetony [frost] będą dodawane do worka chaosu (lub z niego wyjmowane), zmieniając tym samym poziom trudności każdego testu. Im więcej żetonów mrozu znajduje się w worku chaosu, tym bardziej wyniszczające są ich efekty.\n- Pierwszy odkryty z worka chaosu podczas testu umiejętności żeton [frost] ma następujący efekt: „–1. Odkryj nowy żeton”. Jeśli podczas tego samego testu zostanie odkryty z worka kolejny żeton [frost], należy natychmiast zakończyć krok „Odkrycie żetonu chaosu” i rozpatrzyć test jako automatyczną porażkę. <i>(Po zakończeniu testu odłóż wszystkie odkryte żetony [frost] z powrotem do worka chaosu).</i>\n<i>Przykład: Bob bada lokalizację, a w worku chaosu znajdują się 2 żetony [frost]. Podczas pierwszej próby badania Bob odkrywa żeton [frost]. Obniża to jego wartość umiejętności o 1 i zmusza go do odkrycia kolejnego żetonu. Następny żeton, który odkrywa, to +1, co po zsumowaniu obu żetonów daje łącznie 0. Test kończy się sukcesem! Zachęcony dobrą passą, Bob podejmuje kolejną próbę badania. Tym razem odkrywa żeton [frost], a następnie drugi żeton [frost]. Bob musi natychmiast przerwać odkrywanie żetonów i rozpatrzyć to badanie jako zakończone automatyczną porażką.</i>\n- W dowolnym momencie w worku chaosu i/lub zapieczętowanych na kartach w grze może być łącznie nie więcej niż 8 żetonów [frost].\n- Żeton [frost] odkryty poza testem umiejętności sam z siebie nie ma żadnego efektu, chyba że efekt karty wskazuje inaczej.\n- Dodany do worka chaosu żeton [frost] pozostaje w nim pomiędzy scenariuszami, chyba że zostanie usunięty przez efekt karty lub gry. Aplikacja będzie śledzić te zmiany automatycznie."
       },
@@ -1138,7 +1287,10 @@
   },
   {
     "id": "Flood_Tokens",
-    "cycle": ["tic"],
+    "cycle": [
+      "tic",
+      "zrttic"
+    ],
     "title": "Żetony zalania",
     "text": "Podczas tej kampanii efekty kart scenariusza mogą powodować zalanie lokalizacji. Każdą z lokalizacji określa jeden z trzech różnych poziomów zalania: jest ona niezalana, częściowo zalana albo całkowicie zalana. Poziom zalania lokalizacji oznaczany jest przy użyciu dwustronnych żetonów zalania, które można znaleźć w tym rozszerzeniu.<b> Poziom zalania lokalizacji sam w sobie nie ma żadnego efektu</b>. Jednak efekty niektórych kart mogą się zmieniać lub wzmacniać podczas przebywania w zalanej lokalizacji, szczególnie jeśli jest ona całkowicie zalana.\n- Lokalizacja, na której nie ma żetonu zalania, jest niezalana.\n- Jeśli lokalizacja staje się częściowo zalana, należy to zaznaczyć poprzez umieszczenie na niej żetonu zalania z widoczną stroną częściowego zalania.\n- Jeśli lokalizacja staje się całkowicie zalana, należy to zaznaczyć poprzez umieszczenie na niej żetonu zalania z widoczną stroną całkowitego zalania (lub odwrócenie żetonu częściowego zalania, jeśli taki się już na niej znajduje).\n- Jeśli poziom zalania zostaje „podniesiony”, zmienia się z niezalanego na częściowo zalany lub z częściowo zalanego na całkowicie zalany. Nie można podnieść poziomu zalania całkowicie zalanej lokalizacji.\n- Jeśli poziom zalania zostaje „obniżony”, zmienia się z całkowicie zalanego na częściowo zalany lub z częściowo zalanego na niezalany. Jeśli lokalizacja staje się niezalana, należy usunąć z niej żeton zalania.\n- Podczas rozpatrywania efektów kart zarówno lokalizacje częściowo zalane, jak i całkowicie zalane są uważane za „zalane”.\n <i>Jeśli badacz rozpocznie swoją turę na całkowicie zalanej lokalizacji, wejdzie na nineodrytą lokalizację bez żetonu zalania, a ta lokalizacja zostanie zalana „po odkryciu”, czy badacz nadal „walczy o powietrze?” Czy też liczy się to jako wejście do niezalanej lokalizacji?</i> Technicznie rzecz biorąc, badacz wszedł do niezalanej lokalizacji, która następnie została zalana po jej odkryciu, więc nie walczyliby o powietrze."
   },
@@ -1156,43 +1308,283 @@
         "id": "Phase_Sequence_Timing",
         "title": "Tabela kolejności faz",
         "table": [
-          { "row": [{ "text": "I. Faza mitów (pomijana podczas pierwszej rundy)" }] },
-          { "row": [{ "color": "green", "text": "1.1 Runda się rozpoczyna. Faza Mitów się rozpoczyna." }] },
-          { "row": [{ "color": "green", "text": "1.2 Na obecnej tajemnicy należy umieścić 1 żeton zagłady." }] },
-          { "row": [{ "color": "green", "text": "1.3 Sprawdzenie progu zagłady." }] },
-          { "row": [{ "color": "green", "text": "1.4 Każdy badacz dobiera po 1 karcie spotkania." }] },
-          { "row": [{ "color": "red", "text": "[free] OKNO GRACZA" }] },
-          { "row": [{ "color": "green", "text": "1.5 Faza Mitów się kończy." }] },
-          { "row": [{ "color": "grey", "text": "Należy przejść do fazy badaczy." }] },
-          { "row": [] },
-          { "row": [{ "text": "II. Faza badaczy" }] },
-          { "row": [{ "color": "green", "text": "2.1 Faza badaczy się rozpoczyna." }] },
-          { "row": [{ "color": "red", "text": "[free] OKNO GRACZA" }] },
-          { "row": [{ "color": "green", "text": "2.2 Rozpoczyna się tura następnego badacza." }] },
-          { "row": [{ "color": "red", "text": "[free] OKNO GRACZA" }] },
-          { "row": [{ "color": "green", "text": "2.2.1 Aktywny badacz może wykonać akcję, jeśli jest w stanie to zrobić. Jeśli akcja została wykonana, należy wrócić do poprzedniego okna gracza. Jeśli nie wykonano żadnej akcji, należy przejść do 2.2.2." }] },
-          { "row": [{ "color": "green", "text": "2.2.2 Tura badacza się kończy. Jeśli jakiś badacz nie wykonywał jeszcze swojej tury w tej fazie, należy wrócić do 2.2. Jeśli każdy badacz wykonał swoją turę w tej fazie, należy przejść do 2.3." }] },
-          { "row": [{ "color": "green", "text": "2.3 Faza badaczy się kończy." }] },
-          { "row": [{ "color": "grey", "text": "Należy przejść do fazy wrogów." }] },
-          { "row": [] },
-          { "row": [{ "text": "III. Faza wrogów" }] },
-          { "row": [{ "color": "green", "text": "3.1 Faza wrogów się rozpoczyna." }] },
-          { "row": [{ "color": "green", "text": "3.2 Wrogowie ze słowem kluczowym Łowca poruszają się." }] },
-          { "row": [{ "color": "red", "text": "[free] OKNO GRACZA" }] },
-          { "row": [{ "color": "green", "text": "3.3 Następny badacz rozpatruje ataki wrogów, z którymi jest w zwarciu. Jeśli jakiś badacz nie rozpatrzył jeszcze ataków wrogów w tej fazie, należy wrócić do poprzedniego okna gracza. Po tym, jak ostatni badacz rozpatrzy ataki wrogów, z którymi jest w zwarciu, należy przejść do kolejnego okna gracza." }] },
-          { "row": [{ "color": "red", "text": "[free] OKNO GRACZA" }] },
-          { "row": [{ "color": "green", "text": "3.4 Faza wrogów się kończy." }] },
-          { "row": [{ "color": "grey", "text": "Należy przejść do fazy utrzymania." }] },
-          { "row": [] },
-          { "row": [{ "text": "IV. Faza utrzymania" }] },
-          { "row": [{ "color": "green", "text": "4.1 Faza utrzymania się rozpoczyna." }] },
-          { "row": [{ "color": "red", "text": "[free] OKNO GRACZA" }] },
-          { "row": [{ "color": "green", "text": "4.2 Należy odnowić akcje." }] },
-          { "row": [{ "color": "green", "text": "4.3 Należy przygotować wszystkie wyczerpane karty." }] },
-          { "row": [{ "color": "green", "text": "4.4 Każdy badacz dobiera po 1 karcie i otrzymuje po 1 zasobie." }] },
-          { "row": [{ "color": "green", "text": "4.5 Każdy badacz sprawdza liczbę kart na ręce." }] },
-          { "row": [{ "color": "green", "text": "4.6 Faza utrzymania się kończy. Runda się kończy." }] },
-          { "row": [{ "color": "grey", "text": "Należy przejść do fazy Mitów kolejnej rundy." }] }
+          {
+            "row": [
+              {
+                "text": "I. Faza mitów (pomijana podczas pierwszej rundy)"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "1.1 Runda się rozpoczyna. Faza Mitów się rozpoczyna."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "1.2 Na obecnej tajemnicy należy umieścić 1 żeton zagłady."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "1.3 Sprawdzenie progu zagłady."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "1.4 Każdy badacz dobiera po 1 karcie spotkania."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] OKNO GRACZA"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "1.5 Faza Mitów się kończy."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "grey",
+                "text": "Należy przejść do fazy badaczy."
+              }
+            ]
+          },
+          {
+            "row": []
+          },
+          {
+            "row": [
+              {
+                "text": "II. Faza badaczy"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "2.1 Faza badaczy się rozpoczyna."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] OKNO GRACZA"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "2.2 Rozpoczyna się tura następnego badacza."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] OKNO GRACZA"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "2.2.1 Aktywny badacz może wykonać akcję, jeśli jest w stanie to zrobić. Jeśli akcja została wykonana, należy wrócić do poprzedniego okna gracza. Jeśli nie wykonano żadnej akcji, należy przejść do 2.2.2."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "2.2.2 Tura badacza się kończy. Jeśli jakiś badacz nie wykonywał jeszcze swojej tury w tej fazie, należy wrócić do 2.2. Jeśli każdy badacz wykonał swoją turę w tej fazie, należy przejść do 2.3."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "2.3 Faza badaczy się kończy."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "grey",
+                "text": "Należy przejść do fazy wrogów."
+              }
+            ]
+          },
+          {
+            "row": []
+          },
+          {
+            "row": [
+              {
+                "text": "III. Faza wrogów"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "3.1 Faza wrogów się rozpoczyna."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "3.2 Wrogowie ze słowem kluczowym Łowca poruszają się."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] OKNO GRACZA"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "3.3 Następny badacz rozpatruje ataki wrogów, z którymi jest w zwarciu. Jeśli jakiś badacz nie rozpatrzył jeszcze ataków wrogów w tej fazie, należy wrócić do poprzedniego okna gracza. Po tym, jak ostatni badacz rozpatrzy ataki wrogów, z którymi jest w zwarciu, należy przejść do kolejnego okna gracza."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] OKNO GRACZA"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "3.4 Faza wrogów się kończy."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "grey",
+                "text": "Należy przejść do fazy utrzymania."
+              }
+            ]
+          },
+          {
+            "row": []
+          },
+          {
+            "row": [
+              {
+                "text": "IV. Faza utrzymania"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.1 Faza utrzymania się rozpoczyna."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] OKNO GRACZA"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.2 Należy odnowić akcje."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.3 Należy przygotować wszystkie wyczerpane karty."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.4 Każdy badacz dobiera po 1 karcie i otrzymuje po 1 zasobie."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.5 Każdy badacz sprawdza liczbę kart na ręce."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "4.6 Faza utrzymania się kończy. Runda się kończy."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "grey",
+                "text": "Należy przejść do fazy Mitów kolejnej rundy."
+              }
+            ]
+          }
         ]
       },
       {
@@ -1226,17 +1618,93 @@
         "id": "Skill_Test_Timing",
         "title": "Testy umiejętności i kolejność efektów",
         "table": [
-          { "row": [{ "text": "Przebieg testu umiejętności"}] },
-          { "row": [{ "color": "green", "text": "KR.1 Ustalenie testowanej umiejętności. Rozpoczyna się test danej umiejętności."}] },
-          { "row": [{ "color": "red", "text": "[free] OKNO GRACZA"}] },
-          { "row": [{ "color": "green", "text": "KR.2 Przeznaczenie kart z ręki na potrzeby testu umiejętności."}] },
-          { "row": [{ "color": "red", "text": "[free] OKNO GRACZA"}] },
-          { "row": [{ "color": "green", "text": "KR.3 Odkrycie żetonu chaosu."}] },
-          { "row": [{ "color": "green", "text": "KR.4 Rozpatrzenie efektu (efektów) symbolu chaosu."}] },
-          { "row": [{ "color": "green", "text": "KR.5 Wyznaczenie zmodyfikowanej wartości umiejętności badacza."}] },
-          { "row": [{ "color": "green", "text": "KR.6 Ustalenie, czy test zakończył się sukcesem, czy porażką."}] },
-          { "row": [{ "color": "green", "text": "KR.7 Zastosowanie wyników testu umiejętności."}] },
-          { "row": [{ "color": "green", "text": "KR.8 Test umiejętności się kończy."}] }
+          {
+            "row": [
+              {
+                "text": "Przebieg testu umiejętności"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "KR.1 Ustalenie testowanej umiejętności. Rozpoczyna się test danej umiejętności."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] OKNO GRACZA"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "KR.2 Przeznaczenie kart z ręki na potrzeby testu umiejętności."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "red",
+                "text": "[free] OKNO GRACZA"
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "KR.3 Odkrycie żetonu chaosu."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "KR.4 Rozpatrzenie efektu (efektów) symbolu chaosu."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "KR.5 Wyznaczenie zmodyfikowanej wartości umiejętności badacza."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "KR.6 Ustalenie, czy test zakończył się sukcesem, czy porażką."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "KR.7 Zastosowanie wyników testu umiejętności."
+              }
+            ]
+          },
+          {
+            "row": [
+              {
+                "color": "green",
+                "text": "KR.8 Test umiejętności się kończy."
+              }
+            ]
+          }
         ],
         "rules": [
           {
@@ -1292,5 +1760,5 @@
     "id": "Appendix_IV_Card_Anatomy",
     "title": "Suplement IV: Opis kart",
     "text": "W tej części znajduje się szczegółowy opis kart wszystkich rodzajów. Na stronach 28-29 wydrukowanej Komleptnej Księgi Zasad, szczegółowo opisane zostały karty scenariuszy, a na stronach 30-31 karty badaczy/graczy.\nPośród kart scenariuszy występują karty aktów, karty tajemnic, karty lokalizacji, karty podstępów, karty wrogów oraz karty pomocy scenariuszy.\nPośród kart graczy znajdują się karty badaczy, małe karty badaczy, karty atutów, karty wydarzeń oraz karty umiejętności."
-  }  
+  }
 ]

@@ -1033,7 +1033,7 @@
       {
         "code": "08100",
         "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych, w dowolnej kolejności (ruch, wymykanie się lub badanie)."
       },
       {
         "code": "08093",
@@ -1502,7 +1502,7 @@
       {
         "code": "08100",
         "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych, w dowolnej kolejności (ruch, wymykanie się lub badanie)."
       },
       {
         "code": "08093",
@@ -1983,7 +1983,7 @@
       {
         "code": "08100",
         "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych, w dowolnej kolejności (ruch, wymykanie się lub badanie)."
       },
       {
         "code": "08113",
@@ -2124,18 +2124,18 @@
       },
       {
         "code": "05156",
-        "text": "This card gains \"(Limit twice per round.)\"",
-        "replacement_text": "Mutated. Fast. Play during any investigator's turn, except during an action.\nImmediately take an action as if it were your turn. This action does not count toward the number of actions you can take each turn. (Limit twice per round.)"
+        "text": "Ta karta zyskuje: „(Limit dwa razy na rundę)”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj podczas tury dowolnego badacza, ale nie podczas akcji.\nNatychmiast wykonaj akcję tak, jakby trwała twoja tura. Ta akcja nie wlicza się w liczbę akcji, które możesz wykonać w każdej turze. (Limit dwa razy na rundę)."
       },
       {
         "code": "09072",
-        "text": "This card's first bullet point now reads: \"That event gains: \"Fast. Play only during your turn.\"\"",
-        "replacement_text": "Mutated. [reaction] When you play a [[Tactic]] or [[Trick]] event, exhaust Chuck Fergus: Choose one -\n- That event gains: \"Fast. Play only during your turn.\"\n- That event costs 2 fewer resources to play.\n- You get +2 skill value while performing a skill test during the resolution of that event."
+        "text": "Pierwszy podpunkt tej karty brzmi teraz: „Dane wydarzenie zyskuje: «Szybka. Zagraj tylko podczas twojej tury.»”.",
+        "replacement_text": "Zmutowana. [reaction] Kiedy zagrywasz kartę wydarzenia z cechą [[Taktyka]] lub [[Sztuczka]], wyczerp Chucka Fergusa: wybierz jedno -\n- Dane wydarzenie zyskuje: „Szybka. Zagraj tylko podczas swojej tury”.\n- Zagranie danego wydarzenia kosztuje o 2 żetony zasobów mniej.\n- Dostajesz +2 do wartości umiejętności w czasie wykonywania testu umiejętności podczas rozpatrywania danego wydarzenia."
       },
       {
         "code": "60332",
-        "text": "This card's first bullet point now reads: \"That event gains: \"Fast. Play only during your turn.\"\"",
-        "replacement_text": "Mutated. [reaction] When you play a [[Tactic]] or [[Trick]] event, exhaust Chuck Fergus: Choose two -\n- That event gains: \"Fast. Play only during your turn.\"\n- That event costs 2 fewer resources to play.\n- You get +2 skill value while performing a skill test during the resolution of that event."
+        "text": "Pierwszy podpunkt tej karty brzmi teraz: „Dane wydarzenie zyskuje: «Szybka. Zagraj tylko podczas twojej tury.»”.",
+        "replacement_text": "Zmutowana. [reaction] Kiedy zagrywasz kartę wydarzenia z cechą [[Taktyka]] lub [[Sztuczka]], wyczerp Chucka Fergusa: wybierz jedno -\n- Dane wydarzenie zyskuje: „Szybka. Zagraj tylko podczas swojej tury”.\n- Zagranie danego wydarzenia kosztuje o 2 żetony zasobów mniej.\n- Dostajesz +2 do wartości umiejętności w czasie wykonywania testu umiejętności podczas rozpatrywania danego wydarzenia."
       },
       {
         "code": "05324",
@@ -2171,7 +2171,7 @@
         "code": "60233",
         "deck_limit": 0,
         "text": "Zakazana.",
-        "replacement_text": "Forbidden. Uses (6 secrets). Limit 1 per deck.\n[fast] Spend 1 secret: You get +2 skill value for this test.\n[fast] Spend 2 secrets: Draw 2 cards.\n[fast] Spend 3 secrets: Discover 1 clue at any location.\n][fast] Spend 4 secrets: Deal 3 damage to an enemy engaged with you."
+        "replacement_text": "Zakazana. Zużywalny (6 sekretów). Limit 1 na talię.\n[fast] Wydaj 1 sekret: dostajesz +2 do wartości umiejętności do tego testu umiejętności.\n[fast] Wydaj 2 sekrety: dobierz 2 karty.\n[fast] Wydaj 3 sekrety: odkryj 1 żeton wskazówki w dowolnej lokalizacji.\n[fast] Wydaj 4 sekrety: zadaj 3 obrażenia wrogowi będącemu z tobą w zwarciu."
       },
       {
         "code": "07197",
@@ -2355,7 +2355,7 @@
         "code": "02026",
         "deck_limit": 0,
         "text": "Zakazana.",
-        "replacement_text": "Forbidden. Max 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice."
+        "replacement_text": "Zakazana. Na każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę.\nPodwój poziom trudności danego testu umiejętności. Jeśli test zakończy się sukcesem, dwukrotnie rozpatrz efekty testu zakończonego sukcesem."
       },
       {
         "code": "02029",
@@ -2509,7 +2509,7 @@
       {
         "code": "08100",
         "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych, w dowolnej kolejności (ruch, wymykanie się lub badanie)."
       },
       {
         "code": "08113",
@@ -2528,7 +2528,7 @@
       },
       {
         "code": "09081",
-        "text": "This card’s text box now reads: \"[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command) – \"Go.\" This enemy moves once in a direction of your choice.\"\nThis card’s customizable sheet loses the \"Mercy\" ability and gains\"☐Cower. Add the command: \"- ‘Cower.’ This enemy exhausts.\"",
+        "text": "Zdolność [action] tej karty brzmi teraz: „[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](2). Jeżeli test zakończył się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - «Idź». Ten wróg porusza się 1 raz w wybranym przez ciebie kierunku.\nArkusz usprawnień tej karty traci zdolność „Łaska” oraz zyskuje „☐Padnij. Dodaj rozkaz: «- ‚Padnij’. Ten wróg zostaje wyczerpany.»”.",
         "customization_options": [
           {
             "xp": 1,
@@ -2571,7 +2571,7 @@
         ],
         "customization_change": "- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga.\n- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.\n- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n[fast]: Cofnij Potęgę słowa na twoją rękę”.\nMożesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - \nMożesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
         "customization_text": "□ <b>Zdrada.</b> Dodaj rozkaz: „- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga”.\n□ <b>Padnij.</b> Dodaj rozkaz: „- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.”\n□ <b>Wyznanie.</b> Dodaj rozkaz: „- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n□ <b>Odwrócenie uwagi.</b> Dodaj rozkaz: „- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n□□ <b>Większa kontrola.</b> Potęga słowa zyskuje: „[fast]: Cofnij Potęgę słowa na twoją rękę”.\n□□□ <b>Powiązany.</b> Możesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n□□□ <b>Łamacz języka.</b> Kiedy pertraktujesz przy pomocy Potęgi słowa, możesz wydać do 2 różnych rozkazów.\n□□□ <b>Po trzykroć.</b> Możesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "replacement_text": "Zmutowana. Przystosowalny. Szybka. Zagraj tylko podczas twojej tury.\nDołącz do nie-[[Elitarnego]] wroga w twojej lokalizacji.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](2). Jeżeli test zakończył się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) -\n- „Idź”. Ten wróg porusza się 1 raz w wybranym przez ciebie kierunku."
       },
       {
         "code": "09041",
@@ -2580,18 +2580,18 @@
       },
       {
         "code": "10026",
-        "text": "This card's ability reads: \"...If you succeed, play the chosen asset, reducing its cost by the amount you succeeded by.\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose an enemy at your location and an [[Item]] asset in your hand. Perform a fight action against the chosen enemy. If you succeed, play the chosen asset, reducing its cost by the amount you succeeded by."
+        "text": "Zdolność tej karty brzmi: „…Jeśli test zakończy się sukcesem, zagraj wybrany atut, obniżając jego koszt o każdy punkt, o który test zakończył się sukcesem.”",
+        "replacement_text": "Zmutowana.\n<b>Pertraktacje.</b> Wybierz wroga w twojej lokalizacji i atut z cechą [[Przedmiot]] w twojej ręce. Wykonaj akcję walki przeciwko wybranemu wrogowi. Jeśli test zakończy się sukcesem, zagraj wybrany atut, obniżając jego koszt o każdy punkt, o który test zakończył się sukcesem."
       },
       {
         "code": "10030",
-        "text": "This card's ability reads: \"Resolve an [action] ability on a level 0-3 [[Tool]] or [[Weapon]] asset you control, ignoring all costs.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nResolve an [action] ability on a level 0-3 [[Tool]] or [[Weapon]] asset you control, ignoring all costs."
+        "text": "Zdolność tej karty brzmi: „Rozpatrz zdolność [action] z atutu z cechą [[Narzędzie]] lub [[Broń]] o poziomie 0-3, który kontrolujesz ignorując wszystkie koszty”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nRozpatrz zdolność [action] z atutu z cechą [[Narzędzie]] lub [[Broń]] o poziomie 0-3, który kontrolujesz ignorując wszystkie koszty."
       },
       {
         "code": "11065",
-        "text": "This card's [reaction] ability reads \"[reaction] When doom is placed on a card you control: Place 1 resource (from the token pool) on Blood of Thoth, as an offering.\"\nThis card's [free] ability reads \"[free] During the investigation phase, except during an action, spend 2 offerings and exhaust Blood of Thoth: Choose an investigator at your location to immediately take an action as if it were their turn.\"",
-        "replacement_text": "Mutated.\n[reaction] When doom is placed on a card you control: Place 1 resource <i>(from the token pool)</i>, on this card, as an offering.\n[fast] During the investigation phase, except during an action, spend 2 offerings and exhaust Blood of Thoth: Choose an investigator at your location to immediately take an action as if it were their turn."
+        "text": "Zdolność [reaction] tej karty brzmi: „[reaction] Kiedy żeton zagłady zostaje umieszczony na karcie, którą kontrolujesz: umieść 1 żeton zasobu (z puli żetonów) na Krwi Tota, jako ofiarę”.\nZdolność [free] brzmi: „[free] Podczas fazy badaczy, ale nie podczas akcji, wydaj 2 ofiary z Krwi Tota i wyczerp ją: wybierz badacza w twojej lokalizacji, aby natychmiast wykonał akcję tak, jakby trwała jego tura”.",
+        "replacement_text": "Zmutowana.\n[reaction] Kiedy żeton zagłady zostaje umieszczony na karcie, którą kontrolujesz: umieść 1 żeton zasobu <i>(z puli żetonów)</i> na Krwi Tota, jako ofiarę.\n[free] Podczas fazy badaczy, ale nie podczas akcji, wydaj 2 ofiary z Krwi Tota i wyczerp ją: wybierz badacza w twojej lokalizacji, aby natychmiast wykonał akcję tak, jakby trwała jego tura."
       }
     ]
   }
