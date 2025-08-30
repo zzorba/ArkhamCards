@@ -6332,16 +6332,6 @@ msgstr ""
 msgid "Limited: ${ selectedPacks.size } packs selected"
 msgstr ""
 
-msgid "Not enough cycles selected"
-msgstr ""
-
-msgid "Too many cycles selected"
-msgstr ""
-
-#, javascript-format
-msgid "Limited: ${ limitedPacksStr }"
-msgstr ""
-
 #, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
 msgstr ""
@@ -6359,6 +6349,18 @@ msgid "Choose a core set and three expansions to use for this limited pool."
 msgstr ""
 
 msgid "Choose any number of packs to use for this custom pool."
+msgstr ""
+
+msgid "Limited: Not enough cycles selected"
+msgstr ""
+
+msgid "Limited: Too many cycles selected"
+msgstr ""
+
+msgid "Limited:"
+msgstr ""
+
+msgid "Current:"
 msgstr ""
 
 msgctxt "investigator"

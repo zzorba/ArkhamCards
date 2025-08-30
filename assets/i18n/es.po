@@ -794,19 +794,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -6263,16 +6263,6 @@ msgstr "Expansión de investigadores"
 msgid "Limited: ${ selectedPacks.size } packs selected"
 msgstr "Limitado: ${ selectedPacks.size } packs seleccionados"
 
-msgid "Not enough cycles selected"
-msgstr "No hay suficientes ciclos seleccionados"
-
-msgid "Too many cycles selected"
-msgstr "Demasiados ciclos seleccionados"
-
-#, javascript-format
-msgid "Limited: ${ limitedPacksStr }"
-msgstr "Limitado: ${ limitedPacksStr }"
-
 #, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
 msgstr "Personalizado: ${ selectedPacks.size } packs seleccionados"
@@ -6291,6 +6281,18 @@ msgstr "Elige una caja básica y tres expansiones para limitar tus cartas."
 
 msgid "Choose any number of packs to use for this custom pool."
 msgstr "Elige cualquier número de packs para limitar tus cartas."
+
+msgid "Limited: Not enough cycles selected"
+msgstr ""
+
+msgid "Limited: Too many cycles selected"
+msgstr ""
+
+msgid "Limited:"
+msgstr ""
+
+msgid "Current:"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"
