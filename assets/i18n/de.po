@@ -5746,7 +5746,7 @@ msgid "More off-class card than the number of weaknesses in your deck and bonded
 msgstr "Mehr Neben-Klassen-Karten als Anzahl Schwächen in deinem Deck und gebundenen Karten."
 
 msgid "Concealed"
-msgstr "Versteckt"
+msgstr "Getarnt"
 
 msgid "Parallel Cards"
 msgstr "Parallele Karten"
