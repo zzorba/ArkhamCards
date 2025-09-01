@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
-import { DeckProblem, DeckProblemType, DECK_OPTIONS_LIMIT, INVALID_CARDS, INVESTIGATOR_PROBLEM, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES } from '@actions/types';
+import { DeckProblem, DeckProblemType, DECK_OPTIONS_LIMIT, INVALID_CARDS, INVESTIGATOR_PROBLEM, TOO_FEW_CARDS, TOO_MANY_CARDS, TOO_MANY_COPIES, NON_POOL_CARDS } from '@actions/types';
 import StyleContext from '@styles/StyleContext';
 import MetadataLineComponent from './MetadataLineComponent';
 import WarningIcon from '@icons/WarningIcon';
@@ -24,6 +24,7 @@ export default function ProblemLine({ problem }: Props) {
     [INVALID_CARDS]: t`Contains forbidden cards (cards not permitted by Faction)`,
     [DECK_OPTIONS_LIMIT]: t`Contains too many limited cards.`,
     [INVESTIGATOR_PROBLEM]: t`Doesn't comply with the Investigator requirements.`,
+    [NON_POOL_CARDS]: t`Contains cards not in the selected card pool.`,
   };
   const title = (
     <Text style={[typography.large, { color: colors.warnText }]}>

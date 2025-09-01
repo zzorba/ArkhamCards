@@ -167,6 +167,10 @@ export function isSpecialToken(token: ChaosTokenType) {
   }
 }
 
+export const POOL_CURRENT_PACKS = ['tskp', 'fhvp', 'tdcp'];
+export const POOL_INVESTIGATOR_CYCLE = 'cycle:investigator';
+export const POOL_INVESTIGATOR_PACKS = ['nat','har','win','jac','ste'];
+
 export const CHAOS_TOKENS: ChaosTokenType[] = [
   '+1',
   '0',
@@ -816,4 +820,31 @@ export function reprintPackToPack(pack: ReprintPack): Pack {
     known: 1,
     total: 1,
   };
+}
+
+export function cycleName(position: string): string {
+  switch (position) {
+    case '1': return t`Core Set`;
+    case '1_cycle': return t`Campaigns`;
+    case '2': return t`The Dunwich Legacy`;
+    case '3': return t`The Path to Carcosa`;
+    case '4': return t`The Forgotten Age`;
+    case '5': return t`The Circle Undone`;
+    case '6': return t`The Dream-Eaters`;
+    case '7': return t`The Innsmouth Conspiracy`;
+    case '8': return t`Edge of the Earth`;
+    case '9': return t`The Scarlet Keys`;
+    case '10': return t`The Feast of Hemlock Vale`;
+    case '11': return t`The Drowned City`;
+    case '50': return t`Return to...`;
+    case '60': return t`Investigator Starter Decks`;
+    case '70': return t`Standalone`;
+    case '80': return t`Books`;
+    case '90': return t`Parallel`;
+    case '100': return t`Non-canon Content`;
+    case '110': return t`Fan-made Campaigns`;
+    case '120': return t`Fan-made Scenarios`;
+    case '130': return t`Fan-made Investigators`;
+    default: return 'Unknown';
+  }
 }

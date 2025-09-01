@@ -15,7 +15,7 @@ import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
 import StyleContext from '@styles/StyleContext';
-import { ReprintPack, reprintPackToPack, specialPacks } from '@app_constants';
+import { cycleName, ReprintPack, reprintPackToPack, specialPacks } from '@app_constants';
 import ArkhamButton from '../ArkhamButton';
 import { useToggles } from '../hooks';
 
@@ -60,33 +60,6 @@ function keyExtractor(item: PackItem) {
     case 'pack': return item.pack.code;
     case 'reprint_toggle': return item.cycleCode;
     case 'reprint': return item.reprint.code;
-  }
-}
-
-function cycleName(position: string): string {
-  switch (position) {
-    case '1': return t`Core Set`;
-    case '1_cycle': return t`Campaigns`;
-    case '2': return t`The Dunwich Legacy`;
-    case '3': return t`The Path to Carcosa`;
-    case '4': return t`The Forgotten Age`;
-    case '5': return t`The Circle Undone`;
-    case '6': return t`The Dream-Eaters`;
-    case '7': return t`The Innsmouth Conspiracy`;
-    case '8': return t`Edge of the Earth`;
-    case '9': return t`The Scarlet Keys`;
-    case '10': return t`The Feast of Hemlock Vale`;
-    case '11': return t`The Drowned City`;
-    case '50': return t`Return to...`;
-    case '60': return t`Investigator Starter Decks`;
-    case '70': return t`Standalone`;
-    case '80': return t`Books`;
-    case '90': return t`Parallel`;
-    case '100': return t`Non-canon Content`;
-    case '110': return t`Fan-made Campaigns`;
-    case '120': return t`Fan-made Scenarios`;
-    case '130': return t`Fan-made Investigators`;
-    default: return 'Unknown';
   }
 }
 

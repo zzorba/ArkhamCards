@@ -6256,9 +6256,6 @@ msgstr "Usar solo cartas de 3 expansiones a tu elección"
 msgid "Use a completely custom card pool"
 msgstr "Usar un conjunto de cartas totalmente personalizado"
 
-msgid "Investigator Expansion"
-msgstr "Expansión de investigadores"
-
 #, javascript-format
 msgid "Limited: ${ selectedPacks.size } packs selected"
 msgstr "Limitado: ${ selectedPacks.size } packs seleccionados"
@@ -6292,6 +6289,9 @@ msgid "Limited:"
 msgstr ""
 
 msgid "Current:"
+msgstr ""
+
+msgid "Cycles (select 3)"
 msgstr ""
 
 msgctxt "investigator"

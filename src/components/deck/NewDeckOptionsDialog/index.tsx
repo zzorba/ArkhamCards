@@ -23,7 +23,7 @@ import { NavigationProps } from '@components/nav/types';
 import { CampaignId, Deck, DeckMeta, EditDeckState, getDeckId, ParsedDeck, Slots } from '@actions/types';
 import { BASIC_WEAKNESS_CHOICE, CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card, { CardsMap } from '@data/types/Card';
-import { AppState, getPacksInCollection } from '@reducers';
+import { AppState, makeCardPoolSelector } from '@reducers';
 import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '@data/deck/starterDecks';
@@ -49,7 +49,6 @@ import { parseDeck } from '@lib/parseDeck';
 import useParsedDeckComponent from '../useParsedDeckComponent';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { DeckEditContextProvider } from '../DeckEditContext';
-import { defaultCardPoolSet } from '../controls/DeckCardPoolButton';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -100,8 +99,8 @@ function NewDeckOptionsDialog({
   isModal,
   alternateInvestigatorId,
 }: Props) {
-  const packInCollection = useSelector(getPacksInCollection);
-  const initialCardPool = useMemo(() => defaultCardPoolSet('current', !!packInCollection.rcore).join(','), [packInCollection]);
+  const cardPoolSelector = useMemo(makeCardPoolSelector, []);
+  const { cardPoolMode: defaultCardPoolMode, cardPoolPacks: defaultCardPoolPacks } = useSelector(cardPoolSelector);
   const deckActions = useDeckActions();
   const defaultTabooSetId = useTabooSetId();
   const { userId } = useContext(ArkhamCardsAuthContext);
@@ -135,7 +134,7 @@ function NewDeckOptionsDialog({
   }, {
     alternate_back: alternateInvestigatorId,
     alternate_front: alternateInvestigatorId,
-    card_pool: initialCardPool,
+    card_pool: defaultCardPoolMode !== 'legacy' ? defaultCardPoolPacks.join(',') : undefined,
   });
 
   const setTabooSetId = useCallback((tabooSetId: number) => {

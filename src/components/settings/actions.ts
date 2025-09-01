@@ -20,9 +20,35 @@ import {
   REDUX_MIGRATION,
   MiscSetting,
   SetCurrentTabooSetAction,
+  CardPoolMode,
+  SET_CARD_POOL_MODE,
+  SetCardPoolModeAction,
+  SetCardPoolPacksAction,
+  SET_CARD_POOL_PACKS,
+  SET_CARD_POOL_PACKS_CALLBACK,
+  SetCardPoolPacksCallbackAction,
 } from '@actions/types';
 import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
 import { AppState } from '@reducers';
+
+export function setCardPoolMode(mode: CardPoolMode): SetCardPoolModeAction {
+  return {
+    type: SET_CARD_POOL_MODE,
+    mode,
+  };
+}
+export function setCardPoolPacks(packs: string[]): SetCardPoolPacksAction {
+  return {
+    type: SET_CARD_POOL_PACKS,
+    packs,
+  };
+}
+export function setCardPoolPacksCallback(callback: (packs: string[]) => string[]): SetCardPoolPacksCallbackAction {
+  return {
+    type: SET_CARD_POOL_PACKS_CALLBACK,
+    callback,
+  };
+}
 
 export function setTabooSet(
   tabooId: number,

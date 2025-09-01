@@ -6325,9 +6325,6 @@ msgstr ""
 msgid "Use a completely custom card pool"
 msgstr ""
 
-msgid "Investigator Expansion"
-msgstr ""
-
 #, javascript-format
 msgid "Limited: ${ selectedPacks.size } packs selected"
 msgstr ""
@@ -6361,6 +6358,9 @@ msgid "Limited:"
 msgstr ""
 
 msgid "Current:"
+msgstr ""
+
+msgid "Cycles (select 3)"
 msgstr ""
 
 msgctxt "investigator"

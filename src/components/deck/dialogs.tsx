@@ -433,6 +433,7 @@ interface PickerItem<T> {
   title: string;
   description?: string;
   disabled?: boolean;
+  selected?: boolean;
   value: T;
   icon?: string;
   iconNode?: React.ReactNode;
@@ -497,7 +498,7 @@ export function usePickerDialog<T>({
             indicator={noIcons ? 'none' : undefined}
             onValueChange={onValuePress}
             // tslint:disable-next-line
-            selected={selectedValue === item.value}
+            selected={item.selected ?? selectedValue === item.value}
             last={idx === items.length - 1 || items[idx + 1].type === 'header'}
           />
         )) }
@@ -576,9 +577,9 @@ export function useMultiPickerDialog<T>({
             onValueChange={onValuePress}
             // tslint:disable-next-line
             showDisabledIcons
-            selected={!!selectedValues?.has(item.value)}
+            selected={item.selected ?? !!selectedValues?.has(item.value)}
             last={idx === items.length - 1 || items[idx + 1].type === 'header'}
-            disabled={!selectedValues?.has(item.value) && !!max && selectedCount >= max}
+            disabled={item.disabled || (!selectedValues?.has(item.value) && !!max && selectedCount >= max)}
           />
         )) }
       </View>

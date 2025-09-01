@@ -36,6 +36,7 @@ import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
 import { useRemoteSettingFlag, useSettingFlag, useSettingValue } from '@components/core/hooks';
 import { useRemoteSettings, useUpdateRemoteSetting } from '@data/remote/settings';
+import SettingsCardPoolPicker from './SettingsCardPoolPicker';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -192,7 +193,8 @@ export default function SettingsView({ componentId }: NavigationProps) {
                   onPress={editSpoilersPressed}
                   editable
                 />
-                <SettingsTabooPicker last />
+                <SettingsTabooPicker />
+                <SettingsCardPoolPicker last />
               </View>
               <DeckButton
                 icon="arkhamdb"

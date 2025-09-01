@@ -6,6 +6,12 @@ import {
   SET_MISC_SETTING,
   SET_LANGUAGE_CHOICE,
   SetTabooSetAction,
+  SET_CARD_POOL_MODE,
+  SetCardPoolModeAction,
+  SET_CARD_POOL_PACKS,
+  SetCardPoolPacksAction,
+  SET_CARD_POOL_PACKS_CALLBACK,
+  SetCardPoolPacksCallbackAction,
   SetMiscSettingAction,
   SetLanguageChoiceAction,
   CardFetchSuccessAction,
@@ -32,6 +38,7 @@ import {
   DEFAULT_SORT,
   SET_AUDIO_LANGUAGE_CHOICE,
   SetAudioLanguageChoiceAction,
+  CardPoolMode,
 } from '@actions/types';
 import { LOW_MEMORY_DEVICE } from '@components/DeckNavFooter/constants';
 
@@ -67,6 +74,9 @@ interface SettingsState {
   startingTab?: StartingTabType;
   investigatorSort?: SortType;
   cardSort?: SortType[];
+
+  cardPoolMode?: CardPoolMode;
+  cardPoolPacks?: string[];
 }
 export const CURRENT_REDUX_VERSION = 1;
 
@@ -104,6 +114,9 @@ type SettingAction =
   SetAudioLanguageChoiceAction |
   SetCurrentTabooSetAction |
   SetTabooSetAction |
+  SetCardPoolModeAction |
+  SetCardPoolPacksAction |
+  SetCardPoolPacksCallbackAction |
   SetMiscSettingAction |
   CardFetchSuccessAction |
   SetThemeAction |
@@ -179,6 +192,24 @@ export default function(
         tabooId: action.tabooId,
         useCurrentTabooSet: action.useCurrentTabooSet,
         currentTabooSetId: action.currentTabooId,
+      };
+    }
+    case SET_CARD_POOL_MODE: {
+      return {
+        ...state,
+        cardPoolMode: action.mode,
+      };
+    }
+    case SET_CARD_POOL_PACKS: {
+      return {
+        ...state,
+        cardPoolPacks: action.packs,
+      };
+    }
+    case SET_CARD_POOL_PACKS_CALLBACK: {
+      return {
+        ...state,
+        cardPoolPacks: action.callback(state.cardPoolPacks ?? []),
       };
     }
     case SET_CURRENT_TABOO_SET: {

@@ -82,6 +82,7 @@ export interface ChecklistSlots {
 export const INVESTIGATOR_PROBLEM = 'investigator';
 export const TOO_MANY_COPIES = 'too_many_copies';
 export const INVALID_CARDS = 'invalid_cards';
+export const NON_POOL_CARDS = 'non_pool_cards';
 export const TOO_FEW_CARDS = 'too_few_cards';
 export const TOO_MANY_CARDS = 'too_many_cards';
 export const DECK_OPTIONS_LIMIT = 'deck_options_limit';
@@ -90,6 +91,7 @@ export type DeckProblemType =
   | typeof INVESTIGATOR_PROBLEM
   | typeof TOO_MANY_COPIES
   | typeof INVALID_CARDS
+  | typeof NON_POOL_CARDS
   | typeof TOO_FEW_CARDS
   | typeof TOO_MANY_CARDS
   | typeof DECK_OPTIONS_LIMIT;
@@ -115,6 +117,8 @@ export interface DeckMeta {
   // attachmens_{code}: id1,id2,id3 etc
   [key: string]: string | undefined;
 }
+
+export type CardPoolMode = 'legacy' | 'current' | 'limited' | 'custom';
 
 export interface LocalDeckId {
   id: undefined;
@@ -739,6 +743,22 @@ export interface SetTabooSetAction {
   tabooId?: number;
   currentTabooId?: number;
   useCurrentTabooSet?: boolean;
+}
+
+export const SET_CARD_POOL_MODE = 'SET_CARD_POOL_MODE';
+export interface SetCardPoolModeAction {
+  type: typeof SET_CARD_POOL_MODE;
+  mode: CardPoolMode;
+}
+export const SET_CARD_POOL_PACKS = 'SET_CARD_POOL_PACKS';
+export interface SetCardPoolPacksAction {
+  type: typeof SET_CARD_POOL_PACKS;
+  packs: string[];
+}
+export const SET_CARD_POOL_PACKS_CALLBACK = 'SET_CARD_POOL_PACKS_CALLBACK';
+export interface SetCardPoolPacksCallbackAction {
+  type: typeof SET_CARD_POOL_PACKS_CALLBACK;
+  callback: (packs: string[]) => string[];
 }
 
 export const SET_CURRENT_TABOO_SET = 'SET_CURRENT_TABOO_SET';

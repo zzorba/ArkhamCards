@@ -50,9 +50,10 @@ import {
   DEFAULT_MYTHOS_SORT,
   FIXED_CHAOS_BAG_CAMPAIGN_ID,
   ChecklistSlots,
+  CardPoolMode,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
-import { ChaosBag, reprintPackToPack, specialPacks } from '@app_constants';
+import { ChaosBag, POOL_CURRENT_PACKS, POOL_INVESTIGATOR_CYCLE, reprintPackToPack, specialPacks } from '@app_constants';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { LatestDeckRedux, MiniCampaignRedux, MiniDeckRedux, MiniLinkedCampaignRedux } from '@data/local/types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -788,6 +789,39 @@ export const makeTabooSetSelector = (): (state: AppState, tabooSetOverride?: num
         return currentTabooId;
       }
       return tabooId;
+    }
+  );
+
+
+export const makeCardPoolSelector = (): (state: AppState) => { cardPoolMode: CardPoolMode; cardPoolPacks: string[] } =>
+  createSelector(
+    (state: AppState) => state.settings.cardPoolMode,
+    (state: AppState) => state.settings.cardPoolPacks,
+    (state: AppState) => state.packs.in_collection,
+    (mode: CardPoolMode | undefined, cardPoolPacks: string[] | undefined, inCollection: { [code: string]: boolean }): { cardPoolMode: CardPoolMode; cardPoolPacks: string[] } => {
+      const cardPoolMode = mode ?? 'current';
+      switch (cardPoolMode) {
+        case 'current':
+          return {
+            cardPoolMode,
+            cardPoolPacks: [
+              inCollection.rcore ? 'rcore' : 'core',
+              ...POOL_CURRENT_PACKS,
+              POOL_INVESTIGATOR_CYCLE,
+            ],
+          };
+        case 'legacy':
+          return {
+            cardPoolMode,
+            cardPoolPacks: [],
+          };
+        case 'limited':
+        case 'custom':
+          return {
+            cardPoolMode,
+            cardPoolPacks: cardPoolPacks || [],
+          };
+      }
     }
   );
 

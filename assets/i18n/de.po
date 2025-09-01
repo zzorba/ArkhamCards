@@ -794,19 +794,19 @@ msgstr "Chaosbeutel"
 msgid "Adjust Weakness Set"
 msgstr "Schwächeset anpassen"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Dieses Deck enthält mehrere Grundschwächen"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Dieses Deck enthält eine Grundschwäche"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Willst du sie aus dem Grundschwächenset der Kampagne entfernen?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Willst du es aus dem Grundschwächenset der Kampagne entfernen?"
 
@@ -6255,9 +6255,6 @@ msgstr "Verwende nur Karten von drei Erweiterungen"
 msgid "Use a completely custom card pool"
 msgstr "Verwende einen benutzerdefinierten Kartenpool"
 
-msgid "Investigator Expansion"
-msgstr "Ermittler-Erweiterung"
-
 #, javascript-format
 msgid "Limited: ${ selectedPacks.size } packs selected"
 msgstr "Limitiert: ${ selectedPacks.size } Erweiterungen ausgewählt"
@@ -6292,6 +6289,9 @@ msgstr "Limitiert:"
 
 msgid "Current:"
 msgstr "Aktuell:"
+
+msgid "Cycles (select 3)"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

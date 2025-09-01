@@ -11,6 +11,7 @@ import {
   sumBy,
   sortBy,
   partition,
+  flatMap,
 } from 'lodash';
 import { t } from 'ttag';
 
@@ -21,6 +22,7 @@ import {
   DeckProblemType,
   INVALID_CARDS,
   INVESTIGATOR_PROBLEM,
+  NON_POOL_CARDS,
   Slots,
   TOO_FEW_CARDS,
   TOO_MANY_CARDS,
@@ -37,6 +39,8 @@ import {
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
   ELDRITCH_BRAND_CODE,
+  POOL_INVESTIGATOR_CYCLE,
+  POOL_INVESTIGATOR_PACKS,
 } from '@app_constants';
 import Card, { InvestigatorChoice } from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
@@ -106,6 +110,8 @@ export default class DeckValidation {
   insane_data: InsaneData | undefined;
   hide_versatile: boolean;
 
+  limited_packs: Set<string> | undefined;
+
   /**
    *
    * @param investigator
@@ -142,6 +148,10 @@ export default class DeckValidation {
     this.extra_deck = extra_deck ?? false;
     this.hide_versatile = hide_versatile ?? false;
     this.for_query = for_query ?? false;
+
+    this.limited_packs = meta?.card_pool ?
+      new Set(flatMap(meta.card_pool.split(','), pack => pack === POOL_INVESTIGATOR_CYCLE ? POOL_INVESTIGATOR_PACKS : [pack])) :
+      undefined;
   }
 
   specialCardCounts(): SpecialCardCounts {
@@ -320,6 +330,7 @@ export default class DeckValidation {
     if (!problem) {
       return undefined;
     }
+
     return {
       reason: problem.reason,
       investigatorReason: problem.investigatorReason,
@@ -388,6 +399,13 @@ export default class DeckValidation {
     ) {
       return {
         reason: TOO_MANY_COPIES,
+        invalidCards,
+      };
+    }
+
+    if (invalidCards.find(card => !this.cardInLimitedPool(card))) {
+      return {
+        reason: NON_POOL_CARDS,
         invalidCards,
       };
     }
@@ -611,6 +629,13 @@ export default class DeckValidation {
     ];
   }
 
+  cardInLimitedPool(card: Card): boolean {
+    return !!card.encounter_code ||
+      !this.limited_packs ||
+      this.limited_packs.has(card.pack_code) ||
+      !!card.reprint_pack_codes?.find(pack => this.limited_packs?.has(pack));
+  }
+
 
   canIncludeCard(card: Card, processDeckCounts: boolean, allCards: Card[]): boolean {
     if ((card.subtype_code === 'basicweakness' || card.encounter_code) &&
@@ -684,6 +709,10 @@ export default class DeckValidation {
         // This card is restricted and you don't match the requirements.
         return undefined;
       }
+    }
+
+    if (!this.cardInLimitedPool(card)) {
+      return undefined;
     }
 
     //var investigator = app.data.cards.findById(investigator_code);
