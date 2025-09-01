@@ -240,7 +240,9 @@ export default function DeckCardPoolButton({ first, last, selectedPacks, setSele
     description:
       cardPool === 'limited' ?
         t`Choose a core set and three expansions to use for this limited pool.` :
-        t`Choose any number of packs to use for this custom pool.`,
+        cardPool === 'custom' ?
+          t`Choose any number of packs to use for this custom pool.` :
+          undefined,
     header: cardPoolHeader,
     // error: packsButtonError,
     selectedValues: selectedPackSet,
