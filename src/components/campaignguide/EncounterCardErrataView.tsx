@@ -38,6 +38,7 @@ function CardErrataComponent({ errata, cards }: { errata: CardErrata; cards: Car
                     encounter_code={cards[0].pack_code}
                     size={16 * fontScale}
                     color={colors.darkText}
+                    pack
                   />
                 )
               ) : (
@@ -46,6 +47,7 @@ function CardErrataComponent({ errata, cards }: { errata: CardErrata; cards: Car
                     encounter_code={cards[0].cycle_code}
                     size={16 * fontScale}
                     color={colors.darkText}
+                    pack
                   />
                 )) }
               &nbsp;

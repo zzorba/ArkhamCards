@@ -311,7 +311,7 @@
           "answer": "The “pile of potential sacrifices” (and cards underneath the agenda deck) should be considered to be in play for the purposes of game rules, but these cards are under no player’s control. (Since the cards are facedown, you should try to remember which unique allies were kidnapped and added to the pile of potential sacrifices without having to look at it.) Additionally, the cards in the pile of potential sacrifices and underneath the agenda deck cannot be affected by player card effects or investigator actions.\nThus, if a unique asset is Kidnapped!, an investigator cannot play another copy of that asset. Additionally, if a player resigns or is defeated, any cards he or she owns that are in the pile of potential sacrifices or facedown underneath the agenda deck will remain as such."
         },
         {
-          "question": "What happens if Duke is listed under “Sacrficed to Yog-Sothoth?” Is “Ashcan” Pete still playable without Duke?",
+          "question": "What happens if Duke is listed under “Sacrificed to Yog-Sothoth?” Is “Ashcan” Pete still playable without Duke?",
           "answer": "If a required card (such as Duke) is permanently removed from your deck, it also removes the requirement of including that card. If for whatever reason Duke cannot be included in “Ashcan” Pete’s deck, that requirement is considered to be removed, and Pete may continue without Duke.\nOf course, since this is a significant handicap, you may also choose to optionally retire Pete and continue using a new investigator at 0 experience"
         }
       ]
@@ -512,10 +512,10 @@
       "questions": [
         {
           "question": "What happens when you are entering the <b>Ventilation Shaft</b> from a forced effect (i.e. the Dream-Gate), but fail the [agility] test?",
-          "answer": "Choose another revealed locastion to move into instead. If there are no valid options, move into the Ventilation Shaft anyway."
+          "answer": "Choose another revealed location to move into instead. If there are no valid options, move into the Ventilation Shaft anyway."
         },
         {
-          "question": "How does <b>UPL-A21</b> work? Can an invesigator without <b>AI</b> cards engage it?",
+          "question": "How does <b>UPL-A21</b> work? Can an investigator without <b>AI</b> cards engage it?",
           "answer": "The condition on UPL-A21 only matters for the purposes of the enemy's own movement and automatic engagement. You are allowed to manually engage it even if you do not have [[AI]] cards, similar to aloof enemies."
         },
         {

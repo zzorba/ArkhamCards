@@ -32,6 +32,7 @@ export default function CampaignSummaryHeader({
           encounter_code={cycle}
           size={60}
           color={colors.M}
+          pack
         />
       </View>
       <View style={[space.paddingLeftS, { flex: 1 }]}>

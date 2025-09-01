@@ -132,6 +132,7 @@ export default function PackRow({
                 encounter_code={pack.code}
                 size={iconSize}
                 color={colors.darkText}
+                pack
               />
             </View>
             <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', flex: 1 }}>

@@ -103,7 +103,7 @@ function usePackCycles(mode: CardPoolMode): Item<string>[] {
       forEach(cycle.packs, pack => {
         result.push({
           title: packsByName[pack],
-          iconNode: <EncounterIcon encounter_code={pack} size={28} color={colors.D20} />,
+          iconNode: <EncounterIcon encounter_code={pack} size={28} color={colors.D20} pack />,
           value: pack,
           selected: (cycle.custom && mode !== 'custom') ? true : undefined,
           disabled: (cycle.custom && mode !== 'custom') ? true : undefined,
@@ -131,7 +131,7 @@ function LabelWithEncounterIcons({ label, packs }: { label: string; packs: strin
       <Text style={[typography.large, { color: colors.D30 }, space.paddingRightS]}>{label}</Text>
       { map(packs, pack => (
         <View key={pack} style={space.paddingRightS}>
-          <EncounterIcon encounter_code={pack} size={18} color={colors.D30} />
+          <EncounterIcon encounter_code={pack} size={18} color={colors.D30} pack />
         </View>
       )) }
     </View>

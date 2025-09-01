@@ -66,6 +66,7 @@ export default function CardFooterInfo({ card }: Props) {
                   <View style={styles.icon}>
                     <EncounterIcon
                       encounter_code={info.pack_code}
+                      pack
                       size={14 * fontScale}
                       color={colors.darkText}
                     />
@@ -102,6 +103,7 @@ export default function CardFooterInfo({ card }: Props) {
                     card.pack_code :
                     (card.cycle_code || card.pack_code)
                 }
+                pack
                 size={14 * fontScale}
                 color={colors.darkText}
               />

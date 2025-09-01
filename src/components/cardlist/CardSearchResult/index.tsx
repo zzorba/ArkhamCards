@@ -89,6 +89,7 @@ function FactionIcon({ card }: { card: Card }) {
         encounter_code={card.pack_code}
         size={ICON_SIZE}
         color={colors.darkText}
+        pack
       />
     );
   }
@@ -247,7 +248,7 @@ export default function CardSearchResult(props: Props) {
           ]} numberOfLines={1} ellipsizeMode="tail">
             <IconizedText text={card.renderName} iconSize={14} />
             { custom && '  ' }
-            { custom && <EncounterIcon encounter_code={card.pack_code} size={18} color={colors.L10} /> }
+            { custom && <EncounterIcon encounter_code={card.pack_code} size={18} color={colors.L10} pack /> }
           </Text>
         </View>
         { !!(skillIcons || dualFactionIcons || tabooBlock || card.advanced || card.renderSubname || description) && (

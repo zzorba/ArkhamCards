@@ -98,7 +98,7 @@ function DeckListRowDetails({
       ) : (
         <>
           <View style={[styles.row, { alignItems: 'center' }, styles.flex]}>
-            <EncounterIcon color={colors.D20} size={20} encounter_code={deck.campaign.cycleCode || 'core'} />
+            <EncounterIcon color={colors.D20} size={20} encounter_code={deck.campaign.cycleCode || 'core'} pack />
             <Text
               style={[space.marginLeftXs, typography.text, { color: colors.D15 }, typography.italic, styles.flex]}
               numberOfLines={1}

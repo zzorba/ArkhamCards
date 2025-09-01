@@ -27,6 +27,7 @@ export default function ItemContent({ packCode, text, disabled, description }: P
           encounter_code={packCode}
           size={36 * fontScale}
           color={colors.darkText}
+          pack
         />
       </View>
       <View style={styles.column}>

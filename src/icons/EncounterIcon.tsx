@@ -25,6 +25,7 @@ interface Props {
   encounter_code: string;
   size: number;
   color: string;
+  pack?: boolean;
 }
 
 const AnimatedOzIcon = Animated.createAnimatedComponent(OzIcon);
@@ -131,6 +132,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       encounter_code,
       size,
       color,
+      pack,
     } = this.props;
     switch (encounter_code) {
       case 'nat':
@@ -759,7 +761,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'ancient_hunger':
       case 'witch_cult':
       case 'tomes':
+      case 'forgotten_island':
+      case 'cosmic_journey':
+      case 'abominable_contessa':
         return this.standaloneIcon(encounter_code, size, color);
+      case 'film_fatale':
+        return this.standaloneIcon(pack ? 'film_fatale' : 'film_fatale_encounter', size, color);
       case 'legendry':
         return this.standaloneIcon('legendary', size, color);
       case 'zbs':
