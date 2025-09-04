@@ -4766,7 +4766,7 @@ msgid "Reset onboarding"
 msgstr "Einführung zurücksetzen"
 
 msgid "Signing into Arkham Cards will let you backup your campaigns between your devices and share in-progress campaigns with other friends."
-msgstr "Wenn du dich in Arkham Cards anmeldest, kannst du deinen Kampagnen zwischen deinen Geräten synchronisieren und angefangenen Kampagnen mit deinen Freunden teilen."
+msgstr "Wenn du dich in Arkham Cards anmeldest, kannst du deinen Kampagnen zwischen deinen Geräten synchronisieren und angefangene Kampagnen mit deinen Freunden teilen."
 
 msgid "Recent updates"
 msgstr "Neuste Updates"
