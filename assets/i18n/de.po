@@ -8878,7 +8878,7 @@ msgstr "Wähle weitere"
 
 msgctxt "lead-investigator"
 msgid "Lead"
-msgstr "Anführer"
+msgstr "Ermittlungsleiter"
 
 msgctxt "narration"
 msgid "Pause"
