@@ -560,6 +560,7 @@ export interface CampaignLogCardsEffect {
   masculine_text?: string;
   feminine_text?: string;
   nonbinary_text?: string;
+  plural_text?: string;
   cards?:
     | "$lead_investigator"
     | "$all_investigators"
@@ -715,6 +716,7 @@ export interface CheckCampaignLogCardsEffect {
   masculine_text?: string;
   feminine_text?: string;
   nonbinary_text?: string;
+  plural_text?: string;
   bullet_type?: BulletType;
 }
 export interface CheckCampaignLogCountEffect {
@@ -1110,6 +1112,7 @@ export interface Choice {
   feminine_text?: string;
   masculine_text?: string;
   nonbinary_text?: string;
+  plural_text?: string;
   description?: string;
   steps?: string[];
   border?: boolean;
@@ -1448,6 +1451,7 @@ export interface LocationSetupCard {
   code: string;
   x: number;
   y: number;
+  layer?: "bottom" | "top";
 }
 export interface LocationDecoration {
   layer: "top" | "bottom";

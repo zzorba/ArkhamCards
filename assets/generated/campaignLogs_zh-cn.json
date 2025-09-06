@@ -887,10 +887,6 @@
           },
           {
             "id": "the_black_stone",
-            "text": "The Black Stone"
-          },
-          {
-            "id": "the_black_stone",
             "text": "黑色岩石"
           },
           {
@@ -969,10 +965,6 @@
           {
             "id": "standing_stones",
             "text": "耸立岩石"
-          },
-          {
-            "id": "the_black_stone",
-            "text": "The Black Stone"
           },
           {
             "id": "the_black_stone",
@@ -4532,6 +4524,10 @@
             "text": "Dr. Maleson's experiment was a failure."
           },
           {
+            "id": "drill_broke_down",
+            "text": "the drill broke down."
+          },
+          {
             "id": "fof_alarm_level",
             "text": "警戒等级：#name# (#X#)"
           },
@@ -4728,6 +4724,10 @@
             "text": "the investigators used the sorcerers' magic against them."
           },
           {
+            "id": "world_screamed",
+            "text": "the World screamed."
+          },
+          {
             "id": "zbs_have_seen_and_understood",
             "text": "you have seen, and understood."
           },
@@ -4793,6 +4793,10 @@
             "text": "dummy"
           },
           {
+            "id": "always_true",
+            "text": "dummy"
+          },
+          {
             "id": "atw_added_tablet",
             "text": "dummy"
           },
@@ -4826,6 +4830,42 @@
           },
           {
             "id": "epic_multiplayer",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_act_2_cape",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_act_2_staff",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_act_2_telescope",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_cape",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_no_andre",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_staff",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_swap_chaos_bag",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_take_two",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_telescope",
             "text": "dummy"
           },
           {
@@ -4926,6 +4966,10 @@
           },
           {
             "id": "tmg_side_story_mode",
+            "text": "dummy"
+          },
+          {
+            "id": "wtws_epic_multiplayer",
             "text": "dummy"
           },
           {

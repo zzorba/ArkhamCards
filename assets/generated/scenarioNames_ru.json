@@ -368,6 +368,10 @@
     "name": "Добро пожаловать в Хемлок-Вейл!"
   },
   {
+    "id": "film_fatale",
+    "name": "Film Fatale"
+  },
+  {
     "id": "final_night",
     "name": "Последняя ночь"
   },
@@ -1350,6 +1354,10 @@
   {
     "id": "weaver_of_the_cosmos",
     "name": "Плетущая космос"
+  },
+  {
+    "id": "when_the_world_screamed",
+    "name": "When the World Screamed"
   },
   {
     "id": "where_doom_awaits",

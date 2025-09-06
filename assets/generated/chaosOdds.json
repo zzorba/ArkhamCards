@@ -10093,7 +10093,7 @@
       }
     ]
   },
-  
+
   {
     "code": "11501",
     "scenario": "one_last_job",
@@ -10541,7 +10541,7 @@
       }
     ],
     "hard": [
-     
+
       {
         "token": "skull",
         "type": "counter",
@@ -10884,5 +10884,107 @@
         }
       }
     ]
+  },
+
+    {
+    "code": "72001",
+    "scenario": "film_fatale",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Current agenda number",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "[[Monster]] enemy at your location",
+            "modified_value": {
+              "modifier": -5
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [{
+            "prompt": "[[Saturnite]] enemy at your location",
+            "modified_value": {
+              "modifier": -3,
+              "reveal_another": 1
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Current agenda number",
+          "min": 1,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [{
+            "prompt": "[[Monster]] enemy at your location",
+            "modified_value": {
+              "modifier": -6
+            }
+          }]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [{
+            "prompt": "[[Saturnite]] enemy at your location",
+            "modified_value": {
+              "modifier": -4,
+              "reveal_another": 1
+            }
+          }]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
   }
+
 ]

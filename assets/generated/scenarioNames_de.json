@@ -368,6 +368,10 @@
     "name": "Willkommen in Hemlock Vale!"
   },
   {
+    "id": "film_fatale",
+    "name": "Film Fatale"
+  },
+  {
     "id": "final_night",
     "name": "Die letzte Nacht"
   },
@@ -1350,6 +1354,10 @@
   {
     "id": "weaver_of_the_cosmos",
     "name": "Weber des Kosmos"
+  },
+  {
+    "id": "when_the_world_screamed",
+    "name": "When the World Screamed"
   },
   {
     "id": "where_doom_awaits",

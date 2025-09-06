@@ -53,7 +53,7 @@
   },
   {
     "id": "all_or_nothing",
-    "name": "All or Nothing"
+    "name": "孤注一掷"
   },
   {
     "id": "an_offer_you_cant_refuse",
@@ -85,7 +85,7 @@
   },
   {
     "id": "armitages_fate",
-    "name": "Armitage's Fate"
+    "name": "阿米蒂奇的命运"
   },
   {
     "id": "at_deaths_doorstep",
@@ -109,7 +109,7 @@
   },
   {
     "id": "bad_blood",
-    "name": "Bad Blood"
+    "name": "血业轮回"
   },
   {
     "id": "barors_gifts",
@@ -145,7 +145,7 @@
   },
   {
     "id": "blob_that_ate_everything",
-    "name": "The Blob That Ate Everything"
+    "name": "吞噬万物"
   },
   {
     "id": "blob_that_ate_everything_else",
@@ -169,11 +169,11 @@
   },
   {
     "id": "by_the_book",
-    "name": "By the Book"
+    "name": "照章行事"
   },
   {
     "id": "carnevale_of_horrors",
-    "name": "Carnevale of Horrors"
+    "name": "恐怖狂欢节"
   },
   {
     "id": "ce_epilogue",
@@ -225,7 +225,7 @@
   },
   {
     "id": "curse_of_the_rougarou",
-    "name": "Curse of the Rougarou"
+    "name": "狼人诅咒"
   },
   {
     "id": "curtain_call",
@@ -329,7 +329,7 @@
   },
   {
     "id": "essex_county_express",
-    "name": "The Essex County Express"
+    "name": "疯狂列车"
   },
   {
     "id": "expedition_to_ryleh",
@@ -366,6 +366,10 @@
   {
     "id": "fhv_prologue",
     "name": "欢迎来到铁杉谷！"
+  },
+  {
+    "id": "film_fatale",
+    "name": "Film Fatale"
   },
   {
     "id": "final_night",
@@ -569,7 +573,7 @@
   },
   {
     "id": "meddling_of_meowlathotep",
-    "name": "The Meddling of Meowlathotep"
+    "name": "喵鸣拉托提普的干预"
   },
   {
     "id": "misery_loves_company",
@@ -589,7 +593,7 @@
   },
   {
     "id": "murder_at_the_excelsior_hotel",
-    "name": "Murder at the Excelsior Hotel"
+    "name": "艾肖希尔酒店谋杀案"
   },
   {
     "id": "mysterious_benefits",
@@ -669,7 +673,7 @@
   },
   {
     "id": "read_or_die",
-    "name": "Read or Die"
+    "name": "死亡阅读"
   },
   {
     "id": "red_tide_rising",
@@ -1313,7 +1317,7 @@
   },
   {
     "id": "turn_back_time",
-    "name": "Turn Back Time"
+    "name": "时间倒流"
   },
   {
     "id": "twist_of_fate",
@@ -1345,11 +1349,15 @@
   },
   {
     "id": "war_of_the_outer_gods",
-    "name": "War of the Outer Gods"
+    "name": "外神之战"
   },
   {
     "id": "weaver_of_the_cosmos",
     "name": "编织宇宙"
+  },
+  {
+    "id": "when_the_world_screamed",
+    "name": "When the World Screamed"
   },
   {
     "id": "where_doom_awaits",

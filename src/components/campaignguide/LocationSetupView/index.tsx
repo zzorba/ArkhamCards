@@ -227,6 +227,25 @@ export default function LocationSetupView({ step }: Props) {
   const rowWidth = unitWidth * (rowSize + 3 * horizontalScale);
   const rowHeight = TOP_PADDING * 2 + unitHeight * (rowCount + 3 * verticalScale) + GUTTER_SIZE;
   const [bottomDecorations, topDecorations] = useMemo(() => partition(decorations ?? [], d => d.layer === 'bottom'), [decorations]);
+  const [bottomCards, topCards] = useMemo(() => partition(cards, card => card.layer === 'bottom'), [cards]);
+
+  const renderCard = useCallback((card: LocationSetupCard, idx: number) => {
+    const key = `${idx}`;
+    return (
+      <DecoratedLocationCard
+        key={key}
+        keyProp={key}
+        card={card}
+        cardDimensions={cardDimensions}
+        annotations={[]}
+        step={step}
+        parsed={parsed}
+        resourceDividers={undefined}
+        rowWidth={rowWidth}
+        rowHeight={rowHeight}
+      />
+    );
+  }, [cardDimensions, step, parsed, rowWidth, rowHeight]);
   return (
     <PanPinchView
       minScale={0.25}
@@ -256,24 +275,9 @@ export default function LocationSetupView({ step }: Props) {
           />
         ) }
         <View style={[styles.container, { height: rowHeight, margin: m * 2 }]}>
+          { map(bottomCards, renderCard) }
           { map(locations, (locs, row) => renderRow(locs, row, rowWidth, rowHeight)) }
-          { map(cards, (card, idx) => {
-            const key = `${idx}`;
-            return (
-              <DecoratedLocationCard
-                key={key}
-                keyProp={key}
-                card={card}
-                cardDimensions={cardDimensions}
-                annotations={[]}
-                step={step}
-                parsed={parsed}
-                resourceDividers={undefined}
-                rowWidth={rowWidth}
-                rowHeight={rowHeight}
-              />
-            );
-          }) }
+          { map(topCards, renderCard) }
           { !!arrows?.length && (
             <Arrows
               arrows={arrows}

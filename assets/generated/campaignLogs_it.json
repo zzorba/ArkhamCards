@@ -4524,6 +4524,10 @@
             "text": "l'esperimento del Dott. Maleson è stato un fallimento."
           },
           {
+            "id": "drill_broke_down",
+            "text": "the drill broke down."
+          },
+          {
             "id": "fof_alarm_level",
             "text": "Livello di allarme: #name# (#X#)"
           },
@@ -4720,6 +4724,10 @@
             "text": "gli investigatori hanno utilizzato la magia degli stregoni contro loro stessi."
           },
           {
+            "id": "world_screamed",
+            "text": "the World screamed."
+          },
+          {
             "id": "zbs_have_seen_and_understood",
             "text": "avete visto, e avete compreso."
           },
@@ -4785,6 +4793,10 @@
             "text": "dummy"
           },
           {
+            "id": "always_true",
+            "text": "dummy"
+          },
+          {
             "id": "atw_added_tablet",
             "text": "dummy"
           },
@@ -4818,6 +4830,42 @@
           },
           {
             "id": "epic_multiplayer",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_act_2_cape",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_act_2_staff",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_act_2_telescope",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_cape",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_no_andre",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_staff",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_swap_chaos_bag",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_take_two",
+            "text": "dummy"
+          },
+          {
+            "id": "film_fatale_telescope",
             "text": "dummy"
           },
           {
@@ -4918,6 +4966,10 @@
           },
           {
             "id": "tmg_side_story_mode",
+            "text": "dummy"
+          },
+          {
+            "id": "wtws_epic_multiplayer",
             "text": "dummy"
           },
           {

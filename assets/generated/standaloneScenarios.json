@@ -85,6 +85,11 @@
   {
     "type": "scenario",
     "campaignId": "side",
+    "scenarioId": "film_fatale"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
     "scenarioId": "in_the_labyrinths_of_lunacy"
   },
   {
@@ -191,6 +196,11 @@
     "type": "scenario",
     "campaignId": "side",
     "scenarioId": "war_of_the_outer_gods"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
+    "scenarioId": "when_the_world_screamed"
   },
   {
     "type": "scenario",

@@ -4524,6 +4524,10 @@
             "text": "Dr. Maleson's experiment was a failure."
           },
           {
+            "id": "drill_broke_down",
+            "text": "the drill broke down."
+          },
+          {
             "id": "fof_alarm_level",
             "text": "Niveau d'alarme: #name# (#X#)"
           },
@@ -4720,6 +4724,10 @@
             "text": "the investigators used the sorcerers' magic against them."
           },
           {
+            "id": "world_screamed",
+            "text": "the World screamed."
+          },
+          {
             "id": "zbs_have_seen_and_understood",
             "text": "you have seen, and understood."
           },
@@ -4785,6 +4793,10 @@
             "text": "leurre"
           },
           {
+            "id": "always_true",
+            "text": "leurre"
+          },
+          {
             "id": "atw_added_tablet",
             "text": "leurre"
           },
@@ -4818,6 +4830,42 @@
           },
           {
             "id": "epic_multiplayer",
+            "text": "leurre"
+          },
+          {
+            "id": "film_fatale_act_2_cape",
+            "text": "leurre"
+          },
+          {
+            "id": "film_fatale_act_2_staff",
+            "text": "leurre"
+          },
+          {
+            "id": "film_fatale_act_2_telescope",
+            "text": "leurre"
+          },
+          {
+            "id": "film_fatale_cape",
+            "text": "leurre"
+          },
+          {
+            "id": "film_fatale_no_andre",
+            "text": "leurre"
+          },
+          {
+            "id": "film_fatale_staff",
+            "text": "leurre"
+          },
+          {
+            "id": "film_fatale_swap_chaos_bag",
+            "text": "leurre"
+          },
+          {
+            "id": "film_fatale_take_two",
+            "text": "leurre"
+          },
+          {
+            "id": "film_fatale_telescope",
             "text": "leurre"
           },
           {
@@ -4918,6 +4966,10 @@
           },
           {
             "id": "tmg_side_story_mode",
+            "text": "leurre"
+          },
+          {
+            "id": "wtws_epic_multiplayer",
             "text": "leurre"
           },
           {
