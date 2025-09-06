@@ -765,6 +765,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'cosmic_journey':
       case 'abominable_contessa':
         return this.standaloneIcon(encounter_code, size, color);
+      case 'when_the_world_screamed':
+      case 'zwtws':
+        return this.standaloneIcon('when_the_world_screamed', size, color);
       case 'film_fatale':
         return this.standaloneIcon(pack ? 'film_fatale' : 'film_fatale_encounter', size, color);
       case 'legendry':
