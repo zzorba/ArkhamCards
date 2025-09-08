@@ -2,7 +2,11 @@ require File.join(File.dirname(`node --print "require.resolve('expo/package.json
 
 # Resolve react_native_pods.rb with node to allow for hoisting
 
-ENV['RCT_NEW_ARCH_ENABLED'] = '0'
+ENV['RCT_NEW_ARCH_ENABLED'] = '1'
+pod 'Firebase', :modular_headers => true
+pod 'FirebaseCore', :modular_headers => true
+pod 'FirebaseCoreInternal', :modular_headers => true
+pod 'GoogleUtilities', :modular_headers => true
 $RNFirebaseAsStaticFramework = true
 
 require Pod::Executable.execute_command('node', ['-p',

@@ -11,7 +11,7 @@ import { format } from 'date-fns';
 import { Navigation } from 'react-native-navigation';
 import { forEach, map, values } from 'lodash';
 import RNFS from 'react-native-fs';
-import DocumentPicker from 'react-native-document-picker';
+import { pick, keepLocalCopy, types } from '@react-native-documents/picker'
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
@@ -128,12 +128,11 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
       return;
     }
     try {
-      const res = await DocumentPicker.pickSingle({
-        type: [DocumentPicker.types.allFiles],
+      const [file] = await pick({
+        type: [types.allFiles],
         mode: 'import',
-        copyTo: 'cachesDirectory',
       });
-      if (!res.name?.endsWith('.acb') && !res.name?.endsWith('.json') && !res.name?.endsWith('.null')) {
+      if (!file.name?.endsWith('.acb') && !file.name?.endsWith('.json') && !file.name?.endsWith('.null')) {
         Alert.alert(
           t`Unexpected file type`,
           t`This app expects an Arkham Cards backup file (.acb/.json)`,
@@ -147,8 +146,18 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
         );
         return;
       }
+      const [localCopy] = await keepLocalCopy({
+        files: [
+          {
+            uri: file.uri,
+            fileName: file.name ?? 'fallbackName',
+          },
+        ],
+        destination: 'cachesDirectory',
+      });
+
       // We got the file
-      const json = JSON.parse(await safeReadFile(res.uri));
+      const json = JSON.parse(await safeReadFile(localCopy.sourceUri));
       const campaigns: Campaign[] = [];
       forEach(values(json.campaigns), campaign => {
         campaigns.push(campaignFromJson(campaign));

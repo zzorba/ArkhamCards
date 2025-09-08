@@ -37,7 +37,6 @@
     <attr name="campaignGreenColor" format="reference" />
     <attr name="toggleButtonColor" format="reference" />
     <attr name="selectedToggleButtonColor" format="reference" />
-    <attr name="dividerColor" format="reference" />
     <attr name="disabledOverlayColor" format="reference" />
     <attr name="splashBackground" format="reference" />
 </resources>
