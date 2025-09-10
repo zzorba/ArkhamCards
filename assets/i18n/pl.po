@@ -6305,63 +6305,63 @@ msgid "Legacy"
 msgstr ""
 
 msgid "Current"
-msgstr ""
+msgstr "Aktualna"
 
 msgid "Limited"
-msgstr ""
+msgstr "Ograniczona"
 
 msgid "Custom"
-msgstr ""
+msgstr "Własna"
 
 msgid "Use all cards from any product"
-msgstr ""
+msgstr "Używaj wszystkich kart z każdego produktu"
 
 msgid "Use only cards from recent expansions"
-msgstr ""
+msgstr "Używaj tylko kart z najnowszych rozszerzeń"
 
 msgid "Use only cards from your choice of three expansions"
-msgstr ""
+msgstr "Używaj tylko kart z 3 wybranych rozszerzeń"
 
 msgid "Use a completely custom card pool"
-msgstr ""
+msgstr "Używaj całkowicie dowolnej puli kart"
 
 #, javascript-format
 msgid "Limited: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "Ograniczona: wybrano ${ selectedPacks.size } zestaw(y)"
 
 #, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "Własna: wybrano ${ selectedPacks.size } zestaw(y)"
 
 msgid "Card pool"
-msgstr ""
+msgstr "Pula kart"
 
 msgid "This is an optional variant that push players to build their decks creatively using a smaller cardpool."
-msgstr ""
+msgstr "Opcjonalny wariant zachęcający do kreatywnego budowania talii z mniejszej puli kart."
 
 msgid "Select packs"
-msgstr ""
+msgstr "Wybierz zestawy"
 
 msgid "Choose a core set and three expansions to use for this limited pool."
-msgstr ""
+msgstr "Wybierz zestaw podstawowy oraz 3 rozszerzenia do używania w tej ograniczonej puli."
 
 msgid "Choose any number of packs to use for this custom pool."
-msgstr ""
+msgstr "Wybierz dowolną ilość zestawów do używania we własnej puli kart."
 
 msgid "Limited: Not enough cycles selected"
-msgstr ""
+msgstr "Ograniczona: Nie zaznaczono wystarczającej liczby zestawów"
 
 msgid "Limited: Too many cycles selected"
-msgstr ""
+msgstr "Ograniczona: Zaznaczono zbyt dużo zestawów"
 
 msgid "Limited:"
-msgstr ""
+msgstr "Ograniczona:"
 
 msgid "Current:"
-msgstr ""
+msgstr "Aktualna:"
 
 msgid "Cycles (select 3)"
-msgstr ""
+msgstr "Zestawy (zaznacz 3)"
 
 msgid "When the World Screamed"
 msgstr ""
