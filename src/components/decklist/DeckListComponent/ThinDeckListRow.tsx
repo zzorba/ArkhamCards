@@ -202,17 +202,17 @@ export default function ThinDeckListRow({
                   </Text>
                   { investigator?.name ? (
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                      <Text style={[typography.smallLabel, typography.italic, typography.white, styles.flex]}>
+                      <Text style={[typography.smallLabel, typography.italic, typography.white, styles.flex]} numberOfLines={1}>
                         { investigator?.name || '' }
                       </Text>
                       { !!parsedDeck && (
-                        <>
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
                           { parsedDeck.experience > 0 && (
                             <>
                               <View style={[space.marginLeftS, { marginRight: 1 }]}>
                                 <AppIcon name="xp-bold" size={18} color={COLORS.white} />
                               </View>
-                              <Text style={[typography.smallLabel, typography.boldItalic, typography.white]}>
+                              <Text style={[typography.smallLabel, typography.boldItalic, typography.white]} numberOfLines={1}>
                                 { xpString(parsedDeck.experience) }
                               </Text>
                             </>
@@ -220,21 +220,21 @@ export default function ThinDeckListRow({
                           <View style={[space.marginLeftS, { marginRight: 1 }]}>
                             <AppIcon name="card-outline-bold" size={18} color={COLORS.white} />
                           </View>
-                          <Text style={[typography.smallLabel, typography.boldItalic, typography.white]}>
+                          <Text style={[typography.smallLabel, typography.boldItalic, typography.white]} numberOfLines={1}>
                             { t`×${parsedDeck.totalCardCount}` }
                           </Text>
-                        </>
-                      ) }
-                      { !!deck.deck.problem && (
-                        <View style={space.marginLeftXs}>
-                          <CircleIcon
-                            size="small"
-                            background={investigator.faction_code === 'survivor' ? COLORS.white : colors.warn}
-                            color={investigator.faction_code === 'survivor' ? colors.warn : colors.D30}
-                            name="warning-bold"
-                          />
+                          { !!deck.deck.problem && (
+                            <View style={space.marginLeftXs}>
+                              <CircleIcon
+                                size="small"
+                                background={investigator.faction_code === 'survivor' ? COLORS.white : colors.warn}
+                                color={investigator.faction_code === 'survivor' ? colors.warn : colors.D30}
+                                name="warning-bold"
+                              />
+                            </View>
+                          )}
                         </View>
-                      )}
+                      ) }
                     </View>
                   ) : (
                     <Placeholder Animation={loadingAnimation}>
