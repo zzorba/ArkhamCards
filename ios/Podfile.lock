@@ -2397,7 +2397,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   boost: 1dca942403ed9342f98334bf4c3621f011aa7946
-  DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
+  DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   EXConstants: 30c43b9ca8391c31bab9cc45c97f16eddcf11042
   Expo: 761b71aa05939776b5ad3ee934619a6957bfe496
   ExpoAdapterGoogleSignIn: 2d8de6fc349c488bf08b5241d7212115edad4499
@@ -2421,7 +2421,7 @@ SPEC CHECKSUMS:
   FirebaseMessagingInterop: 75220a5ee806720951fd8df07c359266a54c1980
   FirebaseSharedSwift: 672954eac7b141d6954fab9a32d45d6b1d922df8
   fmt: 01b82d4ca6470831d1cc0852a1af644be019e8f6
-  glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
+  glog: fdfdfe5479092de0c4bdbebedd9056951f092c4f
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de

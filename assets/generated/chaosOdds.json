@@ -10093,7 +10093,85 @@
       }
     ]
   },
-
+  {
+    "code": "zwtws_00001",
+    "scenario": "when_the_world_screamed",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Current Depth Level",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [{
+            "prompt": "Targeting an [[Elite]] enemy or [[Strata]] location",
+            "modified_value": {
+              "modifier": -6
+            }
+          }]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Current Depth Level",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -6
+          },
+          "options": [{
+            "prompt": "Targeting an [[Elite]] enemy or [[Strata]] location",
+            "modified_value": {
+              "modifier": -8
+            }
+          }]
+        }
+      }
+    ]
+  },
   {
     "code": "11501",
     "scenario": "one_last_job",

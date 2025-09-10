@@ -6086,6 +6086,12 @@ msgstr ""
 msgid "Cycles (select 3)"
 msgstr ""
 
+msgid "When the World Screamed"
+msgstr ""
+
+msgid "Contains cards not in the selected card pool."
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr ""
