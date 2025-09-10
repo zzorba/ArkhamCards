@@ -19,6 +19,15 @@
       tools:replace="android:theme"
     >
         <meta-data android:name="asset_statements" android:resource="@string/asset_statements" />
+        <meta-data
+            android:name="android.window.OPTIMIZE_FOR_FULLSCREEN"
+            android:value="false" />
+        <meta-data
+            android:name="android.window.ENABLE_EDGE_TO_EDGE_ENFORCEMENT"
+            android:value="false" />
+        <meta-data
+            android:name="android.window.SYSTEM_BAR_APPEARANCE_CONTROL"
+            android:value="true" />
         <provider
         android:name="androidx.core.content.FileProvider"
         android:authorities="com.arkhamcards.fileprovider"

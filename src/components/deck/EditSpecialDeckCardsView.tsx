@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { forEach, keys, map, sortBy } from 'lodash';
-import { ScrollView, StyleSheet } from 'react-native';
+import { Platform, ScrollView, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { useDispatch } from 'react-redux';
@@ -81,10 +81,13 @@ function EditSpecialDeckCardsView({ componentId, campaignId, assignedWeaknesses,
           storyOnly: true,
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            android: { style: 'dark' },
+            ios: {
+              style: 'light',
+              backgroundColor,
+            },
+          }),
           topBar: {
             title: {
               text: t`Edit Story Cards`,
@@ -113,10 +116,13 @@ function EditSpecialDeckCardsView({ componentId, campaignId, assignedWeaknesses,
           weaknessOnly: true,
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            android: { style: 'dark' },
+            ios: {
+              style: 'light',
+              backgroundColor,
+            },
+          }),
           topBar: {
             title: {
               text: t`Edit Weakness Cards`,

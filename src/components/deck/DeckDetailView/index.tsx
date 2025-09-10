@@ -394,10 +394,13 @@ function DeckDetailView({
 
 
       Navigation.mergeOptions(componentId, {
-        statusBar: {
-          style: statusBarStyles[mode],
-          backgroundColor,
-        },
+        statusBar: Platform.select({
+          android: { style: 'dark' },
+          ios: {
+            style: statusBarStyles[mode],
+            backgroundColor,
+          },
+        }),
         topBar: {
           title: {
             text: titles[mode],
@@ -526,10 +529,13 @@ function DeckDetailView({
           assignedWeaknesses: addedBasicWeaknesses,
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            android: { style: 'dark' },
+            ios: {
+              style: 'light',
+              backgroundColor,
+            },
+          }),
           topBar: {
             title: {
               text: t`Edit Special Cards`,
@@ -567,10 +573,13 @@ function DeckDetailView({
           deckType: 'extra',
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            android: { style: 'dark' },
+            ios: {
+              style: 'light',
+              backgroundColor,
+            },
+          }),
           topBar: {
             title: {
               text: t`Edit Spirit Deck`,
@@ -608,10 +617,13 @@ function DeckDetailView({
           deckType: 'side',
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            android: { style: 'dark' },
+            ios: {
+              style: 'light',
+              backgroundColor,
+            },
+          }),
           topBar: {
             title: {
               text: t`Edit Side Deck`,
@@ -663,10 +675,13 @@ function DeckDetailView({
           campaignId,
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            android: { style: 'dark' },
+            ios: {
+              style: 'light',
+              backgroundColor,
+            },
+          }),
           topBar: {
             title: {
               text: t`Draft Cards`,
@@ -720,10 +735,13 @@ function DeckDetailView({
           mode: 'extra',
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            android: { style: 'dark' },
+            ios: {
+              style: 'light',
+              backgroundColor,
+            },
+          }),
           topBar: {
             title: {
               text: t`Draft Cards`,
@@ -760,10 +778,13 @@ function DeckDetailView({
           id,
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            android: { style: 'dark' },
+            ios: {
+              style: 'light',
+              backgroundColor,
+            },
+          }),
           topBar: {
             title: {
               text: t`Edit Deck`,
@@ -798,10 +819,13 @@ function DeckDetailView({
           campaignId: campaign?.id,
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            android: { style: 'dark' },
+            ios: {
+              style: 'light',
+              backgroundColor,
+            },
+          }),
           topBar: {
             title: {
               text: t`Upgrade Deck`,

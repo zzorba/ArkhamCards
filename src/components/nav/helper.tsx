@@ -43,10 +43,13 @@ export function getDeckOptions(
     (investigator ? investigator.faction_code : null) || 'neutral'
   ].background;
   const options: Options = {
-    statusBar: {
-      style: initialMode === 'upgrade' ? 'dark' : 'light',
-      backgroundColor,
-    },
+    statusBar: Platform.select({
+      android: { style: 'dark' },
+      ios: {
+        style: initialMode === 'upgrade' ? 'dark' : 'light',
+        backgroundColor,
+      },
+    }),
     modalPresentationStyle: Platform.OS === 'ios' ?
       OptionsModalPresentationStyle.fullScreen :
       OptionsModalPresentationStyle.overCurrentContext,

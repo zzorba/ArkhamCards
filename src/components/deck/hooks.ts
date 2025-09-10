@@ -65,6 +65,7 @@ import { useCardMap } from '@components/card/useCardList';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 import { DeckEditContext } from './DeckEditContext';
+import { Platform } from 'react-native';
 
 export function xpString(xp: number): string {
   return ngettext(msgid`${xp} XP`, `${xp} XP`, xp);
@@ -587,10 +588,13 @@ export function useShowDrawWeakness({
             alwaysReplaceRandomBasicWeakness,
           },
           options: {
-            statusBar: {
-              style: 'light',
-              backgroundColor,
-            },
+            statusBar: Platform.select({
+              android: { style: 'dark' },
+              ios: {
+                style: 'light',
+                backgroundColor,
+              },
+            }),
             topBar: {
               title: {
                 text: t`Draw Weaknesses`,
@@ -649,9 +653,12 @@ export function useShowDrawWeakness({
             alwaysReplaceRandomBasicWeakness,
           },
           options: {
-            statusBar: {
-              style: 'light',
-            },
+            statusBar: Platform.select({
+              android: { style: 'dark' },
+              ios: {
+                style: 'light',
+              },
+            }),
             topBar: {
               title: {
                 text: t`Draw Weaknesses`,

@@ -124,10 +124,13 @@ export default class App {
     const colors = darkMode ? DARK_THEME : LIGHT_THEME;
 
     const defaultOptions: Options = {
-      statusBar: {
-        backgroundColor: colors.background,
-        style: darkMode ? 'light' : 'dark',
-      },
+      statusBar: Platform.select({
+        ios: {
+          backgroundColor: colors.background,
+          style: darkMode ? 'light' : 'dark',
+        },
+        android: { style: 'dark' },
+      }),
       topBar: {
         leftButtonColor: colors.M,
         rightButtonColor: colors.M,

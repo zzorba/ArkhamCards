@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useRef } from 'react';
 import { map } from 'lodash';
 import {
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -79,10 +80,13 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
           showNewDeck: false,
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            android: { style: 'dark' },
+            ios: {
+              style: 'light',
+              backgroundColor,
+            },
+          }),
           topBar: {
             title: {
               text: t`Upgrade`,

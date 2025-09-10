@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { find, flatMap, partition } from 'lodash';
-import { InteractionManager, StyleSheet, View } from 'react-native';
+import { InteractionManager, Platform, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -90,10 +90,13 @@ export default function DecksSection({
           showNewDeck: false,
         },
         options: {
-          statusBar: {
-            style: 'light',
-            backgroundColor,
-          },
+          statusBar: Platform.select({
+            ios: {
+              style: 'light',
+              backgroundColor,
+            }, 
+            android: { style: 'dark' }, 
+          }),
           topBar: {
             title: {
               text: t`Upgrade`,
