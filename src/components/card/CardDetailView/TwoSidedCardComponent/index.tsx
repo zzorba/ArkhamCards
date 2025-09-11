@@ -468,7 +468,7 @@ export default function TwoSidedCardComponent(props: Props) {
             borderTopWidth: noHeader ? 1 : 0,
           },
         ]}>
-          { !noHeader && <CardDetailHeader card={card} width={Math.min(768, width - s * 2)} linked={!!linked} /> }
+          { !noHeader && <CardDetailHeader card={card} width={Math.min(MAX_WIDTH, width - s * 2)} linked={!!linked} /> }
           <View style={[
             styles.cardBody,
             {

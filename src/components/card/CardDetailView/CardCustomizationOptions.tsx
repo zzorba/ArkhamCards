@@ -724,7 +724,7 @@ export default function CardCustomizationOptions({ setChoice, customizationChoic
     <View style={[{ width }, styles.container, space.paddingSideS, space.marginBottomL]}>
       <View style={{ maxWidth: MAX_WIDTH }}>
         <View style={[{ borderRadius: 8 }, backgroundStyle, shadow.large]}>
-          <RoundedFactionHeader faction={card.factionCode()} width={width - s * 2} dualFaction={!!card.faction2_code}>
+          <RoundedFactionHeader faction={card.factionCode()} width={Math.min(MAX_WIDTH, width - s * 2)} dualFaction={!!card.faction2_code}>
             <View style={[styles.row, space.marginLeftS, space.paddingTopXs]}>
               <Text style={[typography.cardName, { color: '#FFFFFF', flex: 1 }]}>
                 { t`Customizations`}
