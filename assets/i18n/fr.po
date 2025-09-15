@@ -796,19 +796,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -2842,7 +2842,7 @@ msgid ""
 "As new scenarios are released, I will try to update the app promptly but there may be some slight delays."
 msgstr ""
 "Cette campagne est en cours de parution et le guide est incomplet (et peut contenir des erreurs).\n"
-"À chaque nouvelle sortie de scénario, j'essayerai de mettre à jour l'application le plus rapidement possible, mais il se peut qu'il y ait un peu d'attente."
+"À chaque nouvelle sortie de scénario, j'essaierai de mettre à jour l'application le plus rapidement possible, mais il se peut qu'il y ait un peu d'attente."
 
 #, javascript-format
 msgid "Slot: ${ card.slot }"
@@ -6224,84 +6224,84 @@ msgid "To handle resignation or elimination"
 msgstr "En cas d'abandon ou d'élimination"
 
 msgid "Core set"
-msgstr ""
+msgstr "Boîte de base"
 
 msgid "Cycles"
-msgstr ""
+msgstr "Campagnes"
 
 msgid "Starter decks"
-msgstr ""
+msgstr "Decks de départ"
 
 msgid "Fan-made Cycles"
-msgstr ""
+msgstr "Campagnes fan-made"
 
 msgid "Legacy"
-msgstr ""
+msgstr "Héritage"
 
 msgid "Current"
-msgstr ""
+msgstr "Actuel"
 
 msgid "Limited"
-msgstr ""
+msgstr "Limité"
 
 msgid "Custom"
-msgstr ""
+msgstr "Personnalisé"
 
 msgid "Use all cards from any product"
-msgstr ""
+msgstr "Inclut toutes les cartes de n'importe quelle extension"
 
 msgid "Use only cards from recent expansions"
-msgstr ""
+msgstr "Inclut uniquement les cartes des dernières extensions"
 
 msgid "Use only cards from your choice of three expansions"
-msgstr ""
+msgstr "Inclut uniquement les cartes de 3 extensions de votre choix"
 
 msgid "Use a completely custom card pool"
-msgstr ""
+msgstr "Inclut les paquets de votre choix"
 
 #, javascript-format
 msgid "Limited: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "Limité : ${ selectedPacks.size } paquets sélectionnés"
 
 #, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "Personnalisé : ${ selectedPacks.size } paquets sélectionnés"
 
 msgid "Card pool"
-msgstr ""
+msgstr "Pool de cartes"
 
 msgid "This is an optional variant that push players to build their decks creatively using a smaller cardpool."
-msgstr ""
+msgstr "Ceci est une variante optionnelle qui pousse les joueurs à construire leurs decks de manière créative en utilisant un pool de cartes plus limité."
 
 msgid "Select packs"
-msgstr ""
+msgstr "Sélectionnez les paquets"
 
 msgid "Choose a core set and three expansions to use for this limited pool."
-msgstr ""
+msgstr "Choisissez une boîte de base et 3 extensions à inclure dans ce pool limité."
 
 msgid "Choose any number of packs to use for this custom pool."
-msgstr ""
+msgstr "Choisissez n'importe quel nombre de paquets à inclure dans ce pool personnalisé."
 
 msgid "Limited: Not enough cycles selected"
-msgstr ""
+msgstr "Limité : pas assez de campagnes sélectionnées"
 
 msgid "Limited: Too many cycles selected"
-msgstr ""
+msgstr "Limité : trop de campagnes sélectionnées"
 
 msgid "Limited:"
-msgstr ""
+msgstr "Limité :"
 
 msgid "Current:"
-msgstr ""
+msgstr "Actuel :"
 
 msgid "Cycles (select 3)"
-msgstr ""
+msgstr "Campagnes (3 à sélectionner)"
 
 msgid "When the World Screamed"
-msgstr ""
+msgstr "Quand la Terre Hurla"
 
 msgid "Contains cards not in the selected card pool."
-msgstr ""
+msgstr "Contient des cartes qui ne sont pas dans le pool choisi."
 
 msgctxt "investigator"
 msgid "Custom"
@@ -8544,7 +8544,7 @@ msgstr "Cette version ajoute la campagne Cyclopean Foundations de The Beard, ré
 
 msgctxt "releaseNotes"
 msgid "- Includes a fully guided mode, with all setup and resolution text accounted for."
-msgstr "- Comprend un mode entièrement guidé, avec tous les textes de configuration et de résolution pris en compte."
+msgstr "- Comprend un mode entièrement guidé prenant en compte tous les textes des mises en place et des conclusions."
 
 msgctxt "releaseNotes"
 msgid "This update also adds support for \"The Colour Out of Space\", a fan-made standalone scenario."
