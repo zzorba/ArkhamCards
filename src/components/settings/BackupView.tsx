@@ -11,7 +11,7 @@ import { format } from 'date-fns';
 import { Navigation } from 'react-native-navigation';
 import { forEach, map, values } from 'lodash';
 import RNFS from 'react-native-fs';
-import DocumentPicker from 'react-native-document-picker';
+import { pick, keepLocalCopy, types } from '@react-native-documents/picker';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
@@ -128,10 +128,9 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
       return;
     }
     try {
-      const res = await DocumentPicker.pickSingle({
-        type: [DocumentPicker.types.allFiles],
+      const [res] = await pick({
+        type: [types.allFiles],
         mode: 'import',
-        copyTo: 'cachesDirectory',
       });
       if (!res.name?.endsWith('.acb') && !res.name?.endsWith('.json') && !res.name?.endsWith('.null')) {
         Alert.alert(
@@ -147,38 +146,46 @@ export default function BackupView({ componentId, safeMode }: BackupProps & Navi
         );
         return;
       }
-      // We got the file
-      const json = JSON.parse(await safeReadFile(res.uri));
-      const campaigns: Campaign[] = [];
-      forEach(values(json.campaigns), campaign => {
-        campaigns.push(campaignFromJson(campaign));
+      const [file] = await keepLocalCopy({
+        files: [
+          {
+            uri: res.uri,
+            fileName: res.name ?? 'fallbackName'
+          }
+        ],
+        destination: 'cachesDirectory',
       });
+      if (file.status === 'success') {
+        // We got the file
+        const json = JSON.parse(await safeReadFile(file.localUri));
+        const campaigns: Campaign[] = [];
+        forEach(values(json.campaigns), campaign => {
+          campaigns.push(campaignFromJson(campaign));
+        });
 
-      const backupData: BackupState | LegacyBackupState = json.version && json.version === 1 ? {
-        version: 1,
-        guides: json.guides,
-        decks: json.decks,
-        campaigns: json.campaigns,
-      } : {
-        version: undefined,
-        guides: json.guides,
-        decks: values(json.decks),
-        campaigns: campaigns as LegacyCampaign[],
-        deckIds: json.deckIds,
-        campaignIds: json.campaignIds,
-      };
-      Navigation.push<MergeBackupProps>(componentId, {
-        component: {
-          name: 'Settings.MergeBackup',
-          passProps: {
-            backupData,
+        const backupData: BackupState | LegacyBackupState = json.version && json.version === 1 ? {
+          version: 1,
+          guides: json.guides,
+          decks: json.decks,
+          campaigns: json.campaigns,
+        } : {
+          version: undefined,
+          guides: json.guides,
+          decks: values(json.decks),
+          campaigns: campaigns as LegacyCampaign[],
+          deckIds: json.deckIds,
+          campaignIds: json.campaignIds,
+        };
+        Navigation.push<MergeBackupProps>(componentId, {
+          component: {
+            name: 'Settings.MergeBackup',
+            passProps: {
+              backupData,
+            },
           },
-        },
-      });
-    } catch (err) {
-      if (!DocumentPicker.isCancel(err)) {
-        throw err;
+        });
       }
+    } catch (err) {
     }
   }, [componentId]);
 
