@@ -27,6 +27,7 @@ export function getProblemMessage(problem: DeckProblem): string {
     invalid_cards: t`Contains forbidden cards (cards not permitted by Faction)`,
     deck_options_limit: t`Contains too many limited cards.`,
     investigator: t`Doesn't comply with the Investigator requirements.`,
+    non_pool_cards: t`Contains cards that are not in the selected card pool.`,
   };
 
   return head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason];

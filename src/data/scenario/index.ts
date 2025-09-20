@@ -328,6 +328,13 @@ function loadAll(lang: string): {
         encounterSets: require('../../../assets/generated/encounterSets_zh.json'),
         errata: require('../../../assets/generated/campaignErrata_zh.json'),
       };
+    case 'zh-cn':
+      return {
+        allLogEntries: require('../../../assets/generated/campaignLogs_zh-cn.json'),
+        allCampaigns: require('../../../assets/generated/allCampaigns_zh-cn.json'),
+        encounterSets: require('../../../assets/generated/encounterSets_zh-cn.json'),
+        errata: require('../../../assets/generated/campaignErrata_zh-cn.json'),
+      };
     case 'pl':
       return {
         allLogEntries: require('../../../assets/generated/campaignLogs_pl.json'),
