@@ -3066,13 +3066,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Dein Ort ist teilweise überflutet",
               "modified_value": {
                 "modifier": -2
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Dein Ort ist völlig überflutet",
               "modified_value": {
                 "modifier": -3
               }
@@ -3109,13 +3109,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Dein Ort ist teilweise überflutet",
               "modified_value": {
                 "modifier": -3
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Dein Ort ist völlig überflutet",
               "modified_value": {
                 "modifier": -4
               }
@@ -5239,7 +5239,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is exhausted",
+              "prompt": "Dein Ort ist erschöpft",
               "modified_value": {
                 "modifier": -4
               }
@@ -5276,7 +5276,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is exhausted",
+              "prompt": "Dein Ort ist erschöpft",
               "modified_value": {
                 "modifier": -5
               }
@@ -5312,7 +5312,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[AI]] encounter cards in your threat area",
+          "prompt": "Die Anzahl [[AI]]-Begegnungskarten in deiner Bedrohungszone",
           "min": 0
         }
       },
@@ -5328,7 +5328,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[AI]] encounter cards in your threat area",
+          "prompt": "Die Anzahl [[AI]]-Begegnungskarten in deiner Bedrohungszone",
           "min": 0
         }
       },
@@ -5348,7 +5348,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your “Memories” (rounded down)",
+          "prompt": "Die Hälfte der Anzahl “Erinnerungen” (abgerundet)",
           "min": 0
         }
       },
@@ -5372,7 +5372,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your “Memories”",
+          "prompt": "Deine “Erinnerungen”",
           "min": 0
         }
       },
@@ -5400,7 +5400,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of face-down encounter cards in your threat area",
+          "prompt": "Die Anzahl verdeckter Begegnungskarten in deiner Bedrohungszone",
           "min": 0
         }
       },
@@ -5408,7 +5408,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations in play (rounded down)",
+          "prompt": "Die Hälfte aller Orte in Spiel (abgerundet)",
           "min": 0
         }
       },
@@ -5431,7 +5431,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of face-down encounter cards in your threat area",
+          "prompt": "Die Anzahl verdeckter Begegnungskarten in deiner Bedrohungszone",
           "min": 0
         }
       },
@@ -5439,7 +5439,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "The number of locations in play",
+          "prompt": "Die Anzahl Orte im Spiel",
           "min": 0
         }
       },
@@ -5466,7 +5466,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of damage on you and assets you control (rounded down)",
+          "prompt": "Die Hälfte an Schaden auf der Ermittlerkarte und Vorteilen, die du kontrollierst (abgerundet)",
           "min": 0
         }
       },
@@ -5492,7 +5492,7 @@
           },
           "options": [
             {
-              "prompt": "Take 2 damage",
+              "prompt": "Nimm 2 Schaden",
               "modified_value": {
                 "modifier": 0
               }
@@ -5506,7 +5506,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of damage on you and assets you control (rounded up)",
+          "prompt": "Die Hälfte an Schaden auf der Ermittlerkarte und Vorteilen, die du kontrollierst (aufgerundet)",
           "min": 0
         }
       },
@@ -5532,7 +5532,7 @@
           },
           "options": [
             {
-              "prompt": "Take 3 damage",
+              "prompt": "Nimm 3 Schaden",
               "modified_value": {
                 "modifier": 0
               }
@@ -5632,7 +5632,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your “Memories” (rounded down)",
+          "prompt": "Die Hälfte der Anzahl “Erinnerungen” (abgerundet)",
           "min": 0
         }
       },
@@ -5675,7 +5675,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your “Memories”",
+          "prompt": "Deine “Erinnerungen”",
           "min": 0
         }
       },
@@ -9008,7 +9008,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations in play (rounded down)",
+          "prompt": "Die Hälfte aller Orte in Spiel (abgerundet)",
           "min": 0
         }
       },
@@ -9579,7 +9579,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Lair]] location",
+              "prompt": "An einem [[Unterschlupf]]-Ort",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -9619,7 +9619,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Lair]] location",
+              "prompt": "An einem [[Unterschlupf]]-Ort",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9892,7 +9892,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of doom in play",
+          "prompt": "Die Anzahl Verderben im Spiel",
           "min": 0
         }
       },
@@ -9924,7 +9924,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current act number",
+          "prompt": "Aktuelle Szenen Nummer",
           "min": 1,
           "adjustment": 1
         }
@@ -9944,7 +9944,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on your investigator card",
+              "prompt": "Platziere 1 Verderben auf deine Ermittlerkarte",
               "modified_value": {
                 "modifier": 0
               }
@@ -9995,7 +9995,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on your investigator card",
+              "prompt": "Platziere 1 Verderben auf deine Ermittlerkarte",
               "modified_value": {
                 "modifier": -3
               }
@@ -10166,7 +10166,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of actions you have remaining (rounded up)"
+          "prompt": "Die Hälfte deiner verbleibenden Aktionen (aufgerundet)"
         }
       },
       {
@@ -10194,7 +10194,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of actions you have remaining"
+          "prompt": "Die Anzahl deiner verbleibenden Aktionen"
         }
       },
       {
@@ -10255,7 +10255,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The sum of the current act number and the current agenda number",
+          "prompt": "Die Summe der aktuellen Szenen und Agenda Nummer",
           "min": 2
         }
       },
@@ -10288,7 +10288,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of completed [[Tasks]] (rounded down)",
+          "prompt": "Die Hälfte der Anzahl abgeschlossener [[Aufgaben]] (abgerundet)",
           "min": 0
         }
       },
@@ -10316,7 +10316,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of completed [[Tasks]]",
+          "prompt": "Anzahl abgeschlossener [[Aufgaben]]",
           "min": 0
         }
       },
@@ -10348,7 +10348,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of actions you have remaining"
+          "prompt": "Die Anzahl deiner verbleibenden Aktionen"
         }
       },
       {
@@ -10375,7 +10375,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of actions you have remaining",
+          "prompt": "Die Anzahl deiner verbleibenden Aktionen",
           "adjustment": 1
         }
       },
@@ -10407,7 +10407,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current act number",
+          "prompt": "Aktuelle Szenen Nummer",
           "min": 1
         }
       },
@@ -10435,7 +10435,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current act number",
+          "prompt": "Aktuelle Szenen Nummer",
           "min": 1,
           "scale": 2
         }
@@ -10468,7 +10468,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current Depth Level",
+          "prompt": "Aktuelle Tiefenstufe",
           "min": 1
         }
       },
@@ -10507,7 +10507,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current Depth Level",
+          "prompt": "Aktuelle Tiefenstufe",
           "min": 1,
           "adjustment": 1
         }
@@ -10551,7 +10551,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Criminal]] enemies in play",
+          "prompt": "Anzahl [[Krimineller]]-Gegner im Spiel",
           "min": 0,
           "max": 4
         }
@@ -10565,7 +10565,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Criminal]] enemy at your location",
+              "prompt": "Ein [[Krimineller]]-Gegner an deinem Ort",
               "modified_value": {
                 "modifier": -4
               }
@@ -10585,7 +10585,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Criminal]] enemies in play",
+          "prompt": "Anzahl [[Krimineller]]-Gegner im Spiel",
           "min": 0,
           "adjustment": 1
         }
@@ -10599,7 +10599,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Criminal]] enemy at your location",
+              "prompt": "Ein [[Krimineller]]-Gegner an deinem Ort",
               "modified_value": {
                 "modifier": -5
               }
@@ -10623,7 +10623,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's level",
+          "prompt": "Die Stufe deines Ortes",
           "min": 0,
           "max": 5
         }
@@ -10649,7 +10649,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Dein Ort ist völlig überflutet",
               "modified_value": {
                 "modifier": -5
               }
@@ -10663,7 +10663,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's level",
+          "prompt": "Die Stufe deines Ortes",
           "min": 0,
           "max": 5,
           "adjustment": 2
@@ -10690,7 +10690,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Dein Ort ist völlig überflutet",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -10708,7 +10708,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of revealed locations in play (rounded down)",
+          "prompt": "Die Hälfte der Anzahl aufgedeckter Orte im Spiel (abgerundet)",
           "min": 0
         }
       },
@@ -10733,7 +10733,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is not flooded",
+              "prompt": "Dein Ort ist nicht überflutet",
               "modified_value": {
                 "modifier": -5
               }
@@ -10747,7 +10747,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of revealed locations in play",
+          "prompt": "Die Anzahl aufgedeckter Orte im Spiel",
           "min": 1
         }
       },
@@ -10772,7 +10772,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is not flooded",
+              "prompt": "Dein Ort ist nicht überflutet",
               "modified_value": {
                 "modifier": -6
               }
@@ -10790,7 +10790,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of doom on enemies and assets in play (rounded down)",
+          "prompt": "Die Hälfte der Anzahl an Verderben auf Gegnern und Vorteilskarten im Spiel (abgerundet)",
           "min": 0
         }
       },
@@ -10803,7 +10803,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Cultist]] enemy at your location",
+              "prompt": "Ein [[Kultist]]-Gegner ist an deinem Ort",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -10830,7 +10830,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of doom on enemies and assets in play",
+          "prompt": "Die Anzahl Verderben auf Gegnern und Vorteilskarten im Spiel",
           "min": 0
         }
       },
@@ -10843,7 +10843,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Cultist]] enemy at your location",
+              "prompt": "Ein [[Kultist]]-Gegner ist an deinem Ort",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -10874,7 +10874,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of activated locations (rounded down)",
+          "prompt": "Die Hälfte der Anzahl aktivierter Orte (abgerundet)",
           "min": 0
         }
       },
@@ -10893,13 +10893,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Dein Ort ist teilweise überflutet",
               "modified_value": {
                 "modifier": -3
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Dein Ort ist völlig überflutet",
               "modified_value": {
                 "modifier": -4
               }
@@ -10919,7 +10919,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of activated locations",
+          "prompt": "Die Anzahl aktivierter Orte",
           "min": 0
         }
       },
@@ -10938,13 +10938,13 @@
           },
           "options": [
             {
-              "prompt": "Your location is partially flooded",
+              "prompt": "Dein Ort ist teilweise überflutet",
               "modified_value": {
                 "modifier": -4
               }
             },
             {
-              "prompt": "Your location is fully flooded",
+              "prompt": "Dein Ort ist völlig überflutet",
               "modified_value": {
                 "modifier": -5
               }
@@ -10968,7 +10968,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Glyph]] cards in the victory display",
+          "prompt": "Die Anzahl [[Glyphe]]-Karten im Siegpunktestapel",
           "min": 0
         }
       },
@@ -10981,7 +10981,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Stowaway]] enemy at your location",
+              "prompt": "Ein [[Nistling]]-Gegner ist an deinem Ort",
               "modified_value": {
                 "modifier": -4
               }
@@ -10998,7 +10998,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Dein Ort ist überflutet",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -11019,7 +11019,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Glyph]] cards in the victory display",
+          "prompt": "Die Anzahl [[Glyphe]]-Karten im Siegpunktestapel",
           "min": 0,
           "adjustment": 1
         }
@@ -11033,7 +11033,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Stowaway]] enemy at your location",
+              "prompt": "Ein [[Nistling]]-Gegner ist an deinem Ort",
               "modified_value": {
                 "modifier": -5
               }
@@ -11050,7 +11050,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Dein Ort ist überflutet",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -11075,7 +11075,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Storm Intensity",
+          "prompt": "Die aktuelle Sturm Stärke",
           "min": 0
         }
       },
@@ -11089,7 +11089,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "The number of open skys adjacent to your location",
+          "prompt": "Anzahl Freier Himmel Orte angrenzend zum aktuellen Ort",
           "min": 0,
           "max": 4
         }
@@ -11103,7 +11103,7 @@
           },
           "options": [
             {
-              "prompt": "There is an enemy at your location",
+              "prompt": "Ein Gegner ist an deinem Ort",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -11118,7 +11118,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Storm Intensity",
+          "prompt": "Die aktuelle Sturm Stärke",
           "min": 0,
           "adjustment": 2
         }
@@ -11133,7 +11133,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "The number of open skys adjacent to your location",
+          "prompt": "Anzahl Freier Himmel Orte angrenzend zum aktuellen Ort",
           "min": 0,
           "max": 4,
           "scale": 2
@@ -11148,7 +11148,7 @@
           },
           "options": [
             {
-              "prompt": "There is an enemy at your location",
+              "prompt": "Ein Gegner ist an deinem Ort",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -11167,7 +11167,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Disturbance",
+          "prompt": "Die aktuelle Störung",
           "min": 0,
           "max": 6
         }
@@ -11197,7 +11197,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current Disturbance",
+          "prompt": "Die aktuelle Störung",
           "min": 0
         }
       },
@@ -11230,7 +11230,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of locations with no scenario cards beneath them (rounded up)",
+          "prompt": "Die Hälfte der Anzahl Orte mit keiner Szenario Karte unter ihnen (aufgerundet)",
           "min": 0
         }
       },
@@ -11255,7 +11255,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Dein Ort ist überflutet",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -11270,7 +11270,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations with no scenario cards beneath them (rounded up)",
+          "prompt": "Die Anzahl Orte mit keiner Szenario Karte unter ihnen (aufgerundet)",
           "min": 0
         }
       },
@@ -11295,7 +11295,7 @@
           },
           "options": [
             {
-              "prompt": "Your location is flooded",
+              "prompt": "Dein Ort ist überflutet",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -11391,7 +11391,7 @@
           },
           "options": [
             {
-              "prompt": "[[Monster]] enemy at your location",
+              "prompt": "[[Monster]]-Gegner an deinem Ort",
               "modified_value": {
                 "modifier": -5
               }
@@ -11443,7 +11443,7 @@
           },
           "options": [
             {
-              "prompt": "[[Monster]] enemy at your location",
+              "prompt": "[[Monster]]-Gegner an deinem Ort",
               "modified_value": {
                 "modifier": -6
               }

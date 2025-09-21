@@ -973,7 +973,7 @@
           },
           "options": [
             {
-              "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+              "prompt": "Randomly choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
               "modified_value": {
                 "modifier": 0
               }
@@ -1015,7 +1015,7 @@
           },
           "options": [
             {
-              "prompt": "Randomally choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
+              "prompt": "Randomly choose an enemy from among the set-aside [[Monster]] enemies and place it beneath the act",
               "modified_value": {
                 "modifier": 0
               }
