@@ -1026,7 +1026,7 @@ msgid "Save deck changes?"
 msgstr "Deck-Änderungen speichern?"
 
 msgid "Edit Special Cards"
-msgstr "Spezielle Karten bearbeiten"
+msgstr "Sonderkarten bearbeiten"
 
 msgid "Edit Deck"
 msgstr "Deck bearbeiten"
