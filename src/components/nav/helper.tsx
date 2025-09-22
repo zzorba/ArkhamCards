@@ -44,7 +44,7 @@ export function getDeckOptions(
   ].background;
   const options: Options = {
     statusBar: Platform.select({
-      android: { style: 'dark' },
+      android: { style: initialMode === 'upgrade' ? 'light' : 'dark' },
       ios: {
         style: initialMode === 'upgrade' ? 'dark' : 'light',
         backgroundColor,

@@ -395,7 +395,7 @@ function DeckDetailView({
 
       Navigation.mergeOptions(componentId, {
         statusBar: Platform.select({
-          android: { style: 'dark' },
+          android: { style: darkMode ? 'light' : 'dark' },
           ios: {
             style: statusBarStyles[mode],
             backgroundColor,
@@ -530,7 +530,7 @@ function DeckDetailView({
         },
         options: {
           statusBar: Platform.select({
-            android: { style: 'dark' },
+            android: { style: darkMode ? 'light' : 'dark' },
             ios: {
               style: 'light',
               backgroundColor,
@@ -574,7 +574,7 @@ function DeckDetailView({
         },
         options: {
           statusBar: Platform.select({
-            android: { style: 'dark' },
+            android: { style: darkMode ? 'light' : 'dark' },
             ios: {
               style: 'light',
               backgroundColor,
@@ -618,7 +618,7 @@ function DeckDetailView({
         },
         options: {
           statusBar: Platform.select({
-            android: { style: 'dark' },
+            android: { style: darkMode ? 'light' : 'dark' },
             ios: {
               style: 'light',
               backgroundColor,
@@ -676,7 +676,7 @@ function DeckDetailView({
         },
         options: {
           statusBar: Platform.select({
-            android: { style: 'dark' },
+            android: { style: darkMode ? 'light' : 'dark' },
             ios: {
               style: 'light',
               backgroundColor,
@@ -736,7 +736,7 @@ function DeckDetailView({
         },
         options: {
           statusBar: Platform.select({
-            android: { style: 'dark' },
+            android: { style: darkMode ? 'light' : 'dark' },
             ios: {
               style: 'light',
               backgroundColor,
@@ -779,7 +779,7 @@ function DeckDetailView({
         },
         options: {
           statusBar: Platform.select({
-            android: { style: 'dark' },
+            android: { style: darkMode ? 'light' : 'dark' },
             ios: {
               style: 'light',
               backgroundColor,
@@ -820,7 +820,7 @@ function DeckDetailView({
         },
         options: {
           statusBar: Platform.select({
-            android: { style: 'dark' },
+            android: { style: darkMode ? 'light' : 'dark' },
             ios: {
               style: 'light',
               backgroundColor,

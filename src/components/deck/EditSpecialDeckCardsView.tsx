@@ -30,7 +30,7 @@ export interface EditSpecialCardsProps {
 }
 
 function EditSpecialDeckCardsView({ componentId, campaignId, assignedWeaknesses, id }: EditSpecialCardsProps & NavigationProps) {
-  const { backgroundStyle, colors } = useContext(StyleContext);
+  const { backgroundStyle, colors, darkMode } = useContext(StyleContext);
   const dispatch = useDispatch();
   const parsedDeckObj = useParsedDeck(id, componentId, 'edit');
   const {
@@ -82,7 +82,7 @@ function EditSpecialDeckCardsView({ componentId, campaignId, assignedWeaknesses,
         },
         options: {
           statusBar: Platform.select({
-            android: { style: 'dark' },
+            android: { style: darkMode ? 'light' : 'dark' },
             ios: {
               style: 'light',
               backgroundColor,
@@ -104,7 +104,7 @@ function EditSpecialDeckCardsView({ componentId, campaignId, assignedWeaknesses,
         },
       },
     });
-  }, [componentId, factionColor, colors, id]);
+  }, [componentId, factionColor, colors, id, darkMode]);
 
   const editWeaknessPressed = useCallback(() => {
     const backgroundColor = colors.faction[factionColor].background;
@@ -117,7 +117,7 @@ function EditSpecialDeckCardsView({ componentId, campaignId, assignedWeaknesses,
         },
         options: {
           statusBar: Platform.select({
-            android: { style: 'dark' },
+            android: { style: darkMode ? 'light' : 'dark' },
             ios: {
               style: 'light',
               backgroundColor,
@@ -139,7 +139,7 @@ function EditSpecialDeckCardsView({ componentId, campaignId, assignedWeaknesses,
         },
       },
     });
-  }, [componentId, factionColor, colors, id]);
+  }, [componentId, factionColor, colors, id, darkMode]);
 
   const isSpecial = useCallback((card: Card) => {
     return !!(card.code === ACE_OF_RODS_CODE || (deckEditsRef.current && deckEditsRef.current.ignoreDeckLimitSlots[card.code] > 0));

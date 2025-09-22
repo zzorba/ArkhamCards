@@ -129,7 +129,9 @@ export default class App {
           backgroundColor: colors.background,
           style: darkMode ? 'light' : 'dark',
         },
-        android: { style: 'dark' },
+        android: {
+          style: darkMode ? 'light' : 'dark',
+        },
       }),
       topBar: {
         leftButtonColor: colors.M,
