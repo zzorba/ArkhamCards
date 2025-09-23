@@ -1899,7 +1899,7 @@ msgstr "Falls alle Ermittler <b>getötet</b> wurden."
 
 #, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr "Überprüfe ${ logEntry.section }. Falls <i>${ logEntry.text }</i>"
+msgstr "Überprüfe ${ logEntry.section }. Falls notiert ist: <i>${ logEntry.text }</i>"
 
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
