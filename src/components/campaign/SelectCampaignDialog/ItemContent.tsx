@@ -31,7 +31,7 @@ export default function ItemContent({ packCode, text, disabled, description }: P
         />
       </View>
       <View style={styles.column}>
-        <Text style={[typography.mediumGameFont, styles.campaignText]}>
+        <Text style={[typography.mediumGameFont, styles.campaignText]} numberOfLines={1}>
           { text }
         </Text>
         { !!description && (

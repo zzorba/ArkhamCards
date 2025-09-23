@@ -25,11 +25,11 @@ export type CampaignSelection = {
   type: 'standalone';
   id: StandaloneId;
 }
-export interface SelectCampagaignProps {
+export interface SelectCampaignProps {
   selectionChanged: (selection: CampaignSelection, text: string, hasGuide: boolean) => void;
 }
 
-function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampagaignProps & NavigationProps) {
+function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampaignProps & NavigationProps) {
   const { backgroundStyle, typography } = useContext(StyleContext);
   const campaignChanged = useCallback((packCode: CampaignCycleCode, text: string, hasGuide: boolean) => {
     selectionChanged({ type: 'campaign', code: packCode }, text, hasGuide);

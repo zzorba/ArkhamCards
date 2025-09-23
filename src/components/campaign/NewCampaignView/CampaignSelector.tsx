@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { CampaignSelection, SelectCampagaignProps } from '@components/campaign/SelectCampaignDialog';
+import { CampaignSelection, SelectCampaignProps } from '@components/campaign/SelectCampaignDialog';
 import { CUSTOM } from '@actions/types';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 
@@ -51,7 +51,7 @@ export default function CampaignSelector({ componentId, campaignChanged }: Props
   }, [setCampaignState]);
 
   const campaignPressed = useCallback(() => {
-    Navigation.push<SelectCampagaignProps>(componentId, {
+    Navigation.push<SelectCampaignProps>(componentId, {
       component: {
         name: 'Dialog.Campaign',
         passProps: {
