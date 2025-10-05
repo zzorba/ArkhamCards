@@ -1,4 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { ArkhamNavigation, RootStackParamList } from '@navigation/types';
 import {
   Linking,
   ScrollView,
@@ -6,15 +8,13 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
+import AppIcon from '@icons/AppIcon';
+import ArkhamIcon, { ArkhamSlimIcon } from '@icons/ArkhamIcon';
 import CardDetailComponent from './CardDetailComponent';
-import { CardFaqProps } from '@components/card/CardFaqView';
-import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
-import { NavigationProps } from '@components/nav/types';
-import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { getShowSpoilers, AppState } from '@reducers';
 import Card from '@data/types/Card';
@@ -25,17 +25,16 @@ import useSingleCard from '../useSingleCard';
 import CardCustomizationOptions from './CardCustomizationOptions';
 import { Customizations, DeckId } from '@actions/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { CardInvestigatorProps } from '../CardInvestigatorsView';
 import { SimpleDeckEditContextProvider, useAllCardCustomizations, useCardCustomizations, useDeckSlotCount } from '@components/deck/DeckEditContext';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = card?.custom() ? [] : [{
-    icon: iconsMap.world,
+    iconComponent: <AppIcon name="world" size={24} color={color || COLORS.M} />,
     id: 'share',
     color: color || COLORS.M,
     accessibilityLabel: t`Share`,
   }, {
-    icon: iconsMap.wild,
+    iconComponent: <ArkhamIcon name="wild" size={24} color={color || COLORS.M} />,
     id: 'faq',
     color: color || COLORS.M,
     accessibilityLabel: t`FAQ`,
@@ -45,14 +44,14 @@ export function rightButtonsForCard(card?: Card, color?: string) {
   }
   if (card && card.type_code === 'investigator') {
     rightButtons.push({
-      icon: iconsMap.cards,
+      iconComponent: <AppIcon name="cards" size={24} color={color || COLORS.M} />,
       id: 'deck',
       color: color || COLORS.M,
       accessibilityLabel: t`Deckbuilding Cards`,
     });
   } else if (card && (card.deck_limit ?? 0) > 0) {
     rightButtons.push({
-      icon: iconsMap.per_investigator,
+      iconComponent: <ArkhamSlimIcon name="per_investigator" size={24} color={color || COLORS.M} />,
       id: 'investigator',
       color: color || COLORS.M,
       accessibilityLabel: t`Investigators`,
@@ -72,39 +71,13 @@ export interface CardDetailProps {
   deckInvestigatorId: string | undefined;
 }
 
-type Props = NavigationProps & Omit<CardDetailProps, 'deckId' | 'deckInvestigatorId'>;
+type Props = Omit<CardDetailProps, 'deckId' | 'deckInvestigatorId'>;
 
-function options() {
-  return {
-    topBar: {
-      backButton: {
-        title: t`Back`,
-        color: COLORS.M,
-      },
-    },
-  };
-}
-
-function showFaq(componentId: string, id: string) {
-  Navigation.push<CardFaqProps>(componentId, {
-    component: {
-      name: 'Card.Faq',
-      passProps: {
-        id,
-      },
-      options: {
-        topBar: {
-          title: {
-            text: t`FAQ`,
-          },
-        },
-      },
-    },
-  });
+function showFaq(navigation: ArkhamNavigation, id: string, cardName: string) {
+  navigation.navigate('Card.Faq', { id, cardName });
 }
 
 function CardDetailView({
-  componentId,
   id,
   back_id,
   pack_code,
@@ -112,53 +85,22 @@ function CardDetailView({
   tabooSetId: tabooSetIdOverride,
   initialCustomizations,
 }: Props) {
+  const navigation = useNavigation();
   const { backgroundStyle, typography, width } = useContext(StyleContext);
   const showSpoilersSelector = useCallback((state: AppState) => propsShowSpoilers || getShowSpoilers(state, pack_code), [propsShowSpoilers, pack_code]);
   const showSpoilersSetting = useSelector(showSpoilersSelector);
 
   const [showSpoilers, toggleShowSpoilers] = useFlag(showSpoilersSetting);
   const showInvestigatorCards = useCallback(() => {
-    Navigation.push<InvestigatorCardsProps>(componentId, {
-      component: {
-        name: 'Browse.InvestigatorCards',
-        passProps: {
-          investigatorCode: back_id ?? id,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Allowed Cards`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
+    navigation.navigate('Browse.InvestigatorCards', {
+      investigatorCode: back_id ?? id,
     });
-  }, [componentId, back_id, id]);
+  }, [navigation, back_id, id]);
 
 
   const showInvestigators = useCallback(() => {
-    Navigation.push<CardInvestigatorProps>(componentId, {
-      component: {
-        name: 'Card.Investigators',
-        passProps: {
-          code: id,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Investigators`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, id]);
+    navigation.navigate('Card.Investigators', { code: id });
+  }, [navigation, id]);
   useComponentDidAppear(() => {
     Navigation.mergeOptions(componentId, options());
   }, componentId, []);
@@ -168,13 +110,13 @@ function CardDetailView({
     } else if (buttonId === 'deck') {
       showInvestigatorCards();
     } else if (buttonId === 'faq') {
-      showFaq(componentId, id);
+      showFaq(navigatoin, id);
     } else if (buttonId === 'back') {
       Navigation.pop(componentId);
     } else if (buttonId === 'investigator') {
       showInvestigators();
     }
-  }, componentId, [componentId, id, showInvestigatorCards]);
+  }, [id, showInvestigatorCards]);
   const [card, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);
   const { listSeperator } = useContext(LanguageContext);
   const [deckCount] = useDeckSlotCount(id);
@@ -190,7 +132,7 @@ function CardDetailView({
         },
       });
     }
-  }, [customizedCard, componentId]);
+  }, [customizedCard]);
   if (loading) {
     return <View style={[styles.wrapper, backgroundStyle]} />;
   }
@@ -206,7 +148,6 @@ function CardDetailView({
     <ScrollView style={[styles.wrapper, backgroundStyle]}>
       <CardDetailComponent
         width={width}
-        componentId={componentId}
         card={customizedCard}
         backCard={backCard}
         showSpoilers={showSpoilersSetting || showSpoilers}
@@ -215,7 +156,6 @@ function CardDetailView({
       />
       { !!customizedCard.customization_options && !!card && (
         <CardCustomizationOptions
-          componentId={componentId}
           card={card}
           customizationOptions={customizedCard.customization_options}
           customizationChoices={customizationChoices}
@@ -228,20 +168,23 @@ function CardDetailView({
   );
 }
 
-function CardDetailViewWraper({
-  deckId,
-  deckInvestigatorId,
-  ...props
-}: Props & { deckId: DeckId | undefined; deckInvestigatorId: string | undefined }) {
+function CardDetailViewWraper() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Card'>>();
+  const { id, back_id, pack_code, showSpoilers, tabooSetId, initialCustomizations, deckId, deckInvestigatorId } = route.params;
+
   return (
     <SimpleDeckEditContextProvider deckId={deckId} investigator={deckInvestigatorId}>
       <CardDetailView
-        {...props}
+        id={id}
+        back_id={back_id}
+        pack_code={pack_code}
+        showSpoilers={showSpoilers}
+        tabooSetId={tabooSetId}
+        initialCustomizations={initialCustomizations}
       />
     </SimpleDeckEditContextProvider>
   );
 }
-CardDetailViewWraper.options = options;
 
 export default CardDetailViewWraper;
 

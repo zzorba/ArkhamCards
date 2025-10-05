@@ -61,8 +61,7 @@ export default function SignatureCardsComponent({ componentId, investigator, par
           { map(normalRequiredCards, card => (
             <SignatureCardItem
               key={card.code}
-              componentId={componentId}
-              card={card}
+                            card={card}
               width={width}
             />
           )) }
@@ -74,8 +73,7 @@ export default function SignatureCardsComponent({ componentId, investigator, par
           { map(parallelRequiredCards, card => (
             <SignatureCardItem
               key={card.code}
-              componentId={componentId}
-              card={card}
+                            card={card}
               width={width}
             />
           )) }
@@ -87,8 +85,7 @@ export default function SignatureCardsComponent({ componentId, investigator, par
           { map(altCards, card => (
             <SignatureCardItem
               key={card.code}
-              componentId={componentId}
-              card={card}
+                            card={card}
               width={width}
             />
           )) }
@@ -100,16 +97,14 @@ export default function SignatureCardsComponent({ componentId, investigator, par
           { map(advancedCards, card => (
             <SignatureCardItem
               key={card.code}
-              componentId={componentId}
-              card={card}
+                            card={card}
               width={width}
             />
           )) }
         </>
       ) }
       <BondedCardsComponent
-        componentId={componentId}
-        width={width}
+                width={width}
         cards={bondedCards}
       />
     </View>

@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
@@ -13,12 +13,11 @@ import { TouchableOpacity } from '@components/core/Touchables';
 import { Pack } from '@actions/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { PackCardsProps } from '@components/settings/PackCardsView';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   pack: Pack;
   packId?: string;
   cycle: Pack[];
@@ -34,7 +33,6 @@ interface Props {
 
 export default function PackRow({
   packId,
-  componentId,
   description,
   pack,
   cycle,
@@ -47,27 +45,13 @@ export default function PackRow({
   nameOverride,
 }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
+  const navigation = useNavigation();
   const onPress = useCallback(() => {
-    Navigation.push<PackCardsProps>(componentId, {
-      component: {
-        name: 'Pack',
-        passProps: {
-          pack_code: pack.code,
-          baseQuery,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: pack.name,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
+    navigation.navigate('Pack', {
+      pack_code: pack.code,
+      baseQuery,
     });
-  }, [pack, componentId, baseQuery]);
+  }, [navigation, pack, baseQuery]);
 
   const onCheckPress = useCallback(() => {
     const value = !checked;

@@ -1,12 +1,11 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { find, flatMap, partition } from 'lodash';
-import { InteractionManager, Platform, StyleSheet, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { InteractionManager, StyleSheet, View } from 'react-native';
+
 import { t } from 'ttag';
 
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { CampaignId, CampaignNotes, InvestigatorNotes, Deck, DeckId, getDeckId, Trauma } from '@actions/types';
-import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
@@ -21,9 +20,9 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useAppDispatch } from '@app/store';
 import CampaignHeader from '@components/campaignguide/CampaignHeader';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   campaignId: CampaignId;
   campaign: SingleCampaignT;
   loading: boolean;
@@ -40,7 +39,6 @@ interface Props {
 }
 
 export default function DecksSection({
-  componentId,
   campaignId,
   campaign,
   latestDecks,
@@ -55,6 +53,7 @@ export default function DecksSection({
   showTextEditDialog,
   showCountDialog,
 }: Props) {
+  const navigation = useNavigation();
   const { borderStyle, colors } = useContext(StyleContext);
   const removeDeckPrompt = useCallback((investigator: CampaignInvestigator) => {
     const deck = find(latestDecks, deck => {
@@ -80,40 +79,12 @@ export default function DecksSection({
   }, [latestDecks, removeInvestigator, showAlert]);
 
   const showDeckUpgradeDialog = useCallback((investigator: CampaignInvestigator, deck: Deck) => {
-    const backgroundColor = colors.faction[investigator ? investigator.card.factionCode() : 'neutral'].background;
-    Navigation.push<UpgradeDeckProps>(componentId, {
-      component: {
-        name: 'Deck.Upgrade',
-        passProps: {
-          id: getDeckId(deck),
-          campaignId: campaign.id,
-          showNewDeck: false,
-        },
-        options: {
-          statusBar: Platform.select({
-            ios: {
-              style: 'light',
-              backgroundColor,
-            }, 
-            android: { style: 'dark' }, 
-          }),
-          topBar: {
-            title: {
-              text: t`Upgrade`,
-              color: 'white',
-            },
-            subtitle: {
-              text: investigator ? investigator.card.name : '',
-              color: 'white',
-            },
-            background: {
-              color: backgroundColor,
-            },
-          },
-        },
-      },
+    navigation.navigate('Deck.Upgrade', {
+      id: getDeckId(deck),
+      campaignId: campaign.id,
+      showNewDeck: false,
     });
-  }, [componentId, campaign, colors]);
+  }, [navigation, campaign]);
 
   const showChooseDeckForInvestigator = useCallback((investigator: CampaignInvestigator) => {
     showChooseDeck(investigator);
@@ -140,8 +111,7 @@ export default function DecksSection({
     return (
       <InvestigatorCampaignRow
         key={investigator.code}
-        componentId={componentId}
-        campaign={campaign}
+                campaign={campaign}
         investigator={investigator}
         spentXp={traumaAndCardData.spentXp || 0}
         totalXp={traumaAndCardData.availableXp || 0}

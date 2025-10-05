@@ -22,7 +22,6 @@ const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 export const FOOTER_HEIGHT = (56 * (isBig ? 1.2 : 1));
 
 interface Props {
-  componentId: string;
   deckId: DeckId;
   onPress: () => void;
   control?: 'fab' | 'counts';
@@ -44,7 +43,6 @@ function fabPadding(control?: 'fab' | 'counts') {
 
 interface PreloadedProps {
   // eslint-disable-next-line react/no-unused-prop-types
-  componentId: string;
   parsedDeckObj: ParsedDeckResults;
   onPress: () => void;
   control?: 'fab' | 'counts';
@@ -142,14 +140,12 @@ export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceS
 }
 
 function DeckNavFooter({
-  componentId,
   deckId,
   ...props
 }: Props) {
-  const parsedDeckObj = useParsedDeck(deckId, componentId);
+  const parsedDeckObj = useParsedDeck(deckId);
   return (
     <PreLoadedDeckNavFooter
-      componentId={componentId}
       parsedDeckObj={parsedDeckObj}
       {...props}
     />

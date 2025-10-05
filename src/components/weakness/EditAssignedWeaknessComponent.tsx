@@ -11,7 +11,6 @@ import StyleContext from '@styles/StyleContext';
 import { useSlotActions, useWeaknessCards } from '@components/core/hooks';
 
 interface Props {
-  componentId: string;
   weaknessSet: WeaknessSet;
   updateAssignedCards: (assignedCards: Slots) => void;
 }
@@ -20,13 +19,13 @@ function cardKey(card: Card) {
   return card.code;
 }
 
-function EditAssignedWeaknessComponent({ componentId, weaknessSet, updateAssignedCards }: Props) {
+function EditAssignedWeaknessComponent({ weaknessSet, updateAssignedCards }: Props) {
   const { colors } = useContext(StyleContext);
   const weaknessCards = useWeaknessCards();
   const [assignedCards, editAssignedCards] = useSlotActions(weaknessSet.assignedCards, updateAssignedCards);
   const cardPressed = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, { showSpoilers: false });
-  }, [componentId, colors]);
+    showCard(card.code, card, colors, { showSpoilers: false });
+  }, [colors]);
 
   const data: Card[] = useMemo(() => {
     const packCodes = new Set(weaknessSet.packCodes);

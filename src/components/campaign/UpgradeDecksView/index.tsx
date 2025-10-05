@@ -1,33 +1,32 @@
-import React, { useCallback, useContext, useRef } from 'react';
+import React, { useCallback, useContext, useLayoutEffect, useRef } from 'react';
 import { map } from 'lodash';
 import {
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { useSelector } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import { CampaignId, Deck, getDeckId, ScenarioResult } from '@actions/types';
-import { NavigationProps } from '@components/nav/types';
 import { getLangPreference } from '@reducers';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { updateCampaignXp } from '@components/campaign/actions';
 import UpgradeDecksList from './UpgradeDecksList';
-import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import { useUpdateCampaignActions } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useAppDispatch } from '@app/store';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { BasicStackParamList } from '@navigation/types';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface UpgradeDecksProps {
   id: CampaignId;
@@ -37,7 +36,10 @@ export interface UpgradeDecksProps {
 
 const EMPTY_DECKS: LatestDeckT[] = [];
 
-function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationProps) {
+function UpgradeDecksView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Campaign.UpgradeDecks'>>();
+  const navigation = useNavigation();
+  const { id } = route.params;
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const dispatch = useAppDispatch();
   const campaign = useCampaign(id);
@@ -47,13 +49,21 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
   const updateCampaignActions = useUpdateCampaignActions();
   const originalDeckUuids = useRef(new Set(map(latestDecks, deck => deck.id.uuid)));
   const close = useCallback(() => {
-    Navigation.dismissModal(componentId);
-  }, [componentId]);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'close') {
-      close();
-    }
-  }, componentId, [close]);
+    navigation.goBack();
+  }, [navigation]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <HeaderButton
+          iconName="close"
+          onPress={close}
+          accessibilityLabel={t`Close`}
+          color={colors.M}
+        />
+      ),
+    });
+  }, [navigation, close, colors]);
 
   const updateInvestigatorXp = useCallback((investigator: CampaignInvestigator, xp: number) => {
     if (campaign) {
@@ -69,41 +79,13 @@ function UpgradeDecksView({ componentId, id }: UpgradeDecksProps & NavigationPro
     }
   }, [campaign, id, updateCampaignActions, dispatch]);
 
-  const showDeckUpgradeDialog = useCallback((deck: Deck, investigator?: CampaignInvestigator) => {
-    const backgroundColor = colors.faction[investigator ? investigator?.card.factionCode() : 'neutral'].background;
-    Navigation.push<UpgradeDeckProps>(componentId, {
-      component: {
-        name: 'Deck.Upgrade',
-        passProps: {
-          id: getDeckId(deck),
-          campaignId: id,
-          showNewDeck: false,
-        },
-        options: {
-          statusBar: Platform.select({
-            android: { style: 'dark' },
-            ios: {
-              style: 'light',
-              backgroundColor,
-            },
-          }),
-          topBar: {
-            title: {
-              text: t`Upgrade`,
-              color: 'white',
-            },
-            subtitle: {
-              text: investigator ? investigator.card.name : '',
-              color: 'white',
-            },
-            background: {
-              color: backgroundColor,
-            },
-          },
-        },
-      },
+  const showDeckUpgradeDialog = useCallback((deck: Deck) => {
+    navigation.navigate('Deck.Upgrade', {
+      id: getDeckId(deck),
+      campaignId: id,
+      showNewDeck: false,
     });
-  }, [componentId, id, colors]);
+  }, [navigation, id]);
   if (!campaign) {
     return null;
   }

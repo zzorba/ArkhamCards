@@ -18,7 +18,6 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
-  componentId: string;
   investigator: CampaignInvestigator;
   deck: LatestDeckT;
   encounterCodes: string[];
@@ -33,7 +32,6 @@ const SORT: QuerySort[] = [
 ];
 
 export default function StoryCardSelectorComponent({
-  componentId,
   investigator,
   deck,
   encounterCodes,
@@ -99,14 +97,13 @@ export default function StoryCardSelectorComponent({
     });
     return (
       <CardSelectorComponent
-        componentId={componentId}
         slots={slots}
         counts={storyCounts}
         updateCount={updateCount}
         header={header}
       />
     );
-  }, [componentId, scenarioName, investigator, storyCards, storyCounts, updateCount]);
+  }, [scenarioName, investigator, storyCards, storyCounts, updateCount]);
 
   const deckStoryCardsSection = useMemo(() => {
     if (!deckStoryCards.length) {
@@ -127,14 +124,13 @@ export default function StoryCardSelectorComponent({
     });
     return (
       <CardSelectorComponent
-        componentId={componentId}
         slots={slots}
         counts={storyCounts}
         updateCount={updateCount}
         header={header}
       />
     );
-  }, [deckStoryCards, componentId, investigator, storyCounts, updateCount]);
+  }, [deckStoryCards, investigator, storyCounts, updateCount]);
 
   if (loading) {
     return (

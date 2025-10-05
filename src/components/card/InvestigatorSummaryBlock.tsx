@@ -83,8 +83,7 @@ export default function InvestigatorSummaryBlock({ investigator, componentId, ta
                   <InvestigatorImage
                     card={investigator}
                     backCard={investigatorBack}
-                    componentId={componentId}
-                    yithian={yithian}
+                                        yithian={yithian}
                     tabooSetId={tabooSetId}
                     border
                   />

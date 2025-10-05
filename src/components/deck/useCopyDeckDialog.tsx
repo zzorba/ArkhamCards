@@ -28,6 +28,7 @@ import useSingleCard from '@components/card/useSingleCard';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { useDialog } from './dialogs';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useNavigation } from '@react-navigation/native';
 
 interface SelectDeckSwitchPropsProps {
   deckId: DeckId;
@@ -115,12 +116,13 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
     return deck?.deck;
   }, [baseDeck, deck, latestDeck, selectedDeckId]);
   const [investigator] = useSingleCard(deck?.deck.investigator_code, 'player', deck?.deck.taboo_id);
+  const navigation = useNavigation();
 
   const showNewDeck = useCallback((deck: Deck) => {
     setSaving(false);
     // Change the deck options for required cards, if present.
-    showDeckModal(getDeckId(deck), deck, campaign?.id, colors, investigator);
-  }, [campaign, investigator, setSaving, colors]);
+    showDeckModal(navigation, getDeckId(deck), deck, campaign?.id, investigator);
+  }, [campaign, investigator, setSaving, navigation]);
   const saveCopy = useCallback((isRetry: boolean) => {
     if (!selectedDeck) {
       return;

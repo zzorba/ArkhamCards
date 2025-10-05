@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 import { chunk, map } from 'lodash';
 
@@ -19,9 +19,7 @@ import { useCampaignFromRedux, useChaosBagResultsRedux } from '@data/local/hooks
 import { CampaignDifficulty, FIXED_CHAOS_BAG_CAMPAIGN_ID } from '@actions/types';
 import { flattenChaosBag } from '../campaignUtil';
 import ChaosToken, { EXTRA_TINY_TOKEN_SIZE } from '@components/chaos/ChaosToken';
-import { iconsMap } from '@app/NavIcons';
-import COLORS from '@styles/colors';
-import { NavigationProps } from '@components/nav/types';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
   campaign: MiniCampaignT;
@@ -54,29 +52,13 @@ function GenericCampaignItem({ campaign, lastUpdated, children, onPress }: Props
   );
 }
 
-export function SimpleChaosBagItem({ componentId }: NavigationProps) {
+export function SimpleChaosBagItem() {
   const { colors, typography } = useContext(StyleContext);
+  const navigation = useNavigation();
   const campaign = useCampaignFromRedux(FIXED_CHAOS_BAG_CAMPAIGN_ID);
   const onPress = useCallback(() => {
-    Navigation.push(componentId, {
-      component: {
-        name: 'SimpleChaosBag',
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos bag`,
-            },
-            rightButtons: [{
-              icon: iconsMap.edit,
-              id: 'edit',
-              color: COLORS.M,
-              accessibilityLabel: t`Edit`,
-            }],
-          },
-        },
-      },
-    });
-  }, [componentId]);
+    navigation.navigate('SimpleChaosBag');
+  }, [navigation]);
   const debouncedOnPress = usePressCallback(onPress);
 
   const chaosBag = useMemo(() => campaign?.chaosBag ?? getChaosBag('core', CampaignDifficulty.STANDARD), [campaign?.chaosBag]);

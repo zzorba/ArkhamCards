@@ -1,24 +1,20 @@
 import { Platform, Linking } from 'react-native';
 import React, { useMemo } from 'react';
-import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { startsWith, map, range } from 'lodash';
+import { NavigationProp } from '@react-navigation/native';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { t } from 'ttag';
 
 import { usePickerDialog, Item } from '@components/deck/dialogs';
-import { DeckChartsProps } from '@components/deck/DeckChartsView';
-import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
-import { DeckDetailProps } from '@components/deck/DeckDetailView';
-import { CardDetailProps } from '@components/card/CardDetailView';
-import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
 import { CampaignId, Customizations, Deck, DeckId, ParsedDeck } from '@actions/types';
 import Card from '@data/types/Card';
 import { iconsMap } from '@app/NavIcons';
-import { CardImageProps } from '@components/card/CardImageView';
 import { ThemeColors } from '@styles/theme';
-import { StyleContextType } from '@styles/StyleContext';
+import HeaderTitle from '@components/core/HeaderTitle';
 import Database from '@data/sqlite/Database';
 import { where } from '@data/sqlite/query';
 import COLORS from '@styles/colors';
+import { ArkhamNavigation, RootStackParamList } from '@navigation/types';
 
 export function getDeckOptions(
   colors: ThemeColors,
@@ -101,16 +97,71 @@ export function getDeckOptions(
   return options;
 }
 
+export function getDeckScreenOptions(
+  colors: ThemeColors,
+  {
+    modal,
+    title,
+    noTitle,
+    initialMode,
+  }: {
+    modal?: boolean;
+    title?: string;
+    noTitle?: boolean;
+    initialMode?: 'upgrade' | 'edit';
+  } = {},
+  investigator?: Card,
+): NativeStackNavigationOptions {
+  const textColor = initialMode === 'upgrade' ? COLORS.D30 : '#FFFFFF';
+  const backgroundColor = initialMode === 'upgrade' ? colors.upgrade : colors.faction[
+    (investigator ? investigator.faction_code : null) || 'neutral'
+  ].background;
+
+  const headerTitle = investigator ? investigator.name : t`Deck`;
+  const headerSubtitle = title;
+
+  const options: NativeStackNavigationOptions = {
+    headerStyle: {
+      backgroundColor,
+    },
+    headerTintColor: textColor,
+    presentation: modal ? 'fullScreenModal' : undefined,
+  };
+
+  if (!noTitle) {
+    if (headerSubtitle) {
+      // Custom header component for title + subtitle
+      options.headerTitle = () => (
+        <HeaderTitle
+          title={headerTitle}
+          subtitle={headerSubtitle}
+          color={textColor}
+        />
+      );
+    } else {
+      // Simple title only
+      options.headerTitle = () => (
+        <HeaderTitle
+          title={headerTitle}
+          color={textColor}
+        />
+      );
+    }
+  }
+
+  return options;
+}
+
 export function showDeckModal(
+  navigation: ArkhamNavigation,
   id: DeckId,
   deck: Deck,
   campaignId: CampaignId | undefined,
-  colors: ThemeColors,
   investigator?: Card,
   initialMode?: 'upgrade' | 'edit',
   fromCampaign?: boolean
 ) {
-  const passProps: DeckDetailProps = {
+  navigation.navigate('Deck', {
     id,
     modal: true,
     campaignId,
@@ -118,23 +169,6 @@ export function showDeckModal(
     subtitle: deck.name,
     initialMode,
     fromCampaign,
-  };
-
-  const options = getDeckOptions(colors, {
-    modal: true,
-    title: deck.name,
-    initialMode,
-  }, investigator);
-  Navigation.showModal<DeckDetailProps>({
-    stack: {
-      children: [{
-        component: {
-          name: 'Deck',
-          passProps,
-          options,
-        },
-      }],
-    },
   });
 }
 
@@ -148,89 +182,54 @@ type ShowCardOptions = {
 }
 
 export function showCard(
-  componentId: string,
+  navigation: ArkhamNavigation,
   code: string,
   card: Card,
-  colors: ThemeColors,
   options: ShowCardOptions
 ) {
   const { showSpoilers, deckId, initialCustomizations, tabooSetId, backCode } = options;
-  Navigation.push<CardDetailProps>(componentId, {
-    component: {
-      name: 'Card',
-      passProps: {
-        id: code,
-        back_id: backCode,
-        pack_code: card.pack_code,
-        showSpoilers: !!showSpoilers,
-        tabooSetId,
-        deckId,
-        deckInvestigatorId: options.deckInvestigatorId,
-        initialCustomizations,
-      },
-      options: {
-        topBar: {
-          backButton: {
-            title: t`Back`,
-            color: colors.M,
-          },
-        },
-      },
-    },
+  navigation.navigate('Card', {
+    id: code,
+    back_id: backCode,
+    pack_code: card.pack_code,
+    showSpoilers: !!showSpoilers,
+    tabooSetId,
+    deckId,
+    deckInvestigatorId: options.deckInvestigatorId,
+    initialCustomizations,
   });
 }
 
 export function showCardCharts(
-  componentId: string,
+  navigation: ArkhamNavigation,
   parsedDeck: ParsedDeck,
-  colors: ThemeColors
 ) {
-  Navigation.push<DeckChartsProps>(componentId, {
-    component: {
-      name: 'Deck.Charts',
-      passProps: {
-        parsedDeck,
-      },
-      options: getDeckOptions(colors, {
-        title: t`Charts`,
-      }, parsedDeck.investigator.front),
-    },
+  navigation.navigate('Deck.Charts', {
+    parsedDeck,
   });
 }
 
 export function showDrawSimulator(
-  componentId: string,
+  navigation: ArkhamNavigation,
   parsedDeck: ParsedDeck,
-  colors: ThemeColors
 ) {
   const {
     slots,
     customizations,
     investigator,
   } = parsedDeck;
-  Navigation.push<DrawSimulatorProps>(componentId, {
-    component: {
-      name: 'Deck.DrawSimulator',
-      passProps: {
-        slots,
-        customizations,
-      },
-      options: getDeckOptions(
-        colors,
-        {
-          title: t`Draw Simulator`,
-        },
-        investigator.front),
-    },
+  navigation.navigate('Deck.DrawSimulator', {
+    slots,
+    customizations,
+    investigator: investigator.front,
   });
 }
 
 export function showCardSwipe(
-  componentId: string,
+  navigation: ArkhamNavigation,
   codes: string[],
   controls: undefined | 'side' | 'extra' | 'checklist' | ('side' | 'deck' | 'extra' | 'ignore' | 'bonded' | 'attachment' | 'special' | 'checklist')[],
   index: number,
-  colors: ThemeColors,
   initialCards?: Card[],
   showSpoilers?: boolean,
   tabooSetId?: number,
@@ -240,35 +239,19 @@ export function showCardSwipe(
   initialCustomizations?: Customizations,
   customizationsEditable?: boolean
 ) {
-  const options = investigator ?
-    getDeckOptions(colors, { title: '' }, investigator) :
-    {
-      topBar: {
-        backButton: {
-          title: t`Back`,
-          color: colors.M,
-        },
-      },
-    };
-  Navigation.push<CardDetailSwipeProps>(componentId, {
-    component: {
-      name: 'Card.Swipe',
-      passProps: {
-        cardCodes: codes,
-        initialCards,
-        initialIndex: index,
-        showAllSpoilers: !!showSpoilers,
-        tabooSetId,
-        deckId,
-        whiteNav: !!investigator,
-        faction: investigator?.factionCode(),
-        controls: controls === 'side' || controls === 'extra' || controls === 'checklist' ? map(range(0, codes.length), () => controls) : controls,
-        editable,
-        initialCustomizations,
-        customizationsEditable: editable || customizationsEditable,
-      },
-      options,
-    },
+  navigation.navigate('Card.Swipe', {
+    cardCodes: codes,
+    initialCards,
+    initialIndex: index,
+    showAllSpoilers: !!showSpoilers,
+    tabooSetId,
+    deckId,
+    whiteNav: !!investigator,
+    faction: investigator?.factionCode(),
+    controls: controls === 'side' || controls === 'extra' || controls === 'checklist' ? map(range(0, codes.length), () => controls) : controls,
+    editable,
+    initialCustomizations,
+    customizationsEditable: editable || customizationsEditable,
   });
 }
 
@@ -289,43 +272,20 @@ export function useOptionDialog(
   return usePickerDialog({ title, items, onValueChange: onSelect, selectedValue });
 }
 
-export function showCardImage(componentId: string, card: Card, colors: ThemeColors) {
-  const faction = card.factionCode();
-  Navigation.push<CardImageProps>(componentId, {
-    component: {
-      name: 'Card.Image',
-      passProps: {
-        id: card.code,
-      },
-      options: {
-        topBar: {
-          backButton: {
-            title: t`Back`,
-            color: '#FFFFFF',
-          },
-          background: {
-            color: faction ? colors.faction[faction].background : colors.background,
-          },
-          title: {
-            text: card.name,
-            color: faction ? '#FFFFFF' : colors.darkText,
-          },
-        },
-        bottomTabs: {
-          visible: false,
-          drawBehind: true,
-          animate: true,
-        },
-      },
-    },
+export function showCardImage(
+  navigation: ArkhamNavigation,
+  card: Card,
+) {
+  navigation.navigate('Card.Image', {
+    id: card.code,
+    cardName: card.name,
   });
 }
 
 export async function openUrl(
+  navigation: ArkhamNavigation,
   url: string,
-  context: StyleContextType,
   db: Database,
-  componentId: string,
   tabooSetId?: number,
 ) {
   const card_regex = /\/card\/(\d+)/;
@@ -338,7 +298,7 @@ export async function openUrl(
       tabooSetId
     );
     if (card) {
-      showCard(componentId, code, card, context.colors, { showSpoilers: false });
+      showCard(navigation, code, card, { showSpoilers: false });
       return;
     }
   }
@@ -349,23 +309,8 @@ export async function openUrl(
     const rule_id = rule_match[3];
     const rules = await db.getRulesPaged(0, 1, where('r.id = :rule_id', { rule_id }));
     if (rules.length) {
-      Navigation.push(componentId, {
-        component: {
-          name: 'Rule',
-          passProps: {
-            rule: rules[0],
-          },
-          options: {
-            topBar: {
-              backButton: {
-                title: t`Back`,
-              },
-              title: {
-                text: rules[0].title,
-              },
-            },
-          },
-        },
+      navigation.navigate('Rule', {
+        rule: rules[0],
       });
       return;
     }

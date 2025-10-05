@@ -10,6 +10,8 @@ import { completedScenario } from '@components/campaign/constants';
 import { SCENARIO_CARDS_QUERY } from '@data/sqlite/query';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import LoadingSpinner from '@components/core/LoadingSpinner';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
 
 export interface OddsCalculatorProps {
   campaignId: CampaignId;
@@ -18,7 +20,9 @@ export interface OddsCalculatorProps {
 
 const EMPTY_CHAOS_BAG = {};
 
-export default function OddsCalculatorView({ campaignId, investigatorIds }: OddsCalculatorProps) {
+export default function OddsCalculatorView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'OddsCalculator'>>();
+  const { campaignId, investigatorIds } = route.params;
   const campaign = useCampaign(campaignId);
   const chaosBag = campaign?.chaosBag || EMPTY_CHAOS_BAG;
   const cycleScenarios = useCycleScenarios(campaign?.cycleCode);

@@ -1,15 +1,14 @@
 import React, { useCallback, useContext } from 'react';
 import { Text } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import { CampaignId, ScenarioResult } from '@actions/types';
 import { Scenario } from '../constants';
-import { EditScenarioResultProps } from '../EditScenarioResultView';
 import StyleContext from '@styles/StyleContext';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   campaignId: CampaignId;
   index: number;
   scenarioResult: ScenarioResult;
@@ -17,19 +16,15 @@ interface Props {
   editable?: boolean;
 }
 
-export default function ScenarioResultRow({ componentId, campaignId, index, scenarioResult, scenarioByCode, editable }: Props) {
+export default function ScenarioResultRow({ campaignId, index, scenarioResult, scenarioByCode, editable }: Props) {
   const { typography } = useContext(StyleContext);
+  const navigation = useNavigation();
   const onPress = useCallback(() => {
-    Navigation.push<EditScenarioResultProps>(componentId, {
-      component: {
-        name: 'Campaign.EditResult',
-        passProps: {
-          campaignId,
-          index,
-        },
-      },
+    navigation.navigate('Campaign.EditResult', {
+      campaignId,
+      index,
     });
-  }, [componentId, campaignId, index]);
+  }, [navigation, campaignId, index]);
 
   const resolution = scenarioResult.resolution ? `: ${scenarioResult.resolution}` : '';
   const scenarioCard = scenarioByCode && scenarioByCode[scenarioResult.scenarioCode];

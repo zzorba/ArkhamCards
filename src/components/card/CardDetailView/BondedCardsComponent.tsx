@@ -62,8 +62,7 @@ export default function BondedCardsComponent({ componentId, cards, width, tabooS
           <CardDetailSectionHeader title={t`Bonded`} />
           { map(bondedToCards, card => (
             <TwoSidedCardComponent
-              componentId={componentId}
-              key={card.code}
+                            key={card.code}
               card={card}
               width={width}
             />
@@ -76,8 +75,7 @@ export default function BondedCardsComponent({ componentId, cards, width, tabooS
           { map(bondedFromCards, card => (
             <TwoSidedCardComponent
               key={card.code}
-              componentId={componentId}
-              card={card}
+                            card={card}
               width={width}
             />
           )) }

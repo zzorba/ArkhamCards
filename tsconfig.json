@@ -49,6 +49,9 @@
       "@lib/*": [
         "src/lib/*"
       ],
+      "@navigation/*": [
+        "src/navigation/*"
+      ],
       "@reducers/*": [
         "src/reducers/*"
       ],

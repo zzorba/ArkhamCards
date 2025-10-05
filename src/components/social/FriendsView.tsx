@@ -5,20 +5,21 @@ import { t } from 'ttag';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import { SimpleUser, UserProfile } from '@data/remote/hooks';
 import { SearchResults, useSearchUsers, useUpdateFriendRequest } from '@data/remote/api';
-import { NavigationProps } from '@components/nav/types';
 import useFriendFeedComponent, { FriendFeedItem, UserControls } from './useFriendFeedComponent';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { searchNormalize } from '@data/types/Card';
 import { FriendRequestAction } from '@generated/graphql/apollo-schema';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
 
 export interface FriendsViewProps {
   userId: string;
+  title?: string;
 }
 
 type Refresh = () => void;
 
-function FeedComponent({ userId, componentId, searchTerm, searchResults, handleScroll, onSearchChange, performSearch, showHeader, focus }: {
-  componentId: string;
+function FeedComponent({ userId, searchTerm, searchResults, handleScroll, onSearchChange, performSearch, showHeader, focus }: {
   userId: string;
   searchTerm: string;
   searchResults: SearchResults;
@@ -128,7 +129,6 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
     return feed;
   }, [clearSearchPressed, performSearch, lang, controls, searchResults, searchFriendsPressed, searchTerm]);
   const [feed, refresh] = useFriendFeedComponent({
-    componentId,
     error,
     userId,
     toFeed,
@@ -144,7 +144,9 @@ function FeedComponent({ userId, componentId, searchTerm, searchResults, handleS
   );
 }
 
-export default function FriendsView({ userId, componentId }: FriendsViewProps & NavigationProps) {
+export default function FriendsView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Friends'>>();
+  const { userId } = route.params;
   const [searchTerm, updateSearchTerm] = useState<string>('');
   const { search, searchResults } = useSearchUsers();
   const onSearchChange = useCallback((value: string, submit: boolean) => {
@@ -165,7 +167,6 @@ export default function FriendsView({ userId, componentId }: FriendsViewProps & 
     >
       { (handleScroll, showHeader, focus) => (
         <FeedComponent
-          componentId={componentId}
           userId={userId}
           handleScroll={handleScroll}
           showHeader={showHeader}

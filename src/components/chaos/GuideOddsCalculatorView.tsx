@@ -10,6 +10,8 @@ import { CampaignId } from '@actions/types';
 import useGuideChaosBag from '../campaignguide/useGuideChaosBag';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ProcessedCampaign } from '@data/scenario';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
 
 export interface GuideOddsCalculatorProps {
   campaignId: CampaignId;
@@ -20,7 +22,9 @@ export interface GuideOddsCalculatorProps {
   processedCampaign: ProcessedCampaign | undefined;
 }
 
-export default function GuideOddsCalculatorView({ campaignId, investigatorIds, chaosBag, scenarioId, standalone, processedCampaign }: GuideOddsCalculatorProps) {
+export default function GuideOddsCalculatorView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.OddsCalculator'>>();
+  const { campaignId, investigatorIds, chaosBag, scenarioId, standalone, processedCampaign } = route.params;
   const chaosBagResults = useChaosBagResults(campaignId);
   const { loading, scenarioCard, scenarioCardText, difficulty, liveChaosBag, scenarioName, scenarioIcon, scenarioCode } = useGuideChaosBag({
     campaignId,

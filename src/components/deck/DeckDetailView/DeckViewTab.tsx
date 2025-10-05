@@ -1,4 +1,4 @@
-import React, { MutableRefObject, ReactNode, useCallback, useContext, useMemo } from 'react';
+import React, { RefObject, ReactNode, useCallback, useContext, useMemo } from 'react';
 import { Text, ScrollView, StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
 
@@ -33,7 +33,6 @@ import { useAppDispatch } from '@app/store';
 import { MANDY_CODE } from '@data/deck/specialMetaSlots';
 
 interface Props {
-  componentId: string;
   suggestArkhamDbLogin: boolean;
   deck: Deck;
   deckId: DeckId;
@@ -74,7 +73,7 @@ interface Props {
   showDeckHistory: () => void;
   width: number;
   deckEdits?: EditDeckState;
-  deckEditsRef: MutableRefObject<EditDeckState | undefined>;
+  deckEditsRef: RefObject<EditDeckState | undefined>;
   mode: 'view' | 'edit' | 'upgrade';
 }
 
@@ -205,8 +204,7 @@ export default function DeckViewTab(props: Props) {
         investigator={investigatorCard}
         investigatorBack={investigator?.back}
         yithian={yithian}
-        componentId={componentId}
-        tabooSetId={tabooSetId}
+                tabooSetId={tabooSetId}
       />
     );
   }, [componentId, parsedDeck.slots, cards, investigator, tabooSetId]);
@@ -279,8 +277,7 @@ export default function DeckViewTab(props: Props) {
       <View style={space.marginSideS}>
         { parsedDeckComponent }
         <DeckProgressComponent
-          componentId={componentId}
-          cards={cards}
+                    cards={cards}
           deckId={deckId}
           deck={deck}
           parsedDeck={parsedDeck}
@@ -293,8 +290,7 @@ export default function DeckViewTab(props: Props) {
         { !!campaignId && !parsedDeck.deck?.nextDeckId && (
           <DeckOverlapComponentForCampaign
             campaignId={campaignId}
-            componentId={componentId}
-            parsedDeck={parsedDeck}
+                        parsedDeck={parsedDeck}
             live={!fromCampaign}
             cards={cards}
           />

@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
 import { CampaignSelection, SelectCampaignProps } from '@components/campaign/SelectCampaignDialog';
 import { CUSTOM } from '@actions/types';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   campaignChanged: (
     selection: CampaignSelection,
     campaignName: string,
@@ -22,7 +22,8 @@ interface CampaignState {
   hasGuide: boolean;
 }
 
-export default function CampaignSelector({ componentId, campaignChanged }: Props) {
+export default function CampaignSelector({ campaignChanged }: Props) {
+  const navigation = useNavigation();
   const [campaignState, setCampaignState] = useState<CampaignState | undefined>();
   useEffect(() => {
     if (campaignState) {
@@ -51,22 +52,10 @@ export default function CampaignSelector({ componentId, campaignChanged }: Props
   }, [setCampaignState]);
 
   const campaignPressed = useCallback(() => {
-    Navigation.push<SelectCampaignProps>(componentId, {
-      component: {
-        name: 'Dialog.Campaign',
-        passProps: {
-          selectionChanged: handleCampaignChanged,
-        },
-        options: {
-          topBar: {
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
+    navigation.navigate('Dialog.Campaign', {
+      selectionChanged: handleCampaignChanged,
     });
-  }, [componentId, handleCampaignChanged]);
+  }, [navigation, handleCampaignChanged]);
 
   return (
     <DeckPickerStyleButton

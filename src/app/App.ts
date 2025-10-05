@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react-native';
 import { forEach } from 'lodash';
-import { Navigation, Options } from 'react-native-navigation';
+
 import { Appearance, TouchableOpacity, Platform, Linking, LogBox, ColorSchemeName } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';

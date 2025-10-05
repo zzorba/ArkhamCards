@@ -3,7 +3,6 @@ import { ScrollView } from 'react-native';
 import { find, findLast } from 'lodash';
 import { t } from 'ttag';
 
-import { NavigationProps } from '@components/nav/types';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignLogComponent from './CampaignLogComponent';
@@ -14,7 +13,10 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import CampaignGuideContext from './CampaignGuideContext';
 import CampaignErrorView from './CampaignErrorView';
 import { ProcessedCampaign } from '@data/scenario';
-import { Navigation } from 'react-native-navigation';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
+import HeaderTitle from '@components/core/HeaderTitle';
+
 
 export interface CampaignLogProps {
   campaignId: CampaignId;
@@ -26,19 +28,19 @@ export interface CampaignLogProps {
   processedCampaign?: ProcessedCampaign;
 }
 
-type Props = CampaignLogProps & NavigationProps;
-
-export default function CampaignLogView({
-  campaignId,
-  campaignGuide,
-  scenarioId,
-  campaignLog,
-  componentId,
-  standalone,
-  processedCampaign: initialProcessedCampaign,
-  hideChaosBag = false,
-}: Props) {
-  const { backgroundStyle, width } = useContext(StyleContext);
+export default function CampaignLogView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.Log'>>();
+  const {
+    campaignId,
+    campaignGuide,
+    scenarioId,
+    campaignLog,
+    standalone,
+    processedCampaign: initialProcessedCampaign,
+    hideChaosBag = false,
+  } = route.params;
+  const navigation = useNavigation();
+  const { backgroundStyle, colors, width } = useContext(StyleContext);
   const [campaignContext, scenarioContext, processedCampaign, processedCampaignError] = useScenarioGuideContext(campaignId, scenarioId, false, standalone, initialProcessedCampaign);
 
   const interScenarioId = useMemo(() => {
@@ -52,21 +54,17 @@ export default function CampaignLogView({
   const scenarionName = scenarioContext?.processedScenario.scenarioGuide.scenarioName();
   useEffect(() => {
     if (!current && scenarionName) {
-      Navigation.mergeOptions(componentId, {
-        topBar: {
-          title: {
-            text: t`Campaign Log`,
-          },
-          subtitle: {
-            text: t`After completion of ${scenarionName}`,
-          },
-          backButton: {
-            title: t`Back`,
-          },
-        },
+      navigation.setOptions({
+        headerTitle: () => (
+          <HeaderTitle
+            title={t`Campaign Log`}
+            subtitle={t`After completion of ${scenarionName}`}
+            color={colors.darkText}
+          />
+        ),
       });
     }
-  }, [current, componentId, scenarionName]);
+  }, [current, scenarionName, navigation, colors]);
   const liveCampaignLog = scenarioContext?.processedScenario?.latestCampaignLog || processedCampaign?.campaignLog || campaignLog;
 
   if (!campaignContext) {
@@ -79,7 +77,6 @@ export default function CampaignLogView({
     <CampaignGuideContext.Provider value={campaignContext}>
       <ScrollView contentContainerStyle={backgroundStyle}>
         <CampaignLogComponent
-          componentId={componentId}
           campaignId={campaignId}
           campaignGuide={campaignGuide}
           campaignLog={liveCampaignLog}

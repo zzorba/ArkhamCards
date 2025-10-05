@@ -28,6 +28,7 @@ module.exports = {
           '@generated': './src/generated',
           '@icons': './src/icons',
           '@lib': './src/lib',
+          '@navigation': './src/navigation',
           '@reducers': './src/reducers',
           '@styles': './src/styles',
         },

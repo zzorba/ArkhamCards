@@ -9,12 +9,10 @@ import { useSettingValue, useToggles, useWeaknessCards } from '@components/core/
 import { specialPacks } from '@app_constants';
 
 export function ControlledWeaknessSetPackChooserComponent({
-  componentId,
   onPackCheck,
   compact,
   selected,
 }: {
-  componentId: string;
   selected: { [pack: string]: boolean | undefined };
   compact?: boolean;
   onPackCheck: (pack: string, checked: boolean) => void;
@@ -31,7 +29,6 @@ export function ControlledWeaknessSetPackChooserComponent({
   }, [packs, weaknessCards]);
   return (
     <PackListComponent
-      componentId={componentId}
       packs={weaknessPacks}
       checkState={selected}
       setChecked={onPackCheck}
@@ -43,13 +40,11 @@ export function ControlledWeaknessSetPackChooserComponent({
 }
 
 interface OwnProps {
-  componentId: string;
   onSelectedPacksChanged: (packs: string[]) => void;
   compact?: boolean;
 }
 
 export default function WeaknessSetPackChooserComponent({
-  componentId,
   onSelectedPacksChanged,
   compact,
 }: OwnProps) {
@@ -103,7 +98,6 @@ export default function WeaknessSetPackChooserComponent({
 
   return (
     <ControlledWeaknessSetPackChooserComponent
-      componentId={componentId}
       selected={checkState}
       onPackCheck={onPackCheck}
       compact={compact}

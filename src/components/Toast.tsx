@@ -1,8 +1,7 @@
 import React, { useCallback, useContext, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 
-import { NavigationProps } from '@components/nav/types';
+
 import StyleContext from '@styles/StyleContext';
 import space, { m } from '@styles/space';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -13,11 +12,11 @@ interface ToastProps {
   timeout?: number
 }
 
-function Toast({ componentId, message, timeout = 3000 }: ToastProps & NavigationProps) {
+function Toast({ message, timeout = 3000 }: ToastProps) {
   const { colors, typography, width } = useContext(StyleContext);
   const onPress = useCallback(() => {
     Navigation.dismissOverlay(componentId);
-  }, [componentId]);
+  }, []);
   useEffect(() => {
     let canceled = false;
     setTimeout(() => {
@@ -28,7 +27,7 @@ function Toast({ componentId, message, timeout = 3000 }: ToastProps & Navigation
     return () => {
       canceled = true;
     };
-  }, [componentId, timeout])
+  }, [timeout])
   return (
     <View style={[styles.root, { width }]}>
       <View style={[styles.toast, { backgroundColor: colors.D20 }]}>

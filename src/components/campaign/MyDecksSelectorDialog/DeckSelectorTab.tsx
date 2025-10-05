@@ -1,14 +1,14 @@
 import React, { useCallback } from 'react';
-import { Navigation } from 'react-native-navigation';
+
 
 import MyDecksComponent from '@components/decklist/MyDecksComponent';
 import { Deck } from '@actions/types';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   onDeckSelect: (deck: Deck) => Promise<void>;
   searchOptions?: SearchOptions;
 
@@ -18,17 +18,17 @@ interface Props {
 }
 
 export default function DeckSelectorTab({
-  componentId,
   searchOptions,
   filterDeck,
   onlyDecks,
   onDeckSelect,
   renderExpandButton,
 }: Props) {
+  const navigation = useNavigation();
   const deckSelected = useCallback(async(deck: LatestDeckT) => {
     onDeckSelect(deck.deck);
-    Navigation.dismissModal(componentId);
-  }, [onDeckSelect, componentId]);
+    navigation.goBack();
+  }, [navigation, onDeckSelect]);
   return (
     <MyDecksComponent
       searchOptions={searchOptions}

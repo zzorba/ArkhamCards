@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { find } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
 import { SORT_BY_ENCOUNTER_SET, SortType, DeckId, Slots } from '@actions/types';
@@ -36,11 +36,11 @@ import { useSettingValue } from '@components/core/hooks';
 import { useParsedDeck } from '@components/deck/hooks';
 import { ParsedDeckContextProvider } from '@components/deck/DeckEditContext';
 import SimpleFab from '@components/core/SimpleFab';
+import { useNavigation } from '@react-navigation/native';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
 interface Props {
-  componentId: string;
   deckId?: DeckId;
   baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
   mythosToggle?: boolean;
@@ -225,7 +225,6 @@ function useExpandSearchButtons({
 const EMPTY_SEARCH_STATE: SearchState = {};
 
 export default function({
-  componentId,
   deckId,
   baseQuery,
   mythosToggle,
@@ -243,6 +242,7 @@ export default function({
   includeDuplicates,
   filterId,
 }: Props) {
+  const navigation = useNavigation();
   const { fontScale, colors } = useContext(StyleContext);
   const { lang, useCardTraits } = useContext(LanguageContext);
   const [searchText, setSearchText] = useState(false);
@@ -370,14 +370,14 @@ export default function({
     );
   }, [baseQuery, filters, mythosToggle, selectedSorts, mythosMode, includeDuplicates, showCustomContent]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters, useCardTraits), [filters, useCardTraits]);
-  const [hasFilters, showFiltersPress] = useFilterButton({ componentId, filterId, baseQuery });
+  const [hasFilters, showFiltersPress] = useFilterButton({ filterId, baseQuery });
   const renderFabIcon = useMemo(() => (
     <View style={styles.relative}>
       <AppIcon name="filter" color={colors.L30} size={24} />
       { hasFilters && <View style={styles.chiclet} /> }
     </View>
   ), [colors, hasFilters]);
-  const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);
+  const backPressed = useCallback(() => navigation.goBack(), [navigation]);
   const [expandSearchControls, expandSearchControlsHeight] = useExpandSearchButtons({
     hasFilters: !!filterQuery,
     mythosToggle,
@@ -391,7 +391,7 @@ export default function({
     toggleSearchText,
     toggleSearchBack,
   });
-  const parsedDeck = useParsedDeck(deckId, componentId);
+  const parsedDeck = useParsedDeck(deckId);
   return (
     <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>
       <CollapsibleSearchBox
@@ -406,7 +406,6 @@ export default function({
         { (handleScroll, showHeader) => (
           <>
             <DbCardResultList
-              componentId={componentId}
               deck={parsedDeck.deckT}
               filterId={filterId}
               query={query}
@@ -432,8 +431,7 @@ export default function({
             { !!deckId && (
               <>
                 <PreLoadedDeckNavFooter
-                  componentId={componentId}
-                  parsedDeckObj={parsedDeck}
+                                    parsedDeckObj={parsedDeck}
                   control="fab"
                   onPress={backPressed}
                   mode={mode === 'extra' ? 'extra' : undefined}

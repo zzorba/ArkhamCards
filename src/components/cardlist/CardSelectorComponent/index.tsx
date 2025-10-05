@@ -9,7 +9,6 @@ import StyleContext from '@styles/StyleContext';
 import { usePlayerCards } from '@components/core/hooks';
 
 interface Props {
-  componentId: string;
   slots: Slots;
   fixedSlots?: Slots;
   counts: Slots;
@@ -22,7 +21,7 @@ interface Props {
 }
 
 
-export default function CardSelectorComponent({ componentId, slots, fixedSlots, counts, toggleCard, updateCount, filterCard, forceHeader, header, locked }: Props) {
+export default function CardSelectorComponent({ slots, fixedSlots, counts, toggleCard, updateCount, filterCard, forceHeader, header, locked }: Props) {
   const { colors } = useContext(StyleContext);
 
   const onChange = useCallback((card: Card, count: number) => {
@@ -34,8 +33,8 @@ export default function CardSelectorComponent({ componentId, slots, fixedSlots, 
   }, [updateCount, toggleCard]);
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, { showSpoilers: true });
-  }, [colors, componentId]);
+    showCard(card.code, card, colors, { showSpoilers: true });
+  }, [colors]);
   const initialCards = useMemo(() => uniq(concat(keys(slots), flatMap(counts, (count, code) => count > 0 ? code : []))), [slots, counts])
   const [cards] = usePlayerCards(initialCards, false);
   const fixedCards = useMemo(() => {

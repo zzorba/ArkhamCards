@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState, useLayoutEffect } from 'react';
 import { head } from 'lodash';
 import {
   RefreshControl,
@@ -7,31 +7,45 @@ import {
   Text,
   View,
 } from 'react-native';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
 import { t } from 'ttag';
 
 import CardTextComponent from './CardTextComponent';
 import Database from '@data/sqlite/Database';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { openUrl } from '@components/nav/helper';
-import { NavigationProps } from '@components/nav/types';
 import { getFaqEntry } from '@lib/publicApi';
 import space, { m } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import { useTabooSetId } from '@components/core/hooks';
 import useDbData from '@components/core/useDbData';
 import { useGetCardFaqQuery } from '@generated/graphql/apollo-schema';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
 import { localizedDate } from '@lib/datetime';
+import HeaderTitle from '@components/core/HeaderTitle';
 
 export interface CardFaqProps {
   id: string;
+  cardName: string;
 }
 
-type Props = NavigationProps & CardFaqProps;
-
-export default function CardFaqView({ id, componentId }: Props) {
+export default function CardFaqView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Card.Faq'>>();
+  const navigation = useNavigation();
+  const { id, cardName } = route.params;
   const { db } = useContext(DatabaseContext);
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+
+  // Set screen title with subtitle
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: () => (
+        <HeaderTitle title={cardName} subtitle={t`FAQ`} color={colors.darkText} />
+      ),
+    });
+  }, [navigation, cardName, colors, typography]);
   const { lang } = useContext(LanguageContext);
   const { anonClient } = useContext(ApolloClientContext);
   const { data, loading: dataLoading, refetch } = useGetCardFaqQuery({
@@ -43,7 +57,6 @@ export default function CardFaqView({ id, componentId }: Props) {
     fetchPolicy: 'cache-first',
     client: anonClient,
   });
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | undefined>();
   const fetchFaqEntries = useCallback(async(db: Database) => {
@@ -83,9 +96,9 @@ export default function CardFaqView({ id, componentId }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const tabooSetId = useTabooSetId();
-  const linkPressed = useCallback(async(url: string, context: StyleContextType) => {
-    await openUrl(url, context, db, componentId, tabooSetId);
-  }, [componentId, tabooSetId, db]);
+  const linkPressed = useCallback(async(url: string) => {
+    await openUrl(navigation, url, db, tabooSetId);
+  }, [navigation, tabooSetId, db]);
 
   const faqEntry = useMemo(() => {
     const arkhamDbEntry = head(faqEntries);

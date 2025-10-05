@@ -3,8 +3,6 @@ import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
 import { map } from 'lodash';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
-import { Platform } from 'react-native';
 
 import { CampaignCycleCode, CampaignId, Deck, DeckId, getDeckId, OZ } from '@actions/types';
 import { addInvestigator } from '@components/campaign/actions';
@@ -15,6 +13,7 @@ import { DeckActions } from '@data/remote/decks';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
 import { AppState } from '@reducers';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { useNavigation } from '@react-navigation/native';
 
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
@@ -33,6 +32,7 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
   AddInvestigatorType,
 ] {
   const { userId } = useContext(ArkhamCardsAuthContext);
+  const navigation = useNavigation();
   const dispatch: AsyncDispatch = useDispatch();
   const doAddInvestigator = useCallback(async(campaignId: CampaignId, code: string, deckId?: DeckId) => {
     await dispatch(addInvestigator(userId, createDeckActions, updateActions, campaignId, code, deckId));
@@ -75,21 +75,7 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
       simpleOptions: true,
       includeParallel,
     };
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Dialog.DeckSelector',
-            passProps,
-            options: {
-              modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.fullScreen :
-                OptionsModalPresentationStyle.overCurrentContext,
-            },
-          },
-        }],
-      },
-    });
-  }, [doAddInvestigator]);
+    navigation.navigate('Dialog.DeckSelector', passProps);
+  }, [doAddInvestigator, navigation]);
   return [showChooseDeck, doAddInvestigator];
 }

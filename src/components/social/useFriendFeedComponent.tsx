@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native';
 import { forEach, map } from 'lodash';
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
@@ -19,6 +19,7 @@ import { ArkhamButtonIconType } from '@icons/ArkhamButtonIcon';
 import { FriendStatus, SearchResults } from '@data/remote/api';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
+import { useNavigation } from '@react-navigation/native';
 
 interface FriendControls {
   type: 'friend';
@@ -258,7 +259,6 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
 UserRow.computeHeight = userRowHeight;
 
 interface Props {
-  componentId: string;
   userId?: string;
   handleScroll?: (...args: any[]) => void;
   searchResults?: SearchResults;
@@ -270,8 +270,9 @@ interface Props {
   ) => FriendFeedItem[]
 }
 
-export default function useFriendFeedComponent({ componentId, userId, handleScroll, error, searchResults, toFeed }: Props): [React.ReactNode, () => void] {
+export default function useFriendFeedComponent({ userId, handleScroll, error, searchResults, toFeed }: Props): [React.ReactNode, () => void] {
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
+  const navigation = useNavigation();
   const { userId: currentUserId } = useContext(ArkhamCardsAuthContext);
   const { lang } = useContext(LanguageContext);
   const [myProfile, loadingMyProfile, refetchMyProfile] = useMyProfile(true);
@@ -293,22 +294,8 @@ export default function useFriendFeedComponent({ componentId, userId, handleScro
     return status;
   }, [myProfile]);
   const showUser = useCallback((userId: string, handle?: string) => {
-    Navigation.push(componentId, {
-      component: {
-        name: 'Friends',
-        passProps: {
-          userId: userId,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: handle ? t`${handle}'s Friends` : t`Friends`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId]);
+    navigation.navigate('Friends', { userId, title:  handle ? t`${handle}'s Friends` : t`Friends` });
+  }, []);
   const heightItem = useCallback((item: FriendFeedItem) => {
     switch (item.type) {
       case 'user':

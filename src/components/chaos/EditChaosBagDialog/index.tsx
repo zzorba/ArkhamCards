@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useReducer, useState } from 'react';
+import React, { useCallback, useContext, useLayoutEffect, useMemo, useReducer, useState } from 'react';
 import { find, filter, map, sortBy, throttle, range } from 'lodash';
 import {
   Platform,
@@ -8,11 +8,9 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation, Options } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
-import { iconsMap } from '@app/NavIcons';
-import { NavigationProps } from '@components/nav/types';
 import ChaosTokenRow from './ChaosTokenRow';
 import {
   CHAOS_TOKENS,
@@ -23,7 +21,7 @@ import {
 } from '@app_constants';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useBackButton, useComponentVisible, useNavigationButtonPressed } from '@components/core/hooks';
+import { useBackButton, useComponentVisible } from '@components/core/hooks';
 import { useAlertDialog, useDialog } from '@components/deck/dialogs';
 import { CampaignCycleCode, CampaignDifficulty, CUSTOM, EOE } from '@actions/types';
 import space, { s, xs } from '@styles/space';
@@ -31,6 +29,9 @@ import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import ChaosToken, { EXTRA_TINY_TOKEN_SIZE } from '@components/chaos/ChaosToken';
 import { getChaosBag } from '@components/campaign/constants';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface EditChaosBagProps {
   cycleCode: CampaignCycleCode;
@@ -39,7 +40,7 @@ export interface EditChaosBagProps {
   trackDeltas?: boolean;
 }
 
-type Props = EditChaosBagProps & NavigationProps;
+type Props = EditChaosBagProps;
 
 function ChaosBagCounter({ count, token, limit, onInc, onDec, fullWidth, left }: {
   fullWidth: boolean;
@@ -213,7 +214,10 @@ export function useEditChaosBagDialog({
   });
 }
 
-function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackDeltas, componentId, cycleCode }: Props) {
+function EditChaosBagDialog() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Dialog.EditChaosBag'>>();
+  const navigation = useNavigation();
+  const { chaosBag: originalChaosBag, updateChaosBag, trackDeltas, cycleCode } = route.params;
   const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
   const [chaosBag, mutateChaosBag] = useReducer((state: ChaosBag, action: { id: ChaosTokenType, mutate: (count: number) => number }) => {
     return {
@@ -221,7 +225,7 @@ function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackD
       [action.id]: action.mutate(state[action.id] || 0),
     };
   }, originalChaosBag);
-  const visible = useComponentVisible(componentId);
+  const visible = useComponentVisible();
   const hasPendingEdits = useMemo(() => {
     return !!find(
       CHAOS_TOKENS,
@@ -230,8 +234,8 @@ function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackD
 
   const saveChanges = useMemo(() => throttle(() => {
     updateChaosBag(chaosBag);
-    Navigation.pop(componentId);
-  }, 200), [updateChaosBag, chaosBag, componentId]);
+    navigation.goBack();
+  }, 200), [updateChaosBag, chaosBag, navigation]);
 
   const [alertDialog, showAlert] = useAlertDialog();
   const handleBackPress = useCallback(() => {
@@ -250,7 +254,7 @@ function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackD
           text: t`Discard Changes`,
           style: 'destructive',
           onPress: () => {
-            Navigation.pop(componentId);
+            navigation.goBack();
           },
         }, {
           text: t`Save Changes`,
@@ -260,20 +264,34 @@ function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackD
         }],
       );
     } else {
-      Navigation.pop(componentId);
+      navigation.goBack();
     }
     return true;
-  }, [componentId, visible, hasPendingEdits, saveChanges, showAlert]);
+  }, [navigation, visible, hasPendingEdits, saveChanges, showAlert]);
 
 
   useBackButton(handleBackPress);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'save') {
-      saveChanges();
-    } else if (buttonId === 'back' || buttonId === 'androidBack') {
-      handleBackPress();
-    }
-  }, componentId, [saveChanges, handleBackPress]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <HeaderButton
+          text={t`Cancel`}
+          color={COLORS.M}
+          onPress={handleBackPress}
+          accessibilityLabel={t`Cancel`}
+        />
+      ),
+      headerRight: () => (
+        <HeaderButton
+          text={t`Save`}
+          color={COLORS.M}
+          onPress={saveChanges}
+          accessibilityLabel={t`Save`}
+        />
+      ),
+    });
+  }, [navigation, handleBackPress, saveChanges]);
   const mutateCount = useCallback((id: ChaosTokenType, mutate: (count: number) => number) => {
     mutateChaosBag({ id, mutate });
   }, [mutateChaosBag]);
@@ -309,34 +327,6 @@ function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackD
   );
 }
 
-EditChaosBagDialog.options = (): Options => {
-  return {
-    topBar: {
-      leftButtons: [
-        Platform.OS === 'ios' ? {
-          systemItem: 'cancel',
-          text: t`Cancel`,
-          id: 'back',
-          color: COLORS.M,
-          accessibilityLabel: t`Cancel`,
-        } : {
-          icon: iconsMap['arrow-back'],
-          id: 'androidBack',
-          color: COLORS.M,
-          accessibilityLabel: t`Back`,
-        },
-      ],
-      rightButtons: [{
-        systemItem: 'save',
-        text: t`Save`,
-        id: 'save',
-        showAsAction: 'ifRoom',
-        color: COLORS.M,
-        accessibilityLabel: t`Save`,
-      }],
-    },
-  };
-};
 export default EditChaosBagDialog;
 
 const styles = StyleSheet.create({

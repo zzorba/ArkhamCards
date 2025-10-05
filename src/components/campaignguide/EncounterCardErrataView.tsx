@@ -1,7 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { flatMap, forEach, map, min, max, groupBy } from 'lodash';
-import { t } from 'ttag';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { CardsMap } from '@data/types/Card';
@@ -10,6 +9,8 @@ import { CardErrata } from '@data/scenario/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import StyleContext from '@styles/StyleContext';
 import useCardList from '@components/card/useCardList';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
 
 export interface EncounterCardErrataProps {
   errata: CardErrata[];
@@ -63,7 +64,9 @@ function CardErrataComponent({ errata, cards }: { errata: CardErrata; cards: Car
     </View>
   );
 }
-function EncounterCardErrataView({ errata }: EncounterCardErrataProps) {
+function EncounterCardErrataView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.CardErrata'>>();
+  const { errata } = route.params;
   const { colors } = useContext(StyleContext);
   const errataCodes = useMemo(() => flatMap(errata, e => e.code), [errata]);
   const [errataCards, loading] = useCardList(errataCodes, 'encounter', false);
@@ -92,19 +95,6 @@ function EncounterCardErrataView({ errata }: EncounterCardErrataProps) {
     </ScrollView>
   );
 }
-
-EncounterCardErrataView.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`Encounter Card Errata`,
-      },
-      backButton: {
-        title: t`Back`,
-      },
-    },
-  };
-};
 
 export default EncounterCardErrataView;
 

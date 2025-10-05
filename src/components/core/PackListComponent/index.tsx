@@ -39,7 +39,6 @@ interface PackCycle extends SectionListData<PackItem> {
 }
 
 interface Props {
-  componentId: string;
   alwaysShowCoreSet?: boolean;
   cyclesOnly?: boolean;
   coreSetName?: string;
@@ -70,7 +69,6 @@ function renderSectionHeader({ section }: { section: SectionListData<PackItem> }
 }
 
 export default function PackListComponent({
-  componentId,
   alwaysShowCoreSet,
   coreSetName,
   packs,
@@ -98,8 +96,7 @@ export default function PackListComponent({
           { (alwaysShowCoreSet || includeNoCore) && pack.code === 'core' && (
             <PackRow
               key="always-core"
-              componentId={componentId}
-              pack={pack}
+                            pack={pack}
               packId="no_core"
               nameOverride={t`Core Set`}
               cycle={cyclePacks}
@@ -112,8 +109,7 @@ export default function PackListComponent({
           { (!includeNoCore || !checkState?.no_core) && (
             <PackRow
               key={pack.id}
-              componentId={componentId}
-              pack={pack}
+                            pack={pack}
               nameOverride={coreSetName}
               cycle={cyclePacks}
               setChecked={setChecked}
@@ -130,8 +126,7 @@ export default function PackListComponent({
     return (
       <PackRow
         key={pack.id}
-        componentId={componentId}
-        pack={pack}
+                pack={pack}
         cycle={cyclePacks}
         setChecked={setChecked}
         setCycleChecked={setCycleChecked}
@@ -151,8 +146,7 @@ export default function PackListComponent({
         return (
           <PackRow
             key={item.pack.code}
-            componentId={componentId}
-            pack={item.pack}
+                        pack={item.pack}
             cycle={[]}
             setChecked={setChecked}
             setCycleChecked={setCycleChecked}
@@ -169,8 +163,7 @@ export default function PackListComponent({
               { map(item.packs, pack => (
                 <PackRow
                   key={pack.code}
-                  componentId={componentId}
-                  pack={pack}
+                                    pack={pack}
                   cycle={[]}
                   setChecked={setChecked}
                   setCycleChecked={setCycleChecked}

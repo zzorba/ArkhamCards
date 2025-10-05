@@ -10,7 +10,6 @@ import { t } from 'ttag';
 import { Slots } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import { NavigationProps } from '@components/nav/types';
 import ExileCardSelectorComponent from '@components/campaign/ExileCardSelectorComponent';
 import Card from '@data/types/Card';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -22,7 +21,7 @@ import { SaveDeckUpgrade } from './useDeckUpgradeAction';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
-export interface DeckUpgradeComponentProps extends NavigationProps {
+export interface DeckUpgradeComponentProps {
   investigator: CampaignInvestigator;
   deck: LatestDeckT;
   hideXp?: boolean;
@@ -43,7 +42,6 @@ export interface DeckUpgradeHandles {
 
 function DeckUpgradeComponent(props: DeckUpgradeComponentProps, ref: ForwardedRef<DeckUpgradeHandles>) {
   const {
-    componentId,
     investigator,
     deck,
     startingXp,
@@ -115,7 +113,6 @@ function DeckUpgradeComponent(props: DeckUpgradeComponentProps, ref: ForwardedRe
         </View>
       ) }
       <ExileCardSelectorComponent
-        componentId={componentId}
         deck={deck}
         label={(
           <CardSectionHeader

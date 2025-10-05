@@ -1,4 +1,7 @@
-import React, { useCallback, useContext, useEffect, useMemo, useReducer } from 'react';
+import React, { useCallback, useContext, useMemo, useReducer, useLayoutEffect } from 'react';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+import { getDeckScreenOptions, showCard } from '@components/nav/helper';
 import { concat, filter, flatMap, map, shuffle, range, without, keys } from 'lodash';
 import {
   FlatList,
@@ -11,16 +14,14 @@ import { SlideInLeft, SlideOutRight } from 'react-native-reanimated';
 
 import { TouchableShrink } from '@components/core/Touchables';
 import { Customizations, Slots } from '@actions/types';
+import Card from '@data/types/Card';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useEffectUpdate, usePlayerCardsFunc, useSettingValue } from '@components/core/hooks';
-import { Navigation, OptionsTopBar, OptionsTopBarButton } from 'react-native-navigation';
+
 import ListToggleButton from './ListToggleButton';
-import { NavigationProps } from '@components/nav/types';
 import AppIcon from '@icons/AppIcon';
-import Card from '@data/types/Card';
-import { showCard } from '@components/nav/helper';
 import colors from '@styles/colors';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CardImage from '@components/card/CardImage';
@@ -31,6 +32,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 export interface DrawSimulatorProps {
   slots: Slots;
   customizations: Customizations;
+  investigator?: Card;
 }
 
 interface Item {
@@ -95,36 +97,6 @@ function Button({ title, disabled, onPress, square, icon, color = 'light', acces
       </TouchableShrink>
     </View>
   )
-}
-
-export function navigationOptions(
-  {
-    lightButton,
-  }: {
-    lightButton?: boolean;
-  }
-){
-  const rightButtons: OptionsTopBarButton[] = [{
-    id: 'grid',
-    component: {
-      name: 'ListToggleButton',
-      passProps: {
-        setting: 'card_grid',
-        lightButton,
-      },
-      width: ListToggleButton.WIDTH,
-      height: ListToggleButton.HEIGHT,
-    },
-    accessibilityLabel: t`Grid`,
-    enabled: true,
-  }];
-  const topBarOptions: OptionsTopBar = {
-    rightButtons,
-  };
-
-  return {
-    topBar: topBarOptions,
-  };
 }
 
 function drawHelper(drawState: DrawnState, count: number | 'all'): {
@@ -192,12 +164,25 @@ function CardItem({ item, card, width, onPress, toggleSelection, grid }: { width
   );
 }
 
-// eslint-disable-next-line react/prop-types
-export default function DrawSimulatorView({ componentId, customizations, slots }: DrawSimulatorProps & NavigationProps) {
+export default function DrawSimulatorView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Deck.DrawSimulator'>>();
+  const navigation = useNavigation();
+  const { slots, customizations, investigator } = route.params;
   const { backgroundStyle, colors, typography, width } = useContext(StyleContext);
-  useEffect(() => {
-    Navigation.mergeOptions(componentId, navigationOptions({ lightButton: true }));
-  }, [componentId]);
+
+  useLayoutEffect(() => {
+    if (investigator) {
+      const screenOptions = getDeckScreenOptions(
+        colors,
+        { title: t`Draw Simulator` },
+        investigator
+      );
+      navigation.setOptions({
+        ...screenOptions,
+        headerRight: () => <ListToggleButton setting="card_grid" lightButton />,
+      });
+    }
+  }, [navigation, colors, investigator]);
   const [cards] = usePlayerCardsFunc(() => keys(slots), [slots], false, 0);
   const shuffleFreshDeck = useCallback(() => {
     return shuffle(
@@ -367,8 +352,8 @@ export default function DrawSimulatorView({ componentId, customizations, slots }
   }, [colors, typography, drawState, drawOne, drawTwo, drawFive, drawAll, redrawSelected, reshuffleSelected, resetDeck]);
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, { showSpoilers: true, initialCustomizations: customizations });
-  }, [componentId, colors, customizations]);
+    showCard(navigation, card.code, card, { showSpoilers: true, initialCustomizations: customizations });
+  }, [navigation, customizations]);
   const cardWidth = useMemo(() => {
     let cardsPerRow = 10;
     let cardWidth = (width - s) / cardsPerRow - s;
@@ -430,7 +415,6 @@ export default function DrawSimulatorView({ componentId, customizations, slots }
         <CardGridComponent
           items={data}
           cards={cards}
-          componentId={componentId}
           controlHeight={40}
           controlForCard={renderGridControl}
         />

@@ -8,6 +8,8 @@ import withCampaignGuideContext from './withCampaignGuideContext';
 import CampaignGuideContext from './CampaignGuideContext';
 import AchievementComponent from './CampaignLogComponent/AchievementComponent';
 import space from '@styles/space';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
 
 export interface CampaignAchievementsProps {
   campaignId: CampaignId;
@@ -26,7 +28,13 @@ function CampaignAchievementsView() {
   );
 }
 
-export default withCampaignGuideContext(CampaignAchievementsView, { rootView: false });
+const WrappedComponent = withCampaignGuideContext(CampaignAchievementsView, { rootView: false });
+
+export default function CampaignAchievementsWrapper() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.Achievements'>>();
+  const { campaignId } = route.params;
+  return <WrappedComponent campaignId={campaignId} />;
+}
 
 const styles = StyleSheet.create({
   wrapper: {

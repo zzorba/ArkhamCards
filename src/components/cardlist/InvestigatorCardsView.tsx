@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
+import { useRoute, RouteProp } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
 
 import { queryForInvestigatorWithoutDeck } from '@lib/InvestigatorRequirements';
-import { NavigationProps } from '@components/nav/types';
 import CardSearchComponent from './CardSearchComponent';
 import useSingleCard from '@components/card/useSingleCard';
 import { FilterState } from '@lib/filters';
@@ -10,9 +11,9 @@ export interface InvestigatorCardsProps {
   investigatorCode: string;
 }
 
-type Props = NavigationProps & InvestigatorCardsProps;
-
-export default function InvestigatorCardsView({ investigatorCode, componentId }: Props) {
+export default function InvestigatorCardsView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Browse.InvestigatorCards'>>();
+  const { investigatorCode } = route.params;
   const [investigator] = useSingleCard(investigatorCode, 'player');
   const query = useMemo(() => {
     if (!investigator) {
@@ -33,7 +34,6 @@ export default function InvestigatorCardsView({ investigatorCode, componentId }:
   }
   return (
     <CardSearchComponent
-      componentId={componentId}
       baseQuery={query}
       screenType="investigator"
     />

@@ -6,7 +6,6 @@ import { Canvas, Paint, Circle, Line, vec } from '@shopify/react-native-skia';
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import { NavigationProps } from '@components/nav/types';
 import { LocationAnnotation, LocationArrow, LocationDecoration, LocationSetupCard, LocationSetupStep } from '@data/scenario/types';
 import LocationCard, { cleanLocationCode } from './LocationCard';
 import { CARD_RATIO, NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -14,12 +13,12 @@ import { isTablet, m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ThemeColors } from '@styles/theme';
 import AppIcon from '@icons/AppIcon';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
 
 export interface LocationSetupProps {
   step: LocationSetupStep;
 }
-
-type Props = LocationSetupProps & NavigationProps;
 
 const TOP_PADDING = 8;
 const SIDE_PADDING = 8;
@@ -129,7 +128,9 @@ function DecoratedLocationCard({
   );
 }
 
-export default function LocationSetupView({ step }: Props) {
+export default function LocationSetupView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.LocationSetup'>>();
+  const { step } = route.params;
   const { locations, cards, annotations, arrows, decorations, vertical, horizontal, note, location_names, resource_dividers } = step;
   const { width, height } = useContext(StyleContext);
   const rowCount = locations.length;

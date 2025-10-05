@@ -20,8 +20,7 @@ import AppIcon from '@icons/AppIcon';
 import useCardList from '../useCardList';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 import { DeckOptionQueryBuilder } from '@data/types/DeckOption';
-import { Navigation } from 'react-native-navigation';
-import { CardSelectorProps } from '@components/campaignguide/CardSelectorView';
+
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { xpString } from '@components/deck/hooks';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -33,9 +32,9 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
 import { MAX_WIDTH } from '@styles/sizes';
 import { DeckEditContext } from '@components/deck/DeckEditContext';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   card: Card;
   customizationOptions: CustomizationOption[];
   customizationChoices: CustomizationChoice[] | undefined;
@@ -295,8 +294,7 @@ function ToggleCard({ card, selectedCodes, selectedCards, quantity, setSelection
   );
 }
 
-function ChooseCardAdvancedControl({ componentId, choice, editable, setChoice }: {
-  componentId: string;
+function ChooseCardAdvancedControl({ choice, editable, setChoice }: {
   card: Card;
   setChoice: (choice: ChooseCardCustomizationChoice) => void;
   editable: boolean;
@@ -334,34 +332,20 @@ function ChooseCardAdvancedControl({ componentId, choice, editable, setChoice }:
     const builder = new DeckOptionQueryBuilder(choice.option.card, 0, 'custom');
     return builder.toQuery();
   }, [choice.option]);
+  const navigation = useNavigation();
   const setDialogVisibleRef = useRef<(visible: boolean) => void>(null);
   const showCardPicker = useCallback(() => {
     setDialogVisibleRef.current?.(false);
-    Navigation.push<CardSelectorProps>(componentId, {
-      component: {
-        name: 'Guide.CardSelector',
-        passProps: {
-          query,
-          selection,
-          selectedCards,
-          onSelect,
-          includeStoryToggle: true,
-          uniqueName: false,
-          max: choice.option.quantity || 1,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Select Cards`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
+    navigation.navigate('Guide.CardSelector', {
+      query,
+      selection,
+      selectedCards,
+      onSelect,
+      includeStoryToggle: true,
+      uniqueName: false,
+      max: choice.option.quantity || 1,
     });
-  }, [onSelect, componentId, query, choice, selection, selectedCards]);
+  }, [navigation, onSelect, query, choice, selection, selectedCards]);
   const selectedText = useMemo(() => map(selectedCards, c => c.name).join(listSeperator), [selectedCards, listSeperator])
   const quantity = choice.option.quantity || 1;
   const title = editable ?
@@ -468,7 +452,6 @@ function TraitLine({ trait, editable, onRemove, index }: { trait: string; index:
 }
 
 function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
-  componentId: string;
   card: Card;
   setChoice: (choice: ChooseTraitCustomizationChoice) => void;
   editable: boolean;
@@ -570,8 +553,7 @@ function ChooseTraitAdvancedControl({ choice, editable, setChoice }: {
   );
 }
 
-function AdvancedControl({ componentId, card, editable, choice, setChoice, allChoices }: {
-  componentId: string;
+function AdvancedControl({ card, editable, choice, setChoice, allChoices }: {
   card: Card;
   editable: boolean;
   choice: AdvancedCustomizationChoice;
@@ -592,7 +574,6 @@ function AdvancedControl({ componentId, card, editable, choice, setChoice, allCh
     case 'choose_card':
       return (
         <ChooseCardAdvancedControl
-          componentId={componentId}
           card={card}
           editable={editable}
           choice={choice}
@@ -602,7 +583,6 @@ function AdvancedControl({ componentId, card, editable, choice, setChoice, allCh
     case 'choose_trait':
       return (
         <ChooseTraitAdvancedControl
-          componentId={componentId}
           card={card}
           editable={editable}
           choice={choice}
@@ -628,7 +608,6 @@ function AdvancedControl({ componentId, card, editable, choice, setChoice, allCh
 }
 
 interface LineProps {
-  componentId: string;
   card: Card;
   option: CustomizationOption;
   showAll: boolean;
@@ -639,7 +618,7 @@ interface LineProps {
   setChoice: (code: string, choice: CustomizationChoice) => void;
 }
 
-function CustomizationLine({ componentId, card, option, editable, mode, choices, showAll, last, setChoice }: LineProps) {
+function CustomizationLine({ card, option, editable, mode, choices, showAll, last, setChoice }: LineProps) {
   const { borderStyle } = useContext(StyleContext);
   const choice = find(choices, o => o.option.index === option.index);
   const onXpChange = useCallback((index: number, xp: number) => {
@@ -700,7 +679,6 @@ function CustomizationLine({ componentId, card, option, editable, mode, choices,
       </View>
       { !!option.choice && !!choice?.unlocked && !!choice.type && (
         <AdvancedControl
-          componentId={componentId}
           card={card}
           editable={editable && choice.editable}
           choice={choice}
@@ -712,7 +690,7 @@ function CustomizationLine({ componentId, card, option, editable, mode, choices,
   );
 }
 
-export default function CardCustomizationOptions({ setChoice, customizationChoices, card, customizationOptions, width, componentId, editable: propsEditable }: Props) {
+export default function CardCustomizationOptions({ setChoice, customizationChoices, card, customizationOptions, width, editable: propsEditable }: Props) {
   const { deckId, deckEdits } = useContext(DeckEditContext);
   const mode = deckEdits?.mode;
   const deckEditable = deckEdits?.editable;
@@ -741,7 +719,6 @@ export default function CardCustomizationOptions({ setChoice, customizationChoic
               <View style={space.paddingSideS}>
                 { map(customizationOptions, (option, index) => (
                   <CustomizationLine
-                    componentId={componentId}
                     key={option.index}
                     card={card}
                     option={option}

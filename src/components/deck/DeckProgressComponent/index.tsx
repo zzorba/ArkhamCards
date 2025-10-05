@@ -9,7 +9,6 @@ import { l, xs } from '@styles/space';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 
 interface Props {
-  componentId: string;
   deck: Deck;
   cards: CardsMap;
   parsedDeck: ParsedDeck;
@@ -24,7 +23,6 @@ interface Props {
 }
 
 export default function DeckProgressComponent({
-  componentId,
   deck,
   deckId,
   cards,
@@ -45,7 +43,6 @@ export default function DeckProgressComponent({
     <View style={styles.container}>
       { (!!(deck.previousDeckId) || !!showBaseDeck) && (
         <ChangesFromPreviousDeck
-          componentId={componentId}
           title={title}
           cards={cards}
           parsedDeck={parsedDeck}

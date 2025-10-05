@@ -3,7 +3,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { groupBy, map, mapValues, sortBy } from 'lodash';
 import { msgid, ngettext, t } from 'ttag';
 
@@ -24,6 +24,7 @@ import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { where } from '@data/sqlite/query';
 import { Brackets } from 'typeorm/browser';
 import { QuerySort } from '@data/sqlite/types';
+import { useNavigation } from '@react-navigation/native';
 
 const CORE_SET_ICONS = new Set([
   'torch', 'arkham', 'cultists', 'tentacles', 'rats', 'ghouls', 'striking_fear',
@@ -32,7 +33,6 @@ const CORE_SET_ICONS = new Set([
 ]);
 
 interface Props {
-  componentId: string;
   step: EncounterSetsStep;
   campaignGuide: CampaignGuide
   color?: BorderColor;
@@ -103,21 +103,14 @@ function EncounterSetIcon({ set }: { set: { code: string; name: string | undefin
   );
 }
 
-export default function EncounterSetStepComponent({ componentId, color, step, campaignGuide }: Props) {
+export default function EncounterSetStepComponent({ color, step, campaignGuide }: Props) {
   const alphabetizeEncounterSets = useSettingValue('alphabetize');
   const { lang, listSeperator } = useContext(LanguageContext);
-
+  const navigation = useNavigation();
   const errata = useMemo(() => campaignGuide.cardErrata(step.encounter_sets), [campaignGuide, step.encounter_sets]);
   const _viewEncounterErrata = useCallback(() => {
-    Navigation.push<EncounterCardErrataProps>(componentId, {
-      component: {
-        name: 'Guide.CardErrata',
-        passProps: {
-          errata,
-        },
-      },
-    });
-  }, [errata, componentId]);
+    navigation.navigate('Guide.CardErrata', { errata });
+  }, [navigation, errata]);
 
   const rawEncounterSets = useMemo(() => map(
     step.encounter_sets,

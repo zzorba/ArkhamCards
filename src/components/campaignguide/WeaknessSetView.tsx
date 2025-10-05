@@ -7,7 +7,6 @@ import { Slots, TraumaAndCardData } from '@actions/types';
 import withCampaignGuideContext, { CampaignGuideInputProps } from './withCampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import { ControlledWeaknessSetPackChooserComponent } from '@components/weakness/WeaknessSetPackChooserComponent';
-import { NavigationProps } from '@components/nav/types';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import space, { s } from '@styles/space';
 import { AnimatedRoundedFactionBlock } from '@components/core/RoundedFactionBlock';
@@ -23,10 +22,12 @@ import CampaignErrorView from './CampaignErrorView';
 import useProcessedCampaign from './useProcessedCampaign';
 import { useAppDispatch } from '@app/store';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
 
 export type WeaknessSetProps = CampaignGuideInputProps;
 
-function WeaknessSetPackSection({ campaign, componentId, setCampaignWeaknessSet }: { campaign: SingleCampaignT; componentId: string; setCampaignWeaknessSet: SetCampaignWeaknessSetAction }) {
+function WeaknessSetPackSection({ campaign, setCampaignWeaknessSet }: { campaign: SingleCampaignT; setCampaignWeaknessSet: SetCampaignWeaknessSetAction }) {
   const { typography, colors } = useContext(StyleContext);
   const dispatch = useAppDispatch();
   const [liveSelected, toggle] = useToggles(
@@ -90,7 +91,6 @@ function WeaknessSetPackSection({ campaign, componentId, setCampaignWeaknessSet 
     >
       <View style={[space.paddingXs, space.paddingRightS]}>
         <ControlledWeaknessSetPackChooserComponent
-          componentId={componentId}
           onPackCheck={toggle}
           selected={liveSelected}
           compact
@@ -105,7 +105,7 @@ interface WeaknessItem {
   count: number;
 }
 
-function InvestigatorWeakness({ investigator, width, investigatorData, weaknesses }: { componentId: string; investigator: CampaignInvestigator; width: number; investigatorData: TraumaAndCardData; weaknesses: CardsMap | undefined }) {
+function InvestigatorWeakness({ investigator, width, investigatorData, weaknesses }: { investigator: CampaignInvestigator; width: number; investigatorData: TraumaAndCardData; weaknesses: CardsMap | undefined }) {
   const [open, toggleOpen] = useFlag(false);
   const { campaign } = useContext(CampaignGuideContext);
   const deck = useMemo(() => find(campaign.latestDecks(), deck => deck.investigator === investigator.code), [investigator.code, campaign]);
@@ -176,7 +176,7 @@ function InvestigatorWeakness({ investigator, width, investigatorData, weaknesse
   );
 }
 
-function WeaknessSetView({ componentId }: WeaknessSetProps & NavigationProps) {
+function WeaknessSetView() {
   const { backgroundStyle, width } = useContext(StyleContext);
   const { campaignInvestigators, campaign, campaignState, campaignGuide } = useContext(CampaignGuideContext);
   const [processedCampaign, processedCampaignError] = useProcessedCampaign(campaignGuide, campaignState);
@@ -193,7 +193,6 @@ function WeaknessSetView({ componentId }: WeaknessSetProps & NavigationProps) {
       <View style={space.paddingS}>
         <View style={space.paddingBottomS}>
           <WeaknessSetPackSection
-            componentId={componentId}
             campaign={campaign}
             setCampaignWeaknessSet={setCampaignWeaknessSet}
           />
@@ -202,7 +201,6 @@ function WeaknessSetView({ componentId }: WeaknessSetProps & NavigationProps) {
           <View style={space.paddingBottomS} key={investigator.code}>
             <InvestigatorWeakness
               width={width - s * 2}
-              componentId={componentId}
               investigator={investigator}
               investigatorData={processedCampaign.campaignLog.traumaAndCardData(investigator.code)}
               weaknesses={weaknessCards}
@@ -214,7 +212,12 @@ function WeaknessSetView({ componentId }: WeaknessSetProps & NavigationProps) {
   );
 }
 
-export default withCampaignGuideContext(WeaknessSetView, { rootView: false });
+const WrappedComponent = withCampaignGuideContext(WeaknessSetView, { rootView: false });
+export default function WeaknessSetWrapper() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.WeaknessSet'>>();
+  const props = route.params;
+  return <WrappedComponent {...props} />;
+}
 
 const styles = StyleSheet.create({
   block: {

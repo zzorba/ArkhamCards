@@ -1,18 +1,16 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { Navigation } from 'react-native-navigation';
+
 import { Brackets } from 'typeorm/browser';
 import { forEach, map, uniq } from 'lodash';
 import stable from 'stable';
 import { t } from 'ttag';
 
 import NavButton from './NavButton';
-import { SearchSelectProps } from '../cardlist/SearchMultiSelectView';
-import COLORS from '@styles/colors';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   title: string;
   all: string;
   field: string;
@@ -28,8 +26,9 @@ interface Props {
   };
   includeNone?: boolean;
 }
-export default function DbChooserButton({ componentId, title, all, field, includeNone, onChange, fixedTranslations, selection, indent, query, tabooSetId, processValue, capitalize }: Props) {
+export default function DbChooserButton({ title, all, field, includeNone, onChange, fixedTranslations, selection, indent, query, tabooSetId, processValue, capitalize }: Props) {
   const { db } = useContext(DatabaseContext);
+  const navigation = useNavigation();
   const { lang, listSeperator, colon } = useContext(LanguageContext);
   const [pressed, setPressed] = useState(false);
 
@@ -63,43 +62,20 @@ export default function DbChooserButton({ componentId, title, all, field, includ
       const noneString = includeNone && fixedTranslations ? fixedTranslations.none : undefined;
 
       const actualSelection = uniq(fixedTranslations ? map(selection || [], item => fixedTranslations[item] || item) : selection);
-      Navigation.push<SearchSelectProps>(componentId, {
-        component: {
-          name: 'SearchFilters.Chooser',
-          passProps: {
-            placeholder: t`Search ${title}`,
-            values: uniq([
-              ...(noneString ? [noneString] : []),
-              ...(fixedTranslations ? stable(actualValues.slice(), (a, b) => a.localeCompare(b, lang)) : actualValues),
-            ]),
-            onChange: onSelectionChange,
-            selection: actualSelection,
-            capitalize,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: t`Select ${title}`,
-                color: COLORS.M,
-              },
-              backButton: {
-                title: t`Back`,
-                color: COLORS.M,
-              },
-              rightButtons: selection && selection.length > 0 ?
-                [{
-                  text: t`Clear`,
-                  id: 'clear',
-                  color: COLORS.M,
-                  accessibilityLabel: t`Clear`,
-                }] : [],
-            },
-          },
-        },
+      navigation.navigate('SearchFilters.Chooser', {
+        placeholder: t`Search ${title}`,
+        values: uniq([
+          ...(noneString ? [noneString] : []),
+          ...(fixedTranslations ? stable(actualValues.slice(), (a, b) => a.localeCompare(b, lang)) : actualValues),
+        ]),
+        onChange: onSelectionChange,
+        selection: actualSelection,
+        capitalize,
+        title,
       });
       setPressed(false);
     });
-  }, [capitalize, includeNone, db, field, componentId, title, fixedTranslations, lang, setPressed, onSelectionChange, selection, processValue, query, tabooSetId]);
+  }, [navigation, capitalize, includeNone, db, field, title, fixedTranslations, lang, setPressed, onSelectionChange, selection, processValue, query, tabooSetId]);
 
   const selectedDescription = useMemo(() => {
     if (!selection || !selection.length) {

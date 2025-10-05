@@ -1,26 +1,28 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useLayoutEffect } from 'react';
 import {
   StyleSheet,
   View,
 } from 'react-native';
 import { Image as FastImage } from 'expo-image';
 import ViewControl from 'react-native-zoom-view';
-import { Navigation } from 'react-native-navigation';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+
 import { t } from 'ttag';
 
-import { iconsMap } from '@app/NavIcons';
 import Card from '@data/types/Card';
 import { HEADER_HEIGHT } from '@styles/sizes';
-import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useNavigationButtonPressed } from '@components/core/hooks';
+import { useFlag } from '@components/core/hooks';
 import useSingleCard from './useSingleCard';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface CardImageProps {
   id: string;
+  cardName?: string;
 }
 
-type Props = CardImageProps & NavigationProps;
+type Props = CardImageProps;
 
 interface CardImageDetailProps {
   card?: Card;
@@ -92,31 +94,38 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
   );
 }
 
-export default function CardImageView({ componentId, id }: Props) {
-  const { backgroundStyle } = useContext(StyleContext);
+export default function CardImageView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Card.Image'>>();
+  const navigation = useNavigation();
+  const { id, cardName } = route.params;
+  const { backgroundStyle, colors } = useContext(StyleContext);
   const [flipped, toggleFlipped] = useFlag(false);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'flip') {
-      toggleFlipped();
-    }
-  }, componentId, [toggleFlipped]);
   const [card] = useSingleCard(id, 'encounter');
-  useEffect(() => {
+
+  // Set up navigation options with proper styling and buttons
+  useLayoutEffect(() => {
     if (!card) {
       return;
     }
+    const faction = card.factionCode();
     const doubleCard: boolean = card.double_sided || !!(card.linked_card && card.linked_card.hasImage());
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        rightButtons: doubleCard ? [{
-          id: 'flip',
-          icon: iconsMap.flip_card,
-          color: '#FFFFFF',
-          accessibilityLabel: t`Flip Card`,
-        }] : [],
+
+    navigation.setOptions({
+      title: cardName || card.name,
+      headerStyle: {
+        backgroundColor: faction ? colors.faction[faction].background : colors.background,
       },
+      headerTintColor: faction ? '#FFFFFF' : colors.darkText,
+      headerRight: doubleCard ? () => (
+        <HeaderButton
+          iconName="flip_card"
+          color="#FFFFFF"
+          onPress={toggleFlipped}
+          accessibilityLabel={t`Flip Card`}
+        />
+      ) : undefined,
     });
-  }, [card, componentId]);
+  }, [card, cardName, navigation, colors, toggleFlipped]);
   return (
     <View style={[styles.container, backgroundStyle]}>
       <CardImageDetail

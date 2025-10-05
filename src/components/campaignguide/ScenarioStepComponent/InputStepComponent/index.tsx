@@ -36,14 +36,13 @@ import { getOperand } from '@data/scenario/conditionHelper';
 
 interface Props {
   step: InputStep;
-  componentId: string;
   campaignLog: GuidedCampaignLog;
   switchCampaignScenario?: () => void;
   color?: BorderColor;
   border?: boolean;
 }
 
-export default function InputStepComponent({ step, color, componentId, campaignLog, switchCampaignScenario, border }: Props) {
+export default function InputStepComponent({ step, color, campaignLog, switchCampaignScenario, border }: Props) {
   const { campaignId } = useContext(CampaignGuideContext);
   const { width } = useContext(StyleContext);
   switch (step.input.type) {
@@ -128,7 +127,6 @@ export default function InputStepComponent({ step, color, componentId, campaignL
     case 'card_choice':
       return (
         <CardChoicePrompt
-          componentId={componentId}
           id={step.id}
           text={step.text}
           input={step.input}
@@ -165,8 +163,7 @@ export default function InputStepComponent({ step, color, componentId, campaignL
       return (
         <UpgradeDecksInput
           id={step.id}
-          componentId={componentId}
-          skipDeckSave={step.input.skip_decks}
+                    skipDeckSave={step.input.skip_decks}
           specialXp={step.input.special_xp}
           storyCards={step.input.story_cards}
           investigatorCounter={step.input.counter}
@@ -178,8 +175,7 @@ export default function InputStepComponent({ step, color, componentId, campaignL
       return (
         <SaveDecksInput
           id={step.id}
-          componentId={componentId}
-          includeTrauma={step.input.trauma}
+                    includeTrauma={step.input.trauma}
           adjustXp={step.input.adjust_xp}
         />
       );
@@ -188,8 +184,7 @@ export default function InputStepComponent({ step, color, componentId, campaignL
         <PlayScenarioComponent
           id={step.id}
           campaignId={campaignId}
-          componentId={componentId}
-          input={step.input}
+                    input={step.input}
           text={step.text}
         />
       );
@@ -235,8 +230,7 @@ export default function InputStepComponent({ step, color, componentId, campaignL
     case 'receive_campaign_link':
       return (
         <ReceiveCampaignLinkInputComponent
-          componentId={componentId}
-          id={step.id}
+                    id={step.id}
           input={step.input}
           campaignLog={campaignLog}
           switchCampaignScenario={switchCampaignScenario}

@@ -1,18 +1,21 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useLayoutEffect, useMemo } from 'react';
 import { map, sortBy } from 'lodash';
 import { ScrollView, View } from 'react-native';
 import { Table, Row, Cell } from 'react-native-table-component';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 
 import Rule, { RuleTableRow } from '@data/types/Rule';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { openUrl } from '@components/nav/helper';
 import { s, m } from '@styles/space';
-import { NavigationProps } from '@components/nav/types';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { useSelector } from 'react-redux';
 import { AppState, makeTabooSetSelector } from '@reducers';
+import { RootStackParamList } from '@navigation/types';
+import { useLayout } from '@react-native-community/hooks';
+import RuleTitleComponent from './RuleTitleComponent';
 
 export interface RuleViewProps {
   rule: Rule
@@ -46,14 +49,15 @@ function RuleTable({ table }: { table: RuleTableRow[] }) {
   );
 }
 
-function RuleComponent({ componentId, rule, level, noTitle }: { componentId: string; rule: Rule; level: number; noTitle?: boolean }) {
+function RuleComponent({ rule, level, noTitle }: { rule: Rule; level: number; noTitle?: boolean }) {
+  const navigation = useNavigation();
   const { db } = useContext(DatabaseContext);
   const tabooSetSelector = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, undefined));
   const linkPressed = useCallback(
-    (url: string, context: StyleContextType) => {
-      openUrl(url, context, db, componentId, tabooSetId);
-    }, [componentId, db, tabooSetId]);
+    (url: string) => {
+      openUrl(navigation, url, db, tabooSetId);
+    }, [navigation, db, tabooSetId]);
   const rules = useMemo(() => sortBy(rule.rules || [], rule => rule.order || 0), [rule.rules]);
   return (
     <>
@@ -62,17 +66,26 @@ function RuleComponent({ componentId, rule, level, noTitle }: { componentId: str
         { !!rule.text && <CardTextComponent text={rule.text} onLinkPress={linkPressed} />}
         { !!rule.table && <RuleTable table={rule.table} /> }
       </View>
-      { map(rules, (rule, idx) => <RuleComponent key={idx} componentId={componentId} rule={rule} level={level + 1} />) }
+      { map(rules, (rule, idx) => <RuleComponent key={idx} rule={rule} level={level + 1} />) }
     </>
   );
 }
 
-type Props = RuleViewProps & NavigationProps;
-export default function RuleView({ componentId, rule }: Props) {
+export default function RuleView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Rule'>>();
+  const { rule } = route.params;
   const { backgroundStyle } = useContext(StyleContext);
+  const navigation = useNavigation();
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      header: () => (
+        <RuleTitleComponent title={rule.title} />
+      ),
+    })
+  }, [navigation, rule]);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
-      <RuleComponent componentId={componentId} rule={rule} level={0} noTitle />
+      <RuleComponent rule={rule} level={0} noTitle />
     </ScrollView>
   );
 }

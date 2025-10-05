@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useLayoutEffect, useMemo, useState } from 'react';
 import { filter, flatMap, find, flatten, keys, uniq, throttle } from 'lodash';
 import {
   Keyboard,
@@ -6,28 +6,28 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation, Options } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
 import { useInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
 import useTabView from '@components/core/useTabView';
 import InvestigatorSelectorTab from './InvestigatorSelectorTab';
 import DeckSelectorTab from './DeckSelectorTab';
-import { NewDeckProps } from '@components/deck/NewDeckView';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { NavigationProps } from '@components/nav/types';
 import { CampaignId, Deck, SortType, SORT_BY_PACK, SORT_BY_CARD_ID } from '@actions/types';
-import { iconsMap } from '@app/NavIcons';
 import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
 import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
-import { useFlag, useInvestigators, useNavigationButtonPressed } from '@components/core/hooks';
+import { useFlag, useInvestigators } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;
@@ -43,59 +43,15 @@ export interface MyDecksSelectorProps {
   includeParallel?: boolean;
 }
 
-type Props = NavigationProps & MyDecksSelectorProps;
-
-function deckOptions(passProps: Props): Options {
-  return {
-    topBar: {
-      title: {
-        text: passProps.singleInvestigator ? t`Select Deck` : t`Choose an Investigator`,
-      },
-      leftButtons: [{
-        icon: iconsMap.dismiss,
-        id: 'close',
-        color: COLORS.M,
-        accessibilityLabel: t`Cancel`,
-      }],
-      rightButtons: passProps.onlyShowSelected ? [] : [{
-        icon: iconsMap['plus-button'],
-        id: 'add',
-        color: COLORS.M,
-        accessibilityLabel: t`New Deck`,
-      }],
-    },
-  };
-}
-
-function investigatorOptions(): Options {
-  return {
-    topBar: {
-      title: {
-        text: t`Choose an Investigator`,
-      },
-      leftButtons: [{
-        icon: iconsMap.dismiss,
-        id: 'close',
-        color: COLORS.M,
-        accessibilityLabel: t`Cancel`,
-      }],
-      rightButtons: [{
-        icon: iconsMap.sort,
-        id: 'sort',
-        color: COLORS.M,
-        accessibilityLabel: t`Sort`,
-      }],
-    },
-  };
-}
-
-function MyDecksSelectorDialog(props: Props) {
-  const { fontScale, typography, width } = useContext(StyleContext);
+function MyDecksSelectorDialog() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Dialog.DeckSelector'>>();
   const {
-    componentId, campaignId, onDeckSelect, onInvestigatorSelect,
+    campaignId, onDeckSelect, onInvestigatorSelect,
     singleInvestigator, selectedDecks, selectedInvestigatorIds,
     onlyShowSelected, simpleOptions, includeParallel,
-  } = props;
+  } = route.params;
+  const navigation = useNavigation();
+  const { fontScale, typography, width } = useContext(StyleContext);
 
   const campaign = useCampaign(campaignId);
 
@@ -136,35 +92,52 @@ function MyDecksSelectorDialog(props: Props) {
   console.log('includeParallel', includeParallel)
   const showNewDeckDialog = useMemo(() => {
     return throttle(() => {
-      Navigation.push<NewDeckProps>(componentId, {
-        component: {
-          name: 'Deck.New',
-          passProps: {
-            campaignId,
-            onCreateDeck: onDeckSelect,
-            filterInvestigators,
-            onlyInvestigators,
-            includeParallel,
-          },
-        },
+      navigation.navigate('Deck.New', {
+        campaignId,
+        onCreateDeck: onDeckSelect,
+        filterInvestigators,
+        onlyInvestigators,
+        includeParallel,
       });
     }, 200);
-  }, [componentId, campaignId, onDeckSelect, filterInvestigators, onlyInvestigators, includeParallel]);
+  }, [navigation, campaignId, onDeckSelect, filterInvestigators, onlyInvestigators, includeParallel]);
   const [investigatorSortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, setSelectedSort);
   const showSortDialog = useCallback(() => {
     Keyboard.dismiss();
     showInvestigatorSortDialog();
   }, [showInvestigatorSortDialog]);
+  const [selectedTab, onTabChange] = useState<string>('decks');
 
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'add') {
-      showNewDeckDialog();
-    } else if (buttonId === 'close') {
-      Navigation.dismissModal(componentId);
-    } else if (buttonId === 'sort') {
-      showSortDialog();
+  useLayoutEffect(() => {
+    switch (selectedTab) {
+      case 'decks':
+        navigation.setOptions({
+          title: singleInvestigator ? t`Select Deck` : t`Choose an Investigator`,
+          headerRight: () => (
+            <HeaderButton
+              iconName="plus-button"
+              color={COLORS.M}
+              accessibilityLabel={t`New Deck`}
+              onPress={showNewDeckDialog}
+            />
+          ),
+        });
+        break;
+      case 'investigators':
+        navigation.setOptions({
+          title: t`Choose an Investigator`,
+          headerRight: () => (
+            <HeaderButton
+              iconName="sort"
+              color={COLORS.M}
+              accessibilityLabel={t`Sort`}
+              onPress={showSortDialog}
+            />
+          ),
+        });
+        break;
     }
-  }, componentId, [componentId, showNewDeckDialog, showSortDialog]);
+  }, [navigation, selectedTab, singleInvestigator, showSortDialog, showNewDeckDialog]);
 
   const onlyDecks = useMemo(() => {
     if (onlyShowSelected) {
@@ -225,12 +198,6 @@ function MyDecksSelectorDialog(props: Props) {
   }, [campaign, onlyShowSelected, singleInvestigator, simpleOptions, typography, fontScale,
     hideOtherCampaignDecks, hideEliminatedInvestigators, onlyShowPreviousCampaignMembers,
     toggleHideOtherCampaignDecks, toggleHideEliminatedInvestigators, toggleOnlyShowPreviousCampaignMembers]);
-  const onTabChange = useCallback((tab: string) => {
-    Navigation.mergeOptions(
-      componentId,
-      tab === 'decks' ? deckOptions(props) : investigatorOptions()
-    );
-  }, [componentId, props]);
 
   const filterDeck = useCallback((deck: MiniDeckT): string | undefined => {
     if (singleInvestigator && deck.investigator !== singleInvestigator && deck.alternate_investigator !== singleInvestigator) {
@@ -269,21 +236,19 @@ function MyDecksSelectorDialog(props: Props) {
   }, [toggleHideOtherCampaignDecks, width]);
   const deckTab = useMemo(() => (
     <DeckSelectorTab
-      componentId={componentId}
       onDeckSelect={onDeckSelect}
       searchOptions={searchOptions(true)}
       onlyDecks={onlyDecks}
       filterDeck={filterDeck}
       renderExpandButton={renderExpandButton}
     />
-  ), [componentId, onDeckSelect, searchOptions, filterDeck, renderExpandButton, onlyDecks]);
+  ), [onDeckSelect, searchOptions, filterDeck, renderExpandButton, onlyDecks]);
   const investigatorTab = useMemo(() => {
     if (!onInvestigatorSelect) {
       return null;
     }
     return (
       <InvestigatorSelectorTab
-        componentId={componentId}
         sort={selectedSort}
         onInvestigatorSelect={onInvestigatorSelect}
         searchOptions={searchOptions(false)}
@@ -291,7 +256,7 @@ function MyDecksSelectorDialog(props: Props) {
         includeParallel={includeParallel}
       />
     );
-  }, [componentId, selectedSort, onInvestigatorSelect, searchOptions, filterInvestigators, includeParallel]);
+  }, [selectedSort, onInvestigatorSelect, searchOptions, filterInvestigators, includeParallel]);
   const tabs = useMemo(() => {
     return investigatorTab ? [
       {
@@ -322,9 +287,7 @@ function MyDecksSelectorDialog(props: Props) {
     </>
   );
 }
-MyDecksSelectorDialog.options = (passProps: Props) => {
-  return deckOptions(passProps);
-};
+
 export default MyDecksSelectorDialog;
 
 const styles = StyleSheet.create({

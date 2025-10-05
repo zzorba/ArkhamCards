@@ -1,10 +1,10 @@
 import React, { useCallback, useContext } from 'react';
-import { Navigation } from 'react-native-navigation';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+
 import { t } from 'ttag';
 import { find, filter, forEach, map } from 'lodash';
 
 import { UploadedCampaignId } from '@actions/types';
-import { NavigationProps } from '@components/nav/types';
 import { useEditCampaignAccessRequest } from '@data/remote/campaigns';
 import useFriendFeedComponent, { FriendFeedItem } from '@components/social/useFriendFeedComponent';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -12,12 +12,16 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCampaignAccess, UserProfile } from '@data/remote/hooks';
 import { FriendsViewProps } from '@components/social/FriendsView';
 import { EditAccessAction } from '@generated/graphql/apollo-schema';
+import { BasicStackParamList } from '@navigation/types';
 
 export interface CampaignAccessProps {
   campaignId: UploadedCampaignId;
   isOwner: boolean;
 }
-export default function EditCampaignAccessView({ campaignId, isOwner, componentId }: CampaignAccessProps & NavigationProps) {
+export default function EditCampaignAccessView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Campaign.Access'>>();
+  const navigation = useNavigation();
+  const { campaignId, isOwner } = route.params;
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignAccess = useCampaignAccess(campaignId);
   const editCampaignAccess = useEditCampaignAccessRequest();
@@ -29,23 +33,9 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
   }, [editCampaignAccess, campaignId]);
   const editFriendsPressed = useCallback(() => {
     if (userId) {
-      Navigation.push<FriendsViewProps>(componentId, {
-        component: {
-          name: 'Friends',
-          passProps: {
-            userId,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: t`Your Friends`,
-              },
-            },
-          },
-        },
-      });
+      navigation.navigate('Friends', { userId, title: t`Your Friends` });
     }
-  }, [componentId, userId]);
+  }, [navigation, userId]);
 
   const toFeed = useCallback((isSelf: boolean, profile?: UserProfile) => {
     const feed: FriendFeedItem[] = [];
@@ -103,7 +93,7 @@ export default function EditCampaignAccessView({ campaignId, isOwner, componentI
     });
     return feed;
   }, [campaignAccess, userId, isOwner, editFriendsPressed, inviteUser, removeUser]);
-  const [feed] = useFriendFeedComponent({ componentId, userId, toFeed });
+  const [feed] = useFriendFeedComponent({ userId, toFeed });
   if (!userId) {
     return <LoadingSpinner />;
   }

@@ -12,8 +12,7 @@ interface Props {
 export default function SignatureCardItem({ card, componentId, width }: Props) {
   return (
     <TwoSidedCardComponent
-      componentId={componentId}
-      card={card}
+            card={card}
       width={width}
       showBack
     />

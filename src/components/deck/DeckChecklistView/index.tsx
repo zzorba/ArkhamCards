@@ -1,14 +1,11 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { Options } from 'react-native-navigation';
+import React, { useCallback, useContext, useLayoutEffect, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
-import { iconsMap } from '@app/NavIcons';
 import { Slots, SortType, DeckId, CampaignId } from '@actions/types';
 import { AppState, getCardSort } from '@reducers';
-import { NavigationProps } from '@components/nav/types';
 import { resetDeckChecklist } from '@components/deck/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import DbCardResultList from '@components/cardlist/CardSearchResultsComponent/DbCardResultList';
@@ -18,7 +15,6 @@ import COLORS from '@styles/colors';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ParsedDeckResults, useParsedDeck } from '@components/deck/hooks';
-import { useNavigationButtonPressed } from '@components/core/hooks';
 import { useInvestigatorChoice } from '@components/card/useSingleCard';
 import { useCampaignDeck } from '@data/hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -26,6 +22,9 @@ import KeepAwake from 'react-native-keep-awake';
 import { updateCardSorts } from '@components/filter/actions';
 import { find } from 'lodash';
 import { DeckEditContext, ParsedDeckContextProvider, useChecklistCount, useDeckSlotCount } from '../DeckEditContext';
+import { RootStackParamList } from '@navigation/types';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface DeckChecklistProps {
   id: DeckId;
@@ -33,8 +32,6 @@ export interface DeckChecklistProps {
   campaignId?: CampaignId;
   tabooSetOverride?: number;
 }
-
-type Props = DeckChecklistProps & NavigationProps;
 
 function ChecklistCard({
   id,
@@ -64,11 +61,11 @@ function ChecklistCard({
 }
 
 function DeckChecklistView({
-  componentId,
   id,
   parsedDeck,
   investigator,
-}: { id: DeckId; parsedDeck: ParsedDeckResults; investigator: InvestigatorChoice | undefined } & NavigationProps) {
+}: { id: DeckId; parsedDeck: ParsedDeckResults; investigator: InvestigatorChoice | undefined }) {
+  const navigation = useNavigation();
   const { backgroundStyle, colors, typography, fontScale, width } = useContext(StyleContext);
   const { checklist } = useContext(DeckEditContext);
 
@@ -82,11 +79,19 @@ function DeckChecklistView({
     return !!checklist && !!find(Object.values(checklist), f => !!f?.length);
   }, [checklist]);
   const [sortDialog, showSortDialog] = useSortDialog(setSorts, sorts, false);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'sort') {
-      showSortDialog();
-    }
-  }, componentId, [sorts, setSorts]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButton
+          iconName="sort"
+          color={COLORS.white}
+          accessibilityLabel={t`Sort`}
+          onPress={showSortDialog}
+        />
+      ),
+    });
+  }, [navigation, showSortDialog]);
 
   const renderCard = useCallback((card: Card, cardId: string, onPressId: (id: string, card: Card) => void) => {
     return (
@@ -122,7 +127,6 @@ function DeckChecklistView({
     <View style={[backgroundStyle, { flex: 1 }]}>
       <KeepAwake />
       <DbCardResultList
-        componentId={componentId}
         deck={parsedDeck.deckT}
         filterId={id.uuid}
         investigator={investigator}
@@ -140,37 +144,22 @@ function DeckChecklistView({
   );
 }
 
-function DeckChecklistViewWrapper({ campaignId, id, componentId }: Props) {
+function DeckChecklistViewWrapper() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Deck.Checklist'>>();
+  const { campaignId, id } = route.params;
+
   const deck = useCampaignDeck(id, campaignId);
-  const parsedDeck = useParsedDeck(id, componentId);
+  const parsedDeck = useParsedDeck(id);
   const deckEdits = parsedDeck?.deckEdits;
   const investigator = useInvestigatorChoice(deck?.investigator, deckEdits?.meta, deckEdits?.tabooSetChange || deck?.deck.taboo_id);
 
   return (
     <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>
-      <DeckChecklistView id={id} componentId={componentId} parsedDeck={parsedDeck} investigator={investigator} />
+      <DeckChecklistView id={id} parsedDeck={parsedDeck} investigator={investigator} />
     </ParsedDeckContextProvider>
   );
 }
 
-DeckChecklistViewWrapper.options = (): Options => {
-  return {
-    topBar: {
-      title: {
-        text: t`Checklist`,
-        color: COLORS.white,
-      },
-      rightButtons: [
-        {
-          icon: iconsMap.sort,
-          id: 'sort',
-          color: COLORS.white,
-          accessibilityLabel: t`Sort`,
-        },
-      ],
-    },
-  };
-};
 export default DeckChecklistViewWrapper;
 
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { filter, map } from 'lodash';
 import {
   Keyboard,
@@ -6,18 +6,20 @@ import {
   View,
 } from 'react-native';
 import Animated from 'react-native-reanimated';
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import { NavigationProps } from '@components/nav/types';
 import SelectRow from './SelectRow';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { searchBoxHeight } from '@components/core/SearchBox';
-import { useNavigationButtonPressed } from '@components/core/hooks';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface SearchSelectProps {
+  title: string;
   placeholder: string;
   onChange: (selection: string[]) => void;
   values: string[];
@@ -35,32 +37,30 @@ function keyExtractor(item: Item) {
 }
 
 // eslint-disable-next-line react/prop-types
-export default function SearchMultiSelectView({ componentId, placeholder, onChange, values, selection: initialSelection, capitalize }: NavigationProps & SearchSelectProps) {
+export default function SearchMultiSelectView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'SearchFilters.Chooser'>>();
+  const { placeholder, onChange, values, selection: initialSelection, capitalize } = route.params;
+  const navigation = useNavigation();
   const { backgroundStyle, fontScale } = useContext(StyleContext);
   const [selection, setSelection] = useState<string[]>(initialSelection || []);
   const [search, setSearch] = useState('');
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'clear') {
-      setSelection([]);
-    }
-  }, componentId, [setSelection]);
+  const clearSelection = useCallback(() => setSelection([]), [setSelection]);
   const hasSelection = selection.length > 0;
   useEffect(() => {
     onChange(selection);
   }, [selection, onChange]);
-  useEffect(() => {
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        rightButtons: hasSelection ?
-          [{
-            text: t`Clear`,
-            id: 'clear',
-            color: COLORS.M,
-            accessibilityLabel: t`Clear`,
-          }] : [],
-      },
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: hasSelection ? () => (
+        <HeaderButton
+          text={t`Clear`}
+          color={COLORS.M}
+          onPress={clearSelection}
+          accessibilityLabel={t`Clear`}
+        />
+      ) : undefined,
     });
-  }, [hasSelection, componentId]);
+  }, [hasSelection, navigation, clearSelection]);
 
   const onSelectChanged = useCallback((value: string, selected: boolean) => {
     Keyboard.dismiss();

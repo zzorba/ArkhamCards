@@ -1,39 +1,20 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
-import { t } from 'ttag';
 
-import { LocationSetupProps } from '../LocationSetupView';
 import { LocationSetupStep } from '@data/scenario/types';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space from '@styles/space';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
   step: LocationSetupStep;
-  componentId: string;
 }
 
-export default function LocationSetupButton({ componentId, step }: Props) {
+export default function LocationSetupButton({ step }: Props) {
+  const navigation = useNavigation();
   const onPress = useCallback(() => {
-    Navigation.push<LocationSetupProps>(componentId, {
-      component: {
-        name: 'Guide.LocationSetup',
-        passProps: {
-          step,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: step.text,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, step]);
+    navigation.navigate('Guide.LocationSetup', { step })
+  }, [navigation, step]);
   return (
     <View style={space.marginSideM}>
       <DeckButton

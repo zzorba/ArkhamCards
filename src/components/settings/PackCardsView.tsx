@@ -2,23 +2,20 @@ import React, { useCallback } from 'react';
 import { Brackets } from 'typeorm/browser';
 
 import CardSearchComponent from '../cardlist/CardSearchComponent';
-import { NavigationProps } from '@components/nav/types';
 import { combineQueries, where } from '@data/sqlite/query';
 import { SORT_BY_PACK } from '@actions/types';
 import FilterBuilder from '@lib/filters';
+import { BasicStackParamList } from '@navigation/types';
+import { RouteProp, useRoute } from '@react-navigation/native';
 
 export interface PackCardsProps {
   pack_code: string;
   baseQuery?: Brackets;
 }
 
-type Props = NavigationProps & PackCardsProps;
-
-export default function PackCardsView({
-  componentId,
-  pack_code,
-  baseQuery,
-}: Props) {
+export default function PackCardsView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Pack'>>();
+  const { pack_code, baseQuery } = route.params;
   const query = useCallback(() => {
     const filters = new FilterBuilder('packs');
     return combineQueries(
@@ -32,7 +29,6 @@ export default function PackCardsView({
   }, [pack_code, baseQuery]);
   return (
     <CardSearchComponent
-      componentId={componentId}
       baseQuery={query}
       sort={SORT_BY_PACK}
       showNonCollection

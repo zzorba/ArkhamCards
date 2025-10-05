@@ -1,6 +1,7 @@
 import { useCallback, useContext, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import { useNavigation } from '@react-navigation/native';
+
 import { Brackets } from 'typeorm/browser';
 import { createSelector } from 'reselect';
 import { t } from 'ttag';
@@ -29,40 +30,25 @@ const makeFilterSelector = (): (state: AppState, filterId: string, useCardTraits
 
 
 type Props = {
-  componentId: string;
   filterId: string;
   baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
   modal?: boolean;
 };
 
-export function useFilterButton({ componentId, filterId, baseQuery, modal }: Props): [boolean, () => void] {
+export function useFilterButton({ filterId, baseQuery, modal }: Props): [boolean, () => void] {
   const { useCardTraits } = useContext(LanguageContext);
+  const navigation = useNavigation();
   const filterSelector = useMemo(() => makeFilterSelector(), []);
   const [filters, cardData] = useSelector((state: AppState) => filterSelector(state, filterId, useCardTraits));
   const onPress = useCallback(() => {
     if (!cardData) {
       return;
     }
-    Navigation.push<CardFilterProps>(componentId, {
-      component: {
-        name: 'SearchFilters',
-        passProps: {
-          filterId,
-          baseQuery,
-          modal,
-        },
-        options: {
-          topBar: {
-            backButton: {
-              title: t`Apply`,
-            },
-            title: {
-              text: t`Filters`,
-            },
-          },
-        },
-      },
+    navigation.push('SearchFilters', {
+      filterId,
+      baseQuery,
+      modal,
     });
-  }, [filterId, componentId, baseQuery, modal, cardData]);
+  }, [filterId, navigation, baseQuery, modal, cardData]);
   return [filters, onPress];
 }

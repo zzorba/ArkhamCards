@@ -49,7 +49,6 @@ function deckMessage(saved: boolean, hasDeck: boolean, hasAdjustments: boolean, 
   return t`When you have finished making adjustments, press the 'Save' button to record your changes.`;
 }
 interface Props {
-  componentId: string;
   id: string;
   campaignState: CampaignStateHelper;
   scenarioState: ScenarioStateHelper;
@@ -67,7 +66,6 @@ function computeChoiceId(stepId: string, investigator: CampaignInvestigator) {
 }
 
 function SaveDeckRow({
-  componentId,
   id,
   campaignState,
   scenarioState,
@@ -142,8 +140,8 @@ function SaveDeckRow({
   }, [deck, userId, storyAssetDeltas, adjustXp, saveDeck, saveDelayedDeck, saveCampaignLog]);
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, { showSpoilers: true });
-  }, [componentId, colors]);
+    showCard(card.code, card, colors, { showSpoilers: true });
+  }, [colors]);
 
   const renderDeltas = useCallback((cards: Card[], deltas: Slots) => {
     return map(

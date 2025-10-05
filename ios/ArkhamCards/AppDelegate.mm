@@ -1,11 +1,11 @@
 #import "AppDelegate.h"
+#import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
 #import <React/RCTBundleURLProvider.h>
 
 // Custom imports
 #import <Firebase.h>
 #import <GoogleSignIn/GoogleSignIn.h>
-#import <ReactNativeNavigation/ReactNativeNavigation.h>
 #import <RNKeyEvent.h>
 
 
@@ -42,19 +42,19 @@ RNKeyEvent *keyEvent = nil;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
-  [ReactNativeNavigation bootstrapWithBridge:bridge];
+  self.moduleName = @"arkhamcards";
+  // You can add your custom initial props in the dictionary below.
+  // They will be passed down to the ViewController used by React Native.
+  self.initialProps = @{};
 
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }
 
-  return YES;
+  return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
-- (NSArray<id<RCTBridgeModule>> *)extraModulesForBridge:(RCTBridge *)bridge {
-  return [ReactNativeNavigation extraModulesForBridge:bridge];
-}
+// Remove the extraModulesForBridge method since we're not using RNN anymore
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
   if ([self.authorizationFlowManagerDelegate resumeExternalUserAgentFlowWithURL:url]) {

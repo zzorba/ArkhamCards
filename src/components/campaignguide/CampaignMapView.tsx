@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useRef, useEffect, useMemo, useState, useLayoutEffect } from 'react';
 import { Image, LayoutChangeEvent, Platform, ScrollView, StyleSheet, Text, TextStyle, View } from 'react-native';
 import { interpolate } from 'react-native-reanimated';
 import PanPinchView from 'react-native-pan-pinch-view';
@@ -13,16 +13,15 @@ import {
   Path,
 } from 'react-native-svg';
 
-import { NavigationProps } from '@components/nav/types';
 import { CampaignGuideInputProps } from './withCampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import { DossierElement, Dossier, MapLabel, MapLocation, CampaignMap } from '@data/scenario/types';
 import { useDialog } from '@components/deck/dialogs';
 import space, { s, l } from '@styles/space';
-import { Navigation } from 'react-native-navigation';
+
 import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
-import { useBackButton, useNavigationButtonPressed, useSettingValue } from '@components/core/hooks';
+import { useBackButton, useSettingValue } from '@components/core/hooks';
 import { TouchableOpacity, TouchableQuickSize } from '@components/core/Touchables';
 
 import MapSvg from '../../../assets/map.svg';
@@ -35,6 +34,9 @@ import MapToggleButton from './MapToggleButton';
 import { MAX_WIDTH } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { VisibleCalendarEntry } from '@data/scenario/GuidedCampaignLog';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+import HeaderTitle from '@components/core/HeaderTitle';
 
 const PAPER_TEXTURE = require('../../../assets/paper.jpeg');
 
@@ -145,6 +147,7 @@ export interface CampaignMapProps extends CampaignGuideInputProps {
   visitedLocations: string[];
   unlockedLocations: string[];
   unlockedDossiers: string[];
+  subtitle: string | undefined;
 }
 
 const italicStyle = {
@@ -898,14 +901,16 @@ function visitMessage(alreadyVisited: boolean, status: 'locked' | 'side' | 'stan
 }
 
 
-export default function CampaignMapView(props: CampaignMapProps & NavigationProps) {
-  const { componentId, statusReports, currentTime, onSelect, campaignMap, visitedLocations, unlockedLocations, unlockedDossiers, hasFast } = props;
+export default function CampaignMapView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Campaign.Map'>>();
+  const { subtitle, statusReports, currentTime, onSelect, campaignMap, visitedLocations, unlockedLocations, unlockedDossiers, hasFast } = route.params;
+  const navigation = useNavigation();
   const [currentLocation, visited] = useMemo(() => {
     return [
-      find(campaignMap?.locations, location => location.id === (props.currentLocation || 'london')),
+      find(campaignMap?.locations, location => location.id === (route.params.currentLocation || 'london')),
       new Set(visitedLocations),
     ];
-  }, [campaignMap, props.currentLocation, visitedLocations]);
+  }, [campaignMap, route.params.currentLocation, visitedLocations]);
 
   const { colors, backgroundStyle, typography, width, height } = useContext(StyleContext);
   const [selectedLocation, setSelectedLocation] = useState<MapLocation>();
@@ -914,16 +919,16 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
   const onDismiss = useCallback(() => {
     setDialogVisibleRef.current?.(false);
     hiding.current = true;
-    setTimeout(() => Navigation.dismissModal(componentId), 50);
+    setTimeout(() => navigation.goBack(), 50);
     return true;
-  }, [componentId]);
+  }, [navigation]);
 
   const travelDistances = useMemo(() => {
-    if (props.currentLocation) {
-      return computeShortestPaths(props.currentLocation, campaignMap.locations);
+    if (route.params.currentLocation) {
+      return computeShortestPaths(route.params.currentLocation, campaignMap.locations);
     }
     return undefined;
-  }, [props.currentLocation, campaignMap.locations]);
+  }, [route.params.currentLocation, campaignMap.locations]);
 
   const moveToLocation = useCallback((info: TravelInfo) => {
     const {
@@ -1034,7 +1039,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
         groupBy(
           sortBy(
             sortBy(
-              filter(campaignMap.locations, location => location.id !== props.currentLocation),
+              filter(campaignMap.locations, location => location.id !== route.params.currentLocation),
               location => location.name
             ),
             location => travelDistances?.[location.id]?.time || 1
@@ -1062,7 +1067,7 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
         return `dist_${travelDistances?.[location.id]?.time || 1}`;
       }
     );
-  }, [campaignMap.locations, props.currentLocation, unlockedLocations, travelDistances, visited]);
+  }, [campaignMap.locations, route.params.currentLocation, unlockedLocations, travelDistances, visited]);
   /*
   code to generate all the connections
   useEffect(() => {
@@ -1092,25 +1097,17 @@ export default function CampaignMapView(props: CampaignMapProps & NavigationProp
   }, []);
 */
 
-  useEffect(() => {
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        rightButtons: [
-          {
-            id: 'toggle',
-            component: {
-              name: 'MapToggleButton',
-              passProps: {},
-              width: MapToggleButton.WIDTH,
-              height: MapToggleButton.HEIGHT,
-            },
-            accessibilityLabel: t`Map`,
-            enabled: true,
-          },
-        ],
-      },
-    });
-  }, [componentId]);
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerBackTitle: t`Close`,
+      headerTitle: () => (
+        <HeaderTitle title={t`Map`} subtitle={subtitle} />
+      ),
+      headerRight: () => (
+        <MapToggleButton />
+      ),
+    })
+  }, [navigation, subtitle]);
   const [viewHeight, setViewHeight] = useState(height - 80);
   const onLayout = useCallback((event: LayoutChangeEvent) => {
     if (!hiding.current) {

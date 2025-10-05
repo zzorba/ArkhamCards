@@ -1,8 +1,8 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
-import { Platform, ScrollView, StyleSheet, View } from 'react-native';
+import React, { useCallback, useContext, useLayoutEffect, useMemo } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 import { useDispatch } from 'react-redux';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+
 import { t } from 'ttag';
 import { Action } from 'redux';
 
@@ -10,10 +10,9 @@ import BasicButton from '@components/core/BasicButton';
 import { CampaignId, CUSTOM, Deck, DeckId, getDeckId, OZ, Slots, Trauma, WeaknessSet } from '@actions/types';
 import DecksSection from './DecksSection';
 import { updateCampaignXp, cleanBrokenCampaigns, addInvestigator, removeInvestigator, updateCampaignInvestigatorTrauma, updateCampaignWeaknessSet, updateCampaignName } from '../actions';
-import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useLatestDecksCards, useNavigationButtonPressed, useWeaknessCards } from '@components/core/hooks';
+import { useLatestDecksCards, useWeaknessCards } from '@components/core/hooks';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
 import useTraumaDialog from '../useTraumaDialog';
 import { showAddScenarioResult, showDrawWeakness } from '@components/campaign/nav';
@@ -28,8 +27,6 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useCampaignId, useXpDialog } from '../hooks';
 import DeckButton from '@components/deck/controls/DeckButton';
 import DeleteCampaignButton from '../DeleteCampaignButton';
-import { CampaignLogViewProps } from '../CampaignLogView';
-import { CampaignScenariosViewProps } from '../CampaignScenariosView';
 import UploadCampaignButton from '../UploadCampaignButton';
 import useChaosBagDialog from './useChaosBagDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
@@ -42,23 +39,26 @@ import { useAppDispatch } from '@app/store';
 import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
 import CampaignHeader from '@components/campaignguide/CampaignHeader';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface CampaignDetailProps {
   campaignId: CampaignId;
   upload?: boolean;
 }
 
-type Props = NavigationProps & CampaignDetailProps
-
 const EMPTY_CHAOS_BAG = {};
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
 
-function CampaignDetailView(props: Props) {
-  const { componentId, upload } = props;
+function CampaignDetailView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Campaign'>>();
+  const navigation = useNavigation();
+  const { upload } = route.params;
 
   const [textEditDialog, showTextEditDialog] = useTextEditDialog();
   const [countDialog, showCountDialog] = useCountDialog();
-  const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(props.campaignId);
+  const [campaignId, setCampaignServerId, uploadingCampaign] = useCampaignId(route.params.campaignId);
   const { backgroundStyle } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const weaknessCards = useWeaknessCards();
@@ -78,7 +78,7 @@ function CampaignDetailView(props: Props) {
     traumaDialog,
   } = useTraumaDialog(updateInvestigatorTrauma);
 
-  useCampaignDeleted(componentId, campaign);
+  useCampaignDeleted(navigation, campaign);
 
   const updateWeaknessSet = useCallback((weaknessSet: WeaknessSet) => {
     dispatch(updateCampaignWeaknessSet(updateCampaignActions.setWeaknessSet, campaignId, weaknessSet));
@@ -88,49 +88,40 @@ function CampaignDetailView(props: Props) {
     dispatch(updateCampaignXp(updateCampaignActions, campaignId, code, value, 'spentXp'));
   }, [dispatch, campaignId, updateCampaignActions]);
   const name = campaign?.name;
-  useEffect(() => {
-    if (name) {
-      Navigation.mergeOptions(componentId, {
-        topBar: {
-          title: {
-            text: name,
-          },
-        },
-      });
-    }
-  }, [name, componentId]);
 
   const cleanBrokenCampaignsPressed = useCallback(() => {
     dispatch(cleanBrokenCampaigns());
-    Navigation.pop(componentId);
-  }, [componentId, dispatch]);
+    navigation.goBack();
+  }, [navigation, dispatch]);
 
 
   const drawWeaknessPressed = useCallback(() => {
-    showDrawWeakness(componentId, campaignId);
-  }, [componentId, campaignId]);
+    showDrawWeakness(navigation, campaignId);
+  }, [navigation, campaignId]);
 
   const setCampaignName = useCallback((name: string) => {
     dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        title: {
-          text: name,
-        },
-      },
-    });
-  }, [campaignId, dispatch, updateCampaignActions, componentId]);
+    navigation.setOptions({ title: name });
+  }, [campaignId, dispatch, updateCampaignActions, navigation]);
   const [dialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Name`,
     value: campaign?.name || '',
     onValueChange: setCampaignName,
   });
 
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'edit') {
-      showEditNameDialog();
-    }
-  }, componentId, [showEditNameDialog]);
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: name,
+      headerRight: () => (
+        <HeaderButton
+          iconName="edit"
+          accessibilityLabel={t`Edit`}
+          onPress={showEditNameDialog}
+          color={COLORS.M}
+        />
+      ),
+    })
+  }, [name, navigation, showEditNameDialog]);
 
   const updateWeaknessAssignedCards = useCallback((weaknessCards: Slots) => {
     if (campaign) {
@@ -154,7 +145,7 @@ function CampaignDetailView(props: Props) {
     }
   }, [weaknessCards, campaign, updateWeaknessAssignedCards, showAlert]);
   const deckActions = useDeckActions();
-  const checkNewDeckForWeakness = useMaybeShowWeaknessPrompt(componentId, checkForWeaknessPrompt);
+  const checkNewDeckForWeakness = useMaybeShowWeaknessPrompt(checkForWeaknessPrompt);
   const onAddDeck = useCallback(async(deck: Deck, investigator_code?: string) => {
     await asyncDispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, investigator_code ?? deck.investigator_code, getDeckId(deck)));
     checkNewDeckForWeakness(deck);
@@ -197,22 +188,8 @@ function CampaignDetailView(props: Props) {
       simpleOptions: true,
       includeParallel,
     };
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Dialog.DeckSelector',
-            passProps,
-            options: {
-              modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.fullScreen :
-                OptionsModalPresentationStyle.overCurrentContext,
-            },
-          },
-        }],
-      },
-    });
-  }, [campaign, allInvestigators, onAddDeck, onAddInvestigator]);
+    navigation.navigate('Dialog.DeckSelector', passProps);
+  }, [campaign, allInvestigators, onAddDeck, onAddInvestigator, navigation]);
 
   const showAddInvestigator = useCallback(() => {
     showChooseDeck();
@@ -223,52 +200,17 @@ function CampaignDetailView(props: Props) {
     actuallyShowXpDialog(investigator, data?.spentXp || 0, data?.availableXp || 0);
   }, [actuallyShowXpDialog, campaign]);
   const showCampaignLog = useCallback(() => {
-    Navigation.push<CampaignLogViewProps>(componentId, {
-      component: {
-        name: 'Campaign.Log',
-        passProps: {
-          campaignId,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Campaign Log`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, campaignId]);
+    navigation.navigate('Campaign.Log', { campaignId });
+  }, [navigation, campaignId]);
   const showScenarios = useCallback(() => {
-    Navigation.push<CampaignScenariosViewProps>(componentId, {
-      component: {
-        name: 'Campaign.Scenarios',
-        passProps: {
-          campaignId,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Scenarios`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, campaignId]);
+    navigation.navigate('Campaign.Scenarios', { campaignId });
+  }, [navigation, campaignId]);
   const investigatorCount = allInvestigators ? allInvestigators.length : (campaign?.investigators.length || 0);
 
   const addScenarioResultPressed = useCallback(() => {
-    showAddScenarioResult(componentId, campaignId);
-  }, [campaignId, componentId]);
+    showAddScenarioResult(navigation, campaignId);
+  }, [campaignId, navigation]);
   const [chaosBagDialog, showChaosBag] = useChaosBagDialog({
-    componentId,
     allInvestigators,
     campaignId,
     chaosBag: campaign?.chaosBag || EMPTY_CHAOS_BAG,
@@ -343,7 +285,6 @@ function CampaignDetailView(props: Props) {
               showAlert={showAlert}
               showTextEditDialog={showTextEditDialog}
               showCountDialog={showCountDialog}
-              componentId={componentId}
               campaign={campaign}
               campaignId={campaignId}
               latestDecks={campaign.latestDecks()}
@@ -373,7 +314,6 @@ function CampaignDetailView(props: Props) {
           { !!cards && !!latestDecks && (
             <View style={[space.paddingSideS, space.paddingBottomS]}>
               <DeckOverlapComponent
-                componentId={componentId}
                 cards={cards}
                 campaign={campaign}
                 latestDecks={latestDecks}
@@ -384,7 +324,6 @@ function CampaignDetailView(props: Props) {
           <View style={space.paddingSideS}>
             <CampaignHeader style={space.paddingTopS} title={t`Settings`} />
             <UploadCampaignButton
-              componentId={componentId}
               campaignId={campaignId}
               campaign={campaign}
               setCampaignServerId={setCampaignServerId}
@@ -394,7 +333,6 @@ function CampaignDetailView(props: Props) {
             />
             <DeleteCampaignButton
               actions={updateCampaignActions}
-              componentId={componentId}
               campaignId={campaignId}
               campaign={campaign}
               showAlert={showAlert}

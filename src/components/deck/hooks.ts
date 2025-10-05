@@ -1,5 +1,5 @@
 import {
-  MutableRefObject,
+  RefObject,
   useCallback,
   useContext,
   useEffect,
@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react';
 import useDebouncedEffect from 'use-debounced-effect-hook';
-import { Navigation } from 'react-native-navigation';
+
 import {
   find,
   forEach,
@@ -55,17 +55,13 @@ import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { RANDOM_BASIC_WEAKNESS, RAVEN_QUILL_CODE } from '@app_constants';
-import StyleContext from '@styles/StyleContext';
-import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
 import { ShowAlert } from './dialogs';
-import COLORS from '@styles/colors';
-import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
 import useSingleCard from '@components/card/useSingleCard';
 import { useCardMap } from '@components/card/useCardList';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 import { DeckEditContext } from './DeckEditContext';
-import { Platform } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export function xpString(xp: number): string {
   return ngettext(msgid`${xp} XP`, `${xp} XP`, xp);
@@ -160,7 +156,7 @@ export function useDeckEdits(
   id: DeckId | undefined,
   initialDeck?: LatestDeckT,
   initialMode?: 'edit' | 'upgrade'
-): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
+): [EditDeckState | undefined, RefObject<EditDeckState | undefined>] {
   const dispatch = useAppDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [mode, setMode] = useState(initialMode);
@@ -211,20 +207,19 @@ export interface ParsedDeckResults {
   cards?: CardsMap;
   previousDeck?: Deck;
   deckEdits?: EditDeckState;
-  deckEditsRef: MutableRefObject<EditDeckState | undefined>;
+  deckEditsRef: RefObject<EditDeckState | undefined>;
   tabooSetId: number;
   visible: boolean;
   editable: boolean;
   parsedDeck?: ParsedDeck;
-  parsedDeckRef: MutableRefObject<ParsedDeck | undefined>;
+  parsedDeckRef: RefObject<ParsedDeck | undefined>;
   mode: 'upgrade' | 'edit' | 'view';
   cardsMissing: boolean;
-  dirty: MutableRefObject<boolean>;
+  dirty: RefObject<boolean>;
 }
 
 function useParsedDeckHelper(
   id: DeckId | undefined,
-  componentId: string,
   deck: LatestDeckT | undefined,
   {
     initialMode,
@@ -288,7 +283,7 @@ function useParsedDeckHelper(
     false,
     tabooSetId,
   );
-  const visible = useComponentVisible(componentId);
+  const visible = useComponentVisible();
   const initialized = useRef(false);
   const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(
     undefined
@@ -368,12 +363,11 @@ function useParsedDeckHelper(
 
 export function useParsedDeckWithFetch(
   id: DeckId,
-  componentId: string,
   actions: DeckActions,
   initialMode?: 'upgrade' | 'edit'
 ): ParsedDeckResults {
   const deck = useDeckWithFetch(id, actions);
-  return useParsedDeckHelper(id, componentId, deck, {
+  return useParsedDeckHelper(id, deck, {
     initialMode,
     fetchIfMissing: true,
     waitForEdits: true,
@@ -382,11 +376,10 @@ export function useParsedDeckWithFetch(
 
 export function useParsedDeck(
   id: DeckId | undefined,
-  componentId: string,
   initialMode?: 'upgrade' | 'edit'
 ): ParsedDeckResults {
   const deck = useDeck(id);
-  return useParsedDeckHelper(id, componentId, deck, { initialMode });
+  return useParsedDeckHelper(id, deck, { initialMode });
 }
 
 export interface DeckEditState {
@@ -501,7 +494,6 @@ export function useDeckEditState({
 }
 
 export function useShowDrawWeakness({
-  componentId,
   id,
   campaignId,
   deck,
@@ -509,15 +501,14 @@ export function useShowDrawWeakness({
   deckEditsRef,
   assignedWeaknesses,
 }: {
-  componentId: string;
   id: DeckId;
   showAlert: ShowAlert;
   deck: LatestDeckT | undefined;
   campaignId?: CampaignId;
-  deckEditsRef: MutableRefObject<EditDeckState | undefined>;
+  deckEditsRef: RefObject<EditDeckState | undefined>;
   assignedWeaknesses?: string[];
 }): (alwaysReplaceRandomBasicWeakness?: boolean) => void {
-  const { colors } = useContext(StyleContext);
+  const navigation = useNavigation();
   const [investigator] = useSingleCard(
     deck?.investigator,
     'player',
@@ -563,56 +554,22 @@ export function useShowDrawWeakness({
   );
 
   const editCollection = useCallback(() => {
-    Navigation.push(componentId, {
-      component: {
-        name: 'My.Collection',
-      },
-    });
-  }, [componentId]);
+    navigation.navigate('My.Collection', {});
+  }, [navigation]);
 
   const showWeaknessDialog = useCallback(
     (alwaysReplaceRandomBasicWeakness?: boolean) => {
       if (!deckEditsRef.current) {
         return;
       }
-      const backgroundColor =
-        colors.faction[investigator ? investigator.factionCode() : 'neutral']
-          .background;
-      Navigation.push<DrawWeaknessProps>(componentId, {
-        component: {
-          name: 'Weakness.Draw',
-          passProps: {
-            investigator,
-            slots: deckEditsRef.current.slots,
-            saveWeakness,
-            alwaysReplaceRandomBasicWeakness,
-          },
-          options: {
-            statusBar: Platform.select({
-              android: { style: 'dark' },
-              ios: {
-                style: 'light',
-                backgroundColor,
-              },
-            }),
-            topBar: {
-              title: {
-                text: t`Draw Weaknesses`,
-                color: COLORS.white,
-              },
-              backButton: {
-                title: t`Back`,
-                color: 'white',
-              },
-              background: {
-                color: backgroundColor,
-              },
-            },
-          },
-        },
+      navigation.navigate('Weakness.Draw', {
+        investigator,
+        slots: deckEditsRef.current.slots,
+        saveWeakness,
+        alwaysReplaceRandomBasicWeakness,
       });
     },
-    [componentId, investigator, colors, deckEditsRef, saveWeakness]
+    [navigation, investigator, deckEditsRef, saveWeakness]
   );
   const drawWeakness = useCallback(
     (alwaysReplaceRandomBasicWeakness?: boolean) => {
@@ -639,48 +596,19 @@ export function useShowDrawWeakness({
       if (!campaignId || !deckEditsRef.current) {
         return;
       }
-      const backgroundColor =
-        colors.faction[investigator ? investigator.factionCode() : 'neutral']
-          .background;
-      Navigation.push<CampaignDrawWeaknessProps>(componentId, {
-        component: {
-          name: 'Dialog.CampaignDrawWeakness',
-          passProps: {
-            campaignId,
-            deckSlots: deckEditsRef.current.slots,
-            saveWeakness,
-            unsavedAssignedCards: unsavedAssignedWeaknesses,
-            alwaysReplaceRandomBasicWeakness,
-          },
-          options: {
-            statusBar: Platform.select({
-              android: { style: 'dark' },
-              ios: {
-                style: 'light',
-              },
-            }),
-            topBar: {
-              title: {
-                text: t`Draw Weaknesses`,
-                color: COLORS.white,
-              },
-              backButton: {
-                title: t`Back`,
-                color: 'white',
-              },
-              background: {
-                color: backgroundColor,
-              },
-            },
-          },
-        },
+      navigation.navigate('Dialog.CampaignDrawWeakness', {
+        campaignId,
+        deckSlots: deckEditsRef.current.slots,
+        saveWeakness,
+        unsavedAssignedCards: unsavedAssignedWeaknesses,
+        alwaysReplaceRandomBasicWeakness,
+        investigator,
       });
     },
     [
-      componentId,
+      navigation,
       campaignId,
       investigator,
-      colors,
       deckEditsRef,
       unsavedAssignedWeaknesses,
       saveWeakness,

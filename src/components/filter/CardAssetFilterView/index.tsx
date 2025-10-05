@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { ScrollView } from 'react-native';
 import { filter, map } from 'lodash';
 import { t, c } from 'ttag';
+import { RouteProp, useRoute } from '@react-navigation/native';
 
 import SliderChooser from '../SliderChooser';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
-import { NavigationProps } from '@components/nav/types';
+import useFilterFunctions from '../useFilterFunctions';
 import FilterChooserButton from '../FilterChooserButton';
 import SkillModifierChooser from './SkillModifierChooser';
+import { BasicStackParamList } from '@navigation/types';
 
 
 function splitSlot(value: string): string[] {
@@ -59,15 +59,16 @@ export function usesTranslations() {
   };
 }
 
-const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
-  const { componentId, baseQuery, tabooSetId } = props;
+const CardAssetFilterView = () => {
+  const route = useRoute<RouteProp<BasicStackParamList, 'SearchFilters.Asset'>>();
+  const { baseQuery, tabooSetId } = route.params;
   const {
     defaultFilterState,
     cardFilterData,
     filters,
     onToggleChange,
     onFilterChange,
-  } = useFilterFunctions(props, {
+  } = useFilterFunctions(route.params, {
     title: t`Asset Filters`,
     clearTraits: [
       'slots',
@@ -97,7 +98,6 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
     <ScrollView contentContainerStyle={backgroundStyle}>
       { hasSlot && (
         <FilterChooserButton
-          componentId={componentId}
           title={t`Slots`}
           all={c('Slots').t`All`}
           processValue={splitSlot}
@@ -113,7 +113,6 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
       ) }
       { hasUses && (
         <FilterChooserButton
-          componentId={componentId}
           title={t`Uses`}
           all={c('Uses').t`All`}
           field="uses"
@@ -156,18 +155,5 @@ const CardAssetFilterView = (props: FilterFunctionProps & NavigationProps) => {
       />
     </ScrollView>
   );
-};
-CardAssetFilterView.options = () => {
-  return {
-    topBar: {
-      backButton: {
-        title: t`Back`,
-        color: COLORS.M,
-      },
-      title: {
-        text: t`Asset Filters`,
-      },
-    },
-  };
 };
 export default CardAssetFilterView;
