@@ -4,6 +4,7 @@ import { createBottomTabNavigator, BottomTabScreenProps, BottomTabNavigationOpti
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { t } from 'ttag';
+import Toast, { BaseToast, ErrorToast, ToastConfig } from 'react-native-toast-message';
 
 import AppIcon from '@icons/AppIcon';
 
@@ -156,6 +157,68 @@ function useNavigatorTheme(includeBackTitle = true): {
       },
       ...(includeBackTitle ? { headerBackTitle: t`Back` } : {}),
     },
+  };
+}
+
+function useToastConfig(): ToastConfig {
+  const themeOverride = useSelector((state: AppState) => getThemeOverride(state));
+  const darkMode = !themeOverride ? Appearance.getColorScheme() === 'dark' : themeOverride === 'dark';
+  const colors = darkMode ? DARK_THEME : LIGHT_THEME;
+
+  return {
+    success: (props) => (
+      <BaseToast
+        {...props}
+        style={{ borderLeftColor: colors.D30, backgroundColor: colors.D20 }}
+        contentContainerStyle={{ paddingHorizontal: 15 }}
+        text1Style={{
+          fontFamily: 'Alegreya-Medium',
+          fontSize: 16,
+          fontWeight: '500',
+          color: colors.L10,
+        }}
+        text2Style={{
+          fontFamily: 'Alegreya-Regular',
+          fontSize: 14,
+          color: colors.L20,
+        }}
+      />
+    ),
+    error: (props) => (
+      <ErrorToast
+        {...props}
+        style={{ borderLeftColor: colors.warn, backgroundColor: colors.D20 }}
+        text1Style={{
+          fontFamily: 'Alegreya-Medium',
+          fontSize: 16,
+          fontWeight: '500',
+          color: colors.L10,
+        }}
+        text2Style={{
+          fontFamily: 'Alegreya-Regular',
+          fontSize: 14,
+          color: colors.L20,
+        }}
+      />
+    ),
+    info: (props) => (
+      <BaseToast
+        {...props}
+        style={{ borderLeftColor: colors.M, backgroundColor: colors.D20 }}
+        contentContainerStyle={{ paddingHorizontal: 15 }}
+        text1Style={{
+          fontFamily: 'Alegreya-Medium',
+          fontSize: 16,
+          fontWeight: '500',
+          color: colors.L10,
+        }}
+        text2Style={{
+          fontFamily: 'Alegreya-Regular',
+          fontSize: 14,
+          color: colors.L20,
+        }}
+      />
+    ),
   };
 }
 
@@ -928,6 +991,7 @@ function AppNavigatorInner({ navigationRef }: { navigationRef: React.RefObject<N
   const system = !themeOverride;
   const darkMode = system ? Appearance.getColorScheme() === 'dark' : themeOverride === 'dark';
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
+  const toastConfig = useToastConfig();
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -965,6 +1029,7 @@ function AppNavigatorInner({ navigationRef }: { navigationRef: React.RefObject<N
       >
         <RootStackNavigator />
       </NavigationContainer>
+      <Toast config={toastConfig} />
     </GestureHandlerRootView>
   );
 }

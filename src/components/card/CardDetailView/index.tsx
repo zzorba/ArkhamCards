@@ -19,13 +19,14 @@ import COLORS from '@styles/colors';
 import { getShowSpoilers, AppState } from '@reducers';
 import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
-import { useComponentDidAppear, useFlag, useNavigationButtonPressed } from '@components/core/hooks';
+import { useFlag } from '@components/core/hooks';
 import space from '@styles/space';
 import useSingleCard from '../useSingleCard';
 import CardCustomizationOptions from './CardCustomizationOptions';
 import { Customizations, DeckId } from '@actions/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { SimpleDeckEditContextProvider, useAllCardCustomizations, useCardCustomizations, useDeckSlotCount } from '@components/deck/DeckEditContext';
+import HeaderButton from '@components/core/HeaderButton';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = card?.custom() ? [] : [{
@@ -101,22 +102,6 @@ function CardDetailView({
   const showInvestigators = useCallback(() => {
     navigation.navigate('Card.Investigators', { code: id });
   }, [navigation, id]);
-  useComponentDidAppear(() => {
-    Navigation.mergeOptions(componentId, options());
-  }, componentId, []);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'share') {
-      Linking.openURL(`https://arkhamdb.com/card/${id}#reviews-header`);
-    } else if (buttonId === 'deck') {
-      showInvestigatorCards();
-    } else if (buttonId === 'faq') {
-      showFaq(navigatoin, id);
-    } else if (buttonId === 'back') {
-      Navigation.pop(componentId);
-    } else if (buttonId === 'investigator') {
-      showInvestigators();
-    }
-  }, [id, showInvestigatorCards]);
   const [card, loading] = useSingleCard(id, 'encounter', tabooSetIdOverride);
   const { listSeperator } = useContext(LanguageContext);
   const [deckCount] = useDeckSlotCount(id);
@@ -124,15 +109,39 @@ function CardDetailView({
   const customizationChoices = useCardCustomizations(card, deckCount, customizations);
   const customizedCard = useMemo(() => card?.withCustomizations(listSeperator, customizationChoices), [listSeperator, card, customizationChoices]);
   const [backCard] = useSingleCard(back_id, 'encounter', tabooSetIdOverride);
+
+  const handleButtonPress = useCallback((buttonId: string) => {
+    if (buttonId === 'share') {
+      Linking.openURL(`https://arkhamdb.com/card/${id}#reviews-header`);
+    } else if (buttonId === 'deck') {
+      showInvestigatorCards();
+    } else if (buttonId === 'faq') {
+      showFaq(navigation, id, customizedCard?.name ?? '');
+    } else if (buttonId === 'back') {
+      navigation.goBack();
+    } else if (buttonId === 'investigator') {
+      showInvestigators();
+    }
+  }, [id, showInvestigatorCards, navigation, customizedCard, showInvestigators]);
   useEffect(() => {
     if (customizedCard) {
-      Navigation.mergeOptions(componentId, {
-        topBar: {
-          rightButtons: rightButtonsForCard(customizedCard),
-        },
+      const rightButtons = rightButtonsForCard(customizedCard);
+      navigation.setOptions({
+        headerRight: () => (
+          <View style={{ flexDirection: 'row' }}>
+            {rightButtons.map((button) => (
+              <HeaderButton
+                key={button.id}
+                iconComponent={button.iconComponent}
+                onPress={() => handleButtonPress(button.id)}
+                accessibilityLabel={button.accessibilityLabel}
+              />
+            ))}
+          </View>
+        ),
       });
     }
-  }, [customizedCard]);
+  }, [customizedCard, navigation, handleButtonPress]);
   if (loading) {
     return <View style={[styles.wrapper, backgroundStyle]} />;
   }

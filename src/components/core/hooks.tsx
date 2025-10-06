@@ -28,7 +28,7 @@ import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 import { setMiscSetting } from '@components/settings/actions';
 import specialCards from '@data/deck/specialCards';
 import Clipboard from '@react-native-clipboard/clipboard';
-import Toast from '@components/Toast';
+import Toast from 'react-native-toast-message';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { useAppDispatch } from '@app/store';
 
@@ -651,14 +651,11 @@ export function useInvestigators(codes: string[], tabooSetOverride?: number): Ca
 export function useCopyAction(value: string, confirmationText: string): () => void {
   return useCallback(() => {
     Clipboard.setString(value);
-    Navigation.showOverlay({
-      component: {
-        name: 'Toast',
-        passProps: {
-          message: confirmationText,
-        },
-        options: Toast.options,
-      },
+    Toast.show({
+      type: 'success',
+      text1: confirmationText,
+      position: 'bottom',
+      visibilityTime: 2000,
     });
   }, [value, confirmationText]);
 }
