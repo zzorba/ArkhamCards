@@ -6166,84 +6166,84 @@ msgid "To handle resignation or elimination"
 msgstr "후퇴하거나 쓰러진 경우에 처리하기"
 
 msgid "Core set"
-msgstr ""
+msgstr "기본판"
 
 msgid "Cycles"
-msgstr ""
+msgstr "사이클"
 
 msgid "Starter decks"
-msgstr ""
+msgstr "조사자 확장"
 
 msgid "Fan-made Cycles"
-msgstr ""
+msgstr "팬 제작 사이클"
 
 msgid "Legacy"
-msgstr ""
+msgstr "유산"
 
 msgid "Current"
-msgstr ""
+msgstr "현행"
 
 msgid "Limited"
-msgstr ""
+msgstr "제한"
 
 msgid "Custom"
-msgstr ""
+msgstr "커스텀"
 
 msgid "Use all cards from any product"
-msgstr ""
+msgstr "모든 제품의 카드를 사용"
 
 msgid "Use only cards from recent expansions"
-msgstr ""
+msgstr "최근 확장의 카드만 사용"
 
 msgid "Use only cards from your choice of three expansions"
-msgstr ""
+msgstr "선택한 확장 3종의 카드만 사용"
 
 msgid "Use a completely custom card pool"
-msgstr ""
+msgstr "임의의 카드 구성 환경을 사용"
 
 #, javascript-format
 msgid "Limited: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "제한: ${ selectedPacks.size }종 선택됨"
 
 #, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "커스텀: ${ selectedPacks.size }종 선택됨"
 
 msgid "Card pool"
-msgstr ""
+msgstr "카드 구성 환경"
 
 msgid "This is an optional variant that push players to build their decks creatively using a smaller cardpool."
-msgstr ""
+msgstr "이것은 선택적 변형으로, 플레이어들이 더 적은 카드 구성 환경을 활용해 창의적으로 덱을 구성하도록 유도합니다."
 
 msgid "Select packs"
-msgstr ""
+msgstr "팩 선택"
 
 msgid "Choose a core set and three expansions to use for this limited pool."
-msgstr ""
+msgstr "제한된 카드 구성 환경으로 사용할 기본판과 확장 3종을 선택하십시오."
 
 msgid "Choose any number of packs to use for this custom pool."
-msgstr ""
+msgstr "커스텀 카드 구성 환경으로 사용할 팩을 원하는 만큼 선택하십시오."
 
 msgid "Limited: Not enough cycles selected"
-msgstr ""
+msgstr "제한: 사이클을 충분히 선택하지 않음"
 
 msgid "Limited: Too many cycles selected"
-msgstr ""
+msgstr "제한: 사이클을 너무 많이 선택함"
 
 msgid "Limited:"
-msgstr ""
+msgstr "제한:"
 
 msgid "Current:"
-msgstr ""
+msgstr "현행:"
 
 msgid "Cycles (select 3)"
-msgstr ""
+msgstr "사이클 (선택 3종)"
 
 msgid "When the World Screamed"
 msgstr ""
 
 msgid "Contains cards not in the selected card pool."
-msgstr ""
+msgstr "선택한 카드 구성 환경에는 없는 카드를 포함하고 있습니다."
 
 msgctxt "investigator"
 msgid "Custom"
