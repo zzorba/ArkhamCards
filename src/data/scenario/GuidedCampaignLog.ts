@@ -1723,11 +1723,16 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           ...this.campaignData.scarlet.unlockedLocations,
           effect.value,
         ];
+        // in case people visited a locked location before, mark it as visitable again
+        this.campaignData.scarlet.visitedLocations = filter(
+          this.campaignData.scarlet.visitedLocations,
+          (id) => id !== effect.value
+        );
         break;
       case 'hide_dossier':
         this.campaignData.scarlet.unlockedDossiers = filter(
           this.campaignData.scarlet.unlockedDossiers,
-          (x) => x !== effect.value
+          (id) => id !== effect.value
         );
         break;
       case 'unlock_dossier':
