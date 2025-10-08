@@ -26,8 +26,9 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import { RootStackParamList } from '@navigation/types';
+import { BasicStackParamList, RootStackParamList } from '@navigation/types';
 import HeaderButton from '@components/core/HeaderButton';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;
@@ -287,6 +288,14 @@ function MyDecksSelectorDialog() {
     </>
   );
 }
+
+function options<T extends RootStackParamList>({ route }: { route: RouteProp<T, 'Dialog.DeckSelector'> }): NativeStackNavigationOptions {
+  return {
+    title: route.params?.singleInvestigator ? t`Select Deck` : t`Choose an Investigator`,
+    headerBackTitle: t`Cancel`,
+  };
+};
+MyDecksSelectorDialog.options = options;
 
 export default MyDecksSelectorDialog;
 

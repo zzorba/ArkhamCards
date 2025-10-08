@@ -26,6 +26,8 @@ import { EmbarkData } from '@actions/types';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import HeaderTitle from '@components/core/HeaderTitle';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
@@ -265,6 +267,12 @@ export default function AddSideScenarioWrapper() {
   return <WrappedComponent campaignId={campaignId} />;
 }
 
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Guide.SideScenario'> }): NativeStackNavigationOptions {
+  return {
+    headerTitle: () => <HeaderTitle title={t`Choose Side-Scenario`} subtitle={route.params?.subtitle} />,
+  };
+};
+AddSideScenarioWrapper.options = options;
 
 const styles = StyleSheet.create({
   scrollView: {

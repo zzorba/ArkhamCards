@@ -4,6 +4,8 @@ import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenari
 import ScenarioComponent from './ScenarioComponent';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import HeaderTitle from '@components/core/HeaderTitle';
 
 interface OwnProps {
   title: string;
@@ -36,3 +38,10 @@ export default function ScenarioViewWrapper() {
     />
   );
 }
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Guide.Scenario'> }): NativeStackNavigationOptions {
+  return {
+    headerTitle: () => <HeaderTitle title={route.params?.title || ''} subtitle={route.params?.subtitle} />,
+  };
+};
+ScenarioViewWrapper.options = options;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useLayoutEffect } from 'react';
+import React, { useContext, useLayoutEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,7 +6,7 @@ import {
 import { Image as FastImage } from 'expo-image';
 import ViewControl from 'react-native-zoom-view';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '@navigation/types';
+import { BasicStackParamList } from '@navigation/types';
 
 import { t } from 'ttag';
 
@@ -16,13 +16,12 @@ import StyleContext from '@styles/StyleContext';
 import { useFlag } from '@components/core/hooks';
 import useSingleCard from './useSingleCard';
 import HeaderButton from '@components/core/HeaderButton';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface CardImageProps {
   id: string;
   cardName?: string;
 }
-
-type Props = CardImageProps;
 
 interface CardImageDetailProps {
   card?: Card;
@@ -95,7 +94,7 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
 }
 
 export default function CardImageView() {
-  const route = useRoute<RouteProp<RootStackParamList, 'Card.Image'>>();
+  const route = useRoute<RouteProp<BasicStackParamList, 'Card.Image'>>();
   const navigation = useNavigation();
   const { id, cardName } = route.params;
   const { backgroundStyle, colors } = useContext(StyleContext);
@@ -141,3 +140,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Card.Image'> }): NativeStackNavigationOptions {
+  return {
+    title: route.params?.cardName || t`Card Image`,
+  };
+};
+
+CardImageView.options = options;

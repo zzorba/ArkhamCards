@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createBottomTabNavigator, BottomTabScreenProps, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
@@ -126,7 +126,7 @@ import {
   TabParamList,
   BasicStackParamList,
 } from './types';
-import HeaderTitle from '@components/core/HeaderTitle';
+import type { Integration } from '@sentry/core';
 
 const Tab = createBottomTabNavigator<TabParamList>();
 const CardsStack = createNativeStackNavigator<CardsStackParamList>();
@@ -266,10 +266,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="SearchFilters.Chooser"
         component={SearchMultiSelectView}
-        options={({ route }) => {
-          const title = route.params?.title;
-          return { title: title ? t`Select ${title}` : t`Select` };
-        }}
+        options={SearchMultiSelectView.options}
       />
 
       {/* Card screens */}
@@ -290,9 +287,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Card.Image"
         component={CardImageView}
-        options={({ route }) => ({
-          title: route.params?.cardName || t`Card Image`,
-        })}
+        options={CardImageView.options}
       />
       <Stack.Screen
         name="Card.Investigators"
@@ -304,9 +299,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Card.Faq"
         component={CardFaqView}
-        options={({ route }) => ({
-          title: route.params?.cardName || t`FAQ`,
-        })}
+        options={CardFaqView.options}
       />
       <Stack.Screen
         name="Campaign"
@@ -384,7 +377,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Guide.SideScenario"
         component={AddSideScenarioView}
-        options={({ route }) => ({ headerTitle: () => <HeaderTitle title={t`Choose Side-Scenario`} subtitle={route.params?.subtitle} />})}
+        options={AddSideScenarioView.options}
       />
       <Stack.Screen
         name="Guide.ExileSelector"
@@ -404,10 +397,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Guide.ChallengeScenario"
         component={ChallengeScenarioView}
-        options={({ route }) => ({
-          headerTitle: () => <HeaderTitle title={route.params?.scenario.scenario_name ?? ''} subtitle={t`Challenge Scenario`} />,
-          headerBackTitle: t`Cancel`,
-        })}
+        options={ChallengeScenarioView.options}
       />
       <Stack.Screen
         name="Guide.Achievements"
@@ -417,7 +407,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Guide.Rules"
         component={CampaignRulesView}
-        options={({ route }) => ({ title: route.params?.header ?? t`Campaign Rules` })}
+        options={CampaignRulesView.options}
       />
       <Stack.Screen
         name="Guide.LocationSetup"
@@ -445,7 +435,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Guide.Scenario"
         component={ScenarioView}
-        options={({ route }) => ({ headerTitle: () => <HeaderTitle title={route.params?.title || ''} subtitle={route.params?.subtitle} />})}
+        options={ScenarioView.options}
       />
       <Stack.Screen
         name="Guide.Standalone"
@@ -472,9 +462,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Rule"
         component={RuleView}
-        options={({ route }) => ({
-          title: route.params?.rule.title || t`Rule`,
-        })}
+        options={RuleView.options}
       />
       <Stack.Screen
         name="My.Collection"
@@ -538,9 +526,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Pack"
         component={PackCardsView}
-        options={({ route }) => ({
-          title: route.params?.pack_code || t`Pack`,
-        })}
+        options={PackCardsView.options}
       />
 
       {/* Chaos bag and odds calculator screens */}
@@ -619,7 +605,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Friends"
         component={FriendsView}
-        options={({ route }) => ({ title: route.params?.title ?? t`Friends` })}
+        options={FriendsView.options}
       />
     </>
   );
@@ -828,11 +814,15 @@ function TabNavigatorInner() {
   );
 }
 
-export default function AppNavigator({ store }: { store: { redux: AppState; persistor: Persistor; apollo: ApolloClient<unknown>; anonApollo: ApolloClient<unknown> } }) {
+export default function AppNavigator({ store, navigationIntegration }: {
+  store: { redux: AppState; persistor: Persistor; apollo: ApolloClient<unknown>; anonApollo: ApolloClient<unknown> };
+  navigationIntegration?: Integration & { registerNavigationContainer: (ref: unknown) => void };
+}) {
   const navigationRef = useRef<NavigationContainerRef<RootStackParamList>>(null);
+
   return (
     <MyProvider store={store}>
-      <AppNavigatorInner navigationRef={navigationRef} />
+      <AppNavigatorInner navigationRef={navigationRef} navigationIntegration={navigationIntegration} />
     </MyProvider>
   );
 }
@@ -929,9 +919,7 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Dialog.CardUpgrade"
         component={CardUpgradeDialog}
-        options={({ route }) => ({
-          title: route.params?.cardName || t`Card Upgrade`,
-        })}
+        options={CardUpgradeDialog.options}
       />
       <RootStack.Screen
         name="Deck.History"
@@ -965,10 +953,7 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Dialog.DeckSelector"
         component={MyDecksSelectorDialog}
-        options={({ route }) => ({
-          title: route.params?.singleInvestigator ? t`Select Deck` : t`Choose an Investigator`,
-          headerBackTitle: t`Cancel`,
-        })}
+        options={MyDecksSelectorDialog.options}
       />
       <RootStack.Screen
         name="Dialog.Campaign"
@@ -986,17 +971,44 @@ function RootStackNavigator() {
   );
 }
 
-function AppNavigatorInner({ navigationRef }: { navigationRef: React.RefObject<NavigationContainerRef<RootStackParamList> | null> }) {
+function AppNavigatorInner({ navigationRef, navigationIntegration }: {
+  navigationRef: React.RefObject<NavigationContainerRef<RootStackParamList> | null>;
+  navigationIntegration?: Integration & { registerNavigationContainer: (ref: unknown) => void };
+}) {
   const themeOverride = useSelector((state: AppState) => getThemeOverride(state));
   const system = !themeOverride;
   const darkMode = system ? Appearance.getColorScheme() === 'dark' : themeOverride === 'dark';
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const toastConfig = useToastConfig();
 
+  const linking = {
+    prefixes: ['arkhamcards://', 'dissonantvoices://'],
+    config: {
+      screens: {
+        Tabs: {
+          screens: {
+            Cards: 'cards',
+            Decks: 'decks',
+            Campaigns: 'campaigns',
+            Settings: 'settings',
+          },
+        },
+        Deck: 'deck/:id',
+        Campaign: 'campaign/:id',
+      },
+    },
+  };
+
+  const onReady = useCallback(() => {
+    navigationIntegration?.registerNavigationContainer(navigationRef);
+  }, [navigationIntegration, navigationRef]);
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer
         ref={navigationRef}
+        linking={linking}
+        onReady={onReady}
         theme={{
           dark: darkMode,
           colors: {

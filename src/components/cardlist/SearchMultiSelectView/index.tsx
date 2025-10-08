@@ -17,6 +17,7 @@ import { searchBoxHeight } from '@components/core/SearchBox';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import HeaderButton from '@components/core/HeaderButton';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface SearchSelectProps {
   title: string;
@@ -130,3 +131,10 @@ export default function SearchMultiSelectView() {
     </CollapsibleSearchBox>
   );
 }
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'SearchFilters.Chooser'> }): NativeStackNavigationOptions {
+  const title = route.params?.title;
+  return { title: title ? t`Select ${title}` : t`Select` };
+};
+
+SearchMultiSelectView.options = options;

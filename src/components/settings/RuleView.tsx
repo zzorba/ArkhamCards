@@ -13,9 +13,11 @@ import { s, m } from '@styles/space';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { useSelector } from 'react-redux';
 import { AppState, makeTabooSetSelector } from '@reducers';
-import { RootStackParamList } from '@navigation/types';
+import { BasicStackParamList, RootStackParamList } from '@navigation/types';
 import { useLayout } from '@react-native-community/hooks';
 import RuleTitleComponent from './RuleTitleComponent';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { t } from 'ttag';
 
 export interface RuleViewProps {
   rule: Rule
@@ -72,7 +74,7 @@ function RuleComponent({ rule, level, noTitle }: { rule: Rule; level: number; no
 }
 
 export default function RuleView() {
-  const route = useRoute<RouteProp<RootStackParamList, 'Rule'>>();
+  const route = useRoute<RouteProp<BasicStackParamList, 'Rule'>>();
   const { rule } = route.params;
   const { backgroundStyle } = useContext(StyleContext);
   const navigation = useNavigation();
@@ -89,3 +91,10 @@ export default function RuleView() {
     </ScrollView>
   );
 }
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Rule'> }): NativeStackNavigationOptions {
+  return {
+    title: route.params?.rule.title || t`Rule`,
+  };
+};
+RuleView.options = options;

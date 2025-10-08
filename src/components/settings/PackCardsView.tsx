@@ -7,6 +7,8 @@ import { SORT_BY_PACK } from '@actions/types';
 import FilterBuilder from '@lib/filters';
 import { BasicStackParamList } from '@navigation/types';
 import { RouteProp, useRoute } from '@react-navigation/native';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { t } from 'ttag';
 
 export interface PackCardsProps {
   pack_code: string;
@@ -37,3 +39,9 @@ export default function PackCardsView() {
     />
   );
 }
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Pack'> }): NativeStackNavigationOptions {
+  return { title: route.params?.pack_code || t`Pack` };
+};
+PackCardsView.options = options;
+

@@ -11,6 +11,7 @@ import { searchNormalize } from '@data/types/Card';
 import { FriendRequestAction } from '@generated/graphql/apollo-schema';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface FriendsViewProps {
   userId: string;
@@ -180,3 +181,8 @@ export default function FriendsView() {
     </CollapsibleSearchBox>
   );
 }
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Friends'> }): NativeStackNavigationOptions {
+  return { title: route.params?.title ?? t`Friends` };
+};
+FriendsView.options = options;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppRegistry } from 'react-native';
 import * as Sentry from '@sentry/react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -14,9 +14,13 @@ import MyProvider from './src/app/MyProvider';
 import createApolloClient from './src/data/apollo/createApolloClient';
 import TrackPlayer from 'react-native-track-player';
 import AppNavigator from './src/navigation/AppNavigator';
+import { maybeSaveAutomaticBackup } from './src/app/autoBackup';
+
+const navigationIntegration = Sentry.reactNavigationIntegration();
 
 Sentry.init({
   dsn: 'https://fdad4da29224c7fd11ee224a94b1ba0c@o4509060598530048.ingest.us.sentry.io/4509060599316480',
+  integrations: [navigationIntegration],
   // uncomment the line below to enable Spotlight (https://spotlightjs.com)
   // spotlight: __DEV__,
 });
@@ -36,7 +40,7 @@ function App() {
   const storeProps = { redux: store, persistor: persistor, apollo: apolloClient, anonApollo: anonClient };
 
   return (
-    <AppNavigator store={storeProps} />
+    <AppNavigator store={storeProps} navigationIntegration={navigationIntegration} />
   );
 }
 

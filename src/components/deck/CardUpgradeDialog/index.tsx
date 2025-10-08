@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState, useLayoutEffect } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '@navigation/types';
+import { BasicStackParamList, RootStackParamList } from '@navigation/types';
 import { getDeckScreenOptions } from '@components/nav/helper';
 
 import { forEach, filter, find, map, reverse, partition, sortBy, sumBy, shuffle, flatMap, uniq, range } from 'lodash';
@@ -31,6 +31,7 @@ import { DeckId } from '@actions/types';
 import { parseMetaSlots } from '@lib/parseDeck';
 import { useCardMap } from '@components/card/useCardList';
 import { useDeck } from '@data/hooks';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface CardUpgradeDialogProps {
   id: DeckId;
@@ -408,6 +409,13 @@ export default function CardUpgradeDialog() {
     </View>
   );
 }
+
+function options<T extends RootStackParamList>({ route }: { route: RouteProp<T, 'Dialog.CardUpgrade'> }): NativeStackNavigationOptions {
+  return {
+    title: route.params?.cardName || t`Card Upgrade`,
+  };
+};
+CardUpgradeDialog.options = options;
 
 const styles = StyleSheet.create({
   column: {

@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '@navigation/types';
+import { BasicStackParamList, RootStackParamList } from '@navigation/types';
 import { t } from 'ttag';
 
 import CardTextComponent from './CardTextComponent';
@@ -25,6 +25,7 @@ import LanguageContext from '@lib/i18n/LanguageContext';
 import ApolloClientContext from '@data/apollo/ApolloClientContext';
 import { localizedDate } from '@lib/datetime';
 import HeaderTitle from '@components/core/HeaderTitle';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface CardFaqProps {
   id: string;
@@ -158,6 +159,14 @@ export default function CardFaqView() {
     </ScrollView>
   );
 }
+
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Card.Faq'> }): NativeStackNavigationOptions {
+  return {
+    title: route.params?.cardName || t`FAQ`,
+  };
+};
+CardFaqView.options = options;
 
 const styles = StyleSheet.create({
   container: {

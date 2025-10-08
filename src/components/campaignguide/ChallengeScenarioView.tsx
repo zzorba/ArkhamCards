@@ -13,6 +13,8 @@ import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import HeaderTitle from '@components/core/HeaderTitle';
 
 export interface ChallengeScenarioProps {
   scenario: Scenario;
@@ -63,6 +65,14 @@ export default function ChallengeScenarioView() {
     </View>
   );
 }
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Guide.ChallengeScenario'> }): NativeStackNavigationOptions {
+  return {
+    headerTitle: () => <HeaderTitle title={route.params?.scenario.scenario_name ?? ''} subtitle={t`Challenge Scenario`} />,
+    headerBackTitle: t`Cancel`,
+  };
+};
+ChallengeScenarioView.options = options;
 
 const styles = StyleSheet.create({
   wrapper: {

@@ -24,6 +24,7 @@ import { openUrl } from '@components/nav/helper';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface CampaignRulesProps {
   header?: string;
@@ -83,7 +84,6 @@ function ErrataComponent({ errata }: { errata: Question }) {
     </View>
   );
 }
-
 
 export default function CampaignRulesView() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Guide.Rules'>>();
@@ -160,3 +160,10 @@ export default function CampaignRulesView() {
     </CampaignGuideContext.Provider>
   );
 }
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Guide.Rules'> }): NativeStackNavigationOptions {
+  return {
+    title: route.params?.header ?? t`Campaign Rules`
+  };
+};
+CampaignRulesView.options = options;
