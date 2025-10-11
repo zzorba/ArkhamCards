@@ -10,8 +10,9 @@ import { Question } from '@data/scenario/types';
 import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from './CampaignGuideContext';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
+import { useDismissOnCampaignDeleted } from '@data/remote/campaigns';
 
 export interface ScenarioFaqProps extends CampaignGuideInputProps {
   scenario: string;
@@ -23,6 +24,8 @@ function ScenarioFaqView() {
   const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
   const campaignData = useContext(CampaignGuideContext);
   const [spoilers, setShowSpoilers] = useState(false);
+  const navigation = useNavigation();
+  useDismissOnCampaignDeleted(navigation, campaignData.campaign);
 
   const renderErrata = useCallback((errata: Question, key: number) => {
     return (

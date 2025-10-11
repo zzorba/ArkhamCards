@@ -13,7 +13,7 @@ import { AnimatedRoundedFactionBlock } from '@components/core/RoundedFactionBloc
 import { useFlag, useToggles, useWeaknessCards } from '@components/core/hooks';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { updateCampaignWeaknessSet } from '@components/campaign/actions';
-import { SetCampaignWeaknessSetAction, useSetCampaignWeaknessSet } from '@data/remote/campaigns';
+import { SetCampaignWeaknessSetAction, useDismissOnCampaignDeleted, useSetCampaignWeaknessSet } from '@data/remote/campaigns';
 import CampaignGuideContext from './CampaignGuideContext';
 import Card, { CardsMap } from '@data/types/Card';
 import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
@@ -22,7 +22,7 @@ import CampaignErrorView from './CampaignErrorView';
 import useProcessedCampaign from './useProcessedCampaign';
 import { useAppDispatch } from '@app/store';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 
 export type WeaknessSetProps = CampaignGuideInputProps;
@@ -180,6 +180,9 @@ function WeaknessSetView() {
   const { backgroundStyle, width } = useContext(StyleContext);
   const { campaignInvestigators, campaign, campaignState, campaignGuide } = useContext(CampaignGuideContext);
   const [processedCampaign, processedCampaignError] = useProcessedCampaign(campaignGuide, campaignState);
+  const navigation = useNavigation();
+  useDismissOnCampaignDeleted(navigation, campaign);
+
   const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
   const weaknessCards = useWeaknessCards(true);
   if (!processedCampaign) {

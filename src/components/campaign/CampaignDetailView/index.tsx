@@ -31,7 +31,7 @@ import UploadCampaignButton from '../UploadCampaignButton';
 import useChaosBagDialog from './useChaosBagDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useDeckActions } from '@data/remote/decks';
-import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
@@ -78,7 +78,8 @@ function CampaignDetailView() {
     traumaDialog,
   } = useTraumaDialog(updateInvestigatorTrauma);
 
-  useCampaignDeleted(navigation, campaign);
+  useCampaignDeleted(campaign);
+  useDismissOnCampaignDeleted(navigation, campaign);
 
   const updateWeaknessSet = useCallback((weaknessSet: WeaknessSet) => {
     dispatch(updateCampaignWeaknessSet(updateCampaignActions.setWeaknessSet, campaignId, weaknessSet));

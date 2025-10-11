@@ -4,11 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Brackets } from 'typeorm/browser';
 import { createSelector } from 'reselect';
-import { t } from 'ttag';
 
 import FilterBuilder, { CardFilterData, FilterState } from '@lib/filters';
 import { getFilterState, getCardFilterData, AppState } from '@reducers';
-import { CardFilterProps } from '@components/filter/CardFilterView';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { Slots } from '@actions/types';
 
@@ -44,7 +42,7 @@ export function useFilterButton({ filterId, baseQuery, modal }: Props): [boolean
     if (!cardData) {
       return;
     }
-    navigation.push('SearchFilters', {
+    navigation.navigate('SearchFilters', {
       filterId,
       baseQuery,
       modal,

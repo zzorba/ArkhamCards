@@ -1,6 +1,6 @@
 import { forEach } from 'lodash';
-import uuid from 'react-native-uuid';
 
+import { generateUuid } from '@lib/uuid';
 import { UpgradeDeckResult } from '@lib/authApi';
 import { Deck, DeckProblemType, DeckMeta, Slots, DeckId, getDeckId } from '@actions/types';
 
@@ -16,7 +16,7 @@ export function newLocalDeck(
 ): Deck {
   const timestamp = (new Date()).toISOString();
   return {
-    uuid: uuid.v4(),
+    uuid: generateUuid(),
     description_md,
     date_creation: timestamp,
     date_update: timestamp,
@@ -91,7 +91,7 @@ export function upgradeLocalDeck(
     id: undefined,
     arkhamdb_user: undefined,
     local: true,
-    uuid: uuid.v4(),
+    uuid: generateUuid(),
   };
   return {
     deck: {

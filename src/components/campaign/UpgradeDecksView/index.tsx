@@ -21,7 +21,7 @@ import UpgradeDecksList from './UpgradeDecksList';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignInvestigators } from '@data/hooks';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useAppDispatch } from '@app/store';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
@@ -43,6 +43,7 @@ function UpgradeDecksView() {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const dispatch = useAppDispatch();
   const campaign = useCampaign(id);
+  useDismissOnCampaignDeleted(navigation, campaign);
   const [allInvestigators] = useCampaignInvestigators(campaign);
   const latestDecks = campaign?.latestDecks() ?? EMPTY_DECKS;
   const lang = useSelector(getLangPreference);

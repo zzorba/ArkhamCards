@@ -72,6 +72,7 @@ export default function ScenarioCarouselComponent({
   showLinkedScenario,
   showAlert,
 }: Props) {
+  const navigation = useNavigation();
   const { lang } = useContext(LanguageContext);
   const { width } = useContext(StyleContext);
   const { campaignState, campaignGuide, campaignId } = useContext(CampaignGuideContext);
@@ -94,6 +95,7 @@ export default function ScenarioCarouselComponent({
       scenarioPressed.current = true;
     }
     showScenario(
+      navigation,
       scenario,
       campaignId,
       campaignState,
@@ -101,7 +103,7 @@ export default function ScenarioCarouselComponent({
       showLinkedScenario ? onShowLinkedScenario : undefined,
       processedCampaign
     );
-  }, [campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState, processedCampaign]);
+  }, [navigation, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState, processedCampaign]);
   const currentLocationId = processedCampaign.campaignLog.campaignData.scarlet.location;
   const interScenarioId = useMemo(() => {
     if (processedCampaign && !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&
@@ -124,7 +126,6 @@ export default function ScenarioCarouselComponent({
     };
     return embarkData;
   }, [currentLocationId])
-  const navigation = useNavigation();
   const onEmbark = useCallback((
     location: MapLocation,
     timeSpent: number,

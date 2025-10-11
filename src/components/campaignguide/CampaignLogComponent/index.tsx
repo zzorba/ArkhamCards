@@ -30,6 +30,7 @@ import CampaignLogChecklistComponent from './CampaignLogChecklistComponent';
 import CampaignLogInvestigatorChecklistComponent from './CampaignLogInvestigatorChecklistComponent';
 import CampaignLogGlyphsComponent from './CampaignLogGlyphsComponent';
 import useTextEditDialog from '@components/core/useTextEditDialog';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
   campaignId: CampaignId;
@@ -356,19 +357,20 @@ export default function CampaignLogComponent({
       }
     }
   }, [campaignLog, campaignGuide, width, interScenarioId, colon, showTextEditDialog]);
-
+  const navigation = useNavigation();
   const oddsCalculatorPressed = useCallback(() => {
-    showGuideChaosBagOddsCalculator(campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe(), scenarioId, standalone, processedCampaign);
-  }, [campaignId, campaignLog, scenarioId, standalone, processedCampaign]);
+    showGuideChaosBagOddsCalculator(navigation, campaignId, campaignLog.chaosBag, campaignLog.investigatorCodesSafe(), scenarioId, standalone, processedCampaign);
+  }, [navigation, campaignId, campaignLog, scenarioId, standalone, processedCampaign]);
 
   const chaosBagSimulatorPressed = useCallback(() => {
     showGuideDrawChaosBag(
+      navigation,
       campaignId,
       campaignLog.investigatorCodesSafe(),
       scenarioId,
       standalone,
     );
-  }, [campaignId, campaignLog, scenarioId, standalone]);
+  }, [navigation, campaignId, campaignLog, scenarioId, standalone]);
 
   const chaosBagSection = useMemo(() => {
     if (hideChaosBag) {

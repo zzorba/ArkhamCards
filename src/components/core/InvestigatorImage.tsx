@@ -25,7 +25,6 @@ interface Props {
   card?: Card;
   image?: string;
   backCard?: Card;
-  componentId?: string;
   border?: boolean;
   size?: 'large' | 'small' | 'tiny' | 'extra_tiny';
   killedOrInsane?: boolean;
@@ -157,7 +156,6 @@ function InvestigatorImage({
   card,
   arkhamCardsImg,
   backCard,
-  componentId,
   border,
   size = 'large',
   killedOrInsane,
@@ -180,7 +178,7 @@ function InvestigatorImage({
         showCard(navigation, card.code, card, { showSpoilers: true, tabooSetId, backCode: backCard?.code });
       }
     }
-  }, [card, backCard, tabooSetId,  imageLink, navigation, pressable]);
+  }, [card, backCard, tabooSetId, imageLink, navigation, pressable]);
 
   const impliedSize = useMemo(() => {
     return getImpliedSize(size, fontScale);

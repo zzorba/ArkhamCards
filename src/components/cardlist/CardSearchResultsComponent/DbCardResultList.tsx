@@ -993,7 +993,7 @@ export default function DbCardResultList(props: Props) {
       true,
       customizations
     );
-  }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, deckId, investigator, specialMode, cardPressed]);
+  }, [navigation, customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, deckId, investigator, specialMode, cardPressed]);
   const { lang } = useContext(LanguageContext);
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {

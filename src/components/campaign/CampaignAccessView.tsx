@@ -5,13 +5,14 @@ import { t } from 'ttag';
 import { find, filter, forEach, map } from 'lodash';
 
 import { UploadedCampaignId } from '@actions/types';
-import { useEditCampaignAccessRequest } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useEditCampaignAccessRequest } from '@data/remote/campaigns';
 import useFriendFeedComponent, { FriendFeedItem } from '@components/social/useFriendFeedComponent';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCampaignAccess, UserProfile } from '@data/remote/hooks';
 import { EditAccessAction } from '@generated/graphql/apollo-schema';
 import { BasicStackParamList } from '@navigation/types';
+import { useCampaign } from '@data/hooks';
 
 export interface CampaignAccessProps {
   campaignId: UploadedCampaignId;
@@ -21,6 +22,9 @@ export default function EditCampaignAccessView() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Campaign.Access'>>();
   const navigation = useNavigation();
   const { campaignId, isOwner } = route.params;
+  const campaign = useCampaign(campaignId);
+  useDismissOnCampaignDeleted(navigation, campaign);
+
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaignAccess = useCampaignAccess(campaignId);
   const editCampaignAccess = useEditCampaignAccessRequest();

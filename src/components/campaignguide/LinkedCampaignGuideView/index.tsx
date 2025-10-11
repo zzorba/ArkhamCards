@@ -17,7 +17,7 @@ import CampaignDetailTab from '../CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space from '@styles/space';
-import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import CampaignErrorView from '@components/campaignguide/CampaignErrorView';
@@ -54,7 +54,8 @@ function LinkedCampaignGuideView(props: LoginStateProps) {
   const updateCampaignActions = useUpdateCampaignActions();
   useStopAudioOnUnmount();
   const campaign = useCampaign(campaignId, true);
-  useCampaignDeleted(navigation, campaign);
+  useCampaignDeleted(campaign);
+  useDismissOnCampaignDeleted(navigation, campaign);
   const campaignName = campaign?.name || '';
   const [campaignDataA] = useSingleCampaignGuideData(campaignIdA, true);
   const { colors } = useContext(StyleContext);

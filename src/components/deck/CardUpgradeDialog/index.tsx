@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState, useLayoutEffect } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
-import { BasicStackParamList, RootStackParamList } from '@navigation/types';
+import { RootStackParamList } from '@navigation/types';
 import { getDeckScreenOptions } from '@components/nav/helper';
 
 import { forEach, filter, find, map, reverse, partition, sortBy, sumBy, shuffle, flatMap, uniq, range } from 'lodash';

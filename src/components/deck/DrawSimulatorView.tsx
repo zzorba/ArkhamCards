@@ -417,6 +417,7 @@ export default function DrawSimulatorView() {
           cards={cards}
           controlHeight={40}
           controlForCard={renderGridControl}
+          navEnabled
         />
       ) : (
         <FlatList

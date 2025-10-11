@@ -5,7 +5,6 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 
 import SliderChooser from './SliderChooser';
 import ToggleFilter from '@components/core/ToggleFilter';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
 import LanguageContext from '@lib/i18n/LanguageContext';

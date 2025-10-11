@@ -12,7 +12,7 @@ import CampaignDetailTab from './CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space, { s } from '@styles/space';
-import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
 import DeckButton from '@components/deck/controls/DeckButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -69,7 +69,8 @@ function CampaignGuideView(props: Props & LoginStateProps) {
   useStopAudioOnUnmount();
 
   const { campaignGuide, campaignState, campaign } = campaignData;
-  useCampaignDeleted(navigation, campaign);
+  useCampaignDeleted(campaign);
+  useDismissOnCampaignDeleted(navigation, campaign);
 
   const [processedCampaign, processedCampaignError] = useProcessedCampaign(campaignGuide, campaignState);
   const [alertDialog, showAlert] = useAlertDialog();

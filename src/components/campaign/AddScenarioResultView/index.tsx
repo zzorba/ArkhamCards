@@ -23,7 +23,7 @@ import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { useAppDispatch } from '@app/store';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import HeaderButton from '@components/core/HeaderButton';
@@ -44,6 +44,7 @@ function AddScenarioResultView() {
   const dispatch = useAppDispatch();
 
   const campaign = useCampaign(id);
+  useDismissOnCampaignDeleted(navigation, campaign);
   const [allInvestigators] = useCampaignInvestigators(campaign);
   const [scenario, setScenario] = useState<ScenarioResult | undefined>();
   const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();

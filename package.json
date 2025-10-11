@@ -152,7 +152,7 @@
     "react-native-table-component": "^1.2.2",
     "react-native-toast-message": "^2.2.1",
     "react-native-track-player": "4.1.1",
-    "react-native-uuid": "2.0.1",
+    "react-native-uuid": "2.0.3",
     "react-native-vector-icons": "10.2.0",
     "react-native-zoom-view": "1.0.2",
     "react-redux": "8.1.3",

@@ -4,8 +4,6 @@ import { values, map, forEach } from 'lodash';
 import { t } from 'ttag';
 import stable from 'stable';
 
-import { SearchSelectProps } from '@components/cardlist/SearchMultiSelectView';
-import StyleContext from '@styles/StyleContext';
 import NavButton from '@components/core/NavButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useNavigation } from '@react-navigation/native';
@@ -31,7 +29,6 @@ export default function FixedSetChooserButton({
   indent,
   allValues,
 }: Props) {
-  const { colors } = useContext(StyleContext);
   const navigation = useNavigation();
   const { listSeperator, colon, lang } = useContext(LanguageContext);
   const reversedValues = useMemo(() => {
@@ -49,6 +46,7 @@ export default function FixedSetChooserButton({
     setPressed(true);
     navigation.navigate('SearchFilters.Chooser', {
       placeholder: t`Search ${title}`,
+      title,
       values: stable(values(allValues), (a, b) => a.localeCompare(b, lang)),
       onChange,
       selection: map(selection, item => allValues[item]),

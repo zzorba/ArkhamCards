@@ -386,6 +386,7 @@ export default function DeckDraftView() {
               draftHistory={draftHistory}
               controlHeight={60}
               controlPosition="below"
+              navEnabled
             />
           ) : (
             <FlatList

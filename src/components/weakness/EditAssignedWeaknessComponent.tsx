@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { flatMap } from 'lodash';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 
@@ -7,8 +7,8 @@ import { t } from 'ttag';
 import { Slots, WeaknessSet } from '@actions/types';
 import Card from '@data/types/Card';
 import CardSearchResult from '../cardlist/CardSearchResult';
-import StyleContext from '@styles/StyleContext';
 import { useSlotActions, useWeaknessCards } from '@components/core/hooks';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
   weaknessSet: WeaknessSet;
@@ -20,12 +20,12 @@ function cardKey(card: Card) {
 }
 
 function EditAssignedWeaknessComponent({ weaknessSet, updateAssignedCards }: Props) {
-  const { colors } = useContext(StyleContext);
   const weaknessCards = useWeaknessCards();
   const [assignedCards, editAssignedCards] = useSlotActions(weaknessSet.assignedCards, updateAssignedCards);
+  const navigation = useNavigation();
   const cardPressed = useCallback((card: Card) => {
-    showCard(card.code, card, colors, { showSpoilers: false });
-  }, [colors]);
+    showCard(navigation, card.code, card, { showSpoilers: false });
+  }, [navigation]);
 
   const data: Card[] = useMemo(() => {
     const packCodes = new Set(weaknessSet.packCodes);

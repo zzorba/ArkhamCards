@@ -28,7 +28,7 @@ import { useFlag, useInvestigators, useSlots, useLatestDeckCards } from '@compon
 import { useCampaign } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDeckActions } from '@data/remote/decks';
-import { useSetCampaignWeaknessSet } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useSetCampaignWeaknessSet } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import HeaderButton from '@components/core/HeaderButton';
@@ -68,6 +68,8 @@ export default function CampaignDrawWeaknessDialog() {
   const deckActions = useDeckActions();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(campaignId);
+  useDismissOnCampaignDeleted(navigation, campaign);
+
   const investigatorsCodes = useMemo(() => map(campaign?.latestDecks(), d => d.investigator), [campaign]);
   const investigators = useInvestigators(investigatorsCodes);
   const latestDecks = campaign?.latestDecks();

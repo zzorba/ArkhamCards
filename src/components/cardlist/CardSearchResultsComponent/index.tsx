@@ -431,7 +431,7 @@ export default function({
             { !!deckId && (
               <>
                 <PreLoadedDeckNavFooter
-                                    parsedDeckObj={parsedDeck}
+                  parsedDeckObj={parsedDeck}
                   control="fab"
                   onPress={backPressed}
                   mode={mode === 'extra' ? 'extra' : undefined}

@@ -2,7 +2,6 @@ import { useCallback, useContext, useMemo, useEffect } from 'react';
 import { filter, forEach, map, omit, uniq, keys, concat } from 'lodash';
 import { useApolloClient } from '@apollo/client';
 
-
 import {
   Campaign,
   CampaignDifficulty,
@@ -69,8 +68,18 @@ interface CampaignLink {
   campaignIdA: string;
   campaignIdB: string;
 }
-export function useCampaignDeleted(
+export function useDismissOnCampaignDeleted(
   navigation: ArkhamNavigation,
+  campaign?: SingleCampaignT
+) {
+  useEffect(() => {
+    if (campaign?.deleted && navigation.canGoBack()) {
+      navigation.goBack();
+    }
+  }, [navigation, campaign?.deleted]);
+}
+
+export function useCampaignDeleted(
   campaign?: SingleCampaignT
 ) {
   const apollo = useApolloClient();
@@ -83,7 +92,6 @@ export function useCampaignDeleted(
         campaign.uuid,
         campaign.id.serverId
       );
-      navigation.getState()
     }
   }, [campaign, apollo.cache, userId]);
 }

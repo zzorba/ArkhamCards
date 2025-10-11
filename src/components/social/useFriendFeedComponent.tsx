@@ -294,8 +294,8 @@ export default function useFriendFeedComponent({ userId, handleScroll, error, se
     return status;
   }, [myProfile]);
   const showUser = useCallback((userId: string, handle?: string) => {
-    navigation.navigate('Friends', { userId, title:  handle ? t`${handle}'s Friends` : t`Friends` });
-  }, []);
+    navigation.navigate('Friends', { userId, title: handle ? t`${handle}'s Friends` : t`Friends` });
+  }, [navigation]);
   const heightItem = useCallback((item: FriendFeedItem) => {
     switch (item.type) {
       case 'user':

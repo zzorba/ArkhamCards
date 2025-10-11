@@ -234,7 +234,7 @@ export default function WeaknessDrawComponent({ investigator, weaknessSet, updat
         </View>
       </View>
     );
-  }, [componentId, customHeader, customFlippedHeader, saving, campaignMode, onToggleChange,
+  }, [customHeader, customFlippedHeader, saving, campaignMode, onToggleChange,
     allTraits, colors, drawAnother, onFlippedHeaderLayout, onHeaderLayout, typography,
     selectedTraits, flipped, headerHeight, flippedHeaderHeight, standalone, multiplayer]);
 

@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
-import uuid from 'react-native-uuid';
+
+import { generateUuid } from '@lib/uuid';
 
 import { CardScreenType, DeckId, Slots, SortType } from '@actions/types';
 import { InvestigatorChoice } from '@data/types/Card';
@@ -21,7 +22,7 @@ import { useComponentVisible, useEffectUpdate } from '@components/core/hooks';
 import HeaderButton from '@components/core/HeaderButton';
 import { useFilterButton } from '../hooks';
 import { useSortDialog } from '../CardSortDialog';
-
+import TuneButton from './TuneButton';
 
 export function useFilterSortDialog(filterId: string, screenType: CardScreenType): [React.ReactNode, () => void] {
   const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, filterId), [filterId]);
@@ -81,7 +82,7 @@ export default function CardSearchComponent(props: Props) {
   const { fontScale, typography, width, colors } = useContext(StyleContext);
   const navigation = useNavigation();
   const visible = useComponentVisible();
-  const randomFilterId = useMemo(() => uuid.v4().toString(), []);
+  const randomFilterId = useMemo(() => generateUuid(), []);
   const filterId = deckId?.uuid || props.filterId || randomFilterId;
   const filterSelector = useCallback((state: AppState) => getFilterState(state, filterId), [filterId]);
   const filters = useSelector(filterSelector);
@@ -114,11 +115,10 @@ export default function CardSearchComponent(props: Props) {
       ) : undefined,
       headerRight: () => (
         <>
-          <HeaderButton
-            iconName="filter"
-            onPress={showFilters}
-            color={colors.M}
-            accessibilityLabel={t`Filter`}
+          <TuneButton
+            filterId={filterId}
+            lightButton={!!deckId}
+            baseQuery={baseQuery}
           />
           <HeaderButton
             iconName="sort"
@@ -129,7 +129,7 @@ export default function CardSearchComponent(props: Props) {
         </>
       ),
     });
-  }, [navigation, showFilters, showSortDialog, colors.M, mythosToggle, filterId]);
+  }, [navigation, deckId, baseQuery, showFilters, showSortDialog, colors.M, mythosToggle, filterId]);
 
   const onClearSearchFilters = useCallback(() => {
     dispatch(clearFilters(filterId));

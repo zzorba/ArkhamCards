@@ -96,7 +96,7 @@ export default function PackListComponent({
           { (alwaysShowCoreSet || includeNoCore) && pack.code === 'core' && (
             <PackRow
               key="always-core"
-                            pack={pack}
+              pack={pack}
               packId="no_core"
               nameOverride={t`Core Set`}
               cycle={cyclePacks}
@@ -109,7 +109,7 @@ export default function PackListComponent({
           { (!includeNoCore || !checkState?.no_core) && (
             <PackRow
               key={pack.id}
-                            pack={pack}
+              pack={pack}
               nameOverride={coreSetName}
               cycle={cyclePacks}
               setChecked={setChecked}
@@ -126,7 +126,7 @@ export default function PackListComponent({
     return (
       <PackRow
         key={pack.id}
-                pack={pack}
+        pack={pack}
         cycle={cyclePacks}
         setChecked={setChecked}
         setCycleChecked={setCycleChecked}
@@ -136,7 +136,7 @@ export default function PackListComponent({
         alwaysCycle={cyclesOnly}
       />
     );
-  }, [packs, checkState, componentId, cyclesOnly, alwaysShowCoreSet, includeNoCore, setChecked, setCycleChecked, baseQuery, compact, coreSetName]);
+  }, [packs, checkState, cyclesOnly, alwaysShowCoreSet, includeNoCore, setChecked, setCycleChecked, baseQuery, compact, coreSetName]);
 
   const renderItem = useCallback(({ item }: SectionListRenderItemInfo<PackItem>) => {
     switch (item.type) {
@@ -146,7 +146,7 @@ export default function PackListComponent({
         return (
           <PackRow
             key={item.pack.code}
-                        pack={item.pack}
+            pack={item.pack}
             cycle={[]}
             setChecked={setChecked}
             setCycleChecked={setCycleChecked}
@@ -163,7 +163,7 @@ export default function PackListComponent({
               { map(item.packs, pack => (
                 <PackRow
                   key={pack.code}
-                                    pack={pack}
+                  pack={pack}
                   cycle={[]}
                   setChecked={setChecked}
                   setCycleChecked={setCycleChecked}
@@ -183,7 +183,7 @@ export default function PackListComponent({
           </View>
         );
     }
-  }, [baseQuery, compact, componentId, cyclesOnly, setChecked, setCycleChecked, renderPack, checkState, setShowLegacy, showLegacy]);
+  }, [baseQuery, compact, cyclesOnly, setChecked, setCycleChecked, renderPack, checkState, setShowLegacy, showLegacy]);
 
 
   if (!packs.length) {

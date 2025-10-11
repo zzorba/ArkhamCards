@@ -75,7 +75,7 @@ export default function DeckOverlapComponent({ parsedDeck, cards, campaignInvest
   latestDecks: LatestDeckT[];
   campaignInvestigators: CampaignInvestigator[] | undefined;
 }) {
-  const { colors, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   const in_collection = useSelector(getPacksInCollection);
   const [excludeInvestigators, toggleExcludeInvestigators] = useToggles({});
   const ignore_collection = useSettingValue('ignore_collection');

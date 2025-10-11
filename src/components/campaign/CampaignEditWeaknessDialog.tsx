@@ -5,8 +5,8 @@ import { CampaignId, Slots } from '@actions/types';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
 import { updateCampaignWeaknessSet } from './actions';
 import { useCampaign } from '@data/hooks';
-import { useSetCampaignWeaknessSet } from '@data/remote/campaigns';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { useDismissOnCampaignDeleted, useSetCampaignWeaknessSet } from '@data/remote/campaigns';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 
 export interface CampaignEditWeaknessProps {
@@ -18,6 +18,9 @@ function CampaignEditWeaknessDialog() {
   const { campaignId } = route.params;
   const dispatch = useAppDispatch();
   const campaign = useCampaign(campaignId);
+  const navigation = useNavigation();
+  useDismissOnCampaignDeleted(navigation, campaign);
+
   const weaknessSet = campaign?.weaknessSet;
   const setCampaignWeaknessSet = useSetCampaignWeaknessSet();
   const updateAssignedCards = useCallback((assignedCards: Slots) => {

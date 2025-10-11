@@ -28,8 +28,7 @@ import CardTextComponent from '@components/card/CardTextComponent';
 import { parseDeck } from '@lib/parseDeck';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
-import { NavigationProp } from '@react-navigation/native';
-import { ArkhamNavigation, RootStackParamList } from '@navigation/types';
+import { ArkhamNavigation } from '@navigation/types';
 
 
 interface ModalOptions {

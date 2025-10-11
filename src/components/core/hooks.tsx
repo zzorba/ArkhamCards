@@ -63,6 +63,7 @@ export function useComponentDidAppear(
   useFocusEffect(
     useCallback(() => {
       handler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, deps)
   );
 }
@@ -77,6 +78,7 @@ export function useComponentDidDisappear(
       return () => {
         handler();
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, deps)
   );
 }

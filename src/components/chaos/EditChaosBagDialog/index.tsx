@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useLayoutEffect, useMemo, useReducer, useState } from 'react';
 import { find, filter, map, sortBy, throttle, range } from 'lodash';
 import {
-  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -39,8 +38,6 @@ export interface EditChaosBagProps {
   updateChaosBag: (chaosBag: ChaosBag) => void;
   trackDeltas?: boolean;
 }
-
-type Props = EditChaosBagProps;
 
 function ChaosBagCounter({ count, token, limit, onInc, onDec, fullWidth, left }: {
   fullWidth: boolean;

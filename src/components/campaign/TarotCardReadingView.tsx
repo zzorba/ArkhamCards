@@ -21,11 +21,12 @@ import { TAROT_CARD_RATIO } from '@styles/sizes';
 import AppIcon from '@icons/AppIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import { useScenarioNames } from '@data/scenario';
-import { useSetCampaignTarotReading } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useSetCampaignTarotReading } from '@data/remote/campaigns';
 import { updateTarotReading } from './actions';
 import { CampaignId, TarotReading } from '@actions/types';
 import { BasicStackParamList } from '@navigation/types';
 import HeaderTitle from '@components/core/HeaderTitle';
+import { useCampaign } from '@data/hooks';
 
 export type TarotReadingType = 'chaos' | 'balance' | 'choice' | 'observed' | 'damned' | 'custom' | 'destiny';
 
@@ -217,6 +218,8 @@ function TarotCardReadingView() {
   const [savedReading, setSavedReading] = useState(originalReading);
   const [saving, setSaving] = useState(false);
   const { backgroundStyle, colors, height, typography, width } = useContext(StyleContext);
+  const campaign = useCampaign(id);
+  useDismissOnCampaignDeleted(navigation, campaign);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -402,7 +405,6 @@ function TarotCardReadingView() {
           renderItem={renderSwipeCard}
           loop
           useScrollView
-          disableIntervalMomentum
           data={tarotCards}
         />
       </View>

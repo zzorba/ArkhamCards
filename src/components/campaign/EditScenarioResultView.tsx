@@ -18,7 +18,7 @@ import { useCampaign } from '@data/hooks';
 import { useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import DeckButton from '@components/deck/controls/DeckButton';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useAppDispatch } from '@app/store';
 import { BasicStackParamList } from '@navigation/types';
 import HeaderButton from '@components/core/HeaderButton';
@@ -34,6 +34,7 @@ export default function EditScenarioResultView() {
   const navigation = useNavigation();
   const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
+  useDismissOnCampaignDeleted(navigation, campaign);
   const dispatch = useAppDispatch();
   const existingScenarioResult = campaign && campaign.scenarioResults?.[index];
   const [scenarioResult, setScenarioResult] = useState<ScenarioResult | undefined>(existingScenarioResult);

@@ -111,13 +111,12 @@ import MyProvider from '@app/MyProvider';
 import * as Sentry from '@sentry/react-native';
 import { maybeSaveAutomaticBackup } from '@app/autoBackup';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppState, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME, ThemeColors } from '@styles/theme';
 import { Appearance } from 'react-native';
 import { ApolloClient } from '@apollo/client';
 import { Persistor } from 'redux-persist/es/types';
-import { useDispatch } from 'react-redux';
 import { CHANGE_TAB, BROWSE_CARDS, BROWSE_DECKS, BROWSE_CAMPAIGNS, BROWSE_SETTINGS } from '@actions/types';
 import {
   RootStackParamList,

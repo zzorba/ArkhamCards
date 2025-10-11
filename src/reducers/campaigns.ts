@@ -1,6 +1,7 @@
 import { find, filter, forEach, map, uniq } from 'lodash';
-import uuid from 'react-native-uuid';
 import { t } from 'ttag';
+
+import { generateUuid } from '@lib/uuid';
 
 import {
   ARKHAMDB_LOGOUT,
@@ -120,7 +121,7 @@ export default function(
       } else {
         all[id] = {
           ...campaign,
-          uuid: uuid.v4() as string,
+          uuid: generateUuid(),
         };
       }
     });

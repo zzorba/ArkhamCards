@@ -16,6 +16,7 @@ import { ProcessedCampaign } from '@data/scenario';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import HeaderTitle from '@components/core/HeaderTitle';
+import { useDismissOnCampaignDeleted } from '@data/remote/campaigns';
 
 
 export interface CampaignLogProps {
@@ -42,6 +43,7 @@ export default function CampaignLogView() {
   const navigation = useNavigation();
   const { backgroundStyle, colors, width } = useContext(StyleContext);
   const [campaignContext, scenarioContext, processedCampaign, processedCampaignError] = useScenarioGuideContext(campaignId, scenarioId, false, standalone, initialProcessedCampaign);
+  useDismissOnCampaignDeleted(navigation, campaignContext?.campaign);
 
   const interScenarioId = useMemo(() => {
     if (processedCampaign && !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&

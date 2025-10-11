@@ -14,9 +14,9 @@ import { useDeckActions } from '@data/remote/decks';
 import { InjectedCampaignGuideContextProps } from './withCampaignGuideContext';
 import space from '@styles/space';
 import ScenarioGuideContext from './ScenarioGuideContext';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import CampaignHeader from './CampaignHeader';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import { updateCampaignName } from '@components/campaign/actions';
 import { useAppDispatch } from '@app/store';
@@ -37,6 +37,9 @@ function StandaloneGuideView({ campaignId, setCampaignServerId, upload }: Standa
   const setCampaignName = useCallback((name: string) => {
     dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
   }, [campaignId, dispatch, updateCampaignActions]);
+  const navigation = useNavigation();
+  useCampaignDeleted(campaign);
+  useDismissOnCampaignDeleted(navigation, campaign);
 
   const [dialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Name`,

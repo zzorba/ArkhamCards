@@ -940,11 +940,16 @@ export default function CampaignMapView() {
     }
   }, [onSelect, onDismiss]);
 
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'close') {
-      onDismiss();
-    }
-  }, componentId, [onDismiss]);
+  // Handle header back button press - intercept and do cleanup before navigating
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('beforeRemove', (e) => {
+      e.preventDefault(); // Stop automatic navigation
+      onDismiss(); // Do cleanup and navigate manually after delay
+    });
+    return unsubscribe;
+  }, [navigation, onDismiss]);
+
+  // Handle hardware back button
   useBackButton(onDismiss);
 
   const [theWidth, theHeight] = useMemo(() => {

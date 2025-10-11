@@ -2,8 +2,6 @@ import React, { useCallback, useContext } from 'react';
 
 import { t } from 'ttag';
 import NavButton from './NavButton';
-import { SearchSelectProps } from '../cardlist/SearchMultiSelectView';
-import COLORS from '@styles/colors';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useNavigation } from '@react-navigation/native';
 

@@ -25,6 +25,7 @@ import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { useDismissOnCampaignDeleted } from '@data/remote/campaigns';
 
 export interface CampaignRulesProps {
   header?: string;
@@ -98,6 +99,9 @@ export default function CampaignRulesView() {
   } = route.params;
   const { backgroundStyle, typography } = useContext(StyleContext);
   const [campaignContext, scenarioContext, , processedCampaignError] = useScenarioGuideContext(campaignId, scenarioId, false, standalone, initialProcessedCampaign);
+  const navigation = useNavigation();
+  useDismissOnCampaignDeleted(navigation, campaignContext?.campaign);
+
   const [showFAQ, toggleShowFAQ] = useFlag(false);
   const hasFAQ = !!(campaignErrata.length || scenarioErrata?.length);
   if (!campaignContext || !scenarioContext) {

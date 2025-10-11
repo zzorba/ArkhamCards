@@ -128,11 +128,10 @@ function ImageContent({ card }: { card: Card }) {
 }
 
 export default function PlayerCardImage({ pressable, card }: Props) {
-  const { colors } = useContext(StyleContext);
   const navigation = useNavigation();
   const onPress = useCallback(() => {
-    showCardImage(navigation, card, colors);
-  }, [navigation, card, colors]);
+    showCardImage(navigation, card);
+  }, [navigation, card]);
 
   if (!card.hasImage()) {
     return (

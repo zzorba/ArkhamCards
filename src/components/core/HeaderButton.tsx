@@ -3,7 +3,6 @@ import { Text, TouchableOpacity } from 'react-native';
 import AppIcon from '@icons/AppIcon';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { on } from 'events';
 
 type HeaderButtonProps = {
   onPress: () => void;

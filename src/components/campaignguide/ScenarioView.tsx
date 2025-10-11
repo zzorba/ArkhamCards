@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
 import ScenarioComponent from './ScenarioComponent';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import HeaderTitle from '@components/core/HeaderTitle';
+import { useDismissOnCampaignDeleted } from '@data/remote/campaigns';
+import CampaignGuideContext from './CampaignGuideContext';
 
 interface OwnProps {
   title: string;
@@ -21,6 +23,10 @@ type Props = InputProps;
 export type ScenarioProps = ScenarioGuideInputProps & OwnProps;
 
 function ScenarioView({ showLinkedScenario }: Props) {
+  const navigation = useNavigation();
+  const { campaign } = useContext(CampaignGuideContext);
+  useDismissOnCampaignDeleted(navigation, campaign);
+
   return (
     <ScenarioComponent
       standalone={false}

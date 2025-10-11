@@ -16,6 +16,7 @@ import space, { m, s } from '@styles/space';
 import CampaignScenarioButton from './CampaignScenarioButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { BasicStackParamList } from '@navigation/types';
+import { useDismissOnCampaignDeleted } from '@data/remote/campaigns';
 
 export interface CampaignScenariosViewProps {
   campaignId: CampaignId;
@@ -57,6 +58,7 @@ export default function CampaignScenariosView() {
   const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
   const [cycleScenarios] = useCampaignScenarios(campaign);
+  useDismissOnCampaignDeleted(navigation, campaign);
 
   const addScenarioResultPressed = useCallback((code?: string) => {
     showAddScenarioResult(navigation, campaignId, code);

@@ -11,6 +11,8 @@ import SlotsChart from './SlotsChart';
 import SkillIconChart from './SkillIconChart';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
 
 const INCLUDE_SLOTS_CHART = false;
 
@@ -18,8 +20,10 @@ export interface DeckChartsProps {
   parsedDeck?: ParsedDeck;
 }
 
-export default function DeckChartsView({ parsedDeck }: DeckChartsProps) {
+export default function DeckChartsView() {
   const { backgroundStyle, width } = useContext(StyleContext);
+  const route = useRoute<RouteProp<RootStackParamList, 'Deck.Charts'>>();
+  const { parsedDeck } = route.params;
 
   if (!parsedDeck) {
     return null;

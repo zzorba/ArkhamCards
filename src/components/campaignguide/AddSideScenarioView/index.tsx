@@ -28,6 +28,7 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import HeaderTitle from '@components/core/HeaderTitle';
+import { useDismissOnCampaignDeleted } from '@data/remote/campaigns';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
@@ -73,7 +74,9 @@ function AddSideScenarioView() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Guide.SideScenario'>>();
   const navigation = useNavigation();
   const { latestScenarioId, embarkData, onEmbarkSide } = route.params;
-  const { campaignState, campaignGuide } = useContext(CampaignGuideContext);
+  const { campaignState, campaignGuide, campaign } = useContext(CampaignGuideContext);
+  useDismissOnCampaignDeleted(navigation, campaign);
+
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
   const [customScenarioName, setCustomScenarioName] = useState('');
   const [customXpCost, incCustomXpCost, decCustomXpCost, setCustomXpCost] = useCounter(1, { min: 0 });

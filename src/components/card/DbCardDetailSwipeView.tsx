@@ -305,7 +305,7 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
         showInvestigators(currentCard.code);
       }
     }
-  }, [currentCard, showInvestigatorCards, showInvestigators]);
+  }, [navigation, currentCard, showInvestigatorCards, showInvestigators]);
 
   const backPressed = useCallback(() => {
     navigation.goBack();

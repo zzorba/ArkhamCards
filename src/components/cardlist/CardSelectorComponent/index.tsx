@@ -1,12 +1,12 @@
-import React, { ReactNode, useCallback, useContext, useMemo } from 'react';
+import React, { ReactNode, useCallback, useMemo } from 'react';
 import { concat, filter, flatMap, keys, sortBy, uniq } from 'lodash';
 
 import { Slots } from '@actions/types';
 import Card from '@data/types/Card';
 import CardToggleRow from './CardToggleRow';
 import { showCard } from '@components/nav/helper';
-import StyleContext from '@styles/StyleContext';
 import { usePlayerCards } from '@components/core/hooks';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
   slots: Slots;
@@ -22,8 +22,7 @@ interface Props {
 
 
 export default function CardSelectorComponent({ slots, fixedSlots, counts, toggleCard, updateCount, filterCard, forceHeader, header, locked }: Props) {
-  const { colors } = useContext(StyleContext);
-
+  const navigation = useNavigation();
   const onChange = useCallback((card: Card, count: number) => {
     if (toggleCard) {
       toggleCard(card.code, count > 0);
@@ -33,8 +32,8 @@ export default function CardSelectorComponent({ slots, fixedSlots, counts, toggl
   }, [updateCount, toggleCard]);
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(card.code, card, colors, { showSpoilers: true });
-  }, [colors]);
+    showCard(navigation, card.code, card, { showSpoilers: true });
+  }, [navigation]);
   const initialCards = useMemo(() => uniq(concat(keys(slots), flatMap(counts, (count, code) => count > 0 ? code : []))), [slots, counts])
   const [cards] = usePlayerCards(initialCards, false);
   const fixedCards = useMemo(() => {

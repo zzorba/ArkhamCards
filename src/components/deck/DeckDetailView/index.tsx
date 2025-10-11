@@ -363,6 +363,7 @@ function DeckDetailView({
         upgrade: 'dark',
       };
       const backgroundColor = backgroundColors[mode];
+      const statusBarStyle = statusBarStyles[mode];
       const titles = {
         view: title,
         upgrade: t`Upgrading deck`,
@@ -391,6 +392,7 @@ function DeckDetailView({
           color: textColor,
         },
         headerTintColor: textColor,
+        statusBarStyle,
         headerLeft: leftButtons.length > 0 ? () => (
           leftButtons[0].text ? (
             <TouchableOpacity onPress={handleBackPress}>
@@ -1211,7 +1213,7 @@ function DeckDetailView({
           <View>
             <View style={[styles.container, backgroundStyle] }>
               <DeckViewTab
-                                campaignId={campaignId}
+                campaignId={campaignId}
                 fromCampaign={fromCampaign}
                 visible={visible}
                 deckId={id}
@@ -1258,7 +1260,7 @@ function DeckDetailView({
               { mode !== 'view' && (
                 <PreLoadedDeckNavFooter
                   parsedDeckObj={parsedDeckObj}
-                                    control="fab"
+                  control="fab"
                   onPress={saveEdits}
                 />
               ) }

@@ -11,20 +11,20 @@ import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import { useFilterButton } from '../hooks';
 import { FilterState } from '@lib/filters';
+import { Slots } from '@actions/types';
 
 const SIZE = 36;
 
 interface Props extends Record<string, unknown> {
-  parentComponentId: string;
   filterId: string;
   lightButton?: boolean;
-  baseQuery?: (filters: FilterState | undefined) => Brackets;
+  baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
   modal?: boolean;
 }
 
-function TuneButton({ parentComponentId, filterId, lightButton, baseQuery, modal }: Props) {
+function TuneButton({ filterId, lightButton, baseQuery, modal }: Props) {
   const { colors } = useContext(StyleContext);
-  const [hasFilters, onPress] = useFilterButton({ componentId: parentComponentId, filterId, baseQuery, modal });
+  const [hasFilters, onPress] = useFilterButton({ filterId, baseQuery, modal });
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>

@@ -19,7 +19,7 @@ export interface TarotProps {
 }
 
 export default function TarotOverlay() {
-  const route = useRoute<RouteProp<BasicStackParamList, 'Tarot'>();
+  const route = useRoute<RouteProp<BasicStackParamList, 'Tarot'>>();
   const { tarot, inverted, flipped, onFlip, onInvert } = route.params;
   const navigation = useNavigation();
   const [localFlipped, setLocalFlipped] = useState(flipped);

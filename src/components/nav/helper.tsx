@@ -1,20 +1,18 @@
-import { Platform, Linking } from 'react-native';
+import { Linking } from 'react-native';
 import React, { useMemo } from 'react';
 import { startsWith, map, range } from 'lodash';
-import { NavigationProp } from '@react-navigation/native';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { t } from 'ttag';
 
 import { usePickerDialog, Item } from '@components/deck/dialogs';
 import { CampaignId, Customizations, Deck, DeckId, ParsedDeck } from '@actions/types';
 import Card from '@data/types/Card';
-import { iconsMap } from '@app/NavIcons';
 import { ThemeColors } from '@styles/theme';
 import HeaderTitle from '@components/core/HeaderTitle';
 import Database from '@data/sqlite/Database';
 import { where } from '@data/sqlite/query';
 import COLORS from '@styles/colors';
-import { ArkhamNavigation, RootStackParamList } from '@navigation/types';
+import { ArkhamNavigation } from '@navigation/types';
 
 // Unified deck screen options helper
 export function getDeckScreenOptions(
@@ -247,7 +245,6 @@ export async function openUrl(
 
 export default {
   showDeckModal,
-  getDeckOptions,
   showCard,
   useOptionDialog,
   openUrl,

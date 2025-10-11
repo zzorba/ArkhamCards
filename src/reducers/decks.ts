@@ -1,5 +1,6 @@
 import { filter, find, forEach, keys, flatMap, head, omit, uniq, mapValues } from 'lodash';
-import uuid from 'react-native-uuid';
+
+import { generateUuid } from '@lib/uuid';
 
 import {
   ARKHAMDB_LOGOUT,
@@ -222,7 +223,7 @@ export default function(
       } else {
         all[id] = {
           ...deck,
-          uuid: uuid.v4(),
+          uuid: generateUuid(),
         };
       }
     });

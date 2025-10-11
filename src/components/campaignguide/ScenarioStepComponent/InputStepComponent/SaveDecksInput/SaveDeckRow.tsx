@@ -29,6 +29,7 @@ import { useAppDispatch } from '@app/store';
 import useTraumaSection from '../UpgradeDecksInput/useTraumaSection';
 import AppIcon from '@icons/AppIcon';
 import useDeckUpgradeAction from '@components/deck/useDeckUpgradeAction';
+import { useNavigation } from '@react-navigation/native';
 
 function deckMessage(saved: boolean, hasDeck: boolean, hasAdjustments: boolean, hasDeckChanges: boolean, isOwner: boolean) {
   if (saved) {
@@ -80,6 +81,7 @@ function SaveDeckRow({
   const { colors, typography, width } = useContext(StyleContext);
   const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
   }, [id, investigator]);
@@ -140,8 +142,8 @@ function SaveDeckRow({
   }, [deck, userId, storyAssetDeltas, adjustXp, saveDeck, saveDelayedDeck, saveCampaignLog]);
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(card.code, card, colors, { showSpoilers: true });
-  }, [colors]);
+    showCard(navigation, card.code, card, { showSpoilers: true });
+  }, [navigation]);
 
   const renderDeltas = useCallback((cards: Card[], deltas: Slots) => {
     return map(

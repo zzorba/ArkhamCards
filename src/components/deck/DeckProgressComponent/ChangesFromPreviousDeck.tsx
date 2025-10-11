@@ -47,7 +47,7 @@ export default function ChangesFromPreviousDeck({
   editable,
   footerButton,
 }: Props) {
-  const { colors, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   const {
     investigator,
     changes,
