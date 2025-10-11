@@ -10,23 +10,29 @@ import DatabaseContext from '@data/sqlite/DatabaseContext';
 import SettingsItem from './SettingsItem';
 import StyleContext from '@styles/StyleContext';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import { BasicStackParamList } from '@navigation/types';
+import { RootStackParamList } from '@navigation/types';
 
 export interface SafeModeViewProps {
-  startApp: () => void;
+  startApp?: () => void;
 }
 
 export default function SafeModeView() {
-  const route = useRoute<RouteProp<BasicStackParamList, 'Settings.SafeMode'>>();
+  const route = useRoute<RouteProp<RootStackParamList, 'Settings.SafeMode'>>();
   const navigation = useNavigation();
-  const { startApp } = route.params;
+  const { startApp } = route.params || {};
   const { db } = useContext(DatabaseContext);
   const { backgroundStyle } = useContext(StyleContext);
   const dispatch = useDispatch();
   const [safeMode, setSafeMode] = useState(false);
   const [cacheCleared, setCacheCleared] = useState(false);
 
-  const launchApp = useCallback(() => startApp(), [startApp]);
+  const launchApp = useCallback(() => {
+    if (startApp) {
+      startApp();
+    } else {
+      navigation.goBack();
+    }
+  }, [startApp, navigation]);
 
   const enableSafeMode = useCallback(() => {
     navigation.setOptions({

@@ -26,7 +26,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import { BasicStackParamList, RootStackParamList } from '@navigation/types';
+import { RootStackParamList } from '@navigation/types';
 import HeaderButton from '@components/core/HeaderButton';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 

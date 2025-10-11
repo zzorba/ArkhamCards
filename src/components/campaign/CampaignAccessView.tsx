@@ -10,7 +10,6 @@ import useFriendFeedComponent, { FriendFeedItem } from '@components/social/useFr
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useCampaignAccess, UserProfile } from '@data/remote/hooks';
-import { FriendsViewProps } from '@components/social/FriendsView';
 import { EditAccessAction } from '@generated/graphql/apollo-schema';
 import { BasicStackParamList } from '@navigation/types';
 
@@ -97,5 +96,5 @@ export default function EditCampaignAccessView() {
   if (!userId) {
     return <LoadingSpinner />;
   }
-  return feed;
+  return <>{feed}</>;
 }

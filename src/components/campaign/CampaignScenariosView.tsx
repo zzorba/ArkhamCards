@@ -13,7 +13,6 @@ import { completedScenario } from './constants';
 import StyleContext from '@styles/StyleContext';
 import { showAddScenarioResult } from './nav';
 import space, { m, s } from '@styles/space';
-import { EditScenarioResultProps } from './EditScenarioResultView';
 import CampaignScenarioButton from './CampaignScenarioButton';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { BasicStackParamList } from '@navigation/types';

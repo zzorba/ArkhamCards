@@ -143,7 +143,6 @@ export type BasicStackParamList = {
   'Settings.Backup': BackupProps;
   'Settings.MergeBackup': MergeBackupProps;
   'Settings.ReleaseNotes': undefined;
-  'Settings.SafeMode': SafeModeViewProps;
   'About': undefined;
   'Rules': undefined;
   'Rule': RuleViewProps;
@@ -187,6 +186,7 @@ export type RootStackParamList = BasicStackParamList & {
   'Deck.History': DeckHistoryProps;
   'Deck.Charts': DeckChartsProps;
   'Deck.DrawSimulator': DrawSimulatorProps;
+  'Settings.SafeMode': SafeModeViewProps;
 
   // Weakness screens (root level)
   'Weakness.Draw': DrawWeaknessProps;

@@ -26,7 +26,7 @@ import CardCustomizationOptions from './CardCustomizationOptions';
 import { Customizations, DeckId } from '@actions/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { SimpleDeckEditContextProvider, useAllCardCustomizations, useCardCustomizations, useDeckSlotCount } from '@components/deck/DeckEditContext';
-import HeaderButton from '@components/core/HeaderButton';
+import { HeaderButtonWithId } from '@components/core/HeaderButton';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = card?.custom() ? [] : [{
@@ -130,10 +130,11 @@ function CardDetailView({
         headerRight: () => (
           <View style={{ flexDirection: 'row' }}>
             {rightButtons.map((button) => (
-              <HeaderButton
+              <HeaderButtonWithId
                 key={button.id}
                 iconComponent={button.iconComponent}
-                onPress={() => handleButtonPress(button.id)}
+                id={button.id}
+                onPress={handleButtonPress}
                 accessibilityLabel={button.accessibilityLabel}
               />
             ))}

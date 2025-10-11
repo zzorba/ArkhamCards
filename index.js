@@ -10,11 +10,9 @@ import 'react-native-console-time-polyfill';
 import 'reflect-metadata';
 
 import { store, persistor } from './src/app/store';
-import MyProvider from './src/app/MyProvider';
 import createApolloClient from './src/data/apollo/createApolloClient';
 import TrackPlayer from 'react-native-track-player';
 import AppNavigator from './src/navigation/AppNavigator';
-import { maybeSaveAutomaticBackup } from './src/app/autoBackup';
 
 const navigationIntegration = Sentry.reactNavigationIntegration();
 

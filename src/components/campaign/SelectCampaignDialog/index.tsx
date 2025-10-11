@@ -105,7 +105,7 @@ function SelectCampaignDialog() {
     });
   }, [navigation]);
   const [tabView] = useTabView({ tabs, onTabChange });
-  return tabView;
+  return <>{tabView}</>;
 }
 
 export default SelectCampaignDialog;

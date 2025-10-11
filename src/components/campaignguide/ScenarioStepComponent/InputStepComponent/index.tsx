@@ -163,7 +163,7 @@ export default function InputStepComponent({ step, color, campaignLog, switchCam
       return (
         <UpgradeDecksInput
           id={step.id}
-                    skipDeckSave={step.input.skip_decks}
+          skipDeckSave={step.input.skip_decks}
           specialXp={step.input.special_xp}
           storyCards={step.input.story_cards}
           investigatorCounter={step.input.counter}
@@ -175,7 +175,7 @@ export default function InputStepComponent({ step, color, campaignLog, switchCam
       return (
         <SaveDecksInput
           id={step.id}
-                    includeTrauma={step.input.trauma}
+          includeTrauma={step.input.trauma}
           adjustXp={step.input.adjust_xp}
         />
       );
@@ -184,7 +184,7 @@ export default function InputStepComponent({ step, color, campaignLog, switchCam
         <PlayScenarioComponent
           id={step.id}
           campaignId={campaignId}
-                    input={step.input}
+          input={step.input}
           text={step.text}
         />
       );
@@ -230,7 +230,7 @@ export default function InputStepComponent({ step, color, campaignLog, switchCam
     case 'receive_campaign_link':
       return (
         <ReceiveCampaignLinkInputComponent
-                    id={step.id}
+          id={step.id}
           input={step.input}
           campaignLog={campaignLog}
           switchCampaignScenario={switchCampaignScenario}

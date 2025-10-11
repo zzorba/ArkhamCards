@@ -54,7 +54,7 @@ export default function DecksSection({
   showCountDialog,
 }: Props) {
   const navigation = useNavigation();
-  const { borderStyle, colors } = useContext(StyleContext);
+  const { borderStyle } = useContext(StyleContext);
   const removeDeckPrompt = useCallback((investigator: CampaignInvestigator) => {
     const deck = find(latestDecks, deck => {
       return !!(deck && deck.investigator === investigator.code);
@@ -111,7 +111,7 @@ export default function DecksSection({
     return (
       <InvestigatorCampaignRow
         key={investigator.code}
-                campaign={campaign}
+        campaign={campaign}
         investigator={investigator}
         spentXp={traumaAndCardData.spentXp || 0}
         totalXp={traumaAndCardData.availableXp || 0}
@@ -143,7 +143,7 @@ export default function DecksSection({
         />
       </InvestigatorCampaignRow>
     );
-  }, [componentId, campaign,
+  }, [campaign,
     showTextEditDialog, updateInvestigatorNotes, showCountDialog,
     showTraumaDialog, showXpDialog, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator]);
 

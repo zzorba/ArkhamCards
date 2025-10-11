@@ -108,6 +108,8 @@ import FriendsView from '@components/social/FriendsView';
 
 // App-level imports
 import MyProvider from '@app/MyProvider';
+import * as Sentry from '@sentry/react-native';
+import { maybeSaveAutomaticBackup } from '@app/autoBackup';
 
 import { useSelector } from 'react-redux';
 import { AppState, getThemeOverride } from '@reducers';
@@ -158,6 +160,42 @@ function useNavigatorTheme(includeBackTitle = true): {
       ...(includeBackTitle ? { headerBackTitle: t`Back` } : {}),
     },
   };
+}
+
+function useAppInitialization(navigationRef: React.RefObject<NavigationContainerRef<RootStackParamList> | null>) {
+  const [safeModeActive, setSafeModeActive] = useState(false);
+  const appState = useSelector((state: AppState) => state);
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function checkCrashAndInitialize() {
+      try {
+        const previousCrash = await Sentry.crashedLastRun();
+        if (previousCrash && !__DEV__ && mounted) {
+          setSafeModeActive(true);
+          // Navigate to safe mode
+          navigationRef.current?.navigate('Settings.SafeMode', {});
+          return;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+      if (mounted) {
+        // Run automatic backup on app start
+        maybeSaveAutomaticBackup(appState);
+      }
+    }
+
+    checkCrashAndInitialize();
+
+    return () => {
+      mounted = false;
+    };
+  }, [appState, navigationRef]);
+
+  return { safeModeActive };
 }
 
 function useToastConfig(): ToastConfig {
@@ -475,34 +513,6 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
         options={{ title: t`Edit Spoilers` }}
       />
       <Stack.Screen
-        name="Dialog.CampaignDrawWeakness"
-        component={CampaignDrawWeaknessDialog}
-        options={{
-          title: t`Draw Weaknesses`,
-        }}
-      />
-      <Stack.Screen
-        name="Settings.Diagnostics"
-        component={DiagnosticsView}
-        options={{
-          title: t`Diagnostics`,
-        }}
-      />
-      <Stack.Screen
-        name="Settings.Backup"
-        component={BackupView}
-        options={{
-          title: t`Backup`,
-        }}
-      />
-      <Stack.Screen
-        name="Settings.MergeBackup"
-        component={MergeBackupView}
-        options={{
-          title: t`Merge Backup`,
-        }}
-      />
-      <Stack.Screen
         name="About"
         component={AboutView}
         options={{
@@ -591,13 +601,6 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
         component={ReleaseNotesView}
         options={{
           title: t`Recent updates`,
-        }}
-      />
-      <Stack.Screen
-        name="Settings.SafeMode"
-        component={SafeModeView}
-        options={{
-          title: t`Safe Mode`,
         }}
       />
 
@@ -966,6 +969,13 @@ function RootStackNavigator() {
         name="Campaign.Map"
         component={CampaignMapView}
       />
+      <RootStack.Screen
+        name="Settings.SafeMode"
+        component={SafeModeView}
+        options={{
+          title: t`Safe Mode`,
+        }}
+      />
 
     </RootStack.Navigator>
   );
@@ -980,6 +990,7 @@ function AppNavigatorInner({ navigationRef, navigationIntegration }: {
   const darkMode = system ? Appearance.getColorScheme() === 'dark' : themeOverride === 'dark';
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const toastConfig = useToastConfig();
+  useAppInitialization(navigationRef);
 
   const linking = {
     prefixes: ['arkhamcards://', 'dissonantvoices://'],

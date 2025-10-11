@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import { t } from 'ttag';
 
-import { CampaignSelection, SelectCampaignProps } from '@components/campaign/SelectCampaignDialog';
+import { CampaignSelection } from '@components/campaign/SelectCampaignDialog';
 import { CUSTOM } from '@actions/types';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import { useNavigation } from '@react-navigation/native';

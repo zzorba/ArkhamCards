@@ -21,6 +21,7 @@ function isExile(card: Card) {
   return !!card.exile;
 }
 
+const EMPTY_SLOTS = {};
 export default function ExileCardSelectorComponent({
   alwaysShow, disabled, deck, exileCounts, fixedExileCounts,
   updateExileCount, label, children, storyCards,
@@ -30,13 +31,14 @@ export default function ExileCardSelectorComponent({
     return isExile(card) && (!storyCards || !storyCards[card.code]);
   }, [storyCards]);
 
+
   if (!deck) {
     return <>{children}</>;
   }
   return (
     <>
       <CardSelectorComponent
-                slots={deck.deck.slots || {}}
+        slots={deck.deck.slots ?? EMPTY_SLOTS}
         fixedSlots={fixedExileCounts}
         counts={exileCounts}
         updateCount={updateExileCount}

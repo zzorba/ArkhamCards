@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '@navigation/types';
 import {
   ActivityIndicator,
@@ -23,7 +22,7 @@ import { rightButtonsForCard } from './CardDetailView';
 import { makeTabooSetSelector, AppState, getPackSpoilers, getPacksInCollection } from '@reducers';
 import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
-import HeaderButton from '@components/core/HeaderButton';
+import { HeaderButtonWithId } from '@components/core/HeaderButton';
 import StyleContext from '@styles/StyleContext';
 import { useToggles, useCards, useSettingValue } from '@components/core/hooks';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
@@ -195,7 +194,7 @@ function ScrollableCard(props: {
       contentContainerStyle={backgroundStyle}
     >
       <CardDetailComponent
-                card={customizedCard}
+        card={customizedCard}
         showSpoilers={showCardSpoiler(customizedCard)}
         toggleShowSpoilers={toggleShowSpoilers}
         showInvestigatorCards={showInvestigatorCards}
@@ -204,7 +203,7 @@ function ScrollableCard(props: {
       />
       { !!customizedCard.customization_options && !!card && (
         <CardCustomizationOptions
-                    card={card}
+          card={card}
           customizationOptions={customizedCard.customization_options}
           customizationChoices={customizationChoices}
           width={width}
@@ -319,10 +318,11 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
         headerRight: () => (
           <View style={{ flexDirection: 'row' }}>
             {rightButtons.map((button) => (
-              <HeaderButton
+              <HeaderButtonWithId
                 key={button.id}
                 iconComponent={button.iconComponent}
-                onPress={() => handleButtonPress(button.id)}
+                onPress={handleButtonPress}
+                id={button.id}
                 accessibilityLabel={button.accessibilityLabel}
               />
             ))}
@@ -398,7 +398,7 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
           <>
             <PreLoadedDeckNavFooter
               mode={currentControl === 'extra' ? 'extra' : undefined}
-                            parsedDeckObj={parsedDeck}
+              parsedDeckObj={parsedDeck}
               control="counts"
               onPress={backPressed}
             />

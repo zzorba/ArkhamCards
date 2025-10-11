@@ -676,6 +676,7 @@ function NewDeckOptionsDialog({
             investigator={investigatorFront || investigator}
             tabooSetId={tabooSetId}
             investigatorBack={investigatorBack}
+            navEnabled={false}
           />
         </View>
         { formContent }

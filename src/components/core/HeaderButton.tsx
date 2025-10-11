@@ -1,8 +1,9 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import AppIcon from '@icons/AppIcon';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { on } from 'events';
 
 type HeaderButtonProps = {
   onPress: () => void;
@@ -52,3 +53,15 @@ export default function HeaderButton(props: HeaderButtonProps) {
     </TouchableOpacity>
   );
 }
+
+export function HeaderButtonWithId<T>({ id, onPress, ...props }: Omit<HeaderButtonProps, 'onPress'> & { id: T, onPress: (id: T) => void }) {
+  const handleOnPress = useCallback(() => {
+    onPress(id);
+  }, [onPress, id]);
+  return (
+    <HeaderButton
+      {...props as any}
+      onPress={handleOnPress}
+    />
+  );
+};

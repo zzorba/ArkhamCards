@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 import { ThunkDispatch } from 'redux-thunk';
 
-import { iconsMap } from '@app/NavIcons';
 import {
   CORE,
   CUSTOM,
@@ -25,7 +24,6 @@ import {
   NewCampaignAction,
   NewStandaloneCampaignAction,
   NEW_GUIDED_CAMPAIGNS,
-  BROWSE_CAMPAIGNS,
   OZ,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';

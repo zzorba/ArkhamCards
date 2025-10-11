@@ -390,6 +390,7 @@ function DeckDetailView({
         headerTitleStyle: {
           color: textColor,
         },
+        headerTintColor: textColor,
         headerLeft: leftButtons.length > 0 ? () => (
           leftButtons[0].text ? (
             <TouchableOpacity onPress={handleBackPress}>

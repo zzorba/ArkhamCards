@@ -14,13 +14,12 @@ import useCardList from '../useCardList';
 import specialCards from '@data/deck/specialCards';
 
 interface Props {
-  componentId?: string;
   investigator: Card;
   parallelInvestigator?: Card;
   width: number;
 }
 
-export default function SignatureCardsComponent({ componentId, investigator, parallelInvestigator, width }: Props) {
+export default function SignatureCardsComponent({ investigator, parallelInvestigator, width }: Props) {
 
   const parallelCodes = useMemo(() => {
     return [
@@ -61,7 +60,7 @@ export default function SignatureCardsComponent({ componentId, investigator, par
           { map(normalRequiredCards, card => (
             <SignatureCardItem
               key={card.code}
-                            card={card}
+              card={card}
               width={width}
             />
           )) }
@@ -73,7 +72,7 @@ export default function SignatureCardsComponent({ componentId, investigator, par
           { map(parallelRequiredCards, card => (
             <SignatureCardItem
               key={card.code}
-                            card={card}
+              card={card}
               width={width}
             />
           )) }
@@ -85,7 +84,7 @@ export default function SignatureCardsComponent({ componentId, investigator, par
           { map(altCards, card => (
             <SignatureCardItem
               key={card.code}
-                            card={card}
+              card={card}
               width={width}
             />
           )) }
@@ -97,16 +96,13 @@ export default function SignatureCardsComponent({ componentId, investigator, par
           { map(advancedCards, card => (
             <SignatureCardItem
               key={card.code}
-                            card={card}
+              card={card}
               width={width}
             />
           )) }
         </>
       ) }
-      <BondedCardsComponent
-                width={width}
-        cards={bondedCards}
-      />
+      <BondedCardsComponent width={width} cards={bondedCards} />
     </View>
   );
 }

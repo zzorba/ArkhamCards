@@ -6,7 +6,6 @@ import { Deck, Slots, getDeckId } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { ShowAlert } from '@components/deck/dialogs';
 import { useComponentVisible } from '@components/core/hooks';
-import { ArkhamNavigation } from '@navigation/types';
 
 function weaknessString(deck: Deck, cards: CardsMap) {
   let weaknessCount = 0;

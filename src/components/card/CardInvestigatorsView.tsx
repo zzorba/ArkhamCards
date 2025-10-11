@@ -1,5 +1,5 @@
 
-import React, { useCallback, useContext, useState, useLayoutEffect } from 'react';
+import React, { useCallback, useState, useLayoutEffect } from 'react';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '@navigation/types';
 import { Keyboard, TouchableOpacity, Text } from 'react-native';
@@ -8,7 +8,6 @@ import { t } from 'ttag';
 import COLORS from '@styles/colors';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import DeckValidation from '@lib/DeckValidation';
-import StyleContext from '@styles/StyleContext';
 import useSingleCard from './useSingleCard';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
 import { SortType, SORT_BY_FACTION, SORT_BY_TITLE } from '@actions/types';

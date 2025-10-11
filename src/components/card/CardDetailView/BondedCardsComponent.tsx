@@ -11,7 +11,6 @@ import useCardsFromQuery from '../useCardsFromQuery';
 import { SortType, DEFAULT_SORT } from '@actions/types';
 
 interface Props {
-  componentId?: string;
   cards: Card[];
   width: number;
   tabooSetId?: number;
@@ -47,7 +46,7 @@ export function useBondedFromCards(cards: Card[], sorts?: SortType[], tabooSetOv
   return useCardsFromQuery({ query: bondedFromQuery, tabooSetOverride, sort: sortQuery });
 }
 
-export default function BondedCardsComponent({ componentId, cards, width, tabooSetId: tabooSetOverride }: Props) {
+export default function BondedCardsComponent({ cards, width, tabooSetId: tabooSetOverride }: Props) {
   const tabooSetId = useTabooSetId(tabooSetOverride);
   const [bondedToCards, bondedToCardsLoading] = useBondedToCards(cards, tabooSetId);
   const [bondedFromCards, bondedFromCardsLoading] = useBondedFromCards(cards, DEFAULT_SORT, tabooSetId);
@@ -62,7 +61,7 @@ export default function BondedCardsComponent({ componentId, cards, width, tabooS
           <CardDetailSectionHeader title={t`Bonded`} />
           { map(bondedToCards, card => (
             <TwoSidedCardComponent
-                            key={card.code}
+              key={card.code}
               card={card}
               width={width}
             />
@@ -75,7 +74,7 @@ export default function BondedCardsComponent({ componentId, cards, width, tabooS
           { map(bondedFromCards, card => (
             <TwoSidedCardComponent
               key={card.code}
-                            card={card}
+              card={card}
               width={width}
             />
           )) }

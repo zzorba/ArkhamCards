@@ -163,7 +163,7 @@ export default function CampaignRulesView() {
 
 function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Guide.Rules'> }): NativeStackNavigationOptions {
   return {
-    title: route.params?.header ?? t`Campaign Rules`
+    title: route.params?.header ?? t`Campaign Rules`,
   };
 };
 CampaignRulesView.options = options;

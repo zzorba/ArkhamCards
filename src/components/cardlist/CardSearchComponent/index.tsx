@@ -14,7 +14,6 @@ import { FilterState } from '@lib/filters';
 import { removeFilterSet, clearFilters, toggleMythosMode, toggleFilter, updateFilter, updateCardSorts } from '@components/filter/actions';
 import { getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
 import MythosButton from './MythosButton';
-import TuneButton from './TuneButton';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
@@ -63,15 +62,6 @@ interface Props {
   setHideSplash?: (value: boolean) => void;
 }
 
-interface CardSearchNavigationOptions {
-  filterId: string;
-  modal?: boolean;
-  lightButton?: boolean;
-  mythosToggle?: boolean;
-  baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
-  title?: string;
-}
-
 export default function CardSearchComponent(props: Props) {
   const {
     deckId,
@@ -102,26 +92,16 @@ export default function CardSearchComponent(props: Props) {
     [screenType, mythosMode]);
   const selectedSorts = useSelector(selectedSortSelector);
   const dispatch = useDispatch();
-  // TODO(bot): Re-enable for react-navigation
-  // useEffect(() => {
-  //   Navigation.mergeOptions(componentId,
-  //     navigationOptions(
-  //       {
-  //         componentId,
-  //         filterId,
-  //         baseQuery,
-  //         mythosToggle,
-  //         lightButton: deckId !== undefined,
-  //       }
-  //     )
-  //   );
-  //   return function cleanup() {
-  //     if (!deckId) {
-  //       dispatch(removeFilterSet(filterId));
-  //     }
-  //   };
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+
+  // Cleanup filter set on unmount (if not a deck search)
+  useEffect(() => {
+    return function cleanup() {
+      if (!deckId) {
+        dispatch(removeFilterSet(filterId));
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [, showFilters] = useFilterButton({ filterId, baseQuery, modal: false });
 

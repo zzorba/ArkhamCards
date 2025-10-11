@@ -11,7 +11,6 @@ import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { BorderColor, EncounterSetsStep } from '@data/scenario/types';
 import EncounterIcon from '@icons/EncounterIcon';
-import { EncounterCardErrataProps } from '@components/campaignguide/EncounterCardErrataView';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import space from '@styles/space';
 import CampaignGuide from '@data/scenario/CampaignGuide';

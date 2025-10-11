@@ -18,8 +18,6 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
-import { CardFaqProps } from '@components/card/CardFaqView';
-import { CardTabooProps } from '@components/card/CardTabooView';
 import Card, { CardStatusType } from '@data/types/Card';
 import SkillIcon from '@components/core/SkillIcon';
 
@@ -84,7 +82,7 @@ export default function TwoSidedCardComponent(props: Props) {
 
   const showTaboo = useCallback(() => {
     if (pressable) {
-      navigation.navigate('Card.Taboo', { id: card.code, cardName: card.name  });
+      navigation.navigate('Card.Taboo', { id: card.code, cardName: card.name });
     }
   }, [navigation, pressable, card]);
 

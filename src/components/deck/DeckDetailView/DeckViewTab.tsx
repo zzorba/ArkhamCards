@@ -79,7 +79,6 @@ interface Props {
 
 export default function DeckViewTab(props: Props) {
   const {
-    componentId,
     suggestArkhamDbLogin,
     fromCampaign,
     tabooSetId,
@@ -204,12 +203,12 @@ export default function DeckViewTab(props: Props) {
         investigator={investigatorCard}
         investigatorBack={investigator?.back}
         yithian={yithian}
-                tabooSetId={tabooSetId}
+        navEnabled
+        tabooSetId={tabooSetId}
       />
     );
-  }, [componentId, parsedDeck.slots, cards, investigator, tabooSetId]);
+  }, [parsedDeck.slots, cards, investigator, tabooSetId]);
   const [parsedDeckComponent, bondedCardCount] = useParsedDeckComponent({
-    componentId,
     parsedDeck,
     visible,
     cards,
@@ -277,7 +276,7 @@ export default function DeckViewTab(props: Props) {
       <View style={space.marginSideS}>
         { parsedDeckComponent }
         <DeckProgressComponent
-                    cards={cards}
+          cards={cards}
           deckId={deckId}
           deck={deck}
           parsedDeck={parsedDeck}
@@ -290,7 +289,7 @@ export default function DeckViewTab(props: Props) {
         { !!campaignId && !parsedDeck.deck?.nextDeckId && (
           <DeckOverlapComponentForCampaign
             campaignId={campaignId}
-                        parsedDeck={parsedDeck}
+            parsedDeck={parsedDeck}
             live={!fromCampaign}
             cards={cards}
           />

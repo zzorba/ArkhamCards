@@ -1,11 +1,9 @@
 
 import { t } from 'ttag';
 
-import { ScenarioProps } from '@components/campaignguide/ScenarioView';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
 import { CampaignId } from '@actions/types';
-import { CampaignRulesProps } from './CampaignRulesView';
 import { CAMPAIGN_SETUP_ID } from '@data/scenario/CampaignGuide';
 import { CampaignRule, Question } from '@data/scenario/types';
 import { ArkhamNavigation } from '@navigation/types';

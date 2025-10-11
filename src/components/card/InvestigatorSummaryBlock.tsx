@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { TouchableOpacity } from '@components/core/Touchables';
@@ -10,27 +10,26 @@ import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
 import Card from '@data/types/Card';
 import { m, s, xs } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
 import { useFlag } from '@components/core/hooks';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId?: string;
   investigator: Card;
   investigatorBack?: Card;
   tabooSetId: number | undefined;
   yithian?: boolean;
+  navEnabled: boolean
 }
-export default function InvestigatorSummaryBlock({ investigator, componentId, tabooSetId, yithian, investigatorBack }: Props) {
-  const { colors } = useContext(StyleContext);
+export default function InvestigatorSummaryBlock({ investigator, navEnabled, tabooSetId, yithian, investigatorBack }: Props) {
   const [showBack, toggleShowBack] = useFlag(false);
+  const navigation = useNavigation();
   const onPress = useCallback(() => {
-    if (componentId) {
+    if (navEnabled) {
       if (investigator) {
         showCard(
-          componentId,
+          navigation,
           investigator.code,
           investigator,
-          colors,
           {
             showSpoilers: false,
             tabooSetId,
@@ -41,7 +40,7 @@ export default function InvestigatorSummaryBlock({ investigator, componentId, ta
     } else {
       toggleShowBack();
     }
-  }, [componentId, tabooSetId, investigator, investigatorBack, colors, toggleShowBack]);
+  }, [navigation, navEnabled, tabooSetId, investigator, investigatorBack, toggleShowBack]);
   const [textContent, tabooContent] = useMemo(() => {
     if (!investigatorBack || !investigatorBack.back_text || !showBack) {
       return [
@@ -83,7 +82,7 @@ export default function InvestigatorSummaryBlock({ investigator, componentId, ta
                   <InvestigatorImage
                     card={investigator}
                     backCard={investigatorBack}
-                                        yithian={yithian}
+                    yithian={yithian}
                     tabooSetId={tabooSetId}
                     border
                   />
@@ -96,7 +95,7 @@ export default function InvestigatorSummaryBlock({ investigator, componentId, ta
         { tabooContent }
       </>
     );
-  }, [investigator, investigatorBack, tabooSetId, componentId, yithian, textContent, tabooContent, showBack]);
+  }, [investigator, investigatorBack, tabooSetId, yithian, textContent, tabooContent, showBack]);
   return (
     <View style={styles.column}>
       <TouchableOpacity onPress={onPress}>
