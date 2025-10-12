@@ -805,17 +805,19 @@ export const makeCardPoolSelector = (): (state: AppState) => { cardPoolMode: Car
     (state: AppState) => state.settings.cardPoolPacks,
     (state: AppState) => state.packs.in_collection,
     (mode: CardPoolMode | undefined, cardPoolPacks: string[] | undefined, inCollection: { [code: string]: boolean }): { cardPoolMode: CardPoolMode; cardPoolPacks: string[] } => {
-      const cardPoolMode = mode ?? 'current';
+      const cardPoolMode = mode ?? 'legacy';
       switch (cardPoolMode) {
-        case 'current':
+        case 'current': {
+          const corePack = filter(cardPoolPacks ?? [], p => p === 'core' || p === 'rcore')[0];
           return {
             cardPoolMode,
             cardPoolPacks: [
-              inCollection.rcore ? 'rcore' : 'core',
+              corePack ?? (inCollection.rcore ? 'rcore' : 'core'),
               ...POOL_CURRENT_PACKS,
               POOL_INVESTIGATOR_CYCLE,
             ],
           };
+        }
         case 'legacy':
           return {
             cardPoolMode,
@@ -825,7 +827,7 @@ export const makeCardPoolSelector = (): (state: AppState) => { cardPoolMode: Car
         case 'custom':
           return {
             cardPoolMode,
-            cardPoolPacks: cardPoolPacks || [],
+            cardPoolPacks: cardPoolPacks ?? [],
           };
       }
     }

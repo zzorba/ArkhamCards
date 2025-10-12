@@ -35,7 +35,7 @@ import { EditScenarioResultProps } from '@components/campaign/EditScenarioResult
 import { TarotCardReadingProps } from '@components/campaign/TarotCardReadingView';
 import { UpgradeDecksProps } from '@components/campaign/UpgradeDecksView';
 import { CampaignEditWeaknessProps } from '@components/campaign/CampaignEditWeaknessDialog';
-import { SelectCampagaignProps } from '@components/campaign/SelectCampaignDialog';
+import { SelectCampaignProps } from '@components/campaign/SelectCampaignDialog';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
 
 // Campaign guide screens
@@ -156,7 +156,7 @@ export type BasicStackParamList = {
   'Guide.Standalone': StandaloneGuideProps;
 
   // Dialog screens (root level)
-  'Dialog.Campaign': SelectCampagaignProps;
+  'Dialog.Campaign': SelectCampaignProps;
 
   // Social screens
   Friends: FriendsViewProps;

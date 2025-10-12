@@ -52,7 +52,7 @@ function showDeKofi() {
   Linking.openURL('https://ko-fi.com/simplainer');
 }
 
-function showRuDonate() {
+export function showRuDonate() {
   Linking.openURL('https://messenger.online.sberbank.ru/sl/rgONgm2VJesBMZNMh');
 }
 function showEnAudio() {
