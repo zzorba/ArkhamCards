@@ -528,6 +528,7 @@ function DeckDetailView({
     navigation.navigate('Deck.EditAddCards', {
       id,
       deckType: 'extra',
+      title: t`Edit Spirit Deck`,
     });
   }, [deck, cards, deckEditsRef, setMode, setFabOpen, setMenuOpen, navigation, id]);
 
@@ -540,6 +541,7 @@ function DeckDetailView({
     navigation.navigate('Deck.EditAddCards', {
       id,
       deckType: 'side',
+      title: t`Edit Side Deck`,
     });
   }, [deckEditsRef, setMode, setFabOpen, setMenuOpen, navigation, id]);
   const onDraftCards = useCallback(() => {

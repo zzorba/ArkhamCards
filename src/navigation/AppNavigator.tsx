@@ -395,9 +395,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Campaign.UpgradeDecks"
         component={UpgradeDecksView}
-        options={{
-          title: t`Upgrade Decks`,
-        }}
+        options={UpgradeDecksView.options}
       />
       <Stack.Screen
         name="Campaign.DrawChaosBag"
@@ -893,9 +891,7 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Deck.EditAddCards"
         component={DeckEditView}
-        options={{
-          title: t`Edit Deck`,
-        }}
+        options={DeckEditView.options}
       />
       <RootStack.Screen
         name="Deck.DraftCards"

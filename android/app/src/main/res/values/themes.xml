@@ -37,7 +37,7 @@
 		<item name="campaignGreenColor">@color/campaignGreenColor</item>
 		<item name="toggleButtonColor">@color/toggleButtonColor</item>
 		<item name="selectedToggleButtonColor">@color/selectedToggleButtonColor</item>
-		<item name="dividerColor">@color/dividerColor</item>
+		<item name="appDividerColor">@color/dividerColor</item>
 		<item name="disabledOverlayColor">@color/disabledOverlayColor</item>
 		<item name="splashBackground">@color/splashBackground</item>
 	</style>

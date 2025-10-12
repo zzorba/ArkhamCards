@@ -18,12 +18,14 @@ import Card from '@data/types/Card';
 import { useCardMapFromQuery } from '@components/card/useCardList';
 import { DeckEditContext, SimpleDeckEditContextProvider } from './DeckEditContext';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface EditDeckProps {
   id: DeckId;
   deckType?: 'side' | 'extra';
   storyOnly?: boolean;
   weaknessOnly?: boolean;
+  title?: string;
 }
 
 export default function DeckEditViewWrapper() {
@@ -159,3 +161,10 @@ function DeckEditView({
     />
   );
 }
+
+function options<T extends RootStackParamList>({ route }: { route: RouteProp<T, 'Deck.EditAddCards'> }): NativeStackNavigationOptions {
+  return { title: route.params?.title ?? t`Edit Deck` };
+};
+
+DeckEditViewWrapper.options = options;
+

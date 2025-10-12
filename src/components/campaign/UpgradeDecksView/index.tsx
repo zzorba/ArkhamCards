@@ -14,8 +14,6 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import { CampaignId, Deck, getDeckId, ScenarioResult } from '@actions/types';
 import { getLangPreference } from '@reducers';
-import { iconsMap } from '@app/NavIcons';
-import COLORS from '@styles/colors';
 import { updateCampaignXp } from '@components/campaign/actions';
 import UpgradeDecksList from './UpgradeDecksList';
 import space, { s } from '@styles/space';
@@ -27,6 +25,8 @@ import { useAppDispatch } from '@app/store';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import { BasicStackParamList } from '@navigation/types';
 import HeaderButton from '@components/core/HeaderButton';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import HeaderTitle from '@components/core/HeaderTitle';
 
 export interface UpgradeDecksProps {
   id: CampaignId;
@@ -111,25 +111,14 @@ function UpgradeDecksView() {
     </ScrollView>
   );
 }
-
-UpgradeDecksView.options = (passProps: UpgradeDecksProps) => {
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Campaign.UpgradeDecks'> }): NativeStackNavigationOptions {
   return {
-    topBar: {
-      title: {
-        text: passProps.scenarioResult.scenario,
-      },
-      subtitle: {
-        text: t`Update investigator decks`,
-      },
-      leftButtons: [{
-        icon: iconsMap.dismiss,
-        id: 'close',
-        color: COLORS.M,
-        accessibilityLabel: t`Cancel`,
-      }],
-    },
+    headerTitle: () => <HeaderTitle title={route.params?.scenarioResult.scenario ?? t`Scenario results`} subtitle={t`Update investigator decks`} />,
+    headerBackTitle: t`Cancel`,
   };
 };
+
+UpgradeDecksView.options = options;
 export default UpgradeDecksView;
 
 const styles = StyleSheet.create({

@@ -23,7 +23,7 @@ interface Props extends Record<string, unknown> {
 }
 
 const WIDTH = SIZE * 2 + 12;
-const HEIGHT = SIZE + (Platform.OS === 'android' ? 10 : 0);
+const HEIGHT = SIZE + 6;
 
 function MythosButton({ filterId }: Props) {
   const { colors } = useContext(StyleContext);
@@ -107,11 +107,13 @@ const styles = StyleSheet.create({
   container: {
     width: WIDTH,
     height: HEIGHT,
-    marginLeft: LEFT_MARGIN,
-    paddingLeft: 2,
-    paddingTop: 2,
     position: 'relative',
+    marginLeft: 0,
+    marginTop: Platform.OS === 'android' ? 8 : 0,
+    marginRight: Platform.OS === 'android' ? 4 : 0,
     marginBottom: 8,
+    paddingTop: 2,
+    paddingLeft: 2,
   },
   iconWrapper: {
     width: SIZE,

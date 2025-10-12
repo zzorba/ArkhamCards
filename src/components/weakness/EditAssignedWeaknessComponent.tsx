@@ -59,14 +59,5 @@ function EditAssignedWeaknessComponent({ weaknessSet, updateAssignedCards }: Pro
     />
   );
 }
-EditAssignedWeaknessComponent.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`Assigned weaknesses`,
-      },
-    },
-  };
-};
 
 export default EditAssignedWeaknessComponent;

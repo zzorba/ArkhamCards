@@ -1,5 +1,6 @@
 package com.arkhamcards;
 
+import android.app.Application;
 import android.os.Build;
 import android.content.res.Configuration;
 import android.content.Context;
@@ -11,24 +12,23 @@ import expo.modules.ApplicationLifecycleDispatcher;
 import expo.modules.ReactNativeHostWrapper;
 
 import com.facebook.react.PackageList;
+import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
+import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.react.soloader.OpenSourceMergedSoMapping;
-import com.reactnativenavigation.NavigationApplication;
-import com.reactnativenavigation.react.NavigationPackage;
-import com.reactnativenavigation.react.NavigationReactNativeHost;
+import com.facebook.soloader.SoLoader;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainApplication extends NavigationApplication {
+public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
-    new NavigationReactNativeHost(this) {
+    new ReactNativeHostWrapper(this, new DefaultReactNativeHost(this) {
         @Override
         protected String getJSMainModuleName() {
             return "index";
@@ -41,7 +41,7 @@ public class MainApplication extends NavigationApplication {
 
         @Override
         public List<ReactPackage> getPackages() {
-            return new PackageList(this).getPackages();
+            return new PackageList(this.getApplication()).getPackages();
         }
 
         @Override
@@ -53,12 +53,17 @@ public class MainApplication extends NavigationApplication {
         protected boolean isNewArchEnabled() {
             return BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
         }
-    };
+    });
 
 
     @Override
     public void onCreate() {
         super.onCreate();
+        try {
+            SoLoader.init(this, OpenSourceMergedSoMapping.INSTANCE);
+        } catch (java.io.IOException e) {
+            throw new RuntimeException(e);
+        }
         if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
             // If you opted-in for the New Architecture, we load the native entry point for this app.
             DefaultNewArchitectureEntryPoint.load();
@@ -107,4 +112,3 @@ public class MainApplication extends NavigationApplication {
   }
 
 }
-
