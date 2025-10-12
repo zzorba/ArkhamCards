@@ -129,7 +129,6 @@ msgstr "Grundschwäche ziehen"
 msgid "Draw From Collection"
 msgstr "Aus Sammlung ziehen"
 
-#. This is a deck upgrade action.
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -193,9 +192,6 @@ msgstr "Alle Schwächen wurden gezogen."
 msgid "Save to Deck"
 msgstr "Deck speichern"
 
-msgid "Nevermind"
-msgstr "Egal"
-
 msgid "Restore campaign data?"
 msgstr "Kampagnendaten wiederherstellen?"
 
@@ -252,9 +248,6 @@ msgstr "Fehler: Karten erneut überprüfen"
 
 msgid "Card Collection"
 msgstr "Kartensammlung"
-
-msgid "Spoiler Settings"
-msgstr "Spoilereinstellungen"
 
 msgid "Elite"
 msgstr "Elite"
@@ -1669,7 +1662,6 @@ msgstr "Keine Änderungen"
 msgid "Card changes"
 msgstr "Kartenänderungen"
 
-#. Actually compute the diffs.
 msgid "Upgrade History"
 msgstr "Upgrade-Verlauf"
 
@@ -1758,18 +1750,6 @@ msgstr "Zu viele"
 
 msgid "Not enough"
 msgstr "Nicht genug"
-
-msgid "Reset Scenario?"
-msgstr "Szenario zurücksetzen?"
-
-msgid ""
-"Are you sure you want to reset this scenario?\n"
-"\n"
-"All data you have entered will be lost."
-msgstr ""
-"Sind sie sicher, dass sie dieses Szenario zurücksetzen wollen?\n"
-"\n"
-"Alle eingegebenen Daten gehen verloren."
 
 #, javascript-format
 msgid "Set the ${ encounterSetString } encounter set aside, out of play."
@@ -2643,9 +2623,6 @@ msgstr "Suchoptionen"
 
 msgid "Search in:"
 msgstr "Suchen in:"
-
-msgid "Encounter Card Toggle"
-msgstr "Begegnungskarten umschalten"
 
 msgid "Show all available cards"
 msgstr "Zeige alle verfügbaren Karten"
@@ -3866,9 +3843,6 @@ msgstr "Im Kampagnenlogbuch notieren"
 msgid "Review and add records"
 msgstr "Einträge prüfen und hinzufügen"
 
-msgid "Chaos bag"
-msgstr "Chaosbeutel"
-
 msgid "Draw random"
 msgstr "Zufällig ziehen"
 
@@ -4299,9 +4273,6 @@ msgstr "Wähle Art der Heilung"
 
 msgid "Chosen heal type"
 msgstr "Gewähle Art der Heilung"
-
-msgid "Assigned weaknesses"
-msgstr "Schwäche zuweisen"
 
 msgid "Review and draw weaknesses"
 msgstr "Schwächen anschauen und ziehen"
@@ -4878,9 +4849,6 @@ msgstr "Drafte mit deiner Kartensammlung"
 
 msgid "Draft Pool"
 msgstr "Draft Pool"
-
-msgid "Grid"
-msgstr "Raster"
 
 msgid "Invalid deck"
 msgstr "Ungültiges Deck"
@@ -6297,6 +6265,48 @@ msgid "When the World Screamed"
 msgstr ""
 
 msgid "Contains cards not in the selected card pool."
+msgstr ""
+
+msgid "Card"
+msgstr ""
+
+msgid "Edit Scenario Result"
+msgstr ""
+
+msgid "Location Setup"
+msgstr ""
+
+msgid "Merge Backup"
+msgstr ""
+
+msgid "Safe Mode"
+msgstr ""
+
+msgid "Choose Packs"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Card Upgrade"
+msgstr ""
+
+msgid "Contains cards that are not in the selected card pool."
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Card Image"
+msgstr ""
+
+msgid "Taboos"
+msgstr ""
+
+msgid "Edit Name"
+msgstr ""
+
+msgid "Scenario results"
 msgstr ""
 
 msgctxt "investigator"

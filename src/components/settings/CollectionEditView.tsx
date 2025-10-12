@@ -34,7 +34,7 @@ export default function CollectionEditView() {
   // Set screen title based on mode
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: draftMode ? t`Choose Packs` : t`My Collection`,
+      title: draftMode ? t`Choose Packs` : t`Edit Collection`,
     });
   }, [navigation, draftMode]);
 

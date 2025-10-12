@@ -718,7 +718,6 @@ msgstr ""
 msgid "Undo anyway"
 msgstr ""
 
-#. This is a deck upgrade action.
 msgid "Cancel"
 msgstr ""
 
@@ -791,9 +790,6 @@ msgstr ""
 
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
-msgstr ""
-
-msgid "Assigned weaknesses"
 msgstr ""
 
 msgid "Saving"
@@ -2013,9 +2009,6 @@ msgstr ""
 msgid "Search decks"
 msgstr ""
 
-msgid "Grid"
-msgstr ""
-
 msgid "Invalid deck"
 msgstr ""
 
@@ -2467,7 +2460,6 @@ msgid_plural "Up to ${ remainingFreeCards } level 0 cards may be added to the de
 msgstr[0] ""
 msgstr[1] ""
 
-#. Actually compute the diffs.
 msgid "Upgrade History"
 msgstr ""
 
@@ -3221,9 +3213,6 @@ msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Spoiler Settings"
-msgstr ""
-
 msgid "Edit spoiler settings"
 msgstr ""
 
@@ -3293,9 +3282,6 @@ msgid "Draw random basic weakness"
 msgstr ""
 
 msgid "Take"
-msgstr ""
-
-msgid "Encounter Card Toggle"
 msgstr ""
 
 msgid "Encounter Cards"
@@ -3847,18 +3833,6 @@ msgstr ""
 msgid "Undo"
 msgstr ""
 
-msgid "Reset Scenario?"
-msgstr ""
-
-msgid ""
-"Are you sure you want to reset this scenario?\n"
-"\n"
-"All data you have entered will be lost."
-msgstr ""
-
-msgid "Nevermind"
-msgstr ""
-
 msgid "Download print and play cards"
 msgstr ""
 
@@ -4148,9 +4122,6 @@ msgid "Campaign log"
 msgstr ""
 
 msgid "Record in campaign log"
-msgstr ""
-
-msgid "Chaos bag"
 msgstr ""
 
 msgid "Draw random"
@@ -6088,6 +6059,48 @@ msgid "When the World Screamed"
 msgstr ""
 
 msgid "Contains cards not in the selected card pool."
+msgstr ""
+
+msgid "Card"
+msgstr ""
+
+msgid "Edit Scenario Result"
+msgstr ""
+
+msgid "Location Setup"
+msgstr ""
+
+msgid "Merge Backup"
+msgstr ""
+
+msgid "Safe Mode"
+msgstr ""
+
+msgid "Choose Packs"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Card Upgrade"
+msgstr ""
+
+msgid "Contains cards that are not in the selected card pool."
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Card Image"
+msgstr ""
+
+msgid "Taboos"
+msgstr ""
+
+msgid "Edit Name"
+msgstr ""
+
+msgid "Scenario results"
 msgstr ""
 
 msgctxt "investigator"

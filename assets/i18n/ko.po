@@ -195,7 +195,6 @@ msgstr ""
 msgid "Undo"
 msgstr "되돌리기"
 
-#. This is a deck upgrade action.
 msgid "Cancel"
 msgstr "취소"
 
@@ -268,9 +267,6 @@ msgstr "모든 카드가 앱 전체에 표시됩니다."
 
 msgid "Restore campaign data?"
 msgstr "캠페인 데이터를 복구하시겠습니까?"
-
-msgid "Nevermind"
-msgstr "신경끄기"
 
 msgid "Import data"
 msgstr "데이터 불러오기"
@@ -349,9 +345,6 @@ msgstr "오류: 카드 확인하기를 다시 시도하십시오"
 
 msgid "Card Collection"
 msgstr "보유 게임"
-
-msgid "Spoiler Settings"
-msgstr "스포일러 설정"
 
 msgid "Preferences"
 msgstr "설정"
@@ -784,7 +777,6 @@ msgstr "카드 변경 내역"
 msgid "Campaign"
 msgstr "캠페인"
 
-#. Actually compute the diffs.
 msgid "Upgrade History"
 msgstr "향상 기록"
 
@@ -1285,18 +1277,6 @@ msgstr "캠페인 삭제"
 
 msgid "Campaign Log"
 msgstr "캠페인 기록지"
-
-msgid "Reset Scenario?"
-msgstr "캠페인을 초기화 하시겠습니까?"
-
-msgid ""
-"Are you sure you want to reset this scenario?\n"
-"\n"
-"All data you have entered will be lost."
-msgstr ""
-"이번 시나리오를 정말로 초기화 하시겠습니까?\n"
-"\n"
-"입력했던 모든 데이터는 사라집니다."
 
 msgid "Select Cards"
 msgstr "카드 선택"
@@ -2635,9 +2615,6 @@ msgstr "검색 옵션"
 msgid "Search in:"
 msgstr "다음에서 검색:"
 
-msgid "Encounter Card Toggle"
-msgstr "조우 카드 토글"
-
 msgid "Show all available cards"
 msgstr "모든 사용 가능한 카드 보기"
 
@@ -3841,9 +3818,6 @@ msgstr "캠페인 기록지에 기록"
 msgid "Review and add records"
 msgstr "열람 및 기록 추가"
 
-msgid "Chaos bag"
-msgstr "혼돈 주머니"
-
 msgid "Draw random"
 msgstr "무작위 뽑기"
 
@@ -4267,9 +4241,6 @@ msgstr "회복 유형을 선택하십시오"
 
 msgid "Chosen heal type"
 msgstr "선택한 회복 유형"
-
-msgid "Assigned weaknesses"
-msgstr "할당된 약점"
 
 msgid "Review and draw weaknesses"
 msgstr "약점 보기 및 뽑기"
@@ -4847,9 +4818,6 @@ msgstr "모든 보유 게임들을 드래프트 후보로 선정"
 
 msgid "Draft Pool"
 msgstr "드래프트 후보군"
-
-msgid "Grid"
-msgstr "격자"
 
 msgid "Invalid deck"
 msgstr "유효하지 않은 덱"
@@ -6244,6 +6212,48 @@ msgstr ""
 
 msgid "Contains cards not in the selected card pool."
 msgstr "선택한 카드 구성 환경에는 없는 카드를 포함하고 있습니다."
+
+msgid "Card"
+msgstr ""
+
+msgid "Edit Scenario Result"
+msgstr ""
+
+msgid "Location Setup"
+msgstr ""
+
+msgid "Merge Backup"
+msgstr ""
+
+msgid "Safe Mode"
+msgstr ""
+
+msgid "Choose Packs"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Card Upgrade"
+msgstr ""
+
+msgid "Contains cards that are not in the selected card pool."
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Card Image"
+msgstr ""
+
+msgid "Taboos"
+msgstr ""
+
+msgid "Edit Name"
+msgstr ""
+
+msgid "Scenario results"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

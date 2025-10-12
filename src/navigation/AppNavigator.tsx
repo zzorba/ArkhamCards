@@ -318,7 +318,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
         name="Card.Swipe"
         component={DbCardDetailSwipeView}
         options={{
-          title: t`Cards`,
+          title: '',
         }}
       />
       <Stack.Screen
@@ -361,7 +361,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
         name="Campaign.Access"
         component={CampaignAccessView}
         options={{
-          title: t`Campaign Access`,
+          title: t`Access`,
         }}
       />
       <Stack.Screen

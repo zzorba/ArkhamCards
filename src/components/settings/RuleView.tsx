@@ -93,7 +93,7 @@ export default function RuleView() {
 
 function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Rule'> }): NativeStackNavigationOptions {
   return {
-    title: route.params?.rule.title || t`Rule`,
+    title: route.params?.rule.title ?? t`Rule`,
   };
 };
 RuleView.options = options;

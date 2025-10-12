@@ -84,7 +84,7 @@ function EditSpecialDeckCardsView() {
     navigation.navigate('Deck.EditAddCards', {
       id,
       storyOnly: true,
-      title: t`Edit Story Deck`,
+      title: t`Edit Special Cards`,
     });
   }, [navigation, id]);
 
