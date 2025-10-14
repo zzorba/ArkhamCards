@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { throttle } from 'lodash';
+import { dropWhile, reverse, throttle } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -60,7 +60,22 @@ function AddScenarioResultView() {
         scenarioResult,
       };
       if (showDeckUpgrade) {
-        navigation.navigate('Campaign.UpgradeDecks', passProps, { pop: true });
+
+        const state = navigation.getState();
+        const routes = dropWhile(
+          reverse([...state?.routes ?? []]),
+          r => r.name === 'Campaign.AddResult'
+        ).reverse();
+        navigation.reset({
+          index: routes.length,
+          routes: [
+            ...routes as any,
+            {
+              name: 'Campaign.UpgradeDecks',
+              params: passProps,
+            },
+          ]
+        });
       } else {
         navigation.goBack();
       }

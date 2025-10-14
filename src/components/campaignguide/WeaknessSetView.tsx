@@ -218,8 +218,8 @@ function WeaknessSetView() {
 const WrappedComponent = withCampaignGuideContext(WeaknessSetView, { rootView: false });
 export default function WeaknessSetWrapper() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Guide.WeaknessSet'>>();
-  const props = route.params;
-  return <WrappedComponent {...props} />;
+  const { campaignId } = route.params;
+  return <WrappedComponent campaignId={campaignId} />;
 }
 
 const styles = StyleSheet.create({

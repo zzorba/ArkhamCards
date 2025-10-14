@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useLayoutEffect, useMemo } from 'react';
 import { View } from 'react-native';
 import { t } from 'ttag';
 
@@ -46,6 +46,12 @@ function StandaloneGuideView({ campaignId, setCampaignServerId, upload }: Standa
     value: campaign?.name || '',
     onValueChange: setCampaignName,
   });
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: campaign.name,
+    });
+  }, [navigation, campaign.name]);
 
   const footer = useMemo(() => {
     return (

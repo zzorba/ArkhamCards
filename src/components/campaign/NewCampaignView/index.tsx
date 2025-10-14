@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState, useReducer, useLayoutEffect } from 'react';
-import { filter, forEach, map, throttle, uniq } from 'lodash';
+import { dropWhile, filter, forEach, map, reverse, throttle, uniq } from 'lodash';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 
@@ -247,6 +247,11 @@ function NewCampaignView() {
     setTimeout(() => {
       const deckIds = map(selectedDecks, d => d.id);
       const selection = campaignChoice.selection;
+      const state = navigation.getState();
+      const routes = dropWhile(
+        reverse([...state?.routes ?? []]),
+        r => r.name === 'Campaign.New'
+      ).reverse();
       if (selection.type === 'campaign') {
         if (selection.code === TDE) {
           dispatch(newLinkedCampaign(
@@ -260,12 +265,21 @@ function NewCampaignView() {
               assignedCards: weaknessAssignedCards,
             },
           )).then(({ campaignId, campaignIdA, campaignIdB }) => {
-            navigation.navigate('Guide.LinkedCampaign', {
-              campaignId,
-              campaignIdA,
-              campaignIdB,
-              upload: uploadCampaign,
-            }, { pop: true });
+             navigation.reset({
+              index: routes.length,
+              routes: [
+                ...routes as any,
+                {
+                  name: 'Guide.LinkedCampaign',
+                  params: {
+                    campaignId,
+                    campaignIdA,
+                    campaignIdB,
+                    upload: uploadCampaign,
+                  },
+                },
+              ],
+            });
           });
         } else {
           // Save to redux.
@@ -284,9 +298,18 @@ function NewCampaignView() {
             },
             isGuided
           )).then(campaignId => {
-            navigation.navigate(isGuided ? 'Guide.Campaign' : 'Campaign', {
-              campaignId,
-              upload: uploadCampaign,
+             navigation.reset({
+              index: routes.length,
+              routes: [
+                ...routes as any,
+                {
+                  name: isGuided ? 'Guide.Campaign' : 'Campaign',
+                  params: {
+                    campaignId,
+                    upload: uploadCampaign,
+                  },
+                },
+              ],
             });
           });
         }
@@ -302,11 +325,20 @@ function NewCampaignView() {
             assignedCards: weaknessAssignedCards,
           },
         )).then(campaignId => {
-          navigation.navigate('Guide.Standalone', {
-            campaignId,
-            scenarioId: selection.id.scenarioId,
-            standalone: true,
-            upload: uploadCampaign,
+           navigation.reset({
+            index: routes.length,
+            routes: [
+              ...routes as any,
+              {
+                name: 'Guide.Standalone',
+                params: {
+                  campaignId,
+                  scenarioId: selection.id.scenarioId,
+                  standalone: true,
+                  upload: uploadCampaign,
+                },
+              },
+            ],
           });
         });
       }

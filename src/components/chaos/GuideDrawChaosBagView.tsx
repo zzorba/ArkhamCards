@@ -114,6 +114,18 @@ const WrappedComponent = withCampaignGuideContext<GuideDrawChaosBagProps>(GuideD
 
 export default function GuideDrawChaosBagWrapper() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Guide.DrawChaosBag'>>();
-  const props = route.params;
-  return <WrappedComponent {...props} />;
+  const {
+    scenarioId,
+    standalone,
+    investigatorIds,
+    campaignId,
+  } = route.params;
+  return (
+    <WrappedComponent
+      scenarioId={scenarioId}
+      standalone={standalone}
+      investigatorIds={investigatorIds}
+      campaignId={campaignId}
+    />
+  );
 }

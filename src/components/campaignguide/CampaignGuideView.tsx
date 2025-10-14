@@ -144,8 +144,8 @@ const WrappedComponent = withCampaignGuideContext<CampaignGuideProps>(
 
 export default function CampaignGuideWrapper() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Guide.Campaign'>>();
-  const props = route.params;
-  return <WrappedComponent {...props} />;
+  const { campaignId, upload } = route.params;
+  return <WrappedComponent campaignId={campaignId} upload={upload} />;
 }
 
 const styles = StyleSheet.create({
