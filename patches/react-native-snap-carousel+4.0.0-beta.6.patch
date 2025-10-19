@@ -1,5 +1,27 @@
+diff --git a/node_modules/react-native-snap-carousel/lib/commonjs/carousel/Carousel.js b/node_modules/react-native-snap-carousel/lib/commonjs/carousel/Carousel.js
+index 48b5c11..f225e1d 100644
+--- a/node_modules/react-native-snap-carousel/lib/commonjs/carousel/Carousel.js
++++ b/node_modules/react-native-snap-carousel/lib/commonjs/carousel/Carousel.js
+@@ -1111,13 +1111,12 @@ class Carousel extends _react.default.Component {
+     } : {
+       width: this.props.itemWidth
+     };
+-    const specificProps = this._needsScrollView() ? {
+-      key: keyExtractor ? keyExtractor(item, index) : this._getKeyExtractor(item, index)
+-    } : {};
+-    return /*#__PURE__*/_react.default.createElement(Component, _extends({
++    const key = this._needsScrollView() ? (keyExtractor ? keyExtractor(item, index) : this._getKeyExtractor(item, index)) : undefined;
++    return /*#__PURE__*/_react.default.createElement(Component, {
++      key: key,
+       style: [mainDimension, slideStyle, animatedStyle],
+       pointerEvents: "box-none"
+-    }, specificProps), this.props.vertical ? this.props.renderItem({
++    }, this.props.vertical ? this.props.renderItem({
+       item,
+       index,
+       dataIndex
 diff --git a/node_modules/react-native-snap-carousel/lib/module/carousel/Carousel.js b/node_modules/react-native-snap-carousel/lib/module/carousel/Carousel.js
-index 1f45ec5..b9dfe42 100644
+index 1f45ec5..e8c8697 100644
 --- a/node_modules/react-native-snap-carousel/lib/module/carousel/Carousel.js
 +++ b/node_modules/react-native-snap-carousel/lib/module/carousel/Carousel.js
 @@ -5,6 +5,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
@@ -10,6 +32,24 @@ index 1f45ec5..b9dfe42 100644
  import { defaultScrollInterpolator, stackScrollInterpolator, tinderScrollInterpolator, defaultAnimatedStyles, shiftAnimatedStyles, stackAnimatedStyles, tinderAnimatedStyles } from '../utils/animations';
  // Metro doesn't support dynamic imports - i.e. require() done in the component itself
  // But at the same time the following import will fail on Snack...
+@@ -1097,13 +1098,12 @@ export class Carousel extends React.Component {
+     } : {
+       width: this.props.itemWidth
+     };
+-    const specificProps = this._needsScrollView() ? {
+-      key: keyExtractor ? keyExtractor(item, index) : this._getKeyExtractor(item, index)
+-    } : {};
+-    return /*#__PURE__*/React.createElement(Component, _extends({
++    const key = this._needsScrollView() ? (keyExtractor ? keyExtractor(item, index) : this._getKeyExtractor(item, index)) : undefined;
++    return /*#__PURE__*/React.createElement(Component, {
++      key: key,
+       style: [mainDimension, slideStyle, animatedStyle],
+       pointerEvents: "box-none"
+-    }, specificProps), this.props.vertical ? this.props.renderItem({
++    }, this.props.vertical ? this.props.renderItem({
+       item,
+       index,
+       dataIndex
 diff --git a/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts b/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts
 index 398a9b4..5928c9a 100644
 --- a/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useReducer, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo, useReducer, useState } from 'react';
 import {
   Text,
   ScrollView,
@@ -358,10 +358,8 @@ function NewDeckOptionsDialog({
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
 
-  useEffect(() => {
-    if (investigator) {
-      navigation.setOptions(getDeckScreenOptions(colors, { title: t`New Deck`, modal: isModal }, investigator));
-    }
+  useLayoutEffect(() => {
+    navigation.setOptions(getDeckScreenOptions(colors, { title: t`New Deck`, modal: isModal }, investigator));
   }, [investigator, colors, navigation, isModal]);
 
   const showNewDeck = useCallback((deck: Deck) => {

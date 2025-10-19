@@ -38,9 +38,14 @@ function ScenarioView({ showLinkedScenario }: Props) {
 const WrappedComponent = withScenarioGuideContext<InputProps>(ScenarioView);
 export default function ScenarioViewWrapper() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Guide.Scenario'>>();
+  const { campaignId, scenarioId, title, subtitle, showLinkedScenario } = route.params;
   return (
     <WrappedComponent
-      {...route.params}
+      campaignId={campaignId}
+      scenarioId={scenarioId}
+      title={title}
+      subtitle={subtitle}
+      showLinkedScenario={showLinkedScenario}
     />
   );
 }

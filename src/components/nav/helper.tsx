@@ -43,6 +43,9 @@ export function getDeckScreenOptions(
       backgroundColor,
     },
     headerTintColor: textColor,
+    headerTitleStyle: {
+      color: textColor,
+    },
     presentation: modal ? 'fullScreenModal' : undefined,
   };
 

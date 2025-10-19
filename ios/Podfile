@@ -3,7 +3,6 @@ require File.join(File.dirname(`node --print "require.resolve('expo/package.json
 # Resolve react_native_pods.rb with node to allow for hoisting
 
 ENV['RCT_NEW_ARCH_ENABLED'] = '0'
-$RNFirebaseAsStaticFramework = true
 
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
@@ -30,7 +29,7 @@ target 'ArkhamCards' do
     end
   end
   config = use_native_modules!
-  use_frameworks! :linkage => :static
+  use_frameworks!
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -40,6 +39,12 @@ target 'ArkhamCards' do
   pre_install do |installer|
     installer.pod_targets.each do |pod|
       if pod.name.eql?('op-sqlite')
+        def pod.build_type
+          Pod::BuildType.static_library
+        end
+      end
+
+      if pod.name.eql?('RNReanimated')
         def pod.build_type
           Pod::BuildType.static_library
         end
@@ -55,14 +60,38 @@ target 'ArkhamCards' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
+        if target.name == "RNReactNativeHapticFeedback"
+          target.build_configurations.each do |config|
+            config.build_settings["OTHER_LDFLAGS"] ||= ["$(inherited)"]
+            config.build_settings["OTHER_LDFLAGS"] << "-framework AudioToolbox"
+          end
+        end
         if  config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] == '11.0'
           config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
         end
         if config.build_settings['WRAPPER_EXTENSION'] == 'bundle'
           config.build_settings['DEVELOPMENT_TEAM'] = '54773FU58P'
         end
+
+        # Fix header search paths for RN 0.79
+        extra_headers = [
+          "${PODS_ROOT}/Headers/Private/React-RuntimeCore",
+          "${PODS_ROOT}/Headers/Private/React-debug",
+          "${PODS_ROOT}/Headers/Private/React-jserrorhandler",
+          "${PODS_ROOT}/Headers/Private/React-jsinspector",
+          "${PODS_ROOT}/Headers/Private/React-runtimescheduler",
+          "${PODS_ROOT}/Headers/Private/React-performancetimeline",
+          "${PODS_ROOT}/Headers/Private/React-rendererconsistency",
+          "${PODS_ROOT}/../node_modules/react-native/ReactCommon"
+        ]
+        config.build_settings['HEADER_SEARCH_PATHS'] ||= '$(inherited)'
+        config.build_settings['HEADER_SEARCH_PATHS'] << " " + extra_headers.join(" ")
+        config.build_settings['FRAMEWORK_SEARCH_PATHS'] ||= '$(inherited)'
+        config.build_settings['FRAMEWORK_SEARCH_PATHS'] << " ${PODS_CONFIGURATION_BUILD_DIR}/React-RuntimeApple"
+        config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
       end
     end
   end

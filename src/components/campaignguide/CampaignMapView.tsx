@@ -34,7 +34,7 @@ import MapToggleButton from './MapToggleButton';
 import { MAX_WIDTH } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { VisibleCalendarEntry } from '@data/scenario/GuidedCampaignLog';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute, usePreventRemove } from '@react-navigation/native';
 import { RootStackParamList } from '@navigation/types';
 import HeaderTitle from '@components/core/HeaderTitle';
 
@@ -916,9 +916,12 @@ export default function CampaignMapView() {
   const [selectedLocation, setSelectedLocation] = useState<MapLocation>();
   const setDialogVisibleRef = useRef<(visible: boolean) => void>(null);
   const hiding = useRef<boolean>(false);
+  const [preventRemoval, setPreventRemoval] = useState(true);
+
   const onDismiss = useCallback(() => {
     setDialogVisibleRef.current?.(false);
     hiding.current = true;
+    setPreventRemoval(false); // Disable prevention before navigating
     setTimeout(() => navigation.goBack(), 50);
     return true;
   }, [navigation]);
@@ -941,13 +944,9 @@ export default function CampaignMapView() {
   }, [onSelect, onDismiss]);
 
   // Handle header back button press - intercept and do cleanup before navigating
-  useEffect(() => {
-    const unsubscribe = navigation.addListener('beforeRemove', (e) => {
-      e.preventDefault(); // Stop automatic navigation
-      onDismiss(); // Do cleanup and navigate manually after delay
-    });
-    return unsubscribe;
-  }, [navigation, onDismiss]);
+  usePreventRemove(preventRemoval, ({ data }) => {
+    onDismiss(); // Do cleanup and navigate manually after delay
+  });
 
   // Handle hardware back button
   useBackButton(onDismiss);

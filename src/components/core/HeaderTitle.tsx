@@ -22,7 +22,8 @@ export default function HeaderTitle({ title, subtitle, color }: HeaderTitleProps
       </Text>
       {!!subtitle && (
         <Text style={[
-          typography.subHeaderText,
+          typography.small,
+          typography.italic,
           { color: color ?? colors.darkText, textAlign: 'center' },
         ]}>
           {subtitle}

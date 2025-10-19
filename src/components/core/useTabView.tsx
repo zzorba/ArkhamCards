@@ -34,7 +34,11 @@ export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props):
   }) => {
     return (
       <TabBar
-        {...props}
+        // {...props}
+        layout={props.layout}
+        position={props.position}
+        jumpTo={props.jumpTo}
+        navigationState={props.navigationState}
         scrollEnabled={scrollEnabled || (!isTablet && fontScale > 1)}
         activeColor={colors.D20}
         inactiveColor={colors.M}
@@ -60,14 +64,21 @@ export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props):
       title: tab.title,
     };
   }), [tabs]);
-  return [(
-    <TabView
-      key="tab"
-      renderTabBar={renderTabBar}
-      navigationState={{ index, routes }}
-      renderScene={renderTab}
-      onIndexChange={onIndexChange}
-      initialLayout={{ width }}
-    />
-  ), setIndex];
+  const tabView = useMemo(() => {
+    if (!width) {
+      return null;
+    }
+    return (
+      <TabView
+        key="tab"
+        renderTabBar={renderTabBar}
+        navigationState={{ index, routes }}
+        renderScene={renderTab}
+        onIndexChange={onIndexChange}
+        initialLayout={{ width }}
+      />
+    );
+  }, [width, renderTabBar, index, routes, renderTab, onIndexChange]);
+
+  return [tabView, setIndex];
 }

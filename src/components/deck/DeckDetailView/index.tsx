@@ -1,5 +1,5 @@
 import React, { RefObject, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { useRoute, RouteProp, useNavigation, usePreventRemove } from '@react-navigation/native';
 import { RootStackParamList } from '@navigation/types';
 import { find, forEach, flatMap, uniqBy, keys, map, filter, sortBy } from 'lodash';
 import {
@@ -329,18 +329,21 @@ function DeckDetailView({
   }, [dispatch, id]);
   const [alertDialog, showAlert] = useAlertDialog();
 
-  // Handle back button/gesture with beforeRemove listener
-  useEffect(() => {
-    const unsubscribe = navigation.addListener('beforeRemove', (e) => {
-      // Only intercept back/pop actions, not forward navigation
-      if (e.data.action.type === 'POP' || e.data.action.type === 'GO_BACK') {
-        if (handleBackPress()) {
-          e.preventDefault();
-        }
+  // Handle back button/gesture with usePreventRemove hook
+  usePreventRemove(true, ({ data }) => {
+    // Only intercept back/pop actions, not forward navigation
+    if (data.action.type === 'POP' || data.action.type === 'GO_BACK') {
+      if (!handleBackPress()) {
+        // handleBackPress returned false, allow navigation
+        navigation.dispatch(data.action);
       }
-    });
-    return unsubscribe;
-  }, [navigation, handleBackPress]);
+      // handleBackPress returned true (intercepted), do nothing
+    } else {
+      // Allow other navigation actions
+      navigation.dispatch(data.action);
+    }
+  });
+
   useBackButton(handleBackPress);
   const hasInvestigator = !!parsedDeck?.investigator;
   const factionColor = useMemo(() => colors.faction[parsedDeck?.faction ?? 'neutral'].background, [parsedDeck, colors.faction]);

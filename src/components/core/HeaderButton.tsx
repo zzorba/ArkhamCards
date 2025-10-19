@@ -10,7 +10,7 @@ type HeaderButtonProps = {
   disabled?: boolean;
 } & ({
   iconName: string;
-  color: string;
+  color?: string;
   size?: number;
   iconComponent?: undefined;
   text?: undefined;
@@ -29,7 +29,7 @@ type HeaderButtonProps = {
 
 export default function HeaderButton(props: HeaderButtonProps) {
   const { onPress, accessibilityLabel, disabled } = props;
-  const { typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const content = useMemo(() => {
     if (props.iconComponent) {
       return props.iconComponent;
@@ -38,7 +38,11 @@ export default function HeaderButton(props: HeaderButtonProps) {
       return <AppIcon name={props.iconName} size={props.size ?? 28} color={props.color!} />;
     }
     if (props.text) {
-      return <Text style={[typography.smallButtonLabel, { color: props.color }]}>{props.text}</Text>;
+      return (
+        <Text style={[typography.text, { color: props.color ?? (disabled ? colors.M : colors.D30) }]}>
+          {props.text}
+        </Text>
+      );
     }
   }, [props, typography]);
   return (

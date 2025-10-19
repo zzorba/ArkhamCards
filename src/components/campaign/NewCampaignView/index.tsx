@@ -350,12 +350,11 @@ function NewCampaignView() {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: campaignChoice?.selection.type === 'campaign' ? t`New Campaign` : t`New Standalone`,
+      title: !campaignChoice || campaignChoice.selection.type === 'campaign' ? t`New Campaign` : t`New Standalone`,
       headerRight: () => (
         <HeaderButton
           text={t`Done`}
           accessibilityLabel={t`Done`}
-          color={COLORS.M}
           onPress={savePressed}
         />
       ),
