@@ -125,7 +125,6 @@ export default function BackupView({ safeMode }: BackupProps) {
       const [file] = await pick({
         type: [types.allFiles],
         mode: 'import',
-        copyTo: 'cachesDirectory',
       });
       if (!file.name?.endsWith('.acb') && !file.name?.endsWith('.json') && !file.name?.endsWith('.null')) {
         Alert.alert(

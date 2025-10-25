@@ -1257,6 +1257,11 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@blazejkustra/react-native-alert@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@blazejkustra/react-native-alert/-/react-native-alert-1.0.0.tgz#a456b368361a7792c864e5f73d500af7a4215dc8"
+  integrity sha512-bgvKlnhfS39vz38BSBdHk1smVME0Nf5tJEzgoQOIPpci8KuTBcOORa93B2PV3/S5a0QkR1d8nW2yw76HDj6zqQ==
+
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.npmjs.org/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
@@ -3145,10 +3150,10 @@
   dependencies:
     merge-options "^3.0.4"
 
-"@react-native-clipboard/clipboard@1.14.1":
-  version "1.14.1"
-  resolved "https://registry.npmjs.org/@react-native-clipboard/clipboard/-/clipboard-1.14.1.tgz#835f82fc86881a0808a8405f2576617bb5383554"
-  integrity sha512-SM3el0A28SwoeJljVNhF217o0nI4E7RfalLmuRQcT1/7tGcxUjgFa3jyrEndYUct8/uxxK5EUNGUu1YEDqzxqw==
+"@react-native-clipboard/clipboard@^1.16.3":
+  version "1.16.3"
+  resolved "https://registry.npmjs.org/@react-native-clipboard/clipboard/-/clipboard-1.16.3.tgz#7807a90fd9984bf4d3a96faf2eee20457984a9bd"
+  integrity sha512-cMIcvoZKIrShzJHEaHbTAp458R9WOv0fB6UyC7Ek4Qk561Ow/DrzmmJmH/rAZg21Z6ixJ4YSdFDC14crqIBmCQ==
 
 "@react-native-community/cli-clean@18.0.0":
   version "18.0.0"
@@ -3330,11 +3335,6 @@
   integrity sha512-V+XNfCtlhXLOuhBAcz4STOADzs+W3U5tL3vyaHqnKIY9z8/l8wO0snx8jMTPa497dNFL9IzMVFU/POHfU/2kBA==
   dependencies:
     plist "^3.1.0"
-
-"@react-native-firebase/database@^23.4.1":
-  version "23.4.1"
-  resolved "https://registry.npmjs.org/@react-native-firebase/database/-/database-23.4.1.tgz#1f1c439ffc839c833e6bb9eb747f42fbcbb45bb8"
-  integrity sha512-y9SYyyBodiY+1Mmth20B9sGUfTavweurDnaGXHUeLd3rTihpv1vbIUj9l3NRT5Z0i+5xl2EsyLkBH0Ck1JlkPQ==
 
 "@react-native-firebase/functions@^23.4.1":
   version "23.4.1"
@@ -11243,11 +11243,6 @@ react-native-device-info@11.1.0:
   version "11.1.0"
   resolved "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-11.1.0.tgz#7db5c4e5a179dce761efac155a493aa0956a40ab"
   integrity sha512-hzXJSObJdezEz0hF7MAJ3tGeoesuQWenXXt9mrQR9Mjb8kXpZ09rqSsZ/quNpJdZpQ3rYiFa3/0GFG5KNn9PBg==
-
-react-native-dialogs@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.npmjs.org/react-native-dialogs/-/react-native-dialogs-1.1.2.tgz#28f6173e381c9354002b1c7839aa23dec4c5f71b"
-  integrity sha512-W0y22JpiywLNVYny32Z85h2zETkY9Neh48zndHJ4Byx/vS96Ex/0fhZ55hRS7XER7SBH3SHo5+TBTuX7ECHrLw==
 
 react-native-draggable-flatlist@4.0.1:
   version "4.0.1"

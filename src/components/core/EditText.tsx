@@ -1,7 +1,5 @@
 import React, { useCallback } from 'react';
-import { Alert, Platform } from 'react-native';
-// @ts-ignore TS7016
-import DialogAndroid from 'react-native-dialogs';
+import Alert from '@blazejkustra/react-native-alert';
 import { t } from 'ttag';
 
 import PickerStyleButton from './PickerStyleButton';
@@ -21,33 +19,21 @@ export async function openDialog({
   value,
   onValueChange,
 }: Props) {
-  if (Platform.OS === 'ios') {
-    Alert.prompt(
-      title,
-      dialogDescription,
-      [
-        { text: t`Cancel`, onPress: () => {
-          // intentionally empty
-        }, style: 'cancel' },
-        {
-          text: t`Done`,
-          onPress: onValueChange,
-        },
-      ],
-      'plain-text',
-      (value) || '',
-    );
-  } else {
-    const { action, text } = await DialogAndroid.prompt(title, dialogDescription, {
-      defaultValue: value || '',
-      positiveText: t`Done`,
-      negativeText: t`Cancel`,
-      keyboardType: null,
-    });
-    if (action === DialogAndroid.actionPositive) {
-      onValueChange(text);
-    }
-  }
+  Alert.prompt(
+    title,
+    dialogDescription,
+    [
+      { text: t`Cancel`, onPress: () => {
+        // intentionally empty
+      }, style: 'cancel' },
+      {
+        text: t`Done`,
+        onPress: onValueChange,
+      },
+    ],
+    'plain-text',
+    (value) || '',
+  );
 }
 
 export default function EditText({
