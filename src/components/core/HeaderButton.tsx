@@ -44,7 +44,7 @@ export default function HeaderButton(props: HeaderButtonProps) {
         </Text>
       );
     }
-  }, [props, typography]);
+  }, [props, colors, typography, disabled]);
   return (
     <TouchableOpacity
       onPress={onPress}

@@ -871,7 +871,7 @@ export default class FilterBuilder {
               packCode,
               packCodeStart: `${packCode},%`,
               packCodeMiddle: `%,${packCode},%`,
-              packCodeEnd: `%,${packCode}`
+              packCodeEnd: `%,${packCode}`,
             }
           ),
           [
@@ -882,7 +882,7 @@ export default class FilterBuilder {
                   [`packCode${idx}`]: c,
                   [`packCodeStart${idx}`]: `${c},%`,
                   [`packCodeMiddle${idx}`]: `%,${c},%`,
-                  [`packCodeEnd${idx}`]: `%,${c}`
+                  [`packCodeEnd${idx}`]: `%,${c}`,
                 }
               )
             ),

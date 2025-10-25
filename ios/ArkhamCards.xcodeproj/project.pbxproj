@@ -7,149 +7,117 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02D002FD495C486485296EE5 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA9558AF96C7453B9D642AC9 /* AppCenter-Config.plist */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
+		103CBDFF7DB14DD9AC4E4436 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C85B91951E74471D8057E414 /* dunwich.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		287DE80FAF62B9C459213172 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133143F0D43F62E3F91ACD83 /* ExpoModulesProvider.swift */; };
-		6506962425D05D5300B134B0 /* tokens.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6506962325D05D5300B134B0 /* tokens.ttf */; };
-		650DBD8426EFA507006170CC /* edge.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 650DBD8326EFA507006170CC /* edge.ttf */; };
-		6510968A2EA270E300E939DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651096892EA270E300E939DC /* AppDelegate.swift */; };
-		651B383B251ACF8900D9D054 /* AboutDead.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651B383A251ACF8900D9D054 /* AboutDead.ttf */; };
-		651E8AC92911A8B600A48E56 /* AlegreyaSC-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651E8AC82911A8B600A48E56 /* AlegreyaSC-Medium.ttf */; };
-		651E8ACC2912FE6600A48E56 /* DMSerifDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651E8ACA2912FE6600A48E56 /* DMSerifDisplay-Italic.ttf */; };
-		651E8ACD2912FE6600A48E56 /* DMSerifDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651E8ACB2912FE6600A48E56 /* DMSerifDisplay-Regular.ttf */; };
-		652421212054950E00FF6DB9 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652420F42054950D00FF6DB9 /* carcosa.ttf */; };
-		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
-		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
-		652EB73A226BAF7800F6D790 /* de.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB6FA226BAF7800F6D790 /* de.po.json */; };
-		652EB73C226BAF8400F6D790 /* en.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73B226BAF8400F6D790 /* en.po.json */; };
-		652EB73E226BAF9300F6D790 /* es.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73D226BAF9200F6D790 /* es.po.json */; };
-		652EB740226BAF9C00F6D790 /* fr.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73F226BAF9C00F6D790 /* fr.po.json */; };
-		652EB742226BAFA800F6D790 /* it.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB741226BAFA800F6D790 /* it.po.json */; };
-		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
-		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
-		6556120B2B561F7900532BDF /* hemlock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651E986E2B56181C00E7CE77 /* hemlock.ttf */; };
-		655E70E728A0144500DBB0DF /* TT2020StyleE-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655E70E628A0144500DBB0DF /* TT2020StyleE-Regular.ttf */; };
-		655E70E928A55C7500DBB0DF /* cyclopean.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655E70E828A55C7400DBB0DF /* cyclopean.ttf */; };
-		6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6560EBDC25A012700076B227 /* GoogleService-Info.plist */; };
-		656D0CC42B5C2D4E006906B4 /* arkhamslim.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 656D0CC32B5C2D4E006906B4 /* arkhamslim.ttf */; };
-		656D83DB25AA4AB90010E4CA /* cost.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 656D83DA25AA4AB80010E4CA /* cost.ttf */; };
-		657276692644DE1B00157DE3 /* dark_matter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276682644DE1B00157DE3 /* dark_matter.ttf */; };
-		657276D0265984A200157DE3 /* alice.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276CF265984A200157DE3 /* alice.ttf */; };
-		657276D32659850A00157DE3 /* Caveat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657276D22659850A00157DE3 /* Caveat.ttf */; };
-		6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */; };
-		65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */; };
-		65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */; };
-		65851174250F047800DCB842 /* Alegreya-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851173250F047800DCB842 /* Alegreya-Bold.ttf */; };
-		65862DA125F17A3D00BDD228 /* Teutonic RU.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65862DA025F17A3D00BDD228 /* Teutonic RU.ttf */; };
-		658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 658AF45324FAAD4D00874CA7 /* Conkordia.ttf */; };
-		6592B6D128876A3F00F61AB6 /* scarlet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6592B6D028876A3F00F61AB6 /* scarlet.ttf */; };
-		6595EBA52C83DEC40052C406 /* Arkhamic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6595EBA42C83DEC40052C406 /* Arkhamic.ttf */; };
-		659EB1BD25118C55007E69E0 /* Alegreya-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */; };
-		659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */; };
-		659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1C025118E2F007E69E0 /* Alegreya-ExtraBold.ttf */; };
-		659EB1C325118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1C125118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf */; };
-		659EB1C525146636007E69E0 /* innsmouth.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1C425146635007E69E0 /* innsmouth.ttf */; };
-		65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A43C65233EE33F00A79EA3 /* dreameaters.ttf */; };
-		65B74401272B19A800602ACD /* cardicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65B74400272B19A700602ACD /* cardicons.ttf */; };
-		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
-		65BC6FF12D58F6C100D2DA62 /* drowned.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BC6FF02D58F6C100D2DA62 /* drowned.ttf */; };
-		65C0135F2D2AF0FA0022AB10 /* ages.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65C0135E2D2AF0FA0022AB10 /* ages.ttf */; };
-		65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */; };
-		65CF51E0220386F400A1D2FA /* circle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65CF51DF220386F400A1D2FA /* circle.ttf */; };
-		65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65D3FA05210FF315000F8B9D /* Teutonic.ttf */; };
-		65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65EB59142047B67600CC5820 /* arkhamicons.ttf */; };
-		65F8DB9E247EE0B500286F16 /* ko.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9B247EE0B500286F16 /* ko.po.json */; };
-		65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9C247EE0B500286F16 /* pl.po.json */; };
-		65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9D247EE0B500286F16 /* uk.po.json */; };
-		65F8DBA4247EEBC100286F16 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8DBA3247EEBC100286F16 /* Bridge.swift */; };
-		680254E39CBCB8DC7AADC8D2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C917A2C5B18C818B8FB113CE /* PrivacyInfo.xcprivacy */; };
-		9DC6CE6F2CA2554B00ADEC10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DC6CE6D2CA2554B00ADEC10 /* InfoPlist.strings */; };
-		FBCA8070BC066938396145D2 /* Pods_ArkhamCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D15FEE5B44D0223E3CAC8ED /* Pods_ArkhamCards.framework */; };
-		FE431F832CFA75EE00F1E50B /* oz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE431F822CFA75EE00F1E50B /* oz.ttf */; };
+		140FB659F5CF40A4AEFC5567 /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9454561AA658456999693F80 /* forgotten.ttf */; };
+		15011287C7E84D3AA4F29551 /* Alegreya-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CA71AA684C1489B9A6D652D /* Alegreya-MediumItalic.ttf */; };
+		190AC1888E6243DA8A8979C7 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63B85FB74D2E4917BA3EF8FA /* carcosa.ttf */; };
+		20D8B7DAFB3042B2A7AD1BCF /* dark_matter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF40BDF8AA874FF3A3DA5FDA /* dark_matter.ttf */; };
+		2605CB3679F94C15968E45D2 /* DMSerifDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D77F090B65AF483A93D8978C /* DMSerifDisplay-Regular.ttf */; };
+		284C454CBE7BF7E2D64C2349 /* Pods_ArkhamCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13195249E1436EBBA813F37D /* Pods_ArkhamCards.framework */; };
+		3263F7B7459C4DD6AD5CDEB5 /* Alegreya-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75A9B00DF63448DDA2C3194B /* Alegreya-ExtraBold.ttf */; };
+		33FBFD76868C44EB9039F02B /* tokens.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94764388E30A4EB68DDAE55A /* tokens.ttf */; };
+		33FE7D34220E4ABD91B25476 /* arkhamicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDACFDB67C7143FD85365D8F /* arkhamicons.ttf */; };
+		3461DB58E4A4475BB7C46E3C /* cost.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09B3D51420B64B28A7204D5D /* cost.ttf */; };
+		39B2A35336EF907422F222CE /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD40CE3B054E3AC423422206 /* ExpoModulesProvider.swift */; };
+		3E28C91022CE469CAB4FA946 /* Conkordia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EF2E4FFBF5F4E888AADC62B /* Conkordia.ttf */; };
+		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		41F981EDF58D42429482AB5F /* edge.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5017CC3937641F78EB4F9D1 /* edge.ttf */; };
+		48395FA3AEB0413CA4515DEA /* TT2020StyleE-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B06B38C2D54D16B038109D /* TT2020StyleE-Regular.ttf */; };
+		4B649BF99ED24C61858D6BC1 /* circle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC4699937FFD49859445467E /* circle.ttf */; };
+		51058891C2684CBA84994300 /* cardicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CF88BECC4114EE39F22C07D /* cardicons.ttf */; };
+		52A411D176D64B3E9887BF35 /* scarlet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07637E490FE542B2945893CE /* scarlet.ttf */; };
+		54F114C62C3F459AA18CC4BB /* drowned.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E916BA716F184B2B85A81773 /* drowned.ttf */; };
+		55FB93C98EE44DA18A96492E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C7938BD091F4C5BB525E36F /* GoogleService-Info.plist */; };
+		56124DB493464CE4B5A8BC0C /* ages.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11B0632D22AB4DA0A9E36166 /* ages.ttf */; };
+		64AA4CD6E2274DA1A45829D6 /* DMSerifDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3B5A67ECC2E4B909671A7DF /* DMSerifDisplay-Italic.ttf */; };
+		660061A2F62B4642AF4582F7 /* AnkeCalligraphicFG.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 274E1D341D4B477BA3392C2A /* AnkeCalligraphicFG.ttf */; };
+		71BA6A3251694370B60545CB /* Caveat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D60B42E0CCA24096BEB34964 /* Caveat.ttf */; };
+		736239CA72104EAD835E82BD /* arkhamslim.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A7076F42E1C4527B41A33AC /* arkhamslim.ttf */; };
+		75180B3C1C2343509FA9E578 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6D2DCC84F7244099EA4BE5C /* dreameaters.ttf */; };
+		77BEF27AD45B42F4BC76B4B3 /* circusexmortis.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B5DC28351F9458D995BDC11 /* circusexmortis.ttf */; };
+		79652CD13CE749F7A927430A /* Alegreya-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC996E9C987C4A0FB1DF0007 /* Alegreya-ExtraBoldItalic.ttf */; };
+		7F147713D9E6442F84042C3F /* AlegreyaSC-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5AED25074A4E4201A3C3FBCB /* AlegreyaSC-Medium.ttf */; };
+		8131F05B7F6E4E04B673F973 /* Alegreya-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF4C2B0A53D3422798807C7A /* Alegreya-BoldItalic.ttf */; };
+		8306D8C1B6854EDEA2F6BAFE /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7022C27BA63145A38D794755 /* standalone.ttf */; };
+		86510123FD1B47FC9868F277 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4215A5A94D2145D28CEED9A0 /* app.ttf */; };
+		89183BECF03CBF10DB116F1A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FE788EBE9750FF9F1D27D41D /* PrivacyInfo.xcprivacy */; };
+		8C2516714F8C4ABAA6AC5505 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0A4EF1DF34C4D06819889FB /* coreset.ttf */; };
+		A4CDF8B6E6114626B5037AD1 /* cyclopean.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 064A6978D4334B01B317F21A /* cyclopean.ttf */; };
+		A8A76B76EB7A460BBA107FBA /* alice.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98E567EE92B04E80A608860B /* alice.ttf */; };
+		AA17A14BECC9421BAE654C45 /* oz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 192A2C1E25294CB9A63B4BA1 /* oz.ttf */; };
+		B691FD3FB3784CFBBA535957 /* Arkhamic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA0395467BE84ACAAEFB96B8 /* Arkhamic.ttf */; };
+		B8C5614C7BB34EDDABE6C521 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3969ACC7A9A84FCFB89C286E /* Alegreya-Regular.ttf */; };
+		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		C0D6E9A58C0642BD8D1084FF /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50FC46471A5B44F08A7DBFD2 /* Alegreya-Medium.ttf */; };
+		C13EB0FB6B704E4C8CE24475 /* Alegreya-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79C28CD8CDF74D3A99927124 /* Alegreya-Bold.ttf */; };
+		C42820CA14F44417B6A23E60 /* AboutDead.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44C48144D9E5448DA2155323 /* AboutDead.ttf */; };
+		D57D55F45D1F4ABFA9FB9882 /* Teutonic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A52D197566AC467ABDBDAAD3 /* Teutonic.ttf */; };
+		D59A845407CC47859871684F /* hemlock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EEC24E22CDF4793A8AAAEA1 /* hemlock.ttf */; };
+		D8EA48F839984DC8AE41728E /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54F50E81F14E437C955641C5 /* Alegreya-Italic.ttf */; };
+		E4AF767D5B8B4165A37B06F4 /* Teutonic RU.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA6AF048644A4AEC8F2D656B /* Teutonic RU.ttf */; };
+		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
+		FA990119321E46FBB8FB36CC /* innsmouth.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 808BFEAF930A4C439A35815E /* innsmouth.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		057878732D94457103DFDA24 /* Pods-ArkhamCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.release.xcconfig"; path = "Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.release.xcconfig"; sourceTree = "<group>"; };
-		133143F0D43F62E3F91ACD83 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-ArkhamCards/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		064A6978D4334B01B317F21A /* cyclopean.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = cyclopean.ttf; path = ../assets/cyclopean.ttf; sourceTree = "<group>"; };
+		07637E490FE542B2945893CE /* scarlet.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = scarlet.ttf; path = ../assets/scarlet.ttf; sourceTree = "<group>"; };
+		09B3D51420B64B28A7204D5D /* cost.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = cost.ttf; path = ../assets/cost.ttf; sourceTree = "<group>"; };
+		11B0632D22AB4DA0A9E36166 /* ages.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = ages.ttf; path = ../assets/ages.ttf; sourceTree = "<group>"; };
+		13195249E1436EBBA813F37D /* Pods_ArkhamCards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArkhamCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* ArkhamCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArkhamCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ArkhamCards/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ArkhamCards/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ArkhamCards/main.m; sourceTree = "<group>"; };
-		3D15FEE5B44D0223E3CAC8ED /* Pods_ArkhamCards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArkhamCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6505E51F24DA59A4001DF983 /* libReact-jsi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-jsi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6505E52124DA64AC001DF983 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
-		6505E52324DDD6F0001DF983 /* ArkhamCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCards.entitlements; path = ArkhamCards/ArkhamCards.entitlements; sourceTree = "<group>"; };
-		6506962325D05D5300B134B0 /* tokens.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tokens.ttf; path = ../assets/tokens.ttf; sourceTree = "<group>"; };
-		650DBD8326EFA507006170CC /* edge.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = edge.ttf; path = ../assets/edge.ttf; sourceTree = "<group>"; };
-		651096892EA270E300E939DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = arkhamcards/AppDelegate.swift; sourceTree = "<group>"; };
-		651B383A251ACF8900D9D054 /* AboutDead.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AboutDead.ttf; path = ../assets/AboutDead.ttf; sourceTree = "<group>"; };
-		651E8AC82911A8B600A48E56 /* AlegreyaSC-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AlegreyaSC-Medium.ttf"; path = "../assets/AlegreyaSC-Medium.ttf"; sourceTree = "<group>"; };
-		651E8ACA2912FE6600A48E56 /* DMSerifDisplay-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DMSerifDisplay-Italic.ttf"; path = "../assets/DMSerifDisplay-Italic.ttf"; sourceTree = "<group>"; };
-		651E8ACB2912FE6600A48E56 /* DMSerifDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DMSerifDisplay-Regular.ttf"; path = "../assets/DMSerifDisplay-Regular.ttf"; sourceTree = "<group>"; };
-		651E986E2B56181C00E7CE77 /* hemlock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hemlock.ttf; path = ../assets/hemlock.ttf; sourceTree = "<group>"; };
-		652420F42054950D00FF6DB9 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
-		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
-		652421242054954F00FF6DB9 /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
-		652EB6FA226BAF7800F6D790 /* de.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = de.po.json; path = ../assets/i18n/de.po.json; sourceTree = "<group>"; };
-		652EB73B226BAF8400F6D790 /* en.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = en.po.json; path = ../assets/i18n/en.po.json; sourceTree = "<group>"; };
-		652EB73D226BAF9200F6D790 /* es.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = es.po.json; path = ../assets/i18n/es.po.json; sourceTree = "<group>"; };
-		652EB73F226BAF9C00F6D790 /* fr.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fr.po.json; path = ../assets/i18n/fr.po.json; sourceTree = "<group>"; };
-		652EB741226BAFA800F6D790 /* it.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = it.po.json; path = ../assets/i18n/it.po.json; sourceTree = "<group>"; };
-		6530148B259FD4EA009A53AB /* ArkhamCardsDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCardsDebug.entitlements; path = ArkhamCards/ArkhamCardsDebug.entitlements; sourceTree = "<group>"; };
-		6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArkhamCards-Bridging-Header.h"; sourceTree = "<group>"; };
-		65522688205D68D70065A1F7 /* standalone.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = standalone.ttf; path = ../assets/standalone.ttf; sourceTree = "<group>"; };
-		655226C7205EEAF00065A1F7 /* app.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = app.ttf; path = ../assets/app.ttf; sourceTree = "<group>"; };
-		6556782820BA144600C18EC4 /* forgotten.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = forgotten.ttf; path = ../assets/forgotten.ttf; sourceTree = "<group>"; };
-		655E70E628A0144500DBB0DF /* TT2020StyleE-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "TT2020StyleE-Regular.ttf"; path = "../assets/TT2020StyleE-Regular.ttf"; sourceTree = "<group>"; };
-		655E70E828A55C7400DBB0DF /* cyclopean.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cyclopean.ttf; path = ../assets/cyclopean.ttf; sourceTree = "<group>"; };
-		6560EBDC25A012700076B227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		656D0CC32B5C2D4E006906B4 /* arkhamslim.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arkhamslim.ttf; path = ../assets/arkhamslim.ttf; sourceTree = "<group>"; };
-		656D83DA25AA4AB80010E4CA /* cost.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cost.ttf; path = ../assets/cost.ttf; sourceTree = "<group>"; };
-		657276682644DE1B00157DE3 /* dark_matter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dark_matter.ttf; path = ../assets/dark_matter.ttf; sourceTree = "<group>"; };
-		657276CF265984A200157DE3 /* alice.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = alice.ttf; path = ../assets/alice.ttf; sourceTree = "<group>"; };
-		657276D22659850A00157DE3 /* Caveat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Caveat.ttf; path = ../assets/Caveat.ttf; sourceTree = "<group>"; };
-		6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Regular.ttf"; path = "../assets/Alegreya-Regular.ttf"; sourceTree = "<group>"; };
-		6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Italic.ttf"; path = "../assets/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
-		65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Medium.ttf"; path = "../assets/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
-		65851173250F047800DCB842 /* Alegreya-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Bold.ttf"; path = "../assets/Alegreya-Bold.ttf"; sourceTree = "<group>"; };
-		65862DA025F17A3D00BDD228 /* Teutonic RU.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Teutonic RU.ttf"; path = "../assets/Teutonic RU.ttf"; sourceTree = "<group>"; };
-		658AF45324FAAD4D00874CA7 /* Conkordia.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Conkordia.ttf; path = ../assets/Conkordia.ttf; sourceTree = "<group>"; };
-		6592B6D028876A3F00F61AB6 /* scarlet.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = scarlet.ttf; path = ../assets/scarlet.ttf; sourceTree = "<group>"; };
-		6595EBA42C83DEC40052C406 /* Arkhamic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Arkhamic.ttf; path = ../assets/Arkhamic.ttf; sourceTree = "<group>"; };
-		659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-MediumItalic.ttf"; path = "../assets/Alegreya-MediumItalic.ttf"; sourceTree = "<group>"; };
-		659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-BoldItalic.ttf"; path = "../assets/Alegreya-BoldItalic.ttf"; sourceTree = "<group>"; };
-		659EB1C025118E2F007E69E0 /* Alegreya-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-ExtraBold.ttf"; path = "../assets/Alegreya-ExtraBold.ttf"; sourceTree = "<group>"; };
-		659EB1C125118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-ExtraBoldItalic.ttf"; path = "../assets/Alegreya-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		659EB1C425146635007E69E0 /* innsmouth.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = innsmouth.ttf; path = ../assets/innsmouth.ttf; sourceTree = "<group>"; };
-		65A43C65233EE33F00A79EA3 /* dreameaters.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dreameaters.ttf; path = ../assets/dreameaters.ttf; sourceTree = "<group>"; };
-		65B74400272B19A700602ACD /* cardicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cardicons.ttf; path = ../assets/cardicons.ttf; sourceTree = "<group>"; };
-		65BC6FF02D58F6C100D2DA62 /* drowned.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = drowned.ttf; path = ../assets/drowned.ttf; sourceTree = "<group>"; };
-		65C0135E2D2AF0FA0022AB10 /* ages.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ages.ttf; path = ../assets/ages.ttf; sourceTree = "<group>"; };
-		65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AnkeCalligraphicFG.ttf; path = ../assets/AnkeCalligraphicFG.ttf; sourceTree = "<group>"; };
-		65CA4CEA212893160084A1CE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		65CA4CEB2128932A0084A1CE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		65CA4CEC2128932F0084A1CE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		65CA4CED212893370084A1CE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		65CF51DF220386F400A1D2FA /* circle.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = circle.ttf; path = ../assets/circle.ttf; sourceTree = "<group>"; };
-		65D3FA05210FF315000F8B9D /* Teutonic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Teutonic.ttf; path = ../assets/Teutonic.ttf; sourceTree = "<group>"; };
-		65EB59142047B67600CC5820 /* arkhamicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arkhamicons.ttf; path = ../assets/arkhamicons.ttf; sourceTree = "<group>"; };
-		65F8DB9B247EE0B500286F16 /* ko.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ko.po.json; path = ../assets/i18n/ko.po.json; sourceTree = "<group>"; };
-		65F8DB9C247EE0B500286F16 /* pl.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pl.po.json; path = ../assets/i18n/pl.po.json; sourceTree = "<group>"; };
-		65F8DB9D247EE0B500286F16 /* uk.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = uk.po.json; path = ../assets/i18n/uk.po.json; sourceTree = "<group>"; };
-		65F8DBA3247EEBC100286F16 /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
-		9DC6CE682CA2543400ADEC10 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		9DC6CE6E2CA2554B00ADEC10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = ArkhamCards/Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9DC6CE702CA2557D00ADEC10 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ArkhamCards/ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C917A2C5B18C818B8FB113CE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ArkhamCards/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		CAB040D549E643C0A271ADCC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		D015900F71F34A5187CC75F4 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		DD2B3F9071761A240528D656 /* Pods-ArkhamCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.debug.xcconfig"; path = "Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.debug.xcconfig"; sourceTree = "<group>"; };
-		EA9558AF96C7453B9D642AC9 /* AppCenter-Config.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "ArkhamCards/AppCenter-Config.plist"; sourceTree = "<group>"; };
-		FE431F822CFA75EE00F1E50B /* oz.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = oz.ttf; path = ../assets/oz.ttf; sourceTree = "<group>"; };
+		192A2C1E25294CB9A63B4BA1 /* oz.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = oz.ttf; path = ../assets/oz.ttf; sourceTree = "<group>"; };
+		1EEC24E22CDF4793A8AAAEA1 /* hemlock.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = hemlock.ttf; path = ../assets/hemlock.ttf; sourceTree = "<group>"; };
+		274E1D341D4B477BA3392C2A /* AnkeCalligraphicFG.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AnkeCalligraphicFG.ttf; path = ../assets/AnkeCalligraphicFG.ttf; sourceTree = "<group>"; };
+		3969ACC7A9A84FCFB89C286E /* Alegreya-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-Regular.ttf"; path = "../assets/Alegreya-Regular.ttf"; sourceTree = "<group>"; };
+		3B5DC28351F9458D995BDC11 /* circusexmortis.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = circusexmortis.ttf; path = ../assets/circusexmortis.ttf; sourceTree = "<group>"; };
+		3C7938BD091F4C5BB525E36F /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ArkhamCards/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3CF88BECC4114EE39F22C07D /* cardicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = cardicons.ttf; path = ../assets/cardicons.ttf; sourceTree = "<group>"; };
+		4215A5A94D2145D28CEED9A0 /* app.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = app.ttf; path = ../assets/app.ttf; sourceTree = "<group>"; };
+		44C48144D9E5448DA2155323 /* AboutDead.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AboutDead.ttf; path = ../assets/AboutDead.ttf; sourceTree = "<group>"; };
+		47B06B38C2D54D16B038109D /* TT2020StyleE-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TT2020StyleE-Regular.ttf"; path = "../assets/TT2020StyleE-Regular.ttf"; sourceTree = "<group>"; };
+		50FC46471A5B44F08A7DBFD2 /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-Medium.ttf"; path = "../assets/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
+		54F50E81F14E437C955641C5 /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-Italic.ttf"; path = "../assets/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
+		5A7076F42E1C4527B41A33AC /* arkhamslim.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = arkhamslim.ttf; path = ../assets/arkhamslim.ttf; sourceTree = "<group>"; };
+		5AED25074A4E4201A3C3FBCB /* AlegreyaSC-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AlegreyaSC-Medium.ttf"; path = "../assets/AlegreyaSC-Medium.ttf"; sourceTree = "<group>"; };
+		5EF2E4FFBF5F4E888AADC62B /* Conkordia.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Conkordia.ttf; path = ../assets/Conkordia.ttf; sourceTree = "<group>"; };
+		63B85FB74D2E4917BA3EF8FA /* carcosa.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
+		6526AE5D629F6321A762FC46 /* Pods-ArkhamCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.debug.xcconfig"; path = "Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.debug.xcconfig"; sourceTree = "<group>"; };
+		7022C27BA63145A38D794755 /* standalone.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = standalone.ttf; path = ../assets/standalone.ttf; sourceTree = "<group>"; };
+		75A9B00DF63448DDA2C3194B /* Alegreya-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-ExtraBold.ttf"; path = "../assets/Alegreya-ExtraBold.ttf"; sourceTree = "<group>"; };
+		79C28CD8CDF74D3A99927124 /* Alegreya-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-Bold.ttf"; path = "../assets/Alegreya-Bold.ttf"; sourceTree = "<group>"; };
+		7CA71AA684C1489B9A6D652D /* Alegreya-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-MediumItalic.ttf"; path = "../assets/Alegreya-MediumItalic.ttf"; sourceTree = "<group>"; };
+		7F8116C5D1722B9D4C19A130 /* Pods-ArkhamCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.release.xcconfig"; path = "Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.release.xcconfig"; sourceTree = "<group>"; };
+		808BFEAF930A4C439A35815E /* innsmouth.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = innsmouth.ttf; path = ../assets/innsmouth.ttf; sourceTree = "<group>"; };
+		9454561AA658456999693F80 /* forgotten.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = forgotten.ttf; path = ../assets/forgotten.ttf; sourceTree = "<group>"; };
+		94764388E30A4EB68DDAE55A /* tokens.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = tokens.ttf; path = ../assets/tokens.ttf; sourceTree = "<group>"; };
+		98E567EE92B04E80A608860B /* alice.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = alice.ttf; path = ../assets/alice.ttf; sourceTree = "<group>"; };
+		A52D197566AC467ABDBDAAD3 /* Teutonic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Teutonic.ttf; path = ../assets/Teutonic.ttf; sourceTree = "<group>"; };
+		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = ArkhamCards/SplashScreen.storyboard; sourceTree = "<group>"; };
+		B5017CC3937641F78EB4F9D1 /* edge.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = edge.ttf; path = ../assets/edge.ttf; sourceTree = "<group>"; };
+		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		BD40CE3B054E3AC423422206 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-ArkhamCards/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		C0A4EF1DF34C4D06819889FB /* coreset.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
+		C85B91951E74471D8057E414 /* dunwich.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
+		D3B5A67ECC2E4B909671A7DF /* DMSerifDisplay-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSerifDisplay-Italic.ttf"; path = "../assets/DMSerifDisplay-Italic.ttf"; sourceTree = "<group>"; };
+		D60B42E0CCA24096BEB34964 /* Caveat.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Caveat.ttf; path = ../assets/Caveat.ttf; sourceTree = "<group>"; };
+		D6D2DCC84F7244099EA4BE5C /* dreameaters.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = dreameaters.ttf; path = ../assets/dreameaters.ttf; sourceTree = "<group>"; };
+		D77F090B65AF483A93D8978C /* DMSerifDisplay-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSerifDisplay-Regular.ttf"; path = "../assets/DMSerifDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		DC4699937FFD49859445467E /* circle.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = circle.ttf; path = ../assets/circle.ttf; sourceTree = "<group>"; };
+		DDACFDB67C7143FD85365D8F /* arkhamicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = arkhamicons.ttf; path = ../assets/arkhamicons.ttf; sourceTree = "<group>"; };
+		E916BA716F184B2B85A81773 /* drowned.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = drowned.ttf; path = ../assets/drowned.ttf; sourceTree = "<group>"; };
+		EA0395467BE84ACAAEFB96B8 /* Arkhamic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Arkhamic.ttf; path = ../assets/Arkhamic.ttf; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EF40BDF8AA874FF3A3DA5FDA /* dark_matter.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = dark_matter.ttf; path = ../assets/dark_matter.ttf; sourceTree = "<group>"; };
+		EF4C2B0A53D3422798807C7A /* Alegreya-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-BoldItalic.ttf"; path = "../assets/Alegreya-BoldItalic.ttf"; sourceTree = "<group>"; };
+		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ArkhamCards/AppDelegate.swift; sourceTree = "<group>"; };
+		F11748442D0722820044C1D9 /* ArkhamCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ArkhamCards-Bridging-Header.h"; path = "ArkhamCards/ArkhamCards-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA6AF048644A4AEC8F2D656B /* Teutonic RU.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Teutonic RU.ttf"; path = "../assets/Teutonic RU.ttf"; sourceTree = "<group>"; };
+		FC996E9C987C4A0FB1DF0007 /* Alegreya-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-ExtraBoldItalic.ttf"; path = "../assets/Alegreya-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		FE788EBE9750FF9F1D27D41D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = ArkhamCards/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBCA8070BC066938396145D2 /* Pods_ArkhamCards.framework in Frameworks */,
+				284C454CBE7BF7E2D64C2349 /* Pods_ArkhamCards.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,101 +135,54 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
-				651096892EA270E300E939DC /* AppDelegate.swift */,
-				65BC6FF02D58F6C100D2DA62 /* drowned.ttf */,
-				65C0135E2D2AF0FA0022AB10 /* ages.ttf */,
-				FE431F822CFA75EE00F1E50B /* oz.ttf */,
-				6595EBA42C83DEC40052C406 /* Arkhamic.ttf */,
-				651E8ACA2912FE6600A48E56 /* DMSerifDisplay-Italic.ttf */,
-				651E8ACB2912FE6600A48E56 /* DMSerifDisplay-Regular.ttf */,
-				651E8AC82911A8B600A48E56 /* AlegreyaSC-Medium.ttf */,
-				655E70E828A55C7400DBB0DF /* cyclopean.ttf */,
-				656D0CC32B5C2D4E006906B4 /* arkhamslim.ttf */,
-				655E70E628A0144500DBB0DF /* TT2020StyleE-Regular.ttf */,
-				6592B6D028876A3F00F61AB6 /* scarlet.ttf */,
-				65B74400272B19A700602ACD /* cardicons.ttf */,
-				650DBD8326EFA507006170CC /* edge.ttf */,
-				657276D22659850A00157DE3 /* Caveat.ttf */,
-				657276CF265984A200157DE3 /* alice.ttf */,
-				657276682644DE1B00157DE3 /* dark_matter.ttf */,
-				65862DA025F17A3D00BDD228 /* Teutonic RU.ttf */,
-				6506962325D05D5300B134B0 /* tokens.ttf */,
-				656D83DA25AA4AB80010E4CA /* cost.ttf */,
-				6560EBDC25A012700076B227 /* GoogleService-Info.plist */,
-				6530148B259FD4EA009A53AB /* ArkhamCardsDebug.entitlements */,
-				651B383A251ACF8900D9D054 /* AboutDead.ttf */,
-				659EB1C425146635007E69E0 /* innsmouth.ttf */,
-				659EB1C025118E2F007E69E0 /* Alegreya-ExtraBold.ttf */,
-				659EB1C125118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf */,
-				659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */,
-				659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */,
-				65851173250F047800DCB842 /* Alegreya-Bold.ttf */,
-				65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */,
-				6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */,
-				6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */,
-				658AF45324FAAD4D00874CA7 /* Conkordia.ttf */,
-				651E986E2B56181C00E7CE77 /* hemlock.ttf */,
-				6505E52324DDD6F0001DF983 /* ArkhamCards.entitlements */,
-				65F8DB9B247EE0B500286F16 /* ko.po.json */,
-				65F8DB9C247EE0B500286F16 /* pl.po.json */,
-				65F8DB9D247EE0B500286F16 /* uk.po.json */,
-				65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */,
-				652EB741226BAFA800F6D790 /* it.po.json */,
-				652EB73F226BAF9C00F6D790 /* fr.po.json */,
-				652EB73D226BAF9200F6D790 /* es.po.json */,
-				652EB73B226BAF8400F6D790 /* en.po.json */,
-				652EB6FA226BAF7800F6D790 /* de.po.json */,
-				65CF51DF220386F400A1D2FA /* circle.ttf */,
-				65D3FA05210FF315000F8B9D /* Teutonic.ttf */,
-				6556782820BA144600C18EC4 /* forgotten.ttf */,
-				655226C7205EEAF00065A1F7 /* app.ttf */,
-				65522688205D68D70065A1F7 /* standalone.ttf */,
-				652421242054954F00FF6DB9 /* dunwich.ttf */,
-				65A43C65233EE33F00A79EA3 /* dreameaters.ttf */,
-				652421222054951A00FF6DB9 /* coreset.ttf */,
-				652420F42054950D00FF6DB9 /* carcosa.ttf */,
-				65EB59142047B67600CC5820 /* arkhamicons.ttf */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
+				F11748442D0722820044C1D9 /* ArkhamCards-Bridging-Header.h */,
+				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
-				9DC6CE6D2CA2554B00ADEC10 /* InfoPlist.strings */,
-				13B07FB71A68108700A75B9A /* main.m */,
-				6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */,
-				65F8DBA3247EEBC100286F16 /* Bridge.swift */,
-				C917A2C5B18C818B8FB113CE /* PrivacyInfo.xcprivacy */,
+				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
+				3C7938BD091F4C5BB525E36F /* GoogleService-Info.plist */,
+				FE788EBE9750FF9F1D27D41D /* PrivacyInfo.xcprivacy */,
 			);
 			name = ArkhamCards;
+			sourceTree = "<group>";
+		};
+		1C3CDEE7E1001D5F6F161547 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6526AE5D629F6321A762FC46 /* Pods-ArkhamCards.debug.xcconfig */,
+				7F8116C5D1722B9D4C19A130 /* Pods-ArkhamCards.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6505E52124DA64AC001DF983 /* libswiftCore.tbd */,
-				6505E51F24DA59A4001DF983 /* libReact-jsi.a */,
-				3D15FEE5B44D0223E3CAC8ED /* Pods_ArkhamCards.framework */,
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				13195249E1436EBBA813F37D /* Pods_ArkhamCards.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		61A5D77E8C0682F6618D71DA /* ArkhamCards */ = {
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				133143F0D43F62E3F91ACD83 /* ExpoModulesProvider.swift */,
 			);
-			name = ArkhamCards;
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
 				13B07FAE1A68108700A75B9A /* ArkhamCards */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				E81D6506D540436FABC9AC12 /* Resources */,
-				EA9558AF96C7453B9D642AC9 /* AppCenter-Config.plist */,
-				9528312350AD4B4BD040CE47 /* Pods */,
-				E45C284073DBA73083895F37 /* ExpoModulesProviders */,
+				99D93E28CE0D4AB4B50CB78A /* Resources */,
+				1C3CDEE7E1001D5F6F161547 /* Pods */,
+				FCFF424436CF7C95A6D2AF5C /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -276,30 +197,80 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9528312350AD4B4BD040CE47 /* Pods */ = {
+		99D93E28CE0D4AB4B50CB78A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DD2B3F9071761A240528D656 /* Pods-ArkhamCards.debug.xcconfig */,
-				057878732D94457103DFDA24 /* Pods-ArkhamCards.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		E45C284073DBA73083895F37 /* ExpoModulesProviders */ = {
-			isa = PBXGroup;
-			children = (
-				61A5D77E8C0682F6618D71DA /* ArkhamCards */,
-			);
-			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
-		E81D6506D540436FABC9AC12 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				D015900F71F34A5187CC75F4 /* MaterialCommunityIcons.ttf */,
-				CAB040D549E643C0A271ADCC /* MaterialIcons.ttf */,
+				44C48144D9E5448DA2155323 /* AboutDead.ttf */,
+				11B0632D22AB4DA0A9E36166 /* ages.ttf */,
+				79C28CD8CDF74D3A99927124 /* Alegreya-Bold.ttf */,
+				EF4C2B0A53D3422798807C7A /* Alegreya-BoldItalic.ttf */,
+				75A9B00DF63448DDA2C3194B /* Alegreya-ExtraBold.ttf */,
+				FC996E9C987C4A0FB1DF0007 /* Alegreya-ExtraBoldItalic.ttf */,
+				54F50E81F14E437C955641C5 /* Alegreya-Italic.ttf */,
+				50FC46471A5B44F08A7DBFD2 /* Alegreya-Medium.ttf */,
+				7CA71AA684C1489B9A6D652D /* Alegreya-MediumItalic.ttf */,
+				3969ACC7A9A84FCFB89C286E /* Alegreya-Regular.ttf */,
+				5AED25074A4E4201A3C3FBCB /* AlegreyaSC-Medium.ttf */,
+				98E567EE92B04E80A608860B /* alice.ttf */,
+				274E1D341D4B477BA3392C2A /* AnkeCalligraphicFG.ttf */,
+				4215A5A94D2145D28CEED9A0 /* app.ttf */,
+				EA0395467BE84ACAAEFB96B8 /* Arkhamic.ttf */,
+				DDACFDB67C7143FD85365D8F /* arkhamicons.ttf */,
+				5A7076F42E1C4527B41A33AC /* arkhamslim.ttf */,
+				63B85FB74D2E4917BA3EF8FA /* carcosa.ttf */,
+				3CF88BECC4114EE39F22C07D /* cardicons.ttf */,
+				D60B42E0CCA24096BEB34964 /* Caveat.ttf */,
+				DC4699937FFD49859445467E /* circle.ttf */,
+				3B5DC28351F9458D995BDC11 /* circusexmortis.ttf */,
+				5EF2E4FFBF5F4E888AADC62B /* Conkordia.ttf */,
+				C0A4EF1DF34C4D06819889FB /* coreset.ttf */,
+				09B3D51420B64B28A7204D5D /* cost.ttf */,
+				064A6978D4334B01B317F21A /* cyclopean.ttf */,
+				EF40BDF8AA874FF3A3DA5FDA /* dark_matter.ttf */,
+				D3B5A67ECC2E4B909671A7DF /* DMSerifDisplay-Italic.ttf */,
+				D77F090B65AF483A93D8978C /* DMSerifDisplay-Regular.ttf */,
+				D6D2DCC84F7244099EA4BE5C /* dreameaters.ttf */,
+				E916BA716F184B2B85A81773 /* drowned.ttf */,
+				C85B91951E74471D8057E414 /* dunwich.ttf */,
+				B5017CC3937641F78EB4F9D1 /* edge.ttf */,
+				9454561AA658456999693F80 /* forgotten.ttf */,
+				1EEC24E22CDF4793A8AAAEA1 /* hemlock.ttf */,
+				808BFEAF930A4C439A35815E /* innsmouth.ttf */,
+				192A2C1E25294CB9A63B4BA1 /* oz.ttf */,
+				07637E490FE542B2945893CE /* scarlet.ttf */,
+				7022C27BA63145A38D794755 /* standalone.ttf */,
+				FA6AF048644A4AEC8F2D656B /* Teutonic RU.ttf */,
+				A52D197566AC467ABDBDAAD3 /* Teutonic.ttf */,
+				94764388E30A4EB68DDAE55A /* tokens.ttf */,
+				47B06B38C2D54D16B038109D /* TT2020StyleE-Regular.ttf */,
 			);
 			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
+		BB2F792B24A3F905000567C9 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				BB2F792C24A3F905000567C9 /* Expo.plist */,
+			);
+			name = Supporting;
+			path = ArkhamCards/Supporting;
+			sourceTree = "<group>";
+		};
+		E31B9708A3FD15C8AB66F40D /* ArkhamCards */ = {
+			isa = PBXGroup;
+			children = (
+				BD40CE3B054E3AC423422206 /* ExpoModulesProvider.swift */,
+			);
+			name = ArkhamCards;
+			sourceTree = "<group>";
+		};
+		FCFF424436CF7C95A6D2AF5C /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				E31B9708A3FD15C8AB66F40D /* ArkhamCards */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,23 +280,23 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ArkhamCards" */;
 			buildPhases = (
-				3144064F698F2DC8CA2A79D1 /* [CP] Check Pods Manifest.lock */,
-				A023E7ECE6F652D51C9C85C0 /* [Expo] Configure project */,
+				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
+				7F030E97A5A786146E49EE85 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				E3E5BCAE512354D73C1F4F14 /* [CP] Embed Pods Frameworks */,
-				2186644651C1F2DC276A9635 /* [CP] Copy Pods Resources */,
-				272096E45F9940F0095C9886 /* [CP-User] [RNFB] Core Configuration */,
-				F4C1315A864140DEADF725D8 /* Upload Debug Symbols to Sentry */,
+				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
+				C68645D1EA6641DB9FB63A2A /* Upload Debug Symbols to Sentry */,
+				63D8927D2E37AB2E0BECFC49 /* [CP] Embed Pods Frameworks */,
+				13DEAF530249CAF4AEFBCC81 /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ArkhamCards;
-			productName = "Hello World";
+			productName = ArkhamCards;
 			productReference = 13B07F961A680F5B00A75B9A /* ArkhamCards.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -335,30 +306,20 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				DefaultBuildSystemTypeForWorkspace = Latest;
-				LastSwiftUpdateCheck = 1110;
-				LastUpgradeCheck = 1110;
-				ORGANIZATIONNAME = "Daniel Salinas";
+				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1010;
-						ProvisioningStyle = Automatic;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "arkhamcards" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ArkhamCards" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
-				es,
-				de,
-				it,
-				fr,
-				ko,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -375,62 +336,54 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6556120B2B561F7900532BDF /* hemlock.ttf in Resources */,
-				65862DA125F17A3D00BDD228 /* Teutonic RU.ttf in Resources */,
-				65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */,
-				658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */,
-				651B383B251ACF8900D9D054 /* AboutDead.ttf in Resources */,
+				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				651E8ACD2912FE6600A48E56 /* DMSerifDisplay-Regular.ttf in Resources */,
-				652EB73C226BAF8400F6D790 /* en.po.json in Resources */,
-				6595EBA52C83DEC40052C406 /* Arkhamic.ttf in Resources */,
-				652EB742226BAFA800F6D790 /* it.po.json in Resources */,
-				65851174250F047800DCB842 /* Alegreya-Bold.ttf in Resources */,
-				655226B5205D68D70065A1F7 /* standalone.ttf in Resources */,
-				656D83DB25AA4AB90010E4CA /* cost.ttf in Resources */,
-				652421252054954F00FF6DB9 /* dunwich.ttf in Resources */,
-				6506962425D05D5300B134B0 /* tokens.ttf in Resources */,
-				659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */,
-				656D0CC42B5C2D4E006906B4 /* arkhamslim.ttf in Resources */,
-				9DC6CE6F2CA2554B00ADEC10 /* InfoPlist.strings in Resources */,
-				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
-				6560EBDD25A012700076B227 /* GoogleService-Info.plist in Resources */,
-				65C0135F2D2AF0FA0022AB10 /* ages.ttf in Resources */,
-				659EB1C525146636007E69E0 /* innsmouth.ttf in Resources */,
-				655226F4205EEAF10065A1F7 /* app.ttf in Resources */,
-				65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */,
-				65F8DB9E247EE0B500286F16 /* ko.po.json in Resources */,
-				659EB1BD25118C55007E69E0 /* Alegreya-MediumItalic.ttf in Resources */,
-				65BC6FF12D58F6C100D2DA62 /* drowned.ttf in Resources */,
-				65CF51E0220386F400A1D2FA /* circle.ttf in Resources */,
-				655E70E728A0144500DBB0DF /* TT2020StyleE-Regular.ttf in Resources */,
-				65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */,
-				657276D32659850A00157DE3 /* Caveat.ttf in Resources */,
-				657276692644DE1B00157DE3 /* dark_matter.ttf in Resources */,
-				65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */,
-				659EB1C325118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf in Resources */,
-				652421212054950E00FF6DB9 /* carcosa.ttf in Resources */,
-				652421232054951A00FF6DB9 /* coreset.ttf in Resources */,
-				652EB740226BAF9C00F6D790 /* fr.po.json in Resources */,
-				65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */,
-				650DBD8426EFA507006170CC /* edge.ttf in Resources */,
-				657276D0265984A200157DE3 /* alice.ttf in Resources */,
-				651E8ACC2912FE6600A48E56 /* DMSerifDisplay-Italic.ttf in Resources */,
-				FE431F832CFA75EE00F1E50B /* oz.ttf in Resources */,
-				651E8AC92911A8B600A48E56 /* AlegreyaSC-Medium.ttf in Resources */,
-				659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */,
-				655E70E928A55C7500DBB0DF /* cyclopean.ttf in Resources */,
-				65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */,
-				652EB73A226BAF7800F6D790 /* de.po.json in Resources */,
-				652EB73E226BAF9300F6D790 /* es.po.json in Resources */,
-				6592B6D128876A3F00F61AB6 /* scarlet.ttf in Resources */,
-				65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */,
-				65B74401272B19A800602ACD /* cardicons.ttf in Resources */,
-				02D002FD495C486485296EE5 /* AppCenter-Config.plist in Resources */,
-				6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */,
-				680254E39CBCB8DC7AADC8D2 /* PrivacyInfo.xcprivacy in Resources */,
+				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
+				55FB93C98EE44DA18A96492E /* GoogleService-Info.plist in Resources */,
+				C42820CA14F44417B6A23E60 /* AboutDead.ttf in Resources */,
+				56124DB493464CE4B5A8BC0C /* ages.ttf in Resources */,
+				C13EB0FB6B704E4C8CE24475 /* Alegreya-Bold.ttf in Resources */,
+				8131F05B7F6E4E04B673F973 /* Alegreya-BoldItalic.ttf in Resources */,
+				3263F7B7459C4DD6AD5CDEB5 /* Alegreya-ExtraBold.ttf in Resources */,
+				79652CD13CE749F7A927430A /* Alegreya-ExtraBoldItalic.ttf in Resources */,
+				D8EA48F839984DC8AE41728E /* Alegreya-Italic.ttf in Resources */,
+				C0D6E9A58C0642BD8D1084FF /* Alegreya-Medium.ttf in Resources */,
+				15011287C7E84D3AA4F29551 /* Alegreya-MediumItalic.ttf in Resources */,
+				B8C5614C7BB34EDDABE6C521 /* Alegreya-Regular.ttf in Resources */,
+				7F147713D9E6442F84042C3F /* AlegreyaSC-Medium.ttf in Resources */,
+				A8A76B76EB7A460BBA107FBA /* alice.ttf in Resources */,
+				660061A2F62B4642AF4582F7 /* AnkeCalligraphicFG.ttf in Resources */,
+				86510123FD1B47FC9868F277 /* app.ttf in Resources */,
+				B691FD3FB3784CFBBA535957 /* Arkhamic.ttf in Resources */,
+				33FE7D34220E4ABD91B25476 /* arkhamicons.ttf in Resources */,
+				736239CA72104EAD835E82BD /* arkhamslim.ttf in Resources */,
+				190AC1888E6243DA8A8979C7 /* carcosa.ttf in Resources */,
+				51058891C2684CBA84994300 /* cardicons.ttf in Resources */,
+				71BA6A3251694370B60545CB /* Caveat.ttf in Resources */,
+				4B649BF99ED24C61858D6BC1 /* circle.ttf in Resources */,
+				77BEF27AD45B42F4BC76B4B3 /* circusexmortis.ttf in Resources */,
+				3E28C91022CE469CAB4FA946 /* Conkordia.ttf in Resources */,
+				8C2516714F8C4ABAA6AC5505 /* coreset.ttf in Resources */,
+				3461DB58E4A4475BB7C46E3C /* cost.ttf in Resources */,
+				A4CDF8B6E6114626B5037AD1 /* cyclopean.ttf in Resources */,
+				20D8B7DAFB3042B2A7AD1BCF /* dark_matter.ttf in Resources */,
+				64AA4CD6E2274DA1A45829D6 /* DMSerifDisplay-Italic.ttf in Resources */,
+				2605CB3679F94C15968E45D2 /* DMSerifDisplay-Regular.ttf in Resources */,
+				75180B3C1C2343509FA9E578 /* dreameaters.ttf in Resources */,
+				54F114C62C3F459AA18CC4BB /* drowned.ttf in Resources */,
+				103CBDFF7DB14DD9AC4E4436 /* dunwich.ttf in Resources */,
+				41F981EDF58D42429482AB5F /* edge.ttf in Resources */,
+				140FB659F5CF40A4AEFC5567 /* forgotten.ttf in Resources */,
+				D59A845407CC47859871684F /* hemlock.ttf in Resources */,
+				FA990119321E46FBB8FB36CC /* innsmouth.ttf in Resources */,
+				AA17A14BECC9421BAE654C45 /* oz.ttf in Resources */,
+				52A411D176D64B3E9887BF35 /* scarlet.ttf in Resources */,
+				8306D8C1B6854EDEA2F6BAFE /* standalone.ttf in Resources */,
+				E4AF767D5B8B4165A37B06F4 /* Teutonic RU.ttf in Resources */,
+				D57D55F45D1F4ABFA9FB9882 /* Teutonic.ttf in Resources */,
+				33FBFD76868C44EB9039F02B /* tokens.ttf in Resources */,
+				48395FA3AEB0413CA4515DEA /* TT2020StyleE-Regular.ttf in Resources */,
+				89183BECF03CBF10DB116F1A /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,58 +392,20 @@
 /* Begin PBXShellScriptBuildPhase section */
 		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/.xcode.env.local",
-				"$(SRCROOT)/.xcode.env",
 			);
 			name = "Bundle React Native code and images";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT \\\"/bin/sh ../node_modules/@sentry/react-native/scripts/sentry-xcode.sh $REACT_NATIVE_XCODE\\\"\"\n";
+			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n# The project root by default is one level up from the ios directory\nexport PROJECT_ROOT=\"$PROJECT_DIR\"/..\n\nif [[ \"$CONFIGURATION\" = *Debug* ]]; then\n  export SKIP_BUNDLING=1\nfi\nif [[ -z \"$ENTRY_FILE\" ]]; then\n  # Set the entry JS file using the bundler's entry resolution.\n  export ENTRY_FILE=\"$(\"$NODE_BINARY\" -e \"require('expo/scripts/resolveAppEntry')\" \"$PROJECT_ROOT\" ios absolute | tail -n 1)\"\nfi\n\nif [[ -z \"$CLI_PATH\" ]]; then\n  # Use Expo CLI\n  export CLI_PATH=\"$(\"$NODE_BINARY\" --print \"require.resolve('@expo/cli', { paths: [require.resolve('expo/package.json')] })\")\"\nfi\nif [[ -z \"$BUNDLE_COMMAND\" ]]; then\n  # Default Expo CLI command for bundling\n  export BUNDLE_COMMAND=\"export:embed\"\nfi\n\n# Source .xcode.env.updates if it exists to allow\n# SKIP_BUNDLING to be unset if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.updates\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.updates\"\nfi\n# Source local changes to allow overrides\n# if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n/bin/sh `\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('@sentry/react-native/package.json')) + '/scripts/sentry-xcode.sh'\"` `\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\"`\n\n";
 		};
-		2186644651C1F2DC276A9635 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/boost/boost_privacy.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/boost_privacy.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		272096E45F9940F0095C9886 /* [CP-User] [RNFB] Core Configuration */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = "[CP-User] [RNFB] Core Configuration";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\n\n##########################################################################\n##########################################################################\n#\n#  NOTE THAT IF YOU CHANGE THIS FILE YOU MUST RUN pod install AFTERWARDS\n#\n#  This file is installed as an Xcode build script in the project file\n#  by cocoapods, and you will not see your changes until you pod install\n#\n##########################################################################\n##########################################################################\n\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_analytics_storage\n  _ANALYTICS_STORAGE=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_analytics_storage\")\n  if [[ $_ANALYTICS_STORAGE ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_ANALYTICS_STORAGE\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_STORAGE\")\")\n  fi\n\n  # config.analytics_default_allow_ad_storage\n  _ANALYTICS_AD_STORAGE=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_storage\")\n  if [[ $_ANALYTICS_AD_STORAGE ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_STORAGE\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AD_STORAGE\")\")\n  fi\n\n  # config.analytics_default_allow_ad_user_data\n  _ANALYTICS_AD_USER_DATA=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_user_data\")\n  if [[ $_ANALYTICS_AD_USER_DATA ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_USER_DATA\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AD_USER_DATA\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.analytics_registration_with_ad_network_enabled\n  _ANALYTICS_REGISTRATION_WITH_AD_NETWORK=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_registration_with_ad_network_enabled\")\n  if [[ $_ANALYTICS_REGISTRATION_WITH_AD_NETWORK ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_REGISTRATION_WITH_AD_NETWORK\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
-		};
-		3144064F698F2DC8CA2A79D1 /* [CP] Check Pods Manifest.lock */ = {
+		08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -512,7 +427,38 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A023E7ECE6F652D51C9C85C0 /* [Expo] Configure project */ = {
+		13DEAF530249CAF4AEFBCC81 /* [CP-User] [RNFB] Core Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "[CP-User] [RNFB] Core Configuration";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\n\n##########################################################################\n##########################################################################\n#\n#  NOTE THAT IF YOU CHANGE THIS FILE YOU MUST RUN pod install AFTERWARDS\n#\n#  This file is installed as an Xcode build script in the project file\n#  by cocoapods, and you will not see your changes until you pod install\n#\n##########################################################################\n##########################################################################\n\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  if ! _RN_ROOT_EXISTS=$(ruby -Ku -e \"require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\"); then\n    echo \"error: Failed to parse firebase.json, check for syntax errors.\"\n    exit 1\n  fi\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_analytics_storage\n  _ANALYTICS_STORAGE=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_analytics_storage\")\n  if [[ $_ANALYTICS_STORAGE ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_ANALYTICS_STORAGE\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_STORAGE\")\")\n  fi\n\n  # config.analytics_default_allow_ad_storage\n  _ANALYTICS_AD_STORAGE=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_storage\")\n  if [[ $_ANALYTICS_AD_STORAGE ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_STORAGE\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AD_STORAGE\")\")\n  fi\n\n  # config.analytics_default_allow_ad_user_data\n  _ANALYTICS_AD_USER_DATA=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_user_data\")\n  if [[ $_ANALYTICS_AD_USER_DATA ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_USER_DATA\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AD_USER_DATA\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.analytics_registration_with_ad_network_enabled\n  _ANALYTICS_REGISTRATION_WITH_AD_NETWORK=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_registration_with_ad_network_enabled\")\n  if [[ $_ANALYTICS_REGISTRATION_WITH_AD_NETWORK ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_REGISTRATION_WITH_AD_NETWORK\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
+		};
+		63D8927D2E37AB2E0BECFC49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F030E97A5A786146E49EE85 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -531,265 +477,115 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-ArkhamCards/expo-configure-project.sh\"\n";
 		};
-		E3E5BCAE512354D73C1F4F14 /* [CP] Embed Pods Frameworks */ = {
+		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/DoubleConversion/DoubleConversion.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseAuthInterop/FirebaseAuthInterop.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreExtension/FirebaseCoreExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseDatabase/FirebaseDatabase.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseFunctions/FirebaseFunctions.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseMessagingInterop/FirebaseMessagingInterop.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/RCT-Folly/folly.framework",
-				"${BUILT_PRODUCTS_DIR}/RCTDeprecation/RCTDeprecation.framework",
-				"${BUILT_PRODUCTS_DIR}/RCTTypeSafety/RCTTypeSafety.framework",
-				"${BUILT_PRODUCTS_DIR}/RNCAsyncStorage/RNCAsyncStorage.framework",
-				"${BUILT_PRODUCTS_DIR}/RNCClipboard/RNCClipboard.framework",
-				"${BUILT_PRODUCTS_DIR}/RNDeviceInfo/RNDeviceInfo.framework",
-				"${BUILT_PRODUCTS_DIR}/RNFBApp/RNFBApp.framework",
-				"${BUILT_PRODUCTS_DIR}/RNFBAuth/RNFBAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/RNFBDatabase/RNFBDatabase.framework",
-				"${BUILT_PRODUCTS_DIR}/RNFBFunctions/RNFBFunctions.framework",
-				"${BUILT_PRODUCTS_DIR}/RNFS/RNFS.framework",
-				"${BUILT_PRODUCTS_DIR}/RNFlashList/RNFlashList.framework",
-				"${BUILT_PRODUCTS_DIR}/RNGestureHandler/RNGestureHandler.framework",
-				"${BUILT_PRODUCTS_DIR}/RNGoogleSignin/RNGoogleSignin.framework",
-				"${BUILT_PRODUCTS_DIR}/RNKeychain/RNKeychain.framework",
-				"${BUILT_PRODUCTS_DIR}/RNLocalize/RNLocalize.framework",
-				"${BUILT_PRODUCTS_DIR}/RNReactNativeHapticFeedback/RNReactNativeHapticFeedback.framework",
-				"${BUILT_PRODUCTS_DIR}/RNSVG/RNSVG.framework",
-				"${BUILT_PRODUCTS_DIR}/RNScreens/RNScreens.framework",
-				"${BUILT_PRODUCTS_DIR}/RNSentry/RNSentry.framework",
-				"${BUILT_PRODUCTS_DIR}/RNSha256/RNSha256.framework",
-				"${BUILT_PRODUCTS_DIR}/RNShare/RNShare.framework",
-				"${BUILT_PRODUCTS_DIR}/RNVectorIcons/RNVectorIcons.framework",
-				"${BUILT_PRODUCTS_DIR}/React-Core/React.framework",
-				"${BUILT_PRODUCTS_DIR}/React-CoreModules/CoreModules.framework",
-				"${BUILT_PRODUCTS_DIR}/React-Fabric/React_Fabric.framework",
-				"${BUILT_PRODUCTS_DIR}/React-FabricComponents/React_FabricComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/React-FabricImage/React_FabricImage.framework",
-				"${BUILT_PRODUCTS_DIR}/React-ImageManager/React_ImageManager.framework",
-				"${BUILT_PRODUCTS_DIR}/React-Mapbuffer/React_Mapbuffer.framework",
-				"${BUILT_PRODUCTS_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTAnimation/RCTAnimation.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTAppDelegate/React_RCTAppDelegate.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTBlob/RCTBlob.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTFBReactNativeSpec/FBReactNativeSpec.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTFabric/RCTFabric.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTImage/RCTImage.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTLinking/RCTLinking.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTNetwork/RCTNetwork.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTRuntime/RCTRuntime.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTSettings/RCTSettings.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTText/RCTText.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTVibration/RCTVibration.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RuntimeApple/React_RuntimeApple.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RuntimeCore/React_RuntimeCore.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RuntimeHermes/React_RuntimeHermes.framework",
-				"${BUILT_PRODUCTS_DIR}/React-cxxreact/cxxreact.framework",
-				"${BUILT_PRODUCTS_DIR}/React-debug/React_debug.framework",
-				"${BUILT_PRODUCTS_DIR}/React-defaultsnativemodule/React_defaultsnativemodule.framework",
-				"${BUILT_PRODUCTS_DIR}/React-domnativemodule/React_domnativemodule.framework",
-				"${BUILT_PRODUCTS_DIR}/React-featureflags/React_featureflags.framework",
-				"${BUILT_PRODUCTS_DIR}/React-featureflagsnativemodule/React_featureflagsnativemodule.framework",
-				"${BUILT_PRODUCTS_DIR}/React-graphics/React_graphics.framework",
-				"${BUILT_PRODUCTS_DIR}/React-hermes/reacthermes.framework",
-				"${BUILT_PRODUCTS_DIR}/React-idlecallbacksnativemodule/idlecallbacksnativemodule.framework",
-				"${BUILT_PRODUCTS_DIR}/React-jserrorhandler/React_jserrorhandler.framework",
-				"${BUILT_PRODUCTS_DIR}/React-jsi/jsi.framework",
-				"${BUILT_PRODUCTS_DIR}/React-jsiexecutor/jsireact.framework",
-				"${BUILT_PRODUCTS_DIR}/React-jsinspector/jsinspector_modern.framework",
-				"${BUILT_PRODUCTS_DIR}/React-jsinspectortracing/jsinspector_moderntracing.framework",
-				"${BUILT_PRODUCTS_DIR}/React-jsitooling/JSITooling.framework",
-				"${BUILT_PRODUCTS_DIR}/React-logger/logger.framework",
-				"${BUILT_PRODUCTS_DIR}/React-microtasksnativemodule/React_microtasksnativemodule.framework",
-				"${BUILT_PRODUCTS_DIR}/React-oscompat/oscompat.framework",
-				"${BUILT_PRODUCTS_DIR}/React-perflogger/reactperflogger.framework",
-				"${BUILT_PRODUCTS_DIR}/React-performancetimeline/React_performancetimeline.framework",
-				"${BUILT_PRODUCTS_DIR}/React-rendererconsistency/React_rendererconsistency.framework",
-				"${BUILT_PRODUCTS_DIR}/React-renderercss/React_renderercss.framework",
-				"${BUILT_PRODUCTS_DIR}/React-rendererdebug/React_rendererdebug.framework",
-				"${BUILT_PRODUCTS_DIR}/React-runtimescheduler/React_runtimescheduler.framework",
-				"${BUILT_PRODUCTS_DIR}/React-utils/React_utils.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactAppDependencyProvider/ReactAppDependencyProvider.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactCodegen/ReactCodegen.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactCommon/ReactCommon.framework",
-				"${BUILT_PRODUCTS_DIR}/RecaptchaInterop/RecaptchaInterop.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImageAVIFCoder/SDWebImageAVIFCoder.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImageSVGCoder/SDWebImageSVGCoder.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImageWebPCoder/SDWebImageWebPCoder.framework",
-				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
-				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftAudioEx/SwiftAudioEx.framework",
-				"${BUILT_PRODUCTS_DIR}/Yoga/yoga.framework",
-				"${BUILT_PRODUCTS_DIR}/fmt/fmt.framework",
-				"${BUILT_PRODUCTS_DIR}/glog/glog.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/libavif/libavif.framework",
-				"${BUILT_PRODUCTS_DIR}/libdav1d/libdav1d.framework",
-				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-react-native/lottie_react_native.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-app-auth/react_native_app_auth.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-color-matrix-image-filters/react_native_color_matrix_image_filters.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-config/react_native_config.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-document-picker/react_native_document_picker.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-keep-awake/react_native_keep_awake.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-keyevent/react_native_keyevent.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-netinfo/react_native_netinfo.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-pager-view/react_native_pager_view.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-safe-area-context/react_native_safe_area_context.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-skia/react_native_skia.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-sqlite-storage/react_native_sqlite_storage.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-track-player/react_native_track_player.framework",
-				"${BUILT_PRODUCTS_DIR}/rn-fetch-blob/rn_fetch_blob.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/AppAuth/AppAuthCore_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreExtension/FirebaseCoreExtension_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal/FirebaseCoreInternal_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GTMAppAuth/GTMAppAuth_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher_Core_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleSignIn/GoogleSignIn.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RCT-Folly/RCT-Folly_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNCAsyncStorage/RNCAsyncStorage_resources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNDeviceInfo/RNDeviceInfoPrivacyInfo.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNSVG/RNSVGFilters.bundle",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome6_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome6_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome6_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Sentry/Sentry.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/boost/boost_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/glog/glog_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios/LottiePrivacyInfo.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/lottie-react-native/Lottie_React_Native_Privacy.bundle",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DoubleConversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAppCheckInterop.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAuthInterop.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseDatabase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseFunctions.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessagingInterop.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSharedSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleSignIn.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/folly.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTDeprecation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTTypeSafety.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCAsyncStorage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCClipboard.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNDeviceInfo.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNFBApp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNFBAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNFBDatabase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNFBFunctions.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNFS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNFlashList.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNGestureHandler.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNGoogleSignin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNKeychain.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNLocalize.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNReactNativeHapticFeedback.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNSVG.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNScreens.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNSentry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNSha256.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNShare.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNVectorIcons.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreModules.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_Fabric.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_FabricComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_FabricImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_ImageManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_Mapbuffer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_NativeModulesApple.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTAnimation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_RCTAppDelegate.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTBlob.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBReactNativeSpec.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTFabric.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTLinking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTNetwork.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTRuntime.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTSettings.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTText.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTVibration.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_RuntimeApple.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_RuntimeCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_RuntimeHermes.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/cxxreact.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_debug.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_defaultsnativemodule.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_domnativemodule.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_featureflags.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_featureflagsnativemodule.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_graphics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/reacthermes.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/idlecallbacksnativemodule.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_jserrorhandler.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/jsi.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/jsireact.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/jsinspector_modern.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/jsinspector_moderntracing.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSITooling.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/logger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_microtasksnativemodule.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/oscompat.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/reactperflogger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_performancetimeline.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_rendererconsistency.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_renderercss.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_rendererdebug.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_runtimescheduler.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_utils.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactAppDependencyProvider.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactCodegen.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactCommon.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RecaptchaInterop.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImageAVIFCoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImageSVGCoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImageWebPCoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftAudioEx.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/yoga.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/fmt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libavif.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libdav1d.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/lottie_react_native.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_app_auth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_color_matrix_image_filters.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_config.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_document_picker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_keep_awake.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_keyevent.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_netinfo.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_pager_view.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_safe_area_context.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_skia.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_sqlite_storage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_track_player.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/rn_fetch_blob.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppAuthCore_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoApplication_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuth_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseCore_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseCoreExtension_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseCoreInternal_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMAppAuth_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMSessionFetcher_Core_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleUtilities_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCT-Folly_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNCAsyncStorage_resources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNDeviceInfoPrivacyInfo.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNSVGFilters.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome6_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome6_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome6_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SDWebImage.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Sentry.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/boost_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/glog_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LottiePrivacyInfo.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Lottie_React_Native_Privacy.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F4C1315A864140DEADF725D8 /* Upload Debug Symbols to Sentry */ = {
+		C68645D1EA6641DB9FB63A2A /* Upload Debug Symbols to Sentry */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -801,7 +597,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh ../node_modules/@sentry/react-native/scripts/sentry-xcode-debug-files.sh";
+			shellScript = "/bin/sh `${NODE_BINARY:-node} --print \"require('path').dirname(require.resolve('@sentry/react-native/package.json')) + '/scripts/sentry-xcode-debug-files.sh'\"`";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -810,78 +606,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6510968A2EA270E300E939DC /* AppDelegate.swift in Sources */,
-				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				65F8DBA4247EEBC100286F16 /* Bridge.swift in Sources */,
-				287DE80FAF62B9C459213172 /* ExpoModulesProvider.swift in Sources */,
+				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
+				39B2A35336EF907422F222CE /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-				65CA4CEA212893160084A1CE /* es */,
-				65CA4CEB2128932A0084A1CE /* de */,
-				65CA4CEC2128932F0084A1CE /* it */,
-				65CA4CED212893370084A1CE /* fr */,
-				9DC6CE682CA2543400ADEC10 /* ko */,
-			);
-			name = LaunchScreen.xib;
-			path = ArkhamCards;
-			sourceTree = "<group>";
-		};
-		9DC6CE6D2CA2554B00ADEC10 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9DC6CE6E2CA2554B00ADEC10 /* Base */,
-				9DC6CE702CA2557D00ADEC10 /* ko */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD2B3F9071761A240528D656 /* Pods-ArkhamCards.debug.xcconfig */;
+			baseConfigurationReference = 6526AE5D629F6321A762FC46 /* Pods-ArkhamCards.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCardsDebug.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 54773FU58P;
-				HEADER_SEARCH_PATHS = (
+				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-navigation/ios/**",
-					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
-					"$(SRCROOT)/../node_modules/realm/src/**",
-					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
-					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
-					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
-					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
+					"FB_SONARKIT_ENABLED=1",
 				);
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Arkham Cards";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(SDKROOT)/usr/lib/swift",
-					"$(inherited)",
-				);
-				MARKETING_VERSION = 5.1.0;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -890,10 +642,9 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arkhamcards.ArkhamCards;
 				PRODUCT_NAME = ArkhamCards;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "ArkhamCards-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ArkhamCards/ArkhamCards-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -901,39 +652,19 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 057878732D94457103DFDA24 /* Pods-ArkhamCards.release.xcconfig */;
+			baseConfigurationReference = 7F8116C5D1722B9D4C19A130 /* Pods-ArkhamCards.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 54773FU58P;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-navigation/ios/**",
-					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
-					"$(SRCROOT)/../node_modules/realm/src/**",
-					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
-					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
-					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
-					"$(SRCROOT)/../node_modules/react-native-app-auth/ios",
-				);
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Arkham Cards";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(SDKROOT)/usr/lib/swift",
-					"$(inherited)",
-				);
-				MARKETING_VERSION = 5.1.0;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -942,9 +673,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arkhamcards.ArkhamCards;
 				PRODUCT_NAME = ArkhamCards;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "ArkhamCards-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_OBJC_BRIDGING_HEADER = "ArkhamCards/ArkhamCards-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -954,7 +684,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CC = "";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -979,13 +708,10 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: daniel.salinas@gmail.com (P6WXUAKY7E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CXX = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -993,7 +719,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1004,42 +729,27 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
 					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
 					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
 					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
 					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
-					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
-				LD = "";
-				LDPLUSPLUS = "";
-				LIBRARY_SEARCH_PATHS = (
-					"$(SDKROOT)/usr/lib/swift",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
 				);
+				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-DFOLLY_NO_CONFIG",
-					"-DFOLLY_MOBILE=1",
-					"-DFOLLY_USE_LIBCPP=1",
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -1051,7 +761,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CC = "";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1076,19 +785,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: daniel.salinas@gmail.com (P6WXUAKY7E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CXX = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
-				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1097,44 +799,28 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
 					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
 					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
 					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
 					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
-					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
-					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
-				LD = "";
-				LDPLUSPLUS = "";
-				LIBRARY_SEARCH_PATHS = (
-					"$(SDKROOT)/usr/lib/swift",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
 				);
+				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-DFOLLY_NO_CONFIG",
-					"-DFOLLY_MOBILE=1",
-					"-DFOLLY_USE_LIBCPP=1",
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
 				);
-				OTHER_LDFLAGS = "$(inherited)";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1152,7 +838,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "arkhamcards" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ArkhamCards" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

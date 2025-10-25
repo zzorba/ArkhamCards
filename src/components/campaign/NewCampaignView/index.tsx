@@ -37,7 +37,6 @@ import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPac
 import { newCampaign, newLinkedCampaign, newStandalone } from '@components/campaign/actions';
 import Card from '@data/types/Card';
 import { useEditChaosBagDialog } from '../../chaos/EditChaosBagDialog';
-import COLORS from '@styles/colors';
 import space, { m, s, l } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useFlag, useSlots, useWeaknessCards } from '@components/core/hooks';
@@ -265,7 +264,7 @@ function NewCampaignView() {
               assignedCards: weaknessAssignedCards,
             },
           )).then(({ campaignId, campaignIdA, campaignIdB }) => {
-             navigation.reset({
+            navigation.reset({
               index: routes.length,
               routes: [
                 ...routes as any,
@@ -298,7 +297,7 @@ function NewCampaignView() {
             },
             isGuided
           )).then(campaignId => {
-             navigation.reset({
+            navigation.reset({
               index: routes.length,
               routes: [
                 ...routes as any,
@@ -325,7 +324,7 @@ function NewCampaignView() {
             assignedCards: weaknessAssignedCards,
           },
         )).then(campaignId => {
-           navigation.reset({
+          navigation.reset({
             index: routes.length,
             routes: [
               ...routes as any,

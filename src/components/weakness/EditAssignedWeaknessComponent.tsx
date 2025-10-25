@@ -3,7 +3,6 @@ import { flatMap } from 'lodash';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 
 import { showCard } from '@components/nav/helper';
-import { t } from 'ttag';
 import { Slots, WeaknessSet } from '@actions/types';
 import Card from '@data/types/Card';
 import CardSearchResult from '../cardlist/CardSearchResult';

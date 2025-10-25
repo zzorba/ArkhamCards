@@ -3,6 +3,11 @@
 .DS_Store
 .expo
 
+ios/
+android/
+
+/credentials.json
+
 */sentry.properties
 # VSCode
 .vscode/
@@ -88,4 +93,4 @@ yarn-error.log
 .env.local
 
 # translations
-*.mo
+*.mocredentials.json

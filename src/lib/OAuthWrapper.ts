@@ -1,188 +1,136 @@
-import { forEach } from 'lodash';
-import qs from 'query-string';
-import { AppState, AppStateStatus, Linking, Platform } from 'react-native';
-import { authorize as appAuthAuthorize, AuthConfiguration } from 'react-native-app-auth';
+import * as AuthSession from 'expo-auth-session';
 
+export interface ServiceConfiguration {
+  authorizationEndpoint: string;
+  tokenEndpoint: string;
+  revocationEndpoint?: string;
+}
 
-export type AppAuthConfig = AuthConfiguration;
+export interface AppAuthConfig {
+  issuer?: string;
+  clientId: string;
+  clientSecret?: string;
+  redirectUrl: string;
+  serviceConfiguration?: ServiceConfiguration;
+  scopes?: string[];
+  additionalParameters?: Record<string, string>;
+}
 
 export interface AuthorizeResponse {
   accessToken: string;
-  accessTokenExpirationDate: number;
-  refreshToken: string;
+  accessTokenExpirationDate?: number;
+  refreshToken?: string;
+}
+
+function calculateExpirationDate(expiresIn?: number, issuedAt?: number): number | undefined {
+  if (!expiresIn) {
+    return undefined;
+  }
+  const baseTime = issuedAt !== undefined ? issuedAt : Date.now() / 1000;
+  return (baseTime + expiresIn) * 1000;
 }
 
 export async function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
-  try {
-    const r = await appAuthAuthorize(config);
-    return {
-      accessToken: r.accessToken,
-      accessTokenExpirationDate: Date.parse(r.accessTokenExpirationDate),
-      refreshToken: r.refreshToken,
-    };
-  } catch (e) {
-    if (Platform.OS !== 'android' || e.code !== 'browser_not_found') {
-      return Promise.reject(e.message);
-    }
-  }
   const serviceConfiguration = config.serviceConfiguration;
-  // Fallback for android;
   if (!serviceConfiguration) {
-    return Promise.reject();
+    return Promise.reject(new Error('Service configuration is required'));
   }
-  const originalState: string = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-  return new Promise<AuthorizeResponse>((resolve, reject) => {
-    /* eslint-disable @typescript-eslint/no-empty-function */
-    let cleanup: () => void = () => {};
-    let abandoned = true;
-    let currentAppState: AppStateStatus = AppState.currentState;
-    const handleAppStateChange = (nextAppState: AppStateStatus) => {
-      if (
-        (currentAppState === 'inactive' || currentAppState === 'background') &&
-        nextAppState === 'active'
-      ) {
-        if (abandoned) {
-          abandoned = true;
-          reject(new Error('Abandoned by user'));
-          cleanup();
-        }
-      }
-      currentAppState = nextAppState;
-    };
-    const appSub = AppState.addEventListener('change', handleAppStateChange);
 
-    const handleUrl = (event: { url: string }) => {
-      abandoned = false;
-      const {
-        state,
-        code,
-        error,
-      } = qs.parse(event.url.substring(event.url.indexOf('?') + 1));
-      if (error === 'access_denied') {
-        reject(new Error('Access was denied by user.'));
-        cleanup();
-      } else if (state !== originalState) {
-        reject(new Error('Stale state detected.'));
-        cleanup();
-      } else {
-        const tokenRequest = {
-          code: `${code}`,
-          client_id: config.clientId,
-          client_secret: config.clientSecret,
-          redirect_uri: config.redirectUrl,
-          grant_type: 'authorization_code',
-        };
-        const s: string[] = [];
-        forEach(tokenRequest, (value, key) => {
-          if (value !== undefined) {
-            s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
-          }
-        });
-        fetch(serviceConfiguration.tokenEndpoint, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: s.join('&'),
-        }).then(response => response.json().then(jsonResponse => {
-          const accessTokenExpirationDate = new Date().getTime() + jsonResponse.expires_in * 1000;
-          resolve({
-            accessToken: jsonResponse.access_token,
-            accessTokenExpirationDate,
-            refreshToken: jsonResponse.refresh_token,
-          });
-          cleanup();
-        })).catch(() => {
-          reject();
-          cleanup();
-        });
-      }
-    };
-    const linkSub = Linking.addEventListener('url', handleUrl);
+  const discovery = {
+    authorizationEndpoint: serviceConfiguration.authorizationEndpoint,
+    tokenEndpoint: serviceConfiguration.tokenEndpoint,
+    revocationEndpoint: serviceConfiguration.revocationEndpoint,
+  };
 
-    cleanup = () => {
-      linkSub.remove();
-      appSub.remove();
-    };
-
-    const authUrl = `${serviceConfiguration.authorizationEndpoint}?redirect_uri=${encodeURIComponent(config.redirectUrl)}&client_id=${encodeURIComponent(config.clientId)}&response_type=code&state=${encodeURIComponent(originalState)}`;
-    Linking.openURL(authUrl);
+  const authRequest = new AuthSession.AuthRequest({
+    clientId: config.clientId,
+    redirectUri: config.redirectUrl,
+    scopes: config.scopes,
+    extraParams: config.additionalParameters,
   });
+
+  const result = await authRequest.promptAsync(discovery);
+
+  if (result.type === 'success') {
+    const tokenResult = await AuthSession.exchangeCodeAsync(
+      {
+        clientId: config.clientId,
+        clientSecret: config.clientSecret,
+        code: result.params.code,
+        redirectUri: config.redirectUrl,
+        extraParams: {},
+      },
+      discovery
+    );
+
+    return {
+      accessToken: tokenResult.accessToken,
+      accessTokenExpirationDate: calculateExpirationDate(tokenResult.expiresIn, tokenResult.issuedAt),
+      refreshToken: tokenResult.refreshToken,
+    };
+  }
+
+  if (result.type === 'error') {
+    return Promise.reject(new Error(result.error?.description || 'Authentication failed'));
+  }
+
+  return Promise.reject(new Error('Authentication was cancelled'));
 }
 
-export function refresh(
+export async function refresh(
   config: AppAuthConfig,
   refreshToken: string
 ): Promise<AuthorizeResponse> {
-  if (Platform.OS === 'ios') {
-    const { refresh } = require('react-native-app-auth');
-    return refresh(config, { refreshToken });
+  const serviceConfiguration = config.serviceConfiguration;
+  if (!serviceConfiguration) {
+    return Promise.reject(new Error('Service configuration is required'));
   }
 
-  return new Promise<AuthorizeResponse>((resolve, reject) => {
-    const tokenRequest = {
-      refresh_token: refreshToken,
-      client_id: config.clientId,
-      client_secret: config.clientSecret,
-      grant_type: 'refresh_token',
-    };
-    const s: string[] = [];
-    forEach(tokenRequest, (value, key) => {
-      if (value !== undefined) {
-        s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
-      }
-    });
-    if (!config.serviceConfiguration) {
-      reject();
-    } else {
-      fetch(config.serviceConfiguration.tokenEndpoint, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: s.join('&'),
-      }).then(response => response.json().then(jsonResponse => {
-        resolve({
-          accessToken: jsonResponse.access_token,
-          accessTokenExpirationDate: new Date().getTime() + jsonResponse.expires_in * 1000,
-          refreshToken: jsonResponse.refresh_token,
-        });
-      })).catch(reject);
-    }
-  });
+  const discovery = {
+    authorizationEndpoint: serviceConfiguration.authorizationEndpoint,
+    tokenEndpoint: serviceConfiguration.tokenEndpoint,
+    revocationEndpoint: serviceConfiguration.revocationEndpoint,
+  };
+
+  const tokenResult = await AuthSession.refreshAsync(
+    {
+      clientId: config.clientId,
+      clientSecret: config.clientSecret,
+      refreshToken,
+      extraParams: {},
+    },
+    discovery
+  );
+
+  return {
+    accessToken: tokenResult.accessToken,
+    accessTokenExpirationDate: calculateExpirationDate(tokenResult.expiresIn, tokenResult.issuedAt),
+    refreshToken: tokenResult.refreshToken,
+  };
 }
 
 
-export function revoke(
+export async function revoke(
   config: AppAuthConfig,
   tokenToRevoke: string
 ): Promise<void> {
-  if (Platform.OS === 'ios') {
-    const { revoke } = require('react-native-app-auth');
-    return revoke(config, { tokenToRevoke });
+  const serviceConfiguration = config.serviceConfiguration;
+  if (!serviceConfiguration?.revocationEndpoint) {
+    return Promise.reject(new Error('Revocation endpoint is required'));
   }
-  return new Promise<void>((resolve, reject) => {
-    const tokenRequest = {
+
+  const discovery = {
+    authorizationEndpoint: serviceConfiguration.authorizationEndpoint,
+    tokenEndpoint: serviceConfiguration.tokenEndpoint,
+    revocationEndpoint: serviceConfiguration.revocationEndpoint,
+  };
+
+  await AuthSession.revokeAsync(
+    {
+      clientId: config.clientId,
+      clientSecret: config.clientSecret,
       token: tokenToRevoke,
-      client_id: config.clientId,
-    };
-    const s: string[] = [];
-    forEach(tokenRequest, (value, key) => {
-      s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
-    });
-    if (config.serviceConfiguration?.revocationEndpoint) {
-      fetch(config.serviceConfiguration.revocationEndpoint, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: s.join('&'),
-      }).then(() => resolve()).catch(reject);
-    } else {
-      reject();
-    }
-  });
+    },
+    discovery
+  );
 }

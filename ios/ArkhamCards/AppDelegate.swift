@@ -1,90 +1,74 @@
-import ExpoModulesCore
-import Firebase
-import GoogleSignIn
+import Expo
+import FirebaseCore
+import React
+import ReactAppDependencyProvider
 
-@main
-class AppDelegate: EXAppDelegateWrapper, RNAppAuthAuthorizationFlowManager {
+@UIApplicationMain
+public class AppDelegate: ExpoAppDelegate {
+  var window: UIWindow?
 
-  // react-native-app-auth support
-  weak var authorizationFlowManagerDelegate: RNAppAuthAuthorizationFlowManagerDelegate?
-  var currentAuthorizationFlow: OIDAuthorizationFlowSession?
+  var reactNativeDelegate: ExpoReactNativeFactoryDelegate?
+  var reactNativeFactory: RCTReactNativeFactory?
 
-  // react-native-keyevent support
-  var keyEvent: RNKeyEvent?
-
-  override var keyCommands: [UIKeyCommand]? {
-    var keys: [UIKeyCommand] = []
-
-    if keyEvent == nil {
-      keyEvent = RNKeyEvent()
-    }
-
-    if let keyEvent = keyEvent, keyEvent.isListening() {
-      let namesArray = keyEvent.getKeys().components(separatedBy: ",")
-
-      for name in namesArray {
-        keys.append(UIKeyCommand(input: name, modifierFlags: [], action: #selector(keyInput(_:))))
-        keys.append(UIKeyCommand(input: name, modifierFlags: .shift, action: #selector(keyInput(_:))))
-      }
-    }
-
-    return keys
-  }
-
-  @objc func keyInput(_ sender: UIKeyCommand) {
-    if let input = sender.input {
-      keyEvent?.sendKeyEvent(input)
-    }
-  }
-
-  override func application(
+  public override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
   ) -> Bool {
-    self.moduleName = "arkhamcards"
-    self.initialProps = [:]
+    let delegate = ReactNativeDelegate()
+    let factory = ExpoReactNativeFactory(delegate: delegate)
+    delegate.dependencyProvider = RCTAppDependencyProvider()
 
-    // Call super FIRST to initialize Expo/React Native
-    let result = super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    reactNativeDelegate = delegate
+    reactNativeFactory = factory
+    bindReactNativeFactory(factory)
 
-    // Then configure Firebase
-    if FirebaseApp.app() == nil {
-      FirebaseApp.configure()
-    }
+#if os(iOS) || os(tvOS)
+    window = UIWindow(frame: UIScreen.main.bounds)
+// @generated begin @react-native-firebase/app-didFinishLaunchingWithOptions - expo prebuild (DO NOT MODIFY) sync-10e8520570672fd76b2403b7e1e27f5198a6349a
+FirebaseApp.configure()
+// @generated end @react-native-firebase/app-didFinishLaunchingWithOptions
+    factory.startReactNative(
+      withModuleName: "main",
+      in: window,
+      launchOptions: launchOptions)
+#endif
 
-    return result
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
-  // Deep linking support for react-native-app-auth and Google Sign-In
-  override func application(
+  // Linking API
+  public override func application(
     _ app: UIApplication,
     open url: URL,
     options: [UIApplication.OpenURLOptionsKey: Any] = [:]
   ) -> Bool {
-    // Handle react-native-app-auth flow
-    if let delegate = authorizationFlowManagerDelegate,
-       delegate.resumeExternalUserAgentFlow(with: url) {
-      return true
-    }
-
-    // Handle Google Sign-In
-    if GIDSignIn.sharedInstance.handle(url) {
-      return true
-    }
-
-    // Handle React Native deep links
-    return RCTLinkingManager.application(app, open: url, options: options)
+    return super.application(app, open: url, options: options) || RCTLinkingManager.application(app, open: url, options: options)
   }
+
+  // Universal Links
+  public override func application(
+    _ application: UIApplication,
+    continue userActivity: NSUserActivity,
+    restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
+  ) -> Bool {
+    let result = RCTLinkingManager.application(application, continue: userActivity, restorationHandler: restorationHandler)
+    return super.application(application, continue: userActivity, restorationHandler: restorationHandler) || result
+  }
+}
+
+class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {
+  // Extension point for config-plugins
 
   override func sourceURL(for bridge: RCTBridge) -> URL? {
-    return bundleURL()
+    // needed to return the correct URL for expo-dev-client.
+    bridge.bundleURL ?? bundleURL()
   }
 
-  func bundleURL() -> URL? {
-    #if DEBUG
-    return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
-    #else
+  override func bundleURL() -> URL? {
+#if DEBUG
+    return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: ".expo/.virtual-metro-entry")
+#else
     return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
-    #endif
+#endif
   }
 }

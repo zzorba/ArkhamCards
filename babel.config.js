@@ -1,7 +1,6 @@
 module.exports = {
   presets: [
-    'module:@react-native/babel-preset',
-    '@babel/preset-typescript',
+    'babel-preset-expo',
   ],
   plugins: [
     ['@babel/plugin-proposal-decorators', { 'legacy': true }],
@@ -20,7 +19,7 @@ module.exports = {
         ],
         alias: {
           '@assets': './assets',
-          '@app': './src/app',
+          '@app': './src/application',
           '@actions': './src/actions',
           '@components': './src/components',
           '@app_constants': './src/app_constants.ts',
@@ -34,6 +33,5 @@ module.exports = {
         },
       },
     ],
-    'react-native-reanimated/plugin',
   ],
 };

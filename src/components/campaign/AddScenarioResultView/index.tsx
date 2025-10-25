@@ -74,7 +74,7 @@ function AddScenarioResultView() {
               name: 'Campaign.UpgradeDecks',
               params: passProps,
             },
-          ]
+          ],
         });
       } else {
         navigation.goBack();

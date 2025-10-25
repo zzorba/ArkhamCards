@@ -944,7 +944,7 @@ export default function CampaignMapView() {
   }, [onSelect, onDismiss]);
 
   // Handle header back button press - intercept and do cleanup before navigating
-  usePreventRemove(preventRemoval, ({ data }) => {
+  usePreventRemove(preventRemoval, ({ }) => {
     onDismiss(); // Do cleanup and navigate manually after delay
   });
 

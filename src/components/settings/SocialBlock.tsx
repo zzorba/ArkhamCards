@@ -24,10 +24,6 @@ function telegramPressed() {
   Linking.openURL('https://t.me/arkhamhorrorlcg_ru_chat');
 }
 
-function ruTipPressed() {
-  Linking.openURL('https://www.tinkoff.ru/cf/27GmNzxhhUk');
-}
-
 function esYoutubePressed() {
   Linking.openURL('https://www.youtube.com/watch?v=Vt9PCm02owU&list=PLFbghkzYxuOj4l3dF9ljqSqd_MKGibzei');
 }
