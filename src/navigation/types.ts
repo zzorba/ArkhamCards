@@ -214,10 +214,10 @@ export type SettingsStackParamList = BasicStackParamList & {
 
 // Tab Navigator types
 export type TabParamList = {
-  Cards: undefined;
-  Decks: undefined;
-  Campaigns: undefined;
-  Settings: undefined;
+  CardsTab: undefined;
+  DecksTab: undefined;
+  CampaignsTab: undefined;
+  SettingsTab: undefined;
 };
 
 declare global {

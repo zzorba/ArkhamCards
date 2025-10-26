@@ -11,6 +11,7 @@ import LanguageProvider from '../lib/i18n/LanguageProvider';
 import ArkhamCardsAuthProvider from '../lib/ArkhamCardsAuthProvider';
 import ApolloClientContext from '../data/apollo/ApolloClientContext';
 import { PlayerCardProvider } from '@data/sqlite/PlayerCardProvider';
+import { AudioPlayerProvider } from '@lib/audio/AudioPlayerContext';
 
 type Props = {
  store: {
@@ -27,19 +28,21 @@ export default function MyProvider({ store: { redux, persistor, apollo, anonApol
     <Provider store={redux}>
       <PersistGate loading={null} persistor={persistor}>
         <ArkhamCardsAuthProvider>
-          <ApolloProvider client={apollo}>
-            <ApolloClientContext.Provider value={{ client: apollo, anonClient: anonApollo }}>
-              <LanguageProvider>
-                <DatabaseProvider>
-                  <PlayerCardProvider>
-                    <StyleProvider>
-                      { children }
-                    </StyleProvider>
-                  </PlayerCardProvider>
-                </DatabaseProvider>
-              </LanguageProvider>
-            </ApolloClientContext.Provider>
-          </ApolloProvider>
+          <AudioPlayerProvider>
+            <ApolloProvider client={apollo}>
+              <ApolloClientContext.Provider value={{ client: apollo, anonClient: anonApollo }}>
+                <LanguageProvider>
+                  <DatabaseProvider>
+                    <PlayerCardProvider>
+                      <StyleProvider>
+                        { children }
+                      </StyleProvider>
+                    </PlayerCardProvider>
+                  </DatabaseProvider>
+                </LanguageProvider>
+              </ApolloClientContext.Provider>
+            </ApolloProvider>
+          </AudioPlayerProvider>
         </ArkhamCardsAuthProvider>
       </PersistGate>
     </Provider>

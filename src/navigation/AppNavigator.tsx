@@ -1,10 +1,12 @@
-import React, { useRef, useCallback, useEffect, useState } from 'react';
+import React, { useRef, useCallback, useEffect, useState, useContext } from 'react';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createBottomTabNavigator, BottomTabScreenProps, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { t } from 'ttag';
 import Toast, { BaseToast, ErrorToast, ToastConfig } from 'react-native-toast-message';
+import LanguageContext from '@lib/i18n/LanguageContext';
 
 import AppIcon from '@icons/AppIcon';
 
@@ -156,6 +158,7 @@ function useNavigatorTheme(includeBackTitle = true): {
       headerStyle: {
         backgroundColor: colors.L30,
       },
+      statusBarStyle: darkMode ? 'light' : 'dark',
       ...(includeBackTitle ? { headerBackTitle: t`Back` } : {}),
     },
   };
@@ -192,7 +195,8 @@ function useAppInitialization(navigationRef: React.RefObject<NavigationContainer
     return () => {
       mounted = false;
     };
-  }, [appState, navigationRef]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigationRef]);
 
   return { safeModeActive };
 }
@@ -644,9 +648,10 @@ function DecksStackNavigator() {
           color: colors.darkText,
         },
         headerStyle: {
-          backgroundColor: colors.L30,
+          backgroundColor: colors.background,
         },
         headerBackTitle: t`Back`,
+        statusBarStyle: darkMode ? 'light' : 'dark',
       }}
     >
       <DecksStack.Screen
@@ -679,6 +684,7 @@ function CampaignsStackNavigator() {
           backgroundColor: colors.L30,
         },
         headerBackTitle: t`Back`,
+        statusBarStyle: darkMode ? 'light' : 'dark',
       }}
     >
       <CampaignsStack.Screen
@@ -710,6 +716,7 @@ function SettingsStackNavigator() {
         headerStyle: {
           backgroundColor: colors.L30,
         },
+        statusBarStyle: darkMode ? 'light' : 'dark',
       }}
     >
       <SettingsStack.Screen
@@ -735,13 +742,13 @@ function TabNavigatorInner() {
   const screenOptions = useCallback(({ route }: { route: BottomTabScreenProps<TabParamList>['route'] }): BottomTabNavigationOptions => ({
     tabBarIcon: ({ color, size }) => {
       let iconName: string;
-      if (route.name === 'Cards') {
+      if (route.name === 'CardsTab') {
         iconName = 'cards';
-      } else if (route.name === 'Decks') {
+      } else if (route.name === 'DecksTab') {
         iconName = 'deck';
-      } else if (route.name === 'Campaigns') {
+      } else if (route.name === 'CampaignsTab') {
         iconName = 'book';
-      } else if (route.name === 'Settings') {
+      } else if (route.name === 'SettingsTab') {
         iconName = 'settings';
       } else {
         iconName = 'cards';
@@ -768,13 +775,13 @@ function TabNavigatorInner() {
           // Get tab index from route name
           const tabIndex = ALL_TABS.findIndex(tab => {
             switch (e.target?.split('-')[0]) {
-              case 'Cards':
+              case 'CardsTab':
                 return tab === BROWSE_CARDS;
-              case 'Decks':
+              case 'DecksTab':
                 return tab === BROWSE_DECKS;
-              case 'Campaigns':
+              case 'CampaignsTab':
                 return tab === BROWSE_CAMPAIGNS;
-              case 'Settings':
+              case 'SettingsTab':
                 return tab === BROWSE_SETTINGS;
               default:
                 return false;
@@ -791,22 +798,22 @@ function TabNavigatorInner() {
       screenOptions={screenOptions}
     >
       <Tab.Screen
-        name="Cards"
+        name="CardsTab"
         component={CardsStackNavigator}
         options={{ tabBarLabel: t`Cards` }}
       />
       <Tab.Screen
-        name="Decks"
+        name="DecksTab"
         component={DecksStackNavigator}
         options={{ tabBarLabel: t`Decks` }}
       />
       <Tab.Screen
-        name="Campaigns"
+        name="CampaignsTab"
         component={CampaignsStackNavigator}
         options={{ tabBarLabel: t`Campaigns` }}
       />
       <Tab.Screen
-        name="Settings"
+        name="SettingsTab"
         component={SettingsStackNavigator}
         options={{ tabBarLabel: t`Settings` }}
       />
@@ -845,6 +852,7 @@ function RootStackNavigator() {
           backgroundColor: colors.L30,
         },
         headerBackTitle: t`Back`,
+        statusBarStyle: darkMode ? 'light' : 'dark',
       }}
     >
       <RootStack.Screen
@@ -987,6 +995,9 @@ function AppNavigatorInner({ navigationRef, navigationIntegration }: {
   const toastConfig = useToastConfig();
   useAppInitialization(navigationRef);
 
+  // Get current language from context to force navigation remount on locale change
+  const { lang } = useContext(LanguageContext);
+
   const linking = {
     prefixes: ['arkhamcards://', 'dissonantvoices://'],
     config: {
@@ -996,7 +1007,7 @@ function AppNavigatorInner({ navigationRef, navigationIntegration }: {
             Cards: 'cards',
             Decks: 'decks',
             Campaigns: 'campaigns',
-            Settings: 'settings',
+            SettingsTab: 'settings',
           },
         },
         Deck: 'deck/:id',
@@ -1010,44 +1021,46 @@ function AppNavigatorInner({ navigationRef, navigationIntegration }: {
   }, [navigationIntegration, navigationRef]);
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <NavigationContainer
-        ref={navigationRef}
-        linking={linking}
-        onReady={onReady}
-        theme={{
-          dark: darkMode,
-          colors: {
-            primary: colors.D30,
-            background: colors.background,
-            card: colors.L30,
-            text: colors.darkText,
-            border: colors.divider,
-            notification: colors.D30,
-          },
-          fonts: {
-            regular: {
-              fontFamily: 'Alegreya-Regular',
-              fontWeight: 'normal',
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.background }}>
+      <SafeAreaProvider>
+        <NavigationContainer
+          ref={navigationRef}
+          linking={linking}
+          onReady={onReady}
+          theme={{
+            dark: darkMode,
+            colors: {
+              primary: colors.D30,
+              background: colors.background,
+              card: colors.L30,
+              text: colors.darkText,
+              border: colors.divider,
+              notification: colors.D30,
             },
-            medium: {
-              fontFamily: 'Alegreya-Medium',
-              fontWeight: 'normal',
+            fonts: {
+              regular: {
+                fontFamily: 'Alegreya-Regular',
+                fontWeight: 'normal',
+              },
+              medium: {
+                fontFamily: 'Alegreya-Medium',
+                fontWeight: 'normal',
+              },
+              bold: {
+                fontFamily: 'Alegreya-Medium',
+                fontWeight: 'normal',
+              },
+              heavy: {
+                fontFamily: 'Alegreya-Medium',
+                fontWeight: 'normal',
+              },
             },
-            bold: {
-              fontFamily: 'Alegreya-Medium',
-              fontWeight: 'normal',
-            },
-            heavy: {
-              fontFamily: 'Alegreya-Medium',
-              fontWeight: 'normal',
-            },
-          },
-        }}
-      >
-        <RootStackNavigator />
-      </NavigationContainer>
-      <Toast config={toastConfig} />
+          }}
+        >
+          <RootStackNavigator />
+        </NavigationContainer>
+        <Toast config={toastConfig} />
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }

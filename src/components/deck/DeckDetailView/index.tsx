@@ -379,7 +379,7 @@ function DeckDetailView({
           id: 'back',
           color: textColor,
         } : {
-          icon: iconsMap['arrow-left'],
+          icon: 'arrow-left',
           id: 'androidBack',
           color: textColor,
         },
@@ -403,7 +403,7 @@ function DeckDetailView({
             </TouchableOpacity>
           ) : (
             <HeaderButton
-              iconName="arrow-left"
+              iconName="arrow_back"
               onPress={handleBackPress}
               color={textColor}
               accessibilityLabel={t`Back`}

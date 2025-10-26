@@ -110,7 +110,6 @@ export function queryForInvestigator(
   );
 
   const limitedCardPool = meta?.card_pool?.split(',');
-  console.log('limitedCardPool', limitedCardPool);
   // We assume that there is always at least one normalClause.
   const normalQuery = combineQueriesOpt(
     flatMap(deck_options, (option, index) => {

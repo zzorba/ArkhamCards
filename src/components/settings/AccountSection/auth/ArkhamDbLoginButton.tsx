@@ -80,6 +80,7 @@ export default function ArkhamDbLoginButton({ last, showAlert }: Props) {
           thin
           color="red"
           key="reauth-control"
+          icon="arkhamdb"
           onPress={reauthPressed}
           title={t`Reconnect`}
         />,
@@ -90,6 +91,7 @@ export default function ArkhamDbLoginButton({ last, showAlert }: Props) {
       <DeckButton
         key="auth-control"
         thin
+        icon="arkhamdb"
         onPress={signedIn ? logOutPressed : loginPressed}
         title={signedIn ? t`Log out` : t`Log in`}
       />,

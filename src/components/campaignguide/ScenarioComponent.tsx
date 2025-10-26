@@ -18,7 +18,7 @@ import COLORS from '@styles/colors';
 import CampaignGuideContext from './CampaignGuideContext';
 import StepsComponent from './StepsComponent';
 import StyleContext from '@styles/StyleContext';
-import NarrationWrapper, { NarrationTrack, setNarrationQueue } from '@components/campaignguide/NarrationWrapper';
+import NarrationWrapper, { NarrationTrack } from '@components/campaignguide/NarrationWrapper';
 import ScenarioStep from '@data/scenario/ScenarioStep';
 import ScenarioGuideContext from './ScenarioGuideContext';
 import { ProcessedScenario } from '@data/scenario';
@@ -27,7 +27,7 @@ import { showGuideCampaignLog } from '@components/campaign/nav';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { CustomData, Narration } from '@data/scenario/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { useAudioAccess } from '@lib/audio/narrationPlayer';
+import { useAudioAccess, useSetNarratinQueue } from '@lib/audio/narrationHelpers';
 import Animated, { interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import RoundButton from '@components/core/RoundButton';
 import AppIcon from '@icons/AppIcon';
@@ -197,13 +197,14 @@ export default function ScenarioComponent({ showLinkedScenario, standalone, foot
     });
   }, [navigation, campaignId, processedScenario.id]);
   const [hasAudio, narrationLangs] = useAudioAccess()
-
+  const setNarrationQueue = useSetNarratinQueue();
   useEffect(() => {
     if (!hasAudio) {
       return;
     }
     const queue = getNarrationQueue(processedScenario, scenarioState, narrationLangs);
     setNarrationQueue(queue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [processedScenario, scenarioState, hasAudio, narrationLangs]);
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&

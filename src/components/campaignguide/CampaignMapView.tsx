@@ -5,7 +5,7 @@ import PanPinchView from 'react-native-pan-pinch-view';
 import PriorityQueue from 'priority-queue-typescript';
 import { filter, flatMap, values, find, sortBy, forEach, indexOf, map, sumBy, groupBy } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
-import { Image as FastImage } from 'expo-image';
+import { Image as ExpoImage } from 'expo-image';
 import {
   Defs,
   Svg,
@@ -543,6 +543,7 @@ function DossierImage({
 }) {
   const width = Math.min(theWidth, 150);
   const { darkMode } = useContext(StyleContext);
+  console.log(uri);
   return (
     <View style={IMAGE_SPACING[alignment]}>
       <View style={{
@@ -550,7 +551,7 @@ function DossierImage({
         paddingBottom: 32,
         backgroundColor: darkMode ? COLORS.D10 : COLORS.white,
         transform: [{ rotate: alignment === 'left' ? '-4deg' : '4deg' }] }}>
-        <FastImage
+        <ExpoImage
           source={{
             uri: `https://img2.arkhamcards.com${uri}`,
           }}
@@ -615,6 +616,7 @@ function DossierEntryComponent({
     }
   }, [reference, showCity]);
   if (image) {
+    console.log(image.uri);
     return (
       <View style={{ flexDirection: IMAGE_DIRECTION[image?.alignment || 'right'] }}>
         { !!text && (

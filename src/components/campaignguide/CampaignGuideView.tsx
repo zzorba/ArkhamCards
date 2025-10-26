@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import { updateCampaignName } from '@components/campaign/actions';
 import withCampaignGuideContext, { CampaignGuideInputProps, InjectedCampaignGuideContextProps } from '@components/campaignguide/withCampaignGuideContext';
 import CampaignGuideContext from './CampaignGuideContext';
-import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
+import { useStopAudioOnUnmount } from '@lib/audio/narrationHelpers';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import CampaignDetailTab from './CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';

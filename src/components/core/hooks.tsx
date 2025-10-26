@@ -20,7 +20,7 @@ import { DeckActions } from '@data/remote/decks';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { useDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import { useDebounce } from 'use-debounce/lib';
+import { useDebounce } from 'use-debounce';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { useCardMap } from '@components/card/useCardList';
 import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';

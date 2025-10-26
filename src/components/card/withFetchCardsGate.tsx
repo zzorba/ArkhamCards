@@ -10,7 +10,7 @@ export default function withFetchCardsGate<Props>(
   WrappedComponent: React.ComponentType<Props>,
   { promptForUpdate }: Arguments
 ) {
-  const result = function(props: Props) {
+  const Result = function(props: Props) {
     return (
       <FetchCardsGate promptForUpdate={promptForUpdate}>
         { /* @ts-ignore */ }
@@ -18,6 +18,6 @@ export default function withFetchCardsGate<Props>(
       </FetchCardsGate>
     );
   };
-  hoistNonReactStatics(result, WrappedComponent);
-  return result;
+  hoistNonReactStatics(Result, WrappedComponent);
+  return Result;
 }

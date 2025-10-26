@@ -51,14 +51,18 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
       // We only want to listen to this once, hence the singleton pattern.
       const sub = DeviceEventEmitter.addListener('onAuthStateChanged', authUserChanged);
       const callback = async(user: FirebaseAuthTypes.User | null) => {
+        console.log('Auth state changed', !!user);
         currentUserLoading = false;
         currentUser = user || undefined;
         if (user) {
+          console.log('User logged in, checking claims');
           const idTokenResult = await user.getIdTokenResult();
           const hasuraClaims = idTokenResult.claims['https://hasura.io/jwt/claims'];
+          console.log('Hasura claims?', hasuraClaims);
           if (hasuraClaims) {
             DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
           } else {
+            console.log('No hasura claims, checking refresh time');
             // Check if refresh is required.
             const metadataRef = database().ref(`metadata/${user.uid}/refreshTime`);
             metadataRef.on('value', async(data) => {
@@ -76,6 +80,7 @@ export default function ArkhamCardsAuthProvider({ children }: Props) {
             });
           }
         } else {
+          console.log('User logged out');
           DeviceEventEmitter.emit('onAuthStateChanged', currentUser);
         }
       };

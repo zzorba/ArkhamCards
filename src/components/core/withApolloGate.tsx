@@ -36,6 +36,7 @@ function ApolloGate({ children }: Props) {
   useEffect(() => {
     if (user && isConnected) {
       user.getIdTokenResult().then(idTokenResult => {
+        console.log('ApolloGate: got id token result', idTokenResult);
         const hasuraClaims = idTokenResult.claims['https://hasura.io/jwt/claims'];
         if (hasuraClaims) {
           // console.log('Opening apollo');
@@ -102,7 +103,7 @@ function ApolloGate({ children }: Props) {
 }
 
 export default function withApolloGate<Props>(WrappedComponent: React.ComponentType<Props>) {
-  const result = function(props: Props) {
+  const Result = function(props: Props) {
     return (
       <ApolloGate>
         { /* @ts-ignore */ }
@@ -110,8 +111,8 @@ export default function withApolloGate<Props>(WrappedComponent: React.ComponentT
       </ApolloGate>
     );
   };
-  hoistNonReactStatics(result, WrappedComponent);
-  return result;
+  hoistNonReactStatics(Result, WrappedComponent);
+  return Result;
 }
 
 

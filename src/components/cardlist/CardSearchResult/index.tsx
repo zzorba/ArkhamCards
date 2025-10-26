@@ -240,7 +240,7 @@ export default function CardSearchResult(props: Props) {
     const custom = card.custom();
     return (
       <View style={styles.cardNameBlock}>
-        <View style={[styles.row, space.paddingTopXs, { backgroundColor: 'transparent' }]}>
+        <View style={[styles.row, { backgroundColor: 'transparent' }]}>
           <Text style={[
             typography.cardName,
             { color, flex: 1 },
@@ -262,7 +262,7 @@ export default function CardSearchResult(props: Props) {
               </View>
             ) }
             { (!!card.renderSubname || !!description || custom) && (
-              <View style={[styles.row, styles.subname, space.marginRightS, space.paddingTopXs]}>
+              <View style={[styles.row, styles.subname, space.marginRightS]}>
                 <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={1} ellipsizeMode="clip">
                   <IconizedText text={description ?? card.renderSubname ?? ''} iconSize={12} color={colors.D10} />
                 </Text>

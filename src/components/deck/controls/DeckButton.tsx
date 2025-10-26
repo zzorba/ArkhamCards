@@ -275,7 +275,7 @@ export default function DeckButton({
           </View>
         ) }
         { textComponent ? <View style={space.paddingSideXs}>{textComponent}</View> : (
-          <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, shrink ? undefined : styles.grow, space.paddingTopXs]}>
+          <View style={[styles.column, space.paddingRightS, !icon ? space.paddingLeftS : undefined, shrink ? undefined : styles.grow]}>
             <View style={styles.row}>
               <Text
                 numberOfLines={1}

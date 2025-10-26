@@ -5,17 +5,16 @@ import Scrubber from 'react-native-scrubber'
 import { c, t } from 'ttag';
 
 import { StyleContext } from '@styles/StyleContext';
-import { State, usePlaybackState, useProgress } from 'react-native-track-player';
 
 import space from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import { TouchableOpacity } from '@components/core/Touchables';
-import { playNarrationTrack } from '@components/campaignguide/NarrationWrapper';
 import { Narration } from '@data/scenario/types';
-import { narrationPlayer, useAudioAccess, useCurrentTrackDetails, usePlaybackRate } from '@lib/audio/narrationPlayer';
 import { usePressCallback } from '@components/core/hooks';
 import { useDispatch } from 'react-redux';
 import { SET_PLAYBACK_RATE } from '@actions/types';
+import { useAudioAccess, usePlayNarrationTrack } from '@lib/audio/narrationHelpers';
+import { State, useAudioPlayerContext, useCurrentTrack, usePlaybackState, useProgress } from '@lib/audio/AudioPlayerContext';
 
 export function useNarration(narration?: Narration): Narration | undefined {
   const [hasAudio, narrationLangs] = useAudioAccess();
@@ -63,51 +62,48 @@ function nextRate(rate: number): number {
 export function NarrationInlineControls({ narration }: IconProps) {
   const { colors, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
+  const currentTrack = useCurrentTrack();
   const playerState = usePlaybackState();
-  const currentTrack = useCurrentTrackDetails();
-  const rate = usePlaybackRate();
-  const { position, buffered, duration } = useProgress(1000);
+  const { jumpBack, playbackRate: rate, setRate, pause, play, seekTo } = useAudioPlayerContext();
+  const { position, duration } = useProgress(1000);
   const posTime = parseTime(position);
   const durTime = parseTime(duration);
+  const playNarrationTrack = usePlayNarrationTrack();
 
 
   const isCurrentTrack = currentTrack && currentTrack.narrationId === narration.id;
   // tslint:disable-next-line: strict-comparisons
   const isPlaying = playerState.state === State.Playing && isCurrentTrack;
   const onJumpBackPress = useCallback(async() => {
-    try {
-      const trackPlayer = await narrationPlayer();
-      await trackPlayer.seekTo(Math.max(0, (await trackPlayer.getPosition()) - 10));
-    } catch (e) {
-      console.log(e);
-    }
-  }, []);
+    jumpBack(10);
+  }, [jumpBack]);
   const onRatePress = useCallback(() => {
+    const newRate = nextRate(rate);
+    setRate(newRate);
     dispatch({
       type: SET_PLAYBACK_RATE,
-      rate: nextRate(rate),
+      rate: newRate,
     });
-  }, [dispatch, rate]);
+  }, [dispatch, rate, setRate]);
   const [seekPos, setSeekPos] = useState<number>();
   const onScrub = useCallback(async(pos: number) => {
     try {
       setSeekPos(pos);
-      const trackPlayer = await narrationPlayer();
-      await trackPlayer.seekTo(pos);
+      seekTo(pos);
       setSeekPos(undefined);
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  }, [seekTo]);
   const onPressNarration = useCallback(() => {
     if (isPlaying) {
-      narrationPlayer().then(trackPlayer => trackPlayer.pause());
+      pause();
     } else if (isCurrentTrack && playerState.state === State.Paused) {
-      narrationPlayer().then(trackPlayer => trackPlayer.play());
+      play();
     } else {
       playNarrationTrack(narration.id);
     }
-  }, [narration, isPlaying, isCurrentTrack, playerState]);
+  }, [narration, isPlaying, isCurrentTrack, playerState, playNarrationTrack, pause, play]);
   const onPlayPausePress = usePressCallback(onPressNarration);
   return (
     <View style={[space.marginSideM, space.marginTopS]}>
@@ -173,8 +169,8 @@ export function NarrationInlineControls({ narration }: IconProps) {
             displayValues={false}
             value={seekPos !== undefined ? seekPos : position}
             totalDuration={duration}
-            bufferedValue={buffered}
-            bufferedTrackColor={colors.L10}
+            // bufferedValue={buffered}
+            // bufferedTrackColor={colors.L10}
             trackBackgroundColor={colors.L20}
             trackColor={colors.D20}
             scrubbedColor={colors.D20}

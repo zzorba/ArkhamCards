@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { registerRootComponent } from 'expo';
 import * as Sentry from '@sentry/react-native';
+import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistCache } from 'apollo-cache-persist';
 import { getApps, initializeApp } from '@react-native-firebase/app';
+import database from '@react-native-firebase/database';
 import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-gesture-handler';
 import 'react-native-console-time-polyfill';
 import 'reflect-metadata';
+
+globalThis.RNFB_SILENCE_MODULAR_DEPRECATION_WARNINGS = true;
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
 import { store, persistor } from './src/application/store';
 import createApolloClient from './src/data/apollo/createApolloClient';
-import TrackPlayer from 'react-native-track-player';
 import AppNavigator from './src/navigation/AppNavigator';
 
 const navigationIntegration = Sentry.reactNavigationIntegration();
+
+if (__DEV__) {
+  // Adds messages only in a dev environment
+  loadDevMessages();
+  loadErrorMessages();
+}
 
 Sentry.init({
   dsn: 'https://fdad4da29224c7fd11ee224a94b1ba0c@o4509060598530048.ingest.us.sentry.io/4509060599316480',
@@ -51,7 +60,6 @@ persistCache({
   storage: AsyncStorage,
 });
 
-TrackPlayer.registerPlaybackService(() => require('./src/lib/audio/audioService'));
 
 function App() {
   const [appIsReady, setAppIsReady] = React.useState(false);
@@ -83,5 +91,6 @@ function App() {
     <AppNavigator store={storeProps} navigationIntegration={navigationIntegration} />
   );
 }
+database().setPersistenceEnabled(true);
 
 registerRootComponent(App);

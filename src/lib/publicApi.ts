@@ -14,6 +14,7 @@ import {
   maxBy,
 } from 'lodash';
 import { Platform } from 'react-native';
+import { loadAsset } from './assetLoader';
 
 import {
   CardCache,
@@ -81,7 +82,6 @@ async function insertChunk<T>(
 }
 
 async function rulesJson(lang?: string): Promise<JsonRule[]> {
-  const { loadAsset } = await import('./assetLoader');
   const assetKey = lang && lang !== 'en' ? `rules_${lang}` : 'rules';
   return await loadAsset<JsonRule[]>(assetKey);
 }

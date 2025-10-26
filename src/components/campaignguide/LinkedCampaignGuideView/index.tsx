@@ -10,7 +10,7 @@ import { updateCampaignName } from '@components/campaign/actions';
 import { useSingleCampaignGuideData } from '@components/campaignguide/contextHelper';
 import { useCampaign } from '@data/hooks';
 import useCampaignGuideContextFromActions from '@components/campaignguide/useCampaignGuideContextFromActions';
-import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
+import { useStopAudioOnUnmount } from '@lib/audio/narrationHelpers';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import { useCampaignLinkHelper } from './useCampaignLinkHelper';
 import CampaignDetailTab from '../CampaignDetailTab';

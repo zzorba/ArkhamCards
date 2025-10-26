@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
-import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
+import { useStopAudioOnUnmount } from '@lib/audio/narrationHelpers';
 import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';

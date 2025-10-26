@@ -152,7 +152,6 @@ export default class DeckValidation {
     this.limited_packs = meta?.card_pool ?
       new Set(flatMap(meta.card_pool.split(','), pack => pack === POOL_INVESTIGATOR_CYCLE ? POOL_INVESTIGATOR_PACKS : [pack])) :
       undefined;
-    console.log(this.limited_packs);
   }
 
   specialCardCounts(): SpecialCardCounts {

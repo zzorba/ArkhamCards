@@ -33,7 +33,10 @@
       "bundleIdentifier": "com.arkhamcards.ArkhamCards",
       "supportsTablet": true,
       "infoPlist": {
-        "UIBackgroundModes": ["audio"]
+        "UIBackgroundModes": [
+          "audio"
+        ],
+        "UIViewControllerBasedStatusBarAppearance": true
       },
       "googleServicesFile": "./GoogleService-Info.plist"
     },
@@ -47,9 +50,20 @@
     },
     "plugins": [
       [
+        "react-native-edge-to-edge",
+        {
+          "android": {
+            "parentTheme": "Default",
+            "enforceNavigationBarContrast": true
+          }
+        }
+      ],
+      [
         "expo-asset",
         {
-          "assets": ["./assets/generated"]
+          "assets": [
+            "./assets/generated"
+          ]
         }
       ],
       [
@@ -79,7 +93,9 @@
       [
         "expo-plugin-ios-static-libraries",
         {
-          "libs": ["op-sqlite"]
+          "libs": [
+            "op-sqlite"
+          ]
         }
       ],
       [
@@ -139,7 +155,8 @@
             "./assets/TT2020StyleE-Regular.ttf"
           ]
         }
-      ]
+      ],
+      "expo-audio"
     ]
   }
 }

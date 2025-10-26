@@ -4,7 +4,7 @@ import { useAsset } from '@lib/useAsset';
 import { ChaosTokens, ScenarioChaosTokens, TabooSets } from './types';
 
 function getChaosTokensAssetKey(lang: string): string {
-  return lang === 'vi' || lang === 'en' ? 'chaosOdds' : `chaosOdds_${lang}`;
+  return lang === 'vi' || lang === 'en' ? 'chaos_odds' : `chaos_odds_${lang}`;
 }
 
 function getTaboosAssetKey(lang: string): string | undefined {

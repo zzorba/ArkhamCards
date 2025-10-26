@@ -1,4 +1,4 @@
-import { isEqual, findIndex, filter, map, forEach } from 'lodash';
+import { findIndex } from 'lodash';
 import React, { useCallback, useContext, useMemo } from 'react';
 import {
   ActivityIndicator,
@@ -11,14 +11,13 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { Event, Track, State, usePlaybackState, useTrackPlayerEvents, useProgress } from 'react-native-track-player';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import EncounterIcon from '@icons/EncounterIcon';
-import { getAccessToken } from '@lib/dissonantVoices';
 import { StyleContext } from '@styles/StyleContext';
 import space, { m } from '@styles/space';
-import { narrationPlayer, useAudioAccess, useCurrentTrackDetails, useTrackPlayerQueue } from '@lib/audio/narrationPlayer';
+import { useAudioPlayerContext, useCurrentTrack, usePlaybackState, useProgress, useTrackPlayerEvents, Event, State, PlayerState, Track } from '@lib/audio/AudioPlayerContext';
+import { useAudioAccess } from '@lib/audio/narrationHelpers';
 import { usePressCallback } from '@components/core/hooks';
 import { useDialog } from '@components/deck/dialogs';
 import { useSelector } from 'react-redux';
@@ -30,111 +29,12 @@ function Divider() {
   return <View style={{ height: StyleSheet.hairlineWidth, backgroundColor: colors.M }} />
 }
 
-export async function playNarrationTrack(narrationId: string) {
-  const trackPlayer = await narrationPlayer();
-  const tracks = await trackPlayer.getQueue();
-  const trackIndex = findIndex(tracks, t => t.narrationId === narrationId);
-  if (trackIndex !== -1) {
-    await trackPlayer.skip(trackIndex);
-    await trackPlayer.play();
-  }
-}
-
 function artist(lang: string) {
   switch (lang) {
     case 'ru': return 'Несмолкающие голоса';
     case 'es': 'Voces disonantes';
     default: return 'Dissonant Voices';
   }
-}
-
-// Returns true if the current index was not preserved (a reset has occurred)
-export async function setNarrationQueue(queue: NarrationTrack[]): Promise<void> {
-  const trackPlayer = await narrationPlayer();
-  const accessToken = await getAccessToken();
-
-  const oldTracks = await trackPlayer.getQueue();
-  if (isEqual(queue, oldTracks)) {
-    return;
-  }
-
-  const oldTrackIds: string[] = map(oldTracks, (track) => track.narrationId);
-  const newTracks: Track[] = map(queue, (track: NarrationTrack): Track => {
-    if (track.lang && track.lang !== 'dv') {
-      return {
-        narrationId: track.id,
-        title: track.name,
-        artist: artist(track.lang),
-        album: track.scenarioName,
-        artwork: track.campaignCode,
-        url: `https://static.arkhamcards.com/audio/${track.lang}/${track.id}.mp3`,
-      };
-    }
-    return {
-      narrationId: track.id,
-      title: track.name,
-      artist: 'Dissonant Voices',
-      album: track.scenarioName,
-      artwork: track.campaignCode,
-      url: `https://north101.co.uk/api/scene/${track.id}/listen`,
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-  });
-  const newTrackIds: string[] = map(newTracks, (track) => track.narrationId);
-
-  // if current track is in the new queue
-  const currentTrackIndex = await trackPlayer.getCurrentTrack();
-  const currentTrackOld = currentTrackIndex !== undefined && currentTrackIndex > -1 ? oldTracks[currentTrackIndex] : undefined;
-  const currentTrackNewIndex = currentTrackOld ? newTrackIds.indexOf(currentTrackOld.narrationId) : -1;
-  if (
-    currentTrackNewIndex !== -1 &&
-    isEqual(currentTrackOld, newTracks[currentTrackNewIndex])
-  ) {
-    const diffTrackIds = filter(oldTrackIds, trackId => !newTrackIds.includes(trackId));
-    const commonTracks = filter(oldTracks, track => !diffTrackIds.includes(track.narrationId));
-    const commonTrackIds: Set<string> = new Set(map(commonTracks, track => track.narrationId));
-
-    const removeIndexes: number[] = [];
-    forEach(oldTracks, (oldTrack, idx) => {
-      if (!commonTrackIds.has(oldTrack.narrationId)) {
-        removeIndexes.push(idx);
-      }
-    });
-    if (removeIndexes.length) {
-      await trackPlayer.remove(removeIndexes);
-    }
-
-    let i = 0;
-    while (i < newTracks.length) {
-      const tracksToInsert: Track[] = [];
-      let j = i;
-      while (j < newTracks.length && !commonTrackIds.has(newTracks[j].narrationId)) {
-        tracksToInsert.push(newTracks[j]);
-        j++;
-      }
-      if (tracksToInsert.length) {
-        if (j >= newTracks.length) {
-          // We fell off without finding an old 'common' track, so just append at the end..
-          await trackPlayer.add(tracksToInsert, oldTrackIds.length);
-        } else {
-          // This means we found a common track to stop at, which would put it currently at position 'i' in the queue.
-          await trackPlayer.add(tracksToInsert, j)
-        }
-        i = j;
-      } else {
-        i++;
-      }
-    }
-    return;
-  }
-
-  // otherwise reset and add all the new tracks
-  if (oldTracks.length) {
-    await trackPlayer.reset();
-  }
-  await trackPlayer.add(newTracks);
 }
 
 export interface NarrationTrack {
@@ -173,43 +73,6 @@ function ProgressView() {
   );
 }
 
-
-async function restart() {
-  try {
-    const trackPlayer = await narrationPlayer();
-    await trackPlayer.seekTo(0);
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-async function replay() {
-  try {
-    const trackPlayer = await narrationPlayer();
-    await trackPlayer.seekTo((await trackPlayer.getPosition()) - 10);
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-async function previousTrack() {
-  try {
-    const trackPlayer = await narrationPlayer();
-    await trackPlayer.skipToPrevious();
-  } catch (e) {
-    console.log(e);
-  }
-}
-async function nextTrack() {
-  try {
-    const trackPlayer = await narrationPlayer();
-    await trackPlayer.skipToNext();
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-
 function showDeKofi() {
   Linking.openURL('https://ko-fi.com/simplainer');
 }
@@ -221,34 +84,33 @@ function showRuDonate() {
 function PlayerView({ style }: PlayerProps) {
   const lang = useSelector(getAudioLangPreference);
   const { colors, typography } = useContext(StyleContext);
-  const track = useCurrentTrackDetails();
-  const queue = useTrackPlayerQueue();
+  const track = useCurrentTrack();
+  const { queue, play, pause, jumpBack, restart, skipToPrevious, skipToNext } = useAudioPlayerContext();
   const firstTrack = useMemo(() => !!track && findIndex(queue, t => t.url === track.url) === 0, [queue, track]);
   const state = usePlaybackState();
-  const onReplayPress = usePressCallback(replay, 250);
+  const jumpBack10 = useCallback(() => jumpBack(10), [jumpBack]);
+  const onReplayPress = usePressCallback(jumpBack10, 250);
 
   const onPlay = useCallback(async() => {
     if (!track && !firstTrack) {
       return;
     }
-    const trackPlayer = await narrationPlayer();
-    const state = await trackPlayer.getState();
-    if (state === State.Playing) {
-      await trackPlayer.pause();
+    if (state.state === State.Playing) {
+      pause();
     } else {
-      await trackPlayer.play();
+      play();
     }
-  }, [track, firstTrack]);
+  }, [track, firstTrack, state, play, pause]);
   const onPlayPress = usePressCallback(onPlay, 250);
   const previousTrackAction = useCallback(() => {
     if (firstTrack) {
       restart();
     } else {
-      previousTrack();
+      skipToPrevious();
     }
-  }, [firstTrack]);
+  }, [firstTrack, restart, skipToPrevious]);
   const onPreviousPress = usePressCallback(previousTrackAction, 250);
-  const onNextPress = usePressCallback(nextTrack, 250);
+  const onNextPress = usePressCallback(skipToNext, 250);
 
   const infoContent = useMemo(() => {
     if (lang === 'de') {
@@ -291,9 +153,8 @@ function PlayerView({ style }: PlayerProps) {
   if (!queue.length) {
     return null;
   }
-
   return (
-    <View>
+    <View style={{ position: 'absolute', bottom: 0, width: '100%' }}>
       <Divider />
       <View
         style={{
@@ -303,6 +164,7 @@ function PlayerView({ style }: PlayerProps) {
           height: m * 2 + 32,
           alignItems: 'center',
           padding: m,
+          backgroundColor: colors.background,
           paddingRight: infoContent ? m + 8 : m,
         }}
       >
@@ -452,6 +314,7 @@ export default function NarrationWrapper({ children }: NarratorContainerProps) {
 const styles = StyleSheet.create({
   container: {
     height: '100%',
+    position: 'relative',
   },
   leftRow: {
     flexDirection: 'row',

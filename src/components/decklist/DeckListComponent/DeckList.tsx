@@ -10,7 +10,7 @@ import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useLatestDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import { useDebounce } from 'use-debounce/lib';
+import { useDebounce } from 'use-debounce';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import ThinDeckListRow from './ThinDeckListRow';
 

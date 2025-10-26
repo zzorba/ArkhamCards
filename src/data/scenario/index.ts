@@ -160,7 +160,7 @@ export interface PersonalizedChoices {
 export type Choices = PersonalizedChoices | UniversalChoices;
 
 async function loadAllChaosTokens(lang: string): Promise<ChaosTokens> {
-  const assetKey = lang === 'vi' || lang === 'en' ? 'chaosOdds' : `chaosOdds_${lang}`;
+  const assetKey = lang === 'vi' || lang === 'en' ? 'chaos_odds' : `chaos_odds_${lang}`;
   return await loadAsset<ChaosTokens>(assetKey);
 }
 
@@ -188,13 +188,13 @@ export async function loadTaboos(lang: string): Promise<TabooSets | undefined> {
 }
 
 async function getScenarioNames(lang: string): Promise<{ id: string; name: string }[]> {
-  const assetKey = (lang === 'en' || lang === 'cs') ? 'scenarioNames' : `scenarioNames_${lang}`;
+  const assetKey = (lang === 'en' || lang === 'cs') ? 'scenario_names' : `scenario_names_${lang}`;
   return await loadAsset<{ id: string; name: string }[]>(assetKey);
 }
 
 export function useScenarioNames(): { [id: string]: string | undefined } {
   const { lang } = useContext(LanguageContext);
-  const assetKey = useMemo(() => (lang === 'en' || lang === 'cs') ? 'scenarioNames' : `scenarioNames_${lang}`, [lang]);
+  const assetKey = useMemo(() => (lang === 'en' || lang === 'cs') ? 'scenario_names' : `scenario_names_${lang}`, [lang]);
   const list = useAsset<{ id: string; name: string }[]>(assetKey);
   return useMemo(() => {
     if (!list) {
@@ -218,10 +218,10 @@ async function loadAll(lang: string): Promise<{
 }> {
   const suffix = lang === 'en' ? '' : `_${lang}`;
   const [allLogEntries, allCampaigns, encounterSets, errata] = await Promise.all([
-    loadAsset<CampaignLog[]>(`campaignLogs${suffix}`),
-    loadAsset<FullCampaign[]>(`allCampaigns${suffix}`),
-    loadAsset<{ [code: string]: string }>(`encounterSets${suffix}`),
-    loadAsset<Errata>(`campaignErrata${suffix}`),
+    loadAsset<CampaignLog[]>(`campaign_logs${suffix}`),
+    loadAsset<FullCampaign[]>(`all_campaigns${suffix}`),
+    loadAsset<{ [code: string]: string }>(`encounter_sets${suffix}`),
+    loadAsset<Errata>(`campaign_errata${suffix}`),
   ]);
   return {
     allLogEntries,
@@ -427,7 +427,7 @@ export function useStandaloneScenarios(): StandaloneInfo[] | undefined {
 
 async function getStandaloneScenarios(lang: string): Promise<StandaloneInfo[]> {
   const { allLogEntries, allCampaigns } = await loadAll(lang);
-  const standalones = await loadAsset('standaloneScenarios');
+  const standalones = await loadAsset('standalone_scenarios');
   return sortBy(
     flatMap(standalones, (id: StandaloneScenarioId | StandaloneCampaignId) => {
       switch (id.type) {
