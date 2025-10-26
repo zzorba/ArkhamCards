@@ -1,4 +1,4 @@
-import { find, flatMap, forEach, sortBy } from 'lodash';
+import { find, flatMap, forEach, get, sortBy } from 'lodash';
 
 import {
   CampaignCycleCode,
@@ -30,9 +30,11 @@ import ScenarioStep from './ScenarioStep';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import Card from '@data/types/Card';
-import { useContext, useMemo } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { Gender_Enum } from '@generated/graphql/apollo-schema';
+import { loadAsset } from '@lib/assetLoader';
+import { useAsset } from '@lib/useAsset';
 
 export interface ScenarioId {
   scenarioId: string;
@@ -157,220 +159,82 @@ export interface PersonalizedChoices {
 
 export type Choices = PersonalizedChoices | UniversalChoices;
 
-function loadAllChaosTokens(lang: string): ChaosTokens {
-  switch (lang) {
-    case 'es':
-      return require('../../../assets/generated/chaosOdds_es.json');
-    case 'ru':
-      return require('../../../assets/generated/chaosOdds_ru.json');
-    case 'fr':
-      return require('../../../assets/generated/chaosOdds_fr.json');
-    case 'de':
-      return require('../../../assets/generated/chaosOdds_de.json');
-    case 'it':
-      return require('../../../assets/generated/chaosOdds_it.json');
-    case 'pt':
-      return require('../../../assets/generated/chaosOdds_pt.json');
-    case 'pl':
-      return require('../../../assets/generated/chaosOdds_pl.json');
-    case 'zh':
-      return require('../../../assets/generated/chaosOdds_zh.json');
-    case 'zh-cn':
-      return require('../../../assets/generated/chaosOdds_zh-cn.json');
-    case 'ko':
-      return require('../../../assets/generated/chaosOdds_ko.json');
-    default:
-    case 'vi':
-    case 'en':
-      return require('../../../assets/generated/chaosOdds.json');
-  }
+async function loadAllChaosTokens(lang: string): Promise<ChaosTokens> {
+  const assetKey = lang === 'vi' || lang === 'en' ? 'chaosOdds' : `chaosOdds_${lang}`;
+  return await loadAsset<ChaosTokens>(assetKey);
 }
 
-export function loadChaosTokens(
+export async function loadChaosTokens(
   lang: string,
   code?: string,
   scenario?: string
-): ScenarioChaosTokens | undefined {
+): Promise<ScenarioChaosTokens | undefined> {
   if (!code && !scenario) {
     return undefined;
   }
-  const allTokens = loadAllChaosTokens(lang);
+  const allTokens = await loadAllChaosTokens(lang);
   return (
     find(allTokens, (t) => !!(scenario && t.scenario === scenario)) ||
     find(allTokens, (t) => !!(code && t.code === code))
   );
 }
 
-export function loadTaboos(lang: string): TabooSets | undefined {
-  switch (lang) {
-    case 'es':
-      return require('../../../assets/generated/taboos_es.json');
-    case 'de':
-      return require('../../../assets/generated/taboos_de.json');
-    case 'ru':
-      return require('../../../assets/generated/taboos_ru.json');
-    case 'fr':
-      return require('../../../assets/generated/taboos_fr.json');
-    case 'it':
-      return require('../../../assets/generated/taboos_it.json');
-    case 'zh':
-      return require('../../../assets/generated/taboos_zh.json');
-    case 'ko':
-      return require('../../../assets/generated/taboos_ko.json');
-    case 'pt':
-      return require('../../../assets/generated/taboos_pt.json');
-    case 'pl':
-      return require('../../../assets/generated/taboos_pl.json');
-    case 'vi':
-    case 'en':
-    case 'cs':
-    default:
-      return undefined;
+export async function loadTaboos(lang: string): Promise<TabooSets | undefined> {
+  if (lang === 'vi' || lang === 'en' || lang === 'cs') {
+    return undefined;
   }
+  const assetKey = `taboos_${lang}`;
+  return await loadAsset<TabooSets>(assetKey);
 }
 
-function getScenarioNames(lang: string): { id: string; name: string }[] {
-  switch (lang) {
-    case 'es':
-      return require('../../../assets/generated/scenarioNames_es.json');
-    case 'de':
-      return require('../../../assets/generated/scenarioNames_de.json');
-    case 'ru':
-      return require('../../../assets/generated/scenarioNames_ru.json');
-    case 'fr':
-      return require('../../../assets/generated/scenarioNames_fr.json');
-    case 'it':
-      return require('../../../assets/generated/scenarioNames_it.json');
-    case 'zh':
-      return require('../../../assets/generated/scenarioNames_zh.json');
-    case 'ko':
-      return require('../../../assets/generated/scenarioNames_ko.json');
-    case 'pt':
-      return require('../../../assets/generated/scenarioNames_pt.json');
-    case 'pl':
-      return require('../../../assets/generated/scenarioNames_pl.json');
-    case 'vi':
-      return require('../../../assets/generated/scenarioNames_vi.json');
-    case 'en':
-    case 'cs':
-    default:
-      return require('../../../assets/generated/scenarioNames.json');
-  }
+async function getScenarioNames(lang: string): Promise<{ id: string; name: string }[]> {
+  const assetKey = (lang === 'en' || lang === 'cs') ? 'scenarioNames' : `scenarioNames_${lang}`;
+  return await loadAsset<{ id: string; name: string }[]>(assetKey);
 }
 
 export function useScenarioNames(): { [id: string]: string | undefined } {
   const { lang } = useContext(LanguageContext);
+  const assetKey = useMemo(() => (lang === 'en' || lang === 'cs') ? 'scenarioNames' : `scenarioNames_${lang}`, [lang]);
+  const list = useAsset<{ id: string; name: string }[]>(assetKey);
   return useMemo(() => {
-    const list = getScenarioNames(lang);
+    if (!list) {
+      return {};
+    }
     const result: { [id: string]: string | undefined } = {};
     forEach(list, ({ id, name }) => {
       result[id] = name;
     });
     return result;
-  }, [lang]);
+  }, [list]);
 }
 
-function loadAll(lang: string): {
+async function loadAll(lang: string): Promise<{
   allLogEntries: CampaignLog[];
   allCampaigns: FullCampaign[];
   encounterSets: {
     [code: string]: string;
   };
   errata: Errata;
-} {
-  switch (lang) {
-    case 'es':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_es.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_es.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_es.json'),
-        errata: require('../../../assets/generated/campaignErrata_es.json'),
-      };
-    case 'ru':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_ru.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_ru.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_ru.json'),
-        errata: require('../../../assets/generated/campaignErrata_ru.json'),
-      };
-    case 'fr':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_fr.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_fr.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_fr.json'),
-        errata: require('../../../assets/generated/campaignErrata_fr.json'),
-      };
-    case 'de':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_de.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_de.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_de.json'),
-        errata: require('../../../assets/generated/campaignErrata_de.json'),
-      };
-    case 'it':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_it.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_it.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_it.json'),
-        errata: require('../../../assets/generated/campaignErrata_it.json'),
-      };
-    case 'pt':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_pt.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_pt.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_pt.json'),
-        errata: require('../../../assets/generated/campaignErrata_pt.json'),
-      };
-    case 'zh':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_zh.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_zh.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_zh.json'),
-        errata: require('../../../assets/generated/campaignErrata_zh.json'),
-      };
-    case 'zh-cn':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_zh-cn.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_zh-cn.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_zh-cn.json'),
-        errata: require('../../../assets/generated/campaignErrata_zh-cn.json'),
-      };
-    case 'pl':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_pl.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_pl.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_pl.json'),
-        errata: require('../../../assets/generated/campaignErrata_pl.json'),
-      };
-    case 'ko':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_ko.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_ko.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_ko.json'),
-        errata: require('../../../assets/generated/campaignErrata_ko.json'),
-      };
-    case 'vi':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs_vi.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns_vi.json'),
-        encounterSets: require('../../../assets/generated/encounterSets_vi.json'),
-        errata: require('../../../assets/generated/campaignErrata_vi.json'),
-      };
-    default:
-    case 'en':
-      return {
-        allLogEntries: require('../../../assets/generated/campaignLogs.json'),
-        allCampaigns: require('../../../assets/generated/allCampaigns.json'),
-        encounterSets: require('../../../assets/generated/encounterSets.json'),
-        errata: require('../../../assets/generated/campaignErrata.json'),
-      };
-  }
+}> {
+  const suffix = lang === 'en' ? '' : `_${lang}`;
+  const [allLogEntries, allCampaigns, encounterSets, errata] = await Promise.all([
+    loadAsset<CampaignLog[]>(`campaignLogs${suffix}`),
+    loadAsset<FullCampaign[]>(`allCampaigns${suffix}`),
+    loadAsset<{ [code: string]: string }>(`encounterSets${suffix}`),
+    loadAsset<Errata>(`campaignErrata${suffix}`),
+  ]);
+  return {
+    allLogEntries,
+    allCampaigns,
+    encounterSets,
+    errata,
+  };
 }
 
-function load(
+async function load(
   lang: string,
   id: string
-): {
+): Promise<{
   allLogEntries: CampaignLog[];
   campaign: FullCampaign | undefined;
   sideCampaign: FullCampaign | undefined;
@@ -378,8 +242,8 @@ function load(
     [code: string]: string;
   };
   errata: Errata;
-} {
-  const result = loadAll(lang);
+}> {
+  const result = await loadAll(lang);
 
   return {
     allLogEntries: result.allLogEntries,
@@ -428,11 +292,11 @@ function combineCampaignLog(
   };
 }
 
-export function getCampaignGuide(
+export async function getCampaignGuide(
   id: string,
   lang: string
-): CampaignGuide | undefined {
-  const { allLogEntries, campaign, sideCampaign, encounterSets, errata } = load(
+): Promise<CampaignGuide | undefined> {
+  const { allLogEntries, campaign, sideCampaign, encounterSets, errata } = await load(
     lang,
     id
   );
@@ -543,9 +407,27 @@ function findStandaloneCampaign(
   };
 }
 
-export function getStandaloneScenarios(lang: string): StandaloneInfo[] {
-  const { allLogEntries, allCampaigns } = loadAll(lang);
-  const standalones = require('../../../assets/generated/standaloneScenarios.json');
+export function useStandaloneScenarios(): StandaloneInfo[] | undefined {
+  const { lang } = useContext(LanguageContext);
+  const [scenarios, setScenarios] = useState<StandaloneInfo[]>();
+  useEffect(() => {
+    let canceled = false;
+    (async () => {
+      const scenarios = await getStandaloneScenarios(lang);
+      if (!canceled) {
+        setScenarios(scenarios);
+      }
+    })();
+    return () => {
+      canceled = true;
+    };
+  }, [lang, setScenarios]);
+  return scenarios;
+}
+
+async function getStandaloneScenarios(lang: string): Promise<StandaloneInfo[]> {
+  const { allLogEntries, allCampaigns } = await loadAll(lang);
+  const standalones = await loadAsset('standaloneScenarios');
   return sortBy(
     flatMap(standalones, (id: StandaloneScenarioId | StandaloneCampaignId) => {
       switch (id.type) {

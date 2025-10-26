@@ -1,10 +1,12 @@
 module.exports = {
   presets: [
-    'babel-preset-expo',
+    ['babel-preset-expo', {
+      decorators: {
+        legacy: true,
+      },
+    }],
   ],
   plugins: [
-    ['@babel/plugin-proposal-decorators', { 'legacy': true }],
-    ['@babel/plugin-proposal-class-properties', { 'loose': true }],
     [
       'module-resolver',
       {

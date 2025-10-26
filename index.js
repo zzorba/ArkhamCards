@@ -4,7 +4,6 @@ import * as Sentry from '@sentry/react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistCache } from 'apollo-cache-persist';
 import { getApps, initializeApp } from '@react-native-firebase/app';
-import database from '@react-native-firebase/database';
 import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-gesture-handler';
 import 'react-native-console-time-polyfill';

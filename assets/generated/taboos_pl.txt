@@ -1,0 +1,2598 @@
+[
+  {
+    "id": 1,
+    "code": "001",
+    "name": "Lista tabu",
+    "active": 1,
+    "date_start": "2019-04-20",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 5
+      },
+      {
+        "code": "02189",
+        "xp": 5
+      },
+      {
+        "code": "02193",
+        "xp": 2
+      },
+      {
+        "code": "01033",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”"
+      },
+      {
+        "code": "02002",
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”."
+      },
+      {
+        "code": "02111",
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”."
+      },
+      {
+        "code": "02229",
+        "text": "Ta karta zyskuje: „Na każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę”."
+      },
+      {
+        "code": "02266",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
+      },
+      {
+        "code": "03029",
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą Przedmiot z twojej ręki, który zajmuje mniej niż 2 strefy ręki”."
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "code": "002",
+    "name": "Lista tabu",
+    "active": 1,
+    "date_start": "2019-09-27",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02026",
+        "xp": 3
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 5
+      },
+      {
+        "code": "02189",
+        "xp": 5
+      },
+      {
+        "code": "02193",
+        "xp": 2
+      },
+      {
+        "code": "02226",
+        "xp": -1
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "01033",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”"
+      },
+      {
+        "code": "02002",
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”."
+      },
+      {
+        "code": "02111",
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”."
+      },
+      {
+        "code": "02229",
+        "text": "Ta karta zyskuje: „Na każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę”."
+      },
+      {
+        "code": "02266",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
+      },
+      {
+        "code": "03029",
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą Przedmiot z twojej ręki, który zajmuje mniej niż 2 strefy ręki”."
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "code": "003",
+    "name": "Lista tabu",
+    "active": 1,
+    "date_start": "2020-10-15",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 1
+      },
+      {
+        "code": "01050",
+        "xp": 2
+      },
+      {
+        "code": "02108",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 3
+      },
+      {
+        "code": "02189",
+        "xp": 3
+      },
+      {
+        "code": "02193",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "xp": -1
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "xp": 4
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "06021",
+        "xp": 3
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "01033",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”"
+      },
+      {
+        "code": "02002",
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”."
+      },
+      {
+        "code": "02111",
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”."
+      },
+      {
+        "code": "02229",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „(maksymalnie raz na rundę).”"
+      },
+      {
+        "code": "02266",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
+      },
+      {
+        "code": "03029",
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki.”"
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa."
+      },
+      {
+        "code": "04309",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „Usuń Wszystko na jedną kartę z gry.”"
+      },
+      {
+        "code": "05116",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast]."
+      },
+      {
+        "code": "05188",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast]."
+      },
+      {
+        "code": "05189",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast]."
+      },
+      {
+        "code": "06195",
+        "text": "Zdolność [action] tej karty brzmi teraz: „[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia.”"
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Zakazana."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "code": "004",
+    "name": "Lista tabu",
+    "active": 1,
+    "date_start": "2021-06-28",
+    "cards": [
+      {
+        "code": "01020",
+        "xp": 1
+      },
+      {
+        "code": "01050",
+        "text": "Ta karta brzmi teraz: „Uwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów.”"
+      },
+      {
+        "code": "02108",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 3
+      },
+      {
+        "code": "02189",
+        "xp": 3
+      },
+      {
+        "code": "02193",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "Zdolność [action] tej karty zyskuje: „Celem tego ataku może być nie-[[Elitarny]] wróg oddalony o 1 lokalizację dalej od jego normalnego zasięgu, ignorując słowa kluczowe Powściągliwy i Mściwy.”"
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "xp": 4
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Ta karta traci tekst: „Dołączony atut nie może być używany by atakować przeciwników pozostających w zwarciu z twoim badaczem.”"
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "Zdolność tej karty zyskuje: „Usuń Szczęśliwe zakończenie z gry.”"
+      },
+      {
+        "code": "06022",
+        "text": "Zdolność stała tej karty brzmi teraz: „Jeśli na tej karcie nie znajdują się żadne ładunki, usuń ją z gry.”"
+      },
+      {
+        "code": "06199",
+        "text": "Zdolność tej karty zyskuje: „Usuń z gry każdą przeznaczoną do tego testu kopię Trójki asów.”"
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07269",
+        "text": "Zdolność tej karty zyskuje: „Usuń Ciszę przed burzą z gry.”"
+      },
+      {
+        "code": "07301",
+        "text": "Zdolność tej karty zyskuje: „Usuń Uświęcenie z gry.”"
+      },
+      {
+        "code": "01033",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”"
+      },
+      {
+        "code": "02002",
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”."
+      },
+      {
+        "code": "02111",
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”."
+      },
+      {
+        "code": "02229",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „(maksymalnie raz na rundę).”"
+      },
+      {
+        "code": "02266",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
+      },
+      {
+        "code": "03029",
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki.”"
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa."
+      },
+      {
+        "code": "04309",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „Usuń Wszystko na jedną kartę z gry.”"
+      },
+      {
+        "code": "05116",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast]."
+      },
+      {
+        "code": "05188",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast]."
+      },
+      {
+        "code": "05189",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast]."
+      },
+      {
+        "code": "06195",
+        "text": "Zdolność [action] tej karty brzmi teraz: „[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia.”"
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Zakazana."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "code": "005",
+    "name": "Lista tabu",
+    "active": 1,
+    "date_start": "2022-08-26",
+    "cards": [
+      {
+        "code": "01050",
+        "text": "Ta karta brzmi teraz: „Uwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów.”"
+      },
+      {
+        "code": "02108",
+        "xp": 2
+      },
+      {
+        "code": "02152",
+        "xp": 1
+      },
+      {
+        "code": "02187",
+        "xp": 3
+      },
+      {
+        "code": "02189",
+        "xp": 3
+      },
+      {
+        "code": "02193",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "Zdolność [action] tej karty zyskuje: „Celem tego ataku może być nie-[[Elitarny]] wróg oddalony o 1 lokalizację dalej od jego normalnego zasięgu, ignorując słowa kluczowe Powściągliwy i Mściwy.”"
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "text": "Zdolność [fast] tej karty jest teraz zdolnością [action]."
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Ta karta traci tekst: „Dołączony atut nie może być używany by atakować przeciwników pozostających w zwarciu z twoim badaczem.”"
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "Zdolność tej karty zyskuje: „Usuń Szczęśliwe zakończenie z gry.”"
+      },
+      {
+        "code": "06022",
+        "text": "Zdolność stała tej karty brzmi teraz: „Jeśli na tej karcie nie znajdują się żadne ładunki, usuń ją z gry.”"
+      },
+      {
+        "code": "06199",
+        "text": "Zdolność tej karty zyskuje: „Usuń z gry każdą przeznaczoną do tego testu kopię Trójki asów.”"
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "03112",
+        "xp": 3
+      },
+      {
+        "code": "07197",
+        "xp": -2
+      },
+      {
+        "code": "07308",
+        "xp": -2
+      },
+      {
+        "code": "08032",
+        "xp": 2
+      },
+      {
+        "code": "08099",
+        "xp": 2
+      },
+      {
+        "code": "07269",
+        "text": "Zdolność tej karty zyskuje: „Usuń Ciszę przed burzą z gry.”"
+      },
+      {
+        "code": "07301",
+        "text": "Zdolność tej karty zyskuje: „Usuń Uświęcenie z gry.”"
+      },
+      {
+        "code": "01033",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”"
+      },
+      {
+        "code": "02002",
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”."
+      },
+      {
+        "code": "02111",
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”."
+      },
+      {
+        "code": "02229",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „(maksymalnie raz na rundę).”"
+      },
+      {
+        "code": "02266",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
+      },
+      {
+        "code": "03029",
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki.”"
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa."
+      },
+      {
+        "code": "04309",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „Usuń Wszystko na jedną kartę z gry.”"
+      },
+      {
+        "code": "05116",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast]."
+      },
+      {
+        "code": "05188",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast]."
+      },
+      {
+        "code": "05189",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast]."
+      },
+      {
+        "code": "06195",
+        "text": "Zdolność [action] tej karty brzmi teraz: „[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia.”"
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Zakazana."
+      },
+      {
+        "code": "02029",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli."
+      },
+      {
+        "code": "02269",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli."
+      },
+      {
+        "code": "60416",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli."
+      },
+      {
+        "code": "02263",
+        "text": "Zdolność Walka tej karty brzmi teraz: „+1 obrażenie” zamiast „+2 obrażenia”."
+      },
+      {
+        "code": "03006",
+        "text": "Zdolność Wymuszona tej karty jest przeniesiona na rewers karty i brzmi teraz: „<b>Dodatkowe przygotowanie</b>: Po tym, jak dobierzesz początkowe karty: wybierz rolę ([survivor], [guardian], [seeker], [rogue], [mystic] lub neutralną).”\nAwers tej karty zyskuje dodatkowi: „[action]: Zmień rolę. Nie wywołuje ataków towarzyszących.”"
+      },
+      {
+        "code": "03019",
+        "text": "Zdolność Odkrycia tej karty brzmi teraz: „Odrzuć 1 kartę z twojej ręki lub obszaru gry twojej obecnej roli. Następnie...”"
+      },
+      {
+        "code": "04032",
+        "text": "Ta karta brzmi teraz: „symbolem innym niż [elder_sign]” zamiast „symbolem [skull], [cultist], [tablet], [elder_thing] lub [auto_fail]”."
+      },
+      {
+        "code": "04110",
+        "text": "Ta karta brzmi teraz: „symbolem innym niż [auto_fail]” zamiast „symbolem [skull], [cultist], [tablet] lub [elder_thing]”."
+      },
+      {
+        "code": "06002",
+        "text": "Karta tego badacza brzmi teraz: „<b>Rozmiar talii</b>: 50” oraz „<b>Wymogi tworzenia talii</b> (nie wliczane do wielkości talii): 3 kopie Dowodu okultyzmu...”.",
+        "deck_options": [
+          {
+            "faction": [
+              "seeker",
+              "neutral"
+            ],
+            "level": {
+              "min": 0,
+              "max": 5
+            }
+          },
+          {
+            "name": "Klasa Poboczna",
+            "faction_select": [
+              "mystic",
+              "rogue",
+              "survivor"
+            ],
+            "level": {
+              "min": 0,
+              "max": 1
+            },
+            "type": [
+              "event",
+              "skill"
+            ],
+            "limit": 10
+          }
+        ],
+        "deck_requirements": {
+          "size": 50,
+          "card": {
+            "06008": {
+              "06008": "06008"
+            },
+            "06009": {
+              "06009": "06009"
+            }
+          },
+          "random": [
+            {
+              "target": "subtype",
+              "value": "basicweakness"
+            }
+          ]
+        }
+      },
+      {
+        "code": "07268",
+        "exceptional": false,
+        "deck_limit": 1,
+        "text": "Ta karta traci słowo kluczowe Wyjątkowa i zyskuje „Limit 1 na talię.”"
+      },
+      {
+        "code": "08045",
+        "text": "Zdolność stała tej karty brzmi teraz: „...dostajesz +1 [intellect], +1 [agility] i możesz ignorować pierwszy atak towarzyszący każdej tury.”"
+      },
+      {
+        "code": "08055",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”."
+      },
+      {
+        "code": "08098",
+        "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”."
+      },
+      {
+        "code": "08100",
+        "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”."
+      },
+      {
+        "code": "08093",
+        "text": "Nawias zdolności Walki brzmi teraz: „...(Jeśli test zakończy się sukcesem o 3 lub więcej, możesz wyczerpać Cyklopowy Młot, by zamiast tego zadać +2 obrażenia i poruszyć wroga o maksymalnie 2 lokalizacje, oddalając go od ciebie).”"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "code": "006",
+    "name": "Lista tabu",
+    "active": 1,
+    "date_start": "2023-08-30",
+    "cards": [
+      {
+        "code": "01050",
+        "text": "Ta karta brzmi teraz: „Uwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nUwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów."
+      },
+      {
+        "code": "02108",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "Zdolność [action] tej karty zyskuje: „Celem tego ataku może być nie-[[Elitarny]] wróg oddalony o 1 lokalizację dalej od jego normalnego zasięgu, ignorując słowa kluczowe Powściągliwy i Mściwy.”",
+        "replacement_text": "Zmutowana. Zużywalny (3 naboje).\n[action] Wydaj 1 nabój: <b>Walka.</b> Dostajesz +3 [combat] i zadajesz +2 obrażenia do tego ataku. Celem tego ataku może być nie-[[Elitarny]] wróg oddalony o 1 lokalizację dalej od jego normalnego zasięgu, ignorując słowa kluczowe Powściągliwy i Mściwy. Nie możesz w ten sposób zaatakować wrogów będących z tobą w zwarciu."
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "text": "Zdolność [fast] tej karty jest teraz zdolnością [action].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[action] Wyczerp Pana \"Szulera\" i wydaj 1 sekret: przeszukaj 3, 6 albo 9 wierzchnich kart z twojej talii w poszukiwaniu dowolnej karty i dobierz ją. Jeśli pośród przeszukiwanych kart znajduje się przynajmniej 1 osłabienie, dobierz również 1 z nich. Potasuj twoją talię."
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Ta karta traci tekst: „Dołączony atut nie może być używany by atakować przeciwników pozostających w zwarciu z twoim badaczem.”",
+        "replacement_text": "Zmutowana. Szybka. Dołącz do atutu z cechą [[Palna]] pozostającego pod twoją kontrolą i zajmującego dwie ręce.\nKiedy korzystasz z akcji Walki na atucie, do którego Celownik jest dołączony, jeśli nie jesteś w zwarciu z żadnym wrogiem, wyczerp Celownik optyczny: celem tego ataku może być nie-[[Elitarny]] wróg w sąsiedniej lokalizacji. Podczas tego ataku zignoruj słowa kluczowe Powściągliwy i Mściwy."
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "Zdolność tej karty zyskuje: „Usuń Szczęśliwe zakończenie z gry.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy odkryłeś żeton chaosu, który podczas testu umiejętności miałby obniżyć wartość twojej umiejętności do 0 (łącznie z żetonem [auto_fail]).\nAnuluj dany żeton i zamiast tego traktuj go jak żeton [elder_sign]. Usuń Szczęśliwe zakończenie z gry."
+      },
+      {
+        "code": "06022",
+        "text": "Zdolność stała tej karty brzmi teraz: „Jeśli na tej karcie nie znajdują się żadne ładunki, usuń ją z gry.”",
+        "replacement_text": "Zmutowana. Powiązana (Cząstka onyksu). Zużywalny (3 ładunki). Jeśli na tej karcie nie znajdują się żadne ładunki, usuń ją z gry.\n[fast] Wyczerp Wisior królowej i wydaj 1 ładunek: wybierz dowolną odkrytą lokalizację i wybierz jedno – porusz się do danej lokalizacji, odkryj 1 żeton wskazówki w danej lokalizacji albo automatycznie wymknij się wrogowi w danej lokalizacji."
+      },
+      {
+        "code": "06199",
+        "text": "Zdolność tej karty zyskuje: „Usuń z gry każdą przeznaczoną do tego testu kopię Trójki asów.”",
+        "replacement_text": "Zmutowana. Niezliczone.\nJeśli przeznaczysz 3 kopie Trójki asów do testu umiejętności, dany test automatycznie kończy się sukcesem <i>(nie odkrywaj żetonów z worka chaosu)</i>. Następnie dobierz 3 karty i zyskaj 3 żetony zasobów (maksymalnie raz na test). Usuń z gry każdą przeznaczoną do tego testu kopię Trójki asów."
+      },
+      {
+        "code": "60318",
+        "text": "Zamiast „Wtasuj każde osłabienie odrzucone...” umiejętność tej karty brzmi teraz: „Po rozpatrzeniu tego testu, dobierz każde osłabienie odrzucone przez ten efekt.”.",
+        "replacement_text": "Zmutowana. Po tym, jak przeznaczysz Ryzykanta do testu umiejętności, odrzucaj karty z wierzchu twojej talii, dopóki nie odrzucisz umiejętności [rogue], którą możesz przeznaczyć do tego testu. Przeznacz ją. Po rozpatrzeniu tego testu, dobierz każde osłabienie odrzucone przez ten efekt."
+      },
+      {
+        "code": "07003",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak odkryjesz 1 lub więcej żetonów wskazówek w lokalizacji, w której znajduje się wróg: odkryj 1 dodatkowy żeton wskazówki w danej lokalizacji albo automatycznie wymknij się danemu wrogowi jeśli jest nie-[[Elitarny]]. (Limit raz na rundę).”",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak odkryjesz 1 lub więcej żetonów wskazówek w lokalizacji, w której znajduje się wróg: odkryj 1 dodatkowy żeton wskazówki w danej lokalizacji albo automatycznie wymknij się danemu wrogowi jeśli jest nie-[[Elitarny]]. (Limit raz na rundę).\nEfekt [elder_sign]: +2. Jeśli ten test to badanie, możesz wybrać dowolną odkrytą lokalizację; wykonujesz to badanie tak, jakbyś zamiast tego znajdował się w danej lokalizacji."
+      },
+      {
+        "code": "07122",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Kiedy podczas testu umiejętności rozpatrujesz żeton [bless]…”",
+        "replacement_text": "Zmutowana. Trwały. Limit 1 karta z cechą [[Przymierze]] na talię.\n[reaction] „Kiedy podczas testu umiejętności rozpatrujesz żeton [bless], wyczerp Starożytne Przymierze: nie odkrywaj kolejnego żetonu z efektu tego żetonu [bless]."
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07197",
+        "xp": -2
+      },
+      {
+        "code": "03112",
+        "text": "Zdolność [fast] tej karty brzmi teraz: „...Zyskaj 1 żeton zasobu za każdy żeton zagłady na Davidzie Renfieldzie (do maksymalnie 3 żetonów zasobów).”",
+        "replacement_text": "Zmutowana. Dopóki na Davidzie Renfieldzie znajduje się przynajmniej 1 żeton zagłady, dostajesz+1 [willpower].\n[fast] Wyczerp Davida Renfielda: możesz umieścić 1 żeton zagłady na Davidzie Renfieldzie. Zyskaj 1 żeton zasobu za każdy żeton zagłady na Davidzie Renfieldzie (do maksymalnie 3 żetonów zasobów)."
+      },
+      {
+        "code": "07308",
+        "xp": -2
+      },
+      {
+        "code": "60327",
+        "xp": -1
+      },
+      {
+        "code": "08099",
+        "xp": 2
+      },
+      {
+        "code": "09022",
+        "customization_options": [
+          {
+            "xp": 1,
+            "cost": -1,
+            "real_traits": "Item. Weapon. Melee. Relic.",
+            "text_change": "trait"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.",
+            "tags": "hd.hh.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 0
+          },
+          {
+            "xp": 4,
+            "text_change": "replace",
+            "position": 1
+          }
+        ],
+        "customization_text": "□ <b>Dziedzictwo.</b> Ten atut dostaje -1 do kosztu i zyskuje cechę [[Relikwia]].\n□ <b>Inskrypcja chwały.</b> Dodaj tę inskrypcję: „- <i>Chwała</i> - Jeśli ten atak pokonał wroga, wybierz jedno: dobierz 1 kartę, wylecz 1 obrażenie lub wylecz 1 punkt przerażenia”.\n□ <b>Inskrypcja Starszych Bogów.</b> Dodaj tę inskrypcję: „- <i>Starsi Bogowie</i> - Jeśli ten atak zakończył się sukcesem o liczbę punktów równą lub wyższą od wartości zasłony twojej lokalizacji, odkryj 1 żeton wskazówki w twojej lokalizacji.”\n□□ <b>Inskrypcja łowów.</b> Dodaj tę inskrypcję: „- <i>Łowy</i> - Natychmiast porusz się do połączonej lokalizacji albo wejdź w zwarcie z wrogiem w twojej lokalizacji.”\n□ <b>Inskrypcja furii.</b> Dodaj tę inskrypcję: „- <i>Furia</i> - Jeśli ten atak zakończył się sukcesem, oprócz jego standardowych obrażeń zadaj 1 obrażenie każdemu innemu wrogowi będącemu z tobą w zwarciu”.\n□□□ <b>Starożytna moc.</b> Możesz wzmocnić topór tą samą inskrypcją maksymalnie 3 razy.\n□□□ <b>Saga.</b> Na początku każdej rundy uzupełnij 2 ładunki Runicznego topora (zamiast tylko 1).\n□□□□ <b>Zdwojona siła.</b> Za każdy wydany ładunek możesz wzmocnić topór maksymalnie 2 różnymi inskrypcjami.",
+        "text": "Usprawnienie – <b>Inskrypcja łowów:</b> +1 punkt doświadczenia."
+      },
+      {
+        "code": "09108",
+        "xp": 2
+      },
+      {
+        "code": "07269",
+        "text": "Zdolność tej karty zyskuje: „Usuń Ciszę przed burzą z gry.”",
+        "replacement_text": "Jako dodatkowy koszt zagrania Ciszy przed burzą przeszukaj worek chaosu i/lub karty w grze w poszukiwaniu łącznie 5 żetonów [bless] i cofnij je do puli żetonów.\nZmutowana. Szybka. Zagraj, kiedy miałby się zacząć krok „dobranie kart z talii spotkań” fazy Mitów. Pomiń ten krok fazy Mitów. Usuń Ciszę przed burzą z gry."
+      },
+      {
+        "code": "07301",
+        "text": "Zdolność tej karty zyskuje: „Usuń Uświęcenie z gry.”",
+        "replacement_text": "Jako dodatkowy koszt zagrania Uświęcenia cofnij do puli żetonów 10 żetonów [bless] znajdujących się w worku chaosu lub zapieczętowanych na kartach w grze.\nZmutowana.\nUsuń 1 żeton zagłady z dowolnej karty w grze. Usuń Uświęcenie z gry."
+      },
+      {
+        "code": "08019",
+        "text": "Efekt <b>Wymuszony</b> tej karty brzmi teraz: „<b>Wymuszony</b> – Kiedy zaczyna się twoja pierwsza tura podczas gry: Zagraj jedna po drugiej, do 5 atutów z cechą [[Przedmiot]]...”",
+        "replacement_text": "Zmutowana. Trwały. Limit 1 na talię. Kup podczas budowania talii.\n<b>Wymuszony</b> - Kiedy zaczyna się twoja pierwsza tura podczas gry: Zagraj jedna po drugiej, do 5 atutów z cechą [[Item]] z twojej ręki, obniżając o 1 koszt zagrania każdego z nich. Podczas tej tury masz 3 akcje mniej do wykonania."
+      },
+      {
+        "code": "08032",
+        "text": "Zdolność tej karty zyskuje: „(Maksymalnie 2 razy na grę).”",
+        "replacement_text": "Zmutowana.\nDostajesz +1 [intellect].\n[reaction] Po tym, jak Jeremiah Kirby wejdzie do gry, wybierz „parzyste” lub „nieparzyste”: odkryj 5 wierzchnich kart z twojej talii. Dobierz każdą kartę, której koszt odpowiada wybranej przez ciebie opcji. Wtasuj pozostałe karty z powrotem do twojej talii. (Maksymalnie 2 razy na grę)."
+      },
+      {
+        "code": "01033",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”",
+        "replacement_text": "Zmutowana.\nDostajesz +1 [intellect].\n[reaction] Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera: zyskujesz 1 żeton zasobu."
+      },
+      {
+        "code": "02002",
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”.",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak podczas badania zakończysz test umiejętności z sukcesem o 2 lub więcej: odkryj 1 żeton wskazówki w twojej lokalizacji. (Limit raz na rundę.)\nEfekt [elder_sign]: +2. Zamiast tego możesz zdecydować, że ten test automatycznie kończy się porażką, aby dobrać 3 karty."
+      },
+      {
+        "code": "02111",
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”.",
+        "replacement_text": "Zmutowana.\nW kolejności graczy każdy badacz dobiera 1 kartę z wierzchu talii spotkań. Następnie dodaj Nadmierną dociekliwość do puli zwycięstwa.\nLimit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa."
+      },
+      {
+        "code": "02229",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „(maksymalnie raz na rundę).”",
+        "replacement_text": "Zmutowana.\nJeśli ten test zakończy się sukcesem o 2 lub więcej, po tym jak zostanie rozpatrzony, możesz natychmiast wykonać akcję tak, jakby była twoja tura (ta akcja nie wlicza się do liczby akcji, które możesz wykonać w każdej turze). (Maksymalnie raz na rundę)."
+      },
+      {
+        "code": "02266",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nW tej turze możesz wykonać 3 dodatkowe akcje. (Maksymalnie raz na rundę)."
+      },
+      {
+        "code": "03029",
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nUmieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki. Na końcu twojej tury, jeśli dany atut nadal znajduje się w grze, cofnij go na twoją rękę."
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa.",
+        "replacement_text": "Zmutowana. Wyjątkowa. Dostajesz +1 do każdej twojej umiejętności za każdy punkt przerażenia na Kluczu Ys.\n<b>Wymuszony </b> - Kiedy dowolna liczba punktów przerażenia miałaby zostać umieszczona na tobie: umieść 1 z tych punktów przerażenia na Kluczu Ys.\n<b>Wymuszony </b> - Kiedy Klucz Ys opuszcza grę: odrzuć 10 wierzchnich kart z twojej talii."
+      },
+      {
+        "code": "04309",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „Usuń Wszystko na jedną kartę z gry.”",
+        "replacement_text": "Zmutowana.\nNa każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę.\nJeśli ten test zakończy się sukcesem, dobierz 1 kartę za każdy punkt, o który test się powiódł (do maksimum 5). Wtasuj każde osłabienie dobrane w wyniku tego efektu z powrotem do twojej talii, bez rozpatrywania go. Usuń Wszystko na jedną kartę z gry."
+      },
+      {
+        "code": "05116",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj kartę ze spodu talii dowolnego badacza lub talii spotkań. Następnie odrzuć daną kartę, dodaj ją na rękę właściciela, umieść na spodzie danej talii albo umieść na wierzchu danej talii."
+      },
+      {
+        "code": "05188",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj 3 karty ze spodu talii dowolnego badacza lub talii spotkań. Możesz odrzucić 1 z tych kart. Możesz dodać 1 z tych kart na rękę jej właściciela. Umieść resztę danych kart albo na wierzchu, albo na spodzie danej talii w dowolnej kolejności."
+      },
+      {
+        "code": "05189",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (4 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj 1 kartę z wierzchu lub spodu talii dowolnego badacza lub talii spotkań. Następnie odrzuć daną kartę, dodaj ją na rękę właściciela, umieść na spodzie danej talii albo umieść na wierzchu danej talii."
+      },
+      {
+        "code": "05020",
+        "text": "Zdolność tej karty brzmi teraz: „<b>Pertraktacje.</b> Wybierz nie-[[Elitarnego]] wroga znajdującego się w twojej lokalizacji...”",
+        "replacement_text": "Zmutowana.\n<b>Pertraktacje.</b> Wybierz nie-[[Elitarnego]] wroga znajdującego się w twojej lokalizacji i wykonaj test [combat] (3). Ten test dostaje +X do poziomu trudności, gdzie X to ilość zadawanych obrażeń wybranego wroga. Jeśli atak zakończy się sukcesem, odkryj 1 wskazówkę w twojej lokalizacji i 1 wskazówkę w sąsiadującej lokalizacji."
+      },
+      {
+        "code": "06195",
+        "text": "Zdolność [action] tej karty brzmi teraz: „[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia.”",
+        "replacement_text": "Zmutowana. Zużywalny (5 nabojów).\n[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia."
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Zakazana.",
+        "replacement_text": "Zmutowana. Zakazana.\nNa każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę.\nPodwój poziom trudności danego testu umiejętności. Jeśli test zakończy się sukcesem, dwukrotnie rozpatrz efekty testu zakończonego sukcesem."
+      },
+      {
+        "code": "02029",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym jak podczas wykonywanego przez ciebie testu zostanie odkryty dowolny symbol: do tego testu dostajesz +1 do wartości umiejętności."
+      },
+      {
+        "code": "02153",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy wróg zaatakuje badacza w twojej lokalizacji.\nAnuluj ten atak. Następnie odkryj losowy żeton z worka chaosu. Jeśli ma dowolny symbol, atakujący wróg zadaje obrażenia samemu sobie."
+      },
+      {
+        "code": "02269",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\nWyczerp Klejnot Aureolusa po tym, jak podczas testu umiejętności w twojej lokalizacji zostanie odkryty dowolny symbol: dobierasz 1 kartę lub zyskujesz 2 żetony zasobów."
+      },
+      {
+        "code": "60416",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\nZyskaj 1 żeton zasobu. Odkryj 3 losowe żetony z worka chaosu. Za każdy odkryty dowolny symbol zyskaj 2 dodatkowe żetony zasobów."
+      },
+      {
+        "code": "05113",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\n<b>Wymykanie.</b> Użyj tylko na nie-[[Elitarnym]] wrogu. Ta próba wymknięcia się używa [willpower] zamiast [agility]. Jeśli test zakończył się sukcesem, porusz wroga, któremu się właśnie wymknąłeś, do dowolnej lokalizacji w grze. Jeśli test zakończył się sukcesem i podczas próby wymknięcia się został odkryty dowolny symbol, dany wróg nie zostaje przygotowany podczas następnej fazy utrzymania."
+      },
+      {
+        "code": "02263",
+        "text": "Zdolność Walka tej karty brzmi teraz: „+1 obrażenie” zamiast „+2 obrażenia”.",
+        "replacement_text": "Możesz zawrzeć ten atut w swojej talii tylko poprzez ulepszenie go z Dziwnego roztworu (Niezidentyfikowanego) i tylko jeśli \"udało ci się znaleźć rozwiązanie\" patrz Dziennik kampanii.\nZmutowana. Zużywalny (3 zapasy).\n[action] Wydaj 1 zapasy: <b>Walka.</b> Zaatakuj z podstawową umiejętnością [combat] o wartości 6. Ten atak zadaje +1 obrażenie."
+      },
+      {
+        "code": "03006",
+        "text": "Zdolność Wymuszona tej karty jest przeniesiona na rewers karty i brzmi teraz: „<b>Dodatkowe przygotowanie</b>: Po tym, jak dobierzesz początkowe karty: wybierz rolę ([survivor], [guardian], [seeker], [rogue], [mystic] lub neutralną).”\nAwers tej karty zyskuje dodatkowi: „[action]: Zmień rolę. Nie wywołuje ataków towarzyszących.”",
+        "replacement_text": "Zmutowana.\nMożesz zagrywać, przeznaczać do testów lub aktywować zdolności tylko kart neutralnych lub kart należących do klasy wybranej roli.\n[free]: Zmień twoją rolę. (Limit raz na rundę).\n[action]: Zmień rolę. Nie wywołuje ataków towarzyszących.\nEfekt [elder_sign]: +2. Możesz zmienić rolę.",
+        "replacement_back_text": "Zmutowana.\n<b>Rozmiar talii</b>: 35.\n<b>Opcje tworzenia talii</b>: karty Ocalałego, Strażnika, Poszukiwacza, Łotra i Mistyka ([survivor], [guardian], [seeker], [rogue] i [mystic]) o poziomie 0-3, karty neutralne o poziomie 0-5.\n<b>Wymogi tworzenia talii</b> (niewliczane do wielkości talii): 2 kopie Improwizacji, 2 kopie Kryzysu tożsamości, 1 losowe podstawowe osłabienie.\n<b>Dodatkowe wymogi</b>: twoja talia musi zawierać przynajmniej po 7 kart z 3 różnych klas ([survivor], [guardian], [seeker], [rogue] lub [mystic]).\n<b>Dodatkowe przygotowanie</b>: Po tym, jak dobierzesz początkowe karty: wybierz rolę ([survivor], [guardian], [seeker], [rogue], [mystic] lub neutralną)."
+      },
+      {
+        "code": "03019",
+        "text": "Zdolność Odkrycia tej karty brzmi teraz: „Odrzuć 1 kartę z twojej ręki lub obszaru gry twojej obecnej roli. Następnie...”",
+        "replacement_text": "Zmutowana.\n<b>Odkrycie</b> - Odrzuć 1 kartę z twojej ręki lub obszaru gry twojej obecnej roli. Następnie odrzuć wierzchnią kartę z twojej talii. Zmień twoją rolę na rolę odpowiadającą klasie odrzuconej karty (jeśli odrzucona karta to osłabienie, zmień rolę na neutralną)."
+      },
+      {
+        "code": "04032",
+        "text": "Ta karta brzmi teraz: „symbolem innym niż [elder_sign]” zamiast „symbolem [skull], [cultist], [tablet], [elder_thing] lub [auto_fail]”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy miałbyś ujawnić żeton chaosu.\nOdkryj 5 żetonów chaosu zamiast jednego. Wybierz i rozpatrz jeden z tych żetonów z symbolem innym niż [elder_sign], a pozostałe zignoruj. (Jeśli nie zostanie odkryty żaden taki żeton, wybierz i rozpatrz dowolny z tych żetonów, a resztę zignoruj)."
+      },
+      {
+        "code": "04105",
+        "text": "Zdolność tej karty brzmi teraz: „<b>Pertraktacje.</b> Wybierz wroga nie-osłabienie znajdującego się w twojej lokalizacji...”",
+        "replacement_text": "Zmutowana.\n<b>Pertraktacje.</b> Wybierz wroga nie-osłabienie znajdującego się w twojej lokalizacji i wykonaj test[intellect] (3). Ten test dostaje +X do trudności, gdzie X to wartość przerażenia danego wroga. Jeśli test zakończy się sukcesem, wtasuj wybranego wroga do talii spotkań. Jeśli wybrany wróg posiada cechę [[Elite]], zamiast tego natychmiast się mu wymykasz."
+      },
+      {
+        "code": "04110",
+        "text": "Ta karta brzmi teraz: „symbolem innym niż [auto_fail]” zamiast „symbolem [skull], [cultist], [tablet] lub [elder_thing]”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy podczas testu umiejętności w twojej lokalizacji zostanie odkryty żeton chaosu z symbolem innym niż [auto_fail]. Anuluj dany żeton chaosu. <i>(Nie odkrywaj nowego żetonu chaosu, aby zastąpić anulowany żeton.)</i>"
+      },
+      {
+        "code": "06002",
+        "text": "Karta tego badacza brzmi teraz: „<b>Rozmiar talii</b>: 50” oraz „<b>Wymogi tworzenia talii</b> (nie wliczane do wielkości talii): 3 kopie Dowodu okultyzmu...”.",
+        "deck_options": [
+          {
+            "faction": [
+              "seeker",
+              "neutral"
+            ],
+            "level": {
+              "min": 0,
+              "max": 5
+            }
+          },
+          {
+            "name": "Klasa Poboczna",
+            "faction_select": [
+              "mystic",
+              "rogue",
+              "survivor"
+            ],
+            "level": {
+              "min": 0,
+              "max": 1
+            },
+            "type": [
+              "event",
+              "skill"
+            ],
+            "limit": 10
+          }
+        ],
+        "deck_requirements": {
+          "size": 50,
+          "card": {
+            "06008": {
+              "06008": "06008"
+            },
+            "06009": {
+              "06009": "06009"
+            }
+          },
+          "random": [
+            {
+              "target": "subtype",
+              "value": "basicweakness"
+            }
+          ]
+        },
+        "replacement_back_text": "Zmutowana.\n<b>Rozmiar talii</b>: 50.\n<b>Wybór drugorzędnej klasy</b>: podczas tworzenia talii wybierz Mistyka ([mystic]), Łotra ([rogue]) lub Ocalałego ([survivor]).\n<b>Opcje tworzenia talii</b>: karty Poszukiwacza ([seeker]) o poziomie 0-5, karty neutralne o poziomie 0-5, do 10 kart wydarzeń i/lub umiejętności twojej wybranej drugorzędnej klasy o poziomie 0-1.\n<b>Wymogi tworzenia talii</b> (nie wliczane do wielkości talii): 3 kopie Dowodu okultyzmu, Szokujące odkrycie, 1 losowe podstawowe osłabienie."
+      },
+      {
+        "code": "07268",
+        "exceptional": false,
+        "deck_limit": 1,
+        "text": "Ta karta traci słowo kluczowe Wyjątkowa i zyskuje „Limit 1 na talię.”",
+        "replacement_text": "Zmutowana. Limit 1 na talię. Pieczęć (maksymalnie X [curse]).\n[action] Wyczerp Flet Zewnętrznych Bogów i uwolnij 1 zapieczętowany na nim żeton [curse]: wybierz nie-[[Elitarnego]] wroga w twojej lokalizacji. Porusz wybranego wroga do połączonej lokalizacji albo zadaj wartość jego obrażeń dowolnemu wrogowi w jego lokalizacji. Ta akcja nie wywołuje ataków towarzyszących."
+      },
+      {
+        "code": "08045",
+        "text": "Zdolność stała tej karty brzmi teraz: „...dostajesz +1 [intellect], +1 [agility] i możesz ignorować pierwszy atak towarzyszący każdej tury.”",
+        "replacement_text": "Zmutowana.\nDopóki nie znajdujesz się w miejscu mocy, dostajesz +1 [intellect], +1 [agility] i możesz ignorować pierwszy atak towarzyszący każdej tury.\n[reaction] Po tym, jak Prophesiae Profana wejdzie do gry: wybierz odkrytą lokalizację. Dana lokalizacja to „miejsce mocy”, dopóki Prophesiae Profana nie opuści gry.\n[action]: Porusz dowolnego badacza na miejsce mocy."
+      },
+      {
+        "code": "08055",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj na początku fazy badaczy. Maksymalnie raz na rundę.\nOdkrywaj jedna po drugiej karty z wierzchu dowolnych talii badaczy, dopóki nie zostanie odkrytych dokładnie 5 kart. Odłóż te karty na bok, poza grę. Dopóki dane karty są odłożone na bok, dowolny badacz może zagrać dowolne z tych kart tak, jakby znajdowały się na jego ręce. Na początku następnej fazy badaczy wtasuj każdą z danych kart, która nadal jest odłożona na bok, do talii jej właściciela."
+      },
+      {
+        "code": "08076",
+        "text": "Zdolność tej karty zyskuje: „(Maksymalnie 2 razy na grę).”",
+        "replacement_text": "Zmutowana.\nWygnaj z ręki kartę o poziomie 0-5. Odkryj 2 żetony wskazówek w twojej lokalizacji. Jeśli wygnana karta miała poziom 2 lub wyższy, usuń 1 żeton zagłady z obecnej tajemnicy. Wygnaj Spal po przeczytaniu. (Maksymalnie 2 razy na grę).\n<b>Karta zaprojektowana przez Radę na Wygnaniu podczas Gen Con 2020</b>"
+      },
+      {
+        "code": "08098",
+        "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych (ruch, wymykanie się lub badanie)."
+      },
+      {
+        "code": "08100",
+        "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych, w dowolnej kolejności (ruch, wymykanie się lub badanie)."
+      },
+      {
+        "code": "08093",
+        "text": "Nawias zdolności Walki brzmi teraz: „...(Jeśli test zakończy się sukcesem o 3 lub więcej, możesz wyczerpać Cyklopowy Młot, by zamiast tego zadać +2 obrażenia i poruszyć wroga o maksymalnie 2 lokalizacje, oddalając go od ciebie).”",
+        "replacement_text": "Zmutowana.\n[action]: <b>Walka.</b> Dodaj wartość twojej [willpower] do wartości twojej umiejętności do tego ataku. Do tego ataku zadajesz +1 obrażenie. Jeśli test zakończy się sukcesem i zaatakowany wróg jest nie-[[Elitarny]], możesz poruszyć go o 1 lokalizację, oddalając go od ciebie. (Jeśli test zakończy się sukcesem o 3 lub więcej, możesz wyczerpać Cyklopowy Młot, by zamiast tego zadać +2 obrażenia i poruszyć wroga o maksymalnie 2 lokalizacje, oddalając go od ciebie)."
+      },
+      {
+        "code": "09045",
+        "text": "Druga zdolność tej karty zyskuje: „(maksymalnie 3 dowody wydane na rundę).”",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak zdolność karty gracza umieści 1 lub więcej twoich żetonów wskazówek na twojej lokalizacji: umieść tyle samo żetonów zasobów na Notatkach z badań jako dowody.\n[action]: Wykonaj test [intellect] (0). Za każdy punkt, o który test zakończy się sukcesem, możesz wydać 1 dowód, aby odkryć 1 żeton wskazówki w twojej lokalizacji (maksymalnie 3 dowody wydane na rundę)."
+      },
+      {
+        "code": "09081",
+        "text": "Pole tekstowe tej karty brzmi teraz: „[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - „Idź”. Ten wróg porusza się 1 raz w wybranym przez ciebie kierunku.”\nArkusz usprawnień traci zdolność „Łaska” i zyskuje: <b>☐Padnij</b>. Dodaj rozkaz: „- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.”",
+        "customization_options": [
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>'Cower.'</i> This enemy exhausts.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 2
+          },
+          {
+            "xp": 3,
+            "deck_limit": 3,
+            "text_change": "insert",
+            "position": 1
+          }
+        ],
+        "customization_change": "- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga.\n- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.\n- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n[fast]: Cofnij Potęgę słowa na twoją rękę”.\nMożesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - \nMożesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
+        "customization_text": "□ <b>Zdrada.</b> Dodaj rozkaz: „- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga”.\n□ <b>Padnij.</b> Dodaj rozkaz: „- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.”\n□ <b>Wyznanie.</b> Dodaj rozkaz: „- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n□ <b>Odwrócenie uwagi.</b> Dodaj rozkaz: „- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n□□ <b>Większa kontrola.</b> Potęga słowa zyskuje: „[fast]: Cofnij Potęgę słowa na twoją rękę”.\n□□□ <b>Powiązany.</b> Możesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n□□□ <b>Łamacz języka.</b> Kiedy pertraktujesz przy pomocy Potęgi słowa, możesz wydać do 2 różnych rozkazów.\n□□□ <b>Po trzykroć.</b> Możesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
+        "replacement_text": "Zmutowana. Przystosowalny. Szybka. Zagraj tylko podczas twojej tury.\nDołącz do nie-[[Elitarnego]] wroga w twojej lokalizacji.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - \n - „Idź”. Ten wróg porusza się 1 raz w wybranym przez ciebie kierunku."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "code": "007",
+    "name": "Lista tabu",
+    "active": 1,
+    "date_start": "2024-02-20",
+    "cards": [
+      {
+        "code": "01073",
+        "xp": 2
+      },
+      {
+        "code": "01573",
+        "xp": 2
+      },
+      {
+        "code": "06332",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "text": "Ta karta brzmi teraz: „Uwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nUwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów."
+      },
+      {
+        "code": "02108",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "Zdolność [action] tej karty zyskuje: „Celem tego ataku może być nie-[[Elitarny]] wróg oddalony o 1 lokalizację dalej od jego normalnego zasięgu, ignorując słowa kluczowe Powściągliwy i Mściwy.”",
+        "replacement_text": "Zmutowana. Zużywalny (3 naboje).\n[action] Wydaj 1 nabój: <b>Walka.</b> Dostajesz +3 [combat] i zadajesz +2 obrażenia do tego ataku. Celem tego ataku może być nie-[[Elitarny]] wróg oddalony o 1 lokalizację dalej od jego normalnego zasięgu, ignorując słowa kluczowe Powściągliwy i Mściwy. Nie możesz w ten sposób zaatakować wrogów będących z tobą w zwarciu."
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "text": "Zdolność [fast] tej karty jest teraz zdolnością [action].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[action] Wyczerp Pana \"Szulera\" i wydaj 1 sekret: przeszukaj 3, 6 albo 9 wierzchnich kart z twojej talii w poszukiwaniu dowolnej karty i dobierz ją. Jeśli pośród przeszukiwanych kart znajduje się przynajmniej 1 osłabienie, dobierz również 1 z nich. Potasuj twoją talię."
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Ta karta traci tekst: „Dołączony atut nie może być używany by atakować przeciwników pozostających w zwarciu z twoim badaczem.”",
+        "replacement_text": "Zmutowana. Szybka. Dołącz do atutu z cechą [[Palna]] pozostającego pod twoją kontrolą i zajmującego dwie ręce.\nKiedy korzystasz z akcji Walki na atucie, do którego Celownik jest dołączony, jeśli nie jesteś w zwarciu z żadnym wrogiem, wyczerp Celownik optyczny: celem tego ataku może być nie-[[Elitarny]] wróg w sąsiedniej lokalizacji. Podczas tego ataku zignoruj słowa kluczowe Powściągliwy i Mściwy."
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "Zdolność tej karty zyskuje: „Usuń Szczęśliwe zakończenie z gry.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy odkryłeś żeton chaosu, który podczas testu umiejętności miałby obniżyć wartość twojej umiejętności do 0 (łącznie z żetonem [auto_fail]).\nAnuluj dany żeton i zamiast tego traktuj go jak żeton [elder_sign]. Usuń Szczęśliwe zakończenie z gry."
+      },
+      {
+        "code": "06022",
+        "text": "Zdolność stała tej karty brzmi teraz: „Jeśli na tej karcie nie znajdują się żadne ładunki, usuń ją z gry.”",
+        "replacement_text": "Zmutowana. Powiązana (Cząstka onyksu). Zużywalny (3 ładunki). Jeśli na tej karcie nie znajdują się żadne ładunki, usuń ją z gry.\n[fast] Wyczerp Wisior królowej i wydaj 1 ładunek: wybierz dowolną odkrytą lokalizację i wybierz jedno – porusz się do danej lokalizacji, odkryj 1 żeton wskazówki w danej lokalizacji albo automatycznie wymknij się wrogowi w danej lokalizacji."
+      },
+      {
+        "code": "06199",
+        "text": "Zdolność tej karty zyskuje: „Usuń z gry każdą przeznaczoną do tego testu kopię Trójki asów.”",
+        "replacement_text": "Zmutowana. Niezliczone.\nJeśli przeznaczysz 3 kopie Trójki asów do testu umiejętności, dany test automatycznie kończy się sukcesem <i>(nie odkrywaj żetonów z worka chaosu)</i>. Następnie dobierz 3 karty i zyskaj 3 żetony zasobów (maksymalnie raz na test). Usuń z gry każdą przeznaczoną do tego testu kopię Trójki asów."
+      },
+      {
+        "code": "60318",
+        "text": "Zamiast „Wtasuj każde osłabienie odrzucone...” umiejętność tej karty brzmi teraz: „Po rozpatrzeniu tego testu, dobierz każde osłabienie odrzucone przez ten efekt.”.",
+        "replacement_text": "Zmutowana. Po tym, jak przeznaczysz Ryzykanta do testu umiejętności, odrzucaj karty z wierzchu twojej talii, dopóki nie odrzucisz umiejętności [rogue], którą możesz przeznaczyć do tego testu. Przeznacz ją. Po rozpatrzeniu tego testu, dobierz każde osłabienie odrzucone przez ten efekt."
+      },
+      {
+        "code": "07003",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak odkryjesz 1 lub więcej żetonów wskazówek w lokalizacji, w której znajduje się wróg: odkryj 1 dodatkowy żeton wskazówki w danej lokalizacji albo automatycznie wymknij się danemu wrogowi jeśli jest nie-[[Elitarny]]. (Limit raz na rundę).”",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak odkryjesz 1 lub więcej żetonów wskazówek w lokalizacji, w której znajduje się wróg: odkryj 1 dodatkowy żeton wskazówki w danej lokalizacji albo automatycznie wymknij się danemu wrogowi jeśli jest nie-[[Elitarny]]. (Limit raz na rundę).\nEfekt [elder_sign]: +2. Jeśli ten test to badanie, możesz wybrać dowolną odkrytą lokalizację; wykonujesz to badanie tak, jakbyś zamiast tego znajdował się w danej lokalizacji."
+      },
+      {
+        "code": "07122",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Kiedy podczas testu umiejętności rozpatrujesz żeton [bless]…”",
+        "replacement_text": "Zmutowana. Trwały. Limit 1 karta z cechą [[Przymierze]] na talię.\n[reaction] „Kiedy podczas testu umiejętności rozpatrujesz żeton [bless], wyczerp Starożytne Przymierze: nie odkrywaj kolejnego żetonu z efektu tego żetonu [bless]."
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07197",
+        "xp": -2
+      },
+      {
+        "code": "03112",
+        "text": "Zdolność [fast] tej karty brzmi teraz: „...Zyskaj 1 żeton zasobu za każdy żeton zagłady na Davidzie Renfieldzie (do maksymalnie 3 żetonów zasobów).”",
+        "replacement_text": "Zmutowana. Dopóki na Davidzie Renfieldzie znajduje się przynajmniej 1 żeton zagłady, dostajesz+1 [willpower].\n[fast] Wyczerp Davida Renfielda: możesz umieścić 1 żeton zagłady na Davidzie Renfieldzie. Zyskaj 1 żeton zasobu za każdy żeton zagłady na Davidzie Renfieldzie (do maksymalnie 3 żetonów zasobów)."
+      },
+      {
+        "code": "07308",
+        "xp": -2
+      },
+      {
+        "code": "60327",
+        "xp": -1
+      },
+      {
+        "code": "08099",
+        "xp": 2
+      },
+      {
+        "code": "09117",
+        "xp": 1
+      },
+      {
+        "code": "09022",
+        "customization_options": [
+          {
+            "xp": 1,
+            "cost": -1,
+            "real_traits": "Item. Weapon. Melee. Relic.",
+            "text_change": "trait"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.",
+            "tags": "hd.hh.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 0
+          },
+          {
+            "xp": 4,
+            "text_change": "replace",
+            "position": 1
+          }
+        ],
+        "customization_text": "□ <b>Dziedzictwo.</b> Ten atut dostaje -1 do kosztu i zyskuje cechę [[Relikwia]].\n□ <b>Inskrypcja chwały.</b> Dodaj tę inskrypcję: „- <i>Chwała</i> - Jeśli ten atak pokonał wroga, wybierz jedno: dobierz 1 kartę, wylecz 1 obrażenie lub wylecz 1 punkt przerażenia”.\n□ <b>Inskrypcja Starszych Bogów.</b> Dodaj tę inskrypcję: „- <i>Starsi Bogowie</i> - Jeśli ten atak zakończył się sukcesem o liczbę punktów równą lub wyższą od wartości zasłony twojej lokalizacji, odkryj 1 żeton wskazówki w twojej lokalizacji.”\n□□ <b>Inskrypcja łowów.</b> Dodaj tę inskrypcję: „- <i>Łowy</i> - Natychmiast porusz się do połączonej lokalizacji albo wejdź w zwarcie z wrogiem w twojej lokalizacji.”\n□ <b>Inskrypcja furii.</b> Dodaj tę inskrypcję: „- <i>Furia</i> - Jeśli ten atak zakończył się sukcesem, oprócz jego standardowych obrażeń zadaj 1 obrażenie każdemu innemu wrogowi będącemu z tobą w zwarciu”.\n□□□ <b>Starożytna moc.</b> Możesz wzmocnić topór tą samą inskrypcją maksymalnie 3 razy.\n□□□ <b>Saga.</b> Na początku każdej rundy uzupełnij 2 ładunki Runicznego topora (zamiast tylko 1).\n□□□□ <b>Zdwojona siła.</b> Za każdy wydany ładunek możesz wzmocnić topór maksymalnie 2 różnymi inskrypcjami.",
+        "text": "Usprawnienie – <b>Inskrypcja łowów:</b> +1 punkt doświadczenia."
+      },
+      {
+        "code": "09108",
+        "xp": 2
+      },
+      {
+        "code": "07269",
+        "text": "Zdolność tej karty zyskuje: „Usuń Ciszę przed burzą z gry.”",
+        "replacement_text": "Jako dodatkowy koszt zagrania Ciszy przed burzą przeszukaj worek chaosu i/lub karty w grze w poszukiwaniu łącznie 5 żetonów [bless] i cofnij je do puli żetonów.\nZmutowana. Szybka. Zagraj, kiedy miałby się zacząć krok „dobranie kart z talii spotkań” fazy Mitów. Pomiń ten krok fazy Mitów. Usuń Ciszę przed burzą z gry."
+      },
+      {
+        "code": "07301",
+        "text": "Zdolność tej karty zyskuje: „Usuń Uświęcenie z gry.”",
+        "replacement_text": "Jako dodatkowy koszt zagrania Uświęcenia cofnij do puli żetonów 10 żetonów [bless] znajdujących się w worku chaosu lub zapieczętowanych na kartach w grze.\nZmutowana.\nUsuń 1 żeton zagłady z dowolnej karty w grze. Usuń Uświęcenie z gry."
+      },
+      {
+        "code": "08019",
+        "text": "Efekt <b>Wymuszony</b> tej karty brzmi teraz: „<b>Wymuszony</b> – Kiedy zaczyna się twoja pierwsza tura podczas gry: Zagraj jedna po drugiej, do 5 atutów z cechą [[Przedmiot]]...”",
+        "replacement_text": "Zmutowana. Trwały. Limit 1 na talię. Kup podczas budowania talii.\n<b>Wymuszony</b> - Kiedy zaczyna się twoja pierwsza tura podczas gry: Zagraj jedna po drugiej, do 5 atutów z cechą [[Item]] z twojej ręki, obniżając o 1 koszt zagrania każdego z nich. Podczas tej tury masz 3 akcje mniej do wykonania."
+      },
+      {
+        "code": "08032",
+        "text": "Zdolność tej karty zyskuje: „(Maksymalnie 2 razy na grę).”",
+        "replacement_text": "Zmutowana.\nDostajesz +1 [intellect].\n[reaction] Po tym, jak Jeremiah Kirby wejdzie do gry, wybierz „parzyste” lub „nieparzyste”: odkryj 5 wierzchnich kart z twojej talii. Dobierz każdą kartę, której koszt odpowiada wybranej przez ciebie opcji. Wtasuj pozostałe karty z powrotem do twojej talii. (Maksymalnie 2 razy na grę)."
+      },
+      {
+        "code": "01033",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”",
+        "replacement_text": "Zmutowana.\nDostajesz +1 [intellect].\n[reaction] Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera: zyskujesz 1 żeton zasobu."
+      },
+      {
+        "code": "02002",
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”.",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak podczas badania zakończysz test umiejętności z sukcesem o 2 lub więcej: odkryj 1 żeton wskazówki w twojej lokalizacji. (Limit raz na rundę.)\nEfekt [elder_sign]: +2. Zamiast tego możesz zdecydować, że ten test automatycznie kończy się porażką, aby dobrać 3 karty."
+      },
+      {
+        "code": "02111",
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”.",
+        "replacement_text": "Zmutowana.\nW kolejności graczy każdy badacz dobiera 1 kartę z wierzchu talii spotkań. Następnie dodaj Nadmierną dociekliwość do puli zwycięstwa.\nLimit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa."
+      },
+      {
+        "code": "02229",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „(maksymalnie raz na rundę).”",
+        "replacement_text": "Zmutowana.\nJeśli ten test zakończy się sukcesem o 2 lub więcej, po tym jak zostanie rozpatrzony, możesz natychmiast wykonać akcję tak, jakby była twoja tura (ta akcja nie wlicza się do liczby akcji, które możesz wykonać w każdej turze). (Maksymalnie raz na rundę)."
+      },
+      {
+        "code": "02266",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nW tej turze możesz wykonać 3 dodatkowe akcje. (Maksymalnie raz na rundę)."
+      },
+      {
+        "code": "03029",
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nUmieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki. Na końcu twojej tury, jeśli dany atut nadal znajduje się w grze, cofnij go na twoją rękę."
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa.",
+        "replacement_text": "Zmutowana. Wyjątkowa. Dostajesz +1 do każdej twojej umiejętności za każdy punkt przerażenia na Kluczu Ys.\n<b>Wymuszony </b> - Kiedy dowolna liczba punktów przerażenia miałaby zostać umieszczona na tobie: umieść 1 z tych punktów przerażenia na Kluczu Ys.\n<b>Wymuszony </b> - Kiedy Klucz Ys opuszcza grę: odrzuć 10 wierzchnich kart z twojej talii."
+      },
+      {
+        "code": "04309",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „Usuń Wszystko na jedną kartę z gry.”",
+        "replacement_text": "Zmutowana.\nNa każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę.\nJeśli ten test zakończy się sukcesem, dobierz 1 kartę za każdy punkt, o który test się powiódł (do maksimum 5). Wtasuj każde osłabienie dobrane w wyniku tego efektu z powrotem do twojej talii, bez rozpatrywania go. Usuń Wszystko na jedną kartę z gry."
+      },
+      {
+        "code": "05116",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj kartę ze spodu talii dowolnego badacza lub talii spotkań. Następnie odrzuć daną kartę, dodaj ją na rękę właściciela, umieść na spodzie danej talii albo umieść na wierzchu danej talii."
+      },
+      {
+        "code": "05188",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj 3 karty ze spodu talii dowolnego badacza lub talii spotkań. Możesz odrzucić 1 z tych kart. Możesz dodać 1 z tych kart na rękę jej właściciela. Umieść resztę danych kart albo na wierzchu, albo na spodzie danej talii w dowolnej kolejności."
+      },
+      {
+        "code": "05189",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (4 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj 1 kartę z wierzchu lub spodu talii dowolnego badacza lub talii spotkań. Następnie odrzuć daną kartę, dodaj ją na rękę właściciela, umieść na spodzie danej talii albo umieść na wierzchu danej talii."
+      },
+      {
+        "code": "05020",
+        "text": "Zdolność tej karty brzmi teraz: „<b>Pertraktacje.</b> Wybierz nie-[[Elitarnego]] wroga znajdującego się w twojej lokalizacji...”",
+        "replacement_text": "Zmutowana.\n<b>Pertraktacje.</b> Wybierz nie-[[Elitarnego]] wroga znajdującego się w twojej lokalizacji i wykonaj test [combat] (3). Ten test dostaje +X do poziomu trudności, gdzie X to ilość zadawanych obrażeń wybranego wroga. Jeśli atak zakończy się sukcesem, odkryj 1 wskazówkę w twojej lokalizacji i 1 wskazówkę w sąsiadującej lokalizacji."
+      },
+      {
+        "code": "06195",
+        "text": "Zdolność [action] tej karty brzmi teraz: „[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia.”",
+        "replacement_text": "Zmutowana. Zużywalny (5 nabojów).\n[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia."
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Zakazana.",
+        "replacement_text": "Zmutowana. Zakazana.\nNa każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę.\nPodwój poziom trudności danego testu umiejętności. Jeśli test zakończy się sukcesem, dwukrotnie rozpatrz efekty testu zakończonego sukcesem."
+      },
+      {
+        "code": "02029",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym jak podczas wykonywanego przez ciebie testu zostanie odkryty dowolny symbol: do tego testu dostajesz +1 do wartości umiejętności."
+      },
+      {
+        "code": "02153",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy wróg zaatakuje badacza w twojej lokalizacji.\nAnuluj ten atak. Następnie odkryj losowy żeton z worka chaosu. Jeśli ma dowolny symbol, atakujący wróg zadaje obrażenia samemu sobie."
+      },
+      {
+        "code": "60414",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy wróg zaatakuje badacza w twojej lokalizacji.\nAnuluj ten atak. Następnie odkryj losowy żeton z worka chaosu. Jeśli ma dowolny symbol, atakujący wróg zadaje obrażenia samemu sobie."
+      },
+      {
+        "code": "60423",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana. Fast. Zagraj, kiedy wróg zaatakuje badacza w twojej lokalizacji.\nAnuluj ten atak. Następnie odkryj losowy żeton z worka chaosu. Jeśli ma dowolny symbol, zadaj atakującemu wrogowi obrażenia w liczbie równej jego wartości obrażeń lub przerażenia."
+      },
+      {
+        "code": "02269",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\nWyczerp Klejnot Aureolusa po tym, jak podczas testu umiejętności w twojej lokalizacji zostanie odkryty dowolny symbol: dobierasz 1 kartę lub zyskujesz 2 żetony zasobów."
+      },
+      {
+        "code": "60416",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\nZyskaj 1 żeton zasobu. Odkryj 3 losowe żetony z worka chaosu. Za każdy odkryty dowolny symbol zyskaj 2 dodatkowe żetony zasobów."
+      },
+      {
+        "code": "05113",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\n<b>Wymykanie.</b> Użyj tylko na nie-[[Elitarnym]] wrogu. Ta próba wymknięcia się używa [willpower] zamiast [agility]. Jeśli test zakończył się sukcesem, porusz wroga, któremu się właśnie wymknąłeś, do dowolnej lokalizacji w grze. Jeśli test zakończył się sukcesem i podczas próby wymknięcia się został odkryty dowolny symbol, dany wróg nie zostaje przygotowany podczas następnej fazy utrzymania."
+      },
+      {
+        "code": "02263",
+        "text": "Zdolność Walka tej karty brzmi teraz: „+1 obrażenie” zamiast „+2 obrażenia”.",
+        "replacement_text": "Możesz zawrzeć ten atut w swojej talii tylko poprzez ulepszenie go z Dziwnego roztworu (Niezidentyfikowanego) i tylko jeśli \"udało ci się znaleźć rozwiązanie\" patrz Dziennik kampanii.\nZmutowana. Zużywalny (3 zapasy).\n[action] Wydaj 1 zapasy: <b>Walka.</b> Zaatakuj z podstawową umiejętnością [combat] o wartości 6. Ten atak zadaje +1 obrażenie."
+      },
+      {
+        "code": "03006",
+        "text": "Zdolność Wymuszona tej karty jest przeniesiona na rewers karty i brzmi teraz: „<b>Dodatkowe przygotowanie</b>: Po tym, jak dobierzesz początkowe karty: wybierz rolę ([survivor], [guardian], [seeker], [rogue], [mystic] lub neutralną).”\nAwers tej karty zyskuje dodatkowi: „[action]: Zmień rolę. Nie wywołuje ataków towarzyszących.”",
+        "replacement_text": "Zmutowana.\nMożesz zagrywać, przeznaczać do testów lub aktywować zdolności tylko kart neutralnych lub kart należących do klasy wybranej roli.\n[free]: Zmień twoją rolę. (Limit raz na rundę).\n[action]: Zmień rolę. Nie wywołuje ataków towarzyszących.\nEfekt [elder_sign]: +2. Możesz zmienić rolę.",
+        "replacement_back_text": "Zmutowana.\n<b>Rozmiar talii</b>: 35.\n<b>Opcje tworzenia talii</b>: karty Ocalałego, Strażnika, Poszukiwacza, Łotra i Mistyka ([survivor], [guardian], [seeker], [rogue] i [mystic]) o poziomie 0-3, karty neutralne o poziomie 0-5.\n<b>Wymogi tworzenia talii</b> (niewliczane do wielkości talii): 2 kopie Improwizacji, 2 kopie Kryzysu tożsamości, 1 losowe podstawowe osłabienie.\n<b>Dodatkowe wymogi</b>: twoja talia musi zawierać przynajmniej po 7 kart z 3 różnych klas ([survivor], [guardian], [seeker], [rogue] lub [mystic]).\n<b>Dodatkowe przygotowanie</b>: Po tym, jak dobierzesz początkowe karty: wybierz rolę ([survivor], [guardian], [seeker], [rogue], [mystic] lub neutralną)."
+      },
+      {
+        "code": "03019",
+        "text": "Zdolność Odkrycia tej karty brzmi teraz: „Odrzuć 1 kartę z twojej ręki lub obszaru gry twojej obecnej roli. Następnie...”",
+        "replacement_text": "Zmutowana.\n<b>Odkrycie</b> - Odrzuć 1 kartę z twojej ręki lub obszaru gry twojej obecnej roli. Następnie odrzuć wierzchnią kartę z twojej talii. Zmień twoją rolę na rolę odpowiadającą klasie odrzuconej karty (jeśli odrzucona karta to osłabienie, zmień rolę na neutralną)."
+      },
+      {
+        "code": "04032",
+        "text": "Ta karta brzmi teraz: „symbolem innym niż [elder_sign]” zamiast „symbolem [skull], [cultist], [tablet], [elder_thing] lub [auto_fail]”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy miałbyś ujawnić żeton chaosu.\nOdkryj 5 żetonów chaosu zamiast jednego. Wybierz i rozpatrz jeden z tych żetonów z symbolem innym niż [elder_sign], a pozostałe zignoruj. (Jeśli nie zostanie odkryty żaden taki żeton, wybierz i rozpatrz dowolny z tych żetonów, a resztę zignoruj)."
+      },
+      {
+        "code": "04105",
+        "text": "Zdolność tej karty brzmi teraz: „<b>Pertraktacje.</b> Wybierz wroga nie-osłabienie znajdującego się w twojej lokalizacji...”",
+        "replacement_text": "Zmutowana.\n<b>Pertraktacje.</b> Wybierz wroga nie-osłabienie znajdującego się w twojej lokalizacji i wykonaj test[intellect] (3). Ten test dostaje +X do trudności, gdzie X to wartość przerażenia danego wroga. Jeśli test zakończy się sukcesem, wtasuj wybranego wroga do talii spotkań. Jeśli wybrany wróg posiada cechę [[Elite]], zamiast tego natychmiast się mu wymykasz."
+      },
+      {
+        "code": "04110",
+        "text": "Ta karta brzmi teraz: „symbolem innym niż [auto_fail]” zamiast „symbolem [skull], [cultist], [tablet] lub [elder_thing]”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy podczas testu umiejętności w twojej lokalizacji zostanie odkryty żeton chaosu z symbolem innym niż [auto_fail]. Anuluj dany żeton chaosu. <i>(Nie odkrywaj nowego żetonu chaosu, aby zastąpić anulowany żeton.)</i>"
+      },
+      {
+        "code": "04233",
+        "text": "Zdolność tej karty brzmi teraz: „Zyskaj 1 żeton zasobu za każdą wykorzystaną akcję tej tury...”",
+        "replacement_text": "Zmutowana. Zyskaj 1 żeton zasobu za każdą wykorzystaną akcję tej tury <i>(włącznie z tą)</i>. Jeśli trwa twoja tura, kończysz swoją turę."
+      },
+      {
+        "code": "06002",
+        "text": "Karta tego badacza brzmi teraz: „<b>Rozmiar talii</b>: 50” oraz „<b>Wymogi tworzenia talii</b> (nie wliczane do wielkości talii): 3 kopie Dowodu okultyzmu...”.",
+        "deck_options": [
+          {
+            "faction": [
+              "seeker",
+              "neutral"
+            ],
+            "level": {
+              "min": 0,
+              "max": 5
+            }
+          },
+          {
+            "name": "Klasa Poboczna",
+            "faction_select": [
+              "mystic",
+              "rogue",
+              "survivor"
+            ],
+            "level": {
+              "min": 0,
+              "max": 1
+            },
+            "type": [
+              "event",
+              "skill"
+            ],
+            "limit": 10
+          }
+        ],
+        "deck_requirements": {
+          "size": 50,
+          "card": {
+            "06008": {
+              "06008": "06008"
+            },
+            "06009": {
+              "06009": "06009"
+            }
+          },
+          "random": [
+            {
+              "target": "subtype",
+              "value": "basicweakness"
+            }
+          ]
+        },
+        "replacement_back_text": "Zmutowana.\n<b>Rozmiar talii</b>: 50.\n<b>Wybór drugorzędnej klasy</b>: podczas tworzenia talii wybierz Mistyka ([mystic]), Łotra ([rogue]) lub Ocalałego ([survivor]).\n<b>Opcje tworzenia talii</b>: karty Poszukiwacza ([seeker]) o poziomie 0-5, karty neutralne o poziomie 0-5, do 10 kart wydarzeń i/lub umiejętności twojej wybranej drugorzędnej klasy o poziomie 0-1.\n<b>Wymogi tworzenia talii</b> (nie wliczane do wielkości talii): 3 kopie Dowodu okultyzmu, Szokujące odkrycie, 1 losowe podstawowe osłabienie."
+      },
+      {
+        "code": "07268",
+        "exceptional": false,
+        "deck_limit": 1,
+        "text": "Ta karta traci słowo kluczowe Wyjątkowa i zyskuje „Limit 1 na talię.”",
+        "replacement_text": "Zmutowana. Limit 1 na talię. Pieczęć (maksymalnie X [curse]).\n[action] Wyczerp Flet Zewnętrznych Bogów i uwolnij 1 zapieczętowany na nim żeton [curse]: wybierz nie-[[Elitarnego]] wroga w twojej lokalizacji. Porusz wybranego wroga do połączonej lokalizacji albo zadaj wartość jego obrażeń dowolnemu wrogowi w jego lokalizacji. Ta akcja nie wywołuje ataków towarzyszących."
+      },
+      {
+        "code": "08045",
+        "text": "Zdolność stała tej karty brzmi teraz: „...dostajesz +1 [intellect], +1 [agility] i możesz ignorować pierwszy atak towarzyszący każdej tury.”",
+        "replacement_text": "Zmutowana.\nDopóki nie znajdujesz się w miejscu mocy, dostajesz +1 [intellect], +1 [agility] i możesz ignorować pierwszy atak towarzyszący każdej tury.\n[reaction] Po tym, jak Prophesiae Profana wejdzie do gry: wybierz odkrytą lokalizację. Dana lokalizacja to „miejsce mocy”, dopóki Prophesiae Profana nie opuści gry.\n[action]: Porusz dowolnego badacza na miejsce mocy."
+      },
+      {
+        "code": "08055",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj na początku fazy badaczy. Maksymalnie raz na rundę.\nOdkrywaj jedna po drugiej karty z wierzchu dowolnych talii badaczy, dopóki nie zostanie odkrytych dokładnie 5 kart. Odłóż te karty na bok, poza grę. Dopóki dane karty są odłożone na bok, dowolny badacz może zagrać dowolne z tych kart tak, jakby znajdowały się na jego ręce. Na początku następnej fazy badaczy wtasuj każdą z danych kart, która nadal jest odłożona na bok, do talii jej właściciela."
+      },
+      {
+        "code": "08076",
+        "text": "Zdolność tej karty zyskuje: „(Maksymalnie 2 razy na grę).”",
+        "replacement_text": "Zmutowana.\nWygnaj z ręki kartę o poziomie 0-5. Odkryj 2 żetony wskazówek w twojej lokalizacji. Jeśli wygnana karta miała poziom 2 lub wyższy, usuń 1 żeton zagłady z obecnej tajemnicy. Wygnaj Spal po przeczytaniu. (Maksymalnie 2 razy na grę).\n<b>Karta zaprojektowana przez Radę na Wygnaniu podczas Gen Con 2020</b>"
+      },
+      {
+        "code": "08098",
+        "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych (ruch, wymykanie się lub badanie)."
+      },
+      {
+        "code": "08100",
+        "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych, w dowolnej kolejności (ruch, wymykanie się lub badanie)."
+      },
+      {
+        "code": "08093",
+        "text": "Nawias zdolności Walki brzmi teraz: „...(Jeśli test zakończy się sukcesem o 3 lub więcej, możesz wyczerpać Cyklopowy Młot, by zamiast tego zadać +2 obrażenia i poruszyć wroga o maksymalnie 2 lokalizacje, oddalając go od ciebie).”",
+        "replacement_text": "Zmutowana.\n[action]: <b>Walka.</b> Dodaj wartość twojej [willpower] do wartości twojej umiejętności do tego ataku. Do tego ataku zadajesz +1 obrażenie. Jeśli test zakończy się sukcesem i zaatakowany wróg jest nie-[[Elitarny]], możesz poruszyć go o 1 lokalizację, oddalając go od ciebie. (Jeśli test zakończy się sukcesem o 3 lub więcej, możesz wyczerpać Cyklopowy Młot, by zamiast tego zadać +2 obrażenia i poruszyć wroga o maksymalnie 2 lokalizacje, oddalając go od ciebie)."
+      },
+      {
+        "code": "09045",
+        "text": "Druga zdolność tej karty zyskuje: „(maksymalnie 3 dowody wydane na rundę).”",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak zdolność karty gracza umieści 1 lub więcej twoich żetonów wskazówek na twojej lokalizacji: umieść tyle samo żetonów zasobów na Notatkach z badań jako dowody.\n[action]: Wykonaj test [intellect] (0). Za każdy punkt, o który test zakończy się sukcesem, możesz wydać 1 dowód, aby odkryć 1 żeton wskazówki w twojej lokalizacji (maksymalnie 3 dowody wydane na rundę)."
+      },
+      {
+        "code": "09081",
+        "text": "Pole tekstowe tej karty brzmi teraz: „[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - „Idź”. Ten wróg porusza się 1 raz w wybranym przez ciebie kierunku.”\nArkusz usprawnień traci zdolność „Łaska” i zyskuje: <b>☐Padnij</b>. Dodaj rozkaz: „- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.”",
+        "customization_options": [
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>'Cower.'</i> This enemy exhausts.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 2
+          },
+          {
+            "xp": 3,
+            "deck_limit": 3,
+            "text_change": "insert",
+            "position": 1
+          }
+        ],
+        "customization_change": "- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga.\n- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.\n- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n[fast]: Cofnij Potęgę słowa na twoją rękę”.\nMożesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - \nMożesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
+        "customization_text": "□ <b>Zdrada.</b> Dodaj rozkaz: „- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga”.\n□ <b>Padnij.</b> Dodaj rozkaz: „- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.”\n□ <b>Wyznanie.</b> Dodaj rozkaz: „- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n□ <b>Odwrócenie uwagi.</b> Dodaj rozkaz: „- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n□□ <b>Większa kontrola.</b> Potęga słowa zyskuje: „[fast]: Cofnij Potęgę słowa na twoją rękę”.\n□□□ <b>Powiązany.</b> Możesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n□□□ <b>Łamacz języka.</b> Kiedy pertraktujesz przy pomocy Potęgi słowa, możesz wydać do 2 różnych rozkazów.\n□□□ <b>Po trzykroć.</b> Możesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
+        "replacement_text": "Zmutowana. Przystosowalny. Szybka. Zagraj tylko podczas twojej tury.\nDołącz do nie-[[Elitarnego]] wroga w twojej lokalizacji.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - \n - „Idź”. Ten wróg porusza się 1 raz w wybranym przez ciebie kierunku."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "code": "008",
+    "name": "Lista tabu",
+    "active": 1,
+    "date_start": "2024-10-23",
+    "cards": [
+      {
+        "code": "01073",
+        "xp": 2
+      },
+      {
+        "code": "01573",
+        "xp": 2
+      },
+      {
+        "code": "06332",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "text": "Ta karta brzmi teraz: „Uwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nUwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów."
+      },
+      {
+        "code": "02108",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "Zdolność [action] tej karty zyskuje: „Celem tego ataku może być nie-[[Elitarny]] wróg oddalony o 1 lokalizację dalej od jego normalnego zasięgu, ignorując słowa kluczowe Powściągliwy i Mściwy.”",
+        "replacement_text": "Zmutowana. Zużywalny (3 naboje).\n[action] Wydaj 1 nabój: <b>Walka.</b> Dostajesz +3 [combat] i zadajesz +2 obrażenia do tego ataku. Celem tego ataku może być nie-[[Elitarny]] wróg oddalony o 1 lokalizację dalej od jego normalnego zasięgu, ignorując słowa kluczowe Powściągliwy i Mściwy. Nie możesz w ten sposób zaatakować wrogów będących z tobą w zwarciu."
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "text": "Zdolność [fast] tej karty jest teraz zdolnością [action].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[action] Wyczerp Pana \"Szulera\" i wydaj 1 sekret: przeszukaj 3, 6 albo 9 wierzchnich kart z twojej talii w poszukiwaniu dowolnej karty i dobierz ją. Jeśli pośród przeszukiwanych kart znajduje się przynajmniej 1 osłabienie, dobierz również 1 z nich. Potasuj twoją talię."
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Ta karta traci tekst: „Dołączony atut nie może być używany by atakować przeciwników pozostających w zwarciu z twoim badaczem.”",
+        "replacement_text": "Zmutowana. Szybka. Dołącz do atutu z cechą [[Palna]] pozostającego pod twoją kontrolą i zajmującego dwie ręce.\nKiedy korzystasz z akcji Walki na atucie, do którego Celownik jest dołączony, jeśli nie jesteś w zwarciu z żadnym wrogiem, wyczerp Celownik optyczny: celem tego ataku może być nie-[[Elitarny]] wróg w sąsiedniej lokalizacji. Podczas tego ataku zignoruj słowa kluczowe Powściągliwy i Mściwy."
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "05324",
+        "text": "Zdolność tej karty zyskuje: „Usuń Szczęśliwe zakończenie z gry.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy odkryłeś żeton chaosu, który podczas testu umiejętności miałby obniżyć wartość twojej umiejętności do 0 (łącznie z żetonem [auto_fail]).\nAnuluj dany żeton i zamiast tego traktuj go jak żeton [elder_sign]. Usuń Szczęśliwe zakończenie z gry."
+      },
+      {
+        "code": "06022",
+        "text": "Zdolność stała tej karty brzmi teraz: „Jeśli na tej karcie nie znajdują się żadne ładunki, usuń ją z gry.”",
+        "replacement_text": "Zmutowana. Powiązana (Cząstka onyksu). Zużywalny (3 ładunki). Jeśli na tej karcie nie znajdują się żadne ładunki, usuń ją z gry.\n[fast] Wyczerp Wisior królowej i wydaj 1 ładunek: wybierz dowolną odkrytą lokalizację i wybierz jedno – porusz się do danej lokalizacji, odkryj 1 żeton wskazówki w danej lokalizacji albo automatycznie wymknij się wrogowi w danej lokalizacji."
+      },
+      {
+        "code": "06199",
+        "text": "Zdolność tej karty zyskuje: „Usuń z gry każdą przeznaczoną do tego testu kopię Trójki asów.”",
+        "replacement_text": "Zmutowana. Niezliczone.\nJeśli przeznaczysz 3 kopie Trójki asów do testu umiejętności, dany test automatycznie kończy się sukcesem <i>(nie odkrywaj żetonów z worka chaosu)</i>. Następnie dobierz 3 karty i zyskaj 3 żetony zasobów (maksymalnie raz na test). Usuń z gry każdą przeznaczoną do tego testu kopię Trójki asów."
+      },
+      {
+        "code": "60318",
+        "text": "Zamiast „Wtasuj każde osłabienie odrzucone...” umiejętność tej karty brzmi teraz: „Po rozpatrzeniu tego testu, dobierz każde osłabienie odrzucone przez ten efekt.”.",
+        "replacement_text": "Zmutowana. Po tym, jak przeznaczysz Ryzykanta do testu umiejętności, odrzucaj karty z wierzchu twojej talii, dopóki nie odrzucisz umiejętności [rogue], którą możesz przeznaczyć do tego testu. Przeznacz ją. Po rozpatrzeniu tego testu, dobierz każde osłabienie odrzucone przez ten efekt."
+      },
+      {
+        "code": "07003",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak odkryjesz 1 lub więcej żetonów wskazówek w lokalizacji, w której znajduje się wróg: odkryj 1 dodatkowy żeton wskazówki w danej lokalizacji albo automatycznie wymknij się danemu wrogowi jeśli jest nie-[[Elitarny]]. (Limit raz na rundę).”",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak odkryjesz 1 lub więcej żetonów wskazówek w lokalizacji, w której znajduje się wróg: odkryj 1 dodatkowy żeton wskazówki w danej lokalizacji albo automatycznie wymknij się danemu wrogowi jeśli jest nie-[[Elitarny]]. (Limit raz na rundę).\nEfekt [elder_sign]: +2. Jeśli ten test to badanie, możesz wybrać dowolną odkrytą lokalizację; wykonujesz to badanie tak, jakbyś zamiast tego znajdował się w danej lokalizacji."
+      },
+      {
+        "code": "07122",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Kiedy podczas testu umiejętności rozpatrujesz żeton [bless]…”",
+        "replacement_text": "Zmutowana. Trwały. Limit 1 karta z cechą [[Przymierze]] na talię.\n[reaction] „Kiedy podczas testu umiejętności rozpatrujesz żeton [bless], wyczerp Starożytne Przymierze: nie odkrywaj kolejnego żetonu z efektu tego żetonu [bless]."
+      },
+      {
+        "code": "60233",
+        "xp": 3
+      },
+      {
+        "code": "07197",
+        "xp": -2
+      },
+      {
+        "code": "03112",
+        "text": "Zdolność [fast] tej karty brzmi teraz: „...Zyskaj 1 żeton zasobu za każdy żeton zagłady na Davidzie Renfieldzie (do maksymalnie 3 żetonów zasobów).”",
+        "replacement_text": "Zmutowana. Dopóki na Davidzie Renfieldzie znajduje się przynajmniej 1 żeton zagłady, dostajesz+1 [willpower].\n[fast] Wyczerp Davida Renfielda: możesz umieścić 1 żeton zagłady na Davidzie Renfieldzie. Zyskaj 1 żeton zasobu za każdy żeton zagłady na Davidzie Renfieldzie (do maksymalnie 3 żetonów zasobów)."
+      },
+      {
+        "code": "07308",
+        "xp": -2
+      },
+      {
+        "code": "60327",
+        "xp": -1
+      },
+      {
+        "code": "08099",
+        "xp": 2
+      },
+      {
+        "code": "09117",
+        "xp": 1
+      },
+      {
+        "code": "10059",
+        "xp": 1
+      },
+      {
+        "code": "10060",
+        "xp": 1
+      },
+      {
+        "code": "09022",
+        "customization_options": [
+          {
+            "xp": 1,
+            "cost": -1,
+            "real_traits": "Item. Weapon. Melee. Relic.",
+            "text_change": "trait"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.",
+            "tags": "hd.hh.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 0
+          },
+          {
+            "xp": 4,
+            "text_change": "replace",
+            "position": 1
+          }
+        ],
+        "customization_text": "□ <b>Dziedzictwo.</b> Ten atut dostaje -1 do kosztu i zyskuje cechę [[Relikwia]].\n□ <b>Inskrypcja chwały.</b> Dodaj tę inskrypcję: „- <i>Chwała</i> - Jeśli ten atak pokonał wroga, wybierz jedno: dobierz 1 kartę, wylecz 1 obrażenie lub wylecz 1 punkt przerażenia”.\n□ <b>Inskrypcja Starszych Bogów.</b> Dodaj tę inskrypcję: „- <i>Starsi Bogowie</i> - Jeśli ten atak zakończył się sukcesem o liczbę punktów równą lub wyższą od wartości zasłony twojej lokalizacji, odkryj 1 żeton wskazówki w twojej lokalizacji.”\n□□ <b>Inskrypcja łowów.</b> Dodaj tę inskrypcję: „- <i>Łowy</i> - Natychmiast porusz się do połączonej lokalizacji albo wejdź w zwarcie z wrogiem w twojej lokalizacji.”\n□ <b>Inskrypcja furii.</b> Dodaj tę inskrypcję: „- <i>Furia</i> - Jeśli ten atak zakończył się sukcesem, oprócz jego standardowych obrażeń zadaj 1 obrażenie każdemu innemu wrogowi będącemu z tobą w zwarciu”.\n□□□ <b>Starożytna moc.</b> Możesz wzmocnić topór tą samą inskrypcją maksymalnie 3 razy.\n□□□ <b>Saga.</b> Na początku każdej rundy uzupełnij 2 ładunki Runicznego topora (zamiast tylko 1).\n□□□□ <b>Zdwojona siła.</b> Za każdy wydany ładunek możesz wzmocnić topór maksymalnie 2 różnymi inskrypcjami.",
+        "text": "Usprawnienie – <b>Inskrypcja łowów:</b> +1 punkt doświadczenia."
+      },
+      {
+        "code": "09077",
+        "xp": 2
+      },
+      {
+        "code": "09108",
+        "xp": 2
+      },
+      {
+        "code": "07269",
+        "text": "Zdolność tej karty zyskuje: „Usuń Ciszę przed burzą z gry.”",
+        "replacement_text": "Jako dodatkowy koszt zagrania Ciszy przed burzą przeszukaj worek chaosu i/lub karty w grze w poszukiwaniu łącznie 5 żetonów [bless] i cofnij je do puli żetonów.\nZmutowana. Szybka. Zagraj, kiedy miałby się zacząć krok „dobranie kart z talii spotkań” fazy Mitów. Pomiń ten krok fazy Mitów. Usuń Ciszę przed burzą z gry."
+      },
+      {
+        "code": "07301",
+        "text": "Zdolność tej karty zyskuje: „Usuń Uświęcenie z gry.”",
+        "replacement_text": "Jako dodatkowy koszt zagrania Uświęcenia cofnij do puli żetonów 10 żetonów [bless] znajdujących się w worku chaosu lub zapieczętowanych na kartach w grze.\nZmutowana.\nUsuń 1 żeton zagłady z dowolnej karty w grze. Usuń Uświęcenie z gry."
+      },
+      {
+        "code": "08019",
+        "text": "Efekt <b>Wymuszony</b> tej karty brzmi teraz: „<b>Wymuszony</b> – Kiedy zaczyna się twoja pierwsza tura podczas gry: Zagraj jedna po drugiej, do 5 atutów z cechą [[Przedmiot]]...”",
+        "replacement_text": "Zmutowana. Trwały. Limit 1 na talię. Kup podczas budowania talii.\n<b>Wymuszony</b> - Kiedy zaczyna się twoja pierwsza tura podczas gry: Zagraj jedna po drugiej, do 5 atutów z cechą [[Item]] z twojej ręki, obniżając o 1 koszt zagrania każdego z nich. Podczas tej tury masz 3 akcje mniej do wykonania."
+      },
+      {
+        "code": "08032",
+        "text": "Zdolność tej karty zyskuje: „(Maksymalnie 2 razy na grę).”",
+        "replacement_text": "Zmutowana.\nDostajesz +1 [intellect].\n[reaction] Po tym, jak Jeremiah Kirby wejdzie do gry, wybierz „parzyste” lub „nieparzyste”: odkryj 5 wierzchnich kart z twojej talii. Dobierz każdą kartę, której koszt odpowiada wybranej przez ciebie opcji. Wtasuj pozostałe karty z powrotem do twojej talii. (Maksymalnie 2 razy na grę)."
+      },
+      {
+        "code": "01033",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”",
+        "replacement_text": "Zmutowana.\nDostajesz +1 [intellect].\n[reaction] Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera: zyskujesz 1 żeton zasobu."
+      },
+      {
+        "code": "02002",
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”.",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak podczas badania zakończysz test umiejętności z sukcesem o 2 lub więcej: odkryj 1 żeton wskazówki w twojej lokalizacji. (Limit raz na rundę.)\nEfekt [elder_sign]: +2. Zamiast tego możesz zdecydować, że ten test automatycznie kończy się porażką, aby dobrać 3 karty."
+      },
+      {
+        "code": "02111",
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”.",
+        "replacement_text": "Zmutowana.\nW kolejności graczy każdy badacz dobiera 1 kartę z wierzchu talii spotkań. Następnie dodaj Nadmierną dociekliwość do puli zwycięstwa.\nLimit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa."
+      },
+      {
+        "code": "02229",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „(maksymalnie raz na rundę).”",
+        "replacement_text": "Zmutowana.\nJeśli ten test zakończy się sukcesem o 2 lub więcej, po tym jak zostanie rozpatrzony, możesz natychmiast wykonać akcję tak, jakby była twoja tura (ta akcja nie wlicza się do liczby akcji, które możesz wykonać w każdej turze). (Maksymalnie raz na rundę)."
+      },
+      {
+        "code": "02266",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nW tej turze możesz wykonać 3 dodatkowe akcje. (Maksymalnie raz na rundę)."
+      },
+      {
+        "code": "03029",
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nUmieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki. Na końcu twojej tury, jeśli dany atut nadal znajduje się w grze, cofnij go na twoją rękę."
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa.",
+        "replacement_text": "Zmutowana. Wyjątkowa. Dostajesz +1 do każdej twojej umiejętności za każdy punkt przerażenia na Kluczu Ys.\n<b>Wymuszony </b> - Kiedy dowolna liczba punktów przerażenia miałaby zostać umieszczona na tobie: umieść 1 z tych punktów przerażenia na Kluczu Ys.\n<b>Wymuszony </b> - Kiedy Klucz Ys opuszcza grę: odrzuć 10 wierzchnich kart z twojej talii."
+      },
+      {
+        "code": "04309",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „Usuń Wszystko na jedną kartę z gry.”",
+        "replacement_text": "Zmutowana.\nNa każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę.\nJeśli ten test zakończy się sukcesem, dobierz 1 kartę za każdy punkt, o który test się powiódł (do maksimum 5). Wtasuj każde osłabienie dobrane w wyniku tego efektu z powrotem do twojej talii, bez rozpatrywania go. Usuń Wszystko na jedną kartę z gry."
+      },
+      {
+        "code": "05116",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj kartę ze spodu talii dowolnego badacza lub talii spotkań. Następnie odrzuć daną kartę, dodaj ją na rękę właściciela, umieść na spodzie danej talii albo umieść na wierzchu danej talii."
+      },
+      {
+        "code": "05188",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj 3 karty ze spodu talii dowolnego badacza lub talii spotkań. Możesz odrzucić 1 z tych kart. Możesz dodać 1 z tych kart na rękę jej właściciela. Umieść resztę danych kart albo na wierzchu, albo na spodzie danej talii w dowolnej kolejności."
+      },
+      {
+        "code": "05189",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (4 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj 1 kartę z wierzchu lub spodu talii dowolnego badacza lub talii spotkań. Następnie odrzuć daną kartę, dodaj ją na rękę właściciela, umieść na spodzie danej talii albo umieść na wierzchu danej talii."
+      },
+      {
+        "code": "05020",
+        "text": "Zdolność tej karty brzmi teraz: „<b>Pertraktacje.</b> Wybierz nie-[[Elitarnego]] wroga znajdującego się w twojej lokalizacji...”",
+        "replacement_text": "Zmutowana.\n<b>Pertraktacje.</b> Wybierz nie-[[Elitarnego]] wroga znajdującego się w twojej lokalizacji i wykonaj test [combat] (3). Ten test dostaje +X do poziomu trudności, gdzie X to ilość zadawanych obrażeń wybranego wroga. Jeśli atak zakończy się sukcesem, odkryj 1 wskazówkę w twojej lokalizacji i 1 wskazówkę w sąsiadującej lokalizacji."
+      },
+      {
+        "code": "06195",
+        "text": "Zdolność [action] tej karty brzmi teraz: „[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia.”",
+        "replacement_text": "Zmutowana. Zużywalny (5 nabojów).\n[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia."
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Zakazana.",
+        "replacement_text": "Zmutowana. Zakazana.\nNa każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę.\nPodwój poziom trudności danego testu umiejętności. Jeśli test zakończy się sukcesem, dwukrotnie rozpatrz efekty testu zakończonego sukcesem."
+      },
+      {
+        "code": "02029",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym jak podczas wykonywanego przez ciebie testu zostanie odkryty dowolny symbol: do tego testu dostajesz +1 do wartości umiejętności."
+      },
+      {
+        "code": "02153",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy wróg zaatakuje badacza w twojej lokalizacji.\nAnuluj ten atak. Następnie odkryj losowy żeton z worka chaosu. Jeśli ma dowolny symbol, atakujący wróg zadaje obrażenia samemu sobie."
+      },
+      {
+        "code": "60414",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy wróg zaatakuje badacza w twojej lokalizacji.\nAnuluj ten atak. Następnie odkryj losowy żeton z worka chaosu. Jeśli ma dowolny symbol, atakujący wróg zadaje obrażenia samemu sobie."
+      },
+      {
+        "code": "60423",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana. Fast. Zagraj, kiedy wróg zaatakuje badacza w twojej lokalizacji.\nAnuluj ten atak. Następnie odkryj losowy żeton z worka chaosu. Jeśli ma dowolny symbol, zadaj atakującemu wrogowi obrażenia w liczbie równej jego wartości obrażeń lub przerażenia."
+      },
+      {
+        "code": "02269",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\nWyczerp Klejnot Aureolusa po tym, jak podczas testu umiejętności w twojej lokalizacji zostanie odkryty dowolny symbol: dobierasz 1 kartę lub zyskujesz 2 żetony zasobów."
+      },
+      {
+        "code": "60416",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\nZyskaj 1 żeton zasobu. Odkryj 3 losowe żetony z worka chaosu. Za każdy odkryty dowolny symbol zyskaj 2 dodatkowe żetony zasobów."
+      },
+      {
+        "code": "05113",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\n<b>Wymykanie.</b> Użyj tylko na nie-[[Elitarnym]] wrogu. Ta próba wymknięcia się używa [willpower] zamiast [agility]. Jeśli test zakończył się sukcesem, porusz wroga, któremu się właśnie wymknąłeś, do dowolnej lokalizacji w grze. Jeśli test zakończył się sukcesem i podczas próby wymknięcia się został odkryty dowolny symbol, dany wróg nie zostaje przygotowany podczas następnej fazy utrzymania."
+      },
+      {
+        "code": "02263",
+        "text": "Zdolność Walka tej karty brzmi teraz: „+1 obrażenie” zamiast „+2 obrażenia”.",
+        "replacement_text": "Możesz zawrzeć ten atut w swojej talii tylko poprzez ulepszenie go z Dziwnego roztworu (Niezidentyfikowanego) i tylko jeśli \"udało ci się znaleźć rozwiązanie\" patrz Dziennik kampanii.\nZmutowana. Zużywalny (3 zapasy).\n[action] Wydaj 1 zapasy: <b>Walka.</b> Zaatakuj z podstawową umiejętnością [combat] o wartości 6. Ten atak zadaje +1 obrażenie."
+      },
+      {
+        "code": "03006",
+        "text": "Zdolność Wymuszona tej karty jest przeniesiona na rewers karty i brzmi teraz: „<b>Dodatkowe przygotowanie</b>: Po tym, jak dobierzesz początkowe karty: wybierz rolę ([survivor], [guardian], [seeker], [rogue], [mystic] lub neutralną).”\nAwers tej karty zyskuje dodatkowi: „[action]: Zmień rolę. Nie wywołuje ataków towarzyszących.”",
+        "replacement_text": "Zmutowana.\nMożesz zagrywać, przeznaczać do testów lub aktywować zdolności tylko kart neutralnych lub kart należących do klasy wybranej roli.\n[free]: Zmień twoją rolę. (Limit raz na rundę).\n[action]: Zmień rolę. Nie wywołuje ataków towarzyszących.\nEfekt [elder_sign]: +2. Możesz zmienić rolę.",
+        "replacement_back_text": "Zmutowana.\n<b>Rozmiar talii</b>: 35.\n<b>Opcje tworzenia talii</b>: karty Ocalałego, Strażnika, Poszukiwacza, Łotra i Mistyka ([survivor], [guardian], [seeker], [rogue] i [mystic]) o poziomie 0-3, karty neutralne o poziomie 0-5.\n<b>Wymogi tworzenia talii</b> (niewliczane do wielkości talii): 2 kopie Improwizacji, 2 kopie Kryzysu tożsamości, 1 losowe podstawowe osłabienie.\n<b>Dodatkowe wymogi</b>: twoja talia musi zawierać przynajmniej po 7 kart z 3 różnych klas ([survivor], [guardian], [seeker], [rogue] lub [mystic]).\n<b>Dodatkowe przygotowanie</b>: Po tym, jak dobierzesz początkowe karty: wybierz rolę ([survivor], [guardian], [seeker], [rogue], [mystic] lub neutralną)."
+      },
+      {
+        "code": "03019",
+        "text": "Zdolność Odkrycia tej karty brzmi teraz: „Odrzuć 1 kartę z twojej ręki lub obszaru gry twojej obecnej roli. Następnie...”",
+        "replacement_text": "Zmutowana.\n<b>Odkrycie</b> - Odrzuć 1 kartę z twojej ręki lub obszaru gry twojej obecnej roli. Następnie odrzuć wierzchnią kartę z twojej talii. Zmień twoją rolę na rolę odpowiadającą klasie odrzuconej karty (jeśli odrzucona karta to osłabienie, zmień rolę na neutralną)."
+      },
+      {
+        "code": "04032",
+        "text": "Ta karta brzmi teraz: „symbolem innym niż [elder_sign]” zamiast „symbolem [skull], [cultist], [tablet], [elder_thing] lub [auto_fail]”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy miałbyś ujawnić żeton chaosu.\nOdkryj 5 żetonów chaosu zamiast jednego. Wybierz i rozpatrz jeden z tych żetonów z symbolem innym niż [elder_sign], a pozostałe zignoruj. (Jeśli nie zostanie odkryty żaden taki żeton, wybierz i rozpatrz dowolny z tych żetonów, a resztę zignoruj)."
+      },
+      {
+        "code": "04105",
+        "text": "Zdolność tej karty brzmi teraz: „<b>Pertraktacje.</b> Wybierz wroga nie-osłabienie znajdującego się w twojej lokalizacji...”",
+        "replacement_text": "Zmutowana.\n<b>Pertraktacje.</b> Wybierz wroga nie-osłabienie znajdującego się w twojej lokalizacji i wykonaj test[intellect] (3). Ten test dostaje +X do trudności, gdzie X to wartość przerażenia danego wroga. Jeśli test zakończy się sukcesem, wtasuj wybranego wroga do talii spotkań. Jeśli wybrany wróg posiada cechę [[Elite]], zamiast tego natychmiast się mu wymykasz."
+      },
+      {
+        "code": "04110",
+        "text": "Ta karta brzmi teraz: „symbolem innym niż [auto_fail]” zamiast „symbolem [skull], [cultist], [tablet] lub [elder_thing]”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy podczas testu umiejętności w twojej lokalizacji zostanie odkryty żeton chaosu z symbolem innym niż [auto_fail]. Anuluj dany żeton chaosu. <i>(Nie odkrywaj nowego żetonu chaosu, aby zastąpić anulowany żeton.)</i>"
+      },
+      {
+        "code": "04233",
+        "text": "Zdolność tej karty brzmi teraz: „Zyskaj 1 żeton zasobu za każdą wykorzystaną akcję tej tury...”",
+        "replacement_text": "Zmutowana. Zyskaj 1 żeton zasobu za każdą wykorzystaną akcję tej tury <i>(włącznie z tą)</i>. Jeśli trwa twoja tura, kończysz swoją turę."
+      },
+      {
+        "code": "06002",
+        "text": "Karta tego badacza brzmi teraz: „<b>Rozmiar talii</b>: 50” oraz „<b>Wymogi tworzenia talii</b> (nie wliczane do wielkości talii): 3 kopie Dowodu okultyzmu...”.",
+        "deck_options": [
+          {
+            "faction": [
+              "seeker",
+              "neutral"
+            ],
+            "level": {
+              "min": 0,
+              "max": 5
+            }
+          },
+          {
+            "name": "Klasa Poboczna",
+            "faction_select": [
+              "mystic",
+              "rogue",
+              "survivor"
+            ],
+            "level": {
+              "min": 0,
+              "max": 1
+            },
+            "type": [
+              "event",
+              "skill"
+            ],
+            "limit": 10
+          }
+        ],
+        "deck_requirements": {
+          "size": 50,
+          "card": {
+            "06008": {
+              "06008": "06008"
+            },
+            "06009": {
+              "06009": "06009"
+            }
+          },
+          "random": [
+            {
+              "target": "subtype",
+              "value": "basicweakness"
+            }
+          ]
+        },
+        "replacement_back_text": "Zmutowana.\n<b>Rozmiar talii</b>: 50.\n<b>Wybór drugorzędnej klasy</b>: podczas tworzenia talii wybierz Mistyka ([mystic]), Łotra ([rogue]) lub Ocalałego ([survivor]).\n<b>Opcje tworzenia talii</b>: karty Poszukiwacza ([seeker]) o poziomie 0-5, karty neutralne o poziomie 0-5, do 10 kart wydarzeń i/lub umiejętności twojej wybranej drugorzędnej klasy o poziomie 0-1.\n<b>Wymogi tworzenia talii</b> (nie wliczane do wielkości talii): 3 kopie Dowodu okultyzmu, Szokujące odkrycie, 1 losowe podstawowe osłabienie."
+      },
+      {
+        "code": "07268",
+        "exceptional": false,
+        "deck_limit": 1,
+        "text": "Ta karta traci słowo kluczowe Wyjątkowa i zyskuje „Limit 1 na talię.”",
+        "replacement_text": "Zmutowana. Limit 1 na talię. Pieczęć (maksymalnie X [curse]).\n[action] Wyczerp Flet Zewnętrznych Bogów i uwolnij 1 zapieczętowany na nim żeton [curse]: wybierz nie-[[Elitarnego]] wroga w twojej lokalizacji. Porusz wybranego wroga do połączonej lokalizacji albo zadaj wartość jego obrażeń dowolnemu wrogowi w jego lokalizacji. Ta akcja nie wywołuje ataków towarzyszących."
+      },
+      {
+        "code": "08045",
+        "text": "Zdolność stała tej karty brzmi teraz: „...dostajesz +1 [intellect], +1 [agility] i możesz ignorować pierwszy atak towarzyszący każdej tury.”",
+        "replacement_text": "Zmutowana.\nDopóki nie znajdujesz się w miejscu mocy, dostajesz +1 [intellect], +1 [agility] i możesz ignorować pierwszy atak towarzyszący każdej tury.\n[reaction] Po tym, jak Prophesiae Profana wejdzie do gry: wybierz odkrytą lokalizację. Dana lokalizacja to „miejsce mocy”, dopóki Prophesiae Profana nie opuści gry.\n[action]: Porusz dowolnego badacza na miejsce mocy."
+      },
+      {
+        "code": "08055",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj na początku fazy badaczy. Maksymalnie raz na rundę.\nOdkrywaj jedna po drugiej karty z wierzchu dowolnych talii badaczy, dopóki nie zostanie odkrytych dokładnie 5 kart. Odłóż te karty na bok, poza grę. Dopóki dane karty są odłożone na bok, dowolny badacz może zagrać dowolne z tych kart tak, jakby znajdowały się na jego ręce. Na początku następnej fazy badaczy wtasuj każdą z danych kart, która nadal jest odłożona na bok, do talii jej właściciela."
+      },
+      {
+        "code": "08076",
+        "text": "Zdolność tej karty zyskuje: „(Maksymalnie 2 razy na grę).”",
+        "replacement_text": "Zmutowana.\nWygnaj z ręki kartę o poziomie 0-5. Odkryj 2 żetony wskazówek w twojej lokalizacji. Jeśli wygnana karta miała poziom 2 lub wyższy, usuń 1 żeton zagłady z obecnej tajemnicy. Wygnaj Spal po przeczytaniu. (Maksymalnie 2 razy na grę).\n<b>Karta zaprojektowana przez Radę na Wygnaniu podczas Gen Con 2020</b>"
+      },
+      {
+        "code": "08098",
+        "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych (ruch, wymykanie się lub badanie)."
+      },
+      {
+        "code": "08100",
+        "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych, w dowolnej kolejności (ruch, wymykanie się lub badanie)."
+      },
+      {
+        "code": "08113",
+        "text": "Pierwsza linijka tej karty zyskuje: „Tylko tryb kampanii.”",
+        "replacement_text": "Tylko tryb kampanii. Limit 1 na badacza. Nie może opuścić gry.\n[reaction] Po tym, jak zagrasz Bezwzględną lichwę: zyskujesz 10 żetonów zasobów.\n<b>Wymuszony</b> - Kiedy gra się kończy lub zostaniesz wyeliminowany, jeśli posiadasz mniej niż 10 żetonów zasobów w swojej puli zasobów: wygnaj Bezwzględną lichwę."
+      },
+      {
+        "code": "08093",
+        "text": "Nawias zdolności Walki brzmi teraz: „...(Jeśli test zakończy się sukcesem o 3 lub więcej, możesz wyczerpać Cyklopowy Młot, by zamiast tego zadać +2 obrażenia i poruszyć wroga o maksymalnie 2 lokalizacje, oddalając go od ciebie).”",
+        "replacement_text": "Zmutowana.\n[action]: <b>Walka.</b> Dodaj wartość twojej [willpower] do wartości twojej umiejętności do tego ataku. Do tego ataku zadajesz +1 obrażenie. Jeśli test zakończy się sukcesem i zaatakowany wróg jest nie-[[Elitarny]], możesz poruszyć go o 1 lokalizację, oddalając go od ciebie. (Jeśli test zakończy się sukcesem o 3 lub więcej, możesz wyczerpać Cyklopowy Młot, by zamiast tego zadać +2 obrażenia i poruszyć wroga o maksymalnie 2 lokalizacje, oddalając go od ciebie)."
+      },
+      {
+        "code": "09045",
+        "text": "Druga zdolność tej karty zyskuje: „(maksymalnie 3 dowody wydane na rundę).”",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak zdolność karty gracza umieści 1 lub więcej twoich żetonów wskazówek na twojej lokalizacji: umieść tyle samo żetonów zasobów na Notatkach z badań jako dowody.\n[action]: Wykonaj test [intellect] (0). Za każdy punkt, o który test zakończy się sukcesem, możesz wydać 1 dowód, aby odkryć 1 żeton wskazówki w twojej lokalizacji (maksymalnie 3 dowody wydane na rundę)."
+      },
+      {
+        "code": "09081",
+        "text": "Pole tekstowe tej karty brzmi teraz: „[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - „Idź”. Ten wróg porusza się 1 raz w wybranym przez ciebie kierunku.”\nArkusz usprawnień traci zdolność „Łaska” i zyskuje: <b>☐Padnij</b>. Dodaj rozkaz: „- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.”",
+        "customization_options": [
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>'Cower.'</i> This enemy exhausts.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 2
+          },
+          {
+            "xp": 3,
+            "deck_limit": 3,
+            "text_change": "insert",
+            "position": 1
+          }
+        ],
+        "customization_change": "- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga.\n- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.\n- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n[fast]: Cofnij Potęgę słowa na twoją rękę”.\nMożesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - \nMożesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
+        "customization_text": "□ <b>Zdrada.</b> Dodaj rozkaz: „- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga”.\n□ <b>Padnij.</b> Dodaj rozkaz: „- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.”\n□ <b>Wyznanie.</b> Dodaj rozkaz: „- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n□ <b>Odwrócenie uwagi.</b> Dodaj rozkaz: „- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n□□ <b>Większa kontrola.</b> Potęga słowa zyskuje: „[fast]: Cofnij Potęgę słowa na twoją rękę”.\n□□□ <b>Powiązany.</b> Możesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n□□□ <b>Łamacz języka.</b> Kiedy pertraktujesz przy pomocy Potęgi słowa, możesz wydać do 2 różnych rozkazów.\n□□□ <b>Po trzykroć.</b> Możesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
+        "replacement_text": "Zmutowana. Przystosowalny. Szybka. Zagraj tylko podczas twojej tury.\nDołącz do nie-[[Elitarnego]] wroga w twojej lokalizacji.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - \n - „Idź”. Ten wróg porusza się 1 raz w wybranym przez ciebie kierunku."
+      },
+      {
+        "code": "09041",
+        "text": "Zdolność [fast] tej karty zyskuje: „(Limit 2 razy na rundę).”",
+        "replacement_text": "Przystosowalny. Limit 1 na badacza.\n<b>Wymuszony</b> - Początek rundy: wybierz jeden z następujących warunków na tę rundę:\n- twój test zakończy się porażką o 2 lub więcej.\n- twój test zakończy się sukcesem o 3 lub więcej.\nKiedy wybrany warunek zostanie spełniony, możesz wyczerpać Hipotezę empiryczną, aby dodać na nią 1 dowód.\n[fast] Wydaj 1 dowód: dobierz 1 kartę. (Limit 2 razy na rundę)."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "code": "009",
+    "name": "Lista tabu",
+    "active": 1,
+    "date_start": "2025-07-11",
+    "cards": [
+      {
+        "code": "01073",
+        "xp": 2
+      },
+      {
+        "code": "01573",
+        "xp": 2
+      },
+      {
+        "code": "06332",
+        "xp": 2
+      },
+      {
+        "code": "01050",
+        "text": "Ta karta brzmi teraz: „Uwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nUwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów."
+      },
+      {
+        "code": "01550",
+        "text": "Ta karta brzmi teraz: „Uwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nUwolnij się ze zwarcia z każdym wrogiem, który jest z tobą w zwarciu, i porusz się do połączonej lokalizacji, w której nie ma żadnych wrogów."
+      },
+      {
+        "code": "02108",
+        "xp": 1
+      },
+      {
+        "code": "02226",
+        "text": "Zdolność [action] tej karty zyskuje: „Celem tego ataku może być nie-[[Elitarny]] wróg oddalony o 1 lokalizację dalej od jego normalnego zasięgu, ignorując słowa kluczowe Powściągliwy i Mściwy.”",
+        "replacement_text": "Zmutowana. Zużywalny (3 naboje).\n[action] Wydaj 1 nabój: <b>Walka.</b> Dostajesz +3 [combat] i zadajesz +2 obrażenia do tego ataku. Celem tego ataku może być nie-[[Elitarny]] wróg oddalony o 1 lokalizację dalej od jego normalnego zasięgu, ignorując słowa kluczowe Powściągliwy i Mściwy. Nie możesz w ten sposób zaatakować wrogów będących z tobą w zwarciu."
+      },
+      {
+        "code": "04305",
+        "xp": 1
+      },
+      {
+        "code": "05153",
+        "text": "Zdolność [fast] tej karty jest teraz zdolnością [action].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[action] Wyczerp Pana \"Szulera\" i wydaj 1 sekret: przeszukaj 3, 6 albo 9 wierzchnich kart z twojej talii w poszukiwaniu dowolnej karty i dobierz ją. Jeśli pośród przeszukiwanych kart znajduje się przynajmniej 1 osłabienie, dobierz również 1 z nich. Potasuj twoją talię."
+      },
+      {
+        "code": "05159",
+        "xp": 3
+      },
+      {
+        "code": "05230",
+        "text": "Ta karta traci tekst: „Dołączony atut nie może być używany by atakować przeciwników pozostających w zwarciu z twoim badaczem.”",
+        "replacement_text": "Zmutowana. Szybka. Dołącz do atutu z cechą [[Palna]] pozostającego pod twoją kontrolą i zajmującego dwie ręce.\nKiedy korzystasz z akcji Walki na atucie, do którego Celownik jest dołączony, jeśli nie jesteś w zwarciu z żadnym wrogiem, wyczerp Celownik optyczny: celem tego ataku może być nie-[[Elitarny]] wróg w sąsiedniej lokalizacji. Podczas tego ataku zignoruj słowa kluczowe Powściągliwy i Mściwy."
+      },
+      {
+        "code": "05231",
+        "xp": 2
+      },
+      {
+        "code": "10037",
+        "xp": -2
+      },
+      {
+        "code": "11117",
+        "xp": -2
+      },
+      {
+        "code": "05156",
+        "text": "Ta karta zyskuje: „(Limit dwa razy na rundę)”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj podczas tury dowolnego badacza, ale nie podczas akcji.\nNatychmiast wykonaj akcję tak, jakby trwała twoja tura. Ta akcja nie wlicza się w liczbę akcji, które możesz wykonać w każdej turze. (Limit dwa razy na rundę)."
+      },
+      {
+        "code": "09072",
+        "text": "Pierwszy podpunkt tej karty brzmi teraz: „Dane wydarzenie zyskuje: «Szybka. Zagraj tylko podczas twojej tury.»”.",
+        "replacement_text": "Zmutowana. [reaction] Kiedy zagrywasz kartę wydarzenia z cechą [[Taktyka]] lub [[Sztuczka]], wyczerp Chucka Fergusa: wybierz jedno -\n- Dane wydarzenie zyskuje: „Szybka. Zagraj tylko podczas swojej tury”.\n- Zagranie danego wydarzenia kosztuje o 2 żetony zasobów mniej.\n- Dostajesz +2 do wartości umiejętności w czasie wykonywania testu umiejętności podczas rozpatrywania danego wydarzenia."
+      },
+      {
+        "code": "60332",
+        "text": "Pierwszy podpunkt tej karty brzmi teraz: „Dane wydarzenie zyskuje: «Szybka. Zagraj tylko podczas twojej tury.»”.",
+        "replacement_text": "Zmutowana. [reaction] Kiedy zagrywasz kartę wydarzenia z cechą [[Taktyka]] lub [[Sztuczka]], wyczerp Chucka Fergusa: wybierz jedno -\n- Dane wydarzenie zyskuje: „Szybka. Zagraj tylko podczas swojej tury”.\n- Zagranie danego wydarzenia kosztuje o 2 żetony zasobów mniej.\n- Dostajesz +2 do wartości umiejętności w czasie wykonywania testu umiejętności podczas rozpatrywania danego wydarzenia."
+      },
+      {
+        "code": "05324",
+        "text": "Zdolność tej karty zyskuje: „Usuń Szczęśliwe zakończenie z gry.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy odkryłeś żeton chaosu, który podczas testu umiejętności miałby obniżyć wartość twojej umiejętności do 0 (łącznie z żetonem [auto_fail]).\nAnuluj dany żeton i zamiast tego traktuj go jak żeton [elder_sign]. Usuń Szczęśliwe zakończenie z gry."
+      },
+      {
+        "code": "06022",
+        "text": "Zdolność stała tej karty brzmi teraz: „Jeśli na tej karcie nie znajdują się żadne ładunki, usuń ją z gry.”",
+        "replacement_text": "Zmutowana. Powiązana (Cząstka onyksu). Zużywalny (3 ładunki). Jeśli na tej karcie nie znajdują się żadne ładunki, usuń ją z gry.\n[fast] Wyczerp Wisior królowej i wydaj 1 ładunek: wybierz dowolną odkrytą lokalizację i wybierz jedno – porusz się do danej lokalizacji, odkryj 1 żeton wskazówki w danej lokalizacji albo automatycznie wymknij się wrogowi w danej lokalizacji."
+      },
+      {
+        "code": "06199",
+        "text": "Zdolność tej karty zyskuje: „Usuń z gry każdą przeznaczoną do tego testu kopię Trójki asów.”",
+        "replacement_text": "Zmutowana. Niezliczone.\nJeśli przeznaczysz 3 kopie Trójki asów do testu umiejętności, dany test automatycznie kończy się sukcesem <i>(nie odkrywaj żetonów z worka chaosu)</i>. Następnie dobierz 3 karty i zyskaj 3 żetony zasobów (maksymalnie raz na test). Usuń z gry każdą przeznaczoną do tego testu kopię Trójki asów."
+      },
+      {
+        "code": "60318",
+        "text": "Zamiast „Wtasuj każde osłabienie odrzucone...” umiejętność tej karty brzmi teraz: „Po rozpatrzeniu tego testu, dobierz każde osłabienie odrzucone przez ten efekt.”.",
+        "replacement_text": "Zmutowana. Po tym, jak przeznaczysz Ryzykanta do testu umiejętności, odrzucaj karty z wierzchu twojej talii, dopóki nie odrzucisz umiejętności [rogue], którą możesz przeznaczyć do tego testu. Przeznacz ją. Po rozpatrzeniu tego testu, dobierz każde osłabienie odrzucone przez ten efekt."
+      },
+      {
+        "code": "07003",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak odkryjesz 1 lub więcej żetonów wskazówek w lokalizacji, w której znajduje się wróg: odkryj 1 dodatkowy żeton wskazówki w danej lokalizacji albo automatycznie wymknij się danemu wrogowi jeśli jest nie-[[Elitarny]]. (Limit raz na rundę).”",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak odkryjesz 1 lub więcej żetonów wskazówek w lokalizacji, w której znajduje się wróg: odkryj 1 dodatkowy żeton wskazówki w danej lokalizacji albo automatycznie wymknij się danemu wrogowi jeśli jest nie-[[Elitarny]]. (Limit raz na rundę).\nEfekt [elder_sign]: +2. Jeśli ten test to badanie, możesz wybrać dowolną odkrytą lokalizację; wykonujesz to badanie tak, jakbyś zamiast tego znajdował się w danej lokalizacji."
+      },
+      {
+        "code": "07122",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Kiedy podczas testu umiejętności rozpatrujesz żeton [bless]…”",
+        "replacement_text": "Zmutowana. Trwały. Limit 1 karta z cechą [[Przymierze]] na talię.\n[reaction] „Kiedy podczas testu umiejętności rozpatrujesz żeton [bless], wyczerp Starożytne Przymierze: nie odkrywaj kolejnego żetonu z efektu tego żetonu [bless]."
+      },
+      {
+        "code": "60233",
+        "deck_limit": 0,
+        "text": "Zakazana.",
+        "replacement_text": "Zakazana. Zużywalny (6 sekretów). Limit 1 na talię.\n[fast] Wydaj 1 sekret: dostajesz +2 do wartości umiejętności do tego testu umiejętności.\n[fast] Wydaj 2 sekrety: dobierz 2 karty.\n[fast] Wydaj 3 sekrety: odkryj 1 żeton wskazówki w dowolnej lokalizacji.\n[fast] Wydaj 4 sekrety: zadaj 3 obrażenia wrogowi będącemu z tobą w zwarciu."
+      },
+      {
+        "code": "07197",
+        "xp": -2
+      },
+      {
+        "code": "03112",
+        "text": "Zdolność [fast] tej karty brzmi teraz: „...Zyskaj 1 żeton zasobu za każdy żeton zagłady na Davidzie Renfieldzie (do maksymalnie 3 żetonów zasobów).”",
+        "replacement_text": "Zmutowana. Dopóki na Davidzie Renfieldzie znajduje się przynajmniej 1 żeton zagłady, dostajesz+1 [willpower].\n[fast] Wyczerp Davida Renfielda: możesz umieścić 1 żeton zagłady na Davidzie Renfieldzie. Zyskaj 1 żeton zasobu za każdy żeton zagłady na Davidzie Renfieldzie (do maksymalnie 3 żetonów zasobów)."
+      },
+      {
+        "code": "07308",
+        "xp": -2
+      },
+      {
+        "code": "60327",
+        "xp": -1
+      },
+      {
+        "code": "08099",
+        "xp": 2
+      },
+      {
+        "code": "09117",
+        "xp": 1
+      },
+      {
+        "code": "10059",
+        "xp": 1
+      },
+      {
+        "code": "10060",
+        "xp": 1
+      },
+      {
+        "code": "09022",
+        "customization_options": [
+          {
+            "xp": 1,
+            "cost": -1,
+            "real_traits": "Item. Weapon. Melee. Relic.",
+            "text_change": "trait"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>Glory</i> - If this attack defeats an enemy, choose one: draw 1 card, heal 1 damage, or heal 1 horror.",
+            "tags": "hd.hh.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 0
+          },
+          {
+            "xp": 4,
+            "text_change": "replace",
+            "position": 1
+          }
+        ],
+        "customization_text": "□ <b>Dziedzictwo.</b> Ten atut dostaje -1 do kosztu i zyskuje cechę [[Relikwia]].\n□ <b>Inskrypcja chwały.</b> Dodaj tę inskrypcję: „- <i>Chwała</i> - Jeśli ten atak pokonał wroga, wybierz jedno: dobierz 1 kartę, wylecz 1 obrażenie lub wylecz 1 punkt przerażenia”.\n□ <b>Inskrypcja Starszych Bogów.</b> Dodaj tę inskrypcję: „- <i>Starsi Bogowie</i> - Jeśli ten atak zakończył się sukcesem o liczbę punktów równą lub wyższą od wartości zasłony twojej lokalizacji, odkryj 1 żeton wskazówki w twojej lokalizacji.”\n□□ <b>Inskrypcja łowów.</b> Dodaj tę inskrypcję: „- <i>Łowy</i> - Natychmiast porusz się do połączonej lokalizacji albo wejdź w zwarcie z wrogiem w twojej lokalizacji.”\n□ <b>Inskrypcja furii.</b> Dodaj tę inskrypcję: „- <i>Furia</i> - Jeśli ten atak zakończył się sukcesem, oprócz jego standardowych obrażeń zadaj 1 obrażenie każdemu innemu wrogowi będącemu z tobą w zwarciu”.\n□□□ <b>Starożytna moc.</b> Możesz wzmocnić topór tą samą inskrypcją maksymalnie 3 razy.\n□□□ <b>Saga.</b> Na początku każdej rundy uzupełnij 2 ładunki Runicznego topora (zamiast tylko 1).\n□□□□ <b>Zdwojona siła.</b> Za każdy wydany ładunek możesz wzmocnić topór maksymalnie 2 różnymi inskrypcjami.",
+        "text": "Usprawnienie – <b>Inskrypcja łowów:</b> +1 punkt doświadczenia."
+      },
+      {
+        "code": "09077",
+        "xp": 2
+      },
+      {
+        "code": "09108",
+        "xp": 2
+      },
+      {
+        "code": "07269",
+        "text": "Zdolność tej karty zyskuje: „Usuń Ciszę przed burzą z gry.”",
+        "replacement_text": "Jako dodatkowy koszt zagrania Ciszy przed burzą przeszukaj worek chaosu i/lub karty w grze w poszukiwaniu łącznie 5 żetonów [bless] i cofnij je do puli żetonów.\nZmutowana. Szybka. Zagraj, kiedy miałby się zacząć krok „dobranie kart z talii spotkań” fazy Mitów. Pomiń ten krok fazy Mitów. Usuń Ciszę przed burzą z gry."
+      },
+      {
+        "code": "07301",
+        "text": "Zdolność tej karty zyskuje: „Usuń Uświęcenie z gry.”",
+        "replacement_text": "Jako dodatkowy koszt zagrania Uświęcenia cofnij do puli żetonów 10 żetonów [bless] znajdujących się w worku chaosu lub zapieczętowanych na kartach w grze.\nZmutowana.\nUsuń 1 żeton zagłady z dowolnej karty w grze. Usuń Uświęcenie z gry."
+      },
+      {
+        "code": "08019",
+        "text": "Efekt <b>Wymuszony</b> tej karty brzmi teraz: „<b>Wymuszony</b> – Kiedy zaczyna się twoja pierwsza tura podczas gry: Zagraj jedna po drugiej, do 5 atutów z cechą [[Przedmiot]]...”",
+        "replacement_text": "Zmutowana. Trwały. Limit 1 na talię. Kup podczas budowania talii.\n<b>Wymuszony</b> - Kiedy zaczyna się twoja pierwsza tura podczas gry: Zagraj jedna po drugiej, do 5 atutów z cechą [[Item]] z twojej ręki, obniżając o 1 koszt zagrania każdego z nich. Podczas tej tury masz 3 akcje mniej do wykonania."
+      },
+      {
+        "code": "08032",
+        "text": "Zdolność tej karty zyskuje: „(Maksymalnie 2 razy na grę).”",
+        "replacement_text": "Zmutowana.\nDostajesz +1 [intellect].\n[reaction] Po tym, jak Jeremiah Kirby wejdzie do gry, wybierz „parzyste” lub „nieparzyste”: odkryj 5 wierzchnich kart z twojej talii. Dobierz każdą kartę, której koszt odpowiada wybranej przez ciebie opcji. Wtasuj pozostałe karty z powrotem do twojej talii. (Maksymalnie 2 razy na grę)."
+      },
+      {
+        "code": "01033",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”",
+        "replacement_text": "Zmutowana.\nDostajesz +1 [intellect].\n[reaction] Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera: zyskujesz 1 żeton zasobu."
+      },
+      {
+        "code": "01533",
+        "text": "Zdolność [reaction] tej karty brzmi teraz: „Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera…”",
+        "replacement_text": "Zmutowana.\nDostajesz +1 [intellect].\n[reaction] Po tym, jak uda ci się z sukcesem zakończyć badanie, wyczerp Dra Milana Christophera: zyskujesz 1 żeton zasobu."
+      },
+      {
+        "code": "02002",
+        "text": "Zdolność [reaction] tej karty zyskuje: „(Limit raz na rundę)”.",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak podczas badania zakończysz test umiejętności z sukcesem o 2 lub więcej: odkryj 1 żeton wskazówki w twojej lokalizacji. (Limit raz na rundę.)\nEfekt [elder_sign]: +2. Zamiast tego możesz zdecydować, że ten test automatycznie kończy się porażką, aby dobrać 3 karty."
+      },
+      {
+        "code": "02111",
+        "text": "Ta karta zyskuje: „Limit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa”.",
+        "replacement_text": "Zmutowana.\nW kolejności graczy każdy badacz dobiera 1 kartę z wierzchu talii spotkań. Następnie dodaj Nadmierną dociekliwość do puli zwycięstwa.\nLimit grupowy 2 kopie Nadmiernej dociekliwości w puli zwycięstwa."
+      },
+      {
+        "code": "02229",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „(maksymalnie raz na rundę).”",
+        "replacement_text": "Zmutowana.\nJeśli ten test zakończy się sukcesem o 2 lub więcej, po tym jak zostanie rozpatrzony, możesz natychmiast wykonać akcję tak, jakby była twoja tura (ta akcja nie wlicza się do liczby akcji, które możesz wykonać w każdej turze). (Maksymalnie raz na rundę)."
+      },
+      {
+        "code": "02266",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nW tej turze możesz wykonać 3 dodatkowe akcje. (Maksymalnie raz na rundę)."
+      },
+      {
+        "code": "03029",
+        "text": "Zdolność tej karty brzmi teraz: „Umieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki.”",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nUmieść w grze atut z cechą [[Przedmiot]] o poziomie 0-3 z twojej ręki. Na końcu twojej tury, jeśli dany atut nadal znajduje się w grze, cofnij go na twoją rękę."
+      },
+      {
+        "code": "03315",
+        "exceptional": true,
+        "text": "Ta karta zyskuje słowo kluczowe Wyjątkowa.",
+        "replacement_text": "Zmutowana. Wyjątkowa. Dostajesz +1 do każdej twojej umiejętności za każdy punkt przerażenia na Kluczu Ys.\n<b>Wymuszony </b> - Kiedy dowolna liczba punktów przerażenia miałaby zostać umieszczona na tobie: umieść 1 z tych punktów przerażenia na Kluczu Ys.\n<b>Wymuszony </b> - Kiedy Klucz Ys opuszcza grę: odrzuć 10 wierzchnich kart z twojej talii."
+      },
+      {
+        "code": "04309",
+        "text": "Pod koniec swojej zdolności, ta karta zyskuje: „Usuń Wszystko na jedną kartę z gry.”",
+        "replacement_text": "Zmutowana.\nNa każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę.\nJeśli ten test zakończy się sukcesem, dobierz 1 kartę za każdy punkt, o który test się powiódł (do maksimum 5). Wtasuj każde osłabienie dobrane w wyniku tego efektu z powrotem do twojej talii, bez rozpatrywania go. Usuń Wszystko na jedną kartę z gry."
+      },
+      {
+        "code": "05116",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj kartę ze spodu talii dowolnego badacza lub talii spotkań. Następnie odrzuć daną kartę, dodaj ją na rękę właściciela, umieść na spodzie danej talii albo umieść na wierzchu danej talii."
+      },
+      {
+        "code": "05188",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj 3 karty ze spodu talii dowolnego badacza lub talii spotkań. Możesz odrzucić 1 z tych kart. Możesz dodać 1 z tych kart na rękę jej właściciela. Umieść resztę danych kart albo na wierzchu, albo na spodzie danej talii w dowolnej kolejności."
+      },
+      {
+        "code": "05189",
+        "text": "Zdolność [action] tej karty jest teraz zdolnością [fast].",
+        "replacement_text": "Zmutowana. Zużywalny (4 sekrety).\n[fast] Wyczerp Zwój sekretów i wydaj 1 sekret: podejrzyj 1 kartę z wierzchu lub spodu talii dowolnego badacza lub talii spotkań. Następnie odrzuć daną kartę, dodaj ją na rękę właściciela, umieść na spodzie danej talii albo umieść na wierzchu danej talii."
+      },
+      {
+        "code": "05020",
+        "text": "Zdolność tej karty brzmi teraz: „<b>Pertraktacje.</b> Wybierz nie-[[Elitarnego]] wroga znajdującego się w twojej lokalizacji...”",
+        "replacement_text": "Zmutowana.\n<b>Pertraktacje.</b> Wybierz nie-[[Elitarnego]] wroga znajdującego się w twojej lokalizacji i wykonaj test [combat] (3). Ten test dostaje +X do poziomu trudności, gdzie X to ilość zadawanych obrażeń wybranego wroga. Jeśli atak zakończy się sukcesem, odkryj 1 wskazówkę w twojej lokalizacji i 1 wskazówkę w sąsiadującej lokalizacji."
+      },
+      {
+        "code": "06195",
+        "text": "Zdolność [action] tej karty brzmi teraz: „[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia.”",
+        "replacement_text": "Zmutowana. Zużywalny (5 nabojów).\n[action] Wydaj 1 nabój: <b>Walka.</b> Do tego ataku dostajesz +2 [combat]. Jeśli podczas tego ataku zostanie odsłonięty żeton z nieujemnym modyfikatorem, ten atak zadaje +2 obrażenia."
+      },
+      {
+        "code": "02026",
+        "deck_limit": 0,
+        "text": "Zakazana.",
+        "replacement_text": "Zakazana. Na każdy test umiejętności można przeznaczyć maksymalnie 1 taką kartę.\nPodwój poziom trudności danego testu umiejętności. Jeśli test zakończy się sukcesem, dwukrotnie rozpatrz efekty testu zakończonego sukcesem."
+      },
+      {
+        "code": "02029",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym jak podczas wykonywanego przez ciebie testu zostanie odkryty dowolny symbol: do tego testu dostajesz +1 do wartości umiejętności."
+      },
+      {
+        "code": "02153",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy wróg zaatakuje badacza w twojej lokalizacji.\nAnuluj ten atak. Następnie odkryj losowy żeton z worka chaosu. Jeśli ma dowolny symbol, atakujący wróg zadaje obrażenia samemu sobie."
+      },
+      {
+        "code": "60414",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy wróg zaatakuje badacza w twojej lokalizacji.\nAnuluj ten atak. Następnie odkryj losowy żeton z worka chaosu. Jeśli ma dowolny symbol, atakujący wróg zadaje obrażenia samemu sobie."
+      },
+      {
+        "code": "60423",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana. Fast. Zagraj, kiedy wróg zaatakuje badacza w twojej lokalizacji.\nAnuluj ten atak. Następnie odkryj losowy żeton z worka chaosu. Jeśli ma dowolny symbol, zadaj atakującemu wrogowi obrażenia w liczbie równej jego wartości obrażeń lub przerażenia."
+      },
+      {
+        "code": "02269",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\nWyczerp Klejnot Aureolusa po tym, jak podczas testu umiejętności w twojej lokalizacji zostanie odkryty dowolny symbol: dobierasz 1 kartę lub zyskujesz 2 żetony zasobów."
+      },
+      {
+        "code": "60416",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\nZyskaj 1 żeton zasobu. Odkryj 3 losowe żetony z worka chaosu. Za każdy odkryty dowolny symbol zyskaj 2 dodatkowe żetony zasobów."
+      },
+      {
+        "code": "05113",
+        "text": "Ta karta brzmi teraz: „dowolny symbol”, zamiast listy wymienionych symboli.",
+        "replacement_text": "Zmutowana.\n<b>Wymykanie.</b> Użyj tylko na nie-[[Elitarnym]] wrogu. Ta próba wymknięcia się używa [willpower] zamiast [agility]. Jeśli test zakończył się sukcesem, porusz wroga, któremu się właśnie wymknąłeś, do dowolnej lokalizacji w grze. Jeśli test zakończył się sukcesem i podczas próby wymknięcia się został odkryty dowolny symbol, dany wróg nie zostaje przygotowany podczas następnej fazy utrzymania."
+      },
+      {
+        "code": "02263",
+        "text": "Zdolność Walka tej karty brzmi teraz: „+1 obrażenie” zamiast „+2 obrażenia”.",
+        "replacement_text": "Możesz zawrzeć ten atut w swojej talii tylko poprzez ulepszenie go z Dziwnego roztworu (Niezidentyfikowanego) i tylko jeśli \"udało ci się znaleźć rozwiązanie\" patrz Dziennik kampanii.\nZmutowana. Zużywalny (3 zapasy).\n[action] Wydaj 1 zapasy: <b>Walka.</b> Zaatakuj z podstawową umiejętnością [combat] o wartości 6. Ten atak zadaje +1 obrażenie."
+      },
+      {
+        "code": "03006",
+        "text": "Zdolność Wymuszona tej karty jest przeniesiona na rewers karty i brzmi teraz: „<b>Dodatkowe przygotowanie</b>: Po tym, jak dobierzesz początkowe karty: wybierz rolę ([survivor], [guardian], [seeker], [rogue], [mystic] lub neutralną).”\nAwers tej karty zyskuje dodatkowi: „[action]: Zmień rolę. Nie wywołuje ataków towarzyszących.”",
+        "replacement_text": "Zmutowana.\nMożesz zagrywać, przeznaczać do testów lub aktywować zdolności tylko kart neutralnych lub kart należących do klasy wybranej roli.\n[free]: Zmień twoją rolę. (Limit raz na rundę).\n[action]: Zmień rolę. Nie wywołuje ataków towarzyszących.\nEfekt [elder_sign]: +2. Możesz zmienić rolę.",
+        "replacement_back_text": "Zmutowana.\n<b>Rozmiar talii</b>: 35.\n<b>Opcje tworzenia talii</b>: karty Ocalałego, Strażnika, Poszukiwacza, Łotra i Mistyka ([survivor], [guardian], [seeker], [rogue] i [mystic]) o poziomie 0-3, karty neutralne o poziomie 0-5.\n<b>Wymogi tworzenia talii</b> (niewliczane do wielkości talii): 2 kopie Improwizacji, 2 kopie Kryzysu tożsamości, 1 losowe podstawowe osłabienie.\n<b>Dodatkowe wymogi</b>: twoja talia musi zawierać przynajmniej po 7 kart z 3 różnych klas ([survivor], [guardian], [seeker], [rogue] lub [mystic]).\n<b>Dodatkowe przygotowanie</b>: Po tym, jak dobierzesz początkowe karty: wybierz rolę ([survivor], [guardian], [seeker], [rogue], [mystic] lub neutralną)."
+      },
+      {
+        "code": "03019",
+        "text": "Zdolność Odkrycia tej karty brzmi teraz: „Odrzuć 1 kartę z twojej ręki lub obszaru gry twojej obecnej roli. Następnie...”",
+        "replacement_text": "Zmutowana.\n<b>Odkrycie</b> - Odrzuć 1 kartę z twojej ręki lub obszaru gry twojej obecnej roli. Następnie odrzuć wierzchnią kartę z twojej talii. Zmień twoją rolę na rolę odpowiadającą klasie odrzuconej karty (jeśli odrzucona karta to osłabienie, zmień rolę na neutralną)."
+      },
+      {
+        "code": "04032",
+        "text": "Ta karta brzmi teraz: „symbolem innym niż [elder_sign]” zamiast „symbolem [skull], [cultist], [tablet], [elder_thing] lub [auto_fail]”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy miałbyś ujawnić żeton chaosu.\nOdkryj 5 żetonów chaosu zamiast jednego. Wybierz i rozpatrz jeden z tych żetonów z symbolem innym niż [elder_sign], a pozostałe zignoruj. (Jeśli nie zostanie odkryty żaden taki żeton, wybierz i rozpatrz dowolny z tych żetonów, a resztę zignoruj)."
+      },
+      {
+        "code": "04105",
+        "text": "Zdolność tej karty brzmi teraz: „<b>Pertraktacje.</b> Wybierz wroga nie-osłabienie znajdującego się w twojej lokalizacji...”",
+        "replacement_text": "Zmutowana.\n<b>Pertraktacje.</b> Wybierz wroga nie-osłabienie znajdującego się w twojej lokalizacji i wykonaj test[intellect] (3). Ten test dostaje +X do trudności, gdzie X to wartość przerażenia danego wroga. Jeśli test zakończy się sukcesem, wtasuj wybranego wroga do talii spotkań. Jeśli wybrany wróg posiada cechę [[Elite]], zamiast tego natychmiast się mu wymykasz."
+      },
+      {
+        "code": "04110",
+        "text": "Ta karta brzmi teraz: „symbolem innym niż [auto_fail]” zamiast „symbolem [skull], [cultist], [tablet] lub [elder_thing]”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj, kiedy podczas testu umiejętności w twojej lokalizacji zostanie odkryty żeton chaosu z symbolem innym niż [auto_fail]. Anuluj dany żeton chaosu. <i>(Nie odkrywaj nowego żetonu chaosu, aby zastąpić anulowany żeton.)</i>"
+      },
+      {
+        "code": "04233",
+        "text": "Zdolność tej karty brzmi teraz: „Zyskaj 1 żeton zasobu za każdą wykorzystaną akcję tej tury...”",
+        "replacement_text": "Zmutowana. Zyskaj 1 żeton zasobu za każdą wykorzystaną akcję tej tury <i>(włącznie z tą)</i>. Jeśli trwa twoja tura, kończysz swoją turę."
+      },
+      {
+        "code": "06002",
+        "text": "Karta tego badacza brzmi teraz: „<b>Rozmiar talii</b>: 50” oraz „<b>Wymogi tworzenia talii</b> (nie wliczane do wielkości talii): 3 kopie Dowodu okultyzmu...”.",
+        "deck_options": [
+          {
+            "faction": [
+              "seeker",
+              "neutral"
+            ],
+            "level": {
+              "min": 0,
+              "max": 5
+            }
+          },
+          {
+            "name": "Klasa Poboczna",
+            "faction_select": [
+              "mystic",
+              "rogue",
+              "survivor"
+            ],
+            "level": {
+              "min": 0,
+              "max": 1
+            },
+            "type": [
+              "event",
+              "skill"
+            ],
+            "limit": 10
+          }
+        ],
+        "deck_requirements": {
+          "size": 50,
+          "card": {
+            "06008": {
+              "06008": "06008"
+            },
+            "06009": {
+              "06009": "06009"
+            }
+          },
+          "random": [
+            {
+              "target": "subtype",
+              "value": "basicweakness"
+            }
+          ]
+        },
+        "replacement_back_text": "Zmutowana.\n<b>Rozmiar talii</b>: 50.\n<b>Wybór drugorzędnej klasy</b>: podczas tworzenia talii wybierz Mistyka ([mystic]), Łotra ([rogue]) lub Ocalałego ([survivor]).\n<b>Opcje tworzenia talii</b>: karty Poszukiwacza ([seeker]) o poziomie 0-5, karty neutralne o poziomie 0-5, do 10 kart wydarzeń i/lub umiejętności twojej wybranej drugorzędnej klasy o poziomie 0-1.\n<b>Wymogi tworzenia talii</b> (nie wliczane do wielkości talii): 3 kopie Dowodu okultyzmu, Szokujące odkrycie, 1 losowe podstawowe osłabienie."
+      },
+      {
+        "code": "07268",
+        "exceptional": false,
+        "deck_limit": 1,
+        "text": "Ta karta traci słowo kluczowe Wyjątkowa i zyskuje „Limit 1 na talię.”",
+        "replacement_text": "Zmutowana. Limit 1 na talię. Pieczęć (maksymalnie X [curse]).\n[action] Wyczerp Flet Zewnętrznych Bogów i uwolnij 1 zapieczętowany na nim żeton [curse]: wybierz nie-[[Elitarnego]] wroga w twojej lokalizacji. Porusz wybranego wroga do połączonej lokalizacji albo zadaj wartość jego obrażeń dowolnemu wrogowi w jego lokalizacji. Ta akcja nie wywołuje ataków towarzyszących."
+      },
+      {
+        "code": "08045",
+        "text": "Zdolność stała tej karty brzmi teraz: „...dostajesz +1 [intellect], +1 [agility] i możesz ignorować pierwszy atak towarzyszący każdej tury.”",
+        "replacement_text": "Zmutowana.\nDopóki nie znajdujesz się w miejscu mocy, dostajesz +1 [intellect], +1 [agility] i możesz ignorować pierwszy atak towarzyszący każdej tury.\n[reaction] Po tym, jak Prophesiae Profana wejdzie do gry: wybierz odkrytą lokalizację. Dana lokalizacja to „miejsce mocy”, dopóki Prophesiae Profana nie opuści gry.\n[action]: Porusz dowolnego badacza na miejsce mocy."
+      },
+      {
+        "code": "08055",
+        "text": "Ta karta zyskuje: „Maksymalnie raz na rundę”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj na początku fazy badaczy. Maksymalnie raz na rundę.\nOdkrywaj jedna po drugiej karty z wierzchu dowolnych talii badaczy, dopóki nie zostanie odkrytych dokładnie 5 kart. Odłóż te karty na bok, poza grę. Dopóki dane karty są odłożone na bok, dowolny badacz może zagrać dowolne z tych kart tak, jakby znajdowały się na jego ręce. Na początku następnej fazy badaczy wtasuj każdą z danych kart, która nadal jest odłożona na bok, do talii jej właściciela."
+      },
+      {
+        "code": "08076",
+        "text": "Zdolność tej karty zyskuje: „(Maksymalnie 2 razy na grę).”",
+        "replacement_text": "Zmutowana.\nWygnaj z ręki kartę o poziomie 0-5. Odkryj 2 żetony wskazówek w twojej lokalizacji. Jeśli wygnana karta miała poziom 2 lub wyższy, usuń 1 żeton zagłady z obecnej tajemnicy. Wygnaj Spal po przeczytaniu. (Maksymalnie 2 razy na grę).\n<b>Karta zaprojektowana przez Radę na Wygnaniu podczas Gen Con 2020</b>"
+      },
+      {
+        "code": "08098",
+        "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych (ruch, wymykanie się lub badanie)."
+      },
+      {
+        "code": "08100",
+        "text": "Ta karta powinna brzmieć: „następujących akcji podstawowych” zamiast „następujących akcji”.",
+        "replacement_text": "Zmutowana. Zużywalny (3 sekrety).\n[fast] Podczas twojej tury wyczerp Mapę eonów i wydaj 1 sekret: wybierz i wykonaj jedną z następujących akcji podstawowych, w dowolnej kolejności (ruch, wymykanie się lub badanie)."
+      },
+      {
+        "code": "08113",
+        "text": "Pierwsza linijka tej karty zyskuje: „Tylko tryb kampanii.”",
+        "replacement_text": "Tylko tryb kampanii. Limit 1 na badacza. Nie może opuścić gry.\n[reaction] Po tym, jak zagrasz Bezwzględną lichwę: zyskujesz 10 żetonów zasobów.\n<b>Wymuszony</b> - Kiedy gra się kończy lub zostaniesz wyeliminowany, jeśli posiadasz mniej niż 10 żetonów zasobów w swojej puli zasobów: wygnaj Bezwzględną lichwę."
+      },
+      {
+        "code": "08093",
+        "text": "Nawias zdolności Walki brzmi teraz: „...(Jeśli test zakończy się sukcesem o 3 lub więcej, możesz wyczerpać Cyklopowy Młot, by zamiast tego zadać +2 obrażenia i poruszyć wroga o maksymalnie 2 lokalizacje, oddalając go od ciebie).”",
+        "replacement_text": "Zmutowana.\n[action]: <b>Walka.</b> Dodaj wartość twojej [willpower] do wartości twojej umiejętności do tego ataku. Do tego ataku zadajesz +1 obrażenie. Jeśli test zakończy się sukcesem i zaatakowany wróg jest nie-[[Elitarny]], możesz poruszyć go o 1 lokalizację, oddalając go od ciebie. (Jeśli test zakończy się sukcesem o 3 lub więcej, możesz wyczerpać Cyklopowy Młot, by zamiast tego zadać +2 obrażenia i poruszyć wroga o maksymalnie 2 lokalizacje, oddalając go od ciebie)."
+      },
+      {
+        "code": "09045",
+        "text": "Druga zdolność tej karty zyskuje: „(maksymalnie 3 dowody wydane na rundę).”",
+        "replacement_text": "Zmutowana.\n[reaction] Po tym, jak zdolność karty gracza umieści 1 lub więcej twoich żetonów wskazówek na twojej lokalizacji: umieść tyle samo żetonów zasobów na Notatkach z badań jako dowody.\n[action]: Wykonaj test [intellect] (0). Za każdy punkt, o który test zakończy się sukcesem, możesz wydać 1 dowód, aby odkryć 1 żeton wskazówki w twojej lokalizacji (maksymalnie 3 dowody wydane na rundę)."
+      },
+      {
+        "code": "09081",
+        "text": "Zdolność [action] tej karty brzmi teraz: „[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](2). Jeżeli test zakończył się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - «Idź». Ten wróg porusza się 1 raz w wybranym przez ciebie kierunku.\nArkusz usprawnień tej karty traci zdolność „Łaska” oraz zyskuje „☐Padnij. Dodaj rozkaz: «- ‚Padnij’. Ten wróg zostaje wyczerpany.»”.",
+        "customization_options": [
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "real_text": "- <i>'Cower.'</i> This enemy exhausts.",
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 1,
+            "text_change": "append"
+          },
+          {
+            "xp": 2,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "insert",
+            "position": 1
+          },
+          {
+            "xp": 3,
+            "text_change": "replace",
+            "position": 2
+          },
+          {
+            "xp": 3,
+            "deck_limit": 3,
+            "text_change": "insert",
+            "position": 1
+          }
+        ],
+        "customization_change": "- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga.\n- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.\n- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n[fast]: Cofnij Potęgę słowa na twoją rękę”.\nMożesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](3). Jeśli test zakończy się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) - \nMożesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
+        "customization_text": "□ <b>Zdrada.</b> Dodaj rozkaz: „- <i>„Zdradź”.</i> Zadaj 1 obrażenie dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości walki od tego wroga”.\n□ <b>Padnij.</b> Dodaj rozkaz: „- <i>„Padnij”.</i> Ten wróg zostaje wyczerpany.”\n□ <b>Wyznanie.</b> Dodaj rozkaz: „- <i>„Wyznaj”.</i> Odkryj 1 żeton wskazówki w lokalizacji tego wroga, jeśli jego wytrzymałość jest taka sama lub wyższa niż wartość zasłony tej lokalizacji”.\n□ <b>Odwrócenie uwagi.</b> Dodaj rozkaz: „- <i>„Odwróć uwagę”.</i> Automatycznie wymknij się dowolnemu wrogowi w lokalizacji tego wroga o takiej samej lub niższej wartości wymykania się od tego wroga”.\n□□ <b>Większa kontrola.</b> Potęga słowa zyskuje: „[fast]: Cofnij Potęgę słowa na twoją rękę”.\n□□□ <b>Powiązany.</b> Możesz aktywować zdolność Pertraktacje z Potęgi słowa, znajdując się w odległości 1 lokalizacji od wroga, do którego dołączono daną kartę.\n□□□ <b>Łamacz języka.</b> Kiedy pertraktujesz przy pomocy Potęgi słowa, możesz wydać do 2 różnych rozkazów.\n□□□ <b>Po trzykroć.</b> Możesz zawrzeć w swojej talii do 3 kopii Potęgi słowa. Kiedy wydajesz rozkaz przy pomocy jednej kopii, wydaj ten sam rozkaz każdemu innemu wrogowi, do którego jest dołączona 1 z twoich kopii Potęgi słowa.",
+        "replacement_text": "Zmutowana. Przystosowalny. Szybka. Zagraj tylko podczas twojej tury.\nDołącz do nie-[[Elitarnego]] wroga w twojej lokalizacji.\n[action] Jeśli wróg, do którego dołączono tę kartę, znajduje się w twojej lokalizacji: <b>Pertraktacje.</b> Wykonaj test [willpower](2). Jeżeli test zakończył się sukcesem, wydaj mu rozkaz (limit raz na rundę na każdy rozkaz) -\n- „Idź”. Ten wróg porusza się 1 raz w wybranym przez ciebie kierunku."
+      },
+      {
+        "code": "09041",
+        "text": "Zdolność [fast] tej karty zyskuje: „(Limit 2 razy na rundę).”",
+        "replacement_text": "Przystosowalny. Limit 1 na badacza.\n<b>Wymuszony</b> - Początek rundy: wybierz jeden z następujących warunków na tę rundę:\n- twój test zakończy się porażką o 2 lub więcej.\n- twój test zakończy się sukcesem o 3 lub więcej.\nKiedy wybrany warunek zostanie spełniony, możesz wyczerpać Hipotezę empiryczną, aby dodać na nią 1 dowód.\n[fast] Wydaj 1 dowód: dobierz 1 kartę. (Limit 2 razy na rundę)."
+      },
+      {
+        "code": "10026",
+        "text": "Zdolność tej karty brzmi: „…Jeśli test zakończy się sukcesem, zagraj wybrany atut, obniżając jego koszt o każdy punkt, o który test zakończył się sukcesem.”",
+        "replacement_text": "Zmutowana.\n<b>Pertraktacje.</b> Wybierz wroga w twojej lokalizacji i atut z cechą [[Przedmiot]] w twojej ręce. Wykonaj akcję walki przeciwko wybranemu wrogowi. Jeśli test zakończy się sukcesem, zagraj wybrany atut, obniżając jego koszt o każdy punkt, o który test zakończył się sukcesem."
+      },
+      {
+        "code": "10030",
+        "text": "Zdolność tej karty brzmi: „Rozpatrz zdolność [action] z atutu z cechą [[Narzędzie]] lub [[Broń]] o poziomie 0-3, który kontrolujesz ignorując wszystkie koszty”.",
+        "replacement_text": "Zmutowana. Szybka. Zagraj tylko podczas twojej tury.\nRozpatrz zdolność [action] z atutu z cechą [[Narzędzie]] lub [[Broń]] o poziomie 0-3, który kontrolujesz ignorując wszystkie koszty."
+      },
+      {
+        "code": "11065",
+        "text": "Zdolność [reaction] tej karty brzmi: „[reaction] Kiedy żeton zagłady zostaje umieszczony na karcie, którą kontrolujesz: umieść 1 żeton zasobu (z puli żetonów) na Krwi Tota, jako ofiarę”.\nZdolność [free] brzmi: „[free] Podczas fazy badaczy, ale nie podczas akcji, wydaj 2 ofiary z Krwi Tota i wyczerp ją: wybierz badacza w twojej lokalizacji, aby natychmiast wykonał akcję tak, jakby trwała jego tura”.",
+        "replacement_text": "Zmutowana.\n[reaction] Kiedy żeton zagłady zostaje umieszczony na karcie, którą kontrolujesz: umieść 1 żeton zasobu <i>(z puli żetonów)</i> na Krwi Tota, jako ofiarę.\n[free] Podczas fazy badaczy, ale nie podczas akcji, wydaj 2 ofiary z Krwi Tota i wyczerp ją: wybierz badacza w twojej lokalizacji, aby natychmiast wykonał akcję tak, jakby trwała jego tura."
+      }
+    ]
+  }
+]

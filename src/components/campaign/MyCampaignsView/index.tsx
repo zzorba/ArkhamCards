@@ -16,7 +16,7 @@ import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { useFlag } from '@components/core/hooks';
-import { getStandaloneScenarios } from '@data/scenario';
+import { useStandaloneScenarios } from '@data/scenario';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { useCampaigns } from '@data/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
@@ -52,8 +52,8 @@ function MyCampaignsView() {
   const navigation = useNavigation();
   const { lang } = useContext(LanguageContext);
   const { fontScale, colors } = useContext(StyleContext);
+  const scenarios = useStandaloneScenarios();
   const standalonesById = useMemo(() => {
-    const scenarios = getStandaloneScenarios(lang);
     const result: {
       [campaign: string]: {
         [scenario: string]: string;
@@ -68,7 +68,7 @@ function MyCampaignsView() {
       }
     });
     return result;
-  }, [lang]);
+  }, [scenarios]);
   const { typography } = useContext(StyleContext);
   const [campaigns, refreshing, refreshCampaigns] = useCampaigns();
   const [showArchived, toggleShowArchived] = useFlag(false);
