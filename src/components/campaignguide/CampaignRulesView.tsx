@@ -70,8 +70,8 @@ function ErrataComponent({ errata }: { errata: Question }) {
   const tabooSetId = useTabooSetId();
   const { db } = useContext(DatabaseContext);
   const linkPressed = useCallback(async(url: string) => {
-    await openUrl(navigation, url, db, tabooSetId);
-  }, [navigation, tabooSetId, db]);
+    await openUrl(navigation, url, db, colors, tabooSetId);
+  }, [navigation, tabooSetId, db, colors]);
 
   return (
     <View style={[space.paddingTopXs, space.paddingBottomS]}>

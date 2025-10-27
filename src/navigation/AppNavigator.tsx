@@ -165,7 +165,7 @@ function useNavigatorTheme(includeBackTitle = true): {
 
 function getDeckScreenOptionsWithBackground(headerBackgroundColor: string | undefined, title?: string) {
   return {
-    ...(title ? { title } : {}),
+    ...(title !== undefined ? { title } : {}),
     ...(headerBackgroundColor ? {
       headerStyle: {
         backgroundColor: headerBackgroundColor,

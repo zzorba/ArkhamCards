@@ -63,8 +63,8 @@ export default function DeckDescriptionView() {
   }, [navigation, colors, parsedDeck]);
 
   const linkPressed = useCallback(async(url: string) => {
-    await openUrl(navigation, url, db, tabooSetId);
-  }, [navigation, tabooSetId, db]);
+    await openUrl(navigation, url, db, colors, tabooSetId);
+  }, [navigation, tabooSetId, db, colors]);
   const fabIcon = useMemo(() => (
     <AppIcon name={edit ? 'check' : 'edit'} color={mode === 'view' && !edit ? '#FFFFFF' : colors.L30} size={24} />
   ), [edit, colors, mode]);

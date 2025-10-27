@@ -130,11 +130,11 @@ export default function DeckUpgradeDialog() {
       return dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, deck.investigator_code, traumaUpdate));
     }
     if (showNewDeck) {
-      showDeckModal(navigation, getDeckId(deck), deck, campaign?.id, investigator?.card, 'upgrade');
+      showDeckModal(navigation, colors, getDeckId(deck), deck, campaign?.id, investigator?.card, 'upgrade');
     } else {
       navigation.goBack();
     }
-  }, [showNewDeck, navigation, campaignId, campaign, dispatch, updateCampaignActions, investigator, traumaUpdate]);
+  }, [showNewDeck, navigation, colors, campaignId, campaign, dispatch, updateCampaignActions, investigator, traumaUpdate]);
 
   const onStoryCountsChange = useCallback((storyCounts: Slots) => {
     updateStoryCounts({ type: 'sync', slots: storyCounts });

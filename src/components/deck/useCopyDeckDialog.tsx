@@ -121,8 +121,8 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
   const showNewDeck = useCallback((deck: Deck) => {
     setSaving(false);
     // Change the deck options for required cards, if present.
-    showDeckModal(navigation, getDeckId(deck), deck, campaign?.id, investigator);
-  }, [campaign, investigator, setSaving, navigation]);
+    showDeckModal(navigation, colors, getDeckId(deck), deck, campaign?.id, investigator);
+  }, [campaign, investigator, setSaving, navigation, colors]);
   const saveCopy = useCallback((isRetry: boolean) => {
     if (!selectedDeck) {
       return;

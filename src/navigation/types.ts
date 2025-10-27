@@ -80,6 +80,7 @@ import { FriendsViewProps } from '@components/social/FriendsView';
 import { SafeModeViewProps } from '@components/settings/SafeModeView';
 import { SearchSelectProps } from '@components/cardlist/SearchMultiSelectView';
 import { TarotProps } from '@components/core/TarotOverlay';
+import { DeckDescriptionProps } from '@components/deck/DeckDescriptionView';
 
 export type ArkhamNavigation = Omit<NavigationProp<RootStackParamList>, 'getState'>;
 

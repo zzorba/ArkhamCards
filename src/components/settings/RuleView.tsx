@@ -53,12 +53,13 @@ function RuleTable({ table }: { table: RuleTableRow[] }) {
 function RuleComponent({ rule, level, noTitle }: { rule: Rule; level: number; noTitle?: boolean }) {
   const navigation = useNavigation();
   const { db } = useContext(DatabaseContext);
+  const { colors } = useContext(StyleContext);
   const tabooSetSelector = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelector(state, undefined));
   const linkPressed = useCallback(
     (url: string) => {
-      openUrl(navigation, url, db, tabooSetId);
-    }, [navigation, db, tabooSetId]);
+      openUrl(navigation, url, db, colors, tabooSetId);
+    }, [navigation, db, colors, tabooSetId]);
   const rules = useMemo(() => sortBy(rule.rules || [], rule => rule.order || 0), [rule.rules]);
   return (
     <>

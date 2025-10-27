@@ -98,8 +98,8 @@ export default function CardFaqView() {
   }, []);
   const tabooSetId = useTabooSetId();
   const linkPressed = useCallback(async(url: string) => {
-    await openUrl(navigation, url, db, tabooSetId);
-  }, [navigation, tabooSetId, db]);
+    await openUrl(navigation, url, db, colors, tabooSetId);
+  }, [navigation, tabooSetId, db, colors]);
 
   const faqEntry = useMemo(() => {
     const arkhamDbEntry = head(faqEntries);

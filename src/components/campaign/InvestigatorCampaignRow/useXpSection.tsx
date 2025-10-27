@@ -12,6 +12,7 @@ import { useLatestDeckCards } from '@components/core/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import { useNavigation } from '@react-navigation/native';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   deck?: LatestDeckT;
@@ -42,6 +43,7 @@ export default function useXpSection({
   editXpPressed,
 }: Props): [React.ReactNode, boolean] {
   const { userId } = useContext(ArkhamCardsAuthContext);
+  const { colors } = useContext(StyleContext);
   const showDeckUpgradePress = useCallback(() => {
     if (deck && showDeckUpgrade) {
       showDeckUpgrade(investigator, deck.deck);
@@ -53,6 +55,7 @@ export default function useXpSection({
     if (deck) {
       showDeckModal(
         navigation,
+        colors,
         deck.id,
         deck.deck,
         campaign?.id,
@@ -60,7 +63,7 @@ export default function useXpSection({
         'upgrade',
       );
     }
-  }, [navigation, campaign, deck, investigator]);
+  }, [navigation, colors, campaign, deck, investigator]);
   const ownerDeck = !deck?.owner || !userId || deck.owner.id === userId;
   const [cards] = useLatestDeckCards(deck, false);
   const { listSeperator } = useContext(LanguageContext);

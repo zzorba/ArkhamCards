@@ -793,6 +793,7 @@ export default function useParsedDeckComponent({
   const singleCardView = useSettingValue('single_card');
   const deckId = parsedDeck?.id;
   const navigation = useNavigation();
+  const { colors } = useContext(StyleContext);
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(
@@ -834,7 +835,6 @@ export default function useParsedDeckComponent({
     );
   }, [customizations, colors, data, editable, navigation, deckId, investigator, tabooSetId, singleCardView, cards]);
   const { listSeperator } = useContext(LanguageContext);
-  const { colors } = useContext(StyleContext);
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];
     if (!card) {

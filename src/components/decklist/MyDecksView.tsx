@@ -44,8 +44,8 @@ function MyDecksView() {
   }, [navigation, colors.M, showNewDeckDialog]);
 
   const deckNavClicked = useCallback((deck: LatestDeckT, investigator: Card | undefined) => {
-    showDeckModal(navigation, deck.id, deck.deck, deck.campaign?.id, investigator);
-  }, [navigation]);
+    showDeckModal(navigation, colors, deck.id, deck.deck, deck.campaign?.id, investigator);
+  }, [navigation, colors]);
   const [localDecksOnly, toggleLocalDecksOnly] = useSettingFlag('hide_arkhamdb_decks');
   const [hideCampaignDecks, toggleHideCampaignDecks] = useSettingFlag('hide_campaign_decks');
 

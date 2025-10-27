@@ -171,6 +171,7 @@ export default function InvestigatorCampaignRow({
     if (deck) {
       showDeckModal(
         navigation,
+        colors,
         deck.id,
         deck.deck,
         campaign?.id,
@@ -179,7 +180,7 @@ export default function InvestigatorCampaignRow({
         true
       );
     }
-  }, [navigation, campaign, investigator, deck]);
+  }, [navigation, colors, campaign, investigator, deck]);
 
   const selectDeck = useCallback(() => {
     chooseDeckForInvestigator && chooseDeckForInvestigator(investigator);
