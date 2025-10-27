@@ -35,6 +35,7 @@ import { useAlertDialog } from './dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import SimpleFab from '@components/core/SimpleFab';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export interface DeckDraftProps {
   id: DeckId;
@@ -76,13 +77,14 @@ function FabDraftButton({ onPress, loading, secondaryAction }: { onPress: () => 
       <AppIcon name="draft" size={24} color={colors.L30} />
     );
   }, [loading, colors])
+  const insets = useSafeAreaInsets();
   return (
     <SimpleFab
       color={secondaryAction ? colors.D20 : colors.warn}
       icon={renderIcon}
       onPress={localPress}
       offsetX={s + xs}
-      offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+      offsetY={insets.bottom + NOTCH_BOTTOM_PADDING + s + xs}
       accessiblityLabel={t`Draft`}
     />
   );

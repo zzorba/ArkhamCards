@@ -16,6 +16,7 @@ import { ParsedDeckResults, useDeckEditState, useParsedDeck, xpString } from '@c
 import { useAdjustXpDialog } from '@components/deck/dialogs';
 import { DeckId } from '@actions/types';
 import { TINY_PHONE } from '@styles/sizes';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 
@@ -102,13 +103,14 @@ export function PreLoadedDeckNavFooter({ parsedDeckObj, control, onPress, forceS
       </TouchableOpacity>
     );
   }, [deckEdits, theXpString, deck, showXpAdjustmentDialog, typography, colors]);
+  const insets = useSafeAreaInsets();
   if (mode === 'view' && !forceShow) {
     return null;
   }
   const modeText = mode === 'upgrade' ? t`Upgrading` : t`Editing`;
   return (
     <>
-      <View style={[styles.marginWrapper, { bottom: (yOffset || NOTCH_BOTTOM_PADDING) + s, paddingRight: fabPadding(control) }]}>
+      <View style={[styles.marginWrapper, { bottom: (yOffset ?? 0) + insets.bottom + s, paddingRight: fabPadding(control) }]}>
         <View style={[styles.content, shadow.large, { backgroundColor: colors.D10 }]}>
           { (control !== 'counts' || !TINY_PHONE) ? (
             <View>

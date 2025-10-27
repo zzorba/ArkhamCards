@@ -37,6 +37,7 @@ import { useParsedDeck } from '@components/deck/hooks';
 import { ParsedDeckContextProvider } from '@components/deck/DeckEditContext';
 import SimpleFab from '@components/core/SimpleFab';
 import { useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -392,6 +393,7 @@ export default function({
     toggleSearchBack,
   });
   const parsedDeck = useParsedDeck(deckId);
+  const insets = useSafeAreaInsets();
   return (
     <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>
       <CollapsibleSearchBox
@@ -443,7 +445,7 @@ export default function({
                   accessiblityLabel={t`Filters`}
                   position="right"
                   offsetX={s + xs}
-                  offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+                  offsetY={insets.bottom + s + xs}
                 />
               </>
             ) }

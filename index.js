@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { registerRootComponent } from 'expo';
 import * as Sentry from '@sentry/react-native';
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
@@ -67,6 +68,7 @@ function App() {
   React.useEffect(() => {
     async function prepare() {
       try {
+        // Enable edge-to-edge on Android
         // You can add any additional loading logic here
         // For now, we'll just mark it as ready
         await new Promise(resolve => setTimeout(resolve, 100)); // Small delay to ensure everything is initialized

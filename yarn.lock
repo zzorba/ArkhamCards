@@ -11509,10 +11509,10 @@ react-native-redash@18.1.1:
     normalize-svg-path "^1.0.1"
     parse-svg-path "^0.1.2"
 
-react-native-safe-area-context@5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-5.4.0.tgz#04b51940408c114f75628a12a93569d30c525454"
-  integrity sha512-JaEThVyJcLhA+vU0NU8bZ0a1ih6GiF4faZ+ArZLqpYbL6j7R3caRqj+mE3lEtKCuHgwjLg3bCxLL1GPUJZVqUA==
+react-native-safe-area-context@5.6.1:
+  version "5.6.1"
+  resolved "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-5.6.1.tgz#cb4d249ef1a6f7e8fd0cfdfa9764838dffda26b6"
+  integrity sha512-/wJE58HLEAkATzhhX1xSr+fostLsK8Q97EfpfMDKo8jlOc1QKESSX/FQrhk7HhQH/2uSaox4Y86sNaI02kteiA==
 
 react-native-screens@~4.11.1:
   version "4.11.1"
@@ -11601,11 +11601,6 @@ react-native-toast-message@^2.2.1:
   version "2.3.3"
   resolved "https://registry.npmjs.org/react-native-toast-message/-/react-native-toast-message-2.3.3.tgz#e301508d386a9902ff6b4559ecc6674f8cfdf97a"
   integrity sha512-4IIUHwUPvKHu4gjD0Vj2aGQzqPATiblL1ey8tOqsxOWRPGGu52iIbL8M/mCz4uyqecvPdIcMY38AfwRuUADfQQ==
-
-react-native-track-player@5.0.0-alpha0:
-  version "5.0.0-alpha0"
-  resolved "https://registry.npmjs.org/react-native-track-player/-/react-native-track-player-5.0.0-alpha0.tgz#687c9376ce71e59bd7703ee0ec0d98b5c119c489"
-  integrity sha512-dxMI8aX75wS9S5/DM7dWN060uGjEitX3fhvLGtrQ96AgIKvOorKy3HkBU7DgvCF/6YDAMxez2PaZA+4A3DQWAQ==
 
 react-native-uuid@2.0.3:
   version "2.0.3"

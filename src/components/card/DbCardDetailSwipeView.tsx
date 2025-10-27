@@ -481,6 +481,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
+    position: 'relative',
   },
   gutter: {
     position: 'absolute',

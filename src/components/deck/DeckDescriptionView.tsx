@@ -26,6 +26,7 @@ import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { DeckId } from '@actions/types';
 import SimpleFab from '@components/core/SimpleFab';
 import { t } from 'ttag';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export interface DeckDescriptionProps {
   id: DeckId;
@@ -93,6 +94,7 @@ export default function DeckDescriptionView() {
       }, 500);
     }
   }, [toggleEdit, textInputRef]);
+  const insets = useSafeAreaInsets();
   const fab = useMemo(() => {
     return (
       <SimpleFab
@@ -102,10 +104,10 @@ export default function DeckDescriptionView() {
         position="right"
         accessiblityLabel={t`Edit`}
         offsetX={s + xs}
-        offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + s + xs}
+        offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + insets.bottom + s + xs}
       />
     );
-  }, [edit, fabIcon, onEdit, saveChanges, colors, mode, factionColor, keyboardHeight]);
+  }, [edit, fabIcon, onEdit, saveChanges, colors, mode, factionColor, insets, keyboardHeight]);
   return (
     <View style={styles.wrapper}>
       { edit ? (

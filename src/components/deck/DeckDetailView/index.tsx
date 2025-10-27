@@ -18,6 +18,7 @@ import { ngettext, msgid, t, c } from 'ttag';
 import SideMenu from 'react-native-side-menu-updated';
 import { FloatingAction } from 'react-native-floating-action';
 import { format } from 'date-fns';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
@@ -41,7 +42,6 @@ import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import AppIcon from '@icons/AppIcon';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import HeaderButton from '@components/core/HeaderButton';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import DeckButton from '@components/deck/controls/DeckButton';
 import DeckProblemBanner from '@components/deck/DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -1110,21 +1110,7 @@ function DeckDetailView({
         break;
     }
   }, [onUpgradePressed, onDraftCards, onAddCardsPressed, onEditPressed, showCardChartsPressed, showDrawSimulatorPressed]);
-  const fab = useMemo(() => {
-    return (
-      <FloatingAction
-        color={(mode !== 'view' || fabOpen) ? colors.D10 : factionColor}
-        floatingIcon={fabIcon}
-        onPressMain={toggleFabOpen}
-        onPressItem={onPressItem}
-        position="right"
-        distanceToEdge={{ vertical: NOTCH_BOTTOM_PADDING + s + xs, horizontal: s + xs }}
-        // shadowStyle={shadow.large}
-        // fixNativeFeedbackRadius
-        actions={items}
-      />
-    );
-  }, [factionColor, fabOpen, mode, onPressItem, items, fabIcon, colors, toggleFabOpen]);
+  const insets = useSafeAreaInsets();
   const extraRequiredCards = useMemo(() => {
     if (mode === 'view' || !requiredCards) {
       return [];
@@ -1186,6 +1172,10 @@ function DeckDetailView({
       }
     });
   }*/
+  const fabPosition = useMemo(() => ({
+    vertical: insets.bottom + s + xs,
+    horizontal: s + xs,
+  }), [insets]);
   if (!parsedDeck || !cards || cardsMissing) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
@@ -1210,6 +1200,7 @@ function DeckDetailView({
   const menuWidth = Math.min(width * 0.60, 240);
   const showTaboo: boolean = !!(tabooSetId !== deck.taboo_id && (tabooSetId || deck.taboo_id));
   const theProblem = problem ?? extraProblem;
+
   return (
     <ParsedDeckContextProvider parsedDeckObj={parsedDeckObj}>
       <View style={[styles.flex, backgroundStyle]}>
@@ -1275,7 +1266,17 @@ function DeckDetailView({
                   onPress={saveEdits}
                 />
               ) }
-              { fab }
+              <FloatingAction
+                color={(mode !== 'view' || fabOpen) ? colors.D10 : factionColor}
+                floatingIcon={fabIcon}
+                onPressMain={toggleFabOpen}
+                onPressItem={onPressItem}
+                position="right"
+                distanceToEdge={fabPosition}
+                // shadowStyle={shadow.large}
+                // fixNativeFeedbackRadius
+                actions={items}
+              />
             </View>
           </View>
         </SideMenu>
