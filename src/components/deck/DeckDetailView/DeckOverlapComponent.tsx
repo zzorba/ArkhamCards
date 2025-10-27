@@ -75,7 +75,7 @@ export default function DeckOverlapComponent({ parsedDeck, cards, campaignInvest
   latestDecks: LatestDeckT[];
   campaignInvestigators: CampaignInvestigator[] | undefined;
 }) {
-  const { typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const in_collection = useSelector(getPacksInCollection);
   const [excludeInvestigators, toggleExcludeInvestigators] = useToggles({});
   const ignore_collection = useSettingValue('ignore_collection');
@@ -182,11 +182,12 @@ export default function DeckOverlapComponent({ parsedDeck, cards, campaignInvest
   const navigation = useNavigation();
   const showCardPressed = useCallback((id: string, card: Card) => {
     if (singleCardView) {
-      showCard(navigation, card.code, card, { showSpoilers: true });
+      showCard(navigation, card.code, card, colors, { showSpoilers: true });
     } else {
       const allCards = flatMap(overlap, o => o.conflicts);
       showCardSwipe(
         navigation,
+        colors,
         map(allCards, card => card.card.code),
         undefined,
         findIndex(allCards, c => c.id === id),
@@ -199,7 +200,7 @@ export default function DeckOverlapComponent({ parsedDeck, cards, campaignInvest
         parsedDeck?.customizations
       );
     }
-  }, [navigation, overlap, parsedDeck, singleCardView]);
+  }, [navigation, overlap, colors, parsedDeck, singleCardView]);
 
   if (!overlap.length && !keys(excludeInvestigators).length) {
     return null;

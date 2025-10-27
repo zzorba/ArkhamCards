@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo } from 'react';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { ArkhamNavigation, RootStackParamList } from '@navigation/types';
 import {
@@ -27,6 +27,7 @@ import { Customizations, DeckId } from '@actions/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { SimpleDeckEditContextProvider, useAllCardCustomizations, useCardCustomizations, useDeckSlotCount } from '@components/deck/DeckEditContext';
 import { HeaderButtonWithId } from '@components/core/HeaderButton';
+import { getDeckScreenOptions } from '@components/nav/helper';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = card?.custom() ? [] : [{
@@ -70,6 +71,7 @@ export interface CardDetailProps {
   initialCustomizations: Customizations | undefined;
   deckId: DeckId | undefined;
   deckInvestigatorId: string | undefined;
+  headerBackgroundColor?: string;
 }
 
 type Props = Omit<CardDetailProps, 'deckId' | 'deckInvestigatorId'>;
@@ -181,6 +183,15 @@ function CardDetailView({
 function CardDetailViewWraper() {
   const route = useRoute<RouteProp<RootStackParamList, 'Card'>>();
   const { id, back_id, pack_code, showSpoilers, tabooSetId, initialCustomizations, deckId, deckInvestigatorId } = route.params;
+  const navigation = useNavigation();
+  const { colors } = useContext(StyleContext);
+  const [investigator] = useSingleCard(deckInvestigatorId, 'player');
+
+  useLayoutEffect(() => {
+    if (deckInvestigatorId && investigator) {
+      navigation.setOptions(getDeckScreenOptions(colors, { noTitle: true }, investigator));
+    }
+  }, [deckInvestigatorId, investigator, colors, navigation]);
 
   return (
     <SimpleDeckEditContextProvider deckId={deckId} investigator={deckInvestigatorId}>

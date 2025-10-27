@@ -142,8 +142,8 @@ function SaveDeckRow({
   }, [deck, userId, storyAssetDeltas, adjustXp, saveDeck, saveDelayedDeck, saveCampaignLog]);
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(navigation, card.code, card, { showSpoilers: true });
-  }, [navigation]);
+    showCard(navigation, card.code, card, colors, { showSpoilers: true });
+  }, [navigation, colors]);
 
   const renderDeltas = useCallback((cards: Card[], deltas: Slots) => {
     return map(

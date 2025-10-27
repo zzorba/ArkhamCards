@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { TouchableOpacity } from '@components/core/Touchables';
@@ -12,6 +12,7 @@ import Card from '@data/types/Card';
 import { m, s, xs } from '@styles/space';
 import { useFlag } from '@components/core/hooks';
 import { useNavigation } from '@react-navigation/native';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   investigator: Card;
@@ -23,6 +24,7 @@ interface Props {
 export default function InvestigatorSummaryBlock({ investigator, navEnabled, tabooSetId, yithian, investigatorBack }: Props) {
   const [showBack, toggleShowBack] = useFlag(false);
   const navigation = useNavigation();
+  const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => {
     if (navEnabled) {
       if (investigator) {
@@ -30,6 +32,7 @@ export default function InvestigatorSummaryBlock({ investigator, navEnabled, tab
           navigation,
           investigator.code,
           investigator,
+          colors,
           {
             showSpoilers: false,
             tabooSetId,
@@ -40,7 +43,7 @@ export default function InvestigatorSummaryBlock({ investigator, navEnabled, tab
     } else {
       toggleShowBack();
     }
-  }, [navigation, navEnabled, tabooSetId, investigator, investigatorBack, toggleShowBack]);
+  }, [navigation, colors, navEnabled, tabooSetId, investigator, investigatorBack, toggleShowBack]);
   const [textContent, tabooContent] = useMemo(() => {
     if (!investigatorBack || !investigatorBack.back_text || !showBack) {
       return [

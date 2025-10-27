@@ -1,4 +1,4 @@
-import { find, flatMap, forEach, get, sortBy } from 'lodash';
+import { find, flatMap, forEach, sortBy } from 'lodash';
 
 import {
   CampaignCycleCode,
@@ -187,10 +187,10 @@ export async function loadTaboos(lang: string): Promise<TabooSets | undefined> {
   return await loadAsset<TabooSets>(assetKey);
 }
 
-async function getScenarioNames(lang: string): Promise<{ id: string; name: string }[]> {
-  const assetKey = (lang === 'en' || lang === 'cs') ? 'scenario_names' : `scenario_names_${lang}`;
-  return await loadAsset<{ id: string; name: string }[]>(assetKey);
-}
+// async function getScenarioNames(lang: string): Promise<{ id: string; name: string }[]> {
+//   const assetKey = (lang === 'en' || lang === 'cs') ? 'scenario_names' : `scenario_names_${lang}`;
+//   return await loadAsset<{ id: string; name: string }[]>(assetKey);
+// }
 
 export function useScenarioNames(): { [id: string]: string | undefined } {
   const { lang } = useContext(LanguageContext);
@@ -412,7 +412,7 @@ export function useStandaloneScenarios(): StandaloneInfo[] | undefined {
   const [scenarios, setScenarios] = useState<StandaloneInfo[]>();
   useEffect(() => {
     let canceled = false;
-    (async () => {
+    (async() => {
       const scenarios = await getStandaloneScenarios(lang);
       if (!canceled) {
         setScenarios(scenarios);

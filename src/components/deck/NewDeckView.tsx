@@ -67,8 +67,9 @@ function NewDeckView() {
       investigatorId: investigator.alternate_of_code ?? investigator.code,
       onCreateDeck,
       alternateInvestigatorId: investigator.alternate_of_code ? investigator.code : undefined,
+      headerBackgroundColor: colors.faction[investigator.factionCode()].background,
     });
-  }, [navigation, onCreateDeck, campaignId]);
+  }, [navigation, onCreateDeck, campaignId, colors]);
 
   return (
     <>

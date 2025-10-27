@@ -57,6 +57,7 @@ export interface NewDeckOptionsProps {
   onCreateDeck?: (deck: Deck) => void;
   isModal?: boolean;
   alternateInvestigatorId?: string;
+  headerBackgroundColor?: string;
 }
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
@@ -385,12 +386,13 @@ function NewDeckOptionsDialog({
             campaignId,
             title: investigator ? investigator.name : t`Deck`,
             subtitle: deck.name,
+            headerBackgroundColor: investigator ? colors.faction[investigator.factionCode()].background : undefined,
           },
         },
       ],
     });
     setSaving(false);
-  }, [campaignId, onCreateDeck, navigation, investigator, setSaving]);
+  }, [campaignId, colors, onCreateDeck, navigation, investigator, setSaving]);
   const createDeck = useCallback((isRetry?: boolean) => {
     const deckName = deckNameChange || defaultDeckName;
     if (investigator && (!saving || isRetry)) {
@@ -499,6 +501,7 @@ function NewDeckOptionsDialog({
         navigation,
         card.code,
         card,
+        colors,
         { showSpoilers: true, tabooSetId }
       );
       return;
@@ -517,6 +520,7 @@ function NewDeckOptionsDialog({
     });
     showCardSwipe(
       navigation,
+      colors,
       map(visibleCards, card => card.code),
       undefined,
       index,
@@ -527,7 +531,7 @@ function NewDeckOptionsDialog({
       investigator,
       false
     );
-  }, [requiredCardOptions, navigation, investigator, singleCardView, tabooSetId]);
+  }, [requiredCardOptions, navigation, investigator, colors, singleCardView, tabooSetId]);
   const [generateChaosDeck, chaosDeckLoading, chaosCards] = useChaosDeckGenerator({
     investigatorCode: investigatorId,
     meta, tabooSetId,

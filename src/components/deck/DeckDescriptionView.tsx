@@ -29,6 +29,7 @@ import { t } from 'ttag';
 
 export interface DeckDescriptionProps {
   id: DeckId;
+  headerBackgroundColor: string | undefined;
 }
 
 export default function DeckDescriptionView() {

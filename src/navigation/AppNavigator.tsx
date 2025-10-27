@@ -6,7 +6,6 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { t } from 'ttag';
 import Toast, { BaseToast, ErrorToast, ToastConfig } from 'react-native-toast-message';
-import LanguageContext from '@lib/i18n/LanguageContext';
 
 import AppIcon from '@icons/AppIcon';
 
@@ -164,6 +163,22 @@ function useNavigatorTheme(includeBackTitle = true): {
   };
 }
 
+function getDeckScreenOptionsWithBackground(headerBackgroundColor: string | undefined, title?: string) {
+  return {
+    ...(title ? { title } : {}),
+    ...(headerBackgroundColor ? {
+      headerStyle: {
+        backgroundColor: headerBackgroundColor,
+      },
+      headerTintColor: '#FFFFFF',
+      headerTitleStyle: {
+        color: '#FFFFFF',
+      },
+      statusBarStyle: 'light' as const,
+    } : {}),
+  };
+}
+
 function useAppInitialization(navigationRef: React.RefObject<NavigationContainerRef<RootStackParamList> | null>) {
   const [safeModeActive, setSafeModeActive] = useState(false);
   const appState = useSelector((state: AppState) => state);
@@ -314,16 +329,12 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Card"
         component={CardDetailView}
-        options={{
-          title: t`Card`,
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, t`Card`)}
       />
       <Stack.Screen
         name="Card.Swipe"
         component={DbCardDetailSwipeView}
-        options={{
-          title: '',
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, '')}
       />
       <Stack.Screen
         name="Card.Image"
@@ -863,9 +874,7 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Deck"
         component={DeckDetailView}
-        options={{
-          title: t`Deck`,
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params.headerBackgroundColor, t`Deck`)}
       />
       <RootStack.Screen
         name="Deck.New"
@@ -877,9 +886,7 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Deck.NewOptions"
         component={NewDeckOptionsDialog}
-        options={{
-          title: t`New Deck`,
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params.headerBackgroundColor, t`New Deck`)}
       />
       {renderCommonScreens(RootStack)}
       <RootStack.Screen
@@ -892,9 +899,7 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Deck.EditSpecial"
         component={EditSpecialDeckCardsView}
-        options={{
-          title: t`Edit Special Cards`,
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, t`Edit Special Cards`)}
       />
       <RootStack.Screen
         name="Deck.EditAddCards"
@@ -904,23 +909,17 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Deck.DraftCards"
         component={DeckDraftView}
-        options={{
-          title: t`Draft Cards`,
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, t`Draft Cards`)}
       />
       <RootStack.Screen
         name="Deck.Upgrade"
         component={DeckUpgradeDialog}
-        options={{
-          title: t`Upgrade Deck`,
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, t`Upgrade Deck`)}
       />
       <RootStack.Screen
         name="Deck.Description"
         component={DeckDescriptionView}
-        options={{
-          title: t`Notes`,
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, t`Notes`)}
       />
       <RootStack.Screen
         name="Dialog.CardUpgrade"
@@ -930,23 +929,17 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Deck.History"
         component={DeckHistoryView}
-        options={{
-          title: t`Upgrade History`,
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, t`Upgrade History`)}
       />
       <RootStack.Screen
         name="Deck.Charts"
         component={DeckChartsView}
-        options={{
-          title: t`Charts`,
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, t`Charts`)}
       />
       <RootStack.Screen
         name="Deck.DrawSimulator"
         component={DrawSimulatorView}
-        options={{
-          title: t`Draw Simulator`,
-        }}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, t`Draw Simulator`)}
       />
       <RootStack.Screen
         name="Weakness.Draw"
@@ -995,9 +988,6 @@ function AppNavigatorInner({ navigationRef, navigationIntegration }: {
   const toastConfig = useToastConfig();
   useAppInitialization(navigationRef);
 
-  // Get current language from context to force navigation remount on locale change
-  const { lang } = useContext(LanguageContext);
-
   const linking = {
     prefixes: ['arkhamcards://', 'dissonantvoices://'],
     config: {
@@ -1022,45 +1012,45 @@ function AppNavigatorInner({ navigationRef, navigationIntegration }: {
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.background }}>
-      <SafeAreaProvider>
-        <NavigationContainer
-          ref={navigationRef}
-          linking={linking}
-          onReady={onReady}
-          theme={{
-            dark: darkMode,
-            colors: {
-              primary: colors.D30,
-              background: colors.background,
-              card: colors.L30,
-              text: colors.darkText,
-              border: colors.divider,
-              notification: colors.D30,
+      <NavigationContainer
+        ref={navigationRef}
+        linking={linking}
+        onReady={onReady}
+        theme={{
+          dark: darkMode,
+          colors: {
+            primary: colors.D30,
+            background: colors.background,
+            card: colors.L30,
+            text: colors.darkText,
+            border: colors.divider,
+            notification: colors.D30,
+          },
+          fonts: {
+            regular: {
+              fontFamily: 'Alegreya-Regular',
+              fontWeight: 'normal',
             },
-            fonts: {
-              regular: {
-                fontFamily: 'Alegreya-Regular',
-                fontWeight: 'normal',
-              },
-              medium: {
-                fontFamily: 'Alegreya-Medium',
-                fontWeight: 'normal',
-              },
-              bold: {
-                fontFamily: 'Alegreya-Medium',
-                fontWeight: 'normal',
-              },
-              heavy: {
-                fontFamily: 'Alegreya-Medium',
-                fontWeight: 'normal',
-              },
+            medium: {
+              fontFamily: 'Alegreya-Medium',
+              fontWeight: 'normal',
             },
-          }}
-        >
+            bold: {
+              fontFamily: 'Alegreya-Medium',
+              fontWeight: 'normal',
+            },
+            heavy: {
+              fontFamily: 'Alegreya-Medium',
+              fontWeight: 'normal',
+            },
+          },
+        }}
+      >
+        <SafeAreaProvider>
           <RootStackNavigator />
-        </NavigationContainer>
-        <Toast config={toastConfig} />
-      </SafeAreaProvider>
+        </SafeAreaProvider>
+      </NavigationContainer>
+      <Toast config={toastConfig} />
     </GestureHandlerRootView>
   );
 }

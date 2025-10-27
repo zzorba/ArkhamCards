@@ -47,7 +47,7 @@ export default function ChangesFromPreviousDeck({
   editable,
   footerButton,
 }: Props) {
-  const { typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const {
     investigator,
     changes,
@@ -110,10 +110,11 @@ export default function ChangesFromPreviousDeck({
   const navigation = useNavigation();
   const showCardPressed = useCallback((id: string, card: Card) => {
     if (singleCardView) {
-      showCard(navigation, card.code, card, { showSpoilers: true, deckId: parsedDeck.id, deckInvestigatorId: deckInvestigatorId, initialCustomizations: parsedDeck.customizations });
+      showCard(navigation, card.code, card, colors, { showSpoilers: true, deckId: parsedDeck.id, deckInvestigatorId: deckInvestigatorId, initialCustomizations: parsedDeck.customizations });
     } else {
       showCardSwipe(
         navigation,
+        colors,
         map(allCards, card => card.card.code),
         undefined,
         findIndex(allCards, c => c.id === id && c.card.code === card.code),
@@ -127,8 +128,8 @@ export default function ChangesFromPreviousDeck({
         editable
       );
     }
-  }, [navigation, allCards, investigator, parsedDeck.id, deckInvestigatorId,
-    parsedDeck.customizations, tabooSetId, singleCardView, editable]);
+  }, [navigation, allCards, investigator, deckInvestigatorId, colors,
+    parsedDeck.id, parsedDeck.customizations, tabooSetId, singleCardView, editable]);
 
   const faction = parsedDeck.faction;
   const renderSection = useCallback((slots: Slots, id: string, title: string) => {

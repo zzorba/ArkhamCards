@@ -49,7 +49,7 @@ function useCampaignGuide(campaign?: SingleCampaignT) {
       return;
     }
     let canceled = false;
-    (async () => {
+    (async() => {
       if (campaignGuideData.campaignCode === STANDALONE && campaignGuideData.standaloneId) {
         const guide = await getCampaignGuide(campaignGuideData.standaloneId.campaignId, campaignGuideData.lang);
         if (!canceled) {

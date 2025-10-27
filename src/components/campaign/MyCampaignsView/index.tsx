@@ -17,7 +17,6 @@ import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { useFlag } from '@components/core/hooks';
 import { useStandaloneScenarios } from '@data/scenario';
-import LanguageContext from '@lib/i18n/LanguageContext';
 import { useCampaigns } from '@data/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import withApolloGate from '@components/core/withApolloGate';
@@ -50,7 +49,6 @@ function SearchOptions({
 function MyCampaignsView() {
   const [search, setSearch] = useState('');
   const navigation = useNavigation();
-  const { lang } = useContext(LanguageContext);
   const { fontScale, colors } = useContext(StyleContext);
   const scenarios = useStandaloneScenarios();
   const standalonesById = useMemo(() => {

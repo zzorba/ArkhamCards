@@ -352,7 +352,7 @@ export function usePlaybackState(): { state: PlayerState } {
   return { state: PlayerState.Paused };
 }
 
-export function useProgress(updateInterval?: number): { position: number; duration: number } {
+export function useProgress(): { position: number; duration: number } {
   const { currentTime, duration } = useAudioPlayerContext();
   return { position: currentTime, duration };
 }

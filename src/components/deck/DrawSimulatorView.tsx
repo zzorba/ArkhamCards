@@ -33,6 +33,7 @@ export interface DrawSimulatorProps {
   slots: Slots;
   customizations: Customizations;
   investigator?: Card;
+  headerBackgroundColor?: string;
 }
 
 interface Item {
@@ -352,8 +353,8 @@ export default function DrawSimulatorView() {
   }, [colors, typography, drawState, drawOne, drawTwo, drawFive, drawAll, redrawSelected, reshuffleSelected, resetDeck]);
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(navigation, card.code, card, { showSpoilers: true, initialCustomizations: customizations });
-  }, [navigation, customizations]);
+    showCard(navigation, card.code, card, colors, { showSpoilers: true, initialCustomizations: customizations });
+  }, [navigation, customizations, colors]);
   const cardWidth = useMemo(() => {
     let cardsPerRow = 10;
     let cardWidth = (width - s) / cardsPerRow - s;

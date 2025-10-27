@@ -23,7 +23,6 @@ import MenuButton from '@components/core/MenuButton';
 import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import useCopyDeckDialog from '@components/deck/useCopyDeckDialog';
-import { iconsMap } from '@app/NavIcons';
 import { deleteDeckAction } from '@components/deck/actions';
 import { CampaignId, CardId, DeckId, DEFAULT_SORT, EditDeckState, getDeckId, INVESTIGATOR_PROBLEM, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
 import Card from '@data/types/Card';
@@ -68,6 +67,7 @@ export interface DeckDetailProps {
   campaignId: CampaignId | undefined;
   modal?: boolean;
   fromCampaign?: boolean;
+  headerBackgroundColor?: string;
 }
 
 const SHOW_DRAFT_CARDS = true;
@@ -516,8 +516,9 @@ function DeckDetailView({
       campaignId: campaign?.id,
       id,
       assignedWeaknesses: addedBasicWeaknesses,
+      headerBackgroundColor: parsedDeck ? colors.faction[parsedDeck.faction ?? 'neutral'].background : undefined,
     });
-  }, [navigation, setFabOpen, setMenuOpen, id, campaign, addedBasicWeaknesses, deckEditsRef, setMode]);
+  }, [navigation, setFabOpen, setMenuOpen, id, campaign, addedBasicWeaknesses, deckEditsRef, setMode, parsedDeck, colors]);
 
   const onEditExtraPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -571,8 +572,9 @@ function DeckDetailView({
     navigation.navigate('Deck.DraftCards', {
       id,
       campaignId,
+      headerBackgroundColor: parsedDeck ? colors.faction[parsedDeck.faction ?? 'neutral'].background : undefined,
     });
-  }, [campaignId, problem, setFabOpen, setMenuOpen, showAlert, deckEditsRef, setMode, navigation, id]);
+  }, [campaignId, problem, setFabOpen, setMenuOpen, showAlert, deckEditsRef, setMode, navigation, id, parsedDeck, colors]);
 
   const onDraftExtraCards = useCallback(() => {
     setFabOpen(false);
@@ -599,8 +601,9 @@ function DeckDetailView({
       id,
       campaignId,
       mode: 'extra',
+      headerBackgroundColor: parsedDeck ? colors.faction[parsedDeck.faction ?? 'neutral'].background : undefined,
     });
-  }, [campaignId, extraProblem, setFabOpen, setMenuOpen, showAlert, deckEditsRef, setMode, navigation, id]);
+  }, [campaignId, extraProblem, setFabOpen, setMenuOpen, showAlert, deckEditsRef, setMode, navigation, id, parsedDeck, colors]);
 
   const onAddCardsPressed = useCallback(() => {
     if (!deckEditsRef.current?.mode || deckEditsRef.current.mode === 'view') {
@@ -620,8 +623,9 @@ function DeckDetailView({
       id: deckId,
       showNewDeck: true,
       campaignId: campaign?.id,
+      headerBackgroundColor: colors.upgrade,
     });
-  }, [deckId, campaign, navigation, setFabOpen, setMenuOpen]);
+  }, [deckId, campaign, navigation, setFabOpen, setMenuOpen, colors]);
   const [copyDialog, showCopyDialog] = useCopyDeckDialog({ campaign, deckId: id, signedIn, actions: deckActions })
   const toggleCopyDialog = useCallback(() => {
     setFabOpen(false);
@@ -652,11 +656,12 @@ function DeckDetailView({
     if (parsedDeck) {
       navigation.navigate('Deck.Description', {
         id,
+        headerBackgroundColor: colors.faction[parsedDeck.faction ?? 'neutral'].background,
       });
     }
     setFabOpen(false);
     setMenuOpen(false);
-  }, [parsedDeck, navigation, id, setFabOpen, setMenuOpen]);
+  }, [parsedDeck, navigation, id, setFabOpen, setMenuOpen, colors]);
   const [editNameDialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Deck name`,
     onValueChange: updateDeckName,
@@ -817,9 +822,9 @@ function DeckDetailView({
     setFabOpen(false);
     setMenuOpen(false);
     if (parsedDeck) {
-      showCardCharts(navigation, parsedDeck);
+      showCardCharts(navigation, colors, parsedDeck);
     }
-  }, [parsedDeck, navigation, setFabOpen, setMenuOpen]);
+  }, [parsedDeck, navigation, colors, setFabOpen, setMenuOpen]);
 
   const showUpgradeHistoryPressed = useCallback(() => {
     setFabOpen(false);
@@ -829,17 +834,18 @@ function DeckDetailView({
         id,
         campaign,
         investigator: parsedDeck.investigator.front,
+        headerBackgroundColor: colors.faction[parsedDeck.faction ?? 'neutral'].background,
       });
     }
-  }, [id, campaign, navigation, parsedDeck, setFabOpen, setMenuOpen]);
+  }, [id, campaign, navigation, parsedDeck, colors, setFabOpen, setMenuOpen]);
 
   const showDrawSimulatorPressed = useCallback(() => {
     setFabOpen(false);
     setMenuOpen(false);
     if (parsedDeck) {
-      showDrawSimulator(navigation, parsedDeck);
+      showDrawSimulator(navigation, colors, parsedDeck);
     }
-  }, [parsedDeck, navigation, setFabOpen, setMenuOpen]);
+  }, [parsedDeck, navigation, colors, setFabOpen, setMenuOpen]);
   const copyDeckId = useCopyAction(`${deckId.id}`, t`Deck id copied!`);
   const onCopyDeckId = useCallback(() => {
     setMenuOpen(false);

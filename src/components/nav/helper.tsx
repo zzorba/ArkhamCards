@@ -13,6 +13,7 @@ import Database from '@data/sqlite/Database';
 import { where } from '@data/sqlite/query';
 import COLORS from '@styles/colors';
 import { ArkhamNavigation } from '@navigation/types';
+import { FactionCodeType } from '@app_constants';
 
 // Unified deck screen options helper
 export function getDeckScreenOptions(
@@ -46,6 +47,7 @@ export function getDeckScreenOptions(
     headerTitleStyle: {
       color: textColor,
     },
+    statusBarStyle: initialMode === 'upgrade' ? 'dark' : 'light',
     presentation: modal ? 'fullScreenModal' : undefined,
   };
 
@@ -73,8 +75,31 @@ export function getDeckScreenOptions(
   return options;
 }
 
+export function getDeckScreenOptionsFromFaction(
+  colors: ThemeColors,
+  factionCode?: FactionCodeType,
+  initialMode?: 'upgrade' | 'edit'
+): NativeStackNavigationOptions {
+  const textColor = initialMode === 'upgrade' ? COLORS.D30 : '#FFFFFF';
+  const backgroundColor = initialMode === 'upgrade' ? colors.upgrade : colors.faction[
+    factionCode || 'neutral'
+  ].background;
+
+  return {
+    headerStyle: {
+      backgroundColor,
+    },
+    headerTintColor: textColor,
+    headerTitleStyle: {
+      color: textColor,
+    },
+    statusBarStyle: initialMode === 'upgrade' ? 'dark' : 'light',
+  };
+}
+
 export function showDeckModal(
   navigation: ArkhamNavigation,
+  colors: ThemeColors,
   id: DeckId,
   deck: Deck,
   campaignId: CampaignId | undefined,
@@ -82,6 +107,7 @@ export function showDeckModal(
   initialMode?: 'upgrade' | 'edit',
   fromCampaign?: boolean
 ) {
+  const backgroundColor = initialMode === 'upgrade' ? colors.upgrade : (investigator ? colors.faction[investigator.factionCode()].background : undefined);
   navigation.navigate('Deck', {
     id,
     modal: true,
@@ -90,6 +116,7 @@ export function showDeckModal(
     subtitle: deck.name,
     initialMode,
     fromCampaign,
+    headerBackgroundColor: backgroundColor,
   });
 }
 
@@ -100,15 +127,17 @@ type ShowCardOptions = {
   initialCustomizations?: Customizations;
   deckId?: DeckId;
   deckInvestigatorId?: string;
+  investigator?: Card;
 }
 
 export function showCard(
   navigation: ArkhamNavigation,
   code: string,
   card: Card,
+  colors: ThemeColors,
   options: ShowCardOptions
 ) {
-  const { showSpoilers, deckId, initialCustomizations, tabooSetId, backCode } = options;
+  const { showSpoilers, deckId, initialCustomizations, tabooSetId, backCode, investigator } = options;
   navigation.navigate('Card', {
     id: code,
     back_id: backCode,
@@ -118,20 +147,24 @@ export function showCard(
     deckId,
     deckInvestigatorId: options.deckInvestigatorId,
     initialCustomizations,
+    headerBackgroundColor: investigator && colors ? colors.faction[investigator.factionCode()].background : undefined,
   });
 }
 
 export function showCardCharts(
   navigation: ArkhamNavigation,
+  colors: ThemeColors,
   parsedDeck: ParsedDeck,
 ) {
   navigation.navigate('Deck.Charts', {
     parsedDeck,
+    headerBackgroundColor: colors.faction[parsedDeck.faction ?? 'neutral'].background,
   });
 }
 
 export function showDrawSimulator(
   navigation: ArkhamNavigation,
+  colors: ThemeColors,
   parsedDeck: ParsedDeck,
 ) {
   const {
@@ -143,11 +176,13 @@ export function showDrawSimulator(
     slots,
     customizations,
     investigator: investigator.front,
+    headerBackgroundColor: colors.faction[parsedDeck.faction ?? 'neutral'].background,
   });
 }
 
 export function showCardSwipe(
   navigation: ArkhamNavigation,
+  colors: ThemeColors,
   codes: string[],
   controls: undefined | 'side' | 'extra' | 'checklist' | ('side' | 'deck' | 'extra' | 'ignore' | 'bonded' | 'attachment' | 'special' | 'checklist')[],
   index: number,
@@ -173,6 +208,7 @@ export function showCardSwipe(
     editable,
     initialCustomizations,
     customizationsEditable: editable || customizationsEditable,
+    headerBackgroundColor: investigator ? colors.faction[investigator.factionCode()].background : undefined,
   });
 }
 
@@ -207,6 +243,7 @@ export async function openUrl(
   navigation: ArkhamNavigation,
   url: string,
   db: Database,
+  colors: ThemeColors,
   tabooSetId?: number,
 ) {
   const card_regex = /\/card\/(\d+)/;
@@ -219,7 +256,7 @@ export async function openUrl(
       tabooSetId
     );
     if (card) {
-      showCard(navigation, code, card, { showSpoilers: false });
+      showCard(navigation, code, card, colors, { showSpoilers: false });
       return;
     }
   }

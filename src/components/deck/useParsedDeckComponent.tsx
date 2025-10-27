@@ -29,6 +29,7 @@ import { BONDED_WEAKNESS_COUNTS, THE_INSANE_CODE } from '@data/deck/specialCards
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 import { useDeckAttachmentSlots } from './DeckEditContext';
 import { useNavigation } from '@react-navigation/native';
+import StyleContext from '@styles/StyleContext';
 
 interface CollectionSettings {
   inCollection: { [pack_code: string]: boolean };
@@ -798,6 +799,7 @@ export default function useParsedDeckComponent({
         navigation,
         card.code,
         card,
+        colors,
         { showSpoilers: true, deckId, deckInvestigatorId: investigator?.main.code, initialCustomizations: customizations, tabooSetId },
       );
       return;
@@ -818,6 +820,7 @@ export default function useParsedDeckComponent({
     });
     showCardSwipe(
       navigation,
+      colors,
       map(visibleCards, card => card.code),
       controls,
       index,
@@ -829,8 +832,9 @@ export default function useParsedDeckComponent({
       editable,
       customizations,
     );
-  }, [customizations, data, editable, navigation, deckId, investigator, tabooSetId, singleCardView, cards]);
+  }, [customizations, colors, data, editable, navigation, deckId, investigator, tabooSetId, singleCardView, cards]);
   const { listSeperator } = useContext(LanguageContext);
+  const { colors } = useContext(StyleContext);
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];
     if (!card) {

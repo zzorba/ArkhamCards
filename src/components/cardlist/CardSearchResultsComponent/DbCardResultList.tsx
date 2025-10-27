@@ -898,7 +898,7 @@ export default function DbCardResultList(props: Props) {
   // const deck = parsedDeck?.deckT;
   // const { deckEdits, deckId } = useContext(DeckEditContext);
   const customizations = useLiveCustomizations(deck);
-  const { borderStyle, fontScale, typography, width } = useContext(StyleContext);
+  const { borderStyle, colors, fontScale, typography, width } = useContext(StyleContext);
   const tabooSetOverride = useCurrentDeckTabooSet();
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
@@ -963,6 +963,7 @@ export default function DbCardResultList(props: Props) {
         navigation,
         card.code,
         card,
+        colors,
         { showSpoilers: true, deckId, deckInvestigatorId: investigator?.main.code, initialCustomizations: customizations, tabooSetId: tabooSetOverride }
       );
       return;
@@ -982,6 +983,7 @@ export default function DbCardResultList(props: Props) {
     const cards = flatMap(feed, item => item.type === 'card' ? item.card : []);
     showCardSwipe(
       navigation,
+      colors,
       codes,
       specialMode,
       index,
@@ -993,7 +995,7 @@ export default function DbCardResultList(props: Props) {
       true,
       customizations
     );
-  }, [navigation, customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, deckId, investigator, specialMode, cardPressed]);
+  }, [navigation, colors, customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, deckId, investigator, specialMode, cardPressed]);
   const { lang } = useContext(LanguageContext);
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {

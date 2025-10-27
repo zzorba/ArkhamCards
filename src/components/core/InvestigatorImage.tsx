@@ -175,10 +175,10 @@ function InvestigatorImage({
       if (imageLink) {
         showCardImage(navigation, card);
       } else {
-        showCard(navigation, card.code, card, { showSpoilers: true, tabooSetId, backCode: backCard?.code });
+        showCard(navigation, card.code, card, colors, { showSpoilers: true, tabooSetId, backCode: backCard?.code });
       }
     }
-  }, [card, backCard, tabooSetId, imageLink, navigation, pressable]);
+  }, [card, backCard, tabooSetId, imageLink, colors, navigation, pressable]);
 
   const impliedSize = useMemo(() => {
     return getImpliedSize(size, fontScale);

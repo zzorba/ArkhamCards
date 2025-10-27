@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '@navigation/types';
 import {
@@ -43,6 +43,7 @@ import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import space, { s } from '@styles/space';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { DeckEditContext, ParsedDeckContextProvider, useAllCardCustomizations, useCardCustomizations, useDeckAttachmentSlots } from '@components/deck/DeckEditContext';
+import { getDeckScreenOptions } from '@components/nav/helper';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -56,7 +57,8 @@ export interface CardDetailSwipeProps {
   faction?: FactionCodeType;
   editable?: boolean;
   customizationsEditable?: boolean;
-  initialCustomizations: Customizations | undefined
+  initialCustomizations: Customizations | undefined;
+  headerBackgroundColor?: string;
 }
 
 type Props = CardDetailSwipeProps;
@@ -228,6 +230,14 @@ function DbCardDetailSwipeView() {
   const route = useRoute<RouteProp<RootStackParamList, 'Card.Swipe'>>();
   const { deckId } = route.params;
   const parsedDeck = useParsedDeck(deckId, undefined);
+  const navigation = useNavigation();
+  const { colors } = useContext(StyleContext);
+
+  useLayoutEffect(() => {
+    if (parsedDeck?.parsedDeck?.investigator) {
+      navigation.setOptions(getDeckScreenOptions(colors, { noTitle: true }, parsedDeck.parsedDeck?.investigator.front));
+    }
+  }, [parsedDeck, colors, navigation]);
 
   return (
     <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>

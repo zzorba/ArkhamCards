@@ -24,6 +24,7 @@ export interface DeckHistoryProps {
   id: DeckId;
   investigator: Card;
   campaign?: MiniCampaignT;
+  headerBackgroundColor?: string;
 }
 
 interface HistoryDeckItemType {
@@ -115,8 +116,9 @@ export default function DeckHistoryView() {
       campaignId: campaign?.id,
       title: parsedDeck.investigator.front.name,
       subtitle: parsedDeck.deck?.name || '',
+      headerBackgroundColor: investigator ? colors.faction[investigator.factionCode()].background : undefined,
     });
-  }, [navigation, campaign]);
+  }, [investigator, colors, navigation, campaign]);
 
   const renderItem = useCallback(({ item: { id, deck, versionNumber, first } }: ListRenderItemInfo<HistoryDeckItemType>) => {
     if (!cards || !deck.id || !deck.deck) {

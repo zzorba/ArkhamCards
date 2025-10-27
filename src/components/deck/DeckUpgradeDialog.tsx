@@ -39,6 +39,7 @@ export interface UpgradeDeckProps {
   id: DeckId;
   campaignId?: CampaignId;
   showNewDeck: boolean;
+  headerBackgroundColor?: string;
 }
 
 const EMPTY_TRAUMA = {};

@@ -97,11 +97,11 @@ export default function InvestigatorCampaignRow({
   const campaignShowDeckId = useSettingValue('campaign_show_deck_id');
   const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
   const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
-  const { width, typography } = useContext(StyleContext);
+  const { colors, width, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
-    showCard(navigation, card.code, card, { showSpoilers: true });
-  }, [navigation]);
+    showCard(navigation, card.code, card, colors, { showSpoilers: true });
+  }, [navigation, colors]);
 
   const editXpPressed = useCallback(() => {
     showXpDialog(investigator);

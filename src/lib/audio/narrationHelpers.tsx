@@ -112,7 +112,7 @@ async function setNarrationQueue(queue: NarrationTrack[], context: ReturnType<ty
 
 export function useSetNarratinQueue(): (queue: NarrationTrack[]) => Promise<void> {
   const context = useAudioPlayerContext();
-  return useCallback(async (queue: NarrationTrack[]) => {
+  return useCallback(async(queue: NarrationTrack[]) => {
     return await setNarrationQueue(queue, context);
   }, [context]);
 }

@@ -1,4 +1,3 @@
-import { DeckId } from '@actions/types';
 import { NavigationProp } from '@react-navigation/native';
 
 // Deck screens
@@ -181,7 +180,7 @@ export type RootStackParamList = BasicStackParamList & {
   'Deck.EditAddCards': EditDeckProps;
   'Deck.DraftCards': DeckDraftProps;
   'Deck.Upgrade': UpgradeDeckProps;
-  'Deck.Description': { id: DeckId };
+  'Deck.Description': DeckDescriptionProps;
   'Dialog.CardUpgrade': CardUpgradeDialogProps;
   'Deck.History': DeckHistoryProps;
   'Deck.Charts': DeckChartsProps;

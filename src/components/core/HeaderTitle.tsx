@@ -13,7 +13,7 @@ interface HeaderTitleProps {
 export default function HeaderTitle({ title, subtitle, color }: HeaderTitleProps) {
   const { typography, colors } = useContext(StyleContext);
   return (
-    <View style={{ flexDirection: 'column', justifyContent: 'center',  alignItems: Platform.OS === 'ios' ? 'center' : 'flex-start' }}>
+    <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: Platform.OS === 'ios' ? 'center' : 'flex-start' }}>
       <Text style={[
         typography.header,
         { color: color ?? colors.darkText, textAlign: Platform.OS === 'ios' ? 'center' : 'left' },

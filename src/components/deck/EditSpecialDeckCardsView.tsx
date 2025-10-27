@@ -27,6 +27,7 @@ export interface EditSpecialCardsProps {
   id: DeckId;
   campaignId?: CampaignId;
   assignedWeaknesses?: string[];
+  headerBackgroundColor?: string;
 }
 
 function EditSpecialDeckCardsView() {

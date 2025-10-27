@@ -16,7 +16,7 @@ import { TouchableOpacity } from '@components/core/Touchables';
 import EncounterIcon from '@icons/EncounterIcon';
 import { StyleContext } from '@styles/StyleContext';
 import space, { m } from '@styles/space';
-import { useAudioPlayerContext, useCurrentTrack, usePlaybackState, useProgress, useTrackPlayerEvents, Event, State, PlayerState, Track } from '@lib/audio/AudioPlayerContext';
+import { useAudioPlayerContext, useCurrentTrack, usePlaybackState, useProgress, useTrackPlayerEvents, Event, State, Track } from '@lib/audio/AudioPlayerContext';
 import { useAudioAccess } from '@lib/audio/narrationHelpers';
 import { usePressCallback } from '@components/core/hooks';
 import { useDialog } from '@components/deck/dialogs';
@@ -29,13 +29,13 @@ function Divider() {
   return <View style={{ height: StyleSheet.hairlineWidth, backgroundColor: colors.M }} />
 }
 
-function artist(lang: string) {
-  switch (lang) {
-    case 'ru': return 'Несмолкающие голоса';
-    case 'es': 'Voces disonantes';
-    default: return 'Dissonant Voices';
-  }
-}
+// function artist(lang: string) {
+//   switch (lang) {
+//     case 'ru': return 'Несмолкающие голоса';
+//     case 'es': 'Voces disonantes';
+//     default: return 'Dissonant Voices';
+//   }
+// }
 
 export interface NarrationTrack {
   id: string;

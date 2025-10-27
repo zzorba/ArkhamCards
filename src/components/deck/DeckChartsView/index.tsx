@@ -17,7 +17,8 @@ import { RootStackParamList } from '@navigation/types';
 const INCLUDE_SLOTS_CHART = false;
 
 export interface DeckChartsProps {
-  parsedDeck?: ParsedDeck;
+  parsedDeck: ParsedDeck | undefined;
+  headerBackgroundColor: string | undefined;
 }
 
 export default function DeckChartsView() {

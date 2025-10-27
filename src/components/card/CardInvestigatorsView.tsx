@@ -1,5 +1,5 @@
 
-import React, { useCallback, useState, useLayoutEffect } from 'react';
+import React, { useCallback, useState, useLayoutEffect, useContext } from 'react';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '@navigation/types';
 import { Keyboard, TouchableOpacity, Text } from 'react-native';
@@ -15,6 +15,7 @@ import Card from '@data/types/Card';
 import { showCard } from '@components/nav/helper';
 import { useInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
 import { iconsMap } from '@app/NavIcons';
+import StyleContext from '@styles/StyleContext';
 
 export interface CardInvestigatorProps {
   code: string;
@@ -23,6 +24,7 @@ export interface CardInvestigatorProps {
 function CardInvestigatorsView() {
   const route = useRoute<RouteProp<RootStackParamList, 'Card.Investigators'>>();
   const navigation = useNavigation();
+  const { colors } = useContext(StyleContext);
   const { code } = route.params;
   const [card, loading] = useSingleCard(code, 'player');
   const [selectedSort, sortChanged] = useState<SortType[]>([SORT_BY_FACTION, SORT_BY_TITLE]);
@@ -56,8 +58,8 @@ function CardInvestigatorsView() {
 
 
   const onPress = useCallback((investigator: Card) => {
-    showCard(navigation, investigator.code, investigator, { showSpoilers: false });
-  }, [navigation]);
+    showCard(navigation, investigator.code, investigator, colors, { showSpoilers: false });
+  }, [navigation, colors]);
 
   if (loading || !card) {
     return <LoadingSpinner large />;

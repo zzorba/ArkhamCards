@@ -103,7 +103,7 @@ function ApolloGate({ children }: Props) {
 }
 
 export default function withApolloGate<Props>(WrappedComponent: React.ComponentType<Props>) {
-  const Result = function(props: Props) {
+  const ApolloResult = function(props: Props) {
     return (
       <ApolloGate>
         { /* @ts-ignore */ }
@@ -111,8 +111,8 @@ export default function withApolloGate<Props>(WrappedComponent: React.ComponentT
       </ApolloGate>
     );
   };
-  hoistNonReactStatics(Result, WrappedComponent);
-  return Result;
+  hoistNonReactStatics(ApolloResult, WrappedComponent);
+  return ApolloResult;
 }
 
 

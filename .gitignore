@@ -3,8 +3,8 @@
 .DS_Store
 .expo
 
-ios/
-android/
+/ios/
+/android/
 
 /credentials.json
 

@@ -113,7 +113,7 @@ export default function CardGridComponent<ItemT extends GridItem>({
   maxCardsPerRow = 8,
   draftHistory,
 }: Props<ItemT>) {
-  const { backgroundStyle, width, height } = useContext(StyleContext);
+  const { backgroundStyle, colors, width, height } = useContext(StyleContext);
   const cardWidth = useMemo(() => {
     let cardsPerRow = maxCardsPerRow;
     let cardWidth = (width - s) / cardsPerRow - s;
@@ -128,8 +128,8 @@ export default function CardGridComponent<ItemT extends GridItem>({
   }, [width, maxCardsPerRow]);
   const navigation = useNavigation();
   const onCardPress = useCallback((card: Card) => {
-    showCard(navigation, card.code, card, { showSpoilers: true });
-  }, [navigation]);
+    showCard(navigation, card.code, card, colors, { showSpoilers: true });
+  }, [navigation, colors]);
 
   const renderCardItem = useCallback((item: ItemT) => {
     const card = cards && cards[item.code];

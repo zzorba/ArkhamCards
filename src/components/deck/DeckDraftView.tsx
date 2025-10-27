@@ -40,6 +40,7 @@ export interface DeckDraftProps {
   id: DeckId;
   campaignId: CampaignId | undefined;
   mode?: 'extra';
+  headerBackgroundColor?: string;
 }
 
 function DraftButton({ card, onDraft, cardWidth, item }: { card: Card; cardWidth: number; item: GridItem; onDraft: (card: Card, item?: GridItem) => void }) {
@@ -302,8 +303,8 @@ export default function DeckDraftView() {
     return <DraftButton item={item} card={card} cardWidth={cardWidth} onDraft={onDraft} />
   }, [onDraft]);
   const onCardPress = useCallback((card: Card) => {
-    showCard(navigation, card.code, card, { showSpoilers: true });
-  }, [navigation]);
+    showCard(navigation, card.code, card, colors, { showSpoilers: true });
+  }, [navigation, colors]);
 
   const renderCardItem = useCallback(({ item }: { item: GridItem }) => {
     const card = cards && cards[item.code];

@@ -26,6 +26,7 @@ export interface EditDeckProps {
   storyOnly?: boolean;
   weaknessOnly?: boolean;
   title?: string;
+  headerBackgroundColor?: string;
 }
 
 export default function DeckEditViewWrapper() {
