@@ -164,7 +164,16 @@ function DeckEditView({
 }
 
 function options<T extends RootStackParamList>({ route }: { route: RouteProp<T, 'Deck.EditAddCards'> }): NativeStackNavigationOptions {
-  return { title: route.params?.title ?? t`Edit Deck` };
+  return {
+    title: route.params?.title ?? t`Edit Deck`,
+    headerTintColor: '#FFFFFF',
+    headerTitleStyle: {
+      color: '#FFFFFF',
+    },
+    headerStyle: route.params?.headerBackgroundColor ? {
+      backgroundColor: route.params.headerBackgroundColor,
+    } : undefined,
+  };
 };
 
 DeckEditViewWrapper.options = options;

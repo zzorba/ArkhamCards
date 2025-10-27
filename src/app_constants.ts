@@ -822,6 +822,23 @@ export function reprintPackToPack(pack: ReprintPack): Pack {
   };
 }
 
+/**
+ * Expands a pack code into its physical pack codes.
+ * - If it's POOL_INVESTIGATOR_CYCLE, expands to all investigator packs
+ * - If it's a special/virtual pack (like ptcp, dwlp), expands to its physical packs
+ * - Otherwise returns the pack code as-is
+ */
+export function expandPackCode(packCode: string): string[] {
+  if (packCode === POOL_INVESTIGATOR_CYCLE) {
+    return POOL_INVESTIGATOR_PACKS;
+  }
+  const specialPack = specialPacks.find(sp => sp.code === packCode);
+  if (specialPack) {
+    return specialPack.packs;
+  }
+  return [packCode];
+}
+
 export function cycleName(position: string): string {
   switch (position) {
     case '1': return t`Core Set`;

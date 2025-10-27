@@ -123,7 +123,7 @@ export default function CardSearchComponent(props: Props) {
           <HeaderButton
             iconName="sort"
             onPress={showSortDialog}
-            color={colors.M}
+            color={deckId ? '#FFFFFF' : colors.M}
             accessibilityLabel={t`Sort`}
           />
         </>
