@@ -263,9 +263,6 @@ const authLink = setContext(async(req, { headers }) => {
       },
     };
   }
-  console.log('#################')
-  console.log(`Sending request without auth: ${JSON.stringify(req.query)}`);
-  console.log('#################')
   return { headers };
 });
 
@@ -280,9 +277,6 @@ const wsLink = new WebSocketLink(
       lazy: true,
       connectionParams: async() => {
         const hasuraToken = await getAuthToken();
-        if (!hasuraToken) {
-          console.log('*********\nno hasura token for subscription....\n**********');
-        }
         return {
           headers: hasuraToken ? {
             Authorization: `Bearer ${hasuraToken}`,

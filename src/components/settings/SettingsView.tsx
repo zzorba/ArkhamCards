@@ -37,6 +37,7 @@ import { useRemoteSettingFlag, useSettingFlag, useSettingValue } from '@componen
 import { useRemoteSettings, useUpdateRemoteSetting } from '@data/remote/settings';
 import SettingsCardPoolPicker from './SettingsCardPoolPicker';
 import { useNavigation } from '@react-navigation/native';
+import withApolloGate from '@components/core/withApolloGate';
 
 function contactPressed() {
   Linking.openURL('mailto:arkhamcards@gmail.com');
@@ -59,7 +60,7 @@ function showEnAudio() {
   Linking.openURL('https://therestrictedcollection.podbean.com/');
 }
 
-export default function SettingsView() {
+function SettingsView() {
   const navigation = useNavigation();
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const dispatch = useDispatch();
@@ -332,6 +333,8 @@ export default function SettingsView() {
     </>
   );
 }
+
+export default withApolloGate(SettingsView);
 
 const styles = StyleSheet.create({
   container: {

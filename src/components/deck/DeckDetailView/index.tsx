@@ -1135,6 +1135,11 @@ function DeckDetailView({
     }, 3000);
   }, [setShowDeleteBrokenDeck]);
 
+  const fabPosition = useMemo(() => ({
+    vertical: insets.bottom + s + xs,
+    horizontal: s + xs,
+  }), [insets]);
+
   if (!deck) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
@@ -1172,10 +1177,6 @@ function DeckDetailView({
       }
     });
   }*/
-  const fabPosition = useMemo(() => ({
-    vertical: insets.bottom + s + xs,
-    horizontal: s + xs,
-  }), [insets]);
   if (!parsedDeck || !cards || cardsMissing) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>

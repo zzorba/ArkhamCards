@@ -18,6 +18,7 @@ import LatestDeckT from '@data/interfaces/LatestDeckT';
 import space, { s } from '@styles/space';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import withApolloGate from '@components/core/withApolloGate';
 
 
 function MyDecksView() {
@@ -115,9 +116,11 @@ function MyDecksView() {
   );
 }
 
-export default withFetchCardsGate(
-  MyDecksView,
-  { promptForUpdate: false },
+export default withApolloGate(
+  withFetchCardsGate(
+    MyDecksView,
+    { promptForUpdate: false },
+  )
 );
 
 const styles = StyleSheet.create({

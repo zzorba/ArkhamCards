@@ -36,17 +36,16 @@ function ApolloGate({ children }: Props) {
   useEffect(() => {
     if (user && isConnected) {
       user.getIdTokenResult().then(idTokenResult => {
-        console.log('ApolloGate: got id token result', idTokenResult);
         const hasuraClaims = idTokenResult.claims['https://hasura.io/jwt/claims'];
         if (hasuraClaims) {
-          // console.log('Opening apollo');
           apolloQueueLink.open();
         } else {
           apolloQueueLink.close();
         }
+      }).catch(() => {
+        apolloQueueLink.close();
       });
     } else {
-      // console.log('Closing apollo');
       apolloQueueLink.close();
     }
   }, [user, isConnected]);
