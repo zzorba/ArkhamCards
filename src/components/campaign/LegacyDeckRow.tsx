@@ -4,11 +4,12 @@ import { showDeckModal } from '@components/nav/helper';
 import LegacyDeckListRow from '../decklist/LegacyDeckListRow';
 import { Deck } from '@actions/types';
 import { CardsMap } from '@data/types/Card';
-import StyleContext from '@styles/StyleContext';
 import { useLatestDeckCards, usePressCallback } from '@components/core/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { useNavigation } from '@react-navigation/native';
+import StyleContext from '@styles/StyleContext';
 
 type RenderDeckDetails = (
   deck: Deck,
@@ -43,11 +44,12 @@ export default function LegacyDeckRow({
   viewDeckButton,
   investigator,
 }: Props) {
+  const navigation = useNavigation();
   const { colors } = useContext(StyleContext);
   const [cards] = useLatestDeckCards(deck, false);
   const onDeckPressFunction = useCallback(() => {
-    showDeckModal(deck.id, deck.deck, campaign.id, colors, investigator.card);
-  }, [deck, campaign, colors, investigator]);
+    showDeckModal(navigation, colors, deck.id, deck.deck, campaign.id, investigator.card);
+  }, [navigation, colors, deck, campaign, investigator]);
   const onDeckPress = usePressCallback(onDeckPressFunction);
   const details = useMemo(() => {
     if (!deck || !renderDetails) {

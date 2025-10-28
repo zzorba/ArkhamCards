@@ -29,7 +29,7 @@ function weaknessString(deck: Deck, cards: CardsMap) {
   };
 }
 
-export function useMaybeShowWeaknessPrompt(componentId: string, checkForWeakness: (deck: Deck) => void): (deck: Deck) => void {
+export function useMaybeShowWeaknessPrompt(checkForWeakness: (deck: Deck) => void): (deck: Deck) => void {
   const [newDecks, updateNewDeck] = useReducer((decks: Deck[], { type, deck }: { type: 'add' | 'remove'; deck: Deck }) => {
     switch (type) {
       case 'add':
@@ -38,7 +38,7 @@ export function useMaybeShowWeaknessPrompt(componentId: string, checkForWeakness
         return filter(decks, d => getDeckId(d).uuid !== getDeckId(deck).uuid);
     }
   }, []);
-  const componentVisible = useComponentVisible(componentId);
+  const componentVisible = useComponentVisible();
   useEffect(() => {
     if (componentVisible && newDecks.length) {
       const deck = newDecks[0];

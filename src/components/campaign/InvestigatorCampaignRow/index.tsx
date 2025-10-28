@@ -27,9 +27,9 @@ import { AppState, makeUploadingDeckSelector } from '@reducers';
 import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestigatorRow';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   campaign: MiniCampaignT;
   investigator: CampaignInvestigator;
   spentXp: number;
@@ -75,7 +75,6 @@ function StoryAssetRow({ code, onCardPress, last, campaignGuide, count }: { code
 }
 
 export default function InvestigatorCampaignRow({
-  componentId,
   campaign,
   campaignGuide,
   investigator,
@@ -94,14 +93,15 @@ export default function InvestigatorCampaignRow({
   showDeckUpgrade,
   showTraumaDialog,
 }: Props) {
+  const navigation = useNavigation();
   const campaignShowDeckId = useSettingValue('campaign_show_deck_id');
   const uploadingSelector = useMemo(makeUploadingDeckSelector, []);
   const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
   const { colors, width, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, { showSpoilers: true });
-  }, [componentId, colors]);
+    showCard(navigation, card.code, card, colors, { showSpoilers: true });
+  }, [navigation, colors]);
 
   const editXpPressed = useCallback(() => {
     showXpDialog(investigator);
@@ -170,16 +170,17 @@ export default function InvestigatorCampaignRow({
   const viewDeck = useCallback(() => {
     if (deck) {
       showDeckModal(
+        navigation,
+        colors,
         deck.id,
         deck.deck,
         campaign?.id,
-        colors,
         investigator.card,
         undefined,
         true
       );
     }
-  }, [campaign, investigator, deck, colors]);
+  }, [navigation, colors, campaign, investigator, deck]);
 
   const selectDeck = useCallback(() => {
     chooseDeckForInvestigator && chooseDeckForInvestigator(investigator);

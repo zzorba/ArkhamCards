@@ -7,8 +7,7 @@ import { ChaosBag } from '@app_constants';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space, { m } from '@styles/space';
-import { Navigation } from 'react-native-navigation';
-import { EditChaosBagProps } from '../../chaos/EditChaosBagDialog';
+
 import { CampaignCycleCode, CampaignId } from '@actions/types';
 import { showChaosBagOddsCalculator, showDrawChaosBag, showGuideChaosBagOddsCalculator, showGuideDrawChaosBag } from '../nav';
 import { useDialog } from '@components/deck/dialogs';
@@ -20,9 +19,9 @@ import { useAppDispatch } from '@app/store';
 import { MAX_WIDTH } from '@styles/sizes';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   allInvestigators: CampaignInvestigator[] | undefined;
   campaignId: CampaignId;
   scenarioId: string | undefined;
@@ -79,7 +78,6 @@ export function useSimpleChaosBagDialog(chaosBag?: ChaosBag, chaosBagResults?: C
 }
 
 export default function useChaosBagDialog({
-  componentId,
   allInvestigators,
   campaignId,
   chaosBag,
@@ -91,24 +89,25 @@ export default function useChaosBagDialog({
   cycleCode,
   processedCampaign,
 }: Props): [React.ReactNode, () => void, (visible: boolean) => void] {
+  const navigation = useNavigation();
   const { width } = useContext(StyleContext);
   const setVisibleRef = useRef<(visible: boolean) => void>(null);
   const oddsCalculatorPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideChaosBagOddsCalculator(componentId, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, !!standalone, processedCampaign);
+      showGuideChaosBagOddsCalculator(navigation, campaignId, chaosBag, map(allInvestigators, c => c.code), scenarioId, !!standalone, processedCampaign);
     } else {
-      showChaosBagOddsCalculator(componentId, campaignId, allInvestigators);
+      showChaosBagOddsCalculator(navigation, campaignId, allInvestigators);
     }
-  }, [componentId, campaignId, allInvestigators, chaosBag, guided, scenarioId, standalone, processedCampaign]);
+  }, [navigation, campaignId, allInvestigators, chaosBag, guided, scenarioId, standalone, processedCampaign]);
   const drawChaosBagPressed = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
     if (guided) {
-      showGuideDrawChaosBag(componentId, campaignId, map(allInvestigators, c => c.code), scenarioId, !!standalone);
+      showGuideDrawChaosBag(navigation, campaignId, map(allInvestigators, c => c.code), scenarioId, !!standalone);
     } else {
-      showDrawChaosBag(componentId, campaignId, allInvestigators, cycleCode);
+      showDrawChaosBag(navigation, campaignId, allInvestigators, cycleCode);
     }
-  }, [campaignId, componentId, guided, allInvestigators, scenarioId, standalone, cycleCode]);
+  }, [campaignId, navigation, guided, allInvestigators, scenarioId, standalone, cycleCode]);
   const dispatch = useAppDispatch();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
     if (setChaosBag) {
@@ -118,28 +117,13 @@ export default function useChaosBagDialog({
 
   const editChaosBagDialog = useCallback(() => {
     setVisibleRef.current && setVisibleRef.current(false);
-    Navigation.push<EditChaosBagProps>(componentId, {
-      component: {
-        name: 'Dialog.EditChaosBag',
-        passProps: {
-          chaosBag,
-          updateChaosBag,
-          trackDeltas: true,
-          cycleCode,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos Bag`,
-            },
-            backButton: {
-              title: t`Cancel`,
-            },
-          },
-        },
-      },
+    navigation.navigate('Dialog.EditChaosBag', {
+      chaosBag,
+      updateChaosBag,
+      trackDeltas: true,
+      cycleCode,
     });
-  }, [componentId, chaosBag, updateChaosBag, cycleCode]);
+  }, [navigation, chaosBag, updateChaosBag, cycleCode]);
   const customButtons = useMemo(() => {
     const result: React.ReactNode[] = [];
     if (customEditPressed || (!guided && setChaosBag)) {

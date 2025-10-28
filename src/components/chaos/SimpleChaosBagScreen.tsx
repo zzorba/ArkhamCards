@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
-import { Navigation, NavigationProps } from 'react-native-navigation';
+import React, { useCallback, useContext, useEffect, useLayoutEffect } from 'react';
 import { t } from 'ttag';
 
 import DrawChaosBagComponent from './DrawChaosBagComponent';
@@ -8,15 +7,17 @@ import { getChaosBag } from '@components/campaign/constants';
 import { useCampaignFromRedux, useChaosBagResultsRedux } from '@data/local/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { showChaosBagOddsCalculator } from '@components/campaign/nav';
-import { EditChaosBagProps } from './EditChaosBagDialog';
 import { updateCampaignChaosBag } from '@components/campaign/actions';
 import { ChaosBag } from '@app_constants';
 import { useSetCampaignChaosBag } from '@data/remote/campaigns';
 import { useAppDispatch } from '@app/store';
 import { useSimpleChaosBagDialog } from '@components/campaign/CampaignDetailView/useChaosBagDialog';
-import { useNavigationButtonPressed } from '@components/core/hooks';
+import { useNavigation } from '@react-navigation/native';
+import HeaderButton from '@components/core/HeaderButton';
+import StyleContext from '@styles/StyleContext';
 
-export default function ChaosBagTab({ componentId }: NavigationProps) {
+export default function ChaosBagTab() {
+  const navigation = useNavigation();
   const dispatch = useAppDispatch();
   const dummyCampaign = useCampaignFromRedux(FIXED_CHAOS_BAG_CAMPAIGN_ID);
   useEffect(() => {
@@ -45,8 +46,8 @@ export default function ChaosBagTab({ componentId }: NavigationProps) {
   const chaosBagResults = useChaosBagResultsRedux(FIXED_CHAOS_BAG_CAMPAIGN_ID);
 
   const showChaosBagOdds = useCallback(() => {
-    showChaosBagOddsCalculator(componentId, FIXED_CHAOS_BAG_CAMPAIGN_ID, []);
-  }, [componentId]);
+    showChaosBagOddsCalculator(navigation, FIXED_CHAOS_BAG_CAMPAIGN_ID, []);
+  }, [navigation]);
 
   const setCampaignChaosBag = useSetCampaignChaosBag();
   const updateChaosBag = useCallback((chaosBag: ChaosBag) => {
@@ -56,38 +57,22 @@ export default function ChaosBagTab({ componentId }: NavigationProps) {
   const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag, chaosBagResults);
   const showEditChaosBagDialog = useCallback(() => {
     if (dummyCampaign) {
-      Navigation.push<EditChaosBagProps>(componentId, {
-        component: {
-          name: 'Dialog.EditChaosBag',
-          passProps: {
-            chaosBag: dummyCampaign.chaosBag,
-            updateChaosBag: updateChaosBag,
-            trackDeltas: true,
-            cycleCode: dummyCampaign.cycleCode,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: t`Chaos Bag`,
-              },
-              backButton: {
-                title: t`Cancel`,
-              },
-            },
-          },
-        },
+      navigation.navigate('Dialog.EditChaosBag',{
+        chaosBag: dummyCampaign.chaosBag,
+        updateChaosBag: updateChaosBag,
+        trackDeltas: true,
+        cycleCode: dummyCampaign.cycleCode,
       });
     }
-  }, [componentId, dummyCampaign, updateChaosBag]);
-  useNavigationButtonPressed(
-    ({ buttonId }) => {
-      if (buttonId === 'edit') {
-        showEditChaosBagDialog();
-      }
-    },
-    componentId,
-    [showEditChaosBagDialog],
-  );
+  }, [navigation, dummyCampaign, updateChaosBag]);
+  const { colors } = useContext(StyleContext);
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButton iconName="edit" onPress={showEditChaosBagDialog} accessibilityLabel={t`Edit Chaos Bag`} color={colors.M} />
+      ),
+    })
+  }, [navigation, colors, showEditChaosBagDialog]);
 
   if (!chaosBag) {
     return <LoadingSpinner large />;

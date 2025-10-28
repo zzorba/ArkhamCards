@@ -21,14 +21,13 @@ import PartnerStatusEffectComponent from './PartnerStatusEffectComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 
 interface Props {
-  componentId: string;
   width: number;
   step: EffectsStep;
   campaignLog: GuidedCampaignLog;
   switchCampaignScenario?: () => void;
 }
 
-function SingleEffectComponent({ id, effect, border, input, numberInput, step, width, componentId, campaignLog, switchCampaignScenario, color }: {
+function SingleEffectComponent({ id, effect, border, input, numberInput, step, width, campaignLog, switchCampaignScenario, color }: {
   id: string;
   effect: Effect;
   border: boolean;
@@ -160,7 +159,6 @@ function SingleEffectComponent({ id, effect, border, input, numberInput, step, w
             step => (
               <ScenarioStepComponent
                 key={step.step.id}
-                componentId={componentId}
                 width={width}
                 step={step}
                 border={border}

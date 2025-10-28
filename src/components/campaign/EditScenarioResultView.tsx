@@ -1,37 +1,40 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useLayoutEffect, useMemo, useState } from 'react';
 import { throttle } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+
 import { t } from 'ttag';
 
 import { ScenarioResult, CUSTOM, CampaignId } from '@actions/types';
-import { NavigationProps } from '@components/nav/types';
 import { editScenarioResult } from './actions';
 import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 import { useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeckPickerStyleButton from '@components/deck/controls/DeckPickerStyleButton';
 import DeckButton from '@components/deck/controls/DeckButton';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useAppDispatch } from '@app/store';
+import { BasicStackParamList } from '@navigation/types';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface EditScenarioResultProps {
   campaignId: CampaignId;
   index: number;
 }
 
-type Props = NavigationProps & EditScenarioResultProps;
-
-export default function EditScenarioResultView({ campaignId, index, componentId }: Props) {
+export default function EditScenarioResultView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Campaign.EditResult'>>();
+  const { campaignId, index } = route.params;
+  const navigation = useNavigation();
   const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
+  useDismissOnCampaignDeleted(navigation, campaign);
   const dispatch = useAppDispatch();
   const existingScenarioResult = campaign && campaign.scenarioResults?.[index];
   const [scenarioResult, setScenarioResult] = useState<ScenarioResult | undefined>(existingScenarioResult);
@@ -40,28 +43,24 @@ export default function EditScenarioResultView({ campaignId, index, componentId 
     if (scenarioResult && campaign) {
       dispatch(editScenarioResult(actions, campaign, index, scenarioResult));
     }
-    Navigation.pop(componentId);
-  }, 200), [campaign, index, actions, scenarioResult, componentId, dispatch]);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'save') {
-      doSave();
-    }
-  }, componentId, [doSave]);
+    navigation.goBack();
+  }, 200), [campaign, index, actions, scenarioResult, navigation, dispatch]);
 
-  useEffect(() => {
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        rightButtons: [{
-          text: t`Save`,
-          id: 'save',
-          color: COLORS.M,
-          enabled: scenarioResult && !!(scenarioResult.scenario &&
-            (scenarioResult.interlude || scenarioResult.resolution !== '')),
-          accessibilityLabel: t`Save`,
-        }],
-      },
+  useLayoutEffect(() => {
+    const enabled = scenarioResult && !!(scenarioResult.scenario &&
+      (scenarioResult.interlude || scenarioResult.resolution !== ''))
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButton
+          text={t`Save`}
+          color={COLORS.M}
+          onPress={doSave}
+          accessibilityLabel={t`Save`}
+          disabled={!enabled}
+        />
+      ),
     });
-  }, [componentId, scenarioResult]);
+  }, [scenarioResult, navigation, doSave]);
 
   const nameChanged = useCallback((value: string) => {
     if (scenarioResult && scenarioResult.scenarioCode === CUSTOM) {

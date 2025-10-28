@@ -3,7 +3,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { filter } from 'lodash';
 import { t } from 'ttag';
 
@@ -32,9 +32,9 @@ import TitleComponent from './TitleComponent';
 import TravelCostStepComponent from './TravelCostStepComponent';
 import { BorderColor } from '@data/scenario/types';
 import InvestigatorSetupComponent from './InvestigatorSetupComponent';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   step: ScenarioStep;
   width: number;
   border?: boolean;
@@ -45,7 +45,6 @@ interface Props {
 
 
 function ScenarioStepComponentContent({
-  componentId,
   step: { step, campaignLog },
   border,
   width,
@@ -96,7 +95,6 @@ function ScenarioStepComponentContent({
           step={step}
           campaignGuide={campaignGuide}
           color={color}
-          componentId={componentId}
         />
       );
     case 'travel_cost':
@@ -127,7 +125,6 @@ function ScenarioStepComponentContent({
       return (
         <NarrationStepComponent narration={step.narration} hideTitle={!!step.title}>
           <InputStepComponent
-            componentId={componentId}
             step={step}
             campaignLog={campaignLog}
             switchCampaignScenario={switchCampaignScenario}
@@ -139,7 +136,6 @@ function ScenarioStepComponentContent({
     case 'effects':
       return (
         <EffectsStepComponent
-          componentId={componentId}
           width={width}
           step={step}
           campaignLog={campaignLog}
@@ -149,16 +145,12 @@ function ScenarioStepComponentContent({
     case 'location_setup':
       return (
         <View style={space.paddingBottomM}>
-          <LocationSetupButton
-            step={step}
-            componentId={componentId}
-          />
+          <LocationSetupButton step={step} />
         </View>
       );
     case 'border':
       return (
         <BorderStepComponent
-          componentId={componentId}
           step={step}
           width={width}
           processedScenario={processedScenario}
@@ -173,7 +165,6 @@ function ScenarioStepComponentContent({
 }
 
 export default function ScenarioStepComponent({
-  componentId,
   step,
   width,
   border,
@@ -181,6 +172,7 @@ export default function ScenarioStepComponent({
   noTitle,
   switchCampaignScenario,
 }: Props) {
+  const navigation = useNavigation();
   const { campaignInvestigators } = useContext(CampaignGuideContext);
   const { processedScenario } = useContext(ScenarioGuideContext);
 
@@ -197,8 +189,8 @@ export default function ScenarioStepComponent({
   }, [step.campaignLog, campaignInvestigators]);
   const resolution = step.step.id === CHOOSE_RESOLUTION_STEP_ID || context.campaignLog.scenarioStatus(processedScenario.id.encodedScenarioId) === 'resolution';
   const proceed = useCallback(() => {
-    Navigation.pop(componentId);
-  }, [componentId]);
+    navigation.goBack();
+  }, [navigation]);
   return (
     <ScenarioStepContext.Provider value={context}>
       { !noTitle && !!step.step.title && step.step.type !== 'border' && step.step.type !== 'xp_count' && (
@@ -210,7 +202,6 @@ export default function ScenarioStepComponent({
         />
       ) }
       <ScenarioStepComponentContent
-        componentId={componentId}
         step={step}
         border={border}
         width={width}

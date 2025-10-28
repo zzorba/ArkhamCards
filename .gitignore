@@ -3,6 +3,11 @@
 .DS_Store
 .expo
 
+/ios/
+/android/
+
+/credentials.json
+
 */sentry.properties
 # VSCode
 .vscode/
@@ -40,6 +45,7 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
+.kotlin/
 
 # node.js
 #
@@ -87,4 +93,4 @@ yarn-error.log
 .env.local
 
 # translations
-*.mo
+*.mocredentials.json

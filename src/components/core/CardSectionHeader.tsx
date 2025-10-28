@@ -162,6 +162,7 @@ const styles = StyleSheet.create({
   superHeaderText: {
     color: '#FFFFFF',
     textAlignVertical: 'center',
+    flex: 1,
   },
   placeholder: {
     height: m,
@@ -192,5 +193,6 @@ const styles = StyleSheet.create({
   },
   subHeaderText: {
     marginTop: 2,
+    flex: 1,
   },
 });

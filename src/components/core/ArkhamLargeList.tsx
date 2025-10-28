@@ -142,7 +142,9 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
             progressViewOffset={noSearch ? 0 : searchBarHeight}
             refreshing={debouncedRefreshing}
             onRefresh={handleRefresh}
-            tintColor={colors.background}
+            colors={['transparent']}
+            style={{ backgroundColor: 'transparent' }}
+            progressBackgroundColor="transparent"
           />
         }
         scrollEventThrottle={16}
@@ -172,7 +174,9 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
           progressViewOffset={noSearch ? 0 : searchBarHeight}
           refreshing={debouncedRefreshing}
           onRefresh={handleRefresh}
-          tintColor={colors.background}
+          colors={['transparent']}
+          style={{ backgroundColor: 'transparent' }}
+          progressBackgroundColor="transparent"
         />
       }
       scrollEventThrottle={16}

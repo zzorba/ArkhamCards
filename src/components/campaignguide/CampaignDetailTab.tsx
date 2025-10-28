@@ -1,10 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { InteractionManager, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { InteractionManager, ScrollView, StyleSheet, View } from 'react-native';
 import { filter, findLast, find, keys, last } from 'lodash';
 import { t } from 'ttag';
-import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
 
-import { iconsMap } from '@app/NavIcons';
 import { ProcessedCampaign, StepId } from '@data/scenario';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
@@ -17,29 +15,26 @@ import { useDeckActions } from '@data/remote/decks';
 import useChaosBagDialog from '@components/campaign/CampaignDetailView/useChaosBagDialog';
 import CampaignGuideContext from './CampaignGuideContext';
 import ScenarioCarouselComponent from './ScenarioCarouselComponent';
-import { CampaignAchievementsProps } from './CampaignAchievementsView';
 import CampaignInvestigatorsComponent from './CampaignInvestigatorsComponent';
 import CampaignSummaryHeader from '@components/campaign/CampaignSummaryHeader';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import { UpdateCampaignActions } from '@data/remote/campaigns';
 import { showGuideCampaignLog } from '@components/campaign/nav';
-import { WeaknessSetProps } from './WeaknessSetView';
 import useConnectionProblemBanner from '@components/core/useConnectionProblemBanner';
 import { useArkhamDbError } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import DeckOverlapComponent from '@components/deck/DeckDetailView/DeckOverlapComponent';
 import { useLatestDecksCards } from '@components/core/hooks';
-import { getTarotReadingLabel, TarotCardReadingProps, TarotReadingType, useTarotCardReadingPicker } from '@components/campaign/TarotCardReadingView';
+import { TarotReadingType, useTarotCardReadingPicker } from '@components/campaign/TarotCardReadingView';
 import { CampaignMapProps } from './CampaignMapView';
-import COLORS from '@styles/colors';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import CampaignHeader from './CampaignHeader';
 import { showRules } from './nav';
+import { useNavigation } from '@react-navigation/native';
 
 const SHOW_WEAKNESS = true;
 
 interface Props {
-  componentId: string;
   processedCampaign: ProcessedCampaign;
   updateCampaignActions: UpdateCampaignActions;
   showAlert: ShowAlert;
@@ -52,9 +47,10 @@ interface Props {
 
 
 export default function CampaignDetailTab({
-  componentId, processedCampaign, displayLinkScenarioCount, footerButtons, updateCampaignActions,
+  processedCampaign, displayLinkScenarioCount, footerButtons, updateCampaignActions,
   showLinkedScenario, showAlert, showCountDialog, login,
 }: Props) {
+  const navigation = useNavigation();
   const { backgroundStyle, width } = useContext(StyleContext);
   const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
   const { lang } = useContext(LanguageContext);
@@ -87,7 +83,7 @@ export default function CampaignDetailTab({
   const scenarioId = useMemo(() => last(filter(processedCampaign.scenarios, s => s.type === 'started'))?.id.encodedScenarioId, [processedCampaign.scenarios]);
   const showCampaignLog = useCallback(() => {
     showGuideCampaignLog(
-      componentId,
+      navigation,
       campaignId,
       campaignGuide,
       processedCampaign.campaignLog,
@@ -95,28 +91,11 @@ export default function CampaignDetailTab({
       scenarioId,
       processedCampaign
     );
-  }, [componentId, processedCampaign, campaignId, campaignGuide, scenarioId]);
+  }, [navigation, processedCampaign, campaignId, campaignGuide, scenarioId]);
 
   const showCampaignAchievements = useCallback(() => {
-    Navigation.push<CampaignAchievementsProps>(componentId, {
-      component: {
-        name: 'Guide.Achievements',
-        passProps: {
-          campaignId,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Achievements`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId, campaignId]);
+    navigation.navigate('Guide.Achievements', { campaignId });
+  }, [navigation, campaignId]);
   const updateTrauma = useCallback((code: string, trauma: Trauma) => {
     const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed');
     InteractionManager.runAfterInteractions(() => {
@@ -141,25 +120,8 @@ export default function CampaignDetailTab({
     find(processedCampaign.scenarios, s => s.type === 'playable' && s.scenarioGuide.scenarioType() === 'scenario');
 
   const showWeaknessSet = useCallback(() => {
-    Navigation.push<WeaknessSetProps>(componentId, {
-      component: {
-        name: 'Guide.WeaknessSet',
-        passProps: {
-          campaignId,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Weakness Set`,
-            },
-            backButton: {
-              title: t`Cancel`,
-            },
-          },
-        },
-      },
-    })
-  }, [componentId, campaignId]);
+    navigation.navigate('Guide.WeaknessSet', { campaignId });
+  }, [navigation, campaignId]);
   const campaignLog = processedCampaign.campaignLog;
   const campaignMap = campaignGuide.campaignMap();
   const showCampaignMap = useCallback(() => {
@@ -176,42 +138,13 @@ export default function CampaignDetailTab({
         unlockedLocations: campaignLog.campaignData.scarlet.unlockedLocations,
         unlockedDossiers: campaignLog.campaignData.scarlet.unlockedDossiers,
         hasFast,
+        subtitle: undefined,
       };
-      Navigation.showModal<CampaignMapProps>({
-        stack: {
-          children: [{
-            component: {
-              name: 'Campaign.Map',
-              passProps,
-              options: {
-                topBar: {
-                  title: {
-                    text: t`Map`,
-                  },
-                  leftButtons: [{
-                    icon: iconsMap.dismiss,
-                    id: 'close',
-                    color: COLORS.M,
-                    accessibilityLabel: t`Close`,
-                  }],
-                },
-                layout: {
-                  backgroundColor: '0x8A9284',
-                },
-                modalPresentationStyle: Platform.OS === 'ios' ?
-                  OptionsModalPresentationStyle.fullScreen :
-                  OptionsModalPresentationStyle.overCurrentContext,
-                modalTransitionStyle: OptionsModalTransitionStyle.crossDissolve,
-              },
-            },
-          }],
-        },
-      });
+      navigation.navigate('Campaign.Map', passProps);
     }
-  }, [campaignId, campaignMap, campaignLog]);
+  }, [navigation, campaignId, campaignMap, campaignLog]);
 
   const [chaosBagDialog, showChaosBag] = useChaosBagDialog({
-    componentId,
     allInvestigators,
     campaignId,
     chaosBag: processedCampaign.campaignLog.chaosBag || {},
@@ -223,31 +156,13 @@ export default function CampaignDetailTab({
   });
 
   const onTarotPress = useCallback((readingType: TarotReadingType) => {
-    Navigation.push<TarotCardReadingProps>(componentId, {
-      component: {
-        name: 'Campaign.Tarot',
-        passProps: {
-          id: campaignId,
-          originalReading: campaign.tarotReading,
-          scenarios: campaignGuide.tarotScenarios(),
-          readingType,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Tarot Reading`,
-            },
-            subtitle: {
-              text: getTarotReadingLabel(readingType),
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
+    navigation.navigate('Campaign.Tarot', {
+      id: campaignId,
+      originalReading: campaign.tarotReading,
+      scenarios: campaignGuide.tarotScenarios(),
+      readingType,
     });
-  }, [componentId, campaignGuide, campaignId, campaign.tarotReading]);
+  }, [navigation, campaignGuide, campaignId, campaign.tarotReading]);
   const [tarotDialog, showTarotDialog] = useTarotCardReadingPicker({
     value: undefined,
     onValueChange: onTarotPress,
@@ -267,8 +182,8 @@ export default function CampaignDetailTab({
     return [undefined, undefined];
   }, [rules, errata]);
   const showRulesPressed = useCallback(() => {
-    showRules(componentId, campaignId, { rules, campaignErrata: errata });
-  }, [componentId, rules, errata, campaignId]);
+    showRules(navigation, campaignId, { rules, campaignErrata: errata });
+  }, [navigation, rules, errata, campaignId]);
 
   const latestDecksList = campaign.latestDecks();
   const [cards] = useLatestDecksCards(latestDecksList, false, latestDecksList.length ? (latestDecksList[0].deck.taboo_id || 0) : 0);
@@ -317,7 +232,6 @@ export default function CampaignDetailTab({
           ) }
         </View>
         <ScenarioCarouselComponent
-          componentId={componentId}
           processedCampaign={processedCampaign}
           displayLinkScenarioCount={displayLinkScenarioCount}
           showLinkedScenario={showLinkedScenario}
@@ -325,7 +239,6 @@ export default function CampaignDetailTab({
         />
         <View style={space.paddingSideS}>
           <CampaignInvestigatorsComponent
-            componentId={componentId}
             showAlert={showAlert}
             login={login}
             loading={!campaignInvestigators}
@@ -383,7 +296,6 @@ export default function CampaignDetailTab({
         { !!cards && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
             <DeckOverlapComponent
-              componentId={componentId}
               cards={cards}
               campaign={campaign}
               latestDecks={latestDecksList}

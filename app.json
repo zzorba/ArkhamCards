@@ -1,7 +1,71 @@
 {
   "expo": {
-    "newArchEnabled": true,
+    "name": "ArkhamCards",
+    "slug": "arkhamcards",
+    "version": "1.9.0",
+    "jsEngine": "hermes",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "scheme": "arkhamcards",
+    "icon": "./assets/app-icon.png",
+    "splash": {
+      "image": "./assets/splash-logo.png",
+      "backgroundColor": "#513661",
+      "resizeMode": "contain"
+    },
+    "experiments": {
+      "reactCanary": false
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      }
+    },
+    "assetBundlePatterns": [
+      "assets/*.ttf",
+      "assets/!(app-icon|splash-logo|ic_launcher_foreground).png",
+      "assets/*.jpg",
+      "assets/*.jpeg",
+      "assets/*.svg",
+      "assets/*.json"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.arkhamcards.ArkhamCards",
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio"
+        ],
+        "UIViewControllerBasedStatusBarAppearance": true
+      },
+      "googleServicesFile": "./GoogleService-Info.plist"
+    },
+    "android": {
+      "package": "com.arkhamcards",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/ic_launcher_foreground.png",
+        "backgroundColor": "#513661"
+      },
+      "googleServicesFile": "./google-services.json"
+    },
     "plugins": [
+      [
+        "react-native-edge-to-edge",
+        {
+          "android": {
+            "parentTheme": "Default",
+            "enforceNavigationBarContrast": true
+          }
+        }
+      ],
+      [
+        "expo-asset",
+        {
+          "assets": [
+            "./assets/generated"
+          ]
+        }
+      ],
       [
         "@sentry/react-native/expo",
         {
@@ -9,7 +73,90 @@
           "project": "react-native",
           "organization": "arkham-cards"
         }
-      ]
+      ],
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static",
+            "deploymentTarget": "15.1"
+          },
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "buildToolsVersion": "35.0.0"
+          }
+        }
+      ],
+      [
+        "expo-plugin-ios-static-libraries",
+        {
+          "libs": [
+            "op-sqlite"
+          ]
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#513661",
+          "image": "./assets/splash-logo.png",
+          "imageWidth": 200
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/AboutDead.ttf",
+            "./assets/ages.ttf",
+            "./assets/Alegreya-Bold.ttf",
+            "./assets/Alegreya-BoldItalic.ttf",
+            "./assets/Alegreya-ExtraBold.ttf",
+            "./assets/Alegreya-ExtraBoldItalic.ttf",
+            "./assets/Alegreya-Italic.ttf",
+            "./assets/Alegreya-Medium.ttf",
+            "./assets/Alegreya-MediumItalic.ttf",
+            "./assets/Alegreya-Regular.ttf",
+            "./assets/AlegreyaSC-Medium.ttf",
+            "./assets/alice.ttf",
+            "./assets/AnkeCalligraphicFG.ttf",
+            "./assets/app.ttf",
+            "./assets/Arkhamic.ttf",
+            "./assets/arkhamicons.ttf",
+            "./assets/arkhamslim.ttf",
+            "./assets/carcosa.ttf",
+            "./assets/cardicons.ttf",
+            "./assets/Caveat.ttf",
+            "./assets/circle.ttf",
+            "./assets/circusexmortis.ttf",
+            "./assets/Conkordia.ttf",
+            "./assets/coreset.ttf",
+            "./assets/cost.ttf",
+            "./assets/cyclopean.ttf",
+            "./assets/dark_matter.ttf",
+            "./assets/DMSerifDisplay-Italic.ttf",
+            "./assets/DMSerifDisplay-Regular.ttf",
+            "./assets/dreameaters.ttf",
+            "./assets/drowned.ttf",
+            "./assets/dunwich.ttf",
+            "./assets/edge.ttf",
+            "./assets/forgotten.ttf",
+            "./assets/hemlock.ttf",
+            "./assets/innsmouth.ttf",
+            "./assets/oz.ttf",
+            "./assets/scarlet.ttf",
+            "./assets/standalone.ttf",
+            "./assets/Teutonic RU.ttf",
+            "./assets/Teutonic.ttf",
+            "./assets/tokens.ttf",
+            "./assets/TT2020StyleE-Regular.ttf"
+          ]
+        }
+      ],
+      "expo-audio"
     ]
   }
 }

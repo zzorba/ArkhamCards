@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { useSelector } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+
 import { msgid, ngettext, t } from 'ttag';
 
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
@@ -26,9 +26,9 @@ import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailS
 import FactionIcon from '@icons/FactionIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import AppIcon from '@icons/AppIcon';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   hideDeckbuildingRules?: boolean;
   sort: SortType[];
   onPress: (investigator: Card) => void;
@@ -132,7 +132,6 @@ function CustomInvestigatorRow({ investigator, onInvestigatorPress, children, sh
 }
 
 export default function InvestigatorsListComponent({
-  componentId,
   sort,
   onPress,
   filterInvestigator,
@@ -142,6 +141,7 @@ export default function InvestigatorsListComponent({
   customFooter,
   includeParallelInvestigators,
 }: Props) {
+  const navigation = useNavigation();
   const { typography } = useContext(StyleContext);
   const [investigators, loading] = useAllInvestigators(undefined, sort);
   const in_collection = useSelector(getPacksInCollection);
@@ -154,12 +154,8 @@ export default function InvestigatorsListComponent({
   }, [onPress]);
 
   const showEditCollection = useCallback(() => {
-    Navigation.push(componentId, {
-      component: {
-        name: 'My.Collection',
-      },
-    });
-  }, [componentId]);
+    navigation.navigate('My.Collection', {});
+  }, [navigation]);
 
   const showNonCollectionCards = useCallback((id: string) => {
     Keyboard.dismiss();

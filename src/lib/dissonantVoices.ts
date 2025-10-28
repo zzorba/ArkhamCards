@@ -1,22 +1,10 @@
 import * as Keychain from 'react-native-keychain';
 import { t } from 'ttag';
+import * as AuthSession from 'expo-auth-session';
 
-import { authorize, AppAuthConfig } from './OAuthWrapper';
-
-// @ts-ignore
-const config: AppAuthConfig = {
-  issuer: 'https://north101.co.uk',
-  clientId: 'arkhamcards',
-  clientSecret: 'arkhamcards',
-  redirectUrl: 'arkhamcards://dissonantvoices/redirect',
-  additionalParameters: {
-    type: 'app',
-  },
-  serviceConfiguration: {
-    authorizationEndpoint: 'https://north101.co.uk/api/authorize?type=app',
-    tokenEndpoint: 'https://north101.co.uk/api/token',
-  },
-  skipCodeExchange: true,
+const discovery = {
+  authorizationEndpoint: 'https://north101.co.uk/api/authorize',
+  tokenEndpoint: 'https://north101.co.uk/api/token',
 };
 
 export async function saveAuthResponse(accessToken: string) {
@@ -75,18 +63,38 @@ interface DissonantVoicesAuthResponse {
   error?: string;
 }
 export async function authorizeDissonantVoices(): Promise<DissonantVoicesAuthResponse> {
-  const { accessToken } = await authorize(config);
-  const response = await fetch(`https://north101.co.uk/api/token`, {
+  const authRequest = new AuthSession.AuthRequest({
+    clientId: 'arkhamcards',
+    redirectUri: 'arkhamcards://dissonantvoices/redirect',
+    extraParams: {
+      type: 'app',
+    },
+  });
+
+  const result = await authRequest.promptAsync(discovery);
+
+  if (result.type !== 'success') {
+    if (result.type === 'error') {
+      throw new Error(result.error?.description || 'Authentication failed');
+    }
+    throw new Error('Authentication was cancelled');
+  }
+
+  const code = result.params.code;
+
+  const response = await fetch('https://north101.co.uk/api/token', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ code: accessToken, type: 'app', client_id: 'arkhamcards' }),
+    body: JSON.stringify({ code, type: 'app', client_id: 'arkhamcards' }),
   });
+
   if (response.status !== 200) {
     throw Error('Invalid token');
   }
+
   const { token, is_patron } = await response.json();
   if (!is_patron) {
     return {
@@ -94,6 +102,7 @@ export async function authorizeDissonantVoices(): Promise<DissonantVoicesAuthRes
       error: t`Sorry, you don't seem to be a Mythos Buster patron.\nIt can take up to 24hrs before Patreon updates your membership status. If you are still experiencing problems after 24hrs, please contact Mythos Busters via Patreon or on the Discord channel for help with this issue.`,
     };
   }
+
   return {
     success: true,
     token,

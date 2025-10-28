@@ -10,6 +10,7 @@ import { CARD_RATIO } from '@styles/sizes';
 import { showCard } from '@components/nav/helper';
 import CardImage, { TouchableCardImage } from '@components/card/CardImage';
 import { FOOTER_HEIGHT } from '@components/DeckNavFooter/constants';
+import { useNavigation } from '@react-navigation/native';
 
 export interface DraftHistory {
   cycle: number;
@@ -25,7 +26,7 @@ export interface GridItem {
   draftCycle?: number;
 }
 interface Props<ItemT extends GridItem> {
-  componentId?: string;
+  navEnabled: boolean;
   items: ItemT[];
   cards: CardsMap | undefined;
   controlHeight: number;
@@ -103,7 +104,7 @@ function CardGridItem<ItemT extends GridItem>({
 }
 
 export default function CardGridComponent<ItemT extends GridItem>({
-  componentId,
+  navEnabled,
   items,
   cards,
   controlForCard,
@@ -125,10 +126,10 @@ export default function CardGridComponent<ItemT extends GridItem>({
     }
     return cardWidth;
   }, [width, maxCardsPerRow]);
-
+  const navigation = useNavigation();
   const onCardPress = useCallback((card: Card) => {
-    componentId && showCard(componentId, card.code, card, colors, { showSpoilers: true });
-  }, [componentId, colors]);
+    showCard(navigation, card.code, card, colors, { showSpoilers: true });
+  }, [navigation, colors]);
 
   const renderCardItem = useCallback((item: ItemT) => {
     const card = cards && cards[item.code];
@@ -146,10 +147,10 @@ export default function CardGridComponent<ItemT extends GridItem>({
         control={control}
         controlHeight={controlHeight}
         controlPosition={controlPosition}
-        onCardPress={componentId ? onCardPress : undefined}
+        onCardPress={navEnabled ? onCardPress : undefined}
       />
     );
-  }, [cards, cardWidth, controlForCard, controlPosition, draftHistory, controlHeight, componentId, onCardPress]);
+  }, [cards, cardWidth, controlForCard, controlPosition, draftHistory, controlHeight, navEnabled, onCardPress]);
   return (
     <ScrollView style={[backgroundStyle, { flex: 1 }]} contentContainerStyle={[styles.gridView, { width, minHeight: height * 0.75 }, space.paddingTopS]}>
       { map(items, (item) => renderCardItem(item)) }

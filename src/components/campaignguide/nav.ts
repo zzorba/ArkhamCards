@@ -1,16 +1,15 @@
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
-import { ScenarioProps } from '@components/campaignguide/ScenarioView';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { ProcessedCampaign, ProcessedScenario } from '@data/scenario';
 import { CampaignId } from '@actions/types';
-import { CampaignRulesProps } from './CampaignRulesView';
 import { CAMPAIGN_SETUP_ID } from '@data/scenario/CampaignGuide';
 import { CampaignRule, Question } from '@data/scenario/types';
+import { ArkhamNavigation } from '@navigation/types';
 
 export function showRules(
-  componentId: string,
+  navigation: ArkhamNavigation,
   campaignId: CampaignId,
   { rules, campaignErrata, scenarioErrata, scenarioId } : {
     rules: CampaignRule[];
@@ -30,34 +29,20 @@ export function showRules(
     return;
   }
 
-  Navigation.push<CampaignRulesProps>(
-    componentId, {
-      component: {
-        name: 'Guide.Rules',
-        passProps: {
-          campaignId,
-          scenarioId: scenarioId ?? CAMPAIGN_SETUP_ID,
-          standalone: false,
-          rules,
-          campaignErrata,
-          scenarioErrata: scenarioErrata ?? [],
-        },
-        options: {
-          topBar: {
-            title: {
-              text: header,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
+  navigation.navigate(
+    'Guide.Rules', {
+      campaignId,
+      scenarioId: scenarioId ?? CAMPAIGN_SETUP_ID,
+      standalone: false,
+      rules,
+      campaignErrata,
+      scenarioErrata: scenarioErrata ?? [],
+      header,
     },
   );
 }
 export function showScenario(
-  componentId: string,
+  navigation: ArkhamNavigation,
   scenario: ProcessedScenario,
   campaignId: CampaignId,
   campaignState: CampaignStateHelper,
@@ -71,29 +56,13 @@ export function showScenario(
   if (scenario.type === 'playable') {
     campaignState.startScenario(scenarioId);
   }
-  Navigation.push<ScenarioProps>(componentId, {
-    component: {
-      name: 'Guide.Scenario',
-      passProps: {
-        campaignId,
-        scenarioId,
-        showLinkedScenario,
-        processedCampaign,
-      },
-      options: {
-        topBar: {
-          title: {
-            text: scenario.scenarioGuide.scenarioName(),
-          },
-          subtitle: subtitle ? {
-            text: subtitle,
-          } : undefined,
-          backButton: {
-            title: t`Back`,
-          },
-        },
-      },
-    },
+  navigation.navigate('Guide.Scenario', {
+    campaignId,
+    scenarioId,
+    showLinkedScenario,
+    processedCampaign,
+    title: scenario.scenarioGuide.scenarioName(),
+    subtitle,
   });
 }
 

@@ -17,7 +17,6 @@ interface Props {
   enabled: boolean;
   exceptional: boolean;
   nonExceptional: boolean;
-  componentId: string;
 }
 
 const EMPTY_LEVELS: number[] = [];
@@ -30,7 +29,6 @@ export default function XpChooser({
   enabled,
   exceptional,
   nonExceptional,
-  componentId,
 }: Props) {
   const { colors, typography, width } = useContext(StyleContext);
   const levelRanges = useMemo(() => {
@@ -87,7 +85,6 @@ export default function XpChooser({
         onPress={updateIndex}
         selectedIndexes={selectedIndexes}
         buttons={buttons}
-        componentId={componentId}
         interaction="radio"
       />
     </View>

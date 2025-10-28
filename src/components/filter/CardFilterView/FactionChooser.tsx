@@ -30,7 +30,6 @@ interface Props {
   factions: FactionCodeType[];
   multiClass: boolean;
   selection: FactionCodeType[];
-  componentId: string;
 }
 
 const SUPPORT_MULTI_CLASS = true;
@@ -48,7 +47,7 @@ const FACTION_POSITION: { [key in FactionCodeType | 'multiClass']: number } = {
   'mythos': 7,
 };
 
-export default function FactionChooser({ onFilterChange, factions, multiClass, selection, componentId }: Props) {
+export default function FactionChooser({ onFilterChange, factions, multiClass, selection }: Props) {
   const { colors } = useContext(StyleContext);
   const rawFactions: (FactionCodeType | 'multiClass')[] = useMemo(() => {
     if (SUPPORT_MULTI_CLASS && factions.find(f => PLAYER_FACTIONS.has(f)) && factions.find(f => f === 'neutral')) {
@@ -134,7 +133,6 @@ export default function FactionChooser({ onFilterChange, factions, multiClass, s
       onPress={updateIndex}
       selectedIndexes={selectedIndexes}
       buttons={buttons}
-      componentId={componentId}
     />
   );
 }

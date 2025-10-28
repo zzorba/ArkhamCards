@@ -5,9 +5,9 @@ import { CampaignGuideContextType } from '@components/campaignguide/CampaignGuid
 import { showScenario } from '@components/campaignguide/nav';
 import { useCallback, useRef } from 'react';
 import { useCounter } from '@components/core/hooks';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   campaignA?: ProcessedCampaign;
   campaignDataA?: CampaignGuideContextType;
   campaignB?: ProcessedCampaign;
@@ -16,7 +16,8 @@ interface Props {
 }
 export type ShowScenario = (scenarioId: string) => void;
 
-export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, campaignB, campaignDataB, setSelectedTab }: Props): [ShowScenario, ShowScenario, number] {
+export function useCampaignLinkHelper({ campaignA, campaignDataA, campaignB, campaignDataB, setSelectedTab }: Props): [ShowScenario, ShowScenario, number] {
+  const navigation = useNavigation();
   const showScenarioA = useRef<ShowScenario | undefined>(null);
   const showScenarioB = useRef<ShowScenario | undefined>(null);
   const [counter, incCounter] = useCounter(0, {});
@@ -32,7 +33,7 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
       incCounter();
       setSelectedTab && setSelectedTab(0);
       showScenario(
-        componentId,
+        navigation,
         scenario,
         campaignDataA.campaignId,
         campaignDataA.campaignState,
@@ -41,7 +42,7 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
         campaignA
       );
     }
-  }, [campaignA, componentId, setSelectedTab, campaignDataA, incCounter]);
+  }, [navigation, campaignA, setSelectedTab, campaignDataA, incCounter]);
   showScenarioA.current = showCampaignScenarioA;
   const showCampaignScenarioB = useCallback((scenarioId: string) => {
     if (!campaignB || !campaignDataB) {
@@ -55,7 +56,7 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
       incCounter();
       setSelectedTab && setSelectedTab(1);
       showScenario(
-        componentId,
+        navigation,
         scenario,
         campaignDataB.campaignId,
         campaignDataB.campaignState,
@@ -64,7 +65,7 @@ export function useCampaignLinkHelper({ componentId, campaignA, campaignDataA, c
         campaignB,
       );
     }
-  }, [campaignB, componentId, campaignDataB, setSelectedTab, incCounter]);
+  }, [navigation, campaignB, campaignDataB, setSelectedTab, incCounter]);
   showScenarioB.current = showCampaignScenarioB;
   return [showCampaignScenarioA, showCampaignScenarioB, counter];
 }

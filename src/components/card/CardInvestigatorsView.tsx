@@ -1,28 +1,31 @@
 
-import React, { useCallback, useContext, useState } from 'react';
-import { Keyboard } from 'react-native';
+import React, { useCallback, useState, useLayoutEffect, useContext } from 'react';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+import { Keyboard, TouchableOpacity, Text } from 'react-native';
 import { t } from 'ttag';
 
 import COLORS from '@styles/colors';
-import { useNavigationButtonPressed } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import DeckValidation from '@lib/DeckValidation';
-import StyleContext from '@styles/StyleContext';
 import useSingleCard from './useSingleCard';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
-import { NavigationProps } from '@components/nav/types';
 import { SortType, SORT_BY_FACTION, SORT_BY_TITLE } from '@actions/types';
 import Card from '@data/types/Card';
 import { showCard } from '@components/nav/helper';
 import { useInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
 import { iconsMap } from '@app/NavIcons';
+import StyleContext from '@styles/StyleContext';
 
 export interface CardInvestigatorProps {
   code: string;
 }
 
-function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & NavigationProps) {
+function CardInvestigatorsView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Card.Investigators'>>();
+  const navigation = useNavigation();
   const { colors } = useContext(StyleContext);
+  const { code } = route.params;
   const [card, loading] = useSingleCard(code, 'player');
   const [selectedSort, sortChanged] = useState<SortType[]>([SORT_BY_FACTION, SORT_BY_TITLE]);
   const [sortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, sortChanged);
@@ -43,16 +46,20 @@ function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & Na
     return validation.canIncludeCard(card, false, []);
   }, [card]);
 
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'sort') {
-      showSortDialog();
-    }
-  }, componentId, [componentId, showSortDialog]);
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={showSortDialog}>
+          <Text style={{ color: COLORS.M, fontSize: 16 }}>{t`Sort`}</Text>
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation, showSortDialog]);
 
 
   const onPress = useCallback((investigator: Card) => {
-    showCard(componentId, investigator.code, investigator, colors, { showSpoilers: false });
-  }, [componentId, colors]);
+    showCard(navigation, investigator.code, investigator, colors, { showSpoilers: false });
+  }, [navigation, colors]);
 
   if (loading || !card) {
     return <LoadingSpinner large />;
@@ -61,7 +68,6 @@ function CardInvestigatorsView({ code, componentId }: CardInvestigatorProps & Na
   return (
     <>
       <InvestigatorsListComponent
-        componentId={componentId}
         hideDeckbuildingRules
         sort={selectedSort}
         onPress={onPress}

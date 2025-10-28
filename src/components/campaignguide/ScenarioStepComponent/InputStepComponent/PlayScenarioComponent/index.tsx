@@ -16,14 +16,13 @@ import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
 
 interface Props {
-  componentId: string;
   campaignId: CampaignId;
   id: string;
   input: PlayScenarioInput;
   text?: string
 }
 
-export default function PlayScenarioComponent({ componentId, campaignId, id, input, text }: Props) {
+export default function PlayScenarioComponent({ campaignId, id, input, text }: Props) {
   const iteration = useMemo(() => {
     return id.split('#')[1];
   }, [id]);
@@ -58,7 +57,6 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
     if (firstDecision === undefined) {
       return (
         <PlayOptionsComponent
-          componentId={componentId}
           id={id}
           campaignId={campaignId}
           input={input}
@@ -77,7 +75,7 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
       )
     }
     return null;
-  }, [scenarioState, campaignLog, typography, colors, componentId, campaignId, id, input]);
+  }, [scenarioState, campaignLog, typography, colors, campaignId, id, input]);
 
   return (
     <>

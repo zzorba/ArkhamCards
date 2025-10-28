@@ -1,6 +1,5 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
-  Alert,
   KeyboardAvoidingView,
   LayoutChangeEvent,
   Linking,
@@ -11,19 +10,15 @@ import {
   View,
 } from 'react-native';
 import { find, last } from 'lodash';
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
-import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import CampaignGuideContext from './CampaignGuideContext';
 import StepsComponent from './StepsComponent';
-import { NavigationProps } from '@components/nav/types';
-import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
-import { useNavigationButtonPressed } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
-import NarrationWrapper, { NarrationTrack, setNarrationQueue } from '@components/campaignguide/NarrationWrapper';
+import NarrationWrapper, { NarrationTrack } from '@components/campaignguide/NarrationWrapper';
 import ScenarioStep from '@data/scenario/ScenarioStep';
 import ScenarioGuideContext from './ScenarioGuideContext';
 import { ProcessedScenario } from '@data/scenario';
@@ -32,11 +27,13 @@ import { showGuideCampaignLog } from '@components/campaign/nav';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { CustomData, Narration } from '@data/scenario/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { useAudioAccess } from '@lib/audio/narrationPlayer';
+import { useAudioAccess, useSetNarratinQueue } from '@lib/audio/narrationHelpers';
 import Animated, { interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import RoundButton from '@components/core/RoundButton';
 import AppIcon from '@icons/AppIcon';
 import { m } from '@styles/space';
+import { useNavigation } from '@react-navigation/native';
+import HeaderButton from '@components/core/HeaderButton';
 
 interface ScenarioProps {
   standalone: boolean;
@@ -44,8 +41,9 @@ interface ScenarioProps {
     scenarioId: string
   ) => void;
   footer?: React.ReactNode;
+  onEditNamePressed?: () => void;
 }
-type Props = NavigationProps & ScenarioProps;
+type Props = ScenarioProps;
 
 export function getDownloadLink(lang: string, customData?: CustomData) {
   if (!customData?.download_link) {
@@ -137,30 +135,7 @@ function getNarrationQueue(processedScenario: ProcessedScenario, scenarioState: 
   return queue;
 }
 
-export function dynamicOptions(undo: boolean) {
-  const rightButtons = [{
-    icon: iconsMap.log,
-    id: 'log',
-    color: COLORS.M,
-    accessibilityLabel: t`Campaign Log`,
-  }];
-  if (undo) {
-    rightButtons.push({
-      icon: iconsMap.undo,
-      id: 'undo',
-      color: COLORS.M,
-      accessibilityLabel: t`Undo`,
-    });
-  }
-  return {
-    topBar: {
-      rightButtons,
-    },
-  };
-}
-
-
-export default function ScenarioComponent({ componentId, showLinkedScenario, standalone, footer }: Props) {
+export default function ScenarioComponent({ showLinkedScenario, standalone, footer, onEditNamePressed }: Props) {
   const { campaignState, campaignId } = useContext(CampaignGuideContext);
   const { processedScenario, processedCampaign, scenarioState } = useContext(ScenarioGuideContext);
   const { backgroundStyle, width } = useContext(StyleContext);
@@ -172,9 +147,7 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  useEffect(() => {
-    Navigation.mergeOptions(componentId, dynamicOptions(processedScenario.canUndo));
-  }, [componentId, processedScenario.canUndo]);
+  const navigation = useNavigation();
 
   const menuPressed = useCallback(() => {
     const log = last(processedScenario.steps);
@@ -182,7 +155,7 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       return;
     }
     showGuideCampaignLog(
-      componentId,
+      navigation,
       campaignId,
       processedScenario.scenarioGuide.campaignGuide,
       log.campaignLog,
@@ -190,76 +163,48 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
       scenarioId,
       processedCampaign
     );
-  }, [componentId, processedCampaign, processedScenario, campaignId, scenarioId, standalone]);
-
-  const resetPressed = useCallback(() => {
-    Alert.alert(
-      t`Reset Scenario?`,
-      t`Are you sure you want to reset this scenario?\n\nAll data you have entered will be lost.`,
-      [{
-        text: t`Nevermind`,
-      }, {
-        text: t`Reset`,
-        style: 'destructive',
-        onPress: () => {
-          campaignState.resetScenario(scenarioId);
-        },
-      }]
-    );
-  }, [campaignState, scenarioId]);
+  }, [navigation, processedCampaign, processedScenario, campaignId, scenarioId, standalone]);
 
   const undoPressed = useCallback(() => {
     campaignState.undo(scenarioId);
     if (processedScenario.closeOnUndo) {
-      Navigation.pop(componentId);
+      navigation.goBack();
     }
-  }, [componentId, scenarioId, processedScenario.closeOnUndo, campaignState]);
+  }, [navigation, scenarioId, processedScenario.closeOnUndo, campaignState]);
 
-  useNavigationButtonPressed(({ buttonId }) => {
-    switch (buttonId) {
-      case 'reset': {
-        resetPressed();
-        break;
-      }
-      case 'log': {
-        menuPressed();
-        break;
-      }
-      case 'undo': {
-        undoPressed();
-        break;
-      }
-    }
-  }, componentId, [resetPressed, menuPressed, undoPressed], 100);
-
+  useLayoutEffect(() => {
+    const rightButtons = [
+      ...(!!onEditNamePressed ? [<HeaderButton key="edit" iconName="edit" color={COLORS.M} onPress={onEditNamePressed} accessibilityLabel={t`Edit Name`} />] : []),
+      <HeaderButton key="log" iconName="log" color={COLORS.M} onPress={menuPressed} accessibilityLabel={t`Campaign Log`} />,
+      ...(processedScenario.canUndo ? [<HeaderButton key="undo" iconName="undo" color={COLORS.M} onPress={undoPressed} accessibilityLabel={t`Undo`} />] : []),
+    ];
+    navigation.setOptions({
+      headerRight: () => <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>{ rightButtons }</View>,
+    });
+  }, [onEditNamePressed, navigation, menuPressed, undoPressed, processedScenario.canUndo]);
 
   const switchCampaignScenario = useCallback(() => {
-    Navigation.pop(componentId).then(() => {
-      if (showLinkedScenario) {
-        showLinkedScenario(processedScenario.id.encodedScenarioId);
-      }
-    });
-  }, [componentId, showLinkedScenario, processedScenario.id]);
+    navigation.goBack();
+    if (showLinkedScenario) {
+      showLinkedScenario(processedScenario.id.encodedScenarioId);
+    }
+  }, [navigation, showLinkedScenario, processedScenario.id]);
 
   const showScenarioFaq = useCallback(() => {
-    Navigation.push<ScenarioFaqProps>(componentId, {
-      component: {
-        name: 'Guide.ScenarioFaq',
-        passProps: {
-          scenario: processedScenario.id.scenarioId,
-          campaignId,
-        },
-      },
+    navigation.navigate('Guide.ScenarioFaq', {
+      scenario: processedScenario.id.scenarioId,
+      campaignId,
     });
-  }, [componentId, campaignId, processedScenario.id]);
+  }, [navigation, campaignId, processedScenario.id]);
   const [hasAudio, narrationLangs] = useAudioAccess()
-
+  const setNarrationQueue = useSetNarratinQueue();
   useEffect(() => {
     if (!hasAudio) {
       return;
     }
     const queue = getNarrationQueue(processedScenario, scenarioState, narrationLangs);
     setNarrationQueue(queue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [processedScenario, scenarioState, hasAudio, narrationLangs]);
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
@@ -351,7 +296,6 @@ export default function ScenarioComponent({ componentId, showLinkedScenario, sta
               <ArkhamButton icon="faq" title={t`Interlude FAQ`} onPress={showScenarioFaq} />
             ) }
             <StepsComponent
-              componentId={componentId}
               width={width}
               steps={processedScenario.steps}
               switchCampaignScenario={switchCampaignScenario}

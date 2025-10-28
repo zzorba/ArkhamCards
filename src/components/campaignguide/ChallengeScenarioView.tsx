@@ -1,32 +1,37 @@
 import React, { useCallback, useContext } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { map } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import { NavigationProps } from '@components/nav/types';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import Card from '@data/types/Card';
 import { Scenario, ChallengeData } from '@data/scenario/types';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import HeaderTitle from '@components/core/HeaderTitle';
 
 export interface ChallengeScenarioProps {
   scenario: Scenario;
   challenge: ChallengeData;
   onPress: (scenario: Scenario) => void;
+  title: string;
 }
 
-type Props = ChallengeScenarioProps & NavigationProps;
-
-export default function ChallengeScenarioView({ componentId, scenario, challenge, onPress }: Props) {
+export default function ChallengeScenarioView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.ChallengeScenario'>>();
+  const { scenario, challenge, onPress } = route.params;
+  const navigation = useNavigation();
   const { backgroundStyle } = useContext(StyleContext);
   const handleOnPress = useCallback(() => {
-    Navigation.pop(componentId);
+    navigation.goBack();
     onPress(scenario);
-  }, [componentId, onPress, scenario]);
+  }, [navigation, onPress, scenario]);
 
   const introText = useCallback((investigator: Card) => {
     return t`The <i>${scenario.scenario_name}</i> challenge scenario centers around the investigator ${investigator.name}, and therefore has the following prerequisites:`;
@@ -60,6 +65,14 @@ export default function ChallengeScenarioView({ componentId, scenario, challenge
     </View>
   );
 }
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Guide.ChallengeScenario'> }): NativeStackNavigationOptions {
+  return {
+    headerTitle: () => <HeaderTitle title={route.params?.scenario.scenario_name ?? ''} subtitle={t`Challenge Scenario`} />,
+    headerBackTitle: t`Cancel`,
+  };
+};
+ChallengeScenarioView.options = options;
 
 const styles = StyleSheet.create({
   wrapper: {

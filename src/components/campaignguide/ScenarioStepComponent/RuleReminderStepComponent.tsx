@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Image as FastImage } from 'expo-image';
+import { Image as ExpoImage } from 'expo-image';
 import { map } from 'lodash';
 
 import SetupStepWrapper from '../SetupStepWrapper';
@@ -23,12 +23,13 @@ const RATIOS = {
 
 function RuleImage({ scale, width, image, text }: { text?: string; scale: 'full' | 'half' | 'quarter'; width: number; image: Image }) {
   const theWidth = RATIOS[scale || 'quarter'] * Math.min(width, MAX_WIDTH);
+  console.log(`https://img2.arkhamcards.com${image.uri}`)
   return (
     <View style={[{
       flexDirection: image.alignment === 'top' ? 'column' : 'column-reverse',
       alignItems: 'center',
     }, space.paddingBottomM]}>
-      <FastImage
+      <ExpoImage
         source={{
           uri: `https://img2.arkhamcards.com${image.uri}`,
         }}

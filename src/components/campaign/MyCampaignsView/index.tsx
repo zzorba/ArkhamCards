@@ -1,7 +1,8 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState, useLayoutEffect } from 'react';
 import { concat, filter, flatMap, forEach, partition, throttle } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
-import { Navigation, Options } from 'react-native-navigation';
+import { useNavigation } from '@react-navigation/native';
+
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
@@ -10,15 +11,12 @@ import CampaignList from './CampaignList';
 import { campaignNames } from '@components/campaign/constants';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
-import { iconsMap } from '@app/NavIcons';
-import COLORS from '@styles/colors';
+import HeaderButton from '@components/core/HeaderButton';
 import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { useFlag, useNavigationButtonPressed } from '@components/core/hooks';
-import { NavigationProps } from '@components/nav/types';
-import { getStandaloneScenarios } from '@data/scenario';
-import LanguageContext from '@lib/i18n/LanguageContext';
+import { useFlag } from '@components/core/hooks';
+import { useStandaloneScenarios } from '@data/scenario';
 import { useCampaigns } from '@data/hooks';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import withApolloGate from '@components/core/withApolloGate';
@@ -48,12 +46,12 @@ function SearchOptions({
   );
 }
 
-function MyCampaignsView({ componentId }: NavigationProps) {
+function MyCampaignsView() {
   const [search, setSearch] = useState('');
-  const { lang } = useContext(LanguageContext);
-  const { fontScale } = useContext(StyleContext);
+  const navigation = useNavigation();
+  const { fontScale, colors } = useContext(StyleContext);
+  const scenarios = useStandaloneScenarios();
   const standalonesById = useMemo(() => {
-    const scenarios = getStandaloneScenarios(lang);
     const result: {
       [campaign: string]: {
         [scenario: string]: string;
@@ -68,34 +66,30 @@ function MyCampaignsView({ componentId }: NavigationProps) {
       }
     });
     return result;
-  }, [lang]);
+  }, [scenarios]);
   const { typography } = useContext(StyleContext);
   const [campaigns, refreshing, refreshCampaigns] = useCampaigns();
   const [showArchived, toggleShowArchived] = useFlag(false);
   const showNewCampaignDialog = useMemo(() => {
     return throttle(() => {
-      Navigation.push(componentId, {
-        component: {
-          name: 'Campaign.New',
-          options: {
-            topBar: {
-              title: {
-                text: t`New Campaign`,
-              },
-              backButton: {
-                title: t`Cancel`,
-              },
-            },
-          },
-        },
-      });
+      navigation.navigate('Campaign.New');
     });
-  }, [componentId]);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'add') {
-      showNewCampaignDialog();
-    }
-  }, componentId, [showNewCampaignDialog]);
+  }, [navigation]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: t`Campaigns`,
+      headerRight: () => (
+        <HeaderButton
+          iconName="plus-button"
+          onPress={showNewCampaignDialog}
+          color={colors.M}
+          accessibilityLabel={t`New Campaign`}
+        />
+      ),
+    });
+  }, [navigation, colors.M, showNewCampaignDialog]);
+
   const filteredCampaigns: MiniCampaignT[] = useMemo(() => {
     const [archived, unarchived] = partition(flatMap(campaigns, (campaign) => {
       const parts = [campaign.name];
@@ -188,7 +182,6 @@ function MyCampaignsView({ componentId }: NavigationProps) {
         { onScroll => (
           <CampaignList
             onScroll={onScroll}
-            componentId={componentId}
             campaigns={realFilteredCampaigns}
             standalonesById={standalonesById}
             onRefresh={refreshCampaigns}
@@ -196,32 +189,15 @@ function MyCampaignsView({ componentId }: NavigationProps) {
             refreshing={refreshing}
             footer={footer}
             footerHeight={footerHeight}
-            header={!search ? <SimpleChaosBagItem componentId={componentId} /> : undefined}
+            header={!search ? <SimpleChaosBagItem /> : undefined}
           />
         ) }
       </CollapsibleSearchBox>
     </View>
   );
 }
-
-MyCampaignsView.options = (): Options => {
-  return {
-    topBar: {
-      title: {
-        text: t`Campaigns`,
-      },
-      rightButtons: [{
-        icon: iconsMap['plus-button'],
-        id: 'add',
-        color: COLORS.M,
-        accessibilityLabel: t`New Campaign`,
-      }],
-    },
-  };
-};
-
 export default withApolloGate(
-  withFetchCardsGate<NavigationProps>(
+  withFetchCardsGate(
     MyCampaignsView,
     { promptForUpdate: false },
   )

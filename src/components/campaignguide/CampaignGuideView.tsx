@@ -1,20 +1,18 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useLayoutEffect, useMemo } from 'react';
 import { Linking, StyleSheet, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
 import { updateCampaignName } from '@components/campaign/actions';
 import withCampaignGuideContext, { CampaignGuideInputProps, InjectedCampaignGuideContextProps } from '@components/campaignguide/withCampaignGuideContext';
-import { NavigationProps } from '@components/nav/types';
-import { useNavigationButtonPressed } from '@components/core/hooks';
 import CampaignGuideContext from './CampaignGuideContext';
-import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
+import { useStopAudioOnUnmount } from '@lib/audio/narrationHelpers';
 import { useAlertDialog, useCountDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import CampaignDetailTab from './CampaignDetailTab';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import space, { s } from '@styles/space';
-import { useCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import { useDeckActions } from '@data/remote/decks';
 import DeckButton from '@components/deck/controls/DeckButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
@@ -25,14 +23,20 @@ import withLoginState, { LoginStateProps } from '@components/core/withLoginState
 import useProcessedCampaign from './useProcessedCampaign';
 import { useAppDispatch } from '@app/store';
 import CampaignHeader from './CampaignHeader';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
+import HeaderButton from '@components/core/HeaderButton';
+import StyleContext from '@styles/StyleContext';
 
-export type CampaignGuideProps = CampaignGuideInputProps;
+export type CampaignGuideProps = CampaignGuideInputProps & { upload?: boolean };
 
-type Props = CampaignGuideProps & NavigationProps & InjectedCampaignGuideContextProps & LoginStateProps & { upload?: boolean };
+type Props = CampaignGuideProps & InjectedCampaignGuideContextProps;
 
-function CampaignGuideView(props: Props) {
+function CampaignGuideView(props: Props & LoginStateProps) {
+  const navigation = useNavigation();
+  const { colors } = useContext(StyleContext);
   const [countDialog, showCountDialog] = useCountDialog();
-  const { componentId, setCampaignServerId, login, upload } = props;
+  const { setCampaignServerId, login, upload } = props;
   const campaignData = useContext(CampaignGuideContext);
   const { lang } = useContext(LanguageContext);
   const { campaignId } = campaignData;
@@ -41,29 +45,32 @@ function CampaignGuideView(props: Props) {
   const updateCampaignActions = useUpdateCampaignActions();
   const setCampaignName = useCallback((name: string) => {
     dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        title: {
-          text: name,
-        },
-      },
-    });
-  }, [campaignId, dispatch, updateCampaignActions, componentId]);
+  }, [campaignId, dispatch, updateCampaignActions]);
+
   const [dialog, showEditNameDialog] = useSimpleTextDialog({
     title: t`Name`,
     value: campaignData.campaign.name,
     onValueChange: setCampaignName,
   });
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: campaignData.campaign.name,
+      headerRight: () => (
+        <HeaderButton
+          iconName="edit"
+          onPress={showEditNameDialog}
+          color={colors.M}
+          accessibilityLabel={t`Edit Name`}
+        />
+      ),
+    });
+  }, [campaignData.campaign.name, showEditNameDialog, navigation, colors]);
   useStopAudioOnUnmount();
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'edit') {
-      showEditNameDialog();
-    }
-  }, componentId, [showEditNameDialog]);
 
   const { campaignGuide, campaignState, campaign } = campaignData;
-  useCampaignDeleted(componentId, campaign);
+  useCampaignDeleted(campaign);
+  useDismissOnCampaignDeleted(navigation, campaign);
 
   const [processedCampaign, processedCampaignError] = useProcessedCampaign(campaignGuide, campaignState);
   const [alertDialog, showAlert] = useAlertDialog();
@@ -91,7 +98,6 @@ function CampaignGuideView(props: Props) {
           )
         }
         <UploadCampaignButton
-          componentId={componentId}
           campaignId={campaignId}
           campaign={campaign}
           setCampaignServerId={setCampaignServerId}
@@ -100,7 +106,6 @@ function CampaignGuideView(props: Props) {
           upload={upload}
         />
         <DeleteCampaignButton
-          componentId={componentId}
           actions={updateCampaignActions}
           campaignId={campaignId}
           campaign={campaign}
@@ -108,7 +113,7 @@ function CampaignGuideView(props: Props) {
         />
       </View>
     );
-  }, [componentId, campaign, campaignId, deckActions, customData, updateCampaignActions, upload, downloadPressed, setCampaignServerId, showAlert]);
+  }, [campaign, campaignId, deckActions, customData, updateCampaignActions, upload, downloadPressed, setCampaignServerId, showAlert]);
   if (!processedCampaign) {
     if (processedCampaignError) {
       return <CampaignErrorView message={processedCampaignError} />;
@@ -118,7 +123,6 @@ function CampaignGuideView(props: Props) {
   return (
     <View style={styles.wrapper}>
       <CampaignDetailTab
-        componentId={componentId}
         processedCampaign={processedCampaign}
         showAlert={showAlert}
         showCountDialog={showCountDialog}
@@ -133,10 +137,16 @@ function CampaignGuideView(props: Props) {
   );
 }
 
-export default withCampaignGuideContext(
+const WrappedComponent = withCampaignGuideContext<CampaignGuideProps>(
   withLoginState<Props>(CampaignGuideView, { noWrapper: true }),
   { rootView: true }
 );
+
+export default function CampaignGuideWrapper() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.Campaign'>>();
+  const { campaignId, upload } = route.params;
+  return <WrappedComponent campaignId={campaignId} upload={upload} />;
+}
 
 const styles = StyleSheet.create({
   wrapper: {

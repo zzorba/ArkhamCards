@@ -26,9 +26,9 @@ import AppIcon from '@icons/AppIcon';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import NewDialog from '@components/core/NewDialog';
 import ChaosToken, { getChaosTokenSize } from '../ChaosToken';
-import { loadChaosTokens } from '@data/scenario';
+import { useChaosTokens } from '@data/scenario/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { SingleChaosTokenValue, ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
+import { SingleChaosTokenValue, ChaosTokenModifier, SimpleChaosTokenValue, ScenarioChaosTokens } from '@data/scenario/types';
 import ToggleTokenInput from './ToggleTokenInput';
 import { TINY_PHONE } from '@styles/sizes';
 import TokenTextLine from './TokenTextLine';
@@ -85,6 +85,7 @@ function parseSpecialTokenValuesText(
   scenarioCard: Card | undefined,
   scenarioCode: string | undefined,
   investigator: Card | undefined,
+  parsedTokens: ScenarioChaosTokens | undefined,
 ): SingleChaosTokenValue[] {
   const tokenText: { [key: string]: string | undefined } = {};
   const scenarioTokens: SingleChaosTokenValue[] = [];
@@ -173,7 +174,6 @@ function parseSpecialTokenValuesText(
       }
     });
   }
-  const parsedTokens = loadChaosTokens(lang, scenarioCard?.code, scenarioCode);
   if (parsedTokens) {
     const resultTokens: SingleChaosTokenValue[] = map(
       hardExpert ? parsedTokens.hard : parsedTokens.standard,
@@ -981,6 +981,7 @@ export default function OddsCalculatorComponent({
   }, [currentScenario, encounterCode, scenarioCardText, scenarioCards, hardOrExpert]);
 
   const selectedInvestigatorCard = selectedInvestigator >= 0 && selectedInvestigator < allInvestigators.length ? allInvestigators[selectedInvestigator] : undefined;
+  const parsedTokens = useChaosTokens(lang, scenarioCard?.code, currentScenario?.code || scenarioCode);
   const [specialTokenValues, initialXValue] = useMemo(() => {
     const stv: SingleChaosTokenValue[] = parseSpecialTokenValuesText(
       lang,
@@ -988,7 +989,8 @@ export default function OddsCalculatorComponent({
       scenarioText,
       scenarioCard,
       currentScenario?.code || scenarioCode,
-      selectedInvestigatorCard
+      selectedInvestigatorCard,
+      parsedTokens
     );
     const skull = find(stv, x => x.token === 'skull');
     const cultist = find(stv, x => x.token === 'cultist');
@@ -1005,7 +1007,7 @@ export default function OddsCalculatorComponent({
       stv,
       initialValues,
     ];
-  }, [lang, scenarioText, hardOrExpert, currentScenario, scenarioCard, scenarioCode, selectedInvestigatorCard]);
+  }, [lang, scenarioText, hardOrExpert, currentScenario, scenarioCard, scenarioCode, selectedInvestigatorCard, parsedTokens]);
   const [xValue, incXValue, decXValue] = useCounters(initialXValue);
 
   const allSpecialTokenValues: SimpleChaosTokenValue[] = useMemo(() => {

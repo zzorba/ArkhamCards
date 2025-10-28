@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { map } from 'lodash';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { StyleSheet, Text, View } from 'react-native';
+
 import { t } from 'ttag';
 
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -13,10 +13,9 @@ import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useParallelInvestigator } from '@components/core/hooks';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
-import { getDeckOptions } from '@components/nav/helper';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId?: string;
   card: Card;
   backCard?: Card;
   width: number;
@@ -28,7 +27,8 @@ interface Props {
   showInvestigatorCards?: (code: string) => void;
 }
 
-function InvestigatorInfoComponent({ componentId, card, width, simple, showInvestigatorCards }: Props) {
+function InvestigatorInfoComponent({ card, width, simple, showInvestigatorCards }: Props) {
+  const navigation = useNavigation();
   const { colors, typography } = useContext(StyleContext);
   const [parallelInvestigators] = useParallelInvestigator(card.type_code === 'investigator' ? card.code : undefined);
   const showInvestigatorCardsPressed = useCallback(() => {
@@ -40,31 +40,13 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
   }, [showInvestigatorCards, parallelInvestigator]);
 
   const showCreateDeck = useCallback(() => {
-    if (componentId) {
-      Navigation.showModal({
-        stack: {
-          children: [{
-            component: {
-              name: 'Deck.NewOptions',
-              passProps: {
-                campaignId: undefined,
-                investigatorId: card.code,
-                onCreateDeck: undefined,
-                isModal: true,
-              },
-              options: {
-                ...getDeckOptions(colors, { title: t`New Deck`, modal: true }, card),
-                modalPresentationStyle: Platform.OS === 'ios' ?
-                  OptionsModalPresentationStyle.fullScreen :
-                  OptionsModalPresentationStyle.overCurrentContext,
-                bottomTabs: {},
-              },
-            },
-          }],
-        },
-      });
-    }
-  }, [componentId, card, colors]);
+    navigation.navigate('Deck.NewOptions', {
+      campaignId: undefined,
+      investigatorId: card.code,
+      onCreateDeck: undefined,
+      alternateInvestigatorId: undefined,
+    });
+  }, [navigation, card]);
 
   if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
     return null;
@@ -77,7 +59,6 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
           { map(parallelInvestigators, parallel => (
             <TwoSidedCardComponent
               key={parallel.code}
-              componentId={componentId}
               card={parallel}
               width={width}
               simple={!!simple}
@@ -111,7 +92,6 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
         />
       </View>
       <SignatureCardsComponent
-        componentId={componentId}
         investigator={card}
         width={width}
         parallelInvestigator={parallelInvestigator}
@@ -120,21 +100,16 @@ function InvestigatorInfoComponent({ componentId, card, width, simple, showInves
   );
 }
 
-function SpoilersComponent({ componentId, card, width, toggleShowSpoilers }: Props) {
+function SpoilersComponent({ card, width, toggleShowSpoilers }: Props) {
+  const navigation = useNavigation();
   const { backgroundStyle, typography } = useContext(StyleContext);
   const toggleShowSpoilersPressed = useCallback(() => {
     toggleShowSpoilers && toggleShowSpoilers(card.code);
   }, [card, toggleShowSpoilers]);
 
   const editSpoilersPressed = useCallback(() => {
-    if (componentId) {
-      Navigation.push(componentId, {
-        component: {
-          name: 'My.Spoilers',
-        },
-      });
-    }
-  }, [componentId]);
+    navigation.navigate('My.Spoilers');
+  }, [navigation]);
   return (
     <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
       <Text style={[typography.text, space.paddingM]}>
@@ -151,7 +126,7 @@ function SpoilersComponent({ componentId, card, width, toggleShowSpoilers }: Pro
 }
 
 export default function CardDetailComponent({
-  componentId, card, backCard, width, showSpoilers, tabooSetId, simple, noImage,
+  card, backCard, width, showSpoilers, tabooSetId, simple, noImage,
   toggleShowSpoilers, showInvestigatorCards,
 }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
@@ -160,7 +135,6 @@ export default function CardDetailComponent({
   if (shouldBlur) {
     return (
       <SpoilersComponent
-        componentId={componentId}
         card={card}
         width={width}
         showSpoilers={showSpoilers}
@@ -175,7 +149,6 @@ export default function CardDetailComponent({
     <View style={[styles.viewContainer, backgroundStyle]}>
       <View style={{ width }}>
         <TwoSidedCardComponent
-          componentId={componentId}
           card={card}
           backCard={backCard}
           width={width}
@@ -184,7 +157,6 @@ export default function CardDetailComponent({
         />
         { !simple && (
           <BondedCardsComponent
-            componentId={componentId}
             cards={bondedCards}
             width={width}
             tabooSetId={tabooSetId}
@@ -193,7 +165,6 @@ export default function CardDetailComponent({
       </View>
       { card.type_code === 'investigator' && !simple && (
         <InvestigatorInfoComponent
-          componentId={componentId}
           card={card}
           width={width}
           showSpoilers={showSpoilers}

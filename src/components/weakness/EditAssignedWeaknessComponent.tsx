@@ -3,15 +3,14 @@ import { flatMap } from 'lodash';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 
 import { showCard } from '@components/nav/helper';
-import { t } from 'ttag';
 import { Slots, WeaknessSet } from '@actions/types';
 import Card from '@data/types/Card';
 import CardSearchResult from '../cardlist/CardSearchResult';
-import StyleContext from '@styles/StyleContext';
 import { useSlotActions, useWeaknessCards } from '@components/core/hooks';
+import { useNavigation } from '@react-navigation/native';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
-  componentId: string;
   weaknessSet: WeaknessSet;
   updateAssignedCards: (assignedCards: Slots) => void;
 }
@@ -20,13 +19,14 @@ function cardKey(card: Card) {
   return card.code;
 }
 
-function EditAssignedWeaknessComponent({ componentId, weaknessSet, updateAssignedCards }: Props) {
-  const { colors } = useContext(StyleContext);
+function EditAssignedWeaknessComponent({ weaknessSet, updateAssignedCards }: Props) {
   const weaknessCards = useWeaknessCards();
   const [assignedCards, editAssignedCards] = useSlotActions(weaknessSet.assignedCards, updateAssignedCards);
+  const navigation = useNavigation();
+  const { colors } = useContext(StyleContext);
   const cardPressed = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, { showSpoilers: false });
-  }, [componentId, colors]);
+    showCard(navigation, card.code, card, colors, { showSpoilers: false });
+  }, [navigation, colors]);
 
   const data: Card[] = useMemo(() => {
     const packCodes = new Set(weaknessSet.packCodes);
@@ -60,14 +60,5 @@ function EditAssignedWeaknessComponent({ componentId, weaknessSet, updateAssigne
     />
   );
 }
-EditAssignedWeaknessComponent.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`Assigned weaknesses`,
-      },
-    },
-  };
-};
 
 export default EditAssignedWeaknessComponent;

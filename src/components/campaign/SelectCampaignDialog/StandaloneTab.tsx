@@ -1,14 +1,13 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { View } from 'react-native';
 import { forEach, map, sortBy, head } from 'lodash';
 import { c, t } from 'ttag';
 
 import { CampaignCycleCode, GUIDED_CAMPAIGNS, StandaloneId } from '@actions/types';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
-import { getStandaloneScenarios, StandaloneInfo } from '@data/scenario';
+import { StandaloneInfo, useStandaloneScenarios } from '@data/scenario';
 import StandaloneItem from './StandaloneItem';
 import { campaignDescription, campaignName } from '../constants';
-import LanguageContext from '@lib/i18n/LanguageContext';
 import CycleItem from './CycleItem';
 
 export interface SelectCampagaignProps {
@@ -17,8 +16,7 @@ export interface SelectCampagaignProps {
 }
 
 export default function StandaloneTab({ campaignChanged, standaloneChanged }: SelectCampagaignProps) {
-  const { lang } = useContext(LanguageContext);
-  const scenarios = useMemo(() => getStandaloneScenarios(lang), [lang]);
+  const scenarios = useStandaloneScenarios();
   const sections = useMemo(() => {
     const groups: { [campaign: string]: StandaloneInfo[] } = {};
     forEach(scenarios, scenario => {

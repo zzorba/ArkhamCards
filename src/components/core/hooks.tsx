@@ -1,8 +1,8 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { BackHandler, Keyboard, Platform } from 'react-native';
-import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent, NavigationConstants } from 'react-native-navigation';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { CampaignCycleCode, DeckId, MiscLocalSetting, MiscRemoteSetting, MiscSetting, Slots, SortType } from '@actions/types';
 import Card, { CardsMap, InvestigatorChoice } from '@data/types/Card';
@@ -20,7 +20,7 @@ import { DeckActions } from '@data/remote/decks';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { useDeck } from '@data/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
-import { useDebounce } from 'use-debounce/lib';
+import { useDebounce } from 'use-debounce';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { useCardMap } from '@components/card/useCardList';
 import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
@@ -28,7 +28,7 @@ import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 import { setMiscSetting } from '@components/settings/actions';
 import specialCards from '@data/deck/specialCards';
 import Clipboard from '@react-native-clipboard/clipboard';
-import Toast from '@components/Toast';
+import Toast from 'react-native-toast-message';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { useAppDispatch } from '@app/store';
 
@@ -41,102 +41,46 @@ export function useBackButton(handler: () => boolean) {
   }, [handler]);
 }
 
-export function useNavigationConstants(): Partial<NavigationConstants> {
-  const [constants, setConstants] = useState<NavigationConstants>();
-  useEffect(() => {
-    let canceled = false;
-    Navigation.constants().then(r => {
-      if (!canceled) {
-        setConstants(r);
-      }
-    });
-    return () => {
-      canceled = true;
-    };
-  }, []);
-  return constants || {};
-}
-export function useNavigationButtonPressed(
-  handler: (event: NavigationButtonPressedEvent) => void,
-  componentId: string,
-  deps: any[],
-  debounceDelay: number = 300
-) {
-  const handlerRef = useRef(handler);
-  useEffect(() => {
-    handlerRef.current = handler;
-  }, [handler]);
-  const debouncedHandler = useMemo(() => debounce((event: NavigationButtonPressedEvent) => handlerRef.current && handlerRef.current(event), debounceDelay, { leading: true, trailing: false }), [debounceDelay]);
-  useEffect(() => {
-    const sub = Navigation.events().registerNavigationButtonPressedListener((event: NavigationButtonPressedEvent) => {
-      if (event.componentId === componentId) {
-        debouncedHandler(event);
-      }
-    });
-    return () => {
-      sub.remove();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [componentId, debouncedHandler, ...deps]);
-}
-
-export function useComponentVisible(componentId: string): boolean {
+export function useComponentVisible(): boolean {
   const [visible, setVisible] = useState(true);
-  useEffect(() => {
-    const appearSub = Navigation.events().registerComponentDidAppearListener((event: ComponentDidAppearEvent) => {
-      if (event.componentId === componentId) {
-        setVisible(true);
-      }
-    });
-    const disappearSub = Navigation.events().registerComponentDidDisappearListener((event: ComponentDidDisappearEvent) => {
-      if (event.componentId === componentId) {
+
+  useFocusEffect(
+    useCallback(() => {
+      setVisible(true);
+      return () => {
         setVisible(false);
-      }
-    });
-    return () => {
-      appearSub.remove();
-      disappearSub.remove();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [componentId, setVisible]);
+      };
+    }, [])
+  );
+
   return visible;
 }
 
 export function useComponentDidAppear(
-  handler: (event: ComponentDidAppearEvent) => void,
-  componentId: string,
+  handler: () => void,
   deps: any[],
 ) {
-  useEffect(() => {
-    const sub = Navigation.events().registerComponentDidAppearListener((event: ComponentDidAppearEvent) => {
-      if (event.componentId === componentId) {
-        handler(event);
-      }
-    });
-    return () => {
-      sub.remove();
-    };
+  useFocusEffect(
+    useCallback(() => {
+      handler();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [componentId, handler, ...deps]);
+    }, deps)
+  );
 }
 
 
 export function useComponentDidDisappear(
-  handler: (event: ComponentDidDisappearEvent) => void,
-  componentId: string,
+  handler: () => void,
   deps: any[],
 ) {
-  useEffect(() => {
-    const sub = Navigation.events().registerComponentDidDisappearListener((event: ComponentDidDisappearEvent) => {
-      if (event.componentId === componentId) {
-        handler(event);
-      }
-    });
-    return () => {
-      sub.remove();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [componentId, handler, ...deps]);
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        handler();
+      };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, deps)
+  );
 }
 
 
@@ -709,14 +653,11 @@ export function useInvestigators(codes: string[], tabooSetOverride?: number): Ca
 export function useCopyAction(value: string, confirmationText: string): () => void {
   return useCallback(() => {
     Clipboard.setString(value);
-    Navigation.showOverlay({
-      component: {
-        name: 'Toast',
-        passProps: {
-          message: confirmationText,
-        },
-        options: Toast.options,
-      },
+    Toast.show({
+      type: 'success',
+      text1: confirmationText,
+      position: 'bottom',
+      visibilityTime: 2000,
     });
   }, [value, confirmationText]);
 }

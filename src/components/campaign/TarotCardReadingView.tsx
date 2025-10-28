@@ -1,11 +1,11 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { Text, ScrollView, View, Platform } from 'react-native';
 import { find, filter, map, shuffle, take, values, sumBy, findIndex, forEach, random } from 'lodash';
 import SnapCarousel from 'react-native-snap-carousel';
 import { c, t } from 'ttag';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 
 import { useAppDispatch } from '@app/store';
-import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
 import { Item, useDialog, usePickerDialog } from '@components/deck/dialogs';
 import space, { m, s } from '@styles/space';
@@ -15,15 +15,18 @@ import { useSettingValue, useToggles } from '@components/core/hooks';
 import TarotCardComponent from '@components/card/TarotCardComponent';
 import DeckButton from '@components/deck/controls/DeckButton';
 import Animated, { SlideInLeft, SlideOutRight } from 'react-native-reanimated';
-import { Navigation, OptionsTopBar, OptionsTopBarButton } from 'react-native-navigation';
+
 import ListToggleButton from '@components/deck/ListToggleButton';
 import { TAROT_CARD_RATIO } from '@styles/sizes';
 import AppIcon from '@icons/AppIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import { useScenarioNames } from '@data/scenario';
-import { useSetCampaignTarotReading } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useSetCampaignTarotReading } from '@data/remote/campaigns';
 import { updateTarotReading } from './actions';
 import { CampaignId, TarotReading } from '@actions/types';
+import { BasicStackParamList } from '@navigation/types';
+import HeaderTitle from '@components/core/HeaderTitle';
+import { useCampaign } from '@data/hooks';
 
 export type TarotReadingType = 'chaos' | 'balance' | 'choice' | 'observed' | 'damned' | 'custom' | 'destiny';
 
@@ -71,36 +74,6 @@ function getTarotReadingInstruction(value: TarotReadingType): string | undefined
     case 'damned': return undefined;
     case 'custom': return t`Draw and reverse cards however you like!`;
   }
-}
-
-function navigationOptions(
-  {
-    lightButton,
-  }: {
-    lightButton?: boolean;
-  }
-){
-  const rightButtons: OptionsTopBarButton[] = [{
-    id: 'grid',
-    component: {
-      name: 'ListToggleButton',
-      passProps: {
-        setting: 'card_grid',
-        lightButton,
-      },
-      width: ListToggleButton.WIDTH,
-      height: ListToggleButton.HEIGHT,
-    },
-    accessibilityLabel: t`Grid`,
-    enabled: true,
-  }];
-  const topBarOptions: OptionsTopBar = {
-    rightButtons,
-  };
-
-  return {
-    topBar: topBarOptions,
-  };
 }
 
 const SPECIAL_SCENARIOS: { [code: string]: string | undefined } = {
@@ -238,21 +211,30 @@ export function useTarotCardReadingPicker({ value, onValueChange } : {
   });
 }
 
-type Props = NavigationProps & TarotCardReadingProps;
-function TarotCardReadingView({
-  // eslint-disable-next-line react/prop-types
-  componentId,
-  scenarios,
-  readingType,
-  id,
-  originalReading,
-}: Props) {
+function TarotCardReadingView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Campaign.Tarot'>>();
+  const navigation = useNavigation();
+  const { id, originalReading, scenarios, readingType } = route.params;
   const [savedReading, setSavedReading] = useState(originalReading);
   const [saving, setSaving] = useState(false);
   const { backgroundStyle, colors, height, typography, width } = useContext(StyleContext);
-  useEffect(() => {
-    Navigation.mergeOptions(componentId, navigationOptions({ lightButton: false }));
-  }, [componentId]);
+  const campaign = useCampaign(id);
+  useDismissOnCampaignDeleted(navigation, campaign);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: () => (
+        <HeaderTitle
+          title={t`Tarot Reading`}
+          subtitle={getTarotReadingLabel(readingType)}
+        />
+      ),
+      headerRight: () => (
+        <ListToggleButton setting="card_grid" lightButton={false} />
+      ),
+    });
+  }, [navigation, readingType]);
+
   const cardGrid = useSettingValue('card_grid');
 
   const [tarotCards, setTarotCards] = useState<TarotCard[]>([]);
@@ -423,7 +405,6 @@ function TarotCardReadingView({
           renderItem={renderSwipeCard}
           loop
           useScrollView
-          disableIntervalMomentum
           data={tarotCards}
         />
       </View>

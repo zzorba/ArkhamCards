@@ -20,12 +20,12 @@ import space from '@styles/space';
 import InvestigatorImageButton from '@components/core/InvestigatorImageButton';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
   parsedDeck?: ParsedDeck;
   campaignId: CampaignId;
   live: boolean;
-  componentId: string;
   cards: CardsMap;
 }
 
@@ -68,9 +68,8 @@ function OverlapSectionComponent({
   );
 }
 
-export default function DeckOverlapComponent({ parsedDeck, componentId, cards, campaignInvestigators, latestDecks, campaign }: {
+export default function DeckOverlapComponent({ parsedDeck, cards, campaignInvestigators, latestDecks, campaign }: {
   parsedDeck?: ParsedDeck;
-  componentId: string;
   cards: CardsMap;
   campaign: SingleCampaignT;
   latestDecks: LatestDeckT[];
@@ -180,17 +179,18 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
   }, [excludeInvestigators, activeDecks, cards, parsedDeck, ignore_collection, in_collection]);
   const [open, toggleOpen] = useFlag(false);
   const singleCardView = useSettingValue('single_card');
+  const navigation = useNavigation();
   const showCardPressed = useCallback((id: string, card: Card) => {
     if (singleCardView) {
-      showCard(componentId, card.code, card, colors, { showSpoilers: true });
+      showCard(navigation, card.code, card, colors, { showSpoilers: true });
     } else {
       const allCards = flatMap(overlap, o => o.conflicts);
       showCardSwipe(
-        componentId,
+        navigation,
+        colors,
         map(allCards, card => card.card.code),
         undefined,
         findIndex(allCards, c => c.id === id),
-        colors,
         map(allCards, o => o.card),
         true,
         parsedDeck?.deck?.taboo_id,
@@ -200,7 +200,7 @@ export default function DeckOverlapComponent({ parsedDeck, componentId, cards, c
         parsedDeck?.customizations
       );
     }
-  }, [colors, overlap, componentId, parsedDeck, singleCardView]);
+  }, [navigation, overlap, colors, parsedDeck, singleCardView]);
 
   if (!overlap.length && !keys(excludeInvestigators).length) {
     return null;
@@ -260,7 +260,6 @@ export function DeckOverlapComponentForCampaign({
   parsedDeck,
   campaignId,
   live,
-  componentId,
   cards,
 }: Props) {
   const [campaignGuideContext] = useCampaignGuideContext(campaignId, live);
@@ -269,7 +268,6 @@ export function DeckOverlapComponentForCampaign({
   }
   return (
     <DeckOverlapComponent
-      componentId={componentId}
       parsedDeck={parsedDeck}
       cards={cards}
       campaign={campaignGuideContext.campaign}

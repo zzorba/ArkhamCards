@@ -7,19 +7,21 @@ import {
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
+import { RouteProp, useRoute } from '@react-navigation/native';
 
 import PackListComponent from '@components/core/PackListComponent';
 import { getAllPacks, getAllRealPacks } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
-import { NavigationProps } from '@components/nav/types';
+import useFilterFunctions from './useFilterFunctions';
+import { BasicStackParamList } from '@navigation/types';
 
-const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
+const PackFilterView = () => {
+  const route = useRoute<RouteProp<BasicStackParamList, 'SearchFilters.Packs'>>();
   const {
     filters,
     onFilterChange,
-  } = useFilterFunctions(props, {
+  } = useFilterFunctions(route.params, {
     title: t`Pack Filters`,
   });
   const { packCodes, packNames } = filters;
@@ -79,7 +81,6 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
     <View style={[styles.container, backgroundStyle]}>
       <PackListComponent
         coreSetName={t`Core Set`}
-        componentId={props.componentId}
         packs={allRealPacks}
         checkState={selected}
         setChecked={setChecked}

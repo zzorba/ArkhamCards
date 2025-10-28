@@ -1,4 +1,3 @@
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 
@@ -9,6 +8,7 @@ import CardChecklistToggles from './CardChecklistToggles';
 import { useChecklistCount, useDeckSlotCount } from '@components/deck/DeckEditContext';
 import Card from '@data/types/Card';
 import { AttachableDefinition } from '@actions/types';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface Props {
   card: Card;
@@ -36,8 +36,17 @@ function ChecklistButton({ code }: { code: string }) {
 
 export default function FloatingDeckQuantityComponent({ editable, card, limit, mode, attachmentOverride }: Props) {
   const { colors, shadow } = useContext(StyleContext);
+  const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.fab, shadow.large, { backgroundColor: colors.D20 }]}>
+    <View style={[
+      styles.fab,
+      shadow.large,
+      {
+        backgroundColor: colors.D20,
+        bottom: s + xs + insets.bottom,
+        right: s + xs,
+      },
+    ]}>
       { mode === 'checklist' && <ChecklistButton code={card.code} /> }
       <DeckQuantityComponent
         card={card}
@@ -56,11 +65,9 @@ const styles = StyleSheet.create({
   fab: {
     borderRadius: 40,
     height: 56,
-    position: 'absolute',
-    bottom: NOTCH_BOTTOM_PADDING + s + xs,
     paddingLeft: s,
     paddingRight: s,
-    right: s + xs,
+    position: 'absolute',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

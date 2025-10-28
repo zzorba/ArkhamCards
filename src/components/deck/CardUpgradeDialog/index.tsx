@@ -1,6 +1,9 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState, useLayoutEffect } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+import { getDeckScreenOptions } from '@components/nav/helper';
+
 import { forEach, filter, find, map, reverse, partition, sortBy, sumBy, shuffle, flatMap, uniq, range } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t, ngettext, msgid } from 'ttag';
@@ -12,7 +15,6 @@ import CardDetailComponent from '@components/card/CardDetailView/CardDetailCompo
 import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/actions';
 import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap, InvestigatorChoice, cardInCollection } from '@data/types/Card';
-import { NavigationProps } from '@components/nav/types';
 import space, { m } from '@styles/space';
 import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { getPacksInCollection } from '@reducers';
@@ -21,7 +23,7 @@ import { PARALLEL_SKIDS_CODE, PARALLEL_AGNES_CODE, SHREWD_ANALYSIS_CODE, UNIDENT
 import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { useSimpleDeckEdits } from '@components/deck/hooks';
-import { useNavigationButtonPressed, useSettingValue } from '@components/core/hooks';
+import { useSettingValue } from '@components/core/hooks';
 import DeckProblemBanner from '../DeckProblemBanner';
 import { useDialog } from '../dialogs';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
@@ -29,16 +31,15 @@ import { DeckId } from '@actions/types';
 import { parseMetaSlots } from '@lib/parseDeck';
 import { useCardMap } from '@components/card/useCardList';
 import { useDeck } from '@data/hooks';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface CardUpgradeDialogProps {
-  componentId: string;
   id: DeckId;
   cardsByName: Card[];
   investigator: InvestigatorChoice;
   mode: 'extra' | undefined;
+  cardName?: string;
 }
-
-type Props = CardUpgradeDialogProps & NavigationProps;
 
 function ignoreRule(code: string) {
   switch (code) {
@@ -57,13 +58,10 @@ function ignoreRule(code: string) {
   }
 }
 
-export default function CardUpgradeDialog({
-  componentId,
-  cardsByName,
-  investigator,
-  id,
-  mode,
-}: Props) {
+export default function CardUpgradeDialog() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Dialog.CardUpgrade'>>();
+  const navigation = useNavigation();
+  const { cardsByName, investigator, id, mode, cardName } = route.params;
   const cards = useMemo(() => {
     const r: CardsMap = {};
     forEach(cardsByName, c => {
@@ -97,19 +95,26 @@ export default function CardUpgradeDialog({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slots, cardsByName]);
   const dispatch = useDispatch();
-  const { backgroundStyle, borderStyle, typography, width } = useContext(StyleContext);
+  const { backgroundStyle, borderStyle, typography, width, colors } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
   const [showNonCollection, setShowNonCollection] = useState(false);
   const [shrewdAnalysisResult, setShrewdAnalysisResult] = useState<string[]>([]);
-  const backPressed = useCallback(() => {
-    Navigation.pop(componentId);
-  }, [componentId]);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'back') {
-      Navigation.pop(componentId);
+
+  useLayoutEffect(() => {
+    if (investigator) {
+      const screenOptions = getDeckScreenOptions(
+        colors,
+        { title: cardName || t`Card Upgrade` },
+        investigator.front
+      );
+      navigation.setOptions(screenOptions);
     }
-  }, componentId, [componentId]);
+  }, [navigation, colors, investigator, cardName]);
+
+  const backPressed = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
 
   const dedupedCardsByName = useMemo(() => {
     const reprints = filter(cardsByName, c => !!c.duplicate_of_code);
@@ -226,7 +231,6 @@ export default function CardUpgradeDialog({
           } : undefined}
         />
         <CardDetailComponent
-          componentId={componentId}
           card={card}
           showSpoilers
           width={width}
@@ -234,7 +238,7 @@ export default function CardUpgradeDialog({
         />
       </View>
     );
-  }, [componentId, mode, slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
+  }, [mode, slots, deckEdits?.ignoreDeckLimitSlots, borderStyle, width,
     specialIgnoreRule, onIncrementIgnore, onDecrementIgnore, onIncrement, onDecrement]);
 
   const doShrewdAnalysis = useCallback(() => {
@@ -397,7 +401,7 @@ export default function CardUpgradeDialog({
         { cardsSection }
         <View style={styles.footerPadding} />
       </ScrollView>
-      <DeckNavFooter componentId={componentId} deckId={id} onPress={backPressed} mode={mode} />
+      <DeckNavFooter deckId={id} onPress={backPressed} mode={mode} />
       { overLimit && (
         <DeckProblemBanner problem={{ reason: 'too_many_copies', invalidCards: [] }} />
       ) }
@@ -405,6 +409,13 @@ export default function CardUpgradeDialog({
     </View>
   );
 }
+
+function options<T extends RootStackParamList>({ route }: { route: RouteProp<T, 'Dialog.CardUpgrade'> }): NativeStackNavigationOptions {
+  return {
+    title: route.params?.cardName || t`Card Upgrade`,
+  };
+};
+CardUpgradeDialog.options = options;
 
 const styles = StyleSheet.create({
   column: {

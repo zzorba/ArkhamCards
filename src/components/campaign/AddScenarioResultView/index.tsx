@@ -1,16 +1,14 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { throttle } from 'lodash';
+import { dropWhile, reverse, throttle } from 'lodash';
 import {
-  Platform,
   ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
 import { CampaignId, CampaignNotes, ScenarioResult } from '@actions/types';
-import { NavigationProps } from '@components/nav/types';
 import ScenarioSection from './ScenarioSection';
 import CampaignLogSection from '../CampaignLogSection';
 import XpComponent from '../XpComponent';
@@ -20,23 +18,25 @@ import { addScenarioResult } from '../actions';
 import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useNavigationButtonPressed } from '@components/core/hooks';
 import { useCampaignInvestigators, useCampaign } from '@data/hooks';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useCountDialog } from '@components/deck/dialogs';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { useAppDispatch } from '@app/store';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface AddScenarioResultProps {
   id: CampaignId;
   scenarioCode?: string;
 }
 
-type Props = NavigationProps &
-  AddScenarioResultProps;
-
-function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
+function AddScenarioResultView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Campaign.AddResult'>>();
+  const navigation = useNavigation();
+  const { id, scenarioCode } = route.params
   const [dialog, showTextEditDialog] = useTextEditDialog();
   const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
   const [countDialog, showCountDialog] = useCountDialog();
@@ -44,6 +44,7 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
   const dispatch = useAppDispatch();
 
   const campaign = useCampaign(id);
+  useDismissOnCampaignDeleted(navigation, campaign);
   const [allInvestigators] = useCampaignInvestigators(campaign);
   const [scenario, setScenario] = useState<ScenarioResult | undefined>();
   const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();
@@ -59,56 +60,48 @@ function AddScenarioResultView({ componentId, id, scenarioCode }: Props) {
         scenarioResult,
       };
       if (showDeckUpgrade) {
-        Navigation.showModal({
-          stack: {
-            children: [{
-              component: {
-                name: 'Campaign.UpgradeDecks',
-                passProps,
-                options: {
-                  modalPresentationStyle: Platform.OS === 'ios' ?
-                    OptionsModalPresentationStyle.fullScreen :
-                    OptionsModalPresentationStyle.overCurrentContext,
-                },
-              },
-            }],
-          },
+
+        const state = navigation.getState();
+        const routes = dropWhile(
+          reverse([...state?.routes ?? []]),
+          r => r.name === 'Campaign.AddResult'
+        ).reverse();
+        navigation.reset({
+          index: routes.length,
+          routes: [
+            ...routes as any,
+            {
+              name: 'Campaign.UpgradeDecks',
+              params: passProps,
+            },
+          ],
         });
-        setTimeout(() => {
-          Navigation.pop(componentId);
-        }, 1500);
       } else {
-        Navigation.pop(componentId);
+        navigation.goBack();
       }
     }
-  }, [componentId, campaign, id, actions, dispatch, scenario, xp, campaignNotes]);
+  }, [navigation, campaign, id, actions, dispatch, scenario, xp, campaignNotes]);
 
   const savePressed = useMemo(() => throttle((showDeckUpgrade: boolean) => doSave(showDeckUpgrade), 200), [doSave]);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'save') {
-      savePressed(true);
-    }
-  }, componentId, [savePressed]);
-
   const saveEnabled = useMemo(() => {
     return !!(scenario &&
       scenario.scenario &&
       (scenario.interlude || scenario.resolution !== ''));
   }, [scenario]);
-
+  const onSave = useCallback(() => savePressed(true), [savePressed]);
   useEffect(() => {
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        rightButtonDisabledColor: COLORS.darkGray,
-        rightButtons: [{
-          text: t`Save`,
-          id: 'save',
-          enabled: saveEnabled,
-          color: COLORS.M,
-        }],
-      },
-    });
-  }, [componentId, saveEnabled]);
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButton
+          text={t`Save`}
+          accessibilityLabel={t`Save`}
+          disabled={!saveEnabled}
+          color={COLORS.M}
+          onPress={onSave}
+        />
+      ),
+    })
+  }, [navigation, saveEnabled, onSave]);
 
   const saveAndDismiss = useCallback(() => {
     savePressed(false);

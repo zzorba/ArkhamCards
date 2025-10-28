@@ -1,12 +1,13 @@
 diff --git a/node_modules/react-native-markdown-view/index.d.ts b/node_modules/react-native-markdown-view/index.d.ts
-index 9b2ad53..b4bcf57 100644
+index 9b2ad53..d24f405 100644
 --- a/node_modules/react-native-markdown-view/index.d.ts
 +++ b/node_modules/react-native-markdown-view/index.d.ts
-@@ -156,6 +156,7 @@ declare module 'react-native-markdown-view' {
-    * @see MarkdownView
-    */
-   interface MarkdownViewProps {
-+    children?: string;
-     textStyle?: TextStyle;
-     fonts?: MarkdownFonts;
-     rules?: MarkdownRules;
+@@ -172,6 +172,8 @@ declare module 'react-native-markdown-view' {
+      * string (first and only argument).
+      */
+     onLinkPress?: (url: string) => void;
++
++    children: string;
+   }
+
+   /**

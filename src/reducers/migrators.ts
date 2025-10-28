@@ -1,7 +1,7 @@
 import { flatMap, map, forEach, omit } from 'lodash';
-import uuid from 'react-native-uuid';
 
 import { LegacyCampaign, Campaign, DeckId, Deck, getDeckId, CampaignGuideState, GuideInput, DecksMap, LegacyDeck, LegacyCampaignGuideState } from '@actions/types';
+import { generateUuid } from '@lib/uuid';
 
 export function migrateDecks(
   decks: LegacyDeck[]
@@ -16,7 +16,7 @@ export function migrateDecks(
     const updatedDeck: Deck = ((deck.id < 0 || deck.local)) ? {
       ...omit(deck, ['id', 'uuid']),
       local: true,
-      uuid: deck.uuid || uuid.v4(),
+      uuid: deck.uuid || generateUuid(),
     } : {
       ...omit(deck, ['local', 'uuid']),
       local: undefined,
@@ -83,7 +83,7 @@ export function migrateCampaigns(
   const all: { [uuid: string]: Campaign } = {};
   const campaignUuids: { [id: string]: string} = {};
   forEach(legacyCampaigns, (campaign: LegacyCampaign) => {
-    campaignUuids[campaign.id] = campaign.uuid || uuid.v4();
+    campaignUuids[campaign.id] = campaign.uuid || generateUuid();
   });
   forEach(legacyCampaigns, (campaign: LegacyCampaign) => {
     if (!campaign) {

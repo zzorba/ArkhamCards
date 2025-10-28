@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
 import ChooseOnePrompt from '@components/campaignguide/prompts/ChooseOnePrompt';
@@ -11,9 +11,9 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 import ActionButton from '@components/campaignguide/prompts/ActionButton';
 import space from '@styles/space';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   id: string;
   input: ReceiveCampaignLinkInput;
   campaignLog: GuidedCampaignLog;
@@ -21,16 +21,16 @@ interface Props {
 }
 
 export default function ReceiveCampaignLinkInputComponent({
-  componentId,
   id,
   input,
   campaignLog,
   switchCampaignScenario,
 }: Props) {
+  const navigation = useNavigation();
   const { scenarioState } = useContext(ScenarioGuideContext);
   const close = useCallback(() => {
-    Navigation.pop(componentId);
-  }, [componentId]);
+    navigation.goBack();
+  }, [navigation]);
 
   if (campaignLog.linked) {
     const decision = scenarioState.campaignLink('receive', input.id);

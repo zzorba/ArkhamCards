@@ -38,14 +38,14 @@ function ApolloGate({ children }: Props) {
       user.getIdTokenResult().then(idTokenResult => {
         const hasuraClaims = idTokenResult.claims['https://hasura.io/jwt/claims'];
         if (hasuraClaims) {
-          // console.log('Opening apollo');
           apolloQueueLink.open();
         } else {
           apolloQueueLink.close();
         }
+      }).catch(() => {
+        apolloQueueLink.close();
       });
     } else {
-      // console.log('Closing apollo');
       apolloQueueLink.close();
     }
   }, [user, isConnected]);
@@ -102,7 +102,7 @@ function ApolloGate({ children }: Props) {
 }
 
 export default function withApolloGate<Props>(WrappedComponent: React.ComponentType<Props>) {
-  const result = function(props: Props) {
+  const ApolloResult = function(props: Props) {
     return (
       <ApolloGate>
         { /* @ts-ignore */ }
@@ -110,8 +110,8 @@ export default function withApolloGate<Props>(WrappedComponent: React.ComponentT
       </ApolloGate>
     );
   };
-  hoistNonReactStatics(result, WrappedComponent);
-  return result;
+  hoistNonReactStatics(ApolloResult, WrappedComponent);
+  return ApolloResult;
 }
 
 

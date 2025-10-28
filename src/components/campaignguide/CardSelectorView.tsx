@@ -8,7 +8,6 @@ import { t } from 'ttag';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import CardToggleRow from '@components/cardlist/CardSelectorComponent/CardToggleRow';
-import { NavigationProps } from '@components/nav/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import Card from '@data/types/Card';
 import { combineQueries, MYTHOS_CARDS_QUERY, where } from '@data/sqlite/query';
@@ -18,6 +17,8 @@ import StyleContext from '@styles/StyleContext';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { QuerySort } from '@data/sqlite/types';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
 
 export interface CardSelectorProps {
   query?: Brackets;
@@ -29,13 +30,14 @@ export interface CardSelectorProps {
   max?: number;
 }
 
-type Props = CardSelectorProps & NavigationProps;
 const SORT: QuerySort[] = [
   { s: 'c.renderName', direction: 'ASC' },
   { s: 'c.xp', direction: 'ASC' },
 ];
 
-export default function CardSelectorView({ max, query, selection: initialSelection, selectedCards: initialSelectedCards, onSelect, includeStoryToggle, uniqueName }: Props) {
+export default function CardSelectorView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.CardSelector'>>();
+  const { max, query, selection: initialSelection, selectedCards: initialSelectedCards, onSelect, includeStoryToggle, uniqueName } = route.params;
   const { colors, fontScale } = useContext(StyleContext);
   const [{ selection, selectedCards }, setSelection] = useState({
     selection: mapValues(keyBy(initialSelection), () => true),

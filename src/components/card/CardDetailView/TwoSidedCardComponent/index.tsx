@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { t, jt } from 'ttag';
 
 import {
@@ -18,8 +18,6 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
-import { CardFaqProps } from '@components/card/CardFaqView';
-import { CardTabooProps } from '@components/card/CardTabooView';
 import Card, { CardStatusType } from '@data/types/Card';
 import SkillIcon from '@components/core/SkillIcon';
 
@@ -35,6 +33,7 @@ import InvestigatorImage from '@components/core/InvestigatorImage';
 import { useFlag } from '@components/core/hooks';
 import { MAX_WIDTH } from '@styles/sizes';
 import AppIcon from '@icons/AppIcon';
+import { useNavigation } from '@react-navigation/native';
 
 const SKILL_ICON_SIZE = 24;
 
@@ -57,7 +56,7 @@ function num(value: number | null | undefined) {
 }
 
 interface Props {
-  componentId?: string;
+  pressable?: boolean;
   card: Card;
   backCard?: Card;
   linked?: boolean;
@@ -69,7 +68,8 @@ interface Props {
 }
 
 export default function TwoSidedCardComponent(props: Props) {
-  const { componentId, card, backCard, linked, notFirst, simple, width } = props;
+  const navigation = useNavigation();
+  const { pressable, card, backCard, linked, notFirst, simple, width } = props;
   const custom = card.custom();
   const { backgroundStyle, fontScale, shadow, colors, typography } = useContext(StyleContext);
   const [showBack, toggleShowBack] = useFlag(props.showBack ?? false);
@@ -81,50 +81,16 @@ export default function TwoSidedCardComponent(props: Props) {
     card.type_code === 'agenda';
 
   const showTaboo = useCallback(() => {
-    if (componentId) {
-      Navigation.push<CardTabooProps>(componentId, {
-        component: {
-          name: 'Card.Taboo',
-          passProps: {
-            id: card.code,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: card.name,
-              },
-              subtitle: {
-                text: `Taboos`,
-              },
-            },
-          },
-        },
-      });
+    if (pressable) {
+      navigation.navigate('Card.Taboo', { id: card.code, cardName: card.name });
     }
-  }, [componentId, card]);
+  }, [navigation, pressable, card]);
 
   const showFaq = useCallback(() => {
-    if (componentId) {
-      Navigation.push<CardFaqProps>(componentId, {
-        component: {
-          name: 'Card.Faq',
-          passProps: {
-            id: card.code,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: t`FAQ`,
-              },
-              subtitle: {
-                text: card.name,
-              },
-            },
-          },
-        },
-      });
+    if (pressable) {
+      navigation.navigate('Card.Faq', { id: card.code, cardName: card.name });
     }
-  }, [componentId, card]);
+  }, [navigation, pressable, card]);
 
   const typeLine = useMemo(() => {
     if (card.type_code === 'investigator') {
@@ -279,7 +245,6 @@ export default function TwoSidedCardComponent(props: Props) {
       return (
         <View key={key}>
           <TwoSidedCardComponent
-            componentId={componentId}
             card={card.linked_card}
             linked
             notFirst={!isFirst}
@@ -365,7 +330,7 @@ export default function TwoSidedCardComponent(props: Props) {
         </View>
       </View>
     );
-  }, [props.showBack, backCard, card, componentId, simple, width, linked, shadow.large,
+  }, [props.showBack, backCard, card, simple, width, linked, shadow.large,
     colors, backgroundStyle, typography, showBack, typeLine, cardFooter, flavorFirst,
     toggleShowBack, showTaboo, showFaq]);
 
@@ -377,17 +342,17 @@ export default function TwoSidedCardComponent(props: Props) {
       <View style={styles.column}>
         <View style={styles.playerImage}>
           { card.type_code === 'investigator' ? (
-            <InvestigatorImage card={card} componentId={componentId} imageLink />
+            <InvestigatorImage card={card} pressable={pressable} imageLink />
           ) : (
             <PlayerCardImage
               card={card}
-              componentId={componentId}
+              pressable={pressable}
             />
           ) }
         </View>
       </View>
     );
-  }, [card, componentId, props.noImage]);
+  }, [card, pressable, props.noImage]);
 
   const cardText = useMemo(() => {
     return (

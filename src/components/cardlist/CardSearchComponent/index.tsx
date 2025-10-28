@@ -1,11 +1,12 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
-import { Platform, Text, View, StyleSheet, Keyboard } from 'react-native';
+import { Text, View, StyleSheet, Keyboard } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 import { Brackets } from 'typeorm/browser';
-import { Navigation, OptionsTopBarButton, OptionsTopBar } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { iconsMap } from '@app/NavIcons';
+import { generateUuid } from '@lib/uuid';
+
 import { CardScreenType, DeckId, Slots, SortType } from '@actions/types';
 import { InvestigatorChoice } from '@data/types/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
@@ -14,15 +15,14 @@ import { FilterState } from '@lib/filters';
 import { removeFilterSet, clearFilters, toggleMythosMode, toggleFilter, updateFilter, updateCardSorts } from '@components/filter/actions';
 import { getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
 import MythosButton from './MythosButton';
-import TuneButton from './TuneButton';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
 import space, { s } from '@styles/space';
-import { useComponentVisible, useEffectUpdate, useNavigationButtonPressed } from '@components/core/hooks';
-import COLORS from '@styles/colors';
+import { useComponentVisible, useEffectUpdate } from '@components/core/hooks';
+import HeaderButton from '@components/core/HeaderButton';
 import { useFilterButton } from '../hooks';
 import { useSortDialog } from '../CardSortDialog';
-
+import TuneButton from './TuneButton';
 
 export function useFilterSortDialog(filterId: string, screenType: CardScreenType): [React.ReactNode, () => void] {
   const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, filterId), [filterId]);
@@ -44,7 +44,6 @@ export function useFilterSortDialog(filterId: string, screenType: CardScreenType
 
 
 interface Props {
-  componentId: string;
   filterId?: string;
   baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
   mythosToggle?: boolean;
@@ -64,87 +63,8 @@ interface Props {
   setHideSplash?: (value: boolean) => void;
 }
 
-interface CardSearchNavigationOptions {
-  componentId: string;
-  filterId: string;
-  modal?: boolean;
-  lightButton?: boolean;
-  mythosToggle?: boolean;
-  baseQuery?: (filters: FilterState | undefined, slots: Slots | undefined) => Brackets;
-  title?: string;
-}
-export function navigationOptions(
-  {
-    componentId,
-    filterId,
-    modal,
-    lightButton,
-    mythosToggle,
-    baseQuery,
-  }: CardSearchNavigationOptions
-) {
-  const mythosButton: OptionsTopBarButton = {
-    id: 'mythos',
-    component: {
-      name: 'MythosButton',
-      passProps: {
-        filterId,
-        lightButton,
-      },
-      width: MythosButton.WIDTH,
-      height: MythosButton.HEIGHT,
-    },
-    enabled: true,
-    accessibilityLabel: t`Encounter Card Toggle`,
-  };
-
-  const filterButton: OptionsTopBarButton = Platform.OS === 'ios' ? {
-    id: 'filter',
-    component: {
-      name: 'TuneButton',
-      passProps: {
-        parentComponentId: componentId,
-        filterId,
-        baseQuery,
-        modal,
-        lightButton,
-      },
-      width: TuneButton.WIDTH,
-      height: TuneButton.HEIGHT,
-    },
-    accessibilityLabel: t`Filters`,
-    enabled: true,
-  } : {
-    id: 'filter',
-    icon: iconsMap.filter,
-    color: lightButton ? 'white' : COLORS.M,
-    accessibilityLabel: t`Filters`,
-  };
-
-  const rightButtons: OptionsTopBarButton[] = [
-    filterButton,
-    {
-      id: 'sort',
-      icon: iconsMap.sort,
-      color: lightButton ? 'white' : COLORS.M,
-      accessibilityLabel: t`Sort`,
-    },
-  ];
-  const topBarOptions: OptionsTopBar = {
-    rightButtons,
-  };
-  if (mythosToggle) {
-    topBarOptions.leftButtons = [mythosButton];
-  }
-
-  return {
-    topBar: topBarOptions,
-  };
-}
-
 export default function CardSearchComponent(props: Props) {
   const {
-    componentId,
     deckId,
     baseQuery,
     mythosToggle,
@@ -159,9 +79,11 @@ export default function CardSearchComponent(props: Props) {
     includeDuplicates,
     screenType,
   } = props;
-  const { fontScale, typography, width } = useContext(StyleContext);
-  const visible = useComponentVisible(componentId);
-  const filterId = deckId?.uuid || props.filterId || componentId;
+  const { fontScale, typography, width, colors } = useContext(StyleContext);
+  const navigation = useNavigation();
+  const visible = useComponentVisible();
+  const randomFilterId = useMemo(() => generateUuid(), []);
+  const filterId = deckId?.uuid || props.filterId || randomFilterId;
   const filterSelector = useCallback((state: AppState) => getFilterState(state, filterId), [filterId]);
   const filters = useSelector(filterSelector);
   const mythosModeSelector = useCallback((state: AppState) => getMythosMode(state, filterId), [filterId]);
@@ -171,18 +93,9 @@ export default function CardSearchComponent(props: Props) {
     [screenType, mythosMode]);
   const selectedSorts = useSelector(selectedSortSelector);
   const dispatch = useDispatch();
+
+  // Cleanup filter set on unmount (if not a deck search)
   useEffect(() => {
-    Navigation.mergeOptions(componentId,
-      navigationOptions(
-        {
-          componentId,
-          filterId,
-          baseQuery,
-          mythosToggle,
-          lightButton: deckId !== undefined,
-        }
-      )
-    );
     return function cleanup() {
       if (!deckId) {
         dispatch(removeFilterSet(filterId));
@@ -191,16 +104,32 @@ export default function CardSearchComponent(props: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [, showFilters] = useFilterButton({ componentId, filterId, baseQuery, modal: false });
+  const [, showFilters] = useFilterButton({ filterId, baseQuery, modal: false });
 
   const [dialog, showSortDialog] = useFilterSortDialog(filterId, screenType);
-  useNavigationButtonPressed((event) => {
-    if (event.buttonId === 'sort') {
-      showSortDialog();
-    } else if (event.buttonId === 'filter') {
-      showFilters();
-    }
-  }, componentId, [showSortDialog, showFilters]);
+  // Set up header buttons
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: mythosToggle ? () => (
+        <MythosButton filterId={filterId} />
+      ) : undefined,
+      headerRight: () => (
+        <>
+          <TuneButton
+            filterId={filterId}
+            lightButton={!!deckId}
+            baseQuery={baseQuery}
+          />
+          <HeaderButton
+            iconName="sort"
+            onPress={showSortDialog}
+            color={deckId ? '#FFFFFF' : colors.M}
+            accessibilityLabel={t`Sort`}
+          />
+        </>
+      ),
+    });
+  }, [navigation, deckId, baseQuery, showFilters, showSortDialog, colors.M, mythosToggle, filterId]);
 
   const onClearSearchFilters = useCallback(() => {
     dispatch(clearFilters(filterId));
@@ -208,15 +137,11 @@ export default function CardSearchComponent(props: Props) {
 
   useEffectUpdate(() => {
     if (mythosToggle) {
-      Navigation.mergeOptions(componentId, {
-        topBar: {
-          title: {
-            text: mythosMode ? t`Encounter Cards` : t`Player Cards`,
-          },
-        },
+      navigation.setOptions({
+        title: mythosMode ? t`Encounter Cards` : t`Player Cards`,
       });
     }
-  }, [mythosToggle, mythosMode, componentId]);
+  }, [mythosToggle, mythosMode, navigation]);
 
   const onToggleMythosMode = useCallback(() => {
     dispatch(toggleMythosMode(filterId, !mythosMode));
@@ -244,7 +169,6 @@ export default function CardSearchComponent(props: Props) {
           enabled={filters?.levelEnabled || false}
           exceptional={filters?.exceptional || false}
           nonExceptional={filters?.nonExceptional || false}
-          componentId={componentId}
         />
       );
       headerHeight += (s * 2 + 10 * 2 + fontScale * 28);
@@ -281,11 +205,10 @@ export default function CardSearchComponent(props: Props) {
       );
     }
     return [result, headerHeight];
-  }, [hideSplash, filters, fontScale, width, deckId, hideVersatile, setHideVersatile, setHideSplash, componentId, typography, onFilterChange, onToggleChange]);
+  }, [hideSplash, filters, fontScale, width, deckId, hideVersatile, setHideVersatile, setHideSplash, typography, onFilterChange, onToggleChange]);
   return (
     <>
       <CardSearchResultsComponent
-        componentId={componentId}
         deckId={deckId}
         filterId={filterId}
         baseQuery={baseQuery}

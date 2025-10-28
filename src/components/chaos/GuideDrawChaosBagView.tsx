@@ -3,21 +3,22 @@ import { View, StyleSheet } from 'react-native';
 
 import DrawChaosBagComponent from './DrawChaosBagComponent';
 import { showGuideChaosBagOddsCalculator } from '@components/campaign/nav';
-import { NavigationProps } from '@components/nav/types';
 import { useSimpleChaosBagDialog } from '@components/campaign/CampaignDetailView/useChaosBagDialog';
-import { Navigation } from 'react-native-navigation';
+
 import useGuideChaosBag from '../campaignguide/useGuideChaosBag';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import { useChaosBagResults } from '@data/hooks';
-import withCampaignGuideContext, { InjectedCampaignGuideContextProps, CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
+import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import useProcessedCampaign from '@components/campaignguide/useProcessedCampaign';
 import { t } from 'ttag';
-import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { useNavigationButtonPressed } from '@components/core/hooks';
 import { showRules } from '@components/campaignguide/nav';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
+import HeaderTitle from '@components/core/HeaderTitle';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface GuideDrawChaosBagProps extends CampaignGuideInputProps {
   scenarioId?: string;
@@ -25,9 +26,10 @@ export interface GuideDrawChaosBagProps extends CampaignGuideInputProps {
   investigatorIds: string[];
 }
 
-type Props = GuideDrawChaosBagProps & InjectedCampaignGuideContextProps;
-
-function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone, investigatorIds }: Props & NavigationProps) {
+function GuideDrawChaosBagView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.DrawChaosBag'>>();
+  const { campaignId, scenarioId, standalone, investigatorIds } = route.params;
+  const navigation = useNavigation();
   const { lang } = useContext(LanguageContext);
   const campaignData = useContext(CampaignGuideContext);
   const { campaignGuide, campaignState } = campaignData;
@@ -49,48 +51,38 @@ function GuideDrawChaosBagView({ componentId, campaignId, scenarioId, standalone
     processedCampaign,
     difficultyOverride: chaosBagResults.difficulty,
   });
-
+  const onRulesPressed = useCallback(() => {
+    showRules(navigation, campaignId, {
+      rules,
+      campaignErrata,
+      scenarioErrata,
+      scenarioId,
+    });
+  }, [navigation, campaignId, rules, campaignErrata, scenarioErrata, scenarioId]);
   useEffect(() => {
     if (scenarioCard) {
-      Navigation.mergeOptions(componentId, {
-        topBar: {
-          subtitle: {
-            text: scenarioCard.name,
-          },
-          rightButtons: rules.length || campaignErrata.length || scenarioErrata.length ? [
-            {
-              icon: iconsMap.book,
-              id: 'rules',
-              color: COLORS.M,
-              accessibilityLabel: t`Rules`,
-            },
-          ] : [],
-        },
+      navigation.setOptions({
+        headerTitle: () => (
+          <HeaderTitle title={t`Chaos Bag`} subtitle={scenarioCard.name} color={COLORS.M} />
+        ),
+        headerRight: () => rules.length || campaignErrata.length || scenarioErrata.length ? (
+          <HeaderButton
+            iconName="book"
+            accessibilityLabel={t`Rules`}
+            color={COLORS.M}
+            onPress={onRulesPressed}
+          />
+        ) : undefined,
       });
     }
-  }, [scenarioCard, campaignErrata, scenarioErrata, rules, componentId]);
-
-  useNavigationButtonPressed(
-    (event) => {
-      if (event.buttonId === 'rules') {
-        showRules(componentId, campaignId, {
-          rules,
-          campaignErrata,
-          scenarioErrata,
-          scenarioId,
-        });
-      }
-    },
-    componentId,
-    [rules, campaignErrata, scenarioErrata, scenarioId]
-  );
+  }, [navigation, onRulesPressed, scenarioCard, campaignErrata, scenarioErrata, rules]);
   const theChaosBag = liveChaosBag || chaosBag;
   const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag, chaosBagResults);
   const showOdds = useCallback(() => {
     if (theChaosBag) {
-      showGuideChaosBagOddsCalculator(componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign);
+      showGuideChaosBagOddsCalculator(navigation, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign);
     }
-  }, [componentId, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign]);
+  }, [navigation, campaignId, theChaosBag, investigatorIds, scenarioId, standalone, processedCampaign]);
   if (loading || !theChaosBag) {
     return <LoadingSpinner />
   }
@@ -118,17 +110,22 @@ const styles = StyleSheet.create({
   },
 });
 
-GuideDrawChaosBagView.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`Chaos Bag`,
-      },
-      backButton: {
-        title: t`Back`,
-      },
-    },
-  };
-};
+const WrappedComponent = withCampaignGuideContext<GuideDrawChaosBagProps>(GuideDrawChaosBagView, { rootView: false });
 
-export default withCampaignGuideContext<GuideDrawChaosBagProps & NavigationProps>(GuideDrawChaosBagView, { rootView: false });
+export default function GuideDrawChaosBagWrapper() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.DrawChaosBag'>>();
+  const {
+    scenarioId,
+    standalone,
+    investigatorIds,
+    campaignId,
+  } = route.params;
+  return (
+    <WrappedComponent
+      scenarioId={scenarioId}
+      standalone={standalone}
+      investigatorIds={investigatorIds}
+      campaignId={campaignId}
+    />
+  );
+}

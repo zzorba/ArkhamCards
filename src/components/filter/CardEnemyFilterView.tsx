@@ -1,17 +1,19 @@
 import React, { useContext, useMemo } from 'react';
 import { ScrollView, View } from 'react-native';
 import { t } from 'ttag';
+import { RouteProp, useRoute } from '@react-navigation/native';
 
 import SliderChooser from './SliderChooser';
 import ToggleFilter from '@components/core/ToggleFilter';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
-import { NavigationProps } from '@components/nav/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import TwoColumnSort, { ToggleItem } from './TwoColumnSort';
+import { BasicStackParamList } from '@navigation/types';
 
-const CardEnemyFilterView = (props: FilterFunctionProps & NavigationProps) => {
+const CardEnemyFilterView = () => {
+  const route = useRoute<RouteProp<BasicStackParamList, 'SearchFilters.Enemy'>>();
+  const props: FilterFunctionProps = route.params;
   const {
     defaultFilterState,
     filters,
@@ -160,18 +162,5 @@ const CardEnemyFilterView = (props: FilterFunctionProps & NavigationProps) => {
       />
     </ScrollView>
   );
-};
-CardEnemyFilterView.options = () => {
-  return {
-    topBar: {
-      backButton: {
-        title: t`Back`,
-        color: COLORS.M,
-      },
-      title: {
-        text: t`Enemy Filters`,
-      },
-    },
-  };
 };
 export default CardEnemyFilterView;

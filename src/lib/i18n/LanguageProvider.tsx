@@ -8,6 +8,7 @@ import { getSystemLanguage } from '@lib/i18n';
 import { getAudioLangPreference, getLangChoice, hasDissonantVoices } from '@reducers';
 import { useMyProfile } from '@data/remote/hooks';
 import { User_Flag_Type_Enum } from '@generated/graphql/apollo-schema';
+import { changeLocale } from '@app/i18n';
 
 const NON_LOCALIZED_CARDS = new Set(['en', 'cs', 'vi']);
 const NON_ARKHAMDB_CARDS: { [key: string]: string | undefined } = { 'zh-cn': 'zh' };
@@ -47,6 +48,11 @@ export function getArkhamDbDomain(lang: string): string {
 
 export default function LanguageProvider({ children }: Props) {
   const [systemLang, setSystemLang] = useState<string>(currentSystemLang || getSystemLanguage());
+
+  const langChoice = useSelector(getLangChoice);
+  const lang = langChoice === 'system' ? systemLang : langChoice;
+  const audioLangChoice = useSelector(getAudioLangPreference);
+
   useEffect(() => {
     if (!eventListenerInitialized) {
       // We only want to listen to this once, hence the singleton pattern.
@@ -61,14 +67,21 @@ export default function LanguageProvider({ children }: Props) {
       currentSystemLang = getSystemLanguage();
     }
     const callback = (systemLang: string) => setSystemLang(systemLang);
+
+    // Initial loading of the language
+    changeLocale(lang);
+
     const sub = DeviceEventEmitter.addListener('langChange', callback);
     return () => {
       sub.remove();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const langChoice = useSelector(getLangChoice);
-  const lang = langChoice === 'system' ? systemLang : langChoice;
-  const audioLangChoice = useSelector(getAudioLangPreference);
+
+  // Load ttag translations when the app launches.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const hasDV = useSelector(hasDissonantVoices);
   const [profile] = useMyProfile(true);

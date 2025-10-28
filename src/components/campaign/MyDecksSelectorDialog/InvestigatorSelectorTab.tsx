@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
-import { Navigation } from 'react-native-navigation';
+
 
 import { SortType } from '@actions/types';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
 import Card from '@data/types/Card';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   onInvestigatorSelect: (card: Card) => void;
   searchOptions?: SearchOptions;
   sort: SortType[];
@@ -16,21 +16,20 @@ interface Props {
 }
 
 export default function InvestigatorSelectorTab({
-  componentId,
   searchOptions,
   filterInvestigators,
   sort,
   onInvestigatorSelect,
   includeParallel,
 }: Props) {
+  const navigation = useNavigation();
   const investigatorSelected = useCallback((card: Card) => {
     onInvestigatorSelect(card);
-    Navigation.dismissModal(componentId);
-  }, [onInvestigatorSelect, componentId]);
+    navigation.goBack();
+  }, [navigation, onInvestigatorSelect]);
 
   return (
     <InvestigatorsListComponent
-      componentId={componentId}
       hideDeckbuildingRules
       sort={sort}
       searchOptions={searchOptions}

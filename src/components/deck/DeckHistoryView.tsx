@@ -1,13 +1,13 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState, useLayoutEffect } from 'react';
 import { flatMap, forEach } from 'lodash';
 import { FlatList, ListRenderItemInfo, RefreshControl } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+
 import { t } from 'ttag';
 
 import DeckProgressComponent from './DeckProgressComponent';
-import { DeckDetailProps } from './DeckDetailView';
-import { getDeckOptions } from '@components/nav/helper';
-import { NavigationProps } from '@components/nav/types';
+import { getDeckScreenOptions } from '@components/nav/helper';
 import { DeckId, ParsedDeck } from '@actions/types';
 import { parseDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
@@ -18,11 +18,13 @@ import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { useDeckHistory } from '@data/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import Card from '@data/types/Card';
 
 export interface DeckHistoryProps {
   id: DeckId;
-  investigator: string;
+  investigator: Card;
   campaign?: MiniCampaignT;
+  headerBackgroundColor?: string;
 }
 
 interface HistoryDeckItemType {
@@ -38,17 +40,25 @@ function itemToKey({ deck }: HistoryDeckItemType): string {
   return deck.id?.local ? deck.id.uuid : `${deck.id?.id}`;
 }
 
-export default function DeckHistoryView({
-  componentId,
-  id,
-  investigator,
-  campaign,
-}: DeckHistoryProps & NavigationProps) {
+export default function DeckHistoryView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Deck.History'>>();
+  const navigation = useNavigation();
+  const { id, investigator, campaign } = route.params;
   const deckEdits = useSimpleDeckEdits(id);
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
-  const [deckHistory, loading, refreshDeckHistory] = useDeckHistory(id, investigator, campaign);
+  const [deckHistory, loading, refreshDeckHistory] = useDeckHistory(id, investigator.code, campaign);
   const [cards] = useLatestDecksCards(deckHistory, false, deckHistory?.length ? (deckHistory[0].deck.taboo_id || 0) : 0);
+
+  useLayoutEffect(() => {
+    const screenOptions = getDeckScreenOptions(
+      colors,
+      { title: t`Upgrade History` },
+      investigator
+    );
+    navigation.setOptions(screenOptions);
+  }, [navigation, colors, investigator]);
+
   const historicDecks: HistoryDeckItemType[] = useMemo(() => {
     if (!cards || !deckHistory) {
       return [];
@@ -101,20 +111,14 @@ export default function DeckHistoryView({
   }, [id]);
 
   const onDeckPress = useCallback((deckId: DeckId, parsedDeck: ParsedDeck) => {
-    const options = getDeckOptions(colors, {
-      title: parsedDeck.deck?.name || '',
-    }, parsedDeck.investigator.front);
-    Navigation.push<DeckDetailProps>(componentId, {
-      component: {
-        name: 'Deck',
-        passProps: {
-          id: deckId,
-          campaignId: campaign?.id,
-        },
-        options,
-      },
+    navigation.navigate('Deck', {
+      id: deckId,
+      campaignId: campaign?.id,
+      title: parsedDeck.investigator.front.name,
+      subtitle: parsedDeck.deck?.name || '',
+      headerBackgroundColor: investigator ? colors.faction[investigator.factionCode()].background : undefined,
     });
-  }, [componentId, campaign, colors]);
+  }, [investigator, colors, navigation, campaign]);
 
   const renderItem = useCallback(({ item: { id, deck, versionNumber, first } }: ListRenderItemInfo<HistoryDeckItemType>) => {
     if (!cards || !deck.id || !deck.deck) {
@@ -126,7 +130,6 @@ export default function DeckHistoryView({
         deckId={id}
         title={deckTitle(deck, versionNumber)}
         onTitlePress={first ? undefined : onDeckPress}
-        componentId={componentId}
         deck={deck.deck}
         parsedDeck={deck}
         cards={cards}
@@ -134,7 +137,7 @@ export default function DeckHistoryView({
         showBaseDeck
       />
     )
-  }, [cards, componentId, deckTitle, onDeckPress]);
+  }, [cards, deckTitle, onDeckPress]);
   const [refreshing, setRefreshing] = useState(false);
   const doRefresh = useCallback(async() => {
     if (refreshDeckHistory) {

@@ -1,6 +1,5 @@
 import { Alert } from 'react-native';
 import { t } from 'ttag';
-import uuid from 'react-native-uuid';
 
 import {
   GuideStartSideScenarioInput,
@@ -24,6 +23,7 @@ import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { find } from 'lodash';
 import { CampaignInvestigator } from './GuidedCampaignLog';
+import { generateUuid } from '@lib/uuid';
 
 export interface CampaignGuideActions {
   showChooseDeck: (singleInvestigator?: CampaignInvestigator, callback?: (code: string) => Promise<void>) => void;
@@ -146,7 +146,7 @@ export default class CampaignStateHelper {
       type: 'start_side_scenario',
       previousScenarioId: previousScenarioId.encodedScenarioId,
       sideScenarioType: 'custom',
-      scenario: uuid.v4(),
+      scenario: generateUuid(),
       name,
       xpCost,
       step: undefined,

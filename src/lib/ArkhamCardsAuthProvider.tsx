@@ -18,8 +18,6 @@ let currentUserLoading: boolean = true;
 
 export async function getAuthToken(): Promise<string | undefined> {
   if (!currentUser) {
-    console.log('***********');
-    console.log('trying to get token with no user.');
     return undefined;
   }
   return await currentUser.getIdToken();

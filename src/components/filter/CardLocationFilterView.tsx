@@ -4,16 +4,19 @@ import {
   View,
 } from 'react-native';
 import { t } from 'ttag';
+import { RouteProp, useRoute } from '@react-navigation/native';
 
 import ToggleFilter from '@components/core/ToggleFilter';
 import SliderChooser from './SliderChooser';
 import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
-import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
 import TwoColumnSort, { ToggleItem } from './TwoColumnSort';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { BasicStackParamList } from '@navigation/types';
 
-const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) => {
+const CardLocationFilterView = () => {
+  const route = useRoute<RouteProp<BasicStackParamList, 'SearchFilters.Location'>>();
+  const props: FilterFunctionProps = route.params;
   const {
     defaultFilterState,
     filters,
@@ -93,13 +96,4 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
   );
 };
 
-CardLocationFilterView.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`Location Filters`,
-      },
-    },
-  };
-};
 export default CardLocationFilterView;

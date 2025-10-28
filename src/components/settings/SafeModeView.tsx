@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Alert, SafeAreaView, ScrollView, View, StyleSheet } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
@@ -8,34 +8,38 @@ import { clearDecks } from '@actions';
 import BasicButton from '@components/core/BasicButton';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import SettingsItem from './SettingsItem';
-import { BackupProps } from './BackupView';
 import StyleContext from '@styles/StyleContext';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
 
-interface Props {
-  componentId: string;
-  startApp: () => void;
+export interface SafeModeViewProps {
+  startApp?: () => void;
 }
 
-export default function SafeModeView({ componentId, startApp }: Props) {
+export default function SafeModeView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Settings.SafeMode'>>();
+  const navigation = useNavigation();
+  const { startApp } = route.params || {};
   const { db } = useContext(DatabaseContext);
   const { backgroundStyle } = useContext(StyleContext);
   const dispatch = useDispatch();
   const [safeMode, setSafeMode] = useState(false);
   const [cacheCleared, setCacheCleared] = useState(false);
 
-  const launchApp = useCallback(() => startApp(), [startApp]);
+  const launchApp = useCallback(() => {
+    if (startApp) {
+      startApp();
+    } else {
+      navigation.goBack();
+    }
+  }, [startApp, navigation]);
 
   const enableSafeMode = useCallback(() => {
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        visible: true,
-        title: {
-          text: t`Safe mode`,
-        },
-      },
+    navigation.setOptions({
+      title: t`Safe mode`,
     });
     setSafeMode(true);
-  }, [componentId, setSafeMode]);
+  }, [navigation, setSafeMode]);
 
   useEffect(() => {
     Alert.alert(
@@ -50,25 +54,8 @@ export default function SafeModeView({ componentId, startApp }: Props) {
   }, []);
 
   const backupPressed = useCallback(() => {
-    Navigation.push<BackupProps>(componentId, {
-      component: {
-        name: 'Settings.Backup',
-        passProps: {
-          safeMode: true,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Backup`,
-            },
-            backButton: {
-              title: t`Done`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId]);
+    navigation.navigate('Settings.Backup', { safeMode: true });
+  }, [navigation]);
 
   const clearDatabase = useCallback(async() => {
     await (await db.cardsQuery()).delete().execute();

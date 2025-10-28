@@ -1,6 +1,6 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Brackets } from 'typeorm/browser';
-import { Navigation } from 'react-native-navigation';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { pick } from 'lodash';
 import { t, ngettext, msgid } from 'ttag';
@@ -10,12 +10,13 @@ import { getFilterState, getDefaultFilterState, AppState, getCardFilterData } fr
 import FilterBuilder, { CardFilterData, DefaultCardFilterData, FilterState, defaultFilterState as DefaultFilterState } from '@lib/filters';
 import { combineQueriesOpt, NO_CUSTOM_CARDS_QUERY } from '@data/sqlite/query';
 import StyleContext from '@styles/StyleContext';
-import { useNavigationButtonPressed } from '@components/core/hooks';
 import { clearFilters, toggleFilter, updateFilter } from './actions';
-import { NavigationProps } from '@components/nav/types';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import deepEqual from 'deep-equal';
 import { Slots } from '@actions/types';
+import { useNavigation } from '@react-navigation/native';
+import HeaderTitle from '@components/core/HeaderTitle';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface FilterFunctionProps {
   filterId: string;
@@ -29,26 +30,27 @@ export interface WithFilterFunctionsOptions {
   title: string;
 }
 
+type ScreenName = 'SearchFilters.Asset' | 'SearchFilters.Enemy' | 'SearchFilters.Location' | 'SearchFilters.Packs';
 interface FilterFunctions {
   filters: FilterState;
   defaultFilterState: FilterState;
   cardFilterData: CardFilterData;
-  pushFilterView: (screenName: string) => void;
+  pushFilterView: (screenName: ScreenName) => void;
   onToggleChange: (key: keyof FilterState, value: boolean) => void;
   onFilterChange: (key: keyof FilterState, value: any) => void;
 }
 
 export default function useFilterFunctions({
-  componentId,
   filterId,
   tabooSetId,
   modal,
   baseQuery,
-}: FilterFunctionProps & NavigationProps,
+}: FilterFunctionProps,
 {
   clearTraits,
   title,
 }: WithFilterFunctionsOptions): FilterFunctions {
+  const navigation = useNavigation();
   const { db } = useContext(DatabaseContext);
   const { colors } = useContext(StyleContext);
   const { useCardTraits } = useContext(LanguageContext);
@@ -56,14 +58,6 @@ export default function useFilterFunctions({
   const defaultFilterState = useSelector<AppState, FilterState | undefined>(state => getDefaultFilterState(state, filterId));
   const cardFilterData = useSelector<AppState, CardFilterData | undefined>(state => getCardFilterData(state, filterId));
   const dispatch = useDispatch();
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'clear') {
-      dispatch(clearFilters(filterId, clearTraits));
-    } else if (buttonId === 'apply') {
-      Navigation.pop(componentId);
-    }
-  }, componentId, [filterId, clearTraits]);
-
   const hasChanges = useMemo(() => {
     return !((clearTraits && clearTraits.length) ?
       deepEqual(
@@ -96,45 +90,39 @@ export default function useFilterFunctions({
       canceled = true;
     }
   }, [currentFilters, baseQuery, tabooSetId, db, useCardTraits]);
+  const onClear = useCallback(() => dispatch(clearFilters(filterId, clearTraits)), [dispatch, filterId, clearTraits]);
   useEffect(() => {
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        rightButtons: hasChanges ?
-          [{
-            text: t`Clear`,
-            id: 'clear',
-            color: colors.M,
-            accessibilityLabel: t`Clear`,
-          }] : [],
-        title: {
-          text: title,
-          color: colors.M,
-        },
-        subtitle: {
-          text: ngettext(
+    navigation.setOptions({
+      headerTitle: () => (
+        <HeaderTitle
+          title={title}
+          subtitle={ngettext(
             msgid`${count} Card`,
             `${count} Cards`,
             count
-          ),
-          color: colors.M,
-        },
-      },
+          )}
+          color={colors.M}
+        />
+      ),
+      headerRight: hasChanges ? () => (
+        <HeaderButton
+          text={t`Clear`}
+          accessibilityLabel={t`Clear`}
+          color={colors.M}
+          onPress={onClear}
+        />
+      ) : undefined,
     });
-  }, [count, hasChanges, colors.M, title, componentId]);
+  }, [count, hasChanges, colors.M, title, navigation, onClear]);
 
-  const pushFilterView = useCallback((screenName: string) => {
-    Navigation.push<FilterFunctionProps>(componentId, {
-      component: {
-        name: screenName,
-        passProps: {
-          filterId,
-          tabooSetId,
-          baseQuery,
-          modal,
-        },
-      },
+  const pushFilterView = useCallback((screenName: ScreenName) => {
+    navigation.navigate(screenName, {
+      filterId,
+      tabooSetId,
+      baseQuery,
+      modal,
     });
-  }, [componentId, filterId, tabooSetId, baseQuery, modal]);
+  }, [navigation, filterId, tabooSetId, baseQuery, modal]);
 
   const onToggleChange = useCallback((key: keyof FilterState, value: boolean) => {
     dispatch(toggleFilter(filterId, key, value));

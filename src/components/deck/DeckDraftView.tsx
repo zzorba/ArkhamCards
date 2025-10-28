@@ -1,18 +1,20 @@
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState, useLayoutEffect } from 'react';
 import { FlatList, Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { map } from 'lodash';
 import Animated, { SharedValue, SlideInLeft, SlideOutDown, useAnimatedReaction, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+import { getDeckScreenOptions, showCard } from '@components/nav/helper';
 import { t } from 'ttag';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
-import { NavigationProps } from '@components/nav/types';
 import { CampaignId, DeckId, INVESTIGATOR_PROBLEM, SET_CURRENT_DRAFT, SET_CURRENT_DRAFT_SIZE, Slots, TOO_FEW_CARDS } from '@actions/types';
 import { useCampaignDeck } from '@data/hooks';
 import { useParsedDeck } from './hooks';
 import StyleContext from '@styles/StyleContext';
 import DeckNavFooter, { FOOTER_HEIGHT } from './DeckNavFooter';
-import { Navigation, OptionsTopBar, OptionsTopBarButton } from 'react-native-navigation';
+
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import Card from '@data/types/Card';
 import { useDraftableCards } from './useChaosDeckGenerator';
@@ -25,21 +27,20 @@ import CardGridComponent, { DraftHistory, GridItem } from '@components/cardlist/
 import { incDeckSlot } from './actions';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import ListToggleButton from './ListToggleButton';
-import { showCard } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import Ripple from '@lib/react-native-material-ripple';
 import AppIcon from '@icons/AppIcon';
 import { parseDeck } from '@lib/parseDeck';
 import { useAlertDialog } from './dialogs';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
-import { CollectionEditProps } from '@components/settings/CollectionEditView';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import SimpleFab from '@components/core/SimpleFab';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export interface DeckDraftProps {
   id: DeckId;
   campaignId: CampaignId | undefined;
   mode?: 'extra';
+  headerBackgroundColor?: string;
 }
 
 function DraftButton({ card, onDraft, cardWidth, item }: { card: Card; cardWidth: number; item: GridItem; onDraft: (card: Card, item?: GridItem) => void }) {
@@ -63,37 +64,6 @@ function DraftButton({ card, onDraft, cardWidth, item }: { card: Card; cardWidth
 }
 
 
-export function navigationOptions(
-  {
-    lightButton,
-  }: {
-    lightButton?: boolean;
-  }
-) {
-  const rightButtons: OptionsTopBarButton[] = [{
-    id: 'grid',
-    component: {
-      name: 'ListToggleButton',
-      passProps: {
-        setting: 'draft_grid',
-        lightButton,
-      },
-      width: ListToggleButton.WIDTH,
-      height: ListToggleButton.HEIGHT,
-    },
-    accessibilityLabel: t`Grid`,
-    enabled: true,
-  }];
-  const topBarOptions: OptionsTopBar = {
-    rightButtons,
-  };
-
-  return {
-    topBar: topBarOptions,
-  };
-}
-
-
 function FabDraftButton({ onPress, loading, secondaryAction }: { onPress: () => void; loading: boolean; secondaryAction?: boolean }) {
   const { colors } = useContext(StyleContext);
   const localPress = useCallback(() => {
@@ -106,13 +76,14 @@ function FabDraftButton({ onPress, loading, secondaryAction }: { onPress: () => 
       <AppIcon name="draft" size={24} color={colors.L30} />
     );
   }, [loading, colors])
+  const insets = useSafeAreaInsets();
   return (
     <SimpleFab
       color={secondaryAction ? colors.D20 : colors.warn}
       icon={renderIcon}
       onPress={localPress}
       offsetX={s + xs}
-      offsetY={NOTCH_BOTTOM_PADDING + s + xs}
+      offsetY={insets.bottom + s + xs}
       accessiblityLabel={t`Draft`}
     />
   );
@@ -160,18 +131,35 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
 }
 
 // eslint-disable-next-line react/prop-types
-export default function DeckDraftView({ componentId, id, campaignId, mode }: DeckDraftProps & NavigationProps) {
+export default function DeckDraftView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Deck.DraftCards'>>();
+  const navigation = useNavigation();
+  const { id, campaignId, mode } = route.params;
   const deck = useCampaignDeck(id, campaignId);
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const {
     deckEdits,
     tabooSetId,
     visible,
-  } = useParsedDeck(id, componentId);
+    parsedDeck,
+  } = useParsedDeck(id);
+
+  // Set screen options with proper styling
+  useLayoutEffect(() => {
+    if (parsedDeck?.investigator) {
+      const screenOptions = getDeckScreenOptions(
+        colors,
+        { title: t`Draft Cards` },
+        parsedDeck.investigator.front
+      );
+      navigation.setOptions({
+        ...screenOptions,
+        headerRight: () => <ListToggleButton setting="draft_grid" lightButton />,
+      });
+    }
+  }, [navigation, colors, parsedDeck?.investigator]);
   const meta = deckEdits?.meta;
   const slots = deckEdits?.slots;
-  useEffect(() => {
-    Navigation.mergeOptions(componentId, navigationOptions({ lightButton: true }));
-  }, [componentId]);
   const dispatch = useDispatch();
   const localSlots = useRef<Slots>({ ...(deckEdits?.slots || {}) });
   useEffect(() => {
@@ -243,7 +231,7 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
       return;
     }
     if (currentParsedDeck.problem?.reason !== TOO_FEW_CARDS && currentParsedDeck.problem?.reason !== INVESTIGATOR_PROBLEM) {
-      Navigation.pop(componentId);
+      navigation.goBack();
       return;
     }
     const [draftOptions, newPossibleCodes] = getDraftCards(
@@ -260,10 +248,9 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
     );
     setDraftCards(map(draftOptions, c => c.code));
     possibleCodes.current = newPossibleCodes;
-  }, [componentId, deckCards, showAlert, setDraftCards, listSeperator, investigator, meta, handSize, cards, in_collection, ignore_collection]);
+  }, [deckCards, navigation, showAlert, setDraftCards, listSeperator, investigator, meta, handSize, cards, in_collection, ignore_collection]);
 
-  const { backgroundStyle, colors, typography } = useContext(StyleContext);
-  const backPressed = useCallback(() => Navigation.pop(componentId), [componentId]);
+  const backPressed = useCallback(() => navigation.goBack(), [navigation]);
   const draftHistory = useSharedValue<DraftHistory>({ cycle: -1, code: '000' });
   const draftItems = useMemo(() => {
     return map(draftCards, code => {
@@ -317,8 +304,8 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
     return <DraftButton item={item} card={card} cardWidth={cardWidth} onDraft={onDraft} />
   }, [onDraft]);
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, { showSpoilers: true });
-  }, [componentId, colors]);
+    showCard(navigation, card.code, card, colors, { showSpoilers: true });
+  }, [navigation, colors]);
 
   const renderCardItem = useCallback(({ item }: { item: GridItem }) => {
     const card = cards && cards[item.code];
@@ -336,19 +323,14 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
     );
   }, [cards, onDraft, onCardPress, draftHistory]);
   const showPackChooser = useCallback(() => {
-    Navigation.push<CollectionEditProps>(componentId, {
-      component: {
-        name: 'My.Collection',
-        passProps: {
-          draftMode: true,
-        },
-      },
+    navigation.navigate('My.Collection', {
+      draftMode: true,
     });
     setTimeout(() => {
       setEditingPacks(true);
     }, 50);
 
-  }, [componentId]);
+  }, [navigation]);
 
   useEffect(() => {
     if (visible && editingPack) {
@@ -403,10 +385,10 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
               controlForCard={controlForCard}
               items={draftItems}
               cards={cards}
-              componentId={componentId}
               draftHistory={draftHistory}
               controlHeight={60}
               controlPosition="below"
+              navEnabled
             />
           ) : (
             <FlatList
@@ -419,7 +401,6 @@ export default function DeckDraftView({ componentId, id, campaignId, mode }: Dec
       ) }
       <DeckNavFooter
         deckId={id}
-        componentId={componentId}
         onPress={backPressed}
         control="fab"
         mode={mode}

@@ -23,7 +23,7 @@ function ListToggleButton({ lightButton, setting }: Props) {
   const onPress = useCallback(() => setCardGrid(!cardGrid), [cardGrid, setCardGrid]);
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPress} accessibilityLabel={setting === 'card_grid' ? 'Toggle List/Grid' : 'Toggle List/Grid'}>
         <View style={styles.touchable}>
           <AppIcon name={cardGrid ? 'grid' : 'list'} size={32} color={lightButton ? 'white' : colors.M} />
         </View>

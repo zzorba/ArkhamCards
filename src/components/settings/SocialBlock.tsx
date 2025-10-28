@@ -12,6 +12,7 @@ import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
 import DeckButton from '@components/deck/controls/DeckButton';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { showRuDonate } from './SettingsView';
 
 function discordPressed() {
   Linking.openURL('https://discord.gg/cqUudV2');
@@ -21,10 +22,6 @@ function vkPressed() {
 }
 function telegramPressed() {
   Linking.openURL('https://t.me/arkhamhorrorlcg_ru_chat');
-}
-
-function ruTipPressed() {
-  Linking.openURL('https://www.tinkoff.ru/cf/27GmNzxhhUk');
 }
 
 function esYoutubePressed() {
@@ -63,7 +60,7 @@ export default function SocialBlock() {
           <DeckButton
             icon="headset"
             color="gold"
-            onPress={ruTipPressed}
+            onPress={showRuDonate}
             title="Донат на аудио"
             detail="Поддержать авторов аудиосопровождения"
           />

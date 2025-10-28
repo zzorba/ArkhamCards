@@ -1,4 +1,6 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
 import {
   ActivityIndicator,
   Linking,
@@ -7,7 +9,7 @@ import {
   View,
   Text,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { ScrollView } from 'react-native-gesture-handler';
 import SnapCarousel from 'react-native-snap-carousel';
 import Animated from 'react-native-reanimated';
@@ -17,21 +19,18 @@ import { find, filter, map, slice, sortBy, sumBy } from 'lodash';
 
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import { rightButtonsForCard } from './CardDetailView';
-import { CardFaqProps } from './CardFaqView';
 import { makeTabooSetSelector, AppState, getPackSpoilers, getPacksInCollection } from '@reducers';
-import { InvestigatorCardsProps } from '../cardlist/InvestigatorCardsView';
-import { NavigationProps } from '@components/nav/types';
 import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
+import { HeaderButtonWithId } from '@components/core/HeaderButton';
 import StyleContext from '@styles/StyleContext';
-import { useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards, useSettingValue } from '@components/core/hooks';
+import { useToggles, useCards, useSettingValue } from '@components/core/hooks';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import { where } from '@data/sqlite/query';
 import { FOOTER_HEIGHT, PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
 import { FactionCodeType } from '@app_constants';
 import FloatingDeckQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/FloatingDeckQuantityComponent';
 import { AttachableDefinition, Customizations, DeckId } from '@actions/types';
-import { CardInvestigatorProps } from './CardInvestigatorsView';
 import CardCustomizationOptions from './CardDetailView/CardCustomizationOptions';
 import { ParsedDeckResults, useParsedDeck } from '@components/deck/hooks';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
@@ -44,6 +43,7 @@ import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
 import space, { s } from '@styles/space';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { DeckEditContext, ParsedDeckContextProvider, useAllCardCustomizations, useCardCustomizations, useDeckAttachmentSlots } from '@components/deck/DeckEditContext';
+import { getDeckScreenOptions } from '@components/nav/helper';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -57,10 +57,11 @@ export interface CardDetailSwipeProps {
   faction?: FactionCodeType;
   editable?: boolean;
   customizationsEditable?: boolean;
-  initialCustomizations: Customizations | undefined
+  initialCustomizations: Customizations | undefined;
+  headerBackgroundColor?: string;
 }
 
-type Props = NavigationProps & CardDetailSwipeProps;
+type Props = CardDetailSwipeProps;
 
 const options = (passProps: CardDetailSwipeProps) => {
   return {
@@ -153,7 +154,6 @@ function AttachmentSection({ card, attachment, attachmentCards, width }: { width
 }
 
 function ScrollableCard(props: {
-  componentId: string;
   card: Card | undefined;
   tabooSetId: number | undefined;
   customizationsEditable: boolean | undefined;
@@ -169,7 +169,7 @@ function ScrollableCard(props: {
   attachmentCards: Card[];
 }) {
   const {
-    componentId, customizationsEditable, card, tabooSetId,
+    customizationsEditable, card, tabooSetId,
     width, height, customizations, deckCount,
     attachment, attachmentCards,
     setChoice, toggleShowSpoilers, showInvestigatorCards, showCardSpoiler,
@@ -196,7 +196,6 @@ function ScrollableCard(props: {
       contentContainerStyle={backgroundStyle}
     >
       <CardDetailComponent
-        componentId={componentId}
         card={customizedCard}
         showSpoilers={showCardSpoiler(customizedCard)}
         toggleShowSpoilers={toggleShowSpoilers}
@@ -206,7 +205,6 @@ function ScrollableCard(props: {
       />
       { !!customizedCard.customization_options && !!card && (
         <CardCustomizationOptions
-          componentId={componentId}
           card={card}
           customizationOptions={customizedCard.customization_options}
           customizationChoices={customizationChoices}
@@ -228,19 +226,29 @@ function ScrollableCard(props: {
   );
 }
 
-function DbCardDetailSwipeView(props: Props) {
-  const { componentId, deckId } = props;
-  const parsedDeck = useParsedDeck(deckId, componentId);
+function DbCardDetailSwipeView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Card.Swipe'>>();
+  const { deckId } = route.params;
+  const parsedDeck = useParsedDeck(deckId, undefined);
+  const navigation = useNavigation();
+  const { colors } = useContext(StyleContext);
+
+  useLayoutEffect(() => {
+    if (parsedDeck?.parsedDeck?.investigator) {
+      navigation.setOptions(getDeckScreenOptions(colors, { noTitle: true }, parsedDeck.parsedDeck?.investigator.front));
+    }
+  }, [parsedDeck, colors, navigation]);
 
   return (
     <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>
-      <DbCardDetailSwipeViewComponent {...props} parsedDeck={parsedDeck} />
+      <DbCardDetailSwipeViewComponent {...route.params} parsedDeck={parsedDeck} />
     </ParsedDeckContextProvider>
   );
 }
 function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckResults }) {
   // eslint-disable-next-line react/prop-types
-  const { componentId, parsedDeck, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
+  const { parsedDeck, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
+  const navigation = useNavigation();
 
   const { listSeperator } = useContext(LanguageContext);
   const [customizations, setChoice] = useAllCardCustomizations(initialCustomizations);
@@ -279,70 +287,19 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
     }
   }, [index, cardCodes, db, cards, tabooSetId, updateCards]);
 
-  useEffect(() => {
-    if (currentCard) {
-      const buttonColor = props.whiteNav ? 'white' : COLORS.M;
-      const rightButtons = rightButtonsForCard(currentCard, buttonColor);
-      Navigation.mergeOptions(componentId, {
-        topBar: {
-          rightButtons,
-          backButton: {
-            title: t`Back`,
-            color: buttonColor,
-          },
-        },
-      });
-    }
-  }, [currentCard, componentId, props.whiteNav]);
-
   const showInvestigatorCards = useCallback((code: string) => {
-    Navigation.push<InvestigatorCardsProps>(componentId, {
-      component: {
-        name: 'Browse.InvestigatorCards',
-        passProps: {
-          investigatorCode: code,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Allowed Cards`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
+    navigation.navigate('Browse.InvestigatorCards', {
+      investigatorCode: code,
     });
-  }, [componentId]);
+  }, [navigation]);
 
   const showInvestigators = useCallback((code: string) => {
-    Navigation.push<CardInvestigatorProps>(componentId, {
-      component: {
-        name: 'Card.Investigators',
-        passProps: {
-          code,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Investigators`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
+    navigation.navigate('Card.Investigators', {
+      code,
     });
-  }, [componentId]);
-  const backPressed = useCallback(() => {
-    Navigation.pop(componentId);
-  }, [componentId]);
-  useComponentDidAppear(() => {
-    Navigation.mergeOptions(componentId, options(props));
-  }, componentId, [componentId]);
-  useNavigationButtonPressed(({ buttonId }) => {
+  }, [navigation]);
+
+  const handleButtonPress = useCallback((buttonId: string) => {
     if (currentCard) {
       if (buttonId === 'share') {
         const arkhamDbDomain = getArkhamDbDomain(getSystemLanguage());
@@ -350,31 +307,40 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
       } else if (buttonId === 'deck') {
         showInvestigatorCards(currentCard.code);
       } else if (buttonId === 'faq') {
-        Navigation.push<CardFaqProps>(componentId, {
-          component: {
-            name: 'Card.Faq',
-            passProps: {
-              id: currentCard.code,
-            },
-            options: {
-              topBar: {
-                title: {
-                  text: currentCard.name,
-                },
-                subtitle: {
-                  text: t`FAQ`,
-                },
-              },
-            },
-          },
+        navigation.navigate('Card.Faq', {
+          id: currentCard.code,
+          cardName: currentCard.name,
         });
       } else if (buttonId === 'investigator') {
         showInvestigators(currentCard.code);
-      } else if (buttonId === 'back') {
-        Navigation.pop(componentId);
       }
     }
-  }, componentId, [currentCard, showInvestigators, showInvestigatorCards]);
+  }, [navigation, currentCard, showInvestigatorCards, showInvestigators]);
+
+  const backPressed = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
+  useEffect(() => {
+    if (currentCard) {
+      const buttonColor = props.whiteNav ? 'white' : COLORS.M;
+      const rightButtons = rightButtonsForCard(currentCard, buttonColor);
+      navigation.setOptions({
+        headerRight: () => (
+          <View style={{ flexDirection: 'row' }}>
+            {rightButtons.map((button) => (
+              <HeaderButtonWithId
+                key={button.id}
+                iconComponent={button.iconComponent}
+                onPress={handleButtonPress}
+                id={button.id}
+                accessibilityLabel={button.accessibilityLabel}
+              />
+            ))}
+          </View>
+        ),
+      });
+    }
+  }, [currentCard, navigation, props.whiteNav, handleButtonPress]);
 
   const showCardSpoiler = useCallback((card: Card) => {
     return !!(showAllSpoilers || showSpoilers[card.pack_code] || spoilers[card.code]);
@@ -404,7 +370,6 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
         width={width}
         height={height}
         tabooSetId={tabooSetId}
-        componentId={componentId}
         customizations={customizations}
         showCardSpoiler={showCardSpoiler}
         toggleShowSpoilers={toggleShowSpoilers}
@@ -416,7 +381,7 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
         attachmentCards={attachmentCards}
       />
     );
-  }, [attachableCards, data, slots, customizationsEditable, tabooSetId, editable, customizations, componentId, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
+  }, [attachableCards, data, slots, customizationsEditable, tabooSetId, editable, customizations, width, height, setChoice, showCardSpoiler, toggleShowSpoilers, showInvestigatorCards]);
   return (
     <ParsedDeckContextProvider parsedDeckObj={parsedDeck}>
       <View
@@ -443,7 +408,6 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
           <>
             <PreLoadedDeckNavFooter
               mode={currentControl === 'extra' ? 'extra' : undefined}
-              componentId={componentId}
               parsedDeckObj={parsedDeck}
               control="counts"
               onPress={backPressed}
@@ -517,6 +481,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
+    position: 'relative',
   },
   gutter: {
     position: 'absolute',

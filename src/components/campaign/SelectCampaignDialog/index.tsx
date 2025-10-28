@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useContext } from 'react';
-import { Navigation } from 'react-native-navigation';
+
 import { ScrollView, StyleSheet, Text } from 'react-native';
 import { c, t } from 'ttag';
 
@@ -7,7 +7,6 @@ import {
   ALL_CAMPAIGNS,
   CampaignCycleCode, CUSTOM_CAMPAIGNS, StandaloneId,
 } from '@actions/types';
-import { NavigationProps } from '@components/nav/types';
 import useTabView from '@components/core/useTabView';
 import StandaloneTab from './StandaloneTab';
 import CampaignTab from './CampaignTab';
@@ -15,6 +14,8 @@ import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
 import space from '@styles/space';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
 
 const SHOW_CUSTOM = true;
 
@@ -29,24 +30,23 @@ export interface SelectCampaignProps {
   selectionChanged: (selection: CampaignSelection, text: string, hasGuide: boolean) => void;
 }
 
-function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampaignProps & NavigationProps) {
+function SelectCampaignDialog() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Dialog.Campaign'>>();
+  const { selectionChanged } = route.params;
   const { backgroundStyle, typography } = useContext(StyleContext);
+  const navigation = useNavigation();
   const campaignChanged = useCallback((packCode: CampaignCycleCode, text: string, hasGuide: boolean) => {
     selectionChanged({ type: 'campaign', code: packCode }, text, hasGuide);
-    Navigation.pop(componentId);
-  }, [selectionChanged, componentId]);
+    navigation.goBack();
+  }, [selectionChanged, navigation]);
   const standaloneChanged = useCallback((id: StandaloneId, text: string, hasGuide: boolean) => {
     selectionChanged({ type: 'standalone', id }, text, hasGuide);
-    Navigation.pop(componentId);
-  }, [selectionChanged, componentId]);
+    navigation.goBack();
+  }, [selectionChanged, navigation]);
 
   const editCollection = useCallback(() => {
-    Navigation.push(componentId, {
-      component: {
-        name: 'My.Collection',
-      },
-    });
-  }, [componentId]);
+    navigation.navigate('My.Collection', {})
+  }, [navigation]);
 
   const tabs = useMemo(() => [
     {
@@ -100,27 +100,13 @@ function SelectCampaignDialog({ selectionChanged, componentId }: SelectCampaignP
     },
   ], [campaignChanged, standaloneChanged, editCollection, backgroundStyle, typography]);
   const onTabChange = useCallback((key: string) => {
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        title: {
-          text: key === 'campaign' ? t`Select Campaign` : t`Select Standalone`,
-        },
-      },
-    })
-  }, [componentId]);
+    navigation.setOptions({
+      title: key === 'campaign' ? t`Select Campaign` : t`Select Standalone`,
+    });
+  }, [navigation]);
   const [tabView] = useTabView({ tabs, onTabChange });
-  return tabView;
+  return <>{tabView}</>;
 }
-
-SelectCampaignDialog.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`Select Campaign`,
-      },
-    },
-  };
-};
 
 export default SelectCampaignDialog;
 

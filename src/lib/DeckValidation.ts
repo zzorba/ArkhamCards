@@ -39,8 +39,7 @@ import {
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
   ELDRITCH_BRAND_CODE,
-  POOL_INVESTIGATOR_CYCLE,
-  POOL_INVESTIGATOR_PACKS,
+  expandPackCode,
 } from '@app_constants';
 import Card, { InvestigatorChoice } from '@data/types/Card';
 import DeckOption, { localizeDeckOptionError } from '@data/types/DeckOption';
@@ -150,7 +149,7 @@ export default class DeckValidation {
     this.for_query = for_query ?? false;
 
     this.limited_packs = meta?.card_pool ?
-      new Set(flatMap(meta.card_pool.split(','), pack => pack === POOL_INVESTIGATOR_CYCLE ? POOL_INVESTIGATOR_PACKS : [pack])) :
+      new Set(flatMap(meta.card_pool.split(','), expandPackCode)) :
       undefined;
   }
 

@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState, useCallback, useContext, useRef } from 'react';
+import React, { RefObject, useEffect, useMemo, useState, useCallback, useContext, useRef } from 'react';
 import { find, forEach, map, sumBy, throttle } from 'lodash';
 import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { t } from 'ttag';
@@ -28,6 +28,7 @@ import CardTextComponent from '@components/card/CardTextComponent';
 import { parseDeck } from '@lib/parseDeck';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { ArkhamNavigation } from '@navigation/types';
 
 
 interface ModalOptions {
@@ -743,6 +744,8 @@ export function useAdjustXpDialog({
 export function useSaveAlert(
   parsedDeckResults: ParsedDeckResults,
   saveEditsAndDismiss: () => void,
+  navigation: ArkhamNavigation,
+  confirmedRef: RefObject<boolean>,
 ): [React.ReactNode, () => void] {
   const { typography } = useContext(StyleContext);
   const [visible, setVisible] = useState<boolean>(false);
@@ -757,7 +760,8 @@ export function useSaveAlert(
       text: t`Discard Changes`,
       style: 'destructive',
       onPress: () => {
-        Navigation.dismissAllModals();
+        confirmedRef.current = true;
+        navigation.goBack();
       },
     }, {
       text: t`Save Changes`,
@@ -767,7 +771,7 @@ export function useSaveAlert(
         saveEditsAndDismiss();
       },
     }];
-  }, [parsedDeckResults, saveEditsAndDismiss]);
+  }, [parsedDeckResults, saveEditsAndDismiss, navigation, confirmedRef]);
   const buttons = useMemo(() => {
     return map(currentButtons, (button, idx) => {
       return (
@@ -803,12 +807,13 @@ export function useSaveAlert(
   return [dialog, showAlert];
 }
 
-export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditState & {
+export function useSaveDialog(parsedDeckResults: ParsedDeckResults, navigation: ArkhamNavigation): DeckEditState & {
   saving: boolean;
   saveError: string | undefined;
   saveEdits: () => void;
   handleBackPress: () => boolean;
   savingDialog: React.ReactNode;
+  confirmedRef: RefObject<boolean>;
 } {
   const { slotDeltas, hasPendingEdits, addedBasicWeaknesses, mode } = useDeckEditState(parsedDeckResults);
   const {
@@ -823,6 +828,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
+  const confirmedRef = useRef<boolean>(false);
   const [
     savingDialog,
     saving,
@@ -882,7 +888,8 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
       }
 
       if (dismissAfterSave) {
-        Navigation.dismissAllModals();
+        confirmedRef.current = true;
+        navigation.goBack();
       } else {
         dispatch({
           type: UPDATE_DECK_EDIT,
@@ -897,22 +904,26 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
       handleSaveError(e);
     }
   }, [deck, saving, cards, previousDeck, hasPendingEdits, parsedDeckRef, deckEditsRef, tabooSetId, userId, deckActions,
-    listSeperator, dispatch, deckDispatch, handleSaveError, setSaving]);
+    listSeperator, dispatch, deckDispatch, handleSaveError, setSaving, navigation]);
 
   const saveEdits = useMemo(() => throttle((isRetry?: boolean) => actuallySaveEdits(false, isRetry), 500), [actuallySaveEdits]);
   const saveEditsAndDismiss = useMemo((isRetry?: boolean) => throttle(() => actuallySaveEdits(true, isRetry), 500), [actuallySaveEdits]);
-  const [dialog, showAlert] = useSaveAlert(parsedDeckResults, saveEditsAndDismiss);
+  const [dialog, showAlert] = useSaveAlert(parsedDeckResults, saveEditsAndDismiss, navigation, confirmedRef);
   const handleBackPress = useCallback(() => {
+    if (confirmedRef.current) {
+      return false;
+    }
     if (!visible) {
       return false;
     }
     if (hasPendingEdits) {
       showAlert();
-    } else {
-      Navigation.dismissAllModals();
+      return true;
     }
+    confirmedRef.current = true;
+    navigation.goBack();
     return true;
-  }, [visible, hasPendingEdits, showAlert]);
+  }, [visible, hasPendingEdits, showAlert, navigation]);
   return {
     saving,
     saveEdits,
@@ -923,6 +934,7 @@ export function useSaveDialog(parsedDeckResults: ParsedDeckResults): DeckEditSta
     hasPendingEdits,
     addedBasicWeaknesses,
     mode,
+    confirmedRef,
   };
 }
 

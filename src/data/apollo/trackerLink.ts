@@ -1,8 +1,8 @@
 import { ApolloLink } from '@apollo/client';
 import { stringify } from 'flatted';
 import { Action, Dispatch } from 'redux';
-import uuid from 'react-native-uuid';
 
+import { generateUuid } from '@lib/uuid';
 import { TrackedQuery, TrackedQueriesAddAction, TrackedQueriesRemoveAction, TRACKED_QUERIES_ADD, TRACKED_QUERIES_REMOVE } from '@actions/types';
 import { genericOptimisticUpdates } from '@data/remote/apollo';
 
@@ -29,7 +29,7 @@ export default (dispatch: Dispatch<Action>) => (
     const variablesJSON: string = stringify(operation.variables);
     const context = operation.getContext();
     const contextJSON = stringify(context);
-    const id = uuid.v4();
+    const id = generateUuid();
     const tracked = !!genericOptimisticUpdates[name];
     if (tracked) {
       dispatch(

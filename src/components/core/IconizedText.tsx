@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 
 import StyleContext from '@styles/StyleContext';
 import { map } from 'lodash';
-import ArkhamIcon from '@icons/ArkhamIcon';
+import { ArkhamSlimIcon } from '@icons/ArkhamIcon';
 
 interface Props {
   text: string;
@@ -49,7 +49,7 @@ export default function IconizedText({ text, iconSize, color }: Props) {
         if (item.type === 'text') {
           return <Text key={idx}>{item.text}</Text>;
         }
-        return <ArkhamIcon key={idx} name={item.icon} size={iconSize} color={color ?? colors.darkText} />;
+        return <ArkhamSlimIcon key={idx} name={item.icon} size={iconSize} color={color ?? colors.darkText} />;
       }) }
     </>
   );

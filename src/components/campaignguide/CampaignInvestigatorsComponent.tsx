@@ -26,7 +26,6 @@ import CampaignHeader from './CampaignHeader';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
-  componentId: string;
   actions: UpdateCampaignActions;
   processedCampaign: ProcessedCampaign;
   savingDeckUpgrade: boolean;
@@ -41,11 +40,10 @@ interface Props {
 }
 
 function AliveInvestigatorRow({
-  componentId, investigator, processedCampaign, investigatorCountSections, suppliesSections, savingDeckUpgrade,
+  investigator, processedCampaign, investigatorCountSections, suppliesSections, savingDeckUpgrade,
   login, removeInvestigatorPressed, showChooseDeckForInvestigator, showXpDialogPressed, showTraumaDialog,
   saveDeckUpgrade, saveDeck,
 }: {
-  componentId: string;
   investigator: CampaignInvestigator;
   processedCampaign: ProcessedCampaign;
   investigatorCountSections: CampaignLogSectionDefinition[];
@@ -121,7 +119,6 @@ function AliveInvestigatorRow({
       totalXp={processedCampaign.campaignLog.totalXp(investigator.code)}
       unspentXp={processedCampaign.campaignLog.specialXp(investigator.code, 'unspect_xp')}
       deck={deck}
-      componentId={componentId}
       investigator={investigator}
       showXpDialog={showXpDialogPressed}
       traumaAndCardData={traumaAndCardData}
@@ -209,7 +206,7 @@ function AliveInvestigatorRow({
 
 export default function CampaignInvestigatorsComponent(props: Props) {
   const {
-    componentId, loading, processedCampaign, actions, savingDeckUpgrade,
+    loading, processedCampaign, actions, savingDeckUpgrade,
     login, showAddInvestigator, showTraumaDialog, showAlert, showCountDialog,
     saveDeckUpgrade, saveDeck,
   } = props;
@@ -327,7 +324,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
             <AliveInvestigatorRow
               key={investigator.code}
               investigator={investigator}
-              componentId={componentId}
               investigatorCountSections={investigatorCountSections}
               suppliesSections={suppliesSections}
               processedCampaign={processedCampaign}
@@ -368,7 +364,6 @@ export default function CampaignInvestigatorsComponent(props: Props) {
                 ) ? showTraumaDialog : undefined}
                 campaign={campaign}
                 deck={latestDecks[investigator.code]}
-                componentId={componentId}
                 investigator={investigator}
                 traumaAndCardData={traumaAndCardData}
               />

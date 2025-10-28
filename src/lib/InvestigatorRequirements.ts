@@ -7,7 +7,7 @@ import DeckOption, { DeckOptionQueryBuilder } from '@data/types/DeckOption';
 import { combineQueries, combineQueriesOpt, STORY_CARDS_QUERY, where } from '@data/sqlite/query';
 import FilterBuilder, { FilterState } from './filters';
 import DeckValidation from './DeckValidation';
-import { POOL_INVESTIGATOR_CYCLE, POOL_INVESTIGATOR_PACKS } from '@app_constants';
+import { expandPackCode } from '@app_constants';
 
 interface DeckOptionsContext {
   filters?: FilterState,
@@ -143,7 +143,7 @@ export function queryForInvestigator(
       ...(normalQuery ? [normalQuery] : []),
       ...(limitedCardPool?.length ?
         card_pool_filter.packCodes(
-          flatMap(limitedCardPool, pack => pack === POOL_INVESTIGATOR_CYCLE ? POOL_INVESTIGATOR_PACKS : [pack])
+          flatMap(limitedCardPool, expandPackCode)
         ) : []),
     ],
     'and'

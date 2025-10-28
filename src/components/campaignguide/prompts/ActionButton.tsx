@@ -89,7 +89,6 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
         { !hideText && (
           <Text numberOfLines={2} style={[
             leftIcon ? space.marginLeftS : undefined,
-            space.paddingTopXs,
             typography.cardName,
             { color: textColor, flexShrink: 1 },
             { textAlignVertical: 'center' },

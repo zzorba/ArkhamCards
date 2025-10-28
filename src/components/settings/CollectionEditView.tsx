@@ -1,14 +1,15 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo, useLayoutEffect } from 'react';
 import {
   Text,
   View,
   StyleSheet,
 } from 'react-native';
 import { useSelector } from 'react-redux';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
 import { t } from 'ttag';
 
 import PackListComponent from '@components/core/PackListComponent';
-import { NavigationProps } from '@components/nav/types';
 import { setInCollection, setCycleInCollection, setPackDraft } from '@actions';
 import { getAllRealPacks, getDraftPacks, getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
@@ -16,7 +17,7 @@ import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import space from '@styles/space';
 import { useRemoteSettingFlag, useSettingFlag } from '@components/core/hooks';
 import LoadingSpinner from '@components/core/LoadingSpinner';
-import { Navigation } from 'react-native-navigation';
+
 import DeckButton from '@components/deck/controls/DeckButton';
 import { useAppDispatch } from '@app/store';
 import { useUpdateRemotePack, useUpdateRemoteSetting } from '@data/remote/settings';
@@ -25,7 +26,18 @@ export interface CollectionEditProps {
   draftMode?: boolean;
 }
 
-function CollectionEditView({ componentId, draftMode }: CollectionEditProps & NavigationProps) {
+export default function CollectionEditView() {
+  const route = useRoute<RouteProp<RootStackParamList, 'My.Collection'>>();
+  const navigation = useNavigation();
+  const { draftMode } = route.params;
+
+  // Set screen title based on mode
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: draftMode ? t`Choose Packs` : t`Edit Collection`,
+    });
+  }, [navigation, draftMode]);
+
   const dispatch = useAppDispatch();
   const [draft] = useSelector(getDraftPacks);
   const [draftFromCollection, toggleDraftFromCollection] = useSettingFlag('draft_from_collection');
@@ -52,15 +64,8 @@ function CollectionEditView({ componentId, draftMode }: CollectionEditProps & Na
 
   const { backgroundStyle, typography } = useContext(StyleContext);
   const onEditCollection = useCallback(() => {
-    Navigation.push<CollectionEditProps>(componentId, {
-      component: {
-        name: 'My.Collection',
-        passProps: {
-          draftMode: false,
-        },
-      },
-    });
-  }, [componentId]);
+    navigation.navigate('My.Collection', { draftMode: false });
+  }, [navigation]);
   const header = useMemo(() => {
     if (draftMode) {
       return (
@@ -110,7 +115,6 @@ function CollectionEditView({ componentId, draftMode }: CollectionEditProps & Na
         <PackListComponent
           alwaysShowCoreSet={draftMode}
           coreSetName={t`Second Core Set`}
-          componentId={componentId}
           packs={packs}
           header={header}
           cyclesOnly={draftMode}
@@ -134,7 +138,6 @@ CollectionEditView.options = (passProps: CollectionEditProps) => {
   };
 };
 
-export default CollectionEditView;
 
 const styles = StyleSheet.create({
   container: {

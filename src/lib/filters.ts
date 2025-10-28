@@ -866,14 +866,24 @@ export default class FilterBuilder {
       result.push(
         combineQueries(
           where(
-            `(c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode)`,
-            { packCode: `%${packCode}%` }
+            `(c.reprint_pack_codes is not NULL AND (c.reprint_pack_codes = :packCode OR c.reprint_pack_codes like :packCodeStart OR c.reprint_pack_codes like :packCodeMiddle OR c.reprint_pack_codes like :packCodeEnd))`,
+            {
+              packCode,
+              packCodeStart: `${packCode},%`,
+              packCodeMiddle: `%,${packCode},%`,
+              packCodeEnd: `%,${packCode}`,
+            }
           ),
           [
             ...map(otherCodes, (c, idx) =>
               where(
-                `(c.reprint_pack_codes is not NULL AND c.reprint_pack_codes like :packCode${idx})`,
-                { [`packCode${idx}`]: `%${c}%` }
+                `(c.reprint_pack_codes is not NULL AND (c.reprint_pack_codes = :packCode${idx} OR c.reprint_pack_codes like :packCodeStart${idx} OR c.reprint_pack_codes like :packCodeMiddle${idx} OR c.reprint_pack_codes like :packCodeEnd${idx}))`,
+                {
+                  [`packCode${idx}`]: c,
+                  [`packCodeStart${idx}`]: `${c},%`,
+                  [`packCodeMiddle${idx}`]: `%,${c},%`,
+                  [`packCodeEnd${idx}`]: `%,${c}`,
+                }
               )
             ),
             ...packClause,

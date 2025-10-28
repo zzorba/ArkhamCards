@@ -128,7 +128,6 @@ msgstr "抽隨機弱點"
 msgid "Draw From Collection"
 msgstr "從收藏中抽取"
 
-#. This is a deck upgrade action.
 msgid "Cancel"
 msgstr "取消"
 
@@ -192,9 +191,6 @@ msgstr "所有弱點卡都被抽完了。"
 msgid "Save to Deck"
 msgstr "加入牌組"
 
-msgid "Nevermind"
-msgstr "算了"
-
 msgid "Restore campaign data?"
 msgstr "是否回復劇本資料？"
 
@@ -251,9 +247,6 @@ msgstr "錯誤: 再次重試"
 
 msgid "Card Collection"
 msgstr "卡牌收藏"
-
-msgid "Spoiler Settings"
-msgstr "劇透設定"
 
 msgid "Elite"
 msgstr "精英"
@@ -1666,7 +1659,6 @@ msgstr "沒有變更"
 msgid "Card changes"
 msgstr "卡牌變更"
 
-#. Actually compute the diffs.
 msgid "Upgrade History"
 msgstr "升級歷程"
 
@@ -1755,18 +1747,6 @@ msgstr "調查員人數太多"
 
 msgid "Not enough"
 msgstr "調查員人數不足"
-
-msgid "Reset Scenario?"
-msgstr "重置冒險？"
-
-msgid ""
-"Are you sure you want to reset this scenario?\n"
-"\n"
-"All data you have entered will be lost."
-msgstr ""
-"你是否確定要重置這場冒險？\n"
-"\n"
-"所有你已輸入的資料將遺失。"
 
 #, javascript-format
 msgid "Set the ${ encounterSetString } encounter set aside, out of play."
@@ -2625,9 +2605,6 @@ msgstr "搜尋選項"
 
 msgid "Search in:"
 msgstr "搜尋於:"
-
-msgid "Encounter Card Toggle"
-msgstr ""
 
 msgid "Show all available cards"
 msgstr "顯示所有可用卡牌"
@@ -3832,9 +3809,6 @@ msgstr "記錄在冒險日誌中"
 msgid "Review and add records"
 msgstr "查看或新增紀錄"
 
-msgid "Chaos bag"
-msgstr "混亂袋"
-
 msgid "Draw random"
 msgstr "隨機抽取"
 
@@ -4264,9 +4238,6 @@ msgstr "選擇治癒類型"
 
 msgid "Chosen heal type"
 msgstr "選擇的治癒類型"
-
-msgid "Assigned weaknesses"
-msgstr "分配的弱點"
 
 msgid "Review and draw weaknesses"
 msgstr "查看並抽取弱點"
@@ -4836,9 +4807,6 @@ msgstr "在你的收藏中抽選卡牌"
 
 msgid "Draft Pool"
 msgstr "抽選牌池"
-
-msgid "Grid"
-msgstr "網格"
 
 msgid "Invalid deck"
 msgstr "無效牌組"
@@ -6230,6 +6198,48 @@ msgid "When the World Screamed"
 msgstr ""
 
 msgid "Contains cards not in the selected card pool."
+msgstr ""
+
+msgid "Card"
+msgstr ""
+
+msgid "Edit Scenario Result"
+msgstr ""
+
+msgid "Location Setup"
+msgstr ""
+
+msgid "Merge Backup"
+msgstr ""
+
+msgid "Safe Mode"
+msgstr ""
+
+msgid "Choose Packs"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Card Upgrade"
+msgstr ""
+
+msgid "Contains cards that are not in the selected card pool."
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Card Image"
+msgstr ""
+
+msgid "Taboos"
+msgstr ""
+
+msgid "Edit Name"
+msgstr ""
+
+msgid "Scenario results"
 msgstr ""
 
 msgctxt "investigator"

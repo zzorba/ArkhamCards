@@ -1,5 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 
 import { CampaignId, CampaignNotes } from '@actions/types';
 import CampaignLogSection from './CampaignLogSection';
@@ -10,19 +11,24 @@ import { updateCampaignNotes } from './actions';
 import useAddCampaignNoteSectionDialog from './useAddCampaignNoteSectionDialog';
 import useTextEditDialog from '@components/core/useTextEditDialog';
 import { useCountDialog } from '@components/deck/dialogs';
-import { useSetCampaignNotes } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useSetCampaignNotes } from '@data/remote/campaigns';
 import { useAppDispatch } from '@app/store';
+import { BasicStackParamList } from '@navigation/types';
 
 export interface CampaignLogViewProps {
   campaignId: CampaignId;
 }
 
-export default function CampaignLogView({ campaignId }: CampaignLogViewProps) {
+export default function CampaignLogView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Campaign.Log'>>();
+  const { campaignId } = route.params;
   const [addSectionDialog, showAddSectionDialog] = useAddCampaignNoteSectionDialog();
   const [dialog, showTextEditDialog] = useTextEditDialog();
   const [countDialog, showCountDialog] = useCountDialog();
   const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
+  const navigation = useNavigation();
+  useDismissOnCampaignDeleted(navigation, campaign);
   const dispatch = useAppDispatch();
   const [allInvestigators] = useCampaignInvestigators(campaign);
   const setCampaignNotes = useSetCampaignNotes();

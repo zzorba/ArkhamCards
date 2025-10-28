@@ -12,9 +12,9 @@ import DeckBubbleHeader from '../section/DeckBubbleHeader';
 import RoundedFooterButton from '@components/core/RoundedFooterButton';
 import DeckSectionBlock from '../section/DeckSectionBlock';
 import space from '@styles/space';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   cards: CardsMap;
   parsedDeck: ParsedDeck;
   tabooSetId?: number;
@@ -37,7 +37,6 @@ function hasChanges(changes?: DeckChanges): boolean {
 }
 
 export default function ChangesFromPreviousDeck({
-  componentId,
   cards,
   parsedDeck,
   deckId,
@@ -108,16 +107,17 @@ export default function ChangesFromPreviousDeck({
   }, [changes, discountCards, getCards]);
 
   const deckInvestigatorId = parsedDeck.deck?.investigator_code;
+  const navigation = useNavigation();
   const showCardPressed = useCallback((id: string, card: Card) => {
     if (singleCardView) {
-      showCard(componentId, card.code, card, colors, { showSpoilers: true, deckId: parsedDeck.id, deckInvestigatorId: deckInvestigatorId, initialCustomizations: parsedDeck.customizations });
+      showCard(navigation, card.code, card, colors, { showSpoilers: true, deckId: parsedDeck.id, deckInvestigatorId: deckInvestigatorId, initialCustomizations: parsedDeck.customizations });
     } else {
       showCardSwipe(
-        componentId,
+        navigation,
+        colors,
         map(allCards, card => card.card.code),
         undefined,
         findIndex(allCards, c => c.id === id && c.card.code === card.code),
-        colors,
         map(allCards, c => c.card),
         true,
         tabooSetId,
@@ -128,8 +128,8 @@ export default function ChangesFromPreviousDeck({
         editable
       );
     }
-  }, [colors, allCards, investigator, componentId, parsedDeck.id, deckInvestigatorId,
-    parsedDeck.customizations, tabooSetId, singleCardView, editable]);
+  }, [navigation, allCards, investigator, deckInvestigatorId, colors,
+    parsedDeck.id, parsedDeck.customizations, tabooSetId, singleCardView, editable]);
 
   const faction = parsedDeck.faction;
   const renderSection = useCallback((slots: Slots, id: string, title: string) => {

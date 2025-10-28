@@ -5,9 +5,10 @@ import { DeckId } from '@actions/types';
 import { showDeckModal } from '@components/nav/helper';
 import { useCampaignDeck } from '@data/hooks';
 import Card from '@data/types/Card';
-import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import ActionButton from '@components/campaignguide/prompts/ActionButton';
+import { useNavigation } from '@react-navigation/native';
+import StyleContext from '@styles/StyleContext';
 
 interface ShowDeckButtonProps {
   deckId: DeckId;
@@ -18,11 +19,12 @@ export default function ShowDeckButton({ deckId, investigator }: ShowDeckButtonP
   const { campaign } = useContext(CampaignGuideContext);
   const { colors } = useContext(StyleContext);
   const deck = useCampaignDeck(deckId, campaign.id);
+  const navigation = useNavigation();
   const onPress = useCallback(() => {
     if (deck) {
-      showDeckModal(deck.id, deck.deck, campaign?.id, colors, investigator);
+      showDeckModal(navigation, colors, deck.id, deck.deck, campaign?.id, investigator);
     }
-  }, [investigator, deck, campaign, colors]);
+  }, [investigator, deck, campaign, navigation, colors]);
 
   if (!deck) {
     return null;

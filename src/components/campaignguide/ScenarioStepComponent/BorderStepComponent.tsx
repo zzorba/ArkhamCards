@@ -13,7 +13,6 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import TitleComponent from './TitleComponent';
 
 interface Props {
-  componentId: string;
   step: BorderStep;
   width: number;
   processedScenario: ProcessedScenario;
@@ -22,7 +21,7 @@ interface Props {
   switchCampaignScenario?: () => void;
 }
 
-export default function BorderStepComponent({ componentId, switchCampaignScenario, step, width, processedScenario, scenarioState, campaignLog }: Props) {
+export default function BorderStepComponent({ switchCampaignScenario, step, width, processedScenario, scenarioState, campaignLog }: Props) {
   const id = `${step.id}_read_the_thing`;
   const decision = useMemo(() => scenarioState.decision(id), [scenarioState, id]);
   const showButton = useMemo(() => decision === undefined && processedScenario.canUndo, [decision, processedScenario.canUndo]);
@@ -53,7 +52,6 @@ export default function BorderStepComponent({ componentId, switchCampaignScenari
           subStep => (
             <ScenarioStepComponent
               key={subStep.step.id}
-              componentId={componentId}
               width={width - l * 2}
               step={subStep}
               border

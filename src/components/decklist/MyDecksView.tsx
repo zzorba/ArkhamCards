@@ -1,56 +1,52 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo, useEffect } from 'react';
 import { throttle } from 'lodash';
-import { Platform, Text, StyleSheet, View } from 'react-native';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { Text, StyleSheet, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import { t } from 'ttag';
 
 import Card from '@data/types/Card';
-import { iconsMap } from '@app/NavIcons';
 import { showDeckModal } from '@components/nav/helper';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
-import COLORS from '@styles/colors';
+import HeaderButton from '@components/core/HeaderButton';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { NavigationProps } from '@components/nav/types';
-import { useNavigationButtonPressed, useSettingFlag } from '@components/core/hooks';
+import { useSettingFlag } from '@components/core/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import space, { s } from '@styles/space';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
+import withApolloGate from '@components/core/withApolloGate';
 
 
-function MyDecksView({ componentId }: NavigationProps) {
+function MyDecksView() {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const { arkhamDb } = useContext(ArkhamCardsAuthContext);
+  const navigation = useNavigation();
   const showNewDeckDialog = useMemo(() => {
     return throttle(() => {
-      Navigation.showModal({
-        stack: {
-          children: [{
-            component: {
-              name: 'Deck.New',
-              options: {
-                modalPresentationStyle: Platform.OS === 'ios' ?
-                  OptionsModalPresentationStyle.fullScreen :
-                  OptionsModalPresentationStyle.overCurrentContext,
-              },
-            },
-          }],
-        },
-      });
+      navigation.navigate('Deck.New', {});
     }, 200);
-  }, []);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'add') {
-      showNewDeckDialog();
-    }
-  }, componentId, [showNewDeckDialog]);
+  }, [navigation]);
+  useEffect(() => {
+    navigation.setOptions({
+      title: t`Decks`,
+      headerRight: () => (
+        <HeaderButton
+          iconName="plus-button"
+          onPress={showNewDeckDialog}
+          color={colors.M}
+          accessibilityLabel={t`New Deck`}
+        />
+      ),
+    });
+  }, [navigation, colors.M, showNewDeckDialog]);
 
   const deckNavClicked = useCallback((deck: LatestDeckT, investigator: Card | undefined) => {
-    showDeckModal(deck.id, deck.deck, deck.campaign?.id, colors, investigator);
-  }, [colors]);
+    showDeckModal(navigation, colors, deck.id, deck.deck, deck.campaign?.id, investigator);
+  }, [navigation, colors]);
   const [localDecksOnly, toggleLocalDecksOnly] = useSettingFlag('hide_arkhamdb_decks');
   const [hideCampaignDecks, toggleHideCampaignDecks] = useSettingFlag('hide_campaign_decks');
 
@@ -120,25 +116,11 @@ function MyDecksView({ componentId }: NavigationProps) {
   );
 }
 
-MyDecksView.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`Decks`,
-      },
-      rightButtons: [{
-        icon: iconsMap['plus-button'],
-        id: 'add',
-        color: COLORS.M,
-        accessibilityLabel: t`New Deck`,
-      }],
-    },
-  };
-};
-
-export default withFetchCardsGate(
-  MyDecksView,
-  { promptForUpdate: false },
+export default withApolloGate(
+  withFetchCardsGate(
+    MyDecksView,
+    { promptForUpdate: false },
+  )
 );
 
 const styles = StyleSheet.create({

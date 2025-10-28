@@ -29,6 +29,7 @@ import { useAppDispatch } from '@app/store';
 import useTraumaSection from '../UpgradeDecksInput/useTraumaSection';
 import AppIcon from '@icons/AppIcon';
 import useDeckUpgradeAction from '@components/deck/useDeckUpgradeAction';
+import { useNavigation } from '@react-navigation/native';
 
 function deckMessage(saved: boolean, hasDeck: boolean, hasAdjustments: boolean, hasDeckChanges: boolean, isOwner: boolean) {
   if (saved) {
@@ -49,7 +50,6 @@ function deckMessage(saved: boolean, hasDeck: boolean, hasAdjustments: boolean, 
   return t`When you have finished making adjustments, press the 'Save' button to record your changes.`;
 }
 interface Props {
-  componentId: string;
   id: string;
   campaignState: CampaignStateHelper;
   scenarioState: ScenarioStateHelper;
@@ -67,7 +67,6 @@ function computeChoiceId(stepId: string, investigator: CampaignInvestigator) {
 }
 
 function SaveDeckRow({
-  componentId,
   id,
   campaignState,
   scenarioState,
@@ -82,6 +81,7 @@ function SaveDeckRow({
   const { colors, typography, width } = useContext(StyleContext);
   const { userId, arkhamDbUser } = useContext(ArkhamCardsAuthContext);
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
   const choiceId = useMemo(() => {
     return computeChoiceId(id, investigator);
   }, [id, investigator]);
@@ -142,8 +142,8 @@ function SaveDeckRow({
   }, [deck, userId, storyAssetDeltas, adjustXp, saveDeck, saveDelayedDeck, saveCampaignLog]);
 
   const onCardPress = useCallback((card: Card) => {
-    showCard(componentId, card.code, card, colors, { showSpoilers: true });
-  }, [componentId, colors]);
+    showCard(navigation, card.code, card, colors, { showSpoilers: true });
+  }, [navigation, colors]);
 
   const renderDeltas = useCallback((cards: Card[], deltas: Slots) => {
     return map(

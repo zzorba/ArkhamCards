@@ -1,12 +1,11 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Platform, ScrollView, StyleSheet, TextInput, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { filter, find, map, sortBy, partition } from 'lodash';
 import { t } from 'ttag';
 
 import NewDialog from '@components/core/NewDialog';
 import SideScenarioButton from './SideScenarioButton';
-import { NavigationProps } from '@components/nav/types';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '@components/campaignguide/withCampaignGuideContext';
 import useTabView from '@components/core/useTabView';
@@ -25,16 +24,20 @@ import useProcessedCampaign from '../useProcessedCampaign';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { EmbarkData } from '@actions/types';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import HeaderTitle from '@components/core/HeaderTitle';
+import { useDismissOnCampaignDeleted } from '@data/remote/campaigns';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
   embarkData?: EmbarkData;
   onEmbarkSide?: (embarkData: EmbarkData, xpCost: number) => EmbarkData | undefined;
+  subtitle?: string;
 }
 
-type Props = NavigationProps & AddSideScenarioProps;
-
-function SideScenarioList({ scenarios, componentId, onPress, useTime }: { scenarios: Scenario[]; componentId: string; onPress: (scenario: Scenario) => void; useTime: boolean }) {
+function SideScenarioList({ scenarios, onPress, useTime }: { scenarios: Scenario[]; onPress: (scenario: Scenario) => void; useTime: boolean }) {
   const { borderStyle } = useContext(StyleContext);
   const [official, custom] = partition(scenarios, s => !s.custom);
   return (
@@ -42,7 +45,6 @@ function SideScenarioList({ scenarios, componentId, onPress, useTime }: { scenar
       { map(official, scenario => (
         <SideScenarioButton
           key={scenario.id}
-          componentId={componentId}
           scenario={scenario}
           onPress={onPress}
           useTime={useTime}
@@ -56,7 +58,6 @@ function SideScenarioList({ scenarios, componentId, onPress, useTime }: { scenar
           { map(custom, scenario => (
             <SideScenarioButton
               key={scenario.id}
-              componentId={componentId}
               scenario={scenario}
               onPress={onPress}
               useTime={useTime}
@@ -69,8 +70,13 @@ function SideScenarioList({ scenarios, componentId, onPress, useTime }: { scenar
 
 }
 
-function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmbarkSide }: Props) {
-  const { campaignState, campaignGuide } = useContext(CampaignGuideContext);
+function AddSideScenarioView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.SideScenario'>>();
+  const navigation = useNavigation();
+  const { latestScenarioId, embarkData, onEmbarkSide } = route.params;
+  const { campaignState, campaignGuide, campaign } = useContext(CampaignGuideContext);
+  useDismissOnCampaignDeleted(navigation, campaign);
+
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
   const [customScenarioName, setCustomScenarioName] = useState('');
   const [customXpCost, incCustomXpCost, decCustomXpCost, setCustomXpCost] = useCounter(1, { min: 0 });
@@ -93,8 +99,8 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
       );
     }
     // Always pop
-    Navigation.pop(componentId);
-  }, [componentId, latestScenarioId, campaignState, onEmbarkSide, embarkData]);
+    navigation.goBack();
+  }, [latestScenarioId, campaignState, onEmbarkSide, embarkData, navigation]);
 
   const saveCustomScenario = useCallback(() => {
     if (embarkData && onEmbarkSide) {
@@ -116,8 +122,8 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
       );
     }
     // Always pop
-    Navigation.pop(componentId);
-  }, [componentId, latestScenarioId, campaignState, customScenarioName, customXpCost, onEmbarkSide, embarkData]);
+    navigation.goBack();
+  }, [latestScenarioId, campaignState, customScenarioName, customXpCost, onEmbarkSide, embarkData, navigation]);
 
   const cancelCustomScenario = useCallback(() => {
     setCustomScenarioName('');
@@ -204,7 +210,6 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
         </View>
         <SideScenarioList
           scenarios={playableSideScenarios}
-          componentId={componentId}
           onPress={onPress}
           useTime={!!onEmbarkSide}
         />
@@ -216,7 +221,7 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
         <View style={{ height: NOTCH_BOTTOM_PADDING + 80 }} />
       </ScrollView>
     );
-  }, [borderStyle, backgroundStyle, playableSideScenarios, componentId, onPress, onEmbarkSide, customScenarioPressed]);
+  }, [borderStyle, backgroundStyle, playableSideScenarios, onPress, onEmbarkSide, customScenarioPressed]);
   const challengeTab = useMemo(() => {
     return (
       <ScrollView contentContainerStyle={[styles.scrollView, backgroundStyle]}>
@@ -228,14 +233,14 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
         </View>
         <SideScenarioList
           scenarios={playableChallengeScenarios}
-          componentId={componentId}
           onPress={onPress}
           useTime={!!onEmbarkSide}
         />
         <View style={{ height: NOTCH_BOTTOM_PADDING + 80 }} />
       </ScrollView>
     );
-  }, [backgroundStyle, onEmbarkSide, borderStyle, playableChallengeScenarios, componentId, onPress]);
+  }, [backgroundStyle, onEmbarkSide, borderStyle, playableChallengeScenarios, onPress]);
+
   const tabs = useMemo(() => [
     {
       key: 'scenarios',
@@ -257,8 +262,20 @@ function AddSideScenarioView({ componentId, latestScenarioId, embarkData, onEmba
   );
 }
 
-export default withCampaignGuideContext(AddSideScenarioView, { rootView: false });
+const WrappedComponent = withCampaignGuideContext(AddSideScenarioView, { rootView: false });
 
+export default function AddSideScenarioWrapper() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.SideScenario'>>();
+  const { campaignId } = route.params;
+  return <WrappedComponent campaignId={campaignId} />;
+}
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Guide.SideScenario'> }): NativeStackNavigationOptions {
+  return {
+    headerTitle: () => <HeaderTitle title={t`Choose Side-Scenario`} subtitle={route.params?.subtitle} />,
+  };
+};
+AddSideScenarioWrapper.options = options;
 
 const styles = StyleSheet.create({
   scrollView: {

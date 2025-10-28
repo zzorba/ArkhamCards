@@ -1,41 +1,63 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useLayoutEffect, useMemo } from 'react';
 import { View } from 'react-native';
 import { t } from 'ttag';
 
 import { CampaignId } from '@actions/types';
-import { NavigationProps } from '@components/nav/types';
-import { useStopAudioOnUnmount } from '@lib/audio/narrationPlayer';
-import { useAlertDialog } from '@components/deck/dialogs';
+import { useStopAudioOnUnmount } from '@lib/audio/narrationHelpers';
+import { useAlertDialog, useSimpleTextDialog } from '@components/deck/dialogs';
 import DeleteCampaignButton from '@components/campaign/DeleteCampaignButton';
 import UploadCampaignButton from '@components/campaign/UploadCampaignButton';
-import ScenarioComponent, { dynamicOptions } from './ScenarioComponent';
+import ScenarioComponent from './ScenarioComponent';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
 import CampaignGuideContext from './CampaignGuideContext';
 import { useDeckActions } from '@data/remote/decks';
 import { InjectedCampaignGuideContextProps } from './withCampaignGuideContext';
 import space from '@styles/space';
 import ScenarioGuideContext from './ScenarioGuideContext';
-import { useUpdateCampaignActions } from '@data/remote/campaigns';
+import { useCampaignDeleted, useDismissOnCampaignDeleted, useUpdateCampaignActions } from '@data/remote/campaigns';
 import CampaignHeader from './CampaignHeader';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
+import { updateCampaignName } from '@components/campaign/actions';
+import { useAppDispatch } from '@app/store';
 
 export interface StandaloneGuideProps extends ScenarioGuideInputProps {
   campaignId: CampaignId;
   upload?: boolean;
 }
 
-function StandaloneGuideView({ campaignId, componentId, setCampaignServerId, upload }: StandaloneGuideProps & NavigationProps & InjectedCampaignGuideContextProps) {
+function StandaloneGuideView({ campaignId, setCampaignServerId, upload }: StandaloneGuideProps & InjectedCampaignGuideContextProps) {
   const { campaign } = useContext(CampaignGuideContext);
   const { processedScenario } = useContext(ScenarioGuideContext);
   useStopAudioOnUnmount();
   const [alertDialog, showAlert] = useAlertDialog();
   const deckActions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
+  const dispatch = useAppDispatch();
+  const setCampaignName = useCallback((name: string) => {
+    dispatch(updateCampaignName(updateCampaignActions, campaignId, name));
+  }, [campaignId, dispatch, updateCampaignActions]);
+  const navigation = useNavigation();
+  useCampaignDeleted(campaign);
+  useDismissOnCampaignDeleted(navigation, campaign);
+
+  const [dialog, showEditNameDialog] = useSimpleTextDialog({
+    title: t`Name`,
+    value: campaign?.name || '',
+    onValueChange: setCampaignName,
+  });
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: campaign.name,
+    });
+  }, [navigation, campaign.name]);
+
   const footer = useMemo(() => {
     return (
       <View style={space.paddingSideS}>
         <CampaignHeader style={space.paddingTopS} title={t`Settings`} />
         <UploadCampaignButton
-          componentId={componentId}
           campaignId={campaign.id}
           campaign={campaign}
           deckActions={deckActions}
@@ -45,7 +67,6 @@ function StandaloneGuideView({ campaignId, componentId, setCampaignServerId, upl
           upload={upload}
         />
         <DeleteCampaignButton
-          componentId={componentId}
           actions={updateCampaignActions}
           campaignId={campaignId}
           campaign={campaign}
@@ -54,23 +75,29 @@ function StandaloneGuideView({ campaignId, componentId, setCampaignServerId, upl
         />
       </View>
     );
-  }, [componentId, upload, campaignId, setCampaignServerId, showAlert, updateCampaignActions, deckActions, campaign]);
+  }, [upload, campaignId, setCampaignServerId, showAlert, updateCampaignActions, deckActions, campaign]);
 
   return (
     <>
       <ScenarioComponent
-        componentId={componentId}
         standalone
         footer={campaign && processedScenario && footer}
+        onEditNamePressed={showEditNameDialog}
       />
       { alertDialog }
+      { dialog }
     </>
   );
 }
 
-
-StandaloneGuideView.options = () => {
-  return dynamicOptions(false);
-};
-
-export default withScenarioGuideContext(StandaloneGuideView);
+const WrappedComponent = withScenarioGuideContext(StandaloneGuideView);
+export default function StandaloneGuideViewWrapper() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.Standalone'>>();
+  const { campaignId, scenarioId } = route.params;
+  return (
+    <WrappedComponent
+      campaignId={campaignId}
+      scenarioId={scenarioId}
+    />
+  );
+}

@@ -1,22 +1,21 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
+import { ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
+import { useDispatch } from 'react-redux';
 
 import { CampaignId } from '@actions/types';
 import { ShowAlert } from '@components/deck/dialogs';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
-import { useDispatch } from 'react-redux';
 import { UpdateCampaignActions, useDeleteCampaignRequest, useLeaveCampaignRequest } from '@data/remote/campaigns';
 import { deleteCampaign, updateCampaignArchived } from './actions';
 import { s } from '@styles/space';
 import DeckButton from '@components/deck/controls/DeckButton';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
-import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
-import { Action } from 'redux';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   campaignId: CampaignId;
   campaign: SingleCampaignT | undefined;
   actions: UpdateCampaignActions;
@@ -33,7 +32,8 @@ function archiveButtonText(archived: boolean, standalone?: boolean): string {
   return archived ? t`Unarchive campaign` : t`Archive campaign`;
 }
 
-export default function DeleteCampaignButton({ componentId, actions, campaignId, campaign, showAlert, standalone }: Props) {
+export default function DeleteCampaignButton({ actions, campaignId, campaign, showAlert, standalone }: Props) {
+  const navigation = useNavigation();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const dispatch: Dispatch = useDispatch();
   const deleteServerCampaign = useDeleteCampaignRequest();
@@ -43,8 +43,8 @@ export default function DeleteCampaignButton({ componentId, actions, campaignId,
       deleteServerCampaign(campaignId);
     }
     dispatch(deleteCampaign(userId, campaignId));
-    Navigation.pop(componentId);
-  }, [dispatch, componentId, campaignId, deleteServerCampaign, userId]);
+    navigation.goBack();
+  }, [navigation, dispatch, campaignId, deleteServerCampaign, userId]);
   const confirmDeleteCampaign = useCallback(() => {
     const campaignName = campaign?.name || '';
     showAlert(
@@ -63,8 +63,8 @@ export default function DeleteCampaignButton({ componentId, actions, campaignId,
     if (campaignId.serverId) {
       leaveCampaign(campaignId);
     }
-    Navigation.pop(componentId);
-  }, [campaignId, componentId, leaveCampaign]);
+    navigation.goBack();
+  }, [campaignId, navigation, leaveCampaign]);
   const confirmLeaveCampaign = useCallback(() => {
     showAlert(
       standalone ? t`Leave standalone` : t`Leave campaign`,

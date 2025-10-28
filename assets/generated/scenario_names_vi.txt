@@ -1,0 +1,1402 @@
+[
+  {
+    "id": "a_confrontation",
+    "name": "A Confrontation"
+  },
+  {
+    "id": "a_house_divided",
+    "name": "A House Divided"
+  },
+  {
+    "id": "a_light_in_the_fog",
+    "name": "A Light in the Fog"
+  },
+  {
+    "id": "a_phantom_of_truth",
+    "name": "A Phantom of Truth"
+  },
+  {
+    "id": "a_sea_of_troubles",
+    "name": "A Sea of Troubles"
+  },
+  {
+    "id": "a_thousand_shapes_of_horror",
+    "name": "A Thousand Shapes of Horror"
+  },
+  {
+    "id": "a_world_torn_down",
+    "name": "A World Torn Down"
+  },
+  {
+    "id": "a_world_torn_down_again",
+    "name": "A World Torn Down, Again"
+  },
+  {
+    "id": "a_year_to_plan",
+    "name": "A Year to Plan"
+  },
+  {
+    "id": "across_dreadful_waters",
+    "name": "Across Dreadful Waters"
+  },
+  {
+    "id": "africa_is_watching",
+    "name": "Africa is Watching"
+  },
+  {
+    "id": "against_the_wendigo",
+    "name": "Against the Wendigo"
+  },
+  {
+    "id": "alexandria",
+    "name": "Dogs of War"
+  },
+  {
+    "id": "all_or_nothing",
+    "name": "All or Nothing"
+  },
+  {
+    "id": "an_offer_you_cant_refuse",
+    "name": "An Offer You Can't Refuse"
+  },
+  {
+    "id": "an_unknown_benefactor",
+    "name": "An Unknown Benefactor"
+  },
+  {
+    "id": "anchorage",
+    "name": "On Thin Ice"
+  },
+  {
+    "id": "anything_once",
+    "name": "Anything Once"
+  },
+  {
+    "id": "arkham",
+    "name": "The Midnight Masks"
+  },
+  {
+    "id": "arkham_allied",
+    "name": "Arkham Allied"
+  },
+  {
+    "id": "arkham_in_wonderland",
+    "name": "Arkham in Wonderland"
+  },
+  {
+    "id": "armitages_fate",
+    "name": "Armitage's Fate"
+  },
+  {
+    "id": "at_deaths_doorstep",
+    "name": "At Death's Doorstep"
+  },
+  {
+    "id": "au_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "au_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "aw_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "aw_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "bad_blood",
+    "name": "Bad Blood"
+  },
+  {
+    "id": "barors_gifts",
+    "name": "Bárðr's Gifts"
+  },
+  {
+    "id": "before_the_black_throne",
+    "name": "Before the Black Throne"
+  },
+  {
+    "id": "beneath_the_waves",
+    "name": "Bên dưới những Con Sóng"
+  },
+  {
+    "id": "bermuda",
+    "name": "The Great Work"
+  },
+  {
+    "id": "bermuda_triangle",
+    "name": "Without a Trace"
+  },
+  {
+    "id": "beyond_the_gates_of_sleep",
+    "name": "Beyond the Gates of Sleep"
+  },
+  {
+    "id": "black_stars_rise",
+    "name": "Black Stars Rise"
+  },
+  {
+    "id": "bleeding_hearts",
+    "name": "Bleeding Hearts"
+  },
+  {
+    "id": "blob_that_ate_everything",
+    "name": "The Blob That Ate Everything"
+  },
+  {
+    "id": "blob_that_ate_everything_else",
+    "name": "The Blob That Ate Everything Else"
+  },
+  {
+    "id": "blood_from_stones",
+    "name": "Blood From Stones"
+  },
+  {
+    "id": "blood_on_the_altar",
+    "name": "Máu trên Tế Đàn"
+  },
+  {
+    "id": "bombay",
+    "name": "Strange Architecture"
+  },
+  {
+    "id": "buenos_aires",
+    "name": "Sanguine Shadows"
+  },
+  {
+    "id": "by_the_book",
+    "name": "By the Book"
+  },
+  {
+    "id": "carnevale_of_horrors",
+    "name": "Carnevale of Horrors"
+  },
+  {
+    "id": "ce_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "ce_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "cf_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "cf_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "chasing_rainbows",
+    "name": "Chasing Rainbows"
+  },
+  {
+    "id": "city_of_the_elder_things",
+    "name": "City of the Elder Things"
+  },
+  {
+    "id": "consternation_on_the_constellation",
+    "name": "Consternation on the Constellation"
+  },
+  {
+    "id": "core",
+    "name": "Edge of the Earth"
+  },
+  {
+    "id": "court_of_the_ancients",
+    "name": "Court of the Ancients"
+  },
+  {
+    "id": "cp_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "cp_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "crumbling_masonry",
+    "name": "Crumbling Masonry"
+  },
+  {
+    "id": "curse_of_the_rougarou",
+    "name": "Curse of the Rougarou"
+  },
+  {
+    "id": "curtain_call",
+    "name": "Curtain Call"
+  },
+  {
+    "id": "dark_side_of_the_moon",
+    "name": "Dark Side of the Moon"
+  },
+  {
+    "id": "dawn_of_the_final_day",
+    "name": "Dawn of the Final Day"
+  },
+  {
+    "id": "dawn_of_the_second_day",
+    "name": "Dawn of the Second Day"
+  },
+  {
+    "id": "dead_by_dawn",
+    "name": "Dead by Dawn"
+  },
+  {
+    "id": "dead_or_alive",
+    "name": "Dead or Alive"
+  },
+  {
+    "id": "death_at_sundown",
+    "name": "Death at Sundown"
+  },
+  {
+    "id": "deep_impact",
+    "name": "Deep Impact"
+  },
+  {
+    "id": "defense_of_the_realm",
+    "name": "Defense of the Realm"
+  },
+  {
+    "id": "desaturation",
+    "name": "Desaturation"
+  },
+  {
+    "id": "devil_reef",
+    "name": "Devil Reef"
+  },
+  {
+    "id": "dim_carcosa",
+    "name": "Dim Carcosa"
+  },
+  {
+    "id": "disappearance_at_the_twilight_estate",
+    "name": "Return to Disappearance at the Twilight Estate"
+  },
+  {
+    "id": "dm_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "dm_prologue",
+    "name": "Prologue…"
+  },
+  {
+    "id": "double_whammy",
+    "name": "Double Whammy"
+  },
+  {
+    "id": "dwl_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "dwl_interlude2",
+    "name": "Những Người Sống Sót"
+  },
+  {
+    "id": "dwl_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "echoes_of_the_past",
+    "name": "Echoes of the Past"
+  },
+  {
+    "id": "egils_relics",
+    "name": "Egil's Relics"
+  },
+  {
+    "id": "electric_nightmare",
+    "name": "Electric Nightmare"
+  },
+  {
+    "id": "endless_night",
+    "name": "Đêm Dài Vô Tận"
+  },
+  {
+    "id": "eoe_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "eoe_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "essex_county_express",
+    "name": "The Essex County Express"
+  },
+  {
+    "id": "expedition_to_ryleh",
+    "name": "Expedition to R'lyeh"
+  },
+  {
+    "id": "extracurricular_activity",
+    "name": "Extracurricular Activity"
+  },
+  {
+    "id": "eztli",
+    "name": "The Doom of Eztli"
+  },
+  {
+    "id": "fatal_mirage",
+    "name": "Fatal Mirage"
+  },
+  {
+    "id": "fatal_mirage_2",
+    "name": "Fatal Mirage"
+  },
+  {
+    "id": "fatal_mirage_3",
+    "name": "Fatal Mirage"
+  },
+  {
+    "id": "fate_of_the_vale",
+    "name": "Fate of the Vale"
+  },
+  {
+    "id": "fhv_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "fhv_prologue",
+    "name": "Welcome to Hemlock Vale!"
+  },
+  {
+    "id": "film_fatale",
+    "name": "Film Fatale"
+  },
+  {
+    "id": "final_night",
+    "name": "Đêm Cuối"
+  },
+  {
+    "id": "fools_mate",
+    "name": "Fool's Mate"
+  },
+  {
+    "id": "for_the_greater_good",
+    "name": "For the Greater Good"
+  },
+  {
+    "id": "fortune_and_folly_checkpoint",
+    "name": "The Plan"
+  },
+  {
+    "id": "fortune_and_folly_part_1",
+    "name": "The Stakeout"
+  },
+  {
+    "id": "fortune_and_folly_part_2",
+    "name": "The Heist"
+  },
+  {
+    "id": "fragment_of_carcosa",
+    "name": "Fragment of Carcosa"
+  },
+  {
+    "id": "friends_in_low_places",
+    "name": "Friends in Low Places"
+  },
+  {
+    "id": "going_twice",
+    "name": "Going Twice"
+  },
+  {
+    "id": "gryphon_and_mock_turtle",
+    "name": "Gryphon and Mock Turtle"
+  },
+  {
+    "id": "hall_of_the_mountain_king",
+    "name": "Hall of the Mountain King"
+  },
+  {
+    "id": "havana",
+    "name": "Dancing Mad"
+  },
+  {
+    "id": "heart_of_the_elders_part_1",
+    "name": "Heart of the Elders, Part 1"
+  },
+  {
+    "id": "heart_of_the_elders_part_2",
+    "name": "Heart of the Elders, Part 2"
+  },
+  {
+    "id": "hemlock_house",
+    "name": "Hemlock House"
+  },
+  {
+    "id": "hidden_truths",
+    "name": "Sự Thật Ẩn Giấu"
+  },
+  {
+    "id": "high_noon_descent",
+    "name": "High Noon Descent"
+  },
+  {
+    "id": "history_lesson",
+    "name": "History Lesson"
+  },
+  {
+    "id": "hong_kong",
+    "name": "Blood, Sweat, and Tea"
+  },
+  {
+    "id": "horror_in_high_gear",
+    "name": "Horror in High Gear"
+  },
+  {
+    "id": "humpty_dumpty",
+    "name": "Humpty Dumpty"
+  },
+  {
+    "id": "ice_and_death",
+    "name": "Ice and Death"
+  },
+  {
+    "id": "ice_and_death_part_1",
+    "name": "Ice and Death (Băng giá và Cái chết), Phần I"
+  },
+  {
+    "id": "ice_and_death_part_2",
+    "name": "Ice and Death (Băng giá và Cái chết), Phần II"
+  },
+  {
+    "id": "ice_and_death_part_3",
+    "name": "Ice and Death (Băng và Cái Chết), Phần III"
+  },
+  {
+    "id": "illumination",
+    "name": "Illumination"
+  },
+  {
+    "id": "in_the_clutches_of_chaos",
+    "name": "In the Clutches of Chaos"
+  },
+  {
+    "id": "in_the_labyrinths_of_lunacy",
+    "name": "The Labyrinths of Lunacy"
+  },
+  {
+    "id": "in_the_shadow_of_earth",
+    "name": "In the Shadow of Earth"
+  },
+  {
+    "id": "in_too_deep",
+    "name": "In Too Deep"
+  },
+  {
+    "id": "into_the_maelstrom",
+    "name": "Into the Maelstrom"
+  },
+  {
+    "id": "introspection",
+    "name": "Introspection"
+  },
+  {
+    "id": "introspection_continued",
+    "name": "Introspection (continued)"
+  },
+  {
+    "id": "istanbul",
+    "name": "Dealings in the Dark"
+  },
+  {
+    "id": "jennys_choice",
+    "name": "Jenny's Choice"
+  },
+  {
+    "id": "kabul",
+    "name": "Ruses and Reclamations"
+  },
+  {
+    "id": "kathmandu",
+    "name": "Whistle On the Wind"
+  },
+  {
+    "id": "kuala_lampur",
+    "name": "Shades of Suffering"
+  },
+  {
+    "id": "lagos",
+    "name": "Special Delivery"
+  },
+  {
+    "id": "laid_to_rest",
+    "name": "Laid to Rest"
+  },
+  {
+    "id": "late_risers",
+    "name": "Late Risers"
+  },
+  {
+    "id": "legions_of_fire",
+    "name": "Legions of Fire"
+  },
+  {
+    "id": "london",
+    "name": "Dead and Gone"
+  },
+  {
+    "id": "lost_in_time_and_space",
+    "name": "Lost in Time and Space"
+  },
+  {
+    "id": "lost_moorings",
+    "name": "Lost Moorings"
+  },
+  {
+    "id": "lost_quantum",
+    "name": "Lost Quantum"
+  },
+  {
+    "id": "lucid_nightmare",
+    "name": "Lucid Nightmare"
+  },
+  {
+    "id": "machinations_through_time",
+    "name": "Machinations Through Time"
+  },
+  {
+    "id": "manokwari",
+    "name": "Metamorphosis"
+  },
+  {
+    "id": "marrakesh",
+    "name": "Dead Heat"
+  },
+  {
+    "id": "meddling_of_meowlathotep",
+    "name": "The Meddling of Meowlathotep"
+  },
+  {
+    "id": "misery_loves_company",
+    "name": "Misery Loves Company"
+  },
+  {
+    "id": "mission_briefing",
+    "name": "Mission Briefing"
+  },
+  {
+    "id": "moscow",
+    "name": "Quid Pro Quo"
+  },
+  {
+    "id": "mourning_chorus",
+    "name": "Mourning Chorus"
+  },
+  {
+    "id": "murder_at_the_excelsior_hotel",
+    "name": "Murder at the Excelsior Hotel"
+  },
+  {
+    "id": "mysterious_benefits",
+    "name": "Mysterious Benefits"
+  },
+  {
+    "id": "nairobi",
+    "name": "Infernal Machinery"
+  },
+  {
+    "id": "night_of_fire",
+    "name": "Night of Fire"
+  },
+  {
+    "id": "night_on_the_town",
+    "name": "Night on the Town"
+  },
+  {
+    "id": "obsidian_canyons",
+    "name": "Obsidian Canyons"
+  },
+  {
+    "id": "one_last_job",
+    "name": "One Last Job"
+  },
+  {
+    "id": "oz_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "oz_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "perth",
+    "name": "Paranatural Selection"
+  },
+  {
+    "id": "point_of_no_return",
+    "name": "Point of No Return"
+  },
+  {
+    "id": "private_lives",
+    "name": "Private Lives"
+  },
+  {
+    "id": "ptc_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "ptc_interlude1",
+    "name": "Lunacy's Reward"
+  },
+  {
+    "id": "ptc_interlude1_reprint",
+    "name": "Reality's Shadow"
+  },
+  {
+    "id": "ptc_interlude2",
+    "name": "Đánh Mất Linh Hồn"
+  },
+  {
+    "id": "ptc_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "puzzle_pieces",
+    "name": "Những mảnh ghép"
+  },
+  {
+    "id": "pyroclastic_flow",
+    "name": "Pyroclastic Flow"
+  },
+  {
+    "id": "quito",
+    "name": "Ruses and Reclamations"
+  },
+  {
+    "id": "read_or_die",
+    "name": "Read or Die"
+  },
+  {
+    "id": "red_tide_rising",
+    "name": "Red Tide Rising"
+  },
+  {
+    "id": "relics_of_the_past",
+    "name": "Relics of the Past"
+  },
+  {
+    "id": "restful_night",
+    "name": "Đêm Nghỉ Ngơi"
+  },
+  {
+    "id": "return_to_a_light_in_the_fog",
+    "name": "Return to A Light in the Fog"
+  },
+  {
+    "id": "return_to_a_phantom_of_truth",
+    "name": "Return to A Phantom of Truth"
+  },
+  {
+    "id": "return_to_arkham",
+    "name": "Return to Arkham"
+  },
+  {
+    "id": "return_to_at_deaths_doorstep",
+    "name": "Return to At Death's Doorstep"
+  },
+  {
+    "id": "return_to_before_the_black_throne",
+    "name": "Return to Before the Black Throne"
+  },
+  {
+    "id": "return_to_black_stars_rise",
+    "name": "Return to Black Stars Rise"
+  },
+  {
+    "id": "return_to_blood_on_the_altar",
+    "name": "Return to Blood on the Altar"
+  },
+  {
+    "id": "return_to_curtain_call",
+    "name": "Return to Curtain Call"
+  },
+  {
+    "id": "return_to_devil_reef",
+    "name": "Return to Devil Reef"
+  },
+  {
+    "id": "return_to_dim_carcosa",
+    "name": "Return to Dim Carcosa"
+  },
+  {
+    "id": "return_to_echoes_of_the_past",
+    "name": "Return to Echoes of the Past"
+  },
+  {
+    "id": "return_to_essex_county_express",
+    "name": "Return to The Essex County Express"
+  },
+  {
+    "id": "return_to_extracurricular_activity",
+    "name": "Return to Extracurricular Activity"
+  },
+  {
+    "id": "return_to_for_the_greater_good",
+    "name": "Return to For the Greater Good"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_1",
+    "name": "Return to Heart of the Elders, Part 1"
+  },
+  {
+    "id": "return_to_heart_of_the_elders_part_2",
+    "name": "Return to Heart of the Elders, Part 2"
+  },
+  {
+    "id": "return_to_horror_in_high_gear",
+    "name": "Return to Horror in High Gear"
+  },
+  {
+    "id": "return_to_in_the_clutches_of_chaos",
+    "name": "Return to In the Clutches of Chaos"
+  },
+  {
+    "id": "return_to_in_too_deep",
+    "name": "Return to In Too Deep"
+  },
+  {
+    "id": "return_to_into_the_maelstrom",
+    "name": "Return to Into the Maelstrom"
+  },
+  {
+    "id": "return_to_lost_in_time_and_space",
+    "name": "Return to Lost in Time and Space"
+  },
+  {
+    "id": "return_to_shattered_aeons",
+    "name": "Return to Shattered Aeons"
+  },
+  {
+    "id": "return_to_the_boundary_beyond",
+    "name": "Return to The Boundary Beyond"
+  },
+  {
+    "id": "return_to_the_city_of_archives",
+    "name": "Return to The City of Archives"
+  },
+  {
+    "id": "return_to_the_depths_of_yoth",
+    "name": "Return to The Depths of Yoth"
+  },
+  {
+    "id": "return_to_the_devourer_below",
+    "name": "Return to The Devourer Below"
+  },
+  {
+    "id": "return_to_the_doom_of_eztli",
+    "name": "Return to The Doom of Eztli"
+  },
+  {
+    "id": "return_to_the_gathering",
+    "name": "Return to The Gathering"
+  },
+  {
+    "id": "return_to_the_house_always_wins",
+    "name": "Return to The House Always Wins"
+  },
+  {
+    "id": "return_to_the_lair_of_dagon",
+    "name": "Return to The Lair of Dagon"
+  },
+  {
+    "id": "return_to_the_last_king",
+    "name": "Return to The Last King"
+  },
+  {
+    "id": "return_to_the_midnight_masks",
+    "name": "Return to The Midnight Masks"
+  },
+  {
+    "id": "return_to_the_miskatonic_museum",
+    "name": "Return to The Miskatonic Museum"
+  },
+  {
+    "id": "return_to_the_pallid_mask",
+    "name": "Return to The Pallid Mask"
+  },
+  {
+    "id": "return_to_the_pit_of_despair",
+    "name": "Return to The Pit of Despair"
+  },
+  {
+    "id": "return_to_the_secret_name",
+    "name": "Return to The Secret Name"
+  },
+  {
+    "id": "return_to_the_unspeakable_oath",
+    "name": "Return to The Unspeakable Oath"
+  },
+  {
+    "id": "return_to_the_untamed_wilds",
+    "name": "Return to The Untamed Wilds"
+  },
+  {
+    "id": "return_to_the_vanishing_of_elina_harper",
+    "name": "Return to The Vanishing of Elina Harper"
+  },
+  {
+    "id": "return_to_the_wages_of_sin",
+    "name": "Return to The Wages of Sin"
+  },
+  {
+    "id": "return_to_the_witching_hour",
+    "name": "Return to The Witching Hour"
+  },
+  {
+    "id": "return_to_threads_of_fate",
+    "name": "Return to Threads of Fate"
+  },
+  {
+    "id": "return_to_turn_back_time",
+    "name": "Return to Turn Back Time"
+  },
+  {
+    "id": "return_to_undimensioned_and_unseen",
+    "name": "Return to Undimensioned and Unseen"
+  },
+  {
+    "id": "return_to_union_and_disillusion",
+    "name": "Return to Union and Disillusion"
+  },
+  {
+    "id": "return_to_where_doom_awaits",
+    "name": "Return to Where Doom Awaits"
+  },
+  {
+    "id": "reykjavik",
+    "name": "Ruses and Reclamations"
+  },
+  {
+    "id": "riddles_and_rain",
+    "name": "Riddles and Rain"
+  },
+  {
+    "id": "rio_de_janiero",
+    "name": "Theory of Annihiliation"
+  },
+  {
+    "id": "rome",
+    "name": "Romulus and Remus"
+  },
+  {
+    "id": "royal_audience",
+    "name": "Royal Audience"
+  },
+  {
+    "id": "san_francisco",
+    "name": "Quid Pro Quo"
+  },
+  {
+    "id": "san_juan",
+    "name": "Ruses and Reclamations"
+  },
+  {
+    "id": "sepulchre_of_the_sleeper",
+    "name": "Sepulchre of the Sleeper"
+  },
+  {
+    "id": "shanghai",
+    "name": "The Coiled Serpent"
+  },
+  {
+    "id": "shattered_aeons",
+    "name": "Shattered Aeons"
+  },
+  {
+    "id": "sibling_rivalry",
+    "name": "Sibling Rivalry"
+  },
+  {
+    "id": "something_big",
+    "name": "Something Big"
+  },
+  {
+    "id": "starfall",
+    "name": "Starfall"
+  },
+  {
+    "id": "stockholm",
+    "name": "Strange Architecture"
+  },
+  {
+    "id": "strange_moons",
+    "name": "Strange Moons"
+  },
+  {
+    "id": "sydney",
+    "name": "Ringing Hollow"
+  },
+  {
+    "id": "tcu_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "tdc_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "tdc_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "tde_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "tde_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "tempest_in_a_teapot",
+    "name": "Tempest in a Teapot"
+  },
+  {
+    "id": "tentacles",
+    "name": "The Devourer Below"
+  },
+  {
+    "id": "tfa_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "tfa_interlude1",
+    "name": "Những Đêm Trằn Trọc"
+  },
+  {
+    "id": "tfa_interlude2",
+    "name": "Cuộc thám hiểm kết thúc"
+  },
+  {
+    "id": "tfa_interlude3",
+    "name": "The Jungle Beckons"
+  },
+  {
+    "id": "tfa_interlude4",
+    "name": "Those Held Captive"
+  },
+  {
+    "id": "tfa_interlude5",
+    "name": "The Darkness"
+  },
+  {
+    "id": "tfa_prologue",
+    "name": "Lời mở đầu"
+  },
+  {
+    "id": "the_afternoon_war",
+    "name": "The Afternoon War"
+  },
+  {
+    "id": "the_apiary",
+    "name": "The Apiary"
+  },
+  {
+    "id": "the_attack",
+    "name": "Cuộc Tấn Công"
+  },
+  {
+    "id": "the_avatar_of_darkness",
+    "name": "The Avatar of Darkness"
+  },
+  {
+    "id": "the_awakening",
+    "name": "The Awakening"
+  },
+  {
+    "id": "the_black_cat",
+    "name": "The Black Cat"
+  },
+  {
+    "id": "the_black_stone",
+    "name": "The Black Stone"
+  },
+  {
+    "id": "the_boundary_beyond",
+    "name": "The Boundary Beyond"
+  },
+  {
+    "id": "the_caterpillar",
+    "name": "The Caterpillar"
+  },
+  {
+    "id": "the_city_of_archives",
+    "name": "The City of Archives"
+  },
+  {
+    "id": "the_colour_out_of_space",
+    "name": "The Colour Out of Space"
+  },
+  {
+    "id": "the_crown",
+    "name": "The Crown"
+  },
+  {
+    "id": "the_depths_of_yoth",
+    "name": "The Depths of Yoth"
+  },
+  {
+    "id": "the_disapperance",
+    "name": "Sự biến mất"
+  },
+  {
+    "id": "the_dodo",
+    "name": "The Dodo"
+  },
+  {
+    "id": "the_doom_of_arkham",
+    "name": "The Doom of Arkham"
+  },
+  {
+    "id": "the_doom_of_arkham_part_1",
+    "name": "The Doom of Arkham: Part I"
+  },
+  {
+    "id": "the_doom_of_arkham_part_2",
+    "name": "The Doom of Arkham: Part II"
+  },
+  {
+    "id": "the_drowned_quarter",
+    "name": "The Drowned Quarter"
+  },
+  {
+    "id": "the_duchess",
+    "name": "The Duchess"
+  },
+  {
+    "id": "the_eternal_slumber",
+    "name": "The Eternal Slumber"
+  },
+  {
+    "id": "the_fall_of_the_house_of_usher",
+    "name": "The Fall of the House of Usher"
+  },
+  {
+    "id": "the_fallen",
+    "name": "The Fallen"
+  },
+  {
+    "id": "the_final_evening",
+    "name": "The Final Evening"
+  },
+  {
+    "id": "the_first_evening",
+    "name": "The First Evening"
+  },
+  {
+    "id": "the_foundation",
+    "name": "The Foundation"
+  },
+  {
+    "id": "the_golden_circle",
+    "name": "The Golden Circle"
+  },
+  {
+    "id": "the_grand_vault",
+    "name": "The Grand Vault"
+  },
+  {
+    "id": "the_great_ones",
+    "name": "The Great Ones"
+  },
+  {
+    "id": "the_heart_of_madness",
+    "name": "The Heart of Madness"
+  },
+  {
+    "id": "the_heart_of_madness_part_1",
+    "name": "Trái Tim của Sự Điên Loạn, Phần I"
+  },
+  {
+    "id": "the_heart_of_madness_part_2",
+    "name": "Trái Tim của Sự Điên Loạn, Phần II"
+  },
+  {
+    "id": "the_house_always_wins",
+    "name": "The House Always Wins"
+  },
+  {
+    "id": "the_inner_circle",
+    "name": "The Inner Circle"
+  },
+  {
+    "id": "the_lair_of_dagon",
+    "name": "The Lair of Dagon"
+  },
+  {
+    "id": "the_last_king",
+    "name": "The Last King"
+  },
+  {
+    "id": "the_lion_and_the_unicorn",
+    "name": "The Lion and the Unicorn"
+  },
+  {
+    "id": "the_longest_night",
+    "name": "The Longest Night"
+  },
+  {
+    "id": "the_lost_sister",
+    "name": "The Lost Sister"
+  },
+  {
+    "id": "the_machine_in_yellow",
+    "name": "The Machine in Yellow"
+  },
+  {
+    "id": "the_midnight_hour",
+    "name": "The Midnight Hour"
+  },
+  {
+    "id": "the_midwinter_gala",
+    "name": "The Midwinter Gala"
+  },
+  {
+    "id": "the_miskatonic_museum",
+    "name": "The Miskatonic Museum"
+  },
+  {
+    "id": "the_myriad_gentleman",
+    "name": "The Myriad Gentleman"
+  },
+  {
+    "id": "the_nights_usurper",
+    "name": "The Night's Usurper"
+  },
+  {
+    "id": "the_oneironauts",
+    "name": "The Oneironauts"
+  },
+  {
+    "id": "the_other_side",
+    "name": "Phía Bên Kia"
+  },
+  {
+    "id": "the_pallid_mask",
+    "name": "The Pallid Mask"
+  },
+  {
+    "id": "the_pit_of_despair",
+    "name": "The Pit of Despair"
+  },
+  {
+    "id": "the_price_of_progress",
+    "name": "Cái Giá của Sự Tiến Bộ"
+  },
+  {
+    "id": "the_road_to_oz",
+    "name": "The Road to Oz"
+  },
+  {
+    "id": "the_search_for_kadath",
+    "name": "The Search for Kadath"
+  },
+  {
+    "id": "the_second_evening",
+    "name": "The Second Evening"
+  },
+  {
+    "id": "the_secret_name",
+    "name": "The Secret Name"
+  },
+  {
+    "id": "the_silent_heath",
+    "name": "The Silent Heath"
+  },
+  {
+    "id": "the_symphony_of_erich_zann",
+    "name": "The Symphony of Erich Zann"
+  },
+  {
+    "id": "the_syzygy",
+    "name": "The Syzygy"
+  },
+  {
+    "id": "the_tatterdemalion",
+    "name": "The Tatterdemalion"
+  },
+  {
+    "id": "the_thing_in_the_depths",
+    "name": "The Thing in the Depths"
+  },
+  {
+    "id": "the_twisted_hollow",
+    "name": "The Twisted Hollow"
+  },
+  {
+    "id": "the_unspeakable_oath",
+    "name": "The Unspeakable Oath"
+  },
+  {
+    "id": "the_vanishing_of_elina_harper",
+    "name": "The Vanishing of Elina Harper"
+  },
+  {
+    "id": "the_wages_of_sin",
+    "name": "The Wages of Sin"
+  },
+  {
+    "id": "the_warning",
+    "name": "The Warning"
+  },
+  {
+    "id": "the_western_wall",
+    "name": "The Western Wall"
+  },
+  {
+    "id": "the_white_queen",
+    "name": "The White Queen"
+  },
+  {
+    "id": "the_witching_hour",
+    "name": "The Witching Hour"
+  },
+  {
+    "id": "threads_of_fate",
+    "name": "Threads of Fate"
+  },
+  {
+    "id": "tic_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "time_runs_out",
+    "name": "Time Runs Out"
+  },
+  {
+    "id": "to_the_forbidden_peaks",
+    "name": "To the Forbidden Peaks"
+  },
+  {
+    "id": "to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo"
+  },
+  {
+    "id": "tokyo",
+    "name": "Special Delivery"
+  },
+  {
+    "id": "tomb_of_dead_dreams",
+    "name": "Tomb of Dead Dreams"
+  },
+  {
+    "id": "too_noble",
+    "name": "Too Noble"
+  },
+  {
+    "id": "torch",
+    "name": "The Gathering"
+  },
+  {
+    "id": "traces_of_egil",
+    "name": "Traces of Egil"
+  },
+  {
+    "id": "travelling",
+    "name": "While travelling..."
+  },
+  {
+    "id": "true_colours",
+    "name": "True Colours"
+  },
+  {
+    "id": "tsk_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "tunguska",
+    "name": "Congress of the Keys"
+  },
+  {
+    "id": "turn_back_time",
+    "name": "Turn Back Time"
+  },
+  {
+    "id": "twist_of_fate",
+    "name": "Twist of Fate"
+  },
+  {
+    "id": "undimensioned_and_unseen",
+    "name": "Undimensioned and Unseen"
+  },
+  {
+    "id": "union_and_disillusion",
+    "name": "Union and Disillusion"
+  },
+  {
+    "id": "unscrupulous_investments",
+    "name": "Unscrupulous Investments"
+  },
+  {
+    "id": "unstuck",
+    "name": "Unstuck"
+  },
+  {
+    "id": "waking_nightmare",
+    "name": "Waking Nightmare"
+  },
+  {
+    "id": "war_council",
+    "name": "War Council"
+  },
+  {
+    "id": "war_of_the_outer_gods",
+    "name": "War of the Outer Gods"
+  },
+  {
+    "id": "weaver_of_the_cosmos",
+    "name": "Weaver of the Cosmos"
+  },
+  {
+    "id": "when_the_world_screamed",
+    "name": "When the World Screamed"
+  },
+  {
+    "id": "where_doom_awaits",
+    "name": "Where Doom Awaits"
+  },
+  {
+    "id": "where_gods_dwell",
+    "name": "Where the Gods Dwell"
+  },
+  {
+    "id": "wild_snark_chase",
+    "name": "Wild Snark Chase"
+  },
+  {
+    "id": "wilds",
+    "name": "The Untamed Wilds"
+  },
+  {
+    "id": "written_in_rock",
+    "name": "Written in Rock"
+  },
+  {
+    "id": "ybor_city",
+    "name": "The Safehouse"
+  },
+  {
+    "id": "zhod_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "zhod_interlude_1",
+    "name": "First Night Aboard the Roi des Belges"
+  },
+  {
+    "id": "zhod_interlude_2",
+    "name": "Kurtz's Warrior"
+  },
+  {
+    "id": "zhod_prologue",
+    "name": "Lời mở đầu"
+  }
+]

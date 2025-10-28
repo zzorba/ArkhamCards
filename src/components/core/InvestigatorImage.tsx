@@ -18,12 +18,13 @@ import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 import EncounterIcon from '@icons/EncounterIcon';
 import space from '@styles/space';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
+  pressable?: boolean;
   card?: Card;
   image?: string;
   backCard?: Card;
-  componentId?: string;
   border?: boolean;
   size?: 'large' | 'small' | 'tiny' | 'extra_tiny';
   killedOrInsane?: boolean;
@@ -151,10 +152,10 @@ function getImpliedSize(size: 'large' | 'small' | 'tiny' | 'extra_tiny', fontSca
 }
 
 function InvestigatorImage({
+  pressable,
   card,
   arkhamCardsImg,
   backCard,
-  componentId,
   border,
   size = 'large',
   killedOrInsane,
@@ -168,16 +169,16 @@ function InvestigatorImage({
   image,
 }: Props) {
   const { colors, fontScale, shadow } = useContext(StyleContext);
-
+  const navigation = useNavigation();
   const onPress = useCallback(() => {
-    if (componentId && card) {
+    if (pressable && card) {
       if (imageLink) {
-        showCardImage(componentId, card, colors);
+        showCardImage(navigation, card);
       } else {
-        showCard(componentId, card.code, card, colors, { showSpoilers: true, tabooSetId, backCode: backCard?.code });
+        showCard(navigation, card.code, card, colors, { showSpoilers: true, tabooSetId, backCode: backCard?.code });
       }
     }
-  }, [card, backCard, tabooSetId, componentId, imageLink, colors]);
+  }, [card, backCard, tabooSetId, imageLink, colors, navigation, pressable]);
 
   const impliedSize = useMemo(() => {
     return getImpliedSize(size, fontScale);
@@ -351,7 +352,7 @@ function InvestigatorImage({
     );
   }, [card, round, imgUri, killedOrInsane, badge, border, colors, impliedSize, styledImage, loadingAnimation, shadow, noShadow]);
 
-  if (componentId && card) {
+  if (pressable && card) {
     return (
       <TouchableOpacity onPress={onPress}>
         { imageNode }

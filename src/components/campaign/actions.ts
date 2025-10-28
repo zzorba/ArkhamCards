@@ -1,6 +1,5 @@
 import { forEach, map } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
-import uuid from 'react-native-uuid';
 
 import {
   NEW_CAMPAIGN,
@@ -53,6 +52,7 @@ import { DeckActions, uploadCampaignDeckHelper } from '@data/remote/decks';
 import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInterludes, SetCampaignTarotReadingAction, SetCampaignWeaknessSetAction, UpdateCampaignActions } from '@data/remote/campaigns';
 import { Action } from 'redux';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
+import { generateUuid } from '@lib/uuid';
 
 function getBaseDeckIds(
   state: AppState,
@@ -165,9 +165,9 @@ export function newLinkedCampaign(
   campaignIdB: CampaignId;
 }>, AppState, unknown, NewLinkedCampaignAction> {
   return async(dispatch) => {
-    const campaignId: string = uuid.v4() as string;
-    const campaignIdA: string = uuid.v4() as string;
-    const campaignIdB: string = uuid.v4() as string;
+    const campaignId: string = generateUuid();
+    const campaignIdA: string = generateUuid();
+    const campaignIdB: string = generateUuid();
     const action: NewLinkedCampaignAction = {
       type: NEW_LINKED_CAMPAIGN,
       name,
@@ -199,7 +199,7 @@ export function newStandalone(
   weaknessSet: WeaknessSet
 ): ThunkAction<Promise<CampaignId>, AppState, unknown, NewStandaloneCampaignAction> {
   return async(dispatch, getState: () => AppState) => {
-    const campaignId: string = uuid.v4() as string;
+    const campaignId: string = generateUuid();
     const action: NewStandaloneCampaignAction = {
       type: NEW_STANDALONE,
       uuid: campaignId,
@@ -228,7 +228,7 @@ export function newCampaign(
   guided: boolean
 ): ThunkAction<Promise<CampaignId>, AppState, unknown, NewCampaignAction> {
   return async(dispatch, getState: () => AppState) => {
-    const campaignId: string = uuid.v4() as string;
+    const campaignId: string = generateUuid();
     const action: NewCampaignAction = {
       type: NEW_CAMPAIGN,
       name: name,

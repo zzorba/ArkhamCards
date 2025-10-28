@@ -201,7 +201,6 @@ msgstr ""
 msgid "Undo"
 msgstr "Откатить"
 
-#. This is a deck upgrade action.
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -317,9 +316,6 @@ msgstr "Вторая база"
 msgid "Edit Collection"
 msgstr "Изменить коллекцию"
 
-msgid "Nevermind"
-msgstr "Отмена"
-
 msgid "Return to..."
 msgstr "Возвращение"
 
@@ -385,9 +381,6 @@ msgstr "Резервное копирование"
 
 msgid "Card Collection"
 msgstr "Коллекция карт"
-
-msgid "Spoiler Settings"
-msgstr "Настройки спойлеров"
 
 msgid "Preferences"
 msgstr "Настройки"
@@ -818,7 +811,6 @@ msgstr "Изменения"
 msgid "Campaign"
 msgstr "Кампания"
 
-#. Actually compute the diffs.
 msgid "Upgrade History"
 msgstr "История улучшений"
 
@@ -1375,18 +1367,6 @@ msgstr "Никто"
 
 msgid "Campaign Log"
 msgstr "Журнал кампании"
-
-msgid "Reset Scenario?"
-msgstr "Сбросить сценарий?"
-
-msgid ""
-"Are you sure you want to reset this scenario?\n"
-"\n"
-"All data you have entered will be lost."
-msgstr ""
-"Вы действительно хотите сбросить этот сценарий?\n"
-"\n"
-"Все введённые данные будут потеряны."
 
 msgid "Select Cards"
 msgstr "Выберите карты"
@@ -2648,9 +2628,6 @@ msgstr "Искать по тексту карт"
 msgid "Search card backs"
 msgstr "Искать на обороте"
 
-msgid "Encounter Card Toggle"
-msgstr "Переключатель карт контактов"
-
 msgid "Show all available cards"
 msgstr "Показать кардпул"
 
@@ -3889,9 +3866,6 @@ msgstr "Сделать запись в журнале"
 msgid "Review and add records"
 msgstr "Свериться и записать"
 
-msgid "Chaos bag"
-msgstr "Мешок хаоса"
-
 msgid "Draw random"
 msgstr "Взять случайную"
 
@@ -4333,9 +4307,6 @@ msgstr "Выберите тип лечения"
 
 msgid "Chosen heal type"
 msgstr "Выбранные тип лечения"
-
-msgid "Assigned weaknesses"
-msgstr "Назначенные слабости"
 
 msgid "Review and draw weaknesses"
 msgstr "Просмотреть и взять слабости"
@@ -4914,9 +4885,6 @@ msgstr "Драфт с использованием вашей коллекции
 
 msgid "Draft Pool"
 msgstr "Коллекция для драфта"
-
-msgid "Grid"
-msgstr "Сетка"
 
 msgid "Invalid deck"
 msgstr "Ошибка колоды"
@@ -6362,6 +6330,48 @@ msgid "When the World Screamed"
 msgstr ""
 
 msgid "Contains cards not in the selected card pool."
+msgstr ""
+
+msgid "Card"
+msgstr ""
+
+msgid "Edit Scenario Result"
+msgstr ""
+
+msgid "Location Setup"
+msgstr ""
+
+msgid "Merge Backup"
+msgstr ""
+
+msgid "Safe Mode"
+msgstr ""
+
+msgid "Choose Packs"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Card Upgrade"
+msgstr ""
+
+msgid "Contains cards that are not in the selected card pool."
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Card Image"
+msgstr ""
+
+msgid "Taboos"
+msgstr ""
+
+msgid "Edit Name"
+msgstr ""
+
+msgid "Scenario results"
 msgstr ""
 
 msgctxt "investigator"

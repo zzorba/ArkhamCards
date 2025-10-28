@@ -3,7 +3,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '@reducers';
 import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
 import { CampaignId, UploadedCampaignId } from '@actions/types';
@@ -15,12 +15,11 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import { ShowAlert } from '@components/deck/dialogs';
 import { s } from '@styles/space';
 import { DeckActions } from '@data/remote/decks';
-import { CampaignAccessProps } from './CampaignAccessView';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { useBackButton } from '@components/core/hooks';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   campaignId: CampaignId;
   standalone?: boolean;
   campaign: SingleCampaignT | undefined;
@@ -37,7 +36,8 @@ interface Props {
 
 type Dispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 
-export default function UploadCampaignButton({ componentId, campaign, campaignId, deckActions, standalone, upload, setCampaignServerId, setCampaignLinkedServerId, showAlert }: Props) {
+export default function UploadCampaignButton({ campaign, campaignId, deckActions, standalone, upload, setCampaignServerId, setCampaignLinkedServerId, showAlert }: Props) {
+  const navigation = useNavigation();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected }] = useNetworkStatus();
   const [uploading, setUploading] = useState(false);
@@ -72,27 +72,12 @@ export default function UploadCampaignButton({ componentId, campaign, campaignId
   const isOwner = !!(campaign?.owner_id && userId && campaignId.serverId && campaign.owner_id === userId);
   const editAccessPressed = useCallback(() => {
     if (campaignId.serverId) {
-      Navigation.push<CampaignAccessProps>(componentId, {
-        component: {
-          name: 'Campaign.Access',
-          passProps: {
-            campaignId,
-            isOwner,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: t`Access`,
-              },
-              backButton: {
-                title: t`Back`,
-              },
-            },
-          },
-        },
+      navigation.navigate('Campaign.Access', {
+        campaignId,
+        isOwner,
       });
     }
-  }, [componentId, campaignId, isOwner]);
+  }, [navigation, campaignId, isOwner]);
   useEffect(() => {
     if (upload && campaign) {
       confirmUploadCampaign();

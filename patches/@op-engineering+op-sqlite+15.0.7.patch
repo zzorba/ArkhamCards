@@ -1,0 +1,31 @@
+diff --git a/node_modules/@op-engineering/op-sqlite/op-sqlite.podspec b/node_modules/@op-engineering/op-sqlite/op-sqlite.podspec
+index 375cc3e..43a899e 100644
+--- a/node_modules/@op-engineering/op-sqlite/op-sqlite.podspec
++++ b/node_modules/@op-engineering/op-sqlite/op-sqlite.podspec
+@@ -127,7 +127,7 @@ Pod::Spec.new do |s|
+   
+   if use_sqlcipher then
+     log_message.call("[OP-SQLITE] using SQLCipher 🔒")
+-    exclude_files += ["cpp/sqlite3.c", "cpp/sqlite3.h", "cpp/libsql/bridge.c", "cpp/libsql/bridge.h", "cpp/libsql/bridge.cpp", "cpp/libsql/libsql.h"]
++    exclude_files += ["cpp/sqlite3.c", "cpp/sqlite3.h", "cpp/libsql/bridge.c", "cpp/libsql/bridge.h", "cpp/libsql/bridge.cpp", "cpp/libsql/libsql.h", "ios/libsql.xcframework/**/*"]
+     xcconfig[:GCC_PREPROCESSOR_DEFINITIONS] += " OP_SQLITE_USE_SQLCIPHER=1 HAVE_FULLFSYNC=1 SQLITE_HAS_CODEC SQLITE_TEMP_STORE=3 SQLITE_EXTRA_INIT=sqlcipher_extra_init SQLITE_EXTRA_SHUTDOWN=sqlcipher_extra_shutdown"
+     s.dependency "OpenSSL-Universal"
+   elsif use_libsql then
+@@ -135,7 +135,16 @@ Pod::Spec.new do |s|
+     exclude_files += ["cpp/sqlite3.c", "cpp/sqlite3.h", "cpp/sqlcipher/sqlite3.c", "cpp/sqlcipher/sqlite3.h", "cpp/bridge.h", "cpp/bridge.cpp"]
+   else
+     log_message.call("[OP-SQLITE] using vanilla SQLite 📦")
+-    exclude_files += ["cpp/sqlcipher/sqlite3.c", "cpp/sqlcipher/sqlite3.h", "cpp/libsql/bridge.c", "cpp/libsql/bridge.h", "cpp/libsql/bridge.cpp", "cpp/libsql/libsql.h"]
++    exclude_files += ["cpp/sqlcipher/sqlite3.c", "cpp/sqlcipher/sqlite3.h", "cpp/libsql/bridge.c", "cpp/libsql/bridge.h", "cpp/libsql/bridge.cpp", "cpp/libsql/libsql.h", "ios/libsql.xcframework/**/*"]
++  end
++
++  # Exclude xcframeworks that aren't being used
++  if !use_crsqlite then
++    exclude_files += ["ios/crsqlite.xcframework/**/*"]
++  end
++
++  if !use_sqlite_vec then
++    exclude_files += ["ios/sqlitevec.xcframework/**/*"]
+   end
+ 
+   other_cflags = '-DSQLITE_DBCONFIG_ENABLE_LOAD_EXTENSION=1'

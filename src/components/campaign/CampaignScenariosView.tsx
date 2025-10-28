@@ -1,6 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+
 import { filter, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -11,40 +12,35 @@ import { useCampaign } from '@data/hooks';
 import { completedScenario } from './constants';
 import StyleContext from '@styles/StyleContext';
 import { showAddScenarioResult } from './nav';
-import { NavigationProps } from '@components/nav/types';
 import space, { m, s } from '@styles/space';
-import { EditScenarioResultProps } from './EditScenarioResultView';
 import CampaignScenarioButton from './CampaignScenarioButton';
 import DeckButton from '@components/deck/controls/DeckButton';
+import { BasicStackParamList } from '@navigation/types';
+import { useDismissOnCampaignDeleted } from '@data/remote/campaigns';
 
 export interface CampaignScenariosViewProps {
   campaignId: CampaignId;
 }
 
-function ScenarioResultButton({ name, campaignId, componentId, code, status, index, onPress }: {
+function ScenarioResultButton({ name, campaignId, code, status, index, onPress }: {
   name: string;
   campaignId: CampaignId;
-  componentId: string;
   status: 'completed' | 'playable';
   index: number;
   code?: string;
   onPress?: (code?: string) => void;
 }) {
+  const navigation = useNavigation();
   const buttonOnPress = useCallback(() => {
     if (onPress) {
       onPress(code);
     } else {
-      Navigation.push<EditScenarioResultProps>(componentId, {
-        component: {
-          name: 'Campaign.EditResult',
-          passProps: {
-            campaignId,
-            index,
-          },
-        },
+      navigation.navigate('Campaign.EditResult', {
+        campaignId,
+        index,
       });
     }
-  }, [componentId, campaignId, index, code, onPress]);
+  }, [campaignId, index, code, onPress, navigation]);
   return (
     <CampaignScenarioButton
       onPress={buttonOnPress}
@@ -55,14 +51,18 @@ function ScenarioResultButton({ name, campaignId, componentId, code, status, ind
 }
 
 
-export default function CampaignScenariosView({ campaignId, componentId }: CampaignScenariosViewProps & NavigationProps) {
+export default function CampaignScenariosView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Campaign.Scenarios'>>();
+  const { campaignId } = route.params;
+  const navigation = useNavigation();
   const { backgroundStyle } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
   const [cycleScenarios] = useCampaignScenarios(campaign);
+  useDismissOnCampaignDeleted(navigation, campaign);
 
   const addScenarioResultPressed = useCallback((code?: string) => {
-    showAddScenarioResult(componentId, campaignId, code);
-  }, [campaignId, componentId]);
+    showAddScenarioResult(navigation, campaignId, code);
+  }, [campaignId, navigation]);
 
   if (!campaign) {
     return <LoadingSpinner />;
@@ -80,7 +80,6 @@ export default function CampaignScenariosView({ campaignId, componentId }: Campa
               return (
                 <ScenarioResultButton
                   key={idx}
-                  componentId={componentId}
                   campaignId={campaignId}
                   name={scenario.interlude ? scenario.scenario : t`${scenario.scenario} (${resolution}, ${scenarioXp} XP)`}
                   index={idx}
@@ -93,7 +92,6 @@ export default function CampaignScenariosView({ campaignId, componentId }: Campa
               (scenario, idx) => (
                 <ScenarioResultButton
                   key={idx}
-                  componentId={componentId}
                   campaignId={campaignId}
                   name={scenario.name}
                   code={scenario.code}

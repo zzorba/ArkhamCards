@@ -6,7 +6,6 @@ import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 
 interface Props {
-  componentId: string;
   deck?: LatestDeckT;
   exileCounts: Slots;
   fixedExileCounts?: Slots;
@@ -22,8 +21,9 @@ function isExile(card: Card) {
   return !!card.exile;
 }
 
+const EMPTY_SLOTS = {};
 export default function ExileCardSelectorComponent({
-  alwaysShow, componentId, disabled, deck, exileCounts, fixedExileCounts,
+  alwaysShow, disabled, deck, exileCounts, fixedExileCounts,
   updateExileCount, label, children, storyCards,
 }: Props) {
   const isStandardExile = useCallback((card: Card) => {
@@ -31,14 +31,14 @@ export default function ExileCardSelectorComponent({
     return isExile(card) && (!storyCards || !storyCards[card.code]);
   }, [storyCards]);
 
+
   if (!deck) {
     return <>{children}</>;
   }
   return (
     <>
       <CardSelectorComponent
-        componentId={componentId}
-        slots={deck.deck.slots || {}}
+        slots={deck.deck.slots ?? EMPTY_SLOTS}
         fixedSlots={fixedExileCounts}
         counts={exileCounts}
         updateCount={updateExileCount}

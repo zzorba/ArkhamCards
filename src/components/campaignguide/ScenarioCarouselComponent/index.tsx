@@ -14,17 +14,13 @@ import { useComponentVisible, useEffectUpdate } from '@components/core/hooks';
 import { showScenario } from '../nav';
 import EmbarkCard from './EmbarkCard';
 import { MapLocation } from '@data/scenario/types';
-import { Navigation, OptionsModalPresentationStyle, OptionsModalTransitionStyle } from 'react-native-navigation';
 import { CampaignMapProps } from '../CampaignMapView';
-import { iconsMap } from '@app/NavIcons';
-import COLORS from '@styles/colors';
 import { EmbarkData } from '@actions/types';
-import { AddSideScenarioProps } from '../AddSideScenarioView';
 import { RUSSIAN_LOCATIONS } from '@components/campaign/constants';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   processedCampaign: ProcessedCampaign;
   displayLinkScenarioCount?: number;
   showLinkedScenario?: (scenarioId: string) => void;
@@ -71,19 +67,19 @@ function getActiveIndex(items: CarouselItem[]) {
   return items.length - 1;
 }
 export default function ScenarioCarouselComponent({
-  componentId,
   processedCampaign,
   displayLinkScenarioCount,
   showLinkedScenario,
   showAlert,
 }: Props) {
+  const navigation = useNavigation();
   const { lang } = useContext(LanguageContext);
   const { width } = useContext(StyleContext);
   const { campaignState, campaignGuide, campaignId } = useContext(CampaignGuideContext);
   const campaignMap = useMemo(() => campaignGuide.campaignMap(), [campaignGuide]);
   const carousel = useRef<SnapCarousel<CarouselItem>>(null);
   const scenarioPressed = useRef<boolean>(false);
-  const visible = useComponentVisible(componentId);
+  const visible = useComponentVisible();
   useEffectUpdate(() => {
     setTimeout(() => {
       scenarioPressed.current = true;
@@ -99,7 +95,7 @@ export default function ScenarioCarouselComponent({
       scenarioPressed.current = true;
     }
     showScenario(
-      componentId,
+      navigation,
       scenario,
       campaignId,
       campaignState,
@@ -107,7 +103,7 @@ export default function ScenarioCarouselComponent({
       showLinkedScenario ? onShowLinkedScenario : undefined,
       processedCampaign
     );
-  }, [componentId, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState, processedCampaign]);
+  }, [navigation, campaignId, campaignGuide, showLinkedScenario, onShowLinkedScenario, campaignState, processedCampaign]);
   const currentLocationId = processedCampaign.campaignLog.campaignData.scarlet.location;
   const interScenarioId = useMemo(() => {
     if (processedCampaign && !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&
@@ -152,37 +148,20 @@ export default function ScenarioCarouselComponent({
         transit: transitOnly,
       };
       if (scenarioId === '$side_scenario') {
-        Navigation.push<AddSideScenarioProps>(componentId, {
-          component: {
-            name: 'Guide.SideScenario',
-            passProps: {
-              campaignId,
-              latestScenarioId: interScenarioId,
-              embarkData: embarkData,
-              onEmbarkSide,
-            },
-            options: {
-              topBar: {
-                title: {
-                  text: t`Choose Side-Scenario`,
-                },
-                subtitle: {
-                  text: location.name,
-                },
-                backButton: {
-                  title: t`Back`,
-                },
-              },
-            },
-          },
+        navigation.navigate('Guide.SideScenario', {
+          campaignId,
+          latestScenarioId: interScenarioId,
+          embarkData: embarkData,
+          onEmbarkSide,
+          subtitle: location.name,
         });
       } else {
         campaignState.startScenario(nextScenario, embarkData);
       }
     }
   }, [
+    navigation,
     onEmbarkSide,
-    componentId,
     processedCampaign,
     currentLocationId,
     campaignLog, campaignId, campaignState, interScenarioId, campaignMap]);
@@ -229,6 +208,11 @@ export default function ScenarioCarouselComponent({
       scenarioPressed.current = true;
       const investigators = processedCampaign.campaignLog.investigatorCodes(false);
       const hasFast = !!find(investigators, code => processedCampaign.campaignLog.hasCard(code, campaignMap.fast_code));
+      const location = find(campaignMap.locations, location => location.id === currentLocationId)?.name;
+      let subtitle = location ? t`Departing from ${location}` : undefined;
+      if (lang === 'ru' && currentLocationId) {
+        subtitle = russianDeparture(currentLocationId, location);
+      }
       const passProps: CampaignMapProps = {
         campaignId,
         campaignMap,
@@ -240,47 +224,11 @@ export default function ScenarioCarouselComponent({
         unlockedLocations: processedCampaign.campaignLog.campaignData.scarlet.unlockedLocations,
         unlockedDossiers: processedCampaign.campaignLog.campaignData.scarlet.unlockedDossiers,
         hasFast,
+        subtitle,
       };
-      const location = find(campaignMap.locations, location => location.id === currentLocationId)?.name;
-      let subtitle = location ? t`Departing from ${location}` : undefined;
-      if (lang === 'ru' && currentLocationId) {
-        subtitle = russianDeparture(currentLocationId, location);
-      }
-      Navigation.showModal<CampaignMapProps>({
-        stack: {
-          children: [{
-            component: {
-              name: 'Campaign.Map',
-              passProps,
-              options: {
-                topBar: {
-                  title: {
-                    text: t`Map`,
-                  },
-                  subtitle: {
-                    text: subtitle,
-                  },
-                  leftButtons: [{
-                    icon: iconsMap.dismiss,
-                    id: 'close',
-                    color: COLORS.M,
-                    accessibilityLabel: t`Close`,
-                  }],
-                },
-                layout: {
-                  backgroundColor: '0x8A9284',
-                },
-                modalPresentationStyle: Platform.OS === 'ios' ?
-                  OptionsModalPresentationStyle.fullScreen :
-                  OptionsModalPresentationStyle.overCurrentContext,
-                modalTransitionStyle: OptionsModalTransitionStyle.crossDissolve,
-              },
-            },
-          }],
-        },
-      });
+      navigation.navigate('Campaign.Map', passProps);
     }
-  }, [campaignMap, processedCampaign.campaignLog, campaignId, currentLocationId, campaignLog, onEmbark, lang]);
+  }, [navigation, campaignMap, processedCampaign.campaignLog, campaignId, currentLocationId, campaignLog, onEmbark, lang]);
 
   // eslint-disable-next-line react/no-unused-prop-types
   const renderScenario = useCallback(({ item, index }: { item: CarouselItem; index: number }) => {
@@ -294,7 +242,6 @@ export default function ScenarioCarouselComponent({
             campaignMap={campaignMap}
             showAlert={showAlert}
             processedCampaign={processedCampaign}
-            componentId={componentId}
             isActive={index === activeIndex}
             last={index === numScenarios - 1}
             finalScenario={index === lastCompletedIndex}
@@ -310,7 +257,7 @@ export default function ScenarioCarouselComponent({
           />
         );
     }
-  }, [onShowScenario, showAlert, onShowEmbark, processedCampaign, componentId,
+  }, [onShowScenario, showAlert, onShowEmbark, processedCampaign,
     campaignMap,currentLocation, lastCompletedIndex, numScenarios, activeIndex]);
   return (
     <SnapCarousel

@@ -1,13 +1,14 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 
-import { NavigationProps } from '@components/nav/types';
+
 import StyleContext from '@styles/StyleContext';
 import { m } from '@styles/space';
 import TarotCardComponent from '@components/card/TarotCardComponent';
 import { TarotCard } from '@app_constants';
 import { TAROT_CARD_RATIO } from '@styles/sizes';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
 
 export interface TarotProps {
   tarot: TarotCard;
@@ -17,7 +18,10 @@ export interface TarotProps {
   onInvert?: (id: string, inverted: boolean) => void;
 }
 
-export default function TarotOverlay({ componentId, tarot, inverted, flipped, onFlip, onInvert }: TarotProps & NavigationProps) {
+export default function TarotOverlay() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Tarot'>>();
+  const { tarot, inverted, flipped, onFlip, onInvert } = route.params;
+  const navigation = useNavigation();
   const [localFlipped, setLocalFlipped] = useState(flipped);
   const [localInverted, setLocalInverted] = useState(inverted);
   const handleInvert = useCallback((id: string, inverted: boolean) => {
@@ -32,8 +36,8 @@ export default function TarotOverlay({ componentId, tarot, inverted, flipped, on
 
   const { width, height } = useContext(StyleContext);
   const onDismiss = useCallback(() => {
-    Navigation.dismissModal(componentId);
-  }, [componentId]);
+    navigation.goBack();
+  }, [navigation]);
   const cardWidth = useMemo(() => {
     if ((width - m * 2) * TAROT_CARD_RATIO < (height - m * 2)) {
       const effectiveHeight = Math.min(height - m * 2, 500);

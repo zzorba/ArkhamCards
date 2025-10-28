@@ -14,6 +14,7 @@ import {
   maxBy,
 } from 'lodash';
 import { Platform } from 'react-native';
+import { loadAsset } from './assetLoader';
 
 import {
   CardCache,
@@ -80,30 +81,9 @@ async function insertChunk<T>(
   }
 }
 
-function rulesJson(lang?: string) {
-  switch (lang) {
-    case 'fr':
-      return require('../../assets/generated/rules_fr.json');
-    case 'es':
-      return require('../../assets/generated/rules_es.json');
-    case 'ru':
-      return require('../../assets/generated/rules_ru.json');
-    case 'de':
-      return require('../../assets/generated/rules_de.json');
-    case 'ko':
-      return require('../../assets/generated/rules_ko.json');
-    case 'zh':
-      return require('../../assets/generated/rules_zh.json');
-    case 'zh-cn':
-      return require('../../assets/generated/rules_zh-cn.json');
-    case 'pl':
-      return require('../../assets/generated/rules_pl.json');
-    case 'it':
-      return require('../../assets/generated/rules_it.json');
-    case 'en':
-    default:
-      return require('../../assets/generated/rules.json');
-  }
+async function rulesJson(lang?: string): Promise<JsonRule[]> {
+  const assetKey = lang && lang !== 'en' ? `rules_${lang}` : 'rules';
+  return await loadAsset<JsonRule[]>(assetKey);
 }
 
 export const syncRules = async function(
@@ -111,7 +91,7 @@ export const syncRules = async function(
   sqliteVersion: SqliteVersion,
   lang?: string
 ): Promise<void> {
-  const rules: JsonRule[] = rulesJson(lang);
+  const rules: JsonRule[] = await rulesJson(lang);
   const allRules = flatMap(rules, (jsonRule, index) => {
     const rule = Rule.parse(lang || 'en', jsonRule, index);
     return [rule];

@@ -1,15 +1,14 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { Navigation } from 'react-native-navigation';
+
 import { filter, find, flatMap, keys, map, partition, uniq, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
-import { c, t } from 'ttag';
+import { c } from 'ttag';
 
 import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
 import ChoiceListComponent from './ChoiceListComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import { CardSelectorProps } from '../CardSelectorView';
 import CampaignGuideContext from '../CampaignGuideContext';
 import ScenarioStepContext from '../ScenarioStepContext';
 import { CardChoiceInput, CardSearchQuery, CardQuery } from '@data/scenario/types';
@@ -21,9 +20,9 @@ import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { calculateCardChoiceResult } from '@data/scenario/inputHelper';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import ActionButton from './ActionButton';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   id: string;
   text?: string;
   promptType?: 'header' | 'setup';
@@ -113,7 +112,8 @@ function mainQuery(
   );
 }
 
-export default function CardChoicePrompt({ componentId, id, text, input, promptType }: Props) {
+export default function CardChoicePrompt({ id, text, input, promptType }: Props) {
+  const navigation = useNavigation();
   const [extraCards, setExtraCards] = useState<string[]>([]);
   const { latestDecks } = useContext(CampaignGuideContext);
   const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
@@ -144,34 +144,18 @@ export default function CardChoicePrompt({ componentId, id, text, input, promptT
       }
       return [];
     });
-
-    Navigation.push<CardSelectorProps>(componentId, {
-      component: {
-        name: 'Guide.CardSelector',
-        passProps: {
-          query: combineQueries(
-            PLAYER_CARDS_QUERY,
-            query,
-            'and'
-          ),
-          selection: extraCards,
-          onSelect: setExtraCards,
-          includeStoryToggle: true,
-          uniqueName: true,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Select Cards`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
+    navigation.navigate('Guide.CardSelector', {
+      query: combineQueries(
+        PLAYER_CARDS_QUERY,
+        query,
+        'and'
+      ),
+      selection: extraCards,
+      onSelect: setExtraCards,
+      includeStoryToggle: true,
+      uniqueName: true,
     });
-  }, [extraCards, setExtraCards, componentId, input]);
+  }, [navigation, extraCards, setExtraCards, input]);
 
   const query = useMemo(() => {
     if (selectedCards === undefined) {

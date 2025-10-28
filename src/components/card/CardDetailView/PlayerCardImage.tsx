@@ -14,11 +14,12 @@ import Card from '@data/types/Card';
 import { isBig } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { showCardImage } from '@components/nav/helper';
+import { useNavigation } from '@react-navigation/native';
 
 const SCALE_FACTOR = isBig ? 1.2 : 1.0;
 
 interface Props {
-  componentId?: string;
+  pressable?: boolean;
   card: Card;
   size?: 'tiny';
 }
@@ -126,13 +127,11 @@ function ImageContent({ card }: { card: Card }) {
   );
 }
 
-export default function PlayerCardImage({ componentId, card }: Props) {
-  const { colors } = useContext(StyleContext);
+export default function PlayerCardImage({ pressable, card }: Props) {
+  const navigation = useNavigation();
   const onPress = useCallback(() => {
-    if (componentId) {
-      showCardImage(componentId, card, colors);
-    }
-  }, [componentId, card, colors]);
+    showCardImage(navigation, card);
+  }, [navigation, card]);
 
   if (!card.hasImage()) {
     return (
@@ -142,7 +141,7 @@ export default function PlayerCardImage({ componentId, card }: Props) {
     );
   }
 
-  if (componentId) {
+  if (pressable) {
     return (
       <TouchableOpacity onPress={onPress}>
         <ImageContent card={card} />

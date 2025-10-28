@@ -1,11 +1,15 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState, useLayoutEffect } from 'react';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+import { getDeckScreenOptions } from '@components/nav/helper';
+import StyleContext from '@styles/StyleContext';
+import { t } from 'ttag';
 
 import { VERSATILE_CODE } from '@app_constants';
 import CardSearchComponent from '@components/cardlist/CardSearchComponent';
 import { queryForInvestigator } from '@lib/InvestigatorRequirements';
 import { FilterState } from '@lib/filters';
 import { STORY_CARDS_QUERY, where, combineQueries, DECK_BUILDING_OPTION_CARDS_QUERY } from '@data/sqlite/query';
-import { NavigationProps } from '@components/nav/types';
 import { useDeck } from '@data/hooks';
 import { DeckId, Slots } from '@actions/types';
 import { useInvestigatorChoice } from '@components/card/useSingleCard';
@@ -14,36 +18,67 @@ import Card from '@data/types/Card';
 import { useCardMapFromQuery } from '@components/card/useCardList';
 import { DeckEditContext, SimpleDeckEditContextProvider } from './DeckEditContext';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface EditDeckProps {
   id: DeckId;
   deckType?: 'side' | 'extra';
   storyOnly?: boolean;
   weaknessOnly?: boolean;
+  title?: string;
+  headerBackgroundColor?: string;
 }
 
-type Props = NavigationProps & EditDeckProps;
-
-export default function DeckEditViewWrapper({
-  id,
-  ...props
-}: Props) {
+export default function DeckEditViewWrapper() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Deck.EditAddCards'>>();
+  const navigation = useNavigation();
+  const { id, deckType, storyOnly, weaknessOnly } = route.params;
   const deck = useDeck(id);
+  const { colors } = useContext(StyleContext);
+
+  // Get the actual investigator Card object
+  const tabooSetId = deck?.deck.taboo_id || 0;
+  const investigator = useInvestigatorChoice(deck?.deck.investigator_code, undefined, tabooSetId);
+
+  // Set screen options with proper styling
+  useLayoutEffect(() => {
+    if (investigator) {
+      let title = t`Edit Deck`;
+      if (storyOnly) {
+        title = t`Edit Story Cards`;
+      } else if (weaknessOnly) {
+        title = t`Edit Weakness Cards`;
+      }
+
+      const screenOptions = getDeckScreenOptions(
+        colors,
+        { title },
+        investigator.front
+      );
+      navigation.setOptions(screenOptions);
+    }
+  }, [navigation, colors, investigator, storyOnly, weaknessOnly]);
+
   return (
     <SimpleDeckEditContextProvider deckId={id} investigator={deck?.investigator}>
-      <DeckEditView id={id} deck={deck} {...props} />
+      <DeckEditView
+        id={id}
+        deck={deck}
+        deckType={deckType}
+        storyOnly={storyOnly}
+        weaknessOnly={weaknessOnly}
+      />
     </SimpleDeckEditContextProvider>
   );
 }
 
 function DeckEditView({
-  componentId,
   id,
   deckType,
   storyOnly,
   weaknessOnly,
   deck,
-}: Props & { deck: LatestDeckT | undefined }) {
+}: EditDeckProps & { deck: LatestDeckT | undefined }) {
   const { deckEdits, deckBuildingMeta } = useContext(DeckEditContext);
   const tabooSetId = (deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.deck.taboo_id) || 0;
   const [hideVersatile, setHideVersatile] = useState(false);
@@ -115,7 +150,6 @@ function DeckEditView({
 
   return (
     <CardSearchComponent
-      componentId={componentId}
       deckId={id}
       baseQuery={queryOpt}
       investigator={investigator}
@@ -128,3 +162,19 @@ function DeckEditView({
     />
   );
 }
+
+function options<T extends RootStackParamList>({ route }: { route: RouteProp<T, 'Deck.EditAddCards'> }): NativeStackNavigationOptions {
+  return {
+    title: route.params?.title ?? t`Edit Deck`,
+    headerTintColor: '#FFFFFF',
+    headerTitleStyle: {
+      color: '#FFFFFF',
+    },
+    headerStyle: route.params?.headerBackgroundColor ? {
+      backgroundColor: route.params.headerBackgroundColor,
+    } : undefined,
+  };
+};
+
+DeckEditViewWrapper.options = options;
+

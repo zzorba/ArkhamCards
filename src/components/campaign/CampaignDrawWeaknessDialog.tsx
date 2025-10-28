@@ -1,36 +1,37 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useLayoutEffect, useMemo, useState } from 'react';
 import { head, find, forEach, map, sum, throttle } from 'lodash';
-import { Alert, Platform, StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { Action } from 'redux';
 import { useDispatch } from 'react-redux';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+
 import { ThunkDispatch } from 'redux-thunk';
 import { t } from 'ttag';
 
 import { CampaignId, Deck, getDeckId, OZ, Slots } from '@actions/types';
+import Card from '@data/types/Card';
 import { updateCampaignWeaknessSet } from './actions';
-import { NavigationProps } from '@components/nav/types';
 import BasicButton from '@components/core/BasicButton';
 import NavButton from '@components/core/NavButton';
 import ToggleFilter from '@components/core/ToggleFilter';
 import { saveDeckChanges } from '@components/deck/actions';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
-import { iconsMap } from '@app/NavIcons';
 import { parseDeck } from '@lib/parseDeck';
 import { AppState } from '@reducers';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
 import WeaknessDrawComponent from '@components/weakness/WeaknessDrawComponent';
-import { CampaignEditWeaknessProps } from './CampaignEditWeaknessDialog';
 import { xs } from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useInvestigators, useNavigationButtonPressed, useSlots, useLatestDeckCards } from '@components/core/hooks';
+import { useFlag, useInvestigators, useSlots, useLatestDeckCards } from '@components/core/hooks';
 import { useCampaign } from '@data/hooks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { useDeckActions } from '@data/remote/decks';
-import { useSetCampaignWeaknessSet } from '@data/remote/campaigns';
+import { useDismissOnCampaignDeleted, useSetCampaignWeaknessSet } from '@data/remote/campaigns';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import LanguageContext from '@lib/i18n/LanguageContext';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface CampaignDrawWeaknessProps {
   campaignId: CampaignId;
@@ -38,9 +39,8 @@ export interface CampaignDrawWeaknessProps {
   unsavedAssignedCards?: string[];
   saveWeakness?: (code: string, replaceRandomBasicWeakness: boolean) => void;
   alwaysReplaceRandomBasicWeakness?: boolean;
+  investigator?: Card;
 }
-
-type Props = NavigationProps & CampaignDrawWeaknessProps;
 
 type DeckDispatch = ThunkDispatch<AppState, unknown, Action>;
 
@@ -59,13 +59,17 @@ function updateSlots(slots: Slots, pendingNextCard: string, replaceRandomBasicWe
   return newSlots;
 }
 
-export default function CampaignDrawWeaknessDialog(props: Props) {
-  const { saveWeakness, componentId, campaignId, alwaysReplaceRandomBasicWeakness } = props;
+export default function CampaignDrawWeaknessDialog() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Dialog.CampaignDrawWeakness'>>();
+  const navigation = useNavigation();
+  const { saveWeakness, campaignId, alwaysReplaceRandomBasicWeakness } = route.params;
   const { borderStyle } = useContext(StyleContext);
   const dispatch: DeckDispatch = useDispatch();
   const deckActions = useDeckActions();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const campaign = useCampaign(campaignId);
+  useDismissOnCampaignDeleted(navigation, campaign);
+
   const investigatorsCodes = useMemo(() => map(campaign?.latestDecks(), d => d.investigator), [campaign]);
   const investigators = useInvestigators(investigatorsCodes);
   const latestDecks = campaign?.latestDecks();
@@ -88,45 +92,33 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
   }, [investigators, campaign]);
   const weaknessSet = campaign?.weaknessSet;
 
-  const [selectedDeck, setSelectedDeck] = useState<LatestDeckT | undefined>(props.deckSlots ? undefined : head(latestDecks));
+  const [selectedDeck, setSelectedDeck] = useState<LatestDeckT | undefined>(route.params.deckSlots ? undefined : head(latestDecks));
   const [replaceRandomBasicWeakness, toggleReplaceRandomBasicWeakness] = useFlag(true);
   const [saving, setSaving] = useState(false);
   const [pendingNextCard, setPendingNextCard] = useState<string | undefined>();
   const [pendingAssignedCards, updatePendingAssignedCards] = useSlots({});
-  const [unsavedAssignedCards, setUnsavedAssignedCards] = useState<string[]>(props.unsavedAssignedCards || []);
-  const [deckSlots, updateDeckSlots] = useSlots(props.deckSlots || {});
+  const [unsavedAssignedCards, setUnsavedAssignedCards] = useState<string[]>(route.params.unsavedAssignedCards || []);
+  const [deckSlots, updateDeckSlots] = useSlots(route.params.deckSlots || {});
 
   const showEditWeaknessDialog = useCallback(() => {
-    Navigation.push<CampaignEditWeaknessProps>(componentId, {
-      component: {
-        name: 'Dialog.CampaignEditWeakness',
-        passProps: {
-          campaignId: props.campaignId,
-        },
-      },
-    });
-  }, [componentId, props.campaignId]);
+    navigation.navigate('Dialog.CampaignEditWeakness', { campaignId: route.params.campaignId });
+  }, [navigation, route.params.campaignId]);
 
   const showEditWeaknessDialogPressed = useMemo(() => throttle(showEditWeaknessDialog, 200), [showEditWeaknessDialog]);
-  useEffect(() => {
-    if (!props.deckSlots) {
-      Navigation.mergeOptions(componentId, {
-        topBar: {
-          rightButtons: [{
-            icon: iconsMap.edit,
-            id: 'edit',
-            color: COLORS.M,
-            accessibilityLabel: t`Edit Assigned Weaknesses`,
-          }],
-        },
-      });
+  useLayoutEffect(() => {
+    if (!route.params.deckSlots) {
+      navigation.setOptions({
+        headerRight: () => (
+          <HeaderButton
+            iconName="edit"
+            color={COLORS.M}
+            accessibilityLabel={t`Edit Assigned Weaknesses`}
+            onPress={showEditWeaknessDialogPressed}
+          />
+        ),
+      })
     }
-  }, [props.deckSlots, componentId]);
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'edit') {
-      showEditWeaknessDialogPressed();
-    }
-  }, componentId, [showEditWeaknessDialogPressed]);
+  }, [route.params.deckSlots, navigation, showEditWeaknessDialogPressed]);
 
   const selectDeck = useCallback(async(deck: Deck) => {
     const id = getDeckId(deck);
@@ -136,28 +128,14 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
 
   const onPressInvestigator = useCallback(() => {
     const passProps: MyDecksSelectorProps = {
-      campaignId: props.campaignId,
+      campaignId: route.params.campaignId,
       onDeckSelect: selectDeck,
       selectedDecks: latestDecks,
       onlyShowSelected: true,
       includeParallel: campaign?.cycleCode === OZ,
     };
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Dialog.DeckSelector',
-            passProps,
-            options: {
-              modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.fullScreen :
-                OptionsModalPresentationStyle.overCurrentContext,
-            },
-          },
-        }],
-      },
-    });
-  }, [latestDecks, props.campaignId, selectDeck, campaign?.cycleCode]);
+    navigation.navigate('Dialog.DeckSelector', passProps);
+  }, [latestDecks, route.params.campaignId, selectDeck, campaign?.cycleCode, navigation]);
 
   const updateDrawnCard = useCallback((nextCard: string, assignedCards: Slots) => {
     setPendingNextCard(nextCard);
@@ -294,7 +272,6 @@ export default function CampaignDrawWeaknessDialog(props: Props) {
   const investigator = selectedDeck && investigators && investigators[selectedDeck.investigator];
   return (
     <WeaknessDrawComponent
-      componentId={componentId}
       playerCount={playerCount}
       campaignMode
       investigator={investigator}

@@ -5,7 +5,7 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { filter, find, flatMap, map, forEach, values } from 'lodash';
 import { t } from 'ttag';
@@ -18,18 +18,18 @@ import { AppState, getAllDecks } from '@reducers';
 import { DeckMergeResult, mergeCampaigns, mergeDecks } from './backupHelper';
 import { restoreComplexBackup } from '@components/campaign/actions';
 import COLORS from '@styles/colors';
-import { NavigationProps } from '@components/nav/types';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import { useAllInvestigators, useNavigationButtonPressed, useToggles } from '@components/core/hooks';
+import { useAllInvestigators, useToggles } from '@components/core/hooks';
 import { migrateCampaigns, migrateDecks, migrateGuides } from '@reducers/migrators';
 import { CardsMap } from '@data/types/Card';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BasicStackParamList } from '@navigation/types';
+import HeaderButton from '@components/core/HeaderButton';
 
 export interface MergeBackupProps {
   backupData: BackupState | LegacyBackupState;
 }
-
-type Props = MergeBackupProps & NavigationProps;
 
 function dependentDecks(decks: Deck[], deckMerge: DeckMergeResult) {
   return flatMap(decks, deck => {
@@ -47,9 +47,12 @@ function dependentDecks(decks: Deck[], deckMerge: DeckMergeResult) {
   });
 }
 
-function MergeBackupView({ backupData, componentId }: Props) {
+function MergeBackupView() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Settings.MergeBackup'>>();
+  const { backupData } = route.params
   const { backgroundStyle, colors } = useContext(StyleContext);
   const decks = useSelector(getAllDecks);
+  const navigation = useNavigation();
   const migratedBackupData: BackupState = useMemo(() => {
     if (backupData.version === 1) {
       // Already migrated.
@@ -102,20 +105,6 @@ function MergeBackupView({ backupData, componentId }: Props) {
   }, [campaignMerge, importCampaigns]);
 
   const canImport = selectedCampaigns.length > 0 || selectedDecks.length > 0;
-  useEffect(() => {
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        rightButtons: [{
-          text: t`Import`,
-          id: 'import',
-          color: COLORS.M,
-          enabled: canImport,
-          accessibilityLabel: t`Import`,
-        }],
-      },
-    });
-  }, [componentId, canImport]);
-
   const onCampaignChange = useCallback((campaign: Campaign, value: boolean) => {
     if (campaign.uuid) {
       setImportCampaigns(campaign.uuid, value);
@@ -134,8 +123,9 @@ function MergeBackupView({ backupData, componentId }: Props) {
       selectedGuides,
       selectedDecks,
     ));
-    Navigation.pop(componentId);
-  }, [componentId, migratedBackupData.guides, selectedCampaigns, selectedDecks, dispatch]);
+    navigation.goBack();
+
+  }, [navigation, migratedBackupData.guides, selectedCampaigns, selectedDecks, dispatch]);
 
   const doImport = useCallback(() => {
     const importedDecks = new Set(map(selectedDecks, deck => getDeckId(deck).uuid));
@@ -158,16 +148,22 @@ function MergeBackupView({ backupData, componentId }: Props) {
       actuallyDoImport();
     }
   }, [deckMerge, selectedCampaigns, selectedDecks, actuallyDoImport]);
-
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'import' && canImport) {
-      doImport();
-    }
-  }, componentId, [doImport, canImport]);
-
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButton
+          text={t`Import`}
+          accessibilityLabel={t`Import`}
+          color={COLORS.M}
+          disabled={!canImport}
+          onPress={doImport}
+        />
+      ),
+    });
+  }, [canImport, navigation, doImport]);
   const cancel = useCallback(() => {
-    Navigation.pop(componentId);
-  }, [componentId]);
+    navigation.goBack();
+  }, [navigation]);
   const [allInvestigators] = useAllInvestigators();
   const investigators = useMemo(() => {
     const r: CardsMap = {};

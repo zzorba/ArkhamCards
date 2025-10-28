@@ -23,7 +23,7 @@ import {
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
 import { useSelector } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+
 import { msgid, ngettext, t } from 'ttag';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 
@@ -54,9 +54,9 @@ import DeckValidation from '@lib/DeckValidation';
 import { THE_INSANE_CODE } from '@data/deck/specialCards';
 import { DeckEditContext, useDeckDeltas, useCurrentDeckTabooSet } from '@components/deck/DeckEditContext';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   deck?: LatestDeckT;
   currentDeckOnly?: boolean;
   query?: (deckEdits: Slots | undefined) => Brackets;
@@ -286,7 +286,6 @@ function useDeckQuery(
 }
 
 interface SectionFeedProps {
-  componentId: string;
   toQuery?: (deckEdits: Slots | undefined) => Brackets;
   sorts?: SortType[];
   tabooSetId?: number;
@@ -325,7 +324,6 @@ interface LoadedState {
 }
 
 function useSectionFeed({
-  componentId,
   hasHeader,
   toQuery,
   investigator,
@@ -345,6 +343,7 @@ function useSectionFeed({
   expandSearchControlsHeight = 0,
   customizations,
 }: SectionFeedProps): SectionFeed {
+  const navigation = useNavigation();
   const { db } = useContext(DatabaseContext);
   const { listSeperator } = useContext(LanguageContext);
   const { fontScale } = useContext(StyleContext);
@@ -405,19 +404,8 @@ function useSectionFeed({
   const expandSectionRef = useRef<(sectionId: string) => void>(null);
   const editCollectionSettings = useCallback(() => {
     Keyboard.dismiss();
-    Navigation.push(componentId, {
-      component: {
-        name: 'My.Collection',
-        options: {
-          topBar: {
-            title: {
-              text: t`Edit Collection`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId]);
+    navigation.navigate('My.Collection', {});
+  }, [navigation]);
   const [visibleCards, partialItems, spoilerCardsCount] = useMemo(() => {
     const items: PartialItem[] = [];
     const result: PartialCard[] = [];
@@ -653,22 +641,8 @@ function useSectionFeed({
 
   const editSpoilerSettings = useCallback(() => {
     Keyboard.dismiss();
-    Navigation.push(componentId, {
-      component: {
-        name: 'My.Spoilers',
-        options: {
-          topBar: {
-            title: {
-              text: t`Spoiler Settings`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  }, [componentId]);
+    navigation.navigate('My.Spoilers')
+  }, [navigation]);
   // tslint:disable-next-line: strict-comparisons
 
   const refreshingSearch = (!!deckQuery && (deckCardsTextQuery !== textQuery || deckCardsLoading)) || (textQueryCardsTextQuery !== textQuery);
@@ -893,7 +867,6 @@ function itemHeight(item: Item, fontScale: number, headerHeight: number, lang: s
 
 export default function DbCardResultList(props: Props) {
   const {
-    componentId,
     deck,
     currentDeckOnly,
     query: toQuery,
@@ -921,10 +894,11 @@ export default function DbCardResultList(props: Props) {
   } = props;
   const { db } = useContext(DatabaseContext);
   const { deckId } = useContext(DeckEditContext);
+  const navigation = useNavigation();
   // const deck = parsedDeck?.deckT;
   // const { deckEdits, deckId } = useContext(DeckEditContext);
   const customizations = useLiveCustomizations(deck);
-  const { colors, borderStyle, fontScale, typography, width } = useContext(StyleContext);
+  const { borderStyle, colors, fontScale, typography, width } = useContext(StyleContext);
   const tabooSetOverride = useCurrentDeckTabooSet();
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
@@ -942,7 +916,6 @@ export default function DbCardResultList(props: Props) {
     refreshDeck,
     query,
   } = useSectionFeed({
-    componentId,
     investigator,
     toQuery,
     sorts,
@@ -987,7 +960,7 @@ export default function DbCardResultList(props: Props) {
     cardPressed && cardPressed(card);
     if (singleCardView) {
       showCard(
-        componentId,
+        navigation,
         card.code,
         card,
         colors,
@@ -1009,11 +982,11 @@ export default function DbCardResultList(props: Props) {
     });
     const cards = flatMap(feed, item => item.type === 'card' ? item.card : []);
     showCardSwipe(
-      componentId,
+      navigation,
+      colors,
       codes,
       specialMode,
       index,
-      colors,
       cards,
       showSpoilerCards,
       tabooSetOverride,
@@ -1022,7 +995,7 @@ export default function DbCardResultList(props: Props) {
       true,
       customizations
     );
-  }, [customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, colors, deckId, investigator, componentId, specialMode, cardPressed]);
+  }, [navigation, colors, customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, deckId, investigator, specialMode, cardPressed]);
   const { lang } = useContext(LanguageContext);
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {

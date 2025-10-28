@@ -129,7 +129,6 @@ msgstr "Grundschwäche ziehen"
 msgid "Draw From Collection"
 msgstr "Aus Sammlung ziehen"
 
-#. This is a deck upgrade action.
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -193,9 +192,6 @@ msgstr "Alle Schwächen wurden gezogen."
 msgid "Save to Deck"
 msgstr "Deck speichern"
 
-msgid "Nevermind"
-msgstr "Egal"
-
 msgid "Restore campaign data?"
 msgstr "Kampagnendaten wiederherstellen?"
 
@@ -252,9 +248,6 @@ msgstr "Fehler: Karten erneut überprüfen"
 
 msgid "Card Collection"
 msgstr "Kartensammlung"
-
-msgid "Spoiler Settings"
-msgstr "Spoilereinstellungen"
 
 msgid "Elite"
 msgstr "Elite"
@@ -794,19 +787,19 @@ msgstr "Chaosbeutel"
 msgid "Adjust Weakness Set"
 msgstr "Schwächeset anpassen"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Dieses Deck enthält mehrere Grundschwächen"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Dieses Deck enthält eine Grundschwäche"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Willst du sie aus dem Grundschwächenset der Kampagne entfernen?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Willst du es aus dem Grundschwächenset der Kampagne entfernen?"
 
@@ -1669,7 +1662,6 @@ msgstr "Keine Änderungen"
 msgid "Card changes"
 msgstr "Kartenänderungen"
 
-#. Actually compute the diffs.
 msgid "Upgrade History"
 msgstr "Upgrade-Verlauf"
 
@@ -1758,18 +1750,6 @@ msgstr "Zu viele"
 
 msgid "Not enough"
 msgstr "Nicht genug"
-
-msgid "Reset Scenario?"
-msgstr "Szenario zurücksetzen?"
-
-msgid ""
-"Are you sure you want to reset this scenario?\n"
-"\n"
-"All data you have entered will be lost."
-msgstr ""
-"Sind sie sicher, dass sie dieses Szenario zurücksetzen wollen?\n"
-"\n"
-"Alle eingegebenen Daten gehen verloren."
 
 #, javascript-format
 msgid "Set the ${ encounterSetString } encounter set aside, out of play."
@@ -2643,9 +2623,6 @@ msgstr "Suchoptionen"
 
 msgid "Search in:"
 msgstr "Suchen in:"
-
-msgid "Encounter Card Toggle"
-msgstr "Begegnungskarten umschalten"
 
 msgid "Show all available cards"
 msgstr "Zeige alle verfügbaren Karten"
@@ -3866,9 +3843,6 @@ msgstr "Im Kampagnenlogbuch notieren"
 msgid "Review and add records"
 msgstr "Einträge prüfen und hinzufügen"
 
-msgid "Chaos bag"
-msgstr "Chaosbeutel"
-
 msgid "Draw random"
 msgstr "Zufällig ziehen"
 
@@ -4299,9 +4273,6 @@ msgstr "Wähle Art der Heilung"
 
 msgid "Chosen heal type"
 msgstr "Gewähle Art der Heilung"
-
-msgid "Assigned weaknesses"
-msgstr "Schwäche zuweisen"
 
 msgid "Review and draw weaknesses"
 msgstr "Schwächen anschauen und ziehen"
@@ -4879,9 +4850,6 @@ msgstr "Drafte mit deiner Kartensammlung"
 msgid "Draft Pool"
 msgstr "Draft Pool"
 
-msgid "Grid"
-msgstr "Raster"
-
 msgid "Invalid deck"
 msgstr "Ungültiges Deck"
 
@@ -5053,34 +5021,34 @@ msgid "Destiny Tarot Reading"
 msgstr "Schicksals Kartenlesung"
 
 msgid "The Tatterdemalion"
-msgstr ""
+msgstr "Die Tatterdemalion"
 
 msgid "Electric Nightmare"
-msgstr ""
+msgstr "Elektrischer Albtraum"
 
 msgid "Mission Briefing"
-msgstr ""
+msgstr "Missionsbesprechung"
 
 msgid "Lost Quantum"
-msgstr ""
+msgstr "Verlorene Quanten"
 
 msgid "In the Shadow of Earth"
-msgstr ""
+msgstr "Im Schatten der Erde"
 
 msgid "Strange Moons"
-msgstr ""
+msgstr "Fremdartige Monde"
 
 msgid "Introspection"
-msgstr ""
+msgstr "Introspektive"
 
 msgid "The Machine in Yellow"
-msgstr ""
+msgstr "Die Maschine in Gelb"
 
 msgid "Fragment of Carcosa"
-msgstr ""
+msgstr "Bruchstück von Carcosa"
 
 msgid "Starfall"
-msgstr ""
+msgstr "Sternenschauer"
 
 msgid "Arkham in Wonderland"
 msgstr ""
@@ -6291,13 +6259,55 @@ msgid "Current:"
 msgstr "Aktuell:"
 
 msgid "Cycles (select 3)"
-msgstr ""
+msgstr "Zyklen (wähle 3)"
 
 msgid "When the World Screamed"
 msgstr ""
 
 msgid "Contains cards not in the selected card pool."
+msgstr "Beinhaltet Karten außerhalb vom gewählten Kartenpool."
+
+msgid "Card"
+msgstr "Karte"
+
+msgid "Edit Scenario Result"
+msgstr "Szenario Ergebnis ändern"
+
+msgid "Location Setup"
+msgstr "Ort Platzierung"
+
+msgid "Merge Backup"
+msgstr "Backup zusammenführen"
+
+msgid "Safe Mode"
+msgstr "Sicherer Modus"
+
+msgid "Choose Packs"
+msgstr "Packs auswählen"
+
+msgid "Rule"
+msgstr "Regel"
+
+msgid "Card Upgrade"
+msgstr "Kartenupgrade"
+
+msgid "Contains cards that are not in the selected card pool."
+msgstr "Beinhaltet Karten außerhalb vom gewählten Kartenpool."
+
+msgid "Select"
+msgstr "Auswählen"
+
+msgid "Card Image"
+msgstr "Kartenbild"
+
+msgid "Taboos"
 msgstr ""
+
+msgid "Edit Name"
+msgstr "Name ändern"
+
+msgid "Scenario results"
+msgstr "Szenario Ergebnisse"
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7397,7 +7407,7 @@ msgstr "Doppelt"
 
 msgctxt "trait"
 msgid "AI"
-msgstr ""
+msgstr "KI"
 
 msgctxt "trait"
 msgid "Abandoned"
@@ -7413,15 +7423,15 @@ msgstr "Alexandria"
 
 msgctxt "trait"
 msgid "Ally? Creature"
-msgstr ""
+msgstr "Verbündeter? Kreatur"
 
 msgctxt "trait"
 msgid "Ancient One?"
-msgstr ""
+msgstr "Großer Alter?"
 
 msgctxt "trait"
 msgid "Bad dog"
-msgstr ""
+msgstr "Böser Hund"
 
 msgctxt "trait"
 msgid "Bazaar"
@@ -7509,7 +7519,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Footwear, but not really"
-msgstr ""
+msgstr "Schuhwerk, aber nicht wirklich"
 
 msgctxt "trait"
 msgid "Hardship"
@@ -7573,15 +7583,15 @@ msgstr "Marrakesh"
 
 msgctxt "trait"
 msgid "Medical"
-msgstr ""
+msgstr "Medizinisch"
 
 msgctxt "trait"
 msgid "Music"
-msgstr ""
+msgstr "Musik"
 
 msgctxt "trait"
 msgid "Musician"
-msgstr ""
+msgstr "Musiker"
 
 msgctxt "trait"
 msgid "Northside"
@@ -7597,23 +7607,23 @@ msgstr "Außenseiter"
 
 msgctxt "trait"
 msgid "Parasitic"
-msgstr ""
+msgstr "Parasitär"
 
 msgctxt "trait"
 msgid "Plains"
-msgstr ""
+msgstr "Ebene"
 
 msgctxt "trait"
 msgid "Priestess"
-msgstr ""
+msgstr "Priesterin"
 
 msgctxt "trait"
 msgid "Pup"
-msgstr ""
+msgstr "Welpe"
 
 msgctxt "trait"
 msgid "Resonant"
-msgstr ""
+msgstr "Nachhallend"
 
 msgctxt "trait"
 msgid "Restricted"
@@ -7641,7 +7651,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Shadow"
-msgstr ""
+msgstr "Schatten"
 
 msgctxt "trait"
 msgid "Shapeshifter"
@@ -7653,15 +7663,15 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Sister"
-msgstr ""
+msgstr "Schwester"
 
 msgctxt "trait"
 msgid "Slope"
-msgstr ""
+msgstr "Abhang"
 
 msgctxt "trait"
 msgid "Soldier"
-msgstr ""
+msgstr "Soldat"
 
 msgctxt "trait"
 msgid "Stable"
@@ -7669,19 +7679,19 @@ msgstr "Stabil"
 
 msgctxt "trait"
 msgid "Stop"
-msgstr ""
+msgstr "Stopp"
 
 msgctxt "trait"
 msgid "Table"
-msgstr ""
+msgstr "Tisch"
 
 msgctxt "trait"
 msgid "Tatterdemalion"
-msgstr ""
+msgstr "Tatterdemalion"
 
 msgctxt "trait"
 msgid "That's bad"
-msgstr ""
+msgstr "Das ist schlecht"
 
 msgctxt "trait"
 msgid "Tower"
@@ -7689,15 +7699,15 @@ msgstr "Turm"
 
 msgctxt "trait"
 msgid "Traitor"
-msgstr ""
+msgstr "Verräter"
 
 msgctxt "trait"
 msgid "Tulgey Wood"
-msgstr ""
+msgstr "Wälder von Tulgey"
 
 msgctxt "trait"
 msgid "Underground"
-msgstr ""
+msgstr "Untergrund"
 
 msgctxt "trait"
 msgid "Unstable"
@@ -7705,23 +7715,23 @@ msgstr "Instabil"
 
 msgctxt "trait"
 msgid "Upper Floor"
-msgstr ""
+msgstr "Obergeschoss"
 
 msgctxt "trait"
 msgid "Virtual"
-msgstr ""
+msgstr "Virtuell"
 
 msgctxt "trait"
 msgid "Weather"
-msgstr ""
+msgstr "Wetter"
 
 msgctxt "trait"
 msgid "What? No"
-msgstr ""
+msgstr "Was? Nein"
 
 msgctxt "trait"
 msgid "Wonderland"
-msgstr ""
+msgstr "Wunderland"
 
 msgctxt "trait"
 msgid "Yuggoth"
@@ -7737,11 +7747,11 @@ msgstr "Farbe"
 
 msgctxt "trait"
 msgid "Crew"
-msgstr ""
+msgstr "Crew"
 
 msgctxt "trait"
 msgid "Delta"
-msgstr ""
+msgstr "Delta"
 
 msgctxt "trait"
 msgid "Emissary"
@@ -7753,11 +7763,11 @@ msgstr "Spiel"
 
 msgctxt "trait"
 msgid "Inconspicuous"
-msgstr ""
+msgstr "Unauffällig"
 
 msgctxt "trait"
 msgid "Miasma"
-msgstr ""
+msgstr "Miasma"
 
 msgctxt "trait"
 msgid "Public"
@@ -7805,7 +7815,7 @@ msgstr "Ruhend"
 
 msgctxt "trait"
 msgid "Fairy"
-msgstr ""
+msgstr "Fee"
 
 msgctxt "trait"
 msgid "Farm"
@@ -7821,11 +7831,11 @@ msgstr "Wald"
 
 msgctxt "trait"
 msgid "Hemlock Vale"
-msgstr ""
+msgstr "Hemlock Vale"
 
 msgctxt "trait"
 msgid "Kingsport"
-msgstr ""
+msgstr "Kingsport"
 
 msgctxt "trait"
 msgid "Lantern Club"
@@ -7841,7 +7851,7 @@ msgstr "Angezündet"
 
 msgctxt "trait"
 msgid "Machination"
-msgstr ""
+msgstr "Machenschaft"
 
 msgctxt "trait"
 msgid "Manor"
@@ -7853,11 +7863,11 @@ msgstr "Unglück"
 
 msgctxt "trait"
 msgid "Oz"
-msgstr ""
+msgstr "Oz"
 
 msgctxt "trait"
 msgid "Plot"
-msgstr ""
+msgstr "Handlung"
 
 msgctxt "trait"
 msgid "Rival"
@@ -7885,35 +7895,35 @@ msgstr "Erloschen"
 
 msgctxt "trait"
 msgid "Adrift"
-msgstr ""
+msgstr "Treibend"
 
 msgctxt "trait"
 msgid "Arkham?"
-msgstr ""
+msgstr "Arkham?"
 
 msgctxt "trait"
 msgid "Artifact"
-msgstr ""
+msgstr "Artefakt"
 
 msgctxt "trait"
 msgid "Brand"
-msgstr ""
+msgstr "Marke"
 
 msgctxt "trait"
 msgid "Completed"
-msgstr ""
+msgstr "Vollendet"
 
 msgctxt "trait"
 msgid "Cretaceous"
-msgstr ""
+msgstr "Kreidezeitlich"
 
 msgctxt "trait"
 msgid "Egypt"
-msgstr ""
+msgstr "Ägypten"
 
 msgctxt "trait"
 msgid "France"
-msgstr ""
+msgstr "Frankreich"
 
 msgctxt "trait"
 msgid "Glyph"
@@ -7921,19 +7931,19 @@ msgstr "Glyphe"
 
 msgctxt "trait"
 msgid "Headgear"
-msgstr ""
+msgstr "Kopfschmuck"
 
 msgctxt "trait"
 msgid "Incomplete"
-msgstr ""
+msgstr "Unvollendet"
 
 msgctxt "trait"
 msgid "Monsters"
-msgstr ""
+msgstr "Monster"
 
 msgctxt "trait"
 msgid "Posture"
-msgstr ""
+msgstr "Haltung"
 
 msgctxt "trait"
 msgid "Prosthesis"
@@ -7965,11 +7975,11 @@ msgstr "Student"
 
 msgctxt "trait"
 msgid "Symbiote"
-msgstr ""
+msgstr "Symbiont"
 
 msgctxt "trait"
 msgid "Tandem"
-msgstr ""
+msgstr "Tandem"
 
 #, javascript-format
 msgctxt "masculine"
@@ -8718,7 +8728,7 @@ msgstr "Zeit"
 
 msgctxt "uses"
 msgid "Treats"
-msgstr ""
+msgstr "Leckerli"
 
 msgctxt "Slots"
 msgid "All"

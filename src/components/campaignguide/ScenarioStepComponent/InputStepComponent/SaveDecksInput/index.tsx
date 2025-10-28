@@ -13,13 +13,12 @@ import { useDeckActions } from '@data/remote/decks';
 import InputWrapper from '@components/campaignguide/prompts/InputWrapper';
 
 interface Props {
-  componentId: string;
   id: string;
   includeTrauma: boolean | undefined;
   adjustXp: boolean | undefined;
 }
 
-export default function SaveDecksInput({ componentId, id, includeTrauma, adjustXp }: Props) {
+export default function SaveDecksInput({ id, includeTrauma, adjustXp }: Props) {
   const { latestDecks, campaignState } = useContext(CampaignGuideContext);
   const { scenarioState } = useContext(ScenarioGuideContext);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
@@ -123,7 +122,6 @@ export default function SaveDecksInput({ componentId, id, includeTrauma, adjustX
             key={investigator.code}
             actions={deckActions}
             id={id}
-            componentId={componentId}
             campaignLog={campaignLog}
             campaignState={campaignState}
             scenarioState={scenarioState}

@@ -1,12 +1,13 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState, useLayoutEffect } from 'react';
 import { forEach, keys } from 'lodash';
 import { StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
 
 import WeaknessDrawComponent from './WeaknessDrawComponent';
 import { t } from 'ttag';
 import { Slots } from '@actions/types';
-import { NavigationProps } from '@components/nav/types';
 import { getPacksInCollection } from '@reducers';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { xs } from '@styles/space';
@@ -15,6 +16,7 @@ import ToggleFilter from '@components/core/ToggleFilter';
 import StyleContext from '@styles/StyleContext';
 import BasicButton from '@components/core/BasicButton';
 import Card, { cardInCollection } from '@data/types/Card';
+import COLORS from '@styles/colors';
 
 export interface DrawWeaknessProps {
   investigator: Card | undefined;
@@ -23,10 +25,21 @@ export interface DrawWeaknessProps {
   alwaysReplaceRandomBasicWeakness?: boolean;
 }
 
-type Props = NavigationProps & DrawWeaknessProps;
+export default function WeaknessDrawDialog() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Weakness.Draw'>>();
+  const navigation = useNavigation();
+  const { investigator, saveWeakness, slots: originalSlots, alwaysReplaceRandomBasicWeakness } = route.params;
+  const { borderStyle, colors } = useContext(StyleContext);
 
-export default function WeaknessDrawDialog({ componentId, investigator, saveWeakness, slots: originalSlots, alwaysReplaceRandomBasicWeakness }: Props) {
-  const { borderStyle } = useContext(StyleContext);
+  useLayoutEffect(() => {
+    const backgroundColor = colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
+    navigation.setOptions({
+      headerStyle: {
+        backgroundColor,
+      },
+      headerTintColor: COLORS.white,
+    });
+  }, [navigation, colors, investigator]);
   const [replaceRandomBasicWeakness, toggleReplaceRandomBasicWeakness] = useFlag(true);
   const [slots, updateSlots] = useSlots(originalSlots);
   const [saving, setSaving] = useState(false);
@@ -107,7 +120,6 @@ export default function WeaknessDrawDialog({ componentId, investigator, saveWeak
 
   return (
     <WeaknessDrawComponent
-      componentId={componentId}
       investigator={investigator}
       customFlippedHeader={flippedHeader}
       customHeader={customHeader}

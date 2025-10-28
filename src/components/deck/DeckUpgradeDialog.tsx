@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useRef, useState, useLayoutEffect } from 'react';
 import { find, last } from 'lodash';
 import {
   View,
@@ -7,20 +7,22 @@ import {
   Text,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import { useRoute, RouteProp, useNavigation, CommonActions } from '@react-navigation/native';
+import { RootStackParamList } from '@navigation/types';
+import { getDeckScreenOptions, showDeckModal } from '@components/nav/helper';
+import COLORS from '@styles/colors';
+
 import { t } from 'ttag';
 
 import DeckUpgradeComponent, { DeckUpgradeHandles } from './DeckUpgradeComponent';
 import { CampaignId, Deck, DeckId, getDeckId, Slots, Trauma } from '@actions/types';
-import { NavigationProps } from '@components/nav/types';
-import { showDeckModal } from '@components/nav/helper';
 import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
 import { updateCampaignInvestigatorTrauma } from '@components/campaign/actions';
 import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignDeck } from '@data/hooks';
-import { useNavigationButtonPressed, useSlots } from '@components/core/hooks';
+import { useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import useDeckUpgradeAction from './useDeckUpgradeAction';
 import { useDeckActions } from '@data/remote/decks';
@@ -38,6 +40,7 @@ export interface UpgradeDeckProps {
   id: DeckId;
   campaignId?: CampaignId;
   showNewDeck: boolean;
+  headerBackgroundColor?: string;
 }
 
 const EMPTY_TRAUMA = {};
@@ -68,13 +71,48 @@ function useCampaignInvestigatorForCampaign(campaign: SingleCampaignT | undefine
 }
 
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
-function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
+export default function DeckUpgradeDialog() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Deck.Upgrade'>>();
+  const navigation = useNavigation();
+  const { id, campaignId, showNewDeck } = route.params;
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const actions = useDeckActions();
   const updateCampaignActions = useUpdateCampaignActions();
   const deck = useCampaignDeck(id, campaignId);
   const campaign = useCampaign(campaignId);
   const deckUpgradeComponent = useRef<DeckUpgradeHandles>(null);
+  const investigator = useCampaignInvestigatorForCampaign(campaign, deck);
+
+  const save = useCallback(() => {
+    if (deckUpgradeComponent.current) {
+      deckUpgradeComponent.current.save();
+    }
+  }, [deckUpgradeComponent]);
+
+  // Set screen options with proper styling, custom back button, and Save button
+  useLayoutEffect(() => {
+    if (investigator) {
+      const screenOptions = getDeckScreenOptions(
+        colors,
+        { title: t`Upgrade Deck`, initialMode: 'upgrade' },
+        investigator.card
+      );
+      // Custom back button text
+      screenOptions.headerBackTitle = t`Cancel`;
+      // Ensure tint color is dark for upgrade mode (controls back button color)
+      screenOptions.headerTintColor = COLORS.D30;
+      // Add Save button (use dark color for upgrade mode to match header tint)
+      screenOptions.headerRight = () => (
+        <Text
+          style={{ color: COLORS.D30, fontSize: 16, fontFamily: 'Alegreya-Medium' }}
+          onPress={save}
+        >
+          {t`Save`}
+        </Text>
+      );
+      navigation.setOptions(screenOptions);
+    }
+  }, [navigation, colors, investigator, save]);
 
   const latestScenario = useMemo(() => campaign && last(campaign.scenarioResults || []), [campaign]);
   const scenarioName = latestScenario ? latestScenario.scenario : undefined;
@@ -89,29 +127,55 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   }, [setTraumaUpdate]);
   const { showTraumaDialog, traumaDialog } = useTraumaDialog(setInvestigatorTrauma);
 
-  const save = useCallback(() => {
-    if (deckUpgradeComponent.current) {
-      deckUpgradeComponent.current.save();
-    }
-  }, [deckUpgradeComponent]);
 
-  useNavigationButtonPressed(({ buttonId }) => {
-    if (buttonId === 'save') {
-      save();
-    }
-  }, componentId, [save]);
-
-  const investigator = useCampaignInvestigatorForCampaign(campaign, deck);
   const deckUpgradeComplete = useCallback(async(deck: Deck) => {
     if (campaignId && traumaUpdate) {
       return dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, deck.investigator_code, traumaUpdate));
     }
     if (showNewDeck) {
-      showDeckModal(getDeckId(deck), deck, campaign?.id, colors, investigator?.card, 'upgrade');
+      const newDeckId = getDeckId(deck);
+      const backgroundColor = investigator ? colors.faction[investigator.card.factionCode()].background : undefined;
+
+      // Get the current navigation state
+      const state = navigation.getState();
+
+      // Find the index of the original Deck screen (with the old deck ID)
+      const deckScreenIndex = state.routes.findIndex(
+        (route: any) => route.name === 'Deck' && route.params?.id?.uuid === id.uuid
+      );
+
+      if (deckScreenIndex !== -1) {
+        // Remove everything from the original Deck screen onwards, then push the new Deck
+        const routesToKeep = state.routes.slice(0, deckScreenIndex);
+        navigation.dispatch(
+          CommonActions.reset({
+            ...state,
+            routes: [
+              ...routesToKeep,
+              {
+                name: 'Deck',
+                params: {
+                  id: newDeckId,
+                  modal: true,
+                  campaignId: campaign?.id,
+                  title: investigator?.card.name ?? t`Deck`,
+                  subtitle: deck.name,
+                  initialMode: 'upgrade',
+                  headerBackgroundColor: backgroundColor,
+                },
+              },
+            ],
+            index: routesToKeep.length,
+          })
+        );
+      } else {
+        // Fallback to the old behavior if we can't find the original deck
+        showDeckModal(navigation, colors, newDeckId, deck, campaign?.id, investigator?.card, 'upgrade');
+      }
     } else {
-      Navigation.pop(componentId);
+      navigation.goBack();
     }
-  }, [showNewDeck, componentId, campaignId, campaign, dispatch, updateCampaignActions, colors, investigator, traumaUpdate]);
+  }, [showNewDeck, navigation, colors, campaignId, campaign, dispatch, updateCampaignActions, investigator, traumaUpdate, id]);
 
   const onStoryCountsChange = useCallback((storyCounts: Slots) => {
     updateStoryCounts({ type: 'sync', slots: storyCounts });
@@ -132,7 +196,6 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
           />
         ) }
         <StoryCardSelectorComponent
-          componentId={componentId}
           investigator={investigator}
           deck={deck}
           updateStoryCounts={onStoryCountsChange}
@@ -141,7 +204,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
         />
       </>
     );
-  }, [deck, componentId, campaign, showTraumaDialog, storyEncounterCodes, scenarioName, investigator, traumaUpdate, onStoryCountsChange]);
+  }, [deck, campaign, showTraumaDialog, storyEncounterCodes, scenarioName, investigator, traumaUpdate, onStoryCountsChange]);
   const [saving, error, saveDeckUpgrade] = useDeckUpgradeAction(actions, deckUpgradeComplete);
   if (!deck || !investigator) {
     return null;
@@ -158,7 +221,6 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
             </Text>
           </View>
           <DeckUpgradeComponent
-            componentId={componentId}
             deck={deck}
             investigator={investigator}
             startingXp={xp}
@@ -176,27 +238,6 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     </View>
   );
 }
-
-DeckUpgradeDialog.options = () => {
-  return {
-    topBar: {
-      tintColor: 'white',
-      rightButtons: [{
-        text: t`Save`,
-        color: 'white',
-        id: 'save',
-        accessibilityLabel: t`Save`,
-      }],
-      backButton: {
-        title: t`Cancel`,
-        color: 'white',
-        accessibilityLabel: t`Cancel`,
-      },
-    },
-  };
-};
-
-export default DeckUpgradeDialog;
 
 const styles = StyleSheet.create({
   wrapper: {

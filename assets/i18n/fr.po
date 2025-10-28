@@ -131,7 +131,6 @@ msgstr "Piocher une Faiblesse de Base"
 msgid "Draw From Collection"
 msgstr "Piocher une carte depuis la collection"
 
-#. This is a deck upgrade action.
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -195,9 +194,6 @@ msgstr "Toutes les faiblesses ont été piochées."
 msgid "Save to Deck"
 msgstr "Sauvegarder dans le deck"
 
-msgid "Nevermind"
-msgstr "Peu importe"
-
 msgid "Restore campaign data?"
 msgstr "Restaurer les données de campagne ?"
 
@@ -254,9 +250,6 @@ msgstr "Erreur : réessayez cette mise à jour"
 
 msgid "Card Collection"
 msgstr "Collection de cartes"
-
-msgid "Spoiler Settings"
-msgstr "Paramètres des spoilers"
 
 msgid "Elite"
 msgstr "Élite"
@@ -796,19 +789,19 @@ msgstr "Réserve du Chaos"
 msgid "Adjust Weakness Set"
 msgstr "Ajuster la collection de faiblesses"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Ce deck contient plusieurs faiblesses de base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Ce deck contient une faiblesse de base"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous les retirer de l’ensemble des faiblesses de base de la campagne ?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Voulez-vous la retirer de l’ensemble des faiblesses de base de la campagne ?"
 
@@ -1677,7 +1670,6 @@ msgstr "Aucun changement"
 msgid "Card changes"
 msgstr "Modifications de cartes"
 
-#. Actually compute the diffs.
 msgid "Upgrade History"
 msgstr "Historique des améliorations"
 
@@ -1766,18 +1758,6 @@ msgstr "Trop"
 
 msgid "Not enough"
 msgstr "Pas assez"
-
-msgid "Reset Scenario?"
-msgstr "Réinitialiser le scénario ?"
-
-msgid ""
-"Are you sure you want to reset this scenario?\n"
-"\n"
-"All data you have entered will be lost."
-msgstr ""
-"Êtes-vous sûr de vouloir réinitialiser ce scénario ?\n"
-"\n"
-"Toutes les données que vous avez saisies seront perdues."
 
 #, javascript-format
 msgid "Set the ${ encounterSetString } encounter set aside, out of play."
@@ -2651,9 +2631,6 @@ msgstr "Options de recherche"
 
 msgid "Search in:"
 msgstr "Rechercher dans :"
-
-msgid "Encounter Card Toggle"
-msgstr "Afficher les cartes Rencontre"
 
 msgid "Show all available cards"
 msgstr "Afficher toutes les cartes disponibles"
@@ -3873,9 +3850,6 @@ msgstr "Noter dans le Carnet de Campagne"
 msgid "Review and add records"
 msgstr "Consultez-le et ajoutez-y des informations"
 
-msgid "Chaos bag"
-msgstr "Réserve du Chaos"
-
 msgid "Draw random"
 msgstr "Pioche aléatoire"
 
@@ -4305,9 +4279,6 @@ msgstr "Choisissez quoi soigner"
 
 msgid "Chosen heal type"
 msgstr "Choisissez quoi soigner"
-
-msgid "Assigned weaknesses"
-msgstr "Faiblesses assignées"
 
 msgid "Review and draw weaknesses"
 msgstr "Examinez et piochez des faiblesses"
@@ -4882,9 +4853,6 @@ msgstr "Cartes de la collection uniquement"
 
 msgid "Draft Pool"
 msgstr "Cartes pour le Tirage"
-
-msgid "Grid"
-msgstr "Grille"
 
 msgid "Invalid deck"
 msgstr "Deck invalide"
@@ -6302,6 +6270,48 @@ msgstr "Quand la Terre Hurla"
 
 msgid "Contains cards not in the selected card pool."
 msgstr "Contient des cartes qui ne sont pas dans le pool choisi."
+
+msgid "Card"
+msgstr ""
+
+msgid "Edit Scenario Result"
+msgstr ""
+
+msgid "Location Setup"
+msgstr ""
+
+msgid "Merge Backup"
+msgstr ""
+
+msgid "Safe Mode"
+msgstr ""
+
+msgid "Choose Packs"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Card Upgrade"
+msgstr ""
+
+msgid "Contains cards that are not in the selected card pool."
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Card Image"
+msgstr ""
+
+msgid "Taboos"
+msgstr ""
+
+msgid "Edit Name"
+msgstr ""
+
+msgid "Scenario results"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

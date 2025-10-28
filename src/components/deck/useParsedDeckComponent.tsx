@@ -1,10 +1,9 @@
-import React, { MutableRefObject, useEffect, useMemo, useState, useContext, useCallback } from 'react';
+import React, { RefObject, useEffect, useMemo, useState, useContext, useCallback } from 'react';
 import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { flatMap, find, filter, flatten, keys, range, sumBy, sum, forEach, map, uniqBy } from 'lodash';
 import { c, t, msgid } from 'ttag';
 
-import StyleContext from '@styles/StyleContext';
 import { ControlType } from '@components/cardlist/CardSearchResult/ControlComponent';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -29,6 +28,8 @@ import { xpString } from './hooks';
 import { BONDED_WEAKNESS_COUNTS, THE_INSANE_CODE } from '@data/deck/specialCards';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 import { useDeckAttachmentSlots } from './DeckEditContext';
+import { useNavigation } from '@react-navigation/native';
+import StyleContext from '@styles/StyleContext';
 
 interface CollectionSettings {
   inCollection: { [pack_code: string]: boolean };
@@ -379,7 +380,6 @@ interface Props {
   visible: boolean;
   cards: CardsMap;
   meta: DeckMeta | undefined;
-  componentId: string;
   tabooSetId: number | undefined;
   mode: 'view' | 'edit' | 'upgrade';
 
@@ -392,7 +392,7 @@ interface Props {
   showEditExtra?: () => void;
   showDrawWeakness?: (replaceRandomBasicWeakness?: boolean) => void;
   showCardUpgradeDialog?: (card: Card, mode: 'extra' | undefined) => void;
-  deckEditsRef?: MutableRefObject<EditDeckState | undefined>;
+  deckEditsRef?: RefObject<EditDeckState | undefined>;
 
   requiredCards?: CardId[];
   cardsByName?: {
@@ -432,7 +432,7 @@ export function useDeckAttachments(
 }
 
 export default function useParsedDeckComponent({
-  componentId, tabooSetId, parsedDeck, cardsByName,
+  tabooSetId, parsedDeck, cardsByName,
   mode, editable, bondedCardsByName, cards, visible, meta, requiredCards,
   showDrawWeakness, showEditSpecial, showEditCards, showEditExtra, showEditSide, showCardUpgradeDialog, showDraftCards, showDraftExtraCards,
 }: Props): [React.ReactNode, number] {
@@ -791,12 +791,13 @@ export default function useParsedDeckComponent({
     };
   }, [mode, editable, showCardUpgradeDialog, showDrawWeakness, ignore_collection, hasDeck, inCollection]);
   const singleCardView = useSettingValue('single_card');
-  const { colors } = useContext(StyleContext);
   const deckId = parsedDeck?.id;
+  const navigation = useNavigation();
+  const { colors } = useContext(StyleContext);
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(
-        componentId,
+        navigation,
         card.code,
         card,
         colors,
@@ -819,11 +820,11 @@ export default function useParsedDeckComponent({
       });
     });
     showCardSwipe(
-      componentId,
+      navigation,
+      colors,
       map(visibleCards, card => card.code),
       controls,
       index,
-      colors,
       visibleCards,
       false,
       tabooSetId,
@@ -832,7 +833,7 @@ export default function useParsedDeckComponent({
       editable,
       customizations,
     );
-  }, [componentId, customizations, data, editable, colors, deckId, investigator, tabooSetId, singleCardView, cards]);
+  }, [customizations, colors, data, editable, navigation, deckId, investigator, tabooSetId, singleCardView, cards]);
   const { listSeperator } = useContext(LanguageContext);
   const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection, isLoading: boolean) => {
     const card = cards[item.id];

@@ -130,19 +130,16 @@ export function useSortDialog(
       );
     }
     const index = getIndex() || 0;
-    const content = (
-      <NewDialog.LineItem
-        iconName="menu"
-        text={sortToCopy(item.sort)}
-        last={index === items.length - 1 || items[index + 1]?.type === 'header'}
-      />
-    );
     return (
       <Pressable
         key={item.sort}
         onPressIn={drag}
       >
-        {content}
+        <NewDialog.LineItem
+          iconName="menu"
+          text={sortToCopy(item.sort)}
+          last={index === items.length - 1 || items[index + 1]?.type === 'header'}
+        />
       </Pressable>
     );
   }, [items]);

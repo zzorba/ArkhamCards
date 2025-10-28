@@ -8,7 +8,6 @@ import { FilterState } from '@lib/filters';
 import { Slots } from '@actions/types';
 
 interface Props {
-  componentId: string;
   title: string;
   all: string;
   selection?: string[];
@@ -27,7 +26,6 @@ interface Props {
 }
 
 export default function FilterChooserButton({
-  componentId,
   title,
   all,
   field,
@@ -56,7 +54,6 @@ export default function FilterChooserButton({
   ), [query, showCustomContent]);
   return (
     <DbChooserButton
-      componentId={componentId}
       title={title}
       all={all}
       field={field}

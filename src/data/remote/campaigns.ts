@@ -1,7 +1,6 @@
 import { useCallback, useContext, useMemo, useEffect } from 'react';
 import { filter, forEach, map, omit, uniq, keys, concat } from 'lodash';
 import { useApolloClient } from '@apollo/client';
-import { Navigation } from 'react-native-navigation';
 
 import {
   Campaign,
@@ -63,13 +62,24 @@ import {
 } from './apollo';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { t } from 'ttag';
+import { ArkhamNavigation } from '@navigation/types';
 
 interface CampaignLink {
   campaignIdA: string;
   campaignIdB: string;
 }
+export function useDismissOnCampaignDeleted(
+  navigation: ArkhamNavigation,
+  campaign?: SingleCampaignT
+) {
+  useEffect(() => {
+    if (campaign?.deleted && navigation.canGoBack()) {
+      navigation.goBack();
+    }
+  }, [navigation, campaign?.deleted]);
+}
+
 export function useCampaignDeleted(
-  componentId: string,
   campaign?: SingleCampaignT
 ) {
   const apollo = useApolloClient();
@@ -82,9 +92,8 @@ export function useCampaignDeleted(
         campaign.uuid,
         campaign.id.serverId
       );
-      Navigation.popToRoot(componentId);
     }
-  }, [campaign, componentId, apollo.cache, userId]);
+  }, [campaign, apollo.cache, userId]);
 }
 function useCreateCampaignRequest(): (
   campaignId: string,

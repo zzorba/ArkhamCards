@@ -15,7 +15,6 @@ import { CampaignMap } from '@data/scenario/types';
 import { find } from 'lodash';
 
 interface Props {
-  componentId: string;
   scenario: ProcessedScenario;
   showScenario: (scenario: ProcessedScenario) => void;
   processedCampaign: ProcessedCampaign;
@@ -26,7 +25,7 @@ interface Props {
   campaignMap: CampaignMap | undefined;
 }
 
-export default function ScenarioCard({ componentId, processedCampaign, showAlert, scenario, showScenario, campaignMap, finalScenario, last, isActive }: Props) {
+export default function ScenarioCard({ processedCampaign, showAlert, scenario, showScenario, campaignMap, finalScenario, last, isActive }: Props) {
   const { colors, shadow, typography } = useContext(StyleContext);
   const [scenarioNumber, scenarioName] = useMemo(() => {
     const locationName = scenario.location ?
@@ -77,7 +76,6 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
               color="light_gray"
             />
             <AddSideScenarioButton
-              componentId={componentId}
               processedCampaign={processedCampaign}
               showAlert={showAlert}
             />
@@ -94,7 +92,6 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
                 </Text>
               </View>
               <AddSideScenarioButton
-                componentId={componentId}
                 processedCampaign={processedCampaign}
                 showAlert={showAlert}
               />
@@ -122,7 +119,6 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
             </TouchableOpacity>
             { !!(finalScenario && campaignResult && campaignResult !== 'lose') && (
               <AddSideScenarioButton
-                componentId={componentId}
                 processedCampaign={processedCampaign}
                 showAlert={showAlert}
               />
@@ -147,7 +143,7 @@ export default function ScenarioCard({ componentId, processedCampaign, showAlert
           </View>
         );
     }
-  }, [onPress, scenario.type, typography, light, componentId, processedCampaign, isActive, showAlert, finalScenario, campaignResult]);
+  }, [onPress, scenario.type, typography, light, processedCampaign, isActive, showAlert, finalScenario, campaignResult]);
   return (
     <View style={[
       space.paddingTopM,

@@ -89,11 +89,14 @@ function usePackCycles(mode: CardPoolMode): Item<string>[] {
 
   return useMemo(() => {
     const result: Item<string>[] = [];
-    if (mode === 'legacy' || mode === 'current') {
+    if (mode === 'legacy') {
       return [];
     }
     forEach(cycles, cycle => {
       if (cycle.fanMade && !fanMadeContent) {
+        return;
+      }
+      if (mode === 'current' && cycle.type !== 'core') {
         return;
       }
       result.push({
@@ -219,15 +222,17 @@ export default function DeckCardPoolButton({ first, last, selectedPacks, setSele
   const onPackChanged = useCallback((pack: string, selected: boolean) => {
     setSelectedPacks(current => {
       if (selected) {
+        const toRemove = pack === 'core' ? 'rcore' : 'core';
         const newPacks = uniq([...current, pack]);
         if (pack === 'core' || pack === 'rcore') {
-          return filter(newPacks, p => p !== (pack === 'core' ? 'rcore' : 'core'));
+          return filter(newPacks, p => p !== toRemove);
         }
         return newPacks;
       }
       const newPacks = current.filter(p => p !== pack);
+      const toAdd = pack === 'core' ? 'rcore' : 'core';
       if (pack === 'core' || pack === 'rcore') {
-        return uniq([...newPacks, pack === 'core' ? 'rcore' : 'core'])
+        return uniq([...newPacks, toAdd])
       }
       return newPacks;
     });

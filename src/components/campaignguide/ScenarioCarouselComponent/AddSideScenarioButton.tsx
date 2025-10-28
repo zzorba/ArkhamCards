@@ -1,26 +1,26 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { find, findLast, findLastIndex } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+
 import { t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
-import { AddSideScenarioProps } from '@components/campaignguide/AddSideScenarioView';
 import { ProcessedCampaign } from '@data/scenario';
 import { ShowAlert } from '@components/deck/dialogs';
 import CampaignGuideContext from '../CampaignGuideContext';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 import space, { m } from '@styles/space';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props {
-  componentId: string;
   processedCampaign: ProcessedCampaign;
   showAlert: ShowAlert;
 }
 
-export default function AddSideScenarioButton({ componentId, processedCampaign, showAlert }: Props) {
+export default function AddSideScenarioButton({ processedCampaign, showAlert }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const navigation = useNavigation();
   const { campaignId, campaignGuide, campaignState } = useContext(CampaignGuideContext);
   const canAddScenario = useMemo(() => {
     const lastCompletedScenarioIndex = findLastIndex(
@@ -95,26 +95,11 @@ export default function AddSideScenarioButton({ componentId, processedCampaign, 
     if (!lastCompletedScenario) {
       return null;
     }
-    Navigation.push<AddSideScenarioProps>(componentId, {
-      component: {
-        name: 'Guide.SideScenario',
-        passProps: {
-          campaignId,
-          latestScenarioId: lastCompletedScenario.id,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Choose Side-Scenario`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
+    navigation.navigate('Guide.SideScenario', {
+      campaignId,
+      latestScenarioId: lastCompletedScenario.id,
     });
-  }, [componentId, campaignId, processedCampaign.scenarios, canAddScenario, showAlert]);
+  }, [navigation, campaignId, processedCampaign.scenarios, canAddScenario, showAlert]);
   if (!canAddScenario) {
     return <View style={{ height: m }} />;
   }
