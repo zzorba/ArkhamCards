@@ -5457,35 +5457,35 @@
         "entries": [
           {
             "id": "do_no_harm",
-            "text": "Task Progress - Do No Harm:"
+            "text": "Прогресс задачи — Не навреди:"
           },
           {
             "id": "dreams_of_destruction",
-            "text": "Task Progress - Dreams of Destruction:"
+            "text": "Прогресс задачи — Сны о разрушении:"
           },
           {
             "id": "good_money",
-            "text": "Task Progress - Good Money:"
+            "text": "Прогресс задачи — Большой куш:"
           },
           {
             "id": "no_place_like_home",
-            "text": "Task Progress - No Place Like Home:"
+            "text": "Прогресс задачи — Лучше дома места нет:"
           },
           {
             "id": "plumb_the_depths",
-            "text": "Task Progress - Plumb the Depths:"
+            "text": "Прогресс задачи — Окунуться с головой:"
           },
           {
             "id": "prove_your_worth",
-            "text": "Task Progress - Prove Your Worth:"
+            "text": "Прогресс задачи — Показать себя:"
           },
           {
             "id": "toe_the_line",
-            "text": "Task Progress - Toe the Line:"
+            "text": "Прогресс задачи — По струнке:"
           },
           {
             "id": "walk_in_faith",
-            "text": "Task Progress - Walk in Faith:"
+            "text": "Прогресс задачи — Путь веры:"
           }
         ]
       },
@@ -5494,27 +5494,27 @@
         "entries": [
           {
             "id": "barrier_node",
-            "text": "Barrier Node"
+            "text": "Узел барьера"
           },
           {
             "id": "clah_horror",
-            "text": "Horror in Clay"
+            "text": "Ужас, запечатлённый в глине"
           },
           {
             "id": "grisly_mask",
-            "text": "Grisly Mask"
+            "text": "Жуткая «маска»"
           },
           {
             "id": "obsidian_claw",
-            "text": "Obsidian Claw"
+            "text": "Обсидиановый коготь"
           },
           {
             "id": "shard",
-            "text": "Shard of Y'ch'lecht"
+            "text": "Осколок И’х’лехт"
           },
           {
             "id": "tidal_tablet",
-            "text": "Tidal Tablet"
+            "text": "Приливная табличка"
           }
         ]
       },
@@ -5522,136 +5522,136 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "no_place_like_home_succeed",
-            "masculine_text": "#name# found his true home.",
-            "feminine_text": "#name# found her true home.",
-            "nonbinary_text": "#name# found their true home."
-          },
-          {
-            "id": "toe_the_line_succeed",
-            "masculine_text": "#name# found new work.",
-            "feminine_text": "#name# found new work.",
-            "nonbinary_text": "#name# found new work."
-          },
-          {
-            "id": "walk_in_faith_succeed",
-            "masculine_text": "#name# is strong in their faith.",
-            "feminine_text": "#name# is strong in their faith.",
-            "nonbinary_text": "#name# is strong in their faith."
-          },
-          {
-            "id": "plumb_the_depths_succeed",
-            "masculine_text": "#name# learned the secret truth.",
-            "feminine_text": "#name# learned the secret truth.",
-            "nonbinary_text": "#name# learned the secret truth."
-          },
-          {
-            "id": "good_money_succeed",
-            "masculine_text": "#name# made bank.",
-            "feminine_text": "#name# made bank.",
-            "nonbinary_text": "#name# made bank."
-          },
-          {
-            "id": "prove_your_worth_succeed",
-            "masculine_text": "#name# pulled their weight.",
-            "feminine_text": "#name# pulled their weight.",
-            "nonbinary_text": "#name# pulled their weight."
-          },
-          {
             "id": "do_no_harm_succeed",
-            "masculine_text": "#name# swore an oath to protect others.",
-            "feminine_text": "#name# swore an oath to protect others.",
-            "nonbinary_text": "#name# swore an oath to protect others."
+            "masculine_text": "#name# дал клятву защищать других.",
+            "feminine_text": "#name# дала клятву защищать других.",
+            "nonbinary_text": "#name# дал клятву защищать других."
           },
           {
             "id": "dreams_of_destruction_succeed",
-            "masculine_text": "#name# understands the future.",
-            "feminine_text": "#name# understands the future.",
-            "nonbinary_text": "#name# understands the future."
+            "masculine_text": "#name# знает будущее.",
+            "feminine_text": "#name# знает будущее.",
+            "nonbinary_text": "#name# знает будущее."
+          },
+          {
+            "id": "no_place_like_home_succeed",
+            "masculine_text": "#name# обрёл свой истинный дом.",
+            "feminine_text": "#name# обрела свой истинный дом.",
+            "nonbinary_text": "#name# обрёл свой истинный дом."
+          },
+          {
+            "id": "good_money_succeed",
+            "masculine_text": "#name# сорвал куш.",
+            "feminine_text": "#name# сорвала куш.",
+            "nonbinary_text": "#name# сорвал куш."
+          },
+          {
+            "id": "plumb_the_depths_succeed",
+            "masculine_text": "#name# узнал секретную истину.",
+            "feminine_text": "#name# узнала секретную истину.",
+            "nonbinary_text": "#name# узнал секретную истину."
+          },
+          {
+            "id": "prove_your_worth_succeed",
+            "masculine_text": "#name# хорошо поработал.",
+            "feminine_text": "#name# хорошо поработала.",
+            "nonbinary_text": "#name# хорошо поработал."
+          },
+          {
+            "id": "walk_in_faith_succeed",
+            "masculine_text": "вера #name# сильна.",
+            "feminine_text": "вера #name# сильна.",
+            "nonbinary_text": "вера #name# сильна."
+          },
+          {
+            "id": "toe_the_line_succeed",
+            "masculine_text": "у #name# есть новая должность.",
+            "feminine_text": "у #name# есть новая должность.",
+            "nonbinary_text": "у #name# есть новая должность."
           },
           {
             "id": "cthulhu_annihilated_the_city_of_arkham",
-            "text": "Cthulhu annihilated the city of Arkham."
+            "text": "Ктулху уничтожил город Аркхэм."
           },
           {
             "id": "cthulhu_was_banished",
-            "text": "Cthulhu was banished."
+            "text": "сыщики изгнали Ктулху магией."
           },
           {
             "id": "cthulhu_was_banished_but_arkham_was_destroyed",
-            "text": "Cthulhu was banished, but Arkham was destroyed."
+            "text": "сыщики изгнали Ктулху магией, но Аркхэм был разрушен."
           },
           {
             "id": "cthulhu_was_driven_away",
-            "text": "Cthulhu was driven away."
+            "text": "сыщики прогнали Ктулху прочь."
           },
           {
             "id": "did_not_confront_the_nightmare",
-            "text": "the investigators did not confront the nightmare."
+            "text": "сыщики не выступили против кошмара."
           },
           {
             "id": "discovered_an_alien_language",
-            "text": "the investigators discovered an alien language."
+            "text": "сыщики обнаружили инопланетный язык."
           },
           {
             "id": "expedition_abandoned_pilgrim",
-            "text": "the expedition left the pilgrim behind."
+            "text": "экспедиция ушла без паломника."
           },
           {
             "id": "expedition_headed_east",
-            "text": "the expedition headed east."
+            "text": "экспедиция отправилась на восток."
           },
           {
             "id": "expedition_headed_west",
-            "text": "the expedition headed west."
+            "text": "экспедиция отправилась на запад."
           },
           {
             "id": "expedition_helped_pilgrim",
-            "text": "the expedition helped the pilgrim."
+            "text": "экспедиция помогла паломнику."
           },
           {
             "id": "exterminated_the_alien_parasites",
-            "text": "the investigators exterminated the alien parasites."
+            "text": "сыщики истребили инопланетных паразитов."
           },
           {
             "id": "halted_cthulhus_awakening",
-            "text": "the investigators halted Cthulhu's awakening."
+            "text": "сыщики сдержали пробуждение Ктулху."
           },
           {
             "id": "pilgrims_were_devoured",
-            "text": "the pilgrims were devoured."
+            "text": "пилигримы были сожраны."
           },
           {
             "id": "pilgrims_were_saved",
-            "text": "the pilgrims were saved."
+            "text": "о пилигримы были спасены."
           },
           {
             "id": "ruby_lost_the_bet",
-            "text": "Ruby lost the bet."
+            "text": "Руби проиграла пари."
           },
           {
             "id": "ruby_won_the_bet",
-            "text": "Ruby won the bet."
+            "text": "Руби выиграла пари."
           },
           {
             "id": "stood_together",
-            "text": "the investigators stood together."
+            "text": "сыщики выступили сообща."
           },
           {
             "id": "the_creature_was_defeated",
-            "text": "the creature was defeated."
+            "text": "существо повержено."
           },
           {
             "id": "the_inner_sanctum_was_unsealed",
-            "text": "the inner sanctum was unsealed."
+            "text": "проход во внутреннее святилище распечатан."
           },
           {
             "id": "the_power_was_diverted",
-            "text": "the power was diverted."
+            "text": "энергия была перенаправлена."
           },
           {
             "id": "your_allies_have_a_plan",
-            "text": "your allies have a plan."
+            "text": "у ваших союзников есть план."
           }
         ]
       },
@@ -5660,11 +5660,11 @@
         "entries": [
           {
             "id": "downtown",
-            "text": "Downtown"
+            "text": "Даунтаун"
           },
           {
             "id": "easttown",
-            "text": "Easttown"
+            "text": "Исттаун"
           },
           {
             "id": "miskatonic_university",
@@ -5672,19 +5672,19 @@
           },
           {
             "id": "northside",
-            "text": "Northside"
+            "text": "Нортсайд"
           },
           {
             "id": "rivertown",
-            "text": "Rivertown"
+            "text": "Ривертаун"
           },
           {
             "id": "southside",
-            "text": "Southside"
+            "text": "Саутсайд"
           },
           {
             "id": "st_marys_hospital",
-            "text": "St. Mary's Hospital"
+            "text": "Больница св. Марии"
           }
         ]
       },
@@ -5693,11 +5693,11 @@
         "entries": [
           {
             "id": "tdc_rune_a",
-            "text": "Depths"
+            "text": "Глубина"
           },
           {
             "id": "tdc_rune_s",
-            "text": "Machine"
+            "text": "Механизм"
           }
         ]
       },
@@ -5705,16 +5705,16 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "tdc_good_money_no_upkeep",
-            "masculine_text": "#name# cannot gain resources during the upkeep phase.",
-            "feminine_text": "#name# cannot gain resources during the upkeep phase.",
-            "nonbinary_text": "#name# cannot gain resources during the upkeep phase."
+            "id": "tdc_good_money_extra_resources",
+            "masculine_text": "#name# начинает игру с 3 дополнительными ресурсами.",
+            "feminine_text": "#name# начинает игру с 3 дополнительными ресурсами.",
+            "nonbinary_text": "#name# начинает игру с 3 дополнительными ресурсами."
           },
           {
-            "id": "tdc_good_money_extra_resources",
-            "masculine_text": "#name# starts with 3 additional resources.",
-            "feminine_text": "#name# starts with 3 additional resources.",
-            "nonbinary_text": "#name# starts with 3 additional resources."
+            "id": "tdc_good_money_no_upkeep",
+            "masculine_text": "#name# не может брать ресурсы в фазе передышки.",
+            "feminine_text": "#name# не может брать ресурсы в фазе передышки.",
+            "nonbinary_text": "#name# не может брать ресурсы в фазе передышки."
           },
           {
             "id": "kept_barrier_node",
@@ -5799,31 +5799,31 @@
         "entries": [
           {
             "id": "court_of_the_ancients",
-            "text": "Court of the Ancients"
+            "text": "Зал Древних"
           },
           {
             "id": "obsidian_canyons",
-            "text": "Obsidian Canyons"
+            "text": "Обсидиановые каньоны"
           },
           {
             "id": "sepulchre_of_the_sleeper",
-            "text": "Sepulchre of the Sleeper"
+            "text": "Гробница Спящего"
           },
           {
             "id": "the_apiary",
-            "text": "The Apiary"
+            "text": "Пасека"
           },
           {
             "id": "the_drowned_quarter",
-            "text": "The Drowned Quarter"
+            "text": "Затонувший квартал"
           },
           {
             "id": "the_grand_vault",
-            "text": "The Grand Vault"
+            "text": "Великое хранилище"
           },
           {
             "id": "the_western_wall",
-            "text": "The Western Wall"
+            "text": "Западная стена"
           }
         ]
       }

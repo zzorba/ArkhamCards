@@ -57,7 +57,7 @@
   },
   {
     "id": "an_offer_you_cant_refuse",
-    "name": "An Offer You Can't Refuse"
+    "name": "Предложение, от которого нельзя отказаться"
   },
   {
     "id": "an_unknown_benefactor",
@@ -209,7 +209,7 @@
   },
   {
     "id": "court_of_the_ancients",
-    "name": "Court of the Ancients"
+    "name": "Зал Древних"
   },
   {
     "id": "cp_epilogue",
@@ -333,7 +333,7 @@
   },
   {
     "id": "expedition_to_ryleh",
-    "name": "Expedition to R'lyeh"
+    "name": "Экспедиция в Р’льех"
   },
   {
     "id": "extracurricular_activity",
@@ -613,11 +613,11 @@
   },
   {
     "id": "obsidian_canyons",
-    "name": "Obsidian Canyons"
+    "name": "Обсидиановые каньоны"
   },
   {
     "id": "one_last_job",
-    "name": "One Last Job"
+    "name": "Последнее дело"
   },
   {
     "id": "oz_epilogue",
@@ -697,7 +697,7 @@
   },
   {
     "id": "return_to_arkham",
-    "name": "Return to Arkham"
+    "name": "Возвращение в Аркхэм"
   },
   {
     "id": "return_to_at_deaths_doorstep",
@@ -901,7 +901,7 @@
   },
   {
     "id": "sepulchre_of_the_sleeper",
-    "name": "Sepulchre of the Sleeper"
+    "name": "Гробница Спящего"
   },
   {
     "id": "shanghai",
@@ -997,7 +997,7 @@
   },
   {
     "id": "the_apiary",
-    "name": "The Apiary"
+    "name": "Пасека"
   },
   {
     "id": "the_attack",
@@ -1009,7 +1009,7 @@
   },
   {
     "id": "the_awakening",
-    "name": "The Awakening"
+    "name": "Пробуждение"
   },
   {
     "id": "the_black_cat",
@@ -1053,19 +1053,19 @@
   },
   {
     "id": "the_doom_of_arkham",
-    "name": "The Doom of Arkham"
+    "name": "Рок, покаравший Аркхэм"
   },
   {
     "id": "the_doom_of_arkham_part_1",
-    "name": "The Doom of Arkham: Part I"
+    "name": "Рок, покаравший Аркхэм. Часть I"
   },
   {
     "id": "the_doom_of_arkham_part_2",
-    "name": "The Doom of Arkham: Part II"
+    "name": "Рок, покаравший Аркхэм. Часть II"
   },
   {
     "id": "the_drowned_quarter",
-    "name": "The Drowned Quarter"
+    "name": "Затонувший квартал"
   },
   {
     "id": "the_duchess",
@@ -1101,7 +1101,7 @@
   },
   {
     "id": "the_grand_vault",
-    "name": "The Grand Vault"
+    "name": "Великое хранилище"
   },
   {
     "id": "the_great_ones",
@@ -1249,7 +1249,7 @@
   },
   {
     "id": "the_western_wall",
-    "name": "The Western Wall"
+    "name": "Западная стена"
   },
   {
     "id": "the_white_queen",

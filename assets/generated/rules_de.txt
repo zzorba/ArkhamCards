@@ -700,13 +700,8 @@
    {
       "id":"Haunted",
       "title":"Heimgesucht",
-      "cycle":[
-         "tcu",
-         "rttcu"
-      ],
-      "scenarios":[
-         "laid_to_rest"
-      ],
+     "cycle": [ "tcu", "rttcu" ],
+     "scenarios": [ "laid_to_rest", "film_fatale" ],
       "text":"Heimgesucht ist eine Fähigkeit auf einigen Orten. Immer wenn einem Ermittler eine Fertigkeitsprobe misslingt, solange er an einem Ort ermittelt, muss der Ermittler alle \"<b>Heimgesucht</b>\"-Fähigkeiten auf jenem Ort abhandeln, nachdem alle Ergebnisse jener Fertigkeitsprobe angewendet worden sind.\n\nEin Ort gilt in Hinblick auf andere Karteneffekte als \"heimgesucht\", falls er mindestens 1 \"<b>Heimgesucht</b>\"-Fähigkeit (aufgedruckt oder aus einer anderen Quelle) aufweist."
    },
    {
@@ -1511,7 +1506,7 @@
                },
                {
                   "row":[
-                     
+
                   ]
                },
                {
@@ -1579,7 +1574,7 @@
                },
                {
                   "row":[
-                     
+
                   ]
                },
                {

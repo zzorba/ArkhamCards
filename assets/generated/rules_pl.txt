@@ -490,13 +490,8 @@
   {
     "id": "Haunted",
     "title": "Nawiedzona",
-    "cycle": [
-      "tcu",
-      "rttcu"
-    ],
-    "scenarios": [
-      "laid_to_rest"
-    ],
+    "cycle": [ "tcu", "rttcu" ],
+    "scenarios": [ "laid_to_rest", "film_fatale" ],
     "text": "„Nawiedzona” to nowa zdolność pojawiająca się na niektórych lokalizacjach. Za każdym razem, kiedy podczas badania lokalizacji test umiejętności badacza zakończy się porażką, po zastosowaniu wszystkich rezultatów tego testu umiejętności dany badacz musi rozpatrzeć wszystkie zdolności „<b>Nawiedzona</b> –” danej lokalizacji.\nDla celów rozpatrywania efektów innych kart lokalizacja jest „nawiedzona”, jeśli posiada przynajmniej jedną zdolność „<b>Nawiedzona</b> –” (może być ona wydrukowana na danej lokalizacji lub pochodzić z innego źródła)."
   },
   {

@@ -590,7 +590,8 @@
   {
     "id": "Haunted",
     "title": "Hanté",
-    "cycle": ["tcu"],
+    "cycle": [ "tcu", "rttcu" ],
+    "scenarios": [ "laid_to_rest", "film_fatale" ],
     "text": "Hanté est une nouvelle capacité qui apparaît sur certains lieux. Chaque fois qu’un investigateur échoue à un test de compétence pendant qu’il enquête dans ce lieu, après l’application de tous les résultats de ce test, cet investigateur doit résoudre toutes les capacités « <b>Hanté</b> – » de ce lieu.\nUn lieu est considéré comme « Hanté » vis-à-vis des autres effets de carte s’il possède au moins une capacité « <b>Hanté</b> – » (imprimée ou non)."
   },
   {

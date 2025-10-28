@@ -2,7 +2,7 @@
   "expo": {
     "name": "ArkhamCards",
     "slug": "arkhamcards",
-    "version": "1.9.0",
+    "version": "6.0.0",
     "jsEngine": "hermes",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",

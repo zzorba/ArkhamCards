@@ -507,9 +507,8 @@
   {
     "id": "Haunted",
     "title": "Embrujado",
-    "cycle": [
-      "tcu"
-    ],
+    "cycle": [ "tcu", "rttcu" ],
+    "scenarios": [ "laid_to_rest", "film_fatale" ],
     "text": "“Embrujado” es una nueva capacidad que aparece en algunos Lugares. Cada vez que un investigador fracase en una prueba de habilidad al investigar un Lugar, después de aplicar todos los resultados de esa prueba de habilidad, dicho investigador debe resolver todas las capacidades “<b>Embrujado</b> –” de ese Lugar.\nUn Lugar está “Embrujado” con respecto a los efectos de otras cartas si tiene al menos una capacidad “<b>Embrujado</b> –” (impresa o no)."
   },
   {
