@@ -32,7 +32,6 @@ import Ripple from '@lib/react-native-material-ripple';
 import AppIcon from '@icons/AppIcon';
 import { parseDeck } from '@lib/parseDeck';
 import { useAlertDialog } from './dialogs';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import SimpleFab from '@components/core/SimpleFab';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -84,7 +83,7 @@ function FabDraftButton({ onPress, loading, secondaryAction }: { onPress: () => 
       icon={renderIcon}
       onPress={localPress}
       offsetX={s + xs}
-      offsetY={insets.bottom + NOTCH_BOTTOM_PADDING + s + xs}
+      offsetY={insets.bottom + s + xs}
       accessiblityLabel={t`Draft`}
     />
   );

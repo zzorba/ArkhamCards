@@ -115,6 +115,7 @@ import { maybeSaveAutomaticBackup } from '@app/autoBackup';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME, ThemeColors } from '@styles/theme';
+import COLORS from '@styles/colors';
 import { Appearance } from 'react-native';
 import { ApolloClient } from '@apollo/client';
 import { Persistor } from 'redux-persist/es/types';
@@ -163,18 +164,20 @@ function useNavigatorTheme(includeBackTitle = true): {
   };
 }
 
-function getDeckScreenOptionsWithBackground(headerBackgroundColor: string | undefined, title?: string) {
+function getDeckScreenOptionsWithBackground(headerBackgroundColor: string | undefined, title?: string, isUpgrade?: boolean) {
+  // Use dark color for upgrade mode (gold background), white for normal mode
+  const textColor = isUpgrade ? COLORS.D30 : '#FFFFFF';
   return {
     ...(title !== undefined ? { title } : {}),
     ...(headerBackgroundColor ? {
       headerStyle: {
         backgroundColor: headerBackgroundColor,
       },
-      headerTintColor: '#FFFFFF',
+      headerTintColor: textColor,
       headerTitleStyle: {
-        color: '#FFFFFF',
+        color: textColor,
       },
-      statusBarStyle: 'light' as const,
+      statusBarStyle: isUpgrade ? ('dark' as const) : ('light' as const),
     } : {}),
   };
 }
@@ -914,7 +917,7 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Deck.Upgrade"
         component={DeckUpgradeDialog}
-        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, t`Upgrade Deck`)}
+        options={({ route }) => getDeckScreenOptionsWithBackground(route.params?.headerBackgroundColor, t`Upgrade Deck`, true)}
       />
       <RootStack.Screen
         name="Deck.Description"

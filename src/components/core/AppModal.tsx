@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 import Modal from 'react-native-modal';
 
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface Props {
   children: React.ReactNode;
@@ -18,6 +18,7 @@ interface Props {
 }
 export default function AppModal({ children, avoidKeyboard, alignment, visible, dismissable, onDismiss }: Props) {
   const { darkMode } = useContext(StyleContext);
+  const insets = useSafeAreaInsets();
   return (
     <Modal
       avoidKeyboard={avoidKeyboard}
@@ -36,7 +37,7 @@ export default function AppModal({ children, avoidKeyboard, alignment, visible, 
         height: '100%',
         justifyContent: 'flex-end',
         padding: s,
-        paddingBottom: NOTCH_BOTTOM_PADDING + m,
+        paddingBottom: insets.bottom + m,
       } : {
         justifyContent: 'center',
         padding: s,

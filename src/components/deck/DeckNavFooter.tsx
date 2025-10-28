@@ -18,8 +18,6 @@ import { DeckId } from '@actions/types';
 import { TINY_PHONE } from '@styles/sizes';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
-
 export const FOOTER_HEIGHT = (56 * (isBig ? 1.2 : 1));
 
 interface Props {

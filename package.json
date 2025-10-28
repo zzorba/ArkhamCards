@@ -111,7 +111,7 @@
     "react-native-console-time-polyfill": "^1.2.3",
     "react-native-deep-linking": "2.2.0",
     "react-native-device-info": "11.1.0",
-    "react-native-draggable-flatlist": "4.0.1",
+    "react-native-draggable-flatlist": "4.0.3",
     "react-native-edge-to-edge": "^1.7.0",
     "react-native-flip-card": "3.5.7",
     "react-native-floating-action": "^1.22.0",

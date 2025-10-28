@@ -7,9 +7,10 @@ import {
   Text,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { useRoute, RouteProp, useNavigation, CommonActions } from '@react-navigation/native';
 import { RootStackParamList } from '@navigation/types';
 import { getDeckScreenOptions, showDeckModal } from '@components/nav/helper';
+import COLORS from '@styles/colors';
 
 import { t } from 'ttag';
 
@@ -98,10 +99,12 @@ export default function DeckUpgradeDialog() {
       );
       // Custom back button text
       screenOptions.headerBackTitle = t`Cancel`;
-      // Add Save button
+      // Ensure tint color is dark for upgrade mode (controls back button color)
+      screenOptions.headerTintColor = COLORS.D30;
+      // Add Save button (use dark color for upgrade mode to match header tint)
       screenOptions.headerRight = () => (
         <Text
-          style={{ color: '#FFFFFF', fontSize: 16, fontFamily: 'Alegreya-Medium' }}
+          style={{ color: COLORS.D30, fontSize: 16, fontFamily: 'Alegreya-Medium' }}
           onPress={save}
         >
           {t`Save`}
@@ -130,11 +133,49 @@ export default function DeckUpgradeDialog() {
       return dispatch(updateCampaignInvestigatorTrauma(updateCampaignActions, campaignId, deck.investigator_code, traumaUpdate));
     }
     if (showNewDeck) {
-      showDeckModal(navigation, colors, getDeckId(deck), deck, campaign?.id, investigator?.card, 'upgrade');
+      const newDeckId = getDeckId(deck);
+      const backgroundColor = investigator ? colors.faction[investigator.card.factionCode()].background : undefined;
+
+      // Get the current navigation state
+      const state = navigation.getState();
+
+      // Find the index of the original Deck screen (with the old deck ID)
+      const deckScreenIndex = state.routes.findIndex(
+        (route: any) => route.name === 'Deck' && route.params?.id?.uuid === id.uuid
+      );
+
+      if (deckScreenIndex !== -1) {
+        // Remove everything from the original Deck screen onwards, then push the new Deck
+        const routesToKeep = state.routes.slice(0, deckScreenIndex);
+        navigation.dispatch(
+          CommonActions.reset({
+            ...state,
+            routes: [
+              ...routesToKeep,
+              {
+                name: 'Deck',
+                params: {
+                  id: newDeckId,
+                  modal: true,
+                  campaignId: campaign?.id,
+                  title: investigator?.card.name ?? t`Deck`,
+                  subtitle: deck.name,
+                  initialMode: 'upgrade',
+                  headerBackgroundColor: backgroundColor,
+                },
+              },
+            ],
+            index: routesToKeep.length,
+          })
+        );
+      } else {
+        // Fallback to the old behavior if we can't find the original deck
+        showDeckModal(navigation, colors, newDeckId, deck, campaign?.id, investigator?.card, 'upgrade');
+      }
     } else {
       navigation.goBack();
     }
-  }, [showNewDeck, navigation, colors, campaignId, campaign, dispatch, updateCampaignActions, investigator, traumaUpdate]);
+  }, [showNewDeck, navigation, colors, campaignId, campaign, dispatch, updateCampaignActions, investigator, traumaUpdate, id]);
 
   const onStoryCountsChange = useCallback((storyCounts: Slots) => {
     updateStoryCounts({ type: 'sync', slots: storyCounts });

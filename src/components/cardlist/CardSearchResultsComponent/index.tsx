@@ -29,7 +29,6 @@ import DbCardResultList from './DbCardResultList';
 import DeckNavFooter, { PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
 import AppIcon from '@icons/AppIcon';
 import { useFilterButton } from '../hooks';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import useDebouncedEffect from 'use-debounced-effect-hook';
 import { useSettingValue } from '@components/core/hooks';

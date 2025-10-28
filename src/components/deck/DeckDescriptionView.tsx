@@ -20,7 +20,6 @@ import CardTextComponent from '@components/card/CardTextComponent';
 import space, { s, xs } from '@styles/space';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
 import AppIcon from '@icons/AppIcon';
-import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
 import { setDeckDescription } from './actions';
 import DeckNavFooter from '@components/deck/DeckNavFooter';
 import { DeckId } from '@actions/types';
@@ -104,7 +103,7 @@ export default function DeckDescriptionView() {
         position="right"
         accessiblityLabel={t`Edit`}
         offsetX={s + xs}
-        offsetY={((Platform.OS === 'ios' ? keyboardHeight : 0) || NOTCH_BOTTOM_PADDING) + insets.bottom + s + xs}
+        offsetY={(Platform.OS === 'ios' ? keyboardHeight : 0) + insets.bottom + s + xs}
       />
     );
   }, [edit, fabIcon, onEdit, saveChanges, colors, mode, factionColor, insets, keyboardHeight]);

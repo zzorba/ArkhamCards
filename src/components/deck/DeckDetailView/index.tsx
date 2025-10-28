@@ -1084,7 +1084,6 @@ function DeckDetailView({
   }] : [])].map((item, idx) => ({
     ...item,
     position: idx + 1,
-
     color: colors.D20,
     margin: s,
   })), [deck?.previousDeckId, colors, editable, mode]);
