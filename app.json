@@ -57,7 +57,7 @@
         "android.permission.RECORD_AUDIO",
         "android.permission.MODIFY_AUDIO_SETTINGS"
       ],
-      "versionCode": 4195502
+      "versionCode": 4195503
     },
     "plugins": [
       [
