@@ -97,7 +97,10 @@ function MyCampaignsView() {
       if (cycleCode === STANDALONE) {
         const standaloneId = campaign.standaloneId;
         if (standaloneId) {
-          parts.push(standalonesById[standaloneId.campaignId][standaloneId.scenarioId]);
+          const scenarioName = standalonesById[standaloneId.campaignId]?.[standaloneId.scenarioId];
+          if (scenarioName) {
+            parts.push(scenarioName);
+          }
         }
       } else if (cycleCode !== CUSTOM) {
         parts.push(campaignNames()[cycleCode] || '');

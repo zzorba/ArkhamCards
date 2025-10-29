@@ -139,37 +139,42 @@ export default function DeckUpgradeDialog() {
       // Get the current navigation state
       const state = navigation.getState();
 
-      // Find the index of the original Deck screen (with the old deck ID)
-      const deckScreenIndex = state.routes.findIndex(
-        (route: any) => route.name === 'Deck' && route.params?.id?.uuid === id.uuid
-      );
-
-      if (deckScreenIndex !== -1) {
-        // Remove everything from the original Deck screen onwards, then push the new Deck
-        const routesToKeep = state.routes.slice(0, deckScreenIndex);
-        navigation.dispatch(
-          CommonActions.reset({
-            ...state,
-            routes: [
-              ...routesToKeep,
-              {
-                name: 'Deck',
-                params: {
-                  id: newDeckId,
-                  modal: true,
-                  campaignId: campaign?.id,
-                  title: investigator?.card.name ?? t`Deck`,
-                  subtitle: deck.name,
-                  initialMode: 'upgrade',
-                  headerBackgroundColor: backgroundColor,
-                },
-              },
-            ],
-            index: routesToKeep.length,
-          })
+      if (state) {
+        // Find the index of the original Deck screen (with the old deck ID)
+        const deckScreenIndex = state.routes.findIndex(
+          (route: any) => route.name === 'Deck' && route.params?.id?.uuid === id.uuid
         );
+
+        if (deckScreenIndex !== -1) {
+          // Remove everything from the original Deck screen onwards, then push the new Deck
+          const routesToKeep = state.routes.slice(0, deckScreenIndex);
+          navigation.dispatch(
+            CommonActions.reset({
+              ...state,
+              routes: [
+                ...routesToKeep,
+                {
+                  name: 'Deck',
+                  params: {
+                    id: newDeckId,
+                    modal: true,
+                    campaignId: campaign?.id,
+                    title: investigator?.card.name ?? t`Deck`,
+                    subtitle: deck.name,
+                    initialMode: 'upgrade',
+                    headerBackgroundColor: backgroundColor,
+                  },
+                },
+              ],
+              index: routesToKeep.length,
+            })
+          );
+        } else {
+          // Fallback to the old behavior if we can't find the original deck
+          showDeckModal(navigation, colors, newDeckId, deck, campaign?.id, investigator?.card, 'upgrade');
+        }
       } else {
-        // Fallback to the old behavior if we can't find the original deck
+        // Fallback to the old behavior if navigation state is unavailable
         showDeckModal(navigation, colors, newDeckId, deck, campaign?.id, investigator?.card, 'upgrade');
       }
     } else {

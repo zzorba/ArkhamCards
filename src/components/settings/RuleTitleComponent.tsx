@@ -15,8 +15,6 @@ export default function RuleTitleComponent({ title }: Props) {
       color: colors.darkText,
       fontFamily: 'Alegreya-Medium',
       fontSize: 20,
-      marginTop: Platform.OS === 'android' ? 12 : 0,
-      marginLeft: Platform.OS === 'android' ? 16 : 0,
     }}>
       <IconizedText text={title} iconSize={22} />
     </Text>

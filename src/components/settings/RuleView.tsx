@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useLayoutEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { map, sortBy } from 'lodash';
 import { ScrollView, View } from 'react-native';
 import { Table, Row, Cell } from 'react-native-table-component';
@@ -77,14 +77,6 @@ export default function RuleView() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Rule'>>();
   const { rule } = route.params;
   const { backgroundStyle } = useContext(StyleContext);
-  const navigation = useNavigation();
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      header: () => (
-        <RuleTitleComponent title={rule.title} />
-      ),
-    })
-  }, [navigation, rule]);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
       <RuleComponent rule={rule} level={0} noTitle />
@@ -94,7 +86,9 @@ export default function RuleView() {
 
 function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Rule'> }): NativeStackNavigationOptions {
   return {
-    title: route.params?.rule.title ?? t`Rule`,
+    headerTitle: () => (
+      <RuleTitleComponent title={route.params?.rule.title ?? t`Rule`} />
+    ),
   };
 };
 RuleView.options = options;

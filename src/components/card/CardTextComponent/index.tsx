@@ -11,7 +11,7 @@ import {
   RenderState,
   InlineNode,
 } from 'react-native-markdown-view';
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { Table, Cell, Row } from 'react-native-table-component';
 
 import { WithChildren, WithIconName, WithText, State } from './types';
@@ -434,7 +434,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
   }, [usePingFang, context, sizeScale, onLinkPress]);
   const textStyle: TextStyle = useMemo(() => {
     return {
-      fontFamily: usePingFang ? 'PingFangTC' : 'Alegreya',
+      fontFamily: usePingFang ? 'PingFangTC' : Platform.OS === 'android' ? 'Alegreya-Regular' : 'Alegreya',
       fontStyle: 'normal',
       fontWeight: 'normal',
       fontSize: 16 * context.fontScale * sizeScale,
@@ -581,6 +581,21 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
           },
         },
         Alegreya: {
+          fontWeights: {
+            300: 'Light',
+            400: 'Regular',
+            700: 'Bold',
+            800: 'ExtraBold',
+            900: 'Black',
+            normal: 'Regular',
+            bold: 'Bold',
+          },
+          fontStyles: {
+            normal: '',
+            italic: 'Italic',
+          },
+        },
+        'Alegreya-Regular': {
           fontWeights: {
             300: 'Light',
             400: 'Regular',

@@ -471,8 +471,8 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
         options={({ route }) => ({
           headerTitle: () => (
             <HeaderTitle
-              title={route.params.step.text}
-              subtitle={route.params.step.description}
+              title={route.params?.step.text || t`Location Setup`}
+              subtitle={route.params?.step.description}
             />
           ),
         })}

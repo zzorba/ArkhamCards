@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     paddingTop: 2,
     paddingLeft: 2,
+    overflow: 'visible',
   },
   iconWrapper: {
     width: SIZE,
@@ -145,5 +146,6 @@ const styles = StyleSheet.create({
     paddingTop: 1,
     paddingLeft: 1,
     paddingRight: 1,
+    overflow: 'visible',
   },
 });
