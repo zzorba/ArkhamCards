@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "android": "expo run:android",
+    "android:release": "export $(grep -v '^#' .env | xargs) && npx eas-cli build --profile production --platform android --local",
+    "ios:release": "export $(grep -v '^#' .env | xargs) && npx eas-cli build --profile production --platform ios --local",
     "check:type": "yarn build",
     "prebuild": "expo prebuild",
     "clean": "react-native-clean-project",

@@ -19,6 +19,9 @@
     "extra": {
       "router": {
         "origin": false
+      },
+      "eas": {
+        "projectId": "33fc527e-b434-45fe-97ba-d05543c3a653"
       }
     },
     "assetBundlePatterns": [
@@ -31,12 +34,15 @@
     ],
     "ios": {
       "bundleIdentifier": "com.arkhamcards.ArkhamCards",
+      "appleTeamId": "54773FU58P",
       "supportsTablet": true,
       "infoPlist": {
         "UIBackgroundModes": [
+          "audio",
           "audio"
         ],
-        "UIViewControllerBasedStatusBarAppearance": true
+        "UIViewControllerBasedStatusBarAppearance": true,
+        "ITSAppUsesNonExemptEncryption": false
       },
       "googleServicesFile": "./GoogleService-Info.plist"
     },
@@ -46,7 +52,12 @@
         "foregroundImage": "./assets/ic_launcher_foreground.png",
         "backgroundColor": "#513661"
       },
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
+      "versionCode": 4195502
     },
     "plugins": [
       [
