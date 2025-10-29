@@ -132,6 +132,7 @@ export default function ChooseOneListComponent({
         listKey="choice"
         style={{ padding: 0 }}
         itemDimension={60}
+        spacing={s}
         data={visibleChoices}
         renderItem={style === 'compact' ? renderCompactItem : renderGlyphItem}
       />

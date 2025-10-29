@@ -1,19 +1,24 @@
-import Config from 'react-native-config';
 import * as Keychain from 'react-native-keychain';
 
 import { authorize, refresh, revoke, AppAuthConfig } from './OAuthWrapper';
+import { getEnvVar } from './env';
 
 const VERBOSE = __DEV__;
+
+const OAUTH_SITE = getEnvVar('OAUTH_SITE');
+const OAUTH_CLIENT_ID = getEnvVar('OAUTH_CLIENT_ID');
+const OAUTH_CLIENT_SECRET = getEnvVar('OAUTH_CLIENT_SECRET');
+
 // @ts-ignore
 const config: AppAuthConfig = {
-  issuer: Config.OAUTH_SITE,
-  clientId: Config.OAUTH_CLIENT_ID || '',
-  clientSecret: Config.OAUTH_CLIENT_SECRET,
+  issuer: OAUTH_SITE,
+  clientId: OAUTH_CLIENT_ID,
+  clientSecret: OAUTH_CLIENT_SECRET,
   redirectUrl: 'arkhamcards://auth/redirect',
   serviceConfiguration: {
-    authorizationEndpoint: `${Config.OAUTH_SITE}oauth/v2/auth`,
-    tokenEndpoint: `${Config.OAUTH_SITE}oauth/v2/token`,
-    revocationEndpoint: `${Config.OAUTH_SITE}oauth/v2/revoke`,
+    authorizationEndpoint: `${OAUTH_SITE}oauth/v2/auth`,
+    tokenEndpoint: `${OAUTH_SITE}oauth/v2/token`,
+    revocationEndpoint: `${OAUTH_SITE}oauth/v2/revoke`,
   },
 };
 

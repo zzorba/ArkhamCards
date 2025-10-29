@@ -1,10 +1,11 @@
 import React, { useCallback, useContext, useRef, useMemo, useState } from 'react';
 import { FlashList, ListRenderItemInfo, ListRenderItem } from '@shopify/flash-list';
-import { FlatList, ListRenderItem as FlatListRenderItem, View, NativeSyntheticEvent, NativeScrollEvent, RefreshControl, Platform } from 'react-native';
+import { FlatList, ListRenderItem as FlatListRenderItem, View, NativeSyntheticEvent, NativeScrollEvent, Platform } from 'react-native';
 import { map } from 'lodash';
 
 import { searchBoxHeight } from './SearchBox';
 import ArkhamLoadingSpinner from './ArkhamLoadingSpinner';
+import NoVisualRefreshControl from './NoVisualRefreshControl';
 import StyleContext from '@styles/StyleContext';
 
 interface ItemT<T extends string> {
@@ -137,16 +138,13 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
       <FlatList
         data={flatData}
         // contentContainerStyle={{ minHeight: height }}
-        refreshControl={
-          <RefreshControl
+        refreshControl={onRefresh ? (
+          <NoVisualRefreshControl
             progressViewOffset={noSearch ? 0 : searchBarHeight}
             refreshing={debouncedRefreshing}
             onRefresh={handleRefresh}
-            colors={['transparent']}
-            style={{ backgroundColor: 'transparent' }}
-            progressBackgroundColor="transparent"
           />
-        }
+        ) : undefined}
         scrollEventThrottle={16}
         onScroll={onScroll}
         keyboardShouldPersistTaps="always"
@@ -170,13 +168,10 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
       data={flatData}
       // contentContainerStyle={{ minHeight: height }}
       refreshControl={
-        <RefreshControl
+        <NoVisualRefreshControl
           progressViewOffset={noSearch ? 0 : searchBarHeight}
           refreshing={debouncedRefreshing}
           onRefresh={handleRefresh}
-          colors={['transparent']}
-          style={{ backgroundColor: 'transparent' }}
-          progressBackgroundColor="transparent"
         />
       }
       scrollEventThrottle={16}

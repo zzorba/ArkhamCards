@@ -1,8 +1,10 @@
-import Config from 'react-native-config';
 import { flatMap, filter, keys, map, omit, trim, forEach } from 'lodash';
 
 import { getAccessToken } from './auth';
+import { getEnvVar } from './env';
 import { Deck, DeckMeta, DeckProblemType, ArkhamDbApiDeck, ArkhamDbDeck } from '@actions/types';
+
+const OAUTH_SITE = getEnvVar('OAUTH_SITE');
 
 interface Params {
   [key: string]: string | number;
@@ -74,7 +76,7 @@ export async function decks(existingLastModified?: string): Promise<DecksRespons
   if (!accessToken) {
     throw new Error('badAccessToken');
   }
-  const uri = `${Config.OAUTH_SITE}api/oauth2/decks?access_token=${accessToken}`;
+  const uri = `${OAUTH_SITE}api/oauth2/decks?access_token=${accessToken}`;
   const headers = new Headers();
   if (existingLastModified) {
     headers.append('If-Modified-Since', existingLastModified);
@@ -113,7 +115,7 @@ export async function loadDeck(id: number): Promise<ArkhamDbDeck> {
   if (!accessToken) {
     throw new Error('badAccessToken');
   }
-  const uri = `${Config.OAUTH_SITE}api/oauth2/deck/load/${id}?access_token=${accessToken}`;
+  const uri = `${OAUTH_SITE}api/oauth2/deck/load/${id}?access_token=${accessToken}`;
   const response = await fetch(uri, {
     method: 'GET',
   });
@@ -135,7 +137,7 @@ export async function deleteDeck(id: number, deleteAllVersion: boolean): Promise
   if (!accessToken) {
     throw new Error('badAccessToken');
   }
-  let uri = `${Config.OAUTH_SITE}api/oauth2/deck/delete/${id}?access_token=${accessToken}`;
+  let uri = `${OAUTH_SITE}api/oauth2/deck/delete/${id}?access_token=${accessToken}`;
   if (deleteAllVersion) {
     uri += '&all';
   }
@@ -195,7 +197,7 @@ export async function newDeck(investigator: string, name: string, tabooSetId?: n
   if (!accessToken) {
     throw new Error('badAccessToken');
   }
-  const uri = `${Config.OAUTH_SITE}api/oauth2/deck/new?access_token=${accessToken}`;
+  const uri = `${OAUTH_SITE}api/oauth2/deck/new?access_token=${accessToken}`;
   const params: Params = {
     investigator: investigator,
     name: name,
@@ -240,7 +242,7 @@ export async function saveDeck(
   if (!accessToken) {
     throw new Error('badAccessToken');
   }
-  const uri = `${Config.OAUTH_SITE}api/oauth2/deck/save/${id}?access_token=${accessToken}`;
+  const uri = `${OAUTH_SITE}api/oauth2/deck/save/${id}?access_token=${accessToken}`;
   const bodyParams: Params = {
     name: name,
     slots: JSON.stringify(slots),
@@ -305,7 +307,7 @@ export async function upgradeDeck(
   if (!accessToken) {
     throw new Error('badAccessToken');
   }
-  const uri = `${Config.OAUTH_SITE}api/oauth2/deck/upgrade/${id}?access_token=${accessToken}`;
+  const uri = `${OAUTH_SITE}api/oauth2/deck/upgrade/${id}?access_token=${accessToken}`;
   const params: Params = {
     xp: xp,
   };

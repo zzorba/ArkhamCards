@@ -1,4 +1,5 @@
 import * as AuthSession from 'expo-auth-session';
+import { Platform } from 'react-native';
 
 export interface ServiceConfiguration {
   authorizationEndpoint: string;
@@ -36,6 +37,8 @@ export async function authorize(config: AppAuthConfig): Promise<AuthorizeRespons
     return Promise.reject(new Error('Service configuration is required'));
   }
 
+  console.log('[OAuth] Starting authorization flow', { platform: Platform.OS, redirectUri: config.redirectUrl });
+
   const discovery = {
     authorizationEndpoint: serviceConfiguration.authorizationEndpoint,
     tokenEndpoint: serviceConfiguration.tokenEndpoint,
@@ -49,7 +52,13 @@ export async function authorize(config: AppAuthConfig): Promise<AuthorizeRespons
     extraParams: config.additionalParameters,
   });
 
-  const result = await authRequest.promptAsync(discovery);
+  const promptOptions = Platform.OS === 'android'
+    ? { useProxy: false, preferEphemeralSession: false }
+    : { useProxy: false };
+
+  console.log('[OAuth] Calling promptAsync', { discovery, promptOptions });
+  const result = await authRequest.promptAsync(discovery, promptOptions);
+  console.log('[OAuth] promptAsync result', { type: result.type });
 
   if (result.type === 'success') {
     const tokenResult = await AuthSession.exchangeCodeAsync(

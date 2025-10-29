@@ -6067,9 +6067,6 @@ msgstr ""
 msgid "Edit Scenario Result"
 msgstr ""
 
-msgid "Location Setup"
-msgstr ""
-
 msgid "Merge Backup"
 msgstr ""
 

@@ -107,6 +107,9 @@ import WeaknessDrawDialog from '@components/weakness/WeaknessDrawDialog';
 // Social screens
 import FriendsView from '@components/social/FriendsView';
 
+// Core components
+import HeaderTitle from '@components/core/HeaderTitle';
+
 // App-level imports
 import MyProvider from '@app/MyProvider';
 import * as Sentry from '@sentry/react-native';
@@ -465,7 +468,14 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Guide.LocationSetup"
         component={LocationSetupView}
-        options={{ title: t`Location Setup` }}
+        options={({ route }) => ({
+          headerTitle: () => (
+            <HeaderTitle
+              title={route.params.step.text}
+              subtitle={route.params.step.description}
+            />
+          ),
+        })}
       />
       <Stack.Screen
         name="Guide.WeaknessSet"
