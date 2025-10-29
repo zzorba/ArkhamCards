@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2025-06-05 20:31+0300\n"
+"PO-Revision-Date: 2025-10-13 10:54+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -2203,19 +2203,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -6009,7 +6009,7 @@ msgid "Truths"
 msgstr ""
 
 msgid "Specialist"
-msgstr ""
+msgstr "Специалист"
 
 msgid "Enemy-Location"
 msgstr "Враги-локации"
@@ -6206,7 +6206,7 @@ msgid "You must select a campaign."
 msgstr "Вы должны выбрать кампанию."
 
 msgid "The Drowned City"
-msgstr ""
+msgstr "Затонувший город"
 
 msgid "Artifacts Earned"
 msgstr ""
@@ -6253,84 +6253,84 @@ msgid "To handle resignation or elimination"
 msgstr "В случае побега или выбывания"
 
 msgid "Core set"
-msgstr ""
+msgstr "Базовый набор"
 
 msgid "Cycles"
-msgstr ""
+msgstr "Циклы"
 
 msgid "Starter decks"
-msgstr ""
+msgstr "Колоды сыщиков"
 
 msgid "Fan-made Cycles"
-msgstr ""
+msgstr "Фанатские циклы"
 
 msgid "Legacy"
-msgstr ""
+msgstr "Легаси-среда"
 
 msgid "Current"
-msgstr ""
+msgstr "Текущая среда"
 
 msgid "Limited"
-msgstr ""
+msgstr "Ограниченная среда"
 
 msgid "Custom"
-msgstr ""
+msgstr "По своим правилам"
 
 msgid "Use all cards from any product"
-msgstr ""
+msgstr "Все вышедшие карты"
 
 msgid "Use only cards from recent expansions"
-msgstr ""
+msgstr "Только карты из нескольких последних выпусков"
 
 msgid "Use only cards from your choice of three expansions"
-msgstr ""
+msgstr "Карты из трёх любых дополнений"
 
 msgid "Use a completely custom card pool"
-msgstr ""
+msgstr "Полностью настраиваемый пул карт"
 
 #, javascript-format
 msgid "Limited: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "Ограниченная среда: ${ selectedPacks.size } наборов выбрано"
 
 #, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "По своим правилам: ${ selectedPacks.size } наборов выбрано"
 
 msgid "Card pool"
-msgstr ""
+msgstr "Пул карт"
 
 msgid "This is an optional variant that push players to build their decks creatively using a smaller cardpool."
-msgstr ""
+msgstr "Ротация — это вариант игры с меньшим разнообразием карт, который заставляет игроков составлять более разнообразные колоды, не опираясь на устоявшиеся архетипы."
 
 msgid "Select packs"
-msgstr ""
+msgstr "Выбрать допы"
 
 msgid "Choose a core set and three expansions to use for this limited pool."
-msgstr ""
+msgstr "Выберите базовый набор и три используемых дополнения для ограниченного пула."
 
 msgid "Choose any number of packs to use for this custom pool."
-msgstr ""
+msgstr "Выберите любое число наборов для игры по своим правилам."
 
 msgid "Limited: Not enough cycles selected"
-msgstr ""
+msgstr "Ограниченная среда: Недостаточно циклов выбрано"
 
 msgid "Limited: Too many cycles selected"
-msgstr ""
+msgstr "Ограниченная среда: Выбрано слишком много циклов"
 
 msgid "Limited:"
-msgstr ""
+msgstr "Ограниченная среда:"
 
 msgid "Current:"
-msgstr ""
+msgstr "Текущая среда:"
 
 msgid "Cycles (select 3)"
-msgstr ""
+msgstr "Циклы (выберите 3)"
 
 msgid "When the World Screamed"
 msgstr ""
 
 msgid "Contains cards not in the selected card pool."
-msgstr ""
+msgstr "Содержит карты не из выбранного пула карт."
 
 msgid "Card"
 msgstr ""
