@@ -16,8 +16,7 @@
     },
     "production": {
       "android": {
-        "credentialsSource": "local",
-        "autoIncrement": true
+        "credentialsSource": "local"
       },
       "ios": {
         "credentialsSource": "local"
