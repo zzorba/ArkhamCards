@@ -7,7 +7,7 @@ import { RefreshControl, RefreshControlProps, Platform, StyleSheet } from 'react
  * but renders no visual feedback (no spinner).
  * Used when you have custom loading indicators.
  */
-export default function NoVisualRefreshControl(props: RefreshControlProps) {
+export default function NoVisualRefreshControl(props: Pick<RefreshControlProps, 'progressViewOffset' | 'onRefresh' | 'refreshing'>) {
   const { colors } = useContext(StyleContext);
   return (
     <RefreshControl
@@ -18,10 +18,7 @@ export default function NoVisualRefreshControl(props: RefreshControlProps) {
       colors={[colors.D20]}
       progressBackgroundColor={Platform.OS === 'android' ? colors.L20 : 'transparent'}
       // Try to hide it completely
-      style={[
-        styles.hidden,
-        props.style,
-      ]}
+      style={styles.hidden}
     />
   );
 }

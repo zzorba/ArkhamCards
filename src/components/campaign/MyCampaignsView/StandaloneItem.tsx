@@ -8,7 +8,7 @@ import CampaignItemHeader from './CampaignItemHeader';
 
 interface Props {
   campaign: MiniCampaignT;
-  scenarioName: string;
+  scenarioName: string | undefined;
   onPress: (id: string, campaign: MiniCampaignT) => void;
 }
 

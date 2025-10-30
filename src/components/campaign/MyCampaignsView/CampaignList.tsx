@@ -22,7 +22,7 @@ interface Props {
   campaigns: MiniCampaignT[];
   footer: JSX.Element;
   footerHeight?: number;
-  standalonesById: { [campaignId: string]: { [scenarioId: string]: string } };
+  standalonesById: { [campaignId: string]: { [scenarioId: string]: string | undefined } | undefined };
   onRefresh?: () => void;
   refreshing?: boolean;
   header?: JSX.Element;
@@ -159,7 +159,7 @@ function CampaignList({ onScroll, header, campaigns, footer, footerHeight, stand
           <StandaloneItem
             campaign={campaign}
             onPress={onPress}
-            scenarioName={standalonesById[standaloneId.campaignId][standaloneId.scenarioId]}
+            scenarioName={standalonesById[standaloneId.campaignId]?.[standaloneId.scenarioId]}
           />
         ) : <View />;
       }

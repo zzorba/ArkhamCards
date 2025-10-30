@@ -209,7 +209,7 @@ export const getCampaigns = createSelector(
   (allCampaigns, allGuides, allDecks): MiniCampaignT[] => {
     return map(
       filter(
-        values(allCampaigns),
+        values(allCampaigns || {}),
         campaign => {
           return (!campaign.linkedCampaignUuid && !campaign.serverId && campaign.uuid !== FIXED_CHAOS_BAG_CAMPAIGN_ID.campaignId);
         }

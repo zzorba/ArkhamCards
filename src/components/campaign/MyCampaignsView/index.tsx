@@ -54,15 +54,15 @@ function MyCampaignsView() {
   const standalonesById = useMemo(() => {
     const result: {
       [campaign: string]: {
-        [scenario: string]: string;
-      };
+        [scenario: string]: string | undefined;
+      } | undefined;
     } = {};
     forEach(scenarios, scenario => {
       if (scenario.type === 'standalone') {
         if (!result[scenario.id.campaignId]) {
           result[scenario.id.campaignId] = {};
         }
-        result[scenario.id.campaignId][scenario.id.scenarioId] = scenario.name;
+        result[scenario.id.campaignId]![scenario.id.scenarioId] = scenario.name;
       }
     });
     return result;
