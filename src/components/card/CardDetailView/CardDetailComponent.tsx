@@ -62,6 +62,7 @@ function InvestigatorInfoComponent({ card, width, simple, showInvestigatorCards 
               card={parallel}
               width={width}
               simple={!!simple}
+              pressable
             />
           )) }
         </>
@@ -154,6 +155,7 @@ export default function CardDetailComponent({
           width={width}
           simple={!!simple}
           noImage={noImage}
+          pressable
         />
         { !simple && (
           <BondedCardsComponent

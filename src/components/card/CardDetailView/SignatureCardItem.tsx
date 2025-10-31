@@ -14,6 +14,7 @@ export default function SignatureCardItem({ card, width }: Props) {
       card={card}
       width={width}
       showBack
+      pressable
     />
   );
 }

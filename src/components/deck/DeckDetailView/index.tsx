@@ -330,14 +330,15 @@ function DeckDetailView({
   const [alertDialog, showAlert] = useAlertDialog();
 
   // Handle back button/gesture with usePreventRemove hook
-  usePreventRemove(true, ({ data }) => {
-    // Only intercept back/pop actions, not forward navigation
+  // Only prevent when there are pending edits AND not yet confirmed to avoid visual glitches on edge swipe
+  usePreventRemove(hasPendingEdits && !confirmedRef.current, ({ data }) => {
+    // Only intercept back/pop actions when we have pending edits
     if (data.action.type === 'POP' || data.action.type === 'GO_BACK') {
       if (!handleBackPress()) {
-        // handleBackPress returned false, allow navigation
+        // handleBackPress returned false (confirmed or no pending edits), allow navigation
         navigation.dispatch(data.action);
       }
-      // handleBackPress returned true (intercepted), do nothing
+      // handleBackPress returned true (showing dialog), don't dispatch the action
     } else {
       // Allow other navigation actions
       navigation.dispatch(data.action);
@@ -1043,44 +1044,45 @@ function DeckDetailView({
   ]);
 
   const fabIcon = useMemo(() => {
-    return <AppIcon name="plus-button" color={colors.L30} size={32} />;
-  }, [colors]);
+    const iconColor = (mode !== 'view' || fabOpen) ? colors.L30 : "#FFFFFF";
+    return <AppIcon name="plus-button" color={iconColor} size={32} />;
+  }, [mode, fabOpen, colors]);
 
   const items = useMemo(() => [{
     text: t`Draw simulator`,
-    icon: <AppIcon name="draw" color="#FFF" size={34} />,
+    icon: <AppIcon name="draw" color={colors.L30} size={34} />,
     name: 'draw_simulator',
     position: 1,
   },
   {
     text: t`Charts`,
     name: 'charts',
-    icon: <AppIcon name="chart" color="#FFF" size={34} />,
+    icon: <AppIcon name="chart" color={colors.L30} size={34} />,
     position: 2,
   },
   ...(editable && mode === 'view' ? [{
     text: t`Upgrade with XP`,
     name: 'upgrade',
-    icon: <AppIcon name="upgrade"color="#FFF" size={32} />,
+    icon: <AppIcon name="upgrade"color={colors.L30} size={32} />,
     position: 3,
   }] : []),
   ...(editable && !!SHOW_DRAFT_CARDS && !deck?.previousDeckId ? [{
     position: 4,
     text: t`Draft cards`,
     name: 'draft',
-    icon: <AppIcon name="draft" color="#FFF" size={32} />,
+    icon: <AppIcon name="draft" color={colors.L30} size={32} />,
   }] : []),
   ...(editable ? [{
     position: 5,
     text: t`Add cards`,
     name: 'add_cards',
-    icon: <AppIcon name="addcard" color="#FFF" size={32} />,
+    icon: <AppIcon name="addcard" color={colors.L30} size={32} />,
   }] : []),
   ...(editable && mode === 'view' ? [{
     position: 5,
     text: t`Edit`,
     name: 'edit',
-    icon: <AppIcon name="edit" color="#FFF" size={32} />,
+    icon: <AppIcon name="edit" color={colors.L30} size={32} />,
   }] : [])].map((item, idx) => ({
     ...item,
     position: idx + 1,

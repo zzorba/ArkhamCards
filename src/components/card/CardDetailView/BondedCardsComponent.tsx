@@ -64,6 +64,7 @@ export default function BondedCardsComponent({ cards, width, tabooSetId: tabooSe
               key={card.code}
               card={card}
               width={width}
+              pressable
             />
           )) }
         </>
@@ -76,6 +77,7 @@ export default function BondedCardsComponent({ cards, width, tabooSetId: tabooSe
               key={card.code}
               card={card}
               width={width}
+              pressable
             />
           )) }
         </>

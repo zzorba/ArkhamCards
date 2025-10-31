@@ -55,7 +55,6 @@ export default function DeckMetadataControls({
           setTabooSet={setTabooSet}
           hideTabooPicker={hideTabooPicker}
           first={!firstElement}
-          last={!hasOptions}
         />
       ) }
       <InvestigatorOptionsControl
