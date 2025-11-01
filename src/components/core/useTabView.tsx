@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { find, map } from 'lodash';
+import { Text } from 'react-native';
 import { TabView, SceneRendererProps, NavigationState, TabBar, Route } from 'react-native-tab-view';
 
 import StyleContext from '@styles/StyleContext';
@@ -29,6 +30,29 @@ export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props):
     onTabChange && onTabChange(tabs[index].key);
   }, [onTabChange, setIndex, tabs]);
 
+  const tabBarOptions = useMemo(() => {
+    const options: Record<string, {
+      label: ({ focused, color }: { focused: boolean; color: string }) => React.ReactNode;
+    }> = {};
+    tabs.forEach(tab => {
+      options[tab.key] = {
+        label: ({ focused, color }) => (
+          <Text style={{
+            fontFamily: 'Alegreya-Medium',
+            fontSize: 18 * fontScale,
+            lineHeight: 20 * fontScale,
+            color,
+            margin: 4,
+            backgroundColor: 'transparent',
+          }}>
+            {tab.title}
+          </Text>
+        ),
+      };
+    });
+    return options;
+  }, [tabs, fontScale]);
+
   const renderTabBar = useCallback((props: SceneRendererProps & {
     navigationState: NavigationState<TabRoute>;
   }) => {
@@ -44,14 +68,10 @@ export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props):
         inactiveColor={colors.M}
         indicatorStyle={{ backgroundColor: colors.D20 }}
         style={{ backgroundColor: colors.L20 }}
-        labelStyle={{
-          fontFamily: 'Alegreya-Regular',
-          fontSize: 14 * fontScale,
-          lineHeight: 16 * fontScale,
-        }}
+        options={tabBarOptions}
       />
     );
-  }, [fontScale, colors, scrollEnabled]);
+  }, [fontScale, colors, scrollEnabled, tabBarOptions]);
 
   const renderTab = useCallback(({ route }: { route: { key: string } }) => {
     const tab = find(tabs, t => t.key === route.key);
