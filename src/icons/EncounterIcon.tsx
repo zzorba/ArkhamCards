@@ -332,6 +332,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'rtr':
       case 'red_tide_rising':
         return this.standaloneIcon('red_tide_rising', size, color);
+      // TODO add 3 letter abbreviation
+      case 'enthralling_encore':
+        return this.standaloneIcon('enthralling_encore', size, color);
       case 'parallel':
       case 'otr':
       case 'on_the_road_again':
