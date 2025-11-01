@@ -332,7 +332,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'rtr':
       case 'red_tide_rising':
         return this.standaloneIcon('red_tide_rising', size, color);
-      // TODO add 3 letter abbreviation
+      // TODO add abbreviation
       case 'enthralling_encore':
         return this.standaloneIcon('enthralling_encore', size, color);
       case 'parallel':
@@ -1015,9 +1015,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_devil_reef':
       case 'zreturn_to_devil_reef':
         return this.innsmouthIcon('return_to_devil_reef', size, color);
-      case 'return_to_horror_in_high_gear':
-      case 'zreturn_to_horror_in_high_gear':
-        return this.innsmouthIcon('return_to_horror_in_high_gear', size, color);
       case 'return_to_horror_in_high_gear':
       case 'zreturn_to_horror_in_high_gear':
         return this.innsmouthIcon('return_to_horror_in_high_gear', size, color);
