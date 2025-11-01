@@ -133,6 +133,9 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
   }, []);
 
   const getItemType = useCallback((item: FlatDataItem<T, Item>) => item.type === 'item' ? item.item.type : item.type, []);
+  const keyExtractor = useCallback((item: FlatDataItem<T, Item>, index: number) => {
+    return item.type === 'item' ? `${item.item.type}-${index}` : `${item.type}-${index}`;
+  }, []);
   if (Platform.OS === 'android') {
     return (
       <FlatList
@@ -149,6 +152,7 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
         onScroll={onScroll}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
+        keyExtractor={keyExtractor}
         renderItem={renderFlatItem}
         scrollsToTop
         onEndReached={onLoading}

@@ -9,16 +9,20 @@ import { RefreshControl, RefreshControlProps, Platform, StyleSheet } from 'react
  */
 export default function NoVisualRefreshControl(props: Pick<RefreshControlProps, 'progressViewOffset' | 'onRefresh' | 'refreshing'>) {
   const { colors } = useContext(StyleContext);
+  if (Platform.OS === 'ios') {
+    return (
+      <RefreshControl
+        {...props}
+        tintColor="transparent"
+        style={styles.hidden}
+      />
+    );
+  }
   return (
     <RefreshControl
       {...props}
-      // iOS uses tintColor
-      tintColor="transparent"
-      // Android uses colors array
-      colors={[colors.D20]}
-      progressBackgroundColor={Platform.OS === 'android' ? colors.L20 : 'transparent'}
-      // Try to hide it completely
-      style={styles.hidden}
+      colors={[colors.L20]}
+      progressBackgroundColor={colors.D20}
     />
   );
 }
