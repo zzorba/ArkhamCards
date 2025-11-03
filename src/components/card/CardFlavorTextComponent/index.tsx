@@ -1,35 +1,34 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import SimpleMarkdown from 'simple-markdown';
-import {
-  MarkdownView,
-  MarkdownRule,
-  RegexComponents,
-  NestedParseFunction,
-  ParseState,
-} from 'react-native-markdown-view';
+import React from 'react';
+import CardTextComponent from '../CardTextComponent';
+import { StyleContextType } from '@styles/StyleContext';
 
-import { WithChildren, WithText, WithIconName, State } from '../CardTextComponent/types';
-import ArkhamIconNode from '../CardTextComponent/ArkhamIconNode';
-import FlavorItalicNode from './FlavorItalicNode';
-import FlavorBoldNode from './FlavorBoldNode';
-import FlavorFancyNode from './FlavorFancyNode';
-import FlavorCenterNode from './FlavorCenterNode';
-import FlavorSmallCapsNode from './FlavorSmallCapsNode';
-import FlavorRightNode from './FlavorRightNode';
-import FlavorUnderlineNode from './FlavorUnderlineNode';
-import InnsmouthNode from './InnsmouthNode';
-import GameTextNode from './GameTextNode';
-import FlavorBlockquoteHtmlTagNode from './FlavorBlockquoteHtmlTagNode';
+interface Props {
+  text: string;
+  onLinkPress?: (url: string, context: StyleContextType) => void;
+  color?: string;
+  width?: number;
+  sizeScale?: number;
+}
 
-import CiteTagNode from './CiteTagNode';
-import { xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { TextStyle } from 'react-native';
-import LanguageContext from '@lib/i18n/LanguageContext';
-import FlavorMiniCapsNode from './FlavorMiniCapsNode';
-import FlavorStrikeNode from './FlavorStrikeNode';
-import FlavorRedNode from './FlavorRedNode';
-import FlavorTypewriterNode from './FlavorTypewriterNode';
+export default function CardFlavorTextComponent({
+  text,
+  onLinkPress,
+  color,
+  width,
+  sizeScale = 1,
+}: Props) {
+  return (
+    <CardTextComponent
+      text={text}
+      onLinkPress={onLinkPress}
+      sizeScale={sizeScale}
+      flavorText
+      style={{ width }}
+    />
+  );
+}
+
+/* OLD IMPLEMENTATION - KEEPING FOR REFERENCE UNTIL MIGRATION IS CONFIRMED WORKING
 
 function BreakTagRule(): MarkdownRule<WithText, State> {
   return {
@@ -477,3 +476,5 @@ export default function CardFlavorTextComponent(
     </MarkdownView>
   );
 }
+
+*/

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { Node, OutputFunction, RenderState, MarkdownText } from 'react-native-markdown-view';
 
 import { WithChildren } from '../CardTextComponent/types';
@@ -9,10 +10,11 @@ export default function FlavorItalicNode() {
     output: OutputFunction,
     state: RenderState
   ) => {
+    // MarkdownText uses the font config system, so use fontWeight instead of variant files
     return (
       <MarkdownText
         key={state.key}
-        style={{ fontFamily: 'Alegreya', fontStyle: 'normal' }}
+        style={{ fontFamily: 'Alegreya', fontWeight: '400', fontStyle: 'normal' }}
       >
         { output(node.children, state) }
       </MarkdownText>

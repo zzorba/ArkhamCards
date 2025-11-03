@@ -1,4 +1,4 @@
-// Auto-generated from arkhamslim.json and arkhamicons-config.json
+// Auto-generated from assets/arkhamicons-config.json
 // Run 'yarn generate:glyphs' to regenerate this file
 
 export const ARKHAM_GLYPHS: Record<string, number> = {

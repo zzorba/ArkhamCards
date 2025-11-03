@@ -35,7 +35,7 @@
     "postinstall": "patch-package && copy-files-from-to",
     "codegen": "graphql-codegen-esm --config codegen.yml",
     "generate-schema": "get-graphql-schema  https://gapi.arkhamcards.com/v1/graphql -h \"x-hasura-admin-secret=$MASTER_KEY\" > schema.graphql",
-    "generate:glyphs": "./scripts/generate-arkham-glyphs.sh"
+    "generate:glyphs": "./scripts/generate-arkham-glyphs.sh assets/arkhamicons-config.json src/generated/arkhamGlyphs.ts ARKHAM_GLYPHS && ./scripts/generate-arkham-glyphs.sh assets/arkhamslim.json src/generated/arkhamSlimGlyphs.ts ARKHAM_SLIM_GLYPHS"
   },
   "resolutions": {
     "@apollo/client": "3.11.1",
@@ -83,6 +83,8 @@
     "date-fns": "2.30.0",
     "deep-equal": "2.2.2",
     "deprecated-react-native-prop-types": "2.3.0",
+    "domhandler": "^5.0.3",
+    "domutils": "^3.2.2",
     "events": "3.3.0",
     "expo": "53.0.23",
     "expo-asset": "^12.0.9",
@@ -97,6 +99,7 @@
     "flatted": "3.3.1",
     "graphql": "16.8.1",
     "hoist-non-react-statics": "3.3.2",
+    "htmlparser2": "^10.0.0",
     "lodash": "4.17.21",
     "lottie-react-native": "7.2.2",
     "lucide-react-native": "^0.475.0",
@@ -126,6 +129,7 @@
     "react-native-keychain": "8.1.2",
     "react-native-keyevent": "0.3.1",
     "react-native-localize": "3.2.0",
+    "react-native-markdown-display": "^7.0.2",
     "react-native-markdown-view": "https://github.com/zzorba/react-native-markdown-view#1.1.23",
     "react-native-modal": "14.0.0-rc.1",
     "react-native-pager-view": "6.7.1",

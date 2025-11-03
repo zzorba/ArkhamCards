@@ -1,18 +1,20 @@
 #!/bin/bash
 
-# Generate TypeScript glyph mappings from arkhamslim.json and arkhamicons-config.json
+# Generate TypeScript glyph mappings from arkham icon config JSON files
+# Usage: ./generate-arkham-glyphs.sh <input_json> <output_ts> <export_name>
 
-ICONS_FILE="assets/arkhamicons-config.json"
-OUTPUT_FILE="src/generated/arkhamGlyphs.ts"
+ICONS_FILE="${1:-assets/arkhamicons-config.json}"
+OUTPUT_FILE="${2:-src/generated/arkhamGlyphs.ts}"
+EXPORT_NAME="${3:-ARKHAM_GLYPHS}"
 
-echo "Generating arkham glyph mappings..."
+echo "Generating glyph mappings from $ICONS_FILE to $OUTPUT_FILE..."
 
 # Extract icon names and codes using jq and generate TypeScript
 cat > "$OUTPUT_FILE" <<EOF
-// Auto-generated from arkhamslim.json and arkhamicons-config.json
+// Auto-generated from $ICONS_FILE
 // Run 'yarn generate:glyphs' to regenerate this file
 
-export const ARKHAM_GLYPHS: Record<string, number> = {
+export const $EXPORT_NAME: Record<string, number> = {
 EOF
 
 # Use jq to extract name and code pairs from icons
