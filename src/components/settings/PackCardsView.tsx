@@ -12,6 +12,7 @@ import { t } from 'ttag';
 
 export interface PackCardsProps {
   pack_code: string;
+  pack_name?: string;
   baseQuery?: Brackets;
 }
 
@@ -41,7 +42,7 @@ export default function PackCardsView() {
 }
 
 function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Pack'> }): NativeStackNavigationOptions {
-  return { title: route.params?.pack_code || t`Pack` };
+  return { title: route.params?.pack_name || route.params?.pack_code || t`Pack` };
 };
 PackCardsView.options = options;
 

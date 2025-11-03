@@ -49,6 +49,7 @@ export default function PackRow({
   const onPress = useCallback(() => {
     navigation.navigate('Pack', {
       pack_code: pack.code,
+      pack_name: pack.name,
       baseQuery,
     });
   }, [navigation, pack, baseQuery]);
