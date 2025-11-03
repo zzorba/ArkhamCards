@@ -1,6 +1,7 @@
+/* eslint-disable react-native/no-unused-styles */
 import React, { useCallback, useContext, useMemo } from 'react';
-import { Platform, Text, View, StyleSheet } from 'react-native';
-import Markdown, { RenderRules, MarkdownIt as MarkdownItType } from 'react-native-markdown-display';
+import { Platform, Text, View, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import Markdown, { RenderRules } from 'react-native-markdown-display';
 import MarkdownIt from 'markdown-it';
 import { parseDocument } from 'htmlparser2';
 import { Element, Text as DomText, Node as DomNode } from 'domhandler';
@@ -17,6 +18,7 @@ interface Props {
   sizeScale?: number;
   noBullet?: boolean;
   style?: any;
+  isCard?: boolean;
   flavorText?: boolean; // If true, text is italic by default and <i> tags un-italicize
 }
 
@@ -30,6 +32,7 @@ const BULLET_REGEX = /(^\s?-|^—\s+)([^0-9].+)$/gm;
 const GUIDE_BULLET_REGEX = /(^\s?=|^=\s+)([^0-9].+)$/gm;
 const PARAGRAPH_BULLET_REGEX = /(<p>- )|(<p>–)/gm;
 const DOUBLE_BRACKET_REGEX = /\[\[([^\]]+)\]\]/g;
+const HR_REGEX = /<hr>/g;
 const NEWLINE_REGEX = /\n/g;
 
 // Convert custom HTML tags to markdown that markdown-it can understand
@@ -41,7 +44,8 @@ function preprocessText(text: string, noBullet?: boolean, onLinkPress?: boolean)
     .replace(ARRAY_XML_REGEX, '→')
     .replace(BAD_LINEBREAK_REGEX, '\n')
     .replace(DIVIDER_REGEX, '\n---\n')
-    .replace(NEWLINE_REGEX, '<br/>');
+    .replace(NEWLINE_REGEX, '<br/>')
+    .replace(HR_REGEX, '<hr/><br/>');
 
   const cleanText = noBullet ? cleanTextA :
     cleanTextA.replace(INDENTED_BULLET_REGEX,
@@ -61,7 +65,7 @@ function preprocessText(text: string, noBullet?: boolean, onLinkPress?: boolean)
   });
 }
 
-export default function CardTextComponent({ text, style, onLinkPress, sizeScale = 1, noBullet, flavorText }: Props) {
+export default function CardTextComponent({ text, style, onLinkPress, sizeScale = 1, noBullet, isCard, flavorText }: Props) {
   const { usePingFang } = useContext(LanguageContext);
   const context = useContext(StyleContext);
 
@@ -155,7 +159,19 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
   }, [context, sizeScale]);
 
   // Config for tag rendering
-  const tagConfig = useMemo(() => ({
+  const tagConfig = useMemo((): { [tag: string]: {
+    type: 'text',
+    style: () => TextStyle;
+  } | {
+    type: 'br' | 'hr' | 'p'
+  } | {
+    type: 'view',
+    style: ViewStyle;
+    textStyle: TextStyle;
+  } | {
+    type: 'blockquote'
+    styleKey: string;
+  }} => ({
     // Text styling tags
     b: { type: 'text', style: () => createTextStyle('bold') },
     strong: { type: 'text', style: () => createTextStyle('bold') },
@@ -185,7 +201,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
     // Layout tags
     center: { type: 'view', style: { alignItems: 'center' }, textStyle: { textAlign: 'center' } },
     right: { type: 'view', style: { alignItems: 'flex-end' }, textStyle: { textAlign: 'right' } },
-    blockquote: { type: 'view', styleKey: 'blockquote' },
+    blockquote: { type: 'blockquote', styleKey: 'blockquote' },
 
     // Special tags
     br: { type: 'br' },
@@ -277,20 +293,18 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
           const style = typeof config.style === 'function' ? config.style() : config.style;
           return <Text key={key} style={style}>{children}</Text>;
         }
-
-        case 'view': {
-          const viewStyle = config.styleKey ? styles[config.styleKey] : config.style;
+        case 'blockquote':
           // For blockquote, render children directly (already recursively parsed)
           // For center/right, wrap in Text
-          if (element.name === 'blockquote') {
-            return (
-              <View key={key} style={viewStyle}>
-                {children}
-              </View>
-            );
-          }
           return (
-            <Text key={key} style={viewStyle}>
+            <View key={key} style={styles[config.styleKey]}>
+              {children}
+            </View>
+          );
+
+        case 'view': {
+          return (
+            <Text key={key} style={config.style}>
               <Text key={key} style={config.textStyle}>{children}</Text>
             </Text>
           );
@@ -304,7 +318,11 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
           return <Text key={key}>{'\n'}</Text>;
 
         case 'hr':
-          return <View key={key} style={styles.hr} />;
+          return (
+            <View key={key} style={styles.hr}>
+              <View style={styles.hrBar} />
+            </View>
+          );
 
         case 'p':
           return <Text key={key} style={styles.paragraph}>{children}</Text>;
@@ -678,7 +696,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
         return null;
       },
     };
-  }, [context, renderArkhamIcon, parseAndRenderHTML, baseTextStyle, usePingFang, sizeScale]);
+  }, [flavorText, renderArkhamIcon, parseAndRenderHTML, createTextStyle, baseTextStyle]);
 
   const markdownStyles = useMemo(() => {
     const baseFontSize = 16 * context.fontScale * sizeScale;
@@ -750,13 +768,20 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
         lineHeight: 16,
       },
       hr: {
+        backgroundColor: 'transparent',
+        width: '100%',
+        flexDirection: 'row',
+        paddingTop: m,
+        paddingBottom: s,
+      },
+      hrBar: {
         backgroundColor: context.colors.L10,
         height: StyleSheet.hairlineWidth,
-        width: '100%',
+        flex: 1,
       },
       blockquote: {
-        paddingLeft: m,
-        marginTop: s,
+        paddingLeft: isCard ? s : m,
+        paddingTop: s,
         marginBottom: s,
         backgroundColor: 'transparent',
         borderColor: 'transparent',
@@ -780,7 +805,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
         padding: 8,
       },
     });
-  }, [context, usePingFang, sizeScale, flavorText]);
+  }, [context, usePingFang, isCard, sizeScale, flavorText]);
 
   return (
     <Markdown

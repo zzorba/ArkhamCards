@@ -497,7 +497,7 @@ export default function DrawChaosBagComponent(props: Props) {
             </View>
           }>
           <View style={space.paddingTopS}>
-            <CardTextComponent key="special_effects" text={scenarioCardText} sizeScale={1.2} />
+            <CardTextComponent key="special_effects" text={scenarioCardText} sizeScale={1.2} isCard />
           </View>
         </RoundedFactionBlock>
       </View>

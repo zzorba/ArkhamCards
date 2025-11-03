@@ -304,17 +304,17 @@ export default function TwoSidedCardComponent(props: Props) {
                 </View>
               ) }
               { !!back.back_flavor && flavorFirst &&
-                <CardFlavorTextComponent text={back.back_flavor} />
+                <CardFlavorTextComponent text={back.back_flavor} isCard />
               }
               { !!back.back_text && (
                 <View style={[styles.gameTextBlock, {
                   borderColor: colors.M,
                 }]}>
-                  <CardTextComponent text={back.back_text} />
+                  <CardTextComponent text={back.back_text} isCard />
                 </View>)
               }
               { !!back.back_flavor && !flavorFirst &&
-                <CardFlavorTextComponent text={back.back_flavor} />
+                <CardFlavorTextComponent text={back.back_flavor} isCard />
               }
             </View>
             { isFirst && cardFooter }

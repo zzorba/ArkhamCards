@@ -8,6 +8,7 @@ interface Props {
   color?: string;
   width?: number;
   sizeScale?: number;
+  isCard?: boolean;
 }
 
 export default function CardFlavorTextComponent({
@@ -15,6 +16,7 @@ export default function CardFlavorTextComponent({
   onLinkPress,
   color,
   width,
+  isCard,
   sizeScale = 1,
 }: Props) {
   return (
@@ -23,6 +25,7 @@ export default function CardFlavorTextComponent({
       onLinkPress={onLinkPress}
       sizeScale={sizeScale}
       flavorText
+      isCard={isCard}
       style={{ width }}
     />
   );
