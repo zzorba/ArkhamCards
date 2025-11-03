@@ -20,8 +20,6 @@ interface Props {
   flavorText?: boolean; // If true, text is italic by default and <i> tags un-italicize
 }
 
-
-
 const WEIRD_BULLET_REGEX = /\\u2022/g;
 const ICON_HTML_REGEX = /<span class="icon-([^"]+?)"><\/span>/g;
 const ARRAY_XML_REGEX = /&rarr;/g;
@@ -32,16 +30,18 @@ const BULLET_REGEX = /(^\s?-|^—\s+)([^0-9].+)$/gm;
 const GUIDE_BULLET_REGEX = /(^\s?=|^=\s+)([^0-9].+)$/gm;
 const PARAGRAPH_BULLET_REGEX = /(<p>- )|(<p>–)/gm;
 const DOUBLE_BRACKET_REGEX = /\[\[([^\]]+)\]\]/g;
+const NEWLINE_REGEX = /\n/g;
 
 // Convert custom HTML tags to markdown that markdown-it can understand
 function preprocessText(text: string, noBullet?: boolean, onLinkPress?: boolean): string {
   const cleanTextA = text
     .replace(WEIRD_BULLET_REGEX, '•')
-    .replace(DOUBLE_BRACKET_REGEX, '<b><i>$1</i></b>')  // Convert [[foo]] to bold+italic
+    .replace(DOUBLE_BRACKET_REGEX, '<trait>$1</trait>') // Convert [[foo]] to bold+italic
     .replace(ICON_HTML_REGEX, '[$1]')
     .replace(ARRAY_XML_REGEX, '→')
     .replace(BAD_LINEBREAK_REGEX, '\n')
-    .replace(DIVIDER_REGEX, '\n---\n');
+    .replace(DIVIDER_REGEX, '\n---\n')
+    .replace(NEWLINE_REGEX, '<br/>');
 
   const cleanText = noBullet ? cleanTextA :
     cleanTextA.replace(INDENTED_BULLET_REGEX,
@@ -117,7 +117,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
       bolditalic: { fontFamily: 'Alegreya', fontWeight: '700', fontStyle: 'italic' },
     };
     return { ...baseStyle, ...iosStyleMap[styleType] };
-  }, [context, sizeScale, usePingFang, scaledSize]);
+  }, [context, usePingFang, scaledSize]);
 
   const renderArkhamIcon = useCallback((iconName: string, size?: number) => {
     const iconSize = size || 16 * context.fontScale * sizeScale;
@@ -180,6 +180,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
     fancy_u: { type: 'text', style: () => ({ fontFamily: 'Caveat', ...scaledSize(18, 24), textDecorationLine: 'underline' as const, color: context.colors.darkText }) },
     innsmouth: { type: 'text', style: () => ({ fontFamily: 'AboutDead', fontStyle: 'normal' as const, fontWeight: '600' as const, ...scaledSize(24, 28), color: context.colors.darkText }) },
     game: { type: 'text', style: () => ({ fontFamily: Platform.OS === 'ios' ? 'Teutonic RU' : 'TT2020StyleE-Regular', fontStyle: 'normal' as const, ...scaledSize(24, Platform.OS === 'ios' ? 28 : 32), color: context.colors.darkText }) },
+    trait: { type: 'text', style: () => createTextStyle('bolditalic') },
 
     // Layout tags
     center: { type: 'view', style: { alignItems: 'center' }, textStyle: { textAlign: 'center' } },
@@ -289,9 +290,9 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
             );
           }
           return (
-            <View key={key} style={viewStyle}>
-              <Text style={config.textStyle}>{children}</Text>
-            </View>
+            <Text key={key} style={viewStyle}>
+              <Text key={key} style={config.textStyle}>{children}</Text>
+            </Text>
           );
         }
 
@@ -314,7 +315,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
     }
 
     return null;
-  }, [tagConfig]);
+  }, [tagConfig, renderArkhamIcon]);
 
   // Helper function to parse and render HTML content using htmlparser2
   const parseAndRenderHTML = useCallback((content: string, styles: any, index: number, isBlock: boolean = false): React.ReactNode => {
@@ -404,7 +405,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
             if (htmlContent === '<br/>' || htmlContent === '<br>') {
               processedElements.push('\n');
               i++;
-            } else if (htmlContent.match(/^<(b|strong|i|em|u|strike|del|red|smallcaps|center|right|blockquote|fancy|fancy_u|typewriter|cite|minicaps|innsmouth|game)>/)) {
+            } else if (htmlContent.match(/^<(b|strong|i|em|u|strike|del|red|smallcaps|center|right|blockquote|fancy|fancy_u|typewriter|cite|minicaps|innsmouth|game|trait)>/)) {
               // For HTML tags (both standard and custom), collect the full HTML string and parse with htmlparser2
               // This ensures icon patterns inside these tags get processed correctly
               let fullHTML = htmlContent;
@@ -413,7 +414,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
                 const nextChild = node.children[j];
                 if (nextChild.type === 'html_inline') {
                   fullHTML += nextChild.content;
-                  if (nextChild.content.match(/<\/(b|strong|i|em|u|strike|del|red|smallcaps|center|right|blockquote|fancy|fancy_u|typewriter|cite|minicaps|innsmouth|game)>/)) {
+                  if (nextChild.content.match(/<\/(b|strong|i|em|u|strike|del|red|smallcaps|center|right|blockquote|fancy|fancy_u|typewriter|cite|minicaps|innsmouth|game|trait)>/)) {
                     break;
                   }
                 } else if (nextChild.type === 'text') {
@@ -751,6 +752,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
       hr: {
         backgroundColor: context.colors.L10,
         height: StyleSheet.hairlineWidth,
+        width: '100%',
       },
       blockquote: {
         paddingLeft: m,
