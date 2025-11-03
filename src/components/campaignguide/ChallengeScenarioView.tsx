@@ -4,7 +4,6 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import Card from '@data/types/Card';
@@ -15,6 +14,8 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import HeaderTitle from '@components/core/HeaderTitle';
+import DeckButton from '@components/deck/controls/DeckButton';
+import space from '@styles/space';
 
 export interface ChallengeScenarioProps {
   scenario: Scenario;
@@ -60,7 +61,9 @@ export default function ChallengeScenarioView() {
         <SetupStepWrapper bulletType="none">
           <CampaignGuideTextComponent text={t`The app does not enforce Challenge Scenario prerequisites, so please confirm that they apply manually.`} />
         </SetupStepWrapper>
-        <BasicButton title={t`Play this scenario`} onPress={handleOnPress} />
+        <View style={space.marginSideM}>
+          <DeckButton encounterIcon={scenario.id} title={t`Play this scenario`} onPress={handleOnPress} />
+        </View>
       </ScrollView>
     </View>
   );

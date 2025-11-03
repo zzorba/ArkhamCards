@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useRef } from 'react';
-import { Text as SVGText } from 'react-native-svg';
+import { Text, matchFont } from '@shopify/react-native-skia';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
@@ -15,6 +15,11 @@ const SIZE = 32;
 export default function ChartIconComponent({ x, y, text }: Props) {
   const { colors } = useContext(StyleContext);
   const iconGlyphs = useRef(ArkhamIcon.getRawGlyphMap());
+
+  const font = useMemo(() => matchFont({
+    fontFamily: 'arkhamicons',
+    fontSize: SIZE,
+  }), []);
 
   const color = useMemo(() => {
     switch (text) {
@@ -39,13 +44,12 @@ export default function ChartIconComponent({ x, y, text }: Props) {
   }, [text, colors]);
 
   return (
-    <SVGText
-      x={x - SIZE / 2} y={y + SIZE / 2 + 3}
-      fontSize={SIZE}
-      fontFamily="arkhamicons"
-      fill={color}
-    >
-      { String.fromCharCode(iconGlyphs.current[text]) }
-    </SVGText>
+    <Text
+      x={x - SIZE / 2}
+      y={y + SIZE / 2 + 3}
+      text={String.fromCharCode(iconGlyphs.current[text])}
+      font={font}
+      color={color}
+    />
   );
 }

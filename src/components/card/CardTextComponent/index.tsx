@@ -438,7 +438,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
       fontStyle: 'normal',
       fontWeight: 'normal',
       fontSize: 16 * context.fontScale * sizeScale,
-      lineHeight: 20 * context.fontScale * sizeScale,
+      // lineHeight: 20 * context.fontScale * sizeScale,
       marginTop: 4,
       marginBottom: 4,
       color: context.colors.darkText,

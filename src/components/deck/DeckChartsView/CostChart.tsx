@@ -1,14 +1,10 @@
 import React, { useMemo, useContext } from 'react';
 import { filter, map } from 'lodash';
 import { View, Text, StyleSheet } from 'react-native';
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-} from 'victory-native';
+import { CartesianChart, Bar } from 'victory-native';
+import { useFont } from '@shopify/react-native-skia';
 import { t } from 'ttag';
 
-import ChartLabel from './ChartLabel';
 import { ParsedDeck } from '@actions/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -18,10 +14,11 @@ interface Props {
   width: number;
 }
 
-interface Item {
-  cost: string;
-  alwaysShow: boolean;
+interface Item extends Record<string, unknown> {
+  cost: number;
+  costLabel: string;
   value: number;
+  alwaysShow: boolean;
 }
 
 function specialCost(index: number) {
@@ -34,14 +31,11 @@ function specialCost(index: number) {
   return `${index}`;
 }
 
-function getValue({ datum }: { datum: Item }) {
-  return `${datum.value}`;
-}
-
 function getCostData(index: number, costHistogram: number[]): Item {
   const cost = index - 2;
   return {
-    cost: specialCost(cost),
+    cost: cost,
+    costLabel: specialCost(cost),
     alwaysShow: cost >= 0 && cost < 5,
     value: costHistogram[index] || 0,
   };
@@ -49,49 +43,55 @@ function getCostData(index: number, costHistogram: number[]): Item {
 
 export default function CostChart({ parsedDeck: { costHistogram }, width }: Props) {
   const { typography, colors } = useContext(StyleContext);
-  const barData = useMemo(() => filter(
-    map(costHistogram, (_, idx) => getCostData(idx, costHistogram)),
-    item => item.alwaysShow || item.value > 0
-  ), [costHistogram]);
+  const barData = useMemo(() => {
+    const result = filter(
+      map(costHistogram, (_, idx) => getCostData(idx, costHistogram)),
+      item => item.alwaysShow || item.value > 0
+    );
+    return result;
+  }, [costHistogram]);
+
+  const font = useFont(require('../../../../assets/Alegreya-Regular.ttf'), 18);
+  const labelFont = useFont(require('../../../../assets/Alegreya-Bold.ttf'), 14);
+
+  if (!font || !labelFont) {
+    return null;
+  }
 
   return (
     <View style={[styles.wrapper, space.marginBottomL, { width }]}>
       <Text style={[typography.large, typography.center]}>
         { t`Card Costs` }
       </Text>
-      <VictoryChart width={width}>
-        <VictoryAxis
-          style={{
-            axis: { stroke: 'none' },
-            tickLabels: {
-              fontSize: 18,
-              fontFamily: typography.large.fontFamily,
-              fontWeight: '400',
-              fill: colors.darkText,
-            },
-          }}
-        />
-        <VictoryBar
+      <View style={{ height: 300 }}>
+        <CartesianChart
           data={barData}
-          x="cost"
-          y="value"
-          barRatio={1.5}
-          labels={getValue}
-          style={{
-            data: {
-              fill: '#444',
-            },
-            labels: {
-              fill: 'white',
-              fontSize: 14,
-              fontFamily: typography.bold.fontFamily,
-              fontWeight: '700',
-            },
+          xKey="cost"
+          yKeys={['value']}
+          padding={{ left: 10, right: 10, top: 20, bottom: 40 }}
+          domain={{ y: [0] }}
+          xAxis={{
+            font,
+            labelColor: colors.darkText,
+            lineColor: 'transparent',
           }}
-          // @ts-ignore TS2769
-          labelComponent={<ChartLabel field="value" />}
-        />
-      </VictoryChart>
+          domainPadding={{ left: 50, right: 50, top: 30 }}
+        >
+          {({ points, chartBounds }) => (
+            <Bar
+              points={points.value}
+              chartBounds={chartBounds}
+              color="#444"
+              roundedCorners={{ topLeft: 5, topRight: 5 }}
+              labels={{
+                position: 'top',
+                font: labelFont,
+                color: 'white',
+              }}
+            />
+          )}
+        </CartesianChart>
+      </View>
     </View>
   );
 }

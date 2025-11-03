@@ -1,86 +1,94 @@
 import React, { useContext, useMemo } from 'react';
 import { filter, map } from 'lodash';
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-} from 'victory-native';
+import { CartesianChart, Bar } from 'victory-native';
 import { View, Text, StyleSheet } from 'react-native';
+import { useFont } from '@shopify/react-native-skia';
 import { t } from 'ttag';
 
-import ChartLabel from './ChartLabel';
-import ChartIconComponent from './ChartIconComponent';
-import { ParsedDeck, SlotCounts } from '@actions/types';
-import { SLOTS, SlotCodeType } from '@app_constants';
+import { ParsedDeck } from '@actions/types';
+import { SLOTS } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
+import { ARKHAM_GLYPHS } from '@generated/arkhamGlyphs';
 
 interface Props {
   parsedDeck: ParsedDeck;
   width: number;
 }
 
-interface Item {
-  slot: string;
-  value: number;
-}
-
-function getSlotData(slot: SlotCodeType, slotCounts: SlotCounts): Item {
-  return {
-    slot: slot.replace(' ', '-'),
-    value: slotCounts[slot] || 0,
-  };
-}
-function getValue({ datum }: { datum: Item }) {
-  return `${datum.value}`;
-}
-
 export default function SlotIconChart({ parsedDeck: { slotCounts }, width }: Props) {
   const { typography, colors } = useContext(StyleContext);
-  const barData = useMemo(() => filter(
-    map(SLOTS, slot => getSlotData(slot, slotCounts)),
-    data => data.value > 0
-  ), [slotCounts]);
+  const barData = useMemo(() => {
+    const filtered = filter(
+      map(SLOTS, slot => ({
+        slot: slot.replace(' ', '_'),
+        slotOriginal: slot,
+        value: slotCounts[slot] || 0,
+      })),
+      data => data.value > 0
+    );
+    // Reindex after filtering
+    return filtered.map((item, index) => ({ ...item, index }));
+  }, [slotCounts]);
+
+  const font = useFont(require('../../../../assets/Alegreya-Regular.ttf'), 18);
+  const labelFont = useFont(require('../../../../assets/Alegreya-Bold.ttf'), 14);
+  const iconFont = useFont(require('../../../../assets/arkhamicons.ttf'), 24);
+
+  if (!font || !labelFont || !iconFont) {
+    return null;
+  }
 
   return (
-    <View style={[styles.wrapper, { width }]}>
+    <View style={[styles.wrapper, space.marginBottomL, { width }]}>
       <Text style={[typography.large, typography.center]}>
         { t`Slots` }
       </Text>
-      <VictoryChart width={width}>
-        <VictoryAxis
-          style={{
-            axis: { stroke: 'none' },
-            tickLabels: {
-              fontSize: 18,
-              fontFamily: typography.large.fontFamily,
-              fontWeight: '400',
-              fill: colors.darkText,
-            },
-          }}
-          // @ts-ignore TS2739
-          tickLabelComponent={<ChartIconComponent />}
-        />
-        <VictoryBar
+      <View style={{ height: 300 }}>
+        <CartesianChart
           data={barData}
-          x="slot"
-          y="value"
-          barRatio={1.6}
-          labels={getValue}
-          style={{
-            data: {
-              fill: '#444',
-            },
-            labels: {
-              fill: 'white',
-              fontSize: 14,
-              fontFamily: typography.bold.fontFamily,
-              fontWeight: '700',
+          xKey="index"
+          yKeys={['value']}
+          padding={{ left: 10, right: 10, top: 20, bottom: 40 }}
+          domain={{ y: [0] }}
+          xAxis={{
+            font: iconFont,
+            lineColor: 'transparent',
+            labelColor: colors.darkText,
+            formatXLabel: (index) => {
+              const item = barData[index];
+              if (item?.slot) {
+                const glyphCode = ARKHAM_GLYPHS[item.slot];
+                return glyphCode ? String.fromCharCode(glyphCode) : '';
+              }
+              return '';
             },
           }}
-          // @ts-ignore TS2769
-          labelComponent={<ChartLabel field="value" />}
-        />
-      </VictoryChart>
+          domainPadding={{ left: 50, right: 50, top: 30 }}
+        >
+          {({ points, chartBounds }) => (
+            <>
+              {points.value.map((point, index) => {
+                return (
+                  <Bar
+                    key={index}
+                    barCount={points.value.length}
+                    points={[point]}
+                    chartBounds={chartBounds}
+                    color="#444"
+                    roundedCorners={{ topLeft: 5, topRight: 5 }}
+                    labels={{
+                      position: 'top',
+                      font: labelFont,
+                      color: 'white',
+                    }}
+                  />
+                );
+              })}
+            </>
+          )}
+        </CartesianChart>
+      </View>
     </View>
   );
 }

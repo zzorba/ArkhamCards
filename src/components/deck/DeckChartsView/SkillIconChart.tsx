@@ -1,98 +1,94 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { map } from 'lodash';
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-} from 'victory-native';
-import { CallbackArgs } from 'victory-core';
+import { CartesianChart, Bar } from 'victory-native';
 import { View, Text, StyleSheet } from 'react-native';
+import { useFont } from '@shopify/react-native-skia';
 import { t } from 'ttag';
 
-import ChartLabel from './ChartLabel';
-import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from '@actions/types';
-import { SKILLS, SkillCodeType } from '@app_constants';
+import { SKILLS } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
+import { ARKHAM_GLYPHS } from '@generated/arkhamGlyphs';
 
 interface Props {
   parsedDeck: ParsedDeck;
   width: number;
 }
 
-interface Item {
-  skill: SkillCodeType;
-  value: string | number;
-}
-
-function getLabel({ datum }: { datum: Item }) {
-  return `${datum.value}`;
-}
-
 export default function SkillIconChart({ width, parsedDeck }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const barData = useMemo(() => {
-    return map(SKILLS, skill => {
+    const result = map(SKILLS, (skill, index) => {
       return {
+        index,
         skill,
         value: parsedDeck.skillIconCounts[skill] || 0,
       };
     });
+    return result;
   }, [parsedDeck.skillIconCounts]);
-  const skillColor = useCallback(({ datum }: CallbackArgs): string => {
-    switch (datum.skill) {
-      case 'willpower':
-      case 'intellect':
-      case 'combat':
-      case 'agility':
-      case 'wild':
-        return colors.skill[datum.skill as SkillCodeType].icon;
-      default:
-        return '#000000';
-    }
-  }, [colors]);
+
+  const font = useFont(require('../../../../assets/Alegreya-Regular.ttf'), 18);
+  const labelFont = useFont(require('../../../../assets/Alegreya-Bold.ttf'), 14);
+  const iconFont = useFont(require('../../../../assets/arkhamicons.ttf'), 24);
+
+  if (!font || !labelFont || !iconFont) {
+    return null;
+  }
 
   return (
-    <View style={[styles.wrapper, { width }]}>
+    <View style={[styles.wrapper, space.marginBottomL, { width }]}>
       <Text style={[typography.large, typography.center]}>
         { t`Skill Icons` }
       </Text>
-      <VictoryChart width={width}>
-        <VictoryAxis
-          style={{
-            axis: { stroke: 'none' },
-            tickLabels: {
-              fontSize: 18,
-              fontFamily: typography.large.fontFamily,
-              fontWeight: '400',
-              fill: colors.darkText,
-            },
-          }}
-          // @ts-ignore TS2739
-          tickLabelComponent={<ChartIconComponent />}
-        />
-        <VictoryBar
+      <View style={{ height: 300 }}>
+        <CartesianChart
           data={barData}
-          x="skill"
-          y="value"
-          barRatio={1.6}
-          labels={getLabel}
-          style={{
-            data: {
-              // @ts-ignore
-              fill: skillColor,
-            },
-            labels: {
-              fill: 'white',
-              fontSize: 14,
-              fontFamily: typography.bold.fontFamily,
-              fontWeight: '700',
+          xKey="index"
+          yKeys={['value']}
+          padding={{ left: 10, right: 10, top: 20, bottom: 40 }}
+          domain={{ y: [0] }}
+          xAxis={{
+            font: iconFont,
+            lineColor: 'transparent',
+            labelColor: colors.darkText,
+            formatXLabel: (index) => {
+              const item = barData[index];
+              if (item?.skill) {
+                const glyphCode = ARKHAM_GLYPHS[item.skill];
+                return glyphCode ? String.fromCharCode(glyphCode) : '';
+              }
+              return '';
             },
           }}
-          // @ts-ignore TS2769
-          labelComponent={<ChartLabel field="value" />}
-        />
-      </VictoryChart>
+          domainPadding={{ left: 50, right: 50, top: 30 }}
+        >
+          {({ points, chartBounds }) => (
+            <>
+              {points.value.map((point, index) => {
+                const skill = barData[point.xValue as number]?.skill;
+                const barColor = skill ? colors.skill[skill]?.icon || '#444' : '#444';
+                return (
+                  <Bar
+                    key={index}
+                    barCount={points.value.length}
+                    points={[point]}
+                    chartBounds={chartBounds}
+                    color={barColor}
+                    roundedCorners={{ topLeft: 5, topRight: 5 }}
+                    labels={{
+                      position: 'top',
+                      font: labelFont,
+                      color: 'white',
+                    }}
+                  />
+                );
+              })}
+            </>
+          )}
+        </CartesianChart>
+      </View>
     </View>
   );
 }

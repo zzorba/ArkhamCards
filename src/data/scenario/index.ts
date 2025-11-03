@@ -425,6 +425,19 @@ export function useStandaloneScenarios(): StandaloneInfo[] | undefined {
   return scenarios;
 }
 
+export async function getStandaloneScenario(
+  id: StandaloneId,
+  lang: string
+): Promise<Scenario | undefined> {
+  const { allLogEntries, allCampaigns } = await loadAll(lang);
+  const data = findStandaloneScenario(
+    { type: 'scenario', ...id },
+    allCampaigns,
+    allLogEntries
+  );
+  return data?.scenario;
+}
+
 async function getStandaloneScenarios(lang: string): Promise<StandaloneInfo[]> {
   const { allLogEntries, allCampaigns } = await loadAll(lang);
   const standalones = await loadAsset('standalone_scenarios');

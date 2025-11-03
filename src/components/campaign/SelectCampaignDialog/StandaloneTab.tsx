@@ -1,14 +1,17 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { View } from 'react-native';
 import { forEach, map, sortBy, head } from 'lodash';
 import { c, t } from 'ttag';
 
 import { CampaignCycleCode, GUIDED_CAMPAIGNS, StandaloneId } from '@actions/types';
 import CardDetailSectionHeader from '@components/card/CardDetailView/CardDetailSectionHeader';
-import { StandaloneInfo, useStandaloneScenarios } from '@data/scenario';
+import { StandaloneInfo, useStandaloneScenarios, getStandaloneScenario } from '@data/scenario';
 import StandaloneItem from './StandaloneItem';
 import { campaignDescription, campaignName } from '../constants';
 import CycleItem from './CycleItem';
+import { useNavigation } from '@react-navigation/native';
+import LanguageContext from '@lib/i18n/LanguageContext';
+import { Scenario } from '@data/scenario/types';
 
 export interface SelectCampagaignProps {
   standaloneChanged: (id: StandaloneId, text: string, hasGuide: boolean) => void;
@@ -17,6 +20,9 @@ export interface SelectCampagaignProps {
 
 export default function StandaloneTab({ campaignChanged, standaloneChanged }: SelectCampagaignProps) {
   const scenarios = useStandaloneScenarios();
+  const navigation = useNavigation();
+  const { lang } = useContext(LanguageContext);
+
   const sections = useMemo(() => {
     const groups: { [campaign: string]: StandaloneInfo[] } = {};
     forEach(scenarios, scenario => {
@@ -62,10 +68,21 @@ export default function StandaloneTab({ campaignChanged, standaloneChanged }: Se
     ];
   }, [scenarios]);
 
-
-  const onPress = useCallback((id: StandaloneId, text: string) => {
-    standaloneChanged(id, text, true);
-  }, [standaloneChanged]);
+  const onPress = useCallback(async (id: StandaloneId, text: string) => {
+    const scenario = await getStandaloneScenario(id, lang);
+    if (scenario?.challenge) {
+      navigation.navigate('Guide.ChallengeScenario', {
+        scenario,
+        challenge: scenario.challenge,
+        onPress: () => {
+          standaloneChanged(id, text, true);
+        },
+        title: scenario.scenario_name,
+      });
+    } else {
+      standaloneChanged(id, text, true);
+    }
+  }, [standaloneChanged, lang, navigation]);
 
 
   const onPressCampaign = useCallback((campaignCode: CampaignCycleCode, text: string) => {

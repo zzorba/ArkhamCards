@@ -34,7 +34,8 @@
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
     "postinstall": "patch-package && copy-files-from-to",
     "codegen": "graphql-codegen-esm --config codegen.yml",
-    "generate-schema": "get-graphql-schema  https://gapi.arkhamcards.com/v1/graphql -h \"x-hasura-admin-secret=$MASTER_KEY\" > schema.graphql"
+    "generate-schema": "get-graphql-schema  https://gapi.arkhamcards.com/v1/graphql -h \"x-hasura-admin-secret=$MASTER_KEY\" > schema.graphql",
+    "generate:glyphs": "./scripts/generate-arkham-glyphs.sh"
   },
   "resolutions": {
     "@apollo/client": "3.11.1",
@@ -75,7 +76,7 @@
     "@redux-offline/redux-offline": "2.6.0-native.1",
     "@sentry/react-native": "~6.14.0",
     "@shopify/flash-list": "1.8.3",
-    "@shopify/react-native-skia": "v2.0.0-next.4",
+    "@shopify/react-native-skia": "v2.3.9",
     "apollo-cache-persist": "0.1.1",
     "apollo-link-queue": "3.1.0",
     "apollo-link-serialize": "4.0.0",
@@ -172,9 +173,7 @@
     "use-debounced-effect-hook": "1.1.62",
     "utf8": "3.0.0",
     "utility-types": "3.10.0",
-    "victory-core": "36.6.11",
-    "victory-native": "36.6.11",
-    "victory-zoom-container": "^36.6.11"
+    "victory-native": "41.20.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

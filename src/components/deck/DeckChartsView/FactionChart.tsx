@@ -1,144 +1,165 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { filter } from 'lodash';
-import { View, Text, StyleSheet } from 'react-native';
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryStack,
-} from 'victory-native';
-import { CallbackArgs } from 'victory-core';
+import { View, Text as RNText, StyleSheet } from 'react-native';
+import { CartesianChart, StackedBar, Bar } from 'victory-native';
+import { useFont, Text } from '@shopify/react-native-skia';
 import { t } from 'ttag';
 
-import ChartLabel from './ChartLabel';
-import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from '@actions/types';
-import { PLAYER_FACTION_CODES, FactionCodeType } from '@app_constants';
+import { PLAYER_FACTION_CODES } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
+import { ARKHAM_GLYPHS } from '@generated/arkhamGlyphs';
 
 interface Props {
   parsedDeck: ParsedDeck;
   width: number;
 }
 
-interface Item {
-  faction: FactionCodeType;
-  guardian: number;
-  seeker: number;
-  rogue: number;
-  mystic: number;
-  survivor: number;
-  neutral: number;
-  mythos: number;
-
-  dual: number;
-  count: number;
-  total: number;
-}
-
-const DEFAULT_ITEM = {
-  guardian: 0,
-  seeker: 0,
-  rogue: 0,
-  mystic: 0,
-  survivor: 0,
-  neutral: 0,
-  mythos: 0,
-};
-
-function getDualValue({ datum }: { datum: Item}) {
-  return `${datum.dual}`;
-}
-function getTotalValue({ datum }: { datum: Item}) {
-  return `${datum.total}`;
-}
-
 export default function FactionChart({ parsedDeck, width }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const barData = useMemo(() => filter(
-    PLAYER_FACTION_CODES.map(faction => {
-      const counts = parsedDeck.factionCounts[faction] || [0, 0];
-      return {
-        ...DEFAULT_ITEM,
-        faction,
-        dual: counts[0],
-        [faction]: counts[1],
-        count: counts[1] || 0,
-        total: counts[0] + counts[1],
-      };
-    }),
-    data => data.count > 0 || data.dual > 0
-  ), [parsedDeck.factionCounts]);
-  const colorFill = useCallback(({ datum }: CallbackArgs) => colors.faction[datum.faction as FactionCodeType].background, [colors.faction]);
+  const barData = useMemo(() => {
+    const filtered = filter(
+      PLAYER_FACTION_CODES.map((faction) => {
+        const counts = parsedDeck.factionCounts[faction] || [0, 0];
+        return {
+          faction,
+          dual: counts[0],
+          count: counts[1],
+          total: counts[0] + counts[1],
+          factionColor: colors.faction[faction].background,
+          dualColor: colors.faction.dual.background,
+        };
+      }),
+      data => data.count > 0 || data.dual > 0
+    );
+    // Reindex after filtering
+    return filtered.map((item, index) => ({ ...item, index }));
+  }, [parsedDeck.factionCounts, colors]);
+
+  const font = useFont(require('../../../../assets/Alegreya-Regular.ttf'), 18);
+  const labelFont = useFont(require('../../../../assets/Alegreya-Bold.ttf'), 14);
+  const iconFont = useFont(require('../../../../assets/arkhamicons.ttf'), 24);
+
+  if (!font || !labelFont || !iconFont) {
+    return null;
+  }
 
   if (barData.length === 0) {
     return null;
   }
+
   return (
-    <View style={styles.wrapper}>
-      <Text style={[typography.large, typography.center]}>
+    <View style={[styles.wrapper, space.marginBottomL, { width }]}>
+      <RNText style={[typography.large, typography.center]}>
         { t`Card Factions` }
-      </Text>
-      <VictoryChart width={width}>
-        <VictoryAxis
-          style={{
-            axis: { stroke: 'none' },
-            tickLabels: {
-              fontSize: 18,
-              fontFamily: typography.large.fontFamily,
-              fontWeight: '400',
-              fill: colors.darkText,
+      </RNText>
+      <View style={{ height: 300 }}>
+        <CartesianChart
+          data={barData}
+          xKey="index"
+          yKeys={['dual', 'count']}
+          padding={{ left: 10, right: 10, top: 40, bottom: 40 }}
+          domain={{ y: [0] }}
+          xAxis={{
+            font: iconFont,
+            lineColor: 'transparent',
+            labelColor: colors.darkText,
+            formatXLabel: (index) => {
+              const item = barData[index];
+              if (item?.faction) {
+                const glyphCode = ARKHAM_GLYPHS[item.faction];
+                return glyphCode ? String.fromCharCode(glyphCode) : '';
+              }
+              return '';
             },
           }}
-          tickLabelComponent={
-            // @ts-ignore TS2739
-            <ChartIconComponent />
-          }
-        />
-        <VictoryStack width={width}>
-          <VictoryBar
-            data={barData}
-            x="faction"
-            y="dual"
-            barRatio={1.6}
-            labels={getDualValue}
-            style={{
-              data: {
-                fill: colors.faction.dual.background,
-              },
-              labels: {
-                fill: 'white',
-                fontSize: 14,
-                fontFamily: typography.bold.fontFamily,
-                fontWeight: '700',
-              },
-            }}
-            // @ts-ignore TS2769
-            labelComponent={<ChartLabel field="dual" />}
-          />
-          <VictoryBar
-            data={barData}
-            x="faction"
-            y="count"
-            barRatio={1.6}
-            labels={getTotalValue}
-            style={{
-              data: {
-                // @ts-ignore
-                fill: colorFill,
-              },
-              labels: {
-                fill: 'white',
-                fontSize: 14,
-                fontFamily: typography.bold.fontFamily,
-                fontWeight: '700',
-              },
-            }}
-            // @ts-ignore TS2769
-            labelComponent={<ChartLabel field="count" />}
-          />
-        </VictoryStack>
-      </VictoryChart>
+          domainPadding={{ left: 50, right: 50, top: 30 }}
+        >
+          {({ points, chartBounds }) => (
+            <>
+              {barData.map((item, index) => {
+                const dualPoint = points.dual[index];
+                const countPoint = points.count[index];
+
+                // If only dual cards exist, render a single Bar
+                if (item.count === 0) {
+                  return (
+                    <Bar
+                      key={index}
+                      barCount={barData.length}
+                      points={[dualPoint]}
+                      chartBounds={chartBounds}
+                      color={item.dualColor}
+                      roundedCorners={{ topLeft: 5, topRight: 5 }}
+                      labels={{
+                        position: 'top',
+                        font: labelFont,
+                        color: 'white',
+                      }}
+                    />
+                  );
+                }
+
+                // If only single faction cards exist, render a single Bar
+                if (item.dual === 0) {
+                  return (
+                    <Bar
+                      key={index}
+                      barCount={barData.length}
+                      points={[countPoint]}
+                      chartBounds={chartBounds}
+                      color={item.factionColor}
+                      roundedCorners={{ topLeft: 5, topRight: 5 }}
+                      labels={{
+                        position: 'top',
+                        font: labelFont,
+                        color: 'white',
+                      }}
+                    />
+                  );
+                }
+
+                // Both exist, render StackedBar with manual labels
+                return (
+                  <React.Fragment key={index}>
+                    <StackedBar
+                      barCount={barData.length}
+                      points={[[dualPoint], [countPoint]]}
+                      chartBounds={chartBounds}
+                      // eslint-disable-next-line react/jsx-no-bind
+                      barOptions={({ isTop }) => ({
+                        roundedCorners: isTop ? { topLeft: 5, topRight: 5 } : undefined,
+                        color: isTop ? item.factionColor : item.dualColor,
+                      })}
+                    />
+                    {/* Label for count (top segment) - positioned at top of entire bar */}
+                    {item.count > 0 && (
+                      <Text
+                        x={countPoint.x}
+                        y={countPoint.y as any - 5}
+                        text={String(item.count)}
+                        font={labelFont}
+                        color="white"
+                      />
+                    )}
+                    {/* Label for dual (bottom segment) */}
+                    {item.dual > 0 && (
+                      <Text
+                        x={dualPoint.x}
+                        y={dualPoint.y as any - 5}
+                        text={String(item.dual)}
+                        font={labelFont}
+                        color="white"
+                      />
+                    )}
+                  </React.Fragment>
+                );
+              })}
+            </>
+          )}
+        </CartesianChart>
+      </View>
     </View>
   );
 }
