@@ -65,7 +65,7 @@ export function NarrationInlineControls({ narration }: IconProps) {
   const currentTrack = useCurrentTrack();
   const playerState = usePlaybackState();
   const { jumpBack, playbackRate: rate, setRate, pause, play, seekTo } = useAudioPlayerContext();
-  const { position, duration } = useProgress(1000);
+  const { position, duration } = useProgress();
   const posTime = parseTime(position);
   const durTime = parseTime(duration);
   const playNarrationTrack = usePlayNarrationTrack();

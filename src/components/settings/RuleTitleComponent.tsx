@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Platform, Text } from 'react-native';
+import { Text } from 'react-native';
 
 import StyleContext from '@styles/StyleContext';
 import IconizedText from '@components/core/IconizedText';

@@ -17,7 +17,7 @@ interface Props {
   onLinkPress?: (url: string, context: StyleContextType) => void;
   sizeScale?: number;
   noBullet?: boolean;
-  style?: any;
+  textAlignment?: 'left' | 'center' | 'right';
   isCard?: boolean;
   flavorText?: boolean; // If true, text is italic by default and <i> tags un-italicize
 }
@@ -35,6 +35,83 @@ const DOUBLE_BRACKET_REGEX = /\[\[([^\]]+)\]\]/g;
 const HR_REGEX = /<hr>/g;
 const NEWLINE_REGEX = /\n/g;
 
+const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
+  Action: 'action',
+  'per investigator': 'per_investigator',
+  lightning: 'free',
+  lighting: 'free',
+  fast: 'free',
+  will: 'willpower',
+  willlpower: 'willpower',
+  'auto-fail': 'auto_fail',
+  autofail: 'auto_fail',
+};
+
+const ALL_ICONS = new Set([
+  'guardian',
+  'seeker',
+  'mystic',
+  'rogue',
+  'survivor',
+  'neutral',
+  'willpower',
+  'intellect',
+  'combat',
+  'agility',
+  'wild',
+  'elder_sign',
+  'neutral',
+  'skull',
+  'cultist',
+  'tablet',
+  'elder_thing',
+  'auto_fail',
+  'per_investigator',
+  'weakness',
+  'action',
+  'reaction',
+  'free',
+  'bullet',
+  'guide_bullet',
+  'curse',
+  'bless',
+  'frost',
+  'seal_a',
+  'seal_b',
+  'seal_c',
+  'seal_d',
+  'seal_e',
+  'day',
+  'night',
+  'codex',
+  'tdc_rune_a',
+  'tdc_rune_b',
+  'tdc_rune_c',
+  'tdc_rune_d',
+  'tdc_rune_e',
+  'tdc_rune_f',
+  'tdc_rune_g',
+  'tdc_rune_h',
+  'tdc_rune_i',
+  'tdc_rune_j',
+  'tdc_rune_k',
+  'tdc_rune_l',
+  'tdc_rune_m',
+  'tdc_rune_n',
+  'tdc_rune_o',
+  'tdc_rune_p',
+  'tdc_rune_q',
+  'tdc_rune_r',
+  'tdc_rune_s',
+  'tdc_rune_t',
+  'tdc_rune_u',
+  'tdc_rune_v',
+  'tdc_rune_w',
+  'tdc_rune_x',
+  'tdc_rune_y',
+  'tdc_rune_z',
+]);
+
 // Convert custom HTML tags to markdown that markdown-it can understand
 function preprocessText(text: string, noBullet?: boolean, onLinkPress?: boolean): string {
   const cleanTextA = text
@@ -44,18 +121,15 @@ function preprocessText(text: string, noBullet?: boolean, onLinkPress?: boolean)
     .replace(ARRAY_XML_REGEX, '→')
     .replace(BAD_LINEBREAK_REGEX, '\n')
     .replace(DIVIDER_REGEX, '\n---\n')
-    .replace(NEWLINE_REGEX, '<br/>')
     .replace(HR_REGEX, '<hr/><br/>');
 
-  const cleanText = noBullet ? cleanTextA :
-    cleanTextA.replace(INDENTED_BULLET_REGEX,
-      onLinkPress ? '\t<span class="icon-bullet"></span> $2' : '\t[bullet] $2'
-    ).replace(BULLET_REGEX,
-      onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
-    ).replace(GUIDE_BULLET_REGEX,
-      onLinkPress ? '<span class="icon-guide_bullet"></span> $2' : '[guide_bullet] $2'
+  const cleanTextB = noBullet ? cleanTextA :
+    cleanTextA.replace(INDENTED_BULLET_REGEX, '\t[bullet] $2'
+    ).replace(BULLET_REGEX, '[bullet] $2'
+    ).replace(GUIDE_BULLET_REGEX, '[guide_bullet] $2'
     ).replace(PARAGRAPH_BULLET_REGEX, onLinkPress ? '<p><span class="icon-bullet"></span> ' : '<p>[bullet] ');
 
+  const cleanText = cleanTextB.replace(NEWLINE_REGEX, '<br/>');
   // Convert newlines inside HTML block tags (like blockquote) to <br/> tags
   // This ensures htmlparser2 can properly parse multi-line content inside these tags
   const blockTagPattern = /<(blockquote|center|right)>([\s\S]*?)<\/\1>/g;
@@ -65,7 +139,7 @@ function preprocessText(text: string, noBullet?: boolean, onLinkPress?: boolean)
   });
 }
 
-export default function CardTextComponent({ text, style, onLinkPress, sizeScale = 1, noBullet, isCard, flavorText }: Props) {
+export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, noBullet, isCard, flavorText, textAlignment }: Props) {
   const { usePingFang } = useContext(LanguageContext);
   const context = useContext(StyleContext);
 
@@ -115,8 +189,8 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
 
     // iOS can use style properties
     const iosStyleMap: any = {
-      regular: { fontFamily: 'Alegreya' },
-      bold: { fontFamily: 'Alegreya', fontWeight: '700' },
+      regular: { fontFamily: 'Alegreya', fontStyle: 'normal' },
+      bold: { fontFamily: 'Alegreya', fontWeight: '700', fontStyle: 'normal' },
       italic: { fontFamily: 'Alegreya', fontStyle: 'italic' },
       bolditalic: { fontFamily: 'Alegreya', fontWeight: '700', fontStyle: 'italic' },
     };
@@ -124,8 +198,26 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
   }, [context, usePingFang, scaledSize]);
 
   const renderArkhamIcon = useCallback((iconName: string, size?: number) => {
+    const translatedIconName = BAD_ICON_NAMES[iconName] || iconName;
     const iconSize = size || 16 * context.fontScale * sizeScale;
-    const glyphCode = ARKHAM_SLIM_GLYPHS[iconName];
+
+    // Check if this is a valid icon name
+    if (!ALL_ICONS.has(translatedIconName)) {
+      // Render as literal text [iconName]
+      return (
+        <Text style={{
+          fontFamily: usePingFang ? 'PingFangTC' : 'Alegreya',
+          fontWeight: '700',
+          fontSize: 16 * context.fontScale * sizeScale,
+          lineHeight: 20 * context.fontScale * sizeScale,
+          color: context.colors.darkText,
+        }}>
+          [{iconName}]
+        </Text>
+      );
+    }
+
+    const glyphCode = ARKHAM_SLIM_GLYPHS[translatedIconName];
 
     if (glyphCode) {
       // Render as inline text glyph
@@ -150,13 +242,43 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
         marginHorizontal: 2,
       }}>
         <ArkhamIcon
-          name={iconName}
+          name={translatedIconName}
           size={iconSize}
           color={context.colors.darkText}
         />
       </View>
     );
-  }, [context, sizeScale]);
+  }, [context, sizeScale, usePingFang]);
+
+  // Helper to process text content and replace [icon] patterns (but not markdown links like [text](url))
+  // Returns the content with icon patterns replaced by icon components
+  const processTextWithIcons = useCallback((content: string, keyPrefix: string): React.ReactNode => {
+    const iconPattern = /\[([^\]]+)\](?!\()/g;
+    if (!iconPattern.test(content)) {
+      return content;
+    }
+
+    const parts: React.ReactNode[] = [];
+    let lastIndex = 0;
+    const matches = content.matchAll(/\[([^\]]+)\](?!\()/g);
+
+    for (const match of matches) {
+      if (match.index! > lastIndex) {
+        parts.push(content.slice(lastIndex, match.index));
+      }
+      parts.push(
+        React.cloneElement(renderArkhamIcon(match[1]) as React.ReactElement, {
+          key: `${keyPrefix}-icon-${match.index}`,
+        })
+      );
+      lastIndex = match.index! + match[0].length;
+    }
+    if (lastIndex < content.length) {
+      parts.push(content.slice(lastIndex));
+    }
+
+    return <>{parts}</>;
+  }, [renderArkhamIcon]);
 
   // Config for tag rendering
   const tagConfig = useMemo((): { [tag: string]: {
@@ -199,8 +321,8 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
     trait: { type: 'text', style: () => createTextStyle('bolditalic') },
 
     // Layout tags
-    center: { type: 'view', style: { alignItems: 'center' }, textStyle: { textAlign: 'center' } },
-    right: { type: 'view', style: { alignItems: 'flex-end' }, textStyle: { textAlign: 'right' } },
+    center: { type: 'view', style: { alignItems: 'center' }, textStyle: { ...createTextStyle(flavorText ? 'italic' : 'regular'), textAlign: 'center' } },
+    right: { type: 'view', style: { alignItems: 'flex-end' }, textStyle: { ...createTextStyle(flavorText ? 'italic' : 'regular'), textAlign: 'right' } },
     blockquote: { type: 'blockquote', styleKey: 'blockquote' },
 
     // Special tags
@@ -214,54 +336,14 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
     // Handle text nodes
     if (node.type === 'text') {
       const textData = (node as DomText).data;
+      const processed = processTextWithIcons(textData, `dom-${key}`);
 
-      // Check if text contains icon patterns
-      const iconPattern = /\[([^\]]+)\]/g;
-      if (iconPattern.test(textData)) {
-        const parts: React.ReactNode[] = [];
-        let lastIndex = 0;
-        let partIndex = 0;
-        const matches = textData.matchAll(/\[([^\]]+)\]/g);
-
-        for (const match of matches) {
-          if (match.index! > lastIndex) {
-            const textPart = textData.slice(lastIndex, match.index);
-            // Strings in arrays MUST have keys - wrap in Fragment with key
-            if (textPart) {
-              parts.push(
-                <React.Fragment key={`text-${key}-${partIndex++}`}>{textPart}</React.Fragment>
-              );
-            }
-          }
-          const icon = renderArkhamIcon(match[1]);
-          parts.push(
-            React.cloneElement(icon as React.ReactElement, { key: `icon-${key}-${partIndex++}` })
-          );
-          lastIndex = match.index! + match[0].length;
-        }
-        if (lastIndex < textData.length) {
-          const textPart = textData.slice(lastIndex);
-          // Strings in arrays MUST have keys - wrap in Fragment with key
-          if (textPart) {
-            parts.push(
-              <React.Fragment key={`text-${key}-${partIndex++}`}>{textPart}</React.Fragment>
-            );
-          }
-        }
-
-        // Wrap in Text if parent is blockquote (View), otherwise return raw for parent Text tag
-        if (parentIsBlockquote) {
-          return <Text key={key} style={styles.text}>{parts}</Text>;
-        }
-        return parts;
-      }
-
-      // If parent is blockquote (direct child of View), wrap text in Text component
+      // If parent is blockquote (direct child of View), wrap in Text component
       if (parentIsBlockquote) {
-        return <Text key={key} style={styles.text}>{textData}</Text>;
+        return <Text key={key} style={styles.text}>{processed}</Text>;
       }
-      // Otherwise return raw string - parent text-type tag will wrap it
-      return textData;
+      // Otherwise return processed content - parent text-type tag will wrap it
+      return processed;
     }
 
     // Handle element nodes
@@ -333,7 +415,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
     }
 
     return null;
-  }, [tagConfig, renderArkhamIcon]);
+  }, [tagConfig, processTextWithIcons]);
 
   // Helper function to parse and render HTML content using htmlparser2
   const parseAndRenderHTML = useCallback((content: string, styles: any, index: number, isBlock: boolean = false): React.ReactNode => {
@@ -362,7 +444,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
   const rules: RenderRules = useMemo(() => {
     return {
       // Handle textgroup - this is where inline content including HTML tags live
-      textgroup: (node, children, parent, styles) => {
+      textgroup: (node, children, _parent, styles) => {
         // Process node.children directly to handle HTML tags
         if (!node.children) {
           return <>{children}</>;
@@ -377,44 +459,12 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
           // Handle text nodes - render them with proper styling
           if (child.type === 'text') {
             const content = child.content;
-            const iconPattern = /\[([^\]]+)\]/g;
-
-            // Check if this text contains icon patterns
-            if (iconPattern.test(content)) {
-              const parts: React.ReactNode[] = [];
-              let lastIndex = 0;
-              const matches = content.matchAll(/\[([^\]]+)\]/g);
-
-              for (const match of matches) {
-                if (match.index! > lastIndex) {
-                  parts.push(
-                    <Text key={`text-${i}-${lastIndex}`} style={styles.text}>
-                      {content.slice(lastIndex, match.index)}
-                    </Text>
-                  );
-                }
-                parts.push(
-                  <React.Fragment key={`icon-${i}-${match.index}`}>
-                    {renderArkhamIcon(match[1])}
-                  </React.Fragment>
-                );
-                lastIndex = match.index! + match[0].length;
-              }
-              if (lastIndex < content.length) {
-                parts.push(
-                  <Text key={`text-${i}-${lastIndex}`} style={styles.text}>
-                    {content.slice(lastIndex)}
-                  </Text>
-                );
-              }
-              processedElements.push(...parts);
-            } else {
-              processedElements.push(
-                <Text key={`text-${i}`} style={baseTextStyle}>
-                  {content}
-                </Text>
-              );
-            }
+            const processed = processTextWithIcons(content, `textgroup-${i}`);
+            processedElements.push(
+              <Text key={`text-${i}`} style={baseTextStyle}>
+                {processed}
+              </Text>
+            );
             i++;
           } else if (child.type === 'html_inline') {
             const htmlContent = child.content;
@@ -447,7 +497,8 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
               i++;
             }
           } else {
-            // Other node types, render normally
+            // Other node types (like link, strong, em, etc.), use the pre-rendered children
+            processedElements.push(children[i]);
             i++;
           }
         }
@@ -457,50 +508,18 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
       },
 
       // Override text rendering to ensure proper styling
-      text: (node, children, parent, styles) => {
+      text: (node, _children, _parent, styles) => {
         const content = node.content;
-
-        // Check if this text contains icon patterns
-        const iconPattern = /\[([^\]]+)\]/g;
-        if (iconPattern.test(content)) {
-          const parts: React.ReactNode[] = [];
-          let lastIndex = 0;
-          const matches = content.matchAll(/\[([^\]]+)\]/g);
-
-          for (const match of matches) {
-            if (match.index! > lastIndex) {
-              parts.push(
-                <Text key={`text-${lastIndex}`} style={styles.text}>
-                  {content.slice(lastIndex, match.index)}
-                </Text>
-              );
-            }
-            parts.push(
-              <React.Fragment key={`icon-${match.index}`}>
-                {renderArkhamIcon(match[1])}
-              </React.Fragment>
-            );
-            lastIndex = match.index! + match[0].length;
-          }
-          if (lastIndex < content.length) {
-            parts.push(
-              <Text key={`text-${lastIndex}`} style={styles.text}>
-                {content.slice(lastIndex)}
-              </Text>
-            );
-          }
-          return <Text key={node.key} style={styles.text}>{parts}</Text>;
-        }
-
+        const processed = processTextWithIcons(content, `text-${node.key}`);
         return (
           <Text key={node.key} style={styles.text}>
-            {content}
+            {processed}
           </Text>
         );
       },
 
       // Handle inline content with HTML tags
-      inline: (node, children, parent, styles) => {
+      inline: (node, children, _parent, styles) => {
         // markdown-it splits HTML into separate tokens, so we need to reconstruct them
         // We'll process the node's children array directly
         if (!node.children) {
@@ -516,32 +535,8 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
           // Handle text nodes
           if (child.type === 'text') {
             const content = child.content;
-            const iconPattern = /\[([^\]]+)\]/g;
-
-            // Check if this text contains icon patterns
-            if (iconPattern.test(content)) {
-              const parts: React.ReactNode[] = [];
-              let lastIndex = 0;
-              const matches = content.matchAll(/\[([^\]]+)\]/g);
-
-              for (const match of matches) {
-                if (match.index! > lastIndex) {
-                  parts.push(content.slice(lastIndex, match.index));
-                }
-                parts.push(
-                  <React.Fragment key={`icon-${i}-${match.index}`}>
-                    {renderArkhamIcon(match[1])}
-                  </React.Fragment>
-                );
-                lastIndex = match.index! + match[0].length;
-              }
-              if (lastIndex < content.length) {
-                parts.push(content.slice(lastIndex));
-              }
-              processedElements.push(...parts);
-            } else {
-              processedElements.push(content);
-            }
+            const processed = processTextWithIcons(content, `inline-${i}`);
+            processedElements.push(processed);
             i++;
           } else if (child.type === 'html_inline') {
             const htmlContent = child.content;
@@ -648,7 +643,8 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
               i++;
             }
           } else {
-            // Other node types, render normally
+            // Other node types (like link, strong, em, etc.), use the pre-rendered children
+            processedElements.push(children[i]);
             i++;
           }
         }
@@ -657,46 +653,61 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
       },
 
       // Override strong/bold rendering (for <b> and <strong> tags)
-      strong: (node, children, parent, styles) => {
+      strong: (node, children) => {
         return (
-          <Text key={node.key} style={{ fontWeight: '700' }}>
+          <Text key={node.key} style={createTextStyle('bold')}>
             {children}
           </Text>
         );
       },
 
       // Override em/italic rendering (for <i> and <em> tags)
-      em: (node, children, parent, styles) => {
+      em: (node, children) => {
+        const style = flavorText ? createTextStyle('regular') : createTextStyle('italic');
         return (
-          <Text key={node.key} style={{ fontStyle: 'italic' }}>
+          <Text key={node.key} style={style}>
             {children}
           </Text>
         );
       },
 
       // Override del/strikethrough rendering (for <del> and <strike> tags)
-      del: (node, children, parent, styles) => {
+      del: (node, children) => {
         return (
-          <Text key={node.key} style={{ textDecorationLine: 'line-through' }}>
+          <Text key={node.key} style={createTextStyle('regular', { textDecorationLine: 'line-through' })}>
+            {children}
+          </Text>
+        );
+      },
+
+      // Handle links
+      link: (node, children, _parent, styles) => {
+        const href = node.attributes?.href || '';
+        return (
+          <Text
+            key={node.key}
+            style={styles.link}
+            onPress={onLinkPress ? () => wrappedOnLinkPress(href) : undefined}
+          >
             {children}
           </Text>
         );
       },
 
       // Handle HTML blocks
-      html_block: (node, children, parent, styles) => {
+      html_block: (node, _children, _parent, styles) => {
         // Use a hash of the content as the index to ensure uniqueness
         const contentHash = node.content.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
         return parseAndRenderHTML(node.content, styles, contentHash, true);
       },
 
       // Custom HTML tags via html_inline
-      html_inline: (node, children, parent, styles) => {
+      html_inline: () => {
         // Don't render opening/closing HTML tags - they're handled by the textgroup handler
         return null;
       },
     };
-  }, [flavorText, renderArkhamIcon, parseAndRenderHTML, createTextStyle, baseTextStyle]);
+  }, [flavorText, parseAndRenderHTML, createTextStyle, onLinkPress, processTextWithIcons, wrappedOnLinkPress, baseTextStyle]);
 
   const markdownStyles = useMemo(() => {
     const baseFontSize = 16 * context.fontScale * sizeScale;
@@ -707,6 +718,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
         color: context.colors.darkText,
         fontSize: baseFontSize,
         lineHeight: baseLineHeight,
+        textAlign: textAlignment || 'left',
       },
       paragraph: {
         fontFamily: usePingFang ? 'PingFangTC' : Platform.OS === 'android' ? (flavorText ? 'Alegreya-Italic' : 'Alegreya-Regular') : 'Alegreya',
@@ -715,6 +727,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
         marginTop: 4,
         marginBottom: 4,
         color: context.colors.darkText,
+        textAlign: textAlignment || 'left',
         ...(flavorText && Platform.OS !== 'android' && { fontStyle: 'italic' as const }),
         ...(Platform.OS === 'android' && {
           includeFontPadding: false,
@@ -726,6 +739,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
         fontSize: baseFontSize,
         lineHeight: baseLineHeight,
         color: context.colors.darkText,
+        textAlign: textAlignment || 'left',
         ...(flavorText && Platform.OS !== 'android' && { fontStyle: 'italic' as const }),
       },
       strong: {
@@ -805,7 +819,7 @@ export default function CardTextComponent({ text, style, onLinkPress, sizeScale 
         padding: 8,
       },
     });
-  }, [context, usePingFang, isCard, sizeScale, flavorText]);
+  }, [context, usePingFang, isCard, sizeScale, flavorText, textAlignment]);
 
   return (
     <Markdown

@@ -14,7 +14,7 @@ import { useAppDispatch } from '@app/store';
 
 interface Props {
   noWrapper: boolean;
-  children: (login: () => void, signedIn: boolean, signInError?: string) => JSX.Element | null;
+  children: (login: () => void, signedIn: boolean, signInError?: string) => React.ReactElement | null;
 }
 
 export default function LoginStateComponent({ noWrapper, children }: Props) {

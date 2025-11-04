@@ -36,7 +36,25 @@
   },
   {
     "id": "Alert",
-    "cycle": ["tfa", "tcu", "tde", "eoe"],
+    "cycle": [
+      "tfa",
+      "rttfa",
+      "tcu",
+      "rttcu",
+      "tde",
+      "tdea",
+      "tdeb",
+      "eoe",
+      "tskc",
+      "fof",
+      "zdm",
+      "zcf"
+    ],
+    "scenarios": [
+      "fortune_and_folly_part_1",
+      "fortune_and_folly_part_2",
+      "film_fatale"
+    ],
     "title": "Allerta",
     "text": "Se un investigatore fallisce una prova di abilità tentando di eludere un nemico con Allerta, dopo aver applicato tutti i risultati relativi a quella prova di abilità, quel nemico effettua un attacco contro l'investigatore che ha tentato di eludere. Un nemico non si esaurisce dopo aver effettuato un attacco di allerta. Questo attacco si verifica a prescindere dal fatto che il nemico sia impegnato con l'investigatore che tenta di eludere o meno."
   },

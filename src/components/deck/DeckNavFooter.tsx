@@ -1,5 +1,4 @@
 import React, { useContext, useMemo } from 'react';
-import DeviceInfo from 'react-native-device-info';
 import {
   View,
   Text,

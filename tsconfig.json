@@ -1,78 +1,28 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "es6",
-    "lib": [
-      "es6"
-    ],
-    "allowJs": true,
-    "jsx": "react",
-    "sourceMap": true,
-    "noEmit": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "isolatedModules": true,
-    "resolveJsonModule": true,
     "strict": true,
+    "skipLibCheck": true,
     "useUnknownInCatchVariables": false,
     "baseUrl": ".",
     "paths": {
-      "@app/*": [
-        "src/application/*"
-      ],
-      "@actions": [
-        "src/actions/index.ts"
-      ],
-      "@actions/*": [
-        "src/actions/*"
-      ],
-      "@assets/*": [
-        "assets/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@app_constants": [
-        "src/app_constants.ts"
-      ],
-      "@data/*": [
-        "src/data/*"
-      ],
-      "@generated/*": [
-        "src/generated/*"
-      ],
-      "@icons/*": [
-        "src/icons/*"
-      ],
-      "@lib/*": [
-        "src/lib/*"
-      ],
-      "@navigation/*": [
-        "src/navigation/*"
-      ],
-      "@reducers/*": [
-        "src/reducers/*"
-      ],
-      "@reducers": [
-        "src/reducers/index.ts"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ]
+      "typeorm": ["node_modules/typeorm"],
+      "@app/*": ["src/application/*"],
+      "@actions": ["src/actions/index.ts"],
+      "@actions/*": ["src/actions/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["src/components/*"],
+      "@app_constants": ["src/app_constants.ts"],
+      "@data/*": ["src/data/*"],
+      "@generated/*": ["src/generated/*"],
+      "@icons/*": ["src/icons/*"],
+      "@lib/*": ["src/lib/*"],
+      "@navigation/*": ["src/navigation/*"],
+      "@reducers/*": ["src/reducers/*"],
+      "@reducers": ["src/reducers/index.ts"],
+      "@styles/*": ["src/styles/*"]
     },
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  },
-  "exclude": [
-    "node_modules",
-    "types",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js",
-    "**/@types/*/node_modules"
-  ],
-  "extends": "expo/tsconfig.base"
+  }
 }

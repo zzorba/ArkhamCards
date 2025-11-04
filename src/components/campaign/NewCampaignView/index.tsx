@@ -354,11 +354,12 @@ function NewCampaignView() {
         <HeaderButton
           text={t`Done`}
           accessibilityLabel={t`Done`}
+          color={colors.M}
           onPress={savePressed}
         />
       ),
     });
-  }, [navigation, name, campaignChoice, savePressed]);
+  }, [navigation, name, colors, campaignChoice, savePressed]);
 
   const { dialog: chaosBagDialog, showDialog: showChaosBagDialog } = useEditChaosBagDialog({
     chaosBag: customChaosBag,

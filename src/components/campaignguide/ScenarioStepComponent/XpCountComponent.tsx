@@ -30,7 +30,7 @@ function SpentDeckXpComponent({ deck, campaignLog, previousDeck, playerCards, ch
   campaignLog: GuidedCampaignLog;
   previousDeck: Deck;
   playerCards?: CardsMap;
-  children: (xp: number) => JSX.Element | null;
+  children: (xp: number) => React.ReactElement | null;
 }) {
   const { listSeperator } = useContext(LanguageContext);
   const parsedDeck = useMemo(
@@ -48,7 +48,7 @@ function SpentDeckXpComponent({ deck, campaignLog, previousDeck, playerCards, ch
 function SpentXpComponent({ investigator, campaignLog, children }: {
   investigator: CampaignInvestigator;
   campaignLog: GuidedCampaignLog;
-  children: (xp: number) => JSX.Element | null;
+  children: (xp: number) => React.ReactElement | null;
 }) {
   const { latestDecks, spentXp } = useContext(CampaignGuideContext);
   const deck = latestDecks[investigator.code];

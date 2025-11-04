@@ -16,7 +16,7 @@ type RenderDeckDetails = (
   cards: CardsMap,
   investigator: CampaignInvestigator,
   previousDeck?: Deck
-) => JSX.Element | null;
+) => React.ReactElement | null;
 
 export interface LegacyDeckRowProps {
   deck: LatestDeckT;

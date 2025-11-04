@@ -11,7 +11,6 @@ import { campaignDescription, campaignName } from '../constants';
 import CycleItem from './CycleItem';
 import { useNavigation } from '@react-navigation/native';
 import LanguageContext from '@lib/i18n/LanguageContext';
-import { Scenario } from '@data/scenario/types';
 
 export interface SelectCampagaignProps {
   standaloneChanged: (id: StandaloneId, text: string, hasGuide: boolean) => void;
@@ -68,7 +67,7 @@ export default function StandaloneTab({ campaignChanged, standaloneChanged }: Se
     ];
   }, [scenarios]);
 
-  const onPress = useCallback(async (id: StandaloneId, text: string) => {
+  const onPress = useCallback(async(id: StandaloneId, text: string) => {
     const scenario = await getStandaloneScenario(id, lang);
     if (scenario?.challenge) {
       navigation.navigate('Guide.ChallengeScenario', {

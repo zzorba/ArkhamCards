@@ -1044,7 +1044,7 @@ function DeckDetailView({
   ]);
 
   const fabIcon = useMemo(() => {
-    const iconColor = (mode !== 'view' || fabOpen) ? colors.L30 : "#FFFFFF";
+    const iconColor = (mode !== 'view' || fabOpen) ? colors.L30 : '#FFFFFF';
     return <AppIcon name="plus-button" color={iconColor} size={32} />;
   }, [mode, fabOpen, colors]);
 

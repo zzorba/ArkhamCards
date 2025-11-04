@@ -36,7 +36,7 @@ export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props):
     }> = {};
     tabs.forEach(tab => {
       options[tab.key] = {
-        label: ({ focused, color }) => (
+        label: ({ color }) => (
           <Text style={{
             fontFamily: 'Alegreya-Medium',
             fontSize: 18 * fontScale,
@@ -85,7 +85,7 @@ export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props):
     };
   }), [tabs]);
   const tabView = useMemo(() => {
-    if (!width) {
+    if (!width || routes.length === 0) {
       return null;
     }
     return (

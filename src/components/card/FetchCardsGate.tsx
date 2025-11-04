@@ -33,7 +33,7 @@ let CHANGING_LANGUAGE = false;
 
 interface Props {
   promptForUpdate?: boolean;
-  children: JSX.Element;
+  children: React.ReactElement;
 }
 
 function ProgressBar({ progress }: { progress: SharedValue<number> }) {

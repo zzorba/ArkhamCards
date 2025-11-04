@@ -20,12 +20,12 @@ import { useNavigation } from '@react-navigation/native';
 interface Props {
   onScroll: (...args: any[]) => void;
   campaigns: MiniCampaignT[];
-  footer: JSX.Element;
+  footer: React.ReactElement;
   footerHeight?: number;
   standalonesById: { [campaignId: string]: { [scenarioId: string]: string | undefined } | undefined };
   onRefresh?: () => void;
   refreshing?: boolean;
-  header?: JSX.Element;
+  header?: React.ReactElement;
   buttons: React.ReactNode[];
 }
 

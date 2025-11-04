@@ -5,8 +5,6 @@ import { StyleContextType } from '@styles/StyleContext';
 interface Props {
   text: string;
   onLinkPress?: (url: string, context: StyleContextType) => void;
-  color?: string;
-  width?: number;
   sizeScale?: number;
   isCard?: boolean;
 }
@@ -14,8 +12,6 @@ interface Props {
 export default function CardFlavorTextComponent({
   text,
   onLinkPress,
-  color,
-  width,
   isCard,
   sizeScale = 1,
 }: Props) {
@@ -26,7 +22,6 @@ export default function CardFlavorTextComponent({
       sizeScale={sizeScale}
       flavorText
       isCard={isCard}
-      style={{ width }}
     />
   );
 }

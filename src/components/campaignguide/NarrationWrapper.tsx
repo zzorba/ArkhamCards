@@ -52,7 +52,7 @@ interface PlayerProps {
 
 function ProgressView() {
   const { colors } = useContext(StyleContext);
-  const { position, duration } = useProgress(1000);
+  const { position, duration } = useProgress();
   return (
     <View
       style={{

@@ -118,7 +118,8 @@
     ],
     "scenarios": [
       "fortune_and_folly_part_1",
-      "fortune_and_folly_part_2"
+      "fortune_and_folly_part_2",
+      "film_fatale"
     ],
     "title": "Czujny",
     "text": "Za każdym razem, gdy podczas próby wymknięcia się potworowi ze słowem kluczowym Czujny test umiejętności badacza zakończy się porażką, po zastosowaniu wszystkich rezultatów tego testu umiejętności dany potwór wykonuje atak przeciwko wymykającemu się badaczowi. Wróg nie zostaje wyczerpany po wykonaniu ataku wynikającego ze słowa kluczowego Czujny. Ten atak zostaje wykonany bez względu na to, czy wróg jest w zwarciu z wymykającym się badaczem, czy nie."
@@ -501,8 +502,10 @@
   },
   {
     "id": "Elusive",
-    "cycle": [
-      "fhv"
+    "cycle": ["fhv"],
+    "scenarios": [
+      "film_fatale",
+      "legions_of_fire"
     ],
     "title": "Nieuchwytny",
     "text": "Jeśli przygotowany wróg ze słowem kluczowym Nieuchwytny zaatakuje lub zostanie zaatakowany, po rozpatrzeniu tego ataku dany wróg natychmiast uwalnia się ze zwarcia ze wszystkimi badaczami, porusza się do połączonej lokalizacji (w której nie ma żadnego badacza, jeśli to możliwe) i zostaje wyczerpany. Dzieje się tak bez względu na to, czy wróg był w zwarciu z atakującym badaczem, czy nie."

@@ -800,7 +800,25 @@
     },
     {
       "id": "Alert",
-      "cycle": ["tfa", "tcu", "tde"],
+      "cycle": [
+        "tfa",
+        "rttfa",
+        "tcu",
+        "rttcu",
+        "tde",
+        "tdea",
+        "tdeb",
+        "eoe",
+        "tskc",
+        "fof",
+        "zdm",
+        "zcf"
+      ],
+      "scenarios": [
+        "fortune_and_folly_part_1",
+        "fortune_and_folly_part_2",
+        "film_fatale"
+      ],
       "title": "경계",
       "text": "조사자가 “경계” 키워드가 있는 적으로부터 회피를 시도하는 도중 능력 테스트에 실패할 때마다, 우선 그 능력 테스트의 모든 결과를 적용합니다. 그 후, 그 적이 자신에게 회피를 시도했던 조사자를 상대로 공격을 수행합니다(경계 공격). 적은 경계 공격을 수행한 후에도 소진 상태가 되지 않습니다. 경계 공격은 회피하는 조사자와 적이 교전하고 있는지 여부에 상관없이 발생합니다."
     },

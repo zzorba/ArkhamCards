@@ -7,7 +7,7 @@ interface Props {
   connector: string;
   size: number;
 }
-function SymbolIcon({ connector, size }: Props): JSX.Element | null {
+function SymbolIcon({ connector, size }: Props): React.ReactElement | null {
   switch (connector) {
     case 'blue_triangle':
       return <AppIcon name="triangle" color="rgb(37,63,95)" size={size} />;

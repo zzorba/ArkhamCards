@@ -201,6 +201,7 @@
     "@types/deep-equal": "1.0.3",
     "@types/hoist-non-react-statics": "3.3.4",
     "@types/lodash": "4.14.200",
+    "@types/markdown-it": "^14.1.2",
     "@types/react": "~19.0.10",
     "@types/react-native-flip-card": "3.5.4",
     "@types/react-native-keep-awake": "2.0.5",

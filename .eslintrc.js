@@ -9,7 +9,7 @@ module.exports = {
   'env': {
     'browser': true,
     'commonjs': true,
-    'react-native/react-native': true
+    'react-native/react-native': true,
   },
   'globals': {
     'process': true,
@@ -35,10 +35,11 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   'rules': {
+    'react/jsx-no-bind': 'off',
     'react/no-unused-prop-types': 'off',
     'no-nested-ternary': 'off',
     'no-unused-vars': 'off',
-// Enable additional rules for ESLint:
+    // Enable additional rules for ESLint:
     // http://eslint.org/docs/rules/
 
     // React native specific rules
@@ -142,10 +143,10 @@ module.exports = {
     'react/jsx-equals-spacing': ['error', 'never'],
     'react/jsx-indent': ['error', 2],
     'react/jsx-key': 'error',
-    'react/jsx-no-bind': ['error', {
-      'ignoreRefs': true,
-      'allowFunctions': true,
-    }],
+    // 'react/jsx-no-bind': ['error', {
+    //   'ignoreRefs': true,
+    //   'allowFunctions': true,
+    // }],
     'react/jsx-no-target-blank': 'error',
     'react/jsx-pascal-case': 'error',
     'react/jsx-tag-spacing': 'error',

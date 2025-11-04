@@ -62,7 +62,7 @@
       "text":"\"Aktivieren\" ist eine Aktion, die ein Ermittler in seinem Zug in der Ermittlungsphase nehmen darf. \n\nSobald diese Aktion genommen wird, initiiert der Ermittler eine Fähigkeit, die eine oder mehrere [action]-Symbole als Teil der Kosten der Fähigkeit enthält. Die Anzahl der [action]-Symbole in den Kosten der Fähigkeit legt fest, wie viele Aktionen der Ermittler für diese Aktivieren-Aktion ausgeben muss. Sobald eine Aktivieren-Aktion durchgeführt wird, werden zunächst sämtliche Kosten der Aktion gleichzeitig bezahlt. Dann werden die Konsequenzen der Aktion abgehandelt.\n\nEin Ermittler darf Aktionen von folgenden Quellen aktivieren:\n\n\n- Eine Karte, die sich im Spiel und unter seiner Kontrolle befindet. Dies umfasst auch seine Ermittlerkarte.\n\n\n- Eine Szenariokarte, die sich im Spiel und am selben Ort wie der Ermittler befindet. Darunter fällt auch der Ort selbst, Begegnungskarten, die an diesen Ort platziert worden sind, und alle Begegnungskarten in der Bedrohungszone jedes Ermittlers, der sich an diesem Ort befindet.\n\n\n- Die aktuelle Szenen- oder Agendakarte."
    },
    {
-      "id":"Alert",
+      "id": "Alert",
       "cycle":[
          "tfa",
          "rttfa",
@@ -79,7 +79,8 @@
       ],
       "scenarios":[
          "fortune_and_folly_part_1",
-         "fortune_and_folly_part_2"
+         "fortune_and_folly_part_2",
+         "film_fatale"
       ],
       "title":"Alarmiert",
       "text":"Immer wenn einem Ermittler eine Fertigkeitsprobe misslingt, während er versucht, einem Gegner mit dem Schlüsselwort Alarmiert zu entkommen, führt jener Gegner nach der Anwendung aller Ergebnisse jener Fertigkeitsprobe einen Angriff gegen den entkommenden Ermittler durch. Ein Gegner wird nicht erschöpft, nachdem er einen Alarmiert- Angriff durchgeführt hat. Dieser Angriff wird durchgeführt, egal ob der Gegner mit dem entkommenden Ermittler in einen Kampf verwickelt ist oder nicht."
@@ -1041,6 +1042,10 @@
       "cycle":[
          "fhv"
       ],
+     "scenarios": [
+       "film_fatale",
+       "legions_of_fire"
+     ],
       "title":"Schwer zu fassen",
       "text":"Schwer zu fassende Gegner sind solche Gegner, die den Kontakt zu Ermittlern vermeiden wollen, um ihre eigenen Ziele zu verfolgen oder um einfach zu überleben.\n\nFalls ein spielbereiter Gegner mit dem Schlüsselwort Schwer zu fassen angreift oder angegriffen wird, löst sich jener Gegner nach der Abhandlung des Angriffs sofort von allen Ermittlern, bewegt sich an einen verbundenen Ort (falls möglich an einen Ort ohne Ermittler) und wird erschöpft.\n\n\n- Dieser Effekt geschieht unabhängig davon, ob der Gegner mit dem angreifenden oder angegriffenen Ermittler in einen Kampf verwickelt ist oder nicht."
    },
@@ -1430,7 +1435,7 @@
                },
                {
                   "row":[
-                     
+
                   ]
                },
                {

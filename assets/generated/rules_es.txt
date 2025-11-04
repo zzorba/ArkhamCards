@@ -100,8 +100,22 @@
     "id": "Alert",
     "cycle": [
       "tfa",
+      "rttfa",
       "tcu",
-      "tde"
+      "rttcu",
+      "tde",
+      "tdea",
+      "tdeb",
+      "eoe",
+      "tskc",
+      "fof",
+      "zdm",
+      "zcf"
+    ],
+    "scenarios": [
+      "fortune_and_folly_part_1",
+      "fortune_and_folly_part_2",
+      "film_fatale"
     ],
     "title": "Alerta",
     "text": "Cada vez que un investigador fracase en una prueba de habilidad al intentar evitar a un Enemigo que tenga la palabra clave “Alerta”, tras aplicar todos los resultados de esa prueba de habilidad, dicho Enemigo realiza un ataque contra el investigador que intenta evitar. El Enemigo no se agota tras realizar un ataque de “Alerta”. Este ataque ocurre tanto si el Enemigo está enfrentado con el investigador que intenta evitar como si no lo está."

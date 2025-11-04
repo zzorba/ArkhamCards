@@ -46,8 +46,8 @@ interface Props {
   checkState?: { [pack_code: string]: boolean | undefined };
   setChecked?: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_code: string, checked: boolean) => void;
-  header?: JSX.Element;
-  renderFooter?: () => JSX.Element;
+  header?: React.ReactElement;
+  renderFooter?: () => React.ReactElement;
   baseQuery?: Brackets;
   compact?: boolean;
   noFlatList?: boolean;

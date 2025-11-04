@@ -21,7 +21,7 @@ import ArkhamLoadingSpinner from './ArkhamLoadingSpinner';
 import space from '@styles/space';
 
 interface Props {
-  children: JSX.Element;
+  children: React.ReactElement;
 }
 
 /**

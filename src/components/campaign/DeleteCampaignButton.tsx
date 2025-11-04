@@ -120,7 +120,7 @@ export default function DeleteCampaignButton({ actions, campaignId, campaign, sh
         bottomMargin={s}
       />
     );
-  }, [userId, campaignId.serverId, campaign, standalone, confirmLeaveCampaign, confirmDeleteCampaign])
+  }, [userId, campaignId.serverId, campaign, standalone, confirmLeaveCampaign, confirmDeleteCampaign]);
   return (
     <>
       {archiveButton}

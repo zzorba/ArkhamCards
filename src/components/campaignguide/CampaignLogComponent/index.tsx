@@ -264,7 +264,7 @@ export default function CampaignLogComponent({
       case 'partner': {
         return (
           <View style={[space.paddingSideS, space.paddingBottomM, styles.column, { width }]}>
-            <View style={{ maxWidth: MAX_WIDTH }}>
+            <View style={{ maxWidth: MAX_WIDTH, width: '100%' }}>
               <DeckBubbleHeader inverted title={title} />
               { !!partners && (
                 <CampaignLogPartnersComponent

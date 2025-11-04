@@ -1,0 +1,26 @@
+diff --git a/node_modules/react-native-anchor-point/index.ts b/node_modules/react-native-anchor-point/index.ts
+index f789fa7..a23f2a0 100644
+--- a/node_modules/react-native-anchor-point/index.ts
++++ b/node_modules/react-native-anchor-point/index.ts
+@@ -33,8 +33,10 @@ export const withAnchorPoint = (transform: TransformsStyle, anchorPoint: Point,
+         shiftTranslateX.push({
+             translateX: size.width * (anchorPoint.x - defaultAnchorPoint.x),
+         });
++        // @ts-ignore
+         injectedTransform = [...shiftTranslateX, ...injectedTransform];
+         // shift after rotation
++        // @ts-ignore
+         injectedTransform.push({
+             translateX: size.width * (defaultAnchorPoint.x - anchorPoint.x),
+         });
+@@ -50,8 +52,10 @@ export const withAnchorPoint = (transform: TransformsStyle, anchorPoint: Point,
+         shiftTranslateY.push({
+             translateY: size.height * (anchorPoint.y - defaultAnchorPoint.y),
+         });
++        // @ts-ignore
+         injectedTransform = [...shiftTranslateY, ...injectedTransform];
+         // shift after rotation
++        // @ts-ignore
+         injectedTransform.push({
+             translateY: size.height * (defaultAnchorPoint.y - anchorPoint.y),
+         });

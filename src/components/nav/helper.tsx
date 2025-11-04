@@ -269,7 +269,7 @@ export async function openUrl(
     if (rules.length) {
       navigation.navigate('Rule', {
         rule: rules[0],
-      });
+      }, { merge: false });
       return;
     }
   }

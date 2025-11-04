@@ -71,7 +71,7 @@ interface Props {
   expandSearchControlsHeight?: number;
   investigator?: InvestigatorChoice;
   cardPressed?: (card: Card) => void;
-  renderCard?: (card: Card, id: string, onPressId: (id: string, card: Card) => void) => JSX.Element;
+  renderCard?: (card: Card, id: string, onPressId: (id: string, card: Card) => void) => React.ReactElement;
   headerItems?: React.ReactNode[];
   headerHeight?: number;
   noSearch?: boolean;

@@ -14,8 +14,6 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '@navigation/types';
 import FactionChart from './FactionChart';
 
-const INCLUDE_SLOTS_CHART = true;
-
 export interface DeckChartsProps {
   parsedDeck: ParsedDeck | undefined;
   headerBackgroundColor: string | undefined;

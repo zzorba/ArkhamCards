@@ -331,32 +331,37 @@ function AnnotationComponent({ annotation, width, height, left, top, rowWidth, r
   top: number;
 }) {
   const { typography, fontScale } = useContext(StyleContext);
-  let textAlignment: TextStyle;
+  let textAlignment: 'left' | 'right' | 'center';
   if (annotation.alignment || annotation.style === 'description') {
-    switch (annotation.alignment ?? 'left') {
-      case 'left':
-        textAlignment = typography.left;
-        break;
-      case 'right':
-        textAlignment = typography.right;
-        break;
-      case 'center':
-        textAlignment = typography.center;
-        break;
-    }
+    textAlignment = annotation.alignment ?? 'left';
+
   } else {
     switch (annotation.position) {
       case 'left':
-        textAlignment = typography.right;
+        textAlignment = 'left';
         break;
       case 'right':
-        textAlignment = typography.left;
+        textAlignment = 'right';
         break;
       case 'top':
       default:
-        textAlignment = typography.center;
+        textAlignment = 'center';
         break;
     }
+  }
+  let textAlignmentStyle: TextStyle | undefined;
+
+  switch (textAlignment) {
+    case 'left':
+      textAlignmentStyle = typography.left;
+      break;
+    case 'right':
+      textAlignmentStyle = typography.right;
+      break;
+    case 'center':
+    default:
+      textAlignmentStyle = typography.center;
+      break;
   }
 
   return (
@@ -373,13 +378,13 @@ function AnnotationComponent({ annotation, width, height, left, top, rowWidth, r
       { annotation.style === 'description' ? (
         <CardTextComponent
           text={annotation.text}
-          style={textAlignment}
+          textAlignment={textAlignment}
         />
       ) : (
         <Text
           numberOfLines={2}
           style={[
-            textAlignment,
+            textAlignmentStyle,
             typography.text,
             [
               { lineHeight: fontScale * 24, fontSize: fontScale * 22 },
