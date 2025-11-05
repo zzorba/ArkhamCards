@@ -5699,7 +5699,7 @@ msgid "Narration Language"
 msgstr "Erzähler Sprache"
 
 msgid "Take the scenic route to mark time"
-msgstr ""
+msgstr "Nimm die malerische Route zum Zeitvertreib"
 
 msgid "Manual Backup"
 msgstr "Manuelle Sicherung"
