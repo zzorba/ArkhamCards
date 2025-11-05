@@ -1189,6 +1189,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.circusExMortisIcon(encounter_code, size, color);
       case 'zgoo':
         return this.standaloneIcon('onigawa', size, color);
+      case 'zdh':
+        return this.standaloneIcon('darkham', size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);
