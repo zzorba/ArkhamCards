@@ -42,6 +42,7 @@ import { CUSTOM_INVESTIGATOR } from '@app_constants';
 import AppIcon from '@icons/AppIcon';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import HeaderButton from '@components/core/HeaderButton';
+import HeaderTitle from '@components/core/HeaderTitle';
 import DeckButton from '@components/deck/controls/DeckButton';
 import DeckProblemBanner from '@components/deck/DeckProblemBanner';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
@@ -348,6 +349,36 @@ function DeckDetailView({
   useBackButton(handleBackPress);
   const hasInvestigator = !!parsedDeck?.investigator;
   const factionColor = useMemo(() => colors.faction[parsedDeck?.faction ?? 'neutral'].background, [parsedDeck, colors.faction]);
+
+  // Set initial header buttons immediately with route params to prevent button flash
+  useEffect(() => {
+    if (!hasInvestigator) {
+      const textColor = '#FFFFFF';
+      navigation.setOptions({
+        headerLeft: modal && Platform.OS === 'ios' ? () => (
+          <TouchableOpacity onPress={handleBackPress}>
+            <Text style={{ color: textColor, fontSize: 16 }}>{t`Done`}</Text>
+          </TouchableOpacity>
+        ) : modal && Platform.OS === 'android' ? () => (
+          <HeaderButton
+            iconName="arrow_back"
+            onPress={handleBackPress}
+            color={textColor}
+            accessibilityLabel={t`Back`}
+          />
+        ) : undefined,
+        headerRight: () => (
+          <HeaderButton
+            iconName="menu"
+            onPress={toggleMenuOpen}
+            color={textColor}
+            accessibilityLabel={t`Menu`}
+          />
+        ),
+      });
+    }
+  }, [hasInvestigator, modal, navigation, handleBackPress, toggleMenuOpen]);
+
   useEffect(() => {
     if (hasInvestigator) {
       const textColors = {
@@ -369,7 +400,7 @@ function DeckDetailView({
       const backgroundColor = backgroundColors[mode];
       const statusBarStyle = statusBarStyles[mode];
       const titles = {
-        view: title,
+        view: parsedDeck.investigator.front.name,
         upgrade: t`Upgrading deck`,
         edit: t`Editing deck`,
       };
@@ -389,6 +420,13 @@ function DeckDetailView({
 
       navigation.setOptions({
         title: titles[mode],
+        headerTitle: mode === 'view' ? () => (
+          <HeaderTitle
+            title={parsedDeck.investigator.front.name || title}
+            subtitle={name || subtitle}
+            color={textColor}
+          />
+        ) : undefined,
         headerStyle: {
           backgroundColor,
         },
@@ -421,7 +459,7 @@ function DeckDetailView({
         ),
       });
     }
-  }, [modal, hasInvestigator, darkMode, navigation, mode, colors, factionColor, name, subtitle, title, handleBackPress, toggleMenuOpen]);
+  }, [modal, hasInvestigator, darkMode, navigation, mode, colors, factionColor, name, subtitle, title, handleBackPress, toggleMenuOpen, parsedDeck]);
   const [uploadLocalDeckDialog, uploadLocalDeck] = useUploadLocalDeckDialog(deckActions, deck, parsedDeck);
   useEffect(() => {
     if (!deck) {
@@ -1295,7 +1333,46 @@ function DeckDetailView({
   );
 }
 
-export default withLoginState(DeckDetailView);
+const DeckDetailViewWithLogin = withLoginState(DeckDetailView);
+
+DeckDetailViewWithLogin.options = ({ route }: { route: RouteProp<RootStackParamList, 'Deck'> }) => {
+  const { title, subtitle, headerBackgroundColor, modal } = route.params;
+  const textColor = '#FFFFFF';
+
+  const baseOptions = {
+    ...(headerBackgroundColor ? {
+      headerStyle: {
+        backgroundColor: headerBackgroundColor,
+      },
+      headerTintColor: textColor,
+      headerTitleStyle: {
+        color: textColor,
+      },
+      statusBarStyle: 'light' as const,
+    } : {}),
+  };
+
+  if (!title || !subtitle) {
+    return {
+      title: t`Deck`,
+      ...baseOptions,
+    };
+  }
+
+  return {
+    title: title,
+    headerTitle: () => (
+      <HeaderTitle
+        title={title}
+        subtitle={subtitle}
+        color={textColor}
+      />
+    ),
+    ...baseOptions,
+  };
+};
+
+export default DeckDetailViewWithLogin;
 
 const styles = StyleSheet.create({
   flex: {

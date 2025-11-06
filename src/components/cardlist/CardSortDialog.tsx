@@ -116,7 +116,11 @@ export function useSortDialog(
 
 
   const onChanged = useCallback((data: Item[]) => {
-    const newItems = flatMap(takeWhile(data, (item) => item.type !== 'header'), (item) => item.type === 'sort' ? [item.sort] : []);
+    const headerIndex = data.findIndex(item => item.type === 'header');
+    const selectedItems = headerIndex >= 0 ? data.slice(0, headerIndex) : data;
+    const newItems = selectedItems
+      .filter(item => item.type === 'sort')
+      .map(item => (item as SortItem).sort);
     sortChanged(newItems);
   }, [sortChanged]);
 

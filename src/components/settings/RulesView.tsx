@@ -30,7 +30,7 @@ function RuleComponent({ rule, level }: { rule: Rule; level: number }) {
   }, [rule, navigation]);
   const onPress = usePressCallback(onPressRaw);
   return (
-    <View key={rule.id} style={{ paddingLeft: s + s * (level + 1), paddingRight: m, marginTop: s }}>
+    <View key={rule.id} style={{ paddingLeft: m + s * level, paddingRight: m, marginTop: s }}>
       <TouchableOpacity onPress={onPress}>
         <CardFlavorTextComponent text={`<game>${rule.title}</game>`} sizeScale={1.2} />
         { !!(rule.rules && rule.rules.length > 0) && (

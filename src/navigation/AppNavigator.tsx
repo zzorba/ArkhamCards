@@ -887,7 +887,7 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Deck"
         component={DeckDetailView}
-        options={({ route }) => getDeckScreenOptionsWithBackground(route.params.headerBackgroundColor, t`Deck`)}
+        options={DeckDetailView.options}
       />
       <RootStack.Screen
         name="Deck.New"

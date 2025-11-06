@@ -317,7 +317,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
     fancy: { type: 'text', style: () => ({ fontFamily: 'Caveat', ...scaledSize(18, 24), color: context.colors.darkText }) },
     fancy_u: { type: 'text', style: () => ({ fontFamily: 'Caveat', ...scaledSize(18, 24), textDecorationLine: 'underline' as const, color: context.colors.darkText }) },
     innsmouth: { type: 'text', style: () => ({ fontFamily: 'AboutDead', fontStyle: 'normal' as const, fontWeight: '600' as const, ...scaledSize(24, 28), color: context.colors.darkText }) },
-    game: { type: 'text', style: () => ({ fontFamily: Platform.OS === 'ios' ? 'Teutonic RU' : 'TT2020StyleE-Regular', fontStyle: 'normal' as const, ...scaledSize(24, Platform.OS === 'ios' ? 28 : 32), color: context.colors.darkText }) },
+    game: { type: 'text', style: () => ({ fontFamily: Platform.OS === 'ios' ? 'Teutonic RU' : 'Arkhamic', fontStyle: 'normal' as const, ...scaledSize(24, Platform.OS === 'ios' ? 28 : 32), color: context.colors.darkText }) },
     trait: { type: 'text', style: () => createTextStyle('bolditalic') },
 
     // Layout tags
