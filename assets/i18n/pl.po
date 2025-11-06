@@ -6082,7 +6082,7 @@ msgid "Ages Unwound"
 msgstr ""
 
 msgid "Create new deck"
-msgstr ""
+msgstr "Stwórz nową talię"
 
 msgid "Timeline"
 msgstr ""
@@ -6094,25 +6094,25 @@ msgid "Attachments"
 msgstr ""
 
 msgid "Bewitching"
-msgstr ""
+msgstr "Zły urok"
 
 msgid "Hunch deck"
-msgstr ""
+msgstr "Talia przeczuć"
 
 msgid "Stick to the Plan"
-msgstr ""
+msgstr "Trzymaj się planu"
 
 msgid "Market deck"
-msgstr ""
+msgstr "Talia handlu"
 
 msgid "Branded spell"
 msgstr ""
 
 msgid "Too many selected"
-msgstr ""
+msgstr "Zbyt wiele wybranych"
 
 msgid "Each card must be different"
-msgstr ""
+msgstr "Każda karta musi być inna"
 
 #, javascript-format
 msgid "Limit of ${ limit } card"
@@ -6240,22 +6240,22 @@ msgstr ""
 "Dane Dziennika Kampanii powiązane z tym badaczem mogą zostać utracone."
 
 msgid "Draw random token"
-msgstr ""
+msgstr "Dobierz losowy żeton"
 
 msgid "View or edit"
-msgstr ""
+msgstr "Przejrzyj / edytuj"
 
 msgid "View"
 msgstr ""
 
 msgid "Review chaos bag"
-msgstr ""
+msgstr "Przejrzyj worek chaosu"
 
 msgid "Change lead investigator"
-msgstr ""
+msgstr "Zmień głównego badacza"
 
 msgid "To handle resignation or elimination"
-msgstr ""
+msgstr "Jako wynik eliminacji bądź rezygnacji"
 
 msgid "Core set"
 msgstr ""
@@ -6335,7 +6335,7 @@ msgid "When the World Screamed"
 msgstr ""
 
 msgid "Contains cards not in the selected card pool."
-msgstr ""
+msgstr "Zawiera karty spoza wybranej puli kart."
 
 msgid "Card"
 msgstr ""
@@ -6359,7 +6359,7 @@ msgid "Card Upgrade"
 msgstr ""
 
 msgid "Contains cards that are not in the selected card pool."
-msgstr ""
+msgstr "Zawiera karty spoza wybranej puli kart."
 
 msgid "Select"
 msgstr ""
