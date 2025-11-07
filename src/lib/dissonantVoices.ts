@@ -45,10 +45,10 @@ export function signInFlow(): Promise<SignInResult> {
         success: false,
         error,
       };
-    }, () => {
+    }, (error) => {
       return {
         success: false,
-        error: '',
+        error: error?.message || error || '',
       };
     });
 }
@@ -66,6 +66,7 @@ export async function authorizeDissonantVoices(): Promise<DissonantVoicesAuthRes
   const authRequest = new AuthSession.AuthRequest({
     clientId: 'arkhamcards',
     redirectUri: 'arkhamcards://dissonantvoices/redirect',
+    responseType: AuthSession.ResponseType.Code,
     extraParams: {
       type: 'app',
     },
@@ -80,7 +81,8 @@ export async function authorizeDissonantVoices(): Promise<DissonantVoicesAuthRes
     throw new Error('Authentication was cancelled');
   }
 
-  const code = result.params.code;
+  // Server returns access_token via implicit grant, but we send it as 'code' to verify patron status
+  const accessToken = result.params.access_token;
 
   const response = await fetch('https://north101.co.uk/api/token', {
     method: 'POST',
@@ -88,7 +90,7 @@ export async function authorizeDissonantVoices(): Promise<DissonantVoicesAuthRes
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ code, type: 'app', client_id: 'arkhamcards' }),
+    body: JSON.stringify({ code: accessToken, type: 'app', client_id: 'arkhamcards' }),
   });
 
   if (response.status !== 200) {

@@ -26,6 +26,7 @@ export type DeckButtonIcon =
   'undo' |
   'trauma' |
   'backup' |
+  'mythos-busters' |
   'seal' |
   'lock' |
   'log' |
