@@ -5226,7 +5226,7 @@ msgstr "Reiseziel wählen"
 
 #, javascript-format
 msgid "${ investigator.name } Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
-msgstr "${ investigator.name } Fan-Made Challenge Szenario von ${ scenario.custom.creator }"
+msgstr "${ investigator.name } Fan-Made Herausforderungsszenario von ${ scenario.custom.creator }"
 
 msgid "Cyclopean Foundations"
 msgstr ""
@@ -5860,10 +5860,6 @@ msgstr "Original Release-Pakete anzeigen"
 msgid "Non-Unique"
 msgstr "Nicht-Einzigartig"
 
-#, javascript-format
-msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr "Erfahrungspunkt Kosten: ${ basicXpCost } für Decks, die ${ investigator.name } beinhalten, ${ challengeDiscountCost } für jede andere Spieler:in"
-
 msgid "Aether"
 msgstr "Äther"
 
@@ -6305,6 +6301,17 @@ msgstr "Name ändern"
 
 msgid "Scenario results"
 msgstr "Szenario Ergebnisse"
+
+msgid "Location Setup"
+msgstr ""
+
+#, javascript-format
+msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
+msgstr "Fan-Made Herausforderungsszenario von ${ scenario.custom.creator }"
+
+#, javascript-format
+msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
+msgstr "Erfahrungspunkt Kosten: ${ xpCost } für Decks, die ${ investigator.name } beinhalten, ${ challengeDiscountCost } für jede andere Spieler:in"
 
 msgctxt "investigator"
 msgid "Custom"

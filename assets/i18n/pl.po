@@ -5917,10 +5917,6 @@ msgstr "Pokaż zestawy pierwotnego wydania"
 msgid "Non-Unique"
 msgstr "Nie-unikatowa"
 
-#, javascript-format
-msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr "Koszt doświadczenia: ${ basicXpCost } dla talii zawierających ${ investigator.name }, ${ challengeDiscountCost } dla pozostałych graczy"
-
 msgid "Aether"
 msgstr "Eter"
 
@@ -6375,6 +6371,17 @@ msgstr ""
 
 msgid "Scenario results"
 msgstr ""
+
+msgid "Location Setup"
+msgstr ""
+
+#, javascript-format
+msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
+msgstr ""
+
+#, javascript-format
+msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
+msgstr "Koszt doświadczenia: ${ xpCost } dla talii zawierających ${ investigator.name }, ${ challengeDiscountCost } dla pozostałych graczy"
 
 msgctxt "investigator"
 msgid "Custom"

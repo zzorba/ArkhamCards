@@ -5799,10 +5799,6 @@ msgstr "顯示原版擴充包"
 msgid "Non-Unique"
 msgstr "非獨特"
 
-#, javascript-format
-msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr "經驗花費: 牌組包括${ investigator.name }的玩家必須花費${ basicXpCost }經驗，其他調查員則必須花費${ challengeDiscountCost }經驗"
-
 msgid "Aether"
 msgstr "乙太"
 
@@ -6238,6 +6234,17 @@ msgstr ""
 
 msgid "Scenario results"
 msgstr ""
+
+msgid "Location Setup"
+msgstr ""
+
+#, javascript-format
+msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
+msgstr ""
+
+#, javascript-format
+msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
+msgstr "經驗花費: 牌組包括${ investigator.name }的玩家必須花費${ xpCost }經驗，其他調查員則必須花費${ challengeDiscountCost }經驗"
 
 msgctxt "investigator"
 msgid "Custom"
