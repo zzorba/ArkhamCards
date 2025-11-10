@@ -422,7 +422,7 @@ function DeckDetailView({
         title: titles[mode],
         headerTitle: mode === 'view' ? () => (
           <HeaderTitle
-            title={parsedDeck.investigator.front.name || title}
+            title={parsedDeck.investigator.front.name ?? title ?? ''}
             subtitle={name || subtitle}
             color={textColor}
           />
@@ -908,6 +908,7 @@ function DeckDetailView({
     setMenuOpen(false);
     showTagsDialog();
   }, [setMenuOpen, showTagsDialog]);
+  const safeArea = useSafeAreaInsets();
   const sideMenu = useMemo(() => {
     if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;
@@ -921,6 +922,7 @@ function DeckDetailView({
     const xpString = t`${xp} (${adjustment}) XP`;
     return (
       <ScrollView style={[styles.menu, backgroundStyle, space.paddingS]}>
+        <View style={{ height: safeArea.top }} />
         <DeckBubbleHeader title={t`Deck`} />
         { editable && (
           <>
@@ -1072,9 +1074,10 @@ function DeckDetailView({
             last
           />
         ) }
+        <View style={{ height: safeArea.bottom + s }} />
       </ScrollView>
     );
-  }, [backgroundStyle, lang, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
+  }, [safeArea, backgroundStyle, lang, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
     onEditSpecialPressed, onChecklistPressed, onDraftCards, onCopyDeckId, onCopyUrl, tagString,
@@ -1335,8 +1338,8 @@ function DeckDetailView({
 
 const DeckDetailViewWithLogin = withLoginState(DeckDetailView);
 
-DeckDetailViewWithLogin.options = ({ route }: { route: RouteProp<RootStackParamList, 'Deck'> }) => {
-  const { title, subtitle, headerBackgroundColor, modal } = route.params;
+export const DeckDetailViewOptions = ({ route }: { route: RouteProp<RootStackParamList, 'Deck'> }) => {
+  const { title, subtitle, headerBackgroundColor } = route.params;
   const textColor = '#FFFFFF';
 
   const baseOptions = {

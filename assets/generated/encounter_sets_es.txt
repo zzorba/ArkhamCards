@@ -326,7 +326,7 @@
   "death_at_sundown": "Muerte a la puesta de sol",
   "the_midnight_hour": "La hora bruja",
   "the_symphony_of_erich_zann": "La sinfonía de Erich Zann",
-  "when_the_world_screamed": "When the World Screamed",
+  "when_the_world_screamed": "El día que la Tierra aulló",
   "meteoric_phenomenon": "Meteoric Phenomenon",
   "unnatural_disturbances": "Unnatural Disturbances",
   "inhospitable_locality": "Inhospitable Locality",

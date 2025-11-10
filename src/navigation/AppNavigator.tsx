@@ -16,7 +16,7 @@ import MyCampaignsView from '@components/campaign/MyCampaignsView';
 import SettingsView from '@components/settings/SettingsView';
 
 // Deck screens
-import DeckDetailView from '@components/deck/DeckDetailView';
+import DeckDetailView, { DeckDetailViewOptions } from '@components/deck/DeckDetailView';
 import NewDeckView from '@components/deck/NewDeckView';
 import NewDeckOptionsDialog from '@components/deck/NewDeckOptionsDialog';
 import DeckChecklistView from '@components/deck/DeckChecklistView';
@@ -887,7 +887,7 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Deck"
         component={DeckDetailView}
-        options={DeckDetailView.options}
+        options={DeckDetailViewOptions}
       />
       <RootStack.Screen
         name="Deck.New"
