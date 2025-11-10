@@ -34,24 +34,27 @@ export default function ChallengeScenarioView() {
     onPress(scenario);
   }, [navigation, onPress, scenario]);
 
-  const introText = useCallback((investigator: Card) => {
+  const introTextForInvestigator = useCallback((investigator: Card) => {
     return t`The <i>${scenario.scenario_name}</i> challenge scenario centers around the investigator ${investigator.name}, and therefore has the following prerequisites:`;
   }, [scenario]);
   const [investigator] = useSingleCard(challenge.investigator, 'player');
   return (
     <View style={[styles.wrapper, backgroundStyle]}>
       <ScrollView contentContainerStyle={styles.scrollView}>
-        { !!investigator && (
+        {(!!investigator || !!challenge.requirements) && (
           <View>
-            <SetupStepWrapper bulletType="none">
-              <CampaignGuideTextComponent text={introText(investigator)} />
-            </SetupStepWrapper>
-            <SetupStepWrapper>
-              <CampaignGuideTextComponent
-                text={t`${investigator.name} must be chosen as one of the investigators when playing this scenario.`}
-              />
-            </SetupStepWrapper>
-            { map(challenge.requirements, (req, idx) => (
+            {!!investigator && (
+              <>
+                <SetupStepWrapper bulletType="none">
+                  <CampaignGuideTextComponent text={introTextForInvestigator(investigator)} />
+                </SetupStepWrapper>
+                <SetupStepWrapper>
+                  <CampaignGuideTextComponent
+                    text={t`${investigator.name} must be chosen as one of the investigators when playing this scenario.`}
+                  />
+                </SetupStepWrapper>
+              </>)}
+            { !!challenge.requirements && map(challenge.requirements, (req, idx) => (
               <SetupStepWrapper key={idx}>
                 <CampaignGuideTextComponent text={req.text} />
               </SetupStepWrapper>
