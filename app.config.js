@@ -76,10 +76,6 @@ module.exports = {
       appleTeamId: '54773FU58P',
       supportsTablet: true,
       infoPlist: {
-        UIBackgroundModes: [
-          'audio',
-          'audio',
-        ],
         UIViewControllerBasedStatusBarAppearance: true,
         ITSAppUsesNonExemptEncryption: false,
       },
