@@ -6303,7 +6303,7 @@ msgid "Scenario results"
 msgstr "Szenario Ergebnisse"
 
 msgid "Location Setup"
-msgstr ""
+msgstr "Platzierung der Orte"
 
 #, javascript-format
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
