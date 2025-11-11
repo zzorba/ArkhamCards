@@ -95,6 +95,7 @@
     "expo-dev-client": "~5.2.4",
     "expo-file-system": "^19.0.17",
     "expo-image": "2.4.1",
+    "expo-keep-awake": "~14.1.4",
     "expo-key-event": "^1.4.0",
     "expo-splash-screen": "~0.30.10",
     "flatted": "3.3.1",
