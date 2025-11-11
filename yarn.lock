@@ -7307,6 +7307,11 @@ expo-keep-awake@~14.1.4:
   resolved "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-14.1.4.tgz#80197728563e0e17523e5a606fbd6fbed9639503"
   integrity sha512-wU9qOnosy4+U4z/o4h8W9PjPvcFMfZXrlUoKTMBW7F4pLqhkkP/5G4EviPZixv4XWFMjn1ExQ5rV6BX8GwJsWA==
 
+expo-key-event@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/expo-key-event/-/expo-key-event-1.4.0.tgz#c15da54ad1b9e2f940551346f2efad19b3e26d2f"
+  integrity sha512-XE/NvVx+PFzXV6Mp5uJ3irli4e7hqdnIEykG308Mr0k/vJlMDb4GtJ2jwTQ0HOiL5a3Igc/iuJn721w1ONKpWA==
+
 expo-linking@~7.1.7:
   version "7.1.7"
   resolved "https://registry.npmjs.org/expo-linking/-/expo-linking-7.1.7.tgz#8e41ef1ca5d1190dfc01b7f4dbc4c3993bdc4523"
@@ -11514,11 +11519,6 @@ react-native-keychain@8.1.2:
   version "8.1.2"
   resolved "https://registry.npmjs.org/react-native-keychain/-/react-native-keychain-8.1.2.tgz#34291ae472878e5124d081211af5ede7d810e64f"
   integrity sha512-bhHEui+yMp3Us41NMoRGtnWEJiBE0g8tw5VFpq4mpmXAx6XJYahuM6K3WN5CsUeUl83hYysSL9oFZNKSTPSvYw==
-
-react-native-keyevent@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.npmjs.org/react-native-keyevent/-/react-native-keyevent-0.3.1.tgz#7dbe8ed7044e4f4d1ef8e11f577cd1925039729d"
-  integrity sha512-7Ev7RXh3cAwZ4Oap80xs30eMUBAmJf7bKuemBPXsdKnekRfZfrblzRqzl43WsUh8lk0Bf9XOfSKkwIIL/2UFYw==
 
 react-native-localize@3.2.0:
   version "3.2.0"
