@@ -216,7 +216,7 @@ export default function DiagnosticsView() {
           exportedAt: new Date().toISOString(),
         };
 
-        const metadataPath = `${FileSystem.documentDirectory}arkham4.metadata.json`;
+        const metadataPath = `${FileSystem.documentDirectory}arkham4.metadata.txt`;
         await FileSystem.writeAsStringAsync(metadataPath, JSON.stringify(metadata, null, 2));
 
         const sizeMB = (fileInfo.size / (1024 * 1024)).toFixed(2);

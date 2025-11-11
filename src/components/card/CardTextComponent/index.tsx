@@ -451,6 +451,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
         }
 
         const processedElements: React.ReactNode[] = [];
+        let hasItalicTag = false;
         let i = 0;
 
         while (i < node.children.length) {
@@ -476,6 +477,10 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
             } else if (htmlContent.match(/^<(b|strong|i|em|u|strike|del|red|smallcaps|center|right|blockquote|fancy|fancy_u|typewriter|cite|minicaps|innsmouth|game|trait)>/)) {
               // For HTML tags (both standard and custom), collect the full HTML string and parse with htmlparser2
               // This ensures icon patterns inside these tags get processed correctly
+              // Track if we have italic tags for Android width fix
+              if (htmlContent.match(/^<(i|em)>/) && Platform.OS === 'android' && !flavorText) {
+                hasItalicTag = true;
+              }
               let fullHTML = htmlContent;
               let j = i + 1;
               while (j < node.children.length) {
@@ -504,7 +509,9 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
         }
 
         // Wrap in Text component to maintain inline text flow
-        return <Text key={node.key}>{processedElements}</Text>;
+        // Android has issues with Alegreya-Italic font width measurement causing text truncation
+        // Apply width fix only when this textgroup contains italic tags
+        return <Text key={node.key} style={hasItalicTag ? { width: '100%' } : undefined}>{processedElements}</Text>;
       },
 
       // Override text rendering to ensure proper styling

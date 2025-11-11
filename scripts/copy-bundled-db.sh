@@ -19,7 +19,7 @@ DB_DIR=$(dirname "$DB_PATH")
 
 # Derive metadata path (should be in Documents directory, up a few levels)
 CONTAINER_DIR=$(echo "$DB_DIR" | sed 's|/Library/default||')
-METADATA_JSON_PATH="$CONTAINER_DIR/Documents/arkham4.metadata.json"
+METADATA_JSON_PATH="$CONTAINER_DIR/Documents/arkham4.metadata.txt"
 
 echo "Database path: $DB_PATH"
 echo "Metadata path: $METADATA_JSON_PATH"
