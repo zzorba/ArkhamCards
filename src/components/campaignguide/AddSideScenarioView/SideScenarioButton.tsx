@@ -24,19 +24,19 @@ function ChallengeBlock({ scenario, challenge, useTime }: { scenario: Scenario; 
   const [playerCard] = useSingleCard(head(challenge.card_discount), 'player');
   const investigator = investigatorCard ?? playerCard;
 
-  const scenarioType = useMemo(() => {
-    if (!!investigator?.name) {
+  const scenarioTypeText = () => {
+    if (!investigator?.name) {
       return scenario.custom ?
-        t`${investigator.name} Fan-Made Challenge Scenario by ${scenario.custom.creator}` :
-        t`${investigator.name} Challenge Scenario`
+        t`Fan-Made Challenge Scenario by ${scenario.custom.creator}` :
+        t`Challenge Scenario`;
     }
 
     return scenario.custom ?
-      t`Fan-Made Challenge Scenario by ${scenario.custom.creator}` :
-      t`Challenge Scenario`;
-  }, [investigator, scenario]);
+      t`${investigator.name} Fan-Made Challenge Scenario by ${scenario.custom.creator}` :
+      t`${investigator.name} Challenge Scenario`
+  };
 
-  const costSection = useMemo(() => {
+  const costSection = () => {
     const xpCost = scenario.xp_cost || 0;
     const additionalXpCost = challenge.xp_cost || 0;
     const challengeCost = xpCost + additionalXpCost;
@@ -82,14 +82,14 @@ function ChallengeBlock({ scenario, challenge, useTime }: { scenario: Scenario; 
         {t`Experience cost: ${xpCost} for decks that include ${investigator.name}, ${challengeDiscountCost} for each other player`}
       </Text>
     );
-  }, [scenario, challenge, investigator, investigatorCard, useTime, typography]);
+  };
 
   return (
     <View style={styles.flex}>
       <Text style={[typography.small, space.paddingTopS]}>
-        {scenarioType}
+        {scenarioTypeText()}
       </Text>
-      {costSection}
+      {costSection()}
     </View>
   );
 }
