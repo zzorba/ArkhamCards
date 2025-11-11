@@ -5902,10 +5902,6 @@ msgstr "Показать наборы в формате 1+6"
 msgid "Non-Unique"
 msgstr "Не уникальный"
 
-#, javascript-format
-msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr "Цена в опыте: ${ basicXpCost } для игрока за ${ investigator.name }, ${ challengeDiscountCost } для всех остальных игроков"
-
 msgid "Aether"
 msgstr "Эфир"
 
@@ -6363,6 +6359,14 @@ msgstr ""
 
 msgid "Location Setup"
 msgstr ""
+
+#, javascript-format
+msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
+msgstr "Фанатский сценарий-испытание от ${ scenario.custom.creator }"
+
+#, javascript-format
+msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
+msgstr "Цена в опыте: ${ xpCost } для игрока за ${ investigator.name }, ${ challengeDiscountCost } для всех остальных игроков"
 
 msgid "You must have at least 6 cards from each faction."
 msgstr ""

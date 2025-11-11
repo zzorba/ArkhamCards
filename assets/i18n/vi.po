@@ -5659,10 +5659,6 @@ msgstr ""
 msgid "Non-Unique"
 msgstr ""
 
-#, javascript-format
-msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr ""
-
 msgid "Aether"
 msgstr ""
 
@@ -6100,6 +6096,14 @@ msgid "Scenario results"
 msgstr ""
 
 msgid "Location Setup"
+msgstr ""
+
+#, javascript-format
+msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
+msgstr ""
+
+#, javascript-format
+msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr ""
 
 msgid "You must have at least 6 cards from each faction."

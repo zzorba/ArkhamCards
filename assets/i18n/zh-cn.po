@@ -5789,10 +5789,6 @@ msgstr "显示原版扩充包"
 msgid "Non-Unique"
 msgstr "非独特"
 
-#, javascript-format
-msgid "Experience cost: ${ basicXpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
-msgstr "经验花费: 牌组包括${ investigator.name }的玩家必须花费${ basicXpCost }经验，其他调查员则必须花费${ challengeDiscountCost }经验"
-
 msgid "Aether"
 msgstr "乙太"
 
@@ -6231,6 +6227,14 @@ msgstr ""
 
 msgid "Location Setup"
 msgstr ""
+
+#, javascript-format
+msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
+msgstr ""
+
+#, javascript-format
+msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
+msgstr "经验花费: 牌组包括${ investigator.name }的玩家必须花费${ xpCost }经验，其他调查员则必须花费${ challengeDiscountCost }经验"
 
 msgid "You must have at least 6 cards from each faction."
 msgstr ""

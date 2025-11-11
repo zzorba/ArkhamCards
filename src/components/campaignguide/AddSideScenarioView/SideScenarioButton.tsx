@@ -7,7 +7,7 @@ import { t } from 'ttag';
 import EncounterIcon from '@icons/EncounterIcon';
 import NavButton from '@components/core/NavButton';
 import { ChallengeData, CustomData, Scenario } from '@data/scenario/types';
-import space, { s, m } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import { useNavigation } from '@react-navigation/native';
@@ -24,57 +24,72 @@ function ChallengeBlock({ scenario, challenge, useTime }: { scenario: Scenario; 
   const [playerCard] = useSingleCard(head(challenge.card_discount), 'player');
   const investigator = investigatorCard ?? playerCard;
 
-  if (!investigator) {
-    return null;
-  }
-  const xpCost = scenario.xp_cost || 0;
-  const additionalXpCost = challenge.xp_cost;
-  const challengeCost = xpCost + additionalXpCost;
-  const basicXpCost = xpCost;
-  const challengeDiscountCost = xpCost + additionalXpCost;
+  const scenarioTypeText = () => {
+    if (!investigator?.name) {
+      return scenario.custom ?
+        t`Fan-Made Challenge Scenario by ${scenario.custom.creator}` :
+        t`Challenge Scenario`;
+    }
+
+    return scenario.custom ?
+      t`${investigator.name} Fan-Made Challenge Scenario by ${scenario.custom.creator}` :
+      t`${investigator.name} Challenge Scenario`
+  };
+
+  const costSection = () => {
+    const xpCost = scenario.xp_cost || 0;
+    const additionalXpCost = challenge.xp_cost || 0;
+    const challengeCost = xpCost + additionalXpCost;
+    const challengeDiscountCost = xpCost + additionalXpCost;
+
+    // if no investigator, just show base cost
+    if (!investigator) {
+      return (
+        <Text style={[typography.small, typography.light, space.paddingTopS]}>
+          {useTime ? t`Time cost: ${xpCost}` : t`Experience cost: ${xpCost}`}
+        </Text>
+      );
+    }
+    // if investigatorCard exists
+    if (!!investigatorCard) {
+      return useTime ? (
+        <>
+          <Text style={[typography.small, typography.light, space.paddingTopS]}>
+            {t`Time cost: ${xpCost}`}
+          </Text>
+          <Text style={[typography.small, typography.light, space.paddingTopS]}>
+            {t`Additional experience cost for ${investigator.name}: ${additionalXpCost}`}
+          </Text>
+        </>
+      ) : (
+        <Text style={[typography.small, typography.light, space.paddingTopS]}>
+          {t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator`}
+        </Text>
+      );
+    }
+    // fallback for playerCard only
+    return useTime ? (
+      <>
+        <Text style={[typography.small, typography.light, space.paddingTopS]}>
+          {t`Time cost: ${xpCost}`}
+        </Text>
+        <Text style={[typography.small, typography.light, space.paddingTopS]}>
+          {t`Additional experience cost for ${investigator.name}: ${additionalXpCost}`}
+        </Text>
+      </>
+    ) : (
+      <Text style={[typography.small, typography.light, space.paddingTopS]}>
+        {t`Experience cost: ${xpCost} for decks that include ${investigator.name}, ${challengeDiscountCost} for each other player`}
+      </Text>
+    );
+  };
+
   return (
     <View style={styles.flex}>
       <Text style={[typography.small, space.paddingTopS]}>
-        { scenario.custom ?
-          t`${investigator.name} Fan-Made Challenge Scenario by ${scenario.custom.creator}` :
-          t`${investigator.name} Challenge Scenario`
-        }
+        {scenarioTypeText()}
       </Text>
-      { !!investigatorCard ? (
-        <>
-          { useTime ? (
-            <>
-              <Text style={[typography.small, typography.light, space.paddingTopS]}>
-                { t`Time cost: ${xpCost}` }
-              </Text>
-              <Text style={[typography.small, typography.light, space.paddingTopS]}>
-                { t`Additional experience cost for ${investigator.name}: ${additionalXpCost}` }
-              </Text>
-            </>
-          ) : (
-            <Text style={[typography.small, typography.light, space.paddingTopS]}>
-              { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
-            </Text>
-          ) }
-        </>
-      ) : (
-        <>
-          { useTime ? (
-            <>
-              <Text style={[typography.small, typography.light, space.paddingTopS]}>
-                { t`Time cost: ${xpCost}` }
-              </Text>
-              <Text style={[typography.small, typography.light, space.paddingTopS]}>
-                { t`Additional experience cost for ${investigator.name}: ${additionalXpCost}` }
-              </Text>
-            </>
-          ) : (
-            <Text style={[typography.small, typography.light, space.paddingTopS]}>
-              { t`Experience cost: ${basicXpCost} for decks that include ${investigator.name}, ${challengeDiscountCost} for each other player` }
-            </Text>
-          ) }
-        </>
-      )}
+      {costSection()}
     </View>
   );
 }
