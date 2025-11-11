@@ -329,6 +329,10 @@ function TarotCardReadingView() {
     const alreadyDrawn = new Set(map(tarotCards, tc => tc.id));
     const allTarotCards = filter(shuffle(values(getTarotCards())), tc => !alreadyDrawn.has(tc.id));
     const cards = take(allTarotCards, 1)
+    if (cards.length === 0) {
+      // No more cards to draw
+      return;
+    }
     setTarotCards([
       ...(tarotCards || []),
       ...cards,
@@ -337,6 +341,10 @@ function TarotCardReadingView() {
   }, [setTarotCards, setReversed, tarotCards]);
   const scenarioNames = useScenarioNames();
   const onInvert = readingType === 'custom' || readingType === 'choice' || readingType === 'destiny' ? setReversed : undefined;
+  const allCardsDrawn = useMemo(() => {
+    const allTarotCards = values(getTarotCards());
+    return tarotCards.length >= allTarotCards.length;
+  }, [tarotCards]);
 
 
   const [correctNumberReversed, correctReversedMessage] = useMemo(() => {
@@ -495,6 +503,8 @@ function TarotCardReadingView() {
               icon="addcard"
               title={t`Draw`}
               onPress={onDrawCustom}
+              disabled={allCardsDrawn}
+              color={allCardsDrawn ? 'light_gray' : 'default'}
             />
           </View>
         )}
