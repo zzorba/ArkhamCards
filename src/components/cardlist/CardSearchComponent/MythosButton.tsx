@@ -1,20 +1,17 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  StyleSheet,
-  Pressable,
   Platform,
+  StyleSheet,
   View,
+  Pressable,
 } from 'react-native';
 import Animated, { interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-
-import AppIcon from '@icons/AppIcon';
 import { AnimatedArkhamIcon } from '@icons/ArkhamIcon';
 import { toggleMythosMode } from '@components/filter/actions';
 import { AppState, getMythosMode } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { useEffectUpdate } from '@components/core/hooks';
-import { s } from '@styles/space';
 
 const SIZE = 32;
 
@@ -23,7 +20,7 @@ interface Props extends Record<string, unknown> {
 }
 
 const WIDTH = SIZE * 2 + 12;
-const HEIGHT = SIZE + 6;
+const HEIGHT = SIZE + 4;
 
 function MythosButton({ filterId }: Props) {
   const { colors } = useContext(StyleContext);
@@ -60,22 +57,20 @@ function MythosButton({ filterId }: Props) {
   }, [light, dark]);
   const movingCircleX = useAnimatedStyle(() => {
     return {
-      transform: [{ translateX: interpolate(toggleAnim.value, [0, 1], [0, SIZE + 2.5]) }],
+      transform: [{ translateX: interpolate(toggleAnim.value, [0, 1], [2, SIZE + 6]) }],
     };
   });
   return (
     <View style={styles.container}>
-      <Pressable onPress={onPress}>
-        <View style={[styles.buttonContainer, { borderColor: backgroundColor }]}>
-          <View style={styles.buttonFrame}>
-            <AppIcon name="mythos_button_frame" size={SIZE + 5} color={backgroundColor} />
-          </View>
+      <Pressable onPress={onPress} style={{ overflow: 'visible' }}>
+        <View style={styles.buttonContainer}>
+          <View style={[styles.buttonFrame, { borderColor: backgroundColor }]} />
           <Animated.View style={[
             styles.circle,
             { backgroundColor },
             movingCircleX,
           ]} />
-          <View style={styles.iconWrapper}>
+          <View style={[styles.iconWrapper, { top: 2, left: 2 }]}>
             <Animated.Text style={investigatorStyle} allowFontScaling={false}>
               <AnimatedArkhamIcon
                 name={'per_investigator'}
@@ -83,7 +78,7 @@ function MythosButton({ filterId }: Props) {
               />
             </Animated.Text>
           </View>
-          <View style={styles.iconWrapper}>
+          <View style={[styles.iconWrapper, { top: 2, right: 2 }]}>
             <Animated.Text style={mythosStyle} allowFontScaling={false}>
               <AnimatedArkhamIcon
                 name={'auto_fail'}
@@ -97,23 +92,22 @@ function MythosButton({ filterId }: Props) {
   );
 }
 
-const LEFT_MARGIN = Platform.OS === 'android' ? s : 0;
-MythosButton.WIDTH = WIDTH + LEFT_MARGIN;
-MythosButton.HEIGHT = HEIGHT;
+const PADDING = 2;
+MythosButton.WIDTH = WIDTH + (PADDING * 2);
+MythosButton.HEIGHT = HEIGHT + (PADDING * 2);
 
 export default MythosButton;
 
 const styles = StyleSheet.create({
   container: {
-    width: WIDTH,
-    height: HEIGHT,
+    width: WIDTH + (PADDING * 2),
+    height: HEIGHT + (PADDING * 2),
     position: 'relative',
     marginLeft: 0,
-    marginTop: Platform.OS === 'android' ? 8 : 0,
-    marginRight: Platform.OS === 'android' ? 4 : 0,
+    marginTop: Platform.OS === 'android' ? 8 : PADDING,
+    marginRight: Platform.OS === 'android' ? 4 : PADDING,
     marginBottom: 8,
-    paddingTop: 2,
-    paddingLeft: 2,
+    padding: PADDING,
     overflow: 'visible',
   },
   iconWrapper: {
@@ -123,29 +117,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 0,
+    position: 'absolute',
   },
   circle: {
     borderRadius: SIZE / 2,
     width: SIZE,
     height: SIZE,
     position: 'absolute',
-    top: 1,
-    left: 1,
+    top: 2,
   },
   buttonFrame: {
     position: 'absolute',
-    top: -2,
-    left: -2,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderWidth: 1,
+    borderRadius: (SIZE + 4) / 2,
+    overflow: 'visible',
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     position: 'relative',
-    width: SIZE * 2 + 5,
-    height: SIZE + 4,
-    paddingTop: 1,
-    paddingLeft: 1,
-    paddingRight: 1,
+    width: SIZE * 2 + 4 * 2,
+    height: SIZE + 2 * 2,
     overflow: 'visible',
   },
 });
