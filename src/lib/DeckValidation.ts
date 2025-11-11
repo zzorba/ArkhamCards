@@ -441,7 +441,7 @@ export default class DeckValidation {
       if (atleast) {
         if (atleast.factions && atleast.min) {
           var faction_count = 0;
-          forEach(this.deck_options_counts[i].atleast, (value) => {
+          forEach(this.deck_options_counts[i].atleast, (value, key) => {
             if (value >= atleast.min) {
               faction_count++;
             }
@@ -451,6 +451,7 @@ export default class DeckValidation {
             if (error) {
               this.problem_list.push(error);
             }
+
             return {
               reason: INVESTIGATOR_PROBLEM,
               investigatorReason: "atleast",

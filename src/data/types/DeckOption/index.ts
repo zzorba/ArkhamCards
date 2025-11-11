@@ -36,6 +36,7 @@ export function localizeDeckOptionError(error?: string): undefined | string {
     'No permanents except story and signature permanents': t`No permanents except story and signature permanents`,
     'You cannot have more than 5 Survivor cards.': t`You cannot have more than 5 Survivor cards.`,
     'You cannot have more than 5 Mystic cards.': t`You cannot have more than 5 Mystic cards.`,
+    'You must have at least 6 cards from each faction.': t`You must have at least 6 cards from each faction.`,
   };
   return LOCALIZED_OPTIONS[error] || error;
 }
@@ -356,6 +357,9 @@ export class DeckOptionQueryBuilder {
     isUpgrade?: boolean,
     negate?: boolean
   ): Brackets | undefined {
+    if (this.option.ignore_match) {
+      return undefined;
+    }
     // Special logic since the stuff can be removed on this one.
     if (this.option.dynamic_id === ON_YOUR_OWN_CODE) {
       return combineQueriesOpt([ON_YOUR_OWN_RESTRICTION], 'and', negate ?? !!this.option.not);

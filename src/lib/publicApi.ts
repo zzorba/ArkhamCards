@@ -403,9 +403,11 @@ export const checkForPendingCards = async function(
       canonizeResults: false,
     });
     const serverCache = cacheResponse?.data.all_card_updated[0];
+    console.log('[DEBUG] serverCache:', serverCache);
     if (cache?.lastModified && cache?.lastModifiedTranslation) {
       VERBOSE && console.time('cache-check');
       const cardCount = await cards.count();
+      console.log('[DEBUG] Local card count:', cardCount);
       VERBOSE && console.timeEnd('cache-check');
       if (
         serverCache.card_count === cardCount &&
@@ -421,6 +423,10 @@ export const checkForPendingCards = async function(
     const lastServerUpdate = new Date(serverCache.cards_updated_at);
     const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
     const possiblePartialSync = !!lastSynced && lastSynced > oneHourAgo;
+    console.log('[DEBUG] cache?.cardCount:', cache?.cardCount);
+    console.log('[DEBUG] serverCache.card_count:', serverCache.card_count);
+    console.log('[DEBUG] missingCardCount:', Math.max((serverCache.card_count ?? 0) - (cache?.cardCount ?? 0), 0));
+    console.log('[DEBUG] possiblePartialSync:', possiblePartialSync);
     return {
       missingCardCount: Math.max((serverCache.card_count ?? 0) - (cache?.cardCount ?? 0), 0),
       lastSynced,

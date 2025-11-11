@@ -25,7 +25,7 @@ function label(type: 'health' | 'sanity', theCount?: number) {
     return type === 'health' ? t`Health: none` : t`Sanity: none`;
   }
 
-  const count = theCount === -2 ? '*' : `${theCount}`;
+  const count = theCount === -3 || theCount === -2 ? '*' : `${theCount}`;
   return type === 'health' ? t`Health: ${count}` : t`Sanity: ${count}`;
 }
 

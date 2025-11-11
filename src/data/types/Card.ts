@@ -112,6 +112,9 @@ function arkham_num(value: number | null | undefined) {
     return 'X';
   }
   if (value === -3) {
+    return '*';
+  }
+  if (value === -4) {
     return '?';
   }
   return `${value}`;
@@ -1617,12 +1620,12 @@ export default class Card {
     data: TranslationData
   ): Card {
     const translation = Card.gqlTextFields(card, data);
-    const deck_requirements = card.deck_requirements
-      ? DeckRequirement.parse(card.deck_requirements)
+    const deck_requirements = card.simple_deck_requirements
+      ? DeckRequirement.parse(card.simple_deck_requirements)
       : null;
 
-    const side_deck_requirements = card.side_deck_requirements
-      ? DeckRequirement.parse(card.side_deck_requirements)
+    const side_deck_requirements = card.simple_side_deck_requirements
+      ? DeckRequirement.parse(card.simple_side_deck_requirements)
       : null;
 
     if (card.code === '03004') {
