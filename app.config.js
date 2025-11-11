@@ -70,6 +70,8 @@ module.exports = {
       'assets/*.jpeg',
       'assets/*.svg',
       'assets/*.json',
+      'assets/generated/*.db',
+      'assets/generated/*.txt',
     ],
     ios: {
       bundleIdentifier: 'com.arkhamcards.ArkhamCards',
@@ -92,7 +94,7 @@ module.exports = {
         'android.permission.RECORD_AUDIO',
         'android.permission.MODIFY_AUDIO_SETTINGS',
       ],
-      versionCode: 4195518,
+      versionCode: 4195522,
     },
     plugins: [
       [

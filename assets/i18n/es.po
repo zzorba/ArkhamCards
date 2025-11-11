@@ -787,19 +787,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -2447,16 +2447,6 @@ msgstr "Por defecto (${ systemLanguage })"
 
 msgid "Download language cards"
 msgstr "Descargar cartas traducidas"
-
-#, javascript-format
-msgid ""
-"Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${ lang })?\n"
-"\n"
-"You can override your language preference for this app in Settings."
-msgstr ""
-"¿Quieres descargar actualizaciones de las cartas desde ArkhamDB para que aparezcan en el idioma por defecto de tu teléfono (${ lang })?\n"
-"\n"
-"Puedes sobrescribir el idioma para esta aplicación en Ajustes."
 
 msgid "Not now"
 msgstr "Ahora no"
@@ -6313,6 +6303,18 @@ msgstr "Escenario desafío fanmade creado por ${ scenario.custom.creator }"
 #, javascript-format
 msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr "Coste de experiencia: ${ xpCost } para mazos que incluyan ${ investigator.name }, ${ challengeDiscountCost } para el resto"
+
+msgid "You must have at least 6 cards from each faction."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${ lang })?\n"
+"\n"
+"You can override your language preference for this app in Settings.\n"
+"\n"
+"This will use about 25mb of storage."
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

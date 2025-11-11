@@ -114,6 +114,7 @@ import HeaderTitle from '@components/core/HeaderTitle';
 import MyProvider from '@app/MyProvider';
 import * as Sentry from '@sentry/react-native';
 import { maybeSaveAutomaticBackup } from '@app/autoBackup';
+import { useLocalizedString } from '@lib/i18n/useLocalizedString';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState, getThemeOverride } from '@reducers';
@@ -145,6 +146,7 @@ function useNavigatorTheme(includeBackTitle = true): {
   colors: ThemeColors;
   screenOptions: NativeStackNavigationOptions;
  } {
+  const backTitle = useLocalizedString(() => t`Back`);
   const themeOverride = useSelector((state: AppState) => getThemeOverride(state));
   const darkMode = !themeOverride ? Appearance.getColorScheme() === 'dark' : themeOverride === 'dark';
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
@@ -162,7 +164,7 @@ function useNavigatorTheme(includeBackTitle = true): {
         backgroundColor: colors.L30,
       },
       statusBarStyle: darkMode ? 'light' : 'dark',
-      ...(includeBackTitle ? { headerBackTitle: t`Back` } : {}),
+      ...(includeBackTitle ? { headerBackTitle: backTitle } : {}),
     },
   };
 }
@@ -642,6 +644,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
 
 function CardsStackNavigator() {
   const { screenOptions } = useNavigatorTheme();
+  const playerCardsTitle = useLocalizedString(() => t`Player Cards`);
 
   return (
     <CardsStack.Navigator screenOptions={screenOptions}>
@@ -649,7 +652,7 @@ function CardsStackNavigator() {
         name="BrowseCards"
         component={BrowseCardsView}
         options={{
-          title: t`Player Cards`,
+          title: playerCardsTitle,
         }}
       />
       {renderCommonScreens(CardsStack)}
@@ -658,6 +661,8 @@ function CardsStackNavigator() {
 }
 
 function DecksStackNavigator() {
+  const backTitle = useLocalizedString(() => t`Back`);
+  const decksTitle = useLocalizedString(() => t`Decks`);
   const themeOverride = useSelector((state: AppState) => getThemeOverride(state));
   const darkMode = !themeOverride ? Appearance.getColorScheme() === 'dark' : themeOverride === 'dark';
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
@@ -674,7 +679,7 @@ function DecksStackNavigator() {
         headerStyle: {
           backgroundColor: colors.background,
         },
-        headerBackTitle: t`Back`,
+        headerBackTitle: backTitle,
         statusBarStyle: darkMode ? 'light' : 'dark',
       }}
     >
@@ -682,7 +687,7 @@ function DecksStackNavigator() {
         name="MyDecks"
         component={MyDecksView}
         options={{
-          title: t`Decks`,
+          title: decksTitle,
         }}
       />
       {renderCommonScreens(DecksStack)}
@@ -691,6 +696,8 @@ function DecksStackNavigator() {
 }
 
 function CampaignsStackNavigator() {
+  const backTitle = useLocalizedString(() => t`Back`);
+  const campaignsTitle = useLocalizedString(() => t`Campaigns`);
   const themeOverride = useSelector((state: AppState) => getThemeOverride(state));
   const darkMode = !themeOverride ? Appearance.getColorScheme() === 'dark' : themeOverride === 'dark';
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
@@ -707,7 +714,7 @@ function CampaignsStackNavigator() {
         headerStyle: {
           backgroundColor: colors.L30,
         },
-        headerBackTitle: t`Back`,
+        headerBackTitle: backTitle,
         statusBarStyle: darkMode ? 'light' : 'dark',
       }}
     >
@@ -715,7 +722,7 @@ function CampaignsStackNavigator() {
         name="MyCampaigns"
         component={MyCampaignsView}
         options={{
-          title: t`Campaigns`,
+          title: campaignsTitle,
         }}
       />
       {renderCommonScreens(CampaignsStack)}
@@ -724,6 +731,7 @@ function CampaignsStackNavigator() {
 }
 
 function SettingsStackNavigator() {
+  const settingsTitle = useLocalizedString(() => t`Settings`);
   const themeOverride = useSelector((state: AppState) => getThemeOverride(state));
   const darkMode = !themeOverride ? Appearance.getColorScheme() === 'dark' : themeOverride === 'dark';
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
@@ -747,7 +755,7 @@ function SettingsStackNavigator() {
         name="Settings"
         component={SettingsView}
         options={{
-          title: t`Settings`,
+          title: settingsTitle,
         }}
       />
       {renderCommonScreens(SettingsStack)}
@@ -756,6 +764,10 @@ function SettingsStackNavigator() {
 }
 
 function TabNavigatorInner() {
+  const cardsLabel = useLocalizedString(() => t`Cards`);
+  const decksLabel = useLocalizedString(() => t`Decks`);
+  const campaignsLabel = useLocalizedString(() => t`Campaigns`);
+  const settingsLabel = useLocalizedString(() => t`Settings`);
   const dispatch = useDispatch();
   const themeOverride = useSelector((state: AppState) => getThemeOverride(state));
   const system = !themeOverride;
@@ -824,22 +836,22 @@ function TabNavigatorInner() {
       <Tab.Screen
         name="CardsTab"
         component={CardsStackNavigator}
-        options={{ tabBarLabel: t`Cards` }}
+        options={{ tabBarLabel: cardsLabel }}
       />
       <Tab.Screen
         name="DecksTab"
         component={DecksStackNavigator}
-        options={{ tabBarLabel: t`Decks` }}
+        options={{ tabBarLabel: decksLabel }}
       />
       <Tab.Screen
         name="CampaignsTab"
         component={CampaignsStackNavigator}
-        options={{ tabBarLabel: t`Campaigns` }}
+        options={{ tabBarLabel: campaignsLabel }}
       />
       <Tab.Screen
         name="SettingsTab"
         component={SettingsStackNavigator}
-        options={{ tabBarLabel: t`Settings` }}
+        options={{ tabBarLabel: settingsLabel }}
       />
     </Tab.Navigator>
   );
@@ -859,6 +871,8 @@ export default function AppNavigator({ store, navigationIntegration }: {
 }
 
 function RootStackNavigator() {
+  const backTitle = useLocalizedString(() => t`Back`);
+  const newDeckTitle = useLocalizedString(() => t`New Deck`);
   const themeOverride = useSelector((state: AppState) => getThemeOverride(state));
   const darkMode = !themeOverride ? Appearance.getColorScheme() === 'dark' : themeOverride === 'dark';
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
@@ -875,7 +889,7 @@ function RootStackNavigator() {
         headerStyle: {
           backgroundColor: colors.L30,
         },
-        headerBackTitle: t`Back`,
+        headerBackTitle: backTitle,
         statusBarStyle: darkMode ? 'light' : 'dark',
       }}
     >
@@ -893,7 +907,7 @@ function RootStackNavigator() {
         name="Deck.New"
         component={NewDeckView}
         options={{
-          title: t`New Deck`,
+          title: newDeckTitle,
         }}
       />
       <RootStack.Screen

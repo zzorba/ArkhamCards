@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Platform, View, Pressable, UIManager, Text } from 'react-native';
-import { map, flatMap, filter, find, takeWhile } from 'lodash';
+import { map, filter, find } from 'lodash';
 import { t, c } from 'ttag';
 
 import DraggableList, { DraggableListRenderInfo } from '@components/core/DraggableList';

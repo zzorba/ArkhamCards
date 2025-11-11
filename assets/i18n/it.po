@@ -2447,16 +2447,6 @@ msgstr "Predefinito (${ systemLanguage })"
 msgid "Download language cards"
 msgstr "Scarica le carte nella lingua"
 
-#, javascript-format
-msgid ""
-"Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${ lang })?\n"
-"\n"
-"You can override your language preference for this app in Settings."
-msgstr ""
-"Vuoi scaricare le carte aggiornate da ArkhamDB in modo che corrispondano alla lingua preferita del tuo telefono (${ lang })?\n"
-"\n"
-"Puoi sovrascrivere le preferenze della lingua per questa App in Impostazioni."
-
 msgid "Not now"
 msgstr "Non adesso"
 
@@ -6305,6 +6295,18 @@ msgstr "Scenario Fan-Made di ${ scenario.custom.creator }"
 #, javascript-format
 msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr "Costo dell'esperienza: ${ xpCost } per i mazzi che includono ${ investigator.name }, ${ challengeDiscountCost } per ogni altro giocatore"
+
+msgid "You must have at least 6 cards from each faction."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${ lang })?\n"
+"\n"
+"You can override your language preference for this app in Settings.\n"
+"\n"
+"This will use about 25mb of storage."
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

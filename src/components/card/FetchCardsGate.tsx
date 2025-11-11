@@ -129,7 +129,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
           const lang = localizedName(getSystemLanguage());
           Alert.alert(
             t`Download language cards`,
-            t`Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${lang})?\n\nYou can override your language preference for this app in Settings.`,
+            t`Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${lang})?\n\nYou can override your language preference for this app in Settings.\n\nThis will use about 25mb of storage.`,
             [
               { text: t`Not now`, style: 'cancel' },
               { text: t`Download now`, onPress: doFetch },

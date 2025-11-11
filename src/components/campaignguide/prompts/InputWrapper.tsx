@@ -11,7 +11,7 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import Card from '@data/types/Card';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
-import ScenarioGuideContext from '../ScenarioGuideContext';
+import { useScenarioUndo } from '../ScenarioGuideContext';
 import { throttle } from 'lodash';
 import { ExtraStepPaddingProvider, StepPaddingContext } from '../StepPaddingContext';
 
@@ -140,10 +140,8 @@ export default function InputWrapper({
   noDivider,
 }: Props) {
   const { colors, borderStyle, shadow, width } = useContext(StyleContext);
-  const { scenarioState } = useContext(ScenarioGuideContext);
-  const undo = useMemo(() => throttle(() => {
-    scenarioState.undo();
-  }, 500, { leading: true, trailing: false }), [scenarioState]);
+  const undoFn = useScenarioUndo();
+  const undo = useMemo(() => throttle(undoFn, 500, { leading: true, trailing: false }), [undoFn]);
   const undoButton = editable && !titleButton && (!title || !titleNode) ? (
     <ActionButton
       color="light"

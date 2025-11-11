@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
 
 import ChooseOneListComponent from './ChooseOneListComponent';
-import ScenarioGuideContext from '../ScenarioGuideContext';
+import ScenarioGuideContext, { useScenarioUndo } from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { DisplayChoiceWithId } from '@data/scenario';
@@ -45,9 +45,8 @@ export default function ChooseOnePrompt({
     defaultChoice ? findIndex(choices, item => item.id === defaultChoice) : undefined
   );
 
-  const undo = useMemo(() => throttle(() => {
-    scenarioState.undo();
-  }, 500, { leading: true, trailing: false }), [scenarioState]);
+  const undoFn = useScenarioUndo();
+  const undo = useMemo(() => throttle(undoFn, 500, { leading: true, trailing: false }), [undoFn]);
   const save = useCallback(() => {
     if (currentSelectedChoice !== undefined) {
       scenarioState.setChoice(id, currentSelectedChoice);
