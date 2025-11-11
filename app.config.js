@@ -94,7 +94,7 @@ module.exports = {
         'android.permission.RECORD_AUDIO',
         'android.permission.MODIFY_AUDIO_SETTINGS',
       ],
-      versionCode: 4195518,
+      versionCode: 4195521,
     },
     plugins: [
       [

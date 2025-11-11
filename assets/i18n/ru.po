@@ -2203,19 +2203,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -2463,16 +2463,6 @@ msgstr "По умолчанию (${ systemLanguage })"
 
 msgid "Download language cards"
 msgstr "Загрузить переводы карт"
-
-#, javascript-format
-msgid ""
-"Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${ lang })?\n"
-"\n"
-"You can override your language preference for this app in Settings."
-msgstr ""
-"Хотите ли вы загрузить перевод карт из ArkhamDB, что бы он соответствовал языку вашего телефона (${ lang })?\n"
-"\n"
-"Вы можете изменить языковые предпочтения в любое время в Настройках."
 
 msgid "Not now"
 msgstr "Не сейчас"
@@ -6369,6 +6359,21 @@ msgid "Edit Name"
 msgstr ""
 
 msgid "Scenario results"
+msgstr ""
+
+msgid "Location Setup"
+msgstr ""
+
+msgid "You must have at least 6 cards from each faction."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${ lang })?\n"
+"\n"
+"You can override your language preference for this app in Settings.\n"
+"\n"
+"This will use about 25mb of storage."
 msgstr ""
 
 msgctxt "investigator"

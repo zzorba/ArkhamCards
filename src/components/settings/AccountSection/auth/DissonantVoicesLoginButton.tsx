@@ -46,11 +46,11 @@ export default function DissonantVoicesLoginButton({ last, showAlert }: Props) {
         description={t`Dissonant Voices`}
         growControl
         control={
-          <DeckButton 
+          <DeckButton
             thin
             icon="world"
-            onPress={status ? logOutPressed : loginPressed} 
-            title={status ? t`Log out` : t`Log in`} 
+            onPress={status ? logOutPressed : loginPressed}
+            title={status ? t`Log out` : t`Log in`}
           />
         }
         loading={loading}

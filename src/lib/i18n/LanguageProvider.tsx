@@ -9,6 +9,7 @@ import { getAudioLangPreference, getLangChoice, hasDissonantVoices } from '@redu
 import { useMyProfile } from '@data/remote/hooks';
 import { User_Flag_Type_Enum } from '@generated/graphql/apollo-schema';
 import { changeLocale } from '@app/i18n';
+import { clearAssetCache } from '@lib/assetLoader';
 
 const NON_LOCALIZED_CARDS = new Set(['en', 'cs', 'vi']);
 const NON_ARKHAMDB_CARDS: { [key: string]: string | undefined } = { 'zh-cn': 'zh' };
@@ -68,9 +69,6 @@ export default function LanguageProvider({ children }: Props) {
     }
     const callback = (systemLang: string) => setSystemLang(systemLang);
 
-    // Initial loading of the language
-    changeLocale(lang);
-
     const sub = DeviceEventEmitter.addListener('langChange', callback);
     return () => {
       sub.remove();
@@ -78,10 +76,11 @@ export default function LanguageProvider({ children }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Load ttag translations when the app launches.
+  // Update ttag translations and clear asset cache when language changes
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    changeLocale(lang);
+    clearAssetCache();
+  }, [lang]);
 
   const hasDV = useSelector(hasDissonantVoices);
   const [profile] = useMyProfile(true);

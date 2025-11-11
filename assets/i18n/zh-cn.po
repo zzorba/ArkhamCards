@@ -2433,16 +2433,6 @@ msgstr "预设(${ systemLanguage })"
 msgid "Download language cards"
 msgstr "下载翻译卡牌"
 
-#, javascript-format
-msgid ""
-"Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${ lang })?\n"
-"\n"
-"You can override your language preference for this app in Settings."
-msgstr ""
-"你是否要从ArkhamDB下载符合你装置偏好语言(${ lang })的卡牌？\n"
-"\n"
-"你可以在此APP的设置中更改你的语言偏好。"
-
 msgid "Not now"
 msgstr "下次再说"
 
@@ -6237,6 +6227,21 @@ msgid "Edit Name"
 msgstr ""
 
 msgid "Scenario results"
+msgstr ""
+
+msgid "Location Setup"
+msgstr ""
+
+msgid "You must have at least 6 cards from each faction."
+msgstr ""
+
+#, javascript-format
+msgid ""
+"Would you like to download updated cards from ArkhamDB to match your phone's preferred language (${ lang })?\n"
+"\n"
+"You can override your language preference for this app in Settings.\n"
+"\n"
+"This will use about 25mb of storage."
 msgstr ""
 
 msgctxt "investigator"

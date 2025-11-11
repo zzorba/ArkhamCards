@@ -2,8 +2,6 @@ import * as FileSystem from 'expo-file-system/legacy';
 import { CardCache } from '@actions/types';
 import { Connection } from 'typeorm/browser';
 
-const DB_NAME = 'arkham4';
-
 export interface BundledDatabaseMetadata {
   schemaVersion?: number;
   cache?: CardCache;

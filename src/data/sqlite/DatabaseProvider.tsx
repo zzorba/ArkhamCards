@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 

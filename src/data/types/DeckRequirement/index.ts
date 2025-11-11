@@ -1,5 +1,4 @@
 import { Column } from 'typeorm/browser';
-import { filter, keys, map } from 'lodash';
 
 import CardRequirement from './CardRequirement';
 import ChoiceRequirement from './ChoiceRequirement';

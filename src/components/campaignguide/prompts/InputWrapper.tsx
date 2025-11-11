@@ -11,7 +11,7 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import Card from '@data/types/Card';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
-import ScenarioGuideContext, { useScenarioUndo } from '../ScenarioGuideContext';
+import { useScenarioUndo } from '../ScenarioGuideContext';
 import { throttle } from 'lodash';
 import { ExtraStepPaddingProvider, StepPaddingContext } from '../StepPaddingContext';
 
