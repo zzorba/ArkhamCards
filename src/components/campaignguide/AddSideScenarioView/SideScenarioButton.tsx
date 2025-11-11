@@ -24,11 +24,6 @@ function ChallengeBlock({ scenario, challenge, useTime }: { scenario: Scenario; 
   const [playerCard] = useSingleCard(head(challenge.card_discount), 'player');
   const investigator = investigatorCard ?? playerCard;
 
-  const xpCost = scenario.xp_cost || 0;
-  const additionalXpCost = challenge.xp_cost;
-  const challengeCost = xpCost + additionalXpCost;
-  const challengeDiscountCost = xpCost + additionalXpCost;
-
   const scenarioType = useMemo(() => {
     if (!!investigator?.name) {
       return scenario.custom ?
@@ -42,6 +37,11 @@ function ChallengeBlock({ scenario, challenge, useTime }: { scenario: Scenario; 
   }, [investigator, scenario]);
 
   const costSection = useMemo(() => {
+    const xpCost = scenario.xp_cost || 0;
+    const additionalXpCost = challenge.xp_cost || 0;
+    const challengeCost = xpCost + additionalXpCost;
+    const challengeDiscountCost = xpCost + additionalXpCost;
+
     // if no investigator, just show base cost
     if (!investigator) {
       return (
@@ -82,7 +82,7 @@ function ChallengeBlock({ scenario, challenge, useTime }: { scenario: Scenario; 
         {t`Experience cost: ${xpCost} for decks that include ${investigator.name}, ${challengeDiscountCost} for each other player`}
       </Text>
     );
-  }, [investigator, investigatorCard, useTime, typography, xpCost, challengeDiscountCost, challengeCost, additionalXpCost]);
+  }, [scenario, challenge, investigator, investigatorCard, useTime, typography]);
 
   return (
     <View style={styles.flex}>
