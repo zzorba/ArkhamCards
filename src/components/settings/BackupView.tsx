@@ -10,7 +10,7 @@ import {
 import { format } from 'date-fns';
 
 import { forEach, map, values } from 'lodash';
-import RNFS from 'react-native-fs';
+import * as FileSystem from 'expo-file-system/legacy';
 import { pick, keepLocalCopy, types, errorCodes, isErrorWithCode } from '@react-native-documents/picker'
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -33,9 +33,10 @@ export interface BackupProps {
 
 async function safeReadFile(file: string): Promise<string> {
   try {
-    return await RNFS.readFile(file, 'utf8');
+    return await FileSystem.readAsStringAsync(file, { encoding: FileSystem.EncodingType.UTF8 });
   } catch (error) {
-    return await RNFS.readFile(file, 'ascii');
+    // Fallback for files with encoding issues
+    return await FileSystem.readAsStringAsync(file);
   }
 }
 

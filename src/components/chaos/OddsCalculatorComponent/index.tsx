@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useState } from 'react';
 import { filter, head, find, flatMap, forEach, groupBy, sortBy, map, range, sumBy, values, reverse, tail, partition, maxBy } from 'lodash';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { c, msgid, ngettext, t } from 'ttag';
-import KeepAwake from 'react-native-keep-awake';
+import { useKeepAwake } from 'expo-keep-awake';
 
 import VariableTokenInput from './VariableTokenInput';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -1085,6 +1085,7 @@ export default function OddsCalculatorComponent({
   const [difficultyButton, difficultyDialog] = useDifficultyOverrideButton({ actions, chaosBagResults, campaignId: campaign.id });
   const [tarotButton, tarotDialog] = useTarotCardDialog({ actions, chaosBagResults, campaignId: campaign.id });
   const [sealButton, sealDialog] = useSealTokenButton({ actions, chaosBag, chaosBagResults, campaignId: campaign.id });
+  useKeepAwake();
   if (loading) {
     return (
       <LoadingSpinner />
@@ -1092,7 +1093,6 @@ export default function OddsCalculatorComponent({
   }
   return (
     <View style={[styles.container, backgroundStyle]}>
-      <KeepAwake />
       <ScrollView style={[styles.container, backgroundStyle]} overScrollMode="never" bounces={false}>
         { campaign.id.campaignId !== FIXED_CHAOS_BAG_CAMPAIGN_ID.campaignId ? (
           <View style={space.paddingS}>

@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useLayoutEffect, useMemo } from 'react'
 import { Text, View, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
+import { useKeepAwake } from 'expo-keep-awake';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import { Slots, SortType, DeckId, CampaignId } from '@actions/types';
@@ -18,7 +19,6 @@ import { ParsedDeckResults, useParsedDeck } from '@components/deck/hooks';
 import { useInvestigatorChoice } from '@components/card/useSingleCard';
 import { useCampaignDeck } from '@data/hooks';
 import { NOTCH_BOTTOM_PADDING } from '@styles/sizes';
-import KeepAwake from 'react-native-keep-awake';
 import { updateCardSorts } from '@components/filter/actions';
 import { find } from 'lodash';
 import { DeckEditContext, ParsedDeckContextProvider, useChecklistCount, useDeckSlotCount } from '../DeckEditContext';
@@ -122,10 +122,9 @@ function DeckChecklistView({
       m * 2 + 22 * fontScale,
     ];
   }, [hasCheckedItems, typography, colors, fontScale, clearChecklist, width]);
-
+  useKeepAwake();
   return (
     <View style={[backgroundStyle, { flex: 1 }]}>
-      <KeepAwake />
       <DbCardResultList
         deck={parsedDeck.deckT}
         filterId={id.uuid}

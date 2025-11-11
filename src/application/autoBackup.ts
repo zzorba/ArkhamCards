@@ -1,29 +1,40 @@
 import { filter, map, maxBy, minBy, sortBy } from 'lodash';
 import { format as formatDate } from 'date-fns';
 
-import RNFS from 'react-native-fs';
+import * as FileSystem from 'expo-file-system/legacy';
 import { AppState, getBackupData } from '@reducers';
 
 export interface AutomaticBackupFile {
   date: Date;
-  file: RNFS.ReadDirItem;
+  file: {
+    name: string;
+    path: string;
+  };
 }
 
-const BACKUP_DIRECTORY = `${RNFS.DocumentDirectoryPath }/ArkhamCards/`;
+const BACKUP_DIRECTORY = `${FileSystem.documentDirectory}ArkhamCards/`;
 
 export async function loadBackupFiles(): Promise<AutomaticBackupFile[]> {
-  const contents = await RNFS.readDir(BACKUP_DIRECTORY);
-  return sortBy(map(
-    filter(contents, c => c.name.endsWith('.bkp')),
-    (file) => {
-      const date = new Date(Date.parse(file.name.replace('.bkp', '')));
-      return {
-        date,
-        file,
-      };
-    }
-  ), (backup) => -backup.date.getTime()
-  );
+  try {
+    const filenames = await FileSystem.readDirectoryAsync(BACKUP_DIRECTORY);
+    return sortBy(map(
+      filter(filenames, name => name.endsWith('.bkp')),
+      (name) => {
+        const date = new Date(Date.parse(name.replace('.bkp', '')));
+        return {
+          date,
+          file: {
+            name,
+            path: BACKUP_DIRECTORY + name,
+          },
+        };
+      }
+    ), (backup) => -backup.date.getTime()
+    );
+  } catch (e) {
+    // Directory doesn't exist yet
+    return [];
+  }
 }
 
 const MAX_BACKUPS = 14;
@@ -33,7 +44,7 @@ const MS_PER_DAY = 1000 * 60 * 60 * 24;
 export async function maybeSaveAutomaticBackup(state: AppState) {
   const now = Date.now();
   try {
-    await RNFS.mkdir(BACKUP_DIRECTORY);
+    await FileSystem.makeDirectoryAsync(BACKUP_DIRECTORY, { intermediates: true });
     const backups = await loadBackupFiles();
     const latestBackup = maxBy(backups, backup => backup.date.getTime());
     if (!latestBackup || (now - latestBackup.date.getTime()) > MS_PER_DAY * BACKUP_CADENCE_DAYS) {
@@ -43,15 +54,15 @@ export async function maybeSaveAutomaticBackup(state: AppState) {
         // Delete an old backup.
         const oldestBackup = minBy(backups, backup => backup.date.getTime());
         if (oldestBackup) {
-          await RNFS.moveFile(
-            oldestBackup.file.path,
-            newFilePath,
-          );
+          await FileSystem.moveAsync({
+            from: oldestBackup.file.path,
+            to: newFilePath,
+          });
         }
       }
       const backupData = getBackupData(state);
       const data = JSON.stringify(backupData);
-      await RNFS.writeFile(newFilePath, data);
+      await FileSystem.writeAsStringAsync(newFilePath, data);
     }
   } catch(e) {
     console.error(e.message || e);

@@ -187,7 +187,7 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
       onEndReached={onLoading}
       removeClippedSubviews
       getItemType={getItemType}
-      estimatedItemSize={estimatedItemSize}
+      // estimatedItemSize={estimatedItemSize}
       onEndReachedThreshold={onEndReachedThreshold ?? 0.5}
       // getItemLayout={heightForItem ? getItemLayout : undefined}
       ListHeaderComponent={renderRealHeader}

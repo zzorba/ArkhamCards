@@ -2,8 +2,8 @@ import React, { useCallback, useContext, useEffect, useMemo, useState } from 're
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, View, LayoutChangeEvent } from 'react-native';
 import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
 import { jt, t } from 'ttag';
-import KeyEvent from 'react-native-keyevent';
-import KeepAwake from 'react-native-keep-awake';
+import { useKeyEventListener } from 'expo-key-event';
+import { useKeepAwake } from 'expo-keep-awake';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import { useAppDispatch } from '@app/store';
@@ -227,32 +227,26 @@ export default function DrawChaosBagComponent(props: Props) {
     drawToken();
   }, [drawToken]);
 
-  useEffect(() => {
-    KeyEvent.onKeyUpListener((keyEvent: { keyCode: string; pressedKey: string; action: string }) => {
-      switch(keyEvent.pressedKey) {
-        case '1': drawToken(1); break;
-        case '2': drawToken(2); break;
-        case '3': drawToken(3); break;
-        case '4': drawToken(4); break;
-        case '5': drawToken(5); break;
-        case '6': drawToken(6); break;
-        case '7': drawToken(7); break;
-        case '8': drawToken(8); break;
-        case '9': drawToken(9); break;
-        case ' ':
-          handleDrawTokenPressed();
-          break;
-        case '\r':
-        case '\n':
-        case '0':
-          clearTokens(true);
-          break;
-      }
-    });
-    return () => {
-      KeyEvent.removeKeyUpListener();
-    };
-  }, [drawToken, handleDrawTokenPressed, clearTokens]);
+  useKeyEventListener((keyEvent) => {
+    switch(keyEvent.key) {
+      case '1': drawToken(1); break;
+      case '2': drawToken(2); break;
+      case '3': drawToken(3); break;
+      case '4': drawToken(4); break;
+      case '5': drawToken(5); break;
+      case '6': drawToken(6); break;
+      case '7': drawToken(7); break;
+      case '8': drawToken(8); break;
+      case '9': drawToken(9); break;
+      case ' ':
+        handleDrawTokenPressed();
+        break;
+      case 'Enter':
+      case '0':
+        clearTokens(true);
+        break;
+    }
+  }, true);
 
   const handleResetBlessCursePressed = useCallback(() => {
     dispatch(updateChaosBagResetBlessCurse(actions, campaignId, chaosBagResults));
@@ -517,9 +511,9 @@ export default function DrawChaosBagComponent(props: Props) {
       </View>
     );
   }, [drawnSpecialTokens, specialTokenSection, blurseSection, advancedSection]);
+  useKeepAwake();
   return (
     <SafeAreaView style={styles.container}>
-      <KeepAwake />
       <ScrollView bounces={false} style={[styles.containerBottom, { flexGrow: 1 }]} contentContainerStyle={[backgroundStyle, { flexGrow: 1 }]}>
         { !isConnected && !!campaignId.serverId && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
