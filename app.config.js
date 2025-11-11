@@ -70,6 +70,7 @@ module.exports = {
       'assets/*.jpeg',
       'assets/*.svg',
       'assets/*.json',
+      'assets/**/*.db',
     ],
     ios: {
       bundleIdentifier: 'com.arkhamcards.ArkhamCards',

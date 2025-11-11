@@ -12,6 +12,7 @@ import * as Sentry from '@sentry/react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 import { Image } from 'expo-image';
+import * as FileSystem from 'expo-file-system/legacy';
 
 import { CARD_SET_SCHEMA_VERSION, DISSONANT_VOICES_LOGIN, SYNC_DISMISS_ONBOARDING } from '@actions/types';
 import { clearDecks } from '@actions';
@@ -196,12 +197,71 @@ export default function DiagnosticsView() {
     Alert.alert(t`Database reset`, t`The card database has been reset.\n\nPlease close the app and restart it to trigger a full sync of card data.`);
   }, [dispatch]);
 
+  const cardsCache = useSelector((state: AppState) => state.cards.cache);
+  const cardsSchemaVersion = useSelector((state: AppState) => state.cards.schemaVersion);
+  const cardLang = useSelector((state: AppState) => state.cards.card_lang);
+
+  const exportDatabase = useCallback(async() => {
+    try {
+      // Find the database file - op-sqlite uses Library/default for the default location
+      const dbPath = `${FileSystem.documentDirectory}../Library/default/arkham4`;
+      const fileInfo = await FileSystem.getInfoAsync(dbPath);
+
+      if (fileInfo.exists) {
+        // Create metadata JSON file in Documents directory (Library isn't writable)
+        const metadata = {
+          schemaVersion: cardsSchemaVersion,
+          cache: cardsCache,
+          cardLang: cardLang || 'en',
+          exportedAt: new Date().toISOString(),
+        };
+
+        const metadataPath = `${FileSystem.documentDirectory}arkham4.metadata.json`;
+        await FileSystem.writeAsStringAsync(metadataPath, JSON.stringify(metadata, null, 2));
+
+        const sizeMB = (fileInfo.size / (1024 * 1024)).toFixed(2);
+
+        console.log('=====================================');
+        console.log('DATABASE EXPORT READY');
+        console.log('=====================================');
+        console.log('Database path:', dbPath);
+        console.log('Metadata path:', metadataPath);
+        console.log('Database size:', sizeMB, 'MB');
+        console.log('Schema version:', cardsSchemaVersion);
+        console.log('Card count:', cardsCache?.cardCount);
+        console.log('');
+        console.log('Copy and run this command:');
+        console.log(`./scripts/copy-bundled-db.sh "${dbPath}"`);
+        console.log('=====================================');
+
+        Alert.alert(
+          'Export Ready',
+          `Database exported! Check console logs for paths to copy.\n\nSize: ${sizeMB} MB`,
+          [{ text: 'OK' }]
+        );
+      } else {
+        Alert.alert(
+          'Database Not Found',
+          `No database exists yet at:\n${dbPath}\n\nPlease sync cards first:\n\n1. Go to Settings\n2. Tap "Check for card updates"\n3. Wait for sync to complete\n4. Return here to export`,
+          [{ text: 'OK' }]
+        );
+      }
+    } catch (error) {
+      console.error('Error exporting database:', error);
+      Alert.alert('Error', `Failed to export database: ${error}`);
+    }
+  }, [cardsCache, cardsSchemaVersion, cardLang]);
+
   const debugSection = useMemo(() => {
     if (!__DEV__) {
       return null;
     }
     return (
       <>
+        <SettingsItem
+          onPress={exportDatabase}
+          text={'Export database for bundling'}
+        />
         <SettingsItem
           onPress={crash}
           text={'Crash'}
@@ -221,7 +281,7 @@ export default function DiagnosticsView() {
         />
       </>
     );
-  }, [crash, setDissonantVoicesToken]);
+  }, [crash, setDissonantVoicesToken, exportDatabase]);
   const cardsLoading = useSelector((state: AppState) => state.cards.loading);
 
   return (
