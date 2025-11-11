@@ -10,7 +10,7 @@
 /credentials.json
 
 assets/generated/arkham4.db
-assets/generated/arkham4.metadata.json
+assets/generated/arkham4.metadata.txt
 
 */sentry.properties
 # VSCode

@@ -19,10 +19,10 @@ DB_DIR=$(dirname "$DB_PATH")
 
 # Derive metadata path (should be in Documents directory, up a few levels)
 CONTAINER_DIR=$(echo "$DB_DIR" | sed 's|/Library/default||')
-METADATA_PATH="$CONTAINER_DIR/Documents/arkham4.metadata.json"
+METADATA_JSON_PATH="$CONTAINER_DIR/Documents/arkham4.metadata.json"
 
 echo "Database path: $DB_PATH"
-echo "Metadata path: $METADATA_PATH"
+echo "Metadata path: $METADATA_JSON_PATH"
 
 # Check if files exist
 if [ ! -f "$DB_PATH" ]; then
@@ -30,8 +30,8 @@ if [ ! -f "$DB_PATH" ]; then
   exit 1
 fi
 
-if [ ! -f "$METADATA_PATH" ]; then
-  echo "Error: Metadata file not found at $METADATA_PATH"
+if [ ! -f "$METADATA_JSON_PATH" ]; then
+  echo "Error: Metadata file not found at $METADATA_JSON_PATH"
   exit 1
 fi
 
@@ -48,17 +48,17 @@ echo "Copying database..."
 cp "$DB_PATH" "$OUTPUT_DIR/arkham4.db"
 
 echo "Copying metadata..."
-cp "$METADATA_PATH" "$OUTPUT_DIR/arkham4.metadata.json"
+cp "$METADATA_JSON_PATH" "$OUTPUT_DIR/arkham4.metadata.txt"
 
 # Show file sizes
 DB_SIZE=$(du -h "$OUTPUT_DIR/arkham4.db" | cut -f1)
 echo ""
 echo "✅ Success!"
 echo "Database: $OUTPUT_DIR/arkham4.db ($DB_SIZE)"
-echo "Metadata: $OUTPUT_DIR/arkham4.metadata.json"
+echo "Metadata: $OUTPUT_DIR/arkham4.metadata.txt"
 echo ""
 echo "Next steps:"
 echo "1. Rebuild your app to include the bundled database"
 echo "2. On first launch, the database will be copied automatically"
 
-yarn prebuild --clean -y
+yarn prebuild --clean

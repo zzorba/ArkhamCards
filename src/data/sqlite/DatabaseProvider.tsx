@@ -63,7 +63,6 @@ class DatabaseProvider extends React.Component<Props, State> {
         const metadata = await loadBundledDatabaseIfNeeded(connection, this.props.langChoice);
         if (metadata) {
           // Database was loaded from bundled assets, set Redux state
-          console.log('✅ Loaded from bundled database - skipping card download');
           if (metadata.schemaVersion) {
             this.props.setSchemaVersion(metadata.schemaVersion);
           }
@@ -72,7 +71,7 @@ class DatabaseProvider extends React.Component<Props, State> {
           }
         }
       } catch (error) {
-        console.error('Error loading bundled database, will proceed with normal flow:', error);
+        console.error('Error loading bundled database:', error);
       }
       setTimeout(() => {
         if (theDatabase) {
