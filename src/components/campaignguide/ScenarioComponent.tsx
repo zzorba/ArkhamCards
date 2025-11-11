@@ -12,7 +12,7 @@ import {
 import { find, last } from 'lodash';
 
 import { t } from 'ttag';
-import KeepAwake from 'react-native-keep-awake';
+import { useKeepAwake } from 'expo-keep-awake';
 
 import COLORS from '@styles/colors';
 import CampaignGuideContext from './CampaignGuideContext';
@@ -266,7 +266,7 @@ export default function ScenarioComponent({ showLinkedScenario, standalone, foot
     // Check FAB visibility when content size changes
     setTimeout(() => checkFABVisibility(), 0);
   }, [setScrollViewHeight, checkFABVisibility]);
-
+  useKeepAwake();
   return (
     <KeyboardAvoidingView
       style={[styles.keyboardView, backgroundStyle]}
@@ -274,7 +274,6 @@ export default function ScenarioComponent({ showLinkedScenario, standalone, foot
       enabled
       keyboardVerticalOffset={100}
     >
-      <KeepAwake />
       <NarrationWrapper>
         <View style={{ position: 'relative' }}>
           <ScrollView

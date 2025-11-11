@@ -72,10 +72,11 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   return children(earnedXp + campaignLog.totalXp(investigator.code) - (spentXp[investigator.code] || 0));
 }
 
-function InvestigatorXpComponent({ investigator, campaignLog, width, resupplyPointsString }: { investigator: CampaignInvestigator; campaignLog: GuidedCampaignLog; width: number; resupplyPointsString: string | undefined }) {
+function InvestigatorXpComponent({ investigator, campaignLog, width, resupplyPointsString: resupplyPointsStringProp }: { investigator: CampaignInvestigator; campaignLog: GuidedCampaignLog; width: number; resupplyPointsString: string | undefined }) {
   const { typography } = useContext(StyleContext);
   const trauma = campaignLog.traumaAndCardData(investigator.code);
   const hasTrauma = (trauma.physical || 0) > 0 || (trauma.mental || 0) > 0;
+  const resupplyPointsString = resupplyPointsStringProp || '';
   const renderXpHeader = useCallback((xp: number) => {
     return () => (
       <CompactInvestigatorRow
