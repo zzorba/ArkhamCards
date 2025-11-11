@@ -12,7 +12,7 @@ import {
 
 import { ScrollView } from 'react-native-gesture-handler';
 import SnapCarousel from 'react-native-snap-carousel';
-import Animated from 'react-native-reanimated';
+import { type SharedValue } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { msgid, ngettext, t } from 'ttag';
 import { find, filter, map, slice, sortBy, sumBy } from 'lodash';
@@ -356,7 +356,7 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
     { item: card, index: itemIndex }: {
       item: Card | undefined;
       index: number;
-      animationValue?: Animated.SharedValue<number>;
+      animationValue?: SharedValue<number>;
     }
   ): React.ReactElement => {
     const attachment = card ? attachableCards[card.code] : undefined;
