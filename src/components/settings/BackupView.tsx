@@ -10,7 +10,7 @@ import {
 import { format } from 'date-fns';
 
 import { forEach, map, values } from 'lodash';
-import RNFS from 'react-native-fs';
+import * as FileSystem from 'expo-file-system/legacy';
 import { pick, keepLocalCopy, types, errorCodes, isErrorWithCode } from '@react-native-documents/picker'
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
@@ -32,10 +32,13 @@ export interface BackupProps {
 }
 
 async function safeReadFile(file: string): Promise<string> {
+  // Decode URI components (handle %20 etc)
+  const decodedPath = decodeURIComponent(file);
   try {
-    return await RNFS.readFile(file, 'utf8');
+    return await FileSystem.readAsStringAsync(decodedPath, { encoding: FileSystem.EncodingType.UTF8 });
   } catch (error) {
-    return await RNFS.readFile(file, 'ascii');
+    // Fallback for files with encoding issues
+    return await FileSystem.readAsStringAsync(decodedPath);
   }
 }
 
@@ -150,8 +153,8 @@ export default function BackupView({ safeMode }: BackupProps) {
         destination: 'cachesDirectory',
       });
 
-      // We got the file
-      const json = JSON.parse(await safeReadFile(localCopy.sourceUri));
+      // We got the file - read from the LOCAL copy, not the source
+      const json = JSON.parse(await safeReadFile(localCopy.localUri));
       const campaigns: Campaign[] = [];
       forEach(values(json.campaigns), campaign => {
         campaigns.push(campaignFromJson(campaign));

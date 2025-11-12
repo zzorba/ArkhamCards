@@ -5,7 +5,7 @@ import {
   Share as LegacyShare,
 } from 'react-native';
 import Share from 'react-native-share';
-import RNFS from 'react-native-fs';
+import * as FileSystem from 'expo-file-system/legacy';
 import base64 from 'react-native-base64';
 import utf8 from 'utf8';
 import { t } from 'ttag';
@@ -56,15 +56,15 @@ export async function saveFile(
     return;
   }
   if (Platform.OS === 'ios') {
-    const path = `${RNFS.CachesDirectoryPath}/${filename}.${extension}`;
-    await RNFS.writeFile(path, data, 'utf8');
+    const path = `${FileSystem.cacheDirectory}${filename}.${extension}`;
+    await FileSystem.writeAsStringAsync(path, data, { encoding: FileSystem.EncodingType.UTF8 });
     if (Platform.Version && parseInt(`${Platform.Version}`, 10) < 13) {
       await LegacyShare.share({
-        url: `file://${path}`,
+        url: path,
       });
     } else {
       await Share.open({
-        url: `file://${path}`,
+        url: path,
         saveToFiles: true,
         filename,
         title: filename,
