@@ -200,6 +200,8 @@ export default function DiagnosticsView() {
   const cardsCache = useSelector((state: AppState) => state.cards.cache);
   const cardsSchemaVersion = useSelector((state: AppState) => state.cards.schemaVersion);
   const cardLang = useSelector((state: AppState) => state.cards.card_lang);
+  const packs = useSelector((state: AppState) => state.packs.all);
+  const packsLastModified = useSelector((state: AppState) => state.packs.lastModified);
 
   const exportDatabase = useCallback(async() => {
     try {
@@ -214,6 +216,8 @@ export default function DiagnosticsView() {
           cache: cardsCache,
           cardLang: cardLang || 'en',
           exportedAt: new Date().toISOString(),
+          packs,
+          packsLastModified,
         };
 
         const metadataPath = `${FileSystem.documentDirectory}arkham4.metadata.txt`;
@@ -250,7 +254,7 @@ export default function DiagnosticsView() {
       console.error('Error exporting database:', error);
       Alert.alert('Error', `Failed to export database: ${error}`);
     }
-  }, [cardsCache, cardsSchemaVersion, cardLang]);
+  }, [cardsCache, cardsSchemaVersion, cardLang, packs, packsLastModified]);
 
   const debugSection = useMemo(() => {
     if (!__DEV__) {

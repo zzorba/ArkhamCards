@@ -1,13 +1,16 @@
 import * as FileSystem from 'expo-file-system/legacy';
 import { Asset } from 'expo-asset';
-import { CardCache } from '@actions/types';
+import { CardCache, Pack } from '@actions/types';
 import { Connection } from 'typeorm/browser';
+import { getSystemLanguage } from '@lib/i18n';
 
 export interface BundledDatabaseMetadata {
   schemaVersion?: number;
   cache?: CardCache;
   cardLang?: string;
   exportedAt?: string;
+  packs?: Pack[];
+  packsLastModified?: string;
 }
 
 /**
@@ -93,13 +96,23 @@ export async function loadBundledDatabaseIfNeeded(
       const sqlitePath = tempDbPath.replace(/^file:\/\//, '');
       await connection.query(`ATTACH DATABASE '${sqlitePath}' AS bundled`);
 
+      // Disable foreign key constraints temporarily to allow bulk insert
+      await connection.query('PRAGMA foreign_keys = OFF');
+
       // Copy all tables from bundled to main database
       // Use INSERT OR IGNORE to skip duplicates in case of partial previous load
       const tables = ['card', 'rule', 'taboo_set', 'faq_entry', 'encounter_set'];
 
       for (const table of tables) {
-        await connection.query(`INSERT OR IGNORE INTO ${table} SELECT * FROM bundled.${table}`);
+        try {
+          await connection.query(`INSERT OR IGNORE INTO ${table} SELECT * FROM bundled.${table}`);
+        } catch (tableError) {
+          console.error(`Error copying table ${table}:`, tableError);
+        }
       }
+
+      // Re-enable foreign key constraints
+      await connection.query('PRAGMA foreign_keys = ON');
 
       // Detach the bundled database
       await connection.query(`DETACH DATABASE bundled`);
@@ -130,8 +143,11 @@ export async function loadBundledDatabaseIfNeeded(
         metadata = JSON.parse(metadataContent);
 
         // Safety check: Only use bundled database if language matches
-        if (userLang && metadata.cardLang && userLang !== metadata.cardLang) {
-          console.log(`Language mismatch: user wants ${userLang}, bundled is ${metadata.cardLang} - will download cards instead`);
+        // Resolve 'system' to actual system language before comparison
+        const resolvedUserLang = userLang === 'system' ? getSystemLanguage() : userLang;
+
+        if (resolvedUserLang && metadata.cardLang && resolvedUserLang !== metadata.cardLang) {
+          console.log(`Language mismatch: user wants ${resolvedUserLang}, bundled is ${metadata.cardLang} - clearing database`);
           // Clear the database since it's the wrong language
           const tables = ['card', 'rule', 'taboo_set', 'faq_entry', 'encounter_set'];
           for (const table of tables) {
@@ -147,7 +163,7 @@ export async function loadBundledDatabaseIfNeeded(
     // Return metadata (or empty object) to signal successful load
     return metadata;
   } catch (error) {
-    console.error('Error copying bundled database:', error);
+    console.error('Error loading bundled database:', error);
     // Return null so app continues with normal download flow
     return null;
   }

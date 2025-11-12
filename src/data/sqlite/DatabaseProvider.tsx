@@ -8,7 +8,7 @@ import DatabaseContext, { PlayerCards } from './DatabaseContext';
 import { AppState, getLangChoice } from '@reducers';
 import TabooSet from '../types/TabooSet';
 import { loadBundledDatabaseIfNeeded } from './bundledDatabase';
-import { CARD_SET_SCHEMA_VERSION, CARD_FETCH_SUCCESS } from '@actions/types';
+import { CARD_SET_SCHEMA_VERSION, CARD_FETCH_SUCCESS, PACKS_AVAILABLE, Pack } from '@actions/types';
 
 interface OwnProps {
   children: React.ReactNode;
@@ -22,6 +22,7 @@ interface ReduxProps {
 interface DispatchProps {
   setSchemaVersion: (schemaVersion: number) => void;
   setCardCache: (cache: any, cardLang: string) => void;
+  setPacks: (packs: Pack[], lang: string, lastModified: string | undefined) => void;
 }
 
 type Props = OwnProps & ReduxProps & DispatchProps;
@@ -68,6 +69,9 @@ class DatabaseProvider extends React.Component<Props, State> {
           }
           if (metadata.cache) {
             this.props.setCardCache(metadata.cache, metadata.cardLang || 'en');
+          }
+          if (metadata.packs) {
+            this.props.setPacks(metadata.packs, metadata.cardLang || 'en', metadata.packsLastModified);
           }
         }
       } catch (error) {
@@ -147,6 +151,15 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
         cache,
         tabooCache: undefined,
         cardLang,
+      });
+    },
+    setPacks: (packs: Pack[], lang: string, lastModified: string | undefined) => {
+      dispatch({
+        type: PACKS_AVAILABLE,
+        packs,
+        lang,
+        lastModified,
+        timestamp: new Date(),
       });
     },
   };
