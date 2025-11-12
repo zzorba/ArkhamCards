@@ -826,6 +826,7 @@ export function reprintPackToPack(pack: ReprintPack): Pack {
  * Expands a pack code into its physical pack codes.
  * - If it's POOL_INVESTIGATOR_CYCLE, expands to all investigator packs
  * - If it's a special/virtual pack (like ptcp, dwlp), expands to its physical packs
+ * - Also includes Return To packs for card pool purposes
  * - Otherwise returns the pack code as-is
  */
 export function expandPackCode(packCode: string): string[] {
@@ -834,9 +835,33 @@ export function expandPackCode(packCode: string): string[] {
   }
   const specialPack = specialPacks.find(sp => sp.code === packCode);
   if (specialPack) {
-    return specialPack.packs;
+    const packs = [...specialPack.packs];
+    // Include Return To packs for card pool
+    const returnToPack = getReturnToPack(packCode);
+    if (returnToPack) {
+      packs.push(returnToPack);
+    }
+    return packs;
+  }
+  // Include Return To pack for core set
+  if (packCode === 'core' || packCode === 'rcore') {
+    return [packCode, 'rtnotz'];
   }
   return [packCode];
+}
+
+/**
+ * Returns the Return To pack code for a given cycle pack code
+ */
+function getReturnToPack(cyclePackCode: string): string | undefined {
+  switch (cyclePackCode) {
+    case 'dwlp': return 'rtdwl';
+    case 'ptcp': return 'rtptc';
+    case 'tfap': return 'rttfa';
+    case 'tcup': return 'rttcu';
+    case 'ticp': return 'zrttic';
+    default: return undefined;
+  }
 }
 
 export function cycleName(position: string): string {
