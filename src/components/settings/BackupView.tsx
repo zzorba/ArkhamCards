@@ -153,6 +153,11 @@ export default function BackupView({ safeMode }: BackupProps) {
         destination: 'cachesDirectory',
       });
 
+      // Check if the copy was successful
+      if (localCopy.status === 'error') {
+        throw new Error(localCopy.copyError);
+      }
+
       // We got the file - read from the LOCAL copy, not the source
       const json = JSON.parse(await safeReadFile(localCopy.localUri));
       const campaigns: Campaign[] = [];
