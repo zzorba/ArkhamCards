@@ -1,4 +1,5 @@
 import * as FileSystem from 'expo-file-system/legacy';
+import { Asset } from 'expo-asset';
 import { CardCache } from '@actions/types';
 import { Connection } from 'typeorm/browser';
 
@@ -44,16 +45,30 @@ export async function loadBundledDatabaseIfNeeded(
       // If we can't query, assume database is empty and continue
     }
 
-    // Check if bundled database exists in the app bundle
-    // Expo flattens assets to the bundle root directory
-    const bundledDbPath = `${FileSystem.bundleDirectory}arkham4.db`;
-    const bundledMetadataPath = `${FileSystem.bundleDirectory}arkham4.metadata.txt`;
+    // Load bundled database using Expo Asset API
+    // This is required for iOS release builds where FileSystem.bundleDirectory doesn't work reliably
+    let bundledDbAsset: Asset;
+    let bundledMetadataAsset: Asset;
 
-    const bundledDbInfo = await FileSystem.getInfoAsync(bundledDbPath);
+    try {
+      // Use require() to reference the bundled assets
+      bundledDbAsset = Asset.fromModule(require('../../../assets/generated/arkham4.db'));
+      bundledMetadataAsset = Asset.fromModule(require('../../../assets/generated/arkham4.metadata.txt'));
 
-    if (!bundledDbInfo.exists) {
+      // Download the assets to ensure they're available locally
+      await bundledDbAsset.downloadAsync();
+      await bundledMetadataAsset.downloadAsync();
+    } catch (assetError) {
+      // Assets don't exist in the bundle
       return null;
     }
+
+    if (!bundledDbAsset.localUri) {
+      return null;
+    }
+
+    const bundledDbPath = bundledDbAsset.localUri;
+    const bundledMetadataPath = bundledMetadataAsset.localUri;
 
     // SQLite ATTACH DATABASE doesn't work with bundle paths on Android
     // So we need to copy the bundled database to a temporary location first
@@ -110,8 +125,7 @@ export async function loadBundledDatabaseIfNeeded(
     // Try to load metadata
     let metadata: BundledDatabaseMetadata = {};
     try {
-      const metadataInfo = await FileSystem.getInfoAsync(bundledMetadataPath);
-      if (metadataInfo.exists) {
+      if (bundledMetadataPath) {
         const metadataContent = await FileSystem.readAsStringAsync(bundledMetadataPath);
         metadata = JSON.parse(metadataContent);
 
