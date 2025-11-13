@@ -6200,46 +6200,46 @@ msgid "Contains cards not in the selected card pool."
 msgstr "선택한 카드 구성 환경에는 없는 카드를 포함하고 있습니다."
 
 msgid "Card"
-msgstr ""
+msgstr "카드"
 
 msgid "Edit Scenario Result"
-msgstr ""
+msgstr "시나리오 결과 편집"
 
 msgid "Merge Backup"
-msgstr ""
+msgstr "백업 병합"
 
 msgid "Safe Mode"
-msgstr ""
+msgstr "안전 모드"
 
 msgid "Choose Packs"
-msgstr ""
+msgstr "팩 선택"
 
 msgid "Rule"
-msgstr ""
+msgstr "규칙"
 
 msgid "Card Upgrade"
-msgstr ""
+msgstr "카드 향상"
 
 msgid "Contains cards that are not in the selected card pool."
-msgstr ""
+msgstr "선택한 카드 구성 환경에 속하지 않은 카드가 포함됨."
 
 msgid "Select"
-msgstr ""
+msgstr "선택"
 
 msgid "Card Image"
-msgstr ""
+msgstr "카드 이미지"
 
 msgid "Taboos"
-msgstr ""
+msgstr "금기"
 
 msgid "Edit Name"
-msgstr ""
+msgstr "이름 편집"
 
 msgid "Scenario results"
-msgstr ""
+msgstr "시나리오 결과"
 
 msgid "Location Setup"
-msgstr ""
+msgstr "장소 준비"
 
 #, javascript-format
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
@@ -6250,7 +6250,7 @@ msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name 
 msgstr "경험치 비용: ${ investigator.name } 조사자의 경우 ${ xpCost }점, 다른 조사자는의 경우 ${ challengeDiscountCost }점"
 
 msgid "You must have at least 6 cards from each faction."
-msgstr ""
+msgstr "반드시 서로 다른 역할군에서 각각 6장 이상의 카드를 포함하여야 합니다."
 
 #, javascript-format
 msgid ""
@@ -6260,6 +6260,11 @@ msgid ""
 "\n"
 "This will use about 25mb of storage."
 msgstr ""
+"해당 기기의 기본 언어(${ lang })에 맞춰서 아컴디비(ArkhamDB) 사이트에서 갱신된 카드 정보를 다운로드하시겠습니까?\n"
+"\n"
+"이 앱의 언어는 설정 탭에서 변경할 수 있습니다.\n"
+"\n"
+"이 작업에는 약 25mb의 저장 공간이 사용됩니다."
 
 msgctxt "investigator"
 msgid "Custom"
