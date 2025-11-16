@@ -794,19 +794,19 @@ msgstr "Sacchetto del Caos"
 msgid "Adjust Weakness Set"
 msgstr "Correggi Debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Questo mazzo contiene numerose debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Questo mazzo contiene una debolezza base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverle dal set di debolezze base della campagna?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverla dal set di debolezze base della campagna?"
 
@@ -1154,7 +1154,7 @@ msgid "Note: not all cards have translations available."
 msgstr "Nota: non tutte le carte hanno una traduzione disponibile."
 
 msgid "Taboo List"
-msgstr "Lista dei Tabù"
+msgstr "Elenco dei Tabù"
 
 msgid "Error loading cards, make sure your network is working."
 msgstr "Errore nel caricamento delle carte, assicurati che la connessione di rete funzioni."
@@ -3037,7 +3037,7 @@ msgid "Adjust XP"
 msgstr "Correggi PE"
 
 msgid "Select Taboo List"
-msgstr "Seleziona una Lista dei Tabù"
+msgstr "Seleziona un elenco dei Tabù"
 
 #, javascript-format
 msgid "${ size } Card"
@@ -4790,7 +4790,7 @@ msgid "- Remove the parallel investigator choice, which might require a larger c
 msgstr "- Rimuovi la scelta dell'investigatore parallelo, che potrebbe richiedere una collezione di carte più ampia."
 
 msgid "- Remove the taboo list, which removes some card options."
-msgstr "- Rimuovi la lista dei tabù, che rimuove alcune opzioni sulle carte."
+msgstr "- Rimuovi l'elenco dei Tabù, che rimuove alcune opzioni sulle carte."
 
 #, javascript-format
 msgid ""
@@ -4855,10 +4855,10 @@ msgid "Each 'hand' of cards is taken at random from all possible cards that are 
 msgstr "Ogni 'mano' di carte è presa a caso tra tutte le carte possibili permesse all'investigatore attuale + opzioni di deckbuilding che hai scelto."
 
 msgid "The drafting process will continue until your deck is full, but you can stop or change the settings at any time"
-msgstr "Il draft continuerà finché il mazzo non è completo, ma ti puoi fermare o cambiare le impostazioni in qualsiasi momento"
+msgstr "La pesca delle carte continuerà finché il mazzo non è completo, ma ti puoi fermare o cambiare le impostazioni in qualsiasi momento"
 
 msgid "Begin draft"
-msgstr "Inizia il draft"
+msgstr "Inizia la pesca"
 
 msgid "Selection"
 msgstr "Selezione"
@@ -5762,10 +5762,10 @@ msgstr "Testo originale della carta (retro)"
 
 #, javascript-format
 msgid "Latest Taboo List: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
-msgstr "Ultima Lista Tabù: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
+msgstr "Ultimo Elenco dei Tabù: ${ currentTabooSet.name } - ${ currentTabooSet.date_start }"
 
 msgid "This card is no longer on the taboo list."
-msgstr "Questa carta non è più nella lista tabù."
+msgstr "Questa carta non è più nell'elenco dei tabù."
 
 msgid "See taboo list history"
 msgstr "Vedi elenco dei tabù"
@@ -6049,97 +6049,97 @@ msgid "${ total } of ${ attachment.targetSize }"
 msgstr "${ total } di ${ attachment.targetSize }"
 
 msgid "Draft"
-msgstr ""
+msgstr "Pesca"
 
 #, javascript-format
 msgid "Act: ${ count }"
 msgid_plural "Acts: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Capitolo: ${ count }"
+msgstr[1] "Capitoli: ${ count }"
 
 #, javascript-format
 msgid "Agenda: ${ count }"
 msgid_plural "Agendas: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Trama: ${ count }"
+msgstr[1] "Trame: ${ count }"
 
 #, javascript-format
 msgid "Location: ${ count }"
 msgid_plural "Locations: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Luogo: ${ count }"
+msgstr[1] "Luoghi: ${ count }"
 
 #, javascript-format
 msgid "Enemy: ${ count }"
 msgid_plural "Enemies: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nemico: ${ count }"
+msgstr[1] "Nemici: ${ count }"
 
 #, javascript-format
 msgid "Enemy-Location: ${ count }"
 msgid_plural "Enemy-Locations: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nemico-Luogo: ${ count }"
+msgstr[1] "Nemici-Luoghi: ${ count }"
 
 #, javascript-format
 msgid "Treachery: ${ count }"
 msgid_plural "Treacheries: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Sventura: ${ count }"
+msgstr[1] "Sventure: ${ count }"
 
 #, javascript-format
 msgid "Story: ${ count }"
 msgid_plural "Stories: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Storia: ${ count }"
+msgstr[1] "Storie: ${ count }"
 
 #, javascript-format
 msgid "Key: ${ count }"
 msgid_plural "Keys: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Chiave: ${ count }"
+msgstr[1] "Chiavi: ${ count }"
 
 #, javascript-format
 msgid "Asset: ${ count }"
 msgid_plural "Assets: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Supporto: ${ count }"
+msgstr[1] "Supporti: ${ count }"
 
 msgid "Scenario reference"
 msgid_plural "Scenario references: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Riferimento scenario"
+msgstr[1] "Riferimenti scenario: ${ count }"
 
 #, javascript-format
 msgid "Unknown: ${ count }"
 msgid_plural "Unknowns: ${ count }"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Sconosciuto: ${ count }"
+msgstr[1] "Sconosciuti: ${ count }"
 
 msgid "Campaign required"
-msgstr ""
+msgstr "Campagna richiesta"
 
 msgid "You must select a campaign."
-msgstr ""
+msgstr "Devi selezionare una campagna"
 
 msgid "The Drowned City"
-msgstr ""
+msgstr "La Città Sommersa"
 
 msgid "Artifacts Earned"
-msgstr ""
+msgstr "Artefatti Ottenuti"
 
 msgid "Alien Glyphs"
-msgstr ""
+msgstr "Glifi Alieni"
 
 msgid "Locations Explored"
-msgstr ""
+msgstr "Luoghi Esplorati"
 
 msgid "Task Progress"
-msgstr ""
+msgstr "Progressi"
 
 #, javascript-format
 msgid "Remove ${ investigator.card.name }?"
-msgstr ""
+msgstr "Rimuovere ${ investigator.card.name }?"
 
 #, javascript-format
 msgid ""
@@ -6147,146 +6147,149 @@ msgid ""
 "\n"
 "Campaign log data associated with them may be lost."
 msgstr ""
+"Sei sicuro di voler rimuovere ${ investigator.card.name } da questa campagna?\n"
+"\n"
+"I dati di registro della campagna ad esso associati potrebbero andare persi."
 
 msgid "Draw random token"
-msgstr ""
+msgstr "Pesca un segnalino casuale"
 
 msgid "View or edit"
-msgstr ""
+msgstr "Guarda o modifica"
 
 msgid "View"
-msgstr ""
+msgstr "Guarda"
 
 msgid "Review chaos bag"
-msgstr ""
+msgstr "Riguarda il sacchetto del caos"
 
 msgid "Change lead investigator"
-msgstr ""
+msgstr "Cambia l'investigatore capo"
 
 msgid "To handle resignation or elimination"
-msgstr ""
+msgstr "Gestire la dimissione o l'eliminazione"
 
 msgid "Core set"
-msgstr ""
+msgstr "Set base"
 
 msgid "Cycles"
-msgstr ""
+msgstr "Cicli"
 
 msgid "Starter decks"
-msgstr ""
+msgstr "Mazzi di partenza"
 
 msgid "Fan-made Cycles"
-msgstr ""
+msgstr "Cicli fan-made"
 
 msgid "Legacy"
-msgstr ""
+msgstr "Legacy"
 
 msgid "Current"
-msgstr ""
+msgstr "Attuale"
 
 msgid "Limited"
-msgstr ""
+msgstr "Limitato"
 
 msgid "Custom"
-msgstr ""
+msgstr "Personalizzato"
 
 msgid "Use all cards from any product"
-msgstr ""
+msgstr "Utilizza tutte le carte da qualsiasi prodotto"
 
 msgid "Use only cards from recent expansions"
-msgstr ""
+msgstr "Utilizza solo carte delle recenti espansioni"
 
 msgid "Use only cards from your choice of three expansions"
-msgstr ""
+msgstr "Utilizza solo carte da tre espansioni a tua scelta"
 
 msgid "Use a completely custom card pool"
-msgstr ""
+msgstr "Utilizza un insieme di carte completamente personalizzato"
 
 #, javascript-format
 msgid "Limited: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "Limitato: ${ selectedPacks.size } pack selezionati"
 
 #, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
-msgstr ""
+msgstr "Personalizzato: ${ selectedPacks.size } pack selezionati"
 
 msgid "Card pool"
-msgstr ""
+msgstr "Insieme di carte"
 
 msgid "This is an optional variant that push players to build their decks creatively using a smaller cardpool."
-msgstr ""
+msgstr "Si tratta di una variante opzionale che spinge i giocatori a costruire i propri mazzi in modo creativo utilizzando un numero ridotto di carte."
 
 msgid "Select packs"
-msgstr ""
+msgstr "Seleziona i pack"
 
 msgid "Choose a core set and three expansions to use for this limited pool."
-msgstr ""
+msgstr "Scegli un set base e tre espansioni da usare per questo insieme limitato di carte."
 
 msgid "Choose any number of packs to use for this custom pool."
-msgstr ""
+msgstr "Scegli il numero di pack da utilizzare per questo insieme di carte personalizzato."
 
 msgid "Limited: Not enough cycles selected"
-msgstr ""
+msgstr "Limitato: Cicli selezionati insufficienti"
 
 msgid "Limited: Too many cycles selected"
-msgstr ""
+msgstr "Limitato: Troppi cicli selezionati"
 
 msgid "Limited:"
-msgstr ""
+msgstr "Limitato:"
 
 msgid "Current:"
-msgstr ""
+msgstr "Attuale:"
 
 msgid "Cycles (select 3)"
-msgstr ""
+msgstr "Cicli (selezionane 3)"
 
 msgid "When the World Screamed"
-msgstr ""
+msgstr "Quando il Mondo Urlò"
 
 msgid "Contains cards not in the selected card pool."
-msgstr ""
+msgstr "Contiene carte non presenti nell'insieme di carte selezionato."
 
 msgid "Card"
-msgstr ""
+msgstr "Carta"
 
 msgid "Edit Scenario Result"
-msgstr ""
+msgstr "Modifica i Risultati dello Scenario"
 
 msgid "Merge Backup"
-msgstr ""
+msgstr "Unisci i Backup"
 
 msgid "Safe Mode"
-msgstr ""
+msgstr "Modalità Provvisoria"
 
 msgid "Choose Packs"
-msgstr ""
+msgstr "Scegli i Pack"
 
 msgid "Rule"
-msgstr ""
+msgstr "Regola"
 
 msgid "Card Upgrade"
-msgstr ""
+msgstr "Aggiornamento Carta"
 
 msgid "Contains cards that are not in the selected card pool."
-msgstr ""
+msgstr "Contiene carte che non sono presenti nell'insieme di carte selezionato."
 
 msgid "Select"
-msgstr ""
+msgstr "Seleziona"
 
 msgid "Card Image"
-msgstr ""
+msgstr "Immagine Carta"
 
 msgid "Taboos"
-msgstr ""
+msgstr "Tabù"
 
 msgid "Edit Name"
-msgstr ""
+msgstr "Modifica Nome"
 
 msgid "Scenario results"
-msgstr ""
+msgstr "Risultati scenario"
 
 msgid "Location Setup"
-msgstr ""
+msgstr "Preparazione Luoghi"
 
 #, javascript-format
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
@@ -6297,7 +6300,7 @@ msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name 
 msgstr "Costo dell'esperienza: ${ xpCost } per i mazzi che includono ${ investigator.name }, ${ challengeDiscountCost } per ogni altro giocatore"
 
 msgid "You must have at least 6 cards from each faction."
-msgstr ""
+msgstr "Devi avere almeno 6 carte di ogni fazione."
 
 #, javascript-format
 msgid ""
@@ -6307,6 +6310,11 @@ msgid ""
 "\n"
 "This will use about 25mb of storage."
 msgstr ""
+"Desideri scaricare le carte aggiornate da ArkhamDB in modo che corrispondano alla lingua preferita del tuo telefono (${ lang })?\n"
+"\n"
+"Puoi sovrascrivere la tua preferenza linguistica per questa app nelle Impostazioni.\n"
+"\n"
+"Ciò richiederà circa 25 MB di spazio di archiviazione."
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7894,91 +7902,91 @@ msgstr "Non Illuminato"
 
 msgctxt "trait"
 msgid "Adrift"
-msgstr ""
+msgstr "Alla Deriva"
 
 msgctxt "trait"
 msgid "Arkham?"
-msgstr ""
+msgstr "Arkham?"
 
 msgctxt "trait"
 msgid "Artifact"
-msgstr ""
+msgstr "Artefatto"
 
 msgctxt "trait"
 msgid "Brand"
-msgstr ""
+msgstr "Marchio"
 
 msgctxt "trait"
 msgid "Completed"
-msgstr ""
+msgstr "Completato"
 
 msgctxt "trait"
 msgid "Cretaceous"
-msgstr ""
+msgstr "Cretaceo"
 
 msgctxt "trait"
 msgid "Egypt"
-msgstr ""
+msgstr "Egitto"
 
 msgctxt "trait"
 msgid "France"
-msgstr ""
+msgstr "Francia"
 
 msgctxt "trait"
 msgid "Glyph"
-msgstr ""
+msgstr "Glifo"
 
 msgctxt "trait"
 msgid "Headgear"
-msgstr ""
+msgstr "Copricapo"
 
 msgctxt "trait"
 msgid "Incomplete"
-msgstr ""
+msgstr "Incompleto"
 
 msgctxt "trait"
 msgid "Monsters"
-msgstr ""
+msgstr "Mostri"
 
 msgctxt "trait"
 msgid "Posture"
-msgstr ""
+msgstr "Postura"
 
 msgctxt "trait"
 msgid "Prosthesis"
-msgstr ""
+msgstr "Protesi"
 
 msgctxt "trait"
 msgid "R'lyeh"
-msgstr ""
+msgstr "R'lyeh"
 
 msgctxt "trait"
 msgid "Rome"
-msgstr ""
+msgstr "Roma"
 
 msgctxt "trait"
 msgid "Sailor"
-msgstr ""
+msgstr "Marinaio"
 
 msgctxt "trait"
 msgid "Star Spawn"
-msgstr ""
+msgstr "Progenie Stellare"
 
 msgctxt "trait"
 msgid "Stowaway"
-msgstr ""
+msgstr "Clandestino"
 
 msgctxt "trait"
 msgid "Student"
-msgstr ""
+msgstr "Studente"
 
 msgctxt "trait"
 msgid "Symbiote"
-msgstr ""
+msgstr "Simbionte"
 
 msgctxt "trait"
 msgid "Tandem"
-msgstr ""
+msgstr "Tandem"
 
 #, javascript-format
 msgctxt "masculine"
@@ -8469,11 +8477,11 @@ msgstr "Se sei un creatore di contenuti interessato a inserire la tua campagna (
 
 msgctxt "releaseNotes"
 msgid "Drafting player decks"
-msgstr "Creazione mazzi dei giocatori"
+msgstr "Preparazione mazzi dei giocatori"
 
 msgctxt "releaseNotes"
 msgid "As a follow up to the earlier Ultimatum of Chaos release, the app now supports building a deck via a set of drafting rules. Choose what packs you want to pull from and how big each draft 'hand' should be, and build your deck one card at a time."
-msgstr "Come seguito al precedente rilascio di Ultimatum of Chaos, l'applicazione ora supporta la costruzione di un mazzo tramite una serie di regole di drafting. Scegliete i mazzi da cui volete attingere e la dimensione di ogni “mano” del draft, e costruite il vostro mazzo una carta alla volta."
+msgstr "Come seguito al precedente rilascio di Ultimatum del Caos, l'applicazione ora supporta la costruzione di un mazzo tramite una serie di regole di pesca. Scegliete i mazzi da cui volete attingere e la dimensione di ogni “mano” di pesca, e costruite il vostro mazzo una carta alla volta."
 
 msgctxt "releaseNotes"
 msgid "- You can find this feature on the deck edit screen in the menu."
@@ -8501,7 +8509,7 @@ msgstr "- L'applicazione utilizzerà la collezione definita per cercare di gener
 
 msgctxt "releaseNotes"
 msgid "- Support the deckbuilding focused permanents included in the Edge of the Earth Investigator expansion (Underworld Support/Forced Learning)."
-msgstr "- Supporto per i permanenti incentrati sul deckbuilding inclusi nell'espansione Investigatore di Ai Confini della Terra (Sostegno della Mala/Apprendimento Forzato)."
+msgstr "- Supporto per i permanenti incentrati sul deckbuilding inclusi nell'espansione Investigatori di Ai Confini della Terra (Sostegno della Mala/Apprendimento Forzato)."
 
 msgctxt "releaseNotes"
 msgid "- Shows the deck before you actully save it, so you can re-roll if it produced something particularly unviable."
@@ -8565,7 +8573,7 @@ msgstr "Questa versione introduce un accesso più rapido alle carte in anteprima
 
 msgctxt "releaseNotes"
 msgid "- Includes the previewed <b>Customizable</b> cards from The Scarlet Keys investigator expansion."
-msgstr "- Include le carte <b>Personalizzabili</b> in anteprima dell'espansione investigatore Le Chiavi Scarlatte."
+msgstr "- Include le carte <b>Personalizzabili</b> in anteprima dell'espansione Investigatori Le Chiavi Scarlatte."
 
 msgctxt "releaseNotes"
 msgid "- In order to maintain compatibility with ArkhamDB, these cards are not shown by default. You can opt into them by enabling the <b>Show Fan-made cards</b> under <i>Settings</i>."
