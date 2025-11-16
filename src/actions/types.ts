@@ -306,7 +306,7 @@ export interface ParsedDeck {
   availableExperience: number;
   packs: number;
   factionCounts: FactionCounts;
-  costHistogram: number[];
+  costHistogram: { cost: string, count: number }[];
   skillIconCounts: SkillCounts;
   deckCards: Card[];
   slotCounts: SlotCounts;

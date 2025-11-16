@@ -85,42 +85,59 @@ export default function FactionChart({ parsedDeck, width }: Props) {
                 // If only dual cards exist, render a single Bar
                 if (item.count === 0) {
                   return (
-                    <Bar
-                      key={index}
-                      barCount={barData.length}
-                      points={[dualPoint]}
-                      chartBounds={chartBounds}
-                      color={item.dualColor}
-                      roundedCorners={{ topLeft: 5, topRight: 5 }}
-                      labels={{
-                        position: 'top',
-                        font: labelFont,
-                        color: 'white',
-                      }}
-                    />
+                    <React.Fragment key={index}>
+                      <Bar
+                        barCount={barData.length}
+                        points={[dualPoint]}
+                        chartBounds={chartBounds}
+                        color={item.dualColor}
+                        roundedCorners={{ topLeft: 5, topRight: 5 }}
+                      />
+                      {item.dual > 0 && (
+                        <Text
+                          x={dualPoint.x}
+                          y={dualPoint.y as any - 5}
+                          text={String(item.dual)}
+                          font={labelFont}
+                          color={colors.darkText}
+                        />
+                      )}
+                    </React.Fragment>
                   );
                 }
 
                 // If only single faction cards exist, render a single Bar
                 if (item.dual === 0) {
                   return (
-                    <Bar
-                      key={index}
-                      barCount={barData.length}
-                      points={[countPoint]}
-                      chartBounds={chartBounds}
-                      color={item.factionColor}
-                      roundedCorners={{ topLeft: 5, topRight: 5 }}
-                      labels={{
-                        position: 'top',
-                        font: labelFont,
-                        color: 'white',
-                      }}
-                    />
+                    <React.Fragment key={index}>
+                      <Bar
+                        barCount={barData.length}
+                        points={[countPoint]}
+                        chartBounds={chartBounds}
+                        color={item.factionColor}
+                        roundedCorners={{ topLeft: 5, topRight: 5 }}
+                      />
+                      {item.count > 0 && (
+                        <Text
+                          x={countPoint.x}
+                          y={countPoint.y as any - 5}
+                          text={String(item.count)}
+                          font={labelFont}
+                          color={colors.darkText}
+                        />
+                      )}
+                    </React.Fragment>
                   );
                 }
 
                 // Both exist, render StackedBar with manual labels
+                // Calculate the boundary between dual and count segments
+                const chartBottom = chartBounds.bottom;
+                const totalHeight = chartBottom - (countPoint.y as number);
+                const dualHeight = (item.dual / item.total) * totalHeight;
+                const dualSegmentTop = chartBottom - dualHeight;
+                const dualLabelY = (chartBottom + dualSegmentTop) / 2 - 8;
+
                 return (
                   <React.Fragment key={index}>
                     <StackedBar
@@ -133,21 +150,19 @@ export default function FactionChart({ parsedDeck, width }: Props) {
                         color: isTop ? item.factionColor : item.dualColor,
                       })}
                     />
-                    {/* Label for count (top segment) - positioned at top of entire bar */}
-                    {item.count > 0 && (
-                      <Text
-                        x={countPoint.x}
-                        y={countPoint.y as any - 5}
-                        text={String(item.count)}
-                        font={labelFont}
-                        color="white"
-                      />
-                    )}
-                    {/* Label for dual (bottom segment) */}
+                    {/* Label for total at top of entire bar */}
+                    <Text
+                      x={countPoint.x}
+                      y={(countPoint.y as number) - 14}
+                      text={String(item.total)}
+                      font={labelFont}
+                      color={colors.darkText}
+                    />
+                    {/* Label for dual (bottom segment) - white text centered in segment */}
                     {item.dual > 0 && (
                       <Text
                         x={dualPoint.x}
-                        y={dualPoint.y as any - 5}
+                        y={dualLabelY}
                         text={String(item.dual)}
                         font={labelFont}
                         color="white"

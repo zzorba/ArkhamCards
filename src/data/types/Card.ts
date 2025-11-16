@@ -989,6 +989,10 @@ export default class Card {
     );
   }
 
+  public formattedCost(): string | undefined {
+    return this.cost !== undefined ? arkham_num(this.cost) : undefined;
+  }
+
   public enemyFight(): string {
     return arkham_num(this.enemy_fight);
   }

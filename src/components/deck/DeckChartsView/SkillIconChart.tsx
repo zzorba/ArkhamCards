@@ -1,8 +1,8 @@
 import React, { useContext, useMemo } from 'react';
 import { map } from 'lodash';
 import { CartesianChart, Bar } from 'victory-native';
-import { View, Text, StyleSheet } from 'react-native';
-import { useFont } from '@shopify/react-native-skia';
+import { View, Text as RNText, StyleSheet } from 'react-native';
+import { useFont, Text } from '@shopify/react-native-skia';
 import { t } from 'ttag';
 
 import { ParsedDeck } from '@actions/types';
@@ -39,9 +39,9 @@ export default function SkillIconChart({ width, parsedDeck }: Props) {
 
   return (
     <View style={[styles.wrapper, space.marginBottomL, { width }]}>
-      <Text style={[typography.large, typography.center]}>
+      <RNText style={[typography.large, typography.center]}>
         { t`Skill Icons` }
-      </Text>
+      </RNText>
       <View style={{ height: 300 }}>
         <CartesianChart
           data={barData}
@@ -69,20 +69,26 @@ export default function SkillIconChart({ width, parsedDeck }: Props) {
               {points.value.map((point, index) => {
                 const skill = barData[point.xValue as number]?.skill;
                 const barColor = skill ? colors.skill[skill]?.icon || '#444' : '#444';
+                const item = barData[point.xValue as number];
                 return (
-                  <Bar
-                    key={index}
-                    barCount={points.value.length}
-                    points={[point]}
-                    chartBounds={chartBounds}
-                    color={barColor}
-                    roundedCorners={{ topLeft: 5, topRight: 5 }}
-                    labels={{
-                      position: 'top',
-                      font: labelFont,
-                      color: 'white',
-                    }}
-                  />
+                  <React.Fragment key={index}>
+                    <Bar
+                      barCount={points.value.length}
+                      points={[point]}
+                      chartBounds={chartBounds}
+                      color={barColor}
+                      roundedCorners={{ topLeft: 5, topRight: 5 }}
+                    />
+                    {item && item.value > 0 && (
+                      <Text
+                        x={point.x}
+                        y={point.y as any - 5}
+                        text={String(item.value)}
+                        font={labelFont}
+                        color={colors.darkText}
+                      />
+                    )}
+                  </React.Fragment>
                 );
               })}
             </>

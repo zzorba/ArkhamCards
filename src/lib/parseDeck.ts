@@ -278,31 +278,32 @@ function factionCount(
   ];
 }
 
-function costHistogram(cardIds: CardId[], cards: CardsMap): number[] {
-  const costHisto = mapValues(
-    groupBy(
-      cardIds.filter((c) => {
-        const card = cards[c.id];
-        return card && card.realCost() !== null;
-      }),
-      (c) => {
-        const card = cards[c.id];
-        if (!card) {
-          return 0;
-        }
-        const realCost = card.realCost();
-        if (realCost === 'X') {
-          return -2;
-        }
-        if (realCost === '-') {
-          return -1;
-        }
-        return realCost;
+function costHistogram(cardIds: CardId[], cards: CardsMap): { cost: string, count: number }[] {
+  const costMap: { [key: string]: number } = {};
+  cardIds.forEach((c) => {
+    const card = cards[c.id];
+    if (card) {
+      const cost = card.formattedCost();
+      if (cost !== undefined) {
+        costMap[cost] = (costMap[cost] || 0) + c.quantity;
       }
-    ),
-    (cs) => sum(cs.map((c) => c.quantity))
-  );
-  return range(-2, 11).map((cost) => costHisto[cost] || 0);
+    }
+  });
+
+  // Build list of costs to display
+  const alwaysShow = ['0', '1', '2', '3', '4'];
+  const allCosts = new Set([...Object.keys(costMap), ...alwaysShow]);
+
+  // Sort costs properly (X, -, then numbers)
+  const sortedCosts = Array.from(allCosts).sort((a, b) => {
+    if (a === 'X') return -1;
+    if (b === 'X') return 1;
+    if (a === '-') return -1;
+    if (b === '-') return 1;
+    return parseInt(a, 10) - parseInt(b, 10);
+  });
+
+  return sortedCosts.map(cost => ({ cost, count: costMap[cost] || 0 }));
 }
 
 function sumSkillIcons(
