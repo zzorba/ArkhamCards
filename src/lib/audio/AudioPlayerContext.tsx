@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useRef, ReactNode, useCallback } from 'react';
 import { useAudioPlayer, useAudioPlayerStatus, AudioSource } from 'expo-audio';
+import { useSelector } from 'react-redux';
+import { AppState } from '@reducers';
 
 // ===== Types =====
 export interface Track {
@@ -77,9 +79,10 @@ export function AudioPlayerProvider({ children, initialPlaybackRate = 1.0 }: Aud
     statusRef.current = status;
   }, [status]);
 
+  const reduxPlaybackRate = useSelector((state: AppState) => state.settings.playbackRate);
   const [queue, setQueueState] = useState<Track[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
-  const [playbackRate, setPlaybackRate] = useState<number>(initialPlaybackRate);
+  const [playbackRate, setPlaybackRate] = useState<number>(reduxPlaybackRate ?? initialPlaybackRate);
 
   const previousDidJustFinish = useRef(false);
   const eventListeners = useRef<Map<string, Set<(data: any) => void>>>(new Map());
@@ -133,7 +136,7 @@ export function AudioPlayerProvider({ children, initialPlaybackRate = 1.0 }: Aud
 
       // Apply playback rate
       if (playbackRate !== 1.0) {
-        player.playbackRate = playbackRate;
+        player.setPlaybackRate(playbackRate);
       }
 
       // Emit track changed event
@@ -211,12 +214,12 @@ export function AudioPlayerProvider({ children, initialPlaybackRate = 1.0 }: Aud
   }, [loadTrackAtIndex]);
 
   const seekTo = useCallback((seconds: number) => {
-    player.currentTime = seconds;
+    player.seekTo(seconds);
   }, [player]);
 
   const setRate = useCallback((rate: number) => {
     setPlaybackRate(rate);
-    player.playbackRate = rate;
+    player.setPlaybackRate(rate);
   }, [player]);
 
   // Queue management

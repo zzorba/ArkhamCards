@@ -320,6 +320,10 @@
     "name": "Endlose Nacht"
   },
   {
+    "id": "enthralling_encore",
+    "name": "Enthralling Encore"
+  },
+  {
     "id": "eoe_epilogue",
     "name": "Epilog"
   },

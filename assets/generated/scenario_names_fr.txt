@@ -320,6 +320,10 @@
     "name": "Une Nuit Interminable"
   },
   {
+    "id": "enthralling_encore",
+    "name": "Un Rappel Captivant"
+  },
+  {
     "id": "eoe_epilogue",
     "name": "Épilogue"
   },

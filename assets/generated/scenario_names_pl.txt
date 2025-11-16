@@ -320,6 +320,10 @@
     "name": "Niekończąca się noc"
   },
   {
+    "id": "enthralling_encore",
+    "name": "Enthralling Encore"
+  },
+  {
     "id": "eoe_epilogue",
     "name": "Epilog"
   },

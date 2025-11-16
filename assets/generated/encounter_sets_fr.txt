@@ -546,5 +546,6 @@
   "film_fatale": "Film Fatal",
   "forgotten_island": "Île Oubliée",
   "abominable_contessa": "Abominable Contessa",
-  "cosmic_journey": "Voyage Cosmique"
+  "cosmic_journey": "Voyage Cosmique",
+  "enthralling_encore": "Un Rappel Captivant"
 }

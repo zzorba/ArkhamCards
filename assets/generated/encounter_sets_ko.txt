@@ -546,5 +546,6 @@
   "film_fatale": "Film Fatale",
   "forgotten_island": "Forgotten Island",
   "abominable_contessa": "Abominable Contessa",
-  "cosmic_journey": "Cosmic Journey"
+  "cosmic_journey": "Cosmic Journey",
+  "enthralling_encore": "Enthralling Encore"
 }

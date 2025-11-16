@@ -320,6 +320,10 @@
     "name": "Бесконечная ночь"
   },
   {
+    "id": "enthralling_encore",
+    "name": "Enthralling Encore"
+  },
+  {
     "id": "eoe_epilogue",
     "name": "Эпилог"
   },

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, Pressable, TouchableWithoutFeedback, View, LayoutChangeEvent } from 'react-native';
 import { cloneDeep, find, filter, map, shuffle, sumBy, reverse, uniq, forEach } from 'lodash';
 import { jt, t } from 'ttag';

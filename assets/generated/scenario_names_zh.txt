@@ -320,6 +320,10 @@
     "name": "無盡夜晚"
   },
   {
+    "id": "enthralling_encore",
+    "name": "Enthralling Encore"
+  },
+  {
     "id": "eoe_epilogue",
     "name": "尾聲故事"
   },

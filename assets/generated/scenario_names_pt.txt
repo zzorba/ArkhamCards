@@ -320,6 +320,10 @@
     "name": "Noite Sem Fim"
   },
   {
+    "id": "enthralling_encore",
+    "name": "Enthralling Encore"
+  },
+  {
     "id": "eoe_epilogue",
     "name": "Epílogo"
   },

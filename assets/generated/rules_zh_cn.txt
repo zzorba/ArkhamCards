@@ -126,7 +126,8 @@
     "scenarios": [
       "fortune_and_folly_part_1",
       "fortune_and_folly_part_2",
-      "film_fatale"
+      "film_fatale",
+      "enthralling_encore"
     ],
     "title": "警戒",
     "text": "每当调查员在试图躲避一名带有\"警戒\"关键词的敌人时技能检定失败，在结算该技能检定带来的所有效果后，该敌人对进行躲避的这位调查员执行一次攻击。敌人执行警戒攻击后不被消耗(横置)。不论该敌人是否与进行躲避的调查员交战，此类攻击均会发生。"
@@ -455,7 +456,8 @@
     "cycle": ["fhv"],
     "scenarios": [
       "film_fatale",
-      "legions_of_fire"
+      "legions_of_fire",
+      "enthralling_encore"
     ],
     "title": "Elusive",
     "text": "If a ready enemy with the elusive keyword attacks or is attacked, after that attack resolves, that enemy immediately disengages from all investigators, moves to a connecting location (with no investigators, if able), and exhausts. This effect occurs whether the enemy was engaged with the attacking investigator or not."

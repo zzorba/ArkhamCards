@@ -11476,5 +11476,110 @@
         }
       }
     ]
+  },
+  {
+    "code": "90094",
+    "scenario": "enthralling_encore",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of measures",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "3 or more classes among cards you control",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Sinister Soloist at your location",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "1 more than the number of measures",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "3 or more classes among cards you control",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Sinister Soloist at your location",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 ]
