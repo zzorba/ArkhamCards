@@ -903,6 +903,10 @@ export default function DbCardResultList(props: Props) {
   const tabooSetSelctor = useMemo(makeTabooSetSelector, []);
   const tabooSetId = useSelector((state: AppState) => tabooSetSelctor(state, tabooSetOverride));
   const singleCardView = useSettingValue('single_card');
+  const singleCardViewRef = useRef(singleCardView);
+  useEffect(() => {
+    singleCardViewRef.current = singleCardView;
+  }, [singleCardView]);
   const packInCollection = useSelector(getPacksInCollection);
   const ignore_collection = useSettingValue('ignore_collection');
   const { deckCardCounts, originalDeckSlots, mode } = useDeckDeltas(specialMode);
@@ -957,8 +961,9 @@ export default function DbCardResultList(props: Props) {
     };
   }, [feed, fullFeed]);
   const cardOnPressId = useCallback((id: string, card: Card) => {
+    const currentSingleCardView = singleCardViewRef.current;
     cardPressed && cardPressed(card);
-    if (singleCardView) {
+    if (currentSingleCardView) {
       showCard(
         navigation,
         card.code,
@@ -995,7 +1000,7 @@ export default function DbCardResultList(props: Props) {
       true,
       customizations
     );
-  }, [navigation, colors, customizations, feedValues, showSpoilerCards, tabooSetOverride, singleCardView, deckId, investigator, specialMode, cardPressed]);
+  }, [navigation, colors, customizations, feedValues, showSpoilerCards, tabooSetOverride, deckId, investigator, specialMode, cardPressed]);
   const { lang } = useContext(LanguageContext);
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {
