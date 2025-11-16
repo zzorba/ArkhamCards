@@ -296,10 +296,18 @@ function costHistogram(cardIds: CardId[], cards: CardsMap): { cost: string, coun
 
   // Sort costs properly (X, -, then numbers)
   const sortedCosts = Array.from(allCosts).sort((a, b) => {
-    if (a === 'X') return -1;
-    if (b === 'X') return 1;
-    if (a === '-') return -1;
-    if (b === '-') return 1;
+    if (a === 'X') {
+      return -1;
+    }
+    if (b === 'X') {
+      return 1;
+    }
+    if (a === '-') {
+      return -1;
+    }
+    if (b === '-') {
+      return 1;
+    }
     return parseInt(a, 10) - parseInt(b, 10);
   });
 

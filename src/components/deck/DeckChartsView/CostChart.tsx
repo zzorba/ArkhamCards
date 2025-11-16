@@ -1,5 +1,4 @@
 import React, { useMemo, useContext } from 'react';
-import { filter, map } from 'lodash';
 import { View, Text as RNText, StyleSheet } from 'react-native';
 import { CartesianChart, Bar } from 'victory-native';
 import { useFont, Text } from '@shopify/react-native-skia';
@@ -23,7 +22,7 @@ interface Item extends Record<string, unknown> {
 export default function CostChart({ parsedDeck: { costHistogram }, width }: Props) {
   const { typography, colors } = useContext(StyleContext);
   const barData = useMemo(() => {
-    return costHistogram.map((item, index) => ({
+    return costHistogram.map((item, index): Item => ({
       index,
       costLabel: item.cost,
       value: item.count,
