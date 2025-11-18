@@ -7808,7 +7808,7 @@ msgstr "불 켜진 - Lit"
 
 msgctxt "trait"
 msgid "Machination"
-msgstr ""
+msgstr "계략 - Machination"
 
 msgctxt "trait"
 msgid "Manor"
@@ -7824,7 +7824,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Plot"
-msgstr ""
+msgstr "모의 - Plot"
 
 msgctxt "trait"
 msgid "Rival"
