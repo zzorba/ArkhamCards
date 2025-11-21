@@ -9,7 +9,7 @@ import { useScenarioGuideContext } from './withScenarioGuideContext';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import CampaignGuideContext from './CampaignGuideContext';
 import CampaignErrorView from './CampaignErrorView';
-import { ProcessedCampaign } from '@data/scenario';
+import scenario, { ProcessedCampaign } from '@data/scenario';
 import { CampaignRule, Question } from '@data/scenario/types';
 import RuleTitleComponent from '@components/settings/RuleTitleComponent';
 import space, { s } from '@styles/space';
@@ -26,6 +26,7 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { useDismissOnCampaignDeleted } from '@data/remote/campaigns';
+import conditionHelper, { conditionResult } from '@data/scenario/conditionHelper';
 
 export interface CampaignRulesProps {
   header?: string;
@@ -46,6 +47,25 @@ function RuleComponent({ rule }: { rule: CampaignRule }) {
     const { processedScenario, scenarioState } = scenarioContext;
     return processedScenario.scenarioGuide.expandSteps(rule.steps, scenarioState, processedScenario.latestCampaignLog);
   }, [scenarioContext, rule.steps]);
+
+  if (rule.condition) {
+    const result = conditionResult(rule.condition, scenarioContext.processedCampaign.campaignLog);
+    switch (result.type) {
+      case 'binary':
+      case 'number':
+      case 'string':
+        if (!result.option) {
+          return null;
+        }
+        break;
+      case 'investigator':
+        if (!result.options.length) {
+          return null;
+        }
+        break;
+    }
+  }
+
   return (
     <View style={space.paddingVerticalXs}>
       <TouchableOpacity onPress={toggleExpanded} style={[space.paddingVerticalXs, space.paddingSideS]}>

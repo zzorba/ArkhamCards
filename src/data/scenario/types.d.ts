@@ -7,44 +7,21 @@
  */
 
 export type Schema = AllCampaigns | Log | Errata | Rules | ChaosTokens | TabooSets;
-export type Step =
-  | BranchStep
-  | EffectsStep
-  | InputStep
-  | EncounterSetsStep
-  | GenericStep
-  | ResolutionStep
-  | RuleReminderStep
-  | StoryStep
-  | LocationSetupStep
-  | LocationConnectorsStep
-  | TableStep
-  | XpCountStep
-  | InternalStep
-  | BorderStep
-  | TravelCostStep
-  | InvestigatorSetupStep;
-export type BorderColor = "setup" | "resolution" | "interlude";
-export type Condition =
-  | MultiCondition
+export type BinaryChoiceCondition =
+  | BinaryCardCondition
+  | CampaignDataInvestigatorCondition
+  | CampaignDataInvestigatorStatusCondition
+  | CampaignDataScenarioCondition
+  | CampaignDataChaosBagCondition
+  | CampaignDataNextScenarioCondition
+  | CampaignDataStandaloneCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
-  | CampaignLogInvestigatorCountCondition
-  | CampaignLogTaskCondition
-  | MathCondition
-  | CardCondition
-  | CampaignDataCondition
   | CampaignLogSectionExistsCondition
-  | ScenarioDataCondition
-  | TraumaCondition
-  | CheckSuppliesCondition
-  | CampaignLogCardsCondition
-  | CampaignLogCardsSwitchCondition
+  | MultiCondition
   | PartnerStatusCondition
   | LocationCondition
-  | ScarletKeyCondition
-  | ScarletKeyCountCondition
-  | InvestigatorCampaignLogCardsCondition;
+  | ScarletKeyCondition;
 export type Effect =
   | StoryStepEffect
   | EarnXpEffect
@@ -119,6 +96,7 @@ export type SpecialChaosToken =
   | "bless"
   | "curse"
   | "frost";
+export type BorderColor = "setup" | "resolution" | "interlude";
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept" | "killed" | "insane";
 export type DefaultOption = Option;
 export type MathCondition = MathCompareCondition | MathOpCondition | MathEqualsCondition;
@@ -142,6 +120,43 @@ export type PartnerStatus =
   | "investigator_selected"
   | "victim"
   | "cannot_take";
+export type Step =
+  | BranchStep
+  | EffectsStep
+  | InputStep
+  | EncounterSetsStep
+  | GenericStep
+  | ResolutionStep
+  | RuleReminderStep
+  | StoryStep
+  | LocationSetupStep
+  | LocationConnectorsStep
+  | TableStep
+  | XpCountStep
+  | InternalStep
+  | BorderStep
+  | TravelCostStep
+  | InvestigatorSetupStep;
+export type Condition =
+  | MultiCondition
+  | CampaignLogCondition
+  | CampaignLogCountCondition
+  | CampaignLogInvestigatorCountCondition
+  | CampaignLogTaskCondition
+  | MathCondition
+  | CardCondition
+  | CampaignDataCondition
+  | CampaignLogSectionExistsCondition
+  | ScenarioDataCondition
+  | TraumaCondition
+  | CheckSuppliesCondition
+  | CampaignLogCardsCondition
+  | CampaignLogCardsSwitchCondition
+  | PartnerStatusCondition
+  | LocationCondition
+  | ScarletKeyCondition
+  | ScarletKeyCountCondition
+  | InvestigatorCampaignLogCardsCondition;
 export type CardCondition = InvestigatorCardCondition | BinaryCardCondition;
 export type CampaignDataCondition =
   | CampaignDataDifficultyCondition
@@ -195,21 +210,6 @@ export type InvestigatorChoiceCondition =
   | CampaignLogCondition
   | CampaignLogCardsCondition
   | MultiCondition;
-export type BinaryChoiceCondition =
-  | BinaryCardCondition
-  | CampaignDataInvestigatorCondition
-  | CampaignDataInvestigatorStatusCondition
-  | CampaignDataScenarioCondition
-  | CampaignDataChaosBagCondition
-  | CampaignDataNextScenarioCondition
-  | CampaignDataStandaloneCondition
-  | CampaignLogCondition
-  | CampaignLogCountCondition
-  | CampaignLogSectionExistsCondition
-  | MultiCondition
-  | PartnerStatusCondition
-  | LocationCondition
-  | ScarletKeyCondition;
 export type TextBoxEffect = FreeformCampaignLogEffect | CampaignLogTextEffect;
 export type LocationConnector =
   | "purple_moon"
@@ -381,54 +381,12 @@ export interface ScarletKey {
 export interface CampaignRule {
   title: string;
   steps: string[];
+  condition?: BinaryChoiceCondition;
 }
-export interface BranchStep {
-  id: string;
-  type: "branch";
-  border_only?: boolean;
-  border_color?: BorderColor;
-  hidden?: boolean;
-  loop?: boolean;
-  text?: string;
-  title?: string;
-  condition: Condition;
-  bullet_type?: BulletType;
-  narration?: Narration;
-}
-export interface MultiCondition {
-  type: "multi";
-  conditions: (
-    | CampaignLogCondition
-    | CampaignLogCardsCondition
-    | CampaignLogSectionExistsCondition
-    | CampaignDataChaosBagCondition
-    | CampaignDataNextScenarioCondition
-    | CampaignLogCountCondition
-    | CampaignDataVersionCondition
-    | CampaignDataScenarioCondition
-    | ScenarioDataResolutionCondition
-    | ScenarioDataPlayerCountCondition
-    | CampaignDataStandaloneCondition
-    | CampaignDataDifficultyCondition
-    | InvestigatorCardCondition
-    | BinaryCardCondition
-    | MathCondition
-    | PartnerStatusCondition
-    | BasicTraumaCondition
-    | CampaignDataInvestigatorCondition
-    | CampaignDataInvestigatorStatusCondition
-    | CampaignDataCycleCondition
-    | ScarletKeyCondition
-    | ScarletKeyCountCondition
-    | ScenarioDataInvestigatorStatusCondition
-  )[];
-  count: number;
-  options: BoolOption[];
-}
-export interface CampaignLogCondition {
-  type: "campaign_log";
-  section: string;
-  id: string;
+export interface BinaryCardCondition {
+  type: "has_card";
+  investigator: "defeated" | "any";
+  card: string;
   options: BoolOption[];
 }
 export interface BoolOption {
@@ -758,15 +716,47 @@ export interface CampaignLogTextEffect {
   hidden?: boolean;
   bullet_type?: BulletType;
 }
-export interface CampaignLogCardsCondition {
-  type: "campaign_log_cards";
-  section: string;
-  id: string;
+export interface CampaignDataInvestigatorCondition {
+  type: "campaign_data";
+  campaign_data: "investigator";
+  investigator_data: "trait" | "faction" | "code";
+  exclude_investigators?: string[];
+  options: StringOption[];
+  default_option?: Option;
+}
+export interface StringOption {
+  condition: string;
+  prompt?: string;
+  border?: boolean;
+  border_color?: BorderColor;
+  pre_border_effects?: Effect[];
+  repeatable?: boolean;
+  effects?: Effect[];
+  steps?: string[];
+}
+export interface Option {
+  icon?: ChoiceIcon;
+  boolCondition?: boolean;
+  numCondition?: number;
+  repeatable?: boolean;
+  condition?: string;
+  prompt?: string;
+  border?: boolean;
+  border_color?: BorderColor;
+  pre_border_effects?: Effect[];
+  effects?: Effect[];
+  steps?: string[];
+}
+export interface CampaignDataInvestigatorStatusCondition {
+  type: "campaign_data";
+  campaign_data: "investigator_status";
+  status: "not_eliminated";
   options: BoolOption[];
 }
-export interface CampaignLogSectionExistsCondition {
-  type: "campaign_log_section_exists";
-  section: string;
+export interface CampaignDataScenarioCondition {
+  type: "campaign_data";
+  campaign_data: "scenario_completed" | "scenario_replayed";
+  scenario: string;
   options: BoolOption[];
 }
 export interface CampaignDataChaosBagCondition {
@@ -784,22 +774,20 @@ export interface NumOption {
   repeatable?: boolean;
   steps?: string[];
 }
-export interface Option {
-  icon?: ChoiceIcon;
-  boolCondition?: boolean;
-  numCondition?: number;
-  repeatable?: boolean;
-  condition?: string;
-  prompt?: string;
-  border?: boolean;
-  border_color?: BorderColor;
-  pre_border_effects?: Effect[];
-  effects?: Effect[];
-  steps?: string[];
-}
 export interface CampaignDataNextScenarioCondition {
   type: "campaign_data";
   campaign_data: "next_scenario";
+  options: BoolOption[];
+}
+export interface CampaignDataStandaloneCondition {
+  type: "campaign_data";
+  campaign_data: "standalone";
+  options: BoolOption[];
+}
+export interface CampaignLogCondition {
+  type: "campaign_log";
+  section: string;
+  id: string;
   options: BoolOption[];
 }
 export interface CampaignLogCountCondition {
@@ -810,16 +798,51 @@ export interface CampaignLogCountCondition {
   max?: number;
   default_option?: DefaultOption;
 }
+export interface CampaignLogSectionExistsCondition {
+  type: "campaign_log_section_exists";
+  section: string;
+  options: BoolOption[];
+}
+export interface MultiCondition {
+  type: "multi";
+  conditions: (
+    | CampaignLogCondition
+    | CampaignLogCardsCondition
+    | CampaignLogSectionExistsCondition
+    | CampaignDataChaosBagCondition
+    | CampaignDataNextScenarioCondition
+    | CampaignLogCountCondition
+    | CampaignDataVersionCondition
+    | CampaignDataScenarioCondition
+    | ScenarioDataResolutionCondition
+    | ScenarioDataPlayerCountCondition
+    | CampaignDataStandaloneCondition
+    | CampaignDataDifficultyCondition
+    | InvestigatorCardCondition
+    | BinaryCardCondition
+    | MathCondition
+    | PartnerStatusCondition
+    | BasicTraumaCondition
+    | CampaignDataInvestigatorCondition
+    | CampaignDataInvestigatorStatusCondition
+    | CampaignDataCycleCondition
+    | ScarletKeyCondition
+    | ScarletKeyCountCondition
+    | ScenarioDataInvestigatorStatusCondition
+  )[];
+  count: number;
+  options: BoolOption[];
+}
+export interface CampaignLogCardsCondition {
+  type: "campaign_log_cards";
+  section: string;
+  id: string;
+  options: BoolOption[];
+}
 export interface CampaignDataVersionCondition {
   type: "campaign_data";
   campaign_data: "version";
   min_version: number;
-  options: BoolOption[];
-}
-export interface CampaignDataScenarioCondition {
-  type: "campaign_data";
-  campaign_data: "scenario_completed" | "scenario_replayed";
-  scenario: string;
   options: BoolOption[];
 }
 export interface ScenarioDataResolutionCondition {
@@ -827,25 +850,10 @@ export interface ScenarioDataResolutionCondition {
   scenario_data: "resolution";
   options: StringOption[];
 }
-export interface StringOption {
-  condition: string;
-  prompt?: string;
-  border?: boolean;
-  border_color?: BorderColor;
-  pre_border_effects?: Effect[];
-  repeatable?: boolean;
-  effects?: Effect[];
-  steps?: string[];
-}
 export interface ScenarioDataPlayerCountCondition {
   type: "scenario_data";
   scenario_data: "player_count";
   options: NumOption[];
-}
-export interface CampaignDataStandaloneCondition {
-  type: "campaign_data";
-  campaign_data: "standalone";
-  options: BoolOption[];
 }
 export interface CampaignDataDifficultyCondition {
   type: "campaign_data";
@@ -855,12 +863,6 @@ export interface CampaignDataDifficultyCondition {
 export interface InvestigatorCardCondition {
   type: "has_card";
   investigator: "each";
-  card: string;
-  options: BoolOption[];
-}
-export interface BinaryCardCondition {
-  type: "has_card";
-  investigator: "defeated" | "any";
   card: string;
   options: BoolOption[];
 }
@@ -926,20 +928,6 @@ export interface BasicTraumaCondition {
   trauma: "physical" | "mental" | "alive";
   options: BoolOption[];
 }
-export interface CampaignDataInvestigatorCondition {
-  type: "campaign_data";
-  campaign_data: "investigator";
-  investigator_data: "trait" | "faction" | "code";
-  exclude_investigators?: string[];
-  options: StringOption[];
-  default_option?: Option;
-}
-export interface CampaignDataInvestigatorStatusCondition {
-  type: "campaign_data";
-  campaign_data: "investigator_status";
-  status: "not_eliminated";
-  options: BoolOption[];
-}
 export interface CampaignDataCycleCondition {
   type: "campaign_data";
   campaign_data: "cycle";
@@ -962,6 +950,25 @@ export interface ScenarioDataInvestigatorStatusCondition {
   scenario_data: "investigator_status";
   investigator: "alive" | "defeated" | "not_defeated" | "resigned" | "not_resigned";
   options: BoolOption[];
+}
+export interface LocationCondition {
+  type: "location";
+  status: "visited" | "current";
+  location: string;
+  options: BoolOption[];
+}
+export interface BranchStep {
+  id: string;
+  type: "branch";
+  border_only?: boolean;
+  border_color?: BorderColor;
+  hidden?: boolean;
+  loop?: boolean;
+  text?: string;
+  title?: string;
+  condition: Condition;
+  bullet_type?: BulletType;
+  narration?: Narration;
 }
 export interface CampaignLogInvestigatorCountCondition {
   type: "campaign_log_investigator_count";
@@ -1023,12 +1030,6 @@ export interface CampaignLogCardsSwitchCondition {
   section: string;
   id: string;
   options: StringOption[];
-}
-export interface LocationCondition {
-  type: "location";
-  status: "visited" | "current";
-  location: string;
-  options: BoolOption[];
 }
 export interface InvestigatorCampaignLogCardsCondition {
   type: "investigator_campaign_log_cards";
