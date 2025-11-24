@@ -194,7 +194,12 @@ export function AudioPlayerProvider({ children, initialPlaybackRate = 1.0 }: Aud
   }, [currentIndex, queue.length, loadTrackAtIndex, player]);
 
   const pause = useCallback(() => {
-    player.pause();
+    try {
+      player.pause();
+    } catch (error) {
+      // Player may have been released - log the error
+      console.log('Error pausing player:', error);
+    }
   }, [player]);
 
   const skipToNext = useCallback(() => {
@@ -263,8 +268,18 @@ export function AudioPlayerProvider({ children, initialPlaybackRate = 1.0 }: Aud
   }, [currentIndex]);
 
   const reset = useCallback(() => {
-    player.pause();
-    player.remove();
+    try {
+      player.pause();
+    } catch (error) {
+      // Player may have already been released - ignore the error
+      console.log('Error pausing player during reset:', error);
+    }
+    try {
+      player.remove();
+    } catch (error) {
+      // Player may have already been released - ignore the error
+      console.log('Error removing player during reset:', error);
+    }
     setQueueState([]);
     setCurrentIndex(-1);
   }, [player]);

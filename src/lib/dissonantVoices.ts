@@ -54,7 +54,7 @@ export function signInFlow(): Promise<SignInResult> {
 }
 
 export async function signOutFlow() {
-  Keychain.resetInternetCredentials({ service: 'dissonantvoices' });
+  Keychain.resetInternetCredentials('dissonantvoices');
 }
 
 interface DissonantVoicesAuthResponse {

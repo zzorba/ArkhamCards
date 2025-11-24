@@ -63,7 +63,7 @@ export default function CampaignDrawWeaknessDialog() {
   const route = useRoute<RouteProp<RootStackParamList, 'Dialog.CampaignDrawWeakness'>>();
   const navigation = useNavigation();
   const { saveWeakness, campaignId, alwaysReplaceRandomBasicWeakness } = route.params;
-  const { borderStyle } = useContext(StyleContext);
+  const { borderStyle, colors } = useContext(StyleContext);
   const dispatch: DeckDispatch = useDispatch();
   const deckActions = useDeckActions();
   const { userId } = useContext(ArkhamCardsAuthContext);
@@ -105,20 +105,28 @@ export default function CampaignDrawWeaknessDialog() {
   }, [navigation, route.params.campaignId]);
 
   const showEditWeaknessDialogPressed = useMemo(() => throttle(showEditWeaknessDialog, 200), [showEditWeaknessDialog]);
+  const goBack = useCallback(() => navigation.goBack(), [navigation]);
+
   useLayoutEffect(() => {
-    if (!route.params.deckSlots) {
-      navigation.setOptions({
-        headerRight: () => (
-          <HeaderButton
-            iconName="edit"
-            color={COLORS.M}
-            accessibilityLabel={t`Edit Assigned Weaknesses`}
-            onPress={showEditWeaknessDialogPressed}
-          />
-        ),
-      })
-    }
-  }, [route.params.deckSlots, navigation, showEditWeaknessDialogPressed]);
+    navigation.setOptions({
+      headerLeft: () => (
+        <HeaderButton
+          iconName="dismiss"
+          color={colors.M}
+          accessibilityLabel={t`Close`}
+          onPress={goBack}
+        />
+      ),
+      headerRight: !route.params.deckSlots ? () => (
+        <HeaderButton
+          iconName="edit"
+          color={COLORS.M}
+          accessibilityLabel={t`Edit Assigned Weaknesses`}
+          onPress={showEditWeaknessDialogPressed}
+        />
+      ) : undefined,
+    })
+  }, [route.params.deckSlots, navigation, showEditWeaknessDialogPressed, goBack, colors]);
 
   const selectDeck = useCallback(async(deck: Deck) => {
     const id = getDeckId(deck);

@@ -45,10 +45,14 @@ export default function DeckDescriptionView() {
   const { mode } = useDeckEditState(parsedDeckObj);
   const { deck, deckEdits, parsedDeck } = parsedDeckObj;
   const factionColor = useMemo(() => colors.faction[parsedDeck?.faction ?? 'neutral'].background, [parsedDeck, colors.faction]);
-  const [description, setDescription] = useState(deckEdits?.descriptionChange || deck?.description_md || '');
+  const descriptionValue = useMemo(
+    () => deckEdits?.descriptionChange || deck?.description_md || '',
+    [deckEdits?.descriptionChange, deck?.description_md]
+  );
+  const [description, setDescription] = useState(descriptionValue);
   useEffect(() => {
-    setDescription(deckEdits?.descriptionChange || deck?.description_md || '');
-  }, [deck, deckEdits]);
+    setDescription(descriptionValue);
+  }, [descriptionValue]);
   const [edit, toggleEdit] = useFlag(false);
 
   useLayoutEffect(() => {
