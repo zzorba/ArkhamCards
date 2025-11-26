@@ -9,7 +9,6 @@
 
 /credentials.json
 
-*/sentry.properties
 # VSCode
 .vscode/
 # Xcode

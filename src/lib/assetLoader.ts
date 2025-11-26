@@ -2,6 +2,7 @@ import { Asset } from 'expo-asset';
 import * as FileSystem from 'expo-file-system/legacy';
 
 const assetCache: { [key: string]: any } = {};
+const pendingLoads: { [key: string]: Promise<any> | undefined } = {};
 
 // Map of asset keys to their require modules
 // These files are registered via expo-asset plugin in app.json
@@ -115,32 +116,50 @@ export async function loadAsset<T = any>(assetKey: string): Promise<T> {
     return assetCache[assetKey];
   }
 
+  // Check if already loading
+  if (pendingLoads[assetKey]) {
+    return pendingLoads[assetKey];
+  }
+
   const assetModule = ASSET_MODULES[assetKey];
   if (!assetModule) {
     throw new Error(`Asset ${assetKey} not found`);
   }
 
-  // Load the asset and download to local cache
-  const asset = Asset.fromModule(assetModule);
-  await asset.downloadAsync();
+  // Start loading and cache the promise
+  const loadPromise = (async () => {
+    try {
+      // Load the asset and download to local cache
+      const asset = Asset.fromModule(assetModule);
+      await asset.downloadAsync();
 
-  if (!asset.localUri) {
-    throw new Error(`Failed to download asset ${assetKey}`);
-  }
+      if (!asset.localUri) {
+        throw new Error(`Failed to download asset ${assetKey}`);
+      }
 
-  // Read and parse the JSON file
-  const content = await FileSystem.readAsStringAsync(asset.localUri);
-  const json = JSON.parse(content);
+      // Read and parse the JSON file
+      const content = await FileSystem.readAsStringAsync(asset.localUri);
+      const json = JSON.parse(content);
 
-  // Cache the parsed result
-  assetCache[assetKey] = json;
-  return json;
+      // Cache the parsed result
+      assetCache[assetKey] = json;
+      return json;
+    } finally {
+      // Clean up pending load regardless of success or failure
+      delete pendingLoads[assetKey];
+    }
+  })();
+
+  pendingLoads[assetKey] = loadPromise;
+  return loadPromise;
 }
 
 export function clearAssetCache(assetKey?: string) {
   if (assetKey) {
     delete assetCache[assetKey];
+    delete pendingLoads[assetKey];
   } else {
     Object.keys(assetCache).forEach(key => delete assetCache[key]);
+    Object.keys(pendingLoads).forEach(key => delete pendingLoads[key]);
   }
 }

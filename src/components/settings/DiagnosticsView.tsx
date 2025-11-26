@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import database from '@react-native-firebase/database';
-import * as Sentry from '@sentry/react-native';
+import crashlytics from '@react-native-firebase/crashlytics';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 import { Image } from 'expo-image';
@@ -171,7 +171,7 @@ export default function DiagnosticsView() {
   }, [clearDatabase, doSyncCards]);
 
   const crash = useCallback(() => {
-    Sentry.nativeCrash();
+    crashlytics().crash();
   }, []);
 
   const setDissonantVoicesToken = useCallback(() => {

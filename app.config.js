@@ -94,7 +94,7 @@ module.exports = {
         'android.permission.RECORD_AUDIO',
         'android.permission.MODIFY_AUDIO_SETTINGS',
       ],
-      versionCode: 4195530,
+      versionCode: 4195535,
     },
     plugins: [
       [
@@ -114,16 +114,9 @@ module.exports = {
           ],
         },
       ],
-      [
-        '@sentry/react-native/expo',
-        {
-          url: 'https://sentry.io/',
-          project: 'react-native',
-          organization: 'arkham-cards',
-        },
-      ],
       '@react-native-firebase/app',
       '@react-native-firebase/auth',
+      '@react-native-firebase/crashlytics',
       [
         'expo-build-properties',
         {

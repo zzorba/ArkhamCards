@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { registerRootComponent } from 'expo';
-import * as Sentry from '@sentry/react-native';
+import crashlytics from '@react-native-firebase/crashlytics';
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistCache } from 'apollo-cache-persist';
@@ -21,20 +21,14 @@ import { store, persistor } from './src/application/store';
 import createApolloClient from './src/data/apollo/createApolloClient';
 import AppNavigator from './src/navigation/AppNavigator';
 
-const navigationIntegration = Sentry.reactNavigationIntegration();
-
 if (__DEV__) {
   // Adds messages only in a dev environment
   loadDevMessages();
   loadErrorMessages();
 }
 
-Sentry.init({
-  dsn: 'https://fdad4da29224c7fd11ee224a94b1ba0c@o4509060598530048.ingest.us.sentry.io/4509060599316480',
-  integrations: [navigationIntegration],
-  // uncomment the line below to enable Spotlight (https://spotlightjs.com)
-  // spotlight: __DEV__,
-});
+// Enable Crashlytics collection (enabled by default, but explicitly set for clarity)
+crashlytics().setCrashlyticsCollectionEnabled(true);
 
 // Initialize Firebase if not already initialized
 console.log('Firebase apps before init:', getApps().length);
@@ -90,7 +84,7 @@ function App() {
   const storeProps = { redux: store, persistor: persistor, apollo: apolloClient, anonApollo: anonClient };
 
   return (
-    <AppNavigator store={storeProps} navigationIntegration={navigationIntegration} />
+    <AppNavigator store={storeProps} />
   );
 }
 database().setPersistenceEnabled(true);

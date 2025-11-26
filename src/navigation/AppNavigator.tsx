@@ -112,7 +112,7 @@ import HeaderTitle from '@components/core/HeaderTitle';
 
 // App-level imports
 import MyProvider from '@app/MyProvider';
-import * as Sentry from '@sentry/react-native';
+import crashlytics from '@react-native-firebase/crashlytics';
 import { maybeSaveAutomaticBackup } from '@app/autoBackup';
 import { useLocalizedString } from '@lib/i18n/useLocalizedString';
 
@@ -133,7 +133,6 @@ import {
   TabParamList,
   BasicStackParamList,
 } from './types';
-import type { Integration } from '@sentry/core';
 
 const Tab = createBottomTabNavigator<TabParamList>();
 const CardsStack = createNativeStackNavigator<CardsStackParamList>();
@@ -196,7 +195,7 @@ function useAppInitialization(navigationRef: React.RefObject<NavigationContainer
 
     async function checkCrashAndInitialize() {
       try {
-        const previousCrash = await Sentry.crashedLastRun();
+        const previousCrash = await crashlytics().didCrashOnPreviousExecution();
         if (previousCrash && !__DEV__ && mounted) {
           setSafeModeActive(true);
           // Navigate to safe mode
@@ -857,15 +856,14 @@ function TabNavigatorInner() {
   );
 }
 
-export default function AppNavigator({ store, navigationIntegration }: {
+export default function AppNavigator({ store }: {
   store: { redux: AppState; persistor: Persistor; apollo: ApolloClient<unknown>; anonApollo: ApolloClient<unknown> };
-  navigationIntegration?: Integration & { registerNavigationContainer: (ref: unknown) => void };
 }) {
   const navigationRef = useRef<NavigationContainerRef<RootStackParamList>>(null);
 
   return (
     <MyProvider store={store}>
-      <AppNavigatorInner navigationRef={navigationRef} navigationIntegration={navigationIntegration} />
+      <AppNavigatorInner navigationRef={navigationRef} />
     </MyProvider>
   );
 }
@@ -1004,9 +1002,8 @@ function RootStackNavigator() {
   );
 }
 
-function AppNavigatorInner({ navigationRef, navigationIntegration }: {
+function AppNavigatorInner({ navigationRef }: {
   navigationRef: React.RefObject<NavigationContainerRef<RootStackParamList> | null>;
-  navigationIntegration?: Integration & { registerNavigationContainer: (ref: unknown) => void };
 }) {
   const themeOverride = useSelector((state: AppState) => getThemeOverride(state));
   const system = !themeOverride;
@@ -1033,51 +1030,55 @@ function AppNavigatorInner({ navigationRef, navigationIntegration }: {
     },
   };
 
-  const onReady = useCallback(() => {
-    navigationIntegration?.registerNavigationContainer(navigationRef);
-  }, [navigationIntegration, navigationRef]);
-
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.background }}>
-      <NavigationContainer
-        ref={navigationRef}
-        linking={linking}
-        onReady={onReady}
-        theme={{
-          dark: darkMode,
-          colors: {
-            primary: colors.D30,
-            background: colors.background,
-            card: colors.L30,
-            text: colors.darkText,
-            border: colors.divider,
-            notification: colors.D30,
-          },
-          fonts: {
-            regular: {
-              fontFamily: 'Alegreya-Regular',
-              fontWeight: 'normal',
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.background }}>
+        <NavigationContainer
+          ref={navigationRef}
+          onStateChange={(state) => {
+            if (state) {
+              const currentRoute = navigationRef.current?.getCurrentRoute();
+              if (currentRoute?.name) {
+                crashlytics().log(`Navigation: ${currentRoute.name}`);
+                crashlytics().setAttribute('current_screen', currentRoute.name);
+              }
+            }
+          }}
+          linking={linking}
+          theme={{
+            dark: darkMode,
+            colors: {
+              primary: colors.D30,
+              background: colors.background,
+              card: colors.L30,
+              text: colors.darkText,
+              border: colors.divider,
+              notification: colors.D30,
             },
-            medium: {
-              fontFamily: 'Alegreya-Medium',
-              fontWeight: 'normal',
+            fonts: {
+              regular: {
+                fontFamily: 'Alegreya-Regular',
+                fontWeight: 'normal',
+              },
+              medium: {
+                fontFamily: 'Alegreya-Medium',
+                fontWeight: 'normal',
+              },
+              bold: {
+                fontFamily: 'Alegreya-Medium',
+                fontWeight: 'normal',
+              },
+              heavy: {
+                fontFamily: 'Alegreya-Medium',
+                fontWeight: 'normal',
+              },
             },
-            bold: {
-              fontFamily: 'Alegreya-Medium',
-              fontWeight: 'normal',
-            },
-            heavy: {
-              fontFamily: 'Alegreya-Medium',
-              fontWeight: 'normal',
-            },
-          },
-        }}
-      >
-        <SafeAreaProvider>
+          }}
+        >
           <RootStackNavigator />
-        </SafeAreaProvider>
-      </NavigationContainer>
-      <Toast config={toastConfig} />
-    </GestureHandlerRootView>
+        </NavigationContainer>
+        <Toast config={toastConfig} />
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 }
