@@ -32,7 +32,8 @@ export type SlotCodeType =
   | 'accessory'
   | 'body'
   | 'ally'
-  | 'tarot';
+  | 'tarot'
+  | 'head';
 
 export function asSlotCodeType(
   val: string | undefined
@@ -49,6 +50,7 @@ export function asSlotCodeType(
     case 'body':
     case 'ally':
     case 'tarot':
+    case 'head':
       return val;
     default:
       return undefined;
@@ -64,6 +66,7 @@ export const SLOTS: SlotCodeType[] = [
   'body',
   'ally',
   'tarot',
+  'head',
 ];
 
 export type FactionCodeType =

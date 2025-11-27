@@ -126,6 +126,8 @@ function groupAssets(
         return t`Accessory`;
       case 'Body':
         return t`Body`;
+      case 'Head':
+        return t`Head`;
       case 'Body. Hand x2':
         return t`Body. Hand x2`;
       case 'Ally. Arcane':

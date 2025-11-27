@@ -28,6 +28,8 @@ function Icon({ slot, inverted, color, scale }: { slot: string; inverted?: boole
       return <CardIcon name={`hand${inverted ? '_inverted' : ''}`} size={22 * scale} color={color} />;
     case 'tarot':
       return <CardIcon name={`tarot${inverted ? '_inverted' : ''}`} size={26 * scale} color={color} />;
+    case 'head':
+      return <CardIcon name={`head${inverted ? '_inverted' : ''}`} size={26 * scale} color={color} />;
     default:
       return <Text>{slot}</Text>;
   }

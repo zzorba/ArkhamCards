@@ -27,6 +27,7 @@ export function slotsTranslations() {
     tarot: t`Tarot`,
     'hand x2': t`Hand x2`,
     'arcane x2': t`Arcane x2`,
+    'head': t`Head`,
   };
 }
 
