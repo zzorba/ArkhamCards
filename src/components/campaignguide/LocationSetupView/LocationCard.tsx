@@ -91,7 +91,7 @@ function LocationCardImage({ code, back, name, width, height, placeholder, toggl
         source={{
           uri: url,
         }}
-        resizeMode="contain"
+        contentFit="contain"
       />
     </ToolTip>
   );

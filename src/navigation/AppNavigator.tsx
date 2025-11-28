@@ -8,6 +8,7 @@ import { t } from 'ttag';
 import Toast, { BaseToast, ErrorToast, ToastConfig } from 'react-native-toast-message';
 
 import AppIcon from '@icons/AppIcon';
+import analytics from '@react-native-firebase/analytics';
 
 // Screen Components - Tab root screens
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
@@ -1011,6 +1012,7 @@ function AppNavigatorInner({ navigationRef }: {
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const toastConfig = useToastConfig();
   useAppInitialization(navigationRef);
+  const routeNameRef = useRef<string | undefined>();
 
   const linking = {
     prefixes: ['arkhamcards://', 'dissonantvoices://'],
@@ -1035,12 +1037,33 @@ function AppNavigatorInner({ navigationRef }: {
       <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.background }}>
         <NavigationContainer
           ref={navigationRef}
-          onStateChange={(state) => {
+          onReady={() => {
+            const currentRoute = navigationRef.current?.getCurrentRoute();
+            if (currentRoute?.name) {
+              routeNameRef.current = currentRoute.name;
+            }
+          }}
+          onStateChange={async (state) => {
             if (state) {
+              const previousRouteName = routeNameRef.current;
               const currentRoute = navigationRef.current?.getCurrentRoute();
-              if (currentRoute?.name) {
-                crashlytics().log(`Navigation: ${currentRoute.name}`);
-                crashlytics().setAttribute('current_screen', currentRoute.name);
+              const currentRouteName = currentRoute?.name;
+
+              if (currentRouteName) {
+                // Log to Crashlytics
+                crashlytics().log(`Navigation: ${currentRouteName}`);
+                crashlytics().setAttribute('current_screen', currentRouteName);
+
+                // Log to Firebase Analytics
+                if (previousRouteName !== currentRouteName) {
+                  await analytics().logScreenView({
+                    screen_name: currentRouteName,
+                    screen_class: currentRouteName,
+                  });
+                }
+
+                // Save the current route name for next comparison
+                routeNameRef.current = currentRouteName;
               }
             }
           }}

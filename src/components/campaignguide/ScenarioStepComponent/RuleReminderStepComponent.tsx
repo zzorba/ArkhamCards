@@ -33,7 +33,7 @@ function RuleImage({ scale, width, image, text }: { text?: string; scale: 'full'
         source={{
           uri: `https://img2.arkhamcards.com${image.uri}`,
         }}
-        resizeMode="cover"
+        contentFit="cover"
         style={{ width: theWidth, height: (theWidth * image.ratio) }}
       />
       { !!text && (

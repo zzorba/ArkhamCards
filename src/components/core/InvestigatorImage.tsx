@@ -241,7 +241,7 @@ function InvestigatorImage({
           source={{
             uri: imgUri,
           }}
-          resizeMode="contain"
+          contentFit="contain"
         />
       );
     }

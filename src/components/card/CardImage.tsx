@@ -53,7 +53,7 @@ export default function CardImage({ card, width, superCompact }: Props) {
         source={{
           uri: url,
         }}
-        resizeMode="contain"
+        contentFit="contain"
       />
     );
   }

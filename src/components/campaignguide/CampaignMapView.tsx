@@ -555,7 +555,7 @@ function DossierImage({
           source={{
             uri: `https://img2.arkhamcards.com${uri}`,
           }}
-          resizeMode="cover"
+          contentFit="cover"
           style={{ width: width - 8 * 2, height: (width * ratio) - 8 * 2 }}
         />
       </View>

@@ -73,7 +73,7 @@ export default function TarotCardComponent({ card, width, flipped, inverted, onF
             source={{
               uri: 'https://img2.arkhamcards.com/tarot/tarot_back.jpg',
             }}
-            resizeMode="contain"
+            contentFit="contain"
           />
           <View style={{ overflow: 'hidden', backgroundColor: dark20, width, height, position: 'relative', borderRadius: 16, borderWidth: 2, borderColor: colors.faction.mythos.border }}>
             <FastImage
@@ -81,7 +81,7 @@ export default function TarotCardComponent({ card, width, flipped, inverted, onF
               source={{
                 uri: `https://img2.arkhamcards.com/tarot/tarot_${card.position}.jpg`,
               }}
-              resizeMode="contain"
+              contentFit="contain"
             />
             { width > 150 ? (
               <>

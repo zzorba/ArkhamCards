@@ -38,7 +38,7 @@ module.exports = {
   expo: {
     name: 'ArkhamCards',
     slug: 'arkhamcards',
-    version: '6.0.2',
+    version: '6.0.3',
     jsEngine: 'hermes',
     orientation: 'portrait',
     userInterfaceStyle: 'automatic',
@@ -97,6 +97,7 @@ module.exports = {
       versionCode: 4195535,
     },
     plugins: [
+      './plugins/withRNScreensFragmentFactory.js',
       [
         'react-native-edge-to-edge',
         {
@@ -123,6 +124,9 @@ module.exports = {
           ios: {
             useFrameworks: 'static',
             deploymentTarget: '15.1',
+            podfileProperties: {
+              RNFirebaseAnalyticsWithoutAdIdSupport: true,
+            },
           },
           android: {
             compileSdkVersion: 35,

@@ -106,7 +106,7 @@ function ImageContent({ card }: { card: Card }) {
           source={{
             uri: url,
           }}
-          resizeMode="contain"
+          contentFit="contain"
         />
       </View>
     );
@@ -120,7 +120,7 @@ function ImageContent({ card }: { card: Card }) {
           source={{
             uri: url,
           }}
-          resizeMode="contain"
+          contentFit="contain"
         />
       </View>
     </View>
