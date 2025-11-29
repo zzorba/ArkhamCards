@@ -9181,7 +9181,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "당신이 위치한 장소의 세로줄 번호",
           "min": 1
         }
       },
@@ -9209,7 +9209,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "당신이 위치한 장소의 세로줄 번호",
           "min": 1,
           "scale": 2
         }
@@ -9242,7 +9242,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "당신이 위치한 장소의 세로줄 번호",
           "min": 1
         }
       },
@@ -9270,7 +9270,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "당신이 위치한 장소의 세로줄 번호",
           "min": 1,
           "scale": 2
         }
@@ -9303,7 +9303,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "당신이 위치한 장소의 세로줄 번호",
           "min": 1
         }
       },
@@ -9331,7 +9331,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Your location's column number",
+          "prompt": "당신이 위치한 장소의 세로줄 번호",
           "min": 1,
           "scale": 2
         }
@@ -9364,7 +9364,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current day number",
+          "prompt": "현재 날짜",
           "min": 1
         }
       },
@@ -9377,7 +9377,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "이번 테스트가 <b>협상</b> 시도임",
               "modified_value": {
                 "modifier": "auto_succeed"
               }
@@ -9394,7 +9394,7 @@
           },
           "options": [
             {
-              "prompt": "Fewer than 3 cards in hand",
+              "prompt": "당신의 손에 카드가 3장 미만",
               "modified_value": {
                 "modifier": 0
               }
@@ -9411,7 +9411,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "이번 테스트가 <b>협상</b> 시도임",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -9426,7 +9426,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The current day number",
+          "prompt": "현재 날짜",
           "min": 1,
           "adjustment": 1
         }
@@ -9440,7 +9440,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "이번 테스트가 <b>협상</b> 시도임",
               "modified_value": {
                 "modifier": 1
               }
@@ -9457,7 +9457,7 @@
           },
           "options": [
             {
-              "prompt": "Fewer than 2 cards in hand",
+              "prompt": "당신의 손에 카드가 2장 미만임",
               "modified_value": {
                 "modifier": -2
               }
@@ -9474,7 +9474,7 @@
           },
           "options": [
             {
-              "prompt": "<b>Parley</b> attempt",
+              "prompt": "이번 테스트가 <b>협상</b> 시도임",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -9493,7 +9493,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current floor number",
+          "prompt": "당신이 위치한 장소의 층 번호",
           "min": 1
         }
       },
@@ -9521,7 +9521,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current floor number",
+          "prompt": "당신이 위치한 장소의 층 번호",
           "min": 1,
           "scale": 2
         }
@@ -9554,7 +9554,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Insect]] enemies in play and in the victory display (rounded up)",
+          "prompt": "플레이 영역과 승점 더미에 있는 [[곤충]] 적 개수의 절반 (소수점 올림)",
           "min": 0
         }
       },
@@ -9579,7 +9579,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Lair]] location",
+              "prompt": "당신이 [[은거처]] 장소에 있음",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1
@@ -9594,7 +9594,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Insect]] enemies in play and in the victory display",
+          "prompt": "플레이 영역과 승점 더미에 있는 [[곤충]] 적 개수의 절반",
           "min": 0
         }
       },
@@ -9619,7 +9619,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Lair]] location",
+              "prompt": "당신이 [[은거처]] 장소에 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9637,7 +9637,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of [[Sunken]] locations in play (rounded up)",
+          "prompt": "플레이 상태인 [[가라앉은]] 장소 개수의 절반 (소수점 올림)",
           "min": 0
         }
       },
@@ -9665,7 +9665,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Sunken]] locations in play",
+          "prompt": "플레이 상태인 [[가라앉은]] 장소 개수",
           "min": 0
         }
       },
@@ -9697,7 +9697,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of revealed [[Cave]] locations in play (rounded up)",
+          "prompt": "플레이 상태이고 공개된 [[동굴]] 장소 개수의 절반 (소수점 올림)",
           "min": 0
         }
       },
@@ -9733,7 +9733,7 @@
           },
           "options": [
             {
-              "prompt": "An [[Abomination]] enemy at your location",
+              "prompt": "당신이 위치한 장소에 [[흉물]] 적이 있음",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -9748,7 +9748,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of revealed [[Cave]] locations in play",
+          "prompt": "플레이 상태이고 공개된 [[동굴]] 장소 개수",
           "min": 0
         }
       },
@@ -9784,7 +9784,7 @@
           },
           "options": [
             {
-              "prompt": "An [[Abomination]] enemy at your location",
+              "prompt": "당신이 위치한 장소에 [[흉물]] 적이 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -9802,7 +9802,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current darkness level",
+          "prompt": "현재 어둠 수치",
           "min": 0
         }
       },
@@ -9830,7 +9830,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current darkness level",
+          "prompt": "현재 어둠 수치",
           "min": 0,
           "scale": 2
         }
@@ -9863,7 +9863,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the number of doom in play (rounded up)",
+          "prompt": "플레이 상태인 파멸 개수의 절반 (소수점 올림)",
           "min": 0
         }
       },
@@ -9892,7 +9892,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of doom in play",
+          "prompt": "플레이 상태인 파멸 개수",
           "min": 0
         }
       },
@@ -9924,7 +9924,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current act number",
+          "prompt": "현재 주요목적 번호",
           "min": 1,
           "adjustment": 1
         }
@@ -9944,7 +9944,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on your investigator card",
+              "prompt": "당신은 자신의 조사자 카드에 파멸을 1개 놓음",
               "modified_value": {
                 "modifier": 0
               }
@@ -9961,7 +9961,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against Cosmic Emissary",
+              "prompt": "이번 능력 테스트가 ‘우주에서 온 특사’를 대상으로 한 전투/회피 시도였음",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -9976,7 +9976,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Colour]] enemies in play",
+          "prompt": "플레이 상태인 [[색채]] 적의 수",
           "min": 0
         }
       },
@@ -9995,7 +9995,7 @@
           },
           "options": [
             {
-              "prompt": "Place 1 doom on your investigator card",
+              "prompt": "당신은 자신의 조사자 카드에 파멸을 1개 놓음",
               "modified_value": {
                 "modifier": -3
               }
@@ -10012,7 +10012,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against Cosmic Emissary",
+              "prompt": "이번 능력 테스트가 ‘우주에서 온 특사’를 대상으로 한 전투/회피 시도였음",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -10407,7 +10407,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current act number",
+          "prompt": "현재 주요목적 번호",
           "min": 1
         }
       },
@@ -10435,7 +10435,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Current act number",
+          "prompt": "현재 주요목적 번호",
           "min": 1,
           "scale": 2
         }
@@ -11485,7 +11485,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of measures",
+          "prompt": "악절 개수",
           "min": 0
         }
       },
@@ -11504,7 +11504,7 @@
           },
           "options": [
             {
-              "prompt": "3 or more classes among cards you control",
+              "prompt": "조종하는 카드 가운데 서로 다른 역할군이 3가지 이상임",
               "modified_value": {
                 "modifier": -5
               }
@@ -11521,7 +11521,7 @@
           },
           "options": [
             {
-              "prompt": "Sinister Soloist at your location",
+              "prompt": "‘사악한 바이올린 독주자’가 당신이 위치한 장소에 있음",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -11536,7 +11536,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "1 more than the number of measures",
+          "prompt": "악절 개수+1",
           "min": 1
         }
       },
@@ -11555,7 +11555,7 @@
           },
           "options": [
             {
-              "prompt": "3 or more classes among cards you control",
+              "prompt": "조종하는 카드 가운데 서로 다른 역할군이 3가지 이상임",
               "modified_value": {
                 "modifier": -6
               }
@@ -11572,7 +11572,7 @@
           },
           "options": [
             {
-              "prompt": "Sinister Soloist at your location",
+              "prompt": "‘사악한 바이올린 독주자’가 당신이 위치한 장소에 있음",
               "modified_value": {
                 "modifier": "auto_fail"
               }

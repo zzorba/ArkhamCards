@@ -321,7 +321,7 @@
   },
   {
     "id": "enthralling_encore",
-    "name": "Enthralling Encore"
+    "name": "매혹적인 앙코르"
   },
   {
     "id": "eoe_epilogue",

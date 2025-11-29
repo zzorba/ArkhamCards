@@ -2171,7 +2171,7 @@
         "code": "60233",
         "deck_limit": 0,
         "text": "금지.",
-        "replacement_text": "Forbidden. Uses (6 secrets). Limit 1 per deck.\n[fast] Spend 1 secret: You get +2 skill value for this test.\n[fast] Spend 2 secrets: Draw 2 cards.\n[fast] Spend 3 secrets: Discover 1 clue at any location.\n][fast] Spend 4 secrets: Deal 3 damage to an enemy engaged with you."
+        "replacement_text": "금지. 사용(비밀 6개). 덱 당 1장 한정.\n[free] 비밀을 1개 소비합니다: 당신은 이번 능력 테스트에서 +2 능력값을 얻습니다.\n[free] 비밀을 2개 소비합니다: 카드를 2장 뽑습니다.\n[free] 비밀을 3개 소비합니다: 아무 장소 한 곳에서 단서를 1개 발견합니다.\n[free] 비밀을 4개 소비합니다: 당신과 교전 중인 적 하나에게 피해를 3 줍니다."
       },
       {
         "code": "07197",
