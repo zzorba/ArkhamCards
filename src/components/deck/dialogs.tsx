@@ -433,6 +433,7 @@ interface PickerItem<T> {
   type?: undefined;
   title: string;
   description?: string;
+  descriptionNode?: React.ReactNode;
   disabled?: boolean;
   selected?: boolean;
   value: T;
@@ -491,6 +492,7 @@ export function usePickerDialog<T>({
             key={idx}
             iconName={item.icon}
             iconNode={item.iconNode}
+            descriptionNode={item.descriptionNode}
             text={item.title}
             description={item.description}
             value={item.value}

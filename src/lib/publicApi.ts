@@ -31,6 +31,7 @@ import Rule from '@data/types/Rule';
 import Database, { SqliteVersion } from '@data/sqlite/Database';
 import TabooSet from '@data/types/TabooSet';
 import FaqEntry from '@data/types/FaqEntry';
+import syncInvestigatorSets from '@data/sqlite/syncInvestigatorSets';
 import {
   ApolloClient,
   ApolloQueryResult,
@@ -291,7 +292,7 @@ async function processCardResult(
   all_cards: ApolloQueryResult<GetPlayerCardsQuery>['data']['all_card'],
   translationData: TranslationData,
   progress: number
-) {
+): Promise<Card[]> {
   updateProgress(progress);
   VERBOSE && console.timeEnd('download');
   VERBOSE && console.log('Download completed!');
@@ -367,6 +368,9 @@ async function processCardResult(
   VERBOSE && console.time('normalCards');
   await insertChunk(sqliteVersion, normalCards, insertCards);
   VERBOSE && console.timeEnd('normalCards');
+
+  // Return all cards for further processing
+  return allCards;
 }
 
 export interface PendingCardUpdates {
@@ -480,6 +484,9 @@ export const syncCards = async function(
     const rules = await db.rules();
     await rules.createQueryBuilder().delete().execute();
 
+    const investigatorSets = await db.investigatorSets();
+    await investigatorSets.createQueryBuilder().delete().execute();
+
     await db.clearCache();
     VERBOSE && console.time('rules');
     await syncRules(db, sqliteVersion, lang);
@@ -494,6 +501,7 @@ export const syncCards = async function(
     updateProgress(0.1);
 
     updateProgress(0.3, Platform.OS === 'ios' ? 5000 : 8000);
+    let allCards: Card[] = [];
     {
       const cardsResponse = await anonClient.query<
         GetPlayerCardsQuery,
@@ -507,7 +515,7 @@ export const syncCards = async function(
         fetchPolicy: 'no-cache',
         canonizeResults: false,
       });
-      await processCardResult(
+      const playerCards = await processCardResult(
         updateProgress,
         db,
         sqliteVersion,
@@ -515,6 +523,7 @@ export const syncCards = async function(
         translationData,
         0.3
       );
+      allCards = [...playerCards];
 
       const allTabooSets = map(cardsResponse.data.taboo_set, (tabooSet) => {
         return TabooSet.fromGQL(tabooSet);
@@ -547,7 +556,7 @@ export const syncCards = async function(
       canonizeResults: false,
     });
 
-    await processCardResult(
+    const encounterCards = await processCardResult(
       updateProgress,
       db,
       sqliteVersion,
@@ -555,9 +564,16 @@ export const syncCards = async function(
       translationData,
       0.7
     );
+    allCards = [...allCards, ...encounterCards];
+
     VERBOSE && console.time('countCards');
     const cardCount = await cards.count();
     VERBOSE && console.timeEnd('countCards');
+
+    // Sync investigator sets after all cards are loaded
+    VERBOSE && console.time('syncInvestigatorSets');
+    await syncInvestigatorSets(db, allCards);
+    VERBOSE && console.timeEnd('syncInvestigatorSets');
 
     const updated = cardsResponse.data.all_card_updated[0];
     return {

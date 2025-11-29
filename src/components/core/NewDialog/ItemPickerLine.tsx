@@ -10,6 +10,7 @@ import LineItem from './LineItem';
 interface Props<T> {
   iconName?: string;
   iconNode?: ReactNode;
+  descriptionNode?: ReactNode;
   rightNode?: ReactNode;
   text: string;
   disabled?: boolean;
@@ -21,7 +22,7 @@ interface Props<T> {
   showDisabledIcons?: boolean;
   indicator?: 'check' | 'radio' | 'none';
 }
-export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange, showDisabledIcons }: Props<T>) {
+export default function ItemPickerLine<T>({ iconName, iconNode, descriptionNode, disabled, text, description, rightNode, selected, last, value, indicator = 'radio', onValueChange, showDisabledIcons }: Props<T>) {
   const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => {
     ReactNativeHapticFeedback.trigger('impactLight');
@@ -45,6 +46,7 @@ export default function ItemPickerLine<T>({ iconName, iconNode, disabled, text, 
       <LineItem
         iconName={iconName}
         iconNode={iconNode}
+        descriptionNode={descriptionNode}
         rightNode={rightNode}
         showDisabledIcons={showDisabledIcons}
         indicatorNode={indicator !== 'none' && (

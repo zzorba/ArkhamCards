@@ -24,6 +24,7 @@ import EncounterSet from '../types/EncounterSet';
 import FaqEntry from '../types/FaqEntry';
 import TabooSet from '../types/TabooSet';
 import Rule from '../types/Rule';
+import InvestigatorSet from '../types/InvestigatorSet';
 import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
@@ -40,6 +41,7 @@ import { ReprintQuantityMigration1671202311300 } from './migration/ReprintQuanti
 import { TabooTextMigration1693598075386 } from './migration/TabooTextMigration';
 import { SideDeckMigration1698073688677 } from './migration/SideDeckMigration';
 import { SpecialtyCardsMigration1726180741370 } from './migration/SpecialtyCardsMigration';
+import { InvestigatorSetMigration1764345197527 } from './migration/InvestigatorSetMigration';
 
 const enhanceQueryResult = (result: QuickSQLite.QueryResult) => {
   if (!result.rows) {
@@ -154,8 +156,9 @@ async function createDatabaseConnection(recreate: boolean) {
       TabooTextMigration1693598075386,
       SideDeckMigration1698073688677,
       SpecialtyCardsMigration1726180741370,
+      InvestigatorSetMigration1764345197527,
     ],
-    entities: [Card, EncounterSet, FaqEntry, TabooSet, Rule],
+    entities: [Card, EncounterSet, FaqEntry, TabooSet, Rule, InvestigatorSet],
   });
   await connection.runMigrations();
   await connection.synchronize(recreate);
@@ -236,6 +239,11 @@ export default class Database {
   async encounterSets(): Promise<Repository<EncounterSet>> {
     const connection = await this.connectionP;
     return connection.getRepository(EncounterSet);
+  }
+
+  async investigatorSets(): Promise<Repository<InvestigatorSet>> {
+    const connection = await this.connectionP;
+    return connection.getRepository(InvestigatorSet);
   }
 
   async addSubscriber(subscriber: EntitySubscriberInterface) {

@@ -1165,6 +1165,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'tablet':
         return this.arkhamIcon('tablet', size, color);
       case 'zcx':
+      case 'zcem':
         return this.circusExMortisIcon('zcx_circus_ex_mortis',size, color);
       case 'zcx_one_night_only':
       case 'zcx_primrose_path':

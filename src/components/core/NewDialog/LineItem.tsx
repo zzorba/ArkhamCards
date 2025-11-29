@@ -10,6 +10,7 @@ import TextWithIcons from '../TextWithIcons';
 interface Props {
   iconName?: string;
   iconNode?: ReactNode;
+  descriptionNode?: ReactNode;
   rightNode?: ReactNode;
   indicatorNode?: ReactNode;
   text: string;
@@ -19,7 +20,7 @@ interface Props {
   showDisabledIcons?: boolean;
 }
 const ARKHAM_ICONS = new Set(['weakness', 'wild']);
-export default function LineItem({ iconName, iconNode, disabled, text, description, rightNode, last, indicatorNode, showDisabledIcons }: Props) {
+export default function LineItem({ iconName, iconNode, descriptionNode, disabled, text, description, rightNode, last, indicatorNode, showDisabledIcons }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const icon = useMemo(() => {
     if (iconNode) {
@@ -42,14 +43,25 @@ export default function LineItem({ iconName, iconNode, disabled, text, descripti
               { (!disabled || !!showDisabledIcons) && icon }
             </View>
           ) }
-          { description ? (
+          { description || descriptionNode ? (
             <View style={styles.column}>
-              <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>
+              <Text style={[typography.menuText, { textAlignVertical: 'center' }]}>
                 { text }
               </Text>
-              <Text style={[typography.cardTraits, { flex: 1 }]} numberOfLines={3} ellipsizeMode="clip">
-                <TextWithIcons size={16} color={colors.lightText} text={description} />
-              </Text>
+              { (!!description || !!descriptionNode) && (
+                <View style={styles.leadRow}>
+                  { !!descriptionNode && (
+                    <View style={space.marginRightXs}>
+                      { descriptionNode }
+                    </View>
+                  ) }
+                  { !!description && (
+                    <Text style={[typography.cardTraits]} numberOfLines={3} ellipsizeMode="clip">
+                      <TextWithIcons size={16} color={colors.lightText} text={description} />
+                    </Text>
+                  ) }
+                </View>
+              ) }
             </View>
           ) : (
             <Text style={[typography.menuText, { textAlignVertical: 'center', flex: 1 }]}>

@@ -9,6 +9,7 @@ import Card from '@data/types/Card';
 import BondedCardsComponent from './BondedCardsComponent';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
+import AlternatePrintingsComponent from './AlternatePrintingsComponent';
 import space, { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useParallelInvestigator } from '@components/core/hooks';
@@ -53,6 +54,7 @@ function InvestigatorInfoComponent({ card, width, simple, showInvestigatorCards 
   }
   return (
     <View style={styles.investigatorContent}>
+      <AlternatePrintingsComponent card={card} />
       { parallelInvestigators.length > 0 && (
         <>
           <CardDetailSectionHeader title={t`Parallel`} />

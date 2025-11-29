@@ -42,6 +42,7 @@ import { useDeckActions } from '@data/remote/decks';
 import useSingleCard from '@components/card/useSingleCard';
 import { useCardMap } from '@components/card/useCardList';
 import specialMetaSlots, { ensureConsistentMeta } from '@data/deck/specialMetaSlots';
+import InvestigatorPrintingControl from '../controls/InvestigatorPrintingControl';
 import useChaosDeckGenerator from '../useChaosDeckGenerator';
 import { parseDeck } from '@lib/parseDeck';
 import useParsedDeckComponent from '../useParsedDeckComponent';
@@ -91,7 +92,7 @@ function NewDeckOptionsDialog({
   login,
 }: LoginStateProps) {
   const route = useRoute<RouteProp<RootStackParamList, 'Deck.NewOptions'>>();
-  const { investigatorId, onCreateDeck, campaignId, isModal, alternateInvestigatorId } = route.params;
+  const { investigatorId: originalInvestigatorId, onCreateDeck, campaignId, isModal, alternateInvestigatorId } = route.params;
   const cardPoolSelector = useMemo(makeCardPoolSelector, []);
   const { cardPoolMode: defaultCardPoolMode, cardPoolPacks: defaultCardPoolPacks } = useSelector(cardPoolSelector);
   const deckActions = useDeckActions();
@@ -102,6 +103,8 @@ function NewDeckOptionsDialog({
   const { backgroundStyle, colors, fontScale, typography, width, shadow } = useContext(StyleContext);
   const [saving, setSaving] = useState(false);
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
+  const [investigatorId, setSelectedInvestigatorId] = useState<string>(originalInvestigatorId);
+
   const [offlineDeck, toggleOfflineDeck] = useFlag(
     investigatorId === CUSTOM_INVESTIGATOR ||
     investigatorId.startsWith('z') ||
@@ -582,6 +585,14 @@ function NewDeckOptionsDialog({
             setParallel={setParallel}
             firstElement={renderNamePicker}
           />
+          { investigator && (
+            <InvestigatorPrintingControl
+              investigator={investigator}
+              selectedCode={investigatorId}
+              onSelectPrinting={setSelectedInvestigatorId}
+              disabled={specialDeckMode === 'starter'}
+            />
+          ) }
         </View>
         { !(investigatorId === CUSTOM_INVESTIGATOR || investigatorId.startsWith('z')) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
@@ -646,10 +657,9 @@ function NewDeckOptionsDialog({
         ) }
       </>
     );
-  }, [investigatorId, signedIn, isCustomContent, randomWeaknessCount, cards,
+  }, [investigatorId, investigator, signedIn, isCustomContent, randomWeaknessCount, cards,
     networkType, isConnected, chaosSlots, specialDeckMode, chaosEditState, chaosCards,
-    parsedChaosDeck,
-    offlineDeck, optionSelected, tabooSetId, requiredCardOptions, meta, typography,
+    parsedChaosDeck, offlineDeck, optionSelected, tabooSetId, requiredCardOptions, meta, typography,
     setTabooSetId, onCardPress, toggleOptionsSelected,toggleOfflineDeck,
     login, refreshNetworkStatus, renderNamePicker, setParallel, updateMeta]);
 
