@@ -15,8 +15,9 @@ import { useFlag, useSettingValue, useSlots, useWeaknessCards } from '@component
 import ToggleFilter from '@components/core/ToggleFilter';
 import StyleContext from '@styles/StyleContext';
 import BasicButton from '@components/core/BasicButton';
-import Card, { cardInCollection } from '@data/types/Card';
+import Card from '@data/types/Card';
 import COLORS from '@styles/colors';
+import { cardInCollection } from '@data/types/cardHelpers';
 
 export interface DrawWeaknessProps {
   investigator: Card | undefined;

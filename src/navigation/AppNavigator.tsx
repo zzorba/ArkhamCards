@@ -1043,7 +1043,7 @@ function AppNavigatorInner({ navigationRef }: {
               routeNameRef.current = currentRoute.name;
             }
           }}
-          onStateChange={async (state) => {
+          onStateChange={async(state) => {
             if (state) {
               const previousRouteName = routeNameRef.current;
               const currentRoute = navigationRef.current?.getCurrentRoute();

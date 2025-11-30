@@ -10,13 +10,14 @@ import { useInvestigatorChoice } from '@components/card/useSingleCard';
 import { combineQueries, NO_BARKHAM_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, NO_DUPLICATES_QUERY, where } from '@data/sqlite/query';
 import { queryForInvestigatorWithoutDeck } from '@lib/InvestigatorRequirements';
 import randomDeck from '@lib/randomDeck';
-import { CardsMap, InvestigatorChoice, cardInCollection } from '@data/types/Card';
+import { CardsMap, InvestigatorChoice } from '@data/types/Card';
 import specialCards from '@data/deck/specialCards';
 import { usePlayerCards, useSettingValue } from '@components/core/hooks';
 import { getPacksInCollection } from '@reducers';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 import { encodeMetaSlots } from '@lib/parseDeck';
 import deepEqual from 'deep-equal';
+import { cardInCollection } from '@data/types/cardHelpers';
 
 interface Props {
   investigatorCode: string;

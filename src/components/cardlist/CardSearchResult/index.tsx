@@ -11,7 +11,6 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import { TouchableOpacity } from '@components/core/Touchables';
 import EncounterIcon from '@icons/EncounterIcon';
 import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
-import Card from '@data/types/Card';
 import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize } from './constants';
 import space, { s, xs } from '@styles/space';
@@ -20,13 +19,14 @@ import { ControlComponent, ControlType } from './ControlComponent';
 import { usePressCallback, useSettingValue } from '@components/core/hooks';
 import AppIcon from '@icons/AppIcon';
 import IconizedText from '@components/core/IconizedText';
+import { LinkedListCard, ListCard } from '@data/types/ListCard';
 
-interface Props {
-  card: Card;
+interface Props<T extends ListCard> {
+  card: T;
   description?: string;
   id?: string;
-  onPress?: (card: Card) => void;
-  onPressId?: (code: string, card: Card) => void;
+  onPress?: (card: T) => void;
+  onPressId?: (code: string, card: T) => void;
   backgroundColor?: string;
   invalid?: boolean;
   control?: ControlType;
@@ -57,7 +57,7 @@ function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
   );
 }
 
-function FactionIcon({ card }: { card: Card }) {
+function FactionIcon({ card }: { card: LinkedListCard }) {
   const { fontScale, colors } = useContext(StyleContext);
   const size = iconSize(fontScale);
   const SMALL_ICON_SIZE = 26 * fontScale;
@@ -105,7 +105,7 @@ function FactionIcon({ card }: { card: Card }) {
   );
 }
 
-function CardIcon({ card }: { card: Card }) {
+function CardIcon({ card }: { card: LinkedListCard }) {
   const { fontScale } = useContext(StyleContext);
   if (card.hidden && card.linked_card) {
     return <CardIcon card={card.linked_card} />;
@@ -135,7 +135,7 @@ function CardIcon({ card }: { card: Card }) {
   );
 }
 
-export default function CardSearchResult(props: Props) {
+export default function CardSearchResult<T extends ListCard>(props: Props<T>) {
   const {
     card,
     id,

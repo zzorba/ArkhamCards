@@ -8,7 +8,6 @@ import { showCard, showDeckModal } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { Deck, TraumaAndCardData } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import useSingleCard from '@components/card/useSingleCard';
 import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
@@ -28,6 +27,7 @@ import { AnimatedCompactInvestigatorRow } from '@components/core/CompactInvestig
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 import { useNavigation } from '@react-navigation/native';
+import { ListCard } from '@data/types/ListCard';
 
 interface Props {
   campaign: MiniCampaignT;
@@ -51,7 +51,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-function StoryAssetRow({ code, onCardPress, last, campaignGuide, count }: { code: string; campaignGuide?: CampaignGuide; last: boolean; count?: number; onCardPress: (card: Card) => void }) {
+function StoryAssetRow({ code, onCardPress, last, campaignGuide, count }: { code: string; campaignGuide?: CampaignGuide; last: boolean; count?: number; onCardPress: (card: ListCard) => void }) {
   const [card, loading] = useSingleCard(code, 'player');
   const description = useMemo(() => {
     return campaignGuide?.card(code)?.description;
@@ -99,7 +99,7 @@ export default function InvestigatorCampaignRow({
   const uploading = useSelector((state: AppState) => uploadingSelector(state, campaign.id, investigator.code));
   const { colors, width, typography } = useContext(StyleContext);
   const { userId } = useContext(ArkhamCardsAuthContext);
-  const onCardPress = useCallback((card: Card) => {
+  const onCardPress = useCallback((card: ListCard) => {
     showCard(navigation, card.code, card, colors, { showSpoilers: true });
   }, [navigation, colors]);
 

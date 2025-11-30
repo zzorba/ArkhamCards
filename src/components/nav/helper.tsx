@@ -14,6 +14,7 @@ import { where } from '@data/sqlite/query';
 import COLORS from '@styles/colors';
 import { ArkhamNavigation } from '@navigation/types';
 import { FactionCodeType } from '@app_constants';
+import { ListCard } from '@data/types/ListCard';
 
 // Unified deck screen options helper
 export function getDeckScreenOptions(
@@ -133,7 +134,7 @@ type ShowCardOptions = {
 export function showCard(
   navigation: ArkhamNavigation,
   code: string,
-  card: Card,
+  card: ListCard,
   colors: ThemeColors,
   options: ShowCardOptions
 ) {
@@ -197,7 +198,7 @@ export function showCardSwipe(
 ) {
   navigation.navigate('Card.Swipe', {
     cardCodes: codes,
-    initialCards,
+    initialCards: undefined,
     initialIndex: index,
     showAllSpoilers: !!showSpoilers,
     tabooSetId,

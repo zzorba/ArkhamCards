@@ -4,21 +4,21 @@ import {
 } from 'react-native';
 
 import CardSearchResult from '../../cardlist/CardSearchResult';
-import Card from '@data/types/Card';
 import { useFlag } from '@components/core/hooks';
+import { ListCard } from '@data/types/ListCard';
 
-interface Props {
-  card: Card;
+interface Props<T extends ListCard> {
+  card: T;
   count: number;
-  onChange?: (card: Card, count: number) => void;
-  onPress?: (card: Card) => void;
+  onChange?: (card: T, count: number) => void;
+  onPress?: (card: T) => void;
   limit: number;
   locked?: boolean;
   last?: boolean;
   disabled?: boolean;
 }
 
-export default function CardToggleRow({ card, count, onChange, onPress, limit, locked, last, disabled }: Props) {
+export default function CardToggleRow<T extends ListCard>({ card, count, onChange, onPress, limit, locked, last, disabled }: Props<T>) {
   const [one, toggleOne] = useFlag(count > 0);
   const [two, toggleTwo] = useFlag(count > 1);
   const [three, toggleThree] = useFlag(count > 2);

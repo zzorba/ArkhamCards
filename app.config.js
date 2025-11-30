@@ -81,6 +81,10 @@ module.exports = {
         UIViewControllerBasedStatusBarAppearance: true,
         ITSAppUsesNonExemptEncryption: false,
       },
+      entitlements: {
+        'com.apple.developer.applesignin': ['Default'],
+        'com.apple.developer.associated-domains': ['webcredentials:arkhamcards.com'],
+      },
       googleServicesFile: './GoogleService-Info.plist',
     },
     android: {

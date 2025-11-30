@@ -35,6 +35,7 @@ import { useAlertDialog } from './dialogs';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import SimpleFab from '@components/core/SimpleFab';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ListCard } from '@data/types/ListCard';
 
 export interface DeckDraftProps {
   id: DeckId;
@@ -93,11 +94,11 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
   item: GridItem;
   card: Card;
   draftHistory: SharedValue<DraftHistory>;
-  onCardPress: (card: Card) => void;
-  onDraft: (card: Card, item: GridItem) => void;
+  onCardPress: (card: ListCard) => void;
+  onDraft: (card: ListCard, item: GridItem) => void;
 }) {
   const { borderStyle } = useContext(StyleContext);
-  const actualOnDraft = useCallback((card: Card) => {
+  const actualOnDraft = useCallback((card: ListCard) => {
     onDraft(card, item);
   }, [onDraft, item]);
   const opacity = useSharedValue(1);
@@ -280,7 +281,7 @@ export default function DeckDraftView() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [in_collection, ignore_collection])
 
-  const onDraft = useCallback((card: Card, item?: GridItem) => {
+  const onDraft = useCallback((card: ListCard, item?: GridItem) => {
     ReactNativeHapticFeedback.trigger('impactMedium');
     if (item && item.draftCycle !== undefined) {
       draftHistory.value = {
@@ -303,7 +304,7 @@ export default function DeckDraftView() {
   const controlForCard = useCallback((item: GridItem, card: Card, cardWidth: number) => {
     return <DraftButton item={item} card={card} cardWidth={cardWidth} onDraft={onDraft} />
   }, [onDraft]);
-  const onCardPress = useCallback((card: Card) => {
+  const onCardPress = useCallback((card: ListCard) => {
     showCard(navigation, card.code, card, colors, { showSpoilers: true });
   }, [navigation, colors]);
 

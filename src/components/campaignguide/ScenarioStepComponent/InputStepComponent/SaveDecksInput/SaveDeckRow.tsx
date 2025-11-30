@@ -30,6 +30,7 @@ import useTraumaSection from '../UpgradeDecksInput/useTraumaSection';
 import AppIcon from '@icons/AppIcon';
 import useDeckUpgradeAction from '@components/deck/useDeckUpgradeAction';
 import { useNavigation } from '@react-navigation/native';
+import { ListCard } from '@data/types/ListCard';
 
 function deckMessage(saved: boolean, hasDeck: boolean, hasAdjustments: boolean, hasDeckChanges: boolean, isOwner: boolean) {
   if (saved) {
@@ -141,7 +142,7 @@ function SaveDeckRow({
     }
   }, [deck, userId, storyAssetDeltas, adjustXp, saveDeck, saveDelayedDeck, saveCampaignLog]);
 
-  const onCardPress = useCallback((card: Card) => {
+  const onCardPress = useCallback((card: ListCard) => {
     showCard(navigation, card.code, card, colors, { showSpoilers: true });
   }, [navigation, colors]);
 

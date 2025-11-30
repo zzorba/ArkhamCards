@@ -9,11 +9,11 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { PossibleAttachmentsCounts } from './AttachmentComponent';
 import { ParsedDeckContext, useEligibleAttachments, useMutableDeckSlotCount } from '@components/deck/DeckEditContext';
-import Card from '@data/types/Card';
 import { AttachableDefinition } from '@actions/types';
+import { ListCard } from '@data/types/ListCard';
 
 interface DeckCardQuantityProps {
-  card: Card;
+  card: ListCard;
   limit: number;
   mode?: 'side' | 'extra' | 'ignore';
   showZeroCount?: boolean;

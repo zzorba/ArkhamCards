@@ -12,6 +12,7 @@ import { AppState, getDeckChecklist } from '@reducers/index';
 import Card from '@data/types/Card';
 import { useAttachableCards } from './useParsedDeckComponent';
 import deepEqual from 'deep-equal';
+import { ListCard } from '@data/types/ListCard';
 
 export type DeckEditContextType = {
   deckId: DeckId | undefined;
@@ -134,7 +135,7 @@ export function DeckEditContextProvider({ children, deckEdits, deckId, investiga
   );
 }
 
-export function useEligibleAttachments(card: Card, attachmentOverride?: AttachableDefinition) {
+export function useEligibleAttachments(card: ListCard, attachmentOverride?: AttachableDefinition) {
   const { deckAttachments } = useContext(DeckEditContext);
   return useMemo(() => (
     attachmentOverride ? [attachmentOverride] :

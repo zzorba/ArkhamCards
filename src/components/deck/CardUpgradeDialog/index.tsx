@@ -14,7 +14,7 @@ import CardUpgradeOption from './CardUpgradeOption';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import { incIgnoreDeckSlot, decIgnoreDeckSlot, incDeckSlot, decDeckSlot, setDeckXpAdjustment } from '@components/deck/actions';
 import DeckValidation from '@lib/DeckValidation';
-import Card, { CardsMap, InvestigatorChoice, cardInCollection } from '@data/types/Card';
+import Card, { CardsMap, InvestigatorChoice } from '@data/types/Card';
 import space, { m } from '@styles/space';
 import DeckNavFooter, { FOOTER_HEIGHT } from '@components/deck/DeckNavFooter';
 import { getPacksInCollection } from '@reducers';
@@ -32,6 +32,7 @@ import { parseMetaSlots } from '@lib/parseDeck';
 import { useCardMap } from '@components/card/useCardList';
 import { useDeck } from '@data/hooks';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { cardInCollection } from '@data/types/cardHelpers';
 
 export interface CardUpgradeDialogProps {
   id: DeckId;

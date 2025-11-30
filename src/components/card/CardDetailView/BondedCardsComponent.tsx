@@ -9,6 +9,7 @@ import FilterBuilder from '@lib/filters';
 import { useTabooSetId } from '@components/core/hooks';
 import useCardsFromQuery from '../useCardsFromQuery';
 import { SortType, DEFAULT_SORT } from '@actions/types';
+import { ListCard } from '@data/types/ListCard';
 
 interface Props {
   cards: Card[];
@@ -32,7 +33,7 @@ export function useBondedToCards(cards: Card[], tabooSetOverride?: number): [Car
   return useCardsFromQuery({ query: bondedToQuery, tabooSetOverride });
 }
 
-export function useBondedFromCards(cards: Card[], sorts?: SortType[], tabooSetOverride?: number): [Card[], boolean] {
+export function useBondedFromCards(cards: ListCard[], sorts?: SortType[], tabooSetOverride?: number): [Card[], boolean] {
   const bondedFromQuery = useMemo(() => {
     const eligibleCards = flatMap(cards, card => card.bonded_name ? [] : [card])
     if (!eligibleCards.length) {

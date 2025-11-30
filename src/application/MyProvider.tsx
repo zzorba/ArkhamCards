@@ -10,8 +10,8 @@ import StyleProvider from '../styles/StyleProvider';
 import LanguageProvider from '../lib/i18n/LanguageProvider';
 import ArkhamCardsAuthProvider from '../lib/ArkhamCardsAuthProvider';
 import ApolloClientContext from '../data/apollo/ApolloClientContext';
-import { PlayerCardProvider } from '@data/sqlite/PlayerCardProvider';
 import { AudioPlayerProvider } from '@lib/audio/AudioPlayerContext';
+import { PlayerCardProviderOnDemand } from '@data/sqlite/PlayerCardProviderOnDemand';
 
 type Props = {
  store: {
@@ -33,11 +33,11 @@ export default function MyProvider({ store: { redux, persistor, apollo, anonApol
               <ApolloClientContext.Provider value={{ client: apollo, anonClient: anonApollo }}>
                 <LanguageProvider>
                   <DatabaseProvider>
-                    <PlayerCardProvider>
+                    <PlayerCardProviderOnDemand>
                       <StyleProvider>
                         { children }
                       </StyleProvider>
-                    </PlayerCardProvider>
+                    </PlayerCardProviderOnDemand>
                   </DatabaseProvider>
                 </LanguageProvider>
               </ApolloClientContext.Provider>

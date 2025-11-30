@@ -13,6 +13,7 @@ import {
   Chaos_Bag_Tarot_Mode_Enum,
 } from '@generated/graphql/apollo-schema';
 import { CustomizationChoice } from '@data/types/CustomizationOption';
+import { ListCard } from '@data/types/ListCard';
 
 export const SORT_BY_TYPE = 'type';
 export const SORT_BY_TYPE_SLOT = 'type_slot';
@@ -43,7 +44,7 @@ export type AttachableDefinition = {
   requiredCards?: Slots;
   targetSize: number;
   traits?: string[];
-  filter?: (card: Card) => boolean;
+  filter?: (card: ListCard) => boolean;
 };
 
 export type StartingTabType =

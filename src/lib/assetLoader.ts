@@ -127,7 +127,7 @@ export async function loadAsset<T = any>(assetKey: string): Promise<T> {
   }
 
   // Start loading and cache the promise
-  const loadPromise = (async () => {
+  const loadPromise = (async() => {
     try {
       // Load the asset and download to local cache
       const asset = Asset.fromModule(assetModule);

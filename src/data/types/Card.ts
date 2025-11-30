@@ -8,7 +8,6 @@ import {
 } from 'typeorm/browser';
 import { Platform } from 'react-native';
 import {
-  head,
   forEach,
   flatMap,
   filter,
@@ -24,6 +23,7 @@ import {
 import { removeDiacriticalMarks } from 'remove-diacritical-marks';
 import { remove as removeAccents } from 'remove-accents';
 import { c, t } from 'ttag';
+import { cardFactionCode, cardSkillCount, cardCustom, cardRealCost, cardCollectionDeckLimit } from './cardHelpers';
 
 import {
   Pack,
@@ -32,8 +32,6 @@ import {
   SORT_BY_CYCLE,
   SORT_BY_ENCOUNTER_SET,
   SORT_BY_FACTION,
-  SORT_BY_FACTION_PACK,
-  SORT_BY_FACTION_XP,
   SORT_BY_PACK,
   SORT_BY_TITLE,
   SORT_BY_TYPE,
@@ -41,8 +39,6 @@ import {
   SORT_BY_XP,
   SORT_BY_CARD_ID,
   SORT_BY_SLOT,
-  ExtendedSortType,
-  SORT_BY_TYPE_SLOT,
 } from '@actions/types';
 import {
   BASIC_SKILLS,
@@ -103,6 +99,13 @@ export function searchNormalize(text: string, lang: string) {
   }
 }
 
+export const normalize_array = (array: string[] | undefined): string | null =>
+  array
+    ?.map((t) => t.toLowerCase().trim())
+    .filter((t) => !!t)
+    .map((t) => `#${t}#`)
+    .join(',') ?? null;
+
 export const CARD_NUM_COLUMNS = 140;
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
@@ -119,34 +122,6 @@ function arkham_num(value: number | null | undefined) {
   }
   return `${value}`;
 }
-
-const REPRINT_CARDS: {
-  [code: string]: string[] | undefined;
-} = {
-  '01017': ['nat'],
-  '01023': ['nat'],
-  '01025': ['nat'],
-  '02186': ['har'],
-  '02020': ['har'],
-  '01039': ['har'],
-  '01044': ['win'],
-  '03030': ['win'],
-  '04107': ['win'],
-  '04232': ['win'],
-  '03194': ['win'],
-  '01053': ['win'],
-  '02029': ['jac'],
-  '03034': ['jac'],
-  '02190': ['jac'],
-  '02153': ['jac'],
-  '04032': ['jac'],
-
-  '07004': ['bob'],
-  '07005': ['tdg'],
-  '02003': ['hoth'],
-  '05001': ['tftbw'],
-  '08004': ['iotv'],
-};
 
 export interface TranslationData {
   lang: string;
@@ -166,162 +141,6 @@ export interface TranslationData {
   factionNames: {
     [faction_code: string]: string;
   };
-}
-
-const HEADER_SELECT = {
-  [SORT_BY_TYPE_SLOT]: `(c.sort_by_type * 10000 + c.sort_by_slot - CASE WHEN c.permanent THEN 1 ELSE 0 END) as headerId, c.sort_by_type_header as headerTitle, c.slot as headerSlot, c.permanent as headerPermanent`,
-  [SORT_BY_FACTION]: `c.sort_by_faction as headerId, c.sort_by_faction_header as headerTitle`,
-  [SORT_BY_FACTION_PACK]: `(c.sort_by_faction * 10000 + c.sort_by_pack) as headerId, c.sort_by_faction_header as headerTitle, CASE WHEN c.cycle_code = 'investigator' THEN c.cycle_name ELSE c.pack_name END as headerPackName`,
-  [SORT_BY_FACTION_XP]: `c.sort_by_faction * 10000 + COALESCE(c.xp, -1) + 1 as headerId, c.sort_by_faction_header as headerTitle, c.xp as headerXp`,
-  [SORT_BY_COST]: `c.cost as headerId, c.cost as headerTitle`,
-  [SORT_BY_PACK]: `c.sort_by_pack as headerId, CASE WHEN c.cycle_code = 'investigator' THEN c.cycle_name ELSE c.pack_name END as headerTitle`,
-  [SORT_BY_ENCOUNTER_SET]: `c.encounter_code as headerId, c.sort_by_encounter_set_header as headerTitle`,
-  [SORT_BY_TITLE]: `'0' as headerId`,
-  [SORT_BY_TYPE]: `c.sort_by_type as headerId, c.sort_by_type_header as headerTitle`,
-  [SORT_BY_CYCLE]: `c.sort_by_cycle as headerId, c.cycle_name as headerTitle`,
-  [SORT_BY_XP]: `c.xp as headerId, c.xp as headerTitle`,
-  [SORT_BY_CARD_ID]: `c.sort_by_cycle as headerId, c.cycle_name as headerTitle`,
-  [SORT_BY_SLOT]: `c.sort_by_slot as headerId, c.slot as headerTitle`,
-};
-
-export class PartialCard {
-  public id: string;
-  public code: string;
-  public renderName: string;
-  public renderSubName?: string;
-
-  public headerId: string;
-  public headerTitle: string;
-  public pack_code: string;
-  public reprint_pack_codes?: string[];
-  public spoiler?: boolean;
-  public encounter_code?: string;
-
-  constructor(
-    id: string,
-    code: string,
-    renderName: string,
-    headerId: string,
-    headerTitle: string,
-    pack_code: string,
-    reprint_pack_codes?: string[],
-    renderSubName?: string,
-    spoiler?: boolean,
-    encounter_code?: string
-  ) {
-    this.id = id;
-    this.code = code;
-    this.renderName = renderName;
-    this.headerId = headerId;
-    this.headerTitle = headerTitle;
-    this.pack_code = pack_code;
-    this.reprint_pack_codes = reprint_pack_codes;
-    this.renderSubName = renderSubName;
-    this.spoiler = spoiler;
-    this.encounter_code = encounter_code;
-  }
-
-  public static headerSort(sorts?: SortType[]): ExtendedSortType {
-    if (!sorts || !sorts.length) {
-      return SORT_BY_TYPE;
-    }
-    if (sorts.length >= 2) {
-      if (sorts[0] === SORT_BY_FACTION) {
-        if (sorts[1] === SORT_BY_PACK) {
-          return SORT_BY_FACTION_PACK;
-        }
-        if (sorts[1] === SORT_BY_XP) {
-          return SORT_BY_FACTION_XP;
-        }
-      } else if (sorts[0] === SORT_BY_TYPE) {
-        if (sorts[1] === SORT_BY_SLOT) {
-          return SORT_BY_TYPE_SLOT;
-        }
-      }
-    }
-    return head(sorts) || SORT_BY_TYPE;
-  }
-
-  public static selectStatement(sorts?: SortType[]): string {
-    const parts: string[] = [
-      `c.id as id`,
-      `c.code as code`,
-      `c.renderName as renderName`,
-      `c.renderSubname as renderSubname`,
-      `c.pack_code as pack_code`,
-      `c.reprint_pack_codes as reprint_pack_codes`,
-      `c.spoiler as spoiler`,
-      `c.encounter_code as encounter_code`,
-      HEADER_SELECT[PartialCard.headerSort(sorts)],
-    ];
-    return parts.join(', ');
-  }
-
-  public static fromRaw(
-    raw: any,
-    sort?: ExtendedSortType
-  ): PartialCard | undefined {
-    if (
-      raw.id !== null &&
-      raw.code !== null &&
-      raw.renderName !== null &&
-      raw.pack_code !== null
-    ) {
-      let header = raw.headerTitle;
-      switch (sort) {
-        case SORT_BY_TYPE_SLOT:
-          if (raw.headerPermanent) {
-            header = `${raw.headerTitle}: ${t`Permanent`}`;
-          } else {
-            header = raw.headerSlot
-              ? `${raw.headerTitle}: ${raw.headerSlot}`
-              : raw.headerTitle;
-          }
-          break;
-        case SORT_BY_FACTION_PACK:
-          header = `${raw.headerTitle} - ${raw.headerPackName}`;
-          break;
-        case SORT_BY_FACTION_XP:
-          header =
-            typeof raw.headerXp === 'number'
-              ? `${raw.headerTitle} (${raw.headerXp})`
-              : raw.headerTitle;
-          break;
-        case SORT_BY_TITLE:
-          header = t`All Cards`;
-          break;
-        case SORT_BY_COST: {
-          const card = { cost: raw.headerCost || null };
-          header = card.cost === null ? t`Cost: None` : t`Cost: ${card.cost}`;
-          break;
-        }
-        case SORT_BY_XP: {
-          const level = raw.headerTitle;
-          header = t`Level ${level}`;
-          break;
-        }
-        case SORT_BY_SLOT:
-          header =
-            raw.headerTitle === null ? c('slots').t`None` : raw.headerTitle;
-          break;
-      }
-      return new PartialCard(
-        raw.id,
-        raw.code,
-        raw.renderName,
-        raw.headerId === null || raw.headerId === undefined
-          ? 'null'
-          : `${raw.headerId}`,
-        header,
-        raw.pack_code,
-        raw.reprint_pack_codes ? raw.reprint_pack_codes.split(',') : undefined,
-        raw.renderSubname,
-        !!raw.spoiler,
-        raw.encounter_code
-      );
-    }
-    return undefined;
-  }
 }
 
 interface CardRestrictions {
@@ -982,11 +801,7 @@ export default class Card {
   }
 
   public custom(): boolean {
-    return (
-      this.status === CardStatusType.CUSTOM ||
-      this.status === CardStatusType.PREVIEW ||
-      this.code.startsWith('z')
-    );
+    return cardCustom(this);
   }
 
   public formattedCost(): string | undefined {
@@ -1071,7 +886,7 @@ export default class Card {
   }
 
   factionCode(): FactionCodeType {
-    return this.faction_code || 'neutral';
+    return cardFactionCode(this);
   }
 
   factionCodes(): FactionCodeType[] {
@@ -1163,16 +978,7 @@ export default class Card {
   }
 
   realCost(linked?: boolean) {
-    if (this.type_code !== 'asset' && this.type_code !== 'event') {
-      return null;
-    }
-    if (this.code === '02010' || this.code === '03238' || this.cost === -2) {
-      return 'X';
-    }
-    if (this.permanent || this.double_sided || linked || this.cost === null) {
-      return '-';
-    }
-    return `${this.cost}`;
+    return cardRealCost(this, linked);
   }
 
   costString(linked?: boolean) {
@@ -1184,23 +990,15 @@ export default class Card {
   }
 
   skillCount(skill: SkillCodeType): number {
-    switch (skill) {
-      case 'willpower':
-        return this.skill_willpower || 0;
-      case 'intellect':
-        return this.skill_intellect || 0;
-      case 'combat':
-        return this.skill_combat || 0;
-      case 'agility':
-        return this.skill_agility || 0;
-      case 'wild':
-        return this.skill_wild || 0;
-      default: {
-        /* eslint-disable @typescript-eslint/no-unused-vars */
-        const _exhaustiveCheck: never = skill;
-        return 0;
-      }
-    }
+    return cardSkillCount(this, skill);
+  }
+
+  hasCustomizations(): boolean {
+    return !!(this.customization_options && this.customization_options.length > 0);
+  }
+
+  hasInvestigatorRestrictions(): boolean {
+    return !!this.restrictions_investigator;
   }
 
   investigatorSelectOptions(): DeckOption[] {
@@ -1268,20 +1066,7 @@ export default class Card {
     packInCollection: { [pack_code: string]: boolean | undefined },
     ignore_collection: boolean
   ): number {
-    if (ignore_collection) {
-      return this.deck_limit || 0;
-    }
-    if (this.pack_code !== 'core' || packInCollection.core) {
-      return this.deck_limit || 0;
-    }
-    const reprintPacks = this.reprint_pack_codes || REPRINT_CARDS[this.code];
-    if (
-      reprintPacks &&
-      find(reprintPacks, (pack) => !!packInCollection[pack])
-    ) {
-      return this.deck_limit || 0;
-    }
-    return Math.min(this.quantity || 0, this.deck_limit || 0);
+    return cardCollectionDeckLimit(this, packInCollection, ignore_collection);
   }
 
   static parseRestrictions(json?: {
@@ -1698,12 +1483,6 @@ export default class Card {
       find(customization_options, (t) => !!t.real_traits)?.real_traits ||
       card.real_traits;
 
-    const normalize_array = (array: string[] | undefined): string | null =>
-      array
-        ?.map((t) => t.toLowerCase().trim())
-        .filter((t) => !!t)
-        .map((t) => `#${t}#`)
-        .join(',') ?? null;
     const real_traits_normalized = normalize_array(real_traits?.split('.'));
     const traits_normalized = normalize_array(translation.traits?.split('.'));
     const real_slots_normalized = normalize_array(card.real_slot?.split('.'));
@@ -2012,30 +1791,6 @@ export type InvestigatorChoice = {
   front: Card;
   back: Card;
 };
-
-export function cardInCollection(
-  card: Card | PartialCard,
-  packInCollection: { [pack_code: string]: boolean | undefined }
-): boolean {
-  if (packInCollection[card.pack_code]) {
-    return true;
-  }
-  const alternatePack = card.encounter_code
-    ? specialReprintCampaignPacks[card.pack_code]
-    : specialReprintPlayerPacks[card.pack_code];
-  if (alternatePack && packInCollection[alternatePack]) {
-    return true;
-  }
-  const alternateCardPack = specialReprintCardPacks[card.code];
-  if (alternateCardPack && packInCollection[alternateCardPack]) {
-    return true;
-  }
-  const reprintPacks = card.reprint_pack_codes || REPRINT_CARDS[card.code];
-  if (!reprintPacks) {
-    return false;
-  }
-  return !!find(reprintPacks, (pack) => !!packInCollection[pack]);
-}
 
 export function packInCollection(
   { pack, encounter }: { pack: string; encounter: boolean },

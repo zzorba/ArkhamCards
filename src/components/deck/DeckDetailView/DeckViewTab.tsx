@@ -31,6 +31,7 @@ import { DeckOverlapComponentForCampaign } from './DeckOverlapComponent';
 import useParsedDeckComponent from '../useParsedDeckComponent';
 import { useAppDispatch } from '@app/store';
 import { MANDY_CODE } from '@data/deck/specialMetaSlots';
+import { ListCard } from '@data/types/ListCard';
 
 interface Props {
   suggestArkhamDbLogin: boolean;
@@ -57,7 +58,7 @@ interface Props {
   showEditSide?: () => void;
   showEditExtra?: () => void;
   showXpAdjustmentDialog: () => void;
-  showCardUpgradeDialog: (card: Card, mode: 'extra' | undefined) => void;
+  showCardUpgradeDialog: (card: ListCard, mode: 'extra' | undefined) => void;
   showDraftCards?: () => void;
   showDraftExtraCards?: () => void;
   tabooSet?: TabooSet;

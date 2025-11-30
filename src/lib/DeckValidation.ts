@@ -49,6 +49,7 @@ import {
 } from '@data/deck/specialCards';
 import DeckRequirement from '@data/types/DeckRequirement';
 import { parseMetaSlots } from '@lib/parseDeck';
+import { ListCard } from '@data/types/ListCard';
 
 const THE_INSANE_TAG = 'the_insane';
 
@@ -233,14 +234,14 @@ export default class DeckValidation {
     return draw_deck.length;
   }
 
-  getTraits(card: Card): string[] {
+  getTraits(card: ListCard): string[] {
     return filter(
-      map(card.real_traits?.split(".") ?? [], (t) => t.trim()),
+      map(card.real_traits_normalized?.split(".") ?? [], (t) => t.trim()),
       (t) => !!t
     );
   }
 
-  getInsaneData(cards: Card[]): InsaneData {
+  getInsaneData(cards: ListCard[]): InsaneData {
     const result: { [trait: string]: number | undefined } = {};
     let weaknessCount = 0;
     forEach(cards, (c) => {

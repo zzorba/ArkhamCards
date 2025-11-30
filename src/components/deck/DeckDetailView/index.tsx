@@ -59,6 +59,7 @@ import useTagPile from '@components/deck/useTagPile';
 import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 import { parseMetaSlots } from '@lib/parseDeck';
 import { ParsedDeckContextProvider } from '../DeckEditContext';
+import { ListCard } from '@data/types/ListCard';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -755,7 +756,7 @@ function DeckDetailView({
     return null;
   }, [deck, hasPendingEdits, editable, parsedDeck, deckEdits, campaign, onEditPressed, onUpgradePressed]);
 
-  const showCardUpgradeDialog = useCallback((card: Card, mode: 'extra' | undefined) => {
+  const showCardUpgradeDialog = useCallback((card: ListCard, mode: 'extra' | undefined) => {
     if (!parsedDeck) {
       return;
     }

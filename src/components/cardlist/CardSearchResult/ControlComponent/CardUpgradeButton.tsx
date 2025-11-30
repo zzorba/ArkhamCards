@@ -4,14 +4,14 @@ import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
-import Card from '@data/types/Card';
 import RoundButton from '@components/core/RoundButton';
 import DeckQuantityComponent from './DeckQuantityComponent';
 import space from '@styles/space';
+import { ListCard } from '@data/types/ListCard';
 
 interface Props {
-  card: Card;
-  onUpgradePress?: (card: Card, mode: 'extra' | undefined) => void;
+  card: ListCard;
+  onUpgradePress?: (card: ListCard, mode: 'extra' | undefined) => void;
   limit: number;
   mode: 'side' | 'extra' | 'ignore' | undefined;
   editable: boolean;

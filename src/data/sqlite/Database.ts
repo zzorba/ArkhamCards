@@ -19,7 +19,8 @@ import {
 } from 'typeorm/browser';
 import * as QuickSQLite from '@op-engineering/op-sqlite';
 
-import Card, { CardsMap, PartialCard } from '../types/Card';
+import Card, { CardsMap } from '../types/Card';
+import { ListCardImpl } from '../types/ListCard';
 import EncounterSet from '../types/EncounterSet';
 import FaqEntry from '../types/FaqEntry';
 import TabooSet from '../types/TabooSet';
@@ -372,17 +373,17 @@ export default class Database {
     );
   }
 
-  async getPartialCards(
+  async getListCards(
     sortIgnoreQuotes: boolean,
     query?: Brackets,
     tabooSetId?: number,
     sorts?: SortType[]
-  ): Promise<PartialCard[]> {
+  ): Promise<ListCardImpl[]> {
     const cards = await this.cards();
-    const primarySort = PartialCard.headerSort(sorts);
+    const primarySort = ListCardImpl.headerSort(sorts);
     let cardsQuery = cards
       .createQueryBuilder('c')
-      .select(PartialCard.selectStatement(sorts))
+      .select(ListCardImpl.selectStatement(true, sorts))
       .leftJoin('c.linked_card', 'linked_card');
     cardsQuery = cardsQuery.where(tabooSetQuery(tabooSetId));
     if (query) {
@@ -412,7 +413,7 @@ export default class Database {
     const result = await cardsQuery.getRawMany();
     return flatMap(
       result,
-      (raw) => PartialCard.fromRaw(raw, primarySort) || []
+      (raw) => ListCardImpl.fromRaw(raw, primarySort) || []
     );
   }
 

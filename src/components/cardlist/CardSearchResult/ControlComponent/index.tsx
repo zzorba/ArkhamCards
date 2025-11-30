@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import Card from '@data/types/Card';
 import DeckQuantityComponent from './DeckQuantityComponent';
 import { CardCount, DeckCardCount } from './CardCount';
 import CardUpgradeButton from './CardUpgradeButton';
@@ -13,6 +12,7 @@ import { AttachableDefinition } from '@actions/types';
 import ShuffleButton, { DraftButton } from './ShuffleButton';
 import { DiscountComponent } from './DiscountComponent';
 import { AttachmentDetailCount } from './AttachmentComponent';
+import { ListCard } from '@data/types/ListCard';
 
 export type ControlType = {
   type: 'deck';
@@ -44,7 +44,7 @@ export type ControlType = {
   limit: number;
   mode?: 'side' | 'extra' | 'ignore'
   editable: boolean;
-  onUpgradePress?: (card: Card, mode: 'extra' | undefined) => void;
+  onUpgradePress?: (card: ListCard, mode: 'extra' | undefined) => void;
   customizable: boolean;
 } | {
   type: 'toggle';
@@ -62,7 +62,7 @@ export type ControlType = {
   onShufflePress: () => void;
 } | {
   type: 'draft';
-  onDraft: (card: Card) => void;
+  onDraft: (card: ListCard) => void;
 } | {
   type: 'discount';
   available: number;
@@ -70,7 +70,7 @@ export type ControlType = {
 }
 
 interface Props {
-  card: Card;
+  card: ListCard;
   control: ControlType;
   handleCardPress?: () => void;
 }

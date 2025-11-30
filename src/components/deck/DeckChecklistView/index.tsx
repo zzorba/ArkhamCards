@@ -11,7 +11,7 @@ import { resetDeckChecklist } from '@components/deck/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import DbCardResultList from '@components/cardlist/CardSearchResultsComponent/DbCardResultList';
 import { useSortDialog } from '@components/cardlist/CardSortDialog';
-import Card, { InvestigatorChoice } from '@data/types/Card';
+import { InvestigatorChoice } from '@data/types/Card';
 import COLORS from '@styles/colors';
 import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -25,6 +25,7 @@ import { DeckEditContext, ParsedDeckContextProvider, useChecklistCount, useDeckS
 import { RootStackParamList } from '@navigation/types';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import HeaderButton from '@components/core/HeaderButton';
+import { ListCard } from '@data/types/ListCard';
 
 export interface DeckChecklistProps {
   id: DeckId;
@@ -39,8 +40,8 @@ function ChecklistCard({
   pressCard,
 }: {
   id: string;
-  card: Card;
-  pressCard: (code: string, card: Card) => void;
+  card: ListCard;
+  pressCard: (code: string, card: ListCard) => void;
 }) {
   const { checklist, toggleValue } = useChecklistCount(card.code);
   const [count] = useDeckSlotCount(card.code);
@@ -93,7 +94,7 @@ function DeckChecklistView({
     });
   }, [navigation, showSortDialog]);
 
-  const renderCard = useCallback((card: Card, cardId: string, onPressId: (id: string, card: Card) => void) => {
+  const renderCard = useCallback((card: ListCard, cardId: string, onPressId: (id: string, card: ListCard) => void) => {
     return (
       <ChecklistCard
         key={card.code}

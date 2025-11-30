@@ -12,7 +12,7 @@ import { msgid, ngettext, t } from 'ttag';
 
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
-import Card, { cardInCollection } from '@data/types/Card';
+import Card from '@data/types/Card';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getPacksInCollection } from '@reducers';
@@ -27,6 +27,7 @@ import FactionIcon from '@icons/FactionIcon';
 import ArkhamLargeList from '@components/core/ArkhamLargeList';
 import AppIcon from '@icons/AppIcon';
 import { useNavigation } from '@react-navigation/native';
+import { cardInCollection } from '@data/types/cardHelpers';
 
 interface Props {
   hideDeckbuildingRules?: boolean;

@@ -42,6 +42,7 @@ import { useAppDispatch } from '@app/store';
 import useTraumaSection from './useTraumaSection';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { useNavigation } from '@react-navigation/native';
+import { ListCard } from '@data/types/ListCard';
 
 interface Props {
   id: string;
@@ -388,7 +389,7 @@ function UpgradeDeckRow({
   }, [deck, xpAdjust, userId, saveCampaignLog, saveDeck, saveDelayedDeck]);
 
   const navigation = useNavigation();
-  const onCardPress = useCallback((card: Card) => {
+  const onCardPress = useCallback((card: ListCard) => {
     showCard(navigation, card.code, card, colors, { showSpoilers: true });
   }, [navigation, colors]);
 

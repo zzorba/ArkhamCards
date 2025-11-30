@@ -5,7 +5,7 @@ import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { PossibleAttachmentsCounts } from './AttachmentComponent';
 import { useEligibleAttachments } from '@components/deck/DeckEditContext';
-import Card from '@data/types/Card';
+import { ListCard } from '@data/types/ListCard';
 
 interface Props {
   count: number;
@@ -47,7 +47,7 @@ interface Props {
 }
 
 export function DeckCardCount({ count, card, deltaCountMode, showZeroCount }: Props & {
-  card: Card;
+  card: ListCard;
 }) {
   const attachments = useEligibleAttachments(card);
   return (
