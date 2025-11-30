@@ -63,6 +63,7 @@ import {
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { t } from 'ttag';
 import { ArkhamNavigation } from '@navigation/types';
+import Card from '@data/types/Card';
 
 interface CampaignLink {
   campaignIdA: string;
@@ -668,7 +669,7 @@ export interface UpdateCampaignActions {
   setCampaignNotes: SetCampaignNotesAction;
   addInvestigator: (
     campaignId: UploadedCampaignId,
-    investigator: string
+    investigator: Card,
   ) => Promise<void>;
   removeInvestigator: (
     campaignId: UploadedCampaignId,
@@ -799,7 +800,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   );
 
   const addInvestigator = useCallback(
-    async(campaignId: UploadedCampaignId, investigator: string) => {
+    async(campaignId: UploadedCampaignId, investigator: Card) => {
       await insertInvestigator({
         optimisticResponse: {
           __typename: 'mutation_root',
@@ -807,12 +808,14 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
             __typename: 'campaign_investigator',
             campaign_id: campaignId.serverId,
             id: `${campaignId.serverId}-${investigator}`,
-            investigator,
+            investigator: investigator.canonicalInvestigatorId,
+            printing: investigator.printingInvestigatorId,
           },
         },
         variables: {
           campaign_id: campaignId.serverId,
-          investigator,
+          investigator: investigator.canonicalInvestigatorId,
+          printing: investigator.printingInvestigatorId,
         },
         context: {
           serializationKey: campaignId.serverId,

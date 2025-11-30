@@ -53,6 +53,7 @@ import { SetCampaignChaosBagAction, SetCampaignNotesAction, SetCampaignShowInter
 import { Action } from 'redux';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { generateUuid } from '@lib/uuid';
+import Card from '@data/types/Card';
 
 function getBaseDeckIds(
   state: AppState,
@@ -96,7 +97,7 @@ export function addInvestigator(
   deckActions: DeckActions,
   updateCampaignActions: UpdateCampaignActions,
   id: CampaignId,
-  investigator: string,
+  investigator: Card,
   deckId?: DeckId,
 ): ThunkAction<Promise<void>, AppState, unknown, CampaignAddInvestigatorAction> {
   return async(dispatch, getState: () => AppState) => {
@@ -109,10 +110,17 @@ export function addInvestigator(
       const action: CampaignAddInvestigatorAction = {
         type: CAMPAIGN_ADD_INVESTIGATOR,
         id,
-        investigator,
+        investigator: investigator.canonicalInvestigatorId,
+        printing: investigator.printingInvestigatorId,
         deckId: baseDeckId,
         now: new Date(),
       };
+      console.log('DISPATCHING CAMPAIGN_ADD_INVESTIGATOR:', JSON.stringify({
+        investigatorCode: investigator.code,
+        canonicalInvestigatorId: investigator.canonicalInvestigatorId,
+        printingInvestigatorId: investigator.printingInvestigatorId,
+        investigatorId: investigator.investigator_id,
+      }, null, 2));
       dispatch(action);
     }
     if (baseDeckId && id.serverId && userId) {
@@ -195,7 +203,7 @@ export function newStandalone(
   name: string,
   standaloneId: StandaloneId,
   deckIds: DeckId[],
-  investigatorIds: string[],
+  investigators: { code: string; printing: string | undefined }[],
   weaknessSet: WeaknessSet
 ): ThunkAction<Promise<CampaignId>, AppState, unknown, NewStandaloneCampaignAction> {
   return async(dispatch, getState: () => AppState) => {
@@ -207,7 +215,7 @@ export function newStandalone(
       standaloneId,
       weaknessSet,
       deckIds: getBaseDeckIds(getState(), deckIds),
-      investigatorIds,
+      investigators,
       now: new Date(),
     };
     dispatch(action);
@@ -221,7 +229,7 @@ export function newCampaign(
   pack_code: CampaignCycleCode,
   difficulty: CampaignDifficulty | undefined,
   deckIds: DeckId[],
-  investigatorIds: string[],
+  investigators: { code: string; printing: string | undefined }[],
   chaosBag: ChaosBag,
   campaignLog: CustomCampaignLog,
   weaknessSet: WeaknessSet,
@@ -239,7 +247,7 @@ export function newCampaign(
       campaignLog,
       weaknessSet,
       deckIds: getBaseDeckIds(getState(), deckIds),
-      investigatorIds,
+      investigators,
       guided,
       now: new Date(),
     };

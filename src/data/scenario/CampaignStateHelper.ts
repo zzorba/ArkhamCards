@@ -28,7 +28,7 @@ import { generateUuid } from '@lib/uuid';
 export interface CampaignGuideActions {
   showChooseDeck: (singleInvestigator?: CampaignInvestigator, callback?: (code: string) => Promise<void>) => void;
   removeDeck: (deckId: DeckId, investigator: string) => void;
-  addInvestigator: (code: string, deckId?: DeckId) => void;
+  addInvestigator: (card: Card, deckId: DeckId | undefined) => void;
   removeInvestigator: (investigator: CampaignInvestigator) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
@@ -87,8 +87,8 @@ export default class CampaignStateHelper {
     this.actions.showChooseDeck(singleInvestigator, callback);
   }
 
-  addInvestigator(code: string) {
-    this.actions.addInvestigator(code);
+  addInvestigator(card: Card) {
+    this.actions.addInvestigator(card, undefined);
   }
 
   removeDeck(deckId: DeckId, investigator: string) {

@@ -106,7 +106,8 @@ export const normalize_array = (array: string[] | undefined): string | null =>
     .map((t) => `#${t}#`)
     .join(',') ?? null;
 
-export const CARD_NUM_COLUMNS = 140;
+export const CARD_NUM_COLUMNS = 146;
+
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
     return '-';
@@ -238,6 +239,9 @@ export default class Card {
   @Column('text', { nullable: true })
   public alternate_required_code?: string;
 
+  @Column('text', { nullable: true })
+  public investigator_id?: string;
+
   @Column('integer', { nullable: true })
   public taboo_set_id?: number;
 
@@ -367,9 +371,13 @@ export default class Card {
   @Column('text', { nullable: true })
   public back_name?: string;
   @Column('text', { nullable: true })
+  public back_subname?: string;
+  @Column('text', { nullable: true })
   public back_text?: string;
   @Column('text', { nullable: true })
   public back_flavor?: string;
+  @Column('text', { nullable: true })
+  public back_traits?: string;
   @Column('integer', { nullable: true })
   public quantity?: number;
   @Column('boolean', { nullable: true })
@@ -420,6 +428,8 @@ export default class Card {
   public traits?: string;
   @Column('text', { nullable: true })
   public real_traits?: string;
+  @Column('text', { nullable: true })
+  public real_back_traits?: string;
   @Column('boolean', { nullable: true })
   public is_unique?: boolean;
   @Column('boolean', { nullable: true })
@@ -519,7 +529,11 @@ export default class Card {
   @Column('text', { nullable: true })
   public traits_normalized?: string;
   @Column('text', { nullable: true })
+  public back_traits_normalized?: string;
+  @Column('text', { nullable: true })
   public real_traits_normalized?: string;
+  @Column('text', { nullable: true })
+  public real_back_traits_normalized?: string;
   @Column('text', { nullable: true, select: false })
   public slots_normalized?: string;
   @Column('text', { nullable: true })
@@ -598,6 +612,14 @@ export default class Card {
       card[key] = this[key];
     });
     return card;
+  }
+
+  public get canonicalInvestigatorId(): string {
+    return this.investigator_id ?? this.code;
+  }
+
+  public get printingInvestigatorId(): string | undefined {
+    return this.investigator_id ? this.code : undefined;
   }
 
   public customizationChoice(
@@ -1372,8 +1394,10 @@ export default class Card {
       flavor: (t ? t.flavor : card.real_flavor) || undefined,
       slot: (t ? t.slot : card.real_slot) || undefined,
       subname: (t ? t.subname : card.real_subname) || undefined,
+      back_subname: (t ? t.back_subname : card.real_back_subname) || undefined,
       text: (t ? t.text : card.real_text) || undefined,
       traits: (t ? t.traits : card.real_traits) || undefined,
+      back_traits: (t ? t.back_traits : card.real_back_traits) || undefined,
       back_flavor: (t ? t.back_flavor : card.real_back_flavor) || undefined,
       back_name: (t ? t.back_name : card.real_back_name) || undefined,
       back_text: (t ? t.back_text : card.real_back_text) || undefined,
@@ -1484,7 +1508,9 @@ export default class Card {
       card.real_traits;
 
     const real_traits_normalized = normalize_array(real_traits?.split('.'));
+    const real_back_traits_normalized = normalize_array(card.real_back_traits?.split('.'));
     const traits_normalized = normalize_array(translation.traits?.split('.'));
+    const back_traits_normalized = normalize_array(translation.back_traits?.split('.'));
     const real_slots_normalized = normalize_array(card.real_slot?.split('.'));
     const slots_normalized = normalize_array(translation.slot?.split('.'));
 
@@ -1613,6 +1639,8 @@ export default class Card {
         'permanent',
         'real_pack_name',
         'real_flavor',
+        'real_back_subname',
+        'real_back_traits',
         'real_customization_text',
         'real_taboo_text_change',
         'real_taboo_original_text_change',
@@ -1642,9 +1670,11 @@ export default class Card {
       deck_options,
       linked_card,
       spoiler,
-      traits_normalized,
       customization_options,
       real_traits_normalized,
+      traits_normalized,
+      real_back_traits_normalized,
+      back_traits_normalized,
       real_slots_normalized,
       slots_normalized,
       uses,

@@ -147,13 +147,15 @@ function CampaignDetailView() {
   }, [weaknessCards, campaign, updateWeaknessAssignedCards, showAlert]);
   const deckActions = useDeckActions();
   const checkNewDeckForWeakness = useMaybeShowWeaknessPrompt(checkForWeaknessPrompt);
-  const onAddDeck = useCallback(async(deck: Deck, investigator_code?: string) => {
-    await asyncDispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, investigator_code ?? deck.investigator_code, getDeckId(deck)));
+  const onAddDeck = useCallback(async(deck: Deck, card: Card) => {
+    await asyncDispatch(
+      addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card, getDeckId(deck))
+    );
     checkNewDeckForWeakness(deck);
   }, [userId, campaignId, deckActions, updateCampaignActions, checkNewDeckForWeakness, asyncDispatch]);
 
   const onAddInvestigator = useCallback((card: CampaignInvestigator) => {
-    dispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card.code));
+    dispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card.card));
   }, [userId, campaignId, deckActions, updateCampaignActions, dispatch]);
 
   const onRemoveInvestigator = useCallback((investigator: CampaignInvestigator, removedDeckId?: DeckId) => {
@@ -170,7 +172,7 @@ function CampaignDetailView() {
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
       campaignId: campaign.id,
       singleInvestigator: singleInvestigator.card.alternate_of_code ?? singleInvestigator.card.code,
-      onDeckSelect: (deck: Deck) => onAddDeck(deck, singleInvestigator.card.code ?? deck.investigator_code),
+      onDeckSelect: (deck: Deck, investigator: Card) => onAddDeck(deck, singleInvestigator.card ?? investigator),
       includeParallel,
     } : {
       campaignId: campaign.id,
@@ -181,7 +183,7 @@ function CampaignDetailView() {
       onDeckSelect: onAddDeck,
       onInvestigatorSelect: (card: Card) => {
         onAddInvestigator({
-          code: includeParallel ? card.code : card.alternate_of_code ?? card.code,
+          code: includeParallel ? card.code : card.canonicalInvestigatorId,
           card,
           alternate_code: card.alternate_of_code ? card.code : undefined,
         })

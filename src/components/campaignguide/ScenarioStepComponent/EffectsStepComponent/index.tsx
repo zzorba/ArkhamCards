@@ -19,6 +19,7 @@ import CheckCampaignLogCardsComponent from './CheckCampaignLogCardsComponent';
 import CheckCampaignLogCountComponent from './CheckCampaignLogCountComponent';
 import PartnerStatusEffectComponent from './PartnerStatusEffectComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import useSingleCard from '@components/card/useSingleCard';
 
 interface Props {
   width: number;
@@ -37,14 +38,18 @@ function SingleEffectComponent({ id, effect, border, input, numberInput, step, w
 } & Props) {
   const { campaign, campaignState } = useContext(CampaignGuideContext);
   const { processedScenario, scenarioState } = useContext(ScenarioGuideContext);
+  const fixedInvestigatorId = effect.type === 'scenario_data' && effect.setting === 'add_investigator' && effect.investigator === '$fixed_investigator' ?
+    effect.fixed_investigator :
+    undefined;
+  const [fixedInvestigator] = useSingleCard(fixedInvestigatorId, 'player');
   useEffect(() => {
-    if (campaign.investigators && effect.type === 'scenario_data' && effect.setting === 'add_investigator' && effect.investigator === '$fixed_investigator') {
-      if (!campaign.investigators.find(code => code === effect.fixed_investigator)) {
-        campaignState.addInvestigator(effect.fixed_investigator);
+    if (campaign.investigators && fixedInvestigator) {
+      if (!campaign.investigators.find(code => code === fixedInvestigator.code)) {
+        campaignState.addInvestigator(fixedInvestigator);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [campaign.investigators, effect]);
+  }, [campaign.investigators, fixedInvestigator]);
   switch (effect.type) {
     case 'freeform_campaign_log':
     case 'campaign_log_text':

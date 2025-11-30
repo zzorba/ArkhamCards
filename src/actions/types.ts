@@ -653,6 +653,9 @@ interface BaseCampaign {
   showInterludes?: boolean;
   deckIds?: DeckId[];
   nonDeckInvestigators?: string[];
+  investigatorPrintings?: {
+    [investigatorCode: string]: string | undefined;
+  };
   guided?: boolean;
   guideVersion?: number;
   adjustedInvestigatorData?: InvestigatorData;
@@ -1134,7 +1137,7 @@ export interface NewCampaignAction {
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
   deckIds: DeckId[];
-  investigatorIds: string[];
+  investigators: { code: string; printing: string | undefined }[];
   chaosBag: ChaosBag;
   weaknessSet: WeaknessSet;
   campaignLog: CustomCampaignLog;
@@ -1154,7 +1157,7 @@ export interface NewStandaloneCampaignAction {
   name: string;
   standaloneId: StandaloneId;
   deckIds: DeckId[];
-  investigatorIds: string[];
+  investigators: { code: string; printing: string | undefined }[];
   weaknessSet: WeaknessSet;
 }
 export const NEW_LINKED_CAMPAIGN = 'NEW_LINKED_CAMPAIGN';
@@ -1244,6 +1247,7 @@ export interface CampaignAddInvestigatorAction {
   type: typeof CAMPAIGN_ADD_INVESTIGATOR;
   id: CampaignId;
   investigator: string;
+  printing: string | undefined;
   deckId?: DeckId;
   now: Date;
 }

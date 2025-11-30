@@ -138,9 +138,13 @@ export default function DeckViewTab(props: Props) {
   }, [dispatch, deckId, deck.investigator_code, deckEditsRef]);
   const setParallel = useCallback((front: string, back: string) => {
     if (deckEditsRef.current) {
+      // Normalize: if front/back matches investigator_code, set to undefined
+      const normalizedFront = front === deck.investigator_code ? undefined : front;
+      const normalizedBack = back === deck.investigator_code ? undefined : back;
+
       dispatch(updateDeckMeta(deckId, deck.investigator_code, deckEditsRef.current, [
-        { key: 'alternate_front', value: front },
-        { key: 'alternate_back', value: back },
+        { key: 'alternate_front', value: normalizedFront },
+        { key: 'alternate_back', value: normalizedBack },
       ]));
     }
   }, [dispatch, deckEditsRef, deckId, deck.investigator_code]);

@@ -21,7 +21,7 @@ import {
   EmbarkData,
   OZ,
 } from '@actions/types';
-import { CardsMap } from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
@@ -70,7 +70,7 @@ export default function useCampaignGuideContextFromActions(
     dispatch(campaignActions.removeInvestigator(userId, updateCampaignActions, campaignId, investigator, deckId));
   }, [dispatch, campaignId, userId, updateCampaignActions]);
 
-  const addInvestigator = useCallback((investigator: string, deckId?: DeckId) => {
+  const addInvestigator = useCallback((investigator: Card, deckId?: DeckId) => {
     campaignAddInvestigator(campaignId, investigator, deckId);
   }, [campaignAddInvestigator, campaignId]);
 

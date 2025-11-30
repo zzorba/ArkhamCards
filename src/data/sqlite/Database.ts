@@ -43,6 +43,7 @@ import { TabooTextMigration1693598075386 } from './migration/TabooTextMigration'
 import { SideDeckMigration1698073688677 } from './migration/SideDeckMigration';
 import { SpecialtyCardsMigration1726180741370 } from './migration/SpecialtyCardsMigration';
 import { InvestigatorSetMigration1764345197527 } from './migration/InvestigatorSetMigration';
+import { InvestigatorIdMigration1764434435446 } from './migration/InvestigatorIdMigration';
 
 const enhanceQueryResult = (result: QuickSQLite.QueryResult) => {
   if (!result.rows) {
@@ -158,6 +159,7 @@ async function createDatabaseConnection(recreate: boolean) {
       SideDeckMigration1698073688677,
       SpecialtyCardsMigration1726180741370,
       InvestigatorSetMigration1764345197527,
+      InvestigatorIdMigration1764434435446,
     ],
     entities: [Card, EncounterSet, FaqEntry, TabooSet, Rule, InvestigatorSet],
   });

@@ -8,6 +8,8 @@ export default interface CardTextFields {
   traits?: string;
   back_flavor?: string;
   back_name?: string;
+  back_subname?: string;
+  back_traits?: string;
   back_text?: string;
   customization_text?: string;
   customization_change?: string;
