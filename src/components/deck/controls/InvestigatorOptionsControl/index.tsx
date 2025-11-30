@@ -6,7 +6,6 @@ import ParallelInvestigatorPicker from './ParallelInvestigatorPicker';
 import InvestigatorOption from './InvestigatorOption';
 import { DeckMeta } from '@actions/types';
 import Card from '@data/types/Card';
-import DeckCardPoolButton, { useDerivedCardPool } from '../DeckCardPoolButton';
 
 interface Props {
   investigator: Card;
@@ -37,7 +36,6 @@ export default function InvestigatorOptionsControl({
   const options = backInvestigator.investigatorSelectOptions();
   const hasParallel = !!parallelInvestigators.length;
   const hasOptions = !!options.length;
-  const { selectedPacks, setSelectedPacks, cardPool, setCardPool } = useDerivedCardPool(meta, setMeta);
   const parallelOptionsSection = useMemo(() => {
     if (!parallelInvestigators.length) {
       return null;
@@ -64,14 +62,6 @@ export default function InvestigatorOptionsControl({
   }, [investigator, parallelInvestigators, setParallel, disabled, editWarning, meta, hasOptions]);
   return (
     <View>
-      <DeckCardPoolButton
-        first={first}
-        last={!hasParallel && !options.length}
-        selectedPacks={selectedPacks}
-        setSelectedPacks={setSelectedPacks}
-        cardPool={cardPool}
-        setCardPool={setCardPool}
-      />
       { parallelOptionsSection }
       { map(options, (option, idx) => {
         return (

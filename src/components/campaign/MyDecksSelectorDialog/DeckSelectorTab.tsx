@@ -7,9 +7,10 @@ import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { useNavigation } from '@react-navigation/native';
+import Card from '@data/types/Card';
 
 interface Props {
-  onDeckSelect: (deck: Deck) => Promise<void>;
+  onDeckSelect: (deck: Deck, investigator: Card) => Promise<void>;
   searchOptions?: SearchOptions;
 
   onlyDecks?: MiniDeckT[];
@@ -25,9 +26,11 @@ export default function DeckSelectorTab({
   renderExpandButton,
 }: Props) {
   const navigation = useNavigation();
-  const deckSelected = useCallback(async(deck: LatestDeckT) => {
-    onDeckSelect(deck.deck);
-    navigation.goBack();
+  const deckSelected = useCallback(async(deck: LatestDeckT, investigator: Card | undefined) => {
+    if (investigator) {
+      onDeckSelect(deck.deck, investigator);
+      navigation.goBack();
+    }
   }, [navigation, onDeckSelect]);
   return (
     <MyDecksComponent

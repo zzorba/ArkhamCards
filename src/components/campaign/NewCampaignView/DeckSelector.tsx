@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { View } from 'react-native';
 
 import { TouchableQuickSize } from '@components/core/Touchables';
@@ -13,6 +13,7 @@ import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 import useSingleCard from '@components/card/useSingleCard';
+import { uniq } from 'lodash';
 
 interface Props extends CampaignDeckListProps {
   deckRemoved?: (
@@ -82,7 +83,10 @@ export default function DeckSelector({
   investigatorToDeck,
   investigatorIds,
 }: Props) {
-  const investigators = useInvestigators(investigatorIds);
+  const allInvestigatorIds = useMemo(() => {
+    return uniq([...investigatorIds.map(i => i.code), ...investigatorIds.flatMap(i => i.printing ?? [])]);
+  }, [investigatorIds]);
+  const investigators = useInvestigators(allInvestigatorIds);
   const actions = useDeckActions();
   const renderDeck = useCallback((deckId: DeckId, code: string) => {
     const investigator = investigators && investigators[code];

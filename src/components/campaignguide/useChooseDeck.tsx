@@ -25,7 +25,7 @@ type ChooseDeckType = (
   callback?: (code: string) => Promise<void>,
 ) => void;
 
-type AddInvestigatorType = (campaignId: CampaignId, code: string, deckId?: DeckId) => Promise<void>;
+type AddInvestigatorType = (campaignId: CampaignId, card: Card, deckId?: DeckId) => Promise<void>;
 
 export default function useChooseDeck(createDeckActions: DeckActions, updateActions: UpdateCampaignActions): [
   ChooseDeckType,
@@ -34,8 +34,8 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
   const { userId } = useContext(ArkhamCardsAuthContext);
   const navigation = useNavigation();
   const dispatch: AsyncDispatch = useDispatch();
-  const doAddInvestigator = useCallback(async(campaignId: CampaignId, code: string, deckId?: DeckId) => {
-    await dispatch(addInvestigator(userId, createDeckActions, updateActions, campaignId, code, deckId));
+  const doAddInvestigator = useCallback(async(campaignId: CampaignId, card: Card, deckId?: DeckId) => {
+    await dispatch(addInvestigator(userId, createDeckActions, updateActions, campaignId, card, deckId));
   }, [dispatch, userId, createDeckActions, updateActions]);
 
   const showChooseDeck = useCallback((
@@ -46,15 +46,15 @@ export default function useChooseDeck(createDeckActions: DeckActions, updateActi
     callback?: (code: string) => Promise<void>
   ) => {
     const includeParallel = cycleCode === OZ;
-    const onDeckSelect = async(deck: Deck) => {
-      const investigatorCode = includeParallel ? deck.meta?.alternate_front ?? deck.investigator_code : singleInvestigator?.code ?? deck.investigator_code;
-      await doAddInvestigator(campaignId, investigatorCode, getDeckId(deck));
+    const onDeckSelect = async(deck: Deck, investigator: Card) => {
+      await doAddInvestigator(campaignId, investigator, getDeckId(deck));
       if (callback) {
+        const investigatorCode = (includeParallel ? deck.meta?.alternate_front : singleInvestigator?.code) ?? deck.investigator_code;
         await callback(investigatorCode);
       }
     };
     const onInvestigatorSelect = async(card: Card) => {
-      await doAddInvestigator(campaignId, card.code);
+      await doAddInvestigator(campaignId, card);
       if (callback) {
         await callback(card.code);
       }

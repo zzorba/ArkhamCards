@@ -32,7 +32,7 @@ import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;
-  onDeckSelect: (deck: Deck) => Promise<void>;
+  onDeckSelect: (deck: Deck, investigator: Card) => Promise<void>;
   onInvestigatorSelect?: (card: Card) => void;
 
   singleInvestigator?: string;

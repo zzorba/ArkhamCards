@@ -6,6 +6,7 @@ import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListCo
 import Card from '@data/types/Card';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { useNavigation } from '@react-navigation/native';
+import useInvestigatorPrintingSelector from './InvestigatorPrintingSelectorDialog';
 
 interface Props {
   onInvestigatorSelect: (card: Card) => void;
@@ -23,19 +24,37 @@ export default function InvestigatorSelectorTab({
   includeParallel,
 }: Props) {
   const navigation = useNavigation();
-  const investigatorSelected = useCallback((card: Card) => {
+
+  const handlePrintingSelected = useCallback((card: Card) => {
+    // Pass the printing code to the callback
+    // The callback will need to know both the canonical code and the printing
     onInvestigatorSelect(card);
     navigation.goBack();
-  }, [navigation, onInvestigatorSelect]);
+  }, [onInvestigatorSelect, navigation]);
+
+  const [dialog, showDialog] = useInvestigatorPrintingSelector({
+    onSelectPrinting: handlePrintingSelected,
+  });
+
+  const investigatorSelected = useCallback(async(card: Card) => {
+    const shouldShowDialog = await showDialog(card);
+    if (!shouldShowDialog) {
+      onInvestigatorSelect(card);
+      navigation.goBack();
+    }
+  }, [navigation, onInvestigatorSelect, showDialog]);
 
   return (
-    <InvestigatorsListComponent
-      hideDeckbuildingRules
-      sort={sort}
-      searchOptions={searchOptions}
-      onPress={investigatorSelected}
-      filterInvestigators={filterInvestigators}
-      includeParallelInvestigators={includeParallel}
-    />
+    <>
+      <InvestigatorsListComponent
+        hideDeckbuildingRules
+        sort={sort}
+        searchOptions={searchOptions}
+        onPress={investigatorSelected}
+        filterInvestigators={filterInvestigators}
+        includeParallelInvestigators={includeParallel}
+      />
+      {dialog}
+    </>
   );
 }

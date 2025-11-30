@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
-import { filter } from 'lodash';
+import { useContext, useEffect, useState } from 'react';
 
 import Card from '@data/types/Card';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
-import { useContext } from 'react';
 
 /**
  * Hook to fetch alternate printings of an investigator card.
@@ -33,7 +31,9 @@ export function useAlternatePrintings(card: Card | undefined): [Card[], boolean]
           where: { code: card.code },
         });
 
-        if (canceled) return;
+        if (canceled) {
+          return;
+        }
 
         if (!investigatorSet || investigatorSet.alternate_codes.length <= 1) {
           // No alternates found, or only one card in the set (itself)
@@ -51,7 +51,9 @@ export function useAlternatePrintings(card: Card | undefined): [Card[], boolean]
           .andWhere('c.taboo_set_id IS NULL')
           .getMany();
 
-        if (canceled) return;
+        if (canceled) {
+          return;
+        }
 
         setAlternateCards(alternates);
         setLoading(false);

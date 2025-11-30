@@ -5,6 +5,7 @@ import InvestigatorOptionsControl, { hasInvestigatorOptions } from './Investigat
 import { useParallelInvestigator } from '@components/core/hooks';
 import { DeckMeta } from '@actions/types';
 import useSingleCard from '@components/card/useSingleCard';
+import DeckCardPoolButton, { useDerivedCardPool } from './DeckCardPoolButton';
 
 interface Props {
   investigatorCode?: string;
@@ -39,6 +40,7 @@ export default function DeckMetadataControls({
 }: Props) {
   const [parallelInvestigators] = useParallelInvestigator(investigatorCode, tabooSetId);
   const [investigator] = useSingleCard(investigatorCode, 'player', tabooSetId);
+  const { selectedPacks, setSelectedPacks, cardPool, setCardPool } = useDerivedCardPool(meta, setMeta);
   if (!investigator) {
     return null;
   }
@@ -46,6 +48,13 @@ export default function DeckMetadataControls({
   return (
     <>
       { !!firstElement && firstElement(!setTabooSet && !hasOptions) }
+      <DeckCardPoolButton
+        first={!firstElement}
+        selectedPacks={selectedPacks}
+        setSelectedPacks={setSelectedPacks}
+        cardPool={cardPool}
+        setCardPool={setCardPool}
+      />
       { !!setTabooSet && (
         <DeckTabooPickerButton
           open={tabooOpen}

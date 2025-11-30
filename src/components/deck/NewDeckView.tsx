@@ -17,7 +17,7 @@ import HeaderButton from '@components/core/HeaderButton';
 
 export interface NewDeckProps {
   campaignId?: CampaignId;
-  onCreateDeck?: (deck: Deck) => void;
+  onCreateDeck?: (deck: Deck, investigator: Card) => void;
   filterInvestigators?: string[];
   onlyInvestigators?: string[];
   includeParallel?: boolean;

@@ -747,14 +747,77 @@ export function useAllInvestigators(
 }
 
 export function useParallelInvestigator(investigatorCode?: string, tabooSetOverride?: number): [Card[], boolean] {
-  const query = useMemo(() => investigatorCode ? where('c.alternate_of_code = :investigatorCode', { investigatorCode }) : undefined, [investigatorCode]);
-  const [cards, loading] = useCardsFromQuery({ query, tabooSetOverride });
+  const { db } = useContext(DatabaseContext);
   const { storePlayerCards } = useContext(PlayerCardContext);
+  const [cards, setCards] = useState<Card[]>([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    if (cards.length) {
-      storePlayerCards(cards);
+    let canceled = false;
+
+    async function fetchParallelInvestigators() {
+      if (!investigatorCode) {
+        setCards([]);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        setLoading(true);
+
+        // Fetch the investigator set to get all related codes
+        const investigatorSetRepo = await db.investigatorSets();
+        const investigatorSet = await investigatorSetRepo.findOne({
+          where: { code: investigatorCode },
+        });
+
+        if (canceled) {
+          return;
+        }
+
+        if (!investigatorSet || investigatorSet.alternate_codes.length <= 1) {
+          // No alternates found
+          setCards([]);
+          setLoading(false);
+          return;
+        }
+
+        // Fetch all cards in the investigator set that are parallel investigators (have alternate_of_code)
+        const cardsRepo = await db.cards();
+        const parallelCards = await cardsRepo
+          .createQueryBuilder('c')
+          .leftJoinAndSelect('c.linked_card', 'linked_card')
+          .where('c.code IN (:...codes)', { codes: investigatorSet.alternate_codes })
+          .andWhere('c.alternate_of_code IS NOT NULL')
+          .andWhere(tabooSetOverride !== undefined ? 'c.taboo_set_id = :tabooSetId OR c.taboo_set_id IS NULL' : 'c.taboo_set_id IS NULL', tabooSetOverride !== undefined ? { tabooSetId: tabooSetOverride } : {})
+          .getMany();
+
+        if (canceled) {
+          return;
+        }
+
+        setCards(parallelCards);
+        setLoading(false);
+
+        if (parallelCards.length) {
+          storePlayerCards(parallelCards);
+        }
+      } catch (e) {
+        console.log('Error fetching parallel investigators:', e);
+        if (!canceled) {
+          setCards([]);
+          setLoading(false);
+        }
+      }
     }
-  }, [cards, storePlayerCards]);
+
+    fetchParallelInvestigators();
+
+    return () => {
+      canceled = true;
+    };
+  }, [db, investigatorCode, tabooSetOverride, storePlayerCards]);
+
   return [cards, loading];
 }
 
