@@ -78,6 +78,7 @@ module.exports = {
       appleTeamId: '54773FU58P',
       supportsTablet: true,
       infoPlist: {
+        CFBundleAllowMixedLocalizations: true,
         UIViewControllerBasedStatusBarAppearance: true,
         ITSAppUsesNonExemptEncryption: false,
       },
@@ -99,6 +100,9 @@ module.exports = {
         'android.permission.MODIFY_AUDIO_SETTINGS',
       ],
       versionCode: 4195535,
+    },
+    locale: {
+      "ko": "./assets/i18n-app/ko.metadata.json"
     },
     plugins: [
       './plugins/withRNScreensFragmentFactory.js',

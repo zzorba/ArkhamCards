@@ -1,0 +1,9 @@
+{
+  "android": {
+    "app_name": "아컴카드"
+  },
+  "ios": {
+    "CFBundleDisplayName": "아컴카드",
+    "CFBundleName": "아컴카드"
+  }
+}
