@@ -173,7 +173,7 @@ function InvestigatorImage({
   const onPress = useCallback(() => {
     if (pressable && card) {
       if (imageLink) {
-        showCardImage(navigation, card);
+        showCardImage(navigation, card, colors);
       } else {
         showCard(navigation, card.code, card, colors, { showSpoilers: true, tabooSetId, backCode: backCard?.code });
       }

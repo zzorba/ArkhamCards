@@ -10,7 +10,7 @@ import Card from '@data/types/Card';
 interface Props {
   investigator: Card;
   meta: DeckMeta;
-  parallelInvestigators: Card[];
+  parallelInvestigators?: Card[];
   setMeta: (key: keyof DeckMeta, value?: string) => void;
   setParallel: (front: string, back: string) => void;
   editWarning: boolean;
@@ -18,8 +18,8 @@ interface Props {
   first: boolean;
 }
 
-export function hasInvestigatorOptions(investigator: Card, parallelInvestigators: Card[]): boolean {
-  return !!parallelInvestigators.length || !!investigator.investigatorSelectOptions().length;
+export function hasInvestigatorOptions(investigator: Card, parallelInvestigators?: Card[]): boolean {
+  return !!parallelInvestigators?.length || !!investigator.investigatorSelectOptions().length;
 }
 
 export default function InvestigatorOptionsControl({
@@ -34,10 +34,10 @@ export default function InvestigatorOptionsControl({
 }: Props) {
   const backInvestigator = find(parallelInvestigators, pi => pi.code === meta.alternate_back) || investigator;
   const options = backInvestigator.investigatorSelectOptions();
-  const hasParallel = !!parallelInvestigators.length;
+  const hasParallel = !!parallelInvestigators?.length;
   const hasOptions = !!options.length;
   const parallelOptionsSection = useMemo(() => {
-    if (!parallelInvestigators.length) {
+    if (!parallelInvestigators?.length) {
       return null;
     }
     const alternateInvestigator = find(parallelInvestigators, pi => pi.code !== investigator.code);

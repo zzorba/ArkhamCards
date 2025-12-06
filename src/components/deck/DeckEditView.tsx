@@ -168,6 +168,9 @@ function options<T extends RootStackParamList>({ route }: { route: RouteProp<T, 
     title: route.params?.title ?? t`Edit Deck`,
     headerTintColor: '#FFFFFF',
     headerTitleStyle: {
+      fontFamily: 'Alegreya-Medium',
+      fontSize: 20,
+      fontWeight: '500',
       color: '#FFFFFF',
     },
     headerStyle: route.params?.headerBackgroundColor ? {

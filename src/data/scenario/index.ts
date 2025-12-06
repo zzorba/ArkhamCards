@@ -447,7 +447,6 @@ async function getStandaloneScenarios(lang: string): Promise<StandaloneInfo[]> {
         case 'scenario': {
           const data = findStandaloneScenario(id, allCampaigns, allLogEntries);
           if (!data) {
-            console.log(`Could not find ${JSON.stringify(id)}`);
             return [];
           }
           let specialGroup = undefined;
@@ -471,7 +470,6 @@ async function getStandaloneScenarios(lang: string): Promise<StandaloneInfo[]> {
         case 'campaign': {
           const data = findStandaloneCampaign(id, allCampaigns, allLogEntries);
           if (!data) {
-            console.log(`Could not find ${JSON.stringify(id)}`);
             return [];
           }
           return {

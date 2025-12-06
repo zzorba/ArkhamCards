@@ -982,7 +982,6 @@ export default function DbCardResultList(props: Props) {
       onRefresh={refreshDeck}
       refreshing={refreshing || refreshingSearch}
       noSearch={noSearch}
-      estimatedItemSize={rowHeight(fontScale)}
       onEndReachedThreshold={0.7}
     />
   );

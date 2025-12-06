@@ -183,7 +183,7 @@ function NewCampaignView() {
   }, [updateInvestigatorIds]);
 
   const investigatorRemoved = useCallback((card: Card) => {
-    updateInvestigatorIds({ type: 'remove', investigator: card.code });
+    updateInvestigatorIds({ type: 'remove', investigator: card.canonicalInvestigatorId });
   }, [updateInvestigatorIds]);
 
   const includeParallel = campaignChoice?.selection.type === 'campaign' && campaignChoice.selection.code === OZ;
@@ -193,10 +193,10 @@ function NewCampaignView() {
   const deckAdded = useCallback(async(deck: Deck, card: Card) => {
     setSelectedDecks([...selectedDecks, new LatestDeckRedux(deck, undefined, undefined)]);
     const investigatorId = getDeckInvestigator(deck);
-    updateInvestigatorIds({ type: 'add', investigator: card.canonicalInvestigatorId, printing: card.printingInvestigatorId });
+    updateInvestigatorIds({ type: 'add', investigator: card.canonicalInvestigatorId, printing: investigatorId ?? card.printingInvestigatorId });
     setInvestigatorToDeck({
       ...investigatorToDeck,
-      [investigatorId]: getDeckId(deck),
+      [card.canonicalInvestigatorId]: getDeckId(deck),
     });
     checkNewDeckForWeakness(deck);
   }, [

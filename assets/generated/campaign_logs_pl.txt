@@ -5457,35 +5457,35 @@
         "entries": [
           {
             "id": "do_no_harm",
-            "text": "Task Progress - Do No Harm:"
+            "text": "Postęp zadania - Po pierwsze, nie szkodzić:"
           },
           {
             "id": "dreams_of_destruction",
-            "text": "Task Progress - Dreams of Destruction:"
+            "text": "Postęp zadania - Sny o zagładzie:"
           },
           {
             "id": "good_money",
-            "text": "Task Progress - Good Money:"
+            "text": "Postęp zadania - Niezły szmal:"
           },
           {
             "id": "no_place_like_home",
-            "text": "Task Progress - No Place Like Home:"
+            "text": "Postęp zadania - Nie ma jak w domu:"
           },
           {
             "id": "plumb_the_depths",
-            "text": "Task Progress - Plumb the Depths:"
+            "text": "Postęp zadania - Dotrzeć do sedna:"
           },
           {
             "id": "prove_your_worth",
-            "text": "Task Progress - Prove Your Worth:"
+            "text": "Postęp zadania - Dowiedź swej wartości:"
           },
           {
             "id": "toe_the_line",
-            "text": "Task Progress - Toe the Line:"
+            "text": "Postęp zadania - Wyjść przed szereg:"
           },
           {
             "id": "walk_in_faith",
-            "text": "Task Progress - Walk in Faith:"
+            "text": "Postęp zadania - Podążaj za wiarą:"
           }
         ]
       },
@@ -5494,27 +5494,27 @@
         "entries": [
           {
             "id": "barrier_node",
-            "text": "Barrier Node"
+            "text": "Węzeł bariery"
           },
           {
             "id": "clah_horror",
-            "text": "Horror in Clay"
+            "text": "Koszmar w glinie"
           },
           {
             "id": "grisly_mask",
-            "text": "Grisly Mask"
+            "text": "Przerażająca „maska”"
           },
           {
             "id": "obsidian_claw",
-            "text": "Obsidian Claw"
+            "text": "Obsydianowy szpon"
           },
           {
             "id": "shard",
-            "text": "Shard of Y'ch'lecht"
+            "text": "Okruch Y'ch'lecht"
           },
           {
             "id": "tidal_tablet",
-            "text": "Tidal Tablet"
+            "text": "Tabliczka pływów"
           }
         ]
       },
@@ -5522,136 +5522,136 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "no_place_like_home_succeed",
-            "masculine_text": "#name# found his true home.",
-            "feminine_text": "#name# found her true home.",
-            "nonbinary_text": "#name# found their true home."
-          },
-          {
-            "id": "toe_the_line_succeed",
-            "masculine_text": "#name# found new work.",
-            "feminine_text": "#name# found new work.",
-            "nonbinary_text": "#name# found new work."
-          },
-          {
-            "id": "walk_in_faith_succeed",
-            "masculine_text": "#name# is strong in their faith.",
-            "feminine_text": "#name# is strong in their faith.",
-            "nonbinary_text": "#name# is strong in their faith."
-          },
-          {
-            "id": "plumb_the_depths_succeed",
-            "masculine_text": "#name# learned the secret truth.",
-            "feminine_text": "#name# learned the secret truth.",
-            "nonbinary_text": "#name# learned the secret truth."
-          },
-          {
             "id": "good_money_succeed",
-            "masculine_text": "#name# made bank.",
-            "feminine_text": "#name# made bank.",
-            "nonbinary_text": "#name# made bank."
+            "masculine_text": "#name# dobił targu.",
+            "feminine_text": "#name# dobiła targu.",
+            "nonbinary_text": "#name# dobiło targu."
           },
           {
             "id": "prove_your_worth_succeed",
-            "masculine_text": "#name# pulled their weight.",
-            "feminine_text": "#name# pulled their weight.",
-            "nonbinary_text": "#name# pulled their weight."
+            "masculine_text": "#name# dowiódł swojej wartości.",
+            "feminine_text": "#name# dowiodła swojej wartości.",
+            "nonbinary_text": "#name# dowiodło swojej wartości."
           },
           {
-            "id": "do_no_harm_succeed",
-            "masculine_text": "#name# swore an oath to protect others.",
-            "feminine_text": "#name# swore an oath to protect others.",
-            "nonbinary_text": "#name# swore an oath to protect others."
+            "id": "walk_in_faith_succeed",
+            "masculine_text": "#name# jest silny wiarą.",
+            "feminine_text": "#name# jest silna wiarą.",
+            "nonbinary_text": "#name# jest silne wiarą."
+          },
+          {
+            "id": "toe_the_line_succeed",
+            "masculine_text": "#name# ma nową pracę.",
+            "feminine_text": "#name# ma nową pracę.",
+            "nonbinary_text": "#name# ma nową pracę."
+          },
+          {
+            "id": "no_place_like_home_succeed",
+            "masculine_text": "#name# odnalazł swój prawdziwy dom.",
+            "feminine_text": "#name# odnalazła swój prawdziwy dom.",
+            "nonbinary_text": "#name# odnalazło swój prawdziwy dom."
           },
           {
             "id": "dreams_of_destruction_succeed",
-            "masculine_text": "#name# understands the future.",
-            "feminine_text": "#name# understands the future.",
-            "nonbinary_text": "#name# understands the future."
+            "masculine_text": "#name# pojął przyszłość.",
+            "feminine_text": "#name# pojęła przyszłość.",
+            "nonbinary_text": "#name# pojęło przyszłość."
+          },
+          {
+            "id": "plumb_the_depths_succeed",
+            "masculine_text": "#name# poznał prawdę.",
+            "feminine_text": "#name# poznała prawdę.",
+            "nonbinary_text": "#name# poznało prawdę."
+          },
+          {
+            "id": "do_no_harm_succeed",
+            "masculine_text": "#name# przysiągł chronić innych.",
+            "feminine_text": "#name# przysięgła chronić innych.",
+            "nonbinary_text": "#name# przysięgło chronić innych."
           },
           {
             "id": "cthulhu_annihilated_the_city_of_arkham",
-            "text": "Cthulhu annihilated the city of Arkham."
+            "text": "Cthulhu zrównał Arkham z ziemią."
           },
           {
             "id": "cthulhu_was_banished",
-            "text": "Cthulhu was banished."
+            "text": "Cthulhu został wygnany."
           },
           {
             "id": "cthulhu_was_banished_but_arkham_was_destroyed",
-            "text": "Cthulhu was banished, but Arkham was destroyed."
+            "text": "Cthulhu został wygnany, ale Arkham zostało zniszczone."
           },
           {
             "id": "cthulhu_was_driven_away",
-            "text": "Cthulhu was driven away."
+            "text": "Cthulhu został odpędzony."
           },
           {
             "id": "did_not_confront_the_nightmare",
-            "text": "the investigators did not confront the nightmare."
+            "text": "badacze nie zmierzyli się z koszmarem."
           },
           {
             "id": "discovered_an_alien_language",
-            "text": "the investigators discovered an alien language."
+            "text": "badacze odkryli pozaziemski język."
           },
           {
             "id": "expedition_abandoned_pilgrim",
-            "text": "the expedition left the pilgrim behind."
+            "text": "ekspedycja zostawiła pielgrzyma."
           },
           {
             "id": "expedition_headed_east",
-            "text": "the expedition headed east."
+            "text": "ekspedycja wyruszyła na wschód."
           },
           {
             "id": "expedition_headed_west",
-            "text": "the expedition headed west."
+            "text": "ekspedycja wyruszyła na zachód."
           },
           {
             "id": "expedition_helped_pilgrim",
-            "text": "the expedition helped the pilgrim."
+            "text": "ekspedycja pomogła pielgrzymowi."
           },
           {
             "id": "exterminated_the_alien_parasites",
-            "text": "the investigators exterminated the alien parasites."
+            "text": "badacze zgładzili pozaziemskie pasożyty."
           },
           {
             "id": "halted_cthulhus_awakening",
-            "text": "the investigators halted Cthulhu's awakening."
+            "text": "badacze powstrzymali przebudzenie Cthulhu."
           },
           {
             "id": "pilgrims_were_devoured",
-            "text": "the pilgrims were devoured."
+            "text": "pielgrzymi zostali pożarci."
           },
           {
             "id": "pilgrims_were_saved",
-            "text": "the pilgrims were saved."
+            "text": "pielgrzymi zostali ocaleni."
           },
           {
             "id": "ruby_lost_the_bet",
-            "text": "Ruby lost the bet."
+            "text": "Ruby przegrała zakład."
           },
           {
             "id": "ruby_won_the_bet",
-            "text": "Ruby won the bet."
+            "text": "Ruby wygrała zakład."
           },
           {
             "id": "stood_together",
-            "text": "the investigators stood together."
+            "text": "badacze stanęli do boju."
           },
           {
             "id": "the_creature_was_defeated",
-            "text": "the creature was defeated."
+            "text": "istota została pokonana."
           },
           {
             "id": "the_inner_sanctum_was_unsealed",
-            "text": "the inner sanctum was unsealed."
+            "text": "wewnętrzne sanktuarium zostało odpieczętowane."
           },
           {
             "id": "the_power_was_diverted",
-            "text": "the power was diverted."
+            "text": "przekierowano zasilanie."
           },
           {
             "id": "your_allies_have_a_plan",
-            "text": "your allies have a plan."
+            "text": "twoi sprzymierzeńcy mają plan."
           }
         ]
       },
@@ -5684,7 +5684,7 @@
           },
           {
             "id": "st_marys_hospital",
-            "text": "St. Mary's Hospital"
+            "text": "Szpital św. Marii"
           }
         ]
       },
@@ -5697,7 +5697,7 @@
           },
           {
             "id": "tdc_rune_s",
-            "text": "Machine"
+            "text": "Maszyna"
           }
         ]
       },
@@ -5706,15 +5706,15 @@
         "entries": [
           {
             "id": "tdc_good_money_no_upkeep",
-            "masculine_text": "#name# cannot gain resources during the upkeep phase.",
-            "feminine_text": "#name# cannot gain resources during the upkeep phase.",
-            "nonbinary_text": "#name# cannot gain resources during the upkeep phase."
+            "masculine_text": "#name# nie może zyskiwać żetonów zasobów podczas fazy utrzymania.",
+            "feminine_text": "#name# nie może zyskiwać żetonów zasobów podczas fazy utrzymania.",
+            "nonbinary_text": "#name# nie może zyskiwać żetonów zasobów podczas fazy utrzymania."
           },
           {
             "id": "tdc_good_money_extra_resources",
-            "masculine_text": "#name# starts with 3 additional resources.",
-            "feminine_text": "#name# starts with 3 additional resources.",
-            "nonbinary_text": "#name# starts with 3 additional resources."
+            "masculine_text": "#name# zaczyna kolejny scenariusz z 3 dodatkowymi żetonami zasobów.",
+            "feminine_text": "#name# zaczyna kolejny scenariusz z 3 dodatkowymi żetonami zasobów.",
+            "nonbinary_text": "#name# zaczyna kolejny scenariusz z 3 dodatkowymi żetonami zasobów."
           },
           {
             "id": "kept_barrier_node",
@@ -5799,31 +5799,31 @@
         "entries": [
           {
             "id": "court_of_the_ancients",
-            "text": "Court of the Ancients"
+            "text": "Dziedziniec Starożytnych"
           },
           {
             "id": "obsidian_canyons",
-            "text": "Obsidian Canyons"
+            "text": "Obsydianowe kaniony"
           },
           {
             "id": "sepulchre_of_the_sleeper",
-            "text": "Sepulchre of the Sleeper"
+            "text": "Grobowiec Śniącego"
           },
           {
             "id": "the_apiary",
-            "text": "The Apiary"
+            "text": "Pasieka"
           },
           {
             "id": "the_drowned_quarter",
-            "text": "The Drowned Quarter"
+            "text": "Zatopiona dzielnica"
           },
           {
             "id": "the_grand_vault",
-            "text": "The Grand Vault"
+            "text": "Wielka krypta"
           },
           {
             "id": "the_western_wall",
-            "text": "The Western Wall"
+            "text": "Zachodni mur"
           }
         ]
       }

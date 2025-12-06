@@ -99,6 +99,7 @@ export function addInvestigator(
   id: CampaignId,
   investigator: Card,
   deckId?: DeckId,
+  deckInvestigatorId?: string,
 ): ThunkAction<Promise<void>, AppState, unknown, CampaignAddInvestigatorAction> {
   return async(dispatch, getState: () => AppState) => {
     const baseDeckId = deckId ?
@@ -107,20 +108,16 @@ export function addInvestigator(
     if (userId && id.serverId) {
       await updateCampaignActions.addInvestigator(id, investigator);
     } else {
+      const possiblePrinting = deckInvestigatorId ?? investigator.printingInvestigatorId
+      const printing = investigator.canonicalInvestigatorId !== possiblePrinting ? possiblePrinting : undefined;
       const action: CampaignAddInvestigatorAction = {
         type: CAMPAIGN_ADD_INVESTIGATOR,
         id,
         investigator: investigator.canonicalInvestigatorId,
-        printing: investigator.printingInvestigatorId,
+        printing,
         deckId: baseDeckId,
         now: new Date(),
       };
-      console.log('DISPATCHING CAMPAIGN_ADD_INVESTIGATOR:', JSON.stringify({
-        investigatorCode: investigator.code,
-        canonicalInvestigatorId: investigator.canonicalInvestigatorId,
-        printingInvestigatorId: investigator.printingInvestigatorId,
-        investigatorId: investigator.investigator_id,
-      }, null, 2));
       dispatch(action);
     }
     if (baseDeckId && id.serverId && userId) {

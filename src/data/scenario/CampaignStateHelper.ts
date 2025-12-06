@@ -59,12 +59,16 @@ export default class CampaignStateHelper {
     public guideVersion: number,
     public latestDecks: LatestDeckT[] | undefined,
     public parallelInvestigators: CardsMap | undefined,
-    public linkedState?: CampaignGuideStateT,
+    private investigatorPrintings: {
+      [investigatorCode: string]: string | undefined;
+    },
+    public linkedState: CampaignGuideStateT | undefined
   ) {}
 
   investigatorCard(code: string): Card | undefined {
     const deck = find(this.latestDecks || [], deck => deck.investigator === code);
-    const investigatorCode = deck?.deck.meta?.alternate_front ?? code;
+    const alternateFront = deck?.deck.meta?.alternate_front !== code ? deck?.deck.meta?.alternate_front : undefined;
+    const investigatorCode = alternateFront ?? this.investigatorPrintings[code] ?? code;
     return this.parallelInvestigators?.[investigatorCode] ?? this.investigators[investigatorCode] ?? this.investigators[code];
   }
 

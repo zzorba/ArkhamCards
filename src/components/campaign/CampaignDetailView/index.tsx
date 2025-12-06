@@ -149,13 +149,13 @@ function CampaignDetailView() {
   const checkNewDeckForWeakness = useMaybeShowWeaknessPrompt(checkForWeaknessPrompt);
   const onAddDeck = useCallback(async(deck: Deck, card: Card) => {
     await asyncDispatch(
-      addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card, getDeckId(deck))
+      addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card, getDeckId(deck), deck.investigator_code)
     );
     checkNewDeckForWeakness(deck);
   }, [userId, campaignId, deckActions, updateCampaignActions, checkNewDeckForWeakness, asyncDispatch]);
 
-  const onAddInvestigator = useCallback((card: CampaignInvestigator) => {
-    dispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card.card));
+  const onAddInvestigator = useCallback((card: Card) => {
+    dispatch(addInvestigator(userId, deckActions, updateCampaignActions, campaignId, card));
   }, [userId, campaignId, deckActions, updateCampaignActions, dispatch]);
 
   const onRemoveInvestigator = useCallback((investigator: CampaignInvestigator, removedDeckId?: DeckId) => {
@@ -171,7 +171,7 @@ function CampaignDetailView() {
     const includeParallel = campaign.cycleCode === OZ;
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
       campaignId: campaign.id,
-      singleInvestigator: singleInvestigator.card.alternate_of_code ?? singleInvestigator.card.code,
+      singleInvestigator: singleInvestigator.code,
       onDeckSelect: (deck: Deck, investigator: Card) => onAddDeck(deck, singleInvestigator.card ?? investigator),
       includeParallel,
     } : {
@@ -182,11 +182,7 @@ function CampaignDetailView() {
       ),
       onDeckSelect: onAddDeck,
       onInvestigatorSelect: (card: Card) => {
-        onAddInvestigator({
-          code: includeParallel ? card.code : card.canonicalInvestigatorId,
-          card,
-          alternate_code: card.alternate_of_code ? card.code : undefined,
-        })
+        onAddInvestigator(card);
       },
       simpleOptions: true,
       includeParallel,

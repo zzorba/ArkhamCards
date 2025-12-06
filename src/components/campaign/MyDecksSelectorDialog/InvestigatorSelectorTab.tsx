@@ -34,6 +34,7 @@ export default function InvestigatorSelectorTab({
 
   const [dialog, showDialog] = useInvestigatorPrintingSelector({
     onSelectPrinting: handlePrintingSelected,
+    includeParallel,
   });
 
   const investigatorSelected = useCallback(async(card: Card) => {
@@ -52,7 +53,6 @@ export default function InvestigatorSelectorTab({
         searchOptions={searchOptions}
         onPress={investigatorSelected}
         filterInvestigators={filterInvestigators}
-        includeParallelInvestigators={includeParallel}
       />
       {dialog}
     </>

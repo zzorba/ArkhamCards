@@ -40,6 +40,7 @@ import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import { useApolloClient } from '@apollo/client';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import { useAppDispatch } from '@app/store';
+import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 
 function useCachedValue<T>(value: T | undefined): T | undefined {
   const ref = useRef<T | undefined>(value);
@@ -50,6 +51,7 @@ function useCachedValue<T>(value: T | undefined): T | undefined {
 
 export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   const { userId, loading: userLoading } = useContext(ArkhamCardsAuthContext);
+  const { investigatorSets } = useContext(PlayerCardContext);
   const { data, loading: dataLoading, refetch } = useGetMyCampaignsQuery({
     variables: {
       userId: userId || '',
@@ -65,7 +67,7 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
   }, [refetch, userId]);
   const rawCampaigns = data?.users_by_pk?.campaigns;
   const campaigns = useMemo(() => {
-    if (!rawCampaigns || !userId) {
+    if (!rawCampaigns || !userId || !investigatorSets) {
       return [];
     }
     return flatMap(rawCampaigns, ({ campaign }) => {
@@ -76,17 +78,18 @@ export function useRemoteCampaigns(): [MiniCampaignT[], boolean, () => void] {
         if (campaign.link_a_campaign.cycleCode && campaign.link_b_campaign.cycleCode) {
           return new MiniLinkedCampaignRemote(
             omit(campaign, ['link_a_campaign', 'link_b_campaign']) as MiniCampaignFragment,
+            investigatorSets,
             campaign.link_a_campaign,
             campaign.link_b_campaign
           );
         }
       } else if (campaign.cycleCode) {
-        return new MiniCampaignRemote(campaign);
+        return new MiniCampaignRemote(campaign, investigatorSets);
       }
       return [];
     });
-  }, [rawCampaigns, userId]);
-  return [campaigns, (userId ? (userLoading || dataLoading) : false), refresh];
+  }, [rawCampaigns, userId, investigatorSets]);
+  return [campaigns, (userId ? (userLoading || dataLoading || !investigatorSets) : false), refresh];
 }
 
 export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, live?: boolean): CampaignGuideStateT | undefined {
@@ -120,6 +123,7 @@ export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, 
 
 export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boolean): SingleCampaignT | undefined {
   const { userId } = useContext(ArkhamCardsAuthContext);
+  const { investigatorSets } = useContext(PlayerCardContext);
   const { data, subscribeToMore } = useGetCampaignQuery({
     variables: { campaign_id: campaignId?.serverId || 0 },
     fetchPolicy: live ? 'cache-first' : 'cache-only',
@@ -137,14 +141,14 @@ export function useCampaignRemote(campaignId: CampaignId | undefined, live?: boo
 
 
   const result = useMemo(() => {
-    if (!campaignId || !campaignId.serverId) {
+    if (!campaignId || !campaignId.serverId || !investigatorSets) {
       return undefined;
     }
     if (data?.campaign_by_pk) {
-      return new SingleCampaignRemote(data.campaign_by_pk);
+      return new SingleCampaignRemote(data.campaign_by_pk, investigatorSets);
     }
     return undefined;
-  }, [data, campaignId]);
+  }, [data, campaignId, investigatorSets]);
   return useCachedValue(result);
 }
 

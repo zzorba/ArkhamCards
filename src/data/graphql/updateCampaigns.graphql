@@ -456,8 +456,9 @@ mutation removeCampaignInvestigator(
   ) {
     returning {
       id
-      campaign_id
       investigator
+      printing
+      campaign_id
     }
   }
 }

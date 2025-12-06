@@ -108,7 +108,7 @@ export default function AlternatePrintingsComponent({ card }: Props) {
   }
   return (
     <>
-      <CardDetailSectionHeader title={t`Alternate Printings`} />
+      <CardDetailSectionHeader title={t`Alternate versions`} />
       <View style={styles.container}>
         { map(sortedAlternates, alternateCard =>
           alternateCard.code === card.code ? null : (

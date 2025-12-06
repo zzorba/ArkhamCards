@@ -22,6 +22,10 @@ mutation insertNewDeck(
       owner_id: $userId
       base: true
     }
+    on_conflict: {
+      constraint: deck_local_uuid_campaign_id_key
+      update_columns: [content, content_hash, arkhamdb_id, arkhamdb_user]
+    }
   ) {
     ...LatestDeck
   }

@@ -69,6 +69,7 @@ function CampaignGuideView(props: Props & LoginStateProps) {
   useStopAudioOnUnmount();
 
   const { campaignGuide, campaignState, campaign } = campaignData;
+
   useCampaignDeleted(campaign);
   useDismissOnCampaignDeleted(navigation, campaign);
 

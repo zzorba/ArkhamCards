@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -21,6 +21,7 @@ import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 export interface CardImageProps {
   id: string;
   cardName?: string;
+  headerBackgroundColor?: string;
 }
 
 interface CardImageDetailProps {
@@ -96,25 +97,19 @@ function CardImageDetail({ card, flipped }: CardImageDetailProps) {
 export default function CardImageView() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Card.Image'>>();
   const navigation = useNavigation();
-  const { id, cardName } = route.params;
-  const { backgroundStyle, colors } = useContext(StyleContext);
+  const { id } = route.params;
+  const { backgroundStyle } = useContext(StyleContext);
   const [flipped, toggleFlipped] = useFlag(false);
   const [card] = useSingleCard(id, 'encounter');
 
-  // Set up navigation options with proper styling and buttons
-  useLayoutEffect(() => {
+  // Add flip button only when card loads
+  useEffect(() => {
     if (!card) {
       return;
     }
-    const faction = card.factionCode();
     const doubleCard: boolean = card.double_sided || !!(card.linked_card && card.linked_card.hasImage());
 
     navigation.setOptions({
-      title: cardName || card.name,
-      headerStyle: {
-        backgroundColor: faction ? colors.faction[faction].background : colors.background,
-      },
-      headerTintColor: faction ? '#FFFFFF' : colors.darkText,
       headerRight: doubleCard ? () => (
         <HeaderButton
           iconName="flip_card"
@@ -124,7 +119,7 @@ export default function CardImageView() {
         />
       ) : undefined,
     });
-  }, [card, cardName, navigation, colors, toggleFlipped]);
+  }, [card, navigation, toggleFlipped]);
   return (
     <View style={[styles.container, backgroundStyle]}>
       <CardImageDetail
@@ -143,8 +138,19 @@ const styles = StyleSheet.create({
 
 
 function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Card.Image'> }): NativeStackNavigationOptions {
+  const { cardName, headerBackgroundColor } = route.params || {};
   return {
-    title: route.params?.cardName || t`Card Image`,
+    title: cardName || t`Card Image`,
+    headerStyle: headerBackgroundColor ? {
+      backgroundColor: headerBackgroundColor,
+    } : undefined,
+    headerTintColor: '#FFFFFF',
+    headerTitleStyle: {
+      fontFamily: 'Alegreya-Medium',
+      fontSize: 20,
+      fontWeight: '500' as const,
+      color: '#FFFFFF',
+    },
   };
 };
 

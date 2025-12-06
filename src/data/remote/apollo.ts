@@ -938,7 +938,7 @@ const handleAddCampaignInvestigator: MutationUpdaterFn<AddCampaignInvestigatorMu
   if (!data?.insert_campaign_investigator_one) {
     return;
   }
-  const { campaign_id, investigator } = data.insert_campaign_investigator_one;
+  const { campaign_id, investigator, printing } = data.insert_campaign_investigator_one;
   updateFullCampaign(
     cache,
     campaign_id,
@@ -951,6 +951,7 @@ const handleAddCampaignInvestigator: MutationUpdaterFn<AddCampaignInvestigatorMu
             __typename: 'campaign_investigator',
             id: `${campaign_id}-${investigator}`,
             investigator,
+            printing,
           },
         ],
       };

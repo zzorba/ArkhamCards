@@ -21,6 +21,8 @@ export const LOLA_CODE = '03006';
 export const THE_INSANE_CODE = 'zci_00001';
 export const JOE_DIAMOND_CODE = '05002';
 export const SUZI_CODE = '89001';
+export const AGATHA_SEEKER_CODE = '11007';
+export const AGATHA_MYSTIC_CODE = '11008';
 
 export const BONDED_WEAKNESS_COUNTS: { [code: string]: number | undefined } = {
   '06018': 3, // Hungering Blade

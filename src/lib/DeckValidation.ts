@@ -686,6 +686,7 @@ export default class DeckValidation {
         find(
           card.restrictions_all_investigators,
           (code) =>
+            code === investigator.back.canonicalInvestigatorId ||
             code === investigator.back.code ||
             code === investigator.back.alternate_of_code
         )

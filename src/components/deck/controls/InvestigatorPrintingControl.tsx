@@ -7,7 +7,7 @@ import Card from '@data/types/Card';
 import { usePickerDialog } from '../dialogs';
 import DeckPickerStyleButton from './DeckPickerStyleButton';
 import StyleContext from '@styles/StyleContext';
-import { cardToPrintingItem } from './investigatorPrintingItems';
+import { cardToPrintingItem, getPrintingDisplayName } from './investigatorPrintingItems';
 
 interface Props {
   investigator: Card;
@@ -57,24 +57,27 @@ export default function InvestigatorPrintingControl({
   }, [onSelectPrinting]);
 
   const [dialog, showDialog] = usePickerDialog({
-    title: t`Select Printing`,
+    title: t`Select version`,
     items: printingItems,
     selectedValue: selectedPrinting,
     onValueChange: onChoicePicked,
   });
 
+  const displayPackName = useMemo(() => {
+    return selectedPrinting ? getPrintingDisplayName(selectedPrinting) : '';
+  }, [selectedPrinting]);
+
   // Don't show if only one printing
   if (sortedPrintings.length <= 1) {
     return null;
   }
-
   return (
     <>
       <DeckPickerStyleButton
         icon="card-outline"
         editable={!disabled}
-        title={t`Alternate printing`}
-        valueLabel={selectedPrinting?.pack_name}
+        title={t`Alternate version`}
+        valueLabel={displayPackName}
         onPress={showDialog}
         first={first}
         last={last}

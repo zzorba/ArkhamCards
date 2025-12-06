@@ -229,8 +229,12 @@ function NewDeckOptionsDialog({
     }
   }, [investigator]);
 
+
   const requiredCardCodes = useMemo(() => {
-    return [
+    if (!investigator) {
+      return [];
+    }
+    const codes = [
       RANDOM_BASIC_WEAKNESS,
       ...(investigator?.deck_requirements?.choice?.find(choice => choice.target === 'subtype' && choice.value === 'basicweakness') ? [BASIC_WEAKNESS_CHOICE] : []),
       ...flatMap(investigator?.deck_requirements?.card || [], cardRequirement => {
@@ -240,8 +244,10 @@ function NewDeckOptionsDialog({
         ];
       }),
     ];
+    return codes;
   }, [investigator]);
-  const [cards] = useCardMap(requiredCardCodes, 'player', false, tabooSetId);
+  const [cards] = useCardMap(requiredCardCodes, 'player', false, 0);
+
   const requiredCardOptions = useMemo(() => {
     if (!cards || !investigator) {
       return [];
@@ -276,7 +282,8 @@ function NewDeckOptionsDialog({
         forEach(result, r => r.push(choiceCard));
       }
     }
-    return map(result, r => uniqBy(r, x => x.code));
+    const finalResult = map(result, r => uniqBy(r, x => x.code));
+    return finalResult;
   }, [cards, investigator]);
   const randomWeaknessCount = useMemo(
     () => sumBy(investigator?.deck_requirements?.random, t => t.target === 'subtype' && t.value === 'basicweakness' ? 1 : 0) ?? 0,
@@ -378,7 +385,7 @@ function NewDeckOptionsDialog({
     const state = navigation.getState();
     const routes = dropWhile(
       reverse([...state?.routes ?? []]),
-      r => r.name === 'Deck.New' || r.name === 'Deck.NewOptions'
+      r => r.name === 'Deck.New' || r.name === 'Deck.NewOptions' || r.name === 'Dialog.DeckSelector'
     ).reverse();
 
     navigation.reset({
@@ -588,6 +595,7 @@ function NewDeckOptionsDialog({
             setMeta={updateMeta}
             setParallel={setParallel}
             firstElement={renderNamePicker}
+            parallelInvestigators={parallelInvestigators}
           />
           <DeckPickerStyleButton
             last
@@ -662,7 +670,7 @@ function NewDeckOptionsDialog({
       </>
     );
   }, [signedIn,
-    investigatorId, isCustomContent, randomWeaknessCount, cards,
+    investigatorId, isCustomContent, randomWeaknessCount, cards, parallelInvestigators,
     networkType, isConnected, chaosSlots, specialDeckMode, chaosEditState, chaosCards,
     parsedChaosDeck, offlineDeck, optionSelected, tabooSetId, requiredCardOptions, meta, typography,
     setTabooSetId, onCardPress, toggleOptionsSelected,toggleOfflineDeck, showSpecialDeckDialog,

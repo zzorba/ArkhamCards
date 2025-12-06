@@ -599,6 +599,7 @@ export function useDeckActions(): DeckActions {
     const campaignName = getCampaignName(cache.current, campaignId.serverId);
     const cycleCode = getCampaignCycleCode(cache.current, campaignId.serverId);
     const content_hash = await hashDeck(deck);
+
     const variables = {
       campaign_id: campaignId.serverId,
       investigator: deck.investigator_code,

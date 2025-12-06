@@ -16,6 +16,9 @@ export default interface MiniCampaignT {
   standaloneId: StandaloneId | undefined;
   latestScenarioResult: ScenarioResult | undefined;
   investigators: string[];
+  investigatorPrintings: {
+    [investigatorCode: string]: string | undefined;
+  };
   updatedAt: Date;
   archived: boolean;
   linked: undefined | CampaignLink;

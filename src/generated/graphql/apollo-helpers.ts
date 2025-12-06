@@ -72,8 +72,9 @@ export type UsersSearchOutputFieldPolicy = {
 	hasMore?: FieldPolicy<any> | FieldReadFunction<any>,
 	users?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_cardKeySpecifier = ('alt_art_investigator' | 'alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'clues_fixed' | 'code' | 'cost' | 'customization_options' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'gender' | 'heals_damage' | 'heals_horror' | 'health' | 'health_per_investigator' | 'hidden' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'investigator_id' | 'is_unique' | 'linked' | 'linked_card' | 'myriad' | 'official' | 'pack' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'permanent' | 'position' | 'preview' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_subname' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_original_back_text' | 'real_taboo_original_text' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'restrictions' | 'sanity' | 'shroud' | 'side_deck_options' | 'side_deck_requirements' | 'simple_deck_requirements' | 'simple_side_deck_requirements' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'spoiler' | 'stage' | 'subtype_code' | 'taboo_placeholder' | 'taboo_set' | 'taboo_set_id' | 'taboo_xp' | 'tags' | 'translations' | 'translations_aggregate' | 'type' | 'type_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_cardKeySpecifier)[];
+export type all_cardKeySpecifier = ('advanced_for' | 'alt_art_investigator' | 'alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'clues_fixed' | 'code' | 'cost' | 'customization_options' | 'deck_limit' | 'deck_options' | 'deck_requirements' | 'doom' | 'double_sided' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'encounter_sets' | 'encounter_sets_aggregate' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'exceptional' | 'exile' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'gender' | 'heals_damage' | 'heals_horror' | 'health' | 'health_per_investigator' | 'hidden' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'investigator_id' | 'is_unique' | 'linked' | 'linked_card' | 'myriad' | 'official' | 'pack' | 'pack_code' | 'pack_position' | 'packs' | 'packs_aggregate' | 'parallel_of_code' | 'permanent' | 'position' | 'preview' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_subname' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_original_back_text' | 'real_taboo_original_text' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'replacement_for' | 'restrictions' | 'sanity' | 'shroud' | 'side_deck_options' | 'side_deck_requirements' | 'signature_for' | 'simple_deck_requirements' | 'simple_side_deck_requirements' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'spoiler' | 'stage' | 'subtype_code' | 'taboo_placeholder' | 'taboo_set' | 'taboo_set_id' | 'taboo_xp' | 'tags' | 'translations' | 'translations_aggregate' | 'type' | 'type_code' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_cardKeySpecifier)[];
 export type all_cardFieldPolicy = {
+	advanced_for?: FieldPolicy<any> | FieldReadFunction<any>,
 	alt_art_investigator?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_required_code?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -127,6 +128,7 @@ export type all_cardFieldPolicy = {
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
 	packs?: FieldPolicy<any> | FieldReadFunction<any>,
 	packs_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	parallel_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	permanent?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	preview?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -149,11 +151,13 @@ export type all_cardFieldPolicy = {
 	real_taboo_text_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	replacement_for?: FieldPolicy<any> | FieldReadFunction<any>,
 	restrictions?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
 	shroud?: FieldPolicy<any> | FieldReadFunction<any>,
 	side_deck_options?: FieldPolicy<any> | FieldReadFunction<any>,
 	side_deck_requirements?: FieldPolicy<any> | FieldReadFunction<any>,
+	signature_for?: FieldPolicy<any> | FieldReadFunction<any>,
 	simple_deck_requirements?: FieldPolicy<any> | FieldReadFunction<any>,
 	simple_side_deck_requirements?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_agility?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -228,8 +232,9 @@ export type all_card_avg_fieldsFieldPolicy = {
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_max_fieldsKeySpecifier = ('alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'investigator_id' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_subname' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_original_back_text' | 'real_taboo_original_text' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'taboo_set_id' | 'taboo_xp' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_card_max_fieldsKeySpecifier)[];
+export type all_card_max_fieldsKeySpecifier = ('advanced_for' | 'alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'investigator_id' | 'pack_code' | 'pack_position' | 'parallel_of_code' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_subname' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_original_back_text' | 'real_taboo_original_text' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'replacement_for' | 'sanity' | 'shroud' | 'signature_for' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'taboo_set_id' | 'taboo_xp' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_card_max_fieldsKeySpecifier)[];
 export type all_card_max_fieldsFieldPolicy = {
+	advanced_for?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_required_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -260,6 +265,7 @@ export type all_card_max_fieldsFieldPolicy = {
 	investigator_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	parallel_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -280,8 +286,10 @@ export type all_card_max_fieldsFieldPolicy = {
 	real_taboo_text_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	replacement_for?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
 	shroud?: FieldPolicy<any> | FieldReadFunction<any>,
+	signature_for?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_agility?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -297,8 +305,9 @@ export type all_card_max_fieldsFieldPolicy = {
 	victory?: FieldPolicy<any> | FieldReadFunction<any>,
 	xp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type all_card_min_fieldsKeySpecifier = ('alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'investigator_id' | 'pack_code' | 'pack_position' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_subname' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_original_back_text' | 'real_taboo_original_text' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'sanity' | 'shroud' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'taboo_set_id' | 'taboo_xp' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_card_min_fieldsKeySpecifier)[];
+export type all_card_min_fieldsKeySpecifier = ('advanced_for' | 'alternate_of_code' | 'alternate_required_code' | 'back_illustrator' | 'back_link_id' | 'backimagesrc' | 'backimageurl' | 'clues' | 'code' | 'cost' | 'deck_limit' | 'doom' | 'duplicate_of_code' | 'encounter_code' | 'encounter_position' | 'enemy_damage' | 'enemy_evade' | 'enemy_fight' | 'enemy_horror' | 'errata_date' | 'faction2_code' | 'faction3_code' | 'faction_code' | 'health' | 'id' | 'illustrator' | 'imagesrc' | 'imageurl' | 'investigator_id' | 'pack_code' | 'pack_position' | 'parallel_of_code' | 'position' | 'quantity' | 'real_back_flavor' | 'real_back_name' | 'real_back_subname' | 'real_back_text' | 'real_back_traits' | 'real_customization_change' | 'real_customization_text' | 'real_encounter_set_name' | 'real_flavor' | 'real_name' | 'real_pack_name' | 'real_slot' | 'real_subname' | 'real_taboo_original_back_text' | 'real_taboo_original_text' | 'real_taboo_text_change' | 'real_text' | 'real_traits' | 'replacement_for' | 'sanity' | 'shroud' | 'signature_for' | 'skill_agility' | 'skill_combat' | 'skill_intellect' | 'skill_wild' | 'skill_willpower' | 'stage' | 'subtype_code' | 'taboo_set_id' | 'taboo_xp' | 'updated_at' | 'vengeance' | 'version' | 'victory' | 'xp' | all_card_min_fieldsKeySpecifier)[];
 export type all_card_min_fieldsFieldPolicy = {
+	advanced_for?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	alternate_required_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	back_illustrator?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -329,6 +338,7 @@ export type all_card_min_fieldsFieldPolicy = {
 	investigator_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	pack_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	parallel_of_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	quantity?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_back_flavor?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -349,8 +359,10 @@ export type all_card_min_fieldsFieldPolicy = {
 	real_taboo_text_change?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_text?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_traits?: FieldPolicy<any> | FieldReadFunction<any>,
+	replacement_for?: FieldPolicy<any> | FieldReadFunction<any>,
 	sanity?: FieldPolicy<any> | FieldReadFunction<any>,
 	shroud?: FieldPolicy<any> | FieldReadFunction<any>,
+	signature_for?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_agility?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_combat?: FieldPolicy<any> | FieldReadFunction<any>,
 	skill_intellect?: FieldPolicy<any> | FieldReadFunction<any>,

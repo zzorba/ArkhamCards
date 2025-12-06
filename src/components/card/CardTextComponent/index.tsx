@@ -147,8 +147,13 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
 
   // Create markdown-it instance with HTML enabled
   const markdownItInstance = useMemo(() => {
-    return MarkdownIt({ html: true, breaks: true });
-  }, []);
+    const md = MarkdownIt({ html: true, breaks: true });
+    // If onLinkPress is not provided, disable link parsing to prevent [icon](text) from being treated as links
+    if (!onLinkPress) {
+      md.disable(['link', 'image']);
+    }
+    return md;
+  }, [onLinkPress]);
 
   const wrappedOnLinkPress = useCallback((url: string): boolean => {
     if (onLinkPress) {
@@ -253,14 +258,16 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
   // Helper to process text content and replace [icon] patterns (but not markdown links like [text](url))
   // Returns the content with icon patterns replaced by icon components
   const processTextWithIcons = useCallback((content: string, keyPrefix: string): React.ReactNode => {
-    const iconPattern = /\[([^\]]+)\](?!\()/g;
+    // If onLinkPress is not provided, match all [icon] patterns regardless of what follows
+    // If onLinkPress is provided, avoid matching [text](url) markdown links
+    const iconPattern = onLinkPress ? /\[([^\]]+)\](?!\()/g : /\[([^\]]+)\]/g;
     if (!iconPattern.test(content)) {
       return content;
     }
 
     const parts: React.ReactNode[] = [];
     let lastIndex = 0;
-    const matches = content.matchAll(/\[([^\]]+)\](?!\()/g);
+    const matches = content.matchAll(onLinkPress ? /\[([^\]]+)\](?!\()/g : /\[([^\]]+)\]/g);
 
     for (const match of matches) {
       if (match.index! > lastIndex) {
@@ -278,7 +285,7 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
     }
 
     return <>{parts}</>;
-  }, [renderArkhamIcon]);
+  }, [renderArkhamIcon, onLinkPress]);
 
   // Config for tag rendering
   const tagConfig = useMemo((): { [tag: string]: {

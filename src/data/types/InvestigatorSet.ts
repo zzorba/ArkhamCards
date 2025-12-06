@@ -42,4 +42,11 @@ export default class InvestigatorSet {
   getAllCodes(): string[] {
     return this.alternate_codes;
   }
+
+  /**
+   * Return the canonical code of this investigator set.
+   */
+  canonicalCode(): string {
+    return this.alternate_codes[0] ?? this.code;
+  }
 }

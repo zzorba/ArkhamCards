@@ -146,20 +146,6 @@ async function createDatabaseConnection(recreate: boolean) {
     driver: typeORMDriver,
     // maxQueryExecutionTime: 4000,
     migrations: [
-      HealsDamageMigration1657382994910,
-      CustomizeMigration1657651357621,
-      RemovableSlot1658075280573,
-      AlternateRequiredCodeMigration1660064759967,
-      CardStatusMigration1662999387731,
-      GenderMigration1663271269593,
-      CardTagsMigraiton1663617607335,
-      ImageMigration1665529094145,
-      ReprintQuantityMigration1671202311300,
-      TabooTextMigration1693598075386,
-      SideDeckMigration1698073688677,
-      SpecialtyCardsMigration1726180741370,
-      InvestigatorSetMigration1764345197527,
-      InvestigatorIdMigration1764434435446,
     ],
     entities: [Card, EncounterSet, FaqEntry, TabooSet, Rule, InvestigatorSet],
   });
@@ -169,7 +155,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 51;
+  static SCHEMA_VERSION: number = 52;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
@@ -375,6 +361,27 @@ export default class Database {
     );
   }
 
+  async getInvestigatorSet(code: string): Promise<InvestigatorSet | undefined> {
+    const investigatorSets = await this.investigatorSets();
+    return investigatorSets.findOne({ where: { code } });
+  }
+
+  async getInvestigatorSets(codes: string[]): Promise<InvestigatorSet[]> {
+    if (codes.length === 0) {
+      return [];
+    }
+    const investigatorSets = await this.investigatorSets();
+    return investigatorSets
+      .createQueryBuilder('i')
+      .where('i.code IN (:...codes)', { codes })
+      .getMany();
+  }
+
+  async getAllInvestigatorSets(): Promise<InvestigatorSet[]> {
+    const investigatorSets = await this.investigatorSets();
+    return investigatorSets.find();
+  }
+
   async getListCards(
     sortIgnoreQuotes: boolean,
     query?: Brackets,
@@ -435,6 +442,10 @@ export default class Database {
       .leftJoinAndSelect('c.linked_card', 'linked_card')
       .where(where(`c.id IN (:...cardIds)`, { cardIds: ids }))
       .getMany();
+  }
+
+  async getCardsByCodes(codes: string[], tabooSetId?: number): Promise<Card[]> {
+    return this.getCards(where(`c.code IN (:...codes)`, { codes }), tabooSetId);
   }
 
   async getCard(

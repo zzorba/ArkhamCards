@@ -284,6 +284,7 @@ export type UsersSearchOutput = {
 /** columns and relationships of "all_card" */
 export type All_Card = {
   __typename?: 'all_card';
+  advanced_for?: Maybe<Scalars['String']['output']>;
   alt_art_investigator?: Maybe<Scalars['Boolean']['output']>;
   alternate_of_code?: Maybe<Scalars['String']['output']>;
   alternate_required_code?: Maybe<Scalars['String']['output']>;
@@ -343,6 +344,7 @@ export type All_Card = {
   packs: Array<Card_Pack>;
   /** An aggregate relationship */
   packs_aggregate: Card_Pack_Aggregate;
+  parallel_of_code?: Maybe<Scalars['String']['output']>;
   permanent?: Maybe<Scalars['Boolean']['output']>;
   position: Scalars['Int']['output'];
   preview?: Maybe<Scalars['Boolean']['output']>;
@@ -365,11 +367,13 @@ export type All_Card = {
   real_taboo_text_change?: Maybe<Scalars['String']['output']>;
   real_text?: Maybe<Scalars['String']['output']>;
   real_traits?: Maybe<Scalars['String']['output']>;
+  replacement_for?: Maybe<Scalars['String']['output']>;
   restrictions?: Maybe<Scalars['jsonb']['output']>;
   sanity?: Maybe<Scalars['Int']['output']>;
   shroud?: Maybe<Scalars['Int']['output']>;
   side_deck_options?: Maybe<Scalars['jsonb']['output']>;
   side_deck_requirements?: Maybe<Scalars['jsonb']['output']>;
+  signature_for?: Maybe<Scalars['String']['output']>;
   simple_deck_requirements?: Maybe<Scalars['jsonb']['output']>;
   simple_side_deck_requirements?: Maybe<Scalars['jsonb']['output']>;
   skill_agility?: Maybe<Scalars['Int']['output']>;
@@ -674,6 +678,7 @@ export type All_Card_Bool_Exp = {
   _and?: InputMaybe<Array<All_Card_Bool_Exp>>;
   _not?: InputMaybe<All_Card_Bool_Exp>;
   _or?: InputMaybe<Array<All_Card_Bool_Exp>>;
+  advanced_for?: InputMaybe<String_Comparison_Exp>;
   alt_art_investigator?: InputMaybe<Boolean_Comparison_Exp>;
   alternate_of_code?: InputMaybe<String_Comparison_Exp>;
   alternate_required_code?: InputMaybe<String_Comparison_Exp>;
@@ -727,6 +732,7 @@ export type All_Card_Bool_Exp = {
   pack_position?: InputMaybe<Int_Comparison_Exp>;
   packs?: InputMaybe<Card_Pack_Bool_Exp>;
   packs_aggregate?: InputMaybe<Card_Pack_Aggregate_Bool_Exp>;
+  parallel_of_code?: InputMaybe<String_Comparison_Exp>;
   permanent?: InputMaybe<Boolean_Comparison_Exp>;
   position?: InputMaybe<Int_Comparison_Exp>;
   preview?: InputMaybe<Boolean_Comparison_Exp>;
@@ -749,11 +755,13 @@ export type All_Card_Bool_Exp = {
   real_taboo_text_change?: InputMaybe<String_Comparison_Exp>;
   real_text?: InputMaybe<String_Comparison_Exp>;
   real_traits?: InputMaybe<String_Comparison_Exp>;
+  replacement_for?: InputMaybe<String_Comparison_Exp>;
   restrictions?: InputMaybe<Jsonb_Comparison_Exp>;
   sanity?: InputMaybe<Int_Comparison_Exp>;
   shroud?: InputMaybe<Int_Comparison_Exp>;
   side_deck_options?: InputMaybe<Jsonb_Comparison_Exp>;
   side_deck_requirements?: InputMaybe<Jsonb_Comparison_Exp>;
+  signature_for?: InputMaybe<String_Comparison_Exp>;
   simple_deck_requirements?: InputMaybe<Jsonb_Comparison_Exp>;
   simple_side_deck_requirements?: InputMaybe<Jsonb_Comparison_Exp>;
   skill_agility?: InputMaybe<Int_Comparison_Exp>;
@@ -860,6 +868,7 @@ export type All_Card_Inc_Input = {
 
 /** input type for inserting data into table "all_card" */
 export type All_Card_Insert_Input = {
+  advanced_for?: InputMaybe<Scalars['String']['input']>;
   alt_art_investigator?: InputMaybe<Scalars['Boolean']['input']>;
   alternate_of_code?: InputMaybe<Scalars['String']['input']>;
   alternate_required_code?: InputMaybe<Scalars['String']['input']>;
@@ -911,6 +920,7 @@ export type All_Card_Insert_Input = {
   pack_code?: InputMaybe<Scalars['String']['input']>;
   pack_position?: InputMaybe<Scalars['Int']['input']>;
   packs?: InputMaybe<Card_Pack_Arr_Rel_Insert_Input>;
+  parallel_of_code?: InputMaybe<Scalars['String']['input']>;
   permanent?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -933,11 +943,13 @@ export type All_Card_Insert_Input = {
   real_taboo_text_change?: InputMaybe<Scalars['String']['input']>;
   real_text?: InputMaybe<Scalars['String']['input']>;
   real_traits?: InputMaybe<Scalars['String']['input']>;
+  replacement_for?: InputMaybe<Scalars['String']['input']>;
   restrictions?: InputMaybe<Scalars['jsonb']['input']>;
   sanity?: InputMaybe<Scalars['Int']['input']>;
   shroud?: InputMaybe<Scalars['Int']['input']>;
   side_deck_options?: InputMaybe<Scalars['jsonb']['input']>;
   side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  signature_for?: InputMaybe<Scalars['String']['input']>;
   simple_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   simple_side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   skill_agility?: InputMaybe<Scalars['Int']['input']>;
@@ -966,6 +978,7 @@ export type All_Card_Insert_Input = {
 /** aggregate max on columns */
 export type All_Card_Max_Fields = {
   __typename?: 'all_card_max_fields';
+  advanced_for?: Maybe<Scalars['String']['output']>;
   alternate_of_code?: Maybe<Scalars['String']['output']>;
   alternate_required_code?: Maybe<Scalars['String']['output']>;
   back_illustrator?: Maybe<Scalars['String']['output']>;
@@ -996,6 +1009,7 @@ export type All_Card_Max_Fields = {
   investigator_id?: Maybe<Scalars['String']['output']>;
   pack_code?: Maybe<Scalars['String']['output']>;
   pack_position?: Maybe<Scalars['Int']['output']>;
+  parallel_of_code?: Maybe<Scalars['String']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
   quantity?: Maybe<Scalars['Int']['output']>;
   real_back_flavor?: Maybe<Scalars['String']['output']>;
@@ -1016,8 +1030,10 @@ export type All_Card_Max_Fields = {
   real_taboo_text_change?: Maybe<Scalars['String']['output']>;
   real_text?: Maybe<Scalars['String']['output']>;
   real_traits?: Maybe<Scalars['String']['output']>;
+  replacement_for?: Maybe<Scalars['String']['output']>;
   sanity?: Maybe<Scalars['Int']['output']>;
   shroud?: Maybe<Scalars['Int']['output']>;
+  signature_for?: Maybe<Scalars['String']['output']>;
   skill_agility?: Maybe<Scalars['Int']['output']>;
   skill_combat?: Maybe<Scalars['Int']['output']>;
   skill_intellect?: Maybe<Scalars['Int']['output']>;
@@ -1036,6 +1052,7 @@ export type All_Card_Max_Fields = {
 
 /** order by max() on columns of table "all_card" */
 export type All_Card_Max_Order_By = {
+  advanced_for?: InputMaybe<Order_By>;
   alternate_of_code?: InputMaybe<Order_By>;
   alternate_required_code?: InputMaybe<Order_By>;
   back_illustrator?: InputMaybe<Order_By>;
@@ -1066,6 +1083,7 @@ export type All_Card_Max_Order_By = {
   investigator_id?: InputMaybe<Order_By>;
   pack_code?: InputMaybe<Order_By>;
   pack_position?: InputMaybe<Order_By>;
+  parallel_of_code?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
   quantity?: InputMaybe<Order_By>;
   real_back_flavor?: InputMaybe<Order_By>;
@@ -1086,8 +1104,10 @@ export type All_Card_Max_Order_By = {
   real_taboo_text_change?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
   real_traits?: InputMaybe<Order_By>;
+  replacement_for?: InputMaybe<Order_By>;
   sanity?: InputMaybe<Order_By>;
   shroud?: InputMaybe<Order_By>;
+  signature_for?: InputMaybe<Order_By>;
   skill_agility?: InputMaybe<Order_By>;
   skill_combat?: InputMaybe<Order_By>;
   skill_intellect?: InputMaybe<Order_By>;
@@ -1107,6 +1127,7 @@ export type All_Card_Max_Order_By = {
 /** aggregate min on columns */
 export type All_Card_Min_Fields = {
   __typename?: 'all_card_min_fields';
+  advanced_for?: Maybe<Scalars['String']['output']>;
   alternate_of_code?: Maybe<Scalars['String']['output']>;
   alternate_required_code?: Maybe<Scalars['String']['output']>;
   back_illustrator?: Maybe<Scalars['String']['output']>;
@@ -1137,6 +1158,7 @@ export type All_Card_Min_Fields = {
   investigator_id?: Maybe<Scalars['String']['output']>;
   pack_code?: Maybe<Scalars['String']['output']>;
   pack_position?: Maybe<Scalars['Int']['output']>;
+  parallel_of_code?: Maybe<Scalars['String']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
   quantity?: Maybe<Scalars['Int']['output']>;
   real_back_flavor?: Maybe<Scalars['String']['output']>;
@@ -1157,8 +1179,10 @@ export type All_Card_Min_Fields = {
   real_taboo_text_change?: Maybe<Scalars['String']['output']>;
   real_text?: Maybe<Scalars['String']['output']>;
   real_traits?: Maybe<Scalars['String']['output']>;
+  replacement_for?: Maybe<Scalars['String']['output']>;
   sanity?: Maybe<Scalars['Int']['output']>;
   shroud?: Maybe<Scalars['Int']['output']>;
+  signature_for?: Maybe<Scalars['String']['output']>;
   skill_agility?: Maybe<Scalars['Int']['output']>;
   skill_combat?: Maybe<Scalars['Int']['output']>;
   skill_intellect?: Maybe<Scalars['Int']['output']>;
@@ -1177,6 +1201,7 @@ export type All_Card_Min_Fields = {
 
 /** order by min() on columns of table "all_card" */
 export type All_Card_Min_Order_By = {
+  advanced_for?: InputMaybe<Order_By>;
   alternate_of_code?: InputMaybe<Order_By>;
   alternate_required_code?: InputMaybe<Order_By>;
   back_illustrator?: InputMaybe<Order_By>;
@@ -1207,6 +1232,7 @@ export type All_Card_Min_Order_By = {
   investigator_id?: InputMaybe<Order_By>;
   pack_code?: InputMaybe<Order_By>;
   pack_position?: InputMaybe<Order_By>;
+  parallel_of_code?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
   quantity?: InputMaybe<Order_By>;
   real_back_flavor?: InputMaybe<Order_By>;
@@ -1227,8 +1253,10 @@ export type All_Card_Min_Order_By = {
   real_taboo_text_change?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
   real_traits?: InputMaybe<Order_By>;
+  replacement_for?: InputMaybe<Order_By>;
   sanity?: InputMaybe<Order_By>;
   shroud?: InputMaybe<Order_By>;
+  signature_for?: InputMaybe<Order_By>;
   skill_agility?: InputMaybe<Order_By>;
   skill_combat?: InputMaybe<Order_By>;
   skill_intellect?: InputMaybe<Order_By>;
@@ -1270,6 +1298,7 @@ export type All_Card_On_Conflict = {
 
 /** Ordering options when selecting data from "all_card". */
 export type All_Card_Order_By = {
+  advanced_for?: InputMaybe<Order_By>;
   alt_art_investigator?: InputMaybe<Order_By>;
   alternate_of_code?: InputMaybe<Order_By>;
   alternate_required_code?: InputMaybe<Order_By>;
@@ -1321,6 +1350,7 @@ export type All_Card_Order_By = {
   pack_code?: InputMaybe<Order_By>;
   pack_position?: InputMaybe<Order_By>;
   packs_aggregate?: InputMaybe<Card_Pack_Aggregate_Order_By>;
+  parallel_of_code?: InputMaybe<Order_By>;
   permanent?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
   preview?: InputMaybe<Order_By>;
@@ -1343,11 +1373,13 @@ export type All_Card_Order_By = {
   real_taboo_text_change?: InputMaybe<Order_By>;
   real_text?: InputMaybe<Order_By>;
   real_traits?: InputMaybe<Order_By>;
+  replacement_for?: InputMaybe<Order_By>;
   restrictions?: InputMaybe<Order_By>;
   sanity?: InputMaybe<Order_By>;
   shroud?: InputMaybe<Order_By>;
   side_deck_options?: InputMaybe<Order_By>;
   side_deck_requirements?: InputMaybe<Order_By>;
+  signature_for?: InputMaybe<Order_By>;
   simple_deck_requirements?: InputMaybe<Order_By>;
   simple_side_deck_requirements?: InputMaybe<Order_By>;
   skill_agility?: InputMaybe<Order_By>;
@@ -1393,6 +1425,8 @@ export type All_Card_Prepend_Input = {
 
 /** select columns of table "all_card" */
 export enum All_Card_Select_Column {
+  /** column name */
+  AdvancedFor = 'advanced_for',
   /** column name */
   AltArtInvestigator = 'alt_art_investigator',
   /** column name */
@@ -1488,6 +1522,8 @@ export enum All_Card_Select_Column {
   /** column name */
   PackPosition = 'pack_position',
   /** column name */
+  ParallelOfCode = 'parallel_of_code',
+  /** column name */
   Permanent = 'permanent',
   /** column name */
   Position = 'position',
@@ -1532,6 +1568,8 @@ export enum All_Card_Select_Column {
   /** column name */
   RealTraits = 'real_traits',
   /** column name */
+  ReplacementFor = 'replacement_for',
+  /** column name */
   Restrictions = 'restrictions',
   /** column name */
   Sanity = 'sanity',
@@ -1541,6 +1579,8 @@ export enum All_Card_Select_Column {
   SideDeckOptions = 'side_deck_options',
   /** column name */
   SideDeckRequirements = 'side_deck_requirements',
+  /** column name */
+  SignatureFor = 'signature_for',
   /** column name */
   SimpleDeckRequirements = 'simple_deck_requirements',
   /** column name */
@@ -1661,6 +1701,7 @@ export enum All_Card_Select_Column_All_Card_Aggregate_Bool_Exp_Bool_Or_Arguments
 
 /** input type for updating data in table "all_card" */
 export type All_Card_Set_Input = {
+  advanced_for?: InputMaybe<Scalars['String']['input']>;
   alt_art_investigator?: InputMaybe<Scalars['Boolean']['input']>;
   alternate_of_code?: InputMaybe<Scalars['String']['input']>;
   alternate_required_code?: InputMaybe<Scalars['String']['input']>;
@@ -1708,6 +1749,7 @@ export type All_Card_Set_Input = {
   official?: InputMaybe<Scalars['Boolean']['input']>;
   pack_code?: InputMaybe<Scalars['String']['input']>;
   pack_position?: InputMaybe<Scalars['Int']['input']>;
+  parallel_of_code?: InputMaybe<Scalars['String']['input']>;
   permanent?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1730,11 +1772,13 @@ export type All_Card_Set_Input = {
   real_taboo_text_change?: InputMaybe<Scalars['String']['input']>;
   real_text?: InputMaybe<Scalars['String']['input']>;
   real_traits?: InputMaybe<Scalars['String']['input']>;
+  replacement_for?: InputMaybe<Scalars['String']['input']>;
   restrictions?: InputMaybe<Scalars['jsonb']['input']>;
   sanity?: InputMaybe<Scalars['Int']['input']>;
   shroud?: InputMaybe<Scalars['Int']['input']>;
   side_deck_options?: InputMaybe<Scalars['jsonb']['input']>;
   side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  signature_for?: InputMaybe<Scalars['String']['input']>;
   simple_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   simple_side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   skill_agility?: InputMaybe<Scalars['Int']['input']>;
@@ -1956,6 +2000,7 @@ export type All_Card_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type All_Card_Stream_Cursor_Value_Input = {
+  advanced_for?: InputMaybe<Scalars['String']['input']>;
   alt_art_investigator?: InputMaybe<Scalars['Boolean']['input']>;
   alternate_of_code?: InputMaybe<Scalars['String']['input']>;
   alternate_required_code?: InputMaybe<Scalars['String']['input']>;
@@ -2003,6 +2048,7 @@ export type All_Card_Stream_Cursor_Value_Input = {
   official?: InputMaybe<Scalars['Boolean']['input']>;
   pack_code?: InputMaybe<Scalars['String']['input']>;
   pack_position?: InputMaybe<Scalars['Int']['input']>;
+  parallel_of_code?: InputMaybe<Scalars['String']['input']>;
   permanent?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2025,11 +2071,13 @@ export type All_Card_Stream_Cursor_Value_Input = {
   real_taboo_text_change?: InputMaybe<Scalars['String']['input']>;
   real_text?: InputMaybe<Scalars['String']['input']>;
   real_traits?: InputMaybe<Scalars['String']['input']>;
+  replacement_for?: InputMaybe<Scalars['String']['input']>;
   restrictions?: InputMaybe<Scalars['jsonb']['input']>;
   sanity?: InputMaybe<Scalars['Int']['input']>;
   shroud?: InputMaybe<Scalars['Int']['input']>;
   side_deck_options?: InputMaybe<Scalars['jsonb']['input']>;
   side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
+  signature_for?: InputMaybe<Scalars['String']['input']>;
   simple_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   simple_side_deck_requirements?: InputMaybe<Scalars['jsonb']['input']>;
   skill_agility?: InputMaybe<Scalars['Int']['input']>;
@@ -2570,6 +2618,8 @@ export type All_Card_Text_Updates = {
 /** update columns of table "all_card" */
 export enum All_Card_Update_Column {
   /** column name */
+  AdvancedFor = 'advanced_for',
+  /** column name */
   AltArtInvestigator = 'alt_art_investigator',
   /** column name */
   AlternateOfCode = 'alternate_of_code',
@@ -2664,6 +2714,8 @@ export enum All_Card_Update_Column {
   /** column name */
   PackPosition = 'pack_position',
   /** column name */
+  ParallelOfCode = 'parallel_of_code',
+  /** column name */
   Permanent = 'permanent',
   /** column name */
   Position = 'position',
@@ -2708,6 +2760,8 @@ export enum All_Card_Update_Column {
   /** column name */
   RealTraits = 'real_traits',
   /** column name */
+  ReplacementFor = 'replacement_for',
+  /** column name */
   Restrictions = 'restrictions',
   /** column name */
   Sanity = 'sanity',
@@ -2717,6 +2771,8 @@ export enum All_Card_Update_Column {
   SideDeckOptions = 'side_deck_options',
   /** column name */
   SideDeckRequirements = 'side_deck_requirements',
+  /** column name */
+  SignatureFor = 'signature_for',
   /** column name */
   SimpleDeckRequirements = 'simple_deck_requirements',
   /** column name */
@@ -53209,7 +53265,7 @@ export type RemoveCampaignInvestigatorMutationVariables = Exact<{
 }>;
 
 
-export type RemoveCampaignInvestigatorMutation = { __typename?: 'mutation_root', delete_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', returning: Array<{ __typename?: 'campaign_investigator', id?: string | null, campaign_id: number, investigator: string }> } | null };
+export type RemoveCampaignInvestigatorMutation = { __typename?: 'mutation_root', delete_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', returning: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null, campaign_id: number }> } | null };
 
 export const TabooSetFragmentDoc = gql`
     fragment TabooSet on taboo_set {
@@ -54807,6 +54863,7 @@ export const InsertNewDeckDocument = gql`
     mutation insertNewDeck($arkhamdb_id: Int, $local_uuid: String, $arkhamdb_user: Int, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
   insert_campaign_deck_one(
     object: {arkhamdb_id: $arkhamdb_id, arkhamdb_user: $arkhamdb_user, local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId, base: true}
+    on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [content, content_hash, arkhamdb_id, arkhamdb_user]}
   ) {
     ...LatestDeck
   }
@@ -57436,8 +57493,9 @@ export const RemoveCampaignInvestigatorDocument = gql`
   ) {
     returning {
       id
-      campaign_id
       investigator
+      printing
+      campaign_id
     }
   }
 }

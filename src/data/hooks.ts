@@ -1,6 +1,6 @@
-import { useCallback, useContext, useMemo } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filter, flatMap, concat, map, sortBy, reverse } from 'lodash';
+import { filter, flatMap, concat, map, sortBy, reverse, uniq, forEach } from 'lodash';
 
 import {
   AppState,
@@ -40,10 +40,14 @@ import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import MiniDeckT from './interfaces/MiniDeckT';
 import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
-import { useParallelInvestigators, usePlayerCards } from '@components/core/hooks';
+import { useInvestigatorSets, useParallelInvestigators, usePlayerCards } from '@components/core/hooks';
 import { ChaosBag } from '@app_constants';
 import { CampaignInvestigator } from './scenario/GuidedCampaignLog';
 import Card from './types/Card';
+import InvestigatorSet from './types/InvestigatorSet';
+import DatabaseContext from './sqlite/DatabaseContext';
+import { PlayerCardContext } from './sqlite/PlayerCardContext';
+import { AGATHA_MYSTIC_CODE, AGATHA_SEEKER_CODE } from './deck/specialCards';
 
 export function useCampaigns(): [
   MiniCampaignT[],
@@ -51,7 +55,9 @@ export function useCampaigns(): [
   undefined | (() => void)
   ] {
   const { userId } = useContext(ArkhamCardsAuthContext);
-  const campaigns = useSelector(getCampaigns);
+  const { investigatorSets } = useContext(PlayerCardContext);
+  const selector = useCallback((state: AppState) => getCampaigns(state, investigatorSets), [investigatorSets]);
+  const campaigns = useSelector(selector);
   const [serverCampaigns, loading, refresh] = useRemoteCampaigns();
   const allCampaigns = useMemo(() => {
     const serverIds = new Set(map(serverCampaigns, (c) => c.uuid));
@@ -64,6 +70,45 @@ export function useCampaigns(): [
     return sortBy(toSort, (c) => -c.updatedAt.getTime());
   }, [campaigns, serverCampaigns, userId]);
   return [allCampaigns, loading, refresh];
+}
+
+/**
+ * Hook to fetch ALL InvestigatorSet objects from the database.
+ * InvestigatorSets are small metadata objects (~100 total), so fetching all is efficient.
+ * This allows campaign constructors to work synchronously with all the data they need.
+ */
+export function useAllInvestigatorSets(): [InvestigatorSet[], boolean] {
+  const { db } = useContext(DatabaseContext);
+  const [investigatorSets, setInvestigatorSets] = useState<InvestigatorSet[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let canceled = false;
+
+    async function fetchAllInvestigatorSets() {
+      try {
+        const sets = await db.getAllInvestigatorSets();
+        if (!canceled) {
+          setInvestigatorSets(sets);
+          setLoading(false);
+        }
+      } catch (e) {
+        console.log('Error fetching all investigator sets:', e);
+        if (!canceled) {
+          setInvestigatorSets([]);
+          setLoading(false);
+        }
+      }
+    }
+
+    fetchAllInvestigatorSets();
+
+    return () => {
+      canceled = true;
+    };
+  }, [db]);
+
+  return [investigatorSets, loading];
 }
 
 export function useCampaignGuideState(
@@ -99,25 +144,61 @@ export function useCampaign(
     return remoteCampaign;
   }, [reduxCampaign, remoteCampaign, campaignId]);
 }
-const NO_INVESTIGATOR_CODES: string[] = [];
+
 export function useCampaignInvestigators(
   campaign: undefined | SingleCampaignT
 ): [CampaignInvestigator[], Card[], false] | [undefined, undefined, true] {
   const campaignInvestigators = campaign?.investigators;
   const decks = campaign?.latestDecks();
-  const [allInvestigators] = usePlayerCards(
-    campaignInvestigators ?? NO_INVESTIGATOR_CODES,
-    false
-  );
+  const allInvestigatorCodes = useMemo(() => uniq([...campaign?.investigators ?? [], ...flatMap(Object.values(campaign?.investigatorPrintings ?? {}), x => x ?? [])]), [campaign?.investigatorPrintings, campaign?.investigators]);
+
+  // Fetch investigator sets for all investigator codes to understand reprints/alternates
+  const [investigatorSets, investigatorSetsLoading] = useInvestigatorSets(allInvestigatorCodes);
+
+  // Expand codes to include all alternate codes from investigatorSets
+  const expandedInvestigatorCodes = useMemo(() => {
+    const codes = new Set(allInvestigatorCodes);
+    forEach(allInvestigatorCodes, code => {
+      const alternates = investigatorSets[code];
+      if (alternates) {
+        forEach(alternates, alt => codes.add(alt));
+      }
+    });
+    return Array.from(codes);
+  }, [allInvestigatorCodes, investigatorSets]);
+
+  const [allInvestigators] = usePlayerCards(expandedInvestigatorCodes, false);
   const campaignInvestigatorCodes = useMemo(() => campaign?.investigators, [campaign]);
   const [parallelInvestigators, parallelInvestigatorsLoading] = useParallelInvestigators(campaignInvestigatorCodes)
+  const investigatorPrintings = campaign?.investigatorPrintings;
   return useMemo(() => {
-    if (!campaignInvestigators || !allInvestigators || parallelInvestigatorsLoading) {
+    if (!campaignInvestigators || !allInvestigators || parallelInvestigatorsLoading || investigatorSetsLoading) {
       return [undefined, undefined, true];
     }
     const result: CampaignInvestigator[] = flatMap(campaignInvestigators, (code) => {
-      const deck = decks?.find((deck) => deck.investigator === code);
-      const card_code = deck?.deck.meta?.alternate_front ?? code;
+      // Find deck that matches this investigator code
+      // The deck.investigator might be a printing code, so we need to resolve it to canonical
+      const deck = decks?.find((deck) => {
+        if (deck.investigator === code) {
+          return true;
+        }
+        // Check if the deck's investigator resolves to the same canonical code
+        const deckInvestigatorSet = investigatorSets[deck.investigator];
+        const canonicalDeckCode = deckInvestigatorSet?.[0] ?? deck.investigator;
+
+        // Special case: Allow Agatha printings to match canonical or vice versa
+        if (code === AGATHA_MYSTIC_CODE || code === AGATHA_SEEKER_CODE) {
+          // If campaign code is an Agatha printing, allow it to match canonical or same printing
+          return canonicalDeckCode === code || deck.investigator === code;
+        }
+        if (deck.investigator === AGATHA_MYSTIC_CODE || deck.investigator === AGATHA_SEEKER_CODE) {
+          // If deck is an Agatha printing, allow it to match canonical or same printing
+          return canonicalDeckCode === code || deck.investigator === code;
+        }
+
+        return canonicalDeckCode === code;
+      });
+      const card_code = deck?.deck.meta?.alternate_front ?? investigatorPrintings?.[code] ?? code;
       const card = parallelInvestigators.find(c => c.code === card_code) ?? allInvestigators[card_code] ?? allInvestigators[code];
       if (!card) {
         return [];
@@ -133,7 +214,7 @@ export function useCampaignInvestigators(
       parallelInvestigators,
       false,
     ];
-  }, [decks, campaignInvestigators, parallelInvestigators, parallelInvestigatorsLoading, allInvestigators]);
+  }, [decks, investigatorPrintings, campaignInvestigators, parallelInvestigators, parallelInvestigatorsLoading, allInvestigators, investigatorSetsLoading, investigatorSets]);
 }
 
 function shouldUseReduxDeck(

@@ -364,13 +364,6 @@ export default function(
       delete investigatorPrintings[action.investigator];
     }
     campaign.investigatorPrintings = investigatorPrintings;
-    console.log('CAMPAIGN_ADD_INVESTIGATOR reducer:', JSON.stringify({
-      actionInvestigator: action.investigator,
-      actionPrinting: action.printing,
-      actionDeckId: action.deckId,
-      nonDeckInvestigators: campaign.nonDeckInvestigators,
-      investigatorPrintings: campaign.investigatorPrintings,
-    }, null, 2));
     return {
       ...state,
       all: {

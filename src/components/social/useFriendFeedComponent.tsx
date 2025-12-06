@@ -393,7 +393,6 @@ export default function useFriendFeedComponent({ userId, handleScroll, error, se
       data={data}
       renderItem={renderItem}
       heightForItem={heightItem}
-      estimatedItemSize={UserRow.computeHeight(fontScale, lang)}
     />
   ), doRefresh];
 }
