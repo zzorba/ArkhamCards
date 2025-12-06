@@ -58,6 +58,7 @@ function uploadCampaignHelper(
       now: new Date(),
     });
     await Promise.all(map(campaign.deckIds || [], deckId => {
+      console.log('Uploading deck for campaign upload', deckId);
       return dispatch(uploadCampaignDeckHelper(campaignId, deckId, deckActions));
     }));
   };

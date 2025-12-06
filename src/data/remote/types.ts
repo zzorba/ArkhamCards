@@ -1,4 +1,4 @@
-import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken, TarotReading, ChaosBagHistory, OZ } from '@actions/types';
+import { CampaignCycleCode, ScenarioResult, StandaloneId, CampaignDifficulty, TraumaAndCardData, InvestigatorData, CampaignId, Deck, WeaknessSet, GuideInput, CampaignNotes, DeckId, SYSTEM_BASED_GUIDE_INPUT_TYPES, SYSTEM_BASED_GUIDE_INPUT_IDS, SealedToken, TarotReading, ChaosBagHistory } from '@actions/types';
 import { uniq, concat, flatMap, sumBy, trim, find, findLast, maxBy, map, last, forEach, findLastIndex, filter, isArray } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
@@ -10,6 +10,8 @@ import LatestDeckT, { DeckCampaignInfo } from '@data/interfaces/LatestDeckT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import { SimpleUser } from './hooks';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import { resolveCampaignInvestigators } from '../campaignHelper';
+import InvestigatorSet from '../types/InvestigatorSet';
 
 const EMPTY_TRAUMA = {};
 
@@ -47,14 +49,48 @@ function fragmentToFullInvestigatorData(campaign: FullCampaignFragment): Investi
   return investigatorData;
 }
 
-function fragmentToInvestigators(campaign: MiniCampaignFragment): string[] {
-  const includeParallel = campaign.cycleCode === OZ;
-  return uniq(
-    concat(
-      flatMap(campaign.investigators, i => i.investigator),
-      includeParallel ? [] : flatMap(campaign.latest_decks, d => d.deck?.investigator || []),
-    )
+function miniFragmentToInvestigators(campaign: MiniCampaignFragment, investigatorSets: InvestigatorSet[]): string[] {
+  const investigatorPrintings = fragmentToInvestigatorPrintings(campaign);
+
+  // MiniCampaignFragment doesn't have content field in latest_decks
+  // We rely on investigatorPrintings to provide the alternate_front info
+  return resolveCampaignInvestigators(
+    campaign.cycleCode as CampaignCycleCode | undefined,
+    investigatorPrintings,
+    flatMap(campaign.latest_decks, d => d.deck ? [{
+      investigator: d.deck.investigator,
+      alternate_front: undefined,
+    }] : []),
+    flatMap(campaign.investigators, i => i.investigator),
+    investigatorSets
   );
+}
+
+function fullFragmentToInvestigators(campaign: FullCampaignFragment, investigatorSets: InvestigatorSet[]): string[] {
+  const investigatorPrintings = fragmentToInvestigatorPrintings(campaign);
+
+  // FullCampaignFragment has content field with meta data including alternate_front
+  const investigators = resolveCampaignInvestigators(
+    campaign.cycleCode as CampaignCycleCode | undefined,
+    investigatorPrintings,
+    flatMap(campaign.latest_decks, d => d.deck ? [{
+      investigator: d.deck.investigator,
+      alternate_front: d.deck.content?.meta?.alternate_front,
+    }] : []),
+    flatMap(campaign.investigators, i => i.investigator),
+    investigatorSets
+  );
+  return investigators;
+}
+
+function fragmentToInvestigatorPrintings(campaign: MiniCampaignFragment): { [investigatorCode: string]: string | undefined } {
+  const printings: { [investigatorCode: string]: string | undefined } = {};
+  forEach(campaign.investigators, i => {
+    if (i.printing) {
+      printings[i.investigator] = i.printing;
+    }
+  });
+  return printings;
 }
 
 export class MiniCampaignRemote implements MiniCampaignT {
@@ -71,19 +107,22 @@ export class MiniCampaignRemote implements MiniCampaignT {
   public standaloneId: StandaloneId | undefined;
   public latestScenarioResult: ScenarioResult | undefined;
   public investigators: string[];
+  public investigatorPrintings: { [investigatorCode: string]: string | undefined };
   public updatedAt: Date;
   public owner_id: string;
   public remote: boolean = true;
   public linked: undefined | CampaignLink = undefined;
 
   constructor(
-    campaign: MiniCampaignFragment
+    campaign: MiniCampaignFragment,
+    investigatorSets: InvestigatorSet[]
   ) {
     this.campaign = campaign;
     this.campaignInvestigatorData = fragmentToInvestigatorData(campaign);
     this.updatedAt = new Date(Date.parse(campaign.updated_at));
     this.owner_id = campaign.owner_id;
-    this.investigators = fragmentToInvestigators(campaign);
+    this.investigators = miniFragmentToInvestigators(campaign, investigatorSets);
+    this.investigatorPrintings = fragmentToInvestigatorPrintings(campaign);
     this.id = {
       campaignId: campaign.uuid,
       serverId: campaign.id,
@@ -116,10 +155,11 @@ export class MiniLinkedCampaignRemote extends MiniCampaignRemote {
 
   constructor(
     campaign: MiniCampaignFragment,
+    investigatorSets: InvestigatorSet[],
     campaignA: MiniCampaignFragment,
     campaignB: MiniCampaignFragment
   ) {
-    super(campaign);
+    super(campaign, investigatorSets);
 
     this.campaignA = campaignA;
     this.campaignB = campaignB;
@@ -130,10 +170,15 @@ export class MiniLinkedCampaignRemote extends MiniCampaignRemote {
     this.investigators = uniq(
       concat(
         this.investigators,
-        fragmentToInvestigators(this.campaignA),
-        fragmentToInvestigators(this.campaignB)
+        miniFragmentToInvestigators(this.campaignA, investigatorSets),
+        miniFragmentToInvestigators(this.campaignB, investigatorSets)
       )
     );
+    this.investigatorPrintings = {
+      ...this.investigatorPrintings,
+      ...fragmentToInvestigatorPrintings(this.campaignA),
+      ...fragmentToInvestigatorPrintings(this.campaignB),
+    };
     // tslint:disable-next-line: strict-comparisons
     this.difficulty = (this.campaignA.difficulty === this.campaignB.difficulty) ? (
       (this.campaignA.difficulty || undefined) as CampaignDifficulty | undefined
@@ -188,11 +233,18 @@ export class SingleCampaignRemote extends MiniCampaignRemote implements SingleCa
   guideVersion: number;
   deleted: boolean;
 
-  constructor(campaign: FullCampaignFragment) {
-    super(campaign);
+  constructor(
+    campaign: FullCampaignFragment,
+    investigatorSets: InvestigatorSet[]
+  ) {
+    super(campaign, investigatorSets);
 
     this.deleted = !!campaign.deleted;
     this.fullCampaign = campaign;
+
+    // Re-compute investigators using full fragment which has content with alternate_front
+    this.investigators = fullFragmentToInvestigators(campaign, investigatorSets);
+
     this.investigatorData = fragmentToFullInvestigatorData(campaign);
     // TODO: do something with their IDs here.
     this.fullLatestDecks = flatMap(this.fullCampaign.latest_decks, d => d.deck ? new LatestDeckRemote(d.deck) : []);

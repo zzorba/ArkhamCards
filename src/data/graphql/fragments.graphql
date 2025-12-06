@@ -41,6 +41,7 @@ fragment SingleCard on all_card {
   faction_code
   health
   health_per_investigator
+  investigator_id
   is_unique
   myriad
   pack_code
@@ -56,6 +57,8 @@ fragment SingleCard on all_card {
   real_text
   real_traits
   real_back_name
+  real_back_traits
+  real_back_subname
   real_back_text
   real_back_flavor
   real_encounter_set_name
@@ -119,6 +122,8 @@ fragment CoreCardText on all_card_text {
   back_flavor
   back_text
   back_name
+  back_subname
+  back_traits
   customization_change
   customization_text
   taboo_text_change
@@ -277,6 +282,7 @@ fragment MiniCampaign on campaign {
   investigators(order_by: { created_at: asc }) {
     id
     investigator
+    printing
   }
   investigator_data(order_by: { created_at: asc}) {
     ...MiniInvestigatorData
@@ -306,6 +312,7 @@ fragment FullCampaign on campaign {
   investigators(order_by: { created_at: asc }) {
     id
     investigator
+    printing
   }
   investigator_data(order_by: { created_at: asc}) {
     ...FullInvestigatorData

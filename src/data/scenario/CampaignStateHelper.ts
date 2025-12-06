@@ -28,7 +28,7 @@ import { generateUuid } from '@lib/uuid';
 export interface CampaignGuideActions {
   showChooseDeck: (singleInvestigator?: CampaignInvestigator, callback?: (code: string) => Promise<void>) => void;
   removeDeck: (deckId: DeckId, investigator: string) => void;
-  addInvestigator: (code: string, deckId?: DeckId) => void;
+  addInvestigator: (card: Card, deckId: DeckId | undefined) => void;
   removeInvestigator: (investigator: CampaignInvestigator) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
@@ -59,12 +59,16 @@ export default class CampaignStateHelper {
     public guideVersion: number,
     public latestDecks: LatestDeckT[] | undefined,
     public parallelInvestigators: CardsMap | undefined,
-    public linkedState?: CampaignGuideStateT,
+    private investigatorPrintings: {
+      [investigatorCode: string]: string | undefined;
+    },
+    public linkedState: CampaignGuideStateT | undefined
   ) {}
 
   investigatorCard(code: string): Card | undefined {
     const deck = find(this.latestDecks || [], deck => deck.investigator === code);
-    const investigatorCode = deck?.deck.meta?.alternate_front ?? code;
+    const alternateFront = deck?.deck.meta?.alternate_front !== code ? deck?.deck.meta?.alternate_front : undefined;
+    const investigatorCode = alternateFront ?? this.investigatorPrintings[code] ?? code;
     return this.parallelInvestigators?.[investigatorCode] ?? this.investigators[investigatorCode] ?? this.investigators[code];
   }
 
@@ -87,8 +91,8 @@ export default class CampaignStateHelper {
     this.actions.showChooseDeck(singleInvestigator, callback);
   }
 
-  addInvestigator(code: string) {
-    this.actions.addInvestigator(code);
+  addInvestigator(card: Card) {
+    this.actions.addInvestigator(card, undefined);
   }
 
   removeDeck(deckId: DeckId, investigator: string) {

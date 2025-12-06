@@ -432,6 +432,9 @@ function DeckDetailView({
           backgroundColor,
         },
         headerTitleStyle: {
+          fontFamily: 'Alegreya-Medium',
+          fontSize: 20,
+          fontWeight: '500',
           color: textColor,
         },
         headerTintColor: textColor,
@@ -1350,6 +1353,9 @@ export const DeckDetailViewOptions = ({ route }: { route: RouteProp<RootStackPar
       },
       headerTintColor: textColor,
       headerTitleStyle: {
+        fontFamily: 'Alegreya-Medium',
+        fontSize: 20,
+        fontWeight: '500',
         color: textColor,
       },
       statusBarStyle: 'light' as const,

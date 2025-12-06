@@ -187,7 +187,6 @@ function CampaignList({ onScroll, header, campaigns, footer, footerHeight, stand
       heightForItem={heightForItem}
       renderItem={renderItem}
       renderHeader={renderHeader}
-      estimatedItemSize={CampaignItem.computeHeight(fontScale)}
     />
   );
 }

@@ -261,25 +261,24 @@ function useParsedDeckHelper(
       ...keys(parseMetaSlots(extraDeck)),
       ...keys(parseMetaSlots(deck?.previousDeck?.meta?.extra_deck)),
     ] : [], [extraDeck, alternateBack, deck]);
+  const allCardCodes = useMemo(() => uniq([
+    ...(deck ? [deck.investigator] : []),
+    ...(deck ? keys(deck.deck.slots) : []),
+    ...(deck ? keys(deck.deck.sideSlots) : []),
+    ...(deck ? keys(deck.deck.ignoreDeckLimitSlots) : []),
+    ...keys(deckEdits?.side),
+    ...keys(deckEdits?.slots),
+    ...keys(deckEdits?.ignoreDeckLimitSlots),
+    ...(alternateBack ? [alternateBack] : []),
+    ...(alternateFront ? [alternateFront] : []),
+    ...extraDeckCodes,
+    ...keys(deck?.previousDeck?.slots || {}),
+    ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
+    ...ravenQuillChoices,
+  ]), [deckEdits?.side, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, deck, ravenQuillChoices, extraDeckCodes, alternateBack, alternateFront]);
   const [cards, cardsLoading, cardsMissing] = usePlayerCardsFunc(
-    () => {
-      return uniq([
-        ...(deck ? [deck.investigator] : []),
-        ...(deck ? keys(deck.deck.slots) : []),
-        ...(deck ? keys(deck.deck.sideSlots) : []),
-        ...(deck ? keys(deck.deck.ignoreDeckLimitSlots) : []),
-        ...keys(deckEdits?.side),
-        ...keys(deckEdits?.slots),
-        ...keys(deckEdits?.ignoreDeckLimitSlots),
-        ...(alternateBack ? [alternateBack] : []),
-        ...(alternateFront ? [alternateFront] : []),
-        ...extraDeckCodes,
-        ...keys(deck?.previousDeck?.slots || {}),
-        ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
-        ...ravenQuillChoices,
-      ]);
-    },
-    [deckEdits?.side, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, deck, ravenQuillChoices, extraDeckCodes],
+    () => allCardCodes,
+    [allCardCodes],
     false,
     tabooSetId,
   );

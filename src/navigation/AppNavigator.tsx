@@ -1012,7 +1012,7 @@ function AppNavigatorInner({ navigationRef }: {
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const toastConfig = useToastConfig();
   useAppInitialization(navigationRef);
-  const routeNameRef = useRef<string | undefined>();
+  const routeNameRef = useRef<string | undefined>(undefined);
 
   const linking = {
     prefixes: ['arkhamcards://', 'dissonantvoices://'],

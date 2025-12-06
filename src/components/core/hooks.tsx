@@ -1,7 +1,7 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { BackHandler, Keyboard, Platform } from 'react-native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { forEach, findIndex, flatMap, debounce, find, uniq, keys } from 'lodash';
+import { forEach, flatMap, debounce, find, uniq, keys } from 'lodash';
 import { useFocusEffect } from '@react-navigation/native';
 
 import { CampaignCycleCode, DeckId, MiscLocalSetting, MiscRemoteSetting, MiscSetting, Slots, SortType } from '@actions/types';
@@ -550,7 +550,7 @@ export function useTabooSetId(tabooSetOverride?: number): number {
 export function usePlayerCards(
   codes: string[],
   store: boolean,
-  tabooSetOverride?: number,
+  tabooSetOverride?: number
 ): [CardsMap | undefined, boolean, boolean] {
   const tabooSetId = useTabooSetId(tabooSetOverride);
   const [cards, setCards] = useState<CardsMap>();
@@ -564,43 +564,18 @@ export function usePlayerCards(
     }
   }, [cards]);
   useEffect(() => {
-    const knownCards: CardsMap = store ? getExistingCards(tabooSetId) : {};
-    if (findIndex(codes, code => !knownCards[code]) === -1) {
-      const cards: CardsMap = {};
-      forEach(codes, code => {
-        cards[code] = knownCards[code];
-      });
-      setCards(cards);
+    if (!codes.length) {
+      setCards({});
       setLoading(false);
       return;
     }
 
-    const existingCards: CardsMap = {};
-    let codesToFetch: string[] = [];
-    if (previousTabooSetId.current === tabooSetId) {
-      forEach(codes, code => {
-        if (currentCards.current[code]) {
-          existingCards[code] = currentCards.current[code];
-        } else {
-          codesToFetch.push(code);
-        }
-      })
-    } else {
-      codesToFetch = codes;
-    }
-    if (!codesToFetch.length) {
-      setCards(existingCards);
-      return;
-    }
     let canceled = false;
     setLoading(true);
-    getPlayerCards(codesToFetch, tabooSetId, store).then(cards => {
+    getPlayerCards(codes, tabooSetId, store).then(cards => {
       if (!canceled) {
         previousTabooSetId.current = tabooSetId;
-        setCards({
-          ...cards,
-          ...existingCards,
-        });
+        setCards(cards);
         setLoading(false);
       }
     });
@@ -747,14 +722,71 @@ export function useAllInvestigators(
 }
 
 export function useParallelInvestigator(investigatorCode?: string, tabooSetOverride?: number): [Card[], boolean] {
-  const query = useMemo(() => investigatorCode ? where('c.alternate_of_code = :investigatorCode', { investigatorCode }) : undefined, [investigatorCode]);
-  const [cards, loading] = useCardsFromQuery({ query, tabooSetOverride });
-  const { storePlayerCards } = useContext(PlayerCardContext);
+  const { db } = useContext(DatabaseContext);
+  const { storePlayerCards, investigatorSets } = useContext(PlayerCardContext);
+  const [cards, setCards] = useState<Card[]>([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    if (cards.length) {
-      storePlayerCards(cards);
+    let canceled = false;
+
+    async function fetchParallelInvestigators() {
+      if (!investigatorCode) {
+        setCards([]);
+        setLoading(false);
+        return;
+      }
+
+      // Wait for investigatorSets to load
+      if (!investigatorSets) {
+        setLoading(true);
+        return;
+      }
+
+      try {
+        setLoading(true);
+
+        // Find the investigator set from context
+        const investigatorSet = find(investigatorSets, s => s.code === investigatorCode);
+        if (canceled) {
+          return;
+        }
+
+        if (!investigatorSet || investigatorSet.alternate_codes.length <= 1) {
+          // No alternates found
+          setCards([]);
+          setLoading(false);
+          return;
+        }
+
+        const parallelCards = await db.getCardsByCodes(investigatorSet.alternate_codes, tabooSetOverride);
+
+        if (canceled) {
+          return;
+        }
+
+        setCards(parallelCards);
+        setLoading(false);
+
+        if (parallelCards.length) {
+          storePlayerCards(parallelCards);
+        }
+      } catch (e) {
+        console.log('Error fetching parallel investigators:', e);
+        if (!canceled) {
+          setCards([]);
+          setLoading(false);
+        }
+      }
     }
-  }, [cards, storePlayerCards]);
+
+    fetchParallelInvestigators();
+
+    return () => {
+      canceled = true;
+    };
+  }, [db, investigatorCode, tabooSetOverride, storePlayerCards, investigatorSets]);
+
   return [cards, loading];
 }
 
@@ -768,6 +800,50 @@ export function useParallelInvestigators(codes?: string[], tabooSetOverride?: nu
     }
   }, [cards, storePlayerCards]);
   return [cards, loading];
+}
+
+export function useInvestigatorSets(codes: string[]): [{ [code: string]: string[] }, boolean] {
+  const { db } = useContext(DatabaseContext);
+  const [investigatorSets, setInvestigatorSets] = useState<{ [code: string]: string[] }>({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (codes.length === 0) {
+      setInvestigatorSets({});
+      setLoading(false);
+      return;
+    }
+
+    let canceled = false;
+
+    async function fetchInvestigatorSets() {
+      try {
+        const sets = await db.getInvestigatorSets(codes);
+        if (!canceled) {
+          const setsMap: { [code: string]: string[] } = {};
+          forEach(sets, set => {
+            setsMap[set.code] = set.alternate_codes;
+          });
+          setInvestigatorSets(setsMap);
+          setLoading(false);
+        }
+      } catch (e) {
+        console.log('Error fetching investigator sets:', e);
+        if (!canceled) {
+          setInvestigatorSets({});
+          setLoading(false);
+        }
+      }
+    }
+
+    fetchInvestigatorSets();
+
+    return () => {
+      canceled = true;
+    };
+  }, [db, codes]);
+
+  return [investigatorSets, loading];
 }
 
 export function useRequiredCards(investigator?: InvestigatorChoice, tabooSetOverride?: number): [Card[], boolean] {

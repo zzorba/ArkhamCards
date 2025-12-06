@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useLayoutEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { filter, flatMap, find, flatten, keys, uniq, throttle } from 'lodash';
 import {
   Keyboard,
@@ -29,10 +29,12 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '@navigation/types';
 import HeaderButton from '@components/core/HeaderButton';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import InvestigatorSet from '@data/types/InvestigatorSet';
+import DatabaseContext from '@data/sqlite/DatabaseContext';
 
 export interface MyDecksSelectorProps {
   campaignId: CampaignId;
-  onDeckSelect: (deck: Deck) => Promise<void>;
+  onDeckSelect: (deck: Deck, investigator: Card) => Promise<void>;
   onInvestigatorSelect?: (card: Card) => void;
 
   singleInvestigator?: string;
@@ -44,14 +46,38 @@ export interface MyDecksSelectorProps {
   includeParallel?: boolean;
 }
 
+function useInvestigatorSet(investigator: string | undefined): InvestigatorSet | undefined {
+  const { db } = useContext(DatabaseContext);
+  const [investigatorSet, setInvestigatorSet] = useState<InvestigatorSet | undefined>(undefined);
+
+  useEffect(() => {
+    let isActive = true;
+    async function fetchInvestigatorSet() {
+      if (investigator) {
+        const set = await db.getInvestigatorSet(investigator);
+        if (isActive) {
+          setInvestigatorSet(set);
+        }
+      } else {
+        setInvestigatorSet(undefined);
+      }
+    }
+    fetchInvestigatorSet();
+    return () => {
+      isActive = false;
+    };
+  }, [db, investigator]);
+  return investigatorSet;
+}
 function MyDecksSelectorDialog() {
   const route = useRoute<RouteProp<RootStackParamList, 'Dialog.DeckSelector'>>();
   const {
     campaignId, onDeckSelect, onInvestigatorSelect,
-    singleInvestigator, selectedDecks, selectedInvestigatorIds,
+    singleInvestigator: investigatorId, selectedDecks, selectedInvestigatorIds,
     onlyShowSelected, simpleOptions, includeParallel,
   } = route.params;
   const navigation = useNavigation();
+  const investigatorSet = useInvestigatorSet(investigatorId);
   const { fontScale, typography, width } = useContext(StyleContext);
 
   const campaign = useCampaign(campaignId);
@@ -84,24 +110,17 @@ function MyDecksSelectorDialog() {
       ...(selectedInvestigatorIds || []),
     ]);
   }, [hideEliminatedInvestigators, selectedInvestigatorIds, selectedDecks, campaign, investigators, onlyShowSelected]);
-  const onlyInvestigators = useMemo(() => {
-    if (singleInvestigator) {
-      return [singleInvestigator];
-    }
-    return undefined;
-  }, [singleInvestigator]);
-  console.log('includeParallel', includeParallel)
   const showNewDeckDialog = useMemo(() => {
     return throttle(() => {
       navigation.navigate('Deck.New', {
         campaignId,
         onCreateDeck: onDeckSelect,
         filterInvestigators,
-        onlyInvestigators,
+        onlyInvestigators: investigatorId ? [investigatorId] : [],
         includeParallel,
       });
     }, 200);
-  }, [navigation, campaignId, onDeckSelect, filterInvestigators, onlyInvestigators, includeParallel]);
+  }, [navigation, campaignId, onDeckSelect, filterInvestigators, investigatorId, includeParallel]);
   const [investigatorSortDialog, showInvestigatorSortDialog] = useInvestigatorSortDialog(selectedSort, setSelectedSort);
   const showSortDialog = useCallback(() => {
     Keyboard.dismiss();
@@ -113,7 +132,7 @@ function MyDecksSelectorDialog() {
     switch (selectedTab) {
       case 'decks':
         navigation.setOptions({
-          title: singleInvestigator ? t`Select Deck` : t`Choose an Investigator`,
+          title: investigatorId ? t`Select Deck` : t`Choose an Investigator`,
           headerRight: () => (
             <HeaderButton
               iconName="plus-button"
@@ -138,7 +157,7 @@ function MyDecksSelectorDialog() {
         });
         break;
     }
-  }, [navigation, selectedTab, singleInvestigator, showSortDialog, showNewDeckDialog]);
+  }, [navigation, selectedTab, investigatorId, showSortDialog, showNewDeckDialog]);
 
   const onlyDecks = useMemo(() => {
     if (onlyShowSelected) {
@@ -166,7 +185,7 @@ function MyDecksSelectorDialog() {
           />
         </View>
       )] : [],
-      (!!campaign && !singleInvestigator && !simpleOptions) ? [(
+      (!!campaign && !investigatorId && !simpleOptions) ? [(
         <View style={styles.row} key={1}>
           <Text style={[typography.small, styles.searchOption]}>
             { t`Hide killed and insane investigators` }
@@ -177,7 +196,7 @@ function MyDecksSelectorDialog() {
           />
         </View>
       )] : [],
-      (!!campaign && !singleInvestigator && !simpleOptions) ? [(
+      (!!campaign && !investigatorId && !simpleOptions) ? [(
         <View style={styles.row} key={2}>
           <Text style={[typography.small, styles.searchOption]}>
             { t`Only show previous campaign members` }
@@ -196,12 +215,20 @@ function MyDecksSelectorDialog() {
       controls: <View style={styles.searchOptions}>{ elements }</View>,
       height: 20 + elements.length * (fontScale * 20 + 8) + 12,
     };
-  }, [campaign, onlyShowSelected, singleInvestigator, simpleOptions, typography, fontScale,
+  }, [campaign, onlyShowSelected, investigatorId, simpleOptions, typography, fontScale,
     hideOtherCampaignDecks, hideEliminatedInvestigators, onlyShowPreviousCampaignMembers,
     toggleHideOtherCampaignDecks, toggleHideEliminatedInvestigators, toggleOnlyShowPreviousCampaignMembers]);
+  const onlyInvestigators = useMemo(() => {
+    if (investigatorId) {
+      return new Set([investigatorId, ...investigatorSet?.alternate_codes ?? []]);
+    }
+    return undefined;
+  }, [investigatorId, investigatorSet]);
 
   const filterDeck = useCallback((deck: MiniDeckT): string | undefined => {
-    if (singleInvestigator && deck.investigator !== singleInvestigator && deck.alternate_investigator !== singleInvestigator) {
+    if (onlyInvestigators && !(
+      onlyInvestigators.has(deck.investigator) || (deck.alternate_investigator && onlyInvestigators.has(deck.alternate_investigator))
+    )) {
       return 'wrong_investigator';
     }
     if (selectedInvestigatorIds && find(selectedInvestigatorIds, i => i === deck.investigator || i === deck.alternate_investigator)) {
@@ -217,7 +244,7 @@ function MyDecksSelectorDialog() {
       return 'other_campaign';
     }
     return undefined;
-  }, [singleInvestigator, selectedInvestigatorIds, onlyShowSelected, filterInvestigators, hideOtherCampaignDecks]);
+  }, [onlyInvestigators, selectedInvestigatorIds, onlyShowSelected, filterInvestigators, hideOtherCampaignDecks]);
   const renderExpandButton = useCallback((reason: string) => {
     switch (reason) {
       case 'other_campaign':

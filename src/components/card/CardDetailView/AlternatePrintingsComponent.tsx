@@ -7,10 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import Card from '@data/types/Card';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
 import StyleContext from '@styles/StyleContext';
-import space, { m, s } from '@styles/space';
+import space, { s } from '@styles/space';
 import { useAlternatePrintings } from './useAlternatePrintings';
-import AppIcon from '@icons/AppIcon';
-import COLORS from '@styles/colors';
 import { showCard } from '@components/nav/helper';
 import EncounterIcon from '@icons/EncounterIcon';
 import InvestigatorImage from '@components/core/InvestigatorImage';
@@ -110,7 +108,7 @@ export default function AlternatePrintingsComponent({ card }: Props) {
   }
   return (
     <>
-      <CardDetailSectionHeader title={t`Alternate Printings`} />
+      <CardDetailSectionHeader title={t`Alternate versions`} />
       <View style={styles.container}>
         { map(sortedAlternates, alternateCard =>
           alternateCard.code === card.code ? null : (

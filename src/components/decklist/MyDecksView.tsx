@@ -25,6 +25,7 @@ function MyDecksView() {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const { arkhamDb } = useContext(ArkhamCardsAuthContext);
   const navigation = useNavigation();
+
   const showNewDeckDialog = useMemo(() => {
     return throttle(() => {
       navigation.navigate('Deck.New', {});

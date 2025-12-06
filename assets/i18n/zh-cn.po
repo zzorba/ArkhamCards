@@ -3395,15 +3395,6 @@ msgstr "色觉辨认友善图标"
 msgid "Uploading"
 msgstr "上传中"
 
-msgid "Upload campaigns"
-msgstr "上传剧本"
-
-msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr "剧本可上传至你的Arkham Cards帐户。"
-
-msgid "Uploaded campaigns will be synced between devices."
-msgstr "已上传的剧本会在不同装置之间同步。"
-
 msgid "Note campaign achievements"
 msgstr "记录剧本成就"
 
@@ -3536,9 +3527,6 @@ msgstr "加入朋友"
 
 msgid "Access"
 msgstr "存取"
-
-msgid "Later"
-msgstr "稍后再说"
 
 msgid "Searching cards..."
 msgstr "搜寻卡牌…"
@@ -5304,10 +5292,6 @@ msgstr "这张卡牌还未发布，暂时不能加入到ArkhamDB牌组中。"
 msgid "Recomputing deck changes..."
 msgstr ""
 
-#, javascript-format
-msgid "Cost: ${ card.cost }"
-msgstr "费用：${ card.cost }"
-
 msgid "Grants access to previewed player cards"
 msgstr "授予预览玩家卡的权限"
 
@@ -6232,6 +6216,7 @@ msgstr ""
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
 msgstr ""
 
+#. fallback for playerCard only
 #, javascript-format
 msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr "经验花费: 牌组包括${ investigator.name }的玩家必须花费${ xpCost }经验，其他调查员则必须花费${ challengeDiscountCost }经验"
@@ -6248,13 +6233,29 @@ msgid ""
 "This will use about 25mb of storage."
 msgstr ""
 
+msgid "Head"
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ _card.cost }"
+msgstr ""
+
+msgid "Select version"
+msgstr ""
+
+msgid "Alternate version"
+msgstr ""
+
+#. Remove "Investigator Expansion" from pack name
+msgid "Investigator Expansion"
+msgstr ""
+
+msgid "Alternate versions"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自订"
-
-msgctxt "slots"
-msgid "None"
-msgstr "无"
 
 msgctxt "trait"
 msgid "???"
@@ -7919,6 +7920,10 @@ msgstr ""
 msgctxt "trait"
 msgid "Tandem"
 msgstr ""
+
+msgctxt "slots"
+msgid "None"
+msgstr "无"
 
 #, javascript-format
 msgctxt "masculine"

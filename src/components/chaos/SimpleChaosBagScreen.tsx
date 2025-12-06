@@ -35,7 +35,7 @@ export default function ChaosBagTab() {
           assignedCards: {},
         },
         deckIds: [],
-        investigatorIds: [],
+        investigators: [],
         guided: false,
         now: new Date(),
       };

@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { AppState, MyDecksState, getAllDecks, getMyDecksState, makeCampaignGuideStateSelector, makeCampaignSelector, makeLatestDecksSelector, getDeck, getEffectiveDeckId, makeDeckSelector, makeChaosBagResultsSelector } from '@reducers';
@@ -8,6 +8,7 @@ import CampaignGuideStateT from '@data/interfaces/CampaignGuideStateT';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
+import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
 
 
 export function useDeckFromRedux(id: DeckId | undefined, campaignId?: CampaignId): LatestDeckT | undefined {
@@ -36,15 +37,16 @@ export function useCampaignGuideFromRedux(campaignId?: CampaignId): CampaignGuid
 
 export function useCampaignFromRedux(campaignId: CampaignId | undefined): SingleCampaignT | undefined {
   const getCampaign = useMemo(makeCampaignSelector, []);
+  const { investigatorSets } = useContext(PlayerCardContext);
   const reduxCampaign = useSelector((state: AppState) => campaignId ? getCampaign(state, campaignId.campaignId) : undefined);
   const getLatestCampaignDecks = useMemo(makeLatestDecksSelector, []);
   const latestDecks = useSelector((state: AppState) => getLatestCampaignDecks(state, reduxCampaign));
   return useMemo(() => {
-    if (!reduxCampaign || campaignId?.serverId) {
+    if (!reduxCampaign || campaignId?.serverId || !investigatorSets) {
       return undefined;
     }
-    return new SingleCampaignRedux(reduxCampaign, latestDecks, getCampaignLastUpdated(reduxCampaign));
-  }, [reduxCampaign, latestDecks, campaignId]);
+    return new SingleCampaignRedux(reduxCampaign, latestDecks, investigatorSets, getCampaignLastUpdated(reduxCampaign));
+  }, [reduxCampaign, latestDecks, campaignId, investigatorSets]);
 }
 
 export function useLatestDeckRedux(deckId: DeckId, deckToCampaign?: { [uuid: string]: Campaign }): LatestDeckT | undefined {

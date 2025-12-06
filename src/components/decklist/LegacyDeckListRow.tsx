@@ -77,12 +77,13 @@ function LegacyDeckListRowDetails({
   const { colors, typography } = useContext(StyleContext);
   const { listSeperator } = useContext(LanguageContext);
   const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
-  const [cards] = usePlayerCardsFunc(() => uniq([
+  const allCardCodes = useMemo(() => uniq([
     ...keys(deck.slots),
     ...keys(deck.ignoreDeckLimitSlots),
     ...(previousDeck ? keys(previousDeck.slots) : []),
     ...(previousDeck ? keys(previousDeck.ignoreDeckLimitSlots) : []),
-  ]), [deck, previousDeck], false, deck.taboo_id || 0);
+  ]), [deck, previousDeck]);
+  const [cards] = usePlayerCardsFunc(() => allCardCodes, [allCardCodes], false, deck.taboo_id || 0);
   const parsedDeck = useMemo(() => !details && deck && cards && parseBasicDeck(deck, cards, listSeperator, previousDeck), [details, listSeperator, deck, cards, previousDeck]);
   if (details) {
     return (

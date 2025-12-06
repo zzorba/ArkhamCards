@@ -6,12 +6,11 @@ import ParallelInvestigatorPicker from './ParallelInvestigatorPicker';
 import InvestigatorOption from './InvestigatorOption';
 import { DeckMeta } from '@actions/types';
 import Card from '@data/types/Card';
-import DeckCardPoolButton, { useDerivedCardPool } from '../DeckCardPoolButton';
 
 interface Props {
   investigator: Card;
   meta: DeckMeta;
-  parallelInvestigators: Card[];
+  parallelInvestigators?: Card[];
   setMeta: (key: keyof DeckMeta, value?: string) => void;
   setParallel: (front: string, back: string) => void;
   editWarning: boolean;
@@ -19,8 +18,8 @@ interface Props {
   first: boolean;
 }
 
-export function hasInvestigatorOptions(investigator: Card, parallelInvestigators: Card[]): boolean {
-  return !!parallelInvestigators.length || !!investigator.investigatorSelectOptions().length;
+export function hasInvestigatorOptions(investigator: Card, parallelInvestigators?: Card[]): boolean {
+  return !!parallelInvestigators?.length || !!investigator.investigatorSelectOptions().length;
 }
 
 export default function InvestigatorOptionsControl({
@@ -35,11 +34,10 @@ export default function InvestigatorOptionsControl({
 }: Props) {
   const backInvestigator = find(parallelInvestigators, pi => pi.code === meta.alternate_back) || investigator;
   const options = backInvestigator.investigatorSelectOptions();
-  const hasParallel = !!parallelInvestigators.length;
+  const hasParallel = !!parallelInvestigators?.length;
   const hasOptions = !!options.length;
-  const { selectedPacks, setSelectedPacks, cardPool, setCardPool } = useDerivedCardPool(meta, setMeta);
   const parallelOptionsSection = useMemo(() => {
-    if (!parallelInvestigators.length) {
+    if (!parallelInvestigators?.length) {
       return null;
     }
     const alternateInvestigator = find(parallelInvestigators, pi => pi.code !== investigator.code);
@@ -64,14 +62,6 @@ export default function InvestigatorOptionsControl({
   }, [investigator, parallelInvestigators, setParallel, disabled, editWarning, meta, hasOptions]);
   return (
     <View>
-      <DeckCardPoolButton
-        first={first}
-        last={!hasParallel && !options.length}
-        selectedPacks={selectedPacks}
-        setSelectedPacks={setSelectedPacks}
-        cardPool={cardPool}
-        setCardPool={setCardPool}
-      />
       { parallelOptionsSection }
       { map(options, (option, idx) => {
         return (

@@ -1,10 +1,10 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { forEach } from 'lodash';
 
 import { CardsMap } from '@data/types/Card';
 import DatabaseContext from './DatabaseContext';
 import { PlayerCardContext } from './PlayerCardContext';
-import { where } from './query';
+import { useAllInvestigatorSets } from '@data/hooks';
 
 interface Props {
   children: React.ReactNode;
@@ -16,6 +16,7 @@ interface Props {
  */
 export function PlayerCardProviderOnDemand({ children }: Props) {
   const { db } = useContext(DatabaseContext);
+  const [investigatorSets] = useAllInvestigatorSets();
 
   const storePlayerCards = useCallback(async() => {
     // No-op: we don't store anything
@@ -26,9 +27,13 @@ export function PlayerCardProviderOnDemand({ children }: Props) {
     return {};
   }, []);
 
+
   const getPlayerCards = useCallback(async(codes: string[], tabooSetId: number): Promise<CardsMap> => {
+    if (!codes.length) {
+      return {};
+    }
     // Always fetch from database
-    const newCards = await db.getCards(where(`c.code IN (:...codes)`, { codes }), tabooSetId);
+    const newCards = await db.getCardsByCodes(codes, tabooSetId);
 
     const cards: CardsMap = {};
     forEach(newCards, card => {
@@ -38,8 +43,9 @@ export function PlayerCardProviderOnDemand({ children }: Props) {
     return cards;
   }, [db]);
 
+  const context = useMemo(() => ({ investigatorSets, getExistingCards, getPlayerCards, storePlayerCards }), [investigatorSets, getExistingCards, getPlayerCards, storePlayerCards]);
   return (
-    <PlayerCardContext.Provider value={{ getExistingCards, getPlayerCards, storePlayerCards }}>
+    <PlayerCardContext.Provider value={context}>
       { children }
     </PlayerCardContext.Provider>
   )

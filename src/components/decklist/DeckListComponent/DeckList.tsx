@@ -124,7 +124,6 @@ export default function DeckList({
       renderItem={renderItem}
       renderHeader={renderHeader}
       renderFooter={renderFooter}
-      estimatedItemSize={50}
     />
   );
 }

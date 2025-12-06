@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { find, map } from 'lodash';
+import React, { useCallback, useMemo } from 'react';
+import { find, flatMap, map, uniq } from 'lodash';
 import {
   StyleSheet,
   View,
@@ -16,10 +16,20 @@ interface Props {
   campaign: MiniCampaignT;
 }
 function CampaignInvestigatorRow({ campaign }: Props) {
-  const investigators = useInvestigators(campaign.investigators);
+  // Include both the base investigator codes and any printing card codes
+  const investigatorCodes = useMemo(() => {
+    return uniq([
+      ...campaign.investigators,
+      ...flatMap(campaign.investigators, code => campaign.investigatorPrintings[code] ?? []),
+    ]);
+  }, [campaign.investigators, campaign.investigatorPrintings]);
+
+  const investigators = useInvestigators(investigatorCodes);
   const renderInvestigator = useCallback((code: string) => {
     const traumaAndCardData = campaign.investigatorTrauma(code);
-    const card = investigators?.[code];
+    // Use the printing card if it's set, otherwise use the default investigator card
+    const printingCode = campaign.investigatorPrintings[code];
+    const card = printingCode ? investigators?.[printingCode] : investigators?.[code];
     const killedOrInsane = card && card.eliminated(traumaAndCardData);
     const yithian = !!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN);
     return (

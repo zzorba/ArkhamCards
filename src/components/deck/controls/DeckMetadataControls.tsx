@@ -2,9 +2,10 @@ import React from 'react';
 
 import DeckTabooPickerButton from './DeckTabooPickerButton';
 import InvestigatorOptionsControl, { hasInvestigatorOptions } from './InvestigatorOptionsControl';
-import { useParallelInvestigator } from '@components/core/hooks';
 import { DeckMeta } from '@actions/types';
 import useSingleCard from '@components/card/useSingleCard';
+import DeckCardPoolButton, { useDerivedCardPool } from './DeckCardPoolButton';
+import Card from '@data/types/Card';
 
 interface Props {
   investigatorCode?: string;
@@ -21,6 +22,7 @@ interface Props {
   setParallel: (front: string, back: string) => void;
 
   firstElement?: (last: boolean) => React.ReactNode;
+  parallelInvestigators: Card[] | undefined;
 }
 
 export default function DeckMetadataControls({
@@ -36,9 +38,10 @@ export default function DeckMetadataControls({
   firstElement,
   hasPreviousDeck,
   showTaboo,
+  parallelInvestigators,
 }: Props) {
-  const [parallelInvestigators] = useParallelInvestigator(investigatorCode, tabooSetId);
   const [investigator] = useSingleCard(investigatorCode, 'player', tabooSetId);
+  const { selectedPacks, setSelectedPacks, cardPool, setCardPool } = useDerivedCardPool(meta, setMeta);
   if (!investigator) {
     return null;
   }
@@ -46,6 +49,13 @@ export default function DeckMetadataControls({
   return (
     <>
       { !!firstElement && firstElement(!setTabooSet && !hasOptions) }
+      <DeckCardPoolButton
+        first={!firstElement}
+        selectedPacks={selectedPacks}
+        setSelectedPacks={setSelectedPacks}
+        cardPool={cardPool}
+        setCardPool={setCardPool}
+      />
       { !!setTabooSet && (
         <DeckTabooPickerButton
           open={tabooOpen}

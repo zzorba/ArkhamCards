@@ -1120,19 +1120,7 @@ msgstr ""
 msgid "Uploading"
 msgstr ""
 
-msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr ""
-
-msgid "Uploaded campaigns will be synced between devices."
-msgstr ""
-
-msgid "Upload campaigns"
-msgstr ""
-
 msgid "Upload"
-msgstr ""
-
-msgid "Later"
 msgstr ""
 
 msgid "Fetching account details..."
@@ -5174,10 +5162,6 @@ msgstr ""
 msgid "Recomputing deck changes..."
 msgstr ""
 
-#, javascript-format
-msgid "Cost: ${ card.cost }"
-msgstr ""
-
 msgid "Grants access to previewed player cards"
 msgstr ""
 
@@ -6102,6 +6086,7 @@ msgstr ""
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
 msgstr ""
 
+#. fallback for playerCard only
 #, javascript-format
 msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr ""
@@ -6118,12 +6103,28 @@ msgid ""
 "This will use about 25mb of storage."
 msgstr ""
 
-msgctxt "investigator"
-msgid "Custom"
+msgid "Head"
 msgstr ""
 
-msgctxt "slots"
-msgid "None"
+#, javascript-format
+msgid "Cost: ${ _card.cost }"
+msgstr ""
+
+msgid "Select version"
+msgstr ""
+
+msgid "Alternate version"
+msgstr ""
+
+#. Remove "Investigator Expansion" from pack name
+msgid "Investigator Expansion"
+msgstr ""
+
+msgid "Alternate versions"
+msgstr ""
+
+msgctxt "investigator"
+msgid "Custom"
 msgstr ""
 
 msgctxt "trait"
@@ -7788,6 +7789,10 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Tandem"
+msgstr ""
+
+msgctxt "slots"
+msgid "None"
 msgstr ""
 
 msgctxt "masculine"

@@ -423,20 +423,23 @@ mutation updateCampaignName(
 
 mutation addCampaignInvestigator(
   $campaign_id: Int!,
-  $investigator: String!
+  $investigator: String!,
+  $printing: String
 ) {
   insert_campaign_investigator_one(
     object: {
       campaign_id: $campaign_id
       investigator: $investigator
+      printing: $printing
     }
     on_conflict: {
       constraint: campaign_investigator_campaign_id_investigator_key
-      update_columns: [investigator]
+      update_columns: [investigator, printing]
     }
   ) {
     id
     investigator
+    printing
     campaign_id
   }
 }
@@ -453,8 +456,9 @@ mutation removeCampaignInvestigator(
   ) {
     returning {
       id
-      campaign_id
       investigator
+      printing
+      campaign_id
     }
   }
 }

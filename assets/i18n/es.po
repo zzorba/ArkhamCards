@@ -3428,15 +3428,6 @@ msgstr "Iconos para daltónicos"
 msgid "Uploading"
 msgstr "Subiendo"
 
-msgid "Upload campaigns"
-msgstr "Subiendo campañas"
-
-msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr "Las campañas pueden subirse a tu cuenta de Arkham Cards."
-
-msgid "Uploaded campaigns will be synced between devices."
-msgstr "Las campañas que hayas subido estarán sincronizadas entre dispositivos."
-
 msgid "Note campaign achievements"
 msgstr "Anota los logros de campaña"
 
@@ -3570,9 +3561,6 @@ msgstr "Añadir amigos"
 
 msgid "Access"
 msgstr "Acceso"
-
-msgid "Later"
-msgstr "Más tarde"
 
 msgid "Searching cards..."
 msgstr "Buscando cartas..."
@@ -5356,10 +5344,6 @@ msgstr "Esta carta todavía no ha sido publicada y no puede incluirse en mazos d
 msgid "Recomputing deck changes..."
 msgstr "Recalculando cambios del mazo..."
 
-#, javascript-format
-msgid "Cost: ${ card.cost }"
-msgstr "Coste: ${ card.cost }"
-
 msgid "Grants access to previewed player cards"
 msgstr "Cartas de jugador no publicadas"
 
@@ -6300,6 +6284,7 @@ msgstr ""
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
 msgstr "Escenario desafío fanmade creado por ${ scenario.custom.creator }"
 
+#. fallback for playerCard only
 #, javascript-format
 msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr "Coste de experiencia: ${ xpCost } para mazos que incluyan ${ investigator.name }, ${ challengeDiscountCost } para el resto"
@@ -6316,13 +6301,29 @@ msgid ""
 "This will use about 25mb of storage."
 msgstr ""
 
+msgid "Head"
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ _card.cost }"
+msgstr ""
+
+msgid "Select version"
+msgstr ""
+
+msgid "Alternate version"
+msgstr ""
+
+#. Remove "Investigator Expansion" from pack name
+msgid "Investigator Expansion"
+msgstr ""
+
+msgid "Alternate versions"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizado"
-
-msgctxt "slots"
-msgid "None"
-msgstr "Ninguno"
 
 msgctxt "trait"
 msgid "???"
@@ -7987,6 +7988,10 @@ msgstr ""
 msgctxt "trait"
 msgid "Tandem"
 msgstr ""
+
+msgctxt "slots"
+msgid "None"
+msgstr "Ninguno"
 
 #, javascript-format
 msgctxt "masculine"

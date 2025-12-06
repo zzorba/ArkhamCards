@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useCallback, useContext, useMemo } from 'react';
-import { flatMap, forEach, concat, keys, uniq } from 'lodash';
+import { flatMap, forEach, concat, keys, uniq, find } from 'lodash';
 import deepEqual from 'deep-equal';
 import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
@@ -19,9 +19,8 @@ import {
   CampaignId,
   DelayedDeckEdits,
   EmbarkData,
-  OZ,
 } from '@actions/types';
-import { CardsMap } from '@data/types/Card';
+import Card, { CardsMap } from '@data/types/Card';
 import useChooseDeck from './useChooseDeck';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import { CampaignGuideContextType } from './CampaignGuideContext';
@@ -32,6 +31,8 @@ import { ProcessedCampaign } from '@data/scenario';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { AppState } from '@reducers';
 import { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
+import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
+import { AGATHA_MYSTIC_CODE, AGATHA_SEEKER_CODE } from '@data/deck/specialCards';
 
 const EMPTY_SPENT_XP = {};
 type AsyncDispatch = ThunkDispatch<AppState, unknown, Action>;
@@ -43,11 +44,11 @@ export default function useCampaignGuideContextFromActions(
   campaignData?: SingleCampaignGuideData
 ): CampaignGuideContextType | undefined {
   const { userId } = useContext(ArkhamCardsAuthContext);
+  const { investigatorSets } = useContext(PlayerCardContext);
   const campaignInvestigators = campaignData?.campaignInvestigators;
   const dispatch: AsyncDispatch = useDispatch();
   const [campaignChooseDeck, campaignAddInvestigator] = useChooseDeck(createDeckActions, updateCampaignActions);
   const cycleCode = campaignData?.campaign?.cycleCode;
-  const includeParallel = cycleCode === OZ;
 
   const showChooseDeck = useCallback((singleInvestigator?: CampaignInvestigator, callback?: (code: string) => Promise<void>) => {
     if (campaignInvestigators !== undefined) {
@@ -70,7 +71,7 @@ export default function useCampaignGuideContextFromActions(
     dispatch(campaignActions.removeInvestigator(userId, updateCampaignActions, campaignId, investigator, deckId));
   }, [dispatch, campaignId, userId, updateCampaignActions]);
 
-  const addInvestigator = useCallback((investigator: string, deckId?: DeckId) => {
+  const addInvestigator = useCallback((investigator: Card, deckId?: DeckId) => {
     campaignAddInvestigator(campaignId, investigator, deckId);
   }, [campaignAddInvestigator, campaignId]);
 
@@ -226,13 +227,24 @@ export default function useCampaignGuideContextFromActions(
       [code: string]: LatestDeckT | undefined;
     } = {};
     forEach(latestDecks, deck => {
-      const investigatorCode = includeParallel ? deck.deck.meta?.alternate_front ?? deck.investigator : deck.investigator;
-      if (deck && investigatorCode) {
-        decksByInvestigator[investigatorCode] = deck;
+      if (deck && deck.investigator) {
+        // Find the canonical investigator code for this deck
+        // deck.investigator might be a printing code, so we need to resolve it
+        const investigatorSet = investigatorSets ? find(investigatorSets, set => set.code === deck.investigator) : undefined;
+        const canonicalCode = investigatorSet?.alternate_codes[0] ?? deck.investigator;
+
+        // Store the deck under the canonical code
+        decksByInvestigator[canonicalCode] = deck;
+
+        // Special case: Also store Agatha printings under their specific codes
+        // This allows campaigns that preserved the printing code to find the deck
+        if (deck.investigator === AGATHA_MYSTIC_CODE || deck.investigator === AGATHA_SEEKER_CODE) {
+          decksByInvestigator[deck.investigator] = deck;
+        }
       }
     });
     return decksByInvestigator;
-  }, [latestDecks, includeParallel]);
+  }, [latestDecks, investigatorSets]);
 
   const actions = useMemo(() => {
     return {
@@ -288,6 +300,7 @@ export default function useCampaignGuideContextFromActions(
       guideVersion === undefined ? -1 : guideVersion,
       latestDecks,
       parallelInvestigators,
+      campaignData.campaign.investigatorPrintings,
       campaignData.linkedCampaignState,
     );
   }, [campaignData, investigators, actions, latestDecks, parallelInvestigators]);

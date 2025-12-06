@@ -55,7 +55,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 export interface NewDeckOptionsProps {
   investigatorId: string;
   campaignId: CampaignId | undefined;
-  onCreateDeck?: (deck: Deck) => void;
+  onCreateDeck?: (deck: Deck, investigator: Card) => void;
   isModal?: boolean;
   alternateInvestigatorId?: string;
   headerBackgroundColor?: string;
@@ -146,13 +146,17 @@ function NewDeckOptionsDialog({
     setSlots(undefined);
   }, [setMetaField, setSlots]);
   const setParallel = useCallback((front: string, back: string) => {
-    if (metaState.alternate_front === front && metaState.alternate_back === back) {
+    // Normalize: if front/back matches investigator_id, set to undefined
+    const normalizedFront = front === investigatorId ? undefined : front;
+    const normalizedBack = back === investigatorId ? undefined : back;
+
+    if (metaState.alternate_front === normalizedFront && metaState.alternate_back === normalizedBack) {
       return;
     }
-    setMetaField({ key: 'alternate_front', value: front });
-    setMetaField({ key: 'alternate_back', value: back });
+    setMetaField({ key: 'alternate_front', value: normalizedFront });
+    setMetaField({ key: 'alternate_back', value: normalizedBack });
     setSlots(undefined);
-  }, [setMetaField, setSlots, metaState]);
+  }, [setMetaField, setSlots, metaState, investigatorId]);
   const [investigator] = useSingleCard(investigatorId, 'player', tabooSetId);
   const isCustomContent = useMemo(() =>!!(
     investigatorId === CUSTOM_INVESTIGATOR ||
@@ -225,8 +229,12 @@ function NewDeckOptionsDialog({
     }
   }, [investigator]);
 
+
   const requiredCardCodes = useMemo(() => {
-    return [
+    if (!investigator) {
+      return [];
+    }
+    const codes = [
       RANDOM_BASIC_WEAKNESS,
       ...(investigator?.deck_requirements?.choice?.find(choice => choice.target === 'subtype' && choice.value === 'basicweakness') ? [BASIC_WEAKNESS_CHOICE] : []),
       ...flatMap(investigator?.deck_requirements?.card || [], cardRequirement => {
@@ -236,8 +244,10 @@ function NewDeckOptionsDialog({
         ];
       }),
     ];
+    return codes;
   }, [investigator]);
-  const [cards] = useCardMap(requiredCardCodes, 'player', false, tabooSetId);
+  const [cards] = useCardMap(requiredCardCodes, 'player', false, 0);
+
   const requiredCardOptions = useMemo(() => {
     if (!cards || !investigator) {
       return [];
@@ -272,7 +282,8 @@ function NewDeckOptionsDialog({
         forEach(result, r => r.push(choiceCard));
       }
     }
-    return map(result, r => uniqBy(r, x => x.code));
+    const finalResult = map(result, r => uniqBy(r, x => x.code));
+    return finalResult;
   }, [cards, investigator]);
   const randomWeaknessCount = useMemo(
     () => sumBy(investigator?.deck_requirements?.random, t => t.target === 'subtype' && t.value === 'basicweakness' ? 1 : 0) ?? 0,
@@ -366,15 +377,15 @@ function NewDeckOptionsDialog({
     navigation.setOptions(getDeckScreenOptions(colors, { title: t`New Deck`, modal: isModal }, investigator));
   }, [investigator, colors, navigation, isModal]);
 
-  const showNewDeck = useCallback((deck: Deck) => {
+  const showNewDeck = useCallback((deck: Deck, investigator: Card) => {
     // Change the deck options for required cards, if present.
-    onCreateDeck && onCreateDeck(deck);
+    onCreateDeck && onCreateDeck(deck, investigator);
 
     // Get the current navigation state and remove Deck.New and Deck.NewOptions from the top of the stack
     const state = navigation.getState();
     const routes = dropWhile(
       reverse([...state?.routes ?? []]),
-      r => r.name === 'Deck.New' || r.name === 'Deck.NewOptions'
+      r => r.name === 'Deck.New' || r.name === 'Deck.NewOptions' || r.name === 'Dialog.DeckSelector'
     ).reverse();
 
     navigation.reset({
@@ -395,7 +406,7 @@ function NewDeckOptionsDialog({
       ],
     });
     setSaving(false);
-  }, [campaignId, colors, onCreateDeck, navigation, investigator, setSaving]);
+  }, [campaignId, colors, onCreateDeck, navigation, setSaving]);
   const createDeck = useCallback((isRetry?: boolean) => {
     const deckName = deckNameChange || defaultDeckName;
     if (investigator && (!saving || isRetry)) {
@@ -416,7 +427,7 @@ function NewDeckOptionsDialog({
           problem: specialDeckMode === 'none' ? 'too_few_cards' : undefined,
           tags: investigator.factionCode(),
         })).then(
-          showNewDeck,
+          deck => showNewDeck(deck, investigator),
           () => {
             setSaving(false);
           }
@@ -475,7 +486,7 @@ function NewDeckOptionsDialog({
     onValueChange: setSpecialDeckMode,
   });
 
-  const renderNamePicker = useCallback((last: boolean) => {
+  const renderNamePicker = useCallback(() => {
     return (
       <>
         <DeckPickerStyleButton
@@ -486,17 +497,17 @@ function NewDeckOptionsDialog({
           first
           editable
         />
-        <DeckPickerStyleButton
-          last={last}
-          icon="card-outline"
-          title={t`Special deck`}
-          valueLabel={specialDeckModeLabel(specialDeckMode)}
-          onPress={showSpecialDeckDialog}
-          editable
-        />
+        { investigator && (
+          <InvestigatorPrintingControl
+            investigator={investigator}
+            selectedCode={investigatorId}
+            onSelectPrinting={setSelectedInvestigatorId}
+            disabled={specialDeckMode === 'starter'}
+          />
+        ) }
       </>
     );
-  }, [deckNameChange, defaultDeckName, specialDeckMode, showNameDialog, showSpecialDeckDialog]);
+  }, [deckNameChange, defaultDeckName, specialDeckMode, investigator, investigatorId, showNameDialog]);
 
   const onCardPress = useCallback((card: Card) => {
     if (singleCardView) {
@@ -584,15 +595,16 @@ function NewDeckOptionsDialog({
             setMeta={updateMeta}
             setParallel={setParallel}
             firstElement={renderNamePicker}
+            parallelInvestigators={parallelInvestigators}
           />
-          { investigator && (
-            <InvestigatorPrintingControl
-              investigator={investigator}
-              selectedCode={investigatorId}
-              onSelectPrinting={setSelectedInvestigatorId}
-              disabled={specialDeckMode === 'starter'}
-            />
-          ) }
+          <DeckPickerStyleButton
+            last
+            icon="special_cards"
+            title={t`Special deck`}
+            valueLabel={specialDeckModeLabel(specialDeckMode)}
+            onPress={showSpecialDeckDialog}
+            editable
+          />
         </View>
         { !(investigatorId === CUSTOM_INVESTIGATOR || investigatorId.startsWith('z')) && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
@@ -657,10 +669,11 @@ function NewDeckOptionsDialog({
         ) }
       </>
     );
-  }, [investigatorId, investigator, signedIn, isCustomContent, randomWeaknessCount, cards,
+  }, [signedIn,
+    investigatorId, isCustomContent, randomWeaknessCount, cards, parallelInvestigators,
     networkType, isConnected, chaosSlots, specialDeckMode, chaosEditState, chaosCards,
     parsedChaosDeck, offlineDeck, optionSelected, tabooSetId, requiredCardOptions, meta, typography,
-    setTabooSetId, onCardPress, toggleOptionsSelected,toggleOfflineDeck,
+    setTabooSetId, onCardPress, toggleOptionsSelected,toggleOfflineDeck, showSpecialDeckDialog,
     login, refreshNetworkStatus, renderNamePicker, setParallel, updateMeta]);
 
   const cancelPressed = useCallback(() => {
@@ -701,7 +714,7 @@ function NewDeckOptionsDialog({
               <View style={[space.marginLeftS, styles.flex, space.marginRightS]}>
                 <DeckButton
                   title={t`Re-generate deck`}
-                  icon="card-outline"
+                  icon="special_cards"
                   color="red_outline"
                   loading={chaosDeckLoading}
                   onPress={generateChaosDeck}
@@ -722,7 +735,7 @@ function NewDeckOptionsDialog({
               { specialDeckMode === 'chaos' && chaosSlots === undefined ? (
                 <DeckButton
                   title={t`Generate deck`}
-                  icon="card-outline"
+                  icon="special_cards"
                   loading={chaosDeckLoading}
                   onPress={generateChaosDeck}
                 />

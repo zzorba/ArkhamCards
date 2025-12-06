@@ -3463,15 +3463,6 @@ msgstr "Symbole dla daltonistów"
 msgid "Uploading"
 msgstr "Wysyłanie"
 
-msgid "Upload campaigns"
-msgstr "Wyślij kampanię"
-
-msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr "Kampanie można przesyłać na konto Arkham Cards."
-
-msgid "Uploaded campaigns will be synced between devices."
-msgstr "Przesłane kampanie będą synchronizowane między urządzeniami."
-
 msgid "Note campaign achievements"
 msgstr "Zanotuj osiągnięcia kampanii"
 
@@ -3606,9 +3597,6 @@ msgstr "Dodaj znajomych"
 
 msgid "Access"
 msgstr "Dostęp"
-
-msgid "Later"
-msgstr "Później"
 
 msgid "Searching cards..."
 msgstr "Szukanie kart..."
@@ -5404,10 +5392,6 @@ msgstr "Ta karta nie została jeszcze wydana i nie może być obecnie używana w
 msgid "Recomputing deck changes..."
 msgstr "Przeliczanie zmian talii..."
 
-#, javascript-format
-msgid "Cost: ${ card.cost }"
-msgstr "Koszt: ${ card.cost }"
-
 msgid "Grants access to previewed player cards"
 msgstr "Daje dostęp do przedpremierowych kart graczy"
 
@@ -6369,6 +6353,7 @@ msgstr ""
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
 msgstr ""
 
+#. fallback for playerCard only
 #, javascript-format
 msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr "Koszt doświadczenia: ${ xpCost } dla talii zawierających ${ investigator.name }, ${ challengeDiscountCost } dla pozostałych graczy"
@@ -6385,13 +6370,29 @@ msgid ""
 "This will use about 25mb of storage."
 msgstr ""
 
+msgid "Head"
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ _card.cost }"
+msgstr ""
+
+msgid "Select version"
+msgstr ""
+
+msgid "Alternate version"
+msgstr ""
+
+#. Remove "Investigator Expansion" from pack name
+msgid "Investigator Expansion"
+msgstr ""
+
+msgid "Alternate versions"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Własny"
-
-msgctxt "slots"
-msgid "None"
-msgstr "Brak"
 
 msgctxt "trait"
 msgid "???"
@@ -8056,6 +8057,10 @@ msgstr ""
 msgctxt "trait"
 msgid "Tandem"
 msgstr ""
+
+msgctxt "slots"
+msgid "None"
+msgstr "Brak"
 
 #, javascript-format
 msgctxt "masculine"

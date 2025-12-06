@@ -3438,15 +3438,6 @@ msgstr "Icônes adaptées aux daltoniens"
 msgid "Uploading"
 msgstr "Transfert en cours"
 
-msgid "Upload campaigns"
-msgstr "Transférer ces campagnes"
-
-msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr "Les campagnes peuvent être transférées vers votre compte Arkham Cards."
-
-msgid "Uploaded campaigns will be synced between devices."
-msgstr "Les campagnes transférées seront synchronisées entre les appareils."
-
 msgid "Note campaign achievements"
 msgstr "Cochez les exploits que vous avez accomplis"
 
@@ -3585,9 +3576,6 @@ msgstr "Accès"
 
 msgid "Clear card cache"
 msgstr "Vider le cache des cartes"
-
-msgid "Later"
-msgstr "Plus tard"
 
 msgid "This appears to be one of your decks from ArkhamDB, however you are not currently logged in. If you wish to make edits, please login through the app settings."
 msgstr "Cela semble être l'un de vos decks d'ArkhamDB, mais vous n'êtes pas actuellement connecté. Si vous souhaitez apporter des modifications, veuillez vous connecter via les paramètres de l'application."
@@ -5359,10 +5347,6 @@ msgstr "Cette carte n'a pas encore été publiée et ne peut pas être intégré
 msgid "Recomputing deck changes..."
 msgstr "Recalcul des changements du deck…"
 
-#, javascript-format
-msgid "Cost: ${ card.cost }"
-msgstr "Coût : ${ card.cost }"
-
 msgid "Grants access to previewed player cards"
 msgstr "Les cartes Fan-Made apparaîtront dans l'application"
 
@@ -6303,6 +6287,7 @@ msgstr ""
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
 msgstr "Scénario Défi Fan-Made créé par ${ scenario.custom.creator }"
 
+#. fallback for playerCard only
 #, javascript-format
 msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr "Coût en points d’expérience: ${ xpCost } pour les decks incluant ${ investigator.name }, ${ challengeDiscountCost } pour chaque autre joueur"
@@ -6319,13 +6304,29 @@ msgid ""
 "This will use about 25mb of storage."
 msgstr ""
 
+msgid "Head"
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ _card.cost }"
+msgstr ""
+
+msgid "Select version"
+msgstr ""
+
+msgid "Alternate version"
+msgstr ""
+
+#. Remove "Investigator Expansion" from pack name
+msgid "Investigator Expansion"
+msgstr ""
+
+msgid "Alternate versions"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Investigateur personnalisé"
-
-msgctxt "slots"
-msgid "None"
-msgstr "Aucun"
 
 msgctxt "trait"
 msgid "???"
@@ -7990,6 +7991,10 @@ msgstr ""
 msgctxt "trait"
 msgid "Tandem"
 msgstr ""
+
+msgctxt "slots"
+msgid "None"
+msgstr "Aucun"
 
 #, javascript-format
 msgctxt "masculine"

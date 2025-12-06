@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
-import { filter } from 'lodash';
+import { useContext, useEffect, useState } from 'react';
 
 import Card from '@data/types/Card';
 import DatabaseContext from '@data/sqlite/DatabaseContext';
-import { useContext } from 'react';
 
 /**
  * Hook to fetch alternate printings of an investigator card.
@@ -28,12 +26,11 @@ export function useAlternatePrintings(card: Card | undefined): [Card[], boolean]
         setLoading(true);
 
         // First, fetch the investigator set to get all related codes
-        const investigatorSetRepo = await db.investigatorSets();
-        const investigatorSet = await investigatorSetRepo.findOne({
-          where: { code: card.code },
-        });
+        const investigatorSet = await db.getInvestigatorSet(card.code);
 
-        if (canceled) return;
+        if (canceled) {
+          return;
+        }
 
         if (!investigatorSet || investigatorSet.alternate_codes.length <= 1) {
           // No alternates found, or only one card in the set (itself)
@@ -43,15 +40,11 @@ export function useAlternatePrintings(card: Card | undefined): [Card[], boolean]
         }
 
         // Fetch all the alternate cards
-        const cardsRepo = await db.cards();
-        const alternates = await cardsRepo
-          .createQueryBuilder('c')
-          .leftJoinAndSelect('c.linked_card', 'linked_card')
-          .where('c.code IN (:...codes)', { codes: investigatorSet.alternate_codes })
-          .andWhere('c.taboo_set_id IS NULL')
-          .getMany();
+        const alternates = await db.getCardsByCodes(investigatorSet.alternate_codes)
 
-        if (canceled) return;
+        if (canceled) {
+          return;
+        }
 
         setAlternateCards(alternates);
         setLoading(false);

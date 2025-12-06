@@ -1,4 +1,4 @@
-import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults, TarotReading, ChaosBagHistory, OZ } from '@actions/types';
+import { CampaignCycleCode, Deck, ScenarioResult, StandaloneId, Trauma, Campaign, CampaignDifficulty, TraumaAndCardData, getCampaignId, CampaignId, WeaknessSet, InvestigatorData, CampaignGuideState, GuideInput, CampaignNotes, getDeckId, DeckId, SealedToken, ChaosBagResults, TarotReading, ChaosBagHistory } from '@actions/types';
 import { find, findLast, uniq, map, concat, last, maxBy, sumBy, filter, trim } from 'lodash';
 
 import MiniCampaignT, { CampaignLink } from '@data/interfaces/MiniCampaignT';
@@ -9,6 +9,8 @@ import LatestDeckT, { DeckCampaignInfo } from '@data/interfaces/LatestDeckT';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import { Campaign_Difficulty_Enum, Chaos_Bag_Tarot_Mode_Enum } from '@generated/graphql/apollo-schema';
+import { resolveCampaignInvestigators } from '../campaignHelper';
+import InvestigatorSet from '../types/InvestigatorSet';
 
 const EMPTY_TRAUMA: Trauma = {};
 
@@ -26,6 +28,7 @@ export class MiniCampaignRedux implements MiniCampaignT {
   public standaloneId: StandaloneId | undefined;
   public latestScenarioResult: ScenarioResult | undefined;
   public investigators: string[];
+  public investigatorPrintings: { [investigatorCode: string]: string | undefined };
   public updatedAt: Date;
   public linked: undefined | CampaignLink = undefined;
   public archived: boolean;
@@ -34,18 +37,24 @@ export class MiniCampaignRedux implements MiniCampaignT {
   constructor(
     campaign: Campaign,
     campaignDecks: LatestDeckT[],
+    investigatorSets: InvestigatorSet[],
     updatedAt: Date
   ) {
     this.campaign = campaign;
     this.campaignDecks = campaignDecks;
 
     this.updatedAt = updatedAt;
-    const includeParallel = this.campaign.cycleCode === OZ;
-    this.investigators = uniq(
-      concat(
-        map(this.campaignDecks, d => includeParallel ? d.deck.meta?.alternate_front ?? d.investigator : d.investigator),
-        this.campaign.nonDeckInvestigators || [],
-      )
+    this.investigatorPrintings = campaign.investigatorPrintings ?? {};
+
+    this.investigators = resolveCampaignInvestigators(
+      this.campaign.cycleCode,
+      this.investigatorPrintings,
+      map(this.campaignDecks, d => ({
+        investigator: d.investigator,
+        alternate_front: d.deck.meta?.alternate_front,
+      })),
+      this.campaign.nonDeckInvestigators || [],
+      investigatorSets
     );
 
     this.id = getCampaignId(campaign);
@@ -76,6 +85,7 @@ export class MiniLinkedCampaignRedux extends MiniCampaignRedux {
 
   constructor(
     campaign: Campaign,
+    investigatorSets: InvestigatorSet[],
     updatedAt: Date,
     campaignA: Campaign,
     decksA: Deck[],
@@ -84,7 +94,7 @@ export class MiniLinkedCampaignRedux extends MiniCampaignRedux {
     decksB: Deck[],
     updatedAtB: Date
   ) {
-    super(campaign, [], updatedAt);
+    super(campaign, [], investigatorSets, updatedAt);
     this.campaignA = campaignA;
     this.campaignB = campaignB;
     this.decksA = decksA;
@@ -100,6 +110,11 @@ export class MiniLinkedCampaignRedux extends MiniCampaignRedux {
         this.campaignB.nonDeckInvestigators || [],
       )
     );
+    this.investigatorPrintings = {
+      ...(campaign.investigatorPrintings || {}),
+      ...(campaignA.investigatorPrintings || {}),
+      ...(campaignB.investigatorPrintings || {}),
+    };
     // tslint:disable-next-line: strict-comparisons
     this.difficulty = (campaignA.difficulty === campaignB.difficulty) ? campaignA.difficulty : undefined;
     this.latestScenarioResult = (updatedAtA.getTime() > updatedAtB.getTime()) ?
@@ -145,9 +160,10 @@ export class SingleCampaignRedux extends MiniCampaignRedux implements SingleCamp
   constructor(
     campaign: Campaign,
     latestCampaignDecks: LatestDeckT[],
+    investigatorSets: InvestigatorSet[],
     updatedAt: Date
   ) {
-    super(campaign, latestCampaignDecks, updatedAt);
+    super(campaign, latestCampaignDecks, investigatorSets, updatedAt);
 
     this.showInterludes = !!campaign.showInterludes;
     this.investigatorData = campaign.investigatorData || EMPTY_INVESTIGATOR_DATA;

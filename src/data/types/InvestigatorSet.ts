@@ -22,10 +22,10 @@ export default class InvestigatorSet {
    * @param alternate_codes Array of ALL related codes (including this one)
    */
   static create(code: string, alternate_codes: string[]): InvestigatorSet {
-    return {
-      code,
-      alternate_codes,
-    };
+    const set = new InvestigatorSet();
+    set.code = code;
+    set.alternate_codes = alternate_codes;
+    return set;
   }
 
   /**
@@ -41,5 +41,12 @@ export default class InvestigatorSet {
    */
   getAllCodes(): string[] {
     return this.alternate_codes;
+  }
+
+  /**
+   * Return the canonical code of this investigator set.
+   */
+  canonicalCode(): string {
+    return this.alternate_codes[0] ?? this.code;
   }
 }

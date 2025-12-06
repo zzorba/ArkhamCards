@@ -7,7 +7,7 @@ export interface CampaignDeckListProps {
   investigatorToDeck: {
     [code: string]: DeckId | undefined;
   };
-  investigatorIds: string[];
+  investigatorIds: { code: string; printing?: string }[];
 }
 
 interface Props extends CampaignDeckListProps {
@@ -24,11 +24,11 @@ export default function CampaignDeckList({
   return (
     <View>
       { map(investigatorIds, investigator => {
-        const deckId = investigatorToDeck[investigator];
+        const deckId = investigatorToDeck[investigator.code];
         if (deckId) {
-          return renderDeck(deckId, investigator);
+          return renderDeck(deckId, investigator.printing ?? investigator.code);
         }
-        return renderInvestigator(investigator)
+        return renderInvestigator(investigator.printing ?? investigator.code)
       }) }
     </View>
   );

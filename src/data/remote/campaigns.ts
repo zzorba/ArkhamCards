@@ -63,6 +63,7 @@ import {
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import { t } from 'ttag';
 import { ArkhamNavigation } from '@navigation/types';
+import Card from '@data/types/Card';
 
 interface CampaignLink {
   campaignIdA: string;
@@ -213,7 +214,7 @@ export function useUploadLocalDeckRequest(): (
             }
           );
         } catch (e) {
-          console.log(`Error with local deck upload: ${e.message}`);
+          console.error(`Error with local deck upload: ${e.message}`);
           throw e;
         }
       }
@@ -244,11 +245,11 @@ export function useEditCampaignAccessRequest(): (
           },
         });
         if (data.errors?.length) {
-          console.log(data.errors);
+          console.error(data.errors);
           throw new Error(data.errors[0].message);
         }
       } catch (e) {
-        console.log(`Error with edit campaign access: ${e.message}`);
+        console.error(`Error with edit campaign access: ${e.message}`);
         throw e;
       }
     },
@@ -356,6 +357,7 @@ export function useUploadNewCampaign(): UploadNewCampaignFn {
         investigators.push({
           campaign_id: campaignId,
           investigator: code,
+          printing: campaign.investigatorPrintings?.[code] ?? undefined,
         });
       });
       await uploadNewCampaign({
@@ -668,7 +670,7 @@ export interface UpdateCampaignActions {
   setCampaignNotes: SetCampaignNotesAction;
   addInvestigator: (
     campaignId: UploadedCampaignId,
-    investigator: string
+    investigator: Card,
   ) => Promise<void>;
   removeInvestigator: (
     campaignId: UploadedCampaignId,
@@ -799,20 +801,22 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
   );
 
   const addInvestigator = useCallback(
-    async(campaignId: UploadedCampaignId, investigator: string) => {
+    async(campaignId: UploadedCampaignId, investigator: Card) => {
       await insertInvestigator({
         optimisticResponse: {
           __typename: 'mutation_root',
           insert_campaign_investigator_one: {
             __typename: 'campaign_investigator',
             campaign_id: campaignId.serverId,
-            id: `${campaignId.serverId}-${investigator}`,
-            investigator,
+            id: `${campaignId.serverId}-${investigator.canonicalInvestigatorId}`,
+            investigator: investigator.canonicalInvestigatorId,
+            printing: investigator.printingInvestigatorId ?? null,
           },
         },
         variables: {
           campaign_id: campaignId.serverId,
-          investigator,
+          investigator: investigator.canonicalInvestigatorId,
+          printing: investigator.printingInvestigatorId,
         },
         context: {
           serializationKey: campaignId.serverId,
@@ -835,6 +839,7 @@ export function useUpdateCampaignActions(): UpdateCampaignActions {
                 id: `${campaignId.serverId}-${investigator}`,
                 campaign_id: campaignId.serverId,
                 investigator,
+                printing: null,
               },
             ],
           },

@@ -341,7 +341,6 @@ export default function InvestigatorsListComponent({
           data={data}
           renderFooter={renderFooter}
           renderItem={renderItem}
-          estimatedItemSize={40}
         />
       ) }
     </CollapsibleSearchBox>

@@ -199,6 +199,12 @@ export default function(
     };
   }
   if (action.type === NEW_STANDALONE) {
+    const investigatorPrintings: { [code: string]: string | undefined } = {};
+    forEach(action.investigators, inv => {
+      if (inv.printing) {
+        investigatorPrintings[inv.code] = inv.printing;
+      }
+    });
     const newCampaign: Campaign = {
       uuid: action.uuid,
       name: action.name,
@@ -216,7 +222,8 @@ export default function(
       standaloneId: action.standaloneId,
       weaknessSet: action.weaknessSet,
       deckIds: action.deckIds,
-      nonDeckInvestigators: action.investigatorIds,
+      nonDeckInvestigators: map(action.investigators, inv => inv.code),
+      investigatorPrintings,
       lastUpdated: action.now,
       investigatorData: {},
       scenarioResults: [],
@@ -253,6 +260,12 @@ export default function(
       },
     };
 
+    const investigatorPrintings: { [code: string]: string | undefined } = {};
+    forEach(action.investigators, inv => {
+      if (inv.printing) {
+        investigatorPrintings[inv.code] = inv.printing;
+      }
+    });
     const newCampaign: Campaign = {
       uuid: action.uuid,
       name: action.name,
@@ -263,7 +276,8 @@ export default function(
       campaignNotes,
       weaknessSet: action.weaknessSet,
       deckIds: action.deckIds,
-      nonDeckInvestigators: action.investigatorIds,
+      nonDeckInvestigators: map(action.investigators, inv => inv.code),
+      investigatorPrintings,
       lastUpdated: action.now,
       investigatorData: {},
       scenarioResults: [],
@@ -313,6 +327,11 @@ export default function(
         investigator => investigator !== action.investigator
       );
     }
+    const investigatorPrintings = {
+      ...(campaign.investigatorPrintings || {}),
+    };
+    delete investigatorPrintings[action.investigator];
+    campaign.investigatorPrintings = investigatorPrintings;
     return {
       ...state,
       all: {
@@ -336,6 +355,15 @@ export default function(
       ...campaign.nonDeckInvestigators || [],
       action.investigator,
     ]);
+    const investigatorPrintings = {
+      ...(campaign.investigatorPrintings || {}),
+    };
+    if (action.printing) {
+      investigatorPrintings[action.investigator] = action.printing;
+    } else {
+      delete investigatorPrintings[action.investigator];
+    }
+    campaign.investigatorPrintings = investigatorPrintings;
     return {
       ...state,
       all: {

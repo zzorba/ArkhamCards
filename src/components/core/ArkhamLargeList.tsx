@@ -25,7 +25,6 @@ interface Props<T extends string, Item extends ItemT<T>> {
 
   refreshing: boolean;
   noSearch?: boolean;
-  estimatedItemSize: number;
   onEndReachedThreshold?: number;
 }
 
@@ -53,7 +52,6 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
   renderItem,
   onScroll,
   heightForItem,
-  estimatedItemSize,
   onEndReachedThreshold,
 }: Props<T, Item>) {
   const { fontScale } = useContext(StyleContext);
@@ -187,7 +185,6 @@ export default function ArkhamLargeList<T extends string, Item extends ItemT<T>>
       onEndReached={onLoading}
       removeClippedSubviews
       getItemType={getItemType}
-      estimatedItemSize={estimatedItemSize}
       onEndReachedThreshold={onEndReachedThreshold ?? 0.5}
       // getItemLayout={heightForItem ? getItemLayout : undefined}
       ListHeaderComponent={renderRealHeader}

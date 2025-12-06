@@ -60,6 +60,7 @@ import SingleCampaignT from '@data/interfaces/SingleCampaignT';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import { Platform } from 'react-native';
+import InvestigatorSet from '@data/types/InvestigatorSet';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -203,10 +204,14 @@ function getCampaign(all: { [uuid: string]: Campaign }, campaignId: CampaignId):
 
 
 export const getCampaigns = createSelector(
+  (_: AppState, investigatorSets: InvestigatorSet[] | undefined) => investigatorSets,
   allCampaignsSelector,
   allGuidesSelector,
   allDecksSelector,
-  (allCampaigns, allGuides, allDecks): MiniCampaignT[] => {
+  (investigatorSets, allCampaigns, allGuides, allDecks): MiniCampaignT[] | undefined => {
+    if (!investigatorSets) {
+      return undefined;
+    }
     return map(
       filter(
         values(allCampaigns || {}),
@@ -223,6 +228,7 @@ export const getCampaigns = createSelector(
             const decksB = flatMap(campaignB.deckIds, id => getDeck(allDecks, id) || []);
             return new MiniLinkedCampaignRedux(
               campaign,
+              investigatorSets,
               getCampaignLastUpdated(campaign),
               campaignA,
               decksA,
@@ -240,6 +246,7 @@ export const getCampaigns = createSelector(
             const previousDeck = deck?.previousDeckId ? getDeck(allDecks, deck.previousDeckId) : undefined;
             return deck ? new LatestDeckRedux(deck, previousDeck, campaign) : [];
           }),
+          investigatorSets,
           getCampaignLastUpdated(campaign, allGuides[campaign.uuid]),
         );
       }

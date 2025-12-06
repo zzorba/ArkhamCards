@@ -46,6 +46,9 @@ export function getDeckScreenOptions(
     },
     headerTintColor: textColor,
     headerTitleStyle: {
+      fontFamily: 'Alegreya-Medium',
+      fontSize: 20,
+      fontWeight: '500',
       color: textColor,
     },
     statusBarStyle: initialMode === 'upgrade' ? 'dark' : 'light',
@@ -92,6 +95,9 @@ export function getDeckScreenOptionsFromFaction(
     },
     headerTintColor: textColor,
     headerTitleStyle: {
+      fontFamily: 'Alegreya-Medium',
+      fontSize: 20,
+      fontWeight: '500',
       color: textColor,
     },
     statusBarStyle: initialMode === 'upgrade' ? 'dark' : 'light',
@@ -230,13 +236,12 @@ export function useOptionDialog(
   return usePickerDialog({ title, items, onValueChange: onSelect, selectedValue });
 }
 
-export function showCardImage(
-  navigation: ArkhamNavigation,
-  card: Card,
-) {
+export function showCardImage(navigation: ArkhamNavigation, card: Card, colors: ThemeColors) {
+  const faction = card.factionCode();
   navigation.navigate('Card.Image', {
     id: card.code,
     cardName: card.name,
+    headerBackgroundColor: faction ? colors.faction[faction].background : undefined,
   });
 }
 

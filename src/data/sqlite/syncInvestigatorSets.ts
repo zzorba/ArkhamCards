@@ -1,4 +1,4 @@
-import { forEach, groupBy, map, filter } from 'lodash';
+import { forEach, groupBy, map, filter, uniq } from 'lodash';
 
 import Card from '../types/Card';
 import InvestigatorSet from '../types/InvestigatorSet';
@@ -22,11 +22,14 @@ function computeInvestigatorSets(cards: Card[]): InvestigatorSet[] {
   );
 
   // Group investigators by real_name
-  const groupedByName = groupBy(investigators, card => card.real_name);
+  const groupedByCode = groupBy(investigators, card => card.investigator_id ?? card.code);
 
   // For each group, create an entry for each code
-  forEach(groupedByName, (cardsInGroup) => {
-    const allCodes = map(cardsInGroup, card => card.code);
+  forEach(groupedByCode, (cardsInGroup, canonicalCode) => {
+    const allCodes = uniq([
+      canonicalCode,
+      ...map(cardsInGroup, card => card.code),
+    ]);
 
     // Create one InvestigatorSet entry per code in the group
     forEach(allCodes, code => {
@@ -64,9 +67,7 @@ export default async function syncInvestigatorSets(
     if (investigatorSets.length > 0) {
       await investigatorSetRepo.insert(investigatorSets);
     }
-
-    console.log(`Synced ${investigatorSets.length} investigator set entries`);
   } catch (e) {
-    console.log(`Error syncing investigator sets: ${e}`);
+    console.error(`Error syncing investigator sets: ${e}`);
   }
 }
