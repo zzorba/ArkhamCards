@@ -3398,15 +3398,6 @@ msgstr "Цветовая гамма для дальтоников"
 msgid "Uploading"
 msgstr "Загрузка"
 
-msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr "Данные ваших кампаний можно перенести на сервер Arkham Cards."
-
-msgid "Uploaded campaigns will be synced between devices."
-msgstr "Загруженные кампании можно синхронизировать между устройствами."
-
-msgid "Upload campaigns"
-msgstr "Загрузить на сервер"
-
 msgid "Sign out of Arkham Cards?"
 msgstr "Выйти из Arkham Cards?"
 
@@ -3605,9 +3596,6 @@ msgstr "Добавить друзей"
 
 msgid "Access"
 msgstr "Доступ"
-
-msgid "Later"
-msgstr "Позже"
 
 msgid "Searching cards..."
 msgstr "Поиск карт…"
@@ -5399,10 +5387,6 @@ msgstr "Эта карта ещё не выпущена, так что пока �
 msgid "Recomputing deck changes..."
 msgstr "Обрабатываем изменения…"
 
-#, javascript-format
-msgid "Cost: ${ card.cost }"
-msgstr "Цена: ${ card.cost }"
-
 msgid "Grants access to previewed player cards"
 msgstr "Спойлеры ещё не выпущенных карт"
 
@@ -6364,6 +6348,7 @@ msgstr ""
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
 msgstr "Фанатский сценарий-испытание от ${ scenario.custom.creator }"
 
+#. fallback for playerCard only
 #, javascript-format
 msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr "Цена в опыте: ${ xpCost } для игрока за ${ investigator.name }, ${ challengeDiscountCost } для всех остальных игроков"
@@ -6380,13 +6365,29 @@ msgid ""
 "This will use about 25mb of storage."
 msgstr ""
 
+msgid "Head"
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ _card.cost }"
+msgstr ""
+
+msgid "Select version"
+msgstr ""
+
+msgid "Alternate version"
+msgstr ""
+
+#. Remove "Investigator Expansion" from pack name
+msgid "Investigator Expansion"
+msgstr ""
+
+msgid "Alternate versions"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Пользовательский"
-
-msgctxt "slots"
-msgid "None"
-msgstr "Нет"
 
 msgctxt "trait"
 msgid "???"
@@ -8051,6 +8052,10 @@ msgstr ""
 msgctxt "trait"
 msgid "Tandem"
 msgstr ""
+
+msgctxt "slots"
+msgid "None"
+msgstr "Нет"
 
 #, javascript-format
 msgctxt "masculine"

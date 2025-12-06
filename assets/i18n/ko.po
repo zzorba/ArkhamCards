@@ -3404,15 +3404,6 @@ msgstr "색맹 친화적 아이콘"
 msgid "Uploading"
 msgstr "업로드 중"
 
-msgid "Upload campaigns"
-msgstr "캠페인 업로드"
-
-msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr "아컴카드 계정에 캠페인을 업로드할 수 있습니다."
-
-msgid "Uploaded campaigns will be synced between devices."
-msgstr "업로드된 캠페인은 장치 간에 동기화될 것입니다."
-
 msgid "Note campaign achievements"
 msgstr "캠페인 업적 기록"
 
@@ -3545,9 +3536,6 @@ msgstr "친구 추가"
 
 msgid "Access"
 msgstr "입장"
-
-msgid "Later"
-msgstr "나중에"
 
 msgid "Searching cards..."
 msgstr "카드를 찾는 중..."
@@ -5310,10 +5298,6 @@ msgstr "이 카드는 아직 정식으로 출시되지 않았으므로, 현재�
 msgid "Recomputing deck changes..."
 msgstr "덱 변경사항 다시 계산 중..."
 
-#, javascript-format
-msgid "Cost: ${ card.cost }"
-msgstr "비용: ${ card.cost }"
-
 msgid "Grants access to previewed player cards"
 msgstr "선공개 플레이어 카드에 대한 접근 권한 부여"
 
@@ -6245,6 +6229,7 @@ msgstr "장소 준비"
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
 msgstr "의 팬 제작 도전 시나리오 (제작자: ${ scenario.custom.creator })"
 
+#. fallback for playerCard only
 #, javascript-format
 msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr "경험치 비용: ${ investigator.name } 조사자의 경우 ${ xpCost }점, 다른 조사자는의 경우 ${ challengeDiscountCost }점"
@@ -6266,13 +6251,29 @@ msgstr ""
 "\n"
 "이 작업에는 약 25mb의 저장 공간이 사용됩니다."
 
+msgid "Head"
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ _card.cost }"
+msgstr ""
+
+msgid "Select version"
+msgstr ""
+
+msgid "Alternate version"
+msgstr ""
+
+#. Remove "Investigator Expansion" from pack name
+msgid "Investigator Expansion"
+msgstr ""
+
+msgid "Alternate versions"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"
-
-msgctxt "slots"
-msgid "None"
-msgstr "없음"
 
 msgctxt "trait"
 msgid "???"
@@ -7937,6 +7938,10 @@ msgstr ""
 msgctxt "trait"
 msgid "Tandem"
 msgstr ""
+
+msgctxt "slots"
+msgid "None"
+msgstr "없음"
 
 #, javascript-format
 msgctxt "masculine"

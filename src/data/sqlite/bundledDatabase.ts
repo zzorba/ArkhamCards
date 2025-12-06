@@ -101,7 +101,7 @@ export async function loadBundledDatabaseIfNeeded(
 
       // Copy all tables from bundled to main database
       // Use INSERT OR IGNORE to skip duplicates in case of partial previous load
-      const tables = ['card', 'rule', 'taboo_set', 'faq_entry', 'encounter_set'];
+      const tables = ['card', 'rule', 'taboo_set', 'faq_entry', 'encounter_set', 'investigator_set'];
 
       for (const table of tables) {
         try {
@@ -149,7 +149,7 @@ export async function loadBundledDatabaseIfNeeded(
         if (resolvedUserLang && metadata.cardLang && resolvedUserLang !== metadata.cardLang) {
           console.log(`Language mismatch: user wants ${resolvedUserLang}, bundled is ${metadata.cardLang} - clearing database`);
           // Clear the database since it's the wrong language
-          const tables = ['card', 'rule', 'taboo_set', 'faq_entry', 'encounter_set'];
+          const tables = ['card', 'rule', 'taboo_set', 'faq_entry', 'encounter_set', 'investigator_set'];
           for (const table of tables) {
             await connection.query(`DELETE FROM ${table}`);
           }

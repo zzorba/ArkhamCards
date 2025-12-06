@@ -3428,15 +3428,6 @@ msgstr "Farbenblindenfreundliche Symbole"
 msgid "Uploading"
 msgstr "Hochladen"
 
-msgid "Upload campaigns"
-msgstr "Kampagnen hochladen"
-
-msgid "Campaigns can be uploaded to your Arkham Cards account."
-msgstr "Kampagnen können zu deinem Arkham-Cards-Konto hochgeladen werden."
-
-msgid "Uploaded campaigns will be synced between devices."
-msgstr "Hochgeladene Kampagnen werden zwischen Geräten synchronisiert."
-
 msgid "Note campaign achievements"
 msgstr "Kampagnenerfolge notieren"
 
@@ -3570,9 +3561,6 @@ msgstr "Freunde hinzufügen"
 
 msgid "Access"
 msgstr "Zugriff"
-
-msgid "Later"
-msgstr "Später"
 
 msgid "Searching cards..."
 msgstr "Suche nach Karten..."
@@ -5355,10 +5343,6 @@ msgstr "Diese Karte wurde noch nicht veröffentlicht und kann somit nicht in Ark
 msgid "Recomputing deck changes..."
 msgstr "Deckänderungen werden neu berechnet..."
 
-#, javascript-format
-msgid "Cost: ${ card.cost }"
-msgstr "Kosten: ${ card.cost }"
-
 msgid "Grants access to previewed player cards"
 msgstr "Gewährt Zugriff auf nicht-offizielle Karten"
 
@@ -6299,6 +6283,7 @@ msgstr "Platzierung der Orte"
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
 msgstr "Fan-Made Herausforderungsszenario von ${ scenario.custom.creator }"
 
+#. fallback for playerCard only
 #, javascript-format
 msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name }, ${ challengeDiscountCost } for each other player"
 msgstr "Erfahrungspunkt Kosten: ${ xpCost } für Decks, die ${ investigator.name } beinhalten, ${ challengeDiscountCost } für jede andere Spieler:in"
@@ -6320,13 +6305,29 @@ msgstr ""
 "\n"
 "Das wird etwa 25 MB Speicherplatz verwenden."
 
+msgid "Head"
+msgstr ""
+
+#, javascript-format
+msgid "Cost: ${ _card.cost }"
+msgstr ""
+
+msgid "Select version"
+msgstr ""
+
+msgid "Alternate version"
+msgstr ""
+
+#. Remove "Investigator Expansion" from pack name
+msgid "Investigator Expansion"
+msgstr ""
+
+msgid "Alternate versions"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Benutzerdefiniert"
-
-msgctxt "slots"
-msgid "None"
-msgstr "Keine"
 
 msgctxt "trait"
 msgid "???"
@@ -7991,6 +7992,10 @@ msgstr "Symbiont"
 msgctxt "trait"
 msgid "Tandem"
 msgstr "Tandem"
+
+msgctxt "slots"
+msgid "None"
+msgstr "Keine"
 
 #, javascript-format
 msgctxt "masculine"
