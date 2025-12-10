@@ -274,10 +274,10 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
     return card && card.withCustomizations(listSeperator, customizations[currentCode]);
   }, [listSeperator, customizations, currentCode, cards]);
   useEffect(() => {
-    const nearbyCards = slice(cardCodes, Math.max(index - 10, 0), Math.min(index + 10, cardCodes.length - 1));
+    const nearbyCards = slice(cardCodes, Math.max(index - 10, 0), Math.min(index + 10, cardCodes.length));
     if (find(nearbyCards, code => !cards[code])) {
       const codes = filter(
-        slice(cardCodes, Math.max(index - 20, 0), Math.min(index + 30, cardCodes.length - 1)),
+        slice(cardCodes, Math.max(index - 20, 0), Math.min(index + 30, cardCodes.length)),
         code => !cards[code]
       );
       db.getCards(where(`c.code IN (:...codes)`, { codes }), tabooSetId)
