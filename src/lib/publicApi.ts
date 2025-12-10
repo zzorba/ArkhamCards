@@ -82,20 +82,8 @@ async function insertChunk<T>(
   }
 }
 
-const RULES_LANGS = new Set([
-  'de',
-  'es',
-  'fr',
-  'it',
-  'ko',
-  'pl',
-  'ru',
-  'zh',
-  'zh_cn',
-])
 async function rulesJson(lang?: string): Promise<JsonRule[]> {
-
-  const assetKey = lang && RULES_LANGS.has(lang) ? `rules_${lang}` : 'rules';
+  const assetKey = !lang || lang === 'en' ? 'rules' : `rules_${lang}`;
   return await loadAsset<JsonRule[]>(assetKey);
 }
 

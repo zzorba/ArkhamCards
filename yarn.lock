@@ -3881,10 +3881,10 @@
   resolved "https://registry.npmjs.org/@shopify/flash-list/-/flash-list-2.2.0.tgz#bafd714576182681cba25fb13195dee19f5ca521"
   integrity sha512-mL61IofcfBNRZ/qazIf+pghGULkcZUQ7EZNldH1JBbIjtDb25ADSiQrt62ZTnRz0H5+bPFEZUmN9+WChHzX8pw==
 
-"@shopify/react-native-skia@2.3.12":
-  version "2.3.12"
-  resolved "https://registry.yarnpkg.com/@shopify/react-native-skia/-/react-native-skia-2.3.12.tgz#7729365b4799550617f2916e9228cc7afaa58a37"
-  integrity sha512-igThClyyIw6R2FR2Q/D1LqFnH7u148PQf1Dw15qRkAMW/3dk0U6MrsGCj5i6znUYxEQeFjXqUqL+lt0g/rSYdA==
+"@shopify/react-native-skia@2.4.7":
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/@shopify/react-native-skia/-/react-native-skia-2.4.7.tgz#2957942e17336d2916ca77d04e675dcff95ba917"
+  integrity sha512-b4/N+2ku+iaq672GsOdBM3z5asEK35BkZw0Nm1R4LjZ0v4tNh9B6et1AiKK8HmUoW2t0OPSu3Cb3mDX6WKIw3w==
   dependencies:
     canvaskit-wasm "0.40.0"
     react-reconciler "0.31.0"

@@ -8,8 +8,8 @@ function getChaosTokensAssetKey(lang: string): string {
 }
 
 function getTaboosAssetKey(lang: string): string | undefined {
-  if (lang === 'vi' || lang === 'en' || lang === 'cs') {
-    return undefined;
+  if (lang === 'en') {
+    return 'taboos';
   }
   return `taboos_${lang}`;
 }

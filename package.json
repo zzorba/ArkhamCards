@@ -76,7 +76,7 @@
     "@react-navigation/stack": "^7.4.8",
     "@redux-offline/redux-offline": "2.6.0-native.1",
     "@shopify/flash-list": "2.2.0",
-    "@shopify/react-native-skia": "2.3.12",
+    "@shopify/react-native-skia": "2.4.7",
     "apollo-cache-persist": "0.1.1",
     "apollo-link-queue": "3.1.0",
     "apollo-link-serialize": "4.0.0",

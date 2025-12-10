@@ -30,20 +30,6 @@ import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 import { SORT_BY_ENCOUNTER_SET, SORT_BY_XP, SortType } from '@actions/types';
-import { HealsDamageMigration1657382994910 } from './migration/HealsDamageMigration';
-import { CustomizeMigration1657651357621 } from './migration/CustomizationMigration';
-import { RemovableSlot1658075280573 } from './migration/RemovableSlot';
-import { AlternateRequiredCodeMigration1660064759967 } from './migration/AlternateRequiredCodeMigration';
-import { CardStatusMigration1662999387731 } from './migration/CardStatusMigration';
-import { GenderMigration1663271269593 } from './migration/GenderMigration';
-import { CardTagsMigraiton1663617607335 } from './migration/CardTagsMigration';
-import { ImageMigration1665529094145 } from './migration/ImageMigration';
-import { ReprintQuantityMigration1671202311300 } from './migration/ReprintQuantityMigration';
-import { TabooTextMigration1693598075386 } from './migration/TabooTextMigration';
-import { SideDeckMigration1698073688677 } from './migration/SideDeckMigration';
-import { SpecialtyCardsMigration1726180741370 } from './migration/SpecialtyCardsMigration';
-import { InvestigatorSetMigration1764345197527 } from './migration/InvestigatorSetMigration';
-import { InvestigatorIdMigration1764434435446 } from './migration/InvestigatorIdMigration';
 
 const enhanceQueryResult = (result: QuickSQLite.QueryResult) => {
   if (!result.rows) {
