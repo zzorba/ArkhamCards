@@ -6189,9 +6189,6 @@ msgstr "카드"
 msgid "Edit Scenario Result"
 msgstr "시나리오 결과 편집"
 
-msgid "Merge Backup"
-msgstr "백업 병합"
-
 msgid "Safe Mode"
 msgstr "안전 모드"
 

@@ -6243,9 +6243,6 @@ msgstr "Karte"
 msgid "Edit Scenario Result"
 msgstr "Szenario Ergebnis ändern"
 
-msgid "Merge Backup"
-msgstr "Backup zusammenführen"
-
 msgid "Safe Mode"
 msgstr "Sicherer Modus"
 

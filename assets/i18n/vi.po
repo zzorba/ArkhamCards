@@ -6046,9 +6046,6 @@ msgstr ""
 msgid "Edit Scenario Result"
 msgstr ""
 
-msgid "Merge Backup"
-msgstr ""
-
 msgid "Safe Mode"
 msgstr ""
 

@@ -6239,9 +6239,6 @@ msgstr "Carta"
 msgid "Edit Scenario Result"
 msgstr "Modifica i Risultati dello Scenario"
 
-msgid "Merge Backup"
-msgstr "Unisci i Backup"
-
 msgid "Safe Mode"
 msgstr "Modalità Provvisoria"
 
