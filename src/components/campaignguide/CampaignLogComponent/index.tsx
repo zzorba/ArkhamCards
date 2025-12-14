@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { flatMap, keys, range, map, sum, values } from 'lodash';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from '@react-native-vector-icons/material-icons';
+import MaterialCommunityIcons from '@react-native-vector-icons/material-design-icons';
 import { t } from 'ttag';
 
 import ChaosBagLine from '@components/core/ChaosBagLine';

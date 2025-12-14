@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View, ViewStyle } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcons, { MaterialIconsIconName } from '@react-native-vector-icons/material-icons';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import Ripple from '@lib/react-native-material-ripple';
@@ -124,6 +124,9 @@ const ICON_STYLE: { [icon: string]: ViewStyle | undefined } = {
 };
 
 const MATERIAL_ICONS = new Set(['email', 'login', 'backup', 'headset']);
+const isMaterialIcon = (icon: string): icon is MaterialIconsIconName => {
+  return MATERIAL_ICONS.has(icon);
+}
 const APP_ICONS = new Set(['xp']);
 const ARKHAM_ICONS = new Set(['per_investigator', 'faq', 'elder_sign', 'weakness']);
 const ENCOUNTER_ICONS = new Set(['tdea', 'tdeb']);
@@ -214,7 +217,7 @@ export default function DeckButton({
       return null;
     }
     const size = (thin ? ICON_SIZE_THIN[icon] : undefined) || ICON_SIZE[icon] || 28;
-    if (MATERIAL_ICONS.has(icon)) {
+    if (isMaterialIcon(icon)) {
       return <MaterialIcons name={icon} size={size} color={theIconColor} />;
     }
     if (APP_ICONS.has(icon)) {

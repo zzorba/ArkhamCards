@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { Text, View } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from '@react-native-vector-icons/material-design-icons';
 
 import StyleContext from '@styles/StyleContext';
 import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';

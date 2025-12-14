@@ -251,17 +251,7 @@ function MergeBackupView() {
 
 MergeBackupView.options = () => {
   return {
-    topBar: {
-      title: {
-        text: t`Select items to import`,
-      },
-      rightButtons: [{
-        text: t`Import`,
-        id: 'import',
-        color: COLORS.M,
-        accessibilityLabel: t`Import`,
-      }],
-    },
+    title: t`Select items to import`,
   };
 };
 export default MergeBackupView;

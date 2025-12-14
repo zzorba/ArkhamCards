@@ -996,7 +996,7 @@ const handleUpdateInvestigatorTrauma: MutationUpdaterFn<UpdateInvestigatorTrauma
         return {
           ...existingCacheData,
           investigator_data: [
-            ...existingCacheData.investigator_data || [],
+            ...(existingCacheData.investigator_data || []),
             mini_investigator_data,
           ],
         };
@@ -1027,7 +1027,7 @@ function updateFullInvestigatorData(cache: ApolloCache<unknown>, campaignId: num
         return {
           ...existingCacheData,
           investigator_data: [
-            ...existingCacheData.investigator_data || [],
+            ...(existingCacheData.investigator_data || []),
             update(),
           ],
         };

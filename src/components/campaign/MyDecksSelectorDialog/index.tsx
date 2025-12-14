@@ -220,7 +220,7 @@ function MyDecksSelectorDialog() {
     toggleHideOtherCampaignDecks, toggleHideEliminatedInvestigators, toggleOnlyShowPreviousCampaignMembers]);
   const onlyInvestigators = useMemo(() => {
     if (investigatorId) {
-      return new Set([investigatorId, ...investigatorSet?.alternate_codes ?? []]);
+      return new Set([investigatorId, ...(investigatorSet?.alternate_codes ?? [])]);
     }
     return undefined;
   }, [investigatorId, investigatorSet]);

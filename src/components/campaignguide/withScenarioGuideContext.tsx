@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import hoistNonReactStatic from 'hoist-non-react-statics';
 import { t } from 'ttag';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
@@ -82,6 +81,5 @@ export default function withScenarioGuideContext<Props>(
       </CampaignGuideContext.Provider>
     );
   }
-  hoistNonReactStatic(ScenarioDataComponent, WrappedComponent);
   return ScenarioDataComponent as React.ComponentType<Props & ScenarioGuideInputProps>;
 }

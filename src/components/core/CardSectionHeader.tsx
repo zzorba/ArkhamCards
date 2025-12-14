@@ -4,7 +4,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcons, { MaterialIconsIconName } from '@react-native-vector-icons/material-icons';
 
 import Ripple from '@lib/react-native-material-ripple';
 import Card from '@data/types/Card';
@@ -14,7 +14,7 @@ import AppIcon from '@icons/AppIcon';
 
 export interface CardSectionHeaderData {
   superTitle?: string;
-  superTitleIcon?: string;
+  superTitleIcon?: MaterialIconsIconName | 'deck';
   title?: string;
   subTitle?: string;
   subTitleDetail?: string;

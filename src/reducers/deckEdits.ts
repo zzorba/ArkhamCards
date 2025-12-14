@@ -97,7 +97,7 @@ export default function(
   }
   if (action.type === START_DECK_EDIT) {
     const newEdits = action.deck ? {
-      ...state.edits || {},
+      ...(state.edits || {}),
       [action.id.uuid]: {
         nameChange: undefined,
         tagsChange: undefined,
@@ -113,16 +113,16 @@ export default function(
     return {
       ...state,
       editting: {
-        ...state.editting || {},
+        ...(state.editting || {}),
         [action.id.uuid]: true,
       },
       edits: newEdits,
     };
   }
   if (action.type === FINISH_DECK_EDIT) {
-    const newEditting = { ...state.editting || {} };
+    const newEditting = { ...(state.editting || {}) };
     delete newEditting[action.id.uuid];
-    const newEdits = { ...state.edits || {} };
+    const newEdits = { ...(state.edits || {}) };
     delete newEdits[action.id.uuid];
     return {
       ...state,
@@ -327,7 +327,7 @@ export default function(
   }
   if (action.type === SET_DECK_CHECKLIST_CARD) {
     const checklist = {
-      ...(state.checklist_counts ?? {})[action.id.uuid] ?? {},
+      ...((state.checklist_counts ?? {})[action.id.uuid] ?? {}),
     };
     const counts = filter((checklist[action.card] ?? []), card => card !== action.value);
     if (action.toggle) {

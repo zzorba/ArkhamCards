@@ -1,5 +1,4 @@
 import React from 'react';
-import hoistNonReactStatics from 'hoist-non-react-statics';
 import FetchCardsGate from './FetchCardsGate';
 
 interface Arguments {
@@ -18,6 +17,5 @@ export default function withFetchCardsGate<Props>(
       </FetchCardsGate>
     );
   };
-  hoistNonReactStatics(FetchCardsResult, WrappedComponent);
   return FetchCardsResult;
 }

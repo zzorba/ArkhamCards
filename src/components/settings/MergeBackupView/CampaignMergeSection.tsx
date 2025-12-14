@@ -2,7 +2,7 @@ import React, { useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { map, sumBy } from 'lodash';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcons from '@react-native-vector-icons/material-icons';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import CampaignMergeItem from './CampaignMergeItem';

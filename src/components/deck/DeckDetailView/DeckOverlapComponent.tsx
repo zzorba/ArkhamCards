@@ -197,7 +197,7 @@ export default function DeckOverlapComponent({ parsedDeck, cards, campaignInvest
           tabooSetId: parsedDeck?.deck?.taboo_id,
           investigator: parsedDeck?.investigator.front,
           editable: false,
-          initialCustomizations: parsedDeck?.customizations
+          initialCustomizations: parsedDeck?.customizations,
         }
       );
     }

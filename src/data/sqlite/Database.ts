@@ -403,7 +403,7 @@ export default class Database {
       forEach(sortQuery, ({ s, direction }) => {
         orderBy[s] = direction;
       });
-      cardsQuery.orderBy(orderBy);
+      cardsQuery = cardsQuery.orderBy(orderBy);
     }
     const result = await cardsQuery.getRawMany();
     return flatMap(
