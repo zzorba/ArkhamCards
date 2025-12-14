@@ -536,14 +536,15 @@ function NewDeckOptionsDialog({
       navigation,
       colors,
       map(visibleCards, card => card.code),
-      undefined,
-      index,
-      visibleCards,
-      false,
-      tabooSetId,
-      undefined,
-      investigator,
-      false
+      {
+        controls: undefined,
+        index,
+        initialCards: visibleCards,
+        showSpoilers: false,
+        tabooSetId,
+        investigator,
+        editable: false,
+      },
     );
   }, [requiredCardOptions, navigation, investigator, colors, singleCardView, tabooSetId]);
   const [generateChaosDeck, chaosDeckLoading, chaosCards] = useChaosDeckGenerator({

@@ -881,15 +881,16 @@ export default function DbCardResultList(props: Props) {
       navigation,
       colors,
       codes,
-      specialMode,
-      index,
-      undefined,
-      showSpoilerCards,
-      tabooSetOverride,
-      deckId,
-      investigator?.front,
-      true,
-      customizations
+      {
+        controls: specialMode,
+        index,
+        showSpoilers: showSpoilerCards,
+        tabooSetId: tabooSetOverride,
+        deckId,
+        investigator: investigator?.front,
+        editable: true,
+        initialCustomizations: customizations,
+      }
     );
   }, [navigation, colors, customizations, fullFeedRef, showSpoilerCards, tabooSetOverride, deckId, investigator, specialMode, cardPressed]);
   const { lang } = useContext(LanguageContext);

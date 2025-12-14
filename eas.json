@@ -20,6 +20,12 @@
       },
       "ios": {
         "credentialsSource": "local"
+      },
+      "cache": {
+        "paths": [
+          "node_modules",
+          ".yarn/cache"
+        ]
       }
     }
   },

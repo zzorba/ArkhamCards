@@ -296,7 +296,7 @@ export default function ScenarioComponent({ showLinkedScenario, standalone, foot
               steps={processedScenario.steps}
               switchCampaignScenario={switchCampaignScenario}
             />
-            { !!footer ? footer : <View style={{ height: 100 }} /> }
+            { !!footer ? footer : <View style={{ height: 200 }} /> }
           </ScrollView>
           <View style={{ position: 'absolute', bottom: m + bottom, right: m }}>
             <Animated.View

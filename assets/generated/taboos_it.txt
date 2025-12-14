@@ -2,7 +2,7 @@
   {
     "id": 1,
     "code": "001",
-    "name": "Lista dei Tabù",
+    "name": "Elenco dei Tabù",
     "active": 1,
     "date_start": "2019-04-20",
     "cards": [
@@ -64,7 +64,7 @@
   {
     "id": 2,
     "code": "002",
-    "name": "Lista dei Tabù",
+    "name": "Elenco dei Tabù",
     "active": 1,
     "date_start": "2019-09-27",
     "cards": [
@@ -138,7 +138,7 @@
   {
     "id": 3,
     "code": "003",
-    "name": "Lista dei Tabù",
+    "name": "Elenco dei Tabù",
     "active": 1,
     "date_start": "2020-10-15",
     "cards": [
@@ -257,7 +257,7 @@
   {
     "id": 4,
     "code": "004",
-    "name": "Lista dei Tabù",
+    "name": "Elenco dei Tabù",
     "active": 1,
     "date_start": "2021-06-28",
     "cards": [
@@ -396,7 +396,7 @@
   {
     "id": 5,
     "code": "005",
-    "name": "Lista dei Tabù",
+    "name": "Elenco dei Tabù",
     "active": 1,
     "date_start": "2022-08-26",
     "cards": [
@@ -659,7 +659,7 @@
   {
     "id": 6,
     "code": "006",
-    "name": "Lista dei Tabù",
+    "name": "Elenco dei Tabù",
     "active": 1,
     "date_start": "2023-08-30",
     "cards": [
@@ -1097,7 +1097,7 @@
   {
     "id": 7,
     "code": "007",
-    "name": "Lista dei Tabù",
+    "name": "Elenco dei Tabù",
     "active": 1,
     "date_start": "2024-02-20",
     "cards": [
@@ -1566,7 +1566,7 @@
   {
     "id": 8,
     "code": "008",
-    "name": "Lista dei Tabù",
+    "name": "Elenco dei Tabù",
     "active": 1,
     "date_start": "2024-10-23",
     "cards": [
@@ -2057,7 +2057,7 @@
   {
     "id": 9,
     "code": "009",
-    "name": "Lista dei Tabù",
+    "name": "Elenco dei Tabù",
     "active": 1,
     "date_start": "2025-07-11",
     "cards": [

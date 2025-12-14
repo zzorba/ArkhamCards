@@ -60,6 +60,7 @@ import { PARALLEL_JIM_CODE } from '@data/deck/specialMetaSlots';
 import { parseMetaSlots } from '@lib/parseDeck';
 import { ParsedDeckContextProvider } from '../DeckEditContext';
 import { ListCard } from '@data/types/ListCard';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -1342,11 +1343,11 @@ function DeckDetailView({
 
 const DeckDetailViewWithLogin = withLoginState(DeckDetailView);
 
-export const DeckDetailViewOptions = ({ route }: { route: RouteProp<RootStackParamList, 'Deck'> }) => {
+export const DeckDetailViewOptions = ({ route }: { route: RouteProp<RootStackParamList, 'Deck'> }): NativeStackNavigationOptions => {
   const { title, subtitle, headerBackgroundColor } = route.params;
   const textColor = '#FFFFFF';
 
-  const baseOptions = {
+  const baseOptions: NativeStackNavigationOptions = {
     ...(headerBackgroundColor ? {
       headerStyle: {
         backgroundColor: headerBackgroundColor,

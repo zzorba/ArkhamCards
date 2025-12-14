@@ -116,16 +116,18 @@ export default function ChangesFromPreviousDeck({
         navigation,
         colors,
         map(allCards, card => card.card.code),
-        undefined,
-        findIndex(allCards, c => c.id === id && c.card.code === card.code),
-        map(allCards, c => c.card),
-        true,
-        tabooSetId,
-        parsedDeck.id,
-        investigator.front,
-        false,
-        parsedDeck.customizations,
-        editable
+        {
+          controls: undefined,
+          index: findIndex(allCards, c => c.id === id && c.card.code === card.code),
+          initialCards: map(allCards, c => c.card),
+          showSpoilers: true,
+          tabooSetId,
+          deckId: parsedDeck.id,
+          investigator: investigator.front,
+          editable: false,
+          initialCustomizations: parsedDeck.customizations,
+          customizationsEditable: editable,
+        }
       );
     }
   }, [navigation, allCards, investigator, deckInvestigatorId, colors,

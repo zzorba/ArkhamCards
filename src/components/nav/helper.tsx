@@ -191,6 +191,7 @@ export function showCardSwipe(
   navigation: ArkhamNavigation,
   colors: ThemeColors,
   codes: string[],
+  { controls, index, initialCards, showSpoilers, tabooSetId, deckId, investigator, editable, initialCustomizations, customizationsEditable } : {
   controls: undefined | 'side' | 'extra' | 'checklist' | ('side' | 'deck' | 'extra' | 'ignore' | 'bonded' | 'attachment' | 'special' | 'checklist')[],
   index: number,
   initialCards?: Card[],
@@ -201,10 +202,9 @@ export function showCardSwipe(
   editable?: boolean,
   initialCustomizations?: Customizations,
   customizationsEditable?: boolean
-) {
+}) {
   navigation.navigate('Card.Swipe', {
     cardCodes: codes,
-    initialCards: undefined,
     initialIndex: index,
     showAllSpoilers: !!showSpoilers,
     tabooSetId,
@@ -214,6 +214,7 @@ export function showCardSwipe(
     controls: controls === 'side' || controls === 'extra' || controls === 'checklist' ? map(range(0, codes.length), () => controls) : controls,
     editable,
     initialCustomizations,
+    initialCards,
     customizationsEditable: editable || customizationsEditable,
     headerBackgroundColor: investigator ? colors.faction[investigator.factionCode()].background : undefined,
   });

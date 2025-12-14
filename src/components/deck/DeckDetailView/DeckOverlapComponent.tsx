@@ -189,15 +189,16 @@ export default function DeckOverlapComponent({ parsedDeck, cards, campaignInvest
         navigation,
         colors,
         map(allCards, card => card.card.code),
-        undefined,
-        findIndex(allCards, c => c.id === id),
-        map(allCards, o => o.card),
-        true,
-        parsedDeck?.deck?.taboo_id,
-        undefined,
-        parsedDeck?.investigator.front,
-        false,
-        parsedDeck?.customizations
+        {
+          controls: undefined,
+          index: findIndex(allCards, c => c.id === id),
+          initialCards: map(allCards, o => o.card),
+          showSpoilers: true,
+          tabooSetId: parsedDeck?.deck?.taboo_id,
+          investigator: parsedDeck?.investigator.front,
+          editable: false,
+          initialCustomizations: parsedDeck?.customizations
+        }
       );
     }
   }, [navigation, overlap, colors, parsedDeck, singleCardView]);

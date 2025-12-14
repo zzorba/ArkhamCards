@@ -825,15 +825,17 @@ export default function useParsedDeckComponent({
       navigation,
       colors,
       map(visibleCards, card => card.code),
-      controls,
-      index,
-      visibleCards,
-      false,
-      tabooSetId,
-      deckId,
-      investigator?.front,
-      editable,
-      customizations,
+      {
+        controls,
+        index,
+        initialCards: visibleCards,
+        showSpoilers: false,
+        tabooSetId,
+        deckId,
+        investigator: investigator?.front,
+        editable,
+        initialCustomizations: customizations,
+      },
     );
   }, [customizations, colors, data, editable, navigation, deckId, investigator, tabooSetId, singleCardView, cards]);
   const { listSeperator } = useContext(LanguageContext);
