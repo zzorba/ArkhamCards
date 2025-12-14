@@ -150,7 +150,7 @@ export function useCampaignInvestigators(
 ): [CampaignInvestigator[], Card[], false] | [undefined, undefined, true] {
   const campaignInvestigators = campaign?.investigators;
   const decks = campaign?.latestDecks();
-  const allInvestigatorCodes = useMemo(() => uniq([...campaign?.investigators ?? [], ...flatMap(Object.values(campaign?.investigatorPrintings ?? {}), x => x ?? [])]), [campaign?.investigatorPrintings, campaign?.investigators]);
+  const allInvestigatorCodes = useMemo(() => uniq([...(campaign?.investigators ?? []), ...flatMap(Object.values(campaign?.investigatorPrintings ?? {}), x => x ?? [])]), [campaign?.investigatorPrintings, campaign?.investigators]);
 
   // Fetch investigator sets for all investigator codes to understand reprints/alternates
   const [investigatorSets, investigatorSetsLoading] = useInvestigatorSets(allInvestigatorCodes);

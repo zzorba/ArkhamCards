@@ -191,7 +191,7 @@ export default function(
         [newCampaignB.uuid]: newCampaignB,
       },
       chaosBagResults: {
-        ...state.chaosBagResults || {},
+        ...(state.chaosBagResults || {}),
         [newCampaign.uuid]: NEW_CHAOS_BAG_RESULTS,
         [newCampaignA.uuid]: NEW_CHAOS_BAG_RESULTS,
         [newCampaignB.uuid]: NEW_CHAOS_BAG_RESULTS,
@@ -237,7 +237,7 @@ export default function(
         [newCampaign.uuid]: newCampaign,
       },
       chaosBagResults: {
-        ...state.chaosBagResults || {},
+        ...(state.chaosBagResults || {}),
         [newCampaign.uuid]: NEW_CHAOS_BAG_RESULTS,
       },
     };
@@ -291,7 +291,7 @@ export default function(
         [newCampaign.uuid]: newCampaign,
       },
       chaosBagResults: {
-        ...state.chaosBagResults || {},
+        ...(state.chaosBagResults || {}),
         [newCampaign.uuid]: NEW_CHAOS_BAG_RESULTS,
       },
     };
@@ -352,7 +352,7 @@ export default function(
       ];
     }
     campaign.nonDeckInvestigators = uniq([
-      ...campaign.nonDeckInvestigators || [],
+      ...(campaign.nonDeckInvestigators || []),
       action.investigator,
     ]);
     const investigatorPrintings = {
@@ -376,7 +376,7 @@ export default function(
     return {
       ...state,
       chaosBagResults: {
-        ...state.chaosBagResults || {},
+        ...(state.chaosBagResults || {}),
         [action.id.campaignId]: action.chaosBagResults,
       },
     };
@@ -391,7 +391,7 @@ export default function(
     return {
       ...state,
       chaosBagResults: {
-        ...state.chaosBagResults || {},
+        ...(state.chaosBagResults || {}),
         [action.id.campaignId]: chaosBagResults,
       },
     };

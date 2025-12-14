@@ -350,15 +350,6 @@ function CampaignDetailView() {
   );
 }
 
-CampaignDetailView.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`Campaign`,
-      },
-    },
-  };
-};
 export default CampaignDetailView;
 
 const styles = StyleSheet.create({

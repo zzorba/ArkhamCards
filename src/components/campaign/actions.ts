@@ -591,12 +591,12 @@ export function editScenarioResult(
   return async(dispatch) => {
     if (campaign) {
       const scenarioResults = [
-        ...campaign.scenarioResults || [],
+        ...(campaign.scenarioResults || []),
       ];
       scenarioResults[index] = { ...scenarioResult };
       dispatch(updateCampaignScenarioResults(actions, campaign.id, scenarioResults));
     }
-  }
+  };
 }
 
 export default {

@@ -50,7 +50,6 @@ export interface CardDetailSwipeProps {
   controls?: ('deck' | 'side' | 'extra' | 'special' | 'ignore' | 'bonded' | 'checklist' | 'attachment')[];
   initialCards?: Card[];
   initialIndex: number;
-  whiteNav: boolean;
   showAllSpoilers?: boolean;
   tabooSetId?: number;
   deckId?: DeckId;
@@ -62,17 +61,6 @@ export interface CardDetailSwipeProps {
 }
 
 type Props = CardDetailSwipeProps;
-
-const options = (passProps: CardDetailSwipeProps) => {
-  return {
-    topBar: {
-      backButton: {
-        title: t`Back`,
-        color: passProps.whiteNav ? 'white' : COLORS.M,
-      },
-    },
-  };
-};
 
 function AttachmentSection({ card, attachment, attachmentCards, width }: { width: number; card: Card, attachment: AttachableDefinition; attachmentCards: Card[] }) {
   const { typography } = useContext(StyleContext);
@@ -322,7 +310,7 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
   }, [navigation]);
   useEffect(() => {
     if (currentCard) {
-      const buttonColor = props.whiteNav ? 'white' : COLORS.M;
+      const buttonColor = props.headerBackgroundColor ? 'white' : COLORS.M;
       const rightButtons = rightButtonsForCard(currentCard, buttonColor);
       navigation.setOptions({
         headerRight: () => (
@@ -340,7 +328,7 @@ function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckR
         ),
       });
     }
-  }, [currentCard, navigation, props.whiteNav, handleButtonPress]);
+  }, [currentCard, navigation, props.headerBackgroundColor, handleButtonPress]);
 
   const showCardSpoiler = useCallback((card: Card) => {
     return !!(showAllSpoilers || showSpoilers[card.pack_code] || spoilers[card.code]);
@@ -471,10 +459,7 @@ function DeckCardControls({
   return null;
 }
 
-DbCardDetailSwipeView.options = options;
-
 export default DbCardDetailSwipeView;
-
 
 const styles = StyleSheet.create({
   wrapper: {

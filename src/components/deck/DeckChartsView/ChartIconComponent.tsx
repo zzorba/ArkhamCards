@@ -1,7 +1,7 @@
-import React, { useContext, useMemo, useRef } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Text, matchFont } from '@shopify/react-native-skia';
 
-import ArkhamIcon from '@icons/ArkhamIcon';
+import { arkhamIconGlyphs } from '@icons/ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
@@ -14,7 +14,6 @@ const SIZE = 32;
 
 export default function ChartIconComponent({ x, y, text }: Props) {
   const { colors } = useContext(StyleContext);
-  const iconGlyphs = useRef(ArkhamIcon.getRawGlyphMap());
 
   const font = useMemo(() => matchFont({
     fontFamily: 'arkhamicons',
@@ -47,7 +46,7 @@ export default function ChartIconComponent({ x, y, text }: Props) {
     <Text
       x={x - SIZE / 2}
       y={y + SIZE / 2 + 3}
-      text={String.fromCharCode(iconGlyphs.current[text])}
+      text={String.fromCharCode(arkhamIconGlyphs[text])}
       font={font}
       color={color}
     />

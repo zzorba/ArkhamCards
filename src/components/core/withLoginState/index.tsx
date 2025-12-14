@@ -1,5 +1,4 @@
 import React from 'react';
-import hoistNonReactStatics from 'hoist-non-react-statics';
 
 import LoginStateComponent from './LoginStateComponent';
 
@@ -35,6 +34,5 @@ export default function withLoginState<P>(
     );
   }
 
-  hoistNonReactStatics(LoginStateWrapper, WrappedComponent);
   return LoginStateWrapper;
 }

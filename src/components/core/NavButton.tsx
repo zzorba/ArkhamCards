@@ -4,7 +4,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcons from '@react-native-vector-icons/material-icons';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import { xs, s, isBig } from '@styles/space';

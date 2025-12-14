@@ -11,7 +11,6 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 
 import PackListComponent from '@components/core/PackListComponent';
 import { getAllPacks, getAllRealPacks } from '@reducers';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import useFilterFunctions from './useFilterFunctions';
 import { BasicStackParamList } from '@navigation/types';
@@ -89,19 +88,7 @@ const PackFilterView = () => {
     </View>
   );
 };
-PackFilterView.options = () => {
-  return {
-    topBar: {
-      backButton: {
-        title: t`Back`,
-        color: COLORS.M,
-      },
-      title: {
-        text: t`Select Packs`,
-      },
-    },
-  };
-};
+
 export default PackFilterView;
 
 const styles = StyleSheet.create({

@@ -10,7 +10,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { t } from 'ttag';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcons, { MaterialIconsIconName } from '@react-native-vector-icons/material-icons';
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import EncounterIcon from '@icons/EncounterIcon';
@@ -253,7 +253,7 @@ function TitleView({ style, track }: TitleProps) {
 }
 
 interface PlaybackButtonProps {
-  name: string;
+  name: MaterialIconsIconName;
   size?: number;
   disabled?: boolean;
   onPress?: () => void;
@@ -294,7 +294,7 @@ function ReplayButton({ onPress }: ButtonProps) {
 }
 
 function InfoButton({ onPress }: ButtonProps) {
-  return <PlaybackButton size={24} name="info" onPress={onPress} />;
+  return <PlaybackButton name="info" onPress={onPress} size={24} />;
 }
 
 interface NarratorContainerProps {

@@ -132,9 +132,9 @@ export default function ChooseInvestigatorPrompt({
       </View>
       { choice !== undefined && (
         // TODO: need to handle no-choice here?
-        !!renderResults && renderResults(
+        (!!renderResults && renderResults(
           selectedIndex === -1 ? undefined : theInvestigators[selectedIndex]
-        ))
+        )))
       }
     </InputWrapper>
   );

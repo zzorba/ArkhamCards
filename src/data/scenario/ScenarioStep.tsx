@@ -1504,7 +1504,7 @@ export default class ScenarioStep {
             return this.maybeCreateEffectsStep(
               this.step.id,
               [
-                ...(theBadThing && theBadThing.steps) || [],
+                ...((theBadThing && theBadThing.steps) || []),
                 ...this.remainingStepIds,
               ],
               [
@@ -1563,7 +1563,7 @@ export default class ScenarioStep {
             return this.maybeCreateEffectsStep(
               this.step.id,
               [
-                ...(branchChoice && branchChoice.steps) || [],
+                ...((branchChoice && branchChoice.steps) || []),
                 ...this.remainingStepIds,
               ],
               [

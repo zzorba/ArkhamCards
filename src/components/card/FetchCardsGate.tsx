@@ -153,9 +153,7 @@ export default function FetchCardsGate({ promptForUpdate, children }: Props) {
                       updates.missingCardCount
                     ),
                   '\n',
-                  ...updates?.possiblePartialSync ?
-                    [t`Some decks may not load fully and campaigns might appear incomplete until this is fixed.`] :
-                    [t`These cards might have been updated, from a new taboo list, or contain minor corrections.`],
+                  ...(updates?.possiblePartialSync ? [t`Some decks may not load fully and campaigns might appear incomplete until this is fixed.`] : [t`These cards might have been updated, from a new taboo list, or contain minor corrections.`]),
                 ].join('\n'),
                 [
                   { text: t`Not now`, onPress: () => {
