@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '@navigation/types';
+import { BasicStackParamList, RootStackParamList } from '@navigation/types';
 import { t } from 'ttag';
 
 import PackListComponent from '@components/core/PackListComponent';
@@ -21,6 +21,7 @@ import LoadingSpinner from '@components/core/LoadingSpinner';
 import DeckButton from '@components/deck/controls/DeckButton';
 import { useAppDispatch } from '@app/store';
 import { useUpdateRemotePack, useUpdateRemoteSetting } from '@data/remote/settings';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface CollectionEditProps {
   draftMode?: boolean;
@@ -128,15 +129,11 @@ export default function CollectionEditView() {
   );
 }
 
-CollectionEditView.options = (passProps: CollectionEditProps) => {
-  return {
-    topBar: {
-      title: {
-        text: passProps.draftMode ? t`Draft Pool` : t`Edit Collection`,
-      },
-    },
-  };
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'My.Collection'> }): NativeStackNavigationOptions {
+  return { title: route.params?.draftMode ? t`Draft Pool` : t`Edit Collection` };
 };
+CollectionEditView.options = options;
 
 
 const styles = StyleSheet.create({

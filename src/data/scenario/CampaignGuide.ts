@@ -154,7 +154,7 @@ export default class CampaignGuide {
     return stable(
       [
         ...this.campaignRules(lang),
-        ...this.campaign.scenarios.find(s => s.id === scenario)?.rules ?? [],
+        ...(this.campaign.scenarios.find(s => s.id === scenario)?.rules ?? []),
       ],
       (a, b) => a.title.localeCompare(b.title, lang)
     );
@@ -516,8 +516,8 @@ export default class CampaignGuide {
         inputs,
         rules: stable(
           [
-            ...campaignLog.campaignGuide.campaign.campaign.rules ?? [],
-            ...scenario.rules ?? [],
+            ...(campaignLog.campaignGuide.campaign.campaign.rules ?? []),
+            ...(scenario.rules ?? []),
           ],
           (a, b) => a.title.localeCompare(b.title, lang),
         ),
@@ -638,7 +638,7 @@ export default class CampaignGuide {
       return {
         ...scenario,
         steps: [
-          ...this.campaign.campaign.side_scenario_steps || [],
+          ...(this.campaign.campaign.side_scenario_steps || []),
           ...scenario.steps,
         ],
       };

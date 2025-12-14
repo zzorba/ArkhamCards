@@ -19,7 +19,6 @@ import SliderChooser from '../SliderChooser';
 import ToggleFilter from '@components/core/ToggleFilter';
 import NavButton from '@components/core/NavButton';
 import { getAllRealPacks } from '@reducers';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
 import FixedSetChooserButton from '../FixedSetChooserButton';
@@ -635,17 +634,6 @@ const CardFilterView = () => {
       { tabooDialog }
     </>
   );
-};
-
-CardFilterView.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`Filter`,
-        color: COLORS.M,
-      },
-    },
-  };
 };
 
 export default CardFilterView;

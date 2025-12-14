@@ -1,5 +1,4 @@
 import React from 'react';
-import hoistNonReactStatic from 'hoist-non-react-statics';
 import { t } from 'ttag';
 
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
@@ -57,6 +56,5 @@ export default function withCampaignGuideContext<Props>(
     );
   }
 
-  hoistNonReactStatic(CampaignDataComponent, WrappedComponent);
   return CampaignDataComponent;
 }

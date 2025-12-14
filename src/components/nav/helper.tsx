@@ -209,7 +209,6 @@ export function showCardSwipe(
     showAllSpoilers: !!showSpoilers,
     tabooSetId,
     deckId,
-    whiteNav: !!investigator,
     faction: investigator?.factionCode(),
     controls: controls === 'side' || controls === 'extra' || controls === 'checklist' ? map(range(0, codes.length), () => controls) : controls,
     editable,

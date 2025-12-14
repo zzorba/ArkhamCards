@@ -41,5 +41,4 @@ Steps for replacing Navigation.push:
 ## Project Structure Notes
 
 - Navigation types are in `src/navigation/types.ts`
-- Custom icons are in the `iconsMap` from `@app/NavIcons`
 - Theme colors are in `COLORS` from `@styles/colors`

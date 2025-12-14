@@ -13,7 +13,6 @@ import StyleContext from '@styles/StyleContext';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import { apolloQueueLink } from '@data/apollo/createApolloClient';
-import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useApolloClient } from '@apollo/client';
 import { genericOptimisticUpdates } from '@data/remote/apollo';
 import { trackedQueriesRemove } from '@data/apollo/trackerLink';
@@ -110,7 +109,6 @@ export default function withApolloGate<Props>(WrappedComponent: React.ComponentT
       </ApolloGate>
     );
   };
-  hoistNonReactStatics(ApolloResult, WrappedComponent);
   return ApolloResult;
 }
 

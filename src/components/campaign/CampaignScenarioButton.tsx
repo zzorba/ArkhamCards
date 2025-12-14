@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 import { t } from 'ttag';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from '@react-native-vector-icons/material-design-icons';
 
 import NavButton from '@components/core/NavButton';
 import space, { s } from '@styles/space';

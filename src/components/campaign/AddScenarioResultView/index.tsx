@@ -63,7 +63,7 @@ function AddScenarioResultView() {
 
         const state = navigation.getState();
         const routes = dropWhile(
-          reverse([...state?.routes ?? []]),
+          reverse([...(state?.routes ?? [])]),
           r => r.name === 'Campaign.AddResult'
         ).reverse();
         navigation.reset({
@@ -183,20 +183,8 @@ function AddScenarioResultView() {
 
 AddScenarioResultView.options = () => {
   return {
-    topBar: {
-      title: {
-        text: t`Scenario Result`,
-      },
-      backButton: {
-        title: t`Cancel`,
-      },
-      rightButtonDisabledColor: COLORS.darkGray,
-      rightButtons: [{
-        text: t`Save`,
-        id: 'save',
-        color: COLORS.M,
-      }],
-    },
+    title: t`Scenario Result`,
+    headerBackTitle: t`Cancel`,
   };
 };
 export default AddScenarioResultView;

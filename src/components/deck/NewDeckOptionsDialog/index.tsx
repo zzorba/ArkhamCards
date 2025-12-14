@@ -384,7 +384,7 @@ function NewDeckOptionsDialog({
     // Get the current navigation state and remove Deck.New and Deck.NewOptions from the top of the stack
     const state = navigation.getState();
     const routes = dropWhile(
-      reverse([...state?.routes ?? []]),
+      reverse([...(state?.routes ?? [])]),
       r => r.name === 'Deck.New' || r.name === 'Deck.NewOptions' || r.name === 'Dialog.DeckSelector'
     ).reverse();
 

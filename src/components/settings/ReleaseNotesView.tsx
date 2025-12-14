@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, ScrollView, StyleSheet, View, Linking } from 'react-native';
 import { Image as FastImage } from 'expo-image';
-import { c } from 'ttag';
+import { c, t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';
 import { FactionCodeType } from '@app_constants';
@@ -313,6 +313,12 @@ export default function ReleaseNotesView() {
       </ScrollView>
     </View>
   );
+}
+
+ReleaseNotesView.options = () => {
+  return { 
+    title: t`Recent updates`,
+  };
 }
 
 const styles = StyleSheet.create({

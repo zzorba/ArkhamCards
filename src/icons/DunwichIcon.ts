@@ -1,4 +1,4 @@
-import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
 
 import dunwichIconConfig from '../../assets/dunwich.json';
 

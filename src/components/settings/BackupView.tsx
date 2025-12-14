@@ -121,7 +121,7 @@ export default function BackupView({ safeMode }: BackupProps) {
   const backupData = useSelector(getBackupData);
   const navigation = useNavigation();
   const pickBackupFile = useCallback(async() => {
-    if (!await hasFileSystemPermission(true)) {
+    if (!(await hasFileSystemPermission(true))) {
       return;
     }
     try {

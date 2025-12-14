@@ -14,7 +14,6 @@ import { SortType, SORT_BY_FACTION, SORT_BY_TITLE } from '@actions/types';
 import Card from '@data/types/Card';
 import { showCard } from '@components/nav/helper';
 import { useInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
-import { iconsMap } from '@app/NavIcons';
 import StyleContext from '@styles/StyleContext';
 
 export interface CardInvestigatorProps {
@@ -78,21 +77,5 @@ function CardInvestigatorsView() {
     </>
   );
 }
-
-CardInvestigatorsView.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`Investigators`,
-      },
-      rightButtons: [{
-        icon: iconsMap.sort,
-        id: 'sort',
-        color: COLORS.M,
-        accessibilityLabel: t`Sort`,
-      }],
-    },
-  };
-};
 
 export default CardInvestigatorsView;

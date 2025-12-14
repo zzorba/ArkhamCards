@@ -253,7 +253,7 @@ function NewCampaignView() {
       const selection = campaignChoice.selection;
       const state = navigation.getState();
       const routes = dropWhile(
-        reverse([...state?.routes ?? []]),
+        reverse([...(state?.routes ?? [])]),
         r => r.name === 'Campaign.New'
       ).reverse();
       if (selection.type === 'campaign') {
@@ -648,16 +648,6 @@ function NewCampaignView() {
     </View>
   );
 }
-
-NewCampaignView.options = () => {
-  return {
-    topBar: {
-      title: {
-        text: t`New Campaign`,
-      },
-    },
-  };
-};
 
 export default NewCampaignView;
 
