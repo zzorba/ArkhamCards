@@ -101,7 +101,7 @@ module.exports = {
       ],
       versionCode: 4195547,
     },
-    locale: {
+    locales: {
       "ko": "./assets/i18n-app/ko.metadata.json"
     },
     plugins: [
