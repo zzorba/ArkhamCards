@@ -6249,24 +6249,24 @@ msgstr ""
 "이 작업에는 약 25mb의 저장 공간이 사용됩니다."
 
 msgid "Head"
-msgstr ""
+msgstr "머리"
 
 #, javascript-format
 msgid "Cost: ${ _card.cost }"
-msgstr ""
+msgstr "비용: ${ _card.cost }"
 
 msgid "Select version"
-msgstr ""
+msgstr "버전 선택"
 
 msgid "Alternate version"
-msgstr ""
+msgstr "대체 버전"
 
 #. Remove "Investigator Expansion" from pack name
 msgid "Investigator Expansion"
-msgstr ""
+msgstr "조사자 확장"
 
 msgid "Alternate versions"
-msgstr ""
+msgstr "대체 버전"
 
 msgctxt "investigator"
 msgid "Custom"
