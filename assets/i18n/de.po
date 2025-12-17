@@ -6307,20 +6307,20 @@ msgstr ""
 
 #, javascript-format
 msgid "Cost: ${ _card.cost }"
-msgstr ""
+msgstr "Kosten: ${ _card.cost }"
 
 msgid "Select version"
-msgstr ""
+msgstr "Version auswählen"
 
 msgid "Alternate version"
-msgstr ""
+msgstr "Alternative Version"
 
 #. Remove "Investigator Expansion" from pack name
 msgid "Investigator Expansion"
-msgstr ""
+msgstr "Ermittler-Erweiterung"
 
 msgid "Alternate versions"
-msgstr ""
+msgstr "Alternative Versionen"
 
 msgctxt "investigator"
 msgid "Custom"
