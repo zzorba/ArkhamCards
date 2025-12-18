@@ -1261,7 +1261,7 @@ function DeckDetailView({
           menuPosition="right"
         >
           <View>
-            <View style={[styles.container, backgroundStyle] }>
+            <View style={[styles.container, backgroundStyle, { paddingBottom: insets.bottom }] }>
               <DeckViewTab
                 campaignId={campaignId}
                 fromCampaign={fromCampaign}

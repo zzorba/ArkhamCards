@@ -19,6 +19,7 @@ import {
   Platform,
   Text,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Brackets } from 'typeorm/browser';
 import { useSelector } from 'react-redux';
 
@@ -794,6 +795,10 @@ export default function DbCardResultList(props: Props) {
   const { db } = useContext(DatabaseContext);
   const { deckId } = useContext(DeckEditContext);
   const navigation = useNavigation();
+  const insets = useSafeAreaInsets();
+  const totalFooterPadding = useMemo(() => {
+    return (footerPadding || 0) + insets.bottom;
+  }, [footerPadding, insets.bottom]);
   // const deck = parsedDeck?.deckT;
   // const { deckEdits, deckId } = useContext(DeckEditContext);
   const customizations = useLiveCustomizations(deck);
@@ -834,7 +839,7 @@ export default function DbCardResultList(props: Props) {
     storyOnly,
     mode,
     expandSearchControlsHeight,
-    footerPadding,
+    footerPadding: totalFooterPadding,
     customizations,
   });
   const dispatch = useAppDispatch();
@@ -957,10 +962,10 @@ export default function DbCardResultList(props: Props) {
         );
       case 'footer':
         if (item.refreshing) {
-          return <View style={{ height: footerPadding || 0 }} />;
+          return <View style={{ height: totalFooterPadding || 0 }} />;
         }
         return (
-          <View style={{ paddingBottom: footerPadding || 0 }}>
+          <View style={{ paddingBottom: totalFooterPadding || 0 }}>
             { expandSearchControls }
           </View>
         );
@@ -968,7 +973,7 @@ export default function DbCardResultList(props: Props) {
         return <View />;
     }
   }, [mode, deckId, packInCollection, ignore_collection, width, typography, borderStyle,
-    headerItems, expandSearchControls, footerPadding, investigator,
+    headerItems, expandSearchControls, totalFooterPadding, investigator,
     cardOnPressId, renderCard,
   ]);
   const heightForItem = useCallback((item: Item): number => {

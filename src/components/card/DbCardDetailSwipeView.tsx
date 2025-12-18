@@ -40,10 +40,11 @@ import { getSystemLanguage } from '@lib/i18n';
 import { useAttachableCards } from '@components/deck/useParsedDeckComponent';
 import RoundedFactionBlock from '@components/core/RoundedFactionBlock';
 import RoundedFactionHeader from '@components/core/RoundedFactionHeader';
-import space, { s } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { DeckEditContext, ParsedDeckContextProvider, useAllCardCustomizations, useCardCustomizations, useDeckAttachmentSlots } from '@components/deck/DeckEditContext';
 import { getDeckScreenOptions } from '@components/nav/helper';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export interface CardDetailSwipeProps {
   cardCodes: string[];
@@ -156,6 +157,7 @@ function ScrollableCard(props: {
   attachment?: AttachableDefinition;
   attachmentCards: Card[];
 }) {
+  const insets = useSafeAreaInsets();
   const {
     customizationsEditable, card, tabooSetId,
     width, height, customizations, deckCount,
@@ -181,7 +183,7 @@ function ScrollableCard(props: {
       overScrollMode="never"
       showsVerticalScrollIndicator={false}
       bounces={false}
-      contentContainerStyle={backgroundStyle}
+      contentContainerStyle={[backgroundStyle, { paddingBottom: insets.bottom + m }]}
     >
       <CardDetailComponent
         card={customizedCard}
@@ -235,7 +237,7 @@ function DbCardDetailSwipeView() {
 }
 function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckResults }) {
   // eslint-disable-next-line react/prop-types
-  const { parsedDeck, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
+  const { parsedDeck, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations, deckId } = props;
   const navigation = useNavigation();
 
   const { listSeperator } = useContext(LanguageContext);

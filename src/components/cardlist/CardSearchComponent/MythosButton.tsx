@@ -6,7 +6,7 @@ import {
   View,
   Pressable,
 } from 'react-native';
-import Animated, { interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { interpolate, interpolateColor, useAnimatedProps, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { AnimatedArkhamIcon } from '@icons/ArkhamIcon';
 import { toggleMythosMode } from '@components/filter/actions';
 import { AppState, getMythosMode } from '@reducers';
@@ -45,16 +45,16 @@ function MythosButton({ filterId }: Props) {
   const dark = colors.D30;
   const light = colors.L10;
   const backgroundColor = colors.L10;
-  const investigatorStyle = useAnimatedStyle(() => {
+  const investigatorProps = useAnimatedProps(() => {
     return {
       color: interpolateColor(toggleAnim.value, [0, 0.25, 0.75, 1], [dark, dark, light, light]),
     };
-  }, [dark, light]);
-  const mythosStyle = useAnimatedStyle(() => {
+  });
+  const mythosProps = useAnimatedProps(() => {
     return {
       color: interpolateColor(toggleAnim.value, [0, 0.25, 0.75, 1], [light, light, dark, dark]),
     };
-  }, [light, dark]);
+  });
   const movingCircleX = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: interpolate(toggleAnim.value, [0, 1], [2, SIZE + 6]) }],
@@ -71,20 +71,18 @@ function MythosButton({ filterId }: Props) {
             movingCircleX,
           ]} />
           <View style={[styles.iconWrapper, { top: 2, left: 2 }]}>
-            <Animated.Text style={investigatorStyle} allowFontScaling={false}>
-              <AnimatedArkhamIcon
-                name={'per_investigator'}
-                size={24}
-              />
-            </Animated.Text>
+            <AnimatedArkhamIcon
+              name="per_investigator"
+              size={24}
+              animatedProps={investigatorProps}
+            />
           </View>
           <View style={[styles.iconWrapper, { top: 2, right: 2 }]}>
-            <Animated.Text style={mythosStyle} allowFontScaling={false}>
-              <AnimatedArkhamIcon
-                name={'auto_fail'}
-                size={24}
-              />
-            </Animated.Text>
+            <AnimatedArkhamIcon
+              name="auto_fail"
+              size={24}
+              animatedProps={mythosProps}
+            />
           </View>
         </View>
       </Pressable>
