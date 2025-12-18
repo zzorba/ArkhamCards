@@ -143,6 +143,7 @@ export default function ScenarioComponent({ showLinkedScenario, standalone, foot
   const { lang } = useContext(LanguageContext);
   const { bottom } = useSafeAreaInsets();
   const scenarioId = processedScenario.id.encodedScenarioId;
+  const insets = useSafeAreaInsets();
   useEffect(() => {
     if (standalone && processedScenario.type !== 'started' && processedScenario.type !== 'completed') {
       campaignState.startScenario(scenarioId);
@@ -297,6 +298,7 @@ export default function ScenarioComponent({ showLinkedScenario, standalone, foot
               switchCampaignScenario={switchCampaignScenario}
             />
             { !!footer ? footer : <View style={{ height: 200 }} /> }
+            <View style={{ height: insets.bottom }} />
           </ScrollView>
           <View style={{ position: 'absolute', bottom: m + bottom, right: m }}>
             <Animated.View
