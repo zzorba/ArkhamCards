@@ -1,13 +1,13 @@
 {
   "schemaVersion": 52,
   "cache": {
-    "lastAttemptedSync": "2025-12-06T16:11:04.805Z",
+    "lastAttemptedSync": "2025-12-19T15:06:20.632Z",
     "cardCount": 7803,
-    "lastModified": "2025-12-06T15:40:06.870246",
-    "lastModifiedTranslation": "2025-12-06T15:42:27.634693"
+    "lastModified": "2025-12-16T00:20:12.062549",
+    "lastModifiedTranslation": "2025-12-16T00:20:12.505826"
   },
   "cardLang": "en",
-  "exportedAt": "2025-12-06T16:11:26.056Z",
+  "exportedAt": "2025-12-19T15:09:44.909Z",
   "packs": [
     {
       "id": "core",

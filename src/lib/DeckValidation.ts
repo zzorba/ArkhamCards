@@ -461,7 +461,7 @@ export default class DeckValidation {
           }
         } else if (atleast.types && atleast.min) {
           var type_count = 0;
-          forEach(this.deck_options_counts[i].atleast, (value) => {
+          forEach(this.deck_options_counts[i].atleast, (value, key) => {
             if (value >= atleast.min) {
               type_count++;
             }

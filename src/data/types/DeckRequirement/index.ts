@@ -40,25 +40,39 @@ export default class DeckRequirement {
     const dr = new DeckRequirement();
 
     // Parse card requirements from transposed sets format
-    // [[code1, code2], [alt1, alt2, alt3]] means: code1+alt1, code2+alt2, and undefined+alt3
-    // We need to use the MAX length across all sets
+    // Matches by tail: [[code1, code2], [alt1, alt2, alt3, alt4, alt5, alt6]]
+    // means: code1 with alternates [alt1, alt2, alt3, alt4, alt5], code2 with alternates [alt6]
+    // Extras go with the first code
     if (json.card && Array.isArray(json.card) && json.card.length > 0) {
       const firstSet = json.card[0];
       if (isCardSet(firstSet)) {
-        // Find max length across all sets
-        const maxLength = Math.max(...json.card.map((s: any) => Array.isArray(s) ? s.length : 0));
+        const firstSetLength = firstSet.length;
 
         dr.card = [];
-        for (let index = 0; index < maxLength; index++) {
+        for (let index = 0; index < firstSetLength; index++) {
           const cr = new CardRequirement();
-          cr.code = index < firstSet.length ? firstSet[index] : '';
+          cr.code = firstSet[index];
           cr.alternates = [];
 
-          // Collect alternates from remaining sets
+          // Collect alternates from remaining sets, matching from the tail
           for (let setIndex = 1; setIndex < json.card.length; setIndex++) {
             const alternateSet = json.card[setIndex];
-            if (Array.isArray(alternateSet) && index < alternateSet.length) {
-              cr.alternates.push(alternateSet[index]);
+            if (Array.isArray(alternateSet)) {
+              const altLength = alternateSet.length;
+              const offset = altLength - firstSetLength;
+
+              if (index === 0) {
+                // First item gets all extras plus its matched item
+                for (let i = 0; i <= offset; i++) {
+                  cr.alternates.push(alternateSet[i]);
+                }
+              } else {
+                // Other items get their tail-matched item
+                const altIndex = offset + index;
+                if (altIndex < altLength) {
+                  cr.alternates.push(alternateSet[altIndex]);
+                }
+              }
             }
           }
 
