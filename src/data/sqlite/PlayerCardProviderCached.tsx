@@ -107,7 +107,7 @@ export function PlayerCardProviderCached({ children }: Props) {
     investigatorSets,
     getExistingCards,
     getPlayerCards,
-    storePlayerCards
+    storePlayerCards,
   }), [investigatorSets, getExistingCards, getPlayerCards, storePlayerCards]);
 
   return (

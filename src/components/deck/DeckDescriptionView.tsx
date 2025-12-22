@@ -50,10 +50,18 @@ export default function DeckDescriptionView() {
     [deckEdits?.descriptionChange, deck?.description_md]
   );
   const [description, setDescription] = useState(descriptionValue);
+  const descriptionRef = useRef(description);
+  useEffect(() => {
+    descriptionRef.current = description;
+  }, [description]);
   useEffect(() => {
     setDescription(descriptionValue);
   }, [descriptionValue]);
   const [edit, toggleEdit] = useFlag(false);
+  const editRef = useRef(edit);
+  useEffect(() => {
+    editRef.current = edit;
+  }, [edit]);
 
   useLayoutEffect(() => {
     if (parsedDeck) {
@@ -73,20 +81,25 @@ export default function DeckDescriptionView() {
     <AppIcon name={edit ? 'check' : 'edit'} color={mode === 'view' && !edit ? '#FFFFFF' : colors.L30} size={24} />
   ), [edit, colors, mode]);
   const saveChanges = useCallback(() => {
-    dispatch(setDeckDescription(id, description));
+    dispatch(setDeckDescription(id, descriptionRef.current));
     toggleEdit();
-  }, [dispatch, id, description, toggleEdit]);
+  }, [dispatch, id, toggleEdit]);
+  // Intercept navigation back to save changes
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('beforeRemove', (e) => {
+      if (editRef.current) {
+        dispatch(setDeckDescription(id, descriptionRef.current));
+      }
+    });
+    return unsubscribe;
+  }, [navigation, id, dispatch]);
+
   const backPressed = useCallback(() => {
-    if (edit) {
-      dispatch(setDeckDescription(id, description));
+    if (editRef.current) {
+      dispatch(setDeckDescription(id, descriptionRef.current));
     }
     navigation.goBack();
-  }, [edit, id, description, dispatch, navigation]);
-  useComponentDidDisappear(() => {
-    if (edit) {
-      dispatch(setDeckDescription(id, description));
-    }
-  }, [edit, id, description]);
+  }, [id, dispatch, navigation]);
   const hasDescriptionChange = description !== (deck?.description_md || '');
   const [keyboardHeight] = useKeyboardHeight();
   const onEdit = useCallback(() => {

@@ -543,7 +543,7 @@
   "zcx_savage_woods": "Savage Woods",
   "zcx_destiny_and_prophecy": "Destiny and Prophecy",
   "zcx_circus_ex_mortis": "Circus Ex Mortis",
-  "film_fatale": "Film Fatale",
+  "film_fatale": "Rodaje Letal",
   "forgotten_island": "Forgotten Island",
   "abominable_contessa": "Abominable Contessa",
   "cosmic_journey": "Cosmic Journey",
