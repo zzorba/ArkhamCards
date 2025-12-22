@@ -64,6 +64,7 @@ function CampaignList({ onScroll, header, campaigns, footer, footerHeight, stand
           campaignId: campaign.id,
           scenarioId: standaloneId.scenarioId,
           standalone: true,
+          title: campaign.name,
         });
       }
     } else if (campaign.guided) {
@@ -73,10 +74,12 @@ function CampaignList({ onScroll, header, campaigns, footer, footerHeight, stand
           campaignId: campaign.id,
           campaignIdA: link.campaignIdA,
           campaignIdB: link.campaignIdB,
+          title: campaign.name,
         });
       } else {
         navigation.navigate('Guide.Campaign', {
           campaignId: campaign.id,
+          title: campaign.name,
         });
       }
     } else {

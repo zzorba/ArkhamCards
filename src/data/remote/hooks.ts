@@ -113,8 +113,23 @@ export function useCampaignGuideStateRemote(campaignId: CampaignId | undefined, 
     if (!campaignId || !campaignId.serverId) {
       return undefined;
     }
-    if (data?.campaign_guide.length) {
-      return new CampaignGuideStateRemote(data.campaign_guide[0]);
+
+    // Handle both array and single object formats for backwards compatibility
+    let campaignGuideData;
+    if (data?.campaign_guide) {
+      if (Array.isArray(data.campaign_guide)) {
+        // Expected format: array
+        if (data.campaign_guide.length > 0) {
+          campaignGuideData = data.campaign_guide[0];
+        }
+      } else {
+        // Backwards compatibility: single object (old format)
+        campaignGuideData = data.campaign_guide;
+      }
+    }
+
+    if (campaignGuideData) {
+      return new CampaignGuideStateRemote(campaignGuideData);
     }
     return undefined;
   }, [data, campaignId]);

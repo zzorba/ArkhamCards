@@ -27,8 +27,9 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import HeaderButton from '@components/core/HeaderButton';
 import StyleContext from '@styles/StyleContext';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
-export type CampaignGuideProps = CampaignGuideInputProps & { upload?: boolean };
+export type CampaignGuideProps = CampaignGuideInputProps & { upload?: boolean; title: string | undefined };
 
 type Props = CampaignGuideProps & InjectedCampaignGuideContextProps;
 
@@ -145,10 +146,18 @@ const WrappedComponent = withCampaignGuideContext<CampaignGuideProps>(
 
 export default function CampaignGuideWrapper() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Guide.Campaign'>>();
-  const { campaignId, upload } = route.params;
-  return <WrappedComponent campaignId={campaignId} upload={upload} />;
+  const { campaignId, upload, title } = route.params;
+  return <WrappedComponent campaignId={campaignId} upload={upload} title={title} />;
 }
 
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Guide.Campaign'> }): NativeStackNavigationOptions {
+  return {
+    headerTitle: route.params?.title,
+    headerBackTitle: t`Back`,
+  };
+};
+
+CampaignGuideWrapper.options = options;
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,

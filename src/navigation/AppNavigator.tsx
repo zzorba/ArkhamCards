@@ -494,10 +494,12 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Guide.Campaign"
         component={CampaignGuideView}
+        options={CampaignGuideView.options}
       />
       <Stack.Screen
         name="Guide.LinkedCampaign"
         component={LinkedCampaignGuideView}
+        options={LinkedCampaignGuideView.options}
       />
       <Stack.Screen
         name="Guide.Scenario"
@@ -507,6 +509,7 @@ function renderCommonScreens<ParamList extends BasicStackParamList>(
       <Stack.Screen
         name="Guide.Standalone"
         component={StandaloneGuideView}
+        options={StandaloneGuideView.options}
       />
       <Stack.Screen
         name="Guide.DrawChaosBag"

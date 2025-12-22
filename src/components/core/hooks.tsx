@@ -555,40 +555,70 @@ export function usePlayerCards(
   const tabooSetId = useTabooSetId(tabooSetOverride);
   const [cards, setCards] = useState<CardsMap>();
   const [loading, setLoading] = useState(true);
+  const [cardsMissing, setCardsMissing] = useState(false);
   const { getPlayerCards, getExistingCards } = useContext(PlayerCardContext);
   const previousTabooSetId = useRef<number | undefined>(tabooSetId);
   const currentCards = useRef<CardsMap>(cards ?? {});
+  const previousCodes = useRef<string[]>([]);
+
   useEffect(() => {
     if (cards) {
       currentCards.current = cards;
     }
   }, [cards]);
+
   useEffect(() => {
     if (!codes.length) {
       setCards({});
       setLoading(false);
+      setCardsMissing(false);
       return;
     }
 
+    // Check if all codes are already available in the provider's cache
+    const existingCards = getExistingCards(tabooSetId);
+    const allCodesAvailable = codes.every(code => existingCards[code]);
+    const tabooSetChanged = previousTabooSetId.current !== tabooSetId;
+
+    if (allCodesAvailable && !tabooSetChanged) {
+      // All cards are already loaded in the provider cache and taboo set hasn't changed
+      // Check if we need to update the state or if the cards are the same
+      const needsUpdate = !currentCards.current || codes.some(code => currentCards.current[code] !== existingCards[code]);
+
+      if (needsUpdate) {
+        // Use the existing cards from the cache
+        const result: CardsMap = {};
+        codes.forEach(code => {
+          result[code] = existingCards[code];
+        });
+        previousTabooSetId.current = tabooSetId;
+        previousCodes.current = codes;
+        setCards(result);
+      } else {
+        previousCodes.current = codes;
+      }
+      setLoading(false);
+      setCardsMissing(false);
+      return;
+    }
+
+    // We need to actually fetch cards
     let canceled = false;
     setLoading(true);
+    setCardsMissing(true);
     getPlayerCards(codes, tabooSetId, store).then(cards => {
       if (!canceled) {
         previousTabooSetId.current = tabooSetId;
+        previousCodes.current = codes;
         setCards(cards);
         setLoading(false);
+        setCardsMissing(false);
       }
     });
     return () => {
       canceled = true;
     };
-  }, [tabooSetId, codes, store, getExistingCards, getPlayerCards, setLoading]);
-  const cardsMissing = useMemo(() => {
-    if (codes.length === 0) {
-      return false;
-    }
-    return !cards || !!find(codes, code => !cards[code]);
-  }, [cards, codes]);
+  }, [tabooSetId, codes, store, getExistingCards, getPlayerCards]);
   return [cards, loading, cardsMissing];
 }
 

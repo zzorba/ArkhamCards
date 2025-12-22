@@ -20,10 +20,12 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import { updateCampaignName } from '@components/campaign/actions';
 import { useAppDispatch } from '@app/store';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface StandaloneGuideProps extends ScenarioGuideInputProps {
   campaignId: CampaignId;
   upload?: boolean;
+  title: string | undefined;
 }
 
 function StandaloneGuideView({ campaignId, setCampaignServerId, upload }: StandaloneGuideProps & InjectedCampaignGuideContextProps) {
@@ -93,11 +95,22 @@ function StandaloneGuideView({ campaignId, setCampaignServerId, upload }: Standa
 const WrappedComponent = withScenarioGuideContext(StandaloneGuideView);
 export default function StandaloneGuideViewWrapper() {
   const route = useRoute<RouteProp<BasicStackParamList, 'Guide.Standalone'>>();
-  const { campaignId, scenarioId } = route.params;
+  const { campaignId, scenarioId, title, upload } = route.params;
   return (
     <WrappedComponent
       campaignId={campaignId}
       scenarioId={scenarioId}
+      upload={upload}
+      title={title}
     />
   );
 }
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Guide.Standalone'> }): NativeStackNavigationOptions {
+  return {
+    headerTitle: route.params?.title,
+    headerBackTitle: t`Back`,
+  };
+};
+
+StandaloneGuideViewWrapper.options = options;

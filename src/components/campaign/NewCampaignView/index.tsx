@@ -280,6 +280,7 @@ function NewCampaignView() {
                     campaignIdA,
                     campaignIdB,
                     upload: uploadCampaign,
+                    title: name || placeholderName,
                   },
                 },
               ],
@@ -311,6 +312,7 @@ function NewCampaignView() {
                   params: {
                     campaignId,
                     upload: uploadCampaign,
+                    title: name || placeholderName,
                   },
                 },
               ],
@@ -340,6 +342,7 @@ function NewCampaignView() {
                   scenarioId: selection.id.scenarioId,
                   standalone: true,
                   upload: uploadCampaign,
+                  title: name || placeholderName,
                 },
               },
             ],

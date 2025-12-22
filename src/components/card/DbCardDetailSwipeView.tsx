@@ -237,7 +237,7 @@ function DbCardDetailSwipeView() {
 }
 function DbCardDetailSwipeViewComponent(props: Props & { parsedDeck: ParsedDeckResults }) {
   // eslint-disable-next-line react/prop-types
-  const { parsedDeck, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations, deckId } = props;
+  const { parsedDeck, cardCodes, editable, customizationsEditable, initialCards, showAllSpoilers, tabooSetId: tabooSetOverride, initialIndex, controls, initialCustomizations } = props;
   const navigation = useNavigation();
 
   const { listSeperator } = useContext(LanguageContext);

@@ -675,7 +675,7 @@ function useSectionFeed({
   }, [theInsaneStuff, partialItems, bondedCards, showSpoilers, spoilerCardsCount, customizations, listSeperator, editSpoilerSettings]);
 
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
-  const isRefreshing = !hasCards || refreshingResult || deckRefreshing;
+  const isRefreshing = (!hasCards && sections.length === 0) || refreshingResult || deckRefreshing;
   useEffectUpdate(() => {
     if (!isRefreshing) {
       setLoadingMessage(getRandomLoadingMessage());
@@ -729,7 +729,7 @@ function useSectionFeed({
 
     const sectionItems: Item[] = [
       ...leadingItems,
-      ...(hasCards ? sections : []),
+      ...(hasCards || sections.length > 0 ? sections : []),
       { type: 'footer', height: footerPadding + (refreshingFinal ? 0 : expandSearchControlsHeight), refreshing: refreshingFinal },
     ];
     return sectionItems;

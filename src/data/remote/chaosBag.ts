@@ -55,17 +55,10 @@ export function useChaosBagActions(): ChaosBagActions {
 
   const cache = client.cache;
   const clearTokens = useCallback(async(campaignId: UploadedCampaignId, bless: number, curse: number) => {
-    const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
-    const existingCacheData = cache.readFragment<FullChaosBagResultFragment>({
-      fragment: FullChaosBagResultFragmentDoc,
-      fragmentName: 'FullChaosBagResult',
-      id,
-    }, true);
     await clearTokensReq({
       optimisticResponse: {
         __typename: 'mutation_root',
         update_chaos_bag_result_by_pk: {
-          ...existingCacheData,
           __typename: 'chaos_bag_result',
           id: campaignId.serverId,
           bless,
@@ -87,17 +80,10 @@ export function useChaosBagActions(): ChaosBagActions {
   }, [clearTokensReq]);
 
   const setBlessCurse = useCallback(async(campaignId: UploadedCampaignId, bless: number, curse: number) => {
-    const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
-    const existingCacheData = cache.readFragment<FullChaosBagResultFragment>({
-      fragment: FullChaosBagResultFragmentDoc,
-      fragmentName: 'FullChaosBagResult',
-      id,
-    }, true);
     await setBlessCurseReq({
       optimisticResponse: {
         __typename: 'mutation_root',
         update_chaos_bag_result_by_pk: {
-          ...existingCacheData,
           __typename: 'chaos_bag_result',
           id: campaignId.serverId,
           bless,
@@ -118,17 +104,10 @@ export function useChaosBagActions(): ChaosBagActions {
   }, [setBlessCurseReq]);
 
   const setTarot = useCallback(async(campaignId: UploadedCampaignId, tarot: Chaos_Bag_Tarot_Mode_Enum | undefined) => {
-    const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
-    const existingCacheData = cache.readFragment<FullChaosBagResultFragment>({
-      fragment: FullChaosBagResultFragmentDoc,
-      fragmentName: 'FullChaosBagResult',
-      id,
-    }, true);
     await setTarotReq({
       optimisticResponse: {
         __typename: 'mutation_root',
         update_chaos_bag_result_by_pk: {
-          ...existingCacheData,
           __typename: 'chaos_bag_result',
           id: campaignId.serverId,
           tarot: tarot || null,
@@ -148,17 +127,10 @@ export function useChaosBagActions(): ChaosBagActions {
 
 
   const setDifficultyOverride = useCallback(async(campaignId: UploadedCampaignId, difficulty: Campaign_Difficulty_Enum | undefined) => {
-    const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
-    const existingCacheData = cache.readFragment<FullChaosBagResultFragment>({
-      fragment: FullChaosBagResultFragmentDoc,
-      fragmentName: 'FullChaosBagResult',
-      id,
-    }, true);
     await setDifficultyReq({
       optimisticResponse: {
         __typename: 'mutation_root',
         update_chaos_bag_result_by_pk: {
-          ...existingCacheData,
           __typename: 'chaos_bag_result',
           id: campaignId.serverId,
           difficulty: difficulty || null,
@@ -196,7 +168,6 @@ export function useChaosBagActions(): ChaosBagActions {
             optimisticResponse: {
               __typename: 'mutation_root',
               update_chaos_bag_result_by_pk: {
-                ...existingCacheData,
                 __typename: 'chaos_bag_result',
                 id: campaignId.serverId,
                 drawn,
@@ -222,7 +193,6 @@ export function useChaosBagActions(): ChaosBagActions {
             optimisticResponse: {
               __typename: 'mutation_root',
               update_chaos_bag_result_by_pk: {
-                ...existingCacheData,
                 __typename: 'chaos_bag_result',
                 id: campaignId.serverId,
                 drawn,
@@ -255,7 +225,6 @@ export function useChaosBagActions(): ChaosBagActions {
                 id: campaignId.serverId,
               },
               update_chaos_bag_result_by_pk: {
-                ...existingCacheData,
                 __typename: 'chaos_bag_result',
                 id: campaignId.serverId,
                 drawn,
@@ -283,7 +252,6 @@ export function useChaosBagActions(): ChaosBagActions {
                 id: campaignId.serverId,
               },
               update_chaos_bag_result_by_pk: {
-                ...existingCacheData,
                 __typename: 'chaos_bag_result',
                 id: campaignId.serverId,
                 drawn,
@@ -309,17 +277,10 @@ export function useChaosBagActions(): ChaosBagActions {
   }, [cache, drawTokenReq, updateDrawTokensReq, returnChaosBagTokensReq, returnChaosBagTokensWithBlurseReq]);
 
   const sealTokens = useCallback(async(campaignId: UploadedCampaignId, sealed: SealedToken[]) => {
-    const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
-    const existingCacheData = cache.readFragment<FullChaosBagResultFragment>({
-      fragment: FullChaosBagResultFragmentDoc,
-      fragmentName: 'FullChaosBagResult',
-      id,
-    }, true);
     await sealTokensReq({
       optimisticResponse: {
         __typename: 'mutation_root',
         update_chaos_bag_result_by_pk: {
-          ...existingCacheData,
           __typename: 'chaos_bag_result',
           id: campaignId.serverId,
           sealed,
@@ -338,17 +299,10 @@ export function useChaosBagActions(): ChaosBagActions {
   }, [sealTokensReq]);
 
   const resetBlessCurse = useCallback(async(campaignId: UploadedCampaignId, drawn: ChaosTokenType[], sealed: SealedToken[]) => {
-    const id = cache.identify({ __typename: 'chaos_bag_result', id: campaignId.serverId });
-    const existingCacheData = cache.readFragment<FullChaosBagResultFragment>({
-      fragment: FullChaosBagResultFragmentDoc,
-      fragmentName: 'FullChaosBagResult',
-      id,
-    }, true);
     await resetBlessCurseReq({
       optimisticResponse: {
         __typename: 'mutation_root',
         update_chaos_bag_result_by_pk: {
-          ...existingCacheData,
           __typename: 'chaos_bag_result',
           id: campaignId.serverId,
           sealed,

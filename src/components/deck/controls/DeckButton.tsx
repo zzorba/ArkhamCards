@@ -85,6 +85,7 @@ interface Props {
   bigEncounterIcon?: boolean;
   rightNode?: React.ReactNode;
   textComponent?: React.ReactNode;
+  adjustsFontSizeToFit?: boolean;
 }
 
 const ICON_SIZE: { [icon: string]: number | undefined } = {
@@ -149,6 +150,7 @@ export default function DeckButton({
   noShadow,
   rightNode,
   textComponent,
+  adjustsFontSizeToFit,
 }: Props) {
   const { colors, fontScale, typography, shadow } = useContext(StyleContext);
   const backgroundColors = {
@@ -284,7 +286,7 @@ export default function DeckButton({
               <Text
                 numberOfLines={1}
                 ellipsizeMode="tail"
-                adjustsFontSizeToFit
+                adjustsFontSizeToFit={adjustsFontSizeToFit}
                 style={[
                   { textAlignVertical: 'center' },
                   detail ? typography.large : typography.cardName,
@@ -295,7 +297,11 @@ export default function DeckButton({
               </Text>
             </View>
             { !!detail && (
-              <Text style={[typography.smallButtonLabel, { marginTop: 1, color: detailTextColor[color] }]} numberOfLines={2}>
+              <Text
+                style={[typography.smallButtonLabel, { marginTop: 1, color: detailTextColor[color] }]}
+                numberOfLines={2}
+                adjustsFontSizeToFit={adjustsFontSizeToFit}
+              >
                 { detail }
               </Text>
             ) }

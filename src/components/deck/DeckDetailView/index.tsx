@@ -61,6 +61,7 @@ import { parseMetaSlots } from '@lib/parseDeck';
 import { ParsedDeckContextProvider } from '../DeckEditContext';
 import { ListCard } from '@data/types/ListCard';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { withCachedCards } from '@data/sqlite/withCachedCards';
 
 export interface DeckDetailProps {
   id: DeckId;
@@ -1341,7 +1342,7 @@ function DeckDetailView({
   );
 }
 
-const DeckDetailViewWithLogin = withLoginState(DeckDetailView);
+const DeckDetailViewWithLogin = withLoginState(withCachedCards<LoginStateProps>(DeckDetailView));
 
 export const DeckDetailViewOptions = ({ route }: { route: RouteProp<RootStackParamList, 'Deck'> }): NativeStackNavigationOptions => {
   const { title, subtitle, headerBackgroundColor } = route.params;

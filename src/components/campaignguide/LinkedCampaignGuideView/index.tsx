@@ -30,24 +30,23 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import HeaderButton from '@components/core/HeaderButton';
 import StyleContext from '@styles/StyleContext';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export interface LinkedCampaignGuideProps {
   campaignId: CampaignId;
   campaignIdA: CampaignId;
   campaignIdB: CampaignId;
   upload?: boolean;
+  title: string | undefined;
 }
 
-function LinkedCampaignGuideView(props: LoginStateProps) {
-  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.LinkedCampaign'>>();
+function LinkedCampaignGuideView({ login, upload, ...props }: LoginStateProps & LinkedCampaignGuideProps) {
   const navigation = useNavigation();
-  const upload = route.params.upload;
-  const { login } = props;
   const [countDialog, showCountDialog] = useCountDialog();
   const [{ campaignId, campaignIdA, campaignIdB }, setCampaignLinkedServerId, uploadingCampaign] = useLinkedCampaignId({
-    campaignId: route.params.campaignId,
-    campaignIdA: route.params.campaignIdA,
-    campaignIdB: route.params.campaignIdB,
+    campaignId: props.campaignId,
+    campaignIdA: props.campaignIdA,
+    campaignIdB: props.campaignIdB,
   });
   const dispatch = useAppDispatch();
   const deckActions = useDeckActions();
@@ -215,7 +214,28 @@ function LinkedCampaignGuideView(props: LoginStateProps) {
   );
 }
 
-export default withLoginState(LinkedCampaignGuideView);
+const WrappedComponent = withLoginState<LinkedCampaignGuideProps>(LinkedCampaignGuideView);
+
+export default function LinkedCampaignGuideWrapper() {
+  const route = useRoute<RouteProp<BasicStackParamList, 'Guide.LinkedCampaign'>>();
+  const {
+    campaignId,
+    campaignIdA,
+    campaignIdB,
+    upload,
+    title,
+  } = route.params;
+  return <WrappedComponent campaignId={campaignId} campaignIdA={campaignIdA} campaignIdB={campaignIdB} upload={upload} title={title} />;
+}
+
+function options<T extends BasicStackParamList>({ route }: { route: RouteProp<T, 'Guide.LinkedCampaign'> }): NativeStackNavigationOptions {
+  return {
+    headerTitle: route.params?.title,
+    headerBackTitle: t`Back`,
+  };
+};
+
+LinkedCampaignGuideWrapper.options = options;
 
 const styles = StyleSheet.create({
   wrapper: {
