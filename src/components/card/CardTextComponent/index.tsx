@@ -110,6 +110,7 @@ const ALL_ICONS = new Set([
   'tdc_rune_x',
   'tdc_rune_y',
   'tdc_rune_z',
+  'moon',
 ]);
 
 // Convert custom HTML tags to markdown that markdown-it can understand
