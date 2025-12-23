@@ -1,5 +1,5 @@
-import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
+import createIconSetFromIcoMoon from '@expo/vector-icons/createIconSetFromIcoMoon';
 
 import circusExMortisIconConfig from '../../assets/circusexmortis.json';
 
-export default createIconSetFromIcoMoon(circusExMortisIconConfig);
+export default createIconSetFromIcoMoon(circusExMortisIconConfig, 'circusexmortis', 'circusexmortis.ttf');

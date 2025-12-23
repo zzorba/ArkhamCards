@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
 import { forEach, map, uniq } from 'lodash';
-import MaterialIcons from '@react-native-vector-icons/material-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import { AppleButton, appleAuth, appleAuthAndroid } from '@invertase/react-native-apple-authentication';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';

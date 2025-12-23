@@ -1,5 +1,5 @@
-import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
+import createIconSetFromIcoMoon from '@expo/vector-icons/createIconSetFromIcoMoon';
 
 import carcosaIconConfig from '../../assets/carcosa.json';
 
-export default createIconSetFromIcoMoon(carcosaIconConfig);
+export default createIconSetFromIcoMoon(carcosaIconConfig, 'carcosa', 'carcosa.ttf');

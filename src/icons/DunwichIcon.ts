@@ -1,6 +1,6 @@
-import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
+import createIconSetFromIcoMoon from '@expo/vector-icons/createIconSetFromIcoMoon';
 
 import dunwichIconConfig from '../../assets/dunwich.json';
 
 /* eslint-disable no-undef */
-export default createIconSetFromIcoMoon(dunwichIconConfig);
+export default createIconSetFromIcoMoon(dunwichIconConfig, 'dunwich', 'dunwich.ttf');

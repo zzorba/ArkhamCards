@@ -1,5 +1,5 @@
-import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
+import createIconSetFromIcoMoon from '@expo/vector-icons/createIconSetFromIcoMoon';
 
 import dreamEatersIconConfig from '../../assets/dreameaters.json';
 
-export default createIconSetFromIcoMoon(dreamEatersIconConfig);
+export default createIconSetFromIcoMoon(dreamEatersIconConfig, 'dreameaters', 'dreameaters.ttf');

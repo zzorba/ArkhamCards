@@ -4,7 +4,9 @@ import {
   Text,
   View,
 } from 'react-native';
-import MaterialIcons, { MaterialIconsIconName } from '@react-native-vector-icons/material-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
+type MaterialIconsIconName = React.ComponentProps<typeof MaterialIcons>['name'];
 
 import Ripple from '@lib/react-native-material-ripple';
 import Card from '@data/types/Card';

@@ -10,7 +10,9 @@ import {
   ViewStyle,
 } from 'react-native';
 import { t } from 'ttag';
-import MaterialIcons, { MaterialIconsIconName } from '@react-native-vector-icons/material-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
+type MaterialIconsIconName = React.ComponentProps<typeof MaterialIcons>['name'];
 
 import { TouchableOpacity } from '@components/core/Touchables';
 import EncounterIcon from '@icons/EncounterIcon';

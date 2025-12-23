@@ -1,4 +1,4 @@
-import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
+import createIconSetFromIcoMoon from '@expo/vector-icons/createIconSetFromIcoMoon';
 import Animated from 'react-native-reanimated';
 
 import arkhamIconConfig from '../../assets/arkhamicons-config.json';
@@ -22,8 +22,8 @@ function extractGlyphMap(config: any): Record<string, number> {
 }
 
 /* eslint-disable no-undef */
-const ArkhamIcon = createIconSetFromIcoMoon(arkhamIconConfig);
-export const ArkhamSlimIcon = createIconSetFromIcoMoon(arkhamSlimIconConfig);
+const ArkhamIcon = createIconSetFromIcoMoon(arkhamIconConfig, 'arkhamicons', 'arkhamicons.ttf');
+export const ArkhamSlimIcon = createIconSetFromIcoMoon(arkhamSlimIconConfig, 'arkhamslim', 'arkhamslim.ttf');
 
 // Export glyph maps for direct access to icon codes
 export const arkhamIconGlyphs = extractGlyphMap(arkhamIconConfig);

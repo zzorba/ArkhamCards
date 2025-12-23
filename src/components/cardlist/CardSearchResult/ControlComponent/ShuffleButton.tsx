@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-import MaterialCommunityIcons from '@react-native-vector-icons/material-design-icons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { t } from 'ttag';
 
 import StyleContext from '@styles/StyleContext';

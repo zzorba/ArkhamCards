@@ -1,5 +1,5 @@
-import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
+import createIconSetFromIcoMoon from '@expo/vector-icons/createIconSetFromIcoMoon';
 
 import innsmouthIconConfig from '../../assets/innsmouth.json';
 
-export default createIconSetFromIcoMoon(innsmouthIconConfig);
+export default createIconSetFromIcoMoon(innsmouthIconConfig, 'innsmouth', 'innsmouth.ttf');

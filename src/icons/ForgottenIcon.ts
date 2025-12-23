@@ -1,5 +1,5 @@
-import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
+import createIconSetFromIcoMoon from '@expo/vector-icons/createIconSetFromIcoMoon';
 
 import forgottenIconConfig from '../../assets/forgotten.json';
 
-export default createIconSetFromIcoMoon(forgottenIconConfig);
+export default createIconSetFromIcoMoon(forgottenIconConfig, 'forgotten', 'forgotten.ttf');

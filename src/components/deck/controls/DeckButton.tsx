@@ -1,7 +1,9 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View, ViewStyle } from 'react-native';
-import MaterialIcons, { MaterialIconsIconName } from '@react-native-vector-icons/material-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+
+type MaterialIconsIconName = React.ComponentProps<typeof MaterialIcons>['name'];
 
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
