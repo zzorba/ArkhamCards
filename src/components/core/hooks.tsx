@@ -795,11 +795,14 @@ export function useParallelInvestigator(investigatorCode?: string, tabooSetOverr
           return;
         }
 
-        setCards(parallelCards);
+        // Filter to only include actual parallel investigators (not reprints)
+        const actualParallelCards = parallelCards.filter(card => card.cycle_code === 'parallel');
+
+        setCards(actualParallelCards);
         setLoading(false);
 
-        if (parallelCards.length) {
-          storePlayerCards(parallelCards);
+        if (actualParallelCards.length) {
+          storePlayerCards(actualParallelCards);
         }
       } catch (e) {
         console.log('Error fetching parallel investigators:', e);
@@ -821,7 +824,7 @@ export function useParallelInvestigator(investigatorCode?: string, tabooSetOverr
 }
 
 export function useParallelInvestigators(codes?: string[], tabooSetOverride?: number): [Card[], boolean] {
-  const query = useMemo(() => codes ? where('c.alternate_of_code in (:...codes)', { codes }) : undefined, [codes]);
+  const query = useMemo(() => codes ? where('c.alternate_of_code in (:...codes) AND c.cycle_code = :cycle', { codes, cycle: 'parallel' }) : undefined, [codes]);
   const [cards, loading] = useCardsFromQuery({ query, tabooSetOverride });
   const { storePlayerCards } = useContext(PlayerCardContext);
   useEffect(() => {
