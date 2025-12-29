@@ -1393,11 +1393,11 @@
   },
   {
     "id": "zhod_interlude_1",
-    "name": "First Night Aboard the Roi des Belges"
+    "name": "Primera noche en el Roi des Belges"
   },
   {
     "id": "zhod_interlude_2",
-    "name": "Kurtz's Warrior"
+    "name": "El guerrero de Kurtz"
   },
   {
     "id": "zhod_prologue",

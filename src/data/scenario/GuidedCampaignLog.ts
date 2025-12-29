@@ -986,6 +986,9 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     if (!investigatorSection) {
       return 0;
     }
+    if (this.isKilled(entry.investigator)) {
+      return 0;
+    }
     const task = find(
       investigatorSection.entries,
       (task) => task.id === entry.task_id && !task.crossedOut

@@ -140,8 +140,9 @@ export default function CardUpgradeDialog() {
     );
   }, [dedupedCardsByName, deckCards, investigator, deckEdits, slots, mode]);
   const onIncrementIgnore = useCallback((code: string) => {
-    dispatch(incIgnoreDeckSlot(id, code));
-  }, [dispatch, id]);
+    const card = cards[code];
+    dispatch(incIgnoreDeckSlot(id, code, card?.deck_limit));
+  }, [dispatch, id, cards]);
 
   const onDecrementIgnore = useCallback((code: string) => {
     dispatch(decIgnoreDeckSlot(id, code));

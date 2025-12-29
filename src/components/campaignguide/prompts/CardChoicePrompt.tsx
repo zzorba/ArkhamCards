@@ -211,7 +211,6 @@ export default function CardChoicePrompt({ id, text, input, promptType }: Props)
               leftIcon="plus-button"
               title={c('card-chooser').t`Choose additional`}
               onPress={showOtherCardSelector}
-              shrinkText
             />
           ) : undefined}
         />
@@ -268,7 +267,6 @@ export default function CardChoicePrompt({ id, text, input, promptType }: Props)
           leftIcon="plus-button"
           title={c('card-chooser').t`Choose additional`}
           onPress={showOtherCardSelector}
-          shrinkText
         />
       ) : undefined}
     />

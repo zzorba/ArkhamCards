@@ -102,6 +102,7 @@ export default function StandaloneGuideViewWrapper() {
       scenarioId={scenarioId}
       upload={upload}
       title={title}
+      standalone
     />
   );
 }

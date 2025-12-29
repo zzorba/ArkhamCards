@@ -301,7 +301,7 @@ export function campaignLogConditionResult(
       const investigator = campaignLog.taskAssignee(condition.section, condition.id);
       const count = campaignLog.task(condition.section, condition.id);
       return binaryConditionResult(
-        !!investigator,
+        !!investigator && !campaignLog.isKilled(investigator),
         condition.options,
         investigator ? [investigator] : [],
         [count]
