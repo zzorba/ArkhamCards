@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useRef, ReactNode, useCallback } from 'react';
-import { useAudioPlayer, useAudioPlayerStatus, AudioSource } from 'expo-audio';
+import { useAudioPlayer, useAudioPlayerStatus, AudioSource, setAudioModeAsync } from 'expo-audio';
 import { useSelector } from 'react-redux';
 import { AppState } from '@reducers';
 
@@ -86,6 +86,18 @@ export function AudioPlayerProvider({ children, initialPlaybackRate = 1.0 }: Aud
 
   const previousDidJustFinish = useRef(false);
   const eventListeners = useRef<Map<string, Set<(data: any) => void>>>(new Map());
+
+  // Configure audio mode for iOS
+  useEffect(() => {
+    setAudioModeAsync({
+      playsInSilentMode: true,
+      shouldPlayInBackground: true,
+      interruptionMode: 'duckOthers',
+      interruptionModeAndroid: 'duckOthers',
+    }).catch(error => {
+      console.error('Failed to set audio mode:', error);
+    });
+  }, []);
 
   // Event emitter
   const emitEvent = useCallback((event: string, data?: any) => {

@@ -81,8 +81,20 @@
       },
       {
         "token": "cultist",
-        "value": {
-          "modifier": -2
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "There are no [[Cultist]] enemies in play",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -448,8 +460,20 @@
       },
       {
         "token": "tablet",
-        "value": {
-          "modifier": -2
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "You are in the Hidden Chamber",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
         }
       },
       {
@@ -477,7 +501,8 @@
       {
         "token": "tablet",
         "value": {
-          "modifier": -3
+          "modifier": -3,
+          "reveal_another": 1
         }
       },
       {
@@ -1658,8 +1683,19 @@
       },
       {
         "token": "tablet",
-        "value": {
-          "modifier": -2
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Você está envenenado",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
@@ -1695,8 +1731,19 @@
       },
       {
         "token": "tablet",
-        "value": {
-          "modifier": -3
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Você está envenenado",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
@@ -1900,8 +1947,19 @@
       },
       {
         "token": "tablet",
-        "value": {
-          "modifier": -2
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Você está envenenado",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
@@ -1937,8 +1995,19 @@
       },
       {
         "token": "tablet",
-        "value": {
-          "modifier": -3
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "Você está envenenado",
+              "modified_value": {
+                "modifier": "auto_fail"
+              }
+            }
+          ]
         }
       },
       {
@@ -5156,7 +5225,7 @@
           },
           "options": [
             {
-              "prompt": "An investigator or Ally has <i>Withered Away>/i>",
+              "prompt": "An investigator or Ally has <i>Withered Away</i>",
               "modified_value": {
                 "modifier": -4
               }
@@ -5204,7 +5273,7 @@
           },
           "options": [
             {
-              "prompt": "An investigator or Ally has <i>Withered Away>/i>",
+              "prompt": "An investigator or Ally has <i>Withered Away</i>",
               "modified_value": {
                 "modifier": -6
               }
@@ -6993,8 +7062,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Twice the number of the current agenda",
-          "min": 2
+          "prompt": "The number of the current agenda",
+          "min": 1,
+          "max": 3,
+          "scale": 2
         }
       },
       {
@@ -7030,8 +7101,10 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Twice the number of the current agenda",
-          "min": 2,
+          "prompt": "The number of the current agenda",
+          "min": 1,
+          "max": 3,
+          "scale": 2,
           "adjustment": 1
         }
       },
@@ -8576,7 +8649,8 @@
         "type": "counter",
         "counter": {
           "prompt": "Highest number of clues on a [[Cultist]] enemy in play (3 during act 3)",
-          "min": 0
+          "min": 0,
+          "max": 3
         }
       },
       {
@@ -8615,7 +8689,8 @@
         "type": "counter",
         "counter": {
           "prompt": "Total number of clues on [[Cultist]] enemies in play (4 during act 3)",
-          "min": 0
+          "min": 0,
+          "max": 4
         }
       },
       {
@@ -9200,7 +9275,7 @@
       {
         "token": "elder_thing",
         "value": {
-          "modifier": -5
+          "modifier": -3
         }
       }
     ],
@@ -9575,13 +9650,13 @@
         "type": "condition",
         "condition": {
           "default_value": {
-            "modifier": -4
+            "modifier": -2
           },
           "options": [
             {
               "prompt": "At a [[Lair]] location",
               "modified_value": {
-                "modifier": -4,
+                "modifier": -2,
                 "reveal_another": 1
               }
             }
@@ -10791,7 +10866,8 @@
         "type": "counter",
         "counter": {
           "prompt": "Half the amount of doom on enemies and assets in play (rounded down)",
-          "min": 0
+          "min": 0,
+          "max": 4
         }
       },
       {
@@ -10831,7 +10907,8 @@
         "type": "counter",
         "counter": {
           "prompt": "The amount of doom on enemies and assets in play",
-          "min": 0
+          "min": 0,
+          "max": 8
         }
       },
       {
@@ -11578,6 +11655,425 @@
               }
             }
           ]
+        }
+      }
+    ]
+  },
+  {
+    "code": "zlf_00001",
+    "scenario": "legions_of_fire",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Enflamed]] locations",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "At an [[Enflamed]] location",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Half the shroud value of your location, rounded up",
+          "min": 0
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Enflamed]] locations",
+          "min": 0,
+          "max": 10
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "At an [[Enflamed]] location",
+              "modified_value": {
+                "modifier": -3,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "type": "counter",
+        "counter": {
+          "prompt": "Valor do véu de sua localização",
+          "min": 0
+        }
+      }
+    ]
+  },
+  {
+    "code": "71001",
+    "scenario": "the_midwinter_gala",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Número da agenda atual",
+          "min": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Guest]] assets at your location",
+          "min": 0,
+          "max": 5
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "At a [[Private]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Número da agenda atual",
+          "min": 1,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of story assets at your location",
+          "min": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "At a [[Private]] location",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "90065",
+    "scenario": "relics_of_the_past",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations with 1 or more doom on them",
+          "min": 0
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [
+            {
+              "prompt": "Você está envenenado",
+              "modified_value": {
+                "reveal_another": 1,
+                "modifier": 0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of locations with 1 or more doom on them",
+          "min": 0,
+          "adjustment": 1
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "Você está envenenado",
+              "modified_value": {
+                "reveal_another": 1,
+                "modifier": 0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -4
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
+  },
+  {
+    "code": "zhu_00001",
+    "scenario": "the_fall_of_the_house_of_usher",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Geist]] encounter cards in play",
+          "min": 0,
+          "adjustment": 1,
+          "max": 5
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": 1,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "2 or more damage on your location",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -3
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "type": "counter",
+        "counter": {
+          "prompt": "Number of [[Geist]] encounter cards in play",
+          "min": 0,
+          "adjustment": 2
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "modifier": -1,
+          "reveal_another": 1
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -4
+          },
+          "options": [
+            {
+              "prompt": "2 or more damage on your location",
+              "modified_value": {
+                "modifier": -6
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ]
+  },
+  {
+    "code": "zjc_00001",
+    "scenario": "jennys_choice",
+    "standard": [
+      {
+        "token": "skull",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [
+            {
+              "prompt": "You are at a [[Resonant]] location",
+              "modified_value": {
+                "modifier": -2
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": 1,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -2
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -1
+        }
+      },
+      {
+        "token": "cultist",
+        "value": {
+          "reveal_another": 1,
+          "modifier": 0
+        }
+      },
+      {
+        "token": "tablet",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
         }
       }
     ]
