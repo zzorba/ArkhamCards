@@ -14,7 +14,7 @@ import { getDeckScreenOptions, openUrl } from '@components/nav/helper';
 
 
 import StyleContext from '@styles/StyleContext';
-import { useComponentDidDisappear, useFlag, useKeyboardHeight, useTabooSetId } from '@components/core/hooks';
+import { useFlag, useKeyboardHeight, useTabooSetId } from '@components/core/hooks';
 import { useDeckEditState, useParsedDeck } from './hooks';
 import CardTextComponent from '@components/card/CardTextComponent';
 import space, { s, xs } from '@styles/space';
@@ -86,7 +86,7 @@ export default function DeckDescriptionView() {
   }, [dispatch, id, toggleEdit]);
   // Intercept navigation back to save changes
   useEffect(() => {
-    const unsubscribe = navigation.addListener('beforeRemove', (e) => {
+    const unsubscribe = navigation.addListener('beforeRemove', () => {
       if (editRef.current) {
         dispatch(setDeckDescription(id, descriptionRef.current));
       }

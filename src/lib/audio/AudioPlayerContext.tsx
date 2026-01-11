@@ -92,8 +92,8 @@ export function AudioPlayerProvider({ children, initialPlaybackRate = 1.0 }: Aud
     setAudioModeAsync({
       playsInSilentMode: true,
       shouldPlayInBackground: true,
-      interruptionMode: 'duckOthers',
-      interruptionModeAndroid: 'duckOthers',
+      interruptionMode: 'doNotMix',
+      interruptionModeAndroid: 'doNotMix',
     }).catch(error => {
       console.error('Failed to set audio mode:', error);
     });

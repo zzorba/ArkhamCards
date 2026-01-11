@@ -86,7 +86,7 @@
     "domhandler": "^5.0.3",
     "domutils": "^3.2.2",
     "events": "3.3.0",
-    "expo": "53.0.23",
+    "expo": "53.0.25",
     "expo-asset": "^12.0.9",
     "expo-audio": "~0.4.9",
     "expo-auth-session": "~6.2.1",

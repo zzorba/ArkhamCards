@@ -1327,10 +1327,10 @@
   resolved "https://registry.npmjs.org/@eslint/js/-/js-8.57.1.tgz#de633db3ec2ef6a3c89e2f19038063e8a122e2c2"
   integrity sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==
 
-"@expo/cli@0.24.22":
-  version "0.24.22"
-  resolved "https://registry.npmjs.org/@expo/cli/-/cli-0.24.22.tgz#75bef7ce8df0e239b489b70a396e9ddf9833bad1"
-  integrity sha512-cEg6/F8ZWjoVkEwm0rXKReWbsCUROFbLFBYht+d5RzHnDwJoTX4QWJKx4m+TGNDPamRUIGw36U4z41Fvev0XmA==
+"@expo/cli@0.24.23":
+  version "0.24.23"
+  resolved "https://registry.npmjs.org/@expo/cli/-/cli-0.24.23.tgz#5e25c76a6a94a9fa8309b2f1309d993a95fa4860"
+  integrity sha512-uIlgadw38yVOczYOm9BeW0wkWdC5rtcSP0+NHqOS31DAh2KNzOPRt9dnNuP0ErS+QJM3ymZSjZgo4hUvyFQ7Kw==
   dependencies:
     "@0no-co/graphql.web" "^1.0.8"
     "@babel/runtime" "^7.20.0"
@@ -1341,7 +1341,7 @@
     "@expo/env" "~1.0.7"
     "@expo/image-utils" "^0.7.6"
     "@expo/json-file" "^9.1.5"
-    "@expo/metro-config" "~0.20.17"
+    "@expo/metro-config" "~0.20.18"
     "@expo/osascript" "^2.2.5"
     "@expo/package-manager" "^1.8.6"
     "@expo/plist" "^0.3.5"
@@ -1607,16 +1607,16 @@
     "@babel/code-frame" "~7.10.4"
     json5 "^2.2.3"
 
-"@expo/metro-config@0.20.17", "@expo/metro-config@~0.20.17":
-  version "0.20.17"
-  resolved "https://registry.npmjs.org/@expo/metro-config/-/metro-config-0.20.17.tgz#3be75fd6b93081c8a9f0022dcfa9e5b767334902"
-  integrity sha512-lpntF2UZn5bTwrPK6guUv00Xv3X9mkN3YYla+IhEHiYXWyG7WKOtDU0U4KR8h3ubkZ6SPH3snDyRyAzMsWtZFA==
+"@expo/metro-config@0.20.18", "@expo/metro-config@~0.20.18":
+  version "0.20.18"
+  resolved "https://registry.npmjs.org/@expo/metro-config/-/metro-config-0.20.18.tgz#8006a505978a014597d9d55f33bb09cfcb81bed1"
+  integrity sha512-qPYq3Cq61KQO1CppqtmxA1NGKpzFOmdiL7WxwLhEVnz73LPSgneW7dV/3RZwVFkjThzjA41qB4a9pxDqtpepPg==
   dependencies:
     "@babel/core" "^7.20.0"
     "@babel/generator" "^7.20.5"
     "@babel/parser" "^7.20.0"
     "@babel/types" "^7.20.0"
-    "@expo/config" "~11.0.12"
+    "@expo/config" "~11.0.13"
     "@expo/env" "~1.0.7"
     "@expo/json-file" "~9.1.5"
     "@expo/spawn-async" "^1.7.2"
@@ -7069,6 +7069,14 @@ expo-constants@~17.1.7:
     "@expo/config" "~11.0.12"
     "@expo/env" "~1.0.7"
 
+expo-constants@~17.1.8:
+  version "17.1.8"
+  resolved "https://registry.npmjs.org/expo-constants/-/expo-constants-17.1.8.tgz#6a59142b9967350bdded3f44859886ec34961aa4"
+  integrity sha512-sOCeMN/BWLA7hBP6lMwoEQzFNgTopk6YY03sBAmwT216IHyL54TjNseg8CRU1IQQ/+qinJ2fYWCl7blx2TiNcA==
+  dependencies:
+    "@expo/config" "~11.0.13"
+    "@expo/env" "~1.0.7"
+
 expo-constants@~18.0.9:
   version "18.0.10"
   resolved "https://registry.npmjs.org/expo-constants/-/expo-constants-18.0.10.tgz#92d4490d51193fc94bd40590453ce9cab4faf6fb"
@@ -7214,21 +7222,21 @@ expo-web-browser@~14.2.0:
   resolved "https://registry.npmjs.org/expo-web-browser/-/expo-web-browser-14.2.0.tgz#d8fb521ae349aebbf5c0ca32448877480124c06c"
   integrity sha512-6S51d8pVlDRDsgGAp8BPpwnxtyKiMWEFdezNz+5jVIyT+ctReW42uxnjRgtsdn5sXaqzhaX+Tzk/CWaKCyC0hw==
 
-expo@53.0.23:
-  version "53.0.23"
-  resolved "https://registry.npmjs.org/expo/-/expo-53.0.23.tgz#b6fd102ac74537d86f99e87bd26a254a1b560b9b"
-  integrity sha512-6TOLuNCP3AsSkXBJA5W6U/7wpZUop3Q6BxHMtRD2OOgT7CCPvnYgJdnTzqU+gD1hMfcryD8Ejq9RdHbLduXohg==
+expo@53.0.25:
+  version "53.0.25"
+  resolved "https://registry.npmjs.org/expo/-/expo-53.0.25.tgz#3d05566bd26c24e04e1daa01e2fbb0fd62857547"
+  integrity sha512-KMaIMAd0vKl2ooiDB9XMKTuRAhSmrLdPOEON8Ck9mPmSrJB1FHBs6gb63d5IJTQAE1jBZLZj0JBg6rqRBOrTjg==
   dependencies:
     "@babel/runtime" "^7.20.0"
-    "@expo/cli" "0.24.22"
+    "@expo/cli" "0.24.23"
     "@expo/config" "~11.0.13"
     "@expo/config-plugins" "~10.1.2"
     "@expo/fingerprint" "0.13.4"
-    "@expo/metro-config" "0.20.17"
+    "@expo/metro-config" "0.20.18"
     "@expo/vector-icons" "^14.0.0"
     babel-preset-expo "~13.2.4"
     expo-asset "~11.1.7"
-    expo-constants "~17.1.7"
+    expo-constants "~17.1.8"
     expo-file-system "~18.1.11"
     expo-font "~13.3.2"
     expo-keep-awake "~14.1.4"
