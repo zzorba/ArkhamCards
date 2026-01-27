@@ -826,6 +826,12 @@ function DeckDetailView({
     }
   }, [deck, arkhamDbDomain]);
 
+  const viewArkhamBuild = useCallback(() => {
+    if (deck && !deck.local) {
+      Linking.openURL(`https://arkham.build/deck/view/${deck.id}`);
+    }
+  }, [deck, arkhamDbDomain]);
+
   const deleteDeckPressed = useCallback(() => {
     if (!deck) {
       return;
@@ -898,10 +904,15 @@ function DeckDetailView({
   }, [setMenuOpen, copyDeckId]);
 
   const copyDeckUrl = useCopyAction(`${arkhamDbDomain}/deck/view/${deckId.id}`, t`Link to deck copied!`);
+  const copyArkhamBuildUrl = useCopyAction(`https://arkham.build/deck/view/${deckId.id}`, t`Link to deck copied!`);
   const onCopyUrl = useCallback(() => {
     setMenuOpen(false);
     copyDeckUrl();
   }, [copyDeckUrl, setMenuOpen]);
+    const onCopyArkhamBuild = useCallback(() => {
+    setMenuOpen(false);
+    copyArkhamBuildUrl();
+  }, [copyArkhamBuildUrl, setMenuOpen]);
 
   const [tagsDialog, tagString, showTagsDialog] = useTagsDialog(
     deckT,
@@ -1069,9 +1080,18 @@ function DeckDetailView({
             description={t`Open in browser`}
             onPress={viewDeck}
             onLongPress={onCopyUrl}
-            last={!editable}
           />
         ) }
+        { !deck.local && (
+          <MenuButton
+            icon="world"
+            title={t`View on arkham.build`}
+            description={t`Open in browser`}
+            onPress={viewArkhamBuild}
+            onLongPress={onCopyArkhamBuild}
+            last={!editable}
+          />
+        )}
         { editable && (
           <MenuButton
             icon="trash"

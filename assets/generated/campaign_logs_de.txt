@@ -4761,19 +4761,19 @@
           },
           {
             "id": "zlf_ignis_destroy_humanity",
-            "text": "Ignis will bring about the destruction of humanity."
+            "text": "Ignis wird die Zerstörung der Menschheit herbeiführen."
           },
           {
             "id": "zlf_ignis_spirit_has_been_crushed",
-            "text": "Ignis’ spirit has been crushed."
+            "text": "Ignis’ Geist wurde gebrochen."
           },
           {
             "id": "zlf_italy_has_ceased_to_exist",
-            "text": "Italy has ceased to exist."
+            "text": "Italien hat aufgehört zu existieren."
           },
           {
             "id": "zlf_slain_the_eldrich_god",
-            "text": "you have slain the eldrich god of fire."
+            "text": "du hast den Großen Alten des Feuers besiegt."
           }
         ]
       },
