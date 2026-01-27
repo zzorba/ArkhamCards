@@ -830,7 +830,7 @@ function DeckDetailView({
     if (deck && !deck.local) {
       Linking.openURL(`https://arkham.build/deck/view/${deck.id}`);
     }
-  }, [deck, arkhamDbDomain]);
+  }, [deck]);
 
   const deleteDeckPressed = useCallback(() => {
     if (!deck) {
@@ -909,7 +909,7 @@ function DeckDetailView({
     setMenuOpen(false);
     copyDeckUrl();
   }, [copyDeckUrl, setMenuOpen]);
-    const onCopyArkhamBuild = useCallback(() => {
+  const onCopyArkhamBuild = useCallback(() => {
     setMenuOpen(false);
     copyArkhamBuildUrl();
   }, [copyArkhamBuildUrl, setMenuOpen]);
@@ -1107,7 +1107,7 @@ function DeckDetailView({
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
     onEditSpecialPressed, onChecklistPressed, onDraftCards, onCopyDeckId, onCopyUrl, tagString,
-    onShowTagsDialog,
+    onShowTagsDialog, onCopyArkhamBuild, viewArkhamBuild,
   ]);
 
   const fabIcon = useMemo(() => {
