@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2025-10-13 10:54+0300\n"
+"PO-Revision-Date: 2026-01-26 11:13+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -2203,19 +2203,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -6071,7 +6071,7 @@ msgid "Market deck"
 msgstr "Колода рынка"
 
 msgid "Branded spell"
-msgstr ""
+msgstr "Меченое заклинание"
 
 msgid "Too many selected"
 msgstr "Выбрано слишком много"
@@ -6179,16 +6179,16 @@ msgid "The Drowned City"
 msgstr "Затонувший город"
 
 msgid "Artifacts Earned"
-msgstr ""
+msgstr "Полученные артефакты"
 
 msgid "Alien Glyphs"
-msgstr ""
+msgstr "Инопланетные знаки"
 
 msgid "Locations Explored"
-msgstr ""
+msgstr "Исследованные локации"
 
 msgid "Task Progress"
-msgstr ""
+msgstr "Прогресс задач"
 
 #, javascript-format
 msgid "Remove ${ investigator.card.name }?"
@@ -6321,7 +6321,7 @@ msgid "Card Upgrade"
 msgstr ""
 
 msgid "Contains cards that are not in the selected card pool."
-msgstr ""
+msgstr "Содержит карты не из выбранного пула карт."
 
 msgid "Select"
 msgstr ""
