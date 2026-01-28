@@ -3641,7 +3641,7 @@ msgid "Dark Matter"
 msgstr "Dunkle Materie"
 
 msgid "Impending Doom"
-msgstr "Bevorstehendes Verderben"
+msgstr "Drohendes Unheil"
 
 msgid "Memories"
 msgstr "Erinnerungen"
