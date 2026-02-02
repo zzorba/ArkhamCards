@@ -103,10 +103,11 @@ module.exports = {
       versionCode: 4195558,
     },
     locales: {
-      "ko": "./assets/i18n-app/ko.metadata.json"
+      'ko': './assets/i18n-app/ko.metadata.json',
     },
     plugins: [
       './plugins/withRNScreensFragmentFactory.js',
+      './plugins/withCustomAndroidStyles.js',
       [
         'react-native-edge-to-edge',
         {
