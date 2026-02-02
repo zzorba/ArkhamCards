@@ -69,7 +69,9 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
           const choice: BinaryConditionalChoice = {
             id: resolution.id,
             large: true,
-            text: `<b>${resolution.title}</b>`,
+            // we add a blank space, as those labels are sometimes cut short on android
+            // https://github.com/facebook/react-native/issues/53286#issuecomment-3199684763
+            text: `<b>${resolution.title} </b>`,
             condition: resolution.condition,
             description: resolution.description ? `<i>${resolution.description}</i>` : undefined,
             hidden: resolution.hidden,
@@ -572,10 +574,12 @@ export function createInvestigatorStatusStep(
       return {
         id: status,
         icon: STATUS_ICON[status],
-        text: statusToString(status),
-        selected_text: statusToSelectedString(status),
-        selected_feminine_text: statusToSelectedFeminineString(status),
-        selected_nonbinary_text: statusToSelectedNonBinaryString(status),
+        // we add a blank space, as those labels are sometimes cut short on android
+        // https://github.com/facebook/react-native/issues/53286#issuecomment-3199684763
+        text: `${statusToString(status)} `,
+        selected_text: `${statusToSelectedString(status)} `,
+        selected_feminine_text: `${statusToSelectedFeminineString(status)} `,
+        selected_nonbinary_text: `${statusToSelectedNonBinaryString(status)} `,
         masculine_text: statusToString(status, Gender_Enum.M),
         feminine_text: statusToString(status, Gender_Enum.F),
         nonbinary_text: statusToString(status, Gender_Enum.Nb),
