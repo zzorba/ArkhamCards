@@ -5118,7 +5118,7 @@ msgid "Delete your account"
 msgstr "Usuń swoje konto"
 
 msgid "Loading account details..."
-msgstr "Ładowanie dane konta..."
+msgstr "Ładowanie danych konta..."
 
 msgid "Are you sure that you want to <b>permanently</b> delete your account? This <b>cannot be undone</b>."
 msgstr "Czy na pewno chcesz <b>trwale</b> usunąć swoje konto? Ta operacja <b>nie może być cofnięta</b>."
@@ -5520,7 +5520,7 @@ msgid "If you wish to add a side-story to this campaign, you may travel to this 
 msgstr "Jeśli chcesz włączyć historię poboczną do tej kampanii, możesz udać się do tej lokalizacji i wydać dodatkowy czas równy normalnemu kosztowi doświadczenia za rozegranie tej historii pobocznej."
 
 msgid "Use expedited ticket"
-msgstr ""
+msgstr "Użyj opłaconego biletu"
 
 #, javascript-format
 msgid "Time cost: ${ xpCost }"
@@ -6216,7 +6216,7 @@ msgid "View or edit"
 msgstr "Przejrzyj / edytuj"
 
 msgid "View"
-msgstr ""
+msgstr "Przejrzyj"
 
 msgid "Review chaos bag"
 msgstr "Przejrzyj worek chaosu"
@@ -6356,7 +6356,7 @@ msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name 
 msgstr "Koszt doświadczenia: ${ xpCost } dla talii zawierających ${ investigator.name }, ${ challengeDiscountCost } dla pozostałych graczy"
 
 msgid "You must have at least 6 cards from each faction."
-msgstr ""
+msgstr "Musisz mieć co najmniej 6 kart z każdej klasy."
 
 #, javascript-format
 msgid ""
@@ -6366,26 +6366,31 @@ msgid ""
 "\n"
 "This will use about 25mb of storage."
 msgstr ""
+"Czy chciałbyś ściągnąć najnowsze karty z ArkhamDB w preferowanym języku twojego telefonu (${ lang })?\n"
+"\n"
+"Możesz nadpisać ustawienia językowe tej aplikacji w Ustawieniach.\n"
+"\n"
+"Ta operacja zajmie około 25MB."
 
 msgid "Head"
 msgstr ""
 
 #, javascript-format
 msgid "Cost: ${ _card.cost }"
-msgstr ""
+msgstr "Koszt: ${ _card.cost }"
 
 msgid "Select version"
-msgstr ""
+msgstr "Wybierz wersję"
 
 msgid "Alternate version"
-msgstr ""
+msgstr "Alternatywna wersja"
 
 #. Remove "Investigator Expansion" from pack name
 msgid "Investigator Expansion"
-msgstr ""
+msgstr "Rozszerzenie badaczy"
 
 msgid "Alternate versions"
-msgstr ""
+msgstr "Alternatywne wersje"
 
 msgctxt "investigator"
 msgid "Custom"
