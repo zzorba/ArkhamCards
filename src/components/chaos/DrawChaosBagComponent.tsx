@@ -228,25 +228,21 @@ export default function DrawChaosBagComponent(props: Props) {
   }, [drawToken]);
 
   useKeyEventListener((keyEvent) => {
-    switch(keyEvent.key) {
-      case '1': drawToken(1); break;
-      case '2': drawToken(2); break;
-      case '3': drawToken(3); break;
-      case '4': drawToken(4); break;
-      case '5': drawToken(5); break;
-      case '6': drawToken(6); break;
-      case '7': drawToken(7); break;
-      case '8': drawToken(8); break;
-      case '9': drawToken(9); break;
-      case ' ':
-        handleDrawTokenPressed();
-        break;
+    switch (keyEvent.key) {
+      case 'Digit1': drawToken(1); break;
+      case 'Digit2': drawToken(2); break;
+      case 'Digit3': drawToken(3); break;
+      case 'Digit4': drawToken(4); break;
+      case 'Digit5': drawToken(5); break;
+      case 'Digit6': drawToken(6); break;
+      case 'Digit7': drawToken(7); break;
+      case 'Digit8': drawToken(8); break;
+      case 'Digit9': drawToken(9); break;
+      case 'Space': handleDrawTokenPressed(); break;
       case 'Enter':
-      case '0':
-        clearTokens(true);
-        break;
+      case 'Digit0': clearTokens(true); break;
     }
-  }, true);
+  }, { listenOnMount: true });
 
   const handleResetBlessCursePressed = useCallback(() => {
     dispatch(updateChaosBagResetBlessCurse(actions, campaignId, chaosBagResults));

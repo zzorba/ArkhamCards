@@ -7157,10 +7157,10 @@ expo-keep-awake@~14.1.4:
   resolved "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-14.1.4.tgz#80197728563e0e17523e5a606fbd6fbed9639503"
   integrity sha512-wU9qOnosy4+U4z/o4h8W9PjPvcFMfZXrlUoKTMBW7F4pLqhkkP/5G4EviPZixv4XWFMjn1ExQ5rV6BX8GwJsWA==
 
-expo-key-event@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/expo-key-event/-/expo-key-event-1.4.0.tgz#c15da54ad1b9e2f940551346f2efad19b3e26d2f"
-  integrity sha512-XE/NvVx+PFzXV6Mp5uJ3irli4e7hqdnIEykG308Mr0k/vJlMDb4GtJ2jwTQ0HOiL5a3Igc/iuJn721w1ONKpWA==
+expo-key-event@^1.8.3:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/expo-key-event/-/expo-key-event-1.8.3.tgz#d96e8982dd227554c083cd244c8cb337ad6e4bf2"
+  integrity sha512-KyfcxNFlRcYb1PybIrztos5seuNHQLrf6wAPWKPzaXSX61Aua61Bx2mopCR57KLnLW+FCVLeCdSLZH+D4N64bA==
 
 expo-linking@~7.1.7:
   version "7.1.7"
