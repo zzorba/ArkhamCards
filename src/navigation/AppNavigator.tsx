@@ -973,7 +973,6 @@ function RootStackNavigator() {
         component={WeaknessDrawDialog}
         options={{
           title: t`Draw Weaknesses`,
-          presentation: 'fullScreenModal',
         }}
       />
       <RootStack.Screen
