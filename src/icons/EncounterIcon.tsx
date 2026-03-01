@@ -152,6 +152,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.standaloneIcon('barkham_horror', size, color);
       case 'rtnotz':
       case 'core':
+      case 'core_2026':
       case 'agents_of_hastur':
       case 'agents_of_yog':
       case 'agents_of_shub':

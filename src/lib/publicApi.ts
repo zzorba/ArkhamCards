@@ -383,7 +383,7 @@ export interface PendingCardUpdates {
   cache?: CardCache;
 }
 
-const CARD_SCHEMA_VERSION = 8;
+const CARD_SCHEMA_VERSION = 9;
 
 export const checkForPendingCards = async function(
   db: Database,
