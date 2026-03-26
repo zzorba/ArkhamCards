@@ -271,7 +271,7 @@ export default class DeckValidation {
       groupBy(cards, (card) =>
         card
           ? `${card.real_name}${card.encounter_code ? card.code : ""}${
-              card.subtype_code === "basicweakness" ? card.code : ""
+              card.subtype_code === "basicweakness" || card.subtype_code === 'weakness' ? card.code : ""
             }${card.has_restrictions ? card.code : ""}`
           : "Unknown Card"
       ),
@@ -639,7 +639,7 @@ export default class DeckValidation {
 
 
   canIncludeCard(card: Card, processDeckCounts: boolean, allCards: Card[]): boolean {
-    if ((card.subtype_code === 'basicweakness' || card.encounter_code) &&
+    if ((card.subtype_code === 'basicweakness' || card.subtype_code === 'weakness' || card.encounter_code) &&
       (card.deck_limit ?? 0) > 0
     ) {
       return true;
