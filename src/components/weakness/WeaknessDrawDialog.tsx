@@ -16,7 +16,6 @@ import ToggleFilter from '@components/core/ToggleFilter';
 import StyleContext from '@styles/StyleContext';
 import BasicButton from '@components/core/BasicButton';
 import Card from '@data/types/Card';
-import COLORS from '@styles/colors';
 import { cardInCollection } from '@data/types/cardHelpers';
 import HeaderButton from '@components/core/HeaderButton';
 

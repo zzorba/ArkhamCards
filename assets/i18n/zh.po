@@ -6250,6 +6250,21 @@ msgstr ""
 msgid "Alternate versions"
 msgstr ""
 
+msgid "View on arkham.build"
+msgstr ""
+
+msgid "Brethren of Ash"
+msgstr ""
+
+msgid "Spreading Flames"
+msgstr ""
+
+msgid "Smoke and Mirrors"
+msgstr ""
+
+msgid "Queen of Ash"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自訂"

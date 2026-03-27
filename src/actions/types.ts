@@ -474,6 +474,7 @@ export const DIFFICULTIES: CampaignDifficulty[] = [
 
 export const CUSTOM = 'custom';
 export const CORE = 'core';
+export const BOA = 'boa';
 export const RTNOTZ = 'rtnotz';
 export const DWL = 'dwl';
 export const RTDWL = 'rtdwl';
@@ -507,6 +508,7 @@ export const HEART_OF_DARKNESS = 'zhod';
 export type CampaignCycleCode =
   | typeof CUSTOM
   | typeof CORE
+  | typeof BOA
   | typeof RTNOTZ
   | typeof DWL
   | typeof RTDWL
@@ -538,6 +540,7 @@ export type CampaignCycleCode =
   | typeof RTTIC;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
+  BOA,
   CORE,
   RTNOTZ,
   DWL,
@@ -571,6 +574,7 @@ export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
+  BOA,
   CORE,
   DWL,
   PTC,

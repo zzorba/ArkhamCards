@@ -1,5 +1,141 @@
 [
   {
+    "campaignId": "boa",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "abigail_harbinger",
+            "text": "Abigail Foreman is the harbinger of Elokoss."
+          },
+          {
+            "id": "cornelia_harbinger",
+            "text": "Cornelia Akely is the harbinger of Elokoss."
+          },
+          {
+            "id": "david_harbinger",
+            "text": "David Renfield is the harbinger of Elokoss."
+          },
+          {
+            "id": "defeated_elokoss_and_the_brethren_of_ash",
+            "text": "the investigators defeated Elokoss and the Brethren of Ash."
+          },
+          {
+            "id": "defeated_their_masked_pursuer",
+            "text": "the investigators defeated their masked pursuer."
+          },
+          {
+            "id": "discovered_the_cults_whereabouts",
+            "text": "the investigators discovered the cult's whereabouts."
+          },
+          {
+            "id": "earl_harbinger",
+            "text": "Sgt. Earl Monroe is the harbinger of Elokoss."
+          },
+          {
+            "id": "elokoss_was_reborn",
+            "text": "Elokoss was reborn."
+          },
+          {
+            "id": "failed_in_their_search",
+            "text": "the investigators failed in their search."
+          },
+          {
+            "id": "flooded_the_ritual",
+            "text": "the investigators flooded the Brethren of Ash’s summoning ritual."
+          },
+          {
+            "id": "killed_the_servant_of_flame",
+            "text": "the investigators killed the Servant of Flame"
+          },
+          {
+            "id": "margaret_harbinger",
+            "text": "Margaret Liu is the harbinger of Elokoss."
+          },
+          {
+            "id": "miskatonic_university_burned",
+            "text": "Miskatonic University burned."
+          },
+          {
+            "id": "naomi_harbinger",
+            "text": "Naomi O'Bannion is the harbinger of Elokoss."
+          },
+          {
+            "id": "saved_miskatonic_university",
+            "text": "the investigators saved Miskatonic University."
+          },
+          {
+            "id": "scoured_arkham_for_answers",
+            "text": "the investigators scoured Arkham for answers."
+          },
+          {
+            "id": "stirred_up_trouble",
+            "text": "the investigators stirred up trouble."
+          },
+          {
+            "id": "stopped_elokoss_glorious_rebirth",
+            "text": "the investigators stopped Elokoss’s glorious rebirth."
+          },
+          {
+            "id": "the_servant_of_flame_escaped",
+            "text": "the Servant of Flame escaped."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "enemy_is_harbinger",
+            "text": "leurre"
+          },
+          {
+            "id": "killed_servant_of_flame",
+            "text": "leurre"
+          },
+          {
+            "id": "queen_of_ash_phi",
+            "text": "leurre"
+          },
+          {
+            "id": "servant_of_flame_beaneath_act",
+            "text": "leurre"
+          },
+          {
+            "id": "smoke_and_mirrors_1",
+            "text": "leurre"
+          },
+          {
+            "id": "smoke_and_mirrors_2",
+            "text": "leurre"
+          },
+          {
+            "id": "smoke_and_mirrors_3",
+            "text": "leurre"
+          },
+          {
+            "id": "smoke_and_mirrors_4",
+            "text": "leurre"
+          },
+          {
+            "id": "smoke_and_mirrors_5",
+            "text": "leurre"
+          },
+          {
+            "id": "smoke_and_mirrors_6",
+            "text": "leurre"
+          },
+          {
+            "id": "smoke_and_mirrors_phi",
+            "text": "leurre"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "core",
     "sections": [
       {

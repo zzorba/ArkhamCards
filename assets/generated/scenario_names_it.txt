@@ -205,7 +205,7 @@
   },
   {
     "id": "core",
-    "name": "Ai Confini della Terra"
+    "name": "Brethren of Ash"
   },
   {
     "id": "court_of_the_ancients",
@@ -672,6 +672,10 @@
     "name": "Flusso Piroclastico"
   },
   {
+    "id": "queen_of_ash",
+    "name": "Queen of Ash"
+  },
+  {
     "id": "quito",
     "name": "Stratagemmi e Rivendicazioni"
   },
@@ -920,8 +924,16 @@
     "name": "Rivalità tra Fratelli"
   },
   {
+    "id": "smoke_and_mirrors",
+    "name": "Smoke and Mirrors"
+  },
+  {
     "id": "something_big",
     "name": "Qualcosa di Grosso"
+  },
+  {
+    "id": "spreading_flames",
+    "name": "Spreading Flames"
   },
   {
     "id": "starfall",

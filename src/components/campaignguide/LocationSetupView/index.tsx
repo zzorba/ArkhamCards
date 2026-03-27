@@ -393,17 +393,20 @@ function Arrows({ arrows, unitWidth, unitHeight }: {
         return (
           <View
             key={idx}
-            style={[styles.arrow, {
-              top: y, left: x,
-              width: unitWidth * (a.width ?? scale),
-              height: unitHeight * (a.height ?? scale),
-              opacity: (a.opacity ?? 1),
-            }]}>
+            style={[
+              styles.arrow,
+              {
+                top: y, left: x,
+                width: unitWidth * (a.width ?? scale),
+                height: unitHeight * (a.height ?? scale),
+                opacity: (a.opacity ?? 1),
+              },
+              a.rotation ? { transform: [{ rotate: a.rotation }] } : undefined,
+            ]}>
             <AppIcon
               name={icon}
               size={Math.min(unitHeight * scale, unitWidth * scale)}
               color={getColor(colors, a.color)}
-              style={a.rotation ? { transform: [{ rotate: a.rotation }] } : undefined}
             />
           </View>
         );

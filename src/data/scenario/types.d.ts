@@ -1472,7 +1472,7 @@ export interface LocationArrow {
   width?: number;
   height?: number;
   opacity?: number;
-  rotation?: "45deg" | "90deg" | "180deg" | "270deg" | "315deg";
+  rotation?: "-45deg" | "-22deg" | "22deg" | "45deg" | "67deg" | "90deg" | "180deg" | "270deg" | "315deg";
 }
 export interface LocationConnectorsStep {
   id: string;

@@ -6268,6 +6268,21 @@ msgstr "조사자 확장"
 msgid "Alternate versions"
 msgstr "대체 버전"
 
+msgid "View on arkham.build"
+msgstr ""
+
+msgid "Brethren of Ash"
+msgstr ""
+
+msgid "Spreading Flames"
+msgstr ""
+
+msgid "Smoke and Mirrors"
+msgstr ""
+
+msgid "Queen of Ash"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "맞춤형 조사자"

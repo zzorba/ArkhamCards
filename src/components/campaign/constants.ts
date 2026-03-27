@@ -2,6 +2,7 @@ import { find, map } from 'lodash';
 import { t } from 'ttag';
 
 import {
+  BOA,
   CUSTOM,
   CORE,
   RTNOTZ,
@@ -105,6 +106,7 @@ export function difficultyString(difficulty: CampaignDifficulty | Campaign_Diffi
 
 export function campaignName(cycleCode: CampaignCycleCode): string | null {
   switch (cycleCode) {
+    case BOA: return t`Brethren of Ash`;
     case CORE: return t`Night of the Zealot`;
     case RTNOTZ: return t`Return to the Night of the Zealot`;
     case DWL: return t`The Dunwich Legacy`;
@@ -183,6 +185,11 @@ export function completedScenario(
 
 export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
   switch (cycleCode) {
+    case BOA: return [
+      { name: t`Spreading Flames`, code: 'spreading_flames', pack_code: 'core_2026' },
+      { name: t`Smoke and Mirrors`, code: 'smoke_and_mirrors', pack_code: 'core_2026' },
+      { name: t`Queen of Ash`, code: 'queen_of_ash', pack_code: 'core_2026' },
+    ];
     case CORE: return [
       { name: t`The Gathering`, code: 'torch', pack_code: 'core' },
       { name: t`The Midnight Masks`, code: 'arkham', pack_code: 'core' },
@@ -494,6 +501,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
 export function campaignNames() {
   return {
     core: t`The Night of the Zealot`,
+    boa: t`Brethren of Ash`,
     rtnotz: t`Return to the Night of the Zealot`,
     dwl: t`The Dunwich Legacy`,
     rtdwl: t`Return to The Dunwich Legacy`,
@@ -528,6 +536,7 @@ export function campaignNames() {
 
 export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof EOE, colors: ThemeColors) {
   switch (cycle) {
+    case BOA:
     case CORE:
     case RTNOTZ:
     case 'custom':
@@ -584,6 +593,12 @@ export function getCampaignLog(
           t`Campaign Notes`,
           t`Cultists We Interrogated`,
           t`Cultists Who Got Away`,
+        ],
+      };
+    case BOA:
+      return {
+        sections: [
+          t`Campaign Notes`,
         ],
       };
     case DWL:
@@ -809,6 +824,14 @@ const NOTZ_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
 };
 
+
+const BOA_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+};
+
 const DWL_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
@@ -1003,6 +1026,8 @@ export function getChaosBag(
     case CUSTOM:
     case STANDALONE:
       return NOTZ_BAG[difficulty];
+    case BOA:
+      return BOA_BAG[difficulty];
     case DWL:
     case RTDWL:
       return DWL_BAG[difficulty];

@@ -20,6 +20,7 @@ import StandaloneIcon from './StandaloneIcon';
 import InnsmouthIcon from './InnsmouthIcon';
 import AliceIcon from './AliceIcon';
 import ScarletIcon from './ScarletIcon';
+import Core2026Icon from './Core2026Icon';
 
 interface Props {
   encounter_code: string;
@@ -73,6 +74,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
   }
   coreIcon(name: string, size: number, color: string) {
     return (<CoreSetIcon name={name} size={size} color={color} />);
+  }
+  core2026Icon(name: string, size: number, color: string) {
+    return (<Core2026Icon name={name} size={size} color={color} />);
   }
   cardIcon(name: string, size: number, color: string) {
     return (<AppIcon name={name} size={size} color={color} />);
@@ -150,9 +154,45 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'zbh':
       case 'barkham_horror':
         return this.standaloneIcon('barkham_horror', size, color);
+      case 'core_2026':
+      case 'spreading_flames':
+      case 'smoke_and_mirrors':
+      case 'queen_of_ash':
+      case 'arcane_lock':
+      case 'arkham_ch2':
+      case 'ashen_pilgrims':
+      case 'bad_weather':
+      case 'bystanders':
+      case 'cosmic_evils':
+      case 'cultists_ch2':
+      case 'dead_ends':
+      case 'eldritch_lore':
+      case 'fire_ch2':
+      case 'flying_terrors':
+      case 'gangs_of_arkham':
+      case 'hallucinations':
+      case 'mad_science':
+      case 'miskatonic_university':
+      case 'people_of_arkham':
+      case 'reeking_decay':
+      case 'sewers':
+      case 'torment':
+      case 'whippoorwills_ch2':
+        return this.core2026Icon(encounter_code, size, color);
+      case 'boa':
+        return this.core2026Icon('core_2026', size, color);
+      case 'tom':
+        return this.core2026Icon('tommy', size, color);
+      case 'car':
+        return this.core2026Icon('carolyn', size, color);
+      case 'mar':
+        return this.core2026Icon('marie', size, color);
+      case 'mig':
+        return this.core2026Icon('miguel', size, color);
+      case 'and':
+        return this.core2026Icon('andre', size, color);
       case 'rtnotz':
       case 'core':
-      case 'core_2026':
       case 'agents_of_hastur':
       case 'agents_of_yog':
       case 'agents_of_shub':

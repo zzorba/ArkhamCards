@@ -38,7 +38,7 @@ module.exports = {
   expo: {
     name: 'ArkhamCards',
     slug: 'arkhamcards',
-    version: '6.0.11',
+    version: '6.1.0',
     jsEngine: 'hermes',
     orientation: 'default',
     userInterfaceStyle: 'automatic',
@@ -100,10 +100,10 @@ module.exports = {
         'android.permission.RECORD_AUDIO',
         'android.permission.MODIFY_AUDIO_SETTINGS',
       ],
-      versionCode: 4195558,
+      versionCode: 4195564,
     },
     locales: {
-      "ko": "./assets/i18n-app/ko.metadata.json"
+      'ko': './assets/i18n-app/ko.metadata.json',
     },
     plugins: [
       './plugins/withRNScreensFragmentFactory.js',
@@ -188,6 +188,7 @@ module.exports = {
             './assets/circusexmortis.ttf',
             './assets/Conkordia.ttf',
             './assets/coreset.ttf',
+            './assets/core_2026.ttf',
             './assets/cost.ttf',
             './assets/cyclopean.ttf',
             './assets/dark_matter.ttf',
