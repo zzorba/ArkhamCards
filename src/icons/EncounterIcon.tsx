@@ -138,6 +138,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       color,
       pack,
     } = this.props;
+    console.log('got ',encounter_code)
     switch (encounter_code) {
       case 'nat':
         return this.standaloneIcon('nate', size, color);

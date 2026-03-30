@@ -1013,7 +1013,7 @@ msgid "Special Cards"
 msgstr "Sonderkarten"
 
 msgid "View on ArkhamDB"
-msgstr "Auf ArkhamDB anzeigen"
+msgstr "ArkhamDB"
 
 msgid "Save deck changes?"
 msgstr "Deck-Änderungen speichern?"
@@ -6323,19 +6323,19 @@ msgid "Alternate versions"
 msgstr "Alternative Versionen"
 
 msgid "View on arkham.build"
-msgstr ""
+msgstr "arkham.build"
 
 msgid "Brethren of Ash"
-msgstr ""
+msgstr "Bruderschaft der Asche"
 
 msgid "Spreading Flames"
-msgstr ""
+msgstr "Auflodernde Flammen"
 
 msgid "Smoke and Mirrors"
-msgstr ""
+msgstr "Rauchschleier"
 
 msgid "Queen of Ash"
-msgstr ""
+msgstr "Königin der Asche"
 
 msgctxt "investigator"
 msgid "Custom"
