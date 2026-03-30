@@ -1766,7 +1766,7 @@ msgstr[1] "Es werden alle Karten aus den Begegnungssets ${ encounterSetString } 
 #, javascript-format
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
-msgstr[0] "${ startText } Dieses Set ist an folgenden Symbolen zu erkennen:"
+msgstr[0] "${ startText } Dieses Set ist am folgenden Symbol zu erkennen:"
 msgstr[1] "${ startText } Diese Sets sind an folgenden Symbolen zu erkennen:"
 
 msgid "Choose Investigators"
