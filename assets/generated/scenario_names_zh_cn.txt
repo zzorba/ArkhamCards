@@ -149,7 +149,7 @@
   },
   {
     "id": "blob_that_ate_everything_else",
-    "name": "The Blob That Ate Everything Else"
+    "name": "重返吞噬万物"
   },
   {
     "id": "blood_from_stones",
@@ -277,7 +277,7 @@
   },
   {
     "id": "disappearance_at_the_twilight_estate",
-    "name": "Return to Disappearance at the Twilight Estate"
+    "name": "重返暮色庄园失踪事件"
   },
   {
     "id": "dm_epilogue",
@@ -361,7 +361,7 @@
   },
   {
     "id": "fate_of_the_vale",
-    "name": "Fate of the Vale"
+    "name": "山谷的命运"
   },
   {
     "id": "fhv_epilogue",
@@ -433,7 +433,7 @@
   },
   {
     "id": "hemlock_house",
-    "name": "Hemlock House"
+    "name": "汉洛克庄园"
   },
   {
     "id": "hidden_truths",
@@ -461,7 +461,7 @@
   },
   {
     "id": "ice_and_death",
-    "name": "Ice and Death"
+    "name": "亡命冰原"
   },
   {
     "id": "ice_and_death_part_1",
@@ -485,7 +485,7 @@
   },
   {
     "id": "in_the_labyrinths_of_lunacy",
-    "name": "The Labyrinths of Lunacy"
+    "name": "疯狂迷宫"
   },
   {
     "id": "in_the_shadow_of_earth",
@@ -533,7 +533,7 @@
   },
   {
     "id": "laid_to_rest",
-    "name": "Laid to Rest"
+    "name": "安息长眠"
   },
   {
     "id": "late_risers",
@@ -565,7 +565,7 @@
   },
   {
     "id": "machinations_through_time",
-    "name": "Machinations Through Time"
+    "name": "时间骗局"
   },
   {
     "id": "manokwari",
@@ -685,11 +685,11 @@
   },
   {
     "id": "red_tide_rising",
-    "name": "Red Tide Rising"
+    "name": "赤潮升起"
   },
   {
     "id": "relics_of_the_past",
-    "name": "Relics of the Past"
+    "name": "往昔遗物"
   },
   {
     "id": "restful_night",
@@ -741,7 +741,7 @@
   },
   {
     "id": "return_to_essex_county_express",
-    "name": "Return to The Essex County Express"
+    "name": "重返疯狂列車"
   },
   {
     "id": "return_to_extracurricular_activity",
@@ -865,7 +865,7 @@
   },
   {
     "id": "return_to_turn_back_time",
-    "name": "Return to Turn Back Time"
+    "name": "重返时间倒流"
   },
   {
     "id": "return_to_undimensioned_and_unseen",
@@ -885,7 +885,7 @@
   },
   {
     "id": "riddles_and_rain",
-    "name": "Riddles and Rain"
+    "name": "谜雨"
   },
   {
     "id": "rio_de_janiero",
@@ -1089,7 +1089,7 @@
   },
   {
     "id": "the_eternal_slumber",
-    "name": "The Eternal Slumber"
+    "name": "永恒沉睡"
   },
   {
     "id": "the_fall_of_the_house_of_usher",
@@ -1125,7 +1125,7 @@
   },
   {
     "id": "the_heart_of_madness",
-    "name": "The Heart of Madness"
+    "name": "疯狂之心"
   },
   {
     "id": "the_heart_of_madness_part_1",
@@ -1157,11 +1157,11 @@
   },
   {
     "id": "the_longest_night",
-    "name": "The Longest Night"
+    "name": "最长一夜"
   },
   {
     "id": "the_lost_sister",
-    "name": "The Lost Sister"
+    "name": "消失的姐妹"
   },
   {
     "id": "the_machine_in_yellow",
@@ -1173,7 +1173,7 @@
   },
   {
     "id": "the_midwinter_gala",
-    "name": "The Midwinter Gala"
+    "name": "仲冬舞会"
   },
   {
     "id": "the_miskatonic_museum",
@@ -1185,7 +1185,7 @@
   },
   {
     "id": "the_nights_usurper",
-    "name": "The Night's Usurper"
+    "name": "夜之乱臣"
   },
   {
     "id": "the_oneironauts",
@@ -1225,7 +1225,7 @@
   },
   {
     "id": "the_silent_heath",
-    "name": "The Silent Heath"
+    "name": "寂静荒野"
   },
   {
     "id": "the_symphony_of_erich_zann",
@@ -1241,11 +1241,11 @@
   },
   {
     "id": "the_thing_in_the_depths",
-    "name": "The Thing in the Depths"
+    "name": "深沼之物"
   },
   {
     "id": "the_twisted_hollow",
-    "name": "The Twisted Hollow"
+    "name": "扭曲空洞"
   },
   {
     "id": "the_unspeakable_oath",
@@ -1381,7 +1381,7 @@
   },
   {
     "id": "where_gods_dwell",
-    "name": "Where the Gods Dwell"
+    "name": "神居之所"
   },
   {
     "id": "wild_snark_chase",
@@ -1393,7 +1393,7 @@
   },
   {
     "id": "written_in_rock",
-    "name": "Written in Rock"
+    "name": "銘刻於石"
   },
   {
     "id": "ybor_city",

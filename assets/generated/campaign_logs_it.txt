@@ -7,39 +7,39 @@
         "entries": [
           {
             "id": "abigail_harbinger",
-            "text": "Abigail Foreman is the harbinger of Elokoss."
+            "text": "Abigail Foreman è l'araldo di Elokoss."
           },
           {
             "id": "cornelia_harbinger",
-            "text": "Cornelia Akely is the harbinger of Elokoss."
+            "text": "Cornelia Akely è l'araldo di Elokoss."
           },
           {
             "id": "david_harbinger",
-            "text": "David Renfield is the harbinger of Elokoss."
+            "text": "David Renfield è l'araldo di Elokoss."
           },
           {
             "id": "defeated_elokoss_and_the_brethren_of_ash",
-            "text": "the investigators defeated Elokoss and the Brethren of Ash."
+            "text": "gli investigatori hanno sconfitto Elokoss e la Confraternita della Cenere."
           },
           {
             "id": "defeated_their_masked_pursuer",
-            "text": "the investigators defeated their masked pursuer."
+            "text": "Gli investigatori hanno sconfitto il loro inseguitore mascherato."
           },
           {
             "id": "discovered_the_cults_whereabouts",
-            "text": "the investigators discovered the cult's whereabouts."
+            "text": "gli investigatori hanno scoperto il nascondiglio del culto."
           },
           {
             "id": "earl_harbinger",
-            "text": "Sgt. Earl Monroe is the harbinger of Elokoss."
+            "text": "Sgt. Earl Monroe è l'araldo di Elokoss."
           },
           {
             "id": "elokoss_was_reborn",
-            "text": "Elokoss was reborn."
+            "text": "Elokoss è rinata"
           },
           {
             "id": "failed_in_their_search",
-            "text": "the investigators failed in their search."
+            "text": "gli investigatori hanno fallito nella loro ricerca."
           },
           {
             "id": "flooded_the_ritual",
@@ -47,31 +47,31 @@
           },
           {
             "id": "killed_the_servant_of_flame",
-            "text": "the investigators killed the Servant of Flame"
+            "text": "gli investigatori hanno ucciso il Servitore della Fiamma."
           },
           {
             "id": "margaret_harbinger",
-            "text": "Margaret Liu is the harbinger of Elokoss."
+            "text": "Margaret Liu è l'araldo di Elokoss."
           },
           {
             "id": "miskatonic_university_burned",
-            "text": "Miskatonic University burned."
+            "text": "La Miskatonic University è bruciata."
           },
           {
             "id": "naomi_harbinger",
-            "text": "Naomi O'Bannion is the harbinger of Elokoss."
+            "text": "Naomi O'Bannion è l'araldo di Elokoss."
           },
           {
             "id": "saved_miskatonic_university",
-            "text": "the investigators saved Miskatonic University."
+            "text": "Gli investigatori hanno salvato la Miskatonic University."
           },
           {
             "id": "scoured_arkham_for_answers",
-            "text": "the investigators scoured Arkham for answers."
+            "text": "gli investigatori hanno setacciato Arkham in cerca di risposte."
           },
           {
             "id": "stirred_up_trouble",
-            "text": "the investigators stirred up trouble."
+            "text": "gli investigatori hanno seminato il caos."
           },
           {
             "id": "stopped_elokoss_glorious_rebirth",
@@ -79,7 +79,7 @@
           },
           {
             "id": "the_servant_of_flame_escaped",
-            "text": "the Servant of Flame escaped."
+            "text": "il Servitore della Fiamma è fuggito."
           }
         ]
       },

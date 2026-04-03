@@ -205,7 +205,7 @@
   },
   {
     "id": "core",
-    "name": "Brethren of Ash"
+    "name": "Hermanos de las cenizas"
   },
   {
     "id": "court_of_the_ancients",
@@ -673,7 +673,7 @@
   },
   {
     "id": "queen_of_ash",
-    "name": "Queen of Ash"
+    "name": "Reina de las cenizas"
   },
   {
     "id": "quito",
@@ -925,7 +925,7 @@
   },
   {
     "id": "smoke_and_mirrors",
-    "name": "Smoke and Mirrors"
+    "name": "Humo y espejos"
   },
   {
     "id": "something_big",
@@ -933,7 +933,7 @@
   },
   {
     "id": "spreading_flames",
-    "name": "Spreading Flames"
+    "name": "Las llamas se propagan"
   },
   {
     "id": "starfall",
