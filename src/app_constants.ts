@@ -666,11 +666,8 @@ export function getCardPoolSections(): {
       section: t`Starter decks`,
       custom: true,
       packs: [
-        'nat',
-        'har',
-        'win',
-        'jac',
-        'ste',
+        ...POOL_INVESTIGATOR_CH2_PACKS,
+        ...POOL_INVESTIGATOR_PACKS,
       ],
     },
     {
