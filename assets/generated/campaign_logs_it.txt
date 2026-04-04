@@ -43,7 +43,7 @@
           },
           {
             "id": "flooded_the_ritual",
-            "text": "the investigators flooded the Brethren of Ash’s summoning ritual."
+            "text": "gli investigatori hanno allagato il rituale di evocazione della Confraternita della Cenere."
           },
           {
             "id": "killed_the_servant_of_flame",
@@ -75,7 +75,7 @@
           },
           {
             "id": "stopped_elokoss_glorious_rebirth",
-            "text": "the investigators stopped Elokoss’s glorious rebirth."
+            "text": "gli investigatori hanno fermato la gloriosa rinascita di Elokoss."
           },
           {
             "id": "the_servant_of_flame_escaped",
