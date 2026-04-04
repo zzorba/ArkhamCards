@@ -6194,10 +6194,6 @@ msgid "Use a completely custom card pool"
 msgstr "Verwende einen benutzerdefinierten Kartenpool"
 
 #, javascript-format
-msgid "Limited: ${ selectedPacks.size } packs selected"
-msgstr "Limitiert: ${ selectedPacks.size } Erweiterungen ausgewählt"
-
-#, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
 msgstr "Benutzerdefiniert: ${ selectedPacks.size } Erweiterungen ausgewählt"
 
@@ -6224,9 +6220,6 @@ msgstr "Limitiert: Zu viele Erweiterungen ausgewählt"
 
 msgid "Limited:"
 msgstr "Limitiert:"
-
-msgid "Current:"
-msgstr "Aktuell:"
 
 msgid "Cycles (select 3)"
 msgstr "Zyklen (wähle 3)"
@@ -6336,6 +6329,33 @@ msgstr "Rauchschleier"
 
 msgid "Queen of Ash"
 msgstr "Königin der Asche"
+
+msgid "Core (2026)"
+msgstr ""
+
+msgid "Investigator Decks"
+msgstr ""
+
+msgid "Tap to view"
+msgstr ""
+
+msgid "Investigator decks"
+msgstr ""
+
+msgid "Recent releases"
+msgstr ""
+
+msgid "None released yet"
+msgstr ""
+
+msgid "Chapter 1"
+msgstr ""
+
+msgid "Chapter 2"
+msgstr ""
+
+msgid "This draft uses the deck's selected card pool."
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

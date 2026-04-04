@@ -6190,10 +6190,6 @@ msgid "Use a completely custom card pool"
 msgstr "Utilizza un insieme di carte completamente personalizzato"
 
 #, javascript-format
-msgid "Limited: ${ selectedPacks.size } packs selected"
-msgstr "Limitato: ${ selectedPacks.size } pack selezionati"
-
-#, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
 msgstr "Personalizzato: ${ selectedPacks.size } pack selezionati"
 
@@ -6220,9 +6216,6 @@ msgstr "Limitato: Troppi cicli selezionati"
 
 msgid "Limited:"
 msgstr "Limitato:"
-
-msgid "Current:"
-msgstr "Attuale:"
 
 msgid "Cycles (select 3)"
 msgstr "Cicli (selezionane 3)"
@@ -6331,6 +6324,33 @@ msgid "Smoke and Mirrors"
 msgstr ""
 
 msgid "Queen of Ash"
+msgstr ""
+
+msgid "Core (2026)"
+msgstr ""
+
+msgid "Investigator Decks"
+msgstr ""
+
+msgid "Tap to view"
+msgstr ""
+
+msgid "Investigator decks"
+msgstr ""
+
+msgid "Recent releases"
+msgstr ""
+
+msgid "None released yet"
+msgstr ""
+
+msgid "Chapter 1"
+msgstr ""
+
+msgid "Chapter 2"
+msgstr ""
+
+msgid "This draft uses the deck's selected card pool."
 msgstr ""
 
 msgctxt "investigator"

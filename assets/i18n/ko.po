@@ -6140,10 +6140,6 @@ msgid "Use a completely custom card pool"
 msgstr "임의의 카드 구성 환경을 사용"
 
 #, javascript-format
-msgid "Limited: ${ selectedPacks.size } packs selected"
-msgstr "제한: ${ selectedPacks.size }종 선택됨"
-
-#, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
 msgstr "커스텀: ${ selectedPacks.size }종 선택됨"
 
@@ -6170,9 +6166,6 @@ msgstr "제한: 사이클을 너무 많이 선택함"
 
 msgid "Limited:"
 msgstr "제한:"
-
-msgid "Current:"
-msgstr "현행:"
 
 msgid "Cycles (select 3)"
 msgstr "사이클 (선택 3종)"
@@ -6281,6 +6274,33 @@ msgid "Smoke and Mirrors"
 msgstr ""
 
 msgid "Queen of Ash"
+msgstr ""
+
+msgid "Core (2026)"
+msgstr ""
+
+msgid "Investigator Decks"
+msgstr ""
+
+msgid "Tap to view"
+msgstr ""
+
+msgid "Investigator decks"
+msgstr ""
+
+msgid "Recent releases"
+msgstr ""
+
+msgid "None released yet"
+msgstr ""
+
+msgid "Chapter 1"
+msgstr ""
+
+msgid "Chapter 2"
+msgstr ""
+
+msgid "This draft uses the deck's selected card pool."
 msgstr ""
 
 msgctxt "investigator"
