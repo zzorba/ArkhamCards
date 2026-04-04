@@ -49,7 +49,7 @@ import {
   BODY_OF_A_YITHIAN,
   specialReprintPlayerPacks,
   specialReprintCampaignPacks,
-  specialPacks,
+  SPECIAL_PACKS,
   specialReprintCardPacks,
 } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
@@ -1837,7 +1837,7 @@ export function packInCollection(
   if (alternatePack && inCollection[alternatePack]) {
     return true;
   }
-  const specialPackMatch = find(specialPacks, (specialPack) => {
+  const specialPackMatch = find(SPECIAL_PACKS, (specialPack) => {
     if (
       inCollection[specialPack.code] &&
       find(specialPack.packs, (p) => p === pack)

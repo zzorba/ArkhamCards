@@ -191,6 +191,7 @@ export default function DeckViewTab(props: Props) {
           firstElement={hasXpButton && !!changes && !!xpLabel ? renderXpButton : undefined}
           hasPreviousDeck={!!deck.previousDeckId}
           parallelInvestigators={parallelInvestigators}
+          isArkhamDbDeck={!deck.local}
         />
       </View>
     );

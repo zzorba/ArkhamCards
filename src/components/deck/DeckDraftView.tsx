@@ -18,6 +18,7 @@ import DeckNavFooter, { FOOTER_HEIGHT } from './DeckNavFooter';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import Card from '@data/types/Card';
 import { useDraftableCards } from './useChaosDeckGenerator';
+import { useCardPoolViewDialog } from './controls/DeckCardPoolButton';
 import { AppState, getDraftPacks } from '@reducers';
 import { useCounter, useEffectUpdate, useLatestDeckCards, usePressCallback, useSettingValue } from '@components/core/hooks';
 import { getDraftCards } from '@lib/randomDeck';
@@ -190,7 +191,23 @@ export default function DeckDraftView() {
   }, [id, dispatch, setLocalDraftCards, draftCycle, mode]);
 
   const [handSize, incHandSize, decHandSize] = useCounter(initialDraftSize, { min: 2, max: 10, hapticFeedback: true }, updateDraftSize);
-  const [in_collection, ignore_collection] = useSelector(getDraftPacks);
+  const [draftInCollection, draftIgnoreCollection] = useSelector(getDraftPacks);
+  const cardPoolPacks = meta?.card_pool;
+  const hasCardPool = !!cardPoolPacks && cardPoolPacks.length > 0;
+  const cardPoolInCollection = useMemo(() => {
+    if (!cardPoolPacks) {
+      return undefined;
+    }
+    const result: { [pack: string]: boolean } = {};
+    cardPoolPacks.split(',').forEach(pack => {
+      result[pack] = true;
+    });
+    return result;
+  }, [cardPoolPacks]);
+  const in_collection = (hasCardPool && cardPoolInCollection) ? cardPoolInCollection : draftInCollection;
+  const ignore_collection = hasCardPool ? false : draftIgnoreCollection;
+  const cardPoolSelectedPacks = useMemo(() => cardPoolPacks ? cardPoolPacks.split(',') : [], [cardPoolPacks]);
+  const [cardPoolViewDialog, showCardPoolViewDialog] = useCardPoolViewDialog(cardPoolSelectedPacks);
   const [editingPack, setEditingPacks] = useState(false);
 
   const [investigator, allPossibleCodes, cards] = useDraftableCards({
@@ -354,7 +371,13 @@ export default function DeckDraftView() {
           />
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <DeckButton onPress={showPackChooser} title={t`Choose packs`} icon="deck" shrink />
+          <DeckButton
+            onPress={hasCardPool ? showCardPoolViewDialog : showPackChooser}
+            title={hasCardPool ? t`Card pool` : t`Choose packs`}
+            icon="deck"
+            shrink
+            detail={hasCardPool ? t`Tap to view` : undefined}
+          />
         </View>
       </View>
       { !allPossibleCodes ? <LoadingSpinner large /> : (
@@ -412,6 +435,7 @@ export default function DeckDraftView() {
         onPress={draftCards ? onRedrawDraftCards : onDraftNewCards}
       />
       { alertDialog }
+      { cardPoolViewDialog }
     </View>
   );
 }

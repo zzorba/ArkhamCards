@@ -19,6 +19,7 @@ scalar _text
 columns and relationships of "all_card"
 """
 type all_card {
+  advanced_for: String
   alt_art_investigator: Boolean
   alternate_of_code: String
   alternate_required_code: String
@@ -104,6 +105,7 @@ type all_card {
   illustrator: String
   imagesrc: String
   imageurl: String
+  investigator_id: String
   is_unique: Boolean
   linked: Boolean
 
@@ -152,6 +154,7 @@ type all_card {
     """filter the rows returned"""
     where: card_pack_bool_exp
   ): card_pack_aggregate!
+  parallel_of_code: String
   permanent: Boolean
   position: Int!
   preview: Boolean
@@ -174,6 +177,7 @@ type all_card {
   real_taboo_text_change: String
   real_text: String
   real_traits: String
+  replacement_for: String
   restrictions(
     """JSON select path"""
     path: String
@@ -188,6 +192,7 @@ type all_card {
     """JSON select path"""
     path: String
   ): jsonb
+  signature_for: String
   simple_deck_requirements(
     """JSON select path"""
     path: String
@@ -424,6 +429,7 @@ input all_card_bool_exp {
   _and: [all_card_bool_exp!]
   _not: all_card_bool_exp
   _or: [all_card_bool_exp!]
+  advanced_for: String_comparison_exp
   alt_art_investigator: Boolean_comparison_exp
   alternate_of_code: String_comparison_exp
   alternate_required_code: String_comparison_exp
@@ -466,6 +472,7 @@ input all_card_bool_exp {
   illustrator: String_comparison_exp
   imagesrc: String_comparison_exp
   imageurl: String_comparison_exp
+  investigator_id: String_comparison_exp
   is_unique: Boolean_comparison_exp
   linked: Boolean_comparison_exp
   linked_card: all_card_bool_exp
@@ -476,6 +483,7 @@ input all_card_bool_exp {
   pack_position: Int_comparison_exp
   packs: card_pack_bool_exp
   packs_aggregate: card_pack_aggregate_bool_exp
+  parallel_of_code: String_comparison_exp
   permanent: Boolean_comparison_exp
   position: Int_comparison_exp
   preview: Boolean_comparison_exp
@@ -498,11 +506,13 @@ input all_card_bool_exp {
   real_taboo_text_change: String_comparison_exp
   real_text: String_comparison_exp
   real_traits: String_comparison_exp
+  replacement_for: String_comparison_exp
   restrictions: jsonb_comparison_exp
   sanity: Int_comparison_exp
   shroud: Int_comparison_exp
   side_deck_options: jsonb_comparison_exp
   side_deck_requirements: jsonb_comparison_exp
+  signature_for: String_comparison_exp
   simple_deck_requirements: jsonb_comparison_exp
   simple_side_deck_requirements: jsonb_comparison_exp
   skill_agility: Int_comparison_exp
@@ -627,6 +637,7 @@ input all_card_inc_input {
 input type for inserting data into table "all_card"
 """
 input all_card_insert_input {
+  advanced_for: String
   alt_art_investigator: Boolean
   alternate_of_code: String
   alternate_required_code: String
@@ -668,6 +679,7 @@ input all_card_insert_input {
   illustrator: String
   imagesrc: String
   imageurl: String
+  investigator_id: String
   is_unique: Boolean
   linked: Boolean
   linked_card: all_card_obj_rel_insert_input
@@ -677,6 +689,7 @@ input all_card_insert_input {
   pack_code: String
   pack_position: Int
   packs: card_pack_arr_rel_insert_input
+  parallel_of_code: String
   permanent: Boolean
   position: Int
   preview: Boolean
@@ -699,11 +712,13 @@ input all_card_insert_input {
   real_taboo_text_change: String
   real_text: String
   real_traits: String
+  replacement_for: String
   restrictions: jsonb
   sanity: Int
   shroud: Int
   side_deck_options: jsonb
   side_deck_requirements: jsonb
+  signature_for: String
   simple_deck_requirements: jsonb
   simple_side_deck_requirements: jsonb
   skill_agility: Int
@@ -731,6 +746,7 @@ input all_card_insert_input {
 
 """aggregate max on columns"""
 type all_card_max_fields {
+  advanced_for: String
   alternate_of_code: String
   alternate_required_code: String
   back_illustrator: String
@@ -758,8 +774,10 @@ type all_card_max_fields {
   illustrator: String
   imagesrc: String
   imageurl: String
+  investigator_id: String
   pack_code: String
   pack_position: Int
+  parallel_of_code: String
   position: Int
   quantity: Int
   real_back_flavor: String
@@ -780,8 +798,10 @@ type all_card_max_fields {
   real_taboo_text_change: String
   real_text: String
   real_traits: String
+  replacement_for: String
   sanity: Int
   shroud: Int
+  signature_for: String
   skill_agility: Int
   skill_combat: Int
   skill_intellect: Int
@@ -802,6 +822,7 @@ type all_card_max_fields {
 order by max() on columns of table "all_card"
 """
 input all_card_max_order_by {
+  advanced_for: order_by
   alternate_of_code: order_by
   alternate_required_code: order_by
   back_illustrator: order_by
@@ -829,8 +850,10 @@ input all_card_max_order_by {
   illustrator: order_by
   imagesrc: order_by
   imageurl: order_by
+  investigator_id: order_by
   pack_code: order_by
   pack_position: order_by
+  parallel_of_code: order_by
   position: order_by
   quantity: order_by
   real_back_flavor: order_by
@@ -851,8 +874,10 @@ input all_card_max_order_by {
   real_taboo_text_change: order_by
   real_text: order_by
   real_traits: order_by
+  replacement_for: order_by
   sanity: order_by
   shroud: order_by
+  signature_for: order_by
   skill_agility: order_by
   skill_combat: order_by
   skill_intellect: order_by
@@ -871,6 +896,7 @@ input all_card_max_order_by {
 
 """aggregate min on columns"""
 type all_card_min_fields {
+  advanced_for: String
   alternate_of_code: String
   alternate_required_code: String
   back_illustrator: String
@@ -898,8 +924,10 @@ type all_card_min_fields {
   illustrator: String
   imagesrc: String
   imageurl: String
+  investigator_id: String
   pack_code: String
   pack_position: Int
+  parallel_of_code: String
   position: Int
   quantity: Int
   real_back_flavor: String
@@ -920,8 +948,10 @@ type all_card_min_fields {
   real_taboo_text_change: String
   real_text: String
   real_traits: String
+  replacement_for: String
   sanity: Int
   shroud: Int
+  signature_for: String
   skill_agility: Int
   skill_combat: Int
   skill_intellect: Int
@@ -942,6 +972,7 @@ type all_card_min_fields {
 order by min() on columns of table "all_card"
 """
 input all_card_min_order_by {
+  advanced_for: order_by
   alternate_of_code: order_by
   alternate_required_code: order_by
   back_illustrator: order_by
@@ -969,8 +1000,10 @@ input all_card_min_order_by {
   illustrator: order_by
   imagesrc: order_by
   imageurl: order_by
+  investigator_id: order_by
   pack_code: order_by
   pack_position: order_by
+  parallel_of_code: order_by
   position: order_by
   quantity: order_by
   real_back_flavor: order_by
@@ -991,8 +1024,10 @@ input all_card_min_order_by {
   real_taboo_text_change: order_by
   real_text: order_by
   real_traits: order_by
+  replacement_for: order_by
   sanity: order_by
   shroud: order_by
+  signature_for: order_by
   skill_agility: order_by
   skill_combat: order_by
   skill_intellect: order_by
@@ -1041,6 +1076,7 @@ input all_card_on_conflict {
 
 """Ordering options when selecting data from "all_card"."""
 input all_card_order_by {
+  advanced_for: order_by
   alt_art_investigator: order_by
   alternate_of_code: order_by
   alternate_required_code: order_by
@@ -1082,6 +1118,7 @@ input all_card_order_by {
   illustrator: order_by
   imagesrc: order_by
   imageurl: order_by
+  investigator_id: order_by
   is_unique: order_by
   linked: order_by
   linked_card: all_card_order_by
@@ -1091,6 +1128,7 @@ input all_card_order_by {
   pack_code: order_by
   pack_position: order_by
   packs_aggregate: card_pack_aggregate_order_by
+  parallel_of_code: order_by
   permanent: order_by
   position: order_by
   preview: order_by
@@ -1113,11 +1151,13 @@ input all_card_order_by {
   real_taboo_text_change: order_by
   real_text: order_by
   real_traits: order_by
+  replacement_for: order_by
   restrictions: order_by
   sanity: order_by
   shroud: order_by
   side_deck_options: order_by
   side_deck_requirements: order_by
+  signature_for: order_by
   simple_deck_requirements: order_by
   simple_side_deck_requirements: order_by
   skill_agility: order_by
@@ -1165,6 +1205,9 @@ input all_card_prepend_input {
 select columns of table "all_card"
 """
 enum all_card_select_column {
+  """column name"""
+  advanced_for
+
   """column name"""
   alt_art_investigator
 
@@ -1286,6 +1329,9 @@ enum all_card_select_column {
   imageurl
 
   """column name"""
+  investigator_id
+
+  """column name"""
   is_unique
 
   """column name"""
@@ -1302,6 +1348,9 @@ enum all_card_select_column {
 
   """column name"""
   pack_position
+
+  """column name"""
+  parallel_of_code
 
   """column name"""
   permanent
@@ -1370,6 +1419,9 @@ enum all_card_select_column {
   real_traits
 
   """column name"""
+  replacement_for
+
+  """column name"""
   restrictions
 
   """column name"""
@@ -1383,6 +1435,9 @@ enum all_card_select_column {
 
   """column name"""
   side_deck_requirements
+
+  """column name"""
+  signature_for
 
   """column name"""
   simple_deck_requirements
@@ -1561,6 +1616,7 @@ enum all_card_select_column_all_card_aggregate_bool_exp_bool_or_arguments_column
 input type for updating data in table "all_card"
 """
 input all_card_set_input {
+  advanced_for: String
   alt_art_investigator: Boolean
   alternate_of_code: String
   alternate_required_code: String
@@ -1601,12 +1657,14 @@ input all_card_set_input {
   illustrator: String
   imagesrc: String
   imageurl: String
+  investigator_id: String
   is_unique: Boolean
   linked: Boolean
   myriad: Boolean
   official: Boolean
   pack_code: String
   pack_position: Int
+  parallel_of_code: String
   permanent: Boolean
   position: Int
   preview: Boolean
@@ -1629,11 +1687,13 @@ input all_card_set_input {
   real_taboo_text_change: String
   real_text: String
   real_traits: String
+  replacement_for: String
   restrictions: jsonb
   sanity: Int
   shroud: Int
   side_deck_options: jsonb
   side_deck_requirements: jsonb
+  signature_for: String
   simple_deck_requirements: jsonb
   simple_side_deck_requirements: jsonb
   skill_agility: Int
@@ -1861,6 +1921,7 @@ input all_card_stream_cursor_input {
 
 """Initial value of the column from where the streaming should start"""
 input all_card_stream_cursor_value_input {
+  advanced_for: String
   alt_art_investigator: Boolean
   alternate_of_code: String
   alternate_required_code: String
@@ -1901,12 +1962,14 @@ input all_card_stream_cursor_value_input {
   illustrator: String
   imagesrc: String
   imageurl: String
+  investigator_id: String
   is_unique: Boolean
   linked: Boolean
   myriad: Boolean
   official: Boolean
   pack_code: String
   pack_position: Int
+  parallel_of_code: String
   permanent: Boolean
   position: Int
   preview: Boolean
@@ -1929,11 +1992,13 @@ input all_card_stream_cursor_value_input {
   real_taboo_text_change: String
   real_text: String
   real_traits: String
+  replacement_for: String
   restrictions: jsonb
   sanity: Int
   shroud: Int
   side_deck_options: jsonb
   side_deck_requirements: jsonb
+  signature_for: String
   simple_deck_requirements: jsonb
   simple_side_deck_requirements: jsonb
   skill_agility: Int
@@ -2544,6 +2609,9 @@ update columns of table "all_card"
 """
 enum all_card_update_column {
   """column name"""
+  advanced_for
+
+  """column name"""
   alt_art_investigator
 
   """column name"""
@@ -2664,6 +2732,9 @@ enum all_card_update_column {
   imageurl
 
   """column name"""
+  investigator_id
+
+  """column name"""
   is_unique
 
   """column name"""
@@ -2680,6 +2751,9 @@ enum all_card_update_column {
 
   """column name"""
   pack_position
+
+  """column name"""
+  parallel_of_code
 
   """column name"""
   permanent
@@ -2748,6 +2822,9 @@ enum all_card_update_column {
   real_traits
 
   """column name"""
+  replacement_for
+
+  """column name"""
   restrictions
 
   """column name"""
@@ -2761,6 +2838,9 @@ enum all_card_update_column {
 
   """column name"""
   side_deck_requirements
+
+  """column name"""
+  signature_for
 
   """column name"""
   simple_deck_requirements
@@ -32830,6 +32910,7 @@ type pack {
   official: Boolean!
   position: Int!
   real_name: String!
+  reprint: Boolean
 
   """An array relationship"""
   translations(
@@ -32975,6 +33056,7 @@ input pack_bool_exp {
   official: Boolean_comparison_exp
   position: Int_comparison_exp
   real_name: String_comparison_exp
+  reprint: Boolean_comparison_exp
   translations: pack_name_bool_exp
   translations_aggregate: pack_name_aggregate_bool_exp
   type: String_comparison_exp
@@ -33008,6 +33090,7 @@ input pack_insert_input {
   official: Boolean
   position: Int
   real_name: String
+  reprint: Boolean
   translations: pack_name_arr_rel_insert_input
   type: String
 }
@@ -33322,6 +33405,7 @@ input pack_order_by {
   official: order_by
   position: order_by
   real_name: order_by
+  reprint: order_by
   translations_aggregate: pack_name_aggregate_order_by
   type: order_by
 }
@@ -33351,6 +33435,9 @@ enum pack_select_column {
   real_name
 
   """column name"""
+  reprint
+
+  """column name"""
   type
 }
 
@@ -33360,6 +33447,9 @@ select "pack_aggregate_bool_exp_bool_and_arguments_columns" columns of table "pa
 enum pack_select_column_pack_aggregate_bool_exp_bool_and_arguments_columns {
   """column name"""
   official
+
+  """column name"""
+  reprint
 }
 
 """
@@ -33368,6 +33458,9 @@ select "pack_aggregate_bool_exp_bool_or_arguments_columns" columns of table "pac
 enum pack_select_column_pack_aggregate_bool_exp_bool_or_arguments_columns {
   """column name"""
   official
+
+  """column name"""
+  reprint
 }
 
 """
@@ -33379,6 +33472,7 @@ input pack_set_input {
   official: Boolean
   position: Int
   real_name: String
+  reprint: Boolean
   type: String
 }
 
@@ -33436,6 +33530,7 @@ input pack_stream_cursor_value_input {
   official: Boolean
   position: Int
   real_name: String
+  reprint: Boolean
   type: String
 }
 
@@ -33469,6 +33564,9 @@ enum pack_update_column {
 
   """column name"""
   real_name
+
+  """column name"""
+  reprint
 
   """column name"""
   type

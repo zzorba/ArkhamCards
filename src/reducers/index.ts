@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { concat, find, filter, flatMap, forEach, map, last, sortBy, uniq, values, reverse } from 'lodash';
+import { concat, find, filter, flatMap, forEach, map, last, sortBy, uniq, values, reverse, uniqBy } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
 import { c, t } from 'ttag';
@@ -53,7 +53,7 @@ import {
   CardPoolMode,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
-import { ChaosBag, POOL_CURRENT_PACKS, POOL_INVESTIGATOR_CYCLE, reprintPackToPack, specialPacks } from '@app_constants';
+import { ChaosBag, POOL_CURRENT_PACKS, POOL_INVESTIGATOR_CH2_CYCLE, reprintPackToPack, SPECIAL_PACKS } from '@app_constants';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { LatestDeckRedux, MiniCampaignRedux, MiniDeckRedux, MiniLinkedCampaignRedux } from '@data/local/types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -402,9 +402,9 @@ export const getAllPacks = createSelector(
   getLangChoice,
   getAllRealPacks,
   (_, allPacks) => {
-    const reprintPacks = map(specialPacks, pack => reprintPackToPack(pack));
+    const reprintPacks = map(SPECIAL_PACKS, pack => reprintPackToPack(pack));
     return sortBy(
-      sortBy([...allPacks, ...reprintPacks], pack => pack.position),
+      uniqBy(sortBy([...allPacks, ...reprintPacks], pack => pack.position), p => p.code),
       pack => pack.cycle_position
     );
   }
@@ -814,17 +814,15 @@ export const makeCardPoolSelector = (): (state: AppState) => { cardPoolMode: Car
     (mode: CardPoolMode | undefined, cardPoolPacks: string[] | undefined, inCollection: { [code: string]: boolean }): { cardPoolMode: CardPoolMode; cardPoolPacks: string[] } => {
       const cardPoolMode = mode ?? 'legacy';
       switch (cardPoolMode) {
-        case 'current': {
-          const corePack = filter(cardPoolPacks ?? [], p => p === 'core' || p === 'rcore')[0];
+        case 'current':
           return {
             cardPoolMode,
             cardPoolPacks: [
-              corePack ?? (inCollection.rcore ? 'rcore' : 'core'),
+              'core_2026',
               ...POOL_CURRENT_PACKS,
-              POOL_INVESTIGATOR_CYCLE,
+              POOL_INVESTIGATOR_CH2_CYCLE,
             ],
           };
-        }
         case 'legacy':
           return {
             cardPoolMode,

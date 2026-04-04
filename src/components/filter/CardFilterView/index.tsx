@@ -26,7 +26,7 @@ import { slotsTranslations } from '../CardAssetFilterView';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import TwoColumnSort, { ToggleItem } from '../TwoColumnSort';
 import useTabooChooser from './useTabooChooser';
-import { getSpecialPackNames, reprintPackToPack, specialPacks } from '@app_constants';
+import { getSpecialPackNames, reprintPackToPack, SPECIAL_PACKS } from '@app_constants';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {
@@ -191,7 +191,7 @@ const CardFilterView = () => {
           return false;
         }
       ),
-      ...flatMap(specialPacks, pack => {
+      ...flatMap(SPECIAL_PACKS, pack => {
         if (pack.cyclePosition > 1 && pack.cyclePosition < 50) {
           newCyclePackCounts[pack.cyclePosition] =
             (newCyclePackCounts[pack.cyclePosition] || 0) + 1;

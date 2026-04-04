@@ -80,7 +80,7 @@ function showDeKofi() {
 }
 
 function showRuDonate() {
-  Linking.openURL('https://www.tinkoff.ru/cf/27GmNzxhhUk');
+  Linking.openURL('https://www.tbank.ru/cf/2lcb3EoNfVl');
 }
 
 function PlayerView({ style }: PlayerProps) {

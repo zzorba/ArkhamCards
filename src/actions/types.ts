@@ -336,6 +336,7 @@ export interface Pack {
   known: number;
   total: number;
   url?: string;
+  reprint?: boolean;
 }
 
 export interface Trauma {

@@ -11,8 +11,8 @@ import {
   SKILLS,
   FactionCodeType,
   CARD_FACTION_CODES,
-  specialPacksSet,
-  specialPacks,
+  SPECIAL_PACK_SET,
+  SPECIAL_PACKS,
 } from '@app_constants';
 import { Brackets } from 'typeorm/browser';
 
@@ -856,7 +856,7 @@ export default class FilterBuilder {
 
   packCodes(packCodes: string[]): Brackets[] {
     const [specialPackCodes, normalPacks] = partition(packCodes, (code) =>
-      specialPacksSet.has(code)
+      SPECIAL_PACK_SET.has(code)
     );
     const result: Brackets[] = [];
 
@@ -895,7 +895,7 @@ export default class FilterBuilder {
     if (specialPackCodes.length) {
       const packs = flatMap(
         specialPackCodes,
-        (code) => find(specialPacks, (pack) => pack.code === code) ?? []
+        (code) => find(SPECIAL_PACKS, (pack) => pack.code === code) ?? []
       );
       const [playerPacks, campaignPacks] = partition(
         packs,

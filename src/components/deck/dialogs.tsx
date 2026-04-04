@@ -426,6 +426,13 @@ export function useSimpleTextDialog({
 interface PickerItemHeader {
   type: 'header';
   title: string;
+  max?: number;
+  value?: undefined;
+}
+
+interface PickerItemPlaceholder {
+  type: 'placeholder';
+  title: string;
   value?: undefined;
 }
 
@@ -441,7 +448,7 @@ interface PickerItem<T> {
   iconNode?: React.ReactNode;
   rightNode?: React.ReactNode;
 }
-export type Item<T> = PickerItemHeader | PickerItem<T>;
+export type Item<T> = PickerItemHeader | PickerItemPlaceholder | PickerItem<T>;
 interface PickerDialogOptions<T> {
   title: string;
   investigator?: CampaignInvestigator;
@@ -487,6 +494,10 @@ export function usePickerDialog<T>({
         { descriptionSection }
         { map(items, (item, idx) => item.type === 'header' ? (
           <DeckBubbleHeader title={item.title} key={idx} />
+        ) : item.type === 'placeholder' ? (
+          <View key={idx} style={[space.marginS, space.paddingBottomXs]}>
+            <Text style={[typography.text, { fontStyle: 'italic' }]}>{item.title}</Text>
+          </View>
         ) : (
           <NewDialog.PickerItem<T>
             key={idx}
@@ -507,7 +518,7 @@ export function usePickerDialog<T>({
         )) }
       </View>
     );
-  }, [items, onValuePress, descriptionSection, noIcons, selectedValue]);
+  }, [items, onValuePress, descriptionSection, noIcons, selectedValue, typography]);
   const { setVisible, dialog } = useDialog({
     title,
     investigator: investigator?.card,
@@ -552,7 +563,38 @@ export function useMultiPickerDialog<T>({
   const onValuePress = useCallback((value: T) => {
     onValueChange(value, !selectedValues?.has(value));
   }, [onValueChange, selectedValues]);
-  const selectedCount = useMemo(() => sumBy(items, item => item.type !== 'header' && selectedValues?.has(item.value) ? 1 : 0), [selectedValues, items]);
+  const selectedCount = useMemo(() => sumBy(items, item => item.type !== 'header' && item.type !== 'placeholder' && selectedValues?.has(item.value) ? 1 : 0), [selectedValues, items]);
+
+  // Per-section max: for each item index, whether its section's max has been reached
+  const sectionMaxReached = useMemo(() => {
+    const result: boolean[] = new Array(items.length).fill(false);
+    let sectionMax: number | undefined;
+    let sectionItemIndices: number[] = [];
+    const flushSection = () => {
+      if (sectionMax !== undefined && sectionItemIndices.length > 0) {
+        const count = sectionItemIndices.filter(i => {
+          const item = items[i];
+          return !item.type && selectedValues?.has(item.value);
+        }).length;
+        if (count >= sectionMax) {
+          sectionItemIndices.forEach(i => {
+            result[i] = true;
+          });
+        }
+      }
+      sectionItemIndices = [];
+    };
+    items.forEach((item, idx) => {
+      if (item.type === 'header') {
+        flushSection();
+        sectionMax = item.max;
+      } else if (item.type !== 'placeholder') {
+        sectionItemIndices.push(idx);
+      }
+    });
+    flushSection();
+    return result;
+  }, [items, selectedValues]);
   const content = useMemo(() => {
     return (
       <View>
@@ -569,6 +611,10 @@ export function useMultiPickerDialog<T>({
         )}
         { map(items, (item, idx) => item.type === 'header' ? (
           <DeckBubbleHeader title={item.title} key={idx} />
+        ) : item.type === 'placeholder' ? (
+          <View key={idx} style={[space.marginS, space.paddingBottomXs]}>
+            <Text style={[typography.text, { fontStyle: 'italic' }]}>{item.title}</Text>
+          </View>
         ) : (
           <NewDialog.PickerItem<T>
             key={idx}
@@ -582,12 +628,12 @@ export function useMultiPickerDialog<T>({
             showDisabledIcons
             selected={item.selected ?? !!selectedValues?.has(item.value)}
             last={idx === items.length - 1 || items[idx + 1].type === 'header'}
-            disabled={item.disabled || (!selectedValues?.has(item.value) && !!max && selectedCount >= max)}
+            disabled={item.disabled || (!selectedValues?.has(item.value) && ((!!max && selectedCount >= max) || sectionMaxReached[idx]))}
           />
         )) }
       </View>
     );
-  }, [items, onValuePress, borderStyle, typography, description, selectedValues, max, selectedCount, error, header]);
+  }, [items, onValuePress, sectionMaxReached, borderStyle, typography, description, selectedValues, max, selectedCount, error, header]);
   const { setVisible, dialog } = useDialog({
     title,
     investigator,

@@ -225,6 +225,7 @@ function processTranslationData(
         cycle_name,
         known: 0,
         total: 0,
+        reprint: pack.reprint ?? undefined,
       };
     });
 

@@ -23,6 +23,7 @@ interface Props {
 
   firstElement?: (last: boolean) => React.ReactNode;
   parallelInvestigators: Card[] | undefined;
+  isArkhamDbDeck?: boolean;
 }
 
 export default function DeckMetadataControls({
@@ -39,6 +40,7 @@ export default function DeckMetadataControls({
   hasPreviousDeck,
   showTaboo,
   parallelInvestigators,
+  isArkhamDbDeck,
 }: Props) {
   const [investigator] = useSingleCard(investigatorCode, 'player', tabooSetId);
   const { selectedPacks, setSelectedPacks, cardPool, setCardPool } = useDerivedCardPool(meta, setMeta);
@@ -55,6 +57,7 @@ export default function DeckMetadataControls({
         setSelectedPacks={setSelectedPacks}
         cardPool={cardPool}
         setCardPool={setCardPool}
+        isArkhamDbDeck={isArkhamDbDeck}
       />
       { !!setTabooSet && (
         <DeckTabooPickerButton

@@ -17,6 +17,7 @@ fragment Pack on pack {
   real_name
   position
   official
+  reprint
 }
 fragment Cycle on cycle {
   code

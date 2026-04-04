@@ -944,6 +944,13 @@ export default function OddsCalculatorComponent({
       <View>
         { map(items, (item, idx) => item.type === 'header' ? (
           <DeckBubbleHeader title={item.title} key={idx} />
+        ) : item.type === 'placeholder' ? (
+          <NewDialog.PickerItem
+            key={idx}
+            text={item.title}
+            selected={currentScenario === item.value}
+            last={idx === items.length - 1 || items[idx + 1].type === 'header'}
+          />
         ) : (
           <NewDialog.PickerItem
             key={idx}

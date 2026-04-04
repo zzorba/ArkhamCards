@@ -15,8 +15,8 @@ interface Props<T> {
   text: string;
   disabled?: boolean;
   description?: string;
-  value: T;
-  onValueChange: (value: T) => void;
+  value?: T;
+  onValueChange?: (value: T) => void;
   selected: boolean;
   last: boolean;
   showDisabledIcons?: boolean;
@@ -26,7 +26,9 @@ export default function ItemPickerLine<T>({ iconName, iconNode, descriptionNode,
   const { colors } = useContext(StyleContext);
   const onPress = useCallback(() => {
     ReactNativeHapticFeedback.trigger('impactLight');
-    onValueChange(value);
+    if (onValueChange && value) {
+      onValueChange(value);
+    }
   }, [onValueChange, value]);
   const scale = useSharedValue(1);
   const onPressIn = useCallback(() => {

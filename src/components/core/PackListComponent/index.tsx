@@ -15,7 +15,7 @@ import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
 import StyleContext from '@styles/StyleContext';
-import { cycleName, ReprintPack, reprintPackToPack, specialPacks } from '@app_constants';
+import { cycleName, ReprintPack, reprintPackToPack, SPECIAL_PACKS } from '@app_constants';
 import ArkhamButton from '../ArkhamButton';
 import { useToggles } from '../hooks';
 
@@ -209,10 +209,10 @@ export default function PackListComponent({
         pack.cycle_position < 2 ||
         pack.cycle_position >= 50 ||
         pack.position === 1
-      ) && (!cyclesOnly || pack.cycle_position < 70)),
+      ) && (!cyclesOnly || pack.cycle_position < 70) && !pack.reprint),
       pack => (cyclesOnly && pack.cycle_position >= 2 && pack.cycle_position < 50) ? 2 : pack.cycle_position),
     (group, key) => {
-      const reprintPacks = filter(specialPacks, reprintPack => `${reprintPack.cyclePosition}` === key);
+      const reprintPacks = filter(SPECIAL_PACKS, reprintPack => `${reprintPack.cyclePosition}` === key);
       if (!cyclesOnly && reprintPacks.length) {
         const items: PackItem[] = [
           ...map(reprintPacks, reprint => {

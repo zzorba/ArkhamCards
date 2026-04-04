@@ -6508,7 +6508,7 @@ export type oauth_scopes_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type packKeySpecifier = ('cards' | 'cards_aggregate' | 'code' | 'cycle' | 'cycle_code' | 'official' | 'position' | 'real_name' | 'translations' | 'translations_aggregate' | 'type' | packKeySpecifier)[];
+export type packKeySpecifier = ('cards' | 'cards_aggregate' | 'code' | 'cycle' | 'cycle_code' | 'official' | 'position' | 'real_name' | 'reprint' | 'translations' | 'translations_aggregate' | 'type' | packKeySpecifier)[];
 export type packFieldPolicy = {
 	cards?: FieldPolicy<any> | FieldReadFunction<any>,
 	cards_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6518,6 +6518,7 @@ export type packFieldPolicy = {
 	official?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	reprint?: FieldPolicy<any> | FieldReadFunction<any>,
 	translations?: FieldPolicy<any> | FieldReadFunction<any>,
 	translations_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	type?: FieldPolicy<any> | FieldReadFunction<any>

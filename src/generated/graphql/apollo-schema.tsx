@@ -29002,6 +29002,7 @@ export type Pack = {
   official: Scalars['Boolean']['output'];
   position: Scalars['Int']['output'];
   real_name: Scalars['String']['output'];
+  reprint?: Maybe<Scalars['Boolean']['output']>;
   /** An array relationship */
   translations: Array<Pack_Name>;
   /** An aggregate relationship */
@@ -29152,6 +29153,7 @@ export type Pack_Bool_Exp = {
   official?: InputMaybe<Boolean_Comparison_Exp>;
   position?: InputMaybe<Int_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
+  reprint?: InputMaybe<Boolean_Comparison_Exp>;
   translations?: InputMaybe<Pack_Name_Bool_Exp>;
   translations_aggregate?: InputMaybe<Pack_Name_Aggregate_Bool_Exp>;
   type?: InputMaybe<String_Comparison_Exp>;
@@ -29177,6 +29179,7 @@ export type Pack_Insert_Input = {
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   real_name?: InputMaybe<Scalars['String']['input']>;
+  reprint?: InputMaybe<Scalars['Boolean']['input']>;
   translations?: InputMaybe<Pack_Name_Arr_Rel_Insert_Input>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
@@ -29451,6 +29454,7 @@ export type Pack_Order_By = {
   official?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
+  reprint?: InputMaybe<Order_By>;
   translations_aggregate?: InputMaybe<Pack_Name_Aggregate_Order_By>;
   type?: InputMaybe<Order_By>;
 };
@@ -29473,19 +29477,25 @@ export enum Pack_Select_Column {
   /** column name */
   RealName = 'real_name',
   /** column name */
+  Reprint = 'reprint',
+  /** column name */
   Type = 'type'
 }
 
 /** select "pack_aggregate_bool_exp_bool_and_arguments_columns" columns of table "pack" */
 export enum Pack_Select_Column_Pack_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
   /** column name */
-  Official = 'official'
+  Official = 'official',
+  /** column name */
+  Reprint = 'reprint'
 }
 
 /** select "pack_aggregate_bool_exp_bool_or_arguments_columns" columns of table "pack" */
 export enum Pack_Select_Column_Pack_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
   /** column name */
-  Official = 'official'
+  Official = 'official',
+  /** column name */
+  Reprint = 'reprint'
 }
 
 /** input type for updating data in table "pack" */
@@ -29495,6 +29505,7 @@ export type Pack_Set_Input = {
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   real_name?: InputMaybe<Scalars['String']['input']>;
+  reprint?: InputMaybe<Scalars['Boolean']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -29546,6 +29557,7 @@ export type Pack_Stream_Cursor_Value_Input = {
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   real_name?: InputMaybe<Scalars['String']['input']>;
+  reprint?: InputMaybe<Scalars['Boolean']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -29572,6 +29584,8 @@ export enum Pack_Update_Column {
   Position = 'position',
   /** column name */
   RealName = 'real_name',
+  /** column name */
+  Reprint = 'reprint',
   /** column name */
   Type = 'type'
 }
@@ -52503,7 +52517,7 @@ export type GetTranslationDataQueryVariables = Exact<{
 }>;
 
 
-export type GetTranslationDataQuery = { __typename?: 'query_root', faction_name: Array<{ __typename?: 'faction_name', code: string, name: string }>, card_type_name: Array<{ __typename?: 'card_type_name', code: Card_Type_Code_Enum, name: string }>, card_subtype_name: Array<{ __typename?: 'card_subtype_name', code: string, name: string }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'pack_name', name: string }> }> }> };
+export type GetTranslationDataQuery = { __typename?: 'query_root', faction_name: Array<{ __typename?: 'faction_name', code: string, name: string }>, card_type_name: Array<{ __typename?: 'card_type_name', code: Card_Type_Code_Enum, name: string }>, card_subtype_name: Array<{ __typename?: 'card_subtype_name', code: string, name: string }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, reprint?: boolean | null, translations: Array<{ __typename?: 'pack_name', name: string }> }> }> };
 
 export type GetPlayerCardsQueryVariables = Exact<{
   locale: Scalars['String']['input'];
@@ -52805,7 +52819,7 @@ export type TabooSetFragment = { __typename?: 'taboo_set', id: number, name?: st
 
 export type EncounterSetFragment = { __typename?: 'card_encounter_set', code: string, name: string };
 
-export type PackFragment = { __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean };
+export type PackFragment = { __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, reprint?: boolean | null };
 
 export type CycleFragment = { __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean };
 
@@ -53291,6 +53305,7 @@ export const PackFragmentDoc = gql`
   real_name
   position
   official
+  reprint
 }
     `;
 export const CycleFragmentDoc = gql`
