@@ -94,12 +94,12 @@ export default function CardFooterInfo({ card }: Props) {
               ellipsizeMode="tail"
               numberOfLines={1}
             >
-              { card.cycle_name }
+              { card.pack_code === 'core_2026' ? card.pack_name : card.cycle_name }
             </Text>
             <View style={styles.icon}>
               <EncounterIcon
                 encounter_code={
-                  card.custom() || card.cycle_code === 'return' ?
+                  card.custom() || card.cycle_code === 'return' || card.cycle_code === 'core' ?
                     card.pack_code :
                     (card.cycle_code || card.pack_code)
                 }

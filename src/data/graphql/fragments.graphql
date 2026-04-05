@@ -95,6 +95,7 @@ fragment SingleCard on all_card {
   errata_date
   alternate_of_code
   duplicate_of_code
+  reprint_of_code
   spoiler
   vengeance
   customization_options

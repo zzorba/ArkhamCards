@@ -106,7 +106,7 @@ export const normalize_array = (array: string[] | undefined): string | null =>
     .map((t) => `#${t}#`)
     .join(',') ?? null;
 
-export const CARD_NUM_COLUMNS = 146;
+export const CARD_NUM_COLUMNS = 147;
 
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
@@ -217,6 +217,9 @@ export default class Card {
 
   @Column('text', { nullable: true })
   public duplicate_of_code?: string;
+
+  @Column('text', { nullable: true })
+  public reprint_of_code?: string;
 
   @Column('simple-array', { nullable: true })
   public reprint_pack_codes?: string[];

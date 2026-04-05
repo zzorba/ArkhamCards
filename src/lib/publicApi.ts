@@ -121,6 +121,9 @@ function handleDerivativeData(
   dedupedCards: Card[],
   dupes: {
     [code: string]: Card[] | undefined;
+  },
+  reprints: {
+    [code: string]: Card[] | undefined;
   }
 ) {
   const flatCards = flatMap(dedupedCards, (c: Card) => {
@@ -134,11 +137,24 @@ function handleDerivativeData(
   const bondedNames: string[] = [];
   const playerCards: Card[] = [];
   forEach(flatCards, (card) => {
-    if (dupes[card.code]) {
-      card.reprint_pack_codes = uniq(map(dupes[card.code], (c) => c.pack_code));
-      card.reprint_info = uniq(
-        map(dupes[card.code], (c) => CardReprintInfo.parse(c))
+    if (dupes[card.code] || reprints[card.code]) {
+      const theDupes = dupes[card.code] ?? [];
+      const theReprints = reprints[card.code] ?? [];
+      card.reprint_pack_codes = uniq(map(theDupes, (c) => c.pack_code));
+      const reprint_info = uniq(
+        [
+          ...map(theDupes, (c) => CardReprintInfo.parse(c)),
+          ...map(theReprints, (c) => CardReprintInfo.parse(c)),
+        ]
       );
+      card.reprint_info = reprint_info;
+      forEach(reprints[card.code], reprint => {
+        reprint.reprint_info = uniq([
+          CardReprintInfo.parse(card),
+          ...map(theDupes, (c) => CardReprintInfo.parse(c)),
+          ...flatMap(theReprints, (c) => c.code !== reprint.code ? CardReprintInfo.parse(c) : []),
+        ])
+      });
     }
     if (!card.hidden && card.encounter_code) {
       encounter_card_counts[card.encounter_code] =
@@ -313,12 +329,20 @@ async function processCardResult(
   const dupes: {
     [code: string]: Card[] | undefined;
   } = {};
+  const reprints: {
+    [code: string]: Card[] | undefined;
+  } = {};
   forEach(allCards, (card) => {
-    if (!card.taboo_set_id && card.duplicate_of_code) {
-      dupes[card.duplicate_of_code] = [
-        ...(dupes[card.duplicate_of_code] || []),
-        card,
-      ];
+    if (!card.taboo_set_id) {
+      if (card.duplicate_of_code) {
+        dupes[card.duplicate_of_code] = [
+          ...(dupes[card.duplicate_of_code] || []),
+          card,
+        ];
+      }
+      if (card.reprint_of_code) {
+        reprints[card.reprint_of_code] = [...(reprints[card.reprint_of_code] || []), card];
+      }
     }
     cardsToInsert.push(card);
   });
@@ -334,7 +358,7 @@ async function processCardResult(
     cardsToInsert,
     (c: Card) => !!c.linked_card || !linkedSet.has(c.code)
   );
-  handleDerivativeData(dedupedCards, dupes);
+  handleDerivativeData(dedupedCards, dupes, reprints);
   const [linkedCards, normalCards] = partition(
     dedupedCards,
     (card) => !!card.linked_card
