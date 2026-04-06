@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.9\n"
 
 msgid "Guardian"
 msgstr "Wächter"
@@ -787,19 +787,19 @@ msgstr "Chaosbeutel"
 msgid "Adjust Weakness Set"
 msgstr "Schwächeset anpassen"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Dieses Deck enthält mehrere Grundschwächen"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Dieses Deck enthält eine Grundschwäche"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Willst du sie aus dem Grundschwächenset der Kampagne entfernen?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Willst du es aus dem Grundschwächenset der Kampagne entfernen?"
 
@@ -1001,7 +1001,7 @@ msgid "Save Local Changes"
 msgstr "Lokale Änderungen speichern"
 
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
-msgstr "Bitte speichere alle lokalen Änderungen am Deck vor der Synchronisation mit der ArkhamDB."
+msgstr "Bitte alle lokalen Änderungen am Deck vor der Synchronisation mit ArkhamDB speichern."
 
 msgid "Unsupported Operation"
 msgstr "Nicht unterstützte Aktion"
@@ -4770,7 +4770,7 @@ msgid "Other investigator cards"
 msgstr "Andere Ermittlerkarten"
 
 msgid "Ultimatum of Chaos"
-msgstr ""
+msgstr "Ultimatum des Chaos"
 
 msgid "Generate deck"
 msgstr "Deck erzeugen"
@@ -5427,10 +5427,10 @@ msgid "Bearer"
 msgstr "Träger"
 
 msgid "You cannot have more than 5 Seeker and/or Survivor cards"
-msgstr "Du kannst nicht mehr als 5 Sucher und/oder Überlebende Karten haben."
+msgstr "Du kannst nicht mehr als 5 Sucher- und/oder Überlebende-Karten haben."
 
 msgid "You cannot have more than 5 Mystic and/or Survivor cards"
-msgstr "Du kannst nicht mehr als 5 Mystiker und/oder Überlebende Karten haben."
+msgstr "Du kannst nicht mehr als 5 Mystiker- und/oder Überlebende-Karten haben."
 
 msgid "Fan-made Investigators"
 msgstr "Fan-made Ermittler"
@@ -6296,7 +6296,7 @@ msgstr ""
 "Das wird etwa 25 MB Speicherplatz verwenden."
 
 msgid "Head"
-msgstr ""
+msgstr "Kopf"
 
 #, javascript-format
 msgid "Cost: ${ _card.cost }"
@@ -6331,31 +6331,31 @@ msgid "Queen of Ash"
 msgstr "Königin der Asche"
 
 msgid "Core (2026)"
-msgstr ""
+msgstr "Grundspiel (2026)"
 
 msgid "Investigator Decks"
-msgstr ""
+msgstr "Ermittlerdecks"
 
 msgid "Tap to view"
-msgstr ""
+msgstr "Zum Anzeigen antippen"
 
 msgid "Investigator decks"
-msgstr ""
+msgstr "Ermittlerdecks"
 
 msgid "Recent releases"
-msgstr ""
+msgstr "Zuletzt veröffentlicht"
 
 msgid "None released yet"
-msgstr ""
+msgstr "Bisher keine veröffentlicht"
 
 msgid "Chapter 1"
-msgstr ""
+msgstr "Kapitel 1"
 
 msgid "Chapter 2"
-msgstr ""
+msgstr "Kapitel 2"
 
 msgid "This draft uses the deck's selected card pool."
-msgstr ""
+msgstr "Dieser Draft nutzt den gewählten Kartenpool des Decks."
 
 msgctxt "investigator"
 msgid "Custom"
@@ -7683,7 +7683,7 @@ msgstr "Auferstanden"
 
 msgctxt "trait"
 msgid "Row"
-msgstr ""
+msgstr "Reihe"
 
 msgctxt "trait"
 msgid "Royalty"
@@ -7991,7 +7991,7 @@ msgstr "Haltung"
 
 msgctxt "trait"
 msgid "Prosthesis"
-msgstr ""
+msgstr "Prothese"
 
 msgctxt "trait"
 msgid "R'lyeh"
