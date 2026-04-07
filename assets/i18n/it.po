@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.0.1\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.9\n"
 
 msgid "Guardian"
 msgstr "Guardiano"
@@ -794,19 +794,19 @@ msgstr "Sacchetto del Caos"
 msgid "Adjust Weakness Set"
 msgstr "Correggi Debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Questo mazzo contiene numerose debolezze Base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Questo mazzo contiene una debolezza base"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverle dal set di debolezze base della campagna?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Vuoi rimuoverla dal set di debolezze base della campagna?"
 
@@ -4813,13 +4813,13 @@ msgid "Re-generate deck"
 msgstr "Ri-genera il mazzo"
 
 msgid "Draft from card collection"
-msgstr "Pesca carte dalla collezione"
+msgstr "Draft dalla collezione"
 
 msgid "Disable to choose which packs to draft from"
-msgstr "Disabilita per scegliere da quale pack pescare"
+msgstr "Disabilita per scegliere da quale pack fare il draft"
 
 msgid "Draft using your card collection"
-msgstr "Pesca usando la tua collezione di carte"
+msgstr "Draft usando la tua collezione di carte"
 
 msgid "Draft Pool"
 msgstr "Selezione di Carte"
@@ -4828,7 +4828,7 @@ msgid "Invalid deck"
 msgstr "Mazzo non valido"
 
 msgid "This deck is currently invalid in some way. Please address the issues before continuing the draft."
-msgstr "Questo mazzo è al momento non valido. Trova una soluzione prima di continuare a pescare."
+msgstr "Questo mazzo è al momento non valido. Trova una soluzione prima di continuare il draft."
 
 msgid "Hand size:"
 msgstr "Dimensione mano:"
@@ -4843,16 +4843,16 @@ msgid "Each 'hand' of cards is taken at random from all possible cards that are 
 msgstr "Ogni 'mano' di carte è presa a caso tra tutte le carte possibili permesse all'investigatore attuale + opzioni di deckbuilding che hai scelto."
 
 msgid "The drafting process will continue until your deck is full, but you can stop or change the settings at any time"
-msgstr "La pesca delle carte continuerà finché il mazzo non è completo, ma ti puoi fermare o cambiare le impostazioni in qualsiasi momento"
+msgstr "Il draft continuerà finché il mazzo non è completo, ma ti puoi fermare o cambiare le impostazioni in qualsiasi momento"
 
 msgid "Begin draft"
-msgstr "Inizia la pesca"
+msgstr "Inizia il draft"
 
 msgid "Selection"
 msgstr "Selezione"
 
 msgid "Draft cards"
-msgstr "Pesca carte"
+msgstr "Draft carte"
 
 msgid "Please correct invalid deck issues"
 msgstr "Correggi i problemi di mazzo non valido"
@@ -4864,7 +4864,7 @@ msgid ""
 msgstr ""
 "Il mazzo contiene una o più carte proibite.\n"
 "\n"
-"Trova una soluzione al problema prima di pescare altre carte."
+"Trova una soluzione al problema prima continuare il draft."
 
 msgid "Deck is full"
 msgstr "Il mazzo è completo"
@@ -4883,7 +4883,7 @@ msgstr ""
 "Al momento è possibile pescare solo carte di livello 0 utilizzando l'app."
 
 msgid "Draft Cards"
-msgstr "Pesca Carte"
+msgstr "Draft Carte"
 
 msgid "Deck id copied!"
 msgstr "ID mazzo copiato!"
@@ -6033,7 +6033,7 @@ msgid "${ total } of ${ attachment.targetSize }"
 msgstr "${ total } di ${ attachment.targetSize }"
 
 msgid "Draft"
-msgstr "Pesca"
+msgstr "Draft"
 
 #, javascript-format
 msgid "Act: ${ count }"
@@ -6104,7 +6104,7 @@ msgid "Campaign required"
 msgstr "Campagna richiesta"
 
 msgid "You must select a campaign."
-msgstr "Devi selezionare una campagna"
+msgstr "Devi selezionare una campagna."
 
 msgid "The Drowned City"
 msgstr "La Città Sommersa"
@@ -6187,14 +6187,14 @@ msgid "Use only cards from your choice of three expansions"
 msgstr "Utilizza solo carte da tre espansioni a tua scelta"
 
 msgid "Use a completely custom card pool"
-msgstr "Utilizza un insieme di carte completamente personalizzato"
+msgstr "Utilizza un pool di carte completamente personalizzato"
 
 #, javascript-format
 msgid "Custom: ${ selectedPacks.size } packs selected"
 msgstr "Personalizzato: ${ selectedPacks.size } pack selezionati"
 
 msgid "Card pool"
-msgstr "Insieme di carte"
+msgstr "Pool di carte"
 
 msgid "This is an optional variant that push players to build their decks creatively using a smaller cardpool."
 msgstr "Si tratta di una variante opzionale che spinge i giocatori a costruire i propri mazzi in modo creativo utilizzando un numero ridotto di carte."
@@ -6203,10 +6203,10 @@ msgid "Select packs"
 msgstr "Seleziona i pack"
 
 msgid "Choose a core set and three expansions to use for this limited pool."
-msgstr "Scegli un set base e tre espansioni da usare per questo insieme limitato di carte."
+msgstr "Scegli un set base e tre espansioni da usare per questo pool limitato di carte."
 
 msgid "Choose any number of packs to use for this custom pool."
-msgstr "Scegli il numero di pack da utilizzare per questo insieme di carte personalizzato."
+msgstr "Scegli il numero di pack da utilizzare per questo pool di carte personalizzato."
 
 msgid "Limited: Not enough cycles selected"
 msgstr "Limitato: Cicli selezionati insufficienti"
@@ -6224,7 +6224,7 @@ msgid "When the World Screamed"
 msgstr "Quando il Mondo Urlò"
 
 msgid "Contains cards not in the selected card pool."
-msgstr "Contiene carte non presenti nell'insieme di carte selezionato."
+msgstr "Contiene carte non presenti nel pool di carte selezionato."
 
 msgid "Card"
 msgstr "Carta"
@@ -6245,7 +6245,7 @@ msgid "Card Upgrade"
 msgstr "Aggiornamento Carta"
 
 msgid "Contains cards that are not in the selected card pool."
-msgstr "Contiene carte che non sono presenti nell'insieme di carte selezionato."
+msgstr "Contiene carte che non sono presenti nel pool di carte selezionato."
 
 msgid "Select"
 msgstr "Seleziona"
@@ -6292,66 +6292,66 @@ msgstr ""
 "Ciò richiederà circa 25 MB di spazio di archiviazione."
 
 msgid "Head"
-msgstr ""
+msgstr "Testa"
 
 #, javascript-format
 msgid "Cost: ${ _card.cost }"
-msgstr ""
+msgstr "Costo: ${ _card.cost }"
 
 msgid "Select version"
-msgstr ""
+msgstr "Seleziona versione"
 
 msgid "Alternate version"
-msgstr ""
+msgstr "Versione alternativa"
 
 #. Remove "Investigator Expansion" from pack name
 msgid "Investigator Expansion"
-msgstr ""
+msgstr "Espansione Investigastore"
 
 msgid "Alternate versions"
-msgstr ""
+msgstr "Versioni alternative"
 
 msgid "View on arkham.build"
-msgstr ""
+msgstr "Guarda su arkham.build"
 
 msgid "Brethren of Ash"
-msgstr ""
+msgstr "La Confraternità delle Ceneri"
 
 msgid "Spreading Flames"
-msgstr ""
+msgstr "Fiamme Dilaganti"
 
 msgid "Smoke and Mirrors"
-msgstr ""
+msgstr "Il Fumo negli Occhi"
 
 msgid "Queen of Ash"
-msgstr ""
+msgstr "La Regina delle Ceneri"
 
 msgid "Core (2026)"
-msgstr ""
+msgstr "Core (2026)"
 
 msgid "Investigator Decks"
-msgstr ""
+msgstr "Mazzi Investigatore"
 
 msgid "Tap to view"
-msgstr ""
+msgstr "Tap per vedere"
 
 msgid "Investigator decks"
-msgstr ""
+msgstr "Mazzi investigatore"
 
 msgid "Recent releases"
-msgstr ""
+msgstr "Release recenti"
 
 msgid "None released yet"
-msgstr ""
+msgstr "Non ancora rilasciato"
 
 msgid "Chapter 1"
-msgstr ""
+msgstr "Capitolo 1"
 
 msgid "Chapter 2"
-msgstr ""
+msgstr "Capitolo 2"
 
 msgid "This draft uses the deck's selected card pool."
-msgstr ""
+msgstr "Questo draft utilizza il mazzo di carte selezionato."
 
 msgctxt "investigator"
 msgid "Custom"
@@ -8514,11 +8514,11 @@ msgstr "Se sei un creatore di contenuti interessato a inserire la tua campagna (
 
 msgctxt "releaseNotes"
 msgid "Drafting player decks"
-msgstr "Preparazione mazzi dei giocatori"
+msgstr "Draft mazzi dei giocatori"
 
 msgctxt "releaseNotes"
 msgid "As a follow up to the earlier Ultimatum of Chaos release, the app now supports building a deck via a set of drafting rules. Choose what packs you want to pull from and how big each draft 'hand' should be, and build your deck one card at a time."
-msgstr "Come seguito al precedente rilascio di Ultimatum del Caos, l'applicazione ora supporta la costruzione di un mazzo tramite una serie di regole di pesca. Scegliete i mazzi da cui volete attingere e la dimensione di ogni “mano” di pesca, e costruite il vostro mazzo una carta alla volta."
+msgstr "Come seguito al precedente rilascio di Ultimatum del Caos, l'applicazione ora supporta la costruzione di un mazzo tramite una serie di regole di draft. Scegliete i mazzi da cui volete attingere e la dimensione di ogni “mano” di pesca, e costruite il vostro mazzo una carta alla volta."
 
 msgctxt "releaseNotes"
 msgid "- You can find this feature on the deck edit screen in the menu."
@@ -8526,7 +8526,7 @@ msgstr "- Questa funzione si trova nella schermata di modifica del mazzo nel men
 
 msgctxt "releaseNotes"
 msgid "- Only level cards / decks can be drafted."
-msgstr "- È possibile creare solo carte o mazzi che dispongono di un livello."
+msgstr "- Solo carte con livello / mazzi possono essere creati."
 
 msgctxt "releaseNotes"
 msgid "- Given their unique deck-building restrictions, the app does not yet support generating random decks for Lola Hayes or Joe Diamond. This is something that I will try to address in a future release."
