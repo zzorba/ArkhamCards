@@ -7,79 +7,79 @@
         "entries": [
           {
             "id": "abigail_harbinger",
-            "text": "Abigail Foreman is the harbinger of Elokoss."
+            "text": "Abigail Foreman jest zwiastunem Elokoss."
           },
           {
             "id": "cornelia_harbinger",
-            "text": "Cornelia Akely is the harbinger of Elokoss."
+            "text": "Cornelia Akely jest zwiastunem Elokoss."
           },
           {
             "id": "david_harbinger",
-            "text": "David Renfield is the harbinger of Elokoss."
+            "text": "David Renfield jest zwiastunem Elokoss."
           },
           {
             "id": "defeated_elokoss_and_the_brethren_of_ash",
-            "text": "the investigators defeated Elokoss and the Brethren of Ash."
+            "text": "badacze pokonali Elokoss i kult Braci popiołu."
           },
           {
             "id": "defeated_their_masked_pursuer",
-            "text": "the investigators defeated their masked pursuer."
+            "text": "badacze pokonali swojego zamaskowanego prześladowcę."
           },
           {
             "id": "discovered_the_cults_whereabouts",
-            "text": "the investigators discovered the cult's whereabouts."
+            "text": "badacze odkryli, gdzie ukrywa się kult."
           },
           {
             "id": "earl_harbinger",
-            "text": "Sgt. Earl Monroe is the harbinger of Elokoss."
+            "text": "Sierż. Earl Monroe jest zwiastunem Elokoss."
           },
           {
             "id": "elokoss_was_reborn",
-            "text": "Elokoss was reborn."
+            "text": "Elokoss się odrodziła."
           },
           {
             "id": "failed_in_their_search",
-            "text": "the investigators failed in their search."
+            "text": "poszukiwania badaczy spaliły na panewce."
           },
           {
             "id": "flooded_the_ritual",
-            "text": "the investigators flooded the Brethren of Ash’s summoning ritual."
+            "text": "badacze zatopili miejsce rytuału Braci popiołu."
           },
           {
             "id": "killed_the_servant_of_flame",
-            "text": "the investigators killed the Servant of Flame"
+            "text": "badacze zabili Sługę płomienia."
           },
           {
             "id": "margaret_harbinger",
-            "text": "Margaret Liu is the harbinger of Elokoss."
+            "text": "Margaret Liu jest zwiastunem Elokoss."
           },
           {
             "id": "miskatonic_university_burned",
-            "text": "Miskatonic University burned."
+            "text": "Uniwersytet Miskatonic spłonął."
           },
           {
             "id": "naomi_harbinger",
-            "text": "Naomi O'Bannion is the harbinger of Elokoss."
+            "text": "Naomi O'Bannion jest zwiastunem Elokoss."
           },
           {
             "id": "saved_miskatonic_university",
-            "text": "the investigators saved Miskatonic University."
+            "text": "badacze ocalili Uniwersytet Miskatonic."
           },
           {
             "id": "scoured_arkham_for_answers",
-            "text": "the investigators scoured Arkham for answers."
+            "text": "badacze przetrząsnęli Arkham w poszukiwaniu odpowiedzi."
           },
           {
             "id": "stirred_up_trouble",
-            "text": "the investigators stirred up trouble."
+            "text": "badacze narobili zamieszania."
           },
           {
             "id": "stopped_elokoss_glorious_rebirth",
-            "text": "the investigators stopped Elokoss’s glorious rebirth."
+            "text": "badacze powstrzymali chwalebne odrodzenie Elokoss."
           },
           {
             "id": "the_servant_of_flame_escaped",
-            "text": "the Servant of Flame escaped."
+            "text": "Sługa płomienia uciekł."
           }
         ]
       },

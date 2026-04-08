@@ -250,7 +250,7 @@
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Proibito."
+        "text": "Proibita."
       }
     ]
   },
@@ -389,7 +389,7 @@
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Proibito."
+        "text": "Proibita."
       }
     ]
   },
@@ -544,7 +544,7 @@
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Proibito."
+        "text": "Proibita."
       },
       {
         "code": "02029",
@@ -675,7 +675,7 @@
       {
         "code": "02226",
         "text": "La capacità [action] di questa carta ottiene: “Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione.”",
-        "replacement_text": "Mutato. Utilizzo (3 munizioni)\n[action] Spendi 1 munizione: <b>Combatti.</b> Usa solo con nemici non impegnati con te. Ricevi +3 [combat] e infliggi +2 danni in questo attacco. Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione."
+        "replacement_text": "Mutato. Utilizzo (3 munizioni).\n[action] Spendi 1 munizione: <b>Combatti.</b> Usa solo con nemici non impegnati con te. Ricevi +3 [combat] e infliggi +2 danni in questo attacco. Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione."
       },
       {
         "code": "04305",
@@ -684,7 +684,7 @@
       {
         "code": "05153",
         "text": "La capacità [fast] di questa carta è ora una capacità [action].",
-        "replacement_text": "Mutato. Utilizzo (3 segreti)\n[action] Esaurisci Mr. \"Rook\" e spendi 1 segreto. Cerca tra le 3, 6 o 9 carte in cima al tuo mazzo 1 carta e pescala. Se ci sono1 o più debolezze tra le carte in cui hai cercato, pesca anche 1 di quelle. Rimescola il tuo mazzo."
+        "replacement_text": "Mutato. Utilizzo (3 segreti).\n[action] Esaurisci Mr. \"Rook\" e spendi 1 segreto. Cerca tra le 3, 6 o 9 carte in cima al tuo mazzo 1 carta e pescala. Se ci sono1 o più debolezze tra le carte in cui hai cercato, pesca anche 1 di quelle. Rimescola il tuo mazzo."
       },
       {
         "code": "05159",
@@ -717,7 +717,7 @@
       {
         "code": "60318",
         "text": "Invece di “Rimescola ogni debolezza scartata…”, la capacità di questa carta diventa: “Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto.”",
-        "replacement_text": "Mutato.\nDopo che hai investito la Temerarietà in una prova di abilità, scarta carte dalla cima del tuo mazzo finché non scarti un'abilità [rogue] che puoi investire in questa prova. Investila. Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto."
+        "replacement_text": "Mutato. Dopo che hai investito la Temerarietà in una prova di abilità, scarta carte dalla cima del tuo mazzo finché non scarti un'abilità [rogue] che puoi investire in questa prova. Investila. Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto."
       },
       {
         "code": "07003",
@@ -893,8 +893,8 @@
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Proibito.",
-        "replacement_text": "Mutato. Proibito.\nMassimo 1 investimento per prova di abilità.\nRaddoppia la difficoltà di questa prova. Se questa prova di abilità ha successo, risolvi due volte i suoi effetti."
+        "text": "Proibita.",
+        "replacement_text": "Mutato. Proibita.\nMassimo 1 investimento per prova di abilità.\nRaddoppia la difficoltà di questa prova. Se questa prova di abilità ha successo, risolvi due volte i suoi effetti."
       },
       {
         "code": "02029",
@@ -924,7 +924,7 @@
       {
         "code": "02263",
         "text": "La capacità <b>Combatti</b> di questa carta diventa: “+1 danno” invece di “+2 danni”.",
-        "replacement_text": "Mutato. Puoi includere questo supporto nel tuo mazzo solo migliorandolo dalla Strana Soluzione <i>(Liquido non identificato)</i> e solo se \"la soluzione è stata identificata\" nel Diario della Campagna. Utilizzo (3 scorte).\n[action] Spendi 1 scorta: <b>Combatti.</b> Usa [force] base pari a 6. Infliggi +1 danno in questo attacco."
+        "replacement_text": "Mutato. Analizzata. Utilizzo (3 scorte).\n[action] Spendi 1 scorta: <b>Combatti.</b> Usa [combat] base pari a 6. Infliggi +1 danno in questo attacco."
       },
       {
         "code": "03006",
@@ -1033,7 +1033,7 @@
       {
         "code": "08100",
         "text": "Questa carta ti permette di effettuare solo azioni di tipo base.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Mutato. Utilizzo (3 segreti).\n[fast] Durante il tuo turno, esaurisci la Mappa degli Eoni e spendi 1 segreto: Scegli ed effettua 2 azione base tra quelle di movimento, elusione e/o indagine, nell'ordine che preferisci."
       },
       {
         "code": "08093",
@@ -1125,7 +1125,7 @@
       {
         "code": "02226",
         "text": "La capacità [action] di questa carta ottiene: “Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione.”",
-        "replacement_text": "Mutato. Utilizzo (3 munizioni)\n[action] Spendi 1 munizione: <b>Combatti.</b> Usa solo con nemici non impegnati con te. Ricevi +3 [combat] e infliggi +2 danni in questo attacco. Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione."
+        "replacement_text": "Mutato. Utilizzo (3 munizioni).\n[action] Spendi 1 munizione: <b>Combatti.</b> Usa solo con nemici non impegnati con te. Ricevi +3 [combat] e infliggi +2 danni in questo attacco. Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione."
       },
       {
         "code": "04305",
@@ -1134,7 +1134,7 @@
       {
         "code": "05153",
         "text": "La capacità [fast] di questa carta è ora una capacità [action].",
-        "replacement_text": "Mutato. Utilizzo (3 segreti)\n[action] Esaurisci Mr. \"Rook\" e spendi 1 segreto. Cerca tra le 3, 6 o 9 carte in cima al tuo mazzo 1 carta e pescala. Se ci sono1 o più debolezze tra le carte in cui hai cercato, pesca anche 1 di quelle. Rimescola il tuo mazzo."
+        "replacement_text": "Mutato. Utilizzo (3 segreti).\n[action] Esaurisci Mr. \"Rook\" e spendi 1 segreto. Cerca tra le 3, 6 o 9 carte in cima al tuo mazzo 1 carta e pescala. Se ci sono1 o più debolezze tra le carte in cui hai cercato, pesca anche 1 di quelle. Rimescola il tuo mazzo."
       },
       {
         "code": "05159",
@@ -1167,7 +1167,7 @@
       {
         "code": "60318",
         "text": "Invece di “Rimescola ogni debolezza scartata…”, la capacità di questa carta diventa: “Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto.”",
-        "replacement_text": "Mutato.\nDopo che hai investito la Temerarietà in una prova di abilità, scarta carte dalla cima del tuo mazzo finché non scarti un'abilità [rogue] che puoi investire in questa prova. Investila. Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto."
+        "replacement_text": "Mutato. Dopo che hai investito la Temerarietà in una prova di abilità, scarta carte dalla cima del tuo mazzo finché non scarti un'abilità [rogue] che puoi investire in questa prova. Investila. Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto."
       },
       {
         "code": "07003",
@@ -1347,8 +1347,8 @@
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Proibito.",
-        "replacement_text": "Mutato. Proibito.\nMassimo 1 investimento per prova di abilità.\nRaddoppia la difficoltà di questa prova. Se questa prova di abilità ha successo, risolvi due volte i suoi effetti."
+        "text": "Proibita.",
+        "replacement_text": "Mutato. Proibita.\nMassimo 1 investimento per prova di abilità.\nRaddoppia la difficoltà di questa prova. Se questa prova di abilità ha successo, risolvi due volte i suoi effetti."
       },
       {
         "code": "02029",
@@ -1388,7 +1388,7 @@
       {
         "code": "02263",
         "text": "La capacità <b>Combatti</b> di questa carta diventa: “+1 danno” invece di “+2 danni”.",
-        "replacement_text": "Mutato. Puoi includere questo supporto nel tuo mazzo solo migliorandolo dalla Strana Soluzione <i>(Liquido non identificato)</i> e solo se \"la soluzione è stata identificata\" nel Diario della Campagna. Utilizzo (3 scorte).\n[action] Spendi 1 scorta: <b>Combatti.</b> Usa [force] base pari a 6. Infliggi +1 danno in questo attacco."
+        "replacement_text": "Mutato. Analizzata. Utilizzo (3 scorte).\n[action] Spendi 1 scorta: <b>Combatti.</b> Usa [combat] base pari a 6. Infliggi +1 danno in questo attacco."
       },
       {
         "code": "03006",
@@ -1502,7 +1502,7 @@
       {
         "code": "08100",
         "text": "Questa carta ti permette di effettuare solo azioni di tipo base.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Mutato. Utilizzo (3 segreti).\n[fast] Durante il tuo turno, esaurisci la Mappa degli Eoni e spendi 1 segreto: Scegli ed effettua 2 azione base tra quelle di movimento, elusione e/o indagine, nell'ordine che preferisci."
       },
       {
         "code": "08093",
@@ -1594,7 +1594,7 @@
       {
         "code": "02226",
         "text": "La capacità [action] di questa carta ottiene: “Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione.”",
-        "replacement_text": "Mutato. Utilizzo (3 munizioni)\n[action] Spendi 1 munizione: <b>Combatti.</b> Usa solo con nemici non impegnati con te. Ricevi +3 [combat] e infliggi +2 danni in questo attacco. Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione."
+        "replacement_text": "Mutato. Utilizzo (3 munizioni).\n[action] Spendi 1 munizione: <b>Combatti.</b> Usa solo con nemici non impegnati con te. Ricevi +3 [combat] e infliggi +2 danni in questo attacco. Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione."
       },
       {
         "code": "04305",
@@ -1603,7 +1603,7 @@
       {
         "code": "05153",
         "text": "La capacità [fast] di questa carta è ora una capacità [action].",
-        "replacement_text": "Mutato. Utilizzo (3 segreti)\n[action] Esaurisci Mr. \"Rook\" e spendi 1 segreto. Cerca tra le 3, 6 o 9 carte in cima al tuo mazzo 1 carta e pescala. Se ci sono1 o più debolezze tra le carte in cui hai cercato, pesca anche 1 di quelle. Rimescola il tuo mazzo."
+        "replacement_text": "Mutato. Utilizzo (3 segreti).\n[action] Esaurisci Mr. \"Rook\" e spendi 1 segreto. Cerca tra le 3, 6 o 9 carte in cima al tuo mazzo 1 carta e pescala. Se ci sono1 o più debolezze tra le carte in cui hai cercato, pesca anche 1 di quelle. Rimescola il tuo mazzo."
       },
       {
         "code": "05159",
@@ -1636,7 +1636,7 @@
       {
         "code": "60318",
         "text": "Invece di “Rimescola ogni debolezza scartata…”, la capacità di questa carta diventa: “Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto.”",
-        "replacement_text": "Mutato.\nDopo che hai investito la Temerarietà in una prova di abilità, scarta carte dalla cima del tuo mazzo finché non scarti un'abilità [rogue] che puoi investire in questa prova. Investila. Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto."
+        "replacement_text": "Mutato. Dopo che hai investito la Temerarietà in una prova di abilità, scarta carte dalla cima del tuo mazzo finché non scarti un'abilità [rogue] che puoi investire in questa prova. Investila. Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto."
       },
       {
         "code": "07003",
@@ -1828,8 +1828,8 @@
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Proibito.",
-        "replacement_text": "Mutato. Proibito.\nMassimo 1 investimento per prova di abilità.\nRaddoppia la difficoltà di questa prova. Se questa prova di abilità ha successo, risolvi due volte i suoi effetti."
+        "text": "Proibita.",
+        "replacement_text": "Mutato. Proibita.\nMassimo 1 investimento per prova di abilità.\nRaddoppia la difficoltà di questa prova. Se questa prova di abilità ha successo, risolvi due volte i suoi effetti."
       },
       {
         "code": "02029",
@@ -1869,7 +1869,7 @@
       {
         "code": "02263",
         "text": "La capacità <b>Combatti</b> di questa carta diventa: “+1 danno” invece di “+2 danni”.",
-        "replacement_text": "Mutato. Puoi includere questo supporto nel tuo mazzo solo migliorandolo dalla Strana Soluzione <i>(Liquido non identificato)</i> e solo se \"la soluzione è stata identificata\" nel Diario della Campagna. Utilizzo (3 scorte).\n[action] Spendi 1 scorta: <b>Combatti.</b> Usa [force] base pari a 6. Infliggi +1 danno in questo attacco."
+        "replacement_text": "Mutato. Analizzata. Utilizzo (3 scorte).\n[action] Spendi 1 scorta: <b>Combatti.</b> Usa [combat] base pari a 6. Infliggi +1 danno in questo attacco."
       },
       {
         "code": "03006",
@@ -1983,12 +1983,12 @@
       {
         "code": "08100",
         "text": "Questa carta ti permette di effettuare solo azioni di tipo base.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Mutato. Utilizzo (3 segreti).\n[fast] Durante il tuo turno, esaurisci la Mappa degli Eoni e spendi 1 segreto: Scegli ed effettua 2 azione base tra quelle di movimento, elusione e/o indagine, nell'ordine che preferisci."
       },
       {
         "code": "08113",
         "text": "La prima riga di questa carta ottiene: \"Solo in Modalità Campagna.\"",
-        "replacement_text": "Solo in Modalità Campagna. Limite di 1 per investigatore. Non può uscire dal gioco.\n[reaction] Dopo che hai giocato il Prestito Amorale: ottieni 10 risorse.\n<b>Obbligo</b> - Quando la partita termina o sei eliminato, se possiedi 9 o meno risorse nella tua riserva delle risorse: Esilia il Prestito Amorale."
+        "replacement_text": "Solo Modalità Campagna. Limite di 1 per investigatore. Non può uscire dal gioco.\n[reaction] Dopo che hai giocato il Prestito Amorale: ottieni 10 risorse.\n<b>Obbligo</b> - Quando la partita termina o sei eliminato, se possiedi 9 o meno risorse nella tua riserva delle risorse: Esilia il Prestito Amorale."
       },
       {
         "code": "08093",
@@ -2090,7 +2090,7 @@
       {
         "code": "02226",
         "text": "La capacità [action] di questa carta ottiene: “Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione.”",
-        "replacement_text": "Mutato. Utilizzo (3 munizioni)\n[action] Spendi 1 munizione: <b>Combatti.</b> Usa solo con nemici non impegnati con te. Ricevi +3 [combat] e infliggi +2 danni in questo attacco. Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione."
+        "replacement_text": "Mutato. Utilizzo (3 munizioni).\n[action] Spendi 1 munizione: <b>Combatti.</b> Usa solo con nemici non impegnati con te. Ricevi +3 [combat] e infliggi +2 danni in questo attacco. Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione."
       },
       {
         "code": "04305",
@@ -2099,7 +2099,7 @@
       {
         "code": "05153",
         "text": "La capacità [fast] di questa carta è ora una capacità [action].",
-        "replacement_text": "Mutato. Utilizzo (3 segreti)\n[action] Esaurisci Mr. \"Rook\" e spendi 1 segreto. Cerca tra le 3, 6 o 9 carte in cima al tuo mazzo 1 carta e pescala. Se ci sono1 o più debolezze tra le carte in cui hai cercato, pesca anche 1 di quelle. Rimescola il tuo mazzo."
+        "replacement_text": "Mutato. Utilizzo (3 segreti).\n[action] Esaurisci Mr. \"Rook\" e spendi 1 segreto. Cerca tra le 3, 6 o 9 carte in cima al tuo mazzo 1 carta e pescala. Se ci sono1 o più debolezze tra le carte in cui hai cercato, pesca anche 1 di quelle. Rimescola il tuo mazzo."
       },
       {
         "code": "05159",
@@ -2124,18 +2124,18 @@
       },
       {
         "code": "05156",
-        "text": "This card gains \"(Limit twice per round.)\"",
-        "replacement_text": "Mutated. Fast. Play during any investigator's turn, except during an action.\nImmediately take an action as if it were your turn. This action does not count toward the number of actions you can take each turn. (Limit twice per round.)"
+        "text": "Questa carta ottiene: “(Limite di due volte per round.)”",
+        "replacement_text": "Mutato. Veloce. Gioca solo durante il turno di un investigatore, tranne che durante un'azione.\nEffettua immediatamente 1 azione come se fosse il tuo turno (non considerandola nel numero di azioni che puoi effettuare ogni turno). (Limite di due volte per round.)"
       },
       {
         "code": "09072",
-        "text": "This card's first bullet point now reads: \"That event gains: \"Fast. Play only during your turn.\"\"",
-        "replacement_text": "Mutated. [reaction] When you play a [[Tactic]] or [[Trick]] event, exhaust Chuck Fergus: Choose one -\n- That event gains: \"Fast. Play only during your turn.\"\n- That event costs 2 fewer resources to play.\n- You get +2 skill value while performing a skill test during the resolution of that event."
+        "text": "Il primo punto di queste carte diventa: “Quell’evento ottiene “Veloce. Gioca solo durante il tuo turno”.”",
+        "replacement_text": "Mutato. [reaction] Quando giochi un evento [[Tattica]] o [[Trucchetto]], esaurisci Chuck Fergus: Scegli 1 degli effetti seguenti:\n- Quell'evento ottiene “Veloce. Gioca solo durante il tuo turno”\n- Riduci di 2 il costo in risorse per giocare quell'evento.\nRicevi +2 al valore di abilità finché effettui una prova di abilità durante la risoluzione di quell'evento."
       },
       {
         "code": "60332",
-        "text": "This card's first bullet point now reads: \"That event gains: \"Fast. Play only during your turn.\"\"",
-        "replacement_text": "Mutated. [reaction] When you play a [[Tactic]] or [[Trick]] event, exhaust Chuck Fergus: Choose two -\n- That event gains: \"Fast. Play only during your turn.\"\n- That event costs 2 fewer resources to play.\n- You get +2 skill value while performing a skill test during the resolution of that event."
+        "text": "Il primo punto di queste carte diventa: “Quell’evento ottiene “Veloce. Gioca solo durante il tuo turno”.”",
+        "replacement_text": "Mutato. [reaction] Quando giochi un evento [[Tattica]] o [[Trucchetto]], esaurisci Chuck Fergus: Scegli 1 degli effetti seguenti:\n- Quell'evento ottiene “Veloce. Gioca solo durante il tuo turno”\n- Riduci di 2 il costo in risorse per giocare quell'evento.\nRicevi +2 al valore di abilità finché effettui una prova di abilità durante la risoluzione di quell'evento."
       },
       {
         "code": "05324",
@@ -2155,7 +2155,7 @@
       {
         "code": "60318",
         "text": "Invece di “Rimescola ogni debolezza scartata…”, la capacità di questa carta diventa: “Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto.”",
-        "replacement_text": "Mutato.\nDopo che hai investito la Temerarietà in una prova di abilità, scarta carte dalla cima del tuo mazzo finché non scarti un'abilità [rogue] che puoi investire in questa prova. Investila. Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto."
+        "replacement_text": "Mutato. Dopo che hai investito la Temerarietà in una prova di abilità, scarta carte dalla cima del tuo mazzo finché non scarti un'abilità [rogue] che puoi investire in questa prova. Investila. Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto."
       },
       {
         "code": "07003",
@@ -2170,8 +2170,8 @@
       {
         "code": "60233",
         "deck_limit": 0,
-        "text": "Proibito.",
-        "replacement_text": "Forbidden. Uses (6 secrets). Limit 1 per deck.\n[fast] Spend 1 secret: You get +2 skill value for this test.\n[fast] Spend 2 secrets: Draw 2 cards.\n[fast] Spend 3 secrets: Discover 1 clue at any location.\n][fast] Spend 4 secrets: Deal 3 damage to an enemy engaged with you."
+        "text": "Proibita.",
+        "replacement_text": "Proibita. Utilizzo (6 segreti). Limite di 1 per mazzo.\n[fast] Spendi 1 segreto: Ricevi +2 al valore di abilità in questa prova di abilità.\n[fast] Spendi 2 segreti: Pesca 2 carte.\n[fast] Spendi 3 segreti: Scopri 1 indizio in un qualsiasi luogo.\n[fast] Spendi 4 segreti: Infliggi 3 danni a un nemico impegnato con te."
       },
       {
         "code": "07197",
@@ -2354,8 +2354,8 @@
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Proibito.",
-        "replacement_text": "Forbidden. Max 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice."
+        "text": "Proibita.",
+        "replacement_text": "Proibita. Massimo 1 investimento per prova di abilità.\nRaddoppia la difficoltà di questa prova. Se questa prova di abilità ha successo, risolvi due volte i suoi effetti."
       },
       {
         "code": "02029",
@@ -2395,7 +2395,7 @@
       {
         "code": "02263",
         "text": "La capacità <b>Combatti</b> di questa carta diventa: “+1 danno” invece di “+2 danni”.",
-        "replacement_text": "Mutato. Puoi includere questo supporto nel tuo mazzo solo migliorandolo dalla Strana Soluzione <i>(Liquido non identificato)</i> e solo se \"la soluzione è stata identificata\" nel Diario della Campagna. Utilizzo (3 scorte).\n[action] Spendi 1 scorta: <b>Combatti.</b> Usa [force] base pari a 6. Infliggi +1 danno in questo attacco."
+        "replacement_text": "Mutato. Analizzata. Utilizzo (3 scorte).\n[action] Spendi 1 scorta: <b>Combatti.</b> Usa [combat] base pari a 6. Infliggi +1 danno in questo attacco."
       },
       {
         "code": "03006",
@@ -2509,12 +2509,12 @@
       {
         "code": "08100",
         "text": "Questa carta ti permette di effettuare solo azioni di tipo base.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Mutato. Utilizzo (3 segreti).\n[fast] Durante il tuo turno, esaurisci la Mappa degli Eoni e spendi 1 segreto: Scegli ed effettua 2 azione base tra quelle di movimento, elusione e/o indagine, nell'ordine che preferisci."
       },
       {
         "code": "08113",
         "text": "La prima riga di questa carta ottiene: \"Solo in Modalità Campagna.\"",
-        "replacement_text": "Solo in Modalità Campagna. Limite di 1 per investigatore. Non può uscire dal gioco.\n[reaction] Dopo che hai giocato il Prestito Amorale: ottieni 10 risorse.\n<b>Obbligo</b> - Quando la partita termina o sei eliminato, se possiedi 9 o meno risorse nella tua riserva delle risorse: Esilia il Prestito Amorale."
+        "replacement_text": "Solo Modalità Campagna. Limite di 1 per investigatore. Non può uscire dal gioco.\n[reaction] Dopo che hai giocato il Prestito Amorale: ottieni 10 risorse.\n<b>Obbligo</b> - Quando la partita termina o sei eliminato, se possiedi 9 o meno risorse nella tua riserva delle risorse: Esilia il Prestito Amorale."
       },
       {
         "code": "08093",
@@ -2528,7 +2528,7 @@
       },
       {
         "code": "09081",
-        "text": "This card’s text box now reads: \"[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command) – \"Go.\" This enemy moves once in a direction of your choice.\"\nThis card’s customizable sheet loses the \"Mercy\" ability and gains\"☐Cower. Add the command: \"- ‘Cower.’ This enemy exhausts.\"",
+        "text": "Il riquadro di testo di questa carta diventa: “[action] Se il nemico con questo evento si trova nel tuo luogo: <b>Negozia.</b> Effettua una prova di [willpower](2). Se hai successo, dagli un ordine (limite di una volta per round per ordine): “Vai.” Questo nemico si muove di 1 luogo in una direzione a tua scelta.”\nLa scheda miglioria di questa carta perde la capacità “Pentiti” e ottiene: ☐Inginocchiati. Aggiungi l’ordine seguente: “- ‘Inginocchiati.’ Questo nemico si esaurisce.”",
         "customization_options": [
           {
             "xp": 1,
@@ -2569,9 +2569,9 @@
             "position": 1
           }
         ],
-        "customization_change": "- <i>\"Betray.\"</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>\"Confess.\"</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>\"Distract.\"</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
+        "customization_change": "- <i>\"Tradisci.\"</i> Infliggi 1 danno a 1 qualsiasi nemico nel luogo di questo nemico con un valore di Scontro pari o inferiore al valore di Scontro di questo nemico.\n- <i>\"Inginocchiati.\"</i> Questo nemico si esaurisce.\n- <i>'Confessa.'</i> Se il valore di oscurità del luogo di questo nemico è pari o inferiore alla sua Salute, scopri 1 indizio in quel luogo.\n- <i>'Distrai.'</i> Eludi automaticamente 1 qualsiasi nemico nel luogo di questo nemico con un valore di Agilità pari o inferiore al valore di Agilità di questo nemico.\n[fast]: Rimetti la Parola di Potere nella tua mano.\nPuoi attivare la capacità <b>Negozia</b> della Parola di Potere da 1 luogo di distanza dal luogo del nemico con questo evento.\n[action] Se il nemico con questo evento si trova nel tuo luogo: <b>Negozia.</b> Effettua una prova di [willpower](2). Se hai successo, dagli un ordine (limite di una volta per round per ordine):\nPuoi includere 3 copie della Parola di Potere nel tuo mazzo. Quando dai un ordine usandone una copia, dai lo stesso ordine a ogni altro nemico a cui è assegnata una tua copia della Parola di Potere.",
         "customization_text": "□ <b>Tradisci.</b> Aggiungi l'ordine seguente: \"- <i>'Tradisci.'</i> Infliggi 1 danno a 1 qualsiasi nemico nel luogo di questo nemico con un valore di Scontro pari o inferiore al valore di Scontro di questo nemico.\"\n□ <b>Inginocchiati.</b> Aggiungi l'ordine seguente: \"- <i>'Inginocchiati.'</i> Questo nemico si esaurisce.\"\n□ <b>Confessa.</b> Aggiungi l'ordine seguente: \"- <i>'Confessa.'</i> Se il valore di oscurità del luogo di questo nemico è pari o inferiore alla sua Salute, scopri 1 indizio in quel luogo.\"\n□ <b>Distrai.</b>Aggiungi l'ordine seguente: \"- <i>'Distrai.'</i> Eludi automaticamente 1 qualsiasi nemico nel luogo di questo nemico con un valore di Agilità pari o inferiore al valore di Agilità di questo nemico.\"\n□□ <b>Controllo Superiore.</b> La Parola di Potere ottiene \"[fast]: Rimetti la Parola di Potere nella tua mano.\"\n□□□ <b>Vincolo.</b> Puoi attivare la capacità <b>Negozia</b> della Parola di Potere da 1 luogo di distanza dal luogo del nemico con questo evento.\n□□□ <b>Scioglilingua.</b> Quando negozi con la Parola di Potere, puoi dare fino a 2 ordini diversi.\n□□□ <b>Parlò Tre Volte.</b> Puoi includere 3 copie della Parola di Potere nel tuo mazzo. Quando dai un ordine usandone una copia, dai lo stesso ordine a ogni altro nemico a cui è assegnata una tua copia della Parola di Potere.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "replacement_text": "Mutato. Personalizzabile. Veloce. Gioca solo durante il tuo turno.\nAssegna la Parola di Potere a un nemico non [[Elite]] nel tuo luogo.\n[action] Se il nemico con questo evento si trova nel tuo luogo: <b>Negozia.</b> Effettua una prova di [willpower](2). Se hai successo, dagli un ordine (limite di una volta per round per ordine):\n – \"Vai.\" Questo nemico si muove di 1 luogo in una direzione a tua scelta."
       },
       {
         "code": "09041",
@@ -2580,18 +2580,18 @@
       },
       {
         "code": "10026",
-        "text": "This card's ability reads: \"...If you succeed, play the chosen asset, reducing its cost by the amount you succeeded by.\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose an enemy at your location and an [[Item]] asset in your hand. Perform a fight action against the chosen enemy. If you succeed, play the chosen asset, reducing its cost by the amount you succeeded by."
+        "text": "La capacità di questa carta diventa: “… Se hai successo, gioca il supporto scelto riducendone il costo dell’ammontare di punti di cui hai avuto successo”.",
+        "replacement_text": "Mutato.\n<b>Negozia.</b> Scegli 1 nemico nel tuo luogo e 1 supporto [[Oggetto]] nella tua mano. Effettua 1 azione di combattimento contro il nemico scelto. Se hai successo, gioca il supporto scelto riducendone il costo dell’ammontare di punti di cui hai avuto successo."
       },
       {
         "code": "10030",
-        "text": "This card's ability reads: \"Resolve an [action] ability on a level 0-3 [[Tool]] or [[Weapon]] asset you control, ignoring all costs.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nResolve an [action] ability on a level 0-3 [[Tool]] or [[Weapon]] asset you control, ignoring all costs."
+        "text": "La capacità di questa carta diventa: “Risolvi una capacità [action] di un supporto [[Strumento]] o [[Arma]] di livello 0-3 che controlli, ignorandone tutti i costi”.",
+        "replacement_text": "Mutato. Veloce. Gioca solo durante il tuo turno.\nRisolvi una capacità [action] di un supporto [[Strumento]] o [[Arma]] di livello 0-3 che controlli, ignorandone tutti i costi."
       },
       {
         "code": "11065",
-        "text": "This card's [reaction] ability reads \"[reaction] When doom is placed on a card you control: Place 1 resource (from the token pool) on Blood of Thoth, as an offering.\"\nThis card's [free] ability reads \"[free] During the investigation phase, except during an action, spend 2 offerings and exhaust Blood of Thoth: Choose an investigator at your location to immediately take an action as if it were their turn.\"",
-        "replacement_text": "Mutated.\n[reaction] When doom is placed on a card you control: Place 1 resource <i>(from the token pool)</i>, on this card, as an offering.\n[fast] During the investigation phase, except during an action, spend 2 offerings and exhaust Blood of Thoth: Choose an investigator at your location to immediately take an action as if it were their turn."
+        "text": "La capacità [reaction] di questa carta diventa: “[reaction] Quando 1 o più destini vengono collocati su una carta che controlli: Colloca 1 risorsa (dalla riserva dei segnalini) su questa carta (trasformandola in offerta)”.\nLa capacità [fast] di questa carta diventa: “[fast] Durante la Fase degli Investigatori, tranne che durante un’azione, spendi 2 offerte ed esaurisci il Sangue di Thoth: Scegli 1 investigatore nel tuo luogo per fargli effettuare immediatamente 1 azione come se fosse il suo turno”.",
+        "replacement_text": "Mutato.\n[reaction] Quando 1 o più destini vengono collocati su una carta che controlli: Colloca 1 risorsa <i>(dalla riserva dei segnalini)</i> su questa carta (trasformandola in offerta).\n[fast] Durante la Fase degli Investigatori, tranne che durante un’azione, spendi 2 offerte ed esaurisci il Sangue di Thoth: Scegli 1 investigatore nel tuo luogo per fargli effettuare immediatamente 1 azione come se fosse il suo turno."
       }
     ]
   },
@@ -2813,7 +2813,7 @@
       {
         "code": "02226",
         "text": "La capacità [action] di questa carta ottiene: “Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione.”",
-        "replacement_text": "Mutato. Utilizzo (3 munizioni)\n[action] Spendi 1 munizione: <b>Combatti.</b> Usa solo con nemici non impegnati con te. Ricevi +3 [combat] e infliggi +2 danni in questo attacco. Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione."
+        "replacement_text": "Mutato. Utilizzo (3 munizioni).\n[action] Spendi 1 munizione: <b>Combatti.</b> Usa solo con nemici non impegnati con te. Ricevi +3 [combat] e infliggi +2 danni in questo attacco. Questo attacco può bersagliare un nemico non [[Elite]] fino a un luogo di distanza dalla sua portata standard, ignorando le parole chiave Sfuggente e Ritorsione."
       },
       {
         "code": "02229",
@@ -2823,7 +2823,7 @@
       {
         "code": "02263",
         "text": "La capacità <b>Combatti</b> di questa carta diventa: “+1 danno” invece di “+2 danni”.",
-        "replacement_text": "Mutato. Puoi includere questo supporto nel tuo mazzo solo migliorandolo dalla Strana Soluzione <i>(Liquido non identificato)</i> e solo se \"la soluzione è stata identificata\" nel Diario della Campagna. Utilizzo (3 scorte).\n[action] Spendi 1 scorta: <b>Combatti.</b> Usa [force] base pari a 6. Infliggi +1 danno in questo attacco."
+        "replacement_text": "Mutato. Analizzata. Utilizzo (3 scorte).\n[action] Spendi 1 scorta: <b>Combatti.</b> Usa [combat] base pari a 6. Infliggi +1 danno in questo attacco."
       },
       {
         "code": "02266",
@@ -2910,17 +2910,17 @@
       {
         "code": "05153",
         "text": "La capacità [fast] di questa carta è ora una capacità [action].",
-        "replacement_text": "Mutato. Utilizzo (3 segreti)\n[action] Esaurisci Mr. \"Rook\" e spendi 1 segreto. Cerca tra le 3, 6 o 9 carte in cima al tuo mazzo 1 carta e pescala. Se ci sono1 o più debolezze tra le carte in cui hai cercato, pesca anche 1 di quelle. Rimescola il tuo mazzo."
+        "replacement_text": "Mutato. Utilizzo (3 segreti).\n[action] Esaurisci Mr. \"Rook\" e spendi 1 segreto. Cerca tra le 3, 6 o 9 carte in cima al tuo mazzo 1 carta e pescala. Se ci sono1 o più debolezze tra le carte in cui hai cercato, pesca anche 1 di quelle. Rimescola il tuo mazzo."
       },
       {
         "code": "05156",
-        "text": "This card gains \"(Limit twice per round.)\"",
-        "replacement_text": "Mutated. Fast. Play during any investigator's turn, except during an action.\nImmediately take an action as if it were your turn. This action does not count toward the number of actions you can take each turn. (Limit twice per round.)"
+        "text": "Questa carta ottiene: “(Limite di due volte per round.)”",
+        "replacement_text": "Mutato. Veloce. Gioca solo durante il turno di un investigatore, tranne che durante un'azione.\nEffettua immediatamente 1 azione come se fosse il tuo turno (non considerandola nel numero di azioni che puoi effettuare ogni turno). (Limite di due volte per round.)"
       },
       {
         "code": "05157",
-        "text": "This card now reads “a symbol token” instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\n[action]: <b>Fight.</b> This attack uses [willpower] instead of [combat]. If a symbol token is revealed during this attack, the attacked enemy gets -1 fight and -1 evade for the remainder of the turn (to a minimum of 1)."
+        "text": "La capacità di questa carta si riferisce a “un simbolo” invece che alla lista dei simboli indicati.",
+        "replacement_text": "Mutato.\n[action]: <b>Combatti.</b> Usa [willpower] invece di [combat]. Se riveli un simbolo il nemico attaccato riceve -1 Scontro e -1 Agilità per il resto del turno (fino a un minimo di 1)."
       },
       {
         "code": "05230",
@@ -2929,8 +2929,8 @@
       },
       {
         "code": "05321",
-        "text": "This card’s [action] ability now reads “...If a symbol token is revealed during this attack, the attacked enemy gets –1 fight, –1 health, and –1 evade until the end of the phase (to a minimum of 1).”",
-        "replacement_text": "Mutated.\n[action]: <b>Fight.</b> This attack uses [willpower] instead of [combat]. You get +2 [willpower] for this attack. If a symbol token is revealed during this attack, the attacked enemy gets -1 fight, -1 health, and -1 evade until the end of the phase (to a minimum of 1)."
+        "text": "La capacità [action] di questa carta diventa \"...se riveli un simbolo il nemico attaccato riceve -1 Scontro e -1 Agilità per il resto del turno (fino a un minimo di 1).\"",
+        "replacement_text": "Mutato.\n[action]: <b>Combatti.</b> Usa [willpower] invece di [combat]. Ricevi +2 [willpower] in questo attacco. Se riveli un simbolo il nemico attaccato riceve -1 Scontro, -1 Salute e -1 Agilità per il resto del turno (fino a un minimo di 1)."
       },
       {
         "code": "05324",
@@ -3006,17 +3006,17 @@
       {
         "code": "60318",
         "text": "Invece di “Rimescola ogni debolezza scartata…”, la capacità di questa carta diventa: “Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto.”",
-        "replacement_text": "Mutato.\nDopo che hai investito la Temerarietà in una prova di abilità, scarta carte dalla cima del tuo mazzo finché non scarti un'abilità [rogue] che puoi investire in questa prova. Investila. Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto."
+        "replacement_text": "Mutato. Dopo che hai investito la Temerarietà in una prova di abilità, scarta carte dalla cima del tuo mazzo finché non scarti un'abilità [rogue] che puoi investire in questa prova. Investila. Dopo che questa prova di abilità è stata risolta, pesca ogni debolezza scartata con questo effetto."
       },
       {
         "code": "60332",
-        "text": "This card's first bullet point now reads: \"That event gains: \"Fast. Play only during your turn.\"\"",
-        "replacement_text": "Mutated. [reaction] When you play a [[Tactic]] or [[Trick]] event, exhaust Chuck Fergus: Choose two -\n- That event gains: \"Fast. Play only during your turn.\"\n- That event costs 2 fewer resources to play.\n- You get +2 skill value while performing a skill test during the resolution of that event."
+        "text": "Il primo punto di queste carte diventa: “Quell’evento ottiene “Veloce. Gioca solo durante il tuo turno”.”",
+        "replacement_text": "Mutato. [reaction] Quando giochi un evento [[Tattica]] o [[Trucchetto]], esaurisci Chuck Fergus: Scegli 1 degli effetti seguenti:\n- Quell'evento ottiene “Veloce. Gioca solo durante il tuo turno”\n- Riduci di 2 il costo in risorse per giocare quell'evento.\nRicevi +2 al valore di abilità finché effettui una prova di abilità durante la risoluzione di quell'evento."
       },
       {
         "code": "09072",
-        "text": "This card's first bullet point now reads: \"That event gains: \"Fast. Play only during your turn.\"\"",
-        "replacement_text": "Mutated. [reaction] When you play a [[Tactic]] or [[Trick]] event, exhaust Chuck Fergus: Choose one -\n- That event gains: \"Fast. Play only during your turn.\"\n- That event costs 2 fewer resources to play.\n- You get +2 skill value while performing a skill test during the resolution of that event."
+        "text": "Il primo punto di queste carte diventa: “Quell’evento ottiene “Veloce. Gioca solo durante il tuo turno”.”",
+        "replacement_text": "Mutato. [reaction] Quando giochi un evento [[Tattica]] o [[Trucchetto]], esaurisci Chuck Fergus: Scegli 1 degli effetti seguenti:\n- Quell'evento ottiene “Veloce. Gioca solo durante il tuo turno”\n- Riduci di 2 il costo in risorse per giocare quell'evento.\nRicevi +2 al valore di abilità finché effettui una prova di abilità durante la risoluzione di quell'evento."
       },
       {
         "code": "07003",
@@ -3073,12 +3073,12 @@
       {
         "code": "08100",
         "text": "Questa carta ti permette di effettuare solo azioni di tipo base.",
-        "replacement_text": "Mutated. Uses (3 secrets).\n[fast] During your turn, exhaust Eon Chart and spend 1 secret: Choose and take two different basic actions of the following, in any order (move, evade, or investigate)."
+        "replacement_text": "Mutato. Utilizzo (3 segreti).\n[fast] Durante il tuo turno, esaurisci la Mappa degli Eoni e spendi 1 segreto: Scegli ed effettua 2 azione base tra quelle di movimento, elusione e/o indagine, nell'ordine che preferisci."
       },
       {
         "code": "08113",
         "text": "La prima riga di questa carta ottiene: \"Solo in Modalità Campagna.\"",
-        "replacement_text": "Solo in Modalità Campagna. Limite di 1 per investigatore. Non può uscire dal gioco.\n[reaction] Dopo che hai giocato il Prestito Amorale: ottieni 10 risorse.\n<b>Obbligo</b> - Quando la partita termina o sei eliminato, se possiedi 9 o meno risorse nella tua riserva delle risorse: Esilia il Prestito Amorale."
+        "replacement_text": "Solo Modalità Campagna. Limite di 1 per investigatore. Non può uscire dal gioco.\n[reaction] Dopo che hai giocato il Prestito Amorale: ottieni 10 risorse.\n<b>Obbligo</b> - Quando la partita termina o sei eliminato, se possiedi 9 o meno risorse nella tua riserva delle risorse: Esilia il Prestito Amorale."
       },
       {
         "code": "08093",
@@ -3097,7 +3097,7 @@
       },
       {
         "code": "09081",
-        "text": "This card’s text box now reads: \"[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command) – \"Go.\" This enemy moves once in a direction of your choice.\"\nThis card’s customizable sheet loses the \"Mercy\" ability and gains\"☐Cower. Add the command: \"- ‘Cower.’ This enemy exhausts.\"",
+        "text": "Il riquadro di testo di questa carta diventa: “[action] Se il nemico con questo evento si trova nel tuo luogo: <b>Negozia.</b> Effettua una prova di [willpower](2). Se hai successo, dagli un ordine (limite di una volta per round per ordine): “Vai.” Questo nemico si muove di 1 luogo in una direzione a tua scelta.”\nLa scheda miglioria di questa carta perde la capacità “Pentiti” e ottiene: ☐Inginocchiati. Aggiungi l’ordine seguente: “- ‘Inginocchiati.’ Questo nemico si esaurisce.”",
         "customization_options": [
           {
             "xp": 1,
@@ -3138,67 +3138,67 @@
             "position": 1
           }
         ],
-        "customization_change": "- <i>\"Betray.\"</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>\"Confess.\"</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>\"Distract.\"</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
+        "customization_change": "- <i>\"Tradisci.\"</i> Infliggi 1 danno a 1 qualsiasi nemico nel luogo di questo nemico con un valore di Scontro pari o inferiore al valore di Scontro di questo nemico.\n- <i>\"Inginocchiati.\"</i> Questo nemico si esaurisce.\n- <i>'Confessa.'</i> Se il valore di oscurità del luogo di questo nemico è pari o inferiore alla sua Salute, scopri 1 indizio in quel luogo.\n- <i>'Distrai.'</i> Eludi automaticamente 1 qualsiasi nemico nel luogo di questo nemico con un valore di Agilità pari o inferiore al valore di Agilità di questo nemico.\n[fast]: Rimetti la Parola di Potere nella tua mano.\nPuoi attivare la capacità <b>Negozia</b> della Parola di Potere da 1 luogo di distanza dal luogo del nemico con questo evento.\n[action] Se il nemico con questo evento si trova nel tuo luogo: <b>Negozia.</b> Effettua una prova di [willpower](2). Se hai successo, dagli un ordine (limite di una volta per round per ordine):\nPuoi includere 3 copie della Parola di Potere nel tuo mazzo. Quando dai un ordine usandone una copia, dai lo stesso ordine a ogni altro nemico a cui è assegnata una tua copia della Parola di Potere.",
         "customization_text": "□ <b>Tradisci.</b> Aggiungi l'ordine seguente: \"- <i>'Tradisci.'</i> Infliggi 1 danno a 1 qualsiasi nemico nel luogo di questo nemico con un valore di Scontro pari o inferiore al valore di Scontro di questo nemico.\"\n□ <b>Inginocchiati.</b> Aggiungi l'ordine seguente: \"- <i>'Inginocchiati.'</i> Questo nemico si esaurisce.\"\n□ <b>Confessa.</b> Aggiungi l'ordine seguente: \"- <i>'Confessa.'</i> Se il valore di oscurità del luogo di questo nemico è pari o inferiore alla sua Salute, scopri 1 indizio in quel luogo.\"\n□ <b>Distrai.</b>Aggiungi l'ordine seguente: \"- <i>'Distrai.'</i> Eludi automaticamente 1 qualsiasi nemico nel luogo di questo nemico con un valore di Agilità pari o inferiore al valore di Agilità di questo nemico.\"\n□□ <b>Controllo Superiore.</b> La Parola di Potere ottiene \"[fast]: Rimetti la Parola di Potere nella tua mano.\"\n□□□ <b>Vincolo.</b> Puoi attivare la capacità <b>Negozia</b> della Parola di Potere da 1 luogo di distanza dal luogo del nemico con questo evento.\n□□□ <b>Scioglilingua.</b> Quando negozi con la Parola di Potere, puoi dare fino a 2 ordini diversi.\n□□□ <b>Parlò Tre Volte.</b> Puoi includere 3 copie della Parola di Potere nel tuo mazzo. Quando dai un ordine usandone una copia, dai lo stesso ordine a ogni altro nemico a cui è assegnata una tua copia della Parola di Potere.",
-        "replacement_text": "Mutated. Customizable. Fast. Play only during your turn.\nAttach to a non-[[Elite]] enemy at your location.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command)\n – \"Go.\" This enemy moves once in a direction of your choice."
+        "replacement_text": "Mutato. Personalizzabile. Veloce. Gioca solo durante il tuo turno.\nAssegna la Parola di Potere a un nemico non [[Elite]] nel tuo luogo.\n[action] Se il nemico con questo evento si trova nel tuo luogo: <b>Negozia.</b> Effettua una prova di [willpower](2). Se hai successo, dagli un ordine (limite di una volta per round per ordine):\n – \"Vai.\" Questo nemico si muove di 1 luogo in una direzione a tua scelta."
       },
       {
         "code": "10026",
-        "text": "This card's ability reads: \"...If you succeed, play the chosen asset, reducing its cost by the amount you succeeded by.\"",
-        "replacement_text": "Mutated.\n<b>Parley.</b> Choose an enemy at your location and an [[Item]] asset in your hand. Perform a fight action against the chosen enemy. If you succeed, play the chosen asset, reducing its cost by the amount you succeeded by."
+        "text": "La capacità di questa carta diventa: “… Se hai successo, gioca il supporto scelto riducendone il costo dell’ammontare di punti di cui hai avuto successo”.",
+        "replacement_text": "Mutato.\n<b>Negozia.</b> Scegli 1 nemico nel tuo luogo e 1 supporto [[Oggetto]] nella tua mano. Effettua 1 azione di combattimento contro il nemico scelto. Se hai successo, gioca il supporto scelto riducendone il costo dell’ammontare di punti di cui hai avuto successo."
       },
       {
         "code": "10030",
-        "text": "This card's ability reads: \"Resolve an [action] ability on a level 0-3 [[Tool]] or [[Weapon]] asset you control, ignoring all costs.\"",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nResolve an [action] ability on a level 0-3 [[Tool]] or [[Weapon]] asset you control, ignoring all costs."
+        "text": "La capacità di questa carta diventa: “Risolvi una capacità [action] di un supporto [[Strumento]] o [[Arma]] di livello 0-3 che controlli, ignorandone tutti i costi”.",
+        "replacement_text": "Mutato. Veloce. Gioca solo durante il tuo turno.\nRisolvi una capacità [action] di un supporto [[Strumento]] o [[Arma]] di livello 0-3 che controlli, ignorandone tutti i costi."
       },
       {
         "code": "10059",
-        "text": "This card’s [reaction] ability reads: “[reaction] When an investigator draws a non-weakness treachery card, if their location’s shroud is less than Ravenous Myconid’s growth...”",
-        "replacement_text": "Mutated. Researched. Limit 1 per deck.\n[fast]: Search your bonded cards for Uncanny Growth and add it to your hand. (Limit once per round.)\n[reaction] When an investigator draws a non-weakness treachery card, if their location's shroud is less than Ravenous Myconid's growth: Cancel that treachery's effects and discard it. Remove all growth from Ravenous Myconid."
+        "text": "La capacità [reaction] di questa carta ottiene: \"[reaction] Quando un investigatore pesca una carta sventura non debolezza, se il valore di Oscurità del suo luogo è inferiore alle crescite sul Miconide Famelico...\"",
+        "replacement_text": "Mutato. Analizzato. Limite 1 per mazzo.\n[fast]: Cerca tra le tue carte vincolate la Crescita Inspiegabile e aggiungila alla tua mano. (Limite di una volta per round.)\n[reaction] Quando un investigatore pesca una carta sventura non debolezza, se il valore di Oscurità del suo luogo è inferiore alle crescite sul Miconide Famelico: Annulla gli effetti di quella sventura e scartala. Rimuovi tutte le crescite dal Miconide Famelico."
       },
       {
         "code": "11065",
-        "text": "This card's [reaction] ability reads \"[reaction] When doom is placed on a card you control: Place 1 resource (from the token pool) on Blood of Thoth, as an offering.\"\nThis card's [free] ability reads \"[free] During the investigation phase, except during an action, spend 2 offerings and exhaust Blood of Thoth: Choose an investigator at your location to immediately take an action as if it were their turn.\"",
-        "replacement_text": "Mutated.\n[reaction] When doom is placed on a card you control: Place 1 resource <i>(from the token pool)</i>, on this card, as an offering.\n[fast] During the investigation phase, except during an action, spend 2 offerings and exhaust Blood of Thoth: Choose an investigator at your location to immediately take an action as if it were their turn."
+        "text": "La capacità [reaction] di questa carta diventa: “[reaction] Quando 1 o più destini vengono collocati su una carta che controlli: Colloca 1 risorsa (dalla riserva dei segnalini) su questa carta (trasformandola in offerta)”.\nLa capacità [fast] di questa carta diventa: “[fast] Durante la Fase degli Investigatori, tranne che durante un’azione, spendi 2 offerte ed esaurisci il Sangue di Thoth: Scegli 1 investigatore nel tuo luogo per fargli effettuare immediatamente 1 azione come se fosse il suo turno”.",
+        "replacement_text": "Mutato.\n[reaction] Quando 1 o più destini vengono collocati su una carta che controlli: Colloca 1 risorsa <i>(dalla riserva dei segnalini)</i> su questa carta (trasformandola in offerta).\n[fast] Durante la Fase degli Investigatori, tranne che durante un’azione, spendi 2 offerte ed esaurisci il Sangue di Thoth: Scegli 1 investigatore nel tuo luogo per fargli effettuare immediatamente 1 azione come se fosse il suo turno."
       },
       {
         "code": "11071",
-        "text": "This card’s <b>Forced</b> effect now reads “The first time attached card takes 1 or more damage/horror each round...”",
-        "replacement_text": "Mutated. Fast. Play only during your turn. Attach to a player card with health and/or sanity at your location.\n<b>Forced</b> - The first time attached card takes 1 or more damage/horror each round: Cancel 1 of that damage/horror. The owner of Spectral Shield must remove 1 charge from an asset they control. If they cannot, discard Spectral Shield."
+        "text": "La capacità <b>Obbligo</b> di questa carta diventa: \"La prima volta che la carta con questo evento subisce 1 o più danni/orrori ogni round...\"",
+        "replacement_text": "Mutato. Veloce. Gioca solo durante il tuo turno. Assegna a una carta giocatore dotata di Salute e/o Sanità Mentale nel tuo luogo.\n<b>Obbligo</b> - La prima volta che la carta con questo evento subisce 1 o più danni/orrori ogni round: Annulla 1 di quei danni/orrori. Il proprietario dello Scudo Spettrale deve rimuovere 1 carica da un supporto che controlla. Se non può farlo, scarta lo Scudo Spettrale."
       },
       {
         "code": "11075",
-        "text": "This card gains “Fast. Play only during your turn.”\nThis card’s [reaction] ability now reads “...Return Spiritual Echo to your hand at the end of your turn.” and gains “(Limit once per round.)”",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nAttach to your location. Limit 1 per location.\n[reaction] After you activate an [action] or [fast] ability on a [[Spell]] or [[Ritual]] asset: Perform that ability again at attached location as if you were there, ignoring that asset's [action] cost, if any. <i>(You may trigger this ability from any location.)</i> Return Spiritual Echo to your hand at the end of your turn. (Limit once per round.)"
+        "text": "Questa carta ottiene: \"Veloce. Gioca solo durante il tuo turno.\"\nLa capacità [reaction] di questa carta ottiene: \"...Rimetti l'Eco Spirituale nella tua mano alla fine del tuo turno.\" e ottiene \"(Limite di una volta per round.)\"",
+        "replacement_text": "Mutato. Veloce. Gioca solo durante il tuo turno.\nAssegna al tuo luogo. Limite di 1 per luogo.\n[reaction] Dopo che hai attivato una capacità [action] o [fast] di un supporto [[Incantesimo]] o [[Rituale]]: Effettua di nuovo quella capacità nel luogo con questo evento come se ti trovassi in quel luogo, ignorando l'eventuale costo . Puoi innescare questa capacità da un qualsiasi luogo. Rimetti l'Eco Spirituale nella tua mano alla fine del tuo turno. (Limite di una volta per round.)"
       },
       {
         "code": "11118",
-        "text": "This card’s <b>Forced</b> effect now reads “When your turn ends: Place attached asset on the bottom of your deck unless you spend 1 resource.”",
-        "replacement_text": "Mutated. [[Miskatonic]], [[Scholar]] deck only. Permanent. Limit 1 per deck.\n[fast] During your turn, if there is no asset attached to Library Pass, exhaust Library Pass: Attach a [[Tome]] asset from your hand to Library Pass. Attached asset takes up no slots.\n<b>Forced</b> - When your turn ends: Place attached asset on the bottom of your deck unless you spend 1 resource."
+        "text": "La capacità <b>Obbligo</b> di questa carta ottiene: \"Quando il tuo turno termina: Colloca il supporto assegnato in fondo al tuo mazzo a meno che tu non spenda 1 risorsa.\"",
+        "replacement_text": "Mutato. Solo mazzo [[Miskatonic]] o [[Accademico]]. Permanente. Limite di 1 per mazzo.\n[fast] Durante il tuo turno, se non ci sono supporti assegnati alla Tessera della Biblioteca, esauriscila: Assegna 1 supporto [[Tomo]] dalla tua mano alla Tessera della Biblioteca. Il supporto assegnato non occupa slot.\n<b>Forced</b> - Quando il tuo turno termina: Colloca il supporto assegnato in fondo al tuo mazzo a meno che tu non spenda 1 risorsa."
       },
       {
         "code": "11120",
-        "text": "The first line of this card gains: “If On Their Heels has no leads, discard it.”",
-        "replacement_text": "Mutated. [[Detective]], [[Hunter]], [[Police]], [[Reporter]] deck only.\nLimit 1 per investigator. Uses (5 leads). If On Their Heels has no leads, discard it.\n[reaction] After you enter a location with 1 or more enemies, spend 1 lead and exhaust On Their Heels: Either discover 1 clue at your location or deal 1 damage to an enemy at your location."
+        "text": "La prima riga di questa carta ottiene: \"Se Alle Calcagna non ha piste, scartalo.\"",
+        "replacement_text": "Mutato. Solo mazzo [[Detective]], [[Cacciatore]], [[Polizia]] o [[Reporter]].\nLimite di 1 per investigatore. Utilizzo (5 piste). Se Alle Calcagna non ha piste, scartalo.\n[reaction ]Dopo che sei entrato in un luogo con 1 o più nemici, spendi 1 pista ed esaurisci Alle Calcagna: Scopri 1 indizio nel tuo luogo oppure infliggi 1 danno a un nemico nel tuo luogo."
       },
       {
         "code": "02026",
         "deck_limit": 0,
-        "text": "Proibito.",
-        "replacement_text": "Forbidden. Max 1 committed per skill test.\nDouble the difficulty of this skill test. If this skill test is successful, resolve the effects of the successful test twice."
+        "text": "Proibita.",
+        "replacement_text": "Proibita. Massimo 1 investimento per prova di abilità.\nRaddoppia la difficoltà di questa prova. Se questa prova di abilità ha successo, risolvi due volte i suoi effetti."
       },
       {
         "code": "60233",
         "deck_limit": 0,
-        "text": "Proibito.",
-        "replacement_text": "Forbidden. Uses (6 secrets). Limit 1 per deck.\n[fast] Spend 1 secret: You get +2 skill value for this test.\n[fast] Spend 2 secrets: Draw 2 cards.\n[fast] Spend 3 secrets: Discover 1 clue at any location.\n][fast] Spend 4 secrets: Deal 3 damage to an enemy engaged with you."
+        "text": "Proibita.",
+        "replacement_text": "Proibita. Utilizzo (6 segreti). Limite di 1 per mazzo.\n[fast] Spendi 1 segreto: Ricevi +2 al valore di abilità in questa prova di abilità.\n[fast] Spendi 2 segreti: Pesca 2 carte.\n[fast] Spendi 3 segreti: Scopri 1 indizio in un qualsiasi luogo.\n[fast] Spendi 4 segreti: Infliggi 3 danni a un nemico impegnato con te."
       },
       {
         "code": "08076",
         "deck_limit": 2,
-        "text": "Proibito.",
-        "replacement_text": "Forbidden.\nExile a level 0-5 card in your hand. Discover 2 clues at your location. If the exiled card was level 2 or higher, remove 1 doom from the current agenda. Exile Burn After Reading.\n<b>Card designed by the Council-in-Exile at Gen Con 2020</b>"
+        "text": "Proibita.",
+        "replacement_text": "Proibita.\nEsilia 1 carta di livello 0-5 dalla tua mano. Scopri 2 indizi nel tuo luogo. Se la carta esiliata era di livello pari o superiore a 2, rimuovi 1 destino dalla trama attuale. Esilia Bruciare le Tracce.\n<b>Carta creata da The Council-in-Exile durante la Gen Con 2020.</b>"
       }
     ]
   }

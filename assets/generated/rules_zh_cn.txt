@@ -294,8 +294,8 @@
   },
   {
     "id": "Clues_on_Player_Cards",
-    "title": "Clues on Player Cards",
-    "text": "Some card effects such as Kate Winthrop’s ability may place clues on a card controlled by an investigator. Clues that have been placed on a player card are still controlled by that player and may be spent as normal. If a game effect would cause a card with clues on it to leave play or leave an investigator’s control, place each clue on that card on its location."
+    "title": "玩家卡牌上的线索",
+    "text": "一些卡牌效果（如凯特・温思罗普的能力）可将线索放置于调查员所控制的卡牌上。放置于玩家卡牌上的线索仍由该玩家控制，并可如常花费。若游戏效果导致带有线索的卡牌离场或失去调查员的控制，则将该卡牌上的所有线索放置到其所在地点。"
   },
   {
     "id": "Collection",
@@ -320,8 +320,8 @@
   },
   {
     "id": "Controlling_and_Attaching_Permanent_Cards",
-    "title": "Controlling and Attaching Permanent Cards",
-    "text": "A card with the permanent keyword cannot leave its controller’s play area unless directed by scenario card effects. Cards with the permanent keyword cannot be attached to other cards in an investigator’s play area. Investigators cannot take control of another investigator’s permanent cards.\n<i>For example: an investigator cannot attach Sin-Eater to Elle Rubash even if Sin-Eater has one or more doom on it."
+    "title": "控制与迭加（附属）永久卡牌",
+    "text": "带有永久关键词的卡牌，除非由剧本卡牌效果指定，否则无法离开其控制者的游戏区域。带有永久关键词的卡牌，不可附属至调查员游戏区域内的其他卡牌。调查员无法获得其他调查员所控制的永久卡牌的控制权。\n<i>示例：调查员无法将食罪者迭加（附属）至艾勒・鲁巴什，即使食罪者上带有1个或更多毁灭标记。</i>"
   },
   {
     "id": "Control",

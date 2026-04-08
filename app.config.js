@@ -38,7 +38,7 @@ module.exports = {
   expo: {
     name: 'ArkhamCards',
     slug: 'arkhamcards',
-    version: '6.1.2',
+    version: '6.1.3',
     jsEngine: 'hermes',
     orientation: 'default',
     userInterfaceStyle: 'automatic',
@@ -100,7 +100,7 @@ module.exports = {
         'android.permission.RECORD_AUDIO',
         'android.permission.MODIFY_AUDIO_SETTINGS',
       ],
-      versionCode: 4195565,
+      versionCode: 4195569,
     },
     locales: {
       'ko': './assets/i18n-app/ko.metadata.json',

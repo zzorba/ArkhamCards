@@ -57,7 +57,7 @@
   },
   {
     "id": "an_offer_you_cant_refuse",
-    "name": "An Offer You Can't Refuse"
+    "name": "不容拒绝的报价"
   },
   {
     "id": "an_unknown_benefactor",
@@ -337,7 +337,7 @@
   },
   {
     "id": "expedition_to_ryleh",
-    "name": "Expedition to R'lyeh"
+    "name": "拉莱耶探险"
   },
   {
     "id": "extracurricular_activity",
@@ -705,7 +705,7 @@
   },
   {
     "id": "return_to_arkham",
-    "name": "Return to Arkham"
+    "name": "重回阿卡姆"
   },
   {
     "id": "return_to_at_deaths_doorstep",
@@ -1025,7 +1025,7 @@
   },
   {
     "id": "the_awakening",
-    "name": "The Awakening"
+    "name": "苏醒"
   },
   {
     "id": "the_black_cat",
@@ -1069,15 +1069,15 @@
   },
   {
     "id": "the_doom_of_arkham",
-    "name": "The Doom of Arkham"
+    "name": "诡镇末日"
   },
   {
     "id": "the_doom_of_arkham_part_1",
-    "name": "The Doom of Arkham: Part I"
+    "name": "诡镇末日·第I部分"
   },
   {
     "id": "the_doom_of_arkham_part_2",
-    "name": "The Doom of Arkham: Part II"
+    "name": "诡镇末日·第II部分"
   },
   {
     "id": "the_drowned_quarter",

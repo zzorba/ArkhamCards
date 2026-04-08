@@ -11393,7 +11393,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Cthulhu's Rage",
+          "prompt": "克苏鲁之怒",
           "min": 0
         }
       },
@@ -11422,7 +11422,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Cthulhu's Rage",
+          "prompt": "克苏鲁之怒",
           "min": 0,
           "adjustment": 2
         }

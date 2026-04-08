@@ -169,7 +169,7 @@
   },
   {
     "id": "by_the_book",
-    "name": "Da Manuale"
+    "name": "Come da Manuale"
   },
   {
     "id": "carnevale_of_horrors",
@@ -209,7 +209,7 @@
   },
   {
     "id": "court_of_the_ancients",
-    "name": "Court of the Ancients"
+    "name": "La Corte degli Antichi"
   },
   {
     "id": "cp_epilogue",
@@ -401,7 +401,7 @@
   },
   {
     "id": "fragment_of_carcosa",
-    "name": "Frammento di Carcosa"
+    "name": "Un Frammento di Carcosa"
   },
   {
     "id": "friends_in_low_places",
@@ -509,7 +509,7 @@
   },
   {
     "id": "istanbul",
-    "name": "Ombre Dolorose"
+    "name": "Affari Oscuri"
   },
   {
     "id": "jennys_choice",
@@ -525,7 +525,7 @@
   },
   {
     "id": "kuala_lampur",
-    "name": "Ombre Sanguigne"
+    "name": "Ombre Dolorose"
   },
   {
     "id": "lagos",
@@ -557,7 +557,7 @@
   },
   {
     "id": "lost_quantum",
-    "name": "Quantum Perso"
+    "name": "Il Regno Quantistico Perduto"
   },
   {
     "id": "lucid_nightmare",
@@ -617,11 +617,11 @@
   },
   {
     "id": "obsidian_canyons",
-    "name": "Obsidian Canyons"
+    "name": "Le Gole di Ossidiana"
   },
   {
     "id": "one_last_job",
-    "name": "One Last Job"
+    "name": "Un Ultimo Lavoro"
   },
   {
     "id": "oz_epilogue",
@@ -769,7 +769,7 @@
   },
   {
     "id": "return_to_in_too_deep",
-    "name": "Ritorno a... Con l’Acqua alla Gola"
+    "name": "Ritorno a... Con l'Acqua alla Gola"
   },
   {
     "id": "return_to_into_the_maelstrom",
@@ -909,7 +909,7 @@
   },
   {
     "id": "sepulchre_of_the_sleeper",
-    "name": "Sepulchre of the Sleeper"
+    "name": "Il Sepolcro del Dormiente"
   },
   {
     "id": "shanghai",
@@ -937,7 +937,7 @@
   },
   {
     "id": "starfall",
-    "name": "Caduta di Stelle"
+    "name": "La Caduta delle Stelle"
   },
   {
     "id": "stockholm",
@@ -1013,7 +1013,7 @@
   },
   {
     "id": "the_apiary",
-    "name": "The Apiary"
+    "name": "L'Alveare"
   },
   {
     "id": "the_attack",
@@ -1081,7 +1081,7 @@
   },
   {
     "id": "the_drowned_quarter",
-    "name": "The Drowned Quarter"
+    "name": "Il Quartiere Sommerso"
   },
   {
     "id": "the_duchess",
@@ -1117,7 +1117,7 @@
   },
   {
     "id": "the_grand_vault",
-    "name": "The Grand Vault"
+    "name": "La Grande Cripta"
   },
   {
     "id": "the_great_ones",
@@ -1237,7 +1237,7 @@
   },
   {
     "id": "the_tatterdemalion",
-    "name": "Lo Straccione"
+    "name": "La Tatterdemalion"
   },
   {
     "id": "the_thing_in_the_depths",
@@ -1265,7 +1265,7 @@
   },
   {
     "id": "the_western_wall",
-    "name": "The Western Wall"
+    "name": "La Parete Occidentale"
   },
   {
     "id": "the_white_queen",
@@ -1373,7 +1373,7 @@
   },
   {
     "id": "when_the_world_screamed",
-    "name": "Quando il Mondo Urlò"
+    "name": "Quando la Terra Urlò"
   },
   {
     "id": "where_doom_awaits",

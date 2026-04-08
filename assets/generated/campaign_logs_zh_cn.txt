@@ -143,39 +143,39 @@
         "entries": [
           {
             "id": "arkham_succumbed",
-            "text": "阿卡姆被乌默尔多斯吞噬。"
+            "text": "阿卡姆被乌默尔多斯可怕的复仇所摧毁"
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "食尸鬼祭司还活著。"
+            "text": "“食尸鬼祭司”还活着。"
           },
           {
             "id": "house_burned",
-            "text": "房屋已烧毁。"
+            "text": "你的房子被烧毁。"
           },
           {
             "id": "house_standing",
-            "text": "房屋还在。"
+            "text": "你的房子幸免于难。"
           },
           {
             "id": "lita_finds_others",
-            "text": "丽塔不得不去找别的帮手。"
+            "text": "丽塔不得不去向其他人求助。"
           },
           {
             "id": "lita_sacrificed",
-            "text": "向乌默尔多斯献祭了丽塔·钱德勒。"
+            "text": "调查员们将丽塔献祭给了乌默尔多斯。"
           },
           {
             "id": "past_midnight",
-            "text": "午夜已至。"
+            "text": "午夜已过。"
           },
           {
             "id": "ritual_broken",
-            "text": "召唤仪式被终止。"
+            "text": "召唤乌默尔多斯的仪式被破坏。"
           },
           {
             "id": "umordhoth_repelled",
-            "text": "调查员击退乌默尔多斯。"
+            "text": "调查员们击退了乌默尔多斯。"
           }
         ]
       },
@@ -2948,39 +2948,39 @@
         "entries": [
           {
             "id": "arkham_succumbed",
-            "text": "阿卡姆被乌默尔多斯吞噬。"
+            "text": "阿卡姆被乌默尔多斯可怕的复仇所摧毁"
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "食尸鬼祭司还活著。"
+            "text": "“食尸鬼祭司”还活着。"
           },
           {
             "id": "house_burned",
-            "text": "房屋已烧毁。"
+            "text": "你的房子被烧毁。"
           },
           {
             "id": "house_standing",
-            "text": "房屋还在。"
+            "text": "你的房子幸免于难。"
           },
           {
             "id": "lita_finds_others",
-            "text": "丽塔不得不去找别的帮手。"
+            "text": "丽塔不得不去向其他人求助。"
           },
           {
             "id": "lita_sacrificed",
-            "text": "向乌默尔多斯献祭了丽塔·钱德勒。"
+            "text": "调查员们将丽塔献祭给了乌默尔多斯。"
           },
           {
             "id": "past_midnight",
-            "text": "午夜已至。"
+            "text": "午夜已过。"
           },
           {
             "id": "ritual_broken",
-            "text": "召唤仪式被终止。"
+            "text": "召唤乌默尔多斯的仪式被破坏。"
           },
           {
             "id": "umordhoth_repelled",
-            "text": "调查员击退乌默尔多斯。"
+            "text": "调查员们击退了乌默尔多斯。"
           }
         ]
       },
@@ -5593,35 +5593,35 @@
         "entries": [
           {
             "id": "do_no_harm",
-            "text": "Task Progress - Do No Harm:"
+            "text": "任务进度 - 医者仁心："
           },
           {
             "id": "dreams_of_destruction",
-            "text": "Task Progress - Dreams of Destruction:"
+            "text": "任务进度 - 毁灭之梦："
           },
           {
             "id": "good_money",
-            "text": "Task Progress - Good Money:"
+            "text": "任务进度 - 价值千金："
           },
           {
             "id": "no_place_like_home",
-            "text": "Task Progress - No Place Like Home:"
+            "text": "任务进度 - 吾家可归："
           },
           {
             "id": "plumb_the_depths",
-            "text": "Task Progress - Plumb the Depths:"
+            "text": "任务进度 - 追本溯源："
           },
           {
             "id": "prove_your_worth",
-            "text": "Task Progress - Prove Your Worth:"
+            "text": "任务进度 - 证明价值："
           },
           {
             "id": "toe_the_line",
-            "text": "Task Progress - Toe the Line:"
+            "text": "任务进度 - 安分守己："
           },
           {
             "id": "walk_in_faith",
-            "text": "Task Progress - Walk in Faith:"
+            "text": "任务进度 - 追随信仰："
           }
         ]
       },
@@ -5630,27 +5630,27 @@
         "entries": [
           {
             "id": "barrier_node",
-            "text": "Barrier Node"
+            "text": "屏障节点"
           },
           {
             "id": "clah_horror",
-            "text": "Horror in Clay"
+            "text": "陶中恐怖"
           },
           {
             "id": "grisly_mask",
-            "text": "Grisly Mask"
+            "text": "骇人面具"
           },
           {
             "id": "obsidian_claw",
-            "text": "Obsidian Claw"
+            "text": "黑曜石之爪"
           },
           {
             "id": "shard",
-            "text": "Shard of Y'ch'lecht"
+            "text": "伊库勒刻特碎片"
           },
           {
             "id": "tidal_tablet",
-            "text": "Tidal Tablet"
+            "text": "潮汐碑匾"
           }
         ]
       },
@@ -5658,136 +5658,136 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "no_place_like_home_succeed",
-            "masculine_text": "#name# found his true home.",
-            "feminine_text": "#name# found her true home.",
-            "nonbinary_text": "#name# found their true home."
-          },
-          {
-            "id": "toe_the_line_succeed",
-            "masculine_text": "#name# found new work.",
-            "feminine_text": "#name# found new work.",
-            "nonbinary_text": "#name# found new work."
-          },
-          {
             "id": "walk_in_faith_succeed",
-            "masculine_text": "#name# is strong in their faith.",
-            "feminine_text": "#name# is strong in their faith.",
-            "nonbinary_text": "#name# is strong in their faith."
-          },
-          {
-            "id": "plumb_the_depths_succeed",
-            "masculine_text": "#name# learned the secret truth.",
-            "feminine_text": "#name# learned the secret truth.",
-            "nonbinary_text": "#name# learned the secret truth."
+            "masculine_text": "#name#信仰坚定。",
+            "feminine_text": "#name#信仰坚定。",
+            "nonbinary_text": "#name#信仰坚定。"
           },
           {
             "id": "good_money_succeed",
-            "masculine_text": "#name# made bank.",
-            "feminine_text": "#name# made bank.",
-            "nonbinary_text": "#name# made bank."
+            "masculine_text": "#name#大赚一笔。",
+            "feminine_text": "#name#大赚一笔。",
+            "nonbinary_text": "#name#大赚一笔。"
           },
           {
             "id": "prove_your_worth_succeed",
-            "masculine_text": "#name# pulled their weight.",
-            "feminine_text": "#name# pulled their weight.",
-            "nonbinary_text": "#name# pulled their weight."
+            "masculine_text": "#name#尽了本分。",
+            "feminine_text": "#name#尽了本分。",
+            "nonbinary_text": "#name#尽了本分。"
           },
           {
-            "id": "do_no_harm_succeed",
-            "masculine_text": "#name# swore an oath to protect others.",
-            "feminine_text": "#name# swore an oath to protect others.",
-            "nonbinary_text": "#name# swore an oath to protect others."
+            "id": "plumb_the_depths_succeed",
+            "masculine_text": "#name#得知了秘密的真相。",
+            "feminine_text": "#name#得知了秘密的真相。",
+            "nonbinary_text": "#name#得知了秘密的真相。"
+          },
+          {
+            "id": "no_place_like_home_succeed",
+            "masculine_text": "#name#找到了真正的家。",
+            "feminine_text": "#name#找到了真正的家。",
+            "nonbinary_text": "#name#找到了真正的家。"
           },
           {
             "id": "dreams_of_destruction_succeed",
-            "masculine_text": "#name# understands the future.",
-            "feminine_text": "#name# understands the future.",
-            "nonbinary_text": "#name# understands the future."
+            "masculine_text": "#name#明晓未来。",
+            "feminine_text": "#name#明晓未来。",
+            "nonbinary_text": "#name#明晓未来。"
+          },
+          {
+            "id": "toe_the_line_succeed",
+            "masculine_text": "#name#有了新工作。",
+            "feminine_text": "#name#有了新工作。",
+            "nonbinary_text": "#name#有了新工作。"
+          },
+          {
+            "id": "do_no_harm_succeed",
+            "masculine_text": "#name#立誓保卫他人。",
+            "feminine_text": "#name#立誓保卫他人。",
+            "nonbinary_text": "#name#立誓保卫他人。"
           },
           {
             "id": "cthulhu_annihilated_the_city_of_arkham",
-            "text": "Cthulhu annihilated the city of Arkham."
+            "text": "克苏鲁毁灭了阿卡姆城."
           },
           {
             "id": "cthulhu_was_banished",
-            "text": "Cthulhu was banished."
+            "text": "克苏鲁被驱除."
           },
           {
             "id": "cthulhu_was_banished_but_arkham_was_destroyed",
-            "text": "Cthulhu was banished, but Arkham was destroyed."
+            "text": "克苏鲁被驱除，但阿卡姆被毁了。"
           },
           {
             "id": "cthulhu_was_driven_away",
-            "text": "Cthulhu was driven away."
+            "text": "克苏鲁被赶跑了。"
           },
           {
             "id": "did_not_confront_the_nightmare",
-            "text": "the investigators did not confront the nightmare."
+            "text": "调查员没有直面梦魇。"
           },
           {
             "id": "discovered_an_alien_language",
-            "text": "the investigators discovered an alien language."
+            "text": "调查员们发现了一种异星语言。"
           },
           {
             "id": "expedition_abandoned_pilgrim",
-            "text": "the expedition left the pilgrim behind."
+            "text": "探险队扔下了朝圣者。"
           },
           {
             "id": "expedition_headed_east",
-            "text": "the expedition headed east."
+            "text": "探险队向东进发。"
           },
           {
             "id": "expedition_headed_west",
-            "text": "the expedition headed west."
+            "text": "探险队向西进发。"
           },
           {
             "id": "expedition_helped_pilgrim",
-            "text": "the expedition helped the pilgrim."
+            "text": "探险队救助了朝圣者。"
           },
           {
             "id": "exterminated_the_alien_parasites",
-            "text": "the investigators exterminated the alien parasites."
+            "text": "调查员消灭了异星寄生虫。"
           },
           {
             "id": "halted_cthulhus_awakening",
-            "text": "the investigators halted Cthulhu's awakening."
+            "text": "调查员阻止了克苏鲁的苏醒。"
           },
           {
             "id": "pilgrims_were_devoured",
-            "text": "the pilgrims were devoured."
+            "text": "朝圣者被吞噬。"
           },
           {
             "id": "pilgrims_were_saved",
-            "text": "the pilgrims were saved."
+            "text": "朝圣者得救。"
           },
           {
             "id": "ruby_lost_the_bet",
-            "text": "Ruby lost the bet."
+            "text": "露比输掉赌局。"
           },
           {
             "id": "ruby_won_the_bet",
-            "text": "Ruby won the bet."
+            "text": "露比赢得赌局。"
           },
           {
             "id": "stood_together",
-            "text": "the investigators stood together."
+            "text": "调查员共赴此难。"
           },
           {
             "id": "the_creature_was_defeated",
-            "text": "the creature was defeated."
+            "text": "那头怪物被击败了。"
           },
           {
             "id": "the_inner_sanctum_was_unsealed",
-            "text": "the inner sanctum was unsealed."
+            "text": "内部圣堂的封印已解除."
           },
           {
             "id": "the_power_was_diverted",
-            "text": "the power was diverted."
+            "text": "能源已经转移。"
           },
           {
             "id": "your_allies_have_a_plan",
-            "text": "your allies have a plan."
+            "text": "你的盟友有一个计划。"
           }
         ]
       },
@@ -5812,7 +5812,7 @@
           },
           {
             "id": "rivertown",
-            "text": "Rivertown"
+            "text": "河岸城"
           },
           {
             "id": "southside",
@@ -5820,7 +5820,7 @@
           },
           {
             "id": "st_marys_hospital",
-            "text": "St. Mary's Hospital"
+            "text": "圣玛丽医院"
           }
         ]
       },
@@ -5833,7 +5833,7 @@
           },
           {
             "id": "tdc_rune_s",
-            "text": "Machine"
+            "text": "装置"
           }
         ]
       },
@@ -5842,15 +5842,15 @@
         "entries": [
           {
             "id": "tdc_good_money_no_upkeep",
-            "masculine_text": "#name# cannot gain resources during the upkeep phase.",
-            "feminine_text": "#name# cannot gain resources during the upkeep phase.",
-            "nonbinary_text": "#name# cannot gain resources during the upkeep phase."
+            "masculine_text": "#name#不能在补给阶段期间获得资源。",
+            "feminine_text": "#name#不能在补给阶段期间获得资源。",
+            "nonbinary_text": "#name#不能在补给阶段期间获得资源。"
           },
           {
             "id": "tdc_good_money_extra_resources",
-            "masculine_text": "#name# starts with 3 additional resources.",
-            "feminine_text": "#name# starts with 3 additional resources.",
-            "nonbinary_text": "#name# starts with 3 additional resources."
+            "masculine_text": "#name#有额外3资源开始游戏。",
+            "feminine_text": "#name#有额外3资源开始游戏。",
+            "nonbinary_text": "#name#有额外3资源开始游戏。"
           },
           {
             "id": "kept_barrier_node",

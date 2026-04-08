@@ -5829,7 +5829,7 @@
         "entries": [
           {
             "id": "tdc_rune_a",
-            "text": "Depths"
+            "text": "Abitatori del Profondo"
           },
           {
             "id": "tdc_rune_s",
@@ -5935,31 +5935,31 @@
         "entries": [
           {
             "id": "court_of_the_ancients",
-            "text": "Court of the Ancients"
+            "text": "La Corte degli Antichi"
           },
           {
             "id": "obsidian_canyons",
-            "text": "Obsidian Canyons"
+            "text": "Le Gole di Ossidiana"
           },
           {
             "id": "sepulchre_of_the_sleeper",
-            "text": "Sepulchre of the Sleeper"
+            "text": "Il Sepolcro del Dormiente"
           },
           {
             "id": "the_apiary",
-            "text": "The Apiary"
+            "text": "L'Alveare"
           },
           {
             "id": "the_drowned_quarter",
-            "text": "The Drowned Quarter"
+            "text": "Il Quartiere Sommerso"
           },
           {
             "id": "the_grand_vault",
-            "text": "The Grand Vault"
+            "text": "La Grande Cripta"
           },
           {
             "id": "the_western_wall",
-            "text": "The Western Wall"
+            "text": "La Parete Occidentale"
           }
         ]
       }
