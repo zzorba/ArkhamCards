@@ -1024,7 +1024,7 @@ export default function OddsCalculatorComponent({
           return {
             token: tokenValue.token,
             value: {
-              modifier: ((xValue[tokenValue.token] || (tokenValue.counter.min || 0)) + (tokenValue.counter.adjustment || 0)) * (tokenValue.counter.scale || 1) * (tokenValue.token === 'elder_sign' ? 1 : -1),
+              modifier: ((xValue[tokenValue.token] ?? (tokenValue.counter.min || 0)) + (tokenValue.counter.adjustment || 0)) * (tokenValue.counter.scale || 1) * (tokenValue.token === 'elder_sign' ? 1 : -1),
             },
           };
         }
