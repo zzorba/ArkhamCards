@@ -4909,7 +4909,7 @@
           },
           {
             "id": "zlf_slain_the_eldrich_god",
-            "text": "du hast den Großen Alten des Feuers besiegt."
+            "text": "Du hast den Großen Alten des Feuers besiegt."
           }
         ]
       },

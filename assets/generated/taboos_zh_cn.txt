@@ -807,12 +807,12 @@
       {
         "code": "07269",
         "text": "此卡牌的能力获得：“将警戒和平移出游戏。”",
-        "replacement_text": "作为打出警戒和平的额外费用，在混乱袋和/或场上的卡牌中查找总共5个[bless]标记，并将其返回供应堆。\n变异。快速。在神话阶段的“抽取遭遇卡”步骤(步骤1.4)将要开始时打出。跳过神话阶段的此步骤。将警戒和平移出游戏。"
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "此卡牌的能力获得：“将圣洁移出游戏。”",
-        "replacement_text": "作为打出圣洁的额外费用，将混乱袋内或封印在场上卡牌上的总计10个[bless]标记返回供应堆。\n变异。\n移除场上任一卡牌上的1个毁灭标记。将圣洁移出游戏。"
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1008,7 +1008,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "此卡牌失去“卓越”关键词并获得“每副牌组限制1张。”",
-        "replacement_text": "变异。每副牌组限制1张。封印(最多X[curse])。\n[action]横置外神的长笛并释放其上封印的1个[curse]标记：选择你所在地点一名非[[精英]]敌人。移动所选敌人到连接地点，或对其地点的任一敌人造成所选敌人伤害值的伤害。这个行动不会引起趁乱攻击。"
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -1261,12 +1261,12 @@
       {
         "code": "07269",
         "text": "此卡牌的能力获得：“将警戒和平移出游戏。”",
-        "replacement_text": "作为打出警戒和平的额外费用，在混乱袋和/或场上的卡牌中查找总共5个[bless]标记，并将其返回供应堆。\n变异。快速。在神话阶段的“抽取遭遇卡”步骤(步骤1.4)将要开始时打出。跳过神话阶段的此步骤。将警戒和平移出游戏。"
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "此卡牌的能力获得：“将圣洁移出游戏。”",
-        "replacement_text": "作为打出圣洁的额外费用，将混乱袋内或封印在场上卡牌上的总计10个[bless]标记返回供应堆。\n变异。\n移除场上任一卡牌上的1个毁灭标记。将圣洁移出游戏。"
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1477,7 +1477,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "此卡牌失去“卓越”关键词并获得“每副牌组限制1张。”",
-        "replacement_text": "变异。每副牌组限制1张。封印(最多X[curse])。\n[action]横置外神的长笛并释放其上封印的1个[curse]标记：选择你所在地点一名非[[精英]]敌人。移动所选敌人到连接地点，或对其地点的任一敌人造成所选敌人伤害值的伤害。这个行动不会引起趁乱攻击。"
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -1742,12 +1742,12 @@
       {
         "code": "07269",
         "text": "此卡牌的能力获得：“将警戒和平移出游戏。”",
-        "replacement_text": "作为打出警戒和平的额外费用，在混乱袋和/或场上的卡牌中查找总共5个[bless]标记，并将其返回供应堆。\n变异。快速。在神话阶段的“抽取遭遇卡”步骤(步骤1.4)将要开始时打出。跳过神话阶段的此步骤。将警戒和平移出游戏。"
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "此卡牌的能力获得：“将圣洁移出游戏。”",
-        "replacement_text": "作为打出圣洁的额外费用，将混乱袋内或封印在场上卡牌上的总计10个[bless]标记返回供应堆。\n变异。\n移除场上任一卡牌上的1个毁灭标记。将圣洁移出游戏。"
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1958,7 +1958,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "此卡牌失去“卓越”关键词并获得“每副牌组限制1张。”",
-        "replacement_text": "变异。每副牌组限制1张。封印(最多X[curse])。\n[action]横置外神的长笛并释放其上封印的1个[curse]标记：选择你所在地点一名非[[精英]]敌人。移动所选敌人到连接地点，或对其地点的任一敌人造成所选敌人伤害值的伤害。这个行动不会引起趁乱攻击。"
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -2263,12 +2263,12 @@
       {
         "code": "07269",
         "text": "此卡牌的能力获得：“将警戒和平移出游戏。”",
-        "replacement_text": "作为打出警戒和平的额外费用，在混乱袋和/或场上的卡牌中查找总共5个[bless]标记，并将其返回供应堆。\n变异。快速。在神话阶段的“抽取遭遇卡”步骤(步骤1.4)将要开始时打出。跳过神话阶段的此步骤。将警戒和平移出游戏。"
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "此卡牌的能力获得：“将圣洁移出游戏。”",
-        "replacement_text": "作为打出圣洁的额外费用，将混乱袋内或封印在场上卡牌上的总计10个[bless]标记返回供应堆。\n变异。\n移除场上任一卡牌上的1个毁灭标记。将圣洁移出游戏。"
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -2484,7 +2484,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "此卡牌失去“卓越”关键词并获得“每副牌组限制1张。”",
-        "replacement_text": "变异。每副牌组限制1张。封印(最多X[curse])。\n[action]横置外神的长笛并释放其上封印的1个[curse]标记：选择你所在地点一名非[[精英]]敌人。移动所选敌人到连接地点，或对其地点的任一敌人造成所选敌人伤害值的伤害。这个行动不会引起趁乱攻击。"
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -3033,17 +3033,17 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "此卡牌失去“卓越”关键词并获得“每副牌组限制1张。”",
-        "replacement_text": "变异。每副牌组限制1张。封印(最多X[curse])。\n[action]横置外神的长笛并释放其上封印的1个[curse]标记：选择你所在地点一名非[[精英]]敌人。移动所选敌人到连接地点，或对其地点的任一敌人造成所选敌人伤害值的伤害。这个行动不会引起趁乱攻击。"
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "07269",
         "text": "此卡牌的能力获得：“将警戒和平移出游戏。”",
-        "replacement_text": "作为打出警戒和平的额外费用，在混乱袋和/或场上的卡牌中查找总共5个[bless]标记，并将其返回供应堆。\n变异。快速。在神话阶段的“抽取遭遇卡”步骤(步骤1.4)将要开始时打出。跳过神话阶段的此步骤。将警戒和平移出游戏。"
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "此卡牌的能力获得：“将圣洁移出游戏。”",
-        "replacement_text": "作为打出圣洁的额外费用，将混乱袋内或封印在场上卡牌上的总计10个[bless]标记返回供应堆。\n变异。\n移除场上任一卡牌上的1个毁灭标记。将圣洁移出游戏。"
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",

@@ -794,6 +794,15 @@
           "answer": "No. If you use an effect that defeats multiple enemies at once by a card such as Storm of Spirits or Dynamite Blast, each defeated Persistent Construct is defeated simultaneously, and thus cannot be retrieved from the victory display via the Forced effect of another."
         }
       ]
+    },
+    {
+      "scenario_code": "legions_of_fire",
+      "questions": [
+        {
+          "question": "Act 2 says to look at the encounter card below Termini Train Station and then replace it. What does replace mean in this context?",
+          "answer": "Put it back face down below the location. You now have some insight into where the cultists are gathering."
+        }
+      ]
     }
   ],
   "campaign_faq": [

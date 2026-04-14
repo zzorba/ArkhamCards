@@ -807,12 +807,12 @@
       {
         "code": "07269",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘불안한 평화'를 게임에서 제거합니다.”",
-        "replacement_text": "변형.\n‘불안한 평화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 5개 찾아서 토큰 저장소로 되돌려 놓습니다.\n신속. 신화 단계의 “1.4 모든 조사자는 조우 카드를 1장씩 뽑습니다” 과정을 시작하려 할 때 플레이할 수 있습니다. 이번 신화 단계의 해당 과정을 건너뜁니다. ‘불안한 평화’를 게임에서 제거합니다."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘신성화'를 게임에서 제거합니다.”",
-        "replacement_text": "변형.\n‘신성화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 10개 찾아서 토큰 저장소로 되돌려 놓습니다.\n플레이 상태인 아무 카드 하나에서 파멸을 1개 제거합니다. ‘신성화'를 게임에서 제거합니다."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1008,7 +1008,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "이 카드는 ‘특별' 키워드를 잃고 다음 문구를 얻습니다: “덱 당 1장 한정.”",
-        "replacement_text": "변형. 덱당 1장 한정. 봉인([curse] 토큰 최대 X개까지).\n[action] ‘이계 신의 피리’를 소진하고 이 카드에 봉인된 [curse] 토큰 하나를 해방시킵니다: 당신이 위치한 장소에 있는 적 중에서, [[정예]]가 아닌 적하나를 선택합니다. 선택한 적을 이어진 장소 한 곳으로 이동시키거나, 선택한 적의 피해값을 그 적이 위치한 장소의 아무 적 하나에게 줍니다. 이 행동은 틈새 공격을 유발하지 않습니다."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -1261,12 +1261,12 @@
       {
         "code": "07269",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘불안한 평화'를 게임에서 제거합니다.”",
-        "replacement_text": "변형.\n‘불안한 평화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 5개 찾아서 토큰 저장소로 되돌려 놓습니다.\n신속. 신화 단계의 “1.4 모든 조사자는 조우 카드를 1장씩 뽑습니다” 과정을 시작하려 할 때 플레이할 수 있습니다. 이번 신화 단계의 해당 과정을 건너뜁니다. ‘불안한 평화’를 게임에서 제거합니다."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘신성화'를 게임에서 제거합니다.”",
-        "replacement_text": "변형.\n‘신성화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 10개 찾아서 토큰 저장소로 되돌려 놓습니다.\n플레이 상태인 아무 카드 하나에서 파멸을 1개 제거합니다. ‘신성화'를 게임에서 제거합니다."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1477,7 +1477,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "이 카드는 ‘특별' 키워드를 잃고 다음 문구를 얻습니다: “덱 당 1장 한정.”",
-        "replacement_text": "변형. 덱당 1장 한정. 봉인([curse] 토큰 최대 X개까지).\n[action] ‘이계 신의 피리’를 소진하고 이 카드에 봉인된 [curse] 토큰 하나를 해방시킵니다: 당신이 위치한 장소에 있는 적 중에서, [[정예]]가 아닌 적하나를 선택합니다. 선택한 적을 이어진 장소 한 곳으로 이동시키거나, 선택한 적의 피해값을 그 적이 위치한 장소의 아무 적 하나에게 줍니다. 이 행동은 틈새 공격을 유발하지 않습니다."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -1742,12 +1742,12 @@
       {
         "code": "07269",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘불안한 평화'를 게임에서 제거합니다.”",
-        "replacement_text": "변형.\n‘불안한 평화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 5개 찾아서 토큰 저장소로 되돌려 놓습니다.\n신속. 신화 단계의 “1.4 모든 조사자는 조우 카드를 1장씩 뽑습니다” 과정을 시작하려 할 때 플레이할 수 있습니다. 이번 신화 단계의 해당 과정을 건너뜁니다. ‘불안한 평화’를 게임에서 제거합니다."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘신성화'를 게임에서 제거합니다.”",
-        "replacement_text": "변형.\n‘신성화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 10개 찾아서 토큰 저장소로 되돌려 놓습니다.\n플레이 상태인 아무 카드 하나에서 파멸을 1개 제거합니다. ‘신성화'를 게임에서 제거합니다."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1958,7 +1958,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "이 카드는 ‘특별' 키워드를 잃고 다음 문구를 얻습니다: “덱 당 1장 한정.”",
-        "replacement_text": "변형. 덱당 1장 한정. 봉인([curse] 토큰 최대 X개까지).\n[action] ‘이계 신의 피리’를 소진하고 이 카드에 봉인된 [curse] 토큰 하나를 해방시킵니다: 당신이 위치한 장소에 있는 적 중에서, [[정예]]가 아닌 적하나를 선택합니다. 선택한 적을 이어진 장소 한 곳으로 이동시키거나, 선택한 적의 피해값을 그 적이 위치한 장소의 아무 적 하나에게 줍니다. 이 행동은 틈새 공격을 유발하지 않습니다."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -2263,12 +2263,12 @@
       {
         "code": "07269",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘불안한 평화'를 게임에서 제거합니다.”",
-        "replacement_text": "변형.\n‘불안한 평화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 5개 찾아서 토큰 저장소로 되돌려 놓습니다.\n신속. 신화 단계의 “1.4 모든 조사자는 조우 카드를 1장씩 뽑습니다” 과정을 시작하려 할 때 플레이할 수 있습니다. 이번 신화 단계의 해당 과정을 건너뜁니다. ‘불안한 평화’를 게임에서 제거합니다."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘신성화'를 게임에서 제거합니다.”",
-        "replacement_text": "변형.\n‘신성화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 10개 찾아서 토큰 저장소로 되돌려 놓습니다.\n플레이 상태인 아무 카드 하나에서 파멸을 1개 제거합니다. ‘신성화'를 게임에서 제거합니다."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -2484,7 +2484,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "이 카드는 ‘특별' 키워드를 잃고 다음 문구를 얻습니다: “덱 당 1장 한정.”",
-        "replacement_text": "변형. 덱당 1장 한정. 봉인([curse] 토큰 최대 X개까지).\n[action] ‘이계 신의 피리’를 소진하고 이 카드에 봉인된 [curse] 토큰 하나를 해방시킵니다: 당신이 위치한 장소에 있는 적 중에서, [[정예]]가 아닌 적하나를 선택합니다. 선택한 적을 이어진 장소 한 곳으로 이동시키거나, 선택한 적의 피해값을 그 적이 위치한 장소의 아무 적 하나에게 줍니다. 이 행동은 틈새 공격을 유발하지 않습니다."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -3033,17 +3033,17 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "이 카드는 ‘특별' 키워드를 잃고 다음 문구를 얻습니다: “덱 당 1장 한정.”",
-        "replacement_text": "변형. 덱당 1장 한정. 봉인([curse] 토큰 최대 X개까지).\n[action] ‘이계 신의 피리’를 소진하고 이 카드에 봉인된 [curse] 토큰 하나를 해방시킵니다: 당신이 위치한 장소에 있는 적 중에서, [[정예]]가 아닌 적하나를 선택합니다. 선택한 적을 이어진 장소 한 곳으로 이동시키거나, 선택한 적의 피해값을 그 적이 위치한 장소의 아무 적 하나에게 줍니다. 이 행동은 틈새 공격을 유발하지 않습니다."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "07269",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘불안한 평화'를 게임에서 제거합니다.”",
-        "replacement_text": "변형.\n‘불안한 평화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 5개 찾아서 토큰 저장소로 되돌려 놓습니다.\n신속. 신화 단계의 “1.4 모든 조사자는 조우 카드를 1장씩 뽑습니다” 과정을 시작하려 할 때 플레이할 수 있습니다. 이번 신화 단계의 해당 과정을 건너뜁니다. ‘불안한 평화’를 게임에서 제거합니다."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "이 카드의 기능은 다음 문구를 얻습니다: “‘신성화'를 게임에서 제거합니다.”",
-        "replacement_text": "변형.\n‘신성화’를 플레이하기 위한 추가 비용으로, 혼돈 주머니 그리고/또는 플레이 상태인 카드에 봉인된 [bless] 토큰을 도합 10개 찾아서 토큰 저장소로 되돌려 놓습니다.\n플레이 상태인 아무 카드 하나에서 파멸을 1개 제거합니다. ‘신성화'를 게임에서 제거합니다."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",

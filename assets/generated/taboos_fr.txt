@@ -807,12 +807,12 @@
       {
         "code": "07269",
         "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Une Brève Accalmie de la partie. »",
-        "replacement_text": "Mutée.\nEn tant que coût supplémentaire pour jouer Une Brève Accalmie, cherchez un total de 5 pions [bless] dans la réserve du Chaos et/ou sur les cartes en jeu et renvoyez-les dans la réserve de pions.\nRapide. À jouer quand l'étape « piochez les cartes Rencontre » de la phase du Mythe est censée débuter.\nIgnorez cette étape de la phase du Mythe. Retirez Une Brève Accalmie de la partie."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Sanctifier de la partie. »",
-        "replacement_text": "Mutée. En tant que coût supplémentaire pour jouer Sanctifier, renvoyez vers la réserve de pions un total de 10 pions [bless] depuis la réserve du Chaos ou scellés sur des cartes en jeu.\nRetirez 1 fatalité de n'importe quelle carte en jeu. Retirez Sanctifier de la partie."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1008,7 +1008,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Mutée.\nCette carte perd le mot-clé Exceptionnel et gagne « Limite de 1 par deck. »",
-        "replacement_text": "Mutée. Sceller (jusqu'à X [curse]). Limite de 1 par deck.\n[action] Inclinez la Flûte des Dieux Extérieurs et libérez 1 pion [curse] scellé dessus : choisissez un ennemi non-[[Élite]] dans votre lieu. Soit vous déplacez l'ennemi choisi vers un lieu connexe, soit vous infligez ses dégâts à n'importe quel ennemi dans son lieu. Cette action ne provoque pas d'attaques d'opportunité."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -1261,12 +1261,12 @@
       {
         "code": "07269",
         "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Une Brève Accalmie de la partie. »",
-        "replacement_text": "Mutée.\nEn tant que coût supplémentaire pour jouer Une Brève Accalmie, cherchez un total de 5 pions [bless] dans la réserve du Chaos et/ou sur les cartes en jeu et renvoyez-les dans la réserve de pions.\nRapide. À jouer quand l'étape « piochez les cartes Rencontre » de la phase du Mythe est censée débuter.\nIgnorez cette étape de la phase du Mythe. Retirez Une Brève Accalmie de la partie."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Sanctifier de la partie. »",
-        "replacement_text": "Mutée. En tant que coût supplémentaire pour jouer Sanctifier, renvoyez vers la réserve de pions un total de 10 pions [bless] depuis la réserve du Chaos ou scellés sur des cartes en jeu.\nRetirez 1 fatalité de n'importe quelle carte en jeu. Retirez Sanctifier de la partie."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1477,7 +1477,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Mutée.\nCette carte perd le mot-clé Exceptionnel et gagne « Limite de 1 par deck. »",
-        "replacement_text": "Mutée. Sceller (jusqu'à X [curse]). Limite de 1 par deck.\n[action] Inclinez la Flûte des Dieux Extérieurs et libérez 1 pion [curse] scellé dessus : choisissez un ennemi non-[[Élite]] dans votre lieu. Soit vous déplacez l'ennemi choisi vers un lieu connexe, soit vous infligez ses dégâts à n'importe quel ennemi dans son lieu. Cette action ne provoque pas d'attaques d'opportunité."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -1742,12 +1742,12 @@
       {
         "code": "07269",
         "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Une Brève Accalmie de la partie. »",
-        "replacement_text": "Mutée.\nEn tant que coût supplémentaire pour jouer Une Brève Accalmie, cherchez un total de 5 pions [bless] dans la réserve du Chaos et/ou sur les cartes en jeu et renvoyez-les dans la réserve de pions.\nRapide. À jouer quand l'étape « piochez les cartes Rencontre » de la phase du Mythe est censée débuter.\nIgnorez cette étape de la phase du Mythe. Retirez Une Brève Accalmie de la partie."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Sanctifier de la partie. »",
-        "replacement_text": "Mutée. En tant que coût supplémentaire pour jouer Sanctifier, renvoyez vers la réserve de pions un total de 10 pions [bless] depuis la réserve du Chaos ou scellés sur des cartes en jeu.\nRetirez 1 fatalité de n'importe quelle carte en jeu. Retirez Sanctifier de la partie."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1958,7 +1958,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Mutée.\nCette carte perd le mot-clé Exceptionnel et gagne « Limite de 1 par deck. »",
-        "replacement_text": "Mutée. Sceller (jusqu'à X [curse]). Limite de 1 par deck.\n[action] Inclinez la Flûte des Dieux Extérieurs et libérez 1 pion [curse] scellé dessus : choisissez un ennemi non-[[Élite]] dans votre lieu. Soit vous déplacez l'ennemi choisi vers un lieu connexe, soit vous infligez ses dégâts à n'importe quel ennemi dans son lieu. Cette action ne provoque pas d'attaques d'opportunité."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -2263,12 +2263,12 @@
       {
         "code": "07269",
         "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Une Brève Accalmie de la partie. »",
-        "replacement_text": "Mutée.\nEn tant que coût supplémentaire pour jouer Une Brève Accalmie, cherchez un total de 5 pions [bless] dans la réserve du Chaos et/ou sur les cartes en jeu et renvoyez-les dans la réserve de pions.\nRapide. À jouer quand l'étape « piochez les cartes Rencontre » de la phase du Mythe est censée débuter.\nIgnorez cette étape de la phase du Mythe. Retirez Une Brève Accalmie de la partie."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Sanctifier de la partie. »",
-        "replacement_text": "Mutée. En tant que coût supplémentaire pour jouer Sanctifier, renvoyez vers la réserve de pions un total de 10 pions [bless] depuis la réserve du Chaos ou scellés sur des cartes en jeu.\nRetirez 1 fatalité de n'importe quelle carte en jeu. Retirez Sanctifier de la partie."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -2484,7 +2484,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Mutée.\nCette carte perd le mot-clé Exceptionnel et gagne « Limite de 1 par deck. »",
-        "replacement_text": "Mutée. Sceller (jusqu'à X [curse]). Limite de 1 par deck.\n[action] Inclinez la Flûte des Dieux Extérieurs et libérez 1 pion [curse] scellé dessus : choisissez un ennemi non-[[Élite]] dans votre lieu. Soit vous déplacez l'ennemi choisi vers un lieu connexe, soit vous infligez ses dégâts à n'importe quel ennemi dans son lieu. Cette action ne provoque pas d'attaques d'opportunité."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -3033,17 +3033,17 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Mutée.\nCette carte perd le mot-clé Exceptionnel et gagne « Limite de 1 par deck. »",
-        "replacement_text": "Mutée. Sceller (jusqu'à X [curse]). Limite de 1 par deck.\n[action] Inclinez la Flûte des Dieux Extérieurs et libérez 1 pion [curse] scellé dessus : choisissez un ennemi non-[[Élite]] dans votre lieu. Soit vous déplacez l'ennemi choisi vers un lieu connexe, soit vous infligez ses dégâts à n'importe quel ennemi dans son lieu. Cette action ne provoque pas d'attaques d'opportunité."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "07269",
         "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Une Brève Accalmie de la partie. »",
-        "replacement_text": "Mutée.\nEn tant que coût supplémentaire pour jouer Une Brève Accalmie, cherchez un total de 5 pions [bless] dans la réserve du Chaos et/ou sur les cartes en jeu et renvoyez-les dans la réserve de pions.\nRapide. À jouer quand l'étape « piochez les cartes Rencontre » de la phase du Mythe est censée débuter.\nIgnorez cette étape de la phase du Mythe. Retirez Une Brève Accalmie de la partie."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "Mutée.\nLa capacité de cette carte gagne : « Retirez Sanctifier de la partie. »",
-        "replacement_text": "Mutée. En tant que coût supplémentaire pour jouer Sanctifier, renvoyez vers la réserve de pions un total de 10 pions [bless] depuis la réserve du Chaos ou scellés sur des cartes en jeu.\nRetirez 1 fatalité de n'importe quelle carte en jeu. Retirez Sanctifier de la partie."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",

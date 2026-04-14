@@ -807,12 +807,12 @@
       {
         "code": "07269",
         "text": "La capacità di questa carta ottiene: “Rimuovi dal gioco la Pace Guardinga.”",
-        "replacement_text": "Come costo aggiuntivo per giocare la Pace Guardinga, cerca nel sacchetto del caos e/o tra le carte in gioco un totale di 5 segnalini [bless] e rimettili nella riserva dei segnalini.\nMutato. Veloce. Gioca solo quando stai per iniziare il passo \"ogni giocatore pesca 1 carta incontro\" della fase dei Miti. Salta questo passo della fase dei miti. Rimuovi dal gioco la Pace Guardinga."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "La capacità di questa carta ottiene: “Rimuovi dal gioco Consacrare.”",
-        "replacement_text": "Come costo aggiuntivo per giocare Consacrare, rimetti nella riserva dei segnalini un totale di 10 segnalini [bless] dal sacchetto del caos e/o sigillati sulle carte in gioco.\nMutato.\nRimuovi 1 destino da qualsiasi carta in gioco. Rimuovi dal gioco Consacrare."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1008,7 +1008,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Questa carta perde la parola chiave Straordinario e ottiene “Limite di 1 per mazzo”.",
-        "replacement_text": "Mutato. Limite di 1 per mazzo. Sigillo (fino a X [curse]).\n[action] Esaurisci il Flauto degli Dèi Esterni e libera 1 segnalino [curse] sigillato su di esso: Scegli 1 nemico non [[Elite]] nel tuo luogo. Puoi scegliere se muovere il nemico scelto fino a un luogo collegato al suo oppure infliggere i suoi danni a un qualsiasi nemico nel suo luogo. Questa azione non provoca attacchi di opportunità."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -1261,12 +1261,12 @@
       {
         "code": "07269",
         "text": "La capacità di questa carta ottiene: “Rimuovi dal gioco la Pace Guardinga.”",
-        "replacement_text": "Come costo aggiuntivo per giocare la Pace Guardinga, cerca nel sacchetto del caos e/o tra le carte in gioco un totale di 5 segnalini [bless] e rimettili nella riserva dei segnalini.\nMutato. Veloce. Gioca solo quando stai per iniziare il passo \"ogni giocatore pesca 1 carta incontro\" della fase dei Miti. Salta questo passo della fase dei miti. Rimuovi dal gioco la Pace Guardinga."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "La capacità di questa carta ottiene: “Rimuovi dal gioco Consacrare.”",
-        "replacement_text": "Come costo aggiuntivo per giocare Consacrare, rimetti nella riserva dei segnalini un totale di 10 segnalini [bless] dal sacchetto del caos e/o sigillati sulle carte in gioco.\nMutato.\nRimuovi 1 destino da qualsiasi carta in gioco. Rimuovi dal gioco Consacrare."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1477,7 +1477,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Questa carta perde la parola chiave Straordinario e ottiene “Limite di 1 per mazzo”.",
-        "replacement_text": "Mutato. Limite di 1 per mazzo. Sigillo (fino a X [curse]).\n[action] Esaurisci il Flauto degli Dèi Esterni e libera 1 segnalino [curse] sigillato su di esso: Scegli 1 nemico non [[Elite]] nel tuo luogo. Puoi scegliere se muovere il nemico scelto fino a un luogo collegato al suo oppure infliggere i suoi danni a un qualsiasi nemico nel suo luogo. Questa azione non provoca attacchi di opportunità."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -1742,12 +1742,12 @@
       {
         "code": "07269",
         "text": "La capacità di questa carta ottiene: “Rimuovi dal gioco la Pace Guardinga.”",
-        "replacement_text": "Come costo aggiuntivo per giocare la Pace Guardinga, cerca nel sacchetto del caos e/o tra le carte in gioco un totale di 5 segnalini [bless] e rimettili nella riserva dei segnalini.\nMutato. Veloce. Gioca solo quando stai per iniziare il passo \"ogni giocatore pesca 1 carta incontro\" della fase dei Miti. Salta questo passo della fase dei miti. Rimuovi dal gioco la Pace Guardinga."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "La capacità di questa carta ottiene: “Rimuovi dal gioco Consacrare.”",
-        "replacement_text": "Come costo aggiuntivo per giocare Consacrare, rimetti nella riserva dei segnalini un totale di 10 segnalini [bless] dal sacchetto del caos e/o sigillati sulle carte in gioco.\nMutato.\nRimuovi 1 destino da qualsiasi carta in gioco. Rimuovi dal gioco Consacrare."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1958,7 +1958,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Questa carta perde la parola chiave Straordinario e ottiene “Limite di 1 per mazzo”.",
-        "replacement_text": "Mutato. Limite di 1 per mazzo. Sigillo (fino a X [curse]).\n[action] Esaurisci il Flauto degli Dèi Esterni e libera 1 segnalino [curse] sigillato su di esso: Scegli 1 nemico non [[Elite]] nel tuo luogo. Puoi scegliere se muovere il nemico scelto fino a un luogo collegato al suo oppure infliggere i suoi danni a un qualsiasi nemico nel suo luogo. Questa azione non provoca attacchi di opportunità."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -2263,12 +2263,12 @@
       {
         "code": "07269",
         "text": "La capacità di questa carta ottiene: “Rimuovi dal gioco la Pace Guardinga.”",
-        "replacement_text": "Come costo aggiuntivo per giocare la Pace Guardinga, cerca nel sacchetto del caos e/o tra le carte in gioco un totale di 5 segnalini [bless] e rimettili nella riserva dei segnalini.\nMutato. Veloce. Gioca solo quando stai per iniziare il passo \"ogni giocatore pesca 1 carta incontro\" della fase dei Miti. Salta questo passo della fase dei miti. Rimuovi dal gioco la Pace Guardinga."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "La capacità di questa carta ottiene: “Rimuovi dal gioco Consacrare.”",
-        "replacement_text": "Come costo aggiuntivo per giocare Consacrare, rimetti nella riserva dei segnalini un totale di 10 segnalini [bless] dal sacchetto del caos e/o sigillati sulle carte in gioco.\nMutato.\nRimuovi 1 destino da qualsiasi carta in gioco. Rimuovi dal gioco Consacrare."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -2484,7 +2484,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Questa carta perde la parola chiave Straordinario e ottiene “Limite di 1 per mazzo”.",
-        "replacement_text": "Mutato. Limite di 1 per mazzo. Sigillo (fino a X [curse]).\n[action] Esaurisci il Flauto degli Dèi Esterni e libera 1 segnalino [curse] sigillato su di esso: Scegli 1 nemico non [[Elite]] nel tuo luogo. Puoi scegliere se muovere il nemico scelto fino a un luogo collegato al suo oppure infliggere i suoi danni a un qualsiasi nemico nel suo luogo. Questa azione non provoca attacchi di opportunità."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -3033,17 +3033,17 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Questa carta perde la parola chiave Straordinario e ottiene “Limite di 1 per mazzo”.",
-        "replacement_text": "Mutato. Limite di 1 per mazzo. Sigillo (fino a X [curse]).\n[action] Esaurisci il Flauto degli Dèi Esterni e libera 1 segnalino [curse] sigillato su di esso: Scegli 1 nemico non [[Elite]] nel tuo luogo. Puoi scegliere se muovere il nemico scelto fino a un luogo collegato al suo oppure infliggere i suoi danni a un qualsiasi nemico nel suo luogo. Questa azione non provoca attacchi di opportunità."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "07269",
         "text": "La capacità di questa carta ottiene: “Rimuovi dal gioco la Pace Guardinga.”",
-        "replacement_text": "Come costo aggiuntivo per giocare la Pace Guardinga, cerca nel sacchetto del caos e/o tra le carte in gioco un totale di 5 segnalini [bless] e rimettili nella riserva dei segnalini.\nMutato. Veloce. Gioca solo quando stai per iniziare il passo \"ogni giocatore pesca 1 carta incontro\" della fase dei Miti. Salta questo passo della fase dei miti. Rimuovi dal gioco la Pace Guardinga."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "La capacità di questa carta ottiene: “Rimuovi dal gioco Consacrare.”",
-        "replacement_text": "Come costo aggiuntivo per giocare Consacrare, rimetti nella riserva dei segnalini un totale di 10 segnalini [bless] dal sacchetto del caos e/o sigillati sulle carte in gioco.\nMutato.\nRimuovi 1 destino da qualsiasi carta in gioco. Rimuovi dal gioco Consacrare."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
