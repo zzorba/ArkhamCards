@@ -871,6 +871,21 @@ function getReturnToPack(cyclePackCode: string): string | undefined {
   }
 }
 
+const CHAPTER_2_PACK_CODES = new Set(['mar', 'mig', 'tom', 'car', 'core_2026']);
+
+export function getPackChapter(pack: Pack): number | undefined {
+  if (pack.chapter !== undefined) {
+    return pack.chapter;
+  }
+  if (pack.code.startsWith('z')) {
+    return undefined;
+  }
+  if (CHAPTER_2_PACK_CODES.has(pack.code)) {
+    return 2;
+  }
+  return 1;
+}
+
 export function cycleName(position: string): string {
   switch (position) {
     case '1': return t`Core Set`;

@@ -242,6 +242,7 @@ function processTranslationData(
         known: 0,
         total: 0,
         reprint: pack.reprint ?? undefined,
+        chapter: pack.chapter ?? undefined,
       };
     });
 

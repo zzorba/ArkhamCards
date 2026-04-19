@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import { filter, find, groupBy, map } from 'lodash';
+import { filter, find, groupBy, map, sortBy } from 'lodash';
 import {
   SectionList,
   SectionListData,
@@ -15,7 +15,7 @@ import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
 import StyleContext from '@styles/StyleContext';
-import { cycleName, ReprintPack, reprintPackToPack, SPECIAL_PACKS } from '@app_constants';
+import { cycleName, getPackChapter, ReprintPack, reprintPackToPack, SPECIAL_PACKS } from '@app_constants';
 import ArkhamButton from '../ArkhamButton';
 import { useToggles } from '../hooks';
 
@@ -36,6 +36,8 @@ interface PackCycle extends SectionListData<PackItem> {
   title: string;
   id: string;
   data: PackItem[];
+  isChapter?: boolean;
+  chapter?: number;
 }
 
 interface Props {
@@ -62,7 +64,12 @@ function keyExtractor(item: PackItem) {
   }
 }
 
-function renderSectionHeader({ section }: { section: SectionListData<PackItem> }) {
+function renderSectionHeader({ section }: { section: SectionListData<PackItem> & { isChapter?: boolean } }) {
+  if (section.isChapter) {
+    return (
+      <CardSectionHeader section={{ title: section.title }} />
+    );
+  }
   return (
     <CardSectionHeader section={{ subTitle: section.title }} />
   );
@@ -202,7 +209,27 @@ export default function PackListComponent({
       </View>
     );
   }
-  const groups: PackCycle[] = map(
+  function chapterForGroup(group: Pack[]): number | undefined {
+    return group[0] ? getPackChapter(group[0]) : undefined;
+  }
+
+  function chapterSortOrder(chapter: number | undefined): number {
+    switch (chapter) {
+      case 2: return 0;
+      case 1: return 1;
+      default: return 2;
+    }
+  }
+
+  function chapterLabel(chapter: number | undefined): string {
+    switch (chapter) {
+      case 2: return t`Chapter 2`;
+      case 1: return t`Chapter 1`;
+      default: return t`Fan-Made`;
+    }
+  }
+
+  const cycleGroups: PackCycle[] = map(
     groupBy(
       filter(packs, pack => pack.code !== 'books' && (
         !cyclesOnly ||
@@ -210,9 +237,13 @@ export default function PackListComponent({
         pack.cycle_position >= 50 ||
         pack.position === 1
       ) && (!cyclesOnly || pack.cycle_position < 70) && !pack.reprint),
-      pack => (cyclesOnly && pack.cycle_position >= 2 && pack.cycle_position < 50) ? 2 : pack.cycle_position),
+      pack => {
+        const cycleKey = (cyclesOnly && pack.cycle_position >= 2 && pack.cycle_position < 50) ? 2 : pack.cycle_position;
+        return `${cycleKey}_ch${getPackChapter(pack) ?? 'none'}`;
+      }),
     (group, key) => {
-      const reprintPacks = filter(SPECIAL_PACKS, reprintPack => `${reprintPack.cyclePosition}` === key);
+      const cycleKey = key.split('_ch')[0];
+      const reprintPacks = filter(SPECIAL_PACKS, reprintPack => `${reprintPack.cyclePosition}` === cycleKey);
       if (!cyclesOnly && reprintPacks.length) {
         const items: PackItem[] = [
           ...map(reprintPacks, reprint => {
@@ -226,17 +257,18 @@ export default function PackListComponent({
           {
             type: 'reprint_toggle',
             packs: group,
-            cycleCode: key,
+            cycleCode: cycleKey,
           },
         ];
         return {
-          title: key === '2' && cyclesOnly ? t`Campaigns Cycles` : cycleName(`${key}`),
+          title: cycleKey === '2' && cyclesOnly ? t`Campaigns Cycles` : cycleName(cycleKey),
           id: key,
           data: items,
+          chapter: chapterForGroup(group),
         };
       }
       return {
-        title: key === '2' && cyclesOnly ? t`Campaigns Cycles` : cycleName(`${key}`),
+        title: cycleKey === '2' && cyclesOnly ? t`Campaigns Cycles` : cycleName(cycleKey),
         id: key,
         data: map(group, pack => {
           return {
@@ -245,8 +277,26 @@ export default function PackListComponent({
           };
         }),
         reprintPacks,
+        chapter: chapterForGroup(group),
       };
     });
+
+  const sortedGroups = sortBy(cycleGroups, g => chapterSortOrder(g.chapter));
+  const groups: PackCycle[] = [];
+  let currentChapter: number | undefined | null = null;
+  sortedGroups.forEach(group => {
+    const chapter = group.chapter;
+    if (currentChapter !== chapter) {
+      currentChapter = chapter;
+      groups.push({
+        title: chapterLabel(chapter),
+        id: `chapter-${chapter}`,
+        data: [],
+        isChapter: true,
+      });
+    }
+    groups.push(group);
+  });
 
   return (
     <SectionList

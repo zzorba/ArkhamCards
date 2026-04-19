@@ -18,6 +18,7 @@ fragment Pack on pack {
   position
   official
   reprint
+  chapter
 }
 fragment Cycle on cycle {
   code

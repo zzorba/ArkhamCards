@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { filter, forEach } from 'lodash';
+import { filter, forEach, sortBy } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
@@ -15,7 +15,8 @@ import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions
 import Card from '@data/types/Card';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
-import { getPacksInCollection } from '@reducers';
+import { getPackChapter } from '@app_constants';
+import { getAllPacks, getPacksInCollection } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -49,6 +50,10 @@ interface HeaderItem {
   type: 'header';
   title: string;
 }
+interface ChapterHeaderItem {
+  type: 'chapter_header';
+  title: string;
+}
 
 interface FooterItem {
   type: 'footer';
@@ -56,12 +61,28 @@ interface FooterItem {
   nonCollectionCount: number;
 }
 
-type Item = CardItem | HeaderItem | FooterItem;
+type Item = CardItem | HeaderItem | ChapterHeaderItem | FooterItem;
 
 interface Section {
   title: string;
   id: string;
   nonCollectionCount: number;
+}
+
+function chapterLabel(chapter: number | undefined): string {
+  switch (chapter) {
+    case 2: return t`Chapter 2`;
+    case 1: return t`Chapter 1`;
+    default: return t`Fan-Made`;
+  }
+}
+
+function chapterSortOrder(chapter: number | undefined): number {
+  switch (chapter) {
+    case 2: return 0;
+    case 1: return 1;
+    default: return 2;
+  }
 }
 
 function headerForInvestigator(
@@ -149,9 +170,17 @@ export default function InvestigatorsListComponent({
   includeParallelInvestigators,
 }: Props) {
   const navigation = useNavigation();
-  const { typography } = useContext(StyleContext);
+  const { typography, colors } = useContext(StyleContext);
   const [investigators, loading] = useAllInvestigators(undefined, sort);
   const in_collection = useSelector(getPacksInCollection);
+  const allPacks = useSelector(getAllPacks);
+  const packChapterMap = useMemo(() => {
+    const map: { [code: string]: number | undefined } = {};
+    forEach(allPacks, pack => {
+      map[pack.code] = getPackChapter(pack);
+    });
+    return map;
+  }, [allPacks]);
   const ignore_collection = useSettingValue('ignore_collection');
   const [showNonCollection,, setShowNonCollection] = useToggles({});
   const [searchTerm, setSearchTerm] = useState('');
@@ -172,7 +201,7 @@ export default function InvestigatorsListComponent({
   const data = useMemo((): Item[] => {
     const onlyInvestigatorsSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterInvestigatorsSet = new Set(filterInvestigators);
-    const allInvestigators = filter(
+    const filteredInvestigators = filter(
       investigators,
       i => {
         if (!i) {
@@ -198,29 +227,43 @@ export default function InvestigatorsListComponent({
           [i.name, i.faction_name || '', i.traits || '']
         );
       });
+    const allInvestigators = sort[0] === SORT_BY_PACK
+      ? sortBy(filteredInvestigators, i => chapterSortOrder(packChapterMap[i?.pack_code || '']))
+      : filteredInvestigators;
     const results: Item[] = [];
     let nonCollectionCards: Card[] = [];
     let currentBucket: Section | undefined = undefined;
+    let currentChapter: string | undefined = undefined;
+
+    function flushNonCollection() {
+      if (currentBucket && nonCollectionCards.length > 0) {
+        if (showNonCollection[currentBucket.id]) {
+          forEach(nonCollectionCards, card => {
+            results.push({ type: 'card', card });
+          });
+        } else {
+          results.push({
+            type: 'footer',
+            id: currentBucket.id,
+            nonCollectionCount: nonCollectionCards.length,
+          });
+        }
+        currentBucket.nonCollectionCount = nonCollectionCards.length;
+        nonCollectionCards = [];
+      }
+    }
+
     forEach(allInvestigators, i => {
       const header = headerForInvestigator(sort[0], i);
-      if (!currentBucket || currentBucket.title !== header) {
-        if (currentBucket && nonCollectionCards.length > 0) {
-          if (showNonCollection[currentBucket.id]) {
-            forEach(nonCollectionCards, card => {
-              results.push({
-                type: 'card',
-                card,
-              });
-            });
-          } else {
-            results.push({
-              type: 'footer',
-              id: currentBucket.id,
-              nonCollectionCount: nonCollectionCards.length,
-            });
-          }
-          currentBucket.nonCollectionCount = nonCollectionCards.length;
-          nonCollectionCards = [];
+      const chapter = sort[0] === SORT_BY_PACK && i
+        ? chapterLabel(packChapterMap[i.pack_code || ''])
+        : undefined;
+      const chapterChanged = chapter !== undefined && chapter !== currentChapter;
+      if (!currentBucket || currentBucket.title !== header || chapterChanged) {
+        flushNonCollection();
+        if (chapterChanged) {
+          currentChapter = chapter;
+          results.push({ type: 'chapter_header', title: chapter });
         }
         currentBucket = {
           title: header,
@@ -242,31 +285,9 @@ export default function InvestigatorsListComponent({
     });
 
     // One last snap of the non-collection cards
-    if (currentBucket) {
-      // @ts-ignore
-      const id = currentBucket.id;
-      if (nonCollectionCards.length > 0) {
-        if (showNonCollection[id]) {
-          forEach(nonCollectionCards, card => {
-            results.push({
-              type: 'card',
-              card,
-            });
-          });
-        } else {
-          results.push({
-            type: 'footer',
-            id,
-            nonCollectionCount: nonCollectionCards.length,
-          });
-        }
-        // @ts-ignore
-        currentBucket.nonCollectionCount = nonCollectionCards.length;
-        nonCollectionCards = [];
-      }
-    }
+    flushNonCollection();
     return results;
-  }, [filterInvestigator, includeParallelInvestigators, investigators, in_collection, ignore_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
+  }, [filterInvestigator, includeParallelInvestigators, investigators, in_collection, ignore_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort, packChapterMap]);
 
   const renderSectionFooter = useCallback((item: FooterItem) => {
     if (!item.nonCollectionCount) {
@@ -299,6 +320,14 @@ export default function InvestigatorsListComponent({
 
   const renderItem = useCallback((item: Item) => {
     switch (item.type) {
+      case 'chapter_header':
+        return (
+          <View style={styles.chapterHeader}>
+            <View style={[styles.chapterLine, { backgroundColor: colors.divider }]} />
+            <Text style={[typography.mediumGameFont, styles.chapterTitle]}>{item.title}</Text>
+            <View style={[styles.chapterLine, { backgroundColor: colors.divider }]} />
+          </View>
+        );
       case 'header':
         return renderSectionHeader(item);
       case 'footer':
@@ -312,7 +341,7 @@ export default function InvestigatorsListComponent({
           />
         );
     }
-  }, [onInvestigatorPress, renderSectionFooter]);
+  }, [onInvestigatorPress, renderSectionFooter, colors, typography]);
   const renderFooter = useCallback(() => {
     if (searchTerm && data.length === 0) {
       return (
@@ -356,5 +385,19 @@ export default function InvestigatorsListComponent({
 const styles = StyleSheet.create({
   footer: {
     marginBottom: 60,
+  },
+  chapterHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
+  chapterLine: {
+    flex: 1,
+    height: 1,
+  },
+  chapterTitle: {
+    paddingHorizontal: 12,
+    textAlign: 'center',
   },
 });

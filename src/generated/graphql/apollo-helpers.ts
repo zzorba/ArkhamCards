@@ -6511,17 +6511,20 @@ export type oauth_scopes_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type packKeySpecifier = ('cards' | 'cards_aggregate' | 'code' | 'cycle' | 'cycle_code' | 'official' | 'position' | 'real_name' | 'reprint' | 'translations' | 'translations_aggregate' | 'type' | packKeySpecifier)[];
+export type packKeySpecifier = ('cards' | 'cards_aggregate' | 'chapter' | 'code' | 'cycle' | 'cycle_code' | 'official' | 'position' | 'real_name' | 'replaced' | 'reprint' | 'reprint_packs' | 'translations' | 'translations_aggregate' | 'type' | packKeySpecifier)[];
 export type packFieldPolicy = {
 	cards?: FieldPolicy<any> | FieldReadFunction<any>,
 	cards_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	official?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	replaced?: FieldPolicy<any> | FieldReadFunction<any>,
 	reprint?: FieldPolicy<any> | FieldReadFunction<any>,
+	reprint_packs?: FieldPolicy<any> | FieldReadFunction<any>,
 	translations?: FieldPolicy<any> | FieldReadFunction<any>,
 	translations_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	type?: FieldPolicy<any> | FieldReadFunction<any>
@@ -6545,20 +6548,23 @@ export type pack_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_avg_fieldsKeySpecifier = ('position' | pack_avg_fieldsKeySpecifier)[];
+export type pack_avg_fieldsKeySpecifier = ('chapter' | 'position' | pack_avg_fieldsKeySpecifier)[];
 export type pack_avg_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_max_fieldsKeySpecifier = ('code' | 'cycle_code' | 'position' | 'real_name' | 'type' | pack_max_fieldsKeySpecifier)[];
+export type pack_max_fieldsKeySpecifier = ('chapter' | 'code' | 'cycle_code' | 'position' | 'real_name' | 'type' | pack_max_fieldsKeySpecifier)[];
 export type pack_max_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	type?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_min_fieldsKeySpecifier = ('code' | 'cycle_code' | 'position' | 'real_name' | 'type' | pack_min_fieldsKeySpecifier)[];
+export type pack_min_fieldsKeySpecifier = ('chapter' | 'code' | 'cycle_code' | 'position' | 'real_name' | 'type' | pack_min_fieldsKeySpecifier)[];
 export type pack_min_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle_code?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6607,32 +6613,39 @@ export type pack_name_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_stddev_fieldsKeySpecifier = ('position' | pack_stddev_fieldsKeySpecifier)[];
+export type pack_stddev_fieldsKeySpecifier = ('chapter' | 'position' | pack_stddev_fieldsKeySpecifier)[];
 export type pack_stddev_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_stddev_pop_fieldsKeySpecifier = ('position' | pack_stddev_pop_fieldsKeySpecifier)[];
+export type pack_stddev_pop_fieldsKeySpecifier = ('chapter' | 'position' | pack_stddev_pop_fieldsKeySpecifier)[];
 export type pack_stddev_pop_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_stddev_samp_fieldsKeySpecifier = ('position' | pack_stddev_samp_fieldsKeySpecifier)[];
+export type pack_stddev_samp_fieldsKeySpecifier = ('chapter' | 'position' | pack_stddev_samp_fieldsKeySpecifier)[];
 export type pack_stddev_samp_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_sum_fieldsKeySpecifier = ('position' | pack_sum_fieldsKeySpecifier)[];
+export type pack_sum_fieldsKeySpecifier = ('chapter' | 'position' | pack_sum_fieldsKeySpecifier)[];
 export type pack_sum_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_var_pop_fieldsKeySpecifier = ('position' | pack_var_pop_fieldsKeySpecifier)[];
+export type pack_var_pop_fieldsKeySpecifier = ('chapter' | 'position' | pack_var_pop_fieldsKeySpecifier)[];
 export type pack_var_pop_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_var_samp_fieldsKeySpecifier = ('position' | pack_var_samp_fieldsKeySpecifier)[];
+export type pack_var_samp_fieldsKeySpecifier = ('chapter' | 'position' | pack_var_samp_fieldsKeySpecifier)[];
 export type pack_var_samp_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_variance_fieldsKeySpecifier = ('position' | pack_variance_fieldsKeySpecifier)[];
+export type pack_variance_fieldsKeySpecifier = ('chapter' | 'position' | pack_variance_fieldsKeySpecifier)[];
 export type pack_variance_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type query_rootKeySpecifier = ('all_card' | 'all_card_aggregate' | 'all_card_by_pk' | 'all_card_text' | 'all_card_text_aggregate' | 'all_card_text_by_pk' | 'all_card_updated' | 'all_card_updated_aggregate' | 'all_card_updated_by_pk' | 'all_card_updated_by_version' | 'all_card_updated_by_version_aggregate' | 'all_card_updated_by_version_by_pk' | 'arkhamdb_auth' | 'arkhamdb_auth_aggregate' | 'arkhamdb_auth_by_pk' | 'arkhamdb_deck' | 'arkhamdb_deck_aggregate' | 'arkhamdb_deck_by_pk' | 'base_decks' | 'base_decks_aggregate' | 'campaign' | 'campaign_access' | 'campaign_access_aggregate' | 'campaign_access_by_pk' | 'campaign_aggregate' | 'campaign_by_pk' | 'campaign_deck' | 'campaign_deck_aggregate' | 'campaign_deck_by_pk' | 'campaign_difficulty' | 'campaign_difficulty_aggregate' | 'campaign_difficulty_by_pk' | 'campaign_guide' | 'campaign_guide_aggregate' | 'campaign_investigator' | 'campaign_investigator_aggregate' | 'campaign_investigator_by_pk' | 'campaigns_by_cycle' | 'campaigns_by_cycle_aggregate' | 'card' | 'card_aggregate' | 'card_by_pk' | 'card_cycle' | 'card_cycle_aggregate' | 'card_cycle_by_pk' | 'card_encounter_set' | 'card_encounter_set_aggregate' | 'card_encounter_set_by_pk' | 'card_pack' | 'card_pack_aggregate' | 'card_pack_by_pk' | 'card_subtype_name' | 'card_subtype_name_aggregate' | 'card_subtype_name_by_pk' | 'card_text' | 'card_text_aggregate' | 'card_text_by_pk' | 'card_type_code' | 'card_type_code_aggregate' | 'card_type_code_by_pk' | 'card_type_name' | 'card_type_name_aggregate' | 'card_type_name_by_pk' | 'chaos_bag_result' | 'chaos_bag_result_aggregate' | 'chaos_bag_result_by_pk' | 'chaos_bag_tarot_mode' | 'chaos_bag_tarot_mode_aggregate' | 'chaos_bag_tarot_mode_by_pk' | 'conquest_card' | 'conquest_card_aggregate' | 'conquest_card_by_pk' | 'conquest_card_localized' | 'conquest_card_localized_aggregate' | 'conquest_card_text' | 'conquest_card_text_aggregate' | 'conquest_card_text_by_pk' | 'conquest_card_updated' | 'conquest_card_updated_aggregate' | 'conquest_comment' | 'conquest_comment_aggregate' | 'conquest_comment_by_pk' | 'conquest_cycle' | 'conquest_cycle_aggregate' | 'conquest_cycle_by_pk' | 'conquest_cycle_text' | 'conquest_cycle_text_aggregate' | 'conquest_cycle_text_by_pk' | 'conquest_deck' | 'conquest_deck_aggregate' | 'conquest_deck_by_pk' | 'conquest_deck_copy' | 'conquest_deck_copy_aggregate' | 'conquest_deck_copy_by_pk' | 'conquest_deck_like' | 'conquest_deck_like_aggregate' | 'conquest_deck_like_by_pk' | 'conquest_faction' | 'conquest_faction_aggregate' | 'conquest_faction_by_pk' | 'conquest_faction_text' | 'conquest_faction_text_aggregate' | 'conquest_faction_text_by_pk' | 'conquest_loyalty' | 'conquest_loyalty_aggregate' | 'conquest_loyalty_by_pk' | 'conquest_loyalty_text' | 'conquest_loyalty_text_aggregate' | 'conquest_loyalty_text_by_pk' | 'conquest_pack' | 'conquest_pack_aggregate' | 'conquest_pack_by_pk' | 'conquest_pack_text' | 'conquest_pack_text_aggregate' | 'conquest_pack_text_by_pk' | 'conquest_type' | 'conquest_type_aggregate' | 'conquest_type_by_pk' | 'conquest_type_text' | 'conquest_type_text_aggregate' | 'conquest_type_text_by_pk' | 'conquest_user_role' | 'conquest_user_role_aggregate' | 'conquest_user_role_by_pk' | 'conquest_user_settings' | 'conquest_user_settings_aggregate' | 'conquest_user_settings_by_pk' | 'conquest_users' | 'conquest_users_aggregate' | 'conquest_users_by_pk' | 'cycle' | 'cycle_aggregate' | 'cycle_by_pk' | 'cycle_name' | 'cycle_name_aggregate' | 'cycle_name_by_pk' | 'faction_name' | 'faction_name_aggregate' | 'faction_name_by_pk' | 'faq' | 'faq_aggregate' | 'faq_by_pk' | 'faq_text' | 'faq_text_aggregate' | 'faq_text_by_pk' | 'friend_status' | 'friend_status_aggregate' | 'friend_status_by_pk' | 'friend_status_type' | 'friend_status_type_aggregate' | 'friend_status_type_by_pk' | 'full_card' | 'full_card_aggregate' | 'full_card_by_pk' | 'full_card_text' | 'full_card_text_aggregate' | 'full_card_text_by_pk' | 'gender' | 'gender_aggregate' | 'gender_by_pk' | 'guide_achievement' | 'guide_achievement_aggregate' | 'guide_achievement_by_pk' | 'guide_input' | 'guide_input_aggregate' | 'guide_input_by_pk' | 'investigator_data' | 'investigator_data_aggregate' | 'investigator_data_by_pk' | 'latest_decks' | 'latest_decks_aggregate' | 'local_decks' | 'local_decks_aggregate' | 'oauth_access_tokens' | 'oauth_access_tokens_aggregate' | 'oauth_access_tokens_by_pk' | 'oauth_authorization_codes' | 'oauth_authorization_codes_aggregate' | 'oauth_authorization_codes_by_pk' | 'oauth_clients' | 'oauth_clients_aggregate' | 'oauth_clients_by_pk' | 'oauth_refresh_tokens' | 'oauth_refresh_tokens_aggregate' | 'oauth_refresh_tokens_by_pk' | 'oauth_scopes' | 'oauth_scopes_aggregate' | 'oauth_scopes_by_pk' | 'pack' | 'pack_aggregate' | 'pack_by_pk' | 'pack_name' | 'pack_name_aggregate' | 'pack_name_by_pk' | 'rangers_area' | 'rangers_area_aggregate' | 'rangers_area_by_pk' | 'rangers_area_text' | 'rangers_area_text_aggregate' | 'rangers_area_text_by_pk' | 'rangers_aspect' | 'rangers_aspect_aggregate' | 'rangers_aspect_by_pk' | 'rangers_aspect_localized' | 'rangers_aspect_localized_aggregate' | 'rangers_aspect_text' | 'rangers_aspect_text_aggregate' | 'rangers_aspect_text_by_pk' | 'rangers_campaign' | 'rangers_campaign_access' | 'rangers_campaign_access_aggregate' | 'rangers_campaign_access_by_pk' | 'rangers_campaign_aggregate' | 'rangers_campaign_by_pk' | 'rangers_card' | 'rangers_card_aggregate' | 'rangers_card_by_pk' | 'rangers_card_localized' | 'rangers_card_localized_aggregate' | 'rangers_card_search' | 'rangers_card_search_aggregate' | 'rangers_card_text' | 'rangers_card_text_aggregate' | 'rangers_card_text_by_pk' | 'rangers_card_updated' | 'rangers_card_updated_aggregate' | 'rangers_comment' | 'rangers_comment_aggregate' | 'rangers_comment_by_pk' | 'rangers_deck' | 'rangers_deck_aggregate' | 'rangers_deck_by_pk' | 'rangers_deck_copy' | 'rangers_deck_copy_aggregate' | 'rangers_deck_copy_by_pk' | 'rangers_deck_like' | 'rangers_deck_like_aggregate' | 'rangers_deck_like_by_pk' | 'rangers_deck_like_count' | 'rangers_deck_like_count_aggregate' | 'rangers_deck_like_count_by_pk' | 'rangers_deck_rank' | 'rangers_deck_rank_aggregate' | 'rangers_deck_search' | 'rangers_deck_search_aggregate' | 'rangers_faq_entry' | 'rangers_faq_entry_aggregate' | 'rangers_faq_entry_by_pk' | 'rangers_friend_status' | 'rangers_friend_status_aggregate' | 'rangers_friend_status_by_pk' | 'rangers_friend_status_type' | 'rangers_friend_status_type_aggregate' | 'rangers_friend_status_type_by_pk' | 'rangers_latest_deck' | 'rangers_latest_deck_aggregate' | 'rangers_locale' | 'rangers_locale_aggregate' | 'rangers_locale_by_pk' | 'rangers_pack' | 'rangers_pack_aggregate' | 'rangers_pack_by_pk' | 'rangers_pack_localized' | 'rangers_pack_localized_aggregate' | 'rangers_pack_text' | 'rangers_pack_text_aggregate' | 'rangers_pack_text_by_pk' | 'rangers_search_all_decks' | 'rangers_search_all_decks_aggregate' | 'rangers_search_deck' | 'rangers_search_deck_aggregate' | 'rangers_set' | 'rangers_set_aggregate' | 'rangers_set_by_pk' | 'rangers_set_localized' | 'rangers_set_localized_aggregate' | 'rangers_set_text' | 'rangers_set_text_aggregate' | 'rangers_set_text_by_pk' | 'rangers_set_type' | 'rangers_set_type_aggregate' | 'rangers_set_type_by_pk' | 'rangers_set_type_localized' | 'rangers_set_type_localized_aggregate' | 'rangers_set_type_text' | 'rangers_set_type_text_aggregate' | 'rangers_set_type_text_by_pk' | 'rangers_subset' | 'rangers_subset_aggregate' | 'rangers_subset_by_pk' | 'rangers_subset_localized' | 'rangers_subset_localized_aggregate' | 'rangers_subset_text' | 'rangers_subset_text_aggregate' | 'rangers_subset_text_by_pk' | 'rangers_taboo_set' | 'rangers_taboo_set_aggregate' | 'rangers_taboo_set_by_pk' | 'rangers_taboo_set_localized' | 'rangers_taboo_set_localized_aggregate' | 'rangers_taboo_set_text' | 'rangers_taboo_set_text_aggregate' | 'rangers_taboo_set_text_by_pk' | 'rangers_token' | 'rangers_token_aggregate' | 'rangers_token_by_pk' | 'rangers_token_text' | 'rangers_token_text_aggregate' | 'rangers_token_text_by_pk' | 'rangers_type' | 'rangers_type_aggregate' | 'rangers_type_by_pk' | 'rangers_type_localized' | 'rangers_type_localized_aggregate' | 'rangers_type_text' | 'rangers_type_text_aggregate' | 'rangers_type_text_by_pk' | 'rangers_user_campaign' | 'rangers_user_campaign_aggregate' | 'rangers_user_friends' | 'rangers_user_friends_aggregate' | 'rangers_user_received_friend_requests' | 'rangers_user_received_friend_requests_aggregate' | 'rangers_user_role' | 'rangers_user_role_aggregate' | 'rangers_user_role_by_pk' | 'rangers_user_sent_friend_requests' | 'rangers_user_sent_friend_requests_aggregate' | 'rangers_user_settings' | 'rangers_user_settings_aggregate' | 'rangers_user_settings_by_pk' | 'rangers_users' | 'rangers_users_aggregate' | 'rangers_users_by_pk' | 'taboo_set' | 'taboo_set_aggregate' | 'taboo_set_by_pk' | 'user_campaigns' | 'user_campaigns_aggregate' | 'user_flag' | 'user_flag_aggregate' | 'user_flag_by_pk' | 'user_flag_type' | 'user_flag_type_aggregate' | 'user_flag_type_by_pk' | 'user_friends' | 'user_friends_aggregate' | 'user_received_friend_requests' | 'user_received_friend_requests_aggregate' | 'user_sent_friend_requests' | 'user_sent_friend_requests_aggregate' | 'user_settings' | 'user_settings_aggregate' | 'user_settings_by_pk' | 'users' | 'usersSearch' | 'users_aggregate' | 'users_by_pk' | query_rootKeySpecifier)[];

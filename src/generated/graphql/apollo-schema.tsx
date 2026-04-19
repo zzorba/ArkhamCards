@@ -26936,7 +26936,12 @@ export type Mutation_RootUpdate_Oauth_Scopes_ManyArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_PackArgs = {
+  _append?: InputMaybe<Pack_Append_Input>;
+  _delete_at_path?: InputMaybe<Pack_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Pack_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Pack_Delete_Key_Input>;
   _inc?: InputMaybe<Pack_Inc_Input>;
+  _prepend?: InputMaybe<Pack_Prepend_Input>;
   _set?: InputMaybe<Pack_Set_Input>;
   where: Pack_Bool_Exp;
 };
@@ -26944,7 +26949,12 @@ export type Mutation_RootUpdate_PackArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Pack_By_PkArgs = {
+  _append?: InputMaybe<Pack_Append_Input>;
+  _delete_at_path?: InputMaybe<Pack_Delete_At_Path_Input>;
+  _delete_elem?: InputMaybe<Pack_Delete_Elem_Input>;
+  _delete_key?: InputMaybe<Pack_Delete_Key_Input>;
   _inc?: InputMaybe<Pack_Inc_Input>;
+  _prepend?: InputMaybe<Pack_Prepend_Input>;
   _set?: InputMaybe<Pack_Set_Input>;
   pk_columns: Pack_Pk_Columns_Input;
 };
@@ -29009,6 +29019,7 @@ export type Pack = {
   cards: Array<All_Card>;
   /** An aggregate relationship */
   cards_aggregate: All_Card_Aggregate;
+  chapter?: Maybe<Scalars['Int']['output']>;
   code: Scalars['String']['output'];
   /** An object relationship */
   cycle: Cycle;
@@ -29016,7 +29027,9 @@ export type Pack = {
   official: Scalars['Boolean']['output'];
   position: Scalars['Int']['output'];
   real_name: Scalars['String']['output'];
+  replaced?: Maybe<Scalars['Boolean']['output']>;
   reprint?: Maybe<Scalars['Boolean']['output']>;
+  reprint_packs?: Maybe<Scalars['jsonb']['output']>;
   /** An array relationship */
   translations: Array<Pack_Name>;
   /** An aggregate relationship */
@@ -29042,6 +29055,12 @@ export type PackCards_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<All_Card_Order_By>>;
   where?: InputMaybe<All_Card_Bool_Exp>;
+};
+
+
+/** columns and relationships of "pack" */
+export type PackReprint_PacksArgs = {
+  path?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -29136,6 +29155,11 @@ export type Pack_Aggregate_Order_By = {
   variance?: InputMaybe<Pack_Variance_Order_By>;
 };
 
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type Pack_Append_Input = {
+  reprint_packs?: InputMaybe<Scalars['jsonb']['input']>;
+};
+
 /** input type for inserting array relation for remote table "pack" */
 export type Pack_Arr_Rel_Insert_Input = {
   data: Array<Pack_Insert_Input>;
@@ -29146,11 +29170,13 @@ export type Pack_Arr_Rel_Insert_Input = {
 /** aggregate avg on columns */
 export type Pack_Avg_Fields = {
   __typename?: 'pack_avg_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by avg() on columns of table "pack" */
 export type Pack_Avg_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
 };
 
@@ -29161,13 +29187,16 @@ export type Pack_Bool_Exp = {
   _or?: InputMaybe<Array<Pack_Bool_Exp>>;
   cards?: InputMaybe<All_Card_Bool_Exp>;
   cards_aggregate?: InputMaybe<All_Card_Aggregate_Bool_Exp>;
+  chapter?: InputMaybe<Int_Comparison_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   cycle?: InputMaybe<Cycle_Bool_Exp>;
   cycle_code?: InputMaybe<String_Comparison_Exp>;
   official?: InputMaybe<Boolean_Comparison_Exp>;
   position?: InputMaybe<Int_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
+  replaced?: InputMaybe<Boolean_Comparison_Exp>;
   reprint?: InputMaybe<Boolean_Comparison_Exp>;
+  reprint_packs?: InputMaybe<Jsonb_Comparison_Exp>;
   translations?: InputMaybe<Pack_Name_Bool_Exp>;
   translations_aggregate?: InputMaybe<Pack_Name_Aggregate_Bool_Exp>;
   type?: InputMaybe<String_Comparison_Exp>;
@@ -29179,21 +29208,40 @@ export enum Pack_Constraint {
   PackPkey = 'pack_pkey'
 }
 
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type Pack_Delete_At_Path_Input = {
+  reprint_packs?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type Pack_Delete_Elem_Input = {
+  reprint_packs?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type Pack_Delete_Key_Input = {
+  reprint_packs?: InputMaybe<Scalars['String']['input']>;
+};
+
 /** input type for incrementing numeric columns in table "pack" */
 export type Pack_Inc_Input = {
+  chapter?: InputMaybe<Scalars['Int']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** input type for inserting data into table "pack" */
 export type Pack_Insert_Input = {
   cards?: InputMaybe<All_Card_Arr_Rel_Insert_Input>;
+  chapter?: InputMaybe<Scalars['Int']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   cycle?: InputMaybe<Cycle_Obj_Rel_Insert_Input>;
   cycle_code?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   real_name?: InputMaybe<Scalars['String']['input']>;
+  replaced?: InputMaybe<Scalars['Boolean']['input']>;
   reprint?: InputMaybe<Scalars['Boolean']['input']>;
+  reprint_packs?: InputMaybe<Scalars['jsonb']['input']>;
   translations?: InputMaybe<Pack_Name_Arr_Rel_Insert_Input>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
@@ -29201,6 +29249,7 @@ export type Pack_Insert_Input = {
 /** aggregate max on columns */
 export type Pack_Max_Fields = {
   __typename?: 'pack_max_fields';
+  chapter?: Maybe<Scalars['Int']['output']>;
   code?: Maybe<Scalars['String']['output']>;
   cycle_code?: Maybe<Scalars['String']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
@@ -29210,6 +29259,7 @@ export type Pack_Max_Fields = {
 
 /** order by max() on columns of table "pack" */
 export type Pack_Max_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   cycle_code?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
@@ -29220,6 +29270,7 @@ export type Pack_Max_Order_By = {
 /** aggregate min on columns */
 export type Pack_Min_Fields = {
   __typename?: 'pack_min_fields';
+  chapter?: Maybe<Scalars['Int']['output']>;
   code?: Maybe<Scalars['String']['output']>;
   cycle_code?: Maybe<Scalars['String']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
@@ -29229,6 +29280,7 @@ export type Pack_Min_Fields = {
 
 /** order by min() on columns of table "pack" */
 export type Pack_Min_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   cycle_code?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
@@ -29462,13 +29514,16 @@ export type Pack_On_Conflict = {
 /** Ordering options when selecting data from "pack". */
 export type Pack_Order_By = {
   cards_aggregate?: InputMaybe<All_Card_Aggregate_Order_By>;
+  chapter?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   cycle?: InputMaybe<Cycle_Order_By>;
   cycle_code?: InputMaybe<Order_By>;
   official?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
+  replaced?: InputMaybe<Order_By>;
   reprint?: InputMaybe<Order_By>;
+  reprint_packs?: InputMaybe<Order_By>;
   translations_aggregate?: InputMaybe<Pack_Name_Aggregate_Order_By>;
   type?: InputMaybe<Order_By>;
 };
@@ -29478,8 +29533,15 @@ export type Pack_Pk_Columns_Input = {
   code: Scalars['String']['input'];
 };
 
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type Pack_Prepend_Input = {
+  reprint_packs?: InputMaybe<Scalars['jsonb']['input']>;
+};
+
 /** select columns of table "pack" */
 export enum Pack_Select_Column {
+  /** column name */
+  Chapter = 'chapter',
   /** column name */
   Code = 'code',
   /** column name */
@@ -29491,7 +29553,11 @@ export enum Pack_Select_Column {
   /** column name */
   RealName = 'real_name',
   /** column name */
+  Replaced = 'replaced',
+  /** column name */
   Reprint = 'reprint',
+  /** column name */
+  ReprintPacks = 'reprint_packs',
   /** column name */
   Type = 'type'
 }
@@ -29501,6 +29567,8 @@ export enum Pack_Select_Column_Pack_Aggregate_Bool_Exp_Bool_And_Arguments_Column
   /** column name */
   Official = 'official',
   /** column name */
+  Replaced = 'replaced',
+  /** column name */
   Reprint = 'reprint'
 }
 
@@ -29509,50 +29577,61 @@ export enum Pack_Select_Column_Pack_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns
   /** column name */
   Official = 'official',
   /** column name */
+  Replaced = 'replaced',
+  /** column name */
   Reprint = 'reprint'
 }
 
 /** input type for updating data in table "pack" */
 export type Pack_Set_Input = {
+  chapter?: InputMaybe<Scalars['Int']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   cycle_code?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   real_name?: InputMaybe<Scalars['String']['input']>;
+  replaced?: InputMaybe<Scalars['Boolean']['input']>;
   reprint?: InputMaybe<Scalars['Boolean']['input']>;
+  reprint_packs?: InputMaybe<Scalars['jsonb']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate stddev on columns */
 export type Pack_Stddev_Fields = {
   __typename?: 'pack_stddev_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by stddev() on columns of table "pack" */
 export type Pack_Stddev_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Pack_Stddev_Pop_Fields = {
   __typename?: 'pack_stddev_pop_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by stddev_pop() on columns of table "pack" */
 export type Pack_Stddev_Pop_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Pack_Stddev_Samp_Fields = {
   __typename?: 'pack_stddev_samp_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by stddev_samp() on columns of table "pack" */
 export type Pack_Stddev_Samp_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
 };
 
@@ -29566,28 +29645,35 @@ export type Pack_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Pack_Stream_Cursor_Value_Input = {
+  chapter?: InputMaybe<Scalars['Int']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   cycle_code?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   real_name?: InputMaybe<Scalars['String']['input']>;
+  replaced?: InputMaybe<Scalars['Boolean']['input']>;
   reprint?: InputMaybe<Scalars['Boolean']['input']>;
+  reprint_packs?: InputMaybe<Scalars['jsonb']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate sum on columns */
 export type Pack_Sum_Fields = {
   __typename?: 'pack_sum_fields';
+  chapter?: Maybe<Scalars['Int']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
 };
 
 /** order by sum() on columns of table "pack" */
 export type Pack_Sum_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "pack" */
 export enum Pack_Update_Column {
+  /** column name */
+  Chapter = 'chapter',
   /** column name */
   Code = 'code',
   /** column name */
@@ -29599,14 +29685,28 @@ export enum Pack_Update_Column {
   /** column name */
   RealName = 'real_name',
   /** column name */
+  Replaced = 'replaced',
+  /** column name */
   Reprint = 'reprint',
+  /** column name */
+  ReprintPacks = 'reprint_packs',
   /** column name */
   Type = 'type'
 }
 
 export type Pack_Updates = {
+  /** append existing jsonb value of filtered columns with new jsonb value */
+  _append?: InputMaybe<Pack_Append_Input>;
+  /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+  _delete_at_path?: InputMaybe<Pack_Delete_At_Path_Input>;
+  /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+  _delete_elem?: InputMaybe<Pack_Delete_Elem_Input>;
+  /** delete key/value pair or string element. key/value pairs are matched based on their key value */
+  _delete_key?: InputMaybe<Pack_Delete_Key_Input>;
   /** increments the numeric columns with given value of the filtered values */
   _inc?: InputMaybe<Pack_Inc_Input>;
+  /** prepend existing jsonb value of filtered columns with new jsonb value */
+  _prepend?: InputMaybe<Pack_Prepend_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Pack_Set_Input>;
   /** filter the rows which have to be updated */
@@ -29616,33 +29716,39 @@ export type Pack_Updates = {
 /** aggregate var_pop on columns */
 export type Pack_Var_Pop_Fields = {
   __typename?: 'pack_var_pop_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by var_pop() on columns of table "pack" */
 export type Pack_Var_Pop_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Pack_Var_Samp_Fields = {
   __typename?: 'pack_var_samp_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by var_samp() on columns of table "pack" */
 export type Pack_Var_Samp_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Pack_Variance_Fields = {
   __typename?: 'pack_variance_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by variance() on columns of table "pack" */
 export type Pack_Variance_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
 };
 
@@ -52531,7 +52637,7 @@ export type GetTranslationDataQueryVariables = Exact<{
 }>;
 
 
-export type GetTranslationDataQuery = { __typename?: 'query_root', faction_name: Array<{ __typename?: 'faction_name', code: string, name: string }>, card_type_name: Array<{ __typename?: 'card_type_name', code: Card_Type_Code_Enum, name: string }>, card_subtype_name: Array<{ __typename?: 'card_subtype_name', code: string, name: string }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, reprint?: boolean | null, translations: Array<{ __typename?: 'pack_name', name: string }> }> }> };
+export type GetTranslationDataQuery = { __typename?: 'query_root', faction_name: Array<{ __typename?: 'faction_name', code: string, name: string }>, card_type_name: Array<{ __typename?: 'card_type_name', code: Card_Type_Code_Enum, name: string }>, card_subtype_name: Array<{ __typename?: 'card_subtype_name', code: string, name: string }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, name: string }>, cycle: Array<{ __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean, translations: Array<{ __typename?: 'cycle_name', name: string }>, packs: Array<{ __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, reprint?: boolean | null, chapter?: number | null, translations: Array<{ __typename?: 'pack_name', name: string }> }> }> };
 
 export type GetPlayerCardsQueryVariables = Exact<{
   locale: Scalars['String']['input'];
@@ -52833,7 +52939,7 @@ export type TabooSetFragment = { __typename?: 'taboo_set', id: number, name?: st
 
 export type EncounterSetFragment = { __typename?: 'card_encounter_set', code: string, name: string };
 
-export type PackFragment = { __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, reprint?: boolean | null };
+export type PackFragment = { __typename?: 'pack', code: string, cycle_code: string, real_name: string, position: number, official: boolean, reprint?: boolean | null, chapter?: number | null };
 
 export type CycleFragment = { __typename?: 'cycle', code: string, real_name: string, position: number, official: boolean };
 
@@ -53320,6 +53426,7 @@ export const PackFragmentDoc = gql`
   position
   official
   reprint
+  chapter
 }
     `;
 export const CycleFragmentDoc = gql`

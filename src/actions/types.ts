@@ -337,6 +337,7 @@ export interface Pack {
   total: number;
   url?: string;
   reprint?: boolean;
+  chapter?: number;
 }
 
 export interface Trauma {
