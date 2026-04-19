@@ -7,79 +7,79 @@
         "entries": [
           {
             "id": "abigail_harbinger",
-            "text": "Abigail Foreman is the harbinger of Elokoss."
+            "text": "阿比盖尔·福尔曼是俄洛寇斯的使者。"
           },
           {
             "id": "cornelia_harbinger",
-            "text": "Cornelia Akely is the harbinger of Elokoss."
+            "text": "柯妮丽娅·阿克里是俄洛寇斯的使者。"
           },
           {
             "id": "david_harbinger",
-            "text": "David Renfield is the harbinger of Elokoss."
+            "text": "大卫·伦费尔德是俄洛寇斯的使者。"
           },
           {
             "id": "defeated_elokoss_and_the_brethren_of_ash",
-            "text": "the investigators defeated Elokoss and the Brethren of Ash."
+            "text": "调查员击败了俄洛寇斯和灰烬同袍会。"
           },
           {
             "id": "defeated_their_masked_pursuer",
-            "text": "the investigators defeated their masked pursuer."
+            "text": "调查员击败了戴面具的追兵。"
           },
           {
             "id": "discovered_the_cults_whereabouts",
-            "text": "the investigators discovered the cult's whereabouts."
+            "text": "调查员发现了教派的藏身之处。"
           },
           {
             "id": "earl_harbinger",
-            "text": "Sgt. Earl Monroe is the harbinger of Elokoss."
+            "text": "厄尔·门罗警司是俄洛寇斯的使者。"
           },
           {
             "id": "elokoss_was_reborn",
-            "text": "Elokoss was reborn."
+            "text": "俄洛寇斯重生。"
           },
           {
             "id": "failed_in_their_search",
-            "text": "the investigators failed in their search."
+            "text": "调查员搜查失败。"
           },
           {
             "id": "flooded_the_ritual",
-            "text": "the investigators flooded the Brethren of Ash’s summoning ritual."
+            "text": "调查员淹没了灰烬同袍会的召唤仪式。"
           },
           {
             "id": "killed_the_servant_of_flame",
-            "text": "the investigators killed the Servant of Flame"
+            "text": "调查员杀死了烈焰仆从"
           },
           {
             "id": "margaret_harbinger",
-            "text": "Margaret Liu is the harbinger of Elokoss."
+            "text": "柳玛丽是俄洛寇斯的使者。"
           },
           {
             "id": "miskatonic_university_burned",
-            "text": "Miskatonic University burned."
+            "text": "米斯卡塔尼克大学化为火海。"
           },
           {
             "id": "naomi_harbinger",
-            "text": "Naomi O'Bannion is the harbinger of Elokoss."
+            "text": "内奥米·欧巴尼恩是俄洛寇斯的使者。"
           },
           {
             "id": "saved_miskatonic_university",
-            "text": "the investigators saved Miskatonic University."
+            "text": "调查员拯救了米斯卡塔尼克大学。"
           },
           {
             "id": "scoured_arkham_for_answers",
-            "text": "the investigators scoured Arkham for answers."
+            "text": "调查搜遍了阿卡姆。"
           },
           {
             "id": "stirred_up_trouble",
-            "text": "the investigators stirred up trouble."
+            "text": "调查员捅了篓子。"
           },
           {
             "id": "stopped_elokoss_glorious_rebirth",
-            "text": "the investigators stopped Elokoss’s glorious rebirth."
+            "text": "调查员阻止了俄洛寇斯的辉煌重生。"
           },
           {
             "id": "the_servant_of_flame_escaped",
-            "text": "the Servant of Flame escaped."
+            "text": "烈焰仆从逃离。"
           }
         ]
       },
@@ -3442,7 +3442,7 @@
           },
           {
             "id": "coven_of_keziah_holds_the_world_in_its_grasp",
-            "text": "the coven of Keziah holds the world in its grasp."
+            "text": "凯夏的女巫集会掌控世界。"
           },
           {
             "id": "deceiving_the_lodge",
@@ -3462,11 +3462,11 @@
           },
           {
             "id": "erynn_joined_investigators",
-            "text": "Erynn joined the investigators."
+            "text": "伊琳加入了调查员。"
           },
           {
             "id": "erynn_wants_to_meet",
-            "text": "Erynn wants to meet you."
+            "text": "伊琳想要会面。"
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -3676,7 +3676,7 @@
         "entries": [
           {
             "id": "bloody_tree_carvings",
-            "text": "Bloody Tree Carvings"
+            "text": "血树雕刻"
           },
           {
             "id": "corn_husk_doll",
@@ -3704,7 +3704,7 @@
           },
           {
             "id": "strange_incantation",
-            "text": "Strange Incantation"
+            "text": "怪异咒语"
           },
           {
             "id": "wisp_of_spectral_mist",
@@ -3887,7 +3887,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "the investigators recruited the help of another expedition."
+            "text": "调查员得到了另一支探险队的帮助。"
           },
           {
             "id": "relic_is_missing",
@@ -4019,23 +4019,23 @@
     ],
     "supplies": [
       {
-        "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
+        "id": "sticky_goop",
+        "name": "黏液团",
+        "description": "你在地下沼泽找到的黏液团。",
         "cost": 0,
         "multiple": false
       },
       {
-        "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A sticky goop you found in a subterranean swamp.",
+        "id": "mysterious_scepter",
+        "name": "神秘权杖",
+        "description": "你在王座大厅里找到的神秘权杖。",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "key_of_eztli",
-        "name": "Key of Eztli",
-        "description": "The Key of Eztli.",
+        "name": "埃兹特里之钥",
+        "description": "埃兹特里之钥。",
         "cost": 0,
         "multiple": false
       },
@@ -5796,11 +5796,11 @@
         "entries": [
           {
             "id": "downtown",
-            "text": "Downtown"
+            "text": "商业区"
           },
           {
             "id": "easttown",
-            "text": "Easttown"
+            "text": "东城区"
           },
           {
             "id": "miskatonic_university",
@@ -5808,7 +5808,7 @@
           },
           {
             "id": "northside",
-            "text": "Northside"
+            "text": "北区"
           },
           {
             "id": "rivertown",
@@ -5816,7 +5816,7 @@
           },
           {
             "id": "southside",
-            "text": "Southside"
+            "text": "南区"
           },
           {
             "id": "st_marys_hospital",

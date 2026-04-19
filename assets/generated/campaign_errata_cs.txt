@@ -736,6 +736,15 @@
           "answer": "The damage is removed and it is placed in the victory display, as normal."
         }
       ]
+    },
+    {
+      "scenario_code": "legions_of_fire",
+      "questions": [
+        {
+          "question": "Act 2 says to look at the encounter card below Termini Train Station and then replace it. What does replace mean in this context?",
+          "answer": "Put it back face down below the location. You now have some insight into where the cultists are gathering."
+        }
+      ]
     }
   ],
   "campaign_faq": [

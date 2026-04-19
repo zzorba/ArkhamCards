@@ -807,12 +807,12 @@
       {
         "code": "07269",
         "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
-        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
-        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1008,7 +1008,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
-        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -1261,12 +1261,12 @@
       {
         "code": "07269",
         "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
-        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
-        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1477,7 +1477,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
-        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -1742,12 +1742,12 @@
       {
         "code": "07269",
         "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
-        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
-        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -1958,7 +1958,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
-        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -2263,12 +2263,12 @@
       {
         "code": "07269",
         "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
-        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
-        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",
@@ -2484,7 +2484,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
-        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "08045",
@@ -3033,17 +3033,17 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
-        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
+        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
       },
       {
         "code": "07269",
         "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
-        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
+        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
       },
       {
         "code": "07301",
         "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
-        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
+        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
       },
       {
         "code": "08019",

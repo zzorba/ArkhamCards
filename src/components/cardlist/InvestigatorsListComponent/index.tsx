@@ -77,7 +77,13 @@ function headerForInvestigator(
     case SORT_BY_TITLE:
       return t`All Investigators`;
     case SORT_BY_PACK:
-      return (investigator.cycle_code === 'investigator' ? investigator.cycle_name : investigator.pack_name) || t`N/A`;
+      switch (investigator.cycle_code) {
+        case 'investigator':
+        case 'investigator_decks_ch2':
+          return investigator.cycle_name || t`N/A`;
+        default:
+          return investigator.pack_name || t`N/A`;
+      }
     default:
       return t`N/A`;
   }
