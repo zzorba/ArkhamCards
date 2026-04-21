@@ -28,7 +28,6 @@ import Rule from '../types/Rule';
 import InvestigatorSet from '../types/InvestigatorSet';
 import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
-import { AddReprintOfCode1744329600000 } from './migrations/1744329600000-AddReprintOfCode';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 import { SORT_BY_ENCOUNTER_SET, SORT_BY_XP, SortType } from '@actions/types';
 
@@ -133,7 +132,6 @@ async function createDatabaseConnection(recreate: boolean) {
     driver: typeORMDriver,
     // maxQueryExecutionTime: 4000,
     migrations: [
-      AddReprintOfCode1744329600000,
     ],
     entities: [Card, EncounterSet, FaqEntry, TabooSet, Rule, InvestigatorSet],
   });
@@ -143,7 +141,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 53;
+  static SCHEMA_VERSION: number = 55;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;

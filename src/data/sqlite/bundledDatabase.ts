@@ -3,6 +3,7 @@ import { Asset } from 'expo-asset';
 import { CardCache, Pack } from '@actions/types';
 import { Connection } from 'typeorm/browser';
 import { getSystemLanguage } from '@lib/i18n';
+import Database from './Database';
 
 export interface BundledDatabaseMetadata {
   schemaVersion?: number;
@@ -73,6 +74,31 @@ export async function loadBundledDatabaseIfNeeded(
     const bundledDbPath = bundledDbAsset.localUri;
     const bundledMetadataPath = bundledMetadataAsset.localUri;
 
+    // Read and validate metadata BEFORE copying any data
+    let metadata: BundledDatabaseMetadata = {};
+    try {
+      if (bundledMetadataPath) {
+        const metadataContent = await FileSystem.readAsStringAsync(bundledMetadataPath);
+        metadata = JSON.parse(metadataContent);
+      }
+    } catch (metadataError) {
+      console.warn('Error reading bundled database metadata:', metadataError);
+      return null;
+    }
+
+    // Schema version check: skip restore if bundled DB was built for a different schema
+    if (metadata.schemaVersion !== Database.SCHEMA_VERSION) {
+      console.log(`Bundled database schema version ${metadata.schemaVersion} does not match current schema version ${Database.SCHEMA_VERSION} - skipping restore`);
+      return null;
+    }
+
+    // Language check: skip restore if bundled DB is the wrong language
+    const resolvedUserLang = userLang === 'system' ? getSystemLanguage() : userLang;
+    if (resolvedUserLang && metadata.cardLang && resolvedUserLang !== metadata.cardLang) {
+      console.log(`Language mismatch: user wants ${resolvedUserLang}, bundled is ${metadata.cardLang} - skipping restore`);
+      return null;
+    }
+
     // SQLite ATTACH DATABASE doesn't work with bundle paths on Android
     // So we need to copy the bundled database to a temporary location first
     const tempDbPath = `${FileSystem.cacheDirectory}temp_bundled.db`;
@@ -135,32 +161,7 @@ export async function loadBundledDatabaseIfNeeded(
       return null;
     }
 
-    // Try to load metadata
-    let metadata: BundledDatabaseMetadata = {};
-    try {
-      if (bundledMetadataPath) {
-        const metadataContent = await FileSystem.readAsStringAsync(bundledMetadataPath);
-        metadata = JSON.parse(metadataContent);
-
-        // Safety check: Only use bundled database if language matches
-        // Resolve 'system' to actual system language before comparison
-        const resolvedUserLang = userLang === 'system' ? getSystemLanguage() : userLang;
-
-        if (resolvedUserLang && metadata.cardLang && resolvedUserLang !== metadata.cardLang) {
-          console.log(`Language mismatch: user wants ${resolvedUserLang}, bundled is ${metadata.cardLang} - clearing database`);
-          // Clear the database since it's the wrong language
-          const tables = ['card', 'rule', 'taboo_set', 'faq_entry', 'encounter_set', 'investigator_set'];
-          for (const table of tables) {
-            await connection.query(`DELETE FROM ${table}`);
-          }
-          return null;
-        }
-      }
-    } catch (metadataError) {
-      console.warn('Error reading metadata:', metadataError);
-    }
-
-    // Return metadata (or empty object) to signal successful load
+    // Return metadata to signal successful load
     return metadata;
   } catch (error) {
     console.error('Error loading bundled database:', error);
