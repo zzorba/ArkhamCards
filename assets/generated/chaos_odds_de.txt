@@ -5174,7 +5174,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Music]] treacheries in play.",
+          "prompt": "Anzahl an [[Musik]]-Verratskarten im Spiel.",
           "min": 0,
           "reveal_another": 1
         }
@@ -5973,7 +5973,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Wonderland]] locations in play",
+          "prompt": "Anzahl der [[Wunderland]]-Orte im Spiel",
           "min": 0,
           "max": 5
         }
@@ -5990,7 +5990,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Wonderland]] locations in play",
+          "prompt": "Anzahl der [[Wunderland]]-Orte im Spiel",
           "min": 0,
           "adjustment": 1
         }
@@ -6022,7 +6022,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "Keine Austern an deinem Ort",
               "modified_value": {
                 "modifier": -5
               }
@@ -6039,7 +6039,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "Keine Austern an deinem Ort",
               "modified_value": {
                 "modifier": -5
               }
@@ -6070,7 +6070,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "Keine Austern an deinem Ort",
               "modified_value": {
                 "modifier": -6
               }
@@ -6087,7 +6087,7 @@
           },
           "options": [
             {
-              "prompt": "No oysters on your location",
+              "prompt": "Keine Austern an deinem Ort",
               "modified_value": {
                 "modifier": -6
               }
@@ -6126,7 +6126,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "Du „hast schreckliche Tischmanieren“",
               "modified_value": {
                 "modifier": -4
               }
@@ -6143,7 +6143,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "Du „hast schreckliche Tischmanieren“",
               "modified_value": {
                 "modifier": -4
               }
@@ -6178,7 +6178,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "Du „hast schreckliche Tischmanieren“",
               "modified_value": {
                 "modifier": -5
               }
@@ -6195,7 +6195,7 @@
           },
           "options": [
             {
-              "prompt": "You “Have terrible table manners”",
+              "prompt": "Du „hast schreckliche Tischmanieren“",
               "modified_value": {
                 "modifier": -5
               }
@@ -6219,7 +6219,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the amount of blame on your copy of Royal Suspicion (rounded up)",
+          "prompt": "Die Hälfte an Anschuldigungen auf deiner Kopie von Königlicher Verdacht (aufgerundet)",
           "min": 0
         }
       },
@@ -6232,7 +6232,7 @@
           },
           "options": [
             {
-              "prompt": "Queen of Hearts is at your location",
+              "prompt": "Die Herz-Königin befindet sich an deinem Ort",
               "modified_value": {
                 "modifier": -4
               }
@@ -6256,7 +6256,7 @@
           },
           "options": [
             {
-              "prompt": "Executioner is in play",
+              "prompt": "Der Scharfrichter befindet sich im Spiel",
               "modified_value": {
                 "modifier": -4
               }
@@ -6270,7 +6270,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The amount of blame on your copy of Royal Suspicion",
+          "prompt": "Die Anzahl an Anschuldigungen auf deiner Kopie von Königlicher Verdacht",
           "min": 0
         }
       },
@@ -6283,7 +6283,7 @@
           },
           "options": [
             {
-              "prompt": "Queen of Hearts is at your location or a connecting location",
+              "prompt": "Die Herz-Königin befindet sich an deinem Ort oder einem angrenzenden Ort",
               "modified_value": {
                 "modifier": -4
               }
@@ -6307,7 +6307,7 @@
           },
           "options": [
             {
-              "prompt": "Executioner is in play",
+              "prompt": "Der Scharfrichter befindet sich im Spiel",
               "modified_value": {
                 "modifier": -5
               }
@@ -6325,7 +6325,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on the current agenda (rounded up)",
+          "prompt": "Die Hälfte des Verderbens im Spiel (aufgerundet)",
           "min": 0
         }
       },
@@ -6338,7 +6338,7 @@
           },
           "options": [
             {
-              "prompt": "Spend 1 action",
+              "prompt": "Gib 1 Aktion aus",
               "modified_value": {
                 "modifier": -2
               }
@@ -6361,7 +6361,7 @@
           },
           "options": [
             {
-              "prompt": "The Jabberwock is in play",
+              "prompt": "Der Schebberoch befindet sich im Spiel",
               "modified_value": {
                 "modifier": -4
               }
@@ -6375,7 +6375,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half the doom on the current agenda (rounded up)",
+          "prompt": "Die Hälfte des Verderbens im Spiel (aufgerundet)",
           "min": 0,
           "adjustment": 1
         }
@@ -6389,7 +6389,7 @@
           },
           "options": [
             {
-              "prompt": "Spend 1 action",
+              "prompt": "Gib 1 Aktion aus",
               "modified_value": {
                 "modifier": -3
               }
@@ -6413,7 +6413,7 @@
           },
           "options": [
             {
-              "prompt": "The Jabberwock is in play",
+              "prompt": "Der Schebberoch befindet sich im Spiel",
               "modified_value": {
                 "modifier": -5
               }
@@ -6436,7 +6436,7 @@
           },
           "options": [
             {
-              "prompt": "At least 1[investigator] total tokens on the scenario card",
+              "prompt": " 1[investigator] oder mehr Marker auf der Szenarioübersichtskarte",
               "modified_value": {
                 "modifier": -3
               }
@@ -6453,7 +6453,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "Ungleich viele Schadensmaker und Horrormarker auf der Szenarioübersichtskarte",
               "modified_value": {
                 "modifier": -4
               }
@@ -6470,7 +6470,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "Ungleich viele Schadensmaker und Horrormarker auf der Szenarioübersichtskarte",
               "modified_value": {
                 "modifier": -4
               }
@@ -6495,7 +6495,7 @@
           },
           "options": [
             {
-              "prompt": "At least 1[investigator] total tokens on the scenario card",
+              "prompt": " 1[investigator] oder mehr Marker auf der Szenarioübersichtskarte",
               "modified_value": {
                 "modifier": -4
               }
@@ -6512,7 +6512,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "Ungleich viele Schadensmaker und Horrormarker auf der Szenarioübersichtskarte",
               "modified_value": {
                 "modifier": -5
               }
@@ -6529,7 +6529,7 @@
           },
           "options": [
             {
-              "prompt": "Not an equal number of damage and horror tokens on the scenario card",
+              "prompt": "Ungleich viele Schadensmaker und Horrormarker auf der Szenarioübersichtskarte",
               "modified_value": {
                 "modifier": -5
               }
@@ -6553,7 +6553,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Chess]] enemies in play",
+          "prompt": "Die Anzahl an [[Schach]]-Gegnern im Spiel",
           "min": 0,
           "max": 5
         }
@@ -6567,7 +6567,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "Dieser Marker wird während eines Angriffs oder eines Entkommen-Versuchs gegen einen [[Schach]]-Gegner enthüllt",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6585,7 +6585,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "Dieser Marker wird während eines Angriffs oder eines Entkommen-Versuchs gegen einen [[Schach]]-Gegner enthüllt",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6603,7 +6603,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Shadow]] location",
+              "prompt": "Du befindest dich an einem [[Schatten]]-Ort",
               "modified_value": {
                 "modifier": -3
               }
@@ -6617,7 +6617,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "The number of [[Chess]] enemies in play",
+          "prompt": "Die Anzahl an [[Schach]]-Gegnern im Spiel",
           "min": 0
         }
       },
@@ -6630,7 +6630,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "Dieser Marker wird während eines Angriffs oder eines Entkommen-Versuchs gegen einen [[Schach]]-Gegner enthüllt",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6648,7 +6648,7 @@
           },
           "options": [
             {
-              "prompt": "This token is revealed during a fight or evade attempt against a [[Chess]] enemy",
+              "prompt": "Dieser Marker wird während eines Angriffs oder eines Entkommen-Versuchs gegen einen [[Schach]]-Gegner enthüllt",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6666,7 +6666,7 @@
           },
           "options": [
             {
-              "prompt": "You are at a [[Shadow]] location",
+              "prompt": "Du befindest dich an einem [[Schatten]]-Ort",
               "modified_value": {
                 "modifier": -4
               }
@@ -6689,7 +6689,7 @@
           },
           "options": [
             {
-              "prompt": "More total damage and horror on Alice than on your investigator",
+              "prompt": "Zusammen mehr Schaden/Horror auf Alice als auf deinem Ermittler",
               "modified_value": {
                 "modifier": -4
               }
@@ -6706,7 +6706,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Wonderland]] or [[Shadow]] location",
+              "prompt": "An einem [[Wunderland]]- oder [[Schatten]]-Ort",
               "modified_value": {
                 "modifier": -4
               }
@@ -6723,7 +6723,7 @@
           },
           "options": [
             {
-              "prompt": "3 or fewer [[Wonderland]] locations in play",
+              "prompt": "3 oder weniger [[Wunderland]]-Orte im Spiel",
               "modified_value": {
                 "modifier": -4
               }
@@ -6740,7 +6740,7 @@
           },
           "options": [
             {
-              "prompt": "Gurathnaka is at your location",
+              "prompt": "Gurathnaka befindet sich an deinem Ort",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -6760,7 +6760,7 @@
           },
           "options": [
             {
-              "prompt": "There is more total damage and horror on Alice than on your investigator",
+              "prompt": "Es befinden sich zusammen mehr Schaden/ Horror auf Alice als auf deinem Ermittler",
               "modified_value": {
                 "modifier": -5
               }
@@ -6777,7 +6777,7 @@
           },
           "options": [
             {
-              "prompt": "At a [[Wonderland]] or [[Shadow]] location",
+              "prompt": "An einem [[Wunderland]]- oder [[Schatten]]-Ort",
               "modified_value": {
                 "modifier": -5
               }
@@ -6794,7 +6794,7 @@
           },
           "options": [
             {
-              "prompt": "3 or fewer [[Wonderland]] locations in play",
+              "prompt": "3 oder weniger [[Wunderland]]-Orte im Spiel",
               "modified_value": {
                 "modifier": -5
               }
@@ -6811,7 +6811,7 @@
           },
           "options": [
             {
-              "prompt": "Gurathnaka is at your location",
+              "prompt": "Gurathnaka befindet sich an deinem Ort",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -7672,7 +7672,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Half your alarm level, rounded down.",
+          "prompt": "Hälfte deiner Alarmstufe (aufgerundet)",
           "min": 1
         }
       },
@@ -11487,7 +11487,7 @@
           },
           "options": [
             {
-              "prompt": "[[Saturnite]] enemy at your location",
+              "prompt": "[[Saturnit]]-Gegner an deinem Ort",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -11539,7 +11539,7 @@
           },
           "options": [
             {
-              "prompt": "[[Saturnite]] enemy at your location",
+              "prompt": "[[Saturnit]]-Gegner an deinem Ort",
               "modified_value": {
                 "modifier": -4,
                 "reveal_another": 1

@@ -17,7 +17,7 @@
   },
   {
     "id": "a_sea_of_troubles",
-    "name": "A Sea of Troubles"
+    "name": "Eine See an Plagen"
   },
   {
     "id": "a_thousand_shapes_of_horror",
@@ -81,7 +81,7 @@
   },
   {
     "id": "arkham_in_wonderland",
-    "name": "Arkham in Wonderland"
+    "name": "Arkham im Wunderland"
   },
   {
     "id": "armitages_fate",
@@ -141,7 +141,7 @@
   },
   {
     "id": "bleeding_hearts",
-    "name": "Bleeding Hearts"
+    "name": "Blutende Herzen"
   },
   {
     "id": "blob_that_ate_everything",
@@ -381,7 +381,7 @@
   },
   {
     "id": "fools_mate",
-    "name": "Fool's Mate"
+    "name": "Narrenmatt"
   },
   {
     "id": "for_the_greater_good",
@@ -413,7 +413,7 @@
   },
   {
     "id": "gryphon_and_mock_turtle",
-    "name": "Gryphon and Mock Turtle"
+    "name": "Greif und Schildkrötensupperich"
   },
   {
     "id": "hall_of_the_mountain_king",
@@ -561,7 +561,7 @@
   },
   {
     "id": "lucid_nightmare",
-    "name": "Lucid Nightmare"
+    "name": "Klarer Albtraum"
   },
   {
     "id": "machinations_through_time",
@@ -921,7 +921,7 @@
   },
   {
     "id": "sibling_rivalry",
-    "name": "Sibling Rivalry"
+    "name": "Geschwisterrivalität"
   },
   {
     "id": "smoke_and_mirrors",
@@ -973,7 +973,7 @@
   },
   {
     "id": "tempest_in_a_teapot",
-    "name": "Tempest in a Teapot"
+    "name": "Sturm im Teeglas"
   },
   {
     "id": "tentacles",
@@ -1041,7 +1041,7 @@
   },
   {
     "id": "the_caterpillar",
-    "name": "The Caterpillar"
+    "name": "Das Raupentier"
   },
   {
     "id": "the_city_of_archives",
@@ -1065,7 +1065,7 @@
   },
   {
     "id": "the_dodo",
-    "name": "The Dodo"
+    "name": "Der Dodo"
   },
   {
     "id": "the_doom_of_arkham",
@@ -1085,7 +1085,7 @@
   },
   {
     "id": "the_duchess",
-    "name": "The Duchess"
+    "name": "Die Herzogin"
   },
   {
     "id": "the_eternal_slumber",
@@ -1093,7 +1093,7 @@
   },
   {
     "id": "the_fall_of_the_house_of_usher",
-    "name": "The Fall of the House of Usher"
+    "name": "Der Untergang des Hauses Usher"
   },
   {
     "id": "the_fallen",
@@ -1229,7 +1229,7 @@
   },
   {
     "id": "the_symphony_of_erich_zann",
-    "name": "The Symphony of Erich Zann"
+    "name": "Die Sinfonie des Erich Zann"
   },
   {
     "id": "the_syzygy",
@@ -1385,7 +1385,7 @@
   },
   {
     "id": "wild_snark_chase",
-    "name": "Wild Snark Chase"
+    "name": "Eine wilde Schlarg-Jagd"
   },
   {
     "id": "wilds",

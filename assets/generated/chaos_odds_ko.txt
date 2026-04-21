@@ -7672,7 +7672,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "경보 수치의 절반(소수점 이하 버림)",
+          "prompt": "경보 수치의 절반(소수점 이하 올림)",
           "min": 1
         }
       },
@@ -11393,7 +11393,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Cthulhu's Rage",
+          "prompt": "크툴루의 분노",
           "min": 0
         }
       },
@@ -11422,7 +11422,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Cthulhu's Rage",
+          "prompt": "크툴루의 분노",
           "min": 0,
           "adjustment": 2
         }

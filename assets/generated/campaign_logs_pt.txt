@@ -7,79 +7,79 @@
         "entries": [
           {
             "id": "abigail_harbinger",
-            "text": "Abigail Foreman is the harbinger of Elokoss."
+            "text": "Abigail Foreman é o arauto de Elokoss."
           },
           {
             "id": "cornelia_harbinger",
-            "text": "Cornelia Akely is the harbinger of Elokoss."
+            "text": "Cornelia Akely é o arauto de Elokoss."
           },
           {
             "id": "david_harbinger",
-            "text": "David Renfield is the harbinger of Elokoss."
+            "text": "David Renfield é o arauto de Elokoss."
           },
           {
             "id": "defeated_elokoss_and_the_brethren_of_ash",
-            "text": "the investigators defeated Elokoss and the Brethren of Ash."
+            "text": "os investigadores derrotaram Elokoss e os Irmãos das Cinzas."
           },
           {
             "id": "defeated_their_masked_pursuer",
-            "text": "the investigators defeated their masked pursuer."
+            "text": "os investigadores derrotaram seu perseguidor mascarado."
           },
           {
             "id": "discovered_the_cults_whereabouts",
-            "text": "the investigators discovered the cult's whereabouts."
+            "text": "os investigadores descobriram o paradeiro do culto."
           },
           {
             "id": "earl_harbinger",
-            "text": "Sgt. Earl Monroe is the harbinger of Elokoss."
+            "text": "Sgt. Earl Monroe é o arauto de Elokoss."
           },
           {
             "id": "elokoss_was_reborn",
-            "text": "Elokoss was reborn."
+            "text": "Elokoss renasceu."
           },
           {
             "id": "failed_in_their_search",
-            "text": "the investigators failed in their search."
+            "text": "os investigadores falharam na sua busca."
           },
           {
             "id": "flooded_the_ritual",
-            "text": "the investigators flooded the Brethren of Ash’s summoning ritual."
+            "text": "os investigadores inundaram o ritual de invocação dos Irmãos das Cinzas."
           },
           {
             "id": "killed_the_servant_of_flame",
-            "text": "the investigators killed the Servant of Flame"
+            "text": "os investigadores mataram o Servant of Flame"
           },
           {
             "id": "margaret_harbinger",
-            "text": "Margaret Liu is the harbinger of Elokoss."
+            "text": "Margaret Liu é o arauto de Elokoss."
           },
           {
             "id": "miskatonic_university_burned",
-            "text": "Miskatonic University burned."
+            "text": "Universidade Miskatonic queimou."
           },
           {
             "id": "naomi_harbinger",
-            "text": "Naomi O'Bannion is the harbinger of Elokoss."
+            "text": "Naomi O'Bannion é o arauto de Elokoss."
           },
           {
             "id": "saved_miskatonic_university",
-            "text": "the investigators saved Miskatonic University."
+            "text": "os investigadores salvaram a Universidade Miskatonic."
           },
           {
             "id": "scoured_arkham_for_answers",
-            "text": "the investigators scoured Arkham for answers."
+            "text": "Os investigadores vasculharam Arkham em busca de respostas."
           },
           {
             "id": "stirred_up_trouble",
-            "text": "the investigators stirred up trouble."
+            "text": "Os investigadores criaram problemas."
           },
           {
             "id": "stopped_elokoss_glorious_rebirth",
-            "text": "the investigators stopped Elokoss’s glorious rebirth."
+            "text": "os investigadores impediram o glorioso renascimento de Elokoss."
           },
           {
             "id": "the_servant_of_flame_escaped",
-            "text": "the Servant of Flame escaped."
+            "text": "o Servo da Chama escapou."
           }
         ]
       },
@@ -147,7 +147,7 @@
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "o Sacerdote Carniçal (Ghoul Priest) ainda está vivo."
+            "text": "o Sacerdote Carniçal ainda está vivo."
           },
           {
             "id": "house_burned",
@@ -2587,8 +2587,8 @@
           },
           {
             "id": "read_act_2",
-            "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
-            "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
+            "masculine_text": "#name# leu o Ato 2 de O Rei de Amarelo.",
+            "feminine_text": "#name# leu o Ato 2 de O Rei de Amarelo.",
             "nonbinary_text": "#name# leu o Ato 2 de O Rei de Amarelo."
           },
           {
@@ -2641,7 +2641,7 @@
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur os têm sob seu poder."
+            "text": "Hastur os tem sob seu poder."
           },
           {
             "id": "heeded_daniels_warning",
@@ -2718,7 +2718,7 @@
           },
           {
             "id": "possessed",
-            "text": "um ou mais investigadores estava possuído."
+            "text": "um ou mais investigadores estavam possuídos."
           },
           {
             "id": "reprint_language",
@@ -2952,7 +2952,7 @@
           },
           {
             "id": "ghoul_priest_alive",
-            "text": "o Sacerdote Carniçal (Ghoul Priest) ainda está vivo."
+            "text": "o Sacerdote Carniçal ainda está vivo."
           },
           {
             "id": "house_burned",
@@ -3019,8 +3019,8 @@
           },
           {
             "id": "read_act_2",
-            "masculine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
-            "feminine_text": "#name# leia o Ato 2 de O Rei de Amarelo.",
+            "masculine_text": "#name# leu o Ato 2 de O Rei de Amarelo.",
+            "feminine_text": "#name# leu o Ato 2 de O Rei de Amarelo.",
             "nonbinary_text": "#name# leu o Ato 2 de O Rei de Amarelo."
           },
           {
@@ -3073,7 +3073,7 @@
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur os têm sob seu poder."
+            "text": "Hastur os tem sob seu poder."
           },
           {
             "id": "heeded_daniels_warning",
@@ -3150,7 +3150,7 @@
           },
           {
             "id": "possessed",
-            "text": "um ou mais investigadores estava possuído."
+            "text": "um ou mais investigadores estavam possuídos."
           },
           {
             "id": "reprint_language",

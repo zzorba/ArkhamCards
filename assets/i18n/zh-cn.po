@@ -5053,7 +5053,8 @@ msgstr "您当前以<b>${ handle }</b>的身份登录。"
 
 msgid "The friend's campaign that you have participated in will have your decks removed:"
 msgid_plural "The ${ joinedCampaignCount } campaigns from friends that you have participated in will have your decks removed:"
-msgstr[0] "你的牌组将从好友的 ${joinedCampaignCount} 个剧本中移除："
+msgstr[0] "你的牌组将从好友的 0 个剧本中移除："
+msgstr[1] "你的牌组将从好友的 ${ joinedCampaignCount } 个剧本中移除："
 
 msgid "I understand that all data will be deleted permanently."
 msgstr "我了解所有资料将被永久地删除。"
@@ -6032,7 +6033,8 @@ msgstr[0] "支援牌：${ count }"
 
 msgid "Scenario reference"
 msgid_plural "Scenario references: ${ count }"
-msgstr[0] "冒险参考卡：${ count }"
+msgstr[0] "冒险参考卡：0"
+msgstr[1] "冒险参考卡：${ count }"
 
 #, javascript-format
 msgid "Unknown: ${ count }"

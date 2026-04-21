@@ -7672,7 +7672,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Moitié de votre niveau d'alarme, arrondi à l'inférieur",
+          "prompt": "Moitié de votre niveau d'alerte (arrondi au supérieur)",
           "min": 1
         }
       },

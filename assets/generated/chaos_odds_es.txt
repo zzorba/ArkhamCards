@@ -7672,7 +7672,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La mitad de tu nivel de alarma (redondeando hacia abajo).",
+          "prompt": "La mitad de tu nivel de alarma (redondeando hacia arriba)",
           "min": 1
         }
       },

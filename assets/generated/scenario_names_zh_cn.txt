@@ -209,7 +209,7 @@
   },
   {
     "id": "court_of_the_ancients",
-    "name": "Court of the Ancients"
+    "name": "远古宫廷"
   },
   {
     "id": "cp_epilogue",
@@ -373,7 +373,7 @@
   },
   {
     "id": "film_fatale",
-    "name": "Film Fatale"
+    "name": "致命片场"
   },
   {
     "id": "final_night",
@@ -485,7 +485,7 @@
   },
   {
     "id": "in_the_labyrinths_of_lunacy",
-    "name": "疯狂迷宫"
+    "name": "暗影迷宫"
   },
   {
     "id": "in_the_shadow_of_earth",
@@ -617,11 +617,11 @@
   },
   {
     "id": "obsidian_canyons",
-    "name": "Obsidian Canyons"
+    "name": "黑曜石峡谷"
   },
   {
     "id": "one_last_job",
-    "name": "One Last Job"
+    "name": "金盆洗手"
   },
   {
     "id": "oz_epilogue",
@@ -673,7 +673,7 @@
   },
   {
     "id": "queen_of_ash",
-    "name": "Queen of Ash"
+    "name": "灰烬女王"
   },
   {
     "id": "quito",
@@ -909,7 +909,7 @@
   },
   {
     "id": "sepulchre_of_the_sleeper",
-    "name": "Sepulchre of the Sleeper"
+    "name": "沉睡者之陵"
   },
   {
     "id": "shanghai",
@@ -1013,7 +1013,7 @@
   },
   {
     "id": "the_apiary",
-    "name": "The Apiary"
+    "name": "养育场"
   },
   {
     "id": "the_attack",
@@ -1081,7 +1081,7 @@
   },
   {
     "id": "the_drowned_quarter",
-    "name": "The Drowned Quarter"
+    "name": "溺亡城区"
   },
   {
     "id": "the_duchess",
@@ -1117,7 +1117,7 @@
   },
   {
     "id": "the_grand_vault",
-    "name": "The Grand Vault"
+    "name": "大秘库"
   },
   {
     "id": "the_great_ones",
@@ -1265,7 +1265,7 @@
   },
   {
     "id": "the_western_wall",
-    "name": "The Western Wall"
+    "name": "西墙"
   },
   {
     "id": "the_white_queen",

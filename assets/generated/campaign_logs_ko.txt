@@ -5593,35 +5593,35 @@
         "entries": [
           {
             "id": "do_no_harm",
-            "text": "Task Progress - Do No Harm:"
+            "text": "과업 진척 - 위해를 끼치지 말라"
           },
           {
             "id": "dreams_of_destruction",
-            "text": "Task Progress - Dreams of Destruction:"
+            "text": "과업 진척 - 파괴의 꿈"
           },
           {
             "id": "good_money",
-            "text": "Task Progress - Good Money:"
+            "text": "과업 진척 - 짭짤한 돈"
           },
           {
             "id": "no_place_like_home",
-            "text": "Task Progress - No Place Like Home:"
+            "text": "과업 진척 - 집만 한 곳도 없지"
           },
           {
             "id": "plumb_the_depths",
-            "text": "Task Progress - Plumb the Depths:"
+            "text": "과업 진척 - 심오한 탐구"
           },
           {
             "id": "prove_your_worth",
-            "text": "Task Progress - Prove Your Worth:"
+            "text": "과업 진척 - 가치 증명"
           },
           {
             "id": "toe_the_line",
-            "text": "Task Progress - Toe the Line:"
+            "text": "과업 진척 - 규정 준수"
           },
           {
             "id": "walk_in_faith",
-            "text": "Task Progress - Walk in Faith:"
+            "text": "과업 진척 - 믿음의 길을 따라"
           }
         ]
       },
@@ -5630,27 +5630,27 @@
         "entries": [
           {
             "id": "barrier_node",
-            "text": "Barrier Node"
+            "text": "방벽 동력원"
           },
           {
             "id": "clah_horror",
-            "text": "Horror in Clay"
+            "text": "점토로 빚은 공포"
           },
           {
             "id": "grisly_mask",
-            "text": "Grisly Mask"
+            "text": "소름 끼치는 가면"
           },
           {
             "id": "obsidian_claw",
-            "text": "Obsidian Claw"
+            "text": "흑요석 갈퀴"
           },
           {
             "id": "shard",
-            "text": "Shard of Y'ch'lecht"
+            "text": "이흐레흐트의 파편"
           },
           {
             "id": "tidal_tablet",
-            "text": "Tidal Tablet"
+            "text": "조수의 서판"
           }
         ]
       },
@@ -5658,120 +5658,120 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "no_place_like_home_succeed",
-            "masculine_text": "#name# found his true home.",
-            "feminine_text": "#name# found her true home.",
-            "nonbinary_text": "#name# found their true home."
-          },
-          {
-            "id": "toe_the_line_succeed",
-            "masculine_text": "#name# found new work.",
-            "feminine_text": "#name# found new work.",
-            "nonbinary_text": "#name# found new work."
-          },
-          {
             "id": "walk_in_faith_succeed",
-            "masculine_text": "#name# is strong in their faith.",
-            "feminine_text": "#name# is strong in their faith.",
-            "nonbinary_text": "#name# is strong in their faith."
-          },
-          {
-            "id": "plumb_the_depths_succeed",
-            "masculine_text": "#name# learned the secret truth.",
-            "feminine_text": "#name# learned the secret truth.",
-            "nonbinary_text": "#name# learned the secret truth."
-          },
-          {
-            "id": "good_money_succeed",
-            "masculine_text": "#name# made bank.",
-            "feminine_text": "#name# made bank.",
-            "nonbinary_text": "#name# made bank."
-          },
-          {
-            "id": "prove_your_worth_succeed",
-            "masculine_text": "#name# pulled their weight.",
-            "feminine_text": "#name# pulled their weight.",
-            "nonbinary_text": "#name# pulled their weight."
+            "masculine_text": "#name#의 신념은 확고하다",
+            "feminine_text": "#name#의 신념은 확고하다",
+            "nonbinary_text": "#name#의 신념은 확고하다"
           },
           {
             "id": "do_no_harm_succeed",
-            "masculine_text": "#name# swore an oath to protect others.",
-            "feminine_text": "#name# swore an oath to protect others.",
-            "nonbinary_text": "#name# swore an oath to protect others."
+            "masculine_text": "#name#이/가 다른 이들을 돕기로 맹세했다",
+            "feminine_text": "#name#이/가 다른 이들을 돕기로 맹세했다",
+            "nonbinary_text": "#name#이/가 다른 이들을 돕기로 맹세했다"
           },
           {
             "id": "dreams_of_destruction_succeed",
-            "masculine_text": "#name# understands the future.",
-            "feminine_text": "#name# understands the future.",
-            "nonbinary_text": "#name# understands the future."
+            "masculine_text": "#name#이/가 미래에 벌어질 일을 이해했다",
+            "feminine_text": "#name#이/가 미래에 벌어질 일을 이해했다",
+            "nonbinary_text": "#name#이/가 미래에 벌어질 일을 이해했다"
+          },
+          {
+            "id": "plumb_the_depths_succeed",
+            "masculine_text": "#name#이/가 비밀스러운 진실을 익혔다",
+            "feminine_text": "#name#이/가 비밀스러운 진실을 익혔다",
+            "nonbinary_text": "#name#이/가 비밀스러운 진실을 익혔다"
+          },
+          {
+            "id": "toe_the_line_succeed",
+            "masculine_text": "#name#이/가 새로운 직장을 구했다",
+            "feminine_text": "#name#이/가 새로운 직장을 구했다",
+            "nonbinary_text": "#name#이/가 새로운 직장을 구했다"
+          },
+          {
+            "id": "good_money_succeed",
+            "masculine_text": "#name#이/가 일확천금을 손에 넣었다",
+            "feminine_text": "#name#이/가 일확천금을 손에 넣었다",
+            "nonbinary_text": "#name#이/가 일확천금을 손에 넣었다"
+          },
+          {
+            "id": "prove_your_worth_succeed",
+            "masculine_text": "#name#이/가 제 몫을 다했다",
+            "feminine_text": "#name#이/가 제 몫을 다했다",
+            "nonbinary_text": "#name#이/가 제 몫을 다했다"
+          },
+          {
+            "id": "no_place_like_home_succeed",
+            "masculine_text": "#name#이/가 진정한 집을 찾았다",
+            "feminine_text": "#name#이/가 진정한 집을 찾았다",
+            "nonbinary_text": "#name#이/가 진정한 집을 찾았다"
           },
           {
             "id": "cthulhu_annihilated_the_city_of_arkham",
-            "text": "Cthulhu annihilated the city of Arkham."
+            "text": "크툴루가 아컴을 완파했다"
           },
           {
             "id": "cthulhu_was_banished",
-            "text": "Cthulhu was banished."
+            "text": "크툴루가 축출되었다"
           },
           {
             "id": "cthulhu_was_banished_but_arkham_was_destroyed",
-            "text": "Cthulhu was banished, but Arkham was destroyed."
+            "text": "크툴루가 축출되었으나 아컴은 파괴되었다"
           },
           {
             "id": "cthulhu_was_driven_away",
-            "text": "Cthulhu was driven away."
+            "text": "크툴루가 격퇴당했다"
           },
           {
             "id": "did_not_confront_the_nightmare",
-            "text": "the investigators did not confront the nightmare."
+            "text": "조사자들은 악몽과 맞서 싸우지 않았다"
           },
           {
             "id": "discovered_an_alien_language",
-            "text": "the investigators discovered an alien language."
+            "text": "조사자들이 외계 언어를 해독해냈다."
           },
           {
             "id": "expedition_abandoned_pilgrim",
-            "text": "the expedition left the pilgrim behind."
+            "text": "탐사대가 순례자를 방치하고 떠났다"
           },
           {
             "id": "expedition_headed_east",
-            "text": "the expedition headed east."
+            "text": "탐사대가 동쪽으로 향했다"
           },
           {
             "id": "expedition_headed_west",
-            "text": "the expedition headed west."
+            "text": "탐사대가 서쪽으로 향했다"
           },
           {
             "id": "expedition_helped_pilgrim",
-            "text": "the expedition helped the pilgrim."
+            "text": "탐사대가 순례자를 도왔다"
           },
           {
             "id": "exterminated_the_alien_parasites",
-            "text": "the investigators exterminated the alien parasites."
+            "text": "조사자들이 외계 기생충을 박멸했다"
           },
           {
             "id": "halted_cthulhus_awakening",
-            "text": "the investigators halted Cthulhu's awakening."
+            "text": "조사자들이 크툴루가 깨어나지 못하도록 저지했다"
           },
           {
             "id": "pilgrims_were_devoured",
-            "text": "the pilgrims were devoured."
+            "text": "순례자들이 집어삼켜졌다"
           },
           {
             "id": "pilgrims_were_saved",
-            "text": "the pilgrims were saved."
+            "text": "순례자들을 구해냈다"
           },
           {
             "id": "ruby_lost_the_bet",
-            "text": "Ruby lost the bet."
+            "text": "루비가 내기에서 졌다"
           },
           {
             "id": "ruby_won_the_bet",
-            "text": "Ruby won the bet."
+            "text": "루비가 내기에서 이겼다"
           },
           {
             "id": "stood_together",
-            "text": "the investigators stood together."
+            "text": "조사자들이 함께 맞섰다"
           },
           {
             "id": "the_creature_was_defeated",
@@ -5779,15 +5779,15 @@
           },
           {
             "id": "the_inner_sanctum_was_unsealed",
-            "text": "the inner sanctum was unsealed."
+            "text": "지성소의 봉인이 풀렸다"
           },
           {
             "id": "the_power_was_diverted",
-            "text": "the power was diverted."
+            "text": "동력을 우회시켰다"
           },
           {
             "id": "your_allies_have_a_plan",
-            "text": "your allies have a plan."
+            "text": "동료들이 계획을 세웠다"
           }
         ]
       },
@@ -5820,7 +5820,7 @@
           },
           {
             "id": "st_marys_hospital",
-            "text": "St. Mary's Hospital"
+            "text": "세인트 메리 병원"
           }
         ]
       },
@@ -5833,7 +5833,7 @@
           },
           {
             "id": "tdc_rune_s",
-            "text": "Machine"
+            "text": "기계"
           }
         ]
       },
@@ -5842,15 +5842,15 @@
         "entries": [
           {
             "id": "tdc_good_money_no_upkeep",
-            "masculine_text": "#name# cannot gain resources during the upkeep phase.",
-            "feminine_text": "#name# cannot gain resources during the upkeep phase.",
-            "nonbinary_text": "#name# cannot gain resources during the upkeep phase."
+            "masculine_text": "#name# 조사자는 정리 단계 동안 자원을 획득할 수 없습니다.",
+            "feminine_text": "#name# 조사자는 정리 단계 동안 자원을 획득할 수 없습니다.",
+            "nonbinary_text": "#name# 조사자는 정리 단계 동안 자원을 획득할 수 없습니다."
           },
           {
             "id": "tdc_good_money_extra_resources",
-            "masculine_text": "#name# starts with 3 additional resources.",
-            "feminine_text": "#name# starts with 3 additional resources.",
-            "nonbinary_text": "#name# starts with 3 additional resources."
+            "masculine_text": "#name# 조사자는 추가로 자원을 3개 더 갖고 게임을 시작합니다.",
+            "feminine_text": "#name# 조사자는 추가로 자원을 3개 더 갖고 게임을 시작합니다.",
+            "nonbinary_text": "#name# 조사자는 추가로 자원을 3개 더 갖고 게임을 시작합니다."
           },
           {
             "id": "kept_barrier_node",
@@ -5935,31 +5935,31 @@
         "entries": [
           {
             "id": "court_of_the_ancients",
-            "text": "Court of the Ancients"
+            "text": "고대 존재의 전당"
           },
           {
             "id": "obsidian_canyons",
-            "text": "Obsidian Canyons"
+            "text": "흑요석 협곡"
           },
           {
             "id": "sepulchre_of_the_sleeper",
-            "text": "Sepulchre of the Sleeper"
+            "text": "잠든 자의 묘소"
           },
           {
             "id": "the_apiary",
-            "text": "The Apiary"
+            "text": "양육장"
           },
           {
             "id": "the_drowned_quarter",
-            "text": "The Drowned Quarter"
+            "text": "수몰지"
           },
           {
             "id": "the_grand_vault",
-            "text": "The Grand Vault"
+            "text": "심부 제어구"
           },
           {
             "id": "the_western_wall",
-            "text": "The Western Wall"
+            "text": "서부 장벽"
           }
         ]
       }

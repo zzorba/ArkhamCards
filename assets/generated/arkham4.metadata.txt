@@ -1,13 +1,13 @@
 {
-  "schemaVersion": 53,
+  "schemaVersion": 55,
   "cache": {
-    "lastAttemptedSync": "2026-04-13T11:56:11.437Z",
+    "lastAttemptedSync": "2026-04-21T12:35:22.582Z",
     "cardCount": 8269,
-    "lastModified": "2026-04-12T19:46:19.024084",
+    "lastModified": "2026-04-18T12:29:28.795824",
     "lastModifiedTranslation": "2026-04-12T19:46:19.466909"
   },
   "cardLang": "en",
-  "exportedAt": "2026-04-13T11:56:50.753Z",
+  "exportedAt": "2026-04-21T12:35:43.447Z",
   "packs": [
     {
       "id": "core",
@@ -18,7 +18,8 @@
       "cycle_code": "core",
       "cycle_name": "Core",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "rcore",
@@ -29,7 +30,8 @@
       "cycle_code": "core",
       "cycle_name": "Core",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "core_2026",
@@ -40,7 +42,8 @@
       "cycle_code": "core",
       "cycle_name": "Core",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 2
     },
     {
       "id": "dwl",
@@ -51,7 +54,8 @@
       "cycle_code": "dwl",
       "cycle_name": "The Dunwich Legacy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "dwlp",
@@ -63,7 +67,8 @@
       "cycle_name": "The Dunwich Legacy",
       "known": 0,
       "total": 0,
-      "reprint": true
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "dwlc",
@@ -75,7 +80,8 @@
       "cycle_name": "The Dunwich Legacy",
       "known": 0,
       "total": 0,
-      "reprint": true
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "tmm",
@@ -86,7 +92,8 @@
       "cycle_code": "dwl",
       "cycle_name": "The Dunwich Legacy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tece",
@@ -97,7 +104,8 @@
       "cycle_code": "dwl",
       "cycle_name": "The Dunwich Legacy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "bota",
@@ -108,7 +116,8 @@
       "cycle_code": "dwl",
       "cycle_name": "The Dunwich Legacy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "uau",
@@ -119,7 +128,8 @@
       "cycle_code": "dwl",
       "cycle_name": "The Dunwich Legacy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "wda",
@@ -130,7 +140,8 @@
       "cycle_code": "dwl",
       "cycle_name": "The Dunwich Legacy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "litas",
@@ -141,7 +152,8 @@
       "cycle_code": "dwl",
       "cycle_name": "The Dunwich Legacy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "ptcp",
@@ -153,7 +165,8 @@
       "cycle_name": "The Path to Carcosa",
       "known": 0,
       "total": 0,
-      "reprint": true
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "ptc",
@@ -164,7 +177,8 @@
       "cycle_code": "ptc",
       "cycle_name": "The Path to Carcosa",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "eotp",
@@ -175,7 +189,8 @@
       "cycle_code": "ptc",
       "cycle_name": "The Path to Carcosa",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "ptcc",
@@ -187,7 +202,8 @@
       "cycle_name": "The Path to Carcosa",
       "known": 0,
       "total": 0,
-      "reprint": true
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "tuo",
@@ -198,7 +214,8 @@
       "cycle_code": "ptc",
       "cycle_name": "The Path to Carcosa",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "apot",
@@ -209,7 +226,8 @@
       "cycle_code": "ptc",
       "cycle_name": "The Path to Carcosa",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tpm",
@@ -220,7 +238,8 @@
       "cycle_code": "ptc",
       "cycle_name": "The Path to Carcosa",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "bsr",
@@ -231,7 +250,8 @@
       "cycle_code": "ptc",
       "cycle_name": "The Path to Carcosa",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "dca",
@@ -242,7 +262,8 @@
       "cycle_code": "ptc",
       "cycle_name": "The Path to Carcosa",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tfap",
@@ -254,7 +275,8 @@
       "cycle_name": "The Forgotten Age",
       "known": 0,
       "total": 0,
-      "reprint": true
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "tfa",
@@ -265,7 +287,8 @@
       "cycle_code": "tfa",
       "cycle_name": "The Forgotten Age",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tfac",
@@ -277,7 +300,8 @@
       "cycle_name": "The Forgotten Age",
       "known": 0,
       "total": 0,
-      "reprint": true
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "tof",
@@ -288,7 +312,8 @@
       "cycle_code": "tfa",
       "cycle_name": "The Forgotten Age",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tbb",
@@ -299,7 +324,8 @@
       "cycle_code": "tfa",
       "cycle_name": "The Forgotten Age",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "hote",
@@ -310,7 +336,8 @@
       "cycle_code": "tfa",
       "cycle_name": "The Forgotten Age",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tcoa",
@@ -321,7 +348,8 @@
       "cycle_code": "tfa",
       "cycle_name": "The Forgotten Age",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tdoy",
@@ -332,7 +360,8 @@
       "cycle_code": "tfa",
       "cycle_name": "The Forgotten Age",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "sha",
@@ -343,7 +372,20 @@
       "cycle_code": "tfa",
       "cycle_name": "The Forgotten Age",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
+    },
+    {
+      "id": "tcu",
+      "code": "tcu",
+      "name": "The Circle Undone",
+      "position": 1,
+      "cycle_position": 5,
+      "cycle_code": "tcu",
+      "cycle_name": "The Circle Undone",
+      "known": 0,
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tcup",
@@ -355,18 +397,8 @@
       "cycle_name": "The Circle Undone",
       "known": 0,
       "total": 0,
-      "reprint": true
-    },
-    {
-      "id": "tcu",
-      "code": "tcu",
-      "name": "The Circle Undone",
-      "position": 1,
-      "cycle_position": 5,
-      "cycle_code": "tcu",
-      "cycle_name": "The Circle Undone",
-      "known": 0,
-      "total": 0
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "tcuc",
@@ -378,7 +410,8 @@
       "cycle_name": "The Circle Undone",
       "known": 0,
       "total": 0,
-      "reprint": true
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "tsn",
@@ -389,7 +422,8 @@
       "cycle_code": "tcu",
       "cycle_name": "The Circle Undone",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "wos",
@@ -400,7 +434,8 @@
       "cycle_code": "tcu",
       "cycle_name": "The Circle Undone",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "fgg",
@@ -411,7 +446,8 @@
       "cycle_code": "tcu",
       "cycle_name": "The Circle Undone",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "uad",
@@ -422,7 +458,8 @@
       "cycle_code": "tcu",
       "cycle_name": "The Circle Undone",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "icc",
@@ -433,7 +470,8 @@
       "cycle_code": "tcu",
       "cycle_name": "The Circle Undone",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "bbt",
@@ -444,7 +482,8 @@
       "cycle_code": "tcu",
       "cycle_name": "The Circle Undone",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tde",
@@ -455,7 +494,8 @@
       "cycle_code": "tde",
       "cycle_name": "The Dream-Eaters",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tdep",
@@ -467,7 +507,8 @@
       "cycle_name": "The Dream-Eaters",
       "known": 0,
       "total": 0,
-      "reprint": true
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "tdec",
@@ -479,7 +520,8 @@
       "cycle_name": "The Dream-Eaters",
       "known": 0,
       "total": 0,
-      "reprint": true
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "sfk",
@@ -490,7 +532,8 @@
       "cycle_code": "tde",
       "cycle_name": "The Dream-Eaters",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tsh",
@@ -501,7 +544,8 @@
       "cycle_code": "tde",
       "cycle_name": "The Dream-Eaters",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "dsm",
@@ -512,7 +556,8 @@
       "cycle_code": "tde",
       "cycle_name": "The Dream-Eaters",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "pnr",
@@ -523,7 +568,8 @@
       "cycle_code": "tde",
       "cycle_name": "The Dream-Eaters",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "wgd",
@@ -534,7 +580,8 @@
       "cycle_code": "tde",
       "cycle_name": "The Dream-Eaters",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "woc",
@@ -545,18 +592,8 @@
       "cycle_code": "tde",
       "cycle_name": "The Dream-Eaters",
       "known": 0,
-      "total": 0
-    },
-    {
-      "id": "tic",
-      "code": "tic",
-      "name": "The Innsmouth Conspiracy",
-      "position": 1,
-      "cycle_position": 7,
-      "cycle_code": "tic",
-      "cycle_name": "The Innsmouth Conspiracy",
-      "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "ticp",
@@ -568,7 +605,32 @@
       "cycle_name": "The Innsmouth Conspiracy",
       "known": 0,
       "total": 0,
-      "reprint": true
+      "reprint": true,
+      "chapter": 1
+    },
+    {
+      "id": "tic",
+      "code": "tic",
+      "name": "The Innsmouth Conspiracy",
+      "position": 1,
+      "cycle_position": 7,
+      "cycle_code": "tic",
+      "cycle_name": "The Innsmouth Conspiracy",
+      "known": 0,
+      "total": 0,
+      "chapter": 1
+    },
+    {
+      "id": "itd",
+      "code": "itd",
+      "name": "In Too Deep",
+      "position": 2,
+      "cycle_position": 7,
+      "cycle_code": "tic",
+      "cycle_name": "The Innsmouth Conspiracy",
+      "known": 0,
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "ticc",
@@ -580,18 +642,8 @@
       "cycle_name": "The Innsmouth Conspiracy",
       "known": 0,
       "total": 0,
-      "reprint": true
-    },
-    {
-      "id": "itd",
-      "code": "itd",
-      "name": "In Too Deep",
-      "position": 2,
-      "cycle_position": 7,
-      "cycle_code": "tic",
-      "cycle_name": "The Innsmouth Conspiracy",
-      "known": 0,
-      "total": 0
+      "reprint": true,
+      "chapter": 1
     },
     {
       "id": "def",
@@ -602,7 +654,8 @@
       "cycle_code": "tic",
       "cycle_name": "The Innsmouth Conspiracy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "hhg",
@@ -613,7 +666,8 @@
       "cycle_code": "tic",
       "cycle_name": "The Innsmouth Conspiracy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "lif",
@@ -624,7 +678,8 @@
       "cycle_code": "tic",
       "cycle_name": "The Innsmouth Conspiracy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "lod",
@@ -635,7 +690,8 @@
       "cycle_code": "tic",
       "cycle_name": "The Innsmouth Conspiracy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "itm",
@@ -646,7 +702,8 @@
       "cycle_code": "tic",
       "cycle_name": "The Innsmouth Conspiracy",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "eoep",
@@ -657,7 +714,8 @@
       "cycle_code": "eoe",
       "cycle_name": "Edge of the Earth",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "eoec",
@@ -668,7 +726,8 @@
       "cycle_code": "eoe",
       "cycle_name": "Edge of the Earth",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tskp",
@@ -679,7 +738,8 @@
       "cycle_code": "tsk",
       "cycle_name": "The Scarlet Keys",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tskc",
@@ -690,7 +750,8 @@
       "cycle_code": "tsk",
       "cycle_name": "The Scarlet Keys",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "fhvp",
@@ -701,7 +762,8 @@
       "cycle_code": "fhv",
       "cycle_name": "The Feast of Hemlock Vale",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "fhvc",
@@ -712,7 +774,8 @@
       "cycle_code": "fhv",
       "cycle_name": "The Feast of Hemlock Vale",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tdcp",
@@ -723,7 +786,8 @@
       "cycle_code": "tdc",
       "cycle_name": "The Drowned City",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tdcc",
@@ -734,7 +798,8 @@
       "cycle_code": "tdc",
       "cycle_name": "The Drowned City",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "rtnotz",
@@ -745,7 +810,8 @@
       "cycle_code": "return",
       "cycle_name": "Return to...",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "rtdwl",
@@ -756,7 +822,8 @@
       "cycle_code": "return",
       "cycle_name": "Return to...",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "rtptc",
@@ -767,7 +834,8 @@
       "cycle_code": "return",
       "cycle_name": "Return to...",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "rttfa",
@@ -778,7 +846,8 @@
       "cycle_code": "return",
       "cycle_name": "Return to...",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "rttcu",
@@ -789,7 +858,8 @@
       "cycle_code": "return",
       "cycle_name": "Return to...",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "nat",
@@ -800,7 +870,8 @@
       "cycle_code": "investigator",
       "cycle_name": "Investigator Starter Decks",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "har",
@@ -811,7 +882,8 @@
       "cycle_code": "investigator",
       "cycle_name": "Investigator Starter Decks",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "win",
@@ -822,7 +894,8 @@
       "cycle_code": "investigator",
       "cycle_name": "Investigator Starter Decks",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "jac",
@@ -833,7 +906,8 @@
       "cycle_code": "investigator",
       "cycle_name": "Investigator Starter Decks",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "ste",
@@ -844,7 +918,8 @@
       "cycle_code": "investigator",
       "cycle_name": "Investigator Starter Decks",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tom",
@@ -855,7 +930,8 @@
       "cycle_code": "investigator_decks_ch2",
       "cycle_name": "Investigator Decks",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 2
     },
     {
       "id": "car",
@@ -866,7 +942,8 @@
       "cycle_code": "investigator_decks_ch2",
       "cycle_name": "Investigator Decks",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 2
     },
     {
       "id": "and",
@@ -877,7 +954,8 @@
       "cycle_code": "investigator_decks_ch2",
       "cycle_name": "Investigator Decks",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 2
     },
     {
       "id": "mar",
@@ -888,7 +966,8 @@
       "cycle_code": "investigator_decks_ch2",
       "cycle_name": "Investigator Decks",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 2
     },
     {
       "id": "mig",
@@ -899,7 +978,8 @@
       "cycle_code": "investigator_decks_ch2",
       "cycle_name": "Investigator Decks",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 2
     },
     {
       "id": "cotr",
@@ -910,7 +990,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "coh",
@@ -921,7 +1002,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "lol",
@@ -932,7 +1014,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "guardians",
@@ -943,7 +1026,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "hotel",
@@ -954,7 +1038,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "blob",
@@ -965,7 +1050,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "wog",
@@ -976,7 +1062,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "mtt",
@@ -987,7 +1074,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "fof",
@@ -998,7 +1086,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "blbe",
@@ -1009,7 +1098,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tmg",
@@ -1020,7 +1110,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "film_fatale",
@@ -1031,7 +1122,8 @@
       "cycle_code": "side_stories",
       "cycle_name": "Side Stories",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "hoth",
@@ -1042,7 +1134,8 @@
       "cycle_code": "promotional",
       "cycle_name": "Promotional",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "books",
@@ -1053,7 +1146,8 @@
       "cycle_code": "promotional",
       "cycle_name": "Promotional",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tdor",
@@ -1064,7 +1158,8 @@
       "cycle_code": "promotional",
       "cycle_name": "Promotional",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "iotv",
@@ -1075,7 +1170,8 @@
       "cycle_code": "promotional",
       "cycle_name": "Promotional",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tdg",
@@ -1086,7 +1182,8 @@
       "cycle_code": "promotional",
       "cycle_name": "Promotional",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "tftbw",
@@ -1097,7 +1194,8 @@
       "cycle_code": "promotional",
       "cycle_name": "Promotional",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "bob",
@@ -1108,7 +1206,8 @@
       "cycle_code": "promotional",
       "cycle_name": "Promotional",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "dre",
@@ -1119,7 +1218,8 @@
       "cycle_code": "promotional",
       "cycle_name": "Promotional",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "promo",
@@ -1130,7 +1230,8 @@
       "cycle_code": "promotional",
       "cycle_name": "Promotional",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "rod",
@@ -1141,7 +1242,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "aon",
@@ -1152,7 +1254,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "bad",
@@ -1163,7 +1266,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "btb",
@@ -1174,7 +1278,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "rtr",
@@ -1185,7 +1290,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "otr",
@@ -1196,7 +1302,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "ltr",
@@ -1207,7 +1314,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "ptr",
@@ -1218,7 +1326,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "rop",
@@ -1229,7 +1338,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "hfa",
@@ -1240,7 +1350,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "pap",
@@ -1251,7 +1362,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "enc",
@@ -1262,7 +1374,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     },
     {
       "id": "aof",
@@ -1273,7 +1386,8 @@
       "cycle_code": "parallel",
       "cycle_name": "Parallel",
       "known": 0,
-      "total": 0
+      "total": 0,
+      "chapter": 1
     }
   ],
   "packsLastModified": null

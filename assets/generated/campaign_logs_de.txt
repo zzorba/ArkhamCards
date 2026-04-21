@@ -4019,13 +4019,6 @@
     ],
     "supplies": [
       {
-        "id": "sticky_goop",
-        "name": "Klebrige Substanz",
-        "description": "A sticky goop you found in a subterranean swamp.",
-        "cost": 0,
-        "multiple": false
-      },
-      {
         "id": "key_of_eztli",
         "name": "Schlüssel der Eztli",
         "description": "Der Schlüssel der Eztli.",
@@ -4036,6 +4029,13 @@
         "id": "mysterious_scepter",
         "name": "Mysteriöses Zepter",
         "description": "Ein Mysteriöses Zepter, das im Thronsaal gefunden wurde.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "sticky_goop",
+        "name": "Klebrige Substanz",
+        "description": "Eine klebrige Substanz gefunden in einem unterirdischen Sumpf.",
         "cost": 0,
         "multiple": false
       },
@@ -4885,7 +4885,7 @@
           },
           {
             "id": "zez_all_is_quiet",
-            "text": "all is quiet at Rue d'Auseil… for now."
+            "text": "in der Rue d'Auseil ist alles ruhig... erstmal."
           },
           {
             "id": "zhu_avenged_the_house_of_usher",
@@ -7926,7 +7926,7 @@
           },
           {
             "id": "controlled_the_snark",
-            "text": "the investigators controlled the Snark."
+            "text": "die Ermittler haben den Schlarg unter Kontrolle gebracht."
           },
           {
             "id": "gurathnaka_and_its_shadows_consumed_the_earth",
@@ -7938,35 +7938,35 @@
           },
           {
             "id": "hare_and_hatter_enjoyed_your_company",
-            "text": "the Hare and  Hatter thoroughly enjoyed your company."
+            "text": "der Märzhase und der Hutmacher haben deine Gesellschaft sehr genossen."
           },
           {
             "id": "hare_and_hatter_were_cast_into_the_shadows",
-            "text": "the Hare and the Hatter were cast into the shadows."
+            "text": "der Märzhase und der Hutmacher wurden in die Schatten gestoßen."
           },
           {
             "id": "hare_couldnt_cope_with_hatters_death",
-            "text": "the Hare couldn't cope with the Hatter's death."
+            "text": "der Märzhase konnte den Tod des Hutmachers nicht verkraften."
           },
           {
             "id": "hare_hatter_and_dormouse_were_consumed_by_shadows",
-            "text": "the Hare, Hatter, and Dormouse were consumed by shadows."
+            "text": "Märzhase, Hutmacher und die Haselmaus wurden von Schatten verschlungen."
           },
           {
             "id": "hatter_couldnt_cope_with_hares_death",
-            "text": "the Hatter couldn't cope with the Hare's death."
+            "text": "der Hutmacher konnte den Tod des Märzhasen nicht verkraften."
           },
           {
             "id": "intimidated_the_snark",
-            "text": "the investigators intimidated the Snark."
+            "text": "die Ermittler haben den Schlarg eingeschüchtert."
           },
           {
             "id": "intrigued_the_snark",
-            "text": "the investigators intrigued the Snark."
+            "text": "die Ermittler haben den Schlarg fasziniert."
           },
           {
             "id": "jabberwock_still_haunts_the_tulgey_wood",
-            "text": "the Jabberwock still haunts the Tulgey Wood."
+            "text": "der Schebberoch sucht den Tulgen Wald noch immer heim."
           },
           {
             "id": "one_of_the_tweedles_learned_about_the_cost_of_war",
@@ -7974,15 +7974,15 @@
           },
           {
             "id": "puzzled_the_snark",
-            "text": "the investigators puzzled the Snark."
+            "text": "die Ermittler haben den Schlarg verblüfft."
           },
           {
             "id": "queen_destroyed_the_shadows_in_a_fit_of_rage",
-            "text": "the Queen destroyed the shadows in a fit of rage."
+            "text": "die Königin hat in einem Wutanfall die Schatten vernichtet."
           },
           {
             "id": "queens_castle_was_consumed_by_shadows",
-            "text": "the Queen's castle was consumed by shadows."
+            "text": "das Schloss der Königin wurde von Schatten verschlungen."
           },
           {
             "id": "separated_alices_dreams_from_the_real_world",
@@ -7990,27 +7990,27 @@
           },
           {
             "id": "shadows_grow_stronger_with_each_passing_moment",
-            "text": "the shadows grow stronger with each passing moment."
+            "text": "die Schatten werden mit jedem Augenblick stärker."
           },
           {
             "id": "shadows_maintain_their_grip_on_alices_dreams",
-            "text": "the shadows maintain their grip on Alice's dreams."
+            "text": "die Schatten halten Alices Träume weiterhin in ihrem Griff."
           },
           {
             "id": "shadows_weakened_by_wonderlands_instability",
-            "text": "the shadows have been weakened by Wonderland's instability."
+            "text": "die Schatten wurden durch die Instabilität des Wunderlands geschwächt."
           },
           {
             "id": "snark_and_its_hunters_were_never_met_with_again",
-            "text": "the Snark and its hunters were never met with again."
+            "text": "dem Schlarg und seinen Jägern ist man nie wieder begegnet."
           },
           {
             "id": "took_the_jabberwocks_head",
-            "text": "the investigators took the Jabberwock's head."
+            "text": "die Ermittler nahmen den Kopf des Schebberochs an sich."
           },
           {
             "id": "tricked_the_snark",
-            "text": "the investigators tricked the Snark."
+            "text": "die Ermittler haben den Schlarg ausgetrickst."
           },
           {
             "id": "tweedles_learned_that_there_are_worse_things_than_fighting_each_other",
@@ -8026,23 +8026,23 @@
           },
           {
             "id": "walrus_and_carpenter_ate_their_last_meal",
-            "text": "the Walrus and the Carpenter ate their last meal."
+            "text": "das Walross und der Zimmermann haben ihre letzte Mahlzeit gegessen."
           },
           {
             "id": "walrus_and_carpenter_have_lost_their_appetites",
-            "text": "the Walrus and the Carpenter have lost their appetites."
+            "text": "das Walross und der Zimmermann haben den Appetit verloren."
           },
           {
             "id": "walrus_and_carpenter_were_completely_obliterated",
-            "text": "the Walrus and the Carpenter were completely obliterated."
+            "text": "das Walross und der Zimmermann wurden vollständig ausgelöscht."
           },
           {
             "id": "went_down_the_rabbit_hole",
-            "text": "the investigators went down the rabbit hole."
+            "text": "die Ermittler stiegen in den Kaninchenbau hinab."
           },
           {
             "id": "went_through_the_looking_glass",
-            "text": "the investigators went through the looking glass."
+            "text": "die Ermittler gingen durch den Spiegel."
           },
           {
             "id": "white_king_celebrates_a_grand_victory",
@@ -8062,11 +8062,11 @@
           },
           {
             "id": "white_rabbit_consumed_by_shadows",
-            "text": "the White Rabbit was consumed by shadows."
+            "text": "das Weiße Kaninchen wurde von Schatten verschlungen."
           },
           {
             "id": "white_rabbit_survived_the_monsters_attack",
-            "text": "the White Rabbit survived the monster's attack."
+            "text": "das Weiße Kaninchen hat den Angriff des Ungeheuers überlebt."
           }
         ]
       },
@@ -8075,11 +8075,11 @@
         "entries": [
           {
             "id": "compassion",
-            "text": "Compassion"
+            "text": "Mitgefühl"
           },
           {
             "id": "courage",
-            "text": "Courage"
+            "text": "Mut"
           },
           {
             "id": "curiosity",
@@ -8091,7 +8091,7 @@
           },
           {
             "id": "patience",
-            "text": "Patience"
+            "text": "Geduld"
           },
           {
             "id": "reason",
@@ -8121,7 +8121,7 @@
         "entries": [
           {
             "id": "gryphon_and_mock_turtle",
-            "text": "The Gryphon and the Mock Turtle"
+            "text": "Der Greif und der Schildkrötensupperich"
           },
           {
             "id": "humpty_dumpty",
@@ -8133,15 +8133,15 @@
           },
           {
             "id": "the_caterpillar",
-            "text": "The Caterpillar"
+            "text": "Das Raupentier"
           },
           {
             "id": "the_dodo",
-            "text": "The Dodo"
+            "text": "Der Dodo"
           },
           {
             "id": "the_duchess",
-            "text": "The Duchess"
+            "text": "Die Herzogin"
           },
           {
             "id": "the_white_queen",
@@ -8154,7 +8154,7 @@
         "entries": [
           {
             "id": "gryphon_and_mock_turtle",
-            "text": "The Gryphon and the Mock Turtle"
+            "text": "Der Greif und der Schildkrötensupperich"
           },
           {
             "id": "humpty_dumpty",
@@ -8166,15 +8166,15 @@
           },
           {
             "id": "the_caterpillar",
-            "text": "The Caterpillar"
+            "text": "Das Raupentier"
           },
           {
             "id": "the_dodo",
-            "text": "The Dodo"
+            "text": "Der Dodo"
           },
           {
             "id": "the_duchess",
-            "text": "The Duchess"
+            "text": "Die Herzogin"
           },
           {
             "id": "the_white_queen",

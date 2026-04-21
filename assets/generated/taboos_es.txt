@@ -548,15 +548,15 @@
       },
       {
         "code": "02029",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados."
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados."
       },
       {
         "code": "02269",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados."
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados."
       },
       {
         "code": "60416",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados."
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados."
       },
       {
         "code": "02263",
@@ -807,12 +807,12 @@
       {
         "code": "07269",
         "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
-        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
       },
       {
         "code": "07301",
         "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
-        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
       },
       {
         "code": "08019",
@@ -898,27 +898,27 @@
       },
       {
         "code": "02029",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba que estés realizando: Recibes +1 al valor de la habilidad para esta prueba."
       },
       {
         "code": "02153",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
       },
       {
         "code": "02269",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba de habilidad en tu Lugar, agota la Joya de Aureolus: Roba 1 carta u obtén 2 recursos."
       },
       {
         "code": "60416",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\nObtén 1 recurso. Revela 3 fichas aleatorias de la bolsa de caos. Por cada símbolo revelado, obtén 2 recursos adicionales."
       },
       {
         "code": "05113",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n<b>Evitar</b>. Usa esta capacidad sólo contra un Enemigo que no sea [[Élite]]. Este intento de evitar usa [willpower] en lugar de [agility]. Si tienes éxito, mueve el Enemigo que acabas de evitar a cualquier Lugar en juego. Si tienes éxito y fue revelado un símbolo durante este intento de evitar, ese Enemigo no se prepara durante la siguiente fase de Mantenimiento."
       },
       {
@@ -1008,7 +1008,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
-        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
       },
       {
         "code": "08045",
@@ -1261,12 +1261,12 @@
       {
         "code": "07269",
         "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
-        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
       },
       {
         "code": "07301",
         "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
-        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
       },
       {
         "code": "08019",
@@ -1352,37 +1352,37 @@
       },
       {
         "code": "02029",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba que estés realizando: Recibes +1 al valor de la habilidad para esta prueba."
       },
       {
         "code": "02153",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
       },
       {
         "code": "60414",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
       },
       {
         "code": "60423",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige al Enemigo atacante una cantidad de daño igual a su daño u horror."
       },
       {
         "code": "02269",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba de habilidad en tu Lugar, agota la Joya de Aureolus: Roba 1 carta u obtén 2 recursos."
       },
       {
         "code": "60416",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\nObtén 1 recurso. Revela 3 fichas aleatorias de la bolsa de caos. Por cada símbolo revelado, obtén 2 recursos adicionales."
       },
       {
         "code": "05113",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n<b>Evitar</b>. Usa esta capacidad sólo contra un Enemigo que no sea [[Élite]]. Este intento de evitar usa [willpower] en lugar de [agility]. Si tienes éxito, mueve el Enemigo que acabas de evitar a cualquier Lugar en juego. Si tienes éxito y fue revelado un símbolo durante este intento de evitar, ese Enemigo no se prepara durante la siguiente fase de Mantenimiento."
       },
       {
@@ -1477,7 +1477,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
-        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
       },
       {
         "code": "08045",
@@ -1742,12 +1742,12 @@
       {
         "code": "07269",
         "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
-        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
       },
       {
         "code": "07301",
         "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
-        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
       },
       {
         "code": "08019",
@@ -1833,37 +1833,37 @@
       },
       {
         "code": "02029",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba que estés realizando: Recibes +1 al valor de la habilidad para esta prueba."
       },
       {
         "code": "02153",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
       },
       {
         "code": "60414",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
       },
       {
         "code": "60423",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige al Enemigo atacante una cantidad de daño igual a su daño u horror."
       },
       {
         "code": "02269",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba de habilidad en tu Lugar, agota la Joya de Aureolus: Roba 1 carta u obtén 2 recursos."
       },
       {
         "code": "60416",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\nObtén 1 recurso. Revela 3 fichas aleatorias de la bolsa de caos. Por cada símbolo revelado, obtén 2 recursos adicionales."
       },
       {
         "code": "05113",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n<b>Evitar</b>. Usa esta capacidad sólo contra un Enemigo que no sea [[Élite]]. Este intento de evitar usa [willpower] en lugar de [agility]. Si tienes éxito, mueve el Enemigo que acabas de evitar a cualquier Lugar en juego. Si tienes éxito y fue revelado un símbolo durante este intento de evitar, ese Enemigo no se prepara durante la siguiente fase de Mantenimiento."
       },
       {
@@ -1958,7 +1958,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
-        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
       },
       {
         "code": "08045",
@@ -1988,7 +1988,7 @@
       {
         "code": "08113",
         "text": "Al principio de su capacidad, esta carta obtiene: “Sólo para el modo de campaña”.",
-        "replacement_text": "Sólo para el modo de campaña. Límite de 1 por investigador. No puede abandonar el juego.\n[reaction] Después de que juegues el Préstamo sin escrúpulos: Obtén 10 recursos.\n<b>Obligado</b> - Cuando acabe la partida o seas eliminado, si tienes menos de 10 recursos en tu reserva de recursos: Exilia el Préstamo sin escrúpulos."
+        "replacement_text": "Sólo para el modo de campaña. Límite de 1 por investigador. No puede abandonar el juego.\n[reaction] Después de que juegues el Préstamo sin escrúpulos: Obtén 10 recursos.\n<b>Obligado</b> – Cuando acabe la partida o seas eliminado, si tienes menos de 10 recursos en tu reserva de recursos: Exilia el Préstamo sin escrúpulos."
       },
       {
         "code": "08093",
@@ -2050,7 +2050,7 @@
       {
         "code": "09041",
         "text": "La capacidad [fast] de esta carta obtiene: \"Límite de 2 veces por ronda.\"",
-        "replacement_text": "Personalizable. Límite 1 por investigador.\n<b>Obligado</b> - Al comienzo de la ronda: Elige uno de los siguientes criterios para esta ronda:\n- Fracasas en una prueba por 2 o más.\n- Tienes éxito en una prueba por 3 o más.\nCuando se cumpla el criterio escogido, puedes agotar la Hipótesis empírica para añadirle una prueba.\n[fast] Gasta 1 prueba: Roba 1 carta. Límite de 2 veces por ronda."
+        "replacement_text": "Personalizable. Límite 1 por investigador.\n<b>Obligado</b> – Al comienzo de la ronda: Elige uno de los siguientes criterios para esta ronda:\n- Fracasas en una prueba por 2 o más.\n- Tienes éxito en una prueba por 3 o más.\nCuando se cumpla el criterio escogido, puedes agotar la Hipótesis empírica para añadirle una prueba.\n[fast] Gasta 1 prueba: Roba 1 carta. Límite de 2 veces por ronda."
       }
     ]
   },
@@ -2263,12 +2263,12 @@
       {
         "code": "07269",
         "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
-        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
       },
       {
         "code": "07301",
         "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
-        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
       },
       {
         "code": "08019",
@@ -2359,37 +2359,37 @@
       },
       {
         "code": "02029",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba que estés realizando: Recibes +1 al valor de la habilidad para esta prueba."
       },
       {
         "code": "02153",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
       },
       {
         "code": "60414",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
       },
       {
         "code": "60423",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige al Enemigo atacante una cantidad de daño igual a su daño u horror."
       },
       {
         "code": "02269",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba de habilidad en tu Lugar, agota la Joya de Aureolus: Roba 1 carta u obtén 2 recursos."
       },
       {
         "code": "60416",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\nObtén 1 recurso. Revela 3 fichas aleatorias de la bolsa de caos. Por cada símbolo revelado, obtén 2 recursos adicionales."
       },
       {
         "code": "05113",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n<b>Evitar</b>. Usa esta capacidad sólo contra un Enemigo que no sea [[Élite]]. Este intento de evitar usa [willpower] en lugar de [agility]. Si tienes éxito, mueve el Enemigo que acabas de evitar a cualquier Lugar en juego. Si tienes éxito y fue revelado un símbolo durante este intento de evitar, ese Enemigo no se prepara durante la siguiente fase de Mantenimiento."
       },
       {
@@ -2484,7 +2484,7 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
-        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
       },
       {
         "code": "08045",
@@ -2514,7 +2514,7 @@
       {
         "code": "08113",
         "text": "Al principio de su capacidad, esta carta obtiene: “Sólo para el modo de campaña”.",
-        "replacement_text": "Sólo para el modo de campaña. Límite de 1 por investigador. No puede abandonar el juego.\n[reaction] Después de que juegues el Préstamo sin escrúpulos: Obtén 10 recursos.\n<b>Obligado</b> - Cuando acabe la partida o seas eliminado, si tienes menos de 10 recursos en tu reserva de recursos: Exilia el Préstamo sin escrúpulos."
+        "replacement_text": "Sólo para el modo de campaña. Límite de 1 por investigador. No puede abandonar el juego.\n[reaction] Después de que juegues el Préstamo sin escrúpulos: Obtén 10 recursos.\n<b>Obligado</b> – Cuando acabe la partida o seas eliminado, si tienes menos de 10 recursos en tu reserva de recursos: Exilia el Préstamo sin escrúpulos."
       },
       {
         "code": "08093",
@@ -2569,14 +2569,14 @@
             "position": 1
           }
         ],
-        "customization_change": "- <i>\"Betray.\"</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>\"Confess.\"</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>\"Distract.\"</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
+        "customization_change": "- <i>\"Traiciona\".</i> Inflige 1 punto de daño a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de combate igual o menor que este Enemigo.\n- <i>\"Acobárdate.\"</i> Este Enemigo se agota.\n- <i>\"Confiesa\".</i> Descubre 1 pista en el Lugar de este Enemigo si su salud es igual o mayor que el velo de su Lugar.\n- <i>\"Distrae\".</i> Evita automáticamente a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de evitar igual o menor que este Enemigo.\n[fast]: Devuelve la Palabra de poder a tu mano.\nPuedes activar la capacidad de negociar de la Palabra de poder desde un máximo de un Lugar de distancia del Enemigo vinculado.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar.</b> Realiza una prueba de [willpower] (2). Si tienes éxito, dale hasta dos órdenes distintas (límite de una vez por ronda y por orden) -\nPuedes incluir tres copias de la Palabra de poder en tu mazo. Cuando des una orden usando una copia, dale también esa orden a cada uno de los demás Enemigos que tenga vinculada una de tus copias de la Palabra de poder.",
         "customization_text": "□ <b>Traiciona.</b> Añade la orden: \"- <i>'Traiciona'.</i> Inflige 1 punto de daño a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de combate igual o menor que este Enemigo.\".\n□ <b>Acobárdate.</b> Añade la orden: \"- <i>'Acobárdate.'</i> Este Enemigo se agota.\".\n□ <b>Confiesa.</b> Añade la orden: \"- <i>'Confiesa'.</i> Descubre 1 pista en el Lugar de este Enemigo si su salud es igual o mayor que el velo de su Lugar.\".\n□ <b>Distrae.</b> Añade la orden: \"- <i>'Distrae'.</i> Evita automáticamente a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de evitar igual o menor que este Enemigo.\".\n□□ <b>Mayor control.</b> La Palabra de poder obtiene \"[free]: Devuelve la Palabra de poder a tu mano.\".\n□□□ <b>Atado.</b> Puedes activar la capacidad de negociar de la Palabra de poder desde un máximo de un Lugar de distancia del Enemigo vinculado.\n□□□ <b>Trabalenguas.</b> Cuando negocies con la Palabra de poder, puedes dar hasta dos órdenes distintas.\n□□□ <b> Pronunciada tres veces.</b> Puedes incluir tres copias de la Palabra de poder en tu mazo. Cuando des una orden usando una copia, dale también esa orden a cada uno de los demás Enemigos que tenga vinculada una de tus copias de la Palabra de poder.",
         "replacement_text": "Mutada. Personalizable. Rápido. Juega esta carta sólo durante tu turno.\nVincula esta carta a un Enemigo que no sea [[Élite]] que esté en tu Lugar.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar</b>. Realiza una prueba de [willpower] (2). Si tienes éxito, dale una orden (límite de una vez por ronda y por orden)\n– “Vete”. Este Enemigo se mueve una vez en una dirección de tu elección.\"."
       },
       {
         "code": "09041",
         "text": "La capacidad [fast] de esta carta obtiene: \"Límite de 2 veces por ronda.\"",
-        "replacement_text": "Personalizable. Límite 1 por investigador.\n<b>Obligado</b> - Al comienzo de la ronda: Elige uno de los siguientes criterios para esta ronda:\n- Fracasas en una prueba por 2 o más.\n- Tienes éxito en una prueba por 3 o más.\nCuando se cumpla el criterio escogido, puedes agotar la Hipótesis empírica para añadirle una prueba.\n[fast] Gasta 1 prueba: Roba 1 carta. Límite de 2 veces por ronda."
+        "replacement_text": "Personalizable. Límite 1 por investigador.\n<b>Obligado</b> – Al comienzo de la ronda: Elige uno de los siguientes criterios para esta ronda:\n- Fracasas en una prueba por 2 o más.\n- Tienes éxito en una prueba por 3 o más.\nCuando se cumpla el criterio escogido, puedes agotar la Hipótesis empírica para añadirle una prueba.\n[fast] Gasta 1 prueba: Roba 1 carta. Límite de 2 veces por ronda."
       },
       {
         "code": "10026",
@@ -2767,42 +2767,42 @@
       },
       {
         "code": "02029",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba que estés realizando: Recibes +1 al valor de la habilidad para esta prueba."
       },
       {
         "code": "60405",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba que estés realizando: Recibes +1 al valor de la habilidad para esta prueba."
       },
       {
         "code": "02153",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
       },
       {
         "code": "60414",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige el daño del Enemigo atacante a sí mismo."
       },
       {
         "code": "60423",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada. Rápido. Juega esta carta cuando un Enemigo ataque a un investigador que esté en tu Lugar.\nCancela el ataque. A continuación, revela una ficha aleatoria de la bolsa de caos. Si tiene un símbolo inflige al Enemigo atacante una cantidad de daño igual a su daño u horror."
       },
       {
         "code": "02269",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n[reaction] Después de que sea revelado un símbolo durante una prueba de habilidad en tu Lugar, agota la Joya de Aureolus: Roba 1 carta u obtén 2 recursos."
       },
       {
         "code": "60416",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\nObtén 1 recurso. Revela 3 fichas aleatorias de la bolsa de caos. Por cada símbolo revelado, obtén 2 recursos adicionales."
       },
       {
         "code": "05113",
-        "text": "Esta cartas ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
+        "text": "Esta carta ahora dice \"un símbolo\" en lugar de la lista de símbolos indicados.",
         "replacement_text": "Mutada.\n<b>Evitar</b>. Usa esta capacidad sólo contra un Enemigo que no sea [[Élite]]. Este intento de evitar usa [willpower] en lugar de [agility]. Si tienes éxito, mueve el Enemigo que acabas de evitar a cualquier Lugar en juego. Si tienes éxito y fue revelado un símbolo durante este intento de evitar, ese Enemigo no se prepara durante la siguiente fase de Mantenimiento."
       },
       {
@@ -2919,8 +2919,8 @@
       },
       {
         "code": "05157",
-        "text": "This card now reads “a symbol token” instead of the list of indicated symbols.",
-        "replacement_text": "Mutated.\n[action]: <b>Fight.</b> This attack uses [willpower] instead of [combat]. If a symbol token is revealed during this attack, the attacked enemy gets -1 fight and -1 evade for the remainder of the turn (to a minimum of 1)."
+        "text": "Esta carta ahora dice \"una ficha de símbolo\" en lugar de la lista de símbolos indicados.",
+        "replacement_text": "Mutada.\n[action]: <b>Combatir</b>. Este ataque usa [willpower] en lugar de [combat]. Si se revela una ficha de símbolo durante este ataque, el Enemigo atacado recibe -1 a combate y -1 a evitar durante el resto del turno (hasta un mínimo de 1)."
       },
       {
         "code": "05230",
@@ -2929,8 +2929,8 @@
       },
       {
         "code": "05321",
-        "text": "This card’s [action] ability now reads “...If a symbol token is revealed during this attack, the attacked enemy gets –1 fight, –1 health, and –1 evade until the end of the phase (to a minimum of 1).”",
-        "replacement_text": "Mutated.\n[action]: <b>Fight.</b> This attack uses [willpower] instead of [combat]. You get +2 [willpower] for this attack. If a symbol token is revealed during this attack, the attacked enemy gets -1 fight, -1 health, and -1 evade until the end of the phase (to a minimum of 1)."
+        "text": "La capacidad [action] de esta carta ahora dice: \"...Si se revela una ficha de símbolo durante este ataque, el Enemigo atacado recibe -1 a combate y -1 a evitar durante el resto del turno (hasta un mínimo de 1).\"",
+        "replacement_text": "Mutada.\n[action]: <b>Combatir</b>. Este ataque usa [willpower] en lugar de [combat]. Recibes +2 [willpower] para este ataque. Si se revela una ficha de símbolo durante este ataque, el Enemigo atacado recibe -1 a combate, -1 de salud y -1 a evitar durante el resto del turno (hasta un mínimo de 1)."
       },
       {
         "code": "05324",
@@ -3033,17 +3033,17 @@
         "exceptional": false,
         "deck_limit": 1,
         "text": "Esta carta pierde la palabra clave Excepcional y obtiene \"Límite de 1 por mazo.\".",
-        "replacement_text": "Mutated. Seal (up to X [curse]). Limit 1 per deck.\n[action] Exhaust Flute of the Outer Gods and release 1 [curse] token sealed on it: Choose a non-[[Elite]] enemy at your location. Either move the chosen enemy to a connecting location, or deal its damage to any enemy at its location. This action does not provoke attacks of opportunity."
+        "replacement_text": "Mutada. Sello (hasta X [curse]). Límite de 1 por mazo.\n[action] Agota la Flauta de los Dioses Exteriores y libera 1 ficha [curse] sellada sobre ella: Elige un Enemigo que no sea [[Élite]] y que esté en tu Lugar. Mueve el Enemigo elegido a un Lugar conectado, o bien inflige su daño a cualquier Enemigo que esté en su Lugar. Esta acción no provoca ataques de oportunidad."
       },
       {
         "code": "07269",
         "text": "La capacidad de esta carta obtiene: \"Retira Paz vigilante de la partida.\"",
-        "replacement_text": "Mutated. As an additional cost to play A Watchful Peace, search the chaos bag and/or cards in play for a total of 5 [bless] tokens and return them to the token pool.\nFast. Play when the \"draw encounter cards\" step of the mythos phase would begin.\nSkip this step of the mythos phase. Remove A Watchful Peace from the game."
+        "replacement_text": "Mutada. Como coste adicional para jugar Paz vigilante, busca en la bolsa de caos y/o en cartas en juego un total de 5 fichas [bless] y devuélvelas a la reserva de fichas.\nRápido. Juega esta carta cuando fuese a comenzar el paso de «robar cartas de Encuentro» de la fase de Mitos.\nSáltate este paso de la fase de Mitos. Retira Paz vigilante de la partida."
       },
       {
         "code": "07301",
         "text": "La capacidad de esta carta obtiene: \"Retira Consagrar de la partida.\".",
-        "replacement_text": "Mutated. As an additional cost to play Hallow, return a total of 10 [bless] tokens to the token pool from the chaos bag or sealed on cards in play.\nRemove 1 doom from any card in play. Remove Hallow from the game."
+        "replacement_text": "Mutada. Como coste adicional para jugar Consagrar, devuelve a la reserva de fichas un total de 10 fichas [bless] de la bolsa de caos o selladas sobre cartas en juego.\nRetira 1 ficha de Perdición de cualquier carta en juego. Retira Consagrar de la partida."
       },
       {
         "code": "08019",
@@ -3078,7 +3078,7 @@
       {
         "code": "08113",
         "text": "Al principio de su capacidad, esta carta obtiene: “Sólo para el modo de campaña”.",
-        "replacement_text": "Sólo para el modo de campaña. Límite de 1 por investigador. No puede abandonar el juego.\n[reaction] Después de que juegues el Préstamo sin escrúpulos: Obtén 10 recursos.\n<b>Obligado</b> - Cuando acabe la partida o seas eliminado, si tienes menos de 10 recursos en tu reserva de recursos: Exilia el Préstamo sin escrúpulos."
+        "replacement_text": "Sólo para el modo de campaña. Límite de 1 por investigador. No puede abandonar el juego.\n[reaction] Después de que juegues el Préstamo sin escrúpulos: Obtén 10 recursos.\n<b>Obligado</b> – Cuando acabe la partida o seas eliminado, si tienes menos de 10 recursos en tu reserva de recursos: Exilia el Préstamo sin escrúpulos."
       },
       {
         "code": "08093",
@@ -3088,7 +3088,7 @@
       {
         "code": "09041",
         "text": "La capacidad [fast] de esta carta obtiene: \"Límite de 2 veces por ronda.\"",
-        "replacement_text": "Personalizable. Límite 1 por investigador.\n<b>Obligado</b> - Al comienzo de la ronda: Elige uno de los siguientes criterios para esta ronda:\n- Fracasas en una prueba por 2 o más.\n- Tienes éxito en una prueba por 3 o más.\nCuando se cumpla el criterio escogido, puedes agotar la Hipótesis empírica para añadirle una prueba.\n[fast] Gasta 1 prueba: Roba 1 carta. Límite de 2 veces por ronda."
+        "replacement_text": "Personalizable. Límite 1 por investigador.\n<b>Obligado</b> – Al comienzo de la ronda: Elige uno de los siguientes criterios para esta ronda:\n- Fracasas en una prueba por 2 o más.\n- Tienes éxito en una prueba por 3 o más.\nCuando se cumpla el criterio escogido, puedes agotar la Hipótesis empírica para añadirle una prueba.\n[fast] Gasta 1 prueba: Roba 1 carta. Límite de 2 veces por ronda."
       },
       {
         "code": "09045",
@@ -3138,7 +3138,7 @@
             "position": 1
           }
         ],
-        "customization_change": "- <i>\"Betray.\"</i> Deal 1 damage to any enemy at this enemy's location with an equal or lower fight value than this enemy.\n- <i>\"Cower.\"</i> This enemy exhausts.\n- <i>\"Confess.\"</i> Discover 1 clue at this enemy's location if its health is equal to or higher than its location's shroud.\n- <i>\"Distract.\"</i> Automatically evade any enemy at this enemy's location with an equal or lower evade value than this enemy.\n[fast]: Return Power Word to your hand.\nYou may activate the parley ability on Power Word from up to one location away from the attached enemy.\n[action] If attached enemy is at your location: <b>Parley.</b> Test [willpower](2). If you succeed, give it a command (limit once per round per command) -\nYou may include three copies of Power Word in your deck. When you give a command using one copy, also give that command to each other enemy with one of your copies of Power Word attached.",
+        "customization_change": "- <i>\"Traiciona\".</i> Inflige 1 punto de daño a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de combate igual o menor que este Enemigo.\n- <i>\"Acobárdate.\"</i> Este Enemigo se agota.\n- <i>\"Confiesa\".</i> Descubre 1 pista en el Lugar de este Enemigo si su salud es igual o mayor que el velo de su Lugar.\n- <i>\"Distrae\".</i> Evita automáticamente a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de evitar igual o menor que este Enemigo.\n[fast]: Devuelve la Palabra de poder a tu mano.\nPuedes activar la capacidad de negociar de la Palabra de poder desde un máximo de un Lugar de distancia del Enemigo vinculado.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar.</b> Realiza una prueba de [willpower] (2). Si tienes éxito, dale hasta dos órdenes distintas (límite de una vez por ronda y por orden) -\nPuedes incluir tres copias de la Palabra de poder en tu mazo. Cuando des una orden usando una copia, dale también esa orden a cada uno de los demás Enemigos que tenga vinculada una de tus copias de la Palabra de poder.",
         "customization_text": "□ <b>Traiciona.</b> Añade la orden: \"- <i>'Traiciona'.</i> Inflige 1 punto de daño a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de combate igual o menor que este Enemigo.\".\n□ <b>Acobárdate.</b> Añade la orden: \"- <i>'Acobárdate.'</i> Este Enemigo se agota.\".\n□ <b>Confiesa.</b> Añade la orden: \"- <i>'Confiesa'.</i> Descubre 1 pista en el Lugar de este Enemigo si su salud es igual o mayor que el velo de su Lugar.\".\n□ <b>Distrae.</b> Añade la orden: \"- <i>'Distrae'.</i> Evita automáticamente a cualquier Enemigo que esté en el Lugar de este Enemigo y que tenga un valor de evitar igual o menor que este Enemigo.\".\n□□ <b>Mayor control.</b> La Palabra de poder obtiene \"[free]: Devuelve la Palabra de poder a tu mano.\".\n□□□ <b>Atado.</b> Puedes activar la capacidad de negociar de la Palabra de poder desde un máximo de un Lugar de distancia del Enemigo vinculado.\n□□□ <b>Trabalenguas.</b> Cuando negocies con la Palabra de poder, puedes dar hasta dos órdenes distintas.\n□□□ <b> Pronunciada tres veces.</b> Puedes incluir tres copias de la Palabra de poder en tu mazo. Cuando des una orden usando una copia, dale también esa orden a cada uno de los demás Enemigos que tenga vinculada una de tus copias de la Palabra de poder.",
         "replacement_text": "Mutada. Personalizable. Rápido. Juega esta carta sólo durante tu turno.\nVincula esta carta a un Enemigo que no sea [[Élite]] que esté en tu Lugar.\n[action] Si el Enemigo vinculado está en tu Lugar: <b>Negociar</b>. Realiza una prueba de [willpower] (2). Si tienes éxito, dale una orden (límite de una vez por ronda y por orden)\n– “Vete”. Este Enemigo se mueve una vez en una dirección de tu elección.\"."
       },
@@ -3154,8 +3154,8 @@
       },
       {
         "code": "10059",
-        "text": "This card’s [reaction] ability reads: “[reaction] When an investigator draws a non-weakness treachery card, if their location’s shroud is less than Ravenous Myconid’s growth...”",
-        "replacement_text": "Mutated. Researched. Limit 1 per deck.\n[fast]: Search your bonded cards for Uncanny Growth and add it to your hand. (Limit once per round.)\n[reaction] When an investigator draws a non-weakness treachery card, if their location's shroud is less than Ravenous Myconid's growth: Cancel that treachery's effects and discard it. Remove all growth from Ravenous Myconid."
+        "text": "La capacidad [reaction] de esta carta ahora dice: \"[reaction] Cuando un investigador robe una carta de Traición que no sea Debilidad, si el valor de velo de su Lugar es menor que el crecimiento del Micónido voraz...”",
+        "replacement_text": "Mutada. Investigado. Límite de 1 por mazo.\n[fast]: Busca entre tus cartas enlazadas el Crecimiento prodigioso y añádelo a tu mano. Límite de una vez por ronda.\n[reaction] Cuando un investigador robe una carta de Traición que no sea Debilidad, si el valor de velo de su Lugar es menor que el crecimiento del Micónido voraz: Cancela los efectos de esa Traición y descártala. Retira todo el crecimiento del Micónido voraz."
       },
       {
         "code": "11065",
@@ -3164,23 +3164,23 @@
       },
       {
         "code": "11071",
-        "text": "This card’s <b>Forced</b> effect now reads “The first time attached card takes 1 or more damage/horror each round...”",
-        "replacement_text": "Mutated. Fast. Play only during your turn. Attach to a player card with health and/or sanity at your location.\n<b>Forced</b> - The first time attached card takes 1 or more damage/horror each round: Cancel 1 of that damage/horror. The owner of Spectral Shield must remove 1 charge from an asset they control. If they cannot, discard Spectral Shield."
+        "text": "La capacidad <b>Obligado</b> de esta carta ahora dice: “La primera vez que la carta vinculada recibe 1 o más puntos de daño/horror en cada ronda...\"",
+        "replacement_text": "Mutada. Rápido. Juega esta carta sólo durante tu turno. Vincula esta carta a una carta de Jugador que tenga salud y/o cordura y que esté en tu Lugar.\n<b>Obligado</b> – La primera vez que la carta vinculada recibe 1 o más puntos de daño/horror en cada ronda: Cancela 1 punto de ese daño/horror. El propietario del Escudo espectral debe retirar 1 carga de un Apoyo que controle. Si no puede, descarta el Escudo espectral."
       },
       {
         "code": "11075",
-        "text": "This card gains “Fast. Play only during your turn.”\nThis card’s [reaction] ability now reads “...Return Spiritual Echo to your hand at the end of your turn.” and gains “(Limit once per round.)”",
-        "replacement_text": "Mutated. Fast. Play only during your turn.\nAttach to your location. Limit 1 per location.\n[reaction] After you activate an [action] or [fast] ability on a [[Spell]] or [[Ritual]] asset: Perform that ability again at attached location as if you were there, ignoring that asset's [action] cost, if any. <i>(You may trigger this ability from any location.)</i> Return Spiritual Echo to your hand at the end of your turn. (Limit once per round.)"
+        "text": "La capacidad de esta carta obtiene: \"Rápido. Juega esta carta sólo durante tu turno.\". \nLa capacidad [reaction] de esta carta ahora dice: \"Devuelve el Eco espiritual a tu mano al final de tu turno. Límite de una vez por ronda.\"",
+        "replacement_text": "Mutada. Rápido. Juega esta carta sólo durante tu turno.\nVincula esta carta a tu Lugar. Límite de 1 por Lugar.\n[reaction] Después de que actives una capacidad [action] o [fast] de un Apoyo [[Hechizo]] o [[Ritual]]: Realiza esa capacidad de nuevo en el Lugar vinculado como si estuvieras allí, ignorando el coste [action] de ese Apoyo si lo hay <i>(puedes activar esta capacidad desde cualquier Lugar)</i>. Devuelve el Eco espiritual a tu mano al final de tu turno. Límite de una vez por ronda."
       },
       {
         "code": "11118",
-        "text": "This card’s <b>Forced</b> effect now reads “When your turn ends: Place attached asset on the bottom of your deck unless you spend 1 resource.”",
-        "replacement_text": "Mutated. [[Miskatonic]], [[Scholar]] deck only. Permanent. Limit 1 per deck.\n[fast] During your turn, if there is no asset attached to Library Pass, exhaust Library Pass: Attach a [[Tome]] asset from your hand to Library Pass. Attached asset takes up no slots.\n<b>Forced</b> - When your turn ends: Place attached asset on the bottom of your deck unless you spend 1 resource."
+        "text": "La capacidad <b>Obligado</b> de esta carta ahora dice: “Cuando acabe tu turno: Coloca el Apoyo vinculado en la parte inferior de tu mazo a menos que gastes 1 recurso.\"",
+        "replacement_text": "Mutada. Sólo para un mazo [[Miskatonic]], [[Erudito]]. Permanente. Límite de 1 por mazo.\n[fast] Durante tu turno, si no hay ningún Apoyo vinculado al Pase de biblioteca, agota el Pase de biblioteca: Vincula un Apoyo Tomo de tu mano al Pase de biblioteca. El Apoyo vinculado no ocupa espacios.\n\n<b>Obligado</b> – Cuando acabe tu turno: Coloca el Apoyo vinculado en la parte inferior de tu mazo a menos que gastes 1 recurso."
       },
       {
         "code": "11120",
-        "text": "The first line of this card gains: “If On Their Heels has no leads, discard it.”",
-        "replacement_text": "Mutated. [[Detective]], [[Hunter]], [[Police]], [[Reporter]] deck only.\nLimit 1 per investigator. Uses (5 leads). If On Their Heels has no leads, discard it.\n[reaction] After you enter a location with 1 or more enemies, spend 1 lead and exhaust On Their Heels: Either discover 1 clue at your location or deal 1 damage to an enemy at your location."
+        "text": "Al principio de su capacidad, esta carta obtiene: “Si Pisándoles los talones no tiene indicios, descártala.\".",
+        "replacement_text": "Mutada. Sólo para un mazo [[Detective]], [[Cazador]], [[Policía]], [[Reportero]].\nLímite de 1 por investigador. Usos (5 indicios). Si Pisándoles los talones no tiene indicios, descártala.\n[reaction] Después de que entres en un Lugar con 1 o más Enemigos, gasta 1 indicio y agota Pisándoles los talones: Descubre 1 pista en tu Lugar o bien inflige 1 punto de daño a un Enemigo que esté en tu Lugar."
       },
       {
         "code": "02026",
@@ -3198,7 +3198,7 @@
         "code": "08076",
         "deck_limit": 2,
         "text": "Prohibida.",
-        "replacement_text": "Forbidden.\nExile a level 0-5 card in your hand. Discover 2 clues at your location. If the exiled card was level 2 or higher, remove 1 doom from the current agenda. Exile Burn After Reading.\n<b>Card designed by the Council-in-Exile at Gen Con 2020</b>"
+        "replacement_text": "Prohibida.\nExilia una carta de nivel 0-5 de tu mano. Descubre 2 pistas en tu Lugar. Si la carta exiliada era de nivel 2 o mayor, retira 1 ficha de Perdición del plan en curso. Exilia Quemar después de leer.\n<b>Carta diseñada por El consejo en el exilio en la Gen Con 2020</b>"
       }
     ]
   }

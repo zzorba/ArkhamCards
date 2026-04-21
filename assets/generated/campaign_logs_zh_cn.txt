@@ -5829,7 +5829,7 @@
         "entries": [
           {
             "id": "tdc_rune_a",
-            "text": "Depths"
+            "text": "深海"
           },
           {
             "id": "tdc_rune_s",
@@ -5935,31 +5935,31 @@
         "entries": [
           {
             "id": "court_of_the_ancients",
-            "text": "Court of the Ancients"
+            "text": "远古宫廷"
           },
           {
             "id": "obsidian_canyons",
-            "text": "Obsidian Canyons"
+            "text": "黑曜石峡谷"
           },
           {
             "id": "sepulchre_of_the_sleeper",
-            "text": "Sepulchre of the Sleeper"
+            "text": "沉睡者之陵"
           },
           {
             "id": "the_apiary",
-            "text": "The Apiary"
+            "text": "养育场"
           },
           {
             "id": "the_drowned_quarter",
-            "text": "The Drowned Quarter"
+            "text": "溺亡城区"
           },
           {
             "id": "the_grand_vault",
-            "text": "The Grand Vault"
+            "text": "大秘库"
           },
           {
             "id": "the_western_wall",
-            "text": "The Western Wall"
+            "text": "西墙"
           }
         ]
       }

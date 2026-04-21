@@ -57,7 +57,7 @@
   },
   {
     "id": "an_offer_you_cant_refuse",
-    "name": "An Offer You Can't Refuse"
+    "name": "거부할 수 없는 제안"
   },
   {
     "id": "an_unknown_benefactor",
@@ -209,7 +209,7 @@
   },
   {
     "id": "court_of_the_ancients",
-    "name": "Court of the Ancients"
+    "name": "고대 존재의 전당"
   },
   {
     "id": "cp_epilogue",
@@ -337,7 +337,7 @@
   },
   {
     "id": "expedition_to_ryleh",
-    "name": "Expedition to R'lyeh"
+    "name": "르리에 탐사"
   },
   {
     "id": "extracurricular_activity",
@@ -617,11 +617,11 @@
   },
   {
     "id": "obsidian_canyons",
-    "name": "Obsidian Canyons"
+    "name": "흑요석 협곡"
   },
   {
     "id": "one_last_job",
-    "name": "One Last Job"
+    "name": "마지막 의뢰"
   },
   {
     "id": "oz_epilogue",
@@ -705,7 +705,7 @@
   },
   {
     "id": "return_to_arkham",
-    "name": "Return to Arkham"
+    "name": "아컴으로의 귀환"
   },
   {
     "id": "return_to_at_deaths_doorstep",
@@ -909,7 +909,7 @@
   },
   {
     "id": "sepulchre_of_the_sleeper",
-    "name": "Sepulchre of the Sleeper"
+    "name": "잠든 자의 묘소"
   },
   {
     "id": "shanghai",
@@ -1013,7 +1013,7 @@
   },
   {
     "id": "the_apiary",
-    "name": "The Apiary"
+    "name": "양육장"
   },
   {
     "id": "the_attack",
@@ -1025,7 +1025,7 @@
   },
   {
     "id": "the_awakening",
-    "name": "The Awakening"
+    "name": "깨어남"
   },
   {
     "id": "the_black_cat",
@@ -1069,7 +1069,7 @@
   },
   {
     "id": "the_doom_of_arkham",
-    "name": "The Doom of Arkham"
+    "name": "아컴에 닥친 파멸"
   },
   {
     "id": "the_doom_of_arkham_part_1",
@@ -1077,11 +1077,11 @@
   },
   {
     "id": "the_doom_of_arkham_part_2",
-    "name": "The Doom of Arkham: Part II"
+    "name": "아컴에 닥친 파멸(2부)"
   },
   {
     "id": "the_drowned_quarter",
-    "name": "The Drowned Quarter"
+    "name": "수몰지"
   },
   {
     "id": "the_duchess",
@@ -1117,7 +1117,7 @@
   },
   {
     "id": "the_grand_vault",
-    "name": "The Grand Vault"
+    "name": "심부 제어구"
   },
   {
     "id": "the_great_ones",
@@ -1265,7 +1265,7 @@
   },
   {
     "id": "the_western_wall",
-    "name": "The Western Wall"
+    "name": "서부 장벽"
   },
   {
     "id": "the_white_queen",
