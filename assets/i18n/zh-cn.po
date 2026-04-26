@@ -5911,7 +5911,7 @@ msgstr "你已经超过一周没有查看新卡牌了。"
 
 #, javascript-format
 msgid "Chinese (Simplified): ${ simplifiedChineseTranslators }"
-msgstr "中文（简体）： ${ simplifiedChineseTranslators }"
+msgstr "中文(简体): ${ simplifiedChineseTranslators }"
 
 msgid "Narration"
 msgstr "旁白"
