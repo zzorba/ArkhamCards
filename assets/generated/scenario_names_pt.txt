@@ -425,11 +425,11 @@
   },
   {
     "id": "heart_of_the_elders_part_1",
-    "name": "Coração dos Anciões, Parte 1"
+    "name": "Coração dos Antigos, Parte 1"
   },
   {
     "id": "heart_of_the_elders_part_2",
-    "name": "Coração dos Anciões, Parte 2"
+    "name": "Coração dos Antigos, Parte 2"
   },
   {
     "id": "hemlock_house",
@@ -989,7 +989,7 @@
   },
   {
     "id": "tfa_interlude2",
-    "name": "Fim da expedição"
+    "name": "Fim da Expedição"
   },
   {
     "id": "tfa_interlude3",

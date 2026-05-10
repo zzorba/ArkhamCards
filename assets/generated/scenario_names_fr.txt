@@ -673,7 +673,7 @@
   },
   {
     "id": "queen_of_ash",
-    "name": "Queen of Ash"
+    "name": "La Reine des Cendres"
   },
   {
     "id": "quito",
@@ -925,7 +925,7 @@
   },
   {
     "id": "smoke_and_mirrors",
-    "name": "Smoke and Mirrors"
+    "name": "Une Vaste Fumisterie"
   },
   {
     "id": "something_big",
@@ -933,7 +933,7 @@
   },
   {
     "id": "spreading_flames",
-    "name": "Spreading Flames"
+    "name": "Les Flammes s'Étendent"
   },
   {
     "id": "starfall",

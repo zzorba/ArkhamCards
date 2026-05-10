@@ -201,7 +201,7 @@
   },
   {
     "id": "consternation_on_the_constellation",
-    "name": "Consternation on the Constellation"
+    "name": "星座号惊魂"
   },
   {
     "id": "core",
@@ -313,7 +313,7 @@
   },
   {
     "id": "electric_nightmare",
-    "name": "Electric Nightmare"
+    "name": "电子梦魇"
   },
   {
     "id": "endless_night",
@@ -585,7 +585,7 @@
   },
   {
     "id": "mission_briefing",
-    "name": "Mission Briefing"
+    "name": "行动简介"
   },
   {
     "id": "moscow",
@@ -697,7 +697,7 @@
   },
   {
     "id": "return_to_a_light_in_the_fog",
-    "name": "Return to A Light in the Fog"
+    "name": "重返雾中之光"
   },
   {
     "id": "return_to_a_phantom_of_truth",
@@ -729,7 +729,7 @@
   },
   {
     "id": "return_to_devil_reef",
-    "name": "Return to Devil Reef"
+    "name": "重返魔鬼礁石"
   },
   {
     "id": "return_to_dim_carcosa",
@@ -761,7 +761,7 @@
   },
   {
     "id": "return_to_horror_in_high_gear",
-    "name": "Return to Horror in High Gear"
+    "name": "重返全速恐惧"
   },
   {
     "id": "return_to_in_the_clutches_of_chaos",
@@ -769,11 +769,11 @@
   },
   {
     "id": "return_to_in_too_deep",
-    "name": "Return to In Too Deep"
+    "name": "重返深陷危局"
   },
   {
     "id": "return_to_into_the_maelstrom",
-    "name": "Return to Into the Maelstrom"
+    "name": "重返暗潮之下"
   },
   {
     "id": "return_to_lost_in_time_and_space",
@@ -813,7 +813,7 @@
   },
   {
     "id": "return_to_the_lair_of_dagon",
-    "name": "Return to The Lair of Dagon"
+    "name": "重返达贡巢穴"
   },
   {
     "id": "return_to_the_last_king",
@@ -833,7 +833,7 @@
   },
   {
     "id": "return_to_the_pit_of_despair",
-    "name": "Return to The Pit of Despair"
+    "name": "重返绝望深坑"
   },
   {
     "id": "return_to_the_secret_name",
@@ -849,7 +849,7 @@
   },
   {
     "id": "return_to_the_vanishing_of_elina_harper",
-    "name": "Return to The Vanishing of Elina Harper"
+    "name": "重返艾莲娜·哈珀失踪案"
   },
   {
     "id": "return_to_the_wages_of_sin",
@@ -925,7 +925,7 @@
   },
   {
     "id": "smoke_and_mirrors",
-    "name": "Smoke and Mirrors"
+    "name": "迷烟重重"
   },
   {
     "id": "something_big",
@@ -933,7 +933,7 @@
   },
   {
     "id": "spreading_flames",
-    "name": "Spreading Flames"
+    "name": "烈火渐起"
   },
   {
     "id": "starfall",
@@ -1237,7 +1237,7 @@
   },
   {
     "id": "the_tatterdemalion",
-    "name": "The Tatterdemalion"
+    "name": "褴褛者号"
   },
   {
     "id": "the_thing_in_the_depths",
@@ -1313,7 +1313,7 @@
   },
   {
     "id": "traces_of_egil",
-    "name": "Traces of Egil"
+    "name": "埃吉尔的踪迹"
   },
   {
     "id": "travelling",
