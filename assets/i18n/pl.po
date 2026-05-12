@@ -5254,43 +5254,43 @@ msgid "${ investigator.name } Fan-Made Challenge Scenario by ${ scenario.custom.
 msgstr ""
 
 msgid "Cyclopean Foundations"
-msgstr ""
+msgstr "Cyklopowe zręby"
 
 msgid "Lost Moorings"
-msgstr ""
+msgstr "Zerwany cumy"
 
 msgid "Going Twice"
-msgstr ""
+msgstr "Po raz drugi"
 
 msgid "Private Lives"
-msgstr ""
+msgstr "Życie prywatne"
 
 msgid "Crumbling Masonry"
-msgstr ""
+msgstr "Pękające mury"
 
 msgid "A House Divided"
-msgstr ""
+msgstr "Podzielony dom"
 
 msgid "Across Dreaful Waters"
-msgstr ""
+msgstr "Przez straszliwe wody"
 
 msgid "Blood From Stones"
-msgstr ""
+msgstr "Krew z kamieni"
 
 msgid "Pyroclastic Flow"
-msgstr ""
+msgstr "Lawina piroklastyczna"
 
 msgid "Tomb of Dead Dreams"
-msgstr ""
+msgstr "Grobowiec martwych snów"
 
 msgid "Cultists Alive"
-msgstr "Żyjący kultyści"
+msgstr "Kultyści, którzy przeżyli"
 
 msgid "Cultists Killed"
 msgstr "Zabici kultyści"
 
 msgid "Notice"
-msgstr ""
+msgstr "Podejrzenia"
 
 msgid "Jenny's Choice"
 msgstr ""
@@ -5299,7 +5299,7 @@ msgid "The Fall of the House of Usher"
 msgstr ""
 
 msgid "Against the Wendigo"
-msgstr ""
+msgstr "Przeciwko Wendigo"
 
 msgid "Non-canon Content"
 msgstr "Zawartość niekanoniczna"
