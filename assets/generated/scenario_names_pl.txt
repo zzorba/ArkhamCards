@@ -5,7 +5,7 @@
   },
   {
     "id": "a_house_divided",
-    "name": "A House Divided"
+    "name": "Podzielony dom"
   },
   {
     "id": "a_light_in_the_fog",
@@ -37,7 +37,7 @@
   },
   {
     "id": "across_dreadful_waters",
-    "name": "Across Dreadful Waters"
+    "name": "Przez straszliwe wody"
   },
   {
     "id": "africa_is_watching",
@@ -45,7 +45,7 @@
   },
   {
     "id": "against_the_wendigo",
-    "name": "Against the Wendigo"
+    "name": "Przeciwko Wendigo"
   },
   {
     "id": "alexandria",
@@ -153,7 +153,7 @@
   },
   {
     "id": "blood_from_stones",
-    "name": "Blood From Stones"
+    "name": "Krew z kamieni"
   },
   {
     "id": "blood_on_the_altar",
@@ -221,7 +221,7 @@
   },
   {
     "id": "crumbling_masonry",
-    "name": "Crumbling Masonry"
+    "name": "Pękające mury"
   },
   {
     "id": "curse_of_the_rougarou",
@@ -409,7 +409,7 @@
   },
   {
     "id": "going_twice",
-    "name": "Going Twice"
+    "name": "Po raz drugi"
   },
   {
     "id": "gryphon_and_mock_turtle",
@@ -553,7 +553,7 @@
   },
   {
     "id": "lost_moorings",
-    "name": "Lost Moorings"
+    "name": "Zerwane cumy"
   },
   {
     "id": "lost_quantum",
@@ -641,7 +641,7 @@
   },
   {
     "id": "private_lives",
-    "name": "Private Lives"
+    "name": "Życie prywatne"
   },
   {
     "id": "ptc_epilogue",
@@ -669,7 +669,7 @@
   },
   {
     "id": "pyroclastic_flow",
-    "name": "Pyroclastic Flow"
+    "name": "Lawina piroklastyczna"
   },
   {
     "id": "queen_of_ash",
@@ -1301,7 +1301,7 @@
   },
   {
     "id": "tomb_of_dead_dreams",
-    "name": "Tomb of Dead Dreams"
+    "name": "Grobowiec martwych snów"
   },
   {
     "id": "too_noble",

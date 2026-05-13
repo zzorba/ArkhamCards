@@ -8362,105 +8362,105 @@
         "entries": [
           {
             "id": "took_out_a_loan",
-            "masculine_text": "#name# took out a loan.",
-            "feminine_text": "#name# took out a loan.",
-            "nonbinary_text": "#name# took out a loan."
+            "masculine_text": "#name# zaciągnął pożyczkę.",
+            "feminine_text": "#name# zaciągnęła pożyczkę.",
+            "nonbinary_text": "#name# zaciągnął/zaciągnęła pożyczkę."
           },
           {
             "id": "architects_project_was_fully_completed",
-            "text": "the architects' project was fully completed."
+            "text": "projekt architektów został w pełni ukończony."
           },
           {
             "id": "architects_project_was_sabotaged",
-            "text": "the architects's project was sabotaged."
+            "text": "projekt architektów został udaremniony."
           },
           {
             "id": "arrived_on_schedule",
-            "text": "the investigators arrived on schedule."
+            "text": "badacze przybyli na czas."
           },
           {
             "id": "chose_the_least_predictable_route",
-            "text": "the investigators chose the least predictable route."
+            "text": "badacze wybrali najmniej przewidywalną trasę."
           },
           {
             "id": "chose_the_most_direct_route",
-            "text": "the investigators chose the most direct route."
+            "text": "badacze wybrali najbardziej bezpośrednią trasę."
           },
           {
             "id": "chose_the_most_populous_route",
-            "text": "the investigators chose the most popular route."
+            "text": "badacze wybrali najczęściej uczęszczaną trasę."
           },
           {
             "id": "cthulhu_reigns",
-            "text": "Cthulhu reigns over all humankind."
+            "text": "Cthulhu panuje nad całą ludzkością."
           },
           {
             "id": "cthulhu_slumbers",
-            "text": "Cthulhu slumbers in the deep once more."
+            "text": "Cthulhu znów śni w głębinach."
           },
           {
             "id": "cults_project_nears_completion",
-            "text": "the cult's project nears completion."
+            "text": "projekt kultu jest bliski ukończenia."
           },
           {
             "id": "escaped_rlyeh",
-            "text": "the investigators escaped from R'lyeh."
+            "text": "badacze uciekli z R'lyeh."
           },
           {
             "id": "expelled_the_traitors",
-            "text": "the investigators expelled the traitors."
+            "text": "badacze wypędzili zdrajców."
           },
           {
             "id": "explored_the_myra_louise",
-            "text": "the investigators explored the Myra Louise."
+            "text": "badacze zbadali Myrę Louise."
           },
           {
             "id": "exposed_the_traitors",
-            "text": "the investigators exposed the traitors."
+            "text": "badacze ujawnili zdrajców."
           },
           {
             "id": "failed_to_find_the_myra_louise",
-            "text": "the investigators failed to find the Myra Louise."
+            "text": "badaczom nie udało się odnaleźć Myry Louise."
           },
           {
             "id": "failed_to_stop_the_traitors_plan",
-            "text": "the investigators failed to stop the traitors' plan."
+            "text": "badaczom nie udało się pokrzyżować planu zdrajców."
           },
           {
             "id": "forced_to_withdraw",
-            "text": "the investigators were forced to withdraw."
+            "text": "badacze zostali zmuszeni do wycofania się."
           },
           {
             "id": "found_the_missing_artifacts",
-            "text": "the investigators found the missing artifacts."
+            "text": "badacze odnaleźli zaginione artefakty."
           },
           {
             "id": "found_the_myra_louise",
-            "text": "the investigators found the Myra Louise."
+            "text": "badacze odnaleźli Myrę Louise."
           },
           {
             "id": "have_been_observed",
-            "text": "the investigators have been observed."
+            "text": "badacze są obserwowani."
           },
           {
             "id": "interviewed_the_broker",
-            "text": "the investigators interviewed the broker."
+            "text": "badacze przesłuchali pośredniczkę."
           },
           {
             "id": "know_the_full_story",
-            "text": "the investigators know the full story."
+            "text": "badacze poznali całą historię."
           },
           {
             "id": "left_the_auction_early",
-            "text": "the investigators left the auction early."
+            "text": "badacze opuścili aukcję przed czasem."
           },
           {
             "id": "severely_delayed",
-            "text": "the investigators were severely delayed."
+            "text": "badacze mają poważne opóźnienie."
           },
           {
             "id": "understand_the_truth",
-            "text": "the investigators understand the truth."
+            "text": "badacze są blisko poznania prawdy."
           }
         ]
       },
@@ -8489,7 +8489,7 @@
           },
           {
             "id": "wallace",
-            "text": "Wallce Thorpe"
+            "text": "Wallace Thorpe"
           }
         ]
       },
@@ -8519,10 +8519,6 @@
           {
             "id": "wallace",
             "text": "Wallace Thorpe"
-          },
-          {
-            "id": "wallace",
-            "text": "Wallce Thorpe"
           }
         ]
       },

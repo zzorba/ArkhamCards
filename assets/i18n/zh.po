@@ -6285,6 +6285,9 @@ msgstr ""
 msgid "This draft uses the deck's selected card pool."
 msgstr ""
 
+msgid "Fan-Made"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "自訂"
