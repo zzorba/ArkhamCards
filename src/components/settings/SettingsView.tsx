@@ -54,7 +54,7 @@ function showDeKofi() {
 }
 
 export function showRuDonate() {
-  Linking.openURL('https://messenger.online.sberbank.ru/sl/rgONgm2VJesBMZNMh');
+  Linking.openURL('https://www.tbank.ru/cf/2Icb3EoNfVI');
 }
 function showEnAudio() {
   Linking.openURL('https://therestrictedcollection.podbean.com/');
