@@ -13,3 +13,5 @@ export function getEnvVar(key: string): string {
   // Fallback to expo-constants extra
   return Constants.expoConfig?.extra?.[key] || process.env[key] || '';
 }
+
+export const USE_PATREON_AUDIO = true;

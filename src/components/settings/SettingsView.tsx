@@ -31,6 +31,8 @@ import DeckButton from '@components/deck/controls/DeckButton';
 import DeckCheckboxButton from '@components/deck/controls/DeckCheckboxButton';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import DissonantVoicesLoginButton from './AccountSection/auth/DissonantVoicesLoginButton';
+import PatreonLoginButton from './AccountSection/auth/PatreonLoginButton';
+import { USE_PATREON_AUDIO } from '@lib/env';
 import { useAlertDialog } from '@components/deck/dialogs';
 import { CURRENT_REDUX_VERSION } from '@reducers/settings';
 import { useRemoteSettingFlag, useSettingFlag, useSettingValue } from '@components/core/hooks';
@@ -278,7 +280,11 @@ function SettingsView() {
               ) }
               { audioLang === 'en' && (
                 <>
-                  <DissonantVoicesLoginButton showAlert={showAlert} last />
+                  {USE_PATREON_AUDIO ? (
+                    <PatreonLoginButton showAlert={showAlert} last />
+                  ) : (
+                    <DissonantVoicesLoginButton showAlert={showAlert} last />
+                  )}
                   <View style={space.paddingS}>
                     <Text style={typography.text}>
                       Additional narration for fan-made campaigns has been provided by Head Librarian Chad <Text style={[typography.text, typography.underline, { color: colors.D20 }]} onPress={showEnAudio}>The Restricted Collection</Text> and Scarlett.

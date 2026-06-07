@@ -17,6 +17,7 @@ import deckEdits from './deckEdits';
 import packs from './packs';
 import settings from './settings';
 import dissonantVoices from './dissonantVoices';
+import patreon from './patreon';
 import { CardFilterData, FilterState } from '@lib/filters';
 import { getSystemLanguage } from '@lib/i18n';
 import {
@@ -164,6 +165,7 @@ const rootReducer = combineReducers({
   filters: persistReducer(filtersPersistConfig, filters),
   deckEdits,
   dissonantVoices: persistReducer(dissonantVoicesPersistConfig, dissonantVoices),
+  patreon: persistReducer({ key: 'patreon', throttle: Platform.OS === 'android' ? 1000 : undefined, storage: AsyncStorage, blacklist: ['loading', 'error'] }, patreon),
   trackedQueries: persistReducer(trackedQueriesPersistConfig, trackedQueries),
   decks: persistReducer(decksPersistConfig, decks),
   legacyGuides: persistReducer(legacyGuidesPersistConfig, legacyGuides),
@@ -551,6 +553,11 @@ export const getDeckToCampaignMap = createSelector(
 
 export const hasDissonantVoices = createSelector(
   (state: AppState) => state.dissonantVoices.status,
+  (status): boolean => status === true
+);
+
+export const hasPatreon = createSelector(
+  (state: AppState) => state.patreon.status,
   (status): boolean => status === true
 );
 

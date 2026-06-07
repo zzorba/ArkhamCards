@@ -62,6 +62,8 @@ module.exports = {
       OAUTH_SITE: env.OAUTH_SITE || process.env.OAUTH_SITE,
       OAUTH_CLIENT_ID: env.OAUTH_CLIENT_ID || process.env.OAUTH_CLIENT_ID,
       OAUTH_CLIENT_SECRET: env.OAUTH_CLIENT_SECRET || process.env.OAUTH_CLIENT_SECRET,
+      // Set to 'true' to use Patreon for audio access instead of Dissonant Voices
+      USE_PATREON_AUDIO: env.USE_PATREON_AUDIO || process.env.USE_PATREON_AUDIO || 'false',
     },
     assetBundlePatterns: [
       'assets/*.ttf',

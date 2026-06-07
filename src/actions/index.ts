@@ -16,6 +16,10 @@ import {
   DISSONANT_VOICES_LOGIN,
   DISSONANT_VOICES_LOGIN_ERROR,
   DISSONANT_VOICES_LOGOUT,
+  PATREON_LOGIN_STARTED,
+  PATREON_LOGIN,
+  PATREON_LOGIN_ERROR,
+  PATREON_LOGOUT,
   ArkhamDbDeck,
   SET_PACK_DRAFT,
   SYNC_IN_COLLECTION,
@@ -27,6 +31,7 @@ import { AppState, getAllPacks, getArkhamDbDecks } from '@reducers';
 
 import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 import * as dissonantVoices from '@lib/dissonantVoices';
+import * as patreon from '@lib/patreon';
 import { decks } from '@lib/authApi';
 
 export function login(): ThunkAction<void, AppState, unknown, Action<string>> {
@@ -144,6 +149,36 @@ export function dissonantVoicesVerifyLogin(): ThunkAction<
           type: DISSONANT_VOICES_LOGOUT,
         });
       }
+    });
+  };
+}
+
+export function patreonLogin(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch): void => {
+    dispatch({ type: PATREON_LOGIN_STARTED });
+    patreon.signInFlow().then((response) => {
+      if (response.success) {
+        dispatch({ type: PATREON_LOGIN });
+      } else {
+        dispatch({ type: PATREON_LOGIN_ERROR, error: response.error ?? 'Unknown error' });
+      }
+    });
+  };
+}
+
+export function patreonLogout(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dispatch({ type: PATREON_LOGIN_STARTED });
+    patreon.signOutFlow().then(() => {
+      dispatch({ type: PATREON_LOGOUT });
+    });
+  };
+}
+
+export function patreonVerifyLogin(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    patreon.verifyLogin().then((isPatron) => {
+      dispatch({ type: isPatron ? PATREON_LOGIN : PATREON_LOGOUT });
     });
   };
 }

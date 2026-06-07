@@ -1,0 +1,66 @@
+import { t } from 'ttag';
+import React, { useCallback, useContext } from 'react';
+import { Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
+
+import { patreonLogin, patreonLogout } from '@actions';
+import { AppState } from '@reducers';
+import DeckActionRow from '@components/deck/controls/DeckActionRow';
+import DeckButton from '@components/deck/controls/DeckButton';
+import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
+import { ShowAlert } from '@components/deck/dialogs';
+import { useAppDispatch } from '@app/store';
+
+interface Props {
+  showAlert: ShowAlert;
+  last?: boolean;
+}
+
+export default function PatreonLoginButton({ last, showAlert }: Props) {
+  const { typography } = useContext(StyleContext);
+  const dispatch = useAppDispatch();
+  const { loading, status, error } = useSelector((state: AppState) => state.patreon);
+  const doLogin = useCallback(() => {
+    dispatch(patreonLogin());
+  }, [dispatch]);
+  const logOutPressed = useCallback(() => {
+    dispatch(patreonLogout());
+  }, [dispatch]);
+  const loginPressed = useCallback(() => {
+    showAlert(
+      t`Sign in with Patreon?`,
+      t`Audio narration is available to patrons of ArkhamCards or Mythos Busters on Patreon.`,
+      [
+        { text: t`Cancel`, style: 'cancel' },
+        { text: t`Sign In`, onPress: doLogin },
+      ],
+    );
+  }, [doLogin, showAlert]);
+  return (
+    <View>
+      <DeckActionRow
+        icon="mythos-busters"
+        larger
+        title={status ? t`Narration enabled` : t`Audio narration`}
+        description={t`Dissonant Voices`}
+        growControl
+        control={
+          <DeckButton
+            thin
+            icon="world"
+            onPress={status ? logOutPressed : loginPressed}
+            title={status ? t`Log out` : t`Log in`}
+          />
+        }
+        loading={loading}
+        last={last}
+      />
+      {!!error && (
+        <View style={space.paddingS}>
+          <Text style={[typography.text, typography.error]}>{error}</Text>
+        </View>
+      )}
+    </View>
+  );
+}

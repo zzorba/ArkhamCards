@@ -17,7 +17,7 @@
   },
   {
     "id": "a_sea_of_troubles",
-    "name": "Eine See an Plagen"
+    "name": "Ein Meer an Plagen"
   },
   {
     "id": "a_thousand_shapes_of_horror",
@@ -457,7 +457,7 @@
   },
   {
     "id": "humpty_dumpty",
-    "name": "Humpty Dumpty"
+    "name": "Humpti Dumpti"
   },
   {
     "id": "ice_and_death",
@@ -1153,7 +1153,7 @@
   },
   {
     "id": "the_lion_and_the_unicorn",
-    "name": "The Lion and the Unicorn"
+    "name": "Der Löwe und das Einhorn"
   },
   {
     "id": "the_longest_night",
@@ -1269,7 +1269,7 @@
   },
   {
     "id": "the_white_queen",
-    "name": "The White Queen"
+    "name": "Die Weiße Königin"
   },
   {
     "id": "the_witching_hour",

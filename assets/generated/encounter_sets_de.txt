@@ -251,7 +251,7 @@
   "consternation_on_the_constellation": "Bestürzung über die Konstellation",
   "coc_deep_ones": "Deep Ones",
   "sinking_ship": "Sinking Ship",
-  "a_sea_of_troubles": "Eine See an Plagen",
+  "a_sea_of_troubles": "Ein Meer an Plagen",
   "gurathnakas_shadows": "Gurathnakas Schatten",
   "cheshire_cat": "Die Grinsekatze",
   "arkham_in_wonderland": "Arkham im Wunderland",
