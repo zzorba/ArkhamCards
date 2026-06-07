@@ -7,79 +7,79 @@
         "entries": [
           {
             "id": "abigail_harbinger",
-            "text": "Abigail Foreman is the harbinger of Elokoss."
+            "text": "Abigail Foreman est le héraut d'Elokoss."
           },
           {
             "id": "cornelia_harbinger",
-            "text": "Cornelia Akely is the harbinger of Elokoss."
+            "text": "Cornelia Akely est le héraut d'Elokoss."
           },
           {
             "id": "david_harbinger",
-            "text": "David Renfield is the harbinger of Elokoss."
+            "text": "David Renfield est le héraut d'Elokoss."
           },
           {
             "id": "defeated_elokoss_and_the_brethren_of_ash",
-            "text": "the investigators defeated Elokoss and the Brethren of Ash."
+            "text": "les investigateurs ont vaincu Elokoss et la Fraternité des Cendres."
           },
           {
             "id": "defeated_their_masked_pursuer",
-            "text": "the investigators defeated their masked pursuer."
+            "text": "les investigateurs ont vaincu leur poursuivant masqué."
           },
           {
             "id": "discovered_the_cults_whereabouts",
-            "text": "the investigators discovered the cult's whereabouts."
+            "text": "les investigateurs ont découvert le lieu du culte."
           },
           {
             "id": "earl_harbinger",
-            "text": "Sgt. Earl Monroe is the harbinger of Elokoss."
+            "text": "Le Sgt. Earl Monroe est le héraut d'Elokoss."
           },
           {
             "id": "elokoss_was_reborn",
-            "text": "Elokoss was reborn."
+            "text": "Elokoss est ressuscitée."
           },
           {
             "id": "failed_in_their_search",
-            "text": "the investigators failed in their search."
+            "text": "les investigateurs ont échoué dans leur recherche."
           },
           {
             "id": "flooded_the_ritual",
-            "text": "the investigators flooded the Brethren of Ash’s summoning ritual."
+            "text": "les investigateurs ont inondé le rituel d'invocation de la Fraternité des Cendres."
           },
           {
             "id": "killed_the_servant_of_flame",
-            "text": "the investigators killed the Servant of Flame"
+            "text": "les investigateurs ont tué le Serviteur de la Flamme"
           },
           {
             "id": "margaret_harbinger",
-            "text": "Margaret Liu is the harbinger of Elokoss."
+            "text": "Margaret Liu est le héraut d'Elokoss."
           },
           {
             "id": "miskatonic_university_burned",
-            "text": "Miskatonic University burned."
+            "text": "l'Université Miskatonic a brûlé."
           },
           {
             "id": "naomi_harbinger",
-            "text": "Naomi O'Bannion is the harbinger of Elokoss."
+            "text": "Naomi O'Bannion est le héraut d'Elokoss."
           },
           {
             "id": "saved_miskatonic_university",
-            "text": "the investigators saved Miskatonic University."
+            "text": "les investigateurs ont sauvé l'Université Miskatonic."
           },
           {
             "id": "scoured_arkham_for_answers",
-            "text": "the investigators scoured Arkham for answers."
+            "text": "les investigateurs ont passé Arkham au peigne fin à la recherche de réponses."
           },
           {
             "id": "stirred_up_trouble",
-            "text": "the investigators stirred up trouble."
+            "text": "les investigateurs ont cherché les ennuis."
           },
           {
             "id": "stopped_elokoss_glorious_rebirth",
-            "text": "the investigators stopped Elokoss’s glorious rebirth."
+            "text": "les investigateurs ont arrêté la glorieuse renaissance d'Elokoss."
           },
           {
             "id": "the_servant_of_flame_escaped",
-            "text": "the Servant of Flame escaped."
+            "text": "le Serviteur de la Flamme s'est échappé."
           }
         ]
       },

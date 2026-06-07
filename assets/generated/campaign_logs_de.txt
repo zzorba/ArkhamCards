@@ -7922,7 +7922,7 @@
         "entries": [
           {
             "id": "alice_perished_and_wonderland_has_been_lost_forever",
-            "text": "Alice perished and Wonderland has been lost forever."
+            "text": "Alice ist gestorben und das Wunderland ist für immer verloren."
           },
           {
             "id": "controlled_the_snark",
@@ -7930,11 +7930,11 @@
           },
           {
             "id": "gurathnaka_and_its_shadows_consumed_the_earth",
-            "text": "Gurathnaka and its shadows consumed the earth."
+            "text": "Gurathnaka und seine Schatten haben die Erde verschlungen."
           },
           {
             "id": "gurathnaka_and_its_shadows_were_banished_from_arkham",
-            "text": "Gurathnaka and its shadows were banished from Arkham."
+            "text": "Gurathnaka und seine Schatten wurden aus Arkham verbannt."
           },
           {
             "id": "hare_and_hatter_enjoyed_your_company",
@@ -7966,11 +7966,11 @@
           },
           {
             "id": "jabberwock_still_haunts_the_tulgey_wood",
-            "text": "der Schebberoch sucht den Tulgen Wald noch immer heim."
+            "text": "der Schebberoch sucht den tulgen Wald noch immer heim."
           },
           {
             "id": "one_of_the_tweedles_learned_about_the_cost_of_war",
-            "text": "one of the Tweedles learned about the cost of war."
+            "text": "einer der Zwillinge hat den Preis des Krieges kennen gelernt."
           },
           {
             "id": "puzzled_the_snark",
@@ -7986,7 +7986,7 @@
           },
           {
             "id": "separated_alices_dreams_from_the_real_world",
-            "text": "the investigators separated Alice's dreams from the real world."
+            "text": "die Ermittler trennten Alices Träume von der realen Welt."
           },
           {
             "id": "shadows_grow_stronger_with_each_passing_moment",
@@ -8006,7 +8006,7 @@
           },
           {
             "id": "took_the_jabberwocks_head",
-            "text": "die Ermittler nahmen den Kopf des Schebberochs an sich."
+            "text": "die Ermittler schlugen dem Schebberoch den Kopf ab."
           },
           {
             "id": "tricked_the_snark",
@@ -8014,15 +8014,15 @@
           },
           {
             "id": "tweedles_learned_that_there_are_worse_things_than_fighting_each_other",
-            "text": "the Tweedles learned that there are worse things than fighting each other."
+            "text": "Dideldum und Dideldei haben gelernt, dass es Schlimmeres gibt, als gegeneinander zu kämpfen."
           },
           {
             "id": "tweedles_perished_in_their_bloody_battle",
-            "text": "the Tweedles perished in their bloody battle."
+            "text": "Dideldum und Dideldei sind in ihrer blutigen Schlacht umgekommen."
           },
           {
             "id": "tweedles_war_war_brought_to_an_end",
-            "text": "the Tweedles' war was brought to an end."
+            "text": "Dideldums und Dideldeis Krieg wurde beendet."
           },
           {
             "id": "walrus_and_carpenter_ate_their_last_meal",
@@ -8046,19 +8046,19 @@
           },
           {
             "id": "white_king_celebrates_a_grand_victory",
-            "text": "the White King celebrates a grand victory."
+            "text": "der Weiße König feiert einen großen Sieg."
           },
           {
             "id": "white_king_was_slain_by_the_red_pieces",
-            "text": "the White King was slain by the red pieces."
+            "text": "der Weiße König wurde von den roten Figuren geschlagen."
           },
           {
             "id": "white_knight_has_fallen_in_battle_to_the_red_queen",
-            "text": "the White Knight has fallen in battle to the Red Queen."
+            "text": "der Weiße Springer ist im Kampf gegen die Rote Königin gefallen."
           },
           {
             "id": "white_knight_revels_in_your_victory_over_the_red_queen",
-            "text": "the White Knight revels in your victory over the Red Queen."
+            "text": "der Weiße Springer zelebriert euren Sieg über die Rote Königin."
           },
           {
             "id": "white_rabbit_consumed_by_shadows",
@@ -8083,7 +8083,7 @@
           },
           {
             "id": "curiosity",
-            "text": "Curiosity"
+            "text": "Neugierde"
           },
           {
             "id": "intuition",
@@ -8095,7 +8095,7 @@
           },
           {
             "id": "reason",
-            "text": "Reason"
+            "text": "Vernunft"
           }
         ]
       },
@@ -8125,11 +8125,11 @@
           },
           {
             "id": "humpty_dumpty",
-            "text": "Humpty Dumpty"
+            "text": "Humpti Dumpti"
           },
           {
             "id": "lion_and_unicorn",
-            "text": "The Lion and the Unicorn"
+            "text": "Der Löwe und das Einhorn"
           },
           {
             "id": "the_caterpillar",
@@ -8145,7 +8145,7 @@
           },
           {
             "id": "the_white_queen",
-            "text": "The White Queen"
+            "text": "Die Weiße Königin"
           }
         ]
       },
@@ -8158,11 +8158,11 @@
           },
           {
             "id": "humpty_dumpty",
-            "text": "Humpty Dumpty"
+            "text": "Humpti Dumpti"
           },
           {
             "id": "lion_and_unicorn",
-            "text": "The Lion and the Unicorn"
+            "text": "Der Löwe und das Einhorn"
           },
           {
             "id": "the_caterpillar",
@@ -8178,7 +8178,7 @@
           },
           {
             "id": "the_white_queen",
-            "text": "The White Queen"
+            "text": "Die Weiße Königin"
           }
         ]
       }

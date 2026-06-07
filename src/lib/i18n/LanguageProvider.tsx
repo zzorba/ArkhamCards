@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 
 import LanguageContext, { LanguageContextType } from './LanguageContext';
 import { getSystemLanguage } from '@lib/i18n';
-import { getAudioLangPreference, getLangChoice, hasDissonantVoices } from '@reducers';
+import { getAudioLangPreference, getLangChoice, hasDissonantVoices, hasPatreon } from '@reducers';
+import { USE_PATREON_AUDIO } from '@lib/env';
 import { useMyProfile } from '@data/remote/hooks';
 import { User_Flag_Type_Enum } from '@generated/graphql/apollo-schema';
 import { changeLocale } from '@app/i18n';
@@ -82,7 +83,7 @@ export default function LanguageProvider({ children }: Props) {
     clearAssetCache();
   }, [lang]);
 
-  const hasDV = useSelector(hasDissonantVoices);
+  const hasDV = useSelector(USE_PATREON_AUDIO ? hasPatreon : hasDissonantVoices);
   const [profile] = useMyProfile(true);
   const audioLangs = useMemo(() => {
     switch (audioLangChoice) {

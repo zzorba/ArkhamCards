@@ -1770,6 +1770,33 @@ export type DissonantVoicesActions =
   | DissonantVoicesLoginErrorAction
   | DissonantVoicesLogoutAction;
 
+export const PATREON_LOGIN_STARTED = 'PATREON_LOGIN_STARTED';
+interface PatreonLoginStartedAction {
+  type: typeof PATREON_LOGIN_STARTED;
+}
+
+export const PATREON_LOGIN = 'PATREON_LOGIN';
+interface PatreonLoginAction {
+  type: typeof PATREON_LOGIN;
+}
+
+export const PATREON_LOGIN_ERROR = 'PATREON_LOGIN_ERROR';
+interface PatreonLoginErrorAction {
+  type: typeof PATREON_LOGIN_ERROR;
+  error: Error | string;
+}
+
+export const PATREON_LOGOUT = 'PATREON_LOGOUT';
+interface PatreonLogoutAction {
+  type: typeof PATREON_LOGOUT;
+}
+
+export type PatreonActions =
+  | PatreonLoginAction
+  | PatreonLoginStartedAction
+  | PatreonLoginErrorAction
+  | PatreonLogoutAction;
+
 export const TRACKED_QUERIES_ADD = 'TRACKED_QUERIES_ADD';
 export const TRACKED_QUERIES_REMOVE = 'TRACKED_QUERIES_REMOVE';
 

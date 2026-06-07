@@ -205,7 +205,7 @@
   },
   {
     "id": "core",
-    "name": "Brethren of Ash"
+    "name": "Fraternité des Cendres"
   },
   {
     "id": "court_of_the_ancients",
