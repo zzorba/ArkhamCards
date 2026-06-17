@@ -1,11 +1,11 @@
 [
   {
     "id": "a_confrontation",
-    "name": "A Confrontation"
+    "name": "Một Cuộc Đối Đầu"
   },
   {
     "id": "a_house_divided",
-    "name": "A House Divided"
+    "name": "Ngôi Nhà Bị Chia Cắt"
   },
   {
     "id": "a_light_in_the_fog",
@@ -57,11 +57,11 @@
   },
   {
     "id": "an_offer_you_cant_refuse",
-    "name": "An Offer You Can't Refuse"
+    "name": "Một Lời Đề Nghị Bạn Không Thể Từ Chối"
   },
   {
     "id": "an_unknown_benefactor",
-    "name": "An Unknown Benefactor"
+    "name": "Một Ân Nhân Vô Danh"
   },
   {
     "id": "anchorage",
@@ -77,7 +77,7 @@
   },
   {
     "id": "arkham_allied",
-    "name": "Arkham Allied"
+    "name": "Liên Minh Arkham"
   },
   {
     "id": "arkham_in_wonderland",
@@ -113,7 +113,7 @@
   },
   {
     "id": "barors_gifts",
-    "name": "Bárðr's Gifts"
+    "name": "Những món quà của Bárðr"
   },
   {
     "id": "before_the_black_throne",
@@ -237,11 +237,11 @@
   },
   {
     "id": "dawn_of_the_final_day",
-    "name": "Dawn of the Final Day"
+    "name": "Bình minh của Ngày Cuối cùng"
   },
   {
     "id": "dawn_of_the_second_day",
-    "name": "Dawn of the Second Day"
+    "name": "Bình minh của Ngày thứ Hai"
   },
   {
     "id": "dead_by_dawn",
@@ -249,7 +249,7 @@
   },
   {
     "id": "dead_or_alive",
-    "name": "Dead or Alive"
+    "name": "Sống hay Chết"
   },
   {
     "id": "death_at_sundown",
@@ -265,7 +265,7 @@
   },
   {
     "id": "desaturation",
-    "name": "Desaturation"
+    "name": "Sự phai màu"
   },
   {
     "id": "devil_reef",
@@ -285,7 +285,7 @@
   },
   {
     "id": "dm_prologue",
-    "name": "Prologue…"
+    "name": "Mở đầu…"
   },
   {
     "id": "double_whammy",
@@ -369,7 +369,7 @@
   },
   {
     "id": "fhv_prologue",
-    "name": "Welcome to Hemlock Vale!"
+    "name": "Chào mừng đến với Hemlock Vale!"
   },
   {
     "id": "film_fatale",
@@ -389,7 +389,7 @@
   },
   {
     "id": "fortune_and_folly_checkpoint",
-    "name": "The Plan"
+    "name": "Kế hoạch"
   },
   {
     "id": "fortune_and_folly_part_1",
@@ -397,7 +397,7 @@
   },
   {
     "id": "fortune_and_folly_part_2",
-    "name": "The Heist"
+    "name": "Vụ Trộm"
   },
   {
     "id": "fragment_of_carcosa",
@@ -445,7 +445,7 @@
   },
   {
     "id": "history_lesson",
-    "name": "History Lesson"
+    "name": "Bài Học Lịch Sử"
   },
   {
     "id": "hong_kong",
@@ -505,7 +505,7 @@
   },
   {
     "id": "introspection_continued",
-    "name": "Introspection (continued)"
+    "name": "Introspection (tiếp theo)"
   },
   {
     "id": "istanbul",
@@ -521,7 +521,7 @@
   },
   {
     "id": "kathmandu",
-    "name": "Whistle On the Wind"
+    "name": "Tiếng Sáo Trong Gió"
   },
   {
     "id": "kuala_lampur",
@@ -529,7 +529,7 @@
   },
   {
     "id": "lagos",
-    "name": "Special Delivery"
+    "name": "Chuyến Giao Hàng Đặc Biệt"
   },
   {
     "id": "laid_to_rest",
@@ -589,7 +589,7 @@
   },
   {
     "id": "moscow",
-    "name": "Quid Pro Quo"
+    "name": "Có Qua Có Lại"
   },
   {
     "id": "mourning_chorus",
@@ -705,7 +705,7 @@
   },
   {
     "id": "return_to_arkham",
-    "name": "Return to Arkham"
+    "name": "Trở về Arkham"
   },
   {
     "id": "return_to_at_deaths_doorstep",
@@ -893,7 +893,7 @@
   },
   {
     "id": "rome",
-    "name": "Romulus and Remus"
+    "name": "Romulus và Remus"
   },
   {
     "id": "royal_audience",
@@ -901,7 +901,7 @@
   },
   {
     "id": "san_francisco",
-    "name": "Quid Pro Quo"
+    "name": "Có Qua Có Lại"
   },
   {
     "id": "san_juan",
@@ -993,11 +993,11 @@
   },
   {
     "id": "tfa_interlude3",
-    "name": "The Jungle Beckons"
+    "name": "Rừng rậm vẫy gọi"
   },
   {
     "id": "tfa_interlude4",
-    "name": "Those Held Captive"
+    "name": "Những người bị giam cầm"
   },
   {
     "id": "tfa_interlude5",
@@ -1025,7 +1025,7 @@
   },
   {
     "id": "the_awakening",
-    "name": "The Awakening"
+    "name": "Sự thức tỉnh"
   },
   {
     "id": "the_black_cat",
@@ -1073,11 +1073,11 @@
   },
   {
     "id": "the_doom_of_arkham_part_1",
-    "name": "The Doom of Arkham: Part I"
+    "name": "The Doom of Arkham: Phần I"
   },
   {
     "id": "the_doom_of_arkham_part_2",
-    "name": "The Doom of Arkham: Part II"
+    "name": "The Doom of Arkham: Phần II"
   },
   {
     "id": "the_drowned_quarter",
@@ -1105,7 +1105,7 @@
   },
   {
     "id": "the_first_evening",
-    "name": "The First Evening"
+    "name": "Buổi tối đầu tiên"
   },
   {
     "id": "the_foundation",
@@ -1217,7 +1217,7 @@
   },
   {
     "id": "the_second_evening",
-    "name": "The Second Evening"
+    "name": "Buổi tối thứ hai"
   },
   {
     "id": "the_secret_name",
@@ -1297,7 +1297,7 @@
   },
   {
     "id": "tokyo",
-    "name": "Special Delivery"
+    "name": "Chuyến Giao Hàng Đặc Biệt"
   },
   {
     "id": "tomb_of_dead_dreams",
@@ -1317,7 +1317,7 @@
   },
   {
     "id": "travelling",
-    "name": "While travelling..."
+    "name": "Trong khi di chuyển..."
   },
   {
     "id": "true_colours",
@@ -1361,7 +1361,7 @@
   },
   {
     "id": "war_council",
-    "name": "War Council"
+    "name": "Hội đồng Chiến tranh"
   },
   {
     "id": "war_of_the_outer_gods",
@@ -1405,7 +1405,7 @@
   },
   {
     "id": "zhod_interlude_1",
-    "name": "First Night Aboard the Roi des Belges"
+    "name": "Đêm Đầu Tiên Trên Tàu Roi des Belges"
   },
   {
     "id": "zhod_interlude_2",

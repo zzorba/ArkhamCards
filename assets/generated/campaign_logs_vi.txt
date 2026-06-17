@@ -7,79 +7,79 @@
         "entries": [
           {
             "id": "abigail_harbinger",
-            "text": "Abigail Foreman is the harbinger of Elokoss."
+            "text": "Abigail Foreman là sứ giả của Elokoss."
           },
           {
             "id": "cornelia_harbinger",
-            "text": "Cornelia Akely is the harbinger of Elokoss."
+            "text": "Cornelia Akely là sứ giả của Elokoss."
           },
           {
             "id": "david_harbinger",
-            "text": "David Renfield is the harbinger of Elokoss."
+            "text": "David Renfield là sứ giả của Elokoss."
           },
           {
             "id": "defeated_elokoss_and_the_brethren_of_ash",
-            "text": "the investigators defeated Elokoss and the Brethren of Ash."
+            "text": "các điều tra viên đã đánh bại Elokoss và Brethren of Ash."
           },
           {
             "id": "defeated_their_masked_pursuer",
-            "text": "the investigators defeated their masked pursuer."
+            "text": "các điều tra viên đã đánh bại kẻ truy đuổi đeo mặt nạ của họ."
           },
           {
             "id": "discovered_the_cults_whereabouts",
-            "text": "the investigators discovered the cult's whereabouts."
+            "text": "các điều tra viên đã phát hiện ra tung tích của giáo phái."
           },
           {
             "id": "earl_harbinger",
-            "text": "Sgt. Earl Monroe is the harbinger of Elokoss."
+            "text": "Sgt. Earl Monroe là sứ giả của Elokoss."
           },
           {
             "id": "elokoss_was_reborn",
-            "text": "Elokoss was reborn."
+            "text": "Elokoss đã tái sinh."
           },
           {
             "id": "failed_in_their_search",
-            "text": "the investigators failed in their search."
+            "text": "các điều tra viên đã thất bại trong cuộc tìm kiếm."
           },
           {
             "id": "flooded_the_ritual",
-            "text": "the investigators flooded the Brethren of Ash’s summoning ritual."
+            "text": "các điều tra viên đã làm ngập nghi thức triệu hồi của Brethren of Ash."
           },
           {
             "id": "killed_the_servant_of_flame",
-            "text": "the investigators killed the Servant of Flame"
+            "text": "các điều tra viên đã tiêu diệt Servant of Flame"
           },
           {
             "id": "margaret_harbinger",
-            "text": "Margaret Liu is the harbinger of Elokoss."
+            "text": "Margaret Liu là sứ giả của Elokoss."
           },
           {
             "id": "miskatonic_university_burned",
-            "text": "Miskatonic University burned."
+            "text": "Miskatonic University đã bị thiêu rụi."
           },
           {
             "id": "naomi_harbinger",
-            "text": "Naomi O'Bannion is the harbinger of Elokoss."
+            "text": "Naomi O'Bannion là sứ giả của Elokoss."
           },
           {
             "id": "saved_miskatonic_university",
-            "text": "the investigators saved Miskatonic University."
+            "text": "các điều tra viên đã cứu Miskatonic University."
           },
           {
             "id": "scoured_arkham_for_answers",
-            "text": "the investigators scoured Arkham for answers."
+            "text": "các điều tra viên đã lùng sục Arkham để tìm câu trả lời."
           },
           {
             "id": "stirred_up_trouble",
-            "text": "the investigators stirred up trouble."
+            "text": "các điều tra viên đã gây rắc rối."
           },
           {
             "id": "stopped_elokoss_glorious_rebirth",
-            "text": "the investigators stopped Elokoss’s glorious rebirth."
+            "text": "các điều tra viên đã ngăn chặn sự tái sinh vinh quang của Elokoss."
           },
           {
             "id": "the_servant_of_flame_escaped",
-            "text": "the Servant of Flame escaped."
+            "text": "Servant of Flame đã trốn thoát."
           }
         ]
       },
@@ -530,7 +530,7 @@
           },
           {
             "id": "surviving_investigators",
-            "text": "- #tên#"
+            "text": "- #name#"
           },
           {
             "id": "surviving_members_header",
@@ -538,7 +538,7 @@
           },
           {
             "id": "surviving_partners",
-            "text": "- #tên#"
+            "text": "- #name#"
           },
           {
             "id": "takada_has_confronted_her_demons",
@@ -1239,161 +1239,161 @@
         "entries": [
           {
             "id": "eat",
-            "masculine_text": "#name# finished his meal.",
-            "feminine_text": "#name# finished her meal.",
-            "nonbinary_text": "#name# finished their meal."
+            "masculine_text": "#name# đã dùng xong bữa.",
+            "feminine_text": "#name# đã dùng xong bữa.",
+            "nonbinary_text": "#name# đã dùng xong bữa."
           },
           {
             "id": "all_the_captives_were_lost",
-            "text": "all the captives were lost."
+            "text": "tất cả con tin đã thiệt mạng."
           },
           {
             "id": "barely_survived",
-            "text": "investigators barely survived the Feast of Hemlock Vale."
+            "text": "các điều tra viên chật vật mới sống sót qua Feast of Hemlock Vale."
           },
           {
             "id": "became_the_true_feast_of_hemlock_vale",
-            "text": "the investigators became the true Feast of Hemlock Vale."
+            "text": "các điều tra viên đã trở thành Feast of Hemlock Vale đích thực."
           },
           {
             "id": "believed",
-            "text": "the investigators believed."
+            "text": "các điều tra viên đã tin."
           },
           {
             "id": "bertie_had_an_epiphany",
-            "text": "Bertie had an epiphany."
+            "text": "Bertie đã bừng tỉnh ngộ."
           },
           {
             "id": "bertie_perished",
-            "text": "Bertie perished."
+            "text": "Bertie đã thiệt mạng."
           },
           {
             "id": "bertie_was_lost_in_the_woods",
-            "text": "Bertie was lost in the woods."
+            "text": "Bertie đã bị lạc trong rừng."
           },
           {
             "id": "bertie_was_rescued",
-            "text": "Bertie was rescued."
+            "text": "Bertie đã được giải cứu."
           },
           {
             "id": "captives_were_saved",
-            "text": "the captives were saved."
+            "text": "các con tin đã được cứu."
           },
           {
             "id": "chelydran_hybrid_devoured",
-            "text": "the Chelydran Hybrid was devoured."
+            "text": "the Chelydran Hybrid đã bị nuốt chửng."
           },
           {
             "id": "chelydran_hybrid_lived",
-            "text": "the Chelydran Hybrid lived."
+            "text": "the Chelydran Hybrid vẫn sống."
           },
           {
             "id": "chelydran_hybrid_perished",
-            "text": "the Chelydran Hybrid perished."
+            "text": "the Chelydran Hybrid đã chết."
           },
           {
             "id": "dr_marquez_has_a_hunch",
-            "text": "Dr. Marquez has a hunch."
+            "text": "Tiến sĩ Marquez có một linh cảm."
           },
           {
             "id": "dr_marquez_has_a_plan",
-            "text": "Dr. Marquez has a plan."
+            "text": "Dr. Marquez có một kế hoạch."
           },
           {
             "id": "dr_marquez_sacrificed_herself_for_the_vale",
-            "text": "Dr. Marquez sacrificed herself for the Vale."
+            "text": "Dr. Marquez đã hy sinh bản thân cho Vale."
           },
           {
             "id": "elizabeth_peters_was_saved",
-            "text": "Elizabeth Peters was saved."
+            "text": "Elizabeth Peters đã được cứu."
           },
           {
             "id": "faced_the_night_alone",
-            "text": "the investigators faced the longest night alone."
+            "text": "các điều tra viên đã đơn độc đối mặt với đêm dài nhất."
           },
           {
             "id": "helen_peters_joined_the_survey",
-            "text": "Helen Peters joined the survey."
+            "text": "Helen Peters đã tham gia đoàn khảo sát."
           },
           {
             "id": "helen_shared_a_dance",
-            "text": "Helen shared a dance."
+            "text": "Helen đã cùng nhảy một điệu."
           },
           {
             "id": "interrupted_the_feast",
-            "text": "the investigators interrupted the Feast."
+            "text": "các điều tra viên đã làm gián đoạn Bữa tiệc."
           },
           {
             "id": "investigators_sacrificed_themselves_for_the_vale",
-            "text": "the investigators sacrificed themselves for the Vale."
+            "text": "các điều tra viên đã hy sinh bản thân cho Vale."
           },
           {
             "id": "laid_the_pearl_family_to_rest",
-            "text": "the investigators laid the Pearl Family to rest."
+            "text": "các điều tra viên đã cho Pearl Family yên nghỉ."
           },
           {
             "id": "learned_their_place",
-            "text": "the investigators learned their place."
+            "text": "các điều tra viên đã biết thân phận của mình."
           },
           {
             "id": "lied_to_mother_rachel",
-            "text": "the investigators lied to Mother Rachel."
+            "text": "các điều tra viên đã nói dối Mother Rachel."
           },
           {
             "id": "lost_the_path",
-            "text": "the investigators lost the path."
+            "text": "các điều tra viên đã lạc đường."
           },
           {
             "id": "madame_pearls_diary_was_recovered",
-            "text": "Madame Pearl’s diary was recovered."
+            "text": "Nhật ký của Madame Pearl đã được tìm thấy."
           },
           {
             "id": "many_captives_were_lost",
-            "text": "many captives were lost."
+            "text": "nhiều con tin đã thiệt mạng."
           },
           {
             "id": "mother_rachel_showed_the_way",
-            "text": "Mother Rachel showed the way."
+            "text": "Mẹ Rachel đã chỉ đường."
           },
           {
             "id": "remains_were_partially_recovered",
-            "text": "the remains were partially recovered."
+            "text": "hài cốt đã được thu hồi một phần."
           },
           {
             "id": "river_shared_their_ambitions",
-            "text": "River shared their ambitions."
+            "text": "River đã chia sẻ tham vọng của họ."
           },
           {
             "id": "survived_the_horrors_in_the_rock",
-            "text": "the investigators survived the horrors in the rock."
+            "text": "các điều tra viên đã sống sót qua những nỗi kinh hoàng trong tảng đá."
           },
           {
             "id": "the_bear_was_wounded",
-            "text": "the bear was wounded."
+            "text": "con gấu đã bị thương."
           },
           {
             "id": "the_hemlocks_made_a_truce",
-            "text": "the Hemlocks made a truce."
+            "text": "nhà Hemlock đã đình chiến."
           },
           {
             "id": "the_peters_family_was_reunited",
-            "text": "The Peters family was reunited."
+            "text": "Gia đình Peters đã được đoàn tụ."
           },
           {
             "id": "the_vale_burned",
-            "text": "the Vale burned."
+            "text": "the Vale đã bị thiêu rụi."
           },
           {
             "id": "the_vale_is_full_of_fireworks",
-            "text": "The Vale is full of fireworks."
+            "text": "The Vale tràn ngập pháo hoa."
           },
           {
             "id": "the_vale_was_saved",
-            "text": "the Vale was saved."
+            "text": "the Vale đã được cứu."
           },
           {
             "id": "thing_in_the_depths_was_defeated",
-            "text": "The Thing in the Depths was defeated."
+            "text": "The Thing in the Depths đã bị đánh bại."
           }
         ]
       },
@@ -1402,27 +1402,27 @@
         "entries": [
           {
             "id": "day_1_day",
-            "text": "Day 1 ([day])"
+            "text": "Ngày 1 ([day])"
           },
           {
             "id": "day_1_night",
-            "text": "Night 1 ([night])"
+            "text": "Đêm 1 ([night])"
           },
           {
             "id": "day_2_day",
-            "text": "Day 2 ([day])"
+            "text": "Ngày 2 ([day])"
           },
           {
             "id": "day_2_night",
-            "text": "Night 2 ([night])"
+            "text": "Đêm 2 ([night])"
           },
           {
             "id": "day_3_day",
-            "text": "Day 3 ([day])"
+            "text": "Ngày 3 ([day])"
           },
           {
             "id": "day_3_night",
-            "text": "Night 3 ([night])"
+            "text": "Đêm 3 ([night])"
           }
         ]
       },
@@ -1431,31 +1431,31 @@
         "entries": [
           {
             "id": "gideon_finished_the_tale_of_the_annabelle_lee",
-            "text": "Gideon finished the tale of the Annabelle Lee."
+            "text": "Gideon đã kể xong câu chuyện về tàu Annabelle Lee."
           },
           {
             "id": "gideon_found_his_treasure",
-            "text": "Gideon found his treasure."
+            "text": "Gideon đã tìm thấy kho báu của mình."
           },
           {
             "id": "gideon_sacrificed_himself",
-            "text": "Gideon Mizrah sacrificed himself for the investigators."
+            "text": "Gideon Mizrah đã hy sinh bản thân vì các điều tra viên."
           },
           {
             "id": "gideon_shared_a_dance",
-            "text": "Gideon shared a dance."
+            "text": "Gideon đã nhảy một điệu."
           },
           {
             "id": "gideon_stood_by_you",
-            "text": "Gideon stood by you."
+            "text": "Gideon đã sát cánh cùng bạn."
           },
           {
             "id": "gideon_told_the_story_of_captain_hemlock",
-            "text": "Gideon told the story of Captain Hemlock."
+            "text": "Gideon đã kể câu chuyện về Captain Hemlock."
           },
           {
             "id": "gideon_told_the_tale_of_the_annabelle_lee",
-            "text": "Gideon told the tale of the Annabelle Lee."
+            "text": "Gideon đã kể câu chuyện về tàu Annabelle Lee."
           }
         ]
       },
@@ -2181,27 +2181,27 @@
         "entries": [
           {
             "id": "judith_sacrificed_himself",
-            "text": "Judith Park sacrificed herself for the investigators."
+            "text": "Judith Park đã hy sinh bản thân vì các điều tra viên."
           },
           {
             "id": "judith_saved_your_ass",
-            "text": "Judith saved your ass."
+            "text": "Judith đã cứu mạng bạn."
           },
           {
             "id": "judith_shared_a_dance",
-            "text": "Judith shared a dance."
+            "text": "Judith đã nhảy một điệu."
           },
           {
             "id": "judith_shared_a_grudge",
-            "text": "Judith shared a grudge."
+            "text": "Judith đã chia sẻ một mối hận thù."
           },
           {
             "id": "judith_stood_by_you",
-            "text": "Judith stood by you."
+            "text": "Judith đã sát cánh cùng bạn."
           },
           {
             "id": "you_backed_judith_up",
-            "text": "you backed Judith up."
+            "text": "bạn đã hỗ trợ Judith."
           }
         ]
       },
@@ -2210,35 +2210,35 @@
         "entries": [
           {
             "id": "leah_and_simeon_were_reunited",
-            "text": "Leah and Simeon were reunited."
+            "text": "Leah và Simeon đã đoàn tụ."
           },
           {
             "id": "leah_is_searching_for_simeon",
-            "text": "Leah is searching for Simeon."
+            "text": "Leah đang tìm kiếm Simeon."
           },
           {
             "id": "leah_sacrificed_himself",
-            "text": "Leah Atwood sacrificed herself for the investigators."
+            "text": "Leah Atwood đã hy sinh bản thân vì các điều tra viên."
           },
           {
             "id": "leah_saw_something_in_the_mine",
-            "text": "Leah saw something in the mine."
+            "text": "Leah đã thấy thứ gì đó trong khu mỏ."
           },
           {
             "id": "leah_shared_a_dance",
-            "text": "Leah shared a dance."
+            "text": "Leah đã cùng khiêu vũ."
           },
           {
             "id": "leah_shared_her_frustrations",
-            "text": "Leah shared her frustrations."
+            "text": "Leah đã chia sẻ những nỗi bực dọc của cô ấy."
           },
           {
             "id": "leah_stood_by_you",
-            "text": "Leah stood by you."
+            "text": "Leah đã sát cánh cùng bạn."
           },
           {
             "id": "searched_the_pearl_ruins",
-            "text": "Leah searched the Pearl Ruins."
+            "text": "Leah đã tìm kiếm Pearl Ruins."
           }
         ]
       },
@@ -2247,11 +2247,11 @@
         "entries": [
           {
             "id": "mother_rachel_intervened",
-            "text": "Mother Rachel intervened."
+            "text": "Mother Rachel đã can thiệp."
           },
           {
             "id": "mother_rachel_shared_her_doubts",
-            "text": "Mother Rachel shared her doubts."
+            "text": "Mother Rachel đã chia sẻ những nghi ngờ của bà."
           }
         ]
       },
@@ -2260,23 +2260,23 @@
         "entries": [
           {
             "id": "river_is_reclaiming_their_legacy",
-            "text": "River is reclaiming their legacy."
+            "text": "River đang đòi lại di sản của mình."
           },
           {
             "id": "river_sacrificed_himself",
-            "text": "River Hawthorne sacrificed themself for the investigators."
+            "text": "River Hawthorne đã hy sinh bản thân vì các điều tra viên."
           },
           {
             "id": "river_shared_a_dance",
-            "text": "River shared a dance."
+            "text": "River đã cùng khiêu vũ."
           },
           {
             "id": "river_stood_by_you",
-            "text": "River stood by you."
+            "text": "River đã sát cánh cùng bạn."
           },
           {
             "id": "scheme_is_in_motion",
-            "text": "the scheme is in motion."
+            "text": "kế hoạch đang được tiến hành."
           }
         ]
       },
@@ -2285,7 +2285,7 @@
         "entries": [
           {
             "id": "plan_is_underway",
-            "text": "the plan is underway."
+            "text": "kế hoạch đang được tiến hành."
           },
           {
             "id": "plan_is_underway_count",
@@ -2293,27 +2293,27 @@
           },
           {
             "id": "simeon_disappeared",
-            "text": "Simeon disappeared."
+            "text": "Simeon đã biến mất."
           },
           {
             "id": "simeon_hatched_a_plan",
-            "text": "Simeon hatched a plan."
+            "text": "Simeon đã vạch ra một kế hoạch."
           },
           {
             "id": "simeon_sacrificed_himself",
-            "text": "Simeon Atwood sacrificed himself for the investigators."
+            "text": "Simeon Atwood đã hy sinh bản thân vì các điều tra viên."
           },
           {
             "id": "simeon_shared_a_dance",
-            "text": "Simeon shared a dance."
+            "text": "Simeon đã cùng khiêu vũ."
           },
           {
             "id": "simeon_stood_by_you",
-            "text": "Simeon stood by you."
+            "text": "Simeon đã sát cánh cùng bạn."
           },
           {
             "id": "simeon_survived",
-            "text": "Simeon survived."
+            "text": "Simeon đã sống sót."
           }
         ]
       },
@@ -2322,31 +2322,31 @@
         "entries": [
           {
             "id": "theo_distracted_the_bear",
-            "text": "Theo Distracted the Bear."
+            "text": "Theo đã đánh lạc hướng con Gấu."
           },
           {
             "id": "theo_is_having_second_thoughts",
-            "text": "Theo is having second thoughts."
+            "text": "Theo đang nghĩ lại."
           },
           {
             "id": "theo_reconciled_with_helen",
-            "text": "Theo reconciled with Helen."
+            "text": "Theo đã làm hòa với Helen."
           },
           {
             "id": "theo_rejected_his_family",
-            "text": "Theo rejected his family."
+            "text": "Theo đã chối bỏ gia đình mình."
           },
           {
             "id": "theo_sacrificed_himself",
-            "text": "Theo Peters sacrificed himself for the investigators."
+            "text": "Theo Peters đã hy sinh bản thân vì các điều tra viên."
           },
           {
             "id": "theo_shared_a_dance",
-            "text": "Theo shared a dance."
+            "text": "Theo đã nhảy một điệu."
           },
           {
             "id": "theo_stood_by_you",
-            "text": "Theo stood by you."
+            "text": "Theo đã sát cánh cùng bạn."
           }
         ]
       },
@@ -2355,27 +2355,27 @@
         "entries": [
           {
             "id": "william_is_resolved",
-            "text": "William is resolved."
+            "text": "William đã quyết tâm."
           },
           {
             "id": "william_sacrificed_himself",
-            "text": "William Hemlock sacrificed himself for the investigators."
+            "text": "William Hemlock đã hy sinh bản thân vì các điều tra viên."
           },
           {
             "id": "william_shared_a_dance",
-            "text": "William shared a dance."
+            "text": "William đã cùng khiêu vũ."
           },
           {
             "id": "william_shared_his_legacy",
-            "text": "William shared his legacy."
+            "text": "William đã chia sẻ về di sản của mình."
           },
           {
             "id": "william_stood_by_you",
-            "text": "William stood by you."
+            "text": "William đã sát cánh cùng bạn."
           },
           {
             "id": "william_took_heart",
-            "text": "William took heart."
+            "text": "William đã vững tâm."
           }
         ]
       }
@@ -2390,43 +2390,43 @@
         "entries": [
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "nhóm đã can thiệp vào chuyện của Abarran."
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "Mức độ báo động: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "các điều tra viên đã vét sạch nhà cái."
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "các điều tra viên đã thuyết phục Isamara tham gia vụ cướp."
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "các điều tra viên đã tìm thấy một lỗ thông hơi."
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "các điều tra viên đã đóng giả một tay chơi lớn."
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "các điều tra viên cần thời gian để nghỉ ngơi."
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "các điều tra viên đã lấy được đồng phục nhân viên."
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "Đã cất giấu: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "các điều tra viên đã đánh cắp chìa khóa của Abarran."
           },
           {
             "id": "fof_the_face",
@@ -2442,7 +2442,7 @@
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#: Kẻ Lừa Đảo (Practiced)"
           },
           {
             "id": "fof_the_muscle",
@@ -2458,11 +2458,11 @@
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#: Kẻ Trộm (Practiced)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "Manh mối trên The Wellspring of Fortune: #X#"
           }
         ]
       },
@@ -2526,27 +2526,27 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# đã bị the abyss nuốt chửng.",
+            "feminine_text": "#name# đã bị the abyss nuốt chửng.",
+            "nonbinary_text": "#name# đã bị the abyss nuốt chửng."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# đã bị the abyss nuốt chửng.",
+            "feminine_text": "#name# đã bị the abyss nuốt chửng.",
+            "nonbinary_text": "#name# đã bị the abyss nuốt chửng."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "bạn đã biết về kế hoạch của Xzharah."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "âm mưu của Brotherhood vẫn tiếp diễn mà không bị cản trở."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "lời nguyền giấc ngủ đã được hóa giải."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
@@ -2558,15 +2558,15 @@
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "Ngày Phán Xét đang đến."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
+            "text": "bạn đã hợp sức với Xzharah."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "the Abyss đã được cứu."
           }
         ]
       }
@@ -2583,13 +2583,13 @@
             "id": "possessed",
             "masculine_text": "#name# bị chiếm hữu.",
             "feminine_text": "#name# bị chiếm hữu.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# đã bị nhập."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
             "feminine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# đã đọc Act 2 của The King in Yellow."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -2657,7 +2657,7 @@
           },
           {
             "id": "king_claimed_victims",
-            "text": "Nhà vua đã tuyên bố các nạn nhân của nó."
+            "text": "Nh? Vua ?? ?o?t l?y c?c n?n nh?n c?a h?n."
           },
           {
             "id": "know_site_of_gate",
@@ -3015,13 +3015,13 @@
             "id": "possessed",
             "masculine_text": "#name# bị chiếm hữu.",
             "feminine_text": "#name# bị chiếm hữu.",
-            "nonbinary_text": "#name# was possessed."
+            "nonbinary_text": "#name# đã bị nhập."
           },
           {
             "id": "read_act_2",
             "masculine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
             "feminine_text": "#name# đọc Act 2 của vở kịch Vị Vua Áo Vàng.",
-            "nonbinary_text": "#name# read Act 2 of The King in Yellow."
+            "nonbinary_text": "#name# đã đọc Act 2 của The King in Yellow."
           },
           {
             "id": "attacked_as_you_escaped_arkham",
@@ -3089,7 +3089,7 @@
           },
           {
             "id": "king_claimed_victims",
-            "text": "Nhà vua đã tuyên bố các nạn nhân của nó."
+            "text": "Nh? Vua ?? ?o?t l?y c?c n?n nh?n c?a h?n."
           },
           {
             "id": "know_site_of_gate",
@@ -3386,7 +3386,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth.",
             "feminine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# đã gia nhập những kẻ thổi sáo của Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -3903,7 +3903,7 @@
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "các điều tra viên đã phong ấn Relic of Ages mãi mãi."
           },
           {
             "id": "turned_back_time",
@@ -3944,11 +3944,11 @@
           },
           {
             "id": "agenda_5",
-            "text": "hidden"
+            "text": "ẩn"
           },
           {
             "id": "agenda_6",
-            "text": "hidden"
+            "text": "ẩn"
           },
           {
             "id": "doy_cross_off_rope",
@@ -4448,7 +4448,7 @@
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "sự thật kinh hoàng"
           },
           {
             "id": "lifecycle_of_a_deep_one",
@@ -4537,91 +4537,91 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# đã bị the abyss nuốt chửng.",
+            "feminine_text": "#name# đã bị the abyss nuốt chửng.",
+            "nonbinary_text": "#name# đã bị the abyss nuốt chửng."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# đã bị the abyss nuốt chửng.",
+            "feminine_text": "#name# đã bị the abyss nuốt chửng.",
+            "nonbinary_text": "#name# đã bị the abyss nuốt chửng."
           },
           {
             "id": "atw_bernards_fate",
-            "text": "you have discovered Bernard's fate."
+            "text": "bạn đã khám phá ra số phận của Bernard."
           },
           {
             "id": "atw_custodian_of_knowledge",
-            "text": "you are the custodian of Ithaqua's knowledge."
+            "text": "bạn là người trông coi kiến thức của Ithaqua."
           },
           {
             "id": "atw_defeated_the_wendigo",
-            "text": "you defated the Wendigo."
+            "text": "bạn đã đánh bại Wendigo."
           },
           {
             "id": "atw_discovered_the_fate_of_the_students",
-            "text": "you have discovered the fate of Dr. Nadelmann's students."
+            "text": "bạn đã khám phá ra số phận các sinh viên của Tiến sĩ Nadelmann."
           },
           {
             "id": "atw_found_the_gold",
-            "text": "you have found Hanninah's gold."
+            "text": "bạn đã tìm thấy vàng của Hanninah."
           },
           {
             "id": "atw_have_enough_evidence",
-            "text": "you have enough evidence to clear Dr. Nadelmann."
+            "text": "bạn đã có đủ bằng chứng để minh oan cho Tiến sĩ Nadelmann."
           },
           {
             "id": "atw_norman_alive",
-            "text": "Norman is alive."
+            "text": "Norman còn sống."
           },
           {
             "id": "atw_norman_dead",
-            "text": "You let Norman die."
+            "text": "Bạn đã để Norman chết."
           },
           {
             "id": "atw_normans_fate",
-            "text": "you have discovered Norman's fate."
+            "text": "bạn đã khám phá ra số phận của Norman."
           },
           {
             "id": "atw_sarcee_are_hunting",
-            "text": "the Sarcee are hunting you down."
+            "text": "người Sarcee đang săn lùng bạn."
           },
           {
             "id": "atw_saved_charlie",
-            "text": "you saved Charlie."
+            "text": "bạn đã cứu Charlie."
           },
           {
             "id": "atw_saved_the_gold_prospector",
-            "text": "you saved the gold prospector."
+            "text": "bạn đã cứu người đào vàng."
           },
           {
             "id": "atw_sylvias_fate",
-            "text": "you have discovered Sylvia's fate."
+            "text": "bạn đã khám phá ra số phận của Sylvia."
           },
           {
             "id": "atw_wendigo_still_roams",
-            "text": "you know that the Wendigo still roams the North Hanninah valley."
+            "text": "bạn biết rằng Wendigo vẫn lang thang trong thung lũng North Hanninah."
           },
           {
             "id": "banished_shax",
-            "text": "the investigators banished Shax."
+            "text": "các điều tra viên đã trục xuất Shax."
           },
           {
             "id": "banished_the_gilded_spirit",
-            "text": "the investigators banished the gilded spirit."
+            "text": "các điều tra viên đã trục xuất linh hồn mạ vàng."
           },
           {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "anomaly đã được khống chế."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subject 8L-08 đã nuốt chửng toàn bộ vũ trụ."
           },
           {
             "id": "cell_meddled_in_abarrans_affairs",
-            "text": "the cell meddled in Abarran’s affairs."
+            "text": "nhóm đã can thiệp vào chuyện của Abarran."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -4637,67 +4637,67 @@
           },
           {
             "id": "constellation_was_lost_to_the_depths",
-            "text": "the Constellation was lost to the depths."
+            "text": "Constellation đã chìm xuống đáy sâu."
           },
           {
             "id": "constellation_was_saved",
-            "text": "the Constellation was saved."
+            "text": "Constellation đã được cứu."
           },
           {
             "id": "dario_was_turned_into_solid_gold",
-            "text": "Dario was turned into solid gold."
+            "text": "Dario đã bị biến thành vàng ròng."
           },
           {
             "id": "darios_investment_didnt_pay_off",
-            "text": "Dario's investment didn't pay off."
+            "text": "Khoản đầu tư của Dario đã không sinh lời."
           },
           {
             "id": "dr_maleson_was_lost_between_dimensions",
-            "text": "Dr. Maleson was lost between dimensions."
+            "text": "Dr. Maleson đã bị lạc giữa các chiều không gian."
           },
           {
             "id": "dr_malesons_experiment_was_a_failure",
-            "text": "Dr. Maleson's experiment was a failure."
+            "text": "Thí nghiệm của Dr. Maleson đã thất bại."
           },
           {
             "id": "drill_broke_down",
-            "text": "the drill broke down."
+            "text": "máy khoan đã hỏng."
           },
           {
             "id": "fof_alarm_level",
-            "text": "Alarm level: #name# (#X#)"
+            "text": "Mức độ báo động: #name# (#X#)"
           },
           {
             "id": "fof_cleaned_out_the_house",
-            "text": "the investigators cleaned out the house."
+            "text": "các điều tra viên đã vét sạch nhà cái."
           },
           {
             "id": "fof_convinced_isamara",
-            "text": "the investigators convinced Isamara to participate in the heist."
+            "text": "các điều tra viên đã thuyết phục Isamara tham gia vụ cướp."
           },
           {
             "id": "fof_found_a_vent",
-            "text": "the investigators found a vent."
+            "text": "các điều tra viên đã tìm thấy một lỗ thông hơi."
           },
           {
             "id": "fof_impersonated_a_high_roller",
-            "text": "the investigators impersonated a high roller."
+            "text": "các điều tra viên đã đóng giả một tay chơi lớn."
           },
           {
             "id": "fof_need_time_to_rest",
-            "text": "the investigators need time to rest."
+            "text": "các điều tra viên cần thời gian để nghỉ ngơi."
           },
           {
             "id": "fof_obtained_an_uniform",
-            "text": "the investigators obtained an employee uniform."
+            "text": "các điều tra viên đã lấy được đồng phục nhân viên."
           },
           {
             "id": "fof_stashed",
-            "text": "Stashed: #name# (#X#)"
+            "text": "Đã cất giấu: #name# (#X#)"
           },
           {
             "id": "fof_stole_keys",
-            "text": "the investigators stole Abarran's keys."
+            "text": "các điều tra viên đã đánh cắp chìa khóa của Abarran."
           },
           {
             "id": "fof_the_face",
@@ -4713,7 +4713,7 @@
           },
           {
             "id": "fof_the_grifter_practiced",
-            "text": "#name#: The Grifter (Practiced)"
+            "text": "#name#: Kẻ Lừa Đảo (Practiced)"
           },
           {
             "id": "fof_the_muscle",
@@ -4729,27 +4729,27 @@
           },
           {
             "id": "fof_the_thief_practiced",
-            "text": "#name#: The Thief (Practiced)"
+            "text": "#name#: Kẻ Trộm (Practiced)"
           },
           {
             "id": "fof_wellspring_clues",
-            "text": "Clues on The Wellspring of Fortune: #X#"
+            "text": "Manh mối trên The Wellspring of Fortune: #X#"
           },
           {
             "id": "gathered_samples_from_another_earth",
-            "text": "the investigators gathered samples from another Earth."
+            "text": "các điều tra viên đã thu thập mẫu vật từ một Trái Đất khác."
           },
           {
             "id": "halted_the_blood_ceremony",
-            "text": "the investigators halted the blood ceremony."
+            "text": "các điều tra viên đã ngăn chặn nghi lễ máu."
           },
           {
             "id": "madame_labranche_has_lost_her_fortune",
-            "text": "Madame Labranche has lost her fortune."
+            "text": "Madame Labranche đã mất gia tài của mình."
           },
           {
             "id": "madame_labranche_has_settled_accounts",
-            "text": "Madame Labranche has settled accounts."
+            "text": "Madame Labranche đã thanh toán sổ sách."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
@@ -4769,35 +4769,35 @@
           },
           {
             "id": "observed_the_aftereffects_of_the_shift",
-            "text": "the investigators observed the aftereffects of the shift."
+            "text": "các điều tra viên đã quan sát những hệ quả của sự dịch chuyển."
           },
           {
             "id": "olive_has_sworn_off_blood_magic",
-            "text": "Olive has sworn off blood magic."
+            "text": "Olive đã thề từ bỏ ma thuật máu."
           },
           {
             "id": "olive_paid_the_price_for_her_curiosity",
-            "text": "Olive paid the price for her curiosity."
+            "text": "Olive đã phải trả giá cho sự tò mò của mình."
           },
           {
             "id": "purged_the_police_station",
-            "text": "the investigators purged the police station."
+            "text": "các điều tra viên đã thanh tẩy đồn cảnh sát."
           },
           {
             "id": "renewed_the_labranches_pact",
-            "text": "the investigators renewed the Labranches' pact."
+            "text": "các điều tra viên đã gia hạn giao ước của nhà Labranche."
           },
           {
             "id": "repaired_the_golden_artifact",
-            "text": "the investigators repaired the golden artifact."
+            "text": "các điều tra viên đã sửa chữa cổ vật bằng vàng."
           },
           {
             "id": "ritual_at_sea_was_completed",
-            "text": "the ritual at sea was completed."
+            "text": "nghi thức trên biển đã hoàn tất."
           },
           {
             "id": "ritual_at_sea_was_halted",
-            "text": "the ritual at sea was halted."
+            "text": "nghi thức trên biển đã bị ngăn chặn."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
@@ -4813,19 +4813,19 @@
           },
           {
             "id": "saved_the_mutated_officer",
-            "text": "the investigators saved the mutated officer."
+            "text": "các điều tra viên đã cứu viên cảnh sát bị đột biến."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "bạn đã biết về kế hoạch của Xzharah."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "âm mưu của Brotherhood vẫn tiếp diễn mà không bị cản trở."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "lời nguyền giấc ngủ đã được hóa giải."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
@@ -4837,79 +4837,79 @@
           },
           {
             "id": "testsuo_made_a_noble_sacrifice",
-            "text": "Tetsuo made a noble sacrifice."
+            "text": "Tetsuo đã hy sinh cao cả."
           },
           {
             "id": "tetsuos_investigation_has_failed",
-            "text": "Tetsuo's investigation has failed."
+            "text": "Cuộc điều tra của Tetsuo đã thất bại."
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "Ngày Phán Xét đang đến."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
+            "text": "bạn đã hợp sức với Xzharah."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "the Abyss đã được cứu."
           },
           {
             "id": "used_the_sorcrerers_magic_against_them",
-            "text": "the investigators used the sorcerers' magic against them."
+            "text": "các điều tra viên đã sử dụng ma thuật của những phù thủy để chống lại chính chúng."
           },
           {
             "id": "world_screamed",
-            "text": "the World screamed."
+            "text": "thế giới đã gào thét."
           },
           {
             "id": "zbs_have_seen_and_understood",
-            "text": "you have seen, and understood."
+            "text": "bạn đã thấy, và đã hiểu."
           },
           {
             "id": "zbs_the_monolith_broods_in_silence",
-            "text": "the monolith broods in silence."
+            "text": "khối cự thạch trầm ngâm trong im lặng."
           },
           {
             "id": "zcos_abandoned_the_people_of_eastwick",
-            "text": "you abandoned the people of Eastwick."
+            "text": "bạn đã bỏ rơi người dân Eastwick."
           },
           {
             "id": "zcos_fended_off_an_alien_entity",
-            "text": "you fended off an alien entity."
+            "text": "bạn đã đánh đuổi một thực thể ngoài hành tinh."
           },
           {
             "id": "zcos_slaughtered_the_people_of_eastwick",
-            "text": "you slaughtered the people of Eastwick."
+            "text": "bạn đã tàn sát người dân Eastwick."
           },
           {
             "id": "zez_all_is_quiet",
-            "text": "all is quiet at Rue d'Auseil… for now."
+            "text": "mọi thứ đều yên tĩnh tại Rue d'Auseil… tạm thời là vậy."
           },
           {
             "id": "zhu_avenged_the_house_of_usher",
-            "text": "the investigators avenged the House of Usher."
+            "text": "các điều tra viên đã trả thù cho gia tộc Usher."
           },
           {
             "id": "zhu_house_of_usher_has_fallen",
-            "text": "the House of Usher has fallen."
+            "text": "the House of Usher đã sụp đổ."
           },
           {
             "id": "zlf_ignis_destroy_humanity",
-            "text": "Ignis will bring about the destruction of humanity."
+            "text": "Ignis sẽ mang đến sự diệt vong cho nhân loại."
           },
           {
             "id": "zlf_ignis_spirit_has_been_crushed",
-            "text": "Ignis’ spirit has been crushed."
+            "text": "Linh hồn của Ignis đã bị nghiền nát."
           },
           {
             "id": "zlf_italy_has_ceased_to_exist",
-            "text": "Italy has ceased to exist."
+            "text": "Italy đã không còn tồn tại."
           },
           {
             "id": "zlf_slain_the_eldrich_god",
-            "text": "you have slain the eldrich god of fire."
+            "text": "Bạn đã tiêu diệt vị thần lửa eldritch."
           }
         ]
       },
@@ -5308,7 +5308,7 @@
             "id": "lead_investigator_joins_pipers",
             "masculine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth.",
             "feminine_text": "#name# đã tham gia vào những người thổi sáo của Azathoth.",
-            "nonbinary_text": "#name# has joined the pipers of Azathoth."
+            "nonbinary_text": "#name# đã gia nhập những kẻ thổi sáo của Azathoth."
           },
           {
             "id": "accepted_fate",
@@ -5593,35 +5593,35 @@
         "entries": [
           {
             "id": "do_no_harm",
-            "text": "Task Progress - Do No Harm:"
+            "text": "Tiến độ Nhiệm vụ - Do No Harm:"
           },
           {
             "id": "dreams_of_destruction",
-            "text": "Task Progress - Dreams of Destruction:"
+            "text": "Tiến độ Nhiệm vụ - Dreams of Destruction:"
           },
           {
             "id": "good_money",
-            "text": "Task Progress - Good Money:"
+            "text": "Tiến độ Nhiệm vụ - Good Money:"
           },
           {
             "id": "no_place_like_home",
-            "text": "Task Progress - No Place Like Home:"
+            "text": "Tiến độ Nhiệm vụ - No Place Like Home:"
           },
           {
             "id": "plumb_the_depths",
-            "text": "Task Progress - Plumb the Depths:"
+            "text": "Tiến độ Nhiệm vụ - Plumb the Depths:"
           },
           {
             "id": "prove_your_worth",
-            "text": "Task Progress - Prove Your Worth:"
+            "text": "Tiến độ Nhiệm vụ - Prove Your Worth:"
           },
           {
             "id": "toe_the_line",
-            "text": "Task Progress - Toe the Line:"
+            "text": "Tiến độ Nhiệm vụ - Toe the Line:"
           },
           {
             "id": "walk_in_faith",
-            "text": "Task Progress - Walk in Faith:"
+            "text": "Tiến độ Nhiệm vụ - Walk in Faith:"
           }
         ]
       },
@@ -5658,136 +5658,136 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "no_place_like_home_succeed",
-            "masculine_text": "#name# found his true home.",
-            "feminine_text": "#name# found her true home.",
-            "nonbinary_text": "#name# found their true home."
-          },
-          {
-            "id": "toe_the_line_succeed",
-            "masculine_text": "#name# found new work.",
-            "feminine_text": "#name# found new work.",
-            "nonbinary_text": "#name# found new work."
-          },
-          {
             "id": "walk_in_faith_succeed",
-            "masculine_text": "#name# is strong in their faith.",
-            "feminine_text": "#name# is strong in their faith.",
-            "nonbinary_text": "#name# is strong in their faith."
-          },
-          {
-            "id": "plumb_the_depths_succeed",
-            "masculine_text": "#name# learned the secret truth.",
-            "feminine_text": "#name# learned the secret truth.",
-            "nonbinary_text": "#name# learned the secret truth."
-          },
-          {
-            "id": "good_money_succeed",
-            "masculine_text": "#name# made bank.",
-            "feminine_text": "#name# made bank.",
-            "nonbinary_text": "#name# made bank."
-          },
-          {
-            "id": "prove_your_worth_succeed",
-            "masculine_text": "#name# pulled their weight.",
-            "feminine_text": "#name# pulled their weight.",
-            "nonbinary_text": "#name# pulled their weight."
-          },
-          {
-            "id": "do_no_harm_succeed",
-            "masculine_text": "#name# swore an oath to protect others.",
-            "feminine_text": "#name# swore an oath to protect others.",
-            "nonbinary_text": "#name# swore an oath to protect others."
+            "masculine_text": "#name# có đức tin vững vàng.",
+            "feminine_text": "#name# có đức tin vững vàng.",
+            "nonbinary_text": "#name# có đức tin vững vàng."
           },
           {
             "id": "dreams_of_destruction_succeed",
-            "masculine_text": "#name# understands the future.",
-            "feminine_text": "#name# understands the future.",
-            "nonbinary_text": "#name# understands the future."
+            "masculine_text": "#name# hiểu được tương lai.",
+            "feminine_text": "#name# hiểu được tương lai.",
+            "nonbinary_text": "#name# hiểu được tương lai."
+          },
+          {
+            "id": "plumb_the_depths_succeed",
+            "masculine_text": "#name# đã biết được sự thật ẩn giấu.",
+            "feminine_text": "#name# đã biết được sự thật ẩn giấu.",
+            "nonbinary_text": "#name# đã biết được sự thật ẩn giấu."
+          },
+          {
+            "id": "prove_your_worth_succeed",
+            "masculine_text": "#name# đã hoàn thành phần việc của mình.",
+            "feminine_text": "#name# đã hoàn thành phần việc của mình.",
+            "nonbinary_text": "#name# đã hoàn thành phần việc của mình."
+          },
+          {
+            "id": "do_no_harm_succeed",
+            "masculine_text": "#name# đã thề sẽ bảo vệ người khác.",
+            "feminine_text": "#name# đã thề sẽ bảo vệ người khác.",
+            "nonbinary_text": "#name# đã thề sẽ bảo vệ người khác."
+          },
+          {
+            "id": "no_place_like_home_succeed",
+            "masculine_text": "#name# đã tìm thấy ngôi nhà thực sự của anh ấy.",
+            "feminine_text": "#name# đã tìm thấy ngôi nhà thực sự của cô ấy.",
+            "nonbinary_text": "#name# đã tìm thấy ngôi nhà thực sự của họ."
+          },
+          {
+            "id": "toe_the_line_succeed",
+            "masculine_text": "#name# đã tìm được công việc mới.",
+            "feminine_text": "#name# đã tìm được công việc mới.",
+            "nonbinary_text": "#name# đã tìm được công việc mới."
+          },
+          {
+            "id": "good_money_succeed",
+            "masculine_text": "#name# đã vớ bẫm.",
+            "feminine_text": "#name# đã vớ bẫm.",
+            "nonbinary_text": "#name# đã vớ bẫm."
           },
           {
             "id": "cthulhu_annihilated_the_city_of_arkham",
-            "text": "Cthulhu annihilated the city of Arkham."
+            "text": "Cthulhu đã hủy diệt thành phố Arkham."
           },
           {
             "id": "cthulhu_was_banished",
-            "text": "Cthulhu was banished."
+            "text": "Cthulhu đã bị trục xuất."
           },
           {
             "id": "cthulhu_was_banished_but_arkham_was_destroyed",
-            "text": "Cthulhu was banished, but Arkham was destroyed."
+            "text": "Cthulhu đã bị trục xuất, nhưng Arkham đã bị phá hủy."
           },
           {
             "id": "cthulhu_was_driven_away",
-            "text": "Cthulhu was driven away."
+            "text": "Cthulhu đã bị xua đuổi."
           },
           {
             "id": "did_not_confront_the_nightmare",
-            "text": "the investigators did not confront the nightmare."
+            "text": "các điều tra viên đã không đối đầu với cơn ác mộng."
           },
           {
             "id": "discovered_an_alien_language",
-            "text": "the investigators discovered an alien language."
+            "text": "các điều tra viên đã khám phá ra một ngôn ngữ ngoài hành tinh."
           },
           {
             "id": "expedition_abandoned_pilgrim",
-            "text": "the expedition left the pilgrim behind."
+            "text": "đoàn thám hiểm đã bỏ người hành hương lại."
           },
           {
             "id": "expedition_headed_east",
-            "text": "the expedition headed east."
+            "text": "đoàn thám hiểm đã tiến về phía đông."
           },
           {
             "id": "expedition_headed_west",
-            "text": "the expedition headed west."
+            "text": "đoàn thám hiểm đã tiến về phía tây."
           },
           {
             "id": "expedition_helped_pilgrim",
-            "text": "the expedition helped the pilgrim."
+            "text": "đoàn thám hiểm đã giúp đỡ người hành hương."
           },
           {
             "id": "exterminated_the_alien_parasites",
-            "text": "the investigators exterminated the alien parasites."
+            "text": "các điều tra viên đã tiêu diệt những ký sinh trùng ngoài hành tinh."
           },
           {
             "id": "halted_cthulhus_awakening",
-            "text": "the investigators halted Cthulhu's awakening."
+            "text": "các điều tra viên đã ngăn chặn sự thức tỉnh của Cthulhu."
           },
           {
             "id": "pilgrims_were_devoured",
-            "text": "the pilgrims were devoured."
+            "text": "những người hành hương đã bị nuốt chửng."
           },
           {
             "id": "pilgrims_were_saved",
-            "text": "the pilgrims were saved."
+            "text": "những người hành hương đã được cứu."
           },
           {
             "id": "ruby_lost_the_bet",
-            "text": "Ruby lost the bet."
+            "text": "Ruby đã thua cược."
           },
           {
             "id": "ruby_won_the_bet",
-            "text": "Ruby won the bet."
+            "text": "Ruby đã thắng cược."
           },
           {
             "id": "stood_together",
-            "text": "the investigators stood together."
+            "text": "các điều tra viên đã sát cánh cùng nhau."
           },
           {
             "id": "the_creature_was_defeated",
-            "text": "the creature was defeated."
+            "text": "sinh vật đã bị đánh bại."
           },
           {
             "id": "the_inner_sanctum_was_unsealed",
-            "text": "the inner sanctum was unsealed."
+            "text": "thánh địa bên trong đã được mở niêm phong."
           },
           {
             "id": "the_power_was_diverted",
-            "text": "the power was diverted."
+            "text": "năng lượng đã bị chuyển hướng."
           },
           {
             "id": "your_allies_have_a_plan",
-            "text": "your allies have a plan."
+            "text": "đồng minh của bạn có một kế hoạch."
           }
         ]
       },
@@ -5841,16 +5841,16 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "tdc_good_money_no_upkeep",
-            "masculine_text": "#name# cannot gain resources during the upkeep phase.",
-            "feminine_text": "#name# cannot gain resources during the upkeep phase.",
-            "nonbinary_text": "#name# cannot gain resources during the upkeep phase."
+            "id": "tdc_good_money_extra_resources",
+            "masculine_text": "#name# bắt đầu với thêm 3 resource.",
+            "feminine_text": "#name# bắt đầu với thêm 3 resource.",
+            "nonbinary_text": "#name# bắt đầu với thêm 3 resource."
           },
           {
-            "id": "tdc_good_money_extra_resources",
-            "masculine_text": "#name# starts with 3 additional resources.",
-            "feminine_text": "#name# starts with 3 additional resources.",
-            "nonbinary_text": "#name# starts with 3 additional resources."
+            "id": "tdc_good_money_no_upkeep",
+            "masculine_text": "#name# không thể nhận resource trong upkeep phase.",
+            "feminine_text": "#name# không thể nhận resource trong upkeep phase.",
+            "nonbinary_text": "#name# không thể nhận resource trong upkeep phase."
           },
           {
             "id": "kept_barrier_node",
@@ -6482,7 +6482,7 @@
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "các điều tra viên đã phong ấn Relic of Ages mãi mãi."
           },
           {
             "id": "turned_back_time",
@@ -6523,11 +6523,11 @@
           },
           {
             "id": "agenda_5",
-            "text": "hidden"
+            "text": "ẩn"
           },
           {
             "id": "agenda_6",
-            "text": "hidden"
+            "text": "ẩn"
           },
           {
             "id": "doy_cross_off_rope",
@@ -6994,7 +6994,7 @@
           },
           {
             "id": "horrific_truth",
-            "text": "the horrific truth"
+            "text": "sự thật kinh hoàng"
           },
           {
             "id": "lifecycle_of_a_deep_one",
@@ -7079,159 +7079,159 @@
         "entries": [
           {
             "id": "agent_flint_is_dead",
-            "text": "Agent Flint is dead."
+            "text": "Đặc vụ Flint đã chết."
           },
           {
             "id": "agent_flint_is_missing",
-            "text": "Agent Flint is missing."
+            "text": "Đặc vụ Flint đang mất tích."
           },
           {
             "id": "agent_quinn_does_not_trust_the_cell",
-            "text": "Agent Quinn does not trust the cell."
+            "text": "Đặc vụ Quinn không tin tưởng nhóm."
           },
           {
             "id": "agent_quinn_has_your_back",
-            "text": "Agent Quinn has your back."
+            "text": "Agent Quinn yểm trợ bạn."
           },
           {
             "id": "agent_quinn_vanished_from_existence",
-            "text": "Agent Quinn vanished from existence."
+            "text": "Đặc vụ Quinn đã biến mất khỏi sự tồn tại."
           },
           {
             "id": "aliki_is_on_your_side",
-            "text": "Aliki is on your side."
+            "text": "Aliki đang ở phe bạn."
           },
           {
             "id": "amaranth_has_left_the_coterie",
-            "text": "Amaranth has left the Coterie."
+            "text": "Amaranth đã rời khỏi Coterie."
           },
           {
             "id": "cell_aided_in_flints_investigation",
-            "text": "the cell aided in Flint’s investigation."
+            "text": "nhóm đã hỗ trợ cuộc điều tra của Flint."
           },
           {
             "id": "cell_aided_the_knight",
-            "text": "the cell aided the knight."
+            "text": "nhóm đã hỗ trợ hiệp sĩ."
           },
           {
             "id": "cell_appreciated_the_architecture",
-            "text": "the cell appreciated the architecture."
+            "text": "nhóm đã tán thưởng kiến trúc."
           },
           {
             "id": "cell_blew_the_whistle",
-            "text": "the cell blew the whistle."
+            "text": "nhóm đã thổi còi."
           },
           {
             "id": "cell_did_not_discover_the_truth_in_havana",
-            "text": "the cell didn’t discover the truth in Havana."
+            "text": "nhóm không khám phá ra sự thật ở Havana."
           },
           {
             "id": "cell_escaped_the_red_coterie",
-            "text": "the cell escaped the Red Coterie."
+            "text": "nhóm đã trốn thoát khỏi Red Coterie."
           },
           {
             "id": "cell_failed_to_fend_off_the_beast",
-            "text": "the cell failed to fend off the Beast."
+            "text": "nhóm đã không thể đẩy lùi the Beast."
           },
           {
             "id": "cell_has_been_ambushed",
-            "text": "the cell has been ambushed!"
+            "text": "nhóm đã bị phục kích!"
           },
           {
             "id": "cell_hid_the_truth_from_taylor",
-            "text": "the cell hid the truth from Taylor."
+            "text": "nhóm đã giấu sự thật với Taylor."
           },
           {
             "id": "cell_is_assisting_agent_sirry",
-            "text": "the cell is assisting Agent Sirry."
+            "text": "nhóm đang hỗ trợ Agent Sirry."
           },
           {
             "id": "cell_is_deceiving_ece",
-            "text": "the cell is deceiving Ece."
+            "text": "nhóm đang lừa dối Ece."
           },
           {
             "id": "cell_is_delivering_foundation_intel",
-            "text": "the cell is delivering Foundation intel."
+            "text": "nhóm đang giao Foundation intel."
           },
           {
             "id": "cell_is_off_mission",
-            "text": "the cell is off-mission."
+            "text": "nhóm đang chệch hướng nhiệm vụ."
           },
           {
             "id": "cell_is_working_with_ece",
-            "text": "the cell is working with Ece."
+            "text": "nhóm đang hợp tác với Ece."
           },
           {
             "id": "cell_joined_the_red_coterie",
-            "text": "the cell joined the Red Coterie."
+            "text": "nhóm đã gia nhập Red Coterie."
           },
           {
             "id": "cell_knows_amaranths_real_name",
-            "text": "the cell knows Amaranth’s real name."
+            "text": "nhóm biết tên thật của Amaranth."
           },
           {
             "id": "cell_knows_desis_past",
-            "text": "the cell knows Desi’s past"
+            "text": "nhóm biết quá khứ của Desi"
           },
           {
             "id": "cell_knows_the_true_nature_of_the_coterie",
-            "text": "the cell knows the true nature of the Coterie."
+            "text": "nhóm biết bản chất thực sự của Coterie."
           },
           {
             "id": "cell_made_a_deal_with_desi",
-            "text": "the cell made a deal with Desi."
+            "text": "nhóm đã thỏa thuận với Desi."
           },
           {
             "id": "cell_made_a_deal_with_the_claret_knight",
-            "text": "the cell made a deal with the Claret Knight."
+            "text": "nhóm đã lập giao kèo với Claret Knight."
           },
           {
             "id": "cell_made_a_deal_with_thorne",
-            "text": "the cell made a deal with Thorne."
+            "text": "nhóm đã thỏa thuận với Thorne."
           },
           {
             "id": "cell_met_dr_irawan",
-            "text": "the cell met Dr. Irawan."
+            "text": "nhóm đã gặp Tiến sĩ Irawan."
           },
           {
             "id": "cell_overthrew_the_red_coterie",
-            "text": "the cell overthrew the Red Coterie."
+            "text": "nhóm đã lật đổ Red Coterie."
           },
           {
             "id": "cell_possesses_a_mysterious_whistle",
-            "text": "the cell possesses a mysterious whistle."
+            "text": "nhóm sở hữu một chiếc còi bí ẩn."
           },
           {
             "id": "cell_refused_alikis_offer",
-            "text": "the cell refused Aliki’s offer."
+            "text": "nhóm đã từ chối lời đề nghị của Aliki."
           },
           {
             "id": "cell_refused_eces_offer",
-            "text": "the cell refused Ece's offer."
+            "text": "nhóm đã từ chối lời đề nghị của Ece."
           },
           {
             "id": "cell_threw_away_the_whistle",
-            "text": "the cell threw away the whistle."
+            "text": "nhóm đã vứt bỏ chiếc còi."
           },
           {
             "id": "cell_told_the_truth_to_taylor",
-            "text": "the cell told the truth to Taylor."
+            "text": "tổ đã nói sự thật với Taylor."
           },
           {
             "id": "cell_was_dismantled",
-            "text": "the cell was dismantled."
+            "text": "nhóm đã bị giải tán."
           },
           {
             "id": "cell_was_given_a_permanent_position",
-            "text": "the cell was given a permanent position."
+            "text": "nhóm đã được cấp một vị trí chính thức."
           },
           {
             "id": "cell_was_hollowed",
-            "text": "the cell was hollowed."
+            "text": "nhóm đã bị rút ruột."
           },
           {
             "id": "chica_roja_is_on_your_side",
-            "text": "La Chica Roja is on your side."
+            "text": "La Chica Roja đứng về phía bạn."
           },
           {
             "id": "deception",
@@ -7239,131 +7239,131 @@
           },
           {
             "id": "desi_is_in_your_debt",
-            "text": "Desi is in your debt."
+            "text": "Desi đang nợ bạn."
           },
           {
             "id": "dogs_are_at_war",
-            "text": "the dogs are at war."
+            "text": "những con chó đang giao chiến."
           },
           {
             "id": "dr_irawan_joined_the_cell",
-            "text": "Dr. Irawan joined the cell."
+            "text": "Dr. Irawan đã gia nhập nhóm."
           },
           {
             "id": "dr_irawan_traveled_to_new_guinea",
-            "text": "Dr. Irawan traveled to New Guinea."
+            "text": "Dr. Irawan đã đến New Guinea."
           },
           {
             "id": "dr_irawan_vanished_from_existence",
-            "text": "Dr. Irawan vanished from existence."
+            "text": "Dr. Irawan đã biến mất khỏi sự tồn tại."
           },
           {
             "id": "ece_does_not_trust_the_cell",
-            "text": "Ece does not trust the cell."
+            "text": "Ece không tin tưởng nhóm."
           },
           {
             "id": "ece_trusts_the_cell",
-            "text": "Ece trusts the cell."
+            "text": "Ece tin tưởng nhóm."
           },
           {
             "id": "erased_from_existence_dm",
-            "text": "erased from existence: #name#"
+            "text": "bị xóa sổ khỏi sự tồn tại: #name#"
           },
           {
             "id": "erased_from_existence_oti",
-            "text": "erased from existence: #name#"
+            "text": "bị xóa sổ khỏi sự tồn tại: #name#"
           },
           {
             "id": "flint_abandoned_his_search",
-            "text": "Flint abandoned his search."
+            "text": "Flint đã từ bỏ cuộc tìm kiếm của mình."
           },
           {
             "id": "flint_is_working_solo",
-            "text": "Flint is working solo."
+            "text": "Flint đang làm việc một mình."
           },
           {
             "id": "flint_rejoined_the_cell",
-            "text": "Flint rejoined the cell."
+            "text": "Flint đã gia nhập lại nhóm."
           },
           {
             "id": "flint_traveled_to_kuala_lampur",
-            "text": "Flint traveled to Kuala Lumpur."
+            "text": "Flint đã tới Kuala Lumpur."
           },
           {
             "id": "foundation_remains_in_the_dark",
-            "text": "the Foundation remains in the dark."
+            "text": "the Foundation vẫn không hay biết gì."
           },
           {
             "id": "have_not_seen_the_last_of_aliki_zoni_uperetria",
-            "text": "you haven’t seen the last of Aliki Zoni Uperetria."
+            "text": "bạn sẽ còn gặp lại Aliki Zoni Uperetria."
           },
           {
             "id": "have_not_seen_the_last_of_amaranth",
-            "text": "you haven't seen the last of Amaranth."
+            "text": "bạn vẫn chưa thấy lần cuối của Amaranth."
           },
           {
             "id": "have_not_seen_the_last_of_desi",
-            "text": "you haven’t seen the last of Desiderio Delgado Álvarez."
+            "text": "bạn sẽ còn gặp lại Desiderio Delgado Álvarez."
           },
           {
             "id": "have_not_seen_the_last_of_la_chica_roja",
-            "text": "you haven't seen the last of La Chica Roja."
+            "text": "bạn sẽ còn gặp lại La Chica Roja."
           },
           {
             "id": "have_not_seen_the_last_of_the_beast",
-            "text": "you haven’t seen the last of the Beast in a Cowl of Crimson."
+            "text": "bạn sẽ còn gặp lại the Beast in a Cowl of Crimson."
           },
           {
             "id": "have_not_seen_the_last_of_the_claret_knight",
-            "text": "you haven’t seen the last of the Claret Knight."
+            "text": "bạn sẽ còn gặp lại the Claret Knight."
           },
           {
             "id": "have_not_seen_the_last_of_the_red_gloved_man",
-            "text": "you haven’t seen the last of the Red-Gloved Man."
+            "text": "đây chưa phải là lần cuối bạn đụng độ The Red-Gloved Man."
           },
           {
             "id": "have_not_seen_the_last_of_the_sanguine_watcher",
-            "text": "you haven't seen the last of The Sanguine Watcher."
+            "text": "bạn sẽ còn gặp lại The Sanguine Watcher."
           },
           {
             "id": "have_not_seen_the_last_of_thorne",
-            "text": "you haven’t seen the last of Thorne."
+            "text": "đây chưa phải là lần cuối bạn gặp Thorne."
           },
           {
             "id": "have_not_seen_the_last_of_tzu_san_niang",
-            "text": "you haven’t seen the last of Tzu San Niang."
+            "text": "đây chưa phải là lần cuối bạn chạm trán Tzu San Niang."
           },
           {
             "id": "know_the_passphrase",
-            "text": "you know the passphrase."
+            "text": "bạn biết mật khẩu."
           },
           {
             "id": "lovers_are_reunited",
-            "text": "the lovers are reunited."
+            "text": "những người yêu nhau đã đoàn tụ."
           },
           {
             "id": "nothing_of_note_in_anchorage",
-            "text": "there is nothing of note in Anchorage."
+            "text": "không có gì đáng chú ý ở Anchorage."
           },
           {
             "id": "outsiders_were_stopped",
-            "text": "the Outsiders were stopped."
+            "text": "những Outsider đã bị ngăn chặn."
           },
           {
             "id": "red_coterie_spared_the_cell",
-            "text": "the Red Coterie spared the cell."
+            "text": "Red Coterie đã tha mạng cho nhóm."
           },
           {
             "id": "red_coterie_was_destroyed_from_within",
-            "text": "the Red Coterie was destroyed from within."
+            "text": "Red Coterie đã bị tiêu diệt từ bên trong."
           },
           {
             "id": "sanguine_watchers_torment_continues",
-            "text": "The Sanguine Watcher's torment continues."
+            "text": "Sự dằn vặt của The Sanguine Watcher vẫn tiếp diễn."
           },
           {
             "id": "thorne_disappeared",
-            "text": "Thorne disappeared."
+            "text": "Thorne đã biến mất."
           },
           {
             "id": "trust",
@@ -7371,27 +7371,27 @@
           },
           {
             "id": "tuwile_masai_fled_to_bermuda",
-            "text": "Tuwile Masai fled to Bermuda."
+            "text": "Tuwile Masai đã bỏ trốn đến Bermuda."
           },
           {
             "id": "tuwile_masai_is_on_your_side",
-            "text": "Tuwile Masai is on your side."
+            "text": "Tuwile Masai đang đứng về phía bạn."
           },
           {
             "id": "tzu_san_niang_has_you_under_her_sway",
-            "text": "Tzu San Niang has you under her sway."
+            "text": "Tzu San Niang chi phối bạn."
           },
           {
             "id": "tzu_san_niang_is_under_your_sway",
-            "text": "Tzu San Niang is under your sway."
+            "text": "Tzu San Niang chịu sự chi phối của bạn."
           },
           {
             "id": "void_chimera_escaped",
-            "text": "the Void Chimera escaped."
+            "text": "the Void Chimera đã trốn thoát."
           },
           {
             "id": "work_together",
-            "text": "the Red Coterie and The Foundation agreed to work together."
+            "text": "Red Coterie và The Foundation đã đồng ý làm việc cùng nhau."
           },
           {
             "id": "wrong_leads",
@@ -7678,114 +7678,114 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "late_return",
-            "masculine_text": "#name# returned to Arkham late.",
-            "feminine_text": "#name# returned to Arkham late.",
-            "nonbinary_text": "#name# returned to Arkham late."
+            "id": "marked",
+            "masculine_text": "#name# vẫn mang dấu ấn của Aforgomon.",
+            "feminine_text": "#name# vẫn mang dấu ấn của Aforgomon.",
+            "nonbinary_text": "#name# vẫn mang dấu ấn của Aforgomon."
           },
           {
-            "id": "marked",
-            "masculine_text": "#name# still bears Aforgomon's mark.",
-            "feminine_text": "#name# still bears Aforgomon's mark.",
-            "nonbinary_text": "#name# still bears Aforgomon's mark."
+            "id": "late_return",
+            "masculine_text": "#name# đã trở về Arkham muộn.",
+            "feminine_text": "#name# đã trở về Arkham muộn.",
+            "nonbinary_text": "#name# đã trở về Arkham muộn."
           },
           {
             "id": "waning",
-            "masculine_text": "#name#'s existence is waning.",
-            "feminine_text": "#name#'s existence is waning.",
-            "nonbinary_text": "#name#'s existence is waning."
+            "masculine_text": "sự tồn tại của #name# đang suy tàn.",
+            "feminine_text": "sự tồn tại của #name# đang suy tàn.",
+            "nonbinary_text": "sự tồn tại của #name# đang suy tàn."
           },
           {
             "id": "advanced_the_schemes_of_the_silver_twilight_lodge",
-            "text": "you have advanced the schemes of the Silver Twilight Lodge."
+            "text": "bạn đã thúc đẩy các âm mưu của Silver Twilight Lodge."
           },
           {
             "id": "all_times_are_one",
-            "text": "all times are one."
+            "text": "mọi thời gian hòa làm một."
           },
           {
             "id": "bound_aforgomon_in_a_prison_of_time",
-            "text": "the investigators bound Aforgomon in a prison of time."
+            "text": "các điều tra viên đã giam cầm Aforgomon trong một nhà tù thời gian."
           },
           {
             "id": "escaped_night_of_fire",
-            "text": "the investigators sescaped the night of fire."
+            "text": "các điều tra viên đã trốn thoát khỏi đêm lửa cháy."
           },
           {
             "id": "fled_manor",
-            "text": "the investigators fled the Gentleman's manor."
+            "text": "các điều tra viên đã chạy trốn khỏi dinh thự của Gentleman."
           },
           {
             "id": "investigators_eliminated_the_high_priest",
-            "text": "the investigators eliminated the high priest."
+            "text": "các điều tra viên đã tiêu diệt the high priest."
           },
           {
             "id": "learnt_of_ritual",
-            "text": "the investigators learnt of the Myriad's ritual."
+            "text": "các điều tra viên đã biết về nghi lễ của Myriad."
           },
           {
             "id": "myriad_harnessed_the_power_of_another_realm",
-            "text": "the Myriad harnessed the power of another realm."
+            "text": "the Myriad đã khai thác sức mạnh của một cõi khác."
           },
           {
             "id": "myriad_raised_a_powerful_warding",
-            "text": "the Myriad raised a powerful warding."
+            "text": "the Myriad đã dựng lên một lớp bảo vệ mạnh mẽ."
           },
           {
             "id": "myriad_recruited_a_cruel_sorcerer",
-            "text": "the Myriad recruited a cruel sorcerer."
+            "text": "the Myriad đã chiêu mộ một pháp sư tàn nhẫn."
           },
           {
             "id": "myriad_solved_the_riddle_of_the_sphinx",
-            "text": "the Myriad solved the riddle of the sphinx."
+            "text": "the Myriad đã giải được câu đố của nhân sư."
           },
           {
             "id": "myriad_took_control_of_a_color_out_of_space",
-            "text": "the Myriad took control of a color out of space."
+            "text": "the Myriad đã kiểm soát một color out of space."
           },
           {
             "id": "myriad_weaved_a_dread_curse",
-            "text": "the Myriad weaved a dread curse."
+            "text": "the Myriad đã dệt nên một lời nguyền đáng sợ."
           },
           {
             "id": "new_quarry",
-            "text": "your hunters found a new quarry."
+            "text": "những kẻ săn lùng bạn đã tìm thấy một con mồi mới."
           },
           {
             "id": "offer_accepted",
-            "text": "the investigators accepted an offer of help."
+            "text": "các điều tra viên đã chấp nhận một lời đề nghị giúp đỡ."
           },
           {
             "id": "offer_declined",
-            "text": "the investigators declined an offer of help."
+            "text": "các điều tra viên đã từ chối một lời đề nghị giúp đỡ."
           },
           {
             "id": "ritual_is_nigh",
-            "text": "the ritual is nigh."
+            "text": "nghi thức đã đến gần."
           },
           {
             "id": "slew_observer",
-            "text": "the investigators slew their strange observer."
+            "text": "các điều tra viên đã tiêu diệt kẻ quan sát kỳ lạ của họ."
           },
           {
             "id": "solved_the_riddle_of_the_sphinx",
-            "text": "you solved the riddle of the sphinx."
+            "text": "bạn đã giải được câu đố của nhân sư."
           },
           {
             "id": "survived_night_of_fire",
-            "text": "the investigators survived the night of fire."
+            "text": "các điều tra viên đã sống sót qua đêm lửa cháy."
           },
           {
             "id": "timeline_was_weakened",
-            "text": "the timeline was weakened."
+            "text": "dòng thời gian đã bị suy yếu."
           },
           {
             "id": "took_tea_with_the_ruler_of_a_strange_dimension",
-            "text": "You took tea with the ruler of a strange dimension."
+            "text": "Bạn đã uống trà với kẻ cai trị của một chiều không gian kỳ lạ."
           },
           {
             "id": "violated_causality",
-            "text": "the investigators violated causality."
+            "text": "các điều tra viên đã vi phạm luật nhân quả."
           }
         ]
       },
@@ -7802,7 +7802,7 @@
           },
           {
             "id": "future_circle",
-            "text": "future circle is in play"
+            "text": "future circle đang ở trong cuộc chơi"
           },
           {
             "id": "helping_yourself_complete",
@@ -7810,11 +7810,11 @@
           },
           {
             "id": "marked",
-            "text": "one or more investigators still bear Aforgomon's mark."
+            "text": "một hoặc nhiều điều tra viên vẫn mang dấu ấn của Aforgomon."
           },
           {
             "id": "past_circle",
-            "text": "past circle is in play"
+            "text": "past circle đang ở trong cuộc chơi"
           },
           {
             "id": "somebody_disappeared_unexpectedly",
@@ -7838,7 +7838,7 @@
           },
           {
             "id": "waning",
-            "text": "one or more investigators' existence is waning."
+            "text": "sự tồn tại của một hoặc nhiều điều tra viên đang suy tàn."
           }
         ]
       },
@@ -7847,67 +7847,67 @@
         "entries": [
           {
             "id": "assassin_disappeared_unexpectedly",
-            "text": "Myriad Assassin disappeared unexpectedly."
+            "text": "Myriad Assassin đã biến mất một cách bất ngờ."
           },
           {
             "id": "boundary_broken",
-            "text": "the boundary is broken (#X#, #Y#)."
+            "text": "ranh giới đã bị phá vỡ (#X#, #Y#)."
           },
           {
             "id": "broke_first_circle",
-            "text": "the investigators broke the first circle (#X#, #Y#)."
+            "text": "các điều tra viên đã phá vỡ vòng tròn đầu tiên (#X#, #Y#)."
           },
           {
             "id": "chronophage_disappeared_unexpectedly",
-            "text": "Chronophage disappeared unexpectedly."
+            "text": "Chronophage đã biến mất một cách bất ngờ."
           },
           {
             "id": "dispelled_ward",
-            "text": "the investigators dispelled the ward (#X#, #Y#)."
+            "text": "các điều tra viên đã giải trừ bùa chú (#X#, #Y#)."
           },
           {
             "id": "fell_to_the_myriad",
-            "text": "the investigators fell to the Myriad (#X#, #Y#)."
+            "text": "các điều tra viên đã gục ngã trước the Myriad (#X#, #Y#)."
           },
           {
             "id": "gentleman_disappeared_unexpectedly",
-            "text": "the Myriad Gentleman disappeared unexpectedly."
+            "text": "the Myriad Gentleman đã biến mất một cách bất ngờ."
           },
           {
             "id": "investigators_stepped_into_future",
-            "text": "the investigators stepped into the future."
+            "text": "các điều tra viên đã bước vào tương lai."
           },
           {
             "id": "investigators_stepped_into_past",
-            "text": "the investigators stepped into the past."
+            "text": "các điều tra viên đã bước vào quá khứ."
           },
           {
             "id": "irregulars_disappeared_unexpectedly",
-            "text": "Irregulars disappeared unexpectedly."
+            "text": "Irregulars đã biến mất một cách bất ngờ."
           },
           {
             "id": "put_down_hound",
-            "text": "the investigators put down the Hound of Unmaking (#X#, #Y#)."
+            "text": "các điều tra viên đã hạ gục Hound of Unmaking (#X#, #Y#)."
           },
           {
             "id": "repelled_hound",
-            "text": "the investigators repelled the Hound of Unmaking (#X#, #Y#)."
+            "text": "các điều tra viên đã đẩy lùi Hound of Unmaking (#X#, #Y#)."
           },
           {
             "id": "snuck_in_back",
-            "text": "the investigators snuck into the back of the school."
+            "text": "các điều tra viên đã lẻn vào phía sau trường học."
           },
           {
             "id": "thugs_disappeared_unexpectedly",
-            "text": "Hired Thugs disappeared unexpectedly."
+            "text": "Hired Thugs đã biến mất một cách bất ngờ."
           },
           {
             "id": "unleashed_chaos",
-            "text": "the investigators unleashed chaos (#X#, #Y#)."
+            "text": "các điều tra viên đã giải phóng sự hỗn loạn (#X#, #Y#)."
           },
           {
             "id": "used_front_door",
-            "text": "the investigators used the school's front door."
+            "text": "các điều tra viên đã sử dụng cửa trước của trường học."
           }
         ]
       }
@@ -7922,151 +7922,151 @@
         "entries": [
           {
             "id": "alice_perished_and_wonderland_has_been_lost_forever",
-            "text": "Alice perished and Wonderland has been lost forever."
+            "text": "Alice đã bỏ mạng và Wonderland đã bị mất vĩnh viễn."
           },
           {
             "id": "controlled_the_snark",
-            "text": "the investigators controlled the Snark."
+            "text": "các điều tra viên đã kiểm soát Snark."
           },
           {
             "id": "gurathnaka_and_its_shadows_consumed_the_earth",
-            "text": "Gurathnaka and its shadows consumed the earth."
+            "text": "Gurathnaka và những cái bóng của nó đã nuốt chửng trái đất."
           },
           {
             "id": "gurathnaka_and_its_shadows_were_banished_from_arkham",
-            "text": "Gurathnaka and its shadows were banished from Arkham."
+            "text": "Gurathnaka và những cái bóng của nó đã bị trục xuất khỏi Arkham."
           },
           {
             "id": "hare_and_hatter_enjoyed_your_company",
-            "text": "the Hare and  Hatter thoroughly enjoyed your company."
+            "text": "the Hare và Hatter rất thích sự đồng hành của bạn."
           },
           {
             "id": "hare_and_hatter_were_cast_into_the_shadows",
-            "text": "the Hare and the Hatter were cast into the shadows."
+            "text": "the Hare và the Hatter đã bị ném vào bóng tối."
           },
           {
             "id": "hare_couldnt_cope_with_hatters_death",
-            "text": "the Hare couldn't cope with the Hatter's death."
+            "text": "the Hare không thể vượt qua cái chết của Hatter."
           },
           {
             "id": "hare_hatter_and_dormouse_were_consumed_by_shadows",
-            "text": "the Hare, Hatter, and Dormouse were consumed by shadows."
+            "text": "the Hare, Hatter, và Dormouse đã bị bóng tối nuốt chửng."
           },
           {
             "id": "hatter_couldnt_cope_with_hares_death",
-            "text": "the Hatter couldn't cope with the Hare's death."
+            "text": "the Hatter không thể vượt qua cái chết của Hare."
           },
           {
             "id": "intimidated_the_snark",
-            "text": "the investigators intimidated the Snark."
+            "text": "các điều tra viên đã đe dọa Snark."
           },
           {
             "id": "intrigued_the_snark",
-            "text": "the investigators intrigued the Snark."
+            "text": "các điều tra viên đã gợi sự tò mò của Snark."
           },
           {
             "id": "jabberwock_still_haunts_the_tulgey_wood",
-            "text": "the Jabberwock still haunts the Tulgey Wood."
+            "text": "con Jabberwock vẫn ám ảnh Tulgey Wood."
           },
           {
             "id": "one_of_the_tweedles_learned_about_the_cost_of_war",
-            "text": "one of the Tweedles learned about the cost of war."
+            "text": "một trong hai anh em Tweedle đã học được về cái giá của chiến tranh."
           },
           {
             "id": "puzzled_the_snark",
-            "text": "the investigators puzzled the Snark."
+            "text": "các điều tra viên đã đánh đố Snark."
           },
           {
             "id": "queen_destroyed_the_shadows_in_a_fit_of_rage",
-            "text": "the Queen destroyed the shadows in a fit of rage."
+            "text": "Queen đã tiêu diệt những cái bóng trong một cơn thịnh nộ."
           },
           {
             "id": "queens_castle_was_consumed_by_shadows",
-            "text": "the Queen's castle was consumed by shadows."
+            "text": "lâu đài của Queen đã bị bóng tối nuốt chửng."
           },
           {
             "id": "separated_alices_dreams_from_the_real_world",
-            "text": "the investigators separated Alice's dreams from the real world."
+            "text": "các điều tra viên đã tách giấc mơ của Alice khỏi thế giới thực."
           },
           {
             "id": "shadows_grow_stronger_with_each_passing_moment",
-            "text": "the shadows grow stronger with each passing moment."
+            "text": "bóng tối ngày càng mạnh lên sau mỗi khoảnh khắc trôi qua."
           },
           {
             "id": "shadows_maintain_their_grip_on_alices_dreams",
-            "text": "the shadows maintain their grip on Alice's dreams."
+            "text": "bóng tối vẫn duy trì sự kìm kẹp của chúng lên những giấc mơ của Alice."
           },
           {
             "id": "shadows_weakened_by_wonderlands_instability",
-            "text": "the shadows have been weakened by Wonderland's instability."
+            "text": "những cái bóng đã bị suy yếu bởi sự bất ổn của Wonderland."
           },
           {
             "id": "snark_and_its_hunters_were_never_met_with_again",
-            "text": "the Snark and its hunters were never met with again."
+            "text": "Snark và những thợ săn của nó không bao giờ được gặp lại nữa."
           },
           {
             "id": "took_the_jabberwocks_head",
-            "text": "the investigators took the Jabberwock's head."
+            "text": "các điều tra viên đã lấy đầu của Jabberwock."
           },
           {
             "id": "tricked_the_snark",
-            "text": "the investigators tricked the Snark."
+            "text": "các điều tra viên đã đánh lừa Snark."
           },
           {
             "id": "tweedles_learned_that_there_are_worse_things_than_fighting_each_other",
-            "text": "the Tweedles learned that there are worse things than fighting each other."
+            "text": "anh em Tweedle đã học được rằng có những thứ tồi tệ hơn là đánh nhau."
           },
           {
             "id": "tweedles_perished_in_their_bloody_battle",
-            "text": "the Tweedles perished in their bloody battle."
+            "text": "anh em Tweedle đã bỏ mạng trong trận chiến đẫm máu của họ."
           },
           {
             "id": "tweedles_war_war_brought_to_an_end",
-            "text": "the Tweedles' war was brought to an end."
+            "text": "cuộc chiến của anh em Tweedle đã đi đến hồi kết."
           },
           {
             "id": "walrus_and_carpenter_ate_their_last_meal",
-            "text": "the Walrus and the Carpenter ate their last meal."
+            "text": "the Walrus and the Carpenter đã ăn bữa ăn cuối cùng của chúng."
           },
           {
             "id": "walrus_and_carpenter_have_lost_their_appetites",
-            "text": "the Walrus and the Carpenter have lost their appetites."
+            "text": "the Walrus and the Carpenter đã mất đi sự thèm ăn."
           },
           {
             "id": "walrus_and_carpenter_were_completely_obliterated",
-            "text": "the Walrus and the Carpenter were completely obliterated."
+            "text": "the Walrus and the Carpenter đã bị xóa sổ hoàn toàn."
           },
           {
             "id": "went_down_the_rabbit_hole",
-            "text": "the investigators went down the rabbit hole."
+            "text": "các điều tra viên đã đi xuống hang thỏ."
           },
           {
             "id": "went_through_the_looking_glass",
-            "text": "the investigators went through the looking glass."
+            "text": "các điều tra viên đã đi qua tấm gương."
           },
           {
             "id": "white_king_celebrates_a_grand_victory",
-            "text": "the White King celebrates a grand victory."
+            "text": "White King ăn mừng một chiến thắng vĩ đại."
           },
           {
             "id": "white_king_was_slain_by_the_red_pieces",
-            "text": "the White King was slain by the red pieces."
+            "text": "White King đã bị sát hại bởi các quân cờ đỏ."
           },
           {
             "id": "white_knight_has_fallen_in_battle_to_the_red_queen",
-            "text": "the White Knight has fallen in battle to the Red Queen."
+            "text": "White Knight đã gục ngã trong trận chiến với Red Queen."
           },
           {
             "id": "white_knight_revels_in_your_victory_over_the_red_queen",
-            "text": "the White Knight revels in your victory over the Red Queen."
+            "text": "White Knight ăn mừng chiến thắng của bạn trước Red Queen."
           },
           {
             "id": "white_rabbit_consumed_by_shadows",
-            "text": "the White Rabbit was consumed by shadows."
+            "text": "the White Rabbit đã bị bóng tối nuốt chửng."
           },
           {
             "id": "white_rabbit_survived_the_monsters_attack",
-            "text": "the White Rabbit survived the monster's attack."
+            "text": "the White Rabbit đã sống sót sau cuộc tấn công của con quái vật."
           }
         ]
       },
@@ -8079,7 +8079,7 @@
           },
           {
             "id": "courage",
-            "text": "Courage"
+            "text": "Dũng khí"
           },
           {
             "id": "curiosity",
@@ -8193,95 +8193,95 @@
         "entries": [
           {
             "id": "became_sentinels_of_the_mist",
-            "text": "the investigators became sentinels of the mist."
+            "text": "các điều tra viên đã trở thành những người canh giữ sương mù."
           },
           {
             "id": "did_not_find_the_ritual_site",
-            "text": "the investigators did not find the ritual site."
+            "text": "các điều tra viên đã không tìm thấy địa điểm nghi lễ."
           },
           {
             "id": "earned_barors_trust",
-            "text": "the investigators have earned Bárðr's trust."
+            "text": "các điều tra viên đã giành được sự tin tưởng của Bárðr."
           },
           {
             "id": "found_chest",
-            "text": "an investigator found the chest in the lake."
+            "text": "một điều tra viên đã tìm thấy chiếc rương dưới hồ."
           },
           {
             "id": "found_the_ritual_site",
-            "text": "the investigators found the ritual site."
+            "text": "các điều tra viên đã tìm thấy địa điểm nghi lễ."
           },
           {
             "id": "know_where_silver_is",
-            "text": "an investigator knows where the silver is."
+            "text": "một điều tra viên biết bạc ở đâu."
           },
           {
             "id": "mapped_the_golden_circle",
-            "text": "the investigators have mapped the Golden Circle."
+            "text": "các điều tra viên đã lập bản đồ Golden Circle."
           },
           {
             "id": "must_banish_egil",
-            "text": "the investigators must banish Egil."
+            "text": "các điều tra viên phải trục xuất Egil."
           },
           {
             "id": "must_deceive_egil",
-            "text": "the investigators must deceive Egil."
+            "text": "các điều tra viên phải đánh lừa Egil."
           },
           {
             "id": "must_defeat_egil",
-            "text": "the investigators must defeat Egil."
+            "text": "các điều tra viên phải đánh bại Egil."
           },
           {
             "id": "must_restore_egil",
-            "text": "the investigators must restore Egil."
+            "text": "các điều tra viên phải phục hồi Egil."
           },
           {
             "id": "noticed_ring",
-            "text": "an investigator noticed the ring."
+            "text": "một điều tra viên đã chú ý đến chiếc nhẫn."
           },
           {
             "id": "on_their_own",
-            "text": "the investigators are on their own."
+            "text": "các điều tra viên phải tự xoay sở."
           },
           {
             "id": "opened_chest",
-            "text": "an investigator forced open the frozen chest."
+            "text": "một điều tra viên đã cạy mở chiếc rương đóng băng."
           },
           {
             "id": "photographed_glacier",
-            "text": "the investigators photographed Long Glacier."
+            "text": "các điều tra viên đã chụp ảnh Long Glacier."
           },
           {
             "id": "photographed_gulfoss",
-            "text": "the investigators photographed Gulfoss."
+            "text": "các điều tra viên đã chụp ảnh Gulfoss."
           },
           {
             "id": "photographed_kerio",
-            "text": "the investigators photographed Kerið."
+            "text": "các điều tra viên đã chụp ảnh Kerið."
           },
           {
             "id": "photographed_thingvellir",
-            "text": "the investigators photographed Thingvellir."
+            "text": "các điều tra viên đã chụp ảnh Thingvellir."
           },
           {
             "id": "read_bards_tale",
-            "text": "an investigator read Bard's tale."
+            "text": "một điều tra viên đã đọc Bard's tale."
           },
           {
             "id": "retrieved_pole",
-            "text": "an investigator retrieved the eerie pole."
+            "text": "một điều tra viên đã lấy được cây sào kỳ quái."
           },
           {
             "id": "runes_remain_a_mystery",
-            "text": "the runes remain a mystery."
+            "text": "những cổ ngữ vẫn là một bí ẩn."
           },
           {
             "id": "studied_the_markings",
-            "text": "an investigator studied the markings."
+            "text": "một điều tra viên đã nghiên cứu các ký hiệu."
           },
           {
             "id": "uncovered_the_split_skill",
-            "text": "an investigator uncovered the split skull."
+            "text": "một điều tra viên đã tìm thấy hộp sọ nứt."
           }
         ]
       },
@@ -8319,11 +8319,11 @@
           },
           {
             "id": "egils_silver",
-            "text": "Egil's Silver"
+            "text": "Bạc của Egil"
           },
           {
             "id": "evil_blooms",
-            "text": "Evil Blooms"
+            "text": "Cái Ác Nảy Mầm"
           },
           {
             "id": "gnawed_horn",
@@ -8362,105 +8362,105 @@
         "entries": [
           {
             "id": "took_out_a_loan",
-            "masculine_text": "#name# took out a loan.",
-            "feminine_text": "#name# took out a loan.",
-            "nonbinary_text": "#name# took out a loan."
+            "masculine_text": "#name# đã vay một khoản tiền.",
+            "feminine_text": "#name# đã vay một khoản tiền.",
+            "nonbinary_text": "#name# đã vay một khoản tiền."
           },
           {
             "id": "architects_project_was_fully_completed",
-            "text": "the architects' project was fully completed."
+            "text": "dự án của các kiến trúc sư đã hoàn thành toàn bộ."
           },
           {
             "id": "architects_project_was_sabotaged",
-            "text": "the architects's project was sabotaged."
+            "text": "dự án của các kiến trúc sư đã bị phá hoại."
           },
           {
             "id": "arrived_on_schedule",
-            "text": "the investigators arrived on schedule."
+            "text": "các điều tra viên đã đến đúng lịch trình."
           },
           {
             "id": "chose_the_least_predictable_route",
-            "text": "the investigators chose the least predictable route."
+            "text": "các điều tra viên đã chọn tuyến đường khó đoán nhất."
           },
           {
             "id": "chose_the_most_direct_route",
-            "text": "the investigators chose the most direct route."
+            "text": "các điều tra viên đã chọn tuyến đường đi thẳng nhất."
           },
           {
             "id": "chose_the_most_populous_route",
-            "text": "the investigators chose the most popular route."
+            "text": "các điều tra viên đã chọn tuyến đường phổ biến nhất."
           },
           {
             "id": "cthulhu_reigns",
-            "text": "Cthulhu reigns over all humankind."
+            "text": "Cthulhu thống trị toàn nhân loại."
           },
           {
             "id": "cthulhu_slumbers",
-            "text": "Cthulhu slumbers in the deep once more."
+            "text": "Cthulhu một lần nữa chìm vào giấc ngủ dưới vực sâu."
           },
           {
             "id": "cults_project_nears_completion",
-            "text": "the cult's project nears completion."
+            "text": "dự án của hội kín sắp hoàn thành."
           },
           {
             "id": "escaped_rlyeh",
-            "text": "the investigators escaped from R'lyeh."
+            "text": "các điều tra viên đã trốn thoát khỏi R'lyeh."
           },
           {
             "id": "expelled_the_traitors",
-            "text": "the investigators expelled the traitors."
+            "text": "các điều tra viên đã trục xuất những kẻ phản bội."
           },
           {
             "id": "explored_the_myra_louise",
-            "text": "the investigators explored the Myra Louise."
+            "text": "các điều tra viên đã khám phá tàu Myra Louise."
           },
           {
             "id": "exposed_the_traitors",
-            "text": "the investigators exposed the traitors."
+            "text": "các điều tra viên đã vạch trần những kẻ phản bội."
           },
           {
             "id": "failed_to_find_the_myra_louise",
-            "text": "the investigators failed to find the Myra Louise."
+            "text": "các điều tra viên đã không tìm thấy tàu Myra Louise."
           },
           {
             "id": "failed_to_stop_the_traitors_plan",
-            "text": "the investigators failed to stop the traitors' plan."
+            "text": "các điều tra viên đã thất bại trong việc ngăn chặn kế hoạch của những kẻ phản bội."
           },
           {
             "id": "forced_to_withdraw",
-            "text": "the investigators were forced to withdraw."
+            "text": "các điều tra viên đã buộc phải rút lui."
           },
           {
             "id": "found_the_missing_artifacts",
-            "text": "the investigators found the missing artifacts."
+            "text": "các điều tra viên đã tìm thấy những cổ vật bị mất tích."
           },
           {
             "id": "found_the_myra_louise",
-            "text": "the investigators found the Myra Louise."
+            "text": "các điều tra viên đã tìm thấy tàu Myra Louise."
           },
           {
             "id": "have_been_observed",
-            "text": "the investigators have been observed."
+            "text": "các điều tra viên đã bị theo dõi."
           },
           {
             "id": "interviewed_the_broker",
-            "text": "the investigators interviewed the broker."
+            "text": "các điều tra viên đã phỏng vấn người môi giới."
           },
           {
             "id": "know_the_full_story",
-            "text": "the investigators know the full story."
+            "text": "các điều tra viên đã biết toàn bộ câu chuyện."
           },
           {
             "id": "left_the_auction_early",
-            "text": "the investigators left the auction early."
+            "text": "các điều tra viên đã rời buổi đấu giá sớm."
           },
           {
             "id": "severely_delayed",
-            "text": "the investigators were severely delayed."
+            "text": "các điều tra viên đã bị chậm trễ nghiêm trọng."
           },
           {
             "id": "understand_the_truth",
-            "text": "the investigators understand the truth."
+            "text": "các điều tra viên hiểu được sự thật."
           }
         ]
       },
@@ -8647,7 +8647,7 @@
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Đã tập hợp"
           },
           {
             "id": "site_of_unbinding",
@@ -8680,7 +8680,7 @@
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Đã tập hợp"
           },
           {
             "id": "site_of_unbinding",
@@ -8692,136 +8692,136 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "heeded_the_call",
-            "masculine_text": "#name# has heeded the call.",
-            "feminine_text": "#name# has heeded the call.",
-            "nonbinary_text": "#name# has heeded the call."
+            "id": "injected_a_cardinal_reagant",
+            "masculine_text": "#name# đã tiêm một liều thuốc thử cardinal.",
+            "feminine_text": "#name# đã tiêm một liều thuốc thử cardinal.",
+            "nonbinary_text": "#name# đã tiêm một liều thuốc thử cardinal."
           },
           {
-            "id": "injected_a_cardinal_reagant",
-            "masculine_text": "#name# has injected a cardinal reagant.",
-            "feminine_text": "#name# has injected a cardinal reagant.",
-            "nonbinary_text": "#name# has injected a cardinal reagant."
+            "id": "heeded_the_call",
+            "masculine_text": "#name# đã đáp lại tiếng gọi.",
+            "feminine_text": "#name# đã đáp lại tiếng gọi.",
+            "nonbinary_text": "#name# đã đáp lại tiếng gọi."
           },
           {
             "id": "arkham_stands_united",
-            "text": "Arkham stands united."
+            "text": "Arkham đồng lòng đoàn kết."
           },
           {
             "id": "baalshandor_struck_the_first_blow",
-            "text": "Baalshandor struck the first blow."
+            "text": "Baalshandor đã ra đòn đầu tiên."
           },
           {
             "id": "collection_was_saved",
-            "text": "the collection was saved."
+            "text": "bộ sưu tập đã được cứu."
           },
           {
             "id": "death_conquered_herbert_west",
-            "text": "Death conquered Herbert West."
+            "text": "Cái chết đã khuất phục Herbert West."
           },
           {
             "id": "earned_greysons_respect",
-            "text": "you earned Greyson's respect."
+            "text": "bạn đã giành được sự tôn trọng của Greyson."
           },
           {
             "id": "found_the_hidden_paths",
-            "text": "you have found the hidden paths."
+            "text": "bạn đã tìm ra những con đường ẩn."
           },
           {
             "id": "greyson_cut_ties",
-            "text": "Greyson cut ties."
+            "text": "Greyson đã cắt đứt quan hệ."
           },
           {
             "id": "herbert_west_is_leading_the_way",
-            "text": "Herbert West is leading the way."
+            "text": "Herbert West đang dẫn đường."
           },
           {
             "id": "herbert_west_was_taken_against_his_will",
-            "text": "Herbert West was taken against his will."
+            "text": "Herbert West đã bị bắt đi trái với ý muốn của anh ta."
           },
           {
             "id": "hibbs_has_your_back",
-            "text": "Hibbs has your back."
+            "text": "Hibbs sát cánh cùng bạn."
           },
           {
             "id": "hibbs_is_here_to_help",
-            "text": "Hibbs is here to help."
+            "text": "Hibbs ở đây để giúp đỡ."
           },
           {
             "id": "investigators_learned_the_secrets_of_the_roadhouse",
-            "text": "the investigators learned the secrets of the roadhouse."
+            "text": "các điều tra viên đã biết được bí mật của quán trọ."
           },
           {
             "id": "learned_the_killing_words",
-            "text": "you learned the killing words."
+            "text": "bạn đã học được những từ ngữ kết liễu."
           },
           {
             "id": "made_sure_the_first_was_dead",
-            "text": "you made sure the First was dead."
+            "text": "bạn đã đảm bảo the First đã chết."
           },
           {
             "id": "received_a_cryptic_riddle",
-            "text": "you received a cryptic riddle."
+            "text": "bạn đã nhận được một câu đố bí ẩn."
           },
           {
             "id": "saw_a_vision_of_the_portals",
-            "text": "you saw a vision of the portals."
+            "text": "bạn đã thấy một ảo ảnh về các cánh cổng."
           },
           {
             "id": "tailors_contained_the_problem",
-            "text": "the Tailors contained the problem."
+            "text": "the Tailors đã kiểm soát được vấn đề."
           },
           {
             "id": "the_blood_runs_in_your_veins",
-            "text": "the blood runs in your veins."
+            "text": "dòng máu chảy trong huyết quản của bạn."
           },
           {
             "id": "the_first_claimed_the_facility",
-            "text": "the First claimed The Facility."
+            "text": "the First đã chiếm The Facility."
           },
           {
             "id": "the_monster_was_buried_under_tons_of_concrete",
-            "text": "the monster was buried under tons of concrete."
+            "text": "con quái vật đã bị chôn vùi dưới hàng tấn bê tông."
           },
           {
             "id": "the_plaguebearer_was_bound_anew",
-            "text": "the Plaguebearer was bound anew."
+            "text": "Plaguebearer đã bị phong ấn trở lại."
           },
           {
             "id": "the_plaguebearer_was_destroyed",
-            "text": "the Plaguebearer was destroyed."
+            "text": "Plaguebearer đã bị tiêu diệt."
           },
           {
             "id": "transported_to_the_lurkers_realm",
-            "text": "you were transported to the Lurker's realm."
+            "text": "bạn đã bị dịch chuyển đến cõi của Lurker."
           },
           {
             "id": "tripped_the_facility_alarms",
-            "text": "you tripped the Facility alarms."
+            "text": "bạn đã kích hoạt báo động của Facility."
           },
           {
             "id": "west_conquered_death",
-            "text": "West conquered Death."
+            "text": "West đã chiến thắng Cái Chết."
           },
           {
             "id": "west_has_recovered_the_reagant",
-            "text": "West has recovered the reagant."
+            "text": "West đã thu hồi được thuốc thử."
           },
           {
             "id": "you_conquered_death",
-            "text": "you conquered Death."
+            "text": "bạn đã chiến thắng Cái Chết."
           },
           {
             "id": "you_have_been_warned",
-            "text": "you have been warned."
+            "text": "bạn đã được cảnh báo."
           },
           {
             "id": "you_have_received_a_twisted_gift",
-            "text": "you have received a twisted gift."
+            "text": "bạn đã nhận được một món quà quái gở."
           },
           {
             "id": "you_hid_the_briefcase",
-            "text": "you hid the briefcase."
+            "text": "bạn đã giấu chiếc cặp."
           }
         ]
       },
@@ -8891,7 +8891,7 @@
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Đã tập hợp"
           },
           {
             "id": "site_of_unbinding",
@@ -8924,7 +8924,7 @@
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Đã tập hợp"
           },
           {
             "id": "site_of_unbinding",
@@ -8990,7 +8990,7 @@
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Đã tập hợp"
           },
           {
             "id": "site_of_unbinding",
@@ -9023,7 +9023,7 @@
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Đã tập hợp"
           },
           {
             "id": "site_of_unbinding",
@@ -9056,7 +9056,7 @@
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Đã tập hợp"
           },
           {
             "id": "site_of_unbinding",
@@ -9089,7 +9089,7 @@
           },
           {
             "id": "rallied",
-            "text": "Rallied"
+            "text": "Đã tập hợp"
           },
           {
             "id": "site_of_unbinding",
@@ -9107,136 +9107,136 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "has_been_corrupted_by_the_earth",
-            "masculine_text": "#name# has been corrupted by the Earth.",
-            "feminine_text": "#name# has been corrupted by the Earth.",
-            "nonbinary_text": "#name# has been corrupted by the Earth."
+            "id": "infected_by_cybervirus",
+            "masculine_text": "#name# đã bị nhiễm cybervirus.",
+            "feminine_text": "#name# đã bị nhiễm cybervirus.",
+            "nonbinary_text": "#name# đã bị nhiễm cybervirus."
           },
           {
-            "id": "infected_by_cybervirus",
-            "masculine_text": "#name# has been infected by the cybervirus.",
-            "feminine_text": "#name# has been infected by the cybervirus.",
-            "nonbinary_text": "#name# has been infected by the cybervirus."
+            "id": "has_been_corrupted_by_the_earth",
+            "masculine_text": "#name# đã bị tha hóa bởi Trái Đất.",
+            "feminine_text": "#name# đã bị tha hóa bởi Trái Đất.",
+            "nonbinary_text": "#name# đã bị tha hóa bởi Trái Đất."
           },
           {
             "id": "allied_with_the_migo",
-            "text": "you are allied with the Mi-Go."
+            "text": "bạn là đồng minh của Mi-Go."
           },
           {
             "id": "caught_in_the_supernovas_blast",
-            "text": "#name# was caught in the supernova's blast."
+            "text": "#name# đã bị cuốn vào vụ nổ siêu tân tinh."
           },
           {
             "id": "couldnt_save_the_crew_of_the_nostalgia_2",
-            "text": "you couldn't save the crew of the Nostalgia II."
+            "text": "bạn đã không thể cứu phi hành đoàn của Nostalgia II."
           },
           {
             "id": "elbrus_station_has_been_fully_stabilized",
-            "text": "Elbrus Station has been fully stabilized."
+            "text": "Elbrus Station đã được ổn định hoàn toàn."
           },
           {
             "id": "elbrus_station_has_been_lost_in_the_quantum_realm",
-            "text": "Elbrus Station has been lost in the quantum realm."
+            "text": "Elbrus Station đã bị lạc trong Quantum Realm."
           },
           {
             "id": "entered_the_virtual_dreamlands_by_your_own_means",
-            "text": "you entered the Virtual Dreamlands by your own means."
+            "text": "bạn đã tiến vào Virtual Dreamlands bằng cách riêng của mình."
           },
           {
             "id": "escaped_hasturs_grasp_and_prevented_him_from_escaping_his_prison",
-            "text": "the investigators have finally escaped Hastur's grasp and prevented him from escaping his prison."
+            "text": "các điều tra viên cuối cùng đã thoát khỏi nanh vuốt của Hastur và ngăn cản hắn trốn thoát khỏi nhà tù của hắn."
           },
           {
             "id": "fully_restored_the_sanity_of_k2ps187",
-            "text": "you fully restored the sanity of K2-PS187."
+            "text": "bạn đã phục hồi hoàn toàn sanity của K2-PS187."
           },
           {
             "id": "hastur_and_tassilda_are_imprisoned",
-            "text": "Hastur and Tassilda are imprisoned in Carcosa once more, and the universe vanquished the inevitable… For now."
+            "text": "Hastur và Tassilda bị giam cầm ở Carcosa một lần nữa, và vũ trụ đã đánh bại điều tất yếu… Tạm thời là vậy."
           },
           {
             "id": "have_witnessed_the_primordial_chaos",
-            "text": "you have witnessed the primordial chaos."
+            "text": "bạn đã chứng kiến sự hỗn mang nguyên thủy."
           },
           {
             "id": "have_witnessed_the_unconscious_pandemonium",
-            "text": "you have witnessed the unconscious pandemonium."
+            "text": "bạn đã chứng kiến sự hỗn loạn vô thức."
           },
           {
             "id": "hope_was_shielded_from_the_blast",
-            "text": "Hope was shielded from the blast."
+            "text": "Hope đã được che chắn khỏi vụ nổ."
           },
           {
             "id": "know_of_abjuration_of_the_throne",
-            "text": "you know of the Abjuration of the Throne."
+            "text": "bạn biết về Abjuration of the Throne."
           },
           {
             "id": "lived_remainder_of_their_days_on_paradise",
-            "text": "#name# lived the remainder of their days, on Paradise."
+            "text": "#name# đã sống quãng đời còn lại của mình, trên Paradise."
           },
           {
             "id": "lived_remainder_of_their_days_with_hope",
-            "text": "#name# lived the remainder of their days, with Hope."
+            "text": "#name# đã sống quãng đời còn lại của mình, cùng với Hope."
           },
           {
             "id": "migo_safely_returned_to_their_home_world",
-            "text": "the Mi-Go safely returned to their home world."
+            "text": "Mi-Go đã trở về quê hương của chúng an toàn."
           },
           {
             "id": "nostalgia_2_has_been_saved",
-            "text": "the Nostalgia II has been saved."
+            "text": "Nostalgia II đã được cứu."
           },
           {
             "id": "not_in_good_standing_with_the_migo",
-            "text": "you are not in good standing with the Mi-Go."
+            "text": "bạn không có quan hệ tốt với Mi-Go."
           },
           {
             "id": "partially_restored_the_sanity_of_k2ps187",
-            "text": "you partially restored the sanity of K2-PS187."
+            "text": "bạn đã phục hồi một phần sanity của K2-PS187."
           },
           {
             "id": "realm_of_carcosa_overtook_our_universe",
-            "text": "the realm of Carcosa overtook our universe, and Tassilda rules over the black stars."
+            "text": "vương quốc Carcosa đã chiếm lấy vũ trụ của chúng ta, và Tassilda cai trị các vì sao đen."
           },
           {
             "id": "returned_to_the_palaces_of_dim_carcosa",
-            "text": "you have returned to the palaces of Dim Carcosa."
+            "text": "bạn đã trở lại những cung điện của Dim Carcosa."
           },
           {
             "id": "sun_went_supernova",
-            "text": "the sun went supernova and wiped out most of the solar system."
+            "text": "mặt trời đã trở thành siêu tân tinh và quét sạch phần lớn hệ mặt trời."
           },
           {
             "id": "transported_to_the_virtual_dreamlands_by_maja",
-            "text": "you were transported to the Virtual Dreamlands by Maja."
+            "text": "bạn đã được Maja dịch chuyển đến Virtual Dreamlands."
           },
           {
             "id": "trapped_in_a_virtual_nightmare",
-            "text": "you are trapped in a virtual nightmare."
+            "text": "bạn bị mắc kẹt trong một cơn ác mộng ảo."
           },
           {
             "id": "trapped_within_carcosa",
-            "text": "the investigators are trapped within Carcosa."
+            "text": "các điều tra viên bị mắc kẹt trong Carcosa."
           },
           {
             "id": "ucc_escaped_to_another_galaxy",
-            "text": "the UCC escaped to another galaxy."
+            "text": "UCC đã trốn thoát sang một thiên hà khác."
           },
           {
             "id": "uncovered_the_cultists_inhuman_methods",
-            "text": "you have uncovered the cultist's inhuman methods."
+            "text": "bạn đã khám phá ra các phương pháp vô nhân đạo của cultist."
           },
           {
             "id": "watched_the_performance_of_heir_to_carcosa",
-            "text": "you have watched the performance of Heir to Carcosa."
+            "text": "bạn đã xem buổi biểu diễn Heir to Carcosa."
           },
           {
             "id": "witnesed_the_manifested_madness",
-            "text": "you witnessed the manifested madness."
+            "text": "bạn đã chứng kiến sự điên loạn hiện hình."
           },
           {
             "id": "you_have_rescued_the_remaining_crew_of_the_nostalgia_2",
-            "text": "you have rescued the remaining crew of the Nostalgia II."
+            "text": "bạn đã giải cứu phi hành đoàn còn lại của Nostalgia II."
           }
         ]
       },
@@ -9296,139 +9296,139 @@
         "entries": [
           {
             "id": "ancestors_approve_of_your_actions",
-            "text": "the ancestors approve of your actions."
+            "text": "tổ tiên chấp thuận hành động của bạn."
           },
           {
             "id": "captain_marlow_is_alive",
-            "text": "Captain Marlow is alive."
+            "text": "Captain Marlow còn sống."
           },
           {
             "id": "captain_marlow_is_in_the_hands_of_the_ancestors",
-            "text": "Captain Marlow is in the hands of the ancestors."
+            "text": "Captain Marlow đang ở trong tay của tổ tiên."
           },
           {
             "id": "darkness_has_descended_on_the_congo",
-            "text": "the Avatar of Darkness freely walks the Earth."
+            "text": "the Avatar of Darkness tự do bước đi trên Trái Đất."
           },
           {
             "id": "darkness_has_descended_on_the_congo",
-            "text": "the Darkness has descended on the Congo."
+            "text": "the Darkness đã giáng xuống Congo."
           },
           {
             "id": "darkness_stared_back_at_you",
-            "text": "the Darkness stared back at you."
+            "text": "Bóng Tối đã nhìn đáp trả bạn."
           },
           {
             "id": "deciphered_the_journal_of_the_mad_russian",
-            "text": "you deciphered the journal of a mad Russian."
+            "text": "bạn đã giải mã nhật ký của một gã người Nga điên rồ."
           },
           {
             "id": "director_does_not_trust_you",
-            "text": "the Director does not trust you."
+            "text": "the Director không tin tưởng bạn."
           },
           {
             "id": "director_is_conspiring_against_kurtz",
-            "text": "the Director is conspiring against Kurtz."
+            "text": "the Director đang âm mưu chống lại Kurtz."
           },
           {
             "id": "drove_off_a_tribe_of_darkness_worshippers",
-            "text": "you drove off a tribe of Darkness worshippers."
+            "text": "bạn đã đánh đuổi một bộ tộc tôn thờ Darkness."
           },
           {
             "id": "extracted_a_confession_from_kurtzs_warrior",
-            "text": "you extracted a confession from Kurtz's Warrior."
+            "text": "bạn đã lấy được lời thú tội từ Kurtz's Warrior."
           },
           {
             "id": "found_a_strange_encrypted_book",
-            "text": "you found a strange encrypted book."
+            "text": "bạn đã tìm thấy một cuốn sách mã hóa kỳ lạ."
           },
           {
             "id": "found_a_strange_obsidian_status",
-            "text": "you found a strange obsidian statue."
+            "text": "bạn đã tìm thấy một bức tượng hắc diện thạch kỳ lạ."
           },
           {
             "id": "found_kurtzs_personal_belongings",
-            "text": "you found Kurtz's personal belongings."
+            "text": "bạn đã tìm thấy đồ dùng cá nhân của Kurtz."
           },
           {
             "id": "have_a_prisoner_on_board",
-            "text": "you have a prisoner on board."
+            "text": "bạn có một tù nhân trên tàu."
           },
           {
             "id": "have_injured_the_white_ape",
-            "text": "you have injured the White Ape."
+            "text": "bạn đã làm bị thương White Ape."
           },
           {
             "id": "know_about_miss_promise",
-            "text": "you know about Miss Promise."
+            "text": "bạn biết về Miss Promise."
           },
           {
             "id": "know_how_to_imprison_the_darkness",
-            "text": "you know how to imprison the Darkness."
+            "text": "bạn đã biết cách giam cầm the Darkness."
           },
           {
             "id": "made_a_promise_to_kurtz",
-            "text": "you made a promise to Kurtz."
+            "text": "bạn đã hứa với Kurtz."
           },
           {
             "id": "prisoner_died",
-            "text": "the prisoner died while trying to escape"
+            "text": "tù nhân đã chết khi đang cố trốn thoát"
           },
           {
             "id": "prisoner_escaped",
-            "text": "the prisoner escaped"
+            "text": "tù nhân đã trốn thoát"
           },
           {
             "id": "questioned_kurtzs_warrior",
-            "text": "you questioned Kurtz's Warrior."
+            "text": "bạn đã tra hỏi Kurtz's Warrior."
           },
           {
             "id": "returned_from_the_heart_of_darkness",
-            "text": "the investigators have returned from the heart of darkness."
+            "text": "các điều tra viên đã trở về từ trái tim của bóng tối."
           },
           {
             "id": "saw_a_dark_shadow_in_the_flames",
-            "text": "you saw a dark shadow in the flames."
+            "text": "bạn đã nhìn thấy một cái bóng đen trong ngọn lửa."
           },
           {
             "id": "solved_the_mystery_of_freslevens_murder",
-            "text": "you solved the mystery of Fresleven's murder."
+            "text": "bạn đã giải quyết bí ẩn về vụ sát hại Fresleven."
           },
           {
             "id": "spent_a_long_time_going_up_the_congo_river",
-            "text": "you spent a long time going up the Congo river."
+            "text": "bạn đã dành một thời gian dài đi ngược dòng sông Congo."
           },
           {
             "id": "stared_into_the_darkness",
-            "text": "you have stared into the Darkness."
+            "text": "bạn đã nhìn sâu vào Bóng Tối."
           },
           {
             "id": "the_ancestors_are_proud_of_you",
-            "text": "the Ancestors are proud of you."
+            "text": "các Ancestors tự hào về bạn."
           },
           {
             "id": "the_ancestors_are_watching_you",
-            "text": "the Ancestors are watching you."
+            "text": "Tổ tiên đang dõi theo bạn."
           },
           {
             "id": "told_about_the_area_around_the_inner_station",
-            "text": "you were told about the area around the Inner Station."
+            "text": "bạn đã được kể về khu vực xung quanh Inner Station."
           },
           {
             "id": "treated_at_the_central_stations_infirmary",
-            "text": "you were treated at the Central Station's infirmary."
+            "text": "bạn đã được điều trị tại bệnh xá của Central Station."
           },
           {
             "id": "tribe_of_the_black_hand_has_left_their_lands",
-            "text": "the Tribe of the Black Hand has left their lands."
+            "text": "the Tribe of the Black Hand đã rời khỏi vùng đất của họ."
           },
           {
             "id": "unable_to_bring_kurtz_back_alive",
-            "text": "the investigators were unable to bring Kurtz back alive."
+            "text": "các điều tra viên đã không thể đưa Kurtz sống sót trở về."
           },
           {
             "id": "went_up_the_congo_river",
-            "text": "you went up the Congo river."
+            "text": "bạn đã đi ngược dòng sông Congo."
           }
         ]
       },
@@ -9640,7 +9640,7 @@
           },
           {
             "id": "reeras_help",
-            "text": "Reera's Help"
+            "text": "Sự giúp đỡ của Reera"
           },
           {
             "id": "school_pills",
@@ -9657,63 +9657,63 @@
         "entries": [
           {
             "id": "arrival_was_delayed",
-            "text": "the investigators' arrival was delayed."
+            "text": "việc đến nơi của các điều tra viên đã bị trì hoãn."
           },
           {
             "id": "entered_the_island_quickly",
-            "text": "the investigators' entered the island quickly."
+            "text": "các điều tra viên đã nhanh chóng tiến vào hòn đảo."
           },
           {
             "id": "general_guph_surrendered",
-            "text": "General Guph surrendered."
+            "text": "General Guph đã đầu hàng."
           },
           {
             "id": "mombi_was_subdued",
-            "text": "Mombi was subdued."
+            "text": "Mombi đã bị khuất phục."
           },
           {
             "id": "ruggedo_crumbled_to_dust",
-            "text": "Ruggedo crumbled to dust."
+            "text": "Ruggedo đã vỡ vụn thành cát bụi."
           },
           {
             "id": "ruggedo_survived_the_colours_infection",
-            "text": "Ruggedo survived the Colour's infection."
+            "text": "Ruggedo đã sống sót qua sự lây nhiễm của Colour."
           },
           {
             "id": "ruggedos_fate_is_unknown",
-            "text": "Ruggedo's fate is unknown."
+            "text": "Số phận của Ruggedo chưa rõ."
           },
           {
             "id": "the_colour_consumed_oz_and_the_world",
-            "text": "the Colour consumed Oz and the world."
+            "text": "the Colour đã nuốt chửng Oz và thế giới."
           },
           {
             "id": "the_colour_has_returned_to_the_depths_of_space",
-            "text": "the Colours has returned to the depths of space."
+            "text": "the Colours đã trở về nơi sâu thẳm của không gian."
           },
           {
             "id": "the_colour_is_aware_of_your_strength",
-            "text": "the Colour is aware of your strength."
+            "text": "the Colour đã nhận thức được sức mạnh của bạn."
           },
           {
             "id": "the_emerald_city_lies_in_ruins",
-            "text": "the Emerald City lies in ruins."
+            "text": "Emerald City chìm trong đống đổ nát."
           },
           {
             "id": "the_emerald_city_was_damaged_by_the_invading_army",
-            "text": "the Emerald City was damaged by the invading army."
+            "text": "the Emerald City đã bị hư hại bởi đội quân xâm lược."
           },
           {
             "id": "the_emerald_city_was_damaged_by_witches",
-            "text": "the Emerald City was damaged by witches."
+            "text": "the Emerald City đã bị hư hại bởi các phù thủy."
           },
           {
             "id": "the_investigators_defended_the_emerald_city",
-            "text": "the investigators defended the Emerald City."
+            "text": "các điều tra viên đã bảo vệ Emerald City."
           },
           {
             "id": "the_investigators_survived_the_colours_departure",
-            "text": "the investigators survived the Colour's departure."
+            "text": "các điều tra viên đã sống sót sau sự rời đi của the Colour."
           }
         ]
       },
@@ -9721,28 +9721,28 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "setup_curse_token",
-            "masculine_text": "#name# adds 1 [curse] token to the chaos bag.",
-            "feminine_text": "#name# adds 1 [curse] token to the chaos bag.",
-            "nonbinary_text": "#name# adds 1 [curse] token to the chaos bag."
-          },
-          {
             "id": "setup_fewer_cards",
-            "masculine_text": "#name# begins the scenario with 1 fewer card.",
-            "feminine_text": "#name# begins the scenario with 1 fewer card.",
-            "nonbinary_text": "#name# begins the scenario with 1 fewer card."
+            "masculine_text": "#name# bắt đầu scenario với ít hơn 1 lá bài.",
+            "feminine_text": "#name# bắt đầu scenario với ít hơn 1 lá bài.",
+            "nonbinary_text": "#name# bắt đầu scenario với ít hơn 1 lá bài."
           },
           {
             "id": "setup_fewer_resources",
-            "masculine_text": "#name# begins the scenario with 1 fewer resource.",
-            "feminine_text": "#name# begins the scenario with 1 fewer resource.",
-            "nonbinary_text": "#name# begins the scenario with 1 fewer resource."
+            "masculine_text": "#name# bắt đầu scenario với ít hơn 1 resource.",
+            "feminine_text": "#name# bắt đầu scenario với ít hơn 1 resource.",
+            "nonbinary_text": "#name# bắt đầu scenario với ít hơn 1 resource."
           },
           {
             "id": "setup_limited_mulligan",
-            "masculine_text": "#name# can only mulligan 3 cards.",
-            "feminine_text": "#name# can only mulligan 3 cards.",
-            "nonbinary_text": "#name# can only mulligan 3 cards."
+            "masculine_text": "#name# chỉ có thể mulligan 3 lá bài.",
+            "feminine_text": "#name# chỉ có thể mulligan 3 lá bài.",
+            "nonbinary_text": "#name# chỉ có thể mulligan 3 lá bài."
+          },
+          {
+            "id": "setup_curse_token",
+            "masculine_text": "#name# thêm 1 token [curse] vào chaos bag.",
+            "feminine_text": "#name# thêm 1 token [curse] vào chaos bag.",
+            "nonbinary_text": "#name# thêm 1 token [curse] vào chaos bag."
           },
           {
             "id": "s2_companion_capn_bill",
@@ -10111,39 +10111,39 @@
         "entries": [
           {
             "id": "destructive_methods",
-            "text": "...destructive methods."
+            "text": "...phương thức hủy diệt."
           },
           {
             "id": "full_effects_on_the_body",
-            "text": "...full effects on the body."
+            "text": "...những tác động toàn diện lên cơ thể."
           },
           {
             "id": "full_effects_on_the_land",
-            "text": "...full effects on the land."
+            "text": "...toàn bộ tác động lên vùng đất."
           },
           {
             "id": "full_spectroscopic_analysis",
-            "text": "...full spectroscopic analysis."
+            "text": "...phân tích quang phổ đầy đủ."
           },
           {
             "id": "mental_influence",
-            "text": "...mental influence."
+            "text": "...ảnh hưởng tâm trí."
           },
           {
             "id": "physical_limitations",
-            "text": "...physical limitations."
+            "text": "...những hạn chế về thể chất."
           },
           {
             "id": "scientific_composition",
-            "text": "...scientific composition."
+            "text": "...thành phần khoa học."
           },
           {
             "id": "true_origin",
-            "text": "...true origin"
+            "text": "...nguồn gốc thực sự"
           },
           {
             "id": "true_origin",
-            "text": "...true origin."
+            "text": "...nguồn gốc thực sự."
           }
         ]
       },
@@ -10173,15 +10173,15 @@
         "entries": [
           {
             "id": "preparations_one",
-            "text": "concerning Miskatonic venture to Pacific 8th April, 1926"
+            "text": "về chuyến thám hiểm của Miskatonic đến Thái Bình Dương ngày 8 tháng 4 năm 1926"
           },
           {
             "id": "preparations_three",
-            "text": "Personnel acknowledge the following items, accepting associated risks:"
+            "text": "Nhân sự xác nhận các mục sau, chấp nhận các rủi ro liên quan:"
           },
           {
             "id": "preparations_two",
-            "text": "Auxiliary personnel assigned to venture performed additional research concerning expedition subject hereafter referred to as the Colour approved by expedition administrators (J. Park, R. Bradshaw, M. Gutierrez)."
+            "text": "Nhân sự phụ trợ được phân công cho chuyến thám hiểm đã thực hiện các nghiên cứu bổ sung về đối tượng của đoàn thám hiểm, sau đây được gọi là the Colour, dưới sự phê duyệt của các quản lý đoàn thám hiểm (J. Park, R. Bradshaw, M. Gutierrez)."
           }
         ]
       }
