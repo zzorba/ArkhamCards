@@ -803,7 +803,7 @@ export default function useParsedDeckComponent({
         card.code,
         card,
         colors,
-        { showSpoilers: true, deckId, deckInvestigatorId: investigator?.main.code, initialCustomizations: customizations, tabooSetId },
+        { showSpoilers: true, deckId, deckInvestigatorId: investigator?.main.code, initialCustomizations: customizations, tabooSetId, investigator: investigator?.front },
       );
       return;
     }

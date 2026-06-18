@@ -635,7 +635,7 @@ export default class DeckValidation {
             min: 0,
             max: 3,
           },
-          faction: ["guardian", "seeker", "rogue", "mystic", "survivor"],
+          // faction: ["guardian", "seeker", "rogue", "mystic", "survivor"],
           trait: ['Charm', 'Relic'],
           limit: specialCards.collector,
           error: t`Too many off-class cards for Collector`,

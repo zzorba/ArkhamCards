@@ -866,7 +866,7 @@ export default function DbCardResultList(props: Props) {
         card.code,
         card,
         colors,
-        { showSpoilers: true, deckId, deckInvestigatorId: investigator?.main.code, initialCustomizations: customizations, tabooSetId: tabooSetOverride }
+        { showSpoilers: true, deckId, deckInvestigatorId: investigator?.main.code, initialCustomizations: customizations, tabooSetId: tabooSetOverride, investigator: investigator?.front }
       );
       return;
     }

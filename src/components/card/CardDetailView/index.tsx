@@ -87,6 +87,7 @@ function CardDetailView({
   showSpoilers: propsShowSpoilers,
   tabooSetId: tabooSetIdOverride,
   initialCustomizations,
+  headerBackgroundColor,
 }: Props) {
   const navigation = useNavigation();
   const { backgroundStyle, typography, width } = useContext(StyleContext);
@@ -127,7 +128,8 @@ function CardDetailView({
   }, [id, showInvestigatorCards, navigation, customizedCard, showInvestigators]);
   useEffect(() => {
     if (customizedCard) {
-      const rightButtons = rightButtonsForCard(customizedCard);
+      const buttonColor = headerBackgroundColor ? 'white' : COLORS.M;
+      const rightButtons = rightButtonsForCard(customizedCard, buttonColor);
       navigation.setOptions({
         headerRight: () => (
           <View style={{ flexDirection: 'row' }}>
@@ -144,7 +146,7 @@ function CardDetailView({
         ),
       });
     }
-  }, [customizedCard, navigation, handleButtonPress]);
+  }, [customizedCard, navigation, handleButtonPress, headerBackgroundColor]);
   if (loading) {
     return <View style={[styles.wrapper, backgroundStyle]} />;
   }
@@ -182,7 +184,7 @@ function CardDetailView({
 
 function CardDetailViewWraper() {
   const route = useRoute<RouteProp<RootStackParamList, 'Card'>>();
-  const { id, back_id, pack_code, showSpoilers, tabooSetId, initialCustomizations, deckId, deckInvestigatorId } = route.params;
+  const { id, back_id, pack_code, showSpoilers, tabooSetId, initialCustomizations, deckId, deckInvestigatorId, headerBackgroundColor } = route.params;
   const navigation = useNavigation();
   const { colors } = useContext(StyleContext);
   const [investigator] = useSingleCard(deckInvestigatorId, 'player');
@@ -202,6 +204,7 @@ function CardDetailViewWraper() {
         showSpoilers={showSpoilers}
         tabooSetId={tabooSetId}
         initialCustomizations={initialCustomizations}
+        headerBackgroundColor={headerBackgroundColor}
       />
     </SimpleDeckEditContextProvider>
   );

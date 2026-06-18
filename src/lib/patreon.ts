@@ -5,8 +5,8 @@ const WORKERS_BASE = 'https://workers.arkhamcards.com/arkham-cards/v1';
 
 // Patreon campaign IDs — any active paid membership in these grants audio access.
 const ALLOWED_CAMPAIGN_IDS = new Set([
-  '1920024',   // MythosBusters
-  '5856505',   // ArkhamCards
+  '1920024', // MythosBusters
+  '5856505', // ArkhamCards
 ]);
 
 const PATREON_IDENTITY_URL =
@@ -32,7 +32,9 @@ async function saveTokens(tokens: StoredTokens): Promise<void> {
 
 async function loadTokens(): Promise<StoredTokens | null> {
   const creds = await Keychain.getInternetCredentials(KEYCHAIN_SERVICE);
-  if (!creds) return null;
+  if (!creds) {
+    return null;
+  }
   try {
     return JSON.parse(creds.password) as StoredTokens;
   } catch {
@@ -47,7 +49,9 @@ export async function getAccessToken(): Promise<string | null> {
 
 export async function refreshTokens(): Promise<string | null> {
   const tokens = await loadTokens();
-  if (!tokens?.refreshToken) return null;
+  if (!tokens?.refreshToken) {
+    return null;
+  }
 
   const res = await fetch(`${WORKERS_BASE}/patreon/refresh`, {
     method: 'POST',
@@ -55,7 +59,9 @@ export async function refreshTokens(): Promise<string | null> {
     body: JSON.stringify({ refresh_token: tokens.refreshToken }),
   });
 
-  if (!res.ok) return null;
+  if (!res.ok) {
+    return null;
+  }
 
   const { access_token, refresh_token } =
     await res.json() as { access_token: string; refresh_token: string };
@@ -69,7 +75,9 @@ export async function checkIsPatron(accessToken: string): Promise<boolean> {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 
-  if (!res.ok) return false;
+  if (!res.ok) {
+    return false;
+  }
 
   const data = await res.json() as {
     included?: Array<{
@@ -144,14 +152,20 @@ export async function signOutFlow(): Promise<void> {
 
 export async function verifyLogin(): Promise<boolean> {
   let accessToken = await getAccessToken();
-  if (!accessToken) return false;
+  if (!accessToken) {
+    return false;
+  }
 
   const isPatron = await checkIsPatron(accessToken);
-  if (isPatron) return true;
+  if (isPatron) {
+    return true;
+  }
 
   // Token might be expired — try refreshing
   accessToken = await refreshTokens();
-  if (!accessToken) return false;
+  if (!accessToken) {
+    return false;
+  }
 
   return checkIsPatron(accessToken);
 }
