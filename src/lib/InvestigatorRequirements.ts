@@ -14,6 +14,7 @@ interface DeckOptionsContext {
   isUpgrade?: boolean;
   hideSplash?: boolean;
   hideVersatile?: boolean;
+  hideCollector?: boolean;
   extraDeck?: boolean;
   side?: boolean;
   allOptions?: boolean;
@@ -98,6 +99,7 @@ export function queryForInvestigator(
     all_options: context?.allOptions,
     all_customizations: context?.allOptions,
     hide_versatile: context?.hideVersatile,
+    hide_collector: context?.hideCollector,
     for_query: true,
   });
   const deck_options = validation.deckOptions(cards);

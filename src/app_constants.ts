@@ -366,6 +366,7 @@ export const RANDOM_BASIC_WEAKNESS = '01000';
 export const BASIC_WEAKNESS_CHOICE = 'zci_00004';
 export const CUSTOM_INVESTIGATOR = 'custom_001';
 export const VERSATILE_CODE = '06167';
+export const COLLECTOR_CODE = '12181';
 export const ON_YOUR_OWN_CODE = '53010';
 export const DEJA_VU_CODE = '60531';
 export const ANCESTRAL_KNOWLEDGE_CODE = '07303';

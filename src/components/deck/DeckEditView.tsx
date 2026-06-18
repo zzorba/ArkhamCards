@@ -5,7 +5,7 @@ import { getDeckScreenOptions } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
 import { t } from 'ttag';
 
-import { VERSATILE_CODE } from '@app_constants';
+import { VERSATILE_CODE, COLLECTOR_CODE } from '@app_constants';
 import CardSearchComponent from '@components/cardlist/CardSearchComponent';
 import { queryForInvestigator } from '@lib/InvestigatorRequirements';
 import { FilterState } from '@lib/filters';
@@ -82,10 +82,12 @@ function DeckEditView({
   const { deckEdits, deckBuildingMeta } = useContext(DeckEditContext);
   const tabooSetId = (deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.deck.taboo_id) || 0;
   const [hideVersatile, setHideVersatile] = useState(false);
+  const [hideCollector, setHideCollector] = useState(false);
   const [hideSplash, setHideSplash] = useState(false);
   const investigator = useInvestigatorChoice(deck?.deck.investigator_code, deckEdits?.meta, tabooSetId);
   const [specialCards] = useCardMapFromQuery(DECK_BUILDING_OPTION_CARDS_QUERY);
   const hasVersatile = deckType !== 'extra' && (deckEdits && deckEdits.slots[VERSATILE_CODE] > 0);
+  const hasCollector = deckType !== 'extra' && (deckEdits && deckEdits.slots[COLLECTOR_CODE] > 0);
   const isUpgrade = !!deck?.previousDeck;
   const queryOpt = useMemo(() => {
     if (weaknessOnly) {
@@ -126,12 +128,13 @@ function DeckEditView({
           extraDeck: deckType === 'extra',
           side: deckType === 'side',
           hideVersatile,
+          hideCollector,
           includeStory: true,
         },
       );
       return investigatorPart;
     }
-  }, [specialCards, deckBuildingMeta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile]);
+  }, [specialCards, deckBuildingMeta, deckType, isUpgrade, hideSplash, storyOnly, weaknessOnly, investigator, hideVersatile, hideCollector]);
 
   const mode = useMemo(() => {
     if (storyOnly || weaknessOnly) {
@@ -155,6 +158,8 @@ function DeckEditView({
       investigator={investigator}
       hideVersatile={hideVersatile}
       setHideVersatile={mode !== 'story' && hasVersatile ? setHideVersatile : undefined}
+      hideCollector={hideCollector}
+      setHideCollector={mode !== 'story' && hasCollector ? setHideCollector : undefined}
       hideSplash={hideSplash}
       setHideSplash={mode !== 'story' && hasSplash ? setHideSplash : undefined}
       mode={mode}

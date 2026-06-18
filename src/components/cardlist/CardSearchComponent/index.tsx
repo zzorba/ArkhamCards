@@ -56,6 +56,8 @@ interface Props {
   deckId?: DeckId;
   hideVersatile?: boolean;
   setHideVersatile?: (value: boolean) => void;
+  hideCollector?: boolean;
+  setHideCollector?: (value: boolean) => void;
   mode?: 'story' | 'side' | 'extra';
   includeDuplicates?: boolean;
 
@@ -75,6 +77,8 @@ export default function CardSearchComponent(props: Props) {
     setHideSplash,
     hideVersatile,
     setHideVersatile,
+    hideCollector,
+    setHideCollector,
     mode,
     includeDuplicates,
     screenType,
@@ -189,6 +193,22 @@ export default function CardSearchComponent(props: Props) {
       );
       headerHeight += s * 2 + 28 * fontScale;
     }
+    if (setHideCollector) {
+      result.push(
+        <View key="collector" style={[styles.row, space.paddingRightS, space.paddingTopS, space.paddingBottomS, { width }]}>
+          <View style={space.paddingRightS}>
+            <Text style={[typography.small, styles.searchOption]}>
+              { t`Hide collector cards` }
+            </Text>
+          </View>
+          <ArkhamSwitch
+            value={!!hideCollector}
+            onValueChange={setHideCollector}
+          />
+        </View>
+      );
+      headerHeight += s * 2 + 28 * fontScale;
+    }
     if (setHideSplash) {
       result.push(
         <View key="splash" style={[styles.row, space.paddingRightS, space.paddingTopS, space.paddingBottomS, { width }]}>
@@ -205,7 +225,8 @@ export default function CardSearchComponent(props: Props) {
       );
     }
     return [result, headerHeight];
-  }, [hideSplash, filters, fontScale, width, deckId, hideVersatile, setHideVersatile, setHideSplash, typography, onFilterChange, onToggleChange]);
+  }, [hideSplash, filters, fontScale, width, deckId, hideVersatile, setHideVersatile,
+    hideCollector, setHideCollector, setHideSplash, typography, onFilterChange, onToggleChange]);
   return (
     <>
       <CardSearchResultsComponent

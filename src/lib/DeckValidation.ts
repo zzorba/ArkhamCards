@@ -35,6 +35,7 @@ import {
   BODY_OF_A_YITHIAN,
   ON_YOUR_OWN_CODE,
   VERSATILE_CODE,
+  COLLECTOR_CODE,
   FORCED_LEARNING_CODE,
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
@@ -56,6 +57,7 @@ const THE_INSANE_TAG = 'the_insane';
 interface SpecialCardCounts {
   ancestralKnowledge: number;
   versatile: number;
+  collector: number;
   underworldSupport: number;
   underworldMarket: number;
   forcedLearning: number;
@@ -109,6 +111,7 @@ export default class DeckValidation {
   extra_deck: boolean;
   insane_data: InsaneData | undefined;
   hide_versatile: boolean;
+  hide_collector: boolean;
 
   limited_packs: Set<string> | undefined;
 
@@ -129,7 +132,8 @@ export default class DeckValidation {
       all_customizations,
       random_deck,
       extra_deck,
-      hide_versatile
+      hide_versatile,
+      hide_collector,
     }: {
       for_query?: boolean;
       all_options?: boolean;
@@ -137,6 +141,7 @@ export default class DeckValidation {
       random_deck?: boolean;
       extra_deck?: boolean;
       hide_versatile?: boolean;
+      hide_collector?: boolean;
     } = {}
   ) {
     this.investigator = investigator;
@@ -147,6 +152,7 @@ export default class DeckValidation {
     this.random_deck = random_deck ?? false;
     this.extra_deck = extra_deck ?? false;
     this.hide_versatile = hide_versatile ?? false;
+    this.hide_collector = hide_collector ?? false;
     this.for_query = for_query ?? false;
 
     this.limited_packs = meta?.card_pool ?
@@ -158,6 +164,7 @@ export default class DeckValidation {
     return {
       ancestralKnowledge: this.slots[ANCESTRAL_KNOWLEDGE_CODE] || 0,
       versatile: this.slots[VERSATILE_CODE] || 0,
+      collector: this.slots[COLLECTOR_CODE] || 0,
       underworldSupport: this.slots[UNDERWORLD_SUPPORT_CODE] || 0,
       underworldMarket: this.slots[UNDERWORLD_MARKET_CODE] || 0,
       forcedLearning: this.slots[FORCED_LEARNING_CODE] || 0,
@@ -207,6 +214,7 @@ export default class DeckValidation {
       extraSize +
       5 *
         (specialCards.versatile +
+          specialCards.collector +
           specialCards.ancestralKnowledge +
           specialCards.forcedLearning * 3) +
       10 * specialCards.underworldMarket +
@@ -617,6 +625,20 @@ export default class DeckValidation {
           faction: ["guardian", "seeker", "rogue", "mystic", "survivor"],
           limit: specialCards.versatile,
           error: t`Too many off-class cards for Versatile`,
+        })
+      );
+    }
+    if (specialCards.collector > 0 && !this.hide_collector) {
+      deck_options.push(
+        DeckOption.parse({
+          level: {
+            min: 0,
+            max: 3,
+          },
+          faction: ["guardian", "seeker", "rogue", "mystic", "survivor"],
+          trait: ['Charm', 'Relic'],
+          limit: specialCards.collector,
+          error: t`Too many off-class cards for Collector`,
         })
       );
     }
