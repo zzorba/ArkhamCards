@@ -1,7 +1,6 @@
 import { findIndex, map, filter, forEach, isEqual } from 'lodash';
 import { useCallback, useContext, useEffect } from 'react';
 import { useAudioPlayerContext, Track } from './AudioPlayerContext';
-import { getAccessToken } from '@lib/dissonantVoices';
 import LanguageContext from '@lib/i18n/LanguageContext';
 
 export interface NarrationTrack {
@@ -22,9 +21,9 @@ function artist(lang: string) {
 }
 
 // Convert NarrationTrack to audio Track format
-async function convertNarrationTrack(track: NarrationTrack): Promise<Track> {
-  if (track.lang && track.lang !== 'dv') {
-    const root = track.lang === 'ru' ? 'https://owl-dev.ru/arkham/mp3' : `https://static.arkhamcards.com/audio/${track.lang}`
+function convertNarrationTrack(track: NarrationTrack): Track {
+  if (track.lang) {
+    const root = track.lang === 'ru' ? 'https://owl-dev.ru/arkham/mp3' : `https://static.arkhamcards.com/audio/${track.lang}`;
     return {
       narrationId: track.id,
       title: track.name,
@@ -35,17 +34,13 @@ async function convertNarrationTrack(track: NarrationTrack): Promise<Track> {
     };
   }
 
-  const accessToken = await getAccessToken();
   return {
     narrationId: track.id,
     title: track.name,
     artist: 'Dissonant Voices',
     album: track.scenarioName,
     artwork: track.campaignCode,
-    url: `https://north101.co.uk/api/scene/${track.id}/listen`,
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
+    url: `https://static.arkhamcards.com/audio/dv/${track.id}.mp3`,
   };
 }
 
@@ -53,7 +48,7 @@ async function convertNarrationTrack(track: NarrationTrack): Promise<Track> {
 async function setNarrationQueue(queue: NarrationTrack[], context: ReturnType<typeof useAudioPlayerContext>): Promise<void> {
   const { queue: currentQueue, currentIndex, addTracks, removeTracks, setQueue } = context;
 
-  const newTracks: Track[] = await Promise.all(queue.map(convertNarrationTrack));
+  const newTracks: Track[] = queue.map(convertNarrationTrack);
   const newTrackIds: string[] = map(newTracks, track => track.narrationId);
   const oldTrackIds: string[] = map(currentQueue, track => track.narrationId);
 
