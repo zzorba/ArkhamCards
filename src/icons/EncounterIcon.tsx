@@ -175,10 +175,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'miskatonic_university':
       case 'people_of_arkham':
       case 'reeking_decay':
-      case 'sewers':
+      case 'arkham_sewers':
       case 'torment':
       case 'whippoorwills_ch2':
         return this.core2026Icon(encounter_code, size, color);
+      case 'sewers':
+        return this.core2026Icon('arkham_sewers', size, color);
       case 'boa':
         return this.core2026Icon('core_2026', size, color);
       case 'tom':
