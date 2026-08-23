@@ -6356,6 +6356,36 @@ msgstr "Questo draft utilizza il mazzo di carte selezionato."
 msgid "Fan-Made"
 msgstr ""
 
+msgid "Blood"
+msgstr ""
+
+msgid "Too many off-class cards for Collector"
+msgstr ""
+
+msgid "Sign in with Patreon?"
+msgstr ""
+
+msgid "Audio narration is available to patrons of ArkhamCards or Mythos Busters on Patreon."
+msgstr ""
+
+msgid "Hide collector cards"
+msgstr ""
+
+msgid "Children of Blood"
+msgstr ""
+
+msgid "River of Blood"
+msgstr ""
+
+msgid "New Horizons"
+msgstr ""
+
+msgid "Friends in Low Places"
+msgstr ""
+
+msgid "Blood Money"
+msgstr ""
+
 msgctxt "investigator"
 msgid "Custom"
 msgstr "Personalizzato"
