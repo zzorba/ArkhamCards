@@ -7,79 +7,79 @@
         "entries": [
           {
             "id": "abigail_harbinger",
-            "text": "Abigail Foreman is the harbinger of Elokoss."
+            "text": "Эбигейл Форман — вестник Элокосс."
           },
           {
             "id": "cornelia_harbinger",
-            "text": "Cornelia Akely is the harbinger of Elokoss."
+            "text": "Корнелия Эйкли — вестник Элокосс."
           },
           {
             "id": "david_harbinger",
-            "text": "David Renfield is the harbinger of Elokoss."
+            "text": "Дэвид Ренфилд — вестник Элокосс."
           },
           {
             "id": "defeated_elokoss_and_the_brethren_of_ash",
-            "text": "the investigators defeated Elokoss and the Brethren of Ash."
+            "text": "сыщики победили Элокосс и Братство пепла."
           },
           {
             "id": "defeated_their_masked_pursuer",
-            "text": "the investigators defeated their masked pursuer."
+            "text": "сыщики победили преследователя в маске."
           },
           {
             "id": "discovered_the_cults_whereabouts",
-            "text": "the investigators discovered the cult's whereabouts."
+            "text": "сыщики узнали местонахождение культа."
           },
           {
             "id": "earl_harbinger",
-            "text": "Sgt. Earl Monroe is the harbinger of Elokoss."
+            "text": "Сержант Эрл Монро — вестник Элокосс."
           },
           {
             "id": "elokoss_was_reborn",
-            "text": "Elokoss was reborn."
+            "text": "Элокосс переродилась."
           },
           {
             "id": "failed_in_their_search",
-            "text": "the investigators failed in their search."
+            "text": "поиски сыщиков ни к чему не привели."
           },
           {
             "id": "flooded_the_ritual",
-            "text": "the investigators flooded the Brethren of Ash’s summoning ritual."
+            "text": "что сыщики затопили ритуал призыва Братства пепла."
           },
           {
             "id": "killed_the_servant_of_flame",
-            "text": "the investigators killed the Servant of Flame"
+            "text": "сыщики убили служителя пламени."
           },
           {
             "id": "margaret_harbinger",
-            "text": "Margaret Liu is the harbinger of Elokoss."
+            "text": "Маргарет Лью — вестник Элокосс."
           },
           {
             "id": "miskatonic_university_burned",
-            "text": "Miskatonic University burned."
+            "text": "Мискатоникский университет сгорел."
           },
           {
             "id": "naomi_harbinger",
-            "text": "Naomi O'Bannion is the harbinger of Elokoss."
+            "text": "Наоми О’Бэннион — вестник Элокосс."
           },
           {
             "id": "saved_miskatonic_university",
-            "text": "the investigators saved Miskatonic University."
+            "text": "сыщики спасли Мискатоникский университет."
           },
           {
             "id": "scoured_arkham_for_answers",
-            "text": "the investigators scoured Arkham for answers."
+            "text": "сыщики прочесали Аркхэм в поисках ответов."
           },
           {
             "id": "stirred_up_trouble",
-            "text": "the investigators stirred up trouble."
+            "text": "сыщики подлили масла в огонь."
           },
           {
             "id": "stopped_elokoss_glorious_rebirth",
-            "text": "the investigators stopped Elokoss’s glorious rebirth."
+            "text": "сыщики остановили великое перерождение Элокосс."
           },
           {
             "id": "the_servant_of_flame_escaped",
-            "text": "the Servant of Flame escaped."
+            "text": "служитель пламени сбежал."
           }
         ]
       },
@@ -128,6 +128,74 @@
           },
           {
             "id": "smoke_and_mirrors_phi",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "cob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "completed_their_search",
+            "text": "the investigators completed their search."
+          },
+          {
+            "id": "defeated_zburamoarte",
+            "text": "the investigators defeated Zburamoarte."
+          },
+          {
+            "id": "did_not_complete_their_search",
+            "text": "the investigators did not complete their search."
+          },
+          {
+            "id": "failed_to_stop_julia_stern",
+            "text": "the investigators failed to stop Julia Stern."
+          },
+          {
+            "id": "failed_to_stop_the_children_of_blood",
+            "text": "the investigators failed to stop the children of blood."
+          },
+          {
+            "id": "killed_julia_stern",
+            "text": "the investigators killed Julia Stern."
+          },
+          {
+            "id": "left_to_the_cults_mercy",
+            "text": "the investigators were left to the cult's mercy."
+          },
+          {
+            "id": "left_zburamoarte_alive",
+            "text": "the investigators left Zburamoarte alive."
+          },
+          {
+            "id": "spared_julia_stern",
+            "text": "the investigators spared Julia Stern."
+          },
+          {
+            "id": "stopped_the_children_of_blood",
+            "text": "the investigators stopped the children of blood."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "codex_b_started",
+            "text": "dummy"
+          },
+          {
+            "id": "hard_or_expert",
+            "text": "dummy"
+          },
+          {
+            "id": "priscilla_done",
             "text": "dummy"
           }
         ]

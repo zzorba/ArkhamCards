@@ -29,6 +29,10 @@ const CORE_SET_ICONS = new Set([
   'torch', 'arkham', 'cultists', 'tentacles', 'rats', 'ghouls', 'striking_fear',
   'ancient_evils', 'chilling_cold', 'pentagram', 'nightgaunts', 'locked_doors',
   'agents_of_hastur', 'agents_of_yog', 'agents_of_shub','agents_of_cthulhu',
+  'arcane_lock', 'arkham_ch2', 'arkham_sewers', 'ashen_pilgrims', 'bad_weather', 'bystanders',
+  'cosmic_evils', 'cultists_ch2', 'dead_ends', 'eldritch_lore', 'fire_ch2', 'flying_terrors', 'gangs_of_arkham',
+  'hallucinations', 'mad_science', 'miskatonic_university', 'people_of_arkham', 'queen_of_ash', 'reeking_decay', 'smoke_and_mirrors',
+  'spreading_flames', 'torment', 'whippoorwills_ch2'
 ]);
 
 interface Props {

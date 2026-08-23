@@ -136,6 +136,74 @@
     "supplies": []
   },
   {
+    "campaignId": "cob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "completed_their_search",
+            "text": "the investigators completed their search."
+          },
+          {
+            "id": "defeated_zburamoarte",
+            "text": "the investigators defeated Zburamoarte."
+          },
+          {
+            "id": "did_not_complete_their_search",
+            "text": "the investigators did not complete their search."
+          },
+          {
+            "id": "failed_to_stop_julia_stern",
+            "text": "the investigators failed to stop Julia Stern."
+          },
+          {
+            "id": "failed_to_stop_the_children_of_blood",
+            "text": "the investigators failed to stop the children of blood."
+          },
+          {
+            "id": "killed_julia_stern",
+            "text": "the investigators killed Julia Stern."
+          },
+          {
+            "id": "left_to_the_cults_mercy",
+            "text": "the investigators were left to the cult's mercy."
+          },
+          {
+            "id": "left_zburamoarte_alive",
+            "text": "the investigators left Zburamoarte alive."
+          },
+          {
+            "id": "spared_julia_stern",
+            "text": "the investigators spared Julia Stern."
+          },
+          {
+            "id": "stopped_the_children_of_blood",
+            "text": "the investigators stopped the children of blood."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "codex_b_started",
+            "text": "dummy"
+          },
+          {
+            "id": "hard_or_expert",
+            "text": "dummy"
+          },
+          {
+            "id": "priscilla_done",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "core",
     "sections": [
       {

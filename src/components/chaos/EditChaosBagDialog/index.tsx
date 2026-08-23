@@ -22,7 +22,7 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useBackButton, useComponentVisible } from '@components/core/hooks';
 import { useAlertDialog, useDialog } from '@components/deck/dialogs';
-import { CampaignCycleCode, CampaignDifficulty, CUSTOM, EOE } from '@actions/types';
+import { CampaignCycleCode, CampaignDifficulty, COB, CUSTOM, EOE } from '@actions/types';
 import space, { s, xs } from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import ChaosToken, { EXTRA_TINY_TOKEN_SIZE } from '@components/chaos/ChaosToken';
@@ -293,10 +293,16 @@ function EditChaosBagDialog() {
     mutateChaosBag({ id, mutate });
   }, [mutateChaosBag]);
   const chaosTokens: ChaosTokenType[] = useMemo(() => {
-    if (cycleCode === EOE || cycleCode === CUSTOM) {
+    if (cycleCode === CUSTOM) {
       return CHAOS_TOKENS;
     }
-    return filter(CHAOS_TOKENS, x => x !== 'frost');
+    if (cycleCode === EOE) {
+      return filter(CHAOS_TOKENS, x => x !== 'blood');
+    }
+    if (cycleCode === COB) {
+      return filter(CHAOS_TOKENS, x => x !== 'frost');
+    }
+    return filter(CHAOS_TOKENS, x => x !== 'blood' && x !== 'frost');
   }, [cycleCode]);
   return (
     <>

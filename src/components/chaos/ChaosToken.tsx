@@ -90,6 +90,10 @@ const GRADIENTS: { [token: string]: {offset: string; color: string; opacity: str
     { offset: '25%', color: '#362330', opacity: '100%' },
     { offset: '100%', color: '#3B224A', opacity: '100%' },
   ],
+  blood: [
+    { offset: '75%', color: '#343433', opacity: '100%' },
+    { offset: '100%', color: '#1C1D1C', opacity: '100%' },
+  ],
 };
 
 function ChaosTokenPart({ name, size, color }: { name: string; size: number; color: string }) {
@@ -216,6 +220,16 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status, border }: {
               <ChaosTokenPart name="token_curse_overlay" color="#E6E1D3" size={size} />
             </>
           );
+
+        case 'blood':
+          return (
+            <>
+              <ChaosTokenPart name="token_blood_fill" color="#C22026" size={size} />
+              <ChaosTokenPart name="token_blood_overlay" color="#353534" size={size} />
+              <ChaosTokenPart name="token_blood_highlight" color="#353534" size={size} />
+              { !!border && <ChaosTokenBordeer size={size} /> }
+            </>
+          );
       }
     }
     return null;
@@ -274,6 +288,7 @@ const SPECIAL_COLORS: { [token: string]: string | undefined } = {
   elder_sign: '#4477A1',
   bless: '#9D702A',
   curse: '#3A2342',
+  blood: '#C22026',
 };
 
 export function getChaosTokenSize(iconSize?: 'small' | 'tiny' | 'extraTiny') {

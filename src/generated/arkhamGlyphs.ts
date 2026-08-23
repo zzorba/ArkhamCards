@@ -106,6 +106,7 @@ export const ARKHAM_GLYPHS: Record<string, number> = {
   'skill_wild': 59697,
   'skill_wild_inverted': 59698,
   'frost': 59648,
+  'blood': 59657,
   'codex': 59649,
   'night': 59650,
   'day': 59651,

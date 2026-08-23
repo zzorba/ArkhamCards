@@ -14,6 +14,7 @@ import CompactInvestigatorRow from '@components/core/CompactInvestigatorRow';
 import { useScenarioUndo } from '../ScenarioGuideContext';
 import { throttle } from 'lodash';
 import { ExtraStepPaddingProvider, StepPaddingContext } from '../StepPaddingContext';
+import IconizedText from '@components/core/IconizedText';
 
 interface Props {
   bulletType?: BulletType;
@@ -50,7 +51,7 @@ function TitleRow({ title, titleNode, titleStyle, titleButton, editable, bulletT
           <CampaignGuideTextComponent text={title} />
         ) : (
           <Text style={[typography.bigGameFont, editable ? space.paddingSideXs : undefined]}>
-            {title}
+            <IconizedText text={title} iconSize={26} />
           </Text>
         ) }
       </View>

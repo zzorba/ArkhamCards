@@ -156,6 +156,10 @@
     "name": "Blood From Stones"
   },
   {
+    "id": "blood_money",
+    "name": "Blood Money"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "Máu trên Tế Đàn"
   },
@@ -198,6 +202,14 @@
   {
     "id": "city_of_the_elder_things",
     "name": "City of the Elder Things"
+  },
+  {
+    "id": "cob_epilogue",
+    "name": "Phần kết"
+  },
+  {
+    "id": "cob_prologue",
+    "name": "Lời mở đầu"
   },
   {
     "id": "consternation_on_the_constellation",
@@ -608,6 +620,10 @@
     "name": "Infernal Machinery"
   },
   {
+    "id": "new_horizons",
+    "name": "New Horizons"
+  },
+  {
     "id": "night_of_fire",
     "name": "Night of Fire"
   },
@@ -890,6 +906,10 @@
   {
     "id": "rio_de_janiero",
     "name": "Theory of Annihiliation"
+  },
+  {
+    "id": "river_of_blood",
+    "name": "River of Blood"
   },
   {
     "id": "rome",

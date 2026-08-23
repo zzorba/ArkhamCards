@@ -17,6 +17,7 @@ export const ARKHAM_SLIM_GLYPHS: Record<string, number> = {
   'cultist': 77,
   'tablet': 78,
   'elder_thing': 79,
+  'blood': 59674,
   'elder_sign': 80,
   'auto_fail': 81,
   'per_investigator': 82,

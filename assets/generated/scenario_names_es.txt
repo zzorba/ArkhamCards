@@ -156,6 +156,10 @@
     "name": "Blood From Stones"
   },
   {
+    "id": "blood_money",
+    "name": "Blood Money"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "Sangre en el altar"
   },
@@ -198,6 +202,14 @@
   {
     "id": "city_of_the_elder_things",
     "name": "Ciudad de los Antiguos"
+  },
+  {
+    "id": "cob_epilogue",
+    "name": "Epílogo"
+  },
+  {
+    "id": "cob_prologue",
+    "name": "Prólogo"
   },
   {
     "id": "consternation_on_the_constellation",
@@ -608,6 +620,10 @@
     "name": "Maquinaria infernal"
   },
   {
+    "id": "new_horizons",
+    "name": "New Horizons"
+  },
+  {
     "id": "night_of_fire",
     "name": "Night of Fire"
   },
@@ -890,6 +906,10 @@
   {
     "id": "rio_de_janiero",
     "name": "Teoría de la aniquilación"
+  },
+  {
+    "id": "river_of_blood",
+    "name": "River of Blood"
   },
   {
     "id": "rome",

@@ -337,6 +337,7 @@ export const LIGHT_THEME: ThemeColors = {
     bless: '#9D702A',
     curse: '#3A2342',
     frost: '#3D3A63',
+    blood: '#C22026',
   },
   tokenFill: {
     bless: '#BFA640',

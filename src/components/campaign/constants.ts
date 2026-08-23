@@ -3,6 +3,7 @@ import { t } from 'ttag';
 
 import {
   BOA,
+  COB,
   CUSTOM,
   CORE,
   RTNOTZ,
@@ -107,6 +108,7 @@ export function difficultyString(difficulty: CampaignDifficulty | Campaign_Diffi
 export function campaignName(cycleCode: CampaignCycleCode): string | null {
   switch (cycleCode) {
     case BOA: return t`Brethren of Ash`;
+    case COB: return t`Children of Blood`;
     case CORE: return t`Night of the Zealot`;
     case RTNOTZ: return t`Return to the Night of the Zealot`;
     case DWL: return t`The Dunwich Legacy`;
@@ -189,6 +191,12 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Spreading Flames`, code: 'spreading_flames', pack_code: 'core_2026' },
       { name: t`Smoke and Mirrors`, code: 'smoke_and_mirrors', pack_code: 'core_2026' },
       { name: t`Queen of Ash`, code: 'queen_of_ash', pack_code: 'core_2026' },
+    ];
+    case COB : return [
+      { name: t`River of Blood`, code: 'river_of_blood', pack_code: 'cob' },
+      { name: t`New Horizons`, code: 'new_horizons', pack_code: 'cob' },
+      { name: t`Friends in Low Places`, code: 'friends_in_low_places', interlude: true },
+      { name: t`Blood Money`, code: 'blood_money', pack_code: 'cob' },
     ];
     case CORE: return [
       { name: t`The Gathering`, code: 'torch', pack_code: 'core' },
@@ -502,6 +510,7 @@ export function campaignNames() {
   return {
     core: t`The Night of the Zealot`,
     boa: t`Brethren of Ash`,
+    cob: t`Children of Blood`,
     rtnotz: t`Return to the Night of the Zealot`,
     dwl: t`The Dunwich Legacy`,
     rtdwl: t`Return to The Dunwich Legacy`,
@@ -551,6 +560,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
     case RTPTC:
     case AGES_UNWOUND:
       return colors.campaign.ptc;
+    case COB:
     case TFA:
     case RTTFA:
     case ALICE_IN_WONDERLAND:

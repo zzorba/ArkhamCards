@@ -76,6 +76,7 @@ const ALL_ICONS = new Set([
   'curse',
   'bless',
   'frost',
+  'blood',
   'seal_a',
   'seal_b',
   'seal_c',

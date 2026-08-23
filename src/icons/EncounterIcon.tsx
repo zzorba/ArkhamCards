@@ -3,6 +3,7 @@ import Animated, { interpolateColor, useAnimatedProps, useSharedValue, withRepea
 import ArkhamIcon from './ArkhamIcon';
 import AgesIcon from './AgesIcon';
 import AppIcon from './AppIcon';
+import BloodIcon from './BloodIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CyclopeanIcon from './CyclopeanIcon';
 import CircleIcon from './CircleIcon';
@@ -59,6 +60,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
   }
   ozIcon(name: string, size: number, color: string) {
     return (<OzIcon name={name} size={size} color={color} />);
+  }
+  bloodIcon(name: string, size: number, color: string) {
+    return (<BloodIcon name={name} size={size} color={color} />);
   }
   circusExMortisIcon(name: string, size: number, color: string) {
     return (<CircusExMortisIcon name={name} size={size} color={color} />);
@@ -1235,6 +1239,26 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.standaloneIcon('onigawa', size, color);
       case 'zdh':
         return this.standaloneIcon('darkham', size, color);
+      case 'cob':
+      case 'river_of_blood':
+      case 'new_horizons':
+      case 'blood_money':
+      case 'afflicted':
+      case 'agents_of_zburamoarte':
+      case 'blood_blight':
+      case 'blood_moon':
+      case 'bloodthirst':
+      case 'children_of_blood':
+      case 'friends_in_low_places':
+      case 'hunted':
+      case 'infected':
+      case 'misinformation':
+      case 'mongrels':
+      case 'preyed_upon':
+      case 'sanguine_secrets':
+      case 'stalked':
+      case 'vermin':
+        return this.bloodIcon(encounter_code, size, color);
       case 'rcore':
       default:
         return this.coreIcon('core', size, color);

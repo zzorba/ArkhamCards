@@ -136,6 +136,74 @@
     "supplies": []
   },
   {
+    "campaignId": "cob",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "completed_their_search",
+            "text": "the investigators completed their search."
+          },
+          {
+            "id": "defeated_zburamoarte",
+            "text": "the investigators defeated Zburamoarte."
+          },
+          {
+            "id": "did_not_complete_their_search",
+            "text": "the investigators did not complete their search."
+          },
+          {
+            "id": "failed_to_stop_julia_stern",
+            "text": "the investigators failed to stop Julia Stern."
+          },
+          {
+            "id": "failed_to_stop_the_children_of_blood",
+            "text": "the investigators failed to stop the children of blood."
+          },
+          {
+            "id": "killed_julia_stern",
+            "text": "the investigators killed Julia Stern."
+          },
+          {
+            "id": "left_to_the_cults_mercy",
+            "text": "the investigators were left to the cult's mercy."
+          },
+          {
+            "id": "left_zburamoarte_alive",
+            "text": "the investigators left Zburamoarte alive."
+          },
+          {
+            "id": "spared_julia_stern",
+            "text": "the investigators spared Julia Stern."
+          },
+          {
+            "id": "stopped_the_children_of_blood",
+            "text": "the investigators stopped the children of blood."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "codex_b_started",
+            "text": "dummy"
+          },
+          {
+            "id": "hard_or_expert",
+            "text": "dummy"
+          },
+          {
+            "id": "priscilla_done",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "core",
     "sections": [
       {
@@ -2526,47 +2594,47 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# został pochłonięty przez otchłań.",
+            "feminine_text": "#name# została pochłonięty przez otchłań.",
+            "nonbinary_text": "#name# zostało pochłonięty przez otchłań."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# został pochłonięty przez otchłań.",
+            "feminine_text": "#name# została pochłonięty przez otchłań.",
+            "nonbinary_text": "#name# zostało pochłonięty przez otchłań."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "znacie plany Xzharaha."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "Bractwo nieprzerwanie realizuje swe plany."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "klątwa snu została zdjęta."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "śniący w otchłani (#X#)"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
+            "text": "Członkowie Bractwa, którzy uciekli: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "nadchodzi dzień sądu."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
+            "text": "połączyliście siły z Xzharahem."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Otchłań została uratowana."
           }
         ]
       }
@@ -4537,15 +4605,15 @@
         "entries": [
           {
             "id": "tes_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# został pochłonięty przez otchłań.",
+            "feminine_text": "#name# została pochłonięty przez otchłań.",
+            "nonbinary_text": "#name# zostało pochłonięty przez otchłań."
           },
           {
             "id": "tnu_taken_by_the_abyss",
-            "masculine_text": "#name# was taken by the abyss.",
-            "feminine_text": "#name# was taken by the abyss.",
-            "nonbinary_text": "#name# was taken by the abyss."
+            "masculine_text": "#name# został pochłonięty przez otchłań.",
+            "feminine_text": "#name# została pochłonięty przez otchłań.",
+            "nonbinary_text": "#name# zostało pochłonięty przez otchłań."
           },
           {
             "id": "atw_bernards_fate",
@@ -4817,23 +4885,23 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "znacie plany Xzharaha."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "Bractwo nieprzerwanie realizuje swe plany."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "klątwa snu została zdjęta."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "śniący w otchłani (#X#)"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
+            "text": "Członkowie Bractwa, którzy uciekli: #name#"
           },
           {
             "id": "testsuo_made_a_noble_sacrifice",
@@ -4845,15 +4913,15 @@
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "nadchodzi dzień sądu."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
+            "text": "połączyliście siły z Xzharahem."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Otchłań została uratowana."
           },
           {
             "id": "used_the_sorcrerers_magic_against_them",

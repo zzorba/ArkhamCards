@@ -156,6 +156,10 @@
     "name": "Krew z kamieni"
   },
   {
+    "id": "blood_money",
+    "name": "Blood Money"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "Krew na ołtarzu"
   },
@@ -198,6 +202,14 @@
   {
     "id": "city_of_the_elder_things",
     "name": "Miasto Starszych Istot"
+  },
+  {
+    "id": "cob_epilogue",
+    "name": "Epilog"
+  },
+  {
+    "id": "cob_prologue",
+    "name": "Prolog"
   },
   {
     "id": "consternation_on_the_constellation",
@@ -608,6 +620,10 @@
     "name": "Piekielna machina"
   },
   {
+    "id": "new_horizons",
+    "name": "New Horizons"
+  },
+  {
     "id": "night_of_fire",
     "name": "Night of Fire"
   },
@@ -890,6 +906,10 @@
   {
     "id": "rio_de_janiero",
     "name": "Teoria zniszczenia"
+  },
+  {
+    "id": "river_of_blood",
+    "name": "River of Blood"
   },
   {
     "id": "rome",

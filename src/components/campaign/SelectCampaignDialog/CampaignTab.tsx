@@ -58,6 +58,7 @@ export default function CampaignTab({ campaignChanged, campaigns, segment, inclu
       pack_code => (
         ignore_collection ||
         packInCollection({ pack: pack_code, encounter: true }, in_collection) ||
+        (pack_code === 'boa' && in_collection.core_2026) ||
         (pack_code === 'core' && !in_collection.no_core) ||
         (pack_code === 'core' && in_collection.rcore) || (
           in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE) ||

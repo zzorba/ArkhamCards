@@ -156,6 +156,10 @@
     "name": "Blood From Stones"
   },
   {
+    "id": "blood_money",
+    "name": "Blood Money"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "Кровь на алтаре"
   },
@@ -200,12 +204,20 @@
     "name": "Город Старцев"
   },
   {
+    "id": "cob_epilogue",
+    "name": "Эпилог"
+  },
+  {
+    "id": "cob_prologue",
+    "name": "Пролог"
+  },
+  {
     "id": "consternation_on_the_constellation",
     "name": "Застывшее «Созвездие»"
   },
   {
     "id": "core",
-    "name": "Brethren of Ash"
+    "name": "Братство пепла"
   },
   {
     "id": "court_of_the_ancients",
@@ -608,6 +620,10 @@
     "name": "Дьявольский механизм"
   },
   {
+    "id": "new_horizons",
+    "name": "New Horizons"
+  },
+  {
     "id": "night_of_fire",
     "name": "Night of Fire"
   },
@@ -890,6 +906,10 @@
   {
     "id": "rio_de_janiero",
     "name": "Теория аннигиляции"
+  },
+  {
+    "id": "river_of_blood",
+    "name": "River of Blood"
   },
   {
     "id": "rome",

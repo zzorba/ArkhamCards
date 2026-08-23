@@ -138,7 +138,8 @@ export type SpecialChaosTokenType =
   | 'tablet'
   | 'elder_thing'
   | 'auto_fail'
-  | 'elder_sign';
+  | 'elder_sign'
+  | 'blood';
 
 export type ChaosTokenType =
   | '+1'
@@ -156,6 +157,7 @@ export type ChaosTokenType =
 export function isSpecialToken(token: ChaosTokenType) {
   switch (token) {
     case 'frost':
+    case 'blood':
     case 'bless':
     case 'curse':
     case 'skull':
@@ -189,6 +191,7 @@ export const CHAOS_TOKENS: ChaosTokenType[] = [
   '-7',
   '-8',
   'frost',
+  'blood',
   'skull',
   'cultist',
   'tablet',
@@ -219,8 +222,9 @@ export const CHAOS_TOKEN_ORDER: ChaosBag = {
   auto_fail: 14,
   elder_sign: 15,
   frost: 16,
-  bless: 17,
-  curse: 18,
+  blood: 17,
+  bless: 18,
+  curse: 19,
 };
 
 export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
@@ -236,6 +240,7 @@ export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
 ];
 
 export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {
+  blood: '#C22026',
   frost: '#2F3649',
   tablet: '#003961',
   elder_thing: '#4e1a45',
@@ -251,6 +256,8 @@ export function chaosTokenName(token: ChaosTokenType) {
       return t`Bless`;
     case 'curse':
       return t`Curse`;
+    case 'blood':
+      return t`Blood`;
     case 'skull':
       return t`Skull`;
     case 'cultist':
@@ -297,6 +304,8 @@ export function getChaosTokenValue(
       return { modifier: 2, reveal_another: 1 };
     case 'curse':
       return { modifier: -2, reveal_another: 1 };
+    case 'blood':
+      return { modifier: -1, reveal_another: 1 };
     case 'auto_fail':
       return { modifier: 'auto_fail' };
     case 'skull':
@@ -345,6 +354,7 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '-7': 1,
   '-8': 1,
   frost: 8,
+  blood: 12,
   skull: 4,
   cultist: 4,
   tablet: 4,

@@ -156,6 +156,10 @@
     "name": "돌에서 흐르는 피"
   },
   {
+    "id": "blood_money",
+    "name": "Blood Money"
+  },
+  {
     "id": "blood_on_the_altar",
     "name": "제단에 흘린 피"
   },
@@ -198,6 +202,14 @@
   {
     "id": "city_of_the_elder_things",
     "name": "옛것의 도시"
+  },
+  {
+    "id": "cob_epilogue",
+    "name": "후일담"
+  },
+  {
+    "id": "cob_prologue",
+    "name": "서막"
   },
   {
     "id": "consternation_on_the_constellation",
@@ -608,6 +620,10 @@
     "name": "지독한 기계장치"
   },
   {
+    "id": "new_horizons",
+    "name": "New Horizons"
+  },
+  {
     "id": "night_of_fire",
     "name": "Night of Fire"
   },
@@ -890,6 +906,10 @@
   {
     "id": "rio_de_janiero",
     "name": "소멸론"
+  },
+  {
+    "id": "river_of_blood",
+    "name": "River of Blood"
   },
   {
     "id": "rome",

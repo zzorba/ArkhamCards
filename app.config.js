@@ -38,7 +38,7 @@ module.exports = {
   expo: {
     name: 'ArkhamCards',
     slug: 'arkhamcards',
-    version: '6.2.0',
+    version: '6.3.0',
     jsEngine: 'hermes',
     orientation: 'default',
     userInterfaceStyle: 'automatic',
@@ -184,6 +184,7 @@ module.exports = {
             './assets/Arkhamic.ttf',
             './assets/arkhamicons.ttf',
             './assets/arkhamslim.ttf',
+            './assets/blood.ttf',
             './assets/carcosa.ttf',
             './assets/cardicons.ttf',
             './assets/Caveat.ttf',

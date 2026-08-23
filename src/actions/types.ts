@@ -497,6 +497,7 @@ export const TSK = 'tskc';
 export const FHV = 'fhv';
 export const GOB = 'gob';
 export const FOF = 'fof';
+export const COB = 'cob';
 export const STANDALONE = 'standalone';
 export const DARK_MATTER = 'zdm';
 export const ALICE_IN_WONDERLAND = 'zaw';
@@ -511,6 +512,7 @@ export type CampaignCycleCode =
   | typeof CUSTOM
   | typeof CORE
   | typeof BOA
+  | typeof COB
   | typeof RTNOTZ
   | typeof DWL
   | typeof RTDWL
@@ -543,6 +545,7 @@ export type CampaignCycleCode =
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   BOA,
+  COB,
   CORE,
   RTNOTZ,
   DWL,
@@ -578,6 +581,7 @@ export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
 export const GUIDED_CAMPAIGNS = new Set([
   BOA,
   CORE,
+  COB,
   DWL,
   PTC,
   TFA,
