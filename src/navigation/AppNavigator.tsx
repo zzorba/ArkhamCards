@@ -15,6 +15,7 @@ import BrowseCardsView from '@components/cardlist/BrowseCardsView';
 import MyDecksView from '@components/decklist/MyDecksView';
 import MyCampaignsView from '@components/campaign/MyCampaignsView';
 import SettingsView from '@components/settings/SettingsView';
+import useOAuthRedirectHandler from '@lib/useOAuthRedirectHandler';
 
 // Deck screens
 import DeckDetailView, { DeckDetailViewOptions } from '@components/deck/DeckDetailView';
@@ -1012,6 +1013,9 @@ function AppNavigatorInner({ navigationRef }: {
   const colors = darkMode ? DARK_THEME : LIGHT_THEME;
   const toastConfig = useToastConfig();
   useAppInitialization(navigationRef);
+  // Completes OAuth logins interrupted by the OS killing the app while the
+  // external browser was open (Android memory pressure).
+  useOAuthRedirectHandler();
   const routeNameRef = useRef<string | undefined>(undefined);
 
   const linking = {

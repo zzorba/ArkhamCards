@@ -107,20 +107,21 @@ export interface SignInResult {
   error?: string;
 }
 
-export async function signInFlow(): Promise<SignInResult> {
-  const result = await WebBrowser.openAuthSessionAsync(
-    `${WORKERS_BASE}/patreon/connect`,
-    'arkhamcards://patreon/result'
-  );
+/**
+ * Redirect URL that belongs to the Patreon sign-in flow. Used by the app-level
+ * deep-link handler to decide whether a launch URL should be completed here.
+ */
+export const REDIRECT_URL_PREFIX = 'arkhamcards://patreon/result';
 
-  if (result.type === 'cancel' || result.type === 'dismiss') {
-    return { success: false, error: 'Cancelled' };
-  }
-  if (result.type !== 'success') {
-    return { success: false, error: 'Authorization failed' };
-  }
-
-  const url = new URL(result.url);
+/**
+ * Complete a Patreon sign-in from a redirect URL. The worker delivers the tokens
+ * directly in the redirect query params, so there is no code exchange — we just
+ * parse, store, and verify. Shared by the warm path and the cold-start deep-link
+ * handler (used when the app was killed while the browser was open). Idempotent:
+ * safe to run twice for the same redirect.
+ */
+export async function completeSignInFromRedirect(redirectUrl: string): Promise<SignInResult> {
+  const url = new URL(redirectUrl);
   const access_token = url.searchParams.get('access_token');
   const refresh_token = url.searchParams.get('refresh_token');
   const error = url.searchParams.get('error');
@@ -144,6 +145,22 @@ export async function signInFlow(): Promise<SignInResult> {
   }
 
   return { success: true };
+}
+
+export async function signInFlow(): Promise<SignInResult> {
+  const result = await WebBrowser.openAuthSessionAsync(
+    `${WORKERS_BASE}/patreon/connect`,
+    'arkhamcards://patreon/result'
+  );
+
+  if (result.type === 'cancel' || result.type === 'dismiss') {
+    return { success: false, error: 'Cancelled' };
+  }
+  if (result.type !== 'success') {
+    return { success: false, error: 'Authorization failed' };
+  }
+
+  return completeSignInFromRedirect(result.url);
 }
 
 export async function signOutFlow(): Promise<void> {

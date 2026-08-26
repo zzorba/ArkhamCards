@@ -774,6 +774,7 @@ export function getCampaignLog(
       }
     case GOB:
     case FOF:
+    case COB:
       return {
         sections: [
           t`Campaign Notes`,
@@ -832,6 +833,13 @@ const NOTZ_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+};
+
+const COB_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1, blood: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, tablet: 1, elder_thing: 1, auto_fail: 1, elder_sign: 1, blood: 2 },
 };
 
 
@@ -1036,6 +1044,8 @@ export function getChaosBag(
     case CUSTOM:
     case STANDALONE:
       return NOTZ_BAG[difficulty];
+    case COB:
+      return COB_BAG[difficulty];
     case BOA:
       return BOA_BAG[difficulty];
     case DWL:

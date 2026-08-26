@@ -1,7 +1,9 @@
 import * as Keychain from 'react-native-keychain';
 
-import { authorize, refresh, revoke, AppAuthConfig } from './OAuthWrapper';
+import { authorize, completeAuthorization, refresh, revoke, AppAuthConfig, AUTH_ALREADY_COMPLETED } from './OAuthWrapper';
 import { getEnvVar } from './env';
+
+const PROVIDER = 'arkhamdb';
 
 const VERBOSE = __DEV__;
 
@@ -104,12 +106,47 @@ export function prefetch(): Promise<void> {
 
 export async function signInFlow(): Promise<SignInResult> {
   try {
-    const response = await authorize(config);
+    const response = await authorize(config, PROVIDER);
     await saveAuthResponse(response);
     return {
       success: true,
     };
   } catch (err) {
+    return {
+      success: false,
+      error: err.message || err,
+    };
+  }
+}
+
+/**
+ * Redirect URL that belongs to the ArkhamDB sign-in flow. Used by the app-level
+ * deep-link handler to decide whether a launch URL should be completed here.
+ */
+export const REDIRECT_URL_PREFIX = 'arkhamcards://auth/redirect';
+
+/**
+ * Complete an ArkhamDB sign-in from a redirect URL. Invoked by the cold-start
+ * deep-link handler when the app was killed while the browser was open. Safe to
+ * call even if the warm path already finished the exchange.
+ */
+export async function completeSignInFromRedirect(url: string): Promise<SignInResult> {
+  try {
+    const params: Record<string, string> = {};
+    new URL(url).searchParams.forEach((value, key) => {
+      params[key] = value;
+    });
+    const response = await completeAuthorization(config, PROVIDER, params);
+    await saveAuthResponse(response);
+    return { success: true };
+  } catch (err) {
+    if ((err?.message || err) === AUTH_ALREADY_COMPLETED) {
+      // The warm path already completed the exchange; report the real state.
+      const accessToken = await getAccessToken();
+      return accessToken
+        ? { success: true }
+        : { success: false, error: 'Login could not be completed' };
+    }
     return {
       success: false,
       error: err.message || err,

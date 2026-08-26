@@ -29,7 +29,7 @@ import {
 } from './types';
 import { AppState, getAllPacks, getArkhamDbDecks } from '@reducers';
 
-import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
+import { getAccessToken, signInFlow, signOutFlow, completeSignInFromRedirect } from '@lib/auth';
 import * as dissonantVoices from '@lib/dissonantVoices';
 import * as patreon from '@lib/patreon';
 import { decks } from '@lib/authApi';
@@ -50,6 +50,46 @@ export function login(): ThunkAction<void, AppState, unknown, Action<string>> {
           type: ARKHAMDB_LOGIN_ERROR,
           error: response.error,
         });
+      }
+    });
+  };
+}
+
+/**
+ * Complete an ArkhamDB login from a cold-start OAuth redirect. Dispatched by the
+ * app-level deep-link handler when the app was killed while the browser was open,
+ * so the original `login()` promise no longer exists to finish the flow.
+ */
+export function completeArkhamDbLoginFromRedirect(
+  url: string
+): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch): void => {
+    dispatch({ type: ARKHAMDB_LOGIN_STARTED });
+    completeSignInFromRedirect(url).then((response) => {
+      if (response.success) {
+        dispatch({ type: ARKHAMDB_LOGIN });
+        dispatch(refreshMyDecks(false));
+      } else {
+        dispatch({ type: ARKHAMDB_LOGIN_ERROR, error: response.error });
+      }
+    });
+  };
+}
+
+/**
+ * Complete a Patreon login from a cold-start OAuth redirect. See
+ * `completeArkhamDbLoginFromRedirect`.
+ */
+export function completePatreonLoginFromRedirect(
+  url: string
+): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch): void => {
+    dispatch({ type: PATREON_LOGIN_STARTED });
+    patreon.completeSignInFromRedirect(url).then((response) => {
+      if (response.success) {
+        dispatch({ type: PATREON_LOGIN });
+      } else {
+        dispatch({ type: PATREON_LOGIN_ERROR, error: response.error ?? 'Unknown error' });
       }
     });
   };
@@ -110,6 +150,11 @@ export function dissonantVoicesLogin(): ThunkAction<
           error: response.error,
         });
       }
+    }, (error) => {
+      dispatch({
+        type: DISSONANT_VOICES_LOGIN_ERROR,
+        error: error?.message || error || '',
+      });
     });
   };
 }
@@ -139,6 +184,9 @@ export function dissonantVoicesVerifyLogin(): ThunkAction<
   Action<string>
   > {
   return (dispatch) => {
+    dispatch({
+      type: DISSONANT_VOICES_LOGIN_STARTED,
+    });
     dissonantVoices.getAccessToken().then((accessToken) => {
       if (accessToken) {
         dispatch({
@@ -149,6 +197,10 @@ export function dissonantVoicesVerifyLogin(): ThunkAction<
           type: DISSONANT_VOICES_LOGOUT,
         });
       }
+    }, () => {
+      dispatch({
+        type: DISSONANT_VOICES_LOGOUT,
+      });
     });
   };
 }

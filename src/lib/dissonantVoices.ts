@@ -28,29 +28,25 @@ export function prefetch(): Promise<void> {
   return Promise.resolve();
 }
 
-export function signInFlow(): Promise<SignInResult> {
-  return authorizeDissonantVoices()
-    .then(async({
-      success,
-      token,
+export async function signInFlow(): Promise<SignInResult> {
+  try {
+    const { success, token, error } = await authorizeDissonantVoices();
+    if (success && token) {
+      await saveAuthResponse(token);
+      return {
+        success: true,
+      };
+    }
+    return {
+      success: false,
       error,
-    }) => {
-      if (success && token) {
-        await saveAuthResponse(token);
-        return {
-          success: true,
-        };
-      }
-      return {
-        success: false,
-        error,
-      };
-    }, (error) => {
-      return {
-        success: false,
-        error: error?.message || error || '',
-      };
-    });
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : (error as string) || '',
+    };
+  }
 }
 
 export async function signOutFlow() {
@@ -78,7 +74,7 @@ export async function authorizeDissonantVoices(): Promise<DissonantVoicesAuthRes
     if (result.type === 'error') {
       throw new Error(result.error?.description || 'Authentication failed');
     }
-    throw new Error('Authentication was cancelled');
+    throw new Error('User Cancelled.');
   }
 
   // Server returns access_token via implicit grant, but we send it as 'code' to verify patron status
