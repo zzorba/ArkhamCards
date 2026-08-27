@@ -119,7 +119,7 @@ export interface DeckMeta {
   [key: string]: string | undefined;
 }
 
-export type CardPoolMode = 'legacy' | 'current' | 'limited' | 'custom';
+export type CardPoolMode = 'legacy' | 'current' | 'chapter1' | 'chapter2' | 'limited' | 'custom';
 
 export interface LocalDeckId {
   id: undefined;

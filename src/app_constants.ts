@@ -174,10 +174,34 @@ export function isSpecialToken(token: ChaosTokenType) {
 
 export const POOL_CURRENT_PACKS = [];
 export const POOL_INVESTIGATOR_CYCLE = 'cycle:investigator';
-export const POOL_INVESTIGATOR_CH2_CYCLE = 'cycle:investigator_ch2';
+// Canonical chapter 2 investigator cycle code. This matches the cycle_code used by the
+// card data (and by arkham.build) so that card pools round-trip between the two apps.
+export const POOL_INVESTIGATOR_CH2_CYCLE = 'cycle:investigator_decks_ch2';
+// Legacy code previously written by ArkhamCards for the chapter 2 investigator cycle.
+// Still accepted when resolving existing decks.
 export const POOL_INVESTIGATOR_CH2_CYCLE_LEGACY = 'cycle:investigator_ch2';
+export const POOL_CORE_CYCLE = 'cycle:core';
+export const POOL_CORE_CH2_CYCLE = 'cycle:core_ch2';
 export const POOL_INVESTIGATOR_PACKS = ['nat','har','win','jac','ste'];
 export const POOL_INVESTIGATOR_CH2_PACKS = ['and','car','mar','mig','tom'];
+export const POOL_CORE_PACKS = ['core', 'rcore', 'rtnotz'];
+export const POOL_CORE_CH2_PACKS = ['core_2026'];
+
+// The non-core, non-investigator deckbuilding cycles that make up each chapter, keyed by
+// their card-pool code (as understood by expandPackCode).
+export const POOL_CHAPTER_1_CYCLES = ['dwlp','ptcp','tfap','tcup','tdep','ticp','eoep','tskp','fhvp','tdcp'];
+export const POOL_CHAPTER_2_CYCLES = ['cob'];
+
+/**
+ * The full deckbuilding card pool for a given chapter, expressed as cycle codes.
+ * Chapter 1: the original core era (core set + chapter 1 investigator decks + all chapter 1 cycles).
+ * Chapter 2: the revised core era (core_2026 + chapter 2 investigator decks + all chapter 2 cycles).
+ */
+export function chapterCardPool(chapter: 1 | 2): string[] {
+  return chapter === 2
+    ? [POOL_CORE_CH2_CYCLE, POOL_INVESTIGATOR_CH2_CYCLE, ...POOL_CHAPTER_2_CYCLES]
+    : [POOL_CORE_CYCLE, POOL_INVESTIGATOR_CYCLE, ...POOL_CHAPTER_1_CYCLES];
+}
 
 export const CHAOS_TOKENS: ChaosTokenType[] = [
   '+1',
@@ -660,18 +684,7 @@ export function getCardPoolSections(): {
     {
       type: 'limited',
       section: t`Cycles`,
-      packs: [
-        'dwlp',
-        'ptcp',
-        'tfap',
-        'tcup',
-        'tdep',
-        'ticp',
-        'eoep',
-        'tskp',
-        'fhvp',
-        'tdcp',
-      ],
+      packs: [...POOL_CHAPTER_1_CYCLES, ...POOL_CHAPTER_2_CYCLES],
     },
     {
       type: 'custom',
@@ -838,7 +851,8 @@ export function reprintPackToPack(pack: ReprintPack): Pack {
 
 /**
  * Expands a pack code into its physical pack codes.
- * - If it's POOL_INVESTIGATOR_CYCLE, expands to all investigator packs
+ * - If it's a virtual `cycle:` code (e.g. cycle:investigator, cycle:core_ch2), expands to
+ *   the physical packs for that cycle. This is the interchange format shared with arkham.build.
  * - If it's a special/virtual pack (like ptcp, dwlp), expands to its physical packs
  * - Also includes Return To packs for card pool purposes
  * - Otherwise returns the pack code as-is
@@ -850,6 +864,10 @@ export function expandPackCode(packCode: string): string[] {
     case POOL_INVESTIGATOR_CH2_CYCLE:
     case POOL_INVESTIGATOR_CH2_CYCLE_LEGACY:
       return POOL_INVESTIGATOR_CH2_PACKS;
+    case POOL_CORE_CYCLE:
+      return POOL_CORE_PACKS;
+    case POOL_CORE_CH2_CYCLE:
+      return POOL_CORE_CH2_PACKS;
     default: {
       const specialPack = SPECIAL_PACKS.find(sp => sp.code === packCode);
       if (specialPack) {
@@ -864,6 +882,11 @@ export function expandPackCode(packCode: string): string[] {
       // Include Return To pack for core set
       if (packCode === 'core' || packCode === 'rcore') {
         return [packCode, 'rtnotz'];
+      }
+      // An unrecognized `cycle:` code (e.g. from a newer client) should contribute no packs
+      // rather than leaking the literal `cycle:...` string into a pack_code filter.
+      if (packCode.startsWith('cycle:')) {
+        return [];
       }
       return [packCode];
     }

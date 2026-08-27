@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState, useLayoutEffect } from 'react';
 import { FlatList, Text, View, StyleSheet, ActivityIndicator } from 'react-native';
-import { map } from 'lodash';
+import { flatMap, map } from 'lodash';
 import Animated, { SharedValue, SlideInLeft, SlideOutDown, useAnimatedReaction, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
@@ -12,6 +12,7 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { CampaignId, DeckId, INVESTIGATOR_PROBLEM, SET_CURRENT_DRAFT, SET_CURRENT_DRAFT_SIZE, Slots, TOO_FEW_CARDS } from '@actions/types';
 import { useCampaignDeck } from '@data/hooks';
 import { useParsedDeck } from './hooks';
+import { expandPackCode } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
 import DeckNavFooter, { FOOTER_HEIGHT } from './DeckNavFooter';
 
@@ -199,7 +200,9 @@ export default function DeckDraftView() {
       return undefined;
     }
     const result: { [pack: string]: boolean } = {};
-    cardPoolPacks.split(',').forEach(pack => {
+    // Expand virtual cycle codes (e.g. cycle:core_ch2) into their physical pack codes so the
+    // draft's in_collection map matches real cards.
+    flatMap(cardPoolPacks.split(','), expandPackCode).forEach(pack => {
       result[pack] = true;
     });
     return result;

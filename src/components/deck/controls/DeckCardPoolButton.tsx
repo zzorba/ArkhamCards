@@ -1,4 +1,4 @@
-import { cycleName, expandPackCode, getCardPoolSections, POOL_INVESTIGATOR_CH2_CYCLE, POOL_INVESTIGATOR_CH2_CYCLE_LEGACY, POOL_INVESTIGATOR_CH2_PACKS, POOL_INVESTIGATOR_CYCLE, POOL_INVESTIGATOR_PACKS, SPECIAL_PACKS } from '@app_constants';
+import { chapterCardPool, cycleName, expandPackCode, getCardPoolSections, POOL_CHAPTER_1_CYCLES, POOL_CHAPTER_2_CYCLES, POOL_CORE_CH2_CYCLE, POOL_CORE_CYCLE, POOL_INVESTIGATOR_CH2_CYCLE, POOL_INVESTIGATOR_CH2_CYCLE_LEGACY, POOL_INVESTIGATOR_CH2_PACKS, POOL_INVESTIGATOR_CYCLE, POOL_INVESTIGATOR_PACKS, SPECIAL_PACKS } from '@app_constants';
 import { useSettingValue } from '@components/core/hooks';
 import LanguageContext from '@lib/i18n/LanguageContext';
 import { getAllRealPacks, getPacksInCollection } from '@reducers/index';
@@ -27,14 +27,31 @@ type Props = {
   isArkhamDbDeck?: boolean;
 }
 
-const ALL_CARD_POOLS: CardPoolMode[] = ['current', 'legacy', 'limited', 'custom'];
+const ALL_CARD_POOLS: CardPoolMode[] = ['current', 'legacy', 'limited', 'chapter1', 'chapter2', 'custom'];
 
 function cardPoolModeLabel(mode: CardPoolMode): string {
   switch (mode) {
     case 'legacy': return t`Legacy`;
     case 'current': return t`Current`;
+    case 'chapter1': return t`Chapter 1`;
+    case 'chapter2': return t`Chapter 2`;
     case 'limited': return t`Limited`;
     case 'custom': return t`Custom`;
+  }
+}
+
+// The preset modes whose card pool is fully determined by the mode (not user-editable). Their
+// contents are shown read-only in the picker, and defaultCardPoolSet is the single source of truth.
+function fixedModePool(mode: CardPoolMode): string[] | undefined {
+  switch (mode) {
+    case 'current':
+      return [POOL_CORE_CH2_CYCLE, POOL_INVESTIGATOR_CH2_CYCLE];
+    case 'chapter1':
+      return chapterCardPool(1);
+    case 'chapter2':
+      return chapterCardPool(2);
+    default:
+      return undefined;
   }
 }
 
@@ -42,17 +59,21 @@ function defaultCardPoolSet(
   mode: CardPoolMode,
   packInCollection: { [pack: string]: boolean }
 ): string[] {
+  const fixed = fixedModePool(mode);
+  if (fixed) {
+    return fixed;
+  }
   const defaultCore = packInCollection.core_2026 ? 'core_2026' : packInCollection.rcore ? 'rcore' : 'core';
   const investigatorCycle = defaultCore === 'core_2026' ? POOL_INVESTIGATOR_CH2_CYCLE : POOL_INVESTIGATOR_CYCLE;
   switch (mode) {
     case 'legacy':
       return [];
-    case 'current':
-      return ['core_2026', POOL_INVESTIGATOR_CH2_CYCLE];
     case 'limited':
       return [defaultCore, investigatorCycle];
     case 'custom':
       return [defaultCore];
+    default:
+      return [];
   }
 }
 
@@ -62,6 +83,10 @@ function cardPoolDescription(mode: CardPoolMode): string {
       return t`Use all cards from any product`;
     case 'current':
       return t`Use only cards from recent expansions`;
+    case 'chapter1':
+      return t`Use all cards from Chapter 1 products`;
+    case 'chapter2':
+      return t`Use all cards from Chapter 2 products`;
     case 'limited':
       return t`Use only cards from your choice of three expansions`;
     case 'custom':
@@ -92,6 +117,60 @@ function usePackNames(): { [code: string]: string } {
 
 }
 
+// Builds the read-only display rows for a fixed preset pool (current / chapter1 / chapter2).
+// Every row is shown selected + disabled since these pools cannot be edited in place.
+function buildFixedPoolItems(
+  poolCodes: string[],
+  packsByName: { [code: string]: string },
+  colors: { D20: string }
+): Item<string>[] {
+  const poolSet = new Set(poolCodes);
+  const items: Item<string>[] = [];
+  const iconFor = (code: string) => <EncounterIcon encounter_code={code} size={28} color={colors.D20} pack />;
+  const fixedRow = (code: string, value: string, title: string, description?: string): Item<string> => ({
+    title,
+    description,
+    iconNode: iconFor(code),
+    value,
+    selected: true,
+    disabled: true,
+  });
+
+  // Core set
+  const coreRows: Item<string>[] = [];
+  if (poolSet.has(POOL_CORE_CYCLE) || poolSet.has('core') || poolSet.has('rcore')) {
+    coreRows.push(fixedRow('core', 'core', packsByName.core ?? t`Core Set`));
+  }
+  if (poolSet.has(POOL_CORE_CH2_CYCLE) || poolSet.has('core_2026')) {
+    coreRows.push(fixedRow('core_2026', 'core_2026', packsByName.core_2026 ?? t`Revised Core Set`));
+  }
+  if (coreRows.length) {
+    items.push({ type: 'header', title: t`Core set` });
+    items.push(...coreRows);
+  }
+
+  // Cycles
+  const cycleCodes = filter([...POOL_CHAPTER_1_CYCLES, ...POOL_CHAPTER_2_CYCLES], code => poolSet.has(code));
+  if (cycleCodes.length) {
+    items.push({ type: 'header', title: t`Cycles` });
+    forEach(cycleCodes, code => items.push(fixedRow(code, code, packsByName[code] ?? code)));
+  }
+
+  // Investigator decks
+  const invRows: Item<string>[] = [];
+  if (poolSet.has(POOL_INVESTIGATOR_CYCLE)) {
+    invRows.push(fixedRow('nat', POOL_INVESTIGATOR_CYCLE, t`Investigator Starter Decks`, t`Chapter 1`));
+  }
+  if (poolSet.has(POOL_INVESTIGATOR_CH2_CYCLE) || poolSet.has(POOL_INVESTIGATOR_CH2_CYCLE_LEGACY)) {
+    invRows.push(fixedRow('and', POOL_INVESTIGATOR_CH2_CYCLE, t`Investigator Decks`, t`Chapter 2`));
+  }
+  if (invRows.length) {
+    items.push({ type: 'header', title: t`Investigator decks` });
+    items.push(...invRows);
+  }
+  return items;
+}
+
 function usePackCycles(mode: CardPoolMode, isArkhamDbDeck?: boolean): Item<string>[] {
   const { lang } = useContext(LanguageContext);
   const { colors } = useContext(StyleContext);
@@ -108,29 +187,10 @@ function usePackCycles(mode: CardPoolMode, isArkhamDbDeck?: boolean): Item<strin
     if (mode === 'legacy') {
       return [];
     }
-    if (mode === 'current') {
-      // Current is a fixed pool — all items are display-only (disabled + selected)
-      result.push({ type: 'header', title: t`Core set` });
-      result.push({
-        title: packsByName.core_2026,
-        iconNode: <EncounterIcon encounter_code="core_2026" size={28} color={colors.D20} pack />,
-        value: 'core_2026',
-        selected: true,
-        disabled: true,
-      });
-      result.push({ type: 'header', title: t`Investigator decks` });
-      forEach(POOL_INVESTIGATOR_CH2_PACKS, pack => {
-        result.push({
-          title: packsByName[pack],
-          iconNode: <EncounterIcon encounter_code={pack} size={28} color={colors.D20} pack />,
-          value: pack,
-          selected: true,
-          disabled: true,
-        });
-      });
-      result.push({ type: 'header', title: t`Recent releases` });
-      result.push({ type: 'placeholder', title: t`None released yet` });
-      return result;
+    const fixedPool = fixedModePool(mode);
+    if (fixedPool) {
+      // Fixed presets (current / chapter1 / chapter2) are display-only (disabled + selected).
+      return buildFixedPoolItems(fixedPool, packsByName, colors);
     }
     forEach(cycles, cycle => {
       if (cycle.fanMade && !fanMadeContent) {
@@ -233,11 +293,9 @@ function useCardPoolButtonLabel(mode: CardPoolMode, selectedPacks: Set<string>):
       return {
         label: t`Custom: ${selectedPacks.size} packs selected`,
       };
-    case 'current': {
-      return {
-        label: cardPoolModeLabel('current'),
-      };
-    }
+    case 'current':
+    case 'chapter1':
+    case 'chapter2':
     case 'legacy':
       return {
         label: cardPoolModeLabel(mode),
@@ -464,7 +522,20 @@ export function useImpliedCardPool(selectedPacks: string[]): CardPoolMode {
       return 'legacy';
     }
     const set = new Set(selectedPacks);
-    if (!set.has('core') && !set.has('rcore') && !set.has('core_2026')) {
+    // Chapter presets are matched by comparing the fully-expanded pack pool, so that a deck
+    // stored either as cycle codes (e.g. cycle:core_ch2) or as raw pack codes is detected the same.
+    const expanded = new Set(selectedPacks.flatMap(expandPackCode));
+    const matchesExpanded = (poolCodes: string[]): boolean => {
+      const target = new Set(poolCodes.flatMap(expandPackCode));
+      return target.size === expanded.size && [...target].every(code => expanded.has(code));
+    };
+    if (matchesExpanded(chapterCardPool(2))) {
+      return 'chapter2';
+    }
+    if (matchesExpanded(chapterCardPool(1))) {
+      return 'chapter1';
+    }
+    if (!set.has('core') && !set.has('rcore') && !set.has('core_2026') && !set.has(POOL_CORE_CYCLE) && !set.has(POOL_CORE_CH2_CYCLE)) {
       // You need a core set unless you are playing custom
       return 'custom';
     }
@@ -476,7 +547,7 @@ export function useImpliedCardPool(selectedPacks: string[]): CardPoolMode {
     }
     const limitedCount = sumBy(limitedPacks, p => set.has(p) ? 1 : 0);
     const fanCount = sumBy(fanPacks, p => set.has(p) ? 1 : 0);
-    if (set.has('core_2026') && hasAllCh2InvestigatorPacks && limitedCount === 0 && fanCount === 0) {
+    if ((set.has('core_2026') || set.has(POOL_CORE_CH2_CYCLE)) && hasAllCh2InvestigatorPacks && limitedCount === 0 && fanCount === 0) {
       // Right now there are no cycles in the 'current'
       return 'current';
     }

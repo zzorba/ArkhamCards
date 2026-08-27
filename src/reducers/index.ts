@@ -54,7 +54,7 @@ import {
   CardPoolMode,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
-import { ChaosBag, POOL_CURRENT_PACKS, POOL_INVESTIGATOR_CH2_CYCLE, reprintPackToPack, SPECIAL_PACKS } from '@app_constants';
+import { chapterCardPool, ChaosBag, POOL_CORE_CH2_CYCLE, POOL_CURRENT_PACKS, POOL_INVESTIGATOR_CH2_CYCLE, reprintPackToPack, SPECIAL_PACKS } from '@app_constants';
 import MiniCampaignT from '@data/interfaces/MiniCampaignT';
 import { LatestDeckRedux, MiniCampaignRedux, MiniDeckRedux, MiniLinkedCampaignRedux } from '@data/local/types';
 import SingleCampaignT from '@data/interfaces/SingleCampaignT';
@@ -825,10 +825,20 @@ export const makeCardPoolSelector = (): (state: AppState) => { cardPoolMode: Car
           return {
             cardPoolMode,
             cardPoolPacks: [
-              'core_2026',
+              POOL_CORE_CH2_CYCLE,
               ...POOL_CURRENT_PACKS,
               POOL_INVESTIGATOR_CH2_CYCLE,
             ],
+          };
+        case 'chapter1':
+          return {
+            cardPoolMode,
+            cardPoolPacks: chapterCardPool(1),
+          };
+        case 'chapter2':
+          return {
+            cardPoolMode,
+            cardPoolPacks: chapterCardPool(2),
           };
         case 'legacy':
           return {
