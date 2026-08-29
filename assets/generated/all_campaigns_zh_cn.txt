@@ -3528,7 +3528,7 @@
       "id": "$doomed_rule",
       "type": "rule_reminder",
       "title": "厄运降临",
-      "text": "厄运降临时一个关键词能力。\n在带有厄运降临关键词的敌人被（调查员或冒险效果）击败时，在当前密谋上放置1个毁灭标记。本效果能导致当前密谋推进。",
+      "text": "厄运降临是一个关键词能力。\n在带有厄运降临关键词的敌人被（调查员或冒险效果）击败时，在当前密谋上放置1个毁灭标记。本效果能导致当前密谋推进。",
       "bullets": [
         {
           "text": "“弃掉”敌人的效果不视为击败了该敌人，不会触发厄运降临关键词。"
@@ -3743,9 +3743,9 @@
     },
     {
       "id": "prologue",
-      "title": "A Powerful Hunger",
+      "title": "无与伦比的饥渴",
       "type": "story",
-      "text": "\"To say that we actually believed in vampires or werewolves would be a carelessly inclusive statement. Rather must it be said that we were not prepared to deny the possibility of certain unfamiliar and unclassified modifications of vital force and attenuated matter; existing very infrequently in three-dimensional space because of its more intimate connexion with other spatial units, yet close enough to the boundary of our own to furnish us occasional manifestations which we, for lack of a proper vantage-point, may never hope to understand.\"\n- H.P. Lovecraft, \"The Shunned House\"",
+      "text": "“要说我们相信的吸血鬼或者狼人存在，其实是一种粗心又宽泛的表述。毋宁说，生命力与相关物质有一种陌生又未能归类的变动，而我们尚未准备好否认这种变动的可能。这一变动不常出现在三维空间，因其与其他空间单位的联系更为紧密，却又离我们所处空间的边界足够接近，从而间或有所呈现，但由于缺乏合适的观察位置，我们可能永远也不能理解。”\n——H.P. 洛夫克拉夫特，《畏避之屋》",
       "narration": {
         "id": "children_of_blood.prologue.a_powerful_hunger",
         "name": "A Powerful Hunger",
@@ -4002,120 +4002,120 @@
   "achievements": [
     {
       "id": "hide_and_seek",
-      "title": "Hide and Seek",
-      "text": "Defeat Julia Stern before agenda 2a advances in <i>River of Blood</i>.",
+      "title": "捉迷藏",
+      "text": "在<i>鲜血之河</i>的密谋2a推进前击败朱利亚·斯特恩。",
       "type": "binary"
     },
     {
       "id": "friendly_neighborhood_investigator",
-      "title": "Friendly Neighborhood Investigator",
-      "text": "Do not let a single [[Civilian]] enemy get defeated during <i>River of Blood</i>.",
+      "title": "你的好邻居调查员",
+      "text": "在<i>鲜血之河</i>期间不让任何一个[[平民]]敌人被击败。",
       "type": "binary"
     },
     {
       "id": "trophy_collector",
-      "title": "Trophy Collector",
-      "text": "Add Fang of Zburamoarte to any investigator’s deck.",
+      "title": "战利品收藏家",
+      "text": "将孜卜拉牟特之牙加入任意调查员的牌库。",
       "type": "binary"
     },
     {
       "id": "no_meat_slab_unhooked",
-      "title": "No Meat-Slab Unhooked",
-      "text": "Finish <i>New Horizons</i> with every location revealed, and with no clues remaining on locations.",
+      "title": "一块肉都不放过",
+      "text": "以所有地点都揭示，并且地点上都没有线索的情况下完成<i>新视野</i>。",
       "type": "binary"
     },
     {
       "id": "filing_paperwork",
-      "title": "Filing Paperwork",
-      "text": "Add either Forged Permit or Sanguine Song to any investigator’s deck.",
+      "title": "文件归档",
+      "text": "将伪造许可或血色歌谣加入任意调查员的牌库。",
       "type": "binary"
     },
     {
       "id": "thatll_learn_him",
-      "title": "That'll Learn Him",
-      "text": "Use the ability on Zburamoarte’s Lair to deal the killing blow to Zburamoarte in <i>New Horizons</i>.",
+      "title": "致命教训",
+      "text": "在<i>新视野</i>中使用孜卜拉牟特的巢穴的能力给予孜卜拉牟特致命一击。",
       "type": "binary"
     },
     {
       "id": "safety_inspector",
-      "title": "Safety Inspector",
-      "text": "Do not let a single [[Civilian]] enemy get defeated during <i>New Horizons</i>.",
+      "title": "安全检查员",
+      "text": "在<i>新视野</i>期间不让任何一个[[平民]]敌人被击败。",
       "type": "binary"
     },
     {
       "id": "thanks_for_your_vote",
-      "title": "Thanks for Your Vote",
-      "text": "Add Charlie Kane to any investigator’s deck.",
+      "title": "谢谢你的投票",
+      "text": "将查理·凯恩加入任意调查员的牌库。",
       "type": "binary"
     },
     {
       "id": "hell_hath_no_fury",
-      "title": "Hell Hath No Fury",
-      "text": "Have Julia Stern deal the killing blow to Howard Wilkes in <i>Blood Money</i>.",
+      "title": "复仇怒火",
+      "text": "在<i>血钱</i>中让朱利亚·斯特恩给予霍华德·威尔克斯致命一击。",
       "type": "binary"
     },
     {
       "id": "look_out_below",
-      "title": "Look Out Below",
-      "text": "Use the Balcony location’s ability to defeat Howard Wilkes in <i>Blood Money</i>.",
+      "title": "瞧瞧下面",
+      "text": "在<i>血钱</i>中使用露台地点的能力击败霍华德·威尔克斯。",
       "type": "binary"
     },
     {
       "id": "a_party_everyone_can_enjoy",
-      "title": "A Party Everyone Can Enjoy",
-      "text": "Do not let a single [[Civilian]] enemy get defeated during <i>Blood Money</i>.",
+      "title": "人人欢宴",
+      "text": "在<i>血钱</i>期间不让任何一个[[平民]]敌人被击败。",
       "type": "binary"
     },
     {
       "id": "if_you_cant_beat_them",
-      "title": "If You Can't Beat Them...",
-      "text": "Complete the <i>Blood Money</i> scenario with each available copy of Suspicious Guest in the victory display.",
+      "title": "如果不能动手……",
+      "text": "以每张出现的起疑心的客人都在胜利区完成<i>血钱</i>冒险。",
       "type": "binary"
     },
     {
       "id": "you_got_red_on_you",
-      "title": "You Got Red on You",
-      "text": "Seal 3 [blood] tokens on your investigator in a single round.",
+      "title": "你身上好红啊",
+      "text": "一轮中在你的调查员身上封印3个[blood]标记。",
       "type": "binary"
     },
     {
       "id": "dont_forget_your_ppe",
-      "title": "Don't Forget Your PPE",
-      "text": "Finish <i>Children of Blood</i> with 0 [blood] tokens in the chaos bag.",
+      "title": "别忘了个人防护",
+      "text": "以混乱袋中没有[blood]标记完成<i>鲜血之子</i>。",
       "type": "binary"
     },
     {
       "id": "bathed_in_blood",
-      "title": "Bathed in Blood",
-      "text": "Finish <i>Children of Blood</i> with 12 [blood] tokens in the chaos bag.",
+      "title": "浑身是血",
+      "text": "以混乱袋中有12个[blood]标记完成<i>鲜血之子</i>。",
       "type": "binary"
     },
     {
       "id": "and_all_i_got",
-      "title": "And All I Got Were These Bloody Fangs",
-      "text": " Unlock the Chosen of Zburamoarte campaign reward card.",
+      "title": "奖励就这破牙",
+      "text": "解锁孜卜拉牟特的选民剧本奖励卡牌。",
       "type": "binary"
     },
     {
       "id": "its_part_of_my_backstory",
-      "title": "It's Part of My Backstory",
-      "text": "Complete <i>Children of Blood</i> with the following investigators:",
+      "title": "背景故事一部分",
+      "text": "以下列调查员完成<i>鲜血之子</i>剧本：",
       "type": "list",
       "items": [
         {
           "id": "daniela",
-          "text": "Daniela Reyes"
+          "text": "丹妮拉·雷耶丝"
         },
         {
           "id": "Miguel",
-          "text": "Migeul de la Cruz"
+          "text": "米格尔·德·拉·克鲁兹"
         }
       ]
     },
     {
       "id": "waterfront_wet_work",
-      "title": "Waterfront Wet Work",
-      "text": "Complete <i>Children of Blood</i> campaign on the following difficulties:",
+      "title": "滨水脏活",
+      "text": "以下列难度完成<i>鲜血之子</i>剧本：",
       "type": "list",
       "items": [
         {
@@ -4160,12 +4160,12 @@
         ]
       },
       "type": "story",
-      "text": "The cold autumn wind blows through the streets of the city of Arkham, the cobblestones wet from the rainstorm earlier that day. The sky has since cleared, and overhead a field of stars is watched by a full moon. It is under the yellow glow of the streetlights that you have made your way to Arkham's Waterfront District, formerly known as Rivertown before the Miskatonic burst its banks some months ago.\nGrim paranoia has gripped the Waterfront District. In the wake of a series of murders and disappearances, the working-class residents in the area are afraid to go out at night. They go to work at the river docks, the train yards, or the New Horizons meat packing facility, then rush home before darkness overtakes the city. Pedestrians look over their shoulders and hurry past dark alleys. Something is hunting the people of the district.\nWith Detective Reynolds of the Arkham PD, you have been working to get to the bottom of what's going on, and there have been precious few leads.\nThat is, until tonight.\nYou've been called to the Waterfront District by a concerned citizen. Christopher Stern has invited you to his home on Water Street with the promise of more information in exchange for help in a personal matter. Mr. Stern's promise of information and request for assistance end up being one and the same. With painful effort he recounts how his wife, Julia, is an employee at the New Horizons facility. She had been taking longer and longer shifts, such that she began leaving for work before the sun came up and returning home after it had gone down. Over time she grew cold and distant, eventually sleeping in a separate room and—in Christopher's wordshiding herself from him.\nHe found her in the alleyway behind their home three days ago. In the light of the waxing moon, he saw the woman who used to be his wife crouched over the corpse of their neighbor. She was feeding on the body, greedily drinking the man's blood. When he called her name, she fled into the shadows. Christopher followed her, but quickly lost track. She moved with such inhuman swiftness that all sign of her was lost to the night. What's worse, when he returned to the alleyway, the neighbor's body was nowhere to be found.\nMr. Stern spent the next couple of days searching feverishly for any sign of his wife. Despite what he witnessed, he seemed to resist the notion that she has changed into some kind of monster. Now, however, with more and more stories circulating the district each night, he knew something had to be done."
+      "text": "寒冷的秋风吹过阿卡姆的街道，鹅卵石上还残留着当天早些时候暴雨的雨水。天已放晴，头顶一片星空围绕着满月。路灯的黄光下，你正前往阿卡姆的滨水区，米斯卡塔尼克河几个月前决堤之前，这里还叫河岸城。\n滨水区已然陷入可怕的恐慌之中。一连串的谋杀和失踪案，让住在这里的工人阶级晚上都不敢出门。他们白天去河边码头、火车场、新视野肉类加工厂上班，然后赶在夜幕接管城市之前奔回家里。行人时不时回头张望，匆匆穿过漆黑的小巷。有什么东西在狩猎此区的人。\n你和阿卡姆警局的瑞若兹警探搭档，奋力一探究竟，但线索寥寥。\n直到今晚。\n一直关注此事的市民联系你前往滨水区。克里斯托弗·斯特恩邀请你到他水岸街的家中，答应给你更多信息，以此换取你在个人事务上帮他一把，这两件事最终归为一件。他痛苦地回忆起在新视野工厂上班的妻子朱利亚。她的轮班越来越长，甚至日出前就要去上班，日落后才能回家。她愈发冷淡，最后分房而居——按克里斯托弗的话说，是在躲他。\n三天前，他在自家后巷发现了她。在渐圆的月光下，他发现曾经是自己妻子的生物蹲在邻居的尸体旁大快朵颐，贪婪地饮血。等他呼唤她的名字，她却遁入阴影。克里斯托弗跟了上去，但很快就跟丢了。她快得不像人类，夜色里再没有她的身影。更可怕的是，等他回到巷子里，邻居的尸体都不见了。\n斯特恩先生接下来几天都疯了般地寻找妻子的踪迹。尽管他已亲眼目睹，但他似乎还在否认妻子已经变成某种怪物的可能。然而，城区夜夜传来的骇事越来越多，他意识到必须有所行动。"
     },
     {
       "id": "check_hard_or_expert",
       "type": "branch",
-      "text": "If you are playing on Hard of Expert:",
+      "text": "如果正在进行困难或专家难度：",
       "condition": {
         "type": "campaign_log",
         "section": "hidden",
@@ -4184,11 +4184,11 @@
     {
       "id": "earn_xp",
       "bullet_type": "small",
-      "text": "Each investigator may begin the campaign with S bonus experience. You may upgrade your decks before starting the first scenario.",
+      "text": "每位调查员可以以额外5点经验值开始剧本。你可以在开始第一场冒险前升级你的牌库。",
       "effects": [
         {
           "type": "earn_xp",
-          "bonus": 2,
+          "bonus": 5,
           "investigator": "all"
         }
       ]
@@ -4198,7 +4198,7 @@
 {
   "id": "river_of_blood",
   "scenario_name": "River of Blood",
-  "full_name": "Scenario I: River of Blood",
+  "full_name": "冒险I：鲜血之河",
   "icon": "river_of_blood",
   "header": "冒险I",
   "chaos_bag_card": "13001",
@@ -4227,7 +4227,7 @@
           "dv"
         ]
       },
-      "text": "\"Whatever you have to do to stop her, to stop that thing,\" Christopher says to you as you prepare to set out in search of Julia. \"Just do it.\"\nYou spend the night searching frantically through the Waterfront District, but are unable to locate anything conclusive. You retire for a restless night, and hope to have better luck in the morning."
+      "text": "“尽你所能阻止她，阻止那东西。”你准备出发去寻找朱利亚的时候，克里斯托弗对你说，“放手去吧。”\n你一晚上都在滨水区疯狂搜索，但始终无法定位到确切的线索。你一夜未眠，只能希望白天的运气能好些。"
     },
     {
       "id": "check_hard_or_expert_encounter",
@@ -4291,7 +4291,7 @@
     },
     {
       "id": "check_3_or_4_encounters",
-      "text": "If you are playing with 3 or 4 investigators:",
+      "text": "如果游戏中有3或4位调查员：",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -4381,16 +4381,16 @@
     },
     {
       "id": "standard_locations",
-      "text": "Because you are playing on Easy or Standard difficulty, put each [[Dawn]] location into play. Remove each [[Dusk]] location from the game."
+      "text": "如果正在进行简单或普通难度，将每张[[黎明]]地点放置入场。将每张[[黄昏]]地点从游戏中移除。"
     },
     {
       "id": "hard_locations",
-      "text": "Because you are playing on Hard or Expert difficulty, put each [[Dusk]] location into play. Remove each [[Dawn]] location from the game."
+      "text": "如果正在进行困难或专家难度，将每张[[黄昏]]地点放置入场。将每张[[黎明]]地点从游戏中移除。"
     },
     {
       "id": "starting_location",
       "bullet_type": "small",
-      "text": "Each investigator begins play at Water Street."
+      "text": "每位调查员从水岸街开始游戏。"
     },
     {
       "id": "check_3_or_4_enemies",
@@ -4439,11 +4439,11 @@
     },
     {
       "id": "spawn_standard",
-      "text": "Spawn 1 Waterfront Civilian enemy at Main Street."
+      "text": "在主干道生成1个滨水平民敌人。"
     },
     {
       "id": "spawn_3_or_4",
-      "text": "Spawn 1 Waterfront Civilian enemy at Main Street and Garrison Street."
+      "text": "在主干道和卫戍街各生成1个滨水平民敌人。"
     },
     {
       "id": "check_difficulty_julia",
@@ -4482,15 +4482,15 @@
     },
     {
       "id": "easy_julia",
-      "text": "Because you are playing on Easy difficulty, set Julia Stern <i>(On the Run)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+      "text": "如果正在进行简单难度，将朱利亚·斯特恩<i>（一路奔逃）</i>放在一边，位于场外。将其他每张朱利亚·斯特恩从游戏中移除。"
     },
     {
       "id": "standard_julia",
-      "text": "Because you are playing on Standard difficulty, set Julia Stern <i>(Stalking the Streets)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+      "text": "如果正在进行普通难度，将朱利亚·斯特恩<i>（街巷潜行）</i>放在一边，位于场外。将其他每张朱利亚·斯特恩从游戏中移除。"
     },
     {
       "id": "hard_julia",
-      "text": "Because you are playing on Hard or Expert difficulty, set Julia Stern <i>(Preying Upon Arkham)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+      "text": "如果正在进行困难或专家难度，将朱利亚·斯特恩<i>（捕食阿卡姆）</i>放在一边，位于场外。将其他每张朱利亚·斯特恩从游戏中移除。"
     },
     {
       "id": "check_difficulty_set_aside_cards",
@@ -4529,11 +4529,11 @@
     },
     {
       "id": "standard_set_aside",
-      "text": "Set the following cards aside, out of play: each remaining Waterfront Civilian enemy, each Night Feeder enemy, each card in the <b>Infected</b> encounter set, the Detective Reynolds story asset, and the Fang of Zburamoarte story asset."
+      "text": "将下列卡牌放在一边，位于场外：剩余的每张滨水平民敌人、每张暗夜噬魔敌人、<b>惨遭感染</b>遭遇组的所有卡牌、警探瑞若兹剧情支援、孜卜拉牟特之牙剧情支援。"
     },
     {
       "id": "hard_set_aside",
-      "text": "Set the following cards aside, out of play: each remaining Waterfront Civilian enemy, each Spawn of Zburamoarte enemy, each card in the <b>Infected</b> encounter set, the Detective Reynolds story asset, and the Fang of Zburamoarte story asset."
+      "text": "将下列卡牌放在一边，位于场外：剩余的每张滨水平民敌人、每张孜卜拉牟特的眷族敌人、<b>惨遭感染</b>遭遇组的所有卡牌、警探瑞若兹剧情支援、孜卜拉牟特之牙剧情支援。"
     },
     {
       "id": "location_layout_dawn",
@@ -4629,7 +4629,7 @@
     },
     {
       "id": "shuffle_julia",
-      "text": "Shuffle the top 2 cards of the encounter deck together with the set-aside Julia Stern enemy. Place 1 of these cards facedown, at random, beneath each [[Lair]] location."
+      "text": "将遭遇牌库顶2张卡牌和放在一边的朱利亚·斯特恩敌人一同混洗。将这些卡牌在每张[[巢穴]]地点底下随机各放置1张。"
     },
     {
       "id": "failed_to_stop_julia_stern",
@@ -4638,13 +4638,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "failed_to_stop_julia_stern",
-          "text": "the investigators failed to stop Julia Stern."
+          "text": "调查员没能阻止朱利亚·斯特恩。"
         }
       ]
     },
     {
       "id": "add_1_blood_token",
-      "text": "Add 1 [blood] token to the chaos bag for the remainder of the campaign.",
+      "text": "在剧本之后的部分，在混乱袋中加入1个[blood]标记。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -4656,7 +4656,7 @@
     },
     {
       "id": "earn_blood_blight",
-      "text": "Each investigator becomes the bearer of a set-aside The Blood Blight weakness.",
+      "text": "每位调查员拥有一张放在一边的鲜血枯疫弱点。",
       "effects": [
         {
           "type": "add_card",
@@ -4667,12 +4667,12 @@
     },
     {
       "id": "earn_xp_failure",
-      "text": "Each investigator earns experience equal to the <b>victory X</b> value of each card in the victory display.",
+      "text": "每位调查员取得经验值，数量等于胜利区所有卡牌的<b>胜利X</b>数值之和。",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "胜利牌区：",
-        "confirm_text": "Each investigator also earns 3 bonus experience as they learn from their mistakes.",
+        "confirm_text": "每位调查员取得3点奖励经验值，因为其吸取了自己的教训。",
         "effects": [
           {
             "type": "earn_xp",
@@ -4694,13 +4694,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "spared_julia_stern",
-          "text": "the investigators spared Julia Stern."
+          "text": "调查员饶过了朱利亚·斯特恩。"
         }
       ]
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the <b>victory X</b> value of each card in the victory display.",
+      "text": "每位调查员取得经验值，数量等于胜利区所有卡牌的<b>胜利X</b>数值之和。",
       "type": "input",
       "input": {
         "type": "counter",
@@ -4721,7 +4721,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "The investigators may decide to spend 2 [per_investigator] total experience, as a group, to remove 1 [blood] token from the chaos bag. Would you like to do this?",
+            "text": "调查员可以决定共同花费总计2[per_investigator]点经验值，以从混乱袋中移除1个[blood]标记。是否要这么做？",
             "steps": [
               "lose_xp_branch"
             ],
@@ -4778,11 +4778,11 @@
     },
     {
       "id": "remove_4_xp",
-      "text": "Who should spend XP?",
+      "text": "谁要花费经验值？",
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Spend experience",
+        "text": "花费经验值",
         "max": 4,
         "min": 4,
         "effects": [
@@ -4796,11 +4796,11 @@
     },
     {
       "id": "remove_6_xp",
-      "text": "Who should spend XP?",
+      "text": "谁要花费经验值？",
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Spend experience",
+        "text": "花费经验值",
         "max": 6,
         "min": 6,
         "effects": [
@@ -4814,11 +4814,11 @@
     },
     {
       "id": "remove_8_xp",
-      "text": "Who should spend XP?",
+      "text": "谁要花费经验值？",
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Spend experience",
+        "text": "花费经验值",
         "max": 8,
         "min": 8,
         "effects": [
@@ -4837,13 +4837,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "killed_julia_stern",
-          "text": "the investigators killed Julia Stern."
+          "text": "调查员杀死了朱利亚·斯特恩。"
         }
       ]
     },
     {
       "id": "remove_blood_token",
-      "text": "Remove 1 [blood] token from the chaos bag for the remainder of the campaign.",
+      "text": "在剧本之后的部分，从混乱袋中移除1个[blood]标记。",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -4855,12 +4855,12 @@
     },
     {
       "id": "earn_xp_plus_2",
-      "text": "Each investigator earns experience equal to the <b>victory X</b> value of each card in the victory display.",
+      "text": "每位调查员取得经验值，数量等于胜利区所有卡牌的<b>胜利X</b>数值之和。",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "胜利牌区：",
-        "confirm_text": "Each investigator earns 2 bonus experience as they are better prepared for what is to come.",
+        "confirm_text": "每位调查员取得2点奖励经验值，因为其做了应对将来的准备。",
         "effects": [
           {
             "type": "earn_xp",
@@ -4872,7 +4872,7 @@
     },
     {
       "id": "earn_detective_reynolds",
-      "text": "Detective Reynolds joins the investigation! Choose an investigator to become the bearer of the set-aside Detective Reynolds story asset.",
+      "text": "警探瑞若兹加入调查！选择一位调查员拥有放在一边的警探瑞若兹剧情支援。",
       "effects": [
         {
           "type": "add_card",
@@ -4889,7 +4889,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Did the investigators find a sacrifical dagger?",
+            "text": "调查员找到了献祭匕首吗？",
             "steps": [
               "earn_dagger"
             ]
@@ -4900,7 +4900,7 @@
     {
       "id": "earn_dagger",
       "bullet_type": "small",
-      "text": "Choose an investigator to become the bearer of the set-aside Fang of Zburamoarte story asset.",
+      "text": "选择一位调查员拥有放在一边的孜卜拉牟特之牙剧情支援。",
       "effects": [
         {
           "type": "add_card",
@@ -4911,11 +4911,11 @@
     },
     {
       "id": "release_blood_tokens",
-      "text": "Release each sealed [blood] token and return them to the chaos bag."
+      "text": "释放所有封印的[blood]标记，将其返回混乱袋。"
     },
     {
       "id": "ask_3_blood_tokens",
-      "text": "Each investigator who ended the scenario with 3 [blood] tokens sealed on their investigator becomes the bearer of a set-aside The Blood Blight weakness if they are not already a bearer of it.",
+      "text": "每位在冒险结束时身上封印了3个[blood]标记的调查员拥有一张放在一边的鲜血枯疫弱点（如果该调查员尚未拥有）。",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -4924,7 +4924,7 @@
         "choices": [
           {
             "id": "blood",
-            "text": "3 sealed [blood] tokens?",
+            "text": "封印了3个[blood]标记？",
             "condition": {
               "type": "has_card",
               "card": "13118",
@@ -4958,7 +4958,7 @@
         "branches": [
           {
             "id": "adjust_blood",
-            "text": "Adjust blood tokens",
+            "text": "调整鲜血标记",
             "repeatable": true,
             "steps": [
               "adjust_blood"
@@ -4976,7 +4976,7 @@
         "choices": [
           {
             "id": "add_blood",
-            "text": "Add 1 [blood] token.",
+            "text": "加入1个[blood]标记。",
             "condition": {
               "type": "multi",
               "count": 1,
@@ -5016,7 +5016,7 @@
           },
           {
             "id": "remove_blood",
-            "text": "Remove 1 [blood] token.",
+            "text": "移除1个[blood]标记。",
             "condition": {
               "type": "multi",
               "count": 1,
@@ -5068,7 +5068,7 @@
         "physical",
         "mental"
       ],
-      "text": "It doesn’t take long before it becomes clear that there are more creatures stalking the night than simply the monster that was Julia Stern. Their unending hunt proved too much for you. The last thing you remember is the creatures looming over you before you mercifully lost consciousness.\nYou awaken to the burning yellow light of dawn. Collecting yourself, you meet up with Detective Reynolds once more.",
+      "text": "你不久就清楚了，在夜幕下潜行的怪物不止朱利亚·斯特恩一个。他们永无休止的狩猎实令你精疲力竭。你记得的最后一件事，就是怪物们俯身在你面前……不幸中的万幸是，你随即失去了意识。\n黎明灼烈的黄光将你唤醒。你平复了一下心情，然后与警探瑞若兹再次碰面。",
       "narration": {
         "id": "cob.river_of_blood.no_resolution",
         "name": "No Resolution",
@@ -5087,7 +5087,7 @@
     {
       "id": "R1",
       "title": "结局1",
-      "text": "After a grueling conflict, you finally subdue your quarry. Rather than take her life, you knock Julia unconscious and prepare to regroup with Detective Reynolds, holding out hope that there may be some way to save her. When you return to collect her, however, you discover that she has disappeared into the shadows once more. You hope you made the right choice. For now, however, the only path forward for you is to reconnect with Detective Reynolds and get to the bottom of what caused all of this bloodshed in the first place.",
+      "text": "一番艰辛的战斗后，你终于制服了猎物。你没有取她性命，只是击晕，准备再跟警探瑞若兹会合，希望还有办法可以救她。可等你转身准备带上她的时候，却发现她又一次消失在了阴影之中。你希望自己做出了正确的选择。然而，目前唯一能做的，就是和警探瑞若兹重聚，找出这些血案的源头。",
       "narration": {
         "id": "cob.river_of_blood.r1",
         "name": "Resolution 1",
@@ -5105,7 +5105,7 @@
     {
       "id": "R2",
       "title": "结局2",
-      "text": "At long last, your hunt comes to an end. Ending Julia’s life, and the lives of her victims, is a regrettable course of action, but it had to be done to make the Waterfront District safe again. After three bloody nights on the banks of the Miskatonic River, you’re hoping that you can reconnect with Detective Reynolds and get to the bottom of what caused all of this in the first place.",
+      "text": "你的狩猎终于结束了。朱利亚，以及其受害者之死，固然令人遗憾，但要想让滨水区再度安全，你不得不这么做。在经历米斯卡塔尼克河岸三个血腥的夜晚后，你希望能跟警探瑞若兹重聚，找出这些血案的源头。",
       "narration": {
         "id": "cob.river_of_blood.r2",
         "name": "Resolution 2",
@@ -5123,7 +5123,7 @@
     {
       "id": "R3",
       "title": "结局3",
-      "text": "The hunt through the night is long and arduous, but Julia proves too crafty and too swift for your efforts. By the morning of the third day of your search, you worry that you’ll have to wait until she strikes again. For now, however, the only path forward for you is to reconnect with Detective Reynolds and get to the bottom of what caused all of this bloodshed in the first place.",
+      "text": "通宵追捕漫长又艰苦，但你这般努力还是无法胜过朱利亚的狡猾与敏捷。到了搜查的第三天早上，你担心自己恐怕得等她下一次出手了。然而，目前唯一能做的，就是和警探瑞若兹重聚，找出这些血案的源头。",
       "narration": {
         "id": "cob.river_of_blood.r3",
         "name": "Resolution 3",
@@ -5141,7 +5141,7 @@
       "id": "R4",
       "title": "结局4",
       "hidden": true,
-      "text": "Back at Detective Reynolds’ office, you explain what you’ve learned. He tells you that his leads also pointed towards the New Horizons meat packing facility, and a suspicious group that had been seen around the building, dressed in robes instead of the more standard aprons and coveralls of the workers. “The same place where Julia worked,” Reynolds says. “Seems like that place is worth a visit.”",
+      "text": "你回到警探瑞若兹的办公室，阐释自己的发现。他告诉你他的线索也指向了新视野肉类加工厂，那里有一群可疑分子出没，他们穿着长袍，而不是工人更常见的围裙和工作服。“那也是朱利亚上班的地方。”瑞若兹说，“看来值得一探。”",
       "narration": {
         "id": "cob.river_of_blood.r4",
         "name": "Resolution 4",
@@ -5162,7 +5162,7 @@
 {
   "id": "new_horizons",
   "scenario_name": "New Horizons",
-  "full_name": "Scenario II: New Horizons",
+  "full_name": "冒险II：新视野",
   "header": "冒险II",
   "chaos_bag_card": "13031",
   "icon": "new_horizons",
@@ -5179,7 +5179,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "With Detective Reynolds at your side, you head to the New Horizons facility in the Waterfront District. “Well, the way I see it we’ve got two options,” Reynolds says. “We can go in now and conduct our search. I’ve got the warrant, and it’ll be more official, but there’s also people who are working. People complicate things. Or…” He produces a set of lockpicks. “We wait until after dark.”",
+      "text": "你和警探瑞若兹一起前往滨水区的新视野工厂。“唔，眼下我看咱们有两个选择。”瑞若兹说，“我们可以现在就进去，开始搜查。我有搜查令，这样行动就更官方了，但里面还有人上班，他们可能会把事情搞复杂。或者……”他做了个撬锁的手势，“我们等到天黑后再动手。”",
       "narration": {
         "id": "cob.new_horizons.intro",
         "name": "Intro",
@@ -5208,8 +5208,8 @@
         "choices": [
           {
             "id": "day",
-            "text": "Search during the day",
-            "description": "<i>Hint: Prepare to talk your way in.</i>",
+            "text": "在白天搜查",
+            "description": "<i>提示：准备好谈判。</i>",
             "steps": [
               "gather_encounter_sets_v1",
               "location_setup_v1",
@@ -5223,8 +5223,8 @@
           },
           {
             "id": "night",
-            "text": "Search after dark",
-            "description": "<i>Hint: Prepare to fight your way in.</i>",
+            "text": "等天黑后再搜查",
+            "description": "<i>提示：准备好战斗。</i>",
             "steps": [
               "gather_encounter_sets_v2",
               "location_setup_v2",
@@ -5290,35 +5290,35 @@
     },
     {
       "id": "standard_setup_v1",
-      "text": "Gather each location in the <b>New Horizons</b> encounter set.",
+      "text": "收齐<b>新视野</b>遭遇组的所有地点。",
       "bullets": [
         {
-          "text": "Put each [[Day]] location into play. Remove each [[Night]] location from the game. Each investigator begins play at a Factory Floor location of their choice."
+          "text": "将每张[[白日]]地点放置入场。将每张[[黑夜]]地点从游戏中移除。每位调查员自选一个工厂车间地点开始游戏。"
         },
         {
-          "text": "Because you are playing on Easy or Standard difficulty, set Cavern Entrance <i>(Shallow Tunnels)</i>, Descending Tunnel, and all 3 copies of Side Chamber <i>(Shallow Tunnels)</i> aside, out of play. Remove each remaining location from the game."
+          "text": "如果进行的是简单或普通难度，将岩穴入口<i>（浅层通道）</i>、下行通道、全部3张侧边洞室<i>（浅层通道）</i>放在一边，位于场外。将剩余的所有地点从游戏中移除。"
         }
       ]
     },
     {
       "id": "hard_setup_v1",
-      "text": "Gather each location in the <b>New Horizons</b> encounter set.",
+      "text": "收齐<b>新视野</b>遭遇组的所有地点。",
       "bullets": [
         {
-          "text": "Put each [[Day]] location into play. Remove each [[Night]] location from the game. Each investigator begins play at a Factory Floor location of their choice."
+          "text": "将每张[[白日]]地点放置入场。将每张[[黑夜]]地点从游戏中移除。每位调查员自选一个工厂车间地点开始游戏。"
         },
         {
-          "text": "Because you are playing on Hard or Expert difficulty, set Cavern Entrance <i>(Darkest Depths)</i>, Descending Tunnel, and all 3 copies of Side Chamber <i>(Darkest Depths)</i> aside, out of play. Remove each remaining location from the game."
+          "text": "如果进行的是困难或专家难度，将岩穴入口<i>（至暗深渊）</i>、下行通道、全部3张侧边洞室<i>（至暗深渊）</i>放在一边，位于场外。将剩余的所有地点从游戏中移除。"
         }
       ]
     },
     {
       "id": "setup_agenda_v1",
-      "text": "Construct the agenda deck using agenda 1a—“Busy Day” and agenda 2a—“Digging Deeper (v. I).” Remove each other agenda from the game."
+      "text": "使用密谋1a“白日喧嚣”和密谋2a“掘入更深（版本一）”构建密谋牌库。将其他每张密谋从游戏中移除。"
     },
     {
       "id": "spawn_factory_workers",
-      "text": "Spawn 1 Factory Worker enemy at each Factory Floor location."
+      "text": "在每个工厂车间地点生成1个工厂工人敌人。"
     },
     {
       "id": "check_boss_difficulty",
@@ -5357,23 +5357,23 @@
     },
     {
       "id": "easy_boss",
-      "text": "Because you are playing on Easy difficulty, set Zburamoarte <i>(Lethargic Beast)</i> aside, out of play. Remove each other copy of Zburamoarte from the game."
+      "text": "如果正在进行简单难度，将孜卜拉牟特<i>（困倦巨兽）</i>放在一边，位于场外。将其他每张孜卜拉牟特从游戏中移除。"
     },
     {
       "id": "standard_boss",
-      "text": "Because you are playing on Standard difficulty, set Zburamoarte <i>(Source of the Blight)</i> aside, out of play. Remove each other copy of Zburamoarte from the game."
+      "text": "如果正在进行普通难度，将孜卜拉牟特<i>（枯疫源头）</i>放在一边，位于场外。将其他每张孜卜拉牟特从游戏中移除。"
     },
     {
       "id": "hard_boss",
-      "text": "Because you are playing on Hard or Expert difficulty, set Zburamoarte <i>(Progenitor of Monsters)</i> aside, out of play. Remove each other copy of Zburamoarte from the game."
+      "text": "如果正在进行困难或专家难度，将孜卜拉牟特<i>（怪物始祖）</i>放在一边，位于场外。将其他每张孜卜拉牟特从游戏中移除。"
     },
     {
       "id": "set_aside_v1",
-      "text": "Set the following cards aside, out of play: the Javier Rivera enemy, each copy of the Blighted Worker enemy, each copy of the Echoing in Darkness treachery, the <b>Infected</b> and <b>Flying Terrors</b> encounter sets, and the Forged Permit and Sanguine Song story assets."
+      "text": "将下列卡牌放在一边，位于场外：贾维尔·里维拉敌人、每张枯疫工人敌人、每张幽暗回声诡计、<b>惨遭感染</b>和<b>飞天恐怖</b>遭遇组、伪造许可和血色歌谣剧情支援。"
     },
     {
       "id": "remove_night_watchman",
-      "text": "Remove the Night Watchman enemy from the game."
+      "text": "将夜班看守敌人从游戏中移除。"
     },
     {
       "id": "gather_encounter_sets_v2",
@@ -5428,39 +5428,39 @@
     },
     {
       "id": "standard_setup_v2",
-      "text": "Gather each location in the <b>New Horizons</b> encounter set.",
+      "text": "收齐<b>新视野</b>遭遇组的所有地点。",
       "bullets": [
         {
-          "text": "Put each [[Night]] location into play. Remove each [[Day]] location from the game. Each investigator begins play at a Factory Floor location of their choice."
+          "text": "将每张[[黑夜]]地点放置入场。将每张[[白日]]地点从游戏中移除。每位调查员自选一个工厂车间地点开始游戏。"
         },
         {
-          "text": "Because you are playing on Easy or Standard difficulty, set Cavern Entrance <i>(Shallow Tunnels)</i>, Descending Tunnel, and all 3 copies of Side Chamber <i>(Shallow Tunnels)</i> aside, out of play. Remove each remaining location from the game."
+          "text": "如果进行的是简单或普通难度，将岩穴入口<i>（浅层通道）</i>、下行通道、全部3张侧边洞室<i>（浅层通道）</i>放在一边，位于场外。将剩余的所有地点从游戏中移除。"
         }
       ]
     },
     {
       "id": "hard_setup_v2",
-      "text": "Gather each location in the <b>New Horizons</b> encounter set.",
+      "text": "收齐<b>新视野</b>遭遇组的所有地点。",
       "bullets": [
         {
-          "text": "Put each [[Night]] location into play. Remove each [[Day]] location from the game. Each investigator begins play at a Factory Floor location of their choice."
+          "text": "将每张[[黑夜]]地点放置入场。将每张[[白日]]地点从游戏中移除。每位调查员自选一个工厂车间地点开始游戏。"
         },
         {
-          "text": "Because you are playing on Hard or Expert difficulty, set Cavern Entrance <i>(Darkest Depths)</i>, Descending Tunnel, and all 3 copies of Side Chamber <i>(Darkest Depths)</i> aside, out of play. Remove each remaining location from the game."
+          "text": "如果进行的是困难或专家难度，将岩穴入口<i>（至暗深渊）</i>、下行通道、全部3张侧边洞室<i>（至暗深渊）</i>放在一边，位于场外。将剩余的所有地点从游戏中移除。"
         }
       ]
     },
     {
       "id": "setup_agenda_v2",
-      "text": "Construct the agenda deck using agenda 1a—“Quiet Night” and agenda 2a—“Digging Deeper (v. II).” Remove each other agenda from the game."
+      "text": "使用密谋1a“黑夜寂静”和密谋2a“掘入更深（版本二）”构建密谋牌库。将其他每张密谋从游戏中移除。"
     },
     {
       "id": "set_aside_v2",
-      "text": "Set the following cards aside, out of play: the Night Watchman enemy, each copy of the Blighted Worker enemy, each copy of the Echoing in Darkness treachery, the <b>Infected</b> and <b>Flying Terrors</b> encounter sets, and the Forged Permit and Sanguine Song story assets."
+      "text": "将下列卡牌放在一边，位于场外：夜班看守敌人、每张枯疫工人敌人、每张幽暗回声诡计、<b>惨遭感染</b>和<b>飞天恐怖</b>遭遇组、伪造许可和血色歌谣剧情支援。"
     },
     {
       "id": "remove_javier",
-      "text": "Remove the Javier Rivera enemy and each copy of Factory Worker from the game."
+      "text": "将贾维尔·里维拉敌人和每张工厂工人敌人从游戏中移除。"
     },
     {
       "id": "location_layout_v1",
@@ -5514,7 +5514,7 @@
     },
     {
       "id": "add_1_blood_token",
-      "text": "Add 1 [blood] token to the chaos bag for the remainder of the campaign.",
+      "text": "在剧本之后的部分，在混乱袋中加入1个[blood]标记。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -5536,7 +5536,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "left_zburamoarte_alive",
-          "text": "the investigators left Zburamoarte alive."
+          "text": "调查员没能杀死孜卜拉牟特。"
         }
       ]
     },
@@ -5547,7 +5547,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "defeated_zburamoarte",
-          "text": "the investigators defeated Zburamoarte."
+          "text": "调查员击败了孜卜拉牟特。"
         }
       ]
     },
@@ -5558,7 +5558,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "left_to_the_cults_mercy",
-          "text": "the investigators were left to the cult's mercy."
+          "text": "调查员任由教派摆布。"
         }
       ]
     },
@@ -5569,7 +5569,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "did_not_complete_their_search",
-          "text": "the investigators did not complete their search."
+          "text": "调查员没有完成搜查。"
         }
       ]
     },
@@ -5580,13 +5580,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "completed_their_search",
-          "text": "the investigators completed their search."
+          "text": "调查员完成了搜查。"
         }
       ]
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the <b>victory X</b> value of each card in the victory display.",
+      "text": "每位调查员取得经验值，数量等于胜利区所有卡牌的<b>胜利X</b>数值之和。",
       "type": "input",
       "input": {
         "type": "counter",
@@ -5607,7 +5607,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "The investigators may decide to spend 2 [per_investigator] total experience, as a group, to remove 1 [blood] token from the chaos bag. Would you like to do this?",
+            "text": "调查员可以决定共同花费总计2[per_investigator]点经验值，以从混乱袋中移除1个[blood]标记。是否要这么做？",
             "steps": [
               "lose_xp_branch"
             ],
@@ -5664,11 +5664,11 @@
     },
     {
       "id": "remove_4_xp",
-      "text": "Who should spend XP?",
+      "text": "谁要花费经验值？",
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Spend experience",
+        "text": "花费经验值",
         "max": 4,
         "min": 4,
         "effects": [
@@ -5682,11 +5682,11 @@
     },
     {
       "id": "remove_6_xp",
-      "text": "Who should spend XP?",
+      "text": "谁要花费经验值？",
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Spend experience",
+        "text": "花费经验值",
         "max": 6,
         "min": 6,
         "effects": [
@@ -5700,11 +5700,11 @@
     },
     {
       "id": "remove_8_xp",
-      "text": "Who should spend XP?",
+      "text": "谁要花费经验值？",
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Spend experience",
+        "text": "花费经验值",
         "max": 8,
         "min": 8,
         "effects": [
@@ -5718,7 +5718,7 @@
     },
     {
       "id": "remove_blood_token",
-      "text": "Remove 1 [blood] token from the chaos bag for the remainder of the campaign.",
+      "text": "在剧本之后的部分，从混乱袋中移除1个[blood]标记。",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -5730,7 +5730,7 @@
     },
     {
       "id": "add_2_blood_tokens",
-      "text": "Add 2 [blood] tokens to the chaos bag for the remainder of the campaign.",
+      "text": "在剧本之后的部分，在混乱袋中加入2个[blood]标记。",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -5743,7 +5743,7 @@
     },
     {
       "id": "all_earn_blood_blight",
-      "text": "Each investigator who does not have The Blood Blight weakness becomes the bearer of a set-aside The Blood Blight weakness."
+      "text": "每位没有鲜血枯疫弱点的调查员，拥有一张放在一边的鲜血枯疫弱点。"
     },
     {
       "id": "actually_all_earn_blood_blight",
@@ -5775,7 +5775,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Did the investigators find a sheet of arcane symbols?",
+            "text": "调查员找到了一页奥术符号吗？",
             "steps": [
               "earn_sheet"
             ]
@@ -5786,7 +5786,7 @@
     {
       "id": "earn_sheet",
       "bullet_type": "small",
-      "text": "Choose an investigator to become the bearer of the set-aside Sanguine Song story asset.",
+      "text": "选择一位调查员拥有放在一边的血色歌谣剧情支援。",
       "effects": [
         {
           "type": "add_card",
@@ -5803,7 +5803,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Did the investigators find forged permits?",
+            "text": "调查员找到了伪造许可吗？",
             "steps": [
               "earn_forged"
             ]
@@ -5814,7 +5814,7 @@
     {
       "id": "earn_forged",
       "bullet_type": "small",
-      "text": "Choose an investigator to become the bearer of the set-aside Forged Permit story asset.",
+      "text": "选择一位调查员拥有放在一边的伪造许可剧情支援。",
       "effects": [
         {
           "type": "add_card",
@@ -5825,7 +5825,7 @@
     },
     {
       "id": "release_blood_tokens",
-      "text": "Release each sealed [blood] token and return them to the chaos bag."
+      "text": "释放所有封印的[blood]标记，将其返回混乱袋。"
     },
     {
       "id": "maybe_ask_2_blood_tokens",
@@ -5847,7 +5847,7 @@
     },
     {
       "id": "ask_2_blood_tokens",
-      "text": "Each investigator who ended the scenario with 2 [blood] tokens sealed on their investigator becomes the bearer of a set-aside The Blood Blight weakness if they are not already a bearer of it.",
+      "text": "每位在冒险结束时身上封印了2个[blood]标记的调查员拥有一张放在一边的鲜血枯疫弱点（如果该调查员尚未拥有）。",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -5856,7 +5856,7 @@
         "choices": [
           {
             "id": "blood",
-            "text": "2 sealed [blood] tokens?",
+            "text": "封印了2个[blood]标记？",
             "condition": {
               "type": "has_card",
               "card": "13118",
@@ -5890,7 +5890,7 @@
         "branches": [
           {
             "id": "adjust_blood",
-            "text": "Adjust blood tokens",
+            "text": "调整鲜血标记",
             "repeatable": true,
             "steps": [
               "adjust_blood"
@@ -5908,7 +5908,7 @@
         "choices": [
           {
             "id": "add_blood",
-            "text": "Add 1 [blood] token.",
+            "text": "加入1个[blood]标记。",
             "condition": {
               "type": "multi",
               "count": 1,
@@ -5948,7 +5948,7 @@
           },
           {
             "id": "remove_blood",
-            "text": "Remove 1 [blood] token.",
+            "text": "移除1个[blood]标记。",
             "condition": {
               "type": "multi",
               "count": 1,
@@ -6000,7 +6000,7 @@
         "physical",
         "mental"
       ],
-      "text": "“Things got pretty rough in there.”\n You awaken to the voice of Detective Reynolds. Blinking in the light of the morning, you sit up, waves of pain shooting through your stiff joints. Reynolds puts a hand on your shoulder. “Let’s not push it,” he says. “Besides, I’ve been watching the back of the factory, to see whether anyone—or anything—is going to follow us out.”",
+      "text": "“事情变得相当棘手了。”\n你醒来听到了警探瑞若兹的声音。你在晨光中眨眨眼睛，坐了起来，僵硬的关节还是阵痛。瑞若兹把手搭在你的肩膀上。“别太拼命。”他说，“而且我一直盯着工厂后面，留心有没有人——或是东西——要跟着我们出去。”",
       "narration": {
         "id": "cob.new_horizons.no_resolution",
         "name": "No Resolution",
@@ -6017,7 +6017,7 @@
     {
       "id": "R1",
       "title": "结局1",
-      "text": "At long last you emerge from the meat packing facility, feeling no better than the cattle flanks that hung from hooks within. You hope that what you were able to accomplish will prove to be useful enough, even if you didn’t get to the bottom of what the cult was doing in the warehouse. At the very least, you have a name to go off of—Howard Wilkes, the owner of New Horizons, and the leader of the cult that was dwelling in its depths.",
+      "text": "你终于从加工厂里出来了，觉得自己不比挂在钩子上的牛侧腹好多少。你希望自己所做的一切能起到某些作用，哪怕你并没有弄清楚仓库里面的教派到底在干什么。至少，你搞到了一个名字——霍华德·威尔克斯，新视野的老板，也是那个居于深处的教派的领袖。",
       "narration": {
         "id": "cob.new_horizons.r1",
         "name": "Resolution 1",
@@ -6036,7 +6036,7 @@
     {
       "id": "R2",
       "title": "结局2",
-      "text": "You have gotten to the bottom of the cult’s activities in the warehouse, and while you chose to leave whatever monsters lurked in the depths of the tunnels alive, you can only hope that your efforts will prove enough to put all of this to rest. At the very least, you have a name to go off of—Howard Wilkes, the owner of New Horizons, and the leader of the cult that was dwelling in its depths.",
+      "text": "你明白了仓库里面的教派到底在干什么，但无论隧道深处潜伏的怪物是什么，你都没把它杀掉。你只能希望你的努力已经足够终结这一切。至少，你搞到了一个名字——霍华德·威尔克斯，新视野的老板，也是那个居于深处的教派的领袖。",
       "narration": {
         "id": "cob.new_horizons.r2",
         "name": "Resolution 2",
@@ -6056,7 +6056,7 @@
     {
       "id": "R3",
       "title": "结局3",
-      "text": "After a grueling fight against the truly massive foe, you finally put the abomination down. This beast, this Zburamoarte, was the source of the infected blood used in the cult’s rituals, spreading the blood blight throughout all of Arkham via the tainted meat. With the source of the blood blight defeated, you hope that no others can fall to the same fate as Julia Stern and others within the New Horizons factory. The case isn’t over, however, as you learned that a man named Howard Wilkes, the owner of New Horizons, was also leading of the cult of Zburamoarte. It’s time to make him answer for his crimes.",
+      "text": "这畸形的怪物实在庞大，经历一番艰苦卓绝的战斗，你终于击败了它。这头怪兽孜卜拉牟特就是感染的血液的源头，教派的仪式用它的血液污染肉类，在整个阿卡姆散播鲜血枯疫。鲜血枯疫的源头被击败了，你希望不再有人沦入朱利亚·斯特恩，还有新视野工厂里其他人一样的命运。不过，事情还没完，你知道霍华德·威尔克斯，新视野的老板，就是孜卜拉牟特教派的领袖。是时候让他为自己的罪行付出代价了。",
       "narration": {
         "id": "cob.new_horizons.r3",
         "name": "Resolution 3",
@@ -6075,7 +6075,7 @@
     {
       "id": "R4",
       "title": "结局4",
-      "text": "You are quickly overwhelmed by the cult, dragging you down into the caves while repeating the name “Zburamoarte, Zburamoarte, Zburamoarte…” Mercifully, you black out during the course of the cult’s rituals, and when you come to again, you are alone on the floor of the factory, the first light of morning peeking through the windows. You pick yourself up, stretch your aching joints, and make a swift exit.",
+      "text": "教派的围攻将你迅速击垮。他们把你拖入下面的洞穴，一边重复念着“孜卜拉牟特、孜卜拉牟特……”的名字。幸运的是，你在教派的仪式中昏了过去。等你醒来，你独自留在工厂地上，晨曦第一缕阳光刺透窗户照了进来。你站起身，舒展疼痛的关节，迅速离开。",
       "narration": {
         "id": "cob.new_horizons.r4",
         "name": "Resolution 4",
@@ -6097,7 +6097,7 @@
       "id": "R5",
       "title": "结局5",
       "hidden": true,
-      "text": "You regroup with Detective Reynolds, ready to investigate this Howard Wilkes, and make him answer for what’s been happening at his facility.",
+      "text": "你和警探瑞若兹碰头，准备查查这个霍华德·威尔克斯，让他为工厂里发生的一切付出代价。",
       "narration": {
         "id": "cob.new_horizons.r5",
         "name": "Resolution 5",
@@ -6117,7 +6117,7 @@
 {
   "id": "friends_in_low_places",
   "scenario_name": "Friends in Low Places",
-  "full_name": "Interlude: Friends in Low Places",
+  "full_name": "幕间故事：狐朋狗友",
   "header": "幕间故事",
   "icon": "friends_in_low_places",
   "type": "interlude",
@@ -6130,7 +6130,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You and Detective Reynolds meet up at Velma’s Diner in the early morning to discuss what’s next. With the police department alerted to the situation at the meat packing facility, the detective has his eyes set on the person responsible.\n“We managed to get a name from those damned yahoos,” Reynolds says in low tones over his steaming mug of coffee. “Wilkes. Howard Wilkes. I looked into him some, and he’s a powerful guy. Lots of money. Lots of friends. Just built himself a brand new apartment in Northside. Calls it his penthouse. Apparently it’s some French design.” Reynolds shrugs. “Anyway, while the people at his factory have been either becoming cultists or becoming monsters, he’s been a bit of a recluse. Hasn’t left his place for weeks, and doesn’t let anyone in. At least, until tonight.”\nReynolds tells you how Mr. Wilkes is apparently throwing a party at his penthouse, an opportunity to throw his money around and impress some other businesspeople from outside of Arkham. “He wants to expand his distribution area, get that dirty meat of his to places outside of town. We can’t let that happen. We’ll need to get into that party. And I know just the guy to get us there.”\nAs if on cue, the bell above the diner door rings. You follow Detective Reynolds’s gaze to see a familiar face enter. A disheveled man with a round face and a bald head, wearing a fraying gray suit and green tie. Charlie Kane nods with familiarity to the waitress as he makes his way to your booth, sliding in beside Reynolds.\n“Glad you could make it, mayor,” the detective says.\nCharlie scowls at the remark. “This will need to be quick,” he says, looking over his shoulder.\n“Worried they’re still after you?” Reynolds asks.\nCharlie turns a serious look on the detective. “They always are.”\nTogether you go over the plan: Kane will get your names on the guest list for the party. You’ll arrive, where you and the detective will attempt to detain Wilkes. When Reynolds suggests having police backup on standby, Charlie shakes his head. “Wilkes will know what you’re planning,” the former mayor says. “If he gets wind the fuzz are waiting for him, there’s no telling what he’ll do.”\nCharlie glances out the windows of the diner, scanning the dark street outside as he speaks. “There’s one person in particular you should keep an eye out for: Priscilla Thomas. She’s a savvy businesswoman from Boston looking to make a distribution deal with Wilkes to get his product shipped throughout the state. It would be best to try and convince her this is a bad idea, however you need to. But, according to my contacts, Miss Thomas isn’t part of Wilkes’s organization, so… well, try using words, not fists.”",
+      "text": "你和警探瑞若兹清晨在维尔玛小餐馆碰头，讨论下一步的行动。警方已经得知加工厂的情况，警探现在就要抓住真凶。\n“我们从那群该死的野人口中打听到了一个名字。”瑞若兹对着热气腾腾的咖啡压低声音说，“威尔克斯，霍华德·威尔克斯。我查了一下他的资料，他挺有势力。钱不少，朋友也不少。他刚在北区给自己建了一座全新的公寓，说那是他的‘顶层公寓’。显然是某种法国设计。”瑞若兹耸耸肩，“不管怎么说，他工厂里的人不是成了邪教徒，就是成了怪物，他自己却隐居了。他已经几周没离开那儿了，也不让人进去。至少，直到今晚都是。”\n瑞若兹告诉你，威尔克斯先生显然要在他的顶层公寓举行一个宴会——一个让他向市外其他商人炫耀财力的机会。“他想要扩展销售区域，把脏肉运往城外。我们不能让他得逞。我们得去那场宴会。我还知道谁能帮我们进去。”\n就跟应了他的话似的，餐馆的门铃响了。你随着警探瑞若兹的目光望去，看到一张熟悉的面孔进来了。是个圆脸秃头、衣衫凌乱的男子，他穿的灰西装已经破旧，还打了一条绿领带。查理·凯恩亲切地向女服务员点头示意，一边朝你们的座位走来，一屁股坐在了瑞若兹旁边。\n“很高兴你能来，市长。”警探说到。\n这句话让查理皱了眉头。“这事得赶快。”他说着回头望了一眼。\n“担心他们还在追你？”瑞若兹问说。\n查理严肃地望着警探：“他们一直在。”\n你们一起想出了计划：凯恩会把你们的名字加到宴会的宾客名录中去。你们不仅会去，还会尝试拘捕威尔克斯。瑞若兹建议安排警力后援，以备不测，但查理摇了摇头。“威尔克斯会知道你的计划。”前市长说，“要是他听到一点风吹草动，没人知道他会做什么。”\n查理说话的时候望着窗外，扫视暗沉的街道。“还有个人你要尤其注意：普利西拉·托马斯。这个波士顿商人精明得很，正想和威尔克斯达成分销协议，把他的产品卖往全国。最好还是试着说服她，无论有多少需求，这都不是个好交易。根据我的情报，托马斯女士并不是威尔克斯组织的一员，所以……嗯，试着说服，不要动武。”",
       "narration": {
         "id": "cob.friends_in_low_places.intro",
         "name": "Friends in Low Places 1",
@@ -6141,7 +6141,7 @@
     },
     {
       "id": "check_12_blood_tokens",
-      "text": "If there are exactly 12 [blood] tokens in the chaos bag:",
+      "text": "如果混乱袋中正好有12个[blood]标记：",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -6191,7 +6191,7 @@
         "choices": [
           {
             "id": "thank",
-            "text": "<i>“Thanks for the help, Charlie. If you decide to run again, I’ll be sure to vote for you this time.”</i>",
+            "text": "<i>“谢谢帮助，查理。要是你决定再次竞选，这次我肯定投票给你。”</i>",
             "steps": [
               "intro_2",
               "earn_2_xp"
@@ -6199,7 +6199,7 @@
           },
           {
             "id": "join",
-            "text": "<i>“Why don’t you come with us, Charlie? Let whoever’s after you know you’re not afraid of them.”</i>",
+            "text": "<i>“你为什么不跟我们一起来呢，查理？让盯着你的家伙知道你不怕他们。”</i>",
             "steps": [
               "intro_3",
               "all_condition_explaination",
@@ -6215,7 +6215,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "Charlie snorts derisively. “I don’t think I’ll be running again. Not in a campaign, at least,” he says, and then fixes his steely glare solidly on you. “You must not fail at this. If Wilkes is allowed to continue, and if he secures that deal with Priscilla, then it won’t be long before all of Massachusetts is overrun with those… things.”",
+      "text": "查理不屑地哼了一声。“我觉得自己不会再参选了。至少不会组织竞选活动了。”他说着将坚毅的目光牢牢放在了你身上。“你这次必不能失败。要是威尔克斯没被阻止，或者他和普利西拉达成了交易，那么整个马萨诸塞州很快就会全是那些……东西。”",
       "narration": {
         "id": "cob.friends_in_low_places.intro_2",
         "name": "Friends in Low Places 2",
@@ -6238,7 +6238,7 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "Charlie narrows his eyes at you as he considers your request. You can tell that he is mulling over all that has happened so far in your efforts to help the people of the Waterfront District…",
+      "text": "查理眯起了眼睛，考虑着你的需求。你看得出，他在考虑迄今为止发生的一切，还有你帮助滨水区人民的努力……",
       "narration": {
         "id": "cob.friends_in_low_places.intro_3",
         "name": "Friends in Low Places 3",
@@ -6249,12 +6249,12 @@
     },
     {
       "id": "all_condition_explaination",
-      "text": "If all of the following circumstances are true:"
+      "text": "如果下述情况均符合："
     },
     {
       "id": "check_spared_or_killed_julia",
       "type": "branch",
-      "text": "<i>The investigators spared Julia Stern</i> or <i>the investigators killed Julia Stern</i> is recorded in your campaign log.",
+      "text": "剧本日志中记录了<i>调查员饶过了朱利亚·斯特恩</i>或<i>调查员杀死了朱利亚·斯特恩</i>。",
       "condition": {
         "type": "multi",
         "count": 1,
@@ -6290,7 +6290,7 @@
     {
       "id": "check_completed_their_search",
       "type": "branch",
-      "text": "<i>The investigators completed their search</i> is recorded in your campaign log.",
+      "text": "剧本日志中记录了<i>调查员完成了搜查</i>。",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -6305,7 +6305,7 @@
     {
       "id": "check_no_blood_blight",
       "type": "branch",
-      "text": "No investigator has The Blood Blight weakness in their deck.",
+      "text": "没有调查员的牌库中有鲜血枯疫弱点。",
       "condition": {
         "type": "multi",
         "count": 1,
@@ -6397,7 +6397,7 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "Charlie stands from his spot in the booth, reaching to shake hands with Detective Reynolds, and then with you. As you grip his hand there’s a pause. You can hear the quickening of his heartbeat as you hold his hand in a firm grip. You can feel his pulse through the handshake, and you can smell the fear growing in him. After a moment he rips his hand away with a sudden jerk, and rushes to the exit without another word.",
+      "text": "查理从位子上站了起来，先伸手向警探瑞若兹，然后是你。你握住他手的时候顿了一顿。你能听到从他的手传来的心跳加速声。你握手的时候感受到了他的脉搏，你闻得出他恐惧的气味越来越浓。片刻之后，他猛地抽出手，一句话也没说就冲了出去。",
       "narration": {
         "id": "cob.friends_in_low_places.intro_4",
         "name": "Friends in Low Places 4",
@@ -6420,7 +6420,7 @@
     {
       "id": "intro_5",
       "type": "story",
-      "text": "Charlie sighs. “You’ve done a lot to help the people of the Waterfront,” he says. “These are civilians who are under the thumb of people like Wilkes, and you’ve gone to great lengths to see that justice is served. Alright. I’ll join you at the party.”",
+      "text": "查理叹了口气。“你帮了滨水区的人民很多。”他说，“这些平民被威尔克斯这样的人操控，而你不遗余力地践行正义。好吧，我会加入你。”",
       "narration": {
         "id": "cob.friends_in_low_places.intro_5",
         "name": "Friends in Low Places 5",
@@ -6435,7 +6435,7 @@
       "encounter_sets": [
         "friends_in_low_places"
       ],
-      "text": "Any one investigator may become the bearer of the Charlie Kane story asset. This asset can be found in the <b>Friends in Low Places</b> encounter set, which is indicated with the following encounter set symbol:",
+      "text": "任意一位调查员可以拥有查理·凯恩剧情支援。这张支援可以在<b>狐朋狗友</b>遭遇组中找到，遭遇组符号为：",
       "effects": [
         {
           "type": "add_card",
@@ -6447,7 +6447,7 @@
     {
       "id": "intro_6",
       "type": "story",
-      "text": "Charlie sighs. “You’ve done a lot to help the people of the Waterfront,” he says. “But it’s not enough, and you’re not done. And what’s worse, you’ve drawn a lot of attention. Attention I can’t afford. I’m sorry but I’ve already done too much. You’re on your own.”",
+      "text": "查理叹了口气。“你帮了滨水区的人民很多。”他说，“但做的还不够，你还有未竟之事。更糟的是，你已经吸引了大量的注意力，这是我无法承受的。抱歉，但我已经做了很多。你得靠自己了。”",
       "narration": {
         "id": "cob.friends_in_low_places.intro_6",
         "name": "Friends in Low Places 6",
@@ -6461,7 +6461,7 @@
 {
   "id": "blood_money",
   "scenario_name": "Blood Money",
-  "full_name": "Scenario III: Blood Money",
+  "full_name": "冒险III：血钱",
   "header": "冒险III",
   "icon": "blood_money",
   "chaos_bag_card": "13068",
@@ -6489,7 +6489,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Howard Wilkes’s party is at his fancy new penthouse at the top of one of the rebuilt buildings in Northside, overlooking the dark and industrious district of Arkham. You ride the elevator up to the fourth floor, and follow the short, clean hallway to the door of the penthouse. Rapping on the door, you’re greeted by a tall man in a tuxedo who checks your name and allows you entrance. It would seem Charlie is as good as his word.\nDetective Reynolds, also dressed in formalwear, makes his way over to you as soon as you step into the foyer. “Good, you’re here,” he says. “Problem is that Wilkes isn’t around, and nobody has seen him. I suggest we deal with Miss Thomas. Get her to rethink her business decision. Then we can chat up the rest of the party and see what else we can learn.” He glances around nervously at the other guests nearby, all of whom are looking at him and at you with suspicion. “And let’s be quick about it.”",
+      "text": "霍华德·威尔克斯的宴会在他新装修的顶层公寓举行。这里位于北区一幢重建大楼的顶端，俯瞰着阿卡姆昏暗但熙攘的城区。你乘电梯上到四楼，沿着干干净净的走廊走了一小段就到了公寓门前。敲门后，一个穿着燕尾服的高个男子出来招呼，他问过你的名字，让你进去了。看来查理说到做到。\n你一进门厅，警探瑞若兹就朝你走来，他也穿了正装。“好的，你来了。”他说，“问题是威尔克斯没来，没人见到他。我建议我们先解决托马斯女士，劝她重新考虑下合同。之后我们再跟其他人谈谈，看看能发现什么。”他紧张地环顾其他宾客，他们都不无怀疑地望着他，和你。“我们要快点了。”",
       "narration": {
         "id": "cob.blood_money.intro",
         "name": "Intro",
@@ -6512,11 +6512,11 @@
         "sanguine_secrets",
         "arcane_lock"
       ],
-      "subtext": "When gathering cards from the <b>Sanguine Secrets</b> encounter set, only gather the three copies of Sanguine Cultist and the Blood-Crazed Zealot enemies. Do not gather the Morbid Rituals treacheries."
+      "subtext": "在收齐<b>血色秘密</b>遭遇组的卡牌时，只收齐三张血色异教徒和一张鲜血狂信徒敌人。不要收齐病变仪式诡计。"
     },
     {
       "id": "check_3_or_4_encounters",
-      "text": "If you are playing with 3 or 4 investigators:",
+      "text": "如果游戏中有3或4位调查员：",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -6563,20 +6563,20 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Office, Study, Dining Hall, and Kitchen locations into play.",
+      "text": "将办公室、书房、餐厅、厨房地点放置入场。",
       "bullets": [
         {
-          "text": "Put Foyer into play, (Boring Party) side faceup."
+          "text": "将门厅放置入场，（无聊宴会）面朝上。"
         },
         {
-          "text": "Set Master Bedroom aside, out of play."
+          "text": "将主卧放在一边，位于场外。"
         }
       ]
     },
     {
       "id": "starting_location",
       "bullet_type": "small",
-      "text": "Each investigator begins play at Foyer."
+      "text": "每位调查员从门厅开始游戏。"
     },
     {
       "id": "check_easy_location",
@@ -6616,12 +6616,12 @@
     {
       "id": "standard_balcony",
       "bullet_type": "small",
-      "text": "Because you are playing on Easy or Standard difficulty, set the Balcony aside, out of play."
+      "text": "如果正在进行简单或普通难度，将露台放在一边，位于场外。"
     },
     {
       "id": "remove_balcony",
       "bullet_type": "small",
-      "text": "Because you are playing on Hard or Expert difficulty, remove Balcony from the game."
+      "text": "如果正在进行困难或专家难度，将露台从游戏中移除。"
     },
     {
       "id": "location_layout",
@@ -6648,11 +6648,11 @@
     },
     {
       "id": "spawn_priscilla",
-      "text": "Spawn the Priscilla Thomas enemy at Dining Hall."
+      "text": "将普利西拉·托马斯敌人生成在餐厅。"
     },
     {
       "id": "spawn_suspicious_guests",
-      "text": "Gather each Suspicious Guest enemy. Because the number of investigators in the game is…",
+      "text": "收齐每张起疑心的客人敌人。如果游戏中调查员的人数为……",
       "type": "branch",
       "condition": {
         "type": "scenario_data",
@@ -6688,17 +6688,17 @@
     {
       "id": "spawn_one_guest",
       "bullet_type": "small",
-      "text": "…exactly 1, spawn 1 Suspicious Guest at the Study. Remove 2 copies of that enemy from the game."
+      "text": "……正好1位，将1个起疑心的客人生成在书房。将2张该敌人从游戏中移除。"
     },
     {
       "id": "spawn_two_guests",
       "bullet_type": "small",
-      "text": "…exactly 2, spawn 1 Suspicious Guest at the Study and 1 at the Office. Remove 1 copy of that enemy from the game."
+      "text": "……正好2位，将1个起疑心的客人生成在书房、1个起疑心的客人生成在办公室。将1张该敌人从游戏中移除。"
     },
     {
       "id": "spawn_three_guests",
       "bullet_type": "small",
-      "text": "…exactly 3 or 4, spawn 1 Suspicious Guest at the Study, 1 at the Office, and 1 at the Dining Hall."
+      "text": "……正好3位或4位，将1个起疑心的客人生成在书房、1个起疑心的客人生成在办公室、1个起疑心的客人生成在餐厅。"
     },
     {
       "id": "check_setup_agenda",
@@ -6726,16 +6726,16 @@
     {
       "id": "agenda_defeated",
       "bullet_type": "small",
-      "text": "Construct the agenda deck using agenda 2a—“Feeding Frenzy (v. II).” Remove the other copy of agenda 2a from the game."
+      "text": "使用密谋2a“狂乱觅食（版本二）”构建密谋牌库。将另一张密谋2a从游戏中移除。"
     },
     {
       "id": "agenda_alive",
       "bullet_type": "small",
-      "text": "Construct the agenda deck using agenda 2a—“Feeding Frenzy (v. I).” Remove the other copy of agenda 2a from the game."
+      "text": "使用密谋2a“狂乱觅食（版本一）”构建密谋牌库。将另一张密谋2a从游戏中移除。"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set aside each copy of the Child of Blood enemy, the Spawn of Zburamoarte enemy, and the Sanguine Rebirth treachery, the Chosen of Zburamoarte double-sided story asset, as well as each enemy from the <b>Sanguine Secrets</b> encounter set."
+      "text": "将每张鲜血之子敌人、孜卜拉牟特的眷族敌人、血色重生诡计、孜卜拉牟特的选民双面剧情支援、<b>血色秘密</b>遭遇组的每张敌人放在一边，位于场外。"
     },
     {
       "id": "check_boss_difficulty",
@@ -6774,15 +6774,15 @@
     },
     {
       "id": "easy_boss",
-      "text": "Because you are playing on Easy difficulty, set Howard Wilkes <i>(First Child of Zburamoarte)</i> aside, out of play. Remove each other copy of Howard Wilkes from the game."
+      "text": "如果正在进行简单难度，将霍华德·威尔克斯<i>（孜卜拉牟特长子）</i>放在一边，位于场外。将其他每张霍华德·威尔克斯从游戏中移除。"
     },
     {
       "id": "standard_boss",
-      "text": "Because you are playing on Standard difficulty, set Howard Wilkes <i>(Too Far Gone)</i> aside, out of play. Remove each other copy of Howard Wilkes from the game."
+      "text": "如果正在进行普通难度，将霍华德·威尔克斯<i>（无可挽回）</i>放在一边，位于场外。将其他每张霍华德·威尔克斯从游戏中移除。"
     },
     {
       "id": "hard_boss",
-      "text": "Because you are playing on Hard or Expert difficulty, set Howard Wilkes <i>(Ultimate Predator)</i> aside, out of play. Remove each other copy of Howard Wilkes from the game."
+      "text": "如果正在进行困难或专家难度，将霍华德·威尔克斯<i>（究极掠食）</i>放在一边，位于场外。将其他每张霍华德·威尔克斯从游戏中移除。"
     },
     {
       "id": "check_killed_julia_stern",
@@ -6810,7 +6810,7 @@
     {
       "id": "remove_julia",
       "bullet_type": "small",
-      "text": "Remove each copy of the Julia Stern enemy from the game."
+      "text": "将每张朱利亚·斯特恩敌人从游戏中移除。"
     },
     {
       "id": "check_julia_difficulty",
@@ -6849,15 +6849,15 @@
     },
     {
       "id": "easy_julia",
-      "text": "Because you are playing on Easy difficulty, set Julia Stern <i>(First Victim of New Horizons)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+      "text": "如果正在进行简单难度，将朱利亚·斯特恩<i>（新视野最初的受害者）</i>放在一边，位于场外。将其他每张朱利亚·斯特恩从游戏中移除。"
     },
     {
       "id": "standard_julia",
-      "text": "Because you are playing on Standard difficulty, set Julia Stern <i>(Out for Blood)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+      "text": "如果正在进行普通难度，将朱利亚·斯特恩<i>（血债血偿）</i>放在一边，位于场外。将其他每张朱利亚·斯特恩从游戏中移除。"
     },
     {
       "id": "hard_julia",
-      "text": "Because you are playing on Hard or Expert difficulty, set Julia Stern <i>(Child of Vengeance)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+      "text": "如果正在进行困难或专家难度，将朱利亚·斯特恩<i>（复仇之子）</i>放在一边，位于场外。将其他每张朱利亚·斯特恩从游戏中移除。"
     },
     {
       "id": "add_cultist",
@@ -6884,7 +6884,7 @@
         "choices": [
           {
             "id": "add_blood",
-            "text": "Add 1 [blood] token.",
+            "text": "加入1个[blood]标记。",
             "condition": {
               "type": "multi",
               "count": 1,
@@ -6924,7 +6924,7 @@
           },
           {
             "id": "remove_blood",
-            "text": "Remove 1 [blood] token.",
+            "text": "移除1个[blood]标记。",
             "condition": {
               "type": "multi",
               "count": 1,
@@ -6976,7 +6976,7 @@
         "branches": [
           {
             "id": "adjust_blood",
-            "text": "Adjust blood tokens",
+            "text": "调整鲜血标记",
             "repeatable": true,
             "steps": [
               "adjust_blood"
@@ -6984,7 +6984,7 @@
           },
           {
             "id": "codex_a",
-            "text": "Codex A",
+            "text": "抄本A",
             "icon": "codex",
             "repeatable": true,
             "steps": [
@@ -6996,7 +6996,7 @@
           },
           {
             "id": "codex_b_first",
-            "text": "Codex B",
+            "text": "抄本B",
             "icon": "codex",
             "condition": {
               "type": "campaign_log",
@@ -7027,7 +7027,7 @@
           },
           {
             "id": "codex_b",
-            "text": "Codex B",
+            "text": "抄本B",
             "icon": "codex",
             "condition": {
               "type": "multi",
@@ -7074,9 +7074,9 @@
     },
     {
       "id": "codex_b_1",
-      "title": "[codex] Codex B: Priscilla Thomas",
+      "title": "[codex] 抄本B：普利西拉·托马斯",
       "type": "story",
-      "text": "Priscilla Thomas stands near the door to the dining hall, watching the other guests with a look of bored frustration. “A host who arrives late to his own party is never a good sign,” she says. She turns to regard you as you approach, and her eyebrow goes up in suspicion. “I don’t suppose you know anything about that, do you?”",
+      "text": "普利西拉·托马斯站在餐厅门边，看着周围宾客的眼神无聊又失望。“宴会主人都迟到肯定不是好兆头。”她转过来，跟靠近的你打招呼，抬高了眉毛，显然是有所怀疑：“我想你也不清楚到底怎么回事，对吧？”",
       "narration": {
         "id": "cob.blood_money.codex_b",
         "name": "Codex B: Priscilla Thomas",
@@ -7087,9 +7087,9 @@
     },
     {
       "id": "codex_b_2",
-      "title": "[codex] Codex B: Priscilla Thomas",
+      "title": "[codex] 抄本B：普利西拉·托马斯",
       "type": "story",
-      "text": "You try talking to Miss Thomas about her reason for being at the party, attempting to sow the seeds of doubt in her mind regarding Howard Wilkes and his business.",
+      "text": "你试着和托马斯女士聊她为什么来这儿，意图在她心中种下对霍华德·威尔克斯和他的产业怀疑的种子。",
       "narration": {
         "id": "cob.blood_money.codex_b_2",
         "name": "Priscilla Thomas 2",
@@ -7101,7 +7101,7 @@
     {
       "id": "codex_b_2_continued",
       "type": "story",
-      "text": "You try talking to Miss Thomas about her reason for being at the party, attempting to sow the seeds of doubt in her mind regarding Howard Wilkes and his business.",
+      "text": "你试着和托马斯女士聊她为什么来这儿，意图在她心中种下对霍华德·威尔克斯和他的产业怀疑的种子。",
       "narration": {
         "id": "cob.blood_money.codex_b_2",
         "name": "Priscilla Thomas 2",
@@ -7112,11 +7112,11 @@
     },
     {
       "id": "release_priscilla_tokens",
-      "text": "Release each chaos token sealed on Priscilla Thomas. Place 1 horror <i>(from the token pool)</i> on Priscilla Thomas for each chaos token released this way."
+      "text": "释放普利西拉·托马斯上封印的所有混乱标记。每以此方式释放一个混乱标记，在普利西拉·托马斯上放置1点恐惧<i>（从供应堆拿取）</i>。"
     },
     {
       "id": "test_priscilla_horror",
-      "text": "Choose an investigator at your location to test [willpower] or [intellect] (3). If that investigator succeeds, place 1 horror on Priscilla Thomas."
+      "text": "选择你所在地点的一位调查员检定[willpower]或[intellect]（3）。如果该检定成功，在普利西拉·托马斯上放置1点恐惧。"
     },
     {
       "id": "ask_4_or_more_horror",
@@ -7126,7 +7126,7 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Is there 4 or more horror on Priscilla Thomas?",
+            "text": "普利西拉·托马斯上有至少4点恐惧吗？",
             "effects": [
               {
                 "type": "campaign_log",
@@ -7147,7 +7147,7 @@
     {
       "id": "codex_b_3",
       "type": "story",
-      "text": "Miss Thomas listens to your story, her face stoic but her eyes attentive. Eventually she nods, setting her drink down on a nearby end table. “Say no more,” she said. “I was already feeling like this was a bad deal. You’re only confirming my concerns. Thanks.” She turns to leave, and pauses in the doorway. “If ever you find yourself in Boston and need work, I could make use of your investigative skills. And you’d be paid well.” With that, she leaves, heading for the foyer.",
+      "text": "托马斯女士听着你的故事，表情未变，但眼神专注。最终她点了点头，把手中杯放在附近的桌上。“可以了。”她说，“我早已觉得这桩生意不对劲。你只是证实了我的担心。谢谢。”她转身离开，在门边停住。“要是你在波士顿想找活干，我倒是用得上你的调查技能。我不会小气的。”她说完就朝门厅走去。",
       "narration": {
         "id": "cob.blood_money.codex_b_3",
         "name": "Priscilla Thomas 3",
@@ -7158,11 +7158,11 @@
     },
     {
       "id": "codex_b_3_effect",
-      "text": "Remove Priscilla Thomas from the game."
+      "text": "将普利西拉·托马斯从游戏中移除。"
     },
     {
       "id": "codex_b_3_effect_2",
-      "text": "Each investigator may heal 2 horror or gain 3 resources."
+      "text": "每位调查员可以治愈2点恐惧或获得3资源。"
     },
     {
       "id": "maybe_repeat_codex_b",
@@ -7184,13 +7184,13 @@
     },
     {
       "id": "repeat_codex_b",
-      "text": "Any investigator may trigger this codex entry again."
+      "text": "任意调查员均可以再次触发本抄本。"
     },
     {
       "id": "codex_a_story",
-      "title": "[codex] Codex A: Party Guest",
+      "title": "[codex] 抄本A：宴会宾客",
       "type": "story",
-      "text": "You chat up the party guest, trying to learn what you can while making sure they don’t interfere in your investigation.",
+      "text": "你跟宾客攀谈起来，尽可能获取情报，同时确保他们不会打扰调查。",
       "narration": {
         "id": "cob.blood_money.codex_a",
         "name": "Codex A: Party Guest",
@@ -7201,19 +7201,19 @@
     },
     {
       "id": "codex_a_explanation",
-      "text": "Reveal random tokens from the chaos bag until you reveal a token with a symbol that isn’t sealed on an enemy."
+      "text": "从混乱袋中随机揭示标记，直到揭示了没有封印在敌人上的带符号的标记。"
     },
     {
       "id": "codex_a_choice",
-      "text": "If the token is…",
+      "text": "如果该标记是……",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "skull",
-            "text": "…a [skull] token",
-            "description": "The guest regards you with suspicion.",
+            "text": "……[skull]标记",
+            "description": "宾客带着疑心跟你打招呼。",
             "steps": [
               "codex_skull_story",
               "codex_skull_effect"
@@ -7221,8 +7221,8 @@
           },
           {
             "id": "cultist",
-            "text": "…a [cultist] token",
-            "description": "The guest is trying not to be noticed.",
+            "text": "……[cultist]标记",
+            "description": "这个客人试着保持低调。",
             "steps": [
               "codex_cultist_story",
               "codex_cultist_effect"
@@ -7230,8 +7230,8 @@
           },
           {
             "id": "tablet",
-            "text": "…a [tablet] token",
-            "description": "Seated comfortably, this guest smiles at you.",
+            "text": "……[tablet]标记",
+            "description": "这个客人看起来在位子里相当舒服，正朝你笑呢。",
             "steps": [
               "codex_tablet_story",
               "codex_tablet_effect",
@@ -7240,8 +7240,8 @@
           },
           {
             "id": "elder_thing",
-            "text": "…an [elder_thing] token",
-            "description": "This guest can’t eat their food fast enough.",
+            "text": "……[elder_thing]标记",
+            "description": "这个客人正狼吞虎咽。",
             "steps": [
               "codex_elder_thing_story",
               "codex_elder_thing_effect",
@@ -7250,8 +7250,8 @@
           },
           {
             "id": "blood",
-            "text": "…a [blood] token",
-            "description": "This guest is dressed for business, not a party.",
+            "text": "……[blood]标记",
+            "description": "这个客人的打扮看上去就是来谈生意，而非赴宴。",
             "steps": [
               "codex_blood_story",
               "codex_blood_effect"
@@ -7259,8 +7259,8 @@
           },
           {
             "id": "auto_fail",
-            "text": "…an [auto_fail] token",
-            "description": "This guest is struggling to stand upright.",
+            "text": "……[auto_fail]标记",
+            "description": "这个客人站都站不稳了。",
             "steps": [
               "codex_auto_fail_story",
               "codex_auto_fail_effect"
@@ -7268,8 +7268,8 @@
           },
           {
             "id": "elder_sign",
-            "text": "…an [elder_sign] token",
-            "description": "This guest joins a small group to gossip.",
+            "text": "……[elder_sign]标记",
+            "description": "这个客人加入了交谈的小团体。",
             "steps": [
               "codex_elder_sign_story",
               "codex_elder_sign_effect",
@@ -7281,13 +7281,13 @@
     },
     {
       "id": "codex_a_repeat",
-      "text": "Any investigator may trigger Codex A again."
+      "text": "任意调查员均可以再次触发抄本A。"
     },
     {
       "id": "codex_skull_story",
-      "title": "[codex] Codex [skull]: Party Guest",
+      "title": "[codex] 抄本[skull]：宴会宾客",
       "type": "story",
-      "text": "The guest begins a long, boring, and painfully oblivious story about how they were shocked to see Howard Wilkes choose Northside—the “working district, of all places”—as the location for not only this party, but also his penthouse. You pretend to be interested as they ramble on, but find a quiet moment to steal away instead.",
+      "text": "这个客人开始讲一个冗长无聊、不知所云得让人痛苦的故事，说的是此人震惊地发现霍华德·威尔克斯居然选择了北区——这个“工作区，最出人意料的地方”——来办宴会——不仅如此，还把顶层公寓安置在此。你假装对这段闲扯感兴趣，找了个机会伺机溜走了。",
       "narration": {
         "id": "cob.blood_money.codex_skull",
         "name": "Codex [skull]: Party Guest",
@@ -7298,13 +7298,13 @@
     },
     {
       "id": "codex_skull_effect",
-      "text": "Automatically evade this enemy and seal this token on it (if Priscilla Thomas is in play, seal this token on her instead)."
+      "text": "自动躲避此敌人，将此标记封印在此敌人上（如果普利西拉·托马斯在场上，改为将此标记封印在她身上）。"
     },
     {
       "id": "codex_cultist_story",
-      "title": "[codex] Codex [cultist]: Party Guest",
+      "title": "[codex] 抄本[cultist]：宴会宾客",
       "type": "story",
-      "text": "As you approach the guest, they stare you down with a deathly glare. Before you can even ask them what’s wrong, a dagger, fashioned from an over-sized fang, flashes in their hands as it’s drawn from their jacket pocket. “I know what you’re trying to do!” they shout. “We won’t let you stop what has already been started!”",
+      "text": "你接近这位客人，对方却死死地盯着你。你还没问发生了什么，对方就从夹克口袋里抽出一把看着像是用颗巨牙造就的匕首。“我知道你想干什么！”这位客人大喊，“一切已经开始，我们不会让你阻扰！”",
       "narration": {
         "id": "cob.blood_money.codex_cultist",
         "name": "Codex [cultist]: Party Guest",
@@ -7315,13 +7315,13 @@
     },
     {
       "id": "codex_cultist_effect",
-      "text": "Discard this enemy and spawn 1 random set-aside [[Cultist]] enemy engaged with you. Seal this token on that enemy (if Priscilla Thomas is in play, seal this token on her instead)."
+      "text": "弃掉此敌人，随机生成1个放在一边的[[异教徒]]敌人，并与你交战。将此标记封印在该敌人上（如果普利西拉·托马斯在场上，改为将此标记封印在她身上）。"
     },
     {
       "id": "codex_tablet_story",
-      "title": "[codex] Codex [tablet]: Party Guest",
+      "title": "[codex] 抄本[tablet]：宴会宾客",
       "type": "story",
-      "text": "Your conversation with this guest, while enlightening about some strange happenings in French Hill, is otherwise unhelpful.",
+      "text": "你跟这个客人谈了话，虽然你得知了法兰西山的一些奇怪事情，但也没什么帮助。",
       "narration": {
         "id": "cob.blood_money.codex_tablet",
         "name": "Codex [tablet]: Party Guest",
@@ -7332,7 +7332,7 @@
     },
     {
       "id": "codex_tablet_effect",
-      "text": "Automatically evade this enemy and seal this token on it."
+      "text": "自动躲避此敌人，将此标记封印在此敌人上。"
     },
     {
       "id": "codex_tablet_effect_2",
@@ -7340,9 +7340,9 @@
     },
     {
       "id": "codex_elder_thing_story",
-      "title": "[codex] Codex [elder_thing]: Party Guest",
+      "title": "[codex] 抄本[elder_thing]：宴会宾客",
       "type": "story",
-      "text": "“Darling, you simply must try the hors d’oeuvres!” This guest approaches you, holding a cracker topped with some sort of blood-red meat-spread, ready to force it into your mouth. You grit your teeth, make a comment about needing to use the washroom, and make a swift exit.",
+      "text": "“亲爱的，你可一定得尝尝这些前菜！”这个客人朝你走来，手上拿的脆饼涂了某种血红色的肉，要强行将它塞进你嘴巴。你咬紧牙关，借口要用洗手间赶紧溜了。",
       "narration": {
         "id": "cob.blood_money.codex_elder_thing",
         "name": "Codex [elder_thing]: Party Guest",
@@ -7353,17 +7353,17 @@
     },
     {
       "id": "codex_elder_thing_effect",
-      "text": "Automatically evade this enemy and seal this token on it."
+      "text": "自动躲避此敌人，将此标记封印在此敌人上。"
     },
     {
       "id": "codex_elder_thing_effect_2",
-      "text": "You may move to a connecting location."
+      "text": "你可以移动到一个连接地点。"
     },
     {
       "id": "codex_blood_story",
-      "title": "[codex] Codex [blood]: Party Guest",
+      "title": "[codex] 抄本[blood]：宴会宾客",
       "type": "story",
-      "text": "This guest remarks about how Howard Wilkes has met resistance when trying to distribute his product throughout Arkham, making a name for himself among local businesses as a ruthless megalomaniac. He’s brought Priscilla Thomas here this evening in hopes to find success outside of the city before his entire operation runs out of funding.",
+      "text": "这位客人谈到霍华德·威尔克斯在阿卡姆推销他的产品时遭遇到的阻力，还有他自己是怎么在当地业界树立起了残忍的自大狂的名声。今晚就是他把普利西拉·托马斯带来的，想在整个产业资金耗尽前打开阿卡姆之外的市场。",
       "narration": {
         "id": "cob.blood_money.codex_blood",
         "name": "Codex [blood]: Party Guest",
@@ -7374,13 +7374,13 @@
     },
     {
       "id": "codex_blood_effect",
-      "text": "Automatically evade this enemy and seal this token on it (if Priscilla Thomas is in play, seal this token on her instead)."
+      "text": "自动躲避此敌人，将此标记封印在此敌人上（如果普利西拉·托马斯在场上，改为将此标记封印在她身上）。"
     },
     {
       "id": "codex_auto_fail_story",
-      "title": "[codex] Codex [auto_fail]: Party Guest",
+      "title": "[codex] 抄本[auto_fail]：宴会宾客",
       "type": "story",
-      "text": "This guest stumbles a bit, leaning heavily against a marble statue. You approach cautiously, reaching out and asking whether they need help. No sooner does your hand touch their shoulder than they wheel about, a crazed look in their eyes and a snarl on their lips.",
+      "text": "这位客人踉跄着重重倚在一尊大理石像上。你小心靠近，伸手问能怎么帮忙。你一碰到客人的肩膀，对方猛地转身，眼神疯狂，龇开了嘴。",
       "narration": {
         "id": "cob.blood_money.codex_auto_fail",
         "name": "Codex [auto_fail]: Party Guest",
@@ -7391,13 +7391,13 @@
     },
     {
       "id": "codex_auto_fail_effect",
-      "text": "This enemy attacks you. After this attack, that enemy disengages from each investigator and moves to a connecting location (with no investigators, if able)."
+      "text": "此敌人攻击你。本次攻击后，该敌人与每位调查员解除交战，并移动到一个连接地点（如可能，移动到没有调查员的地点）。"
     },
     {
       "id": "codex_elder_sign_story",
-      "title": "[codex] Codex [elder_sign]: Party Guest",
+      "title": "[codex] 抄本[elder_sign]：宴会宾客",
       "type": "story",
-      "text": "You find a small group of guests talking amongst themselves in hushed tones. You are able to loiter just outside of their huddle, and learn that each has their own suspicions about what is really going on at tonight’s party.",
+      "text": "你发现一小群客人正凑在一起轻声交谈。你正好能在小团体周围绕过，听到他们都在怀疑今晚的宴会。",
       "narration": {
         "id": "cob.blood_money.codex_elder_sign",
         "name": "Codex [elder_sign]: Party Guest",
@@ -7408,15 +7408,15 @@
     },
     {
       "id": "codex_elder_sign_effect",
-      "text": "Automatically evade this enemy."
+      "text": "自动躲避此敌人。"
     },
     {
       "id": "codex_elder_sign_effect_2",
-      "text": "Gain 1 clue <i>(from the token pool)</i>. Then, if Detective Reynolds is in play under an investigator’s control, that investigator gains 1 clue <i>(from the token pool)</i>."
+      "text": "<i>（从供应堆）</i>获得1个线索。然后，如果警探瑞若兹在场上并且位于一位调查员的控制下，该调查员<i>（从供应堆）</i>获得1个线索。"
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the <b>victory X</b> value of each card in the victory display.",
+      "text": "每位调查员取得经验值，数量等于胜利区所有卡牌的<b>胜利X</b>数值之和。",
       "type": "input",
       "input": {
         "type": "counter",
@@ -7449,7 +7449,7 @@
     },
     {
       "id": "ask_2_blood_tokens",
-      "text": "Each investigator who ended the scenario with 2 [blood] tokens sealed on their investigator becomes the bearer of a set-aside The Blood Blight weakness if they are not already a bearer of it.",
+      "text": "每位在冒险结束时身上封印了2个[blood]标记的调查员拥有一张放在一边的鲜血枯疫弱点（如果该调查员尚未拥有）。",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -7458,7 +7458,7 @@
         "choices": [
           {
             "id": "blood",
-            "text": "2 sealed [blood] tokens?",
+            "text": "封印了2个[blood]标记？",
             "condition": {
               "type": "has_card",
               "card": "13118",
@@ -7488,7 +7488,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "failed_to_stop_the_children_of_blood",
-          "text": "the investigators failed to stop the children of blood."
+          "text": "调查员没能阻止鲜血之子。"
         }
       ]
     },
@@ -7510,7 +7510,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "stopped_the_children_of_blood",
-          "text": "the investigators stopped the children of blood."
+          "text": "调查员阻止了鲜血之子。"
         }
       ]
     },
@@ -7546,7 +7546,7 @@
     },
     {
       "id": "physical_and_mental_trauma_witness",
-      "text": "Each investigator suffers 1 physical trauma and 1 mental trauma, as they never fully recover from what they witnessed in their investigation.",
+      "text": "调查员永远无法从调查中目睹的一切中完全恢复，每位调查员承受1点肉体创伤和1点精神创伤。",
       "effects": [
         {
           "type": "trauma",
@@ -7558,7 +7558,7 @@
     },
     {
       "id": "physical_and_mental_trauma_cult",
-      "text": "Each investigator suffers 1 physical trauma and 1 mental trauma, as they never fully recover from the horrors of the Cult of the Sanguine Order.",
+      "text": "调查员永远无法从血色教派的恐怖中完全恢复，每位调查员承受1点肉体创伤和1点精神创伤。",
       "effects": [
         {
           "type": "trauma",
@@ -7571,10 +7571,10 @@
     {
       "id": "ask_civilians_beneath_scenario",
       "type": "input",
-      "text": "How many [[Civilian]] enemies were beneath the scenario reference card when the scenario ended?",
+      "text": "冒险结束时，冒险参考卡牌底下有几个[[平民]]敌人？",
       "input": {
         "type": "counter",
-        "text": "Civilian enemies:",
+        "text": "平民敌人：",
         "effects": [
           {
             "type": "earn_xp",
@@ -7590,7 +7590,7 @@
       "input": {
         "type": "counter",
         "text": "胜利牌区：",
-        "confirm_text": " Each investigator earns 1 bonus experience for each [[Civilian]] enemy beneath the scenario reference card when the scenario ended.",
+        "confirm_text": "在冒险结束时，冒险参考卡牌底下每有一个[[平民]]敌人，每位调查员取得1点奖励经验值。",
         "effects": [
           {
             "type": "earn_xp",
@@ -7601,7 +7601,7 @@
     },
     {
       "id": "check_chosen_of_zburamoarte",
-      "text": "If at least 1 investigator has The Blood Blight weakness in their deck:",
+      "text": "如果至少1位调查员的牌库有鲜血枯疫弱点：",
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -7620,7 +7620,7 @@
     {
       "id": "unlock_chosen_of_zburamoarte",
       "bullet_type": "small",
-      "text": "The investigators have earned the Chosen of Zburamoarte campaign reward card. Add this card to the player card pool."
+      "text": "调查员团队取得孜卜拉牟特的选民剧本奖励卡牌。将本卡牌加入可用卡牌。"
     },
     {
       "id": "defeated_killed",
@@ -7638,7 +7638,7 @@
     {
       "id": "investigator_defeat",
       "title": "调查员被击败",
-      "text": "You struggle against the monsters, but their numbers and ferocity overwhelm you, feeding on your flesh as you’re forced to the floor. Your entire world is a blood-soaked tempest of blinding pain before you finally give in to the darkness of death.",
+      "text": "你跟怪物搏斗，但不敌它们的数目和残暴。怪物将你打倒在地，吞吃你的血肉。你的整个世界浸满鲜血，疼痛让你目不能视，直至最后陷入死亡的黑暗。",
       "narration": {
         "id": "cob.blood_money.investigator_defeat",
         "name": "Investigator Defeat",
@@ -7654,14 +7654,14 @@
     {
       "id": "no_resolution",
       "title": "未达成任何结局",
-      "description": "Each surviving investigator resigned",
+      "description": "每位幸存的调查员撤退",
       "investigator_status": [
         "resigned",
         "eliminated",
         "physical",
         "mental"
       ],
-      "text": "Unable to bear the chaos of the party, you flee into the streets. You only hope that the problems of the New Horizons meat and the blighted blood will solve themselves.",
+      "text": "你受不了宴会的混乱，逃到了街上。你只能寄希望于新视野的肉和枯疫之血的问题能自行解决。",
       "narration": {
         "id": "cob.blood_money.no_resolution",
         "name": "No Resolution",
@@ -7681,7 +7681,7 @@
     {
       "id": "R1",
       "title": "结局1",
-      "text": "You walk out of the penthouse, leaving the defeated Howard Wilkes and the shattered remains of his cult behind. Arkham’s finest arrive as you head out into the street, and you let Detective Reynolds handle their questions. You head back out into Arkham as the first rays of the morning sun peek out over the Miskatonic River.",
+      "text": "你走出顶层公寓，被击败的霍华德·威尔克斯，还有他的教派剩下的一切，都已被你抛在身后。你走到街上的时候，阿卡姆的警察刚好抵达，你把他们的问题留给了警探瑞若兹。你回到阿卡姆的时候，清晨的第一缕阳光正好洒在米斯卡塔尼克河上。",
       "narration": {
         "id": "cob.blood_money.r1",
         "name": "Resolution 1",
@@ -7702,7 +7702,7 @@
     {
       "id": "R2",
       "title": "结局2",
-      "text": "You and the few guests you saved flee the penthouse as the Arkham police arrive. You watch as they rush into the penthouse, but you don’t stick around, heading out into Arkham just as the first rays of the morning sun peek out over the Miskatonic River.",
+      "text": "阿卡姆的警察赶到现场，你和救下的寥寥几个宾客刚好逃出顶层公寓。你看着他们冲进去，但没有逗留，而是往阿卡姆走去。等你到的时候，清晨的第一缕阳光正好洒在米斯卡塔尼克河上。",
       "narration": {
         "id": "cob.blood_money.r2",
         "name": "Resolution 2",
@@ -7760,7 +7760,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "With no other choice, you put the penthouse of Arkham’s Northside district behind you. No matter how far you go, you worry there won’t be enough distance between you and the monsters that ravaged the party and turned it into a bloodbath. It doesn’t take long for word of those events to spread throughout Arkham, and for more disappearances to take place as the creatures continue to hunt and feed in the dead of night. Eventually you decide to leave the city, relocating to Boston and thinking that at long last you can try and forget about the calamity on the Miskatonic.\nBut no matter how far you go, no matter how close you are to forgetting everything, in a matter of months you hear reports similar to those that led up to the chaos that plagued Arkham. The tainted blood of Zburamoarte and the machinations of the Cult of the Sanguine Order are spreading across New England. How long will it be before you have nowhere else to run?",
+      "text": "你别无选择，只得放弃阿卡姆北区的顶层公寓。那头蹂躏宴会、将宴会变成一场血腥屠杀的怪物。无论你走多远，你都担心离它还不够远。没过多久，相关事件的风言风语就传遍了阿卡姆，怪物依然在深夜狩猎捕食，更多的失踪案层出不穷。最终你决定离开这座城，搬到波士顿，想着终于可以忘记米斯卡塔尼克河畔的灾变。\n但无论你走多远，无论你多么想忘记一切，只是过了几个月，你就听到了和阿卡姆那时的混乱类似的报道。孜卜拉牟特的污血、血色教派的阴谋正在整个新英格兰蔓延。再过多久，你就会无处可逃？",
       "narration": {
         "id": "cob.blood_money.epilogue_1",
         "name": "Epilogue 1",
@@ -7771,7 +7771,7 @@
     },
     {
       "id": "check_stopped_children_and_defeated_zburamoarte",
-      "text": "Check Campaign Log. If both <i>the investigators stopped the children of blood</i> and <i>the investigators defeated Zburamoarte</i>:",
+      "text": "检查剧本日志。如果同时记录了<i>调查员阻止了鲜血之子</i>和<i>调查员击败了孜卜拉牟特</i>：",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -7835,7 +7835,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "The events of the penthouse in Northside finally behind you, it seems that at long last the city of Arkham can breathe a sigh of relief. As the days begin to pass, the people who were subjected to the tainted blood of Zburamoarte at the hands of the cult begin to recover. They are weak, disoriented, and lacking any memory of their transformations. Against all odds, it seems that the diabolical machinations of Howard Wilkes and the Cult of the Sanguine Order are finally put to rest.",
+      "text": "北区顶层公寓的事情已经被你放下，看来阿卡姆终于可以松一口气了。日子一天天过去，被教派魔爪中孜卜拉牟特的污血支配的人们开始康复。他们虚弱、迷茫，丢失了自己变形的记忆。纵使万般不易，霍华德·威尔克斯和血色教派的邪恶密谋看来已经化解。",
       "narration": {
         "id": "cob.blood_money.epilogue_2",
         "name": "Epilogue 2",
@@ -7864,7 +7864,7 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "The events of the penthouse in Northside finally behind you, it seems that at long last the city of Arkham can breathe a sigh of relief. As the days begin to pass, however, rumors and whispers of monsters in the night seem to return. In a matter of weeks, it seems Arkham is right back to where it started on that fateful night in the Waterfront District. More disappearances are reported throughout the city, and you fear the creatures have returned to hunt and feed in the dead of night. Eventually you decide to leave Arkham, relocating to Boston and thinking that at long last you can try and forget about the calamity on the Miskatonic.\nBut no matter how far you go, no matter how close you are to forgetting everything, in a matter of months you hear reports similar to those that led up to the chaos that plagued Arkham. The tainted blood of Zburamoarte, and the machinations of the Cult of the Sanguine Order, have returned, and are spreading across New England. How long will it be before you have nowhere else to run?",
+      "text": "北区顶层公寓的事情已经被你放下，看来阿卡姆终于可以松一口气了。日子一天天过去，然而关于那晚怪物的流言细语再次骚动。过了几周，阿卡姆似乎回到了滨水区当初的那一夜，仿佛宿命。城里传说有更多的失踪案，你担心怪物已经回来，在深夜狩猎捕食。最终你决定离开阿卡姆，搬到波士顿，想着终于可以忘记米斯卡塔尼克河畔的灾变。\n但无论你走多远，无论你多么想忘记一切，只是过了几个月，你就听到了和阿卡姆那时的混乱类似的报道。孜卜拉牟特的污血、血色教派的阴谋已经归来，正在整个新英格兰蔓延。再过多久，你就会无处可逃？",
       "narration": {
         "id": "cob.blood_money.epilogue_3",
         "name": "Epilogue 3",
@@ -7876,7 +7876,7 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "Weeks later, you find yourself walking down the sidewalk of Water Street once again. That bloody and desperate night seems like a distant memory fading into shadows as the sun rises from the Eastern horizon. As you continue on your way, you catch a glimpse of a familiar face—a middle-aged woman, with long dark hair pulled back into a tight bun, dressed in the blue coveralls of a factory worker. She looks up as she crosses the street, and your eyes meet for a brief moment. She doesn’t recognize you, but you know immediately that it’s Julia. She offers a polite smile before she continues on, eventually disappearing into the growing crowds.",
+      "text": "几周后，你走在水岸街的步道上。太阳从东方又一次升起，那血腥而绝望的一夜已经仿佛遥远的记忆，消散在阴影中。你继续前行，却瞥见一张熟悉的面孔——一个长发紧紧束成髻的中年女子，穿着工厂工人的蓝色工作服。她过街的时候抬了头，你们的眼神交汇了一刻。她没有认出你，但你立刻就知道那就是朱利亚。她礼貌地微笑一下，继续往前，最终在熙攘的人群中渐渐消失。",
       "narration": {
         "id": "cob.blood_money.epilogue_4",
         "name": "Epilogue 4",
@@ -7901,40 +7901,40 @@
     {
       "id": "$blood_tokens_rule",
       "type": "rule_reminder",
-      "title": "Blood Tokens",
-      "text": "This expansion introduces a new type of chaos token: the blood ([blood]) token. Throughout the campaign, depending on decisions the investigators make and events that unfold, [blood] tokens may be added to (or removed from) the chaos bag, and when drawn alter the chance of succeeding the tests being performed. The more [blood] tokens added to the chaos bag, the more impactful their effects become.",
+      "title": "鲜血标记",
+      "text": "本扩展引入了一种新的混乱标记：鲜血（[blood]）标记。随着探险的深入，根据调查员的决策与发生的事件，[blood]标记可能会加入混乱袋（或从混乱袋移除），在被抽取时会改变调查员执行的每次技能检定成功的概率。混乱袋中加入的[blood]标记越多，其效果就越显著。",
       "bullets": [
         {
-          "text": "The first [blood] token revealed from the chaos bag during a skill test has the following effect: \"-1. Reveal another token. If this skill test fails, seal 1 [blood] token revealed during this test on the performing investigator.\"\n- Each additional [blood] token revealed from the chaos bag during a skill test has the following effect: \"-1. Reveal another token.\"\n<i>For example: Tommy attacks an enemy with 3 fight, and there are two [blood] tokens in the chaos bag. During the attack, Tommy reveals a [blood] token. This reduces his skill value by 1 and causes him to reveal an additional token. The next token he reveals is a -2, resulting in a total of -3, causing Tommy to fail the attack. When resolving the effects of the failed test, Tommy must seal the [blood] token revealed during this test on his investigator card instead of returning it to the chaos bag.</i>"
+          "text": "技能检定期间从混乱袋揭示的第一个[blood]标记有如下效果：“-1。再揭示一个标记。如果本次技能检定失败，将本次检定期间揭示的1个[blood]标记封印在执行检定的调查员上。”\n- 技能检定期间从混乱袋揭示的每个额外[blood]标记有如下效果：“-1。再揭示一个标记。”\n<i>示例：托米攻击一个攻击值为3的敌人，且混乱袋中有两个[blood]标记。攻击期间，托米揭示了一个[blood]标记。这使他的技能值减1，且导致他再揭示额外一个标记。他接下来揭示的是一个-2，于是两个标记的总值是-3，使得托米攻击失败。结算失败检定的效果时，托米不将本次检定期间揭示的[blood]标记返回混乱袋中，改为封印在他的调查员卡牌上。</i>"
         },
         {
-          "text": "While [blood] tokens are sealed on an investigator, various encounter card effects will become more dangerous for that investigator, so be careful!"
+          "text": "调查员身上封印有[blood]标记时，许多遭遇卡牌的效果会对该调查员变得更加危险，所以务必要小心！"
         },
         {
-          "text": "No more than a <b>total of three</b> [blood] tokens can be sealed on a single investigator at any given time."
+          "text": "任何时候，一位调查员身上封印的[blood]标记<b>总计不能超过三个</b>。"
         },
         {
-          "text": "No more than a <b>total of twelve</b> [blood] tokens can be included in the chaos bag and sealed on cards in play at any given time."
+          "text": "任何时候，混乱袋中和封印在场上卡牌上的[blood]标记<b>总计不能超过十二个</b>。"
         },
         {
-          "text": "A [blood] token revealed outside of a skill test has no effect unless otherwise specified by a card effect."
+          "text": "除非有其他卡牌效果规定，否则在非技能检定中揭示的[blood]标记没有效果。"
         },
         {
-          "text": "A [blood] token added to the chaos bag remains in the chaos bag from scenario to scenario unless removed by a card or game effect. Use the \"Chaos Bag\" section of the campaign log on page 34 to record which tokens are currently in the chaos bag."
+          "text": "加入混乱袋的[blood]标记在两场冒险间依然保留在混乱袋中，除非有卡牌或游戏效果将其移除。使用第34页剧本日志的“混乱袋”部分来记录当前哪些标记在混乱袋中。"
         },
         {
-          "text": "For your convenience, a Blood Token reference card (119) has been provided. This card can be placed beside the scenario reference card during each scenario of this campaign."
+          "text": "为方便游戏，特提供鲜血标记参考卡牌（119）。本剧本的每场冒险期间，都可以将本卡牌放在冒险参考卡牌旁。"
         }
       ]
     },
     {
       "id": "$predator_rule",
       "type": "rule_reminder",
-      "title": "Predator",
-      "text": "Predator is a keyword ability.\nDuring the enemy phase (after hunter enemies move and before enemies attack), each ready, unengaged enemy with the predator keyword deals 1 damage to a non-[[Elite]] enemy at its location with a fight value lower than its own.",
+      "title": "掠食",
+      "text": "掠食是一个关键词能力。\n敌军阶段期间（猎手敌人移动后，敌人攻击前），每个带有掠食关键词的敌人，若未与调查员交战，且处于重整状态，对其所在地点一个攻击值低于该敌人的非[[精英]]敌人造成1点伤害。",
       "bullets": [
         {
-          "text": "Given the choice between multiple other enemies, a predator enemy will deal its damage to the enemy with the lowest (or tied for the lowest) remaining health."
+          "text": "若要在多个其他敌人间进行选择，带有掠食关键词的敌人会对剩余生命值最低（或同为最低）的敌人造成伤害。"
         }
       ]
     }
@@ -239133,7 +239133,7 @@
       "scarlet_keys": [
         {
           "id": "eye_of_ravens",
-          "name": "渡鸭之眼"
+          "name": "渡鸦之眼"
         },
         {
           "id": "last_blossom",
@@ -241869,7 +241869,7 @@
       "items": [
         {
           "id": "eye_of_ravens",
-          "text": "渡鸭之眼"
+          "text": "渡鸦之眼"
         },
         {
           "id": "last_blossom",
@@ -264682,7 +264682,7 @@
         "choices": [
           {
             "id": "eye_of_ravens",
-            "text": "渡鸭之眼",
+            "text": "渡鸦之眼",
             "condition": {
               "type": "scarlet_key",
               "scarlet_key": "eye_of_ravens",
@@ -264937,7 +264937,7 @@
         "choices": [
           {
             "id": "eye_of_ravens",
-            "text": "渡鸭之眼",
+            "text": "渡鸦之眼",
             "condition": {
               "type": "scarlet_key",
               "scarlet_key": "eye_of_ravens",
@@ -265205,7 +265205,7 @@
         "choices": [
           {
             "id": "eye_of_ravens",
-            "text": "渡鸭之眼",
+            "text": "渡鸦之眼",
             "condition": {
               "type": "scarlet_key",
               "scarlet_key": "eye_of_ravens",

@@ -143,43 +143,43 @@
         "entries": [
           {
             "id": "completed_their_search",
-            "text": "the investigators completed their search."
+            "text": "los investigadores completaron su búsqueda."
           },
           {
             "id": "defeated_zburamoarte",
-            "text": "the investigators defeated Zburamoarte."
+            "text": "los investigadores derrotaron a Zburamoarte."
           },
           {
             "id": "did_not_complete_their_search",
-            "text": "the investigators did not complete their search."
+            "text": "los investigadores no completaron su búsqueda."
           },
           {
             "id": "failed_to_stop_julia_stern",
-            "text": "the investigators failed to stop Julia Stern."
+            "text": "los investigadores no lograron detener a Julia Stern."
           },
           {
             "id": "failed_to_stop_the_children_of_blood",
-            "text": "the investigators failed to stop the children of blood."
+            "text": "los investigadores no lograron detener a los vástagos de la sangre."
           },
           {
             "id": "killed_julia_stern",
-            "text": "the investigators killed Julia Stern."
+            "text": "los investigadores mataron a Julia Stern."
           },
           {
             "id": "left_to_the_cults_mercy",
-            "text": "the investigators were left to the cult's mercy."
+            "text": "los investigadores quedaron a merced de la secta."
           },
           {
             "id": "left_zburamoarte_alive",
-            "text": "the investigators left Zburamoarte alive."
+            "text": "los investigadores dejaron a Zburamoarte con vida."
           },
           {
             "id": "spared_julia_stern",
-            "text": "the investigators spared Julia Stern."
+            "text": "los investigadores perdonaron la vida a Julia Stern."
           },
           {
             "id": "stopped_the_children_of_blood",
-            "text": "the investigators stopped the children of blood."
+            "text": "los investigadores detuvieron a los vástagos la sangre."
           }
         ]
       },

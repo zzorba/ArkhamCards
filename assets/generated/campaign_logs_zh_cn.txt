@@ -143,43 +143,43 @@
         "entries": [
           {
             "id": "completed_their_search",
-            "text": "the investigators completed their search."
+            "text": "调查员完成了搜查。"
           },
           {
             "id": "defeated_zburamoarte",
-            "text": "the investigators defeated Zburamoarte."
+            "text": "调查员击败了孜卜拉牟特。"
           },
           {
             "id": "did_not_complete_their_search",
-            "text": "the investigators did not complete their search."
+            "text": "调查员没有完成搜查。"
           },
           {
             "id": "failed_to_stop_julia_stern",
-            "text": "the investigators failed to stop Julia Stern."
+            "text": "调查员没能阻止朱利亚·斯特恩。"
           },
           {
             "id": "failed_to_stop_the_children_of_blood",
-            "text": "the investigators failed to stop the children of blood."
+            "text": "调查员没能阻止鲜血之子。"
           },
           {
             "id": "killed_julia_stern",
-            "text": "the investigators killed Julia Stern."
+            "text": "调查员杀死了朱利亚·斯特恩。"
           },
           {
             "id": "left_to_the_cults_mercy",
-            "text": "the investigators were left to the cult's mercy."
+            "text": "调查员任由教派摆布。"
           },
           {
             "id": "left_zburamoarte_alive",
-            "text": "the investigators left Zburamoarte alive."
+            "text": "调查员没能杀死孜卜拉牟特。"
           },
           {
             "id": "spared_julia_stern",
-            "text": "the investigators spared Julia Stern."
+            "text": "调查员饶过了朱利亚·斯特恩。"
           },
           {
             "id": "stopped_the_children_of_blood",
-            "text": "the investigators stopped the children of blood."
+            "text": "调查员阻止了鲜血之子。"
           }
         ]
       },

@@ -4184,11 +4184,11 @@
     {
       "id": "earn_xp",
       "bullet_type": "small",
-      "text": "Each investigator may begin the campaign with S bonus experience. You may upgrade your decks before starting the first scenario.",
+      "text": "Each investigator may begin the campaign with 5 bonus experience. You may upgrade your decks before starting the first scenario.",
       "effects": [
         {
           "type": "earn_xp",
-          "bonus": 2,
+          "bonus": 5,
           "investigator": "all"
         }
       ]

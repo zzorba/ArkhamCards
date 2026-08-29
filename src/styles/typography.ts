@@ -62,9 +62,10 @@ export default function(
   gameFont: string,
   lang: string
 ): Typography {
+  const isPingFang = lang === 'zh' || lang === 'zh-cn';
   return {
     cardHeaderHeight: 18 * fontScale + Math.ceil(
-      (lang === 'zh' || lang === 'zh-cn' ? 24 : 22) * fontScale
+      (isPingFang ? 24 : 22) * fontScale
     ),
     ...StyleSheet.create({
       cursive: {
@@ -91,7 +92,7 @@ export default function(
         fontStyle: ITALIC_FONT_STYLE,
         fontSize: Math.ceil(14 * fontScale),
         lineHeight: Math.ceil(
-          (lang === 'zh' || lang === 'zh-cn' ? 17 : 16) * fontScale
+          (isPingFang ? 17 : 16) * fontScale
         ),
         letterSpacing: 0.3,
         color: colors.lightText,
@@ -106,7 +107,9 @@ export default function(
         fontFamily: italicFont,
         fontStyle: ITALIC_FONT_STYLE,
         fontSize: Math.ceil(16 * fontScale),
-        lineHeight: Math.ceil(18 * fontScale),
+        lineHeight: Math.ceil(
+          (isPingFang ? 20 : 18) * fontScale
+        ),
         color: colors.lightText,
         includeFontPadding: false,
       },
@@ -114,7 +117,7 @@ export default function(
         fontFamily: 'Alegreya-Regular',
         fontSize: Math.ceil(12 * fontScale),
         lineHeight: Math.ceil(
-          (lang === 'zh' || lang === 'zh-cn' ? 16 : 14) * fontScale
+          (isPingFang ? 16 : 14) * fontScale
         ),
         color: colors.darkText,
       },
@@ -122,7 +125,7 @@ export default function(
         fontFamily: 'Alegreya-Medium',
         fontSize: Math.ceil(20 * fontScale),
         lineHeight: Math.ceil(
-          (lang === 'zh' || lang === 'zh-cn' ? 24 : 22) * fontScale
+          (isPingFang ? 24 : 22) * fontScale
         ),
         color: colors.darkText,
         textAlignVertical: 'center',
@@ -131,7 +134,7 @@ export default function(
         fontFamily: 'Alegreya-Medium',
         fontSize: Math.ceil(18 * fontScale),
         lineHeight: Math.ceil(
-          (lang === 'zh' || lang === 'zh-cn' ? 22 : 20) * fontScale
+          (isPingFang ? 22 : 20) * fontScale
         ),
         color: colors.darkText,
       },
@@ -139,7 +142,7 @@ export default function(
         fontFamily: 'Alegreya-Medium',
         fontSize: Math.ceil(24 * fontScale),
         lineHeight: Math.ceil(
-          (lang === 'zh' || lang === 'zh-cn' ? 28 : 26) * fontScale
+          (isPingFang ? 28 : 26) * fontScale
         ),
         color: colors.D10,
       },
@@ -147,7 +150,7 @@ export default function(
         fontFamily: 'Alegreya-Medium',
         fontSize: Math.ceil(22 * fontScale),
         lineHeight: Math.ceil(
-          (lang === 'zh' || lang === 'zh-cn' ? 26 : 24) * fontScale
+          (isPingFang ? 26 : 24) * fontScale
         ),
         color: colors.darkText,
       },
@@ -155,7 +158,7 @@ export default function(
         fontFamily: 'Alegreya-Regular',
         fontSize: Math.ceil(18 * fontScale),
         lineHeight: Math.ceil(
-          (lang === 'zh' || lang === 'zh-cn' ? 22 : 20) * fontScale
+          (isPingFang ? 22 : 20) * fontScale
         ),
         color: colors.L30,
       },
