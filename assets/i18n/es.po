@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "mime-version: 1.0\n"
 "x-generator: Poedit 3.1\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 
 msgid "Guardian"
 msgstr "Guardián"
@@ -787,19 +787,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -6268,7 +6268,7 @@ msgid "Scenario results"
 msgstr "Resultado del escenario"
 
 msgid "Location Setup"
-msgstr ""
+msgstr "Distribución de Lugares"
 
 #, javascript-format
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
@@ -6280,7 +6280,7 @@ msgid "Experience cost: ${ xpCost } for decks that include ${ investigator.name 
 msgstr "Coste de experiencia: ${ xpCost } para mazos que incluyan ${ investigator.name }, ${ challengeDiscountCost } para el resto"
 
 msgid "You must have at least 6 cards from each faction."
-msgstr ""
+msgstr "Debes tener al menos 6 cartas de cada Clase."
 
 #, javascript-format
 msgid ""
@@ -6290,101 +6290,106 @@ msgid ""
 "\n"
 "This will use about 25mb of storage."
 msgstr ""
+"¿Quieres descargar las cartas actualizadas de ArkhamDB en el idioma ${ lang } de acuerdo con las preferencias de tu teléfono?\n"
+"\n"
+"Puedes sobreescribir el idioma preferido para esta aplicación en Ajustes.\n"
+"\n"
+"Esta descarga ocupará aproximadamente 25mb de espacio en tu dispositivo."
 
 msgid "Head"
 msgstr ""
 
 #, javascript-format
 msgid "Cost: ${ _card.cost }"
-msgstr ""
+msgstr "Coste: ${ _card.cost }"
 
 msgid "Select version"
-msgstr ""
+msgstr "Selecciona versión"
 
 msgid "Alternate version"
-msgstr ""
+msgstr "Versión alternativa"
 
 #. Remove "Investigator Expansion" from pack name
 msgid "Investigator Expansion"
-msgstr ""
+msgstr "Expansión de investigadores"
 
 msgid "Alternate versions"
-msgstr ""
+msgstr "Alternar versiones"
 
 msgid "View on arkham.build"
-msgstr ""
+msgstr "Ver en arkham.build"
 
 msgid "Brethren of Ash"
-msgstr ""
+msgstr "Hermanos de las cenizas"
 
 msgid "Spreading Flames"
-msgstr ""
+msgstr "Las llamas se propagan"
 
 msgid "Smoke and Mirrors"
-msgstr ""
+msgstr "Humo y espejos"
 
 msgid "Queen of Ash"
-msgstr ""
+msgstr "Reina de las cenizas"
 
 msgid "Core (2026)"
-msgstr ""
+msgstr "Core (2026)"
 
 msgid "Investigator Decks"
-msgstr ""
+msgstr "Mazos de investigador"
 
 msgid "Tap to view"
-msgstr ""
+msgstr "Pulsa para ver"
 
 msgid "Investigator decks"
-msgstr ""
+msgstr "Mazos de investigador"
 
 msgid "Recent releases"
-msgstr ""
+msgstr "Publicaciones recientes"
 
 msgid "None released yet"
-msgstr ""
+msgstr "Ninguno publicado aún"
 
 msgid "Chapter 1"
-msgstr ""
+msgstr "Capítulo 1"
 
 msgid "Chapter 2"
-msgstr ""
+msgstr "Capítulo 2"
 
 msgid "This draft uses the deck's selected card pool."
-msgstr ""
+msgstr "Este draft utiliza las cartas disponibles seleccionadas"
 
 msgid "Fan-Made"
-msgstr ""
+msgstr "Fanmade"
 
 msgid "Blood"
-msgstr ""
+msgstr "Sangre"
 
 msgid "Too many off-class cards for Collector"
-msgstr ""
+msgstr "Demasiadas cartas fuera de Clase para Coleccionista"
 
 msgid "Sign in with Patreon?"
-msgstr ""
+msgstr "Iniciar sesión con Patreon"
 
 msgid "Audio narration is available to patrons of ArkhamCards or Mythos Busters on Patreon."
-msgstr ""
+msgstr "La narración está disponible para mecenas de ArkhamCards o Mythos Busters en Patreon."
 
 msgid "Hide collector cards"
-msgstr ""
+msgstr "Ocultar cartas Coleccionista"
 
 msgid "Children of Blood"
-msgstr ""
+msgstr "Vástagos de la sangre"
 
 msgid "River of Blood"
-msgstr ""
+msgstr "Río de sangre"
 
 msgid "New Horizons"
-msgstr ""
+msgstr "New Horizons"
 
 msgid "Friends in Low Places"
-msgstr ""
+msgstr "Amigos en las bajas esferas"
 
 msgid "Blood Money"
-msgstr ""
+msgstr "Dinero de sangre"
 
 msgctxt "investigator"
 msgid "Custom"
