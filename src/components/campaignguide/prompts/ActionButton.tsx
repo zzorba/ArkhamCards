@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from '@react-native-vector-icons/material-design-icons';
 
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
@@ -87,10 +87,10 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
       <View style={styles.button}>
         { leftIconContent}
         { !hideText && (
-          <Text numberOfLines={2} style={[
+          <Text numberOfLines={1} style={[
             leftIcon ? space.marginLeftS : undefined,
             typography.cardName,
-            { color: textColor, flexShrink: 1 },
+            { color: textColor },
             { textAlignVertical: 'center' },
           ]} adjustsFontSizeToFit={shrinkText}>
             { title }
@@ -152,5 +152,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    flexShrink: 0,
   },
 });

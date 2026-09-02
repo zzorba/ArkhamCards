@@ -1,4 +1,4 @@
-import createIconSetFromIcoMoon from '@expo/vector-icons/createIconSetFromIcoMoon';
+import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
 import Animated from 'react-native-reanimated';
 
 import arkhamIconConfig from '../../assets/arkhamicons-config.json';

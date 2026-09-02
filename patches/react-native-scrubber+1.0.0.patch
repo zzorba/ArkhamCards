@@ -1,7 +1,16 @@
 diff --git a/node_modules/react-native-scrubber/index.js b/node_modules/react-native-scrubber/index.js
-index 26618ed..578af6e 100644
+index 26618ed..f01a8ef 100644
 --- a/node_modules/react-native-scrubber/index.js
 +++ b/node_modules/react-native-scrubber/index.js
+@@ -36,7 +36,7 @@ const PLACEHOLDER_DISPLAY_VALUE = '--:--';
+ const TrackSliderSize = 10;
+ const SCALE_UP_DURAITON = 150;
+ 
+-formatValue = value => {
++const formatValue = value => {
+   const hours = Math.floor(value / 3600);
+   const rawMinutes = (value / 60) - (60 * hours)
+   const minutes = Math.floor(rawMinutes)
 @@ -78,14 +78,16 @@ export default class extends Component {
    scaleUp = () => {
      Animated.timing(this.scaleFactor, {
@@ -22,8 +31,8 @@ index 26618ed..578af6e 100644
    }
  
 @@ -333,7 +335,7 @@ export default class extends Component {
- 
-             ]}
+               
+             ]} 
              {...this.panResponder.panHandlers}
 -            hitSlop={{top: 50, bottom: 50, left: 50, right: 50}}
 +            hitSlop={{top: 10, bottom: 50, left: 50, right: 50}}

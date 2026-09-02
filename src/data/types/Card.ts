@@ -1349,6 +1349,8 @@ export default class Card {
     switch (real_slot.toLowerCase()) {
       case 'hand':
         return t`Hand`;
+      case 'head':
+        return t`Head`;
       case 'arcane':
         return t`Arcane`;
       case 'accessory':

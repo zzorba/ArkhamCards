@@ -1,4 +1,4 @@
-import createIconSetFromIcoMoon from '@expo/vector-icons/createIconSetFromIcoMoon';
+import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
 
 // @ts-ignore
 import drownedIconConfig from '../../assets/drowned.json';

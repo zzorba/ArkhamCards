@@ -4,6 +4,7 @@
     "strict": true,
     "skipLibCheck": true,
     "useUnknownInCatchVariables": false,
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "typeorm": ["node_modules/typeorm"],

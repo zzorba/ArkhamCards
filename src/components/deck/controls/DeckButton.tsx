@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View, ViewStyle } from 'react-native';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import MaterialIcons from '@react-native-vector-icons/material-icons';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 type MaterialIconsIconName = React.ComponentProps<typeof MaterialIcons>['name'];

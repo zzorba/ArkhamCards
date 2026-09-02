@@ -38,8 +38,8 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
   }
   return (
     <View style={[styles.header, { backgroundColor: colors.faction[faction].background }]}>
-      <View style={[styles.headerContent, space.paddingTopXs]}>
-        <Text style={[typography.header, typography.white]}>
+      <View style={styles.headerContentCentered}>
+        <Text style={[typography.header, typography.white, { textAlign: 'center' }]}>
           { title }
         </Text>
       </View>
@@ -59,6 +59,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    minHeight: 40,
+  },
+  headerContentCentered: {
+    justifyContent: 'center',
     minHeight: 40,
   },
   icon: {

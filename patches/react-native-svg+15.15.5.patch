@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/RenderableView.java b/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/RenderableView.java
+index 791eb57..8b38005 100644
+--- a/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/RenderableView.java
++++ b/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/RenderableView.java
+@@ -150,7 +150,7 @@ public abstract class RenderableView extends VirtualView implements ReactHitSlop
+       return this.mCaller.getCurrentColor();
+     }
+     ViewParent parent = this.getParent();
+-    if (parent instanceof VirtualView) {
++    if (parent instanceof RenderableView) {
+       return ((RenderableView) parent).getCurrentColor();
+     } else if (parent instanceof SvgView) {
+       return ((SvgView) parent).mCurrentColor;
