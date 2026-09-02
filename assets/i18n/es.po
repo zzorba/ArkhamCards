@@ -787,19 +787,19 @@ msgstr "Bolsa de caos"
 msgid "Adjust Weakness Set"
 msgstr "Ajustar Conjunto de Debilidades"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Este mazo contiene varias debilidades básicas"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Este mazo contiene una debilidad básica"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarlas del Conjunto de Debilidades Básicas de la Campaña?"
 
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "¿Quieres eliminarla del Conjunto de Debilidades Básicas de la Campaña?"
 
@@ -6343,12 +6343,6 @@ msgstr "Pulsa para ver"
 msgid "Investigator decks"
 msgstr "Mazos de investigador"
 
-msgid "Recent releases"
-msgstr "Publicaciones recientes"
-
-msgid "None released yet"
-msgstr "Ninguno publicado aún"
-
 msgid "Chapter 1"
 msgstr "Capítulo 1"
 
@@ -6390,6 +6384,18 @@ msgstr "Amigos en las bajas esferas"
 
 msgid "Blood Money"
 msgstr "Dinero de sangre"
+
+msgid "Small Campaign Expansions"
+msgstr ""
+
+msgid "Use all cards from Chapter 1 products"
+msgstr ""
+
+msgid "Use all cards from Chapter 2 products"
+msgstr ""
+
+msgid "Revised Core Set"
+msgstr ""
 
 msgctxt "investigator"
 msgid "Custom"

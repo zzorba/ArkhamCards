@@ -6278,12 +6278,6 @@ msgstr ""
 msgid "Investigator decks"
 msgstr ""
 
-msgid "Recent releases"
-msgstr ""
-
-msgid "None released yet"
-msgstr ""
-
 msgid "Chapter 1"
 msgstr ""
 
@@ -6324,6 +6318,18 @@ msgid "Friends in Low Places"
 msgstr ""
 
 msgid "Blood Money"
+msgstr ""
+
+msgid "Small Campaign Expansions"
+msgstr ""
+
+msgid "Use all cards from Chapter 1 products"
+msgstr ""
+
+msgid "Use all cards from Chapter 2 products"
+msgstr ""
+
+msgid "Revised Core Set"
 msgstr ""
 
 msgctxt "investigator"
