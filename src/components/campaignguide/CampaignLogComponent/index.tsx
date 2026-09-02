@@ -57,7 +57,7 @@ function RelationshipBoxes({ section, isFatigue }: { section: EntrySection; isFa
       <Text
         style={[
           typography.cursive,
-          { fontSize: 14, lineHeight: 16, color: colors.D30 },
+          { fontSize: 14, color: colors.D30 },
           space.paddingRightXs,
         ]}
         allowFontScaling={false}

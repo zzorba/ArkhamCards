@@ -15,7 +15,6 @@ export default function FlavorTypewriterNode({ typography, fontScale }: StyleCon
       <MarkdownText key={state.key} style={[
         styles.text, {
           fontSize: 16 * fontScale,
-          lineHeight: 20 * fontScale,
         },
         underline ? { textDecorationLine: 'underline' } : undefined,
         typography.dark,

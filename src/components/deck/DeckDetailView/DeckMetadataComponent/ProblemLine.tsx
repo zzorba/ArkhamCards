@@ -36,7 +36,7 @@ export default function ProblemLine({ problem }: Props) {
       <Text
         numberOfLines={2}
         ellipsizeMode="tail"
-        style={[typography.small, typography.italic, { color: colors.M, lineHeight: 24 * fontScale }]}
+        style={[typography.small, typography.italic, { color: colors.M }]}
       >
         { DECK_PROBLEM_MESSAGES[problem.reason] }
       </Text>

@@ -98,7 +98,7 @@ export default function TarotCardComponent({ card, width, flipped, inverted, onF
                     <AppIcon name="fleur_bottom_right" size={25} color={colors.tarotInvertedText} />
                   </View>
                   <View style={[space.paddingSideS, { transform: [{ rotate: degToRad(-180) }] }]}>
-                    <Text style={[typography.gameFont, typography.center, { fontSize, lineHeight: fontSize + 2, color: colors.tarotInvertedText }]}>
+                    <Text style={[typography.gameFont, typography.center, { fontSize, color: colors.tarotInvertedText }]}>
                       <TextWithIcons text={card.inverted_text} color={colors.tarotInvertedText} size={fontSize * 0.8} />
                     </Text>
                   </View>
@@ -118,10 +118,10 @@ export default function TarotCardComponent({ card, width, flipped, inverted, onF
                     <AppIcon name="fleur_top_right" size={30} color={colors.tarotText} />
                   </View>
 
-                  <Text style={[typography.gameFont, typography.center, typography.underline, space.paddingBottomS, { fontSize: fontSize * 1.25, lineHeight: fontSize * 1.25 + 2, color: colors.tarotText }]}>
+                  <Text style={[typography.gameFont, typography.center, typography.underline, space.paddingBottomS, { fontSize: fontSize * 1.25, color: colors.tarotText }]}>
                     { card.title }
                   </Text>
-                  <Text style={[typography.gameFont, typography.center, { flex: 1, textAlignVertical: 'center', fontSize: fontSize, lineHeight: fontSize + 2, color: colors.tarotText }]}>
+                  <Text style={[typography.gameFont, typography.center, { flex: 1, textAlignVertical: 'center', fontSize: fontSize, color: colors.tarotText }]}>
                     <TextWithIcons text={card.text} color={colors.tarotText} size={fontSize * 0.8} />
                   </Text>
                 </View>
@@ -141,7 +141,7 @@ export default function TarotCardComponent({ card, width, flipped, inverted, onF
                   <AppIcon name="fleur_top_right" size={width / 8} color={colors.tarotText} />
                 </View>
 
-                <Text style={[typography.gameFont, typography.center, typography.underline, { fontSize: fontSize, lineHeight: fontSize * 1.25 + 2, color: colors.tarotText }]}>
+                <Text style={[typography.gameFont, typography.center, typography.underline, { fontSize: fontSize, color: colors.tarotText }]}>
                   { card.title }
                 </Text>
               </View>

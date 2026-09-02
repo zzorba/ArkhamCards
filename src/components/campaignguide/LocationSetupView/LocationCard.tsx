@@ -387,7 +387,7 @@ function AnnotationComponent({ annotation, width, height, left, top, rowWidth, r
             textAlignmentStyle,
             typography.text,
             [
-              { lineHeight: fontScale * 24, fontSize: fontScale * 22 },
+              { fontSize: fontScale * 22 },
               typography.bold,
             ],
             { width: width * (annotation.width ?? 1) },

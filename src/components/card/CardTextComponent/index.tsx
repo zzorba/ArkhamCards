@@ -166,9 +166,8 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
   }, [onLinkPress, context]);
 
   // Helper to calculate scaled font sizes
-  const scaledSize = useCallback((baseFontSize: number, baseLineHeight?: number) => ({
+  const scaledSize = useCallback((baseFontSize: number, _baseLineHeight?: number) => ({
     fontSize: baseFontSize * context.fontScale * sizeScale,
-    lineHeight: (baseLineHeight || baseFontSize * 1.25) * context.fontScale * sizeScale,
   }), [context.fontScale, sizeScale]);
 
   // Helper to create platform-specific text styles
@@ -216,7 +215,6 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
           fontFamily: usePingFang ? 'PingFangTC' : 'Alegreya',
           fontWeight: '700',
           fontSize: 16 * context.fontScale * sizeScale,
-          lineHeight: 20 * context.fontScale * sizeScale,
           color: context.colors.darkText,
         }}>
           [{iconName}]
@@ -232,7 +230,6 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
         <Text style={{
           fontFamily: 'arkhamslim',
           fontSize: iconSize,
-          lineHeight: iconSize * 1.2,
           color: context.colors.darkText,
         }}>
           {String.fromCharCode(glyphCode)}
@@ -444,7 +441,6 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
   const baseTextStyle = useMemo(() => ({
     fontFamily: usePingFang ? 'PingFangTC' : Platform.OS === 'android' ? (flavorText ? 'Alegreya-Italic' : 'Alegreya-Regular') : 'Alegreya',
     fontSize: 16 * context.fontScale * sizeScale,
-    lineHeight: 20 * context.fontScale * sizeScale,
     color: context.colors.darkText,
     ...(flavorText && Platform.OS !== 'android' && { fontStyle: 'italic' as const }),
   }), [usePingFang, context, sizeScale, flavorText]);
@@ -727,19 +723,16 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
 
   const markdownStyles = useMemo(() => {
     const baseFontSize = 16 * context.fontScale * sizeScale;
-    const baseLineHeight = 20 * context.fontScale * sizeScale;
 
     return StyleSheet.create({
       body: {
         color: context.colors.darkText,
         fontSize: baseFontSize,
-        lineHeight: baseLineHeight,
         textAlign: textAlignment || 'left',
       },
       paragraph: {
         fontFamily: usePingFang ? 'PingFangTC' : Platform.OS === 'android' ? (flavorText ? 'Alegreya-Italic' : 'Alegreya-Regular') : 'Alegreya',
         fontSize: baseFontSize,
-        lineHeight: baseLineHeight,
         marginTop: 4,
         marginBottom: 4,
         color: context.colors.darkText,
@@ -753,7 +746,6 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       text: {
         fontFamily: usePingFang ? 'PingFangTC' : Platform.OS === 'android' ? (flavorText ? 'Alegreya-Italic' : 'Alegreya-Regular') : 'Alegreya',
         fontSize: baseFontSize,
-        lineHeight: baseLineHeight,
         color: context.colors.darkText,
         textAlign: textAlignment || 'left',
         ...(flavorText && Platform.OS !== 'android' && { fontStyle: 'italic' as const }),
@@ -775,27 +767,22 @@ export default function CardTextComponent({ text, onLinkPress, sizeScale = 1, no
       heading2: {
         ...context.typography.gameFont,
         fontSize: 22,
-        lineHeight: 24,
       },
       heading3: {
         ...context.typography.gameFont,
         fontSize: 20,
-        lineHeight: 22,
       },
       heading4: {
         ...context.typography.gameFont,
         fontSize: 18,
-        lineHeight: 20,
       },
       heading5: {
         ...context.typography.gameFont,
         fontSize: 16,
-        lineHeight: 18,
       },
       heading6: {
         ...context.typography.gameFont,
         fontSize: 14,
-        lineHeight: 16,
       },
       hr: {
         backgroundColor: 'transparent',

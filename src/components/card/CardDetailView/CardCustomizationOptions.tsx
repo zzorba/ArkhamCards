@@ -438,7 +438,6 @@ function TraitLine({ trait, editable, onRemove, index }: { trait: string; index:
       <Text style={[typography.cardTraits, space.paddingSideS, space.paddingTopS, {
         flex: 1,
         fontSize: Math.ceil(20 * fontScale),
-        lineHeight: Math.ceil(22 * fontScale),
       }]}>
         {trait}
       </Text>

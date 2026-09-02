@@ -283,7 +283,6 @@ export default function CardFlavorTextComponent(
       fontStyle: 'italic',
       fontWeight: 'normal',
       fontSize: 16 * context.fontScale * sizeScale,
-      lineHeight: 20 * context.fontScale * sizeScale,
       marginTop: 4,
       marginBottom: 4,
       color: color || context.colors.darkText,

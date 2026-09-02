@@ -16,7 +16,6 @@ export default function InnsmouthNode(sizeScale: number, { typography, fontScale
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 24 * fontScale * sizeScale,
-        lineHeight: 28 * fontScale * sizeScale,
       }, typography.dark]}>
         { output(node.children, state) }
       </MarkdownText>

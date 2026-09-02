@@ -146,7 +146,6 @@ export default function ArkhamIconNode(usePingFang: boolean, { colors, fontScale
             fontWeight: '700',
             fontStyle: state.italic && !usePingFang ? 'italic' : 'normal',
             fontSize: 16 * fontScale * sizeScale,
-            lineHeight: 20 * fontScale * sizeScale,
           }}
         >
           { icon_name }

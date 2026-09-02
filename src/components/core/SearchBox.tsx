@@ -119,7 +119,6 @@ function SearchBox({ onChangeText, placeholder, value, toggleAdvanced, advancedO
             paddingTop: 0,
             fontFamily: 'Alegreya-Regular',
             fontSize: (Platform.OS === 'android' ? 18 : 20) * fontScale,
-            lineHeight: 24 * fontScale,
             flex: 1,
             color: colors.darkText,
             textAlignVertical: 'center',

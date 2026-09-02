@@ -69,14 +69,14 @@ export default function StylizedCard({ card, width }: Props) {
     <View style={[styles.wrapper, { width, height }, shadow.medium]}>
       <CardBackground type={card.type_code} dual={!!card.faction2_code} faction={faction} width={width} height={height} />
       <View style={{ position: 'absolute', top: 1 / CARD_HEIGHT * height, left: 0, width, height: cardTypeBlockHeight }}>
-        <Text style={[typography.cardName, typography.center, { flex: 1, fontSize: cardTypeSize, lineHeight: cardTypeBlockHeight, textTransform: 'uppercase' }]}>
+        <Text style={[typography.cardName, typography.center, { flex: 1, fontSize: cardTypeSize, textTransform: 'uppercase' }]}>
           { card.type_name }
         </Text>
       </View>
 
       { !!card.traits && (
         <View style={{ position: 'absolute', top: (card.type_code === 'skill' ? 0.65 : 0.6) * height, left: 0.1 * width, width: width * 0.8, height: height * 0.3, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center' }}>
-          <Text numberOfLines={3} ellipsizeMode="tail" style={[typography.boldItalic, typography.center, { textAlignVertical: 'center', fontSize: height * 0.3 / 4, lineHeight: height * 0.3 / 3 }]}>
+          <Text numberOfLines={3} ellipsizeMode="tail" style={[typography.boldItalic, typography.center, { textAlignVertical: 'center', fontSize: height * 0.3 / 4 }]}>
             { card.traits }
           </Text>
         </View>
@@ -214,7 +214,7 @@ export default function StylizedCard({ card, width }: Props) {
         { position: 'absolute', top: 0.1 * height, left: 0.2 * width, width: width * 0.65, height: height * 0.45 },
         styles.center,
       ]}>
-        <Text numberOfLines={3} ellipsizeMode="tail" style={[typography.cardName, typography.center, { textAlignVertical: 'center', fontSize: height * 0.35 / 4, lineHeight: height * 0.35 / 3.5 }]}>
+        <Text numberOfLines={3} ellipsizeMode="tail" style={[typography.cardName, typography.center, { textAlignVertical: 'center', fontSize: height * 0.35 / 4 }]}>
           { card.name }
         </Text>
       </View>
