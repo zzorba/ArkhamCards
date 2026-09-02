@@ -87,10 +87,10 @@ export default function ActionButton({ color, loading, onPress, title, leftIcon,
       <View style={styles.button}>
         { leftIconContent}
         { !hideText && (
-          <Text numberOfLines={1} style={[
+          <Text numberOfLines={2} style={[
             leftIcon ? space.marginLeftS : undefined,
             typography.cardName,
-            { color: textColor },
+            { color: textColor, flexShrink: 1 },
             { textAlignVertical: 'center' },
           ]} adjustsFontSizeToFit={shrinkText}>
             { title }
@@ -152,6 +152,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    flexShrink: 0,
   },
 });
