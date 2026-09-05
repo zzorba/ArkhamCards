@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { flatMap, keys, range, map, sum, values } from 'lodash';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialIcons from '@react-native-vector-icons/material-icons';
+import MaterialCommunityIcons from '@react-native-vector-icons/material-design-icons';
 import { t } from 'ttag';
 
 import ChaosBagLine from '@components/core/ChaosBagLine';
@@ -57,7 +57,7 @@ function RelationshipBoxes({ section, isFatigue }: { section: EntrySection; isFa
       <Text
         style={[
           typography.cursive,
-          { fontSize: 14, lineHeight: 16, color: colors.D30 },
+          { fontSize: 14, color: colors.D30 },
           space.paddingRightXs,
         ]}
         allowFontScaling={false}

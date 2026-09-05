@@ -40,7 +40,6 @@ export default function useTabView({ tabs, onTabChange, scrollEnabled }: Props):
           <Text style={{
             fontFamily: 'Alegreya-Medium',
             fontSize: 18 * fontScale,
-            lineHeight: 20 * fontScale,
             color,
             margin: 4,
             backgroundColor: 'transparent',

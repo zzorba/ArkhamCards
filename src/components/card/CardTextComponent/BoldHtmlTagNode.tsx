@@ -18,7 +18,6 @@ export default function BoldHtmlTagNode(usePingFang: boolean, { fontScale }: Sty
           fontWeight: '700',
           fontStyle: state.italic && !usePingFang ? 'italic' : 'normal',
           fontSize: 16 * fontScale * sizeScale,
-          lineHeight: 20 * fontScale * sizeScale,
         }}
       >
         { output(node.children, { ...state, bold: true }) }

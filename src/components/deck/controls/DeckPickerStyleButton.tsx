@@ -96,7 +96,7 @@ export default function DeckPickerStyleButton({
                 </Text>
               ) : valueLabel }
               { !!valueLabelDescription && (
-                <Text style={[typography.small, { color: colors.M, lineHeight: 16 * fontScale }]}>
+                <Text style={[typography.small, { color: colors.M }]}>
                   { noLabelDivider ? `  ${valueLabelDescription}` : ` · ${valueLabelDescription}` }
                 </Text>
               ) }

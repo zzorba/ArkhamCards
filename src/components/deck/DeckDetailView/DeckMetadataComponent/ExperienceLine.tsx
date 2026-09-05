@@ -28,7 +28,7 @@ export default function ExperienceLine({ parsedDeck }: Props) {
         { xpString }
       </Text>
       { !!xpDetailString && (
-        <Text style={[typography.small, { color: colors.M, lineHeight: Math.ceil(16 * fontScale) }]}>
+        <Text style={[typography.small, { color: colors.M }]}>
           { ` · ${xpDetailString}` }
         </Text>
       ) }

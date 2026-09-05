@@ -6277,12 +6277,6 @@ msgstr "点击查看"
 msgid "Investigator decks"
 msgstr "调查员牌组"
 
-msgid "Recent releases"
-msgstr "最新发布"
-
-msgid "None released yet"
-msgstr "尚未发布"
-
 msgid "Chapter 1"
 msgstr "第一季"
 
@@ -6323,6 +6317,18 @@ msgid "Friends in Low Places"
 msgstr ""
 
 msgid "Blood Money"
+msgstr ""
+
+msgid "Small Campaign Expansions"
+msgstr ""
+
+msgid "Use all cards from Chapter 1 products"
+msgstr ""
+
+msgid "Use all cards from Chapter 2 products"
+msgstr ""
+
+msgid "Revised Core Set"
 msgstr ""
 
 msgctxt "investigator"

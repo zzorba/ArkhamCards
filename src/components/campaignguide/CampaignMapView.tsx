@@ -165,14 +165,12 @@ function getMapLabelStyles(widthRatio: number) {
       fontFamily: Platform.OS === 'ios' ? 'TT2020 Style E' : 'TT2020StyleE-Regular',
       color: '#24303C',
       fontSize: 14 * widthRatio,
-      lineHeight: 16 * widthRatio,
       opacity: 0.7,
     },
     ocean: {
       color: '#624614',
       ...italicStyle,
       fontSize: bigSize * widthRatio,
-      lineHeight: (bigSize + 2) * widthRatio,
       letterSpacing: 4,
       opacity: 0.4,
     },
@@ -180,7 +178,6 @@ function getMapLabelStyles(widthRatio: number) {
       color: '#624614',
       ...italicStyle,
       fontSize: bigSize * widthRatio,
-      lineHeight: (bigSize + 2) * widthRatio,
       letterSpacing: 1.5,
       opacity: 0.4,
     },
@@ -188,7 +185,6 @@ function getMapLabelStyles(widthRatio: number) {
       ...italicStyle,
       color: '#624614',
       fontSize: smallSize * widthRatio,
-      lineHeight: (smallSize + 1) * widthRatio,
       letterSpacing: 1.5,
       opacity: 0.6,
     },
@@ -196,7 +192,6 @@ function getMapLabelStyles(widthRatio: number) {
       color: '#624614',
       fontFamily: 'DM Serif Display',
       fontSize: mediumSize * widthRatio,
-      lineHeight: (mediumSize + 2) * widthRatio,
       letterSpacing: 1.5,
       opacity: 0.4,
     },
@@ -205,7 +200,6 @@ function getMapLabelStyles(widthRatio: number) {
       fontFamily: 'DM Serif Display',
       fontWeight: Platform.OS === 'ios' ? '700' : '400',
       fontSize: bigSize * widthRatio,
-      lineHeight: (bigSize + 2) * widthRatio,
       letterSpacing: 3,
       opacity: 0.8,
     },
@@ -255,14 +249,14 @@ function MapLabelComponent({
   mapLabelStyles,
 }: MapLabelProps) {
   const { lang } = useContext(LanguageContext);
-  const lineHeight = mapLabelStyles[label.type].lineHeight;
+  const labelFontSize = mapLabelStyles[label.type].fontSize;
   const numLines = sumBy(label.name, c => c === '\n' ? 1 : 0) + 1;
   const [x, y] = labelPos(label, lang);
   return (
     <View style={[
       {
         position: 'absolute',
-        top: y * heightRatio - lineHeight * numLines,
+        top: y * heightRatio - labelFontSize * 1.15 * numLines,
       },
       label.direction === 'left' ? {
         right: (campaignWidth - x) * widthRatio,
@@ -368,7 +362,6 @@ function PointOfInterest({
                 visited && !currentLocation ? { opacity: 0.5 } : undefined,
                 {
                   fontSize: dotRadius * 2 * 0.90,
-                  lineHeight: dotRadius * 2 * (Platform.OS === 'ios' ? 1 : 0.85),
                   textAlign: location.direction === 'left' ? 'right' : 'left',
                 },
               ]} onLayout={onLayoutLabel}>
@@ -576,7 +569,6 @@ function DossierComponent({ dossier, showCity }: { dossier: Dossier; showCity: (
         dossier.title_font === 'file' ? {
           fontFamily: Platform.OS === 'ios' ? 'TT2020 Style E' : 'TT2020StyleE-Regular',
           fontSize: 20 * fontScale,
-          lineHeight: 24 * fontScale,
           textDecorationLine: 'underline',
           fontWeight: Platform.OS === 'ios' ? '700' : undefined,
         } : undefined,

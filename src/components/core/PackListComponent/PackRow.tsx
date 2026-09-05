@@ -99,8 +99,7 @@ export default function PackRow({
   const backgroundColor = colors.background;
   const iconSize = 24;
   const fontSize = 16 * fontScale;
-  const lineHeight = 20 * fontScale;
-  const rowHeight = compact ? lineHeight * fontScale + 20 : 50;
+  const rowHeight = compact ? 20 * fontScale * fontScale + 20 : 50;
   return (
     <View style={[styles.row,
       { backgroundColor, height: rowHeight },
@@ -122,7 +121,7 @@ export default function PackRow({
             </View>
             <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', flex: 1 }}>
               <Text
-                style={[typography.large, { textAlignVertical: 'center', color: colors.darkText, fontSize, lineHeight }]}
+                style={[typography.large, { textAlignVertical: 'center', color: colors.darkText, fontSize }]}
                 numberOfLines={2}
                 ellipsizeMode="tail"
               >
@@ -130,7 +129,7 @@ export default function PackRow({
               </Text>
               { !!description && (
                 <Text
-                  style={[typography.small, typography.italic, { color: colors.lightText, fontSize, lineHeight }]}
+                  style={[typography.small, typography.italic, { color: colors.lightText, fontSize }]}
                   numberOfLines={2}
                   ellipsizeMode="tail"
                 >

@@ -10,7 +10,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { t } from 'ttag';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import MaterialIcons from '@react-native-vector-icons/material-icons';
 
 type MaterialIconsIconName = React.ComponentProps<typeof MaterialIcons>['name'];
 

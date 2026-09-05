@@ -1,4 +1,4 @@
-import createIconSetFromIcoMoon from '@expo/vector-icons/createIconSetFromIcoMoon';
+import createIconSetFromIcoMoon from '@react-native-vector-icons/icomoon';
 
 import cardIconConfig from '../../assets/cardicons.json';
 

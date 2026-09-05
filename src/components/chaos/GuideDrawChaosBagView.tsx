@@ -19,6 +19,7 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BasicStackParamList } from '@navigation/types';
 import HeaderTitle from '@components/core/HeaderTitle';
 import HeaderButton from '@components/core/HeaderButton';
+import StyleContext from '@styles/StyleContext';
 
 export interface GuideDrawChaosBagProps extends CampaignGuideInputProps {
   scenarioId?: string;
@@ -31,6 +32,7 @@ function GuideDrawChaosBagView() {
   const { campaignId, scenarioId, standalone, investigatorIds } = route.params;
   const navigation = useNavigation();
   const { lang } = useContext(LanguageContext);
+  const { colors } = useContext(StyleContext);
   const campaignData = useContext(CampaignGuideContext);
   const { campaignGuide, campaignState } = campaignData;
   const [processedCampaign] = useProcessedCampaign(campaignGuide, campaignState);
@@ -63,7 +65,7 @@ function GuideDrawChaosBagView() {
     if (scenarioCard) {
       navigation.setOptions({
         headerTitle: () => (
-          <HeaderTitle title={t`Chaos Bag`} subtitle={scenarioCard.name} color={COLORS.M} />
+          <HeaderTitle title={t`Chaos Bag`} subtitle={scenarioCard.name} color={colors.darkText} />
         ),
         headerRight: () => rules.length || campaignErrata.length || scenarioErrata.length ? (
           <HeaderButton
@@ -75,7 +77,7 @@ function GuideDrawChaosBagView() {
         ) : undefined,
       });
     }
-  }, [navigation, onRulesPressed, scenarioCard, campaignErrata, scenarioErrata, rules]);
+  }, [navigation, onRulesPressed, scenarioCard, campaignErrata, scenarioErrata, rules, colors]);
   const theChaosBag = liveChaosBag || chaosBag;
   const [dialog, showDialog] = useSimpleChaosBagDialog(chaosBag, chaosBagResults);
   const showOdds = useCallback(() => {

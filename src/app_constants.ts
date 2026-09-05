@@ -907,7 +907,7 @@ function getReturnToPack(cyclePackCode: string): string | undefined {
   }
 }
 
-const CHAPTER_2_PACK_CODES = new Set(['mar', 'mig', 'tom', 'car', 'core_2026']);
+const CHAPTER_2_PACK_CODES = new Set(['mar', 'mig', 'tom', 'car', 'core_2026', 'cob']);
 
 export function getPackChapter(pack: Pack): number | undefined {
   if (pack.chapter !== undefined) {
@@ -937,6 +937,7 @@ export function cycleName(position: string): string {
     case '10': return t`The Feast of Hemlock Vale`;
     case '11': return t`The Drowned City`;
     case '12': return t`Core (2026)`;
+    case '13': return t`Small Campaign Expansions`;
     case '50': return t`Return to...`;
     case '60': return t`Investigator Starter Decks`;
     case '61': return t`Investigator Decks`;

@@ -28,7 +28,7 @@ export default function CampaignLogScarletKeysComponent({ keys, campaignLog }: P
   return (
     <>
       <View style={[styles.mainRow, space.marginBottomS, space.paddingSideS]}>
-        <Text style={[typography.cursive, typography.underline, { color: colors.faction.survivor.text, flex: 1 }]} numberOfLines={2}>
+        <Text style={[typography.cursive, typography.underline, { color: colors.faction.survivor.text, flex: 2 }]} numberOfLines={2}>
           { t`Name of Paradimensional Artifact` }
         </Text>
         <View style={styles.flexRow}>

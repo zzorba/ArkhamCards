@@ -30,7 +30,7 @@ function SymbolEntries({ entries, size }: { entries: string[]; size: number }) {
   const symbolSize = (size / 2.25) * (SCALE_FACTOR[numEntries] || 1);
   return (
     <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-      <Text style={[typography.text, { fontSize: symbolSize, lineHeight: symbolSize, fontWeight: '900' }, typography.center]}>
+      <Text style={[typography.text, { fontSize: symbolSize, fontWeight: '900' }, typography.center]}>
         { entries.join(' ') }
       </Text>
     </View>
@@ -54,7 +54,7 @@ export default function CampaignLogCalendarComponent({ sectionId, campaignLog, t
     <View style={[styles.calendar, { width, borderColor: colors.D10, backgroundColor: colors.L20 }]}>
       <View style={[styles.calendarInset, { borderColor: colors.D20 }]}>
         <View style={{ width: size * 7 }}>
-          <Text style={[typography.text, { fontSize: 48, lineHeight: 56, fontWeight: '900' }, typography.center, typography.uppercase, space.paddingVerticalS]}>
+          <Text style={[typography.text, { fontSize: 48, fontWeight: '900' }, typography.center, typography.uppercase, space.paddingVerticalS]}>
             {t`Time Passed`}
           </Text>
         </View>

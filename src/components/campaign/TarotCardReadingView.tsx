@@ -369,16 +369,16 @@ function TarotCardReadingView() {
       (height * 0.7) / TAROT_CARD_RATIO
     ) : (width - s * 8);
   }, [width, height]);
+  const sliderWidth = width - s * 2;
   const renderSwipeCard = useCallback(({ item }: {
     // eslint-disable-next-line react/no-unused-prop-types
     item: TarotCard;
   }): React.ReactNode => {
     return (
       <View key={item.id} style={[
-        space.paddingSideS,
         space.paddingTopM,
         space.paddingBottomM,
-        { width: width - s * 2, height: dialogCardWidth * TAROT_CARD_RATIO + m * 2 },
+        { width: dialogCardWidth, alignItems: 'center', height: dialogCardWidth * TAROT_CARD_RATIO + m * 2 },
       ]}>
         <TarotCardComponent
           card={item}
@@ -390,7 +390,7 @@ function TarotCardReadingView() {
         />
       </View>
     );
-  }, [dialogCardWidth, flipped, reversed, width, toggleFlipped, onInvert]);
+  }, [dialogCardWidth, flipped, reversed, toggleFlipped, onInvert]);
   const [jumpIndex, setJumpIndex] = useState(0);
   const [index, setIndex] = useState(0);
   const content = useMemo(() => {
@@ -398,26 +398,21 @@ function TarotCardReadingView() {
       return null;
     }
     return (
-      <View style={{ width: width - s * 2, height: height * 0.7 + m * 2 }}>
+      <View style={{ width: sliderWidth, height: height * 0.7 + m * 2 }}>
         <SnapCarousel<TarotCard>
           itemWidth={dialogCardWidth}
-          sliderWidth={width + s * 4}
+          sliderWidth={sliderWidth}
           vertical={false}
-          // itemHeight={dialogCardWidth * TAROT_CARD_RATIO}
-          // sliderHeight={height * 0.7 + m * 2}
           firstItem={jumpIndex}
           inactiveSlideOpacity={1}
           onScrollIndexChanged={setIndex}
-          contentContainerCustomStyle={space.paddingSideS}
-          useExperimentalSnap={Platform.OS === 'android'}
           renderItem={renderSwipeCard}
-          loop
           useScrollView
           data={tarotCards}
         />
       </View>
     );
-  }, [tarotCards, dialogCardWidth, renderSwipeCard, jumpIndex, setIndex, height, width]);
+  }, [tarotCards, sliderWidth, dialogCardWidth, renderSwipeCard, jumpIndex, setIndex, height]);
   const dialogTitle = useMemo(() => {
     if (!tarotCards || index >= tarotCards.length) {
       return t`Loading`;

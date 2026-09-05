@@ -161,6 +161,7 @@ function useNavigatorTheme(includeBackTitle = true): {
         fontWeight: '500',
         color: colors.darkText,
       },
+      headerTintColor: colors.darkText,
       headerStyle: {
         backgroundColor: colors.L30,
       },

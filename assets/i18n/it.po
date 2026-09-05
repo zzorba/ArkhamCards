@@ -6338,12 +6338,6 @@ msgstr "Tap per vedere"
 msgid "Investigator decks"
 msgstr "Mazzi investigatore"
 
-msgid "Recent releases"
-msgstr "Release recenti"
-
-msgid "None released yet"
-msgstr "Non ancora rilasciato"
-
 msgid "Chapter 1"
 msgstr "Capitolo 1"
 
@@ -6384,6 +6378,18 @@ msgid "Friends in Low Places"
 msgstr ""
 
 msgid "Blood Money"
+msgstr ""
+
+msgid "Small Campaign Expansions"
+msgstr ""
+
+msgid "Use all cards from Chapter 1 products"
+msgstr ""
+
+msgid "Use all cards from Chapter 2 products"
+msgstr ""
+
+msgid "Revised Core Set"
 msgstr ""
 
 msgctxt "investigator"

@@ -17,7 +17,6 @@ export default function FlavorFancyNode({ typography, fontScale }: StyleContextT
       <MarkdownText key={state.key} style={[
         styles.text, {
           fontSize: 18 * fontScale,
-          lineHeight: 24 * fontScale,
         },
         underline ? { textDecorationLine: 'underline' } : undefined,
         typography.dark,

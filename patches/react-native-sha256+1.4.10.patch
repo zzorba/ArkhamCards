@@ -1,0 +1,22 @@
+diff --git a/node_modules/react-native-sha256/android/build.gradle b/node_modules/react-native-sha256/android/build.gradle
+index e837bf7..d281934 100644
+--- a/node_modules/react-native-sha256/android/build.gradle
++++ b/node_modules/react-native-sha256/android/build.gradle
+@@ -2,7 +2,7 @@ buildscript {
+     if (project == rootProject) {
+         repositories {
+             google()
+-            jcenter()
++            mavenCentral()
+         }
+ 
+         dependencies {
+@@ -54,7 +54,7 @@ repositories {
+         url("$rootDir/../node_modules/react-native/android")
+     }
+     google()
+-    jcenter()
++    mavenCentral()
+ }
+ 
+ dependencies {

@@ -110,6 +110,7 @@ module.exports = {
     plugins: [
       './plugins/withRNScreensFragmentFactory.js',
       './plugins/withFmtXcode16Fix.js',
+      '@react-native-vector-icons/icomoon',
       [
         'react-native-edge-to-edge',
         {
@@ -135,15 +136,15 @@ module.exports = {
         {
           ios: {
             useFrameworks: 'static',
-            deploymentTarget: '15.1',
+            deploymentTarget: '16.4',
             podfileProperties: {
               RNFirebaseAnalyticsWithoutAdIdSupport: true,
             },
           },
           android: {
-            compileSdkVersion: 35,
-            targetSdkVersion: 35,
-            buildToolsVersion: '35.0.0',
+            compileSdkVersion: 36,
+            targetSdkVersion: 36,
+            buildToolsVersion: '36.0.0',
           },
         },
       ],
@@ -167,8 +168,8 @@ module.exports = {
         'expo-font',
         {
           fonts: [
+            // Text fonts (loaded via expo-font)
             './assets/AboutDead.ttf',
-            './assets/ages.ttf',
             './assets/Alegreya-Bold.ttf',
             './assets/Alegreya-BoldItalic.ttf',
             './assets/Alegreya-ExtraBold.ttf',
@@ -178,44 +179,23 @@ module.exports = {
             './assets/Alegreya-MediumItalic.ttf',
             './assets/Alegreya-Regular.ttf',
             './assets/AlegreyaSC-Medium.ttf',
-            './assets/alice.ttf',
             './assets/AnkeCalligraphicFG.ttf',
-            './assets/app.ttf',
             './assets/Arkhamic.ttf',
-            './assets/arkhamicons.ttf',
-            './assets/arkhamslim.ttf',
-            './assets/blood.ttf',
-            './assets/carcosa.ttf',
-            './assets/cardicons.ttf',
             './assets/Caveat.ttf',
-            './assets/circle.ttf',
-            './assets/circusexmortis.ttf',
             './assets/Conkordia.ttf',
-            './assets/coreset.ttf',
-            './assets/core_2026.ttf',
             './assets/cost.ttf',
-            './assets/cyclopean.ttf',
-            './assets/dark_matter.ttf',
             './assets/DMSerifDisplay-Italic.ttf',
             './assets/DMSerifDisplay-Regular.ttf',
-            './assets/dreameaters.ttf',
-            './assets/drowned.ttf',
-            './assets/dunwich.ttf',
-            './assets/edge.ttf',
-            './assets/forgotten.ttf',
-            './assets/hemlock.ttf',
-            './assets/innsmouth.ttf',
-            './assets/oz.ttf',
-            './assets/scarlet.ttf',
-            './assets/standalone.ttf',
             './assets/Teutonic RU.ttf',
             './assets/Teutonic.ttf',
-            './assets/tokens.ttf',
             './assets/TT2020StyleE-Regular.ttf',
+            // IcoMoon icon fonts are now bundled by @react-native-vector-icons/icomoon
+            // via rnvi-fonts/icomoon/ — see scripts/copy-rnvi-fonts.js
           ],
         },
       ],
       'expo-audio',
+      'expo-image',
     ],
   },
 };

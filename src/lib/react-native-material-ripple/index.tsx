@@ -18,7 +18,7 @@ import {
 const radius = 10;
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
 
     backgroundColor: 'transparent',
     overflow: 'hidden',
