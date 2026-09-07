@@ -82,6 +82,7 @@ export default function InvestigatorCounterInputComponent({ step, input, campaig
       <InvestigatorCounterComponent
         id={step.id}
         countText={input.text}
+        requiredTotal={input.required_total}
         maxLimits={investigatorCounterMaxLimits}
         minLimits={investigatorCounterMinLimits}
         description={description}

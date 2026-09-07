@@ -1247,7 +1247,7 @@ export interface InvestigatorCounterInput {
   investigator_count_min?: string;
   max?: number;
   min?: number;
-  totalMax?: number;
+  required_total?: number;
   show_special_xp?: string;
 }
 export interface InvestigatorChoiceWithSuppliesInput {

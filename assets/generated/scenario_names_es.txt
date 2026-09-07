@@ -157,7 +157,7 @@
   },
   {
     "id": "blood_money",
-    "name": "Blood Money"
+    "name": "Dinero de sangre"
   },
   {
     "id": "blood_on_the_altar",
@@ -909,7 +909,7 @@
   },
   {
     "id": "river_of_blood",
-    "name": "River of Blood"
+    "name": "Río de sangre"
   },
   {
     "id": "rome",

@@ -76,7 +76,7 @@ export default function CompactInvestigatorRow({
             { name || investigator?.name }
           </Text>
           { detail ?? (
-            <View style={styles.row}>
+            <View style={[styles.row, { marginTop: -4 }]}>
               <Text
                 style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}
                 numberOfLines={1}
