@@ -184,14 +184,14 @@ function HeaderContent({ card, back }: { card: Card, back: boolean}) {
     <>
       <View style={styles.titleRow}>
         <View style={styles.column}>
-          <View style={[styles.row, space.marginLeftS, space.paddingTopXs]}>
+          <View style={[styles.row, space.marginLeftS]}>
             <Text style={[typography.cardName, { color: '#FFFFFF' }]} numberOfLines={1}>
               <IconizedText text={name} iconSize={17} color="#FFFFFF" />
               { card.is_unique ? ' ✷' : '' }
             </Text>
           </View>
           { !!subname && (
-            <Text style={[typography.cardTraits, space.marginLeftS, { color: '#FFFFFF' }]} numberOfLines={1}>
+            <Text style={[typography.cardTraits, space.marginLeftS, { color: '#FFFFFF', marginTop: -2 }]} numberOfLines={1}>
               <IconizedText text={card.subname ?? ''} iconSize={13} color="#FFFFFF" />
             </Text>
           ) }

@@ -1,11 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Platform } from 'react-native';
-import {
-  Svg,
-  Defs,
-  Pattern,
-  Path,
-} from 'react-native-svg';
+import { View, StyleSheet } from 'react-native';
 import CampaignPattern from '../../../../assets/campaign_pattern.svg';
 import DualPattern from '../../../../assets/dual_pattern.svg';
 import MysticPattern from '../../../../assets/mystic_pattern.svg';
@@ -25,164 +19,26 @@ interface Props {
   fullRound?: boolean;
 }
 
-// flip horizontally: transform={`translate(${width},0) scale(-1,1)`}
-function RepeatPattern({ patternWidth, height, children }: {
+const PATTERN_HEIGHT = 48;
+
+function getPatternConfig(faction: string, transparent?: boolean): {
+  Component: React.ComponentType<any>;
   patternWidth: number;
-  height: number;
-  children: React.ReactNode;
-}) {
-  return (
-    <Pattern
-      id="FactionPattern"
-      patternUnits="userSpaceOnUse"
-      patternContentUnits="userSpaceOnUse"
-      patternTransform={`scale(1,${height / 48})`}
-      x="0"
-      y="0"
-      width={patternWidth}
-      height={height}
-      viewBox={`0 0 ${patternWidth} ${height}`}
-    >
-      { children }
-    </Pattern>
-  );
-}
-
-function StretchPattern({
-  patternWidth,
-  width,
-  height,
-  children,
-}: {
-  patternWidth: number;
-  width: number;
-  height: number;
-  children: React.ReactNode;
-}) {
-  if (width < patternWidth) {
-    return (
-      <RepeatPattern patternWidth={patternWidth} height={height}>
-        { children }
-      </RepeatPattern>
-    );
-  }
-  return (
-    <Pattern
-      id="FactionPattern"
-      patternUnits="userSpaceOnUse"
-      patternContentUnits="userSpaceOnUse"
-      patternTransform={`scale(${width / patternWidth},${height / 48})`}
-      x="0"
-      y="0"
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
-    >
-      { children }
-    </Pattern>
-  );
-}
-
-
-function HeaderPattern({ faction, width, height, transparent }: {
-  faction : string;
-  width: number;
-  height: number;
-  transparent?: boolean;
-}) {
+  color?: string;
+} {
+  const color = transparent ? '#000' : '#FFF';
   switch (faction) {
-    case 'campaign':
-      return (
-        <StretchPattern patternWidth={344} width={width} height={height}>
-          <CampaignPattern color={'black'} />
-        </StretchPattern>
-      );
-    case 'guardian':
-      return (
-        <StretchPattern patternWidth={344} width={width} height={height}>
-          <GuardianPattern color={transparent ? '#000' : '#FFF'} />
-        </StretchPattern>
-      );
-    case 'seeker':
-      return (
-        <RepeatPattern patternWidth={360} height={height}>
-          <SeekerPattern />
-        </RepeatPattern>
-      );
-    case 'rogue':
-      return (
-        <RepeatPattern patternWidth={360} height={height}>
-          <RoguePattern color={transparent ? '#000' : '#FFF'} />
-        </RepeatPattern>
-      );
-    case 'mystic':
-      return (
-        <RepeatPattern patternWidth={360} height={height}>
-          <MysticPattern color={transparent ? '#000' : '#FFF'} />
-        </RepeatPattern>
-      );
-    case 'survivor':
-      return (
-        <RepeatPattern patternWidth={360} height={height}>
-          <SurvivorPattern />
-        </RepeatPattern>
-      );
-    case 'mythos':
-      return (
-        <StretchPattern patternWidth={360} width={width} height={height}>
-          <MythosPattern color={transparent ? '#000' : '#FFF'} />
-        </StretchPattern>
-      );
-    case 'dual':
-      return (
-        <StretchPattern patternWidth={360} width={width} height={height}>
-          <DualPattern color={transparent ? '#000' : '#FFF'} />
-        </StretchPattern>
-      );
+    case 'campaign': return { Component: CampaignPattern, patternWidth: 344, color: 'black' };
+    case 'guardian': return { Component: GuardianPattern, patternWidth: 344, color };
+    case 'seeker': return { Component: SeekerPattern, patternWidth: 360 };
+    case 'rogue': return { Component: RoguePattern, patternWidth: 360, color };
+    case 'mystic': return { Component: MysticPattern, patternWidth: 360, color };
+    case 'survivor': return { Component: SurvivorPattern, patternWidth: 360 };
+    case 'mythos': return { Component: MythosPattern, patternWidth: 360, color };
+    case 'dual': return { Component: DualPattern, patternWidth: 360, color };
     case 'neutral':
-    default:
-      return (
-        <RepeatPattern patternWidth={360} height={height}>
-          <NeutralPattern color={transparent ? '#000' : '#FFF'} />
-        </RepeatPattern>
-      );
+    default: return { Component: NeutralPattern, patternWidth: 360, color };
   }
-}
-
-function HeaderPath({ width, height, opacity, fullRound }: {
-  width: number;
-  height: number;
-  opacity: number;
-  fullRound?: boolean;
-}) {
-  const topWidth = width - 16;
-  const sideHeight = height - 8;
-  return (
-    <Path
-      d={fullRound ? (
-        `M0,${height}
-          v-${sideHeight}
-          a8,8 0 0 1 8,-8
-          h${topWidth}
-          a8,8 0 0 1 8,8
-          v${sideHeight}
-          a8,8 0 0 1 -8,8
-          h-100
-          a8,8 0 0 1 -8,-8
-        `) : (
-        `M0,${height}
-          v-${sideHeight}
-          a8,8 0 0 1 8,-8
-          h${topWidth}
-          a8,8 0 0 1 8,8
-          v${sideHeight}
-          z
-        `
-      )}
-      fill="url(#FactionPattern)"
-      fillOpacity={opacity}
-    />
-  );
 }
 
 function getOpacity(faction: string, transparent?: boolean) {
@@ -191,33 +47,34 @@ function getOpacity(faction: string, transparent?: boolean) {
   }
   return transparent || (faction === 'seeker' || faction === 'neutral') ? 0.07 : 0.1;
 }
+
 const FactionPattern = ({ width, height, faction, transparent, fullRound }: Props) => {
   const opacity = getOpacity(faction, transparent);
+  const { Component, patternWidth, color } = getPatternConfig(faction, transparent);
+  const scaleX = width / patternWidth;
+  const scaleY = height / PATTERN_HEIGHT;
   return (
     <View
       style={[
         styles.pattern,
-        { width, height, overflow: 'hidden' },
-        Platform.OS === 'android' ? { opacity } : {},
+        {
+          overflow: 'hidden',
+          opacity,
+          borderTopLeftRadius: 8,
+          borderTopRightRadius: 8,
+          borderBottomLeftRadius: fullRound ? 8 : 0,
+          borderBottomRightRadius: fullRound ? 8 : 0,
+        },
       ]}
-      needsOffscreenAlphaCompositing
     >
-      <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
-        <Defs>
-          <HeaderPattern
-            faction={faction}
-            width={width}
-            height={height}
-            transparent={transparent}
-          />
-        </Defs>
-        <HeaderPath
-          fullRound={fullRound}
-          width={width}
-          height={height}
-          opacity={opacity}
-        />
-      </Svg>
+      <View style={{
+        width: patternWidth,
+        height: PATTERN_HEIGHT,
+        transform: [{ scaleX }, { scaleY }],
+        transformOrigin: '0% 0%',
+      }}>
+        <Component {...(color !== undefined ? { color } : {})} />
+      </View>
     </View>
   );
 };
@@ -229,5 +86,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
+    right: 0,
+    bottom: 0,
   },
 });

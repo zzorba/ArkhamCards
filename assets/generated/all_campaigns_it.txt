@@ -81895,7 +81895,7 @@
           },
           {
             "id": "setup_locations_jordan",
-            "text": "Put the remaining locations (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint‐Martin, Père Lachaise Cemetery, Notre‐Dame, and Gardens of Luxembourg) into play. Each investigator begins play at Montparnasse."
+            "text": "Mettete in gioco i luoghi rimanenti: Montparnasse, Gare d'Orsay, Grand Guignol, Canale Saint-Martin, Cimitero di Père Lachaise, Notre-Dame e Giardini del Lussemburgo. Iniziate la partita a Montparnasse."
           },
           {
             "id": "location_layout",
@@ -83534,7 +83534,7 @@
               "choices": [
                 {
                   "id": "yes",
-                  "text": "While playing the scenario, were you instructed to add any tokens to the chaos bag?",
+                  "text": "Mentre giocavi lo scenario, ti è stato chiesto di aggiungere dei segnalini al sacchetto del caos?",
                   "steps": [
                     "ask_which_mid_game_token"
                   ]
@@ -97590,7 +97590,7 @@
           },
           {
             "id": "setup_locations_jordan",
-            "text": "Put the remaining locations (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint‐Martin, Père Lachaise Cemetery, Notre‐Dame, and Gardens of Luxembourg) into play. Each investigator begins play at Montparnasse."
+            "text": "Mettete in gioco i luoghi rimanenti: Montparnasse, Gare d'Orsay, Grand Guignol, Canale Saint-Martin, Cimitero di Père Lachaise, Notre-Dame e Giardini del Lussemburgo. Iniziate la partita a Montparnasse."
           },
           {
             "id": "location_layout",
@@ -99177,7 +99177,7 @@
               "choices": [
                 {
                   "id": "yes",
-                  "text": "While playing the scenario, were you instructed to add any tokens to the chaos bag?",
+                  "text": "Mentre giocavi lo scenario, ti è stato chiesto di aggiungere dei segnalini al sacchetto del caos?",
                   "steps": [
                     "ask_which_mid_game_token"
                   ]

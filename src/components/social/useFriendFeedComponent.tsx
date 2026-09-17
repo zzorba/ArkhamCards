@@ -188,9 +188,6 @@ function AccessControlsComponent({ user, hasAccess, inviteUser, removeUser }: {
   );
 }
 
-const userRowHeight = (fontScale: number, lang: string) => {
-  return m * 2 + StyleSheet.hairlineWidth + (lang === 'zh' || lang === 'zh-cn' ? 22 : 20) * fontScale;
-};
 
 function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
   user: SimpleUser;
@@ -236,7 +233,7 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
     }
   }, [user, status, controls, refetchMyProfile]);
   return (
-    <View style={[styles.userRow, borderStyle, space.paddingM, { height: userRowHeight(fontScale, lang) }]}>
+    <View style={[styles.userRow, borderStyle, space.paddingM]}>
       { user.handle ? (
         <View style={styles.pressable}>
           <TouchableOpacity style={styles.pressable} onPress={onPress} disabled={!showUser}>
@@ -256,7 +253,6 @@ function UserRow({ user, showUser, status, controls, refetchMyProfile }: {
     </View>
   );
 }
-UserRow.computeHeight = userRowHeight;
 
 interface Props {
   userId?: string;
@@ -274,7 +270,6 @@ export default function useFriendFeedComponent({ userId, handleScroll, error, se
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const navigation = useNavigation();
   const { userId: currentUserId } = useContext(ArkhamCardsAuthContext);
-  const { lang } = useContext(LanguageContext);
   const [myProfile, loadingMyProfile, refetchMyProfile] = useMyProfile(true);
   const isSelf: boolean = (currentUserId && userId) ? currentUserId === userId : false;
   const [profile, loading, refetchProfile] = useProfile(userId, isSelf);
@@ -296,20 +291,6 @@ export default function useFriendFeedComponent({ userId, handleScroll, error, se
   const showUser = useCallback((userId: string, handle?: string) => {
     navigation.navigate('Friends', { userId, title: handle ? t`${handle}'s Friends` : t`Friends` });
   }, [navigation]);
-  const heightItem = useCallback((item: FriendFeedItem) => {
-    switch (item.type) {
-      case 'user':
-        return UserRow.computeHeight(fontScale, lang);
-      case 'header':
-        return CardSectionHeader.computeHeight({ title: item.header }, fontScale);
-      case 'button':
-        return ArkhamButton.computeHeight(fontScale, lang);
-      case 'placeholder':
-        return UserRow.computeHeight(fontScale, lang);
-      case 'padding':
-        return item.padding;
-    }
-  }, [fontScale, lang])
   const renderItem = useCallback((item: FriendFeedItem) => {
     switch (item.type) {
       case 'padding': {
@@ -392,7 +373,6 @@ export default function useFriendFeedComponent({ userId, handleScroll, error, se
       onScroll={handleScroll}
       data={data}
       renderItem={renderItem}
-      heightForItem={heightItem}
     />
   ), doRefresh];
 }

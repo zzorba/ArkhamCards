@@ -64,8 +64,8 @@ export default function(
 ): Typography {
   const isPingFang = lang === 'zh' || lang === 'zh-cn';
   return {
-    cardHeaderHeight: 18 * fontScale + Math.ceil(
-      (isPingFang ? 24 : 22) * fontScale
+    cardHeaderHeight: 22 * fontScale + Math.ceil(
+      (isPingFang ? 28 : 26) * fontScale
     ),
     ...StyleSheet.create({
       cursive: {

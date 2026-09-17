@@ -333,7 +333,7 @@
   },
   {
     "id": "enthralling_encore",
-    "name": "Enthralling Encore"
+    "name": "Увлекательный бис"
   },
   {
     "id": "eoe_epilogue",
@@ -545,7 +545,7 @@
   },
   {
     "id": "laid_to_rest",
-    "name": "Laid to Rest"
+    "name": "Упокоение"
   },
   {
     "id": "late_risers",
@@ -689,7 +689,7 @@
   },
   {
     "id": "queen_of_ash",
-    "name": "Queen of Ash"
+    "name": "Царица пепла"
   },
   {
     "id": "quito",
@@ -701,11 +701,11 @@
   },
   {
     "id": "red_tide_rising",
-    "name": "Red Tide Rising"
+    "name": "Алый прилив"
   },
   {
     "id": "relics_of_the_past",
-    "name": "Relics of the Past"
+    "name": "Реликвии прошлого"
   },
   {
     "id": "restful_night",
@@ -945,7 +945,7 @@
   },
   {
     "id": "smoke_and_mirrors",
-    "name": "Smoke and Mirrors"
+    "name": "Дым и зеркала"
   },
   {
     "id": "something_big",
@@ -953,7 +953,7 @@
   },
   {
     "id": "spreading_flames",
-    "name": "Spreading Flames"
+    "name": "Пламя разгорается"
   },
   {
     "id": "starfall",

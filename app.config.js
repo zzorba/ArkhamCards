@@ -38,7 +38,7 @@ module.exports = {
   expo: {
     name: 'ArkhamCards',
     slug: 'arkhamcards',
-    version: '6.3.4',
+    version: '6.3.5',
     jsEngine: 'hermes',
     orientation: 'default',
     userInterfaceStyle: 'automatic',
@@ -84,6 +84,7 @@ module.exports = {
         UIViewControllerBasedStatusBarAppearance: true,
         ITSAppUsesNonExemptEncryption: false,
         UIBackgroundModes: ['audio'],
+        NSPhotoLibraryUsageDescription: 'Used to share images to social media',
       },
       entitlements: {
         'com.apple.developer.applesignin': ['Default'],
@@ -102,7 +103,7 @@ module.exports = {
         'android.permission.RECORD_AUDIO',
         'android.permission.MODIFY_AUDIO_SETTINGS',
       ],
-      versionCode: 4195590,
+      versionCode: 4195593,
     },
     locales: {
       'ko': './assets/i18n-app/ko.metadata.json',

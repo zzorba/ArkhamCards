@@ -568,7 +568,7 @@
               "physical",
               "mental"
             ],
-            "text": "Despiertas al final del campus. Te pican los ojos por el humo, y observas atónito y en silencio cómo arde la Universidad Miskatonic. Por encima de la conflagración danzan ascuas en el cielo como estrellas ardientes. Estás demasiado agotado como para ayudar, y ves a un grupo de estudiantes que se esfuerzan en vano por detener el fuego. Primero es el observatorio, luego la residencia universitaria, y por fin es el turno del edificio de Ciencias de sucumbir a las llamas. Entre el estruendo, encuentras al Dr. Henry Armitage bajo un abedul, viendo cómo arde la Biblioteca Orne. Las llamas no dejan más rastro del majestuoso edificio que el esqueleto de sus ruinas. EI bibliotecario jefe se encuentra en un evidente estado de conmoción. Su cara adquiere un tono ceniciento cuando le explicas las extrañas circunstancias que rodean la desaparición de tu amigo. ¿Quién era el enemigo ardiente que te atacó? ¿Y qué querían los encapuchados que patrullaban el campus?",
+            "text": "Despiertas al final del campus. Te pican los ojos por el humo, y observas atónito y en silencio cómo arde la Universidad Miskatonic. Por encima de la conflagración danzan ascuas en el cielo como estrellas ardientes. Estás demasiado agotado como para ayudar, y ves a un grupo de estudiantes que se esfuerzan en vano por detener el fuego. Primero es el observatorio, luego la residencia universitaria, y por fin es el turno del edificio de Ciencias de sucumbir a las llamas. Entre el estruendo, encuentras al Dr. Henry Armitage bajo un abedul, viendo cómo arde la Biblioteca Orne. Las llamas no dejan más rastro del majestuoso edificio que el esqueleto de sus ruinas. El bibliotecario jefe se encuentra en un evidente estado de conmoción. Su cara adquiere un tono ceniciento cuando le explicas las extrañas circunstancias que rodean la desaparición de tu amigo. ¿Quién era el enemigo ardiente que te atacó? ¿Y qué querían los encapuchados que patrullaban el campus?",
             "narration": {
               "id": "brethren_of_ash.spreading_flames.no_resolution",
               "name": "Intro",
@@ -622,7 +622,7 @@
           {
             "id": "R3",
             "title": "Resolución 3",
-            "text": "Huyes del campus con el Doctor Armitage, abandonando la universidad a su suerte. El aullido de las sirenas ahoga todos los demás sonidos mientras sigues al bibliotecario jefe a su piso.",
+            "text": "Huyes del campus con el Dr. Armitage, abandonando la universidad a su suerte. El aullido de las sirenas ahoga todos los demás sonidos mientras sigues al bibliotecario jefe a su piso.",
             "narration": {
               "id": "brethren_of_ash.spreading_flames.resolution_3",
               "name": "Resolution 3",
@@ -2997,7 +2997,7 @@
           {
             "id": "david_story",
             "type": "story",
-            "text": "David gruñe cuando intentas ayudarlo a ponerse en pie.\n—Déjame. Sirvo por voluntad propia. Le di la bienvenida a mi interior, Y ahora ella 10 purgará todo con su llama purificadora —afirma con una débil risa antes de exhalar su último aliento.",
+            "text": "David gruñe cuando intentas ayudarlo a ponerse en pie.\n—Déjame. Sirvo por voluntad propia. Le di la bienvenida a mi interior. Y ahora ella 10 purgará todo con su llama purificadora —afirma con una débil risa antes de exhalar su último aliento.",
             "narration": {
               "id": "brethren_of_ash.queen_of_ash.david",
               "name": "David Renfield",
@@ -3135,7 +3135,7 @@
           {
             "id": "earl_story",
             "type": "story",
-            "text": "EI rostro del agente está paralizado en una mueca de terror cuando le quitas la máscara.\n—¿Dónde estoy? —pregunta casi como si fuera un niño—. ¿Y qué he hecho?\nSe mira con horror la ropa cubierta de salpicaduras de sangre.",
+            "text": "El rostro del agente está paralizado en una mueca de terror cuando le quitas la máscara.\n—¿Dónde estoy? —pregunta casi como si fuera un niño—. ¿Y qué he hecho?\nSe mira con horror la ropa cubierta de salpicaduras de sangre.",
             "narration": {
               "id": "brethren_of_ash.queen_of_ash.earl",
               "name": "Sgt. Earl Munroe",
@@ -3203,7 +3203,7 @@
           {
             "id": "margaret_story",
             "type": "story",
-            "text": "—Esto es como la debacle en el Club Tictac —dice con ira la señorita Liu mientras la ayudas aponerse en pie. Resulta sorprendente lo poco afectada que está la cantante por el caos que os rodea. En lugar de preguntar por la debacle, le muestras dónde está la salida.",
+            "text": "—Esto es como la debacle en el Club Tictac —dice con ira la señorita Liu mientras la ayudas a ponerse en pie. Resulta sorprendente lo poco afectada que está la cantante por el caos que os rodea. En lugar de preguntar por la debacle, le muestras dónde está la salida.",
             "narration": {
               "id": "brethren_of_ash.queen_of_ash.margaret",
               "name": "Margaret Liu",

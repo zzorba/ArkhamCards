@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 import Modal from 'react-native-modal';
 
 import { m, s } from '@styles/space';
@@ -19,9 +19,23 @@ interface Props {
 export default function AppModal({ children, avoidKeyboard, alignment, visible, dismissable, onDismiss }: Props) {
   const { darkMode } = useContext(StyleContext);
   const insets = useSafeAreaInsets();
+  const content = (
+    <GestureHandlerRootView style={ alignment === 'bottom' ? {
+      flexDirection: 'column',
+      height: '100%',
+      justifyContent: 'flex-end',
+      padding: s,
+      paddingBottom: insets.bottom + m,
+    } : {
+      justifyContent: 'center',
+      padding: s,
+    }}>
+      { children }
+    </GestureHandlerRootView>
+  );
   return (
     <Modal
-      avoidKeyboard={avoidKeyboard}
+      avoidKeyboard={avoidKeyboard && Platform.OS === 'ios'}
       isVisible={visible}
       animationIn={alignment === 'bottom' ? 'slideInUp' : 'fadeIn'}
       animationOut={alignment === 'bottom' ? 'slideOutDown' : 'fadeOut'}
@@ -32,18 +46,11 @@ export default function AppModal({ children, avoidKeyboard, alignment, visible, 
       backdropColor={darkMode ? '#444444' : '#000000'}
       style={styles.wrapper}
     >
-      <GestureHandlerRootView style={ alignment === 'bottom' ? {
-        flexDirection: 'column',
-        height: '100%',
-        justifyContent: 'flex-end',
-        padding: s,
-        paddingBottom: insets.bottom + m,
-      } : {
-        justifyContent: 'center',
-        padding: s,
-      }}>
-        { children }
-      </GestureHandlerRootView>
+      { avoidKeyboard && Platform.OS === 'android' ? (
+        <KeyboardAvoidingView behavior="padding" style={styles.keyboardAvoid}>
+          { content }
+        </KeyboardAvoidingView>
+      ) : content }
     </Modal>
   );
 }
@@ -54,5 +61,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 0,
+  },
+  keyboardAvoid: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });

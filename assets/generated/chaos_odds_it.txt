@@ -7,7 +7,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero di [[Ghoul]] nemici nel tuo luogo.",
+          "prompt": "Numero di nemici [[Ghoul]] nel tuo luogo.",
           "min": 0
         }
       },
@@ -76,7 +76,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero totale di segnalini destino in gioco."
+          "prompt": "Ammontare totale di destini in gioco."
         }
       },
       {
@@ -88,7 +88,7 @@
           },
           "options": [
             {
-              "prompt": "There are no [[Cultist]] enemies in play",
+              "prompt": "Non ci sono nemici [[Cultista]] in gioco",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -113,7 +113,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero totale di [[Mostro]] in gioco.",
+          "prompt": "Numero di nemici [[Mostro]] in gioco.",
           "min": 0
         }
       },
@@ -194,7 +194,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Costo totale stampato delle prime 2 carte scartate dal tuo mazzo.",
+          "prompt": "Costo stampato totale delle prime 2 carte scartate dal tuo mazzo.",
           "min": 0
         }
       }
@@ -227,7 +227,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Costo totale stampato delle prime 3 carte scartate dal tuo mazzo.",
+          "prompt": "Costo stampato totale delle prime 3 carte scartate dal tuo mazzo.",
           "min": 0
         }
       }
@@ -246,7 +246,7 @@
           },
           "options": [
             {
-              "prompt": "Spendi 2 risorse per trasformare questo token in 0",
+              "prompt": "Spendi 2 risorse per considerare invece questo segnalino come 0",
               "modified_value": {
                 "modifier": 0
               }
@@ -277,7 +277,7 @@
           },
           "options": [
             {
-              "prompt": "Spendi 3 risorse per trasformare questo token in 0",
+              "prompt": "Spendi 3 risorse per considerare invece questo segnalino come 0",
               "modified_value": {
                 "modifier": 0
               }
@@ -312,7 +312,7 @@
           },
           "options": [
             {
-              "prompt": "L’Orrido Persecutore è nel tuo luogo",
+              "prompt": "L’Orrido Persecutore si trova nel tuo luogo",
               "modified_value": {
                 "modifier": -3
               }
@@ -349,7 +349,7 @@
           },
           "options": [
             {
-              "prompt": "L’Orrido Persecutore è nel tuo luogo",
+              "prompt": "L’Orrido Persecutore si trova nel tuo luogo",
               "modified_value": {
                 "modifier": -4
               }
@@ -385,7 +385,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Trama attuale",
+          "prompt": "Numero della trama attuale",
           "min": 1
         }
       },
@@ -413,7 +413,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Trama attuale",
+          "prompt": "Numero della trama attuale",
           "min": 1,
           "adjustment": 1
         }
@@ -447,7 +447,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero di luoghi in gioco senza carte incontro sotto",
+          "prompt": "Numero di luoghi in gioco senza carte incontro sotto di esso",
           "min": 0,
           "max": 4
         }
@@ -467,7 +467,7 @@
           },
           "options": [
             {
-              "prompt": "You are in the Hidden Chamber",
+              "prompt": "Ti trovi nella Camera Nascosta",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -488,7 +488,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero di luoghi in gioco senza carte incontro sotto",
+          "prompt": "Numero di luoghi in gioco senza carte incontro sotto di esso",
           "min": 0
         }
       },
@@ -521,7 +521,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero di Progenie di Yog-Sothoth in gioco",
+          "prompt": "Ammontare di Progenie di Yog-Sothoth in gioco",
           "min": 0
         }
       },
@@ -541,7 +541,7 @@
           },
           "options": [
             {
-              "prompt": "Rimuovete tutti gli indizi dalle Progenie di Yog-Sothoth in gioco",
+              "prompt": "Rimuovere tutti gli indizi da una Progenie di Yog-Sothoth in gioco",
               "modified_value": {
                 "modifier": 0
               }
@@ -561,7 +561,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero di Progenie di Yog-Sothoth in gioco",
+          "prompt": "Ammontare di Progenie di Yog-Sothoth in gioco",
           "min": 0,
           "scale": 2
         }
@@ -582,7 +582,7 @@
           },
           "options": [
             {
-              "prompt": "Rimuovete tutti gli indizi dalle Progenie di Yog-Sothoth in gioco",
+              "prompt": "Rimuovere tutti gli indizi da una Progenie di Yog-Sothoth in gioco",
               "modified_value": {
                 "modifier": 0
               }
@@ -611,7 +611,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Alterato]]",
+              "prompt": "In un luogo [[Alterato]]",
               "modified_value": {
                 "modifier": -3
               }
@@ -635,7 +635,7 @@
           },
           "options": [
             {
-              "prompt": "Trama 2 in gioco",
+              "prompt": "Sei alla trama 2",
               "modified_value": {
                 "modifier": -4
               }
@@ -647,7 +647,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Costo totale stampato delle prime 2 carte scartate dal tuo mazzo.",
+          "prompt": "Costo stampato totale delle prime 2 carte scartate dal tuo mazzo.",
           "min": 0
         }
       }
@@ -662,7 +662,7 @@
           },
           "options": [
             {
-              "prompt": "A un luogo [[Alterato]]",
+              "prompt": "In un luogo [[Alterato]]",
               "modified_value": {
                 "modifier": -5
               }
@@ -686,7 +686,7 @@
           },
           "options": [
             {
-              "prompt": "Trama 2 in gioco",
+              "prompt": "Sei alla trama 2",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -698,7 +698,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Costo totale stampato delle prime 3 carte scartate dal tuo mazzo.",
+          "prompt": "Costo stampato totale delle prime 3 carte scartate dal tuo mazzo.",
           "min": 0
         }
       }
@@ -712,7 +712,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero di luoghi [[Extradimensionale]] in gioco",
+          "prompt": "Numero di luoghi [[Extradimensione]] in gioco",
           "min": 0,
           "max": 5
         }
@@ -744,7 +744,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero di luoghi [[Extradimensionale]] in gioco",
+          "prompt": "Numero di luoghi [[Extradimensione]] in gioco",
           "min": 0
         }
       },
@@ -785,7 +785,7 @@
           },
           "options": [
             {
-              "prompt": "Hai 3 o più orrori",
+              "prompt": "Ci sono 3 o più orrori su di te",
               "modified_value": {
                 "modifier": -3
               }
@@ -817,7 +817,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Totale degli orrori su di te (min 1)",
+          "prompt": "Ammontare degli orrori su di te (min 1)",
           "min": 1
         }
       },
@@ -911,7 +911,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero più alto di destini su un nemico in gioco",
+          "prompt": "Ammontare di destini più alto su un nemico in gioco",
           "min": 0
         }
       },
@@ -939,7 +939,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero totale di destini sui nemici in gioco",
+          "prompt": "Totale di destini sui nemici in gioco",
           "min": 0
         }
       },
@@ -977,7 +977,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Orrori su di te (min 1)",
+          "prompt": "Ammontare di orrori su di te",
           "min": 0
         }
       },
@@ -985,7 +985,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Valore base di Oscurità del tuo luogo",
+          "prompt": "Valore di Oscurità di base del tuo luogo",
           "min": 0
         }
       },
@@ -998,7 +998,7 @@
           },
           "options": [
             {
-              "prompt": "Scegli casualmente un nemico tra i [[Mostro]] messi da parte e posizionalo sotto al Capitolo",
+              "prompt": "Scegli casualmente un nemico [[Mostro]] messo da parte e posizionalo sotto al mazzo dei capitoli senza guardarlo",
               "modified_value": {
                 "modifier": 0
               }
@@ -1019,7 +1019,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Orrori su di te (min 1)",
+          "prompt": "Ammontare di orrori su di te",
           "min": 0
         }
       },
@@ -1027,7 +1027,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Valore base di Oscurità del tuo luogo",
+          "prompt": "Valore di Oscurità di base del tuo luogo",
           "min": 0
         }
       },
@@ -1040,7 +1040,7 @@
           },
           "options": [
             {
-              "prompt": "Scegli casualmente un nemico tra i [[Mostro]] messi da parte e posizionalo sotto al Capitolo",
+              "prompt": "Scegli casualmente un nemico [[Mostro]] messo da parte e posizionalo sotto al mazzo dei capitoli senza guardarlo",
               "modified_value": {
                 "modifier": 0
               }
@@ -1058,7 +1058,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La quantità di destini in gioco",
+          "prompt": "Ammontare di destini in gioco",
           "min": 0,
           "max": 5
         }
@@ -1088,7 +1088,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "La quantità di destini in gioco",
+          "prompt": "Ammontare di destini in gioco",
           "min": 0
         }
       },
@@ -1121,7 +1121,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away from the starting location you are",
+          "prompt": "Numero di luoghi di distanza tra quello di partenza e quello in cui ti trovi",
           "min": 0,
           "max": 5
         }
@@ -1150,7 +1150,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of locations away from the starting location you are",
+          "prompt": "Numero di luoghi di distanza tra quello di partenza e quello in cui ti trovi",
           "min": 0
         }
       },
@@ -1182,7 +1182,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest amount of doom on an agenda in play",
+          "prompt": "Ammontare di destini più alto su una trama in gioco",
           "min": 0
         }
       },
@@ -1196,7 +1196,7 @@
           },
           "options": [
             {
-              "prompt": "Attack or evasion attempt against an enemy with doom on it",
+              "prompt": "Attacca o tenta di eludere un nemico con 1 opiù destini su di esso",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -1223,7 +1223,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Numero totale di destini sulle Trame in gioco",
+          "prompt": "Totale dei destini sulle trame in gioco",
           "min": 0
         }
       },
@@ -1237,7 +1237,7 @@
           },
           "options": [
             {
-              "prompt": "Un nemico con 1 o più destini nella tuo luogo",
+              "prompt": "Nemici con 1 o più destini su di essi nel tuo luogo",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -1273,7 +1273,7 @@
           },
           "options": [
             {
-              "prompt": "Non è rimasta più alcuna sanità mentale",
+              "prompt": "Hai 0 Sanità Mentale rimanente",
               "modified_value": {
                 "modifier": -4
               }
@@ -1306,7 +1306,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Orrori su di te",
+          "prompt": "Ammontare di orrori che possiedi",
           "min": 0
         }
       },
@@ -2334,7 +2334,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Highest number of doom on a [[Cultist]] enemy in play",
+          "prompt": "Ammontare di destini più alto su un nemico [[Cultista]] in gioco",
           "min": 0
         }
       },
@@ -3753,7 +3753,7 @@
           },
           "options": [
             {
-              "prompt": "Rougarou is at your location",
+              "prompt": "Il Rougarou si trova nel tuo luogo",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -3803,7 +3803,7 @@
           },
           "options": [
             {
-              "prompt": "Rougarou is at your location",
+              "prompt": "Il Rougarou si trova nel tuo luogo",
               "modified_value": {
                 "modifier": -3,
                 "reveal_another": 1
@@ -4338,7 +4338,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "Numero di carte storia nella galleria delle vittorie",
           "min": 0,
           "adjustment": 1
         }
@@ -4352,7 +4352,7 @@
           },
           "options": [
             {
-              "prompt": "At Tindalos",
+              "prompt": "A Tindalos",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4369,7 +4369,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Scientist]] asset is at your location",
+              "prompt": "Ci sono supporti [[Scienziato]] nel tuo luogo",
               "modified_value": {
                 "modifier": -4
               }
@@ -4389,7 +4389,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of story cards in the victory display",
+          "prompt": "Numero di carte storia nella galleria delle vittorie",
           "min": 0,
           "adjustment": 2
         }
@@ -4403,7 +4403,7 @@
           },
           "options": [
             {
-              "prompt": "At Tindalos",
+              "prompt": "A Tindalos",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -4420,7 +4420,7 @@
           },
           "options": [
             {
-              "prompt": "A [[Scientist]] asset is at your location",
+              "prompt": "Ci sono supporti [[Scienziato]] nel tuo luogo",
               "modified_value": {
                 "modifier": -6
               }
@@ -6925,7 +6925,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Orrori su di te",
+          "prompt": "Ammontare di orrori che possiedi",
           "min": 0,
           "max": 3
         }
@@ -6971,7 +6971,7 @@
         "token": "elder_thing",
         "type": "counter",
         "counter": {
-          "prompt": "Orrori su di te",
+          "prompt": "Ammontare di orrori che possiedi",
           "min": 0,
           "max": 4
         }
@@ -8138,7 +8138,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "La quantità di destini in gioco",
+          "prompt": "Ammontare di destini in gioco",
           "min": 0
         }
       },
@@ -10303,7 +10303,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Trama attuale",
+          "prompt": "Numero della trama attuale",
           "min": 1
         }
       },
@@ -11456,7 +11456,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Trama attuale",
+          "prompt": "Numero della trama attuale",
           "min": 1,
           "adjustment": 1
         }
@@ -11508,7 +11508,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Trama attuale",
+          "prompt": "Numero della trama attuale",
           "min": 1,
           "adjustment": 2
         }
@@ -11759,7 +11759,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Trama attuale",
+          "prompt": "Numero della trama attuale",
           "min": 1
         }
       },
@@ -11801,7 +11801,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Trama attuale",
+          "prompt": "Numero della trama attuale",
           "min": 1,
           "adjustment": 1
         }
@@ -12183,7 +12183,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Trama attuale",
+          "prompt": "Numero della trama attuale",
           "min": 1
         }
       },
@@ -12205,7 +12205,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Trama attuale",
+          "prompt": "Numero della trama attuale",
           "min": 1,
           "adjustment": 1
         }

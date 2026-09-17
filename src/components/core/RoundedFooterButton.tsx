@@ -13,7 +13,7 @@ interface Props {
 }
 
 function computeHeight(fontScale: number) {
-  return (18 * fontScale) + 22;
+  return (26 * fontScale) + 22;
 }
 
 function RoundedFooterButton({ onPress, icon, title, color = 'dark' }: Props) {

@@ -50,7 +50,7 @@ export default function CompactInvestigatorRow({
       width={width}
       color={color}
     >
-      <View style={[styles.row, space.paddingLeftXs]}>
+      <View style={[styles.row, space.paddingLeftS]}>
         { !!leftContent && <View style={space.paddingRightS}>{leftContent}</View>}
         { !hideImage && (
           <InvestigatorImage
@@ -65,7 +65,7 @@ export default function CompactInvestigatorRow({
             imageOffset={imageOffset}
           />
         ) }
-        <View style={[space.paddingLeftXs, styles.textColumn]}>
+        <View style={[space.paddingLeftS, styles.textColumn]}>
           <Text
             style={[
               typography.cardName,
@@ -76,7 +76,7 @@ export default function CompactInvestigatorRow({
             { name || investigator?.name }
           </Text>
           { detail ?? (
-            <View style={styles.row}>
+            <View style={[styles.row, styles.subnameRow]}>
               <Text
                 style={[typography.cardTraits, !transparent ? typography.white : { color: colors.D20 }, eliminated ? typography.strike : undefined]}
                 numberOfLines={1}
@@ -142,6 +142,9 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  subnameRow: {
+    marginTop: -2,
   },
   rightRow: {
     flexDirection: 'row',

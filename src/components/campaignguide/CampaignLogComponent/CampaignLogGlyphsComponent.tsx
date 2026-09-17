@@ -8,7 +8,7 @@ import { find, range } from 'lodash';
 import React, { useCallback, useContext, useMemo } from 'react';
 
 import { StyleSheet, View } from 'react-native';
-import { Pressable, Text } from 'react-native-gesture-handler';
+import { Pressable, LegacyText as Text } from 'react-native-gesture-handler';
 import CampaignGuideContext from '../CampaignGuideContext';
 
 type Props = {

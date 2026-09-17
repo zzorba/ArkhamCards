@@ -28,7 +28,7 @@ const HEIGHT = 48;
 
 function RoundedFactionHeader({ isCardHeader, faction, width, dualFaction, children, fullRound, eliminated, transparent, ...props }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const height = s + (isCardHeader ? s : 0) + typography.cardHeaderHeight;
+  const height = s + typography.cardHeaderHeight;
   const fadeAnim = useCallback((props: any) => {
     return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
   }, [colors]);
