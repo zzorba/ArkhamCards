@@ -104,16 +104,18 @@ function FadingCardSearchResult({ item, card, onCardPress, onDraft, draftHistory
     onDraft(card, item);
   }, [onDraft, item]);
   const opacity = useSharedValue(1);
+  const itemDraftCycle = item.draftCycle;
+  const itemCode = item.code;
   useAnimatedReaction(() => {
-    if (!item.draftCycle || draftHistory.value.cycle < item.draftCycle) {
+    if (!itemDraftCycle || draftHistory.value.cycle < itemDraftCycle) {
       return false;
     }
-    return !draftHistory.value.code || draftHistory.value.code !== item.code;
+    return !draftHistory.value.code || draftHistory.value.code !== itemCode;
   }, (result, previous) => {
     if (result !== previous) {
       opacity.value = result ? withTiming(0, { duration: 250 }) : withTiming(1, { duration: 100 });
     }
-  }, [item.draftCycle, item.code, draftHistory]);
+  }, [itemDraftCycle, itemCode, draftHistory]);
   return (
     <Animated.View key={item.key} style={[
       borderStyle,

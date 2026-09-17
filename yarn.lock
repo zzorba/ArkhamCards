@@ -3733,10 +3733,10 @@
   resolved "https://registry.npmjs.org/@react-native-firebase/functions/-/functions-23.4.1.tgz#9cb4d250e47160cdef2824a9a01eb187d882917d"
   integrity sha512-FkUGNv1gzyntIEn54j1W+3Oy8rDMDhxuGTAM10i74eIHjyk+J7T6ua/HfqkBxkX7A1AM1B/yTPxIuK497USaCQ==
 
-"@react-native-google-signin/google-signin@12.2.1":
-  version "12.2.1"
-  resolved "https://registry.npmjs.org/@react-native-google-signin/google-signin/-/google-signin-12.2.1.tgz#242247ab18ea7bb3a1dcabb50df7ad236f104294"
-  integrity sha512-qt2Cb+bN2NS8BBT06M3UbLVS1gaSYTenNh4uZtPNmyJC23xZAynLkuhvsC6gmeEnxcj0wLVUn1Es+LSHw0OhVQ==
+"@react-native-google-signin/google-signin@16":
+  version "16.1.5"
+  resolved "https://registry.npmjs.org/@react-native-google-signin/google-signin/-/google-signin-16.1.5.tgz#0de2624f291050b1e7bd935919cdd06080f13bb0"
+  integrity sha512-9rmMwACzHK9Cbd0Yp7efg5uWgiYoLwmNAJh4gRCuMcSQH+qplpK7E4d1Q4tbsD8M9jvvVtRX2Z0AP9wwBKmPrQ==
 
 "@react-native-vector-icons/common@^13.0.2":
   version "13.0.2"
@@ -11825,10 +11825,10 @@ react-native-collapsible@1.6.1:
   resolved "https://registry.npmjs.org/react-native-collapsible/-/react-native-collapsible-1.6.1.tgz#27e289831a6955aebde98abff2424a7710f36f02"
   integrity sha512-orF4BeiXd2hZW7fu9YcqIJXzN6TJcFcddY807D3MAOVktLuW9oQ+RIkrTJ5DR3v9ZOFfREkOjEmS79qeUTvkBQ==
 
-react-native-color-matrix-image-filters@7.0.2:
-  version "7.0.2"
-  resolved "https://registry.npmjs.org/react-native-color-matrix-image-filters/-/react-native-color-matrix-image-filters-7.0.2.tgz#8036d20ed629501f2424039ea36563564552f78d"
-  integrity sha512-YwEbSbzwpD99v8KNiebLB5NymY9hPBQQJ778QN2/39YZ/tA9TbFA3M3qv4kU2qyF+Tdon6KbFOd7D7zaAXUhSA==
+react-native-color-matrix-image-filters@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.npmjs.org/react-native-color-matrix-image-filters/-/react-native-color-matrix-image-filters-8.0.2.tgz#24cc38deb459e03e54578964decde852ba150d19"
+  integrity sha512-RJoNJt5Mhi1ztsPdKB3kNDHMSbarrWdNkcY2gPb3G7N9Kx6TKq00hl/X90PWRk9p2lqgiD0YznD8NlxDgqgLPg==
   dependencies:
     concat-color-matrices "^1.0.0"
     rn-color-matrices "^4.1.0"

@@ -102,7 +102,7 @@ module.exports = {
         'android.permission.RECORD_AUDIO',
         'android.permission.MODIFY_AUDIO_SETTINGS',
       ],
-      versionCode: 4195589,
+      versionCode: 4195590,
     },
     locales: {
       'ko': './assets/i18n-app/ko.metadata.json',
@@ -128,6 +128,7 @@ module.exports = {
           ],
         },
       ],
+      '@react-native-google-signin/google-signin',
       '@react-native-firebase/app',
       '@react-native-firebase/auth',
       '@react-native-firebase/crashlytics',

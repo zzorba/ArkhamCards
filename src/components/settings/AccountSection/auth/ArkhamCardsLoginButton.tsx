@@ -126,12 +126,11 @@ async function onAppleButtonPress() {
 
 async function onGoogleButtonPress() {
   await GoogleSignin.hasPlayServices();
-  // Get the users ID token
-  const { idToken } = await GoogleSignin.signIn();
-  // Create a Google credential with the token
-  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-  // Sign-in the user with the credential
+  const response = await GoogleSignin.signIn();
+  if (response.type !== 'success') {
+    throw new Error('Google Sign-In was cancelled');
+  }
+  const googleCredential = auth.GoogleAuthProvider.credential(response.data.idToken);
   return await auth().signInWithCredential(googleCredential);
 }
 

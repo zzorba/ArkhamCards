@@ -56,18 +56,18 @@ function CardGridItem<ItemT extends GridItem>({
   draftHistory?: SharedValue<DraftHistory>;
 }) {
   const opacity = useSharedValue(1);
+  const itemDraftCycle = item.draftCycle;
+  const itemCode = item.code;
   useAnimatedReaction(() => {
-    // console.log(`${JSON.stringify(item)} has history ${JSON.stringify(draftHistory?.value)}`);
-    if (!item.draftCycle || !draftHistory || draftHistory.value.cycle < item.draftCycle) {
+    if (!itemDraftCycle || !draftHistory || draftHistory.value.cycle < itemDraftCycle) {
       return false;
     }
-    return !draftHistory.value.code || draftHistory.value.code !== item.code;
+    return !draftHistory.value.code || draftHistory.value.code !== itemCode;
   }, (result, previous) => {
-    // console.log(`${item.code} - ${previous} -> ${result}`);
     if (result !== previous) {
       opacity.value = result ? withTiming(0, { duration: 250 }) : withTiming(1, { duration: 100 });
     }
-  }, [item.draftCycle, item.code, draftHistory]);
+  }, [itemDraftCycle, itemCode, draftHistory]);
   return (
     <Animated.View
       entering={item.enterAnimation}
