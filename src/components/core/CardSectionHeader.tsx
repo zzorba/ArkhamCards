@@ -34,9 +34,9 @@ export function cardSectionHeaderHeight(section: CardSectionHeaderData, fontScal
     return m;
   }
   if (section.subTitle || section.title) {
-    return fontScale * 26 + 8 * 2;
+    return fontScale * 20 + 8 * 2;
   }
-  return fontScale * 30 + s * 2;
+  return fontScale * 24 + s * 2;
 }
 
 function CardSectionHeader({ investigator, section }: Props) {

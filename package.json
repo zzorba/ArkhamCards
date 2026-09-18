@@ -116,7 +116,7 @@
     "react-native-anchor-point": "^1.0.6",
     "react-native-appstate-hook": "1.0.6",
     "react-native-base64": "0.2.1",
-    "react-native-collapsible": "1.6.2",
+    "react-native-collapsible": "1.6.1",
     "react-native-color-matrix-image-filters": "^8.0.2",
     "react-native-config": "1.7.2",
     "react-native-console-time-polyfill": "^1.2.3",

@@ -38,7 +38,7 @@ module.exports = {
   expo: {
     name: 'ArkhamCards',
     slug: 'arkhamcards',
-    version: '6.3.5',
+    version: '6.3.6',
     jsEngine: 'hermes',
     orientation: 'default',
     userInterfaceStyle: 'automatic',

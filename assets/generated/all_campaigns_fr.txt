@@ -3743,9 +3743,9 @@
         },
         {
           "id": "prologue",
-          "title": "A Powerful Hunger",
+          "title": "Une Faim de Loup",
           "type": "story",
-          "text": "\"To say that we actually believed in vampires or werewolves would be a carelessly inclusive statement. Rather must it be said that we were not prepared to deny the possibility of certain unfamiliar and unclassified modifications of vital force and attenuated matter; existing very infrequently in three-dimensional space because of its more intimate connexion with other spatial units, yet close enough to the boundary of our own to furnish us occasional manifestations which we, for lack of a proper vantage-point, may never hope to understand.\"\n- H.P. Lovecraft, \"The Shunned House\"",
+          "text": "« Dire que nous croyions véritablement aux vampires et aux loups-garous serait une déclaration inconsidérée. Il conviendrait plutôt de dire que nous n'étions pas disposés à nier la possibilité de certaines modifications insolites et peu connues de la force vitale et de la matière atténuée. Elles apparaissent rarement dans l'espace à trois dimensions, à cause de leur rapport plus intime avec d'autres unités spatiales ; pourtant elles sont assez proches des frontières de notre univers pour se manifester parfois dans des circonstances telles que nos sens, impropres à cette perception, ne nous permettront sans doute jamais de les comprendre. »\n- H.P. Lovecraft, « La Maison Maudite »",
           "narration": {
             "id": "children_of_blood.prologue.a_powerful_hunger",
             "name": "A Powerful Hunger",
@@ -4002,104 +4002,104 @@
       "achievements": [
         {
           "id": "hide_and_seek",
-          "title": "Hide and Seek",
-          "text": "Defeat Julia Stern before agenda 2a advances in <i>River of Blood</i>.",
+          "title": "Cache-Cache",
+          "text": "Vainquez Julia Stern avant que l'Intrigue 2a avance dans <i>Rivière de Sang</i>.",
           "type": "binary"
         },
         {
           "id": "friendly_neighborhood_investigator",
-          "title": "Friendly Neighborhood Investigator",
-          "text": "Do not let a single [[Civilian]] enemy get defeated during <i>River of Blood</i>.",
+          "title": "L'Investigateur Sympa du Quartier",
+          "text": "Ne laissez aucun ennemi [[Civil]] être vaincu dans <i>Rivière de Sang</i>.",
           "type": "binary"
         },
         {
           "id": "trophy_collector",
-          "title": "Trophy Collector",
-          "text": "Add Fang of Zburamoarte to any investigator’s deck.",
+          "title": "Collectionneur de Trophée",
+          "text": "Ajoutez le Croc de Zburamoarte au deck de n'importe quel investigateur.",
           "type": "binary"
         },
         {
           "id": "no_meat_slab_unhooked",
-          "title": "No Meat-Slab Unhooked",
-          "text": "Finish <i>New Horizons</i> with every location revealed, and with no clues remaining on locations.",
+          "title": "Décrocher tous les Crochets de Boucher",
+          "text": "Terminez <i>Nouveaux Horizons</i> avec tous les lieux révélés et aucun indice restant sur les lieux.",
           "type": "binary"
         },
         {
           "id": "filing_paperwork",
-          "title": "Filing Paperwork",
-          "text": "Add either Forged Permit or Sanguine Song to any investigator’s deck.",
+          "title": "Remplir la Paperasse",
+          "text": "Ajoutez soit Permis Falsifié, soit Chanson Sanguine au deck de n'importe quel investigateur.",
           "type": "binary"
         },
         {
           "id": "thatll_learn_him",
-          "title": "That'll Learn Him",
-          "text": "Use the ability on Zburamoarte’s Lair to deal the killing blow to Zburamoarte in <i>New Horizons</i>.",
+          "title": "Ça Lui Apprendra",
+          "text": "Utilisez la capacité de la Tanière de Zburamoarte pour infliger le coup de grâce à Zburamoarte dans <i>Nouveaux Horizons</i>.",
           "type": "binary"
         },
         {
           "id": "safety_inspector",
-          "title": "Safety Inspector",
-          "text": "Do not let a single [[Civilian]] enemy get defeated during <i>New Horizons</i>.",
+          "title": "Inspecteur de la Sécurité",
+          "text": "Ne laissez aucun ennemi [[Civil]] être vaincu dans <i>Nouveaux Horizons</i>.",
           "type": "binary"
         },
         {
           "id": "thanks_for_your_vote",
-          "title": "Thanks for Your Vote",
-          "text": "Add Charlie Kane to any investigator’s deck.",
+          "title": "Merci Pour Votre Vote",
+          "text": "Ajoutez Charlie Kane au deck de n'importe quel investigateur.",
           "type": "binary"
         },
         {
           "id": "hell_hath_no_fury",
-          "title": "Hell Hath No Fury",
-          "text": "Have Julia Stern deal the killing blow to Howard Wilkes in <i>Blood Money</i>.",
+          "title": "L'Enfer ne Connaît Pas la Fureur",
+          "text": "Faites que Julia Stern inflige le coup de grâce à Howard Wilkes dans <i>L'Argent du Sang</i>.",
           "type": "binary"
         },
         {
           "id": "look_out_below",
-          "title": "Look Out Below",
-          "text": "Use the Balcony location’s ability to defeat Howard Wilkes in <i>Blood Money</i>.",
+          "title": "Attention, En Dessous",
+          "text": "Utilisez la capacité du lieu Balcon pour vaincre Howard Wilkes dans <i>L'Argent du Sang</i>.",
           "type": "binary"
         },
         {
           "id": "a_party_everyone_can_enjoy",
-          "title": "A Party Everyone Can Enjoy",
-          "text": "Do not let a single [[Civilian]] enemy get defeated during <i>Blood Money</i>.",
+          "title": "Une Fête Que Tout le Monde Apprécie",
+          "text": "Ne laissez aucun ennemi [[Civil]] être vaincu dans <i>L'Argent du Sang</i>.",
           "type": "binary"
         },
         {
           "id": "if_you_cant_beat_them",
-          "title": "If You Can't Beat Them...",
-          "text": "Complete the <i>Blood Money</i> scenario with each available copy of Suspicious Guest in the victory display.",
+          "title": "Si Tu ne Peux Pas les Battre...",
+          "text": "Terminez le scénario <i>L'Argent du Sang</i> avec chaque exemplaire d'Invité Suspicieux dans la pile de victoire.",
           "type": "binary"
         },
         {
           "id": "you_got_red_on_you",
-          "title": "You Got Red on You",
-          "text": "Seal 3 [blood] tokens on your investigator in a single round.",
+          "title": "Tu as du Rouge sur Tes Vêtements",
+          "text": "Scellez 3 pions [blood] sur votre investigateur lors d'un même round.",
           "type": "binary"
         },
         {
           "id": "dont_forget_your_ppe",
-          "title": "Don't Forget Your PPE",
-          "text": "Finish <i>Children of Blood</i> with 0 [blood] tokens in the chaos bag.",
+          "title": "N'Oubliez Pas Vos EPI",
+          "text": "Terminez <i>Les Enfants du Sang</i> avec 0 pion [blood] dans la réserve du Chaos.",
           "type": "binary"
         },
         {
           "id": "bathed_in_blood",
-          "title": "Bathed in Blood",
-          "text": "Finish <i>Children of Blood</i> with 12 [blood] tokens in the chaos bag.",
+          "title": "Baigné Dans le Sang",
+          "text": "Terminez <i>Les Enfants du Sang</i> avec 12 pions [blood] dans la réserve du Chaos.",
           "type": "binary"
         },
         {
           "id": "and_all_i_got",
-          "title": "And All I Got Were These Bloody Fangs",
-          "text": " Unlock the Chosen of Zburamoarte campaign reward card.",
+          "title": "Et Tout Ce Qu'On m'a Ramené, ce Sont ces Satanées Canines",
+          "text": "Débloquez la carte Récompense de Campagne « Élu de Zburamoarte ».",
           "type": "binary"
         },
         {
           "id": "its_part_of_my_backstory",
-          "title": "It's Part of My Backstory",
-          "text": "Complete <i>Children of Blood</i> with the following investigators:",
+          "title": "Cela Fait Partie de Mon Histoire Personnelle",
+          "text": "Terminez <i>Les Enfants du Sang</i> avec les investigateurs suivants:",
           "type": "list",
           "items": [
             {
@@ -4108,14 +4108,14 @@
             },
             {
               "id": "Miguel",
-              "text": "Migeul de la Cruz"
+              "text": "Miguel de la Cruz"
             }
           ]
         },
         {
           "id": "waterfront_wet_work",
-          "title": "Waterfront Wet Work",
-          "text": "Complete <i>Children of Blood</i> campaign on the following difficulties:",
+          "title": "Le Quartier du Front de Mer, en Mode Déter",
+          "text": "Terminez la campagne <i>Les Enfants du Sang</i> avec les difficultés suivantes :",
           "type": "list",
           "items": [
             {
@@ -4161,12 +4161,12 @@
               ]
             },
             "type": "story",
-            "text": "The cold autumn wind blows through the streets of the city of Arkham, the cobblestones wet from the rainstorm earlier that day. The sky has since cleared, and overhead a field of stars is watched by a full moon. It is under the yellow glow of the streetlights that you have made your way to Arkham's Waterfront District, formerly known as Rivertown before the Miskatonic burst its banks some months ago.\nGrim paranoia has gripped the Waterfront District. In the wake of a series of murders and disappearances, the working-class residents in the area are afraid to go out at night. They go to work at the river docks, the train yards, or the New Horizons meat packing facility, then rush home before darkness overtakes the city. Pedestrians look over their shoulders and hurry past dark alleys. Something is hunting the people of the district.\nWith Detective Reynolds of the Arkham PD, you have been working to get to the bottom of what's going on, and there have been precious few leads.\nThat is, until tonight.\nYou've been called to the Waterfront District by a concerned citizen. Christopher Stern has invited you to his home on Water Street with the promise of more information in exchange for help in a personal matter. Mr. Stern's promise of information and request for assistance end up being one and the same. With painful effort he recounts how his wife, Julia, is an employee at the New Horizons facility. She had been taking longer and longer shifts, such that she began leaving for work before the sun came up and returning home after it had gone down. Over time she grew cold and distant, eventually sleeping in a separate room and—in Christopher's words—hiding herself from him.\nHe found her in the alleyway behind their home three days ago. In the light of the waxing moon, he saw the woman who used to be his wife crouched over the corpse of their neighbor. She was feeding on the body, greedily drinking the man's blood. When he called her name, she fled into the shadows. Christopher followed her, but quickly lost track. She moved with such inhuman swiftness that all sign of her was lost to the night. What's worse, when he returned to the alleyway, the neighbor's body was nowhere to be found.\nMr. Stern spent the next couple of days searching feverishly for any sign of his wife. Despite what he witnessed, he seemed to resist the notion that she has changed into some kind of monster. Now, however, with more and more stories circulating the district each night, he knew something had to be done."
+            "text": "Le vent froid de l'automne souffle dans les rues d'Arkham, les pavés sont encore humides après la tempête qui s'est abattue plus tôt dans la journée. Le ciel s'est dégagé depuis et, au-dessus de vous, l'œil unique de la pleine lune observe un ciel étoilé. C'est sous la lueur jaune des réverbères que vous vous êtes rendu dans le Quartier du Front de Mer, anciennement connu sous le nom du Quartier de la Rivière, avant que le Miskatonic ne déborde il y a quelques mois.\nUne sombre paranoïa s'est emparée du Quartier du Front de Mer. À la suite d'une série de meurtres et de disparitions, les habitants issus de la classe ouvrière ont peur de sortir la nuit. Ils se rendent à leur travail aux docks fluviaux, aux gares de triage ou à l'usine de conditionnement de viande de New Horizons, puis se dépêchent de rentrer chez eux avant que l'obscurité n'envahisse la ville. Les piétons prennent garde de ne pas être suivis et se hâtent de traverser les ruelles sombres. Quelque chose traque les habitants du quartier.\nAvec le détective Reynolds de la police d'Arkham, vous vous efforcez d'éclaircir ce mystère, mais les indices sont rares.\nDu moins, jusqu'à ce soir.\nVous avez été appelé dans le Quartier du Front de Mer par un citoyen inquiet. Christopher Stern vous a invité chez lui, sur Water Street, en vous promettant de vous donner plus d'informations en échange de votre aide dans une affaire personnelle. Vous comprenez vite que c'est en lui portant assistance que vous en apprendrez plus sur la situation. Il lui est manifestement pénible de vous raconter l'histoire de sa femme, Julia, une employée de l'usine New Horizons. Ses journées de travail étaient devenues de plus en plus longues, si bien qu'elle quittait leur domicile avant le lever du soleil et ne revenait qu'après la nuit tombée. Au fil du temps, elle était devenue froide et distante. À la fin, elle faisait chambre à part et, pour citer Christopher, « elle se cachait de lui ».\nIl l'a trouvée dans la ruelle derrière leur maison, il y a trois jours. À la faveur du clair de lune, il a vu celle qui était autrefois sa femme accroupie près du cadavre de leur voisin. Elle se nourrissait de sa chair, et buvait son sang avec avidité. Lorsqu'il l'a appelée par son nom, elle s'est enfuie dans l'ombre. Christopher l'a suivie, mais a été vite distancé. Elle se déplaçait avec une rapidité si inhumaine que toute trace d'elle s'est perdue dans la nuit. Pire encore, lorsqu'il est retourné dans la ruelle, le corps du voisin avait disparu.\nM. Stern passa les deux jours suivants à rechercher fébrilement le moindre signe de sa femme. Malgré ce dont il avait été témoin, il semblait refuser d'admettre qu'elle s'était transformée en une sorte de monstre. Cependant, à mesure que les rumeurs enflaient chaque nuit dans le quartier, il avait acquis la conviction qu'il était nécessaire d'agir."
           },
           {
             "id": "check_hard_or_expert",
             "type": "branch",
-            "text": "If you are playing on Hard of Expert:",
+            "text": "Si vous jouez en mode Difficile ou Expert :",
             "condition": {
               "type": "campaign_log",
               "section": "hidden",
@@ -4185,7 +4185,7 @@
           {
             "id": "earn_xp",
             "bullet_type": "small",
-            "text": "Each investigator may begin the campaign with 5 bonus experience. You may upgrade your decks before starting the first scenario.",
+            "text": "Chaque investigateur peut commencer la campagne avec un bonus de 5 points d'expérience. Vous avez le droit d'améliorer vos decks avant de commencer le premier scénario.",
             "effects": [
               {
                 "type": "earn_xp",
@@ -4199,7 +4199,7 @@
       {
         "id": "river_of_blood",
         "scenario_name": "River of Blood",
-        "full_name": "Scenario I: River of Blood",
+        "full_name": "Scénario I: Rivière de Sang",
         "icon": "river_of_blood",
         "header": "Scénario I",
         "chaos_bag_card": "13001",
@@ -4228,7 +4228,7 @@
                 "dv"
               ]
             },
-            "text": "\"Whatever you have to do to stop her, to stop that thing,\" Christopher says to you as you prepare to set out in search of Julia. \"Just do it.\"\nYou spend the night searching frantically through the Waterfront District, but are unable to locate anything conclusive. You retire for a restless night, and hope to have better luck in the morning."
+            "text": "« Quoi qu'il en coûte pour arrêter ma femme, pour arrêter cette chose », dit Christopher alors que vous vous préparez à partir à la rechercher de Julia, « Faites-le ».\nVous passez la nuit à fouiller sans relâche le Quartier du Front de Mer, sans parvenir à la localiser de façon certaine. Vous rentrez ensuite pour une nuit de sommeil qui ne vous offrira qu'un maigre repos, en espérant que la chance vous sourira le lendemain matin."
           },
           {
             "id": "check_hard_or_expert_encounter",
@@ -4292,7 +4292,7 @@
           },
           {
             "id": "check_3_or_4_encounters",
-            "text": "If you are playing with 3 or 4 investigators:",
+            "text": "S’il y a 3 ou 4 investigateurs dans la partie :",
             "type": "branch",
             "condition": {
               "type": "multi",
@@ -4382,16 +4382,16 @@
           },
           {
             "id": "standard_locations",
-            "text": "Because you are playing on Easy or Standard difficulty, put each [[Dawn]] location into play. Remove each [[Dusk]] location from the game."
+            "text": "Puisque vous jouez en mode Facile ou Standard, mettez en jeu chaque lieu [[Aube]]. Retirez chaque lieu [[Crépuscule]] de la partie."
           },
           {
             "id": "hard_locations",
-            "text": "Because you are playing on Hard or Expert difficulty, put each [[Dusk]] location into play. Remove each [[Dawn]] location from the game."
+            "text": "Puisque vous jouez en mode Difficile ou Expert, mettez en jeu chaque lieu [[Crépuscule]]. Retirez chaque lieu [[Aube]] de la partie."
           },
           {
             "id": "starting_location",
             "bullet_type": "small",
-            "text": "Each investigator begins play at Water Street."
+            "text": "Chaque investigateur commence la partie dans Water Street."
           },
           {
             "id": "check_3_or_4_enemies",
@@ -4440,11 +4440,11 @@
           },
           {
             "id": "spawn_standard",
-            "text": "Spawn 1 Waterfront Civilian enemy at Main Street."
+            "text": "Générez 1 ennemi Civil du Front de Mer dans la Rue Principale."
           },
           {
             "id": "spawn_3_or_4",
-            "text": "Spawn 1 Waterfront Civilian enemy at Main Street and Garrison Street."
+            "text": "Générez 1 ennemi Civil du Front de Mer dans la Rue Principale et dans Garrison Street."
           },
           {
             "id": "check_difficulty_julia",
@@ -4483,15 +4483,15 @@
           },
           {
             "id": "easy_julia",
-            "text": "Because you are playing on Easy difficulty, set Julia Stern <i>(On the Run)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+            "text": "Puisque vous jouez en mode Facile, mettez de côté Julia Stern <i>(En fuite)</i>, hors jeu. Retirez de la partie tous les autres exemplaires de Julia Stern."
           },
           {
             "id": "standard_julia",
-            "text": "Because you are playing on Standard difficulty, set Julia Stern <i>(Stalking the Streets)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+            "text": "Puisque vous jouez en mode Standard, mettez de côté Julia Stern <i>(Rôde dans les Rues)</i>, hors jeu. Retirez de la partie tous les autres exemplaires de Julia Stern."
           },
           {
             "id": "hard_julia",
-            "text": "Because you are playing on Hard or Expert difficulty, set Julia Stern <i>(Preying Upon Arkham)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+            "text": "Puisque vous jouez en mode Difficile ou Expert, mettez de côté Julia Stern <i>(Terrorise Arkham)</i>, hors jeu. Retirez de la partie tous les autres exemplaires de Julia Stern."
           },
           {
             "id": "check_difficulty_set_aside_cards",
@@ -4530,11 +4530,11 @@
           },
           {
             "id": "standard_set_aside",
-            "text": "Set the following cards aside, out of play: each remaining Waterfront Civilian enemy, each Night Feeder enemy, each card in the <b>Infected</b> encounter set, the Detective Reynolds story asset, and the Fang of Zburamoarte story asset."
+            "text": "Mettez de côté les cartes suivantes, hors jeu : chaque Civil du Front de Mer restant, chaque ennemi Vorace Nocturne, chaque carte du set de rencontre <b>Infecté</b>, le soutien d'histoire Détective Reynolds et le soutien d'histoire Croc de Zburamoarte."
           },
           {
             "id": "hard_set_aside",
-            "text": "Set the following cards aside, out of play: each remaining Waterfront Civilian enemy, each Spawn of Zburamoarte enemy, each card in the <b>Infected</b> encounter set, the Detective Reynolds story asset, and the Fang of Zburamoarte story asset."
+            "text": "Mettez de côté les cartes suivantes, hors jeu : chaque Civil du Front de Mer restant, chaque ennemi Rejeton de Zburamoarte, chaque carte du set de rencontre <b>Infecté</b>, le soutien d'histoire Détective Reynolds et le soutien d'histoire Croc de Zburamoarte."
           },
           {
             "id": "location_layout_dawn",
@@ -4630,7 +4630,7 @@
           },
           {
             "id": "shuffle_julia",
-            "text": "Shuffle the top 2 cards of the encounter deck together with the set-aside Julia Stern enemy. Place 1 of these cards facedown, at random, beneath each [[Lair]] location."
+            "text": "Mélangez les 2 cartes du dessus du deck Rencontre avec l'ennemi Julia Stern mis de côté. Placez aléatoirement 1 de ces cartes, face cachée, sous chaque lieu [[Tanière]]."
           },
           {
             "id": "failed_to_stop_julia_stern",
@@ -4639,13 +4639,13 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "failed_to_stop_julia_stern",
-                "text": "the investigators failed to stop Julia Stern."
+                "text": "les investigateurs ont échoué à arrêter Julia Stern."
               }
             ]
           },
           {
             "id": "add_1_blood_token",
-            "text": "Add 1 [blood] token to the chaos bag for the remainder of the campaign.",
+            "text": "Ajoutez 1 pion [blood] à la réserve du Chaos pour le reste de la campagne.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -4657,7 +4657,7 @@
           },
           {
             "id": "earn_blood_blight",
-            "text": "Each investigator becomes the bearer of a set-aside The Blood Blight weakness.",
+            "text": "Chaque investigateur devient le détenteur d'une faiblesse Le Sang Corrompu mise de côté.",
             "effects": [
               {
                 "type": "add_card",
@@ -4668,12 +4668,12 @@
           },
           {
             "id": "earn_xp_failure",
-            "text": "Each investigator earns experience equal to the <b>victory X</b> value of each card in the victory display.",
+            "text": "Chaque investigateur reçoit un total de points d'expérience égal à la somme des valeurs de <b>Victoire X</b> des cartes qui se trouvent dans la pile de victoire.",
             "type": "input",
             "input": {
               "type": "counter",
               "text": "Pile de victoire :",
-              "confirm_text": "Each investigator also earns 3 bonus experience as they learn from their mistakes.",
+              "confirm_text": "Chaque investigateur reçoit également 3 points d'expérience bonus pour avoir appris de ses erreurs.",
               "effects": [
                 {
                   "type": "earn_xp",
@@ -4695,13 +4695,13 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "spared_julia_stern",
-                "text": "the investigators spared Julia Stern."
+                "text": "les investigateurs ont épargné Julia Stern."
               }
             ]
           },
           {
             "id": "earn_xp",
-            "text": "Each investigator earns experience equal to the <b>victory X</b> value of each card in the victory display.",
+            "text": "Chaque investigateur reçoit un total de points d'expérience égal à la somme des valeurs de <b>Victoire X</b> des cartes qui se trouvent dans la pile de victoire.",
             "type": "input",
             "input": {
               "type": "counter",
@@ -4722,7 +4722,7 @@
               "choices": [
                 {
                   "id": "yes",
-                  "text": "The investigators may decide to spend 2 [per_investigator] total experience, as a group, to remove 1 [blood] token from the chaos bag. Would you like to do this?",
+                  "text": "Les investigateurs peuvent décider de dépenser collectivement un total de 2 [per_investigator] points d'expérience pour retirer 1 pion [blood] de la réserve du Chaos. Souhaitez-vous le faire ?",
                   "steps": [
                     "lose_xp_branch"
                   ],
@@ -4779,11 +4779,11 @@
           },
           {
             "id": "remove_4_xp",
-            "text": "Who should spend XP?",
+            "text": "Qui devrait dépenser des XP ?",
             "type": "input",
             "input": {
               "type": "investigator_counter",
-              "text": "Spend experience",
+              "text": "Dépensez l’expérience",
               "max": 4,
               "min": 0,
               "required_total": 4,
@@ -4798,11 +4798,11 @@
           },
           {
             "id": "remove_6_xp",
-            "text": "Who should spend XP?",
+            "text": "Qui devrait dépenser des XP ?",
             "type": "input",
             "input": {
               "type": "investigator_counter",
-              "text": "Spend experience",
+              "text": "Dépensez l’expérience",
               "required_total": 6,
               "max": 6,
               "min": 0,
@@ -4817,11 +4817,11 @@
           },
           {
             "id": "remove_8_xp",
-            "text": "Who should spend XP?",
+            "text": "Qui devrait dépenser des XP ?",
             "type": "input",
             "input": {
               "type": "investigator_counter",
-              "text": "Spend experience",
+              "text": "Dépensez l’expérience",
               "required_total": 8,
               "max": 8,
               "min": 0,
@@ -4841,13 +4841,13 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "killed_julia_stern",
-                "text": "the investigators killed Julia Stern."
+                "text": "les investigateurs ont tué Julia Stern."
               }
             ]
           },
           {
             "id": "remove_blood_token",
-            "text": "Remove 1 [blood] token from the chaos bag for the remainder of the campaign.",
+            "text": "Retirez 1 pion [blood] de la réserve du Chaos pour le reste de la campagne.",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -4859,12 +4859,12 @@
           },
           {
             "id": "earn_xp_plus_2",
-            "text": "Each investigator earns experience equal to the <b>victory X</b> value of each card in the victory display.",
+            "text": "Chaque investigateur reçoit un total de points d'expérience égal à la somme des valeurs de <b>Victoire X</b> des cartes qui se trouvent dans la pile de victoire.",
             "type": "input",
             "input": {
               "type": "counter",
               "text": "Pile de victoire :",
-              "confirm_text": "Each investigator earns 2 bonus experience as they are better prepared for what is to come.",
+              "confirm_text": "Chaque investigateur reçoit 2 points d'expérience bonus, car il est mieux préparé à affronter ce qui va arriver.",
               "effects": [
                 {
                   "type": "earn_xp",
@@ -4876,7 +4876,7 @@
           },
           {
             "id": "earn_detective_reynolds",
-            "text": "Detective Reynolds joins the investigation! Choose an investigator to become the bearer of the set-aside Detective Reynolds story asset.",
+            "text": "Le Détective Reynolds rejoint l'enquête! Choisissez un investigateur qui devient le détenteur du soutien d'histoire Détective Reynolds.",
             "effects": [
               {
                 "type": "add_card",
@@ -4893,7 +4893,7 @@
               "choices": [
                 {
                   "id": "yes",
-                  "text": "Did the investigators find a sacrifical dagger?",
+                  "text": "Les investigateurs ont-ils trouvé une dague sacrificielle ?",
                   "steps": [
                     "earn_dagger"
                   ]
@@ -4904,7 +4904,7 @@
           {
             "id": "earn_dagger",
             "bullet_type": "small",
-            "text": "Choose an investigator to become the bearer of the set-aside Fang of Zburamoarte story asset.",
+            "text": "Choisissez un investigateur qui devient le détenteur du soutien d'histoire Croc de Zburamoarte.",
             "effects": [
               {
                 "type": "add_card",
@@ -4915,11 +4915,11 @@
           },
           {
             "id": "release_blood_tokens",
-            "text": "Release each sealed [blood] token and return them to the chaos bag."
+            "text": "Libérez chaque pion [blood] et remettez-les dans la réserve du Chaos."
           },
           {
             "id": "ask_3_blood_tokens",
-            "text": "Each investigator who ended the scenario with 3 [blood] tokens sealed on their investigator becomes the bearer of a set-aside The Blood Blight weakness if they are not already a bearer of it.",
+            "text": "Chaque investigateur qui a terminé ce scénario avec 3 pions [blood] scellés sur lui devient le détenteur d'une faiblesse Le Sang Corrompu s'il n'en détient pas déjà une.",
             "type": "input",
             "input": {
               "type": "investigator_choice",
@@ -4928,7 +4928,7 @@
               "choices": [
                 {
                   "id": "blood",
-                  "text": "3 sealed [blood] tokens?",
+                  "text": "3 pions [blood] scellés ?",
                   "condition": {
                     "type": "has_card",
                     "card": "13118",
@@ -4962,7 +4962,7 @@
               "branches": [
                 {
                   "id": "adjust_blood",
-                  "text": "Adjust blood tokens",
+                  "text": "Ajusté les pions Sang",
                   "repeatable": true,
                   "steps": [
                     "adjust_blood"
@@ -4980,7 +4980,7 @@
               "choices": [
                 {
                   "id": "add_blood",
-                  "text": "Add 1 [blood] token.",
+                  "text": "Ajoutez 1 pion [blood].",
                   "condition": {
                     "type": "multi",
                     "count": 1,
@@ -5020,7 +5020,7 @@
                 },
                 {
                   "id": "remove_blood",
-                  "text": "Remove 1 [blood] token.",
+                  "text": "Retirez 1 pion [blood].",
                   "condition": {
                     "type": "multi",
                     "count": 1,
@@ -5072,7 +5072,7 @@
               "physical",
               "mental"
             ],
-            "text": "It doesn’t take long before it becomes clear that there are more creatures stalking the night than simply the monster that was Julia Stern. Their unending hunt proved too much for you. The last thing you remember is the creatures looming over you before you mercifully lost consciousness.\nYou awaken to the burning yellow light of dawn. Collecting yourself, you meet up with Detective Reynolds once more.",
+            "text": "Il ne faut pas longtemps pour comprendre que d'autres créatures rôdent la nuit, en plus du monstre qui était autrefois Julia Stern. Leur traque incessante a eu raison de vous. Leurs silhouettes au-dessus de vos têtes est la dernière chose dont vous vous souvenez avant de perdre connaissance.\nVous vous réveillez dans la lumière de l'aube, jaune et brûlante. Après avoir repris vos esprits, vous retrouvez une fois de plus le détective Reynolds.",
             "narration": {
               "id": "cob.river_of_blood.no_resolution",
               "name": "No Resolution",
@@ -5091,7 +5091,7 @@
           {
             "id": "R1",
             "title": "Conclusion 1",
-            "text": "After a grueling conflict, you finally subdue your quarry. Rather than take her life, you knock Julia unconscious and prepare to regroup with Detective Reynolds, holding out hope that there may be some way to save her. When you return to collect her, however, you discover that she has disappeared into the shadows once more. You hope you made the right choice. For now, however, the only path forward for you is to reconnect with Detective Reynolds and get to the bottom of what caused all of this bloodshed in the first place.",
+            "text": "Après une lutte éreintante, vous finissez par maîtriser votre proie. Plutôt que de la tuer, vous assommez Julia et vous vous préparez à rejoindre le détective Reynolds, en espérant qu'il existe un moyen de la sauver. Mais lorsque vous vous retournez, vous découvrez qu'elle a de nouveau disparu ! Vous espérez avoir pris la bonne décision. Pour l'instant, vous n'avez pas d'autre choix que de retrouver le détective Reynolds et de découvrir l'origine de ce carnage.",
             "narration": {
               "id": "cob.river_of_blood.r1",
               "name": "Resolution 1",
@@ -5109,7 +5109,7 @@
           {
             "id": "R2",
             "title": "Conclusion 2",
-            "text": "At long last, your hunt comes to an end. Ending Julia’s life, and the lives of her victims, is a regrettable course of action, but it had to be done to make the Waterfront District safe again. After three bloody nights on the banks of the Miskatonic River, you’re hoping that you can reconnect with Detective Reynolds and get to the bottom of what caused all of this in the first place.",
+            "text": "Enfin, votre chasse touche à sa fin. Mettre fin à la vie de Julia et à celle de ses victimes est une décision regrettable, mais elle était nécessaire pour rétablir la sécurité dans le Quartier du Front de Mer. Après trois nuits sanglantes sur les rives du fleuve Miskatonic, vous espérez pouvoir reprendre contact avec l'inspecteur Reynolds et découvrir ce qui est à l'origine de ces regrettables événements.",
             "narration": {
               "id": "cob.river_of_blood.r2",
               "name": "Resolution 2",
@@ -5127,7 +5127,7 @@
           {
             "id": "R3",
             "title": "Conclusion 3",
-            "text": "The hunt through the night is long and arduous, but Julia proves too crafty and too swift for your efforts. By the morning of the third day of your search, you worry that you’ll have to wait until she strikes again. For now, however, the only path forward for you is to reconnect with Detective Reynolds and get to the bottom of what caused all of this bloodshed in the first place.",
+            "text": "La traque nocturne est longue et pénible, mais Julia se révèle trop rusée et trop rapide pour vos efforts. Au matin du troisième jour de vos recherches, vous craignez de devoir attendre qu'elle ne frappe à nouveau. Pour l'instant, la seule solution qui s’offre à vous est de reprendre contact avec l'inspecteur Reynolds et de découvrir l'origine de ce carnage.",
             "narration": {
               "id": "cob.river_of_blood.r3",
               "name": "Resolution 3",
@@ -5145,7 +5145,7 @@
             "id": "R4",
             "title": "Conclusion 4",
             "hidden": true,
-            "text": "Back at Detective Reynolds’ office, you explain what you’ve learned. He tells you that his leads also pointed towards the New Horizons meat packing facility, and a suspicious group that had been seen around the building, dressed in robes instead of the more standard aprons and coveralls of the workers. “The same place where Julia worked,” Reynolds says. “Seems like that place is worth a visit.”",
+            "text": "De retour au bureau du détective Reynolds, vous lui expliquez ce que vous avez découvert. Il vous dit que son enquête l'a également conduit à l'usine de conditionnement de viande New Horizons et à un groupe suspect qui a été aperçu autour du bâtiment, vêtu de robes à capuche plutôt que de l'habituel bleu de travail des ouvriers. « L'endroit même où Julia travaillait », dit Reynolds. « On dirait que cette adresse mérite une petite visite. »",
             "narration": {
               "id": "cob.river_of_blood.r4",
               "name": "Resolution 4",
@@ -5166,7 +5166,7 @@
       {
         "id": "new_horizons",
         "scenario_name": "New Horizons",
-        "full_name": "Scenario II: New Horizons",
+        "full_name": "Scénario II : Nouveaux Horizons",
         "header": "Scénario II",
         "chaos_bag_card": "13031",
         "icon": "new_horizons",
@@ -5183,7 +5183,7 @@
           {
             "id": "intro",
             "type": "story",
-            "text": "With Detective Reynolds at your side, you head to the New Horizons facility in the Waterfront District. “Well, the way I see it we’ve got two options,” Reynolds says. “We can go in now and conduct our search. I’ve got the warrant, and it’ll be more official, but there’s also people who are working. People complicate things. Or…” He produces a set of lockpicks. “We wait until after dark.”",
+            "text": "Accompagné du détective Reynolds, vous vous rendez à l'usine New Horizons, dans le Quartier du Front de Mer. « À mon avis, nous avons deux options, dit Reynolds. Nous pouvons entrer maintenant et effectuer notre perquisition. J'ai le mandat, et ce sera plus officiel, mais il y a aussi des gens qui travaillent. Cela va compliquer les choses. Ou alors... » Il vous montre des outils de crochetage. « Nous attendons la tombée de la nuit. »",
             "narration": {
               "id": "cob.new_horizons.intro",
               "name": "Intro",
@@ -5212,8 +5212,8 @@
               "choices": [
                 {
                   "id": "day",
-                  "text": "Search during the day",
-                  "description": "<i>Hint: Prepare to talk your way in.</i>",
+                  "text": "Enquêter pendant la journée",
+                  "description": "<i>Conseil : préparez-vous à devoir baratiner.</i>",
                   "steps": [
                     "gather_encounter_sets_v1",
                     "location_setup_v1",
@@ -5227,8 +5227,8 @@
                 },
                 {
                   "id": "night",
-                  "text": "Search after dark",
-                  "description": "<i>Hint: Prepare to fight your way in.</i>",
+                  "text": "Enquêter à la nuit tombée",
+                  "description": "<i>Conseil : préparez-vous à la bagarre.</i>",
                   "steps": [
                     "gather_encounter_sets_v2",
                     "location_setup_v2",
@@ -5294,35 +5294,35 @@
           },
           {
             "id": "standard_setup_v1",
-            "text": "Gather each location in the <b>New Horizons</b> encounter set.",
+            "text": "Réunissez chaque lieu du set de rencontre <b>Nouveaux Horizons</b>.",
             "bullets": [
               {
-                "text": "Put each [[Day]] location into play. Remove each [[Night]] location from the game. Each investigator begins play at a Factory Floor location of their choice."
+                "text": "Mettez en jeu chaque lieu [[Jour]]. Retirez de la partie chaque lieu [[Nuit]]. Chaque investigateur commence la partie dans un lieu Étage de l'Usine de son choix."
               },
               {
-                "text": "Because you are playing on Easy or Standard difficulty, set Cavern Entrance <i>(Shallow Tunnels)</i>, Descending Tunnel, and all 3 copies of Side Chamber <i>(Shallow Tunnels)</i> aside, out of play. Remove each remaining location from the game."
+                "text": "Puisque vous jouez en mode Facile ou Standard, mettez de côté, hors jeu, l'Entrée de la Caverne <i>(Tunnels peu Profonds)</i>, le Tunnel Descendant et les 3 exemplaires de la Chambre Latérale <i>(Tunnels peu Profonds)</i>. Retirez de la partie chaque lieu restant."
               }
             ]
           },
           {
             "id": "hard_setup_v1",
-            "text": "Gather each location in the <b>New Horizons</b> encounter set.",
+            "text": "Réunissez chaque lieu du set de rencontre <b>Nouveaux Horizons</b>.",
             "bullets": [
               {
-                "text": "Put each [[Day]] location into play. Remove each [[Night]] location from the game. Each investigator begins play at a Factory Floor location of their choice."
+                "text": "Mettez en jeu chaque lieu [[Jour]]. Retirez de la partie chaque lieu [[Nuit]]. Chaque investigateur commence la partie dans un lieu Étage de l'Usine de son choix."
               },
               {
-                "text": "Because you are playing on Hard or Expert difficulty, set Cavern Entrance <i>(Darkest Depths)</i>, Descending Tunnel, and all 3 copies of Side Chamber <i>(Darkest Depths)</i> aside, out of play. Remove each remaining location from the game."
+                "text": "Puisque vous jouez en mode Difficile ou Expert, mettez de côté, hors jeu, l'Entrée de la Caverne <i>(Profondeurs les plus Sombres)</i>, le Tunnel Descendant et les 3 exemplaires de la Chambre Latérale <i>Profondeurs les plus Sombres)</i>. Retirez de la partie chaque lieu restant."
               }
             ]
           },
           {
             "id": "setup_agenda_v1",
-            "text": "Construct the agenda deck using agenda 1a—“Busy Day” and agenda 2a—“Digging Deeper (v. I).” Remove each other agenda from the game."
+            "text": "Construisez le deck Intrigue en utilisant l'Intrigue 1a — « Dure Journée » et l'Intrigue 2a — « Creuser Plus Profond (v. I). » Retirez de la partie toutes les autres intrigues."
           },
           {
             "id": "spawn_factory_workers",
-            "text": "Spawn 1 Factory Worker enemy at each Factory Floor location."
+            "text": "Générez 1 ennemi Ouvrière de l’Usine dans chaque lieu Étage de l'Usine."
           },
           {
             "id": "check_boss_difficulty",
@@ -5361,23 +5361,23 @@
           },
           {
             "id": "easy_boss",
-            "text": "Because you are playing on Easy difficulty, set Zburamoarte <i>(Lethargic Beast)</i> aside, out of play. Remove each other copy of Zburamoarte from the game."
+            "text": "Puisque vous jouez en mode Facile, mettez de côté Zburamoarte <i>(Bête Léthargique)</i>, hors jeu. Retirez de la partie tous les autres exemplaires de Zburamoarte."
           },
           {
             "id": "standard_boss",
-            "text": "Because you are playing on Standard difficulty, set Zburamoarte <i>(Source of the Blight)</i> aside, out of play. Remove each other copy of Zburamoarte from the game."
+            "text": "Puisque vous jouez en mode Standard, mettez de côté Zburamoarte <i>(La Source de la Corruption)</i>, hors jeu. Retirez de la partie tous les autres exemplaires de Zburamoarte."
           },
           {
             "id": "hard_boss",
-            "text": "Because you are playing on Hard or Expert difficulty, set Zburamoarte <i>(Progenitor of Monsters)</i> aside, out of play. Remove each other copy of Zburamoarte from the game."
+            "text": "Puisque vous jouez en mode Difficile ou Expert, mettez de côté Zburamoarte <i>(Progéniteur des Monstres)</i>, hors jeu. Retirez de la partie tous les autres exemplaires de Zburamoarte."
           },
           {
             "id": "set_aside_v1",
-            "text": "Set the following cards aside, out of play: the Javier Rivera enemy, each copy of the Blighted Worker enemy, each copy of the Echoing in Darkness treachery, the <b>Infected</b> and <b>Flying Terrors</b> encounter sets, and the Forged Permit and Sanguine Song story assets."
+            "text": "Mettez de côté les cartes suivantes, hors jeu : l'ennemi Javier Rivera, chaque exemplaire de l'ennemi Ouvrier Corrompu, chaque exemplaire de la traîtrise Des Échos dans les Ténèbres, les sets de rencontre <b>Infecté</b> et <b>Terreurs Volantes</b>, et les soutiens d'histoire Permis Falsifié et Chanson Sanguine."
           },
           {
             "id": "remove_night_watchman",
-            "text": "Remove the Night Watchman enemy from the game."
+            "text": "Retirez de la partie l’ennemi Gardien de Nuit."
           },
           {
             "id": "gather_encounter_sets_v2",
@@ -5432,39 +5432,39 @@
           },
           {
             "id": "standard_setup_v2",
-            "text": "Gather each location in the <b>New Horizons</b> encounter set.",
+            "text": "Réunissez chaque lieu du set de rencontre <b>Nouveaux Horizons</b>.",
             "bullets": [
               {
-                "text": "Put each [[Night]] location into play. Remove each [[Day]] location from the game. Each investigator begins play at a Factory Floor location of their choice."
+                "text": "Mettez en jeu chaque lieu [[Nuit]]. Retirez de la partie chaque lieu [[Jour]]. Chaque investigateur commence la partie dans un lieu Étage de l'Usine de son choix."
               },
               {
-                "text": "Because you are playing on Easy or Standard difficulty, set Cavern Entrance <i>(Shallow Tunnels)</i>, Descending Tunnel, and all 3 copies of Side Chamber <i>(Shallow Tunnels)</i> aside, out of play. Remove each remaining location from the game."
+                "text": "Puisque vous jouez en mode Facile ou Standard, mettez de côté, hors jeu, l'Entrée de la Caverne <i>(Tunnels peu Profonds)</i>, le Tunnel Descendant et les 3 exemplaires de la Chambre Latérale <i>(Tunnels peu Profonds)</i>. Retirez de la partie chaque lieu restant."
               }
             ]
           },
           {
             "id": "hard_setup_v2",
-            "text": "Gather each location in the <b>New Horizons</b> encounter set.",
+            "text": "Réunissez chaque lieu du set de rencontre <b>Nouveaux Horizons</b>.",
             "bullets": [
               {
-                "text": "Put each [[Night]] location into play. Remove each [[Day]] location from the game. Each investigator begins play at a Factory Floor location of their choice."
+                "text": "Mettez en jeu chaque lieu [[Nuit]]. Retirez de la partie chaque lieu [[Jour]]. Chaque investigateur commence la partie dans un lieu Étage de l'Usine de son choix."
               },
               {
-                "text": "Because you are playing on Hard or Expert difficulty, set Cavern Entrance <i>(Darkest Depths)</i>, Descending Tunnel, and all 3 copies of Side Chamber <i>(Darkest Depths)</i> aside, out of play. Remove each remaining location from the game."
+                "text": "Puisque vous jouez en mode Difficile ou Expert, mettez de côté, hors jeu, l'Entrée de la Caverne <i>(Profondeurs les plus Sombres)</i>, le Tunnel Descendant et les 3 exemplaires de la Chambre Latérale <i>Profondeurs les plus Sombres)</i>. Retirez de la partie chaque lieu restant."
               }
             ]
           },
           {
             "id": "setup_agenda_v2",
-            "text": "Construct the agenda deck using agenda 1a—“Quiet Night” and agenda 2a—“Digging Deeper (v. II).” Remove each other agenda from the game."
+            "text": "Construisez le deck Intrigue en utilisant l'Intrigue 1a — « Nuit Calme » et l'Intrigue 2a —\n« Creuser Plus Profond (v. II). » Retirez de la partie toutes les autres intrigues."
           },
           {
             "id": "set_aside_v2",
-            "text": "Set the following cards aside, out of play: the Night Watchman enemy, each copy of the Blighted Worker enemy, each copy of the Echoing in Darkness treachery, the <b>Infected</b> and <b>Flying Terrors</b> encounter sets, and the Forged Permit and Sanguine Song story assets."
+            "text": "Mettez de côté les cartes suivantes, hors jeu : l'ennemi Gardien de Nuit, chaque exemplaire de l'ennemi Ouvrier Corrompu, chaque exemplaire de la traîtrise Des Échos dans les Ténèbres, les sets de rencontre <b>Infecté</b> et <b>Terreurs Volantes</b>, et les soutiens d'histoire Permis Falsifié et Chanson Sanguine."
           },
           {
             "id": "remove_javier",
-            "text": "Remove the Javier Rivera enemy and each copy of Factory Worker from the game."
+            "text": "Retirez de la partie l'ennemi Javier Rivera et chaque exemplaire de l'Ouvrière de l'Usine."
           },
           {
             "id": "location_layout_v1",
@@ -5518,7 +5518,7 @@
           },
           {
             "id": "add_1_blood_token",
-            "text": "Add 1 [blood] token to the chaos bag for the remainder of the campaign.",
+            "text": "Ajoutez 1 pion [blood] à la réserve du Chaos pour le reste de la campagne.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -5540,7 +5540,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "left_zburamoarte_alive",
-                "text": "the investigators left Zburamoarte alive."
+                "text": "les investigateurs ont laissé Zburamoarte en vie."
               }
             ]
           },
@@ -5551,7 +5551,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "defeated_zburamoarte",
-                "text": "the investigators defeated Zburamoarte."
+                "text": "les investigateurs ont vaincu Zburamoarte."
               }
             ]
           },
@@ -5562,7 +5562,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "left_to_the_cults_mercy",
-                "text": "the investigators were left to the cult's mercy."
+                "text": "les investigateurs ont été épargnés par la secte."
               }
             ]
           },
@@ -5573,7 +5573,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "did_not_complete_their_search",
-                "text": "the investigators did not complete their search."
+                "text": "les investigateurs n'ont pas terminé leurs recherches."
               }
             ]
           },
@@ -5584,13 +5584,13 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "completed_their_search",
-                "text": "the investigators completed their search."
+                "text": "les investigateurs ont terminé leurs recherches."
               }
             ]
           },
           {
             "id": "earn_xp",
-            "text": "Each investigator earns experience equal to the <b>victory X</b> value of each card in the victory display.",
+            "text": "Chaque investigateur reçoit un total de points d'expérience égal à la somme des valeurs de <b>Victoire X</b> des cartes qui se trouvent dans la pile de victoire.",
             "type": "input",
             "input": {
               "type": "counter",
@@ -5611,7 +5611,7 @@
               "choices": [
                 {
                   "id": "yes",
-                  "text": "The investigators may decide to spend 2 [per_investigator] total experience, as a group, to remove 1 [blood] token from the chaos bag. Would you like to do this?",
+                  "text": "Les investigateurs peuvent décider de dépenser collectivement un total de 2 [per_investigator] points d'expérience pour retirer 1 pion [blood] de la réserve du Chaos. Souhaitez-vous le faire ?",
                   "steps": [
                     "lose_xp_branch"
                   ],
@@ -5668,11 +5668,11 @@
           },
           {
             "id": "remove_4_xp",
-            "text": "Who should spend XP?",
+            "text": "Qui devrait dépenser des XP ?",
             "type": "input",
             "input": {
               "type": "investigator_counter",
-              "text": "Spend experience",
+              "text": "Dépensez l’expérience",
               "max": 4,
               "min": 0,
               "required_total": 4,
@@ -5687,11 +5687,11 @@
           },
           {
             "id": "remove_6_xp",
-            "text": "Who should spend XP?",
+            "text": "Qui devrait dépenser des XP ?",
             "type": "input",
             "input": {
               "type": "investigator_counter",
-              "text": "Spend experience",
+              "text": "Dépensez l’expérience",
               "max": 6,
               "min": 0,
               "required_total": 6,
@@ -5706,11 +5706,11 @@
           },
           {
             "id": "remove_8_xp",
-            "text": "Who should spend XP?",
+            "text": "Qui devrait dépenser des XP ?",
             "type": "input",
             "input": {
               "type": "investigator_counter",
-              "text": "Spend experience",
+              "text": "Dépensez l’expérience",
               "max": 8,
               "min": 0,
               "required_total": 8,
@@ -5725,7 +5725,7 @@
           },
           {
             "id": "remove_blood_token",
-            "text": "Remove 1 [blood] token from the chaos bag for the remainder of the campaign.",
+            "text": "Retirez 1 pion [blood] de la réserve du Chaos pour le reste de la campagne.",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -5737,7 +5737,7 @@
           },
           {
             "id": "add_2_blood_tokens",
-            "text": "Add 2 [blood] tokens to the chaos bag for the remainder of the campaign.",
+            "text": "Ajoutez 2 pions [blood] à la réserve du Chaos pour le reste de la campagne.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -5750,7 +5750,7 @@
           },
           {
             "id": "all_earn_blood_blight",
-            "text": "Each investigator who does not have The Blood Blight weakness becomes the bearer of a set-aside The Blood Blight weakness."
+            "text": "Chaque investigateur qui n'a pas de faiblesse Le Sang Corrompu devient le détenteur d'une faiblesse Le Sang Corrompu mise de côté."
           },
           {
             "id": "actually_all_earn_blood_blight",
@@ -5782,7 +5782,7 @@
               "choices": [
                 {
                   "id": "yes",
-                  "text": "Did the investigators find a sheet of arcane symbols?",
+                  "text": "Les investigateurs ont-ils trouvé une feuille couverte de symboles ésotériques ?",
                   "steps": [
                     "earn_sheet"
                   ]
@@ -5793,7 +5793,7 @@
           {
             "id": "earn_sheet",
             "bullet_type": "small",
-            "text": "Choose an investigator to become the bearer of the set-aside Sanguine Song story asset.",
+            "text": "N’importe quel investigateur peut devenir le détenteur du soutien d'histoire Chanson Sanguine.",
             "effects": [
               {
                 "type": "add_card",
@@ -5810,7 +5810,7 @@
               "choices": [
                 {
                   "id": "yes",
-                  "text": "Did the investigators find forged permits?",
+                  "text": "Les investigateurs ont-ils trouvé des permis falsifiés ?",
                   "steps": [
                     "earn_forged"
                   ]
@@ -5821,7 +5821,7 @@
           {
             "id": "earn_forged",
             "bullet_type": "small",
-            "text": "Choose an investigator to become the bearer of the set-aside Forged Permit story asset.",
+            "text": "N’importe quel investigateur peut devenir le détenteur du soutien d'histoire Permis Falsifié.",
             "effects": [
               {
                 "type": "add_card",
@@ -5832,7 +5832,7 @@
           },
           {
             "id": "release_blood_tokens",
-            "text": "Release each sealed [blood] token and return them to the chaos bag."
+            "text": "Libérez chaque pion [blood] et remettez-les dans la réserve du Chaos."
           },
           {
             "id": "maybe_ask_2_blood_tokens",
@@ -5854,7 +5854,7 @@
           },
           {
             "id": "ask_2_blood_tokens",
-            "text": "Each investigator who ended the scenario with 2 [blood] tokens sealed on their investigator becomes the bearer of a set-aside The Blood Blight weakness if they are not already a bearer of it.",
+            "text": "Chaque investigateur qui a terminé le scénario avec 2 pions [blood] scellés sur lui devient le détenteur d'une faiblesse Le Sang Corrompu s'il n'en détient pas déjà une.",
             "type": "input",
             "input": {
               "type": "investigator_choice",
@@ -5863,7 +5863,7 @@
               "choices": [
                 {
                   "id": "blood",
-                  "text": "2 sealed [blood] tokens?",
+                  "text": "2 pions [blood] scellés ?",
                   "condition": {
                     "type": "has_card",
                     "card": "13118",
@@ -5897,7 +5897,7 @@
               "branches": [
                 {
                   "id": "adjust_blood",
-                  "text": "Adjust blood tokens",
+                  "text": "Ajusté les pions Sang",
                   "repeatable": true,
                   "steps": [
                     "adjust_blood"
@@ -5915,7 +5915,7 @@
               "choices": [
                 {
                   "id": "add_blood",
-                  "text": "Add 1 [blood] token.",
+                  "text": "Ajoutez 1 pion [blood].",
                   "condition": {
                     "type": "multi",
                     "count": 1,
@@ -5955,7 +5955,7 @@
                 },
                 {
                   "id": "remove_blood",
-                  "text": "Remove 1 [blood] token.",
+                  "text": "Retirez 1 pion [blood].",
                   "condition": {
                     "type": "multi",
                     "count": 1,
@@ -6007,7 +6007,7 @@
               "physical",
               "mental"
             ],
-            "text": "“Things got pretty rough in there.”\n You awaken to the voice of Detective Reynolds. Blinking in the light of the morning, you sit up, waves of pain shooting through your stiff joints. Reynolds puts a hand on your shoulder. “Let’s not push it,” he says. “Besides, I’ve been watching the back of the factory, to see whether anyone—or anything—is going to follow us out.”",
+            "text": "« Ça a été assez rude là-dedans. »\nVous vous réveillez au son de la voix du détective Reynolds. Clignant des yeux dans la lumière du matin, vous vous redressez, des vagues de douleur traversant vos articulations raides. Reynolds pose une main sur votre épaule. « N'en faisons pas trop », dit-il. « De toute façon, j'ai surveillé l'arrière de l'usine pour voir si quelqu'un — ou quelque chose — allait nous suivre. »",
             "narration": {
               "id": "cob.new_horizons.no_resolution",
               "name": "No Resolution",
@@ -6024,7 +6024,7 @@
           {
             "id": "R1",
             "title": "Conclusion 1",
-            "text": "At long last you emerge from the meat packing facility, feeling no better than the cattle flanks that hung from hooks within. You hope that what you were able to accomplish will prove to be useful enough, even if you didn’t get to the bottom of what the cult was doing in the warehouse. At the very least, you have a name to go off of—Howard Wilkes, the owner of New Horizons, and the leader of the cult that was dwelling in its depths.",
+            "text": "Vous sortez enfin de l'abattoir, dans le même état que les carcasses d'animaux suspendues aux crochets à l'intérieur. Vous espérez que ce que vous avez réussi à accomplir s'avérera suffisamment utile, même si vous n' êtes pas parvenu à découvrir ce que la secte faisait dans l'entrepôt. Au moins, maintenant vous avez un point de départ pour vos recherches : Howard Wilkes, le propriétaire de New Horizons et le chef de la secte qui agissait dans ses souterrains.",
             "narration": {
               "id": "cob.new_horizons.r1",
               "name": "Resolution 1",
@@ -6043,7 +6043,7 @@
           {
             "id": "R2",
             "title": "Conclusion 2",
-            "text": "You have gotten to the bottom of the cult’s activities in the warehouse, and while you chose to leave whatever monsters lurked in the depths of the tunnels alive, you can only hope that your efforts will prove enough to put all of this to rest. At the very least, you have a name to go off of—Howard Wilkes, the owner of New Horizons, and the leader of the cult that was dwelling in its depths.",
+            "text": "Vous avez découvert toute la vérité sur les activités de la secte dans l'entrepôt, et bien que vous ayez choisi de laisser en vie les monstres qui se cachaient dans les profondeurs des tunnels, vous espérez que vos efforts suffiront à mettre fin à tout cela. Au moins, maintenant vous avez un point de départ pour vos recherches : Howard Wilkes, le propriétaire de New Horizons et le chef de la secte qui agissait dans ses souterrains.",
             "narration": {
               "id": "cob.new_horizons.r2",
               "name": "Resolution 2",
@@ -6062,7 +6062,7 @@
           {
             "id": "R3",
             "title": "Conclusion 3",
-            "text": "After a grueling fight against the truly massive foe, you finally put the abomination down. This beast, this Zburamoarte, was the source of the infected blood used in the cult’s rituals, spreading the blood blight throughout all of Arkham via the tainted meat. With the source of the blood blight defeated, you hope that no others can fall to the same fate as Julia Stern and others within the New Horizons factory. The case isn’t over, however, as you learned that a man named Howard Wilkes, the owner of New Horizons, was also leading of the cult of Zburamoarte. It’s time to make him answer for his crimes.",
+            "text": "Après un combat acharné contre cet ennemi gigantesque, vous avez finalement réussi à terrasser cette abomination. Cette bête, ce Zburamoarte, était la source du sang corrompu utilisé dans les rituels de la secte, qui propageait la maladie dans tout Arkham via la viande contaminée. La source de cette épidémie ayant été éliminée, vous espérez que personne d'autre ne connaîtra le même sort que Julia Stern et les autres employés de l'usine New Horizons. L'affaire n'est toutefois pas terminée, car vous avez appris qu'un homme nommé Howard Wilkes, le propriétaire de New Horizons, était également à la tête du culte de Zburamoarte. Il est temps pour lui de répondre de ses crimes.",
             "narration": {
               "id": "cob.new_horizons.r3",
               "name": "Resolution 3",
@@ -6081,7 +6081,7 @@
           {
             "id": "R4",
             "title": "Conclusion 4",
-            "text": "You are quickly overwhelmed by the cult, dragging you down into the caves while repeating the name “Zburamoarte, Zburamoarte, Zburamoarte…” Mercifully, you black out during the course of the cult’s rituals, and when you come to again, you are alone on the floor of the factory, the first light of morning peeking through the windows. You pick yourself up, stretch your aching joints, and make a swift exit.",
+            "text": "Vous êtes rapidement submergé par la secte, qui vous entraîne dans les grottes tout en scandant le nom de « Zburamoarte, Zburamoarte, Zburamoarte... ». Heureusement, vous perdez connaissance pendant les rituels, et lorsque vous reprenez vos esprits, vous êtes seul sur le sol de l'usine, les premières lueurs du matin filtrant à travers les fenêtres. Vous vous relevez, étirez vos articulations endolories et sortez rapidement.",
             "narration": {
               "id": "cob.new_horizons.r4",
               "name": "Resolution 4",
@@ -6103,7 +6103,7 @@
             "id": "R5",
             "title": "Conclusion 5",
             "hidden": true,
-            "text": "You regroup with Detective Reynolds, ready to investigate this Howard Wilkes, and make him answer for what’s been happening at his facility.",
+            "text": "Vous rejoignez l'inspecteur Reynolds, prêt à enquêter sur ce Howard Wilkes et à lui demander quelques explications au sujet de ce qui s'est passé dans son usine.",
             "narration": {
               "id": "cob.new_horizons.r5",
               "name": "Resolution 5",
@@ -6123,7 +6123,7 @@
       {
         "id": "friends_in_low_places",
         "scenario_name": "Friends in Low Places",
-        "full_name": "Interlude: Friends in Low Places",
+        "full_name": "Interlude : Des Amis Peu Recommandables",
         "header": "Interlude",
         "icon": "friends_in_low_places",
         "type": "interlude",
@@ -6136,7 +6136,7 @@
           {
             "id": "intro",
             "type": "story",
-            "text": "You and Detective Reynolds meet up at Velma’s Diner in the early morning to discuss what’s next. With the police department alerted to the situation at the meat packing facility, the detective has his eyes set on the person responsible.\n“We managed to get a name from those damned yahoos,” Reynolds says in low tones over his steaming mug of coffee. “Wilkes. Howard Wilkes. I looked into him some, and he’s a powerful guy. Lots of money. Lots of friends. Just built himself a brand new apartment in Northside. Calls it his penthouse. Apparently it’s some French design.” Reynolds shrugs. “Anyway, while the people at his factory have been either becoming cultists or becoming monsters, he’s been a bit of a recluse. Hasn’t left his place for weeks, and doesn’t let anyone in. At least, until tonight.”\nReynolds tells you how Mr. Wilkes is apparently throwing a party at his penthouse, an opportunity to throw his money around and impress some other businesspeople from outside of Arkham. “He wants to expand his distribution area, get that dirty meat of his to places outside of town. We can’t let that happen. We’ll need to get into that party. And I know just the guy to get us there.”\nAs if on cue, the bell above the diner door rings. You follow Detective Reynolds’s gaze to see a familiar face enter. A disheveled man with a round face and a bald head, wearing a fraying gray suit and green tie. Charlie Kane nods with familiarity to the waitress as he makes his way to your booth, sliding in beside Reynolds.\n“Glad you could make it, mayor,” the detective says.\nCharlie scowls at the remark. “This will need to be quick,” he says, looking over his shoulder.\n“Worried they’re still after you?” Reynolds asks.\nCharlie turns a serious look on the detective. “They always are.”\nTogether you go over the plan: Kane will get your names on the guest list for the party. You’ll arrive, where you and the detective will attempt to detain Wilkes. When Reynolds suggests having police backup on standby, Charlie shakes his head. “Wilkes will know what you’re planning,” the former mayor says. “If he gets wind the fuzz are waiting for him, there’s no telling what he’ll do.”\nCharlie glances out the windows of the diner, scanning the dark street outside as he speaks. “There’s one person in particular you should keep an eye out for: Priscilla Thomas. She’s a savvy businesswoman from Boston looking to make a distribution deal with Wilkes to get his product shipped throughout the state. It would be best to try and convince her this is a bad idea, however you need to. But, according to my contacts, Miss Thomas isn’t part of Wilkes’s organization, so… well, try using words, not fists.”",
+            "text": "Vous vous retrouvez avec l'inspecteur Reynolds au Restaurant de Velma tôt le matin pour discuter de la suite des événements. La police ayant été alertée de la situation à l'abattoir, l'inspecteur se concentre sur le responsable de tous ces évènements.\n« On a réussi à obtenir un nom de ces fichus aliénés », dit Reynolds à voix basse, devant sa tasse de café fumante. « Wilkes. Howard Wilkes. Je me suis renseigné sur lui, c'est un homme puissant. Il a beaucoup d'argent. Beaucoup d'amis. Il vient de se faire construire un appartement flambant neuf dans le Quartier Nord. Il appelle ça son penthouse. Apparemment, c'est du design français. » Reynolds hausse les épaules. « Bref, pendant que les employés de son usine devenaient soit des cultistes, soit des monstres, lui s'est un peu isolé. Il n'a pas quitté son domicile depuis des semaines et ne laisse personne entrer. Du moins, jusqu'à ce soir. »\nReynolds vous explique que M. Wilkes organise apparemment une fête dans son penthouse, une occasion de dépenser son argent et d'impressionner d'autres hommes d'affaires étrangers. « Il veut étendre sa zone de distribution pour vendre sa viande avariée en dehors de la ville. Nous ne pouvons pas laisser une telle chose se produire. Nous devons infiltrer cette fête. Et je connais justement quelqu'un qui peut nous y faire entrer. »\nComme si elle avait attendu ce signal, la cloche au-dessus de la porte du restaurant sonne. Vous suivez le regard du détective Reynolds et voyez un visage familier entrer. Un homme débraillé, au visage rond et au crâne chauve, vêtu d'un costume gris élimé et d'une cravate verte. Charlie Kane salue la serveuse d'un signe de tête familier en se dirigeant vers votre table, où il s'assoit à côté de Reynolds.\n« Je suis content que vous ayez pu venir, monsieur le maire », dit le détective.\nCharlie fronce les sourcils à cette remarque. « Il faudra faire vite », dit-il en regardant par-dessus son épaule.\n« Vous craignez qu'ils soient toujours à vos trousses? », demande Reynolds.\nCharlie lance un regard grave au détective. « Ils le sont toujours. »\nEnsemble, vous passez votre plan en revue : Kane inscrira vos noms sur la liste des invités à la fête. Une fois sur place, le détective et vous tenterez d'arrêter Wilkes. Lorsque Reynolds suggère de prévoir de possibles renforts de police, Charlie secoue la tête. « Wilkes saura ce que vous mijotez », dit l'ancien maire. « S'il apprend que les flics l'attendent, on ne sait pas de quoi il est capable. »\nCharlie jette un coup d'œil par la fenêtre du restaurant, scrutant la rue sombre à l'extérieur pendant qu'il parle. « Ily a une personne en particulier que vous devriez surveiller : Priscilla Thomas. C'est une femme d'affaires avisée de Boston qui cherche à conclure un accord de distribution avec Wilkes afin de faire livrer ses produits dans tout l'état. Il serait préférable d'essayer de la convaincre que c'est une mauvaise idée, quoi qu'il en coûte. D'après mes contacts, Madame Thomas ne fait pas partie de l'organisation de Wilkes, alors.. eh bien, essayez de briller par votre éloquence plutôt que par la violence. »",
             "narration": {
               "id": "cob.friends_in_low_places.intro",
               "name": "Friends in Low Places 1",
@@ -6147,7 +6147,7 @@
           },
           {
             "id": "check_12_blood_tokens",
-            "text": "If there are exactly 12 [blood] tokens in the chaos bag:",
+            "text": "S'il y a exactement 12 pions [blood] dans la réserve du Chaos :",
             "type": "branch",
             "condition": {
               "type": "multi",
@@ -6197,7 +6197,7 @@
               "choices": [
                 {
                   "id": "thank",
-                  "text": "<i>“Thanks for the help, Charlie. If you decide to run again, I’ll be sure to vote for you this time.”</i>",
+                  "text": "<i>« Merci pour votre aide Charlie. Si vous décidez de refaire campagne, je voterai pour vous cette fois-ci.»</i>",
                   "steps": [
                     "intro_2",
                     "earn_2_xp"
@@ -6205,7 +6205,7 @@
                 },
                 {
                   "id": "join",
-                  "text": "<i>“Why don’t you come with us, Charlie? Let whoever’s after you know you’re not afraid of them.”</i>",
+                  "text": "<i>« Pourquoi ne pas venir avec nous Charlie? Quelle que soit la personne qui vous pourchasse, envoyez-lui un signal. Montrez-lui que vous n'avez pas peur d'elle. »</i>",
                   "steps": [
                     "intro_3",
                     "all_condition_explaination",
@@ -6221,7 +6221,7 @@
           {
             "id": "intro_2",
             "type": "story",
-            "text": "Charlie snorts derisively. “I don’t think I’ll be running again. Not in a campaign, at least,” he says, and then fixes his steely glare solidly on you. “You must not fail at this. If Wilkes is allowed to continue, and if he secures that deal with Priscilla, then it won’t be long before all of Massachusetts is overrun with those… things.”",
+            "text": "Charlie ricane avec mépris. « Je ne pense pas que je me présenterai à nouveau. Pas dans une campagne électorale, en tout cas », dit-il, puis il vous fixe d'un regard d'acier. « Vous ne devez pas échouer. Si Wilkes n'est pas mis hors d'état de nuire et s'il conclut cet accord avec Priscilla, alors il ne faudra pas longtemps avant que tout le Massachusetts ne soit envahi par ces... choses. »",
             "narration": {
               "id": "cob.friends_in_low_places.intro_2",
               "name": "Friends in Low Places 2",
@@ -6232,7 +6232,7 @@
           },
           {
             "id": "earn_2_xp",
-            "text": "Each investigator earns 2 bonus experience.",
+            "text": "Chaque investigateur reçoit 2 points d'expérience bonus.",
             "effects": [
               {
                 "type": "earn_xp",
@@ -6244,7 +6244,7 @@
           {
             "id": "intro_3",
             "type": "story",
-            "text": "Charlie narrows his eyes at you as he considers your request. You can tell that he is mulling over all that has happened so far in your efforts to help the people of the Waterfront District…",
+            "text": "Charlie plisse les yeux en réfléchissant à votre demande. Vous voyez bien qu'il reconsidère tous les événements récents et vos efforts pour aider les habitants du Quartier du Front de Mer...",
             "narration": {
               "id": "cob.friends_in_low_places.intro_3",
               "name": "Friends in Low Places 3",
@@ -6255,12 +6255,12 @@
           },
           {
             "id": "all_condition_explaination",
-            "text": "If all of the following circumstances are true:"
+            "text": "Si tous les énoncés suivants sont vrais :"
           },
           {
             "id": "check_spared_or_killed_julia",
             "type": "branch",
-            "text": "<i>The investigators spared Julia Stern</i> or <i>the investigators killed Julia Stern</i> is recorded in your campaign log.",
+            "text": "<i>les investigateurs ont épargné Julia Stern</i> ou <i>les investigateurs ont tué Julia Stern</i> est inscrit dans votre carnet de campagne.",
             "condition": {
               "type": "multi",
               "count": 1,
@@ -6296,7 +6296,7 @@
           {
             "id": "check_completed_their_search",
             "type": "branch",
-            "text": "<i>The investigators completed their search</i> is recorded in your campaign log.",
+            "text": "<i>les investigateurs ont terminé leurs recherches</i> est inscrit dans votre Carnet de Campagne.",
             "condition": {
               "type": "campaign_log",
               "section": "campaign_notes",
@@ -6311,7 +6311,7 @@
           {
             "id": "check_no_blood_blight",
             "type": "branch",
-            "text": "No investigator has The Blood Blight weakness in their deck.",
+            "text": "Aucun investigateur n'a la faiblesse Le Sang Corrompu dans son deck.",
             "condition": {
               "type": "multi",
               "count": 1,
@@ -6403,7 +6403,7 @@
           {
             "id": "intro_4",
             "type": "story",
-            "text": "Charlie stands from his spot in the booth, reaching to shake hands with Detective Reynolds, and then with you. As you grip his hand there’s a pause. You can hear the quickening of his heartbeat as you hold his hand in a firm grip. You can feel his pulse through the handshake, and you can smell the fear growing in him. After a moment he rips his hand away with a sudden jerk, and rushes to the exit without another word.",
+            "text": "Charlie se lève avant de tendre la main pour serrer celle du détective Reynolds, puis la vôtre. Lorsque vous serrez sa main, vous entendez son cœur battre plus vite. Vous pouvez sentir son pouls à travers sa peau, et vous comprenez que la peur le gagne peu à peu. Après un moment, il retire sa main d'un coup sec et se précipite vers la sortie sans un mot.",
             "narration": {
               "id": "cob.friends_in_low_places.intro_4",
               "name": "Friends in Low Places 4",
@@ -6426,7 +6426,7 @@
           {
             "id": "intro_5",
             "type": "story",
-            "text": "Charlie sighs. “You’ve done a lot to help the people of the Waterfront,” he says. “These are civilians who are under the thumb of people like Wilkes, and you’ve gone to great lengths to see that justice is served. Alright. I’ll join you at the party.”",
+            "text": "Charlie soupire. « Vous avez beaucoup fait pour aider les habitants du Quartier du Front de Mer, dit-il. Ce sont des civils qui sont sous la coupe de gens comme Wilkes, et vous vous êtes donnés beaucoup de mal pour que justice soit faite. D'accord. Je vous rejoindrai à la fête. »",
             "narration": {
               "id": "cob.friends_in_low_places.intro_5",
               "name": "Friends in Low Places 5",
@@ -6441,7 +6441,7 @@
             "encounter_sets": [
               "friends_in_low_places"
             ],
-            "text": "Any one investigator may become the bearer of the Charlie Kane story asset. This asset can be found in the <b>Friends in Low Places</b> encounter set, which is indicated with the following encounter set symbol:",
+            "text": "N'importe quel investigateur peut devenir le détenteur du soutien d'histoire Charlie Kane. Ce soutien peut être trouvé dans le set de rencontre <b>Des Amis Peu Recommandables</b>, reconnaissable au symbole de set de rencontre suivant :",
             "effects": [
               {
                 "type": "add_card",
@@ -6453,7 +6453,7 @@
           {
             "id": "intro_6",
             "type": "story",
-            "text": "Charlie sighs. “You’ve done a lot to help the people of the Waterfront,” he says. “But it’s not enough, and you’re not done. And what’s worse, you’ve drawn a lot of attention. Attention I can’t afford. I’m sorry but I’ve already done too much. You’re on your own.”",
+            "text": "Charlie soupire « Vous avez beaucoup fait pour aider les habitants du Quartier du Front de Mer, dit-il. Mais ce n'est pas assez et il vous reste beaucoup à accomplir. Pire encore, vous avez attiré beaucoup d'attention. Une attention que je ne peux pas me permettre. Je suis désolé, mais j'en ai déjà trop fait. Vous êtes seuls maintenant. »",
             "narration": {
               "id": "cob.friends_in_low_places.intro_6",
               "name": "Friends in Low Places 6",
@@ -6467,7 +6467,7 @@
       {
         "id": "blood_money",
         "scenario_name": "Blood Money",
-        "full_name": "Scenario III: Blood Money",
+        "full_name": "Scénario III : L'Argent du Sang",
         "header": "Scénario III",
         "icon": "blood_money",
         "chaos_bag_card": "13068",
@@ -6495,7 +6495,7 @@
           {
             "id": "intro",
             "type": "story",
-            "text": "Howard Wilkes’s party is at his fancy new penthouse at the top of one of the rebuilt buildings in Northside, overlooking the dark and industrious district of Arkham. You ride the elevator up to the fourth floor, and follow the short, clean hallway to the door of the penthouse. Rapping on the door, you’re greeted by a tall man in a tuxedo who checks your name and allows you entrance. It would seem Charlie is as good as his word.\nDetective Reynolds, also dressed in formalwear, makes his way over to you as soon as you step into the foyer. “Good, you’re here,” he says. “Problem is that Wilkes isn’t around, and nobody has seen him. I suggest we deal with Miss Thomas. Get her to rethink her business decision. Then we can chat up the rest of the party and see what else we can learn.” He glances around nervously at the other guests nearby, all of whom are looking at him and at you with suspicion. “And let’s be quick about it.”",
+            "text": "La fête organisée par Howard Wilkes se déroule dans son luxueux penthouse situé au sommet d'un des immeubles reconstruits du Quartier Nord, surplombant le quartier industriel et crasseux d'Arkham. Vous prenez l'ascenseur jusqu'au quatrième étage, puis empruntez le petit couloir reluisant qui mène à l'entrée de son luxueux appartement. Après avoir frappé à la porte, vous êtes accueilli par un homme en smoking qui trouve votre nom sur sa liste et vous autorise à entrer. Il semblerait que Charlie ait tenu parole.\nLe détective Reynolds, également vêtu d'une tenue de soirée, s'approche de vous dès que vous entrez. « Bien, vous êtes là, dit-il. Le problème, c'est que Wilkes est absent et que personne ne l'a vu. Je suggère que nous nous occupions de Madame Thomas. Amenons-la à reconsidérer sa décision en matière d'affaires. Ensuite, nous pourrons discuter avec le reste des invités et voir ce que nous pouvons apprendre de plus. » Il jette un regard nerveux aux autres invités qui l'observent tous avec suspicion, tout comme vous d'ailleurs. « Et faisons vite. »",
             "narration": {
               "id": "cob.blood_money.intro",
               "name": "Intro",
@@ -6518,11 +6518,11 @@
               "sanguine_secrets",
               "arcane_lock"
             ],
-            "subtext": "When gathering cards from the <b>Sanguine Secrets</b> encounter set, only gather the three copies of Sanguine Cultist and the Blood-Crazed Zealot enemies. Do not gather the Morbid Rituals treacheries."
+            "subtext": "Lorsque vous réunissez les cartes du set de rencontre <b>Secrets Sanguins</b>, ne réunissez que les trois exemplaires du Cultiste Sanguin, ainsi que le Zélote Assoiffé de Sang. Ne réunissez pas les traîtrises Rituels Morbides."
           },
           {
             "id": "check_3_or_4_encounters",
-            "text": "If you are playing with 3 or 4 investigators:",
+            "text": "S’il y a 3 ou 4 investigateurs dans la partie :",
             "type": "branch",
             "condition": {
               "type": "multi",
@@ -6569,20 +6569,20 @@
           },
           {
             "id": "setup_locations",
-            "text": "Put the Office, Study, Dining Hall, and Kitchen locations into play.",
+            "text": "Mettez en jeu les lieux Bureau, Étude, Salle à Manger et Cuisine.",
             "bullets": [
               {
-                "text": "Put Foyer into play, (Boring Party) side faceup."
+                "text": "Mettez en jeu le Hall d'Entrée, face (Soirée Ennuyante) visible."
               },
               {
-                "text": "Set Master Bedroom aside, out of play."
+                "text": "Mettez de côté La Chambre Principale, hors jeu."
               }
             ]
           },
           {
             "id": "starting_location",
             "bullet_type": "small",
-            "text": "Each investigator begins play at Foyer."
+            "text": "Tous les investigateurs commencent la partie dans le Hall d'Entrée."
           },
           {
             "id": "check_easy_location",
@@ -6622,12 +6622,12 @@
           {
             "id": "standard_balcony",
             "bullet_type": "small",
-            "text": "Because you are playing on Easy or Standard difficulty, set the Balcony aside, out of play."
+            "text": "Puisque vous jouez en mode Facile ou Standard, mettez également de côté le Balcon, hors jeu."
           },
           {
             "id": "remove_balcony",
             "bullet_type": "small",
-            "text": "Because you are playing on Hard or Expert difficulty, remove Balcony from the game."
+            "text": "Puisque vous jouez en mode Difficile ou Expert, retirez de la parie le Balcon."
           },
           {
             "id": "location_layout",
@@ -6654,11 +6654,11 @@
           },
           {
             "id": "spawn_priscilla",
-            "text": "Spawn the Priscilla Thomas enemy at Dining Hall."
+            "text": "Générez l'ennemi Priscilla Thomas dans la Salle à Manger."
           },
           {
             "id": "spawn_suspicious_guests",
-            "text": "Gather each Suspicious Guest enemy. Because the number of investigators in the game is…",
+            "text": "Réunissez tous les ennemis Invité Suspicieux. Puisque le nombre d'investigateurs dans la partie est égal à...",
             "type": "branch",
             "condition": {
               "type": "scenario_data",
@@ -6694,17 +6694,17 @@
           {
             "id": "spawn_one_guest",
             "bullet_type": "small",
-            "text": "…exactly 1, spawn 1 Suspicious Guest at the Study. Remove 2 copies of that enemy from the game."
+            "text": "... exactement 1, générez 1 Invité Suspicieux dans l'Étude. Retirez de la partie 2 exemplaires de cet ennemi."
           },
           {
             "id": "spawn_two_guests",
             "bullet_type": "small",
-            "text": "…exactly 2, spawn 1 Suspicious Guest at the Study and 1 at the Office. Remove 1 copy of that enemy from the game."
+            "text": "... exactement 2, générez 1 Invité Suspicieux dans l'Étude et 1 dans le Bureau. Retirez de la partie 1 exemplaire de cet ennemi."
           },
           {
             "id": "spawn_three_guests",
             "bullet_type": "small",
-            "text": "…exactly 3 or 4, spawn 1 Suspicious Guest at the Study, 1 at the Office, and 1 at the Dining Hall."
+            "text": "... exactement 3 ou 4, générez 1 Invité Suspicieux dans l'Étude, 1 dans le Bureau et 1 dans la Salle à Manger."
           },
           {
             "id": "check_setup_agenda",
@@ -6732,16 +6732,16 @@
           {
             "id": "agenda_defeated",
             "bullet_type": "small",
-            "text": "Construct the agenda deck using agenda 2a—“Feeding Frenzy (v. II).” Remove the other copy of agenda 2a from the game."
+            "text": "Construisez le deck Intrigue en utilisant l'Intrigue 2a - « Frénésie Alimentaire (v. II). » Retirez de la partie l’autre exemplaire de l'intrigue 2a."
           },
           {
             "id": "agenda_alive",
             "bullet_type": "small",
-            "text": "Construct the agenda deck using agenda 2a—“Feeding Frenzy (v. I).” Remove the other copy of agenda 2a from the game."
+            "text": "Construisez le deck Intrigue en utilisant l'intrigue 2a « Frénésie Alimentaire (v. I). » Retirez de la partie l'autre exemplaire de l'intrigue 2a."
           },
           {
             "id": "set_aside_cards",
-            "text": "Set aside each copy of the Child of Blood enemy, the Spawn of Zburamoarte enemy, and the Sanguine Rebirth treachery, the Chosen of Zburamoarte double-sided story asset, as well as each enemy from the <b>Sanguine Secrets</b> encounter set."
+            "text": "Mettez de côté chaque exemplaire de l'ennemi Enfant du Sang, de l'ennemi Rejeton de Zburamoarte, de la traîtrise Renaissance Sanguine, ainsi que le soutien d'histoire recto verso l'Élu de Zburamoarte et tous les ennemis du set de rencontre <b>Secrets Sanguins</b>."
           },
           {
             "id": "check_boss_difficulty",
@@ -6780,15 +6780,15 @@
           },
           {
             "id": "easy_boss",
-            "text": "Because you are playing on Easy difficulty, set Howard Wilkes <i>(First Child of Zburamoarte)</i> aside, out of play. Remove each other copy of Howard Wilkes from the game."
+            "text": "Puisque vous jouez en mode Facile, mettez de côté Howard Wilkes <i>(Premier Enfant de Zburamoarte)</i>, hors jeu. Retirez de la partie tous les autres exemplaires d'Howard Wilkes."
           },
           {
             "id": "standard_boss",
-            "text": "Because you are playing on Standard difficulty, set Howard Wilkes <i>(Too Far Gone)</i> aside, out of play. Remove each other copy of Howard Wilkes from the game."
+            "text": "Puisque vous jouez en mode Standard, mettez de côté Howard Wilkes <i>(Parti trop Loin)</i>, hors jeu. Retirez de la partie tous les autres exemplaires d'Howard Wilkes."
           },
           {
             "id": "hard_boss",
-            "text": "Because you are playing on Hard or Expert difficulty, set Howard Wilkes <i>(Ultimate Predator)</i> aside, out of play. Remove each other copy of Howard Wilkes from the game."
+            "text": "Puisque vous jouez en mode Difficile ou Expert, mettez de côté Howard Wilkes <i>(Prédateur Ultime)</i>, hors jeu. Retirez de la partie tous les autres exemplaires d'Howard Wilkes."
           },
           {
             "id": "check_killed_julia_stern",
@@ -6816,7 +6816,7 @@
           {
             "id": "remove_julia",
             "bullet_type": "small",
-            "text": "Remove each copy of the Julia Stern enemy from the game."
+            "text": "Retirez de la partie tous les exemplaires de l'ennemi Julia Stern."
           },
           {
             "id": "check_julia_difficulty",
@@ -6855,15 +6855,15 @@
           },
           {
             "id": "easy_julia",
-            "text": "Because you are playing on Easy difficulty, set Julia Stern <i>(First Victim of New Horizons)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+            "text": "Puisque vous jouez en mode Facile, mettez de côté Julia Stern <i>(Première Victime de New Horizons)</i>, hors jeu. Retirez de la partie tous les autres exemplaires de Julia Stern."
           },
           {
             "id": "standard_julia",
-            "text": "Because you are playing on Standard difficulty, set Julia Stern <i>(Out for Blood)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+            "text": "Puisque vous jouez en mode Standard, mettez de côté Julia Stern <i>(Assoiffée de Sang)</i>, hors jeu. Retirez de la partie tous les autres exemplaires de Julia Stern."
           },
           {
             "id": "hard_julia",
-            "text": "Because you are playing on Hard or Expert difficulty, set Julia Stern <i>(Child of Vengeance)</i> aside, out of play. Remove each other copy of Julia Stern from the game."
+            "text": "Puisque vous jouez en mode Difficile ou Expert, mettez de côté Julia Stern <i>(Enfant de la Vengeance)</i>, hors jeu. Retirez de la partie tous les autres exemplaires de Julia Stern."
           },
           {
             "id": "add_cultist",
@@ -6890,7 +6890,7 @@
               "choices": [
                 {
                   "id": "add_blood",
-                  "text": "Add 1 [blood] token.",
+                  "text": "Ajoutez 1 pion [blood].",
                   "condition": {
                     "type": "multi",
                     "count": 1,
@@ -6930,7 +6930,7 @@
                 },
                 {
                   "id": "remove_blood",
-                  "text": "Remove 1 [blood] token.",
+                  "text": "Retirez 1 pion [blood].",
                   "condition": {
                     "type": "multi",
                     "count": 1,
@@ -6982,7 +6982,7 @@
               "branches": [
                 {
                   "id": "adjust_blood",
-                  "text": "Adjust blood tokens",
+                  "text": "Ajusté les pions Sang",
                   "repeatable": true,
                   "steps": [
                     "adjust_blood"
@@ -7080,9 +7080,9 @@
           },
           {
             "id": "codex_b_1",
-            "title": "[codex] Codex B: Priscilla Thomas",
+            "title": "[codex] Codex B : Priscilla Thomas",
             "type": "story",
-            "text": "Priscilla Thomas stands near the door to the dining hall, watching the other guests with a look of bored frustration. “A host who arrives late to his own party is never a good sign,” she says. She turns to regard you as you approach, and her eyebrow goes up in suspicion. “I don’t suppose you know anything about that, do you?”",
+            "text": "Priscilla Thomas se tient près de la porte de la salle à manger et observe les autres invités d'un air frustré et ennuyé. « Un hôte qui arrive en retard à sa propre fête, ce n'est jamais bon signe », commente-t-elle. Elle se retourne pour vous regarder lorsque vous approchez et lève un sourcil inquisiteur. « Je n'oserais pas supposer que vous en connaissez la raison, n'est-ce pas ? »",
             "narration": {
               "id": "cob.blood_money.codex_b",
               "name": "Codex B: Priscilla Thomas",
@@ -7093,9 +7093,9 @@
           },
           {
             "id": "codex_b_2",
-            "title": "[codex] Codex B: Priscilla Thomas",
+            "title": "[codex] Codex B : Priscilla Thomas",
             "type": "story",
-            "text": "You try talking to Miss Thomas about her reason for being at the party, attempting to sow the seeds of doubt in her mind regarding Howard Wilkes and his business.",
+            "text": "Vous essayez de demander à Mme Thomas ce qui l'amène à cette soirée, en essayant de semer le doute dans son esprit au sujet de Howard Wilkes et de ses affaires.",
             "narration": {
               "id": "cob.blood_money.codex_b_2",
               "name": "Priscilla Thomas 2",
@@ -7107,7 +7107,7 @@
           {
             "id": "codex_b_2_continued",
             "type": "story",
-            "text": "You try talking to Miss Thomas about her reason for being at the party, attempting to sow the seeds of doubt in her mind regarding Howard Wilkes and his business.",
+            "text": "Vous essayez de demander à Mme Thomas ce qui l'amène à cette soirée, en essayant de semer le doute dans son esprit au sujet de Howard Wilkes et de ses affaires.",
             "narration": {
               "id": "cob.blood_money.codex_b_2",
               "name": "Priscilla Thomas 2",
@@ -7118,11 +7118,11 @@
           },
           {
             "id": "release_priscilla_tokens",
-            "text": "Release each chaos token sealed on Priscilla Thomas. Place 1 horror <i>(from the token pool)</i> on Priscilla Thomas for each chaos token released this way."
+            "text": "Libérez chaque pion Chaos scellé sur Priscilla Thomas. Placez 1 horreur <i>(de la réserve de pions)</i> sur Priscilla Thomas pour chaque pion Chaos ainsi libéré."
           },
           {
             "id": "test_priscilla_horror",
-            "text": "Choose an investigator at your location to test [willpower] or [intellect] (3). If that investigator succeeds, place 1 horror on Priscilla Thomas."
+            "text": "Choisissez un investigateur dans votre lieu pour effectuer un test de [willpower] ou [intellect] (3). Si cet investigateur réussit, placez 1 horreur sur Priscilla Thomas."
           },
           {
             "id": "ask_4_or_more_horror",
@@ -7132,7 +7132,7 @@
               "choices": [
                 {
                   "id": "yes",
-                  "text": "Is there 4 or more horror on Priscilla Thomas?",
+                  "text": "Y a-t-il au moins 4 horreurs sur Priscilla Thomas ?",
                   "effects": [
                     {
                       "type": "campaign_log",
@@ -7153,7 +7153,7 @@
           {
             "id": "codex_b_3",
             "type": "story",
-            "text": "Miss Thomas listens to your story, her face stoic but her eyes attentive. Eventually she nods, setting her drink down on a nearby end table. “Say no more,” she said. “I was already feeling like this was a bad deal. You’re only confirming my concerns. Thanks.” She turns to leave, and pauses in the doorway. “If ever you find yourself in Boston and need work, I could make use of your investigative skills. And you’d be paid well.” With that, she leaves, heading for the foyer.",
+            "text": "Mme Thomas écoute votre histoire, le visage impassible, mais le regard attentif. Finalement, elle hoche la tête et pose son verre sur une petite table d'appoint. « N'en dites pas plus. J'avais déjà l'impression que c'était une mauvaise affaire. Vous ne faites que confirmer mes inquiétudes. Merci. » Elle se retourne pour partir, puis s'arrête dans l'embrasure de la porte. « Si jamais vous vous retrouvez à Boston et que vous avez besoin de travail, je pourrais avoir besoin de vos talents d'enquêteur. Et vous seriez bien payé. » Sur ces mots, elle s'éloigne vers le hall d'entrée.",
             "narration": {
               "id": "cob.blood_money.codex_b_3",
               "name": "Priscilla Thomas 3",
@@ -7164,11 +7164,11 @@
           },
           {
             "id": "codex_b_3_effect",
-            "text": "Remove Priscilla Thomas from the game."
+            "text": "Retirez Priscilla Thomas de la partie."
           },
           {
             "id": "codex_b_3_effect_2",
-            "text": "Each investigator may heal 2 horror or gain 3 resources."
+            "text": "Chaque investigateur a le droit de soigner 2 horreurs ou de gagner 3 ressources."
           },
           {
             "id": "maybe_repeat_codex_b",
@@ -7190,13 +7190,13 @@
           },
           {
             "id": "repeat_codex_b",
-            "text": "Any investigator may trigger this codex entry again."
+            "text": "N’importe quel investigateur a le droit de déclencher à nouveau ce codex."
           },
           {
             "id": "codex_a_story",
-            "title": "[codex] Codex A: Party Guest",
+            "title": "[codex] Codex A : Invité à la Fête",
             "type": "story",
-            "text": "You chat up the party guest, trying to learn what you can while making sure they don’t interfere in your investigation.",
+            "text": "Vous discutez avec un invité en essayant d en apprendre le plus possible, tout en vous assurant que vous ne serez pas dérangé pendant votre enquête.",
             "narration": {
               "id": "cob.blood_money.codex_a",
               "name": "Codex A: Party Guest",
@@ -7207,19 +7207,19 @@
           },
           {
             "id": "codex_a_explanation",
-            "text": "Reveal random tokens from the chaos bag until you reveal a token with a symbol that isn’t sealed on an enemy."
+            "text": "Révélez au hasard des pions de la réserve du Chaos jusqu'à ce que vous révéliez un pion ayant un symbole qui n'est pas scellé sur un ennemi."
           },
           {
             "id": "codex_a_choice",
-            "text": "If the token is…",
+            "text": "Si le pion est...",
             "type": "input",
             "input": {
               "type": "choose_one",
               "choices": [
                 {
                   "id": "skull",
-                  "text": "…a [skull] token",
-                  "description": "The guest regards you with suspicion.",
+                  "text": "... un pion [skull]",
+                  "description": "Cet invité vous regarde avec suspicion.",
                   "steps": [
                     "codex_skull_story",
                     "codex_skull_effect"
@@ -7227,8 +7227,8 @@
                 },
                 {
                   "id": "cultist",
-                  "text": "…a [cultist] token",
-                  "description": "The guest is trying not to be noticed.",
+                  "text": "... un pion [cultist].",
+                  "description": "Cet invité essaye de ne pas être remarqué.",
                   "steps": [
                     "codex_cultist_story",
                     "codex_cultist_effect"
@@ -7236,8 +7236,8 @@
                 },
                 {
                   "id": "tablet",
-                  "text": "…a [tablet] token",
-                  "description": "Seated comfortably, this guest smiles at you.",
+                  "text": "... un pion [tablet].",
+                  "description": "Cet invité est confortablement assis et vous sourit.",
                   "steps": [
                     "codex_tablet_story",
                     "codex_tablet_effect",
@@ -7246,8 +7246,8 @@
                 },
                 {
                   "id": "elder_thing",
-                  "text": "…an [elder_thing] token",
-                  "description": "This guest can’t eat their food fast enough.",
+                  "text": "... un pion [elder_thing].",
+                  "description": "Cet invité s'empiffre à une vitesse hallucinante.",
                   "steps": [
                     "codex_elder_thing_story",
                     "codex_elder_thing_effect",
@@ -7256,8 +7256,8 @@
                 },
                 {
                   "id": "blood",
-                  "text": "…a [blood] token",
-                  "description": "This guest is dressed for business, not a party.",
+                  "text": "... un pion [blood].",
+                  "description": "Cet invité est habillé pour faire des affaires, pas pour faire la fête.",
                   "steps": [
                     "codex_blood_story",
                     "codex_blood_effect"
@@ -7265,8 +7265,8 @@
                 },
                 {
                   "id": "auto_fail",
-                  "text": "…an [auto_fail] token",
-                  "description": "This guest is struggling to stand upright.",
+                  "text": "… un pion [auto_fail].",
+                  "description": "Cet invité a bien du mal à rester debout.",
                   "steps": [
                     "codex_auto_fail_story",
                     "codex_auto_fail_effect"
@@ -7274,8 +7274,8 @@
                 },
                 {
                   "id": "elder_sign",
-                  "text": "…an [elder_sign] token",
-                  "description": "This guest joins a small group to gossip.",
+                  "text": "... un pion [elder_sign].",
+                  "description": "Cet invité rejoint un petit groupe de commères.",
                   "steps": [
                     "codex_elder_sign_story",
                     "codex_elder_sign_effect",
@@ -7287,13 +7287,13 @@
           },
           {
             "id": "codex_a_repeat",
-            "text": "Any investigator may trigger Codex A again."
+            "text": "N’importe quel investigateur a le droit de déclencher à nouveau le Codex A."
           },
           {
             "id": "codex_skull_story",
-            "title": "[codex] Codex [skull]: Party Guest",
+            "title": "[codex] Codex [skull] : Invité à la Fête",
             "type": "story",
-            "text": "The guest begins a long, boring, and painfully oblivious story about how they were shocked to see Howard Wilkes choose Northside—the “working district, of all places”—as the location for not only this party, but also his penthouse. You pretend to be interested as they ramble on, but find a quiet moment to steal away instead.",
+            "text": "Cet invité entreprend de vous raconter une histoire longue, ennuyeuse et pénible pour vous expliquer à quel point il est choqué qu'Howard Wilkes ait choisi le Quartier Nord — le quartier des ouvriers, s'il en est — pour abriter non seulement cette fête, mais aussi son penthouse. Vous ménagez les apparences et faites semblant de vous intéresser à mesure qu'il poursuit son récit, mais prenez la tangente dès que vous en avez l'occasion.",
             "narration": {
               "id": "cob.blood_money.codex_skull",
               "name": "Codex [skull]: Party Guest",
@@ -7304,13 +7304,13 @@
           },
           {
             "id": "codex_skull_effect",
-            "text": "Automatically evade this enemy and seal this token on it (if Priscilla Thomas is in play, seal this token on her instead)."
+            "text": "Échappez automatiquement à cet ennemi et scellez ce pion sur lui (si Priscilla Thomas est en jeu, scellez ce pion sur elle à la place)."
           },
           {
             "id": "codex_cultist_story",
-            "title": "[codex] Codex [cultist]: Party Guest",
+            "title": "[codex] Codex [cultist] : Invité à la Fête",
             "type": "story",
-            "text": "As you approach the guest, they stare you down with a deathly glare. Before you can even ask them what’s wrong, a dagger, fashioned from an over-sized fang, flashes in their hands as it’s drawn from their jacket pocket. “I know what you’re trying to do!” they shout. “We won’t let you stop what has already been started!”",
+            "text": "Lorsque vous vous approchez de l'invité, celui-ci vous fixe d'un regard noir. Avant même que vous ayez le temps de lui demander ce qui ne va pas, un poignard, fabriqué à partir d'une canine surdimensionnée, apparaît dans sa main depuis la poche de sa veste. « Je sais ce que vous essayez de faire! » crie-t-il. « Nous ne vous laisserons pas arrêter ce qui a déjà commencé! »",
             "narration": {
               "id": "cob.blood_money.codex_cultist",
               "name": "Codex [cultist]: Party Guest",
@@ -7321,13 +7321,13 @@
           },
           {
             "id": "codex_cultist_effect",
-            "text": "Discard this enemy and spawn 1 random set-aside [[Cultist]] enemy engaged with you. Seal this token on that enemy (if Priscilla Thomas is in play, seal this token on her instead)."
+            "text": "Défaussez cet ennemi et générez aléatoirement 1 ennemi [[Cultiste]] mis de côté, engagé avec vous. Scellez ce pion sur cet ennemi (si Priscilla Thomas est en jeu, scellez ce pion sur elle à la place)."
           },
           {
             "id": "codex_tablet_story",
-            "title": "[codex] Codex [tablet]: Party Guest",
+            "title": "[codex] Codex [tablet] : Invité à la Fête",
             "type": "story",
-            "text": "Your conversation with this guest, while enlightening about some strange happenings in French Hill, is otherwise unhelpful.",
+            "text": "La conversation que vous entretenez avec cet invité ne vous est pas d une grande utilité, même si elle s avère éclairante en ce qui concerne des événements étranges qui ont eu lieu à French Hill.",
             "narration": {
               "id": "cob.blood_money.codex_tablet",
               "name": "Codex [tablet]: Party Guest",
@@ -7338,7 +7338,7 @@
           },
           {
             "id": "codex_tablet_effect",
-            "text": "Automatically evade this enemy and seal this token on it."
+            "text": "Échappez automatiquement à cet ennemi et scellez ce pion sur lui."
           },
           {
             "id": "codex_tablet_effect_2",
@@ -7346,9 +7346,9 @@
           },
           {
             "id": "codex_elder_thing_story",
-            "title": "[codex] Codex [elder_thing]: Party Guest",
+            "title": "[codex] Codex [elder_thing] : Invité à la fête",
             "type": "story",
-            "text": "“Darling, you simply must try the hors d’oeuvres!” This guest approaches you, holding a cracker topped with some sort of blood-red meat-spread, ready to force it into your mouth. You grit your teeth, make a comment about needing to use the washroom, and make a swift exit.",
+            "text": "« Mon ami, vous devez absolument goûter les hors-d'œuvre! » Cet invité s'approche de vous, tenant un cracker recouvert d'une sorte de pâte à tartiner rouge sang, prêt à vous le fourrer dans la bouche. Vous serrez les dents et prétextez devoir aller aux toilettes afin de vous éclipser rapidement.",
             "narration": {
               "id": "cob.blood_money.codex_elder_thing",
               "name": "Codex [elder_thing]: Party Guest",
@@ -7359,17 +7359,17 @@
           },
           {
             "id": "codex_elder_thing_effect",
-            "text": "Automatically evade this enemy and seal this token on it."
+            "text": "Échappez automatiquement à cet ennemi et scellez ce pion sur lui."
           },
           {
             "id": "codex_elder_thing_effect_2",
-            "text": "You may move to a connecting location."
+            "text": "Vous pouvez vous déplacer vers un lieu connexe."
           },
           {
             "id": "codex_blood_story",
-            "title": "[codex] Codex [blood]: Party Guest",
+            "title": "[codex] Codex [blood] : Invité à la Fête",
             "type": "story",
-            "text": "This guest remarks about how Howard Wilkes has met resistance when trying to distribute his product throughout Arkham, making a name for himself among local businesses as a ruthless megalomaniac. He’s brought Priscilla Thomas here this evening in hopes to find success outside of the city before his entire operation runs out of funding.",
+            "text": "Cet invité fait remarquer que Howard Wilkes s'est heurté à une certaine résistance lorsqu’il a tenté de distribuer son produit dans tout Arkham, se forgeant ainsi une réputation de mégalomane impitoyable auprès des entreprises locales. Il a amené Priscilla Thomas ici ce soir dans l'espoir de trouver le succès en dehors de la ville, avant que toute son opération n'arrive à court de financement.",
             "narration": {
               "id": "cob.blood_money.codex_blood",
               "name": "Codex [blood]: Party Guest",
@@ -7380,13 +7380,13 @@
           },
           {
             "id": "codex_blood_effect",
-            "text": "Automatically evade this enemy and seal this token on it (if Priscilla Thomas is in play, seal this token on her instead)."
+            "text": "Échappez automatiquement à cet ennemi et scellez ce pion sur lui (si Priscilla Thomas est en jeu, scellez ce pion sur elle à la place)."
           },
           {
             "id": "codex_auto_fail_story",
-            "title": "[codex] Codex [auto_fail]: Party Guest",
+            "title": "[codex] Codex [auto_fail] : Invité à la Fête",
             "type": "story",
-            "text": "This guest stumbles a bit, leaning heavily against a marble statue. You approach cautiously, reaching out and asking whether they need help. No sooner does your hand touch their shoulder than they wheel about, a crazed look in their eyes and a snarl on their lips.",
+            "text": "Cet invité trébuche légèrement, s'appuyant lourdement contre une statue de marbre. Vous vous approchez prudemment, tendant la main et lui demandant s'il a besoin d'aide. À peine avez-vous touché son épaule qu'il se retourne brusquement, le regard fou et un grognement aux lèvres.",
             "narration": {
               "id": "cob.blood_money.codex_auto_fail",
               "name": "Codex [auto_fail]: Party Guest",
@@ -7397,13 +7397,13 @@
           },
           {
             "id": "codex_auto_fail_effect",
-            "text": "This enemy attacks you. After this attack, that enemy disengages from each investigator and moves to a connecting location (with no investigators, if able)."
+            "text": "Cet ennemi vous attaque. Après cette attaque, cet ennemi se désengage de chaque investigateur et se déplace vers un lieu connexe (sans investigateur dedans, si possible)."
           },
           {
             "id": "codex_elder_sign_story",
-            "title": "[codex] Codex [elder_sign]: Party Guest",
+            "title": "[codex] Codex [elder_sign] : Invité à la Fête",
             "type": "story",
-            "text": "You find a small group of guests talking amongst themselves in hushed tones. You are able to loiter just outside of their huddle, and learn that each has their own suspicions about what is really going on at tonight’s party.",
+            "text": "Vous rejoignez un petit groupe d'invités qui parlent entre eux à voix basse. Vous parvenez à surprendre leur discussion et apprenez que chacun d'eux a ses propres doutes concernant ce qu'il est réellement en train de se passer à cette soirée.",
             "narration": {
               "id": "cob.blood_money.codex_elder_sign",
               "name": "Codex [elder_sign]: Party Guest",
@@ -7414,15 +7414,15 @@
           },
           {
             "id": "codex_elder_sign_effect",
-            "text": "Automatically evade this enemy."
+            "text": "Échappez automatiquement à cet ennemi."
           },
           {
             "id": "codex_elder_sign_effect_2",
-            "text": "Gain 1 clue <i>(from the token pool)</i>. Then, if Detective Reynolds is in play under an investigator’s control, that investigator gains 1 clue <i>(from the token pool)</i>."
+            "text": "Gagnez 1 indice <i>(de la réserve de pions)</i>. Ensuite, si le Détective Reynolds est en jeu sous le contrôle d'un investigateur, cet investigateur gagne 1 indice <i>(de la réserve de pions)</i>."
           },
           {
             "id": "earn_xp",
-            "text": "Each investigator earns experience equal to the <b>victory X</b> value of each card in the victory display.",
+            "text": "Chaque investigateur reçoit un total de points d'expérience égal à la somme des valeurs de <b>Victoire X</b> des cartes qui se trouvent dans la pile de victoire.",
             "type": "input",
             "input": {
               "type": "counter",
@@ -7455,7 +7455,7 @@
           },
           {
             "id": "ask_2_blood_tokens",
-            "text": "Each investigator who ended the scenario with 2 [blood] tokens sealed on their investigator becomes the bearer of a set-aside The Blood Blight weakness if they are not already a bearer of it.",
+            "text": "Chaque investigateur qui a terminé le scénario avec 2 pions [blood] scellés sur lui devient le détenteur d'une faiblesse Le Sang Corrompu s'il n'en détient pas déjà une.",
             "type": "input",
             "input": {
               "type": "investigator_choice",
@@ -7464,7 +7464,7 @@
               "choices": [
                 {
                   "id": "blood",
-                  "text": "2 sealed [blood] tokens?",
+                  "text": "2 pions [blood] scellés ?",
                   "condition": {
                     "type": "has_card",
                     "card": "13118",
@@ -7494,7 +7494,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "failed_to_stop_the_children_of_blood",
-                "text": "the investigators failed to stop the children of blood."
+                "text": "les investigateurs ont échoué à arrêter les enfants du sang."
               }
             ]
           },
@@ -7516,7 +7516,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "stopped_the_children_of_blood",
-                "text": "the investigators stopped the children of blood."
+                "text": "les investigateurs ont arrêté les enfants du sang."
               }
             ]
           },
@@ -7552,7 +7552,7 @@
           },
           {
             "id": "physical_and_mental_trauma_witness",
-            "text": "Each investigator suffers 1 physical trauma and 1 mental trauma, as they never fully recover from what they witnessed in their investigation.",
+            "text": "Chaque investigateur subit 1 traumatisme physique et 1 traumatisme mental, car il ne guérira jamais vraiment de ce dont il a été témoin lors de cette enquête.",
             "effects": [
               {
                 "type": "trauma",
@@ -7564,7 +7564,7 @@
           },
           {
             "id": "physical_and_mental_trauma_cult",
-            "text": "Each investigator suffers 1 physical trauma and 1 mental trauma, as they never fully recover from the horrors of the Cult of the Sanguine Order.",
+            "text": "Chaque investigateur subit 1 traumatisme physique et 1 traumatisme mental, car il ne guérira jamais vraiment des horreurs du Culte de l'Ordre Sanguin.",
             "effects": [
               {
                 "type": "trauma",
@@ -7577,10 +7577,10 @@
           {
             "id": "ask_civilians_beneath_scenario",
             "type": "input",
-            "text": "How many [[Civilian]] enemies were beneath the scenario reference card when the scenario ended?",
+            "text": "Combien d’ennemis [[Civil]] se trouvaient sous la carte de Référence du Scénario quand le scénario s'est terminé ?",
             "input": {
               "type": "counter",
-              "text": "Civilian enemies:",
+              "text": "Ennemis Civil :",
               "effects": [
                 {
                   "type": "earn_xp",
@@ -7596,7 +7596,7 @@
             "input": {
               "type": "counter",
               "text": "Pile de victoire :",
-              "confirm_text": " Each investigator earns 1 bonus experience for each [[Civilian]] enemy beneath the scenario reference card when the scenario ended.",
+              "confirm_text": "Chaque investigateur reçoit 1 point d'expérience bonus pour chaque ennemi [[Civil]] sous la carte de Référence du Scénario quand le scénario s'est terminé.",
               "effects": [
                 {
                   "type": "earn_xp",
@@ -7607,7 +7607,7 @@
           },
           {
             "id": "check_chosen_of_zburamoarte",
-            "text": "If at least 1 investigator has The Blood Blight weakness in their deck:",
+            "text": "Si au moins 1 investigateur a la faiblesse Le Sang Corrompu dans son deck :",
             "type": "branch",
             "condition": {
               "type": "has_card",
@@ -7626,7 +7626,7 @@
           {
             "id": "unlock_chosen_of_zburamoarte",
             "bullet_type": "small",
-            "text": "The investigators have earned the Chosen of Zburamoarte campaign reward card. Add this card to the player card pool."
+            "text": "Les investigateurs reçoivent la carte Récompense de Campagne « Élu de Zburamoarte ». Ajoutez cette carte dans la réserve de cartes Joueur."
           },
           {
             "id": "defeated_killed",
@@ -7644,7 +7644,7 @@
           {
             "id": "investigator_defeat",
             "title": "Investigateur vaincu",
-            "text": "You struggle against the monsters, but their numbers and ferocity overwhelm you, feeding on your flesh as you’re forced to the floor. Your entire world is a blood-soaked tempest of blinding pain before you finally give in to the darkness of death.",
+            "text": "Vous luttez contre les monstres, mais leur nombre et leur férocité vous submergent, ils se nourrissent de votre chair alors que vous êtes plaqué au sol. Votre monde n'est plus qu'une tempête sanglante de douleur aveuglante, avant que vous ne succombiez finalement à l'obscurité de la mort.",
             "narration": {
               "id": "cob.blood_money.investigator_defeat",
               "name": "Investigator Defeat",
@@ -7660,14 +7660,14 @@
           {
             "id": "no_resolution",
             "title": "Aucune conclusion n'est atteinte",
-            "description": "Each surviving investigator resigned",
+            "description": "Chaque investigateur survivant a abandonné",
             "investigator_status": [
               "resigned",
               "eliminated",
               "physical",
               "mental"
             ],
-            "text": "Unable to bear the chaos of the party, you flee into the streets. You only hope that the problems of the New Horizons meat and the blighted blood will solve themselves.",
+            "text": "Incapable de supporter le chaos de la fête, vous vous enfuyez dans les rues. Vous espérez seulement que les problèmes liés à la viande New Horizons et au sang contaminé se résoudront d'eux-mêmes.",
             "narration": {
               "id": "cob.blood_money.no_resolution",
               "name": "No Resolution",
@@ -7687,7 +7687,7 @@
           {
             "id": "R1",
             "title": "Conclusion 1",
-            "text": "You walk out of the penthouse, leaving the defeated Howard Wilkes and the shattered remains of his cult behind. Arkham’s finest arrive as you head out into the street, and you let Detective Reynolds handle their questions. You head back out into Arkham as the first rays of the morning sun peek out over the Miskatonic River.",
+            "text": "Vous sortez du penthouse, laissant derrière vous Howard Wilkes, vaincu, et ce qui reste de sa secte. La police d'Arkham arrive alors que vous approchez de la sortie, et vous laissez le détective Reynolds répondre aux questions. Vous déambulez dans les rues d'Arkham alors que les premiers rayons du soleil matinal apparaissent au-dessus du fleuve Miskatonic.",
             "narration": {
               "id": "cob.blood_money.r1",
               "name": "Resolution 1",
@@ -7708,7 +7708,7 @@
           {
             "id": "R2",
             "title": "Conclusion 2",
-            "text": "You and the few guests you saved flee the penthouse as the Arkham police arrive. You watch as they rush into the penthouse, but you don’t stick around, heading out into Arkham just as the first rays of the morning sun peek out over the Miskatonic River.",
+            "text": "Vous fuyez le penthouse, accompagné des quelques invités que vous avez sauvés, lorsque la police d'Arkham arrive. Vous observez la scène tandis que les policiers s'engouffrent dans l'appartement, mais vous ne vous attardez pas et rejoignez les rues d'Arkham alors que les premiers rayons du jour pointent au-dessus du fleuve Miskatonic.",
             "narration": {
               "id": "cob.blood_money.r2",
               "name": "Resolution 2",
@@ -7766,7 +7766,7 @@
           {
             "id": "intro_1",
             "type": "story",
-            "text": "With no other choice, you put the penthouse of Arkham’s Northside district behind you. No matter how far you go, you worry there won’t be enough distance between you and the monsters that ravaged the party and turned it into a bloodbath. It doesn’t take long for word of those events to spread throughout Arkham, and for more disappearances to take place as the creatures continue to hunt and feed in the dead of night. Eventually you decide to leave the city, relocating to Boston and thinking that at long last you can try and forget about the calamity on the Miskatonic.\nBut no matter how far you go, no matter how close you are to forgetting everything, in a matter of months you hear reports similar to those that led up to the chaos that plagued Arkham. The tainted blood of Zburamoarte and the machinations of the Cult of the Sanguine Order are spreading across New England. How long will it be before you have nowhere else to run?",
+            "text": "N'ayant pas d'autre choix, vous quittez le Quartier Nord d'Arkham, où se trouve le penthouse. Peu importe la distance que vous parcourez, vous craignez qu'elle ne soit pas suffisante pour vous éloigner des monstres qui ont ruiné la fête et l'ont transformée en un bain de sang. Il ne faut pas longtemps pour que la nouvelle de ces événements se répande dans tout Arkham et que d'autres disparitions aient lieu, tandis que les créatures continuent de chasser et de se nourrir au cœur de la nuit. Finalement, vous décidez de quitter la ville pour vous installer à Boston, pensant que vous pourrez enfin oublier la calamité qui s'est abattue sur le Miskatonic.\nAlors que vous pensiez être assez loin, et que vous étiez sur le point d'oublier tout cela, en l'espace de quelques mois, vous entendez des rapports similaires à ceux qui ont conduit au chaos qui a frappé Arkham. Le sang corrompu de Zburamoarte et les machinations du Culte de l'Ordre Sanguin se répandent à travers la Nouvelle-Angleterre. Combien de temps faudra-t-il avant que vous n'ayez plus nulle part où fuir?",
             "narration": {
               "id": "cob.blood_money.epilogue_1",
               "name": "Epilogue 1",
@@ -7777,7 +7777,7 @@
           },
           {
             "id": "check_stopped_children_and_defeated_zburamoarte",
-            "text": "Check Campaign Log. If both <i>the investigators stopped the children of blood</i> and <i>the investigators defeated Zburamoarte</i>:",
+            "text": "Vérifiez votre Carnet de Campagne. Si vous avez inscrit que <i>les investigateurs ont arrêté les enfants du sang</i> et que <i>les investigateurs ont vaincu Zburamoarte</i> :",
             "type": "branch",
             "condition": {
               "type": "multi",
@@ -7841,7 +7841,7 @@
           {
             "id": "intro_2",
             "type": "story",
-            "text": "The events of the penthouse in Northside finally behind you, it seems that at long last the city of Arkham can breathe a sigh of relief. As the days begin to pass, the people who were subjected to the tainted blood of Zburamoarte at the hands of the cult begin to recover. They are weak, disoriented, and lacking any memory of their transformations. Against all odds, it seems that the diabolical machinations of Howard Wilkes and the Cult of the Sanguine Order are finally put to rest.",
+            "text": "Les événements qui se sont déroulés dans le penthouse du Quartier Nord étant enfin derrière vous, il semble que la ville d'Arkham puisse enfin pousser un soupir de soulagement. Au fil des jours, les personnes qui ont été exposées au sang corrompu de Zburamoarte commencent à s'en remettre. Elles sont faibles, désorientées et n'ont aucun souvenir de leur transformation. Contre toute attente, il semble que les machinations diaboliques de Howard Wilkes et du Culte de l'Ordre Sanguin aient enfin été dejouees.",
             "narration": {
               "id": "cob.blood_money.epilogue_2",
               "name": "Epilogue 2",
@@ -7870,7 +7870,7 @@
           {
             "id": "intro_3",
             "type": "story",
-            "text": "The events of the penthouse in Northside finally behind you, it seems that at long last the city of Arkham can breathe a sigh of relief. As the days begin to pass, however, rumors and whispers of monsters in the night seem to return. In a matter of weeks, it seems Arkham is right back to where it started on that fateful night in the Waterfront District. More disappearances are reported throughout the city, and you fear the creatures have returned to hunt and feed in the dead of night. Eventually you decide to leave Arkham, relocating to Boston and thinking that at long last you can try and forget about the calamity on the Miskatonic.\nBut no matter how far you go, no matter how close you are to forgetting everything, in a matter of months you hear reports similar to those that led up to the chaos that plagued Arkham. The tainted blood of Zburamoarte, and the machinations of the Cult of the Sanguine Order, have returned, and are spreading across New England. How long will it be before you have nowhere else to run?",
+            "text": "Les événements qui se sont déroulés dans le penthouse du Quartier Nord étant enfin derrière vous, il semble que la ville d'Arkham puisse enfin respirer. Cependant, au fil des jours, les rumeurs et les murmures concernant des monstres nocturnes semblent refaire surface. En quelques semaines, on jurerait qu'Arkham est revenue à la situation qui prévalait lors de cette nuit fatidique dans le Quartier du Front de Mer. De nouvelles disparitions sont signalées dans toute la ville, et vous craignez que les créatures soient revenues chasser pour se nourrir au cœur de la nuit. Finalement, vous décidez de quitter la ville pour vous installer à Boston, pensant que vous pourrez enfin oublier la calamité qui s'est abattue sur le Miskatonic.\nAlors que vous pensiez être assez loin, et que vous étiez sur le point d'oublier tout cela, en l'espace de quelques mois, vous entendez des rapports similaires à ceux qui ont conduit au chaos qui a frappé Arkham. Le sang corrompu de Zburamoarte et les machinations du Culte de l'Ordre Sanguin ont refait surface et se répandent à travers la Nouvelle-Angleterre. Combien de temps faudra-t-il avant que vous n'ayez plus nulle part où fuir ?",
             "narration": {
               "id": "cob.blood_money.epilogue_3",
               "name": "Epilogue 3",
@@ -7882,7 +7882,7 @@
           {
             "id": "intro_4",
             "type": "story",
-            "text": "Weeks later, you find yourself walking down the sidewalk of Water Street once again. That bloody and desperate night seems like a distant memory fading into shadows as the sun rises from the Eastern horizon. As you continue on your way, you catch a glimpse of a familiar face—a middle-aged woman, with long dark hair pulled back into a tight bun, dressed in the blue coveralls of a factory worker. She looks up as she crosses the street, and your eyes meet for a brief moment. She doesn’t recognize you, but you know immediately that it’s Julia. She offers a polite smile before she continues on, eventually disappearing into the growing crowds.",
+            "text": "Quelques semaines plus tard, vous vous retrouvez à nouveau à marcher sur le trottoir de Water Street. Cette nuit sanglante et sordide semble être un lointain souvenir qui se dilue dans les ombres tandis que le soleil se lève. Alors que vous poursuivez votre chemin, vous apercevez un visage familier : une femme d'âge moyen, aux longs cheveux noirs tirés en arrière en un chignon serré, vêtue du bleu de travail des ouvrières. Elle lève les yeux en traversant la rue, et vos regards se croisent un bref instant. Elle ne vous reconnaît pas, mais vous reconnaissez immédiatement Julia. Elle vous adresse un sourire poli avant de continuer son chemin, et de se fondre dans la foule grandissante.",
             "narration": {
               "id": "cob.blood_money.epilogue_4",
               "name": "Epilogue 4",
@@ -7907,40 +7907,40 @@
           {
             "id": "$blood_tokens_rule",
             "type": "rule_reminder",
-            "title": "Blood Tokens",
-            "text": "This expansion introduces a new type of chaos token: the blood ([blood]) token. Throughout the campaign, depending on decisions the investigators make and events that unfold, [blood] tokens may be added to (or removed from) the chaos bag, and when drawn alter the chance of succeeding the tests being performed. The more [blood] tokens added to the chaos bag, the more impactful their effects become.",
+            "title": "Pions Sang",
+            "text": "Cette extension introduit un nouveau type de pion Chaos : le pion Sang ([blood]). Tout au long de la campagne, suivant les décisions prises par les investigateurs et les événements qui en résulteront, des pions [blood] pourront être ajoutés (ou retirés) à la réserve du Chaos. Lorsqu'ils seront piochés, ils modifieront les chances de réussite des tests. Plus il y aura de pions [blood] dans la réserve du Chaos et plus leurs effets auront d'impact sur la partie.",
             "bullets": [
               {
-                "text": "The first [blood] token revealed from the chaos bag during a skill test has the following effect: \"-1. Reveal another token. If this skill test fails, seal 1 [blood] token revealed during this test on the performing investigator.\"\n- Each additional [blood] token revealed from the chaos bag during a skill test has the following effect: \"-1. Reveal another token.\"\n<i>For example: Tommy attacks an enemy with 3 fight, and there are two [blood] tokens in the chaos bag. During the attack, Tommy reveals a [blood] token. This reduces his skill value by 1 and causes him to reveal an additional token. The next token he reveals is a -2, resulting in a total of -3, causing Tommy to fail the attack. When resolving the effects of the failed test, Tommy must seal the [blood] token revealed during this test on his investigator card instead of returning it to the chaos bag.</i>"
+                "text": "Le premier pion [blood] révélé de la réserve du Chaos lors d'un test de compétence a l'effet suivant: « -1. Révélez un autre pion. Si ce test de compétence échoue, scellez 1 pion [blood] révélé lors de ce test sur l'investigateur qui effectue le test. »\n- Chaque pion [blood] supplémentaire révélé lors d'un test de compétence a l'effet suivant : « -1. Révélez un autre pion. »\n<i>Par exemple: Tommy attaque un ennemi ayant 3 en combat, et il y a 2 pions [blood] dans la réserve du Chaos. Lors de l'attaque, Tommy révèle un pion [blood]. Cela réduit de 1 sa valeur de compétence et l'oblige à révéler un pion supplémentaire. Le pion suivant qu'il révèle est un - 2, pour un résultat total de -3. L'attaque de Tommy échoue ! Lorsqu'il résout les effets de l'échec du test, Tommy doit sceller sur sa carte Investigateur 1 pion [blood] révélé lors de ce test, au lieu de le remettre dans la réserve du Chaos.</i>"
               },
               {
-                "text": "While [blood] tokens are sealed on an investigator, various encounter card effects will become more dangerous for that investigator, so be careful!"
+                "text": "À mesure que des pions [blood] sont scellés sur un investigateur, certains effets des cartes Rencontre deviendront plus dangereux pour lui, alors prenez garde !"
               },
               {
-                "text": "No more than a <b>total of three</b> [blood] tokens can be sealed on a single investigator at any given time."
+                "text": "On ne peut jamais avoir plus de <b>trois pions</b> [blood] scellés sur un même investigateur."
               },
               {
-                "text": "No more than a <b>total of twelve</b> [blood] tokens can be included in the chaos bag and sealed on cards in play at any given time."
+                "text": "On ne peut jamais avoir plus de <b>douze pions</b> [blood] en même temps, qu'ils soient inclus dans la réserve du Chaos ou scellés sur des cartes en jeu."
               },
               {
-                "text": "A [blood] token revealed outside of a skill test has no effect unless otherwise specified by a card effect."
+                "text": "Un pion [blood] révélé en dehors d'un test de compétence n'a pas d'effet, sauf si un effet de carte précise autre chose."
               },
               {
-                "text": "A [blood] token added to the chaos bag remains in the chaos bag from scenario to scenario unless removed by a card or game effect. Use the \"Chaos Bag\" section of the campaign log on page 34 to record which tokens are currently in the chaos bag."
+                "text": "Un pion [blood] ajouté à la réserve du Chaos reste dans la réserve du Chaos de scénario en scénario, à moins qu'il ne soit retiré par un effet de carte ou un effet de jeu. Utilisez la section « Réserve du Chaos » du Carnet de Campagne (page 34) pour noter quels pions sont actuellement dans la réserve du Chaos."
               },
               {
-                "text": "For your convenience, a Blood Token reference card (119) has been provided. This card can be placed beside the scenario reference card during each scenario of this campaign."
+                "text": "Une carte de Référence « Pion Sang » (n°119) est incluse dans cette extension. Cette carte peut être placée à côté de la carte de Référence du Scénario, lorsque vous jouez cette campagne."
               }
             ]
           },
           {
             "id": "$predator_rule",
             "type": "rule_reminder",
-            "title": "Predator",
-            "text": "Predator is a keyword ability.\nDuring the enemy phase (after hunter enemies move and before enemies attack), each ready, unengaged enemy with the predator keyword deals 1 damage to a non-[[Elite]] enemy at its location with a fight value lower than its own.",
+            "title": "Prédateur",
+            "text": "Prédateur est une capacité mot-clé.\nLors de la phase des Ennemis (après que les ennemis Chasseur se soient déplacés et avant les attaques ennemies), chaque ennemi redressé et non-engagé ayant le mot-clé Prédateur inflige 1 dégât à un ennemi non-[[Élite]] situé dans son lieu, dont la valeur de combat est inférieure à la sienne.",
             "bullets": [
               {
-                "text": "Given the choice between multiple other enemies, a predator enemy will deal its damage to the enemy with the lowest (or tied for the lowest) remaining health."
+                "text": "S'il a le choix entre plusieurs ennemis, un ennemi Prédateur infligera ses dégâts à l'ennemi ayant la vie restante la plus faible (en cas d'égalité, à l'un des ennemis concernés)."
               }
             ]
           }
@@ -273537,7 +273537,7 @@
           {
             "id": "2_bonus_xp",
             "bullet_type": "small",
-            "text": "Each investigator earns 2 bonus experience.",
+            "text": "Chaque investigateur reçoit 2 points d'expérience bonus.",
             "effects": [
               {
                 "type": "earn_xp",
@@ -273603,7 +273603,7 @@
           },
           {
             "id": "earn_2_bonus_xp",
-            "text": "Each investigator earns 2 bonus experience.",
+            "text": "Chaque investigateur reçoit 2 points d'expérience bonus.",
             "effects": [
               {
                 "type": "earn_xp",
@@ -274576,7 +274576,7 @@
           },
           {
             "id": "2_bonus_xp",
-            "text": "Each investigator earns 2 bonus experience."
+            "text": "Chaque investigateur reçoit 2 points d'expérience bonus."
           },
           {
             "id": "4_bonus_xp",

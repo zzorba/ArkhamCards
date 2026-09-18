@@ -143,43 +143,43 @@
         "entries": [
           {
             "id": "completed_their_search",
-            "text": "the investigators completed their search."
+            "text": "les investigateurs ont terminé leurs recherches."
           },
           {
             "id": "defeated_zburamoarte",
-            "text": "the investigators defeated Zburamoarte."
+            "text": "les investigateurs ont vaincu Zburamoarte."
           },
           {
             "id": "did_not_complete_their_search",
-            "text": "the investigators did not complete their search."
+            "text": "les investigateurs n'ont pas terminé leurs recherches."
           },
           {
             "id": "failed_to_stop_julia_stern",
-            "text": "the investigators failed to stop Julia Stern."
+            "text": "les investigateurs ont échoué à arrêter Julia Stern."
           },
           {
             "id": "failed_to_stop_the_children_of_blood",
-            "text": "the investigators failed to stop the children of blood."
+            "text": "les investigateurs ont échoué à arrêter les enfants du sang."
           },
           {
             "id": "killed_julia_stern",
-            "text": "the investigators killed Julia Stern."
+            "text": "les investigateurs ont tué Julia Stern."
           },
           {
             "id": "left_to_the_cults_mercy",
-            "text": "the investigators were left to the cult's mercy."
+            "text": "les investigateurs ont été épargnés par la secte."
           },
           {
             "id": "left_zburamoarte_alive",
-            "text": "the investigators left Zburamoarte alive."
+            "text": "les investigateurs ont laissé Zburamoarte en vie."
           },
           {
             "id": "spared_julia_stern",
-            "text": "the investigators spared Julia Stern."
+            "text": "les investigateurs ont épargné Julia Stern."
           },
           {
             "id": "stopped_the_children_of_blood",
-            "text": "the investigators stopped the children of blood."
+            "text": "les investigateurs ont arrêté les enfants du sang."
           }
         ]
       },
