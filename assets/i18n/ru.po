@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2026-03-08 14:09+0300\n"
+"PO-Revision-Date: 2026-09-15 16:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -2203,19 +2203,19 @@ msgstr "Новая кампания"
 msgid "Adjust Weakness Set"
 msgstr "Настроить комплект слабости"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains several basic weaknesses"
 msgstr "Эта колода включает несколько базовых слабостей"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "This deck contains a basic weakness"
 msgstr "Эта колода включает базовую слабость"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
-#. eslint-disable prefer-template 
+#. eslint-disable prefer-template
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
@@ -6329,10 +6329,10 @@ msgid "Edit Name"
 msgstr ""
 
 msgid "Scenario results"
-msgstr ""
+msgstr "Исходы сценария"
 
 msgid "Location Setup"
-msgstr ""
+msgstr "Раскладка локаций"
 
 #, javascript-format
 msgid "Fan-Made Challenge Scenario by ${ scenario.custom.creator }"
@@ -6354,6 +6354,11 @@ msgid ""
 "\n"
 "This will use about 25mb of storage."
 msgstr ""
+"Хотите скачать обновлённые карты с ArkhamDB чтобы соответствовать языку на телефоне (${ lang })?\n"
+"\n"
+"Вы можете поменять выбранный язык для приложения в настройках.\n"
+"\n"
+"Это займёт примерно 25мб памяти."
 
 msgid "Head"
 msgstr ""
@@ -6376,25 +6381,25 @@ msgid "Alternate versions"
 msgstr ""
 
 msgid "View on arkham.build"
-msgstr ""
+msgstr "На arkham.build"
 
 msgid "Brethren of Ash"
-msgstr ""
+msgstr "Братство пепла"
 
 msgid "Spreading Flames"
-msgstr ""
+msgstr "Пламя разгорается"
 
 msgid "Smoke and Mirrors"
-msgstr ""
+msgstr "Дым и зеркала"
 
 msgid "Queen of Ash"
-msgstr ""
+msgstr "Царица пепла"
 
 msgid "Core (2026)"
-msgstr ""
+msgstr "База (2026)"
 
 msgid "Investigator Decks"
-msgstr ""
+msgstr "Колоды сыщиков (2026)"
 
 msgid "Tap to view"
 msgstr ""
@@ -6403,16 +6408,16 @@ msgid "Investigator decks"
 msgstr ""
 
 msgid "Chapter 1"
-msgstr ""
+msgstr "Сезон 1"
 
 msgid "Chapter 2"
-msgstr ""
+msgstr "Сезон 2"
 
 msgid "This draft uses the deck's selected card pool."
 msgstr ""
 
 msgid "Fan-Made"
-msgstr ""
+msgstr "Фанатское"
 
 msgid "Blood"
 msgstr ""
