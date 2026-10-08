@@ -584,7 +584,7 @@
         {
           "order": 0,
           "id": 5,
-          "name": "sewers",
+          "name": "arkham_sewers",
           "prevSize": 32,
           "code": 59667,
           "tempChar": ""
