@@ -409,10 +409,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'machinations_epic_multiplayer':
       case 'blob_epic_multiplayer':
       case 'epic_multiplayer':
+      case 'ztg_epic':
         return this.standaloneIcon('epic_multiplayer', size, color);
       case 'single_group':
       case 'blob_single_group':
       case 'machinations_single_group':
+      case 'ztg_single_group':
         return this.standaloneIcon('single_group', size, color);
       case 'gob':
         return this.standaloneIcon('guardians', size, color);
@@ -1233,6 +1235,14 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'zcx_destiny_and_prophecy':
       case 'zcx_circus_ex_mortis':
         return this.circusExMortisIcon(encounter_code, size, color);
+      case 'ztg':
+      case 'ztg_turning_gear':
+        return this.standaloneIcon('ztg_turning_gear', size, color);
+      case 'ztg_flood':
+      case 'ztg_military_maneuvers':
+      case 'ztg_red_guard':
+      case 'ztg_unbound_dimensions':
+        return this.standaloneIcon(encounter_code, size, color);
       case 'zgoo':
         return this.standaloneIcon('onigawa', size, color);
       case 'zdh':
