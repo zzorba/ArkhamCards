@@ -567,7 +567,7 @@
   "miskatonic_university": "Мискатоникский университет",
   "people_of_arkham": "Жители Аркхэма",
   "reeking_decay": "Зловонное разложение",
-  "sewers": "Канализация",
+  "arkham_sewers": "Канализация",
   "torment": "Пытка",
   "whippoorwills_ch2": "Козодои",
   "bystanders": "Прохожие",

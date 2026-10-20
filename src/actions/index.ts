@@ -20,6 +20,11 @@ import {
   PATREON_LOGIN,
   PATREON_LOGIN_ERROR,
   PATREON_LOGOUT,
+  ARKHAM_BUILD_LOGIN_STARTED,
+  ARKHAM_BUILD_LOGIN,
+  ARKHAM_BUILD_LOGIN_ERROR,
+  ARKHAM_BUILD_LOGOUT,
+  SET_ARKHAM_BUILD_DECKS,
   ArkhamDbDeck,
   SET_PACK_DRAFT,
   SYNC_IN_COLLECTION,
@@ -32,6 +37,8 @@ import { AppState, getAllPacks, getArkhamDbDecks } from '@reducers';
 import { getAccessToken, signInFlow, signOutFlow, completeSignInFromRedirect } from '@lib/auth';
 import * as dissonantVoices from '@lib/dissonantVoices';
 import * as patreon from '@lib/patreon';
+import * as arkhamBuildAuth from '@lib/arkhamBuildAuth';
+import { fetchDecks as fetchArkhamBuildDecks, getProfile as getArkhamBuildProfile } from '@lib/arkhamBuildApi';
 import { decks } from '@lib/authApi';
 
 export function login(): ThunkAction<void, AppState, unknown, Action<string>> {
@@ -232,6 +239,78 @@ export function patreonVerifyLogin(): ThunkAction<void, AppState, unknown, Actio
     patreon.verifyLogin().then((isPatron) => {
       dispatch({ type: isPatron ? PATREON_LOGIN : PATREON_LOGOUT });
     });
+  };
+}
+
+export function arkhamBuildLogin(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch): void => {
+    dispatch({ type: ARKHAM_BUILD_LOGIN_STARTED });
+    arkhamBuildAuth.signInFlow().then((response) => {
+      if (response.success) {
+        dispatch({ type: ARKHAM_BUILD_LOGIN });
+        dispatch(refreshMyArkhamBuildDecks());
+      } else {
+        dispatch({ type: ARKHAM_BUILD_LOGIN_ERROR, error: response.error ?? 'Unknown error' });
+      }
+    });
+  };
+}
+
+export function arkhamBuildLogout(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    dispatch({ type: ARKHAM_BUILD_LOGIN_STARTED });
+    arkhamBuildAuth.signOutFlow().then(() => {
+      dispatch({ type: ARKHAM_BUILD_LOGOUT });
+    });
+  };
+}
+
+export function arkhamBuildVerifyLogin(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch) => {
+    arkhamBuildAuth.getAccessToken().then((accessToken) => {
+      if (accessToken) {
+        dispatch({ type: ARKHAM_BUILD_LOGIN });
+      } else {
+        dispatch({ type: ARKHAM_BUILD_LOGOUT });
+      }
+    }, () => {
+      dispatch({ type: ARKHAM_BUILD_LOGOUT });
+    });
+  };
+}
+
+export function completeArkhamBuildLoginFromRedirect(
+  url: string
+): ThunkAction<void, AppState, unknown, Action<string>> {
+  return (dispatch): void => {
+    dispatch({ type: ARKHAM_BUILD_LOGIN_STARTED });
+    arkhamBuildAuth.completeSignInFromRedirect(url).then((response) => {
+      if (response.success) {
+        dispatch({ type: ARKHAM_BUILD_LOGIN });
+      } else {
+        dispatch({ type: ARKHAM_BUILD_LOGIN_ERROR, error: response.error ?? 'Unknown error' });
+      }
+    });
+  };
+}
+
+export function refreshMyArkhamBuildDecks(): ThunkAction<void, AppState, unknown, Action<string>> {
+  return async(dispatch, getState) => {
+    const state = getState();
+    if (!state.arkhamBuild.status) {
+      return;
+    }
+    try {
+      const profile = await getArkhamBuildProfile();
+      const response = await fetchArkhamBuildDecks(profile.id);
+      dispatch({
+        type: SET_ARKHAM_BUILD_DECKS,
+        decks: response.decks,
+        timestamp: new Date(),
+      });
+    } catch (error) {
+      console.log(`[arkham.build] Error fetching decks: ${error.message || error}`);
+    }
   };
 }
 

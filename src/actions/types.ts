@@ -135,7 +135,16 @@ export interface ArkhamDbDeckId {
   serverId?: number;
   arkhamdb_user: number;
 }
-export type DeckId = LocalDeckId | ArkhamDbDeckId;
+export interface ArkhamBuildDeckId {
+  id: undefined;
+  local: false;
+  uuid: string;
+  serverId?: number;
+  arkhamdb_user: undefined;
+  arkhambuild_user: string;
+  arkhambuild_id: string;
+}
+export type DeckId = LocalDeckId | ArkhamDbDeckId | ArkhamBuildDeckId;
 
 export interface ArkhamDbApiDeck {
   id: number;
@@ -192,9 +201,22 @@ export interface ArkhamDbDeck extends BaseDeck {
   user_id: number;
 }
 
+export interface ArkhamBuildDeck extends BaseDeck {
+  id: undefined;
+  local: undefined;
+  uuid: undefined;
+  arkhambuild_id: string;
+  arkhambuild_user: string;
+  user_id: undefined;
+}
+
 export interface LocalDeck extends BaseDeck {
   local: true;
   uuid: string;
+}
+
+export function isArkhamBuildDeck(deck: Deck): deck is ArkhamBuildDeck {
+  return !deck.local && !!(deck as ArkhamBuildDeck).arkhambuild_id;
 }
 
 export function getDeckId(deck: Deck): DeckId {
@@ -206,6 +228,16 @@ export function getDeckId(deck: Deck): DeckId {
       uuid: deck.uuid,
     };
   }
+  if (isArkhamBuildDeck(deck)) {
+    return {
+      id: undefined,
+      arkhamdb_user: undefined,
+      arkhambuild_user: deck.arkhambuild_user,
+      arkhambuild_id: deck.arkhambuild_id,
+      local: false,
+      uuid: deck.arkhambuild_id,
+    };
+  }
   return {
     id: deck.id,
     arkhamdb_user: deck.user_id,
@@ -214,7 +246,11 @@ export function getDeckId(deck: Deck): DeckId {
   };
 }
 
-export type Deck = ArkhamDbDeck | LocalDeck;
+export function isArkhamBuildDeckId(deckId: DeckId): deckId is ArkhamBuildDeckId {
+  return !deckId.local && !!(deckId as ArkhamBuildDeckId).arkhambuild_id;
+}
+
+export type Deck = ArkhamDbDeck | ArkhamBuildDeck | LocalDeck;
 
 export interface LegacyDeck extends BaseDeck {
   id: number;
@@ -1104,6 +1140,13 @@ export interface SetMyDecksAction {
   lastModified: string;
   timestamp: Date;
 }
+
+export const SET_ARKHAM_BUILD_DECKS = 'SET_ARKHAM_BUILD_DECKS';
+export interface SetArkhamBuildDecksAction {
+  type: typeof SET_ARKHAM_BUILD_DECKS;
+  decks: ArkhamBuildDeck[];
+  timestamp: Date;
+}
 export const MY_DECKS_START_REFRESH = 'MY_DECKS_START_REFRESH';
 export interface MyDecksStartRefreshAction {
   type: typeof MY_DECKS_START_REFRESH;
@@ -1686,6 +1729,7 @@ export type DecksActions =
   | MyDecksCacheHitAction
   | MyDecksErrorAction
   | SetMyDecksAction
+  | SetArkhamBuildDecksAction
   | NewDeckAvailableAction
   | DeleteDeckAction
   | UpdateDeckAction
@@ -1800,6 +1844,33 @@ export type PatreonActions =
   | PatreonLoginStartedAction
   | PatreonLoginErrorAction
   | PatreonLogoutAction;
+
+export const ARKHAM_BUILD_LOGIN_STARTED = 'ARKHAM_BUILD_LOGIN_STARTED';
+interface ArkhamBuildLoginStartedAction {
+  type: typeof ARKHAM_BUILD_LOGIN_STARTED;
+}
+
+export const ARKHAM_BUILD_LOGIN = 'ARKHAM_BUILD_LOGIN';
+interface ArkhamBuildLoginAction {
+  type: typeof ARKHAM_BUILD_LOGIN;
+}
+
+export const ARKHAM_BUILD_LOGIN_ERROR = 'ARKHAM_BUILD_LOGIN_ERROR';
+interface ArkhamBuildLoginErrorAction {
+  type: typeof ARKHAM_BUILD_LOGIN_ERROR;
+  error: Error | string;
+}
+
+export const ARKHAM_BUILD_LOGOUT = 'ARKHAM_BUILD_LOGOUT';
+interface ArkhamBuildLogoutAction {
+  type: typeof ARKHAM_BUILD_LOGOUT;
+}
+
+export type ArkhamBuildActions =
+  | ArkhamBuildLoginAction
+  | ArkhamBuildLoginStartedAction
+  | ArkhamBuildLoginErrorAction
+  | ArkhamBuildLogoutAction;
 
 export const TRACKED_QUERIES_ADD = 'TRACKED_QUERIES_ADD';
 export const TRACKED_QUERIES_REMOVE = 'TRACKED_QUERIES_REMOVE';

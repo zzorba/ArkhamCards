@@ -567,7 +567,7 @@
   "miskatonic_university": "Miskatonic Universität",
   "people_of_arkham": "Menschen aus Arkham",
   "reeking_decay": "Stinkender Verfall",
-  "sewers": "Kanalisation",
+  "arkham_sewers": "Kanalisation",
   "torment": "Qual",
   "whippoorwills_ch2": "Ziegenmelker",
   "bystanders": "Unbeteiligte",

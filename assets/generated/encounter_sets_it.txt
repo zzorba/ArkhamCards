@@ -567,7 +567,7 @@
   "miskatonic_university": "Miskatonic University",
   "people_of_arkham": "Abitati di Arkham",
   "reeking_decay": "Putrefazione Maleodorante",
-  "sewers": "Fogne",
+  "arkham_sewers": "Fogne",
   "torment": "Tormento",
   "whippoorwills_ch2": "Succiacapre",
   "bystanders": "Passanti",

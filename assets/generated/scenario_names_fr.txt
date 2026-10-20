@@ -157,7 +157,7 @@
   },
   {
     "id": "blood_money",
-    "name": "Blood Money"
+    "name": "L'Argent du Sang"
   },
   {
     "id": "blood_on_the_altar",
@@ -417,7 +417,7 @@
   },
   {
     "id": "friends_in_low_places",
-    "name": "Friends in Low Places"
+    "name": "Des Amis Peu Recommandables"
   },
   {
     "id": "going_twice",
@@ -621,7 +621,7 @@
   },
   {
     "id": "new_horizons",
-    "name": "New Horizons"
+    "name": "Nouveaux Horizons"
   },
   {
     "id": "night_of_fire",
@@ -909,7 +909,7 @@
   },
   {
     "id": "river_of_blood",
-    "name": "River of Blood"
+    "name": "Rivière de Sang"
   },
   {
     "id": "rome",

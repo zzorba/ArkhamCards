@@ -567,7 +567,7 @@
   "miskatonic_university": "米斯卡塔尼克大學",
   "people_of_arkham": "People of Arkham",
   "reeking_decay": "Reeking Decay",
-  "sewers": "Sewers",
+  "arkham_sewers": "Sewers",
   "torment": "Torment",
   "whippoorwills_ch2": "夜鷹",
   "bystanders": "Bystanders",

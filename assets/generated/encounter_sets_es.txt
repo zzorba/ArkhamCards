@@ -567,7 +567,7 @@
   "miskatonic_university": "Universidad Miskatonic",
   "people_of_arkham": "Gente de Arkham",
   "reeking_decay": "Putrefacción hedionda",
-  "sewers": "Alcantarillas",
+  "arkham_sewers": "Alcantarillas",
   "torment": "Tormento",
   "whippoorwills_ch2": "Chotacabras",
   "bystanders": "Transeúntes",

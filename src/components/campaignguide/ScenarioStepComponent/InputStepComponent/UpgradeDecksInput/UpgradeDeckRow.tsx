@@ -281,7 +281,7 @@ function UpgradeDeckRow({
   const [saving, error, saveDeckUpgrade, saveDeckWithoutUpgrade] = useDeckUpgradeAction(actions, onUpgrade);
   useEffect(() => {
     // We only want to save once.
-    if (choices === undefined && !skipDeckSave && deck && !deck.id.local && deck.id.arkhamdb_user === arkhamDbUser) {
+    if (choices === undefined && !skipDeckSave && deck && !deck.id.local && deck.id.id !== undefined && deck.id.arkhamdb_user === arkhamDbUser) {
       dispatch(fetchPrivateDeck(userId, actions, deck.id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -953,13 +953,13 @@ export function useDeckWithFetch(id: DeckId | undefined, actions: DeckActions): 
   const dispatch = useAppDispatch();
   const { userId } = useContext(ArkhamCardsAuthContext);
   useEffect(() => {
-    if (!deck && id !== undefined && !id.local && !id.serverId) {
+    if (!deck && id !== undefined && !id.local && id.id !== undefined && !id.serverId) {
       dispatch(fetchPrivateDeck(userId, actions, id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    if (!deck?.previousDeck && deck?.deck.previousDeckId && !deck.deck.local && !deck.deck.previousDeckId.local && !deck.deck.previousDeckId.serverId) {
+    if (!deck?.previousDeck && deck?.deck.previousDeckId && !deck.deck.local && !deck.deck.previousDeckId.local && deck.deck.previousDeckId.id !== undefined && !deck.deck.previousDeckId.serverId) {
       dispatch(fetchPrivateDeck(userId, actions, deck.deck.previousDeckId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

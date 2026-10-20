@@ -567,7 +567,7 @@
   "miskatonic_university": "米斯卡塔尼克大学",
   "people_of_arkham": "阿卡姆居民",
   "reeking_decay": "恶臭腐败",
-  "sewers": "下水道",
+  "arkham_sewers": "下水道",
   "torment": "折磨",
   "whippoorwills_ch2": "夜鹰",
   "bystanders": "旁人",

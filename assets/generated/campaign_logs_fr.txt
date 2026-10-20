@@ -8686,7 +8686,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           }
         ]
       },
@@ -8707,7 +8707,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -8740,7 +8740,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -8951,7 +8951,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -8984,7 +8984,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -9050,7 +9050,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -9083,7 +9083,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -9116,7 +9116,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -9149,7 +9149,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",

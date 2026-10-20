@@ -2658,7 +2658,7 @@
               "fire_ch2",
               "hallucinations",
               "reeking_decay",
-              "sewers",
+              "arkham_sewers",
               "torment"
             ]
           },
@@ -4108,7 +4108,7 @@
             },
             {
               "id": "Miguel",
-              "text": "Migeul de la Cruz"
+              "text": "Miguel de la Cruz"
             }
           ]
         },
@@ -6094,7 +6094,6 @@
               "add_2_blood_tokens",
               "all_earn_blood_blight",
               "actually_all_earn_blood_blight",
-              "defeated_zburamoarte",
               "earn_xp",
               "resolution_5"
             ]

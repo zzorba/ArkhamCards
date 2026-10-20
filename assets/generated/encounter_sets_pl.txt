@@ -567,7 +567,7 @@
   "miskatonic_university": "Uniwersytet Miskatonic",
   "people_of_arkham": "Mieszkańcy Arkham",
   "reeking_decay": "Gnijący rozkład",
-  "sewers": "Ścieki",
+  "arkham_sewers": "Ścieki",
   "torment": "Udręka",
   "whippoorwills_ch2": "Lelki kozodoje",
   "bystanders": "Gapie",

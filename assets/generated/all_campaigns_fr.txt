@@ -2658,7 +2658,7 @@
               "fire_ch2",
               "hallucinations",
               "reeking_decay",
-              "sewers",
+              "arkham_sewers",
               "torment"
             ]
           },
@@ -3663,7 +3663,7 @@
   {
     "campaign": {
       "id": "cob",
-      "name": "Children of Blood",
+      "name": "Enfants du Sang",
       "position": 1,
       "version": 0,
       "tarot": [
@@ -4198,7 +4198,7 @@
       },
       {
         "id": "river_of_blood",
-        "scenario_name": "River of Blood",
+        "scenario_name": "Rivière de Sang",
         "full_name": "Scénario I: Rivière de Sang",
         "icon": "river_of_blood",
         "header": "Scénario I",
@@ -5165,7 +5165,7 @@
       },
       {
         "id": "new_horizons",
-        "scenario_name": "New Horizons",
+        "scenario_name": "Nouveaux Horizons",
         "full_name": "Scénario II : Nouveaux Horizons",
         "header": "Scénario II",
         "chaos_bag_card": "13031",
@@ -6094,7 +6094,6 @@
               "add_2_blood_tokens",
               "all_earn_blood_blight",
               "actually_all_earn_blood_blight",
-              "defeated_zburamoarte",
               "earn_xp",
               "resolution_5"
             ]
@@ -6122,7 +6121,7 @@
       },
       {
         "id": "friends_in_low_places",
-        "scenario_name": "Friends in Low Places",
+        "scenario_name": "Des Amis Peu Recommandables",
         "full_name": "Interlude : Des Amis Peu Recommandables",
         "header": "Interlude",
         "icon": "friends_in_low_places",
@@ -6466,7 +6465,7 @@
       },
       {
         "id": "blood_money",
-        "scenario_name": "Blood Money",
+        "scenario_name": "L'Argent du Sang",
         "full_name": "Scénario III : L'Argent du Sang",
         "header": "Scénario III",
         "icon": "blood_money",
@@ -7895,8 +7894,8 @@
       },
       {
         "id": "core",
-        "scenario_name": "Children of Blood",
-        "full_name": "Children of Blood",
+        "scenario_name": "Enfants du Sang",
+        "full_name": "Enfants du Sang",
         "header": "",
         "type": "core",
         "setup": [
@@ -154122,7 +154121,7 @@
               "choices": [
                 {
                   "id": "act_2_advanced",
-                  "text": "Add tokens as specified on act 2b?",
+                  "text": "Ajouter des pions, comme spécifié à l'acte 2b ?",
                   "effects": [
                     {
                       "type": "add_chaos_token",
@@ -154143,7 +154142,7 @@
           {
             "id": "act2_token_change",
             "bullet_type": "small",
-            "text": "Add [cultist], [tablet], and [elder_thing] tokens to the chaos bag."
+            "text": "Ajoutez un pion [cultist], [tablet] et [elder_thing] à la Réserve du Chaos."
           },
           {
             "id": "ask_props_in_victory_display",
@@ -298784,7 +298783,7 @@
       {
         "id": "friends_in_low_places",
         "type": "interlude",
-        "scenario_name": "Friends in Low Places",
+        "scenario_name": "Des Amis Peu Recommandables",
         "full_name": "Interlude I: Friends in Low Places",
         "header": "Interlude I",
         "icon": "fallen_arkham",
@@ -301168,7 +301167,7 @@
                       "type": "campaign_log",
                       "section": "arkham_advertiser",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -301204,7 +301203,7 @@
                       "type": "campaign_log",
                       "section": "bank_of_arkham",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -301240,7 +301239,7 @@
                       "type": "campaign_log",
                       "section": "general_store",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -301276,7 +301275,7 @@
                       "type": "campaign_log",
                       "section": "hibbs_roadhouse",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -301312,7 +301311,7 @@
                       "type": "campaign_log",
                       "section": "mas_boarding_house",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -301348,7 +301347,7 @@
                       "type": "campaign_log",
                       "section": "orne_library",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -301384,7 +301383,7 @@
                       "type": "campaign_log",
                       "section": "river_docks",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -301420,7 +301419,7 @@
                       "type": "campaign_log",
                       "section": "ye_olde_magick_shoppe",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -301462,13 +301461,13 @@
                 },
                 {
                   "id": "infected",
-                  "text": "Infected",
+                  "text": "Infecté",
                   "effects": [
                     {
                       "type": "campaign_log",
                       "section": "$input_value",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     }
                   ]
                 }
@@ -301647,7 +301646,7 @@
                       "type": "campaign_log",
                       "section": "arkham_advertiser",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301676,7 +301675,7 @@
                       "type": "campaign_log",
                       "section": "bank_of_arkham",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301705,7 +301704,7 @@
                       "type": "campaign_log",
                       "section": "general_store",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301734,7 +301733,7 @@
                       "type": "campaign_log",
                       "section": "hibbs_roadhouse",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301763,7 +301762,7 @@
                       "type": "campaign_log",
                       "section": "mas_boarding_house",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301792,7 +301791,7 @@
                       "type": "campaign_log",
                       "section": "orne_library",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301821,7 +301820,7 @@
                       "type": "campaign_log",
                       "section": "river_docks",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301850,7 +301849,7 @@
                       "type": "campaign_log",
                       "section": "ye_olde_magick_shoppe",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301892,7 +301891,7 @@
                       "type": "campaign_log",
                       "section": "arkham_advertiser",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301921,7 +301920,7 @@
                       "type": "campaign_log",
                       "section": "bank_of_arkham",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301950,7 +301949,7 @@
                       "type": "campaign_log",
                       "section": "general_store",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -301979,7 +301978,7 @@
                       "type": "campaign_log",
                       "section": "hibbs_roadhouse",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -302008,7 +302007,7 @@
                       "type": "campaign_log",
                       "section": "mas_boarding_house",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -302037,7 +302036,7 @@
                       "type": "campaign_log",
                       "section": "orne_library",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -302066,7 +302065,7 @@
                       "type": "campaign_log",
                       "section": "river_docks",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -302095,7 +302094,7 @@
                       "type": "campaign_log",
                       "section": "ye_olde_magick_shoppe",
                       "id": "infected",
-                      "text": "Infected",
+                      "text": "Infecté",
                       "cross_out": true
                     },
                     {
@@ -304088,7 +304087,7 @@
                       "type": "campaign_log",
                       "section": "arkham_advertiser",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -304124,7 +304123,7 @@
                       "type": "campaign_log",
                       "section": "bank_of_arkham",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -304160,7 +304159,7 @@
                       "type": "campaign_log",
                       "section": "general_store",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -304196,7 +304195,7 @@
                       "type": "campaign_log",
                       "section": "hibbs_roadhouse",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -304232,7 +304231,7 @@
                       "type": "campaign_log",
                       "section": "mas_boarding_house",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -304268,7 +304267,7 @@
                       "type": "campaign_log",
                       "section": "orne_library",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -304304,7 +304303,7 @@
                       "type": "campaign_log",
                       "section": "river_docks",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",
@@ -304340,7 +304339,7 @@
                       "type": "campaign_log",
                       "section": "ye_olde_magick_shoppe",
                       "id": "infected",
-                      "text": "Infected"
+                      "text": "Infecté"
                     },
                     {
                       "type": "campaign_log_count",

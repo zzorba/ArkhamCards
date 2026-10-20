@@ -567,7 +567,7 @@
   "miskatonic_university": "Miskatonic University",
   "people_of_arkham": "People of Arkham",
   "reeking_decay": "Reeking Decay",
-  "sewers": "Sewers",
+  "arkham_sewers": "Sewers",
   "torment": "Torment",
   "whippoorwills_ch2": "Whippoorwills",
   "bystanders": "Bystanders",

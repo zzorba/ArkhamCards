@@ -43,9 +43,12 @@ import {
   SortType,
   SET_INVESTIGATOR_SORT,
   SetInvestigatorSortAction,
+  isArkhamBuildDeckId,
+  isArkhamBuildDeck,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
+import { createDeck as createArkhamBuildDeck, getProfile as getArkhamBuildProfile } from '@lib/arkhamBuildApi';
 import { AppState, getDeckUploadedCampaigns } from '@reducers/index';
 import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
@@ -228,7 +231,7 @@ export const deleteDeckAction = (
 ): ThunkAction<Promise<boolean>, AppState, unknown, Action<string>> => {
   return (dispatch) => {
     return new Promise<boolean>((resolve, reject) => {
-      if (id.local) {
+      if (id.local || isArkhamBuildDeckId(id)) {
         dispatch(removeDeck(userId, actions, id, deleteAllVersion));
         resolve(true);
       } else {
@@ -265,7 +268,7 @@ export const saveDeckUpgrade = (
           forEach(range(0, count), () => exileParts.push(code));
         }
       });
-      if (deck.local) {
+      if (deck.local || isArkhamBuildDeck(deck)) {
         const result = upgradeLocalDeck(deck, xp, exileParts);
         dispatch(handleUpgradeDeckResult(userId, actions, result));
         resolve(result.upgradedDeck);
@@ -317,7 +320,7 @@ export const saveDeckChanges = (
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
   return (dispatch): Promise<Deck> => {
     return new Promise((resolve, reject) => {
-      if (deck.local) {
+      if (deck.local || isArkhamBuildDeck(deck)) {
         const newDeck = updateLocalDeck(
           deck,
           changes.name || deck.name,
@@ -373,8 +376,11 @@ export const saveDeckChanges = (
   };
 };
 
+export type DeckTarget = 'local' | 'arkhamdb' | 'arkhambuild';
+
 export interface NewDeckParams {
   local: boolean;
+  deckTarget?: DeckTarget;
   deckName: string;
   investigatorCode: string;
   slots: Slots;
@@ -391,8 +397,9 @@ export const saveNewDeck = (
   params: NewDeckParams
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
   return (dispatch): Promise<Deck> => {
-    return new Promise<Deck>((resolve, reject) => {
-      if (params.local) {
+    return new Promise<Deck>(async(resolve, reject) => {
+      const target = params.deckTarget || (params.local ? 'local' : 'arkhamdb');
+      if (target === 'local') {
         const deck = newLocalDeck(
           params.deckName,
           params.investigatorCode,
@@ -407,6 +414,25 @@ export const saveNewDeck = (
         setTimeout(() => {
           resolve(deck);
         }, 1000);
+      } else if (target === 'arkhambuild') {
+        try {
+          const profile = await getArkhamBuildProfile();
+          const deck = await createArkhamBuildDeck(
+            profile.id,
+            params.investigatorCode,
+            params.deckName,
+            params.slots,
+            params.ignoreDeckLimitSlots,
+            params.tabooSetId,
+            params.meta,
+            params.description,
+            params.tags
+          );
+          dispatch(setNewDeck(userId, actions, getDeckId(deck), deck));
+          resolve(deck);
+        } catch (e) {
+          reject(e);
+        }
       } else {
         const newDeckPromise = newCustomDeck(
           params.investigatorCode,

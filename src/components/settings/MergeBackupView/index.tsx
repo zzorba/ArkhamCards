@@ -64,7 +64,7 @@ function MergeBackupView() {
       ...updatedDecks,
     };
     forEach(decks, deck => {
-      if (!deck.local) {
+      if (!deck.local && deck.id !== undefined) {
         deckMap[deck.id] = getDeckId(deck);
       }
     });
