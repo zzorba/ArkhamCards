@@ -103,7 +103,7 @@ module.exports = {
         'android.permission.RECORD_AUDIO',
         'android.permission.MODIFY_AUDIO_SETTINGS',
       ],
-      versionCode: 4195594,
+      versionCode: 4200002,
     },
     locales: {
       'ko': './assets/i18n-app/ko.metadata.json',
@@ -133,6 +133,7 @@ module.exports = {
       '@react-native-firebase/app',
       '@react-native-firebase/auth',
       '@react-native-firebase/crashlytics',
+      './plugins/withCrashlyticsNativeSymbols.js',
       [
         'expo-build-properties',
         {
@@ -147,6 +148,7 @@ module.exports = {
             compileSdkVersion: 36,
             targetSdkVersion: 36,
             buildToolsVersion: '36.0.0',
+            useLegacyPackaging: true,
           },
         },
       ],
