@@ -5217,6 +5217,8 @@ export enum Campaign_Constraint {
 export type Campaign_Deck = {
   __typename?: 'campaign_deck';
   archived?: Maybe<Scalars['Boolean']['output']>;
+  arkhambuild_id?: Maybe<Scalars['String']['output']>;
+  arkhambuild_user?: Maybe<Scalars['String']['output']>;
   arkhamdb_id?: Maybe<Scalars['Int']['output']>;
   arkhamdb_user?: Maybe<Scalars['Int']['output']>;
   base?: Maybe<Scalars['Boolean']['output']>;
@@ -5404,6 +5406,8 @@ export type Campaign_Deck_Bool_Exp = {
   _not?: InputMaybe<Campaign_Deck_Bool_Exp>;
   _or?: InputMaybe<Array<Campaign_Deck_Bool_Exp>>;
   archived?: InputMaybe<Boolean_Comparison_Exp>;
+  arkhambuild_id?: InputMaybe<String_Comparison_Exp>;
+  arkhambuild_user?: InputMaybe<String_Comparison_Exp>;
   arkhamdb_id?: InputMaybe<Int_Comparison_Exp>;
   arkhamdb_user?: InputMaybe<Int_Comparison_Exp>;
   base?: InputMaybe<Boolean_Comparison_Exp>;
@@ -5429,6 +5433,8 @@ export type Campaign_Deck_Bool_Exp = {
 
 /** unique or primary key constraints on table "campaign_deck" */
 export enum Campaign_Deck_Constraint {
+  /** unique or primary key constraint on columns "arkhambuild_id", "campaign_id" */
+  CampaignDeckArkhambuildIdCampaignIdKey = 'campaign_deck_arkhambuild_id_campaign_id_key',
   /** unique or primary key constraint on columns "arkhamdb_id", "campaign_id" */
   DeckArkhamdbIdCampaignIdKey = 'deck_arkhamdb_id_campaign_id_key',
   /** unique or primary key constraint on columns "local_uuid", "campaign_id" */
@@ -5464,6 +5470,8 @@ export type Campaign_Deck_Inc_Input = {
 /** input type for inserting data into table "campaign_deck" */
 export type Campaign_Deck_Insert_Input = {
   archived?: InputMaybe<Scalars['Boolean']['input']>;
+  arkhambuild_id?: InputMaybe<Scalars['String']['input']>;
+  arkhambuild_user?: InputMaybe<Scalars['String']['input']>;
   arkhamdb_id?: InputMaybe<Scalars['Int']['input']>;
   arkhamdb_user?: InputMaybe<Scalars['Int']['input']>;
   base?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5488,6 +5496,8 @@ export type Campaign_Deck_Insert_Input = {
 /** aggregate max on columns */
 export type Campaign_Deck_Max_Fields = {
   __typename?: 'campaign_deck_max_fields';
+  arkhambuild_id?: Maybe<Scalars['String']['output']>;
+  arkhambuild_user?: Maybe<Scalars['String']['output']>;
   arkhamdb_id?: Maybe<Scalars['Int']['output']>;
   arkhamdb_user?: Maybe<Scalars['Int']['output']>;
   campaign_id?: Maybe<Scalars['Int']['output']>;
@@ -5502,6 +5512,8 @@ export type Campaign_Deck_Max_Fields = {
 
 /** order by max() on columns of table "campaign_deck" */
 export type Campaign_Deck_Max_Order_By = {
+  arkhambuild_id?: InputMaybe<Order_By>;
+  arkhambuild_user?: InputMaybe<Order_By>;
   arkhamdb_id?: InputMaybe<Order_By>;
   arkhamdb_user?: InputMaybe<Order_By>;
   campaign_id?: InputMaybe<Order_By>;
@@ -5517,6 +5529,8 @@ export type Campaign_Deck_Max_Order_By = {
 /** aggregate min on columns */
 export type Campaign_Deck_Min_Fields = {
   __typename?: 'campaign_deck_min_fields';
+  arkhambuild_id?: Maybe<Scalars['String']['output']>;
+  arkhambuild_user?: Maybe<Scalars['String']['output']>;
   arkhamdb_id?: Maybe<Scalars['Int']['output']>;
   arkhamdb_user?: Maybe<Scalars['Int']['output']>;
   campaign_id?: Maybe<Scalars['Int']['output']>;
@@ -5531,6 +5545,8 @@ export type Campaign_Deck_Min_Fields = {
 
 /** order by min() on columns of table "campaign_deck" */
 export type Campaign_Deck_Min_Order_By = {
+  arkhambuild_id?: InputMaybe<Order_By>;
+  arkhambuild_user?: InputMaybe<Order_By>;
   arkhamdb_id?: InputMaybe<Order_By>;
   arkhamdb_user?: InputMaybe<Order_By>;
   campaign_id?: InputMaybe<Order_By>;
@@ -5569,6 +5585,8 @@ export type Campaign_Deck_On_Conflict = {
 /** Ordering options when selecting data from "campaign_deck". */
 export type Campaign_Deck_Order_By = {
   archived?: InputMaybe<Order_By>;
+  arkhambuild_id?: InputMaybe<Order_By>;
+  arkhambuild_user?: InputMaybe<Order_By>;
   arkhamdb_id?: InputMaybe<Order_By>;
   arkhamdb_user?: InputMaybe<Order_By>;
   base?: InputMaybe<Order_By>;
@@ -5604,6 +5622,10 @@ export type Campaign_Deck_Prepend_Input = {
 export enum Campaign_Deck_Select_Column {
   /** column name */
   Archived = 'archived',
+  /** column name */
+  ArkhambuildId = 'arkhambuild_id',
+  /** column name */
+  ArkhambuildUser = 'arkhambuild_user',
   /** column name */
   ArkhamdbId = 'arkhamdb_id',
   /** column name */
@@ -5649,6 +5671,8 @@ export enum Campaign_Deck_Select_Column_Campaign_Deck_Aggregate_Bool_Exp_Bool_Or
 /** input type for updating data in table "campaign_deck" */
 export type Campaign_Deck_Set_Input = {
   archived?: InputMaybe<Scalars['Boolean']['input']>;
+  arkhambuild_id?: InputMaybe<Scalars['String']['input']>;
+  arkhambuild_user?: InputMaybe<Scalars['String']['input']>;
   arkhamdb_id?: InputMaybe<Scalars['Int']['input']>;
   arkhamdb_user?: InputMaybe<Scalars['Int']['input']>;
   base?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5731,6 +5755,8 @@ export type Campaign_Deck_Stream_Cursor_Input = {
 /** Initial value of the column from where the streaming should start */
 export type Campaign_Deck_Stream_Cursor_Value_Input = {
   archived?: InputMaybe<Scalars['Boolean']['input']>;
+  arkhambuild_id?: InputMaybe<Scalars['String']['input']>;
+  arkhambuild_user?: InputMaybe<Scalars['String']['input']>;
   arkhamdb_id?: InputMaybe<Scalars['Int']['input']>;
   arkhamdb_user?: InputMaybe<Scalars['Int']['input']>;
   base?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5768,6 +5794,10 @@ export type Campaign_Deck_Sum_Order_By = {
 export enum Campaign_Deck_Update_Column {
   /** column name */
   Archived = 'archived',
+  /** column name */
+  ArkhambuildId = 'arkhambuild_id',
+  /** column name */
+  ArkhambuildUser = 'arkhambuild_user',
   /** column name */
   ArkhamdbId = 'arkhamdb_id',
   /** column name */
@@ -15890,6 +15920,7 @@ export enum Cursor_Ordering {
 /** columns and relationships of "cycle" */
 export type Cycle = {
   __typename?: 'cycle';
+  chapter?: Maybe<Scalars['Int']['output']>;
   code: Scalars['String']['output'];
   official: Scalars['Boolean']['output'];
   /** An array relationship */
@@ -15977,6 +16008,7 @@ export type Cycle_Aggregate_FieldsCountArgs = {
 /** aggregate avg on columns */
 export type Cycle_Avg_Fields = {
   __typename?: 'cycle_avg_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
@@ -15985,6 +16017,7 @@ export type Cycle_Bool_Exp = {
   _and?: InputMaybe<Array<Cycle_Bool_Exp>>;
   _not?: InputMaybe<Cycle_Bool_Exp>;
   _or?: InputMaybe<Array<Cycle_Bool_Exp>>;
+  chapter?: InputMaybe<Int_Comparison_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
   official?: InputMaybe<Boolean_Comparison_Exp>;
   packs?: InputMaybe<Pack_Bool_Exp>;
@@ -16003,11 +16036,13 @@ export enum Cycle_Constraint {
 
 /** input type for incrementing numeric columns in table "cycle" */
 export type Cycle_Inc_Input = {
+  chapter?: InputMaybe<Scalars['Int']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** input type for inserting data into table "cycle" */
 export type Cycle_Insert_Input = {
+  chapter?: InputMaybe<Scalars['Int']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
   packs?: InputMaybe<Pack_Arr_Rel_Insert_Input>;
@@ -16019,6 +16054,7 @@ export type Cycle_Insert_Input = {
 /** aggregate max on columns */
 export type Cycle_Max_Fields = {
   __typename?: 'cycle_max_fields';
+  chapter?: Maybe<Scalars['Int']['output']>;
   code?: Maybe<Scalars['String']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
   real_name?: Maybe<Scalars['String']['output']>;
@@ -16027,6 +16063,7 @@ export type Cycle_Max_Fields = {
 /** aggregate min on columns */
 export type Cycle_Min_Fields = {
   __typename?: 'cycle_min_fields';
+  chapter?: Maybe<Scalars['Int']['output']>;
   code?: Maybe<Scalars['String']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
   real_name?: Maybe<Scalars['String']['output']>;
@@ -16257,6 +16294,7 @@ export type Cycle_On_Conflict = {
 
 /** Ordering options when selecting data from "cycle". */
 export type Cycle_Order_By = {
+  chapter?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   official?: InputMaybe<Order_By>;
   packs_aggregate?: InputMaybe<Pack_Aggregate_Order_By>;
@@ -16273,6 +16311,8 @@ export type Cycle_Pk_Columns_Input = {
 /** select columns of table "cycle" */
 export enum Cycle_Select_Column {
   /** column name */
+  Chapter = 'chapter',
+  /** column name */
   Code = 'code',
   /** column name */
   Official = 'official',
@@ -16284,6 +16324,7 @@ export enum Cycle_Select_Column {
 
 /** input type for updating data in table "cycle" */
 export type Cycle_Set_Input = {
+  chapter?: InputMaybe<Scalars['Int']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
@@ -16293,18 +16334,21 @@ export type Cycle_Set_Input = {
 /** aggregate stddev on columns */
 export type Cycle_Stddev_Fields = {
   __typename?: 'cycle_stddev_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Cycle_Stddev_Pop_Fields = {
   __typename?: 'cycle_stddev_pop_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Cycle_Stddev_Samp_Fields = {
   __typename?: 'cycle_stddev_samp_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
@@ -16318,6 +16362,7 @@ export type Cycle_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Cycle_Stream_Cursor_Value_Input = {
+  chapter?: InputMaybe<Scalars['Int']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
@@ -16327,11 +16372,14 @@ export type Cycle_Stream_Cursor_Value_Input = {
 /** aggregate sum on columns */
 export type Cycle_Sum_Fields = {
   __typename?: 'cycle_sum_fields';
+  chapter?: Maybe<Scalars['Int']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
 };
 
 /** update columns of table "cycle" */
 export enum Cycle_Update_Column {
+  /** column name */
+  Chapter = 'chapter',
   /** column name */
   Code = 'code',
   /** column name */
@@ -16354,18 +16402,21 @@ export type Cycle_Updates = {
 /** aggregate var_pop on columns */
 export type Cycle_Var_Pop_Fields = {
   __typename?: 'cycle_var_pop_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate var_samp on columns */
 export type Cycle_Var_Samp_Fields = {
   __typename?: 'cycle_var_samp_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
 /** aggregate variance on columns */
 export type Cycle_Variance_Fields = {
   __typename?: 'cycle_variance_fields';
+  chapter?: Maybe<Scalars['Float']['output']>;
   position?: Maybe<Scalars['Float']['output']>;
 };
 
@@ -52801,12 +52852,14 @@ export type UploadNewCampaignMutationVariables = Exact<{
 }>;
 
 
-export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null, step?: string | null, payload?: any | null, created_at: any, inserted_idx?: number | null }> } | null, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> } | null, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
+export type UploadNewCampaignMutation = { __typename?: 'mutation_root', insert_guide_input?: { __typename?: 'guide_input_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, scenario?: string | null, step?: string | null, payload?: any | null, created_at: any, inserted_idx?: number | null }> } | null, insert_guide_achievement?: { __typename?: 'guide_achievement_mutation_response', affected_rows: number } | null, insert_investigator_data?: { __typename?: 'investigator_data_mutation_response', affected_rows: number } | null, insert_campaign_investigator?: { __typename?: 'campaign_investigator_mutation_response', affected_rows: number } | null, update_campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, campaign_guide?: { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> } | null, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type InsertNewDeckMutationVariables = Exact<{
   arkhamdb_id?: InputMaybe<Scalars['Int']['input']>;
+  arkhambuild_id?: InputMaybe<Scalars['String']['input']>;
   local_uuid?: InputMaybe<Scalars['String']['input']>;
   arkhamdb_user?: InputMaybe<Scalars['Int']['input']>;
+  arkhambuild_user?: InputMaybe<Scalars['String']['input']>;
   campaign_id: Scalars['Int']['input'];
   investigator: Scalars['String']['input'];
   content: Scalars['jsonb']['input'];
@@ -52815,7 +52868,7 @@ export type InsertNewDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNewDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
+export type InsertNewDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null };
 
 export type InsertNextLocalDeckMutationVariables = Exact<{
   previous_local_uuid?: InputMaybe<Scalars['String']['input']>;
@@ -52828,7 +52881,7 @@ export type InsertNextLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNextLocalDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
+export type InsertNextLocalDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null };
 
 export type InsertNextArkhamDbDeckMutationVariables = Exact<{
   previous_arkhamdb_id: Scalars['Int']['input'];
@@ -52842,7 +52895,56 @@ export type InsertNextArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type InsertNextArkhamDbDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
+export type InsertNextArkhamDbDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null };
+
+export type InsertNextArkhamBuildDeckMutationVariables = Exact<{
+  previous_arkhambuild_id: Scalars['String']['input'];
+  arkhambuild_id: Scalars['String']['input'];
+  arkhambuild_user?: InputMaybe<Scalars['String']['input']>;
+  campaign_id: Scalars['Int']['input'];
+  investigator: Scalars['String']['input'];
+  content: Scalars['jsonb']['input'];
+  content_hash: Scalars['String']['input'];
+  userId: Scalars['String']['input'];
+}>;
+
+
+export type InsertNextArkhamBuildDeckMutation = { __typename?: 'mutation_root', insert_campaign_deck_one?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null };
+
+export type UpdateArkhamBuildDeckMutationVariables = Exact<{
+  arkhambuild_id: Scalars['String']['input'];
+  campaign_id: Scalars['Int']['input'];
+  content: Scalars['jsonb']['input'];
+  content_hash: Scalars['String']['input'];
+  arkhambuild_user?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type UpdateArkhamBuildDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null, content_hash?: string | null, arkhambuild_user?: string | null, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number }> } | null };
+
+export type DeleteAllArkhamBuildDecksMutationVariables = Exact<{
+  arkhambuild_id: Scalars['String']['input'];
+  campaign_id: Scalars['Int']['input'];
+}>;
+
+
+export type DeleteAllArkhamBuildDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number }> } | null };
+
+export type DeleteArkhamBuildDeckMutationVariables = Exact<{
+  arkhambuild_id: Scalars['String']['input'];
+  campaign_id: Scalars['Int']['input'];
+}>;
+
+
+export type DeleteArkhamBuildDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
+
+export type GetLatestArkhamBuildDeckQueryVariables = Exact<{
+  campaign_id: Scalars['Int']['input'];
+  arkhambuild_id: Scalars['String']['input'];
+}>;
+
+
+export type GetLatestArkhamBuildDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
 export type UpdateArkhamDbDeckMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int']['input'];
@@ -52853,7 +52955,7 @@ export type UpdateArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type UpdateArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null, content_hash?: string | null, arkhamdb_user?: number | null, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number }> } | null };
+export type UpdateArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null, content_hash?: string | null, arkhamdb_user?: number | null, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number }> } | null };
 
 export type UpdateLocalDeckMutationVariables = Exact<{
   local_uuid: Scalars['String']['input'];
@@ -52863,7 +52965,7 @@ export type UpdateLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type UpdateLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null, content_hash?: string | null, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number }> } | null };
+export type UpdateLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', content?: any | null, content_hash?: string | null, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number }> } | null };
 
 export type DeleteAllLocalDecksMutationVariables = Exact<{
   local_uuid: Scalars['String']['input'];
@@ -52871,7 +52973,7 @@ export type DeleteAllLocalDecksMutationVariables = Exact<{
 }>;
 
 
-export type DeleteAllLocalDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number }> } | null };
+export type DeleteAllLocalDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number }> } | null };
 
 export type DeleteAllArkhamDbDecksMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int']['input'];
@@ -52879,7 +52981,7 @@ export type DeleteAllArkhamDbDecksMutationVariables = Exact<{
 }>;
 
 
-export type DeleteAllArkhamDbDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number }> } | null };
+export type DeleteAllArkhamDbDecksMutation = { __typename?: 'mutation_root', delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number }> } | null };
 
 export type DeleteLocalDeckMutationVariables = Exact<{
   local_uuid: Scalars['String']['input'];
@@ -52887,7 +52989,7 @@ export type DeleteLocalDeckMutationVariables = Exact<{
 }>;
 
 
-export type DeleteLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
+export type DeleteLocalDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
 
 export type DeleteArkhamDbDeckMutationVariables = Exact<{
   arkhamdb_id: Scalars['Int']['input'];
@@ -52895,14 +52997,14 @@ export type DeleteArkhamDbDeckMutationVariables = Exact<{
 }>;
 
 
-export type DeleteArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
+export type DeleteArkhamDbDeckMutation = { __typename?: 'mutation_root', update_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', returning: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }> } | null, delete_campaign_deck?: { __typename?: 'campaign_deck_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null }> } | null };
 
 export type GetMyDecksQueryVariables = Exact<{
   userId: Scalars['String']['input'];
 }>;
 
 
-export type GetMyDecksQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, all_decks: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> } | null };
+export type GetMyDecksQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, all_decks: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }> } | null };
 
 export type GetLatestLocalDeckQueryVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
@@ -52910,7 +53012,7 @@ export type GetLatestLocalDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetLatestLocalDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
+export type GetLatestLocalDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
 export type GetLatestArkhamDbDeckQueryVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
@@ -52918,14 +53020,14 @@ export type GetLatestArkhamDbDeckQueryVariables = Exact<{
 }>;
 
 
-export type GetLatestArkhamDbDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
+export type GetLatestArkhamDbDeckQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
 export type GetLatestDeckQueryVariables = Exact<{
   deckId: Scalars['Int']['input'];
 }>;
 
 
-export type GetLatestDeckQuery = { __typename?: 'query_root', campaign_deck_by_pk?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null };
+export type GetLatestDeckQuery = { __typename?: 'query_root', campaign_deck_by_pk?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null };
 
 export type GetDeckHistoryQueryVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
@@ -52933,7 +53035,7 @@ export type GetDeckHistoryQueryVariables = Exact<{
 }>;
 
 
-export type GetDeckHistoryQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }> };
+export type GetDeckHistoryQuery = { __typename?: 'query_root', campaign_deck: Array<{ __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }> };
 
 export type TabooSetFragment = { __typename?: 'taboo_set', id: number, name?: string | null, code: string, active: boolean, date: string, card_count: number, current: boolean };
 
@@ -52953,19 +53055,19 @@ export type GuideInputFragment = { __typename?: 'guide_input', id: string, campa
 
 export type GuideAchievementFragment = { __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null };
 
-export type IdDeckFragment = { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
+export type IdDeckFragment = { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number };
 
 export type FullChaosBagResultFragment = { __typename?: 'chaos_bag_result', id: number, bless: number, curse: number, drawn: any, sealed: any, totalDrawn?: number | null, tarot?: Chaos_Bag_Tarot_Mode_Enum | null, difficulty?: Campaign_Difficulty_Enum | null, history: any };
 
-export type MiniDeckFragment = { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
+export type MiniDeckFragment = { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number };
 
-export type BasicDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number };
+export type BasicDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number };
 
-export type AllDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null };
+export type AllDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, campaign: { __typename?: 'campaign', id: number, uuid: string }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null };
 
-export type HistoryDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null };
+export type HistoryDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, next_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null, previous_deck?: { __typename?: 'campaign_deck', id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null };
 
-export type LatestDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null };
+export type LatestDeckFragment = { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null };
 
 export type MiniInvestigatorDataFragment = { __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null };
 
@@ -52973,9 +53075,9 @@ export type FullGuideInvestigatorDataFragment = { __typename?: 'investigator_dat
 
 export type FullInvestigatorDataFragment = { __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null };
 
-export type MiniCampaignFragment = { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> };
+export type MiniCampaignFragment = { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> };
 
-export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null };
+export type FullCampaignFragment = { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null };
 
 export type FullCampaignGuideStateFragment = { __typename?: 'campaign_guide', id?: number | null, uuid?: string | null, updated_at?: any | null, guide_inputs: Array<{ __typename?: 'guide_input', id: string, campaign_id: number, step?: string | null, scenario?: string | null, type: string, payload?: any | null }>, guide_achievements: Array<{ __typename?: 'guide_achievement', id: string, campaign_id: number, type: string, value?: number | null, bool_value?: boolean | null }> };
 
@@ -52984,14 +53086,14 @@ export type GetMyCampaignsQueryVariables = Exact<{
 }>;
 
 
-export type GetMyCampaignsQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, campaigns: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null }> } | null };
+export type GetMyCampaignsQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', id: string, campaigns: Array<{ __typename?: 'user_campaigns', campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, scenarioResults?: any | null, guided?: boolean | null, archived?: boolean | null, owner_id: string, updated_at: any, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null }>, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }> } | null }> } | null };
 
 export type GetCampaignQueryVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
 }>;
 
 
-export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
+export type GetCampaignQuery = { __typename?: 'query_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type GetCampaignGuideQueryVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
@@ -53019,7 +53121,7 @@ export type CampaignSubscriptionVariables = Exact<{
 }>;
 
 
-export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
+export type CampaignSubscription = { __typename?: 'subscription_root', campaign_by_pk?: { __typename?: 'campaign', id: number, updated_at: any, uuid: string, name?: string | null, deleted?: boolean | null, cycleCode?: string | null, standaloneId?: any | null, difficulty?: string | null, campaignNotes?: any | null, chaosBag?: any | null, showInterludes?: boolean | null, scenarioResults?: any | null, weaknessSet?: any | null, guided?: boolean | null, guide_version?: number | null, tarot_reading?: any | null, archived?: boolean | null, owner_id: string, investigators: Array<{ __typename?: 'campaign_investigator', id?: string | null, investigator: string, printing?: string | null }>, investigator_data: Array<{ __typename?: 'investigator_data', spentXp?: number | null, addedCards?: any | null, ignoreStoryAssets?: any | null, removedCards?: any | null, cardCounts?: any | null, specialXp?: any | null, availableXp?: number | null, id?: string | null, campaign_id: number, investigator: string, mental?: number | null, physical?: number | null, insane?: boolean | null, killed?: boolean | null, storyAssets?: any | null }>, latest_decks: Array<{ __typename?: 'latest_decks', deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number, owner: { __typename?: 'users', id: string, handle?: string | null }, campaign: { __typename?: 'campaign', id: number, uuid: string, name?: string | null, cycleCode?: string | null }, investigator_data?: { __typename?: 'investigator_data', id?: string | null, killed?: boolean | null, insane?: boolean | null, physical?: number | null, mental?: number | null } | null, previous_deck?: { __typename?: 'campaign_deck', arkhamdb_user?: number | null, arkhambuild_user?: string | null, content?: any | null, content_hash?: string | null, investigator: string, id: number, owner_id: string, arkhamdb_id?: number | null, arkhambuild_id?: string | null, local_uuid?: string | null, campaign_id: number } | null } | null }>, link_a_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, link_b_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null, linked_campaign?: { __typename?: 'campaign', id: number, uuid: string } | null } | null };
 
 export type CampaignAccessSubscriptionVariables = Exact<{
   campaign_id: Scalars['Int']['input'];
@@ -53566,6 +53668,7 @@ export const IdDeckFragmentDoc = gql`
   id
   owner_id
   arkhamdb_id
+  arkhambuild_id
   local_uuid
   campaign_id
 }
@@ -53580,6 +53683,7 @@ export const BasicDeckFragmentDoc = gql`
     fragment BasicDeck on campaign_deck {
   ...MiniDeck
   arkhamdb_user
+  arkhambuild_user
   content
   content_hash
 }
@@ -54997,10 +55101,10 @@ export type UploadNewCampaignMutationHookResult = ReturnType<typeof useUploadNew
 export type UploadNewCampaignMutationResult = Apollo.MutationResult<UploadNewCampaignMutation>;
 export type UploadNewCampaignMutationOptions = Apollo.BaseMutationOptions<UploadNewCampaignMutation, UploadNewCampaignMutationVariables>;
 export const InsertNewDeckDocument = gql`
-    mutation insertNewDeck($arkhamdb_id: Int, $local_uuid: String, $arkhamdb_user: Int, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
+    mutation insertNewDeck($arkhamdb_id: Int, $arkhambuild_id: String, $local_uuid: String, $arkhamdb_user: Int, $arkhambuild_user: String, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
   insert_campaign_deck_one(
-    object: {arkhamdb_id: $arkhamdb_id, arkhamdb_user: $arkhamdb_user, local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId, base: true}
-    on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [content, content_hash, arkhamdb_id, arkhamdb_user]}
+    object: {arkhamdb_id: $arkhamdb_id, arkhamdb_user: $arkhamdb_user, arkhambuild_id: $arkhambuild_id, arkhambuild_user: $arkhambuild_user, local_uuid: $local_uuid, campaign_id: $campaign_id, investigator: $investigator, content: $content, content_hash: $content_hash, owner_id: $userId, base: true}
+    on_conflict: {constraint: deck_local_uuid_campaign_id_key, update_columns: [content, content_hash, arkhamdb_id, arkhamdb_user, arkhambuild_id, arkhambuild_user]}
   ) {
     ...LatestDeck
   }
@@ -55022,8 +55126,10 @@ export type InsertNewDeckMutationFn = Apollo.MutationFunction<InsertNewDeckMutat
  * const [insertNewDeckMutation, { data, loading, error }] = useInsertNewDeckMutation({
  *   variables: {
  *      arkhamdb_id: // value for 'arkhamdb_id'
+ *      arkhambuild_id: // value for 'arkhambuild_id'
  *      local_uuid: // value for 'local_uuid'
  *      arkhamdb_user: // value for 'arkhamdb_user'
+ *      arkhambuild_user: // value for 'arkhambuild_user'
  *      campaign_id: // value for 'campaign_id'
  *      investigator: // value for 'investigator'
  *      content: // value for 'content'
@@ -55130,6 +55236,231 @@ export function useInsertNextArkhamDbDeckMutation(baseOptions?: Apollo.MutationH
 export type InsertNextArkhamDbDeckMutationHookResult = ReturnType<typeof useInsertNextArkhamDbDeckMutation>;
 export type InsertNextArkhamDbDeckMutationResult = Apollo.MutationResult<InsertNextArkhamDbDeckMutation>;
 export type InsertNextArkhamDbDeckMutationOptions = Apollo.BaseMutationOptions<InsertNextArkhamDbDeckMutation, InsertNextArkhamDbDeckMutationVariables>;
+export const InsertNextArkhamBuildDeckDocument = gql`
+    mutation insertNextArkhamBuildDeck($previous_arkhambuild_id: String!, $arkhambuild_id: String!, $arkhambuild_user: String, $campaign_id: Int!, $investigator: String!, $content: jsonb!, $content_hash: String!, $userId: String!) {
+  insert_campaign_deck_one(
+    object: {arkhambuild_id: $arkhambuild_id, arkhambuild_user: $arkhambuild_user, arkhamdb_id: null, local_uuid: null, investigator: $investigator, campaign_id: $campaign_id, owner_id: $userId, content: $content, content_hash: $content_hash, previous_decks: {data: {arkhambuild_id: $previous_arkhambuild_id, arkhamdb_id: null, local_uuid: null, campaign_id: $campaign_id, investigator: $investigator, owner_id: $userId}, on_conflict: {constraint: campaign_deck_arkhambuild_id_campaign_id_key, update_columns: [next_deck_id]}}}
+  ) {
+    ...BasicDeck
+    previous_deck {
+      ...IdDeck
+    }
+  }
+}
+    ${BasicDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
+export type InsertNextArkhamBuildDeckMutationFn = Apollo.MutationFunction<InsertNextArkhamBuildDeckMutation, InsertNextArkhamBuildDeckMutationVariables>;
+
+/**
+ * __useInsertNextArkhamBuildDeckMutation__
+ *
+ * To run a mutation, you first call `useInsertNextArkhamBuildDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInsertNextArkhamBuildDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [insertNextArkhamBuildDeckMutation, { data, loading, error }] = useInsertNextArkhamBuildDeckMutation({
+ *   variables: {
+ *      previous_arkhambuild_id: // value for 'previous_arkhambuild_id'
+ *      arkhambuild_id: // value for 'arkhambuild_id'
+ *      arkhambuild_user: // value for 'arkhambuild_user'
+ *      campaign_id: // value for 'campaign_id'
+ *      investigator: // value for 'investigator'
+ *      content: // value for 'content'
+ *      content_hash: // value for 'content_hash'
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useInsertNextArkhamBuildDeckMutation(baseOptions?: Apollo.MutationHookOptions<InsertNextArkhamBuildDeckMutation, InsertNextArkhamBuildDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<InsertNextArkhamBuildDeckMutation, InsertNextArkhamBuildDeckMutationVariables>(InsertNextArkhamBuildDeckDocument, options);
+      }
+export type InsertNextArkhamBuildDeckMutationHookResult = ReturnType<typeof useInsertNextArkhamBuildDeckMutation>;
+export type InsertNextArkhamBuildDeckMutationResult = Apollo.MutationResult<InsertNextArkhamBuildDeckMutation>;
+export type InsertNextArkhamBuildDeckMutationOptions = Apollo.BaseMutationOptions<InsertNextArkhamBuildDeckMutation, InsertNextArkhamBuildDeckMutationVariables>;
+export const UpdateArkhamBuildDeckDocument = gql`
+    mutation updateArkhamBuildDeck($arkhambuild_id: String!, $campaign_id: Int!, $content: jsonb!, $content_hash: String!, $arkhambuild_user: String) {
+  update_campaign_deck(
+    where: {arkhambuild_id: {_eq: $arkhambuild_id}, campaign_id: {_eq: $campaign_id}}
+    _set: {content: $content, content_hash: $content_hash, arkhambuild_user: $arkhambuild_user}
+  ) {
+    affected_rows
+    returning {
+      ...IdDeck
+      content
+      content_hash
+      arkhambuild_user
+    }
+  }
+}
+    ${IdDeckFragmentDoc}`;
+export type UpdateArkhamBuildDeckMutationFn = Apollo.MutationFunction<UpdateArkhamBuildDeckMutation, UpdateArkhamBuildDeckMutationVariables>;
+
+/**
+ * __useUpdateArkhamBuildDeckMutation__
+ *
+ * To run a mutation, you first call `useUpdateArkhamBuildDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateArkhamBuildDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateArkhamBuildDeckMutation, { data, loading, error }] = useUpdateArkhamBuildDeckMutation({
+ *   variables: {
+ *      arkhambuild_id: // value for 'arkhambuild_id'
+ *      campaign_id: // value for 'campaign_id'
+ *      content: // value for 'content'
+ *      content_hash: // value for 'content_hash'
+ *      arkhambuild_user: // value for 'arkhambuild_user'
+ *   },
+ * });
+ */
+export function useUpdateArkhamBuildDeckMutation(baseOptions?: Apollo.MutationHookOptions<UpdateArkhamBuildDeckMutation, UpdateArkhamBuildDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateArkhamBuildDeckMutation, UpdateArkhamBuildDeckMutationVariables>(UpdateArkhamBuildDeckDocument, options);
+      }
+export type UpdateArkhamBuildDeckMutationHookResult = ReturnType<typeof useUpdateArkhamBuildDeckMutation>;
+export type UpdateArkhamBuildDeckMutationResult = Apollo.MutationResult<UpdateArkhamBuildDeckMutation>;
+export type UpdateArkhamBuildDeckMutationOptions = Apollo.BaseMutationOptions<UpdateArkhamBuildDeckMutation, UpdateArkhamBuildDeckMutationVariables>;
+export const DeleteAllArkhamBuildDecksDocument = gql`
+    mutation deleteAllArkhamBuildDecks($arkhambuild_id: String!, $campaign_id: Int!) {
+  delete_campaign_deck(
+    where: {campaign_id: {_eq: $campaign_id}, other_decks: {arkhambuild_id: {_eq: $arkhambuild_id}}}
+  ) {
+    affected_rows
+    returning {
+      ...IdDeck
+    }
+  }
+}
+    ${IdDeckFragmentDoc}`;
+export type DeleteAllArkhamBuildDecksMutationFn = Apollo.MutationFunction<DeleteAllArkhamBuildDecksMutation, DeleteAllArkhamBuildDecksMutationVariables>;
+
+/**
+ * __useDeleteAllArkhamBuildDecksMutation__
+ *
+ * To run a mutation, you first call `useDeleteAllArkhamBuildDecksMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteAllArkhamBuildDecksMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteAllArkhamBuildDecksMutation, { data, loading, error }] = useDeleteAllArkhamBuildDecksMutation({
+ *   variables: {
+ *      arkhambuild_id: // value for 'arkhambuild_id'
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useDeleteAllArkhamBuildDecksMutation(baseOptions?: Apollo.MutationHookOptions<DeleteAllArkhamBuildDecksMutation, DeleteAllArkhamBuildDecksMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteAllArkhamBuildDecksMutation, DeleteAllArkhamBuildDecksMutationVariables>(DeleteAllArkhamBuildDecksDocument, options);
+      }
+export type DeleteAllArkhamBuildDecksMutationHookResult = ReturnType<typeof useDeleteAllArkhamBuildDecksMutation>;
+export type DeleteAllArkhamBuildDecksMutationResult = Apollo.MutationResult<DeleteAllArkhamBuildDecksMutation>;
+export type DeleteAllArkhamBuildDecksMutationOptions = Apollo.BaseMutationOptions<DeleteAllArkhamBuildDecksMutation, DeleteAllArkhamBuildDecksMutationVariables>;
+export const DeleteArkhamBuildDeckDocument = gql`
+    mutation deleteArkhamBuildDeck($arkhambuild_id: String!, $campaign_id: Int!) {
+  update_campaign_deck(
+    where: {next_deck: {arkhambuild_id: {_eq: $arkhambuild_id}, campaign_id: {_eq: $campaign_id}}}
+    _delete_key: {content: "nextDeckId"}
+  ) {
+    returning {
+      ...LatestDeck
+    }
+  }
+  delete_campaign_deck(
+    where: {arkhambuild_id: {_eq: $arkhambuild_id}, campaign_id: {_eq: $campaign_id}}
+  ) {
+    affected_rows
+    returning {
+      ...IdDeck
+      previous_deck {
+        ...LatestDeck
+      }
+    }
+  }
+}
+    ${LatestDeckFragmentDoc}
+${IdDeckFragmentDoc}`;
+export type DeleteArkhamBuildDeckMutationFn = Apollo.MutationFunction<DeleteArkhamBuildDeckMutation, DeleteArkhamBuildDeckMutationVariables>;
+
+/**
+ * __useDeleteArkhamBuildDeckMutation__
+ *
+ * To run a mutation, you first call `useDeleteArkhamBuildDeckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteArkhamBuildDeckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteArkhamBuildDeckMutation, { data, loading, error }] = useDeleteArkhamBuildDeckMutation({
+ *   variables: {
+ *      arkhambuild_id: // value for 'arkhambuild_id'
+ *      campaign_id: // value for 'campaign_id'
+ *   },
+ * });
+ */
+export function useDeleteArkhamBuildDeckMutation(baseOptions?: Apollo.MutationHookOptions<DeleteArkhamBuildDeckMutation, DeleteArkhamBuildDeckMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteArkhamBuildDeckMutation, DeleteArkhamBuildDeckMutationVariables>(DeleteArkhamBuildDeckDocument, options);
+      }
+export type DeleteArkhamBuildDeckMutationHookResult = ReturnType<typeof useDeleteArkhamBuildDeckMutation>;
+export type DeleteArkhamBuildDeckMutationResult = Apollo.MutationResult<DeleteArkhamBuildDeckMutation>;
+export type DeleteArkhamBuildDeckMutationOptions = Apollo.BaseMutationOptions<DeleteArkhamBuildDeckMutation, DeleteArkhamBuildDeckMutationVariables>;
+export const GetLatestArkhamBuildDeckDocument = gql`
+    query getLatestArkhamBuildDeck($campaign_id: Int!, $arkhambuild_id: String!) {
+  campaign_deck(
+    where: {campaign_id: {_eq: $campaign_id}, arkhambuild_id: {_eq: $arkhambuild_id}}
+  ) {
+    ...LatestDeck
+  }
+}
+    ${LatestDeckFragmentDoc}`;
+
+/**
+ * __useGetLatestArkhamBuildDeckQuery__
+ *
+ * To run a query within a React component, call `useGetLatestArkhamBuildDeckQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLatestArkhamBuildDeckQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLatestArkhamBuildDeckQuery({
+ *   variables: {
+ *      campaign_id: // value for 'campaign_id'
+ *      arkhambuild_id: // value for 'arkhambuild_id'
+ *   },
+ * });
+ */
+export function useGetLatestArkhamBuildDeckQuery(baseOptions: Apollo.QueryHookOptions<GetLatestArkhamBuildDeckQuery, GetLatestArkhamBuildDeckQueryVariables> & ({ variables: GetLatestArkhamBuildDeckQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetLatestArkhamBuildDeckQuery, GetLatestArkhamBuildDeckQueryVariables>(GetLatestArkhamBuildDeckDocument, options);
+      }
+export function useGetLatestArkhamBuildDeckLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLatestArkhamBuildDeckQuery, GetLatestArkhamBuildDeckQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetLatestArkhamBuildDeckQuery, GetLatestArkhamBuildDeckQueryVariables>(GetLatestArkhamBuildDeckDocument, options);
+        }
+export function useGetLatestArkhamBuildDeckSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetLatestArkhamBuildDeckQuery, GetLatestArkhamBuildDeckQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetLatestArkhamBuildDeckQuery, GetLatestArkhamBuildDeckQueryVariables>(GetLatestArkhamBuildDeckDocument, options);
+        }
+export type GetLatestArkhamBuildDeckQueryHookResult = ReturnType<typeof useGetLatestArkhamBuildDeckQuery>;
+export type GetLatestArkhamBuildDeckLazyQueryHookResult = ReturnType<typeof useGetLatestArkhamBuildDeckLazyQuery>;
+export type GetLatestArkhamBuildDeckSuspenseQueryHookResult = ReturnType<typeof useGetLatestArkhamBuildDeckSuspenseQuery>;
+export type GetLatestArkhamBuildDeckQueryResult = Apollo.QueryResult<GetLatestArkhamBuildDeckQuery, GetLatestArkhamBuildDeckQueryVariables>;
 export const UpdateArkhamDbDeckDocument = gql`
     mutation updateArkhamDbDeck($arkhamdb_id: Int!, $campaign_id: Int!, $content: jsonb!, $content_hash: String!, $arkhamdb_user: Int) {
   update_campaign_deck(

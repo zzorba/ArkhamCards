@@ -159,6 +159,7 @@ fragment IdDeck on campaign_deck {
   id
   owner_id
   arkhamdb_id
+  arkhambuild_id
   local_uuid
   campaign_id
 }
@@ -183,6 +184,7 @@ fragment MiniDeck on campaign_deck {
 fragment BasicDeck on campaign_deck {
   ...MiniDeck
   arkhamdb_user
+  arkhambuild_user
   content
   content_hash
 }

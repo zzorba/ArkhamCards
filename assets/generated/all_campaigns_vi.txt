@@ -62806,11 +62806,6 @@
             "text": "Loại bỏ Gideon Mizrah khỏi trò chơi."
           },
           {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Loại bỏ Helen Peters khỏi trò chơi."
-          },
-          {
             "id": "set_aside_residents",
             "bullet_type": "small",
             "text": "Đặt mỗi lá bài còn lại từ chồng bài encounter <i>Residents</i> sang một bên, ngoài khu vực chơi."
@@ -65729,11 +65724,6 @@
             "id": "remove_gideon",
             "bullet_type": "small",
             "text": "Loại bỏ Gideon Mizrah khỏi trò chơi."
-          },
-          {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Loại bỏ Helen Peters khỏi trò chơi."
           },
           {
             "id": "remove_leah",
@@ -244281,11 +244271,6 @@
             "type": "rule_reminder",
             "title": "Hidden",
             "text": "Khi một lá bài có keyword hidden được rút, nó được thêm vào tay bạn một cách bí mật, mà không tiết lộ lá bài đó hoặc nội dung của nó cho các điều tra viên khác. Trong khi một kẻ địch hidden nằm trên tay bạn, nó không được coi là đang engage với bạn hoặc nằm trong threat area của bạn, và nó không tấn công trừ khi có chỉ định khác. Các lá bài hidden trên tay bạn được tính vào hand size của bạn, và không thể rời khỏi tay bạn bằng bất kỳ cách nào ngoại trừ những cách được mô tả trên lá bài."
-          },
-          {
-            "id": "resolution_1",
-            "type": "resolution",
-            "resolution": "R1"
           },
           {
             "id": "resolution_2",

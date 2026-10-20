@@ -62806,11 +62806,6 @@
             "text": "Retirez de la partie Gideon Mizrah."
           },
           {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Retirez de la partie Helen Peters."
-          },
-          {
             "id": "set_aside_residents",
             "bullet_type": "small",
             "text": "Mettez de côté toutes les cartes restantes du set de rencontre <i>Habitants</i>, hors jeu."
@@ -65729,11 +65724,6 @@
             "id": "remove_gideon",
             "bullet_type": "small",
             "text": "Retirez de la partie Gideon Mizrah."
-          },
-          {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Retirez de la partie Helen Peters."
           },
           {
             "id": "remove_leah",
@@ -155124,7 +155114,7 @@
         {
           "id": "deep_end",
           "title": "Au Fond du Gouffre",
-          "text": "Parvenez à sortir de <i>La Grande Crypte</i> avec la Tablette des Marées après que chaque lieu a été complètement inondé.",
+          "text": "Parvenez à sortir de <i>La Grande Crypte</i> avec la Tablette des Marées après que chaque lieu éligibles a été complètement inondé.",
           "type": "binary"
         },
         {
@@ -244281,11 +244271,6 @@
             "type": "rule_reminder",
             "title": "Caché",
             "text": "When a card with the hidden keyword is drawn, it is added to your hand in secret, without revealing that card or its text to the other investigators. While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. Hidden cards in your hand count toward your hand size, and cannot leave your hand by any means except by those described on the card."
-          },
-          {
-            "id": "resolution_1",
-            "type": "resolution",
-            "resolution": "R1"
           },
           {
             "id": "resolution_2",

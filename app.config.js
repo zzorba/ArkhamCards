@@ -64,6 +64,8 @@ module.exports = {
       OAUTH_CLIENT_SECRET: env.OAUTH_CLIENT_SECRET || process.env.OAUTH_CLIENT_SECRET,
       // Set to 'true' to use Patreon for audio access instead of Dissonant Voices
       USE_PATREON_AUDIO: env.USE_PATREON_AUDIO || process.env.USE_PATREON_AUDIO || 'false',
+      ARKHAM_BUILD_CLIENT_ID: env.ARKHAM_BUILD_CLIENT_ID || process.env.ARKHAM_BUILD_CLIENT_ID,
+      ARKHAM_BUILD_CLIENT_SECRET: env.ARKHAM_BUILD_CLIENT_SECRET || process.env.ARKHAM_BUILD_CLIENT_SECRET,
     },
     assetBundlePatterns: [
       'assets/*.ttf',

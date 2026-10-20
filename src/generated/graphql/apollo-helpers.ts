@@ -1284,9 +1284,11 @@ export type campaign_avg_fieldsFieldPolicy = {
 	link_b_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	link_campaign_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_deckKeySpecifier = ('archived' | 'arkhamdb_id' | 'arkhamdb_user' | 'base' | 'campaign' | 'campaign_id' | 'content' | 'content_hash' | 'id' | 'investigator' | 'investigator_data' | 'local_uuid' | 'next_deck' | 'next_deck_id' | 'other_decks' | 'other_decks_aggregate' | 'owner' | 'owner_id' | 'previous_deck' | 'previous_decks' | 'previous_decks_aggregate' | 'updated_at' | campaign_deckKeySpecifier)[];
+export type campaign_deckKeySpecifier = ('archived' | 'arkhambuild_id' | 'arkhambuild_user' | 'arkhamdb_id' | 'arkhamdb_user' | 'base' | 'campaign' | 'campaign_id' | 'content' | 'content_hash' | 'id' | 'investigator' | 'investigator_data' | 'local_uuid' | 'next_deck' | 'next_deck_id' | 'other_decks' | 'other_decks_aggregate' | 'owner' | 'owner_id' | 'previous_deck' | 'previous_decks' | 'previous_decks_aggregate' | 'updated_at' | campaign_deckKeySpecifier)[];
 export type campaign_deckFieldPolicy = {
 	archived?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhambuild_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhambuild_user?: FieldPolicy<any> | FieldReadFunction<any>,
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	arkhamdb_user?: FieldPolicy<any> | FieldReadFunction<any>,
 	base?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1336,8 +1338,10 @@ export type campaign_deck_avg_fieldsFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	next_deck_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_deck_max_fieldsKeySpecifier = ('arkhamdb_id' | 'arkhamdb_user' | 'campaign_id' | 'content_hash' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | 'updated_at' | campaign_deck_max_fieldsKeySpecifier)[];
+export type campaign_deck_max_fieldsKeySpecifier = ('arkhambuild_id' | 'arkhambuild_user' | 'arkhamdb_id' | 'arkhamdb_user' | 'campaign_id' | 'content_hash' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | 'updated_at' | campaign_deck_max_fieldsKeySpecifier)[];
 export type campaign_deck_max_fieldsFieldPolicy = {
+	arkhambuild_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhambuild_user?: FieldPolicy<any> | FieldReadFunction<any>,
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	arkhamdb_user?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1349,8 +1353,10 @@ export type campaign_deck_max_fieldsFieldPolicy = {
 	owner_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type campaign_deck_min_fieldsKeySpecifier = ('arkhamdb_id' | 'arkhamdb_user' | 'campaign_id' | 'content_hash' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | 'updated_at' | campaign_deck_min_fieldsKeySpecifier)[];
+export type campaign_deck_min_fieldsKeySpecifier = ('arkhambuild_id' | 'arkhambuild_user' | 'arkhamdb_id' | 'arkhamdb_user' | 'campaign_id' | 'content_hash' | 'id' | 'investigator' | 'local_uuid' | 'next_deck_id' | 'owner_id' | 'updated_at' | campaign_deck_min_fieldsKeySpecifier)[];
 export type campaign_deck_min_fieldsFieldPolicy = {
+	arkhambuild_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	arkhambuild_user?: FieldPolicy<any> | FieldReadFunction<any>,
 	arkhamdb_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	arkhamdb_user?: FieldPolicy<any> | FieldReadFunction<any>,
 	campaign_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4206,8 +4212,9 @@ export type conquest_users_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycleKeySpecifier = ('code' | 'official' | 'packs' | 'packs_aggregate' | 'position' | 'real_name' | 'translations' | 'translations_aggregate' | cycleKeySpecifier)[];
+export type cycleKeySpecifier = ('chapter' | 'code' | 'official' | 'packs' | 'packs_aggregate' | 'position' | 'real_name' | 'translations' | 'translations_aggregate' | cycleKeySpecifier)[];
 export type cycleFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	official?: FieldPolicy<any> | FieldReadFunction<any>,
 	packs?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -4236,18 +4243,21 @@ export type cycle_aggregate_fieldsFieldPolicy = {
 	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
 	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_avg_fieldsKeySpecifier = ('position' | cycle_avg_fieldsKeySpecifier)[];
+export type cycle_avg_fieldsKeySpecifier = ('chapter' | 'position' | cycle_avg_fieldsKeySpecifier)[];
 export type cycle_avg_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_max_fieldsKeySpecifier = ('code' | 'position' | 'real_name' | cycle_max_fieldsKeySpecifier)[];
+export type cycle_max_fieldsKeySpecifier = ('chapter' | 'code' | 'position' | 'real_name' | cycle_max_fieldsKeySpecifier)[];
 export type cycle_max_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_min_fieldsKeySpecifier = ('code' | 'position' | 'real_name' | cycle_min_fieldsKeySpecifier)[];
+export type cycle_min_fieldsKeySpecifier = ('chapter' | 'code' | 'position' | 'real_name' | cycle_min_fieldsKeySpecifier)[];
 export type cycle_min_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>
@@ -4294,32 +4304,39 @@ export type cycle_name_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_stddev_fieldsKeySpecifier = ('position' | cycle_stddev_fieldsKeySpecifier)[];
+export type cycle_stddev_fieldsKeySpecifier = ('chapter' | 'position' | cycle_stddev_fieldsKeySpecifier)[];
 export type cycle_stddev_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_stddev_pop_fieldsKeySpecifier = ('position' | cycle_stddev_pop_fieldsKeySpecifier)[];
+export type cycle_stddev_pop_fieldsKeySpecifier = ('chapter' | 'position' | cycle_stddev_pop_fieldsKeySpecifier)[];
 export type cycle_stddev_pop_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_stddev_samp_fieldsKeySpecifier = ('position' | cycle_stddev_samp_fieldsKeySpecifier)[];
+export type cycle_stddev_samp_fieldsKeySpecifier = ('chapter' | 'position' | cycle_stddev_samp_fieldsKeySpecifier)[];
 export type cycle_stddev_samp_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_sum_fieldsKeySpecifier = ('position' | cycle_sum_fieldsKeySpecifier)[];
+export type cycle_sum_fieldsKeySpecifier = ('chapter' | 'position' | cycle_sum_fieldsKeySpecifier)[];
 export type cycle_sum_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_var_pop_fieldsKeySpecifier = ('position' | cycle_var_pop_fieldsKeySpecifier)[];
+export type cycle_var_pop_fieldsKeySpecifier = ('chapter' | 'position' | cycle_var_pop_fieldsKeySpecifier)[];
 export type cycle_var_pop_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_var_samp_fieldsKeySpecifier = ('position' | cycle_var_samp_fieldsKeySpecifier)[];
+export type cycle_var_samp_fieldsKeySpecifier = ('chapter' | 'position' | cycle_var_samp_fieldsKeySpecifier)[];
 export type cycle_var_samp_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type cycle_variance_fieldsKeySpecifier = ('position' | cycle_variance_fieldsKeySpecifier)[];
+export type cycle_variance_fieldsKeySpecifier = ('chapter' | 'position' | cycle_variance_fieldsKeySpecifier)[];
 export type cycle_variance_fieldsFieldPolicy = {
+	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type faction_nameKeySpecifier = ('code' | 'locale' | 'name' | faction_nameKeySpecifier)[];

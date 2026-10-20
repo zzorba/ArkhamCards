@@ -62806,11 +62806,6 @@
             "text": "将吉迪恩．米兹拉从游戏中移除。"
           },
           {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Remove Helen Peters from the game."
-          },
-          {
             "id": "set_aside_residents",
             "bullet_type": "small",
             "text": "将每张<i>住民</i>遭遇组的剩余卡牌放在一旁，置于场外。"
@@ -65729,11 +65724,6 @@
             "id": "remove_gideon",
             "bullet_type": "small",
             "text": "将吉迪恩．米兹拉从游戏中移除。"
-          },
-          {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Remove Helen Peters from the game."
           },
           {
             "id": "remove_leah",
@@ -244281,11 +244271,6 @@
             "type": "rule_reminder",
             "title": "隐私",
             "text": "When a card with the hidden keyword is drawn, it is added to your hand in secret, without revealing that card or its text to the other investigators. While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. Hidden cards in your hand count toward your hand size, and cannot leave your hand by any means except by those described on the card."
-          },
-          {
-            "id": "resolution_1",
-            "type": "resolution",
-            "resolution": "R1"
           },
           {
             "id": "resolution_2",

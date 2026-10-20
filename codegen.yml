@@ -1,5 +1,5 @@
 overwrite: true
-schema: 
+schema:
   - https://gapi.arkhamcards.com/v1/graphql:
       headers:
         content-type: "application/json"

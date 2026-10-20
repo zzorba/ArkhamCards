@@ -62806,11 +62806,6 @@
             "text": "Usuń z gry Gideona Mizraha."
           },
           {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Usuń Helen Peters z gry."
-          },
-          {
             "id": "set_aside_residents",
             "bullet_type": "small",
             "text": "Odłóż na bok, poza grę, wszystkie pozostałe karty z zestawu spotkań <i>Mieszkańcy</i>."
@@ -65729,11 +65724,6 @@
             "id": "remove_gideon",
             "bullet_type": "small",
             "text": "Usuń z gry Gideona Mizraha."
-          },
-          {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Usuń Helen Peters z gry."
           },
           {
             "id": "remove_leah",
@@ -244281,11 +244271,6 @@
             "type": "rule_reminder",
             "title": "Ukryty",
             "text": "When a card with the hidden keyword is drawn, it is added to your hand in secret, without revealing that card or its text to the other investigators. While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. Hidden cards in your hand count toward your hand size, and cannot leave your hand by any means except by those described on the card."
-          },
-          {
-            "id": "resolution_1",
-            "type": "resolution",
-            "resolution": "R1"
           },
           {
             "id": "resolution_2",

@@ -21,6 +21,7 @@ import {
 import deepEqual from 'deep-equal';
 import { ngettext, msgid, t } from 'ttag';
 import { useDispatch, useSelector } from 'react-redux';
+import useArkhamBuildCustomCards from '@data/hooks/useArkhamBuildCustomCards';
 
 import { useAppDispatch } from '@app/store';
 import {
@@ -231,6 +232,8 @@ function useParsedDeckHelper(
     initialMode?: 'upgrade' | 'edit';
   } = {}
 ): ParsedDeckResults {
+  // Ensure custom cards from arkham.build decks are in the database
+  useArkhamBuildCustomCards(deck?.deck);
   const dirtyRef = useRef<boolean>(true);
   const [deckEdits, deckEditsRef] = useDeckEdits(
     id,

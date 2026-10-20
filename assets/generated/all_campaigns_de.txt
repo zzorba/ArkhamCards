@@ -19819,7 +19819,7 @@
                 },
                 {
                   "id": "coastal_waters",
-                  "text": "Kpstengewässer",
+                  "text": "Küstengewässer",
                   "condition": {
                     "type": "campaign_log",
                     "section": "hidden",
@@ -19835,7 +19835,7 @@
                       "type": "campaign_log",
                       "section": "memories_discovered",
                       "id": "coastal_waters",
-                      "text": "Kpstengewässer"
+                      "text": "Küstengewässer"
                     },
                     {
                       "type": "campaign_log",
@@ -22189,7 +22189,7 @@
                 },
                 {
                   "id": "coastal_waters",
-                  "text": "Kpstengewässer",
+                  "text": "Küstengewässer",
                   "condition": {
                     "type": "campaign_log",
                     "section": "hidden",
@@ -22205,7 +22205,7 @@
                       "type": "campaign_log",
                       "section": "memories_discovered",
                       "id": "coastal_waters",
-                      "text": "Kpstengewässer"
+                      "text": "Küstengewässer"
                     },
                     {
                       "type": "campaign_log",
@@ -24778,7 +24778,7 @@
                 },
                 {
                   "id": "coastal_waters",
-                  "text": "Kpstengewässer",
+                  "text": "Küstengewässer",
                   "condition": {
                     "type": "campaign_log",
                     "section": "hidden",
@@ -24794,7 +24794,7 @@
                       "type": "campaign_log",
                       "section": "memories_discovered",
                       "id": "coastal_waters",
-                      "text": "Kpstengewässer"
+                      "text": "Küstengewässer"
                     },
                     {
                       "type": "campaign_log",
@@ -62806,11 +62806,6 @@
             "text": "Entferne Gideon Mizrah aus dem Spiel."
           },
           {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Helen Peters wird aus dem Spiel entfernt."
-          },
-          {
             "id": "set_aside_residents",
             "bullet_type": "small",
             "text": "Die übrigen Karten des Begegnungssets <i>Einwohner</i> werden als nicht im Spiel befindlich beiseitegelegt."
@@ -65729,11 +65724,6 @@
             "id": "remove_gideon",
             "bullet_type": "small",
             "text": "Entferne Gideon Mizrah aus dem Spiel."
-          },
-          {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Helen Peters wird aus dem Spiel entfernt."
           },
           {
             "id": "remove_leah",
@@ -81894,7 +81884,7 @@
           },
           {
             "id": "setup_locations_jordan",
-            "text": "Die übrigen Orte (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint-Martin, Friedhof Père Lachaise, Notre-Dame und Jardin du Luxembourg) werden ins Spiel gebracht. Jeder Ermittler beginnt das Spiel auf dem Gare d‘Orsay."
+            "text": "Die übrigen Orte (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint-Martin, Friedhof Père Lachaise, Notre-Dame und Jardin du Luxembourg) werden ins Spiel gebracht. Jeder Ermittler beginnt das Spiel in Montparnasse."
           },
           {
             "id": "location_layout",
@@ -97589,7 +97579,7 @@
           },
           {
             "id": "setup_locations_jordan",
-            "text": "Die übrigen Orte (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint-Martin, Friedhof Père Lachaise, Notre-Dame und Jardin du Luxembourg) werden ins Spiel gebracht. Jeder Ermittler beginnt das Spiel auf dem Gare d‘Orsay."
+            "text": "Die übrigen Orte (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint-Martin, Friedhof Père Lachaise, Notre-Dame und Jardin du Luxembourg) werden ins Spiel gebracht. Jeder Ermittler beginnt das Spiel in Montparnasse."
           },
           {
             "id": "location_layout",
@@ -97968,7 +97958,7 @@
           },
           {
             "id": "choose_locations",
-            "text": "Jeweils einer der folgenden Orte wird zufällig bestimmt und ins Spiel gebracht: Montmartre, Opéra Garnier, Montparnasse, Grand Guignol, Friedhof Père Lachaise, Canal Saint-Martin, Notre-Dame, Le Marais und Jardin du Luxembourg. Die anderen Versionen dieser Orte werden aus dem Spiel entfernt."
+            "text": "Jeweils einer der folgenden Orte wird zufällig bestimmt: Montmartre, Opéra Garnier, Montparnasse, Grand Guignol, Friedhof Père Lachaise, Canal Saint-Martin, Notre-Dame, Le Marais und Jardin du Luxembourg. Die anderen Versionen dieser Orte werden aus dem Spiel entfernt."
           },
           {
             "id": "setup_locations",
@@ -127091,7 +127081,7 @@
               ]
             },
             "type": "story",
-            "text": "Ichtaca verbringt die Nacht auf der Couch in deinem Wohnzimmer. Du selbst findest in dieser Nacht keinen Schlaf mehr, deine Gedanken schwanken zwischen Sorge und Ungläubigkeit. Ihre Geschichte erscheint absurd, aber irgendetwas in dir möchte sie trotzdem glauben. Seit dem Zeitpunkt, an dem du das Relikt aus den Ruinen der Eztli zum ersten Mal gesehen hast, weißt du, dass es eine tiefere Bedeutung haben muss. Als du am nächsten Morgen aus deinem Schlafzimmer trittst, sitzt dein ungeladener Gast bereits mit fest vor der Brust verschränkten Armen an deinem Esszimmertisch. Ihr bohrender Blick folgt jeder deiner Bewegungen wie der eines Raubvogels, der seine Beute beobachtet. Ihr tauscht keine Höflichkeiten aus. „Wo ist das Relikt jetzt?“, fragt Ichtaca ungeduldig. „Wohin hast du es gebracht?“ Du erklärst ihr, dass es sich in Sicherheit und in guten Händen befindet. Sie schüttelt den Kopf und an ihren weißen Fingerknöcheln erkennst du, wie frustriert sie ist. „Ich kann dir versichern, das ist es nicht.“s"
+            "text": "Ichtaca verbringt die Nacht auf der Couch in deinem Wohnzimmer. Du selbst findest in dieser Nacht keinen Schlaf mehr, deine Gedanken schwanken zwischen Sorge und Ungläubigkeit. Ihre Geschichte erscheint absurd, aber irgendetwas in dir möchte sie trotzdem glauben. Seit dem Zeitpunkt, an dem du das Relikt aus den Ruinen der Eztli zum ersten Mal gesehen hast, weißt du, dass es eine tiefere Bedeutung haben muss. Als du am nächsten Morgen aus deinem Schlafzimmer trittst, sitzt dein ungeladener Gast bereits mit fest vor der Brust verschränkten Armen an deinem Esszimmertisch. Ihr bohrender Blick folgt jeder deiner Bewegungen wie der eines Raubvogels, der seine Beute beobachtet. Ihr tauscht keine Höflichkeiten aus. „Wo ist das Relikt jetzt?“, fragt Ichtaca ungeduldig. „Wohin hast du es gebracht?“ Du erklärst ihr, dass es sich in Sicherheit und in guten Händen befindet. Sie schüttelt den Kopf und an ihren weißen Fingerknöcheln erkennst du, wie frustriert sie ist. „Ich kann dir versichern, das ist es nicht.“"
           },
           {
             "id": "choose_gave_relic_to_alejandro",
@@ -128087,14 +128077,14 @@
               "choices": [
                 {
                   "id": "police",
-                  "text": "Falls du den Augenzeugen, über den im <i>Advertiser</i> berichtet wird, finden willst,",
+                  "text": "Falls du den Augenzeugen, über den im <i>Advertiser</i> berichtet wird, finden willst.",
                   "steps": [
                     "find_advertiser_source"
                   ]
                 },
                 {
                   "id": "search_alone",
-                  "text": "Falls du das Problem an der Wurzel packen willst,",
+                  "text": "Falls du das Problem an der Wurzel packen willst.",
                   "steps": [
                     "find_root_of_problem"
                   ]
@@ -155124,7 +155114,7 @@
         {
           "id": "deep_end",
           "title": "„Ich bin schon zu groß fürs Kinderbecken!“",
-          "text": "Entkomme mit der Tafel der Gezeiten aus dem Szenario <i>Das große Gewölbe</i>, nachdem alle Orte völlig überflutet worden sind.",
+          "text": "Entkomme mit der Tafel der Gezeiten aus dem Szenario <i>Das große Gewölbe</i>, nachdem alle geeigneten Orte völlig überflutet worden sind.",
           "type": "binary"
         },
         {
@@ -191555,7 +191545,7 @@
               ]
             },
             "type": "story",
-            "text": "Ichtaca verbringt die Nacht auf der Couch in deinem Wohnzimmer. Du selbst findest in dieser Nacht keinen Schlaf mehr, deine Gedanken schwanken zwischen Sorge und Ungläubigkeit. Ihre Geschichte erscheint absurd, aber irgendetwas in dir möchte sie trotzdem glauben. Seit dem Zeitpunkt, an dem du das Relikt aus den Ruinen der Eztli zum ersten Mal gesehen hast, weißt du, dass es eine tiefere Bedeutung haben muss. Als du am nächsten Morgen aus deinem Schlafzimmer trittst, sitzt dein ungeladener Gast bereits mit fest vor der Brust verschränkten Armen an deinem Esszimmertisch. Ihr bohrender Blick folgt jeder deiner Bewegungen wie der eines Raubvogels, der seine Beute beobachtet. Ihr tauscht keine Höflichkeiten aus. „Wo ist das Relikt jetzt?“, fragt Ichtaca ungeduldig. „Wohin hast du es gebracht?“ Du erklärst ihr, dass es sich in Sicherheit und in guten Händen befindet. Sie schüttelt den Kopf und an ihren weißen Fingerknöcheln erkennst du, wie frustriert sie ist. „Ich kann dir versichern, das ist es nicht.“s"
+            "text": "Ichtaca verbringt die Nacht auf der Couch in deinem Wohnzimmer. Du selbst findest in dieser Nacht keinen Schlaf mehr, deine Gedanken schwanken zwischen Sorge und Ungläubigkeit. Ihre Geschichte erscheint absurd, aber irgendetwas in dir möchte sie trotzdem glauben. Seit dem Zeitpunkt, an dem du das Relikt aus den Ruinen der Eztli zum ersten Mal gesehen hast, weißt du, dass es eine tiefere Bedeutung haben muss. Als du am nächsten Morgen aus deinem Schlafzimmer trittst, sitzt dein ungeladener Gast bereits mit fest vor der Brust verschränkten Armen an deinem Esszimmertisch. Ihr bohrender Blick folgt jeder deiner Bewegungen wie der eines Raubvogels, der seine Beute beobachtet. Ihr tauscht keine Höflichkeiten aus. „Wo ist das Relikt jetzt?“, fragt Ichtaca ungeduldig. „Wohin hast du es gebracht?“ Du erklärst ihr, dass es sich in Sicherheit und in guten Händen befindet. Sie schüttelt den Kopf und an ihren weißen Fingerknöcheln erkennst du, wie frustriert sie ist. „Ich kann dir versichern, das ist es nicht.“"
           },
           {
             "id": "choose_gave_relic_to_alejandro",
@@ -244281,11 +244271,6 @@
             "type": "rule_reminder",
             "title": "Geheim",
             "text": "When a card with the hidden keyword is drawn, it is added to your hand in secret, without revealing that card or its text to the other investigators. While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. Hidden cards in your hand count toward your hand size, and cannot leave your hand by any means except by those described on the card."
-          },
-          {
-            "id": "resolution_1",
-            "type": "resolution",
-            "resolution": "R1"
           },
           {
             "id": "resolution_2",

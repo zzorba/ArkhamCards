@@ -4110,7 +4110,7 @@
       {
         "id": "gasoline",
         "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "description": "Enough for a long journey by car.",
         "cost": 1,
         "multiple": true
       },
@@ -6680,7 +6680,7 @@
       {
         "id": "gasoline",
         "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "description": "Enough for a long journey by car.",
         "cost": 1,
         "multiple": true
       },

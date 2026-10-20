@@ -1124,7 +1124,7 @@
           },
           {
             "id": "coastal_waters",
-            "text": "Kpstengewässer"
+            "text": "Küstengewässer"
           },
           {
             "id": "deck_of_the_theodosia",

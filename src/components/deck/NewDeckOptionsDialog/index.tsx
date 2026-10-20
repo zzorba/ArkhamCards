@@ -18,7 +18,8 @@ import RequiredCardSwitch from './RequiredCardSwitch';
 import { showCard, showCardSwipe, getDeckScreenOptions } from '@components/nav/helper';
 import useNetworkStatus from '@components/core/useNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
-import { saveNewDeck } from '@components/deck/actions';
+import { saveNewDeck, DeckTarget } from '@components/deck/actions';
+import { arkhamBuildLogin } from '@actions';
 import { CampaignId, Deck, DeckMeta, EditDeckState, getDeckId, ParsedDeck, Slots } from '@actions/types';
 import { BASIC_WEAKNESS_CHOICE, CUSTOM_INVESTIGATOR, RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card, { CardsMap } from '@data/types/Card';
@@ -27,7 +28,7 @@ import space, { s } from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '@data/deck/starterDecks';
 import StyleContext from '@styles/StyleContext';
-import { useFlag, useParallelInvestigator, useSettingValue, useTabooSetId } from '@components/core/hooks';
+import { useParallelInvestigator, useSettingValue, useTabooSetId } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import DeckMetadataControls from '../controls/DeckMetadataControls';
 import DeckPickerStyleButton from '../controls/DeckPickerStyleButton';
@@ -97,7 +98,7 @@ function NewDeckOptionsDialog({
   const { cardPoolMode: defaultCardPoolMode, cardPoolPacks: defaultCardPoolPacks } = useSelector(cardPoolSelector);
   const deckActions = useDeckActions();
   const defaultTabooSetId = useTabooSetId();
-  const { userId } = useContext(ArkhamCardsAuthContext);
+  const { userId, arkhamBuild: arkhamBuildSignedIn } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const singleCardView = useSettingValue('single_card');
   const { backgroundStyle, colors, fontScale, typography, width, shadow } = useContext(StyleContext);
@@ -105,12 +106,14 @@ function NewDeckOptionsDialog({
   const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
   const [investigatorId, setSelectedInvestigatorId] = useState<string>(originalInvestigatorId);
 
-  const [offlineDeck, toggleOfflineDeck] = useFlag(
-    investigatorId === CUSTOM_INVESTIGATOR ||
-    investigatorId.startsWith('z') ||
-    !signedIn ||
-    !isConnected ||
-    networkType === NetInfoStateType.none);
+  const isOffline = !isConnected || networkType === NetInfoStateType.none;
+  const [deckTarget, setDeckTarget] = useState<DeckTarget>(() => {
+    const custom = investigatorId === CUSTOM_INVESTIGATOR || investigatorId.startsWith('z');
+    if (custom || isOffline) return 'local';
+    if (arkhamBuildSignedIn) return 'arkhambuild';
+    if (signedIn) return 'arkhamdb';
+    return 'local';
+  });
   const [optionSelected, setOptionSelected] = useState<boolean[]>([true]);
   const [tabooSetIdChoice, actuallySetTabooSetId] = useState<number>(defaultTabooSetId);
   const [specialDeckMode, setSpecialDeckMode] = useState<SpecialDeckMode>('none');
@@ -410,7 +413,7 @@ function NewDeckOptionsDialog({
   const createDeck = useCallback((isRetry?: boolean) => {
     const deckName = deckNameChange || defaultDeckName;
     if (investigator && (!saving || isRetry)) {
-      const local = (offlineDeck || !signedIn || !isConnected || isCustomContent || networkType === NetInfoStateType.none);
+      const effectiveTarget: DeckTarget = (isCustomContent || isOffline) ? 'local' : deckTarget;
       const slots = {
         ...(specialDeckMode === 'chaos' ? chaosSlots : {}),
         ...requiredSlots,
@@ -418,7 +421,8 @@ function NewDeckOptionsDialog({
       setSaving(true);
       setTimeout(() => {
         dispatch(saveNewDeck(userId, deckActions, {
-          local,
+          local: effectiveTarget === 'local',
+          deckTarget: effectiveTarget,
           meta: ensureConsistentMeta(investigator.code, meta),
           deckName: deckName || t`New Deck`,
           investigatorCode: investigator.code,
@@ -434,9 +438,9 @@ function NewDeckOptionsDialog({
         );
       }, 0);
     }
-  }, [signedIn, dispatch, showNewDeck, deckActions, userId, isCustomContent,
+  }, [dispatch, showNewDeck, deckActions, userId, isCustomContent, isOffline,
     chaosSlots,
-    requiredSlots, meta, networkType, isConnected, offlineDeck, saving, specialDeckMode, tabooSetId, deckNameChange, investigator, defaultDeckName]);
+    requiredSlots, meta, deckTarget, saving, specialDeckMode, tabooSetId, deckNameChange, investigator, defaultDeckName]);
 
   const onOkayPress = useMemo(() => throttle(() => createDeck(), 200), [createDeck]);
   const toggleOptionsSelected = useCallback((index: number, value: boolean) => {
@@ -607,28 +611,51 @@ function NewDeckOptionsDialog({
             editable
           />
         </View>
-        { !(investigatorId === CUSTOM_INVESTIGATOR || investigatorId.startsWith('z')) && (
+        { !isCustomContent && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
-            { signedIn ? (
-              <DeckCheckboxButton
-                icon="world"
-                title={t`Create on ArkhamDB`}
-                description={!!isCustomContent ? t`Note: this deck cannot be uploaded to ArkhamDB because it contains fan-made/preview content.` : undefined}
-                value={!isCustomContent && !offlineDeck}
-                disabled={!signedIn || isCustomContent || !isConnected || networkType === NetInfoStateType.none}
-                onValueChange={toggleOfflineDeck}
-                last
-              />
+            { (arkhamBuildSignedIn || signedIn) ? (
+              <>
+                { arkhamBuildSignedIn && (
+                  <DeckCheckboxButton
+                    icon="world"
+                    title={t`Create on arkham.build`}
+                    value={deckTarget === 'arkhambuild'}
+                    disabled={isOffline}
+                    onValueChange={() => setDeckTarget('arkhambuild')}
+                    last={!signedIn}
+                  />
+                ) }
+                { signedIn && (
+                  <DeckCheckboxButton
+                    icon="arkhamdb"
+                    title={t`Create on ArkhamDB`}
+                    value={deckTarget === 'arkhamdb'}
+                    disabled={isOffline}
+                    onValueChange={() => setDeckTarget('arkhamdb')}
+                    last
+                  />
+                ) }
+              </>
             ) : (
-              <DeckCheckboxButton
-                icon="world"
-                title={t`Sign in to ArkhamDB`}
-                value={false}
-                onValueChange={login}
-                last
-              />
+              <>
+                <DeckButton
+                  icon="world"
+                  title={t`Sign in to arkham.build`}
+                  detail={t`Create and sync decks online`}
+                  onPress={() => dispatch(arkhamBuildLogin())}
+                  color="dark_gray"
+                />
+                <DeckButton
+                  icon="arkhamdb"
+                  title={t`Sign in to ArkhamDB`}
+                  detail={t`Create and sync decks online`}
+                  onPress={login}
+                  color="dark_gray"
+                  topMargin={s}
+                />
+              </>
             ) }
-            { (!isConnected || networkType === NetInfoStateType.none) && (
+            { isOffline && (
               <TouchableOpacity onPress={refreshNetworkStatus}>
                 <View style={[space.paddingS, space.paddingLeftM]}>
                   <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
@@ -670,11 +697,11 @@ function NewDeckOptionsDialog({
         ) }
       </>
     );
-  }, [signedIn,
-    investigatorId, isCustomContent, randomWeaknessCount, cards, parallelInvestigators,
+  }, [signedIn, arkhamBuildSignedIn, deckTarget, dispatch,
+    investigatorId, isCustomContent, isOffline, randomWeaknessCount, cards, parallelInvestigators,
     networkType, isConnected, chaosSlots, specialDeckMode, chaosEditState, chaosCards,
-    parsedChaosDeck, offlineDeck, optionSelected, tabooSetId, requiredCardOptions, meta, typography,
-    setTabooSetId, onCardPress, toggleOptionsSelected,toggleOfflineDeck, showSpecialDeckDialog,
+    parsedChaosDeck, optionSelected, tabooSetId, requiredCardOptions, meta, typography,
+    setTabooSetId, onCardPress, toggleOptionsSelected, showSpecialDeckDialog,
     login, refreshNetworkStatus, renderNamePicker, setParallel, updateMeta]);
 
   const cancelPressed = useCallback(() => {

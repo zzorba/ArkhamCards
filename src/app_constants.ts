@@ -679,7 +679,7 @@ export function getCardPoolSections(): {
     {
       type: 'core',
       section: t`Core set`,
-      packs: ['core', 'rcore', 'core_2026'],
+      packs: ['core', 'rcore', 'core_ch2'],
     },
     {
       type: 'limited',
@@ -867,6 +867,7 @@ export function expandPackCode(packCode: string): string[] {
     case POOL_CORE_CYCLE:
       return POOL_CORE_PACKS;
     case POOL_CORE_CH2_CYCLE:
+    case 'core_ch2':
       return POOL_CORE_CH2_PACKS;
     default: {
       const specialPack = SPECIAL_PACKS.find(sp => sp.code === packCode);
