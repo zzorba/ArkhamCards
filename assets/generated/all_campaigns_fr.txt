@@ -209574,7 +209574,8 @@
               "maybe_return_shade_reaper",
               "maybe_return_mirroring_blade",
               "maybe_return_sable_glass",
-              "maybe_return_mystery_key"
+              "maybe_return_mystery_key",
+              "maybe_return_the_turning_gear"
             ]
           },
           {
@@ -209823,6 +209824,29 @@
                       "type": "scarlet_key",
                       "section": "keys",
                       "scarlet_key": "wellspring_of_fortune",
+                      "bearer_type": "return"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "maybe_return_the_turning_gear",
+            "type": "branch",
+            "hidden": true,
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "the_turning_gear_stolen",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "effects": [
+                    {
+                      "type": "scarlet_key",
+                      "section": "keys",
+                      "scarlet_key": "the_turning_gear",
                       "bearer_type": "return"
                     }
                   ]
@@ -210359,7 +210383,8 @@
               "maybe_return_shade_reaper",
               "maybe_return_mirroring_blade",
               "maybe_return_sable_glass",
-              "maybe_return_mystery_key"
+              "maybe_return_mystery_key",
+              "maybe_return_the_turning_gear"
             ]
           },
           {
@@ -210608,6 +210633,29 @@
                       "type": "scarlet_key",
                       "section": "keys",
                       "scarlet_key": "wellspring_of_fortune",
+                      "bearer_type": "return"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "maybe_return_the_turning_gear",
+            "type": "branch",
+            "hidden": true,
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "the_turning_gear_stolen",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "effects": [
+                    {
+                      "type": "scarlet_key",
+                      "section": "keys",
+                      "scarlet_key": "the_turning_gear",
                       "bearer_type": "return"
                     }
                   ]
@@ -211144,7 +211192,8 @@
               "maybe_return_shade_reaper",
               "maybe_return_mirroring_blade",
               "maybe_return_sable_glass",
-              "maybe_return_mystery_key"
+              "maybe_return_mystery_key",
+              "maybe_return_the_turning_gear"
             ]
           },
           {
@@ -211393,6 +211442,29 @@
                       "type": "scarlet_key",
                       "section": "keys",
                       "scarlet_key": "wellspring_of_fortune",
+                      "bearer_type": "return"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "maybe_return_the_turning_gear",
+            "type": "branch",
+            "hidden": true,
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "the_turning_gear_stolen",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "effects": [
+                    {
+                      "type": "scarlet_key",
+                      "section": "keys",
+                      "scarlet_key": "the_turning_gear",
                       "bearer_type": "return"
                     }
                   ]
@@ -211929,7 +212001,8 @@
               "maybe_return_shade_reaper",
               "maybe_return_mirroring_blade",
               "maybe_return_sable_glass",
-              "maybe_return_mystery_key"
+              "maybe_return_mystery_key",
+              "maybe_return_the_turning_gear"
             ]
           },
           {
@@ -212178,6 +212251,29 @@
                       "type": "scarlet_key",
                       "section": "keys",
                       "scarlet_key": "wellspring_of_fortune",
+                      "bearer_type": "return"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "maybe_return_the_turning_gear",
+            "type": "branch",
+            "hidden": true,
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "the_turning_gear_stolen",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "effects": [
+                    {
+                      "type": "scarlet_key",
+                      "section": "keys",
+                      "scarlet_key": "the_turning_gear",
                       "bearer_type": "return"
                     }
                   ]
@@ -230098,6 +230194,28 @@
                       "text": "leurre"
                     }
                   ]
+                },
+                {
+                  "id": "the_turning_gear",
+                  "text": "The Turning Gear",
+                  "condition": {
+                    "type": "scarlet_key",
+                    "scarlet_key": "the_turning_gear",
+                    "status": "investigator",
+                    "options": [
+                      {
+                        "boolCondition": true
+                      }
+                    ]
+                  },
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "the_turning_gear_stolen",
+                      "text": "leurre"
+                    }
+                  ]
                 }
               ]
             }
@@ -230641,6 +230759,28 @@
                       "type": "campaign_log",
                       "section": "hidden",
                       "id": "wellpspring_of_fortune_stolen",
+                      "text": "leurre"
+                    }
+                  ]
+                },
+                {
+                  "id": "the_turning_gear",
+                  "text": "The Turning Gear",
+                  "condition": {
+                    "type": "scarlet_key",
+                    "scarlet_key": "the_turning_gear",
+                    "status": "investigator",
+                    "options": [
+                      {
+                        "boolCondition": true
+                      }
+                    ]
+                  },
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "the_turning_gear_stolen",
                       "text": "leurre"
                     }
                   ]

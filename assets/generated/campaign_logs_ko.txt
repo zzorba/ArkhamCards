@@ -7727,6 +7727,10 @@
             "text": "더미"
           },
           {
+            "id": "the_turning_gear_stolen",
+            "text": "더미"
+          },
+          {
             "id": "thorne_eerily_silent",
             "text": "더미"
           },

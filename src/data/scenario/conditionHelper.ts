@@ -982,7 +982,6 @@ export function conditionResult(
 
 export function scarletKeyConditionResult(condition: ScarletKeyCondition, campaignLog: GuidedCampaignLog) {
   const key = campaignLog.campaignData.scarlet.keyStatus[condition.scarlet_key];
-  console.log(`scarletKeyConditionResult: ${condition.scarlet_key} status=${condition.status} key=${JSON.stringify(key)} allKeys=${JSON.stringify(Object.keys(campaignLog.campaignData.scarlet.keyStatus))}`);
   switch (condition.status) {
     case 'enemy':
       return binaryConditionResult(

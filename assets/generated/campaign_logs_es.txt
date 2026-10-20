@@ -7727,6 +7727,10 @@
             "text": "dummy"
           },
           {
+            "id": "the_turning_gear_stolen",
+            "text": "dummy"
+          },
+          {
             "id": "thorne_eerily_silent",
             "text": "dummy"
           },
