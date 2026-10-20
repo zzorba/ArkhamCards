@@ -52,6 +52,8 @@ import {
   PartnerStatus,
   SetCardCountEffect,
   ScarletKeyEffect,
+  AddScarletKeyEffect,
+  ScarletKey,
   SaveDecksEffect,
   BackupStateEffect,
   CampaignLogAssignTaskEffect,
@@ -183,6 +185,7 @@ interface CampaignData {
     unlockedLocations: string[];
     unlockedDossiers: string[];
     keyStatus: { [key: string]: KeyStatus | undefined };
+    extraKeys: ScarletKey[];
   };
 }
 
@@ -268,6 +271,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
       case 'lose_supplies':
       case 'partner_status':
       case 'scarlet_key':
+      case 'add_scarlet_key':
       case 'backup_state':
         return true;
       default:
@@ -318,6 +322,7 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           unlockedLocations: [],
           unlockedDossiers: [],
           keyStatus: {},
+          extraKeys: [],
         },
       };
       this.chaosBag = {};
@@ -466,6 +471,9 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
               break;
             case 'scarlet_key':
               this.handleScarletKeyEffect(effect, input);
+              break;
+            case 'add_scarlet_key':
+              this.handleAddScarletKeyEffect(effect);
               break;
             case 'campaign_log_assign_task':
               this.handleCampaignLogAssignTaskEffect(effect, input);
@@ -1482,6 +1490,15 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
           // Drop the enemy from it.
         };
         break;
+    }
+  }
+
+  private handleAddScarletKeyEffect(effect: AddScarletKeyEffect) {
+    if (!find(this.campaignData.scarlet.extraKeys, k => k.id === effect.scarlet_key)) {
+      this.campaignData.scarlet.extraKeys.push({
+        id: effect.scarlet_key,
+        name: effect.name,
+      });
     }
   }
 

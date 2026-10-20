@@ -149,6 +149,7 @@ function groupAssets(
         t`Arcane x2`,
         t`Accessory`,
         t`Body`,
+        t`Head`,
         t`Ally`,
         t`Tarot`,
         t`Hand. Arcane`,

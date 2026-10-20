@@ -46,6 +46,7 @@ export type Effect =
   | LoseSuppliesEffect
   | CheckCampaignLogCardsEffect
   | CheckCampaignLogCountEffect
+  | AddScarletKeyEffect
   | ScarletKeyEffect
   | BackupStateEffect
   | CampaignLogAssignTaskEffect
@@ -682,6 +683,12 @@ export interface CheckCampaignLogCountEffect {
   type: "check_campaign_log_count";
   text: string;
   bullet_type?: BulletType;
+}
+export interface AddScarletKeyEffect {
+  type: "add_scarlet_key";
+  section: string;
+  scarlet_key: string;
+  name: string;
 }
 export interface ScarletKeyEffect {
   type: "scarlet_key";

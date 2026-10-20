@@ -143,43 +143,43 @@
         "entries": [
           {
             "id": "completed_their_search",
-            "text": "the investigators completed their search."
+            "text": "badacze zakończyli przeszukiwanie."
           },
           {
             "id": "defeated_zburamoarte",
-            "text": "the investigators defeated Zburamoarte."
+            "text": "badacze zgładzili Zburamoarte."
           },
           {
             "id": "did_not_complete_their_search",
-            "text": "the investigators did not complete their search."
+            "text": "badacze nie zakończyli przeszukiwania."
           },
           {
             "id": "failed_to_stop_julia_stern",
-            "text": "the investigators failed to stop Julia Stern."
+            "text": "badaczom nie udało się powstrzymać Julii Stern."
           },
           {
             "id": "failed_to_stop_the_children_of_blood",
-            "text": "the investigators failed to stop the children of blood."
+            "text": "badaczom nie udało się powstrzymać dzieci krwi."
           },
           {
             "id": "killed_julia_stern",
-            "text": "the investigators killed Julia Stern."
+            "text": "badacze zgładzili Julię Stern."
           },
           {
             "id": "left_to_the_cults_mercy",
-            "text": "the investigators were left to the cult's mercy."
+            "text": "badacze byli zdani na łaskę kultu."
           },
           {
             "id": "left_zburamoarte_alive",
-            "text": "the investigators left Zburamoarte alive."
+            "text": "badacze pozostawili Zburamoarte przy życiu."
           },
           {
             "id": "spared_julia_stern",
-            "text": "the investigators spared Julia Stern."
+            "text": "badacze oszczędzili Julię Stern."
           },
           {
             "id": "stopped_the_children_of_blood",
-            "text": "the investigators stopped the children of blood."
+            "text": "badacze powstrzymali dzieci krwi."
           }
         ]
       },
@@ -2332,7 +2332,7 @@
           },
           {
             "id": "river_sacrificed_himself",
-            "text": "River Hawthorne poświęciło się dla badaczy."
+            "text": "River Hawthorne poświęciła się dla badaczy."
           },
           {
             "id": "river_shared_a_dance",
@@ -4692,6 +4692,10 @@
             "text": "komórka wtrąciła się w sprawy Abarrana."
           },
           {
+            "id": "cell_slowed_gear",
+            "text": "the cell slowed the Turning Gear"
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua wycofał się, aby wyleczyć rany."
           },
@@ -4710,6 +4714,10 @@
           {
             "id": "constellation_was_saved",
             "text": "the Constellation was saved."
+          },
+          {
+            "id": "coterie_turning_gear",
+            "text": "the Coterie took posession of the Turning Gear"
           },
           {
             "id": "dario_was_turned_into_solid_gold",
@@ -4812,6 +4820,10 @@
             "text": "the investigators halted the blood ceremony."
           },
           {
+            "id": "investigators_slowed_gear",
+            "text": "the investigators slowed the Turning Gear"
+          },
+          {
             "id": "madame_labranche_has_lost_her_fortune",
             "text": "Madame Labranche has lost her fortune."
           },
@@ -4846,6 +4858,10 @@
           {
             "id": "olive_paid_the_price_for_her_curiosity",
             "text": "Olive paid the price for her curiosity."
+          },
+          {
+            "id": "other_turning_gear",
+            "text": "another cell posesses the Turning Gear"
           },
           {
             "id": "purged_the_police_station",
@@ -5110,6 +5126,10 @@
           },
           {
             "id": "fof_stole_keys",
+            "text": "dummy"
+          },
+          {
+            "id": "gear_emp_mixed_success",
             "text": "dummy"
           },
           {
@@ -8682,7 +8702,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Zarażeni"
           }
         ]
       },
@@ -8703,7 +8723,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Zarażeni"
           },
           {
             "id": "madness_touched",
@@ -8736,7 +8756,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Zarażeni"
           },
           {
             "id": "madness_touched",
@@ -8947,7 +8967,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Zarażeni"
           },
           {
             "id": "madness_touched",
@@ -8980,7 +9000,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Zarażeni"
           },
           {
             "id": "madness_touched",
@@ -9046,7 +9066,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Zarażeni"
           },
           {
             "id": "madness_touched",
@@ -9079,7 +9099,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Zarażeni"
           },
           {
             "id": "madness_touched",
@@ -9112,7 +9132,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Zarażeni"
           },
           {
             "id": "madness_touched",
@@ -9145,7 +9165,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Zarażeni"
           },
           {
             "id": "madness_touched",

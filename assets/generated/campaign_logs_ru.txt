@@ -4692,6 +4692,10 @@
             "text": "ячейка вмешалась в дела Абаррана."
           },
           {
+            "id": "cell_slowed_gear",
+            "text": "the cell slowed the Turning Gear"
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Книдаткуа отступил, чтобы зализать раны."
           },
@@ -4710,6 +4714,10 @@
           {
             "id": "constellation_was_saved",
             "text": "«Созвездие» спасено."
+          },
+          {
+            "id": "coterie_turning_gear",
+            "text": "the Coterie took posession of the Turning Gear"
           },
           {
             "id": "dario_was_turned_into_solid_gold",
@@ -4812,6 +4820,10 @@
             "text": "the investigators halted the blood ceremony."
           },
           {
+            "id": "investigators_slowed_gear",
+            "text": "the investigators slowed the Turning Gear"
+          },
+          {
             "id": "madame_labranche_has_lost_her_fortune",
             "text": "Madame Labranche has lost her fortune."
           },
@@ -4846,6 +4858,10 @@
           {
             "id": "olive_paid_the_price_for_her_curiosity",
             "text": "Olive paid the price for her curiosity."
+          },
+          {
+            "id": "other_turning_gear",
+            "text": "another cell posesses the Turning Gear"
           },
           {
             "id": "purged_the_police_station",
@@ -5110,6 +5126,10 @@
           },
           {
             "id": "fof_stole_keys",
+            "text": "dummy"
+          },
+          {
+            "id": "gear_emp_mixed_success",
             "text": "dummy"
           },
           {

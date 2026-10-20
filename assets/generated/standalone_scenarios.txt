@@ -190,6 +190,11 @@
   {
     "type": "scenario",
     "campaignId": "side",
+    "scenarioId": "the_turning_gear"
+  },
+  {
+    "type": "scenario",
+    "campaignId": "side",
     "scenarioId": "too_noble"
   },
   {

@@ -4692,6 +4692,10 @@
             "text": "La cellules s'est mêlée des affaires d'Abarran."
           },
           {
+            "id": "cell_slowed_gear",
+            "text": "the cell slowed the Turning Gear"
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua s'est retiré pour soigner ses blessures."
           },
@@ -4710,6 +4714,10 @@
           {
             "id": "constellation_was_saved",
             "text": "le Constellation a été sauvé."
+          },
+          {
+            "id": "coterie_turning_gear",
+            "text": "the Coterie took posession of the Turning Gear"
           },
           {
             "id": "dario_was_turned_into_solid_gold",
@@ -4812,6 +4820,10 @@
             "text": "the investigators halted the blood ceremony."
           },
           {
+            "id": "investigators_slowed_gear",
+            "text": "the investigators slowed the Turning Gear"
+          },
+          {
             "id": "madame_labranche_has_lost_her_fortune",
             "text": "Madame Labranche has lost her fortune."
           },
@@ -4846,6 +4858,10 @@
           {
             "id": "olive_paid_the_price_for_her_curiosity",
             "text": "Olive paid the price for her curiosity."
+          },
+          {
+            "id": "other_turning_gear",
+            "text": "another cell posesses the Turning Gear"
           },
           {
             "id": "purged_the_police_station",
@@ -5110,6 +5126,10 @@
           },
           {
             "id": "fof_stole_keys",
+            "text": "leurre"
+          },
+          {
+            "id": "gear_emp_mixed_success",
             "text": "leurre"
           },
           {
@@ -8686,7 +8706,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           }
         ]
       },
@@ -8707,7 +8727,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -8740,7 +8760,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -8951,7 +8971,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -8984,7 +9004,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -9050,7 +9070,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -9083,7 +9103,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -9116,7 +9136,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",
@@ -9149,7 +9169,7 @@
           },
           {
             "id": "infected",
-            "text": "Infected"
+            "text": "Infecté"
           },
           {
             "id": "madness_touched",

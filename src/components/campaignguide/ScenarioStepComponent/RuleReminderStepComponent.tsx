@@ -23,7 +23,6 @@ const RATIOS = {
 
 function RuleImage({ scale, width, image, text }: { text?: string; scale: 'full' | 'half' | 'quarter'; width: number; image: Image }) {
   const theWidth = RATIOS[scale || 'quarter'] * Math.min(width, MAX_WIDTH);
-  console.log(`https://img2.arkhamcards.com${image.uri}`)
   return (
     <View style={[{
       flexDirection: image.alignment === 'top' ? 'column' : 'column-reverse',

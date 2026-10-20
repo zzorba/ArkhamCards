@@ -12088,7 +12088,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of copies of Unfinished Business in the victory display",
+          "prompt": "Liczba kopii Niedokończonych spraw w puli zwycięstwa",
           "min": 0,
           "adjustment": 1
         }
@@ -12097,7 +12097,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards attached to The Beyond",
+          "prompt": "Liczba kart dołączonych do Zaświatów",
           "min": 0
         }
       },
@@ -12105,7 +12105,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Spectral]] locations in play",
+          "prompt": "Liczba lokalizacji z cechą [[Widmowy]] w grze",
           "min": 0
         }
       },
@@ -12118,7 +12118,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Geist]] enemy at your location",
+              "prompt": "W twojej lokalizacji znajduje się wróg z cechą [[Echo duszy]]",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -12133,7 +12133,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of copies of Unfinished Business in the victory display",
+          "prompt": "Liczba kopii Niedokończonych spraw w puli zwycięstwa",
           "min": 0,
           "adjustment": 2
         }
@@ -12142,7 +12142,7 @@
         "token": "cultist",
         "type": "counter",
         "counter": {
-          "prompt": "Number of cards attached to The Beyond",
+          "prompt": "Liczba kart dołączonych do Zaświatów",
           "min": 0,
           "scale": 2
         }
@@ -12151,7 +12151,7 @@
         "token": "tablet",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [[Spectral]] locations in play",
+          "prompt": "Liczba lokalizacji z cechą [[Widmowy]] w grze",
           "min": 0,
           "scale": 2
         }
@@ -12165,7 +12165,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [[Geist]] enemy at your location",
+              "prompt": "W twojej lokalizacji znajduje się wróg z cechą [[Echo duszy]]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -12245,7 +12245,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [blood] token sealed on you",
+              "prompt": "Na twoim badaczu jest zapieczętowany żeton [blood]",
               "modified_value": {
                 "modifier": -1,
                 "reveal_another": 1
@@ -12263,7 +12263,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [blood] token sealed on you",
+              "prompt": "Na twoim badaczu jest zapieczętowany żeton [blood]",
               "modified_value": {
                 "modifier": -5
               }
@@ -12297,7 +12297,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [blood] token sealed on you",
+              "prompt": "Na twoim badaczu jest zapieczętowany żeton [blood]",
               "modified_value": {
                 "modifier": -2,
                 "reveal_another": 1
@@ -12315,7 +12315,7 @@
           },
           "options": [
             {
-              "prompt": "There is a [blood] token sealed on you",
+              "prompt": "Na twoim badaczu jest zapieczętowany żeton [blood]",
               "modified_value": {
                 "modifier": "auto_fail"
               }
@@ -12339,7 +12339,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [blood] tokens sealed on you",
+          "prompt": "Liczba żetonów [blood] zapieczętowanych na twoim badaczu",
           "min": 0,
           "adjustment": 1
         }
@@ -12368,7 +12368,7 @@
         "token": "skull",
         "type": "counter",
         "counter": {
-          "prompt": "Number of [blood] tokens sealed on you",
+          "prompt": "Liczba żetonów [blood] zapieczętowanych na twoim badaczu",
           "min": 0,
           "adjustment": 2
         }

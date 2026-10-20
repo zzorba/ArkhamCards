@@ -71,7 +71,6 @@ export default function ArkhamButtonIcon({ icon, color }: Props) {
 
 const styles = StyleSheet.create({
   worldIcon: {
-    marginTop: -4,
   },
   deckIcon: {
     marginTop: -4,

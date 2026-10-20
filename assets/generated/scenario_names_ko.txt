@@ -1264,6 +1264,10 @@
     "name": "수면 아래 도사린 것"
   },
   {
+    "id": "the_turning_gear",
+    "name": "The Turning Gear"
+  },
+  {
     "id": "the_twisted_hollow",
     "name": "뒤틀린 공동"
   },

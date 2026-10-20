@@ -18,9 +18,16 @@ interface Props {
 export default function CampaignLogScarletKeysComponent({ keys, campaignLog }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const keyStatus = campaignLog.campaignData.scarlet.keyStatus;
-  const codes = useMemo(() => flatMap(keys, key => {
+  const allKeys = useMemo(() => {
+    const extraKeys = campaignLog.campaignData.scarlet.extraKeys || [];
+    if (!extraKeys.length) {
+      return keys;
+    }
+    return [...keys, ...extraKeys];
+  }, [keys, campaignLog.campaignData.scarlet.extraKeys]);
+  const codes = useMemo(() => flatMap(allKeys, key => {
     return keyStatus[key.id]?.investigator || [];
-  }), [keys, keyStatus]);
+  }), [allKeys, keyStatus]);
   const [cards, loading] = useCardMap(codes, 'player', false);
   if (loading) {
     return <ActivityIndicator size="small" animating />;
@@ -37,7 +44,7 @@ export default function CampaignLogScarletKeysComponent({ keys, campaignLog }: P
           </Text>
         </View>
       </View>
-      { map(keys, ({ id, name }) => {
+      { map(allKeys, ({ id, name }) => {
         const status = keyStatus[id];
         const bearer = status?.enemy ? campaignLog.campaignGuide.card(status.enemy)?.name : (status?.investigator && cards[status.investigator]?.name);
         return (

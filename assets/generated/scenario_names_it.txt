@@ -1213,7 +1213,7 @@
   },
   {
     "id": "the_other_side",
-    "name": "Dall’Altra Parte"
+    "name": "Dall'Altra Parte"
   },
   {
     "id": "the_pallid_mask",
@@ -1262,6 +1262,10 @@
   {
     "id": "the_thing_in_the_depths",
     "name": "L'Essere dagli Abissi"
+  },
+  {
+    "id": "the_turning_gear",
+    "name": "The Turning Gear"
   },
   {
     "id": "the_twisted_hollow",

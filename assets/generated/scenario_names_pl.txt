@@ -149,7 +149,7 @@
   },
   {
     "id": "blob_that_ate_everything_else",
-    "name": "The Blob That Ate Everything Else"
+    "name": "Śluz, który pożarł wszystko inne"
   },
   {
     "id": "blood_from_stones",
@@ -157,7 +157,7 @@
   },
   {
     "id": "blood_money",
-    "name": "Blood Money"
+    "name": "Krwawa forsa"
   },
   {
     "id": "blood_on_the_altar",
@@ -417,7 +417,7 @@
   },
   {
     "id": "friends_in_low_places",
-    "name": "Friends in Low Places"
+    "name": "Szemrani przyjaciele"
   },
   {
     "id": "going_twice",
@@ -545,7 +545,7 @@
   },
   {
     "id": "laid_to_rest",
-    "name": "Laid to Rest"
+    "name": "Pochowany"
   },
   {
     "id": "late_risers",
@@ -669,7 +669,7 @@
   },
   {
     "id": "ptc_interlude1_reprint",
-    "name": "Reality's Shadow"
+    "name": "Dar obłędu"
   },
   {
     "id": "ptc_interlude2",
@@ -705,7 +705,7 @@
   },
   {
     "id": "relics_of_the_past",
-    "name": "Relics of the Past"
+    "name": "Relikty przeszłości"
   },
   {
     "id": "restful_night",
@@ -909,7 +909,7 @@
   },
   {
     "id": "river_of_blood",
-    "name": "River of Blood"
+    "name": "Rzeka krwi"
   },
   {
     "id": "rome",
@@ -1262,6 +1262,10 @@
   {
     "id": "the_thing_in_the_depths",
     "name": "Istota z głębin"
+  },
+  {
+    "id": "the_turning_gear",
+    "name": "The Turning Gear"
   },
   {
     "id": "the_twisted_hollow",

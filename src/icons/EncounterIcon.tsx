@@ -380,6 +380,15 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'enc':
       case 'enthralling_encore':
         return this.standaloneIcon('enthralling_encore', size, color);
+      case 'ztg':
+      case 'the_turning_gear':
+      case 'ztg_turning_gear':
+        return this.standaloneIcon('the_turning_gear', size, color);
+      case 'ztg_flood':
+      case 'ztg_military_maneuvers':
+      case 'ztg_red_guard':
+      case 'ztg_unbound_dimensions':
+        return this.standaloneIcon(encounter_code, size, color);
       case 'parallel':
       case 'otr':
       case 'on_the_road_again':
@@ -409,10 +418,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'machinations_epic_multiplayer':
       case 'blob_epic_multiplayer':
       case 'epic_multiplayer':
+      case 'ztg_epic':
         return this.standaloneIcon('epic_multiplayer', size, color);
       case 'single_group':
       case 'blob_single_group':
       case 'machinations_single_group':
+      case 'ztg_single_group':
         return this.standaloneIcon('single_group', size, color);
       case 'gob':
         return this.standaloneIcon('guardians', size, color);

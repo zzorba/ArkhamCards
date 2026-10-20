@@ -1264,6 +1264,10 @@
     "name": "Тварь в глубине"
   },
   {
+    "id": "the_turning_gear",
+    "name": "The Turning Gear"
+  },
+  {
     "id": "the_twisted_hollow",
     "name": "Чудовищная лощина"
   },

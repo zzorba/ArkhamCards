@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Arkham Cards",
     "lastOpened": 0,
-    "created": 1787411604602
+    "created": 1792508273825
   },
   "iconSets": [
     {
@@ -10382,7 +10382,7 @@
     {
       "selection": [
         {
-          "order": 2804,
+          "order": 0,
           "id": 0,
           "name": "guardian",
           "prevSize": 32,
@@ -10390,7 +10390,7 @@
           "tempChar": ""
         },
         {
-          "order": 2805,
+          "order": 0,
           "id": 1,
           "name": "seeker",
           "prevSize": 32,
@@ -10398,7 +10398,7 @@
           "tempChar": ""
         },
         {
-          "order": 2806,
+          "order": 0,
           "id": 2,
           "name": "mystic",
           "prevSize": 32,
@@ -10406,7 +10406,7 @@
           "tempChar": ""
         },
         {
-          "order": 2807,
+          "order": 0,
           "id": 3,
           "name": "rogue",
           "prevSize": 32,
@@ -10414,7 +10414,7 @@
           "tempChar": ""
         },
         {
-          "order": 2808,
+          "order": 0,
           "id": 4,
           "name": "survivor",
           "prevSize": 32,
@@ -10422,7 +10422,7 @@
           "tempChar": ""
         },
         {
-          "order": 2809,
+          "order": 0,
           "id": 11,
           "name": "neutral",
           "prevSize": 32,
@@ -10430,7 +10430,7 @@
           "tempChar": ""
         },
         {
-          "order": 2810,
+          "order": 0,
           "id": 5,
           "name": "willpower",
           "prevSize": 32,
@@ -10438,7 +10438,7 @@
           "tempChar": ""
         },
         {
-          "order": 2811,
+          "order": 0,
           "id": 6,
           "name": "intellect",
           "prevSize": 32,
@@ -10446,7 +10446,7 @@
           "tempChar": ""
         },
         {
-          "order": 2812,
+          "order": 0,
           "id": 7,
           "name": "combat",
           "prevSize": 32,
@@ -10454,7 +10454,7 @@
           "tempChar": ""
         },
         {
-          "order": 2813,
+          "order": 0,
           "id": 8,
           "name": "agility",
           "prevSize": 32,
@@ -10462,7 +10462,7 @@
           "tempChar": ""
         },
         {
-          "order": 2814,
+          "order": 0,
           "id": 9,
           "name": "wild",
           "prevSize": 32,
@@ -10470,7 +10470,7 @@
           "tempChar": ""
         },
         {
-          "order": 2815,
+          "order": 0,
           "id": 12,
           "name": "skull",
           "prevSize": 32,
@@ -10478,7 +10478,7 @@
           "tempChar": ""
         },
         {
-          "order": 2816,
+          "order": 0,
           "id": 13,
           "name": "cultist",
           "prevSize": 32,
@@ -10486,7 +10486,7 @@
           "tempChar": ""
         },
         {
-          "order": 2817,
+          "order": 0,
           "id": 14,
           "name": "tablet",
           "prevSize": 32,
@@ -10494,7 +10494,7 @@
           "tempChar": ""
         },
         {
-          "order": 2818,
+          "order": 0,
           "id": 15,
           "name": "elder_thing",
           "prevSize": 32,
@@ -10502,7 +10502,7 @@
           "tempChar": ""
         },
         {
-          "order": 2819,
+          "order": 0,
           "id": 10,
           "name": "elder_sign",
           "prevSize": 32,
@@ -10510,7 +10510,7 @@
           "tempChar": ""
         },
         {
-          "order": 2820,
+          "order": 0,
           "id": 16,
           "name": "auto_fail",
           "prevSize": 32,
@@ -10518,7 +10518,7 @@
           "tempChar": ""
         },
         {
-          "order": 2821,
+          "order": 0,
           "id": 17,
           "name": "per_investigator",
           "prevSize": 32,
@@ -10526,7 +10526,7 @@
           "tempChar": ""
         },
         {
-          "order": 2822,
+          "order": 0,
           "id": 18,
           "name": "weakness",
           "prevSize": 32,
@@ -10534,7 +10534,7 @@
           "tempChar": ""
         },
         {
-          "order": 2823,
+          "order": 0,
           "id": 19,
           "name": "action",
           "prevSize": 32,
@@ -10542,7 +10542,7 @@
           "tempChar": ""
         },
         {
-          "order": 2824,
+          "order": 0,
           "id": 20,
           "name": "reaction",
           "prevSize": 32,
@@ -10550,7 +10550,7 @@
           "tempChar": ""
         },
         {
-          "order": 2825,
+          "order": 0,
           "id": 21,
           "name": "free",
           "prevSize": 32,
@@ -10558,7 +10558,7 @@
           "tempChar": ""
         },
         {
-          "order": 2826,
+          "order": 0,
           "id": 22,
           "name": "bullet",
           "prevSize": 32,
@@ -10566,7 +10566,7 @@
           "tempChar": ""
         },
         {
-          "order": 2827,
+          "order": 0,
           "id": 23,
           "name": "guide_bullet",
           "prevSize": 32,
@@ -10574,7 +10574,7 @@
           "tempChar": ""
         },
         {
-          "order": 2828,
+          "order": 0,
           "id": 24,
           "name": "curse",
           "prevSize": 32,
@@ -10582,7 +10582,7 @@
           "tempChar": ""
         },
         {
-          "order": 2829,
+          "order": 0,
           "id": 25,
           "name": "bless",
           "prevSize": 32,
@@ -10590,7 +10590,7 @@
           "tempChar": ""
         },
         {
-          "order": 2830,
+          "order": 0,
           "id": 26,
           "name": "frost",
           "prevSize": 32,
@@ -10598,7 +10598,7 @@
           "tempChar": ""
         },
         {
-          "order": 2831,
+          "order": 0,
           "id": 62,
           "name": "blood",
           "prevSize": 32,
@@ -10606,7 +10606,7 @@
           "tempChar": ""
         },
         {
-          "order": 2832,
+          "order": 0,
           "id": 31,
           "name": "seal_a",
           "prevSize": 32,
@@ -10614,7 +10614,7 @@
           "tempChar": ""
         },
         {
-          "order": 2833,
+          "order": 0,
           "id": 30,
           "name": "seal_b",
           "prevSize": 32,
@@ -10622,7 +10622,7 @@
           "tempChar": ""
         },
         {
-          "order": 2834,
+          "order": 0,
           "id": 29,
           "name": "seal_c",
           "prevSize": 32,
@@ -10630,7 +10630,7 @@
           "tempChar": ""
         },
         {
-          "order": 2835,
+          "order": 0,
           "id": 28,
           "name": "seal_d",
           "prevSize": 32,
@@ -10638,7 +10638,7 @@
           "tempChar": ""
         },
         {
-          "order": 2836,
+          "order": 0,
           "id": 27,
           "name": "seal_e",
           "prevSize": 32,
@@ -10646,7 +10646,7 @@
           "tempChar": ""
         },
         {
-          "order": 2837,
+          "order": 0,
           "id": 32,
           "name": "codex",
           "prevSize": 32,
@@ -10654,7 +10654,7 @@
           "tempChar": ""
         },
         {
-          "order": 2838,
+          "order": 0,
           "id": 33,
           "name": "day",
           "prevSize": 32,
@@ -10662,7 +10662,7 @@
           "tempChar": ""
         },
         {
-          "order": 2839,
+          "order": 0,
           "id": 34,
           "name": "night",
           "prevSize": 32,
@@ -10670,7 +10670,7 @@
           "tempChar": ""
         },
         {
-          "order": 2840,
+          "order": 0,
           "id": 35,
           "name": "tdc_rune_a",
           "prevSize": 32,
@@ -10678,7 +10678,7 @@
           "tempChar": ""
         },
         {
-          "order": 2841,
+          "order": 0,
           "id": 36,
           "name": "tdc_rune_b",
           "prevSize": 32,
@@ -10686,7 +10686,7 @@
           "tempChar": ""
         },
         {
-          "order": 2842,
+          "order": 0,
           "id": 37,
           "name": "tdc_rune_c",
           "prevSize": 32,
@@ -10694,7 +10694,7 @@
           "tempChar": ""
         },
         {
-          "order": 2843,
+          "order": 0,
           "id": 38,
           "name": "tdc_rune_d",
           "prevSize": 32,
@@ -10702,7 +10702,7 @@
           "tempChar": ""
         },
         {
-          "order": 2844,
+          "order": 0,
           "id": 40,
           "name": "tdc_rune_e",
           "prevSize": 32,
@@ -10710,7 +10710,7 @@
           "tempChar": ""
         },
         {
-          "order": 2845,
+          "order": 0,
           "id": 39,
           "name": "tdc_rune_f",
           "prevSize": 32,
@@ -10718,7 +10718,7 @@
           "tempChar": ""
         },
         {
-          "order": 2846,
+          "order": 0,
           "id": 41,
           "name": "tdc_rune_g",
           "prevSize": 32,
@@ -10726,7 +10726,7 @@
           "tempChar": ""
         },
         {
-          "order": 2847,
+          "order": 0,
           "id": 42,
           "name": "tdc_rune_h",
           "prevSize": 32,
@@ -10734,7 +10734,7 @@
           "tempChar": ""
         },
         {
-          "order": 2848,
+          "order": 0,
           "id": 43,
           "name": "tdc_rune_i",
           "prevSize": 32,
@@ -10742,7 +10742,7 @@
           "tempChar": ""
         },
         {
-          "order": 2849,
+          "order": 0,
           "id": 44,
           "name": "tdc_rune_j",
           "prevSize": 32,
@@ -10750,7 +10750,7 @@
           "tempChar": ""
         },
         {
-          "order": 2850,
+          "order": 0,
           "id": 45,
           "name": "tdc_rune_k",
           "prevSize": 32,
@@ -10758,7 +10758,7 @@
           "tempChar": ""
         },
         {
-          "order": 2851,
+          "order": 0,
           "id": 46,
           "name": "tdc_rune_l",
           "prevSize": 32,
@@ -10766,7 +10766,7 @@
           "tempChar": ""
         },
         {
-          "order": 2852,
+          "order": 0,
           "id": 47,
           "name": "tdc_rune_m",
           "prevSize": 32,
@@ -10774,7 +10774,7 @@
           "tempChar": ""
         },
         {
-          "order": 2853,
+          "order": 0,
           "id": 48,
           "name": "tdc_rune_n",
           "prevSize": 32,
@@ -10782,7 +10782,7 @@
           "tempChar": ""
         },
         {
-          "order": 2854,
+          "order": 0,
           "id": 49,
           "name": "tdc_rune_o",
           "prevSize": 32,
@@ -10790,7 +10790,7 @@
           "tempChar": ""
         },
         {
-          "order": 2855,
+          "order": 0,
           "id": 50,
           "name": "tdc_rune_p",
           "prevSize": 32,
@@ -10798,7 +10798,7 @@
           "tempChar": ""
         },
         {
-          "order": 2856,
+          "order": 0,
           "id": 51,
           "name": "tdc_rune_q",
           "prevSize": 32,
@@ -10806,7 +10806,7 @@
           "tempChar": ""
         },
         {
-          "order": 2857,
+          "order": 0,
           "id": 52,
           "name": "tdc_rune_r",
           "prevSize": 32,
@@ -10814,7 +10814,7 @@
           "tempChar": ""
         },
         {
-          "order": 2858,
+          "order": 0,
           "id": 53,
           "name": "tdc_rune_s",
           "prevSize": 32,
@@ -10822,7 +10822,7 @@
           "tempChar": ""
         },
         {
-          "order": 2859,
+          "order": 0,
           "id": 54,
           "name": "tdc_rune_t",
           "prevSize": 32,
@@ -10830,7 +10830,7 @@
           "tempChar": ""
         },
         {
-          "order": 2860,
+          "order": 0,
           "id": 55,
           "name": "tdc_rune_u",
           "prevSize": 32,
@@ -10838,7 +10838,7 @@
           "tempChar": ""
         },
         {
-          "order": 2861,
+          "order": 0,
           "id": 56,
           "name": "tdc_rune_v",
           "prevSize": 32,
@@ -10846,7 +10846,7 @@
           "tempChar": ""
         },
         {
-          "order": 2862,
+          "order": 0,
           "id": 57,
           "name": "tdc_rune_w",
           "prevSize": 32,
@@ -10854,7 +10854,7 @@
           "tempChar": ""
         },
         {
-          "order": 2863,
+          "order": 0,
           "id": 58,
           "name": "tdc_rune_x",
           "prevSize": 32,
@@ -10862,7 +10862,7 @@
           "tempChar": ""
         },
         {
-          "order": 2864,
+          "order": 0,
           "id": 59,
           "name": "tdc_rune_y",
           "prevSize": 32,
@@ -10870,7 +10870,7 @@
           "tempChar": ""
         },
         {
-          "order": 2865,
+          "order": 0,
           "id": 60,
           "name": "tdc_rune_z",
           "prevSize": 32,
@@ -10878,7 +10878,7 @@
           "tempChar": ""
         },
         {
-          "order": 2866,
+          "order": 0,
           "id": 61,
           "name": "moon",
           "prevSize": 32,
@@ -20022,7 +20022,7 @@
     {
       "selection": [
         {
-          "order": 0,
+          "order": 2867,
           "id": 102,
           "name": "migo_incursion_2",
           "prevSize": 32,
@@ -20030,7 +20030,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2868,
           "id": 101,
           "name": "blob_that_ate_everything_else",
           "prevSize": 32,
@@ -20038,7 +20038,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2869,
           "id": 100,
           "name": "blbe",
           "prevSize": 32,
@@ -20046,7 +20046,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2870,
           "id": 55,
           "name": "novella",
           "prevSize": 32,
@@ -20054,7 +20054,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2871,
           "id": 37,
           "name": "blob",
           "prevSize": 32,
@@ -20062,7 +20062,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2872,
           "id": 2,
           "name": "rougerauo2",
           "prevSize": 32,
@@ -20070,7 +20070,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2873,
           "id": 0,
           "name": "the_bayou",
           "prevSize": 32,
@@ -20078,7 +20078,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2874,
           "id": 4,
           "name": "curse_of_the_rougarou",
           "prevSize": 32,
@@ -20086,7 +20086,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2875,
           "id": 3,
           "name": "carnevale",
           "prevSize": 32,
@@ -20094,7 +20094,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2876,
           "id": 5,
           "name": "venice",
           "prevSize": 32,
@@ -20102,7 +20102,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2877,
           "id": 6,
           "name": "lol",
           "prevSize": 32,
@@ -20110,7 +20110,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2878,
           "id": 8,
           "name": "in_the_labyrinths_of_lunacy",
           "prevSize": 32,
@@ -20118,7 +20118,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2879,
           "id": 7,
           "name": "epic_multiplayer",
           "prevSize": 32,
@@ -20126,7 +20126,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2880,
           "id": 9,
           "name": "single_group",
           "prevSize": 32,
@@ -20134,7 +20134,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2881,
           "id": 22,
           "name": "guardians",
           "prevSize": 32,
@@ -20142,7 +20142,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2882,
           "id": 19,
           "name": "abyssal_gifts",
           "prevSize": 32,
@@ -20150,7 +20150,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2883,
           "id": 18,
           "name": "abyssal_tribute",
           "prevSize": 32,
@@ -20158,7 +20158,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2884,
           "id": 20,
           "name": "brotherhood_of_the_beast",
           "prevSize": 32,
@@ -20166,7 +20166,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2885,
           "id": 24,
           "name": "sands_of_egypt",
           "prevSize": 32,
@@ -20174,7 +20174,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2886,
           "id": 21,
           "name": "eternal_slumber",
           "prevSize": 32,
@@ -20182,7 +20182,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2887,
           "id": 23,
           "name": "nights_usurper",
           "prevSize": 32,
@@ -20190,7 +20190,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2888,
           "id": 31,
           "name": "excelsior",
           "prevSize": 32,
@@ -20198,7 +20198,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2889,
           "id": 25,
           "name": "murder_at_the_excelsior_hotel",
           "prevSize": 32,
@@ -20206,7 +20206,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2890,
           "id": 26,
           "name": "alien_interference",
           "prevSize": 32,
@@ -20214,7 +20214,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2891,
           "id": 27,
           "name": "dark_rituals",
           "prevSize": 32,
@@ -20222,7 +20222,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2892,
           "id": 28,
           "name": "excelsior_management",
           "prevSize": 32,
@@ -20230,7 +20230,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2893,
           "id": 29,
           "name": "sins_of_the_past",
           "prevSize": 32,
@@ -20238,7 +20238,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2894,
           "id": 30,
           "name": "vile_experiments",
           "prevSize": 32,
@@ -20246,7 +20246,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2895,
           "id": 33,
           "name": "blob_set",
           "prevSize": 32,
@@ -20254,7 +20254,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2896,
           "id": 34,
           "name": "the_blob_that_ate_everything",
           "prevSize": 32,
@@ -20262,7 +20262,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2897,
           "id": 35,
           "name": "migo",
           "prevSize": 32,
@@ -20270,7 +20270,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2898,
           "id": 32,
           "name": "read_or_die",
           "prevSize": 32,
@@ -20278,7 +20278,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2899,
           "id": 36,
           "name": "all_or_nothing",
           "prevSize": 32,
@@ -20286,7 +20286,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2900,
           "id": 48,
           "name": "bad_blood",
           "prevSize": 32,
@@ -20294,7 +20294,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2901,
           "id": 54,
           "name": "by_the_book",
           "prevSize": 32,
@@ -20302,7 +20302,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2902,
           "id": 56,
           "name": "red_tide_rising",
           "prevSize": 32,
@@ -20310,7 +20310,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2903,
           "id": 38,
           "name": "nate",
           "prevSize": 32,
@@ -20318,7 +20318,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2904,
           "id": 41,
           "name": "harvey",
           "prevSize": 32,
@@ -20326,7 +20326,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2905,
           "id": 40,
           "name": "jacqueline",
           "prevSize": 32,
@@ -20334,7 +20334,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2906,
           "id": 42,
           "name": "winifred",
           "prevSize": 32,
@@ -20342,7 +20342,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2907,
           "id": 39,
           "name": "stella",
           "prevSize": 32,
@@ -20350,7 +20350,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2908,
           "id": 43,
           "name": "wotog",
           "prevSize": 32,
@@ -20358,7 +20358,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2909,
           "id": 44,
           "name": "war_of_the_outer_gods",
           "prevSize": 32,
@@ -20366,7 +20366,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2910,
           "id": 45,
           "name": "children_of_paradise",
           "prevSize": 32,
@@ -20374,7 +20374,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2911,
           "id": 46,
           "name": "assimilating_swarm",
           "prevSize": 32,
@@ -20382,7 +20382,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2912,
           "id": 47,
           "name": "death_of_the_stars",
           "prevSize": 32,
@@ -20390,7 +20390,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2913,
           "id": 50,
           "name": "barkham_horror",
           "prevSize": 32,
@@ -20398,7 +20398,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2914,
           "id": 49,
           "name": "meddling",
           "prevSize": 32,
@@ -20406,7 +20406,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2915,
           "id": 82,
           "name": "roulette",
           "prevSize": 32,
@@ -20414,7 +20414,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2916,
           "id": 83,
           "name": "fortune_and_folly",
           "prevSize": 32,
@@ -20422,7 +20422,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2917,
           "id": 80,
           "name": "fortunes_chosen",
           "prevSize": 32,
@@ -20430,7 +20430,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2918,
           "id": 81,
           "name": "plan_in_shambles",
           "prevSize": 32,
@@ -20438,7 +20438,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2919,
           "id": 51,
           "name": "consternation_on_the_constellation",
           "prevSize": 32,
@@ -20446,7 +20446,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2920,
           "id": 53,
           "name": "deep_ones",
           "prevSize": 32,
@@ -20454,7 +20454,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2921,
           "id": 52,
           "name": "sinking_ship",
           "prevSize": 32,
@@ -20462,7 +20462,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2922,
           "id": 57,
           "name": "mtt",
           "prevSize": 32,
@@ -20470,7 +20470,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2923,
           "id": 58,
           "name": "machinations_through_time",
           "prevSize": 32,
@@ -20478,7 +20478,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2924,
           "id": 59,
           "name": "zez",
           "prevSize": 32,
@@ -20486,7 +20486,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2925,
           "id": 60,
           "name": "beta",
           "prevSize": 32,
@@ -20494,7 +20494,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2926,
           "id": 63,
           "name": "meteoric_phenomenon",
           "prevSize": 32,
@@ -20502,7 +20502,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2927,
           "id": 61,
           "name": "inhospitable_locality",
           "prevSize": 32,
@@ -20510,7 +20510,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2928,
           "id": 62,
           "name": "unnatural_disturbances",
           "prevSize": 32,
@@ -20518,7 +20518,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2929,
           "id": 64,
           "name": "made_flesh",
           "prevSize": 32,
@@ -20526,7 +20526,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2930,
           "id": 65,
           "name": "lost_cathedral",
           "prevSize": 32,
@@ -20534,7 +20534,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2931,
           "id": 69,
           "name": "the_fall_of_the_house_of_usher",
           "prevSize": 32,
@@ -20542,7 +20542,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2932,
           "id": 66,
           "name": "wendigo",
           "prevSize": 32,
@@ -20550,7 +20550,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2933,
           "id": 67,
           "name": "wendigos_myth",
           "prevSize": 32,
@@ -20558,7 +20558,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2934,
           "id": 68,
           "name": "hannihah_valley",
           "prevSize": 32,
@@ -20566,7 +20566,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2935,
           "id": 70,
           "name": "fortune",
           "prevSize": 32,
@@ -20574,7 +20574,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2936,
           "id": 74,
           "name": "the_black_stone",
           "prevSize": 32,
@@ -20582,7 +20582,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2937,
           "id": 73,
           "name": "tomes",
           "prevSize": 32,
@@ -20590,7 +20590,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2938,
           "id": 75,
           "name": "occultism",
           "prevSize": 32,
@@ -20598,7 +20598,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2939,
           "id": 76,
           "name": "natural_hazards",
           "prevSize": 32,
@@ -20606,7 +20606,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2940,
           "id": 71,
           "name": "witch_cult",
           "prevSize": 32,
@@ -20614,7 +20614,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2941,
           "id": 77,
           "name": "magyar",
           "prevSize": 32,
@@ -20622,7 +20622,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2942,
           "id": 72,
           "name": "wild_beasts",
           "prevSize": 32,
@@ -20630,7 +20630,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2943,
           "id": 78,
           "name": "legendary",
           "prevSize": 32,
@@ -20638,7 +20638,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2944,
           "id": 79,
           "name": "ancient_hunger",
           "prevSize": 32,
@@ -20646,7 +20646,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2945,
           "id": 84,
           "name": "laid_to_rest",
           "prevSize": 32,
@@ -20654,7 +20654,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2946,
           "id": 109,
           "name": "enthralling_encore",
           "prevSize": 32,
@@ -20662,7 +20662,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2947,
           "id": 85,
           "name": "zoc",
           "prevSize": 32,
@@ -20670,7 +20670,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2948,
           "id": 86,
           "name": "rop",
           "prevSize": 32,
@@ -20678,7 +20678,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2949,
           "id": 87,
           "name": "arkham_incidents",
           "prevSize": 32,
@@ -20686,7 +20686,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2950,
           "id": 91,
           "name": "too_noble",
           "prevSize": 32,
@@ -20694,7 +20694,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2951,
           "id": 92,
           "name": "something_big",
           "prevSize": 32,
@@ -20702,7 +20702,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2952,
           "id": 90,
           "name": "unscrupulous_investments",
           "prevSize": 32,
@@ -20710,7 +20710,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2953,
           "id": 88,
           "name": "anything_once",
           "prevSize": 32,
@@ -20718,7 +20718,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2954,
           "id": 89,
           "name": "mysterious_benefits",
           "prevSize": 32,
@@ -20726,7 +20726,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2955,
           "id": 95,
           "name": "legions_of_fire",
           "prevSize": 32,
@@ -20734,7 +20734,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2956,
           "id": 93,
           "name": "depraved_legions",
           "prevSize": 32,
@@ -20742,7 +20742,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2957,
           "id": 94,
           "name": "final_annihilation",
           "prevSize": 32,
@@ -20750,7 +20750,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2958,
           "id": 96,
           "name": "spiraling_inferno",
           "prevSize": 32,
@@ -20758,7 +20758,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2959,
           "id": 97,
           "name": "scorched_wasteland",
           "prevSize": 32,
@@ -20766,7 +20766,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2960,
           "id": 98,
           "name": "malevolent_ritual",
           "prevSize": 32,
@@ -20774,7 +20774,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2961,
           "id": 99,
           "name": "gala",
           "prevSize": 32,
@@ -20782,7 +20782,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2962,
           "id": 104,
           "name": "film_fatale",
           "prevSize": 32,
@@ -20790,7 +20790,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2963,
           "id": 103,
           "name": "forgotten_island",
           "prevSize": 32,
@@ -20798,7 +20798,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2964,
           "id": 105,
           "name": "film_fatale_encounter",
           "prevSize": 32,
@@ -20806,7 +20806,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2965,
           "id": 106,
           "name": "cosmic_journey",
           "prevSize": 32,
@@ -20814,7 +20814,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2966,
           "id": 107,
           "name": "abominable_contessa",
           "prevSize": 32,
@@ -20822,7 +20822,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2967,
           "id": 108,
           "name": "when_the_world_screamed",
           "prevSize": 32,
@@ -20830,7 +20830,7 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2968,
           "id": 110,
           "name": "onigawa",
           "prevSize": 32,
@@ -20838,20 +20838,60 @@
           "tempChar": ""
         },
         {
-          "order": 0,
+          "order": 2969,
           "id": 111,
           "name": "darkham",
           "prevSize": 32,
           "code": 59739,
           "tempChar": ""
+        },
+        {
+          "order": 2970,
+          "id": 112,
+          "name": "the_turning_gear",
+          "prevSize": 32,
+          "code": 59740,
+          "tempChar": ""
+        },
+        {
+          "order": 2971,
+          "id": 114,
+          "name": "ztg_military_maneuvers",
+          "prevSize": 32,
+          "code": 59741,
+          "tempChar": ""
+        },
+        {
+          "order": 2972,
+          "id": 113,
+          "name": "ztg_red_guard",
+          "prevSize": 32,
+          "code": 59742,
+          "tempChar": ""
+        },
+        {
+          "order": 2973,
+          "id": 115,
+          "name": "ztg_flood",
+          "prevSize": 32,
+          "code": 59743,
+          "tempChar": ""
+        },
+        {
+          "order": 2974,
+          "id": 116,
+          "name": "ztg_unbound_dimensions",
+          "prevSize": 32,
+          "code": 59744,
+          "tempChar": ""
         }
       ],
       "id": 7,
       "metadata": {
         "name": "Standalone",
         "importSize": {
-          "width": 146,
-          "height": 194
+          "width": 575,
+          "height": 649
         }
       },
       "height": 1024,
@@ -22759,6 +22799,87 @@
           "grid": 16,
           "tags": [
             "darkham"
+          ]
+        },
+        {
+          "id": 112,
+          "paths": [
+            "M460.177 1002.187c-5.932-1.343-11.374-3.303-19.359-6.969l-5.308-2.441-16.587-16.347-8.728-17.359-1.595-7.988-1.588-7.996v-43.891l-3.847-1.051c-21.65-5.942-60.818-21.918-81.757-33.359l-9.028-4.93-11.034 10.84c-24.619 24.17-29.509 27.749-45.416 33.24l-3.625 1.256-22.479 1.454-19.564-5.72-16.958-11.465-64.515-65.074-3.594-7.601c-1.983-4.18-4.439-10.161-5.466-13.29l-1.872-5.681-0.521-22.447 2.362-7.506 2.37-7.514 3.42-7 3.428-7 34.785-35.16-1.303-2.181c-3.467-5.799-12.598-24.114-17.1-34.283-8.27-18.702-11.887-28.602-20.583-56.359l-0.687-2.173h-47.928l-17.653-5.317-3.096-1.801c-5.774-3.358-14.462-9.45-16.223-11.37-7.306-8.012-12.874-17.485-16.366-27.844l-2.283-6.779v-101.782l1.382-4.994c0.766-2.75 2.796-8.296 4.518-12.334l3.128-7.332 6.358-6.645c10.102-10.572 16.942-15.162 30.093-20.195l6.35-2.434 51.34-1.146 0.498-0.545c0.269-0.3 1.935-5.207 3.689-10.911 7.583-24.565 20.149-54.534 31.957-76.191l3.791-6.953-14.549-14.791c-21.428-21.783-23.672-24.731-28.071-36.859l-2.67-7.364-1.485-20.843 1.611-6.637c1.722-7.048 3.633-12.468 7.045-19.942l2.109-4.606 66.442-67.428 4.534-3.050c6.224-4.188 14.991-8.462 22.471-10.967l6.279-2.094 23.561 0.521 5.071 1.754c2.788 0.964 8.357 3.176 12.369 4.922l7.298 3.16 36.333 36.069 3.902-2.347c17.89-10.793 64.783-30.143 86.33-35.642l4.842-1.233 0.008-46.237 1.682-6.163c1.99-7.261 5.268-15.249 9.194-22.415l2.828-5.167 15.283-14.009 5.734-2.781c3.151-1.525 8.443-3.721 11.753-4.883l6.019-2.11h104.986l6.019 2.11c3.317 1.161 8.601 3.358 11.753 4.883l5.734 2.781 15.283 14.009 2.828 5.167c3.933 7.166 7.203 15.154 9.194 22.415l1.69 6.163v45.827h1.058c6.579 0 59.373 21.531 83.818 34.188l10.307 5.333 36.222-35.958 7.298-3.16c4.020-1.746 9.589-3.958 12.377-4.922l5.063-1.754 23.569-0.521 6.232 2.086c7.646 2.568 15.607 6.408 21.934 10.588l4.771 3.153 66.608 67.578 2.219 4.677c3.452 7.277 5.892 14.325 7.038 20.361l1.043 5.531v17.58l-5.292 17.24-4.162 6.432-4.17 6.432-32.518 32.821 7.906 15.7c13.641 27.069 26.326 58.484 30.18 74.737 1.106 4.638-1.248 4.227 27.652 4.82l25.544 0.521 6.358 2.465c23.545 9.15 37.533 23.664 43.773 45.455l1.698 5.926v101.94l-2.283 6.779c-3.009 8.944-6.019 14.522-12.061 22.344l-4.976 6.455-8.23 5.61c-9.225 6.297-9.217 6.289-20.133 9.56l-7.898 2.362h-48.109l-0.261 0.83c-0.15 0.466-1.785 5.855-3.641 11.986-7.425 24.509-19.517 53.096-32.455 76.712l-3.057 5.586 34.666 35.041 6.856 14.001 2.362 7.514 2.37 7.506-0.521 22.447-1.864 5.681c-1.019 3.129-3.61 9.3-5.758 13.716l-3.894 8.028-69.996 69.585-16.050 8.233-18.001 3.595-19.288-1.557-14.715-5.491-4.921-3.216c-5.718-3.729-14.32-11.378-29.343-26.074l-10.702-10.461-9.66 5.246c-23.774 12.91-46.159 22.060-77.271 31.565l-7.361 2.244-0.695 47.415-1.904 7.688-1.904 7.696-8.056 15.012-16.863 16.458-16.089 6.921-13.151 3.421-93.138-0.111-5.347-1.225zM552.32 939.452l1.074-1.185 0.403-70.881 3.878-7.474 3.878-7.482 11.216-7.269 39.208-9.774 9.36-3.492c28.916-10.769 46.672-19.421 76.417-37.23l8.878-5.31 12.701-1.485 3.499 0.877c1.927 0.49 5.15 1.485 7.18 2.22l3.673 1.327 50.866 50.678h2.67l27.487-27.599c15.118-15.178 27.858-28.31 28.308-29.187l0.821-1.596-49.579-49.659-2.37-5.223-2.362-5.223v-18.188l5.576-9.094c9.936-16.213 11.871-19.587 17.858-31.154 12.756-24.636 20.662-45.811 28.735-76.949l3.467-13.385 4.431-9.631 3.009-2.923c1.659-1.612 5.055-4.259 7.551-5.886l4.542-2.963 73.013-0.672 3.617-2.37v-79.248l-3.009-1.999-70.881-0.664-12.843-6.297-3.689-4.551c-4.984-6.131-4.913-5.965-8.27-20.148-9.439-39.877-25.441-78.197-45.511-109.020-2.709-4.164-5.434-8.525-6.058-9.703l-1.137-2.141-0.063-19.397 1.927-6.637 51.909-52.377v-3.224l-55.171-55.023-3.175-0.956-5.434 5.31c-36.483 35.658-45.384 43.891-50.913 47.114l-3.341 1.944-19.391-0.435-14.043-8.533c-35.488-21.554-60.873-32.118-104.789-43.638l-16.926-4.44-2.101-1.28c-1.153-0.695-4.076-3.366-6.485-5.918l-4.384-4.646-1.366-4.606c-0.758-2.536-1.674-6.202-2.046-8.146l-0.671-3.54v-65.326l-2.583-1.383h-78.076l-2.219 1.667-0.379 71.734-7.022 14.119-4.707 3.429c-5.845 4.259-5.679 4.188-17.021 7.087-46.909 12.010-72.658 22.423-107.672 43.551-7.353 4.433-14.336 8.565-15.513 9.165l-2.14 1.098-17.116-0.016-6.69-3.113-7.022-6.376c-3.87-3.508-15.907-15.004-26.752-25.544l-19.73-19.168-2.243 0.363-55.423 54.478-0.853 4.251 51.94 52.4 2.235 8.897-0.008 5.878c0 3.239-0.276 7.561-0.616 9.616l-0.608 3.729-6.303 9.647c-19.88 30.459-35.053 66.551-45.25 107.669-3.712 14.941-3.57 14.601-8.491 21.207l-3.602 4.835-13.032 6.384-72.61 0.672-1.264 2.007-0.016 79.296 2.172 1.319 2.172 1.327 70.344 0.008 8.128 4.061 4.605 4.267c2.528 2.339 5.395 5.412 6.374 6.827l1.769 2.568 2.78 12.033c8.554 37.001 22.637 71.869 41.751 103.363 3.238 5.341 7.069 11.702 8.507 14.143l2.614 4.44 0.774 14.585-0.806 4.598c-1.161 6.676-0.442 5.807-28.103 34.038-13.996 14.285-25.449 26.319-25.449 26.745s12.732 13.495 28.284 29.045l28.292 28.278h2.614l49.484-49.595 2.338-1.193c1.287-0.656 5.118-1.912 8.515-2.781l6.177-1.588 12.756 2.173 3.831 2.323c2.109 1.272 7.804 4.756 12.669 7.743 28.893 17.714 65.707 32.892 99.497 41.023 6.256 1.501 12.448 2.995 13.775 3.311l2.401 0.585 11.508 7.459 3.878 7.474 3.878 7.482 0.403 70.881 2.148 2.37h78.495l1.066-1.185zM489.267 736.536c-107.19-14.846-183.102-87.371-201.245-192.258l-0.687-4.014-0.632-22.747c-0.348-12.507-0.513-23.498-0.363-24.414s1.201-7.395 2.33-14.38c13.419-82.669 62.603-144.638 140.742-177.309l10.702-4.48 11.366-2.844c12.274-3.074 26.673-5.847 37.636-7.253l6.88-0.885 45.092 1.154 7.361 1.375c53.741 10.066 100.168 36.061 134.834 75.511 8.744 9.963 22.463 29.898 24.383 35.46l0.814 2.339 0.964 14.957-1.43 2.892c-0.782 1.588-3.151 5.452-5.26 8.573l-3.839 5.689-13.38 6.977-15.070 0.047-13.017-6.566-1.753-1.904c-0.964-1.043-4.771-6.416-8.459-11.939l-6.714-10.034-28.545-28.302-8.357-5.317c-15.726-10.003-27.708-15.692-43.986-20.906l-8.515-2.726-19.391-3.943-39.050-0.016-7.227 1.375c-67.413 12.824-115.894 58.879-132.702 126.062l-2.014 8.028-0.908 12.097-0.908 12.089 1.817 29.337 2.346 9.363c13.964 55.695 50.74 97.208 103.746 117.087l6.69 2.505 26.041 6.511h44.413l8.665-1.959c51.782-11.678 89.995-40.556 114.678-86.683l5.016-9.363 8.783-27.425 1.69-10.129 1.698-10.121 0.008-7.269c0.008-13.084 1.667-19.421 7.448-28.428l3.42-5.341 13.72-6.613h11.903l3.831 0.996c2.109 0.553 5.26 1.73 6.998 2.623l3.167 1.62 2.441 2.56c1.343 1.414 3.681 4.361 5.197 6.55l2.749 3.974 2.606 8.438-1.406 34.449-3.025 13.716c-2.867 12.989-6.761 27.069-10.529 38.060l-1.698 4.946-16.058 31.288-17.629 24.889-27.518 27.749-6.35 5.009c-33.434 26.374-70.304 42.176-113.351 48.576l-4.684 0.695-42.13 0.608-4.344-0.6z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 16,
+          "tags": [
+            "the_turning_gear"
+          ]
+        },
+        {
+          "id": 114,
+          "paths": [
+            "M183.828 934.040l-144.518-58.289-1.025-148.673 10.282 4.040c5.644 2.213 70.254 28.132 143.565 57.59s135.038 53.556 137.173 53.556c2.135 0 68.264-25.864 146.954-57.475l143.076-57.487 0.519 73.474c0.283 40.409-0.163 74.065-0.983 74.776-2.105 1.857-286.876 117.122-288.878 116.923-0.905-0.084-66.678-26.383-146.164-58.434v0zM455.689 901.928c67.251-27.324 122.995-50.836 123.888-52.235 0.886-1.405 1.634-14.135 1.646-28.282 0.030-28.234-1.26-31.876-11.325-31.876-2.864 0-58.163 21.293-122.887 47.314l-117.676 47.314-117.779-47.314c-64.778-26.021-120.083-47.314-122.899-47.314-9.962 0-11.265 3.697-11.229 31.876 0.012 14.147 0.718 26.823 1.562 28.15 1.707 2.696 245.369 101.654 250.917 101.907 1.936 0.084 58.531-22.204 125.781-49.539zM183.37 721.572l-144.982-58-0.060-148.679 143.010 57.246c78.654 31.491 145.241 57.246 147.979 57.246 2.732 0 69.337-25.762 147.997-57.258l143.034-57.258-0.507 74.33-0.507 74.336-142.57 58.024c-78.413 31.919-143.878 58.024-145.501 58.024-1.61-0.006-68.167-26.105-147.907-58.018h0.012zM455.49 689.78c66.485-26.932 121.976-50.39 123.315-52.126 1.676-2.153 2.442-11.307 2.442-29 0-27.842-1.357-31.991-10.481-31.991-2.394 0-57.692 21.384-122.899 47.513l-118.551 47.519-118.557-47.519c-65.206-26.13-120.505-47.513-122.899-47.513-9.118 0-10.481 4.149-10.481 31.991 0 17.687 0.778 26.853 2.442 29.024 2.732 3.558 244.218 100.84 250.67 100.99 2.273 0.048 58.519-21.957 124.997-48.888zM177.532 492.406c5.12-22.083 27.106-160.347 26.117-164.285-0.766-3.075-23.814-27.016-59.863-62.185-32.232-31.448-57.94-57.777-57.132-58.513 0.814-0.736 36.634-6.326 79.601-12.429s80.427-11.982 83.237-13.074c4.282-1.652 11.18-14.31 41.989-77.008 20.274-41.266 37.304-75.036 37.841-75.036 0.531 0 17.566 33.77 37.841 75.036 30.815 62.71 37.702 75.355 41.983 77.008 2.822 1.085 39.837 6.893 82.26 12.917 42.43 6.018 78.437 11.391 80.029 11.934 1.936 0.663-16.945 20.461-57.198 59.966-52.796 51.807-60.074 59.676-59.996 64.82 0.054 3.226 6.217 41.398 13.695 84.841 7.484 43.443 13.387 79.209 13.122 79.474-0.271 0.265-32.986-16.583-72.696-37.461-53.121-27.915-73.999-37.955-78.962-37.967-4.999-0.012-24.755 9.419-76.163 36.375-38.178 20.027-71.068 37.256-73.094 38.293-3.196 1.646-3.546 1.297-2.611-2.708zM284.402 401.33c11.277-5.94 25.243-13.303 31.038-16.354 12.923-6.826 14.786-6.857 26.769-0.44 5.265 2.81 15.944 8.527 23.729 12.694 7.785 4.161 20.968 11.198 29.289 15.631 8.328 4.426 19.713 10.499 25.309 13.478 13.749 7.339 15.426 5.252 11.295-14.009-1.689-7.9-4.324-22.27-5.843-31.937s-4.155-25.044-5.862-34.174c-6.302-33.716-9.823-25.864 28.536-63.506 42.333-41.531 46.657-46.072 46.657-48.942 0-2.334-14.407-5.482-35.151-7.701-5.91-0.633-15.136-1.888-20.503-2.798-5.373-0.911-20.606-3.262-33.86-5.228l-24.085-3.582-18.525-38.118c-27.571-56.71-31.225-63.506-34.138-63.506-2.442 0-14.262 22.493-42.273 80.427l-10.312 21.323-16.053 2.563c-8.828 1.411-21.323 3.262-27.77 4.119-60.895 8.099-71.544 9.974-70.881 12.465 0.32 1.182 18.151 19.285 39.632 40.229 21.486 20.937 39.674 39.010 40.409 40.144 0.748 1.134 0.585 5.53-0.362 9.763-0.947 4.227-3.16 17.361-4.915 29.175-1.767 11.82-4.517 27.191-6.133 34.174-3.383 14.666-6.633 41.23-5.307 43.388 0.501 0.802 9.431-3.027 19.858-8.503 10.42-5.482 28.174-14.829 39.451-20.769v-0.006z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "width": 667,
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 16,
+          "tags": [
+            "ztg_military_maneuvers"
+          ]
+        },
+        {
+          "id": 113,
+          "paths": [
+            "M435.47 925.1c-1.549-0.699-6.932-4.222-11.957-7.831-117.895-84.535-213.172-224.909-276.715-407.667-18.385-52.851-39.205-130.563-48.191-179.768l-1.95-10.693-0.753-13.415 3.080-3.074 7.528-2.321c132.44-40.834 233.743-98.132 314.821-178.067l13.275-13.081 2.29-0.96c2.886-1.203 4.915-1.203 7.746-0.030l2.23 0.936 14.599 14.071c41.259 39.776 74.243 65.306 118.479 91.704 59.99 35.809 111.717 58.532 190.115 83.526l13.19 4.21 1.452 1.452 1.44 1.452v3.020c0 11.598-15.772 83.751-27.71 126.741-59.601 214.666-160.667 377.83-297.178 479.759l-10.389 7.758-7.558 3.578-5.037-0.030-2.807-1.27zM443.708 885.919c58.197-39.546 120.417-110.854 175.917-201.592l11.161-18.257 8.032-16.064c39.43-78.848 62.481-137.009 83.733-211.234 9.794-34.193 27.656-109.511 26.295-110.86-0.122-0.128-7.576-2.758-16.562-5.863-40.591-13.98-69.868-26.052-106.692-43.981-56.077-27.309-96.886-53.064-142.289-89.808l-14.8-11.975-27.595-25.645-5.717 5.632c-3.147 3.092-12.23 11.361-20.207 18.366l-14.478 12.746-11.021 8.323c-75.537 57.055-148.358 95.507-238.598 126l-17.34 5.863 0.194 6.051 4.49 20.462c35.123 159.883 94.626 299.395 171.202 401.379 3.645 4.848 9.593 12.783 13.22 17.631 24.035 32.109 75.44 82.688 111.838 110.021 6.404 4.806 6.312 4.775 9.217 2.801zM423.489 767.768c-69.522-12.376-113.91-51.818-130.63-116.085l-2.151-8.293-2.965-36.514 0.93-196.78 8.585-16.477 13.433-12.175 4.295-1.361c2.363-0.741 6.003-1.683 8.074-2.072l3.779-0.717 15.316 0.407 0.358-5.353c0.194-2.947 0.529-10.59 0.741-16.999l0.389-11.647 6.039-12.595 2.843-3.651c3.992-5.134 8.876-9.223 15.681-13.135l5.851-3.36h22.984l-0.006-10.146 2.157-6.398c1.185-3.518 3.092-8.172 4.247-10.353l2.090-3.961 9.484-9.441 9.326-6.264 8.232-1.725c10.468-2.199 10.438-2.199 20.274 0.668l8.263 2.4 6.428 4.921c7.394 5.668 8.074 6.495 12.807 15.426l3.512 6.61 0.668 8.469c0.371 4.654 0.674 8.767 0.674 9.138v0.668l21.744-0.474 5.571 2.916c13.075 6.841 15.802 9.362 21.908 20.207l4.611 8.19 0.395 28.956c0.213 15.936 0.431 33.531 0.468 39.108l0.079 10.146 5.802-1.324 16.197 1.464 4.903 2.467c2.691 1.355 6.683 3.809 8.87 5.444l3.973 2.989 6.209 7.673 3.463 7.029 3.475 7.029-0.012 178.013-2.467 13.846-2.479 13.852-4.453 11.252c-5.79 14.618-9.52 21.781-17.728 34.084l-6.713 10.079-6.209 6.021c-11.811 11.464-22.024 19.94-32.461 26.927l-4.848 3.244-28.883 12.461-9.672 1.932c-5.322 1.063-13.075 2.388-17.23 2.928l-7.558 1.002-22.042 0.504-6.622-1.173zM471.030 731.419c43.094-12.704 71.885-42.14 85.197-87.080l2.515-8.5 0.832-174.203-2.145-5.948-3.542-1.361c-1.938-0.753-4.241-1.507-5.11-1.689l-1.574-0.322-6.671 5.972-1.264 104.517-1.154 4.411-7.631 6.707-9.405 2.455c-15.146 3.955-21.307 6.811-33.634 15.608l-4.982 3.56-10.45 16.021-1.653 8.664c-0.905 4.769-1.896 9.125-2.199 9.684-0.729 1.361-10.559 8.755-11.641 8.755-2.133 0-7.825-1.537-10.76-2.916l-3.226-1.507-5.997-6.41 0.705-15.292 1.659-5.668c2.218-7.558 6.282-16.009 11.057-22.972l3.907-5.705 14.32-14.946 6.452-3.821c7.467-4.417 20.377-10.656 26.38-12.746l4.144-1.452 0.401-14.83c0.225-8.159 0.444-51.271 0.492-95.823l0.091-80.993-1.434-3.475-1.434-3.463-7.436-3.202-3.481 1.324-3.475 1.331-3.688 7.309v163.2l-3.499 3.676-3.506 3.664-3.020 1.3c-1.659 0.711-4.277 1.634-5.82 2.054l-2.813 0.753-7.953-4.241-6.768-6.398v-212.060l-1.239-2.558c-0.674-1.403-2.084-3.481-3.111-4.605l-1.871-2.047h-7.673l-3.894 2.831-1.804 3.992-1.798 3.992v208.937l-1.926 3.396c-2.382 4.222-2.424 4.259-8.032 6.27l-4.605 1.646h-4.295l-6.871-3.032-5.942-5.468-1.701-4.052v-162.32l-1.598-2.868-1.604-2.868-5.772-3.378-4.702 1.549-5.839 4.988v174.969l-2.133 4.229c-2.619 5.182-3.244 5.766-9.338 8.658l-4.848 2.303-5.219-1.088c-2.868-0.601-5.875-1.495-6.677-1.993l-1.458-0.899-2.789-5.735-2.795-5.741v-106.388l-1.938-3.026-1.95-3.032-6.707-2.096-5.741 3.366-3.19 4.186 0.006 106.030v106.036l2.461 11.647 2.455 11.647 3.815 8.439c4.611 10.201 9.466 18.488 15.535 26.532l4.538 6.009 5.881 5.851c10.432 10.389 19.618 16.853 34.88 24.563l9.441 4.775 22.662 5.328 39.041-0.693 7.558-2.224z",
+            "M426.392 989.557c-14.347-7.689-33.662-21.378-63.622-45.066l-13.113-10.373-64.723-64.065-7.329-8.999c-13.012-15.986-23.922-30.029-41.37-53.3l-17.094-22.783-4.538-7.449c-36.485-59.825-52.977-89.633-72.356-130.75-49.939-105.961-82-208.637-105.758-338.722l-2.696-14.733 2.664-13.246 1.614-3.652c3.183-7.189 6.803-11.752 14.866-18.752l1.683-1.456 27.833-8.816c46.579-14.752 68.324-22.587 98.006-35.314l19.018-8.158 18.695-9.677c81.798-42.358 119.27-69.375 180.689-130.294l20.334-20.163 16.22-6.012 18.271 2.013 7.474 3.785 7.873 7.183c4.329 3.955 17.467 16.632 29.188 28.163l21.315 20.979 11.803 9.385c82.576 65.672 160.4 105.429 273.493 139.705l17.708 5.367 5.569 3.323c7.335 4.379 17.708 16.334 17.708 20.41 0 0.418 0.31 5.373 0.69 11.018l0.683 10.246-1.702 9.417c-22.454 124.004-57.262 234.989-107.853 343.893-42.51 91.512-107.094 184.101-177.747 254.836l-17.397 17.416-11.474 10.164c-24.194 21.41-45.13 37.073-67.862 50.762l-8.499 5.12-5.601 0.487c-3.076 0.266-8.101 0.658-11.17 0.873l-5.576 0.405-5.917-3.171zM447.625 953.629c32.561-19.644 83.943-65.267 121.808-108.144 118.061-133.668 203.144-322.964 239.628-533.139l3.291-18.954-0.785-2.595c-0.424-1.424-1.082-2.696-1.475-2.81-166.469-52.458-253.001-101.138-350-196.897l-18.113-17.872-2.487 0.013-11.797 12.24c-17.119 17.752-38.738 37.681-63.774 58.793-60.553 51.047-159.077 101.442-262.848 134.446-11.898 3.791-23.555 7.62-25.903 8.531l-4.259 1.639 0.285 12.531 1.361 8.056c25.182 149.318 86.222 313.028 161.571 433.374 49.895 79.678 114.511 149.388 186.676 201.365 6.67 4.81 13.455 9.727 15.081 10.93l2.949 2.183 1.88-0.335c1.063-0.177 4.158-1.683 6.911-3.354z"
+          ],
+          "attrs": [
+            {},
+            {}
+          ],
+          "width": 883,
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 16,
+          "tags": [
+            "ztg_red_guard"
+          ]
+        },
+        {
+          "id": 115,
+          "paths": [
+            "M423.011 987.318c-21.288-2.047-39.65-10.211-67.651-30.064-16.876-11.955-25.51-16.549-36.508-19.417l-3.603-0.941-18.994-0.727-12.604 2.616-5.651 2.306c-7.225 2.938-14.051 7.071-27.274 16.479-21.996 15.645-39.656 24.093-58.239 27.84l-6.814 1.377-17.154 0.739-8.185-1.093c-22.685-3.001-43.114-12.113-66.115-29.458-13.874-10.464-20.789-14.432-29.663-17.010l-5.436-1.567-20.454-2.123-7.041-2.073-6.599-6.761-2.415-7.658 0.626-8.701 3.388-6.673 2.345-2.060c1.283-1.131 3.293-2.578 4.462-3.216l2.117-1.163 22.268 0.013 4.589 0.885c19.076 3.652 30.125 8.625 49.453 22.242 18.109 12.764 24.72 17.029 31.212 20.138l6.22 2.982 12.028 3.027 11.194 0.904 13.577-1.491 5.297-1.662c11.061-3.475 20.113-8.808 39.384-23.228l11.82-8.84 7.831-3.968c8.767-4.448 15.441-6.9 23.797-8.739l5.651-1.245 17.685-1.51 20.308 0.72 6.22 1.081c3.426 0.594 9.323 2.11 13.103 3.355l6.877 2.275 7.231 3.798c8.356 4.385 16.143 9.402 30.428 19.601 16.339 11.671 26.105 16.366 39.125 18.83l5.746 1.081 15.062-0.746 6.182-1.731c12.749-3.564 17.73-6.249 37.052-19.961 27.065-19.203 41.951-25.831 64.851-28.851l5.897-0.771 20.959 0.701 6.226 1.352c19.215 4.183 32.722 10.906 57.923 28.832 14.772 10.502 22.786 14.893 33.121 18.16l4.911 1.548 12.78 1.548 14.986-1.561 5.771-2.028c3.173-1.106 9.152-3.766 13.299-5.902l7.534-3.892 8.843-6.312c28.854-20.612 46.065-28.358 68.858-31.019l6.801-0.79 19.329 0.866 5.411 0.941c2.977 0.518 8.034 1.7 11.226 2.629l5.815 1.681 8.59 3.924c12.016 5.485 17.167 8.575 32.318 19.411 7.281 5.207 15.536 10.78 18.336 12.385l5.101 2.907 11.978 3.842 11.365 1.314c12.743 1.479 14.816 1.959 18.248 4.221l2.408 1.592 4.153 6.477 1.378 7.469-0.765 3.728c-0.929 4.512-2.010 6.755-5.076 10.533l-2.326 2.869-5.986 2.698-16.377-0.063-5.24-0.802c-20.991-3.204-34.012-9.124-57.449-26.115-22.141-16.050-33.367-21.313-49.099-23.051l-6.548-0.72-12.585 1.498-5.941 1.934c-10.214 3.317-19.834 8.714-34.018 19.089-10.733 7.848-21.206 14.394-29.613 18.495l-7.446 3.633-14.089 4.613-14.898 2.553-21.806-0.032-4.589-0.663c-19.834-2.856-36.843-10.742-62.246-28.858-14.942-10.66-25.226-16.226-36.331-19.677l-4.911-1.529-23.583 0.076-5.834 1.795c-11.358 3.488-17.995 7.115-34.454 18.817-35.459 25.25-58.435 32.99-89.084 30.046v0zM419.731 890.13c-11.738-1.611-23.165-5.156-35.706-11.108l-8.508-4.038-6.555-4.278c-3.603-2.357-11.061-7.519-16.573-11.468l-10.025-7.191-15.328-8-12.439-4.227-19.86-0.588-4.481 0.765c-11.662 2.009-24.967 8.808-43.79 22.381-9.083 6.559-18.229 12.113-26.869 16.334l-7.876 3.842-14.108 4.625-7.048 1.27c-3.881 0.695-10.284 1.472-14.222 1.719l-7.161 0.449-7.212-0.771c-24.67-2.648-42.583-10.641-72.707-32.447l-10.473-7.589-11.883-5.864-12.648-3.204-17.395-1.453-6.447-2.047-2.825-2.61-2.825-2.597-1.757-3.69-1.763-3.696 0.063-9.819 1.1-2.527c0.613-1.384 2.421-3.93 4.039-5.655l2.933-3.14 3.413-1.523 3.42-1.516 17.685 0.139 15.587 2.774 13.653 4.568 6.997 3.589c7.604 3.905 13.836 7.911 29.916 19.253 5.764 4.063 13.286 8.973 16.706 10.906l6.226 3.52 14.411 4.884 21.37 0.581 4.052-0.784c6.049-1.169 12.351-3.589 20.795-8l7.572-3.949 8.147-5.775c13.185-9.352 23.304-15.689 32.387-20.308l8.52-4.322 15.062-4.897 7.212-1.22c3.963-0.676 10.296-1.422 14.083-1.662l6.877-0.442 6.877 0.746c23.899 2.578 40.68 9.775 68.776 29.521 11.927 8.385 18.065 12.132 25.416 15.531l4.892 2.249 12.439 3.159h18.058l9.677-1.851 5.708-2.306c9.045-3.646 15.758-7.62 29.625-17.516 23.38-16.707 35.933-22.969 54.333-27.095l7.749-1.738 16.326-0.91 13.267 0.91 6.536 1.422c18.893 4.101 32.16 10.571 55.066 26.861 22.16 15.746 32.4 20.675 46.065 22.128l4.481 0.48 16.889-0.853 12.445-4.234 14.847-7.734 10.916-7.728c28.747-20.359 46.148-27.815 70.773-30.349l7.452-0.765 8.596 0.771c24.935 2.243 44.491 10.748 73.674 32.049 18.343 13.377 25.188 16.195 43.335 17.787 12.705 1.112 14.070 1.485 18.823 5.099l2.13 1.618 2.117 4.316 2.13 4.309-0.063 9.882-3.021 6.849-5.644 5.2-3.489 0.973c-1.921 0.531-5.271 1.163-7.446 1.39l-3.95 0.417-6.852-0.727c-24.765-2.603-37.261-7.943-65.148-27.783-19.259-13.705-26.977-17.756-39.637-20.814l-5.562-1.346-15.72-0.032-4.121 0.771c-6.485 1.22-13.646 3.829-21.099 7.671l-6.877 3.551-9.165 6.59c-32.729 23.512-50.161 30.981-76.974 32.977l-5.562 0.411-7.534-0.714c-24.404-2.319-41.179-9.573-70.419-30.431l-12.439-8.878-15.726-7.816-11.668-3.317-12.319-1.377-12.641 1.516-11.194 3.21-5.897 2.862c-7.155 3.482-11.371 6.18-24.6 15.778-32.198 23.348-59.585 32.061-88.389 28.112v-0zM419.396 791.57c-21.8-2.319-37.254-9.067-65.072-28.409l-14.55-10.123-6.397-3.279c-7.079-3.633-13.956-6.123-21.061-7.62l-4.684-0.979h-13.722l-5.050 1.036c-7.541 1.548-12.079 3.185-20.77 7.488l-7.863 3.892-7.528 5.219c-4.146 2.869-11.51 7.917-16.377 11.216l-8.843 5.996-8.52 4.17c-9.696 4.752-17.275 7.412-27.179 9.535l-6.877 1.479-29.473 0.076-5.569-1.213c-3.066-0.663-9.108-2.382-13.432-3.81l-7.863-2.61-18.33-8.928-6.877-4.663c-3.786-2.565-10.707-7.45-15.391-10.849-9.487-6.881-16.048-10.818-22.116-13.282l-4.077-1.637-6.226-1.169c-3.426-0.632-9.848-1.479-14.278-1.87l-8.046-0.714-3.148-1.592-3.141-1.599-2.136-2.426c-1.176-1.34-2.737-3.785-3.483-5.447l-1.346-3.008-0.095-9.819 3.097-6.913 3.116-2.806 3.116-2.799 2.661-0.802c1.46-0.436 4.981-0.973 7.819-1.188l5.17-0.404 7.8 0.815c18.614 1.934 33.424 7.178 49.226 17.44l5.411 3.513v-1.371c0-4.91 11.434-168.451 12.515-179.003l0.733-7.203 3.394-6.35 3.306-2.976c1.808-1.637 4.248-3.381 5.411-3.867l2.105-0.891h8.482c4.658 0 15.947 0.449 25.074 0.998 32.432 1.946 133.361 8.827 143.98 9.807l10.783 1.005 5.505 2.66 2.731 2.963 2.731 2.97 1.681 3.659 1.681 3.665-0.417 10.856c-0.386 10.116-3.521 60.154-7.319 117.13-0.898 13.434-1.631 24.94-1.631 25.572v1.15l15.397 4.891 7.863 3.937c4.323 2.167 10.461 5.693 13.634 7.835s5.859 3.899 5.967 3.899c0.265 0 0.436-2.344 5.625-77.272 2.528-36.554 9.456-135.859 15.378-220.669 5.916-84.823 11.7-167.724 12.825-184.235l2.048-30.027-1.112-1.005-20.302-1.39c-11.169-0.765-78.231-5.358-149.023-10.198-70.792-4.846-130.352-8.966-132.362-9.15l-3.653-0.341-0.784 10.287c-0.929 12.157-6.005 82.801-20.732 288.589-11.2 156.572-12.427 172.596-13.463 176.526l-0.613 2.338-7.155 7.905-6.94 3.071-7.863 0.044-2.996-1.472c-1.656-0.802-4.216-2.509-5.708-3.785l-2.705-2.313-2.117-4.309-2.117-4.303 1.795-28.902c5.006-80.899 31.167-456.206 32.533-466.581l0.632-4.84 1.612-2.736c2.080-3.557 6.308-7.342 10.113-9.067l3.034-1.377 7.206 0.101c3.963 0.057 15.391 0.752 25.39 1.548l18.191 1.447 0.417-0.417c0.234-0.234 0.79-8.745 1.252-18.925 0.455-10.179 1.005-20.984 1.214-24.005l0.386-5.491 1.245-2.806c0.683-1.542 2.452-4.113 3.931-5.725l2.699-2.926 6.694-2.875 9.576 0.070c5.259 0.038 25.34 1.068 44.618 2.287 19.272 1.22 35.093 2.174 35.156 2.11s0.727-8.505 1.479-18.773c0.758-10.262 1.681-20.567 2.061-22.893l0.683-4.24 3.527-6.489 3.173-2.496 3.167-2.509 3.634-1.062 3.634-1.049 6.675 0.878 3.287 1.637c1.808 0.904 4.279 2.578 5.493 3.722l2.212 2.085 2.522 5.567 0.727 10.799-1.049 18.192c-0.582 10.009-1.049 18.602-1.049 19.102v0.91l1.801 0.366c0.992 0.202 15.208 1.264 31.604 2.351 16.396 1.093 34.954 2.452 41.249 3.027l11.453 1.043 6.295 3.185 5.328 5.327 1.41 3.039 1.41 3.046-0.038 8.84c-0.013 4.865-0.442 15.841-0.929 24.397l-0.891 15.55 0.411 0.411c0.221 0.234 9.045 1.099 19.594 1.934 10.543 0.834 23.007 1.864 27.697 2.281l8.508 0.765 3.457 1.182 3.451 1.194 5.158 4.082 4.639 9.276v4.006c0 5.864-0.822 17.686-14.102 204.051-6.662 93.46-14.898 209.264-18.305 257.343-3.394 48.086-6.352 89.075-6.561 91.097l-0.373 3.684 4.115 1.030c2.269 0.575 6.909 1.377 10.315 1.788l6.182 0.758 4.943-0.442c8.312-0.727 12.983-1.611 19.582-3.703l6.327-2.009 7.528-3.892c4.146-2.142 8.185-4.429 8.975-5.087l1.441-1.188 3.306-43.138c5.221-68.286 17.723-237.622 17.723-240.093v-1.15l-13.172 6.875-10.739-0.006-6.915-3.102-5.866-6.521-2.124-7.304 0.386-4.17 0.386-4.164 2.143-4.012 2.136-4.006 6.239-4.069c3.426-2.237 15.081-9.213 25.89-15.5 43.651-25.408 74.237-43.012 78.175-44.989l4.165-2.098 8.773-0.739 7.357 2.136 6.491 5.137 2.787 5.756v6.18l-0.006 6.173-1.53 3.279-1.523 3.279-2.307 2.028c-2.693 2.357-13.223 8.859-39.549 24.397l-19.044 11.235-1.106 13.908c-0.6 7.652-4.778 66.359-9.285 130.469-4.5 64.11-8.476 120.214-8.836 124.675-0.354 4.467-0.651 9.048-0.651 10.186v2.066l6.39-2.117c8.634-2.869 17.799-4.688 27.881-5.523l8.4-0.695 8.565 0.727c9.197 0.784 15.069 1.832 22.628 4.050 2.617 0.765 4.88 1.276 5.031 1.131 0.348-0.348 3.034-37.919 5.941-83.085 1.264-19.632 2.617-38.197 3.009-41.255l0.721-5.567 2.617-6.154 7.048-6.673 5.594-2.534 4.962-0.013c6.036-0.013 17.61 0.752 93.294 6.205 62.335 4.493 67.834 4.998 72.631 6.628l3.015 1.030 6.624 5.946 2.844 5.39 0.386 17.023-3.856 50.417c-2.117 27.733-3.767 50.518-3.672 50.638 0.095 0.114 3.483-0.272 7.522-0.866l7.345-1.081 9.589 0.032c19.070 0.070 38.070 4.455 50.3 11.626l2.832 1.662 0.31-0.885c0.322-0.935 2.073-25.313 12.085-168.843l6.378-91.35-1.353-1.554c-2.073-2.382-17.786-14.887-89.457-71.174-76.165-59.813-77.068-60.521-78.061-60.521s-9.14 4.531-47.38 26.4c-17.654 10.091-33.569 18.925-35.371 19.639l-3.274 1.283-9.178 0.006-5.505-1.523-5.493-4.221-3.913-6.976-0.632-8.84 1.081-3.709 1.075-3.715 2.067-2.344c2.655-3.033 6.346-5.497 23.115-15.5 19.695-11.734 66.551-38.841 72.606-42.013l5.132-2.685 10.214-0.468 5.727 2.553 26.193 20.536c35.080 27.486 58.087 45.267 58.264 45.021 0.076-0.107 0.493-6.97 0.929-15.247 1.549-29.452 3.552-38.096 11.2-48.439 7.774-10.502 17.755-17.307 29.827-20.346l4.589-1.163h13.754l9.171 2.275 11.788 5.699 8.065 6.578 8.729 10.849 2.206 4.581c1.207 2.521 2.724 6.502 3.356 8.84l1.163 4.259-0.133 9.819c-0.171 13.351-4.090 79.237-6.036 101.498-0.348 3.962-0.626 7.38-0.632 7.595 0 0.215 8.223 6.793 18.279 14.609 10.063 7.81 21.193 16.618 24.733 19.575l6.434 5.365 1.624 3.273 1.631 3.279-0.095 9.819-2.971 6.831-3.217 3.008c-1.77 1.656-4.317 3.482-5.663 4.069l-2.446 1.049-9.165 0.013-4.14-2.073c-2.275-1.144-5.885-3.311-8.034-4.809-2.143-1.498-3.982-2.616-4.096-2.464-0.107 0.145-4.254 57.425-9.222 127.297-4.962 69.872-9.165 128.074-9.348 129.344l-0.335 2.313 14.209 6.799 4.911 1.308c2.699 0.72 9.747 1.927 15.669 2.667l10.764 1.371 6.333 2.717 3.868 4.398 1.511 5.586-0.537 11.127-1.877 3.444-1.871 3.444-2.029 1.529c-1.106 0.853-3.047 2.098-4.311 2.787l-2.301 1.245-21.617-0.126-5.897-1.062c-18.893-3.393-32.097-9.794-55.673-26.987-12.445-9.080-17.23-12.050-25.182-15.645l-5.537-2.496-12.509-3.191-12.547-0.784-5.518 0.79c-15.46 2.186-23.861 6.287-47.115 22.994-19.999 14.369-33.62 21.237-49.946 25.205l-6.706 1.624-17.9 1.542-8.533-0.758c-10.815-0.96-16.794-2.18-26.572-5.428l-7.806-2.591-15.821-7.949-8.192-5.529c-4.5-3.033-12.016-8.309-16.706-11.709l-8.508-6.186-7.212-3.564c-8.628-4.259-13.469-5.933-21.029-7.254l-5.67-0.992h-11.087l-13.040 2.667-5.038 1.997c-8.609 3.425-14.746 7.109-29.29 17.61-11.523 8.315-18.652 12.795-27.761 17.433l-8.109 4.12-6.965 2.275c-15.119 4.935-30.327 6.597-45.598 4.973l-0.051-0.013zM698.986 752.287l6.434-0.626 4.696-1.384c11.687-3.456 25.397-11.658 42.526-25.439l4.418-3.557 0.006-1.352c0-0.739 1.454-25.66 3.224-55.371s3.135-54.101 3.034-54.208c-0.487-0.487-116.851-8.347-117.262-7.917-0.55 0.562-8.95 126.299-8.489 127.038 0.202 0.322 4.323 3.21 9.159 6.42l8.805 5.826 6.706 3.254c3.691 1.795 9.216 4.044 12.281 5.011l5.569 1.757 5.24 0.518c2.889 0.284 5.689 0.55 6.22 0.588 0.55 0.038 3.894-0.209 7.433-0.556v0zM667.522 721.489c-3.565-0.701-5-1.51-8.533-4.764l-2.914-2.685-3.476-6.609 0.126-26.185 0.803-6.843 0.815-6.837 1.346-2.629 1.34-2.622 7.136-6.862 5.796-2.212 8.369 0.67 3.514 1.618c1.928 0.885 4.513 2.458 5.733 3.488l2.219 1.877 1.542 3.305 1.53 3.305 0.006 7.892c0.006 8.556-0.935 22.836-1.978 29.976l-0.657 4.48-1.27 2.483c-1.58 3.096-4.608 5.699-8.855 7.595l-3.274 1.46-6.555 0.651-2.762-0.55zM187.451 749.393c13.305-3.962 20.89-7.949 35.857-18.88 13.64-9.946 22.116-15.291 31.016-19.538l7.863-3.753 6.555-1.978c3.603-1.093 8.906-2.477 11.788-3.084 2.889-0.6 5.467-1.308 5.746-1.561l0.512-0.461 2.56-34.98c4.342-59.428 6.738-94.301 6.485-94.49-0.512-0.385-136.148-9.807-136.47-9.484s-11.883 171.623-12.269 181.91l-0.183 4.872 3.931 1.207c2.168 0.663 5.411 1.479 7.206 1.807l3.28 0.588 20.302-0.436 5.821-1.738zM172.098 696.41c-5.802-1.599-10.714-5.744-13.046-11.014l-1.346-3.046-0.771-9.623 1.049-12.113c0.582-6.666 1.384-14.47 1.789-17.358l0.733-5.238 1.283-2.768 1.289-2.761 2.636-2.382c1.454-1.314 4.304-3.166 6.327-4.107l3.672-1.725 9.178 0.076 2.686 1.39c1.479 0.765 4.077 2.749 5.777 4.398l3.085 3.001 2.693 6.085-0.449 8.227c-0.253 4.531-1.030 14.362-1.726 21.856l-1.277 13.617-2.010 4.84-6.043 6.148-3.009 1.276c-1.656 0.701-4.481 1.447-6.283 1.656l-3.274 0.373-2.964-0.809zM885.378 371.508c1.41-21.092 2.351-37.369 3.078-53.039l0.423-9.175-1.093-2.603c-1.27-3.033-3.255-5.32-5.746-6.616l-1.763-0.923h-4.393l-6.94 3.456-2.358 3.873-0.721 5.011c-1.201 8.322-5.12 62.827-4.538 63.213 0.114 0.082 1.839 1.498 3.824 3.147 4.949 4.113 18.488 14.35 18.709 14.129 0.082-0.088 0.771-9.301 1.517-20.473zM333.984 163.445c0.038-2.249 0.253-7.816 0.487-12.366l0.423-8.278-4.583-0.417c-6.144-0.55-94.229-6.395-130.523-8.657l-28.987-1.807-1.245 1.251-0.904 23.101 4.191 0.404c6.605 0.632 35.883 2.692 93.275 6.571 29.183 1.971 54.535 3.69 56.337 3.81 1.801 0.133 5.113 0.284 7.364 0.348l4.090 0.126 0.076-4.088zM700.402 523.739c-14.127-3.279-25.94-9.876-36.407-20.334l-5.057-5.068-3.426-5.074c-4.146-6.142-8.034-14.369-9.803-20.763l-1.308-4.726-1.422-14.539 0.695-6.812c0.379-3.741 1.308-9.162 2.067-12.050l1.378-5.238 2.838-6.022c3.963-8.385 6.946-12.675 13.646-19.632l5.796-6.009 4.696-3.242c8.596-5.914 17.913-9.838 27.628-11.633l5.897-1.093 21.617 0.676 11.719 3.355 6.144 2.97c3.382 1.63 8.381 4.512 11.099 6.395l4.962 3.418 10.417 10.508 3.533 5.314c4.045 6.066 6.529 11.279 9.178 19.241l1.839 5.567 0.013 27.499-1.801 5.895c-2.313 7.57-6.106 15.531-10.284 21.572l-3.312 4.777-5.050 5.061c-8.691 8.701-17.843 14.325-29.29 17.983l-5.897 1.889-5.897 0.72c-3.243 0.392-9.285 0.689-13.432 0.657l-7.528-0.057-5.246-1.207zM723.359 484.114c7.907-2.041 14.203-6.59 18.867-13.611l2.288-3.45 1.289-3.899c0.702-2.142 1.479-5.535 1.719-7.538l0.436-3.652-1.928-9.225-4.21-8.341-7.604-7.437-9.582-4.688-10.303-1.498-9.114 1.63-8.887 4.436-6.839 6.837-4.399 7.898-1.030 4.019-1.030 4.025v7.728l0.973 3.741c0.531 2.066 1.751 5.276 2.686 7.121l1.713 3.374 3.287 3.482c3.875 4.095 8.602 7.26 13.229 8.865l3.325 1.15 11.188 0.044 3.925-1.011zM310.332 474.017c-8.83-0.663-20.46-1.548-25.871-1.959-12.793-0.967-19.556-1.864-23.526-3.128l-3.224-1.011-5.783-5.327-1.391-2.654-1.391-2.648-0.531-15.715 0.752-13.427c1.27-22.722 3.375-50.594 4.045-53.614 1.637-7.355 7.749-12.909 15.846-14.407l3.755-0.689 22.925 1.283c41.508 2.319 51.28 3.311 55.907 5.636 4.399 2.212 8.83 7.69 10.246 12.663l0.461 1.656-0.55 14.735c-1.239 33.18-3.35 60.761-5.158 67.503l-0.784 2.888-6.081 6.028-7.863 2.97-15.726 0.417-16.061-1.201zM322.695 423.081c0.423-6.034 0.935-13.358 1.15-16.264l0.379-5.308-9.734-0.752c-5.347-0.411-12.566-0.935-16.036-1.169l-6.314-0.417-0.423 3.854c-0.815 7.481-1.669 19.613-1.681 23.916l-0.006 4.354 4.753 0.487c2.617 0.265 9.753 0.84 15.884 1.289 6.125 0.442 11.162 0.84 11.2 0.891 0.038 0.044 0.411-4.846 0.828-10.881v0zM187.192 464.399c-1.624-0.107-8.109-0.518-14.411-0.904-45.010-2.787-49.137-3.431-54.845-8.701l-2.908-2.685-1.751-3.292-1.738-3.305 0.152-15.064c0.177-18.406 1.947-58.050 2.844-63.75l0.651-4.17 1.233-2.382c1.599-3.096 6.182-7.437 9.664-9.187l2.762-1.377 7.067 0.013c11.39 0.025 52.949 2.445 68.649 4l7.206 0.714 1.966 0.992c1.081 0.55 3.205 2.003 4.722 3.223l2.75 2.231 2.105 4.259 2.098 4.271-0.405 13.56c-0.461 15.355-2.768 53.836-3.761 62.562l-0.651 5.788-1.005 2.407c-1.245 2.976-4.374 6.293-7.812 8.284l-2.623 1.51-8.621 1.453-5.189-0.114c-2.863-0.082-6.529-0.227-8.147-0.335v0zM186.092 409.066c0.619-8.701 0.999-15.93 0.86-16.081-0.145-0.139-7.402-0.771-16.13-1.403l-15.878-1.137-0.202 0.682c-0.107 0.379-0.518 6.135-0.923 12.795-0.392 6.666-0.891 13.617-1.1 15.462l-0.379 3.349 10.385 0.758c5.708 0.417 11.409 0.853 12.673 0.967 1.258 0.114 3.931 0.265 5.935 0.316l3.641 0.107 1.119-15.816zM320.818 335.763c-28.159-2.047-48.037-3.823-50.332-4.486l-2.187-0.632-2.8-2.3-2.8-2.287-1.997-3.14c-1.093-1.725-2.37-4.41-2.825-5.971l-0.834-2.837 0.803-15.822c1.119-22.274 3.268-53.684 4.001-58.657l0.626-4.189 1.694-3.475 1.7-3.475 2.528-2.003c1.403-1.106 3.963-2.66 5.701-3.456l3.167-1.447 10.473 0.171c29.214 0.48 69.869 4.063 74.844 6.597l2.516 1.283 5.411 5.876 2.061 6.906-0.006 6.274c-0.006 10.312-2.655 55.042-3.976 67.162-1.131 10.3-2.509 13.288-7.97 17.2l-3.103 2.231-3.451 0.923-3.445 0.91-6.542-0.070c-3.603-0.038-14.070-0.619-23.254-1.283v0zM331.885 282.622c0.423-8.012 0.86-15.386 0.961-16.372l0.183-1.801h-1.688c-0.929-0.006-8.154-0.442-16.061-0.967-7.914-0.518-14.43-0.891-14.474-0.815-0.101 0.139-1.169 14.192-2.016 26.406l-0.417 5.952 14.658 0.815c8.059 0.442 14.955 0.904 15.321 1.030 0.354 0.126 1.131 0.24 1.7 0.272l1.062 0.057 0.771-14.577zM182.603 326.936c-43.278-3.115-47.171-3.633-52.146-7.007l-3.116-2.11-2.149-3.153c-3.95-5.788-4.045-7.115-2.516-34.829 1.163-21.13 2.016-33.812 3.028-44.857l0.752-8.183 1.163-2.287c0.645-1.264 2.238-3.532 3.546-5.049l2.377-2.755 8.571-4.215 18.779 0.802c21.889 0.935 45.844 2.426 53.916 3.362l5.67 0.657 2.459 1.030c3.565 1.485 7.142 4.562 9.816 8.454l2.339 3.393 0.758 7.317-0.771 14.944c-1.075 20.883-3.236 51.921-4.045 58.158l-0.689 5.245-1.58 2.723-1.586 2.717-2.465 1.94c-1.353 1.068-3.495 2.483-4.759 3.153l-2.288 1.213-22.274 0.253-12.787-0.916zM195.276 285.895c0.632-3.722 1.966-29.3 1.542-29.717-0.493-0.505-31.111-2.553-31.54-2.117-0.171 0.171-0.809 7.001-1.416 15.171l-1.112 14.874 0.423 0.417c0.392 0.392 25.251 3.267 29.676 3.425l2.061 0.076 0.367-2.129z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "width": 993,
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 16,
+          "tags": [
+            "ztg_flood"
+          ]
+        },
+        {
+          "id": 116,
+          "paths": [
+            "M651.826 966.893l-4.385-4.682-1.048-151.787h-242.478v-34.418h268.142l8.875 8.893v154.058h63.384v-291.484h-32.583v-34.4h50.683v358.484h-106.17l-4.42-4.665zM452.798 891.052v-17.279h34.54l-1.031 33.509-33.492 1.031-0.017-17.261zM548.765 908.191v-34.4h34.383v34.4h-34.383zM338.731 810.424v-34.418h34.4v34.418h-34.4zM45.431 728.94v-34.4h67.001v34.4h-67.001zM143.197 728.94v-34.4h34.4v34.4h-34.4zM208.381 728.993v-34.453h438.169v-293.318h34.383v318.022l-9.347 8.788-463.204 0.961zM338.731 631.174v-34.4h34.4v34.4h-34.4zM436.498 631.174v-34.4h34.4v34.4h-34.4zM565.066 614.873v-65.184h-258.918v-34.4h280.826l5.136 2.656c7.338 3.791 7.355 4.071 7.355 52.71v44.219h-34.4zM240.964 549.707v-34.4h34.4v34.4h-34.4zM110.597 468.223v-34.4h67.001v34.4h-67.001zM208.381 451.032v-17.209h356.161l2.114-66.075 2.848-10.867c1.555-5.992 5.888-16.982 9.574-24.442l6.761-13.575 27.289-27.464 13.54-6.691c7.443-3.686 18.030-8.002 23.498-9.574l9.958-2.9 102.274-1.712v34.767l-82.375 0.017-23.551 3.791-9.557 4.368c-19.463 8.875-34.627 25.769-42.21 47.049l-3.879 10.867-0.769 41.65c-0.419 22.904-1.153 43.45-1.625 45.669l-0.856 4.036-10.622 5.503h-378.593v-17.209zM387.614 354.156v-34.4h34.4v34.4h-34.4zM485.381 354.156v-34.4h32.583v34.4h-32.583zM722.583 253.489l-9.958-2.656-9.714-5.818-9.679-5.818-8.229-9.067-8.229-9.050-5.084-10.867-5.119-10.867-3.651-25.333 0.017-23.551c0.017-12.963 0.751-29.176 1.625-36.025l1.625-12.492 12.719-25.7 7.809-7.897c9.382-9.452 20.266-16.073 33.719-20.511l9.958-3.285h32.007v32.076l-27.883 2.551-17.349 7.443-6.517 7.233c-3.599 3.983-7.862 10.203-9.522 13.819l-2.97 6.604-0.017 35.309v35.309l10.867 21.699 7.74 5.818c9.609 7.233 17.768 9.557 33.439 9.574h12.212v34.4l-29.875-0.227-9.941-2.673z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "width": 907,
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 16,
+          "tags": [
+            "ztg_unbound_dimensions"
           ]
         }
       ],
@@ -48277,9 +48398,9 @@
     "showQuickUse2": true,
     "showSVGs": true,
     "fontPref": {
-      "prefix": "arkhamslim",
+      "prefix": "standalone",
       "metadata": {
-        "fontFamily": "arkhamslim",
+        "fontFamily": "standalone",
         "majorVersion": 1,
         "minorVersion": 0
       },

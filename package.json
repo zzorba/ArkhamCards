@@ -7,7 +7,7 @@
     "android:release": "node scripts/increment-version-code.js && export $(grep -v '^#' .env | xargs) && npx eas-cli build --profile production --platform android --local",
     "ios:release": "export $(grep -v '^#' .env | xargs) && npx eas-cli build --profile production --platform ios --local",
     "check:type": "yarn build",
-    "prebuild": "expo prebuild",
+    "prebuild": "node scripts/copy-rnvi-fonts.js && expo prebuild",
     "clean": "react-native-clean-project",
     "ios": "expo run:ios",
     "pods": "QUICK_SQLITE_USE_PHONE_VERSION=1 npx pod-install",

@@ -1196,7 +1196,7 @@
           },
           "options": [
             {
-              "prompt": "Attacca o tenta di eludere un nemico con 1 opiù destini su di esso",
+              "prompt": "Attacca o tenta di eludere un nemico con 1 o più destini su di esso",
               "modified_value": {
                 "modifier": "auto_fail"
               }

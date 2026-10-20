@@ -7,43 +7,43 @@
         "entries": [
           {
             "id": "abigail_harbinger",
-            "text": "Abigail Foreman è l'araldo di Elokoss."
+            "text": "Abigail Foreman è il messaggero di Elokoss."
           },
           {
             "id": "cornelia_harbinger",
-            "text": "Cornelia Akely è l'araldo di Elokoss."
+            "text": "Cornelia Akely è il messaggero di Elokoss."
           },
           {
             "id": "david_harbinger",
-            "text": "David Renfield è l'araldo di Elokoss."
+            "text": "David Renfield è il messaggero di Elokoss."
           },
           {
             "id": "defeated_elokoss_and_the_brethren_of_ash",
-            "text": "gli investigatori hanno sconfitto Elokoss e la Confraternita della Cenere."
+            "text": "gli investigatori hanno sconfitto Elokoss e la Confraternita delle Ceneri."
           },
           {
             "id": "defeated_their_masked_pursuer",
-            "text": "Gli investigatori hanno sconfitto il loro inseguitore mascherato."
+            "text": "avete sconfitto l'inseguitore mascherato."
           },
           {
             "id": "discovered_the_cults_whereabouts",
-            "text": "gli investigatori hanno scoperto il nascondiglio del culto."
+            "text": "gli investigatori hanno scoperto l'ubicazione del culto."
           },
           {
             "id": "earl_harbinger",
-            "text": "Sgt. Earl Monroe è l'araldo di Elokoss."
+            "text": "Serg. Earl Monroe è il messaggero di Elokoss."
           },
           {
             "id": "elokoss_was_reborn",
-            "text": "Elokoss è rinata"
+            "text": "Elokoss è rinata."
           },
           {
             "id": "failed_in_their_search",
-            "text": "gli investigatori hanno fallito nella loro ricerca."
+            "text": "le ricerche degli investigatori non sono andate a buon fine."
           },
           {
             "id": "flooded_the_ritual",
-            "text": "gli investigatori hanno allagato il rituale di evocazione della Confraternita della Cenere."
+            "text": "gli investigatori hanno inondato il rituale di evocazione della Confraternita delle Ceneri."
           },
           {
             "id": "killed_the_servant_of_flame",
@@ -51,19 +51,19 @@
           },
           {
             "id": "margaret_harbinger",
-            "text": "Margaret Liu è l'araldo di Elokoss."
+            "text": "Margaret Liu è il messaggero di Elokoss."
           },
           {
             "id": "miskatonic_university_burned",
-            "text": "La Miskatonic University è bruciata."
+            "text": "L'Università Miskatonic è bruciata."
           },
           {
             "id": "naomi_harbinger",
-            "text": "Naomi O'Bannion è l'araldo di Elokoss."
+            "text": "Naomi O'Bannion è il messaggero di Elokoss."
           },
           {
             "id": "saved_miskatonic_university",
-            "text": "Gli investigatori hanno salvato la Miskatonic University."
+            "text": "avete salvato l'Università Miskatonic."
           },
           {
             "id": "scoured_arkham_for_answers",
@@ -71,7 +71,7 @@
           },
           {
             "id": "stirred_up_trouble",
-            "text": "gli investigatori hanno seminato il caos."
+            "text": "gli investigatori hanno catenato il finimondo."
           },
           {
             "id": "stopped_elokoss_glorious_rebirth",
@@ -280,7 +280,7 @@
           },
           {
             "id": "bone_to_pick",
-            "text": "gli O’Bannion hanno un conto da regolare con voi."
+            "text": "gli O'Bannion hanno un conto da regolare con voi."
           },
           {
             "id": "brood_escaped",
@@ -308,7 +308,7 @@
           },
           {
             "id": "experiment_defeated",
-            "text": "l’Esperimento è stato sconfitto."
+            "text": "l'Esperimento è stato sconfitto."
           },
           {
             "id": "failed_to_recover_necronomicon",
@@ -408,7 +408,7 @@
           },
           {
             "id": "yog_sothoth_fled",
-            "text": "Yog-Sothoth è fuggito in un'altra dimensionw."
+            "text": "Yog-Sothoth è fuggito in un'altra dimensione."
           },
           {
             "id": "zebulon_whateley_survived",
@@ -570,7 +570,7 @@
           },
           {
             "id": "nameless_madness_is_contained_safely_within_its_host_for_now",
-            "text": "la follia senza nome è contenuta in sicurezza all’interno di un corpo ospite… per ora."
+            "text": "la follia senza nome è contenuta in sicurezza all'interno di un corpo ospite… per ora."
           },
           {
             "id": "photographed_the_astronomical_charts",
@@ -2851,7 +2851,7 @@
           },
           {
             "id": "bone_to_pick",
-            "text": "gli O’Bannion hanno un conto da regolare con voi."
+            "text": "gli O'Bannion hanno un conto da regolare con voi."
           },
           {
             "id": "brood_escaped",
@@ -2879,7 +2879,7 @@
           },
           {
             "id": "experiment_defeated",
-            "text": "l’Esperimento è stato sconfitto."
+            "text": "l'Esperimento è stato sconfitto."
           },
           {
             "id": "failed_to_recover_necronomicon",
@@ -2979,7 +2979,7 @@
           },
           {
             "id": "yog_sothoth_fled",
-            "text": "Yog-Sothoth è fuggito in un'altra dimensionw."
+            "text": "Yog-Sothoth è fuggito in un'altra dimensione."
           },
           {
             "id": "zebulon_whateley_survived",
@@ -4692,6 +4692,10 @@
             "text": "la cellula ha messo lo zampino negli affari di Abarran."
           },
           {
+            "id": "cell_slowed_gear",
+            "text": "the cell slowed the Turning Gear"
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua è fuggito a leccarsi le ferite."
           },
@@ -4710,6 +4714,10 @@
           {
             "id": "constellation_was_saved",
             "text": "la Costellazione è salva."
+          },
+          {
+            "id": "coterie_turning_gear",
+            "text": "the Coterie took posession of the Turning Gear"
           },
           {
             "id": "dario_was_turned_into_solid_gold",
@@ -4812,6 +4820,10 @@
             "text": "gli investigatori hanno interrotto la cerimonia del sangue."
           },
           {
+            "id": "investigators_slowed_gear",
+            "text": "the investigators slowed the Turning Gear"
+          },
+          {
             "id": "madame_labranche_has_lost_her_fortune",
             "text": "Madame Labranche ha perso la sua fortuna."
           },
@@ -4846,6 +4858,10 @@
           {
             "id": "olive_paid_the_price_for_her_curiosity",
             "text": "Olive ha pagato a caro prezzo la sua curiosità."
+          },
+          {
+            "id": "other_turning_gear",
+            "text": "another cell posesses the Turning Gear"
           },
           {
             "id": "purged_the_police_station",
@@ -5110,6 +5126,10 @@
           },
           {
             "id": "fof_stole_keys",
+            "text": "dummy"
+          },
+          {
+            "id": "gear_emp_mixed_success",
             "text": "dummy"
           },
           {
