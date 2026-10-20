@@ -63,8 +63,8 @@ function defaultCardPoolSet(
   if (fixed) {
     return fixed;
   }
-  const defaultCore = packInCollection.core_2026 ? 'core_2026' : packInCollection.rcore ? 'rcore' : 'core';
-  const investigatorCycle = defaultCore === 'core_2026' ? POOL_INVESTIGATOR_CH2_CYCLE : POOL_INVESTIGATOR_CYCLE;
+  const defaultCore = packInCollection.core_2026 ? 'core_ch2' : packInCollection.rcore ? 'rcore' : 'core';
+  const investigatorCycle = defaultCore === 'core_ch2' ? POOL_INVESTIGATOR_CH2_CYCLE : POOL_INVESTIGATOR_CYCLE;
   switch (mode) {
     case 'legacy':
       return [];
@@ -141,8 +141,8 @@ function buildFixedPoolItems(
   if (poolSet.has(POOL_CORE_CYCLE) || poolSet.has('core') || poolSet.has('rcore')) {
     coreRows.push(fixedRow('core', 'core', packsByName.core ?? t`Core Set`));
   }
-  if (poolSet.has(POOL_CORE_CH2_CYCLE) || poolSet.has('core_2026')) {
-    coreRows.push(fixedRow('core_2026', 'core_2026', packsByName.core_2026 ?? t`Revised Core Set`));
+  if (poolSet.has(POOL_CORE_CH2_CYCLE) || poolSet.has('core_ch2') || poolSet.has('core_2026')) {
+    coreRows.push(fixedRow('core_2026', 'core_ch2', packsByName.core_2026 ?? t`Revised Core Set`));
   }
   if (coreRows.length) {
     items.push({ type: 'header', title: t`Core set` });
@@ -444,11 +444,12 @@ export default function DeckCardPoolButton({ first, last, selectedPacks, setSele
         let toRemove: Set<string> = new Set();
         switch (pack) {
           case 'core':
-            toRemove = new Set(['rcore', 'core_2026']);
+            toRemove = new Set(['rcore', 'core_ch2', 'core_2026']);
             break;
           case 'rcore':
-            toRemove = new Set(['core', 'core_2026']);
+            toRemove = new Set(['core', 'core_ch2', 'core_2026']);
             break;
+          case 'core_ch2':
           case 'core_2026':
             toRemove = new Set(['core', 'rcore']);
             break;
@@ -459,7 +460,7 @@ export default function DeckCardPoolButton({ first, last, selectedPacks, setSele
         }
         return newPacks;
       }
-      if (pack === 'core' || pack === 'rcore' || pack === 'core_2026') {
+      if (pack === 'core' || pack === 'rcore' || pack === 'core_ch2' || pack === 'core_2026') {
         return current;
       }
       // When deselecting an investigator cycle, ensure the other is selected
@@ -535,7 +536,7 @@ export function useImpliedCardPool(selectedPacks: string[]): CardPoolMode {
     if (matchesExpanded(chapterCardPool(1))) {
       return 'chapter1';
     }
-    if (!set.has('core') && !set.has('rcore') && !set.has('core_2026') && !set.has(POOL_CORE_CYCLE) && !set.has(POOL_CORE_CH2_CYCLE)) {
+    if (!set.has('core') && !set.has('rcore') && !set.has('core_ch2') && !set.has('core_2026') && !set.has(POOL_CORE_CYCLE) && !set.has(POOL_CORE_CH2_CYCLE)) {
       // You need a core set unless you are playing custom
       return 'custom';
     }
@@ -547,7 +548,7 @@ export function useImpliedCardPool(selectedPacks: string[]): CardPoolMode {
     }
     const limitedCount = sumBy(limitedPacks, p => set.has(p) ? 1 : 0);
     const fanCount = sumBy(fanPacks, p => set.has(p) ? 1 : 0);
-    if ((set.has('core_2026') || set.has(POOL_CORE_CH2_CYCLE)) && hasAllCh2InvestigatorPacks && limitedCount === 0 && fanCount === 0) {
+    if ((set.has('core_ch2') || set.has('core_2026') || set.has(POOL_CORE_CH2_CYCLE)) && hasAllCh2InvestigatorPacks && limitedCount === 0 && fanCount === 0) {
       // Right now there are no cycles in the 'current'
       return 'current';
     }

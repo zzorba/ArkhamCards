@@ -8,6 +8,8 @@ import {
   MY_DECKS_CACHE_HIT,
   MY_DECKS_ERROR,
   SET_MY_DECKS,
+  SET_ARKHAM_BUILD_DECKS,
+  isArkhamBuildDeck,
   NEW_DECK_AVAILABLE,
   DELETE_DECK,
   UPDATE_DECK,
@@ -317,11 +319,12 @@ export default function(
   }
   if (action.type === SET_MY_DECKS) {
     const all: DecksMap = { ...state.all };
+    // Only track ArkhamDB remote decks for removal (not arkham.build decks)
     const remoteDecks: { [uuid: string]: boolean | undefined } = {};
     forEach(state.all, deck => {
       if (deck) {
         const deckId = getDeckId(deck);
-        if (!deckId.local) {
+        if (!deckId.local && !isArkhamBuildDeck(deck)) {
           remoteDecks[deckId.uuid] = true;
         }
       }
@@ -334,7 +337,7 @@ export default function(
         delete remoteDecks[deckId.uuid];
       }
     });
-    // Remove decks that are now missing.
+    // Remove ArkhamDB decks that are now missing.
     forEach(keys(remoteDecks), uuid => {
       if (all[uuid]) {
         delete all[uuid];
@@ -355,6 +358,45 @@ export default function(
       arkhamDbUser,
       dateUpdated: action.timestamp.getTime(),
       lastModified: action.lastModified,
+      refreshing: false,
+      error: null,
+    };
+  }
+  if (action.type === SET_ARKHAM_BUILD_DECKS) {
+    const all: DecksMap = { ...state.all };
+    // Track existing arkham.build decks for removal
+    const abDecks: { [uuid: string]: boolean | undefined } = {};
+    forEach(state.all, deck => {
+      if (deck && isArkhamBuildDeck(deck)) {
+        abDecks[getDeckId(deck).uuid] = true;
+      }
+    });
+    forEach(action.decks, deck => {
+      const deckId = getDeckId(deck);
+      all[deckId.uuid] = deck;
+      if (abDecks[deckId.uuid]) {
+        delete abDecks[deckId.uuid];
+      }
+    });
+    // Remove arkham.build decks that are now missing.
+    forEach(keys(abDecks), uuid => {
+      if (all[uuid]) {
+        delete all[uuid];
+      }
+    });
+    forEach(action.decks, deck => {
+      let scenarioCount = 0;
+      let currentDeck: Deck = deck;
+      while (currentDeck && currentDeck.previousDeckId) {
+        scenarioCount ++;
+        currentDeck = all[currentDeck.previousDeckId.uuid];
+      }
+      deck.scenarioCount = scenarioCount;
+    });
+    return {
+      ...state,
+      all,
+      dateUpdated: action.timestamp.getTime(),
       refreshing: false,
       error: null,
     };

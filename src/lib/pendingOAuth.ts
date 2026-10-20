@@ -9,7 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  * consumed. The record is single-use and TTL-bounded.
  */
 
-export type OAuthProvider = 'arkhamdb' | 'dissonantVoices';
+export type OAuthProvider = 'arkhamdb' | 'dissonantVoices' | 'arkhamBuild';
 
 export interface PendingOAuth {
   provider: OAuthProvider;

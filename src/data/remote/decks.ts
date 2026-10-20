@@ -11,19 +11,25 @@ import {
   DeckId,
   UploadedCampaignId,
   getDeckId,
+  isArkhamBuildDeckId,
+  isArkhamBuildDeck,
   SYNC_DECK,
   UPLOAD_DECK,
   GroupedUploadedDecks,
 } from '@actions/types';
 import {
   useDeleteAllArkhamDbDecksMutation,
+  useDeleteAllArkhamBuildDecksMutation,
   useDeleteAllLocalDecksMutation,
   useDeleteArkhamDbDeckMutation,
+  useDeleteArkhamBuildDeckMutation,
   useDeleteLocalDeckMutation,
   useInsertNewDeckMutation,
   useInsertNextArkhamDbDeckMutation,
+  useInsertNextArkhamBuildDeckMutation,
   useInsertNextLocalDeckMutation,
   useUpdateArkhamDbDeckMutation,
+  useUpdateArkhamBuildDeckMutation,
   useUpdateLocalDeckMutation,
   AllDeckFragment,
   AllDeckFragmentDoc,
@@ -199,6 +205,8 @@ interface RemoteDeckId {
   local_uuid?: string;
   arkhamdb_id?: number;
   arkhamdb_user?: number;
+  arkhambuild_id?: string;
+  arkhambuild_user?: string;
 }
 
 interface RemoteDeckInfo extends RemoteDeckId {
@@ -366,8 +374,10 @@ export function useDeckActions(): DeckActions {
   cache.current = apollo.cache;
 
   const [deleteArkhamDbDeck] = useDeleteArkhamDbDeckMutation();
+  const [deleteArkhamBuildDeck] = useDeleteArkhamBuildDeckMutation();
   const [deleteLocalDeck] = useDeleteLocalDeckMutation();
   const [deleteAllArkhamDbDecks] = useDeleteAllArkhamDbDecksMutation();
+  const [deleteAllArkhamBuildDecks] = useDeleteAllArkhamBuildDecksMutation();
   const [deleteAllLocalDecks] = useDeleteAllLocalDecksMutation();
   const deleteDeck = useCallback(async(deckId: DeckId, campaignId: UploadedCampaignId, deleteAllVersions: boolean) => {
     const owner_id = userId || '';
@@ -387,7 +397,7 @@ export function useDeckActions(): DeckActions {
                   id: d.id,
                   local_uuid: d.local_uuid,
                   arkhamdb_id: null,
-                  arkhamdb_user: null,
+                  arkhambuild_id: null,
                   campaign_id: campaignId.serverId,
                   owner_id,
                 };
@@ -403,6 +413,36 @@ export function useDeckActions(): DeckActions {
           },
           update: optimisticUpdates.deleteAllLocalDecks.update,
         });
+      } else if (isArkhamBuildDeckId(deckId)) {
+        const ids = getAllDeckIds(deckCache.local[deckId.uuid], deckCache);
+        await deleteAllArkhamBuildDecks({
+          optimisticResponse: {
+            __typename: 'mutation_root',
+            delete_campaign_deck: {
+              __typename: 'campaign_deck_mutation_response',
+              affected_rows: ids.length,
+              returning: map(uniq(ids), d => {
+                return {
+                  __typename: 'campaign_deck',
+                  id: d.id,
+                  arkhambuild_id: d.arkhambuild_id,
+                  local_uuid: null,
+                  arkhamdb_id: null,
+                  campaign_id: campaignId.serverId,
+                  owner_id,
+                };
+              }),
+            },
+          },
+          variables: {
+            arkhambuild_id: deckId.arkhambuild_id,
+            campaign_id: campaignId.serverId,
+          },
+          context: {
+            serializationKey: campaignId.serverId,
+          },
+          update: optimisticUpdates.deleteAllArkhamBuildDecks.update,
+        });
       } else {
         const ids = getAllDeckIds(deckCache.arkhamDb[deckId.id], deckCache);
         await deleteAllArkhamDbDecks({
@@ -416,7 +456,7 @@ export function useDeckActions(): DeckActions {
                   __typename: 'campaign_deck',
                   id: d.id,
                   arkhamdb_id: d.arkhamdb_id,
-                  arkhamdb_user: d.arkhamdb_user,
+                  arkhambuild_id: null,
                   local_uuid: null,
                   campaign_id: campaignId.serverId,
                   owner_id,
@@ -451,11 +491,12 @@ export function useDeckActions(): DeckActions {
                 campaign_id: campaignId.serverId,
                 local_uuid: deckId.uuid,
                 arkhamdb_id: null,
+                arkhambuild_id: null,
                 owner_id,
                 previous_deck: deckId.serverId ? getPreviousDeck(
                   cache.current,
                   campaignId.serverId,
-                  deckId.local ? deckId.uuid : undefined,
+                  deckId.uuid,
                   undefined,
                   undefined,
                 ) : null,
@@ -471,6 +512,39 @@ export function useDeckActions(): DeckActions {
           serializationKey: campaignId.serverId,
         },
         update: optimisticUpdates.deleteLocalDeck.update,
+      });
+    } else if (isArkhamBuildDeckId(deckId)) {
+      await deleteArkhamBuildDeck({
+        optimisticResponse: {
+          __typename: 'mutation_root',
+          update_campaign_deck: {
+            returning: [],
+          },
+          delete_campaign_deck: {
+            __typename: 'campaign_deck_mutation_response',
+            affected_rows: 1,
+            returning: [
+              {
+                __typename: 'campaign_deck',
+                id: deckId.serverId || (fakeId--),
+                campaign_id: campaignId.serverId,
+                arkhambuild_id: deckId.arkhambuild_id,
+                arkhamdb_id: null,
+                local_uuid: null,
+                owner_id,
+                previous_deck: null,
+              },
+            ],
+          },
+        },
+        variables: {
+          arkhambuild_id: deckId.arkhambuild_id,
+          campaign_id: campaignId.serverId,
+        },
+        context: {
+          serializationKey: campaignId.serverId,
+        },
+        update: optimisticUpdates.deleteArkhamBuildDeck.update,
       });
     } else {
       await deleteArkhamDbDeck({
@@ -488,6 +562,7 @@ export function useDeckActions(): DeckActions {
                 id: deckId.serverId || (fakeId--),
                 campaign_id: campaignId.serverId,
                 arkhamdb_id: deckId.id,
+                arkhambuild_id: null,
                 local_uuid: null,
                 owner_id,
                 previous_deck: deckId.serverId ? getPreviousDeck(
@@ -511,10 +586,11 @@ export function useDeckActions(): DeckActions {
         update: optimisticUpdates.deleteArkhamDbDeck.update,
       });
     }
-  }, [deleteArkhamDbDeck, deleteLocalDeck, deleteAllLocalDecks, deleteAllArkhamDbDecks, userId]);
+  }, [deleteArkhamDbDeck, deleteArkhamBuildDeck, deleteLocalDeck, deleteAllLocalDecks, deleteAllArkhamDbDecks, deleteAllArkhamBuildDecks, userId]);
 
   const [updateLocalDeck] = useUpdateLocalDeckMutation();
   const [updateArkhamDbDeck] = useUpdateArkhamDbDeckMutation();
+  const [updateArkhamBuildDeck] = useUpdateArkhamBuildDeckMutation();
   const updateDeck = useCallback(async(deck: Deck, campaignId: UploadedCampaignId) => {
     const owner_id = userId || '';
     const content_hash = await hashDeck(deck);
@@ -531,6 +607,7 @@ export function useDeckActions(): DeckActions {
                 id: (fakeId--),
                 local_uuid: deck.uuid,
                 arkhamdb_id: null,
+                arkhambuild_id: null,
                 campaign_id: campaignId.serverId,
                 owner_id,
                 content: deck,
@@ -541,6 +618,40 @@ export function useDeckActions(): DeckActions {
         },
         variables: {
           local_uuid: deck.uuid,
+          campaign_id: campaignId.serverId,
+          content: deck,
+          content_hash,
+        },
+        context: {
+          serializationKey: campaignId.serverId,
+        },
+      });
+    } else if (isArkhamBuildDeck(deck)) {
+      await updateArkhamBuildDeck({
+        optimisticResponse: {
+          __typename: 'mutation_root',
+          update_campaign_deck: {
+            __typename: 'campaign_deck_mutation_response',
+            affected_rows: 1,
+            returning: [
+              {
+                __typename: 'campaign_deck',
+                id: (fakeId--),
+                arkhambuild_id: deck.arkhambuild_id,
+                arkhambuild_user: deck.arkhambuild_user,
+                local_uuid: null,
+                arkhamdb_id: null,
+                campaign_id: campaignId.serverId,
+                owner_id,
+                content: deck,
+                content_hash,
+              },
+            ],
+          },
+        },
+        variables: {
+          arkhambuild_id: deck.arkhambuild_id,
+          arkhambuild_user: deck.arkhambuild_user,
           campaign_id: campaignId.serverId,
           content: deck,
           content_hash,
@@ -561,6 +672,7 @@ export function useDeckActions(): DeckActions {
                 __typename: 'campaign_deck',
                 id: (fakeId--),
                 arkhamdb_user: deck.user_id,
+                arkhambuild_id: null,
                 local_uuid: null,
                 campaign_id: campaignId.serverId,
                 owner_id,
@@ -583,10 +695,11 @@ export function useDeckActions(): DeckActions {
         },
       });
     }
-  }, [updateLocalDeck, updateArkhamDbDeck, userId]);
+  }, [updateLocalDeck, updateArkhamDbDeck, updateArkhamBuildDeck, userId]);
 
   const [createNewDeck] = useInsertNewDeckMutation();
   const [createNextArkhamDbDeck] = useInsertNextArkhamDbDeckMutation();
+  const [createNextArkhamBuildDeck] = useInsertNextArkhamBuildDeckMutation();
   const [createNextLocalDeck] = useInsertNextLocalDeckMutation();
   const createBaseDeck = useCallback(async(
     deck: Deck,
@@ -607,6 +720,24 @@ export function useDeckActions(): DeckActions {
       content: deck,
       content_hash,
     };
+    const deckVariables = deck.local ? {
+      ...variables,
+      local_uuid: deck.uuid,
+      arkhamdb_user: null,
+      arkhambuild_id: null,
+      arkhambuild_user: null,
+    } : isArkhamBuildDeck(deck) ? {
+      ...variables,
+      arkhambuild_id: deck.arkhambuild_id,
+      arkhambuild_user: deck.arkhambuild_user,
+      arkhamdb_user: null,
+    } : {
+      ...variables,
+      arkhamdb_id: deck.id,
+      arkhamdb_user: deck.user_id,
+      arkhambuild_id: null,
+      arkhambuild_user: null,
+    };
     await createNewDeck({
       optimisticResponse: {
         __typename: 'mutation_root',
@@ -615,8 +746,10 @@ export function useDeckActions(): DeckActions {
           id: (fakeId--),
           campaign_id: campaignId.serverId,
           local_uuid: deck.local ? deck.uuid : null,
-          arkhamdb_id: deck.local ? null : deck.id,
-          arkhamdb_user: deck.local ? null : deck.user_id,
+          arkhamdb_id: deck.local || isArkhamBuildDeck(deck) ? null : deck.id,
+          arkhamdb_user: deck.local || isArkhamBuildDeck(deck) ? null : deck.user_id,
+          arkhambuild_id: isArkhamBuildDeck(deck) ? deck.arkhambuild_id : null,
+          arkhambuild_user: isArkhamBuildDeck(deck) ? deck.arkhambuild_user : null,
           investigator: deck.investigator_code,
           owner_id: userId,
           owner: {
@@ -637,15 +770,7 @@ export function useDeckActions(): DeckActions {
           },
         },
       },
-      variables: deck.local ? {
-        ...variables,
-        local_uuid: deck.uuid,
-        arkhamdb_user: null,
-      } : {
-        ...variables,
-        arkhamdb_id: deck.id,
-        arkhamdb_user: deck.user_id,
-      },
+      variables: deckVariables,
       context: {
         serializationKey: campaignId.serverId,
       },
@@ -678,9 +803,11 @@ export function useDeckActions(): DeckActions {
             __typename: 'campaign_deck',
             id: (fakeId--),
             campaign_id: campaignId.serverId,
-            local_uuid: deck.uuid,
+            local_uuid: deckId.uuid,
             arkhamdb_id: null,
+            arkhambuild_id: null,
             arkhamdb_user: null,
+            arkhambuild_user: null,
             investigator: deck.investigator_code,
             owner_id: userId,
             content: deck,
@@ -690,6 +817,7 @@ export function useDeckActions(): DeckActions {
               id: previousDeckId.serverId || (fakeId--),
               local_uuid: previousDeckId.uuid,
               arkhamdb_id: null,
+              arkhambuild_id: null,
               campaign_id: campaignId.serverId,
               owner_id: userId,
             },
@@ -708,6 +836,51 @@ export function useDeckActions(): DeckActions {
       return;
     }
 
+    if (isArkhamBuildDeckId(deckId)) {
+      if (!isArkhamBuildDeckId(previousDeckId)) {
+        throw new Error(`Can't mix arkham.build and other deck types`);
+      }
+      await createNextArkhamBuildDeck({
+        optimisticResponse: {
+          __typename: 'mutation_root',
+          insert_campaign_deck_one: {
+            __typename: 'campaign_deck',
+            id: (fakeId--),
+            campaign_id: campaignId.serverId,
+            arkhambuild_id: deckId.arkhambuild_id,
+            arkhambuild_user: deckId.arkhambuild_user,
+            arkhamdb_id: null,
+            local_uuid: null,
+            arkhamdb_user: null,
+            investigator: deck.investigator_code,
+            owner_id: userId,
+            content: deck,
+            content_hash,
+            previous_deck: {
+              __typename: 'campaign_deck',
+              id: previousDeckId.serverId || (fakeId--),
+              arkhambuild_id: previousDeckId.arkhambuild_id,
+              local_uuid: null,
+              arkhamdb_id: null,
+              campaign_id: campaignId.serverId,
+              owner_id: userId,
+            },
+          },
+        },
+        variables: {
+          ...variables,
+          arkhambuild_id: deckId.arkhambuild_id,
+          arkhambuild_user: deckId.arkhambuild_user,
+          previous_arkhambuild_id: previousDeckId.arkhambuild_id,
+        },
+        context: {
+          serializationKey: campaignId.serverId,
+        },
+        update: optimisticUpdates.insertNextArkhamBuildDeck.update,
+      });
+      return;
+    }
+
     if (previousDeckId.local || deck.local) {
       throw new Error(`Can't mix remote and local decks`);
     }
@@ -720,6 +893,7 @@ export function useDeckActions(): DeckActions {
           campaign_id: campaignId.serverId,
           arkhamdb_id: deck.id,
           arkhamdb_user: deck.user_id,
+          arkhambuild_id: null,
           local_uuid: null,
           investigator: deck.investigator_code,
           owner_id: userId,
@@ -730,6 +904,7 @@ export function useDeckActions(): DeckActions {
             id: previousDeckId.serverId || (fakeId--),
             local_uuid: null,
             arkhamdb_id: previousDeckId.id,
+            arkhambuild_id: null,
             campaign_id: campaignId.serverId,
             owner_id: userId,
           },
@@ -737,16 +912,16 @@ export function useDeckActions(): DeckActions {
       },
       variables: {
         ...variables,
-        arkhamdb_id: deckId.id,
+        arkhamdb_id: deckId.id!,
         arkhamdb_user: deck.user_id,
-        previous_arkhamdb_id: previousDeckId.id,
+        previous_arkhamdb_id: previousDeckId.id!,
       },
       context: {
         serializationKey: campaignId.serverId,
       },
       update: optimisticUpdates.insertNextArkhamDbDeck.update,
     });
-  }, [createNextArkhamDbDeck, createNextLocalDeck, userId]);
+  }, [createNextArkhamDbDeck, createNextArkhamBuildDeck, createNextLocalDeck, userId]);
   return useMemo(() => {
     return {
       updateDeck,

@@ -34,7 +34,7 @@ import {
   useMyDecksRedux,
 } from './local/hooks';
 import LatestDeckT from './interfaces/LatestDeckT';
-import { refreshMyDecks } from '@actions';
+import { refreshMyDecks, refreshMyArkhamBuildDecks } from '@actions';
 import { DeckActions, syncCampaignDecksFromArkhamDB } from './remote/decks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import MiniDeckT from './interfaces/MiniDeckT';
@@ -308,7 +308,7 @@ export function useMyDecks(
   deckActions: DeckActions
 ): [MyDecksState, (cacheArkhamDb: boolean) => Promise<void>] {
   const dispatch: ThunkDispatch<AppState, unknown, Action> = useDispatch();
-  const { userId, arkhamDb } = useContext(ArkhamCardsAuthContext);
+  const { userId, arkhamDb, arkhamBuild } = useContext(ArkhamCardsAuthContext);
   const { myDecks, error, refreshing, myDecksUpdated } = useMyDecksRedux();
   const [remoteMyDecks, remoteRefreshing, refreshRemoteDecks] =
     useMyDecksRemote(deckActions);
@@ -318,6 +318,9 @@ export function useMyDecks(
         const remoteDecksPromise = userId && refreshRemoteDecks();
         const arkhamDbDeckPromise =
           arkhamDb && dispatch(refreshMyDecks(cacheArkhamDb));
+        if (arkhamBuild) {
+          dispatch(refreshMyArkhamBuildDecks());
+        }
         if (remoteDecksPromise && arkhamDbDeckPromise) {
           try {
             const remoteDecks = await remoteDecksPromise;
@@ -334,7 +337,7 @@ export function useMyDecks(
         }
       }
     },
-    [dispatch, userId, arkhamDb, deckActions, refreshing, refreshRemoteDecks]
+    [dispatch, userId, arkhamDb, arkhamBuild, deckActions, refreshing, refreshRemoteDecks]
   );
   const mergedMyDecks = useMemo(() => {
     if (!userId) {

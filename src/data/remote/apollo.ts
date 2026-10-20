@@ -67,6 +67,13 @@ import {
   InsertNextLocalDeckMutation,
   IdDeckFragment,
   InsertNextArkhamDbDeckMutation,
+  DeleteAllArkhamBuildDecksMutation,
+  DeleteAllArkhamBuildDecksDocument,
+  DeleteArkhamBuildDeckMutation,
+  DeleteArkhamBuildDeckDocument,
+  InsertNextArkhamBuildDeckDocument,
+  InsertNextArkhamBuildDeckMutation,
+  UpdateArkhamBuildDeckDocument,
   GetLatestLocalDeckQuery,
   GetLatestLocalDeckDocument,
   GetLatestArkhamDbDeckQuery,
@@ -1469,9 +1476,17 @@ export const optimisticUpdates = {
     mutation: DeleteAllArkhamDbDecksDocument,
     update: handleDeleteAllArkhamDbDecks,
   },
+  deleteAllArkhamBuildDecks: {
+    mutation: DeleteAllArkhamBuildDecksDocument,
+    update: handleDeleteAllArkhamDbDecks as unknown as MutationUpdaterFn<DeleteAllArkhamBuildDecksMutation>,
+  },
   deleteArkhamDbDeck: {
     mutation: DeleteArkhamDbDeckDocument,
     update: handleDeleteArkhamDbDeck,
+  },
+  deleteArkhamBuildDeck: {
+    mutation: DeleteArkhamBuildDeckDocument,
+    update: handleDeleteArkhamDbDeck as unknown as MutationUpdaterFn<DeleteArkhamBuildDeckMutation>,
   },
   deleteLocalDeck: {
     mutation: DeleteLocalDeckDocument,
@@ -1482,6 +1497,9 @@ export const optimisticUpdates = {
   },
   updateArkhamDbDeck: {
     mutation: UpdateArkhamDbDeckDocument,
+  },
+  updateArkhamBuildDeck: {
+    mutation: UpdateArkhamBuildDeckDocument,
   },
   insertNewDeck: {
     mutation: InsertNewDeckDocument,
@@ -1494,6 +1512,10 @@ export const optimisticUpdates = {
   insertNextArkhamDbDeck: {
     mutation: InsertNextArkhamDbDeckDocument,
     update: handleInsertNextArkhamDbDeck,
+  },
+  insertNextArkhamBuildDeck: {
+    mutation: InsertNextArkhamBuildDeckDocument,
+    update: handleInsertNextArkhamDbDeck as unknown as MutationUpdaterFn<InsertNextArkhamBuildDeckMutation>,
   },
   chaosBagDrawToken: {
     mutation: ChaosBagDrawTokenDocument,

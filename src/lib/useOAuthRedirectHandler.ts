@@ -2,9 +2,10 @@ import { useEffect, useRef } from 'react';
 import { Linking } from 'react-native';
 
 import { useAppDispatch } from '@app/store';
-import { completeArkhamDbLoginFromRedirect, completePatreonLoginFromRedirect } from '@actions';
+import { completeArkhamDbLoginFromRedirect, completePatreonLoginFromRedirect, completeArkhamBuildLoginFromRedirect } from '@actions';
 import { REDIRECT_URL_PREFIX as ARKHAMDB_REDIRECT } from '@lib/auth';
 import { REDIRECT_URL_PREFIX as PATREON_REDIRECT } from '@lib/patreon';
+import { REDIRECT_URL_PREFIX as ARKHAM_BUILD_REDIRECT } from '@lib/arkhamBuildAuth';
 
 /**
  * Completes OAuth logins that were interrupted by the OS killing the app while
@@ -32,6 +33,9 @@ export default function useOAuthRedirectHandler(): void {
       } else if (url.startsWith(PATREON_REDIRECT)) {
         handledUrls.current.add(url);
         dispatch(completePatreonLoginFromRedirect(url));
+      } else if (url.startsWith(ARKHAM_BUILD_REDIRECT)) {
+        handledUrls.current.add(url);
+        dispatch(completeArkhamBuildLoginFromRedirect(url));
       }
     };
 

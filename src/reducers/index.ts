@@ -18,6 +18,7 @@ import packs from './packs';
 import settings from './settings';
 import dissonantVoices from './dissonantVoices';
 import patreon from './patreon';
+import arkhamBuild from './arkhamBuild';
 import { CardFilterData, FilterState } from '@lib/filters';
 import { getSystemLanguage } from '@lib/i18n';
 import {
@@ -52,6 +53,7 @@ import {
   FIXED_CHAOS_BAG_CAMPAIGN_ID,
   ChecklistSlots,
   CardPoolMode,
+  isArkhamBuildDeck,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/types/Card';
 import { chapterCardPool, ChaosBag, POOL_CORE_CH2_CYCLE, POOL_CURRENT_PACKS, POOL_INVESTIGATOR_CH2_CYCLE, reprintPackToPack, SPECIAL_PACKS } from '@app_constants';
@@ -166,6 +168,7 @@ const rootReducer = combineReducers({
   deckEdits,
   dissonantVoices: persistReducer(dissonantVoicesPersistConfig, dissonantVoices),
   patreon: persistReducer({ key: 'patreon', throttle: Platform.OS === 'android' ? 1000 : undefined, storage: AsyncStorage, blacklist: ['loading', 'error'] }, patreon),
+  arkhamBuild: persistReducer({ key: 'arkhamBuild', throttle: Platform.OS === 'android' ? 1000 : undefined, storage: AsyncStorage, blacklist: ['loading', 'error'] }, arkhamBuild),
   trackedQueries: persistReducer(trackedQueriesPersistConfig, trackedQueries),
   decks: persistReducer(decksPersistConfig, decks),
   legacyGuides: persistReducer(legacyGuidesPersistConfig, legacyGuides),
@@ -1063,7 +1066,7 @@ export const getArkhamDbDecks = createSelector(
   (decks: DecksMap, refreshing: boolean, error: string | null): [ArkhamDbDeck[], boolean] => {
     const allDecks: ArkhamDbDeck[] = [];
     forEach(decks, deck => {
-      if (!deck.local) {
+      if (!deck.local && !isArkhamBuildDeck(deck)) {
         allDecks.push(deck);
       }
     });

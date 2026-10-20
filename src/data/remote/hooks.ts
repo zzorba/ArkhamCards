@@ -179,7 +179,7 @@ export function useCampaignDeckFromRemote(id: DeckId | undefined, campaignId: Ca
   const { data: arkhamDbData } = useGetLatestArkhamDbDeckQuery({
     variables: {
       campaign_id: campaignId?.serverId || 0,
-      arkhamdb_id: (id && !id.local) ? id.id : 0,
+      arkhamdb_id: (id && !id.local && id.id !== undefined) ? id.id : 0,
     },
     fetchPolicy: 'cache-and-network',
     skip: !campaignId?.serverId || !!(id && !id.local),
@@ -367,7 +367,15 @@ export function useMyProfile(useCached: boolean): [UserProfile | undefined, bool
 
 function parseAllDeck(allDecks: AllDeckFragment[]): GroupedUploadedDecks {
   const deckIds = map(allDecks, i => {
-    const deckId: DeckId = i.arkhamdb_id && i.arkhamdb_user ? {
+    const deckId: DeckId = i.arkhambuild_id && i.arkhambuild_user ? {
+      id: undefined,
+      arkhamdb_user: undefined,
+      arkhambuild_user: i.arkhambuild_user,
+      arkhambuild_id: i.arkhambuild_id,
+      local: false,
+      uuid: i.arkhambuild_id,
+      serverId: i.id,
+    } : i.arkhamdb_id && i.arkhamdb_user ? {
       id: i.arkhamdb_id,
       arkhamdb_user: i.arkhamdb_user,
       local: false,
@@ -380,7 +388,15 @@ function parseAllDeck(allDecks: AllDeckFragment[]): GroupedUploadedDecks {
       uuid: i.local_uuid || '',
       serverId: i.id,
     };
-    const nextDeckId: DeckId | undefined = i.next_deck && (i.arkhamdb_user && i.next_deck.arkhamdb_id ? {
+    const nextDeckId: DeckId | undefined = i.next_deck && (i.arkhambuild_user && i.next_deck.arkhambuild_id ? {
+      id: undefined,
+      arkhamdb_user: undefined,
+      arkhambuild_user: i.arkhambuild_user,
+      arkhambuild_id: i.next_deck.arkhambuild_id,
+      local: false,
+      uuid: i.next_deck.arkhambuild_id,
+      serverId: i.next_deck.id,
+    } : i.arkhamdb_user && i.next_deck.arkhamdb_id ? {
       id: i.next_deck.arkhamdb_id,
       arkhamdb_user: i.arkhamdb_user,
       local: false,

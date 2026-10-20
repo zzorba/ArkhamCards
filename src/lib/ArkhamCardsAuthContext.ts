@@ -8,8 +8,10 @@ interface ArkhamCardsAuthContextType {
 
   arkhamDb: boolean;
   arkhamDbUser: number | undefined;
+
+  arkhamBuild: boolean;
 }
 
-export const ArkhamCardsAuthContext = React.createContext<ArkhamCardsAuthContextType>({ loading: true, arkhamDb: false, arkhamDbUser: undefined });
+export const ArkhamCardsAuthContext = React.createContext<ArkhamCardsAuthContextType>({ loading: true, arkhamDb: false, arkhamDbUser: undefined, arkhamBuild: false });
 
 export default ArkhamCardsAuthContext;
