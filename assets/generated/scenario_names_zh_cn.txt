@@ -1424,6 +1424,10 @@
     "name": "芝麻开门"
   },
   {
+    "id": "zcem_prologue",
+    "name": "引导故事"
+  },
+  {
     "id": "zhod_epilogue",
     "name": "尾声故事"
   },

@@ -1124,7 +1124,7 @@
           },
           {
             "id": "coastal_waters",
-            "text": "Kpstengewässer"
+            "text": "Küstengewässer"
           },
           {
             "id": "deck_of_the_theodosia",
@@ -8440,6 +8440,21 @@
           {
             "id": "warding_runes",
             "text": "Warding Runes"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "zcem",
+    "sections": [
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "hard_or_expert",
+            "text": "dummy"
           }
         ]
       }

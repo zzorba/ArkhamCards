@@ -8447,6 +8447,21 @@
     "supplies": []
   },
   {
+    "campaignId": "zcem",
+    "sections": [
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "hard_or_expert",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zcf",
     "sections": [
       {

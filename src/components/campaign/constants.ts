@@ -2,43 +2,44 @@ import { find, map } from 'lodash';
 import { t } from 'ttag';
 
 import {
+  AGES_UNWOUND,
+  ALICE_IN_WONDERLAND,
   BOA,
+  CALL_OF_THE_PLAGUEBEARER,
+  CampaignCycleCode,
+  CampaignDifficulty,
+  CIRCUS_EX_MORTIS,
   COB,
-  CUSTOM,
   CORE,
-  RTNOTZ,
+  CROWN_OF_EGIL,
+  CUSTOM,
+  CustomCampaignLog,
+  CYCLOPEAN_FOUNDATIONS,
+  DARK_MATTER,
   DWL,
-  RTDWL,
-  PTC,
-  GOB,
-  RTPTC,
-  TFA,
-  RTTFA,
-  TCU,
+  EOE,
+  FHV,
   FOF,
+  GOB,
+  HEART_OF_DARKNESS,
+  OZ,
+  PTC,
+  RTDWL,
+  RTNOTZ,
+  RTPTC,
+  RTTCU,
+  RTTFA,
+  RTTIC,
+  ScenarioResult,
+  STANDALONE,
+  TCU,
+  TDC,
   TDE,
   TDEA,
   TDEB,
+  TFA,
   TIC,
-  TDC,
-  CampaignDifficulty,
-  CampaignCycleCode,
-  CustomCampaignLog,
-  ScenarioResult,
-  STANDALONE,
-  ALICE_IN_WONDERLAND,
-  CALL_OF_THE_PLAGUEBEARER,
-  DARK_MATTER,
-  RTTCU,
-  EOE,
-  CROWN_OF_EGIL,
   TSK,
-  CYCLOPEAN_FOUNDATIONS,
-  HEART_OF_DARKNESS,
-  RTTIC,
-  FHV,
-  OZ,
-  AGES_UNWOUND,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/types/Card';
@@ -55,6 +56,7 @@ const authors = {
   [HEART_OF_DARKNESS]: 'Vinn Quest',
   [RTTIC]: 'DerBK',
   [AGES_UNWOUND]: 'Olivia Juliet',
+  [CIRCUS_EX_MORTIS]: 'The Beard',
 }
 
 export function campaignDescription(packCode: CampaignCycleCode): string | undefined {
@@ -76,6 +78,7 @@ export function campaignDescription(packCode: CampaignCycleCode): string | undef
     case HEART_OF_DARKNESS:
     case AGES_UNWOUND:
     case RTTIC:
+    case CIRCUS_EX_MORTIS:
       const author = authors[packCode];
       return t`Fan-made campaign by ${author}`;
     default:
@@ -140,6 +143,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case OZ: return t`The Colour Out of Oz`;
     case AGES_UNWOUND: return t`Ages Unwound`;
     case TDC: return t`The Drowned City`;
+    case CIRCUS_EX_MORTIS: return t`Circus Ex Mortis`;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
@@ -496,6 +500,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
     case FOF:
     case HEART_OF_DARKNESS:
     case OZ:
+    case CIRCUS_EX_MORTIS:
 
       return [];
     default: {
@@ -540,6 +545,7 @@ export function campaignNames() {
     zcp: t`Call of the Plaguebearer`,
     zhod: t`Heart of Darkness`,
     rttic: 'The (Unofficial) Return to The Innsmouth Conspiracy',
+    zcem: t`Circus Ex Mortis`,
   };
 }
 
@@ -588,6 +594,7 @@ export function campaignColor(cycle: CampaignCycleCode | typeof RTTCU | typeof E
       return colors.campaign.eoe;
     case GOB:
     case FHV:
+    case CIRCUS_EX_MORTIS:
       return colors.campaign.gob;
   }
 }
@@ -775,6 +782,7 @@ export function getCampaignLog(
     case GOB:
     case FOF:
     case COB:
+    case CIRCUS_EX_MORTIS:
       return {
         sections: [
           t`Campaign Notes`,
@@ -991,6 +999,12 @@ const AGES_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 3, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
 };
 
+const CIRCUS_EX_MORTIS_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, '-5': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 3, '-2': 2, '-3': 1, '-4': 1, '-5': 1, '-7': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+}
 
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
@@ -1097,6 +1111,8 @@ export function getChaosBag(
       return OZ_BAG[difficulty];
     case AGES_UNWOUND:
       return AGES_BAG[difficulty];
+    case CIRCUS_EX_MORTIS:
+      return CIRCUS_EX_MORTIS_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

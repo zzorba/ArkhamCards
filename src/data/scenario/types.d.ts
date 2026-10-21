@@ -46,7 +46,6 @@ export type Effect =
   | LoseSuppliesEffect
   | CheckCampaignLogCardsEffect
   | CheckCampaignLogCountEffect
-  | AddScarletKeyEffect
   | ScarletKeyEffect
   | BackupStateEffect
   | CampaignLogAssignTaskEffect
@@ -96,8 +95,7 @@ export type SpecialChaosToken =
   | "auto_fail"
   | "bless"
   | "curse"
-  | "frost"
-  | "blood";
+  | "frost";
 export type BorderColor = "setup" | "resolution" | "interlude";
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept" | "killed" | "insane";
 export type DefaultOption = Option;
@@ -684,12 +682,6 @@ export interface CheckCampaignLogCountEffect {
   text: string;
   bullet_type?: BulletType;
 }
-export interface AddScarletKeyEffect {
-  type: "add_scarlet_key";
-  section: string;
-  scarlet_key: string;
-  name: string;
-}
 export interface ScarletKeyEffect {
   type: "scarlet_key";
   section: string;
@@ -1254,7 +1246,7 @@ export interface InvestigatorCounterInput {
   investigator_count_min?: string;
   max?: number;
   min?: number;
-  required_total?: number;
+  totalMax?: number;
   show_special_xp?: string;
 }
 export interface InvestigatorChoiceWithSuppliesInput {

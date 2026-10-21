@@ -8447,6 +8447,21 @@
     "supplies": []
   },
   {
+    "campaignId": "zcem",
+    "sections": [
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "hard_or_expert",
+            "text": "더미"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zcf",
     "sections": [
       {

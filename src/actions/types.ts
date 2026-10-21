@@ -507,6 +507,7 @@ export const CROWN_OF_EGIL = 'zce';
 export const CALL_OF_THE_PLAGUEBEARER = 'zcp';
 export const CYCLOPEAN_FOUNDATIONS = 'zcf';
 export const HEART_OF_DARKNESS = 'zhod';
+export const CIRCUS_EX_MORTIS = 'zcem';
 
 export type CampaignCycleCode =
   | typeof CUSTOM
@@ -541,7 +542,8 @@ export type CampaignCycleCode =
   | typeof CROWN_OF_EGIL
   | typeof HEART_OF_DARKNESS
   | typeof CALL_OF_THE_PLAGUEBEARER
-  | typeof RTTIC;
+  | typeof RTTIC
+  | typeof CIRCUS_EX_MORTIS;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   BOA,
@@ -576,6 +578,7 @@ export const CUSTOM_CAMPAIGNS: CampaignCycleCode[] = [
   RTTIC,
   OZ,
   AGES_UNWOUND,
+  CIRCUS_EX_MORTIS,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -610,6 +613,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   OZ,
   AGES_UNWOUND,
   TDC,
+  CIRCUS_EX_MORTIS,
 ]);
 
 export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set<CampaignCycleCode>([]);

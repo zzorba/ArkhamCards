@@ -377,6 +377,12 @@ export const getAllRealPacks = createSelector(
           name: t`When the World Screamed`,
           position: 15,
         },
+        {
+          code: 'zcem',
+          cycle_code: 'fan',
+          name: t`Circus Ex Mortis`,
+          position: 16,
+        },
       ], (p): Pack => {
         return {
           id: p.code,
