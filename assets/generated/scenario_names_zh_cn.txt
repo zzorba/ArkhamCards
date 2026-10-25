@@ -640,6 +640,10 @@
     "name": "金盆洗手"
   },
   {
+    "id": "one_night_only",
+    "name": "One Night Only"
+  },
+  {
     "id": "oz_epilogue",
     "name": "尾声故事"
   },
@@ -1422,6 +1426,10 @@
   {
     "id": "ybor_city",
     "name": "芝麻开门"
+  },
+  {
+    "id": "zcx_prologue",
+    "name": "引导故事"
   },
   {
     "id": "zhod_epilogue",

@@ -640,6 +640,10 @@
     "name": "Ostatnie zlecenie"
   },
   {
+    "id": "one_night_only",
+    "name": "One Night Only"
+  },
+  {
     "id": "oz_epilogue",
     "name": "Epilog"
   },
@@ -1422,6 +1426,10 @@
   {
     "id": "ybor_city",
     "name": "Kryjówka"
+  },
+  {
+    "id": "zcx_prologue",
+    "name": "Prolog"
   },
   {
     "id": "zhod_epilogue",

@@ -640,6 +640,10 @@
     "name": "마지막 의뢰"
   },
   {
+    "id": "one_night_only",
+    "name": "One Night Only"
+  },
+  {
     "id": "oz_epilogue",
     "name": "후일담"
   },
@@ -1422,6 +1426,10 @@
   {
     "id": "ybor_city",
     "name": "안전가옥"
+  },
+  {
+    "id": "zcx_prologue",
+    "name": "서막"
   },
   {
     "id": "zhod_epilogue",

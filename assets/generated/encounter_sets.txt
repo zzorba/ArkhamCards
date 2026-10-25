@@ -1,599 +1,2761 @@
-{
-  "torch": "The Gathering",
-  "arkham": "The Midnight Masks",
-  "cultists": "Cult of Umôrdhoth",
-  "tentacles": "The Devourer Below",
-  "rats": "Rats",
-  "ghouls": "Ghouls",
-  "striking_fear": "Striking Fear",
-  "ancient_evils": "Ancient Evils",
-  "chilling_cold": "Chilling Cold",
-  "pentagram": "Dark Cult",
-  "nightgaunts": "Nightgaunts",
-  "locked_doors": "Locked Doors",
-  "agents_of_hastur": "Agents of Hastur",
-  "agents_of_yog": "Agents of Yog-Sothoth",
-  "agents_of_shub": "Agents of Shub-Niggurath",
-  "agents_of_cthulhu": "Agents of Cthulhu",
-  "unknown": "Unknown",
-  "bayou": "The Bayou",
-  "rougarou": "Curse of the Rougarou",
-  "venice": "Carnevale of Horrors",
-  "armitages_fate": "Armitage's Fate",
-  "bishops_thralls": "Bishop's Thralls",
-  "beast_thralls": "Beast Thralls",
-  "naomis_crew": "Naomi's Crew",
-  "extracurricular_activity": "Extracurricular Activity",
-  "the_house_always_wins": "The House Always Wins",
-  "sorcery": "Sorcery",
-  "dunwich": "Dunwich",
-  "whippoorwills": "Whippoorwills",
-  "bad_luck": "Bad Luck",
-  "the_beyond": "The Beyond",
-  "hideous_abominations": "Hideous Abominations",
-  "the_miskatonic_museum": "The Miskatonic Museum",
-  "essex_county_express": "The Essex County Express",
-  "blood_on_the_altar": "Blood On The Altar",
-  "undimensioned_and_unseen": "Undimensioned and Unseen",
-  "where_doom_awaits": "Where Doom Awaits",
-  "lost_in_time_and_space": "Lost in Time and Space",
-  "curtain_call": "Curtain Call",
-  "the_last_king": "The Last King",
-  "delusions": "Delusions",
-  "byakhee": "Byakhee",
-  "inhabitants_of_carcosa": "Inhabitants of Carcosa",
-  "evil_portents": "Evil Portents",
-  "hauntings": "Hauntings",
-  "hasturs_gift": "Hastur's Gift",
-  "cult_of_the_yellow_sign": "Cult of the Yellow Sign",
-  "decay": "Decay & Filth",
-  "stranger": "The Stranger",
-  "echoes_of_the_past": "Echoes of the Past",
-  "the_unspeakable_oath": "The Unspeakable Oath",
-  "a_phantom_of_truth": "A Phantom of Truth",
-  "the_pallid_mask": "The Pallid Mask",
-  "black_stars_rise": "Black Stars Rise",
-  "flood": "The Flood Below",
-  "vortex": "The Vortex Above",
-  "dim_carcosa": "Dim Carcosa",
-  "agents_of_yig": "Agents of Yig",
-  "traps": "Deadly Traps",
-  "expedition": "Expedition",
-  "ruins": "Forgotten Ruins",
-  "guardians_of_time": "Guardians of Time",
-  "pnakotic_brotherhood": "Pnakotic Brotherhood",
-  "poison": "Poison",
-  "rainforest": "Rainforest",
-  "serpents": "Serpents",
-  "flux": "Temporal Flux",
-  "eztli": "The Doom of Eztli",
-  "wilds": "The Untamed Wilds",
-  "venom": "Yig's Venom",
-  "threads_of_fate": "Threads of Fate",
-  "the_boundary_beyond": "The Boundary Beyond",
-  "heart_of_the_elders": "Heart of the Elders",
-  "pillars_of_judgment": "Pillars of Judgment",
-  "knyan": "K'n-yan",
-  "the_city_of_archives": "The City of Archives",
-  "the_depths_of_yoth": "The Depths of Yoth",
-  "shattered_aeons": "Shattered Aeons",
-  "turn_back_time": "Turn Back Time",
-  "agents_of_azathoth": "Agents of Azathoth",
-  "anettes_coven": "Anette's Coven",
-  "at_deaths_doorstep": "At Death's Doorstep",
-  "return_to_at_deaths_doorstep": "Return to At Death's Doorstep",
-  "city_of_sins": "City of Sins",
-  "city_of_the_damned": "City of the Damned",
-  "disappearance_at_the_twilight_estate": "Disappearance at the Twilight Estate",
-  "return_to_disappearance_at_the_twilight_estate": "Return to Disappearance at the Twilight Estate",
-  "inexorable_fate": "Inexorable Fate",
-  "unspeakable_fate": "Unspeakable Fate",
-  "realm_of_death": "Realm of Death",
-  "unstable_realm": "Unstable Realm",
-  "chilling_mists": "Chilling Mists",
-  "silver_twilight_lodge": "Silver Twilight Lodge",
-  "spectral_predators": "Spectral Predators",
-  "the_watcher": "The Watcher",
-  "the_witching_hour": "The Witching Hour",
-  "return_to_the_witching_hour": "Return to The Witching Hour",
-  "trapped_spirits": "Trapped Spirits",
-  "bloodthirsty_spirits": "Bloodthirsty Spirits",
-  "witchcraft": "Witchcraft",
-  "hexcraft": "Hexcraft",
-  "the_secret_name": "The Secret Name",
-  "return_to_the_secret_name": "Return to The Secret Name",
-  "the_wages_of_sin": "The Wages of Sin",
-  "return_to_the_wages_of_sin": "Return to The Wages of Sin",
-  "for_the_greater_good": "For the Greater Good",
-  "return_to_for_the_greater_good": "Return to For the Greater Good",
-  "union_and_disillusion": "Union and Disillusion",
-  "return_to_union_and_disillusion": "Return to Union and Disillusion",
-  "in_the_clutches_of_chaos": "In the Clutches of Chaos",
-  "return_to_in_the_clutches_of_chaos": "Return to In the Clutches of Chaos",
-  "music_of_the_damned": "Music of the Damned",
-  "secrets_of_the_universe": "Secrets of the Universe",
-  "before_the_black_throne": "Before the Black Throne",
-  "return_to_before_the_black_throne": "Return to Before the Black Throne",
-  "impending_evils": "Impending Evils",
-  "agents_of_atlach_nacha": "Agents of Atlach-Nacha",
-  "agents_of_nyarlathotep": "Agents of Nyarlathotep",
-  "corsairs": "Corsairs",
-  "creatures_of_the_underworld": "Creatures of the Underworld",
-  "dreamers_curse": "Dreamer's Curse",
-  "dreamlands": "Dreamlands",
-  "merging_realities": "Merging Realities",
-  "spiders": "Spiders",
-  "whispers_of_hypnos": "Whispers of Hypnos",
-  "zoogs": "Zoogs",
-  "in_the_labyrinths_of_lunacy": "The Labyrinths of Lunacy",
-  "epic_multiplayer": "Epic Multiplayer",
-  "single_group": "Single Group",
-  "abyssal_gifts": "Abyssal Gifts",
-  "abyssal_tribute": "Abyssal Tribute",
-  "brotherhood_of_the_beast": "Brotherhood of the Beast",
-  "sands_of_egypt": "Sands of Egypt",
-  "the_eternal_slumber": "The Eternal Slumber",
-  "the_nights_usurper": "The Night's Usurper",
-  "return_to_the_gathering": "Return to the Gathering",
-  "return_to_the_midnight_masks": "Return to the Midnight Masks",
-  "return_to_the_devourer_below": "Return to the Devourer Below",
-  "ghouls_of_umôrdhoth": "Ghouls of Umôrdhoth",
-  "the_devourers_cult": "The Devourers Cult",
-  "return_cult": "Return Cult of Umôrdhoth",
-  "return_to_extracurricular_activities": "Return to Extracurricular Activity",
-  "return_to_the_house_always_wins": "Return to The House Always Wins",
-  "return_to_the_miskatonic_museum": "Return to The Miskatonic Museum",
-  "return_to_the_essex_county_express": "Return to The Essex County Express",
-  "return_to_blood_on_the_altar": "Return to Blood on the Altar",
-  "return_to_undimensioned_and_unseen": "Return to Undimensioned and Unseen",
-  "return_to_where_doom_awaits": "Return to Where Doom Awaits",
-  "return_to_lost_in_time_and_space": "Return to Lost in Time and Space",
-  "resurgent_evils": "Resurgent Evils",
-  "erratic_fear": "Erratic Fear",
-  "creeping_cold": "Creeping Cold",
-  "secret_doors": "Secret Doors",
-  "yog_sothoths_emissaries": "Yog-Sothoth's Emissaries",
-  "beyond_the_threshold": "Beyond the Threshold",
-  "return_to_curtain_call": "Return to Curtain Call",
-  "return_to_the_last_king": "Return to The Last King",
-  "return_to_echoes_of_the_past": "Return to Echoes of the Past",
-  "return_to_the_unspeakable_oath": "Return to The Unspeakable Oath",
-  "return_to_a_phantom_of_truth": "Return to A Phantom of Truth",
-  "return_to_the_pallid_mask": "Return to The Pallid Mask",
-  "return_to_black_stars_rise": "Return to Black Stars Rise",
-  "return_to_dim_carcosa": "Return to Dim Carcosa",
-  "delusory_evils": "Delusory Evils",
-  "neurotic_fear": "Neurotic Fear",
-  "hasturs_envoys": "Hastur's Envoys",
-  "decaying_reality": "Decaying Reality",
-  "maddening_delusions": "Maddening Delusions",
-  "beyond_the_gates_of_sleep": "Beyond the Gates of Sleep",
-  "waking_nightmare": "Waking Nightmare",
-  "a_thousand_shapes_of_horror": "A Thousand Shapes of Horror",
-  "the_search_for_kadath": "The Search for Kadath",
-  "dark_side_of_the_moon": "Dark Side of the Moon",
-  "point_of_no_return": "Point of No Return",
-  "where_the_gods_dwell": "Where the Gods Dwell",
-  "weaver_of_the_cosmos": "Weaver of the Cosmos",
-  "terror_of_the_vale": "Terror of the Vale",
-  "descent_into_the_pitch": "Descent into the Pitch",
-  "murder_at_the_excelsior_hotel": "Murder at the Excelsior Hotel",
-  "alien_interference": "Alien Interference",
-  "dark_rituals": "Dark Rituals",
-  "excelsior_management": "Excelsior Management",
-  "sins_of_the_past": "Sins of the Past",
-  "vile_experiments": "Vile Experiments",
-  "blob": "The Blob That Ate Everything",
-  "blob_that_ate_everything_else": "The Blob That Ate Everything Else",
-  "blob_epic_multiplayer": "Epic Multiplayer",
-  "blob_single_group": "Single Group",
-  "migo_incursion": "Mi-Go Incursion",
-  "migo_incursion_2": "Mi-Go Incursion II",
-  "read_or_die": "Read or Die",
-  "all_or_nothing": "All or Nothing",
-  "bad_blood": "Bad Blood",
-  "by_the_book": "By the Book",
-  "return_to_the_untamed_wilds": "Return to the Untamed Wilds",
-  "return_to_the_doom_of_eztli": "Return to the Doom of Eztli",
-  "return_to_threads_of_fate": "Return to Threads of Fate",
-  "return_to_the_boundary_beyond": "Return to the Boundary Beyond",
-  "return_to_heart_of_the_elders": "Return to Heart of the Elders",
-  "return_to_pillars_of_judgment": "Return to Pillars of Judgment",
-  "return_to_knyan": "Return to K'n-yan",
-  "return_to_the_city_of_archives": "Return to the City of Archives",
-  "return_to_the_depths_of_yoth": "Return to the Depths of Yoth",
-  "return_to_shattered_aeons": "Return to Shattered Aeons",
-  "return_to_turn_back_time": "Return to Turn Back Time",
-  "return_to_the_rainforest": "Return to the Rainforest",
-  "cult_of_pnakotus": "Cult of Pnakotus",
-  "doomed_expedition": "Doomed Expedition",
-  "temporal_hunters": "Temporal Hunters",
-  "venomous_hate": "Venomous Hate",
-  "the_pit_of_despair": "The Pit of Despair",
-  "creatures_of_the_deep": "Creatures of the Deep",
-  "flooded_caverns": "Flooded Caverns",
-  "rising_tide": "Rising Tide",
-  "shattered_memories": "Shattered Memories",
-  "agents_of_dagon": "Agents of Dagon",
-  "agents_of_hydra": "Agents of Hydra",
-  "the_locals": "The Locals",
-  "fog_over_innsmouth": "Fog over Innsmouth",
-  "the_vanishing_of_elina_harper": "The Vanishing of Elina Harper",
-  "syzygy": "Syzygy",
-  "malfunction": "Malfunction",
-  "in_too_deep": "In Too Deep",
-  "devil_reef": "Devil Reef",
-  "war_of_the_outer_gods": "War of the Outer Gods",
-  "children_of_paradise": "Children of Paradise",
-  "swarm_of_assimilation": "Swarm of Assimilation",
-  "death_of_stars": "Death of Stars",
-  "meddling_of_meowlathotep": "The Meddling of Meowlathotep",
-  "horror_in_high_gear": "Horror in High Gear",
-  "a_light_in_the_fog": "A Light in the Fog",
-  "the_lair_of_dagon": "The Lair of Dagon",
-  "into_the_maelstrom": "Into the Maelstrom",
-  "the_tatterdemalion": "The Tatterdemalion",
-  "electric_nightmare": "Electric Nightmare",
-  "lost_quantum": "Lost Quantum",
-  "in_the_shadow_of_earth": "In the Shadow of Earth",
-  "strange_moons": "Strange Moons",
-  "the_machine_in_yellow": "The Machine in Yellow",
-  "fragment_of_carcosa": "Fragment of Carcosa",
-  "starfall": "Starfall",
-  "deep_space": "Deep Space",
-  "anachronism": "Anachronism",
-  "dark_past": "Dark Past",
-  "artificial_intelligence": "Artificial Intelligence",
-  "endtimes": "Endtimes",
-  "the_boogeyman": "The Boogeyman",
-  "interstellar_predators": "Interstellar Predators",
-  "hasturs_gaze": "Hastur's Gaze",
-  "consternation_on_the_constellation": "Consternation on the Constellation",
-  "coc_deep_ones": "Deep Ones",
-  "sinking_ship": "Sinking Ship",
-  "a_sea_of_troubles": "A Sea of Troubles",
-  "gurathnakas_shadows": "Gurathnaka's Shadows",
-  "cheshire_cat": "Cheshire Cat",
-  "arkham_in_wonderland": "Arkham in Wonderland",
-  "warped_reality": "Warped Reality",
-  "bleeding_hearts": "Bleeding Hearts",
-  "card_guards": "Card Guards",
-  "riddles_and_games": "Riddles and Games",
-  "wonderland_boons": "Wonderland Boons",
-  "wonderland_banes": "Wonderland Banes",
-  "fools_mate": "Fool's Mate",
-  "chessmen": "Chessmen",
-  "lucid_nightmare": "Lucid Nightmare",
-  "alice_in_arkham": "Alice in Arkham",
-  "sibling_rivalry": "Sibling Rivalry",
-  "tempest_in_a_teapot": "Tempest in a Teapot",
-  "walrus_and_carpenter": "Walrus and Carpenter",
-  "wild_snark_chase": "Wild Snark Chase",
-  "jabberwocky": "Jabberwock",
-  "the_warning": "The Warning",
-  "berserkers": "Berserkers",
-  "draugar": "Draugar",
-  "lacuna": "Lacuna",
-  "runic_oaths": "Runic Oaths",
-  "hudulfolk": "Hudulfólk",
-  "glacial_mists": "Glacial Mists",
-  "the_crown": "The Crown",
-  "the_fallen": "The Fallen",
-  "the_golden_circle": "The Golden Circle",
-  "ice_and_death": "Ice and Death",
-  "the_crash": "The Crash",
-  "creatures_in_the_ice": "Creatures in the Ice",
-  "deadly_weather": "Deadly Weather",
-  "hazards_of_antarctica": "Hazards of Antarctica",
-  "silence_and_mystery": "Silence and Mystery",
-  "tekeli_li": "Tekeli-li",
-  "to_the_forbidden_peaks": "To the Forbidden Peaks",
-  "the_great_seal": "The Great Seal",
-  "city_of_the_elder_things": "City of the Elder Things",
-  "seeping_nightmares": "Seeping Nightmares",
-  "nameless_horrors": "Nameless Horrors",
-  "memorials_of_the_lost": "Memorials of the Lost",
-  "fatal_mirage": "Fatal Mirage",
-  "elder_things": "Elder Things",
-  "the_heart_of_madness": "The Heart of Madness",
-  "stirring_in_the_deep": "Stirring in the Deep",
-  "shoggoths": "Shoggoths",
-  "penguins": "Penguins",
-  "miasma": "Miasma",
-  "lost_in_the_night": "Lost in the Night",
-  "left_behind": "Left Behind",
-  "expedition_team": "Expedition Team",
-  "agents_of_the_unknown": "Agents of the Unknown",
-  "machinations_through_time": "Machinations Through Time",
-  "machinations_epic_multiplayer": "Epic Multiplayer",
-  "machinations_single_group": "Single Group",
-  "red_tide_rising": "Red Tide Rising",
-  "agency_survivors": "Agency Survivors",
-  "agents_of_cthugha": "Agents of Cthugha",
-  "gifts_of_the_plaguebearer": "Gifts of the Plaguebearer",
-  "haze_of_miasma": "Haze of Miasma",
-  "life_and_death": "Life and Death",
-  "the_plaguebearers_commands": "The Plaguebearer's Commands",
-  "tenuous_allies": "Tenuous Allies",
-  "fallen_arkham": "Fallen Arkham",
-  "unbound_power": "Unbound Power",
-  "late_risers": "Late Risers",
-  "night_on_the_town": "Night on the Town",
-  "dead_by_dawn": "Dead by Dawn",
-  "mourning_chorus": "Mourning Chorus",
-  "high_noon_descent": "High Noon Descent",
-  "the_afternoon_war": "The Afternoon War",
-  "death_at_sundown": "Death at Sundown",
-  "the_midnight_hour": "The Midnight Hour",
-  "the_symphony_of_erich_zann": "The Symphony of Erich Zann",
-  "when_the_world_screamed": "When the World Screamed",
-  "meteoric_phenomenon": "Meteoric Phenomenon",
-  "unnatural_disturbances": "Unnatural Disturbances",
-  "inhospitable_locality": "Inhospitable Locality",
-  "made_flesh": "Made Flesh",
-  "lost_cathedral": "Lost Cathedral",
-  "across_dreadful_waters": "Across Dreadful Waters",
-  "archaic_evils": "Archaic Evils",
-  "architects_of_chaos": "Architects of Chaos",
-  "awakened_madness": "Awakened Madness",
-  "blood_from_stones": "Blood From Stones",
-  "countermeasures": "Countermeasures",
-  "crumbling_masonry": "Crumbling Masonry",
-  "cult_of_cthulhu": "Cult of Cthulhu",
-  "deep_dreams": "Deep Dreams",
-  "going_twice": "Going Twice",
-  "grand_compass": "Grand Compass",
-  "lost_moorings": "Lost Moorings",
-  "private_lives": "Private Lives",
-  "pyroclastic_flow": "Pyroclastic Flow",
-  "shadowy_agents": "Shadowy Agents",
-  "spawn_of_rlyeh": "Spawn of R'lyeh",
-  "storm_and_sea": "Storm and Sea",
-  "tomb_of_dead_dreams": "Tomb of Dead Dreams",
-  "unfriendly_ports": "Unfriendly Ports",
-  "unnatural_stone": "Unnatural Stone",
-  "the_fall_of_the_house_of_usher": "The Fall of the House of Usher",
-  "hanninah_valley": "Hanninah Valley",
-  "wendigos_myth": "Wendigo's Myth",
-  "fortune_and_folly": "Fortune and Folly",
-  "fortunes_chosen": "Fortune's Chosen",
-  "plan_in_shambles": "Plan in Shambles",
-  "the_black_stone": "The Black Stone",
-  "legendry": "Legendry",
-  "occultism": "Occultism",
-  "magyar": "Magyar",
-  "natural_hazards": "Natural Hazards",
-  "wild_beasts": "Wild Beasts",
-  "ancient_hunger": "Ancient Hunger",
-  "witch_cult": "Witch-Cult",
-  "tomes": "Tomes",
-  "riddles_and_rain": "Riddles and Rain",
-  "mysteries_abound": "Mysteries Abound",
-  "shades_of_suffering": "Shades of Suffering",
-  "agents_of_the_outside": "Agents of the Outside",
-  "beyond_the_beyond": "Beyond the Beyond",
-  "congress_of_the_keys": "Congress of the Keys",
-  "dancing_mad": "Dancing Mad",
-  "dead_heat": "Dead Heat",
-  "dogs_of_war": "Dogs of War",
-  "outsiders": "Outsiders",
-  "scarlet_sorcery": "Scarlet Sorcery",
-  "spatial_anomaly": "Spatial Anomaly",
-  "strange_happenings": "Strange Happenings",
-  "secret_war": "Secret War",
-  "shadow_of_a_doubt": "Shadow of a Doubt",
-  "without_a_trace": "Without a Trace",
-  "agents_of_yuggoth": "Agents of Yuggoth",
-  "cleanup_crew": "Cleanup Crew",
-  "crimson_conspiracy": "Crimson Conspiracy",
-  "dark_veiling": "Dark Veiling",
-  "dealings_in_the_dark": "Dealings in the Dark",
-  "globetrotting": "Globetrotting",
-  "on_thin_ice": "On Thin Ice",
-  "red_coterie": "Red Coterie",
-  "sanguine_shadows": "Sanguine Shadows",
-  "spreading_corruption": "Spreading Corruption",
-  "zhod_africa_is_watching": "Africa is Watching",
-  "zhod_to_the_heart_of_the_congo": "To the Heart of the Congo",
-  "zhod_the_avatar_of_darkness": "The Avatar of Darkness",
-  "zhod_the_darkness": "The Darkness",
-  "zhod_african_wildlife": "African Wildlife",
-  "zhod_lands_of_the_congo": "Lands of the Congo",
-  "zhod_cult_of_darkness": "Cult of Darkness",
-  "zreturn_to_the_pit_of_despair": "Return to The Pit of Despair",
-  "zreturn_to_the_vanishing_of_elina_harper": "Return to The Vanishing of Elina Harper",
-  "zreturn_to_in_too_deep": "Return to In Too Deep",
-  "zreturn_to_devil_reef": "Return to Devil Reef",
-  "zreturn_to_horror_in_high_gear": "Return to Horror in High Gear",
-  "zreturn_to_a_light_in_the_fog": "Return to A Light in the Fog",
-  "zreturn_to_the_lair_of_dagon": "Return to The Lair of Dagon",
-  "zreturn_to_into_the_maelstrom": "Return to Into the Maelstrom",
-  "zstalkers_of_cthulhu": "Stalkers of Cthulhu",
-  "zrolling_tide": "Rolling Tide",
-  "zinnsmouth_haze": "Innsmouth Haze",
-  "zoccultation": "Occultation",
-  "zbarricaded_doors": "Barricaded Doors",
-  "zreturn_to_flooded_caverns": "Return to Flooded Caverns",
-  "laid_to_rest": "Laid to Rest",
-  "relics_of_the_past": "Relics of the Past",
-  "too_noble": "Too Noble",
-  "something_big": "Something Big",
-  "unscrupulous_investments": "Unscrupulous Investments",
-  "anything_once": "Anything Once",
-  "mysterious_benefits": "Mysterious Benefits",
-  "the_first_day": "The First Day",
-  "the_second_day": "The Second Day",
-  "the_final_day": "The Final Day",
-  "agents_of_the_colour": "Agents of the Colour",
-  "fate_of_the_vale": "Fate of the Vale",
-  "heirlooms": "Heirlooms",
-  "horrors_in_the_rock": "Horrors in the Rock",
-  "myconids": "Myconids",
-  "residents": "Residents",
-  "the_longest_night": "The Longest Night",
-  "the_silent_heath": "The Silent Heath",
-  "the_twisted_hollow": "The Twisted Hollow",
-  "transfiguration": "Transfiguration",
-  "day_of_rest": "Day of Rest",
-  "day_of_rain": "Day of Rain",
-  "day_of_the_feast": "Day of the Feast",
-  "blight": "Blight",
-  "fire": "Fire!",
-  "hemlock_house": "Hemlock House",
-  "mutations": "Mutations",
-  "refractions": "Refractions",
-  "the_forest": "The Forest",
-  "the_lost_sister": "The Lost Sister",
-  "the_thing_in_the_depths": "The Thing in the Depths",
-  "the_vale": "The Vale",
-  "written_in_rock": "Written in Rock",
-  "depraved_legions": "Depraved Legions",
-  "spiraling_inferno": "Spiralling Inferno",
-  "scorched_wasteland": "Scorched Wasteland",
-  "malevolent_ritual": "Malevolent Ritual",
-  "final_annihilation": "Final Annihilation",
-  "the_midwinter_gala": "The Midwinter Gala",
-  "zoz_the_road_to_oz": "The Road to Oz",
-  "zoz_ferocious_beasts": "Ferocious Beasts",
-  "zoz_wicked_witches": "Wicked Witches",
-  "zoz_prismatic_evils": "Prismatic Evils",
-  "zoz_terror_out_of_space": "Terror Out of Space",
-  "zoz_princess_of_oz": "Princess of Oz",
-  "zoz_chromatic_infection": "Chromatic Infection",
-  "zoz_deep_impact": "Deep Impact",
-  "zoz_emerald_city": "Emerald City",
-  "zoz_alien_vibrance": "Alien Vibrance",
-  "zoz_horrid_infection": "Horrid Infection",
-  "zoz_companions_of_oz": "Companions of Oz",
-  "zoz_spiraling_decay": "Spiraling Decay",
-  "zoz_double_whammy": "Double Whammy",
-  "zoz_chasing_rainbows": "Chasing Rainbows",
-  "zoz_blighted_land": "Blighted Land",
-  "zoz_misery_loves_company": "Misery Loves Company",
-  "zoz_nomes": "Nomes",
-  "zoz_violent_invasion": "Violent Invasion",
-  "zoz_hall_of_the_mountain_king": "Hall of the Mountain King",
-  "zoz_defense_of_the_realm": "Defense of the Realm",
-  "zoz_true_colours": "True Colours",
-  "zoz_the_colour_itself": "The Colour Itself",
-  "zoz_munchkin": "Munchkin Country",
-  "zoz_winkie": "Winkie Country",
-  "zoz_quadling": "Quadling Country",
-  "zoz_gillikin": "Gillikin Country",
-  "zoz_prologue": "Prologue",
-  "zau_night_of_fire": "Night of Fire",
-  "zau_myriad_gentleman": "The Myriad Gentleman",
-  "zau_world_torn_down": "A World Torn Down",
-  "zau_unstuck": "Unstuck",
-  "zau_year_to_plan": "A Year to Plan",
-  "zau_world_torn_down_again": "A World Torn Down, Again",
-  "zau_time_runs_out": "Time Runs Out",
-  "zau_agents_of_aforgomon": "Agents of Aforgomon",
-  "zau_missions": "Missions",
-  "zau_myriad": "Myriad",
-  "zau_night_of_the_ritual": "Night of the Ritual",
-  "zau_nyctophobia": "Nyctophobia",
-  "zau_paradox": "Paradox",
-  "zau_shifting_reality": "Shifting Reality",
-  "zau_thugs": "Thugs",
-  "zau_unleashed_chaos": "Unleashed Chaos",
-  "zau_unravelling_years": "Unravelling Years",
-  "one_last_job": "One Last Job",
-  "the_apiary": "The Apiary",
-  "cosmic_legacy": "Cosmic Legacy",
-  "court_of_the_ancients": "Court of the Ancients",
-  "domination": "Domination",
-  "the_doom_of_arkham_part_1": "The Doom of Arkham Part I",
-  "the_doom_of_arkham_part_2": "The Doom of Arkham Part II",
-  "alien_machinery": "Alien Machinery",
-  "dreams": "Dreams",
-  "the_drowned_quarter": "The Drowned Quarter",
-  "elder_mist": "Elder Mist",
-  "tdc_expedition": "Expedition",
-  "tdc_flood": "Flood",
-  "the_grand_vault": "The Grand Vault",
-  "the_inescapable": "The Inescapable",
-  "obsidian_canyons": "Obsidian Canyons",
-  "pilgrims": "Pilgrims",
-  "rlyeh": "R'lyeh",
-  "sepulchre_of_the_sleeper": "Sepulchre of the Sleeper",
-  "star_spawn": "Star Spawn",
-  "stowaways": "Stowaways",
-  "tasks": "Tasks",
-  "undersea_creatures": "Undersea Creatures",
-  "the_western_wall": "The Western Wall",
-  "deep_ones": "Deep Ones",
-  "zcx_one_night_only": "One Night Only",
-  "zcx_primrose_path": "The Primrose Path",
-  "zcx_harms_way": "Harm's Way",
-  "zcx_all_points_west": "All Points West",
-  "zcx_piper_at_the_gates_of_dawn": "Piper at the Gates of Dawn",
-  "zcx_bacchanalia": "Bacchanalia",
-  "zcx_red_sunrise": "Red Sunrise",
-  "zcx_thousand_to_one": "Thousand to One",
-  "zcx_children_of_the_goat": "Children of the Goat",
-  "zcx_circus_grounds": "Circus Grounds",
-  "zcx_cult_of_shub_niggurath": "Cult of Shub-Niggurath",
-  "zcx_illusory_tricks": "Illusory Tricks",
-  "zcx_lunatic_night": "Lunatic Night",
-  "zcx_new_moon_daredevils": "New Moon Daredevils",
-  "zcx_new_moon_entertainers": "New Moon Entertainers",
-  "zcx_panicked_masses": "Panicked Masses",
-  "zcx_primordial_evils": "Primordial Evils",
-  "zcx_savage_woods": "Savage Woods",
-  "zcx_destiny_and_prophecy": "Destiny and Prophecy",
-  "zcx_circus_ex_mortis": "Circus Ex Mortis",
-  "film_fatale": "Film Fatale",
-  "forgotten_island": "Forgotten Island",
-  "abominable_contessa": "Abominable Contessa",
-  "cosmic_journey": "Cosmic Journey",
-  "enthralling_encore": "Enthralling Encore",
-  "spreading_flames": "Spreading Flames",
-  "smoke_and_mirrors": "Smoke and Mirrors",
-  "queen_of_ash": "Queen of Ash",
-  "arcane_lock": "Arcane Lock",
-  "arkham_ch2": "Arkham",
-  "ashen_pilgrims": "Ashen Pilgrims",
-  "cosmic_evils": "Cosmic Evils",
-  "cultists_ch2": "Cultists",
-  "dead_ends": "Dead Ends",
-  "bad_weather": "Bad Weather",
-  "eldritch_lore": "Eldritch Lore",
-  "fire_ch2": "Fire!",
-  "flying_terrors": "Flying Terrors",
-  "gangs_of_arkham": "Gangs of Arkham",
-  "hallucinations": "Hallucinations",
-  "mad_science": "Mad Science",
-  "miskatonic_university": "Miskatonic University",
-  "people_of_arkham": "People of Arkham",
-  "reeking_decay": "Reeking Decay",
-  "arkham_sewers": "Sewers",
-  "torment": "Torment",
-  "whippoorwills_ch2": "Whippoorwills",
-  "bystanders": "Bystanders",
-  "river_of_blood": "River of Blood",
-  "new_horizons": "New Horizons",
-  "blood_money": "Blood Money",
-  "afflicted": "Afflicted",
-  "agents_of_zburamoarte": "Agents of Zburamoarte",
-  "blood_blight": "Blood Blight",
-  "blood_moon": "Blood Moon",
-  "bloodthirst": "Bloodthirst",
-  "children_of_blood": "Children of Blood",
-  "friends_in_low_places": "Friends in Low Places",
-  "hunted": "Hunted",
-  "infected": "Infected",
-  "misinformation": "Misinformation",
-  "mongrels": "Mongrels",
-  "preyed_upon": "Preyed Upon",
-  "sanguine_secrets": "Sanguine Secrets",
-  "stalked": "Stalked",
-  "vermin": "Vermin",
-  "ztg_turning_gear": "The Turning Gear",
-  "ztg_flood": "Flood",
-  "ztg_military_maneuvers": "Military Maneuvers",
-  "ztg_red_guard": "Red Guard",
-  "ztg_unbound_dimensions": "Unbound Dimensions",
-  "ztg_single_group": "Single Group",
-  "ztg_epic": "Epic Multiplayer"
-}
+[
+  {
+    "code": "torch",
+    "name": "The Gathering"
+  },
+  {
+    "code": "arkham",
+    "name": "The Midnight Masks"
+  },
+  {
+    "code": "cultists",
+    "name": "Cult of Umôrdhoth"
+  },
+  {
+    "code": "tentacles",
+    "name": "The Devourer Below"
+  },
+  {
+    "code": "rats",
+    "name": "Rats"
+  },
+  {
+    "code": "ghouls",
+    "name": "Ghouls"
+  },
+  {
+    "code": "striking_fear",
+    "name": "Striking Fear"
+  },
+  {
+    "code": "ancient_evils",
+    "name": "Ancient Evils"
+  },
+  {
+    "code": "chilling_cold",
+    "name": "Chilling Cold"
+  },
+  {
+    "code": "pentagram",
+    "name": "Dark Cult"
+  },
+  {
+    "code": "nightgaunts",
+    "name": "Nightgaunts"
+  },
+  {
+    "code": "locked_doors",
+    "name": "Locked Doors"
+  },
+  {
+    "code": "agents_of_hastur",
+    "name": "Agents of Hastur"
+  },
+  {
+    "code": "agents_of_yog",
+    "name": "Agents of Yog-Sothoth"
+  },
+  {
+    "code": "agents_of_shub",
+    "name": "Agents of Shub-Niggurath"
+  },
+  {
+    "code": "agents_of_cthulhu",
+    "name": "Agents of Cthulhu"
+  },
+  {
+    "code": "unknown",
+    "name": "Unknown"
+  },
+  {
+    "code": "bayou",
+    "name": "The Bayou"
+  },
+  {
+    "code": "rougarou",
+    "name": "Curse of the Rougarou"
+  },
+  {
+    "code": "venice",
+    "name": "Carnevale of Horrors"
+  },
+  {
+    "code": "armitages_fate",
+    "name": "Armitage's Fate"
+  },
+  {
+    "code": "bishops_thralls",
+    "name": "Bishop's Thralls"
+  },
+  {
+    "code": "beast_thralls",
+    "name": "Beast Thralls"
+  },
+  {
+    "code": "naomis_crew",
+    "name": "Naomi's Crew"
+  },
+  {
+    "code": "extracurricular_activity",
+    "name": "Extracurricular Activity"
+  },
+  {
+    "code": "the_house_always_wins",
+    "name": "The House Always Wins"
+  },
+  {
+    "code": "sorcery",
+    "name": "Sorcery"
+  },
+  {
+    "code": "dunwich",
+    "name": "Dunwich"
+  },
+  {
+    "code": "whippoorwills",
+    "name": "Whippoorwills"
+  },
+  {
+    "code": "bad_luck",
+    "name": "Bad Luck"
+  },
+  {
+    "code": "the_beyond",
+    "name": "The Beyond"
+  },
+  {
+    "code": "hideous_abominations",
+    "name": "Hideous Abominations"
+  },
+  {
+    "code": "the_miskatonic_museum",
+    "name": "The Miskatonic Museum"
+  },
+  {
+    "code": "essex_county_express",
+    "name": "The Essex County Express"
+  },
+  {
+    "code": "blood_on_the_altar",
+    "name": "Blood On The Altar"
+  },
+  {
+    "code": "undimensioned_and_unseen",
+    "name": "Undimensioned and Unseen"
+  },
+  {
+    "code": "where_doom_awaits",
+    "name": "Where Doom Awaits"
+  },
+  {
+    "code": "lost_in_time_and_space",
+    "name": "Lost in Time and Space"
+  },
+  {
+    "code": "curtain_call",
+    "name": "Curtain Call"
+  },
+  {
+    "code": "the_last_king",
+    "name": "The Last King"
+  },
+  {
+    "code": "delusions",
+    "name": "Delusions"
+  },
+  {
+    "code": "byakhee",
+    "name": "Byakhee"
+  },
+  {
+    "code": "inhabitants_of_carcosa",
+    "name": "Inhabitants of Carcosa"
+  },
+  {
+    "code": "evil_portents",
+    "name": "Evil Portents"
+  },
+  {
+    "code": "hauntings",
+    "name": "Hauntings"
+  },
+  {
+    "code": "hasturs_gift",
+    "name": "Hastur's Gift"
+  },
+  {
+    "code": "cult_of_the_yellow_sign",
+    "name": "Cult of the Yellow Sign"
+  },
+  {
+    "code": "decay",
+    "name": "Decay & Filth"
+  },
+  {
+    "code": "stranger",
+    "name": "The Stranger"
+  },
+  {
+    "code": "echoes_of_the_past",
+    "name": "Echoes of the Past"
+  },
+  {
+    "code": "the_unspeakable_oath",
+    "name": "The Unspeakable Oath"
+  },
+  {
+    "code": "a_phantom_of_truth",
+    "name": "A Phantom of Truth"
+  },
+  {
+    "code": "the_pallid_mask",
+    "name": "The Pallid Mask"
+  },
+  {
+    "code": "black_stars_rise",
+    "name": "Black Stars Rise"
+  },
+  {
+    "code": "flood",
+    "name": "The Flood Below"
+  },
+  {
+    "code": "vortex",
+    "name": "The Vortex Above"
+  },
+  {
+    "code": "dim_carcosa",
+    "name": "Dim Carcosa"
+  },
+  {
+    "code": "agents_of_yig",
+    "name": "Agents of Yig"
+  },
+  {
+    "code": "traps",
+    "name": "Deadly Traps"
+  },
+  {
+    "code": "expedition",
+    "name": "Expedition"
+  },
+  {
+    "code": "ruins",
+    "name": "Forgotten Ruins"
+  },
+  {
+    "code": "guardians_of_time",
+    "name": "Guardians of Time"
+  },
+  {
+    "code": "pnakotic_brotherhood",
+    "name": "Pnakotic Brotherhood"
+  },
+  {
+    "code": "poison",
+    "name": "Poison"
+  },
+  {
+    "code": "rainforest",
+    "name": "Rainforest"
+  },
+  {
+    "code": "serpents",
+    "name": "Serpents"
+  },
+  {
+    "code": "flux",
+    "name": "Temporal Flux"
+  },
+  {
+    "code": "eztli",
+    "name": "The Doom of Eztli"
+  },
+  {
+    "code": "wilds",
+    "name": "The Untamed Wilds"
+  },
+  {
+    "code": "venom",
+    "name": "Yig's Venom"
+  },
+  {
+    "code": "threads_of_fate",
+    "name": "Threads of Fate"
+  },
+  {
+    "code": "the_boundary_beyond",
+    "name": "The Boundary Beyond"
+  },
+  {
+    "code": "heart_of_the_elders",
+    "name": "Heart of the Elders"
+  },
+  {
+    "code": "pillars_of_judgment",
+    "name": "Pillars of Judgment"
+  },
+  {
+    "code": "knyan",
+    "name": "K'n-yan"
+  },
+  {
+    "code": "the_city_of_archives",
+    "name": "The City of Archives"
+  },
+  {
+    "code": "the_depths_of_yoth",
+    "name": "The Depths of Yoth"
+  },
+  {
+    "code": "shattered_aeons",
+    "name": "Shattered Aeons"
+  },
+  {
+    "code": "turn_back_time",
+    "name": "Turn Back Time"
+  },
+  {
+    "code": "agents_of_azathoth",
+    "name": "Agents of Azathoth"
+  },
+  {
+    "code": "anettes_coven",
+    "name": "Anette's Coven"
+  },
+  {
+    "code": "at_deaths_doorstep",
+    "name": "At Death's Doorstep"
+  },
+  {
+    "code": "return_to_at_deaths_doorstep",
+    "name": "Return to At Death's Doorstep"
+  },
+  {
+    "code": "city_of_sins",
+    "name": "City of Sins"
+  },
+  {
+    "code": "city_of_the_damned",
+    "name": "City of the Damned"
+  },
+  {
+    "code": "disappearance_at_the_twilight_estate",
+    "name": "Disappearance at the Twilight Estate"
+  },
+  {
+    "code": "return_to_disappearance_at_the_twilight_estate",
+    "name": "Return to Disappearance at the Twilight Estate"
+  },
+  {
+    "code": "inexorable_fate",
+    "name": "Inexorable Fate"
+  },
+  {
+    "code": "unspeakable_fate",
+    "name": "Unspeakable Fate"
+  },
+  {
+    "code": "realm_of_death",
+    "name": "Realm of Death"
+  },
+  {
+    "code": "unstable_realm",
+    "name": "Unstable Realm"
+  },
+  {
+    "code": "chilling_mists",
+    "name": "Chilling Mists"
+  },
+  {
+    "code": "silver_twilight_lodge",
+    "name": "Silver Twilight Lodge"
+  },
+  {
+    "code": "spectral_predators",
+    "name": "Spectral Predators"
+  },
+  {
+    "code": "the_watcher",
+    "name": "The Watcher"
+  },
+  {
+    "code": "the_witching_hour",
+    "name": "The Witching Hour"
+  },
+  {
+    "code": "return_to_the_witching_hour",
+    "name": "Return to The Witching Hour"
+  },
+  {
+    "code": "trapped_spirits",
+    "name": "Trapped Spirits"
+  },
+  {
+    "code": "bloodthirsty_spirits",
+    "name": "Bloodthirsty Spirits"
+  },
+  {
+    "code": "witchcraft",
+    "name": "Witchcraft"
+  },
+  {
+    "code": "hexcraft",
+    "name": "Hexcraft"
+  },
+  {
+    "code": "the_secret_name",
+    "name": "The Secret Name"
+  },
+  {
+    "code": "return_to_the_secret_name",
+    "name": "Return to The Secret Name"
+  },
+  {
+    "code": "the_wages_of_sin",
+    "name": "The Wages of Sin"
+  },
+  {
+    "code": "return_to_the_wages_of_sin",
+    "name": "Return to The Wages of Sin"
+  },
+  {
+    "code": "for_the_greater_good",
+    "name": "For the Greater Good"
+  },
+  {
+    "code": "return_to_for_the_greater_good",
+    "name": "Return to For the Greater Good"
+  },
+  {
+    "code": "union_and_disillusion",
+    "name": "Union and Disillusion"
+  },
+  {
+    "code": "return_to_union_and_disillusion",
+    "name": "Return to Union and Disillusion"
+  },
+  {
+    "code": "in_the_clutches_of_chaos",
+    "name": "In the Clutches of Chaos"
+  },
+  {
+    "code": "return_to_in_the_clutches_of_chaos",
+    "name": "Return to In the Clutches of Chaos"
+  },
+  {
+    "code": "music_of_the_damned",
+    "name": "Music of the Damned"
+  },
+  {
+    "code": "secrets_of_the_universe",
+    "name": "Secrets of the Universe"
+  },
+  {
+    "code": "before_the_black_throne",
+    "name": "Before the Black Throne"
+  },
+  {
+    "code": "return_to_before_the_black_throne",
+    "name": "Return to Before the Black Throne"
+  },
+  {
+    "code": "impending_evils",
+    "name": "Impending Evils"
+  },
+  {
+    "code": "agents_of_atlach_nacha",
+    "name": "Agents of Atlach-Nacha"
+  },
+  {
+    "code": "agents_of_nyarlathotep",
+    "name": "Agents of Nyarlathotep"
+  },
+  {
+    "code": "corsairs",
+    "name": "Corsairs"
+  },
+  {
+    "code": "creatures_of_the_underworld",
+    "name": "Creatures of the Underworld"
+  },
+  {
+    "code": "dreamers_curse",
+    "name": "Dreamer's Curse"
+  },
+  {
+    "code": "dreamlands",
+    "name": "Dreamlands"
+  },
+  {
+    "code": "merging_realities",
+    "name": "Merging Realities"
+  },
+  {
+    "code": "spiders",
+    "name": "Spiders"
+  },
+  {
+    "code": "whispers_of_hypnos",
+    "name": "Whispers of Hypnos"
+  },
+  {
+    "code": "zoogs",
+    "name": "Zoogs"
+  },
+  {
+    "code": "in_the_labyrinths_of_lunacy",
+    "name": "The Labyrinths of Lunacy"
+  },
+  {
+    "code": "epic_multiplayer",
+    "name": "Epic Multiplayer"
+  },
+  {
+    "code": "single_group",
+    "name": "Single Group"
+  },
+  {
+    "code": "abyssal_gifts",
+    "name": "Abyssal Gifts"
+  },
+  {
+    "code": "abyssal_tribute",
+    "name": "Abyssal Tribute"
+  },
+  {
+    "code": "brotherhood_of_the_beast",
+    "name": "Brotherhood of the Beast"
+  },
+  {
+    "code": "sands_of_egypt",
+    "name": "Sands of Egypt"
+  },
+  {
+    "code": "the_eternal_slumber",
+    "name": "The Eternal Slumber"
+  },
+  {
+    "code": "the_nights_usurper",
+    "name": "The Night's Usurper"
+  },
+  {
+    "code": "return_to_the_gathering",
+    "name": "Return to the Gathering"
+  },
+  {
+    "code": "return_to_the_midnight_masks",
+    "name": "Return to the Midnight Masks"
+  },
+  {
+    "code": "return_to_the_devourer_below",
+    "name": "Return to the Devourer Below"
+  },
+  {
+    "code": "ghouls_of_umôrdhoth",
+    "name": "Ghouls of Umôrdhoth"
+  },
+  {
+    "code": "the_devourers_cult",
+    "name": "The Devourers Cult"
+  },
+  {
+    "code": "return_cult",
+    "name": "Return Cult of Umôrdhoth"
+  },
+  {
+    "code": "return_to_extracurricular_activities",
+    "name": "Return to Extracurricular Activity"
+  },
+  {
+    "code": "return_to_the_house_always_wins",
+    "name": "Return to The House Always Wins"
+  },
+  {
+    "code": "return_to_the_miskatonic_museum",
+    "name": "Return to The Miskatonic Museum"
+  },
+  {
+    "code": "return_to_the_essex_county_express",
+    "name": "Return to The Essex County Express"
+  },
+  {
+    "code": "return_to_blood_on_the_altar",
+    "name": "Return to Blood on the Altar"
+  },
+  {
+    "code": "return_to_undimensioned_and_unseen",
+    "name": "Return to Undimensioned and Unseen"
+  },
+  {
+    "code": "return_to_where_doom_awaits",
+    "name": "Return to Where Doom Awaits"
+  },
+  {
+    "code": "return_to_lost_in_time_and_space",
+    "name": "Return to Lost in Time and Space"
+  },
+  {
+    "code": "resurgent_evils",
+    "name": "Resurgent Evils"
+  },
+  {
+    "code": "erratic_fear",
+    "name": "Erratic Fear"
+  },
+  {
+    "code": "creeping_cold",
+    "name": "Creeping Cold"
+  },
+  {
+    "code": "secret_doors",
+    "name": "Secret Doors"
+  },
+  {
+    "code": "yog_sothoths_emissaries",
+    "name": "Yog-Sothoth's Emissaries"
+  },
+  {
+    "code": "beyond_the_threshold",
+    "name": "Beyond the Threshold"
+  },
+  {
+    "code": "return_to_curtain_call",
+    "name": "Return to Curtain Call"
+  },
+  {
+    "code": "return_to_the_last_king",
+    "name": "Return to The Last King"
+  },
+  {
+    "code": "return_to_echoes_of_the_past",
+    "name": "Return to Echoes of the Past"
+  },
+  {
+    "code": "return_to_the_unspeakable_oath",
+    "name": "Return to The Unspeakable Oath"
+  },
+  {
+    "code": "return_to_a_phantom_of_truth",
+    "name": "Return to A Phantom of Truth"
+  },
+  {
+    "code": "return_to_the_pallid_mask",
+    "name": "Return to The Pallid Mask"
+  },
+  {
+    "code": "return_to_black_stars_rise",
+    "name": "Return to Black Stars Rise"
+  },
+  {
+    "code": "return_to_dim_carcosa",
+    "name": "Return to Dim Carcosa"
+  },
+  {
+    "code": "delusory_evils",
+    "name": "Delusory Evils"
+  },
+  {
+    "code": "neurotic_fear",
+    "name": "Neurotic Fear"
+  },
+  {
+    "code": "hasturs_envoys",
+    "name": "Hastur's Envoys"
+  },
+  {
+    "code": "decaying_reality",
+    "name": "Decaying Reality"
+  },
+  {
+    "code": "maddening_delusions",
+    "name": "Maddening Delusions"
+  },
+  {
+    "code": "beyond_the_gates_of_sleep",
+    "name": "Beyond the Gates of Sleep"
+  },
+  {
+    "code": "waking_nightmare",
+    "name": "Waking Nightmare"
+  },
+  {
+    "code": "a_thousand_shapes_of_horror",
+    "name": "A Thousand Shapes of Horror"
+  },
+  {
+    "code": "the_search_for_kadath",
+    "name": "The Search for Kadath"
+  },
+  {
+    "code": "dark_side_of_the_moon",
+    "name": "Dark Side of the Moon"
+  },
+  {
+    "code": "point_of_no_return",
+    "name": "Point of No Return"
+  },
+  {
+    "code": "where_the_gods_dwell",
+    "name": "Where the Gods Dwell"
+  },
+  {
+    "code": "weaver_of_the_cosmos",
+    "name": "Weaver of the Cosmos"
+  },
+  {
+    "code": "terror_of_the_vale",
+    "name": "Terror of the Vale"
+  },
+  {
+    "code": "descent_into_the_pitch",
+    "name": "Descent into the Pitch"
+  },
+  {
+    "code": "murder_at_the_excelsior_hotel",
+    "name": "Murder at the Excelsior Hotel"
+  },
+  {
+    "code": "alien_interference",
+    "name": "Alien Interference"
+  },
+  {
+    "code": "dark_rituals",
+    "name": "Dark Rituals"
+  },
+  {
+    "code": "excelsior_management",
+    "name": "Excelsior Management"
+  },
+  {
+    "code": "sins_of_the_past",
+    "name": "Sins of the Past"
+  },
+  {
+    "code": "vile_experiments",
+    "name": "Vile Experiments"
+  },
+  {
+    "code": "blob",
+    "name": "The Blob That Ate Everything"
+  },
+  {
+    "code": "blob_that_ate_everything_else",
+    "name": "The Blob That Ate Everything Else"
+  },
+  {
+    "code": "blob_epic_multiplayer",
+    "name": "Epic Multiplayer"
+  },
+  {
+    "code": "blob_single_group",
+    "name": "Single Group"
+  },
+  {
+    "code": "migo_incursion",
+    "name": "Mi-Go Incursion"
+  },
+  {
+    "code": "migo_incursion_2",
+    "name": "Mi-Go Incursion II"
+  },
+  {
+    "code": "read_or_die",
+    "name": "Read or Die"
+  },
+  {
+    "code": "all_or_nothing",
+    "name": "All or Nothing"
+  },
+  {
+    "code": "bad_blood",
+    "name": "Bad Blood"
+  },
+  {
+    "code": "by_the_book",
+    "name": "By the Book"
+  },
+  {
+    "code": "return_to_the_untamed_wilds",
+    "name": "Return to the Untamed Wilds"
+  },
+  {
+    "code": "return_to_the_doom_of_eztli",
+    "name": "Return to the Doom of Eztli"
+  },
+  {
+    "code": "return_to_threads_of_fate",
+    "name": "Return to Threads of Fate"
+  },
+  {
+    "code": "return_to_the_boundary_beyond",
+    "name": "Return to the Boundary Beyond"
+  },
+  {
+    "code": "return_to_heart_of_the_elders",
+    "name": "Return to Heart of the Elders"
+  },
+  {
+    "code": "return_to_pillars_of_judgment",
+    "name": "Return to Pillars of Judgment"
+  },
+  {
+    "code": "return_to_knyan",
+    "name": "Return to K'n-yan"
+  },
+  {
+    "code": "return_to_the_city_of_archives",
+    "name": "Return to the City of Archives"
+  },
+  {
+    "code": "return_to_the_depths_of_yoth",
+    "name": "Return to the Depths of Yoth"
+  },
+  {
+    "code": "return_to_shattered_aeons",
+    "name": "Return to Shattered Aeons"
+  },
+  {
+    "code": "return_to_turn_back_time",
+    "name": "Return to Turn Back Time"
+  },
+  {
+    "code": "return_to_the_rainforest",
+    "name": "Return to the Rainforest"
+  },
+  {
+    "code": "cult_of_pnakotus",
+    "name": "Cult of Pnakotus"
+  },
+  {
+    "code": "doomed_expedition",
+    "name": "Doomed Expedition"
+  },
+  {
+    "code": "temporal_hunters",
+    "name": "Temporal Hunters"
+  },
+  {
+    "code": "venomous_hate",
+    "name": "Venomous Hate"
+  },
+  {
+    "code": "the_pit_of_despair",
+    "name": "The Pit of Despair"
+  },
+  {
+    "code": "creatures_of_the_deep",
+    "name": "Creatures of the Deep"
+  },
+  {
+    "code": "flooded_caverns",
+    "name": "Flooded Caverns"
+  },
+  {
+    "code": "rising_tide",
+    "name": "Rising Tide"
+  },
+  {
+    "code": "shattered_memories",
+    "name": "Shattered Memories"
+  },
+  {
+    "code": "agents_of_dagon",
+    "name": "Agents of Dagon"
+  },
+  {
+    "code": "agents_of_hydra",
+    "name": "Agents of Hydra"
+  },
+  {
+    "code": "the_locals",
+    "name": "The Locals"
+  },
+  {
+    "code": "fog_over_innsmouth",
+    "name": "Fog over Innsmouth"
+  },
+  {
+    "code": "the_vanishing_of_elina_harper",
+    "name": "The Vanishing of Elina Harper"
+  },
+  {
+    "code": "syzygy",
+    "name": "Syzygy"
+  },
+  {
+    "code": "malfunction",
+    "name": "Malfunction"
+  },
+  {
+    "code": "in_too_deep",
+    "name": "In Too Deep"
+  },
+  {
+    "code": "devil_reef",
+    "name": "Devil Reef"
+  },
+  {
+    "code": "war_of_the_outer_gods",
+    "name": "War of the Outer Gods"
+  },
+  {
+    "code": "children_of_paradise",
+    "name": "Children of Paradise"
+  },
+  {
+    "code": "swarm_of_assimilation",
+    "name": "Swarm of Assimilation"
+  },
+  {
+    "code": "death_of_stars",
+    "name": "Death of Stars"
+  },
+  {
+    "code": "meddling_of_meowlathotep",
+    "name": "The Meddling of Meowlathotep",
+    "icon_url": "https://eons.arkham.build/398c706a-0ee9-44eb-9912-77c7769f46d5/meddling_of_meowlathotep.png"
+  },
+  {
+    "code": "horror_in_high_gear",
+    "name": "Horror in High Gear"
+  },
+  {
+    "code": "a_light_in_the_fog",
+    "name": "A Light in the Fog"
+  },
+  {
+    "code": "the_lair_of_dagon",
+    "name": "The Lair of Dagon"
+  },
+  {
+    "code": "into_the_maelstrom",
+    "name": "Into the Maelstrom"
+  },
+  {
+    "code": "the_tatterdemalion",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-the_tatterdemalion",
+    "name": "The Tatterdemalion",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-the_tatterdemalion-encounter-set-icon.png?cachebust=1748796016882"
+  },
+  {
+    "code": "electric_nightmare",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-electric_nightmare",
+    "name": "Electric Nightmare",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-electric_nightmare-encounter-set-icon.png?cachebust=1748796014114"
+  },
+  {
+    "code": "lost_quantum",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-lost_quantum",
+    "name": "Lost Quantum",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-lost_quantum-encounter-set-icon.png?cachebust=1748796014970"
+  },
+  {
+    "code": "in_the_shadow_of_earth",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-in_the_shadow_of_earth",
+    "name": "In the Shadow of Earth",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-in_the_shadow_of_earth-encounter-set-icon.png?cachebust=1748796016155"
+  },
+  {
+    "code": "strange_moons",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-strange_moons",
+    "name": "Strange Moons",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-strange_moons-encounter-set-icon.png?cachebust=1748796015241"
+  },
+  {
+    "code": "the_machine_in_yellow",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-the_machine_in_yellow",
+    "name": "The Machine in Yellow",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-the_machine_in_yellow-encounter-set-icon.png?cachebust=1748796015532"
+  },
+  {
+    "code": "fragment_of_carcosa",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-fragment_of_carcosa",
+    "name": "Fragment of Carcosa",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-fragment_of_carcosa-encounter-set-icon.png?cachebust=1748796018314"
+  },
+  {
+    "code": "starfall",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-starfall",
+    "name": "Starfall",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-starfall-encounter-set-icon.png?cachebust=1748796017895"
+  },
+  {
+    "code": "deep_space",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-deep_space",
+    "name": "Deep Space",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-deep_space-encounter-set-icon.png?cachebust=1748796013121"
+  },
+  {
+    "code": "anachronism",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-anachronism",
+    "name": "Anachronism",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-anachronism-encounter-set-icon.png?cachebust=1748796014635"
+  },
+  {
+    "code": "dark_past",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-dark_past",
+    "name": "Dark Past",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-dark_past-encounter-set-icon.png?cachebust=1748796017263"
+  },
+  {
+    "code": "artificial_intelligence",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-artificial_intelligence",
+    "name": "Artificial Intelligence",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-artificial_intelligence-encounter-set-icon.png?cachebust=1748796013763"
+  },
+  {
+    "code": "endtimes",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-endtimes",
+    "name": "Endtimes",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-endtimes-encounter-set-icon.png?cachebust=1748796017630"
+  },
+  {
+    "code": "the_boogeyman",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-the_boogeyman",
+    "name": "The Boogeyman",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-the_boogeyman-encounter-set-icon.png?cachebust=1748796013428"
+  },
+  {
+    "code": "interstellar_predators",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-interstellar_predators",
+    "name": "Interstellar Predators",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-interstellar_predators-encounter-set-icon.png?cachebust=1748796012785"
+  },
+  {
+    "code": "hasturs_gaze",
+    "uuid": "84b08ede-8129-4914-b0e3-f48ec649af9f-hastur_s_gaze",
+    "name": "Hastur's Gaze",
+    "icon_url": "https://eons.arkham.build/84b08ede-8129-4914-b0e3-f48ec649af9f-hastur_s_gaze-encounter-set-icon.png?cachebust=1748796015813"
+  },
+  {
+    "code": "consternation_on_the_constellation",
+    "name": "Consternation on the Constellation",
+    "uuid": "a36487c5-ebd1-4e4b-90e9-5f68e617f8c0-consternation_on_the_constellation",
+    "icon_url": "https://img2.arkhamcards.com/icons/packs/zcc.png"
+  },
+  {
+    "code": "coc_deep_ones",
+    "name": "Deep Ones",
+    "uuid": "a36487c5-ebd1-4e4b-90e9-5f68e617f8c0-deep_ones",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/deep_ones.png"
+  },
+  {
+    "code": "sinking_ship",
+    "name": "Sinking Ship",
+    "uuid": "a36487c5-ebd1-4e4b-90e9-5f68e617f8c0-sinking_ship",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/sinking_ship.png"
+  },
+  {
+    "code": "a_sea_of_troubles",
+    "name": "A Sea of Troubles",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-a_sea_of_troubles",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_a_sea_of_troubles-encounter-set-icon.png?cachebust=1761392095391"
+  },
+  {
+    "code": "gurathnakas_shadows",
+    "name": "Gurathnaka's Shadows",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-gurathnakas_shadows",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_gurathnakas_shadows-encounter-set-icon.png?cachebust=1761392091954"
+  },
+  {
+    "code": "cheshire_cat",
+    "name": "Cheshire Cat",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-cheshire_cat",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-cheshire_cat-encounter-set-icon.png?cachebust=1761392097168"
+  },
+  {
+    "code": "arkham_in_wonderland",
+    "name": "Arkham in Wonderland",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-arkham_in_wonderland",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_arkham_in_wonderland-encounter-set-icon.png?cachebust=1761392092566"
+  },
+  {
+    "code": "warped_reality",
+    "name": "Warped Reality",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-warped_reality",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_warped_reality-encounter-set-icon.png?cachebust=1761392097670"
+  },
+  {
+    "code": "bleeding_hearts",
+    "name": "Bleeding Hearts",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-bleeding_hearts",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_bleeding_hearts-encounter-set-icon.png?cachebust=1761392101071"
+  },
+  {
+    "code": "card_guards",
+    "name": "Card Guards",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-card_guards",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_card_guards-encounter-set-icon.png?cachebust=1761392095943"
+  },
+  {
+    "code": "riddles_and_games",
+    "name": "Riddles and Games",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-riddles_and_games",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_riddles_and_games-encounter-set-icon.png?cachebust=1761392098897"
+  },
+  {
+    "code": "wonderland_boons",
+    "name": "Wonderland Boons",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-wonderland_boons",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_wonderland_boons-encounter-set-icon.png?cachebust=1761392099508"
+  },
+  {
+    "code": "wonderland_banes",
+    "name": "Wonderland Banes",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-wonderland_banes",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_wonderland_banes-encounter-set-icon.png?cachebust=1761392100020"
+  },
+  {
+    "code": "fools_mate",
+    "name": "Fool's Mate",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-fools_mate",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_fools_mate-encounter-set-icon.png?cachebust=1761392098280"
+  },
+  {
+    "code": "chessmen",
+    "name": "Chessmen",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-chessmen",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_chessmen-encounter-set-icon.png?cachebust=1761392101633"
+  },
+  {
+    "code": "lucid_nightmare",
+    "name": "Lucid Nightmare",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-waking_nightmare",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_waking_nightmare-encounter-set-icon.png?cachebust=1761392093683"
+  },
+  {
+    "code": "alice_in_arkham",
+    "name": "Alice in Arkham",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-alice_in_arkham",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-alice_in_arkham-encounter-set-icon.png?cachebust=1761392094834"
+  },
+  {
+    "code": "sibling_rivalry",
+    "name": "Sibling Rivalry",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-sibling_rivalry",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-sibling_rivalry-encounter-set-icon.png?cachebust=1761392093159"
+  },
+  {
+    "code": "tempest_in_a_teapot",
+    "name": "Tempest in a Teapot",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-tempest_in_a_teapot",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_tempest_in_a_teapot-encounter-set-icon.png?cachebust=1761392100525"
+  },
+  {
+    "code": "walrus_and_carpenter",
+    "name": "Walrus and Carpenter",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-walrus_and_carpenter",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_walrus_and_carpenter-encounter-set-icon.png?cachebust=1761392094307"
+  },
+  {
+    "code": "wild_snark_chase",
+    "name": "Wild Snark Chase",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-wild_snark_chase",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_wild_snark_chase-encounter-set-icon.png?cachebust=1761392102167"
+  },
+  {
+    "code": "jabberwocky",
+    "name": "Jabberwock",
+    "uuid": "be2af41d-9065-4b8e-970f-7cf37c197a7f-jabberwock",
+    "icon_url": "https://eons.arkham.build/be2af41d-9065-4b8e-970f-7cf37c197a7f-e_strangeeons_1_-_custom_campaigns_alice_in_wonderland_9_-_icons_jabberwock-encounter-set-icon.png?cachebust=1761392096491"
+  },
+  {
+    "code": "the_warning",
+    "name": "The Warning",
+    "uuid": "e889b9d5-121d-4321-b47b-368966e81e5d-the_warning",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/the_warning.png"
+  },
+  {
+    "code": "berserkers",
+    "name": "Berserkers"
+  },
+  {
+    "code": "draugar",
+    "name": "Draugar"
+  },
+  {
+    "code": "lacuna",
+    "name": "Lacuna"
+  },
+  {
+    "code": "runic_oaths",
+    "name": "Runic Oaths"
+  },
+  {
+    "code": "hudulfolk",
+    "name": "Hudulfólk"
+  },
+  {
+    "code": "glacial_mists",
+    "name": "Glacial Mists"
+  },
+  {
+    "code": "the_crown",
+    "name": "The Crown",
+    "uuid": "e889b9d5-121d-4321-b47b-368966e81e5d-the_crown",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/the_crown.png"
+  },
+  {
+    "code": "the_fallen",
+    "name": "The Fallen",
+    "uuid": "e889b9d5-121d-4321-b47b-368966e81e5d-the_fallen",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/the_fallen.png"
+  },
+  {
+    "code": "the_golden_circle",
+    "name": "The Golden Circle",
+    "uuid": "e889b9d5-121d-4321-b47b-368966e81e5d-the_golden_circle",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/the_golden_circle.png"
+  },
+  {
+    "code": "ice_and_death",
+    "name": "Ice and Death"
+  },
+  {
+    "code": "the_crash",
+    "name": "The Crash"
+  },
+  {
+    "code": "creatures_in_the_ice",
+    "name": "Creatures in the Ice"
+  },
+  {
+    "code": "deadly_weather",
+    "name": "Deadly Weather"
+  },
+  {
+    "code": "hazards_of_antarctica",
+    "name": "Hazards of Antarctica"
+  },
+  {
+    "code": "silence_and_mystery",
+    "name": "Silence and Mystery"
+  },
+  {
+    "code": "tekeli_li",
+    "name": "Tekeli-li"
+  },
+  {
+    "code": "to_the_forbidden_peaks",
+    "name": "To the Forbidden Peaks"
+  },
+  {
+    "code": "the_great_seal",
+    "name": "The Great Seal"
+  },
+  {
+    "code": "city_of_the_elder_things",
+    "name": "City of the Elder Things"
+  },
+  {
+    "code": "seeping_nightmares",
+    "name": "Seeping Nightmares"
+  },
+  {
+    "code": "nameless_horrors",
+    "name": "Nameless Horrors"
+  },
+  {
+    "code": "memorials_of_the_lost",
+    "name": "Memorials of the Lost"
+  },
+  {
+    "code": "fatal_mirage",
+    "name": "Fatal Mirage"
+  },
+  {
+    "code": "elder_things",
+    "name": "Elder Things"
+  },
+  {
+    "code": "the_heart_of_madness",
+    "name": "The Heart of Madness"
+  },
+  {
+    "code": "stirring_in_the_deep",
+    "name": "Stirring in the Deep"
+  },
+  {
+    "code": "shoggoths",
+    "name": "Shoggoths"
+  },
+  {
+    "code": "penguins",
+    "name": "Penguins"
+  },
+  {
+    "code": "miasma",
+    "name": "Miasma"
+  },
+  {
+    "code": "lost_in_the_night",
+    "name": "Lost in the Night"
+  },
+  {
+    "code": "left_behind",
+    "name": "Left Behind"
+  },
+  {
+    "code": "expedition_team",
+    "name": "Expedition Team"
+  },
+  {
+    "code": "agents_of_the_unknown",
+    "name": "Agents of the Unknown"
+  },
+  {
+    "code": "machinations_through_time",
+    "name": "Machinations Through Time"
+  },
+  {
+    "code": "machinations_epic_multiplayer",
+    "name": "Epic Multiplayer"
+  },
+  {
+    "code": "machinations_single_group",
+    "name": "Single Group"
+  },
+  {
+    "code": "red_tide_rising",
+    "name": "Red Tide Rising"
+  },
+  {
+    "code": "agency_survivors",
+    "name": "Agency Survivors"
+  },
+  {
+    "code": "agents_of_cthugha",
+    "name": "Agents of Cthugha"
+  },
+  {
+    "code": "gifts_of_the_plaguebearer",
+    "name": "Gifts of the Plaguebearer"
+  },
+  {
+    "code": "haze_of_miasma",
+    "name": "Haze of Miasma"
+  },
+  {
+    "code": "life_and_death",
+    "name": "Life and Death"
+  },
+  {
+    "code": "the_plaguebearers_commands",
+    "name": "The Plaguebearer's Commands"
+  },
+  {
+    "code": "tenuous_allies",
+    "name": "Tenuous Allies",
+    "uuid": "51c98b63-f5ee-4e09-af27-f74b08231eda-tenuous_allies",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/tenuous_allies.png"
+  },
+  {
+    "code": "fallen_arkham",
+    "name": "Fallen Arkham"
+  },
+  {
+    "code": "unbound_power",
+    "name": "Unbound Power"
+  },
+  {
+    "code": "late_risers",
+    "name": "Late Risers",
+    "uuid": "51c98b63-f5ee-4e09-af27-f74b08231eda-late_risers",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/late_risers.png"
+  },
+  {
+    "code": "night_on_the_town",
+    "name": "Night on the Town",
+    "uuid": "51c98b63-f5ee-4e09-af27-f74b08231eda-night_on_the_town",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/night_on_the_town.png"
+  },
+  {
+    "code": "dead_by_dawn",
+    "name": "Dead by Dawn",
+    "uuid": "51c98b63-f5ee-4e09-af27-f74b08231eda-dead_by_dawn",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/dead_by_dawn.png"
+  },
+  {
+    "code": "mourning_chorus",
+    "name": "Mourning Chorus",
+    "uuid": "51c98b63-f5ee-4e09-af27-f74b08231eda-mourning_chorus",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/mourning_chorus.png"
+  },
+  {
+    "code": "high_noon_descent",
+    "name": "High Noon Descent",
+    "uuid": "51c98b63-f5ee-4e09-af27-f74b08231eda-high_noon_descent",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/high_noon_descent.png"
+  },
+  {
+    "code": "the_afternoon_war",
+    "name": "The Afternoon War",
+    "uuid": "51c98b63-f5ee-4e09-af27-f74b08231eda-the_afternoon_war",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/the_afternoon_war.png"
+  },
+  {
+    "code": "death_at_sundown",
+    "name": "Death at Sundown",
+    "uuid": "51c98b63-f5ee-4e09-af27-f74b08231eda-death_at_sundown",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/death_at_sundown.png"
+  },
+  {
+    "code": "the_midnight_hour",
+    "name": "The Midnight Hour",
+    "uuid": "51c98b63-f5ee-4e09-af27-f74b08231eda-the_midnight_hour",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/the_midnight_hour.png"
+  },
+  {
+    "code": "the_symphony_of_erich_zann",
+    "name": "The Symphony of Erich Zann",
+    "uuid": "6afb2ea0-d5c6-434a-aea9-2b1beff8c74a-the_symphony_of_erich_zann",
+    "icon_url": "https://eons.arkham.build/6afb2ea0-d5c6-434a-aea9-2b1beff8c74a-the_symphony_of_erich_zann-encounter-set-icon.png?cachebust=1783338697905"
+  },
+  {
+    "code": "when_the_world_screamed",
+    "name": "When the World Screamed",
+    "uuid": "f772aeea-bfae-4599-b898-63a642be6e39-when_the_world_screamed",
+    "icon_url": "https://img2.arkhamcards.com/icons/packs/zwtws.png"
+  },
+  {
+    "code": "meteoric_phenomenon",
+    "name": "Meteoric Phenomenon",
+    "uuid": "4ae5a981-c632-411a-9753-5cb196e39e7f-meteoric_phenomenon",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/meteoric_phenomenon.png"
+  },
+  {
+    "code": "unnatural_disturbances",
+    "name": "Unnatural Disturbances",
+    "uuid": "4ae5a981-c632-411a-9753-5cb196e39e7f-unnatural_disturbances",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/unnatural_disturbances.png"
+  },
+  {
+    "code": "inhospitable_locality",
+    "name": "Inhospitable Locality",
+    "uuid": "4ae5a981-c632-411a-9753-5cb196e39e7f-inhospitable_locality",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/inhospitable_locality.png"
+  },
+  {
+    "code": "made_flesh",
+    "name": "Made Flesh",
+    "uuid": "4ae5a981-c632-411a-9753-5cb196e39e7f-made_flesh",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/made_flesh.png"
+  },
+  {
+    "code": "lost_cathedral",
+    "name": "Lost Cathedral",
+    "uuid": "e899b7ba-2fca-48ac-bee7-103f44039207-lost_cathedral",
+    "icon_url": "https://img2.arkhamcards.com/icons/packs/zjc.png"
+  },
+  {
+    "code": "across_dreadful_waters",
+    "name": "Across Dreadful Waters",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-across_dreadful_waters",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-across_dreadful_waters-encounter-set-icon.png?cachebust=1751185892524"
+  },
+  {
+    "code": "archaic_evils",
+    "name": "Archaic Evils",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-archaic_evils",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-archaic_evils-encounter-set-icon.png?cachebust=1751185894545"
+  },
+  {
+    "code": "architects_of_chaos",
+    "name": "Architects of Chaos",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-architects_of_chaos",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-architects_of_chaos-encounter-set-icon.png?cachebust=1751185892251"
+  },
+  {
+    "code": "awakened_madness",
+    "name": "Awakened Madness",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-awakened_madness",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-awakened_madness-encounter-set-icon.png?cachebust=1751187934452"
+  },
+  {
+    "code": "blood_from_stones",
+    "name": "Blood From Stones",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-blood_from_stones",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-blood_from_stones-encounter-set-icon.png?cachebust=1751185893372"
+  },
+  {
+    "code": "countermeasures",
+    "name": "Countermeasures",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-countermeasures",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-countermeasures-encounter-set-icon.png?cachebust=1751185894261"
+  },
+  {
+    "code": "crumbling_masonry",
+    "name": "Crumbling Masonry",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-crumbling_masonry",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-crumbling_masonry-encounter-set-icon.png?cachebust=1751185890307"
+  },
+  {
+    "code": "cult_of_cthulhu",
+    "name": "Cult of Cthulhu",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-cult_of_cthulhu",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-cult_of_cthulhu-encounter-set-icon.png?cachebust=1751185893677"
+  },
+  {
+    "code": "deep_dreams",
+    "name": "Deep Dreams",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-deep_dreams",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-deep_dreams-encounter-set-icon.png?cachebust=1751185890671"
+  },
+  {
+    "code": "going_twice",
+    "name": "Going Twice",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-going_twice",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-going_twice-encounter-set-icon.png?cachebust=1751185892804"
+  },
+  {
+    "code": "grand_compass",
+    "name": "Grand Compass"
+  },
+  {
+    "code": "lost_moorings",
+    "name": "Lost Moorings",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-lost_moorings",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-lost_moorings-encounter-set-icon.png?cachebust=1751185894914"
+  },
+  {
+    "code": "private_lives",
+    "name": "Private Lives",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-private_lives",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-private_lives-encounter-set-icon.png?cachebust=1751185893991"
+  },
+  {
+    "code": "pyroclastic_flow",
+    "name": "Pyroclastic Flow",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-pyroclastic_flow",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-pyroclastic_flow-encounter-set-icon.png?cachebust=1751185891075"
+  },
+  {
+    "code": "shadowy_agents",
+    "name": "Shadowy Agents",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-shadowy_agents",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-shadowy_agents-encounter-set-icon.png?cachebust=1751185895206"
+  },
+  {
+    "code": "spawn_of_rlyeh",
+    "name": "Spawn of R'lyeh",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-spawn_of_r_lyeh",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-spawn_of_r_lyeh-encounter-set-icon.png?cachebust=1751185889948"
+  },
+  {
+    "code": "storm_and_sea",
+    "name": "Storm and Sea",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-storm_and_sea",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-storm_and_sea-encounter-set-icon.png?cachebust=1751185891981"
+  },
+  {
+    "code": "tomb_of_dead_dreams",
+    "name": "Tomb of Dead Dreams",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-tomb_of_dead_dreams",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-tomb_of_dead_dreams-encounter-set-icon.png?cachebust=1751185891692"
+  },
+  {
+    "code": "unfriendly_ports",
+    "name": "Unfriendly Ports",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-unfriendly_ports",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-unfriendly_ports-encounter-set-icon.png?cachebust=1751185889656"
+  },
+  {
+    "code": "unnatural_stone",
+    "name": "Unnatural Stone",
+    "uuid": "b5a32355-6bd0-4757-a3bf-ddb608bc7396-unnatural_stone",
+    "icon_url": "https://eons.arkham.build/b5a32355-6bd0-4757-a3bf-ddb608bc7396-unnatural_stone-encounter-set-icon.png?cachebust=1751185893089"
+  },
+  {
+    "code": "the_fall_of_the_house_of_usher",
+    "name": "The Fall of the House of Usher",
+    "uuid": "573dec2a-350e-49a2-a832-d6ad56a58ede-the_fall_of_the_house_of_usher",
+    "icon_url": "https://img2.arkhamcards.com/icons/packs/zhu.png"
+  },
+  {
+    "code": "hanninah_valley",
+    "name": "Hanninah Valley",
+    "uuid": "01d4196d-51d7-439d-8028-26a32e04ad26-hanninah_valley",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/hanninah_valley.png"
+  },
+  {
+    "code": "wendigos_myth",
+    "name": "Wendigo's Myth",
+    "uuid": "01d4196d-51d7-439d-8028-26a32e04ad26-wendigos_myth",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/wendigos_myth.png"
+  },
+  {
+    "code": "fortune_and_folly",
+    "name": "Fortune and Folly"
+  },
+  {
+    "code": "fortunes_chosen",
+    "name": "Fortune's Chosen"
+  },
+  {
+    "code": "plan_in_shambles",
+    "name": "Plan in Shambles"
+  },
+  {
+    "code": "the_black_stone",
+    "name": "The Black Stone",
+    "uuid": "08e00cea9-66bd-4e60-9090-970686ff590a-the_black_stone",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/the_black_stone.png"
+  },
+  {
+    "code": "legendry",
+    "name": "Legendry",
+    "uuid": "08e00cea9-66bd-4e60-9090-970686ff590a-legendry",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/legendry.png"
+  },
+  {
+    "code": "occultism",
+    "name": "Occultism",
+    "uuid": "08e00cea9-66bd-4e60-9090-970686ff590a-occultism",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/occultism.png"
+  },
+  {
+    "code": "magyar",
+    "name": "Magyar",
+    "uuid": "08e00cea9-66bd-4e60-9090-970686ff590a-magyar",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/magyar.png"
+  },
+  {
+    "code": "natural_hazards",
+    "name": "Natural Hazards",
+    "uuid": "08e00cea9-66bd-4e60-9090-970686ff590a-natural_hazards",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/natural_hazards.png"
+  },
+  {
+    "code": "wild_beasts",
+    "name": "Wild Beasts",
+    "uuid": "08e00cea9-66bd-4e60-9090-970686ff590a-wild_beasts",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/wild_beasts.png"
+  },
+  {
+    "code": "ancient_hunger",
+    "name": "Ancient Hunger",
+    "uuid": "08e00cea9-66bd-4e60-9090-970686ff590a-ancient_hunger",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/ancient_hunger.png"
+  },
+  {
+    "code": "witch_cult",
+    "name": "Witch-Cult",
+    "uuid": "08e00cea9-66bd-4e60-9090-970686ff590a-witch_cult",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/witch_cult.png"
+  },
+  {
+    "code": "tomes",
+    "name": "Tomes",
+    "uuid": "08e00cea9-66bd-4e60-9090-970686ff590a-tomes",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/tomes.png"
+  },
+  {
+    "code": "riddles_and_rain",
+    "name": "Riddles and Rain"
+  },
+  {
+    "code": "mysteries_abound",
+    "name": "Mysteries Abound"
+  },
+  {
+    "code": "shades_of_suffering",
+    "name": "Shades of Suffering"
+  },
+  {
+    "code": "agents_of_the_outside",
+    "name": "Agents of the Outside"
+  },
+  {
+    "code": "beyond_the_beyond",
+    "name": "Beyond the Beyond"
+  },
+  {
+    "code": "congress_of_the_keys",
+    "name": "Congress of the Keys"
+  },
+  {
+    "code": "dancing_mad",
+    "name": "Dancing Mad"
+  },
+  {
+    "code": "dead_heat",
+    "name": "Dead Heat"
+  },
+  {
+    "code": "dogs_of_war",
+    "name": "Dogs of War"
+  },
+  {
+    "code": "outsiders",
+    "name": "Outsiders"
+  },
+  {
+    "code": "scarlet_sorcery",
+    "name": "Scarlet Sorcery"
+  },
+  {
+    "code": "spatial_anomaly",
+    "name": "Spatial Anomaly"
+  },
+  {
+    "code": "strange_happenings",
+    "name": "Strange Happenings"
+  },
+  {
+    "code": "secret_war",
+    "name": "Secret War"
+  },
+  {
+    "code": "shadow_of_a_doubt",
+    "name": "Shadow of a Doubt"
+  },
+  {
+    "code": "without_a_trace",
+    "name": "Without a Trace"
+  },
+  {
+    "code": "agents_of_yuggoth",
+    "name": "Agents of Yuggoth"
+  },
+  {
+    "code": "cleanup_crew",
+    "name": "Cleanup Crew"
+  },
+  {
+    "code": "crimson_conspiracy",
+    "name": "Crimson Conspiracy"
+  },
+  {
+    "code": "dark_veiling",
+    "name": "Dark Veiling"
+  },
+  {
+    "code": "dealings_in_the_dark",
+    "name": "Dealings in the Dark"
+  },
+  {
+    "code": "globetrotting",
+    "name": "Globetrotting"
+  },
+  {
+    "code": "on_thin_ice",
+    "name": "On Thin Ice"
+  },
+  {
+    "code": "red_coterie",
+    "name": "Red Coterie"
+  },
+  {
+    "code": "sanguine_shadows",
+    "name": "Sanguine Shadows"
+  },
+  {
+    "code": "spreading_corruption",
+    "name": "Spreading Corruption"
+  },
+  {
+    "code": "zhod_africa_is_watching",
+    "name": "Africa is Watching",
+    "uuid": "885bb4a3-78bd-4725-b429-776ba2d06934-africa_is_watching",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/africa_is_watching.png"
+  },
+  {
+    "code": "zhod_to_the_heart_of_the_congo",
+    "name": "To the Heart of the Congo",
+    "uuid": "885bb4a3-78bd-4725-b429-776ba2d06934-to_the_heart_of_the_congo",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/to_the_heart_of_the_congo.png"
+  },
+  {
+    "code": "zhod_the_avatar_of_darkness",
+    "name": "The Avatar of Darkness",
+    "uuid": "885bb4a3-78bd-4725-b429-776ba2d06934-the_avatar_of_darkness",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/the_avatar_of_darkness.png"
+  },
+  {
+    "code": "zhod_the_darkness",
+    "name": "The Darkness",
+    "uuid": "885bb4a3-78bd-4725-b429-776ba2d06934-the_darkness",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/the_darkness.png"
+  },
+  {
+    "code": "zhod_african_wildlife",
+    "name": "African Wildlife",
+    "uuid": "885bb4a3-78bd-4725-b429-776ba2d06934-african_wildlife",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/african_wildlife.png"
+  },
+  {
+    "code": "zhod_lands_of_the_congo",
+    "name": "Lands of the Congo",
+    "uuid": "885bb4a3-78bd-4725-b429-776ba2d06934-lands_of_the_congo",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/lands_of_the_congo.png"
+  },
+  {
+    "code": "zhod_cult_of_darkness",
+    "name": "Cult of Darkness",
+    "uuid": "885bb4a3-78bd-4725-b429-776ba2d06934-cult_of_darkness",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/cult_of_darkness.png"
+  },
+  {
+    "code": "zreturn_to_the_pit_of_despair",
+    "name": "Return to The Pit of Despair",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-return_to_the_pit_of_despair",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/return_to_the_pit_of_despair.png"
+  },
+  {
+    "code": "zreturn_to_the_vanishing_of_elina_harper",
+    "name": "Return to The Vanishing of Elina Harper",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-return_to_the_vanishing_of_elina_harper",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/return_to_the_vanishing_of_elina_harper.png"
+  },
+  {
+    "code": "zreturn_to_in_too_deep",
+    "name": "Return to In Too Deep",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-return_to_in_too_deep",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/return_to_in_too_deep.png"
+  },
+  {
+    "code": "zreturn_to_devil_reef",
+    "name": "Return to Devil Reef",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-return_to_devil_reef",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/return_to_devil_reef.png"
+  },
+  {
+    "code": "zreturn_to_horror_in_high_gear",
+    "name": "Return to Horror in High Gear",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-return_to_horror_in_high_gear",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/return_to_horror_in_high_gear.png"
+  },
+  {
+    "code": "zreturn_to_a_light_in_the_fog",
+    "name": "Return to A Light in the Fog",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-return_to_a_light_in_the_fog",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/return_to_a_light_in_the_fog.png"
+  },
+  {
+    "code": "zreturn_to_the_lair_of_dagon",
+    "name": "Return to The Lair of Dagon",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-return_to_the_lair_of_dagon",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/return_to_the_lair_of_dagon.png"
+  },
+  {
+    "code": "zreturn_to_into_the_maelstrom",
+    "name": "Return to Into the Maelstrom",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-return_to_into_the_maelstrom",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/return_to_into_the_maelstrom.png"
+  },
+  {
+    "code": "zstalkers_of_cthulhu",
+    "name": "Stalkers of Cthulhu",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-stalkers_of_cthulhu",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/stalkers_of_cthulhu.png"
+  },
+  {
+    "code": "zrolling_tide",
+    "name": "Rolling Tide",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-rolling_tide",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/rolling_tide.png"
+  },
+  {
+    "code": "zinnsmouth_haze",
+    "name": "Innsmouth Haze",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-innsmouth_haze",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/innsmouth_haze.png"
+  },
+  {
+    "code": "zoccultation",
+    "name": "Occultation",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-occultation",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/occultation.png"
+  },
+  {
+    "code": "zbarricaded_doors",
+    "name": "Barricaded Doors",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-barricaded_doors",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/barricaded_doors.png"
+  },
+  {
+    "code": "zreturn_to_flooded_caverns",
+    "name": "Return to Flooded Caverns",
+    "uuid": "291c2769-da2c-489b-a1f4-23204efeec0a-return_to_flooded_caverns",
+    "icon_url": "https://img2.arkhamcards.com/icons/ecnounter_sets/return_to_flooded_caverns.png"
+  },
+  {
+    "code": "laid_to_rest",
+    "name": "Laid to Rest"
+  },
+  {
+    "code": "relics_of_the_past",
+    "name": "Relics of the Past"
+  },
+  {
+    "code": "too_noble",
+    "name": "Too Noble",
+    "uuid": "0325933c-6733-4ab5-b7e7-d12872c081f2-too_noble",
+    "icon_url": "https://eons.arkham.build/0325933c-6733-4ab5-b7e7-d12872c081f2-e_strangeeons_1_-_custom_campaigns_arkham_incidents_7_-_icons_too_noble-encounter-set-icon.png?cachebust=1761470302101"
+  },
+  {
+    "code": "something_big",
+    "name": "Something Big",
+    "uuid": "0325933c-6733-4ab5-b7e7-d12872c081f2-something_big",
+    "icon_url": "https://eons.arkham.build/0325933c-6733-4ab5-b7e7-d12872c081f2-e_strangeeons_1_-_custom_campaigns_arkham_incidents_7_-_icons_something_big-encounter-set-icon.png?cachebust=1761470305161"
+  },
+  {
+    "code": "unscrupulous_investments",
+    "name": "Unscrupulous Investments",
+    "uuid": "0325933c-6733-4ab5-b7e7-d12872c081f2-unscrupulous_investments",
+    "icon_url": "https://eons.arkham.build/0325933c-6733-4ab5-b7e7-d12872c081f2-e_strangeeons_1_-_custom_campaigns_arkham_incidents_7_-_icons_unscrupulous_investments-encounter-set-icon.png?cachebust=1761470304149"
+  },
+  {
+    "code": "anything_once",
+    "name": "Anything Once",
+    "uuid": "0325933c-6733-4ab5-b7e7-d12872c081f2-anything_once",
+    "icon_url": "https://eons.arkham.build/0325933c-6733-4ab5-b7e7-d12872c081f2-e_strangeeons_1_-_custom_campaigns_arkham_incidents_7_-_icons_anything_once-encounter-set-icon.png?cachebust=1761470303169"
+  },
+  {
+    "code": "mysterious_benefits",
+    "name": "Mysterious Benefits",
+    "uuid": "0325933c-6733-4ab5-b7e7-d12872c081f2-mysterious_benefits",
+    "icon_url": "https://eons.arkham.build/0325933c-6733-4ab5-b7e7-d12872c081f2-e_strangeeons_1_-_custom_campaigns_arkham_incidents_7_-_icons_mysterious_benefits-encounter-set-icon.png?cachebust=1761470302611"
+  },
+  {
+    "code": "the_first_day",
+    "name": "The First Day"
+  },
+  {
+    "code": "the_second_day",
+    "name": "The Second Day"
+  },
+  {
+    "code": "the_final_day",
+    "name": "The Final Day"
+  },
+  {
+    "code": "agents_of_the_colour",
+    "name": "Agents of the Colour"
+  },
+  {
+    "code": "fate_of_the_vale",
+    "name": "Fate of the Vale"
+  },
+  {
+    "code": "heirlooms",
+    "name": "Heirlooms"
+  },
+  {
+    "code": "horrors_in_the_rock",
+    "name": "Horrors in the Rock"
+  },
+  {
+    "code": "myconids",
+    "name": "Myconids"
+  },
+  {
+    "code": "residents",
+    "name": "Residents"
+  },
+  {
+    "code": "the_longest_night",
+    "name": "The Longest Night"
+  },
+  {
+    "code": "the_silent_heath",
+    "name": "The Silent Heath"
+  },
+  {
+    "code": "the_twisted_hollow",
+    "name": "The Twisted Hollow"
+  },
+  {
+    "code": "transfiguration",
+    "name": "Transfiguration"
+  },
+  {
+    "code": "day_of_rest",
+    "name": "Day of Rest"
+  },
+  {
+    "code": "day_of_rain",
+    "name": "Day of Rain"
+  },
+  {
+    "code": "day_of_the_feast",
+    "name": "Day of the Feast"
+  },
+  {
+    "code": "blight",
+    "name": "Blight"
+  },
+  {
+    "code": "fire",
+    "name": "Fire!"
+  },
+  {
+    "code": "hemlock_house",
+    "name": "Hemlock House"
+  },
+  {
+    "code": "mutations",
+    "name": "Mutations"
+  },
+  {
+    "code": "refractions",
+    "name": "Refractions"
+  },
+  {
+    "code": "the_forest",
+    "name": "The Forest"
+  },
+  {
+    "code": "the_lost_sister",
+    "name": "The Lost Sister"
+  },
+  {
+    "code": "the_thing_in_the_depths",
+    "name": "The Thing in the Depths"
+  },
+  {
+    "code": "the_vale",
+    "name": "The Vale"
+  },
+  {
+    "code": "written_in_rock",
+    "name": "Written in Rock"
+  },
+  {
+    "code": "depraved_legions",
+    "name": "Depraved Legions",
+    "uuid": "f2d0b474-8ea3-4339-b997-58fcc7ce96d4-depraved_legions",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/depraved_legions.png"
+  },
+  {
+    "code": "spiraling_inferno",
+    "name": "Spiralling Inferno",
+    "uuid": "f2d0b474-8ea3-4339-b997-58fcc7ce96d4-spiraling_inferno",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/spiraling_inferno.png"
+  },
+  {
+    "code": "scorched_wasteland",
+    "name": "Scorched Wasteland",
+    "uuid": "f2d0b474-8ea3-4339-b997-58fcc7ce96d4-scorched_wasteland",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/scorched_wasteland.png"
+  },
+  {
+    "code": "malevolent_ritual",
+    "name": "Malevolent Ritual",
+    "uuid": "f2d0b474-8ea3-4339-b997-58fcc7ce96d4-malevolent_ritual",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/malevolent_ritual.png"
+  },
+  {
+    "code": "final_annihilation",
+    "name": "Final Annihilation",
+    "uuid": "f2d0b474-8ea3-4339-b997-58fcc7ce96d4-final_annihilation",
+    "icon_url": "https://img2.arkhamcards.com/icons/encounter_sets/final_annihilation.png"
+  },
+  {
+    "code": "the_midwinter_gala",
+    "name": "The Midwinter Gala"
+  },
+  {
+    "code": "zoz_the_road_to_oz",
+    "name": "The Road to Oz",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-road_to_oz",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-road_to_oz.png"
+  },
+  {
+    "code": "zoz_ferocious_beasts",
+    "name": "Ferocious Beasts",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-ferocious_beasts",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-ferocious_beasts.png"
+  },
+  {
+    "code": "zoz_wicked_witches",
+    "name": "Wicked Witches",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-wicked_witches",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-wicked_witches.png"
+  },
+  {
+    "code": "zoz_prismatic_evils",
+    "name": "Prismatic Evils",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-prismatic_evils",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-prismatic_evils.png"
+  },
+  {
+    "code": "zoz_terror_out_of_space",
+    "name": "Terror Out of Space",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-terror_out_of_space",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-terror_out_of_space.png"
+  },
+  {
+    "code": "zoz_princess_of_oz",
+    "name": "Princess of Oz",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-princess_of_oz",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-princess_of_oz.png"
+  },
+  {
+    "code": "zoz_chromatic_infection",
+    "name": "Chromatic Infection",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-chromatic_infection",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-chromatic_infection.png"
+  },
+  {
+    "code": "zoz_deep_impact",
+    "name": "Deep Impact",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-deep_impact",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-deep_impact.png"
+  },
+  {
+    "code": "zoz_emerald_city",
+    "name": "Emerald City",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-emerald_city",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-emerald_city.png"
+  },
+  {
+    "code": "zoz_alien_vibrance",
+    "name": "Alien Vibrance",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-alien_vibrance",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-alien_vibrance.png"
+  },
+  {
+    "code": "zoz_horrid_infection",
+    "name": "Horrid Infection",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-horrid_infection",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-horrid_infection.png"
+  },
+  {
+    "code": "zoz_companions_of_oz",
+    "name": "Companions of Oz",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-companions_of_oz",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-companions_of_oz.png"
+  },
+  {
+    "code": "zoz_spiraling_decay",
+    "name": "Spiraling Decay",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-spiraling_decay",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-spiraling_decay.png"
+  },
+  {
+    "code": "zoz_double_whammy",
+    "name": "Double Whammy",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-double_whammy",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-double_whammy.png"
+  },
+  {
+    "code": "zoz_chasing_rainbows",
+    "name": "Chasing Rainbows",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-chasing_rainbows",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-chasing_rainbows.png"
+  },
+  {
+    "code": "zoz_blighted_land",
+    "name": "Blighted Land",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-blighted_land",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-blighted_land.png"
+  },
+  {
+    "code": "zoz_misery_loves_company",
+    "name": "Misery Loves Company",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-misery_loves_company",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-misery_loves_company.png"
+  },
+  {
+    "code": "zoz_nomes",
+    "name": "Nomes",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-nomes",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-nomes.png"
+  },
+  {
+    "code": "zoz_violent_invasion",
+    "name": "Violent Invasion",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-violent_invasion",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-violent_invasion.png"
+  },
+  {
+    "code": "zoz_hall_of_the_mountain_king",
+    "name": "Hall of the Mountain King",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-hall_of_the_mountain_king",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-hall_of_the_mountain_king.png"
+  },
+  {
+    "code": "zoz_defense_of_the_realm",
+    "name": "Defense of the Realm",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-defense_of_the_realm",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-defense_of_the_realm.png"
+  },
+  {
+    "code": "zoz_true_colours",
+    "name": "True Colours",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-true_colours",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-true_colours.png"
+  },
+  {
+    "code": "zoz_the_colour_itself",
+    "name": "The Colour Itself",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-the_colour_itself",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-the_colour_itself.png"
+  },
+  {
+    "code": "zoz_munchkin",
+    "name": "Munchkin Country",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-munchkin_country",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-munchkin_country.png"
+  },
+  {
+    "code": "zoz_winkie",
+    "name": "Winkie Country",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-winkie_country",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-winkie_country.png"
+  },
+  {
+    "code": "zoz_quadling",
+    "name": "Quadling Country",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-quadling_country",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-quadling_country.png"
+  },
+  {
+    "code": "zoz_gillikin",
+    "name": "Gillikin Country",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-gillikin_country",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_6f3d38ff-a950-47d6-83e5-51f0530017d4-gillikin_country.png"
+  },
+  {
+    "code": "zoz_prologue",
+    "name": "Prologue",
+    "uuid": "6f3d38ff-a950-47d6-83e5-51f0530017d4-prologue",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_collection6f3d38ff-a950-47d6-83e5-51f0530017d4.png"
+  },
+  {
+    "code": "zau_night_of_fire",
+    "name": "Night of Fire",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-night-of-fire",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-night-of-fire-encounter-set-icon.png?cachebust=1767857883258"
+  },
+  {
+    "code": "zau_myriad_gentleman",
+    "name": "The Myriad Gentleman",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-the-myriad-gentleman",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-the-myriad-gentleman-encounter-set-icon.png?cachebust=1767857881267"
+  },
+  {
+    "code": "zau_world_torn_down",
+    "name": "A World Torn Down",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-a-world-torn-down",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-a-world-torn-down-encounter-set-icon.png?cachebust=1767857882408"
+  },
+  {
+    "code": "zau_unstuck",
+    "name": "Unstuck",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-unstuck",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-unstuck-encounter-set-icon.png?cachebust=1767857884636"
+  },
+  {
+    "code": "zau_year_to_plan",
+    "name": "A Year to Plan",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-a-year-to-plan",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-a-year-to-plan-encounter-set-icon.png?cachebust=1767857880808"
+  },
+  {
+    "code": "zau_world_torn_down_again",
+    "name": "A World Torn Down, Again",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-a-world-torn-down-again",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-a-world-torn-down-again-encounter-set-icon.png?cachebust=1767857885194"
+  },
+  {
+    "code": "zau_time_runs_out",
+    "name": "Time Runs Out",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-time-runs-out",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-time-runs-out-encounter-set-icon.png?cachebust=1767697253938"
+  },
+  {
+    "code": "zau_agents_of_aforgomon",
+    "name": "Agents of Aforgomon",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-agents-of-chronos",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-agents-of-chronos-encounter-set-icon.png?cachebust=1767857882894"
+  },
+  {
+    "code": "zau_missions",
+    "name": "Missions",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-missions",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-missions-encounter-set-icon.png?cachebust=1767697254732"
+  },
+  {
+    "code": "zau_myriad",
+    "name": "Myriad",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-myriad",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-myriad-encounter-set-icon.png?cachebust=1767857883635"
+  },
+  {
+    "code": "zau_night_of_the_ritual",
+    "name": "Night of the Ritual",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-night_of_the_ritual",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-night_of_the_ritual-encounter-set-icon.png?cachebust=1767697252203"
+  },
+  {
+    "code": "zau_nyctophobia",
+    "name": "Nyctophobia",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-nyctophobia",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-nyctophobia-encounter-set-icon.png?cachebust=1767857881663"
+  },
+  {
+    "code": "zau_paradox",
+    "name": "Paradox",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-paradox",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-paradox-encounter-set-icon.png?cachebust=1767857884011"
+  },
+  {
+    "code": "zau_shifting_reality",
+    "name": "Shifting Reality",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-shifting-reality",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-shifting-reality-encounter-set-icon.png?cachebust=1767697254355"
+  },
+  {
+    "code": "zau_thugs",
+    "name": "Thugs",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-thugs",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-thugs-encounter-set-icon.png?cachebust=1767857884913"
+  },
+  {
+    "code": "zau_unleashed_chaos",
+    "name": "Unleashed Chaos",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-unleashed-chaos",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-unleashed-chaos-encounter-set-icon.png?cachebust=1767857880349"
+  },
+  {
+    "code": "zau_unravelling_years",
+    "name": "Unravelling Years",
+    "uuid": "0a100500-ab6d-4138-8284-a0ebb2adcadf-unravelling-years",
+    "icon_url": "https://eons.arkham.build/0a100500-ab6d-4138-8284-a0ebb2adcadf-unravelling-years-encounter-set-icon.png?cachebust=1767857882027"
+  },
+  {
+    "code": "one_last_job",
+    "name": "One Last Job"
+  },
+  {
+    "code": "the_apiary",
+    "name": "The Apiary"
+  },
+  {
+    "code": "cosmic_legacy",
+    "name": "Cosmic Legacy"
+  },
+  {
+    "code": "court_of_the_ancients",
+    "name": "Court of the Ancients"
+  },
+  {
+    "code": "domination",
+    "name": "Domination"
+  },
+  {
+    "code": "the_doom_of_arkham_part_1",
+    "name": "The Doom of Arkham Part I"
+  },
+  {
+    "code": "the_doom_of_arkham_part_2",
+    "name": "The Doom of Arkham Part II"
+  },
+  {
+    "code": "alien_machinery",
+    "name": "Alien Machinery"
+  },
+  {
+    "code": "dreams",
+    "name": "Dreams"
+  },
+  {
+    "code": "the_drowned_quarter",
+    "name": "The Drowned Quarter"
+  },
+  {
+    "code": "elder_mist",
+    "name": "Elder Mist"
+  },
+  {
+    "code": "tdc_expedition",
+    "name": "Expedition"
+  },
+  {
+    "code": "tdc_flood",
+    "name": "Flood"
+  },
+  {
+    "code": "the_grand_vault",
+    "name": "The Grand Vault"
+  },
+  {
+    "code": "the_inescapable",
+    "name": "The Inescapable"
+  },
+  {
+    "code": "obsidian_canyons",
+    "name": "Obsidian Canyons"
+  },
+  {
+    "code": "pilgrims",
+    "name": "Pilgrims"
+  },
+  {
+    "code": "rlyeh",
+    "name": "R'lyeh"
+  },
+  {
+    "code": "sepulchre_of_the_sleeper",
+    "name": "Sepulchre of the Sleeper"
+  },
+  {
+    "code": "star_spawn",
+    "name": "Star Spawn"
+  },
+  {
+    "code": "stowaways",
+    "name": "Stowaways"
+  },
+  {
+    "code": "tasks",
+    "name": "Tasks"
+  },
+  {
+    "code": "undersea_creatures",
+    "name": "Undersea Creatures"
+  },
+  {
+    "code": "the_western_wall",
+    "name": "The Western Wall"
+  },
+  {
+    "code": "deep_ones",
+    "name": "Deep Ones"
+  },
+  {
+    "code": "zcx_one_night_only",
+    "name": "One Night Only",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-one_night_only",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-one_night_only.png"
+  },
+  {
+    "code": "zcx_primrose_path",
+    "name": "The Primrose Path",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-the_primrose_path",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-the_primrose_path.png"
+  },
+  {
+    "code": "zcx_harms_way",
+    "name": "Harm's Way",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-harm_s_way",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-harm_s_way.png"
+  },
+  {
+    "code": "zcx_all_points_west",
+    "name": "All Points West",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-all_points_west",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-all_points_west.png"
+  },
+  {
+    "code": "zcx_piper_at_the_gates_of_dawn",
+    "name": "Piper at the Gates of Dawn",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-piper_at_the_gates_of_dawn",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-piper_at_the_gates_of_dawn.png"
+  },
+  {
+    "code": "zcx_bacchanalia",
+    "name": "Bacchanalia",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-bacchanalia",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-bacchanalia.png"
+  },
+  {
+    "code": "zcx_red_sunrise",
+    "name": "Red Sunrise",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-red_sunrise",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-red_sunrise.png"
+  },
+  {
+    "code": "zcx_thousand_to_one",
+    "name": "Thousand to One",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-thousand_to_one",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-thousand_to_one.png"
+  },
+  {
+    "code": "zcx_children_of_the_goat",
+    "name": "Children of the Goat",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-children_of_the_goat",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-children_of_the_goat.png"
+  },
+  {
+    "code": "zcx_circus_grounds",
+    "name": "Circus Grounds",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-circus_grounds",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-circus_grounds.png"
+  },
+  {
+    "code": "zcx_cult_of_shub_niggurath",
+    "name": "Cult of Shub-Niggurath",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-cult_of_shub-niggurath",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-cult_of_shub-niggurath.png"
+  },
+  {
+    "code": "zcx_illusory_tricks",
+    "name": "Illusory Tricks",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-illusory_tricks",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-illusory_tricks.png"
+  },
+  {
+    "code": "zcx_lunatic_night",
+    "name": "Lunatic Night",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-lunatic_night",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-lunatic_night.png"
+  },
+  {
+    "code": "zcx_new_moon_daredevils",
+    "name": "New Moon Daredevils",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-new_moon_daredevils",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-new_moon_daredevils.png"
+  },
+  {
+    "code": "zcx_new_moon_entertainers",
+    "name": "New Moon Entertainers",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-new_moon_entertainers",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-new_moon_entertainers.png"
+  },
+  {
+    "code": "zcx_panicked_masses",
+    "name": "Panicked Masses",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-panicked_masses",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-panicked_masses.png"
+  },
+  {
+    "code": "zcx_primordial_evils",
+    "name": "Primordial Evils",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-primordial_evils",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-primordial_evils.png"
+  },
+  {
+    "code": "zcx_savage_woods",
+    "name": "Savage Woods",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-savage_woods",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-savage_woods.png"
+  },
+  {
+    "code": "zcx_destiny_and_prophecy",
+    "name": "Destiny and Prophecy",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-destiny_and_prophecy",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_aefd8de8-f771-451d-a5cd-467d0e69cf5c-destiny_and_prophecy.png"
+  },
+  {
+    "code": "zcx_circus_ex_mortis",
+    "name": "Circus Ex Mortis",
+    "uuid": "aefd8de8-f771-451d-a5cd-467d0e69cf5c-circus_ex_mortis",
+    "icon_url": "https://eons.arkham.build/zoop_temp_image_collectionaefd8de8-f771-451d-a5cd-467d0e69cf5c.png"
+  },
+  {
+    "code": "film_fatale",
+    "name": "Film Fatale"
+  },
+  {
+    "code": "forgotten_island",
+    "name": "Forgotten Island"
+  },
+  {
+    "code": "abominable_contessa",
+    "name": "Abominable Contessa"
+  },
+  {
+    "code": "cosmic_journey",
+    "name": "Cosmic Journey"
+  },
+  {
+    "code": "enthralling_encore",
+    "name": "Enthralling Encore"
+  },
+  {
+    "code": "spreading_flames",
+    "name": "Spreading Flames"
+  },
+  {
+    "code": "smoke_and_mirrors",
+    "name": "Smoke and Mirrors"
+  },
+  {
+    "code": "queen_of_ash",
+    "name": "Queen of Ash"
+  },
+  {
+    "code": "arcane_lock",
+    "name": "Arcane Lock"
+  },
+  {
+    "code": "arkham_ch2",
+    "name": "Arkham"
+  },
+  {
+    "code": "ashen_pilgrims",
+    "name": "Ashen Pilgrims"
+  },
+  {
+    "code": "cosmic_evils",
+    "name": "Cosmic Evils"
+  },
+  {
+    "code": "cultists_ch2",
+    "name": "Cultists"
+  },
+  {
+    "code": "dead_ends",
+    "name": "Dead Ends"
+  },
+  {
+    "code": "bad_weather",
+    "name": "Bad Weather"
+  },
+  {
+    "code": "eldritch_lore",
+    "name": "Eldritch Lore"
+  },
+  {
+    "code": "fire_ch2",
+    "name": "Fire!"
+  },
+  {
+    "code": "flying_terrors",
+    "name": "Flying Terrors"
+  },
+  {
+    "code": "gangs_of_arkham",
+    "name": "Gangs of Arkham"
+  },
+  {
+    "code": "hallucinations",
+    "name": "Hallucinations"
+  },
+  {
+    "code": "mad_science",
+    "name": "Mad Science"
+  },
+  {
+    "code": "miskatonic_university",
+    "name": "Miskatonic University"
+  },
+  {
+    "code": "people_of_arkham",
+    "name": "People of Arkham"
+  },
+  {
+    "code": "reeking_decay",
+    "name": "Reeking Decay"
+  },
+  {
+    "code": "arkham_sewers",
+    "name": "Sewers"
+  },
+  {
+    "code": "torment",
+    "name": "Torment"
+  },
+  {
+    "code": "whippoorwills_ch2",
+    "name": "Whippoorwills"
+  },
+  {
+    "code": "bystanders",
+    "name": "Bystanders"
+  },
+  {
+    "code": "river_of_blood",
+    "name": "River of Blood"
+  },
+  {
+    "code": "new_horizons",
+    "name": "New Horizons"
+  },
+  {
+    "code": "blood_money",
+    "name": "Blood Money"
+  },
+  {
+    "code": "afflicted",
+    "name": "Afflicted"
+  },
+  {
+    "code": "agents_of_zburamoarte",
+    "name": "Agents of Zburamoarte"
+  },
+  {
+    "code": "blood_blight",
+    "name": "Blood Blight"
+  },
+  {
+    "code": "blood_moon",
+    "name": "Blood Moon"
+  },
+  {
+    "code": "bloodthirst",
+    "name": "Bloodthirst"
+  },
+  {
+    "code": "children_of_blood",
+    "name": "Children of Blood"
+  },
+  {
+    "code": "friends_in_low_places",
+    "name": "Friends in Low Places"
+  },
+  {
+    "code": "hunted",
+    "name": "Hunted"
+  },
+  {
+    "code": "infected",
+    "name": "Infected"
+  },
+  {
+    "code": "misinformation",
+    "name": "Misinformation"
+  },
+  {
+    "code": "mongrels",
+    "name": "Mongrels"
+  },
+  {
+    "code": "preyed_upon",
+    "name": "Preyed Upon"
+  },
+  {
+    "code": "sanguine_secrets",
+    "name": "Sanguine Secrets"
+  },
+  {
+    "code": "stalked",
+    "name": "Stalked"
+  },
+  {
+    "code": "vermin",
+    "name": "Vermin"
+  },
+  {
+    "code": "ztg_turning_gear",
+    "name": "The Turning Gear"
+  },
+  {
+    "code": "ztg_flood",
+    "name": "Flood"
+  },
+  {
+    "code": "ztg_military_maneuvers",
+    "name": "Military Maneuvers"
+  },
+  {
+    "code": "ztg_red_guard",
+    "name": "Red Guard"
+  },
+  {
+    "code": "ztg_unbound_dimensions",
+    "name": "Unbound Dimensions"
+  },
+  {
+    "code": "ztg_single_group",
+    "name": "Single Group"
+  },
+  {
+    "code": "ztg_epic",
+    "name": "Epic Multiplayer"
+  }
+]

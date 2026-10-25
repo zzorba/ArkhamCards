@@ -640,6 +640,10 @@
     "name": "Ein letzter Job"
   },
   {
+    "id": "one_night_only",
+    "name": "One Night Only"
+  },
+  {
     "id": "oz_epilogue",
     "name": "Epilog"
   },
@@ -1422,6 +1426,10 @@
   {
     "id": "ybor_city",
     "name": "Das Safehouse"
+  },
+  {
+    "id": "zcx_prologue",
+    "name": "Prolog"
   },
   {
     "id": "zhod_epilogue",

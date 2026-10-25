@@ -640,6 +640,10 @@
     "name": "One Last Job"
   },
   {
+    "id": "one_night_only",
+    "name": "One Night Only"
+  },
+  {
     "id": "oz_epilogue",
     "name": "尾聲故事"
   },
@@ -1422,6 +1426,10 @@
   {
     "id": "ybor_city",
     "name": "芝麻開門"
+  },
+  {
+    "id": "zcx_prologue",
+    "name": "引導故事"
   },
   {
     "id": "zhod_epilogue",

@@ -310849,6 +310849,824 @@
   },
   {
     "campaign": {
+      "id": "zcx",
+      "name": "Circus Ex Mortis",
+      "position": 26,
+      "version": 0,
+      "tarot": [],
+      "custom": {
+        "creator": "The Beard",
+        "download_link": {
+          "en": "https://mysteriouschanting.wordpress.com/2023/08/21/circus-ex-mortis-campaign-and-player-expansion/"
+        }
+      },
+      "campaign_type": "campaign",
+      "campaign_log": [
+        {
+          "id": "campaign_notes",
+          "title": "Notas de Campaña"
+        },
+        {
+          "id": "hidden",
+          "hidden": true,
+          "title": "Oculto"
+        }
+      ],
+      "scenarios": [
+        "zcx_prologue",
+        "one_night_only"
+      ],
+      "setup": [
+        "prologue",
+        "intro",
+        "choose_investigators",
+        "difficulty_choice",
+        "draw_weakness",
+        "$moon_token_rules",
+        "$tarot_rules"
+      ],
+      "steps": [
+        {
+          "id": "draw_weakness",
+          "type": "input",
+          "bullet_type": "none",
+          "input": {
+            "type": "investigator_choice",
+            "source": "scenario",
+            "investigator": "all",
+            "choices": [
+              {
+                "id": "rbw",
+                "text": "Robar Debilidad básica aleatoria",
+                "effects": [
+                  {
+                    "type": "add_weakness",
+                    "investigator": "$input_value",
+                    "weakness_traits": [],
+                    "select_traits": false
+                  },
+                  {
+                    "type": "remove_card",
+                    "investigator": "$input_value",
+                    "card": "01000",
+                    "non_story": true
+                  }
+                ],
+                "steps": [
+                  "save_decks"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "save_decks",
+          "type": "input",
+          "input": {
+            "type": "save_decks",
+            "trauma": true
+          }
+        },
+        {
+          "id": "prologue",
+          "title": "In the Shadow of the New Moon",
+          "type": "story",
+          "text": "\".. so from the wells of night to the gulfs of space, and from the gulfs of space to the wells of night... Ever Their praises, and abundance to the Black Goat of the Woods. Iä! Shub-Niggurath! The Goat with a Thousand Young\"\n- H.P. Lovecraft, \"The Whisperer in Darkness\""
+        },
+        {
+          "id": "intro",
+          "text": "<i>Circus Ex Mortis</i> is an eight-part campaign for <i>Arkham Horror: The Card Game</i> for 1-4 players. This campaign is based on various works by H. P. Lovecraft and draws from real-life events, historical and mythological figures, secret societies, and of course the circus.\nAs a general notice to people who have a fear or aversion to clowns, clowns do appear in this campaign, but the art chosen for these cards avoids the typical killer clown image."
+        },
+        {
+          "id": "choose_investigators",
+          "type": "input",
+          "input": {
+            "type": "scenario_investigators"
+          }
+        },
+        {
+          "id": "difficulty_choice",
+          "text": "Elige el nivel de dificultad:",
+          "type": "input",
+          "input": {
+            "type": "choose_one",
+            "default_choice": "standard",
+            "choices": [
+              {
+                "id": "easy",
+                "text": "Fácil",
+                "description": "<i>I want to spend a day at the circus</i>",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ],
+                "effects": [
+                  {
+                    "type": "campaign_data",
+                    "setting": "difficulty",
+                    "value": "easy"
+                  },
+                  {
+                    "type": "add_chaos_token",
+                    "tokens": [
+                      "+1",
+                      "+1",
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "-1",
+                      "-1",
+                      "-2",
+                      "-2",
+                      "skull",
+                      "skull",
+                      "elder_thing",
+                      "auto_fail",
+                      "elder_sign"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "standard",
+                "text": "Normal",
+                "description": "<i>I want to entertain the audience</i>",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ],
+                "effects": [
+                  {
+                    "type": "campaign_data",
+                    "setting": "difficulty",
+                    "value": "standard"
+                  },
+                  {
+                    "type": "add_chaos_token",
+                    "tokens": [
+                      "+1",
+                      "0",
+                      "0",
+                      "-1",
+                      "-1",
+                      "-1",
+                      "-2",
+                      "-2",
+                      "-3",
+                      "-4",
+                      "skull",
+                      "skull",
+                      "elder_thing",
+                      "auto_fail",
+                      "elder_sign"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "hard",
+                "text": "Difícil",
+                "description": "<i>I want to perform death-defying feats</i>",
+                "tokens": [
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "skull",
+                  "skull",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ],
+                "effects": [
+                  {
+                    "type": "campaign_data",
+                    "setting": "difficulty",
+                    "value": "hard"
+                  },
+                  {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "hard_or_expert",
+                    "text": "dummy"
+                  },
+                  {
+                    "type": "add_chaos_token",
+                    "tokens": [
+                      "0",
+                      "0",
+                      "-1",
+                      "-1",
+                      "-1",
+                      "-2",
+                      "-2",
+                      "-3",
+                      "-4",
+                      "-5",
+                      "skull",
+                      "skull",
+                      "elder_thing",
+                      "auto_fail",
+                      "elder_sign"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "expert",
+                "text": "Experto",
+                "description": "<i>I want to run a three-ring circus</i>",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "-7",
+                  "skull",
+                  "skull",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ],
+                "effects": [
+                  {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "hard_or_expert",
+                    "text": "dummy"
+                  },
+                  {
+                    "type": "campaign_data",
+                    "setting": "difficulty",
+                    "value": "expert"
+                  },
+                  {
+                    "type": "add_chaos_token",
+                    "tokens": [
+                      "0",
+                      "-1",
+                      "-1",
+                      "-1",
+                      "-2",
+                      "-2",
+                      "-3",
+                      "-4",
+                      "-5",
+                      "-7",
+                      "skull",
+                      "skull",
+                      "elder_thing",
+                      "auto_fail",
+                      "elder_sign"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "achievements": [
+        {
+          "id": "scapegoat",
+          "title": "Scapegoat",
+          "text": "Play the <i>Circus Ex Mortis</i> campaign as Jenny Barnes and defeat Sacrificial Beast at a location with a copy of Terrified Captives attached.",
+          "type": "binary"
+        },
+        {
+          "id": "moonlight_sonata",
+          "title": "Moonlight Sonata",
+          "text": "Play the <i>Circus Ex Mortis</i> campaign as Jim Culver and reveal three or more [blood] tokens while resolving Final Rhapsody.",
+          "type": "binary"
+        },
+        {
+          "id": "graveside_chat",
+          "title": "Graveside Chat",
+          "text": "Play the <i>Circus Ex Mortis</i> campaign as Marie Lambeau and have Baron Samedi and Lady Esprit in play at the same time.",
+          "type": "binary"
+        },
+        {
+          "id": "wolf_of_wall_street",
+          "title": "Wolf of Wall Stree",
+          "text": "Play the <i>Circus Ex Mortis</i> campaign and have Monstrous Transformation and Lone Wolf in play at the same time while you control 20 or more resources.",
+          "type": "binary"
+        },
+        {
+          "id": "destined_karma",
+          "title": "Destined Karma",
+          "text": "Get +3 skill value from the ability on Amalthea Weaver during a skill test that defeats The Black Goat.",
+          "type": "binary"
+        },
+        {
+          "id": "time_out",
+          "title": "Time Out!",
+          "text": "Activate the [action] ability on De Cultus Bestiae while you are engaged with 3 or more enemies.",
+          "type": "binary"
+        },
+        {
+          "id": "wax_and_wane",
+          "title": "Wax and Wane",
+          "text": "Cancel 1 [moon] token and release 2 [moon] tokens during a single skill test using Invocation of Diana.",
+          "type": "binary"
+        },
+        {
+          "id": "shoot_the_moon",
+          "title": "Shoot the Moon",
+          "text": "Reveal four or more [moon] tokens during a single skill test.",
+          "type": "binary"
+        },
+        {
+          "id": "utter_lunatic",
+          "title": "Utter Lunatic",
+          "text": "Release all six [moon] tokens from your investigator card at the end of a single round.",
+          "type": "binary"
+        },
+        {
+          "id": "many_futures",
+          "title": "Many Futures",
+          "text": "Obtain each final version of Amalthea Weaver.",
+          "type": "list",
+          "items": [
+            {
+              "id": "purity",
+              "text": "Oracle of Purity"
+            },
+            {
+              "id": "resolve",
+              "text": "Oracle of Resolve"
+            },
+            {
+              "id": "enlightenment",
+              "text": "Oracle of Enlightenment"
+            },
+            {
+              "id": "mystery",
+              "text": "Oracle of Mystery"
+            }
+          ]
+        }
+      ]
+    },
+    "scenarios": [
+      {
+        "id": "core",
+        "scenario_name": "Circus Ex Mortis",
+        "full_name": "Circus Ex Mortis",
+        "header": "",
+        "type": "core",
+        "setup": [
+          "$moon_token_rules",
+          "$tarot_rules"
+        ],
+        "steps": [
+          {
+            "id": "$moon_token_rules",
+            "type": "rule_reminder",
+            "title": "Moon Tokens",
+            "text": "This campaign introduces a new kind of chaos token: The moon ([moon]) token. During the Circus Ex Mortis campaign, the moon plays a significant role, and the moon token represents both the strength and severity of its strange influence.",
+            "bullets": [
+              {
+                "text": "[moon] tokens revealed during a skill test have the following effect: \"O. Seal this token on your investigator card and reveal another token.\""
+              },
+              {
+                "text": "[moon] tokens sealed on your investigator card have no effect on their own, but some card effects may reference whether or not there is a [moon] token sealed on your investigator card, or the number of [moon] tokens sealed on your investigator card."
+              },
+              {
+                "text": "At the end of the round, for each [moon] token sealed on your investigator card, you must (choose one):\n- That token stays sealed on your investigator card.\n- Take 1 dama or 1 horror. Then, release that token."
+              },
+              {
+                "text": "A [moon] token evealed outside of a skill test has no effect on its own\nunless otherwise specified by a card effect."
+              }
+            ]
+          },
+          {
+            "id": "$tarot_rules",
+            "type": "rule_reminder",
+            "title": "The Tarot Deck",
+            "text": "If investigators choose to use the Tarot Deck from the <i>Return to the Circle Undone</i> expansion, there is some thematic connection to the <i>Circus Ex Mortis</i> campaign. Investigators may choose to perform an 8-card Campaign Reading with these specific 8 cards, in this order:\nMagician, Hermit, Strength, Chariot, Devil, Temperance, Sun, Moon"
+          }
+        ]
+      },
+      {
+        "id": "one_night_only",
+        "scenario_name": "One Night Only",
+        "full_name": "Scenario I: One Night Only",
+        "header": "Escenario I",
+        "icon": "zcx_one_night_only",
+        "setup": [
+          "intro",
+          "choose_seat",
+          "$check_dexter_or_performer",
+          "intro_2",
+          "gather_encounter_sets",
+          "setup_locations",
+          "setup_disguised_monstrosity",
+          "setup_act_deck",
+          "set_aside_cards",
+          "encounter_deck",
+          "$play_scenario"
+        ],
+        "steps": [
+          {
+            "id": "intro",
+            "type": "story",
+            "text": "The woods south of Uptown loom above you in the fading light as you approach the circus grounds. Smiling barkers take your tickets and usher you in with enthusiastic shouts of the many waiting attractions, though you only take note of potential threats. If this circus is harboring dark and deadly things, then you can't afford to let your guard down for even a moment. You follow the flow of the crowd to the main tent, wondering just where trouble might start."
+          },
+          {
+            "id": "choose_seat",
+            "type": "input",
+            "input": {
+              "type": "investigator_choice",
+              "source": "scenario",
+              "investigator": "all",
+              "special_mode": "sequential",
+              "choices": [
+                {
+                  "id": "seat_animal_acts",
+                  "text": "I'll take a seat next to the animal acts.",
+                  "effects": [
+                    {
+                      "type": "story_step",
+                      "steps": [
+                        "seat_first_ring"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "seat_acrobats",
+                  "text": "I'll take a seat next to the acrobats.",
+                  "effects": [
+                    {
+                      "type": "story_step",
+                      "steps": [
+                        "seat_second_ring"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "seat_clowns",
+                  "text": "I'll take a seat next to the clowns.",
+                  "effects": [
+                    {
+                      "type": "story_step",
+                      "steps": [
+                        "seat_third_ring"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "seat_first_ring",
+            "text": "You begin play at The Big Top <i>(First Ring)</i>."
+          },
+          {
+            "id": "seat_second_ring",
+            "text": "You begin play at The Big Top <i>(Second Ring)</i>."
+          },
+          {
+            "id": "seat_third_ring",
+            "text": "You begin play at The Big Top <i>(Third Ring)</i>."
+          },
+          {
+            "id": "$check_dexter_or_performer",
+            "type": "branch",
+            "text": "If Dexter Drake or 1 or more [[Performer]] investigators were chosen:",
+            "condition": {
+              "type": "multi",
+              "count": 1,
+              "conditions": [
+                {
+                  "type": "campaign_data",
+                  "campaign_data": "investigator",
+                  "investigator_data": "trait",
+                  "options": [
+                    {
+                      "condition": "Performer"
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_data",
+                  "campaign_data": "investigator",
+                  "investigator_data": "code",
+                  "options": [
+                    {
+                      "condition": "98016"
+                    },
+                    {
+                      "condition": "07004"
+                    }
+                  ]
+                }
+              ],
+              "options": [
+                {
+                  "boolCondition": true,
+                  "border": true,
+                  "effects": [
+                    {
+                      "type": "story_step",
+                      "steps": [
+                        "performer_story",
+                        "performer_starting_clue"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "performer_story",
+            "type": "story",
+            "text": "As you seat yourself in the bleachers, your eyes instinctively stray to where the performers gather before beginning their routines. The few visible members scan the room furtively, practicing strange hand motions."
+          },
+          {
+            "id": "performer_starting_clue",
+            "text": "You begin the game with 1 clue from the token bank."
+          },
+          {
+            "id": "intro_2",
+            "type": "story",
+            "text": "With a sudden loud fanfare, a long parade of exotic animals and costumed acrobats snakes around the tent, each settling in their performance areas to the applause of the crowd. A tall man- unnaturally tall - with a pointed beard and a pitch-black suit saunters between the three rings and gives an elegant bow to the audience. You catch an unsettling glint in his eyes as he raises his head to address the cheering citizens.\n\"Ladies and gentlemen, boys and girls, welcome to the greatest spectacle of your lives! Watch in amazement as I, Sylvester Blake, ringmaster of the New Moon Circus, unveil our most impossible trick!\" The ringmaster's voice booms out, but with a tone just as unnatural as his appearance. He weaves his hands through the air with a magician's deftness, and one of the elephants rears up with a trumpet call. Cheers and applause ring out from the audience as the elephant repeats its motion, but its call grows distorted and its form begins to waver. When the animal rises for a third time, its head begins to split, and its cry is utterly alien. The crowd's cheering gives way to horrified screams, and pandemonium breaks."
+          },
+          {
+            "id": "gather_encounter_sets",
+            "title": "Preparación",
+            "type": "encounter_sets",
+            "encounter_sets": [
+              "zcx_one_night_only",
+              "zcx_circus_grounds",
+              "zcx_illusory_tricks",
+              "zcx_new_moon_daredevils",
+              "zcx_new_moon_entertainers",
+              "zcx_panicked_masses",
+              "zcx_primordial_evils"
+            ]
+          },
+          {
+            "id": "setup_locations",
+            "text": "Put the three The Big Top locations into play along with\nCarousel, Games Gallery, Animal Cages, and Performer Trailers."
+          },
+          {
+            "id": "setup_disguised_monstrosity",
+            "text": "Put 1 copy of Disguised Monstrosity into play at The Big Top <i>(First Ring)</i> exhausted. Set the other copy aside, out of play."
+          },
+          {
+            "id": "setup_act_deck",
+            "text": "When building the act deck, choose one copy of act 1 at random. Remove each other copy of act 1 from the game."
+          },
+          {
+            "id": "set_aside_cards",
+            "text": "Set the following cards aside, out of play: Illusory Locus, Circus Gates."
+          },
+          {
+            "id": "encounter_deck",
+            "text": "Baraja el resto de cartas de Encuentro para formar el mazo de Encuentros."
+          },
+          {
+            "id": "ringmaster_does_not_suspect",
+            "text": "In your Campaign Log, record that <i>the ringmaster does not suspect you.</i>.",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "ringmaster_does_not_suspect",
+                "text": "The ringmaster does not suspect you."
+              }
+            ]
+          },
+          {
+            "id": "ringmaster_has_eyes_on_you",
+            "text": "In your Campaign Log, record that <i>the ringmaster has his eyes on you.</i>.",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "ringmaster_has_eyes_on_you",
+                "text": "The ringmaster has his eyes on you."
+              }
+            ]
+          },
+          {
+            "id": "resolution_1",
+            "type": "resolution",
+            "resolution": "R1"
+          },
+          {
+            "id": "resolution_3",
+            "type": "resolution",
+            "resolution": "R3"
+          },
+          {
+            "id": "check_act_1_token",
+            "type": "input",
+            "text": "If it was act 1 when the game ended, look at the back of the act 1 chosen for the scenario and add the listed token to the chaos bag for the remainder of the campaign.",
+            "input": {
+              "type": "choose_one",
+              "choices": [
+                {
+                  "id": "act_1_lions_den",
+                  "text": "Act 1b: <i>In the Lion's Den</i>",
+                  "steps": [
+                    "add_tablet_token"
+                  ]
+                },
+                {
+                  "id": "act_1_horses_eye",
+                  "text": "Act 1b: <i>In the Horse's Eye</i>",
+                  "steps": [
+                    "add_tablet_token"
+                  ]
+                },
+                {
+                  "id": "act_1_prize_display",
+                  "text": "Act 1b: <i>In the Prize Display</i>",
+                  "steps": [
+                    "add_cultist_token"
+                  ]
+                },
+                {
+                  "id": "act_1_makeup_case",
+                  "text": "Act 1b: <i>In the Makeup Case</i>",
+                  "steps": [
+                    "add_cultist_token"
+                  ]
+                },
+                {
+                  "id": "not_act_1",
+                  "text": "It was not act 1 when the game ended",
+                  "steps": []
+                }
+              ]
+            }
+          },
+          {
+            "id": "add_tablet_token",
+            "text": "Añade 1 ficha de Caos [tablet] a la bolsa de caos durante el resto de la campaña.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "tablet"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "add_cultist_token",
+            "text": "Añade 1 ficha [cultist] a la bolsa de caos durante el resto de la campaña.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "cultist"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "earn_xp",
+            "text": "Cada investigador obtiene una cantidad de experiencia igual al valor de Victoria X de cada carta que haya en la zona de victoria.",
+            "type": "input",
+            "input": {
+              "type": "counter",
+              "text": "Zona de victoria:",
+              "effects": [
+                {
+                  "type": "earn_xp",
+                  "investigator": "all"
+                }
+              ]
+            }
+          }
+        ],
+        "resolutions": [
+          {
+            "id": "no_resolution",
+            "title": "No se ha llegado a ninguna resolución",
+            "description": "Todos los investigadores fueron derrotados",
+            "investigator_status": [
+              "eliminated",
+              "physical",
+              "mental"
+            ],
+            "steps": [
+              "resolution_1"
+            ]
+          },
+          {
+            "id": "R1",
+            "hidden": true,
+            "title": "Resolución 1",
+            "text": "The rough scraping of the ground beneath your body and the sounds of woodland nightlife rouse you slowly but surely back to consciousness. You open one eye groggily to find one of the circus performers dragging you through the woods further south of Arkham. Though it came at the price of a welt on the back of your head, you're outside that accursed circus and free from the illusory influence.\nYou summon your strength and send a wild strike into one of your captor's kidneys, causing him to drop you with an outcry of pain. You push yourself quickly upright, ready to fight for your freedom if need be. The carnie sizes you up, ready for another fight, but looks up at the full moon above you both. With a grimace, he turns and runs deeper into the woods behind him at a breakneck pace, far more nimbly than you would have suspected at a glance. You doubt you could catch up to him in the treacherous Arkham woods, but you at least know that he has other priorities now.",
+            "steps": [
+              "ringmaster_does_not_suspect",
+              "check_act_1_token",
+              "resolution_3"
+            ]
+          },
+          {
+            "id": "R2",
+            "title": "Resolución 2",
+            "text": "You tread swiftly out onto the dry dirt path leading up to the circus, with dozens of frightened survivors close behind you. Well clear of the carnage and kidnapping for the moment, you advise the crowd to return to Arkham as fast as they can and inform the police. The Arkham brass aren't the most reliable, but even the magic tricks of the circus won't be able to cover this one up.\nAs the victims return to safety, your thoughts turn back to the circus still looming behind you. What was it all for? People capable of controlling those horrid beasts and wielding that hypnotic magic wouldn't organize all this just out of pure malice. Considering Minnie's report of their sudden trek north to Arkham as well, there has to be some deliberate purpose behind the chaos tonight, but what?\nThe ringmaster - Sylvester Blake - is sure to have the answers to everything. A man of his stark and menacing appearance shouldn't be hard to lose track of, but he disappeared shortly after the chaos began. Likely more of the circus illusions at work. Does he not want to do his own dirty work, or does he have other reasons for staying aloof? Time will tell, as you intend to confront the man yet.",
+            "steps": [
+              "ringmaster_has_eyes_on_you",
+              "resolution_3"
+            ]
+          },
+          {
+            "id": "R3",
+            "title": "Resolución 3",
+            "hidden": true,
+            "text": "A nearby scream sends a jolt of adrenaline through your system once more, and you advance into the treeline. A young boy struggles in the grip of another circus performer - a thin man with angular features - who is attempting to drag the boy possibly deeper into the woods. A twig cracks under your foot in the approach, and the abductor snaps his head up toward you for barely a second before he abandons his prey and retreats into the forest. The boy scrabbles back against a tree, and only once you introduce yourself calmly does he visibly settle. You tell him to get back to Arkham without delay, and he does, only giving a mumbled thank you as he runs off.\nOne down, dozens to go. You turn your attention back to the moonlit trees. Most people avoid the Arkham woods during the day, to say nothing of its dangers at night, but you have little choice. The circus performers must have kidnapped dozens of people during the bedlam. If you don't rescue the victims tonight, before the circus has a chance to leave, then they're as good as dead, and whatever foul mission the circus pursues will be that much closer to fruition. You summon your strength and courage for the long night ahead.",
+            "steps": [
+              "earn_xp",
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "zcx_prologue",
+        "scenario_name": "Prólogo",
+        "full_name": "Prólogo",
+        "header": "",
+        "icon": "zcx_circus_ex_mortis",
+        "type": "interlude",
+        "setup": [
+          "prologue",
+          "add_3_moon_tokens"
+        ],
+        "steps": [
+          {
+            "id": "prologue",
+            "type": "story",
+            "text": "<center><b>****** COMING SOON - THE NEW MOON CIRCUS! ******</b>\nCome and see the <b>greatest show</b> in the <b>world</b>!\n<b>Death-defying</b> acrobatics! Feats of <b>supreme strength and skill</b>!\nA <b>menagerie</b> of the most <b>incredible</b> creatures alive!\nComing to your town <b>this Sunday</b>!<b>One night only</b>!\n<b>** DON'T MISS THIS ONCE-IN-A-LIFETIME CHANCE! **</b></center>\n\nSunday, August 26th, 1923. Arkham, Massachusetts.\nThe New Moon Circus had been the talk of the town for the better part of the week. Traveling circuses tended to visit bigger cities for potential profit alone, and few people in Arkham could find time or money to visit Boston, New York, or Philadelphia on a whim. While the circus typically didn't draw the attention of high society, even the French Hill elite began to joke about seeing the circus for a lark. You confess, you had some interest in the circus as well, but not for the popular reasons.\nMinnie Klein of the Arkham Advertiser was the first one to bring the coincidences to your attention. You found Minnie waiting for you at Velma's Diner with her notepad in hand and a hungry look in her eyes - and it wasn't for the lunch specials. \"Take a look at these,\" she says, using her pencil like a teacher's pointer. \"The New Moon Circus used to work the usual circuit in the south, hitting all the big cities like Atlanta and Jacksonville, and never going further north than Memphis. Then a month ago, the circus suddenly took off up the coast, and started working a bunch of podunk towns on the way north. Arkham's the biggest one they've hit since Savannah.\"\nYou concede that there's probably something odd behind the circus' decision, but you fail to see what about it has excited Minnie. She quickly elaborates. \"Missing person cases and mysterious deaths in each town the New Moon Circus has visited at the time the circus was in town. And here's the kicker.\" Minnie smiles proudly as she taps at the bottom of her pad. The people who went to see the circus? Nobody can remember anything concrete about it. Two people who live three states away gave their local papers the exact same quote about their experience. How's that for fishy?\"\nFishy enough to warrant your investigation at the very least. And so with tickets in hand and preparations made for any possible contingency, you set out for the circus. The evening is still bright owing to the time of year, but the full moon is already rising."
+          },
+          {
+            "id": "add_3_moon_tokens",
+            "text": "Add 3 [moon] tokens to the chaos bag for the remainder of the campaign.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "moon",
+                  "moon",
+                  "moon"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "campaign": {
       "id": "zdm",
       "position": 19,
       "version": 4,

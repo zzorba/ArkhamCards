@@ -640,6 +640,10 @@
     "name": "Последнее дело"
   },
   {
+    "id": "one_night_only",
+    "name": "One Night Only"
+  },
+  {
     "id": "oz_epilogue",
     "name": "Эпилог"
   },
@@ -1422,6 +1426,10 @@
   {
     "id": "ybor_city",
     "name": "Убежище"
+  },
+  {
+    "id": "zcx_prologue",
+    "name": "Пролог"
   },
   {
     "id": "zhod_epilogue",

@@ -640,6 +640,10 @@
     "name": "Un Dernier Travail"
   },
   {
+    "id": "one_night_only",
+    "name": "One Night Only"
+  },
+  {
     "id": "oz_epilogue",
     "name": "Épilogue"
   },
@@ -1422,6 +1426,10 @@
   {
     "id": "ybor_city",
     "name": "Le Refuge"
+  },
+  {
+    "id": "zcx_prologue",
+    "name": "Prologue"
   },
   {
     "id": "zhod_epilogue",

@@ -9193,6 +9193,34 @@
     "supplies": []
   },
   {
+    "campaignId": "zcx",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "ringmaster_does_not_suspect",
+            "text": "The ringmaster does not suspect you."
+          },
+          {
+            "id": "ringmaster_has_eyes_on_you",
+            "text": "The ringmaster has his eyes on you."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "hard_or_expert",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "zdm",
     "sections": [
       {

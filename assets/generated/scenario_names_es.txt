@@ -640,6 +640,10 @@
     "name": "Un último trabajo"
   },
   {
+    "id": "one_night_only",
+    "name": "One Night Only"
+  },
+  {
     "id": "oz_epilogue",
     "name": "Epílogo"
   },
@@ -1422,6 +1426,10 @@
   {
     "id": "ybor_city",
     "name": "El refugio"
+  },
+  {
+    "id": "zcx_prologue",
+    "name": "Prólogo"
   },
   {
     "id": "zhod_epilogue",
