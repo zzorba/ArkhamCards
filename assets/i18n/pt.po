@@ -6382,7 +6382,7 @@ msgstr "Arkham"
 
 msgctxt "trait"
 msgid "Arkham Asylum"
-msgstr "Sanatório de Arkham"
+msgstr "Asilo Arkham"
 
 msgctxt "trait"
 msgid "Armor"
