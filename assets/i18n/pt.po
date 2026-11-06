@@ -6374,7 +6374,7 @@ msgstr "Ancestral"
 
 msgctxt "trait"
 msgid "Ancient One"
-msgstr "O Ancestral"
+msgstr "Ancião"
 
 msgctxt "trait"
 msgid "Arkham"
@@ -6382,7 +6382,7 @@ msgstr "Arkham"
 
 msgctxt "trait"
 msgid "Arkham Asylum"
-msgstr "Asilo Arkham"
+msgstr "Sanatório de Arkham"
 
 msgctxt "trait"
 msgid "Armor"
@@ -6418,7 +6418,7 @@ msgstr "Pântano"
 
 msgctxt "trait"
 msgid "Believer"
-msgstr "Crente"
+msgstr "Convicto"
 
 msgctxt "trait"
 msgid "Blessed"
@@ -6426,7 +6426,7 @@ msgstr "Abençoado"
 
 msgctxt "trait"
 msgid "Blunder"
-msgstr "Erro"
+msgstr "Tropeço"
 
 msgctxt "trait"
 msgid "Boat"
@@ -6434,11 +6434,11 @@ msgstr "Barco"
 
 msgctxt "trait"
 msgid "Bold"
-msgstr "Ousado"
+msgstr "Audaz"
 
 msgctxt "trait"
 msgid "Boon"
-msgstr "Benefício"
+msgstr "Dádiva"
 
 msgctxt "trait"
 msgid "Bridge"
@@ -6466,7 +6466,7 @@ msgstr "Acampamento"
 
 msgctxt "trait"
 msgid "Carnevale"
-msgstr "Carnevale"
+msgstr "Carnaval"
 
 msgctxt "trait"
 msgid "Cave"
@@ -6478,7 +6478,7 @@ msgstr "Central"
 
 msgctxt "trait"
 msgid "Charm"
-msgstr "Encanto"
+msgstr "Talismã"
 
 msgctxt "trait"
 msgid "Chosen"
@@ -6502,11 +6502,11 @@ msgstr "Clarividente"
 
 msgctxt "trait"
 msgid "Clothing"
-msgstr "Roupas"
+msgstr "Vestuário"
 
 msgctxt "trait"
 msgid "Clover Club"
-msgstr "Clube do Trevo"
+msgstr "Clover Club"
 
 msgctxt "trait"
 msgid "Coastal"
@@ -6530,7 +6530,7 @@ msgstr "Conspirador"
 
 msgctxt "trait"
 msgid "Construct"
-msgstr "Construir"
+msgstr "Constructo"
 
 msgctxt "trait"
 msgid "Covenant"
@@ -6542,7 +6542,7 @@ msgstr "Criatura"
 
 msgctxt "trait"
 msgid "Crime Scene"
-msgstr "Cena do crime"
+msgstr "Cena do Crime"
 
 msgctxt "trait"
 msgid "Criminal"
@@ -6562,11 +6562,11 @@ msgstr "Amaldiçoado"
 
 msgctxt "trait"
 msgid "Dark Young"
-msgstr "Jovem Sombrio"
+msgstr "Cria Sombria"
 
 msgctxt "trait"
 msgid "Deep One"
-msgstr "Profundo"
+msgstr "Abissal"
 
 msgctxt "trait"
 msgid "Depths"
@@ -6702,7 +6702,7 @@ msgstr "Gambito"
 
 msgctxt "trait"
 msgid "Geist"
-msgstr "Espectro"
+msgstr "Geist"
 
 msgctxt "trait"
 msgid "Ghast"
@@ -6718,7 +6718,7 @@ msgstr "Governo"
 
 msgctxt "trait"
 msgid "Grant"
-msgstr "Subvenção"
+msgstr "Concessão"
 
 msgctxt "trait"
 msgid "Graveyard"
@@ -7002,7 +7002,7 @@ msgstr "Poder"
 
 msgctxt "trait"
 msgid "Practiced"
-msgstr "Treinado"
+msgstr "Praticado"
 
 msgctxt "trait"
 msgid "Present-Day"
@@ -7422,7 +7422,7 @@ msgstr "Cassino"
 
 msgctxt "trait"
 msgid "Double"
-msgstr "Dobro"
+msgstr "Sósia"
 
 msgctxt "trait"
 msgid "AI"
@@ -7542,7 +7542,7 @@ msgstr "Calçado, mas na verdade não"
 
 msgctxt "trait"
 msgid "Hardship"
-msgstr "Adversidade"
+msgstr "Dificuldade"
 
 msgctxt "trait"
 msgid "Haunted"
@@ -7898,7 +7898,7 @@ msgstr "Cômodo"
 
 msgctxt "trait"
 msgid "Scion"
-msgstr "Descendente"
+msgstr "Rebento"
 
 msgctxt "trait"
 msgid "Station"
