@@ -6374,7 +6374,7 @@ msgstr "Ancestral"
 
 msgctxt "trait"
 msgid "Ancient One"
-msgstr "O Ancestral"
+msgstr "Ancião"
 
 msgctxt "trait"
 msgid "Arkham"
@@ -6414,11 +6414,11 @@ msgstr "Porão"
 
 msgctxt "trait"
 msgid "Bayou"
-msgstr ""
+msgstr "Pântano"
 
 msgctxt "trait"
 msgid "Believer"
-msgstr "Crente"
+msgstr "Convicto"
 
 msgctxt "trait"
 msgid "Blessed"
@@ -6426,7 +6426,7 @@ msgstr "Abençoado"
 
 msgctxt "trait"
 msgid "Blunder"
-msgstr "Erro"
+msgstr "Tropeço"
 
 msgctxt "trait"
 msgid "Boat"
@@ -6434,11 +6434,11 @@ msgstr "Barco"
 
 msgctxt "trait"
 msgid "Bold"
-msgstr "Ousado"
+msgstr "Audaz"
 
 msgctxt "trait"
 msgid "Boon"
-msgstr "Benefício"
+msgstr "Dádiva"
 
 msgctxt "trait"
 msgid "Bridge"
@@ -6466,7 +6466,7 @@ msgstr "Acampamento"
 
 msgctxt "trait"
 msgid "Carnevale"
-msgstr ""
+msgstr "Carnaval"
 
 msgctxt "trait"
 msgid "Cave"
@@ -6478,7 +6478,7 @@ msgstr "Central"
 
 msgctxt "trait"
 msgid "Charm"
-msgstr "Encanto"
+msgstr "Talismã"
 
 msgctxt "trait"
 msgid "Chosen"
@@ -6502,11 +6502,11 @@ msgstr "Clarividente"
 
 msgctxt "trait"
 msgid "Clothing"
-msgstr "Roupas"
+msgstr "Vestuário"
 
 msgctxt "trait"
 msgid "Clover Club"
-msgstr "Clube do Trevo"
+msgstr "Clover Club"
 
 msgctxt "trait"
 msgid "Coastal"
@@ -6530,7 +6530,7 @@ msgstr "Conspirador"
 
 msgctxt "trait"
 msgid "Construct"
-msgstr "Construir"
+msgstr "Constructo"
 
 msgctxt "trait"
 msgid "Covenant"
@@ -6542,7 +6542,7 @@ msgstr "Criatura"
 
 msgctxt "trait"
 msgid "Crime Scene"
-msgstr "Cena do crime"
+msgstr "Cena do Crime"
 
 msgctxt "trait"
 msgid "Criminal"
@@ -6562,11 +6562,11 @@ msgstr "Amaldiçoado"
 
 msgctxt "trait"
 msgid "Dark Young"
-msgstr "Jovem Sombrio"
+msgstr "Cria Sombria"
 
 msgctxt "trait"
 msgid "Deep One"
-msgstr "Profundo"
+msgstr "Abissal"
 
 msgctxt "trait"
 msgid "Depths"
@@ -6582,7 +6582,7 @@ msgstr "Desesperado"
 
 msgctxt "trait"
 msgid "Detective"
-msgstr ""
+msgstr "Detetive"
 
 msgctxt "trait"
 msgid "Developed"
@@ -6598,1407 +6598,1407 @@ msgstr "Distorção"
 
 msgctxt "trait"
 msgid "Dreamer"
-msgstr ""
+msgstr "Sonhador"
 
 msgctxt "trait"
 msgid "Dreamlands"
-msgstr ""
+msgstr "Terras Oníricas"
 
 msgctxt "trait"
 msgid "Drifter"
-msgstr ""
+msgstr "Andarilho"
 
 msgctxt "trait"
 msgid "Dunwich"
-msgstr ""
+msgstr "Dunwich"
 
 msgctxt "trait"
 msgid "Eldritch"
-msgstr ""
+msgstr "Sobrenatural"
 
 msgctxt "trait"
 msgid "Elite"
-msgstr ""
+msgstr "Elite"
 
 msgctxt "trait"
 msgid "Endtimes"
-msgstr ""
+msgstr "Fim dos Tempos"
 
 msgctxt "trait"
 msgid "Evidence"
-msgstr ""
+msgstr "Evidência"
 
 msgctxt "trait"
 msgid "Exhibit"
-msgstr ""
+msgstr "Exposição"
 
 msgctxt "trait"
 msgid "Expedition"
-msgstr ""
+msgstr "Expedição"
 
 msgctxt "trait"
 msgid "Expert"
-msgstr ""
+msgstr "Experiente"
 
 msgctxt "trait"
 msgid "Extradimensional"
-msgstr ""
+msgstr "Extradimensional"
 
 msgctxt "trait"
 msgid "Extraterrestrial"
-msgstr ""
+msgstr "Extraterrestre"
 
 msgctxt "trait"
 msgid "Eztli"
-msgstr ""
+msgstr "Eztli"
 
 msgctxt "trait"
 msgid "Familiar"
-msgstr ""
+msgstr "Familiar"
 
 msgctxt "trait"
 msgid "Fated"
-msgstr ""
+msgstr "Predestinado"
 
 msgctxt "trait"
 msgid "Favor"
-msgstr ""
+msgstr "Favor"
 
 msgctxt "trait"
 msgid "Firearm"
-msgstr ""
+msgstr "Arma de Fogo"
 
 msgctxt "trait"
 msgid "Flaw"
-msgstr ""
+msgstr "Defeito"
 
 msgctxt "trait"
 msgid "Flora"
-msgstr ""
+msgstr "Flora"
 
 msgctxt "trait"
 msgid "Footwear"
-msgstr ""
+msgstr "Calçado"
 
 msgctxt "trait"
 msgid "Forbidden"
-msgstr ""
+msgstr "Proibido"
 
 msgctxt "trait"
 msgid "Forgotten"
-msgstr ""
+msgstr "Esquecido"
 
 msgctxt "trait"
 msgid "Fortune"
-msgstr ""
+msgstr "Sorte"
 
 msgctxt "trait"
 msgid "Future"
-msgstr ""
+msgstr "Futuro"
 
 msgctxt "trait"
 msgid "Gambit"
-msgstr ""
+msgstr "Gambito"
 
 msgctxt "trait"
 msgid "Geist"
-msgstr ""
+msgstr "Geist"
 
 msgctxt "trait"
 msgid "Ghast"
-msgstr ""
+msgstr "Ghast"
 
 msgctxt "trait"
 msgid "Ghoul"
-msgstr ""
+msgstr "Carniçal"
 
 msgctxt "trait"
 msgid "Government"
-msgstr ""
+msgstr "Governo"
 
 msgctxt "trait"
 msgid "Grant"
-msgstr ""
+msgstr "Concessão"
 
 msgctxt "trait"
 msgid "Graveyard"
-msgstr ""
+msgstr "Cemitério"
 
 msgctxt "trait"
 msgid "Ground Floor"
-msgstr ""
+msgstr "Térreo"
 
 msgctxt "trait"
 msgid "Guest"
-msgstr ""
+msgstr "Convidado"
 
 msgctxt "trait"
 msgid "Gug"
-msgstr ""
+msgstr "Gug"
 
 msgctxt "trait"
 msgid "Hall"
-msgstr ""
+msgstr "Salão"
 
 msgctxt "trait"
 msgid "Hazard"
-msgstr ""
+msgstr "Perigo"
 
 msgctxt "trait"
 msgid "Hex"
-msgstr ""
+msgstr "Feitiço"
 
 msgctxt "trait"
 msgid "Hideout"
-msgstr ""
+msgstr "Esconderijo"
 
 msgctxt "trait"
 msgid "Historical Society"
-msgstr ""
+msgstr "Sociedade Histórica"
 
 msgctxt "trait"
 msgid "Humanoid"
-msgstr ""
+msgstr "Humanoide"
 
 msgctxt "trait"
 msgid "Hunter"
-msgstr ""
+msgstr "Caçador"
 
 msgctxt "trait"
 msgid "Hybrid"
-msgstr ""
+msgstr "Híbrido"
 
 msgctxt "trait"
 msgid "Illicit"
-msgstr ""
+msgstr "Ilícito"
 
 msgctxt "trait"
 msgid "Improvised"
-msgstr ""
+msgstr "Improvisado"
 
 msgctxt "trait"
 msgid "Injury"
-msgstr ""
+msgstr "Ferimento"
 
 msgctxt "trait"
 msgid "Innate"
-msgstr ""
+msgstr "Inato"
 
 msgctxt "trait"
 msgid "Innocent"
-msgstr ""
+msgstr "Inocente"
 
 msgctxt "trait"
 msgid "Innsmouth"
-msgstr ""
+msgstr "Innsmouth"
 
 msgctxt "trait"
 msgid "Insect"
-msgstr ""
+msgstr "Inseto"
 
 msgctxt "trait"
 msgid "Insight"
-msgstr ""
+msgstr "Introspecção"
 
 msgctxt "trait"
 msgid "Instrument"
-msgstr ""
+msgstr "Instrumento"
 
 msgctxt "trait"
 msgid "Island"
-msgstr ""
+msgstr "Ilha"
 
 msgctxt "trait"
 msgid "Item"
-msgstr ""
+msgstr "Item"
 
 msgctxt "trait"
 msgid "Job"
-msgstr ""
+msgstr "Trabalho"
 
 msgctxt "trait"
 msgid "Jungle"
-msgstr ""
+msgstr "Selva"
 
 msgctxt "trait"
 msgid "Kadath"
-msgstr ""
+msgstr "Kadath"
 
 msgctxt "trait"
 msgid "Key"
-msgstr ""
+msgstr "Chave"
 
 msgctxt "trait"
 msgid "Lead"
-msgstr ""
+msgstr "Pista"
 
 msgctxt "trait"
 msgid "Leng"
-msgstr ""
+msgstr "Leng"
 
 msgctxt "trait"
 msgid "Lodge"
-msgstr ""
+msgstr "Loja"
 
 msgctxt "trait"
 msgid "Madness"
-msgstr ""
+msgstr "Loucura"
 
 msgctxt "trait"
 msgid "Manifold"
-msgstr ""
+msgstr "Múltiplo"
 
 msgctxt "trait"
 msgid "Mask"
-msgstr ""
+msgstr "Máscara"
 
 msgctxt "trait"
 msgid "Medic"
-msgstr ""
+msgstr "Médico"
 
 msgctxt "trait"
 msgid "Melee"
-msgstr ""
+msgstr "Corpo a Corpo"
 
 msgctxt "trait"
 msgid "Mexico City"
-msgstr ""
+msgstr "Cidade do México"
 
 msgctxt "trait"
 msgid "Mi-Go"
-msgstr ""
+msgstr "Mi-Go"
 
 msgctxt "trait"
 msgid "Midtown"
-msgstr ""
+msgstr "Centro"
 
 msgctxt "trait"
 msgid "Miskatonic"
-msgstr ""
+msgstr "Miskatonic"
 
 msgctxt "trait"
 msgid "Mnar"
-msgstr ""
+msgstr "Mnar"
 
 msgctxt "trait"
 msgid "Monster"
-msgstr ""
+msgstr "Monstro"
 
 msgctxt "trait"
 msgid "Montréal"
-msgstr ""
+msgstr "Montreal"
 
 msgctxt "trait"
 msgid "Mountain"
-msgstr ""
+msgstr "Montanha"
 
 msgctxt "trait"
 msgid "Mutated"
-msgstr ""
+msgstr "Mutado"
 
 msgctxt "trait"
 msgid "Mystery"
-msgstr ""
+msgstr "Mistério"
 
 msgctxt "trait"
 msgid "New Orleans"
-msgstr ""
+msgstr "Nova Orleans"
 
 msgctxt "trait"
 msgid "New York City"
-msgstr ""
+msgstr "Nova York"
 
 msgctxt "trait"
 msgid "Nightgaunt"
-msgstr ""
+msgstr "Noctítrico"
 
 msgctxt "trait"
 msgid "Obstacle"
-msgstr ""
+msgstr "Obstáculo"
 
 msgctxt "trait"
 msgid "Occult"
-msgstr ""
+msgstr "Oculto"
 
 msgctxt "trait"
 msgid "Ocean"
-msgstr ""
+msgstr "Oceano"
 
 msgctxt "trait"
 msgid "Omen"
-msgstr ""
+msgstr "Presságio"
 
 msgctxt "trait"
 msgid "Ooth-Nargai"
-msgstr ""
+msgstr "Ooth-Nargai"
 
 msgctxt "trait"
 msgid "Ooze"
-msgstr ""
+msgstr "Lodo"
 
 msgctxt "trait"
 msgid "Oozified"
-msgstr ""
+msgstr "Lodoso"
 
 msgctxt "trait"
 msgid "Oriab"
-msgstr ""
+msgstr "Oriab"
 
 msgctxt "trait"
 msgid "Otherworld"
-msgstr ""
+msgstr "Outro Mundo"
 
 msgctxt "trait"
 msgid "Pact"
-msgstr ""
+msgstr "Pacto"
 
 msgctxt "trait"
 msgid "Paradox"
-msgstr ""
+msgstr "Paradoxo"
 
 msgctxt "trait"
 msgid "Paris"
-msgstr ""
+msgstr "Paris"
 
 msgctxt "trait"
 msgid "Part 1"
-msgstr ""
+msgstr "Parte 1"
 
 msgctxt "trait"
 msgid "Passageway"
-msgstr ""
+msgstr "Passagem"
 
 msgctxt "trait"
 msgid "Patron"
-msgstr ""
+msgstr "Patrono"
 
 msgctxt "trait"
 msgid "Performer"
-msgstr ""
+msgstr "Intérprete"
 
 msgctxt "trait"
 msgid "Pnakotus"
-msgstr ""
+msgstr "Pnakotus"
 
 msgctxt "trait"
 msgid "Poison"
-msgstr ""
+msgstr "Veneno"
 
 msgctxt "trait"
 msgid "Police"
-msgstr ""
+msgstr "Polícia"
 
 msgctxt "trait"
 msgid "Port"
-msgstr ""
+msgstr "Porto"
 
 msgctxt "trait"
 msgid "Portal"
-msgstr ""
+msgstr "Portal"
 
 msgctxt "trait"
 msgid "Power"
-msgstr ""
+msgstr "Poder"
 
 msgctxt "trait"
 msgid "Practiced"
-msgstr ""
+msgstr "Treinado"
 
 msgctxt "trait"
 msgid "Present-Day"
-msgstr ""
+msgstr "Atualidade"
 
 msgctxt "trait"
 msgid "Prison"
-msgstr ""
+msgstr "Prisão"
 
 msgctxt "trait"
 msgid "Private"
-msgstr ""
+msgstr "Privado"
 
 msgctxt "trait"
 msgid "Providence"
-msgstr ""
+msgstr "Providence"
 
 msgctxt "trait"
 msgid "Rail"
-msgstr ""
+msgstr "Trilho"
 
 msgctxt "trait"
 msgid "Ranged"
-msgstr ""
+msgstr "À Distância"
 
 msgctxt "trait"
 msgid "Relic"
-msgstr ""
+msgstr "Relíquia"
 
 msgctxt "trait"
 msgid "Reporter"
-msgstr ""
+msgstr "Repórter"
 
 msgctxt "trait"
 msgid "Research"
-msgstr ""
+msgstr "Pesquisa"
 
 msgctxt "trait"
 msgid "Return"
-msgstr ""
+msgstr "Retorno"
 
 msgctxt "trait"
 msgid "Ritual"
-msgstr ""
+msgstr "Ritual"
 
 msgctxt "trait"
 msgid "Ritual Site"
-msgstr ""
+msgstr "Sítio Ritual"
 
 msgctxt "trait"
 msgid "River"
-msgstr ""
+msgstr "Rio"
 
 msgctxt "trait"
 msgid "Riverside"
-msgstr ""
+msgstr "Beira-Rio"
 
 msgctxt "trait"
 msgid "Road"
-msgstr ""
+msgstr "Estrada"
 
 msgctxt "trait"
 msgid "Ruins"
-msgstr ""
+msgstr "Ruínas"
 
 msgctxt "trait"
 msgid "Salem"
-msgstr ""
+msgstr "Salem"
 
 msgctxt "trait"
 msgid "Sanctum"
-msgstr ""
+msgstr "Santuário"
 
 msgctxt "trait"
 msgid "Scheme"
-msgstr ""
+msgstr "Plano"
 
 msgctxt "trait"
 msgid "Scholar"
-msgstr ""
+msgstr "Acadêmico"
 
 msgctxt "trait"
 msgid "Science"
-msgstr ""
+msgstr "Ciência"
 
 msgctxt "trait"
 msgid "Script"
-msgstr ""
+msgstr "Roteiro"
 
 msgctxt "trait"
 msgid "Second Floor"
-msgstr ""
+msgstr "Segundo Andar"
 
 msgctxt "trait"
 msgid "Sentinel Hill"
-msgstr ""
+msgstr "Sentinel Hill"
 
 msgctxt "trait"
 msgid "Serpent"
-msgstr ""
+msgstr "Serpente"
 
 msgctxt "trait"
 msgid "Service"
-msgstr ""
+msgstr "Serviço"
 
 msgctxt "trait"
 msgid "Servitor"
-msgstr ""
+msgstr "Servo"
 
 msgctxt "trait"
 msgid "Shantak"
-msgstr ""
+msgstr "Shantak"
 
 msgctxt "trait"
 msgid "Shattered"
-msgstr ""
+msgstr "Estraçalhado"
 
 msgctxt "trait"
 msgid "Ship"
-msgstr ""
+msgstr "Navio"
 
 msgctxt "trait"
 msgid "Shoggoth"
-msgstr ""
+msgstr "Shoggoth"
 
 msgctxt "trait"
 msgid "Silver Twilight"
-msgstr ""
+msgstr "Crepúsculo Prateado"
 
 msgctxt "trait"
 msgid "Skai"
-msgstr ""
+msgstr "Skai"
 
 msgctxt "trait"
 msgid "Socialite"
-msgstr ""
+msgstr "Socialite"
 
 msgctxt "trait"
 msgid "Song"
-msgstr ""
+msgstr "Canção"
 
 msgctxt "trait"
 msgid "Sorcerer"
-msgstr ""
+msgstr "Feiticeiro"
 
 msgctxt "trait"
 msgid "Spectral"
-msgstr ""
+msgstr "Espectral"
 
 msgctxt "trait"
 msgid "Spell"
-msgstr ""
+msgstr "Magia"
 
 msgctxt "trait"
 msgid "Spider"
-msgstr ""
+msgstr "Aranha"
 
 msgctxt "trait"
 msgid "Spirit"
-msgstr ""
+msgstr "Espírito"
 
 msgctxt "trait"
 msgid "St Mary's"
-msgstr ""
+msgstr "St. Mary's"
 
 msgctxt "trait"
 msgid "Staff"
-msgstr ""
+msgstr "Cajado"
 
 msgctxt "trait"
 msgid "Steps"
-msgstr ""
+msgstr "Degraus"
 
 msgctxt "trait"
 msgid "Summon"
-msgstr ""
+msgstr "Invocação"
 
 msgctxt "trait"
 msgid "Supply"
-msgstr ""
+msgstr "Suprimento"
 
 msgctxt "trait"
 msgid "Surface"
-msgstr ""
+msgstr "Superfície"
 
 msgctxt "trait"
 msgid "Suspect"
-msgstr ""
+msgstr "Suspeito"
 
 msgctxt "trait"
 msgid "Syndicate"
-msgstr ""
+msgstr "Sindicato"
 
 msgctxt "trait"
 msgid "Tactic"
-msgstr ""
+msgstr "Tática"
 
 msgctxt "trait"
 msgid "Talent"
-msgstr ""
+msgstr "Talento"
 
 msgctxt "trait"
 msgid "Tarot"
-msgstr ""
+msgstr "Tarô"
 
 msgctxt "trait"
 msgid "Task"
-msgstr ""
+msgstr "Tarefa"
 
 msgctxt "trait"
 msgid "Temple"
-msgstr ""
+msgstr "Templo"
 
 msgctxt "trait"
 msgid "Tenochtitlán"
-msgstr ""
+msgstr "Tenochtitlán"
 
 msgctxt "trait"
 msgid "Tentacle"
-msgstr ""
+msgstr "Tentáculo"
 
 msgctxt "trait"
 msgid "Terror"
-msgstr ""
+msgstr "Terror"
 
 msgctxt "trait"
 msgid "Third Floor"
-msgstr ""
+msgstr "Terceiro Andar"
 
 msgctxt "trait"
 msgid "Tindalos"
-msgstr ""
+msgstr "Tíndalos"
 
 msgctxt "trait"
 msgid "Tome"
-msgstr ""
+msgstr "Tomo"
 
 msgctxt "trait"
 msgid "Tool"
-msgstr ""
+msgstr "Ferramenta"
 
 msgctxt "trait"
 msgid "Town"
-msgstr ""
+msgstr "Cidadezinha"
 
 msgctxt "trait"
 msgid "Train"
-msgstr ""
+msgstr "Trem"
 
 msgctxt "trait"
 msgid "Trap"
-msgstr ""
+msgstr "Armadilha"
 
 msgctxt "trait"
 msgid "Trick"
-msgstr ""
+msgstr "Truque"
 
 msgctxt "trait"
 msgid "Unhallowed"
-msgstr ""
+msgstr "Profanado"
 
 msgctxt "trait"
 msgid "Upgrade"
-msgstr ""
+msgstr "Aprimoramento"
 
 msgctxt "trait"
 msgid "Vale"
-msgstr ""
+msgstr "Vale"
 
 msgctxt "trait"
 msgid "Vehicle"
-msgstr ""
+msgstr "Veículo"
 
 msgctxt "trait"
 msgid "Venice"
-msgstr ""
+msgstr "Veneza"
 
 msgctxt "trait"
 msgid "Veteran"
-msgstr ""
+msgstr "Veterano"
 
 msgctxt "trait"
 msgid "Void"
-msgstr ""
+msgstr "Vazio"
 
 msgctxt "trait"
 msgid "Warden"
-msgstr ""
+msgstr "Protetor"
 
 msgctxt "trait"
 msgid "Wastes"
-msgstr ""
+msgstr "Ermos"
 
 msgctxt "trait"
 msgid "Wayfarer"
-msgstr ""
+msgstr "Viajante"
 
 msgctxt "trait"
 msgid "Weapon"
-msgstr ""
+msgstr "Arma"
 
 msgctxt "trait"
 msgid "Wilderness"
-msgstr ""
+msgstr "Natureza Selvagem"
 
 msgctxt "trait"
 msgid "Witch"
-msgstr ""
+msgstr "Bruxa"
 
 msgctxt "trait"
 msgid "Witch House"
-msgstr ""
+msgstr "Casa da Bruxa"
 
 msgctxt "trait"
 msgid "Woods"
-msgstr ""
+msgstr "Bosque"
 
 msgctxt "trait"
 msgid "Y'ha-nthlei"
-msgstr ""
+msgstr "Y'ha-nthlei"
 
 msgctxt "trait"
 msgid "Yithian"
-msgstr ""
+msgstr "Yithiano"
 
 msgctxt "trait"
 msgid "Yoth"
-msgstr ""
+msgstr "Yoth"
 
 msgctxt "trait"
 msgid "Zoog"
-msgstr ""
+msgstr "Zoog"
 
 msgctxt "trait"
 msgid "Broken"
-msgstr ""
+msgstr "Instável"
 
 msgctxt "trait"
 msgid "Entrepreneur"
-msgstr ""
+msgstr "Empreendedor"
 
 msgctxt "trait"
 msgid "Falcon Point"
-msgstr ""
+msgstr "Falcon Point"
 
 msgctxt "trait"
 msgid "Lair"
-msgstr ""
+msgstr "Covil"
 
 msgctxt "trait"
 msgid "Synergy"
-msgstr ""
+msgstr "Sinergia"
 
 msgctxt "trait"
 msgid "Unbroken"
-msgstr ""
+msgstr "Íntegro"
 
 msgctxt "trait"
 msgid "Resolute"
-msgstr ""
+msgstr "Resoluto"
 
 msgctxt "trait"
 msgid "Coterie"
-msgstr ""
+msgstr "Confraria"
 
 msgctxt "trait"
 msgid "Dilemma"
-msgstr ""
+msgstr "Dilema"
 
 msgctxt "trait"
 msgid "Eidolon"
-msgstr ""
+msgstr "Êidolon"
 
 msgctxt "trait"
 msgid "Elder Thing"
-msgstr ""
+msgstr "Coisa Antiga"
 
 msgctxt "trait"
 msgid "Glacier"
-msgstr ""
+msgstr "Geleira"
 
 msgctxt "trait"
 msgid "Mainland"
-msgstr ""
+msgstr "Continente"
 
 msgctxt "trait"
 msgid "Mirage"
-msgstr ""
+msgstr "Miragem"
 
 msgctxt "trait"
 msgid "Mountains"
-msgstr ""
+msgstr "Montanhas"
 
 msgctxt "trait"
 msgid "Past"
-msgstr ""
+msgstr "Passado"
 
 msgctxt "trait"
 msgid "Possessed"
-msgstr ""
+msgstr "Possuído"
 
 msgctxt "trait"
 msgid "Present"
-msgstr ""
+msgstr "Presente"
 
 msgctxt "trait"
 msgid "Scientist"
-msgstr ""
+msgstr "Cientista"
 
 msgctxt "trait"
 msgid "Uncharted"
-msgstr ""
+msgstr "Inexplorado"
 
 msgctxt "trait"
 msgid "Casino"
-msgstr ""
+msgstr "Cassino"
 
 msgctxt "trait"
 msgid "Double"
-msgstr ""
+msgstr "Dobro"
 
 msgctxt "trait"
 msgid "AI"
-msgstr ""
+msgstr "IA"
 
 msgctxt "trait"
 msgid "Abandoned"
-msgstr ""
+msgstr "Abandonado"
 
 msgctxt "trait"
 msgid "Access"
-msgstr ""
+msgstr "Acesso"
 
 msgctxt "trait"
 msgid "Alexandria"
-msgstr ""
+msgstr "Alexandria"
 
 msgctxt "trait"
 msgid "Ally? Creature"
-msgstr ""
+msgstr "Aliado? Criatura"
 
 msgctxt "trait"
 msgid "Ancient One?"
-msgstr ""
+msgstr "Ancião?"
 
 msgctxt "trait"
 msgid "Bad dog"
-msgstr ""
+msgstr "Cachorro Mau"
 
 msgctxt "trait"
 msgid "Bazaar"
-msgstr ""
+msgstr "Bazar"
 
 msgctxt "trait"
 msgid "Blessed?"
-msgstr ""
+msgstr "Abençoado?"
 
 msgctxt "trait"
 msgid "Bokor"
-msgstr ""
+msgstr "Bokor"
 
 msgctxt "trait"
 msgid "Book"
-msgstr ""
+msgstr "Livro"
 
 msgctxt "trait"
 msgid "Buenos Aires"
-msgstr ""
+msgstr "Buenos Aires"
 
 msgctxt "trait"
 msgid "Card"
-msgstr ""
+msgstr "Carta"
 
 msgctxt "trait"
 msgid "Case"
-msgstr ""
+msgstr "Caso"
 
 msgctxt "trait"
 msgid "Castle"
-msgstr ""
+msgstr "Castelo"
 
 msgctxt "trait"
 msgid "Chair"
-msgstr ""
+msgstr "Cadeira"
 
 msgctxt "trait"
 msgid "Chess"
-msgstr ""
+msgstr "Xadrez"
 
 msgctxt "trait"
 msgid "Classy"
-msgstr ""
+msgstr "Elegante"
 
 msgctxt "trait"
 msgid "Collector"
-msgstr ""
+msgstr "Colecionador"
 
 msgctxt "trait"
 msgid "Consort"
-msgstr ""
+msgstr "Consorte"
 
 msgctxt "trait"
 msgid "Corpse"
-msgstr ""
+msgstr "Cadáver"
 
 msgctxt "trait"
 msgid "Corruption"
-msgstr ""
+msgstr "Corrupção"
 
 msgctxt "trait"
 msgid "Darkness"
-msgstr ""
+msgstr "Escuridão"
 
 msgctxt "trait"
 msgid "Device"
-msgstr ""
+msgstr "Dispositivo"
 
 msgctxt "trait"
 msgid "Downtown"
-msgstr ""
+msgstr "Centro"
 
 msgctxt "trait"
 msgid "Enigma"
-msgstr ""
+msgstr "Enigma"
 
 msgctxt "trait"
 msgid "Entrance"
-msgstr ""
+msgstr "Entrada"
 
 msgctxt "trait"
 msgid "Fellow Dogs"
-msgstr ""
+msgstr "Companheiros Caninos"
 
 msgctxt "trait"
 msgid "Footwear, but not really"
-msgstr ""
+msgstr "Calçado, mas na verdade não"
 
 msgctxt "trait"
 msgid "Hardship"
-msgstr ""
+msgstr "Dificuldade"
 
 msgctxt "trait"
 msgid "Haunted"
-msgstr ""
+msgstr "Assombrado"
 
 msgctxt "trait"
 msgid "Havana"
-msgstr ""
+msgstr "Havana"
 
 msgctxt "trait"
 msgid "Human"
-msgstr ""
+msgstr "Humano"
 
 msgctxt "trait"
 msgid "Infection"
-msgstr ""
+msgstr "Infecção"
 
 msgctxt "trait"
 msgid "Istanbul"
-msgstr ""
+msgstr "Istambul"
 
 msgctxt "trait"
 msgid "Kuala Lumpur"
-msgstr ""
+msgstr "Kuala Lumpur"
 
 msgctxt "trait"
 msgid "Local"
-msgstr ""
+msgstr "Local"
 
 msgctxt "trait"
 msgid "Locus Site"
-msgstr ""
+msgstr "Sítio Focal"
 
 msgctxt "trait"
 msgid "London"
-msgstr ""
+msgstr "Londres"
 
 msgctxt "trait"
 msgid "Loyal"
-msgstr ""
+msgstr "Leal"
 
 msgctxt "trait"
 msgid "Lunatic"
-msgstr ""
+msgstr "Lunático"
 
 msgctxt "trait"
 msgid "Machine"
-msgstr ""
+msgstr "Máquina"
 
 msgctxt "trait"
 msgid "Madness?"
-msgstr ""
+msgstr "Loucura?"
 
 msgctxt "trait"
 msgid "Marrakesh"
-msgstr ""
+msgstr "Marrakech"
 
 msgctxt "trait"
 msgid "Medical"
-msgstr ""
+msgstr "Médico"
 
 msgctxt "trait"
 msgid "Music"
-msgstr ""
+msgstr "Música"
 
 msgctxt "trait"
 msgid "Musician"
-msgstr ""
+msgstr "Músico"
 
 msgctxt "trait"
 msgid "Northside"
-msgstr ""
+msgstr "Northside"
 
 msgctxt "trait"
 msgid "Nostalgia II"
-msgstr ""
+msgstr "Nostalgia II"
 
 msgctxt "trait"
 msgid "Outsider"
-msgstr ""
+msgstr "Forasteiro"
 
 msgctxt "trait"
 msgid "Parasitic"
-msgstr ""
+msgstr "Parasitário"
 
 msgctxt "trait"
 msgid "Plains"
-msgstr ""
+msgstr "Planícies"
 
 msgctxt "trait"
 msgid "Priestess"
-msgstr ""
+msgstr "Sacerdotisa"
 
 msgctxt "trait"
 msgid "Pup"
-msgstr ""
+msgstr "Filhote"
 
 msgctxt "trait"
 msgid "Resonant"
-msgstr ""
+msgstr "Ressonante"
 
 msgctxt "trait"
 msgid "Restricted"
-msgstr ""
+msgstr "Restrito"
 
 msgctxt "trait"
 msgid "Retired"
-msgstr ""
+msgstr "Aposentado"
 
 msgctxt "trait"
 msgid "Risen"
-msgstr ""
+msgstr "Erguido"
 
 msgctxt "trait"
 msgid "Row"
-msgstr ""
+msgstr "Fileira"
 
 msgctxt "trait"
 msgid "Royalty"
-msgstr ""
+msgstr "Realeza"
 
 msgctxt "trait"
 msgid "Saga"
-msgstr ""
+msgstr "Saga"
 
 msgctxt "trait"
 msgid "Shadow"
-msgstr ""
+msgstr "Sombra"
 
 msgctxt "trait"
 msgid "Shapeshifter"
-msgstr ""
+msgstr "Metamorfo"
 
 msgctxt "trait"
 msgid "Sheldon Gang"
-msgstr ""
+msgstr "Gangue Sheldon"
 
 msgctxt "trait"
 msgid "Sister"
-msgstr ""
+msgstr "Irmã"
 
 msgctxt "trait"
 msgid "Slope"
-msgstr ""
+msgstr "Encosta"
 
 msgctxt "trait"
 msgid "Soldier"
-msgstr ""
+msgstr "Soldado"
 
 msgctxt "trait"
 msgid "Stable"
-msgstr ""
+msgstr "Estábulo"
 
 msgctxt "trait"
 msgid "Stop"
-msgstr ""
+msgstr "Parada"
 
 msgctxt "trait"
 msgid "Table"
-msgstr ""
+msgstr "Mesa"
 
 msgctxt "trait"
 msgid "Tatterdemalion"
-msgstr ""
+msgstr "Esfarrapado"
 
 msgctxt "trait"
 msgid "That's bad"
-msgstr ""
+msgstr "Isso é Ruim"
 
 msgctxt "trait"
 msgid "Tower"
-msgstr ""
+msgstr "Torre"
 
 msgctxt "trait"
 msgid "Traitor"
-msgstr ""
+msgstr "Traidor"
 
 msgctxt "trait"
 msgid "Tulgey Wood"
-msgstr ""
+msgstr "Floresta Tulgey"
 
 msgctxt "trait"
 msgid "Underground"
-msgstr ""
+msgstr "Subterrâneo"
 
 msgctxt "trait"
 msgid "Unstable"
-msgstr ""
+msgstr "Instável"
 
 msgctxt "trait"
 msgid "Upper Floor"
-msgstr ""
+msgstr "Andar Superior"
 
 msgctxt "trait"
 msgid "Virtual"
-msgstr ""
+msgstr "Virtual"
 
 msgctxt "trait"
 msgid "Weather"
-msgstr ""
+msgstr "Clima"
 
 msgctxt "trait"
 msgid "What? No"
-msgstr ""
+msgstr "O Quê? Não"
 
 msgctxt "trait"
 msgid "Wonderland"
-msgstr ""
+msgstr "País das Maravilhas"
 
 msgctxt "trait"
 msgid "Yuggoth"
-msgstr ""
+msgstr "Yuggoth"
 
 msgctxt "trait"
 msgid "Blight"
-msgstr ""
+msgstr "Praga"
 
 msgctxt "trait"
 msgid "Colour"
-msgstr ""
+msgstr "Cor"
 
 msgctxt "trait"
 msgid "Crew"
-msgstr ""
+msgstr "Tripulação"
 
 msgctxt "trait"
 msgid "Delta"
-msgstr ""
+msgstr "Delta"
 
 msgctxt "trait"
 msgid "Emissary"
-msgstr ""
+msgstr "Emissário"
 
 msgctxt "trait"
 msgid "Game"
-msgstr ""
+msgstr "Jogo"
 
 msgctxt "trait"
 msgid "Inconspicuous"
-msgstr ""
+msgstr "Discreto"
 
 msgctxt "trait"
 msgid "Miasma"
-msgstr ""
+msgstr "Miasma"
 
 msgctxt "trait"
 msgid "Public"
-msgstr ""
+msgstr "Público"
 
 msgctxt "trait"
 msgid "Resident"
-msgstr ""
+msgstr "Residente"
 
 msgctxt "trait"
 msgid "Role"
-msgstr ""
+msgstr "Função"
 
 msgctxt "trait"
 msgid "Rot"
-msgstr ""
+msgstr "Podridão"
 
 msgctxt "trait"
 msgid "Sub-Level"
-msgstr ""
+msgstr "Subnível"
 
 msgctxt "trait"
 msgid "Unpracticed"
-msgstr ""
+msgstr "Não Praticado"
 
 msgctxt "trait"
 msgid "Allied"
-msgstr ""
+msgstr "Aliado"
 
 msgctxt "trait"
 msgid "Bog"
-msgstr ""
+msgstr "Brejo"
 
 msgctxt "trait"
 msgid "Cart"
-msgstr ""
+msgstr "Carroça"
 
 msgctxt "trait"
 msgid "Dark"
-msgstr ""
+msgstr "Escuro"
 
 msgctxt "trait"
 msgid "Dormant"
-msgstr ""
+msgstr "Dormente"
 
 msgctxt "trait"
 msgid "Fairy"
-msgstr ""
+msgstr "Fada"
 
 msgctxt "trait"
 msgid "Farm"
-msgstr ""
+msgstr "Fazenda"
 
 msgctxt "trait"
 msgid "Field"
-msgstr ""
+msgstr "Campo"
 
 msgctxt "trait"
 msgid "Forest"
-msgstr ""
+msgstr "Floresta"
 
 msgctxt "trait"
 msgid "Hemlock Vale"
-msgstr ""
+msgstr "Vale da Cicuta"
 
 msgctxt "trait"
 msgid "Kingsport"
-msgstr ""
+msgstr "Kingsport"
 
 msgctxt "trait"
 msgid "Lantern Club"
-msgstr ""
+msgstr "Lantern Club"
 
 msgctxt "trait"
 msgid "Leader"
-msgstr ""
+msgstr "Líder"
 
 msgctxt "trait"
 msgid "Lit"
-msgstr ""
+msgstr "Iluminado"
 
 msgctxt "trait"
 msgid "Machination"
-msgstr ""
+msgstr "Maquinação"
 
 msgctxt "trait"
 msgid "Manor"
-msgstr ""
+msgstr "Mansão"
 
 msgctxt "trait"
 msgid "Misfortune"
-msgstr ""
+msgstr "Infortúnio"
 
 msgctxt "trait"
 msgid "Oz"
-msgstr ""
+msgstr "Oz"
 
 msgctxt "trait"
 msgid "Plot"
-msgstr ""
+msgstr "Trama"
 
 msgctxt "trait"
 msgid "Rival"
-msgstr ""
+msgstr "Rival"
 
 msgctxt "trait"
 msgid "Room"
-msgstr ""
+msgstr "Cômodo"
 
 msgctxt "trait"
 msgid "Scion"
-msgstr ""
+msgstr "Rebento"
 
 msgctxt "trait"
 msgid "Station"
-msgstr ""
+msgstr "Estação"
 
 msgctxt "trait"
 msgid "Sunken"
-msgstr ""
+msgstr "Submerso"
 
 msgctxt "trait"
 msgid "Unlit"
-msgstr ""
+msgstr "Sem Iluminação"
 
 msgctxt "trait"
 msgid "Adrift"
-msgstr ""
+msgstr "À Deriva"
 
 msgctxt "trait"
 msgid "Arkham?"
-msgstr ""
+msgstr "Arkham?"
 
 msgctxt "trait"
 msgid "Artifact"
-msgstr ""
+msgstr "Artefato"
 
 msgctxt "trait"
 msgid "Brand"
-msgstr ""
+msgstr "Marca"
 
 msgctxt "trait"
 msgid "Completed"
-msgstr ""
+msgstr "Concluído"
 
 msgctxt "trait"
 msgid "Cretaceous"
-msgstr ""
+msgstr "Cretáceo"
 
 msgctxt "trait"
 msgid "Egypt"
-msgstr ""
+msgstr "Egito"
 
 msgctxt "trait"
 msgid "France"
-msgstr ""
+msgstr "França"
 
 msgctxt "trait"
 msgid "Glyph"
-msgstr ""
+msgstr "Glifo"
 
 msgctxt "trait"
 msgid "Headgear"
-msgstr ""
+msgstr "Acessório de Cabeça"
 
 msgctxt "trait"
 msgid "Incomplete"
-msgstr ""
+msgstr "Incompleto"
 
 msgctxt "trait"
 msgid "Monsters"
-msgstr ""
+msgstr "Monstros"
 
 msgctxt "trait"
 msgid "Posture"
-msgstr ""
+msgstr "Postura"
 
 msgctxt "trait"
 msgid "Prosthesis"
-msgstr ""
+msgstr "Prótese"
 
 msgctxt "trait"
 msgid "R'lyeh"
-msgstr ""
+msgstr "R'lyeh"
 
 msgctxt "trait"
 msgid "Rome"
-msgstr ""
+msgstr "Roma"
 
 msgctxt "trait"
 msgid "Sailor"
-msgstr ""
+msgstr "Marinheiro"
 
 msgctxt "trait"
 msgid "Star Spawn"
-msgstr ""
+msgstr "Cria Estelar"
 
 msgctxt "trait"
 msgid "Stowaway"
-msgstr ""
+msgstr "Clandestino"
 
 msgctxt "trait"
 msgid "Student"
-msgstr ""
+msgstr "Estudante"
 
 msgctxt "trait"
 msgid "Symbiote"
-msgstr ""
+msgstr "Simbionte"
 
 msgctxt "trait"
 msgid "Tandem"
-msgstr ""
+msgstr "Tandem"
 
 msgctxt "slots"
 msgid "None"
