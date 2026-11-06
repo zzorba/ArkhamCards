@@ -7002,7 +7002,7 @@ msgstr "Poder"
 
 msgctxt "trait"
 msgid "Practiced"
-msgstr "Praticado"
+msgstr "Treinado"
 
 msgctxt "trait"
 msgid "Present-Day"
@@ -7422,7 +7422,7 @@ msgstr "Cassino"
 
 msgctxt "trait"
 msgid "Double"
-msgstr "Sósia"
+msgstr "Dobro"
 
 msgctxt "trait"
 msgid "AI"
