@@ -22,7 +22,7 @@ import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useBackButton, useComponentVisible } from '@components/core/hooks';
 import { useAlertDialog, useDialog } from '@components/deck/dialogs';
-import { CampaignCycleCode, CampaignDifficulty, COB, CUSTOM, EOE } from '@actions/types';
+import { CampaignCycleCode, CampaignDifficulty, CIRCUS_EX_MORTIS, COB, CUSTOM, EOE } from '@actions/types';
 import space, { s, xs } from '@styles/space';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import ChaosToken, { EXTRA_TINY_TOKEN_SIZE } from '@components/chaos/ChaosToken';
@@ -297,12 +297,15 @@ function EditChaosBagDialog() {
       return CHAOS_TOKENS;
     }
     if (cycleCode === EOE) {
-      return filter(CHAOS_TOKENS, x => x !== 'blood');
+      return filter(CHAOS_TOKENS, x => x !== 'blood' && x !== 'moon');
     }
     if (cycleCode === COB) {
-      return filter(CHAOS_TOKENS, x => x !== 'frost');
+      return filter(CHAOS_TOKENS, x => x !== 'frost' && x !== 'moon');
     }
-    return filter(CHAOS_TOKENS, x => x !== 'blood' && x !== 'frost');
+    if (cycleCode === CIRCUS_EX_MORTIS) {
+      return filter(CHAOS_TOKENS, x => x !== 'frost' && x !== 'blood');
+    }
+    return filter(CHAOS_TOKENS, x => x !== 'blood' && x !== 'frost' && x !== 'moon');
   }, [cycleCode]);
   return (
     <>
