@@ -6057,13 +6057,13 @@ msgid "You must select a campaign."
 msgstr "캠페인을 반드시 선택해야 합니다."
 
 msgid "The Drowned City"
-msgstr ""
+msgstr "수몰된 도시"
 
 msgid "Artifacts Earned"
 msgstr ""
 
 msgid "Alien Glyphs"
-msgstr ""
+msgstr "외계 상형문자"
 
 msgid "Locations Explored"
 msgstr ""
