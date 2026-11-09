@@ -6060,7 +6060,7 @@ msgid "The Drowned City"
 msgstr "수몰된 도시"
 
 msgid "Artifacts Earned"
-msgstr ""
+msgstr "입수한 성물"
 
 msgid "Alien Glyphs"
 msgstr "외계 상형문자"
@@ -6069,7 +6069,7 @@ msgid "Locations Explored"
 msgstr ""
 
 msgid "Task Progress"
-msgstr ""
+msgstr "과업 진척"
 
 #, javascript-format
 msgid "Remove ${ investigator.card.name }?"
@@ -7552,7 +7552,7 @@ msgstr "신발(못 신는다) - Footwear, but not really"
 
 msgctxt "trait"
 msgid "Hardship"
-msgstr ""
+msgstr "곤경 - Hardship"
 
 msgctxt "trait"
 msgid "Haunted"
@@ -7908,7 +7908,7 @@ msgstr "방 - Room"
 
 msgctxt "trait"
 msgid "Scion"
-msgstr ""
+msgstr "자손 - Scion"
 
 msgctxt "trait"
 msgid "Station"
@@ -7932,7 +7932,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Artifact"
-msgstr ""
+msgstr "성물 - Artifact"
 
 msgctxt "trait"
 msgid "Brand"
@@ -7956,7 +7956,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Glyph"
-msgstr ""
+msgstr "상형문자 - Glyph"
 
 msgctxt "trait"
 msgid "Headgear"
@@ -7980,7 +7980,7 @@ msgstr ""
 
 msgctxt "trait"
 msgid "R'lyeh"
-msgstr ""
+msgstr "르리에 - R'lyeh"
 
 msgctxt "trait"
 msgid "Rome"
@@ -7992,11 +7992,11 @@ msgstr ""
 
 msgctxt "trait"
 msgid "Star Spawn"
-msgstr ""
+msgstr "별의 자손 - Star Spawn"
 
 msgctxt "trait"
 msgid "Stowaway"
-msgstr ""
+msgstr "밀항자 - Stowaway"
 
 msgctxt "trait"
 msgid "Student"
