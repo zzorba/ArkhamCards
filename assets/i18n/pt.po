@@ -6534,7 +6534,7 @@ msgstr "Constructo"
 
 msgctxt "trait"
 msgid "Covenant"
-msgstr "Pacto"
+msgstr ""
 
 msgctxt "trait"
 msgid "Creature"
@@ -6870,7 +6870,7 @@ msgstr "Mi-Go"
 
 msgctxt "trait"
 msgid "Midtown"
-msgstr "Centro"
+msgstr ""
 
 msgctxt "trait"
 msgid "Miskatonic"
@@ -7814,7 +7814,7 @@ msgstr "Não Praticado"
 
 msgctxt "trait"
 msgid "Allied"
-msgstr "Aliado"
+msgstr ""
 
 msgctxt "trait"
 msgid "Bog"
