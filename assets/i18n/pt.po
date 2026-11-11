@@ -7522,7 +7522,7 @@ msgstr "Dispositivo"
 
 msgctxt "trait"
 msgid "Downtown"
-msgstr "Centro"
+msgstr ""
 
 msgctxt "trait"
 msgid "Enigma"
@@ -7602,7 +7602,7 @@ msgstr "Marrakech"
 
 msgctxt "trait"
 msgid "Medical"
-msgstr "Médico"
+msgstr ""
 
 msgctxt "trait"
 msgid "Music"
@@ -7730,7 +7730,7 @@ msgstr "Subterrâneo"
 
 msgctxt "trait"
 msgid "Unstable"
-msgstr "Instável"
+msgstr ""
 
 msgctxt "trait"
 msgid "Upper Floor"
