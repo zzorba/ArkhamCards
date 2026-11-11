@@ -807,14 +807,18 @@ export default function useParsedDeckComponent({
       );
       return;
     }
-    const index = parseInt(id, 10);
+    const targetIndex = parseInt(id, 10);
     const visibleCards: Card[] = [];
     const controls: ('deck' | 'side' | 'extra' | 'special' | 'ignore' | 'attachment' | 'bonded')[] = [];
+    let index = 0;
     forEach(data, deckSection => {
       forEach(deckSection.sections, section => {
         forEach(section.cards, item => {
           const card = cards[item.id];
           if (card) {
+            if (item.index === targetIndex) {
+              index = visibleCards.length;
+            }
             visibleCards.push(card);
             controls.push(item.mode || 'deck');
           }
