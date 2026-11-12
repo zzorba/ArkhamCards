@@ -1486,7 +1486,7 @@ export function parseDeck(
     deckCards,
     customizations,
     normalCardCount: sumBy(normalCards, (c) => c.quantity),
-    deckSize: validation.getDeckSize(newDeckCards),
+    deckSize: validation.getDeckSize(newDeckCards) + validation.getOptionalAdditionalCardCount(newDeckCards),
     totalCardCount: sum(cardIds.map((c) => c.quantity)),
     experience: totalXp,
     availableExperience: (originalDeck?.xp || 0) + (xpAdjustment || 0),

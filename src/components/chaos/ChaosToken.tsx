@@ -230,6 +230,15 @@ function NormalChaosToken({ iconKey, size, shadowStyle, status, border }: {
               { !!border && <ChaosTokenBordeer size={size} /> }
             </>
           );
+        case 'moon':
+          return (
+            <>
+              <ChaosTokenPart name="token_moon_fill" color="#C22026" size={size} />
+              <ChaosTokenPart name="token_moon_overlay" color="#353534" size={size} />
+              <ChaosTokenPart name="token_moon_highlight" color="#353534" size={size} />
+              { !!border && <ChaosTokenBordeer size={size} /> }
+            </>
+          );
       }
     }
     return null;

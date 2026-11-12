@@ -4,6 +4,7 @@ import { filter, keys, slice, map } from 'lodash';
 import InvestigatorCheckListComponent from '@components/campaignguide/prompts/InvestigatorCheckListComponent';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import InvestigatorMultiChoiceComponent from '@components/campaignguide/prompts/InvestigatorMultiChoiceComponent';
 import ChooseInvestigatorPrompt from '@components/campaignguide/prompts/ChooseInvestigatorPrompt';
 import InvestigatorChoicePrompt from '@components/campaignguide/prompts/InvestigatorChoicePrompt';
 import { InputStep, InvestigatorChoiceInput } from '@data/scenario/types';
@@ -51,6 +52,9 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
 
   if (input.special_mode === 'sequential') {
     const investigatorOffset = iteration;
+    const investigator = investigators[investigatorOffset];
+    const isSingleChoice = (min === undefined && max === undefined) || (min === 1 && max === 1);
+    const options = investigatorChoiceInputChoices(input, campaignLog);
     return (
       <>
         { !!step.text && (
@@ -58,23 +62,39 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
             <CampaignGuideTextComponent text={step.text} />
           </SetupStepWrapper>
         ) }
-        <InvestigatorChoicePrompt
-          id={step.id}
-          text={step.text}
-          promptType={step.prompt_type}
-          confirmText={input.confirm_text}
-          bulletType={step.bullet_type}
-          options={investigatorChoiceInputChoices(input, campaignLog)}
-          hideInvestigatorSection
-          detailed
-          investigator={investigators[investigatorOffset]}
-          investigators={slice(
-            investigators,
-            investigatorOffset,
-            investigatorOffset + 1
-          )}
-          optional={input.investigator === 'choice'}
-        />
+        { isSingleChoice ? (
+          <InvestigatorChoicePrompt
+            id={step.id}
+            text={step.text}
+            promptType={step.prompt_type}
+            confirmText={input.confirm_text}
+            bulletType={step.bullet_type}
+            options={options}
+            hideInvestigatorSection
+            detailed
+            investigator={investigator}
+            investigators={slice(
+              investigators,
+              investigatorOffset,
+              investigatorOffset + 1
+            )}
+            optional={input.investigator === 'choice'}
+          />
+        ) : (
+          !!investigator && (
+            <InvestigatorMultiChoiceComponent
+              id={step.id}
+              investigator={investigator}
+              choices={options.type === 'personalized' ?
+                map(options.perCode[investigator.code] || [], idx => options.choices[idx]) :
+                options.choices}
+              confirmText={input.confirm_text}
+              bulletType={step.bullet_type}
+              min={min}
+              max={max}
+            />
+          )
+        )}
       </>
     );
   }

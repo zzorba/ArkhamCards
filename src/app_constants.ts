@@ -1,10 +1,7 @@
 import { find, forEach } from 'lodash';
 import { t } from 'ttag';
 
-import {
-  ChaosTokenModifier,
-  SimpleChaosTokenValue,
-} from '@data/scenario/types';
+import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
 import { AttachableDefinition, Pack } from '@actions/types';
 import { JOE_DIAMOND_CODE } from '@data/deck/specialCards';
 import { ListCard } from '@data/types/ListCard';
@@ -139,7 +136,8 @@ export type SpecialChaosTokenType =
   | 'elder_thing'
   | 'auto_fail'
   | 'elder_sign'
-  | 'blood';
+  | 'blood'
+  | 'moon';
 
 export type ChaosTokenType =
   | '+1'
@@ -158,6 +156,7 @@ export function isSpecialToken(token: ChaosTokenType) {
   switch (token) {
     case 'frost':
     case 'blood':
+    case 'moon':
     case 'bless':
     case 'curse':
     case 'skull':
@@ -216,6 +215,7 @@ export const CHAOS_TOKENS: ChaosTokenType[] = [
   '-8',
   'frost',
   'blood',
+  'moon',
   'skull',
   'cultist',
   'tablet',
@@ -249,6 +249,7 @@ export const CHAOS_TOKEN_ORDER: ChaosBag = {
   blood: 17,
   bless: 18,
   curse: 19,
+  moon: 20,
 };
 
 export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
@@ -261,10 +262,13 @@ export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
   'frost',
   'bless',
   'curse',
+  'blood',
+  'moon',
 ];
 
 export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {
   blood: '#C22026',
+  moon: '#EFE8E8',
   frost: '#2F3649',
   tablet: '#003961',
   elder_thing: '#4e1a45',
@@ -282,6 +286,8 @@ export function chaosTokenName(token: ChaosTokenType) {
       return t`Curse`;
     case 'blood':
       return t`Blood`;
+    case 'moon':
+      return t`Moon`;
     case 'skull':
       return t`Skull`;
     case 'cultist':
@@ -330,6 +336,8 @@ export function getChaosTokenValue(
       return { modifier: -2, reveal_another: 1 };
     case 'blood':
       return { modifier: -1, reveal_another: 1 };
+    case 'moon':
+      return { modifier: 0, reveal_another: 1 };
     case 'auto_fail':
       return { modifier: 'auto_fail' };
     case 'skull':
@@ -379,6 +387,7 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '-8': 1,
   frost: 8,
   blood: 12,
+  moon: 6,
   skull: 4,
   cultist: 4,
   tablet: 4,
@@ -414,6 +423,9 @@ export const BEWITCHING_CODE = '10079';
 export const STICK_TO_THE_PLAN_CODE = '03264';
 export const UNSOLVED_CASE_CODE = '05010';
 export const ELDRITCH_BRAND_CODE = '11080';
+export const LIKE_CLOCKWORK_CODE = 'zcxc_norman'; // circus ex mortis, "gain up to 2 additional cards"
+
+export const OPTIONAL_ADDITIONAL_GRANTING_CARD_CODES = new Set([LIKE_CLOCKWORK_CODE]);
 
 export function getAttachableCards(): { [code: string]: AttachableDefinition } {
   return {
