@@ -1,10 +1,7 @@
 import { find, forEach } from 'lodash';
 import { t } from 'ttag';
 
-import {
-  ChaosTokenModifier,
-  SimpleChaosTokenValue,
-} from '@data/scenario/types';
+import { ChaosTokenModifier, SimpleChaosTokenValue } from '@data/scenario/types';
 import { AttachableDefinition, Pack } from '@actions/types';
 import { JOE_DIAMOND_CODE } from '@data/deck/specialCards';
 import { ListCard } from '@data/types/ListCard';
@@ -426,6 +423,9 @@ export const BEWITCHING_CODE = '10079';
 export const STICK_TO_THE_PLAN_CODE = '03264';
 export const UNSOLVED_CASE_CODE = '05010';
 export const ELDRITCH_BRAND_CODE = '11080';
+export const LIKE_CLOCKWORK_CODE = 'zcxc_norman'; // circus ex mortis, "gain up to 2 additional cards"
+
+export const OPTIONAL_ADDITIONAL_GRANTING_CARD_CODES = new Set([LIKE_CLOCKWORK_CODE]);
 
 export function getAttachableCards(): { [code: string]: AttachableDefinition } {
   return {

@@ -40,6 +40,7 @@ import {
   PRECIOUS_MEMENTO_FORMER_CODE,
   PRECIOUS_MEMENTO_FUTURE_CODE,
   ELDRITCH_BRAND_CODE,
+  OPTIONAL_ADDITIONAL_GRANTING_CARD_CODES,
   expandPackCode,
 } from '@app_constants';
 import Card, { InvestigatorChoice } from '@data/types/Card';
@@ -490,10 +491,11 @@ export default class DeckValidation {
       }
     }
 
-    const drawDeckSize = this.getDrawDeckSize(cards);
+    const drawDeckSize =
+      this.getDrawDeckSize(cards) -
+      this.countOptionalAdditionalCards(deck_options);
     // at least 60 others cards
     if (drawDeckSize < size) {
-      const removeCount = size - drawDeckSize;
       this.problem_list.push(t`Not enough cards (${drawDeckSize} / ${size}).`);
       return {
         reason: TOO_FEW_CARDS,
@@ -503,7 +505,6 @@ export default class DeckValidation {
 
     // at least 60 others cards
     if (drawDeckSize > size) {
-      const removeCount = size - drawDeckSize;
       this.problem_list.push(t`Too many cards (${drawDeckSize} / ${size}).`);
       return {
         reason: TOO_MANY_CARDS,
@@ -511,6 +512,26 @@ export default class DeckValidation {
       };
     }
     return null;
+  }
+
+  /**
+   * Number of cards in the deck that were matched by an "optional additional cards"
+   * option (see OPTIONAL_ADDITIONAL_CARDS_CODES).<br/>
+   * E.g. Circus Ex Mortis - Like Clockwork (deckbuilding gains up to 2 additional cards).
+   */
+  private countOptionalAdditionalCards(deckOptions: DeckOption[]): number {
+    return deckOptions.reduce(
+        (sum, option, i) =>
+            option.dynamic_id && OPTIONAL_ADDITIONAL_GRANTING_CARD_CODES.has(option.dynamic_id)
+                ? sum + (this.deck_options_counts[i]?.limit ?? 0)
+                : sum,
+        0
+    );
+  }
+
+  getOptionalAdditionalCardCount(cards: Card[]): number {
+    this.getInvalidCards(cards);
+    return this.countOptionalAdditionalCards(this.deckOptions(cards));
   }
 
   private initDeckOptionsCounts(cards: Card[]) {
