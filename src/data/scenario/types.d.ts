@@ -97,8 +97,7 @@ export type SpecialChaosToken =
   | "bless"
   | "curse"
   | "frost"
-  | "blood"
-  | "moon";
+  | "blood";
 export type BorderColor = "setup" | "resolution" | "interlude";
 export type ChoiceIcon = "mental" | "physical" | "resign" | "dismiss" | "accept" | "killed" | "insane";
 export type DefaultOption = Option;
