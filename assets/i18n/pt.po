@@ -6370,7 +6370,7 @@ msgstr "Alterado"
 
 msgctxt "trait"
 msgid "Ancient"
-msgstr "Ancestral"
+msgstr "Remoto"
 
 msgctxt "trait"
 msgid "Ancient One"
@@ -6726,7 +6726,7 @@ msgstr "Cemitério"
 
 msgctxt "trait"
 msgid "Ground Floor"
-msgstr "Térreo"
+msgstr "Primeiro Andar"
 
 msgctxt "trait"
 msgid "Guest"
@@ -6742,11 +6742,11 @@ msgstr "Salão"
 
 msgctxt "trait"
 msgid "Hazard"
-msgstr "Perigo"
+msgstr "Risco"
 
 msgctxt "trait"
 msgid "Hex"
-msgstr "Feitiço"
+msgstr "Sortilégio"
 
 msgctxt "trait"
 msgid "Hideout"
@@ -7006,7 +7006,7 @@ msgstr "Treinado"
 
 msgctxt "trait"
 msgid "Present-Day"
-msgstr "Atualidade"
+msgstr "Dias Atuais"
 
 msgctxt "trait"
 msgid "Prison"
@@ -7022,7 +7022,7 @@ msgstr "Providence"
 
 msgctxt "trait"
 msgid "Rail"
-msgstr "Trilho"
+msgstr "Trilhos"
 
 msgctxt "trait"
 msgid "Ranged"
@@ -7078,7 +7078,7 @@ msgstr "Santuário"
 
 msgctxt "trait"
 msgid "Scheme"
-msgstr "Plano"
+msgstr "Esquema"
 
 msgctxt "trait"
 msgid "Scholar"
@@ -7098,7 +7098,7 @@ msgstr "Segundo Andar"
 
 msgctxt "trait"
 msgid "Sentinel Hill"
-msgstr "Sentinel Hill"
+msgstr "Colina Sentinela"
 
 msgctxt "trait"
 msgid "Serpent"
@@ -7110,7 +7110,7 @@ msgstr "Serviço"
 
 msgctxt "trait"
 msgid "Servitor"
-msgstr "Servo"
+msgstr "Serviçal"
 
 msgctxt "trait"
 msgid "Shantak"
@@ -7118,7 +7118,7 @@ msgstr "Shantak"
 
 msgctxt "trait"
 msgid "Shattered"
-msgstr "Estraçalhado"
+msgstr "Estilhaçado"
 
 msgctxt "trait"
 msgid "Ship"
@@ -7318,7 +7318,7 @@ msgstr "Casa da Bruxa"
 
 msgctxt "trait"
 msgid "Woods"
-msgstr "Bosque"
+msgstr "Floresta"
 
 msgctxt "trait"
 msgid "Y'ha-nthlei"
@@ -7846,7 +7846,7 @@ msgstr "Campo"
 
 msgctxt "trait"
 msgid "Forest"
-msgstr "Floresta"
+msgstr ""
 
 msgctxt "trait"
 msgid "Hemlock Vale"
