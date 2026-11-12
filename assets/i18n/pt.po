@@ -7730,7 +7730,7 @@ msgstr "Subterrâneo"
 
 msgctxt "trait"
 msgid "Unstable"
-msgstr ""
+msgstr "Instável"
 
 msgctxt "trait"
 msgid "Upper Floor"
@@ -7814,7 +7814,7 @@ msgstr "Não Praticado"
 
 msgctxt "trait"
 msgid "Allied"
-msgstr ""
+msgstr "Aliança"
 
 msgctxt "trait"
 msgid "Bog"
