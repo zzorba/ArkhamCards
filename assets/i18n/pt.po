@@ -7074,7 +7074,7 @@ msgstr "Salem"
 
 msgctxt "trait"
 msgid "Sanctum"
-msgstr "Santuário"
+msgstr "Sanctum"
 
 msgctxt "trait"
 msgid "Scheme"
