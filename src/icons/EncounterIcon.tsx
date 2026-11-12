@@ -344,6 +344,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'tmg':
       case 'the_midwinter_gala':
         return this.standaloneIcon('gala', size, color);
+      case 'ttn':
+      case 'traces_to_nowhere':
+      case 'dimensional_madness':
+        return this.standaloneIcon(encounter_code, size, color);
       case 'iotv':
       case 'tdor':
       case 'tdg':
