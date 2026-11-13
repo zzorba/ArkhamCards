@@ -595,5 +595,7 @@
   "ztg_red_guard": "Red Guard",
   "ztg_unbound_dimensions": "Unbound Dimensions",
   "ztg_single_group": "单组团队模式",
-  "ztg_epic": "多组史诗模式"
+  "ztg_epic": "多组史诗模式",
+  "traces_to_nowhere": "Traces to Nowhere",
+  "dimensional_madness": "Dimensional Madness"
 }

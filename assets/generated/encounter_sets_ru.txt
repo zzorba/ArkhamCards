@@ -595,5 +595,7 @@
   "ztg_red_guard": "Red Guard",
   "ztg_unbound_dimensions": "Unbound Dimensions",
   "ztg_single_group": "Режим отдельной группы",
-  "ztg_epic": "Эпический совместный режим"
+  "ztg_epic": "Эпический совместный режим",
+  "traces_to_nowhere": "Traces to Nowhere",
+  "dimensional_madness": "Dimensional Madness"
 }

@@ -595,5 +595,7 @@
   "ztg_red_guard": "Red Guard",
   "ztg_unbound_dimensions": "Unbound Dimensions",
   "ztg_single_group": "Groupe Unique",
-  "ztg_epic": "Multijoueur Épique"
+  "ztg_epic": "Multijoueur Épique",
+  "traces_to_nowhere": "Traces to Nowhere",
+  "dimensional_madness": "Dimensional Madness"
 }

@@ -12392,5 +12392,107 @@
         }
       }
     ]
+  },
+  {
+    "code": "73001",
+    "scenario": "traces_to_nowhere",
+    "standard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -2
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -1
+          },
+          "options": [
+            {
+              "prompt": "[[Syndicate]] enemy at your location",
+              "modified_value": {
+                "modifier": -1,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "At an [[Otherworld]] location",
+              "modified_value": {
+                "modifier": -4
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -4
+        }
+      }
+    ],
+    "hard": [
+      {
+        "token": "skull",
+        "value": {
+          "modifier": -3
+        }
+      },
+      {
+        "token": "cultist",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -2
+          },
+          "options": [
+            {
+              "prompt": "[[Syndicate]] enemy at your location",
+              "modified_value": {
+                "modifier": -2,
+                "reveal_another": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "tablet",
+        "type": "condition",
+        "condition": {
+          "default_value": {
+            "modifier": -3
+          },
+          "options": [
+            {
+              "prompt": "At an [[Otherworld]] location",
+              "modified_value": {
+                "modifier": -5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "token": "elder_thing",
+        "value": {
+          "modifier": -5
+        }
+      }
+    ]
   }
 ]

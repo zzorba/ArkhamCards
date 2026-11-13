@@ -595,5 +595,7 @@
   "ztg_red_guard": "Red Guard",
   "ztg_unbound_dimensions": "Unbound Dimensions",
   "ztg_single_group": "단일 그룹",
-  "ztg_epic": "대규모 다인"
+  "ztg_epic": "대규모 다인",
+  "traces_to_nowhere": "Traces to Nowhere",
+  "dimensional_madness": "Dimensional Madness"
 }

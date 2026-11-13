@@ -19819,7 +19819,7 @@
                 },
                 {
                   "id": "coastal_waters",
-                  "text": "Kpstengewässer",
+                  "text": "Küstengewässer",
                   "condition": {
                     "type": "campaign_log",
                     "section": "hidden",
@@ -19835,7 +19835,7 @@
                       "type": "campaign_log",
                       "section": "memories_discovered",
                       "id": "coastal_waters",
-                      "text": "Kpstengewässer"
+                      "text": "Küstengewässer"
                     },
                     {
                       "type": "campaign_log",
@@ -22189,7 +22189,7 @@
                 },
                 {
                   "id": "coastal_waters",
-                  "text": "Kpstengewässer",
+                  "text": "Küstengewässer",
                   "condition": {
                     "type": "campaign_log",
                     "section": "hidden",
@@ -22205,7 +22205,7 @@
                       "type": "campaign_log",
                       "section": "memories_discovered",
                       "id": "coastal_waters",
-                      "text": "Kpstengewässer"
+                      "text": "Küstengewässer"
                     },
                     {
                       "type": "campaign_log",
@@ -24778,7 +24778,7 @@
                 },
                 {
                   "id": "coastal_waters",
-                  "text": "Kpstengewässer",
+                  "text": "Küstengewässer",
                   "condition": {
                     "type": "campaign_log",
                     "section": "hidden",
@@ -24794,7 +24794,7 @@
                       "type": "campaign_log",
                       "section": "memories_discovered",
                       "id": "coastal_waters",
-                      "text": "Kpstengewässer"
+                      "text": "Küstengewässer"
                     },
                     {
                       "type": "campaign_log",
@@ -62806,11 +62806,6 @@
             "text": "Entferne Gideon Mizrah aus dem Spiel."
           },
           {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Helen Peters wird aus dem Spiel entfernt."
-          },
-          {
             "id": "set_aside_residents",
             "bullet_type": "small",
             "text": "Die übrigen Karten des Begegnungssets <i>Einwohner</i> werden als nicht im Spiel befindlich beiseitegelegt."
@@ -65729,11 +65724,6 @@
             "id": "remove_gideon",
             "bullet_type": "small",
             "text": "Entferne Gideon Mizrah aus dem Spiel."
-          },
-          {
-            "id": "remove_helen",
-            "bullet_type": "small",
-            "text": "Helen Peters wird aus dem Spiel entfernt."
           },
           {
             "id": "remove_leah",
@@ -81894,7 +81884,7 @@
           },
           {
             "id": "setup_locations_jordan",
-            "text": "Die übrigen Orte (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint-Martin, Friedhof Père Lachaise, Notre-Dame und Jardin du Luxembourg) werden ins Spiel gebracht. Jeder Ermittler beginnt das Spiel auf dem Gare d‘Orsay."
+            "text": "Die übrigen Orte (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint-Martin, Friedhof Père Lachaise, Notre-Dame und Jardin du Luxembourg) werden ins Spiel gebracht. Jeder Ermittler beginnt das Spiel in Montparnasse."
           },
           {
             "id": "location_layout",
@@ -97589,7 +97579,7 @@
           },
           {
             "id": "setup_locations_jordan",
-            "text": "Die übrigen Orte (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint-Martin, Friedhof Père Lachaise, Notre-Dame und Jardin du Luxembourg) werden ins Spiel gebracht. Jeder Ermittler beginnt das Spiel auf dem Gare d‘Orsay."
+            "text": "Die übrigen Orte (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint-Martin, Friedhof Père Lachaise, Notre-Dame und Jardin du Luxembourg) werden ins Spiel gebracht. Jeder Ermittler beginnt das Spiel in Montparnasse."
           },
           {
             "id": "location_layout",
@@ -97968,7 +97958,7 @@
           },
           {
             "id": "choose_locations",
-            "text": "Jeweils einer der folgenden Orte wird zufällig bestimmt und ins Spiel gebracht: Montmartre, Opéra Garnier, Montparnasse, Grand Guignol, Friedhof Père Lachaise, Canal Saint-Martin, Notre-Dame, Le Marais und Jardin du Luxembourg. Die anderen Versionen dieser Orte werden aus dem Spiel entfernt."
+            "text": "Jeweils einer der folgenden Orte wird zufällig bestimmt: Montmartre, Opéra Garnier, Montparnasse, Grand Guignol, Friedhof Père Lachaise, Canal Saint-Martin, Notre-Dame, Le Marais und Jardin du Luxembourg. Die anderen Versionen dieser Orte werden aus dem Spiel entfernt."
           },
           {
             "id": "setup_locations",
@@ -127091,7 +127081,7 @@
               ]
             },
             "type": "story",
-            "text": "Ichtaca verbringt die Nacht auf der Couch in deinem Wohnzimmer. Du selbst findest in dieser Nacht keinen Schlaf mehr, deine Gedanken schwanken zwischen Sorge und Ungläubigkeit. Ihre Geschichte erscheint absurd, aber irgendetwas in dir möchte sie trotzdem glauben. Seit dem Zeitpunkt, an dem du das Relikt aus den Ruinen der Eztli zum ersten Mal gesehen hast, weißt du, dass es eine tiefere Bedeutung haben muss. Als du am nächsten Morgen aus deinem Schlafzimmer trittst, sitzt dein ungeladener Gast bereits mit fest vor der Brust verschränkten Armen an deinem Esszimmertisch. Ihr bohrender Blick folgt jeder deiner Bewegungen wie der eines Raubvogels, der seine Beute beobachtet. Ihr tauscht keine Höflichkeiten aus. „Wo ist das Relikt jetzt?“, fragt Ichtaca ungeduldig. „Wohin hast du es gebracht?“ Du erklärst ihr, dass es sich in Sicherheit und in guten Händen befindet. Sie schüttelt den Kopf und an ihren weißen Fingerknöcheln erkennst du, wie frustriert sie ist. „Ich kann dir versichern, das ist es nicht.“s"
+            "text": "Ichtaca verbringt die Nacht auf der Couch in deinem Wohnzimmer. Du selbst findest in dieser Nacht keinen Schlaf mehr, deine Gedanken schwanken zwischen Sorge und Ungläubigkeit. Ihre Geschichte erscheint absurd, aber irgendetwas in dir möchte sie trotzdem glauben. Seit dem Zeitpunkt, an dem du das Relikt aus den Ruinen der Eztli zum ersten Mal gesehen hast, weißt du, dass es eine tiefere Bedeutung haben muss. Als du am nächsten Morgen aus deinem Schlafzimmer trittst, sitzt dein ungeladener Gast bereits mit fest vor der Brust verschränkten Armen an deinem Esszimmertisch. Ihr bohrender Blick folgt jeder deiner Bewegungen wie der eines Raubvogels, der seine Beute beobachtet. Ihr tauscht keine Höflichkeiten aus. „Wo ist das Relikt jetzt?“, fragt Ichtaca ungeduldig. „Wohin hast du es gebracht?“ Du erklärst ihr, dass es sich in Sicherheit und in guten Händen befindet. Sie schüttelt den Kopf und an ihren weißen Fingerknöcheln erkennst du, wie frustriert sie ist. „Ich kann dir versichern, das ist es nicht.“"
           },
           {
             "id": "choose_gave_relic_to_alejandro",
@@ -128087,14 +128077,14 @@
               "choices": [
                 {
                   "id": "police",
-                  "text": "Falls du den Augenzeugen, über den im <i>Advertiser</i> berichtet wird, finden willst,",
+                  "text": "Falls du den Augenzeugen, über den im <i>Advertiser</i> berichtet wird, finden willst.",
                   "steps": [
                     "find_advertiser_source"
                   ]
                 },
                 {
                   "id": "search_alone",
-                  "text": "Falls du das Problem an der Wurzel packen willst,",
+                  "text": "Falls du das Problem an der Wurzel packen willst.",
                   "steps": [
                     "find_root_of_problem"
                   ]
@@ -155124,7 +155114,7 @@
         {
           "id": "deep_end",
           "title": "„Ich bin schon zu groß fürs Kinderbecken!“",
-          "text": "Entkomme mit der Tafel der Gezeiten aus dem Szenario <i>Das große Gewölbe</i>, nachdem alle Orte völlig überflutet worden sind.",
+          "text": "Entkomme mit der Tafel der Gezeiten aus dem Szenario <i>Das große Gewölbe</i>, nachdem alle geeigneten Orte völlig überflutet worden sind.",
           "type": "binary"
         },
         {
@@ -191555,7 +191545,7 @@
               ]
             },
             "type": "story",
-            "text": "Ichtaca verbringt die Nacht auf der Couch in deinem Wohnzimmer. Du selbst findest in dieser Nacht keinen Schlaf mehr, deine Gedanken schwanken zwischen Sorge und Ungläubigkeit. Ihre Geschichte erscheint absurd, aber irgendetwas in dir möchte sie trotzdem glauben. Seit dem Zeitpunkt, an dem du das Relikt aus den Ruinen der Eztli zum ersten Mal gesehen hast, weißt du, dass es eine tiefere Bedeutung haben muss. Als du am nächsten Morgen aus deinem Schlafzimmer trittst, sitzt dein ungeladener Gast bereits mit fest vor der Brust verschränkten Armen an deinem Esszimmertisch. Ihr bohrender Blick folgt jeder deiner Bewegungen wie der eines Raubvogels, der seine Beute beobachtet. Ihr tauscht keine Höflichkeiten aus. „Wo ist das Relikt jetzt?“, fragt Ichtaca ungeduldig. „Wohin hast du es gebracht?“ Du erklärst ihr, dass es sich in Sicherheit und in guten Händen befindet. Sie schüttelt den Kopf und an ihren weißen Fingerknöcheln erkennst du, wie frustriert sie ist. „Ich kann dir versichern, das ist es nicht.“s"
+            "text": "Ichtaca verbringt die Nacht auf der Couch in deinem Wohnzimmer. Du selbst findest in dieser Nacht keinen Schlaf mehr, deine Gedanken schwanken zwischen Sorge und Ungläubigkeit. Ihre Geschichte erscheint absurd, aber irgendetwas in dir möchte sie trotzdem glauben. Seit dem Zeitpunkt, an dem du das Relikt aus den Ruinen der Eztli zum ersten Mal gesehen hast, weißt du, dass es eine tiefere Bedeutung haben muss. Als du am nächsten Morgen aus deinem Schlafzimmer trittst, sitzt dein ungeladener Gast bereits mit fest vor der Brust verschränkten Armen an deinem Esszimmertisch. Ihr bohrender Blick folgt jeder deiner Bewegungen wie der eines Raubvogels, der seine Beute beobachtet. Ihr tauscht keine Höflichkeiten aus. „Wo ist das Relikt jetzt?“, fragt Ichtaca ungeduldig. „Wohin hast du es gebracht?“ Du erklärst ihr, dass es sich in Sicherheit und in guten Händen befindet. Sie schüttelt den Kopf und an ihren weißen Fingerknöcheln erkennst du, wie frustriert sie ist. „Ich kann dir versichern, das ist es nicht.“"
           },
           {
             "id": "choose_gave_relic_to_alejandro",
@@ -232459,7 +232449,8 @@
         "legions_of_fire",
         "when_the_world_screamed",
         "film_fatale",
-        "the_turning_gear"
+        "the_turning_gear",
+        "ttn"
       ],
       "setup": [],
       "steps": []
@@ -244281,11 +244272,6 @@
             "type": "rule_reminder",
             "title": "Geheim",
             "text": "When a card with the hidden keyword is drawn, it is added to your hand in secret, without revealing that card or its text to the other investigators. While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. Hidden cards in your hand count toward your hand size, and cannot leave your hand by any means except by those described on the card."
-          },
-          {
-            "id": "resolution_1",
-            "type": "resolution",
-            "resolution": "R1"
           },
           {
             "id": "resolution_2",
@@ -267209,6 +267195,1512 @@
               "saved_the_mutated_officer",
               "earn_command_essence",
               "earn_xp",
+              "$upgrade_decks"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ttn",
+        "scenario_name": "Spuren ins Nirgendwo",
+        "full_name": "Spuren ins Nirgendwo",
+        "header": "",
+        "chaos_bag_card": "",
+        "xp_cost": 2,
+        "side_scenario_type": "side_story",
+        "standalone_setup": [
+          "dummy_entry",
+          "choose_difficulty",
+          "intro",
+          "gather_encounter_sets",
+          "setup_locations",
+          "spawn_enforcer",
+          "setup_aziza",
+          "set_aside_cards",
+          "encounter_deck",
+          "create_leads_deck",
+          "abductor_note",
+          "abducted_rule",
+          "something_abducts_rule",
+          "rescued_rule",
+          "$play_scenario"
+        ],
+        "setup": [
+          "dummy_entry",
+          "xp_cost",
+          "intro",
+          "gather_encounter_sets",
+          "setup_locations",
+          "spawn_enforcer",
+          "setup_aziza",
+          "set_aside_cards",
+          "encounter_deck",
+          "create_leads_deck",
+          "abductor_note",
+          "abducted_rule",
+          "something_abducts_rule",
+          "rescued_rule",
+          "$play_scenario"
+        ],
+        "rules": [
+          {
+            "title": "Entführen/Entführt",
+            "steps": [
+              "abducted_rule"
+            ]
+          },
+          {
+            "title": "Etwas entführt …",
+            "steps": [
+              "something_abducts_rule"
+            ]
+          },
+          {
+            "title": "Gerettet",
+            "steps": [
+              "rescued_rule"
+            ]
+          }
+        ],
+        "steps": [
+          {
+            "id": "dummy_entry",
+            "hidden": true,
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "always_true",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "abducted_rule",
+            "type": "rule_reminder",
+            "title": "Entführen/Entführt",
+            "text": "In diesem Szenario kann es dazu kommen, dass Karten durch Szenariofähigkeiten entführt werden. Karten können aus folgenden Bereichen entführt werden: von der Hand eines Ermittlers; aus einer Spielzone, einem Deck oder einem Ablagestapel; von einem Ort; aus dem Begegnungsdeck.\nSobald eine Karte entführt wird, wird sie verdeckt unter der Szenarioübersichtskarte platziert. (Eine entführte Karte kann daraufhin durch einen Spieleffekt woanders platziert werden.)\nSolange eine einzigartige (*) Spielerkarte entführt ist, können andere Kopien dieser Karte nicht gespielt oder ins Spiel gebracht werden, bis jede Kopie dieser Karte gerettet worden ist (siehe „Gerettet“ auf der nächsten Seite). Falls eine Kopie einer solchen Karte bereits im Spiel ist, wenn eine einzigartige Spielerkarte entführt wird, wird die Kopie im Spiel sofort auf den Ablagestapel ihres Besitzers abgelegt.\nDie Ermittler dürfen sich entführte Karten jederzeit ansehen. Entführte Karten dürfen jedoch niemals Ziel eines Spieleffekts werden, außer es ist etwas anderes angegeben."
+          },
+          {
+            "id": "something_abducts_rule",
+            "type": "rule_reminder",
+            "title": "Etwas entführt …",
+            "text": "Viele Karten in diesem Szenario verwenden den Ausdruck „Etwas entführt …“, der dafür sorgt, dass eine Karte entführt wird. Der Text soll die geheimnisvolle Stimmung des Szenarios besser wiedergeben, in dem eine unbekannte Wesenheit hinter dem Verschwinden der Personen steckt."
+          },
+          {
+            "id": "rescued_rule",
+            "type": "rule_reminder",
+            "title": "Gerettet",
+            "text": "Im Verlauf des Szenarios haben die Ermittler manchmal die Möglichkeit, entführte Karten zu retten.\nSobald du angewiesen wirst, eine Karte zu retten, ziehe 1 zufällige entführte Karte. Was mit einer geretteten Karte passiert, hängt vom Typ der gezogenen Karte ab:",
+            "bullets": [
+              {
+                "text": "Storyvorteilskarte: Füge sie dem Siegpunktestapel hinzu."
+              },
+              {
+                "text": "Spielerkarte: Der Besitzer der Karte nimmt sie auf die Hand. <i>(Zur Erinnerung: Falls mehrere Kopien derselben einzigartigen (*) Karte entführt wurden, muss jede entführte Kopie gerettet werden, bevor die Karte ins Spiel kommen kann.)</i>"
+              },
+              {
+                "text": "Verratskarte oder Gegner: Handle die Karte ab, als hättest du sie oben vom Begegnungsdeck gezogen."
+              }
+            ]
+          },
+          {
+            "id": "choose_difficulty",
+            "text": "Schwierigkeitsgrad wählen:",
+            "type": "input",
+            "input": {
+              "type": "choose_one",
+              "default_choice": "standard",
+              "choices": [
+                {
+                  "id": "easy",
+                  "text": "Einfach",
+                  "tokens": [
+                    "+1",
+                    "+1",
+                    "0",
+                    "0",
+                    "0",
+                    "-1",
+                    "-1",
+                    "-2",
+                    "-3",
+                    "skull",
+                    "skull",
+                    "cultist",
+                    "cultist",
+                    "tablet",
+                    "tablet",
+                    "elder_thing",
+                    "auto_fail",
+                    "elder_sign"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_data",
+                      "setting": "difficulty",
+                      "value": "easy"
+                    },
+                    {
+                      "type": "add_chaos_token",
+                      "tokens": [
+                        "+1",
+                        "+1",
+                        "0",
+                        "0",
+                        "0",
+                        "-1",
+                        "-1",
+                        "-2",
+                        "-3",
+                        "skull",
+                        "skull",
+                        "cultist",
+                        "cultist",
+                        "tablet",
+                        "tablet",
+                        "elder_thing",
+                        "auto_fail",
+                        "elder_sign"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "standard",
+                  "text": "Normal",
+                  "tokens": [
+                    "+1",
+                    "0",
+                    "0",
+                    "-1",
+                    "-1",
+                    "-2",
+                    "-2",
+                    "-3",
+                    "-4",
+                    "skull",
+                    "skull",
+                    "cultist",
+                    "cultist",
+                    "tablet",
+                    "tablet",
+                    "elder_thing",
+                    "auto_fail",
+                    "elder_sign"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_data",
+                      "setting": "difficulty",
+                      "value": "standard"
+                    },
+                    {
+                      "type": "add_chaos_token",
+                      "tokens": [
+                        "+1",
+                        "0",
+                        "0",
+                        "-1",
+                        "-1",
+                        "-2",
+                        "-2",
+                        "-3",
+                        "-4",
+                        "skull",
+                        "skull",
+                        "cultist",
+                        "cultist",
+                        "tablet",
+                        "tablet",
+                        "elder_thing",
+                        "auto_fail",
+                        "elder_sign"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "hard",
+                  "text": "Schwer",
+                  "tokens": [
+                    "0",
+                    "0",
+                    "-1",
+                    "-1",
+                    "-2",
+                    "-2",
+                    "-3",
+                    "-4",
+                    "-5",
+                    "skull",
+                    "skull",
+                    "cultist",
+                    "cultist",
+                    "tablet",
+                    "tablet",
+                    "elder_thing",
+                    "auto_fail",
+                    "elder_sign"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_data",
+                      "setting": "difficulty",
+                      "value": "hard"
+                    },
+                    {
+                      "type": "add_chaos_token",
+                      "tokens": [
+                        "0",
+                        "0",
+                        "-1",
+                        "-1",
+                        "-2",
+                        "-2",
+                        "-3",
+                        "-4",
+                        "-5",
+                        "skull",
+                        "skull",
+                        "cultist",
+                        "cultist",
+                        "tablet",
+                        "tablet",
+                        "elder_thing",
+                        "auto_fail",
+                        "elder_sign"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "expert",
+                  "text": "Experte",
+                  "tokens": [
+                    "0",
+                    "-1",
+                    "-2",
+                    "-2",
+                    "-3",
+                    "-3",
+                    "-4",
+                    "-5",
+                    "-7",
+                    "skull",
+                    "skull",
+                    "cultist",
+                    "cultist",
+                    "tablet",
+                    "tablet",
+                    "elder_thing",
+                    "auto_fail",
+                    "elder_sign"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_data",
+                      "setting": "difficulty",
+                      "value": "expert"
+                    },
+                    {
+                      "type": "add_chaos_token",
+                      "tokens": [
+                        "0",
+                        "-1",
+                        "-2",
+                        "-2",
+                        "-3",
+                        "-3",
+                        "-4",
+                        "-5",
+                        "-7",
+                        "skull",
+                        "skull",
+                        "cultist",
+                        "cultist",
+                        "tablet",
+                        "tablet",
+                        "elder_thing",
+                        "auto_fail",
+                        "elder_sign"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "xp_cost",
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": -2,
+                "side_scenario_cost": true
+              }
+            ]
+          },
+          {
+            "id": "intro",
+            "type": "story",
+            "text": "Seit ihrer Ankunft in Arkham stand die Familie Husserl immer wieder im Mittelpunkt des einen oder anderen Skandals, wobei jedes Familienmitglied für sich selbst darauf bedacht schien, für Aufsehen zu sorgen. Josephine Husserl, die Matriarchin der Familie, veranstaltete schicke Partys für die wirklich einflussreichen Persönlichkeiten der Stadt. Während sie Gäste aller Couleur empfing, hielt ihr Ehemann Elias heimliche Treffen mit Gangsterbossen, lokalen Politikern und sogar Mitgliedern der Polizei ab. Die Husserls verfügten über viel Geld, das sie zu investieren bereit waren, und sie sahen in Arkham eine Stadt voller Möglichkeiten.\nUnd auch jedes der Kinder von Elias und Josephine schaffte es, mit der einen oder anderen einflussreichen Person aus Arkham aneinanderzugeraten. Ob es nun Albrecht war, der das Vermögen seiner Familie verspielte, Elias Jr., der ein schlechtes Geschäft nach dem anderen einfädelte, Lina, deren Gemälde in der feinen Gesellschaft keinerlei Anklang fanden, oder Adele, die vergeblich versuchte, sich von allen anderen zu distanzieren – zahlreiche Gerüchte über die Husserls machten in den Straßen der Stadt die Runde. Überraschenderweise berichtete der Arkham Advertiser jedoch stets nur über die positiven Aspekte ihres öffentlichen Auftretens und blähte auch die kleinste humanitäre Geste zu einer großen Geschichte auf.\nDoch als Elias Husserl Sr. eines Abends plötzlich spurlos verschwand, war die Gerüchteküche kurz davor überzukochen. Er war auf dem Weg zu einem privaten Treffen im Französischen Viertel gewesen, kehrte jedoch nie zurück. Verärgert über die mangelnde Einsatzbereitschaft der Polizei engagierte Josephine die Privatdetektivin Aziza Steer, die keine Zeit verlor und Elias’ zahlreiche Kontakte durchleuchtete. Doch nachdem sie wochenlang keine echten Fortschritte erzielen konnte, wandte sich Aziza schließlich hilfesuchend an dich.\nAls du in ihrem Büro eintriffst, ist Aziza jedoch nirgends zu finden. Jetzt liegt es an dir herauszufinden, was mit Aziza und Elias Sr. passiert ist."
+          },
+          {
+            "id": "gather_encounter_sets",
+            "title": "Vorbereitung",
+            "type": "encounter_sets",
+            "encounter_sets": [
+              "traces_to_nowhere",
+              "dimensional_madness"
+            ]
+          },
+          {
+            "id": "setup_locations",
+            "text": "Die folgenden Orte werden ins Spiel gebracht: Steers Büro, Geschäftsviertel, Französisches Viertel, Südkirche und Gesellschaft für Geschichte.",
+            "bullets": [
+              {
+                "text": "Jeder Ermittler beginnt das Spiel in Steers Büro."
+              }
+            ]
+          },
+          {
+            "id": "spawn_enforcer",
+            "text": "Es erscheint 1 Gegner Angeheuerte Vollstreckerin im Geschäftsviertel."
+          },
+          {
+            "id": "setup_aziza",
+            "text": "Die Storyvorteilskarte Aziza Steer <i>(Hat noch eine Rechnung offen)</i> wird verdeckt unter der Szenarioübersichtskarte platziert. Aziza Steer wurde entführt!"
+          },
+          {
+            "id": "set_aside_cards",
+            "text": "Die folgenden Karten werden als nicht im Spiel befindlich beiseitegelegt:",
+            "bullets": [
+              {
+                "text": "Die 6 [[Verdächtiger]]-Storyvorteilskarten (Albrecht Husserl, Elias Husserl Jr., Eugene Peel, Lina Husserl, Matilde Correa und Pfarrer Yang)."
+              },
+              {
+                "text": "Der Gegner Korrupte Polizisten und alle 3 [[Täter]]-Gegner."
+              },
+              {
+                "text": "Die Agenda 4a – „In die Grube hinein“ und alle 3 Kopien von Szene 4a."
+              },
+              {
+                "text": "Die Orte Arkham Advertiser, Bahnstation und Tick-Tock Club sowie beide Kopien der Orte Duterte Bestattungen und Meiger-Anwesen."
+              },
+              {
+                "text": "Die 4 [[Zeuge]]-Storyvorteilskarten (Josephine Husserl, Adele Husserl, Charles Tamm und Gladys Washington)"
+              },
+              {
+                "text": "Das Begegnungsset <b>Dimensionaler Wahnsinn</b>."
+              }
+            ]
+          },
+          {
+            "id": "encounter_deck",
+            "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
+          },
+          {
+            "id": "create_leads_deck",
+            "text": "Das Spurendeck wird erstellt, indem die 4 beiseitegelegten [[Zeuge]]-Storyvorteilskarten mit den obersten 2 Karten des Begegnungsdecks zusammengemischt werden (stattdessen mit den obersten 3 Karten des Begegnungsdecks, falls 3 oder 4 Ermittler im Spiel sind).",
+            "bullets": [
+              {
+                "text": "Das Spurendeck ist ein Spezialdeck, bestehend aus Szenariokarten. Sobald ein Ermittler angewiesen wird, eine Karte vom Spurendeck zu ziehen, zieht er die Karte und handelt sie ab, als ob sie vom Begegnungsdeck gezogen worden wäre."
+              },
+              {
+                "text": "Das Spurendeck wird neben der Szenarioübersichtskarte platziert."
+              }
+            ]
+          },
+          {
+            "id": "abductor_note",
+            "bullet_type": "none",
+            "text": "<i>Anmerkung:</i> Der Gegner Der Entführer aus dem Begegnungsset <b>Dimensionaler Wahnsinn</b> ist doppelseitig. Schaut euch die Rückseite dieses Gegners erst an, wenn ihr dazu angewiesen werdet."
+          },
+          {
+            "id": "$play_scenario",
+            "type": "input",
+            "input": {
+              "type": "play_scenario",
+              "chaos_bag_branches": [
+                ""
+              ],
+              "branches": [
+                {
+                  "id": "codex_a",
+                  "text": "Codex A",
+                  "icon": "codex",
+                  "condition": {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "traces_to_nowhere_a",
+                    "options": [
+                      {
+                        "boolCondition": false
+                      }
+                    ]
+                  },
+                  "steps": [
+                    "codex_a_story",
+                    "codex_a_effect"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_a",
+                      "text": "dummy"
+                    }
+                  ]
+                },
+                {
+                  "id": "codex_b",
+                  "text": "Codex B",
+                  "icon": "codex",
+                  "condition": {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "traces_to_nowhere_b",
+                    "options": [
+                      {
+                        "boolCondition": false
+                      }
+                    ]
+                  },
+                  "steps": [
+                    "codex_b_story",
+                    "codex_b_effect"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_b",
+                      "text": "dummy"
+                    }
+                  ]
+                },
+                {
+                  "id": "codex_c",
+                  "text": "Kodex C",
+                  "icon": "codex",
+                  "condition": {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "traces_to_nowhere_c",
+                    "options": [
+                      {
+                        "boolCondition": false
+                      }
+                    ]
+                  },
+                  "steps": [
+                    "codex_c_story",
+                    "codex_c_effect"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_c",
+                      "text": "dummy"
+                    }
+                  ]
+                },
+                {
+                  "id": "codex_d",
+                  "text": "Kodex D",
+                  "icon": "codex",
+                  "condition": {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "traces_to_nowhere_d",
+                    "options": [
+                      {
+                        "boolCondition": false
+                      }
+                    ]
+                  },
+                  "repeatable": true,
+                  "steps": [
+                    "check_codex_d_first_time",
+                    "codex_d_effect",
+                    "codex_d_question"
+                  ]
+                },
+                {
+                  "id": "codex_e",
+                  "text": "Kodex E",
+                  "icon": "codex",
+                  "condition": {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "traces_to_nowhere_e",
+                    "options": [
+                      {
+                        "boolCondition": false
+                      }
+                    ]
+                  },
+                  "repeatable": true,
+                  "steps": [
+                    "ask_found_bribe",
+                    "check_found_bribe"
+                  ]
+                },
+                {
+                  "id": "codex_f",
+                  "text": "Kodex F",
+                  "icon": "codex",
+                  "condition": {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "traces_to_nowhere_f",
+                    "options": [
+                      {
+                        "boolCondition": false
+                      }
+                    ]
+                  },
+                  "steps": [
+                    "codex_f_story",
+                    "codex_f_effect"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_f",
+                      "text": "dummy"
+                    }
+                  ]
+                },
+                {
+                  "id": "codex_g",
+                  "text": "Kodex G",
+                  "icon": "codex",
+                  "condition": {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "traces_to_nowhere_g",
+                    "options": [
+                      {
+                        "boolCondition": false
+                      }
+                    ]
+                  },
+                  "repeatable": true,
+                  "steps": [
+                    "check_codex_g_first_time",
+                    "codex_g_effect",
+                    "codex_g_question",
+                    "check_codex_g_question"
+                  ]
+                },
+                {
+                  "id": "codex_h",
+                  "text": "Kodex H",
+                  "icon": "codex",
+                  "condition": {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "traces_to_nowhere_h",
+                    "options": [
+                      {
+                        "boolCondition": false
+                      }
+                    ]
+                  },
+                  "repeatable": true,
+                  "steps": [
+                    "ask_glimpsed_another_world",
+                    "check_glimpsed_another_world"
+                  ]
+                },
+                {
+                  "id": "codex_i",
+                  "text": "Kodex I",
+                  "icon": "codex",
+                  "condition": {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "traces_to_nowhere_i",
+                    "options": [
+                      {
+                        "boolCondition": false
+                      }
+                    ]
+                  },
+                  "steps": [
+                    "codex_i_story",
+                    "codex_i_effect",
+                    "codex_i_effect_2",
+                    "codex_i_effect_3"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_i",
+                      "text": "dummy"
+                    }
+                  ]
+                },
+                {
+                  "id": "codex_j",
+                  "text": "Kodex J",
+                  "icon": "codex",
+                  "condition": {
+                    "type": "campaign_log",
+                    "section": "hidden",
+                    "id": "traces_to_nowhere_j",
+                    "options": [
+                      {
+                        "boolCondition": false
+                      }
+                    ]
+                  },
+                  "steps": [
+                    "codex_j_story",
+                    "codex_j_effect",
+                    "proceed_interlude"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_j",
+                      "text": "dummy"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "codex_a_story",
+            "title": "[codex] Kodex A: Josephine Husserl",
+            "type": "story",
+            "text": "Josephine richtet ihren stählernen Blick auf dich. Ihre schmalen Lippen und die gerunzelte Stirn verraten, dass sie nicht gerade erfreut ist, dich zu sehen. Den Umstehenden gegenüber setzt sie ein gezwungenes Lächeln auf, während sie dich sanft beiseitezieht. „Wer auch immer dahintersteckt“, flüstert sie, „kennt meine Familie. Es muss entweder ein enger Geschäftspartner von Elias sein – oder eines meiner eigenen Kinder.“ Als du sie überrascht ansiehst, zuckt sie nur leicht mit den Schultern. „Gott bewahre“, fügt sie nonchalant hinzu.\nDu fragst, ob es jemanden gibt, den du genauer unter die Lupe nehmen solltest. „Meine Tochter Lina“, sagt Josephine. „Sie ist in letzter Zeit oft in der Kirche gewesen. Wahrscheinlich hat sie wegen irgendetwas ein schlechtes Gewissen.“ Sie nippt an ihrem Drink. „Und Albrecht. Er kann die Finger nicht vom Kartenspielen lassen, und er trifft sich mindestens einmal pro Woche mit irgendeiner Reporterin.“"
+          },
+          {
+            "id": "codex_a_effect",
+            "text": "Durchsuche den Chaosbeutel nach 1 [cultist]-Marker und versiegle ihn auf der Szenarioübersichtskarte. Füge Josephine Husserl dem Siegpunktestapel hinzu."
+          },
+          {
+            "id": "codex_b_story",
+            "title": "[codex] Kodex B: Adele Husserl",
+            "type": "story",
+            "text": "Adele reagiert genervt auf deine Fragen. „Hören Sie gut zu. Sie verschwenden hier nur Ihre Zeit“, sagt sie seufzend. „Ich habe viel unternommen, um mein Leben vor dem Einfluss meiner Familie zu schützen. Abgesehen von ein paar Hundert Dollar – die Albrecht mir regelrecht aufgedrängt hat – habe ich mir alles, was ich habe, selbst erarbeitet.“ Sie schüttelt den Kopf. „Er sagte, ich hätte es verdient, weil ich mich aus den Schlagzeilen herausgehalten habe.“\nDu fragst, ob sie zu noch jemand anderem aus der Familie Kontakt hatte, und sie nickt. „Junior“, antwortet sie. „Ich habe vor ein paar Nächten mit ihm in Velma’s Diner gesprochen. Er schien wegen irgendetwas besorgt zu sein. Nervös. Er sagte, er wolle die Stadt verlassen, und fragte, ob ich mit ihm mitkommen würde. Ich habe Nein gesagt. Jetzt, da ich unabhängig bin, habe ich hier in Arkham Freunde gefunden. Menschen, auf die ich mich wirklich verlassen kann. Ich möchte nicht noch einmal ganz von vorne anfangen. Außerdem traue ich seinem Assistenten, Mr. Peel, nicht.“"
+          },
+          {
+            "id": "codex_b_effect",
+            "text": "Durchsuche den Chaosbeutel nach 1 [tablet]-Marker und versiegle ihn auf der Szenarioübersichtskarte. Füge Adele Husserl dem Siegpunktestapel hinzu."
+          },
+          {
+            "id": "codex_c_story",
+            "title": "[codex] Kodex C: Gladys Washington",
+            "type": "story",
+            "text": "„Sie haben für Aziza übernommen?“, fragt Gladys. „Das freut mich. Wissen Sie, nicht alle Husserls sind schlechte Menschen.“\nDu fragst, wen sie damit meint, und nach kurzem Zögern sagt sie: „Früher stand ich Lina ziemlich nahe. Sie ist Malerin. Und ihre Kunst ist sehr … einzigartig. Sie hat Ausstellungen im Geschäftsviertel veranstaltet und versucht, einige ihrer Werke zu verkaufen. Aber sie hatte nicht viel Erfolg damit. Ich merke, wie sehr sie das zermürbt.“ Du fragst, über wen sie noch etwas sagen kann. „Vielleicht sollten Sie Junior im Auge behalten?“, sagt sie. „Lina hat erzählt, dass er die Stadt verlassen will. Ich bin keine Detektivin, aber angesichts all der Dinge, die passiert sind, erscheint mir der Zeitpunkt doch sehr verdächtig.“\nDu dankst Gladys für die Informationen und willst gerade gehen, als sie die Hand hebt, um dich aufzuhalten. „Da ist noch etwas Merkwürdiges, das neulich passiert ist. Ich kam morgens zur Arbeit und die Vordertür war kaputt. Als wäre sie von innen aufgebrochen worden.“ Sie zuckt mit den Schultern. „Hier gibt es nur mich und die Verstorbenen“, sagt sie. „Doch im Keller riecht es seltsamer als sonst. Könnten Sie sich das einmal ansehen, wenn Sie Gelegenheit dazu haben?“"
+          },
+          {
+            "id": "codex_c_effect",
+            "text": "Durchsuche den Chaosbeutel nach 1 [skull]-Marker und versiegle ihn auf der Szenarioübersichtskarte. Füge Gladys Washington dem Siegpunktestapel hinzu."
+          },
+          {
+            "id": "check_codex_d_first_time",
+            "title": "[codex] Kodex D: Charles Tamm",
+            "type": "branch",
+            "text": "Falls dieser Kodexeintrag das erste Mal in diesem Szenario ausgelöst wird:",
+            "condition": {
+              "type": "multi",
+              "count": 1,
+              "conditions": [
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "traces_to_nowhere_d_first",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "options": [
+                {
+                  "boolCondition": true,
+                  "steps": [
+                    "codex_d_story_1",
+                    "codex_d_story_2"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_d_first",
+                      "text": "dummy"
+                    }
+                  ]
+                },
+                {
+                  "boolCondition": false,
+                  "steps": [
+                    "codex_d_story_2"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "codex_d_story_1",
+            "type": "story",
+            "text": "Als du ins Büro zurückkehrst, sitzt dort ein Mann in einem eleganten Anzug mit den Füßen auf dem Schreibtisch. Du verlangst zu wissen, wer er ist.\n„Charles Tamm“, antwortet er. „Mrs. Husserl hat mich beauftragt, ein Auge auf Sie zu haben.“ Er zuckt mit den Schultern, greift in seine Tasche, holt einen Kaugummistreifen hervor, wickelt ihn aus und steckt ihn sich in den Mund. „Natürlich könnte ich mich auch dazu überreden lassen, heute Abend früher Feierabend zu machen.“"
+          },
+          {
+            "id": "codex_d_story_2",
+            "type": "story",
+            "text": "„Und? Sind wir im Geschäft?“"
+          },
+          {
+            "id": "codex_d_effect",
+            "text": "Ein beliebiger Ermittler am Ort von Charles Tamm darf 4 Ressourcen ausgeben, um ihn dem Siegpunktestapel hinzuzufügen. Ansonsten darf dieser Kodexeintrag von einem beliebigen Ermittler erneut ausgelöst werden."
+          },
+          {
+            "id": "codex_d_question",
+            "type": "input",
+            "input": {
+              "type": "choose_one",
+              "choices": [
+                {
+                  "id": "yes",
+                  "text": "4 Ressourcen ausgeben, um Charles Tamm dem Siegpunktestapel hinzuzufügen?",
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_d",
+                      "text": "dummy"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "ask_found_bribe",
+            "title": "[codex] Kodex E: Albrecht Husserl",
+            "type": "input",
+            "input": {
+              "type": "choose_one",
+              "choices": [
+                {
+                  "id": "yes",
+                  "text": "Haben die Ermittler „Beweise gefunden, dass Matilde Schmiergeld bekommen hat“?",
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_e",
+                      "text": "dummy"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "check_found_bribe",
+            "hidden": true,
+            "type": "branch",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "traces_to_nowhere_e",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "steps": [
+                    "codex_e_story",
+                    "albrecht_is_the_culprit",
+                    "proceed_interlude"
+                  ]
+                },
+                {
+                  "boolCondition": false,
+                  "steps": [
+                    "codex_e_try_again_story",
+                    "may_trigger_codex_again"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "codex_e_story",
+            "type": "story",
+            "text": "Du konfrontierst Albrecht mit all den Bestechungsgeldern, die er sowohl an die Polizei von Arkham als auch an den Arkham Advertiser gezahlt hat. Er hebt abwehrend die Hände, Verzweiflung steht ihm ins Gesicht geschrieben. „So weit hätte es niemals kommen sollen“, sagt er. „Aber wenn Ihnen ein halbes Dutzend Gangster im Nacken sitzt – vom eigenen Vater ganz zu schweigen –, muss man irgendetwas unternehmen! Und jetzt sieht es so aus, als müsste ich mich auch noch um diese Sache hier kümmern.“\nEr greift in die Innentasche seines Mantels und holt ein versiegeltes Glasgefäß hervor. Darin schwebt eine in rosa Farben fluoreszierende, quallenartige Kreatur. Du stürzt vor, um ihn aufzuhalten, und schlägst ihm das Glas aus der Hand, sodass es klirrend auf dem Boden zerschellt."
+          },
+          {
+            "id": "albrecht_is_the_culprit",
+            "text": "Merke dir, dass „Albrecht der Täter ist“.",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "traces_to_nowhere_albrecht_is_the_culprit",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "proceed_interlude",
+            "text": "Fahre mit <b>Zwischenspiel: Der Täter</b> fort",
+            "steps": [
+              "culprit_1",
+              "setup_otherworld_locations",
+              "move_to_bone_pit",
+              "flip_abductor",
+              "culprit_agenda",
+              "check_which_true",
+              "check_albrecht_is_the_culprit"
+            ]
+          },
+          {
+            "id": "codex_e_try_again_story",
+            "type": "story",
+            "text": "Albrecht weigert sich, dir eine direkte Antwort zu geben."
+          },
+          {
+            "id": "codex_f_story",
+            "title": "[codex] Kodex F: Matilde Correa",
+            "type": "story",
+            "text": "Du wirfst Matilde den prall gefüllten Umschlag zu. Sie fängt ihn unbeholfen auf, doch sie muss ihn nicht einmal öffnen, um zu wissen, was sich darin befindet. „Ich brauchte das Geld!“, sagt sie. „Und Albrecht hat bezahlt. Tun Sie nicht so, als hätten Sie den Deal nicht auch angenommen!“\nDu fragst sie nach der Kreatur, von der du gelesen hast – von dieser Qualle. „Ich weiß nicht, was das ist“, sagt sie. „Alles, was ich darüber weiß, ist, dass Albrecht diese Dinger von irgendwelchen mysteriösen Leuten bezieht. Er braucht sie, um Menschen verschwinden zu lassen.“\nDu legst Matilde nahe, besser in einer anderen Stadt Arbeit zu suchen, bevor du dich aufmachst, um Albrecht Husserl zur Rede zu stellen."
+          },
+          {
+            "id": "codex_f_effect",
+            "text": "Füge Matilde Correa dem Siegpunktestapel hinzu."
+          },
+          {
+            "id": "check_codex_g_first_time",
+            "title": "[codex] Kodex G: Pfarrer Yang",
+            "type": "branch",
+            "text": "Falls dieser Kodexeintrag das erste Mal in diesem Szenario ausgelöst wird:",
+            "condition": {
+              "type": "multi",
+              "count": 1,
+              "conditions": [
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "traces_to_nowhere_g_first",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "options": [
+                {
+                  "boolCondition": true,
+                  "steps": [
+                    "codex_g_story_1",
+                    "codex_g_story_2"
+                  ],
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_g_first",
+                      "text": "dummy"
+                    }
+                  ]
+                },
+                {
+                  "boolCondition": false,
+                  "steps": [
+                    "codex_g_story_2"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "codex_g_story_1",
+            "type": "story",
+            "text": "Der Pfarrer heißt dich freundlich willkommen, doch seine Stimmung schlägt in melancholisches Bedauern um, als du erwähnst, weshalb du hier bist. „Ich habe mich mit Lina getroffen. Die junge Frau wird von schrecklichen Albträumen geplagt. Aber ich kann nicht über das sprechen, was sie mir anvertraut hat. Ich muss ihre Privatsphäre respektieren.“"
+          },
+          {
+            "id": "codex_g_story_2",
+            "type": "story",
+            "text": "Der Pfarrer muss erst überzeugt werden."
+          },
+          {
+            "id": "codex_g_effect",
+            "text": "Wähle 1 Ermittler am Ort von Pfarrer Yang, der eine [intellect]-Probe (3) ablegen muss."
+          },
+          {
+            "id": "codex_g_question",
+            "type": "input",
+            "input": {
+              "type": "choose_one",
+              "choices": [
+                {
+                  "id": "yes",
+                  "text": "Ist die Probe gelungen?",
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_g",
+                      "text": "dummy"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "check_codex_g_question",
+            "hidden": true,
+            "type": "branch",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "traces_to_nowhere_g",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "steps": [
+                    "codex_g_success",
+                    "codex_g_success_effect"
+                  ]
+                },
+                {
+                  "boolCondition": false,
+                  "steps": [
+                    "may_trigger_codex_again"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "codex_g_success",
+            "type": "story",
+            "text": "Pfarrer Yang schlägt ihm vor, sich im alten Herrenhaus im Französischen Viertel umzusehen."
+          },
+          {
+            "id": "codex_g_success_effect",
+            "text": "Bringe den beiseitegelegten Ort Meiger-Anwesen <i>(In neuer Hand)</i> ins Spiel und füge Pfarrer Yang dem Siegpunktestapel hinzu."
+          },
+          {
+            "id": "may_trigger_codex_again",
+            "text": "Dieser Kodexeintrag darf von einem beliebigen Ermittler erneut ausgelöst werden."
+          },
+          {
+            "id": "ask_glimpsed_another_world",
+            "title": "[codex] Kodex H: Lina Husserl",
+            "type": "input",
+            "input": {
+              "type": "choose_one",
+              "choices": [
+                {
+                  "id": "yes",
+                  "text": "Haben die Ermittler „einen Blick in eine andere Welt erhascht“?",
+                  "effects": [
+                    {
+                      "type": "campaign_log",
+                      "section": "hidden",
+                      "id": "traces_to_nowhere_h",
+                      "text": "dummy"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "check_glimpsed_another_world",
+            "hidden": true,
+            "type": "branch",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "traces_to_nowhere_h",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "steps": [
+                    "codex_h_story",
+                    "lina_opened_the_door",
+                    "proceed_interlude"
+                  ]
+                },
+                {
+                  "boolCondition": false,
+                  "steps": [
+                    "codex_h_try_again_story",
+                    "may_trigger_codex_again"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "codex_h_story",
+            "type": "story",
+            "text": "Du hast es satt, dass Lina dich hinhält, und verrätst ihr schließlich, was du auf dem Meiger-Anwesen gesehen hast. Ihre braunen Augen fixieren dich mit einem intensiven Blick. „Sie war offen?“, fragt sie mit einem Anflug von Verzweiflung in ihrer Stimme. „Die Tür aus meinen Träumen? War sie wirklich offen?!“\nNoch bevor du etwas erwidern kannst, stürmt sie an dir vorbei. Du folgst ihr und auf dem Weg quer durch die Stadt zum Anwesen der Meigers. Dort gesteht sie dir, dass sie diese Tür immer wieder in ihren Albträumen gesehen hat. So lebhaft und so häufig, dass sie sie malen musste. Doch nachdem sie die Tür gemalt hatte, kam etwas hindurch. Es hat sich ihren Vater geholt. Es holte sich auch Aziza. Lina ist fest entschlossen, es aufzuhalten, bevor es noch jemand anderen holen kann. Doch noch bevor ihr das Anwesen erreicht, scheint es, als hätte euch das Etwas schon gefunden."
+          },
+          {
+            "id": "lina_opened_the_door",
+            "text": "Merke dir, dass „Lina die Tür geöffnet hat“.",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "traces_to_nowhere_lina_opened_the_door",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "codex_h_try_again_story",
+            "type": "story",
+            "text": "Lina weigert sich, dir eine direkte Antwort zu geben."
+          },
+          {
+            "id": "codex_i_story",
+            "title": "[codex] Kodex I: Elias Husserl Jr.",
+            "type": "story",
+            "text": "„Hören Sie, ich weiß, warum Sie hier sind“, sagt Elias. „Aber ich habe mit all dem nichts zu tun!“ Noch bevor du antworten kannst, wirst du vom Geräusch näher kommender Schritte abgelenkt. Ein großer Mann mit schmalem Schnurrbart und einem erschöpften Blick mustert dich einen Moment lang schweigend. „Oh, Eugene“, sagt Elias, als er den Mann erkennt. „Ich bin froh, dass du da bist. Sag diesen Leuten, sie sollen mich in Ruhe lassen, okay?“\nMr. Peel ignoriert Juniors Aufforderung. „Du gehst nirgendwohin, Elias“, sagt er. „Es ist Zeit, dass du deinen Teil der Abmachung einhältst.“ Eine Gruppe grob aussehender Schläger mit auf den Armen tätowierten arkanen Symbolen baut sich vor euch auf und macht sich kampfbereit. Das sind keine gewöhnlichen Gangster, sondern getarnte Kultisten! Du rufst Junior zu, er solle so schnell wie möglich verschwinden."
+          },
+          {
+            "id": "codex_i_effect",
+            "text": "Bringe die beiseitegelegte Storyvorteilskarte Eugene Peel am Ort von Elias Husserl Jr. ins Spiel."
+          },
+          {
+            "id": "codex_i_effect_2",
+            "text": "Durchsuche das Begegnungsdeck und den Ablagestapel nach 1 [per_investigator] [[Syndikat]]-Gegner, der am Ort von Elias Husserl Jr. erscheint."
+          },
+          {
+            "id": "codex_i_effect_3",
+            "text": "Füge Elias Husserl Jr. dem Siegpunktestapel hinzu."
+          },
+          {
+            "id": "codex_j_story",
+            "title": "[codex] Kodex J: Eugene Peel",
+            "type": "story",
+            "text": "Nachdem du die Kultisten ordentlich aufgemischt hast, packst du Peel am Kragen und schleuderst ihn in ein paar Mülltonnen, wo er mit Abfall übersät auf dem Boden liegen bleibt.\n„Sie mischen sich in einen Deal ein, den Sie nicht verstehen“, sagt Mr. Peel stöhnend und rappelt sich wieder auf. „Junior wollte Geld von mir und meinen Brüdern, und wir wollten Einfluss in Arkham. Aber als sein Vater sich weigerte, den Deal einzuhalten, der von Junior ausgehandelt wurde, haben wir ihn beseitigt. Mit dieser anderen Ermittlerin haben wir es genauso gemacht – und mit Ihnen werden wir es auch tun!“\nEr greift in seine Tasche und holt ein kleines Glasgefäß hervor, in dem sich eine seltsame, quallenartige Kreatur befindet. „Zeit, all Ihre Fragen zu beantworten!“, sagt er hämisch und schleudert das Gefäß auf den Boden, wo es vor deinen Füßen zerschellt. Schnell breitet sich die tentakelbewehrte Kreatur auf dem Boden des Bahnsteigs aus."
+          },
+          {
+            "id": "codex_j_effect",
+            "text": "Merke dir, dass „Eugene nicht das ist, was er zu sein scheint“.",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "traces_to_nowhere_eurgene_is_not_what_he_seems",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "culprit_1",
+            "title": "Zwischenspiel: Der Täter",
+            "text": "Die Welt um dich herum reißt plötzlich auf, deine Sinne werden von einem grellen violetten Lichtblitz und dem stechenden Geruch von Ozon überwältigt. Du spürst kalte, klauenbewehrte Hände, die direkt aus leerer Luft nach dir greifen, dich packen und in das Licht zerren. Dein Blick verschwimmt, dir wird schwindlig und im nächsten Moment stürzt du durch die Luft einer fremden Welt. Du landest in einer Lache aus dickem, grauem Schlamm, in dem menschliche Knochen umherschwimmen. Noch ehe du einen klaren Gedanken fassen kannst, ringst du bereits mit den Fluten und kämpfst dagegen an, in der seltsamen Masse zu versinken."
+          },
+          {
+            "id": "setup_otherworld_locations",
+            "text": "Bringe jeden beiseitegelegten [[Anderswelt]]-Ort ins Spiel."
+          },
+          {
+            "id": "move_to_bone_pit",
+            "text": "Jeder Ermittler bewegt sich direkt in die Knochengrube."
+          },
+          {
+            "id": "flip_abductor",
+            "text": "Der Gegner Der Entführer wird auf seine „Dimensionsschlurfer“-Seite umgedreht und bewegt sich in die Knochengrube (oder er erscheint in der Knochengrube, falls er beiseitegelegt ist)."
+          },
+          {
+            "id": "culprit_agenda",
+            "text": "Füge die beiseitegelegte Agenda 4a – „In die Grube hinein“ dem Agendadeck hinzu. Rücke direkt zu Agenda 4a vor (handle keine anderen Agenden ab)."
+          },
+          {
+            "id": "check_which_true",
+            "text": "Überprüfe, welcher der folgenden Punkte zutrifft."
+          },
+          {
+            "id": "check_albrecht_is_the_culprit",
+            "bullet_type": "small",
+            "text": "Falls „Albrecht der Täter ist“:",
+            "type": "branch",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "traces_to_nowhere_albrecht_is_the_culprit",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "steps": [
+                    "culprit_2",
+                    "remove_albrecht",
+                    "spawn_albrecht_enemy",
+                    "abduct_all_suspects",
+                    "attach_abducted_to_dimensional_shambler",
+                    "setup_act4a_albrecht",
+                    "continue_playing"
+                  ]
+                },
+                {
+                  "boolCondition": false,
+                  "steps": [
+                    "check_lina_opened_the_door"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "check_lina_opened_the_door",
+            "bullet_type": "small",
+            "text": "Falls „Lina die Tür geöffnet hat“:",
+            "type": "branch",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "traces_to_nowhere_lina_opened_the_door",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "steps": [
+                    "culprit_3",
+                    "remove_lina",
+                    "spawn_lina_enemy",
+                    "abduct_all_suspects",
+                    "attach_abducted_to_dimensional_shambler",
+                    "setup_act4a_lina",
+                    "continue_playing"
+                  ]
+                },
+                {
+                  "boolCondition": false,
+                  "steps": [
+                    "check_eugene"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "check_eugene",
+            "bullet_type": "small",
+            "text": "Falls „Eugene nicht das ist, was er zu sein scheint“:",
+            "type": "branch",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "traces_to_nowhere_eurgene_is_not_what_he_seems",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "steps": [
+                    "culprit_4",
+                    "remove_eugene",
+                    "spawn_eugene_enemy",
+                    "abduct_all_suspects",
+                    "attach_abducted_to_dimensional_shambler",
+                    "setup_act4a_eugene",
+                    "continue_playing"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "culprit_2",
+            "type": "story",
+            "text": "Neben dir windet sich Albrecht Husserl im Schleim. „Was zum …?!“, ruft er, während er langsam in der zähflüssigen Knochengrube versinkt. „Das war nicht für mich gedacht! Das ist alles Ihre Schuld!“ Er klammert sich an den Rand der Grube und klettert heraus. Dann greift er erneut in seinen Mantel, zieht eine Waffe und richtet den Lauf auf dich. Doch plötzlich wird eure Aufmerksamkeit vom unirdischen Kreischen eines gewaltigen Monsters abgelenkt.\nDu bist zu weit gekommen, um Albrecht nun hier an diesem höllischen Ort sterben zu lassen. Du musst ihn zurück nach Arkham bringen, damit er sich für seine Verbrechen vor Gericht verantwortet."
+          },
+          {
+            "id": "remove_albrecht",
+            "text": "Entferne die Storyvorteilskarte Albrecht Husserl aus dem Spiel."
+          },
+          {
+            "id": "spawn_albrecht_enemy",
+            "text": "Der beiseitegelegte Gegner Albrecht Husserl erscheint in der Knochengrube."
+          },
+          {
+            "id": "abduct_all_suspects",
+            "text": "Etwas entführt folgende Karten: jede [[Verdächtiger]]-Storyvorteilskarte an [[Arkham]]-Orten im Spiel und alle Karten im Spurendeck."
+          },
+          {
+            "id": "attach_abducted_to_dimensional_shambler",
+            "text": "Alle entführten Karten werden zusammengemischt. Hänge 1 [per_investigator] zufällige dieser Karten an den Dimensionsschlurfer an. Platziere die übrigen verdeckt unter der Knochengrube.",
+            "bullets": [
+              {
+                "text": "<i>Anmerkung:</i> Karten, die an den Dimensionsschlurfer angehängt sind, gelten nicht länger als entführt."
+              }
+            ]
+          },
+          {
+            "id": "setup_act4a_albrecht",
+            "text": "Füge die beiseitegelegte Szene 4a – „Albrechts Glücksspiel“ dem Szenendeck hinzu. Rücke sofort zu Szene 4a vor (Szene 3b wird nicht abgehandelt)."
+          },
+          {
+            "id": "continue_playing",
+            "text": "Fahre mit dem Szenario fort."
+          },
+          {
+            "id": "culprit_3",
+            "type": "story",
+            "text": "Neben dir windet sich Lina Husserl im Schleim. Sie klammert sich an den Rand der Grube, klettert heraus und spuckt Schleim aus, während sie nach Luft ringt. Mit einem Ausdruck aus Angst und Verwirrung blickt sie zu dir hinab, als langsam eine fremdartige Gestalt hinter ihr auftaucht. Die massige, mit Stacheln bewehrte Silhouette der Kreatur ragt bedrohlich über Lina auf, als sie sich umdreht, um ihr ins Auge zu blicken. „Dich habe ich schon einmal gesehen“, sagt sie. „Du bist meinetwegen hier. Du bist hier, um mich zu holen!“\nDu bist zu weit gekommen, um Lina nun hier an diesem höllischen Ort sterben zu lassen. Du musst sie zurück nach Arkham bringen und dem Monster ein Ende bereiten, das ihre Albträume heimsucht."
+          },
+          {
+            "id": "remove_lina",
+            "text": "Entferne die Storyvorteilskarte Lina Husserl aus dem Spiel."
+          },
+          {
+            "id": "spawn_lina_enemy",
+            "text": "Der beiseitegelegte Gegner Lina Husserl erscheint in der Knochengrube."
+          },
+          {
+            "id": "setup_act4a_lina",
+            "text": "Füge die beiseitegelegte Szene 4a – „Linas Albtraum“ dem Szenendeck hinzu. Rücke sofort zu Szene 4a vor (Szene 3b wird nicht abgehandelt)."
+          },
+          {
+            "id": "culprit_4",
+            "type": "story",
+            "text": "Neben dir windet sich Eugene Peel im Schleim. „Sie unverschämter Narr!“, schreit er dich an, während er sich zum Rand der Grube bewegt. Er klammert sich daran fest und klettert heraus. „Ihre Einmischung endet hier“, sagt er und zieht einen seltsam verzierten Dolch unter seinem Mantel hervor. „Machen Sie sich bereit, Ihr Ende zu finden, so weit entfernt von …“\nSeine Drohungen werden jäh unterbrochen, als ein gewaltiges Monster in sein Blickfeld springt und sich auf einem nahegelegenen Felsen niederlässt. Es knurrt Eugene an und fletscht seine scharfen Zähne. Entsetzt beobachtet er, wie die Kreatur langsam von ihrem erhöhten Platz herabsteigt. Doch du bist zu weit gekommen, um Eugene nun hier an diesem höllischen Ort sterben zu lassen. Du musst ihn zurück nach Arkham bringen, damit er sich für seine Verbrechen vor Gericht verantwortet."
+          },
+          {
+            "id": "remove_eugene",
+            "text": "Entferne die Storyvorteilskarte Eugene Peel aus dem Spiel."
+          },
+          {
+            "id": "spawn_eugene_enemy",
+            "text": "Der beiseitegelegte Gegner Eugene Peel erscheint in der Knochengrube."
+          },
+          {
+            "id": "setup_act4a_eugene",
+            "text": "Füge die beiseitegelegte Szene 4a – „Mr. Peels Plan“ dem Szenendeck hinzu. Rücke sofort zu Szene 4a vor (Szene 3b wird nicht abgehandelt)."
+          },
+          {
+            "id": "earn_xp",
+            "text": "Jeder Ermittler verdient Erfahrungspunkte in Höhe des Sieg-X-Wertes aller Karten im Siegpunktestapel.",
+            "type": "input",
+            "input": {
+              "type": "counter",
+              "text": "Siegpunktestapel:",
+              "effects": [
+                {
+                  "type": "earn_xp",
+                  "investigator": "all"
+                }
+              ]
+            }
+          },
+          {
+            "id": "earn_bonus_xp",
+            "text": "Wähle für jede Storyvorteilskarte, die sich am Ende des Szenarios im Siegpunktestapel befunden hat, einen Ermittler, der 1 Bonus-Erfahrungspunkt verdient.",
+            "type": "input",
+            "input": {
+              "type": "investigator_counter",
+              "text": "Bonus-Erfahrungspunkte",
+              "effects": [
+                {
+                  "type": "earn_xp",
+                  "investigator": "$input_value"
+                }
+              ]
+            }
+          },
+          {
+            "id": "resolution_5",
+            "type": "resolution",
+            "resolution": "R5"
+          },
+          {
+            "id": "failed_to_solve_the_case",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "failed_to_solve_the_case",
+                "text": "Die Ermittler konnten den Fall nicht lösen."
+              }
+            ]
+          },
+          {
+            "id": "lose",
+            "text": "<b>Die Ermittler verlieren die Kampagne!</b>",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "result",
+                "value": "lose"
+              }
+            ]
+          },
+          {
+            "id": "saved_lina_husserl",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "saved_lina_husserl",
+                "text": "Die Ermittler konnten Lina Husserl retten."
+              }
+            ]
+          },
+          {
+            "id": "stopped_eugene_peel",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "stopped_eugene_peel",
+                "text": "Die Ermittler konnten Eugene Peel aufhalten."
+              }
+            ]
+          },
+          {
+            "id": "stopped_albrecht_husserl",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "stopped_albrecht_husserl",
+                "text": "Die Ermittler konnten Albrecht Husserl aufhalten."
+              }
+            ]
+          },
+          {
+            "id": "the_culprit_is_still_at_large",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "the_culprit_is_still_at_large",
+                "text": "Der Täter ist noch auf freiem Fuß."
+              }
+            ]
+          },
+          {
+            "id": "ask_control_aziza",
+            "type": "input",
+            "input": {
+              "type": "choose_one",
+              "choices": [
+                {
+                  "id": "yes",
+                  "text": "Hat sich die Storyvorteilskarte Aziza Steer am Ende des Szenarios unter der Kontrolle eines Ermittlers befunden?",
+                  "steps": [
+                    "earn_aziza"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "earn_aziza",
+            "bullet_type": "small",
+            "text": "Die Ermittler haben die Kampagnen-Belohnungskarte Aziza Steer <i>(Hartgesotten)</i> verdient. Die Karte wird dem Spielerkartenvorrat hinzugefügt."
+          }
+        ],
+        "resolutions": [
+          {
+            "id": "no_resolution",
+            "title": "Es wurde keine Auflösung erreicht",
+            "description": "Alle Ermittler wurden besiegt",
+            "investigator_status": [
+              "eliminated",
+              "physical",
+              "mental"
+            ],
+            "text": "Das Ausmaß der zahlreichen Bedrohungen, die sich gegen die Familie Husserl richten, erweist sich als zu groß für dich. Trotz all deiner Bemühungen erliegst du dem Willen des Dimensionsschlurfers, als du in die Knochengrube der Anderswelt gezerrt wirst.",
+            "steps": [
+              "failed_to_solve_the_case",
+              "lose"
+            ]
+          },
+          {
+            "id": "R1",
+            "title": "Auflösung 1",
+            "text": "Es hat dich all deine Kraft gekostet, doch es gelingt dir, Lina Husserl dazu zu bewegen, sich ihren tiefsten Ängsten zu stellen und das Monster ihrer Albträume zu besiegen. Du weißt nicht, wie ihre Gemälde den Schleier zwischen den Welten durchdrungen haben, um den Schlurfer nach Arkham zu rufen, doch du schlägst ihr vor, in Zukunft davon abzusehen, die Dinge zu malen, die sie in ihren Träumen sieht.",
+            "steps": [
+              "saved_lina_husserl",
+              "resolution_5"
+            ],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "traces_to_nowhere_lina_opened_the_door",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            }
+          },
+          {
+            "id": "R2",
+            "title": "Auflösung 2",
+            "text": "Eugene Peel war zwar nur ein einzelner Mann, er galt in okkulten Kreisen jedoch als ein großer Anführer. Nachdem du ihn besiegen konntest, hat sich der Kult bedeckt gehalten.",
+            "steps": [
+              "stopped_eugene_peel",
+              "resolution_5"
+            ],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "traces_to_nowhere_eurgene_is_not_what_he_seems",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            }
+          },
+          {
+            "id": "R3",
+            "title": "Auflösung 3",
+            "text": "Du kehrst mit Albrecht Husserl im Schlepptau nach Arkham zurück und übergibst ihn umgehend den Behörden. Du kannst nur hoffen, dass die Familie Husserl nicht die gesamte Polizei von Arkham auf der Gehaltsliste hat.",
+            "steps": [
+              "stopped_albrecht_husserl",
+              "resolution_5"
+            ],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "traces_to_nowhere_albrecht_is_the_culprit",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            }
+          },
+          {
+            "id": "R4",
+            "title": "Auflösung 4",
+            "text": "Trotz all deiner Bemühungen gelingt es dir nicht, den Dimensionsschlurfer davon abzuhalten, sein nächstes Opfer zu fordern. Du fliehst zurück nach Arkham, wo du darauf hoffst, dass du diese Ereignisse nun endgültig hinter dir lassen kannst.",
+            "steps": [
+              "the_culprit_is_still_at_large",
+              "resolution_5"
+            ]
+          },
+          {
+            "id": "R5",
+            "title": "Auflösung 5",
+            "hidden": true,
+            "text": "Es ist dir nicht gelungen, Elias ausfindig zu machen und zurückzubringen, doch die Fortschritte, die du erreicht hast, scheinen die Bürger der Stadt dennoch zufriedenzustellen. Arkham erholt sich überraschend schnell, wobei man möglichst darauf bedacht ist, die Angelegenheiten rund um die Ermittlungen gegen die Familie Husserl zu vergessen. Josephine übernimmt die Macht- und Autoritätsposition, die ihr verschwundener Ehemann hinterlassen hat. Der Einfluss der Familie Husserl in der Stadt bleibt weiterhin groß – wenn auch mehr im Verborgenen und mit etwas mehr Bedacht.",
+            "steps": [
+              "ask_control_aziza",
+              "earn_xp",
+              "earn_bonus_xp",
               "$upgrade_decks"
             ]
           }

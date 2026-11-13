@@ -4740,6 +4740,10 @@
             "text": "the drill broke down."
           },
           {
+            "id": "failed_to_solve_the_case",
+            "text": "the investigators failed to solve the case."
+          },
+          {
             "id": "fof_alarm_level",
             "text": "Nivel de alarma: #name# (#X#)"
           },
@@ -4896,8 +4900,20 @@
             "text": "el rougarou escapó, y aceptaste la maldición."
           },
           {
+            "id": "saved_lina_husserl",
+            "text": "the investigators saved Lina Husserl."
+          },
+          {
             "id": "saved_the_mutated_officer",
             "text": "los investigadores salvaron al policía mutado."
+          },
+          {
+            "id": "stopped_albrecht_husserl",
+            "text": "the investigators stopped Albrecht Husserl."
+          },
+          {
+            "id": "stopped_eugene_peel",
+            "text": "the investigators stopped Eugene Peel."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -4926,6 +4942,10 @@
           {
             "id": "tetsuos_investigation_has_failed",
             "text": "la investigación de Tetsuo fracasó."
+          },
+          {
+            "id": "the_culprit_is_still_at_large",
+            "text": "the culprit is still at large."
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
@@ -5190,6 +5210,66 @@
           },
           {
             "id": "tmg_side_story_mode",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_a",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_albrecht_is_the_culprit",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_b",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_c",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_d",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_d_first",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_e",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_eurgene_is_not_what_he_seems",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_f",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_g",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_g_first",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_h",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_i",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_j",
+            "text": "dummy"
+          },
+          {
+            "id": "traces_to_nowhere_lina_opened_the_door",
             "text": "dummy"
           },
           {
