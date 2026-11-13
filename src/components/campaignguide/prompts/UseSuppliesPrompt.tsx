@@ -8,8 +8,7 @@ import InvestigatorCounterComponent from './InvestigatorCounterComponent';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import ScenarioGuideContext from '../ScenarioGuideContext';
 import { UseSuppliesInput, UseSuppliesAllInput } from '@data/scenario/types';
-import Card from '@data/types/Card';
-import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import GuidedCampaignLog, { CampaignInvestigator } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   id: string;
@@ -21,14 +20,14 @@ interface Props {
 export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const supplyLimits = useMemo(() => {
-    const investigagorSupplies = campaignLog.investigatorSections[input.section] || {};
+    const investigatorSupplies = campaignLog.investigatorSections[input.section] || {};
     const limits: { [code: string]: number } = {};
     const investigators = campaignLog.investigators(false);
     forEach(investigators, investigator => {
       limits[investigator.code] = 0;
     });
     forEach(investigators, investigator => {
-      const supplies = investigagorSupplies[investigator.code] || {};
+      const supplies = investigatorSupplies[investigator.code] || {};
       const entry = find(supplies.entries || [],
         entry => entry.id === input.id &&
           !entry.crossedOut &&
@@ -82,7 +81,7 @@ export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Prop
     );
   }, [id, campaignLog, scenarioState]);
 
-  const filterInvestigatorChoice = useCallback((investigator: Card) => {
+  const filterInvestigatorChoice = useCallback((investigator: CampaignInvestigator) => {
     const count = supplyLimits[investigator.code] || 0;
     return count > 0;
   }, [supplyLimits]);

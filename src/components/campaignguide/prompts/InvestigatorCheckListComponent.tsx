@@ -6,7 +6,6 @@ import { c, t } from 'ttag';
 import CheckListComponent, { ListItem } from './CheckListComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
-import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import ActionButton from './ActionButton';
 import RadioButton from './RadioButton';
@@ -28,7 +27,7 @@ interface Props {
   allowNewDecks?: boolean;
   includeLeadInvestigator?: boolean;
   investigators?: string[];
-  filter?: (investigator: Card) => boolean;
+  filter?: (investigator: CampaignInvestigator) => boolean;
 }
 
 export default function InvestigatorCheckListComponent({
@@ -61,7 +60,7 @@ export default function InvestigatorCheckListComponent({
       ) !== -1;
     }
     if (filterCard) {
-      return filterCard(investigator.card);
+      return filterCard(investigator);
     }
     return true;
   }, [investigatorCodes, filterCard]);
