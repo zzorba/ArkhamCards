@@ -1,11 +1,11 @@
-import { flatMap, map, filter, forEach, range, sortBy } from 'lodash';
+import { flatMap, map, filter, forEach, keys, range, sortBy, uniq, values } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
 
 import { getEnvVar } from '@lib/env';
 
 import { newLocalDeck, updateLocalDeck, upgradeLocalDeck } from './localHelper';
-import { handleAuthErrors } from './authHelper';
+import { handleAuthErrors, handleArkhamBuildAuthErrors } from './authHelper';
 import {
   NEW_DECK_AVAILABLE,
   UPDATE_DECK,
@@ -32,6 +32,7 @@ import {
   getDeckId,
   ArkhamDbDeck,
   ArkhamDbDeckId,
+  ArkhamBuildDeck,
   SET_UPLOADED_DECKS,
   SetUploadedDecksAction,
   UploadedCampaignId,
@@ -46,9 +47,19 @@ import {
   isArkhamBuildDeckId,
   isArkhamBuildDeck,
 } from '@actions/types';
-import { login } from '@actions';
+import { login, arkhamBuildLogin } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
-import { createDeck as createArkhamBuildDeck, getProfile as getArkhamBuildProfile } from '@lib/arkhamBuildApi';
+import {
+  ArkhamBuildDeckContent,
+  createDeck as createArkhamBuildDeck,
+  deleteDeck as deleteArkhamBuildDeck,
+  getProfile as getArkhamBuildProfile,
+  updateDeck as updateArkhamBuildDeck,
+  upgradeDeck as upgradeArkhamBuildDeck,
+} from '@lib/arkhamBuildApi';
+import { buildFanMadeContent, metaCardCodes } from '@data/arkhamBuildCards';
+import { getKnownFanMadeContent } from '@data/fanMadeContent';
+import { ArkhamBuildFanMadeContent } from '@data/types/ArkhamBuildFanMadeContent';
 import { AppState, getDeckUploadedCampaigns } from '@reducers/index';
 import { DeckActions } from '@data/remote/decks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
@@ -159,7 +170,7 @@ export function removeDeck(
 
 export function replaceLocalDeck(
   localId: DeckId,
-  deck: ArkhamDbDeck
+  deck: ArkhamDbDeck | ArkhamBuildDeck
 ): ReplaceLocalDeckAction {
   return {
     type: REPLACE_LOCAL_DECK,
@@ -223,6 +234,49 @@ const handleUpgradeDeckResult = (
   };
 };
 
+type DeckCardCodes = Pick<Deck, 'investigator_code' | 'slots' | 'sideSlots' | 'ignoreDeckLimitSlots' | 'meta'>;
+
+/**
+ * Decks carry the full definition of every fan-made card they reference, so
+ * they work on arkham.build and on other devices. Gather them from all of the
+ * fan-made content we know about.
+ */
+function arkhamBuildFanMadeContent(state: AppState, deck: DeckCardCodes): ArkhamBuildFanMadeContent | undefined {
+  const codes = uniq([
+    deck.investigator_code,
+    ...keys(deck.slots),
+    ...keys(deck.sideSlots),
+    ...keys(deck.ignoreDeckLimitSlots),
+    ...metaCardCodes(deck.meta),
+  ]);
+  const sources = [
+    ...flatMap(values(state.decks.all), d => d?.fan_made_content ? [d.fan_made_content] : []),
+    getKnownFanMadeContent(),
+  ];
+  return buildFanMadeContent(codes, sources);
+}
+
+function arkhamBuildDeckContent(state: AppState, deck: Deck, hidden_slots: Slots | undefined): ArkhamBuildDeckContent {
+  return {
+    name: deck.name,
+    investigator_code: deck.investigator_code,
+    slots: deck.slots || {},
+    sideSlots: deck.sideSlots,
+    ignoreDeckLimitSlots: deck.ignoreDeckLimitSlots,
+    taboo_id: deck.taboo_id,
+    meta: deck.meta,
+    fan_made_content: arkhamBuildFanMadeContent(state, deck),
+    hidden_slots,
+    description_md: deck.description_md,
+    tags: deck.tags,
+    problem: deck.problem,
+    xp: deck.xp,
+    xp_adjustment: deck.xp_adjustment,
+    spentXp: deck.spentXp,
+    exile_string: deck.exile_string,
+  };
+}
+
 export const deleteDeckAction = (
   userId: string | undefined,
   actions: DeckActions,
@@ -231,9 +285,24 @@ export const deleteDeckAction = (
 ): ThunkAction<Promise<boolean>, AppState, unknown, Action<string>> => {
   return (dispatch) => {
     return new Promise<boolean>((resolve, reject) => {
-      if (id.local || isArkhamBuildDeckId(id)) {
+      if (id.local) {
         dispatch(removeDeck(userId, actions, id, deleteAllVersion));
         resolve(true);
+      } else if (isArkhamBuildDeckId(id)) {
+        handleArkhamBuildAuthErrors(
+          deleteArkhamBuildDeck(id.arkhambuild_id, deleteAllVersion),
+          () => {
+            dispatch(removeDeck(userId, actions, id, deleteAllVersion));
+            resolve(true);
+          },
+          reject,
+          () => {
+            dispatch(deleteDeckAction(userId, actions, id, deleteAllVersion)).then(resolve, reject);
+          },
+          () => {
+            dispatch(arkhamBuildLogin());
+          }
+        );
       } else {
         const deleteDeckPromise = deleteDeck(id.id, deleteAllVersion);
         handleAuthErrors(
@@ -260,7 +329,7 @@ export const saveDeckUpgrade = (
   xp: number,
   exileCounts: Slots
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     return new Promise<Deck>((resolve, reject) => {
       const exileParts: string[] = [];
       forEach(exileCounts, (count, code) => {
@@ -268,10 +337,35 @@ export const saveDeckUpgrade = (
           forEach(range(0, count), () => exileParts.push(code));
         }
       });
-      if (deck.local || isArkhamBuildDeck(deck)) {
+      if (deck.local) {
         const result = upgradeLocalDeck(deck, xp, exileParts);
         dispatch(handleUpgradeDeckResult(userId, actions, result));
         resolve(result.upgradedDeck);
+      } else if (isArkhamBuildDeck(deck)) {
+        // Compute the child deck locally, then let the server create and link it.
+        const { upgradedDeck } = upgradeLocalDeck(deck, xp, exileParts);
+        handleArkhamBuildAuthErrors(
+          upgradeArkhamBuildDeck(
+            deck.arkhambuild_user,
+            deck.arkhambuild_id,
+            arkhamBuildDeckContent(getState(), upgradedDeck, deck.hidden_slots)
+          ),
+          (serverDeck: Deck) => {
+            dispatch(handleUpgradeDeckResult(userId, actions, {
+              deck: { ...deck, nextDeckId: getDeckId(serverDeck) },
+              upgradedDeck: serverDeck,
+            }));
+            resolve(serverDeck);
+          },
+          reject,
+          () => {
+            dispatch(saveDeckUpgrade(userId, actions, deck, xp, exileCounts))
+              .then(deck => resolve(deck), reject);
+          },
+          () => {
+            dispatch(arkhamBuildLogin());
+          }
+        );
       } else {
         const exiles = exileParts.join(',');
         const upgradeDeckPromise = upgradeDeck(deck.id, xp, exiles);
@@ -318,7 +412,7 @@ export const saveDeckChanges = (
   deck: Deck,
   changes: SaveDeckChanges,
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
-  return (dispatch): Promise<Deck> => {
+  return (dispatch, getState): Promise<Deck> => {
     return new Promise((resolve, reject) => {
       if (deck.local || isArkhamBuildDeck(deck)) {
         const newDeck = updateLocalDeck(
@@ -335,6 +429,31 @@ export const saveDeckChanges = (
           changes.side || deck.sideSlots || {},
           changes.tags === undefined ? deck.tags : changes.tags,
         );
+        if (deck.local) {
+          newDeck.fan_made_content = arkhamBuildFanMadeContent(getState(), newDeck);
+        }
+        if (isArkhamBuildDeck(deck)) {
+          handleArkhamBuildAuthErrors(
+            updateArkhamBuildDeck(
+              deck.arkhambuild_user,
+              deck.arkhambuild_id,
+              arkhamBuildDeckContent(getState(), newDeck, deck.hidden_slots)
+            ),
+            (serverDeck: Deck) => {
+              dispatch(updateDeck(userId, actions, getDeckId(serverDeck), serverDeck, true));
+              resolve(serverDeck);
+            },
+            reject,
+            () => {
+              dispatch(saveDeckChanges(userId, actions, deck, changes))
+                .then(deck => resolve(deck), reject);
+            },
+            () => {
+              dispatch(arkhamBuildLogin());
+            }
+          );
+          return;
+        }
         dispatch(updateDeck(userId, actions, getDeckId(newDeck), newDeck, true));
         setTimeout(() => {
           resolve(newDeck);
@@ -396,7 +515,7 @@ export const saveNewDeck = (
   actions: DeckActions,
   params: NewDeckParams
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
-  return (dispatch): Promise<Deck> => {
+  return (dispatch, getState): Promise<Deck> => {
     return new Promise<Deck>(async(resolve, reject) => {
       const target = params.deckTarget || (params.local ? 'local' : 'arkhamdb');
       if (target === 'local') {
@@ -410,6 +529,7 @@ export const saveNewDeck = (
           params.description,
           params.tags
         );
+        deck.fan_made_content = arkhamBuildFanMadeContent(getState(), deck);
         dispatch(setNewDeck(userId, actions, getDeckId(deck), deck));
         setTimeout(() => {
           resolve(deck);
@@ -417,17 +537,24 @@ export const saveNewDeck = (
       } else if (target === 'arkhambuild') {
         try {
           const profile = await getArkhamBuildProfile();
-          const deck = await createArkhamBuildDeck(
-            profile.id,
-            params.investigatorCode,
-            params.deckName,
-            params.slots,
-            params.ignoreDeckLimitSlots,
-            params.tabooSetId,
-            params.meta,
-            params.description,
-            params.tags
-          );
+          const deckCodes: DeckCardCodes = {
+            investigator_code: params.investigatorCode,
+            slots: params.slots,
+            ignoreDeckLimitSlots: params.ignoreDeckLimitSlots || {},
+            meta: params.meta,
+          };
+          const deck = await createArkhamBuildDeck(profile.id, {
+            name: params.deckName,
+            investigator_code: params.investigatorCode,
+            slots: params.slots,
+            ignoreDeckLimitSlots: params.ignoreDeckLimitSlots,
+            taboo_id: params.tabooSetId,
+            meta: params.meta,
+            fan_made_content: arkhamBuildFanMadeContent(getState(), deckCodes),
+            description_md: params.description,
+            tags: params.tags,
+            problem: params.problem,
+          });
           dispatch(setNewDeck(userId, actions, getDeckId(deck), deck));
           resolve(deck);
         } catch (e) {
@@ -469,14 +596,15 @@ export const saveNewDeck = (
 export const saveClonedDeck = (
   userId: string | undefined,
   actions: DeckActions,
-  local: boolean,
+  deckTarget: DeckTarget,
   cloneDeck: Deck,
   deckName: string
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
   return (dispatch): Promise<Deck> => {
     return new Promise<Deck>((resolve, reject) => {
       dispatch(saveNewDeck(userId, actions, {
-        local,
+        local: deckTarget === 'local',
+        deckTarget,
         deckName,
         investigatorCode: cloneDeck.investigator_code,
         slots: cloneDeck.slots || {},
@@ -513,22 +641,27 @@ export const saveClonedDeck = (
 export const uploadLocalDeck = (
   userId: string | undefined,
   actions: DeckActions,
-  replaceLocalDeckRequest: (localDeckId: string, arkhamDbId: number) => Promise<void>,
-  localDeck: LocalDeck
+  replaceLocalDeckRequest: (localDeckId: string, deckId: DeckId) => Promise<void>,
+  localDeck: LocalDeck,
+  deckTarget: 'arkhamdb' | 'arkhambuild'
 ): ThunkAction<Promise<Deck>, AppState, unknown, Action<string>> => {
   return async(dispatch, getState): Promise<Deck> => {
     const uploads = getDeckUploadedCampaigns(getState(), getDeckId(localDeck));
     const deck = await dispatch(saveClonedDeck(
       userId,
       actions,
-      false,
+      deckTarget,
       localDeck,
       localDeck.name
     ));
-    const theDeck = deck as ArkhamDbDeck;
-    dispatch(replaceLocalDeck(getDeckId(localDeck), theDeck));
+    if (deck.local) {
+      throw new Error(`Uploaded deck came back local`);
+    }
+    dispatch(replaceLocalDeck(getDeckId(localDeck), deck));
     if (userId && uploads?.campaignId.length) {
-      await replaceLocalDeckRequest(localDeck.uuid, theDeck.id);
+      await replaceLocalDeckRequest(localDeck.uuid, getDeckId(deck));
+      // The campaigns still hold the local deck's contents, so send them the uploaded deck.
+      await Promise.all(map(uploads.campaignId, campaignId => actions.updateDeck(deck, campaignId)));
     }
     return deck;
   };

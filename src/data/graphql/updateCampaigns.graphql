@@ -46,6 +46,7 @@ mutation deleteInvestigatorDecks(
       id
       campaign_id
       arkhamdb_id
+      arkhambuild_id
       local_uuid
       investigator
       owner_id

@@ -9,6 +9,7 @@ import {
   MY_DECKS_ERROR,
   SET_MY_DECKS,
   SET_ARKHAM_BUILD_DECKS,
+  ARKHAM_BUILD_LOGOUT,
   isArkhamBuildDeck,
   NEW_DECK_AVAILABLE,
   DELETE_DECK,
@@ -281,7 +282,8 @@ export default function(
       syncedDecks,
     };
   }
-  if (action.type === ARKHAMDB_LOGOUT || action.type === CLEAR_DECKS) {
+  if (action.type === CLEAR_DECKS) {
+    // Remote decks (ArkhamDB and arkham.build) come back on the next refresh.
     const all: DecksMap = {};
     forEach(state.all, (deck, id: string) => {
       if (deck && deck.local) {
@@ -290,7 +292,23 @@ export default function(
     });
     return {
       ...DEFAULT_DECK_STATE,
+      arkhamDbUser: state.arkhamDbUser,
+      all,
+    };
+  }
+  if (action.type === ARKHAMDB_LOGOUT || action.type === ARKHAM_BUILD_LOGOUT) {
+    // Only drop the decks that belong to the service being signed out of.
+    const keepArkhamBuild = action.type === ARKHAMDB_LOGOUT;
+    const all: DecksMap = {};
+    forEach(state.all, (deck, id: string) => {
+      if (deck && (deck.local || isArkhamBuildDeck(deck) === keepArkhamBuild)) {
+        all[id] = deck;
+      }
+    });
+    return {
+      ...state,
       arkhamDbUser: action.type === ARKHAMDB_LOGOUT ? undefined : state.arkhamDbUser,
+      lastModified: action.type === ARKHAMDB_LOGOUT ? undefined : state.lastModified,
       all,
     };
   }

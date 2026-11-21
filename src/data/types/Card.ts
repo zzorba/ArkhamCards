@@ -106,7 +106,7 @@ export const normalize_array = (array: string[] | undefined): string | null =>
     .map((t) => `#${t}#`)
     .join(',') ?? null;
 
-export const CARD_NUM_COLUMNS = 147;
+export const CARD_NUM_COLUMNS = 149;
 
 function arkham_num(value: number | null | undefined) {
   if (value === null || value === undefined) {
@@ -454,6 +454,12 @@ export default class Card {
   public imageurl?: string;
   @Column('text', { nullable: true })
   public backimageurl?: string;
+  @Column('text', { nullable: true })
+  public thumbnail_url?: string;
+  // Stable id for fan-made cards, shared with arkham.build's fan_made_content.
+  @Index('uuid')
+  @Column('text', { nullable: true })
+  public uuid?: string;
   @Column('text', { nullable: true })
   public imagesrc?: string;
 

@@ -114,7 +114,7 @@ export default function UpgradeDecksList({
         if (deck) {
           return (
             <LegacyDeckRow
-              key={deck.id.local ? deck.id.uuid : deck.id.id}
+              key={deck.id.uuid}
               lang={lang}
               investigator={investigator}
               campaign={campaign}

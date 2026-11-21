@@ -1,6 +1,6 @@
 import * as Keychain from 'react-native-keychain';
 
-import { authorize, completeAuthorization, refresh, revoke, AppAuthConfig, AUTH_ALREADY_COMPLETED } from './OAuthWrapper';
+import { authorize, completeAuthorization, refresh, revoke, AppAuthConfig, AuthorizeResponse, AUTH_ALREADY_COMPLETED } from './OAuthWrapper';
 import { getEnvVar } from './env';
 
 const PROVIDER = 'arkhamBuild';
@@ -17,7 +17,8 @@ const config: AppAuthConfig = {
   clientId: ARKHAM_BUILD_CLIENT_ID,
   clientSecret: ARKHAM_BUILD_CLIENT_SECRET,
   redirectUrl: 'arkhamcards://arkhambuild',
-  scopes: ['profile:read', 'decks:read'],
+  scopes: ['profile:read', 'decks:read', 'decks:write', 'decks:delete'],
+  clientAuthInBody: true,
   serviceConfiguration: {
     authorizationEndpoint: `${API_BASE}/v2/oauth/authorize`,
     tokenEndpoint: `${API_BASE}/v2/oauth/token`,
@@ -26,7 +27,7 @@ const config: AppAuthConfig = {
 };
 
 async function saveAuthResponse(
-  response: any
+  response: AuthorizeResponse
 ): Promise<string | null> {
   const serialized = JSON.stringify(response);
   await Keychain.setGenericPassword('arkham-build', serialized, { service: KEYCHAIN_SERVICE });

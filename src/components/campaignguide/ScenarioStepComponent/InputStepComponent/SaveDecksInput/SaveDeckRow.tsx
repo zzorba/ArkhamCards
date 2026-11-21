@@ -4,7 +4,7 @@ import { flatMap, find, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import COLORS from '@styles/colors';
-import { Deck, Slots, getDeckId, NumberChoices } from '@actions/types';
+import { Deck, Slots, getDeckId, NumberChoices, isArkhamDbDeckId } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import { useCounter, useFlag } from '@components/core/hooks';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -127,7 +127,7 @@ function SaveDeckRow({
 
   const save = useCallback(async() => {
     if (deck) {
-      const allowedChanges = !!find(storyAssetDeltas, (delta, code) => deck.id.local || !code.startsWith('z'));
+      const allowedChanges = !!find(storyAssetDeltas, (delta, code) => !isArkhamDbDeckId(deck.id) || !code.startsWith('z'));
       if (!allowedChanges && !adjustXp) {
         await saveCampaignLog(deck.deck);
       } else {

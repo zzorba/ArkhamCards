@@ -26,6 +26,7 @@ import {
   ARKHAM_BUILD_LOGOUT,
   SET_ARKHAM_BUILD_DECKS,
   ArkhamDbDeck,
+  ArkhamBuildDeck,
   SET_PACK_DRAFT,
   SYNC_IN_COLLECTION,
   SYNC_PACK_SPOILER,
@@ -39,6 +40,7 @@ import * as dissonantVoices from '@lib/dissonantVoices';
 import * as patreon from '@lib/patreon';
 import * as arkhamBuildAuth from '@lib/arkhamBuildAuth';
 import { fetchDecks as fetchArkhamBuildDecks, getProfile as getArkhamBuildProfile } from '@lib/arkhamBuildApi';
+import { addFanMadeContent, flushFanMadeContent } from '@data/fanMadeContent';
 import { decks } from '@lib/authApi';
 
 export function login(): ThunkAction<void, AppState, unknown, Action<string>> {
@@ -294,22 +296,27 @@ export function completeArkhamBuildLoginFromRedirect(
   };
 }
 
-export function refreshMyArkhamBuildDecks(): ThunkAction<void, AppState, unknown, Action<string>> {
+export function refreshMyArkhamBuildDecks(): ThunkAction<Promise<ArkhamBuildDeck[]>, AppState, unknown, Action<string>> {
   return async(dispatch, getState) => {
     const state = getState();
     if (!state.arkhamBuild.status) {
-      return;
+      return [];
     }
     try {
       const profile = await getArkhamBuildProfile();
       const response = await fetchArkhamBuildDecks(profile.id);
+      // Deck lists need the custom cards (e.g. a fan-made investigator) before the decks show up.
+      forEach(response.decks, deck => addFanMadeContent(deck.fan_made_content));
+      await flushFanMadeContent();
       dispatch({
         type: SET_ARKHAM_BUILD_DECKS,
         decks: response.decks,
         timestamp: new Date(),
       });
+      return response.decks;
     } catch (error) {
       console.log(`[arkham.build] Error fetching decks: ${error.message || error}`);
+      return [];
     }
   };
 }

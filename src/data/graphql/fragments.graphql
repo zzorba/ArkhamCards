@@ -87,6 +87,8 @@ fragment SingleCard on all_card {
   restrictions
   imageurl
   backimageurl
+  thumbnail_url
+  uuid
   faction2_code
   faction3_code
   xp

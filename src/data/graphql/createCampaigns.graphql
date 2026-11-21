@@ -20,12 +20,14 @@ mutation createCampaign(
 
 mutation uploadLocalCampaignDeck(
   $localDeckId: String!
-  $arkhamDbId: Int!
+  $arkhamDbId: Int
+  $arkhamBuildId: String
 ) {
   uploadLocalCampaignDeck(
     args: {
       localDeckId: $localDeckId
       arkhamDbId: $arkhamDbId
+      arkhamBuildId: $arkhamBuildId
     }
   ) {
     deckIds {

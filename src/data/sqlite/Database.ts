@@ -141,7 +141,7 @@ async function createDatabaseConnection(recreate: boolean) {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 55;
+  static SCHEMA_VERSION: number = 56;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
@@ -279,6 +279,19 @@ export default class Database {
       .into(Card)
       .values(cards);
     return await query.execute();
+  }
+
+  async replaceCards(cards: Card[]): Promise<void> {
+    if (!cards.length) {
+      return;
+    }
+    const codes = cards.map(card => card.code);
+    await (await this.cards())
+      .createQueryBuilder()
+      .delete()
+      .where('code IN (:...codes)', { codes })
+      .execute();
+    await this.insertCards(cards);
   }
 
   async insertRules(rules: Rule[]): Promise<InsertResult> {
@@ -432,6 +445,13 @@ export default class Database {
 
   async getCardsByCodes(codes: string[], tabooSetId?: number): Promise<Card[]> {
     return this.getCards(where(`c.code IN (:...codes)`, { codes }), tabooSetId);
+  }
+
+  async getCardsByUuids(uuids: string[]): Promise<Card[]> {
+    if (!uuids.length) {
+      return [];
+    }
+    return this.getCards(where(`c.uuid IN (:...uuids)`, { uuids }));
   }
 
   async getCard(

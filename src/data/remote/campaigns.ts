@@ -5,6 +5,8 @@ import { useApolloClient } from '@apollo/client';
 import {
   Campaign,
   CampaignDifficulty,
+  DeckId,
+  isArkhamBuildDeckId,
   CampaignGuideState,
   CampaignNotes,
   ChaosBagResults,
@@ -183,20 +185,24 @@ function useCreateLinkedCampaignRequest(): (
 
 export function useUploadLocalDeckRequest(): (
   localDeckId: string,
-  arkhamDbId: number
+  deckId: DeckId
 ) => Promise<void> {
   const apollo = useApolloClient();
   const { userId } = useContext(ArkhamCardsAuthContext);
   const [uploadLocalDecks] = useUploadLocalCampaignDeckMutation();
   const cache = apollo.cache;
   return useCallback(
-    async(localDeckId: string, arkhamDbId: number): Promise<void> => {
-      if (userId) {
+    async(localDeckId: string, deckId: DeckId): Promise<void> => {
+      if (userId && !deckId.local) {
+        const remoteIds = isArkhamBuildDeckId(deckId) ?
+          { arkhamdb_id: null, arkhambuild_id: deckId.arkhambuild_id } :
+          { arkhamdb_id: deckId.id, arkhambuild_id: null };
         try {
           const data = await uploadLocalDecks({
             variables: {
               localDeckId,
-              arkhamDbId,
+              arkhamDbId: remoteIds.arkhamdb_id,
+              arkhamBuildId: remoteIds.arkhambuild_id,
             },
           });
           if (data.errors?.length) {
@@ -209,7 +215,7 @@ export function useUploadLocalDeckRequest(): (
                 campaignId,
                 userId,
                 localDeckId,
-                arkhamDbId
+                remoteIds
               );
             }
           );

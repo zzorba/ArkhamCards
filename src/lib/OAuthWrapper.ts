@@ -25,6 +25,15 @@ export interface AppAuthConfig {
   serviceConfiguration?: ServiceConfiguration;
   scopes?: string[];
   additionalParameters?: Record<string, string>;
+  // Send client_secret as a form field instead of an HTTP Basic header (required by arkham.build).
+  clientAuthInBody?: boolean;
+}
+
+function tokenClientAuth(config: AppAuthConfig): { clientSecret?: string; extraParams: Record<string, string> } {
+  if (config.clientAuthInBody && config.clientSecret) {
+    return { clientSecret: undefined, extraParams: { client_secret: config.clientSecret } };
+  }
+  return { clientSecret: config.clientSecret, extraParams: {} };
 }
 
 export interface AuthorizeResponse {
@@ -143,13 +152,17 @@ export async function completeAuthorization(
     return Promise.reject(new Error('State mismatch — possible CSRF, aborting.'));
   }
 
+  const clientAuth = tokenClientAuth(config);
   const tokenResult = await AuthSession.exchangeCodeAsync(
     {
       clientId: config.clientId,
-      clientSecret: config.clientSecret,
+      clientSecret: clientAuth.clientSecret,
       code,
       redirectUri: pending.redirectUri || config.redirectUrl,
-      extraParams: pending.codeVerifier ? { code_verifier: pending.codeVerifier } : {},
+      extraParams: {
+        ...clientAuth.extraParams,
+        ...(pending.codeVerifier ? { code_verifier: pending.codeVerifier } : {}),
+      },
     },
     discovery
   );
@@ -176,12 +189,13 @@ export async function refresh(
     revocationEndpoint: serviceConfiguration.revocationEndpoint,
   };
 
+  const clientAuth = tokenClientAuth(config);
   const tokenResult = await AuthSession.refreshAsync(
     {
       clientId: config.clientId,
-      clientSecret: config.clientSecret,
+      clientSecret: clientAuth.clientSecret,
       refreshToken,
-      extraParams: {},
+      extraParams: clientAuth.extraParams,
     },
     discovery
   );
@@ -209,6 +223,23 @@ export async function revoke(
     revocationEndpoint: serviceConfiguration.revocationEndpoint,
   };
 
+  if (config.clientAuthInBody) {
+    // revokeAsync always adds a Basic header when a secret is present, so post the form ourselves.
+    const body = new URLSearchParams({
+      token: tokenToRevoke,
+      client_id: config.clientId,
+      ...(config.clientSecret ? { client_secret: config.clientSecret } : {}),
+    });
+    const response = await fetch(serviceConfiguration.revocationEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    });
+    if (!response.ok) {
+      throw new Error(`Revoke failed: ${response.status}`);
+    }
+    return;
+  }
   await AuthSession.revokeAsync(
     {
       clientId: config.clientId,

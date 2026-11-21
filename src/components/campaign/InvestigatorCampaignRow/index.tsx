@@ -238,7 +238,7 @@ export default function InvestigatorCampaignRow({
     );
   }, [deck]);
 
-  const copyDeckId = useCopyAction(`${deck?.id.id}`, t`Deck id copied!`);
+  const copyDeckId = useCopyAction(deck?.id.uuid ?? '', t`Deck id copied!`);
   const deckIdLine = useMemo(() => {
     if (!campaignShowDeckId || !deck || deck.id.local) {
       return null;
@@ -247,7 +247,7 @@ export default function InvestigatorCampaignRow({
       <MiniPickerStyleButton
         title={t`Deck Id`}
         icon="share"
-        valueLabel={`${deck.id.id}`}
+        valueLabel={deck.id.uuid}
         first={!playerLine}
         onPress={copyDeckId}
         editable

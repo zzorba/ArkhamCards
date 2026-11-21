@@ -696,18 +696,18 @@ export function useUploadLocalDeckDialog(
   actions: DeckActions,
   deck?: Deck,
   parsedDeck?: ParsedDeck,
-): [React.ReactNode, () => void] {
+): [React.ReactNode, (deckTarget: 'arkhamdb' | 'arkhambuild') => void] {
   const { userId } = useContext(ArkhamCardsAuthContext);
   const replaceLocalDeckRequest = useUploadLocalDeckRequest();
   const [savingDialog, saving, setSaving] = useBasicDialog(t`Uploading deck`);
   const deckDispatch: DeckDispatch = useDispatch();
-  const doUploadLocalDeck = useMemo(() => throttle((isRetry?: boolean) => {
+  const doUploadLocalDeck = useMemo(() => throttle((deckTarget: 'arkhamdb' | 'arkhambuild') => {
     if (!parsedDeck || !deck || !deck.local) {
       return;
     }
-    if (!saving || isRetry) {
+    if (!saving) {
       setSaving(true);
-      deckDispatch(uploadLocalDeck(userId, actions, replaceLocalDeckRequest, deck)).then(() => {
+      deckDispatch(uploadLocalDeck(userId, actions, replaceLocalDeckRequest, deck, deckTarget)).then(() => {
         setSaving(false);
       }, () => {
         setSaving(false);

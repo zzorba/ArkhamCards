@@ -25,7 +25,7 @@ import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import useCopyDeckDialog from '@components/deck/useCopyDeckDialog';
 import { deleteDeckAction } from '@components/deck/actions';
-import { CampaignId, CardId, DeckId, DEFAULT_SORT, EditDeckState, getDeckId, INVESTIGATOR_PROBLEM, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
+import { CampaignId, CardId, DeckId, DEFAULT_SORT, EditDeckState, getDeckId, INVESTIGATOR_PROBLEM, isArkhamBuildDeck, isArkhamBuildDeckId, TOO_FEW_CARDS, UPDATE_DECK_EDIT } from '@actions/types';
 import Card from '@data/types/Card';
 import DeckViewTab from './DeckViewTab';
 import { PreLoadedDeckNavFooter } from '@components/deck/DeckNavFooter';
@@ -39,6 +39,7 @@ import { useAdjustXpDialog, AlertButton, useAlertDialog, useBasicDialog, useSave
 import { Toggles, useBackButton, useCopyAction, useEffectUpdate, useFlag, useRequiredCards, useSettingValue, useTabooSet, useToggles } from '@components/core/hooks';
 import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
 import { CUSTOM_INVESTIGATOR } from '@app_constants';
+import { arkhamBuildLogin } from '@actions';
 import AppIcon from '@icons/AppIcon';
 import LoadingSpinner from '@components/core/LoadingSpinner';
 import HeaderButton from '@components/core/HeaderButton';
@@ -213,7 +214,7 @@ function DeckDetailView({
   const campaign = useCampaign(campaignId);
   const dispatch = useDispatch();
   const deckDispatch: DeckDispatch = useDispatch();
-  const { userId, arkhamDbUser, arkhamDb } = useContext(ArkhamCardsAuthContext);
+  const { userId, arkhamDbUser, arkhamDb, arkhamBuild: arkhamBuildSignedIn } = useContext(ArkhamCardsAuthContext);
   const singleCardView = useSettingValue('single_card');
   const parsedDeckObj = useParsedDeckWithFetch(id, deckActions, initialMode);
   const [xpAdjustmentDialog, showXpAdjustmentDialog] = useAdjustXpDialog(parsedDeckObj);
@@ -472,7 +473,9 @@ function DeckDetailView({
       if (!deleting && !id.local && !id.serverId) {
         showAlert(
           t`Deck has been deleted`,
-          t`It looks like you deleted this deck from ArkhamDB.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.`,
+          isArkhamBuildDeckId(id) ?
+            t`It looks like you deleted this deck from arkham.build.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.` :
+            t`It looks like you deleted this deck from ArkhamDB.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.`,
           [{
             text: t`Okay`,
             onPress: () => {
@@ -813,24 +816,60 @@ function DeckDetailView({
           t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
           [
             { text: t`Cancel`, style: 'cancel' },
-            { text: t`Upload`, onPress: uploadLocalDeck },
+            { text: t`Upload`, onPress: () => uploadLocalDeck('arkhamdb') },
           ],
         );
       }
     }
   }, [signedIn, login, deck, customContent, hasPendingEdits, showAlert, setFabOpen, setMenuOpen, uploadLocalDeck]);
+  const uploadToArkhamBuild = useCallback(() => {
+    if (!deck) {
+      return;
+    }
+    setFabOpen(false);
+    setMenuOpen(false);
+    if (hasPendingEdits) {
+      showAlert(
+        t`Save Local Changes`,
+        t`Please save any local edits to this deck before sharing to arkham.build`
+      );
+    } else if (deck.nextDeckId || deck.previousDeckId) {
+      showAlert(
+        t`Unsupported Operation`,
+        t`This deck contains next/previous versions with upgrades, so we cannot upload it to arkham.build at this time.\n\nIf you would like to upload it, you can use Clone to upload a clone of the current deck.`
+      );
+    } else if (!arkhamBuildSignedIn) {
+      showAlert(
+        t`Sign in to arkham.build`,
+        t`arkham.build is a deck building site where you can manage and share decks with others, including decks with fan-made content.\n\nSign in to access your decks or share decks you have created with others.`,
+        [
+          { text: t`Cancel`, style: 'cancel' },
+          { text: t`Sign In`, onPress: () => deckDispatch(arkhamBuildLogin()) },
+        ],
+      );
+    } else {
+      showAlert(
+        t`Upload to arkham.build`,
+        t`You can upload your deck to arkham.build to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
+        [
+          { text: t`Cancel`, style: 'cancel' },
+          { text: t`Upload`, onPress: () => uploadLocalDeck('arkhambuild') },
+        ],
+      );
+    }
+  }, [arkhamBuildSignedIn, deckDispatch, deck, hasPendingEdits, showAlert, setFabOpen, setMenuOpen, uploadLocalDeck]);
 
   const viewDeck = useCallback(() => {
-    if (deck && !deck.local) {
+    if (deck && !deck.local && !isArkhamBuildDeck(deck)) {
       Linking.openURL(`${arkhamDbDomain}/deck/view/${deck.id}`);
     }
   }, [deck, arkhamDbDomain]);
 
   const viewArkhamBuild = useCallback(() => {
     if (deck && !deck.local) {
-      Linking.openURL(`https://arkham.build/deck/view/${deck.id}`);
+      Linking.openURL(`https://arkham.build/deck/view/${deckId.uuid}`);
     }
-  }, [deck]);
+  }, [deck, deckId]);
 
   const deleteDeckPressed = useCallback(() => {
     if (!deck) {
@@ -897,14 +936,14 @@ function DeckDetailView({
       showDrawSimulator(navigation, colors, parsedDeck);
     }
   }, [parsedDeck, navigation, colors, setFabOpen, setMenuOpen]);
-  const copyDeckId = useCopyAction(`${deckId.id}`, t`Deck id copied!`);
+  const copyDeckId = useCopyAction(deckId.uuid, t`Deck id copied!`);
   const onCopyDeckId = useCallback(() => {
     setMenuOpen(false);
     copyDeckId();
   }, [setMenuOpen, copyDeckId]);
 
   const copyDeckUrl = useCopyAction(`${arkhamDbDomain}/deck/view/${deckId.id}`, t`Link to deck copied!`);
-  const copyArkhamBuildUrl = useCopyAction(`https://arkham.build/deck/view/${deckId.id}`, t`Link to deck copied!`);
+  const copyArkhamBuildUrl = useCopyAction(`https://arkham.build/deck/view/${deckId.uuid}`, t`Link to deck copied!`);
   const onCopyUrl = useCallback(() => {
     setMenuOpen(false);
     copyDeckUrl();
@@ -949,7 +988,7 @@ function DeckDetailView({
               onLongPress={!deck.local ? onCopyDeckId : undefined}
               numberOfLines={2}
               title={deckEdits.nameChange || deck.name}
-              description={!deck.local ? t`Deck #${deck.id}` : undefined}
+              description={!deck.local ? t`Deck #${deckId.uuid}` : undefined}
             />
             <MenuButton
               title={t`Taboo`}
@@ -1073,7 +1112,15 @@ function DeckDetailView({
             last={!editable}
           />
         ) }
-        { !deck.local && (
+        { deck.local && deck.investigator_code !== CUSTOM_INVESTIGATOR && editable && (
+          <MenuButton
+            icon="world"
+            onPress={uploadToArkhamBuild}
+            title={t`Upload to arkham.build`}
+            numberOfLines={2}
+          />
+        ) }
+        { !deck.local && !isArkhamBuildDeck(deck) && (
           <MenuButton
             icon="world"
             title={t`View on ArkhamDB`}
@@ -1103,8 +1150,8 @@ function DeckDetailView({
         <View style={{ height: safeArea.bottom + s }} />
       </ScrollView>
     );
-  }, [safeArea, backgroundStyle, lang, onAddCardsPressed, editable, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
-    showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, showDescription,
+  }, [safeArea, backgroundStyle, lang, onAddCardsPressed, editable, deck, deckId.uuid, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
+    showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB, uploadToArkhamBuild, showDescription,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditNameDialog, showXpAdjustmentDialog, showTabooPicker,
     onEditSpecialPressed, onChecklistPressed, onDraftCards, onCopyDeckId, onCopyUrl, tagString,
     onShowTagsDialog, onCopyArkhamBuild, viewArkhamBuild,

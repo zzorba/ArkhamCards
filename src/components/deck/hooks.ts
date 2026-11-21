@@ -219,6 +219,8 @@ export interface ParsedDeckResults {
   dirty: RefObject<boolean>;
 }
 
+const EMPTY_CARD_CODES: string[] = [];
+
 function useParsedDeckHelper(
   id: DeckId | undefined,
   deck: LatestDeckT | undefined,
@@ -232,8 +234,8 @@ function useParsedDeckHelper(
     initialMode?: 'upgrade' | 'edit';
   } = {}
 ): ParsedDeckResults {
-  // Ensure custom cards from arkham.build decks are in the database
-  useArkhamBuildCustomCards(deck?.deck);
+  // Custom cards from arkham.build decks must be in the database before we look up cards.
+  const customCardCodes = useArkhamBuildCustomCards(deck?.deck);
   const dirtyRef = useRef<boolean>(true);
   const [deckEdits, deckEditsRef] = useDeckEdits(
     id,
@@ -279,12 +281,22 @@ function useParsedDeckHelper(
     ...keys(deck?.previousDeck?.ignoreDeckLimitSlots || {}),
     ...ravenQuillChoices,
   ]), [deckEdits?.side, deckEdits?.slots, deckEdits?.ignoreDeckLimitSlots, deck, ravenQuillChoices, extraDeckCodes, alternateBack, alternateFront]);
-  const [cards, cardsLoading, cardsMissing] = usePlayerCardsFunc(
-    () => allCardCodes,
-    [allCardCodes],
+  const [loadedCards, cardsLoading, cardsMissing] = usePlayerCardsFunc(
+    () => customCardCodes ? allCardCodes : EMPTY_CARD_CODES,
+    [allCardCodes, customCardCodes],
     false,
     tabooSetId,
   );
+  // Until the custom cards have been written and then fetched, treat cards as still loading.
+  const cards = useMemo(() => {
+    if (!customCardCodes || !loadedCards) {
+      return undefined;
+    }
+    if (find(customCardCodes, code => !loadedCards[code] && allCardCodes.indexOf(code) !== -1)) {
+      return undefined;
+    }
+    return loadedCards;
+  }, [customCardCodes, loadedCards, allCardCodes]);
   const visible = useComponentVisible();
   const initialized = useRef(false);
   const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>(

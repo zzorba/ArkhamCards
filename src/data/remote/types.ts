@@ -12,6 +12,7 @@ import { SimpleUser } from './hooks';
 import ChaosBagResultsT from '@data/interfaces/ChaosBagResultsT';
 import { resolveCampaignInvestigators } from '../campaignHelper';
 import InvestigatorSet from '../types/InvestigatorSet';
+import { registerFanMadeContent } from '@data/fanMadeContent';
 
 const EMPTY_TRAUMA = {};
 
@@ -396,6 +397,8 @@ export class MiniDeckRemote implements MiniDeckT {
 
   constructor(deck: LatestDeckFragment) {
     this.id = fragmentToDeckId(deck);
+    // Other players' decks may use fan-made cards this device has never seen.
+    registerFanMadeContent(deck.content?.fan_made_content);
     this.alternate_investigator = deck.content?.meta?.alternate_front ?? undefined;
     this.investigator = deck.investigator;
     this.name = deck.content?.name || '';

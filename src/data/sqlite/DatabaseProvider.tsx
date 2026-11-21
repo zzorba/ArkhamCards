@@ -15,6 +15,11 @@ interface Props {
 let theDatabase: Database | null = null;
 let databaseInitializing = false;
 
+// For code outside of React (thunks) that needs the card database once it is ready.
+export function getDatabase(): Database | null {
+  return theDatabase;
+}
+
 function DatabaseProvider({ children }: Props) {
   const schemaVersion = useSelector((state: AppState) => state.cards.schemaVersion);
   const langChoice = useSelector((state: AppState) => getLangChoice(state));

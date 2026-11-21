@@ -2,7 +2,7 @@ import { useContext, useMemo, useEffect, useCallback, useRef } from 'react';
 import { flatMap, forEach, map, omit } from 'lodash';
 
 import { useDebounce } from 'use-debounce';
-import { CampaignId, DeckId, UploadedCampaignId, GroupedUploadedDecks } from '@actions/types';
+import { CampaignId, DeckId, UploadedCampaignId, GroupedUploadedDecks, isArkhamBuildDeckId, isArkhamDbDeckId } from '@actions/types';
 import {
   MiniCampaignFragment,
   useGetProfileQuery,
@@ -17,6 +17,7 @@ import {
   useGetLatestDeckQuery,
   useGetLatestLocalDeckQuery,
   useGetLatestArkhamDbDeckQuery,
+  useGetLatestArkhamBuildDeckQuery,
   useGetChaosBagResultsQuery,
   ChaosBagResultsDocument,
   useGetMyDecksQuery,
@@ -179,22 +180,30 @@ export function useCampaignDeckFromRemote(id: DeckId | undefined, campaignId: Ca
   const { data: arkhamDbData } = useGetLatestArkhamDbDeckQuery({
     variables: {
       campaign_id: campaignId?.serverId || 0,
-      arkhamdb_id: (id && !id.local && id.id !== undefined) ? id.id : 0,
+      arkhamdb_id: (id && isArkhamDbDeckId(id)) ? id.id : 0,
     },
     fetchPolicy: 'cache-and-network',
-    skip: !campaignId?.serverId || !!(id && !id.local),
+    skip: !campaignId?.serverId || !id || !isArkhamDbDeckId(id),
+  });
+  const { data: arkhamBuildData } = useGetLatestArkhamBuildDeckQuery({
+    variables: {
+      campaign_id: campaignId?.serverId || 0,
+      arkhambuild_id: (id && isArkhamBuildDeckId(id)) ? id.arkhambuild_id : '',
+    },
+    fetchPolicy: 'cache-and-network',
+    skip: !campaignId?.serverId || !id || !isArkhamBuildDeckId(id),
   });
 
   const result = useMemo(() => {
     if (!id || !campaignId?.serverId) {
       return undefined;
     }
-    const data = id.local ? localData : arkhamDbData;
+    const data = id.local ? localData : (isArkhamBuildDeckId(id) ? arkhamBuildData : arkhamDbData);
     if (!data?.campaign_deck?.length) {
       return undefined;
     }
     return new LatestDeckRemote(data.campaign_deck[0]);
-  }, [localData, arkhamDbData, id, campaignId]);
+  }, [localData, arkhamDbData, arkhamBuildData, id, campaignId]);
   return useCachedValue(result);
 }
 
@@ -502,7 +511,8 @@ export function useLatestDeckRemote(deckId: DeckId, campaign_id: CampaignId | un
       __typename: 'campaign_deck',
       campaign_id: campaign_id?.serverId || 0,
       local_uuid: deckId.local ? deckId.uuid : null,
-      arkhamdb_id: deckId.local ? null : deckId.id,
+      arkhamdb_id: isArkhamDbDeckId(deckId) ? deckId.id : null,
+      arkhambuild_id: isArkhamBuildDeckId(deckId) ? deckId.arkhambuild_id : null,
     }),
     returnPartialData: true,
   }, true);

@@ -11,6 +11,7 @@ import {
   DeckProblem,
   EditDeckState,
   ParsedDeck,
+  isArkhamBuildDeck,
 } from '@actions/types';
 import COLORS from '@styles/colors';
 import DeckProgressComponent from '../DeckProgressComponent';
@@ -191,7 +192,7 @@ export default function DeckViewTab(props: Props) {
           firstElement={hasXpButton && !!changes && !!xpLabel ? renderXpButton : undefined}
           hasPreviousDeck={!!deck.previousDeckId}
           parallelInvestigators={parallelInvestigators}
-          isArkhamDbDeck={!deck.local}
+          isArkhamDbDeck={!deck.local && !isArkhamBuildDeck(deck)}
         />
       </View>
     );

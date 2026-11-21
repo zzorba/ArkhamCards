@@ -1,45 +1,48 @@
-import { useContext, useEffect, useRef } from 'react';
-import { forEach } from 'lodash';
+import { useContext, useEffect, useMemo, useState } from 'react';
+import { keys } from 'lodash';
 
-import DatabaseContext from '@data/sqlite/DatabaseContext';
-import { Deck, isArkhamBuildDeck } from '@actions/types';
-import { ensureArkhamBuildCustomCards } from '@data/arkhamBuildCards';
+import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
+import { Deck } from '@actions/types';
+import { registerFanMadeContent } from '@data/fanMadeContent';
+
+const EMPTY_CODES: string[] = [];
 
 /**
- * Hook that ensures custom cards from an arkham.build deck's fan_made_content
- * metadata are inserted into the local database so they can be looked up
- * by code when rendering the deck.
+ * Makes sure the fan-made cards a deck carries (arkham.build content, local
+ * copies of it, other players' campaign decks) are in the card database.
  *
- * Should be called early in any component that displays an arkham.build deck.
+ * Returns the custom card codes once they have been written, or undefined while
+ * the write is in flight. Callers should hold off on loading the deck's cards
+ * until this resolves, otherwise the lookup can race the insert.
  */
-export default function useArkhamBuildCustomCards(deck: Deck | undefined): void {
-  const { db } = useContext(DatabaseContext);
-  const processedRef = useRef<Set<string>>(new Set());
+export default function useArkhamBuildCustomCards(deck: Deck | undefined): string[] | undefined {
+  const { storePlayerCards } = useContext(PlayerCardContext);
+  const fanMadeContent = deck?.fan_made_content;
+  const codes = useMemo(
+    () => fanMadeContent ? keys(fanMadeContent.cards).sort() : EMPTY_CODES,
+    [fanMadeContent]
+  );
+  const contentKey = codes.join(',');
+  const [writtenKey, setWrittenKey] = useState<string>();
 
   useEffect(() => {
-    if (!deck || !isArkhamBuildDeck(deck)) {
+    if (!fanMadeContent || !codes.length) {
       return;
     }
-    const meta = deck.meta;
-    if (!meta) return;
-
-    const fanMadeContent = typeof meta === 'string'
-      ? (() => { try { return JSON.parse(meta).fan_made_content; } catch { return undefined; } })()
-      : meta.fan_made_content;
-
-    if (!fanMadeContent?.cards || Object.keys(fanMadeContent.cards).length === 0) {
-      return;
-    }
-
-    // Avoid re-processing the same content
-    const contentKey = Object.keys(fanMadeContent.cards).sort().join(',');
-    if (processedRef.current.has(contentKey)) {
-      return;
-    }
-    processedRef.current.add(contentKey);
-
-    ensureArkhamBuildCustomCards(db, meta, deck.taboo_id || 0).catch(e => {
-      console.log('[arkham.build] Failed to insert custom cards:', e);
+    let canceled = false;
+    registerFanMadeContent(fanMadeContent).then(cards => {
+      storePlayerCards(cards);
+      if (!canceled) {
+        setWrittenKey(contentKey);
+      }
     });
-  }, [db, deck]);
+    return () => {
+      canceled = true;
+    };
+  }, [storePlayerCards, fanMadeContent, codes, contentKey]);
+
+  if (!codes.length) {
+    return EMPTY_CODES;
+  }
+  return writtenKey === contentKey ? codes : undefined;
 }

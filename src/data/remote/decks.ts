@@ -7,6 +7,7 @@ import { ThunkAction } from 'redux-thunk';
 import { AppState, makeDeckSelector } from '@reducers';
 import {
   ArkhamDbDeck,
+  ArkhamBuildDeck,
   Deck,
   DeckId,
   UploadedCampaignId,
@@ -111,12 +112,29 @@ export function uploadCampaignDeckHelper(
   };
 }
 
-export async function syncCampaignDecksFromArkhamDB(
-  decks: ArkhamDbDeck[],
+type RemoteDeck = ArkhamDbDeck | ArkhamBuildDeck;
+
+// The account that owns a remote deck, on whichever service it lives.
+function remoteDeckOwner(deckId: DeckId): string | undefined {
+  if (deckId.local) {
+    return undefined;
+  }
+  if (isArkhamBuildDeckId(deckId)) {
+    return `arkhambuild:${deckId.arkhambuild_user}`;
+  }
+  return `arkhamdb:${deckId.arkhamdb_user}`;
+}
+
+/**
+ * Push remote deck changes (from ArkhamDB or arkham.build) to the campaigns they are part of.
+ * All of the decks should come from a single account on a single service.
+ */
+export async function syncCampaignDecks(
+  decks: RemoteDeck[],
   uploadedDecks: GroupedUploadedDecks,
   actions: DeckActions
 ) {
-  const arkhamDbDecksById: { [uuid: string]: ArkhamDbDeck } = {};
+  const arkhamDbDecksById: { [uuid: string]: RemoteDeck } = {};
   const foundDecks: { [uuid: string]: boolean } = {};
   forEach(decks, d => {
     const deckId = getDeckId(d);
@@ -137,7 +155,7 @@ export async function syncCampaignDecksFromArkhamDB(
       // Not uploaded to ArkhamDB, so we aren't interested in this one, apparently.
       continue;
     }
-    let deck: ArkhamDbDeck = baseDeck;
+    let deck: RemoteDeck = baseDeck;
     while (true) {
       const deckId = getDeckId(deck);
       const uploadedDeck = uploadedDecks[deckId.uuid];
@@ -152,9 +170,9 @@ export async function syncCampaignDecksFromArkhamDB(
           // console.log(`Check next deck: ${deck.nextDeckId}`);
           // It has a next deck, let's check if its properly aligned.
           const uploadedNextDeck = uploadedDecks[deck.nextDeckId.uuid];
-          if (uploadedNextDeck && (uploadedNextDeck.deckId.local || deck.nextDeckId.id !== uploadedNextDeck.deckId.id)) {
+          if (uploadedNextDeck && (uploadedNextDeck.deckId.local || deck.nextDeckId.uuid !== uploadedNextDeck.deckId.uuid)) {
             // console.log(`Next deck seems to be wrong, deleting it so it can be recreated later.`);
-            // It already exists, but has the wrong arkhamDbID -- so we delete it, and it will be recreated later (in the loop);
+            // It already exists, but has the wrong remote id -- so we delete it, and it will be recreated later (in the loop);
             await Promise.all(map(uploadedNextDeck.campaignId, campaignId => actions.deleteDeck(uploadedNextDeck.deckId, campaignId, false)));
             delete uploadedDecks[deck.nextDeckId.uuid];
           }
@@ -166,7 +184,7 @@ export async function syncCampaignDecksFromArkhamDB(
         // So we need to create a 'new' one in the chain.
         await Promise.all(map(baseUploadedDecks.campaignId, campaignId => actions.createNextDeck(deck, campaignId, previousDeckId)))
       }
-      const nextDeck: ArkhamDbDeck | undefined = deck.nextDeckId && arkhamDbDecksById[deck.nextDeckId.uuid];
+      const nextDeck: RemoteDeck | undefined = deck.nextDeckId && arkhamDbDecksById[deck.nextDeckId.uuid];
       if (!nextDeck) {
         // console.log(`Done with deck sync: ${deck.investigator_code}.`);
         // Job's done
@@ -179,18 +197,18 @@ export async function syncCampaignDecksFromArkhamDB(
 
   // Now to handle the deletion for decks we did *not* find.
   if (decks.length) {
-    // If there are zero ArkhamDB decks, we don't delete since we *aren't sure* which are ours.
-    const arkhamDbUser = decks[0].user_id;
+    // If there are zero remote decks, we don't delete since we *aren't sure* which are ours.
+    const owner = remoteDeckOwner(getDeckId(decks[0]));
     const uuids = keys(uploadedDecks);
     for (let i = 0; i < uuids.length; i++) {
       const uuid = uuids[i];
       const uploadedDeck = uploadedDecks[uuid];
       // We need to delete the deck if all of the following are true:
       // 1) a remote deck
-      // 2) from the same user
+      // 2) from the same user on the same service
       // 3) that we didn't find in this payload
-      if (uploadedDeck && !uploadedDeck.deckId.local &&
-        uploadedDeck.deckId.arkhamdb_user === arkhamDbUser &&
+      if (uploadedDeck && !uploadedDeck.deckId.local && owner &&
+        remoteDeckOwner(uploadedDeck.deckId) === owner &&
         !foundDecks[uploadedDeck.deckId.uuid]
       ) {
         await Promise.all(map(uploadedDeck.campaignId, campaignId => actions.deleteDeck(uploadedDeck.deckId, campaignId, false)));
@@ -317,6 +335,7 @@ function getPreviousDeck(
   local_uuid: string | undefined,
   arkhamdb_id: number | undefined,
   arkhamdb_user: number | undefined,
+  arkhambuild_id?: string,
 ): LatestDeckFragment | null {
   const currentDeck = cache.readFragment<LatestDeckFragment>({
     fragment: LatestDeckFragmentDoc,
@@ -326,6 +345,7 @@ function getPreviousDeck(
       campaign_id,
       local_uuid: local_uuid || null,
       arkhamdb_id: arkhamdb_id || null,
+      arkhambuild_id: arkhambuild_id || null,
       arkhamdb_user: arkhamdb_user || null,
     }),
   }, true);
@@ -340,6 +360,7 @@ function getPreviousDeck(
       campaign_id,
       local_uuid: currentDeck.previous_deck.local_uuid || null,
       arkhamdb_id: currentDeck.previous_deck.arkhamdb_id || null,
+      arkhambuild_id: currentDeck.previous_deck.arkhambuild_id || null,
       arkhamdb_user: currentDeck.previous_deck.arkhamdb_user || null,
     }),
   }, true);
@@ -532,7 +553,14 @@ export function useDeckActions(): DeckActions {
                 arkhamdb_id: null,
                 local_uuid: null,
                 owner_id,
-                previous_deck: null,
+                previous_deck: deckId.serverId ? getPreviousDeck(
+                  cache.current,
+                  campaignId.serverId,
+                  undefined,
+                  undefined,
+                  undefined,
+                  deckId.arkhambuild_id,
+                ) : null,
               },
             ],
           },

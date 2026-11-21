@@ -17,6 +17,7 @@ import {
   DELETE_CAMPAIGN,
   SET_CAMPAIGN_NOTES,
   REPLACE_LOCAL_DECK,
+  getDeckId,
   NEW_CHAOS_BAG_RESULTS,
   ENSURE_UUID,
   Campaign,
@@ -484,12 +485,7 @@ export default function(
           ...campaign,
           deckIds: map(campaign.deckIds, deckId => {
             if (deckId.uuid === action.localId.uuid) {
-              return {
-                id: action.deck.id,
-                arkhamdb_user: action.deck.user_id,
-                local: false,
-                uuid: `${action.deck.id}`,
-              };
+              return getDeckId(action.deck);
             }
             return deckId;
           }),

@@ -22,7 +22,7 @@ export const GRAPHQL_SERVER = 'gapi.arkhamcards.com/v1';
 
 const typePolicies: TypedTypePolicies = {
   campaign_deck: {
-    keyFields: ['campaign_id', 'arkhamdb_id', 'local_uuid'],
+    keyFields: ['campaign_id', 'arkhamdb_id', 'arkhambuild_id', 'local_uuid'],
     fields: {
       campaign: {
         keyArgs: ['id', 'uuid'],

@@ -25,6 +25,7 @@ import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { useCardMap } from '@components/card/useCardList';
 import { combineQueries, INVESTIGATOR_CARDS_QUERY, NO_CUSTOM_CARDS_QUERY, where } from '@data/sqlite/query';
 import { PlayerCardContext } from '@data/sqlite/PlayerCardContext';
+import { useFanMadeContentVersion } from '@data/fanMadeContent';
 import { setMiscSetting } from '@components/settings/actions';
 import specialCards from '@data/deck/specialCards';
 import Clipboard from '@react-native-clipboard/clipboard';
@@ -557,6 +558,8 @@ export function usePlayerCards(
   const [loading, setLoading] = useState(true);
   const [cardsMissing, setCardsMissing] = useState(false);
   const { getPlayerCards, getExistingCards } = useContext(PlayerCardContext);
+  // Bumps when fan-made cards are written, so a lookup that missed them runs again.
+  const fanMadeVersion = useFanMadeContentVersion();
   const previousTabooSetId = useRef<number | undefined>(tabooSetId);
   const currentCards = useRef<CardsMap>(cards ?? {});
   const previousCodes = useRef<string[]>([]);
@@ -618,7 +621,7 @@ export function usePlayerCards(
     return () => {
       canceled = true;
     };
-  }, [tabooSetId, codes, store, getExistingCards, getPlayerCards]);
+  }, [tabooSetId, codes, store, getExistingCards, getPlayerCards, fanMadeVersion]);
   return [cards, loading, cardsMissing];
 }
 

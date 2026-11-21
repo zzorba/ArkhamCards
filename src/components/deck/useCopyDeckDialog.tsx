@@ -7,11 +7,11 @@ import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
 import { TouchableOpacity } from '@components/core/Touchables';
-import { saveClonedDeck } from './actions';
+import { DeckTarget, saveClonedDeck } from './actions';
 import { showDeckModal } from '@components/nav/helper';
 import useNetworkStatus from '@components/core/useNetworkStatus';
-import { login } from '@actions';
-import { Deck, DeckId, getDeckId } from '@actions/types';
+import { arkhamBuildLogin, login } from '@actions';
+import { Deck, DeckId, getDeckId, isArkhamBuildDeck } from '@actions/types';
 import NewDialog from '@components/core/NewDialog';
 import { parseBasicDeck } from '@lib/parseDeck';
 import { makeBaseDeckSelector, makeLatestDeckSelector, AppState } from '@reducers';
@@ -69,7 +69,7 @@ type DeckDispatch = ThunkDispatch<AppState, unknown, Action<string>>;
 // TODO: remote decks
 export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions }: Props): [React.ReactNode, () => void] {
   const { colors, typography } = useContext(StyleContext);
-  const { userId } = useContext(ArkhamCardsAuthContext);
+  const { userId, arkhamBuild: arkhamBuildSignedIn } = useContext(ArkhamCardsAuthContext);
   const [{ isConnected, networkType }, refreshNetworkStatus] = useNetworkStatus();
   const dispatch: DeckDispatch = useDispatch();
   const deck = useDeck(deckId);
@@ -82,9 +82,17 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
   const isCustomContent = useMemo(() =>!!(
     deck?.deck.investigator_code === CUSTOM_INVESTIGATOR ||
     deck?.deck.investigator_code.startsWith('z') ||
+    keys(deck?.deck.fan_made_content?.cards).length ||
     (deck && find([...keys(deck.deck.slots), ...keys(deck.deck.sideSlots), ...keys(deck.deck.ignoreDeckLimitSlots)], code => code.startsWith('z')))
   ), [deck]);
-  const [offlineDeck, setOfflineDeck] = useState(!!(deck && deck.deck.local));
+  // Fan-made content (ours or arkham.build's) can go to arkham.build, but not to ArkhamDB.
+  const arkhamBuildEligible = deck?.deck.investigator_code !== CUSTOM_INVESTIGATOR;
+  const [deckTarget, setDeckTarget] = useState<DeckTarget>(() => {
+    if (!deck || deck.deck.local) {
+      return 'local';
+    }
+    return isArkhamBuildDeck(deck.deck) ? 'arkhambuild' : 'arkhamdb';
+  });
   const [selectedDeckId, setSelectedDeckId] = useState(deckId);
   const [error, setError] = useState<string | undefined>();
 
@@ -99,12 +107,31 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
       resetForm();
     }
   }, [deckId]);
-  const onDeckTypeChange = useCallback((value: boolean) => {
+  const onArkhamDbChange = useCallback((value: boolean) => {
     if (value && !signedIn) {
       dispatch(login());
     }
-    setOfflineDeck(!value);
-  }, [dispatch, signedIn, setOfflineDeck]);
+    setDeckTarget(value ? 'arkhamdb' : 'local');
+  }, [dispatch, signedIn]);
+  const onArkhamBuildChange = useCallback((value: boolean) => {
+    if (value && !arkhamBuildSignedIn) {
+      dispatch(arkhamBuildLogin());
+    }
+    setDeckTarget(value ? 'arkhambuild' : 'local');
+  }, [dispatch, arkhamBuildSignedIn]);
+  const isOffline = !isConnected || networkType === NetInfoStateType.none;
+  const effectiveTarget: DeckTarget = useMemo(() => {
+    if (isOffline) {
+      return 'local';
+    }
+    if (deckTarget === 'arkhambuild') {
+      return arkhamBuildSignedIn && arkhamBuildEligible ? 'arkhambuild' : 'local';
+    }
+    if (deckTarget === 'arkhamdb') {
+      return signedIn && !isCustomContent ? 'arkhamdb' : 'local';
+    }
+    return 'local';
+  }, [isOffline, deckTarget, arkhamBuildSignedIn, arkhamBuildEligible, signedIn, isCustomContent]);
 
   const selectedDeck: Deck | undefined = useMemo(() => {
     if (baseDeck && getDeckId(baseDeck).uuid === selectedDeckId?.uuid) {
@@ -129,8 +156,7 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
     }
     if (investigator && (!saving || isRetry)) {
       setSaving(true);
-      const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none || isCustomContent);
-      dispatch(saveClonedDeck(userId, actions, local, selectedDeck, deckName || t`New Deck`)).then(
+      dispatch(saveClonedDeck(userId, actions, effectiveTarget, selectedDeck, deckName || t`New Deck`)).then(
         showNewDeck,
         (err) => {
           setSaving(false);
@@ -138,8 +164,8 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
         }
       );
     }
-  }, [signedIn, actions, isConnected, networkType, userId, isCustomContent,
-    deckName, offlineDeck, selectedDeck, saving, investigator,
+  }, [actions, userId, effectiveTarget,
+    deckName, selectedDeck, saving, investigator,
     dispatch, setSaving, setError, showNewDeck]);
   const onOkayPress = useMemo(() => throttle(() => saveCopy(false), 200), [saveCopy]);
 
@@ -242,15 +268,29 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
         </View>
         { deckSelector }
         <NewDialog.SectionHeader text={t`Deck Type`} paddingTop={s} />
+        { arkhamBuildEligible && (
+          <NewDialog.ContentLine
+            icon="world"
+            text={t`Create on arkham.build`}
+            paddingBottom={s}
+            control={
+              <ArkhamSwitch
+                value={effectiveTarget === 'arkhambuild'}
+                disabled={isOffline}
+                onValueChange={onArkhamBuildChange}
+              />
+            }
+          />
+        ) }
         <NewDialog.ContentLine
           icon="arkhamdb"
           text={t`Create on ArkhamDB`}
           paddingBottom={s}
           control={
             <ArkhamSwitch
-              value={!offlineDeck && !!signedIn && isConnected && networkType !== NetInfoStateType.none && !isCustomContent}
-              disabled={isCustomContent || !isConnected || networkType === NetInfoStateType.none}
-              onValueChange={onDeckTypeChange}
+              value={effectiveTarget === 'arkhamdb'}
+              disabled={isCustomContent || isOffline}
+              onValueChange={onArkhamDbChange}
             />
           }
         />
@@ -262,7 +302,7 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
             paddingBottom={s}
           />
         ) }
-        { (!isConnected || networkType === NetInfoStateType.none) && (
+        { isOffline && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
             <NewDialog.ContentLine
               icon="error"
@@ -277,7 +317,7 @@ export default function useCopyDeckDialog({ campaign, deckId, signedIn, actions 
         ) }
       </>
     );
-  }, [signedIn, isCustomContent, networkType, isConnected, colors, typography, saving, deckName, offlineDeck, error, onDeckNameChange, refreshNetworkStatus, onDeckTypeChange, deckSelector]);
+  }, [isCustomContent, isOffline, arkhamBuildEligible, effectiveTarget, colors, typography, saving, deckName, error, onDeckNameChange, refreshNetworkStatus, onArkhamDbChange, onArkhamBuildChange, deckSelector]);
   const { dialog, showDialog } = useDialog({
     title: t`Clone deck`,
     content: formContent,

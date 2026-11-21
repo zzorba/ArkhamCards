@@ -35,7 +35,7 @@ import {
 } from './local/hooks';
 import LatestDeckT from './interfaces/LatestDeckT';
 import { refreshMyDecks, refreshMyArkhamBuildDecks } from '@actions';
-import { DeckActions, syncCampaignDecksFromArkhamDB } from './remote/decks';
+import { DeckActions, syncCampaignDecks } from './remote/decks';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import MiniDeckT from './interfaces/MiniDeckT';
 import { ThunkDispatch } from 'redux-thunk';
@@ -318,18 +318,25 @@ export function useMyDecks(
         const remoteDecksPromise = userId && refreshRemoteDecks();
         const arkhamDbDeckPromise =
           arkhamDb && dispatch(refreshMyDecks(cacheArkhamDb));
-        if (arkhamBuild) {
-          dispatch(refreshMyArkhamBuildDecks());
-        }
-        if (remoteDecksPromise && arkhamDbDeckPromise) {
+        const arkhamBuildDeckPromise =
+          arkhamBuild && dispatch(refreshMyArkhamBuildDecks());
+        if (remoteDecksPromise && (arkhamDbDeckPromise || arkhamBuildDeckPromise)) {
           try {
             const remoteDecks = await remoteDecksPromise;
-            const arkhamDbDecks = await arkhamDbDeckPromise;
-            syncCampaignDecksFromArkhamDB(
-              arkhamDbDecks,
-              remoteDecks,
-              deckActions
-            );
+            if (arkhamDbDeckPromise) {
+              await syncCampaignDecks(
+                await arkhamDbDeckPromise,
+                remoteDecks,
+                deckActions
+              );
+            }
+            if (arkhamBuildDeckPromise) {
+              await syncCampaignDecks(
+                await arkhamBuildDeckPromise,
+                remoteDecks,
+                deckActions
+              );
+            }
           } catch (error) {
             console.log('Could not sync decks at the moment');
             console.log(error);
@@ -343,17 +350,9 @@ export function useMyDecks(
     if (!userId) {
       return myDecks;
     }
-    const remoteDeckLocalIds = new Set(
-      flatMap(remoteMyDecks, (d) => (d.id.local ? d.id.uuid : []))
-    );
-    const remoteDeckArkhamDbIds = new Set(
-      flatMap(remoteMyDecks, (d) => (d.id.local ? [] : d.id.id))
-    );
-    const filteredMyDecks = filter(myDecks, (d) => {
-      return !(d.id.local
-        ? remoteDeckLocalIds.has(d.id.uuid)
-        : remoteDeckArkhamDbIds.has(d.id.id));
-    });
+    // DeckId.uuid is the local uuid, the ArkhamDB id or the arkham.build id.
+    const remoteDeckIds = new Set(map(remoteMyDecks, (d) => d.id.uuid));
+    const filteredMyDecks = filter(myDecks, (d) => !remoteDeckIds.has(d.id.uuid));
     return reverse(
       sortBy([...filteredMyDecks, ...remoteMyDecks], (r) => r.date_update)
     );

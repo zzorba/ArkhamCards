@@ -1,7 +1,7 @@
 import { useCallback, useContext, useMemo, useState } from 'react';
 import { find, forEach, keys, debounce } from 'lodash';
 
-import { Deck, Slots } from '@actions/types';
+import { Deck, Slots, getDeckId, isArkhamDbDeckId } from '@actions/types';
 import { saveDeckChanges, SaveDeckChanges, saveDeckUpgrade } from './actions';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import { ThunkDispatch } from 'redux-thunk';
@@ -66,7 +66,7 @@ export default function useDeckUpgradeAction<T = undefined>(
     if (hasStoryChange) {
       const newSlots: Slots = { ...upgradedDeck.slots };
       forEach(storyCounts, (count, code) => {
-        if (code.startsWith('z') && !upgradedDeck.local) {
+        if (code.startsWith('z') && isArkhamDbDeckId(getDeckId(upgradedDeck))) {
           return;
         }
         if (count > 0) {
@@ -77,7 +77,7 @@ export default function useDeckUpgradeAction<T = undefined>(
       });
       const newIgnoreSlots: Slots = { ...upgradedDeck.ignoreDeckLimitSlots };
       forEach(ignoreStoryCounts, (count, code) => {
-        if (code.startsWith('z') && !upgradedDeck.local) {
+        if (code.startsWith('z') && isArkhamDbDeckId(getDeckId(upgradedDeck))) {
           return;
         }
         if (count > 0){
@@ -151,7 +151,8 @@ export default function useDeckUpgradeAction<T = undefined>(
         setTimeout(() => {
           const slots: Slots = { ...deck.deck.slots };
           forEach(storyAssetDeltas, (delta, code) => {
-            if (code.startsWith('z') && !deck.id.local) {
+            // ArkhamDB doesn't know our custom cards; local and arkham.build decks can hold them.
+            if (code.startsWith('z') && isArkhamDbDeckId(deck.id)) {
               return;
             }
             slots[code] = (slots[code] || 0) + delta;

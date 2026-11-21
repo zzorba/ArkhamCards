@@ -107,11 +107,18 @@ function NewDeckOptionsDialog({
   const [investigatorId, setSelectedInvestigatorId] = useState<string>(originalInvestigatorId);
 
   const isOffline = !isConnected || networkType === NetInfoStateType.none;
+  // Our own custom investigators are sent to arkham.build as fan-made content (by uuid).
+  const arkhamBuildEligible = investigatorId !== CUSTOM_INVESTIGATOR;
   const [deckTarget, setDeckTarget] = useState<DeckTarget>(() => {
-    const custom = investigatorId === CUSTOM_INVESTIGATOR || investigatorId.startsWith('z');
-    if (custom || isOffline) return 'local';
-    if (arkhamBuildSignedIn) return 'arkhambuild';
-    if (signedIn) return 'arkhamdb';
+    if (isOffline) {
+      return 'local';
+    }
+    if (arkhamBuildSignedIn && arkhamBuildEligible) {
+      return 'arkhambuild';
+    }
+    if (signedIn && arkhamBuildEligible) {
+      return 'arkhamdb';
+    }
     return 'local';
   });
   const [optionSelected, setOptionSelected] = useState<boolean[]>([true]);
@@ -413,7 +420,13 @@ function NewDeckOptionsDialog({
   const createDeck = useCallback((isRetry?: boolean) => {
     const deckName = deckNameChange || defaultDeckName;
     if (investigator && (!saving || isRetry)) {
-      const effectiveTarget: DeckTarget = (isCustomContent || isOffline) ? 'local' : deckTarget;
+      let effectiveTarget: DeckTarget = deckTarget;
+      if (isOffline) {
+        effectiveTarget = 'local';
+      } else if (isCustomContent) {
+        // ArkhamDB never accepts custom content.
+        effectiveTarget = (deckTarget === 'arkhambuild' && arkhamBuildEligible) ? 'arkhambuild' : 'local';
+      }
       const slots = {
         ...(specialDeckMode === 'chaos' ? chaosSlots : {}),
         ...requiredSlots,
@@ -438,7 +451,7 @@ function NewDeckOptionsDialog({
         );
       }, 0);
     }
-  }, [dispatch, showNewDeck, deckActions, userId, isCustomContent, isOffline,
+  }, [dispatch, showNewDeck, deckActions, userId, isCustomContent, isOffline, arkhamBuildEligible,
     chaosSlots,
     requiredSlots, meta, deckTarget, saving, specialDeckMode, tabooSetId, deckNameChange, investigator, defaultDeckName]);
 
@@ -611,9 +624,9 @@ function NewDeckOptionsDialog({
             editable
           />
         </View>
-        { !isCustomContent && (
+        { arkhamBuildEligible && (
           <View style={[space.paddingSideS, space.paddingBottomS]}>
-            { (arkhamBuildSignedIn || signedIn) ? (
+            { (arkhamBuildSignedIn || (signedIn && !isCustomContent)) ? (
               <>
                 { arkhamBuildSignedIn && (
                   <DeckCheckboxButton
@@ -621,17 +634,17 @@ function NewDeckOptionsDialog({
                     title={t`Create on arkham.build`}
                     value={deckTarget === 'arkhambuild'}
                     disabled={isOffline}
-                    onValueChange={() => setDeckTarget('arkhambuild')}
-                    last={!signedIn}
+                    onValueChange={value => setDeckTarget(value ? 'arkhambuild' : 'local')}
+                    last={!signedIn || isCustomContent}
                   />
                 ) }
-                { signedIn && (
+                { signedIn && !isCustomContent && (
                   <DeckCheckboxButton
                     icon="arkhamdb"
                     title={t`Create on ArkhamDB`}
                     value={deckTarget === 'arkhamdb'}
                     disabled={isOffline}
-                    onValueChange={() => setDeckTarget('arkhamdb')}
+                    onValueChange={value => setDeckTarget(value ? 'arkhamdb' : 'local')}
                     last
                   />
                 ) }
@@ -645,14 +658,16 @@ function NewDeckOptionsDialog({
                   onPress={() => dispatch(arkhamBuildLogin())}
                   color="dark_gray"
                 />
-                <DeckButton
-                  icon="arkhamdb"
-                  title={t`Sign in to ArkhamDB`}
-                  detail={t`Create and sync decks online`}
-                  onPress={login}
-                  color="dark_gray"
-                  topMargin={s}
-                />
+                { !isCustomContent && (
+                  <DeckButton
+                    icon="arkhamdb"
+                    title={t`Sign in to ArkhamDB`}
+                    detail={t`Create and sync decks online`}
+                    onPress={login}
+                    color="dark_gray"
+                    topMargin={s}
+                  />
+                ) }
               </>
             ) }
             { isOffline && (
@@ -697,7 +712,7 @@ function NewDeckOptionsDialog({
         ) }
       </>
     );
-  }, [signedIn, arkhamBuildSignedIn, deckTarget, dispatch,
+  }, [signedIn, arkhamBuildSignedIn, arkhamBuildEligible, deckTarget, dispatch,
     investigatorId, isCustomContent, isOffline, randomWeaknessCount, cards, parallelInvestigators,
     networkType, isConnected, chaosSlots, specialDeckMode, chaosEditState, chaosCards,
     parsedChaosDeck, optionSelected, tabooSetId, requiredCardOptions, meta, typography,

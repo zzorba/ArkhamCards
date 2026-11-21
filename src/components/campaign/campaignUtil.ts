@@ -1,6 +1,6 @@
 import { capitalize, head, findIndex, flatMap, forEach, keys, map, range, sortBy, sumBy } from 'lodash';
 
-import { CUSTOM, Campaign, DecksMap } from '@actions/types';
+import { CUSTOM, Campaign, DecksMap, isArkhamBuildDeck } from '@actions/types';
 import { campaignNames } from './constants';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType, isSpecialToken } from '@app_constants';
 import { CardsMap } from '@data/types/Card';
@@ -56,6 +56,8 @@ export function campaignToText(
     lines.push(`${investigator.name}:`);
     if (deck.local) {
       lines.push(`Deck: ${deck.name}`);
+    } else if (isArkhamBuildDeck(deck)) {
+      lines.push(`Deck: https://arkham.build/deck/view/${deck.arkhambuild_id}`);
     } else {
       lines.push(`Deck: https://arkhamdb.com/deck/view/${deck.id}`);
     }

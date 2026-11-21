@@ -126,7 +126,7 @@ export default function DeckHistoryView() {
     }
     return (
       <DeckProgressComponent
-        key={deck.id.local ? deck.id.uuid : deck.id.id}
+        key={deck.id.uuid}
         deckId={id}
         title={deckTitle(deck, versionNumber)}
         onTitlePress={first ? undefined : onDeckPress}

@@ -6,6 +6,7 @@ import {
   SlotCodeType,
 } from '@app_constants';
 import { CardFilterData, FilterState } from '@lib/filters';
+import { ArkhamBuildFanMadeContent } from '@data/types/ArkhamBuildFanMadeContent';
 import Card, { InvestigatorChoice } from '@data/types/Card';
 import { LEAD_INVESTIGATOR_STEP_ID } from '@data/scenario/fixedSteps';
 import {
@@ -192,6 +193,8 @@ interface BaseDeck {
   nextDeckId?: DeckId;
   previousDeckId?: DeckId;
   tags?: string;
+  // Definitions of fan-made cards (e.g. from arkham.build) this deck uses, so they work on any device.
+  fan_made_content?: ArkhamBuildFanMadeContent;
 }
 
 export interface ArkhamDbDeck extends BaseDeck {
@@ -208,6 +211,8 @@ export interface ArkhamBuildDeck extends BaseDeck {
   arkhambuild_id: string;
   arkhambuild_user: string;
   user_id: undefined;
+  // Object valued meta key from arkham.build, kept out of DeckMeta and merged back in on write.
+  hidden_slots?: Slots;
 }
 
 export interface LocalDeck extends BaseDeck {
@@ -248,6 +253,10 @@ export function getDeckId(deck: Deck): DeckId {
 
 export function isArkhamBuildDeckId(deckId: DeckId): deckId is ArkhamBuildDeckId {
   return !deckId.local && !!(deckId as ArkhamBuildDeckId).arkhambuild_id;
+}
+
+export function isArkhamDbDeckId(deckId: DeckId): deckId is ArkhamDbDeckId {
+  return !deckId.local && !isArkhamBuildDeckId(deckId);
 }
 
 export type Deck = ArkhamDbDeck | ArkhamBuildDeck | LocalDeck;
@@ -968,7 +977,7 @@ export const REPLACE_LOCAL_DECK = 'REPLACE_LOCAL_DECK';
 export interface ReplaceLocalDeckAction {
   type: typeof REPLACE_LOCAL_DECK;
   localId: DeckId;
-  deck: ArkhamDbDeck;
+  deck: ArkhamDbDeck | ArkhamBuildDeck;
 }
 export const UPDATE_DECK = 'UPDATE_DECK';
 export interface UpdateDeckAction {
@@ -1724,6 +1733,7 @@ export type SignInActions =
 
 export type DecksActions =
   | ArkhamDbLogoutAction
+  | ArkhamBuildLogoutAction
   | RestoreComplexBackupAction
   | MyDecksStartRefreshAction
   | MyDecksCacheHitAction

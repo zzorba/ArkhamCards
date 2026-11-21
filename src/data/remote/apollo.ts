@@ -79,6 +79,7 @@ import {
   GetLatestArkhamDbDeckQuery,
   GetLatestArkhamDbDeckDocument,
   GetLatestDeckQuery,
+  GetLatestDeckQueryVariables,
   GetLatestDeckDocument,
   MiniInvestigatorDataFragment,
   MiniCampaignFragmentDoc,
@@ -304,7 +305,7 @@ export const uploadLocalDeck = (
   campaign_id: number,
   owner_id: string,
   local_uuid: string,
-  arkhamdb_id: number,
+  remoteIds: { arkhamdb_id: number | null; arkhambuild_id: string | null },
 ) => {
   const swapDeck = (deck: IdDeckFragment) => {
     return !!(deck.local_uuid && deck.local_uuid === local_uuid);
@@ -316,7 +317,7 @@ export const uploadLocalDeck = (
         deck: {
           ...deck,
           local_uuid: null,
-          arkhamdb_id,
+          ...remoteIds,
         },
       } : { type: 'keep' };
     },
@@ -325,13 +326,13 @@ export const uploadLocalDeck = (
         const theDeck = {
           ...deck,
           local_uuid: null,
-          arkhamdb_id,
+          ...remoteIds,
         };
         // console.log(`${new Date().toTimeString()}: Caching uploaded deck ${theDeck.id},${theDeck.arkhamdb_id},${theDeck.local_uuid}`);
-        cache.writeQuery<GetLatestDeckQuery>({
+        cache.writeQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>({
           query: GetLatestDeckDocument,
           variables: {
-            id: theDeck.id,
+            deckId: theDeck.id,
           },
           data: {
             __typename: 'query_root',
@@ -371,6 +372,7 @@ export const handleInsertNextLocalDeck: MutationUpdaterFn<InsertNextLocalDeckMut
             id: newDeck.id,
             owner_id: newDeck.owner_id,
             arkhamdb_id: newDeck.arkhamdb_id,
+            arkhambuild_id: newDeck.arkhambuild_id,
             local_uuid: newDeck.local_uuid,
           },
         },
@@ -397,10 +399,10 @@ export const handleInsertNextLocalDeck: MutationUpdaterFn<InsertNextLocalDeckMut
           next_deck: null,
         };
         // console.log(`${new Date().toTimeString()}: Caching uploaded deck ${theDeck.id},${theDeck.arkhamdb_id},${theDeck.local_uuid}`);
-        cache.writeQuery<GetLatestDeckQuery>({
+        cache.writeQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>({
           query: GetLatestDeckDocument,
           variables: {
-            id: newDeck.id,
+            deckId: newDeck.id,
           },
           data: {
             __typename: 'query_root',
@@ -441,6 +443,7 @@ export const handleInsertNextArkhamDbDeck: MutationUpdaterFn<InsertNextArkhamDbD
             id: newDeck.id,
             owner_id: newDeck.owner_id,
             arkhamdb_id: newDeck.arkhamdb_id,
+            arkhambuild_id: newDeck.arkhambuild_id,
             local_uuid: newDeck.local_uuid,
           },
         },
@@ -467,10 +470,10 @@ export const handleInsertNextArkhamDbDeck: MutationUpdaterFn<InsertNextArkhamDbD
           next_deck: null,
         };
         // console.log(`${new Date().toTimeString()}: Caching uploaded deck ${theDeck.id},${theDeck.arkhamdb_id},${theDeck.local_uuid}`);
-        cache.writeQuery<GetLatestDeckQuery>({
+        cache.writeQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>({
           query: GetLatestDeckDocument,
           variables: {
-            id: newDeck.id,
+            deckId: newDeck.id,
           },
           data: {
             __typename: 'query_root',
@@ -521,10 +524,10 @@ export const handleInsertNewDeck: MutationUpdaterFn<InsertNewDeckMutation> = (ca
     };
   });
   // console.log(`${new Date().toTimeString()}: Caching uploaded deck2 ${deck.id},${deck.arkhamdb_id},${deck.local_uuid}`);
-  cache.writeQuery<GetLatestDeckQuery>({
+  cache.writeQuery<GetLatestDeckQuery, GetLatestDeckQueryVariables>({
     query: GetLatestDeckDocument,
     variables: {
-      id: deck.id,
+      deckId: deck.id,
     },
     data: {
       __typename: 'query_root',
@@ -634,6 +637,7 @@ function removeDeck(
             campaign: deck.campaign,
             id: previousDeck.id,
             arkhamdb_id: previousDeck.arkhamdb_id,
+            arkhambuild_id: previousDeck.arkhambuild_id,
             local_uuid: previousDeck.local_uuid,
             owner_id,
             investigator: previousDeck.investigator,
@@ -644,7 +648,8 @@ function removeDeck(
               __typename: 'campaign_deck',
               id: previousDeck.previous_deck.id,
               campaign_id,
-              arkhamdb_id: previousDeck.previous_deck.id,
+              arkhamdb_id: previousDeck.previous_deck.arkhamdb_id,
+              arkhambuild_id: previousDeck.previous_deck.arkhambuild_id,
               local_uuid: previousDeck.previous_deck.local_uuid,
               owner_id,
             } : null,
