@@ -41,7 +41,7 @@ export default function InvestigatorCheckListComponent({
   allowNewDecks,
   includeLeadInvestigator,
   investigators: investigatorCodes,
-  filter: filterCard,
+  filter: filterInvestigatorProp,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const { campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
@@ -53,17 +53,17 @@ export default function InvestigatorCheckListComponent({
   }, [campaignState]);
 
   const filterInvestigator = useCallback((investigator: CampaignInvestigator): boolean => {
-    if (investigatorCodes) {
-      return findIndex(
-        investigatorCodes,
-        code => code === investigator.code
-      ) !== -1;
+    if (investigatorCodes && findIndex(
+      investigatorCodes,
+      code => code === investigator.code
+    ) === -1) {
+      return false;
     }
-    if (filterCard) {
-      return filterCard(investigator);
+    if (filterInvestigatorProp) {
+      return filterInvestigatorProp(investigator);
     }
     return true;
-  }, [investigatorCodes, filterCard]);
+  }, [investigatorCodes, filterInvestigatorProp]);
 
   const addDeckButton = useMemo(() => {
     if (!allowNewDecks) {
