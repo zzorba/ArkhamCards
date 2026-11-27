@@ -217,15 +217,11 @@ export function checkSuppliesAnyConditionResult(
   condition: CheckSuppliesAnyCondition,
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
-  const investigatorSupplies = campaignLog.investigatorSections[condition.section] || {};
   const investigators = campaignLog.investigators(false);
   return binaryConditionResult(
-    !!find(investigators, investigator => {
-      const supplies = investigatorSupplies[investigator.code] || {};
-      return !!find(supplies.entries, entry => (
-        entry.id === condition.id && !entry.crossedOut && entry.type === 'count' && entry.count > 0
-      ));
-    }),
+    !!find(investigators, investigator =>
+      campaignLog.supplyCount(condition.section, condition.id, investigator.code) > 0
+    ),
     condition.options
   );
 }
@@ -240,9 +236,7 @@ export function checkSuppliesAllConditionResult(
     choices[investigator.code] = ['false'];
   });
   forEach(investigatorSupplies, (supplies, investigatorCode) => {
-    const hasSupply = !!find(supplies.entries,
-      entry => entry.id === condition.id && !entry.crossedOut && entry.type === 'count' && entry.count > 0
-    );
+    const hasSupply = campaignLog.supplyCount(condition.section, condition.id, investigatorCode) > 0;
     const index = findIndex(
       condition.options,
       option => option.boolCondition === hasSupply

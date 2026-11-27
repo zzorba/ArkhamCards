@@ -963,6 +963,21 @@ export default class GuidedCampaignLog implements GuidedCampaignLogState {
     return 0;
   }
 
+  supplyCount(sectionId: string, id: string, investigatorCode: string): number {
+    const section = this.investigatorSections[sectionId]?.[investigatorCode];
+    if (!section) {
+      return 0;
+    }
+    const entry = find(
+      section.entries,
+      (entry) => entry.id === id && entry.type === 'count' && !entry.crossedOut
+    );
+    if (entry && entry.type === 'count') {
+      return entry.count;
+    }
+    return 0;
+  }
+
   taskAssignee(sectionId: string, id: string): string | undefined {
     const section = this.sections[sectionId];
     if (!section) {

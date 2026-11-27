@@ -20,17 +20,9 @@ interface Props {
 export default function UseSuppliesPrompt({ id, text, input, campaignLog }: Props) {
   const { scenarioState } = useContext(ScenarioGuideContext);
   const supplyLimits = useMemo(() => {
-    const investigatorSupplies = campaignLog.investigatorSections[input.section] || {};
     const limits: { [code: string]: number } = {};
-    const investigators = campaignLog.investigators(false);
-    forEach(investigators, investigator => {
-      const supplies = investigatorSupplies[investigator.code] || {};
-      const entry = find(supplies.entries || [],
-        entry => entry.id === input.id &&
-          !entry.crossedOut &&
-          entry.type === 'count'
-      );
-      limits[investigator.code] = (entry && entry.type === 'count') ? entry.count : 0;
+    forEach(campaignLog.investigators(false), investigator => {
+      limits[investigator.code] = campaignLog.supplyCount(input.section, input.id, investigator.code);
     });
     return limits;
   }, [input, campaignLog]);
