@@ -22,7 +22,7 @@ interface Props {
 let eventListenerInitialized: boolean = false;
 let currentSystemLang: string | undefined = undefined;
 
-const LOCALIZED_CARD_TRAITS = new Set(['fr', 'ru', 'de', 'zh', 'zh-cn', 'ko', 'pl']);
+const LOCALIZED_CARD_TRAITS = new Set(['fr', 'ru', 'de', 'zh', 'zh-cn', 'ko', 'pl', 'pt']);
 
 function getListSeperator(lang: string): string {
   switch (lang) {
