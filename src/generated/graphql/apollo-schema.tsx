@@ -7817,6 +7817,7 @@ export type Card_Encounter_Set = {
   locale: Scalars['String']['output'];
   name: Scalars['String']['output'];
   official: Scalars['Boolean']['output'];
+  uuid?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -7914,6 +7915,7 @@ export type Card_Encounter_Set_Bool_Exp = {
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   official?: InputMaybe<Boolean_Comparison_Exp>;
+  uuid?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "card_encounter_set" */
@@ -7930,6 +7932,7 @@ export type Card_Encounter_Set_Insert_Input = {
   locale?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
+  uuid?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
@@ -7939,6 +7942,7 @@ export type Card_Encounter_Set_Max_Fields = {
   icon_url?: Maybe<Scalars['String']['output']>;
   locale?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  uuid?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by max() on columns of table "card_encounter_set" */
@@ -7947,6 +7951,7 @@ export type Card_Encounter_Set_Max_Order_By = {
   icon_url?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -7956,6 +7961,7 @@ export type Card_Encounter_Set_Min_Fields = {
   icon_url?: Maybe<Scalars['String']['output']>;
   locale?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  uuid?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "card_encounter_set" */
@@ -7964,6 +7970,7 @@ export type Card_Encounter_Set_Min_Order_By = {
   icon_url?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "card_encounter_set" */
@@ -7990,6 +7997,7 @@ export type Card_Encounter_Set_Order_By = {
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   official?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: card_encounter_set */
@@ -8009,7 +8017,9 @@ export enum Card_Encounter_Set_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
-  Official = 'official'
+  Official = 'official',
+  /** column name */
+  Uuid = 'uuid'
 }
 
 /** select "card_encounter_set_aggregate_bool_exp_bool_and_arguments_columns" columns of table "card_encounter_set" */
@@ -8031,6 +8041,7 @@ export type Card_Encounter_Set_Set_Input = {
   locale?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
+  uuid?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "card_encounter_set" */
@@ -8048,6 +8059,7 @@ export type Card_Encounter_Set_Stream_Cursor_Value_Input = {
   locale?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
+  uuid?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "card_encounter_set" */
@@ -8061,7 +8073,9 @@ export enum Card_Encounter_Set_Update_Column {
   /** column name */
   Name = 'name',
   /** column name */
-  Official = 'official'
+  Official = 'official',
+  /** column name */
+  Uuid = 'uuid'
 }
 
 export type Card_Encounter_Set_Updates = {
@@ -29132,6 +29146,7 @@ export type Pack = {
   /** An aggregate relationship */
   translations_aggregate: Pack_Name_Aggregate;
   type?: Maybe<Scalars['String']['output']>;
+  uuid?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -29298,6 +29313,7 @@ export type Pack_Bool_Exp = {
   translations?: InputMaybe<Pack_Name_Bool_Exp>;
   translations_aggregate?: InputMaybe<Pack_Name_Aggregate_Bool_Exp>;
   type?: InputMaybe<String_Comparison_Exp>;
+  uuid?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "pack" */
@@ -29343,6 +29359,7 @@ export type Pack_Insert_Input = {
   reprint_packs?: InputMaybe<Scalars['jsonb']['input']>;
   translations?: InputMaybe<Pack_Name_Arr_Rel_Insert_Input>;
   type?: InputMaybe<Scalars['String']['input']>;
+  uuid?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
@@ -29355,6 +29372,7 @@ export type Pack_Max_Fields = {
   position?: Maybe<Scalars['Int']['output']>;
   real_name?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
+  uuid?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by max() on columns of table "pack" */
@@ -29366,6 +29384,7 @@ export type Pack_Max_Order_By = {
   position?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
   type?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -29378,6 +29397,7 @@ export type Pack_Min_Fields = {
   position?: Maybe<Scalars['Int']['output']>;
   real_name?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
+  uuid?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "pack" */
@@ -29389,6 +29409,7 @@ export type Pack_Min_Order_By = {
   position?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
   type?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "pack" */
@@ -29630,6 +29651,7 @@ export type Pack_Order_By = {
   reprint_packs?: InputMaybe<Order_By>;
   translations_aggregate?: InputMaybe<Pack_Name_Aggregate_Order_By>;
   type?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: pack */
@@ -29665,7 +29687,9 @@ export enum Pack_Select_Column {
   /** column name */
   ReprintPacks = 'reprint_packs',
   /** column name */
-  Type = 'type'
+  Type = 'type',
+  /** column name */
+  Uuid = 'uuid'
 }
 
 /** select "pack_aggregate_bool_exp_bool_and_arguments_columns" columns of table "pack" */
@@ -29701,6 +29725,7 @@ export type Pack_Set_Input = {
   reprint?: InputMaybe<Scalars['Boolean']['input']>;
   reprint_packs?: InputMaybe<Scalars['jsonb']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
+  uuid?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate stddev on columns */
@@ -29763,6 +29788,7 @@ export type Pack_Stream_Cursor_Value_Input = {
   reprint?: InputMaybe<Scalars['Boolean']['input']>;
   reprint_packs?: InputMaybe<Scalars['jsonb']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
+  uuid?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate sum on columns */
@@ -29801,7 +29827,9 @@ export enum Pack_Update_Column {
   /** column name */
   ReprintPacks = 'reprint_packs',
   /** column name */
-  Type = 'type'
+  Type = 'type',
+  /** column name */
+  Uuid = 'uuid'
 }
 
 export type Pack_Updates = {
@@ -52773,13 +52801,13 @@ export type GetCardFaqQueryVariables = Exact<{
 
 export type GetCardFaqQuery = { __typename?: 'query_root', faq_by_pk?: { __typename?: 'faq', code: string, text: string, faq_texts: Array<{ __typename?: 'faq_text', code: string, locale: string, text: string }> } | null };
 
-export type GetCustomContentIconsQueryVariables = Exact<{
+export type GetCustomContentInfoQueryVariables = Exact<{
   packs: Array<Scalars['String']['input']> | Scalars['String']['input'];
   encounterSets: Array<Scalars['String']['input']> | Scalars['String']['input'];
 }>;
 
 
-export type GetCustomContentIconsQuery = { __typename?: 'query_root', pack: Array<{ __typename?: 'pack', code: string, icon_url?: string | null }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, icon_url?: string | null }> };
+export type GetCustomContentInfoQuery = { __typename?: 'query_root', pack: Array<{ __typename?: 'pack', code: string, icon_url?: string | null, uuid?: string | null }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, icon_url?: string | null, uuid?: string | null }> };
 
 export type UploadChaosBagResultsMutationVariables = Exact<{
   id: Scalars['Int']['input'];
@@ -54547,52 +54575,54 @@ export type GetCardFaqQueryHookResult = ReturnType<typeof useGetCardFaqQuery>;
 export type GetCardFaqLazyQueryHookResult = ReturnType<typeof useGetCardFaqLazyQuery>;
 export type GetCardFaqSuspenseQueryHookResult = ReturnType<typeof useGetCardFaqSuspenseQuery>;
 export type GetCardFaqQueryResult = Apollo.QueryResult<GetCardFaqQuery, GetCardFaqQueryVariables>;
-export const GetCustomContentIconsDocument = gql`
-    query getCustomContentIcons($packs: [String!]!, $encounterSets: [String!]!) {
+export const GetCustomContentInfoDocument = gql`
+    query getCustomContentInfo($packs: [String!]!, $encounterSets: [String!]!) {
   pack(where: {code: {_in: $packs}}) {
     code
     icon_url
+    uuid
   }
   card_encounter_set(where: {code: {_in: $encounterSets}, locale: {_eq: "en"}}) {
     code
     icon_url
+    uuid
   }
 }
     `;
 
 /**
- * __useGetCustomContentIconsQuery__
+ * __useGetCustomContentInfoQuery__
  *
- * To run a query within a React component, call `useGetCustomContentIconsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCustomContentIconsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetCustomContentInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCustomContentInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetCustomContentIconsQuery({
+ * const { data, loading, error } = useGetCustomContentInfoQuery({
  *   variables: {
  *      packs: // value for 'packs'
  *      encounterSets: // value for 'encounterSets'
  *   },
  * });
  */
-export function useGetCustomContentIconsQuery(baseOptions: Apollo.QueryHookOptions<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables> & ({ variables: GetCustomContentIconsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+export function useGetCustomContentInfoQuery(baseOptions: Apollo.QueryHookOptions<GetCustomContentInfoQuery, GetCustomContentInfoQueryVariables> & ({ variables: GetCustomContentInfoQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>(GetCustomContentIconsDocument, options);
+        return Apollo.useQuery<GetCustomContentInfoQuery, GetCustomContentInfoQueryVariables>(GetCustomContentInfoDocument, options);
       }
-export function useGetCustomContentIconsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>) {
+export function useGetCustomContentInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCustomContentInfoQuery, GetCustomContentInfoQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>(GetCustomContentIconsDocument, options);
+          return Apollo.useLazyQuery<GetCustomContentInfoQuery, GetCustomContentInfoQueryVariables>(GetCustomContentInfoDocument, options);
         }
-export function useGetCustomContentIconsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>) {
+export function useGetCustomContentInfoSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCustomContentInfoQuery, GetCustomContentInfoQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>(GetCustomContentIconsDocument, options);
+          return Apollo.useSuspenseQuery<GetCustomContentInfoQuery, GetCustomContentInfoQueryVariables>(GetCustomContentInfoDocument, options);
         }
-export type GetCustomContentIconsQueryHookResult = ReturnType<typeof useGetCustomContentIconsQuery>;
-export type GetCustomContentIconsLazyQueryHookResult = ReturnType<typeof useGetCustomContentIconsLazyQuery>;
-export type GetCustomContentIconsSuspenseQueryHookResult = ReturnType<typeof useGetCustomContentIconsSuspenseQuery>;
-export type GetCustomContentIconsQueryResult = Apollo.QueryResult<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>;
+export type GetCustomContentInfoQueryHookResult = ReturnType<typeof useGetCustomContentInfoQuery>;
+export type GetCustomContentInfoLazyQueryHookResult = ReturnType<typeof useGetCustomContentInfoLazyQuery>;
+export type GetCustomContentInfoSuspenseQueryHookResult = ReturnType<typeof useGetCustomContentInfoSuspenseQuery>;
+export type GetCustomContentInfoQueryResult = Apollo.QueryResult<GetCustomContentInfoQuery, GetCustomContentInfoQueryVariables>;
 export const UploadChaosBagResultsDocument = gql`
     mutation uploadChaosBagResults($id: Int!, $bless: Int!, $curse: Int!, $drawn: jsonb!, $sealed: jsonb!, $totalDrawn: Int!, $tarot: chaos_bag_tarot_mode_enum, $difficulty: campaign_difficulty_enum) {
   update_chaos_bag_result_by_pk(

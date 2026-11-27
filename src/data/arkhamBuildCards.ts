@@ -308,7 +308,7 @@ function deckOptionToArkhamBuild(option: DeckOption): Record<string, unknown> {
   }, isEmptyValue);
 }
 
-function fanMadeCardFromCard(card: Card, uuid: string, toUuid: (code: string) => string): ArkhamBuildFanMadeCard {
+function fanMadeCardFromCard(card: Card, uuid: string, toUuid: (code: string) => string, info?: CustomContentInfo): ArkhamBuildFanMadeCard {
   const result: ArkhamBuildFanMadeCard = {
     id: uuid,
     code: uuid,
@@ -328,8 +328,8 @@ function fanMadeCardFromCard(card: Card, uuid: string, toUuid: (code: string) =>
     real_traits: card.real_traits,
     slot: card.slot,
     real_slot: card.real_slot,
-    pack_code: card.pack_code,
-    encounter_code: card.encounter_code,
+    pack_code: packUuid(card.pack_code, info),
+    encounter_code: card.encounter_code ? encounterSetUuid(card.encounter_code, info) : undefined,
     encounter_position: card.encounter_position,
     position: card.position,
     quantity: card.quantity,
@@ -366,9 +366,23 @@ function fanMadeCardFromCard(card: Card, uuid: string, toUuid: (code: string) =>
   return omitBy(result, isNil) as ArkhamBuildFanMadeCard;
 }
 
-export interface CustomContentIcons {
-  packs: { [code: string]: string | undefined };
-  encounterSets: { [code: string]: string | undefined };
+export interface CustomContentEntry {
+  icon_url?: string;
+  uuid?: string;
+}
+
+export interface CustomContentInfo {
+  packs: { [code: string]: CustomContentEntry | undefined };
+  encounterSets: { [code: string]: CustomContentEntry | undefined };
+}
+
+// arkham.build keys fan-made packs and encounter sets by uuid; fall back to our code when there is none.
+function packUuid(code: string, info?: CustomContentInfo): string {
+  return info?.packs[code]?.uuid || code;
+}
+
+function encounterSetUuid(code: string, info?: CustomContentInfo): string {
+  return info?.encounterSets[code]?.uuid || code;
 }
 
 // Shown for any custom pack or encounter set that has no icon of its own.
@@ -378,7 +392,7 @@ export const DEFAULT_CUSTOM_ICON_URL = 'https://img2.arkhamcards.com/encounter_i
  * Build fan_made_content for our own custom cards, keyed by their uuid as
  * arkham.build expects. Cards without a uuid are skipped.
  */
-export function fanMadeContentFromCards(cards: Card[], icons?: CustomContentIcons): ArkhamBuildFanMadeContent | undefined {
+export function fanMadeContentFromCards(cards: Card[], info?: CustomContentInfo): ArkhamBuildFanMadeContent | undefined {
   const uuids: { [code: string]: string } = {};
   forEach(cards, card => {
     if (card.uuid) {
@@ -392,17 +406,18 @@ export function fanMadeContentFromCards(cards: Card[], icons?: CustomContentIcon
     if (!uuid) {
       return;
     }
-    result.cards[uuid] = fanMadeCardFromCard(card, uuid, toUuid);
+    result.cards[uuid] = fanMadeCardFromCard(card, uuid, toUuid, info);
     // arkham.build requires real_name and position; the defaults match how it loads fan-made projects.
-    if (result.packs && !result.packs[card.pack_code]) {
+    const pack_code = packUuid(card.pack_code, info);
+    if (result.packs && !result.packs[pack_code]) {
       const name = card.pack_name || card.pack_code;
-      result.packs[card.pack_code] = {
-        code: card.pack_code,
+      result.packs[pack_code] = {
+        code: pack_code,
         name,
         real_name: name,
         cycle_code: card.cycle_code,
         position: 1,
-        icon_url: icons?.packs[card.pack_code] || DEFAULT_CUSTOM_ICON_URL,
+        icon_url: info?.packs[card.pack_code]?.icon_url || DEFAULT_CUSTOM_ICON_URL,
         official: false,
       };
     }
@@ -416,14 +431,15 @@ export function fanMadeContentFromCards(cards: Card[], icons?: CustomContentIcon
         official: false,
       };
     }
-    if (card.encounter_code && result.encounter_sets && !result.encounter_sets[card.encounter_code]) {
+    const encounter_code = card.encounter_code ? encounterSetUuid(card.encounter_code, info) : undefined;
+    if (card.encounter_code && encounter_code && result.encounter_sets && !result.encounter_sets[encounter_code]) {
       const name = card.encounter_name || card.encounter_code;
-      result.encounter_sets[card.encounter_code] = {
-        code: card.encounter_code,
+      result.encounter_sets[encounter_code] = {
+        code: encounter_code,
         name,
         real_name: name,
-        pack_code: card.pack_code,
-        icon_url: icons?.encounterSets[card.encounter_code] || DEFAULT_CUSTOM_ICON_URL,
+        pack_code,
+        icon_url: info?.encounterSets[card.encounter_code]?.icon_url || DEFAULT_CUSTOM_ICON_URL,
       };
     }
   });

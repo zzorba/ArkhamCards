@@ -8607,6 +8607,7 @@ type card_encounter_set {
   locale: String!
   name: String!
   official: Boolean!
+  uuid: String
 }
 
 """
@@ -8686,6 +8687,7 @@ input card_encounter_set_bool_exp {
   locale: String_comparison_exp
   name: String_comparison_exp
   official: Boolean_comparison_exp
+  uuid: String_comparison_exp
 }
 
 """
@@ -8708,6 +8710,7 @@ input card_encounter_set_insert_input {
   locale: String
   name: String
   official: Boolean
+  uuid: String
 }
 
 """aggregate max on columns"""
@@ -8716,6 +8719,7 @@ type card_encounter_set_max_fields {
   icon_url: String
   locale: String
   name: String
+  uuid: String
 }
 
 """
@@ -8726,6 +8730,7 @@ input card_encounter_set_max_order_by {
   icon_url: order_by
   locale: order_by
   name: order_by
+  uuid: order_by
 }
 
 """aggregate min on columns"""
@@ -8734,6 +8739,7 @@ type card_encounter_set_min_fields {
   icon_url: String
   locale: String
   name: String
+  uuid: String
 }
 
 """
@@ -8744,6 +8750,7 @@ input card_encounter_set_min_order_by {
   icon_url: order_by
   locale: order_by
   name: order_by
+  uuid: order_by
 }
 
 """
@@ -8774,6 +8781,7 @@ input card_encounter_set_order_by {
   locale: order_by
   name: order_by
   official: order_by
+  uuid: order_by
 }
 
 """primary key columns input for table: card_encounter_set"""
@@ -8800,6 +8808,9 @@ enum card_encounter_set_select_column {
 
   """column name"""
   official
+
+  """column name"""
+  uuid
 }
 
 """
@@ -8827,6 +8838,7 @@ input card_encounter_set_set_input {
   locale: String
   name: String
   official: Boolean
+  uuid: String
 }
 
 """
@@ -8847,6 +8859,7 @@ input card_encounter_set_stream_cursor_value_input {
   locale: String
   name: String
   official: Boolean
+  uuid: String
 }
 
 """
@@ -8867,6 +8880,9 @@ enum card_encounter_set_update_column {
 
   """column name"""
   official
+
+  """column name"""
+  uuid
 }
 
 input card_encounter_set_updates {
@@ -33128,6 +33144,7 @@ type pack {
     where: pack_name_bool_exp
   ): pack_name_aggregate!
   type: String
+  uuid: String
 }
 
 """
@@ -33251,6 +33268,7 @@ input pack_bool_exp {
   translations: pack_name_bool_exp
   translations_aggregate: pack_name_aggregate_bool_exp
   type: String_comparison_exp
+  uuid: String_comparison_exp
 }
 
 """
@@ -33311,6 +33329,7 @@ input pack_insert_input {
   reprint_packs: jsonb
   translations: pack_name_arr_rel_insert_input
   type: String
+  uuid: String
 }
 
 """aggregate max on columns"""
@@ -33322,6 +33341,7 @@ type pack_max_fields {
   position: Int
   real_name: String
   type: String
+  uuid: String
 }
 
 """
@@ -33335,6 +33355,7 @@ input pack_max_order_by {
   position: order_by
   real_name: order_by
   type: order_by
+  uuid: order_by
 }
 
 """aggregate min on columns"""
@@ -33346,6 +33367,7 @@ type pack_min_fields {
   position: Int
   real_name: String
   type: String
+  uuid: String
 }
 
 """
@@ -33359,6 +33381,7 @@ input pack_min_order_by {
   position: order_by
   real_name: order_by
   type: order_by
+  uuid: order_by
 }
 
 """
@@ -33638,6 +33661,7 @@ input pack_order_by {
   reprint_packs: order_by
   translations_aggregate: pack_name_aggregate_order_by
   type: order_by
+  uuid: order_by
 }
 
 """primary key columns input for table: pack"""
@@ -33686,6 +33710,9 @@ enum pack_select_column {
 
   """column name"""
   type
+
+  """column name"""
+  uuid
 }
 
 """
@@ -33731,6 +33758,7 @@ input pack_set_input {
   reprint: Boolean
   reprint_packs: jsonb
   type: String
+  uuid: String
 }
 
 """aggregate stddev on columns"""
@@ -33799,6 +33827,7 @@ input pack_stream_cursor_value_input {
   reprint: Boolean
   reprint_packs: jsonb
   type: String
+  uuid: String
 }
 
 """aggregate sum on columns"""
@@ -33851,6 +33880,9 @@ enum pack_update_column {
 
   """column name"""
   type
+
+  """column name"""
+  uuid
 }
 
 input pack_updates {

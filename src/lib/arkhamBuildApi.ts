@@ -17,7 +17,7 @@ import {
 import { print } from 'graphql';
 
 import {
-  CustomContentIcons,
+  CustomContentInfo,
   fanMadeContentFromCards,
   mergeFanMadeContent,
   metaCardCodes,
@@ -29,9 +29,9 @@ import { getDatabase } from '@data/sqlite/DatabaseProvider';
 import Card from '@data/types/Card';
 import { GRAPHQL_SERVER } from '@data/apollo/createApolloClient';
 import {
-  GetCustomContentIconsDocument,
-  GetCustomContentIconsQuery,
-  GetCustomContentIconsQueryVariables,
+  GetCustomContentInfoDocument,
+  GetCustomContentInfoQuery,
+  GetCustomContentInfoQueryVariables,
 } from '@generated/graphql/apollo-schema';
 
 const API_BASE = 'https://api.arkham.build';
@@ -329,21 +329,21 @@ async function exportCustomCards(content: ArkhamBuildDeckContent): Promise<Arkha
     cards.push(...filter(await db.getCardsByCodes(requiredCodes), isExportable));
   }
   const toUuid = fromPairs(flatMap(cards, card => card.uuid ? [[card.code, card.uuid]] : []));
-  const icons = await fetchCustomContentIcons(cards);
+  const info = await fetchCustomContentInfo(cards);
   return {
     ...remapCodes(content, toUuid),
-    fan_made_content: mergeFanMadeContent(content.fan_made_content, fanMadeContentFromCards(cards, icons)),
+    fan_made_content: mergeFanMadeContent(content.fan_made_content, fanMadeContentFromCards(cards, info)),
   };
 }
 
 /**
- * Look up the icons for the custom packs and encounter sets being exported, so new
- * icons only need a data import rather than an app release. On any failure the
- * export still goes ahead, with the default icon.
+ * Look up the icons and uuids for the custom packs and encounter sets being exported,
+ * so new ones only need a data import rather than an app release. On any failure the
+ * export still goes ahead, with the default icon and our own codes.
  */
-async function fetchCustomContentIcons(cards: Card[]): Promise<CustomContentIcons> {
-  const icons: CustomContentIcons = { packs: {}, encounterSets: {} };
-  const variables: GetCustomContentIconsQueryVariables = {
+async function fetchCustomContentInfo(cards: Card[]): Promise<CustomContentInfo> {
+  const info: CustomContentInfo = { packs: {}, encounterSets: {} };
+  const variables: GetCustomContentInfoQueryVariables = {
     packs: uniq(map(cards, card => card.pack_code)),
     encounterSets: uniq(flatMap(cards, card => card.encounter_code ? [card.encounter_code] : [])),
   };
@@ -351,22 +351,25 @@ async function fetchCustomContentIcons(cards: Card[]): Promise<CustomContentIcon
     const response = await fetch(`https://${GRAPHQL_SERVER}/graphql`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: print(GetCustomContentIconsDocument), variables }),
+      body: JSON.stringify({ query: print(GetCustomContentInfoDocument), variables }),
     });
     if (!response.ok) {
-      return icons;
+      return info;
     }
-    const json: { data?: GetCustomContentIconsQuery } = await response.json();
+    const json: { data?: GetCustomContentInfoQuery } = await response.json();
     forEach(json.data?.pack, pack => {
-      icons.packs[pack.code] = pack.icon_url ?? undefined;
+      info.packs[pack.code] = { icon_url: pack.icon_url ?? undefined, uuid: pack.uuid ?? undefined };
     });
     forEach(json.data?.card_encounter_set, encounterSet => {
-      icons.encounterSets[encounterSet.code] = encounterSet.icon_url ?? undefined;
+      info.encounterSets[encounterSet.code] = {
+        icon_url: encounterSet.icon_url ?? undefined,
+        uuid: encounterSet.uuid ?? undefined,
+      };
     });
   } catch (e) {
-    console.log(`Failed to fetch custom content icons: ${e}`);
+    console.log(`Failed to fetch custom content info: ${e}`);
   }
-  return icons;
+  return info;
 }
 
 /**
