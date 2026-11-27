@@ -1971,11 +1971,12 @@ export type card_cycle_variance_fieldsKeySpecifier = ('position' | card_cycle_va
 export type card_cycle_variance_fieldsFieldPolicy = {
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_encounter_setKeySpecifier = ('cards' | 'cards_aggregate' | 'code' | 'locale' | 'name' | 'official' | card_encounter_setKeySpecifier)[];
+export type card_encounter_setKeySpecifier = ('cards' | 'cards_aggregate' | 'code' | 'icon_url' | 'locale' | 'name' | 'official' | card_encounter_setKeySpecifier)[];
 export type card_encounter_setFieldPolicy = {
 	cards?: FieldPolicy<any> | FieldReadFunction<any>,
 	cards_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
+	icon_url?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	official?: FieldPolicy<any> | FieldReadFunction<any>
@@ -1991,15 +1992,17 @@ export type card_encounter_set_aggregate_fieldsFieldPolicy = {
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
 	min?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_encounter_set_max_fieldsKeySpecifier = ('code' | 'locale' | 'name' | card_encounter_set_max_fieldsKeySpecifier)[];
+export type card_encounter_set_max_fieldsKeySpecifier = ('code' | 'icon_url' | 'locale' | 'name' | card_encounter_set_max_fieldsKeySpecifier)[];
 export type card_encounter_set_max_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
+	icon_url?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type card_encounter_set_min_fieldsKeySpecifier = ('code' | 'locale' | 'name' | card_encounter_set_min_fieldsKeySpecifier)[];
+export type card_encounter_set_min_fieldsKeySpecifier = ('code' | 'icon_url' | 'locale' | 'name' | card_encounter_set_min_fieldsKeySpecifier)[];
 export type card_encounter_set_min_fieldsFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
+	icon_url?: FieldPolicy<any> | FieldReadFunction<any>,
 	locale?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -6534,7 +6537,7 @@ export type oauth_scopes_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type packKeySpecifier = ('cards' | 'cards_aggregate' | 'chapter' | 'code' | 'cycle' | 'cycle_code' | 'official' | 'position' | 'real_name' | 'replaced' | 'reprint' | 'reprint_packs' | 'translations' | 'translations_aggregate' | 'type' | packKeySpecifier)[];
+export type packKeySpecifier = ('cards' | 'cards_aggregate' | 'chapter' | 'code' | 'cycle' | 'cycle_code' | 'icon_url' | 'official' | 'position' | 'real_name' | 'replaced' | 'reprint' | 'reprint_packs' | 'translations' | 'translations_aggregate' | 'type' | packKeySpecifier)[];
 export type packFieldPolicy = {
 	cards?: FieldPolicy<any> | FieldReadFunction<any>,
 	cards_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6542,6 +6545,7 @@ export type packFieldPolicy = {
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	icon_url?: FieldPolicy<any> | FieldReadFunction<any>,
 	official?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -6576,20 +6580,22 @@ export type pack_avg_fieldsFieldPolicy = {
 	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_max_fieldsKeySpecifier = ('chapter' | 'code' | 'cycle_code' | 'position' | 'real_name' | 'type' | pack_max_fieldsKeySpecifier)[];
+export type pack_max_fieldsKeySpecifier = ('chapter' | 'code' | 'cycle_code' | 'icon_url' | 'position' | 'real_name' | 'type' | pack_max_fieldsKeySpecifier)[];
 export type pack_max_fieldsFieldPolicy = {
 	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	icon_url?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	type?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type pack_min_fieldsKeySpecifier = ('chapter' | 'code' | 'cycle_code' | 'position' | 'real_name' | 'type' | pack_min_fieldsKeySpecifier)[];
+export type pack_min_fieldsKeySpecifier = ('chapter' | 'code' | 'cycle_code' | 'icon_url' | 'position' | 'real_name' | 'type' | pack_min_fieldsKeySpecifier)[];
 export type pack_min_fieldsFieldPolicy = {
 	chapter?: FieldPolicy<any> | FieldReadFunction<any>,
 	code?: FieldPolicy<any> | FieldReadFunction<any>,
 	cycle_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	icon_url?: FieldPolicy<any> | FieldReadFunction<any>,
 	position?: FieldPolicy<any> | FieldReadFunction<any>,
 	real_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	type?: FieldPolicy<any> | FieldReadFunction<any>

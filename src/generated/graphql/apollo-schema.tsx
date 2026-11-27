@@ -7813,6 +7813,7 @@ export type Card_Encounter_Set = {
   /** An aggregate relationship */
   cards_aggregate: All_Card_Aggregate;
   code: Scalars['String']['output'];
+  icon_url?: Maybe<Scalars['String']['output']>;
   locale: Scalars['String']['output'];
   name: Scalars['String']['output'];
   official: Scalars['Boolean']['output'];
@@ -7909,6 +7910,7 @@ export type Card_Encounter_Set_Bool_Exp = {
   cards?: InputMaybe<All_Card_Bool_Exp>;
   cards_aggregate?: InputMaybe<All_Card_Aggregate_Bool_Exp>;
   code?: InputMaybe<String_Comparison_Exp>;
+  icon_url?: InputMaybe<String_Comparison_Exp>;
   locale?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   official?: InputMaybe<Boolean_Comparison_Exp>;
@@ -7924,6 +7926,7 @@ export enum Card_Encounter_Set_Constraint {
 export type Card_Encounter_Set_Insert_Input = {
   cards?: InputMaybe<All_Card_Arr_Rel_Insert_Input>;
   code?: InputMaybe<Scalars['String']['input']>;
+  icon_url?: InputMaybe<Scalars['String']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
@@ -7933,6 +7936,7 @@ export type Card_Encounter_Set_Insert_Input = {
 export type Card_Encounter_Set_Max_Fields = {
   __typename?: 'card_encounter_set_max_fields';
   code?: Maybe<Scalars['String']['output']>;
+  icon_url?: Maybe<Scalars['String']['output']>;
   locale?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
 };
@@ -7940,6 +7944,7 @@ export type Card_Encounter_Set_Max_Fields = {
 /** order by max() on columns of table "card_encounter_set" */
 export type Card_Encounter_Set_Max_Order_By = {
   code?: InputMaybe<Order_By>;
+  icon_url?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
 };
@@ -7948,6 +7953,7 @@ export type Card_Encounter_Set_Max_Order_By = {
 export type Card_Encounter_Set_Min_Fields = {
   __typename?: 'card_encounter_set_min_fields';
   code?: Maybe<Scalars['String']['output']>;
+  icon_url?: Maybe<Scalars['String']['output']>;
   locale?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
 };
@@ -7955,6 +7961,7 @@ export type Card_Encounter_Set_Min_Fields = {
 /** order by min() on columns of table "card_encounter_set" */
 export type Card_Encounter_Set_Min_Order_By = {
   code?: InputMaybe<Order_By>;
+  icon_url?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
 };
@@ -7979,6 +7986,7 @@ export type Card_Encounter_Set_On_Conflict = {
 export type Card_Encounter_Set_Order_By = {
   cards_aggregate?: InputMaybe<All_Card_Aggregate_Order_By>;
   code?: InputMaybe<Order_By>;
+  icon_url?: InputMaybe<Order_By>;
   locale?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   official?: InputMaybe<Order_By>;
@@ -7994,6 +8002,8 @@ export type Card_Encounter_Set_Pk_Columns_Input = {
 export enum Card_Encounter_Set_Select_Column {
   /** column name */
   Code = 'code',
+  /** column name */
+  IconUrl = 'icon_url',
   /** column name */
   Locale = 'locale',
   /** column name */
@@ -8017,6 +8027,7 @@ export enum Card_Encounter_Set_Select_Column_Card_Encounter_Set_Aggregate_Bool_E
 /** input type for updating data in table "card_encounter_set" */
 export type Card_Encounter_Set_Set_Input = {
   code?: InputMaybe<Scalars['String']['input']>;
+  icon_url?: InputMaybe<Scalars['String']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
@@ -8033,6 +8044,7 @@ export type Card_Encounter_Set_Stream_Cursor_Input = {
 /** Initial value of the column from where the streaming should start */
 export type Card_Encounter_Set_Stream_Cursor_Value_Input = {
   code?: InputMaybe<Scalars['String']['input']>;
+  icon_url?: InputMaybe<Scalars['String']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
@@ -8042,6 +8054,8 @@ export type Card_Encounter_Set_Stream_Cursor_Value_Input = {
 export enum Card_Encounter_Set_Update_Column {
   /** column name */
   Code = 'code',
+  /** column name */
+  IconUrl = 'icon_url',
   /** column name */
   Locale = 'locale',
   /** column name */
@@ -29106,6 +29120,7 @@ export type Pack = {
   /** An object relationship */
   cycle: Cycle;
   cycle_code: Scalars['String']['output'];
+  icon_url?: Maybe<Scalars['String']['output']>;
   official: Scalars['Boolean']['output'];
   position: Scalars['Int']['output'];
   real_name: Scalars['String']['output'];
@@ -29273,6 +29288,7 @@ export type Pack_Bool_Exp = {
   code?: InputMaybe<String_Comparison_Exp>;
   cycle?: InputMaybe<Cycle_Bool_Exp>;
   cycle_code?: InputMaybe<String_Comparison_Exp>;
+  icon_url?: InputMaybe<String_Comparison_Exp>;
   official?: InputMaybe<Boolean_Comparison_Exp>;
   position?: InputMaybe<Int_Comparison_Exp>;
   real_name?: InputMaybe<String_Comparison_Exp>;
@@ -29318,6 +29334,7 @@ export type Pack_Insert_Input = {
   code?: InputMaybe<Scalars['String']['input']>;
   cycle?: InputMaybe<Cycle_Obj_Rel_Insert_Input>;
   cycle_code?: InputMaybe<Scalars['String']['input']>;
+  icon_url?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   real_name?: InputMaybe<Scalars['String']['input']>;
@@ -29334,6 +29351,7 @@ export type Pack_Max_Fields = {
   chapter?: Maybe<Scalars['Int']['output']>;
   code?: Maybe<Scalars['String']['output']>;
   cycle_code?: Maybe<Scalars['String']['output']>;
+  icon_url?: Maybe<Scalars['String']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
   real_name?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
@@ -29344,6 +29362,7 @@ export type Pack_Max_Order_By = {
   chapter?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   cycle_code?: InputMaybe<Order_By>;
+  icon_url?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
   type?: InputMaybe<Order_By>;
@@ -29355,6 +29374,7 @@ export type Pack_Min_Fields = {
   chapter?: Maybe<Scalars['Int']['output']>;
   code?: Maybe<Scalars['String']['output']>;
   cycle_code?: Maybe<Scalars['String']['output']>;
+  icon_url?: Maybe<Scalars['String']['output']>;
   position?: Maybe<Scalars['Int']['output']>;
   real_name?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
@@ -29365,6 +29385,7 @@ export type Pack_Min_Order_By = {
   chapter?: InputMaybe<Order_By>;
   code?: InputMaybe<Order_By>;
   cycle_code?: InputMaybe<Order_By>;
+  icon_url?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
   type?: InputMaybe<Order_By>;
@@ -29600,6 +29621,7 @@ export type Pack_Order_By = {
   code?: InputMaybe<Order_By>;
   cycle?: InputMaybe<Cycle_Order_By>;
   cycle_code?: InputMaybe<Order_By>;
+  icon_url?: InputMaybe<Order_By>;
   official?: InputMaybe<Order_By>;
   position?: InputMaybe<Order_By>;
   real_name?: InputMaybe<Order_By>;
@@ -29628,6 +29650,8 @@ export enum Pack_Select_Column {
   Code = 'code',
   /** column name */
   CycleCode = 'cycle_code',
+  /** column name */
+  IconUrl = 'icon_url',
   /** column name */
   Official = 'official',
   /** column name */
@@ -29669,6 +29693,7 @@ export type Pack_Set_Input = {
   chapter?: InputMaybe<Scalars['Int']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   cycle_code?: InputMaybe<Scalars['String']['input']>;
+  icon_url?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   real_name?: InputMaybe<Scalars['String']['input']>;
@@ -29730,6 +29755,7 @@ export type Pack_Stream_Cursor_Value_Input = {
   chapter?: InputMaybe<Scalars['Int']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   cycle_code?: InputMaybe<Scalars['String']['input']>;
+  icon_url?: InputMaybe<Scalars['String']['input']>;
   official?: InputMaybe<Scalars['Boolean']['input']>;
   position?: InputMaybe<Scalars['Int']['input']>;
   real_name?: InputMaybe<Scalars['String']['input']>;
@@ -29760,6 +29786,8 @@ export enum Pack_Update_Column {
   Code = 'code',
   /** column name */
   CycleCode = 'cycle_code',
+  /** column name */
+  IconUrl = 'icon_url',
   /** column name */
   Official = 'official',
   /** column name */
@@ -52745,6 +52773,14 @@ export type GetCardFaqQueryVariables = Exact<{
 
 export type GetCardFaqQuery = { __typename?: 'query_root', faq_by_pk?: { __typename?: 'faq', code: string, text: string, faq_texts: Array<{ __typename?: 'faq_text', code: string, locale: string, text: string }> } | null };
 
+export type GetCustomContentIconsQueryVariables = Exact<{
+  packs: Array<Scalars['String']['input']> | Scalars['String']['input'];
+  encounterSets: Array<Scalars['String']['input']> | Scalars['String']['input'];
+}>;
+
+
+export type GetCustomContentIconsQuery = { __typename?: 'query_root', pack: Array<{ __typename?: 'pack', code: string, icon_url?: string | null }>, card_encounter_set: Array<{ __typename?: 'card_encounter_set', code: string, icon_url?: string | null }> };
+
 export type UploadChaosBagResultsMutationVariables = Exact<{
   id: Scalars['Int']['input'];
   bless: Scalars['Int']['input'];
@@ -54511,6 +54547,52 @@ export type GetCardFaqQueryHookResult = ReturnType<typeof useGetCardFaqQuery>;
 export type GetCardFaqLazyQueryHookResult = ReturnType<typeof useGetCardFaqLazyQuery>;
 export type GetCardFaqSuspenseQueryHookResult = ReturnType<typeof useGetCardFaqSuspenseQuery>;
 export type GetCardFaqQueryResult = Apollo.QueryResult<GetCardFaqQuery, GetCardFaqQueryVariables>;
+export const GetCustomContentIconsDocument = gql`
+    query getCustomContentIcons($packs: [String!]!, $encounterSets: [String!]!) {
+  pack(where: {code: {_in: $packs}}) {
+    code
+    icon_url
+  }
+  card_encounter_set(where: {code: {_in: $encounterSets}, locale: {_eq: "en"}}) {
+    code
+    icon_url
+  }
+}
+    `;
+
+/**
+ * __useGetCustomContentIconsQuery__
+ *
+ * To run a query within a React component, call `useGetCustomContentIconsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCustomContentIconsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCustomContentIconsQuery({
+ *   variables: {
+ *      packs: // value for 'packs'
+ *      encounterSets: // value for 'encounterSets'
+ *   },
+ * });
+ */
+export function useGetCustomContentIconsQuery(baseOptions: Apollo.QueryHookOptions<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables> & ({ variables: GetCustomContentIconsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>(GetCustomContentIconsDocument, options);
+      }
+export function useGetCustomContentIconsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>(GetCustomContentIconsDocument, options);
+        }
+export function useGetCustomContentIconsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>(GetCustomContentIconsDocument, options);
+        }
+export type GetCustomContentIconsQueryHookResult = ReturnType<typeof useGetCustomContentIconsQuery>;
+export type GetCustomContentIconsLazyQueryHookResult = ReturnType<typeof useGetCustomContentIconsLazyQuery>;
+export type GetCustomContentIconsSuspenseQueryHookResult = ReturnType<typeof useGetCustomContentIconsSuspenseQuery>;
+export type GetCustomContentIconsQueryResult = Apollo.QueryResult<GetCustomContentIconsQuery, GetCustomContentIconsQueryVariables>;
 export const UploadChaosBagResultsDocument = gql`
     mutation uploadChaosBagResults($id: Int!, $bless: Int!, $curse: Int!, $drawn: jsonb!, $sealed: jsonb!, $totalDrawn: Int!, $tarot: chaos_bag_tarot_mode_enum, $difficulty: campaign_difficulty_enum) {
   update_chaos_bag_result_by_pk(

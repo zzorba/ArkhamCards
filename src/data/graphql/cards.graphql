@@ -102,3 +102,14 @@ query getCardFaq($code: String!, $locale: String!) {
     }
   }
 }
+
+query getCustomContentIcons($packs: [String!]!, $encounterSets: [String!]!) {
+  pack(where: { code: { _in: $packs } }) {
+    code
+    icon_url
+  }
+  card_encounter_set(where: { code: { _in: $encounterSets }, locale: { _eq: "en" } }) {
+    code
+    icon_url
+  }
+}

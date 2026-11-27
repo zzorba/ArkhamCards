@@ -220,6 +220,7 @@ type all_card {
     """JSON select path"""
     path: String
   ): jsonb
+  thumbnail_url: String
 
   """An array relationship"""
   translations(
@@ -261,6 +262,7 @@ type all_card {
   type: card_type_code!
   type_code: card_type_code_enum!
   updated_at: timestamptz
+  uuid: String
   vengeance: Int
   version: Int!
   victory: Int
@@ -530,11 +532,13 @@ input all_card_bool_exp {
   taboo_set_id: Int_comparison_exp
   taboo_xp: Int_comparison_exp
   tags: jsonb_comparison_exp
+  thumbnail_url: String_comparison_exp
   translations: all_card_text_bool_exp
   translations_aggregate: all_card_text_aggregate_bool_exp
   type: card_type_code_bool_exp
   type_code: card_type_code_enum_comparison_exp
   updated_at: timestamptz_comparison_exp
+  uuid: String_comparison_exp
   vengeance: Int_comparison_exp
   version: Int_comparison_exp
   victory: Int_comparison_exp
@@ -554,6 +558,11 @@ enum all_card_constraint {
   unique or primary key constraint on columns "id"
   """
   all_card_pkey
+
+  """
+  unique or primary key constraint on columns "uuid"
+  """
+  all_card_uuid_key
 }
 
 """
@@ -737,10 +746,12 @@ input all_card_insert_input {
   taboo_set_id: Int
   taboo_xp: Int
   tags: jsonb
+  thumbnail_url: String
   translations: all_card_text_arr_rel_insert_input
   type: card_type_code_obj_rel_insert_input
   type_code: card_type_code_enum
   updated_at: timestamptz
+  uuid: String
   vengeance: Int
   version: Int
   victory: Int
@@ -815,7 +826,9 @@ type all_card_max_fields {
   subtype_code: String
   taboo_set_id: Int
   taboo_xp: Int
+  thumbnail_url: String
   updated_at: timestamptz
+  uuid: String
   vengeance: Int
   version: Int
   victory: Int
@@ -892,7 +905,9 @@ input all_card_max_order_by {
   subtype_code: order_by
   taboo_set_id: order_by
   taboo_xp: order_by
+  thumbnail_url: order_by
   updated_at: order_by
+  uuid: order_by
   vengeance: order_by
   version: order_by
   victory: order_by
@@ -967,7 +982,9 @@ type all_card_min_fields {
   subtype_code: String
   taboo_set_id: Int
   taboo_xp: Int
+  thumbnail_url: String
   updated_at: timestamptz
+  uuid: String
   vengeance: Int
   version: Int
   victory: Int
@@ -1044,7 +1061,9 @@ input all_card_min_order_by {
   subtype_code: order_by
   taboo_set_id: order_by
   taboo_xp: order_by
+  thumbnail_url: order_by
   updated_at: order_by
+  uuid: order_by
   vengeance: order_by
   version: order_by
   victory: order_by
@@ -1181,10 +1200,12 @@ input all_card_order_by {
   taboo_set_id: order_by
   taboo_xp: order_by
   tags: order_by
+  thumbnail_url: order_by
   translations_aggregate: all_card_text_aggregate_order_by
   type: card_type_code_order_by
   type_code: order_by
   updated_at: order_by
+  uuid: order_by
   vengeance: order_by
   version: order_by
   victory: order_by
@@ -1493,10 +1514,16 @@ enum all_card_select_column {
   tags
 
   """column name"""
+  thumbnail_url
+
+  """column name"""
   type_code
 
   """column name"""
   updated_at
+
+  """column name"""
+  uuid
 
   """column name"""
   vengeance
@@ -1720,8 +1747,10 @@ input all_card_set_input {
   taboo_set_id: Int
   taboo_xp: Int
   tags: jsonb
+  thumbnail_url: String
   type_code: card_type_code_enum
   updated_at: timestamptz
+  uuid: String
   vengeance: Int
   version: Int
   victory: Int
@@ -2026,8 +2055,10 @@ input all_card_stream_cursor_value_input {
   taboo_set_id: Int
   taboo_xp: Int
   tags: jsonb
+  thumbnail_url: String
   type_code: card_type_code_enum
   updated_at: timestamptz
+  uuid: String
   vengeance: Int
   version: Int
   victory: Int
@@ -2901,10 +2932,16 @@ enum all_card_update_column {
   tags
 
   """column name"""
+  thumbnail_url
+
+  """column name"""
   type_code
 
   """column name"""
   updated_at
+
+  """column name"""
+  uuid
 
   """column name"""
   vengeance
@@ -8566,6 +8603,7 @@ type card_encounter_set {
     where: all_card_bool_exp
   ): all_card_aggregate!
   code: String!
+  icon_url: String
   locale: String!
   name: String!
   official: Boolean!
@@ -8644,6 +8682,7 @@ input card_encounter_set_bool_exp {
   cards: all_card_bool_exp
   cards_aggregate: all_card_aggregate_bool_exp
   code: String_comparison_exp
+  icon_url: String_comparison_exp
   locale: String_comparison_exp
   name: String_comparison_exp
   official: Boolean_comparison_exp
@@ -8665,6 +8704,7 @@ input type for inserting data into table "card_encounter_set"
 input card_encounter_set_insert_input {
   cards: all_card_arr_rel_insert_input
   code: String
+  icon_url: String
   locale: String
   name: String
   official: Boolean
@@ -8673,6 +8713,7 @@ input card_encounter_set_insert_input {
 """aggregate max on columns"""
 type card_encounter_set_max_fields {
   code: String
+  icon_url: String
   locale: String
   name: String
 }
@@ -8682,6 +8723,7 @@ order by max() on columns of table "card_encounter_set"
 """
 input card_encounter_set_max_order_by {
   code: order_by
+  icon_url: order_by
   locale: order_by
   name: order_by
 }
@@ -8689,6 +8731,7 @@ input card_encounter_set_max_order_by {
 """aggregate min on columns"""
 type card_encounter_set_min_fields {
   code: String
+  icon_url: String
   locale: String
   name: String
 }
@@ -8698,6 +8741,7 @@ order by min() on columns of table "card_encounter_set"
 """
 input card_encounter_set_min_order_by {
   code: order_by
+  icon_url: order_by
   locale: order_by
   name: order_by
 }
@@ -8726,6 +8770,7 @@ input card_encounter_set_on_conflict {
 input card_encounter_set_order_by {
   cards_aggregate: all_card_aggregate_order_by
   code: order_by
+  icon_url: order_by
   locale: order_by
   name: order_by
   official: order_by
@@ -8743,6 +8788,9 @@ select columns of table "card_encounter_set"
 enum card_encounter_set_select_column {
   """column name"""
   code
+
+  """column name"""
+  icon_url
 
   """column name"""
   locale
@@ -8775,6 +8823,7 @@ input type for updating data in table "card_encounter_set"
 """
 input card_encounter_set_set_input {
   code: String
+  icon_url: String
   locale: String
   name: String
   official: Boolean
@@ -8794,6 +8843,7 @@ input card_encounter_set_stream_cursor_input {
 """Initial value of the column from where the streaming should start"""
 input card_encounter_set_stream_cursor_value_input {
   code: String
+  icon_url: String
   locale: String
   name: String
   official: Boolean
@@ -8805,6 +8855,9 @@ update columns of table "card_encounter_set"
 enum card_encounter_set_update_column {
   """column name"""
   code
+
+  """column name"""
+  icon_url
 
   """column name"""
   locale
@@ -33028,6 +33081,7 @@ type pack {
   """An object relationship"""
   cycle: cycle!
   cycle_code: String!
+  icon_url: String
   official: Boolean!
   position: Int!
   real_name: String!
@@ -33187,6 +33241,7 @@ input pack_bool_exp {
   code: String_comparison_exp
   cycle: cycle_bool_exp
   cycle_code: String_comparison_exp
+  icon_url: String_comparison_exp
   official: Boolean_comparison_exp
   position: Int_comparison_exp
   real_name: String_comparison_exp
@@ -33247,6 +33302,7 @@ input pack_insert_input {
   code: String
   cycle: cycle_obj_rel_insert_input
   cycle_code: String
+  icon_url: String
   official: Boolean
   position: Int
   real_name: String
@@ -33262,6 +33318,7 @@ type pack_max_fields {
   chapter: Int
   code: String
   cycle_code: String
+  icon_url: String
   position: Int
   real_name: String
   type: String
@@ -33274,6 +33331,7 @@ input pack_max_order_by {
   chapter: order_by
   code: order_by
   cycle_code: order_by
+  icon_url: order_by
   position: order_by
   real_name: order_by
   type: order_by
@@ -33284,6 +33342,7 @@ type pack_min_fields {
   chapter: Int
   code: String
   cycle_code: String
+  icon_url: String
   position: Int
   real_name: String
   type: String
@@ -33296,6 +33355,7 @@ input pack_min_order_by {
   chapter: order_by
   code: order_by
   cycle_code: order_by
+  icon_url: order_by
   position: order_by
   real_name: order_by
   type: order_by
@@ -33569,6 +33629,7 @@ input pack_order_by {
   code: order_by
   cycle: cycle_order_by
   cycle_code: order_by
+  icon_url: order_by
   official: order_by
   position: order_by
   real_name: order_by
@@ -33601,6 +33662,9 @@ enum pack_select_column {
 
   """column name"""
   cycle_code
+
+  """column name"""
+  icon_url
 
   """column name"""
   official
@@ -33659,6 +33723,7 @@ input pack_set_input {
   chapter: Int
   code: String
   cycle_code: String
+  icon_url: String
   official: Boolean
   position: Int
   real_name: String
@@ -33726,6 +33791,7 @@ input pack_stream_cursor_value_input {
   chapter: Int
   code: String
   cycle_code: String
+  icon_url: String
   official: Boolean
   position: Int
   real_name: String
@@ -33761,6 +33827,9 @@ enum pack_update_column {
 
   """column name"""
   cycle_code
+
+  """column name"""
+  icon_url
 
   """column name"""
   official
@@ -61070,7 +61139,8 @@ type UpgradeDeckOutput {
 }
 
 input UploadLocalCampaignDeckInput {
-  arkhamDbId: Int!
+  arkhamBuildId: String
+  arkhamDbId: Int
   localDeckId: String!
 }
 

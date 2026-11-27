@@ -1,7 +1,8 @@
-import { find, flatMap, forEach, isNil, keys, map, omitBy, values } from 'lodash';
+import { find, flatMap, forEach, isNil, keys, map, omit, omitBy, values } from 'lodash';
 import { t } from 'ttag';
 
 import Card from './types/Card';
+import DeckOption from './types/DeckOption';
 import Database from './sqlite/Database';
 import { Card_Type_Code_Enum, SingleCardFragment } from '@generated/graphql/apollo-schema';
 import { DeckMeta, Slots } from '@actions/types';
@@ -287,6 +288,26 @@ function restrictionsFromCard(
   return { investigator };
 }
 
+const isEmptyValue = (value: unknown) => isNil(value) || (Array.isArray(value) && !value.length);
+
+/**
+ * DeckOption.parse renames `type` and `name` and fills every list with [], but
+ * arkham.build treats any present list as a rule (an empty `deck_size_select`
+ * discards the whole option), so write the raw ArkhamDB shape back out.
+ */
+function deckOptionToArkhamBuild(option: DeckOption): Record<string, unknown> {
+  const { type_code, real_name, option_select, ...rest } = omit(option, ['dynamic_id']);
+  return omitBy({
+    ...rest,
+    type: type_code,
+    name: real_name,
+    option_select: option_select ? map(option_select, select => omitBy({
+      ...omit(select, ['real_name']),
+      name: select.real_name,
+    }, isEmptyValue)) : undefined,
+  }, isEmptyValue);
+}
+
 function fanMadeCardFromCard(card: Card, uuid: string, toUuid: (code: string) => string): ArkhamBuildFanMadeCard {
   const result: ArkhamBuildFanMadeCard = {
     id: uuid,
@@ -324,8 +345,10 @@ function fanMadeCardFromCard(card: Card, uuid: string, toUuid: (code: string) =>
     permanent: card.permanent,
     double_sided: card.double_sided,
     image_url: card.imageurl,
-    thumbnail_url: card.thumbnail_url,
+    // Without a thumbnail arkham.build looks for an official one by uuid, which never exists.
+    thumbnail_url: card.thumbnail_url || card.imageurl,
     back_image_url: card.backimageurl,
+    back_thumbnail_url: card.backimageurl,
     flavor: card.flavor,
     back_flavor: card.back_flavor,
     illustrator: card.illustrator,
@@ -334,8 +357,7 @@ function fanMadeCardFromCard(card: Card, uuid: string, toUuid: (code: string) =>
     skill_combat: card.skill_combat,
     skill_agility: card.skill_agility,
     skill_wild: card.skill_wild,
-    // DeckOption is a plain data class, so a JSON round trip gives the raw shape back.
-    deck_options: card.deck_options?.length ? JSON.parse(JSON.stringify(card.deck_options)) : undefined,
+    deck_options: card.deck_options?.length ? map(card.deck_options, deckOptionToArkhamBuild) : undefined,
     deck_requirements: deckRequirementsFromCard(card, toUuid),
     restrictions: restrictionsFromCard(card, toUuid),
     official: false,
@@ -344,11 +366,19 @@ function fanMadeCardFromCard(card: Card, uuid: string, toUuid: (code: string) =>
   return omitBy(result, isNil) as ArkhamBuildFanMadeCard;
 }
 
+export interface CustomContentIcons {
+  packs: { [code: string]: string | undefined };
+  encounterSets: { [code: string]: string | undefined };
+}
+
+// Shown for any custom pack or encounter set that has no icon of its own.
+export const DEFAULT_CUSTOM_ICON_URL = 'https://img2.arkhamcards.com/encounter_icons/default.png';
+
 /**
  * Build fan_made_content for our own custom cards, keyed by their uuid as
  * arkham.build expects. Cards without a uuid are skipped.
  */
-export function fanMadeContentFromCards(cards: Card[]): ArkhamBuildFanMadeContent | undefined {
+export function fanMadeContentFromCards(cards: Card[], icons?: CustomContentIcons): ArkhamBuildFanMadeContent | undefined {
   const uuids: { [code: string]: string } = {};
   forEach(cards, card => {
     if (card.uuid) {
@@ -356,26 +386,44 @@ export function fanMadeContentFromCards(cards: Card[]): ArkhamBuildFanMadeConten
     }
   });
   const toUuid = (code: string) => uuids[code] || code;
-  const result: ArkhamBuildFanMadeContent = { cards: {}, packs: {}, cycles: {} };
+  const result: ArkhamBuildFanMadeContent = { cards: {}, packs: {}, cycles: {}, encounter_sets: {} };
   forEach(cards, card => {
     const uuid = uuids[card.code];
     if (!uuid) {
       return;
     }
     result.cards[uuid] = fanMadeCardFromCard(card, uuid, toUuid);
+    // arkham.build requires real_name and position; the defaults match how it loads fan-made projects.
     if (result.packs && !result.packs[card.pack_code]) {
+      const name = card.pack_name || card.pack_code;
       result.packs[card.pack_code] = {
         code: card.pack_code,
-        name: card.pack_name || card.pack_code,
+        name,
+        real_name: name,
         cycle_code: card.cycle_code,
+        position: 1,
+        icon_url: icons?.packs[card.pack_code] || DEFAULT_CUSTOM_ICON_URL,
         official: false,
       };
     }
     if (card.cycle_code && result.cycles && !result.cycles[card.cycle_code]) {
+      const name = card.cycle_name || card.cycle_code;
       result.cycles[card.cycle_code] = {
         code: card.cycle_code,
-        name: card.cycle_name || card.cycle_code,
+        name,
+        real_name: name,
+        position: 999,
         official: false,
+      };
+    }
+    if (card.encounter_code && result.encounter_sets && !result.encounter_sets[card.encounter_code]) {
+      const name = card.encounter_name || card.encounter_code;
+      result.encounter_sets[card.encounter_code] = {
+        code: card.encounter_code,
+        name,
+        real_name: name,
+        pack_code: card.pack_code,
+        icon_url: icons?.encounterSets[card.encounter_code] || DEFAULT_CUSTOM_ICON_URL,
       };
     }
   });

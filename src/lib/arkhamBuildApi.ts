@@ -14,10 +14,25 @@ import {
   TOO_MANY_CARDS,
   DECK_OPTIONS_LIMIT,
 } from '@actions/types';
-import { fanMadeContentFromCards, mergeFanMadeContent, metaCardCodes, parseArkhamBuildMeta, remapMetaCodes } from '@data/arkhamBuildCards';
+import { print } from 'graphql';
+
+import {
+  CustomContentIcons,
+  fanMadeContentFromCards,
+  mergeFanMadeContent,
+  metaCardCodes,
+  parseArkhamBuildMeta,
+  remapMetaCodes,
+} from '@data/arkhamBuildCards';
 import { ArkhamBuildFanMadeContent } from '@data/types/ArkhamBuildFanMadeContent';
 import { getDatabase } from '@data/sqlite/DatabaseProvider';
 import Card from '@data/types/Card';
+import { GRAPHQL_SERVER } from '@data/apollo/createApolloClient';
+import {
+  GetCustomContentIconsDocument,
+  GetCustomContentIconsQuery,
+  GetCustomContentIconsQueryVariables,
+} from '@generated/graphql/apollo-schema';
 
 const API_BASE = 'https://api.arkham.build';
 
@@ -314,10 +329,44 @@ async function exportCustomCards(content: ArkhamBuildDeckContent): Promise<Arkha
     cards.push(...filter(await db.getCardsByCodes(requiredCodes), isExportable));
   }
   const toUuid = fromPairs(flatMap(cards, card => card.uuid ? [[card.code, card.uuid]] : []));
+  const icons = await fetchCustomContentIcons(cards);
   return {
     ...remapCodes(content, toUuid),
-    fan_made_content: mergeFanMadeContent(content.fan_made_content, fanMadeContentFromCards(cards)),
+    fan_made_content: mergeFanMadeContent(content.fan_made_content, fanMadeContentFromCards(cards, icons)),
   };
+}
+
+/**
+ * Look up the icons for the custom packs and encounter sets being exported, so new
+ * icons only need a data import rather than an app release. On any failure the
+ * export still goes ahead, with the default icon.
+ */
+async function fetchCustomContentIcons(cards: Card[]): Promise<CustomContentIcons> {
+  const icons: CustomContentIcons = { packs: {}, encounterSets: {} };
+  const variables: GetCustomContentIconsQueryVariables = {
+    packs: uniq(map(cards, card => card.pack_code)),
+    encounterSets: uniq(flatMap(cards, card => card.encounter_code ? [card.encounter_code] : [])),
+  };
+  try {
+    const response = await fetch(`https://${GRAPHQL_SERVER}/graphql`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: print(GetCustomContentIconsDocument), variables }),
+    });
+    if (!response.ok) {
+      return icons;
+    }
+    const json: { data?: GetCustomContentIconsQuery } = await response.json();
+    forEach(json.data?.pack, pack => {
+      icons.packs[pack.code] = pack.icon_url ?? undefined;
+    });
+    forEach(json.data?.card_encounter_set, encounterSet => {
+      icons.encounterSets[encounterSet.code] = encounterSet.icon_url ?? undefined;
+    });
+  } catch (e) {
+    console.log(`Failed to fetch custom content icons: ${e}`);
+  }
+  return icons;
 }
 
 /**
