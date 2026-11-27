@@ -4,12 +4,12 @@ import { filter, keys, slice, map } from 'lodash';
 import InvestigatorCheckListComponent from '@components/campaignguide/prompts/InvestigatorCheckListComponent';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
-import InvestigatorMultiChoiceComponent from '@components/campaignguide/prompts/InvestigatorMultiChoiceComponent';
+import InvestigatorMultiChoicePrompt from '@components/campaignguide/prompts/InvestigatorMultiChoicePrompt';
 import ChooseInvestigatorPrompt from '@components/campaignguide/prompts/ChooseInvestigatorPrompt';
 import InvestigatorChoicePrompt from '@components/campaignguide/prompts/InvestigatorChoicePrompt';
 import { InputStep, InvestigatorChoiceInput } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import { investigatorChoiceInputChoices } from '@data/scenario/inputHelper';
+import { investigatorChoiceInputChoices, investigatorChoiceRequiredChoices } from '@data/scenario/inputHelper';
 import { investigatorChoiceConditionResult } from '@data/scenario/conditionHelper';
 
 interface Props {
@@ -50,11 +50,7 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
     return iteration;
   }, [step]);
 
-  if (input.special_mode === 'sequential') {
-    const investigatorOffset = iteration;
-    const investigator = investigators[investigatorOffset];
-    const isSingleChoice = (min === undefined && max === undefined) || (min === 1 && max === 1);
-    const options = investigatorChoiceInputChoices(input, campaignLog);
+  if (input.special_mode === 'multiple') {
     return (
       <>
         { !!step.text && (
@@ -62,39 +58,43 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
             <CampaignGuideTextComponent text={step.text} />
           </SetupStepWrapper>
         ) }
-        { isSingleChoice ? (
-          <InvestigatorChoicePrompt
-            id={step.id}
-            text={step.text}
-            promptType={step.prompt_type}
-            confirmText={input.confirm_text}
-            bulletType={step.bullet_type}
-            options={options}
-            hideInvestigatorSection
-            detailed
-            investigator={investigator}
-            investigators={slice(
-              investigators,
-              investigatorOffset,
-              investigatorOffset + 1
-            )}
-            optional={input.investigator === 'choice'}
-          />
-        ) : (
-          !!investigator && (
-            <InvestigatorMultiChoiceComponent
-              id={step.id}
-              investigator={investigator}
-              choices={options.type === 'personalized' ?
-                map(options.perCode[investigator.code] || [], idx => options.choices[idx]) :
-                options.choices}
-              confirmText={input.confirm_text}
-              bulletType={step.bullet_type}
-              min={min}
-              max={max}
-            />
-          )
-        )}
+        <InvestigatorMultiChoicePrompt
+          id={step.id}
+          investigators={investigators}
+          options={investigatorChoiceInputChoices(input, campaignLog)}
+          required={investigatorChoiceRequiredChoices(input, campaignLog)}
+          confirmText={input.confirm_text}
+          bulletType={step.bullet_type}
+        />
+      </>
+    );
+  }
+  if (input.special_mode === 'sequential') {
+    const investigatorOffset = iteration;
+    return (
+      <>
+        { !!step.text && (
+          <SetupStepWrapper bulletType={step.bullet_type}>
+            <CampaignGuideTextComponent text={step.text} />
+          </SetupStepWrapper>
+        ) }
+        <InvestigatorChoicePrompt
+          id={step.id}
+          text={step.text}
+          promptType={step.prompt_type}
+          confirmText={input.confirm_text}
+          bulletType={step.bullet_type}
+          options={investigatorChoiceInputChoices(input, campaignLog)}
+          hideInvestigatorSection
+          detailed
+          investigator={investigators[investigatorOffset]}
+          investigators={slice(
+            investigators,
+            investigatorOffset,
+            investigatorOffset + 1
+          )}
+          optional={input.investigator === 'choice'}
+        />
       </>
     );
   }
