@@ -1,13 +1,13 @@
 {
-  "schemaVersion": 55,
+  "schemaVersion": 56,
   "cache": {
-    "lastAttemptedSync": "2026-04-21T12:35:22.582Z",
-    "cardCount": 8269,
-    "lastModified": "2026-04-18T12:29:28.795824",
-    "lastModifiedTranslation": "2026-04-12T19:46:19.466909"
+    "lastAttemptedSync": "2026-11-21T18:06:04.696Z",
+    "cardCount": 8585,
+    "lastModified": "2026-11-21T16:25:02.693881",
+    "lastModifiedTranslation": "2026-11-21T16:25:13.39335"
   },
   "cardLang": "en",
-  "exportedAt": "2026-04-21T12:35:43.447Z",
+  "exportedAt": "2026-11-21T18:06:45.754Z",
   "packs": [
     {
       "id": "core",
@@ -32,18 +32,6 @@
       "known": 0,
       "total": 0,
       "chapter": 1
-    },
-    {
-      "id": "core_2026",
-      "code": "core_2026",
-      "name": "Core Set 2026",
-      "position": 3,
-      "cycle_position": 1,
-      "cycle_code": "core",
-      "cycle_name": "Core",
-      "known": 0,
-      "total": 0,
-      "chapter": 2
     },
     {
       "id": "dwl",
@@ -156,6 +144,18 @@
       "chapter": 1
     },
     {
+      "id": "ptc",
+      "code": "ptc",
+      "name": "The Path to Carcosa",
+      "position": 1,
+      "cycle_position": 3,
+      "cycle_code": "ptc",
+      "cycle_name": "The Path to Carcosa",
+      "known": 0,
+      "total": 0,
+      "chapter": 1
+    },
+    {
       "id": "ptcp",
       "code": "ptcp",
       "name": "The Path to Carcosa Investigator Expansion",
@@ -166,18 +166,6 @@
       "known": 0,
       "total": 0,
       "reprint": true,
-      "chapter": 1
-    },
-    {
-      "id": "ptc",
-      "code": "ptc",
-      "name": "The Path to Carcosa",
-      "position": 1,
-      "cycle_position": 3,
-      "cycle_code": "ptc",
-      "cycle_name": "The Path to Carcosa",
-      "known": 0,
-      "total": 0,
       "chapter": 1
     },
     {
@@ -802,6 +790,29 @@
       "chapter": 1
     },
     {
+      "id": "core_2026",
+      "code": "core_2026",
+      "name": "Core Set (2026)",
+      "position": 3,
+      "cycle_position": 12,
+      "cycle_code": "core_ch2",
+      "cycle_name": "Core (2026)",
+      "known": 0,
+      "total": 0,
+      "chapter": 2
+    },
+    {
+      "id": "cob",
+      "code": "cob",
+      "name": "Children of Blood",
+      "position": 1,
+      "cycle_position": 13,
+      "cycle_code": "small_campaign_expansions",
+      "cycle_name": "Small Campaign Expansions",
+      "known": 0,
+      "total": 0
+    },
+    {
       "id": "rtnotz",
       "code": "rtnotz",
       "name": "Return to the Night of the Zealot",
@@ -1126,9 +1137,20 @@
       "chapter": 1
     },
     {
-      "id": "hoth",
-      "code": "hoth",
-      "name": "Hour of the Huntress",
+      "id": "traces_to_nowhere_pack",
+      "code": "traces_to_nowhere_pack",
+      "name": "Traces to Nowhere",
+      "position": 1,
+      "cycle_position": 73,
+      "cycle_code": "scenario_packs_ch2",
+      "cycle_name": "Scenario Packs",
+      "known": 0,
+      "total": 0
+    },
+    {
+      "id": "books",
+      "code": "books",
+      "name": "Books",
       "position": 20,
       "cycle_position": 80,
       "cycle_code": "promotional",
@@ -1138,9 +1160,9 @@
       "chapter": 1
     },
     {
-      "id": "books",
-      "code": "books",
-      "name": "Books",
+      "id": "hoth",
+      "code": "hoth",
+      "name": "Hour of the Huntress",
       "position": 20,
       "cycle_position": 80,
       "cycle_code": "promotional",
@@ -1366,9 +1388,9 @@
       "chapter": 1
     },
     {
-      "id": "enc",
-      "code": "enc",
-      "name": "Enthralling Encore",
+      "id": "aof",
+      "code": "aof",
+      "name": "Aura of Faith",
       "position": 12,
       "cycle_position": 90,
       "cycle_code": "parallel",
@@ -1378,9 +1400,9 @@
       "chapter": 1
     },
     {
-      "id": "aof",
-      "code": "aof",
-      "name": "Aura of Faith",
+      "id": "enc",
+      "code": "enc",
+      "name": "Enthralling Encore",
       "position": 12,
       "cycle_position": 90,
       "cycle_code": "parallel",
