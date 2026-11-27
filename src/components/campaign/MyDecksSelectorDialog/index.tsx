@@ -116,7 +116,7 @@ function MyDecksSelectorDialog() {
         campaignId,
         onCreateDeck: onDeckSelect,
         filterInvestigators,
-        onlyInvestigators: investigatorId ? [investigatorId] : [],
+        onlyInvestigators: investigatorId ? [investigatorId] : undefined,
         includeParallel,
       });
     }, 200);

@@ -4,7 +4,7 @@ import { filter, find, flatMap, map, partition } from 'lodash';
 import { useAppState } from '@react-native-community/hooks';
 import { t } from 'ttag';
 
-import { Trauma } from '@actions/types';
+import { isArkhamDbDeckId, Trauma } from '@actions/types';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign, StepId } from '@data/scenario';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
@@ -105,7 +105,7 @@ function AliveInvestigatorRow({
     }
   }, [saveDeck, saveDeckUpgrade, nextDeckUpgradeStepId, deck, campaignState, setSaving]);
   const arkhamDbError = useArkhamDbError();
-  const needsArkhamDbReauth = !deck?.deck.local && arkhamDbError === 'badAccessToken';
+  const needsArkhamDbReauth = !!deck && isArkhamDbDeckId(deck.id) && arkhamDbError === 'badAccessToken';
   const traumaAndCardData = useMemo(
     () => processedCampaign.campaignLog.traumaAndCardData(investigator.code),
     [processedCampaign.campaignLog, investigator.code]

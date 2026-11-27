@@ -276,9 +276,11 @@ export default function DeckViewTab(props: Props) {
           { backgroundColor: COLORS.red, opacity: 0.95 },
         ]}>
           <Text style={[space.paddingS, typography.small, typography.white]}>
-            { arkhamDb ?
-              t`This appears to be one of your decks from ArkhamDB, however you seem to be logged into a different ArkhamDB account? If you wish to make edits, please login through the app settings.` :
-              t`This appears to be one of your decks from ArkhamDB, however you are not currently logged in. If you wish to make edits, please login through the app settings.` }
+            { isArkhamBuildDeck(deck) ?
+              t`This appears to be one of your decks from arkham.build, however you are not currently logged in. If you wish to make edits, please login through the app settings.` :
+              arkhamDb ?
+                t`This appears to be one of your decks from ArkhamDB, however you seem to be logged into a different ArkhamDB account? If you wish to make edits, please login through the app settings.` :
+                t`This appears to be one of your decks from ArkhamDB, however you are not currently logged in. If you wish to make edits, please login through the app settings.` }
           </Text>
         </View>
       ) }

@@ -715,7 +715,10 @@ function DeckDetailView({
     onValueChange: updateDeckName,
     value: name || '',
   });
-  const authedForEdits: boolean = !!deck && (deck.local || (arkhamDb && !arkhamDbUser) || deck.user_id === arkhamDbUser);
+  const authedForEdits: boolean = !!deck && (
+    deck.local ||
+    (isArkhamBuildDeck(deck) ? arkhamBuildSignedIn : ((arkhamDb && !arkhamDbUser) || deck.user_id === arkhamDbUser))
+  );
   const editable = !!deckEdits?.editable && authedForEdits;
   const suggestArkhamDbLogin = !!deckEdits?.editable && !authedForEdits;
   const onEditPressed = useCallback(() => {

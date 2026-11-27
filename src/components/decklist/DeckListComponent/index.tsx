@@ -12,7 +12,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
 
 import DeckList from './DeckList';
-import { Campaign } from '@actions/types';
+import { Campaign, isArkhamBuildDeck } from '@actions/types';
 import Card from '@data/types/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import space, { s, m } from '@styles/space';
@@ -105,7 +105,9 @@ function useDeckTagPile(
       return false;
     } catch (e) {
       if (e.message === 'badAccessToken') {
-        setError(t`Your ArkhamDB login has expired.\n\nYou will need to login again on the Settings tab before you can save changes to this deck.`)
+        setError(isArkhamBuildDeck(editDeck.deck) ?
+          t`Your arkham.build login has expired.\n\nYou will need to login again on the Settings tab before you can save changes to this deck.` :
+          t`Your ArkhamDB login has expired.\n\nYou will need to login again on the Settings tab before you can save changes to this deck.`)
       } else {
         setError(e.message);
       }

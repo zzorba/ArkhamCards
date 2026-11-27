@@ -17,6 +17,7 @@ import { useSettingFlag } from '@components/core/hooks';
 import LatestDeckT from '@data/interfaces/LatestDeckT';
 import space, { s } from '@styles/space';
 import MiniDeckT from '@data/interfaces/MiniDeckT';
+import { isArkhamDbDeckId } from '@actions/types';
 import ArkhamCardsAuthContext from '@lib/ArkhamCardsAuthContext';
 import withApolloGate from '@components/core/withApolloGate';
 
@@ -94,7 +95,7 @@ function MyDecksView() {
   }, [showNewDeckDialog]);
 
   const filterDeck = useCallback((deck: MiniDeckT) => {
-    if (localDecksOnly && !deck.id.local) {
+    if (localDecksOnly && isArkhamDbDeckId(deck.id)) {
       return 'remote';
     }
     if (hideCampaignDecks && deck.campaign_id) {

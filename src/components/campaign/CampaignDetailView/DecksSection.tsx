@@ -5,7 +5,7 @@ import { InteractionManager, StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
 
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
-import { CampaignId, CampaignNotes, InvestigatorNotes, Deck, DeckId, getDeckId, Trauma } from '@actions/types';
+import { CampaignId, CampaignNotes, InvestigatorNotes, Deck, DeckId, getDeckId, isArkhamBuildDeckId, Trauma } from '@actions/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ShowAlert, ShowCountDialog } from '@components/deck/dialogs';
@@ -62,7 +62,9 @@ export default function DecksSection({
     showAlert(
       t`Remove ${investigator.card.name}?`,
       deck ?
-        t`Are you sure you want to remove this deck from the campaign?\n\nThe deck will remain on ArkhamDB.` :
+        (isArkhamBuildDeckId(deck.id) ?
+          t`Are you sure you want to remove this deck from the campaign?\n\nThe deck will remain on arkham.build.` :
+          t`Are you sure you want to remove this deck from the campaign?\n\nThe deck will remain on ArkhamDB.`) :
         t`Are you sure you want to remove ${investigator.card.name} from this campaign?\n\nCampaign log data associated with them may be lost.`,
       [
         {
