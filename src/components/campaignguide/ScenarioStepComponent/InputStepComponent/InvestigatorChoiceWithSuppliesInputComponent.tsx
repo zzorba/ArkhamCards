@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
-import { find } from 'lodash';
 import { c } from 'ttag';
 
 import ChooseInvestigatorPrompt from '../../prompts/ChooseInvestigatorPrompt';
@@ -34,11 +33,7 @@ function getPrompt(investigator: Card, sectionName: string) {
 
 export default function InvestigatorChoiceWithSuppliesInputComponent({ step, input, campaignLog }: Props) {
   const investigatorHasSupply = useCallback((code: string) => {
-    const investigatorSection = campaignLog.investigatorSections[input.section] || {};
-    const section = investigatorSection[code];
-    return !!(section &&
-      find(section.entries, entry => entry.id === input.id && entry.type === 'count' && entry.count > 0 && !entry.crossedOut)
-    );
+    return campaignLog.supplyCount(input.section, input.id, code) > 0;
   }, [input, campaignLog]);
 
   const investigatorToString = useCallback((card: CampaignInvestigator) => {

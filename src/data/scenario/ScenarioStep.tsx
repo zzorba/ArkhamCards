@@ -1081,12 +1081,7 @@ export default class ScenarioStep {
           return undefined;
         }
         const investigator = keys(choice)[0];
-        const investigatorSupplies = this.campaignLog.investigatorSections[input.section] || {};
-        const supplies = investigatorSupplies[investigator];
-        const hasSupply = !!(
-          supplies &&
-          find(supplies.entries, entry => entry.id === input.id && entry.type === 'count' && !entry.crossedOut && entry.count > 0)
-        );
+        const hasSupply = this.campaignLog.supplyCount(input.section, input.id, investigator) > 0;
         return this.binaryBranch(
           hasSupply,
           this.remainingStepIds,

@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View } from 'react-native';
-import { find } from 'lodash';
 
 import AppIcon from '@icons/AppIcon';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
@@ -39,14 +38,7 @@ export default function SupplyComponent({
     if (!editable) {
       return 0;
     }
-    const section = (processedScenario.latestCampaignLog.investigatorSections[sectionId] || {})[investigator.code] || {};
-    const entry = find(section.entries || [],
-      e => e.id === supply.id && e.type === 'count'
-    );
-    if (!entry || entry.type !== 'count' || entry.crossedOut) {
-      return 0;
-    }
-    return entry.count;
+    return processedScenario.latestCampaignLog.supplyCount(sectionId, supply.id, investigator.code);
   }, [supply.id, processedScenario.latestCampaignLog, editable, sectionId, investigator.code]);
 
   const onIncrement = useCallback(() => {

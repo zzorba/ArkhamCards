@@ -6,7 +6,6 @@ import { c, t } from 'ttag';
 import CheckListComponent, { ListItem } from './CheckListComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
-import Card from '@data/types/Card';
 import StyleContext from '@styles/StyleContext';
 import ActionButton from './ActionButton';
 import RadioButton from './RadioButton';
@@ -28,7 +27,7 @@ interface Props {
   allowNewDecks?: boolean;
   includeLeadInvestigator?: boolean;
   investigators?: string[];
-  filter?: (investigator: Card) => boolean;
+  filter?: (investigator: CampaignInvestigator) => boolean;
 }
 
 export default function InvestigatorCheckListComponent({
@@ -42,7 +41,7 @@ export default function InvestigatorCheckListComponent({
   allowNewDecks,
   includeLeadInvestigator,
   investigators: investigatorCodes,
-  filter: filterCard,
+  filter: filterInvestigatorProp,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const { campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
@@ -54,17 +53,17 @@ export default function InvestigatorCheckListComponent({
   }, [campaignState]);
 
   const filterInvestigator = useCallback((investigator: CampaignInvestigator): boolean => {
-    if (investigatorCodes) {
-      return findIndex(
-        investigatorCodes,
-        code => code === investigator.code
-      ) !== -1;
+    if (investigatorCodes && findIndex(
+      investigatorCodes,
+      code => code === investigator.code
+    ) === -1) {
+      return false;
     }
-    if (filterCard) {
-      return filterCard(investigator.card);
+    if (filterInvestigatorProp) {
+      return filterInvestigatorProp(investigator);
     }
     return true;
-  }, [investigatorCodes, filterCard]);
+  }, [investigatorCodes, filterInvestigatorProp]);
 
   const addDeckButton = useMemo(() => {
     if (!allowNewDecks) {
