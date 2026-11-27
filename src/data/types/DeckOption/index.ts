@@ -313,7 +313,7 @@ export class DeckOptionQueryBuilder {
     }
     if (
       (this.option.tag?.length && this.option.tag[0] === 'in') ||
-      (this.option.text?.length && this.option.text[0] === 'investigate')
+      (this.option.text?.length && (this.option.text[0] === 'investigate' || this.option.text[0] === '[Ii]nvestigate'))
     ) {
       return [
         where(
