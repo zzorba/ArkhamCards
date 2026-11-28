@@ -4,11 +4,12 @@ import { filter, keys, slice, map } from 'lodash';
 import InvestigatorCheckListComponent from '@components/campaignguide/prompts/InvestigatorCheckListComponent';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import InvestigatorMultiChoicePrompt from '@components/campaignguide/prompts/InvestigatorMultiChoicePrompt';
 import ChooseInvestigatorPrompt from '@components/campaignguide/prompts/ChooseInvestigatorPrompt';
 import InvestigatorChoicePrompt from '@components/campaignguide/prompts/InvestigatorChoicePrompt';
 import { InputStep, InvestigatorChoiceInput } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import { investigatorChoiceInputChoices } from '@data/scenario/inputHelper';
+import { investigatorChoiceInputChoices, investigatorChoiceRequiredChoices } from '@data/scenario/inputHelper';
 import { investigatorChoiceConditionResult } from '@data/scenario/conditionHelper';
 
 interface Props {
@@ -49,6 +50,25 @@ export default function InvestigatorChoiceInputComponent({ step, input, campaign
     return iteration;
   }, [step]);
 
+  if (input.special_mode === 'multiple') {
+    return (
+      <>
+        { !!step.text && (
+          <SetupStepWrapper bulletType={step.bullet_type}>
+            <CampaignGuideTextComponent text={step.text} />
+          </SetupStepWrapper>
+        ) }
+        <InvestigatorMultiChoicePrompt
+          id={step.id}
+          investigators={investigators}
+          options={investigatorChoiceInputChoices(input, campaignLog)}
+          required={investigatorChoiceRequiredChoices(input, campaignLog)}
+          confirmText={input.confirm_text}
+          bulletType={step.bullet_type}
+        />
+      </>
+    );
+  }
   if (input.special_mode === 'sequential') {
     const investigatorOffset = iteration;
     return (

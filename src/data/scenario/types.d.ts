@@ -1165,7 +1165,7 @@ export interface InvestigatorChoiceInput {
   min?: ConstantOperand | CampaignLogCountOperand;
   max?: ConstantOperand | CampaignLogCountOperand;
   condition?: InvestigatorChoiceCondition;
-  special_mode?: "detailed" | "sequential";
+  special_mode?: "detailed" | "sequential" | "multiple";
   include_trauma?: boolean;
   unique?: boolean;
   confirm_text?: string;
@@ -1185,6 +1185,7 @@ export interface InvestigatorConditionalChoice {
   selected_text_feminine?: string;
   description?: string;
   condition?: InvestigatorChoiceCondition;
+  required_condition?: InvestigatorChoiceCondition;
   border?: boolean;
   border_color?: BorderColor;
   pre_border_effects?: Effect[];

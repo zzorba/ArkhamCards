@@ -1,6 +1,6 @@
 import { filter, find, findIndex, flatMap, forEach, map, head, keys, values } from 'lodash';
 
-import { NumberChoices } from '@actions/types';
+import { NumberChoices, StringChoices } from '@actions/types';
 import {
   BinaryChoiceCondition,
   InvestigatorChoiceInput,
@@ -111,6 +111,28 @@ export function investigatorChoiceInputChoices(
     perCode: result,
     choices: input.choices,
   };
+}
+
+/**
+ * The choices each investigator must take, from choices with a required_condition.
+ */
+export function investigatorChoiceRequiredChoices(
+  input: InvestigatorChoiceInput,
+  campaignLog: GuidedCampaignLog
+): StringChoices {
+  const result: StringChoices = {};
+  forEach(input.choices, choice => {
+    if (!choice.required_condition) {
+      return;
+    }
+    const conditionResult = investigatorChoiceConditionResult(choice.required_condition, campaignLog);
+    forEach(conditionResult.investigatorChoices, (matches, code) => {
+      if (matches.length) {
+        result[code] = [...(result[code] || []), choice.id];
+      }
+    });
+  });
+  return result;
 }
 
 export function calculateCardChoiceResult(
