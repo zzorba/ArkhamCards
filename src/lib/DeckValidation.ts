@@ -493,7 +493,6 @@ export default class DeckValidation {
     const drawDeckSize = this.getDrawDeckSize(cards);
     // at least 60 others cards
     if (drawDeckSize < size) {
-      const removeCount = size - drawDeckSize;
       this.problem_list.push(t`Not enough cards (${drawDeckSize} / ${size}).`);
       return {
         reason: TOO_FEW_CARDS,
@@ -503,7 +502,6 @@ export default class DeckValidation {
 
     // at least 60 others cards
     if (drawDeckSize > size) {
-      const removeCount = size - drawDeckSize;
       this.problem_list.push(t`Too many cards (${drawDeckSize} / ${size}).`);
       return {
         reason: TOO_MANY_CARDS,
